@@ -91,11 +91,12 @@ public class GameClient extends NetClient
 		LOGGER_ACCOUNTING.finer("Client disconnected: " + this);
 		LoginServerThread.getInstance().sendLogout(_accountName);
 		_connectionState = ConnectionState.DISCONNECTED;
+		super.onDisconnection();
 	}
 	
 	public void closeNow()
 	{
-		disconnect();
+		onDisconnection();
 		
 		synchronized (this)
 		{
