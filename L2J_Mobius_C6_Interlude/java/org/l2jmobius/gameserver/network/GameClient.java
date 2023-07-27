@@ -76,16 +76,6 @@ public class GameClient extends NetClient
 	@Override
 	public void onDisconnection()
 	{
-		LOGGER_ACCOUNTING.finer("Client disconnected: " + this);
-		LoginServerThread.getInstance().sendLogout(_accountName);
-		_connectionState = ConnectionState.DISCONNECTED;
-		super.onDisconnection();
-	}
-	
-	public void closeNow()
-	{
-		onDisconnection();
-		
 		synchronized (this)
 		{
 			if (_cleanupTask != null)
@@ -94,13 +84,17 @@ public class GameClient extends NetClient
 			}
 			_cleanupTask = ThreadPool.schedule(new CleanupTask(), 0); // delayed?
 		}
+		
+		LOGGER_ACCOUNTING.finer("Client disconnected: " + this);
+		LoginServerThread.getInstance().sendLogout(_accountName);
+		_connectionState = ConnectionState.DISCONNECTED;
 	}
 	
 	public void close(ServerPacket packet)
 	{
 		if (packet == null)
 		{
-			closeNow();
+			disconnect();
 		}
 		else
 		{
@@ -108,7 +102,7 @@ public class GameClient extends NetClient
 			sendPacket(packet);
 			
 			// Wait for packet to be sent.
-			ThreadPool.schedule(this::closeNow, 1000);
+			ThreadPool.schedule(this::disconnect, 1000);
 		}
 	}
 	
@@ -423,7 +417,7 @@ public class GameClient extends NetClient
 			
 			if (player.getClient() != null)
 			{
-				player.getClient().closeNow();
+				player.getClient().disconnect();
 			}
 			else
 			{

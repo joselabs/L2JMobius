@@ -56,7 +56,7 @@ public class AuthLogin implements ClientPacket
 			}
 			else
 			{
-				client.closeNow();
+				client.disconnect();
 			}
 		}
 	}

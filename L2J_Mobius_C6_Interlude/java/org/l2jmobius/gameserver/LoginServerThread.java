@@ -421,7 +421,7 @@ public class LoginServerThread extends Thread
 				return true;
 			}
 			
-			savedClient.closeNow();
+			savedClient.disconnect();
 			_accountsInGameServer.remove(account);
 			return false;
 		}
