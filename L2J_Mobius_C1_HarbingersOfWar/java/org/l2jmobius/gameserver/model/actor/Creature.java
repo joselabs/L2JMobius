@@ -98,7 +98,7 @@ public abstract class Creature extends WorldObject
 	private int _face;
 	private int _hairStyle;
 	private int _hairColor;
-	private int _sex;
+	private boolean _isFemale;
 	private int _heading;
 	private int _xDestination;
 	private int _yDestination;
@@ -594,19 +594,14 @@ public abstract class Creature extends WorldObject
 		_physicalSpeed = physicalSpeed;
 	}
 	
-	public boolean isMale()
+	public boolean isFemale()
 	{
-		return _sex == 0;
+		return _isFemale;
 	}
 	
-	public int getSex()
+	public void setSex(boolean isFemale)
 	{
-		return _sex;
-	}
-	
-	public void setSex(int sex)
-	{
-		_sex = sex;
+		_isFemale = isFemale;
 	}
 	
 	public int getWalkSpeed()

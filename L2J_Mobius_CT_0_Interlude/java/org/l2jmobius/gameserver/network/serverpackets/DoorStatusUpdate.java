@@ -37,7 +37,7 @@ public class DoorStatusUpdate extends ServerPacket
 		writeInt(_door.getDamage());
 		writeInt(_door.isEnemy());
 		writeInt(_door.getId());
-		writeInt((int) _door.getCurrentHp());
 		writeInt(_door.getMaxHp());
+		writeInt((int) _door.getCurrentHp());
 	}
 }

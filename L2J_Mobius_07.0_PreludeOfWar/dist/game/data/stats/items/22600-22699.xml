@@ -172,13 +172,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
 		<set name="for_npc" val="true" />
 		<set name="reuse_delay" val="3000" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
-		<set name="is_stackable" val="true" />
 		<set name="material" val="LIQUID" />
 		<skills>
 			<skill id="9201" level="1" /> <!-- Elixir: Pipe Organ Melody -->
@@ -290,9 +290,9 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="14966" min="2" max="2" chance="100" /> <!-- Majestic Earring of Fortune - 30-day -->
-			<item id="14967" min="1" max="1" chance="100" /> <!-- Majestic Necklace of Fortune - 30-day -->
-			<item id="14968" min="2" max="2" chance="100" /> <!-- Majestic Ring of Fortune - 30-day -->
+			<item id="14966" min="2" max="2" chance="100" /> <!-- Majestic Earring of Fortune - 30 days -->
+			<item id="14967" min="1" max="1" chance="100" /> <!-- Majestic Necklace of Fortune - 30 days -->
+			<item id="14968" min="2" max="2" chance="100" /> <!-- Majestic Ring of Fortune - 30 days -->
 		</capsuled_items>
 	</item>
 	<item id="22617" name="Jewelry Pack (B-grade)" type="EtcItem">
@@ -308,9 +308,9 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="14970" min="1" max="1" chance="100" /> <!-- Black Ore Necklace of Fortune - 30-day -->
-			<item id="14969" min="2" max="2" chance="100" /> <!-- Black Ore Earring of Fortune - 30-day -->
-			<item id="14971" min="2" max="2" chance="100" /> <!-- Black Ore Ring of Fortune - 30-day -->
+			<item id="14970" min="1" max="1" chance="100" /> <!-- Black Ore Necklace of Fortune - 30 days -->
+			<item id="14969" min="2" max="2" chance="100" /> <!-- Black Ore Earring of Fortune - 30 days -->
+			<item id="14971" min="2" max="2" chance="100" /> <!-- Black Ore Ring of Fortune - 30 days -->
 		</capsuled_items>
 	</item>
 	<item id="22618" name="Jewelry Pack (C-grade)" type="EtcItem">
@@ -326,9 +326,9 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="14973" min="1" max="1" chance="100" /> <!-- Sealed Necklace of Fortune - 30-day -->
-			<item id="14972" min="2" max="2" chance="100" /> <!-- Sealed Earring of Fortune - 30-day -->
-			<item id="14974" min="2" max="2" chance="100" /> <!-- Sealed Ring of Fortune - 30-day -->
+			<item id="14973" min="1" max="1" chance="100" /> <!-- Sealed Necklace of Fortune - 30 days -->
+			<item id="14972" min="2" max="2" chance="100" /> <!-- Sealed Earring of Fortune - 30 days -->
+			<item id="14974" min="2" max="2" chance="100" /> <!-- Sealed Ring of Fortune - 30 days -->
 		</capsuled_items>
 	</item>
 	<item id="22619" name="Dynasty Accessory of Fortune Pack (S-grade)" type="EtcItem">
@@ -488,7 +488,7 @@
 		</skills>
 	</item>
 	<item id="22627" name="Scroll: Enchant Weapon (R-grade)" type="EtcItem">
-		<!-- Only for premium users. When enchanted, increases P. Atk. by 6 for R-grade one-handed swords, one-handed blunts, one-handed staffs, daggers, spears, and other weapons. Increases P. Atk. by 7 for two-handed swords, two-handed blunts, two-handed staffs, dual daggers, dual swords, fist weapons, and crossbows. Increases P. Atk. by 12 for bow weapons. Increases M. Atk. by 5 for all weapons. P. Atk./ M. Atk increases greatly starting at +4. For blessed weapons, all stats will increase more than standard weapons. -->
+		<!-- Only for premium users. When enchanted. increases P. Atk. by 6 for R-grade one-handed swords. one-handed blunts. one-handed staffs. daggers. spears. and other weapons. Increases P. Atk. by 7 for two-handed swords. two-handed blunts. two-handed staffs. dual daggers. dualswords. fist weapons. and crossbows. Increases P. Atk. by 12 for bow weapons. Increases M. Atk. by 5 for all weapons. P. Atk./M. Atk increases greatly starting at +4. For blessed weapons. all stats will increase more than standard weapons. Cannot use on weapons above +30. -->
 		<set name="icon" val="icon.scroll_of_enchant_weapon_i06" />
 		<set name="weight" val="10" />
 		<set name="is_tradable" val="false" />
@@ -506,7 +506,7 @@
 		</skills>
 	</item>
 	<item id="22628" name="Scroll: Enchant Armor (R-grade)" type="EtcItem">
-		<!-- Premium user exclusive item. When enchanted, P. Def. +2 for R-grade armor and accessories. It is greatly increased starting at +4. Can be safely enchanted to +3. When enchanted to +4 or more, HP also increases according to the enchant value. -->
+		<!-- Premium user exclusive item. When enchanted. P. Def. + 2 for R-grade armor and accessories. It is greatly increased starting at + 4. Can be safely enchanted to + 3. When enchanted to + 4 or more. HP also increases according to the enchant value. Cannot use on armor or accessories above +30. -->
 		<set name="icon" val="icon.scroll_of_enchant_armor_i06" />
 		<set name="weight" val="10" />
 		<set name="is_tradable" val="false" />
@@ -806,7 +806,7 @@
 		</skills>
 	</item>
 	<item id="22647" name="Blessed Scroll: Enchant Weapon (R-grade)" type="EtcItem">
-		<!-- Only for premium users. When enchanted, increases P. Atk. by 6 for R-grade one-handed swords, one-handed blunts, one-handed staffs, daggers, spears, and other weapons. Increases P. Atk. by 7 for two-handed swords, two-handed blunts, two-handed staffs, dual daggers, dual swords, fist weapons, and crossbows. Increases P. Atk. by 12 for bow weapons. Increases M. Atk. by 5 for all weapons. P. Atk./ M. Atk increases greatly starting at +4. For blessed weapons, all stats will increase more than standard weapons. Failure to enchant does not crystallize the item but resets its enchantment level to 0. -->
+		<!-- Only for premium users. When enchanted. increases P. Atk. by 6 for R-grade one-handed swords. one-handed blunts. one-handed staffs. daggers. spears. and other weapons. Increases P. Atk. by 7 for two-handed swords. two-handed blunts. two-handed staffs. dual daggers. dualswords. fist weapons. and crossbows. Increases P. Atk. by 12 for bow weapons. Increases M. Atk. by 5 for all weapons. P. Atk./M. Atk increases greatly starting at +4. For blessed weapons. all stats will increase more than standard weapons. Failure to enchant does not crystallize the item but resets its enchantment level to 0. Cannot use on weapons above +30. -->
 		<set name="icon" val="icon.blessed_scroll_of_enchant_weapon_i06" />
 		<set name="weight" val="10" />
 		<set name="is_tradable" val="false" />
@@ -824,7 +824,7 @@
 		</skills>
 	</item>
 	<item id="22648" name="Blessed Scroll: Enchant Armor (R-grade)" type="EtcItem">
-		<!-- Premium user exclusive item. When enchanted, P. Def. +2 for R-grade armor and accessories. It is greatly increased starting at +4. Can be safely enchanted to +3. When enchanted to +4 or more, HP also increases according to the enchant value. If enchanting fails, the item will not be crystallized, but the enchant value will be reset to 0. -->
+		<!-- Premium user exclusive item. When enchanted. P. Def. + 2 for R-grade armor and accessories. It is greatly increased starting at + 4. Can be safely enchanted to + 3. When enchanted to + 4 or more. HP also increases according to the enchant value. If enchanting fails. the item will not be crystallized. but the enchant value will be reset to 0. Cannot use on armor or accessories above +30. -->
 		<set name="icon" val="icon.blessed_scroll_of_enchant_armor_i06" />
 		<set name="weight" val="10" />
 		<set name="is_tradable" val="false" />
@@ -1316,7 +1316,7 @@
 		</skills>
 	</item>
 	<item id="22667" name="Emerald Weapon Appearance Stone: Dagger" type="EtcItem">
-		<!-- Changes the appearance of a dagger to that of an Emerald weapon. -->
+		<!-- Dimensional item. Changes the appearance of a dagger to that of an Emerald weapon. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_dagger" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1352,7 +1352,7 @@
 		</skills>
 	</item>
 	<item id="22669" name="Emerald Weapon Appearance Stone: Fist Weapon" type="EtcItem">
-		<!-- Changes the appearance of a fist weapon to that of an Emerald weapon. -->
+		<!-- Dimensional item. Changes the appearance of a fist weapon to that of an Emerald weapon. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_dualfist" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1370,7 +1370,7 @@
 		</skills>
 	</item>
 	<item id="22670" name="Emerald Weapon Appearance Stone: Spear" type="EtcItem">
-		<!-- Changes the appearance of a spear to that of an Emerald weapon. -->
+		<!-- Dimensional item. Changes the appearance of a spear to that of an Emerald weapon. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_pole" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1388,7 +1388,7 @@
 		</skills>
 	</item>
 	<item id="22671" name="Emerald Weapon Appearance Stone: Bow" type="EtcItem">
-		<!-- Changes the appearance of a bow to that of an Emerald weapon. -->
+		<!-- Dimensional item. Changes the appearance of a bow to that of an Emerald weapon. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_bow" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1406,7 +1406,7 @@
 		</skills>
 	</item>
 	<item id="22672" name="Emerald Weapon Appearance Stone: Crossbow" type="EtcItem">
-		<!-- Changes the appearance of a crossbow to that of an Emerald weapon. -->
+		<!-- Dimensional item. Changes the appearance of a crossbow to that of an Emerald weapon. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_twohand_crossbow" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1532,7 +1532,7 @@
 		</skills>
 	</item>
 	<item id="22679" name="Emerald Weapon Appearance Stone: Dual Blunt Weapon" type="EtcItem">
-		<!-- Changes the appearance of a dual blunt to that of an Emerald weapon. -->
+		<!-- Dimensional item. Changes the appearance of a dual blunt to that of an Emerald weapon. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_dualblunt" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1550,7 +1550,7 @@
 		</skills>
 	</item>
 	<item id="22680" name="Emerald Weapon Appearance Stone: Shield" type="EtcItem">
-		<!-- Changes the appearance of a shield to that of an Emerald weapon. -->
+		<!-- Dimensional item. Changes the appearance of a shield to that of an Emerald weapon. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_shield" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1568,7 +1568,7 @@
 		</skills>
 	</item>
 	<item id="22681" name="Emerald Weapon Appearance Stone: Sigil" type="EtcItem">
-		<!-- Changes the appearance of a sigil to that of an Emerald weapon. -->
+		<!-- Dimensional item. Changes the appearance of a sigil to that of an Emerald weapon. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_sigil" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1586,7 +1586,7 @@
 		</skills>
 	</item>
 	<item id="22682" name="Armor Appearance Stone (R-grade)" type="EtcItem">
-		<!-- Changes the appearance of an R-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 125000 adena. -->
+		<!-- Dimensional item. Changes the appearance of an R-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. Consumes 125,000 adena. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_am_stone_r" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1604,7 +1604,7 @@
 		</skills>
 	</item>
 	<item id="22683" name="Armor Appearance Stone (S-grade)" type="EtcItem">
-		<!-- Changes the appearance of an S-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 50000 adena. -->
+		<!-- Dimensional item. Changes the appearance of an S-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. Consumes 50,000 adena. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_am_stone_s" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1622,7 +1622,7 @@
 		</skills>
 	</item>
 	<item id="22684" name="Armor Appearance Stone (A-grade)" type="EtcItem">
-		<!-- Changes the appearance of an A-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 24000 adena. -->
+		<!-- Dimensional item. Changes the appearance of an A-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. Consumes 24,000 adena. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_am_stone_a" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1640,7 +1640,7 @@
 		</skills>
 	</item>
 	<item id="22685" name="Armor Appearance Stone (B-grade)" type="EtcItem">
-		<!-- Changes the appearance of a B-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 8000 adena. -->
+		<!-- Dimensional item. Changes the appearance of a B-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 8,000 adena. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_am_stone_b" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1658,7 +1658,7 @@
 		</skills>
 	</item>
 	<item id="22686" name="Armor Appearance Stone (C-grade)" type="EtcItem">
-		<!-- Changes the appearance of a C-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 1500 adena. -->
+		<!-- Dimensional item. Changes the appearance of a C-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 1,500 adena. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_am_stone_c" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1676,7 +1676,7 @@
 		</skills>
 	</item>
 	<item id="22687" name="Armor Appearance Stone (D-grade)" type="EtcItem">
-		<!-- Changes the appearance of a D-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 600 adena. -->
+		<!-- Dimensional item. Changes the appearance of a D-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which is destroyed after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Consumes 600 adena. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_am_stone_d" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1694,7 +1694,7 @@
 		</skills>
 	</item>
 	<item id="22688" name="Blessed Armor Appearance Stone (R-grade)" type="EtcItem">
-		<!-- Changes the appearance of an R-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. -->
+		<!-- Dimensional item. Changes the appearance of an R-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is not destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. -->
 		<set name="icon" val="BranchSys3.Icon.g_bless_shape_shifting__am_stone_r" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1712,7 +1712,7 @@
 		</skills>
 	</item>
 	<item id="22689" name="Blessed Armor Appearance Stone (S-grade)" type="EtcItem">
-		<!-- Changes the appearance of an S-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. -->
+		<!-- Dimensional item. Changes the appearance of an S-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is not destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. -->
 		<set name="icon" val="BranchSys3.Icon.g_bless_shape_shifting__am_stone_s" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1730,7 +1730,7 @@
 		</skills>
 	</item>
 	<item id="22690" name="Blessed Armor Appearance Stone (A-grade)" type="EtcItem">
-		<!-- Changes the appearance of an A-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. -->
+		<!-- Dimensional item. Changes the appearance of an A-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is not destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. -->
 		<set name="icon" val="BranchSys3.Icon.g_bless_shape_shifting__am_stone_a" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1748,7 +1748,7 @@
 		</skills>
 	</item>
 	<item id="22691" name="Blessed Armor Appearance Stone (B-grade)" type="EtcItem">
-		<!-- Changes the appearance of a B-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. -->
+		<!-- Dimensional item. Changes the appearance of a B-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is not destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. -->
 		<set name="icon" val="BranchSys3.Icon.g_bless_shape_shifting__am_stone_b" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1766,7 +1766,7 @@
 		</skills>
 	</item>
 	<item id="22692" name="Blessed Armor Appearance Stone (C-grade)" type="EtcItem">
-		<!-- Changes the appearance of a C-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. -->
+		<!-- Dimensional item. Changes the appearance of a C-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is not destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. -->
 		<set name="icon" val="BranchSys3.Icon.g_bless_shape_shifting__am_stone_c" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />
@@ -1784,7 +1784,7 @@
 		</skills>
 	</item>
 	<item id="22693" name="Blessed Armor Appearance Stone (D-grade)" type="EtcItem">
-		<!-- Changes the appearance of a D-grade armor to that of different armor of the same grade or a lower grade. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. -->
+		<!-- Dimensional item. Changes the appearance of a D-grade armor to that of a different armor of the same or lower grade. You need an appearance item which is not destroyed after the procedure. An appearance-modified item has no change in abilities. Double-click to use. -->
 		<set name="icon" val="BranchSys3.Icon.g_bless_shape_shifting__am_stone_d" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="Appearance" />

@@ -940,7 +940,7 @@ public class Formulas
 		return restorePercent;
 	}
 	
-	public static boolean calcPhysicalSkillEvasion(Creature creature, Creature target, Skill skill)
+	public static boolean calcSkillEvasion(Creature creature, Creature target, Skill skill)
 	{
 		if (Rnd.get(100) < target.getStat().getSkillEvasionTypeValue(skill.getMagicType()))
 		{

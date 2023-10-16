@@ -19,6 +19,7 @@ package ai.bosses.QueenAnt;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
 import org.l2jmobius.gameserver.model.StatSet;
+import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.GrandBoss;
@@ -45,6 +46,7 @@ public class QueenAnt extends AbstractNpcAI
 	private QueenAnt()
 	{
 		addKillId(QUEEN_ANT);
+		addSpawnId(QUEEN_ANT);
 		
 		final StatSet info = GrandBossManager.getInstance().getStatSet(QUEEN_ANT);
 		if (GrandBossManager.getInstance().getStatus(QUEEN_ANT) == DEAD)
@@ -76,20 +78,33 @@ public class QueenAnt extends AbstractNpcAI
 		}
 	}
 	
-	private void spawnBoss(GrandBoss npc)
-	{
-		GrandBossManager.getInstance().addBoss(npc);
-		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
-	}
-	
 	@Override
 	public String onAdvEvent(String event, Npc npc, Player player)
 	{
-		if ("queen_unlock".equals(event))
+		switch (event)
 		{
-			final GrandBoss queen = (GrandBoss) addSpawn(QUEEN_ANT, QUEEN_X, QUEEN_Y, QUEEN_Z, 0, false, 0);
-			GrandBossManager.getInstance().setStatus(QUEEN_ANT, ALIVE);
-			spawnBoss(queen);
+			case "queen_unlock":
+			{
+				final GrandBoss queen = (GrandBoss) addSpawn(QUEEN_ANT, QUEEN_X, QUEEN_Y, QUEEN_Z, 0, false, 0);
+				GrandBossManager.getInstance().setStatus(QUEEN_ANT, ALIVE);
+				spawnBoss(queen);
+				break;
+			}
+			case "DISTANCE_CHECK":
+			{
+				if ((npc == null) || npc.isDead())
+				{
+					cancelQuestTimers("DISTANCE_CHECK");
+				}
+				else if (npc.calculateDistance2D(npc.getSpawn()) > 6000)
+				{
+					((Attackable) npc).clearAggroList();
+					npc.teleToLocation(QUEEN_X, QUEEN_Y, QUEEN_Z);
+					npc.setCurrentHp(npc.getMaxHp());
+					npc.setCurrentMp(npc.getMaxMp());
+				}
+				break;
+			}
 		}
 		return super.onAdvEvent(event, npc, player);
 	}
@@ -109,7 +124,24 @@ public class QueenAnt extends AbstractNpcAI
 		info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 		GrandBossManager.getInstance().setStatSet(QUEEN_ANT, info);
 		
+		// Stop distance check task.
+		cancelQuestTimers("DISTANCE_CHECK");
+		
 		return super.onKill(npc, killer, isSummon);
+	}
+	
+	@Override
+	public String onSpawn(Npc npc)
+	{
+		cancelQuestTimer("DISTANCE_CHECK", npc, null);
+		startQuestTimer("DISTANCE_CHECK", 5000, npc, null, true);
+		return super.onSpawn(npc);
+	}
+	
+	private void spawnBoss(GrandBoss npc)
+	{
+		GrandBossManager.getInstance().addBoss(npc);
+		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 	}
 	
 	public static void main(String[] args)

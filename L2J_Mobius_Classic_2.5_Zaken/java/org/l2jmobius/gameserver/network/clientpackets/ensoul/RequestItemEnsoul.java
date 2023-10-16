@@ -16,8 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.ensoul;
 
-import java.util.logging.Logger;
-
 import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.EnsoulData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
@@ -25,9 +23,11 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulStone;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
+import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.AbnormalType;
 import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -39,8 +39,8 @@ import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
  */
 public class RequestItemEnsoul implements ClientPacket
 {
-	private static final Logger LOGGER = Logger.getLogger(RequestItemEnsoul.class.getName());
 	private int _itemObjectId;
+	private int _type;
 	private EnsoulItemOption[] _options;
 	
 	@Override
@@ -53,13 +53,13 @@ public class RequestItemEnsoul implements ClientPacket
 			_options = new EnsoulItemOption[options];
 			for (int i = 0; i < options; i++)
 			{
-				final int type = packet.readByte(); // 1 = normal ; 2 = mystic
+				_type = packet.readByte(); // 1 = normal ; 2 = mystic
 				final int position = packet.readByte();
 				final int soulCrystalObjectId = packet.readInt();
 				final int soulCrystalOption = packet.readInt();
-				if ((position > 0) && (position < 3) && ((type == 1) || (type == 2)))
+				if ((position > 0) && (position < 3) && ((_type == 1) || (_type == 2)))
 				{
-					_options[i] = new EnsoulItemOption(type, position, soulCrystalObjectId, soulCrystalOption);
+					_options[i] = new EnsoulItemOption(_type, position, soulCrystalObjectId, soulCrystalOption);
 				}
 			}
 		}
@@ -117,37 +117,48 @@ public class RequestItemEnsoul implements ClientPacket
 		final Item item = player.getInventory().getItemByObjectId(_itemObjectId);
 		if (item == null)
 		{
-			LOGGER.warning("Player: " + player + " attempting to ensoul item without having it!");
+			PacketLogger.warning("Player: " + player + " attempting to ensoul item without having it!");
+			return;
+		}
+		final ItemTemplate template = item.getTemplate();
+		if ((_type == 1) && (template.getEnsoulSlots() == 0))
+		{
+			PacketLogger.warning("Player: " + player + " attempting to ensoul non ensoulable item: " + item + "!");
+			return;
+		}
+		if ((_type == 2) && (template.getSpecialEnsoulSlots() == 0))
+		{
+			PacketLogger.warning("Player: " + player + " attempting to special ensoul non special ensoulable item: " + item + "!");
 			return;
 		}
 		if (!item.isEquipable())
 		{
-			LOGGER.warning("Player: " + player + " attempting to ensoul non equippable item: " + item + "!");
+			PacketLogger.warning("Player: " + player + " attempting to ensoul non equippable item: " + item + "!");
 			return;
 		}
 		if (!item.isWeapon())
 		{
-			LOGGER.warning("Player: " + player + " attempting to ensoul item that's not a weapon: " + item + "!");
+			PacketLogger.warning("Player: " + player + " attempting to ensoul item that's not a weapon: " + item + "!");
 			return;
 		}
 		if (item.isCommonItem())
 		{
-			LOGGER.warning("Player: " + player + " attempting to ensoul common item: " + item + "!");
+			PacketLogger.warning("Player: " + player + " attempting to ensoul common item: " + item + "!");
 			return;
 		}
 		if (item.isShadowItem())
 		{
-			LOGGER.warning("Player: " + player + " attempting to ensoul shadow item: " + item + "!");
+			PacketLogger.warning("Player: " + player + " attempting to ensoul shadow item: " + item + "!");
 			return;
 		}
 		if (item.isHeroItem())
 		{
-			LOGGER.warning("Player: " + player + " attempting to ensoul hero item: " + item + "!");
+			PacketLogger.warning("Player: " + player + " attempting to ensoul hero item: " + item + "!");
 			return;
 		}
 		if ((_options == null) || (_options.length == 0))
 		{
-			LOGGER.warning("Player: " + player + " attempting to ensoul item without any special ability declared!");
+			PacketLogger.warning("Player: " + player + " attempting to ensoul item without any special ability declared!");
 			return;
 		}
 		
@@ -171,14 +182,14 @@ public class RequestItemEnsoul implements ClientPacket
 			
 			if (!stone.getOptions().contains(itemOption.getSoulCrystalOption()))
 			{
-				LOGGER.warning("Player: " + player + " attempting to ensoul item option that stone doesn't contains!");
+				PacketLogger.warning("Player: " + player + " attempting to ensoul item option that stone doesn't contains!");
 				continue;
 			}
 			
 			final EnsoulOption option = EnsoulData.getInstance().getOption(itemOption.getSoulCrystalOption());
 			if (option == null)
 			{
-				LOGGER.warning("Player: " + player + " attempting to ensoul item option that doesn't exists!");
+				PacketLogger.warning("Player: " + player + " attempting to ensoul item option that doesn't exist!");
 				continue;
 			}
 			
@@ -203,13 +214,13 @@ public class RequestItemEnsoul implements ClientPacket
 			}
 			else
 			{
-				LOGGER.warning("Player: " + player + " attempting to ensoul item option with unhandled type: " + itemOption.getType() + "!");
+				PacketLogger.warning("Player: " + player + " attempting to ensoul item option with unhandled type: " + itemOption.getType() + "!");
 				continue;
 			}
 			
 			if (fee == null)
 			{
-				LOGGER.warning("Player: " + player + " attempting to ensoul item option that doesn't exists! (unknown fee)");
+				PacketLogger.warning("Player: " + player + " attempting to ensoul item option that doesn't exist! (unknown fee)");
 				continue;
 			}
 			

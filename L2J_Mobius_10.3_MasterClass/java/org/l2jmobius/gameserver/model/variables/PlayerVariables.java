@@ -49,6 +49,7 @@ public class PlayerVariables extends AbstractVariables
 	public static final String ATTENDANCE_DATE = "ATTENDANCE_DATE";
 	public static final String ATTENDANCE_INDEX = "ATTENDANCE_INDEX";
 	public static final String DAILY_MISSION_COUNT = "DAILY_MISSION_COUNT";
+	public static final String DAILY_MISSION_ONE_TIME = "DAILY_MISSION_ONE_TIME";
 	public static final String CEREMONY_OF_CHAOS_SCORE = "CEREMONY_OF_CHAOS_SCORE";
 	public static final String CEREMONY_OF_CHAOS_MARKS = "CEREMONY_OF_CHAOS_MARKS";
 	public static final String ABILITY_POINTS_MAIN_CLASS = "ABILITY_POINTS";
@@ -65,6 +66,9 @@ public class PlayerVariables extends AbstractVariables
 	public static final String CLAN_CONTRIBUTION = "CLAN_CONTRIBUTION";
 	public static final String CLAN_CONTRIBUTION_TOTAL = "CLAN_CONTRIBUTION_TOTAL";
 	public static final String CLAN_CONTRIBUTION_REWARDED = "CLAN_CONTRIBUTION_REWARDED";
+	public static final String CLAN_CONTRIBUTION_REWARDED_COUNT = "CLAN_CONTRIBUTION_REWARDED_COUNT";
+	public static final String CLAN_CONTRIBUTION_PREVIOUS = "CLAN_CONTRIBUTION_PREVIOUS";
+	public static final String CLAN_CONTRIBUTION_TOTAL_PREVIOUS = "CLAN_CONTRIBUTION_TOTAL_PREVIOUS";
 	public static final String BALTHUS_REWARD = "BALTHUS_REWARD";
 	public static final String AUTO_USE_SETTINGS = "AUTO_USE_SETTINGS";
 	public static final String AUTO_USE_SHORTCUTS = "AUTO_USE_SHORTCUTS";
@@ -90,6 +94,12 @@ public class PlayerVariables extends AbstractVariables
 	public static final String PRISON_WAIT_TIME = "PRISON_WAIT_TIME";
 	public static final String PRISON_2_POINTS = "PRISON_2_POINTS";
 	public static final String PRISON_3_POINTS = "PRISON_3_POINTS";
+	public static final String CONQUEST_NAME = "CONQUEST_NAME";
+	public static final String CONQUEST_INTRO = "CONQUEST_INTRO";
+	public static final String CONQUEST_ATTACK_POINTS = "CONQUEST_ATTACK_POINTS";
+	public static final String CONQUEST_LIFE_POINTS = "CONQUEST_LIFE_POINTS";
+	public static final String CONQUEST_PERSONAL_POINTS = "CONQUEST_PERSONAL_POINTS";
+	public static final String CONQUEST_REWARDS_RECEIVED = "CONQUEST_REWARDS_RECEIVED";
 	
 	private final int _objectId;
 	

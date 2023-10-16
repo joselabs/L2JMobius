@@ -37,8 +37,8 @@ public class HennaRemoveList extends ServerPacket
 	{
 		ServerPackets.HENNA_REMOVE_LIST.writeId(this);
 		writeInt(_player.getAdena());
-		writeInt(0);
-		writeInt(3 - _player.getHennaEmptySlots());
+		writeInt(_player.getHennaEmptySlots());
+		writeInt(Math.abs(_player.getHennaEmptySlots() - 3));
 		for (Henna henna : _player.getHennaList())
 		{
 			if (henna != null)
@@ -46,9 +46,7 @@ public class HennaRemoveList extends ServerPacket
 				writeInt(henna.getDyeId());
 				writeInt(henna.getDyeItemId());
 				writeInt(henna.getCancelCount());
-				writeInt(0);
 				writeInt(henna.getCancelFee());
-				writeInt(0);
 				writeInt(1);
 			}
 		}

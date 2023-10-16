@@ -290,8 +290,8 @@ public class UseItem implements ClientPacket
 					|| ((item.getTemplate().getType2() == ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > Config.ENCHANT_JEWELRY_MAX)) //
 					|| ((item.getTemplate().getType2() != ItemTemplate.TYPE2_WEAPON) && (item.getTemplate().getType2() != ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > Config.ENCHANT_ARMOR_MAX))))
 			{
+				PacketLogger.info("Over-enchanted (+" + item.getEnchantLevel() + ") " + item + " has been removed from " + player);
 				player.getInventory().destroyItem("Over-enchant protection", item, player, null);
-				PacketLogger.info("Over-enchanted " + item + " has been removed from " + player);
 				if (Config.OVER_ENCHANT_PUNISHMENT != IllegalActionPunishmentType.NONE)
 				{
 					player.sendMessage("[Server]: You have over-enchanted items!");
@@ -574,7 +574,7 @@ public class UseItem implements ClientPacket
 				final InventoryUpdate iu = new InventoryUpdate();
 				iu.addItems(items);
 				player.sendPacket(iu);
-				player.sendPacket(new UserInfo(player));
+				player.updateUserInfo();
 			}
 			else // Because of complicated jewels problem I am forced to resend the item list. :(
 			{

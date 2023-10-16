@@ -59,7 +59,6 @@ import org.l2jmobius.gameserver.network.serverpackets.MagicSkillLaunched;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Util;
 
 /**
@@ -578,7 +577,10 @@ public class VillageMaster extends Folk
 						player.setActiveClass(player.getTotalSubClasses());
 						
 						html.setFile(player, "data/html/villagemaster/SubClass_AddOk.htm");
-						player.sendPacket(SystemMessageId.THE_NEW_SUBCLASS_HAS_BEEN_ADDED); // Subclass added.
+						
+						final SystemMessage msg = new SystemMessage(SystemMessageId.THE_NEW_SUBCLASS_HAS_BEEN_ADDED);
+						msg.addClassId(player.getClassId().getId());
+						player.sendPacket(msg);
 					}
 					else
 					{
@@ -690,7 +692,10 @@ public class VillageMaster extends Folk
 						
 						html.setFile(player, "data/html/villagemaster/SubClass_ModifyOk.htm");
 						html.replace("%name%", ClassListData.getInstance().getClass(paramTwo).getClientCode());
-						player.sendPacket(SystemMessageId.THE_NEW_SUBCLASS_HAS_BEEN_ADDED); // Subclass added.
+						
+						final SystemMessage msg = new SystemMessage(SystemMessageId.THE_NEW_SUBCLASS_HAS_BEEN_ADDED);
+						msg.addClassId(player.getClassId().getId());
+						player.sendPacket(msg);
 					}
 					else
 					{
@@ -1175,7 +1180,7 @@ public class VillageMaster extends Folk
 			if (leaderPlayer != null)
 			{
 				leaderPlayer.setPledgeClass(ClanMember.calculatePledgeClass(leaderPlayer));
-				leaderPlayer.sendPacket(new UserInfo(leaderPlayer));
+				leaderPlayer.updateUserInfo();
 			}
 		}
 	}
@@ -1260,7 +1265,7 @@ public class VillageMaster extends Folk
 		if (leaderPlayer != null)
 		{
 			leaderPlayer.setPledgeClass(ClanMember.calculatePledgeClass(leaderPlayer));
-			leaderPlayer.sendPacket(new UserInfo(leaderPlayer));
+			leaderPlayer.updateUserInfo();
 		}
 		
 		clan.broadcastClanStatus();

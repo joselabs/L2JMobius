@@ -109,7 +109,12 @@ public class LoginController
 		{
 			return;
 		}
-		_loginServerClients.remove(account);
+		
+		final LoginClient removed = _loginServerClients.remove(account);
+		if (removed != null)
+		{
+			removed.disconnect();
+		}
 	}
 	
 	public LoginClient getAuthedClient(String account)

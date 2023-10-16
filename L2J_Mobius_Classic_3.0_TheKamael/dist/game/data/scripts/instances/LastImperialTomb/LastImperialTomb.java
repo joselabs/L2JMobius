@@ -231,7 +231,7 @@ public class LastImperialTomb extends AbstractInstance
 				frintezza.disableAllSkills();
 				world.setParameter("frintezza", frintezza);
 				
-				final List<Npc> demons = new ArrayList<>();
+				final List<Monster> demons = new ArrayList<>();
 				for (int[] element : PORTRAIT_SPAWNS)
 				{
 					final Monster demon = (Monster) addSpawn(element[0] + 2, element[5], element[6], element[7], element[8], false, 0, false, world.getId());
@@ -281,7 +281,7 @@ public class LastImperialTomb extends AbstractInstance
 			case "FRINTEZZA_INTRO_7":
 			{
 				final Instance world = player.getInstanceWorld();
-				final List<Npc> demons = world.getParameters().getList("demons", Npc.class);
+				final List<Monster> demons = world.getParameters().getList("demons", Monster.class);
 				broadcastPacket(world, new SocialAction(demons.get(1).getObjectId(), 1));
 				broadcastPacket(world, new SocialAction(demons.get(2).getObjectId(), 1));
 				startQuestTimer("FRINTEZZA_INTRO_8", 400, null, player, false);
@@ -290,7 +290,7 @@ public class LastImperialTomb extends AbstractInstance
 			case "FRINTEZZA_INTRO_8":
 			{
 				final Instance world = player.getInstanceWorld();
-				final List<Npc> demons = world.getParameters().getList("demons", Npc.class);
+				final List<Monster> demons = world.getParameters().getList("demons", Monster.class);
 				final Npc portraitDummy1 = world.getParameters().getObject("portraitDummy1", Npc.class);
 				final Npc portraitDummy3 = world.getParameters().getObject("portraitDummy3", Npc.class);
 				broadcastPacket(world, new SocialAction(demons.get(0).getObjectId(), 1));
@@ -422,7 +422,7 @@ public class LastImperialTomb extends AbstractInstance
 				final Instance world = player.getInstanceWorld();
 				final Npc frintezza = world.getParameters().getObject("frintezza", Npc.class);
 				final Npc activeScarlet = world.getParameters().getObject("activeScarlet", Npc.class);
-				final List<Npc> demons = world.getParameters().getList("demons", Npc.class);
+				final List<Monster> demons = world.getParameters().getList("demons", Monster.class);
 				for (Npc demon : demons)
 				{
 					demon.setImmobilized(false);
@@ -449,14 +449,14 @@ public class LastImperialTomb extends AbstractInstance
 					final Map<Npc, Integer> portraits = world.getParameters().getMap("portraits", Npc.class, Integer.class);
 					if ((portraits != null) && !portraits.isEmpty())
 					{
-						final List<Npc> demons = world.getParameters().getList("demons", Npc.class);
+						final List<Monster> demons = world.getParameters().getList("demons", Monster.class);
 						for (int i : portraits.values())
 						{
 							if (demons.size() > MAX_DEMONS)
 							{
 								break;
 							}
-							final Npc demon = addSpawn(PORTRAIT_SPAWNS[i][0] + 2, PORTRAIT_SPAWNS[i][5], PORTRAIT_SPAWNS[i][6], PORTRAIT_SPAWNS[i][7], PORTRAIT_SPAWNS[i][8], false, 0, false, world.getId());
+							final Monster demon = (Monster) addSpawn(PORTRAIT_SPAWNS[i][0] + 2, PORTRAIT_SPAWNS[i][5], PORTRAIT_SPAWNS[i][6], PORTRAIT_SPAWNS[i][7], PORTRAIT_SPAWNS[i][8], false, 0, false, world.getId());
 							demons.add(demon);
 						}
 						world.setParameter("demons", demons);

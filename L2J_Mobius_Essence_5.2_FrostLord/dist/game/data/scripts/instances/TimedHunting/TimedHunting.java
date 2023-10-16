@@ -24,6 +24,7 @@ import java.util.concurrent.ScheduledFuture;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.ai.AttackableAI;
+import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
 import org.l2jmobius.gameserver.enums.ShortcutType;
@@ -40,8 +41,6 @@ import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExSendUIEvent;
-import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
-import org.l2jmobius.gameserver.network.serverpackets.ShortCutRegister;
 import org.l2jmobius.gameserver.network.serverpackets.huntingzones.TimedHuntingZoneExit;
 
 import instances.AbstractInstance;
@@ -213,51 +212,38 @@ public class TimedHunting extends AbstractInstance
 		// Replace normal skills.
 		for (Entry<Integer, Integer> entry : SKILL_REPLACEMENTS.entrySet())
 		{
-			final int normalSkillId = entry.getKey().intValue();
-			player.addReplacedSkill(normalSkillId);
+			final Integer normalSkillId = entry.getKey();
+			final Integer transcendentSkillId = entry.getValue();
+			player.addReplacedSkill(normalSkillId, transcendentSkillId);
 			final Skill knownSkill = player.getKnownSkill(normalSkillId);
 			if (knownSkill == null)
 			{
 				continue;
 			}
 			
-			final int transcendentSkillId = entry.getValue().intValue();
 			player.addSkill(SkillData.getInstance().getSkill(transcendentSkillId, knownSkill.getLevel(), knownSkill.getSubLevel()), false);
 			for (Shortcut shortcut : player.getAllShortCuts())
 			{
-				if ((shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == normalSkillId))
+				if (shortcut.isAutoUse() && (shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == normalSkillId))
 				{
-					final Shortcut newShortcut = new Shortcut(shortcut.getSlot(), shortcut.getPage(), ShortcutType.SKILL, transcendentSkillId, shortcut.getLevel(), shortcut.getSubLevel(), shortcut.getCharacterType());
-					if (shortcut.isAutoUse())
+					if (knownSkill.isBad())
 					{
-						newShortcut.setAutoUse(true);
-						if (knownSkill.isBad())
+						if (player.getAutoUseSettings().getAutoSkills().contains(normalSkillId))
 						{
-							if (player.getAutoUseSettings().getAutoSkills().contains(normalSkillId))
-							{
-								player.getAutoUseSettings().getAutoSkills().add(transcendentSkillId);
-								player.getAutoUseSettings().getAutoSkills().remove(Integer.valueOf(normalSkillId));
-							}
-						}
-						else if (player.getAutoUseSettings().getAutoBuffs().contains(normalSkillId))
-						{
-							player.getAutoUseSettings().getAutoBuffs().add(transcendentSkillId);
-							player.getAutoUseSettings().getAutoBuffs().remove(normalSkillId);
+							player.getAutoUseSettings().getAutoSkills().add(transcendentSkillId);
+							player.getAutoUseSettings().getAutoSkills().remove(normalSkillId);
 						}
 					}
-					player.deleteShortCut(shortcut.getSlot(), shortcut.getPage());
-					player.registerShortCut(newShortcut);
-					player.sendPacket(new ShortCutRegister(newShortcut));
+					else if (player.getAutoUseSettings().getAutoBuffs().contains(normalSkillId))
+					{
+						player.getAutoUseSettings().getAutoBuffs().add(transcendentSkillId);
+						player.getAutoUseSettings().getAutoBuffs().remove(normalSkillId);
+					}
 				}
 			}
 			player.removeSkill(knownSkill, false);
 		}
 		player.sendSkillList();
-		ThreadPool.schedule(() ->
-		{
-			player.sendPacket(new ShortCutInit(player));
-			player.restoreAutoShortcutVisual();
-		}, 1100);
 	}
 	
 	@Override
@@ -276,52 +262,38 @@ public class TimedHunting extends AbstractInstance
 		// Restore normal skills.
 		for (Entry<Integer, Integer> entry : SKILL_REPLACEMENTS.entrySet())
 		{
-			final int transcendentSkillId = entry.getValue().intValue();
+			final Integer transcendentSkillId = entry.getValue();
 			final Skill knownSkill = player.getKnownSkill(transcendentSkillId);
 			if (knownSkill == null)
 			{
 				continue;
 			}
 			
-			final int normalSkillId = entry.getKey().intValue();
+			final Integer normalSkillId = entry.getKey();
 			player.removeReplacedSkill(normalSkillId);
 			player.addSkill(SkillData.getInstance().getSkill(normalSkillId, knownSkill.getLevel(), knownSkill.getSubLevel()), false);
 			for (Shortcut shortcut : player.getAllShortCuts())
 			{
-				if ((shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == transcendentSkillId))
+				if (shortcut.isAutoUse() && (shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == transcendentSkillId))
 				{
-					final Shortcut newShortcut = new Shortcut(shortcut.getSlot(), shortcut.getPage(), ShortcutType.SKILL, normalSkillId, shortcut.getLevel(), shortcut.getSubLevel(), shortcut.getCharacterType());
-					if (shortcut.isAutoUse())
+					if (knownSkill.isBad())
 					{
-						newShortcut.setAutoUse(true);
-						if (knownSkill.isBad())
+						if (player.getAutoUseSettings().getAutoSkills().contains(transcendentSkillId))
 						{
-							if (player.getAutoUseSettings().getAutoSkills().contains(transcendentSkillId))
-							{
-								player.getAutoUseSettings().getAutoSkills().add(normalSkillId);
-								player.getAutoUseSettings().getAutoSkills().remove(Integer.valueOf(transcendentSkillId));
-							}
-						}
-						else if (player.getAutoUseSettings().getAutoBuffs().contains(transcendentSkillId))
-						{
-							player.getAutoUseSettings().getAutoBuffs().add(normalSkillId);
-							player.getAutoUseSettings().getAutoBuffs().remove(transcendentSkillId);
+							player.getAutoUseSettings().getAutoSkills().add(normalSkillId);
+							player.getAutoUseSettings().getAutoSkills().remove(transcendentSkillId);
 						}
 					}
-					player.deleteShortCut(shortcut.getSlot(), shortcut.getPage());
-					player.registerShortCut(newShortcut);
-					player.sendPacket(new ShortCutRegister(newShortcut));
+					else if (player.getAutoUseSettings().getAutoBuffs().contains(transcendentSkillId))
+					{
+						player.getAutoUseSettings().getAutoBuffs().add(normalSkillId);
+						player.getAutoUseSettings().getAutoBuffs().remove(transcendentSkillId);
+					}
 				}
 			}
-			
 			player.removeSkill(knownSkill, false);
 		}
 		player.sendSkillList();
-		ThreadPool.schedule(() ->
-		{
-			player.sendPacket(new ShortCutInit(player));
-			player.restoreAutoShortcutVisual();
-		}, 1100);
 	}
 	
 	private void startEvent(Player player)
@@ -352,6 +324,7 @@ public class TimedHunting extends AbstractInstance
 							{
 								((AttackableAI) npc.getAI()).setGlobalAggro(0);
 								((Attackable) npc).addDamageHate(player, 0, 9999);
+								npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK);
 							}
 						}
 					}

@@ -82,12 +82,6 @@ public class LevelDailyMissionHandler extends AbstractDailyMissionHandler
 	}
 	
 	@Override
-	public void reset()
-	{
-		// Level rewards doesn't reset daily
-	}
-	
-	@Override
 	public int getProgress(Player player)
 	{
 		return _level;

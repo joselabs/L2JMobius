@@ -18,9 +18,9 @@ package org.l2jmobius.gameserver.model.homunculus;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.instancemanager.HomunculusManager;
@@ -39,7 +39,7 @@ public class HomunculusList
 	private int _critRate;
 	
 	private final Player _owner;
-	private final Map<Integer, SkillHolder> _skills = new HashMap<>();
+	private final Map<Integer, SkillHolder> _skills = new ConcurrentHashMap<>();
 	
 	public HomunculusList(Player owner)
 	{

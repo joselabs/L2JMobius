@@ -301,7 +301,7 @@ public class Lindvior extends AbstractNpcAI
 			if (_status == 0)
 			{
 				_zoneLair.broadcastPacket(new OnEventTrigger(RED_ZONE_EFFECT, true));
-				_zoneLair.getPlayersInside().stream().forEach(p ->
+				_zoneLair.getPlayersInside().forEach(p ->
 				{
 					startQuestTimer("stop_red_zone", 10000, _lindvior, p);
 					p.broadcastPacket(new ExShowScreenMessage(NpcStringId.A_FEARSOME_POWER_EMANATES_FROM_LINDVIOR, ExShowScreenMessage.TOP_CENTER, 2000, true));
@@ -319,7 +319,7 @@ public class Lindvior extends AbstractNpcAI
 			{
 				addSpawn(LINDVIOR_SERVITOR[1], loc, true);
 			}
-			_zoneLair.getPlayersInside().stream().forEach(p -> p.broadcastPacket(new ExShowScreenMessage(NpcStringId.A_GIGANTIC_WHIRLWIND_HAS_APPEARED, ExShowScreenMessage.TOP_CENTER, 2000, true)));
+			_zoneLair.getPlayersInside().forEach(p -> p.broadcastPacket(new ExShowScreenMessage(NpcStringId.A_GIGANTIC_WHIRLWIND_HAS_APPEARED, ExShowScreenMessage.TOP_CENTER, 2000, true)));
 			_status = 2;
 		}
 		else if ((percent <= 60) && (_lindvior != null))
@@ -589,7 +589,7 @@ public class Lindvior extends AbstractNpcAI
 				{
 					player.sendPacket(new OnEventTrigger(FIRST_STAGE_EVENT_TRIGGER, false));
 					cancelQuestTimers("NPC_SHOUT");
-					_guardSpawn.stream().forEach(guard -> guard.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.ALL_4_GENERATORS_MUST_BE_ACTIVATED));
+					_guardSpawn.forEach(guard -> guard.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.ALL_4_GENERATORS_MUST_BE_ACTIVATED));
 					_announceProtect = ThreadPool.scheduleAtFixedRate(() -> _zoneLair.getPlayersInside().forEach(p -> player.sendPacket(new ExShowScreenMessage(NpcStringId.PROTECT_THE_GENERATOR, ExShowScreenMessage.TOP_CENTER, 7000, true))), 10000, 18000);
 					_zoneLair.broadcastPacket(new SpecialCamera(_dummyLindvior, 3300, 200, 20, 11000, 10500, 0, 8, 1, 0, 0));
 					_dummyLindvior.setInvisible(true);
@@ -693,7 +693,7 @@ public class Lindvior extends AbstractNpcAI
 					_activeMask |= 1 << index;
 					npc.setDisplayEffect(2);
 					sendEventTrigger(true, GENERATOR_TRIGERS[index]);
-					_zoneLair.getPlayersInside().stream().forEach(p -> p.broadcastPacket(new Earthquake(p.getX(), p.getY(), p.getZ(), 20, 10)));
+					_zoneLair.getPlayersInside().forEach(p -> p.broadcastPacket(new Earthquake(p.getX(), p.getY(), p.getZ(), 20, 10)));
 					if (hasFlag(_activeMask, 0xf))
 					{
 						nextStage(2);
@@ -704,7 +704,7 @@ public class Lindvior extends AbstractNpcAI
 			case "show_shield_animation": // zone broadcast shield event triger
 			{
 				_zoneLair.getPlayersInside().forEach(p -> p.sendPacket(new OnEventTrigger(SECOND_STAGE_EVENT_TRIGGER, true)));
-				_guardSpawn.stream().forEach(guard -> guard.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.THE_GENERATOR_IS_CONNECTED_TO_THE_CANNON));
+				_guardSpawn.forEach(guard -> guard.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.THE_GENERATOR_IS_CONNECTED_TO_THE_CANNON));
 				break;
 			}
 			case "show_movie": // zone broadcast Lindvior scene movie
@@ -784,7 +784,7 @@ public class Lindvior extends AbstractNpcAI
 							p.setTarget(generators);
 							p.doCast(RECHARGE.getSkill());
 						});
-						_guardSpawn.stream().forEach(guard ->
+						_guardSpawn.forEach(guard ->
 						{
 							guard.setTarget(generators);
 							guard.doCast(RECHARGE.getSkill());
@@ -960,7 +960,7 @@ public class Lindvior extends AbstractNpcAI
 	@Id(LINDVIOR_GROUND)
 	public void onCreatureDamageReceived(OnCreatureDamageReceived event)
 	{
-		_zoneLair.getPlayersInside().stream().forEach(p ->
+		_zoneLair.getPlayersInside().forEach(p ->
 		{
 			switch (_status)
 			{

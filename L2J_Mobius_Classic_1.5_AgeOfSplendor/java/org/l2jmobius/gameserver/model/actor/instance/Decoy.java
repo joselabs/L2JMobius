@@ -17,6 +17,7 @@
 package org.l2jmobius.gameserver.model.actor.instance;
 
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Level;
 
 import org.l2jmobius.commons.threads.ThreadPool;
@@ -28,6 +29,7 @@ import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
+import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.item.Weapon;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -41,6 +43,7 @@ public class Decoy extends Creature
 	private final Player _owner;
 	private Future<?> _decoyLifeTask;
 	private Future<?> _hateSpam;
+	private ScheduledFuture<?> _skillTask;
 	
 	public Decoy(NpcTemplate template, Player owner, int totalLifeTime)
 	{
@@ -51,15 +54,42 @@ public class Decoy extends Creature
 	{
 		super(template);
 		setInstanceType(InstanceType.Decoy);
+		
 		_owner = owner;
 		setXYZInvisible(owner.getX(), owner.getY(), owner.getZ());
 		setInvul(false);
+		
 		_decoyLifeTask = ThreadPool.schedule(this::unSummon, totalLifeTime);
+		
 		if (aggressive)
 		{
 			final int hateSpamSkillId = 5272;
 			final int skilllevel = Math.min(getTemplate().getDisplayId() - 13070, SkillData.getInstance().getMaxLevel(hateSpamSkillId));
 			_hateSpam = ThreadPool.scheduleAtFixedRate(new HateSpam(this, SkillData.getInstance().getSkill(hateSpamSkillId, skilllevel)), 2000, 5000);
+		}
+		
+		final SkillHolder skill = template.getParameters().getSkillHolder("decoy_skill");
+		if (skill != null)
+		{
+			// Trigger cast instantly (?)...
+			ThreadPool.schedule(() ->
+			{
+				doCast(skill.getSkill()); // (?)
+				
+				final long castTime = (long) (template.getParameters().getFloat("cast_time", 5) * 1000) - 100;
+				final long skillDelay = (long) (template.getParameters().getFloat("skill_delay", 2) * 1000);
+				_skillTask = ThreadPool.scheduleAtFixedRate(() ->
+				{
+					if ((isDead() || !isSpawned()) && (_skillTask != null))
+					{
+						_skillTask.cancel(false);
+						_skillTask = null;
+						return;
+					}
+					
+					doCast(skill.getSkill());
+				}, castTime, skillDelay);
+			}, 100); // ...presumably after spawnMe is called by SummonNpc effect.
 		}
 	}
 	
@@ -108,6 +138,12 @@ public class Decoy extends Creature
 	
 	public synchronized void unSummon()
 	{
+		if (_skillTask != null)
+		{
+			_skillTask.cancel(false);
+			_skillTask = null;
+		}
+		
 		if (_hateSpam != null)
 		{
 			_hateSpam.cancel(true);

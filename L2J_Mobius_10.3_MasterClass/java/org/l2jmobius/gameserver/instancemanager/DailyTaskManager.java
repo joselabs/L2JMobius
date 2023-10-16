@@ -118,7 +118,8 @@ public class DailyTaskManager
 		GlobalVariablesManager.getInstance().set(GlobalVariablesManager.DAILY_TASK_RESET, System.currentTimeMillis());
 		
 		// Wednesday weekly tasks.
-		if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY)
+		final Calendar calendar = Calendar.getInstance();
+		if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY)
 		{
 			clanLeaderApply();
 			resetClanContribution();
@@ -133,6 +134,11 @@ public class DailyTaskManager
 			resetVitalityDaily();
 		}
 		
+		if (Config.ENABLE_HUNT_PASS && (calendar.get(Calendar.DAY_OF_MONTH) == Config.HUNT_PASS_PERIOD))
+		{
+			resetHuntPass();
+		}
+		
 		// Daily tasks.
 		resetAttendanceRewards();
 		resetDailySkills();
@@ -144,6 +150,7 @@ public class DailyTaskManager
 		resetTimedHuntingZones();
 		resetTrainingCamp();
 		resetWorldChatPoints();
+		resetConquestPlayerPoints();
 	}
 	
 	private void onSave()
@@ -256,7 +263,7 @@ public class DailyTaskManager
 		{
 			LOGGER.log(Level.WARNING, "Error while updating vitality", e);
 		}
-		LOGGER.info("Vitality resetted");
+		LOGGER.info("Vitality has been reset.");
 	}
 	
 	private void resetDailySkills()
@@ -372,7 +379,7 @@ public class DailyTaskManager
 			player.getVariables().storeMe();
 		}
 		
-		LOGGER.info("Daily world chat points has been resetted.");
+		LOGGER.info("Daily world chat points have been reset.");
 	}
 	
 	private void resetRecommends()
@@ -428,8 +435,48 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 			
-			LOGGER.info("Training Camp daily time has been resetted.");
+			LOGGER.info("Training Camp daily time has been reset.");
 		}
+	}
+	
+	private void resetConquestPlayerPoints()
+	{
+		
+		// Update data for offline players.
+		// Attack Points
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement("UPDATE character_variables SET val = ? WHERE var = ?"))
+		{
+			ps.setInt(1, Config.CONQUEST_ATTACK_POINTS);
+			ps.setString(2, PlayerVariables.CONQUEST_ATTACK_POINTS);
+			ps.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, "Could not reset Conquest Attack Points: ", e);
+		}
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement("UPDATE character_variables SET val = ? WHERE var = ?"))
+		{
+			ps.setInt(1, Config.CONQUEST_LIFE_POINTS);
+			ps.setString(2, PlayerVariables.CONQUEST_LIFE_POINTS);
+			ps.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, "Could not reset Conquest Life Points: ", e);
+		}
+		
+		// Update data for online players.
+		for (Player player : World.getInstance().getPlayers())
+		{
+			player.getVariables().set(PlayerVariables.CONQUEST_ATTACK_POINTS, Config.CONQUEST_ATTACK_POINTS);
+			player.getVariables().set(PlayerVariables.CONQUEST_LIFE_POINTS, Config.CONQUEST_LIFE_POINTS);
+			player.getVariables().storeMe();
+		}
+		
+		LOGGER.info("Conquest Player Points have been reset.");
+		
 	}
 	
 	private void resetDailyMissionRewards()
@@ -453,42 +500,32 @@ public class DailyTaskManager
 			player.getVariables().storeMe();
 		}
 		
-		LOGGER.info("Clan Mission Rewards has been resetted.");
+		LOGGER.info("Clan Mission Rewards have been reset.");
 	}
 	
 	private void resetClanContribution()
 	{
-		// Update data for offline players.
-		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("DELETE FROM character_variables WHERE var=?"))
-		{
-			ps.setString(1, PlayerVariables.CLAN_CONTRIBUTION);
-			ps.executeUpdate();
-		}
-		catch (Exception e)
-		{
-			LOGGER.log(Level.SEVERE, "Could not reset Clan contributions: ", e);
-		}
-		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("DELETE FROM character_variables WHERE var=?"))
-		{
-			ps.setString(1, PlayerVariables.CLAN_CONTRIBUTION_REWARDED);
-			ps.executeUpdate();
-		}
-		catch (Exception e)
-		{
-			LOGGER.log(Level.SEVERE, "Could not reset Clan contributions: ", e);
-		}
-		
 		// Update data for online players.
 		for (Player player : World.getInstance().getPlayers())
 		{
+			player.getVariables().set(PlayerVariables.CLAN_CONTRIBUTION_PREVIOUS, player.getClanContribution());
+			player.getVariables().set(PlayerVariables.CLAN_CONTRIBUTION_TOTAL_PREVIOUS, player.getClanContributionTotal());
 			player.getVariables().remove(PlayerVariables.CLAN_CONTRIBUTION);
-			player.getVariables().remove(PlayerVariables.CLAN_CONTRIBUTION_REWARDED);
 			player.getVariables().storeMe();
 		}
 		
-		LOGGER.info("Clan contributions has been resetted.");
+		// Update data for offline players.
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement("UPDATE character_variables SET var = 'CLAN_CONTRIBUTION_PREVIOUS' WHERE `var` = 'CLAN_CONTRIBUTION'"))
+		{
+			ps.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, "Could not reset Clan contributions: ", e);
+		}
+		
+		LOGGER.info("Clan contributions have been reset.");
 	}
 	
 	private void resetThroneOfHeroesWeekly()
@@ -528,7 +565,7 @@ public class DailyTaskManager
 			clan.getVariables().storeMe();
 		}
 		
-		LOGGER.info("Throne of Heroes Entry has been resetted.");
+		LOGGER.info("Throne of Heroes Entry has been reset.");
 	}
 	
 	private void resetTimedHuntingZones()
@@ -564,7 +601,7 @@ public class DailyTaskManager
 			}
 		}
 		
-		LOGGER.info("Special Hunting Zones has been resetted.");
+		LOGGER.info("Special Hunting Zones have been reset.");
 	}
 	
 	private void resetTimedHuntingZonesWeekly()
@@ -600,7 +637,7 @@ public class DailyTaskManager
 			}
 		}
 		
-		LOGGER.info("Weekly Special Hunting Zones has been resetted.");
+		LOGGER.info("Weekly Special Hunting Zones have been reset.");
 	}
 	
 	private void resetHomunculusResetPoints()
@@ -633,7 +670,7 @@ public class DailyTaskManager
 			player.getVariables().storeMe();
 		}
 		
-		LOGGER.info("Homunculus Reset Points has been resetted.");
+		LOGGER.info("Homunculus Reset Points have been reset.");
 	}
 	
 	private void resetAttendanceRewards()
@@ -661,7 +698,7 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 			
-			LOGGER.info("Account shared Attendance Rewards has been resetted.");
+			LOGGER.info("Account shared Attendance Rewards have been reset.");
 		}
 		else
 		{
@@ -686,7 +723,7 @@ public class DailyTaskManager
 				player.getVariables().storeMe();
 			}
 			
-			LOGGER.info("Attendance Rewards has been resetted.");
+			LOGGER.info("Attendance Rewards have been reset.");
 		}
 	}
 	
@@ -713,7 +750,7 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 		}
-		LOGGER.info("PrimeShopData has been resetted.");
+		LOGGER.info("PrimeShopData has been reset.");
 	}
 	
 	private void resetDailyLimitShopData()
@@ -739,7 +776,27 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 		}
-		LOGGER.info("LimitShopData has been resetted.");
+		LOGGER.info("LimitShopData has been reset.");
+	}
+	
+	private void resetHuntPass()
+	{
+		// Update data for offline players.
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement statement = con.prepareStatement("DELETE FROM huntpass"))
+		{
+			statement.execute();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not delete entries from hunt pass: " + e);
+		}
+		
+		// Update data for online players.
+		for (Player player : World.getInstance().getPlayers())
+		{
+			player.getHuntPass().restoreHuntPass();
+		}
 	}
 	
 	public void resetPrivateStoreHistory()

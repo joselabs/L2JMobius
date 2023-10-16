@@ -1,5 +1,5 @@
 /*
- * This file is part of the L2J Mobius project.
+ * This file is part of the L2J Mobius project. 
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,6 +33,7 @@ import org.l2jmobius.gameserver.model.stats.finalizers.MEvasionRateFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.MaxCpFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.MaxHpFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.MaxMpFinalizer;
+import org.l2jmobius.gameserver.model.stats.finalizers.MpVampiricChanceFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.PAccuracyFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.PAttackFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.PAttackSpeedFinalizer;
@@ -231,6 +232,7 @@ public enum Stat
 	MANA_SHIELD_PERCENT("manaShield"),
 	TRANSFER_DAMAGE_TO_PLAYER("transDamToPlayer"),
 	ABSORB_MANA_DAMAGE_PERCENT("absorbDamMana"),
+	ABSORB_MANA_DAMAGE_CHANCE("absorbDamManaChance", new MpVampiricChanceFinalizer()),
 	
 	WEIGHT_LIMIT("weightLimit"),
 	WEIGHT_PENALTY("weightPenalty"),
@@ -305,8 +307,8 @@ public enum Stat
 	private final IStatFunction _valueFinalizer;
 	private final DoubleBinaryOperator _addFunction;
 	private final DoubleBinaryOperator _mulFunction;
-	private final double _resetAddValue;
-	private final double _resetMulValue;
+	private final Double _resetAddValue;
+	private final Double _resetMulValue;
 	
 	public String getValue()
 	{
@@ -375,12 +377,12 @@ public enum Stat
 		return _mulFunction.applyAsDouble(oldValue, value);
 	}
 	
-	public double getResetAddValue()
+	public Double getResetAddValue()
 	{
 		return _resetAddValue;
 	}
 	
-	public double getResetMulValue()
+	public Double getResetMulValue()
 	{
 		return _resetMulValue;
 	}

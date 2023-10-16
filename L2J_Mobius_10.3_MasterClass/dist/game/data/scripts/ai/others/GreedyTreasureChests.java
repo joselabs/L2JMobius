@@ -16,13 +16,9 @@
  */
 package ai.others;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 
 import ai.AbstractNpcAI;
 
@@ -87,53 +83,7 @@ public class GreedyTreasureChests extends AbstractNpcAI
 		24641, 24642, 24643, 24644,
 	};
 	//@formatter:on
-	// Items
-	private static final List<ItemHolder> DROPLIST_LV110_CHEST = new ArrayList<>();
-	static
-	{
-		DROPLIST_LV110_CHEST.add(new ItemHolder(27538, 1)); // +7 Bloody Helios Pack
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48204, 1)); // Radiant Warrior's Circlet
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48207, 1)); // Radiant Wizard's Circlet
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48210, 1)); // Radiant Knight's Circlet
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48493, 1)); // Dragon Rind Leather Shirt
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48876, 1)); // Forgotten Spellbook Chapter 1
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48877, 1)); // Forgotten Spellbook Chapter 2
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48878, 1)); // Forgotten Spellbook Chapter 3
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48324, 1)); // Agathion Master's Box
-		DROPLIST_LV110_CHEST.add(new ItemHolder(48910, 1)); // Shillien's Soul Crystal Box
-		DROPLIST_LV110_CHEST.add(new ItemHolder(80996, 1)); // Storm Isle's Time Stone
-		DROPLIST_LV110_CHEST.add(new ItemHolder(80997, 1)); // Primeval Isle's Time Stone
-		DROPLIST_LV110_CHEST.add(new ItemHolder(80998, 1)); // Golden Altar's Time Stone
-		DROPLIST_LV110_CHEST.add(new ItemHolder(81358, 1)); // Abandoned Coal Mines' Time Stone
-		DROPLIST_LV110_CHEST.add(new ItemHolder(47751, 1)); // +8 Eternal Heavy Armor Capsule
-		DROPLIST_LV110_CHEST.add(new ItemHolder(47752, 1)); // +8 Eternal Light Armor Capsule
-		DROPLIST_LV110_CHEST.add(new ItemHolder(47753, 1)); // +8 Eternal Robe Capsule
-	}
-	private static final List<ItemHolder> DROPLIST_LV120_CHEST = new ArrayList<>();
-	static
-	{
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38859, 1)); // Ruby Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(47686, 1)); // Blue Cat's Eye Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(47681, 1)); // Red Cat's Eye Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38889, 1)); // Aquamarine Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(46684, 1)); // Tanzanite Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38884, 1)); // Emerald Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38931, 1)); // Sapphire Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38874, 1)); // Obsidian Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38879, 1)); // Opal Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38899, 1)); // Pearl Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(46674, 1)); // Vital Stone Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(46679, 1)); // Garnet Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38854, 1)); // Topaz Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(38894, 1)); // Diamond Lv. 5
-		DROPLIST_LV120_CHEST.add(new ItemHolder(81453, 1)); // Improved Rune Stone
-		DROPLIST_LV120_CHEST.add(new ItemHolder(80419, 1)); // Artifact Pack
-		DROPLIST_LV120_CHEST.add(new ItemHolder(82229, 1)); // Tower of Insolence's Time Stone
-		DROPLIST_LV120_CHEST.add(new ItemHolder(81449, 1)); // Angel's Earring Pack
-		DROPLIST_LV120_CHEST.add(new ItemHolder(81450, 1)); // Angel's Ring Pack
-		DROPLIST_LV120_CHEST.add(new ItemHolder(81448, 1)); // Angel's Necklace Pack
-		DROPLIST_LV120_CHEST.add(new ItemHolder(48860, 1)); // Fallen Angel's Ring Pack
-	}
+	
 	// Misc
 	private static final int TREASURE_CHEST_CHANCE = 15; // 15% chance to spawn
 	private static final int RND_OFFSET = 10800000; // 3 hours = 10.800.000 milliseconds
@@ -154,15 +104,7 @@ public class GreedyTreasureChests extends AbstractNpcAI
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		if (npc.getId() == CHEST_LV110)
-		{
-			giveItems(killer, getRandomEntry(DROPLIST_LV110_CHEST));
-		}
-		else if (npc.getId() == CHEST_LV120)
-		{
-			giveItems(killer, getRandomEntry(DROPLIST_LV120_CHEST));
-		}
-		else if (getRandom(150) == TREASURE_CHEST_CHANCE)
+		if (getRandom(100) < TREASURE_CHEST_CHANCE)
 		{
 			final long currentTime = System.currentTimeMillis();
 			switch (npc.getId())

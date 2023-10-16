@@ -112,14 +112,14 @@ public class RequestUpgradeSystemResult implements ClientPacket
 		if (addedItem.isEquipable())
 		{
 			addedItem.setAugmentation(itemEnchantment.getAugmentation(), false);
-			if (addedItem.isWeapon())
+			if (addedItem.isWeapon() && (addedItem.getTemplate().getAttributes() == null))
 			{
 				if (itemEnchantment.getAttackElementPower() > 0)
 				{
 					addedItem.setAttribute(new AttributeHolder(AttributeType.findByClientId(itemEnchantment.getAttackElementType()), itemEnchantment.getAttackElementPower()), false);
 				}
 			}
-			else
+			else if (addedItem.getTemplate().getAttributes() == null)
 			{
 				if (itemEnchantment.getAttributeDefence(AttributeType.FIRE) > 0)
 				{
@@ -186,5 +186,6 @@ public class RequestUpgradeSystemResult implements ClientPacket
 		
 		// Send result packet.
 		player.sendPacket(new ExUpgradeSystemResult(addedItem.getObjectId(), 1));
+		player.sendItemList();
 	}
 }

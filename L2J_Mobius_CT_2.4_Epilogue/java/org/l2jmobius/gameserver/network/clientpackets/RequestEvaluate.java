@@ -21,9 +21,7 @@ import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.ExBrExtraUserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * @author Mobius
@@ -100,8 +98,7 @@ public class RequestEvaluate implements ClientPacket
 		sm.addPcName(player);
 		target.sendPacket(sm);
 		
-		player.sendPacket(new UserInfo(player));
-		player.sendPacket(new ExBrExtraUserInfo(player));
+		player.updateUserInfo();
 		target.broadcastUserInfo();
 	}
 }

@@ -270,7 +270,7 @@ public class Say2 implements ClientPacket
 			final Item item = owner.getInventory().getItemByObjectId(id);
 			if (item == null)
 			{
-				PacketLogger.info(client + " trying publish item which doesnt own! ID:" + id);
+				PacketLogger.info(client + " trying publish item which does not own! ID:" + id);
 				return false;
 			}
 			item.publish();

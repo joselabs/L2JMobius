@@ -25,7 +25,6 @@ import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowBaseAttributeCancelWindow;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 public class RequestExRemoveItemAttribute implements ClientPacket
 {
@@ -68,7 +67,7 @@ public class RequestExRemoveItemAttribute implements ClientPacket
 			{
 				targetItem.clearElementAttr(element.getElement());
 			}
-			player.sendPacket(new UserInfo(player));
+			player.updateUserInfo();
 			
 			final InventoryUpdate iu = new InventoryUpdate();
 			iu.addModifiedItem(targetItem);

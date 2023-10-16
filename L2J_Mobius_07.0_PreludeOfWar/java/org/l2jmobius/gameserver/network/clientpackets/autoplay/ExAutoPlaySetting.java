@@ -96,7 +96,7 @@ public class ExAutoPlaySetting implements ClientPacket
 		
 		if (_active)
 		{
-			AutoPlayTaskManager.getInstance().doAutoPlay(player);
+			AutoPlayTaskManager.getInstance().startAutoPlay(player);
 		}
 		else
 		{

@@ -48,7 +48,7 @@
 	<option id="39305" name="Col_202">
 		<!-- P. Def. +23 -->
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="PhysicalDefence">
 				<amount>23</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -57,7 +57,7 @@
 	<option id="39306" name="Col_203">
 		<!-- P./ M. Def. +42 -->
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="PhysicalDefence">
 				<amount>42</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -82,7 +82,11 @@
 	</option>
 	<option id="39308" name="Col_205">
 		<!-- Inventory slots +1 -->
-		<passive_skill id="81836" level="1" /> <!-- Inventory Slots -->
+		<effects>
+			<effect name="EnlargeSlot">
+				<amount>1</amount>
+			</effect>
+		</effects>
 	</option>
 	<option id="39309" name="Col_206">
 		<!-- M. Def. +34 -->
@@ -136,6 +140,10 @@
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
+			<effect name="MagicCriticalDamage">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
 		</effects>
 	</option>
 	<option id="39315" name="Col_212">
@@ -168,13 +176,18 @@
 		<!-- Received Skill Critical Damage -2% -->
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>2</amount>
+				<amount>-2</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</option>
 	<option id="39318" name="Col_215">
 		<!-- Firearms Resistance +2% -->
+		<effects>
+			<effect name="DefenceTrait">
+				<PISTOLS>2</PISTOLS>
+			</effect>
+		</effects>
 	</option>
 	<option id="39319" name="Col_216">
 		<!-- STR +1/ INT +1 -->

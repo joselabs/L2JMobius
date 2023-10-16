@@ -25,7 +25,6 @@ import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExVoteSystemInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * Give Recommendation effect implementation.
@@ -69,7 +68,7 @@ public class GiveRecommendation extends AbstractEffect
 				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_OBTAINED_S1_RECOMMENDATION_S);
 				sm.addInt(recommendationsGiven);
 				target.sendPacket(sm);
-				target.sendPacket(new UserInfo(target));
+				target.updateUserInfo();
 				target.sendPacket(new ExVoteSystemInfo(target));
 			}
 			else

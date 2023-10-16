@@ -54,7 +54,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PlaySound;
 import org.l2jmobius.gameserver.network.serverpackets.RelationChanged;
 import org.l2jmobius.gameserver.network.serverpackets.SiegeInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Broadcast;
 
 /**
@@ -630,7 +629,7 @@ public class Siege
 					member.setSiegeState((byte) 1);
 				}
 				
-				member.sendPacket(new UserInfo(member));
+				member.updateUserInfo();
 				for (Player player : member.getKnownList().getKnownPlayers().values())
 				{
 					player.sendPacket(new RelationChanged(member, member.getRelation(player), member.isAutoAttackable(player)));
@@ -651,7 +650,7 @@ public class Siege
 					member.setSiegeState((byte) 2);
 				}
 				
-				member.sendPacket(new UserInfo(member));
+				member.updateUserInfo();
 				for (Player player : member.getKnownList().getKnownPlayers().values())
 				{
 					player.sendPacket(new RelationChanged(member, member.getRelation(player), member.isAutoAttackable(player)));
@@ -1487,12 +1486,11 @@ public class Siege
 	{
 		while (getCastle().getSiegeDate().getTimeInMillis() < System.currentTimeMillis())
 		{
-			// Set next siege date if siege has passed
-			// Schedule to happen in 14 days
-			getCastle().getSiegeDate().add(Calendar.DAY_OF_MONTH, 14);
+			// Set next siege date if siege has passed. Schedule to happen in 14 days by default.
+			getCastle().getSiegeDate().add(Calendar.WEEK_OF_YEAR, SiegeManager.getInstance().getSiegeCycle());
 		}
 		
-		// Allow registration for next siege
+		// Allow registration for next siege.
 		_isRegistrationOver = false;
 	}
 	

@@ -98,6 +98,8 @@ import org.l2jmobius.gameserver.network.clientpackets.enchant.RequestExCancelEnc
 import org.l2jmobius.gameserver.network.clientpackets.enchant.RequestExRemoveEnchantSupportItem;
 import org.l2jmobius.gameserver.network.clientpackets.enchant.RequestExTryToPutEnchantSupportItem;
 import org.l2jmobius.gameserver.network.clientpackets.enchant.RequestExTryToPutEnchantTargetItem;
+import org.l2jmobius.gameserver.network.clientpackets.enchant.challengepoint.ExRequestResetEnchantChallengePoint;
+import org.l2jmobius.gameserver.network.clientpackets.enchant.challengepoint.ExRequestSetEnchantChallengePoint;
 import org.l2jmobius.gameserver.network.clientpackets.enchant.multi.ExRequestFinishMultiEnchantScroll;
 import org.l2jmobius.gameserver.network.clientpackets.enchant.multi.ExRequestMultiEnchantItemList;
 import org.l2jmobius.gameserver.network.clientpackets.enchant.multi.ExRequestSetMultiEnchantItemList;
@@ -109,7 +111,10 @@ import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestItemEnsoul;
 import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestTryEnSoulExtraction;
 import org.l2jmobius.gameserver.network.clientpackets.equipmentupgrade.RequestUpgradeSystemResult;
 import org.l2jmobius.gameserver.network.clientpackets.equipmentupgradenormal.ExUpgradeSystemNormalRequest;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockMemo;
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestFriendDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestUpdateFriendMemo;
 import org.l2jmobius.gameserver.network.clientpackets.huntingzones.ExTimedHuntingZoneEnter;
 import org.l2jmobius.gameserver.network.clientpackets.huntingzones.ExTimedHuntingZoneLeave;
 import org.l2jmobius.gameserver.network.clientpackets.huntingzones.ExTimedHuntingZoneList;
@@ -175,6 +180,7 @@ import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestPledgeRanki
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestPledgeRankingMyInfo;
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestPvpRankingList;
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestPvpRankingMyInfo;
+import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestRankingCharHistory;
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestRankingCharInfo;
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestRankingCharRankers;
 import org.l2jmobius.gameserver.network.clientpackets.revenge.RequestExPvpBookShareRevengeKillerLocation;
@@ -204,6 +210,9 @@ import org.l2jmobius.gameserver.network.clientpackets.subjugation.RequestSubjuga
 import org.l2jmobius.gameserver.network.clientpackets.subjugation.RequestSubjugationGachaUI;
 import org.l2jmobius.gameserver.network.clientpackets.subjugation.RequestSubjugationList;
 import org.l2jmobius.gameserver.network.clientpackets.subjugation.RequestSubjugationRanking;
+import org.l2jmobius.gameserver.network.clientpackets.surveillance.ExRequestUserWatcherAdd;
+import org.l2jmobius.gameserver.network.clientpackets.surveillance.ExRequestUserWatcherDelete;
+import org.l2jmobius.gameserver.network.clientpackets.surveillance.ExRequestUserWatcherTargetList;
 import org.l2jmobius.gameserver.network.clientpackets.teleports.ExRequestSharedLocationTeleport;
 import org.l2jmobius.gameserver.network.clientpackets.teleports.ExRequestSharedLocationTeleportUi;
 import org.l2jmobius.gameserver.network.clientpackets.teleports.ExRequestSharingLocationUi;
@@ -386,8 +395,8 @@ public enum ExClientPackets
 	REQUEST_SURRENDER_PLEDGE_WAR_EX(0x92, null, ConnectionState.IN_GAME),
 	REQUEST_DYNAMIC_QUEST_ACTION(0x93, null, ConnectionState.IN_GAME), // TODO: Implement / HANDLE SWITCH
 	REQUEST_FRIEND_DETAIL_INFO(0x94, RequestFriendDetailInfo::new, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_FRIEND_MEMO(0x95, null, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_BLOCK_MEMO(0x96, null, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_FRIEND_MEMO(0x95, RequestUpdateFriendMemo::new, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_BLOCK_MEMO(0x96, RequestBlockMemo::new, ConnectionState.IN_GAME),
 	REQUEST_INZONE_PARTY_INFO_HISTORY(0x97, null, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_REGISTRABLE_ITEM_LIST(0x98, RequestCommissionRegistrableItemList::new, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_INFO(0x99, RequestCommissionInfo::new, ConnectionState.IN_GAME),
@@ -516,7 +525,7 @@ public enum ExClientPackets
 	REQUEST_USER_FACTION_INFO(0x118, null, ConnectionState.IN_GAME),
 	EX_EXIT_ARENA(0x119, null, ConnectionState.IN_GAME),
 	REQUEST_EVENT_BALTHUS_TOKEN(0x11A, null, ConnectionState.IN_GAME),
-	REQUEST_PARTY_MATCHING_HISTORY(0x11B, null, ConnectionState.IN_GAME),
+	REQUEST_PARTY_MATCHING_HISTORY(0x11B, RequestPartyMatchingHistory::new, ConnectionState.IN_GAME),
 	EX_ARENA_CUSTOM_NOTIFICATION(0x11C, null, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST(0x11D, RequestTodoList::new, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST_HTML(0x11E, null, ConnectionState.IN_GAME),
@@ -527,7 +536,7 @@ public enum ExClientPackets
 	REQUEST_PLEDGE_BONUS_REWARD(0x123, RequestPledgeBonusReward::new, ConnectionState.IN_GAME),
 	REQUEST_SSO_AUTHN_TOKEN(0x124, null, ConnectionState.IN_GAME),
 	REQUEST_QUEUE_TICKET_LOGIN(0x125, null, ConnectionState.IN_GAME),
-	REQUEST_BLOCK_MEMO_INFO(0x126, null, ConnectionState.IN_GAME),
+	REQUEST_BLOCK_MEMO_INFO(0x126, RequestBlockDetailInfo::new, ConnectionState.IN_GAME),
 	REQUEST_TRY_EN_SOUL_EXTRACTION(0x127, RequestTryEnSoulExtraction::new, ConnectionState.IN_GAME),
 	REQUEST_RAIDBOSS_SPAWN_INFO(0x128, RequestRaidBossSpawnInfo::new, ConnectionState.IN_GAME),
 	REQUEST_RAID_SERVER_INFO(0x129, RequestRaidServerInfo::new, ConnectionState.IN_GAME),
@@ -622,7 +631,7 @@ public enum ExClientPackets
 	EX_TIME_RESTRICT_FIELD_USER_ENTER(0x180, ExTimedHuntingZoneEnter::new, ConnectionState.IN_GAME),
 	EX_TIME_RESTRICT_FIELD_USER_LEAVE(0x181, ExTimedHuntingZoneLeave::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_INFO(0x182, RequestRankingCharInfo::new, ConnectionState.IN_GAME),
-	EX_RANKING_CHAR_HISTORY(0x183, null, ConnectionState.IN_GAME),
+	EX_RANKING_CHAR_HISTORY(0x183, RequestRankingCharHistory::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_RANKERS(0x184, RequestRankingCharRankers::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_SPAWN_BUFFZONE_NPC(0x185, RequestExRankingCharSpawnBuffzoneNpc::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_BUFFZONE_NPC_POSITION(0x186, RequestExRankingCharBuffzoneNpcPosition::new, ConnectionState.IN_GAME),
@@ -650,7 +659,7 @@ public enum ExClientPackets
 	EX_CRAFT_RANDOM_LOCK_SLOTEX_CRAFT_RANDOM_INFO(0x19C, ExRequestRandomCraftLockSlot::new, ConnectionState.IN_GAME),
 	EX_CRAFT_RANDOM_REFRESH(0x19D, ExRequestRandomCraftRefresh::new, ConnectionState.IN_GAME),
 	EX_CRAFT_RANDOM_MAKE(0x19E, ExRequestRandomCraftMake::new, ConnectionState.IN_GAME),
-	EX_MULTI_SELL_LIST(0x19F, null, ConnectionState.IN_GAME),
+	EX_MULTI_SELL_LIST(0x19F, RequestMultisellList::new, ConnectionState.IN_GAME),
 	EX_SAVE_ITEM_ANNOUNCE_SETTING(0x1A0, ExSaveItemAnnounceSetting::new, ConnectionState.IN_GAME),
 	EX_OLYMPIAD_UI(0x1A1, null, ConnectionState.IN_GAME),
 	// 270
@@ -727,9 +736,9 @@ public enum ExClientPackets
 	EX_PVPBOOK_SHARE_REVENGE_SHARED_TELEPORT_TO_KILLER(0x1E7, RequestExPvpBookShareRevengeSharedTeleportToKiller::new, ConnectionState.IN_GAME),
 	EX_PENALTY_ITEM_LIST(0x1E8, null, ConnectionState.IN_GAME),
 	EX_PENALTY_ITEM_RESTORE(0x1E9, null, ConnectionState.IN_GAME),
-	EX_USER_WATCHER_TARGET_LIST(0x1EA, null, ConnectionState.IN_GAME),
-	EX_USER_WATCHER_ADD(0x1EB, null, ConnectionState.IN_GAME),
-	EX_USER_WATCHER_DELETE(0x1EC, null, ConnectionState.IN_GAME),
+	EX_USER_WATCHER_TARGET_LIST(0x1EA, ExRequestUserWatcherTargetList::new, ConnectionState.IN_GAME),
+	EX_USER_WATCHER_ADD(0x1EB, ExRequestUserWatcherAdd::new, ConnectionState.IN_GAME),
+	EX_USER_WATCHER_DELETE(0x1EC, ExRequestUserWatcherDelete::new, ConnectionState.IN_GAME),
 	EX_HOMUNCULUS_ACTIVATE_SLOT(0x1ED, null, ConnectionState.IN_GAME),
 	EX_SUMMON_HOMUNCULUS_COUPON(0x1EE, null, ConnectionState.IN_GAME),
 	EX_SUBJUGATION_LIST(0x1EF, RequestSubjugationList::new, ConnectionState.IN_GAME),
@@ -781,7 +790,7 @@ public enum ExClientPackets
 	EX_NEW_HENNA_POTEN_SELECT(0x21C, RequestNewHennaPotenSelect::new, ConnectionState.IN_GAME),
 	EX_NEW_HENNA_POTEN_ENCHANT(0x21D, RequestNewHennaPotenEnchant::new, ConnectionState.IN_GAME),
 	EX_NEW_HENNA_COMPOSE(0x21E, RequestNewHennaCompose::new, ConnectionState.IN_GAME),
-	EX_REQUEST_INVITE_PARTY(0x21F, null, ConnectionState.IN_GAME),
+	EX_REQUEST_INVITE_PARTY(0x21F, RequestNewInvitePartyInquiry::new, ConnectionState.IN_GAME),
 	EX_ITEM_USABLE_LIST(0x220, null, ConnectionState.IN_GAME),
 	EX_PACKETREADCOUNTPERSECOND(0x221, null, ConnectionState.IN_GAME),
 	EX_SELECT_GLOBAL_EVENT_UI(0x222, null, ConnectionState.IN_GAME),
@@ -792,8 +801,8 @@ public enum ExClientPackets
 	EX_SAYHAS_SUPPORT_TOGGLE(0x227, HuntpassSayhasToggle::new, ConnectionState.IN_GAME),
 	// 362
 	EX_REQ_ENCHANT_FAIL_REWARD_INFO(0x228, ExRequestEnchantFailRewardInfo::new, ConnectionState.IN_GAME),
-	EX_SET_ENCHANT_CHALLENGE_POINT(0x229, null, ConnectionState.IN_GAME),
-	EX_RESET_ENCHANT_CHALLENGE_POINT(0x22A, null, ConnectionState.IN_GAME),
+	EX_SET_ENCHANT_CHALLENGE_POINT(0x229, ExRequestSetEnchantChallengePoint::new, ConnectionState.IN_GAME),
+	EX_RESET_ENCHANT_CHALLENGE_POINT(0x22A, ExRequestResetEnchantChallengePoint::new, ConnectionState.IN_GAME),
 	EX_REQ_VIEW_ENCHANT_RESULT(0x22B, ExRequestViewEnchantResult::new, ConnectionState.IN_GAME),
 	EX_REQ_START_MULTI_ENCHANT_SCROLL(0x22C, ExRequestStartMultiEnchantScroll::new, ConnectionState.IN_GAME),
 	EX_REQ_VIEW_MULTI_ENCHANT_RESULT(0x22D, ExRequestViewMultiEnchantResult::new, ConnectionState.IN_GAME),

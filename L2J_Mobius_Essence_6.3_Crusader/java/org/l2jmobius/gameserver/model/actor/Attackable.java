@@ -37,6 +37,7 @@ import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.MagicLampData;
+import org.l2jmobius.gameserver.data.xml.RaidDropAnnounceData;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.DropType;
 import org.l2jmobius.gameserver.enums.ElementalType;
@@ -79,8 +80,10 @@ import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.CreatureSay;
 import org.l2jmobius.gameserver.network.serverpackets.ExMagicAttackInfo;
+import org.l2jmobius.gameserver.network.serverpackets.ExRaidDropItemAnnounce;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.taskmanager.DecayTaskManager;
+import org.l2jmobius.gameserver.util.Broadcast;
 import org.l2jmobius.gameserver.util.Util;
 
 public class Attackable extends Npc
@@ -587,6 +590,14 @@ public class Attackable extends Npc
 							{
 								exp = attacker.getStat().getValue(Stat.EXPSP_RATE, exp) * Config.EXP_AMOUNT_MULTIPLIERS[attacker.getClassId().getId()];
 								sp = attacker.getStat().getValue(Stat.EXPSP_RATE, sp) * Config.SP_AMOUNT_MULTIPLIERS[attacker.getClassId().getId()];
+								
+								// Premium rates
+								if (attacker.hasPremiumStatus())
+								{
+									exp *= Config.PREMIUM_RATE_XP;
+									sp *= Config.PREMIUM_RATE_SP;
+								}
+								
 								attacker.addExpAndSp(exp, sp, useVitalityRate());
 								if (exp > 0)
 								{
@@ -612,7 +623,7 @@ public class Attackable extends Npc
 										final HuntPass huntPass = attacker.getHuntPass();
 										if (huntPass != null)
 										{
-											attacker.getHuntPass().addPassPoint(exp);
+											attacker.getHuntPass().addPassPoint();
 										}
 										
 										final AchievementBox box = attacker.getAchievementBox();
@@ -1193,6 +1204,7 @@ public class Attackable extends Npc
 		final Collection<ItemHolder> deathItems = npcTemplate.calculateDrops(DropType.DROP, this, player);
 		if (deathItems != null)
 		{
+			List<Integer> announceItems = null;
 			for (ItemHolder drop : deathItems)
 			{
 				final ItemTemplate item = ItemTable.getInstance().getTemplate(drop.getId());
@@ -1214,7 +1226,22 @@ public class Attackable extends Npc
 					sm.addItemName(item);
 					sm.addLong(drop.getCount());
 					broadcastPacket(sm);
+					if (RaidDropAnnounceData.getInstance().isAnnounce(item.getId()))
+					{
+						if (announceItems == null)
+						{
+							announceItems = new ArrayList<>(3);
+						}
+						if (announceItems.size() < 3)
+						{
+							announceItems.add(item.getId());
+						}
+					}
 				}
+			}
+			if (announceItems != null)
+			{
+				Broadcast.toAllOnlinePlayers(new ExRaidDropItemAnnounce(player.getName(), getId(), announceItems));
 			}
 			deathItems.clear();
 			
@@ -1432,64 +1459,20 @@ public class Attackable extends Npc
 	 */
 	private double[] calculateExpAndSp(int charLevel, long damage, long totalDamage)
 	{
-		final int levelDiff = charLevel - getLevel();
-		double xp = Math.max(0, (getExpReward() * damage) / totalDamage);
-		double sp = Math.max(0, (getSpReward() * damage) / totalDamage);
-		
-		// According to https://4gameforum.com/threads/483941/
-		if (levelDiff > 2)
+		// According to https://l2central.info/essence/articles/409.html?lang=ru
+		if ((charLevel - getLevel()) > 14)
 		{
-			double mul;
-			switch (levelDiff)
+			return new double[]
 			{
-				case 3:
-				{
-					mul = 0.97;
-					break;
-				}
-				case 4:
-				{
-					mul = 0.80;
-					break;
-				}
-				case 5:
-				{
-					mul = 0.61;
-					break;
-				}
-				case 6:
-				{
-					mul = 0.37;
-					break;
-				}
-				case 7:
-				{
-					mul = 0.22;
-					break;
-				}
-				case 8:
-				{
-					mul = 0.13;
-					break;
-				}
-				case 9:
-				{
-					mul = 0.08;
-					break;
-				}
-				default:
-				{
-					mul = 0.05;
-					break;
-				}
-			}
-			xp *= mul;
-			sp *= mul;
+				0,
+				0
+			};
 		}
+		
 		return new double[]
 		{
-			xp,
-			sp
+			Math.max(0, (getExpReward() * damage) / totalDamage),
+			Math.max(0, (getSpReward() * damage) / totalDamage)
 		};
 	}
 	

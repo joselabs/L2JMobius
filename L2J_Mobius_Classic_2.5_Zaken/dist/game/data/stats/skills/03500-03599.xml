@@ -1085,24 +1085,24 @@
 			<value level="4">55</value>
 			<value level="5">58</value>
 			<value level="6">61</value>
-			<value level="7">61</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-			<value level="8">61</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-			<value level="9">61</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+			<value level="7">64</value>
+			<value level="8">67</value>
+			<value level="9">70</value>
 		</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="CriticalDamage">
 				<amount>
-					<value level="1">203.97</value>
-					<value level="2">226.51</value>
-					<value level="3">248.71</value>
-					<value level="4">269.91</value>
-					<value level="5">289.4</value>
-					<value level="6">306.42</value>
-					<value level="7">306.42</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-					<value level="8">306.42</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-					<value level="9">306.42</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+					<value level="1">183</value>
+					<value level="2">203</value>
+					<value level="3">223</value>
+					<value level="4">242</value>
+					<value level="5">260</value>
+					<value level="6">275</value>
+					<value level="7">288</value>
+					<value level="8">297</value>
+					<value level="9">302</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1493,14 +1493,34 @@
 			</effect>
 			<effect name="MagicMpCost">
 				<amount>
-					<value level="1">2</value>
-					<value level="2">3</value>
-					<value level="3">5</value>
+					<value level="1">-2</value>
+					<value level="2">-3</value>
+					<value level="3">-5</value>
 				</amount>
 				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-3</value>
+					<value level="3">-5</value>
+				</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-3</value>
+					<value level="3">-5</value>
+				</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
 			</effect>
 			<effect name="MpVampiricAttack" fromLevel="3" toLevel="3">
 				<amount>3</amount>
+				<chance>30</chance>
 			</effect>
 		</effects>
 	</skill>
@@ -1626,7 +1646,7 @@
 				<amount>
 					<value level="1">4</value>
 					<value level="2">6</value>
-					<value level="3">10</value>
+					<value level="3">7</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1634,7 +1654,7 @@
 				<amount>
 					<value level="1">4</value>
 					<value level="2">6</value>
-					<value level="3">10</value>
+					<value level="3">7</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1650,7 +1670,7 @@
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
-					<value level="3">10</value>
+					<value level="3">5</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1680,6 +1700,11 @@
 					<value level="2">15</value>
 					<value level="3">20</value>
 				</DERANGEMENT>
+				<SLEEP>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+				</SLEEP>
 			</effect>
 			<effect name="PhysicalEvasion">
 				<amount>
@@ -1697,47 +1722,21 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="DamageByAttack">
 				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
+					<value level="1">-2</value>
+					<value level="2">-4</value>
+					<value level="3">-6</value>
+				</amount>
+				<type>PK</type>
+			</effect>
+			<effect name="DamageByAttack">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-4</value>
+					<value level="3">-6</value>
 				</amount>
 				<type>ENEMY_ALL</type>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
-				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
-				</amount>
-				<type>ENEMY_ALL</type>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
-				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
-				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
-				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
-				</amount>
-				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1775,7 +1774,7 @@
 		</effects>
 	</skill>
 	<skill id="3574" toLevel="3" name="Special Ability: Critical Slow">
-		<!-- Temporarily decreases Speed. Effect $s1. -->
+		<!-- Temporarily decreases Speed. Effect 3. -->
 		<icon>icon.skill1160</icon>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
@@ -1944,7 +1943,8 @@
 		</effects>
 	</skill>
 	<skill id="3581" toLevel="1" name="Infinity Power - Tenacity">
-		<!-- For $s1 returns $s2 of the received damage back to the enemy. Recovers $s3 HP. -->
+		<!-- For 2 min. returns 10% of the received damage back to the enemy. Recovers 460 HP. -->
+		<icon>icon.skill0000</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<operateType>A2</operateType>
@@ -2167,7 +2167,7 @@
 		</effects>
 	</skill>
 	<skill id="3589" toLevel="1" name="Special Ability: Infinity Dagger">
-		<!-- Max HP +15%, Max MP +25%, Max CP +30%, P. Critical Rate +20, P. Critical Damage +20%. Inflicts additional damage during PvP by 5%, grants weapon with special effects. -->
+		<!-- Max HP +15%, Max MP +25%, Max CP +30%, M. Critical Rate +20, P. Critical Damage +20%. Inflicts additional damage during PvP by 5%, grants weapon with special effects. -->
 		<icon>icon.weapon_the_dagger_of_hero_i00</icon>
 		<magicLevel>80</magicLevel>
 		<operateType>P</operateType>
@@ -2335,7 +2335,7 @@
 		</effects>
 	</skill>
 	<skill id="3595" toLevel="1" name="Special Ability: Infinity Scepter">
-		<!-- Max HP +10%, Max MP +25%, Max CP +30%, M. Atk. +10%, M. Critical Damage +10%. Inflicts additional damage during PvP by 5%, grants weapon with special effects. -->
+		<!-- Max HP +10%, Max MP +25%, Max CP +30%, M. Atk. +10%, P. Critical Damage +10%. Inflicts additional damage during PvP by 5%, grants weapon with special effects. -->
 		<icon>icon.weapon_the_staff_of_hero_i00</icon>
 		<magicLevel>80</magicLevel>
 		<operateType>P</operateType>
@@ -2376,7 +2376,7 @@
 		</effects>
 	</skill>
 	<skill id="3596" toLevel="1" name="Infinity Power - Vampiric Mana">
-		<!-- For 5 min. recovers MP, equal to 3% of inflicted damage with a certain probability. -->
+		<!-- For 5 min. increases Speed and the bow's range. -->
 		<icon>icon.skill1268</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
@@ -2390,7 +2390,7 @@
 		<effects>
 			<effect name="MpVampiricAttack">
 				<amount>3</amount>
-				<chance>50</chance>
+				<chance>30</chance>
 			</effect>
 		</effects>
 	</skill>
@@ -2437,6 +2437,7 @@
 	</skill>
 	<skill id="3598" toLevel="1" name="Infinity Power - Mana Limit">
 		<!-- For 30 sec. magic skills don't consume MP. -->
+		<icon>icon.skill0000</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<operateType>A2</operateType>

@@ -1121,7 +1121,7 @@ class OlympiadGameTask implements Runnable
 			
 			if (defaulted)
 			{
-				if (player != null)
+				if ((player != null) && (sm != null))
 				{
 					player.sendPacket(sm);
 				}

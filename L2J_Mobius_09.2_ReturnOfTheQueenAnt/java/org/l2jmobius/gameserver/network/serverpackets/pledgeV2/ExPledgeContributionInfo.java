@@ -16,8 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgeV2;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -27,10 +27,30 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 public class ExPledgeContributionInfo extends ServerPacket
 {
 	private final Player _player;
+	private final boolean _cycle;
+	private final int _previousClaims;
+	private final int[] _reputationRequiredTiers =
+	{
+		2000,
+		7000,
+		15000,
+		30000,
+		45000
+	};
+	private final int[] _fameRewardTiers =
+	{
+		1300,
+		3300,
+		5400,
+		10300,
+		10600
+	};
 	
-	public ExPledgeContributionInfo(Player player)
+	public ExPledgeContributionInfo(Player player, boolean cycle)
 	{
 		_player = player;
+		_cycle = cycle;
+		_previousClaims = player.getVariables().getInt(PlayerVariables.CLAN_CONTRIBUTION_REWARDED_COUNT, 0);
 	}
 	
 	@Override
@@ -42,11 +62,30 @@ public class ExPledgeContributionInfo extends ServerPacket
 		}
 		
 		ServerPackets.EX_PLEDGE_CONTRIBUTION_INFO.writeId(this);
-		writeInt(_player.getClanContribution());
-		writeInt(_player.getClanContribution());
-		writeInt(Config.CLAN_CONTRIBUTION_REQUIRED);
-		writeInt(-1);
-		writeInt(0);
-		writeInt(Config.CLAN_CONTRIBUTION_FAME_REWARD);
+		if (_cycle)
+		{
+			writeInt(_player.getClanContribution());
+		}
+		else
+		{
+			writeInt(_player.getVariables().getInt(PlayerVariables.CLAN_CONTRIBUTION_PREVIOUS, 0));
+		}
+		writeInt(_player.getClanContributionTotal());
+		if (_previousClaims < 4)
+		{
+			writeInt(_reputationRequiredTiers[_previousClaims]);
+			writeInt(-1);
+			writeInt(0);
+			writeInt(_fameRewardTiers[_previousClaims]);
+		}
+		else
+		{
+			int reputationRequired = 15000 * (_previousClaims);
+			int fameReward = 10600 + ((_previousClaims - 4) * 200);
+			writeInt(reputationRequired);
+			writeInt(-1);
+			writeInt(0);
+			writeInt(fameReward);
+		}
 	}
 }

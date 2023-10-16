@@ -23,6 +23,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulStone;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
+import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.AbnormalType;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -39,6 +40,7 @@ import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
 public class RequestItemEnsoul implements ClientPacket
 {
 	private int _itemObjectId;
+	private int _type;
 	private EnsoulItemOption[] _options;
 	
 	@Override
@@ -51,13 +53,13 @@ public class RequestItemEnsoul implements ClientPacket
 			_options = new EnsoulItemOption[options];
 			for (int i = 0; i < options; i++)
 			{
-				final int type = packet.readByte(); // 1 = normal ; 2 = mystic
+				_type = packet.readByte(); // 1 = normal ; 2 = mystic
 				final int position = packet.readByte();
 				final int soulCrystalObjectId = packet.readInt();
 				final int soulCrystalOption = packet.readInt();
-				if ((position > 0) && (position < 3) && ((type == 1) || (type == 2)))
+				if ((position > 0) && (position < 3) && ((_type == 1) || (_type == 2)))
 				{
-					_options[i] = new EnsoulItemOption(type, position, soulCrystalObjectId, soulCrystalOption);
+					_options[i] = new EnsoulItemOption(_type, position, soulCrystalObjectId, soulCrystalOption);
 				}
 			}
 			return;
@@ -119,6 +121,17 @@ public class RequestItemEnsoul implements ClientPacket
 			PacketLogger.warning("Player: " + player + " attempting to ensoul item without having it!");
 			return;
 		}
+		final ItemTemplate template = item.getTemplate();
+		if ((_type == 1) && (template.getEnsoulSlots() == 0))
+		{
+			PacketLogger.warning("Player: " + player + " attempting to ensoul non ensoulable item: " + item + "!");
+			return;
+		}
+		if ((_type == 2) && (template.getSpecialEnsoulSlots() == 0))
+		{
+			PacketLogger.warning("Player: " + player + " attempting to special ensoul non special ensoulable item: " + item + "!");
+			return;
+		}
 		if (!item.isEquipable())
 		{
 			PacketLogger.warning("Player: " + player + " attempting to ensoul non equippable item: " + item + "!");
@@ -177,7 +190,7 @@ public class RequestItemEnsoul implements ClientPacket
 			final EnsoulOption option = EnsoulData.getInstance().getOption(itemOption.getSoulCrystalOption());
 			if (option == null)
 			{
-				PacketLogger.warning("Player: " + player + " attempting to ensoul item option that doesn't exists!");
+				PacketLogger.warning("Player: " + player + " attempting to ensoul item option that doesn't exist!");
 				continue;
 			}
 			
@@ -208,7 +221,7 @@ public class RequestItemEnsoul implements ClientPacket
 			
 			if (fee == null)
 			{
-				PacketLogger.warning("Player: " + player + " attempting to ensoul item option that doesn't exists! (unknown fee)");
+				PacketLogger.warning("Player: " + player + " attempting to ensoul item option that doesn't exist! (unknown fee)");
 				continue;
 			}
 			

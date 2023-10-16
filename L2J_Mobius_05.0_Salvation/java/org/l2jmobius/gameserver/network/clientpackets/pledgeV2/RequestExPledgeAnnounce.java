@@ -20,6 +20,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
+import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeAnnounce;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeShowInfoUpdate;
 
 /**
@@ -43,5 +44,6 @@ public class RequestExPledgeAnnounce implements ClientPacket
 		}
 		
 		client.sendPacket(new ExPledgeShowInfoUpdate(player));
+		client.sendPacket(new ExPledgeAnnounce(player));
 	}
 }

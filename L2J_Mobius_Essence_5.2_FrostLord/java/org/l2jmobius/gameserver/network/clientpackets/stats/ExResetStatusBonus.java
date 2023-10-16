@@ -16,14 +16,13 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.stats;
 
-import static org.l2jmobius.gameserver.model.itemcontainer.Inventory.LCOIN_ID;
-
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
-import org.l2jmobius.gameserver.network.serverpackets.limitshop.ExBloodyCoinCount;
 
 /**
  * @author Mobius
@@ -39,67 +38,53 @@ public class ExResetStatusBonus implements ClientPacket
 			return;
 		}
 		
-		final int points = player.getVariables().getInt(PlayerVariables.STAT_POINTS, 0);
-		int adenaCost = 5000000;
-		int lcoinCost = 600;
-		switch (points)
+		final PlayerVariables vars = player.getVariables();
+		int points = vars.getInt(PlayerVariables.STAT_STR.toString(), 0) + vars.getInt(PlayerVariables.STAT_DEX.toString(), 0) + vars.getInt(PlayerVariables.STAT_CON.toString(), 0) + vars.getInt(PlayerVariables.STAT_INT.toString(), 0) + vars.getInt(PlayerVariables.STAT_WIT.toString(), 0) + vars.getInt(PlayerVariables.STAT_MEN.toString(), 0);
+		int adenaCost;
+		int lcoinCost;
+		
+		if (points < 6)
 		{
-			case 1:
-			case 2:
-			case 3:
-			case 4:
-			case 5:
-			{
-				adenaCost = 200000;
-				lcoinCost = 200;
-				break;
-			}
-			case 6:
-			case 7:
-			case 8:
-			case 9:
-			case 10:
-			{
-				adenaCost = 500000;
-				lcoinCost = 300;
-				break;
-			}
-			case 11:
-			case 12:
-			case 13:
-			case 14:
-			case 15:
-			{
-				adenaCost = 1000000;
-				lcoinCost = 400;
-				break;
-			}
-			case 16:
-			case 17:
-			case 18:
-			case 19:
-			case 20:
-			{
-				adenaCost = 2000000;
-				lcoinCost = 500;
-				break;
-			}
-			case 21:
-			case 22:
-			case 23:
-			case 24:
-			case 25:
-			{
-				adenaCost = 5000000;
-				lcoinCost = 600;
-				break;
-			}
+			lcoinCost = 200;
+			adenaCost = 200_000;
+		}
+		else if (points < 11)
+		{
+			lcoinCost = 300;
+			adenaCost = 500_000;
+		}
+		else if (points < 16)
+		{
+			lcoinCost = 400;
+			adenaCost = 1_000_000;
+		}
+		else if (points < 21)
+		{
+			lcoinCost = 500;
+			adenaCost = 2_000_000;
+		}
+		else if (points < 26)
+		{
+			lcoinCost = 600;
+			adenaCost = 5_000_000;
+		}
+		else
+		{
+			lcoinCost = 700;
+			adenaCost = 10_000_000;
 		}
 		
-		if (player.reduceAdena("ExResetStatusBonus", adenaCost, player, true) && (player.getInventory().getInventoryItemCount(LCOIN_ID, -1) >= lcoinCost))
+		long adena = player.getAdena();
+		long lcoin = player.getInventory().getItemByItemId(Inventory.LCOIN_ID) == null ? 0 : player.getInventory().getItemByItemId(Inventory.LCOIN_ID).getCount();
+		
+		if ((adena < adenaCost) || (lcoin < lcoinCost))
 		{
-			player.getInventory().destroyItemByItemId("ExResetStatusBonus", LCOIN_ID, lcoinCost, player, true);
-			player.sendPacket(new ExBloodyCoinCount(player));
+			player.sendPacket(SystemMessageId.NOT_ENOUGH_MONEY_TO_USE_THE_FUNCTION);
+			return;
+		}
+		
+		if (player.reduceAdena("ExResetStatusBonus", adenaCost, player, true) && player.destroyItemByItemId("ExResetStatusBonus", Inventory.LCOIN_ID, lcoinCost, player, true))
+		{
 			player.getVariables().remove(PlayerVariables.STAT_POINTS);
 			player.getVariables().remove(PlayerVariables.STAT_STR);
 			player.getVariables().remove(PlayerVariables.STAT_DEX);
@@ -107,14 +92,13 @@ public class ExResetStatusBonus implements ClientPacket
 			player.getVariables().remove(PlayerVariables.STAT_INT);
 			player.getVariables().remove(PlayerVariables.STAT_WIT);
 			player.getVariables().remove(PlayerVariables.STAT_MEN);
-			player.getVariables().set(PlayerVariables.ELIXIRS_AVAILABLE, player.getVariables().getInt(PlayerVariables.ELIXIRS_USED, 0) + player.getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0));
-			player.getVariables().remove(PlayerVariables.ELIXIRS_USED);
+			player.getVariables().set(PlayerVariables.ELIXIRS_AVAILABLE, player.getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0));
 			
-			player.sendPacket(new UserInfo(player));
 			player.getStat().recalculateStats(true);
 			
 			// Calculate stat increase skills.
 			player.calculateStatIncreaseSkills();
+			player.sendPacket(new UserInfo(player));
 		}
 	}
 }

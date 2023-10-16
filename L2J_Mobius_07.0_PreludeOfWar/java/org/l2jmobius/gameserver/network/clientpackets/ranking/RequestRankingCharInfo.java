@@ -17,6 +17,7 @@
 package org.l2jmobius.gameserver.network.clientpackets.ranking;
 
 import org.l2jmobius.commons.network.ReadablePacket;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ranking.ExRankingCharInfo;
@@ -35,6 +36,12 @@ public class RequestRankingCharInfo implements ClientPacket
 	@Override
 	public void run(GameClient client)
 	{
-		client.sendPacket(new ExRankingCharInfo(client.getPlayer()));
+		final Player player = client.getPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		client.sendPacket(new ExRankingCharInfo(player));
 	}
 }

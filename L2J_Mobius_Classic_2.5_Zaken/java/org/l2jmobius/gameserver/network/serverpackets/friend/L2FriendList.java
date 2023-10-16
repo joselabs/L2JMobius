@@ -19,7 +19,7 @@ package org.l2jmobius.gameserver.network.serverpackets.friend;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -56,7 +56,7 @@ public class L2FriendList extends ServerPacket
 	{
 		for (int objId : player.getFriendList())
 		{
-			final String name = CharNameTable.getInstance().getNameById(objId);
+			final String name = CharInfoTable.getInstance().getNameById(objId);
 			final Player player1 = World.getInstance().getPlayer(objId);
 			boolean online = false;
 			int level = 0;
@@ -69,8 +69,8 @@ public class L2FriendList extends ServerPacket
 			}
 			else
 			{
-				level = CharNameTable.getInstance().getLevelById(objId);
-				classId = CharNameTable.getInstance().getClassIdById(objId);
+				level = CharInfoTable.getInstance().getLevelById(objId);
+				classId = CharInfoTable.getInstance().getClassIdById(objId);
 			}
 			_info.add(new FriendInfo(objId, name, online, level, classId));
 		}

@@ -50,7 +50,9 @@ import org.l2jmobius.gameserver.network.clientpackets.compound.RequestNewEnchant
 import org.l2jmobius.gameserver.network.clientpackets.compound.RequestNewEnchantTry;
 import org.l2jmobius.gameserver.network.clientpackets.crystalization.RequestCrystallizeEstimate;
 import org.l2jmobius.gameserver.network.clientpackets.crystalization.RequestCrystallizeItemCancel;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockMemo;
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestFriendDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestUpdateFriendMemo;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGamePlay;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGameStartInfo;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.ConfirmMenteeAdd;
@@ -229,8 +231,8 @@ public enum ExClientPackets
 	REQUEST_SURRENDER_PLEDGE_WAR_EX(0x92, null, ConnectionState.IN_GAME),
 	REQUEST_DYNAMIC_QUEST_ACTION(0x93, null, ConnectionState.IN_GAME), // TODO: Implement / HANDLE SWITCH
 	REQUEST_FRIEND_DETAIL_INFO(0x94, RequestFriendDetailInfo::new, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_FRIEND_MEMO(0x95, null, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_BLOCK_MEMO(0x96, null, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_FRIEND_MEMO(0x95, RequestUpdateFriendMemo::new, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_BLOCK_MEMO(0x96, RequestBlockMemo::new, ConnectionState.IN_GAME),
 	REQUEST_INZONE_PARTY_INFO_HISTORY(0x97, null, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_REGISTRABLE_ITEM_LIST(0x98, RequestCommissionRegistrableItemList::new, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_INFO(0x99, RequestCommissionInfo::new, ConnectionState.IN_GAME),

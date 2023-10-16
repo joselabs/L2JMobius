@@ -36,7 +36,7 @@ public class VitalityExpRate extends AbstractStatPercentEffect
 	public void pump(Creature effected, Skill skill)
 	{
 		effected.getStat().mergeMul(Stat.VITALITY_EXP_RATE, (_amount / 100) + 1);
-		effected.getStat().mergeAdd(Stat.VITALITY_SKILLS, 1);
+		effected.getStat().mergeAdd(Stat.VITALITY_SKILLS, 1d);
 		
 		final Player player = effected.getActingPlayer();
 		if (player == null)

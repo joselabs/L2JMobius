@@ -58,6 +58,7 @@ import org.l2jmobius.gameserver.model.zone.ZoneType;
 import org.l2jmobius.gameserver.network.serverpackets.ExPVPMatchCCRecord;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
+import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.util.Broadcast;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -269,8 +270,8 @@ public class TvT extends Event
 						BLUE_TEAM.add(participant);
 						PVP_WORLD.addAllowed(participant);
 						participant.leaveParty();
-						participant.setTeam(Team.BLUE);
 						participant.teleToLocation(BLUE_SPAWN_LOC, PVP_WORLD);
+						participant.setTeam(Team.BLUE);
 						team = false;
 					}
 					else
@@ -278,8 +279,8 @@ public class TvT extends Event
 						RED_TEAM.add(participant);
 						PVP_WORLD.addAllowed(participant);
 						participant.leaveParty();
-						participant.setTeam(Team.RED);
 						participant.teleToLocation(RED_SPAWN_LOC, PVP_WORLD);
+						participant.setTeam(Team.RED);
 						team = true;
 					}
 					addDeathListener(participant);
@@ -537,6 +538,22 @@ public class TvT extends Event
 				broadcastScreenMessage(event, 4);
 				break;
 			}
+			case "manager-cancel":
+			{
+				final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+				html.setFile(player, "data/scripts/custom/events/TeamVsTeam/manager-cancel.html");
+				html.replace("%player_numbers%", String.valueOf(PLAYER_LIST.size()));
+				player.sendPacket(html);
+				break;
+			}
+			case "manager-register":
+			{
+				final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+				html.setFile(player, "data/scripts/custom/events/TeamVsTeam/manager-register.html");
+				html.replace("%player_numbers%", String.valueOf(PLAYER_LIST.size()));
+				player.sendPacket(html);
+				break;
+			}
 		}
 		// Activity timer.
 		if (event.startsWith("KickPlayer") && (player != null) && (player.getInstanceWorld() == PVP_WORLD))
@@ -591,9 +608,11 @@ public class TvT extends Event
 			{
 				return "manager-buffheal.html";
 			}
+			startQuestTimer("manager-cancel", 5, npc, player);
 			return "manager-cancel.html";
 		}
 		// Player is not registered.
+		startQuestTimer("manager-register", 5, npc, player);
 		return "manager-register.html";
 	}
 	
@@ -904,6 +923,15 @@ public class TvT extends Event
 			participant.setTeam(Team.NONE);
 			participant.setRegisteredOnEvent(false);
 			participant.setOnEvent(false);
+			participant.setInvul(false);
+			participant.setImmobilized(false);
+			participant.enableAllSkills();
+			for (Summon summon : participant.getServitors().values())
+			{
+				summon.setInvul(false);
+				summon.setImmobilized(false);
+				summon.enableAllSkills();
+			}
 		}
 		if (PVP_WORLD != null)
 		{

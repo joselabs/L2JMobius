@@ -25,6 +25,7 @@ import java.util.Map.Entry;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.enums.SpecialItemType;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.instancemanager.DailyTaskManager;
 import org.l2jmobius.gameserver.model.ExtractableProduct;
@@ -34,6 +35,7 @@ import org.l2jmobius.gameserver.model.item.EtcItem;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.ExPCCafePointInfo;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
@@ -119,7 +121,18 @@ public class ExtractableItems implements IItemHandler
 							specialReward = true;
 							continue;
 						}
-						if (expi.getId() == -700) // Honor Coins
+						else if (expi.getId() == SpecialItemType.PC_CAFE_POINTS.getClientId())
+						{
+							final int currentPoints = player.getPcCafePoints();
+							final int upgradePoints = player.getPcCafePoints() + (int) createItemAmount;
+							player.setPcCafePoints(upgradePoints);
+							final SystemMessage message = new SystemMessage(SystemMessageId.YOU_EARNED_S1_PA_POINT_S).addInt((int) createItemAmount);
+							player.sendPacket(message);
+							player.sendPacket(new ExPCCafePointInfo(currentPoints, upgradePoints, 1));
+							specialReward = true;
+							continue;
+						}
+						else if (expi.getId() == SpecialItemType.HONOR_COINS.getClientId())
 						{
 							player.setHonorCoins(player.getHonorCoins() + (int) createItemAmount);
 							player.sendMessage("You have obtained " + (createItemAmount) + " Honor Coin.");
@@ -188,7 +201,18 @@ public class ExtractableItems implements IItemHandler
 						specialReward = true;
 						continue;
 					}
-					if (expi.getId() == -700) // Honor Coins
+					else if (expi.getId() == SpecialItemType.PC_CAFE_POINTS.getClientId())
+					{
+						final int currentPoints = player.getPcCafePoints();
+						final int upgradePoints = player.getPcCafePoints() + (int) createItemAmount;
+						player.setPcCafePoints(upgradePoints);
+						final SystemMessage message = new SystemMessage(SystemMessageId.YOU_EARNED_S1_PA_POINT_S).addInt((int) createItemAmount);
+						player.sendPacket(message);
+						player.sendPacket(new ExPCCafePointInfo(currentPoints, upgradePoints, 1));
+						specialReward = true;
+						continue;
+					}
+					else if (expi.getId() == SpecialItemType.HONOR_COINS.getClientId())
 					{
 						player.setHonorCoins(player.getHonorCoins() + (int) createItemAmount);
 						player.sendMessage("You have obtained " + (createItemAmount) + " Honor Coin.");

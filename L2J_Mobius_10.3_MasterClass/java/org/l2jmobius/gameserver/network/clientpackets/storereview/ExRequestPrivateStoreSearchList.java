@@ -112,7 +112,7 @@ public class ExRequestPrivateStoreSearchList implements ClientPacket
 		{
 			if (itemIds.contains(transaction.getItemId()))
 			{
-				history.add(new ItemHistoryTransaction(transaction.getTransactionType(), transaction.getCount(), transaction.getPrice(), transaction.getItemId(), transaction.getEnchantLevel(), false));
+				history.add(transaction);
 			}
 		});
 		
@@ -292,7 +292,7 @@ public class ExRequestPrivateStoreSearchList implements ClientPacket
 	
 	private boolean isLifeStone(ItemTemplate item)
 	{
-		return VariationData.getInstance().getVariation(item.getId()) != null;
+		return VariationData.getInstance().hasVariation(item.getId());
 	}
 	
 	private boolean isDye(ItemTemplate item)
@@ -484,7 +484,7 @@ public class ExRequestPrivateStoreSearchList implements ClientPacket
 		private final Player _owner;
 		private final PrivateStoreType _storeType;
 		
-		private ShopItem(TradeItem item, Player owner, PrivateStoreType storeType)
+		public ShopItem(TradeItem item, Player owner, PrivateStoreType storeType)
 		{
 			_item = item;
 			_owner = owner;

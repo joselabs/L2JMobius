@@ -1,13 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="49001" toLevel="5" name="Kookaburra Chick">
-		<!-- A pet able to cast spells. Fights using various magic spells. Can evolve to Kookaburra. <Basic stats> P. Def. $s1 M. Def. $s1 Max HP $s1 <Preferred weapons> Rapier: - M. Atk. $s2 Blunt weapon: - M. Atk. $s2 Note! If another weapon is equipped: Atk. Spd./ Casting Spd. -10% -->
-		<icon>icon.skill0000</icon>
+		<!-- A pet able to cast spells. Fights using various magic spells. Can evolve to Kookaburra. <Basic stats>. P. Def. +5%. M. Def. +5%. Max HP +5%. <Preferred weapons>. Rapier:. - M. Atk. +10%. Blunt weapon:. - M. Atk. +10%. Note!. If another weapon is equipped:. Atk. Spd./ Casting Spd. -10% -->
+		<icon>icon.pet_race_kukaburo</icon>
 		<operateType>P</operateType>
 		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MaxHp">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 			<effect name="MAtk">
 				<amount>
-					<value level="1">20</value>
+					<value level="1">10</value>
 					<value level="2">20</value>
 					<value level="3">30</value>
 					<value level="4">35</value>
@@ -24,6 +54,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>SWORD</item>
 					<item>DAGGER</item>
 					<item>POLE</item>
@@ -47,6 +78,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>SWORD</item>
 					<item>DAGGER</item>
 					<item>POLE</item>
@@ -68,92 +100,15 @@
 		</effects>
 	</skill>
 	<skill id="49002" toLevel="20" name="Magic Missile">
-		<!-- <Attack skill> Attacks with magic missiles. Basic magic power: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Attack skill>. Attacks with magic missiles. Basic magic power: 55 -->
+		<icon>icon.pet_magic_missile</icon>
 		<operateType>A1</operateType>
 		<castRange>700</castRange>
-		<hitTime>2</hitTime>
-		<coolTime>1</coolTime>
-		<effectPoint>
-			<value level="1">-100</value>
-			<value level="2">-200</value>
-			<value level="3">-300</value>
-			<value level="4">-400</value>
-			<value level="5">-500</value>
-			<value level="6">-600</value>
-			<value level="7">-650</value>
-			<value level="8">-700</value>
-			<value level="9">-750</value>
-			<value level="10">-800</value>
-			<value level="11">-810</value>
-			<value level="12">-820</value>
-			<value level="13">-830</value>
-			<value level="14">-840</value>
-			<value level="15">-850</value>
-			<value level="16">-860</value>
-			<value level="17">-870</value>
-			<value level="18">-880</value>
-			<value level="19">-890</value>
-			<value level="20">-900</value>
-		</effectPoint>
-		<mpConsume>
-			<value level="1">6</value>
-			<value level="2">10</value>
-			<value level="3">15</value>
-			<value level="4">19</value>
-			<value level="5">22</value>
-			<value level="6">26</value>
-			<value level="7">27</value>
-			<value level="8">28</value>
-			<value level="9">30</value>
-			<value level="10">32</value>
-			<value level="11">30</value>
-			<value level="12">28</value>
-			<value level="13">27</value>
-			<value level="14">26</value>
-			<value level="15">25</value>
-			<value level="16">24</value>
-			<value level="17">23</value>
-			<value level="18">22</value>
-			<value level="19">21</value>
-			<value level="20">20</value>
-		</mpConsume>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<effects>
-			<effect name="PhysicalAttack">
-				<power>
-					<value level="1">50</value>
-					<value level="2">60</value>
-					<value level="3">70</value>
-					<value level="4">80</value>
-					<value level="5">90</value>
-					<value level="6">100</value>
-					<value level="7">115</value>
-					<value level="8">130</value>
-					<value level="9">145</value>
-					<value level="10">160</value>
-					<value level="11">162</value>
-					<value level="12">164</value>
-					<value level="13">166</value>
-					<value level="14">168</value>
-					<value level="15">170</value>
-					<value level="16">172</value>
-					<value level="17">174</value>
-					<value level="18">176</value>
-					<value level="19">178</value>
-					<value level="20">180</value>
-				</power>
-			</effect>
-		</effects>
-	</skill>
-	<skill id="49003" toLevel="20" name="Energy Burst">
-		<!-- <Attack skill> Attacks with a powerful energy missile created with magic. Basic magic power: $s1 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-		<castRange>700</castRange>
-		<hitTime>2</hitTime>
-		<coolTime>1</coolTime>
+		<effectRange>1200</effectRange>
+		<hitTime>2000</hitTime>
+		<reuseDelay>1000</reuseDelay>
+		<basicProperty>MAGIC</basicProperty>
+		<isMagic>1</isMagic>
 		<effectPoint>
 			<value level="1">-100</value>
 			<value level="2">-200</value>
@@ -203,37 +158,122 @@
 		<effects>
 			<effect name="MagicalAttack">
 				<power>
-					<value level="1">50</value>
-					<value level="2">60</value>
-					<value level="3">70</value>
-					<value level="4">80</value>
-					<value level="5">90</value>
-					<value level="6">100</value>
-					<value level="7">115</value>
-					<value level="8">130</value>
-					<value level="9">145</value>
-					<value level="10">160</value>
-					<value level="11">162</value>
-					<value level="12">164</value>
-					<value level="13">166</value>
-					<value level="14">168</value>
-					<value level="15">170</value>
-					<value level="16">172</value>
-					<value level="17">174</value>
-					<value level="18">176</value>
-					<value level="19">178</value>
-					<value level="20">180</value>
+					<value level="1">55</value>
+					<value level="2">66</value>
+					<value level="3">77</value>
+					<value level="4">88</value>
+					<value level="5">99</value>
+					<value level="6">110</value>
+					<value level="7">126</value>
+					<value level="8">143</value>
+					<value level="9">159</value>
+					<value level="10">176</value>
+					<value level="11">178</value>
+					<value level="12">180</value>
+					<value level="13">182</value>
+					<value level="14">184</value>
+					<value level="15">187</value>
+					<value level="16">189</value>
+					<value level="17">191</value>
+					<value level="18">193</value>
+					<value level="19">195</value>
+					<value level="20">198</value>
+				</power>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="49003" toLevel="20" name="Energy Burst">
+		<!-- <Attack skill>. Attacks with a powerful energy missile created with magic. Basic magic power: 55 -->
+		<icon>icon.skill1417</icon>
+		<operateType>A1</operateType>
+		<affectLimit>5-12</affectLimit>
+		<affectRange>200</affectRange>
+		<castRange>700</castRange>
+		<effectRange>1200</effectRange>
+		<hitTime>2000</hitTime>
+		<basicProperty>MAGIC</basicProperty>
+		<isMagic>1</isMagic>
+		<effectPoint>
+			<value level="1">-100</value>
+			<value level="2">-200</value>
+			<value level="3">-300</value>
+			<value level="4">-400</value>
+			<value level="5">-500</value>
+			<value level="6">-600</value>
+			<value level="7">-650</value>
+			<value level="8">-700</value>
+			<value level="9">-750</value>
+			<value level="10">-800</value>
+			<value level="11">-810</value>
+			<value level="12">-820</value>
+			<value level="13">-830</value>
+			<value level="14">-840</value>
+			<value level="15">-850</value>
+			<value level="16">-860</value>
+			<value level="17">-870</value>
+			<value level="18">-880</value>
+			<value level="19">-890</value>
+			<value level="20">-900</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">6</value>
+			<value level="2">10</value>
+			<value level="3">15</value>
+			<value level="4">19</value>
+			<value level="5">22</value>
+			<value level="6">26</value>
+			<value level="7">27</value>
+			<value level="8">28</value>
+			<value level="9">30</value>
+			<value level="10">32</value>
+			<value level="11">30</value>
+			<value level="12">28</value>
+			<value level="13">27</value>
+			<value level="14">26</value>
+			<value level="15">25</value>
+			<value level="16">24</value>
+			<value level="17">23</value>
+			<value level="18">22</value>
+			<value level="19">21</value>
+			<value level="20">20</value>
+		</mpConsume>
+		<targetType>ENEMY</targetType>
+		<affectScope>RANGE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>
+					<value level="1">55</value>
+					<value level="2">66</value>
+					<value level="3">77</value>
+					<value level="4">88</value>
+					<value level="5">99</value>
+					<value level="6">110</value>
+					<value level="7">126</value>
+					<value level="8">143</value>
+					<value level="9">159</value>
+					<value level="10">176</value>
+					<value level="11">178</value>
+					<value level="12">180</value>
+					<value level="13">182</value>
+					<value level="14">184</value>
+					<value level="15">187</value>
+					<value level="16">189</value>
+					<value level="17">191</value>
+					<value level="18">193</value>
+					<value level="19">195</value>
+					<value level="20">198</value>
 				</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49004" toLevel="5" name="Entrenching">
-		<!-- <Buff skill> The pet buries itself to fire the target. The pet is immobilized. <Effect> P. Def. $s1 M. Def. $s2 <Skill upgrade> Magic Missile ? Energy Burst -->
-		<icon>icon.skill0000</icon>
+		<!-- <Buff skill>. The pet buries itself to fire the target. The pet is immobilized. <Effect>. P. Def. +30%. M. Def. +15%. <Skill upgrade>. Magic Missile → Energy Burst -->
+		<icon>icon.pet_siege_mode</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>30</abnormalTime>
 		<reuseDelay>60000</reuseDelay>
-		<hitTime>1</hitTime>
+		<hitTime>1000</hitTime>
 		<targetType>PET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
@@ -245,6 +285,7 @@
 					<value level="4">70</value>
 					<value level="5">100</value>
 				</amount>
+				<mode>PER</mode>
 			</effect>
 			<effect name="MagicalDefence">
 				<amount>
@@ -254,19 +295,30 @@
 					<value level="4">50</value>
 					<value level="5">70</value>
 				</amount>
+				<mode>PER</mode>
 			</effect>
 			<effect name="ImmobilePetBuff" />
+			<effect name="ReplaceSkillBySkill">
+				<existingSkillId>49002</existingSkillId> <!-- Magic Missile -->
+				<replacementSkillId>49003</replacementSkillId> <!-- Energy Burst -->
+			</effect>
 		</effects>
 	</skill>
 	<skill id="49005" toLevel="5" name="Chain Block">
-		<!-- <Hold skill> Makes the enemy immobilized. <Effect> Decreases skill attack range. Unable to use magic skills. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- <Hold skill>. Makes the enemy immobilized. <Effect>. Decreases skill attack range. Unable to use magic skills. -->
+		<icon>icon.skill16856</icon>
+		<operateType>A2</operateType>
+		<abnormalTime>10</abnormalTime>
+		<abnormalType>CHAIN_BLOCK</abnormalType>
+		<abnormalVisualEffect>H_P_CHAIN_BLOCK_AVE</abnormalVisualEffect>
+		<abnormalLevel>1</abnormalLevel>
+		<isDebuff>true</isDebuff>
 		<mpConsume>50</mpConsume>
 		<castRange>700</castRange>
-		<hitTime>1</hitTime>
-		<coolTime>1</coolTime>
-		<reuseDelay>20</reuseDelay>
+		<effectRange>1200</effectRange>
+		<hitTime>1000</hitTime>
+		<coolTime>1000</coolTime>
+		<reuseDelay>10000</reuseDelay>
 		<effectPoint>
 			<value level="1">-760</value>
 			<value level="2">-780</value>
@@ -274,7 +326,8 @@
 			<value level="4">-820</value>
 			<value level="5">-850</value>
 		</effectPoint>
-		<targetType>ENEMY</targetType>
+		<trait>ANOMALY</trait>
+		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions" />
@@ -284,43 +337,125 @@
 		</effects>
 	</skill>
 	<skill id="49006" toLevel="5" name="Blocked Target Change">
-		<!-- <Special skill> Kookaburra switches places with the target. Applied only on targets affected by Chain Block. -->
-		<icon>icon.skill0000</icon>
+		<!-- <Special skill>. Kookaburra switches places with the target. Applied only on targets affected by Chain Block. -->
+		<icon>icon.pet_chain_block</icon>
 		<operateType>A1</operateType>
-		<targetType>ENEMY</targetType>
+		<castRange>700</castRange>
+		<effectRange>1200</effectRange>
+		<hitTime>1500</hitTime>
+		<mpConsume>350</mpConsume>
+		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<conditions>
-			<condition name="OpAffectedBySkill">
-				<skillId>49005</skillId> <!-- Chain Block -->
+		<targetConditions>
+			<condition name="OpCheckAbnormal">
+				<type>CHAIN_BLOCK</type>
+				<level>1</level>
+				<hasAbnormal>true</hasAbnormal>
 			</condition>
-		</conditions>
+		</targetConditions>
 		<effects>
 			<effect name="BlinkSwap" />
 		</effects>
 	</skill>
 	<skill id="49007" toLevel="1" name="Magic Flare">
-		<!-- Stacks 1 effect when Magic Missile is used. Applies the Magic Flare effect once 3 effects are stacked. Basic magic power: 200 PvE effect: suppresses with a certain chance. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- Stacks 1 effect when Magic Missile is used. Applies the Magic Flare effect once 3 effects are stacked. Basic magic power: 200. PvE effect: suppresses with a certain chance. -->
+		<icon>icon.skill0467</icon>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="TriggerSkillBySkillAttack">
+				<attackSkillId>49002</attackSkillId> <!-- Magic Missile -->
+				<targetType>PET</targetType>
+				<skillId>49008</skillId> <!-- Magic Flare Lv. 1 -->
+				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="49008" toLevel="3" name="Magic Flare Lv. 1">
 		<!-- Magic Flare Lv. 1 is active. Increases the effect level upon Magic Missile use. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<icon>
+			<value level="1">icon.skill5446_1</value>
+			<value level="2">icon.skill5446_2</value>
+			<value level="3">icon.skill5446_3</value>
+		</icon>
+		<operateType>A2</operateType>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+		</abnormalLevel>
+		<abnormalType>MAGIC_FLARE</abnormalType>
+		<abnormalTime>120</abnormalTime>
+		<targetType>PET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="TriggerSkillBySkillAttack" fromLevel="3" toLevel="3">
+				<attackSkillId>49002</attackSkillId> <!-- Magic Missile -->
+				<targetType>ENEMY</targetType>
+				<skillId>49010</skillId> <!-- Magic Flare -->
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="49009" toLevel="1" name="Cancel Magic Flare">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="49010" toLevel="1" name="Magic Flare">
-		<icon>icon.skill0000</icon>
+		<icon>icon.skill30004</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
+		<basicProperty>MAGIC</basicProperty>
+		<isMagic>1</isMagic>
+		<effectPoint>-900</effectPoint>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<selfEffects>
+			<effect name="DispelBySlot">
+				<dispel>MAGIC_FLARE,3</dispel>
+			</effect>
+		</selfEffects>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>200</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="49011" toLevel="5" name="Tiger Cub">
-		<!-- A furious pet who fights like a wild beast. Moves swiftly and strikes enemies' vital points with its claws. Can evolve to Tiger. <Basic stats> P. Def. $s1 M. Def. $s1 Max HP $s1 <Preferred weapon> Dagger: - P. Atk. $s2 - Vital Point Attack Rate $s3 Note! If another weapon is equipped: Atk. Spd./ Casting Spd. -10% -->
-		<icon>icon.skill0000</icon>
+		<!-- A furious pet who fights like a wild beast. Moves swiftly and strikes enemies' vital points with its claws. Can evolve to Tiger. <Basic stats>. P. Def. +5%. M. Def. +5%. Max HP +5%. <Preferred weapon>. Dagger:. - P. Atk. +5%. - Vital Point Attack Rate +20%. Note!. If another weapon is equipped:. Atk. Spd./ Casting Spd. -10% -->
+		<icon>icon.pet_race_tiger</icon>
 		<operateType>P</operateType>
 		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MaxHp">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 			<effect name="PAtk">
 				<amount>
 					<value level="1">5</value>
@@ -336,11 +471,11 @@
 			</effect>
 			<effect name="FatalBlowRate">
 				<amount>
-					<value level="1">10</value>
-					<value level="2">15</value>
-					<value level="3">20</value>
-					<value level="4">25</value>
-					<value level="5">30</value>
+					<value level="1">20</value>
+					<value level="2">25</value>
+					<value level="3">30</value>
+					<value level="4">35</value>
+					<value level="5">40</value>
 				</amount>
 				<weaponType>
 					<item>DAGGER</item>
@@ -352,6 +487,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>SWORD</item>
 					<item>BLUNT</item>
 					<item>POLE</item>
@@ -375,6 +511,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>SWORD</item>
 					<item>BLUNT</item>
 					<item>POLE</item>
@@ -396,9 +533,11 @@
 		</effects>
 	</skill>
 	<skill id="49012" toLevel="20" name="Breaking Blaster">
-		<!-- <Attack skill> Attacks with claws tearing the enemy to pieces. Attacks vital points. Additionally P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Attack skill>. Attacks with claws tearing the enemy to pieces. Attacks vital points. Additionally P. Atk.: 128 -->
+		<icon>icon.pet_tearing_blow</icon>
 		<operateType>A1</operateType>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<mpConsume>
 			<value level="1">6</value>
 			<value level="2">14</value>
@@ -421,10 +560,11 @@
 			<value level="19">68</value>
 			<value level="20">70</value>
 		</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>1</hitTime>
+		<castRange>100</castRange>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>1</reuseDelay>
+		<reuseDelay>1000</reuseDelay>
 		<effectPoint>
 			<value level="1">-100</value>
 			<value level="2">-200</value>
@@ -435,21 +575,22 @@
 			<value level="7">-650</value>
 			<value level="8">-700</value>
 			<value level="9">-750</value>
-			<value level="11">-800</value>
-			<value level="12">-810</value>
-			<value level="13">-820</value>
-			<value level="14">-830</value>
-			<value level="15">-840</value>
-			<value level="16">-850</value>
-			<value level="17">-860</value>
-			<value level="18">-870</value>
-			<value level="19">-880</value>
-			<value level="10">-890</value>
+			<value level="10">-800</value>
+			<value level="11">-810</value>
+			<value level="12">-820</value>
+			<value level="13">-830</value>
+			<value level="14">-840</value>
+			<value level="15">-850</value>
+			<value level="16">-860</value>
+			<value level="17">-870</value>
+			<value level="18">-880</value>
+			<value level="19">-890</value>
+			<value level="20">-900</value>
 		</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="FatalBlow">
 				<power>
 					<value level="1">128</value>
 					<value level="2">496</value>
@@ -472,16 +613,19 @@
 					<value level="19">10416</value>
 					<value level="20">10570</value>
 				</power>
+				<chanceBoost>200</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49013" toLevel="5" name="Blinking Attack">
-		<!-- <Rush skill> Jumps to the target's back and attacks. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Rush skill>. Jumps to the target's back and attacks. Additionally, P. Atk.: 890 -->
+		<icon>icon.pet_flicker_attack</icon>
 		<operateType>A1</operateType>
-		<hitTime>150</hitTime>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>3</reuseDelay>
+		<reuseDelay>3000</reuseDelay>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<mpConsume>
 			<value level="1">30</value>
 			<value level="2">40</value>
@@ -490,6 +634,7 @@
 			<value level="5">40</value>
 		</mpConsume>
 		<castRange>700</castRange>
+		<effectRange>1200</effectRange>
 		<effectPoint>
 			<value level="1">-400</value>
 			<value level="2">-600</value>
@@ -497,10 +642,13 @@
 			<value level="4">-760</value>
 			<value level="5">-760</value>
 		</effectPoint>
-		<nextAction>ATTACK</nextAction>
-		<isDebuff>true</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpCheckCastRange">
+				<distance>100</distance>
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="TeleportToTarget" />
 			<effect name="PhysicalAttack">
@@ -515,14 +663,14 @@
 		</effects>
 	</skill>
 	<skill id="49014" toLevel="5" name="Beast Within">
-		<!-- <Buff skill> Unleashes the power of wild beast. <Effect> P. Atk. $s1 Atk. Spd. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Buff skill>. Unleashes the power of wild beast. <Effect>. P. Atk. +20%. Atk. Spd. +20% -->
+		<icon>icon.pet_natural_beast</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>30</abnormalTime>
-		<hitTime>150</hitTime>
+		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>60</reuseDelay>
-		<targetType>SELF</targetType>
+		<reuseDelay>60000</reuseDelay>
+		<targetType>PET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PAtk">
@@ -547,38 +695,34 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="49015" toLevel="5" name="Sharp Senses">
-		<!-- Skill Evasion +20% <Skill upgrade> Breaking Blaster: there is a 50% chance to hit the target. Strong Bite: there is a 30% chance to hit the target. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A2</operateType>
-		<abnormalTime>
-			<value level="1">10</value>
-			<value level="2">15</value>
-			<value level="3">20</value>
-			<value level="4">25</value>
-			<value level="5">30</value>
-		</abnormalTime>
-		<hitTime>1</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>60</reuseDelay>
-		<effectPoint>100</effectPoint>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+	<skill id="49015" toLevel="1" name="Sharp Senses">
+		<!-- Skill Evasion +20%. <Skill upgrade>. Breaking Blaster: there is a 50% chance to hit the target. Strong Bite: there is a 30% chance to hit the target. -->
+		<icon>icon.skill8364</icon>
+		<operateType>P</operateType>
 		<effects>
-			<effect name="Hide">
-				<chance>100</chance>
+			<effect name="SkillEvasion">
+				<amount>20</amount>
+				<magicType>0</magicType>
 			</effect>
+			<effect name="SkillEvasion">
+				<amount>20</amount>
+				<magicType>1</magicType>
+			</effect>
+			<!-- TODO: <Skill upgrade> Breaking Blaster: there is a 50% chance to hit the target. Strong Bite: there is a 30% chance to hit the target. -->
 		</effects>
 	</skill>
 	<skill id="49016" toLevel="15" name="Strong Bite">
-		<!-- <Attack skill> Bites the target. Attacks to vital points. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Attack skill>. Bites the target. Attacks to vital points. Additionally, P. Atk.: 9300 -->
+		<icon>icon.pet_gigantic_bite</icon>
 		<operateType>A1</operateType>
 		<mpConsume>50</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>1</hitTime>
+		<castRange>100</castRange>
+		<effectRange>400</effectRange>
+		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>20</reuseDelay>
+		<reuseDelay>20000</reuseDelay>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<effectPoint>
 			<value level="1">-760</value>
 			<value level="2">-770</value>
@@ -599,7 +743,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="FatalBlow">
 				<power>
 					<value level="1">9300</value>
 					<value level="2">9449</value>
@@ -617,18 +761,22 @@
 					<value level="14">11432</value>
 					<value level="15">11615</value>
 				</power>
+				<chanceBoost>200</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49017" toLevel="15" name="Strong Bite">
-		<!-- <Attack skill> Bites the target. Attacks to vital points. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Attack skill>. Bites the target. Attacks to vital points. Additionally, P. Atk.: 9300 -->
+		<icon>icon.pet_gigantic_bite</icon>
 		<operateType>A1</operateType>
 		<mpConsume>50</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>1</hitTime>
+		<castRange>100</castRange>
+		<effectRange>400</effectRange>
+		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>20</reuseDelay>
+		<reuseDelay>20000</reuseDelay>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<effectPoint>
 			<value level="1">-760</value>
 			<value level="2">-770</value>
@@ -649,37 +797,148 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="FatalBlow">
 				<power>
-					<value level="1">12090</value>
-					<value level="2">12283</value>
-					<value level="3">12480</value>
-					<value level="4">12680</value>
-					<value level="5">12883</value>
-					<value level="6">13089</value>
-					<value level="7">13298</value>
-					<value level="8">13511</value>
-					<value level="9">13727</value>
-					<value level="10">13947</value>
-					<value level="11">14170</value>
-					<value level="12">14397</value>
-					<value level="13">14627</value>
-					<value level="14">14861</value>
-					<value level="15">15099</value>
+					<value level="1">9300</value>
+					<value level="2">9449</value>
+					<value level="3">9600</value>
+					<value level="4">9754</value>
+					<value level="5">9910</value>
+					<value level="6">10069</value>
+					<value level="7">10230</value>
+					<value level="8">10394</value>
+					<value level="9">10560</value>
+					<value level="10">10729</value>
+					<value level="11">10901</value>
+					<value level="12">11075</value>
+					<value level="13">11252</value>
+					<value level="14">11432</value>
+					<value level="15">11615</value>
 				</power>
+				<chanceBoost>200</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49018" toLevel="20" name="Breaking Blaster">
-		<!-- <Attack skill> Attacks with claws tearing the enemy to pieces. Attacks vital points. Additionally P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Attack skill>. Attacks with claws tearing the enemy to pieces. Attacks vital points. Additionally P. Atk.: 128 -->
+		<icon>icon.pet_tearing_blow</icon>
 		<operateType>A1</operateType>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
+		<mpConsume>
+			<value level="1">6</value>
+			<value level="2">14</value>
+			<value level="3">22</value>
+			<value level="4">28</value>
+			<value level="5">34</value>
+			<value level="6">39</value>
+			<value level="7">42</value>
+			<value level="8">45</value>
+			<value level="9">48</value>
+			<value level="10">50</value>
+			<value level="11">52</value>
+			<value level="12">54</value>
+			<value level="13">56</value>
+			<value level="14">58</value>
+			<value level="15">60</value>
+			<value level="16">62</value>
+			<value level="17">64</value>
+			<value level="18">66</value>
+			<value level="19">68</value>
+			<value level="20">70</value>
+		</mpConsume>
+		<castRange>100</castRange>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
+		<coolTime>500</coolTime>
+		<reuseDelay>1000</reuseDelay>
+		<effectPoint>
+			<value level="1">-100</value>
+			<value level="2">-200</value>
+			<value level="3">-300</value>
+			<value level="4">-400</value>
+			<value level="5">-500</value>
+			<value level="6">-600</value>
+			<value level="7">-650</value>
+			<value level="8">-700</value>
+			<value level="9">-750</value>
+			<value level="10">-800</value>
+			<value level="11">-810</value>
+			<value level="12">-820</value>
+			<value level="13">-830</value>
+			<value level="14">-840</value>
+			<value level="15">-850</value>
+			<value level="16">-860</value>
+			<value level="17">-870</value>
+			<value level="18">-880</value>
+			<value level="19">-890</value>
+			<value level="20">-900</value>
+		</effectPoint>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="FatalBlow">
+				<power>
+					<value level="1">128</value>
+					<value level="2">496</value>
+					<value level="3">688</value>
+					<value level="4">1597</value>
+					<value level="5">3261</value>
+					<value level="6">5120</value>
+					<value level="7">6119</value>
+					<value level="8">7151</value>
+					<value level="9">8220</value>
+					<value level="10">9053</value>
+					<value level="11">9199</value>
+					<value level="12">9346</value>
+					<value level="13">9503</value>
+					<value level="14">9652</value>
+					<value level="15">9802</value>
+					<value level="16">9952</value>
+					<value level="17">10111</value>
+					<value level="18">10264</value>
+					<value level="19">10416</value>
+					<value level="20">10570</value>
+				</power>
+				<chanceBoost>200</chanceBoost>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="49021" toLevel="5" name="Wolf Cub">
-		<!-- A pet with iron will. When attacking constantly, gets a unique effect. Can evolve to Wolf. <Basic stats> P. Def. $s1 M. Def. $s1 Max HP $s1 <Preferred weapons> Dual swords: - P. Atk. $s2 - Atk. Spd. $s3 Fist weapon: - P. Atk. $s2 - P. Critical Rate $s4 Note! If another weapon is equipped: Atk. Spd./ Casting Spd. -10% -->
-		<icon>icon.skill0000</icon>
+		<!-- A pet with iron will. When attacking constantly, gets a unique effect. Can evolve to Wolf. <Basic stats>. P. Def. +5%. M. Def. +5%. Max HP +5%. <Preferred weapons>. Dual swords:. - P. Atk. +10%. - Atk. Spd. +10%. Fist weapon:. - P. Atk. +10%. - P. Critical Rate +10. Note!. If another weapon is equipped:. Atk. Spd./ Casting Spd. -10% -->
+		<icon>icon.pet_race_wolf</icon>
 		<operateType>P</operateType>
 		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MaxHp">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 			<effect name="PAtk">
 				<amount>
 					<value level="1">10</value>
@@ -705,6 +964,18 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>DUAL</item>
+				</weaponType>
+			</effect>
+			<effect name="CriticalRate">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">15</value>
+					<value level="3">20</value>
+					<value level="4">20</value>
+					<value level="5">20</value>
+				</amount>
+				<mode>DIFF</mode>
+				<weaponType>
 					<item>FIST</item>
 				</weaponType>
 			</effect>
@@ -713,6 +984,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>SWORD</item>
 					<item>DAGGER</item>
 					<item>POLE</item>
@@ -735,6 +1007,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>SWORD</item>
 					<item>DAGGER</item>
 					<item>POLE</item>
@@ -755,9 +1028,11 @@
 		</effects>
 	</skill>
 	<skill id="49022" toLevel="20" name="Dire Claw">
-		<!-- <Attack skill> Attacks with claws. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Attack skill>. Attacks with claws. Additionally, P. Atk.: 96 -->
+		<icon>icon.pet_savage_claw</icon>
 		<operateType>A1</operateType>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<mpConsume>
 			<value level="1">6</value>
 			<value level="2">14</value>
@@ -780,10 +1055,10 @@
 			<value level="19">68</value>
 			<value level="20">70</value>
 		</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>1</hitTime>
+		<castRange>100</castRange>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>1</reuseDelay>
+		<reuseDelay>1000</reuseDelay>
 		<effectPoint>
 			<value level="1">-100</value>
 			<value level="2">-250</value>
@@ -836,8 +1111,8 @@
 		</effects>
 	</skill>
 	<skill id="49023" toLevel="5" name="Leap Attack">
-		<!-- <Rush skill> Rushes to the target. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Rush skill>. Rushes to the target. Additionally, P. Atk.: 981 -->
+		<icon>icon.pet_leap_attack</icon>
 		<operateType>DA1</operateType>
 		<mpConsume>
 			<value level="1">30</value>
@@ -847,8 +1122,8 @@
 			<value level="5">40</value>
 		</mpConsume>
 		<castRange>700</castRange>
-		<effectRange>1500</effectRange>
-		<hitTime>800</hitTime>
+		<effectRange>1200</effectRange>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>
@@ -860,7 +1135,11 @@
 		</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<nextAction>ATTACK</nextAction>
+		<conditions>
+			<condition name="OpCheckCastRange">
+				<distance>100</distance>
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="PhysicalAttack">
 				<power>
@@ -874,12 +1153,15 @@
 		</effects>
 	</skill>
 	<skill id="49024" toLevel="15" name="Last Dire Claw">
-		<!-- <Attack skill> Attacks the target and temporarily becomes large. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Attack skill>. Attacks the target and temporarily becomes large. Additionally, P. Atk.: 7760 -->
+		<icon>icon.pet_last_savage_claw</icon>
 		<operateType>A1</operateType>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<mpConsume>50</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>700</hitTime>
+		<castRange>100</castRange>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>
@@ -901,13 +1183,6 @@
 		</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<conditions>
-			<condition name="RemainHpPer">
-				<amount>30</amount>
-				<percentType>LESS</percentType>
-				<affectType>TARGET</affectType>
-			</condition>
-		</conditions>
 		<effects>
 			<effect name="PhysicalAttack">
 				<power>
@@ -937,17 +1212,16 @@
 		</selfEffects>
 	</skill>
 	<skill id="49025" toLevel="1" name="Giant Wolf">
-		<!-- <Buff skill> Becomes large. <Effect> P. Atk. +20% Atk. Spd. +20% -->
-		<icon>icon.skill0000</icon>
+		<!-- <Buff skill>. Becomes large. <Effect>. P. Atk. +20%. Atk. Spd. +20% -->
+		<icon>icon.pet_giant_wolf</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>60</abnormalTime>
+		<abnormalTime>10</abnormalTime>
 		<abnormalType>BIG_BODY</abnormalType>
 		<abnormalVisualEffect>BIG_BODY</abnormalVisualEffect>
 		<isMagic>5</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
@@ -962,10 +1236,14 @@
 		</effects>
 	</skill>
 	<skill id="49026" toLevel="3" name="Ferocity">
-		<!-- P. Skill Power $s1 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-		<reuseDelay>4</reuseDelay>
+		<!-- P. Skill Power +10% -->
+		<icon>
+			<value level="1">icon.skill10542</value>
+			<value level="2">icon.skill10542_2</value>
+			<value level="3">icon.skill10542_3</value>
+		</icon>
+		<operateType>A2</operateType>
+		<reuseDelay>4000</reuseDelay>
 		<isMagic>5</isMagic>
 		<abnormalTime>5</abnormalTime>
 		<targetType>SELF</targetType>
@@ -982,15 +1260,67 @@
 		</effects>
 	</skill>
 	<skill id="49027" toLevel="1" name="Sound Body">
-		<!-- Max HP +1000 P. Def. +15% M. Def. +15% P. Skill Critical Damage +10% -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-	</skill>
-	<skill id="49031" toLevel="5" name="Buffalo Calf">
-		<!-- A very tough pet. Takes blows perfectly and helps allies. Can evolve to Buffalo. <Basic stats> P. Def. $s1 M. Def. $s1 Max HP $s1 <Preferred weapons> Blunt weapon: - P. Atk. $s2 - Atk. Spd. $s3 Spear: - P. Atk. $s2 Note! If another weapon is equipped: Atk. Spd./ Casting Spd. -10% -->
-		<icon>icon.skill0000</icon>
+		<!-- Max HP +1000. P. Def. +15%. M. Def. +15%. P. Skill Critical Damage +10% -->
+		<icon>icon.skill0842</icon>
 		<operateType>P</operateType>
 		<effects>
+			<effect name="MaxHp">
+				<amount>1000</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="PhysicalDefence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PhysicalSkillCriticalDamage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="49031" toLevel="5" name="Buffalo Calf">
+		<!-- A very tough pet. Takes blows perfectly and helps allies. Can evolve to Buffalo. <Basic stats>. P. Def. +10%. M. Def. +10%. Max HP +10%. <Preferred weapons>. Blunt weapon:. - P. Atk. +10%. - Atk. Spd. +10%. Spear:. - P. Atk. +10%. Note!. If another weapon is equipped:. Atk. Spd./ Casting Spd. -10% -->
+		<icon>icon.pet_race_buffalo</icon>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">30</value>
+					<value level="3">50</value>
+					<value level="4">60</value>
+					<value level="5">70</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">30</value>
+					<value level="3">50</value>
+					<value level="4">60</value>
+					<value level="5">70</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MaxHp">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">30</value>
+					<value level="3">50</value>
+					<value level="4">60</value>
+					<value level="5">70</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="AdditionalPotionHp">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
 			<effect name="PAtk">
 				<amount>
 					<value level="1">10</value>
@@ -1006,28 +1336,18 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="PhysicalAttackSpeed">
-				<amount>
-					<value level="1">10</value>
-					<value level="2">10</value>
-					<value level="3">10</value>
-					<value level="4">10</value>
-					<value level="5">10</value>
-				</amount>
+				<amount>10</amount>
 				<weaponType>
 					<item>BLUNT</item>
-					<item>POLE</item>
 				</weaponType>
 				<mode>PER</mode>
-			</effect>
-			<effect name="AdditionalPotionHp">
-				<amount>20</amount>
-				<mode>DIFF</mode>
 			</effect>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>SWORD</item>
 					<item>DAGGER</item>
 					<item>POLE</item>
@@ -1051,6 +1371,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>SWORD</item>
 					<item>DAGGER</item>
 					<item>POLE</item>
@@ -1072,9 +1393,11 @@
 		</effects>
 	</skill>
 	<skill id="49032" toLevel="20" name="Horn Thrust">
-		<!-- <Attack skill> Attacks enemies with their horns. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Attack skill>. Attacks enemies with their horns. Additionally, P. Atk.: 88 -->
+		<icon>icon.pet_horn_pierce</icon>
 		<operateType>A1</operateType>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<mpConsume>
 			<value level="1">6</value>
 			<value level="2">14</value>
@@ -1097,10 +1420,11 @@
 			<value level="19">68</value>
 			<value level="20">70</value>
 		</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>150</hitTime>
+		<castRange>100</castRange>
+		<effectRange>400</effectRange>
+		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>1</reuseDelay>
+		<reuseDelay>1000</reuseDelay>
 		<effectPoint>
 			<value level="1">-100</value>
 			<value level="2">-250</value>
@@ -1153,14 +1477,28 @@
 		</effects>
 	</skill>
 	<skill id="49033" toLevel="5" name="Rump Stun">
-		<!-- <Rush/ shock skill> Charges to the target and hit it. There is a certain chance to stun the target. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
-		<operateType>DA1</operateType>
-		<abnormalTime>10</abnormalTime>
-		<mpConsume>80</mpConsume>
-		<hitTime>1</hitTime>
+		<!-- <Rush/ shock skill>. Charges to the target and hit it. There is a certain chance to stun the target. Additionally, P. Atk.: 480 -->
+		<icon>icon.pet_butt_shock</icon>
+		<operateType>DA2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>3</abnormalTime>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<activateRate>80</activateRate>
+		<isDebuff>true</isDebuff>
+		<trait>SHOCK</trait>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>3</reuseDelay>
+		<reuseDelay>3000</reuseDelay>
+		<castRange>700</castRange>
+		<effectRange>1200</effectRange>
+		<mpConsume>
+			<value level="1">30</value>
+			<value level="2">40</value>
+			<value level="3">50</value>
+			<value level="4">45</value>
+			<value level="5">40</value>
+		</mpConsume>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effectPoint>
@@ -1170,15 +1508,12 @@
 			<value level="4">-760</value>
 			<value level="5">-760</value>
 		</effectPoint>
+		<conditions>
+			<condition name="OpCheckCastRange">
+				<distance>100</distance>
+			</condition>
+		</conditions>
 		<effects>
-			<effect name="AddHate">
-				<power>100</power>
-			</effect>
-			<effect name="BlockActions">
-				<amount>5</amount>
-				<chance>10</chance>
-				<mode>PER</mode>
-			</effect>
 			<effect name="PhysicalAttack">
 				<power>
 					<value level="1">480</value>
@@ -1188,19 +1523,36 @@
 					<value level="5">2580</value>
 				</power>
 			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
+			<!-- <effect name="CallSkill">
+				<skillId>49301</skillId> Rump Stun
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+				</skillLevel>
+			</effect> -->
 		</effects>
 	</skill>
 	<skill id="49034" toLevel="5" name="Pulling Body">
-		<!-- <Buff skill> Makes nearby enemies move toward the pet. <Effect> P. Def. +$s1 M. Def. +$s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Buff skill>. Makes nearby enemies move toward the pet. <Effect>. P. Def. ++2400. M. Def. ++2000 -->
+		<icon>icon.pet_magnetic_body</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>10</abnormalTime>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<mpConsume>80</mpConsume>
-		<hitTime>1</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>30</reuseDelay>
-		<targetType>ENEMY_ONLY</targetType>
+		<hitTime>1000</hitTime>
+		<affectLimit>5-12</affectLimit>
+		<affectRange>300</affectRange>
+		<reuseDelay>30000</reuseDelay>
+		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
 		<effectPoint>
 			<value level="1">-11400</value>
 			<value level="2">-11850</value>
@@ -1208,38 +1560,42 @@
 			<value level="4">-12750</value>
 			<value level="5">-13500</value>
 		</effectPoint>
-		<effects>
-			<effect name="AddHate">
-				<power>100</power>
-			</effect>
+		<selfEffects>
 			<effect name="PhysicalDefence">
 				<amount>
-					<value level="1">2200</value>
-					<value level="2">2400</value>
-					<value level="3">2600</value>
-					<value level="4">2800</value>
-					<value level="5">3200</value>
+					<value level="1">2400</value>
+					<value level="2">2800</value>
+					<value level="3">3200</value>
+					<value level="4">3600</value>
+					<value level="5">4000</value>
 				</amount>
 			</effect>
 			<effect name="MagicalDefence">
 				<amount>
-					<value level="1">1600</value>
-					<value level="2">1700</value>
-					<value level="3">1800</value>
-					<value level="4">1900</value>
-					<value level="5">2000</value>
+					<value level="1">2000</value>
+					<value level="2">2300</value>
+					<value level="3">2600</value>
+					<value level="4">2900</value>
+					<value level="5">3200</value>
 				</amount>
 			</effect>
+		</selfEffects>
+		<effects>
+			<effect name="TargetMe" />
+			<effect name="GetAgro" />
 		</effects>
 	</skill>
 	<skill id="49035" toLevel="8" name="Breath of Hurricane">
-		<!-- <Provoking skill> Provokes the target. Power $s1. -->
-		<icon>icon.skill0000</icon>
+		<!-- <Provoking skill>. Provokes the target. Power 6000. -->
+		<icon>icon.pet_furious_breath</icon>
 		<operateType>A1</operateType>
 		<castRange>400</castRange>
-		<hitTime>1</hitTime>
+		<effectRange>900</effectRange>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>3</reuseDelay>
+		<reuseDelay>3000</reuseDelay>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<effectPoint>
 			<value level="1">-6000</value>
 			<value level="2">-7500</value>
@@ -1251,7 +1607,7 @@
 			<value level="8">-13500</value>
 		</effectPoint>
 		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>POINT_BLANK</affectScope>
+		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GetAgro" />
 			<effect name="AddHate">
@@ -1270,7 +1626,7 @@
 	</skill>
 	<skill id="49036" toLevel="1" name="Pulling Body">
 		<!-- Immobilized. -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.pet_magnetic_body</icon>
 		<operateType>A1</operateType>
 		<effectPoint>-400</effectPoint>
 		<isDebuff>true</isDebuff>
@@ -1281,25 +1637,74 @@
 		</effects>
 	</skill>
 	<skill id="49037" toLevel="5" name="Pulling Body">
-		<!-- <Buff skill> Makes nearby enemies move toward the pet. <Effect> P. Def. +$s1 M. Def. +$s2 Creates a barrier with 2000 HP for 10 sec. -->
-		<icon>icon.skill0000</icon>
+		<!-- <Buff skill>. Makes nearby enemies move toward the pet. <Effect>. P. Def. ++2400. M. Def. ++2000. Creates a barrier with 2000 HP for 10 sec. -->
+		<icon>icon.pet_magnetic_body</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="49038" toLevel="1" name="Pulling Defense">
-		<!-- Absorbs $s1 of the damage. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- Absorbs 2000 of the damage. -->
+		<icon>icon.skill10755</icon>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>10</abnormalTime>
+		<abnormalType>ABSORB</abnormalType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="AbsorbDamage">
+				<amount>2000</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="49039" toLevel="1" name="Pulling Defense">
-		<!-- When Pulling Body is used: Creates a barrier with 2000 HP for 10 sec. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-	</skill>
-	<skill id="49041" toLevel="5" name="Hawk Hatchling">
-		<!-- A pet able to attack from distance. Keeps enemies at bay. Can evolve to Hawk. <Basic stats> P. Def. $s1 M. Def. $s1 Max HP $s1 <Preferred weapons> Bow: - P. Atk. $s2 - P. Accuracy $s3 Firearms: - P. Atk. $s2 Note! If another weapon is equipped: Atk. Spd./ Casting Spd. -10% -->
-		<icon>icon.skill0000</icon>
+		<!-- When Pulling Body is used:. Creates a barrier with 2000 HP for 10 sec. -->
+		<icon>icon.skill10755</icon>
 		<operateType>P</operateType>
 		<effects>
+			<effect name="TriggerSkillBySkill">
+				<castSkillId>49034</castSkillId> <!-- Pulling Body -->
+				<skillId>49038</skillId> <!-- Pulling Defense -->
+				<skillLevel>1</skillLevel>
+				<targetType>SELF</targetType>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="49041" toLevel="5" name="Hawk Hatchling">
+		<!-- A pet able to attack from distance. Keeps enemies at bay. Can evolve to Hawk. <Basic stats>. P. Def. +5%. M. Def. +5%. Max HP +5%. <Preferred weapons>. Bow:. - P. Atk. +5%. - P. Accuracy +2. Firearms:. - P. Atk. +5%. Note!. If another weapon is equipped:. Atk. Spd./ Casting Spd. -10% -->
+		<icon>icon.pet_race_hawk</icon>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MaxHp">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 			<effect name="PAtk">
 				<amount>
 					<value level="1">5</value>
@@ -1311,6 +1716,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
+					<item>PISTOLS</item>
 				</weaponType>
 			</effect>
 			<effect name="Accuracy">
@@ -1377,9 +1783,10 @@
 		</effects>
 	</skill>
 	<skill id="49042" toLevel="20" name="Arrow Feather">
-		<!-- <Attack skill> Shoots the target with a feather. Limits the target's invisibility. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- <Attack skill>. Shoots the target with a feather. Limits the target's invisibility. Additionally, P. Atk.: 115 -->
+		<icon>icon.pet_feather_arrow</icon>
+		<operateType>A2</operateType>
+		<abnormalTime>5</abnormalTime>
 		<mpConsume>
 			<value level="1">6</value>
 			<value level="2">14</value>
@@ -1402,10 +1809,13 @@
 			<value level="19">68</value>
 			<value level="20">70</value>
 		</mpConsume>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<castRange>700</castRange>
-		<hitTime>150</hitTime>
+		<effectRange>1200</effectRange>
+		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>1</reuseDelay>
+		<reuseDelay>1000</reuseDelay>
 		<effectPoint>
 			<value level="1">-100</value>
 			<value level="2">-250</value>
@@ -1428,13 +1838,14 @@
 			<value level="19">-900</value>
 			<value level="20">-900</value>
 		</effectPoint>
-		<isDebuff>true</isDebuff>
-		<abnormalTime>5</abnormalTime>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DispelBySlot">
-				<dispel>INVINCIBILITY_SPECIAL,-1;HIDE,-1;DANCE_OF_SHADOW,-1</dispel>
+				<dispel>HIDE,-1</dispel>
+			</effect>
+			<effect name="BlockAbnormalSlot">
+				<slot>HIDE</slot>
 			</effect>
 			<effect name="PhysicalAttack">
 				<power>
@@ -1463,11 +1874,14 @@
 		</effects>
 	</skill>
 	<skill id="49043" toLevel="5" name="Quick Jump">
-		<!-- <Rush/ knockback skill> Rushes to the target. There is a certain chance to knockback the target. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-		<nextAction>ATTACK</nextAction>
+		<!-- <Rush/ knockback skill>. Rushes to the target. There is a certain chance to knockback the target. Additionally, P. Atk.: 960 -->
+		<icon>icon.pet_fast_dive</icon>
+		<operateType>DA1</operateType>
+		<hitTime>1000</hitTime>
+		<coolTime>500</coolTime>
+		<reuseDelay>3000</reuseDelay>
 		<castRange>700</castRange>
+		<effectRange>1200</effectRange>
 		<mpConsume>
 			<value level="1">30</value>
 			<value level="2">40</value>
@@ -1475,9 +1889,6 @@
 			<value level="4">45</value>
 			<value level="5">40</value>
 		</mpConsume>
-		<hitTime>1</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3</reuseDelay>
 		<effectPoint>
 			<value level="1">-400</value>
 			<value level="2">-600</value>
@@ -1487,33 +1898,49 @@
 		</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpCheckCastRange">
+				<distance>100</distance>
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="PhysicalAttack">
 				<power>
-					<value level="1">800</value>
-					<value level="2">2500</value>
-					<value level="3">4500</value>
-					<value level="4">5500</value>
-					<value level="5">6500</value>
+					<value level="1">960</value>
+					<value level="2">3000</value>
+					<value level="3">5400</value>
+					<value level="4">6600</value>
+					<value level="5">7800</value>
 				</power>
+			</effect>
+			<effect name="CallSkill">
+				<skillId>49308</skillId> <!-- Quick Jump -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+				</skillLevel>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49044" toLevel="5" name="Scout's Strike">
-		<!-- <Anomaly skill> Attacks the target and returns. There is a certain chance to stun the target. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Anomaly skill>. Attacks the target and returns. There is a certain chance to stun the target. Additionally, P. Atk.: 2500 -->
+		<icon>icon.skill10787</icon>
 		<operateType>A1</operateType>
+		<hitTime>1000</hitTime>
+		<coolTime>500</coolTime>
+		<reuseDelay>20000</reuseDelay>
 		<castRange>400</castRange>
+		<effectRange>900</effectRange>
 		<mpConsume>
-			<value level="1">30</value>
-			<value level="2">40</value>
+			<value level="1">40</value>
+			<value level="2">45</value>
 			<value level="3">50</value>
 			<value level="4">45</value>
 			<value level="5">40</value>
 		</mpConsume>
-		<hitTime>1</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>20</reuseDelay>
 		<effectPoint>
 			<value level="1">-760</value>
 			<value level="2">-780</value>
@@ -1533,17 +1960,28 @@
 					<value level="5">3300</value>
 				</power>
 			</effect>
+			<effect name="CallSkill">
+				<skillId>49302</skillId> <!-- Scout's Strike -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+				</skillLevel>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="49045" toLevel="15" name="Feather Storm">
-		<!-- <Suppression skill> Attacks with several feathers. There is a certain chance to make the target's Speed -50% Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Suppression skill>. Attacks with several feathers. There is a certain chance to make the target's Speed -50%. Additionally, P. Atk.: 3881 -->
+		<icon>icon.pet_feather_trap</icon>
 		<operateType>A1</operateType>
-		<mpConsume>50</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>1</hitTime>
+		<mpConsume>80</mpConsume>
+		<castRange>700</castRange>
+		<effectRange>1200</effectRange>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>5</reuseDelay>
+		<reuseDelay>5000</reuseDelay>
 		<effectPoint>
 			<value level="1">-1520</value>
 			<value level="2">-1540</value>
@@ -1561,16 +1999,9 @@
 			<value level="14">-1780</value>
 			<value level="15">-1800</value>
 		</effectPoint>
-		<isDebuff>true</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
-				<amount>
-					<value fromLevel="1" toLevel="15">-20</value>
-				</amount>
-				<mode>DIFF</mode>
-			</effect>
 			<effect name="PhysicalAttack">
 				<power>
 					<value level="1">3881</value>
@@ -1590,11 +2021,21 @@
 					<value level="15">4853</value>
 				</power>
 			</effect>
+			<effect name="CallSkill">
+				<skillId>49305</skillId> <!-- Feather Storm -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+				</skillLevel>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="49046" toLevel="5" name="Exploding Feather">
-		<!-- <Buff skill> Makes an explosion when Feather Storm is used. <Effect> When using Feather Storm, an explosion attack is triggered. P. Atk. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Buff skill>. Makes an explosion when Feather Storm is used. <Effect>. When using Feather Storm, an explosion attack is triggered. P. Atk. +100 -->
+		<icon>icon.skill19556</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>120</abnormalTime>
 		<mpConsume>
@@ -1604,44 +2045,52 @@
 			<value level="4">70</value>
 			<value level="5">60</value>
 		</mpConsume>
-		<hitTime>1</hitTime>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>300</reuseDelay>
+		<reuseDelay>300000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TriggerSkillBySkill">
-				<castSkillId>49047</castSkillId>
-				<skillId>49045</skillId> <!-- Feather Storm -->
-				<skillLevel>1</skillLevel>
-				<chance>
-					<value level="1">30</value>
-					<value level="2">40</value>
-					<value level="3">50</value>
-					<value level="4">80</value>
-					<value level="5">100</value>
-				</chance>
-				<targetType>ENEMY</targetType>
+			<effect name="ReplaceSkillBySkill">
+				<existingSkillId>49045</existingSkillId> <!-- Feather Storm -->
+				<replacementSkillId>49048</replacementSkillId> <!-- Feather Storm - Explosion -->
+			</effect>
+			<effect name="PAtk">
+				<amount>
+					<value level="1">100</value>
+					<value level="2">200</value>
+					<value level="3">350</value>
+					<value level="4">500</value>
+					<value level="5">800</value>
+				</amount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49047" toLevel="1" name="Exploding Feather - Effect">
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<icon>icon.skill30007</icon>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<castRange>700</castRange>
+		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
+		<affectScope>RANGE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>250</affectRange>
+		<affectLimit>5-12</affectLimit>
+		<effects>
+			<effect name="PhysicalAttack">
+				<pAtkMod>1.5</pAtkMod>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="49048" toLevel="15" name="Feather Storm - Explosion">
-		<!-- <Suppression skill> Attacks with several feathers. There is a certain chance to make the target's Speed -50% Additionally, P. Atk.: $s1 Explosion attack: deals damage according to 150% of P. Atk. -->
-		<icon>icon.skill0000</icon>
+		<!-- <Suppression skill>. Attacks with several feathers. There is a certain chance to make the target's Speed -50%. Additionally, P. Atk.: 3881. Explosion attack: deals damage according to 150% of P. Atk. -->
+		<icon>icon.pet_feather_trap</icon>
 		<operateType>A1</operateType>
 		<mpConsume>80</mpConsume>
 		<castRange>700</castRange>
-		<hitTime>1</hitTime>
+		<effectRange>1200</effectRange>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>5</reuseDelay>
+		<reuseDelay>5000</reuseDelay>
 		<effectPoint>
 			<value level="1">-1520</value>
 			<value level="2">-1540</value>
@@ -1659,16 +2108,9 @@
 			<value level="14">-1780</value>
 			<value level="15">-1800</value>
 		</effectPoint>
-		<isDebuff>true</isDebuff>
 		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
+		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
-				<amount>
-					<value fromLevel="1" toLevel="15">-20</value>
-				</amount>
-				<mode>DIFF</mode>
-			</effect>
 			<effect name="PhysicalAttack">
 				<power>
 					<value level="1">3881</value>
@@ -1688,30 +2130,93 @@
 					<value level="15">4853</value>
 				</power>
 			</effect>
+			<effect name="CallSkill">
+				<skillId>49306</skillId> <!-- Feather Storm - Explosion -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+				</skillLevel>
+			</effect>
+			<effect name="CallSkill">
+				<skillId>49047</skillId> <!-- Exploding Feather - Effect -->
+				<skillLevel>1</skillLevel>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="49049" toLevel="1" name="Swift Feather">
-		<!-- Applied Quick Movements when the Arrow Feather skill is used. <Quick Movements> Atk. Spd. +15% P. Skill Cooldown -15% (Cooldown: 60 sec.) -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-	</skill>
-	<skill id="49050" toLevel="1" name="Quick Movements">
-		<!-- <Buff skill> Makes you move faster. <Effect> Atk. Spd. $s1 P. Skill Cooldown $s2 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-	</skill>
-	<skill id="49051" toLevel="5" name="Dragon Hatchling">
-		<!-- A strong and dexterous pet. Can evolve to Dragon. <Basic stats> P. Def. $s1 M. Def. $s1 Max HP $s1 <Preferred weapons> Sword: - P. Atk. $s2 - Atk. Spd. $s3 Ancient sword: - P. Atk. $s2 - P. Critical Rate $s4 Note! If another weapon is equipped: Atk. Spd./ Casting Spd. -10% -->
-		<icon>icon.skill0000</icon>
+		<!-- Applied Quick Movements when the Arrow Feather skill is used. <Quick Movements>. Atk. Spd. +15%. P. Skill Cooldown -15%. (Cooldown: 60 sec.) -->
+		<icon>icon.skill11829</icon>
 		<operateType>P</operateType>
 		<effects>
+			<effect name="TriggerSkillBySkill">
+				<castSkillId>49042</castSkillId> <!-- Arrow Feather -->
+				<skillId>49050</skillId> <!-- Quick Movements -->
+				<skillLevel>1</skillLevel>
+				<targetType>SELF</targetType>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="49050" toLevel="1" name="Quick Movements">
+		<!-- <Buff skill>. Makes you move faster. <Effect>. Atk. Spd. +15%. P. Skill Cooldown -15% -->
+		<icon>icon.skill11829</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<operateType>A2</operateType>
+		<abnormalTime>30</abnormalTime>
+		<reuseDelay>60000</reuseDelay>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="Speed">
+				<amount>-50</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="49051" toLevel="5" name="Dragon Hatchling">
+		<!-- A strong and dexterous pet. Can evolve to Dragon. <Basic stats>. P. Def. +5%. M. Def. +5%. Max HP +5%. <Preferred weapons>. Sword:. - P. Atk. +10%. - Atk. Spd. +10%. Ancient sword:. - P. Atk. +10%. - P. Critical Rate +10. Note!. If another weapon is equipped:. Atk. Spd./ Casting Spd. -10% -->
+		<icon>icon.pet_race_strider</icon>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MaxHp">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 			<effect name="PAtk">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">15</value>
 					<value level="3">20</value>
-					<value level="4">22</value>
-					<value level="5">25</value>
+					<value level="4">25</value>
+					<value level="5">30</value>
 				</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -1730,6 +2235,18 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>SWORD</item>
+				</weaponType>
+			</effect>
+			<effect name="CriticalRate">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">15</value>
+					<value level="3">20</value>
+					<value level="4">25</value>
+					<value level="5">30</value>
+				</amount>
+				<mode>DIFF</mode>
+				<weaponType>
 					<item>ANCIENTSWORD</item>
 				</weaponType>
 			</effect>
@@ -1738,6 +2255,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>BLUNT</item>
 					<item>DAGGER</item>
 					<item>POLE</item>
@@ -1761,6 +2279,7 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>NONE</item>
+					<item>PISTOLS</item>
 					<item>BLUNT</item>
 					<item>DAGGER</item>
 					<item>POLE</item>
@@ -1782,9 +2301,11 @@
 		</effects>
 	</skill>
 	<skill id="49052" toLevel="20" name="Crippling Bite">
-		<!-- <Pull attack skill> Bites the target ferociously. If the target is a character, pulls them with a certain chance. Additionally, P. Atk.: $s1 <Special effect> After an attack, there is a certain chance to turn the skill into Double Crippling Bite and attack the target twice. -->
-		<icon>icon.skill0000</icon>
+		<!-- <Pull attack skill>. Bites the target ferociously. If the target is a character, pulls them with a certain chance. Additionally, P. Atk.: 115. <Special effect>. After an attack, there is a certain chance to turn the skill into Double Crippling Bite and attack the target twice. -->
+		<icon>icon.pet_bite_crush</icon>
 		<operateType>A1</operateType>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<mpConsume>
 			<value level="1">6</value>
 			<value level="2">14</value>
@@ -1807,10 +2328,11 @@
 			<value level="19">68</value>
 			<value level="20">70</value>
 		</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>1</hitTime>
+		<castRange>100</castRange>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>1</reuseDelay>
+		<reuseDelay>1000</reuseDelay>
 		<effectPoint>
 			<value level="1">-100</value>
 			<value level="2">-250</value>
@@ -1821,6 +2343,7 @@
 			<value level="7">-750</value>
 			<value level="8">-800</value>
 			<value level="9">-850</value>
+			<value level="10">-900</value>
 			<value level="11">-900</value>
 			<value level="12">-900</value>
 			<value level="13">-900</value>
@@ -1830,10 +2353,18 @@
 			<value level="17">-900</value>
 			<value level="18">-900</value>
 			<value level="19">-900</value>
-			<value level="10">-900</value>
+			<value level="20">-900</value>
 		</effectPoint>
+		<isDebuff>true</isDebuff>
+		<trait>PULL</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<pvpEffects>
+			<effect name="PullBack">
+				<speed>600</speed>
+				<delay>600</delay>
+			</effect>
+		</pvpEffects>
 		<effects>
 			<effect name="PhysicalAttack">
 				<power>
@@ -1859,100 +2390,8 @@
 					<value level="20">9706</value>
 				</power>
 			</effect>
-			<effect name="TriggerSkillBySkill">
-				<castSkillId>49056</castSkillId>
-				<skillId>49052</skillId> <!-- Crippling Bite -->
-				<skillLevel>3</skillLevel>
-				<chance>
-					<value level="1">30</value>
-					<value level="2">60</value>
-					<value level="3">100</value>
-				</chance>
-				<targetType>ENEMY</targetType>
-			</effect>
-		</effects>
-	</skill>
-	<skill id="49053" toLevel="20" name="Double Crippling Bite">
-		<!-- <Pull attack skill> Bites the target ferociously twice. If the target is a character, pulls them with a certain chance. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">6</value>
-			<value level="2">14</value>
-			<value level="3">22</value>
-			<value level="4">28</value>
-			<value level="5">34</value>
-			<value level="6">39</value>
-			<value level="7">42</value>
-			<value level="8">45</value>
-			<value level="9">48</value>
-			<value level="10">50</value>
-			<value level="11">52</value>
-			<value level="12">54</value>
-			<value level="13">56</value>
-			<value level="14">58</value>
-			<value level="15">60</value>
-			<value level="16">62</value>
-			<value level="17">64</value>
-			<value level="18">66</value>
-			<value level="19">68</value>
-			<value level="20">70</value>
-		</mpConsume>
-		<castRange>80</castRange>
-		<hitTime>1</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>1</reuseDelay>
-		<effectPoint>
-			<value level="1">-100</value>
-			<value level="2">-250</value>
-			<value level="3">-400</value>
-			<value level="4">-500</value>
-			<value level="5">-600</value>
-			<value level="6">-700</value>
-			<value level="7">-750</value>
-			<value level="8">-800</value>
-			<value level="9">-850</value>
-			<value level="11">-900</value>
-			<value level="12">-900</value>
-			<value level="13">-900</value>
-			<value level="14">-900</value>
-			<value level="15">-900</value>
-			<value level="16">-900</value>
-			<value level="17">-900</value>
-			<value level="18">-900</value>
-			<value level="19">-900</value>
-			<value level="10">-900</value>
-		</effectPoint>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<effects>
-			<effect name="PhysicalAttack">
-				<power>
-					<value level="1">115</value>
-					<value level="2">446</value>
-					<value level="3">619</value>
-					<value level="4">1422</value>
-					<value level="5">2642</value>
-					<value level="6">4801</value>
-					<value level="7">5536</value>
-					<value level="8">6293</value>
-					<value level="9">7076</value>
-					<value level="10">8306</value>
-					<value level="11">8442</value>
-					<value level="12">8578</value>
-					<value level="13">8722</value>
-					<value level="14">8860</value>
-					<value level="15">8998</value>
-					<value level="16">9136</value>
-					<value level="17">9283</value>
-					<value level="18">9422</value>
-					<value level="19">9564</value>
-					<value level="20">9706</value>
-				</power>
-			</effect>
-			<effect name="TriggerSkillBySkillAttack">
-				<attackSkillId>49052</attackSkillId>
-				<skillId>49053</skillId> <!-- Double Crippling Bite -->
+			<effect name="CallSkill">
+				<skillId>49303</skillId> <!-- Crippling Bite -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1975,14 +2414,129 @@
 					<value level="19">19</value>
 					<value level="20">20</value>
 				</skillLevel>
-				<chance>100</chance>
-				<targetType>ENEMY</targetType>
+				<chance>30</chance>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="49053" toLevel="20" name="Double Crippling Bite">
+		<!-- <Pull attack skill>. Bites the target ferociously twice. If the target is a character, pulls them with a certain chance. Additionally, P. Atk.: 115 -->
+		<icon>icon.pet_bite_crush</icon>
+		<operateType>A1</operateType>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
+		<mpConsume>
+			<value level="1">6</value>
+			<value level="2">14</value>
+			<value level="3">22</value>
+			<value level="4">28</value>
+			<value level="5">34</value>
+			<value level="6">39</value>
+			<value level="7">42</value>
+			<value level="8">45</value>
+			<value level="9">48</value>
+			<value level="10">50</value>
+			<value level="11">52</value>
+			<value level="12">54</value>
+			<value level="13">56</value>
+			<value level="14">58</value>
+			<value level="15">60</value>
+			<value level="16">62</value>
+			<value level="17">64</value>
+			<value level="18">66</value>
+			<value level="19">68</value>
+			<value level="20">70</value>
+		</mpConsume>
+		<castRange>100</castRange>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
+		<coolTime>500</coolTime>
+		<reuseDelay>1000</reuseDelay>
+		<effectPoint>
+			<value level="1">-100</value>
+			<value level="2">-250</value>
+			<value level="3">-400</value>
+			<value level="4">-500</value>
+			<value level="5">-600</value>
+			<value level="6">-700</value>
+			<value level="7">-750</value>
+			<value level="8">-800</value>
+			<value level="9">-850</value>
+			<value level="10">-900</value>
+			<value level="11">-900</value>
+			<value level="12">-900</value>
+			<value level="13">-900</value>
+			<value level="14">-900</value>
+			<value level="15">-900</value>
+			<value level="16">-900</value>
+			<value level="17">-900</value>
+			<value level="18">-900</value>
+			<value level="19">-900</value>
+			<value level="20">-900</value>
+		</effectPoint>
+		<isDebuff>true</isDebuff>
+		<trait>PULL</trait>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<pvpEffects>
+			<effect name="PullBack">
+				<speed>600</speed>
+				<delay>600</delay>
+			</effect>
+		</pvpEffects>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">115</value>
+					<value level="2">446</value>
+					<value level="3">619</value>
+					<value level="4">1422</value>
+					<value level="5">2642</value>
+					<value level="6">4801</value>
+					<value level="7">5536</value>
+					<value level="8">6293</value>
+					<value level="9">7076</value>
+					<value level="10">8306</value>
+					<value level="11">8442</value>
+					<value level="12">8578</value>
+					<value level="13">8722</value>
+					<value level="14">8860</value>
+					<value level="15">8998</value>
+					<value level="16">9136</value>
+					<value level="17">9283</value>
+					<value level="18">9422</value>
+					<value level="19">9564</value>
+					<value level="20">9706</value>
+				</power>
+			</effect>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">115</value>
+					<value level="2">446</value>
+					<value level="3">619</value>
+					<value level="4">1422</value>
+					<value level="5">2642</value>
+					<value level="6">4801</value>
+					<value level="7">5536</value>
+					<value level="8">6293</value>
+					<value level="9">7076</value>
+					<value level="10">8306</value>
+					<value level="11">8442</value>
+					<value level="12">8578</value>
+					<value level="13">8722</value>
+					<value level="14">8860</value>
+					<value level="15">8998</value>
+					<value level="16">9136</value>
+					<value level="17">9283</value>
+					<value level="18">9422</value>
+					<value level="19">9564</value>
+					<value level="20">9706</value>
+				</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49054" toLevel="5" name="Rushing Assault">
-		<!-- <Buff skill> Hastens. <Effect> Speed $s1 Atk. Spd. $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Buff skill>. Hastens. <Effect>. Speed +30. Atk. Spd. +15% -->
+		<icon>icon.skill1373</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>40</abnormalTime>
 		<mpConsume>
@@ -1992,9 +2546,9 @@
 			<value level="4">65</value>
 			<value level="5">70</value>
 		</mpConsume>
-		<hitTime>1</hitTime>
+		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>60</reuseDelay>
+		<reuseDelay>60000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
@@ -2021,8 +2575,8 @@
 		</effects>
 	</skill>
 	<skill id="49055" toLevel="5" name="Back Explosion">
-		<!-- <Shock skill> Roars loudly to make an explosion behind the target. There is a certain chance to pull the target to the explosion area and stun them. Additionally, P. Atk.: $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Shock skill>. Roars loudly to make an explosion behind the target. There is a certain chance to pull the target to the explosion area and stun them. Additionally, P. Atk.: 4461 -->
+		<icon>icon.pet_behind_burster</icon>
 		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">70</value>
@@ -2031,12 +2585,20 @@
 			<value level="4">85</value>
 			<value level="5">90</value>
 		</mpConsume>
+		<effectPoint>
+			<value level="1">-760</value>
+			<value level="2">-790</value>
+			<value level="3">-820</value>
+			<value level="4">-850</value>
+			<value level="5">-900</value>
+		</effectPoint>
 		<castRange>700</castRange>
-		<hitTime>120</hitTime>
+		<effectRange>1200</effectRange>
+		<hitTime>1200</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>3</reuseDelay>
-		<isMagic>5</isMagic>
-		<isDebuff>true</isDebuff>
+		<reuseDelay>3000</reuseDelay>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
@@ -2049,47 +2611,50 @@
 					<value level="5">5356</value>
 				</power>
 			</effect>
-			<effect name="PullBack">
-				<chance>10</chance>
+			<effect name="CallSkill">
+				<skillId>49057</skillId> <!-- Explosion Stun -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+				</skillLevel>
+				<chance>15</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49056" toLevel="3" name="Double Attack">
-		<icon>icon.skill0000</icon>
+		<icon>icon.skill0325</icon>
 		<operateType>A1</operateType>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<effects>
-			<effect name="CallSkill">
-				<skillId>49052</skillId> <!-- Crippling Bite -->
-				<chance>
-					<value level="1">30</value>
-					<value level="2">60</value>
-					<value level="3">100</value>
-				</chance>
-			</effect>
-		</effects>
 	</skill>
 	<skill id="49057" toLevel="5" name="Explosion Stun">
 		<!-- Unable to move. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-		<castRange>700</castRange>
-		<hitTime>500</hitTime>
-		<coolTime>1</coolTime>
-		<nextAction>ATTACK</nextAction>
-		<targetType>SELF</targetType>
+		<icon>icon.pet_behind_burster</icon>
+		<operateType>A2</operateType>
+		<abnormalTime>1</abnormalTime>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<trait>SHOCK</trait>
+		<isDebuff>true</isDebuff>
+		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PullBack">
-				<chance>100</chance>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="49058" toLevel="1" name="Perfect Bite">
-		<!-- <Skill upgrade> Crippling Bite ? Double Crippling Bite -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- <Skill upgrade>. Crippling Bite → Double Crippling Bite -->
+		<icon>icon.skill0325</icon>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="ReplaceSkillBySkill">
+				<existingSkillId>49052</existingSkillId> <!-- Crippling Bite -->
+				<replacementSkillId>49053</replacementSkillId> <!-- Double Crippling Bite -->
+			</effect>
+		</effects>
 	</skill>
 </list>

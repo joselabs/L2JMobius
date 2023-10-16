@@ -421,7 +421,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37525" name="Agathion Bae Kisung" additionalName="90-day" type="Armor">
-		<!-- A bracelet that can summon Agathion Bae Kisung. 90-day item. Cannot be used in Olympiad. <Active Skill> 1. Bae Kisung Agathion Teleport: Assigns a skill to teleport to Town of Aden/ Town of Rune/ Talking Island Village. (Cooldown: 30 min) <Item Skill> 1. Kisung's Mysterious Power: P./ M. Skill MP Consumption -3%. 2. Kisung's Great Power: Atk. Spd. and Casting Spd. +50. 3. Kisung's Balanced Power: STR/ INT/ CON/ DEX/ WIT/ MEN +1. -->
+		<!-- A bracelet that can summon Agathion Bae Kisung. 90-day item. Cannot be used in Olympiad. <Active Skill>. 1. Bae Kisung Agathion Teleport: Assigns a skill to teleport to Town of Aden/ Town of Rune/ Talking Island Village. (Cooldown: 30 min). <Item Skill>. 1. Kisung's Mysterious Power: P./ M. Skill MP Consumption -3%. 2. Kisung's Great Power: Atk. Spd. and Casting Spd. +50. 3. Kisung's Balanced Power: STR/ INT/ CON/ DEX/ WIT/ MEN +1. -->
 		<set name="icon" val="icon.bracelet_agathion_bm_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_tradable" val="false" />
@@ -522,7 +522,7 @@
 		<set name="material" val="WOOD" />
 	</item>
 	<item id="37536" name="Santa's Blessing" type="EtcItem">
-		<!-- Double-click to change your armor appearance to that of Santa Outfit for 3 h. STR/ INT/ CON/ DEX/ WIT/ MEN +1. The effect remains after death. Note! If you use an item that changes your appearance, such as Letter Collector's Gift, the Santa Outfit appearance disappears. -->
+		<!-- Double-click to change your armor appearance to that of Santa Outfit for 3 h. STR/ INT/ CON/ DEX/ WIT/ MEN +1. The effect remains after death. Note!. If you use an item that changes your appearance, such as Letter Collector's Gift, the Santa Outfit appearance disappears. -->
 		<set name="icon" val="BranchSys.icon.br_xmas_present_fun_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -636,6 +636,10 @@
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37543" min="10" max="10" chance="100" /> <!-- Snowy Pumpkin Nectar -->
+		</capsuled_items>
 	</item>
 	<item id="37547" name="Rudolph's Gift 2012 Lv. 2" type="EtcItem">
 		<!-- A Christmas gift for 2012. Double-click to obtain Snowy Pumpkin Nectar (15 pcs.). -->
@@ -643,6 +647,10 @@
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37543" min="15" max="15" chance="100" /> <!-- Snowy Pumpkin Nectar -->
+		</capsuled_items>
 	</item>
 	<item id="37548" name="Rudolph's Gift 2012 Lv. 3" type="EtcItem">
 		<!-- A Christmas gift for 2012. Double-click to obtain Snowy Pumpkin Nectar (25 pcs.). -->
@@ -650,6 +658,10 @@
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37543" min="25" max="25" chance="100" /> <!-- Snowy Pumpkin Nectar -->
+		</capsuled_items>
 	</item>
 	<item id="37549" name="Rudolph's Gift 2012 Lv. 4" type="EtcItem">
 		<!-- A Christmas gift for 2012. Double-click to obtain Snowy Pumpkin Nectar (60 pcs.). -->
@@ -657,6 +669,10 @@
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37543" min="60" max="60" chance="100" /> <!-- Snowy Pumpkin Nectar -->
+		</capsuled_items>
 	</item>
 	<item id="37550" name="Snowman's Buff" type="EtcItem">
 		<!-- When in a peaceful zone, restores energy for 3 h. -->
@@ -702,7 +718,7 @@
 		</skills>
 	</item>
 	<item id="37555" name="Snow Crystal" type="EtcItem">
-		<!-- PC event item for 2013. One received per hour spent in a PC Cafe. The more you have, the better your chances to win! -->
+		<!-- PC event item for 2013. One received per hour spent in a PC Café. The more you have, the better your chances to win! -->
 		<set name="icon" val="icon.etc_int_symbol_i01" />
 		<set name="is_depositable" val="false" />
 		<set name="is_tradable" val="false" />
@@ -759,8 +775,8 @@
 		<!-- Contains the strength of the emperor. Recovers 1 of the 4 Vitality bars. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.etc_recall_potion3" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="POTION" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="reuse_delay" val="60000" />
 		<set name="handler" val="ItemSkills" />
@@ -795,8 +811,8 @@
 		<!-- Contains the strength of the emperor. Recovers 3 of the 4 Vitality bars. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.etc_recall_potion1" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="POTION" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="reuse_delay" val="60000" />
 		<set name="handler" val="ItemSkills" />
@@ -1013,6 +1029,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37573" min="1" max="1" chance="20.00" /> <!-- Legendary Card: Lindvior -->
+			<item id="37576" min="1" max="1" chance="20.00" /> <!-- Legendary Card: Lionel Hunter -->
+			<item id="37580" min="1" max="1" chance="20.00" /> <!-- Legendary Card: Beleth -->
+			<item id="37583" min="1" max="1" chance="20.00" /> <!-- Legendary Card: Paulina -->
+		</capsuled_items>
 	</item>
 	<item id="37588" name="Snake's Gift" additionalName="Not used" type="EtcItem">
 		<!-- A Snake's gift. Double-click to obtain a random card, except the hidden one. -->
@@ -1072,6 +1095,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37593" min="4" max="4" chance="100" /> <!-- Returning Hero's Vitality Replenishing Juice - Event -->
+		</capsuled_items>
 	</item>
 	<item id="37595" name="Returning Hero's Potion Pack" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain Returning Hero's Health Potion (30 pcs.), Package: Returning Hero's Vitality Replenishing Juice (4 pcs.), Heavenly Cocktail (6 pcs.). -->
@@ -1081,6 +1108,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="36022" min="30" max="30" chance="100" /> <!-- Returning Hero's Health Potion -->
+			<item id="46178" min="6" max="6" chance="100" /> <!-- Heavenly Cocktail -->
+			<item id="37594" min="1" max="1" chance="100" /> <!-- Package: Returning Hero's Vitality Replenishing Juice (4 pcs.) - Event -->
+		</capsuled_items>
 	</item>
 	<item id="37596" name="R-grade Weapon Coupon" type="EtcItem">
 		<!-- Take it to Snake to obtain an R-grade weapon for a fee. -->

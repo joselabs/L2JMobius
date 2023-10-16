@@ -225,8 +225,7 @@ public class BalthusEventManager
 			return;
 		}
 		
-		final int random = Rnd.get(100);
-		if (!_isRunning && (random >= _rewardItem.getChance()) && !_players.isEmpty())
+		if (!_isRunning && !_players.isEmpty() && (Rnd.get(100) <= _rewardItem.getChance()))
 		{
 			final List<Player> playerList = new ArrayList<>(_players);
 			Collections.shuffle(playerList);

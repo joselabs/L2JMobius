@@ -21,9 +21,7 @@ import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.MailManager;
 import org.l2jmobius.gameserver.model.Message;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
-import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExChangePostState;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -61,11 +59,11 @@ public class RequestDeleteReceivedPost implements ClientPacket
 			return;
 		}
 		
-		if (!player.isInsideZone(ZoneId.PEACE))
-		{
-			player.sendPacket(SystemMessageId.THE_MAILBOX_FUNCTIONS_CAN_BE_USED_ONLY_IN_PEACE_ZONES_OUTSIDE_OF_THEM_YOU_CAN_ONLY_CHECK_ITS_CONTENTS);
-			return;
-		}
+		// if (!player.isInsideZone(ZoneId.PEACE))
+		// {
+		// player.sendPacket(SystemMessageId.THE_MAILBOX_FUNCTIONS_CAN_BE_USED_ONLY_IN_PEACE_ZONES_OUTSIDE_OF_THEM_YOU_CAN_ONLY_CHECK_ITS_CONTENTS);
+		// return;
+		// }
 		
 		for (int msgId : _msgIds)
 		{

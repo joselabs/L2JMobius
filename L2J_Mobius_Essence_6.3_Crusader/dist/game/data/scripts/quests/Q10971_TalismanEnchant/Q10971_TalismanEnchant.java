@@ -24,6 +24,7 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExTutorialShowId;
+import org.l2jmobius.gameserver.network.serverpackets.TutorialShowHtml;
 
 /**
  * @author Mobius, quangnguyen
@@ -81,6 +82,7 @@ public class Q10971_TalismanEnchant extends Quest
 				{
 					giveItems(player, SCROLL_OF_ENCHANT_ADVENTURERS_TALISMAN);
 				}
+				player.sendPacket(new TutorialShowHtml(0, "..\\L2text\\eu\\QT_028_talisman_02.htm", 2));
 				htmltext = event;
 				break;
 			}

@@ -79,6 +79,7 @@ public class Config
 	private static final String SERVER_CONFIG_FILE = "./config/Server.ini";
 	private static final String SEVENSIGNS_CONFIG_FILE = "./config/SevenSigns.ini";
 	
+	private static final String AUTO_PLAY_CONFIG_FILE = "./config/custom/AutoPlay.ini";
 	private static final String BANK_CONFIG_FILE = "./config/custom/Bank.ini";
 	private static final String BOSS_ANNOUNCEMENTS_CONFIG_FILE = "./config/custom/BossAnnouncements.ini";
 	private static final String CANCEL_SKILL_RESTORE_BUFFS_CONFIG_FILE = "./config/custom/CancelSkillRestoreBuffs.ini";
@@ -91,6 +92,7 @@ public class Config
 	private static final String EVENT_WEDDING_CONFIG_FILE = "./config/custom/Wedding.ini";
 	private static final String MERCHANT_ZERO_SELL_PRICE_CONFIG_FILE = "./config/custom/MerchantZeroSellPrice.ini";
 	private static final String OFFLINE_CONFIG_FILE = "./config/custom/Offline.ini";
+	private static final String OFFLINE_PLAY_CONFIG_FILE = "./config/custom/OfflinePlay.ini";
 	private static final String OTHER_CUSTOM_CONFIG_FILE = "./config/custom/Other.ini";
 	private static final String PC_BANG_POINT_CONFIG_FILE = "./config/custom/PcBang.ini";
 	private static final String PHYSICS_BALANCE_CONFIG_FILE = "./config/custom/PhysicsBalance.ini";
@@ -543,6 +545,15 @@ public class Config
 	public static double ALT_GAME_CREATION_SP_RATE;
 	public static boolean ALT_BLACKSMITH_USE_RECIPES;
 	
+	public static boolean ENABLE_AUTO_PLAY;
+	public static boolean ENABLE_AUTO_POTION;
+	public static boolean ENABLE_AUTO_SKILL;
+	public static boolean ENABLE_AUTO_ITEM;
+	public static boolean RESUME_AUTO_PLAY;
+	public static Set<Integer> DISABLED_AUTO_SKILLS = new HashSet<>();
+	public static Set<Integer> DISABLED_AUTO_ITEMS = new HashSet<>();
+	public static String AUTO_PLAY_LOGIN_MESSAGE;
+	
 	public static boolean BANKING_SYSTEM_ENABLED;
 	public static int BANKING_SYSTEM_GOLDBARS;
 	public static int BANKING_SYSTEM_ADENA;
@@ -557,6 +568,7 @@ public class Config
 	public static int RESTORE_CANCELLED_BUFFS_SECONDS;
 	
 	public static int BUFFER_MAX_SCHEMES;
+	public static int BUFFER_ITEM_ID;
 	public static int BUFFER_STATIC_BUFF_COST;
 	
 	public static boolean CUSTOM_STARTING_LOC;
@@ -578,6 +590,13 @@ public class Config
 	public static boolean RESTORE_OFFLINERS;
 	public static int OFFLINE_MAX_DAYS;
 	public static boolean OFFLINE_DISCONNECT_FINISHED;
+	
+	public static boolean ENABLE_OFFLINE_PLAY_COMMAND;
+	public static boolean OFFLINE_PLAY_LOGOUT_ON_DEATH;
+	public static String OFFLINE_PLAY_LOGIN_MESSAGE;
+	public static boolean OFFLINE_PLAY_SET_NAME_COLOR;
+	public static int OFFLINE_PLAY_NAME_COLOR;
+	public static boolean OFFLINE_PLAY_SLEEP_EFFECT;
 	
 	public static boolean ONLINE_PLAYERS_ON_LOGIN;
 	public static boolean SUBSTUCK_SKILLS;
@@ -1775,6 +1794,35 @@ public class Config
 		ALT_BLACKSMITH_USE_RECIPES = craftConfig.getBoolean("AltBlacksmithUseRecipes", true);
 	}
 	
+	public static void loadAutoPlayConfig()
+	{
+		final PropertiesParser autoPlayConfig = new PropertiesParser(AUTO_PLAY_CONFIG_FILE);
+		ENABLE_AUTO_PLAY = autoPlayConfig.getBoolean("EnableAutoPlay", false);
+		ENABLE_AUTO_POTION = autoPlayConfig.getBoolean("EnableAutoPotion", true);
+		ENABLE_AUTO_SKILL = autoPlayConfig.getBoolean("EnableAutoSkill", true);
+		ENABLE_AUTO_ITEM = autoPlayConfig.getBoolean("EnableAutoItem", true);
+		RESUME_AUTO_PLAY = autoPlayConfig.getBoolean("ResumeAutoPlay", false);
+		DISABLED_AUTO_SKILLS.clear();
+		final String disabledSkills = autoPlayConfig.getString("DisabledSkillIds", "");
+		if (!disabledSkills.isEmpty())
+		{
+			for (String s : disabledSkills.split(","))
+			{
+				DISABLED_AUTO_SKILLS.add(Integer.parseInt(s.trim()));
+			}
+		}
+		DISABLED_AUTO_ITEMS.clear();
+		final String disabledItems = autoPlayConfig.getString("DisabledItemIds", "");
+		if (!disabledItems.isEmpty())
+		{
+			for (String s : disabledItems.split(","))
+			{
+				DISABLED_AUTO_ITEMS.add(Integer.parseInt(s.trim()));
+			}
+		}
+		AUTO_PLAY_LOGIN_MESSAGE = autoPlayConfig.getString("AutoPlayLoginMessage", "");
+	}
+	
 	public static void loadBankingConfig()
 	{
 		final PropertiesParser bankConfig = new PropertiesParser(BANK_CONFIG_FILE);
@@ -1802,9 +1850,10 @@ public class Config
 	
 	public static void loadBufferConfig()
 	{
-		final PropertiesParser shemeBufferConfig = new PropertiesParser(SCHEME_BUFFER_CONFIG_FILE);
-		BUFFER_MAX_SCHEMES = shemeBufferConfig.getInt("BufferMaxSchemesPerChar", 4);
-		BUFFER_STATIC_BUFF_COST = shemeBufferConfig.getInt("BufferStaticCostPerBuff", -1);
+		final PropertiesParser schemeBufferConfig = new PropertiesParser(SCHEME_BUFFER_CONFIG_FILE);
+		BUFFER_MAX_SCHEMES = schemeBufferConfig.getInt("BufferMaxSchemesPerChar", 4);
+		BUFFER_ITEM_ID = schemeBufferConfig.getInt("BufferItemId", 57);
+		BUFFER_STATIC_BUFF_COST = schemeBufferConfig.getInt("BufferStaticCostPerBuff", -1);
 	}
 	
 	public static void loadStartingLocationConfig()
@@ -1833,6 +1882,17 @@ public class Config
 		RESTORE_OFFLINERS = offlineConfig.getBoolean("RestoreOffliners", false);
 		OFFLINE_MAX_DAYS = offlineConfig.getInt("OfflineMaxDays", 10);
 		OFFLINE_DISCONNECT_FINISHED = offlineConfig.getBoolean("OfflineDisconnectFinished", true);
+	}
+	
+	public static void loadOfflinePlayConfig()
+	{
+		final PropertiesParser offlinePlayConfig = new PropertiesParser(OFFLINE_PLAY_CONFIG_FILE);
+		ENABLE_OFFLINE_PLAY_COMMAND = offlinePlayConfig.getBoolean("EnableOfflinePlayCommand", false);
+		OFFLINE_PLAY_LOGOUT_ON_DEATH = offlinePlayConfig.getBoolean("OfflinePlayLogoutOnDeath", true);
+		OFFLINE_PLAY_LOGIN_MESSAGE = offlinePlayConfig.getString("OfflinePlayLoginMessage", "");
+		OFFLINE_PLAY_SET_NAME_COLOR = offlinePlayConfig.getBoolean("OfflinePlaySetNameColor", false);
+		OFFLINE_PLAY_NAME_COLOR = Integer.decode("0x" + offlinePlayConfig.getString("OfflinePlayNameColor", "808080"));
+		OFFLINE_PLAY_SLEEP_EFFECT = offlinePlayConfig.getBoolean("OfflinePlaySleepEffect", false);
 	}
 	
 	public static void loadCustomServerConfig()
@@ -2932,6 +2992,7 @@ public class Config
 			loadgeodataConfig();
 			
 			// Custom
+			loadAutoPlayConfig();
 			loadCancelSkillRestoreBuffsConfig();
 			loadChampionConfig();
 			loadAutoPotionsConfig();
@@ -2947,6 +3008,7 @@ public class Config
 			loadStartingLocationConfig();
 			loadPCBPointConfig();
 			loadOfflineConfig();
+			loadOfflinePlayConfig();
 			
 			if (USE_SAY_FILTER)
 			{

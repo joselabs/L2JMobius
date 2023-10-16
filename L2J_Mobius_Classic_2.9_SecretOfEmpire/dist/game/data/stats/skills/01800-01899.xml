@@ -394,10 +394,12 @@
 	</skill>
 	<skill id="1827" toLevel="1" name="Transformation Block">
 		<!-- You cannot attack while transformed. -->
+		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1828" toLevel="2" name="Transformation Protection">
 		<!-- P. Def. Enhance at Transformation. -->
+		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1829" toLevel="1" name="Spell Master">
@@ -872,7 +874,7 @@
 		<mpConsume>49</mpConsume>
 	</skill>
 	<skill id="1862" toLevel="1" name="PA Spirit - Wild Magic">
-		<!-- For 20 min., the damage rate of magic +10 . PA only. -->
+		<!-- For 20 min., the damage rate of magic +10. PA only. -->
 		<icon>icon.skill1303</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
@@ -906,10 +908,11 @@
 	</skill>
 	<skill id="1865" toLevel="1" name="Transformation Attack">
 		<!-- Increases P. Atk. during Transformation. -->
+		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1867" toLevel="5" name="Clan Exuberance">
-		<!-- Clan members' HP/ MP/ CP Recovery Bonus +$s1, Aquired XP/ SP +$s2, received PVE damage -$s3, Sayha Grace Consumption -$s4. -->
+		<!-- Clan members' HP/ MP/ CP Recovery Bonus +4%, Aquired XP/ SP +5%, received PVE damage -3%, Sayha Grace Consumption -5%. -->
 		<icon>icon.skill19014</icon>
 		<operateType>P</operateType>
 	</skill>
@@ -932,17 +935,9 @@
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PveRaidPhysicalAttackDefenceBonus">
-				<amount>10</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PveRaidPhysicalSkillDefenceBonus">
-				<amount>10</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PveRaidMagicalSkillDefenceBonus">
-				<amount>10</amount>
-				<mode>PER</mode>
+			<effect name="DamageByAttack">
+				<amount>-10</amount>
+				<type>BOSS</type>
 			</effect>
 		</effects>
 	</skill>
@@ -965,17 +960,9 @@
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PveRaidPhysicalAttackDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PveRaidPhysicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PveRaidMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
+			<effect name="DamageByAttack">
+				<amount>-5</amount>
+				<type>BOSS</type>
 			</effect>
 		</effects>
 	</skill>
@@ -1001,7 +988,7 @@
 		</effects>
 	</skill>
 	<skill id="1896" toLevel="4" name="Full Knockdown">
-		<!-- Inflicts a powerful strike on target with $s1 Power added to P. Atk., knocking down for $s2 Requires a sword, blunt weapon, spear, fist weapon, or dual sword. Critical. Ignores Shield Defense. -->
+		<!-- Inflicts a powerful strike on target with 4937 Power added to P. Atk., knocking down for 3 sec. Requires a sword, blunt weapon, spear, fist weapon, or dual sword. Critical. Ignores Shield Defense. -->
 		<icon>icon.skill1896</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1072,7 +1059,7 @@
 		</effects>
 	</skill>
 	<skill id="1897" toLevel="11" name="Shilen's Cursed Field">
-		<!-- For $s1, Melee Weapon Resistance of the target and nearby enemies -$s2. -->
+		<!-- For 30 sec., Melee Weapon Resistance of the target and nearby enemies -16. -->
 		<icon>icon.skill1897</icon>
 		<affectLimit>9-10</affectLimit>
 		<abnormalLevel>
@@ -1304,7 +1291,7 @@
 		</effects>
 	</skill>
 	<skill id="1898" toLevel="9" name="Shield Charge">
-		<!-- Attacks enemies in front of character with $s1 Power added to P. Atk., stunning target for $s2 Requires a shield. Over-hit. -->
+		<!-- Attacks enemies in front of character with 2191 Power added to P. Atk., stunning target for 5 sec. Requires a shield. Over-hit. -->
 		<icon>icon.skill1898</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>

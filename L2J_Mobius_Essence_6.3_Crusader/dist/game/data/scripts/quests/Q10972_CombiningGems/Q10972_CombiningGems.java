@@ -22,6 +22,7 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExTutorialShowId;
+import org.l2jmobius.gameserver.network.serverpackets.TutorialShowHtml;
 
 /**
  * @author Mobius, quangnguyen
@@ -69,6 +70,7 @@ public class Q10972_CombiningGems extends Quest
 			{
 				qs.startQuest();
 				player.sendPacket(new ExTutorialShowId(47));
+				player.sendPacket(new TutorialShowHtml(0, "..\\L2text_classic\\eu\\QT_029_jewel_02.htm", 2));
 				giveItems(player, ADVENTURE_ROUGH_JEWEL_LV1, 1);
 				htmltext = event;
 				break;

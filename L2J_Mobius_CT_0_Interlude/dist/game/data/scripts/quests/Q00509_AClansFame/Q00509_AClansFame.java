@@ -16,12 +16,6 @@
  */
 package quests.Q00509_AClansFame;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -31,176 +25,167 @@ import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowInfoUpdate;
-import org.l2jmobius.gameserver.network.serverpackets.RadarControl;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
+import org.l2jmobius.gameserver.util.Util;
 
-/**
- * A Clan's Fame (509)
- * @author Adry_85
- */
 public class Q00509_AClansFame extends Quest
 {
-	// NPC
+	// NPCs
 	private static final int VALDIS = 31331;
-	
-	private static final Map<Integer, List<Integer>> REWARD_POINTS = new HashMap<>();
-	static
+	// Raid Bosses
+	private static final int DAIMON_THE_WHITE_EYED = 25290;
+	private static final int HESTIA_GUARDIAN_DEITY = 25293;
+	private static final int PLAGUE_GOLEM = 25523;
+	private static final int DEMONS_AGENT_FALSTON = 25322;
+	private static final int QUEEN_SHYEED = 25514;
+	// Items
+	private static final int DAIMONS_EYES = 8489;
+	private static final int HESTIAS_FAIRY_STONE = 8490;
+	private static final int NUCLEUS_OF_LESSER_GOLEM = 8491;
+	private static final int FALSTON_FANG = 8492;
+	private static final int SHAIDS_TALON = 8493;
+	// Reward list (itemId, minClanPoints, maxClanPoints)
+	private static final int[][] REWARD_LIST =
 	{
-		REWARD_POINTS.put(1, Arrays.asList(25290, 8489, 1378)); // Daimon The White-Eyed
-		REWARD_POINTS.put(2, Arrays.asList(25293, 8490, 1378)); // Hestia, Guardian Deity Of The Hot Springs
-		REWARD_POINTS.put(3, Arrays.asList(25523, 8491, 1070)); // Plague Golem
-		REWARD_POINTS.put(4, Arrays.asList(25322, 8492, 782)); // Demon's Agent Falston
-	}
-	
-	private static final int[] RAID_BOSS =
+		// @formatter:off
+		{DAIMON_THE_WHITE_EYED, DAIMONS_EYES, 180, 215},
+		{HESTIA_GUARDIAN_DEITY, HESTIAS_FAIRY_STONE, 430, 465},
+		{PLAGUE_GOLEM, NUCLEUS_OF_LESSER_GOLEM, 380, 415},
+		{DEMONS_AGENT_FALSTON, FALSTON_FANG, 220, 255},
+		{QUEEN_SHYEED, SHAIDS_TALON, 130, 165}
+	};
+	// Radar
+	private static final int[][] radar =
 	{
-		25290,
-		25293,
-		25523,
-		25322
+		{186320, -43904, -3175},
+		{134672, -115600, -1216},
+		{170000, -59900, -3848},
+		{93296, -75104, -1824},
+		{79635, -55612, -5980}
+		// @formatter:on
 	};
 	
 	public Q00509_AClansFame()
 	{
 		super(509);
+		registerQuestItems(DAIMONS_EYES, HESTIAS_FAIRY_STONE, NUCLEUS_OF_LESSER_GOLEM, FALSTON_FANG, SHAIDS_TALON);
 		addStartNpc(VALDIS);
 		addTalkId(VALDIS);
-		addKillId(RAID_BOSS);
+		addKillId(DAIMON_THE_WHITE_EYED, HESTIA_GUARDIAN_DEITY, PLAGUE_GOLEM, DEMONS_AGENT_FALSTON, QUEEN_SHYEED);
 	}
 	
 	@Override
 	public String onAdvEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = player.getQuestState(getName());
+		if (st == null)
 		{
-			return getNoQuestMsg(player);
+			return htmltext;
 		}
 		
-		switch (event)
+		if (Util.isDigit(event))
 		{
-			case "31331-0.html":
+			final int evt = Integer.parseInt(event);
+			st.set("raid", event);
+			htmltext = "31331-" + event + ".htm";
+			
+			final int x = radar[evt - 1][0];
+			final int y = radar[evt - 1][1];
+			final int z = radar[evt - 1][2];
+			if ((x + y + z) > 0)
 			{
-				qs.startQuest();
-				break;
+				addRadar(player, x, y, z);
 			}
-			case "31331-1.html":
-			{
-				qs.set("raid", "1");
-				player.sendPacket(new RadarControl(0, 2, 186304, -43744, -3193));
-				break;
-			}
-			case "31331-2.html":
-			{
-				qs.set("raid", "2");
-				player.sendPacket(new RadarControl(0, 2, 134672, -115600, -1216));
-				break;
-			}
-			case "31331-3.html":
-			{
-				qs.set("raid", "3");
-				player.sendPacket(new RadarControl(0, 2, 170000, -60000, -3500));
-				break;
-			}
-			case "31331-4.html":
-			{
-				qs.set("raid", "4");
-				player.sendPacket(new RadarControl(0, 2, 93296, -75104, -1824));
-				break;
-			}
-			case "31331-5.html":
-			{
-				qs.exitQuest(true, true);
-				break;
-			}
+			
+			st.startQuest();
 		}
-		return event;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
-	{
-		if (player.getClan() == null)
+		else if (event.equals("31331-6.htm"))
 		{
-			return null;
+			st.exitQuest(true, true);
 		}
 		
-		QuestState qs = null;
-		if (player.isClanLeader())
-		{
-			qs = player.getQuestState(getName());
-		}
-		else
-		{
-			final Player pleader = player.getClan().getLeader().getPlayer();
-			if ((pleader != null) && player.isInsideRadius3D(pleader, Config.ALT_PARTY_RANGE))
-			{
-				qs = pleader.getQuestState(getName());
-			}
-		}
-		
-		if ((qs != null) && qs.isStarted())
-		{
-			final int raid = qs.getInt("raid");
-			if (REWARD_POINTS.containsKey(raid) && (npc.getId() == REWARD_POINTS.get(raid).get(0)) && !hasQuestItems(player, REWARD_POINTS.get(raid).get(1)))
-			{
-				rewardItems(player, REWARD_POINTS.get(raid).get(1), 1);
-				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-			}
-		}
-		return null;
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
-		final Clan clan = player.getClan();
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		final Clan clan = player.getClan();
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = ((clan == null) || !player.isClanLeader() || (clan.getLevel() < 6)) ? "31331-0a.htm" : "31331-0b.htm";
+				if (!player.isClanLeader())
+				{
+					st.exitQuest(true);
+					htmltext = "31331-0a.htm";
+				}
+				else if (clan.getLevel() < 6)
+				{
+					st.exitQuest(true);
+					htmltext = "31331-0b.htm";
+				}
+				else
+				{
+					htmltext = "31331-0c.htm";
+				}
 				break;
 			}
 			case State.STARTED:
 			{
-				if ((clan == null) || !player.isClanLeader())
+				final int raid = st.getInt("raid");
+				if (st.isCond(1))
 				{
-					qs.exitQuest(true);
-					return "31331-6.html";
-				}
-				
-				final int raid = qs.getInt("raid");
-				if (REWARD_POINTS.containsKey(raid))
-				{
-					if (hasQuestItems(player, REWARD_POINTS.get(raid).get(1)))
+					final int item = REWARD_LIST[raid - 1][1];
+					final int count = getQuestItemsCount(player, item);
+					final int reward = getRandom(REWARD_LIST[raid - 1][2], REWARD_LIST[raid - 1][3]);
+					if (count == 0)
 					{
-						htmltext = "31331-" + raid + "b.html";
-						playSound(player, QuestSound.ITEMSOUND_QUEST_FANFARE_1);
-						takeItems(player, REWARD_POINTS.get(raid).get(1), -1);
-						final int rep = REWARD_POINTS.get(raid).get(2);
-						clan.addReputationScore(rep);
-						player.sendPacket(new SystemMessage(SystemMessageId.YOU_HAVE_SUCCESSFULLY_COMPLETED_A_CLAN_QUEST_S1_POINTS_HAVE_BEEN_ADDED_TO_YOUR_CLAN_S_REPUTATION_SCORE).addInt(rep));
+						htmltext = "31331-" + raid + "a.htm";
+					}
+					else if (count == 1)
+					{
+						htmltext = "31331-" + raid + "b.htm";
+						takeItems(player, item, 1);
+						clan.addReputationScore(reward);
+						player.sendPacket(new SystemMessage(SystemMessageId.YOU_HAVE_SUCCESSFULLY_COMPLETED_A_CLAN_QUEST_S1_POINTS_HAVE_BEEN_ADDED_TO_YOUR_CLAN_S_REPUTATION_SCORE).addInt(reward));
 						clan.broadcastToOnlineMembers(new PledgeShowInfoUpdate(clan));
 					}
-					else
-					{
-						htmltext = "31331-" + raid + "a.html";
-					}
 				}
-				else
-				{
-					htmltext = "31331-0.html";
-				}
-				break;
-			}
-			default:
-			{
 				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		// Retrieve the qs of the clan leader.
+		final QuestState st = getClanLeaderQuestState(player, npc);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		
+		// Reward only if quest is setup on good index.
+		final int raid = st.getInt("raid");
+		if (REWARD_LIST[raid - 1][0] == npc.getId())
+		{
+			final int item = REWARD_LIST[raid - 1][1];
+			if (!hasQuestItems(player, item))
+			{
+				giveItems(player, item, 1);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+			}
+		}
+		
+		return null;
 	}
 }

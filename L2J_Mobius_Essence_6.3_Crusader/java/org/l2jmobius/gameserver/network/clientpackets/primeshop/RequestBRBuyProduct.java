@@ -72,6 +72,13 @@ public class RequestBRBuyProduct implements ClientPacket
 		if (validatePlayer(item, _count, player))
 		{
 			final int price = item.getPrice() * _count;
+			if (price < 1)
+			{
+				player.sendPacket(new ExBRBuyProduct(ExBrProductReplyType.LACK_OF_POINT));
+				player.removeRequest(PrimeShopRequest.class);
+				return;
+			}
+			
 			final int paymentId = validatePaymentId(item);
 			if (paymentId < 0)
 			{

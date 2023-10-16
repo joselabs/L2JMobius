@@ -491,7 +491,7 @@ public abstract class AbstractAI implements Ctrl
 				else
 				{
 					final WorldRegion region = _actor.getWorldRegion();
-					if ((region != null) && region.isActive())
+					if ((region != null) && region.isActive() && !_actor.isMovementSuspended())
 					{
 						_actor.broadcastPacket(new MoveToPawn(_actor, pawn, offset));
 					}

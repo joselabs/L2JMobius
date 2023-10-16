@@ -46,13 +46,13 @@ public class NightStatModify extends AbstractEffect
 	private static boolean START_LISTENER = true;
 	
 	private final Stat _stat;
-	private final int _amount;
+	private final Double _amount;
 	protected final StatModifierType _mode;
 	
 	public NightStatModify(StatSet params)
 	{
 		_stat = params.getEnum("stat", Stat.class);
-		_amount = params.getInt("amount");
+		_amount = params.getDouble("amount");
 		_mode = params.getEnum("mode", StatModifierType.class, StatModifierType.DIFF);
 		
 		// Run only once per daytime change.

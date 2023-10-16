@@ -85,7 +85,7 @@
 		</effects>
 	</skill>
 	<skill id="19203" toLevel="1" name="Ultimate Bullseye">
-		<!-- Decreases target's Bow/ Crossbow Resistance by $s2 for $s1 Does not cancel when striking. Consumes $s3 Soulstone. -->
+		<!-- Decreases target's Bow/ Crossbow Resistance by 60% for 7 sec. Does not cancel when striking. Consumes 1 Soulstone. -->
 		<icon>icon.skill19203</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>7</abnormalTime>
@@ -123,7 +123,7 @@
 		</effects>
 	</skill>
 	<skill id="19204" toLevel="1" name="Prophecy of Might">
-		<!-- For $s1, the targeted party member's P. Critical Rate, P./ M. Skill Critical Rate, P. Critical Damage, and P./ M. Skill Critical Damage +$s2. Additionally, activates the Spirit of Iss effect. P./ M. Atk. and P./ M. Def. +$s3. Cannot be used with Chant of Bison/ Victories of Pa'agrio. Consumes $s4 Spirit Ore. <The character is targeted automatically> -->
+		<!-- For 5 min., the targeted party member's P. Critical Rate, P./ M. Skill Critical Rate, P. Critical Damage, and P./ M. Skill Critical Damage +25%. Additionally, activates the Spirit of Iss effect. P./ M. Atk. and P./ M. Def. +20%. Cannot be used with Chant of Bison/ Victories of Pa'agrio. Consumes 10 Spirit Ore. <The character is targeted automatically> -->
 		<icon>icon.skill19204</icon>
 		<abnormalType>SONG_WEAPON</abnormalType>
 		<castRange>400</castRange>
@@ -182,7 +182,7 @@
 		</effects>
 	</skill>
 	<skill id="19205" toLevel="1" name="Song of Archery">
-		<!-- For $s1, all party members' Bow/ Crossbow Resistance +$s2. Cannot be used with Sage's Dance or Song of Thief. Consumes $s3 Spirit Ore. -->
+		<!-- For 60 sec., all party members' Bow/ Crossbow Resistance +50%. Cannot be used with Sage's Dance or Song of Thief. Consumes 5 Spirit Ore. -->
 		<icon>icon.skillsongofarchery</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
@@ -212,7 +212,7 @@
 		</effects>
 	</skill>
 	<skill id="19206" toLevel="1" name="Sage's Dance">
-		<!-- For $s1, all party members M. Def. +$s2. Cannot be used with Song of Archery or Song of Thief. Consumes $s3 Spirit Ore. -->
+		<!-- For 60 sec., all party members' M. Def. +50%. Cannot be used with Song of Archery or Song of Thief. Consumes 5 Spirit Ore. -->
 		<icon>icon.skilldanceofwisdom</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
@@ -242,7 +242,7 @@
 		</effects>
 	</skill>
 	<skill id="19207" toLevel="1" name="Chant of Bison">
-		<!-- For $s1, all party members' Critical Rate for standard attacks, P./ M. Skill Critical Rate +$s2, P./ M. Skill Power +$s2. Additionally, activates the Spirit of Iss effect: P./ M. Atk. and P./ M. Def. +$s3. Cannot be used with Prophecy of Might/ Victories of Pa'agrio. Consumes $s4 Spirit Ore. -->
+		<!-- For 5 min., all party members' Critical Rate for standard attacks, P./ M. Skill Critical Rate +15%, P./ M. Skill Power +15%. Additionally, activates the Spirit of Iss effect: P./ M. Atk. and P./ M. Def. +20%. Cannot be used with Prophecy of Might/ Victories of Pa'agrio. Consumes 20 Spirit Ore. -->
 		<icon>icon.skill19207</icon>
 		<abnormalTime>
 			<value fromLevel="1" toLevel="1">300</value>
@@ -296,8 +296,18 @@
 		</selfEffects>
 	</skill>
 	<skill id="19208" toLevel="9" name="Seal of Suspension">
-		<!-- For $s1, P./ M. Skill Cooldown +$s2 for the target and nearby enemies. Consumes 5 Spirit Ore. -->
-		<icon>icon.skill19208</icon>
+		<!-- For 10 sec., P./ M. Skill Cooldown +100% for the target and nearby enemies. Consumes 5 Spirit Ore. -->
+		<icon>
+			<value level="1">icon.skill11558</value>
+			<value level="2">icon.skill11558</value>
+			<value level="3">icon.skill11558</value>
+			<value level="4">icon.skill19208</value>
+			<value level="5">icon.skill19208</value>
+			<value level="6">icon.skill19208</value>
+			<value level="7">icon.skill19208</value>
+			<value level="8">icon.skill19208</value>
+			<value level="9">icon.skill19208</value>
+		</icon>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -357,7 +367,7 @@
 		</effects>
 	</skill>
 	<skill id="19209" toLevel="1" name="Divinity of Einhasad">
-		<!-- Decreases Magic Skill MP Consumption by $s2 and has a $s3 to result in a Critical when using 'Radiant Heal', 'Panic Heal', or 'Brilliant Heal' for $s1 Consumes $s4 Spirit Ore. -->
+		<!-- Decreases Magic Skill MP Consumption by 30% and has a 100% to result in a Critical when using 'Radiant Heal', 'Panic Heal', or 'Brilliant Heal' for 30 sec. Consumes 5 Spirit Ore. -->
 		<icon>icon.skill19209</icon>
 		<operateType>A2</operateType>
 		<mpConsume>46</mpConsume>
@@ -387,7 +397,7 @@
 		</effects>
 	</skill>
 	<skill id="19210" toLevel="1" name="Summon Tree of Sephiroth">
-		<!-- Summons an Enchanted Tree of Life that cannot be targeted. The summoned tree heals nearby party members for $s1 and casts a debuff canceling blessing. Consumes $s2 Spirit Ore. -->
+		<!-- Summons an Enchanted Tree of Life that cannot be targeted. The summoned tree heals nearby party members for 30 sec. and casts a debuff canceling blessing. Consumes 5 Spirit Ore. -->
 		<icon>icon.skill19210</icon>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
@@ -448,7 +458,7 @@
 		<isMagic>1</isMagic>
 	</skill>
 	<skill id="19212" toLevel="1" name="Shillien Protection">
-		<!-- Puts a barrier around a party member for $s1 Recovers $s2 CP/ HP if dealt a death blow. Buff is deleted when the effect is applied. Consumes $s3 Spirit Ore. The skill cooldown is fixed. -->
+		<!-- Puts a barrier around a party member for 30 sec. Recovers 100% CP/ HP if dealt a death blow. Buff is deleted when the effect is applied. Consumes 5 Spirit Ore. The skill cooldown is fixed. -->
 		<icon>icon.skill19211</icon>
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
@@ -797,7 +807,7 @@
 		</effects>
 	</skill>
 	<skill id="19222" toLevel="6" name="Dignity of the Exalted">
-		<!-- STR +$s1, DEX +$s2, CON +$s3, INT +$s4, WIT +$s5, MEN +$s6, CHA +$s7. -->
+		<!-- STR +1, DEX +1, CON +1, INT +1, WIT +1, MEN +1, CHA +1. Additionally increases the world chat usage limit by 10 times. -->
 		<icon>icon.skill19222</icon>
 		<operateType>P</operateType>
 		<excludedFromCheck>true</excludedFromCheck>
@@ -889,7 +899,7 @@
 	</skill>
 	<skill id="19223" toLevel="1" name="Belief of the Exalted">
 		<!-- Teleports to selected party member. Consumes 100 Spirit Ore. The skill cooldown is fixed. -->
-		<icon>icon.skill19223</icon>
+		<icon>icon.skill19223_i01</icon>
 		<operateType>A1</operateType>
 		<effectPoint>100</effectPoint>
 		<isMagic>4</isMagic>
@@ -970,7 +980,7 @@
 		</effects>
 	</skill>
 	<skill id="19226" toLevel="2" name="Favor of the Exalted">
-		<!-- For $s1 h., acquired XP/ SP +$s2 for the target. Consumes $s3 Spirit Ore. The skill cooldown is fixed. <The character is targeted automatically> -->
+		<!-- For 1 h., acquired XP/ SP +3% for the target. Consumes 40 Spirit Ore. The skill cooldown is fixed. <The character is targeted automatically> -->
 		<icon>icon.skill19226</icon>
 		<operateType>A2</operateType>
 		<excludedFromCheck>true</excludedFromCheck>
@@ -1015,7 +1025,7 @@
 		</effects>
 	</skill>
 	<skill id="19227" toLevel="2" name="Wind Hiding">
-		<!-- Blends into the wind for $s1. Speed +$s2. When the effect is canceled, the Traces of Wind effect is granted. The effect is canceled when using standard attacks or attack skills. -->
+		<!-- Blends into the wind for 5 sec.. Speed +7. When the effect is canceled, the Traces of Wind effect is granted. The effect is canceled when using standard attacks or attack skills. -->
 		<icon>icon.skill30008</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1073,7 +1083,7 @@
 		</endEffects>
 	</skill>
 	<skill id="19228" toLevel="1" name="Song of Thief">
-		<!-- For $s1, all party members' Dagger/ Dual Daggers Resistance +$s2. Cannot be used with Song of Archery or Sage's Dance. Consumes $s3 Spirit Ore. -->
+		<!-- For 60 sec., all party members' Dagger/ Dual Daggers Resistance +50%. Cannot be used with Song of Archery or Sage's Dance. Consumes 5 Spirit Ore. -->
 		<icon>icon.skill19228</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
@@ -1115,7 +1125,7 @@
 		</effects>
 	</skill>
 	<skill id="19230" toLevel="30" name="MP Recovery">
-		<!-- MP Recovery Rate +$s2 for $s1 -->
+		<!-- MP Recovery Rate +1 for 15 sec. -->
 		<icon>icon.skill1047</icon>
 		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
@@ -1126,7 +1136,7 @@
 		<isMagic>1</isMagic>
 	</skill>
 	<skill id="19231" toLevel="1" name="Song of Assault">
-		<!-- For $s1, all party members P./ M. Atk. and P./ M. Def. +$s2. Additionally, activates the Spirit of Iss effect. P./ M. Atk. and P./ M. Def. +$s3. Cannot be used with Crippling Dance. Consumes $s4 Spirit Ore. -->
+		<!-- For 5 min., all party members' P./ M. Atk. and P./ M. Def. +15%. Additionally, activates the Spirit of Iss effect. P./ M. Atk. and P./ M. Def. +20%. Cannot be used with Crippling Dance. Consumes 10 Spirit Ore. -->
 		<icon>icon.skill19231</icon>
 		<abnormalTime>
 			<value fromLevel="1" toLevel="1">300</value>
@@ -1172,7 +1182,7 @@
 		</effects>
 	</skill>
 	<skill id="19232" toLevel="1" name="Crippling Dance">
-		<!-- For $s1, all party members P./ M. Atk. and P./ M. Def. +$s2. Additionally, activates the Spirit of Iss effect. P./ M. Atk. and P./ M. Def. +$s3. Cannot be used with Song of Assault. Consumes $s4 Spirit Ore. -->
+		<!-- For 5 min., all party members' P./ M. Atk. and P./ M. Def. +15%. Additionally, activates the Spirit of Iss effect. P./ M. Atk. and P./ M. Def. +20%. Cannot be used with Song of Assault. Consumes 10 Spirit Ore. -->
 		<icon>icon.skill19232</icon>
 		<abnormalTime>
 			<value fromLevel="1" toLevel="1">300</value>
@@ -1218,7 +1228,7 @@
 		</effects>
 	</skill>
 	<skill id="19233" toLevel="3" name="Guardian's Shield">
-		<!-- P. Def. +$s1. -->
+		<!-- P. Def. +2% -->
 		<icon>icon.skill19120</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1233,7 +1243,7 @@
 		</effects>
 	</skill>
 	<skill id="19234" toLevel="3" name="Guardian's Magic Barrier">
-		<!-- M. Def. +$s1. -->
+		<!-- M. Def. +2% -->
 		<icon>icon.skill19121</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1248,7 +1258,7 @@
 		</effects>
 	</skill>
 	<skill id="19235" toLevel="3" name="Guardian's Blessed Body">
-		<!-- Max HP +$s1. -->
+		<!-- Max HP +3% -->
 		<icon>icon.skill1045</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1263,7 +1273,7 @@
 		</effects>
 	</skill>
 	<skill id="19236" toLevel="3" name="Guardian's Elemental Cover">
-		<!-- Attribute Resistance +$s1. -->
+		<!-- Attribute Resistance +15 -->
 		<icon>icon.skill1352</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1318,7 +1328,7 @@
 		</effects>
 	</skill>
 	<skill id="19237" toLevel="2" name="Guardian's Heavy Armor Defense">
-		<!-- When using heavy armor, P./ M. Def. +$s1. -->
+		<!-- When using heavy armor, P./ M. Def. +3%. -->
 		<icon>icon.skill0231</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1345,7 +1355,7 @@
 		</effects>
 	</skill>
 	<skill id="19238" toLevel="2" name="Guardian Leather Defense">
-		<!-- When using light armor, P./ M. Def. +$s1. -->
+		<!-- When using light armor, P./ M. Def. +3%. -->
 		<icon>icon.skill0233</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1372,7 +1382,7 @@
 		</effects>
 	</skill>
 	<skill id="19239" toLevel="2" name="Guardian's Robe Defense">
-		<!-- When using robes, P./ M. Def. +$s1. -->
+		<!-- When using robes, P./ M. Def. +3%. -->
 		<icon>icon.skill0234</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1399,7 +1409,7 @@
 		</effects>
 	</skill>
 	<skill id="19240" toLevel="2" name="Guardian's Resistance">
-		<!-- Debuff Resistance +$s1. -->
+		<!-- Debuff Resistance +5% -->
 		<icon>icon.skill1354</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1413,7 +1423,7 @@
 		</effects>
 	</skill>
 	<skill id="19241" toLevel="4" name="Guardian's Life">
-		<!-- Max HP +$s1. -->
+		<!-- Max HP +3% -->
 		<icon>icon.skill1229</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1429,7 +1439,7 @@
 		</effects>
 	</skill>
 	<skill id="19242" toLevel="1" name="Guardian's Block">
-		<!-- Shield Defense +$s1. -->
+		<!-- Shield Defense +100%. -->
 		<icon>icon.skill1304</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1440,7 +1450,7 @@
 		</effects>
 	</skill>
 	<skill id="19243" toLevel="4" name="Guardian Armor">
-		<!-- P. Def. +$s1. -->
+		<!-- P. Def. +2% -->
 		<icon>icon.skill19165</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1456,7 +1466,7 @@
 		</effects>
 	</skill>
 	<skill id="19244" toLevel="1" name="Guardian's Guidance">
-		<!-- P./ M. Accuracy and servitor's P. Accuracy +$s1. Enhances Revelation skills. -->
+		<!-- P./ M. Accuracy and servitor's P. Accuracy +12. Enhances Revelation skills. -->
 		<icon>icon.skill19127</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1528,7 +1538,7 @@
 		</effects>
 	</skill>
 	<skill id="19245" toLevel="2" name="Guardian's Death Shield">
-		<!-- Received Critical Damage from standard attacks -$s1. -->
+		<!-- Received Critical Damage from basic attacks -10%. -->
 		<icon>icon.skill1542</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1542,7 +1552,7 @@
 		</effects>
 	</skill>
 	<skill id="19246" toLevel="2" name="Guardian's Focus Shield">
-		<!-- Received P. Critical Rate -$s1. -->
+		<!-- Received Critical Rate from basic attacks -15%. -->
 		<icon>icon.skill0986</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1556,7 +1566,7 @@
 		</effects>
 	</skill>
 	<skill id="19247" toLevel="2" name="Guardian's Mind Control">
-		<!-- Skill Cooldown -$s1. -->
+		<!-- Skill Cooldown -3% -->
 		<icon>icon.skill19132</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1579,7 +1589,7 @@
 		</effects>
 	</skill>
 	<skill id="19248" toLevel="2" name="Guardian's Blessing">
-		<!-- Acquired XP/ SP +$s1 -->
+		<!-- Acquired XP/ SP +5% -->
 		<icon>icon.skill_exp_sp_up</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1598,7 +1608,7 @@
 		</effects>
 	</skill>
 	<skill id="19249" toLevel="2" name="Guardian's Binding Cover">
-		<!-- Received damage when immobilized -$s1. -->
+		<!-- Received damage when immobilized -7% -->
 		<icon>icon.skill0335</icon>
 		<operateType>P</operateType>
 		<passiveConditions>
@@ -1620,7 +1630,7 @@
 		</effects>
 	</skill>
 	<skill id="19250" toLevel="1" name="Guardian's Spirit">
-		<!-- Attribute Resistance +$s1. -->
+		<!-- Attribute Resistance +50 -->
 		<icon>icon.skill10044</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1651,7 +1661,7 @@
 		</effects>
 	</skill>
 	<skill id="19251" toLevel="1" name="Guardian's Potential">
-		<!-- P./ M. Skill Critical Rate +$s1. -->
+		<!-- P./ M. Skill Critical Rate +10%. -->
 		<icon>icon.skill1532</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1662,7 +1672,7 @@
 		</effects>
 	</skill>
 	<skill id="19252" toLevel="2" name="Guardian's Expert Potion">
-		<!-- Recovery Potion and Miracle Potion +$s1 -->
+		<!-- Recovery Potion and Miracle Potion +500 -->
 		<icon>icon.skill_potion_up</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1676,7 +1686,7 @@
 		</effects>
 	</skill>
 	<skill id="19253" toLevel="1" name="Guardian's Defense Mastery">
-		<!-- Received damage -$s1. -->
+		<!-- Received damage -10%. -->
 		<icon>icon.skill0528</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1693,7 +1703,7 @@
 		</effects>
 	</skill>
 	<skill id="19254" toLevel="2" name="Berserker's Haste">
-		<!-- Atk. Spd. +$s1. -->
+		<!-- Atk. Spd. +1% -->
 		<icon>icon.skill1086</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1709,7 +1719,7 @@
 		</effects>
 	</skill>
 	<skill id="19255" toLevel="4" name="Berserker's Might">
-		<!-- P. Atk. +$s1. -->
+		<!-- P. Atk. +1% -->
 		<icon>icon.skill19139</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1725,7 +1735,7 @@
 		</effects>
 	</skill>
 	<skill id="19256" toLevel="4" name="Berserker's Elemental Attack">
-		<!-- Attribute Attack +$s1. -->
+		<!-- Attribute Attack +10 -->
 		<icon>icon.skill19130</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1740,7 +1750,7 @@
 		</effects>
 	</skill>
 	<skill id="19257" toLevel="3" name="Berserker's Focus Mastery">
-		<!-- P. Skill Critical Rate +$s1. -->
+		<!-- P. Skill Critical Rate +3% -->
 		<icon>icon.skill0193</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1755,7 +1765,7 @@
 		</effects>
 	</skill>
 	<skill id="19258" toLevel="2" name="Berserker's Backfire">
-		<!-- Damage From Behind +$s1 -->
+		<!-- Damage From Behind +2% -->
 		<icon>icon.skill0030</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1770,7 +1780,7 @@
 		</effects>
 	</skill>
 	<skill id="19259" toLevel="3" name="Berserker's Focus">
-		<!-- Critical Rate for standard attacks +$s1. -->
+		<!-- Critical Rate for basic attacks +10 -->
 		<icon>icon.skill1077</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1785,7 +1795,7 @@
 		</effects>
 	</skill>
 	<skill id="19260" toLevel="1" name="Berserker's Cost">
-		<!-- Skill MP Consumption -$s1. -->
+		<!-- Skill MP Consumption -5% -->
 		<icon>icon.skill19140</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1797,7 +1807,7 @@
 		</effects>
 	</skill>
 	<skill id="19261" toLevel="3" name="Berserker's Death Mastery">
-		<!-- P. Skill Critical Damage +$s1. -->
+		<!-- P. Skill Critical Damage +2% -->
 		<icon>icon.skill10655</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1812,7 +1822,7 @@
 		</effects>
 	</skill>
 	<skill id="19262" toLevel="2" name="Berserker's Ruthlessness">
-		<!-- Skill Mastery Rate +$s1 -->
+		<!-- Skill Mastery Rate +30% -->
 		<icon>icon.skill0330</icon>
 		<operateType>P</operateType>
 		<passiveConditions>
@@ -1838,7 +1848,7 @@
 		</effects>
 	</skill>
 	<skill id="19263" toLevel="3" name="Berserker's Death Whisper">
-		<!-- Critical Damage for standard attacks +$s1. -->
+		<!-- Critical Damage for basic attacks +2% -->
 		<icon>icon.skill4278</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1853,7 +1863,7 @@
 		</effects>
 	</skill>
 	<skill id="19264" toLevel="1" name="Berserker's Eagle">
-		<!-- P./ M. Accuracy and servitor's P. Accuracy +$s1. Enhances Revelation skills. -->
+		<!-- P./ M. Accuracy and servitor's P. Accuracy +12. Enhances Revelation skills. -->
 		<icon>icon.skill19127</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1925,7 +1935,7 @@
 		</effects>
 	</skill>
 	<skill id="19265" toLevel="2" name="Berserker's Battle">
-		<!-- P. Atk. +$s1. -->
+		<!-- P. Atk. +3% -->
 		<icon>icon.skill1388</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1939,7 +1949,7 @@
 		</effects>
 	</skill>
 	<skill id="19266" toLevel="2" name="Berserker's Fire">
-		<!-- P. Skill Power +$s1. -->
+		<!-- P. Skill Power +2% -->
 		<icon>icon.skill1356</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1953,7 +1963,7 @@
 		</effects>
 	</skill>
 	<skill id="19267" toLevel="1" name="Berserker's Skill Acceleration">
-		<!-- Skill Cooldown -$s1. -->
+		<!-- Skill Cooldown -3% -->
 		<icon>icon.skill0758</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1970,7 +1980,7 @@
 		</effects>
 	</skill>
 	<skill id="19268" toLevel="2" name="Berserker's Blessing">
-		<!-- Acquired XP/ SP +$s1 -->
+		<!-- Acquired XP/ SP +5% -->
 		<icon>icon.skill_exp_sp_up</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1989,7 +1999,7 @@
 		</effects>
 	</skill>
 	<skill id="19269" toLevel="2" name="Berserker's Binding Attack">
-		<!-- Damage to immobilized targets +$s1. -->
+		<!-- Damage to immobilized targets +5%. -->
 		<icon>icon.skill0983</icon>
 		<operateType>P</operateType>
 		<passiveConditions>
@@ -2011,7 +2021,7 @@
 		</effects>
 	</skill>
 	<skill id="19270" toLevel="2" name="Berserker's Divine Attack">
-		<!-- Attribute Attack +$s1. -->
+		<!-- Attribute Attack +25 -->
 		<icon>icon.skill11011</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2024,7 +2034,7 @@
 		</effects>
 	</skill>
 	<skill id="19271" toLevel="2" name="Berserker's Expert Potion">
-		<!-- Recovery Potion and Miracle Potion +$s1 -->
+		<!-- Recovery Potion and Miracle Potion +500 -->
 		<icon>icon.skill_potion_up</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2037,7 +2047,7 @@
 		</effects>
 	</skill>
 	<skill id="19272" toLevel="1" name="Berserker's Combat Mastery">
-		<!-- Damage +$s1 -->
+		<!-- Damage +10% -->
 		<icon>icon.skill1499</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2060,7 +2070,7 @@
 		</effects>
 	</skill>
 	<skill id="19273" toLevel="2" name="Wizard's Acumen">
-		<!-- Casting Spd. +$s1. -->
+		<!-- Casting Spd. +2% -->
 		<icon>icon.skill1085</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2074,7 +2084,7 @@
 		</effects>
 	</skill>
 	<skill id="19274" toLevel="3" name="Wizard's Empower">
-		<!-- M. Atk. +$s1. -->
+		<!-- M. Atk. +2% -->
 		<icon>icon.skill1059</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2089,7 +2099,7 @@
 		</effects>
 	</skill>
 	<skill id="19275" toLevel="3" name="Wizard's Elemental Shot">
-		<!-- Attribute Attack +$s1. -->
+		<!-- Attribute Attack +10 -->
 		<icon>icon.skill19130</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2103,7 +2113,7 @@
 		</effects>
 	</skill>
 	<skill id="19276" toLevel="3" name="Wizard's Wild Magic">
-		<!-- M. Skill Critical Rate +$s1. -->
+		<!-- M. Skill Critical Rate +10 -->
 		<icon>icon.skill1303</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2118,7 +2128,7 @@
 		</effects>
 	</skill>
 	<skill id="19277" toLevel="3" name="Wizard's Condition">
-		<!-- Max HP/ MP +$s1. -->
+		<!-- Max HP/ MP +3%. -->
 		<icon>icon.skill1501</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2141,7 +2151,7 @@
 		</effects>
 	</skill>
 	<skill id="19278" toLevel="1" name="Wizard's Eva">
-		<!-- Skill MP Consumption -$s1. -->
+		<!-- Skill MP Consumption -5% -->
 		<icon>icon.skill0214</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2153,7 +2163,7 @@
 		</effects>
 	</skill>
 	<skill id="19279" toLevel="3" name="Wizard's Mystic">
-		<!-- M. Skill Critical Damage +$s1. -->
+		<!-- M. Skill Critical Damage +3% -->
 		<icon>icon.skill19160</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2168,7 +2178,7 @@
 		</effects>
 	</skill>
 	<skill id="19280" toLevel="2" name="Wizard's Prominence">
-		<!-- Skill Mastery Rate +$s1 -->
+		<!-- Skill Mastery Rate +30% -->
 		<icon>icon.skill0330</icon>
 		<operateType>P</operateType>
 		<passiveConditions>
@@ -2194,7 +2204,7 @@
 		</effects>
 	</skill>
 	<skill id="19281" toLevel="1" name="Wizard's Sight">
-		<!-- P. Accuracy, M. Accuracy, and Servitor's P. Accuracy +$s1. Enchants Revelation skill. -->
+		<!-- P. Accuracy, M. Accuracy, and Servitor's P. Accuracy +12. Enchants Revelation skill. -->
 		<icon>icon.skill19127</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2266,7 +2276,7 @@
 		</effects>
 	</skill>
 	<skill id="19282" toLevel="2" name="Wizard's Protection">
-		<!-- Confusion Atk. Rate +$s1. -->
+		<!-- Confusion Atk. Rate +5%. -->
 		<icon>icon.skill0046</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2287,7 +2297,7 @@
 		</effects>
 	</skill>
 	<skill id="19283" toLevel="2" name="Wizard's Water">
-		<!-- M. Skill Power +$s1. -->
+		<!-- M. Skill Power +2% -->
 		<icon>icon.skill1355</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2301,7 +2311,7 @@
 		</effects>
 	</skill>
 	<skill id="19284" toLevel="2" name="Wizard's Magic Acceleration">
-		<!-- Skill Cooldown -$s1. -->
+		<!-- Skill Cooldown -3% -->
 		<icon>icon.skill0945</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2324,7 +2334,7 @@
 		</effects>
 	</skill>
 	<skill id="19285" toLevel="2" name="Wizard's Blessing">
-		<!-- Acquired XP/ SP +$s1 -->
+		<!-- Acquired XP/ SP +5% -->
 		<icon>icon.skill_exp_sp_up</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2343,7 +2353,7 @@
 		</effects>
 	</skill>
 	<skill id="19286" toLevel="2" name="Wizard's Binding Shot">
-		<!-- Damage to immobilized targets +$s1. -->
+		<!-- Damage to immobilized targets +5%. -->
 		<icon>icon.skill0983</icon>
 		<operateType>P</operateType>
 		<passiveConditions>
@@ -2365,7 +2375,7 @@
 		</effects>
 	</skill>
 	<skill id="19287" toLevel="2" name="Wizard's Divine Shot">
-		<!-- Attribute Attack +$s1. -->
+		<!-- Attribute Attack +25 -->
 		<icon>icon.skill11011</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2378,7 +2388,7 @@
 		</effects>
 	</skill>
 	<skill id="19288" toLevel="2" name="Wizard's Expert Potion">
-		<!-- Recovery Potion and Miracle Potion +$s1 -->
+		<!-- Recovery Potion and Miracle Potion +500 -->
 		<icon>icon.skill_potion_up</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2391,7 +2401,7 @@
 		</effects>
 	</skill>
 	<skill id="19289" toLevel="1" name="Wizard's Spell Mastery">
-		<!-- Damage +$s1 -->
+		<!-- Damage +10% -->
 		<icon>icon.skill1500</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2406,7 +2416,7 @@
 		</effects>
 	</skill>
 	<skill id="19290" toLevel="2" name="Vitality of the Exalted">
-		<!-- Vitality bonus +$s1. -->
+		<!-- Vitality bonus +30% -->
 		<icon>icon.s_vitality_of_honors1</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -2428,7 +2438,7 @@
 		</effects>
 	</skill>
 	<skill id="19291" toLevel="1" name="Subclass Certification - Attack">
-		<!-- P. Atk. +$s1, M. Atk. +$s2. -->
+		<!-- P. Atk. +4%, M. Atk. +6%. -->
 		<icon>icon.skill0816</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2445,7 +2455,7 @@
 		</effects>
 	</skill>
 	<skill id="19292" toLevel="1" name="Subclass Certification - Defense">
-		<!-- P./ M. Def. +$s1. -->
+		<!-- P./ M. Def. +4%. -->
 		<icon>icon.skill0439</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2462,7 +2472,7 @@
 		</effects>
 	</skill>
 	<skill id="19293" toLevel="1" name="Subclass Certification - Speed">
-		<!-- Atk. Spd./ Casting Spd. +$s1. -->
+		<!-- Atk. Spd./ Casting Spd. +4%. -->
 		<icon>icon.skill0817</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2479,7 +2489,7 @@
 		</effects>
 	</skill>
 	<skill id="19294" toLevel="1" name="Subclass Certification - Critical">
-		<!-- P./ M. Critical Rate +$s1. -->
+		<!-- P./ M. Critical Rate +40. -->
 		<icon>icon.skill0814</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2496,7 +2506,7 @@
 		</effects>
 	</skill>
 	<skill id="19295" toLevel="1" name="Subclass Certification - Condition">
-		<!-- Increases Max HP/ MP/ CP by $s1. -->
+		<!-- Increases Max HP/ MP/ CP by 6%. -->
 		<icon>icon.skill1397</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2517,7 +2527,7 @@
 		</effects>
 	</skill>
 	<skill id="19296" toLevel="10" name="Counter Flip">
-		<!-- Knocks down the attacking opponent for $s1 and teleports you behind their back. After that the Counter Flip effect is cancelled. Requires a dagger or a dual dagger. -->
+		<!-- Knocks down the attacking opponent for 15 sec. and teleports you behind their back. After that the Counter Flip effect is cancelled. Requires a dagger or a dual dagger. -->
 		<icon>icon.skill19296</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -2594,7 +2604,7 @@
 		</effects>
 	</skill>
 	<skill id="19297" toLevel="10" name="Counter Flip">
-		<!-- Counters the enemy's attack knocking them down for $s1 Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Counters the enemy's attack knocking them down for 2 sec. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill19296</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -2656,7 +2666,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="19298" toLevel="10" name="Flash Dagger">
-		<!-- Blinds enemies in front of you making them unable to choose a target for $s1 Requires a dagger or a dual dagger. Inflicted status: Obstruction (Disarm, Hold, Blind, Block, Aggression, Silence, Banishment, Bluff, Stealth). -->
+		<!-- Blinds enemies in front of you making them unable to choose a target for 3 sec. Requires a dagger or a dual dagger. Inflicted status: Obstruction (Disarm, Hold, Blind, Block, Aggression, Silence, Banishment, Bluff, Stealth). -->
 		<icon>icon.skill19298</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -2724,7 +2734,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="19299" toLevel="9" name="Reverse Mana">
-		<!-- Attempts Deadly Attack with $s1 power added to P. Atk. and recovers your MP by $s2. Half-kill is possible. Requires dagger/ dual daggers. -->
+		<!-- Attempts Deadly Attack with 36840 power added to P. Atk. and recovers your MP by 3%. Half-kill is possible. Requires dagger/ dual daggers. -->
 		<icon>icon.skill19299</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>

@@ -42,6 +42,7 @@ import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.instancemanager.FortSiegeManager;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
 import org.l2jmobius.gameserver.instancemanager.MailManager;
+import org.l2jmobius.gameserver.instancemanager.PcCafePointsManager;
 import org.l2jmobius.gameserver.instancemanager.PetitionManager;
 import org.l2jmobius.gameserver.instancemanager.PunishmentManager;
 import org.l2jmobius.gameserver.instancemanager.ServerRestartManager;
@@ -106,6 +107,7 @@ import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
 import org.l2jmobius.gameserver.network.serverpackets.SkillCoolTime;
 import org.l2jmobius.gameserver.network.serverpackets.SkillList;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
+import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.friend.L2FriendList;
 import org.l2jmobius.gameserver.util.BuilderUtil;
 import org.l2jmobius.gameserver.util.Util;
@@ -165,7 +167,7 @@ public class EnterWorld implements ClientPacket
 		LoginServerThread.getInstance().sendClientTracert(player.getAccountName(), adress);
 		client.setClientTracert(_tracert);
 		
-		player.broadcastUserInfo();
+		player.sendPacket(new UserInfo(player));
 		
 		// Restore to instanced area if enabled
 		if (Config.RESTORE_PLAYER_INSTANCE)
@@ -179,10 +181,13 @@ public class EnterWorld implements ClientPacket
 			vars.remove("INSTANCE_RESTORE");
 		}
 		
-		player.updatePvpTitleAndColor(false);
+		if (!player.isGM())
+		{
+			player.updatePvpTitleAndColor(false);
+		}
 		
 		// Apply special GM properties to the GM when entering
-		if (player.isGM())
+		else
 		{
 			gmStartupProcess:
 			{
@@ -474,7 +479,7 @@ public class EnterWorld implements ClientPacket
 			final NpcHtmlMessage notice = new NpcHtmlMessage();
 			notice.setFile(player, "data/html/clanNotice.htm");
 			notice.replace("%clan_name%", player.getClan().getName());
-			notice.replace("%notice_text%", player.getClan().getNotice().replaceAll("\r\n", "<br>"));
+			notice.replace("%notice_text%", player.getClan().getNotice().replaceAll("(\r\n|\n)", "<br>"));
 			notice.disableValidation();
 			player.sendPacket(notice);
 		}
@@ -561,8 +566,8 @@ public class EnterWorld implements ClientPacket
 						|| ((item.getTemplate().getType2() == ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > EnchantItemGroupsData.getInstance().getMaxAccessoryEnchant())) //
 						|| (item.isArmor() && (item.getTemplate().getType2() != ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > EnchantItemGroupsData.getInstance().getMaxArmorEnchant()))))
 				{
+					PacketLogger.info("Over-enchanted (+" + item.getEnchantLevel() + ") " + item + " has been removed from " + player);
 					player.getInventory().destroyItem("Over-enchant protection", item, player, null);
-					PacketLogger.info("Over-enchanted " + item + " has been removed from " + player);
 					punish = true;
 				}
 			}
@@ -724,6 +729,11 @@ public class EnterWorld implements ClientPacket
 		
 		// EnterWorld has finished.
 		player.setEnteredWorld();
+		
+		if ((player.hasPremiumStatus() || !Config.PC_CAFE_ONLY_PREMIUM) && Config.PC_CAFE_RETAIL_LIKE)
+		{
+			PcCafePointsManager.getInstance().run(player);
+		}
 	}
 	
 	/**

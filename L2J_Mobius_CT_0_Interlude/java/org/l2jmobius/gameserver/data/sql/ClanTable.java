@@ -54,7 +54,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PledgeShowInfoUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListAll;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.EnumIntBitmask;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -207,8 +206,7 @@ public class ClanTable
 		// should be update packet only
 		player.sendPacket(new PledgeShowInfoUpdate(clan));
 		player.sendPacket(new PledgeShowMemberListAll(clan, player));
-		player.sendPacket(new UserInfo(player));
-		// player.sendPacket(new ExBrExtraUserInfo(player));
+		player.updateUserInfo();
 		player.sendPacket(new PledgeShowMemberListUpdate(player));
 		player.sendPacket(SystemMessageId.YOUR_CLAN_HAS_BEEN_CREATED);
 		

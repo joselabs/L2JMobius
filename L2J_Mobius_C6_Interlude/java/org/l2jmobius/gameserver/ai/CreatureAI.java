@@ -31,6 +31,7 @@ import org.l2jmobius.gameserver.enums.ItemLocation;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Skill;
 import org.l2jmobius.gameserver.model.WorldObject;
+import org.l2jmobius.gameserver.model.WorldRegion;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -125,24 +126,33 @@ public class CreatureAI extends AbstractAI
 		}
 		
 		// Check if the Intention is not already Active
-		if (getIntention() != AI_INTENTION_ACTIVE)
+		if (getIntention() == AI_INTENTION_ACTIVE)
 		{
-			// Set the AI Intention to AI_INTENTION_ACTIVE
-			changeIntention(AI_INTENTION_ACTIVE, null, null);
-			
-			// Init cast and attack target
-			setCastTarget(null);
-			setAttackTarget(null);
-			
-			// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
-			clientStopMoving(null);
-			
-			// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-			clientStopAutoAttack();
-			
-			// Launch the Think Event
-			onEvtThink();
+			return;
 		}
+		
+		// Set the AI Intention to AI_INTENTION_ACTIVE
+		changeIntention(AI_INTENTION_ACTIVE, null, null);
+		
+		// Check if region and its neighbors are active.
+		final WorldRegion region = _actor.getWorldRegion();
+		if ((region == null) || !region.areNeighborsActive())
+		{
+			return;
+		}
+		
+		// Init cast and attack target
+		setCastTarget(null);
+		setAttackTarget(null);
+		
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		clientStopMoving(null);
+		
+		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
+		clientStopAutoAttack();
+		
+		// Launch the Think Event
+		onEvtThink();
 	}
 	
 	/**
@@ -1021,7 +1031,7 @@ public class CreatureAI extends AbstractAI
 					}
 				}
 				// if the target is too far (maybe also teleported)
-				if (!_actor.isInsideRadius2D(target, 2000))
+				if (!_actor.isInsideRadius2D(target, 5000))
 				{
 					stopFollow();
 					setIntention(AI_INTENTION_IDLE);
@@ -1147,7 +1157,6 @@ public class CreatureAI extends AbstractAI
 		{
 			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
 			setIntention(AI_INTENTION_ACTIVE);
-			
 			return true;
 		}
 		return false;

@@ -393,8 +393,8 @@
 		<set name="reuse_delay" val="300000" />
 		<set name="weight" val="1" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="is_event_restricted" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -404,7 +404,7 @@
 		</skills>
 	</item>
 	<item id="48831" name="Jewel Energy" type="EtcItem">
-		<!-- Required for upgrading jewels through compounding. Can be used with any jewels up to Lv. 5. If compounding fails, the jewel's level drops to 1. -->
+		<!-- Enhance jewels during compounding. Can be used with any jewel Lv. 1-4. If compounding fails, jewel enhance level is reset. -->
 		<set name="icon" val="icon.bm_blessed_jewel" />
 		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
@@ -419,6 +419,12 @@
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="36946" min="1" max="1" chance="100" /> <!-- Lindvior's Earring -->
+			<item id="19464" min="1" max="1" chance="100" /> <!-- Blessed Valakas' Necklace -->
+			<item id="19463" min="1" max="1" chance="100" /> <!-- Blessed Antharas' Earring -->
+		</capsuled_items>
 	</item>
 	<item id="48833" name="Giant Monster's Soul" type="EtcItem">
 		<!-- Defeat the giant monsters as requested by Head Priest of the Earth Daichir in the Town of Schuttgart. Gather their souls as evidence and take them to Head Priest of the Earth Daichir in the Town of Schuttgart. -->
@@ -517,7 +523,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48840" name="Ultimate Lv. 1 Luxurious Jewelry Box" type="EtcItem">
-		<!-- Double-click to obtain a Lv. 1 greater jewel. -->
+		<!-- Double-click to obtain one level 1 Greater Gem. -->
 		<set name="icon" val="icon.etc_bm_jewelbox_shhadai" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -662,8 +668,8 @@
 		<set name="reuse_delay" val="300000" />
 		<set name="weight" val="1" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="is_event_restricted" val="true" />
 		<set name="is_tradable" val="false" />
@@ -785,9 +791,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="3000000000" max="3000000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="48857" name="Shining Dragon Attribute Tonic (XP)" additionalName="Event" type="EtcItem">
-		<!-- When used, Attribute Attack +70, Attribute Resistance +70, acquired XP/ SP +30% for 30 min. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. -->
+		<!-- When used, Attribute Attack +70, Attribute Resistance +70, acquired XP/ SP +30% for +30 min. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.bm_dragon_posion_special" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -916,6 +926,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47908" min="360" max="360" chance="100" /> <!-- Shining Magic Bait Exchange Coupon -->
+			<item id="48630" min="3" max="3" chance="100" /> <!-- Master Fisherman's Blessing - 1-hr -->
+		</capsuled_items>
 	</item>
 	<item id="48867" name="Fantastic Fishing Intermediate Bundle" type="EtcItem">
 		<!-- Double-click to obtain Secret Embryo Bait Coupon (500 pcs.), Master Fisherman's Blessing (1-hour) (3 pcs.), and Fishing Dock Pass Box (1-hour) (2 pcs.). -->
@@ -927,6 +942,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47908" min="500" max="500" chance="100" /> <!-- Shining Magic Bait Exchange Coupon -->
+			<item id="48630" min="3" max="3" chance="100" /> <!-- Master Fisherman's Blessing - 1-hr -->
+			<item id="48634" min="2" max="2" chance="100" /> <!-- Fishing Dock Pass Box (1-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48868" name="Fantastic Fishing Advanced Bundle" type="EtcItem">
 		<!-- Double-click to obtain Secret Embryo Bait Coupon (600 pcs.), Master Fisherman's Blessing (1-hour) (4 pcs.), and Fishing Dock Pass Box (1-hour) (4 pcs.). -->
@@ -938,6 +959,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47908" min="600" max="600" chance="100" /> <!-- Shining Magic Bait Exchange Coupon -->
+			<item id="48630" min="4" max="4" chance="100" /> <!-- Master Fisherman's Blessing - 1-hr -->
+			<item id="48634" min="4" max="4" chance="100" /> <!-- Fishing Dock Pass Box (1-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48869" name="Fantastic Fishing Cube Box" type="EtcItem">
 		<!-- Use it to obtain a Fantastic Fishing Cube (15 times). -->
@@ -947,6 +974,10 @@
 		<set name="material" val="FISH" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48865" min="1" max="1" chance="100" /> <!-- Fantastic Fishing Cube (15 times) -->
+		</capsuled_items>
 	</item>
 	<item id="48870" name="Infinite Bliss" type="EtcItem">
 		<!-- Infinite bliss! Aurora is greatly surprised while telling your fortune. You will be incredibly lucky in 2018. Double-click to obtain a reward. -->
@@ -1000,9 +1031,9 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="48876" min="1" max="1" chance="60" /> <!-- Forgotten Spell Book 1 -->
-			<item id="48877" min="1" max="1" chance="30" /> <!-- Forgotten Spell Book 2 -->
-			<item id="48878" min="1" max="1" chance="10" /> <!-- Forgotten Spell Book 3 -->
+			<item id="48876" min="1" max="1" chance="60" /> <!-- Forgotten Spellbook Chapter 1 -->
+			<item id="48877" min="1" max="1" chance="30" /> <!-- Forgotten Spellbook Chapter 2 -->
+			<item id="48878" min="1" max="1" chance="10" /> <!-- Forgotten Spellbook Chapter 3 -->
 		</capsuled_items>
 	</item>
 	<item id="48876" name="Forgotten Spellbook Chapter 1" type="EtcItem">

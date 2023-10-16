@@ -63,6 +63,16 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48265" min="10" max="10" chance="100" /> <!-- Giant's Scroll: Enchant Clan Cloak -->
+			<item id="35568" min="1" max="1" chance="100" /> <!-- Bloody Weapon Enhancement Stone -->
+			<item id="39738" min="3" max="3" chance="100" /> <!-- Rune Stone -->
+			<item id="19448" min="3" max="3" chance="100" /> <!-- Blessed Scroll: Enchant R-grade Armor -->
+			<item id="19447" min="2" max="2" chance="100" /> <!-- Blessed Scroll: Enchant R-grade Weapon -->
+			<item id="36389" min="3" max="3" chance="100" /> <!-- Giant's Scroll: Enchant R-grade Armor -->
+			<item id="36386" min="2" max="2" chance="100" /> <!-- Giant's Scroll: Enchant R-grade Weapon -->
+		</capsuled_items>
 	</item>
 	<item id="48607" name="Throne of Heroes 2nd Place Reward Box" type="EtcItem">
 		<!-- A reward box for the 2nd place clan of the Throne of Heroes. -->
@@ -251,7 +261,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48623" name="Hero's Ring" additionalName="30-day" type="Armor">
-		<!-- A ring purchased with Marks of Battle. Max MP +33, Max CP +10%, Confusion Resistance/ Atk. Rate +15%, P. Critical Damage and P./ M. Skill Critical Damage +15%, Atk. Spd./ Casting Spd. +5%. Effects of two identical rings do not stack. -->
+		<!-- A ring purchased with Marks of Battle. Max MP +33, Max CP +10%, Confusion Atk. Rate and Resistance +15%, P. Critical Damage and P./ M. Skill Critical Damage +15%, Atk. Spd./ Casting Spd. +5%. Effects of two identical rings do not stack. -->
 		<set name="icon" val="icon.accessory_ring_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -269,7 +279,7 @@
 		</stats>
 	</item>
 	<item id="48624" name="Hero's Miracle Cure" type="EtcItem">
-		<!-- An elixir purchased with the Marks of Battle. Recovers 7000 HP. If HP is full, recovers CP. Can be used under most debuffs. Cannot be used in the Olympiad. -->
+		<!-- An elixir purchased with Marks of Battle. Recovers 7000 HP. If HP is full, recovers CP. Can be used under most debuffs. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.pvp_battle_quick_healing_potion2" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -283,7 +293,7 @@
 		</skills>
 	</item>
 	<item id="48625" name="Hero's Rune Box (1-hour)" type="EtcItem">
-		<!-- A box containing the Hero's Rune (1-hour) purchased with the Marks of Battle. Double-click to obtain the Hero's Rune (1-hour) that increases XP/ SP by 20%. -->
+		<!-- A box containing the Hero's Rune, purchased with Marks of Battle. Double-click to obtain Hero's Rune (1-hour) that increases acquired XP/ SP by 20%. -->
 		<set name="icon" val="BranchSys3.icon.g_cash_fortuna_box_r" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -296,7 +306,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48626" name="Hero's Rune" additionalName="1-hour" type="EtcItem">
-		<!-- Hero's Rune purchased with the Mark of Battle. If stored in the inventory, increases Hunting Acquired XP/ SP by 20%. -->
+		<!-- The Hero's Rune purchased with Marks of Battle. When in inventory, acquired XP/ SP +20%. -->
 		<set name="icon" val="icon.bm_freya_bloody_rune" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -326,7 +336,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48629" name="Nevit's Fortune Box" type="EtcItem">
-		<!-- Double-click the box to obtain one very item at random. -->
+		<!-- Double-click to obtain a very rare item. -->
 		<set name="icon" val="icon.bm_nebit_box" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -340,6 +350,11 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39231" level="1" /> <!-- Master Fisherman's Blessing -->
+		</skills>
 	</item>
 	<item id="48631" name="Master Fisherman's Blessing - 2-hr" type="EtcItem">
 		<!-- For 2 hour, Acquired XP/ SP +100% when fishing succeeds. Applied to all bait. -->
@@ -348,6 +363,11 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39231" level="2" /> <!-- Master Fisherman's Blessing -->
+		</skills>
 	</item>
 	<item id="48632" name="Master Fisherman's Blessing - 4-hr" type="EtcItem">
 		<!-- For 4 hour, Acquired XP/ SP +100% when fishing succeeds. Applied to all bait. -->
@@ -356,6 +376,11 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39231" level="3" /> <!-- Master Fisherman's Blessing -->
+		</skills>
 	</item>
 	<item id="48633" name="Master Fisherman's Blessing (8-hour)" type="EtcItem">
 		<!-- For 8 hour, Acquired XP/ SP +100% when fishing succeeds. Applied to all bait. -->
@@ -364,6 +389,11 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39231" level="4" /> <!-- Master Fisherman's Blessing -->
+		</skills>
 	</item>
 	<item id="48634" name="Fishing Dock Pass Box (1-hour)" type="EtcItem">
 		<!-- Double-click to obtain Pass to Fishing Dock that allows you to stay there for 1 h. In the Fishing Dock you acquire more XP than in other fishing places of Aden. The timer starts as soon as the box is opened. -->
@@ -374,6 +404,10 @@
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48638" min="1" max="1" chance="100" /> <!-- Pass to Fishing Dock (1-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48635" name="Fishing Dock Pass Box (2-hour)" type="EtcItem">
 		<!-- Double-click to obtain Pass to Fishing Dock that allows you to stay there for 2 h. In the Fishing Dock you acquire more XP than in other fishing places of Aden. The timer starts as soon as the box is opened. -->
@@ -384,6 +418,10 @@
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48639" min="1" max="1" chance="100" /> <!-- Pass to Fishing Dock (2-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48636" name="Fishing Dock Pass Box (4-hour)" type="EtcItem">
 		<!-- Double-click to obtain Pass to Fishing Dock that allows you to stay there for 4 h. In the Fishing Dock you acquire more XP than in other fishing places of Aden. The timer starts as soon as the box is opened. -->
@@ -394,6 +432,10 @@
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48640" min="1" max="1" chance="100" /> <!-- Pass to Fishing Dock (4-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48637" name="Fishing Dock Pass Box (8-hour)" type="EtcItem">
 		<!-- Double-click to obtain Pass to Fishing Dock that allows you to stay there for 8 h. In the Fishing Dock you acquire more XP than in other fishing places of Aden. The timer starts as soon as the box is opened. -->
@@ -404,6 +446,10 @@
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48641" min="1" max="1" chance="100" /> <!-- Pass to Fishing Dock (8-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48638" name="Pass to Fishing Dock (1-hour)" type="EtcItem">
 		<!-- If stored in the inventory, it allows you to freely enter the Fantastic Fishing Spot. When it expires, you will be expelled from the Fantastic Fishing Spot. You can enter the Fishing Spot through the Fantasy Isle Paddy on the center of the Fantasy Isle Plaza. -->
@@ -438,29 +484,36 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48642" name="Shining Nevit's Gold Hourglass" type="EtcItem">
-		<!-- For 30 min., Acquired XP/ SP +100%. Does not stack with the Fall of the Dragon or Dandy's Home Run Ball effects. Cooldown: 5 min. -->
+		<!-- For 30 min., acquired XP/ SP +100%. Does not stack with the Fall of the Dragon or Dandy's Home Run Ball effects. Cooldown: 5 min. -->
 		<set name="icon" val="icon.bm_dragon_breath" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
-		<set name="is_tradable" val="false" />
-		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="POTION" />
 		<set name="handler" val="ItemSkills" />
-		<set name="reuse_delay" val="300000" />
-		<set name="etcitem_type" val="SCROLL" />
+		<set name="reuse_delay" val="300" />
 		<skills>
-			<skill id="39245" level="1" /> <!-- Shining Nevit's Gold Hourglass -->
+			<skill id="39571" level="1" /> <!-- Shining Nevit's Gold Hourglass -->
 		</skills>
 	</item>
 	<item id="48643" name="Angel's Gift Bundle Lv. 5" type="EtcItem">
-		<!-- Double-click to obtain Greater Red & Blue Cat's Eyes Box (30-day), Greater Ruby & Sapphire Box, Greater Diamond Box, Greater Opal Box, Greater Pearl Box, Full Rare Accessory Pack (30-day) (Lindvior's Earring, Blessed Antharas' Earring, Blessed Valakas' Necklace, Earth Wyrm's Heart Ring, Tauti's Ring). -->
+		<!-- Double-click to obtain Greater Red and Blue Cat's Eyes Box (30-day), Greater Ruby and Sapphire Box, Greater Diamond Box, Greater Opal Box, Greater Pearl Box, Full Rare Accessory Pack (30-day) (Lindvior's Earring, Blessed Antharas' Earring, Blessed Valakas' Necklace, Earth Wyrm's Heart Ring, Tauti's Ring). -->
 		<set name="icon" val="icon.bm_nebit_present" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48649" min="1" max="1" chance="100" /> <!-- Greater Ruby/ Sapphire Box Lv. 1 - 30-day -->
+			<item id="48655" min="1" max="1" chance="100" /> <!-- Greater Opal Lv. 1 Box - 30-day -->
+			<item id="48656" min="1" max="1" chance="100" /> <!-- Greater Diamond Lv. 1 Box - 30-day -->
+			<item id="48657" min="1" max="1" chance="100" /> <!-- Greater Pearl Lv. 1 Box - 30-day -->
+			<item id="48658" min="1" max="1" chance="100" /> <!-- Full Rare Accessory Pack - 30-day -->
+			<item id="48659" min="1" max="1" chance="100" /> <!-- Greater Red/ Blue Cat's Eye Box Lv. 1 - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="48644" name="Greater Ruby Lv. 1" additionalName="30-day" type="Armor">
 		<!-- Soulshot and Beast Soulshot damage +20%, P. Atk. +9%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -481,7 +534,7 @@
 		</skills>
 	</item>
 	<item id="48645" name="Greater Sapphire Lv. 1" additionalName="30-day" type="Armor">
-		<!-- Spiritshot and Blessed Spiritshot's damage +20%, M. Atk. +13%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- Spiritshot and Blessed Spiritshot damage +20%, M. Atk. +13%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.bm_jewel_spsdmg_high_lv1_lavianrose" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -499,7 +552,7 @@
 		</skills>
 	</item>
 	<item id="48646" name="Greater Opal Lv. 1" additionalName="30-day" type="Armor">
-		<!-- Attribute Attack +120, Attribute Resistance +70. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- When equipped, Attribute Attack +120, Attribute Resistance +70. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.bm_jewel_atkeleup_high_lv1_lavianrose" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -555,17 +608,27 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48644" min="1" max="1" chance="100" /> <!-- Greater Ruby Lv. 1 - 30-day -->
+			<item id="48645" min="1" max="1" chance="100" /> <!-- Greater Sapphire Lv. 1 - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="48650" name="Blue Potion - Fishing XP Bonus" additionalName="1-hour" type="EtcItem">
 		<!-- When used, increases Successful Fishing XP by 50% for 1 hour. Applied to all bait. Can be stacked with Angler's Blessing. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="material" val="PAPER" />
+		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="POTION" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39232" level="1" /> <!-- Blue Potion - Fishing XP Bonus - 1-hr -->
+		</skills>
 	</item>
 	<item id="48651" name="Rudolph's Yellow Potion" type="EtcItem">
-		<!-- Recovers some Vitality. A Vitality item with no restrictions. -->
+		<!-- Recharges a certain amount of Vitality when used. No limitations on use. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_yellow_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -573,7 +636,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48652" name="Rudolph's Red Potion" type="EtcItem">
-		<!-- When used, increases Acquired XP/ SP by 30%, Acquired XP/ SP in Vitality state by 30%, and P. Atk./ P. Def./ M. Atk./ M. Def. by 15% for 30 min. -->
+		<!-- For 30 min., acquired XP/ SP +30%, SP/ Vitality bonus +30%, P. Atk./ P. Def./ M. Atk./ M. Def. +15%. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -608,6 +671,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48646" min="1" max="1" chance="100" /> <!-- Greater Opal Lv. 1 - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="48656" name="Greater Diamond Lv. 1 Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a Greater Diamond Lv. 1 (30-day). -->
@@ -618,6 +685,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48647" min="1" max="1" chance="100" /> <!-- Greater Diamond Lv. 1 - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="48657" name="Greater Pearl Lv. 1 Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a Greater Pearl Lv. 1 (30-day). -->
@@ -628,6 +699,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48648" min="1" max="1" chance="100" /> <!-- Greater Pearl Lv. 1 - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="48658" name="Full Rare Accessory Pack" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain Lindvior's Earring, Blessed Antharas' Earring, Blessed Valakas' Necklace, Tauti's Ring, and Earth Wyrm Heart Ring. 30-day. -->
@@ -655,9 +730,14 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47921" min="1" max="1" chance="100" /> <!-- Greater Red Cat's Eye Lv. 1 - 30-day -->
+			<item id="47922" min="1" max="1" chance="100" /> <!-- Greater Blue Cat's Eye Lv. 1 - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="48660" name="Festival Fairy's New Year Gift Cube" additionalName="Event" type="EtcItem">
-		<!-- A special cube that Festival Fairy has prepared as a Thanksgiving gift. You can obtain 1 to 3 Festival Fairy's Thanksgiving Lucky Pouches, depending on how many times you use it. You can earn 2 Dandy's Home Run Balls on the 5th use, 3 Dandy's Home Run Balls on the 10th use, and Chorong's Special Lucky Pouch items on the 15th use. -->
+		<!-- A special cube that the Festival Fairy has prepared as a Thanksgiving gift. You can obtain 1 to 3 Festival Fairy's Lucky Pouches, depending on how many times you use it. You can earn 2 Dandy's Home Run Balls on the 5th use, 3 Dandy's Home Run Balls on the 10th use, and Festival Fairy's Gift on the 15th use. -->
 		<set name="icon" val="icon.event_six_party_cube_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -685,25 +765,43 @@
 		<!-- When used, Successful Fishing XP +50% for 2 hours. Applied to all bait. Can be stacked with Angler's Blessing. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="material" val="PAPER" />
+		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="etcitem_type" val="POTION" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39232" level="2" /> <!-- Blue Potion - Fishing XP Bonus - 2-hr -->
+		</skills>
 	</item>
 	<item id="48664" name="Blue Potion - Fishing XP Bonus" additionalName="4-hour" type="EtcItem">
 		<!-- When used, Successful Fishing XP +50% for 4 h.. Applied to all bait. Can be stacked with Angler's Blessing. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="material" val="PAPER" />
+		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="etcitem_type" val="POTION" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39232" level="3" /> <!-- Blue Potion - Fishing XP Bonus - 4-hr -->
+		</skills>
 	</item>
 	<item id="48665" name="Blue Potion - Fishing XP Bonus" additionalName="8-hour" type="EtcItem">
 		<!-- For 6 h., Successful Fishing XP +50%. Applied to all baits. Can be stacked with other potions and Angler's Blessing. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="material" val="PAPER" />
+		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="etcitem_type" val="POTION" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39232" level="4" /> <!-- Blue Potion - Fishing XP Bonus - (8-hour) -->
+		</skills>
 	</item>
 	<item id="48666" name="Low-grade Dragon Weapon Pack" type="EtcItem">
 		<!-- Double-click to obtain Antharas', Valakas', Lindvior's, or Fafurion's low-grade weapon. -->
@@ -739,7 +837,7 @@
 			<item id="36436" min="1" max="1" chance="3.2258" /> <!-- Lindvior Slasher - Fragment -->
 			<item id="36437" min="1" max="1" chance="3.2258" /> <!-- Lindvior Caster - Fragment -->
 			<item id="36438" min="1" max="1" chance="3.2258" /> <!-- Lindvior Cutter - Fragment -->
-			<item id="36439" min="1" max="1" chance="3.2258" /> <!-- Lindvior Shooter - Fragment -->
+			<item id="36439" min="1" max="1" chance="3.2258" /> <!-- Lindvior Guardian - Fragment -->
 			<item id="36440" min="1" max="1" chance="3.2258" /> <!-- Lindvior Dual Daggers - Fragment -->
 			<item id="80066" min="1" max="1" chance="3.2258" /> <!-- Fafurion Avenger - Fragment -->
 			<item id="80067" min="1" max="1" chance="3.2258" /> <!-- Fafurion Fighter - Fragment -->
@@ -784,7 +882,7 @@
 			<item id="36460" min="1" max="1" chance="3.2258" /> <!-- Lindvior Slasher - Standard -->
 			<item id="36461" min="1" max="1" chance="3.2258" /> <!-- Lindvior Caster - Standard -->
 			<item id="36462" min="1" max="1" chance="3.2258" /> <!-- Lindvior Cutter - Standard -->
-			<item id="36463" min="1" max="1" chance="3.2258" /> <!-- Lindvior Shooter - Standard -->
+			<item id="36463" min="1" max="1" chance="3.2258" /> <!-- Lindvior Guardian - Standard -->
 			<item id="36464" min="1" max="1" chance="3.2258" /> <!-- Lindvior Dual Daggers - Standard -->
 			<item id="80072" min="1" max="1" chance="3.2258" /> <!-- Fafurion Avenger - Standard -->
 			<item id="80073" min="1" max="1" chance="3.2258" /> <!-- Fafurion Fighter - Standard -->
@@ -796,7 +894,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48668" name="Scroll: Enchant Angel Accessory" type="EtcItem">
-		<!-- Enchant scroll exclusively for Angel and Dragon accessories. The maximum enchantment level is +10. -->
+		<!-- Enchant scroll for Angel and Dragon accessories as well as Blessed Angel accessories. The maximum enchantment level is +10. After an unsuccessful Enchant the registered item is destroyed. -->
 		<set name="icon" val="icon.scrl_of_ench_acc" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_AM" />
@@ -811,7 +909,7 @@
 		</skills>
 	</item>
 	<item id="48669" name="Angel's Necklace" type="Armor">
-		<!-- When enchanted, increases Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, P./ M. Def. and Skill Power, also decreases Skill Cooldowns. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel Accessory. <Enhancing>. To enhance this item enchanted to +6 an Angel's Necklace Pack is needed. Can be augmented. -->
 		<set name="icon" val="icon.elemental_necklace_wind_i00" />
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="73" />
@@ -836,6 +934,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47825" min="1" max="1" chance="100" /> <!-- Hanbok Outfit - Event -->
+			<item id="80496" min="10" max="10" chance="100" /> <!-- Golden Sweets - Event -->
+			<item id="80494" min="1" max="1" chance="100" /> <!-- Gem Exchange Ticket - Event -->
+		</capsuled_items>
 	</item>
 	<item id="48671" name="Windstorm Box" type="EtcItem">
 		<!-- Double-click to obtain a Dandy's Home Run Ball, Dandy's Golden Ball, Ruler's Authority (7-day), Nevit's Cloak of Light (30-day), Emperor's Rune Pack (2-hour), Bloody Weapon Enhancement Stone, or Dark Weapon Enhancement Stone. -->
@@ -858,6 +962,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46254" min="3" max="3" chance="100" /> <!-- Dandy's Golden Ball -->
+			<item id="48066" min="1" max="1" chance="100" /> <!-- Zodiac Agathion Cube -->
+			<item id="48673" min="1" max="1" chance="100" /> <!-- Fishing Dock Pass Box (1-hour) - Event -->
+		</capsuled_items>
 	</item>
 	<item id="48673" name="Fishing Dock Pass Box (1-hour)" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain Pass to Fishing Dock that allows you to stay there for 1 h. In the Fishing Dock you acquire more XP than in other fishing places of Aden. -->
@@ -869,6 +979,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48638" min="1" max="1" chance="100" /> <!-- Pass to Fishing Dock (1-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48674" name="Freya's Dark Rune Pack (30-day)" type="EtcItem">
 		<!-- Double-click to obtain Freya's Dark Rune (30-day). The effect of Freya's Dark Rune is not applied to Olympiad. -->
@@ -901,7 +1015,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48676" name="Freya's Vital Rune Pack (30-day)" type="EtcItem">
-		<!-- Double-click to obtain Freya's Vital Rune for 30 days. -->
+		<!-- Double-click to obtain Freya's Vital Rune (30-day). -->
 		<set name="icon" val="br_cashtex.item.br_cash_lucky_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -916,7 +1030,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48677" name="High-grade Skill Power Talisman Pack" additionalName="Skill Critical Damage" type="EtcItem">
-		<!-- Double-click to obtain Advanced Mammon's Talisman - Physical Skills (30-day). -->
+		<!-- Double-click to obtain High-grade Skill Power Talisman (30-day). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -926,11 +1040,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="48683" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman (30-day) - Skill Power -->
+			<item id="48683" min="1" max="1" chance="100" /> <!-- High-grade Skill Power Talisman - Skill Critical Damage -->
 		</capsuled_items>
 	</item>
 	<item id="48678" name="High-grade Talisman of Attribute Attack Pack" additionalName="Critical Damage for basic attacks" type="EtcItem">
-		<!-- Double-click to obtain Advanced Mammon's Talisman - Attribute Attack (30-day). -->
+		<!-- Double-click to obtain High-grade Talisman of Attribute Attack (30-day). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -940,11 +1054,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="48684" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman (30-day) - Attribute Attack -->
+			<item id="48684" min="1" max="1" chance="100" /> <!-- High-grade Talisman of Attribute Attack - Critical Damage for basic attacks -->
 		</capsuled_items>
 	</item>
 	<item id="48679" name="High-grade Skill Cooldown Talisman Pack" additionalName="P./M. Def." type="EtcItem">
-		<!-- Double-click to obtain Advanced Mammon's Talisman - Skill Cooldown (30-day). -->
+		<!-- Double-click to obtain High-grade Skill Cooldown Talisman (30-day). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -954,11 +1068,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="48685" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman (30-day) - Skill Cooldown -->
+			<item id="48685" min="1" max="1" chance="100" /> <!-- High-grade Skill Cooldown Talisman - P./M. Def. -->
 		</capsuled_items>
 	</item>
 	<item id="48680" name="Freya's Dark Rune" additionalName="30-day" type="EtcItem">
-		<!-- When stored in the inventory, PvP Damage +15%. Cannot be used in Olympiad. -->
+		<!-- When in inventory, PvP damage +15%. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.bm_freya_dark_rune" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -1008,7 +1122,7 @@
 		</skills>
 	</item>
 	<item id="48683" name="High-grade Skill Power Talisman" additionalName="Skill Critical Damage" type="Armor">
-		<!-- Skill Power +5%, P./ M. Skill Critical Damage +10%. -->
+		<!-- P./ M. Skill Power +5%, P./ M. Skill Critical Damage +10%. -->
 		<set name="icon" val="icon.bm_magic_square_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1040,7 +1154,7 @@
 		</skills>
 	</item>
 	<item id="48685" name="High-grade Skill Cooldown Talisman" additionalName="P./M. Def." type="Armor">
-		<!-- Skill Cooldown -5% and P./ M. Def. +10%. -->
+		<!-- Skill Cooldown -5%, P./ M. Def. +10%. -->
 		<set name="icon" val="icon.bm_magic_square_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1064,6 +1178,10 @@
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48687" min="1" max="1" chance="100" /> <!-- Dimensional Bracelet Lv. 6 - CHA +5 -->
+		</capsuled_items>
 	</item>
 	<item id="48687" name="Dimensional Bracelet Lv. 6" additionalName="CHA +5" type="Armor">
 		<!-- When equipped, unlocks 6 talisman slots. CHA +5. -->
@@ -1174,27 +1292,48 @@
 		<!-- An extra pass to a daily instance zone from the Red Libra Guild. Double-click to reset the instance zone timer for Kartia's Labyrinth (Lv. 95 Party). Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. Duration: 4 h. -->
 		<set name="icon" val="icon.ev_libra_reset_ticket" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="weight" val="0" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39334" level="1" /> <!-- Red Libra's Extra Pass: Kartia's Labyrinth Lv. 95 (Party) -->
+		</skills>
 	</item>
 	<item id="48698" name="Red Libra's Extra Pass: Crystal Prison (Baylor)" type="EtcItem">
 		<!-- An extra pass to a daily instance zone from the Red Libra Guild. Double-click to reset the instance zone timer for Crystal Prison (Baylor). Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. Duration: 4 h. -->
 		<set name="icon" val="icon.ev_libra_reset_ticket" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="weight" val="0" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39335" level="1" /> <!-- Red Libra's Extra Pass: Crystal Prison (Baylor) -->
+		</skills>
 	</item>
 	<item id="48699" name="Red Libra's Extra Pass: Nightmare Kamaloka" type="EtcItem">
 		<!-- An extra pass to a daily instance zone from the Red Libra Guild. Double-click to reset the instance zone timer for the Nightmare Kamaloka. Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. Duration: 4 h. -->
 		<set name="icon" val="icon.ev_libra_reset_ticket" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="weight" val="0" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39336" level="1" /> <!-- Red Libra's Extra Pass: Nightmare Kamaloka -->
+		</skills>
 	</item>
 </list>

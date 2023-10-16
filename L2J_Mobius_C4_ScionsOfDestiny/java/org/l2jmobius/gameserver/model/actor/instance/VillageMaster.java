@@ -49,7 +49,6 @@ import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.AquireSkillList;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Util;
 
 public class VillageMaster extends Folk
@@ -834,7 +833,7 @@ public class VillageMaster extends Folk
 			}
 			
 			leaderSubPledge.getPlayer().setPledgeClass(leaderSubPledge.calculatePledgeClass(leaderSubPledge.getPlayer()));
-			leaderSubPledge.getPlayer().sendPacket(new UserInfo(leaderSubPledge.getPlayer()));
+			leaderSubPledge.getPlayer().updateUserInfo();
 		}
 	}
 	
@@ -935,7 +934,7 @@ public class VillageMaster extends Folk
 		if (leaderSubPledge.getPlayer() != null)
 		{
 			leaderSubPledge.getPlayer().setPledgeClass(leaderSubPledge.calculatePledgeClass(leaderSubPledge.getPlayer()));
-			leaderSubPledge.getPlayer().sendPacket(new UserInfo(leaderSubPledge.getPlayer()));
+			leaderSubPledge.getPlayer().updateUserInfo();
 			clan.broadcastClanStatus();
 			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_HAS_BEEN_SELECTED_AS_THE_CAPTAIN_OF_S2);
 			sm.addString(leaderName);

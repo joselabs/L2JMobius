@@ -60,6 +60,12 @@ public class PlayerVariables extends AbstractVariables
 	public static final String FORTUNE_TELLING_VARIABLE = "FortuneTelling";
 	public static final String FORTUNE_TELLING_BLACK_CAT_VARIABLE = "FortuneTellingBlackCat";
 	public static final String DELUSION_RETURN = "DELUSION_RETURN";
+	public static final String AUTO_USE_SETTINGS = "AUTO_USE_SETTINGS";
+	public static final String AUTO_USE_ACTIONS = "AUTO_USE_ACTIONS";
+	public static final String AUTO_USE_BUFFS = "AUTO_USE_BUFFS";
+	public static final String AUTO_USE_SKILLS = "AUTO_USE_SKILLS";
+	public static final String AUTO_USE_ITEMS = "AUTO_USE_ITEMS";
+	public static final String AUTO_USE_POTION = "AUTO_USE_POTION";
 	
 	private final int _objectId;
 	

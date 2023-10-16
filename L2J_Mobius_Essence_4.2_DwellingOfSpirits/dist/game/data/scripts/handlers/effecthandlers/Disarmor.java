@@ -119,10 +119,9 @@ public class Disarmor extends AbstractEffect
 				final InventoryUpdate iu = new InventoryUpdate();
 				iu.addModifiedItem(item);
 				player.sendInventoryUpdate(iu);
-				
-				SystemMessage sm = null;
 				if (item.isEquipped())
 				{
+					SystemMessage sm = null;
 					if (item.getEnchantLevel() > 0)
 					{
 						sm = new SystemMessage(SystemMessageId.S1_S2_EQUIPPED);

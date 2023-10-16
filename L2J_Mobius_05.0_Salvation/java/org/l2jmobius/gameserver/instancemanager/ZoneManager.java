@@ -21,7 +21,6 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.OptionalInt;
@@ -49,6 +48,7 @@ import org.l2jmobius.gameserver.model.zone.form.ZoneCuboid;
 import org.l2jmobius.gameserver.model.zone.form.ZoneCylinder;
 import org.l2jmobius.gameserver.model.zone.form.ZoneNPoly;
 import org.l2jmobius.gameserver.model.zone.type.ArenaZone;
+import org.l2jmobius.gameserver.model.zone.type.BalthusKnightZone;
 import org.l2jmobius.gameserver.model.zone.type.CastleZone;
 import org.l2jmobius.gameserver.model.zone.type.ClanHallZone;
 import org.l2jmobius.gameserver.model.zone.type.ConditionZone;
@@ -428,6 +428,7 @@ public class ZoneManager implements IXmlReader
 	{
 		_classZones.clear();
 		_classZones.put(ArenaZone.class, new ConcurrentHashMap<>());
+		_classZones.put(BalthusKnightZone.class, new ConcurrentHashMap<>());
 		_classZones.put(CastleZone.class, new ConcurrentHashMap<>());
 		_classZones.put(ClanHallZone.class, new ConcurrentHashMap<>());
 		_classZones.put(ConditionZone.class, new ConcurrentHashMap<>());
@@ -754,20 +755,18 @@ public class ZoneManager implements IXmlReader
 	/**
 	 * Remove all debug items from l2world.
 	 */
-	public void clearDebugItems()
+	public synchronized void clearDebugItems()
 	{
 		if (_debugItems != null)
 		{
-			final Iterator<Item> it = _debugItems.iterator();
-			while (it.hasNext())
+			for (Item item : _debugItems)
 			{
-				final Item item = it.next();
 				if (item != null)
 				{
 					item.decayMe();
 				}
-				it.remove();
 			}
+			_debugItems.clear();
 		}
 	}
 	

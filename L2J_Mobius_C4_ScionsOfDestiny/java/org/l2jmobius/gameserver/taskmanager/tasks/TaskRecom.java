@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.taskmanager.Task;
 import org.l2jmobius.gameserver.taskmanager.TaskManager;
 import org.l2jmobius.gameserver.taskmanager.TaskManager.ExecutedTask;
@@ -46,7 +45,7 @@ public class TaskRecom extends Task
 		for (Player player : World.getInstance().getAllPlayers())
 		{
 			player.restartRecom();
-			player.sendPacket(new UserInfo(player));
+			player.updateUserInfo();
 		}
 		LOGGER.info("[GlobalTask] Restart Recommendation launched.");
 	}

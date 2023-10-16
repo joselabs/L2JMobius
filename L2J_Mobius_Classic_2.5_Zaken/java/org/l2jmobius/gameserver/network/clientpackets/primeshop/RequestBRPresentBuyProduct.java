@@ -20,7 +20,7 @@ import java.util.Calendar;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
 import org.l2jmobius.gameserver.enums.ExBrProductReplyType;
 import org.l2jmobius.gameserver.enums.MailType;
@@ -70,7 +70,7 @@ public class RequestBRPresentBuyProduct implements ClientPacket
 			return;
 		}
 		
-		final int receiverId = CharNameTable.getInstance().getIdByName(_charName);
+		final int receiverId = CharInfoTable.getInstance().getIdByName(_charName);
 		if (receiverId <= 0)
 		{
 			player.sendPacket(new ExBRBuyProduct(ExBrProductReplyType.INVALID_USER));
@@ -95,7 +95,14 @@ public class RequestBRPresentBuyProduct implements ClientPacket
 		
 		if (validatePlayer(item, _count, player))
 		{
-			final int price = (item.getPrice() * _count);
+			final int price = item.getPrice() * _count;
+			if (price < 1)
+			{
+				player.sendPacket(new ExBRBuyProduct(ExBrProductReplyType.LACK_OF_POINT));
+				player.removeRequest(PrimeShopRequest.class);
+				return;
+			}
+			
 			final int paymentId = validatePaymentId(item, price);
 			if (paymentId < 0)
 			{

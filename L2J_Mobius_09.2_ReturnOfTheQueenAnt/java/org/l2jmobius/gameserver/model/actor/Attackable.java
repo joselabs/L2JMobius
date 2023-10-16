@@ -36,6 +36,7 @@ import org.l2jmobius.gameserver.ai.CreatureAI;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.RaidDropAnnounceData;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.DropType;
 import org.l2jmobius.gameserver.enums.InstanceType;
@@ -73,8 +74,10 @@ import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.CreatureSay;
 import org.l2jmobius.gameserver.network.serverpackets.ExMagicAttackInfo;
+import org.l2jmobius.gameserver.network.serverpackets.ExRaidDropItemAnnounce;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.taskmanager.DecayTaskManager;
+import org.l2jmobius.gameserver.util.Broadcast;
 import org.l2jmobius.gameserver.util.Util;
 
 public class Attackable extends Npc
@@ -575,6 +578,14 @@ public class Attackable extends Npc
 							{
 								exp = attacker.getStat().getValue(Stat.EXPSP_RATE, exp) * Config.EXP_AMOUNT_MULTIPLIERS[attacker.getClassId().getId()];
 								sp = attacker.getStat().getValue(Stat.EXPSP_RATE, sp) * Config.SP_AMOUNT_MULTIPLIERS[attacker.getClassId().getId()];
+								
+								// Premium rates
+								if (attacker.hasPremiumStatus())
+								{
+									exp *= Config.PREMIUM_RATE_XP;
+									sp *= Config.PREMIUM_RATE_SP;
+								}
+								
 								attacker.addExpAndSp(exp, sp, useVitalityRate());
 								if (exp > 0)
 								{
@@ -1145,6 +1156,7 @@ public class Attackable extends Npc
 		final Collection<ItemHolder> deathItems = npcTemplate.calculateDrops(DropType.DROP, this, player);
 		if (deathItems != null)
 		{
+			List<Integer> announceItems = null;
 			for (ItemHolder drop : deathItems)
 			{
 				final ItemTemplate item = ItemTable.getInstance().getTemplate(drop.getId());
@@ -1166,7 +1178,22 @@ public class Attackable extends Npc
 					sm.addItemName(item);
 					sm.addLong(drop.getCount());
 					broadcastPacket(sm);
+					if (RaidDropAnnounceData.getInstance().isAnnounce(item.getId()))
+					{
+						if (announceItems == null)
+						{
+							announceItems = new ArrayList<>(3);
+						}
+						if (announceItems.size() < 3)
+						{
+							announceItems.add(item.getId());
+						}
+					}
 				}
+			}
+			if (announceItems != null)
+			{
+				Broadcast.toAllOnlinePlayers(new ExRaidDropItemAnnounce(player.getName(), getId(), announceItems));
 			}
 			deathItems.clear();
 		}
@@ -1354,7 +1381,7 @@ public class Attackable extends Npc
 		final int levelDiff = charLevel - getLevel();
 		double xp = 0;
 		double sp = 0;
-		if ((levelDiff < 11) && (levelDiff > -11))
+		if ((levelDiff < Config.MONSTER_EXP_MAX_LEVEL_DIFFERENCE) && (levelDiff > -Config.MONSTER_EXP_MAX_LEVEL_DIFFERENCE))
 		{
 			xp = Math.max(0, (getExpReward() * damage) / totalDamage);
 			sp = Math.max(0, (getSpReward() * damage) / totalDamage);

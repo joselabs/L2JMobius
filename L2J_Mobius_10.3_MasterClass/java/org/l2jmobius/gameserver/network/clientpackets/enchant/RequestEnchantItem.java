@@ -133,13 +133,13 @@ public class RequestEnchantItem implements ClientPacket
 		}
 		
 		// Fast auto-enchant cheat check.
-		if ((request.getTimestamp() == 0) || ((System.currentTimeMillis() - request.getTimestamp()) < 1000))
-		{
-			Util.handleIllegalPlayerAction(player, player + " use autoenchant program ", Config.DEFAULT_PUNISH);
-			player.removeRequest(request.getClass());
-			player.sendPacket(new EnchantResult(EnchantResult.ERROR, null, null, 0));
-			return;
-		}
+		// if ((request.getTimestamp() == 0) || ((System.currentTimeMillis() - request.getTimestamp()) < 600))
+		// {
+		// Util.handleIllegalPlayerAction(player, player + " use autoenchant program ", Config.DEFAULT_PUNISH);
+		// player.removeRequest(request.getClass());
+		// player.sendPacket(new EnchantResult(EnchantResult.ERROR, null, null, 0));
+		// return;
+		// }
 		
 		// Attempting to destroy scroll.
 		if (player.getInventory().destroyItem("Enchant", scroll.getObjectId(), 1, player, item) == null)
@@ -266,7 +266,7 @@ public class RequestEnchantItem implements ClientPacket
 					{
 						// Safe enchant: Remain old value.
 						player.sendPacket(SystemMessageId.ENCHANT_FAILED_THE_ENCHANT_SKILL_FOR_THE_CORRESPONDING_ITEM_WILL_BE_EXACTLY_RETAINED);
-						player.sendPacket(new EnchantResult(EnchantResult.SAFE_FAIL, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
+						player.sendPacket(new EnchantResult(EnchantResult.SAFE_FAIL_02, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
 						if (Config.LOG_ITEM_ENCHANTS)
 						{
 							final StringBuilder sb = new StringBuilder();

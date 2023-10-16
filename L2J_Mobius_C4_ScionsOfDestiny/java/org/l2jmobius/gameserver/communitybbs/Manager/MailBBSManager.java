@@ -31,7 +31,7 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.util.StringUtil;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.communitybbs.CommunityBoard;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.BlockList;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -571,7 +571,7 @@ public class MailBBSManager extends BaseBBSManager
 			for (String recipientName : recipientNames)
 			{
 				// Recipient is an invalid player, or is the sender.
-				final int recipientId = CharNameTable.getInstance().getPlayerObjectId(recipientName);
+				final int recipientId = CharInfoTable.getInstance().getIdByName(recipientName);
 				if ((recipientId <= 0) || (recipientId == activeChar.getObjectId()))
 				{
 					activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
@@ -790,7 +790,7 @@ public class MailBBSManager extends BaseBBSManager
 	
 	private static String getCharName(int charId)
 	{
-		final String name = CharNameTable.getInstance().getPlayerName(charId);
+		final String name = CharInfoTable.getInstance().getNameById(charId);
 		return name == null ? "Unknown" : name;
 	}
 	

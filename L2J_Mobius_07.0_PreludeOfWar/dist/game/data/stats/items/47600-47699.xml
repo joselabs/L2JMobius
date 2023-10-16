@@ -33,7 +33,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="47602" name="Weapon Supply Box" type="EtcItem">
-		<!-- A weapon supply box that the Weapon Merchant Lector has asked you to take to the Administrative Offices -->
+		<!-- A weapon pack that the Weapon Merchant Lector has asked you to take to the Administrative Offices. -->
 		<set name="icon" val="icon.etc_box_of_adventure_1_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -93,7 +93,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="47608" name="Monkey Bait" additionalName="R" type="EtcItem">
-		<!-- Fishing Time: 75 sec. Fishing Standby Time: 15 sec. Fish bait bought from Chef Monkey. Fish using this bait to catch Ugly Fish, Nimble Fish, Powerful Fish, and Chef Monkey's Treasure Chest. Can be used by characters between Lv. 85-94. -->
+		<!-- Fishing Time: 75 sec. Fishing Standby Time: 15 sec. The fishing bait bought from Chef Monkey. Using this bait you can catch Ugly Fish, Nimble Fish, Powerful Fish and Chef Monkey's Treasure Chest. Can be used by characters of level 85-94. -->
 		<set name="icon" val="Icon.ev_monkey_banana" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -101,7 +101,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="47609" name="Monkey Bait" additionalName="R95" type="EtcItem">
-		<!-- Fishing Time: 75 sec. Fishing Standby Time: 15 sec. Fish bait bought from Chef Monkey. Fish using this bait to catch Ugly Fish, Nimble Fish, Powerful Fish, and Chef Monkey's Treasure Chest. Can be used by characters between Lv. 95-98. -->
+		<!-- Fishing Time: 75 sec. Fishing Standby Time: 15 sec. The fishing bait bought from Chef Monkey. Using this bait you can catch Ugly Fish, Nimble Fish, Powerful Fish and Chef Monkey's Treasure Chest. Can be used by characters of level 95-98. -->
 		<set name="icon" val="Icon.ev_monkey_banana" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -109,7 +109,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="47610" name="Monkey Bait" additionalName="R99" type="EtcItem">
-		<!-- Fishing Time: 75 sec. Fishing Standby Time: 15 sec. Fish bait bought from Chef Monkey. Fish using this bait to catch Ugly Fish, Nimble Fish, Powerful Fish, and Chef Monkey's Treasure Chest. Can be used by characters with Lv. 99 or above. -->
+		<!-- Fishing Time: 75 sec. Fishing Standby Time: 15 sec. The fishing bait bought from Chef Monkey. Using this bait you can catch Ugly Fish, Nimble Fish, Powerful Fish and Chef Monkey's Treasure Chest. Can be used by characters of level 99 or higher. -->
 		<set name="icon" val="Icon.ev_monkey_banana" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -124,7 +124,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="47612" name="Chef Monkey's Treasure Chest" type="EtcItem">
-		<!-- Chef Monkey's Treasure Chest caught with Banana Bait. Use it to obtain various items. -->
+		<!-- Chef Monkey's Treasure Chest caught with Banana Bait. Double-click to obtain various items. -->
 		<set name="icon" val="icon.new_user_box" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="is_stackable" val="true" />
@@ -195,6 +195,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47617" min="1" max="1" chance="100" /> <!-- Angler's Fishing Rod - Stage 5 - 30 days -->
+		</capsuled_items>
 	</item>
 	<item id="47619" name="Angler's Shining Treasure Chest" type="EtcItem">
 		<!-- A reward for handing over the Angler's Bait Box. Double-clicking grants an item at random. -->
@@ -220,6 +224,11 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47616" min="120" max="120" chance="100" /> <!-- Angler's Bait Exchange Coupon -->
+			<item id="38154" min="120" max="120" chance="100" /> <!-- Fishing Shot -->
+		</capsuled_items>
 	</item>
 	<item id="47622" name="Royal Purple Save Ticket (R-grade)" type="EtcItem">
 		<!-- When using an R-grade Weapon Enchantment Standard Weapon Enchant Scroll, increases the chance by 10%. Can only be used with a 12 or higher Enchantment Item. On success, Enchantment count increases by 1. In case of Enchantment failure, the item is not Crystallized, but the base Enchantment count decreases by 1. -->
@@ -275,7 +284,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38857" min="1" max="1" chance="100" /> <!-- Ruby Lv. 3 -->
+			<item id="38857" min="1" max="1" chance="100" /> <!-- Ruby - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47627" name="Sapphire Lv. 3 Jewelry Box" type="EtcItem">
@@ -288,7 +297,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38929" min="1" max="1" chance="100" /> <!-- Sapphire Lv. 3 -->
+			<item id="38929" min="1" max="1" chance="100" /> <!-- Sapphire - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47628" name="Topaz Lv. 3 Jewelry Box" type="EtcItem">
@@ -301,11 +310,11 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38852" min="1" max="1" chance="100" /> <!-- Topaz Lv. 3 -->
+			<item id="38852" min="1" max="1" chance="100" /> <!-- Topaz - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47629" name="Opal Lv. 3 Jewelry Box" type="EtcItem">
-		<!-- Double-click to obtain an Opal Lv. 3. -->
+		<!-- Double-click to obtain Opal Lv. 3. -->
 		<set name="icon" val="icon.etc_bm_jewelbox_opal_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -314,7 +323,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38877" min="1" max="1" chance="100" /> <!-- Opal Lv. 3 -->
+			<item id="38877" min="1" max="1" chance="100" /> <!-- Opal - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47630" name="Obsidian Lv. 3 Jewelry Box" type="EtcItem">
@@ -327,7 +336,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38872" min="1" max="1" chance="100" /> <!-- Obsidian Lv. 3 -->
+			<item id="38872" min="1" max="1" chance="100" /> <!-- Obsidian - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47631" name="Diamond Lv. 3 Jewelry Box" type="EtcItem">
@@ -340,7 +349,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38892" min="1" max="1" chance="100" /> <!-- Diamond Lv. 3 -->
+			<item id="38892" min="1" max="1" chance="100" /> <!-- Diamond - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47632" name="Emerald Lv. 3 Jewelry Box" type="EtcItem">
@@ -353,7 +362,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38882" min="1" max="1" chance="100" /> <!-- Emerald Lv. 3 -->
+			<item id="38882" min="1" max="1" chance="100" /> <!-- Emerald - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47633" name="Aquamarine Lv. 3 Jewelry Box" type="EtcItem">
@@ -366,7 +375,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38887" min="1" max="1" chance="100" /> <!-- Aquamarine Lv. 3 -->
+			<item id="38887" min="1" max="1" chance="100" /> <!-- Aquamarine - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47634" name="Pearl Lv. 3 Jewelry Box" type="EtcItem">
@@ -379,7 +388,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38897" min="1" max="1" chance="100" /> <!-- Pearl Lv. 3 -->
+			<item id="38897" min="1" max="1" chance="100" /> <!-- Pearl - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47635" name="Vital Stone Lv. 3 Jewelry Box" type="EtcItem">
@@ -392,7 +401,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="26478" min="1" max="1" chance="100" /> <!-- Vital Stone Lv. 3 -->
+			<item id="26478" min="1" max="1" chance="100" /> <!-- Vital Stone - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47636" name="Garnet Lv. 3 Jewelry Box" type="EtcItem">
@@ -405,7 +414,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="26483" min="1" max="1" chance="100" /> <!-- Garnet Lv. 3 -->
+			<item id="26483" min="1" max="1" chance="100" /> <!-- Garnet - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47637" name="Tanzanite Lv. 3 Jewelry Box" type="EtcItem">
@@ -418,7 +427,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="26488" min="1" max="1" chance="100" /> <!-- Tanzanite Lv. 3 -->
+			<item id="26488" min="1" max="1" chance="100" /> <!-- Tanzanite - Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="47638" name="Ruby Lv. 4 Jewelry Box" type="EtcItem">
@@ -431,7 +440,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38858" min="1" max="1" chance="100" /> <!-- Ruby Lv. 4 -->
+			<item id="38858" min="1" max="1" chance="100" /> <!-- Ruby - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47639" name="Sapphire Lv. 4 Jewelry Box" type="EtcItem">
@@ -444,7 +453,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38930" min="1" max="1" chance="100" /> <!-- Sapphire Lv. 3 -->
+			<item id="38930" min="1" max="1" chance="100" /> <!-- Sapphire - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47640" name="Topaz Lv. 4 Jewelry Box" type="EtcItem">
@@ -457,11 +466,11 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38853" min="1" max="1" chance="100" /> <!-- Topaz Lv. 4 -->
+			<item id="38853" min="1" max="1" chance="100" /> <!-- Topaz - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47641" name="Opal Lv. 4 Jewelry Box" type="EtcItem">
-		<!-- Double-click to obtain an Opal Lv. 4. -->
+		<!-- Double-click to obtain Opal Lv. 4. -->
 		<set name="icon" val="icon.etc_bm_jewelbox_opal_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -470,7 +479,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38878" min="1" max="1" chance="100" /> <!-- Opal Lv. 4 -->
+			<item id="38878" min="1" max="1" chance="100" /> <!-- Opal - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47642" name="Obsidian Lv. 4 Jewelry Box" type="EtcItem">
@@ -483,7 +492,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38873" min="1" max="1" chance="100" /> <!-- Obsidian Lv. 4 -->
+			<item id="38873" min="1" max="1" chance="100" /> <!-- Obsidian - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47643" name="Diamond Lv. 4 Jewelry Box" type="EtcItem">
@@ -496,7 +505,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38893" min="1" max="1" chance="100" /> <!-- Diamond Lv. 4 -->
+			<item id="38893" min="1" max="1" chance="100" /> <!-- Diamond - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47644" name="Emerald Lv. 4 Jewelry Box" type="EtcItem">
@@ -509,7 +518,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38883" min="1" max="1" chance="100" /> <!-- Emerald Lv. 4 -->
+			<item id="38883" min="1" max="1" chance="100" /> <!-- Emerald - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47645" name="Aquamarine Lv. 4 Jewelry Box" type="EtcItem">
@@ -522,7 +531,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38888" min="1" max="1" chance="100" /> <!-- Aquamarine Lv. 4 -->
+			<item id="38888" min="1" max="1" chance="100" /> <!-- Aquamarine - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47646" name="Pearl Lv. 4 Jewelry Box" type="EtcItem">
@@ -535,7 +544,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="38898" min="1" max="1" chance="100" /> <!-- Pearl Lv. 4 -->
+			<item id="38898" min="1" max="1" chance="100" /> <!-- Pearl - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47647" name="Vital Stone Lv. 4 Jewelry Box" type="EtcItem">
@@ -548,7 +557,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="46673" min="1" max="1" chance="100" /> <!-- Vital Stone Lv. 4 -->
+			<item id="46673" min="1" max="1" chance="100" /> <!-- Vital Stone - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47648" name="Garnet Lv. 4 Jewelry Box" type="EtcItem">
@@ -561,7 +570,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="46678" min="1" max="1" chance="100" /> <!-- Garnet Lv. 4 -->
+			<item id="46678" min="1" max="1" chance="100" /> <!-- Garnet - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47649" name="Tanzanite Lv. 4 Jewelry Box" type="EtcItem">
@@ -574,7 +583,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="46683" min="1" max="1" chance="100" /> <!-- Tanzanite Lv. 4 -->
+			<item id="46683" min="1" max="1" chance="100" /> <!-- Tanzanite - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="47650" name="PvP Rune" additionalName="Test Item" type="EtcItem">
@@ -620,7 +629,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="47656" name="Warrior's Earring" additionalName="30-day" type="Armor">
-		<!-- Earrings bought using the Mark of Battle. Earring bought using Mark of Battle. Max MP +49, Max CP +10%, P./ M. Def. +3%, Stun/ Mental Resistance and Stun/ Mental Success Rate +30%, Vampiric Rage +4%. These effects do not stack with identical earrings. -->
+		<!-- Earrings bought using the Mark of Battle. Max MP +49, Max CP +10%, P./ M. Def. +3%, Confusion Resistance +30%, Vampiric Rage +4%. The effect does not stack if two identical earrings are equipped. -->
 		<set name="icon" val="icon.accessory_earring_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -639,7 +648,7 @@
 		</stats>
 	</item>
 	<item id="47657" name="Potion of Protection: Pull" type="EtcItem">
-		<!-- When used, increases Resistance to Pull Attacks by 5%, and reduces damage taken in PvP by 3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Confusion Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i03" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -671,7 +680,7 @@
 		</skills>
 	</item>
 	<item id="47659" name="Potion of Protection: Seduction" type="EtcItem">
-		<!-- When used, increases Resistance to Seduction Attacks by 5%, and reduces damage taken in PvP by 3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Confusion Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i04" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -687,7 +696,7 @@
 		</skills>
 	</item>
 	<item id="47660" name="Potion of Protection: Bluff" type="EtcItem">
-		<!-- When used, increases Resistance to Bluff Attacks by 5%, and reduces damage taken in PvP by 3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Obstruction Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i09" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -703,7 +712,7 @@
 		</skills>
 	</item>
 	<item id="47661" name="Potion of Protection: Faint" type="EtcItem">
-		<!-- When used, increases Resistance to Faint Attacks by 5%, and reduces damage taken in PvP by 3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Confusion Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i08" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -809,7 +818,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="47668" name="Low-grade Arena Loot" type="EtcItem">
-		<!-- Arena Event reward. -->
+		<!-- Arena event reward. -->
 		<set name="icon" val="icon.etc_readybox_bronze" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -820,7 +829,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="47669" name="Intermediate Arena Loot" type="EtcItem">
-		<!-- Arena Event reward. -->
+		<!-- Arena event reward. -->
 		<set name="icon" val="icon.etc_readybox_silver" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -831,7 +840,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="47670" name="High-grade Arena Loot" type="EtcItem">
-		<!-- Arena Event reward. -->
+		<!-- Arena event reward. -->
 		<set name="icon" val="icon.etc_readybox_gold" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -842,7 +851,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="47671" name="PA Points Coupon (180)" type="EtcItem">
-		<!-- When double clicked, 180 PA Points can be acquired. -->
+		<!-- Double-click to obtain 180 PA Points. -->
 		<set name="icon" val="icon.etc_ticket_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="FISH" />
@@ -867,7 +876,7 @@
 		</skills>
 	</item>
 	<item id="47673" name="Freya's Art of Seduction - Barrier" additionalName="Event" type="EtcItem">
-		<!-- When used, increases Max HP/ MP/ CP 30%, P. Atk. 10%, M. Atk. 20%, P./ M. Def. 30%, and Movement Speed by 20, and reduces Skill MP Consumption by 15% for 30 min. Additionally reduces damage taken by 10%, and increases all property Defense by 100. Effect remains after death. Cooldown: 5 min. Cannot be stacked with 'Art of Seduction'. Cannot be used in the Olympiad. -->
+		<!-- For 30 min. Max HP/ MP/ CP +30%, P. Atk. +10%, M. Atk. +20%, P./ M. Def. +30%, Speed +20. Skill MP Consumption -15%. Also Received Damage -10% and All Attribute Resistance +100. The effect remains after death. Cooldown is 5 min. The effect does not stack with identical ones. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.bm_freya_rose_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -888,7 +897,7 @@
 		</skills>
 	</item>
 	<item id="47674" name="Freya's Art of Seduction - EXP" additionalName="Event" type="EtcItem">
-		<!-- When used, increases Max HP/ MP/ CP 30%, P. Atk. 10%, M. Atk. 20%, P./ M. Def. 30%, and Movement Speed by 20, and reduces Skill MP Consumption by 15% for 30 min. Additionally Increases XP by 30%, and grants 12% bonus Vitality. Effect remains after death. Cooldown: 5 min. Cannot be stacked with 'Art of Seduction'. Cannot be used in the Olympiad. -->
+		<!-- For 30 min. Max HP/ MP/ CP +30%, P. Atk. +10%, M. Atk. +20%, P./ M. Def. +30%, Speed +20. Skill MP Consumption -15%. Also acquired XP +30%, Vitality Bonus +12%. The effect remains after death. Cooldown is 5 min. The effect does not stack with identical ones. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.bm_freya_rose_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -909,7 +918,7 @@
 		</skills>
 	</item>
 	<item id="47675" name="Pa'agrio's Blessing - Might" additionalName="Event" type="EtcItem">
-		<!-- When used, increases Max HP/ MP/ CP 10%, P. Atk. 20%, M. Atk. 30%, P./ M. Def. 10%, and Accuracy by 4, Magic Accuracy by 4, Atk. Spd./ Casting Spd. by 10%, Movement Speed by 10, Attack Attribute by 100, and reduces Skill MP Consumption by 10% for 30 min. Additionally Increases Damage by 10%, and grants 10% Skill Power. Effect remains after death. Cooldown Time 5min. Cannot be stacked with 'Art of Seduction'. Cannot be used in the Olympiad. -->
+		<!-- For 30 min. Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P./ M. Accuracy +4, Atk. Spd./ Casting Spd. +10%, Speed +10, Attack Attribute +100 and Skill MP Consumption -10%. Also Damage -10%, Skill Power +10%. The effect remains after death. Cooldown is 5 min. The effect does not stack with identical ones. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.nshop_bless_of_paagrio" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -951,7 +960,7 @@
 		</skills>
 	</item>
 	<item id="47677" name="Red Cat's Eye" additionalName="Lv. 1" type="Armor">
-		<!-- When using a physical skill after equipping, P. Critical Damage +1% and P. Skill Critical Damage +1%. Effect does not stack with additional jewels of the same type. -->
+		<!-- P. Critical Damage +1%, P. Skill Critical Damage +1%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.bm_jewel_red_catseye" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />

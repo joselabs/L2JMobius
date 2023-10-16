@@ -265,7 +265,6 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
-		<set name="is_stackable" val="true" />
 		<skills>
 			<skill id="35103" level="1" /> <!-- Blessed Circlet Enchant Scroll -->
 		</skills>
@@ -391,6 +390,12 @@
 		<set name="is_destroyable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47387" min="1" max="1" chance="100" /> <!-- Freya's Lucky Pouch - Event -->
+			<item id="47825" min="1" max="1" chance="100" /> <!-- Hanbok Outfit - Event -->
+		</capsuled_items>
 	</item>
 	<item id="48223" name="Lucky Gift Coupon" additionalName="3 Hours" type="EtcItem">
 		<!-- For 3 h., changes the appearance of your armor into that of the Hanbok, also allows you to take part in the Lucky Gift Draw. For characters of level 85 or higher. The effect is removed if you switch to a different class. -->
@@ -408,7 +413,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="etcitem_type" val="SCROLL" />
 		<skills>
-			<skill id="39171" level="2" /> <!--Lucky Gift Coupon (3-hour) -->
+			<skill id="39171" level="2" /> <!-- Lucky Gift Coupon (3-hour) -->
 		</skills>
 	</item>
 	<item id="48224" name="Lucky Gift Coupon" additionalName="6 Hours" type="EtcItem">
@@ -427,7 +432,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="etcitem_type" val="SCROLL" />
 		<skills>
-			<skill id="39171" level="3" /> <!--Lucky Gift Coupon (6-hour) -->
+			<skill id="39171" level="3" /> <!-- Lucky Gift Coupon (6-hour) -->
 		</skills>
 	</item>
 	<item id="48225" name="Holiday Lucky Scroll" additionalName="Event" type="EtcItem">
@@ -504,7 +509,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="reuse_delay" val="1800000" />
 		<skills>
-			<skill id="39182" level="1" />
+			<skill id="39182" level="1" /> <!-- Festival Fairy's Scroll: Summon Friend -->
 		</skills>
 	</item>
 	<item id="48230" name="Antharas Transformation Slasher" type="Weapon">
@@ -1165,6 +1170,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="36949" min="1" max="1" chance="100" /> <!-- Chaos Essence - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="48276" name="Chaos Essence (Dual Class) Treasure Chest (Time limited)" type="EtcItem">
 		<!-- Double-click to obtain a Chaos Essence (Dual Class, 30-day). Used for changing the dual specialized class, but the Ertheia cannot use it. Open it to obtain a 30-day item that cannot be exchanged. -->
@@ -1176,6 +1185,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37494" min="1" max="1" chance="100" /> <!-- Chaos Essence (Dual Class) -->
+		</capsuled_items>
 	</item>
 	<item id="48277" name="Balthus Knight Bracelet" type="Armor">
 		<!-- A bracelet received as a reward for defeating Antharas with the Balthus Knights. When equipped, STR/ DEX/ CON/ INT/ WIT/ MEN +1, unlocks 5 talisman slots. Cannot be shared within the account. -->
@@ -1507,7 +1520,7 @@
 			<item id="48064" min="1" max="1" chance="100" /> <!-- Superior Seed Bracelet Lv. 1 -->
 			<item id="22890" min="1" max="1" chance="100" /> <!-- Package: Mysterious Blessed R-grade Soulshots (10,000) -->
 			<item id="22892" min="1" max="1" chance="100" /> <!-- Package: Mysterious Blessed R-grade Spiritshots (10,000) -->
-			<!-- <item id="57" min="10000000000" max="10000000000" chance="100" /> --> <!-- Adena -->
+			<!-- <item id="57" min="10000000000" max="10000000000" chance="100" /> Adena -->
 			<item id="37904" min="1" max="1" chance="100" /> <!-- Scroll: 1,000,000,000 SP -->
 			<item id="48832" min="1" max="1" chance="100" /> <!-- Rare Accessory Pack -->
 			<item id="48298" min="1" max="1" chance="100" /> <!-- +10 Zodiac Agathion Box -->
@@ -1534,6 +1547,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48295" min="1" max="1" chance="100" /> <!-- +10 Eternal Heavy Armor Capsule -->
+			<item id="48296" min="1" max="1" chance="100" /> <!-- +10 Eternal Light Armor Capsule -->
+			<item id="48297" min="1" max="1" chance="100" /> <!-- +10 Eternal Robe Capsule -->
+		</capsuled_items>
 	</item>
 	<item id="48295" name="+10 Eternal Armor Heavy Armor Capsule" type="EtcItem">
 		<!-- Double-click to obtain Bloody Eternal heavy armor set enchanted to +10. -->
@@ -1549,12 +1568,12 @@
 		<set name="extractableCountMin" val="6" />
 		<set name="extractableCountMax" val="6" />
 		<capsuled_items>
-			<item id="17435" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Eternal Shield -->
-			<item id="35079" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Helmet (Heavy armor) -->
-			<item id="35080" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Breastplate (Heavy armor) -->
-			<item id="35081" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Gaiters (Heavy armor) -->
-			<item id="35082" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Gauntlets (Heavy armor) -->
-			<item id="35083" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Boots (Heavy armor) -->
+			<item id="17435" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Eternal Shield -->
+			<item id="35079" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Helmet - Heavy armor -->
+			<item id="35080" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Breastplate - Heavy armor -->
+			<item id="35081" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Gaiters - Heavy armor -->
+			<item id="35082" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Gauntlets - Heavy armor -->
+			<item id="35083" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Boots - Heavy armor -->
 		</capsuled_items>
 	</item>
 	<item id="48296" name="+10 Eternal Armor Light Armor Capsule" type="EtcItem">
@@ -1569,11 +1588,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="35085" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Leather Helmet (Light armor) -->
-			<item id="35086" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Leather Armor (Light armor) -->
-			<item id="35087" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Leather Leggings (Light armor) -->
-			<item id="35088" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Leather Gloves (Light armor) -->
-			<item id="35089" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Leather Boots (Light armor) -->
+			<item id="35085" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Leather Helmet - Light armor -->
+			<item id="35086" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Leather Armor - Light armor -->
+			<item id="35087" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Leather Leggings - Light armor -->
+			<item id="35088" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Leather Gloves - Light armor -->
+			<item id="35089" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Leather Boots - Light armor -->
 		</capsuled_items>
 	</item>
 	<item id="48297" name="+10 Eternal Armor Robe Capsule" type="EtcItem">
@@ -1588,12 +1607,12 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="35090" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Helmet (Robe) -->
-			<item id="35091" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Tunic (Robe) -->
-			<item id="35092" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Stockings (Robe) -->
-			<item id="35093" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Gloves (Robe) -->
-			<item id="35094" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Bloody Eternal Shoes (Robe) -->
-			<item id="17446" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- +10 Eternal Sigil -->
+			<item id="35090" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Circlet - Robe -->
+			<item id="35091" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Tunic - Robe -->
+			<item id="35092" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Stockings - Robe -->
+			<item id="35093" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Gloves - Robe -->
+			<item id="35094" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Bloody Eternal Shoes - Robe -->
+			<item id="17446" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Eternal Sigil -->
 		</capsuled_items>
 	</item>
 	<item id="48298" name="+10 Zodiac Agathion Box" type="EtcItem">
@@ -1633,5 +1652,18 @@
 		<set name="is_destroyable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38823" min="1" max="1" chance="100" /> <!-- Genuine Antharas Shaper - 15-day -->
+			<item id="38824" min="1" max="1" chance="100" /> <!-- Genuine Antharas Slasher - 15-day -->
+			<item id="38825" min="1" max="1" chance="100" /> <!-- Genuine Antharas Thrower - 15-day -->
+			<item id="38826" min="1" max="1" chance="100" /> <!-- Genuine Antharas Buster - 15-day -->
+			<item id="38827" min="1" max="1" chance="100" /> <!-- Genuine Antharas Cutter - 15-day -->
+			<item id="38828" min="1" max="1" chance="100" /> <!-- Genuine Antharas Stormer - 15-day -->
+			<item id="38829" min="1" max="1" chance="100" /> <!-- Genuine Antharas Fighter - 15-day -->
+			<item id="38830" min="1" max="1" chance="100" /> <!-- Genuine Antharas Avenger - 15-day -->
+			<item id="38831" min="1" max="1" chance="100" /> <!-- Genuine Antharas Dual Blunt Weapon - 15-day -->
+			<item id="38832" min="1" max="1" chance="100" /> <!-- Genuine Antharas Dual Swords - 15-day -->
+		</capsuled_items>
 	</item>
 </list>

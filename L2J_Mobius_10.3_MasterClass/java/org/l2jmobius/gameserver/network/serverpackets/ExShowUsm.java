@@ -33,6 +33,7 @@ public class ExShowUsm extends ServerPacket
 	public static final ExShowUsm ERTHEIA_INTRO_FOR_OTHERS = new ExShowUsm(148);
 	public static final ExShowUsm ANTHARAS_INTRO = new ExShowUsm(149);
 	public static final ExShowUsm DEATH_KNIGHT_INTRO = new ExShowUsm(150);
+	public static final ExShowUsm CONQUEST_INTRO = new ExShowUsm(151);
 	
 	private final int _videoId;
 	

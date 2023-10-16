@@ -27,11 +27,12 @@ import org.l2jmobius.gameserver.network.serverpackets.PledgeCrest;
 public class RequestPledgeCrest implements ClientPacket
 {
 	private int _crestId;
+	private int _clanId;
 	
 	@Override
 	public void read(ReadablePacket packet)
 	{
-		packet.readInt(); // clanId
+		_clanId = packet.readInt(); // clanId
 		_crestId = packet.readInt();
 	}
 	
@@ -44,6 +45,6 @@ public class RequestPledgeCrest implements ClientPacket
 			return;
 		}
 		
-		player.sendPacket(new PledgeCrest(_crestId));
+		player.sendPacket(new PledgeCrest(_crestId, _clanId));
 	}
 }

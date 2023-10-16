@@ -27,15 +27,22 @@ public class Variation
 	
 	private final int _mineralId;
 	private final OptionDataGroup[] _effects = new OptionDataGroup[2];
+	private int _itemGroup = -1;
 	
-	public Variation(int mineralId)
+	public Variation(int mineralId, int itemGroup)
 	{
 		_mineralId = mineralId;
+		_itemGroup = itemGroup;
 	}
 	
 	public int getMineralId()
 	{
 		return _mineralId;
+	}
+	
+	public int getItemGroup()
+	{
+		return _itemGroup;
 	}
 	
 	public void setEffectGroup(int order, OptionDataGroup group)

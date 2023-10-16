@@ -62,15 +62,20 @@ public class AutoPlayTaskManager
 		@Override
 		public void run()
 		{
+			if (_players.isEmpty())
+			{
+				return;
+			}
+			
 			PLAY: for (Player player : _players)
 			{
-				if (!player.isOnline() || player.isInOfflineMode() || !Config.ENABLE_AUTO_PLAY)
+				if (!player.isOnline() || (player.isInOfflineMode() && !player.isOfflinePlay()) || !Config.ENABLE_AUTO_PLAY)
 				{
 					stopAutoPlay(player);
 					continue PLAY;
 				}
 				
-				if (player.isCastingNow() || (player.getQueuedSkill() != null))
+				if (player.isSitting() || player.isCastingNow() || (player.getQueuedSkill() != null))
 				{
 					continue PLAY;
 				}
@@ -194,7 +199,7 @@ public class AutoPlayTaskManager
 						continue TARGET;
 					}
 					// Check if creature is reachable.
-					if (GeoEngine.getInstance().canSeeTarget(player, nearby) && GeoEngine.getInstance().canMoveToTarget(player.getX(), player.getY(), player.getZ(), nearby.getX(), nearby.getY(), nearby.getZ(), player.getInstanceWorld()))
+					if ((Math.abs(player.getZ() - nearby.getZ()) < 180) && GeoEngine.getInstance().canSeeTarget(player, nearby) && GeoEngine.getInstance().canMoveToTarget(player.getX(), player.getY(), player.getZ(), nearby.getX(), nearby.getY(), nearby.getZ(), player.getInstanceWorld()))
 					{
 						final double creatureDistance = player.calculateDistance2D(nearby);
 						if (creatureDistance < closestDistance)
@@ -261,7 +266,7 @@ public class AutoPlayTaskManager
 		}
 	}
 	
-	public synchronized void doAutoPlay(Player player)
+	public synchronized void startAutoPlay(Player player)
 	{
 		for (Set<Player> pool : POOLS)
 		{
@@ -270,6 +275,8 @@ public class AutoPlayTaskManager
 				return;
 			}
 		}
+		
+		player.setAutoPlaying(true);
 		
 		for (Set<Player> pool : POOLS)
 		{
@@ -294,6 +301,8 @@ public class AutoPlayTaskManager
 		{
 			if (pool.remove(player))
 			{
+				player.setAutoPlaying(false);
+				
 				// Pets must follow their owner.
 				if (player.hasServitors())
 				{
@@ -309,18 +318,6 @@ public class AutoPlayTaskManager
 				return;
 			}
 		}
-	}
-	
-	public boolean isAutoPlay(Player player)
-	{
-		for (Set<Player> pool : POOLS)
-		{
-			if (pool.contains(player))
-			{
-				return true;
-			}
-		}
-		return false;
 	}
 	
 	public static AutoPlayTaskManager getInstance()

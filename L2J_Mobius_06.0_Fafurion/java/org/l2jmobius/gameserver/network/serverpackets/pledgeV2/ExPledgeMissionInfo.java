@@ -18,10 +18,12 @@ package org.l2jmobius.gameserver.network.serverpackets.pledgeV2;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.l2jmobius.gameserver.data.xml.DailyMissionData;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -55,6 +57,7 @@ public class ExPledgeMissionInfo extends ServerPacket
 		
 		ServerPackets.EX_PLEDGE_MISSION_INFO.writeId(this);
 		writeInt(_rewards.size());
+		final List<Integer> missions = _player.getVariables().getIntegerList(PlayerVariables.DAILY_MISSION_ONE_TIME);
 		for (DailyMissionDataHolder reward : _rewards)
 		{
 			int progress = reward.getProgress(_player);
@@ -62,19 +65,19 @@ public class ExPledgeMissionInfo extends ServerPacket
 			// TODO: Figure out this.
 			if (reward.isLevelUpMission())
 			{
+				progress = 1;
 				if (status == 2)
 				{
 					status = reward.getRequiredCompletions() > _player.getLevel() ? 1 : 3;
 				}
-				else if ((status == 3) && (progress == 3))
-				{
-					status = 0;
-				}
-				else
+				else if (status != 3)
 				{
 					status = reward.isRecentlyCompleted(_player) ? 0 : 3;
 				}
-				progress = 1;
+				else if ((status == 3) && !missions.isEmpty() && missions.contains(reward.getId()))
+				{
+					status = 0;
+				}
 			}
 			else if (status == 1)
 			{

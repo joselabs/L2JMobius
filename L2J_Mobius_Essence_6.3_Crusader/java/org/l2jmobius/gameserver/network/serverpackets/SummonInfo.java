@@ -18,6 +18,7 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
+import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.NpcInfoType;
 import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -86,7 +87,14 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (summon.getTeam() != Team.NONE)
 		{
-			addComponentType(NpcInfoType.TEAM);
+			if ((Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
+			{
+				addComponentType(NpcInfoType.ABNORMALS);
+			}
+			else
+			{
+				addComponentType(NpcInfoType.TEAM);
+			}
 		}
 		if (summon.isInsideZone(ZoneId.WATER) || summon.isFlying())
 		{
@@ -361,10 +369,26 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (containsMask(NpcInfoType.ABNORMALS))
 		{
-			writeShort(_abnormalVisualEffects.size());
+			final Team team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _summon.getTeam() : Team.NONE;
+			writeShort(_abnormalVisualEffects.size() + (_summon.isInvisible() ? 1 : 0) + (team != Team.NONE ? 1 : 0));
 			for (AbnormalVisualEffect abnormalVisualEffect : _abnormalVisualEffects)
 			{
 				writeShort(abnormalVisualEffect.getClientId());
+			}
+			if (_summon.isInvisible())
+			{
+				writeShort(AbnormalVisualEffect.STEALTH.getClientId());
+			}
+			if (team == Team.BLUE)
+			{
+				if (Config.BLUE_TEAM_ABNORMAL_EFFECT != null)
+				{
+					writeShort(Config.BLUE_TEAM_ABNORMAL_EFFECT.getClientId());
+				}
+			}
+			else if ((team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
+			{
+				writeShort(Config.RED_TEAM_ABNORMAL_EFFECT.getClientId());
 			}
 		}
 	}

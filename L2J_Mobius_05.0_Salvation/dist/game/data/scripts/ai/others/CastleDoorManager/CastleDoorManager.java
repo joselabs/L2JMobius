@@ -91,10 +91,10 @@ public class CastleDoorManager extends AbstractNpcAI
 					{
 						final Castle castle = npc.getCastle();
 						final boolean open = st.nextToken().equals("1");
-						final String doorName1 = npc.getParameters().getString("DoorName1", null);
-						final String doorName2 = npc.getParameters().getString("DoorName2", null);
-						castle.openCloseDoor(player, doorName1, open);
-						castle.openCloseDoor(player, doorName2, open);
+						final int doorId1 = npc.getParameters().getInt("DoorId1", 0);
+						final int doorId2 = npc.getParameters().getInt("DoorId2", 0);
+						castle.openCloseDoor(player, doorId1, open);
+						castle.openCloseDoor(player, doorId2, open);
 					}
 				}
 				else

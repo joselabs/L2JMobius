@@ -64,7 +64,7 @@ public class AdminScript implements IAdminCommandHandler
 				}
 				else
 				{
-					LOGGER.warning("Failed loading: (" + file.getCanonicalPath() + " - Reason: doesnt exists or is not a file.");
+					LOGGER.warning("Failed loading: (" + file.getCanonicalPath() + " - Reason: Does not exist, or is not a file.");
 				}
 			}
 			catch (Exception e)

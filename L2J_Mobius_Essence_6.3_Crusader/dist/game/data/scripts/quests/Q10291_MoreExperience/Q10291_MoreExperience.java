@@ -29,6 +29,7 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
+import org.l2jmobius.gameserver.network.serverpackets.TutorialShowHtml;
 
 /**
  * More Experience (10967)
@@ -101,6 +102,7 @@ public class Q10291_MoreExperience extends Quest
 				giveItems(player, ADVENTURERS_BROOCH);
 				giveItems(player, ADVENTURERS_BROOCH_GEMS);
 				giveItems(player, SCROLL_ENCHANT_ADEN_WEAPON);
+				player.sendPacket(new TutorialShowHtml(0, "..\\L2text_classic\\eu\\QT_029_jewel_01.htm", 2));
 				qs.exitQuest(false, true);
 				htmltext = event;
 				break;

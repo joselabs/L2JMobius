@@ -70,7 +70,10 @@ import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestItemEnsoul;
 import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestTryEnSoulExtraction;
 import org.l2jmobius.gameserver.network.clientpackets.equipmentupgrade.RequestUpgradeSystemResult;
 import org.l2jmobius.gameserver.network.clientpackets.faction.RequestUserFactionInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockMemo;
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestFriendDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestUpdateFriendMemo;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGamePlay;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGameStartInfo;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.ConfirmMenteeAdd;
@@ -82,6 +85,7 @@ import org.l2jmobius.gameserver.network.clientpackets.monsterbook.RequestMonster
 import org.l2jmobius.gameserver.network.clientpackets.monsterbook.RequestMonsterBookOpen;
 import org.l2jmobius.gameserver.network.clientpackets.monsterbook.RequestMonsterBookReward;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeAnnounce;
+import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeAnnounceSet;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeContributionInfo;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeContributionRank;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeContributionReward;
@@ -269,8 +273,8 @@ public enum ExClientPackets
 	REQUEST_SURRENDER_PLEDGE_WAR_EX(0x92, null, ConnectionState.IN_GAME),
 	REQUEST_DYNAMIC_QUEST_ACTION(0x93, null, ConnectionState.IN_GAME), // TODO: Implement / HANDLE SWITCH
 	REQUEST_FRIEND_DETAIL_INFO(0x94, RequestFriendDetailInfo::new, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_FRIEND_MEMO(0x95, null, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_BLOCK_MEMO(0x96, null, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_FRIEND_MEMO(0x95, RequestUpdateFriendMemo::new, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_BLOCK_MEMO(0x96, RequestBlockMemo::new, ConnectionState.IN_GAME),
 	REQUEST_INZONE_PARTY_INFO_HISTORY(0x97, null, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_REGISTRABLE_ITEM_LIST(0x98, RequestCommissionRegistrableItemList::new, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_INFO(0x99, RequestCommissionInfo::new, ConnectionState.IN_GAME),
@@ -394,7 +398,7 @@ public enum ExClientPackets
 	REQUEST_USER_FACTION_INFO(0x119, RequestUserFactionInfo::new, ConnectionState.IN_GAME),
 	EX_EXIT_ARENA(0x11A, null, ConnectionState.IN_GAME),
 	REQUEST_EVENT_BALTHUS_TOKEN(0x11B, null, ConnectionState.IN_GAME),
-	REQUEST_PARTY_MATCHING_HISTORY(0x11C, null, ConnectionState.IN_GAME),
+	REQUEST_PARTY_MATCHING_HISTORY(0x11C, RequestPartyMatchingHistory::new, ConnectionState.IN_GAME),
 	EX_ARENA_CUSTOM_NOTIFICATION(0x11D, null, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST(0x11E, null, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST_HTML(0x11F, null, ConnectionState.IN_GAME),
@@ -405,7 +409,7 @@ public enum ExClientPackets
 	REQUEST_PLEDGE_BONUS_REWARD(0x124, null, ConnectionState.IN_GAME),
 	REQUEST_SSO_AUTHN_TOKEN(0x125, null, ConnectionState.IN_GAME),
 	REQUEST_QUEUE_TICKET_LOGIN(0x126, null, ConnectionState.IN_GAME),
-	REQUEST_BLOCK_MEMO_INFO(0x127, null, ConnectionState.IN_GAME),
+	REQUEST_BLOCK_MEMO_INFO(0x127, RequestBlockDetailInfo::new, ConnectionState.IN_GAME),
 	REQUEST_TRY_EN_SOUL_EXTRACTION(0x128, RequestTryEnSoulExtraction::new, ConnectionState.IN_GAME),
 	REQUEST_RAIDBOSS_SPAWN_INFO(0x129, RequestRaidBossSpawnInfo::new, ConnectionState.IN_GAME),
 	REQUEST_RAID_SERVER_INFO(0x12A, RequestRaidServerInfo::new, ConnectionState.IN_GAME),
@@ -442,7 +446,7 @@ public enum ExClientPackets
 	EX_PLEDGE_ITEM_LIST(0x149, RequestExPledgeItemList::new, ConnectionState.IN_GAME),
 	EX_PLEDGE_ITEM_ACTIVATE(0x14A, null, ConnectionState.IN_GAME),
 	EX_PLEDGE_ANNOUNCE(0x14B, RequestExPledgeAnnounce::new, ConnectionState.IN_GAME),
-	EX_PLEDGE_ANNOUNCE_SET(0x14C, null, ConnectionState.IN_GAME),
+	EX_PLEDGE_ANNOUNCE_SET(0x14C, RequestExPledgeAnnounceSet::new, ConnectionState.IN_GAME),
 	EX_CREATE_PLEDGE(0x14D, null, ConnectionState.IN_GAME),
 	EX_PLEDGE_ITEM_INFO(0x14E, null, ConnectionState.IN_GAME),
 	EX_PLEDGE_ITEM_BUY(0x14F, RequestExPledgeItemBuy::new, ConnectionState.IN_GAME),

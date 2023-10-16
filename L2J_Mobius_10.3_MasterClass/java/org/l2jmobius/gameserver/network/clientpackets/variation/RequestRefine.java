@@ -101,7 +101,7 @@ public class RequestRefine extends AbstractRefinePacket
 			return;
 		}
 		
-		final Variation variation = VariationData.getInstance().getVariation(mineralItem.getId());
+		final Variation variation = VariationData.getInstance().getVariation(mineralItem.getId(), targetItem);
 		if (variation == null)
 		{
 			player.sendPacket(ExVariationResult.FAIL);

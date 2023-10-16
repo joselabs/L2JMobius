@@ -127,7 +127,7 @@
 		</capsuled_items>
 	</item>
 	<item id="26509" name="Scroll: Summon Pomona" additionalName="Event" type="EtcItem">
-		<!-- A scroll for summoning Pomona once. For 30 min., Acquired XP +10%, Max HP +30%, Max MP +30%, Max CP +30%, P. Def. +30%, M. Def. +30%, Speed +20, P. Atk. +10%, M. Atk. +20%, Skill MP Consumption -15%. The effect doesn't stack with those of Art of Seduction, Pa'agrio's Blessing, Angel Cat's Blessing, Joon's Magic. -->
+		<!-- A scroll for summoning Pomona once. For 30 min., acquired XP +10%, Max HP +30%, Max MP +30%, Max CP +30%, P. Def. +30%, M. Def. +30%, Speed +20, P. Atk. +10%, M. Atk. +20%, Skill MP Consumption -15%. The effect doesn't stack with those of Lure, Pa'agrio's Blessing, Angel Cat's Blessing, Joon's Magic. Cannot be used simultaneously with the Art of Seduction effect. -->
 		<set name="icon" val="icon.etc_star_scroll_baekisung" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -179,6 +179,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="40056" min="1" max="1" chance="100" /> <!-- Wondrous Wind Scroll -->
+		</capsuled_items>
 	</item>
 	<item id="26513" name="Legendary CHA Dye Pack Lv. 5" type="EtcItem">
 		<!-- Double-click to obtain one of the following Lv. 5 Legendary Dyes (Charisma): STR/ DEX/ CON/ INT/ WIT/ MEN. -->

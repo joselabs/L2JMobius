@@ -17,15 +17,24 @@
 package org.l2jmobius.gameserver.network.clientpackets.huntpass;
 
 import org.l2jmobius.commons.network.ReadablePacket;
+import org.l2jmobius.commons.threads.ThreadPool;
+import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.HuntPassData;
+import org.l2jmobius.gameserver.model.HuntPass;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.request.RewardRequest;
+import org.l2jmobius.gameserver.model.holders.ItemHolder;
+import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
+import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassInfo;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSayhasSupportInfo;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSimpleInfo;
 
 /**
- * @author Serenitty
+ * @author Serenitty, Mobius, Fakee
  */
 public class RequestHuntPassRewardAll implements ClientPacket
 {
@@ -46,8 +55,114 @@ public class RequestHuntPassRewardAll implements ClientPacket
 			return;
 		}
 		
+		if (player.hasRequest(RewardRequest.class))
+		{
+			return;
+		}
+		player.addRequest(new RewardRequest(player));
+		
+		int rewardIndex;
+		int premiumRewardIndex;
+		boolean inventoryLimitReached = false;
+		final HuntPass huntPass = player.getHuntPass();
+		REWARD_LOOP: while (true)
+		{
+			rewardIndex = huntPass.getRewardStep();
+			premiumRewardIndex = huntPass.getPremiumRewardStep();
+			if ((rewardIndex >= HuntPassData.getInstance().getRewardsCount()) && (premiumRewardIndex >= HuntPassData.getInstance().getPremiumRewardsCount()))
+			{
+				break REWARD_LOOP;
+			}
+			
+			ItemHolder reward = null;
+			if (!huntPass.isPremium())
+			{
+				if (rewardIndex >= huntPass.getCurrentStep())
+				{
+					break REWARD_LOOP;
+				}
+				
+				reward = HuntPassData.getInstance().getRewards().get(rewardIndex);
+			}
+			else
+			{
+				if (premiumRewardIndex >= huntPass.getCurrentStep())
+				{
+					break REWARD_LOOP;
+				}
+				
+				if (rewardIndex < HuntPassData.getInstance().getRewardsCount())
+				{
+					reward = HuntPassData.getInstance().getRewards().get(rewardIndex);
+				}
+				else if (premiumRewardIndex < HuntPassData.getInstance().getPremiumRewardsCount())
+				{
+					reward = HuntPassData.getInstance().getPremiumRewards().get(premiumRewardIndex);
+				}
+			}
+			if (reward == null)
+			{
+				break REWARD_LOOP;
+			}
+			
+			final ItemTemplate itemTemplate = ItemTable.getInstance().getTemplate(reward.getId());
+			final long weight = itemTemplate.getWeight() * reward.getCount();
+			final long slots = itemTemplate.isStackable() ? 1 : reward.getCount();
+			if (!player.getInventory().validateWeight(weight) || !player.getInventory().validateCapacity(slots))
+			{
+				player.sendPacket(SystemMessageId.YOUR_INVENTORY_S_WEIGHT_SLOT_LIMIT_HAS_BEEN_EXCEEDED_SO_YOU_CAN_T_RECEIVE_THE_REWARD_PLEASE_FREE_UP_SOME_SPACE_AND_TRY_AGAIN);
+				inventoryLimitReached = true;
+				break REWARD_LOOP;
+			}
+			
+			// Normal reward.
+			if (!huntPass.isPremium() && (rewardIndex <= HuntPassData.getInstance().getRewardsCount()))
+			{
+				rewardItem(player, HuntPassData.getInstance().getRewards().get(rewardIndex));
+				huntPass.setRewardStep(rewardIndex + 1);
+			}
+			// Premium reward.
+			else if (huntPass.isPremium())
+			{
+				if ((rewardIndex < HuntPassData.getInstance().getRewardsCount()) && (rewardIndex <= premiumRewardIndex))
+				{
+					rewardItem(player, HuntPassData.getInstance().getRewards().get(rewardIndex));
+					huntPass.setRewardStep(rewardIndex + 1);
+				}
+				else if ((premiumRewardIndex < rewardIndex) && (premiumRewardIndex <= HuntPassData.getInstance().getPremiumRewardsCount()))
+				{
+					rewardItem(player, HuntPassData.getInstance().getPremiumRewards().get(premiumRewardIndex));
+					huntPass.setPremiumRewardStep(premiumRewardIndex + 1);
+				}
+			}
+		}
+		
+		if (!inventoryLimitReached)
+		{
+			huntPass.setRewardAlert(false);
+		}
+		
 		player.sendPacket(new HuntPassInfo(player, _huntPassType));
 		player.sendPacket(new HuntPassSayhasSupportInfo(player));
 		player.sendPacket(new HuntPassSimpleInfo(player));
+		
+		ThreadPool.schedule(() -> player.removeRequest(RewardRequest.class), 300);
+	}
+	
+	private void rewardItem(Player player, ItemHolder reward)
+	{
+		if (reward.getId() == 60306) // Vitality Sustention Points
+		{
+			final int count = (int) reward.getCount();
+			player.getHuntPass().addSayhaTime(count);
+			
+			final SystemMessage msg = new SystemMessage(SystemMessageId.YOU_VE_GOT_S1_VITALITY_SUSTENTION_POINT_S);
+			msg.addInt(count);
+			player.sendPacket(msg);
+		}
+		else
+		{
+			player.addItem("HuntPassReward", reward, player, true);
+		}
 	}
 }

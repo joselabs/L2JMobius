@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * Appearing Packet Handler
@@ -44,6 +43,6 @@ public class Appearing implements ClientPacket
 			player.onTeleported();
 		}
 		
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 	}
 }

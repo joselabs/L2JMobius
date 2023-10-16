@@ -29,6 +29,8 @@ import ai.AbstractNpcAI;
  */
 public class IvoryTowerTeleportZones extends AbstractNpcAI
 {
+	private static final int HOURS_24 = 86400000;
+	
 	private static final String[] ZONE_NAMES =
 	{
 		"hellbound_tp_1",
@@ -40,31 +42,47 @@ public class IvoryTowerTeleportZones extends AbstractNpcAI
 	private IvoryTowerTeleportZones()
 	{
 		final Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.HOUR_OF_DAY, 0);
 		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
 		
 		// Current day check.
-		if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY)
+		if ((calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) && ((calendar.get(Calendar.HOUR_OF_DAY) >= 10) && (calendar.get(Calendar.HOUR_OF_DAY) < 22)))
 		{
 			enableZones();
+			calendar.add(Calendar.DAY_OF_WEEK, 7);
+			calendar.set(Calendar.HOUR_OF_DAY, 10);
+			closeZones();
 		}
 		else
 		{
 			disableZones();
+			calendar.add(Calendar.DAY_OF_WEEK, Calendar.SATURDAY - calendar.get(Calendar.DAY_OF_WEEK));
+			calendar.set(Calendar.HOUR_OF_DAY, 10);
 		}
 		
 		// Schedule task to check if it is Saturday.
-		ThreadPool.scheduleAtFixedRate(() ->
+		ThreadPool.scheduleAtFixedRate(this::checkCondition, calendar.getTimeInMillis() - System.currentTimeMillis(), HOURS_24 * 7); // Check every week.
+	}
+	
+	private void checkCondition()
+	{
+		final Calendar calendar = Calendar.getInstance();
+		if ((calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) && ((calendar.get(Calendar.HOUR_OF_DAY) >= 10) && (calendar.get(Calendar.HOUR_OF_DAY) < 22)))
 		{
-			if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY)
-			{
-				enableZones();
-			}
-			else
-			{
-				disableZones();
-			}
-		}, (calendar.getTimeInMillis() + 86400000) - System.currentTimeMillis(), 86400000); // Check every 24 hours.
+			enableZones();
+			closeZones();
+		}
+	}
+	
+	private void closeZones()
+	{
+		final Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, 22);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		ThreadPool.schedule(this::disableZones, calendar.getTimeInMillis() - System.currentTimeMillis());
 	}
 	
 	private void enableZones()

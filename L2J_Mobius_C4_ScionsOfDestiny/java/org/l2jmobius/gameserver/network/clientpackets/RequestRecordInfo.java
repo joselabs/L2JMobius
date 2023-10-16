@@ -37,7 +37,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PetItemList;
 import org.l2jmobius.gameserver.network.serverpackets.RelationChanged;
 import org.l2jmobius.gameserver.network.serverpackets.SpawnItem;
 import org.l2jmobius.gameserver.network.serverpackets.StaticObjectInfo;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.VehicleInfo;
 
 public class RequestRecordInfo implements ClientPacket
@@ -52,7 +51,7 @@ public class RequestRecordInfo implements ClientPacket
 		}
 		
 		player.getKnownList().updateKnownObjects();
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		for (WorldObject object : player.getKnownList().getKnownObjects().values())
 		{
 			if (object == null)

@@ -37,7 +37,7 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.communitybbs.BB.Forum;
 import org.l2jmobius.gameserver.communitybbs.Manager.ForumsBBSManager;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
 import org.l2jmobius.gameserver.data.xml.SkillData;
@@ -75,7 +75,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PledgeSkillListAdd;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.EnumIntBitmask;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -531,6 +530,19 @@ public class Clan implements IIdentifiable, INamable
 	public ClanMember[] getMembers()
 	{
 		return _members.values().toArray(new ClanMember[_members.size()]);
+	}
+	
+	public List<Integer> getOfflineMembersIds()
+	{
+		final List<Integer> list = new ArrayList<>();
+		for (ClanMember temp : _members.values())
+		{
+			if ((temp != null) && !temp.isOnline())
+			{
+				list.add(temp.getObjectId());
+			}
+		}
+		return list;
 	}
 	
 	public int getMembersCount()
@@ -1995,8 +2007,7 @@ public class Clan implements IIdentifiable, INamable
 				if (cm.isOnline() && (cm.getPowerGrade() == rank) && (cm.getPlayer() != null))
 				{
 					cm.getPlayer().getClanPrivileges().setBitmask(privs);
-					cm.getPlayer().sendPacket(new UserInfo(cm.getPlayer()));
-					// cm.getPlayer().sendPacket(new ExBrExtraUserInfo(cm.getPlayer()));
+					cm.getPlayer().updateUserInfo();
 				}
 			}
 			broadcastClanStatus();
@@ -2383,8 +2394,7 @@ public class Clan implements IIdentifiable, INamable
 		setAllyPenaltyExpiryTime(0, 0);
 		updateClanInDB();
 		
-		player.sendPacket(new UserInfo(player));
-		// player.sendPacket(new ExBrExtraUserInfo(player));
+		player.updateUserInfo();
 		
 		// TODO: Need correct message id
 		player.sendMessage("Alliance " + allyName + " has been created.");
@@ -2887,7 +2897,7 @@ public class Clan implements IIdentifiable, INamable
 	
 	public String getNewLeaderName()
 	{
-		return CharNameTable.getInstance().getNameById(_newLeaderId);
+		return CharInfoTable.getInstance().getNameById(_newLeaderId);
 	}
 	
 	public int getSiegeKills()

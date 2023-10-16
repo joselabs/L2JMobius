@@ -14,7 +14,7 @@
 		</effects>
 	</skill>
 	<skill id="19301" toLevel="9" name="Istina Acid Swarm">
-		<!-- Throws the bottle containing Istina's Acid at the target point to create an acidic area for $s1. Enemies within the area suffer P. Def/ M. Def -$s2 and Atk. Spd./ Movement Speed/ Shield Def. -$s3 and cannot use magic skills. -->
+		<!-- Throws the bottle containing Istina's Acid at the target point to create an acidic area for 15 sec.. Enemies within the area suffer P. Def/ M. Def -30% and Atk. Spd./ Movement Speed/ Shield Def. -50% and cannot use magic skills. -->
 		<icon>icon.skill19301</icon>
 		<operateType>A1</operateType>
 		<coolTime>500</coolTime>
@@ -104,7 +104,7 @@
 		</effects>
 	</skill>
 	<skill id="19302" toLevel="9" name="Thrown Acid Swarm">
-		<!-- Damaged by acid. P. Def/ M. Def -$s1 and, Atk. Spd./ Movement Speed/ Shield Def. -$s2, cannot use magic skills, and HP -$s3 per sec. -->
+		<!-- Damaged by acid. P. Def/ M. Def -30% and, Atk. Spd./ Movement Speed/ Shield Def. -50%, cannot use magic skills, and HP -780 per sec. -->
 		<icon>icon.skill19301</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -192,7 +192,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="19303" toLevel="7" name="Right Angle Reverse">
-		<!-- Moves to the right side of the target to attempt the Deadly Attack with $s1 Power added to P. Atk and stun the target for $s2. Half-kill is possible. Requires a dagger or dual dagger to be equipped. -->
+		<!-- Moves to the right side of the target to attempt the Deadly Attack with 35530 Power added to P. Atk and stun the target for 3 sec.. Half-kill is possible. Requires a dagger or dual dagger to be equipped. -->
 		<icon>icon.skill19303</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1</abnormalTime>
@@ -259,13 +259,13 @@
 				<halfLethal>15</halfLethal>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>19528</skillId> <!-- Right Angle Reverse - Stun -->
+				<skillId>19528</skillId> <!-- Right Angle Reverse -->
 				<skillLevel>1</skillLevel>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19304" toLevel="2" name="Easterly Wind">
-		<!-- Critical Rate/ Critical Damage inflicted from the flank +$s1 and Critical Rate/ Critical Damage inflicted from behind +$s2, and also resets cooldown of Right Angle Reverse and Easterly Wind Strike. -->
+		<!-- Critical Rate/ Critical Damage inflicted from the flank +20% and Critical Rate/ Critical Damage inflicted from behind +10%, and also resets cooldown of Right Angle Reverse and Easterly Wind Strike. -->
 		<icon>icon.skill10705</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -301,15 +301,15 @@
 				<position>BACK</position>
 			</effect>
 			<effect name="ReuseSkillById">
-				<skillId>19303</skillId>
+				<skillId>19303</skillId> <!-- Right Angle Reverse -->
 			</effect>
 			<effect name="ReuseSkillById">
-				<skillId>10705</skillId>
+				<skillId>10705</skillId> <!-- Easterly Wind Strike -->
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19305" toLevel="7" name="Shadow Reverse">
-		<!-- Teleports to the back of the target and attempts Deadly Attack with $s1 power added to P. Atk. Additionally, target Accuracy -$s3 for $s2. Half-kill is possible. Requires dagger/ dual dagger. -->
+		<!-- Teleports to the back of the target and attempts Deadly Attack with 38160 power added to P. Atk. Additionally, target Accuracy -5 for 3 sec.. Half-kill is possible. Requires dagger/ dual dagger. -->
 		<icon>icon.skill19305</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -413,7 +413,7 @@
 		</effects>
 	</skill>
 	<skill id="19307" toLevel="2" name="Lucky Coin: Attack">
-		<!-- Maphr's Blessing increases P. Atk. by $s2, M. Atk. by $s3, and P./ M. Skill Power by $s4 for $s1. -->
+		<!-- Maphr's Blessing increases P. Atk. by 7%, M. Atk. by 14%, and P./ M. Skill Power by 5% for 1 min. -->
 		<icon>icon.skill19307</icon>
 		<effectPoint>669</effectPoint>
 		<operateType>A2</operateType>
@@ -464,7 +464,7 @@
 		</effects>
 	</skill>
 	<skill id="19309" toLevel="7" name="Reverse Plunder">
-		<!-- Attempts Deadly Attack with $s1 power added to P. Atk. and steals an item. Requires dagger/ dual dagger. -->
+		<!-- Attempts Deadly Attack with 36840 power added to P. Atk. and steals an item. Requires dagger/ dual dagger. -->
 		<icon>icon.skill19309</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
@@ -519,7 +519,7 @@
 		</effects>
 	</skill>
 	<skill id="19311" toLevel="3" name="Dwarven Flare Bluff">
-		<!-- Fires Special Flare to inflict Bluff on enemies in front for $s1. Requires dagger/ dual dagger. Consumes $s2 Soulstones. -->
+		<!-- Fires Special Flare to inflict Bluff on enemies in front for 3 sec.. Requires dagger/ dual dagger. Consumes 2 Soulstones. -->
 		<icon>icon.skill0537</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -619,7 +619,7 @@
 				<attribute>HOLY</attribute>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>19404</skillId>
+				<skillId>19404</skillId> <!-- Fire Attribute -->
 				<skillLevel>5</skillLevel> <!-- Holy Attribute -->
 			</effect>
 		</effects>
@@ -644,13 +644,13 @@
 				<attribute>DARK</attribute>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>19404</skillId>
+				<skillId>19404</skillId> <!-- Fire Attribute -->
 				<skillLevel>6</skillLevel> <!-- Dark Attribute -->
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19314" toLevel="11" name="Elemental Spike (Dark)">
-		<!-- Deals M. Atk. of $s1 power added with attribute damage on the target and decreases the corresponding Attribute Resistance. Over-hit. -->
+		<!-- Deals M. Atk. of 133 power added with attribute damage on the target and decreases the corresponding Attribute Resistance. Over-hit. -->
 		<icon>icon.skill11011</icon>
 		<operateType>A1</operateType>
 		<reuseDelayGroup>11011</reuseDelayGroup>
@@ -740,7 +740,7 @@
 		</effects>
 	</skill>
 	<skill id="19315" toLevel="4" name="Mana Burst">
-		<!-- For $s1, increases M. Atk. by $s2. Able to cast Quadruple Elemental Blast if reached level 4. -->
+		<!-- For 5 sec., increases M. Atk. by 50%. Able to cast Quadruple Elemental Blast if reached level 4. -->
 		<icon>icon.skill11046</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -801,7 +801,7 @@
 		</endEffects>
 	</skill>
 	<skill id="19316" toLevel="8" name="Elemental Final Storm (Dark)">
-		<!-- Deals M. Atk. of $s1 power added with attribute damage on the target and the enemies near it. -->
+		<!-- Deals M. Atk. of 262 power added with attribute damage on the target and the enemies near it. -->
 		<icon>icon.skill11040</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>150</affectRange>

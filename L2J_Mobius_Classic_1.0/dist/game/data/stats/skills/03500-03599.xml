@@ -710,7 +710,7 @@
 	</skill>
 	<skill id="3542" toLevel="9" name="Special Ability: Critical Damage">
 		<!-- Increases Critical Damage. -->
-		<icon>icon.skill1242</icon>
+		<icon>icon.skill0193</icon>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -718,24 +718,24 @@
 			<value level="4">55</value>
 			<value level="5">58</value>
 			<value level="6">61</value>
-			<value level="7">61</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-			<value level="8">61</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-			<value level="9">61</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+			<value level="7">64</value>
+			<value level="8">67</value>
+			<value level="9">70</value>
 		</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="CriticalDamage">
 				<amount>
-					<value level="1">203.97</value>
-					<value level="2">226.51</value>
-					<value level="3">248.71</value>
-					<value level="4">269.91</value>
-					<value level="5">289.4</value>
-					<value level="6">306.42</value>
-					<value level="7">306.42</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-					<value level="8">306.42</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-					<value level="9">306.42</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+					<value level="1">183</value>
+					<value level="2">203</value>
+					<value level="3">223</value>
+					<value level="4">242</value>
+					<value level="5">260</value>
+					<value level="6">275</value>
+					<value level="7">288</value>
+					<value level="8">297</value>
+					<value level="9">302</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1083,11 +1083,7 @@
 	</skill>
 	<skill id="3560" toLevel="3" name="Orfen's Earring">
 		<!-- Hold Resistance and Atk. Rate +10%, Mental Resistance and Atk. Rate +5%, Healing Power +2%, Skill MP Consumption -2%. -->
-		<icon>
-			<value level="1">icon.accessory_earring_of_orfen_i00</value>
-			<value level="2">icon.accessory_earring_of_orfen_i02</value>
-			<value level="3">icon.accessory_earring_of_orfen_i03</value>
-		</icon>
+		<icon>icon.accessory_earring_of_orfen_i00</icon>
 		<magicLevel>75</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1126,24 +1122,40 @@
 			</effect>
 			<effect name="MagicMpCost">
 				<amount>
-					<value level="1">2</value>
-					<value level="2">3</value>
-					<value level="3">5</value>
+					<value level="1">-2</value>
+					<value level="2">-3</value>
+					<value level="3">-5</value>
 				</amount>
 				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-3</value>
+					<value level="3">-5</value>
+				</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-3</value>
+					<value level="3">-5</value>
+				</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
 			</effect>
 			<effect name="MpVampiricAttack" fromLevel="3" toLevel="3">
 				<amount>3</amount>
+				<chance>30</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="3562" toLevel="3" name="Queen Ant's Ring">
 		<!-- Poison Resistance and Atk. Rate +10%, P. /M. Accuracy +1, P. /M. Atk. +4%. -->
-		<icon>
-			<value level="1">icon.accessory_ring_of_queen_ant_i00</value>
-			<value level="2">icon.accessory_ring_of_queen_ant_i02</value>
-			<value level="3">icon.accessory_ring_of_queen_ant_i03</value>
-		</icon>
+		<icon>icon.accessory_ring_of_queen_ant_i00</icon>
 		<magicLevel>75</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1182,7 +1194,7 @@
 				<amount>
 					<value level="1">4</value>
 					<value level="2">6</value>
-					<value level="3">10</value>
+					<value level="3">7</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1190,7 +1202,7 @@
 				<amount>
 					<value level="1">4</value>
 					<value level="2">6</value>
-					<value level="3">10</value>
+					<value level="3">7</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1206,19 +1218,15 @@
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
-					<value level="3">10</value>
+					<value level="3">5</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="3563" toLevel="3" name="Ring of Core">
-		<!-- Mental Resistance and Atk. Rate +10%, P./M. Evasion +1, Received Damage -2%. -->
-		<icon>
-			<value level="1">icon.accessory_ring_of_core_i00</value>
-			<value level="2">icon.accessory_ring_of_core_i02</value>
-			<value level="3">icon.accessory_ring_of_core_i03</value>
-		</icon>
+		<!-- Mental Resistance and Atk. Rate +10%, P./ M. Evasion +1, Received Damage -2%. -->
+		<icon>icon.accessory_ring_of_core_i00</icon>
 		<magicLevel>75</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1236,6 +1244,11 @@
 					<value level="2">15</value>
 					<value level="3">20</value>
 				</DERANGEMENT>
+				<SLEEP>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+				</SLEEP>
 			</effect>
 			<effect name="PhysicalEvasion">
 				<amount>
@@ -1253,47 +1266,21 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="DamageByAttack">
 				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
+					<value level="1">-2</value>
+					<value level="2">-4</value>
+					<value level="3">-6</value>
+				</amount>
+				<type>PK</type>
+			</effect>
+			<effect name="DamageByAttack">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-4</value>
+					<value level="3">-6</value>
 				</amount>
 				<type>ENEMY_ALL</type>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
-				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
-				</amount>
-				<type>ENEMY_ALL</type>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
-				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
-				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
-				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
-					<value level="3">6</value>
-				</amount>
-				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>

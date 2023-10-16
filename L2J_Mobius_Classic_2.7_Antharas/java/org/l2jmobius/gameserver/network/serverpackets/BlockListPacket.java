@@ -18,7 +18,7 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -40,7 +40,7 @@ public class BlockListPacket extends ServerPacket
 		writeInt(_playerIds.size());
 		for (int playerId : _playerIds)
 		{
-			writeString(CharNameTable.getInstance().getNameById(playerId));
+			writeString(CharInfoTable.getInstance().getNameById(playerId));
 			writeString(""); // memo ?
 		}
 	}

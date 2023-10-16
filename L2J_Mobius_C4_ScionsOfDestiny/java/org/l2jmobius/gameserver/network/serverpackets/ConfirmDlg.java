@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.ServerPackets;
+import org.l2jmobius.gameserver.network.SystemMessageId;
 
 /**
  * @author kombat Format: cd d[d s/d/dd/ddd]
@@ -45,6 +46,12 @@ public class ConfirmDlg extends ServerPacket
 	public ConfirmDlg(int messageId)
 	{
 		_messageId = messageId;
+	}
+	
+	public ConfirmDlg(String text)
+	{
+		_messageId = SystemMessageId.S1_S2.getId();
+		addString(text);
 	}
 	
 	public ConfirmDlg addString(String text)

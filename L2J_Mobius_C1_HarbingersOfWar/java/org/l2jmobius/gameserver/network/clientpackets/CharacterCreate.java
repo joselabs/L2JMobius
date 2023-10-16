@@ -20,7 +20,7 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.io.IOException;
 
 import org.l2jmobius.gameserver.IdManager;
-import org.l2jmobius.gameserver.data.CharNameTable;
+import org.l2jmobius.gameserver.data.CharInfoTable;
 import org.l2jmobius.gameserver.data.CharTemplateTable;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.SkillTable;
@@ -43,7 +43,7 @@ public class CharacterCreate extends ClientBasePacket
 		final Player newChar = new Player();
 		newChar.setName(readS());
 		newChar.setRace(readD());
-		newChar.setSex(readD());
+		newChar.setSex(readD() != 0);
 		newChar.setClassId(readD());
 		newChar.setInt(readD());
 		newChar.setStr(readD());
@@ -55,7 +55,7 @@ public class CharacterCreate extends ClientBasePacket
 		newChar.setHairColor(readD());
 		newChar.setFace(readD());
 		
-		if (CharNameTable.getInstance().doesCharNameExist(newChar.getName()))
+		if (CharInfoTable.getInstance().doesCharNameExist(newChar.getName()))
 		{
 			client.getConnection().sendPacket(new CharCreateFail(CharCreateFail.REASON_NAME_ALREADY_EXISTS));
 		}
@@ -63,7 +63,7 @@ public class CharacterCreate extends ClientBasePacket
 		{
 			client.getConnection().sendPacket(new CharCreateOk());
 			initNewChar(client, newChar);
-			CharNameTable.getInstance().addCharName(newChar.getName());
+			CharInfoTable.getInstance().addCharName(newChar.getName());
 		}
 		else
 		{
@@ -125,19 +125,19 @@ public class CharacterCreate extends ClientBasePacket
 		newChar.setX(template.getX());
 		newChar.setY(template.getY());
 		newChar.setZ(template.getZ());
-		if (newChar.isMale())
-		{
-			newChar.setMovementMultiplier(template.getMUnk1());
-			newChar.setAttackSpeedMultiplier(template.getMUnk2());
-			newChar.setCollisionRadius(template.getMColR());
-			newChar.setCollisionHeight(template.getMColH());
-		}
-		else
+		if (newChar.isFemale())
 		{
 			newChar.setMovementMultiplier(template.getFUnk1());
 			newChar.setAttackSpeedMultiplier(template.getFUnk2());
 			newChar.setCollisionRadius(template.getFColR());
 			newChar.setCollisionHeight(template.getFColH());
+		}
+		else
+		{
+			newChar.setMovementMultiplier(template.getMUnk1());
+			newChar.setAttackSpeedMultiplier(template.getMUnk2());
+			newChar.setCollisionRadius(template.getMColR());
+			newChar.setCollisionHeight(template.getMColH());
 		}
 		final ItemTable itemTable = ItemTable.getInstance();
 		for (Integer item2 : template.getItems())

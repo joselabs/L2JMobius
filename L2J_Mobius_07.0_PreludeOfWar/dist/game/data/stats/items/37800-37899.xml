@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="37800" name="Potion of Protection: Aerial Yoke" additionalName="Low-grade" type="EtcItem">
-		<!-- When used, increases Resistance to Aerial Attacks by 5%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- Confusion Resistance +5%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i11" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -28,7 +28,7 @@
 		<set name="material" val="LEATHER" />
 	</item>
 	<item id="37803" name="Master Yogi's Special Scroll: Enchant Weapon" type="EtcItem">
-		<!-- Special weapon enchant scroll containing Master Yogi's power, only usable on Master Yogi's Staff. The item and the enchant value remain intact when enchanting fails. Cannot be used on a Staff enchanted to +15 or above. Lucky Enchant Stones cannot be used with this item. -->
+		<!-- Special weapon enchant scroll containing Master Yogi's power, only usable on Master Yogi's Staff. The item and the enchant value remain intact when enchanting fails. Cannot be used on a Staff enchanted to +15 or higher. Lucky Enchant Stones cannot be used with this item. -->
 		<set name="icon" val="icon.yogi_scroll_of_enchant_weapon_grade_i00" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_WP" />
 		<set name="is_stackable" val="true" />
@@ -158,7 +158,7 @@
 		<set name="bodypart" val="chest" />
 	</item>
 	<item id="37812" name="Metal Suit Gaiters" type="Armor">
-		<!-- Metal Suit Gaiters. Part of a costume. -->
+		<!-- Metal Suit Pants. Part of a costume. -->
 		<set name="icon" val="BranchSys3.icon1.g_co_sf_l" />
 		<set name="default_action" val="EQUIP" />
 		<set name="material" val="LEATHER" />
@@ -185,6 +185,14 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37816" min="1" max="1" chance="100" /> <!-- Metal Suit Hair Accessory Appearance Stone - 30 days -->
+			<item id="37817" min="1" max="1" chance="100" /> <!-- Metal Suit Breastplate Appearance Stone - 30 days -->
+			<item id="37818" min="1" max="1" chance="100" /> <!-- Metal Suit Gaiters Appearance Stone - 30 days -->
+			<item id="37820" min="1" max="1" chance="100" /> <!-- Metal Suit Boots Appearance Stone - 30 days -->
+			<item id="37819" min="1" max="1" chance="100" /> <!-- Metal Suit Gloves Appearance Stone - 30 days -->
+		</capsuled_items>
 	</item>
 	<item id="37816" name="Metal Suit Hair Accessory Appearance Stone" additionalName="30-day" type="EtcItem">
 		<!-- Changes the appearance of a hair accessory to that of Metal Shoot hair for 30 days. -->
@@ -247,7 +255,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="37821" name="Transformation Potion: Metal Suit" type="EtcItem">
-		<!-- Modifies your appearance into that of a Metal Suit for 1 h. -->
+		<!-- Modifies your appearance into that of a Metal Suit for 1 hour. -->
 		<set name="icon" val="icon.etc_whiteday_herb" />
 		<set name="weight" val="5" />
 		<set name="is_stackable" val="true" />
@@ -293,7 +301,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="37826" name="NC Dinos Hat Appearance Stone" additionalName="15-day" type="EtcItem">
-		<!-- Item that changes the appearance of a hair accessory to that of an NC Dinos Hat (15-day limited). Works for item with the same number of slots. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Warning: When changed to the appearance of a female-only hair accessory, it cannot be equipped by a male character. -->
+		<!-- Item that changes the appearance of a hair accessory to that of an NC Dinos Hat (15-day limited). Works for item with the same number of slots. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Note!. When changed to the appearance of a female-only hair accessory, it cannot be equipped by a male character. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_hair1" />
 		<set name="is_stackable" val="true" />
 		<set name="immediate_effect" val="true" />
@@ -305,7 +313,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37827" name="NC Dinos Hat Appearance Stone" additionalName="30-day" type="EtcItem">
-		<!-- Item that changes the appearance of a hair accessory to that of an NC Dinos Hat (30-day limited). Works for item with the same number of slots. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Warning: When changed to the appearance of a female-only hair accessory, it cannot be equipped by a male character. -->
+		<!-- Changes the appearance of a hair accessory into that of an NC Dinos Hat (30-day). Works for item with the same number of slots. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Note!. When changed to the appearance of a female-only hair accessory, it cannot be equipped by a male character. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_hair1" />
 		<set name="is_stackable" val="true" />
 		<set name="immediate_effect" val="true" />
@@ -317,7 +325,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37828" name="Vigilante Hat Appearance Stone" additionalName="15-day" type="EtcItem">
-		<!-- Item that changes the appearance of a hair accessory to that of a Vigilante Hat (15-day limited). Works for item with the same number of slots. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Warning: When changed to the appearance of a female-only hair accessory, it cannot be equipped by a male character. -->
+		<!-- Item that changes the appearance of a hair accessory to that of a Vigilante Hat (15-day limited). Works for item with the same number of slots. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Note!. When changed to the appearance of a female-only hair accessory, it cannot be equipped by a male character. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_hair2" />
 		<set name="is_stackable" val="true" />
 		<set name="immediate_effect" val="true" />
@@ -329,7 +337,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37829" name="Vigilante Hat Appearance Stone" additionalName="30-day" type="EtcItem">
-		<!-- Item that changes the appearance of a hair accessory to that of a Vigilante Hat (30-day limited). Works for item with the same number of slots. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Warning: When changed to the appearance of a female-only hair accessory, it cannot be equipped by a male character. -->
+		<!-- Item that changes the appearance of a hair accessory to that of a Vigilante Hat (30-day limited). Works for item with the same number of slots. You need an appearance item, which remains intact after its appearance is extracted. An appearance-modified item has no change in abilities. Double-click to use. Note!. When changed to the appearance of a female-only hair accessory, it cannot be equipped by a male character. -->
 		<set name="icon" val="BranchSys3.Icon.g_shape_shifting_hair2" />
 		<set name="is_stackable" val="true" />
 		<set name="immediate_effect" val="true" />
@@ -1323,7 +1331,7 @@
 		</skills>
 	</item>
 	<item id="37892" name="Leona's Reward Box" type="EtcItem">
-		<!-- Reward box given by Leona Blackbird of Hellbound for your help. Double-click to acquire the item. -->
+		<!-- Reward box received from Leona Blackbird for helping her in Hellbound. Double-click to open. -->
 		<set name="icon" val="icon.etc_box_of_adventure_1_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1400,11 +1408,15 @@
 		</skills>
 	</item>
 	<item id="37898" name="SP Rune Pack (Low-grade) (1-day)" type="EtcItem">
-		<!-- Box containing Kat the Cat's gift. Double-click to acquire 1 of the following at random: 150 Heavenly Recovery Potions, 1 Kat the Cat's Box of Roses, or 1 Emperor's Rune Box. Cannot be exchanged, dropped, sold in a private store, or used in an auction house. Can be shared within the same account through the Dimensional Merchant. Can be stored in a private warehouse. To be deleted on 30.10.13. -->
+		<!-- Box containing Kat the Cat's gift. Double-click to acquire 1 of the following at random: 150 Heavenly Recovery Potions, 1 Kat the Cat's Box of Roses, or 1 Emperor's Rune Box. Cannot be exchanged, dropped, sold in a private store, or used in an auction house. Can be shared within the same account through the Dimensional Merchant. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i04" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37788" min="1" max="1" chance="100" /> <!-- SP Rune (Low-grade) - 1-day -->
+		</capsuled_items>
 	</item>
 	<item id="37899" name="SP Rune Pack (Mid-grade) (1-day)" type="EtcItem">
 		<!-- Double-click to acquire 1 Enhanced Rose Spirit Coupon (5 hours) and 150 Rose Essences. Cannot be used in the auction house. -->
@@ -1412,5 +1424,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37789" min="1" max="1" chance="100" /> <!-- SP Rune (Mid-grade) - 1-day -->
+		</capsuled_items>
 	</item>
 </list>

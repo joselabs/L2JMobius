@@ -51,6 +51,7 @@ public class SiegeManager
 		return SingletonHolder.INSTANCE;
 	}
 	
+	private int _siegeCycle = 2; // 2 weeks by default
 	private int _attackerMaxClans = 500; // Max number of clans
 	private int _attackerRespawnDelay = 20000; // Time in ms. Changeable in siege.config
 	private int _defenderMaxClans = 500; // Max number of clans
@@ -192,6 +193,7 @@ public class SiegeManager
 			siegeSettings.load(is);
 			
 			// Siege setting
+			_siegeCycle = Integer.decode(siegeSettings.getProperty("SiegeCycle", "2"));
 			_attackerMaxClans = Integer.decode(siegeSettings.getProperty("AttackerMaxClans", "500"));
 			_attackerRespawnDelay = Integer.decode(siegeSettings.getProperty("AttackerRespawn", "30000"));
 			_controlTowerLosePenalty = Integer.decode(siegeSettings.getProperty("CTLossPenalty", "20000"));
@@ -302,6 +304,11 @@ public class SiegeManager
 			return _controlTowerSpawnList.get(castleId);
 		}
 		return null;
+	}
+	
+	public int getSiegeCycle()
+	{
+		return _siegeCycle;
 	}
 	
 	public int getAttackerMaxClans()

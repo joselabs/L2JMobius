@@ -19,7 +19,7 @@ package org.l2jmobius.gameserver.network.serverpackets.balok;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.instancemanager.BattleWithBalokManager;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -46,7 +46,7 @@ public class BalrogWarShowRanking extends ServerPacket
 		{
 			rank++;
 			writeInt(rank); // Rank
-			writeSizedString(CharNameTable.getInstance().getNameById(entry.getKey())); // Name
+			writeSizedString(CharInfoTable.getInstance().getNameById(entry.getKey())); // Name
 			writeInt(entry.getValue()); // Score
 		}
 	}

@@ -20,7 +20,6 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * Task dedicated to reward player with fame while standing on siege zone.
@@ -52,6 +51,6 @@ public class FameTask implements Runnable
 		final SystemMessage sm = new SystemMessage(SystemMessageId.PERSONAL_REPUTATION_S1);
 		sm.addInt(_value);
 		_player.sendPacket(sm);
-		_player.sendPacket(new UserInfo(_player));
+		_player.updateUserInfo();
 	}
 }

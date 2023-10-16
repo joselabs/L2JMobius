@@ -57,13 +57,13 @@ public class CombinationItemsData implements IXmlReader
 		forEach(doc, "list", listNode -> forEach(listNode, "item", itemNode ->
 		{
 			final CombinationItem item = new CombinationItem(new StatSet(parseAttributes(itemNode)));
-			
 			forEach(itemNode, "reward", rewardNode ->
 			{
 				final int id = parseInteger(rewardNode.getAttributes(), "id");
 				final int count = parseInteger(rewardNode.getAttributes(), "count", 1);
+				final int enchant = parseInteger(rewardNode.getAttributes(), "enchant", 0);
 				final CombinationItemType type = parseEnum(rewardNode.getAttributes(), CombinationItemType.class, "type");
-				item.addReward(new CombinationItemReward(id, count, type));
+				item.addReward(new CombinationItemReward(id, count, type, enchant));
 				if (ItemTable.getInstance().getTemplate(id) == null)
 				{
 					LOGGER.info(getClass().getSimpleName() + ": Could not find item with id " + id);
@@ -83,11 +83,11 @@ public class CombinationItemsData implements IXmlReader
 		return _items;
 	}
 	
-	public CombinationItem getItemsBySlots(int firstSlot, int enchant, int secondSlot)
+	public CombinationItem getItemsBySlots(int firstSlot, int enchantOne, int secondSlot, int enchantTwo)
 	{
 		for (CombinationItem item : _items)
 		{
-			if ((item.getItemOne() == firstSlot) && (item.getItemTwo() == secondSlot) && (item.getEnchant() == enchant))
+			if ((item.getItemOne() == firstSlot) && (item.getItemTwo() == secondSlot) && (item.getEnchantOne() == enchantOne) && (item.getEnchantTwo() == enchantTwo))
 			{
 				return item;
 			}
@@ -95,12 +95,12 @@ public class CombinationItemsData implements IXmlReader
 		return null;
 	}
 	
-	public List<CombinationItem> getItemsByFirstSlot(int id, int enchant)
+	public List<CombinationItem> getItemsByFirstSlot(int id, int enchantOne)
 	{
 		final List<CombinationItem> result = new ArrayList<>();
 		for (CombinationItem item : _items)
 		{
-			if ((item.getItemOne() == id) && (item.getEnchant() == enchant))
+			if ((item.getItemOne() == id) && (item.getEnchantOne() == enchantOne))
 			{
 				result.add(item);
 			}

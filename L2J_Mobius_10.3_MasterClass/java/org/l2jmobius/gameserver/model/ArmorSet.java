@@ -52,7 +52,13 @@ public class ArmorSet
 		Inventory.PAPERDOLL_GLOVES,
 		Inventory.PAPERDOLL_FEET,
 		Inventory.PAPERDOLL_HAIR,
-		Inventory.PAPERDOLL_HAIR2
+		Inventory.PAPERDOLL_HAIR2,
+		Inventory.PAPERDOLL_DECO1,
+		Inventory.PAPERDOLL_DECO2,
+		Inventory.PAPERDOLL_DECO3,
+		Inventory.PAPERDOLL_DECO4,
+		Inventory.PAPERDOLL_DECO5,
+		Inventory.PAPERDOLL_DECO6
 	};
 	private static final int[] ARTIFACT_1_SLOTS = new int[]
 	{
@@ -147,7 +153,7 @@ public class ArmorSet
 	
 	/**
 	 * @param stat
-	 * @return the stats bonus value or 0 if doesn't exists
+	 * @return the stats bonus value or 0 if doesn't exist
 	 */
 	public double getStatsBonus(BaseStat stat)
 	{

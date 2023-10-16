@@ -34,7 +34,7 @@
 	<option id="39106" name="Col_76">
 		<!-- P. Skill Critical Damage +20 -->
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="PhysicalSkillCriticalDamage">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -52,7 +52,7 @@
 	<option id="39108" name="Col_78">
 		<!-- P. Skill Critical Rate +1% -->
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="PhysicalSkillCriticalRate">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -81,7 +81,11 @@
 	</option>
 	<option id="39112" name="Col_82">
 		<!-- Knockback Resistance +1% -->
-		<passive_skill id="48332" level="2" /> <!-- Knockback Attack Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<KNOCKDOWN>1</KNOCKDOWN>
+			</effect>
+		</effects>
 	</option>
 	<option id="39113" name="Col_83">
 		<!-- P. Atk. +40 -->
@@ -109,6 +113,11 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
+			<effect name="Reuse">
+				<amount>-1</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
 		</effects>
 	</option>
 	<option id="39116" name="Col_86">
@@ -122,11 +131,19 @@
 	</option>
 	<option id="39117" name="Col_87">
 		<!-- Pull Resistance +1% -->
-		<passive_skill id="16317" level="2" /> <!-- Pull Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<PULL>1</PULL>
+			</effect>
+		</effects>
 	</option>
 	<option id="39118" name="Col_88">
 		<!-- Inventory slots +1 -->
-		<passive_skill id="81874" level="1" /> <!-- Inventory Slots -->
+		<effects>
+			<effect name="EnlargeSlot">
+				<amount>1</amount>
+			</effect>
+		</effects>
 	</option>
 	<option id="39119" name="Col_89">
 		<!-- P. Atk. +80 -->
@@ -149,8 +166,8 @@
 	<option id="39121" name="Col_91">
 		<!-- Received P. Skill Critical Rate -1% -->
 		<effects>
-			<effect name="DefenceCriticalDamage">
-				<amount>1</amount>
+			<effect name="DefencePhysicalSkillCriticalRate">
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -158,7 +175,7 @@
 	<option id="39122" name="Col_92">
 		<!-- Received M. Skill Critical Rate -1% -->
 		<effects>
-			<effect name="DefenceMagicCriticalDamage">
+			<effect name="DefenceMagicCriticalRate">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -168,6 +185,10 @@
 		<!-- Skill Critical Damage +250 -->
 		<effects>
 			<effect name="PhysicalSkillCriticalDamage">
+				<amount>250</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="MagicCriticalDamage">
 				<amount>250</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -217,7 +238,11 @@
 	</option>
 	<option id="39128" name="Col_98">
 		<!-- Inventory slots +1 -->
-		<passive_skill id="81874" level="2" /> <!-- unknown skill -->
+		<effects>
+			<effect name="EnlargeSlot">
+				<amount>1</amount>
+			</effect>
+		</effects>
 	</option>
 	<option id="39129" name="Col_99">
 		<!-- Skill MP Consumption -2% -->
@@ -225,26 +250,28 @@
 			<effect name="MagicMpCost">
 				<amount>-2</amount>
 				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-2</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
 			</effect>
 		</effects>
 	</option>
 	<option id="39130" name="Col_100">
 		<!-- Acquired XP/ SP +2% -->
 		<effects>
-			<effect name="GiveExpAndSp">
+			<effect name="ExpModify">
 				<amount>2</amount>
-				<mode>PER</mode>
+			</effect>
+			<effect name="SpModify">
+				<amount>2</amount>
 			</effect>
 		</effects>
 	</option>
 	<option id="39131" name="Col_101">
-		<!-- Hellfire Resistance +2% -->
-		<effects>
-			<effect name="PhysicalDefence">
-				<amount>8</amount>
-				<mode>DIFF</mode>
-			</effect>
-		</effects>
+		<!-- TODO: HellFireResistance -->
 	</option>
 	<option id="39132" name="Col_102">
 		<!-- Skill Power +2% -->
@@ -263,11 +290,11 @@
 		<!-- Skill Power +1% -->
 		<effects>
 			<effect name="MagicalSkillPower">
-				<amount>2</amount>
+				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="PhysicalSkillPower">
-				<amount>2</amount>
+				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -345,24 +372,40 @@
 	<option id="39140" name="Col_110">
 		<!-- Received damage -3% -->
 		<effects>
-			<effect name="PhysicalDefence">
-				<amount>3</amount>
-				<mode>PER</mode>
+			<effect name="DamageByAttack">
+				<amount>-3</amount>
+				<type>PK</type>
 			</effect>
-			<effect name="MagicalDefence">
-				<amount>3</amount>
-				<mode>PER</mode>
+			<effect name="DamageByAttack">
+				<amount>-3</amount>
+				<type>ENEMY_ALL</type>
 			</effect>
 		</effects>
 	</option>
 	<option id="39141" name="Col_111">
 		<!-- Resistance to All Weapons +2% -->
-		<passive_skill id="81391" level="1" /> <!-- Melee Weapon Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<SWORD>2</SWORD>
+				<DUAL>2</DUAL>
+				<POLE>2</POLE>
+				<FIST>2</FIST>
+				<DUALFIST>2</DUALFIST>
+				<DAGGER>2</DAGGER>
+				<ANCIENTSWORD>2</ANCIENTSWORD>
+				<RAPIER>2</RAPIER>
+				<BLUNT>2</BLUNT>
+				<PISTOLS>2</PISTOLS>
+			</effect>
+		</effects>
 	</option>
 	<option id="39142" name="Col_112">
 		<!-- Suppression Resistance +2% -->
-		<passive_skill id="50010" level="5" /> <!-- Greater Hold Resistance -->
-		<passive_skill id="50011" level="5" /> <!-- Greater Paralysis Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<SUPPRESSION>2</SUPPRESSION>
+			</effect>
+		</effects>
 	</option>
 	<option id="39143" name="Col_113">
 		<!-- M. Def. +120 -->
@@ -421,7 +464,7 @@
 	<option id="39149" name="Col_119">
 		<!-- Received M. Skill Critical Rate -1% -->
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="DefenceMagicCriticalRate">
 				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -434,31 +477,27 @@
 				<amount>100</amount>
 				<mode>DIFF</mode>
 			</effect>
+			<effect name="MagicCriticalDamage">
+				<amount>100</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</option>
 	<option id="39151" name="Col_121">
 		<!-- P. Skill Critical Damage +61 -->
 		<effects>
-			<effect name="PvePhysicalSkillDamageBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
+			<effect name="PhysicalSkillCriticalDamage">
+				<amount>61</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</option>
 	<option id="39152" name="Col_122">
 		<!-- M. Skill Critical Damage +61 -->
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
+			<effect name="MagicCriticalDamage">
+				<amount>61</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</option>
@@ -520,7 +559,11 @@
 		<!-- Received Skill Critical Damage -2% -->
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>2</amount>
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>-2</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -583,7 +626,7 @@
 	<option id="39165" name="Col_135">
 		<!-- M. Skill Critical Damage +52 -->
 		<effects>
-			<effect name="PhysicalSkillCriticalDamage">
+			<effect name="MagicCriticalDamage">
 				<amount>52</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -611,7 +654,7 @@
 		<!-- Received M. Skill Critical Damage -1% -->
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>1</amount>
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -620,7 +663,11 @@
 		<!-- Received Skill Critical Damage -1% -->
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>1</amount>
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -628,13 +675,13 @@
 	<option id="39170" name="Col_140">
 		<!-- Received damage -3% -->
 		<effects>
-			<effect name="PhysicalDefence">
-				<amount>80</amount>
-				<mode>DIFF</mode>
+			<effect name="DamageByAttack">
+				<amount>-3</amount>
+				<type>PK</type>
 			</effect>
-			<effect name="PhysicalDefence">
-				<amount>80</amount>
-				<mode>DIFF</mode>
+			<effect name="DamageByAttack">
+				<amount>-3</amount>
+				<type>ENEMY_ALL</type>
 			</effect>
 		</effects>
 	</option>
@@ -693,18 +740,22 @@
 	<option id="39175" name="Col_145">
 		<!-- Acquired XP/ SP +1% -->
 		<effects>
-			<effect name="GiveExpAndSp">
+			<effect name="ExpModify">
 				<amount>1</amount>
-				<mode>PER</mode>
+			</effect>
+			<effect name="SpModify">
+				<amount>1</amount>
 			</effect>
 		</effects>
 	</option>
 	<option id="39176" name="Col_146">
 		<!-- Acquired XP/ SP +2% -->
 		<effects>
-			<effect name="GiveExpAndSp">
+			<effect name="ExpModify">
 				<amount>2</amount>
-				<mode>PER</mode>
+			</effect>
+			<effect name="SpModify">
+				<amount>2</amount>
 			</effect>
 		</effects>
 	</option>
@@ -717,7 +768,7 @@
 			</effect>
 			<effect name="MAtk">
 				<amount>51</amount>
-				<mode>PER</mode>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</option>
@@ -737,7 +788,7 @@
 	<option id="39179" name="Col_149">
 		<!-- P. Skill Critical Rate +1% -->
 		<effects>
-			<effect name="SkillMasteryRate">
+			<effect name="PhysicalSkillCriticalRate">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -764,8 +815,8 @@
 	<option id="39182" name="Col_152">
 		<!-- Received P. Skill Critical Rate -1% -->
 		<effects>
-			<effect name="DefenceMagicCriticalRate">
-				<amount>1</amount>
+			<effect name="DefencePhysicalSkillCriticalRate">
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -791,10 +842,15 @@
 	<option id="39185" name="Col_155">
 		<!-- Skill MP Consumption -1% -->
 		<effects>
-			<effect name="Reuse">
+			<effect name="MagicMpCost">
 				<amount>-1</amount>
 				<mode>DIFF</mode>
 				<magicType>1</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-1</amount>
+				<mode>DIFF</mode>
+				<magicType>0</magicType>
 			</effect>
 		</effects>
 	</option>
@@ -802,14 +858,18 @@
 		<!-- Received P. Skill Critical Damage -2% -->
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>2</amount>
+				<amount>-2</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</option>
 	<option id="39187" name="Col_157">
 		<!-- Knockback Resistance +2% -->
-		<passive_skill id="48332" level="3" /> <!-- Knockback Attack Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<KNOCKDOWN>2</KNOCKDOWN>
+			</effect>
+		</effects>
 	</option>
 	<option id="39188" name="Col_158">
 		<!-- Received Healing +2% -->
@@ -822,7 +882,11 @@
 	</option>
 	<option id="39189" name="Col_159">
 		<!-- Pull Resistance +2% -->
-		<passive_skill id="16317" level="3" /> <!-- Pull Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<PULL>2</PULL>
+			</effect>
+		</effects>
 	</option>
 	<option id="39190" name="Col_160">
 		<!-- P./ M. Atk. +53 -->
@@ -879,8 +943,8 @@
 	<option id="39194" name="Col_164">
 		<!-- Received M. Skill Critical Rate -2% -->
 		<effects>
-			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>2</amount>
+			<effect name="DefenceMagicCriticalRate">
+				<amount>-2</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -888,8 +952,8 @@
 	<option id="39195" name="Col_165">
 		<!-- Received P. Skill Critical Rate -2% -->
 		<effects>
-			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>2</amount>
+			<effect name="DefencePhysicalSkillCriticalRate">
+				<amount>-2</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -897,14 +961,17 @@
 	<option id="39196" name="Col_166">
 		<!-- Hellfire Resistance +3% -->
 		<effects>
+			<!-- TODO: HellFireResistance -->
 		</effects>
 	</option>
 	<option id="39197" name="xp_sp_give">
 		<!-- Acquired XP/ SP +15% -->
 		<effects>
-			<effect name="GiveExpAndSp">
+			<effect name="ExpModify">
 				<amount>15</amount>
-				<mode>PER</mode>
+			</effect>
+			<effect name="SpModify">
+				<amount>15</amount>
 			</effect>
 		</effects>
 	</option>

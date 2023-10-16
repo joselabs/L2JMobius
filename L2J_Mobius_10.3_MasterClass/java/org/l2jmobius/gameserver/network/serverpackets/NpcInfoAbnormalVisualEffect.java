@@ -18,6 +18,8 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
+import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -41,10 +43,22 @@ public class NpcInfoAbnormalVisualEffect extends ServerPacket
 		writeInt(_npc.getObjectId());
 		writeInt(_npc.getTransformationDisplayId());
 		final Set<AbnormalVisualEffect> abnormalVisualEffects = _npc.getEffectList().getCurrentAbnormalVisualEffects();
-		writeInt(abnormalVisualEffects.size());
+		final Team team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _npc.getTeam() : Team.NONE;
+		writeInt(abnormalVisualEffects.size() + (team != Team.NONE ? 1 : 0));
 		for (AbnormalVisualEffect abnormalVisualEffect : abnormalVisualEffects)
 		{
 			writeShort(abnormalVisualEffect.getClientId());
+		}
+		if (team == Team.BLUE)
+		{
+			if (Config.BLUE_TEAM_ABNORMAL_EFFECT != null)
+			{
+				writeShort(Config.BLUE_TEAM_ABNORMAL_EFFECT.getClientId());
+			}
+		}
+		else if ((team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
+		{
+			writeShort(Config.RED_TEAM_ABNORMAL_EFFECT.getClientId());
 		}
 	}
 }

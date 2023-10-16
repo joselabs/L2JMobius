@@ -21,7 +21,7 @@ import java.sql.PreparedStatement;
 
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -49,7 +49,7 @@ public class RequestFriendDel implements ClientPacket
 			return;
 		}
 		
-		final int id = CharNameTable.getInstance().getPlayerObjectId(_name);
+		final int id = CharInfoTable.getInstance().getIdByName(_name);
 		if ((id <= 0) || !player.getFriendList().contains(id))
 		{
 			player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_IS_NOT_ON_YOUR_FRIEND_LIST).addString(_name));

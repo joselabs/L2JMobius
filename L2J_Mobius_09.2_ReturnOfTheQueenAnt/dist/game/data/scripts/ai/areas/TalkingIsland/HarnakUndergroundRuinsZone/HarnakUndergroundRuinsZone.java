@@ -67,7 +67,7 @@ public class HarnakUndergroundRuinsZone extends AbstractNpcAI
 				final ZoneType zone = ZoneManager.getInstance().getZoneById(zoneId);
 				_roomInfo.put(zone, new zoneInfo());
 				final String zoneName = zone.getName().toLowerCase().replace(" ", "_");
-				_templates.stream().forEach(t -> t.spawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName), null));
+				_templates.forEach(t -> t.spawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName), null));
 			}
 		}
 		return super.onAdvEvent(event, npc, player);
@@ -174,8 +174,8 @@ public class HarnakUndergroundRuinsZone extends AbstractNpcAI
 						{
 							_zone.broadcastPacket(new ExShowScreenMessage(NpcStringId.DEMONIC_SYSTEM_WILL_ACTIVATE, ExShowScreenMessage.TOP_CENTER, 3000));
 							final String zoneName = _zone.getName().toLowerCase().replace(" ", "_");
-							_templates.stream().forEach(t -> t.despawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName)));
-							_templates.stream().forEach(t -> t.spawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName + "_demonic"), null));
+							_templates.forEach(t -> t.despawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName)));
+							_templates.forEach(t -> t.spawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName + "_demonic"), null));
 							_zone.getPlayersInside().forEach(temp -> temp.sendPacket(new ExSendUIEvent(temp, false, false, 600, 0, NpcStringId.DEMONIC_SYSTEM_ACTIVATED)));
 							currentInfo.setZoneStage(7);
 							ThreadPool.schedule(new changeZoneStage(_zone), 600000); // 10min
@@ -198,8 +198,8 @@ public class HarnakUndergroundRuinsZone extends AbstractNpcAI
 							}
 						}
 						final String zoneName = _zone.getName().toLowerCase().replace(" ", "_");
-						_templates.stream().forEach(t -> t.despawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName + "_demonic")));
-						_templates.stream().forEach(t -> t.spawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName), null));
+						_templates.forEach(t -> t.despawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName + "_demonic")));
+						_templates.forEach(t -> t.spawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName), null));
 						return;
 					}
 				}

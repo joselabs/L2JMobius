@@ -145,7 +145,7 @@ public class ArmorSet
 	
 	/**
 	 * @param stat
-	 * @return the stats bonus value or 0 if doesn't exists
+	 * @return the stats bonus value or 0 if doesn't exist
 	 */
 	public double getStatsBonus(BaseStat stat)
 	{

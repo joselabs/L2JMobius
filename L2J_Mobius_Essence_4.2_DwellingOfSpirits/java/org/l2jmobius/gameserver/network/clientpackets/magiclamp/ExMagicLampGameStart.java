@@ -60,8 +60,18 @@ public class ExMagicLampGameStart implements ClientPacket
 			return;
 		}
 		
+		if (_count < 1)
+		{
+			return;
+		}
+		
 		final LampMode lampMode = LampMode.getByMode(_mode);
 		final int consume = calcConsume(lampMode, _count);
+		if (consume < 1)
+		{
+			return;
+		}
+		
 		final int have = player.getLampCount();
 		if (have >= consume)
 		{

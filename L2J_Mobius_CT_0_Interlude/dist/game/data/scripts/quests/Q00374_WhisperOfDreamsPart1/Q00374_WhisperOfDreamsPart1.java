@@ -119,11 +119,7 @@ public class Q00374_WhisperOfDreamsPart1 extends Quest
 	public String onTalk(Npc npc, Player player)
 	{
 		String htmltext = getNoQuestMsg(player);
-		final QuestState st = player.getQuestState(getName());
-		if (st == null)
-		{
-			return htmltext;
-		}
+		final QuestState st = getQuestState(player, true);
 		
 		switch (st.getState())
 		{

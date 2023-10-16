@@ -22,7 +22,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.l2jmobius.commons.time.SchedulingPattern;
@@ -387,7 +386,7 @@ public class NpcSpawnTemplate implements Cloneable, IParameterized<StatSet>
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Couldn't spawn npc " + _id, e);
+			LOGGER.warning("Couldn't spawn npc " + _id + e);
 		}
 	}
 	

@@ -70,6 +70,9 @@ public class RequestAcquireSkillInfo implements ClientPacket
 			return;
 		}
 		
+		// Consider skill replacements.
+		_id = player.getOriginalSkill(_id);
+		
 		final Skill skill = SkillData.getInstance().getSkill(_id, _level);
 		if (skill == null)
 		{
@@ -92,7 +95,7 @@ public class RequestAcquireSkillInfo implements ClientPacket
 			case TRANSFER:
 			case DUALCLASS:
 			{
-				player.sendPacket(new AcquireSkillInfo(_skillType, s));
+				player.sendPacket(new AcquireSkillInfo(player, _skillType, s));
 				break;
 			}
 			case CLASS:
@@ -106,7 +109,7 @@ public class RequestAcquireSkillInfo implements ClientPacket
 				{
 					return;
 				}
-				player.sendPacket(new AcquireSkillInfo(_skillType, s));
+				player.sendPacket(new AcquireSkillInfo(player, _skillType, s));
 				break;
 			}
 			case SUBPLEDGE:
@@ -115,7 +118,7 @@ public class RequestAcquireSkillInfo implements ClientPacket
 				{
 					return;
 				}
-				player.sendPacket(new AcquireSkillInfo(_skillType, s));
+				player.sendPacket(new AcquireSkillInfo(player, _skillType, s));
 				break;
 			}
 			case ALCHEMY:
@@ -124,20 +127,20 @@ public class RequestAcquireSkillInfo implements ClientPacket
 				{
 					return;
 				}
-				player.sendPacket(new AcquireSkillInfo(_skillType, s));
+				player.sendPacket(new AcquireSkillInfo(player, _skillType, s));
 				break;
 			}
 			case REVELATION:
 			{
 				/*
-				 * if ((player.getLevel() < 85) || !player.isInCategory(CategoryType.SIXTH_CLASS_GROUP)) { return; } client.sendPacket(new AcquireSkillInfo(_skillType, s));
+				 * if ((player.getLevel() < 85) || !player.isInCategory(CategoryType.SIXTH_CLASS_GROUP)) { return; } client.sendPacket(new AcquireSkillInfo(player, _skillType, s));
 				 */
 				return;
 			}
 			case REVELATION_DUALCLASS:
 			{
 				/*
-				 * if (!player.isSubClassActive() || !player.isDualClassActive()) { return; } client.sendPacket(new AcquireSkillInfo(_skillType, s));
+				 * if (!player.isSubClassActive() || !player.isDualClassActive()) { return; } client.sendPacket(new AcquireSkillInfo(player, _skillType, s));
 				 */
 				return;
 			}

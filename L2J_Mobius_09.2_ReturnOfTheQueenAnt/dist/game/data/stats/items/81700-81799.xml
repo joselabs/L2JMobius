@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="81700" name="Relics of the Ancient Emperor" type="EtcItem">
-		<!-- A precious treasure chest of the Ancient Emperor. Double-click on it to obtain a rare item. -->
+		<!-- A precious treasure chest of an ancient emperor. Double-click to obtain 1 rare item. -->
 		<set name="icon" val="BranchSys.icon.br_fortuna_box_s_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -21,13 +21,17 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81702" name="Maphr's Blessing Chest" type="EtcItem">
-		<!-- Double-click to obtain Red Libra's Blessing Rune (7-day). -->
+		<!-- Double-click to obtain Maphr's Blessing Rune (7-day). -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="80712" min="1" max="1" chance="100" /> <!-- Maphr's Blessing -->
+		</capsuled_items>
 	</item>
 	<item id="81703" name="Leona's Grace Box" additionalName="Event" type="EtcItem">
 		<!-- For player of Leona server. Double-click to obtain one of the following items: Dark Weapon Enhancement Stone, Dragon's Ring, Dragon's Earring, Dragon's Necklace, Ruler's Authority, +8 Angel's Necklace Pack, +8 Angel's Earring Pack, +8 Angel's Ring Pack. -->
@@ -41,7 +45,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81704" name="Elysian Gift Box" additionalName="Event" type="EtcItem">
-		<!-- A gift from the Red Libra Guild. Double-click to obtain Emperor's Special Cocktail (100 pcs.), Freya's Ice Rose (100 pcs.), Honey Dark Beer (100 pcs.), Glowing Dragon's Attribute Potion (XP) (100 pcs.), Vitality (200 pcs.). -->
+		<!-- A gift from the Red Libra Guild. Double-click to obtain Emperor's Special Cocktail (100 pcs.), Freya's Ice Rose (100 pcs.), Honey Dark Beer (100 pcs.), Glowing Dragon's Attribute Potion (100 pcs.), Vitality (200 pcs.). -->
 		<set name="icon" val="icon.ev_2018_xmas_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -51,9 +55,17 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="81012" min="100" max="100" chance="100" /> <!-- Emperor's Special Cocktail - Event -->
+			<item id="48848" min="100" max="100" chance="100" /> <!-- Freya's Ice Rose - Event -->
+			<item id="48857" min="100" max="100" chance="100" /> <!-- Glowing Dragon's Attribute Potion (XP) - Event -->
+			<item id="81011" min="100" max="100" chance="100" /> <!-- Honey Dark Beer - Event -->
+			<item id="81053" min="200" max="200" chance="100" /> <!-- Vitality -->
+		</capsuled_items>
 	</item>
 	<item id="81705" name="Relics of the Ancient Empress" type="EtcItem">
-		<!-- A precious treasure chest of the Ancient Empress. Double-click on it to obtain a rare item. -->
+		<!-- A precious treasure chest of an ancient empress. Double-click to obtain 1 rare item. -->
 		<set name="icon" val="BranchSys.icon.br_fortuna_cube_s_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -77,7 +89,7 @@
 		</skills>
 	</item>
 	<item id="81707" name="Festival Fairy's Gift" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain a useful item. -->
+		<!-- A gift from the Festival Fairy. Double-click to obtain 1 useful item. -->
 		<set name="icon" val="icon.etc_treasure_box_i08" />
 		<set name="material" val="PAPER" />
 		<set name="is_stackable" val="true" />
@@ -93,17 +105,17 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="30297" min="1" max="1" chance="38" />
-			<item id="30298" min="1" max="1" chance="38" />
-			<item id="47820" min="1" max="1" chance="2" />
-			<item id="48861" min="1" max="1" chance="2" />
-			<item id="81153" min="1" max="1" chance="10" />
+			<item id="30297" min="1" max="1" chance="38" /> <!-- Superior Giant's Codex -->
+			<item id="30298" min="1" max="1" chance="38" /> <!-- Superior Giant's Codex - Mastery -->
+			<item id="47820" min="1" max="1" chance="2" /> <!-- Sayha's Talisman Pack Lv. 9 -->
+			<item id="48861" min="1" max="1" chance="2" /> <!-- +9 Fallen Angel's Ring Pack -->
+			<item id="81153" min="1" max="1" chance="10" /> <!-- Navari's Mask -->
 			<item id="82071" min="1" max="1" chance="5" />
 			<item id="82072" min="1" max="1" chance="5" />
 		</capsuled_items>
 	</item>
 	<item id="81708" name="Festival Fairy's Energy Scroll" additionalName="Event" type="EtcItem">
-		<!-- A scroll prepared by Festival Fairy. It is imbued with Aden's energy. For 10 min., acquired XP/ SP +200%. The effect disappears after the main/ dual class change, but remains after death. Cooldown: 9 min. Required level: 1-110. The effect does not stack with those of Freya's Frozen Scroll and Freya's Scroll of Storm. -->
+		<!-- A gift prepared by the Festival Fairy. Critical Damage for basic attacks and P./ M. Skill Critical Damage +5%, acquired XP/ SP +10%. The effect is removed when entering the Olympiad or the Ceremony of Chaos. -->
 		<set name="icon" val="icon.etc_charm_of_luck_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -111,7 +123,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81709" name="+6 Leviathan Heavy Armor Set Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain +6 Leviathan Heavy Armor set (no shield). -->
+		<!-- Double-click to obtain Leviathan heavy armor set (no shield) enchanted to +6. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -122,15 +134,15 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80104" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80105" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80106" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80107" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80108" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
+			<item id="80104" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Helmet - Heavy armor -->
+			<item id="80105" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Breastplate - Heavy armor -->
+			<item id="80106" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Gaiters - Heavy armor -->
+			<item id="80107" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Gauntlets - Heavy armor -->
+			<item id="80108" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Boots - Heavy armor -->
 		</capsuled_items>
 	</item>
 	<item id="81710" name="+6 Leviathan Light Armor Set Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain +6 Leviathan Light Armor set. -->
+		<!-- Double-click to obtain Leviathan light armor set enchanted to +6. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -141,15 +153,15 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80110" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80111" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80112" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80113" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80114" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
+			<item id="80110" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Helmet - Light armor -->
+			<item id="80111" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Armor - Light armor -->
+			<item id="80112" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Leggings - Light armor -->
+			<item id="80113" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Gloves - Light armor -->
+			<item id="80114" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Boots - Light armor -->
 		</capsuled_items>
 	</item>
 	<item id="81711" name="+6 Leviathan Robe Set Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain +6 Leviathan Robe set (no sigil). -->
+		<!-- Double-click to obtain Leviathan robe set (no sigil) enchanted to +6. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -160,11 +172,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80115" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80116" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80117" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80118" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80119" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
+			<item id="80115" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Circlet - Robe -->
+			<item id="80116" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Tunic - Robe -->
+			<item id="80117" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Stockings - Robe -->
+			<item id="80118" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Gloves - Robe -->
+			<item id="80119" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Shoes - Robe -->
 		</capsuled_items>
 	</item>
 	<item id="81712" name="+14 Krishna Shaper Pack" additionalName="Event" type="EtcItem">
@@ -179,7 +191,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80090" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80090" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Shaper -->
 		</capsuled_items>
 	</item>
 	<item id="81713" name="+14 Krishna Cutter Pack" additionalName="Event" type="EtcItem">
@@ -194,7 +206,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80091" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80091" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Cutter -->
 		</capsuled_items>
 	</item>
 	<item id="81714" name="+14 Krishna Slasher Pack" additionalName="Event" type="EtcItem">
@@ -209,7 +221,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80092" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80092" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Slasher -->
 		</capsuled_items>
 	</item>
 	<item id="81715" name="+14 Krishna Avenger Pack" additionalName="Event" type="EtcItem">
@@ -224,7 +236,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80093" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80093" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Avenger -->
 		</capsuled_items>
 	</item>
 	<item id="81716" name="+14 Krishna Fighter Pack" additionalName="Event" type="EtcItem">
@@ -239,7 +251,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80094" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80094" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Fighter -->
 		</capsuled_items>
 	</item>
 	<item id="81717" name="+14 Krishna Stormer Pack" additionalName="Event" type="EtcItem">
@@ -254,7 +266,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80095" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80095" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Stormer -->
 		</capsuled_items>
 	</item>
 	<item id="81718" name="+14 Krishna Thrower Pack" additionalName="Event" type="EtcItem">
@@ -269,11 +281,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80096" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80096" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Thrower -->
 		</capsuled_items>
 	</item>
 	<item id="81719" name="+14 Krishna Guardian Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain +14 Krishna Shooter. -->
+		<!-- Double-click to obtain Krishna Guardian enchanted to +14. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -284,11 +296,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80097" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80097" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Guardian -->
 		</capsuled_items>
 	</item>
 	<item id="81720" name="+14 Krishna Buster Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain +14 Buster. -->
+		<!-- Double-click to obtain +14 Krishna Buster. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -299,7 +311,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80098" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80098" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Buster -->
 		</capsuled_items>
 	</item>
 	<item id="81721" name="+14 Krishna Caster Pack" additionalName="Event" type="EtcItem">
@@ -314,7 +326,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80099" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80099" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Caster -->
 		</capsuled_items>
 	</item>
 	<item id="81722" name="+14 Krishna Retributer Pack" additionalName="Event" type="EtcItem">
@@ -329,7 +341,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80100" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80100" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Retributer -->
 		</capsuled_items>
 	</item>
 	<item id="81723" name="+14 Krishna Dual Swords Pack" additionalName="Event" type="EtcItem">
@@ -344,7 +356,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80101" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80101" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Dual Swords -->
 		</capsuled_items>
 	</item>
 	<item id="81724" name="+14 Krishna Dual Daggers Pack" additionalName="Event" type="EtcItem">
@@ -359,7 +371,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80102" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80102" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Dual Daggers -->
 		</capsuled_items>
 	</item>
 	<item id="81725" name="+14 Krishna Dual Blunt Weapon Pack" additionalName="Event" type="EtcItem">
@@ -374,18 +386,18 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80103" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80103" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Dual Blunt Weapons -->
 		</capsuled_items>
 	</item>
 	<item id="81726" name="+6 Leviathan Armor Coupon" additionalName="Event" type="EtcItem">
-		<!-- Can be exchanged for +6 Leviathan armor set (at your choice) through Festival Fairy. -->
+		<!-- Can be exchanged for +6 Leviathan armor set through Festival Fairy. -->
 		<set name="icon" val="icon.bm_challenger_wp_trade_ticket" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81727" name="+14 Krishna Weapon Coupon" additionalName="Event" type="EtcItem">
-		<!-- Can be exchanged for +14 Krishna weapon (at your choice) through Festival Fairy. -->
+		<!-- Can be exchanged for +14 Krishna weapon through Festival Fairy. -->
 		<set name="icon" val="icon.bm_challenger_wp_trade_ticket" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
@@ -466,7 +478,7 @@
 		</skills>
 	</item>
 	<item id="81734" name="Gran Kain Treasure Chest" type="EtcItem">
-		<!-- A precious treasure chest of Gran Kain. Double-click on it to obtain a rare item. -->
+		<!-- A precious treasure chest of Gran Kain. Double-click to obtain 1 rare item. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -484,7 +496,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81736" name="17th Anniversary Guardian Angel's Ring" additionalName="Event" type="Armor">
-		<!-- An accessory created by Anhel to defeat Orc Mutant. Can be used as a mask. When enchanted, increases Attribute Attack, Attribute Resistance, Max HP/ MP/ CP, P./ M. Def., P./ M. Atk., P./ M. Skill Power, P. Critical Damage and P./ M. Skill Critical Damage. <Enchanting>. Use Scroll: Enchant Anhel's Protection. -->
+		<!-- Agathion Guardian Angel Chuchu's 17th Anniversary Ring. Can be worn as a mask. When enchanted, increases Attribute Attack, Attribute Resistance, Max HP/ MP/ CP, P./ M. Def., P./ M. Atk., P./ M. Skill Power, Critical Damage for basic attacks and P./ M. Skill Critical Damage. <Enchanting>. Use Scroll: Enchant the 17th Anniversary Guardian Angel's Ring. -->
 		<set name="icon" val="icon.accessory_angel_ring_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair" />
@@ -510,7 +522,7 @@
 		</skills>
 	</item>
 	<item id="81737" name="Scroll: Enchant the 17th Anniversary Guardian Angel's Ring" additionalName="Event" type="EtcItem">
-		<!-- For Anhel's Protection enchantment. In case of failure, enchant value remains the same. The maximum enchant value is +10. -->
+		<!-- Required for enchanting 17th Anniversary Guardian Angel's Ring. In case of failure, the enchant value remains the same. The maximum enchant value is +10. -->
 		<set name="icon" val="icon.ev_2020_mask_enchant_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_AM" />
@@ -545,9 +557,18 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="81738" min="1" max="1" chance="100" /> <!-- Faeron's Protector Scroll - Event -->
+			<item id="48755" min="1" max="1" chance="100" /> <!-- Glowing Dragon's Attribute Potion (XP) - Event -->
+			<item id="80612" min="1" max="1" chance="100" /> <!-- Freya's Ice Rose - Event -->
+			<item id="80797" min="1" max="1" chance="100" /> <!-- Shining Nevit's Gold Hourglass - Event -->
+			<item id="80832" min="1" max="1" chance="100" /> <!-- Emperor's Special Cocktail - Event -->
+			<item id="81460" min="1" max="1" chance="100" /> <!-- Honey Dark Beer - Event -->
+		</capsuled_items>
 	</item>
 	<item id="81740" name="Orc Mutant's Treasure Chest" additionalName="Event" type="EtcItem">
-		<!-- Treasures piled up by Orc Mutant. Double-click to obtain one of the following items: Dark Weapon Enhancement Stone, Bloody Weapon Enhancement Stone, Blessed Valakas' Necklace, Blessed Antharas' Earring, Lindvior's Earring, Dragon's Ring/ Earring/ Necklace, +9 Fallen Angel's Ring Pack, Shillien's Soul Crystal Lv. 9. -->
+		<!-- Treasures piled up by Orc Mutant. Double-click to obtain one of the following items: Dark Weapon Enhancement Stone, Bloody Weapon Enhancement Stone, Blessed Valakas' Necklace, Blessed Antharas' Earring, Lindvior's Earring, Dragon's Ring/ Earring/ Necklace, +9 Fallen Angel's Ring Pack, Sayha's Talisman Pack Lv. 9, Shillien's Soul Crystal Lv. 9. -->
 		<set name="icon" val="icon.event_orc_coinbox" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -579,11 +600,11 @@
 			<item id="48418" min="1" max="1" chance="6.25" /> <!-- Authority Ornament -->
 			<item id="48860" min="1" max="1" chance="6.25" /> <!-- Fallen Angel's Ring Pack -->
 			<item id="80964" min="1" max="1" chance="6.25" /> <!-- Energy of Protection -->
-			<item id="81013" min="1" max="1" chance="6.25" /> <!-- Shining Nevit's Gold Hourglass (Event) -->
+			<item id="81013" min="1" max="1" chance="6.25" /> <!-- Shining Nevit's Gold Hourglass - Event -->
 		</capsuled_items>
 	</item>
 	<item id="81742" name="Hero's Treasure Chest" type="EtcItem">
-		<!-- A chest with hero's treasures. Double-click to obtain a rare item. -->
+		<!-- A chest with hero's treasures. Double-click to obtain 1 rare item. -->
 		<set name="icon" val="BranchSys.icon.br_fortuna_box_s_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -623,27 +644,27 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="48969" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - P. Atk. Balance -->
-			<item id="48970" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - M. Atk. Balance -->
-			<item id="48971" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - P. Accuracy Balance -->
-			<item id="48972" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - M. Accuracy Balance -->
-			<item id="48973" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Critical Rate for Basic Attacks Balance -->
-			<item id="48974" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - P. Skill Critical Rate Balance -->
-			<item id="48975" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - M. Critical Rate Balance -->
-			<item id="48976" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Recovery Potions' Effect Balance -->
-			<item id="48977" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Received Damage When Immobilized Balance -->
-			<item id="48985" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Fixed Damage Resistance Balance -->
-			<item id="80656" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - P. Def. Balance -->
-			<item id="80657" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - M. Def. Balance -->
-			<item id="80658" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Critical Damage for Basic Attacks Balance -->
-			<item id="80659" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - P. Skill Critical Damage Balance -->
-			<item id="80660" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - M. Skill Critical Damage Balance -->
-			<item id="80661" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Atk. Spd. Balance -->
-			<item id="80662" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Casting Spd. Balance -->
-			<item id="81439" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Vitality Bonus Balance -->
-			<item id="81440" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Received Healing Balance -->
-			<item id="81441" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Skill MP Consumption Balance -->
-			<item id="81442" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- +1 Artifact - Received P. Critical Rate Balance -->
+			<item id="48969" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - P. Atk. - Balance -->
+			<item id="48970" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - M. Atk. - Balance -->
+			<item id="48971" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - P. Accuracy - Balance -->
+			<item id="48972" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - M. Accuracy - Balance -->
+			<item id="48973" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Standard Attack Critical Rate - Balance -->
+			<item id="48974" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - P. Skill Critical Rate - Balance -->
+			<item id="48975" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - M. Critical Rate - Balance -->
+			<item id="48976" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Recovery Potions' Effect - Balance -->
+			<item id="48977" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Received Damage When Immobilized - Balance -->
+			<item id="48985" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Fixed Damage Resistance - Balance -->
+			<item id="80656" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - P. Def. - Balance -->
+			<item id="80657" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - M. Def. - Balance -->
+			<item id="80658" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Critical Damage for Basic Attacks - Balance -->
+			<item id="80659" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - P. Skill Critical Damage - Balance -->
+			<item id="80660" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - M. Skill Critical Damage - Balance -->
+			<item id="80661" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Atk. Spd. - Balance -->
+			<item id="80662" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Casting Spd. - Balance -->
+			<item id="81439" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Vitality Bonus - Balance -->
+			<item id="81440" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Received Healing - Balance -->
+			<item id="81441" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Skill MP Consumption - Balance -->
+			<item id="81442" min="1" max="1" minEnchant="1" maxEnchant="1" chance="4.76" /> <!-- Artifact - Received P. Critical Rate - Balance -->
 		</capsuled_items>
 	</item>
 	<item id="81746" name="+3 Shining Artifact Pack" additionalName="Balance" type="EtcItem">
@@ -660,27 +681,27 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="48969" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - P. Atk. Balance -->
-			<item id="48970" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - M. Atk. Balance -->
-			<item id="48971" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - P. Accuracy Balance -->
-			<item id="48972" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - M. Accuracy Balance -->
-			<item id="48973" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Critical Rate for Basic Attacks Balance -->
-			<item id="48974" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - P. Skill Critical Rate Balance -->
-			<item id="48975" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - M. Critical Rate Balance -->
-			<item id="48976" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Recovery Potions' Effect Balance -->
-			<item id="48977" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Received Damage When Immobilized Balance -->
-			<item id="48985" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Fixed Damage Resistance Balance -->
-			<item id="80656" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - P. Def. Balance -->
-			<item id="80657" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - M. Def. Balance -->
-			<item id="80658" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Critical Damage for Basic Attacks Balance -->
-			<item id="80659" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - P. Skill Critical Damage Balance -->
-			<item id="80660" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - M. Skill Critical Damage Balance -->
-			<item id="80661" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Atk. Spd. Balance -->
-			<item id="80662" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Casting Spd. Balance -->
-			<item id="81439" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Vitality Bonus Balance -->
-			<item id="81440" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Received Healing Balance -->
-			<item id="81441" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Skill MP Consumption Balance -->
-			<item id="81442" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- +3 Artifact - Received P. Critical Rate Balance -->
+			<item id="48969" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - P. Atk. - Balance -->
+			<item id="48970" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - M. Atk. - Balance -->
+			<item id="48971" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - P. Accuracy - Balance -->
+			<item id="48972" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - M. Accuracy - Balance -->
+			<item id="48973" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Standard Attack Critical Rate - Balance -->
+			<item id="48974" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - P. Skill Critical Rate - Balance -->
+			<item id="48975" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - M. Critical Rate - Balance -->
+			<item id="48976" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Recovery Potions' Effect - Balance -->
+			<item id="48977" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Received Damage When Immobilized - Balance -->
+			<item id="48985" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Fixed Damage Resistance - Balance -->
+			<item id="80656" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - P. Def. - Balance -->
+			<item id="80657" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - M. Def. - Balance -->
+			<item id="80658" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Critical Damage for Basic Attacks - Balance -->
+			<item id="80659" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - P. Skill Critical Damage - Balance -->
+			<item id="80660" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - M. Skill Critical Damage - Balance -->
+			<item id="80661" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Atk. Spd. - Balance -->
+			<item id="80662" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Casting Spd. - Balance -->
+			<item id="81439" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Vitality Bonus - Balance -->
+			<item id="81440" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Received Healing - Balance -->
+			<item id="81441" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Skill MP Consumption - Balance -->
+			<item id="81442" min="1" max="1" minEnchant="3" maxEnchant="3" chance="4.76" /> <!-- Artifact - Received P. Critical Rate - Balance -->
 		</capsuled_items>
 	</item>
 	<item id="81747" name="Royal Honey Dark Beer" type="EtcItem">
@@ -725,7 +746,7 @@
 		<set name="handler" val="Recipes" />
 	</item>
 	<item id="81750" name="First Time Lv. 120 Gift" additionalName="Dan from the Sieghardt server" type="EtcItem">
-		<!-- Dan from the Sieghardt server was the first player in the history of Lineage 2 to reach Lv. 120. To commemorate this event every player is awarded a special gift. Double-click to receive a large amount of supplies. -->
+		<!-- Dan from the Sieghardt server is the first player in the history of Lineage 2 to reach Lv. 120. To commemorate this event, every player is awarded with a special gift. Double-click to obtain a large amount of supplies. -->
 		<set name="icon" val="icon.etc_exchange_box_i00" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -735,7 +756,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="81751" name="Ruler's Authority - Chaos" additionalName="Lv. 3" type="Armor">
-		<!-- The energy of chaos that consumes light. Max HP/ MP/ CP +3%, weight limit +25,600, damage +12%, received damage -12%, Damage Reflection Resistance +15%, Fixed Damage Resistance +15%, All received Critical Damage -15%, inventory slots +36, Attribute Resistance +30. -->
+		<!-- The energy of chaos that consumes light. When equipped, Max HP/ MP/ CP +3%, weight limit +25,600, damage +12%, received damage -14%, Damage Reflection Resistance +15%, Fixed Damage Resistance +15%, All received Critical Damage -15%, inventory slots +36, Attribute Resistance +30. -->
 		<set name="icon" val="icon.grankain_powerbelt3" />
 		<set name="armor_type" val="LIGHT" />
 		<set name="default_action" val="EQUIP" />
@@ -851,7 +872,7 @@
 			<item id="80636" min="1" max="1" chance="14.28" /> <!-- Artifact Crystal -->
 			<item id="80746" min="1" max="1" chance="14.28" /> <!-- PA Scroll of Storm -->
 			<item id="81053" min="1" max="1" chance="14.28" /> <!-- Vitality -->
-			<item id="81729" min="1" max="1" chance="14.28" /> <!-- Accessory Augmenting Stone-->
+			<item id="81729" min="1" max="1" chance="14.28" /> <!-- Accessory Augmenting Stone -->
 			<item id="81878" min="1" max="1" chance="14.28" /> <!-- Atlas' Earring Upgrade Stone -->
 		</capsuled_items>
 	</item>
@@ -874,7 +895,7 @@
 		</skills>
 	</item>
 	<item id="81760" name="Enhanced Talisman of Protection Lv. 1" type="Armor">
-		<!-- Applies the following effects. P. Def. +5000, M. Def. +3250, Attribute Resistance +160. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects, when equipped:. P. Def. +5000, M. Def. +3250, Attribute Resistance +160. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -887,7 +908,7 @@
 		</skills>
 	</item>
 	<item id="81761" name="Enhanced Talisman of Protection Lv. 2" type="Armor">
-		<!-- Applies the following effects. P. Def. +5960, M. Def. +3874, Attribute Resistance +170. Received. M. damage -5%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects, when equipped:. P. Def. +5960, M. Def. +3874, Attribute Resistance +170. Received. M. damage -5%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -900,7 +921,7 @@
 		</skills>
 	</item>
 	<item id="81762" name="Enhanced Talisman of Protection Lv. 3" type="Armor">
-		<!-- Applies the following effects. P. Def. +6920, M. Def. +4498, Attribute Resistance +180. Received. M. damage -5%. Dagger Resistance +5%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects. P. Def. +6920, M. Def. +4498, Attribute Resistance +180. Received. M. damage -5%. Dagger Resistance +5%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -913,7 +934,7 @@
 		</skills>
 	</item>
 	<item id="81763" name="Enhanced Talisman of Protection Lv. 4" type="Armor">
-		<!-- Applies the following effects. P. Def. +7880, M. Def. +5122, Attribute Resistance +190. Received. M. damage -5%. Dagger/ Bow/ Crossbow Resistance +5%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects. P. Def. +7880, M. Def. +5122, Attribute Resistance +190. Received. M. damage -5%. Bow/ Crossbow/ Dagger Resistance +5%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -926,7 +947,7 @@
 		</skills>
 	</item>
 	<item id="81764" name="Enhanced Talisman of Protection Lv. 5" type="Armor">
-		<!-- Applies the following effects. P. Def. +8840, M. Def. +5746, Attribute Resistance +200. Received. M. damage -5%. Dagger/ Sword/ Spear/ Fists/ Bow/ Crossbow Resistance +5%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects. P. Def. +8840, M. Def. +5746, Attribute Resistance +200. Received. M. damage -5%. Sword/ Spear/ Fists/ Bow/ Crossbow/ Dagger Resistance +5%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -939,7 +960,7 @@
 		</skills>
 	</item>
 	<item id="81765" name="Enhanced Talisman of Protection Lv. 6" type="Armor">
-		<!-- Applies the following effects. P. Def. +9992, M. Def. +6495, Attribute Resistance +220. Received. M. damage -5%. Dagger/ Sword/ Spear/ Fists/ Bow/ Crossbow Resistance +5%. Received Critical Rate from standard attacks -10%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects. P. Def. +9992, M. Def. +6495, Attribute Resistance +220. Received. M. damage -5%. Sword/ Spear/ Fists/ Bow/ Crossbow/ Dagger Resistance +5%. Received Critical Rate from standard attacks -10%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -952,7 +973,7 @@
 		</skills>
 	</item>
 	<item id="81766" name="Enhanced Talisman of Protection Lv. 7" type="Armor">
-		<!-- Applies the following effects. P. Def. +11,144, M. Def. +7244, Attribute Resistance +240. Received. M. damage -5%. Dagger/ Sword/ Spear/ Fists/ Bow/ Crossbow Resistance +5%. Received Critical Rate from standard attacks -10%, Received P./ M. Skill Critical Rate -10%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects. P. Def. +11,144, M. Def. +7244, Attribute Resistance +240. Received. M. damage -5%. Sword/ Spear/ Fists/ Bow/ Crossbow/ Dagger Resistance +5%. Received Critical Rate from standard attacks and P./ M. skills -10%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -965,7 +986,7 @@
 		</skills>
 	</item>
 	<item id="81767" name="Enhanced Talisman of Protection Lv. 8" type="Armor">
-		<!-- Applies the following effects. P. Def. +12,296, M. Def. +7993, Attribute Resistance +260. Received. M. damage -5%. Dagger/ Sword/ Spear/ Fists/ Bow/ Crossbow Resistance +5%. Received Critical Rate from standard attacks -10%, Received P./ M. Skill Critical Rate -10%. Received Critical Damage from standard attacks -10%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects. P. Def. +12,296, M. Def. +7993, Attribute Resistance +260. Received. M. damage -5%. Sword/ Spear/ Fists/ Bow/ Crossbow/ Dagger Resistance +5%. Received Critical Rate from standard attacks and P./ M. skills -10%. Received Critical Damage from standard attacks -10%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -978,7 +999,7 @@
 		</skills>
 	</item>
 	<item id="81768" name="Enhanced Talisman of Protection Lv. 9" type="Armor">
-		<!-- Applies the following effects. P. Def. +13,448, M. Def. +8742, Attribute Resistance +280. Received. M. damage -5%. Dagger/ Sword/ Spear/ Fists/ Bow/ Crossbow Resistance +5%. Received Critical Rate from standard attacks -10%, Received P./ M. Skill Critical Rate -10%. Received Critical Damage from standard attacks and P./ M. skills -10%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting> Use Shining Energy of Protection. -->
+		<!-- Applies the following effects. P. Def. +13,448, M. Def. +8742, Attribute Resistance +280. Received. M. damage -5%. Sword/ Spear/ Fists/ Bow/ Crossbow/ Dagger Resistance +5%. Received Critical Rate from standard attacks and P./ M. skills -10%. Received Critical Damage from standard attacks and P./ M. skills -10%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Shining Energy of Protection. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -991,7 +1012,7 @@
 		</skills>
 	</item>
 	<item id="81769" name="Enhanced Talisman of Protection Lv. 10" type="Armor">
-		<!-- Applies the following effects. P. Def. +14,600, M. Def. +9491, Attribute Resistance +300. Received. M. damage -7%. Dagger/ Sword/ Spear/ Fists/ Bow/ Crossbow Resistance +7%. Received Critical Rate from standard attacks -15%, Received P./ M. Skill Critical Rate -15%. Received Critical Damage from standard attacks and P./ M. skills -15%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. -->
+		<!-- Applies the following effects. P. Def. +14,600, M. Def. +9491, Attribute Resistance +300. Received. M. damage -7%. Sword/ Spear/ Fists/ Bow/ Crossbow/ Dagger Resistance +7%. Received Critical Rate from standard attacks and P./ M. skills -15%. Received Critical Damage from standard attacks and P./ M. skills -15%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. -->
 		<set name="icon" val="icon.bm_defend_talisman_upgrade" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1004,7 +1025,7 @@
 		</skills>
 	</item>
 	<item id="81770" name="Shining Energy of Protection" type="EtcItem">
-		<!-- A compound material for upgrading Enhanced Talisman of Protection Lv. 9 or lower. In case of failure, Energy of Protection is consumed, but the Talisman of Protection remains intact. -->
+		<!-- Required for compounding with Enhanced Talisman of Protection Lv. 9 or lower to increase its level. In case of failure, Energy of Protection is consumed, but Talisman of Protection remains intact. -->
 		<set name="icon" val="icon.defend_talisman_energy_upgrade" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
@@ -1021,7 +1042,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81772" name="Soulshot/ Spiritshot Ticket" additionalName="Event" type="EtcItem">
-		<!-- Can be exchanged by the Larra for Soulshots and Blessed Spiritshots. -->
+		<!-- Can be exchanged by News Informer Larra for Soulshots and Blessed Spiritshots. -->
 		<set name="icon" val="icon.etc_lottery_card_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -1032,7 +1053,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81773" name="Beach Swimsuit" type="Armor">
-		<!-- Swimsuit for the beach. Note! Displayed incorrectly on Ertheia. -->
+		<!-- Swimsuit for the beach. Note!. Displayed incorrectly on Ertheia. -->
 		<set name="icon" val="BranchSys3.icon1.g_co_swimsuit_event_01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -1044,7 +1065,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="81774" name="Alluring Swimsuit" type="Armor">
-		<!-- Alluring swimsuit with exquisite prints. Note! Displayed incorrectly on Ertheia. -->
+		<!-- Alluring swimsuit with exquisite prints. Note!. Displayed incorrectly on Ertheia. -->
 		<set name="icon" val="BranchSys3.icon1.g_co_swimsuit_event_02" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -1056,7 +1077,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="81775" name="Seductive Swimsuit" type="Armor">
-		<!-- Seductive swimsuit with exquisite prints. Note! Displayed incorrectly on Ertheia. -->
+		<!-- Seductive swimsuit with exquisite prints. Note!. Displayed incorrectly on Ertheia. -->
 		<set name="icon" val="BranchSys3.icon1.g_co_swimsuit_event_03" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -1068,7 +1089,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="81776" name="Appearance Stone: Beach Swimsuit" additionalName="Event" type="EtcItem">
-		<!-- Changes the appearance of the entire armor to that of Beach Swimsuit. Modified armor can be restored to its original appearance with Restoration Stone. -->
+		<!-- Changes the appearance of the entire armor to that of Beach Swimsuit. The default appearance can be restored with Restoration Stone. -->
 		<set name="icon" val="BranchSys3.lcon.g_scrl_change_co_swimsuit_01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="STEEL" />
@@ -1081,7 +1102,7 @@
 		<set name="handler" val="Appearance" />
 	</item>
 	<item id="81777" name="Appearance Stone: Alluring Swimsuit" type="EtcItem">
-		<!-- Changes the appearance of the entire armor to that of Alluring Swimsuit. Modified armor can be restored to its original appearance with Restoration Stone. -->
+		<!-- Changes the appearance of the entire armor to that of Alluring Swimsuit. The default appearance can be restored with Restoration Stone. -->
 		<set name="icon" val="BranchSys3.lcon.g_scrl_change_co_swimsuit_01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="STEEL" />
@@ -1094,7 +1115,7 @@
 		<set name="handler" val="Appearance" />
 	</item>
 	<item id="81778" name="Appearance Stone: Seductive Swimsuit" type="EtcItem">
-		<!-- Changes the appearance of the entire armor to that of Seductive Swimsuit. Modified armor can be restored to its original appearance with Restoration Stone. -->
+		<!-- Changes the appearance of the entire armor to that of Seductive Swimsuit. The default appearance can be restored with Restoration Stone. -->
 		<set name="icon" val="BranchSys3.lcon.g_scrl_change_co_swimsuit_01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="STEEL" />
@@ -1128,7 +1149,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="81781" name="Appearance Stone: Baby Shark Doo Doo Doo" additionalName="Event" type="EtcItem">
-		<!-- Changes the appearance of the entire armor to that of Baby Shark Doo Doo Doo Outfit. Modified armor can be restored to its original appearance with Restoration Stone. -->
+		<!-- Changes the appearance of the entire armor to that of Baby Shark Doo Doo Doo Outfit. The default appearance can be restored with Restoration Stone. -->
 		<set name="icon" val="BranchSys3.icon1.g_scrl_change_chest" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="STEEL" />
@@ -1168,15 +1189,15 @@
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<!-- Reward 1 Potions chance="40" -->
-			<item id="80612" min="1" max="1" chance="8" /> <!-- Freya's Ice Rose Event -->
-			<item id="80797" min="1" max="1" chance="8" /> <!-- Shining Nevit's Gold Hourglass Event -->
-			<item id="80832" min="1" max="1" chance="8" /> <!-- Emperor's Special Cocktail Event -->
-			<item id="81460" min="1" max="1" chance="8" /> <!-- Honey Dark Beer Event -->
-			<item id="48755" min="1" max="1" chance="8" /> <!-- Glowing Dragon's Attribute Potion (XP) Event -->
+			<item id="80612" min="1" max="1" chance="8" /> <!-- Freya's Ice Rose - Event -->
+			<item id="80797" min="1" max="1" chance="8" /> <!-- Shining Nevit's Gold Hourglass - Event -->
+			<item id="80832" min="1" max="1" chance="8" /> <!-- Emperor's Special Cocktail - Event -->
+			<item id="81460" min="1" max="1" chance="8" /> <!-- Honey Dark Beer - Event -->
+			<item id="48755" min="1" max="1" chance="8" /> <!-- Glowing Dragon's Attribute Potion (XP) - Event -->
 			<!-- Reward 2 Resources chance="25" -->
-			<item id="29469" min="1" max="1" chance="8.33" /> <!-- Enhanced Jewel Energy -->
+			<item id="29469" min="1" max="1" chance="8.33" /> <!-- Shiny Jewel Energy -->
 			<item id="48831" min="1" max="1" chance="8.33" /> <!-- Jewel Energy -->
-			<item id="48907" min="1" max="1" chance="8.34" /> <!-- Shillien's Soul Crystal Lv. 9 Weapon -->
+			<item id="48907" min="1" max="1" chance="8.34" /> <!-- Shillien's Soul Crystal Lv. 9 -->
 			<!-- Reward 3 Bundle Items chance="15" -->
 			<item id="47820" min="1" max="1" chance="7.5" /> <!-- Sayha's Talisman Pack Lv. 9 -->
 			<item id="48861" min="1" max="1" chance="7.5" /> <!-- +9 Fallen Angel's Ring Pack -->
@@ -1188,7 +1209,7 @@
 			<item id="80094" min="1" max="1" chance="0.71" /> <!-- Krishna Fighter -->
 			<item id="80095" min="1" max="1" chance="0.71" /> <!-- Krishna Stormer -->
 			<item id="80096" min="1" max="1" chance="0.71" /> <!-- Krishna Thrower -->
-			<item id="80097" min="1" max="1" chance="0.71" /> <!-- Krishna Shooter -->
+			<item id="80097" min="1" max="1" chance="0.71" /> <!-- Krishna Guardian -->
 			<item id="80098" min="1" max="1" chance="0.72" /> <!-- Krishna Buster -->
 			<item id="80099" min="1" max="1" chance="0.72" /> <!-- Krishna Caster -->
 			<item id="80100" min="1" max="1" chance="0.72" /> <!-- Krishna Retributer -->
@@ -1216,7 +1237,7 @@
 		</capsuled_items>
 	</item>
 	<item id="81784" name="Blessed Angel's Necklace" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. The item can be changed. <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_elemental_necklace_wind_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1231,7 +1252,7 @@
 		</stats>
 	</item>
 	<item id="81785" name="Blessed Angel's Necklace" additionalName="Assault Lv. 1" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects> P./ M. Atk. +1% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects>. P./ M. Atk. +1%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_elemental_necklace_wind_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1249,7 +1270,7 @@
 		</stats>
 	</item>
 	<item id="81786" name="Blessed Angel's Necklace" additionalName="Assault Lv. 2" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +2. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects> P./ M. Atk. +2% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +2. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects>. P./ M. Atk. +2%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_elemental_necklace_wind_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1267,7 +1288,7 @@
 		</stats>
 	</item>
 	<item id="81787" name="Blessed Angel's Necklace" additionalName="Assault Lv. 3" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +5. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects> P./ M. Atk. +5% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +5. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects>. P./ M. Atk. +5%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_elemental_necklace_wind_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1285,7 +1306,7 @@
 		</stats>
 	</item>
 	<item id="81788" name="Blessed Angel's Earring" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect, increases Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effects doesn't stack if both Angel's Earring and Blessed Atlas' Earring are equipped. The item can be changed. <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect, increases Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effects doesn't stack if both Angel's Earring and Blessed Atlas' Earring are equipped. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_accessary_angel_of_earing" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1300,7 +1321,7 @@
 		</stats>
 	</item>
 	<item id="81789" name="Blessed Angel's Earring" additionalName="Security Lv. 1" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect, increases Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effects doesn't stack if both Angel's Earring and Blessed Atlas' Earring are equipped. <Special effects> P./ M. Def. +1% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect, increases Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effects doesn't stack if both Angel's Earring and Blessed Atlas' Earring are equipped. <Special effects>. P./ M. Def. +1%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_accessary_angel_of_earing" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1318,7 +1339,7 @@
 		</stats>
 	</item>
 	<item id="81790" name="Blessed Angel's Earring" additionalName="Security Lv. 2" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +2. When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect, increases Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effects doesn't stack if both Angel's Earring and Blessed Atlas' Earring are equipped. <Special effects> P./ M. Def. +2% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +2. When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect, increases Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effects doesn't stack if both Angel's Earring and Blessed Atlas' Earring are equipped. <Special effects>. P./ M. Def. +2%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_accessary_angel_of_earing" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1336,7 +1357,7 @@
 		</stats>
 	</item>
 	<item id="81791" name="Blessed Angel's Earring" additionalName="Security Lv. 3" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +5. When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect, increases Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effects doesn't stack if both Angel's Earring and Blessed Atlas' Earring are equipped. <Special effects> P./ M. Def. +5% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +5. When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect, increases Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effects doesn't stack if both Angel's Earring and Blessed Atlas' Earring are equipped. <Special effects>. P./ M. Def. +5%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_accessary_angel_of_earing" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1369,7 +1390,7 @@
 		</stats>
 	</item>
 	<item id="81793" name="Blessed Angel's Ring" additionalName="Elements Lv. 1" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Obstruction Atk. Rate and Resistance, Attribute Resistance, Critical Damage for standard attacks, P./ M. Skill Critical Damage and P./ M. Skill Power. The effects of Angel's Ring and Blessed Angel's Ring do not stack, if equipped simultaneously. <Special effect> Attribute Attack/ Resistance +10 <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Obstruction Atk. Rate and Resistance, Attribute Resistance, Critical Damage for standard attacks, P./ M. Skill Critical Damage and P./ M. Skill Power. The effects of Angel's Ring and Blessed Angel's Ring do not stack, if equipped simultaneously. <Special effect>. Attribute Attack/ Resistance +10. <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_new_ring_of_hero" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1387,7 +1408,7 @@
 		</stats>
 	</item>
 	<item id="81794" name="Blessed Angel's Ring" additionalName="Elements Lv. 2" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Obstruction Atk. Rate and Resistance, Attribute Resistance, Critical Damage for standard attacks, P./ M. Skill Critical Damage and P./ M. Skill Power. The effects of Angel's Ring and Blessed Angel's Ring do not stack, if equipped simultaneously. <Special effect> Attribute Attack/ Resistance +20 <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Obstruction Atk. Rate and Resistance, Attribute Resistance, Critical Damage for standard attacks, P./ M. Skill Critical Damage and P./ M. Skill Power. The effects of Angel's Ring and Blessed Angel's Ring do not stack, if equipped simultaneously. <Special effect>. Attribute Attack/ Resistance +20. <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_new_ring_of_hero" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1405,7 +1426,7 @@
 		</stats>
 	</item>
 	<item id="81795" name="Blessed Angel's Ring" additionalName="Elements Lv. 3" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Obstruction Atk. Rate and Resistance, Attribute Resistance, Critical Damage for standard attacks, P./ M. Skill Critical Damage and P./ M. Skill Power. The effects of Angel's Ring and Blessed Angel's Ring do not stack, if equipped simultaneously. <Special effect> Attribute Attack/ Resistance +50 <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Obstruction Atk. Rate and Resistance, Attribute Resistance, Critical Damage for standard attacks, P./ M. Skill Critical Damage and P./ M. Skill Power. The effects of Angel's Ring and Blessed Angel's Ring do not stack, if equipped simultaneously. <Special effect>. Attribute Attack/ Resistance +50. <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_new_ring_of_hero" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1423,7 +1444,7 @@
 		</stats>
 	</item>
 	<item id="81796" name="Blessed Angel's Necklace" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. The item can be changed. <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_elemental_necklace_wind_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1441,7 +1462,7 @@
 		</stats>
 	</item>
 	<item id="81797" name="Blessed Angel's Necklace" additionalName="Assault Lv. 1" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects> P./ M. Atk. +1% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +1. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects>. P./ M. Atk. +1%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_elemental_necklace_wind_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1462,7 +1483,7 @@
 		</stats>
 	</item>
 	<item id="81798" name="Blessed Angel's Necklace" additionalName="Assault Lv. 2" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +2. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects> P./ M. Atk. +2% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +2. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects>. P./ M. Atk. +2%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_elemental_necklace_wind_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1483,7 +1504,7 @@
 		</stats>
 	</item>
 	<item id="81799" name="Blessed Angel's Necklace" additionalName="Assault Lv. 3" type="Armor">
-		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +5. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects> P./ M. Atk. +5% <Enchanting> Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, the effect of common Angel's Accessories is applied, but the enchant value is treated as +5. When enchanted, increases CHA/ LUC, Infection Resistance/ Atk. Rate, Confusion Resistance/ Atk. Rate, Speed, Damage Reflection, Damage Reflection, P. Atk./ M. Atk./ P. Def./ M. Def. and Skill Power, also decreases Skill Cooldowns. <Special effects>. P./ M. Atk. +5%. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_elemental_necklace_wind_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />

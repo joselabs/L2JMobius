@@ -27,6 +27,7 @@ public enum ZoneId
 	SIEGE,
 	MOTHER_TREE,
 	CLAN_HALL,
+	CONQUEST,
 	LANDING,
 	NO_LANDING,
 	WATER,

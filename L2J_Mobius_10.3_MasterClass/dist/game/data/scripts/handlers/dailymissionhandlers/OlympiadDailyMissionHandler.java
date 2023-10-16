@@ -21,6 +21,7 @@ import org.l2jmobius.gameserver.handler.AbstractDailyMissionHandler;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.DailyMissionPlayerEntry;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.events.Containers;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.olympiad.OnOlympiadMatchResult;
@@ -31,6 +32,11 @@ import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
  */
 public class OlympiadDailyMissionHandler extends AbstractDailyMissionHandler
 {
+	private final int _missionId;
+	private final int _minLevel;
+	private final int _maxLevel;
+	private final int _minClanLevel;
+	private final int _minClanMasteryLevel;
 	private final int _amount;
 	private final boolean _winOnly;
 	private final int _requiredMissionCompleteId;
@@ -38,9 +44,15 @@ public class OlympiadDailyMissionHandler extends AbstractDailyMissionHandler
 	public OlympiadDailyMissionHandler(DailyMissionDataHolder holder)
 	{
 		super(holder);
-		_requiredMissionCompleteId = holder.getRequiredMissionCompleteId();
+		_missionId = holder.getId();
+		_minLevel = holder.getParams().getInt("minLevel", 0);
+		_maxLevel = holder.getParams().getInt("maxLevel", Integer.MAX_VALUE);
+		_minClanLevel = holder.getParams().getInt("minClanLevel", 0);
+		_minClanMasteryLevel = holder.getParams().getInt("minClanMasteryLevel", 0);
 		_amount = holder.getRequiredCompletions();
 		_winOnly = holder.getParams().getBoolean("winOnly", false);
+		_requiredMissionCompleteId = holder.getRequiredMissionCompleteId();
+		
 	}
 	
 	@Override
@@ -77,31 +89,60 @@ public class OlympiadDailyMissionHandler extends AbstractDailyMissionHandler
 	
 	private void onOlympiadMatchResult(OnOlympiadMatchResult event)
 	{
-		if (event.getWinner() != null)
+		if ((event.getWinner() != null) && checkPlayerLevel(event.getWinner().getPlayer()))
 		{
-			final DailyMissionPlayerEntry winnerEntry = getPlayerEntry(event.getWinner().getObjectId(), true);
-			if ((winnerEntry.getStatus() == DailyMissionStatus.NOT_AVAILABLE) && (((_requiredMissionCompleteId != 0) && checkRequiredMission(event.getWinner().getPlayer())) || (_requiredMissionCompleteId == 0)))
+			// Check clan only for specific missions
+			if ((_missionId == 2107) || (_missionId == 2108))
 			{
-				if (winnerEntry.increaseProgress() >= _amount)
+				if (checkClan(event.getWinner().getPlayer()))
 				{
-					winnerEntry.setStatus(DailyMissionStatus.AVAILABLE);
+					processPlayerProgress(event.getWinner().getPlayer());
 				}
-				storePlayerEntry(winnerEntry);
+			}
+			else
+			{
+				processPlayerProgress(event.getWinner().getPlayer());
+			}
+		}
+		if (!_winOnly && (event.getLoser() != null) && checkPlayerLevel(event.getLoser().getPlayer()))
+		{
+			final DailyMissionPlayerEntry loserEntry = getPlayerEntry(event.getLoser().getObjectId(), true);
+			if ((loserEntry.getStatus() == DailyMissionStatus.NOT_AVAILABLE) && (((_requiredMissionCompleteId != 0) && checkRequiredMission(event.getLoser().getPlayer())) || (_requiredMissionCompleteId == 0)))
+			{
+				if (loserEntry.increaseProgress() >= _amount)
+				{
+					loserEntry.setStatus(DailyMissionStatus.AVAILABLE);
+				}
+				storePlayerEntry(loserEntry);
 			}
 		}
 		
-		if (!_winOnly && (event.getLoser() != null))
+	}
+	
+	private boolean checkPlayerLevel(Player player)
+	{
+		if (player == null)
 		{
-			final DailyMissionPlayerEntry loseEntry = getPlayerEntry(event.getLoser().getObjectId(), true);
-			if ((loseEntry.getStatus() == DailyMissionStatus.NOT_AVAILABLE) && (((_requiredMissionCompleteId != 0) && checkRequiredMission(event.getLoser().getPlayer())) || (_requiredMissionCompleteId == 0)))
-			{
-				if (loseEntry.increaseProgress() >= _amount)
-				{
-					loseEntry.setStatus(DailyMissionStatus.AVAILABLE);
-				}
-				storePlayerEntry(loseEntry);
-			}
+			return false;
 		}
+		return ((player.getLevel() >= _minLevel)) || (player.getLevel() <= _maxLevel);
+	}
+	
+	private boolean checkClan(Player player)
+	{
+		if (player == null)
+		{
+			return false;
+		}
+		
+		final Clan clan = player.getClan();
+		if (clan == null)
+		{
+			return false;
+		}
+		
+		final int clanMastery = clan.hasMastery(14) ? 14 : clan.hasMastery(15) ? 15 : clan.hasMastery(16) ? 16 : 0;
+		return ((clan.getLevel() >= _minClanLevel) && (clanMastery >= _minClanMasteryLevel));
 	}
 	
 	private boolean checkRequiredMission(Player player)
@@ -113,5 +154,18 @@ public class OlympiadDailyMissionHandler extends AbstractDailyMissionHandler
 		
 		final DailyMissionPlayerEntry missionEntry = getPlayerEntry(player.getObjectId(), false);
 		return (missionEntry != null) && (_requiredMissionCompleteId != 0) && (missionEntry.getRewardId() == _requiredMissionCompleteId) && (getStatus(player) == DailyMissionStatus.COMPLETED.getClientId());
+	}
+	
+	private void processPlayerProgress(Player player)
+	{
+		final DailyMissionPlayerEntry entry = getPlayerEntry(player.getObjectId(), true);
+		if ((entry.getStatus() == DailyMissionStatus.NOT_AVAILABLE) && (((_requiredMissionCompleteId != 0) && checkRequiredMission(player)) || (_requiredMissionCompleteId == 0)))
+		{
+			if (entry.increaseProgress() >= _amount)
+			{
+				entry.setStatus(DailyMissionStatus.AVAILABLE);
+			}
+			storePlayerEntry(entry);
+		}
 	}
 }

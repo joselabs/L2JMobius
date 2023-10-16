@@ -16,6 +16,7 @@
  */
 package quests.Q00376_ExplorationOfTheGiantsCavePart1;
 
+import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
@@ -91,7 +92,7 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 			}
 			case "31147-04.htm":
 			{
-				htmltext = checkItems(st);
+				htmltext = checkItems(player, st);
 				break;
 			}
 			case "31147-09.htm":
@@ -115,11 +116,7 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 	public String onTalk(Npc npc, Player player)
 	{
 		String htmltext = getNoQuestMsg(player);
-		final QuestState st = player.getQuestState(getName());
-		if (st == null)
-		{
-			return htmltext;
-		}
+		final QuestState st = getQuestState(player, true);
 		
 		switch (st.getState())
 		{
@@ -130,16 +127,16 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 			}
 			case State.STARTED:
 			{
+				final int cond = st.getCond();
 				switch (npc.getId())
 				{
 					case SOBLING:
 					{
-						htmltext = checkItems(st);
+						htmltext = checkItems(player, st);
 						break;
 					}
 					case CLIFF:
 					{
-						final int cond = st.getCond();
 						if ((cond == 2) && hasQuestItems(player, MYSTERIOUS_BOOK))
 						{
 							htmltext = "30182-01.htm";
@@ -159,19 +156,48 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final QuestState qs = getRandomPartyMemberState(player, -1, 3, npc);
-		if (qs != null)
+		// Drop parchment to anyone
+		Player partyMember = getRandomPartyMemberState(player, State.STARTED);
+		if (partyMember == null)
 		{
-			giveItemRandomly(qs.getPlayer(), npc, PARCHMENT, 1, 0, 0.2, true);
+			return null;
 		}
-		return super.onKill(npc, player, isSummon);
+		
+		QuestState st = partyMember.getQuestState(getName());
+		if (st == null)
+		{
+			return null;
+		}
+		
+		giveItemRandomly(partyMember, npc, PARCHMENT, 1, 0, 0.2, true);
+		
+		// Drop mysterious book to person who still need it
+		partyMember = getRandomPartyMember(player, "condBook", "1");
+		if (partyMember == null)
+		{
+			return null;
+		}
+		
+		st = partyMember.getQuestState(getName());
+		if (st == null)
+		{
+			return null;
+		}
+		
+		if (Rnd.get(100d) < 0.1)
+		{
+			giveItems(partyMember, MYSTERIOUS_BOOK, 1);
+			st.unset("condBook");
+		}
+		
+		return null;
 	}
 	
-	private static String checkItems(QuestState st)
+	private static String checkItems(Player player, QuestState st)
 	{
-		if (hasQuestItems(st.getPlayer(), MYSTERIOUS_BOOK))
+		if (hasQuestItems(player, MYSTERIOUS_BOOK))
 		{
 			final int cond = st.getCond();
 			if (cond == 1)
@@ -187,7 +213,7 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 			boolean complete = true;
 			for (int book : BOOKS[type])
 			{
-				if (!hasQuestItems(st.getPlayer(), book))
+				if (!hasQuestItems(player, book))
 				{
 					complete = false;
 				}
@@ -197,10 +223,10 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 			{
 				for (int book : BOOKS[type])
 				{
-					takeItems(st.getPlayer(), book, 1);
+					takeItems(player, book, 1);
 				}
 				
-				giveItems(st.getPlayer(), RECIPES[type][getRandom(RECIPES[type].length)], 1);
+				giveItems(player, RECIPES[type][getRandom(RECIPES[type].length)], 1);
 				return "31147-04.htm";
 			}
 		}

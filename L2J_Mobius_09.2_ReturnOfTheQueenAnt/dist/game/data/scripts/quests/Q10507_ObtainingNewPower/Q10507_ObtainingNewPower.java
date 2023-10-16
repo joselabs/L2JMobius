@@ -23,6 +23,11 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.events.EventType;
+import org.l2jmobius.gameserver.model.events.ListenerRegisterType;
+import org.l2jmobius.gameserver.model.events.annotations.RegisterEvent;
+import org.l2jmobius.gameserver.model.events.annotations.RegisterType;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSubChange;
 import org.l2jmobius.gameserver.model.holders.NpcLogListHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
@@ -366,5 +371,21 @@ public class Q10507_ObtainingNewPower extends Quest
 			return holder;
 		}
 		return super.getNpcLogList(player);
+	}
+	
+	@RegisterEvent(EventType.ON_PLAYER_SUB_CHANGE)
+	@RegisterType(ListenerRegisterType.GLOBAL_PLAYERS)
+	public void onSubChange(OnPlayerSubChange evt)
+	{
+		final Player player = evt.getPlayer();
+		final QuestState qs = getQuestState(player, false);
+		if ((qs != null) && !player.isDualClassActive())
+		{
+			if ((qs.getCond() < 2) && (getQuestItemsCount(player, PROOF_OF_STRENGTH) >= PROOF_OF_STRENGTH_NEEDED) && (player.getLevel() >= MIN_COMPLETE_LEVEL))
+			{
+				qs.setCond(2, true);
+			}
+			sendNpcLogList(player);
+		}
 	}
 }

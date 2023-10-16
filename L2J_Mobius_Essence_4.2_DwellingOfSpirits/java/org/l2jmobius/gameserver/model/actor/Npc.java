@@ -691,7 +691,7 @@ public class Npc extends Creature
 		final String temp = "data/html/default/" + pom + ".htm";
 		if (!Config.LAZY_CACHE)
 		{
-			// If not running lazy cache the file must be in the cache or it doesnt exist
+			// If not running lazy cache the file must be in the cache or it does not exist
 			if (HtmCache.getInstance().contains(temp))
 			{
 				return temp;
@@ -791,18 +791,6 @@ public class Npc extends Creature
 		String filename;
 		switch (npcId)
 		{
-			case 31688:
-			{
-				if (player.isNoble())
-				{
-					filename = Olympiad.OLYMPIAD_HTML_PATH + "noble_main.htm";
-				}
-				else
-				{
-					filename = (getHtmlPath(npcId, value, player));
-				}
-				break;
-			}
 			case 31690:
 			case 31769:
 			case 31770:

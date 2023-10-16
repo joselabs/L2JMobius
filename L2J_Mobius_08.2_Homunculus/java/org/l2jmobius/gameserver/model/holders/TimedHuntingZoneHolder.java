@@ -16,6 +16,9 @@
  */
 package org.l2jmobius.gameserver.model.holders;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
 
@@ -43,11 +46,12 @@ public class TimedHuntingZoneHolder
 	private final boolean _useWorldPrefix;
 	private final boolean _zonePremiumUserOnly;
 	private final Location _enterLocation;
+	private final Location _subEnterLocation1;
+	private final Location _subEnterLocation2;
 	private final Location _exitLocation;
-	private final int _mapX;
-	private final int _mapY;
+	private final List<MapHolder> _maps = new ArrayList<>();
 	
-	public TimedHuntingZoneHolder(int id, String name, int initialTime, int maximumAddedTime, int resetDelay, int entryItemId, int entryFee, int minLevel, int maxLevel, int remainRefillTime, int refillTimeMax, boolean pvpZone, boolean noPvpZone, int instanceId, boolean soloInstance, boolean weekly, boolean useWorldPrefix, boolean zonePremiumUserOnly, Location enterLocation, Location exitLocation)
+	public TimedHuntingZoneHolder(int id, String name, int initialTime, int maximumAddedTime, int resetDelay, int entryItemId, int entryFee, int minLevel, int maxLevel, int remainRefillTime, int refillTimeMax, boolean pvpZone, boolean noPvpZone, int instanceId, boolean soloInstance, boolean weekly, boolean useWorldPrefix, boolean zonePremiumUserOnly, Location enterLocation, Location subEnterLocation1, Location subEnterLocation2, Location exitLocation)
 	{
 		_id = id;
 		_name = name;
@@ -68,9 +72,28 @@ public class TimedHuntingZoneHolder
 		_useWorldPrefix = useWorldPrefix;
 		_zonePremiumUserOnly = zonePremiumUserOnly;
 		_enterLocation = enterLocation;
+		_subEnterLocation1 = subEnterLocation1;
+		_subEnterLocation2 = subEnterLocation2;
 		_exitLocation = exitLocation;
-		_mapX = ((_enterLocation.getX() - World.WORLD_X_MIN) >> 15) + World.TILE_X_MIN;
-		_mapY = ((_enterLocation.getY() - World.WORLD_Y_MIN) >> 15) + World.TILE_Y_MIN;
+		_maps.add(new MapHolder(getMapX(_enterLocation), getMapY(_enterLocation)));
+		if (_subEnterLocation1 != null)
+		{
+			_maps.add(new MapHolder(getMapX(_subEnterLocation1), getMapY(_subEnterLocation1)));
+		}
+		if (_subEnterLocation2 != null)
+		{
+			_maps.add(new MapHolder(getMapX(_subEnterLocation2), getMapY(_subEnterLocation2)));
+		}
+	}
+	
+	private int getMapY(Location location)
+	{
+		return ((location.getY() - World.WORLD_Y_MIN) >> 15) + World.TILE_Y_MIN;
+	}
+	
+	private int getMapX(Location location)
+	{
+		return ((location.getX() - World.WORLD_X_MIN) >> 15) + World.TILE_X_MIN;
 	}
 	
 	public int getZoneId()
@@ -168,18 +191,13 @@ public class TimedHuntingZoneHolder
 		return _enterLocation;
 	}
 	
+	public List<MapHolder> getMaps()
+	{
+		return _maps;
+	}
+	
 	public Location getExitLocation()
 	{
 		return _exitLocation;
-	}
-	
-	public int getMapX()
-	{
-		return _mapX;
-	}
-	
-	public int getMapY()
-	{
-		return _mapY;
 	}
 }

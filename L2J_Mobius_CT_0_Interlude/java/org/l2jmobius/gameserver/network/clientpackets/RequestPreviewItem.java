@@ -36,7 +36,6 @@ import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.ShopPreviewInfo;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Util;
 
 /**
@@ -65,7 +64,7 @@ public class RequestPreviewItem implements ClientPacket
 			try
 			{
 				_player.sendPacket(SystemMessageId.YOU_ARE_NO_LONGER_TRYING_ON_EQUIPMENT_2);
-				_player.sendPacket(new UserInfo(_player));
+				_player.updateUserInfo();
 			}
 			catch (Exception e)
 			{

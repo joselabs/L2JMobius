@@ -48,6 +48,11 @@ public class CreatureKnownList extends WorldObjectKnownList
 	@Override
 	public boolean addKnownObject(WorldObject object, Creature dropper)
 	{
+		if ((dropper != null) && (object.getInstanceId() != dropper.getInstanceId()))
+		{
+			return false;
+		}
+		
 		if (!super.addKnownObject(object, dropper))
 		{
 			return false;
@@ -137,6 +142,11 @@ public class CreatureKnownList extends WorldObjectKnownList
 		{
 			if (obj instanceof Creature)
 			{
+				if (obj.getInstanceId() != getActiveChar().getInstanceId())
+				{
+					continue;
+				}
+				
 				result.add((Creature) obj);
 			}
 		}
@@ -148,6 +158,11 @@ public class CreatureKnownList extends WorldObjectKnownList
 		final List<Creature> result = new ArrayList<>();
 		for (WorldObject obj : getKnownObjects().values())
 		{
+			if (obj.getInstanceId() != getActiveChar().getInstanceId())
+			{
+				continue;
+			}
+			
 			if (obj instanceof Player)
 			{
 				if (Util.checkIfInRange((int) radius, getActiveChar(), obj, true))
@@ -196,6 +211,11 @@ public class CreatureKnownList extends WorldObjectKnownList
 		final List<Player> result = new ArrayList<>();
 		for (Player player : getKnownPlayers().values())
 		{
+			if (player.getInstanceId() != getActiveChar().getInstanceId())
+			{
+				continue;
+			}
+			
 			if (Util.checkIfInRange((int) radius, getActiveChar(), player, true))
 			{
 				result.add(player);

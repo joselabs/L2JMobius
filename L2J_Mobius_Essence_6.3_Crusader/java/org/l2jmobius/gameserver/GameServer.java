@@ -40,7 +40,7 @@ import org.l2jmobius.gameserver.data.BotReportTable;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.SchemeBufferTable;
 import org.l2jmobius.gameserver.data.sql.AnnouncementsTable;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
@@ -55,6 +55,7 @@ import org.l2jmobius.gameserver.data.xml.BeautyShopData;
 import org.l2jmobius.gameserver.data.xml.BuyListData;
 import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
+import org.l2jmobius.gameserver.data.xml.ClanLevelData;
 import org.l2jmobius.gameserver.data.xml.ClanRewardData;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.CollectionData;
@@ -64,6 +65,7 @@ import org.l2jmobius.gameserver.data.xml.DailyMissionData;
 import org.l2jmobius.gameserver.data.xml.DoorData;
 import org.l2jmobius.gameserver.data.xml.ElementalAttributeData;
 import org.l2jmobius.gameserver.data.xml.ElementalSpiritData;
+import org.l2jmobius.gameserver.data.xml.EnchantChallengePointData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemHPBonusData;
@@ -101,6 +103,7 @@ import org.l2jmobius.gameserver.data.xml.PetTypeData;
 import org.l2jmobius.gameserver.data.xml.PlayerTemplateData;
 import org.l2jmobius.gameserver.data.xml.PlayerXpPercentLostData;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
+import org.l2jmobius.gameserver.data.xml.RaidDropAnnounceData;
 import org.l2jmobius.gameserver.data.xml.RaidTeleportListData;
 import org.l2jmobius.gameserver.data.xml.RandomCraftData;
 import org.l2jmobius.gameserver.data.xml.RecipeData;
@@ -139,6 +142,8 @@ import org.l2jmobius.gameserver.instancemanager.CustomMailManager;
 import org.l2jmobius.gameserver.instancemanager.DBSpawnManager;
 import org.l2jmobius.gameserver.instancemanager.DailyTaskManager;
 import org.l2jmobius.gameserver.instancemanager.FakePlayerChatManager;
+import org.l2jmobius.gameserver.instancemanager.FortManager;
+import org.l2jmobius.gameserver.instancemanager.FortSiegeManager;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.instancemanager.GraciaSeedsManager;
 import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
@@ -290,6 +295,7 @@ public class GameServer
 		EnchantItemGroupsData.getInstance();
 		EnchantItemData.getInstance();
 		EnchantItemOptionsData.getInstance();
+		EnchantChallengePointData.getInstance();
 		ElementalAttributeData.getInstance();
 		ItemCrystallizationData.getInstance();
 		OptionData.getInstance();
@@ -314,6 +320,7 @@ public class GameServer
 		LimitShopCraftData.getInstance();
 		LimitShopClanData.getInstance();
 		CollectionData.getInstance();
+		RaidDropAnnounceData.getInstance();
 		PcCafePointsManager.getInstance();
 		AppearanceItemData.getInstance();
 		ItemCommissionManager.getInstance();
@@ -335,7 +342,7 @@ public class GameServer
 		KarmaData.getInstance();
 		HitConditionBonusData.getInstance();
 		PlayerTemplateData.getInstance();
-		CharNameTable.getInstance();
+		CharInfoTable.getInstance();
 		AdminData.getInstance();
 		PetDataTable.getInstance();
 		CubicData.getInstance();
@@ -351,6 +358,7 @@ public class GameServer
 		}
 		
 		printSection("Clans");
+		ClanLevelData.getInstance();
 		ClanTable.getInstance();
 		ResidenceFunctionsData.getInstance();
 		ClanHallData.getInstance();
@@ -431,10 +439,9 @@ public class GameServer
 		printSection("Siege");
 		SiegeManager.getInstance().getSieges();
 		CastleManager.getInstance().activateInstances();
-		// No fortresses
-		// FortManager.getInstance().loadInstances();
-		// FortManager.getInstance().activateInstances();
-		// FortSiegeManager.getInstance();
+		FortManager.getInstance().loadInstances();
+		FortManager.getInstance().activateInstances();
+		FortSiegeManager.getInstance();
 		SiegeScheduleData.getInstance();
 		
 		CastleManorManager.getInstance();

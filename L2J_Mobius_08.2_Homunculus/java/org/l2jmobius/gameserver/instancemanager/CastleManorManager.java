@@ -276,7 +276,7 @@ public class CastleManorManager implements IXmlReader, IStorable
 			}
 		}
 		// Schedule mode change
-		ThreadPool.schedule(this::changeMode, (_nextModeChange.getTimeInMillis() - System.currentTimeMillis()));
+		ThreadPool.schedule(this::changeMode, Math.max(0, _nextModeChange.getTimeInMillis() - System.currentTimeMillis()));
 	}
 	
 	public void changeMode()

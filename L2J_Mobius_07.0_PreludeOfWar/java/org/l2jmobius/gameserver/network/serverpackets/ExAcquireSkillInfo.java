@@ -31,6 +31,7 @@ import org.l2jmobius.gameserver.network.ServerPackets;
  */
 public class ExAcquireSkillInfo extends ServerPacket
 {
+	private final Player _player;
 	private final int _id;
 	private final int _level;
 	private final int _dualClassLevel;
@@ -47,6 +48,7 @@ public class ExAcquireSkillInfo extends ServerPacket
 	 */
 	public ExAcquireSkillInfo(Player player, SkillLearn skillLearn)
 	{
+		_player = player;
 		_id = skillLearn.getSkillId();
 		_level = skillLearn.getSkillLevel();
 		_dualClassLevel = skillLearn.getDualClassLevel();
@@ -67,7 +69,7 @@ public class ExAcquireSkillInfo extends ServerPacket
 	public void write()
 	{
 		ServerPackets.EX_ACQUIRE_SKILL_INFO.writeId(this);
-		writeInt(_id);
+		writeInt(_player.getReplacementSkill(_id));
 		writeInt(_level);
 		writeLong(_spCost);
 		writeShort(_minLevel);

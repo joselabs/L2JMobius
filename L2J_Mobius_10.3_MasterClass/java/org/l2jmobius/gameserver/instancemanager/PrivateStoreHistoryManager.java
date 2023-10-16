@@ -38,7 +38,7 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
  */
 public class PrivateStoreHistoryManager
 {
-	private static final Logger LOGGER = Logger.getLogger(PrivateStoreHistoryManager.class.getName());
+	protected static final Logger LOGGER = Logger.getLogger(PrivateStoreHistoryManager.class.getName());
 	
 	private static final String SELECT = "SELECT * FROM item_transaction_history";
 	private static final String INSERT = "INSERT INTO item_transaction_history (created_time,item_id,transaction_type,enchant_level,price,count) VALUES (?,?,?,?,?,?)";
@@ -162,7 +162,7 @@ public class PrivateStoreHistoryManager
 		return list;
 	}
 	
-	private static class SortByPrice implements Comparator<ItemHistoryTransaction>
+	protected static class SortByPrice implements Comparator<ItemHistoryTransaction>
 	{
 		@Override
 		public int compare(ItemHistoryTransaction a, ItemHistoryTransaction b)
@@ -171,7 +171,7 @@ public class PrivateStoreHistoryManager
 		}
 	}
 	
-	private static class SortByQuantity implements Comparator<ItemHistoryTransaction>
+	protected static class SortByQuantity implements Comparator<ItemHistoryTransaction>
 	{
 		@Override
 		public int compare(ItemHistoryTransaction a, ItemHistoryTransaction b)
@@ -180,7 +180,7 @@ public class PrivateStoreHistoryManager
 		}
 	}
 	
-	private static class SortByDate implements Comparator<ItemHistoryTransaction>
+	protected static class SortByDate implements Comparator<ItemHistoryTransaction>
 	{
 		@Override
 		public int compare(ItemHistoryTransaction a, ItemHistoryTransaction b)
@@ -208,7 +208,7 @@ public class PrivateStoreHistoryManager
 			_count = rs.getLong("count");
 		}
 		
-		private ItemHistoryTransaction(PrivateStoreType transactionType, long count, long price, Item item)
+		public ItemHistoryTransaction(PrivateStoreType transactionType, long count, long price, Item item)
 		{
 			this(transactionType, count, price, item.getId(), item.getEnchantLevel(), true);
 		}

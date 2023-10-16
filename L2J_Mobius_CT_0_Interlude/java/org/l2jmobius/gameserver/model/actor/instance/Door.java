@@ -383,8 +383,7 @@ public class Door extends Creature
 			return;
 		}
 		
-		final StaticObjectInfo su = new StaticObjectInfo(this, false);
-		final StaticObjectInfo targetableSu = new StaticObjectInfo(this, true);
+		final StaticObjectInfo su = new StaticObjectInfo(this);
 		final DoorStatusUpdate dsu = new DoorStatusUpdate(this);
 		OnEventTrigger oe = null;
 		if (getEmitter() > 0)
@@ -399,15 +398,7 @@ public class Door extends Creature
 				continue;
 			}
 			
-			if (player.isGM() || ((getCastle() != null) && (getCastle().getResidenceId() > 0)))
-			{
-				player.sendPacket(targetableSu);
-			}
-			else
-			{
-				player.sendPacket(su);
-			}
-			
+			player.sendPacket(su);
 			player.sendPacket(dsu);
 			if (oe != null)
 			{
@@ -423,9 +414,13 @@ public class Door extends Creature
 			manageGroupOpen(true, getGroupName());
 			return;
 		}
-		setOpen(true);
-		broadcastStatusUpdate();
-		startAutoCloseTask();
+		
+		if (!isOpen())
+		{
+			setOpen(true);
+			broadcastStatusUpdate();
+			startAutoCloseTask();
+		}
 	}
 	
 	public void closeMe()
@@ -442,8 +437,12 @@ public class Door extends Creature
 			manageGroupOpen(false, getGroupName());
 			return;
 		}
-		setOpen(false);
-		broadcastStatusUpdate();
+		
+		if (isOpen())
+		{
+			setOpen(false);
+			broadcastStatusUpdate();
+		}
 	}
 	
 	private void manageGroupOpen(boolean open, String groupName)
@@ -616,7 +615,7 @@ public class Door extends Creature
 				player.sendPacket(new OnEventTrigger(this, _open));
 			}
 			
-			player.sendPacket(new StaticObjectInfo(this, player.isGM()));
+			player.sendPacket(new StaticObjectInfo(this));
 		}
 	}
 	

@@ -24,6 +24,7 @@ import org.l2jmobius.gameserver.data.xml.DailyMissionData;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.RewardRequest;
+import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeMissionInfo;
@@ -67,7 +68,7 @@ public class RequestExPledgeMissionReward implements ClientPacket
 		{
 			for (DailyMissionDataHolder holder : reward)
 			{
-				if (holder.isDisplayable(player))
+				if (holder.isDisplayable(player) && (!holder.isOneTime() || !player.getVariables().getIntegerList(PlayerVariables.DAILY_MISSION_ONE_TIME).contains(_id)))
 				{
 					holder.requestReward(player);
 					player.sendPacket(new ExPledgeMissionInfo(player, holder));

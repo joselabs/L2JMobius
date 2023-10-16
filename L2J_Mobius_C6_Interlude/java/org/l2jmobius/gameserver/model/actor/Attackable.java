@@ -2226,6 +2226,11 @@ public class Attackable extends Npc
 			return null;
 		}
 		
+		if (item.getCount() <= 0)
+		{
+			return null;
+		}
+		
 		final int randDropLim = 70;
 		Item ditem = null;
 		for (int i = 0; i < item.getCount(); i++)

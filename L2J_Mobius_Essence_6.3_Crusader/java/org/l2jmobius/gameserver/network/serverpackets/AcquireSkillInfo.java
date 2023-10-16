@@ -22,6 +22,7 @@ import java.util.List;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.AcquireSkillType;
 import org.l2jmobius.gameserver.model.SkillLearn;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -32,6 +33,7 @@ import org.l2jmobius.gameserver.network.ServerPackets;
  */
 public class AcquireSkillInfo extends ServerPacket
 {
+	private final Player _player;
 	private final AcquireSkillType _type;
 	private final int _id;
 	private final int _level;
@@ -65,11 +67,13 @@ public class AcquireSkillInfo extends ServerPacket
 	
 	/**
 	 * Constructor for the acquire skill info object.
+	 * @param player
 	 * @param skillType the skill learning type.
 	 * @param skillLearn the skill learn.
 	 */
-	public AcquireSkillInfo(AcquireSkillType skillType, SkillLearn skillLearn)
+	public AcquireSkillInfo(Player player, AcquireSkillType skillType, SkillLearn skillLearn)
 	{
+		_player = player;
 		_id = skillLearn.getSkillId();
 		_level = skillLearn.getSkillLevel();
 		_spCost = skillLearn.getLevelUpSp();
@@ -91,12 +95,14 @@ public class AcquireSkillInfo extends ServerPacket
 	/**
 	 * Special constructor for Alternate Skill Learning system.<br>
 	 * Sets a custom amount of SP.
+	 * @param player
 	 * @param skillType the skill learning type.
 	 * @param skillLearn the skill learn.
 	 * @param sp the custom SP amount.
 	 */
-	public AcquireSkillInfo(AcquireSkillType skillType, SkillLearn skillLearn, int sp)
+	public AcquireSkillInfo(Player player, AcquireSkillType skillType, SkillLearn skillLearn, int sp)
 	{
+		_player = player;
 		_id = skillLearn.getSkillId();
 		_level = skillLearn.getSkillLevel();
 		_spCost = sp;
@@ -112,7 +118,7 @@ public class AcquireSkillInfo extends ServerPacket
 	public void write()
 	{
 		ServerPackets.ACQUIRE_SKILL_INFO.writeId(this);
-		writeInt(_id);
+		writeInt(_player.getReplacementSkill(_id));
 		writeInt(_level);
 		writeLong(_spCost);
 		writeInt(_type.getId());

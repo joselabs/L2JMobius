@@ -19,7 +19,7 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.Collection;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.Clan.SubPledge;
@@ -41,7 +41,7 @@ public class PledgeShowMemberListAll extends ServerPacket
 		_clan = clan;
 		_pledge = pledge;
 		_pledgeId = _pledge == null ? 0 : _pledge.getId();
-		_leaderName = pledge == null ? clan.getLeaderName() : CharNameTable.getInstance().getNameById(pledge.getLeaderId());
+		_leaderName = pledge == null ? clan.getLeaderName() : CharInfoTable.getInstance().getNameById(pledge.getLeaderId());
 		_name = pledge == null ? clan.getName() : pledge.getName();
 		_members = _clan.getMembers();
 		_isSubPledge = isSubPledge;

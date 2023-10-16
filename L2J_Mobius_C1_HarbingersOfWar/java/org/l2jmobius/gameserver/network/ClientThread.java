@@ -31,7 +31,7 @@ import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import org.l2jmobius.gameserver.IdManager;
-import org.l2jmobius.gameserver.data.CharNameTable;
+import org.l2jmobius.gameserver.data.CharInfoTable;
 import org.l2jmobius.gameserver.data.ClanTable;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.SkillTable;
@@ -253,7 +253,7 @@ public class ClientThread extends Thread
 		chars[charslot].delete();
 		chars = _charFolder.listFiles((FilenameFilter) (dir, name) -> name.endsWith("_warehouse.csv"));
 		chars[charslot].delete();
-		CharNameTable.getInstance().deleteCharName(chars[charslot].getName().replaceAll("_warehouse.csv", "").toLowerCase());
+		CharInfoTable.getInstance().deleteCharName(chars[charslot].getName().replaceAll("_warehouse.csv", "").toLowerCase());
 	}
 	
 	public Player loadCharFromDisk(int charslot)
@@ -396,7 +396,7 @@ public class ClientThread extends Thread
 			out.write(cha.getFace() + ";");
 			out.write(cha.getHairStyle() + ";");
 			out.write(cha.getHairColor() + ";");
-			out.write(cha.getSex() + ";");
+			out.write(cha.isFemale() ? "1;" : "0;");
 			out.write(cha.getHeading() + ";");
 			out.write(cha.getX() + ";");
 			out.write(cha.getY() + ";");
@@ -571,7 +571,7 @@ public class ClientThread extends Thread
 			oldChar.setFace(Integer.parseInt(st.nextToken()));
 			oldChar.setHairStyle(Integer.parseInt(st.nextToken()));
 			oldChar.setHairColor(Integer.parseInt(st.nextToken()));
-			oldChar.setSex(Integer.parseInt(st.nextToken()));
+			oldChar.setSex(Integer.parseInt(st.nextToken()) != 0);
 			oldChar.setHeading(Integer.parseInt(st.nextToken()));
 			oldChar.setX(Integer.parseInt(st.nextToken()));
 			oldChar.setY(Integer.parseInt(st.nextToken()));

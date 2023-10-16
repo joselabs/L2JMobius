@@ -55,7 +55,7 @@
 	</skill>
 	<skill id="45501" toLevel="1" name="Destroyer's Roar">
 		<!-- Speed -90% -->
-		<icon>icon.skill1627</icon>
+		<icon>icon.skill10514</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
@@ -167,7 +167,7 @@
 		</effects>
 	</skill>
 	<skill id="45505" toLevel="1" name="Vampiric Mist">
-		<!-- Speed -30% Atk. Spd. -30% P. Atk. -30% P. Accuracy -8 -->
+		<!-- Speed -30%. Atk. Spd. -30%. P. Atk. -30%. P. Accuracy -8 -->
 		<icon>icon.skill1495</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
@@ -205,7 +205,7 @@
 		</effects>
 	</skill>
 	<skill id="45506" toLevel="4" name="Armor Break">
-		<!-- Speed $s1 -->
+		<!-- Speed -30% -->
 		<icon>icon.skill0516</icon>
 		<castRange>40</castRange>
 		<abnormalLevel>1</abnormalLevel>
@@ -379,8 +379,8 @@
 		</effects>
 	</skill>
 	<skill id="45510" toLevel="35" name="Freezing Strike">
-		<!-- Speed $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Speed -20% -->
+		<icon>icon.skill0105</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45511" toLevel="1" name="Hamstring Shot">
@@ -433,7 +433,7 @@
 	</skill>
 	<skill id="45513" toLevel="65" name="Bloody Strike">
 		<!-- Constantly drains HP. -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.skill0223</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45514" toLevel="9" name="Inferno">
@@ -575,7 +575,7 @@
 		</effects>
 	</skill>
 	<skill id="45516" toLevel="3" name="Fire Vortex">
-		<!-- Atk. Spd. -10% Casting Spd. -10% Speed -10% Constantly consumes MP. -->
+		<!-- Atk. Spd. -10%. Casting Spd. -10%. Speed -10%. Constantly consumes MP. -->
 		<icon>icon.skill1339</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -626,7 +626,7 @@
 		</effects>
 	</skill>
 	<skill id="45517" toLevel="3" name="Ice Vortex">
-		<!-- Speed -20% Constantly consumes MP. -->
+		<!-- Speed -20%. Constantly consumes MP. -->
 		<icon>icon.skill1340</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
@@ -665,7 +665,7 @@
 		</effects>
 	</skill>
 	<skill id="45518" toLevel="3" name="Wind Vortex">
-		<!-- Atk. Spd. -15% Casting Spd. -15% Constantly consumes MP. -->
+		<!-- Atk. Spd. -15%. Casting Spd. -15%. Constantly consumes MP. -->
 		<icon>icon.skill1341</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
@@ -708,7 +708,7 @@
 		</effects>
 	</skill>
 	<skill id="45519" toLevel="3" name="Dark Vortex">
-		<!-- P. Critical Rate -10% M. Skill Critical Rate -10% Constantly consumes MP. -->
+		<!-- P. Critical Rate -10%. M. Skill Critical Rate -10%. Constantly consumes MP. -->
 		<icon>icon.skill1343</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -801,8 +801,8 @@
 		</effects>
 	</skill>
 	<skill id="45521" toLevel="15" name="Bleed">
-		<!-- Speed -20% Constantly drains HP. -->
-		<icon>icon.skill19309</icon>
+		<!-- Speed -20%. Constantly drains HP. -->
+		<icon>icon.skill10300</icon>
 		<castRange>600</castRange>
 		<abnormalLevel>
 			<value level="1">3</value>
@@ -879,7 +879,7 @@
 		</effects>
 	</skill>
 	<skill id="45522" toLevel="2" name="Flying Dagger">
-		<!-- Atk. Spd. -10% Casting Spd. -10% Speed -20% Constantly drains MP. -->
+		<!-- Atk. Spd. -10%. Casting Spd. -10%. Speed -20%. Constantly drains MP. -->
 		<icon>icon.flying_dagger</icon>
 		<castRange>600</castRange>
 		<abnormalLevel>
@@ -924,20 +924,45 @@
 		</effects>
 	</skill>
 	<skill id="45530" toLevel="1" name="Tranquility">
-		<!-- For party members For $s1 Max HP $s2 Recovers $s4 HP per $s3 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- For party members. For 12 sec. Max HP +5000. Recovers 100% HP per 3 sec. -->
+		<icon>icon.serenity</icon>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>12</abnormalTime>
+		<magicLevel>76</magicLevel>
+		<mpConsume>105</mpConsume>
+		<itemConsumeCount>50</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<effectPoint>100</effectPoint>
+		<affectRange>1200</affectRange>
+		<basicProperty>MAGIC</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="MaxHp">
+				<amount>5000</amount>
+				<mode>DIFF</mode>
+				<heal>true</heal>
+			</effect>
+			<effect name="HealOverTime">
+				<power>50000</power>
+				<ticks>3</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="45531" toLevel="1" name="Tranquility">
-		<icon>icon.skill0000</icon>
+		<icon>icon.serenity</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45532" toLevel="1" name="Tranquility">
-		<icon>icon.skill0000</icon>
+		<icon>icon.serenity</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45533" toLevel="1" name="Exclusion">
-		<!-- <Knockback/ Suppression skill> Knocks back the target and enemies around them. Deals magic damage with 130 power. Duration: $s1 Greatly decreases Atk. Spd./ Casting Spd./ Speed. P. Skill Cooldown $s3 M. Skill Cooldown $s3 Duration: $s2 Speed buffs are disabled. Gap-closing skills cannot be used. -->
+		<!-- <Knockback/ Suppression skill>. Knocks back the target and enemies around them. Deals magic damage with 130 power. Duration: 5 sec. Greatly decreases Atk. Spd./ Casting Spd./ Speed. P. Skill Cooldown +5%. M. Skill Cooldown +5%. Duration: 10 sec. Speed buffs are disabled. Gap-closing skills cannot be used. -->
 		<icon>icon.expel</icon>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>-500</effectPoint>
@@ -969,12 +994,12 @@
 		</effects>
 	</skill>
 	<skill id="45534" toLevel="1" name="Dark Disruption">
-		<!-- Deals magic damage to the target and enemies around them. Power 130. Duration: $s1 HP Recovery Potions' Effect $s2 Removes the following buffs and blocks them for 10 sec.: - Special class transformation -->
-		<icon>icon.skill0000</icon>
+		<!-- Deals magic damage to the target and enemies around them. Power 130. Duration: 10 sec. HP Recovery Potions' Effect -500. Removes the following buffs and blocks them for 10 sec.:. - Special class transformation -->
+		<icon>icon.banish</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45535" toLevel="1" name="Exclusion">
-		<!-- Greatly decreases Atk. Spd./ Casting Spd./ Speed. P. Skill Cooldown +5% M. Skill Cooldown +5% -->
+		<!-- Greatly decreases Atk. Spd./ Casting Spd./ Speed. P. Skill Cooldown +5%. M. Skill Cooldown +5% -->
 		<icon>icon.expel</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>200</affectRange>
@@ -1007,7 +1032,7 @@
 		</effects>
 	</skill>
 	<skill id="45536" toLevel="1" name="Tranquility">
-		<icon>icon.skill0000</icon>
+		<icon>icon.serenity</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45537" toLevel="1" name="Exclusion">
@@ -1037,8 +1062,8 @@
 		</effects>
 	</skill>
 	<skill id="45538" toLevel="1" name="Meteor">
-		<!-- <Skill with fixed cooldown> Decreases CP of the target and nearby enemies for $s1 and deals three magic strikes with $s2 power. Enemies with a debuff/ anomaly applied take additional damage. Duration: $s3 M. Def. $s4 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Skill with fixed cooldown>. Decreases CP of the target and nearby enemies for 30% and deals three magic strikes with 380 power. Enemies with a debuff/ anomaly applied take additional damage. Duration: 3 sec. M. Def. -30% -->
+		<icon>icon.meteor</icon>
 		<operateType>A1</operateType>
 		<abnormalTime>2</abnormalTime>
 		<mpConsume>131</mpConsume>
@@ -1072,10 +1097,10 @@
 		</effects>
 	</skill>
 	<skill id="45539" toLevel="1" name="Rolling Dice">
-		<!-- <Skill with fixed cast time> For $s1 P. Atk. $s2 P. Critical Rate $s3 P. Critical Damage $s4 P. Skill Critical Rate $s4 P. Skill Critical Damage $s4 Additionally one of the following effects: - Atk. Spd. $s6 - Speed $s5 - Max HP $s6 -->
+		<!-- <Skill with fixed cast time>. For 20 min. P. Atk. +60%. P. Critical Rate +15. P. Critical Damage +15%. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. Additionally one of the following effects:. - Atk. Spd. +55%. - Speed +30. - Max HP +55% -->
+		<icon>icon.rolling_dice</icon>
 		<abnormalType>ROLLING_DICE</abnormalType>
 		<abnormalLevel>1</abnormalLevel>
-		<icon>icon.rolling_dice</icon>
 		<abnormalTime>1200</abnormalTime>
 		<hitTime>2000</hitTime>
 		<magicLevel>76</magicLevel>
@@ -1095,10 +1120,10 @@
 		</effects>
 	</skill>
 	<skill id="45540" toLevel="1" name="Rolling Dice - Haste">
-		<!-- P. Atk. $s1 P. Critical Rate $s2 P. Critical Damage $s3 P. Skill Critical Rate $s3 P. Skill Critical Damage $s3 Atk. Spd. $s4 -->
+		<!-- P. Atk. +60%. P. Critical Rate +15. P. Critical Damage +15%. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. Atk. Spd. +55% -->
+		<icon>icon.rolling_dice_buff1</icon>
 		<abnormalType>ROLLING_DICE</abnormalType>
 		<abnormalLevel>2</abnormalLevel>
-		<icon>icon.rolling_dice_buff1</icon>
 		<abnormalTime>1200</abnormalTime>
 		<effectPoint>100</effectPoint>
 		<magicLevel>76</magicLevel>
@@ -1136,7 +1161,7 @@
 		</effects>
 	</skill>
 	<skill id="45541" toLevel="1" name="Rolling Dice - Wind Walk">
-		<!-- P. Atk. $s1 P. Critical Rate $s2 P. Critical Damage $s3 P. Skill Critical Rate $s3 P. Skill Critical Damage $s3 Speed $s4 -->
+		<!-- P. Atk. +60%. P. Critical Rate +15. P. Critical Damage +15%. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. Speed +30 -->
 		<icon>icon.rolling_dice_buff2</icon>
 		<abnormalType>ROLLING_DICE</abnormalType>
 		<abnormalLevel>2</abnormalLevel>
@@ -1178,7 +1203,7 @@
 		</effects>
 	</skill>
 	<skill id="45542" toLevel="1" name="Rolling Dice - Resilience">
-		<!-- P. Atk. $s1 P. Critical Rate $s2 P. Critical Damage $s3 P. Skill Critical Rate $s3 P. Skill Critical Damage $s3 Max HP $s4 -->
+		<!-- P. Atk. +60%. P. Critical Rate +15. P. Critical Damage +15%. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. Max HP +55% -->
 		<icon>icon.rolling_dice_buff3</icon>
 		<abnormalType>ROLLING_DICE</abnormalType>
 		<abnormalLevel>2</abnormalLevel>
@@ -1220,11 +1245,8 @@
 		</effects>
 	</skill>
 	<skill id="45543" toLevel="2" name="Song of Wind">
-		<!-- Elven wind-praising song. Speed $s1 Suppression Resistance $s2 -->
-		<icon>
-			<value level="1">icon.skill0305</value>
-			<value level="2">icon.song_of_wind_02</value>
-		</icon>
+		<!-- Elven wind-praising song. Speed +30. Suppression Resistance +5% -->
+		<icon>icon.song_of_wind_02</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1269,11 +1291,8 @@
 		</effects>
 	</skill>
 	<skill id="45544" toLevel="2" name="Dance of Fury">
-		<!-- Dark Elven fury-praising dance. Atk. Spd. $s1 Casting Spd. $s2 Skill Cooldown $s3 -->
-		<icon>
-			<value level="1">icon.skill0310</value>
-			<value level="2">icon.dance_of_fury_02</value>
-		</icon>
+		<!-- Dark Elven fury-praising dance. Atk. Spd. +150. Casting Spd. +100. Skill Cooldown -5% -->
+		<icon>icon.dance_of_fury_02</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1326,31 +1345,31 @@
 		</effects>
 	</skill>
 	<skill id="45545" toLevel="1" name="Meteor">
-		<icon>icon.skill0000</icon>
+		<icon>icon.meteor</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45546" toLevel="1" name="Meteor">
-		<!-- The meteor deals continuous damage. M. Def. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- The meteor deals continuous damage. M. Def. -30% -->
+		<icon>icon.meteor</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45547" toLevel="15" name="Hellfire">
-		<!-- P. Def. $s1 M. Def. $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- P. Def. -40%. M. Def. -40% -->
+		<icon>icon.hell_fire</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45548" toLevel="1" name="Tranquility">
-		<icon>icon.skill0000</icon>
+		<icon>icon.serenity</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45549" toLevel="1" name="Shillien's Curse">
-		<!-- Sword/ Blunt Resistance -10% Skill Power -10% -->
-		<icon>icon.skill0000</icon>
+		<!-- Sword/ Blunt Resistance -10%. Skill Power -10% -->
+		<icon>icon.curse_of_shilen</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45550" toLevel="1" name="Shillien's Curse">
-		<!-- With a certain chance, removes up to 3 buffs. Max HP/ MP/ CP -20% Skill Power -10% -->
-		<icon>icon.skill0000</icon>
+		<!-- With a certain chance, removes up to 3 buffs. Max HP/ MP/ CP -20%. Skill Power -10% -->
+		<icon>icon.curse_of_shilen</icon>
 		<operateType>A1</operateType>
 	</skill>
 </list>

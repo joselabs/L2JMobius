@@ -13,8 +13,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="19301" toLevel="9" name="Acid Swarm">
-		<!-- Creates Danger Zone for $s1 to decrease nearby enemies' P. Attack/Defense, M. Defense, Speed and Shield Defense and block any magical skills. -->
+	<skill id="19301" toLevel="9" name="Istina Acid Swarm">
+		<!-- Creates Danger Zone which sprays poison onto nearby targets for 15 seconds. Decreases P. Atk., Speed, Shield Defense, P. Def., and M. Def. Inflicts Poison that blocks the use of magic skills. -->
 		<icon>icon.skill19301</icon>
 		<operateType>A1</operateType>
 		<coolTime>500</coolTime>
@@ -103,8 +103,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="19302" toLevel="9" name="Thrown Acid Sworm">
-		<!-- Poisoned. Decreases Speed/Attack/P. Defense/M. Defense/Shield Defense, blocks magical skills and drains HP by $s1 every second. -->
+	<skill id="19302" toLevel="9" name="Thrown Acid Swarm">
+		<!-- Poisoned. Decreases Speed/P. Atk/P. Def/M. Def/Shield Defense, blocks magic skills and drains HP by 780 every second. -->
 		<icon>icon.skill19301</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -192,7 +192,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="19303" toLevel="7" name="Right Angle Reverse">
-		<!-- Moves to the right side of the target to attempt Deadly Attack with $s1 power added to P. Attack. Causes Bleed on the target for $s2. Half-kill is possible. Requires dagger/dual dagger. -->
+		<!-- Moves to the right side of the target to attempt Deadly Attack with 35530 power added to P. Atk.. Causes Bleed on the target for 15 seconds. Half-kill is possible. Requires dagger/dual dagger. -->
 		<icon>icon.skill19303</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1</abnormalTime>
@@ -265,7 +265,7 @@
 		</effects>
 	</skill>
 	<skill id="19304" toLevel="1" name="Easterly Wind Strike">
-		<!-- Increases critical rate/critical damage inflicted from the side and critical rate/critical damage inflicted from behind by 20% and 10%, respectively. -->
+		<!-- Increases critical rate/critical damage inflicted from the side by 20% and critical rate/critical damage inflicted from behind by 10%. -->
 		<icon>icon.skill10705</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
@@ -298,15 +298,15 @@
 				<position>BACK</position>
 			</effect>
 			<effect name="ReuseSkillById">
-				<skillId>19303</skillId>
+				<skillId>19303</skillId> <!-- Right Angle Reverse -->
 			</effect>
 			<effect name="ReuseSkillById">
-				<skillId>10705</skillId>
+				<skillId>10705</skillId> <!-- Easterly Wind Strike -->
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19305" toLevel="7" name="Shadow Reverse">
-		<!-- Attempts Deadly Attack on the target with $s1 power added to P. Attack and moves backward. Additionally, decreases Accuracy by $s3 for $s2. Half-kill is possible. Requires dagger/dual dagger. -->
+		<!-- Teleports to the back of the target and attempts Deadly Attack with 38160 power added to P. Atk. Additionally, decreases target Accuracy by 5 for 3 seconds. Half-kill is possible. Requires dagger/dual dagger. -->
 		<icon>icon.skill19305</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -383,7 +383,7 @@
 		</effects>
 	</skill>
 	<skill id="19306" toLevel="1" name="Coin of Maphr">
-		<!-- Each party member will receive a random set of effects based on a coin flip: Increased P./M. Atk and P./M. Skill Power OR Increased Head size and P./M. Def. Consumes 7777 Adena. Requires dagger/dual dagger. -->
+		<!-- Leave your luck to the thumb -->
 		<icon>icon.skill19306</icon>
 		<operateType>A1</operateType>
 		<itemConsumeCount>7777</itemConsumeCount>
@@ -409,8 +409,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="19307" toLevel="2" name="Lucky Coin: Attack">
-		<!-- Maphr's Blessing increases Attack by $s2, M. Attack by $s3, and P./M. Skill Power by $s4 for $s1. -->
+	<skill id="19307" toLevel="2" name="Lucky Heads">
+		<!-- Maphr Blessing increases P. Atk. by 7%, M. Atk. by 14%, and P./M. Skill Power by 5% for 1 minute. -->
 		<icon>icon.skill19307</icon>
 		<effectPoint>669</effectPoint>
 		<operateType>A2</operateType>
@@ -438,8 +438,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="19308" toLevel="1" name="Lucky Coin: Defense">
-		<!-- Maphr's Blessing increases allly's P. Defense/M. Defense by 10% and enlarges their head size for 1 minute. -->
+	<skill id="19308" toLevel="1" name="Lucky Tails">
+		<!-- Energy of Luck increases party members P. Def./M. Def. by 10% and enlarges their head size for 1 minute. -->
 		<icon>icon.skill19308</icon>
 		<effectPoint>669</effectPoint>
 		<operateType>A2</operateType>
@@ -461,7 +461,7 @@
 		</effects>
 	</skill>
 	<skill id="19309" toLevel="7" name="Reverse Plunder">
-		<!-- Attempts Deadly Attack and item looting with $s1 power added to P. Attack. Requires dagger/dual dagger. -->
+		<!-- Attempts Deadly Attack with 36840 power added to P. Atk. and steals an item. Requires dagger/dual dagger. -->
 		<icon>icon.skill19309</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
@@ -515,8 +515,8 @@
 			<effect name="Plunder" />
 		</effects>
 	</skill>
-	<skill id="19311" toLevel="3" name="Dwarven Flare Bluff">
-		<!-- Fires Special Flare to inflict Bluff on enemies in front for $s1. Requires dagger/dual dagger. Consumes $s2 Soulstones. -->
+	<skill id="19311" toLevel="3" name="Dwarven Special Bang">
+		<!-- Fires Special Flare to inflict Bluff on enemies in front for 3 seconds. Requires dagger/dual dagger. Consumes 2 Soulstones. -->
 		<icon>icon.skill0537</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -566,7 +566,7 @@
 		</effects>
 	</skill>
 	<skill id="19312" toLevel="1" name="Holy Stance">
-		<!-- Decreases damage received by 5% and increases Holy Defense by 100, and applies Holy to attribute magic. -->
+		<!-- Decreases damage received by 5% and increases Divinity Defense by 100, and applies Divinity to attribute magic. -->
 		<icon>icon.skill19312</icon>
 		<toggleGroupId>1</toggleGroupId>
 		<isNecessaryToggle>true</isNecessaryToggle>
@@ -616,7 +616,7 @@
 				<attribute>HOLY</attribute>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>19404</skillId>
+				<skillId>19404</skillId> <!-- Fire Attribute -->
 				<skillLevel>5</skillLevel> <!-- Holy Attribute -->
 			</effect>
 		</effects>
@@ -641,13 +641,13 @@
 				<attribute>DARK</attribute>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>19404</skillId>
+				<skillId>19404</skillId> <!-- Fire Attribute -->
 				<skillLevel>6</skillLevel> <!-- Dark Attribute -->
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19314" toLevel="11" name="Elemental Spike (Dark)">
-		<!-- Deals M. Attack of $s1 power added with attribute damage on the target and decreases the corresponding attribute defense. Over-hit is possible. -->
+		<!-- Deals M. Atk. of 133 power added with attribute damage on the target and decreases the corresponding attribute defense. Over-hit. -->
 		<icon>icon.skill11011</icon>
 		<operateType>A1</operateType>
 		<reuseDelayGroup>11011</reuseDelayGroup>
@@ -737,7 +737,7 @@
 		</effects>
 	</skill>
 	<skill id="19315" toLevel="4" name="Mana Burst">
-		<!-- Increases M. Attack by $s2 for $s1. Able to cast Quadruple Elemental Blaster if reached level 4. -->
+		<!-- For 5 seconds, increases M. Atk. by 50%. Able to cast Quadruple Elemental Blast if reached level 4. -->
 		<icon>icon.skill11046</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -798,7 +798,7 @@
 		</endEffects>
 	</skill>
 	<skill id="19316" toLevel="8" name="Elemental Final Storm (Dark)">
-		<!-- Deals M. Attack of $s1 power added with attribute damage on the target and the enemies near it. -->
+		<!-- Deals M. Atk. of 262 power added with attribute damage on the target and the enemies near it. -->
 		<icon>icon.skill11040</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>150</affectRange>

@@ -16,8 +16,7 @@
  */
 package handlers.bypasshandlers;
 
-import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.handler.IBypassHandler;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -54,7 +53,7 @@ public class ChangePlayerName implements IBypassHandler
 			player.sendMessage("Name must only contain alphanumeric characters.");
 			return false;
 		}
-		if (CharNameTable.getInstance().doesCharNameExist(newName))
+		if (CharInfoTable.getInstance().doesCharNameExist(newName))
 		{
 			player.sendMessage("Name " + newName + " already exists.");
 			return false;
@@ -65,10 +64,7 @@ public class ChangePlayerName implements IBypassHandler
 		
 		// Set name and proceed.
 		player.setName(newName);
-		if (Config.CACHE_CHAR_NAMES)
-		{
-			CharNameTable.getInstance().addName(player);
-		}
+		CharInfoTable.getInstance().addName(player);
 		player.storeMe();
 		
 		player.sendMessage("Your name has been changed.");

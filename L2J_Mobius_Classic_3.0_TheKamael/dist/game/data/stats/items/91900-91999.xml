@@ -13,6 +13,8 @@
 		<set name="weight" val="1300" />
 		<set name="price" val="13100000" />
 		<set name="enchant_enabled" val="true" />
+		<set name="ensoulNormalSlots" val="1" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">185</stat>
 			<stat type="mAtk">135</stat>
@@ -35,6 +37,8 @@
 		<set name="weight" val="1300" />
 		<set name="price" val="8680000" />
 		<set name="enchant_enabled" val="true" />
+		<set name="ensoulNormalSlots" val="1" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">167</stat>
 			<stat type="mAtk">124</stat>
@@ -57,6 +61,8 @@
 		<set name="weight" val="1300" />
 		<set name="price" val="26968400" />
 		<set name="enchant_enabled" val="true" />
+		<set name="ensoulNormalSlots" val="1" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">239</stat>
 			<stat type="mAtk">165</stat>
@@ -79,6 +85,8 @@
 		<set name="weight" val="1300" />
 		<set name="price" val="20741000" />
 		<set name="enchant_enabled" val="true" />
+		<set name="ensoulNormalSlots" val="1" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">221</stat>
 			<stat type="mAtk">156</stat>
@@ -101,6 +109,8 @@
 		<set name="weight" val="1300" />
 		<set name="price" val="14098000" />
 		<set name="enchant_enabled" val="true" />
+		<set name="ensoulNormalSlots" val="1" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">203</stat>
 			<stat type="mAtk">129</stat>
@@ -123,6 +133,8 @@
 		<set name="weight" val="1300" />
 		<set name="price" val="42759400" />
 		<set name="enchant_enabled" val="true" />
+		<set name="ensoulNormalSlots" val="1" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">267</stat>
 			<stat type="mAtk">182</stat>
@@ -194,7 +206,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="91912" name="HP Potion" type="EtcItem">
-		<!-- Instantly recovers 50 HP. The remaining points are used to recover CP. -->
+		<!-- Restores 50 HP. The remaining points are used to restore CP. -->
 		<set name="icon" val="icon.etc_lesser_potion_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -220,6 +232,19 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="1391" min="1" max="1" chance="12.5" /> <!-- Spellbook: Empower -->
+			<item id="1398" min="1" max="1" chance="12.5" /> <!-- Spellbook: Focus -->
+			<item id="5815" min="1" max="1" chance="12.5" /> <!-- Spellbook: Wild Magic -->
+			<item id="3099" min="1" max="1" chance="12.5" /> <!-- Spellbook: Haste -->
+			<item id="1401" min="1" max="1" chance="12.5" /> <!-- Spellbook: Acumen -->
+			<item id="3101" min="1" max="1" chance="12.5" /> <!-- Spellbook: Death Whisper -->
+			<item id="8397" min="1" max="1" chance="12.5" /> <!-- Spellbook: Clarity -->
+			<item id="1392" min="1" max="1" chance="12.5" /> <!-- Spellbook: Berserker Spirit -->
+		</capsuled_items>
 	</item>
 	<item id="91914" name="Aden Amulet Chest" type="EtcItem">
 		<!-- Double-click to obtain an amulet for learning Orc skills. <Amulet List>. Amulet: Chant of Focus, Amulet: Chant of Wild Magic, Amulet: Chant of Empower, Amulet: Chant of Acumen, Amulet: Chant of Haste, Amulet: Chant of Clarity, Amulet: Chant of Death Whisper, Amulet: Chant of Berserker Spirit. -->
@@ -231,6 +256,19 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="1519" min="1" max="1" chance="12.5" /> <!-- Amulet: Pa'agrio's Gift -->
+			<item id="1523" min="1" max="1" chance="12.5" /> <!-- Amulet: Chant of Shielding -->
+			<item id="1521" min="1" max="1" chance="12.5" /> <!-- Amulet: Chant of Fire -->
+			<item id="3116" min="1" max="1" chance="12.5" /> <!-- Amulet: Chant of Fury -->
+			<item id="1518" min="1" max="1" chance="12.5" /> <!-- Amulet: Chant of Flame -->
+			<item id="3118" min="1" max="1" chance="12.5" /> <!-- Amulet: Chant of Rage -->
+			<item id="91837" min="1" max="1" chance="12.5" /> <!-- Amulet: Chant of Clarity -->
+			<item id="4205" min="1" max="1" chance="12.5" /> <!-- Amulet: Pa'agrio's Rage -->
+		</capsuled_items>
 	</item>
 	<item id="91915" name="Enhanced Ancient Warrior's Sword" type="Weapon">
 		<!-- Cannot be enchanted/ augmented, runes cannot be inserted. -->
@@ -292,11 +330,11 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50152" level="1" />
+			<skill id="50152" level="1" /> <!-- Scroll of Escape: Effective Training -->
 		</skills>
 	</item>
 	<item id="91918" name="Scroll of Escape: Captain Bathis" type="EtcItem">
-		<!-- Teleports to Captain Bathis in Gludio Castle. -->
+		<!-- Teleports to Captain Bathis in Giran Castle. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i04" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -311,11 +349,11 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50154" level="1" />
+			<skill id="50154" level="1" /> <!-- Scroll of Escape: Captain Bathis -->
 		</skills>
 	</item>
 	<item id="91919" name="Scroll of Escape: Captain Bathis" type="EtcItem">
-		<!-- Teleports to Captain Bathis in Gludio Castle. -->
+		<!-- Teleports to Captain Bathis in Giran Castle. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i04" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -330,7 +368,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="51386" level="1" />
+			<skill id="51386" level="1" /> <!-- Scroll of Escape: Captain Bathis -->
 		</skills>
 	</item>
 	<item id="91920" name="Scroll: Magic Break" type="EtcItem">
@@ -489,7 +527,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="51387" level="5" />
+			<skill id="51387" level="5" /> <!-- Adventurer's Mark -->
 		</skills>
 	</item>
 	<item id="91932" name="Adventurer's Brooch" type="Armor">
@@ -781,7 +819,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="1" />
+			<skill id="50169" level="1" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91955" name="Scroll of Escape: Tower of Insolence (2nd Floor)" type="EtcItem">
@@ -801,7 +839,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="2" />
+			<skill id="50169" level="2" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91956" name="Scroll of Escape: Tower of Insolence (3rd Floor)" type="EtcItem">
@@ -821,7 +859,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="3" />
+			<skill id="50169" level="3" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91957" name="Scroll of Escape: Tower of Insolence (4th Floor)" type="EtcItem">
@@ -841,7 +879,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="4" />
+			<skill id="50169" level="4" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91958" name="Scroll of Escape: Tower of Insolence (5th Floor)" type="EtcItem">
@@ -861,7 +899,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="5" />
+			<skill id="50169" level="5" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91959" name="Scroll of Escape: Tower of Insolence (6th Floor)" type="EtcItem">
@@ -881,7 +919,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="6" />
+			<skill id="50169" level="6" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91960" name="Scroll of Escape: Tower of Insolence (7th Floor)" type="EtcItem">
@@ -901,7 +939,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="7" />
+			<skill id="50169" level="7" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91961" name="Scroll of Escape: Tower of Insolence (8th Floor)" type="EtcItem">
@@ -921,7 +959,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="8" />
+			<skill id="50169" level="8" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91962" name="Scroll of Escape: Tower of Insolence (9th Floor)" type="EtcItem">
@@ -941,7 +979,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="9" />
+			<skill id="50169" level="9" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91963" name="Scroll of Escape: Tower of Insolence (10th Floor)" type="EtcItem">
@@ -961,7 +999,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="10" />
+			<skill id="50169" level="10" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91964" name="Scroll of Escape: Tower of Insolence (11th Floor)" type="EtcItem">
@@ -981,7 +1019,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="11" />
+			<skill id="50169" level="11" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91965" name="Scroll of Escape: Tower of Insolence (12th Floor)" type="EtcItem">
@@ -1001,7 +1039,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50169" level="12" />
+			<skill id="50169" level="12" /> <!-- Scroll of Escape: Tower of Insolence (1st Floor) -->
 		</skills>
 	</item>
 	<item id="91966" name="Scroll: Enchant Ring of Insolence" type="EtcItem">

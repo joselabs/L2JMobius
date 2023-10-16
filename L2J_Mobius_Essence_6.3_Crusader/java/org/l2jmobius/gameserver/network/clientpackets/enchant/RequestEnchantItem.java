@@ -21,6 +21,9 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
+import org.l2jmobius.gameserver.data.xml.EnchantChallengePointData;
+import org.l2jmobius.gameserver.data.xml.EnchantChallengePointData.EnchantChallengePointsItemInfo;
+import org.l2jmobius.gameserver.data.xml.EnchantChallengePointData.EnchantChallengePointsOptionInfo;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
 import org.l2jmobius.gameserver.enums.ItemSkillType;
@@ -44,6 +47,7 @@ import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.enchant.EnchantResult;
+import org.l2jmobius.gameserver.network.serverpackets.enchant.challengepoint.ExEnchantChallengePointInfo;
 import org.l2jmobius.gameserver.util.Broadcast;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -57,7 +61,7 @@ public class RequestEnchantItem implements ClientPacket
 	public void read(ReadablePacket packet)
 	{
 		_objectId = packet.readInt();
-		packet.readByte(); // Unknown.
+		packet.readByte(); // Unknown boolean.
 	}
 	
 	@Override
@@ -133,13 +137,13 @@ public class RequestEnchantItem implements ClientPacket
 		}
 		
 		// Fast auto-enchant cheat check.
-		if ((request.getTimestamp() == 0) || ((System.currentTimeMillis() - request.getTimestamp()) < 1000))
-		{
-			Util.handleIllegalPlayerAction(player, player + " use autoenchant program ", Config.DEFAULT_PUNISH);
-			player.removeRequest(request.getClass());
-			player.sendPacket(new EnchantResult(EnchantResult.ERROR, null, null, 0));
-			return;
-		}
+		// if ((request.getTimestamp() == 0) || ((System.currentTimeMillis() - request.getTimestamp()) < 600))
+		// {
+		// Util.handleIllegalPlayerAction(player, player + " use autoenchant program ", Config.DEFAULT_PUNISH);
+		// player.removeRequest(request.getClass());
+		// player.sendPacket(new EnchantResult(EnchantResult.ERROR, null, null, 0));
+		// return;
+		// }
 		
 		// Attempting to destroy scroll.
 		if (player.getInventory().destroyItem("Enchant", scroll.getObjectId(), 1, player, item) == null)
@@ -174,6 +178,19 @@ public class RequestEnchantItem implements ClientPacket
 			}
 			
 			final EnchantResultType resultType = scrollTemplate.calculateSuccess(player, item, supportTemplate);
+			final EnchantChallengePointsItemInfo info = EnchantChallengePointData.getInstance().getInfoByItemId(item.getId());
+			int challengePointsGroupId = -1;
+			int challengePointsOptionIndex = -1;
+			if (info != null)
+			{
+				final int groupId = info.groupId();
+				if (groupId == player.getChallengeInfo().getChallengePointsPendingRecharge()[0])
+				{
+					challengePointsGroupId = player.getChallengeInfo().getChallengePointsPendingRecharge()[0];
+					challengePointsOptionIndex = player.getChallengeInfo().getChallengePointsPendingRecharge()[1];
+				}
+			}
+			
 			switch (resultType)
 			{
 				case ERROR:
@@ -195,15 +212,62 @@ public class RequestEnchantItem implements ClientPacket
 					// Increase enchant level only if scroll's base template has chance, some armors can success over +20 but they shouldn't have increased.
 					else if (scrollTemplate.getChance(player, item) > 0)
 					{
+						if (item.isEquipped())
+						{
+							item.clearSpecialAbilities();
+							item.clearEnchantStats();
+						}
+						
 						if (supportTemplate != null)
 						{
 							item.setEnchantLevel(Math.min(item.getEnchantLevel() + Rnd.get(supportTemplate.getRandomEnchantMin(), supportTemplate.getRandomEnchantMax()), supportTemplate.getMaxEnchantLevel()));
 						}
-						else
+						if (supportTemplate == null)
 						{
 							item.setEnchantLevel(Math.min(item.getEnchantLevel() + Rnd.get(scrollTemplate.getRandomEnchantMin(), scrollTemplate.getRandomEnchantMax()), scrollTemplate.getMaxEnchantLevel()));
 						}
+						else
+						{
+							int enchantValue = 1;
+							if ((challengePointsGroupId > 0) && (challengePointsOptionIndex == EnchantChallengePointData.OPTION_OVER_UP_PROB))
+							{
+								final EnchantChallengePointsOptionInfo optionInfo = EnchantChallengePointData.getInstance().getOptionInfo(challengePointsGroupId, challengePointsOptionIndex);
+								if ((optionInfo != null) && (item.getEnchantLevel() >= optionInfo.minEnchant()) && (item.getEnchantLevel() <= optionInfo.maxEnchant()) && (Rnd.get(100) < optionInfo.chance()))
+								{
+									enchantValue = 2;
+								}
+							}
+							item.setEnchantLevel(item.getEnchantLevel() + enchantValue);
+						}
+						
+						if (item.isEquipped())
+						{
+							item.applySpecialAbilities();
+							item.applyEnchantStats();
+						}
+						
 						item.updateDatabase();
+						
+						iu.addModifiedItem(item);
+						if (scroll.getCount() > 0)
+						{
+							iu.addModifiedItem(scroll);
+						}
+						else
+						{
+							iu.addRemovedItem(scroll);
+						}
+						if (support != null)
+						{
+							if (support.getCount() > 0)
+							{
+								iu.addModifiedItem(support);
+							}
+							else
+							{
+								iu.addRemovedItem(support);
+							}
+						}
 					}
 					player.sendPacket(new EnchantResult(EnchantResult.SUCCESS, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
 					if (Config.LOG_ITEM_ENCHANTS)
@@ -268,11 +332,21 @@ public class RequestEnchantItem implements ClientPacket
 				}
 				case FAILURE:
 				{
-					if (scrollTemplate.isSafe())
+					boolean challengePointsSafe = false;
+					if ((challengePointsGroupId > 0) && (challengePointsOptionIndex == EnchantChallengePointData.OPTION_NUM_PROTECT_PROB))
+					{
+						final EnchantChallengePointsOptionInfo optionInfo = EnchantChallengePointData.getInstance().getOptionInfo(challengePointsGroupId, challengePointsOptionIndex);
+						if ((optionInfo != null) && (item.getEnchantLevel() >= optionInfo.minEnchant()) && (item.getEnchantLevel() <= optionInfo.maxEnchant()) && (Rnd.get(100) < optionInfo.chance()))
+						{
+							challengePointsSafe = true;
+						}
+					}
+					
+					if (challengePointsSafe || scrollTemplate.isSafe())
 					{
 						// Safe enchant: Remain old value.
 						player.sendPacket(SystemMessageId.ENCHANT_FAILED_THE_ENCHANT_SKILL_FOR_THE_CORRESPONDING_ITEM_WILL_BE_EXACTLY_RETAINED);
-						player.sendPacket(new EnchantResult(EnchantResult.SAFE_FAIL, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
+						player.sendPacket(new EnchantResult(EnchantResult.SAFE_FAIL_02, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
 						if (Config.LOG_ITEM_ENCHANTS)
 						{
 							final StringBuilder sb = new StringBuilder();
@@ -324,20 +398,42 @@ public class RequestEnchantItem implements ClientPacket
 							player.broadcastUserInfo();
 						}
 						
-						if (scrollTemplate.isBlessed() || scrollTemplate.isBlessedDown() || scrollTemplate.isCursed() /* || ((supportTemplate != null) && supportTemplate.isDown()) */ || ((supportTemplate != null) && supportTemplate.isBlessed()))
+						boolean challengePointsBlessed = false;
+						boolean challengePointsBlessedDown = false;
+						if (challengePointsGroupId > 0)
+						{
+							if (challengePointsOptionIndex == EnchantChallengePointData.OPTION_NUM_RESET_PROB)
+							{
+								final EnchantChallengePointsOptionInfo optionInfo = EnchantChallengePointData.getInstance().getOptionInfo(challengePointsGroupId, challengePointsOptionIndex);
+								if ((optionInfo != null) && (item.getEnchantLevel() >= optionInfo.minEnchant()) && (item.getEnchantLevel() <= optionInfo.maxEnchant()) && (Rnd.get(100) < optionInfo.chance()))
+								{
+									challengePointsBlessed = true;
+								}
+							}
+							else if (challengePointsOptionIndex == EnchantChallengePointData.OPTION_NUM_DOWN_PROB)
+							{
+								final EnchantChallengePointsOptionInfo optionInfo = EnchantChallengePointData.getInstance().getOptionInfo(challengePointsGroupId, challengePointsOptionIndex);
+								if ((optionInfo != null) && (item.getEnchantLevel() >= optionInfo.minEnchant()) && (item.getEnchantLevel() <= optionInfo.maxEnchant()) && (Rnd.get(100) < optionInfo.chance()))
+								{
+									challengePointsBlessedDown = true;
+								}
+							}
+						}
+						
+						if (challengePointsBlessed || challengePointsBlessedDown || scrollTemplate.isBlessed() || scrollTemplate.isBlessedDown() || scrollTemplate.isCursed() /* || ((supportTemplate != null) && supportTemplate.isDown()) */ || ((supportTemplate != null) && supportTemplate.isBlessed()))
 						{
 							// Blessed enchant: Enchant value down by 1.
-							if (scrollTemplate.isBlessedDown() || scrollTemplate.isCursed() /* || ((supportTemplate != null) && supportTemplate.isDown()) */)
+							if (scrollTemplate.isBlessedDown() || challengePointsBlessedDown || scrollTemplate.isCursed())
 							{
 								client.sendPacket(SystemMessageId.THE_ENCHANT_VALUE_IS_DECREASED_BY_1);
-								item.setEnchantLevel(item.getEnchantLevel() - 1);
+								item.setEnchantLevel(Math.max(0, item.getEnchantLevel() - 1));
 							}
 							else // Blessed enchant: Clear enchant value.
 							{
 								player.sendPacket(SystemMessageId.THE_BLESSED_ENCHANT_FAILED_THE_ENCHANT_VALUE_OF_THE_ITEM_BECAME_0);
 								item.setEnchantLevel(0);
 							}
-							player.sendPacket(new EnchantResult(EnchantResult.SUCCESS, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
+							player.sendPacket(new EnchantResult(EnchantResult.FAIL, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
 							item.updateDatabase();
 							if (Config.LOG_ITEM_ENCHANTS)
 							{
@@ -365,6 +461,9 @@ public class RequestEnchantItem implements ClientPacket
 						}
 						else
 						{
+							// add challenge point
+							EnchantChallengePointData.getInstance().handleFailure(player, item);
+							player.sendPacket(new ExEnchantChallengePointInfo(player));
 							// Enchant failed, destroy item.
 							if (player.getInventory().destroyItem("Enchant", item, player, null) == null)
 							{
@@ -439,7 +538,7 @@ public class RequestEnchantItem implements ClientPacket
 									player.sendPacket(new EnchantResult(EnchantResult.FAIL, new ItemHolder(crystalId, count), null, 0));
 								}
 							}
-							
+							player.sendPacket(new ExEnchantChallengePointInfo(player));
 							if (Config.LOG_ITEM_ENCHANTS)
 							{
 								final StringBuilder sb = new StringBuilder();
@@ -467,6 +566,13 @@ public class RequestEnchantItem implements ClientPacket
 					}
 					break;
 				}
+			}
+			
+			if (challengePointsGroupId >= 0)
+			{
+				player.getChallengeInfo().setChallengePointsPendingRecharge(-1, -1);
+				player.getChallengeInfo().addChallengePointsRecharge(challengePointsGroupId, challengePointsOptionIndex, -1);
+				player.sendPacket(new ExEnchantChallengePointInfo(player));
 			}
 			
 			player.sendItemList();

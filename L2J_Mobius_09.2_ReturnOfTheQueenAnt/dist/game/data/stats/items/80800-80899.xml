@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="80800" name="Ruler's Authority" additionalName="Event" type="Armor">
-		<!-- Max HP/ MP/ CP +1000, weight limit +25,600, damage +8%, received damage -9%, Damage Reflection Resistance +5%, inventory slots +36, Attribute Resistance +15. Cannot be used in the Olympiad. -->
+		<!-- When equipped, Max HP/ MP/ CP +1000, weight limit +25,600, damage +8%, received damage -9%, Damage Reflection Resistance +5%, inventory slots +36, Attribute Resistance +15. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.belt_rulers_authority" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -133,6 +133,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48830" min="6" max="6" chance="100" /> <!-- Freya's Ice Rose -->
+			<item id="48497" min="6" max="6" chance="100" /> <!-- Glowing Dragon's Attribute Potion - EXP -->
+			<item id="48317" min="18" max="18" chance="100" /> <!-- Honey Vitality Beer -->
+			<item id="48860" min="2" max="2" chance="100" /> <!-- Fallen Angel's Ring Pack -->
+		</capsuled_items>
 	</item>
 	<item id="80811" name="Gran Kain's Gift Box" type="EtcItem">
 		<!-- Obtain Freya's Ice Roses x6, Shiny Dragon's Attribute Potion x6, Honey Vitality Beer x18. -->
@@ -144,6 +151,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48830" min="6" max="6" chance="100" /> <!-- Freya's Ice Rose -->
+			<item id="48497" min="6" max="6" chance="100" /> <!-- Glowing Dragon's Attribute Potion - EXP -->
+			<item id="48317" min="18" max="18" chance="100" /> <!-- Honey Vitality Beer -->
+		</capsuled_items>
 	</item>
 	<item id="80812" name="Gran Kain's High-grade Gift Box" type="EtcItem">
 		<!-- Obtain Freya's Ice Roses x12, Shiny Dragon's Attribute Potion x12, Honey Vitality Beer x36, Fallen Angel's Ring Box x2. -->
@@ -155,6 +168,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48830" min="12" max="12" chance="100" /> <!-- Freya's Ice Rose -->
+			<item id="48497" min="12" max="12" chance="100" /> <!-- Glowing Dragon's Attribute Potion - EXP -->
+			<item id="48317" min="36" max="36" chance="100" /> <!-- Honey Vitality Beer -->
+			<item id="48860" min="2" max="2" chance="100" /> <!-- Fallen Angel's Ring Pack -->
+		</capsuled_items>
 	</item>
 	<item id="80813" name="Gran Kain's Top-grade Gift Box" type="EtcItem">
 		<!-- Obtain Freya's Ice Roses x24, Shiny Dragon's Attribute Potion x24, Honey Vitality Beer x72, Forgotten Spellbook Chapter 1 x1. -->
@@ -166,6 +186,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48830" min="24" max="24" chance="100" /> <!-- Freya's Ice Rose -->
+			<item id="48497" min="24" max="24" chance="100" /> <!-- Glowing Dragon's Attribute Potion - EXP -->
+			<item id="48317" min="72" max="72" chance="100" /> <!-- Honey Vitality Beer -->
+			<item id="48876" min="1" max="1" chance="100" /> <!-- Forgotten Spellbook Chapter 1 -->
+		</capsuled_items>
 	</item>
 	<item id="80814" name="Gran Kain's Cube Box" type="EtcItem">
 		<!-- Obtain Gran Kain's Cube. -->
@@ -175,6 +202,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="80807" min="1" max="1" chance="100" /> <!-- Gran Kain's Cube -->
+		</capsuled_items>
 	</item>
 	<item id="80815" name="Heavenly Fantasia Cookie" type="EtcItem">
 		<!-- For 1 h., P. Atk. +22%, M. Atk. +40%, P. Def. +45%, M. Def. +15%, P. Critical Rate/ M. Skill Critical Rate +100%, Critical Damage for standard attacks +70%, Atk. Spd. +10%, Casting Spd. +15%, Shield Defense Rate +30%, Shield Defense +50%, and Skill Cooldown -20%, M. Skill MP Consumption -15%. Cooldown: 60 min. The effect remains after death. Cannot be used in the Olympiad. -->
@@ -198,7 +229,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80817" name="Emperor's Special Cocktail" type="EtcItem">
-		<!-- For 60 min., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Attack Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
+		<!-- For 60 min., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
 		<set name="icon" val="icon.cocktail_heaven_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -226,7 +257,7 @@
 		</skills>
 	</item>
 	<item id="80818" name="Emperor's Special Cocktail" additionalName="4-hour" type="EtcItem">
-		<!-- For 4 h., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Attack Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
+		<!-- For 4 h., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
 		<set name="icon" val="icon.cocktail_heaven_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -254,7 +285,7 @@
 		</skills>
 	</item>
 	<item id="80819" name="Emperor's Special Cocktail" additionalName="8-hour" type="EtcItem">
-		<!-- For 8 h., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Attack Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
+		<!-- For 8 h., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
 		<set name="icon" val="icon.cocktail_heaven_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -282,7 +313,7 @@
 		</skills>
 	</item>
 	<item id="80820" name="PA Emperor's Special Cocktail" type="EtcItem">
-		<!-- For PA. For 60 min., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Attack Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
+		<!-- For PA. For 60 min., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
 		<set name="icon" val="icon.cocktail_heaven_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -429,7 +460,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80832" name="Emperor's Special Cocktail" additionalName="Event" type="EtcItem">
-		<!-- For 60 min., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Attack Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
+		<!-- For 60 min., grants Horn Melody, Guitar Melody, Pipe Organ Melody, Drum Melody Lv. 5, Fantasia Harmony Lv. 2, War Drum, Marching Drum, Soothing Drum, Fantasia Melody, Attribute Resistance, Debuff Resistance, and Mental Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. The effect can be cancelled by pressing Alt + Mouse Left Click. -->
 		<set name="icon" val="icon.cocktail_heaven_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -527,7 +558,7 @@
 		</skills>
 	</item>
 	<item id="80837" name="Superior Kaliel's Bracelet" type="Armor">
-		<!-- Unlocks 6 talisman slots. <Enchanting>. Use Blessed Scroll: Enchant Bracelet. -->
+		<!-- Unlocks 6 talisman slots. <Enchanting>. Use Blessed Scroll: Enchant Bracelet. If echanted to +7 or higher, use Gran Kain's Scroll: Enchant Superior Kaliel's Bracelet. -->
 		<set name="default_action" val="EQUIP" />
 		<set name="weight" val="150" />
 		<set name="is_sellable" val="false" />
@@ -728,7 +759,7 @@
 		</skills>
 	</item>
 	<item id="80852" name="PA Shining Nevit's Gold Hourglass" type="EtcItem">
-		<!-- For PA. Increases acquired XP/ SP +100% during hunting for 30 min. Cannot stack with the Fall of the Dragon or Dandy's Home Run Ball. Cooldown: 5 min. -->
+		<!-- For PA. For 30 min., acquired XP/ SP +100%. Does not stack with Fall of the Dragon or Dandy's Home Run Ball. Cooldown: 5 min. -->
 		<set name="icon" val="icon.bm_dragon_breath" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -1175,6 +1206,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_shaper_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DAGGER" />
 		<set name="bodypart" val="rhand" />
@@ -1208,6 +1240,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_cutter_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="rhand" />
@@ -1240,6 +1273,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_slasher_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="lrhand" />
@@ -1272,6 +1306,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_onehand_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="rhand" />
@@ -1304,6 +1339,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_fist_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALFIST" />
 		<set name="bodypart" val="lrhand" />
@@ -1337,6 +1373,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_spear_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
 		<set name="bodypart" val="lrhand" />
@@ -1371,6 +1408,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_bow_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
 		<set name="bodypart" val="lrhand" />
@@ -1404,6 +1442,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_crossbow_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="TWOHANDCROSSBOW" />
 		<set name="bodypart" val="lrhand" />
@@ -1437,6 +1476,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_onehane_magic_sword_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="rhand" />
@@ -1469,6 +1509,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_onehand_magic_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="rhand" />
@@ -1502,6 +1543,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_twohand_magic_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="lrhand" />
@@ -1536,6 +1578,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_dual_sword_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
 		<set name="bodypart" val="lrhand" />
@@ -1568,6 +1611,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_dual_dagger_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALDAGGER" />
 		<set name="bodypart" val="lrhand" />
@@ -1601,6 +1645,7 @@
 		<!-- A Zariche weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.zariche_dual_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALBLUNT" />
 		<set name="bodypart" val="lrhand" />
@@ -1634,6 +1679,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_shaper_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DAGGER" />
 		<set name="bodypart" val="rhand" />
@@ -1667,6 +1713,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_cutter_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="rhand" />
@@ -1699,6 +1746,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_slasher_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="lrhand" />
@@ -1731,6 +1779,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_onehand_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="rhand" />
@@ -1763,6 +1812,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_fist_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALFIST" />
 		<set name="bodypart" val="lrhand" />
@@ -1796,6 +1846,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_spear_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
 		<set name="bodypart" val="lrhand" />
@@ -1830,6 +1881,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_bow_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
 		<set name="bodypart" val="lrhand" />
@@ -1863,6 +1915,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_crossbow_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="TWOHANDCROSSBOW" />
 		<set name="bodypart" val="lrhand" />
@@ -1896,6 +1949,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_onehane_magic_sword_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="rhand" />
@@ -1928,6 +1982,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_onehand_magic_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="rhand" />
@@ -1961,6 +2016,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_twohand_magic_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="lrhand" />
@@ -1995,6 +2051,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_dual_sword_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
 		<set name="bodypart" val="lrhand" />
@@ -2027,6 +2084,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_dual_dagger_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALDAGGER" />
 		<set name="bodypart" val="lrhand" />

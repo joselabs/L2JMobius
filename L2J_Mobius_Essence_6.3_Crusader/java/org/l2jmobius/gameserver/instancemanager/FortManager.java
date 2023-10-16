@@ -32,6 +32,10 @@ import org.l2jmobius.gameserver.model.siege.Fort;
 
 public class FortManager
 {
+	public static final int ORC_FORTRESS = 122;
+	public static final int ORC_FORTRESS_FLAG = 93331; // 9819
+	public static final int FLAG_MAX_COUNT = 3;
+	public static final int ORC_FORTRESS_FLAGPOLE_ID = 23170500;
 	private static final Logger LOGGER = Logger.getLogger(FortManager.class.getName());
 	
 	private static final Map<Integer, Fort> _forts = new ConcurrentSkipListMap<>();
@@ -114,7 +118,9 @@ public class FortManager
 	
 	public Fort getFort(WorldObject activeObject)
 	{
-		return getFort(activeObject.getX(), activeObject.getY(), activeObject.getZ());
+		// TODO: Make this more abstract?
+		// return getFort(activeObject.getX(), activeObject.getY(), activeObject.getZ());
+		return getFortById(FortManager.ORC_FORTRESS);
 	}
 	
 	public Collection<Fort> getForts()

@@ -24,7 +24,7 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.SkillTable;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.SkillTreeTable;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.PlayerTemplateData;
@@ -50,39 +50,25 @@ import org.l2jmobius.gameserver.util.Util;
 public class CharacterCreate implements ClientPacket
 {
 	private String _name;
-	private byte _sex;
+	private boolean _isFemale;
 	private byte _hairStyle;
 	private byte _hairColor;
 	private byte _face;
-	@SuppressWarnings("unused")
-	private int _race;
 	private int _classId;
-	@SuppressWarnings("unused")
-	private int _int;
-	@SuppressWarnings("unused")
-	private int _str;
-	@SuppressWarnings("unused")
-	private int _con;
-	@SuppressWarnings("unused")
-	private int _men;
-	@SuppressWarnings("unused")
-	private int _dex;
-	@SuppressWarnings("unused")
-	private int _wit;
 	
 	@Override
 	public void read(ReadablePacket packet)
 	{
 		_name = packet.readString();
-		_race = packet.readInt();
-		_sex = (byte) packet.readInt();
+		packet.readInt(); // race
+		_isFemale = packet.readInt() != 0;
 		_classId = packet.readInt();
-		_int = packet.readInt();
-		_str = packet.readInt();
-		_con = packet.readInt();
-		_men = packet.readInt();
-		_dex = packet.readInt();
-		_wit = packet.readInt();
+		packet.readInt(); // int
+		packet.readInt(); // str
+		packet.readInt(); // con
+		packet.readInt(); // men
+		packet.readInt(); // dex
+		packet.readInt(); // wit
 		_hairStyle = (byte) packet.readInt();
 		_hairColor = (byte) packet.readInt();
 		_face = (byte) packet.readInt();
@@ -113,14 +99,14 @@ public class CharacterCreate implements ClientPacket
 		PlayerTemplate template = null;
 		
 		// Since checks for duplicate names are done using SQL, lock must be held until data is written to DB as well.
-		synchronized (CharNameTable.getInstance())
+		synchronized (CharInfoTable.getInstance())
 		{
-			if ((CharNameTable.getInstance().accountCharNumber(client.getAccountName()) >= Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT) && (Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT != 0))
+			if ((CharInfoTable.getInstance().getAccountCharacterCount(client.getAccountName()) >= Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT) && (Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT != 0))
 			{
 				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_TOO_MANY_CHARACTERS));
 				return;
 			}
-			else if (CharNameTable.getInstance().doesCharNameExist(_name))
+			else if (CharInfoTable.getInstance().doesCharNameExist(_name))
 			{
 				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_NAME_ALREADY_EXISTS));
 				return;
@@ -134,7 +120,7 @@ public class CharacterCreate implements ClientPacket
 			}
 			
 			final int objectId = IdManager.getInstance().getNextId();
-			newChar = Player.create(objectId, template, client.getAccountName(), _name, _hairStyle, _hairColor, _face, _sex != 0);
+			newChar = Player.create(objectId, template, client.getAccountName(), _name, _hairStyle, _hairColor, _face, _isFemale);
 			newChar.setCurrentHp(newChar.getMaxHp()); // L2Off like
 			// newChar.setCurrentCp(template.baseCpMax);
 			newChar.setCurrentCp(0); // L2Off like

@@ -33,7 +33,7 @@ import org.l2jmobius.gameserver.model.stats.Stat;
 public class StatAddForLevel extends AbstractEffect
 {
 	private final Stat _stat;
-	private final Map<Integer, Integer> _values;
+	private final Map<Integer, Double> _values;
 	
 	public StatAddForLevel(StatSet params)
 	{
@@ -44,7 +44,7 @@ public class StatAddForLevel extends AbstractEffect
 		int index = 0;
 		for (Integer level : params.getIntegerList("level"))
 		{
-			_values.put(level, amount.get(index++));
+			_values.put(level, Double.valueOf(amount.get(index++)));
 		}
 		
 		if (params.getEnum("mode", StatModifierType.class, StatModifierType.DIFF) != StatModifierType.DIFF)
@@ -56,10 +56,10 @@ public class StatAddForLevel extends AbstractEffect
 	@Override
 	public void pump(Creature effected, Skill skill)
 	{
-		final Integer amount = _values.get(effected.getLevel());
+		final Double amount = _values.get(effected.getLevel());
 		if (amount != null)
 		{
-			effected.getStat().mergeAdd(_stat, amount.intValue());
+			effected.getStat().mergeAdd(_stat, amount);
 		}
 	}
 }

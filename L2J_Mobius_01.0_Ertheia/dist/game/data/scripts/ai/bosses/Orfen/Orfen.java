@@ -124,6 +124,8 @@ public class Orfen extends AbstractNpcAI
 				final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, loc, false, 0);
 				GrandBossManager.getInstance().setStatus(ORFEN, ALIVE);
 				spawnBoss(orfen);
+				cancelQuestTimer("DISTANCE_CHECK", orfen, null);
+				startQuestTimer("DISTANCE_CHECK", 5000, orfen, null, true);
 			}
 		}
 		else
@@ -137,16 +139,20 @@ public class Orfen extends AbstractNpcAI
 			final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, loc_x, loc_y, loc_z, heading, false, 0);
 			orfen.setCurrentHpMp(hp, mp);
 			spawnBoss(orfen);
+			cancelQuestTimer("DISTANCE_CHECK", orfen, null);
+			startQuestTimer("DISTANCE_CHECK", 5000, orfen, null, true);
 		}
 	}
 	
 	public void setSpawnPoint(Npc npc, int index)
 	{
+		cancelQuestTimer("DISTANCE_CHECK", npc, null);
 		((Attackable) npc).clearAggroList();
 		npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE, null, null);
 		final Spawn spawn = npc.getSpawn();
 		spawn.setLocation(POS[index]);
 		npc.teleToLocation(POS[index], false);
+		startQuestTimer("DISTANCE_CHECK", 5000, npc, null, true);
 	}
 	
 	public void spawnBoss(GrandBoss npc)
@@ -176,63 +182,86 @@ public class Orfen extends AbstractNpcAI
 	@Override
 	public String onAdvEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("orfen_unlock"))
+		switch (event)
 		{
-			final int i = getRandom(10);
-			Location loc;
-			if (i < 4)
+			case "orfen_unlock":
 			{
-				loc = POS[1];
-			}
-			else if (i < 7)
-			{
-				loc = POS[2];
-			}
-			else
-			{
-				loc = POS[3];
-			}
-			final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, loc, false, 0);
-			GrandBossManager.getInstance().setStatus(ORFEN, ALIVE);
-			spawnBoss(orfen);
-		}
-		else if (event.equalsIgnoreCase("check_orfen_pos"))
-		{
-			if ((_isTeleported && (npc.getCurrentHp() > (npc.getMaxHp() * 0.95))) || (!_zone.isInsideZone(npc) && !_isTeleported))
-			{
-				setSpawnPoint(npc, getRandom(3) + 1);
-				_isTeleported = false;
-			}
-			else if (_isTeleported && !_zone.isInsideZone(npc))
-			{
-				setSpawnPoint(npc, 0);
-			}
-		}
-		else if (event.equalsIgnoreCase("check_minion_loc"))
-		{
-			for (Attackable mob : _minions)
-			{
-				if (!npc.isInsideRadius2D(mob, 3000))
+				final int i = getRandom(10);
+				Location loc;
+				if (i < 4)
 				{
-					mob.teleToLocation(npc.getLocation());
-					((Attackable) npc).clearAggroList();
-					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE, null, null);
+					loc = POS[1];
 				}
+				else if (i < 7)
+				{
+					loc = POS[2];
+				}
+				else
+				{
+					loc = POS[3];
+				}
+				final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, loc, false, 0);
+				GrandBossManager.getInstance().setStatus(ORFEN, ALIVE);
+				spawnBoss(orfen);
+				cancelQuestTimer("DISTANCE_CHECK", orfen, null);
+				startQuestTimer("DISTANCE_CHECK", 5000, orfen, null, true);
+				break;
 			}
-		}
-		else if (event.equalsIgnoreCase("despawn_minions"))
-		{
-			for (Attackable mob : _minions)
+			case "check_orfen_pos":
 			{
-				mob.decayMe();
+				if ((_isTeleported && (npc.getCurrentHp() > (npc.getMaxHp() * 0.95))) || (!_zone.isInsideZone(npc) && !_isTeleported))
+				{
+					setSpawnPoint(npc, getRandom(3) + 1);
+					_isTeleported = false;
+				}
+				else if (_isTeleported && !_zone.isInsideZone(npc))
+				{
+					setSpawnPoint(npc, 0);
+				}
+				break;
 			}
-			_minions.clear();
-		}
-		else if (event.equalsIgnoreCase("spawn_minion"))
-		{
-			final Attackable mob = (Attackable) addSpawn(RAIKEL_LEOS, npc.getX(), npc.getY(), npc.getZ(), 0, false, 0);
-			mob.setIsRaidMinion(true);
-			_minions.add(mob);
+			case "check_minion_loc":
+			{
+				for (Attackable mob : _minions)
+				{
+					if (!npc.isInsideRadius2D(mob, 3000))
+					{
+						mob.teleToLocation(npc.getLocation());
+						((Attackable) npc).clearAggroList();
+						npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE, null, null);
+					}
+				}
+				break;
+			}
+			case "despawn_minions":
+			{
+				for (Attackable mob : _minions)
+				{
+					mob.decayMe();
+				}
+				_minions.clear();
+				break;
+			}
+			case "spawn_minion":
+			{
+				final Attackable mob = (Attackable) addSpawn(RAIKEL_LEOS, npc.getX(), npc.getY(), npc.getZ(), 0, false, 0);
+				mob.setIsRaidMinion(true);
+				_minions.add(mob);
+				break;
+			}
+			case "DISTANCE_CHECK":
+			{
+				if ((npc == null) || npc.isDead())
+				{
+					cancelQuestTimers("DISTANCE_CHECK");
+				}
+				else if (npc.calculateDistance2D(npc.getSpawn()) > 10000)
+				{
+					((Attackable) npc).clearAggroList();
+					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, npc.getSpawn().getLocation());
+				}
+				break;
+			}
 		}
 		return super.onAdvEvent(event, npc, player);
 	}
@@ -322,11 +351,13 @@ public class Orfen extends AbstractNpcAI
 		{
 			npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 			GrandBossManager.getInstance().setStatus(ORFEN, DEAD);
+			
 			// Calculate Min and Max respawn times randomly.
 			long respawnTime = Config.ORFEN_SPAWN_INTERVAL + getRandom(-Config.ORFEN_SPAWN_RANDOM, Config.ORFEN_SPAWN_RANDOM);
 			respawnTime *= 3600000;
 			startQuestTimer("orfen_unlock", respawnTime, null, null);
-			// also save the respawn time so that the info is maintained past reboots
+			
+			// Also save the respawn time so that the info is maintained past reboots.
 			final StatSet info = GrandBossManager.getInstance().getStatSet(ORFEN);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 			GrandBossManager.getInstance().setStatSet(ORFEN, info);
@@ -334,6 +365,9 @@ public class Orfen extends AbstractNpcAI
 			cancelQuestTimer("check_orfen_pos", npc, null);
 			startQuestTimer("despawn_minions", 20000, null, null);
 			cancelQuestTimers("spawn_minion");
+			
+			// Stop distance check task.
+			cancelQuestTimers("DISTANCE_CHECK");
 		}
 		else if ((GrandBossManager.getInstance().getStatus(ORFEN) == ALIVE) && (npc.getId() == RAIKEL_LEOS))
 		{

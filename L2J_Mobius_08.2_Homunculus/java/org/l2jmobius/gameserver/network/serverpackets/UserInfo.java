@@ -416,6 +416,16 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 			writeShort(1);
 			writeInt(0);
 		}
+	}
+	
+	@Override
+	public void run()
+	{
+		if (_player == null)
+		{
+			return;
+		}
+		
 		// Send exp bonus change.
 		if (containsMask(UserInfoType.VITA_FAME))
 		{
@@ -438,7 +448,6 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		}
 		if (clan != null)
 		{
-			
 			if (player.getSiegeState() == 1)
 			{
 				relation |= 256; // Clan member

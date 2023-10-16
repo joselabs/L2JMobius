@@ -46,6 +46,8 @@ public class FortManager extends Merchant
 	protected static final int COND_BUSY_BECAUSE_OF_SIEGE = 1;
 	protected static final int COND_OWNER = 2;
 	
+	public static final int ORC_FORTRESS_ID = 122;
+	
 	public FortManager(NpcTemplate template)
 	{
 		super(template);
@@ -196,6 +198,11 @@ public class FortManager extends Merchant
 						}
 						if (open)
 						{
+							if (getFort().getResidenceId() == ORC_FORTRESS_ID)
+							{
+								return;
+							}
+							
 							final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 							html.setFile(player, "data/html/fortress/foreman-opened.htm");
 							html.replace("%objectId%", String.valueOf(getObjectId()));
@@ -203,6 +210,11 @@ public class FortManager extends Merchant
 						}
 						else
 						{
+							if (getFort().getResidenceId() == ORC_FORTRESS_ID)
+							{
+								return;
+							}
+							
 							final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 							html.setFile(player, "data/html/fortress/foreman-closed.htm");
 							html.replace("%objectId%", String.valueOf(getObjectId()));
@@ -211,6 +223,11 @@ public class FortManager extends Merchant
 					}
 					else
 					{
+						if (getFort().getResidenceId() == ORC_FORTRESS_ID)
+						{
+							return;
+						}
+						
 						final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile(player, "data/html/fortress/" + getTemplate().getId() + "-d.htm");
 						html.replace("%objectId%", String.valueOf(getObjectId()));

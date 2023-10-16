@@ -145,7 +145,7 @@ public class CommunityBoardManager
 				final String name = command.substring(16);
 				final Player player = World.getInstance().getPlayer(name);
 				String sex = "Male";
-				if (player.getSex() == 1)
+				if (player.isFemale())
 				{
 					sex = "Female";
 				}

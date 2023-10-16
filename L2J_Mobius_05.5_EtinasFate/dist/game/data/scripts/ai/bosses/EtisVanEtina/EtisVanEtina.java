@@ -446,6 +446,74 @@ public class EtisVanEtina extends AbstractNpcAI
 				clean();
 				break;
 			}
+			case "SKIP_WAITING":
+			{
+				if (GrandBossManager.getInstance().getStatus(ETIS_VAN_ETINA1) == WAITING)
+				{
+					cancelQuestTimer("show_intro_movie", null, null);
+					cancelQuestTimer("spawn_kain", null, null);
+					notifyEvent("spawn_kain", null, null);
+					player.sendMessage(getClass().getSimpleName() + ": Skipping waiting time ...");
+				}
+				else
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't skip waiting time right now!");
+				}
+				break;
+			}
+			case "RESPAWN_ETIS_VAN_ETINA":
+			{
+				if (GrandBossManager.getInstance().getStatus(ETIS_VAN_ETINA1) == DEAD)
+				{
+					cancelQuestTimer("unlock_etina", null, null);
+					notifyEvent("unlock_etina", null, null);
+					player.sendMessage(getClass().getSimpleName() + ": Etis Van Etina has been respawned.");
+				}
+				else
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't respawn Etis Van Etina while he is alive!");
+				}
+				break;
+			}
+			case "ABORT_FIGHT":
+			{
+				if (GrandBossManager.getInstance().getStatus(ETIS_VAN_ETINA1) == FIGHTING)
+				{
+					GrandBossManager.getInstance().setStatus(ETIS_VAN_ETINA1, ALIVE);
+					cancelQuestTimer("cancel_timers", null, null);
+					cancelQuestTimer("end_etina", null, null);
+					notifyEvent("end_etina", null, null);
+					player.sendMessage(getClass().getSimpleName() + ": Fight has been aborted!");
+				}
+				else
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't abort fight right now!");
+				}
+				break;
+			}
+			case "DESPAWN_MINIONS":
+			{
+				if (GrandBossManager.getInstance().getStatus(ETIS_VAN_ETINA1) == FIGHTING)
+				{
+					for (Creature creature : BOSS_ZONE.getCharactersInside())
+					{
+						if ((creature != null) && creature.isNpc() && (_minionSpawns.contains(creature)))
+						{
+							creature.deleteMe();
+						}
+					}
+					if (player != null)
+					{
+						player.sendMessage(getClass().getSimpleName() + ": All minions has been deleted!");
+					}
+				}
+				else if (player != null)
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't despawn minions right now!");
+				}
+				break;
+			}
+			
 		}
 		return super.onAdvEvent(event, npc, player);
 	}

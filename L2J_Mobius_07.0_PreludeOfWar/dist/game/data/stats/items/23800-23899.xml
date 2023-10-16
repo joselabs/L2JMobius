@@ -149,7 +149,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="23809" min="1" max="1" chance="100" /> <!-- High-grade Maphr's Rune 100% - 30-day -->
+			<item id="23809" min="1" max="1" chance="100" /> <!-- High-grade Maphr's Rune 100% - 30 days -->
 		</capsuled_items>
 	</item>
 	<item id="23813" name="Prestige Cube Pack" additionalName="30-day" type="EtcItem">
@@ -161,6 +161,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="23761" min="1" max="1" chance="100" /> <!-- Prestige Cube - 30 days -->
+		</capsuled_items>
 	</item>
 	<item id="23814" name="Chaos Essence Pack" additionalName="30-day" type="EtcItem">
 		<!-- Wrapped Pack containing a Chaos Essence (30-day). The Chaos Essence cannot be used by Ertheia. -->
@@ -230,6 +234,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="23818" min="1" max="1" chance="100" /> <!-- Uthanka's Ring - 7 days -->
+		</capsuled_items>
 	</item>
 	<item id="23820" name="Scroll of Escape - Uthanka's Tomb" type="EtcItem">
 		<!-- Return to Uthanka's Tomb. -->
@@ -265,6 +273,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="23822" min="1" max="1" chance="100" /> <!-- Agathion - Pirate Captain Uthanka - 7 days -->
+		</capsuled_items>
 	</item>
 	<item id="23824" name="Uthanka's Blessed Scroll of Resurrection" type="EtcItem">
 		<!-- Resurrects a dead person and restores their XP. -->
@@ -341,13 +353,17 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="23831" name="XP Rune I (Lv. 1-85) 100% Pack (1-hour)" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain an XP Rune I (Lv. 1-85) 100% Pack (1-hour). -->
+		<!-- Double-click to obtain Nevit's Rune 100% (1-hour). -->
 		<set name="icon" val="icon.etc_pi_gift_box_i00" />
 		<set name="weight" val="100" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="35985" min="1" max="1" chance="100" /> <!-- Nevit's Rune 100% (1-hour) - Event -->
+		</capsuled_items>
 	</item>
 	<item id="23832" name="Pa'agrio's Warm Breeze Pack (1-hour)" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain a Pa'agrio's Warm Breeze (1-hour). -->
@@ -365,7 +381,7 @@
 		</capsuled_items>
 	</item>
 	<item id="23833" name="Talisman - Abundance" additionalName="War" type="Armor">
-		<!-- P. Atk. +154, M. Atk. +181, and P. Evasion/ M. Evasion +4. Note: Effect for the Talisman of Abundance does not stack even when 2 or more are equipped. -->
+		<!-- P. Atk. +154, M. Atk. +181, P./ M. Evasion +4. Note!. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -378,7 +394,7 @@
 		</skills>
 	</item>
 	<item id="23834" name="Talisman - Abundance" additionalName="Tactics" type="Armor">
-		<!-- Attribute Resistance +10 and Debuff Resistance +10%. Note: Effect for the Talisman of Abundance does not stack even when 2 or more are equipped. -->
+		<!-- Attribute Resistance +10, Debuff Resistance +10%. Note!. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -391,7 +407,7 @@
 		</skills>
 	</item>
 	<item id="23835" name="Talisman - Abundance" additionalName="Morale" type="Armor">
-		<!-- P./ M. Critical Rate +8%, Received Critical Damage -10%, and skill damage during PvP -10%. Note: Effect for the Talisman of Abundance does not stack even when 2 or more are equipped. -->
+		<!-- P./ M. Critical Rate +8%, Received P. Critical Damage -10%, Received Skill PvP Damage -10%. Note!. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -404,7 +420,7 @@
 		</skills>
 	</item>
 	<item id="23836" name="Talisman - Abundance" additionalName="Physique" type="Armor">
-		<!-- Max HP/ MP/ CP +325 and HP/ MP/ CP Recovery Rate +5. Note: Effect for the Talisman of Abundance does not stack even when 2 or more are equipped. -->
+		<!-- Max HP/ MP/ CP +325, HP/ MP/ CP Recovery Rate +5. Note!. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -417,7 +433,7 @@
 		</skills>
 	</item>
 	<item id="23837" name="Talisman - Hunter" additionalName="Abundance" type="Armor">
-		<!-- P. Atk. +231, M. Atk. 271, P. Evasion/ M. Evasion +7, Attribute Resistance +15, Debuff Resistance +13%, P./ M. Critical Rate +13%. Received Critical Damage -15%, and skill damage during PvP -15%. Additionally, skill damage received during PvP is decreased. Note: Effect for the Talisman of Abundance does not stack even when 2 or more are equipped. -->
+		<!-- P. Atk. +231, M. Atk. +271, P. Evasion/ M. Evasion +7, Attribute Resistance +15, Debuff Resistance +13%, P./ M. Critical Rate +13%. Received Critical Damage -15%, and skill damage during PvP -15%. Note!. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="BranchSys2.icon.g_twilight_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -432,7 +448,7 @@
 		</skills>
 	</item>
 	<item id="23838" name="Talisman - Slaughterer" additionalName="Abundance" type="Armor">
-		<!-- P. Atk. +231, M. Atk. +271 P. Evasion/ M. Evasion +7, Attribute Resistance +15, Debuff Resistance +13%, Max HP, MP, and CP +490, and HP, MP, and CP Recovery +7. Note: Effect for the Talisman of Abundance does not stack even when 2 or more are equipped. -->
+		<!-- P. Atk. +231, M. Atk. +271 P./ M. Evasion +7, Attribute Resistance +15, Debuff Resistance +13%, Max HP/ MP/ CP +490, and HP/ MP/ CP Recovery +7. Note!. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="BranchSys2.icon.g_twilight_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -447,7 +463,7 @@
 		</skills>
 	</item>
 	<item id="23839" name="Talisman - Conquerer" additionalName="Abundance" type="Armor">
-		<!-- P. Atk. +231, M. Atk. +271, P. Evasion/ M. Evasion +7, P./ M. Critical Rate +13%, Max HP, MP, and CP +490, HP, MP, and CP Recovery +7. Received Critical Damage -15%, and skill damage during PvP -15%. Note: Effect for the Talisman of Abundance does not stack even when 2 or more are equipped. -->
+		<!-- P. Atk. +231, M. Atk. +271, P./ M. Evasion +7, P./ M. Critical Rate +13%, Max HP/ MP/ CP +490, HP/ MP/ CP Recovery Rate +7, Received P. Critical Damage -15%, Received Skill PvP Damage -15%. Note!. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="BranchSys2.icon.g_twilight_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -462,7 +478,7 @@
 		</skills>
 	</item>
 	<item id="23840" name="Talisman - Outlaw" additionalName="Abundance" type="Armor">
-		<!-- Attribute Resistance +15, Debuff Resistance +13%, P./ M. Critical Rate +13%, Max HP, MP, and CP +490, HP, MP, and CP Recovery +7. Received Critical Damage -15%, and skill damage during PvP -15%. Note: Effect for the Talisman of Abundance does not stack even when 2 or more are equipped. -->
+		<!-- Attribute Resistance +15, Debuff Resistance +13%, P./ M. Critical Rate +13%, Max HP/ MP/ CP +490, HP/ MP/ CP Recovery Rate +7, Received P. Critical Damage -15%, Received Skill PvP Damage -15%. Note!. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="BranchSys2.icon.g_twilight_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -477,7 +493,7 @@
 		</skills>
 	</item>
 	<item id="23841" name="Abundance Gift Box" additionalName="War" type="EtcItem">
-		<!-- Has a chance of obtaining either Talisman - Abundance: War, Blessed Scroll: Enchant Weapon/ Armor (R-grade), Lucky Enchant Stone: Weapon/ Armor (R-grade), Scroll: Enchant Weapon/ Armor (R-grade), Elcyum Powder, Divine Protection Elixir, Pa'agrio's Warm Breeze Pack (1-hour), XP Rune I (Lv. 1-85) 100% Pack (1-hour), High-grade Maphr's Rune 100% Pack, or XP Rune II (Lv. 1-95) 100% Pack (1-hour). -->
+		<!-- Has a chance of obtaining either Talisman of Abundance - War, Blessed Scroll: Enchant Weapon/ Armor (R-grade), Lucky Enchant Stone: Weapon/ Armor (R-grade), High-grade Maphr's Rune 100% Pack, Scroll: Enchant Weapon/ Armor (R-grade), Nevit's Rune Box (Dragon Rising) - 1 hour, Elcyum Powder, Divine Protection Elixir, Pa'agrio's Warm Breeze Pack (1-hour), Nevit's Rune 100% Pack (1-hour). -->
 		<set name="icon" val="icon.etc_pi_gift_box_i03" />
 		<set name="material" val="PAPER" />
 		<set name="is_freightable" val="true" />
@@ -492,19 +508,19 @@
 			<item id="19447" min="1" max="1" chance="1" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 			<item id="23348" min="1" max="1" chance="1" /> <!-- Lucky Enchant Stone: Armor (R-grade) -->
 			<item id="23347" min="1" max="1" chance="1" /> <!-- Lucky Enchant Stone: Weapon (R-grade) -->
-			<item id="23946" min="1" max="1" chance="10" /> <!-- XP Rune II (Lv. 1-95) 100% Pack (1-hour) -->
-			<item id="23831" min="1" max="1" chance="10" /> <!-- XP Rune I (Lv. 1-85) 100% Pack (1-hour) - Event -->
+			<item id="23946" min="1" max="1" chance="10" /> <!-- Nevit's Rune Box (Dragon Rising) 100% (1-hour) -->
+			<item id="23831" min="1" max="1" chance="10" /> <!-- Nevit's Rune Box 100% (1-hour) - Event -->
 			<item id="23832" min="1" max="1" chance="20" /> <!-- Pa'agrio's Warm Breeze Pack (1-hour) - Event -->
 			<item id="36513" min="1" max="1" chance="20" /> <!-- Elcyum Powder -->
 			<item id="17527" min="1" max="1" chance="25" /> <!-- Scroll: Enchant Armor (R-grade) -->
 			<item id="17526" min="1" max="1" chance="15" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			<item id="23833" min="1" max="1" chance="25" /> <!-- Talisman - Abundance - War -->
-			<item id="23760" min="1" max="1" chance="25" /> <!-- High-grade Maphr's Rune 100% Pack - 7-day -->
+			<item id="23760" min="1" max="1" chance="25" /> <!-- High-grade Maphr's Rune 100% Pack - 7 days -->
 			<item id="37041" min="1" max="1" chance="25" /> <!-- Divine Protection Elixir -->
 		</capsuled_items>
 	</item>
 	<item id="23842" name="Abundance Gift Box" additionalName="Tactics" type="EtcItem">
-		<!-- Has a chance of obtaining either Talisman - Abundance: Tactics, Blessed Scroll: Enchant Weapon/ Armor (R-grade), Lucky Enchant Stone: Weapon/ Armor (R-grade), Scroll: Enchant Weapon/ Armor (R-grade), Elcyum Powder, Divine Protection Elixir, Pa'agrio's Warm Breeze Pack (1-hour), XP Rune I (Lv. 1-85) 100% Pack (1-hour), High-grade Maphr's Rune 100% Pack, or XP Rune II (Lv. 1-95) 100% Pack (1-hour). -->
+		<!-- Has a chance of obtaining either Talisman of Abundance - Tactics, Blessed Scroll: Enchant Weapon/ Armor (R-grade), Lucky Enchant Stone: Weapon/ Armor (R-grade), High-grade Maphr's Rune 100% Pack, Scroll: Enchant Weapon/ Armor (R-grade), Nevit's Rune Box (Dragon Rising) - 1 hour, Elcyum Powder, Divine Protection Elixir, Pa'agrio's Warm Breeze Pack (1-hour), Nevit's Rune 100% Pack (1-hour). -->
 		<set name="icon" val="icon.etc_pi_gift_box_i03" />
 		<set name="material" val="PAPER" />
 		<set name="is_freightable" val="true" />
@@ -519,19 +535,19 @@
 			<item id="19447" min="1" max="1" chance="1" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 			<item id="23348" min="1" max="1" chance="1" /> <!-- Lucky Enchant Stone: Armor (R-grade) -->
 			<item id="23347" min="1" max="1" chance="1" /> <!-- Lucky Enchant Stone: Weapon (R-grade) -->
-			<item id="23946" min="1" max="1" chance="10" /> <!-- XP Rune II (Lv. 1-95) 100% Pack (1-hour) -->
-			<item id="23831" min="1" max="1" chance="10" /> <!-- XP Rune I (Lv. 1-85) 100% Pack (1-hour) - Event -->
+			<item id="23946" min="1" max="1" chance="10" /> <!-- Nevit's Rune Box (Dragon Rising) 100% (1-hour) -->
+			<item id="23831" min="1" max="1" chance="10" /> <!-- Nevit's Rune Box 100% (1-hour) - Event -->
 			<item id="23832" min="1" max="1" chance="20" /> <!-- Pa'agrio's Warm Breeze Pack (1-hour) - Event -->
 			<item id="36513" min="1" max="1" chance="20" /> <!-- Elcyum Powder -->
 			<item id="17527" min="1" max="1" chance="25" /> <!-- Scroll: Enchant Armor (R-grade) -->
 			<item id="17526" min="1" max="1" chance="15" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			<item id="23834" min="1" max="1" chance="25" /> <!-- Talisman - Abundance - Tactics -->
-			<item id="23760" min="1" max="1" chance="25" /> <!-- High-grade Maphr's Rune 100% Pack - 7-day -->
+			<item id="23760" min="1" max="1" chance="25" /> <!-- High-grade Maphr's Rune 100% Pack - 7 days -->
 			<item id="37041" min="1" max="1" chance="25" /> <!-- Divine Protection Elixir -->
 		</capsuled_items>
 	</item>
 	<item id="23843" name="Abundance Gift Box" additionalName="Morale" type="EtcItem">
-		<!-- Has a chance of obtaining either Talisman - Abundance: Morale, Blessed Scroll: Enchant Weapon/ Armor (R-grade), Lucky Enchant Stone: Weapon/ Armor (R-grade), Scroll: Enchant Weapon/ Armor (R-grade), Elcyum Powder, Divine Protection Elixir, Pa'agrio's Warm Breeze Pack (1-hour), XP Rune I (Lv. 1-85) 100% Pack (1-hour), High-grade Maphr's Rune 100% Pack, or XP Rune II (Lv. 1-95) 100% Pack (1-hour). -->
+		<!-- Has a chance of obtaining either Talisman of Abundance - Morale, Blessed Scroll: Enchant Weapon/ Armor (R-grade), Lucky Enchant Stone: Weapon/ Armor (R-grade), High-grade Maphr's Rune 100% Pack, Scroll: Enchant Weapon/ Armor (R-grade), Nevit's Rune Box (Dragon Rising) - 1 hour, Elcyum Powder, Divine Protection Elixir, Pa'agrio's Warm Breeze Pack (1-hour), Nevit's Rune 100% Pack (1-hour). -->
 		<set name="icon" val="icon.etc_pi_gift_box_i03" />
 		<set name="material" val="PAPER" />
 		<set name="is_freightable" val="true" />
@@ -546,19 +562,19 @@
 			<item id="19447" min="1" max="1" chance="1" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 			<item id="23348" min="1" max="1" chance="1" /> <!-- Lucky Enchant Stone: Armor (R-grade) -->
 			<item id="23347" min="1" max="1" chance="1" /> <!-- Lucky Enchant Stone: Weapon (R-grade) -->
-			<item id="23946" min="1" max="1" chance="10" /> <!-- XP Rune II (Lv. 1-95) 100% Pack (1-hour) -->
-			<item id="23831" min="1" max="1" chance="10" /> <!-- XP Rune I (Lv. 1-85) 100% Pack (1-hour) - Event -->
+			<item id="23946" min="1" max="1" chance="10" /> <!-- Nevit's Rune Box (Dragon Rising) 100% (1-hour) -->
+			<item id="23831" min="1" max="1" chance="10" /> <!-- Nevit's Rune Box 100% (1-hour) - Event -->
 			<item id="23832" min="1" max="1" chance="20" /> <!-- Pa'agrio's Warm Breeze Pack (1-hour) - Event -->
 			<item id="36513" min="1" max="1" chance="20" /> <!-- Elcyum Powder -->
 			<item id="17527" min="1" max="1" chance="25" /> <!-- Scroll: Enchant Armor (R-grade) -->
 			<item id="17526" min="1" max="1" chance="15" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			<item id="23835" min="1" max="1" chance="25" /> <!-- Talisman - Abundance - Morale -->
-			<item id="23760" min="1" max="1" chance="25" /> <!-- High-grade Maphr's Rune 100% Pack - 7-day -->
+			<item id="23760" min="1" max="1" chance="25" /> <!-- High-grade Maphr's Rune 100% Pack - 7 days -->
 			<item id="37041" min="1" max="1" chance="25" /> <!-- Divine Protection Elixir -->
 		</capsuled_items>
 	</item>
 	<item id="23844" name="Abundance Gift Box" additionalName="Physique" type="EtcItem">
-		<!-- Has a chance of obtaining either Talisman - Abundance: Physique, Blessed Scroll: Enchant Weapon/ Armor (R-grade), Lucky Enchant Stone: Weapon/ Armor (R-grade), Scroll: Enchant Weapon/ Armor (R-grade), Elcyum Powder, Divine Protection Elixir, Pa'agrio's Warm Breeze Pack (1-hour), XP Rune I (Lv. 1-85) 100% Pack (1-hour), High-grade Maphr's Rune 100% Pack, or XP Rune II (Lv. 1-95) 100% Pack (1-hour). -->
+		<!-- Has a chance of obtaining either Talisman of Abundance - Physique, Blessed Scroll: Enchant Weapon/ Armor (R-grade), Lucky Enchant Stone: Weapon/ Armor (R-grade), High-grade Maphr's Rune 100% Pack, Scroll: Enchant Weapon/ Armor (R-grade), Nevit's Rune Box (Dragon Rising) - 1 hour, Elcyum Powder, Divine Protection Elixir, Pa'agrio's Warm Breeze Pack (1-hour), Nevit's Rune 100% Pack (1-hour). -->
 		<set name="icon" val="icon.etc_pi_gift_box_i03" />
 		<set name="material" val="PAPER" />
 		<set name="is_freightable" val="true" />
@@ -573,19 +589,19 @@
 			<item id="19447" min="1" max="1" chance="1" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 			<item id="23348" min="1" max="1" chance="1" /> <!-- Lucky Enchant Stone: Armor (R-grade) -->
 			<item id="23347" min="1" max="1" chance="1" /> <!-- Lucky Enchant Stone: Weapon (R-grade) -->
-			<item id="23946" min="1" max="1" chance="10" /> <!-- XP Rune II (Lv. 1-95) 100% Pack (1-hour) -->
-			<item id="23831" min="1" max="1" chance="10" /> <!-- XP Rune I (Lv. 1-85) 100% Pack (1-hour) - Event -->
+			<item id="23946" min="1" max="1" chance="10" /> <!-- Nevit's Rune Box (Dragon Rising) 100% (1-hour) -->
+			<item id="23831" min="1" max="1" chance="10" /> <!-- Nevit's Rune Box 100% (1-hour) - Event -->
 			<item id="23832" min="1" max="1" chance="20" /> <!-- Pa'agrio's Warm Breeze Pack (1-hour) - Event -->
 			<item id="36513" min="1" max="1" chance="20" /> <!-- Elcyum Powder -->
 			<item id="17527" min="1" max="1" chance="25" /> <!-- Scroll: Enchant Armor (R-grade) -->
 			<item id="17526" min="1" max="1" chance="15" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			<item id="23836" min="1" max="1" chance="25" /> <!-- Talisman - Abundance - Physique -->
-			<item id="23760" min="1" max="1" chance="25" /> <!-- High-grade Maphr's Rune 100% Pack - 7-day -->
+			<item id="23760" min="1" max="1" chance="25" /> <!-- High-grade Maphr's Rune 100% Pack - 7 days -->
 			<item id="37041" min="1" max="1" chance="25" /> <!-- Divine Protection Elixir -->
 		</capsuled_items>
 	</item>
 	<item id="23845" name="Mysterious Hunt Dye" additionalName="P. Def., Speed, 1-day" type="EtcItem">
-		<!-- Take it to the town's Symbol Maker for a 1-day tattoo that increases your power (when HP is 90% or above, P. Def. +20%, Speed +33). All classes. Awakened only. Note: Tattoo is only effective in the Olympiad and Ceremony of Chaos. -->
+		<!-- Take it to the town's Symbol Maker for a 1-day tattoo that increases your power (when HP is 90% or above, P. Def. +20%, Speed +33). All classes. Awakened only. Note!. Tattoo is only effective in the Olympiad and Ceremony of Chaos. -->
 		<set name="icon" val="BranchSys3.icon1.g_premium_dye_etc_defence" />
 		<set name="is_stackable" val="true" />
 		<set name="is_tradable" val="false" />
@@ -596,7 +612,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="23846" name="Mysterious Slaughter Dye" additionalName="Damage Reflection Resistance, Received Damage Decrease, 1-day" type="EtcItem">
-		<!-- Take it to the town's Symbol Maker for a 1-day tattoo that increases your power (Received Damage from PCs - 2%, Damage Reflection Resistance +2, effect increased for PC kills, up to Lv. 5) All classes. Awakened only. Note: Tattoo is only effective in a castle siege, dimensional castle siege, fortress siege, and a clan hall war. -->
+		<!-- Take it to the town's Symbol Maker for a 1-day tattoo that increases your power (Received Damage from PCs - 2%, Damage Reflection Resistance +2, effect increased for PC kills, up to Lv. 5) All classes. Awakened only. Note!. Tattoo is effective only in PvP zones. -->
 		<set name="icon" val="BranchSys3.icon1.g_premium_dye_etc_slaughter" />
 		<set name="is_stackable" val="true" />
 		<set name="is_tradable" val="false" />
@@ -675,7 +691,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="23854" name="XP Rune II (Lv. 1-95) 100% Pack (3-hour)" type="EtcItem">
-		<!-- Wrapped Pack containing XP Rune II (Lv. 1-95) 100% (3-hour). -->
+		<!-- Wrapped Pack containing Nevit's Rune Box (Dragon Rising) 100% (3-hour). -->
 		<set name="icon" val="icon.etc_pi_gift_box_i04" />
 		<set name="material" val="STEEL" />
 		<set name="is_sellable" val="false" />
@@ -686,7 +702,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="is_stackable" val="true" />
 		<capsuled_items>
-			<item id="23392" min="1" max="1" chance="100" /> <!-- XP Rune II (Lv. 1-95) 100% - 3-hour -->
+			<item id="23392" min="1" max="1" chance="100" /> <!-- Nevit's Rune (Dragon Rising) 100% - 3-hour -->
 		</capsuled_items>
 	</item>
 	<item id="23855" name="Golden Crate" type="EtcItem">
@@ -794,12 +810,12 @@
 			<item id="22515" min="1" max="1" chance="5" /> <!-- Superior Minion Coupon Pack -->
 			<item id="21241" min="1" max="1" chance="5" /> <!-- Super Healthy Juice Pack (CP) -->
 			<item id="21237" min="1" max="1" chance="7" /> <!-- Super Healthy Juice Pack (HP) -->
-			<item id="23876" min="1" max="1" chance="5" /> <!-- High-grade Maphr's Rune 100% Pack - 7-day -->
+			<item id="23876" min="1" max="1" chance="5" /> <!-- High-grade Maphr's Rune 100% Pack - 7 days -->
 			<item id="23349" min="1" max="1" chance="5" /> <!-- Enhanced Power Shirt Pack -->
 		</capsuled_items>
 	</item>
 	<item id="23858" name="Talisman Crate" type="EtcItem">
-		<!-- Has a chance of obtaining either a Talisman (R-grade) - Knock Back Resistance (Passive), Talisman (R-grade) - Knock Down Resistance (Passive), Talisman (R-grade) - Binding Resistance (Passive), Talisman (R-grade) - Pulling Resistance (Passive), Talisman (R-grade) - Banishment Resistance (Passive), Talisman (R-grade) - Mutation Resistance (Passive), Talisman (R-grade) - Lethal Strike Resistance, Talisman (R-grade) - Damage Reflection Resistance, Special Talisman - M. Def., Special Talisman - Ranged Attack Resistance, Special Talisman (R-grade) - Decrease MP Consumption, or Talisman (R-grade) - Cancel Debuff (Active). -->
+		<!-- Has a chance of obtaining either Talisman (R-grade) - Confusion Resistance (Passive), Talisman (R-grade) - Obstruction Resistance (Passive), Talisman (R-grade) - Stupor Resistance (Passive), Talisman (R-grade) - Lethal Strike Resistance, Talisman (R-grade) - Damage Reflection Resistance, Special Talisman - M. Def., Special Talisman - Ranged Attack Resistance, Special Talisman (R-grade) - Decrease MP Consumption, or Talisman (R-grade) - Cancel Debuff (Active). -->
 		<set name="icon" val="icon.etc_jewel_box_i00" />
 		<set name="material" val="STEEL" />
 		<set name="is_sellable" val="false" />
@@ -814,13 +830,13 @@
 		<capsuled_items>
 			<item id="18540" min="1" max="1" chance="8.333" /> <!-- Special Talisman (R-grade) - Decrease MP Consumption -->
 			<item id="32247" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Remove Debuff (Active) -->
-			<item id="30415" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Banishment Resistance (Passive) -->
-			<item id="30416" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Mutation Resistance (Passive) -->
-			<item id="30413" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Binding Resistance (Passive) -->
-			<item id="30412" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Knock Down Resistance (Passive) -->
+			<item id="30415" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Obstruction Resistance (Passive) -->
+			<item id="30416" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Stupor Resistance (Passive) -->
+			<item id="30413" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Confusion Resistance (Passive) -->
+			<item id="30412" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Confusion Resistance (Passive) -->
 			<item id="33768" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Damage Reflection Resistance (Active) -->
-			<item id="30411" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Knock Back Resistance (Passive) -->
-			<item id="30414" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Pulling Resistance (Passive) -->
+			<item id="30411" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Confusion Resistance (Passive) -->
+			<item id="30414" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Confusion Resistance (Passive) -->
 			<item id="33767" min="1" max="1" chance="8.333" /> <!-- Talisman (R-grade) - Lethal Strike Resistance (Active) -->
 			<item id="33472" min="1" max="1" chance="8.333" /> <!-- Special Talisman - M. Def. (Active) -->
 			<item id="30473" min="1" max="1" chance="8.333" /> <!-- Bound Heavy War Axe - Anger -->
@@ -925,9 +941,13 @@
 		<set name="is_freightable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="23870" min="1" max="1" chance="100" /> <!-- Angel Cat's Blessing -->
+		</capsuled_items>
 	</item>
 	<item id="23870" name="Angel Cat's Blessing" type="EtcItem">
-		<!-- For 60min., P. Atk. +5%, M. Atk. +20%, Atk. Spd. +5%, Casting Spd. +5%, and SP/ XP gain through hunt +30%. Does not stack with event buffs such as the Letter Collector's Gift. -->
+		<!-- For 60 min., P. Atk. +5%, M. Atk. +20%, Atk. Spd. +5%, Casting Spd. +5%, Acquired SP/ XP +30%. Does not stack with event buffs such as the Letter Collector's Gift. -->
 		<set name="icon" val="icon.accessory_cat_the_cat_cap_i00" />
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
@@ -977,6 +997,10 @@
 		<set name="time" val="60" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="23871" min="1" max="1" chance="100" /> <!-- High-grade Maphr's Rune 100% - 1-hour -->
+		</capsuled_items>
 	</item>
 	<item id="23875" name="High-grade Maphr's Rune 100% Pack" additionalName="5-hour" type="EtcItem">
 		<!-- Wrapped Pack containing High-grade Maphr's Rune 100% (5-hour). -->
@@ -987,6 +1011,10 @@
 		<set name="time" val="300" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="23872" min="1" max="1" chance="100" /> <!-- High-grade Maphr's Rune 100% - 5-hour -->
+		</capsuled_items>
 	</item>
 	<item id="23876" name="High-grade Maphr's Rune 100% Pack" additionalName="7-day" type="EtcItem">
 		<!-- Wrapped Pack containing High-grade Maphr's Rune 100% (7-day). -->
@@ -997,9 +1025,13 @@
 		<set name="time" val="10080" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="23873" min="1" max="1" chance="100" /> <!-- High-grade Maphr's Rune 100% - 7 days -->
+		</capsuled_items>
 	</item>
 	<item id="23877" name="Samurai Hair Accessory" type="Armor">
-		<!-- Samurai look. -->
+		<!-- Samurai Hair Accessory. -->
 		<set name="icon" val="BranchSys3.iconArmar.g_co_japan_general_hair_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1024,7 +1056,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="23879" name="Samurai Outfit" type="Armor">
-		<!-- Samurai look. -->
+		<!-- Samurai's Outfit. -->
 		<set name="icon" val="BranchSys3.iconArmar.g_co_japan_general_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1060,7 +1092,7 @@
 		<set name="bodypart" val="alldress" />
 	</item>
 	<item id="23882" name="Anakim Outfit Appearance Stone" type="EtcItem">
-		<!-- Modifies the appearance of armor into that of Anakim. Works on one-piece armor. Changes the entire armor set's appearance. Can be undone with a Restoration Stone. -->
+		<!-- Modifies the appearance of armor into that of Anakim. Works on one-piece armor. Changes the entire armor set's appearance. Can be undone with a Restoration Stone. Note!. The appearance is reset if the modified armor is upgraded or given new options. -->
 		<set name="icon" val="BranchSys3.icon1.g_scrl_change_chest" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
@@ -1215,7 +1247,7 @@
 			<item id="18563" min="1" max="1" chance="40" /> <!-- Life Stone (R-grade) -->
 			<item id="18565" min="1" max="1" chance="15" /> <!-- High-grade Life Stone (R-grade) -->
 			<item id="18566" min="1" max="1" chance="10" /> <!-- Top-grade Life Stone (R-grade) -->
-			<item id="36731" min="1" max="1" chance="5" /> <!-- Life Stone Instilled with Giants' Power -->
+			<item id="36731" min="1" max="1" chance="5" /> <!-- Life Stone: Giant's Power -->
 			<item id="18564" min="1" max="1" chance="30" /> <!-- Mid-grade Life Stone (R-grade) -->
 		</capsuled_items>
 	</item>
@@ -1323,7 +1355,7 @@
 		<!-- TODO Chance needs to be verified -->
 		<set name="is_stackable" val="true" />
 		<capsuled_items>
-			<item id="36731" min="1" max="1" chance="5" /> <!-- Life Stone Instilled with Giants' Power -->
+			<item id="36731" min="1" max="1" chance="5" /> <!-- Life Stone: Giant's Power -->
 			<item id="37044" min="1" max="1" chance="5" /> <!-- Immortal Scroll -->
 			<item id="34691" min="1" max="1" chance="5" /> <!-- Hair Accessory Pack -->
 			<item id="34955" min="1" max="1" chance="5" /> <!-- Lv. 5 Ancient Dye Pack - Event -->

@@ -37,7 +37,7 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.communitybbs.BB.Forum;
 import org.l2jmobius.gameserver.communitybbs.Manager.ForumsBBSManager;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
 import org.l2jmobius.gameserver.data.xml.ClanLevelData;
@@ -82,7 +82,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PledgeSkillList.SubPledgeS
 import org.l2jmobius.gameserver.network.serverpackets.PledgeSkillListAdd;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeMissionInfo;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeMissionRewardCount;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeShowInfoUpdate;
@@ -1468,7 +1467,7 @@ public class Clan implements IIdentifiable, INamable
 			}
 			else
 			{
-				player.enableSkill(skill);
+				player.enableSkill(skill, false);
 			}
 		}
 		
@@ -1482,7 +1481,7 @@ public class Clan implements IIdentifiable, INamable
 				}
 				else
 				{
-					player.enableSkill(skill);
+					player.enableSkill(skill, false);
 				}
 			}
 		}
@@ -1499,7 +1498,7 @@ public class Clan implements IIdentifiable, INamable
 					}
 					else
 					{
-						player.enableSkill(skill);
+						player.enableSkill(skill, false);
 					}
 				}
 			}
@@ -1906,7 +1905,7 @@ public class Clan implements IIdentifiable, INamable
 				if (cm.isOnline() && (cm.getPowerGrade() == rank) && (cm.getPlayer() != null))
 				{
 					cm.getPlayer().getClanPrivileges().setBitmask(privs);
-					cm.getPlayer().sendPacket(new UserInfo(cm.getPlayer()));
+					cm.getPlayer().updateUserInfo();
 				}
 			}
 			broadcastClanStatus();
@@ -2098,7 +2097,7 @@ public class Clan implements IIdentifiable, INamable
 			player.sendPacket(SystemMessageId.IN_ORDER_TO_JOIN_THE_CLAN_ACADEMY_YOU_MUST_BE_UNAFFILIATED_WITH_A_CLAN_AND_BE_AN_UNAWAKENED_CHARACTER_LV_84_OR_BELOW_FPR_BOTH_MAIN_AND_SUBCLASS);
 			return false;
 		}
-		if (getSubPledgeMembersCount(pledgeType) >= (pledgeType == 0 ? ClanLevelData.getCommonMemberLimit(_level) : ClanLevelData.getEliteMemberLimit(_level)))
+		if (getSubPledgeMembersCount(pledgeType) >= (pledgeType == 0 ? ClanLevelData.getInstance().getCommonMemberLimit(_level) : ClanLevelData.getInstance().getEliteMemberLimit(_level)))
 		{
 			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_FULL_AND_CANNOT_ACCEPT_ADDITIONAL_CLAN_MEMBERS_AT_THIS_TIME);
 			sm.addString(_name);
@@ -2286,7 +2285,7 @@ public class Clan implements IIdentifiable, INamable
 		setAllyPenaltyExpiryTime(0, 0);
 		updateClanInDB();
 		
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		
 		// TODO: Need correct message id
 		player.sendMessage("Alliance " + allyName + " has been created.");
@@ -2347,7 +2346,7 @@ public class Clan implements IIdentifiable, INamable
 		boolean increasedLevel = false;
 		if (_level < 15)
 		{
-			final int requiredReputation = ClanLevelData.getLevelRequirement(_level);
+			final int requiredReputation = ClanLevelData.getInstance().getLevelExp(_level);
 			if (requiredReputation <= _reputationScore)
 			{
 				setReputationScore(_reputationScore - requiredReputation);
@@ -2636,7 +2635,7 @@ public class Clan implements IIdentifiable, INamable
 	
 	public String getNewLeaderName()
 	{
-		return CharNameTable.getInstance().getNameById(_newLeaderId);
+		return CharInfoTable.getInstance().getNameById(_newLeaderId);
 	}
 	
 	public int getSiegeKills()

@@ -304,20 +304,32 @@
 	<item id="46624" name="Entrance Pass: Embryo Command Post" type="EtcItem">
 		<!-- Double-click to reset cooldown to Embryo Command Post. Can only be used when on a cooldown to the instance zone. Can only be used once during the set time period outside of the instance zone. -->
 		<set name="icon" val="icon.etc_bm_kalie_instantzone_re" />
-		<set name="is_sellable" val="false" />
-		<set name="time" val="1440" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="weight" val="5" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="27758" level="1" /> <!-- Extra Pass: Embryo Command Post -->
+		</skills>
 	</item>
 	<item id="46625" name="Entrance Pass: Nightmare Kamaloka" additionalName="1-day" type="EtcItem">
 		<!-- An extra pass to a daily instance zone. Double-click to reset the instance zone timer for Nightmare Kamaloka Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. -->
 		<set name="icon" val="icon.etc_ticket_red_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="1440" />
+		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
-		<set name="reuse_delay" val="86400000" />
-		<set name="material" val="PAPER" />
+		<set name="time" val="1440" />
 		<skills>
 			<skill id="18559" level="1" /> <!-- Extra Pass: Nightmare Kamaloka -->
 		</skills>
@@ -375,6 +387,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="ensoulNormalSlots" val="1" />
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="immediate_effect" val="true" />
@@ -1388,11 +1401,18 @@
 	<item id="46692" name="Entrance Pass: Embryo Command Post" type="EtcItem">
 		<!-- Double-click to reset cooldown to Embryo Command Post. Can only be used when on a cooldown to the instance zone. Can only be used once during the set time period outside of the instance zone. -->
 		<set name="icon" val="icon.etc_ticket_red_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
-		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="27776" level="1" /> <!-- Extra Pass: Embryo Command Post -->
+		</skills>
 	</item>
 	<item id="46693" name="Emperor Shunaiman's Shaper" additionalName="30-day" type="Weapon">
 		<!-- Emperor Shunaiman's Weapon. All levels. Can be used with No-grade Soulshot/ Spiritshot/ Blessed Spiritshot. Cannot be used in the Olympiad. -->

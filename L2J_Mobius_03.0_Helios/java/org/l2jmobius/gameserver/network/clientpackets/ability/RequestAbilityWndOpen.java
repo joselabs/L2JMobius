@@ -43,6 +43,12 @@ public class RequestAbilityWndOpen implements ClientPacket
 			return;
 		}
 		
+		if (!player.isAwakenedClass())
+		{
+			player.sendPacket(SystemMessageId.THERE_ARE_NO_OTHER_SKILLS_TO_LEARN);
+			return;
+		}
+		
 		player.sendPacket(ExShowAPListWnd.STATIC_PACKET);
 		player.sendPacket(new ExAcquireAPSkillList(player));
 	}

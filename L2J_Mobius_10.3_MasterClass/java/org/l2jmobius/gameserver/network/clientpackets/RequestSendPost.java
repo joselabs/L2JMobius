@@ -21,7 +21,7 @@ import static org.l2jmobius.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
@@ -32,7 +32,6 @@ import org.l2jmobius.gameserver.model.Message;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.Mail;
-import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
@@ -125,9 +124,15 @@ public class RequestSendPost implements ClientPacket
 			return;
 		}
 		
-		if (!player.isInsideZone(ZoneId.PEACE) && (_items != null))
+		if (player.isInCombat() && (_items != null))
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_FORWARD_IN_A_NON_PEACE_ZONE_LOCATION);
+			player.sendPacket(SystemMessageId.CANNOT_BE_USED_WHILE_IN_COMBAT_MODE);
+			return;
+		}
+		
+		if (player.isDead() && (_items != null))
+		{
+			player.sendPacket(SystemMessageId.YOU_ARE_DEAD_AND_CANNOT_PERFORM_THIS_ACTION);
 			return;
 		}
 		
@@ -201,7 +206,7 @@ public class RequestSendPost implements ClientPacket
 			return;
 		}
 		
-		final int receiverId = CharNameTable.getInstance().getIdByName(_receiver);
+		final int receiverId = CharInfoTable.getInstance().getIdByName(_receiver);
 		if (receiverId <= 0)
 		{
 			player.sendPacket(SystemMessageId.WHEN_THE_RECIPIENT_DOESN_T_EXIST_OR_THE_CHARACTER_HAS_BEEN_DELETED_SENDING_MAIL_IS_NOT_POSSIBLE);
@@ -214,7 +219,7 @@ public class RequestSendPost implements ClientPacket
 			return;
 		}
 		
-		final int level = CharNameTable.getInstance().getAccessLevelById(receiverId);
+		final int level = CharInfoTable.getInstance().getAccessLevelById(receiverId);
 		final AccessLevel accessLevel = AdminData.getInstance().getAccessLevel(level);
 		if ((accessLevel != null) && accessLevel.isGm() && !player.getAccessLevel().isGm())
 		{

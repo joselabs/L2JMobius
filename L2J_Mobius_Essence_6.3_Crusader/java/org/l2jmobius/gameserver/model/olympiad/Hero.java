@@ -35,7 +35,7 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.cache.HtmCache;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
@@ -56,7 +56,6 @@ import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * Hero entity.
@@ -70,7 +69,7 @@ public class Hero
 	private static final String GET_ALL_HEROES = "SELECT heroes.charId, characters.char_name, heroes.class_id, heroes.count, heroes.legend_count, heroes.played, heroes.claimed FROM heroes, characters WHERE characters.charId = heroes.charId";
 	private static final String UPDATE_ALL = "UPDATE heroes SET played = 0";
 	private static final String INSERT_HERO = "INSERT INTO heroes (charId, class_id, count, legend_count, played, claimed) VALUES (?,?,?,?,?,?)";
-	private static final String UPDATE_HERO = "UPDATE heroes SET count = ?, legend_count = ?, played = ?, claimed = ? WHERE charId = ?";
+	private static final String UPDATE_HERO = "UPDATE heroes SET class_id = ?, count = ?, legend_count = ?, played = ?, claimed = ? WHERE charId = ?";
 	private static final String GET_CLAN_ALLY = "SELECT characters.clanid AS clanid, coalesce(clan_data.ally_Id, 0) AS allyId FROM characters LEFT JOIN clan_data ON clan_data.clan_id = characters.clanid WHERE characters.charId = ?";
 	private static final String DELETE_ITEMS = "DELETE FROM items WHERE item_id IN (30392, 30393, 30394, 30395, 30396, 30397, 30398, 30399, 30400, 30401, 30402, 30403, 30404, 30405, 30372, 30373, 6842, 6611, 6612, 6613, 6614, 6615, 6616, 6617, 6618, 6619, 6620, 6621, 9388, 9389, 9390) AND owner_id NOT IN (SELECT charId FROM characters WHERE accesslevel > 0)";
 	
@@ -265,7 +264,7 @@ public class Hero
 			}
 			HERO_DIARY.put(charId, diary);
 			
-			LOGGER.info("Hero System: Loaded " + diaryentries + " diary entries for Hero: " + CharNameTable.getInstance().getNameById(charId));
+			LOGGER.info("Hero System: Loaded " + diaryentries + " diary entries for Hero: " + CharInfoTable.getInstance().getNameById(charId));
 		}
 		catch (SQLException e)
 		{
@@ -317,7 +316,7 @@ public class Hero
 					classed = rset.getInt("classed");
 					if (charId == charOneId)
 					{
-						final String name = CharNameTable.getInstance().getNameById(charTwoId);
+						final String name = CharInfoTable.getInstance().getNameById(charTwoId);
 						final String cls = ClassListData.getInstance().getClass(charTwoClass).getClientCode();
 						if ((name != null) && (cls != null))
 						{
@@ -349,7 +348,7 @@ public class Hero
 					}
 					else if (charId == charTwoId)
 					{
-						final String name = CharNameTable.getInstance().getNameById(charOneId);
+						final String name = CharInfoTable.getInstance().getNameById(charOneId);
 						final String cls = ClassListData.getInstance().getClass(charOneClass).getClientCode();
 						if ((name != null) && (cls != null))
 						{
@@ -388,7 +387,7 @@ public class Hero
 			HERO_COUNTS.put(charId, heroCountData);
 			HERO_FIGHTS.put(charId, fights);
 			
-			LOGGER.info("Hero System: Loaded " + numberOfFights + " fights for Hero: " + CharNameTable.getInstance().getNameById(charId));
+			LOGGER.info("Hero System: Loaded " + numberOfFights + " fights for Hero: " + CharInfoTable.getInstance().getNameById(charId));
 		}
 		catch (SQLException e)
 		{
@@ -438,7 +437,7 @@ public class Hero
 			if ((htmContent != null) && (heroMessage != null))
 			{
 				diaryReply.setHtml(htmContent);
-				diaryReply.replace("%heroname%", CharNameTable.getInstance().getNameById(charid));
+				diaryReply.replace("%heroname%", CharInfoTable.getInstance().getNameById(charid));
 				diaryReply.replace("%message%", heroMessage);
 				diaryReply.disableValidation();
 				
@@ -523,7 +522,7 @@ public class Hero
 			if (htmContent != null)
 			{
 				fightReply.setHtml(htmContent);
-				fightReply.replace("%heroname%", CharNameTable.getInstance().getNameById(charid));
+				fightReply.replace("%heroname%", CharInfoTable.getInstance().getNameById(charid));
 				if (!heroFights.isEmpty())
 				{
 					final StatSet heroCount = HERO_COUNTS.get(charid);
@@ -759,11 +758,12 @@ public class Hero
 					{
 						try (PreparedStatement statement = con.prepareStatement(UPDATE_HERO))
 						{
-							statement.setInt(1, hero.getInt(COUNT, 0));
-							statement.setInt(2, hero.getInt(LEGEND_COUNT, 0));
-							statement.setInt(3, hero.getInt(PLAYED, 0));
-							statement.setString(4, String.valueOf(hero.getBoolean(CLAIMED, false)));
-							statement.setInt(5, heroId);
+							statement.setInt(1, hero.getInt(Olympiad.CLASS_ID));
+							statement.setInt(2, hero.getInt(COUNT, 0));
+							statement.setInt(3, hero.getInt(LEGEND_COUNT, 0));
+							statement.setInt(4, hero.getInt(PLAYED, 0));
+							statement.setString(5, String.valueOf(hero.getBoolean(CLAIMED, false)));
+							statement.setInt(6, heroId);
 							statement.execute();
 						}
 					}
@@ -936,14 +936,13 @@ public class Hero
 		{
 			clan.addReputationScore(Config.HERO_POINTS);
 			final SystemMessage sm = new SystemMessage(SystemMessageId.CLAN_MEMBER_C1_HAS_BECOME_THE_HERO_CLAN_REPUTATION_POINTS_S2);
-			sm.addString(CharNameTable.getInstance().getNameById(player.getObjectId()));
+			sm.addString(CharInfoTable.getInstance().getNameById(player.getObjectId()));
 			sm.addInt(Config.HERO_POINTS);
 			clan.broadcastToOnlineMembers(sm);
 		}
 		
 		player.setHero(true);
 		player.broadcastPacket(new SocialAction(player.getObjectId(), 20016)); // Hero Animation
-		player.sendPacket(new UserInfo(player));
 		player.broadcastUserInfo();
 		
 		// Set Gained hero and reload data

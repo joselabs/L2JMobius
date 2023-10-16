@@ -16,7 +16,6 @@
  */
 package handlers.effecthandlers;
 
-import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.enums.ShortcutType;
 import org.l2jmobius.gameserver.model.Shortcut;
@@ -26,9 +25,9 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
-import org.l2jmobius.gameserver.network.serverpackets.ShortCutRegister;
+import org.l2jmobius.gameserver.network.serverpackets.AbnormalStatusUpdate;
 
 /**
  * @author Mobius
@@ -62,95 +61,129 @@ public class ReplaceSkillBySkill extends AbstractEffect
 		
 		final Skill addedSkill = SkillData.getInstance().getSkill(_replacementSkill.getSkillId(), _replacementSkill.getSkillLevel() < 1 ? knownSkill.getLevel() : _replacementSkill.getSkillLevel(), knownSkill.getSubLevel());
 		player.addSkill(addedSkill, false);
-		player.addReplacedSkill(_existingSkill.getSkillId());
+		player.addReplacedSkill(_existingSkill.getSkillId(), _replacementSkill.getSkillId());
 		for (Shortcut shortcut : player.getAllShortCuts())
 		{
-			if ((shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == knownSkill.getId()) && (shortcut.getLevel() == knownSkill.getLevel()))
+			if (shortcut.isAutoUse() && (shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == knownSkill.getId()))
 			{
-				final int slot = shortcut.getSlot();
-				final int page = shortcut.getPage();
-				final Shortcut newShortcut = new Shortcut(slot, page, ShortcutType.SKILL, addedSkill.getId(), addedSkill.getLevel(), addedSkill.getSubLevel(), shortcut.getCharacterType());
-				if (shortcut.isAutoUse())
+				if (knownSkill.isBad())
 				{
-					newShortcut.setAutoUse(true);
-					if (knownSkill.isBad())
+					if (player.getAutoUseSettings().getAutoSkills().contains(knownSkill.getId()))
 					{
-						if (player.getAutoUseSettings().getAutoSkills().contains(knownSkill.getId()))
-						{
-							player.getAutoUseSettings().getAutoSkills().add(addedSkill.getId());
-							player.getAutoUseSettings().getAutoSkills().remove(Integer.valueOf(knownSkill.getId()));
-						}
-					}
-					else if (player.getAutoUseSettings().getAutoBuffs().contains(knownSkill.getId()))
-					{
-						player.getAutoUseSettings().getAutoBuffs().add(addedSkill.getId());
-						player.getAutoUseSettings().getAutoBuffs().remove(knownSkill.getId());
+						player.getAutoUseSettings().getAutoSkills().add(addedSkill.getId());
+						player.getAutoUseSettings().getAutoSkills().remove(Integer.valueOf(knownSkill.getId()));
 					}
 				}
-				player.deleteShortCut(slot, page);
-				player.registerShortCut(newShortcut);
-				player.sendPacket(new ShortCutRegister(newShortcut));
+				else if (player.getAutoUseSettings().getAutoBuffs().contains(knownSkill.getId()))
+				{
+					player.getAutoUseSettings().getAutoBuffs().add(addedSkill.getId());
+					player.getAutoUseSettings().getAutoBuffs().remove(knownSkill.getId());
+				}
+			}
+		}
+		
+		// Replace continuous effects.
+		if (knownSkill.isContinuous() && player.isAffectedBySkill(knownSkill.getId()))
+		{
+			int abnormalTime = 0;
+			for (BuffInfo info : player.getEffectList().getEffects())
+			{
+				if (info.getSkill().getId() == knownSkill.getId())
+				{
+					abnormalTime = info.getAbnormalTime();
+					break;
+				}
+			}
+			
+			if (abnormalTime > 2000)
+			{
+				addedSkill.applyEffects(player, player);
+				final AbnormalStatusUpdate asu = new AbnormalStatusUpdate();
+				for (BuffInfo info : player.getEffectList().getEffects())
+				{
+					if (info.getSkill().getId() == addedSkill.getId())
+					{
+						info.resetAbnormalTime(abnormalTime);
+						asu.addSkill(info);
+					}
+				}
+				player.sendPacket(asu);
 			}
 		}
 		
 		player.removeSkill(knownSkill, false);
 		player.sendSkillList();
-		ThreadPool.schedule(() ->
-		{
-			player.sendPacket(new ShortCutInit(player));
-			player.restoreAutoShortcutVisual();
-		}, 1100);
 	}
 	
 	@Override
 	public void onExit(Creature effector, Creature effected, Skill skill)
 	{
 		final Player player = effected.getActingPlayer();
+		final int existingSkillId = _existingSkill.getSkillId();
+		if (player.getReplacementSkill(existingSkillId) == existingSkillId)
+		{
+			return;
+		}
+		
 		final Skill knownSkill = player.getKnownSkill(_replacementSkill.getSkillId());
 		if (knownSkill == null)
 		{
 			return;
 		}
 		
-		final Skill addedSkill = SkillData.getInstance().getSkill(_existingSkill.getSkillId(), _existingSkill.getSkillLevel() < 1 ? knownSkill.getLevel() : _existingSkill.getSkillLevel(), knownSkill.getSubLevel());
-		player.addSkill(addedSkill, false);
-		player.removeReplacedSkill(_existingSkill.getSkillId());
+		final Skill addedSkill = SkillData.getInstance().getSkill(existingSkillId, knownSkill.getLevel(), knownSkill.getSubLevel());
+		player.addSkill(addedSkill, knownSkill.getLevel() != _existingSkill.getSkillLevel());
+		player.removeReplacedSkill(existingSkillId);
 		for (Shortcut shortcut : player.getAllShortCuts())
 		{
-			if ((shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == knownSkill.getId()) && (shortcut.getLevel() == knownSkill.getLevel()))
+			if (shortcut.isAutoUse() && (shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == addedSkill.getId()))
 			{
-				final int slot = shortcut.getSlot();
-				final int page = shortcut.getPage();
-				final Shortcut newShortcut = new Shortcut(slot, page, ShortcutType.SKILL, addedSkill.getId(), addedSkill.getLevel(), addedSkill.getSubLevel(), shortcut.getCharacterType());
-				if (shortcut.isAutoUse())
+				if (knownSkill.isBad())
 				{
-					newShortcut.setAutoUse(true);
-					if (knownSkill.isBad())
+					if (player.getAutoUseSettings().getAutoSkills().contains(knownSkill.getId()))
 					{
-						if (player.getAutoUseSettings().getAutoSkills().contains(knownSkill.getId()))
-						{
-							player.getAutoUseSettings().getAutoSkills().add(addedSkill.getId());
-							player.getAutoUseSettings().getAutoSkills().remove(Integer.valueOf(knownSkill.getId()));
-						}
-					}
-					else if (player.getAutoUseSettings().getAutoBuffs().contains(knownSkill.getId()))
-					{
-						player.getAutoUseSettings().getAutoBuffs().add(addedSkill.getId());
-						player.getAutoUseSettings().getAutoBuffs().remove(knownSkill.getId());
+						player.getAutoUseSettings().getAutoSkills().add(addedSkill.getId());
+						player.getAutoUseSettings().getAutoSkills().remove(Integer.valueOf(knownSkill.getId()));
 					}
 				}
-				player.deleteShortCut(slot, page);
-				player.registerShortCut(newShortcut);
-				player.sendPacket(new ShortCutRegister(newShortcut));
+				else if (player.getAutoUseSettings().getAutoBuffs().contains(knownSkill.getId()))
+				{
+					player.getAutoUseSettings().getAutoBuffs().add(addedSkill.getId());
+					player.getAutoUseSettings().getAutoBuffs().remove(knownSkill.getId());
+				}
+			}
+		}
+		
+		// Replace continuous effects.
+		if (knownSkill.isContinuous() && player.isAffectedBySkill(knownSkill.getId()))
+		{
+			int abnormalTime = 0;
+			for (BuffInfo info : player.getEffectList().getEffects())
+			{
+				if (info.getSkill().getId() == knownSkill.getId())
+				{
+					abnormalTime = info.getAbnormalTime();
+					break;
+				}
+			}
+			
+			if (abnormalTime > 2000)
+			{
+				addedSkill.applyEffects(player, player);
+				final AbnormalStatusUpdate asu = new AbnormalStatusUpdate();
+				for (BuffInfo info : player.getEffectList().getEffects())
+				{
+					if (info.getSkill().getId() == addedSkill.getId())
+					{
+						info.resetAbnormalTime(abnormalTime);
+						asu.addSkill(info);
+					}
+				}
+				player.sendPacket(asu);
 			}
 		}
 		
 		player.removeSkill(knownSkill, false);
 		player.sendSkillList();
-		ThreadPool.schedule(() ->
-		{
-			player.sendPacket(new ShortCutInit(player));
-			player.restoreAutoShortcutVisual();
-		}, 1100);
 	}
 }

@@ -53,7 +53,7 @@ public class PhysicalSoulAttack extends AbstractEffect
 	@Override
 	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
 	{
-		return !Formulas.calcPhysicalSkillEvasion(effector, effected, skill);
+		return !Formulas.calcSkillEvasion(effector, effected, skill);
 	}
 	
 	@Override
@@ -121,13 +121,30 @@ public class PhysicalSoulAttack extends AbstractEffect
 		final double attack = effector.getPAtk();
 		double defence = effected.getPDef();
 		
-		if (!_ignoreShieldDefence)
+		final double shieldDefenceIgnoreRemoval = effected.getStat().getValue(Stat.SHIELD_DEFENCE_IGNORE_REMOVAL, 1);
+		final double shieldDefenceIgnoreRemovalAdd = effected.getStat().getValue(Stat.SHIELD_DEFENCE_IGNORE_REMOVAL_ADD, 0);
+		if (!_ignoreShieldDefence || (shieldDefenceIgnoreRemoval > 1) || (shieldDefenceIgnoreRemovalAdd > 0))
 		{
-			switch (Formulas.calcShldUse(effector, effected))
+			final byte shield = Formulas.calcShldUse(effector, effected);
+			switch (shield)
 			{
 				case Formulas.SHIELD_DEFENSE_SUCCEED:
 				{
-					defence += effected.getShldDef();
+					int shieldDef = effected.getShldDef();
+					if (_ignoreShieldDefence)
+					{
+						final double shieldDefMod = Math.max(0, shieldDefenceIgnoreRemoval - 1);
+						double ignoredShieldDef = shieldDef - (shieldDef * shieldDefMod);
+						if (ignoredShieldDef > 0)
+						{
+							ignoredShieldDef = Math.max(0, ignoredShieldDef - shieldDefenceIgnoreRemovalAdd);
+						}
+						defence += shieldDef - ignoredShieldDef;
+					}
+					else
+					{
+						defence += effected.getShldDef();
+					}
 					break;
 				}
 				case Formulas.SHIELD_DEFENSE_PERFECT_BLOCK:
@@ -161,11 +178,11 @@ public class PhysicalSoulAttack extends AbstractEffect
 			{
 				if (effector.isChargedShot(ShotType.SOULSHOTS))
 				{
-					ssmod = 2 * effector.getStat().getValue(Stat.SHOTS_BONUS); // 2.04 for dual weapon?
+					ssmod = 2 * effector.getStat().getValue(Stat.SHOTS_BONUS) * effected.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1); // 2.04 for dual weapon?
 				}
 				else if (effector.isChargedShot(ShotType.BLESSED_SOULSHOTS))
 				{
-					ssmod = 4 * effector.getStat().getValue(Stat.SHOTS_BONUS);
+					ssmod = 4 * effector.getStat().getValue(Stat.SHOTS_BONUS) * effected.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1);
 				}
 			}
 			final double soulsMod = 1 + (chargedSouls * 0.04); // Souls Formula (each soul increase +4%)

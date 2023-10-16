@@ -26,7 +26,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.events.Containers;
 import org.l2jmobius.gameserver.model.events.EventType;
-import org.l2jmobius.gameserver.model.events.impl.sieges.OnCastleSiegeStart;
+import org.l2jmobius.gameserver.model.events.impl.sieges.OnCastleSiegeOwnerChange;
 import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
 
 /**
@@ -34,20 +34,27 @@ import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
  */
 public class SiegeDailyMissionHandler extends AbstractDailyMissionHandler
 {
+	private final int _missionId;
 	private final int _minLevel;
 	private final int _maxLevel;
+	private final int _minClanLevel;
+	private final int _minClanMasteryLevel;
+	private int _ownerId;
 	
 	public SiegeDailyMissionHandler(DailyMissionDataHolder holder)
 	{
 		super(holder);
+		_missionId = holder.getId();
 		_minLevel = holder.getParams().getInt("minLevel", 0);
 		_maxLevel = holder.getParams().getInt("maxLevel", Integer.MAX_VALUE);
+		_minClanLevel = holder.getParams().getInt("minClanLevel", 0);
+		_minClanMasteryLevel = holder.getParams().getInt("minClanMasteryLevel", 0);
 	}
 	
 	@Override
 	public void init()
 	{
-		Containers.Global().addListener(new ConsumerEventListener(this, EventType.ON_CASTLE_SIEGE_START, (OnCastleSiegeStart event) -> onSiegeStart(event), this));
+		Containers.Global().addListener(new ConsumerEventListener(this, EventType.ON_CASTLE_SIEGE_OWNER_CHANGE, (OnCastleSiegeOwnerChange event) -> onSiegeOwnerChange(event), this));
 	}
 	
 	@Override
@@ -67,10 +74,29 @@ public class SiegeDailyMissionHandler extends AbstractDailyMissionHandler
 		return false;
 	}
 	
-	private void onSiegeStart(OnCastleSiegeStart event)
+	private void onSiegeOwnerChange(OnCastleSiegeOwnerChange event)
 	{
-		event.getSiege().getAttackerClans().forEach(this::processSiegeClan);
-		event.getSiege().getDefenderClans().forEach(this::processSiegeClan);
+		if (_missionId == 2103) // Castle Siege: Successful Attack
+		{
+			_ownerId = event.getSiege().getCastle().getOwnerId();
+			event.getSiege().getAttackerClans().forEach(this::processSiegeClan);
+		}
+		else if (_missionId == 2104)// Castle Siege: Successful Defense
+		{
+			_ownerId = event.getSiege().getCastle().getOwnerId();
+			event.getSiege().getDefenderClans().forEach(this::processSiegeClan);
+		}
+	}
+	
+	private boolean checkClan(Player player)
+	{
+		if (player == null)
+		{
+			return false;
+		}
+		
+		final int clanMastery = player.getClan().hasMastery(14) ? 14 : player.getClan().hasMastery(15) ? 15 : player.getClan().hasMastery(16) ? 16 : 0;
+		return ((player.getClan().getLevel() >= _minClanLevel) && (clanMastery >= _minClanMasteryLevel));
 	}
 	
 	private void processSiegeClan(SiegeClan siegeClan)
@@ -78,17 +104,20 @@ public class SiegeDailyMissionHandler extends AbstractDailyMissionHandler
 		final Clan clan = ClanTable.getInstance().getClan(siegeClan.getClanId());
 		if (clan != null)
 		{
-			clan.getOnlineMembers(0).forEach(player ->
+			if (_ownerId == clan.getId())
 			{
-				if ((player.getLevel() < _minLevel) || (player.getLevel() > _maxLevel))
+				clan.getOnlineMembers(0).forEach(player ->
 				{
-					return;
-				}
-				
-				final DailyMissionPlayerEntry entry = getPlayerEntry(player.getObjectId(), true);
-				entry.setStatus(DailyMissionStatus.AVAILABLE);
-				storePlayerEntry(entry);
-			});
+					if ((player.getLevel() < _minLevel) || (player.getLevel() > _maxLevel) || !checkClan(player))
+					{
+						return;
+					}
+					
+					final DailyMissionPlayerEntry entry = getPlayerEntry(player.getObjectId(), true);
+					entry.setStatus(DailyMissionStatus.AVAILABLE);
+					storePlayerEntry(entry);
+				});
+			}
 		}
 	}
 }

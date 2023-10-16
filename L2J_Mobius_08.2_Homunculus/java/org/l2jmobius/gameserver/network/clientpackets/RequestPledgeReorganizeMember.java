@@ -76,7 +76,7 @@ public class RequestPledgeReorganizeMember implements ClientPacket
 			return;
 		}
 		
-		if (clan.getSubPledgeMembersCount(_newPledgeType) >= (_newPledgeType == 0 ? ClanLevelData.getCommonMemberLimit(clan.getLevel()) : ClanLevelData.getEliteMemberLimit(clan.getLevel())))
+		if (clan.getSubPledgeMembersCount(_newPledgeType) >= (_newPledgeType == 0 ? ClanLevelData.getInstance().getCommonMemberLimit(clan.getLevel()) : ClanLevelData.getInstance().getEliteMemberLimit(clan.getLevel())))
 		{
 			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_FULL_AND_CANNOT_ACCEPT_ADDITIONAL_CLAN_MEMBERS_AT_THIS_TIME);
 			sm.addString(_newPledgeType == 0 ? "Common Members" : "Elite Members");

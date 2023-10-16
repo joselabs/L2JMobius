@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="49800" name="Sibi's Coin Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to obtain 200 Sibi's Coins. -->
+		<!-- Double-click to obtain 200 to 2000 Sibi's Coins. -->
 		<set name="icon" val="icon.event_orc_coinbox" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -10,6 +10,16 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="49783" min="200" max="200" chance="20" /> <!-- Sibi's Coin (Time-limited) - Sealed -->
+			<item id="49783" min="500" max="500" chance="20" /> <!-- Sibi's Coin (Time-limited) - Sealed -->
+			<item id="49783" min="1000" max="1000" chance="20" /> <!-- Sibi's Coin (Time-limited) - Sealed -->
+			<item id="49783" min="1500" max="1500" chance="20" /> <!-- Sibi's Coin (Time-limited) - Sealed -->
+			<item id="49783" min="2000" max="2000" chance="20" /> <!-- Sibi's Coin (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="49801" name="Dandy's Pendant" additionalName="1-day" type="Armor">
 		<!-- M. Def. +20, Acquired XP/ SP +30%, P./ M. Atk. +50, P. Critical Damage/ M. Skill Critical Damage +5%. Allows use of Blessing of Fire Dragon skill. -->
@@ -42,7 +52,7 @@
 		</stats>
 	</item>
 	<item id="49803" name="Commemorable Uniform for 2017 Championship" additionalName="Sealed" type="Armor">
-		<!-- Allows use of Excellent Hit and Excellent Serve skills. When equipped, it is impossible to wear armor. Hats, weapons and accessories are not removed. -->
+		<!-- Allows use of Perfect Swing and Perfect Pitch skills. When equipped, it is impossible to wear armor. Hats, weapons and accessories are not removed. -->
 		<set name="icon" val="icon.london_olympic_bikini" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -557,7 +567,7 @@
 		</skills>
 	</item>
 	<item id="49848" name="+10 Fire Dragon Pendant Pack" type="EtcItem">
-		<!-- Double-click to obtain Fire Dragon Pendant +10. -->
+		<!-- Double-click to obtain +10 Fire Dragon Pendant. -->
 		<set name="icon" val="icon.bm_pendant_pve_box" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="FISH" />
@@ -567,7 +577,7 @@
 		<set name="is_freightable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49467" min="1" max="1" chance="100" minEnchant="10" maxEnchant="10" /> <!-- Fire Dragon Pendant -->
+			<item id="49467" min="1" max="1" chance="100" minEnchant="10" maxEnchant="10" /> <!-- Fire Dragon Pendant - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="49849" name="+10 Earth Dragon Pendant" type="EtcItem">
@@ -664,6 +674,38 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="49847" min="1" max="1" chance="3.703704" /> <!-- Sayha's Golden Light Blessing -->
+			<item id="948" min="1" max="1" chance="3.703704" /> <!-- Scroll: Enchant B-grade Armor -->
+			<item id="730" min="1" max="1" chance="3.703704" /> <!-- Scroll: Enchant A-grade Armor -->
+			<item id="951" min="1" max="1" chance="3.703704" /> <!-- Scroll: Enchant C-grade Weapon -->
+			<item id="947" min="1" max="1" chance="3.703704" /> <!-- Scroll: Enchant B-grade Weapon -->
+			<item id="729" min="1" max="1" chance="3.703704" /> <!-- Scroll: Enchant A-grade Weapon -->
+			<item id="33813" min="1" max="1" chance="3.703704" /> <!-- Improved Scroll: Enchant C-grade Armor -->
+			<item id="49483" min="1" max="1" chance="3.703704" /> <!-- Stable Scroll: Enchant C-grade Armor -->
+			<item id="33814" min="1" max="1" chance="3.703704" /> <!-- Improved Scroll: Enchant B-grade Armor -->
+			<item id="49485" min="1" max="1" chance="3.703704" /> <!-- Stable Scroll: Enchant B-grade Armor -->
+			<item id="33815" min="1" max="1" chance="3.703704" /> <!-- Improved Scroll: Enchant A-grade Armor -->
+			<item id="22224" min="1" max="1" chance="3.703704" /> <!-- Stable Scroll: Enchant A-grade Armor -->
+			<item id="33807" min="1" max="1" chance="3.703704" /> <!-- Improved Scroll: Enchant C-grade Weapon -->
+			<item id="49484" min="1" max="1" chance="3.703704" /> <!-- Stable Scroll: Enchant C-grade Weapon -->
+			<item id="33808" min="1" max="1" chance="3.703704" /> <!-- Improved Scroll: Enchant B-grade Weapon -->
+			<item id="49486" min="1" max="1" chance="3.703704" /> <!-- Stable Scroll: Enchant B-grade Weapon -->
+			<item id="49669" min="1" max="1" chance="3.703704" /> <!-- C-grade Accessory Pack -->
+			<item id="49668" min="1" max="1" chance="3.703704" /> <!-- C-grade Armor Pack -->
+			<item id="49667" min="1" max="1" chance="3.703704" /> <!-- C-grade Weapon Pack -->
+			<item id="49666" min="1" max="1" chance="3.703704" /> <!-- B-grade Accessory Pack -->
+			<item id="49665" min="1" max="1" chance="3.703704" /> <!-- B-grade Armor Pack -->
+			<item id="49664" min="1" max="1" chance="3.703704" /> <!-- B-grade Weapon Pack -->
+			<item id="22223" min="1" max="1" chance="3.703704" /> <!-- Stable Scroll: Enchant A-grade Weapon -->
+			<item id="33809" min="1" max="1" chance="3.703704" /> <!-- Improved Scroll: Enchant A-grade Weapon -->
+			<item id="49850" min="1" max="1" chance="3.703704" /> <!-- A-grade Accessory Pack -->
+			<item id="49786" min="1" max="1" chance="3.703704" /> <!-- A-grade Armor Pack -->
+			<item id="49785" min="1" max="1" chance="3.703704" /> <!-- A-grade Weapon Pack -->
+		</capsuled_items>
 	</item>
 	<item id="49857" name="Sayha's Gift" type="EtcItem">
 		<!-- Double-click to obtain one of the following items. -->
@@ -674,6 +716,24 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="10649" min="1" max="1" chance="7.692307" /> <!-- Feather of Blessing -->
+			<item id="49854" min="3" max="3" chance="7.692307" /> <!-- Maliss' MP Replenishing Potion -->
+			<item id="49684" min="20" max="20" chance="7.692307" /> <!-- Talisman Crystal -->
+			<item id="49704" min="1" max="1" chance="7.692307" /> <!-- Talisman of Border Fragment -->
+			<item id="49081" min="3" max="3" chance="7.692307" /> <!-- XP Growth Scroll -->
+			<item id="13016" min="10" max="10" chance="7.692307" /> <!-- My Teleport Scroll -->
+			<item id="49663" min="3" max="3" chance="7.692307" /> <!-- Special HP Recovery Potion -->
+			<item id="9591" min="1" max="1" chance="7.692307" /> <!-- Talisman Bracelet Lv. 3 -->
+			<item id="49853" min="1" max="1" chance="7.692307" /> <!-- Secret Book of Baggins' Enchantments - V -->
+			<item id="49852" min="1" max="1" chance="7.692307" /> <!-- Secret Book of Baggins' Enchantments - IV -->
+			<item id="49685" min="1" max="1" chance="7.692307" /> <!-- Powerless Energy of Insolence -->
+			<item id="49702" min="1" max="1" chance="7.692307" /> <!-- Bracelet of Border Fragment -->
+			<item id="49681" min="1" max="1" chance="7.692307" /> <!-- Talisman of Insolence Lv. 6 -->
+		</capsuled_items>
 	</item>
 	<item id="49858" name="Wind Token" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -684,6 +744,14 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49844" min="1" max="1" chance="100" /> <!-- Sayha's Blessing Chest -->
+			<item id="49851" min="1" max="1" chance="100" /> <!-- Sayha's Storm Lv. 1 -->
+			<item id="49857" min="1" max="1" chance="100" /> <!-- Sayha's Gift -->
+			<item id="49856" min="1" max="1" chance="100" /> <!-- Sayha's Silver Gift -->
+			<item id="49855" min="1" max="1" chance="100" /> <!-- Sayha's Golden Gift -->
+		</capsuled_items>
 	</item>
 	<item id="49859" name="Old Weapon Coupon" additionalName="Sealed" type="EtcItem">
 		<!-- Weapon Exchange Coupon is no longer used. Can be exchanged for Fishing Shots through Fishing Guildsman. -->
@@ -707,14 +775,14 @@
 		<set name="time" val="10080" />
 	</item>
 	<item id="49861" name="Life Stone - Tester" additionalName="Not Available" type="EtcItem">
-		<!-- Test -->
+		<!-- The item is not available. Test. -->
 		<set name="icon" val="icon.etc_mineral_general_i00" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="49862" name="Bracelet of Border Chest" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain the following. -->
 		<set name="icon" val="icon.etc_readybox_bronze" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -723,6 +791,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49703" min="1" max="1" chance="100" /> <!-- Talisman Bracelet Lv. 4 -->
+		</capsuled_items>
 	</item>
 	<item id="49863" name="Best STR Dye (STR +1 CON -3)" additionalName="3rd Class" type="EtcItem">
 		<!-- Collect 10 units and take them to the Symbol Maker in town to get a symbol that boosts your abilities. Requirements: all 3rd classes. -->

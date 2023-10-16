@@ -147,7 +147,7 @@ public class SkillData implements IXmlReader
 	 */
 	public static long getSkillHashCode(int skillId, int skillLevel, int subSkillLevel)
 	{
-		return subSkillLevel > 0 ? ((skillId * 4294967296L) + (subSkillLevel * 65536) + skillLevel) : (skillId * 65536) + skillLevel;
+		return (skillId * 4294967296L) + (subSkillLevel * 65536) + skillLevel;
 	}
 	
 	public Skill getSkill(int skillId, int level)

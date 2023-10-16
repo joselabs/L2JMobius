@@ -16,7 +16,7 @@
 		</effects>
 	</skill>
 	<skill id="30001" toLevel="30" name="Hydro Attack">
-		<!-- Deals magic damage to the target with $s1 power. If the target is debuffed, damage dealt +$s2. Requires a sword or a blunt weapon. -->
+		<!-- Deals magic damage to the target with 6 power. If the target is debuffed, damage dealt +10%. Requires a sword or a blunt weapon. -->
 		<icon>icon.skill30001</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
@@ -189,8 +189,12 @@
 		</effects>
 	</skill>
 	<skill id="30002" toLevel="3" name="Storm Sign">
-		<!-- M. Def. -$s1, Speed -$s2. -->
-		<icon>icon.skill30027</icon>
+		<!-- M. Def. -30%, Speed -70. -->
+		<icon>
+			<value level="1">icon.skill30027</value>
+			<value level="2">icon.skill30027</value>
+			<value level="3">icon.skill30027_a</value>
+		</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -220,7 +224,7 @@
 		</effects>
 	</skill>
 	<skill id="30003" toLevel="22" name="Hydro Flare">
-		<!-- Removes Storm Sign. Deals magic damage to the target with $s1 power. If the target is debuffed, inflicted damage +$s2. Requires a sword or a blunt weapon. Consumes 1 Spirit Ore. -->
+		<!-- Removes Storm Sign. Deals magic damage to the target with 110 power. If the target is debuffed, inflicted damage +10%. Requires a sword or a blunt weapon. Consumes 1 Spirit Ore. -->
 		<icon>icon.skill30003</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>10000</reuseDelay>
@@ -342,7 +346,7 @@
 		</effects>
 	</skill>
 	<skill id="30004" toLevel="27" name="Hydro Strike">
-		<!-- Summons the storm that deals magic damage to the target with $s1 power making them faint for $s2 Has a chance to debuff the target once again. Requires a sword or a blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Summons the storm that deals magic damage to the target with 57 power making them faint for 5 sec. Has a chance to debuff the target once again. Requires a sword or a blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill30004</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalType>STUN</abnormalType>
@@ -514,7 +518,7 @@
 		</effects>
 	</skill>
 	<skill id="30006" toLevel="13" name="Storm Rage">
-		<!-- Summons the storm that deals damage to nearby enemies with $s1 power blowing them away. If the enemy is debuffed, damage dealt +$s2. Requires a sword or a blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Summons the storm that deals damage to nearby enemies with 255 power blowing them away. If the enemy is debuffed, damage dealt +10%. Requires a sword or a blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill30006</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalType>STUN</abnormalType>
@@ -620,7 +624,7 @@
 		</effects>
 	</skill>
 	<skill id="30007" toLevel="17" name="Hydro Drain">
-		<!-- Inflicts magic damage with $s1 power. Recovers $s2 HP and $s3 MP. Over-hit. Requires a sword or a blunt weapon. -->
+		<!-- Inflicts magic damage with 123 power. Recovers 5% HP and 5% MP. Over-hit. Requires a sword or a blunt weapon. -->
 		<icon>icon.skill30007</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>10000</reuseDelay>
@@ -732,7 +736,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="30008" toLevel="5" name="Wind Blend">
-		<!-- The character blends with the wind for $s1, becoming completely invisible. After that the Traces of Wind effect is granted. Requires a sword or a blunt weapon. -->
+		<!-- The character blends with the wind for 5 sec., becoming completely invisible. After that the Traces of Wind effect is granted. Requires a sword or a blunt weapon. -->
 		<icon>icon.skill30008</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>
@@ -814,7 +818,7 @@
 		</endEffects>
 	</skill>
 	<skill id="30009" toLevel="10" name="Deceptive Blink">
-		<!-- The character teleports back and vanishes for $s1, becoming one with the wind. Speed +$s2. After that the Traces of Wind effect is granted. Requires a sword or a blunt weapon Consumes 10 Spirit Ore. -->
+		<!-- The character teleports back and vanishes for 5 sec., becoming one with the wind. Speed +50. After that the Traces of Wind effect is granted. Requires a sword or a blunt weapon. Consumes 10 Spirit Ore. -->
 		<icon>icon.skill30009</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -915,7 +919,7 @@
 		</endEffects>
 	</skill>
 	<skill id="30010" toLevel="3" name="Windy Refuge">
-		<!-- Cancels all debuffs and recovers HP and MP for $s1 inside a refuge of wind. Cannot move. When the effect is canceled, the Traces of Wind effect is granted. -->
+		<!-- Cancels all debuffs and recovers HP and MP for 10 sec. inside a refuge of wind. Cannot move. When the effect is canceled, the Traces of Wind effect is granted. -->
 		<icon>icon.skill30010</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -996,7 +1000,7 @@
 		</endEffects>
 	</skill>
 	<skill id="30011" toLevel="17" name="Threatening Wind">
-		<!-- Sends a slashing wind to brand target with Storm Sign Lv. $s1. For $s2, inflicts Faint on the target. There is a chance to debuff the target once again. Requires a sword or blunt weapon. Consumes 1 Spirit Ore. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Sends a slashing wind to brand target with Storm Sign Lv. 3. For 2 sec., inflicts Faint on the target. There is a chance to debuff the target once again. Requires a sword or blunt weapon. Consumes 1 Spirit Ore. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill30011</icon>
 		<effectRange>1200</effectRange>
 		<operateType>A1</operateType>
@@ -1085,7 +1089,7 @@
 		</effects>
 	</skill>
 	<skill id="30012" toLevel="27" name="Air Rush">
-		<!-- Deals magic damage to the target with $s1 power knocking them down. If the target is debuffed, damage dealt +$s2. Requires a sword or a blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Deals magic damage to the target with 57 power knocking them down. If the target is debuffed, damage dealt +10%. Requires a sword or a blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill30012</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
@@ -1238,7 +1242,7 @@
 		</effects>
 	</skill>
 	<skill id="30014" toLevel="17" name="Compelling Wind">
-		<!-- Sends a breeze that pushes the target towards you for $s1 There is a chance to debuff the target once again. Requires a sword or a blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Sends a breeze that pushes the target towards you for 5 sec. There is a chance to debuff the target once again. Requires a sword or a blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill30014</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
@@ -1350,7 +1354,7 @@
 		</conditions>
 	</skill>
 	<skill id="30016" toLevel="4" name="Eye of the Storm">
-		<!-- M. Skill Critical Rate +$s2, P./ M. Def. +$s3 for $s1 -->
+		<!-- M. Skill Critical Rate +100, P./ M. Def. +30% for 30 sec. -->
 		<icon>icon.skill30016</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
@@ -1415,7 +1419,7 @@
 		</effects>
 	</skill>
 	<skill id="30017" toLevel="5" name="Squall">
-		<!-- For $s1, Received P./ M. Critical Damage -$s2. -->
+		<!-- For 10 min., Received P./ M. Critical Damage -15%. -->
 		<icon>icon.skill30017</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>
@@ -1535,7 +1539,7 @@
 		</effects>
 	</skill>
 	<skill id="30019" toLevel="13" name="Sayha's Word">
-		<!-- Attacks target with $s1 power dealing magic damage. For $s2, target s Atk./Casting Spd. -$s3, Speed -$s4. Instantly brands target with Storm Sign Lv. $s5. Has a certain chance to brand Sign of Storn Lv. 4. Inflicts $s6 more damage if target is debuffed. Requires a sword or blunt weapon. Consumes 1 Spirit Ore. -->
+		<!-- Attacks target with 533 power dealing magic damage. For 10 sec., target's Atk./Casting Spd. -30%, Speed -180. Instantly brands target with Storm Sign Lv. 3. Has a certain chance to brand Sign of Storn Lv. 4. Inflicts 10% more damage if target is debuffed. Requires a sword or blunt weapon. Consumes 1 Spirit Ore. -->
 		<icon>icon.skill30019</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1661,7 +1665,7 @@
 		</effects>
 	</skill>
 	<skill id="30020" toLevel="1" name="Sayha's Fury">
-		<!-- For $s1, M. Skill Critical Damage +$s2, Received P./M. Critical Damage -$s3, and Speed + $s4. Requires a sword or a blunt weapon. -->
+		<!-- For 30 sec., M. Skill Critical Damage +30%, Received P./M. Critical Damage -50%, and Speed + 70. Requires a sword or a blunt weapon. -->
 		<icon>icon.skill30020</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
@@ -1720,7 +1724,7 @@
 		</effects>
 	</skill>
 	<skill id="30022" toLevel="3" name="Sayha's Blessing">
-		<!-- For $s1, nearby party members' Speed +$s2, Obstruction/ Danger Zone/ Confusion Resistance +$s3. Requires a sword or a blunt weapon. -->
+		<!-- For 30 sec., nearby party members' Speed +50, Obstruction/ Danger Zone/ Confusion Resistance +30. Requires a sword or a blunt weapon. -->
 		<icon>icon.skill30022</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
@@ -1814,13 +1818,14 @@
 	</skill>
 	<skill id="30023" toLevel="1" name="Decoy Lock">
 		<!-- Prevents the enemy from changing their target. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<icon>icon.skill0000</icon>
 		<operateType>A2</operateType>
 		<hitTime>1000</hitTime>
 		<effectPoint>-102</effectPoint>
 		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="30026" toLevel="4" name="Lightning Squall">
-		<!-- Deals magic damage to the target with $s1 power. Speed -$s2. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Deals magic damage to the target with 50 power. Speed -20. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill30026</icon>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
@@ -1871,7 +1876,7 @@
 		</effects>
 	</skill>
 	<skill id="30029" toLevel="6" name="Divine Storm">
-		<!-- Attacks nearby target with $s1 Power added to M. Atk. and locks them inside a storm for $s2. $s3 more damage if target is debuffed. Requires a sword or blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Attacks nearby target with 448 Power added to M. Atk. and locks them inside a storm for 5 sec.. 10% more damage if target is debuffed. Requires a sword or blunt weapon. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.iconskill30007</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
@@ -1980,7 +1985,7 @@
 		</effects>
 	</skill>
 	<skill id="30040" toLevel="17" name="Eminent Blunt Weapon Mastery">
-		<!-- When using a blunt weapon, M. Atk. +$s1 and +$s2, Casting Spd. +$s3. -->
+		<!-- When using a blunt weapon, M. Atk. +17% and +10, Casting Spd. +5%. -->
 		<icon>icon.skill30023</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2132,7 +2137,7 @@
 		</effects>
 	</skill>
 	<skill id="30041" toLevel="17" name="Eminent Robe Mastery">
-		<!-- When using robes, P. Def. +$s1. -->
+		<!-- When equipped with a robe, P. Def. +7. Shields and Sigils are not worn, as you move with the wind. -->
 		<icon>icon.skill30024</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2274,7 +2279,7 @@
 		</effects>
 	</skill>
 	<skill id="30042" toLevel="13" name="Eminent Quick Recovery">
-		<!-- Max MP +$s1, MP Recovery Rate +$s2, M. Skill Cooldown -$s3. -->
+		<!-- Max MP +33, MP Recovery Rate +1, M. Skill Cooldown -10%. -->
 		<icon>
 			<value level="1">icon.skill11004</value>
 			<value level="2">icon.skill10504</value>
@@ -2390,7 +2395,7 @@
 		</effects>
 	</skill>
 	<skill id="30043" toLevel="11" name="Eminent Attribute Resistance">
-		<!-- Attribute Attack Bonus +$s1, Fire/ Water/ Wind/ Earth/ Holy Resistance +$s2. -->
+		<!-- Attribute Attack Bonus +10, Fire/ Water/ Wind/ Earth/ Holy Resistance +10. -->
 		<icon>icon.skill11006</icon>
 		<operateType>P</operateType>
 		<magicLevel>
@@ -2505,7 +2510,7 @@
 		</effects>
 	</skill>
 	<skill id="30044" toLevel="2" name="Eminent Trait Resistance">
-		<!-- Obstruction/ Confusion Resistance +$s1. -->
+		<!-- Obstruction/ Confusion Resistance +30. -->
 		<icon>icon.skill10005</icon>
 		<operateType>P</operateType>
 		<effects>

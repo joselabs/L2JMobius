@@ -16,766 +16,715 @@
  */
 package quests.Q00503_PursuitOfClanAmbition;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
+import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.NpcSay;
-import org.l2jmobius.gameserver.util.Util;
 
 /**
- * Pursuit Of Clan Ambition (503)
- * @author ivantotov, Zoey76
+ * @author Jackass
  */
 public class Q00503_PursuitOfClanAmbition extends Quest
 {
 	// NPCs
-	private static final int HEAD_BLACKSMITH_KUSTO = 30512;
 	private static final int MARTIEN = 30645;
-	private static final int WITCH_ATHREA = 30758;
-	private static final int WITCH_KALIS = 30759;
-	private static final int SIR_GUSTAV_ATHEBALDT = 30760;
-	private static final int CORPSE_OF_FRITZ = 30761;
-	private static final int CORPSE_OF_LUTZ = 30762;
-	private static final int CORPSE_OF_KURTZ = 30763;
+	private static final int ATHREA = 30758;
+	private static final int KALIS = 30759;
+	private static final int GUSTAF = 30760;
+	private static final int FRITZ = 30761;
+	private static final int LUTZ = 30762;
+	private static final int KURTZ = 30763;
+	private static final int KUSTO = 30512;
 	private static final int BALTHAZAR = 30764;
-	private static final int IMPERIAL_COFFER = 30765;
-	private static final int WITCH_CLEO = 30766;
-	private static final int SIR_ERIC_RODEMAI = 30868;
-	// Items
-	private static final int MIST_DRAKES_EGG = 3839;
-	private static final int BLITZ_WYRM_EGG = 3840;
-	private static final int DRAKES_EGG = 3841;
-	private static final int THUNDER_WYRM_EGG = 3842;
-	private static final int BROOCH_OF_THE_MAGPIE = 3843;
-	private static final int IMPERIAL_KEY = 3847;
-	private static final int GUSTAVS_1ST_LETTER = 3866;
-	private static final int GUSTAVS_2ND_LETTER = 3867;
-	private static final int GUSTAVS_3RD_LETTER = 3868;
-	private static final int SCEPTER_OF_JUDGMENT = 3869;
-	private static final int BLACK_ANVIL_COIN = 3871;
-	// Reward
-	private static final int SEAL_OF_ASPIRATION = 3870;
+	private static final int RODEMAI = 30868;
+	private static final int COFFER = 30765;
+	private static final int CLEO = 30766;
 	// Monsters
+	private static final int THUNDER_WYRM = 20282;
+	private static final int THUNDER_WYRM_TWO = 20243;
 	private static final int DRAKE = 20137;
-	private static final int DRAKE2 = 20285;
-	private static final int THUNDER_WYRM = 20243;
-	private static final int THUNDER_WYRM2 = 20282;
-	private static final int GRAVE_GUARD = 20668;
-	// Quest Monster
-	private static final int GRAVE_KEYMASTER = 27179;
-	private static final int IMPERIAL_GRAVEKEEPER = 27181;
+	private static final int DRAKE_TWO = 20285;
 	private static final int BLITZ_WYRM = 27178;
+	private static final int GIANT_SOLDIER = 20654;
+	private static final int GIANT_SCOUT = 20656;
+	private static final int GRAVE_GUARD = 20668;
+	private static final int GRAVE_KEYMASTER = 27179;
+	private static final int IMPERIAL_SLAVE = 27180;
+	// Attack mob
+	private static final int IMPERIAL_GRAVEKEEPER = 27181;
+	// First part items
+	private static final int G_LET_MARTIEN = 3866;
+	private static final int TH_WYRM_EGGS = 3842;
+	private static final int DRAKE_EGGS = 3841;
+	private static final int BL_WYRM_EGGS = 3840;
+	private static final int MI_DRAKE_EGGS = 3839;
+	private static final int BROOCH = 3843;
+	private static final int BL_ANVIL_COIN = 3871;
+	// Second part items
+	private static final int G_LET_BALTHAZAR = 3867;
+	private static final int RECIPE_POWER_STONE = 3838;
+	private static final int POWER_STONE = 3846;
+	private static final int NEBULITE_CRYSTALS = 3844;
+	private static final int BROKE_POWER_STONE = 3845;
+	// Third part items
+	private static final int G_LET_RODEMAI = 3868;
+	private static final int IMP_KEYS = 3847;
+	private static final int SCEPTER_JUDGEMENT = 3869;
+	// Final item
+	private static final int PROOF_ASPIRATION = 3870;
+	// Droplist
+	private static final int[][] DROPLIST =
+	{
+		// npcId, cond, MaxCount, chance, item1, item2 (giants), item3 (giants)
+		// @formatter:off
+		{THUNDER_WYRM, 2, 10, 200000, TH_WYRM_EGGS, 0, 0},
+		{THUNDER_WYRM_TWO, 2, 10, 150000, TH_WYRM_EGGS, 0, 0},
+		{DRAKE, 2, 10, 200000, DRAKE_EGGS, 0, 0},
+		{DRAKE_TWO, 2, 10, 250000, DRAKE_EGGS, 0, 0},
+		{BLITZ_WYRM, 2, 10, 1000000, BL_WYRM_EGGS, 0, 0},
+		{GIANT_SOLDIER, 5, 10, 250000, NEBULITE_CRYSTALS, BROKE_POWER_STONE, POWER_STONE},
+		{GIANT_SCOUT, 5, 10, 350000, NEBULITE_CRYSTALS, BROKE_POWER_STONE, POWER_STONE},
+		{GRAVE_GUARD, 10, 0, 150000, 0, 0, 0},
+		{GRAVE_KEYMASTER, 10, 6, 800000, IMP_KEYS, 0, 0},
+		{IMPERIAL_GRAVEKEEPER, 10, 0, 0, 0, 0, 0}
+		// @formatter:on
+	};
 	
 	public Q00503_PursuitOfClanAmbition()
 	{
 		super(503);
-		addStartNpc(SIR_GUSTAV_ATHEBALDT);
-		addTalkId(SIR_GUSTAV_ATHEBALDT, HEAD_BLACKSMITH_KUSTO, MARTIEN, WITCH_ATHREA, WITCH_KALIS, CORPSE_OF_FRITZ, CORPSE_OF_LUTZ, CORPSE_OF_KURTZ, BALTHAZAR, IMPERIAL_COFFER, WITCH_CLEO, SIR_ERIC_RODEMAI);
-		addKillId(DRAKE, DRAKE2, THUNDER_WYRM, THUNDER_WYRM2, GRAVE_GUARD, GRAVE_KEYMASTER, BLITZ_WYRM, IMPERIAL_GRAVEKEEPER);
-		registerQuestItems(MIST_DRAKES_EGG, BLITZ_WYRM_EGG, DRAKES_EGG, THUNDER_WYRM_EGG, BROOCH_OF_THE_MAGPIE, IMPERIAL_KEY, GUSTAVS_1ST_LETTER, GUSTAVS_2ND_LETTER, GUSTAVS_3RD_LETTER, SCEPTER_OF_JUDGMENT, BLACK_ANVIL_COIN);
+		registerQuestItems(MI_DRAKE_EGGS, BL_WYRM_EGGS, DRAKE_EGGS, TH_WYRM_EGGS, BROOCH, NEBULITE_CRYSTALS, BROKE_POWER_STONE, POWER_STONE, IMP_KEYS, G_LET_MARTIEN, G_LET_BALTHAZAR, G_LET_RODEMAI, SCEPTER_JUDGEMENT);
+		addStartNpc(GUSTAF);
+		addTalkId(MARTIEN, ATHREA, KALIS, GUSTAF, FRITZ, LUTZ, KURTZ, KUSTO, BALTHAZAR, RODEMAI, COFFER, CLEO);
+		addKillId(THUNDER_WYRM_TWO, THUNDER_WYRM, DRAKE, DRAKE_TWO, BLITZ_WYRM, GIANT_SOLDIER, GIANT_SCOUT, GRAVE_GUARD, GRAVE_KEYMASTER, IMPERIAL_GRAVEKEEPER);
+		addAttackId(IMPERIAL_GRAVEKEEPER);
 	}
 	
 	@Override
 	public String onAdvEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = player.getQuestState(getName());
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30760-08.html":
+			case "30760-08.htm":
 			{
-				if (qs.isCreated())
-				{
-					giveItems(player, GUSTAVS_1ST_LETTER, 1);
-					qs.startQuest();
-					qs.setMemoState(1000);
-					htmltext = event;
-				}
+				st.startQuest();
+				giveItems(player, G_LET_MARTIEN, 1);
 				break;
 			}
-			case "30760-12.html":
+			case "30760-12.htm":
 			{
-				giveItems(player, GUSTAVS_2ND_LETTER, 1);
-				qs.setMemoState(4000);
-				qs.setCond(4);
-				htmltext = event;
+				giveItems(player, G_LET_BALTHAZAR, 1);
+				st.setCond(4);
 				break;
 			}
-			case "30760-16.html":
+			case "30760-16.htm":
 			{
-				giveItems(player, GUSTAVS_3RD_LETTER, 1);
-				qs.setMemoState(7000);
-				qs.setCond(7);
-				htmltext = event;
+				giveItems(player, G_LET_RODEMAI, 1);
+				st.setCond(7);
 				break;
 			}
-			case "30760-20.html":
+			case "30760-20.htm":
 			{
-				if (hasQuestItems(player, SCEPTER_OF_JUDGMENT))
-				{
-					giveItems(player, SEAL_OF_ASPIRATION, 1);
-					addExpAndSp(player, 0, 250000);
-					qs.exitQuest(false, true);
-					htmltext = event;
-				}
+				takeItems(player, SCEPTER_JUDGEMENT, -1);
+				giveItems(player, PROOF_ASPIRATION, 1);
+				addExpAndSp(player, 0, 250000);
+				st.exitQuest(false);
+				finishQuestToClan(player);
 				break;
 			}
-			case "30760-22.html":
+			case "30760-22.htm":
 			{
-				qs.setMemoState(10000);
-				qs.setCond(12);
-				htmltext = event;
+				st.setCond(1);
 				break;
 			}
-			case "30760-23.html":
+			case "30760-23.htm":
 			{
-				if (hasQuestItems(player, SCEPTER_OF_JUDGMENT))
-				{
-					giveItems(player, SEAL_OF_ASPIRATION, 1);
-					addExpAndSp(player, 0, 250000);
-					qs.exitQuest(false, true);
-					htmltext = event;
-				}
+				takeItems(player, SCEPTER_JUDGEMENT, -1);
+				giveItems(player, PROOF_ASPIRATION, 1);
+				addExpAndSp(player, 0, 250000);
+				st.exitQuest(false);
+				finishQuestToClan(player);
 				break;
 			}
-			case "30512-03.html":
+			case "30645-03.htm":
 			{
-				if (hasQuestItems(player, BROOCH_OF_THE_MAGPIE))
-				{
-					takeItems(player, BROOCH_OF_THE_MAGPIE, -1);
-					giveItems(player, BLACK_ANVIL_COIN, 1);
-				}
-				htmltext = event;
+				setQuestToClanMembers(player);
+				takeItems(player, G_LET_MARTIEN, -1);
+				st.setCond(2);
+				st.set("kurt", "0");
 				break;
 			}
-			case "30645-03.html":
+			case "30763-02.htm":
 			{
-				takeItems(player, GUSTAVS_1ST_LETTER, -1);
-				qs.setMemoState(2000);
-				qs.setCond(2, true);
-				htmltext = event;
+				giveItems(player, MI_DRAKE_EGGS, 6);
+				giveItems(player, BROOCH, 1);
+				st.set("kurt", "1");
 				break;
 			}
-			case "30761-02.html":
+			case "30762-02.htm":
 			{
-				if (qs.isMemoState(2000) || qs.isMemoState(2011) || qs.isMemoState(2010) || qs.isMemoState(2001))
-				{
-					giveItems(player, BLITZ_WYRM_EGG, 3);
-					qs.setMemoState(qs.getMemoState() + 100);
-					final Npc wyrm1 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					addAttackDesire(wyrm1, player);
-					final Npc wyrm2 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					addAttackDesire(wyrm2, player);
-					startQuestTimer("DESPAWN", 10000, npc, player);
-					htmltext = event;
-				}
-				else if (qs.isMemoState(2100) || qs.isMemoState(2111) || qs.isMemoState(2110) || qs.isMemoState(2101))
-				{
-					final Npc wyrm1 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					addAttackDesire(wyrm1, player);
-					final Npc wyrm2 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					addAttackDesire(wyrm2, player);
-					startQuestTimer("DESPAWN", 10000, npc, player);
-					htmltext = "30761-03.html";
-				}
+				giveItems(player, MI_DRAKE_EGGS, 4);
+				giveItems(player, BL_WYRM_EGGS, 3);
+				addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, 0);
+				addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, 0);
+				st.set("lutz", "1");
 				break;
 			}
-			case "30762-02.html":
+			case "30761-02.htm":
 			{
-				if (qs.isMemoState(2000) || qs.isMemoState(2101) || qs.isMemoState(2001) || qs.isMemoState(2100))
-				{
-					giveItems(player, BLITZ_WYRM_EGG, 3);
-					giveItems(player, MIST_DRAKES_EGG, 4);
-					qs.setMemoState(qs.getMemoState() + 10);
-					final Npc wyrm1 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					addAttackDesire(wyrm1, player);
-					final Npc wyrm2 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					addAttackDesire(wyrm2, player);
-					startQuestTimer("DESPAWN", 10000, npc, player);
-					htmltext = event;
-				}
-				else if (qs.isMemoState(2100) || qs.isMemoState(2111) || qs.isMemoState(2011) || qs.isMemoState(2110))
-				{
-					final Npc wyrm1 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					addAttackDesire(wyrm1, player);
-					final Npc wyrm2 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					addAttackDesire(wyrm2, player);
-					startQuestTimer("DESPAWN", 10000, npc, player);
-					htmltext = "30762-03.html";
-				}
+				giveItems(player, BL_WYRM_EGGS, 3);
+				addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, 0);
+				addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, 0);
+				st.set("fritz", "1");
 				break;
 			}
-			case "30763-02.html":
+			case "30512-03.htm":
 			{
-				if (qs.isMemoState(2000) || qs.isMemoState(2110) || qs.isMemoState(2010) || qs.isMemoState(2100))
-				{
-					giveItems(player, BROOCH_OF_THE_MAGPIE, 1);
-					giveItems(player, MIST_DRAKES_EGG, 6);
-					qs.setMemoState(qs.getMemoState() + 1);
-					npc.deleteMe();
-					htmltext = event;
-				}
+				takeItems(player, BROOCH, 1);
+				giveItems(player, BL_ANVIL_COIN, 1);
+				st.set("kurt", "2");
 				break;
 			}
-			case "30764-03.html":
+			case "30764-03.htm":
 			{
-				takeItems(player, GUSTAVS_2ND_LETTER, -1);
-				qs.setMemoState(5000);
-				qs.setCond(5, true);
-				htmltext = event;
+				takeItems(player, G_LET_BALTHAZAR, -1);
+				st.setCond(5);
 				break;
 			}
-			case "30764-06.html":
+			case "30764-05.htm":
 			{
-				takeItems(player, GUSTAVS_2ND_LETTER, -1);
-				takeItems(player, BLACK_ANVIL_COIN, -1);
-				qs.setMemoState(5000);
-				qs.setCond(5, true);
-				htmltext = event;
+				takeItems(player, G_LET_BALTHAZAR, -1);
+				st.setCond(5);
 				break;
 			}
-			case "30765-04.html":
+			case "30764-06.htm":
 			{
-				takeItems(player, IMPERIAL_KEY, -1);
-				giveItems(player, SCEPTER_OF_JUDGMENT, 1);
-				qs.setMemoState(8700);
-				htmltext = event;
+				takeItems(player, BL_ANVIL_COIN, -1);
+				giveItems(player, RECIPE_POWER_STONE, 1);
 				break;
 			}
-			case "30766-04.html":
+			case "30868-04.htm":
 			{
-				qs.setMemoState(8100);
-				qs.setCond(9, true);
+				takeItems(player, G_LET_RODEMAI, -1);
+				st.setCond(8);
+				break;
+			}
+			case "30868-06a.htm":
+			{
+				st.setCond(10);
+				break;
+			}
+			case "30868-10.htm":
+			{
+				st.setCond(12);
+				break;
+			}
+			case "30766-04.htm":
+			{
+				st.setCond(9);
 				npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.BLOOD_AND_HONOR));
-				startQuestTimer("SPAWN_WITCH", 5000, npc, player);
-				htmltext = event;
+				final Npc sister1 = addSpawn(KALIS, 160665, 21209, -3710, npc.getHeading(), false, 180000);
+				sister1.broadcastPacket(new NpcSay(sister1, ChatType.NPC_GENERAL, NpcStringId.AMBITION_AND_POWER));
+				final Npc sister2 = addSpawn(ATHREA, 160665, 21291, -3710, npc.getHeading(), false, 180000);
+				sister2.broadcastPacket(new NpcSay(sister2, ChatType.NPC_GENERAL, NpcStringId.WAR_AND_DEATH));
 				break;
 			}
-			case "30766-08.html":
+			case "Open":
 			{
-				if (hasQuestItems(player, SCEPTER_OF_JUDGMENT))
+				if (getQuestItemsCount(player, IMP_KEYS) < 6)
 				{
-					giveItems(player, SEAL_OF_ASPIRATION, 1);
-					addExpAndSp(player, 0, 250000);
-					qs.exitQuest(false, true);
-					htmltext = event;
+					htmltext = "30765-03a.htm";
+				}
+				else
+				{
+					htmltext = "30765-03.htm";
+					st.setCond(11);
+					takeItems(player, IMP_KEYS, 6);
+					giveItems(player, SCEPTER_JUDGEMENT, 1);
 				}
 				break;
 			}
-			case "30868-04.html":
-			{
-				takeItems(player, GUSTAVS_3RD_LETTER, -1);
-				qs.setMemoState(8000);
-				qs.setCond(8, true);
-				htmltext = event;
-				break;
-			}
-			case "30868-10.html":
-			{
-				qs.setMemoState(9000);
-				qs.setCond(11, true);
-				htmltext = event;
-				break;
-			}
-			case "30645-06.html":
-			case "30760-05.html":
-			case "30760-06.html":
-			case "30760-07.html":
-			case "30760-21.html":
-			case "30764-05.html":
-			case "30765-02.html":
-			case "30765-05a.html":
-			case "30766-03.html":
-			case "30868-03.html":
-			case "30868-06a.html":
-			{
-				htmltext = event;
-				break;
-			}
-			case "SPAWN_WITCH":
-			{
-				final Npc athrea = addSpawn(WITCH_ATHREA, 160688, 21296, -3714, 0, false, 180000);
-				athrea.broadcastPacket(new NpcSay(athrea, ChatType.NPC_GENERAL, NpcStringId.WAR_AND_DEATH));
-				final Npc kalis = addSpawn(WITCH_KALIS, 160690, 21176, -3712, 0, false, 180000);
-				kalis.broadcastPacket(new NpcSay(kalis, ChatType.NPC_GENERAL, NpcStringId.AMBITION_AND_POWER));
-				break;
-			}
-			case "DESPAWN":
-			{
-				npc.deleteMe();
-				break;
-			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs == null) || !qs.isStarted() || !Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			return super.onKill(npc, killer, isSummon);
-		}
-		
-		final Clan clan = killer.getClan();
-		if (clan == null)
-		{
-			return super.onKill(npc, killer, isSummon);
-		}
-		
-		final Player leader = clan.getLeader().getPlayer();
-		if ((leader == null) || !Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, leader, true))
-		{
-			return super.onKill(npc, killer, isSummon);
-		}
-		
-		final QuestState leaderQS = getQuestState(leader, false);
-		if (leaderQS == null)
-		{
-			return super.onKill(npc, killer, isSummon);
-		}
-		
-		switch (npc.getId())
-		{
-			case DRAKE:
-			case DRAKE2:
-			{
-				if ((leaderQS.getMemoState() >= 2000) || (leaderQS.getMemoState() < 3000))
-				{
-					giveItemRandomly(leader, MIST_DRAKES_EGG, 1, 10, 0.1, true);
-					giveItemRandomly(leader, DRAKES_EGG, 1, 10, 0.5, true);
-				}
-				break;
-			}
-			case THUNDER_WYRM:
-			case THUNDER_WYRM2:
-			{
-				if ((leaderQS.getMemoState() >= 2000) || (leaderQS.getMemoState() < 3000))
-				{
-					giveItemRandomly(leader, THUNDER_WYRM_EGG, 1, 10, 0.5, true);
-				}
-				break;
-			}
-			case GRAVE_GUARD:
-			{
-				if ((leaderQS.getMemoState() < 8511) || (leaderQS.getMemoState() >= 8500))
-				{
-					leaderQS.setMemoState(leaderQS.getMemoState() + 1);
-					if ((leaderQS.getMemoState() >= 8505) && (getRandom(100) < 50))
-					{
-						leaderQS.setMemoState(8500);
-						addSpawn(GRAVE_KEYMASTER, npc, true, 0, false);
-					}
-					else if (leaderQS.getMemoState() >= 8510)
-					{
-						leaderQS.setMemoState(8500);
-						addSpawn(GRAVE_KEYMASTER, npc, true, 0, false);
-					}
-				}
-				break;
-			}
-			case BLITZ_WYRM:
-			{
-				if ((leaderQS.getMemoState() >= 2000) || (leaderQS.getMemoState() < 3000))
-				{
-					giveItemRandomly(leader, BLITZ_WYRM_EGG, 1, 10, 1, true);
-				}
-				break;
-			}
-			case GRAVE_KEYMASTER:
-			{
-				if (leaderQS.getMemoState() >= 8500)
-				{
-					giveItemRandomly(leader, IMPERIAL_KEY, 1, 6, 1, true);
-				}
-				break;
-			}
-			case IMPERIAL_GRAVEKEEPER:
-			{
-				if ((leaderQS.getMemoState() < 8511) || (leaderQS.getMemoState() >= 8500))
-				{
-					final Npc coffer = addSpawn(IMPERIAL_COFFER, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
-					coffer.broadcastPacket(new NpcSay(coffer, ChatType.NPC_GENERAL, NpcStringId.CURSE_OF_THE_GODS_ON_THE_ONE_THAT_DEFILES_THE_PROPERTY_OF_THE_EMPIRE));
-				}
-				break;
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
-		final QuestState lqs = getLeaderQuestState(player, getName());
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated() || qs.isCompleted())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			if ((npc.getId() == SIR_GUSTAV_ATHEBALDT) && (lqs != null))
+			case State.CREATED:
 			{
-				if (player.isClanLeader())
+				if (player.getClan() == null)
 				{
-					final Clan clan = player.getClan();
-					if (clan != null)
+					htmltext = "30760-01.htm";
+					st.exitQuest(true);
+				}
+				else if (player.isClanLeader())
+				{
+					if (hasQuestItems(player, PROOF_ASPIRATION))
 					{
-						if (clan.getLevel() < 4)
-						{
-							htmltext = "30760-01.html";
-						}
-						else if (clan.getLevel() >= 5)
-						{
-							htmltext = "30760-02.html";
-						}
-						else if ((clan.getLevel() == 4) && hasQuestItems(player, SEAL_OF_ASPIRATION))
-						{
-							htmltext = "30760-03.html";
-						}
-						else if ((clan.getLevel() == 4) && !hasQuestItems(player, SEAL_OF_ASPIRATION))
-						{
-							htmltext = "30760-04.html";
-						}
+						htmltext = "30760-03.htm";
+						st.exitQuest(true);
+					}
+					else if (player.getClan().getLevel() != 4)
+					{
+						htmltext = "30760-02.htm";
+						st.exitQuest(true);
+					}
+					else
+					{
+						htmltext = "30760-04.htm";
 					}
 				}
 				else
 				{
-					htmltext = "30760-04t.html";
+					htmltext = "30760-04t.htm";
+					st.exitQuest(true);
 				}
+				break;
 			}
-		}
-		else if (qs.isStarted())
-		{
-			switch (npc.getId())
+			case State.STARTED:
 			{
-				case SIR_GUSTAV_ATHEBALDT:
+				final int cond = st.getCond();
+				int memberCond = 0;
+				if (getClanLeaderQuestState(player, npc) != null)
 				{
-					if (lqs != null)
+					memberCond = getClanLeaderQuestState(player, npc).getCond();
+				}
+				
+				switch (npc.getId())
+				{
+					case GUSTAF:
 					{
-						if (qs.getMemoState() == 1000)
+						if (player.isClanLeader())
 						{
-							htmltext = "30760-09.html";
-						}
-						else if (qs.getMemoState() == 2000)
-						{
-							htmltext = "30760-10.html";
-						}
-						else if (qs.getMemoState() == 3000)
-						{
-							if (!player.isClanLeader())
+							if (cond == 1)
 							{
-								htmltext = "30760-11t.html";
+								htmltext = "30760-09.htm";
+							}
+							else if (cond == 2)
+							{
+								htmltext = "30760-10.htm";
+							}
+							else if (cond == 3)
+							{
+								htmltext = "30760-11.htm";
+							}
+							else if (cond == 4)
+							{
+								htmltext = "30760-13.htm";
+							}
+							else if (cond == 5)
+							{
+								htmltext = "30760-14.htm";
+							}
+							else if (cond == 6)
+							{
+								htmltext = "30760-15.htm";
+							}
+							else if (cond == 7)
+							{
+								htmltext = "30760-17.htm";
+							}
+							else if (cond == 12)
+							{
+								htmltext = "30760-19.htm";
+							}
+							else if (cond == 13)
+							{
+								htmltext = "30760-24.htm";
+							}
+							else if (hasQuestItems(player, SCEPTER_JUDGEMENT))
+							{
+								htmltext = "30760-19.htm";
 							}
 							else
 							{
-								htmltext = "30760-11.html";
+								htmltext = "30760-18.htm";
 							}
 						}
-						else if (qs.getMemoState() == 4000)
+						else
 						{
-							htmltext = "30760-13.html";
-						}
-						else if (qs.getMemoState() == 5000)
-						{
-							htmltext = "30760-14.html";
-						}
-						else if (qs.getMemoState() == 6000)
-						{
-							if (!player.isClanLeader())
+							if (memberCond == 3)
 							{
-								htmltext = "30760-15t.html";
+								htmltext = "30760-11t.htm";
 							}
-							else
+							else if (memberCond == 4)
 							{
-								htmltext = "30760-15.html";
+								htmltext = "30760-15t.htm";
 							}
-						}
-						else if (qs.getMemoState() == 7000)
-						{
-							htmltext = "30760-17.html";
-						}
-						else if ((qs.getMemoState() >= 8000) && (qs.getMemoState() < 8700))
-						{
-							htmltext = "30760-18.html";
-						}
-						else if ((qs.getMemoState() >= 8700) && (qs.getMemoState() < 10000) && player.isClanLeader())
-						{
-							htmltext = "30760-19.html";
-						}
-						else if ((qs.getMemoState() == 9000) && !player.isClanLeader())
-						{
-							htmltext = "30760-19t.html";
-						}
-						else if (qs.getMemoState() == 10000)
-						{
-							if (!player.isClanLeader())
+							else if (memberCond == 12)
 							{
-								htmltext = "30760-24t.html";
+								htmltext = "30760-19t.htm";
 							}
-							else
+							else if (memberCond == 13)
 							{
-								htmltext = "30760-24.html";
+								htmltext = "30766-24t.htm";
 							}
 						}
+						break;
 					}
-					break;
-				}
-				case HEAD_BLACKSMITH_KUSTO:
-				{
-					if ((lqs != null) && !player.isClanLeader())
+					case MARTIEN:
 					{
-						htmltext = "30512-01a.html";
-					}
-					else if (!hasAtLeastOneQuestItem(player, BROOCH_OF_THE_MAGPIE, BLACK_ANVIL_COIN))
-					{
-						htmltext = "30512-01.html";
-					}
-					else if (hasQuestItems(player, BROOCH_OF_THE_MAGPIE))
-					{
-						htmltext = "30512-02.html";
-					}
-					else if ((lqs != null) && hasQuestItems(player, BLACK_ANVIL_COIN) && !hasQuestItems(player, BROOCH_OF_THE_MAGPIE))
-					{
-						htmltext = "30512-04.html";
-					}
-					break;
-				}
-				case MARTIEN:
-				{
-					if (lqs != null)
-					{
-						if (qs.getMemoState() == 1000)
+						if (player.isClanLeader())
 						{
-							if (!player.isClanLeader())
+							if (cond == 1)
 							{
-								htmltext = "30645-01.html";
+								htmltext = "30645-02.htm";
 							}
-							else
+							else if (cond == 2)
 							{
-								htmltext = "30645-02.html";
-							}
-						}
-						else if ((qs.getMemoState() < 3000) && (qs.getMemoState() >= 2000))
-						{
-							if ((getQuestItemsCount(player, MIST_DRAKES_EGG) < 10) || (getQuestItemsCount(player, BLITZ_WYRM_EGG) < 10) || (getQuestItemsCount(player, THUNDER_WYRM_EGG) < 10) || (getQuestItemsCount(player, DRAKES_EGG) < 10))
-							{
-								htmltext = "30645-04.html";
-							}
-							else
-							{
-								takeItems(player, MIST_DRAKES_EGG, -1);
-								takeItems(player, BLITZ_WYRM_EGG, -1);
-								takeItems(player, DRAKES_EGG, -1);
-								takeItems(player, THUNDER_WYRM_EGG, -1);
-								qs.setMemoState(3000);
-								qs.setCond(3, true);
-								htmltext = "30645-05.html";
-							}
-						}
-						else if (qs.getMemoState() == 3000)
-						{
-							htmltext = "30645-07.html";
-						}
-						else if (qs.getMemoState() > 3000)
-						{
-							htmltext = "30645-08.html";
-						}
-					}
-					break;
-				}
-				case WITCH_ATHREA:
-				{
-					if (lqs != null)
-					{
-						htmltext = "30758-01.html";
-					}
-					break;
-				}
-				case WITCH_KALIS:
-				{
-					if (lqs != null)
-					{
-						htmltext = "30759-01.html";
-					}
-					break;
-				}
-				case CORPSE_OF_FRITZ:
-				{
-					if ((qs.getMemoState() < 3000) && (qs.getMemoState() >= 2000))
-					{
-						htmltext = "30761-01.html";
-					}
-					break;
-				}
-				case CORPSE_OF_LUTZ:
-				{
-					if ((qs.getMemoState() < 3000) && (qs.getMemoState() >= 2000))
-					{
-						htmltext = "30762-01.html";
-					}
-					break;
-				}
-				case CORPSE_OF_KURTZ:
-				{
-					if (((qs.getMemoState() < 3000) && (qs.getMemoState() == 2000)) || (qs.getMemoState() == 2110) || (qs.getMemoState() == 2010) || (qs.getMemoState() == 2100))
-					{
-						htmltext = "30763-01.html";
-					}
-					else if ((qs.getMemoState() == 2001) || (qs.getMemoState() == 2111) || (qs.getMemoState() == 2011) || (qs.getMemoState() == 2101))
-					{
-						htmltext = "30763-03.html";
-					}
-					break;
-				}
-				case BALTHAZAR:
-				{
-					if (lqs != null)
-					{
-						if (qs.getMemoState() == 4000)
-						{
-							if (!player.isClanLeader())
-							{
-								htmltext = "30764-01.html";
-							}
-							else if (!hasQuestItems(player, BLACK_ANVIL_COIN) && player.isClanLeader())
-							{
-								htmltext = "30764-02.html";
-							}
-							else if (hasQuestItems(player, BLACK_ANVIL_COIN))
-							{
-								htmltext = "30764-04.html";
-							}
-						}
-						else if (qs.getMemoState() >= 6000)
-						{
-							htmltext = "30764-09.html";
-						}
-					}
-					break;
-				}
-				case IMPERIAL_COFFER:
-				{
-					if (lqs != null)
-					{
-						if ((qs.getMemoState() >= 8500) && (qs.getMemoState() < 8700))
-						{
-							if (getQuestItemsCount(player, IMPERIAL_KEY) >= 6)
-							{
-								if (!player.isClanLeader())
+								if ((getQuestItemsCount(player, MI_DRAKE_EGGS) > 9) && (getQuestItemsCount(player, BL_WYRM_EGGS) > 9) && (getQuestItemsCount(player, DRAKE_EGGS) > 9) && (getQuestItemsCount(player, TH_WYRM_EGGS) > 9))
 								{
-									htmltext = "30765-01.html";
+									htmltext = "30645-05.htm";
+									st.setCond(3);
+									takeItems(player, MI_DRAKE_EGGS, -1);
+									takeItems(player, BL_WYRM_EGGS, -1);
+									takeItems(player, DRAKE_EGGS, -1);
+									takeItems(player, TH_WYRM_EGGS, -1);
 								}
 								else
 								{
-									htmltext = "30765-03.html";
+									htmltext = "30645-04.htm";
+								}
+							}
+							else if (cond == 3)
+							{
+								htmltext = "30645-07.htm";
+							}
+							else
+							{
+								htmltext = "30645-08.htm";
+							}
+						}
+						else
+						{
+							if ((memberCond == 1) || (memberCond == 2) || (memberCond == 3))
+							{
+								htmltext = "30645-01.htm";
+							}
+						}
+						break;
+					}
+					case LUTZ:
+					{
+						if (player.isClanLeader() && (cond == 2))
+						{
+							if (st.getInt("lutz") == 1)
+							{
+								htmltext = "30762-03.htm";
+							}
+							else
+							{
+								htmltext = "30762-01.htm";
+							}
+						}
+						break;
+					}
+					case KURTZ:
+					{
+						if (player.isClanLeader() && (cond == 2))
+						{
+							if (st.getInt("kurt") == 1)
+							{
+								htmltext = "30763-03.htm";
+							}
+							else
+							{
+								htmltext = "30763-01.htm";
+							}
+						}
+						break;
+					}
+					case FRITZ:
+					{
+						if (player.isClanLeader() && (cond == 2))
+						{
+							if (st.getInt("fritz") == 1)
+							{
+								htmltext = "30761-03.htm";
+							}
+							else
+							{
+								htmltext = "30761-01.htm";
+							}
+						}
+						break;
+					}
+					case KUSTO:
+					{
+						if (player.isClanLeader())
+						{
+							if (getQuestItemsCount(player, BROOCH) == 1)
+							{
+								if (st.getInt("kurt") == 0)
+								{
+									htmltext = "30512-01.htm";
+								}
+								else if (st.getInt("kurt") == 1)
+								{
+									htmltext = "30512-02.htm";
+								}
+								else
+								{
+									htmltext = "30512-04.htm";
 								}
 							}
 						}
-						else if (qs.getMemoState() >= 8700)
+						else
 						{
-							htmltext = "30765-05.html";
+							if ((memberCond > 2) && (memberCond < 6))
+							{
+								htmltext = "30512-01a.htm";
+							}
 						}
+						break;
 					}
-					break;
-				}
-				case WITCH_CLEO:
-				{
-					if (lqs != null)
+					case BALTHAZAR:
 					{
-						if (!player.isClanLeader())
+						if (player.isClanLeader())
 						{
-							htmltext = "30766-01.html";
+							if (cond == 4)
+							{
+								if (st.getInt("kurt") == 2)
+								{
+									htmltext = "30764-04.htm";
+								}
+								else
+								{
+									htmltext = "30764-02.htm";
+								}
+							}
+							else if (cond == 5)
+							{
+								if ((getQuestItemsCount(player, POWER_STONE) > 9) && (getQuestItemsCount(player, NEBULITE_CRYSTALS) > 9))
+								{
+									htmltext = "30764-08.htm";
+									takeItems(player, POWER_STONE, -1);
+									takeItems(player, NEBULITE_CRYSTALS, -1);
+									takeItems(player, BROOCH, -1);
+									st.setCond(6);
+								}
+								else
+								{
+									htmltext = "30764-07.htm";
+								}
+							}
+							else if (cond == 6)
+							{
+								htmltext = "30764-09.htm";
+							}
 						}
-						else if (qs.getMemoState() == 8000)
+						else
 						{
-							htmltext = "30766-02.html";
+							if (memberCond == 4)
+							{
+								htmltext = "30764-01.htm";
+							}
 						}
-						else if (qs.getMemoState() == 8100)
-						{
-							htmltext = "30766-05.html";
-						}
-						else if ((qs.getMemoState() > 8100) && (qs.getMemoState() < 10000))
-						{
-							htmltext = "30766-06.html";
-						}
-						else if ((qs.getMemoState() == 10000) && player.isClanLeader())
-						{
-							htmltext = "30766-07.html";
-						}
+						break;
 					}
-					break;
-				}
-				case SIR_ERIC_RODEMAI:
-				{
-					if (lqs != null)
+					case RODEMAI:
 					{
-						if (qs.getMemoState() == 7000)
+						if (player.isClanLeader())
 						{
-							if (!player.isClanLeader())
+							if (cond == 7)
 							{
-								htmltext = "30868-01.html";
+								htmltext = "30868-02.htm";
 							}
-							else
+							else if (cond == 8)
 							{
-								htmltext = "30868-02.html";
+								htmltext = "30868-05.htm";
 							}
-						}
-						else if (qs.getMemoState() == 8000)
-						{
-							htmltext = "30868-05.html";
-						}
-						else if (qs.getMemoState() == 8100)
-						{
-							if (player.isClanLeader())
+							else if (cond == 9)
 							{
-								qs.setMemoState(8500);
-								qs.setCond(10, true);
-								htmltext = "30868-06.html";
+								htmltext = "30868-06.htm";
 							}
-							else
+							else if (cond == 10)
 							{
-								htmltext = "30868-07.html";
+								htmltext = "30868-08.htm";
+							}
+							else if (cond == 11)
+							{
+								htmltext = "30868-09.htm";
+							}
+							else if (cond == 12)
+							{
+								htmltext = "30868-11.htm";
 							}
 						}
-						else if ((qs.getMemoState() < 8511) && (qs.getMemoState() >= 8500))
+						else
 						{
-							htmltext = "30868-08.html";
+							if (memberCond == 7)
+							{
+								htmltext = "30868-01.htm";
+							}
+							else if ((memberCond == 9) || (memberCond == 10))
+							{
+								htmltext = "30868-07.htm";
+							}
 						}
-						else if (qs.getMemoState() == 8700)
+						break;
+					}
+					case CLEO:
+					{
+						if (player.isClanLeader())
 						{
-							htmltext = "30868-09.html";
+							if (cond == 8)
+							{
+								htmltext = "30766-02.htm";
+							}
+							else if (cond == 9)
+							{
+								htmltext = "30766-05.htm";
+							}
+							else if (cond == 10)
+							{
+								htmltext = "30766-06.htm";
+							}
+							else if ((cond == 11) || (cond == 12) || (cond == 13))
+							{
+								htmltext = "30766-07.htm";
+							}
 						}
-						else if (qs.getMemoState() >= 9000)
+						else
 						{
-							htmltext = "30868-11.html";
+							if (memberCond == 8)
+							{
+								htmltext = "30766-01.htm";
+							}
+						}
+						break;
+					}
+					case COFFER:
+					{
+						if (player.isClanLeader())
+						{
+							if (cond == 10)
+							{
+								htmltext = "30765-01.htm";
+							}
+						}
+						else
+						{
+							if (memberCond == 10)
+							{
+								htmltext = "30765-02.htm";
+							}
+						}
+						break;
+					}
+					case KALIS:
+					{
+						if (player.isClanLeader())
+						{
+							htmltext = "30759-01.htm";
+						}
+						break;
+					}
+					case ATHREA:
+					{
+						if (player.isClanLeader())
+						{
+							htmltext = "30758-01.htm";
 						}
 						break;
 					}
 				}
+				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
-	private static QuestState getLeaderQuestState(Player player, String quest)
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		if (player.getClan() != null)
+		QuestState st = null;
+		st = getClanLeaderQuestState(player, npc);
+		if ((st == null) || !st.isStarted())
 		{
-			final Player leader = player.getClan().getLeader().getPlayer();
-			if (leader != null)
+			return null;
+		}
+		
+		for (int[] element : DROPLIST)
+		{
+			if (element[0] == npc.getId())
 			{
-				return leader.getQuestState(quest);
+				final int cond = element[1];
+				if (st.getCond() == cond)
+				{
+					final int maxCount = element[2];
+					final int chance = element[3];
+					final int item1 = element[4];
+					final int item2 = element[5];
+					final int item3 = element[6];
+					if (item1 != 0)
+					{
+						giveItemRandomly(st.getPlayer(), item1, 1, maxCount, chance / 1000000d, true);
+					}
+					else
+					{
+						if (element[0] == IMPERIAL_GRAVEKEEPER)
+						{
+							final Npc coffer = addSpawn(COFFER, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, 180000);
+							coffer.broadcastPacket(new NpcSay(coffer, ChatType.NPC_GENERAL, NpcStringId.CURSE_OF_THE_GODS_ON_THE_ONE_THAT_DEFILES_THE_PROPERTY_OF_THE_EMPIRE));
+						}
+						else if ((element[0] == GRAVE_GUARD) && (getQuestItemsCount(st.getPlayer(), IMP_KEYS) < 6) && (getRandom(50) < chance))
+						{
+							addSpawn(GRAVE_KEYMASTER, player.getX(), player.getY(), player.getZ(), player.getHeading(), true, 0);
+						}
+					}
+					if ((item2 != 0) && (item3 != 0))
+					{
+						if (getRandom(4) == 0)
+						{
+							giveItemRandomly(st.getPlayer(), item2, 1, maxCount, chance / 1000000d, true);
+						}
+						else
+						{
+							giveItemRandomly(st.getPlayer(), item3, 1, maxCount, chance / 1000000d, true);
+						}
+					}
+				}
 			}
 		}
+		
 		return null;
+	}
+	
+	@Override
+	public String onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
+	{
+		if ((skill == null) && ((npc.getMaxHp() / 2) > npc.getCurrentHp()))
+		{
+			if (getRandom(100) < 4)
+			{
+				addSpawn(IMPERIAL_SLAVE, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, 0);
+			}
+			else
+			{
+				attacker.teleToLocation(185462, 20342, -3250);
+			}
+		}
+		return super.onAttack(npc, attacker, damage, isSummon, skill);
 	}
 }

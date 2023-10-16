@@ -73,7 +73,14 @@ public class DisableSkill extends AbstractEffect
 			knownSkill = effected.getKnownSkill(enableSkillId);
 			if (knownSkill != null)
 			{
-				effected.enableSkill(knownSkill);
+				if (effected.isPlayer())
+				{
+					effected.getActingPlayer().enableSkill(knownSkill, false);
+				}
+				else
+				{
+					effected.enableSkill(knownSkill);
+				}
 			}
 		}
 	}

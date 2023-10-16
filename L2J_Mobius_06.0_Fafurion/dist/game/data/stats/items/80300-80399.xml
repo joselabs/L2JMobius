@@ -76,7 +76,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80308" name="Water Dragon Coin" type="EtcItem">
-		<!-- A coin exchangeable for supply items for the warriors who are going to face the Water Dragon. Can be exchanged for supply items through the Water Dragon s Messenger after the Water Dragon appears. -->
+		<!-- A coin exchangeable for supply items for the warriors who are going to face the Water Dragon. Can be exchanged for supply items through the Water Dragon's Messenger after the Water Dragon appears. -->
 		<set name="icon" val="icon.etc_magic_coin_blue_i01" />
 		<set name="material" val="STEEL" />
 		<set name="is_tradable" val="false" />
@@ -94,6 +94,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="40231" min="3" max="3" chance="100" /> <!-- Freya's Frozen Scroll - Event -->
+			<item id="48857" min="3" max="3" chance="100" /> <!-- Shining Dragon Attribute Tonic (XP) - Event -->
+			<item id="45415" min="1" max="1" chance="100" /> <!-- Dandy's Home Run Ball -->
+		</capsuled_items>
 	</item>
 	<item id="80310" name="Special Growth Box for Novice Warriors" type="EtcItem">
 		<!-- A supply item for warriors who are going to face the Water Dragon. Use it to obtain 10 Challenger's Scrolls of Growth and 1 Special Growth Rune (1 hour). -->
@@ -105,6 +111,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="80064" min="10" max="10" chance="100" /> <!-- Challenger's Scroll of Growth -->
+			<item id="80311" min="1" max="1" chance="100" /> <!-- Special Growth Rune - 1-hour -->
+		</capsuled_items>
 	</item>
 	<item id="80311" name="Special Growth Rune" additionalName="1-hour" type="EtcItem">
 		<!-- When stored in the inventory, Hunting XP/ SP +100% and Vitality +100% (excludes boss monsters). Lv. 104 and below. -->
@@ -149,7 +160,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80315" name="Fafurion Dual Dagger" additionalName="Fragment" type="Weapon">
-		<!-- A fragment of the Fafurion Dual Dagger. Can be upgraded through Lionel Hunter the Fafurion s Watcher. Enchantment, Soul Crystal, Augment, Crystallization, Appearance Modification, Attribute Assignment allowed. -->
+		<!-- A fragment of the Fafurion Dual Dagger. Can be upgraded through Lionel Hunter the Fafurion's Watcher. Enchantment, Soul Crystal, Augment, Crystallization, Appearance Modification, Attribute Assignment allowed. -->
 		<set name="icon" val="icon.fafurion_dual_dagger_i00" />
 		<set name="is_dragon_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -175,9 +186,10 @@
 		</stats>
 	</item>
 	<item id="80316" name="Fafurion Dual Dagger" additionalName="Standard" type="Weapon">
-		<!-- A weapon bestowed with the dragon s power. When equipped, PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, and Damage to Dragons +100%. Can be upgraded through Lionel Hunter the Fafurion s Watcher. No Enchantment Augment, Crystallization, Appearance Modification, or Attribute Assignment allowed. Can bestow 1 special Soul Crystal. -->
+		<!-- A weapon bestowed with the dragon's power. When equipped, PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, and Damage to Dragons +100%. Can be upgraded through Lionel Hunter the Fafurion's Watcher. No Enchantment Augment, Crystallization, Appearance Modification, or Attribute Assignment allowed. Can bestow 1 special Soul Crystal. -->
 		<set name="icon" val="icon.fafurion_dual_dagger_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALDAGGER" />
 		<set name="crystal_type" val="R" />
@@ -206,9 +218,10 @@
 		</stats>
 	</item>
 	<item id="80317" name="Fafurion Dual Dagger" additionalName="High-Grade" type="Weapon">
-		<!-- A weapon bestowed with the dragon s power. When equipped, PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, and Damage to Dragons +100%. Additionally enables active skills Dignity and Fafurion Rising Wave. Can be upgraded through Lionel Hunter the Fafurion s Watcher. No Enchantment Augment, Crystallization, Appearance Modification, or Attribute Assignment allowed. Can bestow 1 special Soul Crystal. -->
+		<!-- A weapon bestowed with the dragon's power. When equipped, PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, and Damage to Dragons +100%. Additionally enables active skills ‘Dignity' and ‘Fafurion Rising Wave.'. Can be upgraded through Lionel Hunter the Fafurion's Watcher. No Enchantment Augment, Crystallization, Appearance Modification, or Attribute Assignment allowed. Can bestow 1 special Soul Crystal. -->
 		<set name="icon" val="icon.fafurion_dual_dagger_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALDAGGER" />
 		<set name="crystal_type" val="R" />
@@ -239,9 +252,10 @@
 		</stats>
 	</item>
 	<item id="80318" name="Fafurion Dual Dagger" additionalName="Top-grade" type="Weapon">
-		<!-- A weapon bestowed with the dragon s power. When equipped, PvP Damage +50%, Max HP/ MP/ CP +100%, Atk. Spd. +100%, P. Critical Rate +500, P. Skill Critical Rate +50%, P. Skill Critical Damage +50%, and Damage to Dragons +300%. Additionally enables active skills Dignity, Fafurion Rising Wave, and Fafurion s Breath. Enchantment Augment, Crystallization, Appearance Modification, Attribute Assignment allowed. Can bestow 1 special Soul Crystal. -->
+		<!-- A weapon bestowed with the dragon's power. When equipped, PvP Damage +50%, Max HP/ MP/ CP +100%, Atk. Spd. +100%, P. Critical Rate +500, P. Skill Critical Rate +50%, P. Skill Critical Damage +50%, and Damage to Dragons +300%. Additionally enables active skills ‘Dignity,' ‘Fafurion Rising Wave,' and ‘Fafurion's Breath.'. Enchantment Augment, Crystallization, Appearance Modification, Attribute Assignment allowed. Can bestow 1 special Soul Crystal. -->
 		<set name="icon" val="icon.fafurion_dual_dagger_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALDAGGER" />
 		<set name="crystal_type" val="R" />
@@ -339,7 +353,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80323" name="Minion's Symbol" type="EtcItem">
-		<!-- A mark that only a few of Fafurion s best minions can receive. It also indicates that they are still under Fafurion s influence. Gather the marks and take them to Lupicia at the entrance of Fafurion Temple. -->
+		<!-- A mark that only a few of Fafurion's best minions can receive. It also indicates that they are still under Fafurion's influence. Gather the marks and take them to Lupicia at the entrance of Fafurion Temple. -->
 		<set name="icon" val="icon.etc_symbol_subordinate_01" />
 		<set name="material" val="STEEL" />
 		<set name="is_tradable" val="false" />
@@ -351,7 +365,7 @@
 		<set name="is_questitem" val="true" />
 	</item>
 	<item id="80324" name="Fragment of Power" type="EtcItem">
-		<!-- A Fragment of Power obtained by defeating Fafurion s minions. It still contains the power that Fafurion bestowed upon his men guarding his temple. Gather the fragments and take them to Lupicia at the entrance of Fafurion Temple. -->
+		<!-- A Fragment of Power obtained by defeating Fafurion's minions. It still contains the power that Fafurion bestowed upon his men guarding his temple. Gather the fragments and take them to Lupicia at the entrance of Fafurion Temple. -->
 		<set name="icon" val="icon.etc_piece_of_power_01" />
 		<set name="material" val="STEEL" />
 		<set name="is_tradable" val="false" />
@@ -453,7 +467,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80333" name="Dragon Necklace" type="Armor">
-		<!-- A dragon s necklace. Enchantment adds abilities to increase Stun/ Paralysis/ Poison/ Bleed attack success rates and resistance, decrease Skill Cooldown, and increase CHA/ LUC, Damage Reflection, Movement Speed, Skill Power, P. Atk./ M. Atk./ P. Def./ M. Def, and all Attribute Resistance. Can be enchanted by the Angel Accessory Scroll. -->
+		<!-- A dragon's necklace. Enchantment adds abilities to increase Stun/ Paralysis/ Poison/ Bleed attack success rates and resistance, decrease Skill Cooldown, and increase CHA/ LUC, Damage Reflection, Movement Speed, Skill Power, P. Atk./ M. Atk./ P. Def./ M. Def, and all Attribute Resistance. Can be enchanted by the Angel Accessory Scroll. -->
 		<set name="icon" val="icon.dragon_accessary_necklace" />
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="73" />
@@ -468,7 +482,7 @@
 		</stats>
 	</item>
 	<item id="80334" name="Dragon Earring" type="Armor">
-		<!-- A dragon s earring. Enchantment adds abilities to increase Stun/ Faint/ Sleep/ Pull attack success rates and resistance, decrease MP Consumption, and increase CHA/ LUC, P./ M. Critical Damage Received, and increase Heal Received, Vampiric Rage, Movement Speed, Skill Power, and all Attribute Resistance. These effects do not stack with identical earrings. Can be enchanted by the Angel Accessory Scroll. -->
+		<!-- A dragon's earring. Enchantment adds abilities to increase Stun/ Faint/ Sleep/ Pull attack success rates and resistance, decrease MP Consumption, and increase CHA/ LUC, P./ M. Critical Damage Received, and increase Heal Received, Vampiric Rage, Movement Speed, Skill Power, and all Attribute Resistance. These effects do not stack with identical earrings. Can be enchanted by the Angel Accessory Scroll. -->
 		<set name="icon" val="icon.dragon_accessary_earring" />
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="78" />
@@ -483,7 +497,7 @@
 		</stats>
 	</item>
 	<item id="80335" name="Dragon Ring" type="Armor">
-		<!-- A dragon s ring. Enchantment adds abilities to increase Stun/ MEN/ Knock Back/ Knock Down/ Aerial Yoke Resistance, Attack Success, CHA/ LUC, Atk./ Casting Spd., Physical/ Magic Accuracy, Movement Speed, Skill Power, Normal Attack/ P. Skill/ M. Skill Critical Damage, additional damage to immobilized targets, and all Attribute Resistance, depending on the enchantment level. These effects do not stack with identical rings. Can be enchanted by the Angel Accessory Scroll. -->
+		<!-- A dragon's ring. Enchantment adds abilities to increase Stun/ MEN/ Knock Back/ Knock Down/ Aerial Yoke Resistance, Attack Success, CHA/ LUC, Atk./ Casting Spd., Physical/ Magic Accuracy, Movement Speed, Skill Power, Normal Attack/ P. Skill/ M. Skill Critical Damage, additional damage to immobilized targets, and all Attribute Resistance, depending on the enchantment level. These effects do not stack with identical rings. Can be enchanted by the Angel Accessory Scroll. -->
 		<set name="icon" val="icon.dragon_accessary_ring" />
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="78" />
@@ -518,6 +532,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="DAGGER" />
 		<set name="damage_range" val="0;0;40;120" />
 		<skills>
@@ -549,6 +565,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
 		<set name="damage_range" val="0;0;40;120" />
 		<skills>
@@ -579,6 +597,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
 		<set name="damage_range" val="0;0;40;120" />
 		<skills>
@@ -609,6 +629,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
 		<set name="damage_range" val="0;0;40;120" />
 		<skills>
@@ -639,6 +661,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
 		<set name="damage_range" val="0;0;32;120" />
 		<skills>
@@ -670,6 +694,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="SPEAR" />
 		<set name="damage_range" val="0;0;66;120" />
 		<skills>
@@ -702,6 +728,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="BOW" />
 		<set name="damage_range" val="0;0;10;0" />
 		<skills>
@@ -731,6 +759,8 @@
 		<set name="weight" val="1580" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="CROSSBOW" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="soulshots" val="1" />
@@ -764,6 +794,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<set name="is_magic_weapon" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
@@ -794,6 +826,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<set name="is_magic_weapon" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
@@ -826,6 +860,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<set name="is_magic_weapon" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
@@ -858,6 +894,8 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="DUALSWORD" />
 		<set name="damage_range" val="0;0;40;120" />
 		<skills>
@@ -886,6 +924,8 @@
 		<set name="weight" val="2050" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="soulshots" val="1" />
@@ -917,6 +957,8 @@
 		<set name="weight" val="1740" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="soulshots" val="1" />
@@ -1573,7 +1615,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80393" name="Bloody Helios Upgrade Stone" type="EtcItem">
-		<!-- A crystal that contains a spirit s strong fighting will. The special power of the upgrade stone unbinds +12 or above Enchanted Bloody Helios Weapons. -->
+		<!-- A crystal that contains a spirit's strong fighting will. The special power of the upgrade stone unbinds +12 or above Enchanted Bloody Helios Weapons. -->
 		<set name="icon" val="icon.weapone_upgrade_crystal" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -1582,7 +1624,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80394" name="Bloody Eternal Upgrade Stone" type="EtcItem">
-		<!-- A crystal that contains a spirit s strong will for protection. The special power of the upgrade stone unbinds +8 or above Enchanted Bloody Eternal Armor. -->
+		<!-- A crystal that contains a spirit's strong will for protection. The special power of the upgrade stone unbinds +8 or above Enchanted Bloody Eternal Armor. -->
 		<set name="icon" val="icon.amor_upgrade_crystal" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />

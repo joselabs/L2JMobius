@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS `character_macroses` (
   `name` VARCHAR(40) ,
   `descr` VARCHAR(80) ,
   `acronym` VARCHAR(4) ,
-  `commands` VARCHAR(500) ,
+  `commands` VARCHAR(1255) ,
   PRIMARY KEY (`charId`,`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

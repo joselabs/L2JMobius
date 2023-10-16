@@ -22,7 +22,6 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 public class RequestEvaluate implements ClientPacket
 {
@@ -99,7 +98,7 @@ public class RequestEvaluate implements ClientPacket
 		sm.addString(player.getName());
 		target.sendPacket(sm);
 		
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		target.broadcastUserInfo();
 	}
 }

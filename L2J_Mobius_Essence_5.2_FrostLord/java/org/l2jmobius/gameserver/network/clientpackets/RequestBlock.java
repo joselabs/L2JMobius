@@ -17,7 +17,7 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
 import org.l2jmobius.gameserver.model.BlockList;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -51,8 +51,8 @@ public class RequestBlock implements ClientPacket
 	public void run(GameClient client)
 	{
 		final Player player = client.getPlayer();
-		final int targetId = CharNameTable.getInstance().getIdByName(_name);
-		final int targetAL = CharNameTable.getInstance().getAccessLevelById(targetId);
+		final int targetId = CharInfoTable.getInstance().getIdByName(_name);
+		final int targetAL = CharInfoTable.getInstance().getAccessLevelById(targetId);
 		if (player == null)
 		{
 			return;

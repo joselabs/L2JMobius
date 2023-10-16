@@ -389,7 +389,7 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		if (containsMask(UserInfoType.STAT_POINTS)) // 235
 		{
 			writeShort(16);
-			writeShort(_player.getLevel() < 76 ? 0 : (_player.getLevel() - 75) + _player.getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0) + _player.getVariables().getInt(PlayerVariables.ELIXIRS_USED, 0)); // Usable points
+			writeShort(_player.getLevel() < 76 ? 0 : (_player.getLevel() - 75) + _player.getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0)); // Usable points
 			writeShort(_player.getVariables().getInt(PlayerVariables.STAT_STR, 0));
 			writeShort(_player.getVariables().getInt(PlayerVariables.STAT_DEX, 0));
 			writeShort(_player.getVariables().getInt(PlayerVariables.STAT_CON, 0));
@@ -411,8 +411,17 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		}
 		if (containsMask(UserInfoType.ELIXIR_USED)) // 286
 		{
-			writeInt(_player.getVariables().getInt(PlayerVariables.ELIXIRS_USED, 0)); // count
+			writeInt(_player.getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0)); // count
 			writeShort(0);
+		}
+	}
+	
+	@Override
+	public void run()
+	{
+		if (_player == null)
+		{
+			return;
 		}
 		
 		// Send exp bonus change.
@@ -437,7 +446,6 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		}
 		if (clan != null)
 		{
-			
 			if (player.getSiegeState() == 1)
 			{
 				relation |= 256; // Clan member

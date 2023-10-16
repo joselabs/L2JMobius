@@ -60,12 +60,6 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 			return;
 		}
 		
-		final Shortcut shortcut = player.getShortCut(_slot, _page);
-		if (shortcut == null)
-		{
-			return;
-		}
-		
 		if (_active)
 		{
 			player.addAutoShortcut(_slot, _page);
@@ -77,16 +71,63 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 		
 		Item item = null;
 		Skill skill = null;
+		
+		if ((_slot == 3) && (_page == 5461) && _active)
+		{
+			for (int i = 0; i < 12; i++)
+			{
+				final Shortcut autoUseAllSupply = player.getShortCut(i, 22);
+				if (autoUseAllSupply == null)
+				{
+					continue;
+				}
+				
+				final Item itemAll = player.getInventory().getItemByObjectId(autoUseAllSupply.getId());
+				if (itemAll != null)
+				{
+					player.addAutoShortcut(i, 22);
+					AutoUseTaskManager.getInstance().addAutoSupplyItem(player, itemAll.getId());
+				}
+			}
+			return;
+		}
+		else if ((_slot == 3) && (_page == 5461) && !_active)
+		{
+			for (int i = 0; i < 12; i++)
+			{
+				final Shortcut autoUseAllSupply = player.getShortCut(i, 22);
+				if (autoUseAllSupply == null)
+				{
+					continue;
+				}
+				
+				final Item itemAll = player.getInventory().getItemByObjectId(autoUseAllSupply.getId());
+				if (itemAll != null)
+				{
+					player.removeAutoShortcut(i, 22);
+					AutoUseTaskManager.getInstance().removeAutoSupplyItem(player, itemAll.getId());
+				}
+			}
+			return;
+		}
+		
+		final Shortcut shortcut = player.getShortCut(_slot, _page);
+		if ((shortcut == null))
+		{
+			return;
+		}
+		
 		if (shortcut.getType() == ShortcutType.SKILL)
 		{
-			skill = player.getKnownSkill(shortcut.getId());
+			final int skillId = player.getReplacementSkill(shortcut.getId());
+			skill = player.getKnownSkill(skillId);
 			if (skill == null)
 			{
 				if (player.hasServitors())
 				{
 					for (Summon summon : player.getServitors().values())
 					{
-						skill = summon.getKnownSkill(shortcut.getId());
+						skill = summon.getKnownSkill(skillId);
 						if (skill != null)
 						{
 							break;
@@ -95,7 +136,7 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 				}
 				if ((skill == null) && player.hasPet())
 				{
-					skill = player.getPet().getKnownSkill(shortcut.getId());
+					skill = player.getPet().getKnownSkill(skillId);
 				}
 			}
 		}
@@ -116,7 +157,7 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 				}
 				else // auto potion
 				{
-					AutoUseTaskManager.getInstance().removeAutoPotionItem(player, item.getId());
+					AutoUseTaskManager.getInstance().removeAutoPotionItem(player);
 				}
 			}
 			// auto skill
@@ -154,7 +195,7 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 			{
 				if (Config.ENABLE_AUTO_POTION && (item != null) && item.isPotion())
 				{
-					AutoUseTaskManager.getInstance().addAutoPotionItem(player, item.getId());
+					AutoUseTaskManager.getInstance().setAutoPotionItem(player, item.getId());
 					return;
 				}
 			}

@@ -73,7 +73,6 @@ public class PlayerVariables extends AbstractVariables
 	public static final String BEAST_POINT_COUNT = "BEAST_POINT_COUNT";
 	public static final String FAVORITE_TELEPORTS = "FAVORITE_TELEPORTS";
 	public static final String ELIXIRS_AVAILABLE = "ELIXIRS_AVAILABLE";
-	public static final String ELIXIRS_USED = "ELIXIRS_USED";
 	public static final String STAT_POINTS = "STAT_POINTS";
 	public static final String STAT_STR = "STAT_STR";
 	public static final String STAT_DEX = "STAT_DEX";

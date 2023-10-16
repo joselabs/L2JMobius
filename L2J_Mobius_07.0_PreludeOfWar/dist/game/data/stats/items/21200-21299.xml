@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="21200" name="Mysterious Scroll: Drum Melody" type="EtcItem">
-		<!-- Dimensional item. For 60 min., increases Max MP by 20%, HP Recovery Bonus by 20%, Attack M. Critical Rate by 2, Standard Attack Critical Damage by 20%, increases P. Atk. by 10%, P. Def. by 20%, Atk. Spd. by 20%, M. Atk. by 20%, M. Def. by 20%, Casting Spd. by 20%, Debuff Resistance by 10%, and increases P. Def. when hit by a critical attack. Decreases Speed by 15%. Additionally increases Standard Attack Critical Damage when you receive more than a certain amount of damage while equipped with melee/ ranged weapons. -->
+		<!-- Dimensional item. For 60 min., Max MP +20%, HP Recovery Rate +20%, M. Critical Rate +20, P. Critical Damage +20%, P. Atk. +10%, P. Def. +20%, Atk. Spd. +20%, M. Atk. +20%, M. Def. +20%, Casting Spd. +20%, Debuff Resistance +10%, also increases P. Def. when hit by a critical attack. Speed -15%. Additionally increases P. Critical Damage when you receive more than a certain amount of damage while equipped with melee/ ranged weapons. -->
 		<set name="icon" val="BranchSys.icon.br_xmas_scroll_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
@@ -21,7 +21,7 @@
 		</skills>
 	</item>
 	<item id="21201" name="Magic Glasses Pack (30-day)" type="EtcItem">
-		<!-- Wrapped Pack containing pair of magic glasses (30-day). -->
+		<!-- Wrapped Pack containing pair of magic glasses. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -33,7 +33,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<capsuled_items>
-			<item id="21202" min="1" max="1" chance="100" /> <!-- Magic Glasses - 30-day -->
+			<item id="21202" min="1" max="1" chance="100" /> <!-- Magic Glasses - 30 days -->
 		</capsuled_items>
 	</item>
 	<item id="21202" name="Magic Glasses" additionalName="30-day" type="Armor">
@@ -70,7 +70,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<capsuled_items>
-			<item id="21206" min="1" max="1" chance="100" /> <!-- Queen Ant's Ring - 30-day -->
+			<item id="21206" min="1" max="1" chance="100" /> <!-- Queen Ant's Ring - 30 days -->
 		</capsuled_items>
 	</item>
 	<item id="21204" name="Baium's Ring Pack (30-day)" type="EtcItem">
@@ -86,11 +86,11 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<capsuled_items>
-			<item id="21207" min="1" max="1" chance="100" /> <!-- Baium's Ring - 30-day -->
+			<item id="21207" min="1" max="1" chance="100" /> <!-- Baium's Ring - 30 days -->
 		</capsuled_items>
 	</item>
 	<item id="21205" name="Zaken's Earring Pack (30-day)" type="EtcItem">
-		<!-- Wrapped Pack containing Zaken's Earring (30-day). Cannot be used in Olympiad. -->
+		<!-- Double-click to obtain a Zaken's Earring (30-day). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -102,11 +102,11 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<capsuled_items>
-			<item id="21208" min="1" max="1" chance="100" /> <!-- Zaken's Earring - 30-day -->
+			<item id="21208" min="1" max="1" chance="100" /> <!-- Zaken's Earring - 30 days -->
 		</capsuled_items>
 	</item>
 	<item id="21206" name="Queen Ant's Ring" additionalName="30-day" type="Armor">
-		<!-- MP +21, Poison Resistance +30%, Poison Atk. Rate +30%, Accuracy increase, P. Critical Damage increase, hold tolerance 20% increase, and hold Atk. Rate 20% increase. Only one effect is applied even when two identical rings are worn. 30-day. -->
+		<!-- Temporary item. MP +21, Infection Resistance/ Atk. Rate +30%, Obstruction Resistance/ Atk. Rate +20%. Increases P. Accuracy, Critical Damage. The effect does not stack if two identical rings are equipped. -->
 		<set name="icon" val="icon.bm_ring_of_queen_ant" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -130,7 +130,7 @@
 		</stats>
 	</item>
 	<item id="21207" name="Baium's Ring" additionalName="30-day" type="Armor">
-		<!-- MP +21, Poison Resistance +40%, Poison Atk. Rate +40%, Accuracy increase, P. Critical Damage increase, hold tolerance +30%, hold Atk. Rate +30%, attack increase, and Casting Spd. Increase. Only one effect is applied even when two identical rings are worn. 30-day. -->
+		<!-- Temporary item. MP +21, Infection Resistance/ Atk. Rate +40%, Obstruction Resistance/ Atk. Rate +30%. Increases P. Accuracy, Critical Damage, Atk. Spd. and Casting Spd. The effect does not stack if two identical rings are equipped. -->
 		<set name="icon" val="icon.bm_ring_of_baium" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -154,7 +154,7 @@
 		</stats>
 	</item>
 	<item id="21208" name="Zaken's Earring" additionalName="30-day" type="Armor">
-		<!-- MP +31, Bleed Resistance +30%, Bleed Atk. Rate +30%, Heal Amount increase, Vampiric Rage Effect, Stun/ Mental Attack Resistance +20%, and Stun/ Mental Atk. Rate +20%. When equipped with two identical earrings, the effect of only one earring will be applied. 30-day. Cannot be used in Olympiad. -->
+		<!-- Temporary item. MP+31, Infection Resistance/ Atk. Rate +30%, Confusion Resistance/ Atk. Rate +20%. Increases Received Healing, grants Vampiric Rage Effect. The effect does not stack if two identical earrings are equipped. When equipped together with Blessed Zaken's Earring, only the effect of Zaken's Earring will be applied. -->
 		<set name="icon" val="icon.bm_earring_of_zaken" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -194,7 +194,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21210" name="MP Recovery Potion" type="EtcItem">
-		<!-- Instantly restores MP by 50%. Cooldown is 5 min. -->
+		<!-- Dimensional item. Instantly restores 50% MP. -->
 		<set name="icon" val="BranchSys.icon.br_vitality_potion_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -213,7 +213,7 @@
 		</skills>
 	</item>
 	<item id="21211" name="Vitality Recovering Potion 10-unit Pack" type="EtcItem">
-		<!-- Wrapped Pack containing 10 Vitality Recovering Potion (30-min.). -->
+		<!-- Wrapped Pack containing 10 Vitality Recovering Potions. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -279,7 +279,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21215" name="Zaken's Earring Pack (180-day)" type="EtcItem">
-		<!-- Wrapped Pack containing Zaken's Earring (180-day). -->
+		<!-- Double-click to obtain a Zaken's Earring (180-day). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -327,7 +327,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21218" name="Queen Ant's Ring" additionalName="180-day" type="Armor">
-		<!-- MP +21, Poison Resistance +30%, Poison Atk. Rate +30%, Accuracy increase, P. Critical Damage increase, hold tolerance 20% increase, and hold Atk. Rate 20% increase. Only one effect is applied even when two identical rings are worn. 180 days. -->
+		<!-- Temporary item. MP +21, Infection Resistance/ Atk. Rate +30%, Obstruction Resistance/ Atk. Rate +20%. Increases P. Accuracy, Critical Damage. The effect does not stack if two identical rings are equipped. -->
 		<set name="icon" val="icon.accessory_ring_of_queen_ant_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -351,7 +351,7 @@
 		</stats>
 	</item>
 	<item id="21219" name="Baium's Ring" additionalName="180-day" type="Armor">
-		<!-- MP +21, Poison Resistance +40%, Poison Atk. Rate +40%, Accuracy increase, P. Critical Damage increase, hold tolerance +30%, hold Atk. Rate +30%, attack increase, and Casting Spd. Increase. Only one effect is applied even when two identical rings are worn. 180 days. -->
+		<!-- Temporary item. MP +21, Infection Resistance/ Atk. Rate +40%, Obstruction Resistance/ Atk. Rate +30%. Increases P. Accuracy, Critical Damage, Atk. Spd. and Casting Spd. The effect does not stack if two identical rings are equipped. -->
 		<set name="icon" val="icon.accessory_ring_of_baium_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -375,7 +375,7 @@
 		</stats>
 	</item>
 	<item id="21220" name="Zaken's Earring" additionalName="180-day" type="Armor">
-		<!-- MP +31, Bleed Resistance +30%, Bleed Atk. Rate +30%, Heal Amount increase, Vampiric Rage Effect, Stun/ Mental Attack Resistance 20% increase, and Stun/ Mental Atk. Rate 20% increase. When equipped with two identical earrings, the effect of only one earring will be applied. 180 days. -->
+		<!-- Temporary item. MP+31, Infection Resistance/ Atk. Rate +30%, Confusion Resistance/ Atk. Rate +20%. Increases Received Healing, grants Vampiric Rage Effect. The effect does not stack if two identical earrings are equipped. When equipped together with Blessed Zaken's Earring, only the effect of Zaken's Earring will be applied. -->
 		<set name="icon" val="icon.accessory_earring_of_zaken_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -399,7 +399,7 @@
 		</stats>
 	</item>
 	<item id="21221" name="Valakas' Necklace" additionalName="180-day" type="Armor">
-		<!-- MP +50, Sleep Resistance +40%, Sleep Attack Rate +40%, HP +445, cooldown decrease, P. Atk. and M. Atk. Increase, Wild Magic Effect, Damage Reflection effect, and Fire Resistance increases. 180 days. -->
+		<!-- Temporary item. MP +50, Stupor Resistance/ Atk. Rate +40%, HP +445, decreases Skill Cooldown, increases P. Atk./M. Atk. Wild Magic Effect and Damage Reflection Effect. Increases Fire Resistance. -->
 		<set name="icon" val="icon.accessory_necklace_of_valakas_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -423,7 +423,7 @@
 		</stats>
 	</item>
 	<item id="21222" name="Antharas' Earring" additionalName="180-day" type="Armor">
-		<!-- MP +37, Bleed Resistance +40%, Bleed Atk. Rate +40%, Heal Amount increase, Vampiric Rage Effect, Stun/ Mental Attack Resistance 30%, Stun/ Mental Atk. Rate +30%, MP consumption decrease, and Earth Resistance increases. Only one effect is applied even when the two identical earrings are worn. 180 days. -->
+		<!-- Temporary item. MP +37, Infection Resistance/ Atk. Rate +40%, Confusion Resistance/ Atk. Rate +30%. Increases Received Healing and Earth Resistance, grants Vampiric Rage Effect, decreases MP Consumption. The effect does not stack if two identical earrings are equipped. -->
 		<set name="icon" val="icon.accessory_earring_of_antaras_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -481,7 +481,7 @@
 		</skills>
 	</item>
 	<item id="21225" name="Sweet Concentrated Fruit Cocktail Pack" type="EtcItem">
-		<!-- Wrapped Pack containing 3 Sweet Concentrated Fruit Cocktails. -->
+		<!-- Dimensional item. Double-click to obtain 3 Sweet Fruit Cocktails. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -497,7 +497,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21226" name="Sweet Concentrated Fruit Cocktail Pack" additionalName="Event" type="EtcItem">
-		<!-- Wrapped Pack containing 3 Sweet Concentrated Fruit Cocktails. -->
+		<!-- Dimensional item. Double-click to obtain 3 Sweet Fruit Cocktails. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -661,7 +661,7 @@
 		</skills>
 	</item>
 	<item id="21233" name="Fresh Milk Pack" type="EtcItem">
-		<!-- Wrapped Pack containing 3 fresh milks. -->
+		<!-- Double-click to obtain 3 bottles of Fresh Milk. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -677,7 +677,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21234" name="Fresh Milk Pack" additionalName="Event" type="EtcItem">
-		<!-- Wrapped Pack containing 3 fresh milks. -->
+		<!-- Double-click to obtain 3 bottles of Fresh Milk. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -693,7 +693,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21235" name="Fresh Milk" type="EtcItem">
-		<!-- Freshly collected milk. When used, you can feel the effects of Might, Haste, Empower, Acumen, Wind Walk, Vampiric Rage, Berserker Spirit, Shield, Focus, Death Whisper, Guidance, Clarity, Wild Magic, and Concentration (1-hour). The effect disappears if a higher level version of the buff is acquired. -->
+		<!-- Fresh milk. When used, you can feel for 1 hour the effects of Might, Haste, Empower, Acumen, Wind Walk, Vampiric Rage, Berserker Spirit, Shield, Focus, Death Whisper, Guidance, Clarity, Wild Magic, and Concentration. The effect disappears if a higher level version of the buff is applied. -->
 		<set name="icon" val="icon.etc_fresh_milk_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="POTION" />
@@ -726,7 +726,7 @@
 		</skills>
 	</item>
 	<item id="21236" name="Fresh Milk" additionalName="Event" type="EtcItem">
-		<!-- Freshly collected milk. When used, you can feel the effects of Might, Haste, Empower, Acumen, Wind Walk, Vampiric Rage, Berserker Spirit, Shield, Focus, Death Whisper, Guidance, Clarity, Wild Magic, and Concentration for 1 hour. The effect disappears if a higher skill is acquired. -->
+		<!-- Fresh milk. When used, you can feel the effects of Might, Haste, Empower, Acumen, Wind Walk, Vampiric Rage, Berserker Spirit, Shield, Focus, Death Whisper, Guidance, Clarity, Wild Magic, and Concentration for 1 hour. The effect disappears if a higher level skill is applied. -->
 		<set name="icon" val="icon.etc_fresh_milk_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="POTION" />
@@ -759,7 +759,7 @@
 		</skills>
 	</item>
 	<item id="21237" name="Super Healthy Juice Pack (HP)" type="EtcItem">
-		<!-- Wrapped Pack containing 3 Super Healthy Juices (HP). -->
+		<!-- Double-click to obtain 3 bottles of Super Healthy Juice (HP). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -775,7 +775,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21238" name="Super Healthy Juice Pack (HP)" additionalName="Event" type="EtcItem">
-		<!-- Wrapped Pack containing 3 super healthy juices (HP). -->
+		<!-- Double-click to obtain 3 bottles of Super Healthy Juice (HP). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -827,7 +827,7 @@
 		</skills>
 	</item>
 	<item id="21241" name="Super Healthy Juice Pack (CP)" type="EtcItem">
-		<!-- Wrapped Pack containing 5 Super Healthy Juices (CP). -->
+		<!-- Double-click to obtain 5 bottles of Super Healthy Juice (CP). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -843,7 +843,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21242" name="Super Healthy Juice Pack (CP)" additionalName="Event" type="EtcItem">
-		<!-- Wrapped Pack containing 5 super healthy juices (CP). -->
+		<!-- Double-click to obtain 5 bottles of Super Healthy Juice (CP). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -895,7 +895,7 @@
 		</skills>
 	</item>
 	<item id="21245" name="Vitality Replenishing Potion Pack" type="EtcItem">
-		<!-- Wrapped Pack containing Vitality Replenishing Potion. -->
+		<!-- Double-click to obtain 1 Vitality Replenishing Potion. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -911,7 +911,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21246" name="Vitality Replenishing Potion Pack" additionalName="Event" type="EtcItem">
-		<!-- Wrapped Pack containing Vitality Replenishing Potion. -->
+		<!-- Double-click to obtain 1 Vitality Replenishing Potion. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -963,7 +963,7 @@
 		</skills>
 	</item>
 	<item id="21249" name="Vitality Maintaining Potion (30-min.) Pack" type="EtcItem">
-		<!-- Wrapped Pack containing Vitality Maintaining Potion (30-min.). -->
+		<!-- Double-click to obtain 1 Vitality Maintaining Potion. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />
@@ -979,7 +979,7 @@
 		</capsuled_items>
 	</item>
 	<item id="21250" name="Vitality Maintaining Potion (30-min.) Pack" additionalName="Event" type="EtcItem">
-		<!-- Wrapped Pack containing Vitality Maintaining Potion. -->
+		<!-- Double-click to obtain 1 Vitality Maintaining Potion. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="material" val="FISH" />
 		<set name="is_tradable" val="false" />

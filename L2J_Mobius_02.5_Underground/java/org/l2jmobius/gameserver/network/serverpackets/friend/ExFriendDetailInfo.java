@@ -18,8 +18,11 @@ package org.l2jmobius.gameserver.network.serverpackets.friend;
 
 import java.util.Calendar;
 
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
+import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -48,19 +51,36 @@ public class ExFriendDetailInfo extends ServerPacket
 		writeInt(_objectId);
 		if (_friend == null)
 		{
+			final int charId = CharInfoTable.getInstance().getIdByName(_name);
 			writeString(_name);
-			writeInt(0);
-			writeInt(0);
-			writeShort(0);
-			writeShort(0);
-			writeInt(0);
-			writeInt(0);
-			writeString("");
-			writeInt(0);
-			writeInt(0);
-			writeString("");
-			writeInt(1);
-			writeString(""); // memo
+			writeInt(0); // isonline = 0
+			writeInt(charId);
+			writeShort(CharInfoTable.getInstance().getLevelById(charId));
+			writeShort(CharInfoTable.getInstance().getClassIdById(charId));
+			final Clan clan = ClanTable.getInstance().getClan(CharInfoTable.getInstance().getClanIdById(charId));
+			if (clan != null)
+			{
+				writeInt(clan.getId());
+				writeInt(clan.getCrestId());
+				writeString(clan.getName());
+				writeInt(clan.getAllyId());
+				writeInt(clan.getAllyCrestId());
+				writeString(clan.getAllyName());
+			}
+			else
+			{
+				writeInt(0);
+				writeInt(0);
+				writeString("");
+				writeInt(0);
+				writeInt(0);
+				writeString("");
+			}
+			final Calendar createDate = CharInfoTable.getInstance().getCharacterCreationDate(charId);
+			writeByte(createDate.get(Calendar.MONTH) + 1);
+			writeByte(createDate.get(Calendar.DAY_OF_MONTH));
+			writeInt(CharInfoTable.getInstance().getLastAccessDelay(charId));
+			writeString(CharInfoTable.getInstance().getFriendMemo(_objectId, charId));
 		}
 		else
 		{
@@ -79,7 +99,7 @@ public class ExFriendDetailInfo extends ServerPacket
 			writeByte(createDate.get(Calendar.MONTH) + 1);
 			writeByte(createDate.get(Calendar.DAY_OF_MONTH));
 			writeInt(_lastAccess);
-			writeString(""); // memo
+			writeString(CharInfoTable.getInstance().getFriendMemo(_objectId, _friend.getObjectId()));
 		}
 	}
 }

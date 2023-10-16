@@ -31,7 +31,6 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExAttributeEnchantResult;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Util;
 
 public class RequestExEnchantItemAttribute implements ClientPacket
@@ -272,7 +271,7 @@ public class RequestExEnchantItemAttribute implements ClientPacket
 		
 		player.removeRequest(request.getClass());
 		player.sendPacket(new ExAttributeEnchantResult(result, item.isWeapon(), elementToAdd, elementValue, newValue, successfulAttempts, failedAttempts));
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		player.sendInventoryUpdate(iu);
 	}
 	

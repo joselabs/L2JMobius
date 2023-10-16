@@ -81,7 +81,11 @@ public class RequestBRBuyProduct implements ClientPacket
 			{
 				final int paymentId = itemHolder.getId();
 				final long price = itemHolder.getCount() * _count;
-				if (paymentId < 0)
+				if (price < 1)
+				{
+					hasItems = false;
+				}
+				else if (paymentId < 0)
 				{
 					hasItems = false;
 				}

@@ -96,12 +96,12 @@ public class TersisHerald extends AbstractNpcAI
 		if (event.equals("DESPAWN_NPCS"))
 		{
 			cancelQuestTimer("TEXT_SPAM", null, null);
-			SPAWNED_NPCS.stream().forEach(Npc::deleteMe);
+			SPAWNED_NPCS.forEach(Npc::deleteMe);
 			SPAWNED_NPCS.clear();
 		}
 		else if (event.equals("TEXT_SPAM"))
 		{
-			SPAWNED_NPCS.stream().forEach(n -> n.broadcastSay(ChatType.NPC_GENERAL, getRandomEntry(SPAM_MSGS)));
+			SPAWNED_NPCS.forEach(n -> n.broadcastSay(ChatType.NPC_GENERAL, getRandomEntry(SPAM_MSGS)));
 		}
 	}
 	
@@ -132,7 +132,7 @@ public class TersisHerald extends AbstractNpcAI
 			}
 		}
 		
-		World.getInstance().getPlayers().stream().forEach(p -> showOnScreenMsg(p, npcStringId, 2, 10000, true));
+		World.getInstance().getPlayers().forEach(p -> showOnScreenMsg(p, npcStringId, 2, 10000, true));
 		if (!SPAWNED_NPCS.isEmpty())
 		{
 			getTimers().cancelTimers("DESPAWN_NPCS");

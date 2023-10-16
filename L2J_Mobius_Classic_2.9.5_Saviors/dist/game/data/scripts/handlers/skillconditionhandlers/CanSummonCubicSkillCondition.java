@@ -20,8 +20,12 @@ import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.effects.AbstractEffect;
+import org.l2jmobius.gameserver.model.skill.EffectScope;
 import org.l2jmobius.gameserver.model.skill.ISkillCondition;
 import org.l2jmobius.gameserver.model.skill.Skill;
+
+import handlers.effecthandlers.SummonCubic;
 
 /**
  * @author UnAfraid
@@ -41,6 +45,17 @@ public class CanSummonCubicSkillCondition implements ISkillCondition
 		}
 		
 		final Player player = caster.getActingPlayer();
+		if (player.getAutoUseSettings().isAutoSkill(skill.getId()))
+		{
+			for (AbstractEffect effect : skill.getEffects(EffectScope.GENERAL))
+			{
+				if ((effect instanceof SummonCubic) && (player.getCubicById(((SummonCubic) effect).getCubicId()) != null))
+				{
+					return false;
+				}
+			}
+		}
+		
 		return !player.inObserverMode() && !player.isMounted() && !player.isSpawnProtected() && !player.isTeleportProtected();
 	}
 }

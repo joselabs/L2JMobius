@@ -38,6 +38,7 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.SpawnTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.xml.DoorData;
+import org.l2jmobius.gameserver.data.xml.SpawnData;
 import org.l2jmobius.gameserver.data.xml.StaticObjectData;
 import org.l2jmobius.gameserver.enums.MountType;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
@@ -286,7 +287,8 @@ public class Fort extends AbstractResidence
 	 */
 	public boolean checkIfInZone(int x, int y, int z)
 	{
-		return getZone().isInsideZone(x, y, z);
+		final SiegeZone zone = getZone();
+		return (zone != null) && zone.isInsideZone(x, y, z);
 	}
 	
 	public SiegeZone getZone()
@@ -523,6 +525,11 @@ public class Fort extends AbstractResidence
 			{
 				door.closeMe();
 			}
+			// Orc Fortress
+			if (!door.isOpen())
+			{
+				door.openMe();
+			}
 			if (door.isDead())
 			{
 				door.doRevive();
@@ -533,6 +540,45 @@ public class Fort extends AbstractResidence
 			}
 		}
 		loadDoorUpgrade(); // Check for any upgrade the doors may have
+	}
+	
+	public void OpenOrcFortressDoors()
+	{
+		for (Door door : _doors)
+		{
+			if (!door.isOpen())
+			{
+				door.openMe();
+				
+			}
+		}
+	}
+	
+	public void CloseOrcFortressDoors()
+	{
+		for (Door door : _doors)
+		{
+			if (door.isOpen())
+			{
+				door.closeMe();
+			}
+		}
+	}
+	
+	// Orc Fortress
+	public void SetOrcFortressOwnerNpcs(boolean val)
+	{
+		SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_fortress_owner_npcs").forEach(holder ->
+		{
+			if (val)
+			{
+				holder.spawnAll();
+			}
+			else
+			{
+				holder.despawnAll();
+			}
+		}));
 	}
 	
 	// This method upgrade door

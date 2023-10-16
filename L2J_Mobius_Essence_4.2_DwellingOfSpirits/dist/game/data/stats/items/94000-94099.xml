@@ -59,6 +59,8 @@
 		<set name="bodypart" val="rhand" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">149</stat>
 			<stat type="mAtk">110</stat>
@@ -78,6 +80,8 @@
 		<set name="weight" val="1530" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">172</stat>
 			<stat type="mAtk">91</stat>
@@ -630,7 +634,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="40160" level="1" /> <!-- Equipment Restoration Stone  -->
+			<skill id="40160" level="1" /> <!-- Equipment Restoration Stone -->
 		</skills>
 	</item>
 	<item id="94042" name="Emerald Weapon Appearance Stone" type="EtcItem">
@@ -684,7 +688,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="94046" name="Spellbook: Ability of Glory Lv. 1" type="EtcItem">
-		<!-- A memorable spellbook for reaching Lv. 90. Double-click to learn Glorious Warrior's Ability. <Classes>. All classes. <Skill effect>. Increases CON and MEN. -->
+		<!-- A memorable achievement reward for Lv. 90. Double-click to learn Ability of Glory. <Classes>. All classes. <Skill effect>. Increases CON and MEN. -->
 		<set name="icon" val="icon.etc_spell_books_black_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -700,7 +704,7 @@
 		</skills>
 	</item>
 	<item id="94047" name="Spellbook: Ability of Glory" type="EtcItem">
-		<!-- A spellbook for learning Glorious Warrior's Ability. -->
+		<!-- A spellbook for learning the Ability of Glory skill. -->
 		<set name="icon" val="icon.etc_spell_books_black_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -727,8 +731,8 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="94051" min="1" max="1" chance="100" /> <!-- +16 Weapon Craft Coupon (Time-limited) -->
-			<item id="94052" min="200" max="200" chance="100" /> <!-- Anniversary Coin (Time-limited) -->
+			<item id="94051" min="1" max="1" chance="100" /> <!-- +16 Weapon Craft Coupon - Event -->
+			<item id="94052" min="200" max="200" chance="100" /> <!-- Anniversary Coin - Event -->
 		</capsuled_items>
 	</item>
 	<item id="94051" name="+16 Weapon Craft Coupon" additionalName="Event" type="EtcItem">
@@ -761,8 +765,8 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="94051" min="1" max="1" chance="100" /> <!-- +16 Weapon Craft Coupon Event -->
-			<item id="94054" min="1" max="1" chance="100" /> <!-- Master's Pack Event -->
+			<item id="94051" min="1" max="1" chance="100" /> <!-- +16 Weapon Craft Coupon - Event -->
+			<item id="94054" min="1" max="1" chance="100" /> <!-- Master's Pack - Event -->
 		</capsuled_items>
 	</item>
 	<item id="94054" name="Master's Pack" additionalName="Event" type="EtcItem">
@@ -782,11 +786,11 @@
 			<item id="91767" min="1" max="1" chance="9.1" /> <!-- Enchant Kit: Talisman of Aden -->
 			<item id="91864" min="1" max="1" chance="9.09" /> <!-- Dragon Belt Pack -->
 			<item id="92020" min="1" max="1" chance="9.09" /> <!-- Enchant Kit: Talisman of Eva -->
-			<item id="92056" min="1" max="1" chance="9.09" /> <!-- Coral Lv. 1 -->
-			<item id="92066" min="1" max="1" chance="9.09" /> <!-- Onyx Lv. 1 -->
-			<item id="92076" min="1" max="1" chance="9.09" /> <!-- Spinel Lv. 1 -->
-			<item id="92086" min="1" max="1" chance="9.09" /> <!-- Zircon Lv. 1 -->
-			<item id="92096" min="1" max="1" chance="9.09" /> <!-- Moonstone Lv. 1 -->
+			<item id="92056" min="1" max="1" chance="9.09" /> <!-- Coral - Lv. 1 -->
+			<item id="92066" min="1" max="1" chance="9.09" /> <!-- Onyx - Lv. 1 -->
+			<item id="92076" min="1" max="1" chance="9.09" /> <!-- Spinel - Lv. 1 -->
+			<item id="92086" min="1" max="1" chance="9.09" /> <!-- Zircon - Lv. 1 -->
+			<item id="92096" min="1" max="1" chance="9.09" /> <!-- Moonstone - Lv. 1 -->
 			<item id="93303" min="1" max="1" chance="9.09" /> <!-- Package: Cloak of Protection -->
 			<item id="93304" min="1" max="1" chance="9.09" /> <!-- Package: Einhasad's Pendant Lv. 1 -->
 			<item id="93330" min="1" max="1" chance="9.09" /> <!-- Enchant Kit: Talisman of Authority -->
@@ -1115,7 +1119,6 @@
 		</stats>
 		<skills>
 			<skill id="50380" level="1" /> <!-- Helmet of Mana -->
-			<skill id="50381" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Helmet of Mana -->
@@ -1146,7 +1149,6 @@
 		</stats>
 		<skills>
 			<skill id="50380" level="1" /> <!-- Helmet of Mana -->
-			<skill id="50381" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Helmet of Mana -->
@@ -1219,7 +1221,7 @@
 		</skills>
 	</item>
 	<item id="94087" name="Package: Helmet of Mana" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.armor_leather_helmet_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1230,11 +1232,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="94083" min="1" max="1" chance="100" /> <!-- Helmet of Mana (Exchangeable) -->
+			<item id="94083" min="1" max="1" chance="100" /> <!-- Helmet of Mana -->
 		</capsuled_items>
 	</item>
 	<item id="94088" name="Package: Helmet of Mana" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.armor_leather_helmet_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1245,11 +1247,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="94084" min="1" max="1" chance="100" /> <!-- Helmet of Mana (Sealed) -->
+			<item id="94084" min="1" max="1" chance="100" /> <!-- Helmet of Mana - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="94089" name="Package: Boots of Evasion" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.armor_t100_b_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1260,11 +1262,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="94085" min="1" max="1" chance="100" /> <!-- Boots of Evasion (Exchangeable) -->
+			<item id="94085" min="1" max="1" chance="100" /> <!-- Boots of Evasion -->
 		</capsuled_items>
 	</item>
 	<item id="94090" name="Package: Boots of Evasion" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.armor_t100_b_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1275,7 +1277,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="94086" min="1" max="1" chance="100" /> <!-- Boots of Evasion (Sealed) -->
+			<item id="94086" min="1" max="1" chance="100" /> <!-- Boots of Evasion - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="94091" name="Aden Adventure Reward Kit - Enhanced" type="EtcItem">
@@ -1290,9 +1292,9 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="93073" min="1" max="1" chance="100" /> <!-- Sayha's Storm Lv. 3 (Time-limited) -->
-			<item id="93848" min="1" max="1" chance="100" /> <!-- Sayha's Cookie (Time-limited) -->
-			<item id="93886" min="1" max="1" chance="100" /> <!-- Enhanced Dice (Time-limited) -->
+			<item id="93073" min="1" max="1" chance="100" /> <!-- Sayha's Storm Lv. 3 (Event) -->
+			<item id="93848" min="1" max="1" chance="100" /> <!-- Sayha's Cookie - Event -->
+			<item id="93886" min="1" max="1" chance="100" /> <!-- Enhanced Dice -->
 		</capsuled_items>
 	</item>
 	<item id="94092" name="Dream Box" type="EtcItem">
@@ -1333,7 +1335,7 @@
 			<item id="6662" min="1" max="1" chance="0.001" /> <!-- Ring of Core -->
 			<item id="49580" min="1" max="1" chance="0.001" /> <!-- Baium's Ring -->
 			<item id="90763" min="1" max="1" chance="0.001" /> <!-- Zaken's Earring -->
-			<item id="92990" min="1" max="1" chance="0.001" /> <!-- Boss' Weapon Pack -->
+			<item id="92990" min="1" max="1" chance="0.001" /> <!-- Boss Weapon Pack -->
 			<item id="93930" min="1" max="1" chance="0.001" /> <!-- Special Armor Coupon -->
 			<item id="94083" min="1" max="1" chance="0.001" /> <!-- Helmet of Mana -->
 			<item id="94085" min="1" max="1" chance="0.001" /> <!-- Boots of Evasion -->
@@ -1349,7 +1351,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="94094" name="+7 Talisman of Authority Pack" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_silver_lure_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1358,9 +1360,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91061" min="1" max="1" minEnchant="7" maxEnchant="7" chance="100" /> <!-- Talisman of Authority -->
+		</capsuled_items>
 	</item>
 	<item id="94095" name="Package: Inventory Expansion Ticket Lv. 4-5" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_ticket_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1370,8 +1376,8 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="92007" min="1" max="1" chance="100" /> <!-- Inventory Expansion Ticket Lv. 4 Sealed -->
-			<item id="92008" min="1" max="1" chance="100" /> <!-- Inventory Expansion Ticket Lv. 5 Sealed -->
+			<item id="92007" min="1" max="1" chance="100" /> <!-- Inventory Expansion Ticket Lv. 4 -->
+			<item id="92008" min="1" max="1" chance="100" /> <!-- Inventory Expansion Ticket Lv. 5 -->
 		</capsuled_items>
 	</item>
 	<item id="94096" name="Regular Pet Training Guide" type="EtcItem">
@@ -1382,7 +1388,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="94097" name="Sealed Wolf Necklace" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_summon_wolf_r_02" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1394,11 +1400,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="93960" min="1" max="1" chance="100" />
+			<item id="93960" min="1" max="1" chance="100" /> <!-- Wolf Necklace -->
 		</capsuled_items>
 	</item>
 	<item id="94098" name="Sealed Buffalo Necklace" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.buffalo_necklace_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1410,11 +1416,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="93961" min="1" max="1" chance="100" />
+			<item id="93961" min="1" max="1" chance="100" /> <!-- Buffalo Necklace -->
 		</capsuled_items>
 	</item>
 	<item id="94099" name="Sealed Tiger Necklace" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_tooth_gragon" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1426,7 +1432,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="93962" min="1" max="1" chance="100" />
+			<item id="93962" min="1" max="1" chance="100" /> <!-- Tiger Necklace -->
 		</capsuled_items>
 	</item>
 </list>

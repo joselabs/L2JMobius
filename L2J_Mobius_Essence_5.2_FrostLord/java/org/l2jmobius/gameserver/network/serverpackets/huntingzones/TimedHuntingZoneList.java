@@ -17,6 +17,7 @@
 package org.l2jmobius.gameserver.network.serverpackets.huntingzones;
 
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
+import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.TimedHuntingZoneHolder;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
@@ -63,7 +64,12 @@ public class TimedHuntingZoneList extends ServerPacket
 			writeInt(holder.getMaximumAddedTime() / 1000);
 			writeInt(_player.getVariables().getInt(PlayerVariables.HUNTING_ZONE_REMAIN_REFILL + holder.getZoneId(), holder.getRemainRefillTime()));
 			writeInt(holder.getRefillTimeMax());
-			writeByte(!_isInTimedHuntingZone); // field activated (272 byte to int)
+			boolean isFieldActivated = !_isInTimedHuntingZone;
+			if ((holder.getZoneId() == 18) && !GlobalVariablesManager.getInstance().getBoolean("AvailableFrostLord", false))
+			{
+				isFieldActivated = false;
+			}
+			writeByte(isFieldActivated);
 			writeByte(0); // bUserBound
 			writeByte(0); // bCanReEnter
 			writeByte(holder.zonePremiumUserOnly()); // bIsInZonePCCafeUserOnly

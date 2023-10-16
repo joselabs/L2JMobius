@@ -18,6 +18,8 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
+import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -41,8 +43,9 @@ public class ExUserInfoAbnormalVisualEffect extends ServerPacket
 		writeInt(_player.getObjectId());
 		writeInt(_player.getTransformationId());
 		final Set<AbnormalVisualEffect> abnormalVisualEffects = _player.getEffectList().getCurrentAbnormalVisualEffects();
+		final Team team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _player.getTeam() : Team.NONE;
 		final boolean isInvisible = _player.isInvisible();
-		writeInt(abnormalVisualEffects.size() + (isInvisible ? 1 : 0));
+		writeInt(abnormalVisualEffects.size() + (isInvisible ? 1 : 0) + (team != Team.NONE ? 1 : 0));
 		for (AbnormalVisualEffect abnormalVisualEffect : abnormalVisualEffects)
 		{
 			writeShort(abnormalVisualEffect.getClientId());
@@ -50,6 +53,17 @@ public class ExUserInfoAbnormalVisualEffect extends ServerPacket
 		if (isInvisible)
 		{
 			writeShort(AbnormalVisualEffect.STEALTH.getClientId());
+		}
+		if (team == Team.BLUE)
+		{
+			if (Config.BLUE_TEAM_ABNORMAL_EFFECT != null)
+			{
+				writeShort(Config.BLUE_TEAM_ABNORMAL_EFFECT.getClientId());
+			}
+		}
+		else if ((team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
+		{
+			writeShort(Config.RED_TEAM_ABNORMAL_EFFECT.getClientId());
 		}
 	}
 }

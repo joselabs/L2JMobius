@@ -18,7 +18,7 @@ package org.l2jmobius.gameserver.network.clientpackets.mentoring;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.instancemanager.MentorManager;
 import org.l2jmobius.gameserver.model.Mentee;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -55,7 +55,7 @@ public class RequestMentorCancel implements ClientPacket
 		}
 		
 		final Player player = client.getPlayer();
-		final int objectId = CharNameTable.getInstance().getIdByName(_name);
+		final int objectId = CharInfoTable.getInstance().getIdByName(_name);
 		if (player != null)
 		{
 			if (player.isMentor())

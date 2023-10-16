@@ -39,6 +39,7 @@ public class PAttackFinalizer implements IStatFunction
 		if (creature.getActiveWeaponInstance() != null)
 		{
 			baseValue += creature.getStat().getWeaponBonusPAtk();
+			baseValue *= creature.getStat().getMul(Stat.WEAPON_BONUS_PHYSICAL_ATTACK_MULTIPIER, 1);
 		}
 		
 		baseValue += calcEnchantedItemBonus(creature, stat);

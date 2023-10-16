@@ -30,6 +30,7 @@ import org.l2jmobius.gameserver.instancemanager.DimensionalRiftManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Skill;
 import org.l2jmobius.gameserver.model.WorldObject;
+import org.l2jmobius.gameserver.model.WorldRegion;
 import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
@@ -171,12 +172,6 @@ public class AttackableAI extends CreatureAI
 			
 			// Check if the AI isn't a Raid Boss and the target isn't in silent move mode
 			if (!(me instanceof RaidBoss) && ((Player) target).isSilentMoving())
-			{
-				return false;
-			}
-			
-			// if in offline mode
-			if (((Player) target).isInOfflineMode())
 			{
 				return false;
 			}
@@ -378,6 +373,13 @@ public class AttackableAI extends CreatureAI
 	 */
 	private void thinkActive()
 	{
+		// Check if region and its neighbors are active.
+		final WorldRegion region = _actor.getWorldRegion();
+		if ((region == null) || !region.areNeighborsActive())
+		{
+			return;
+		}
+		
 		final Attackable npc = getActiveChar();
 		
 		// Update every 1s the _globalAggro counter to come close to 0
@@ -604,7 +606,7 @@ public class AttackableAI extends CreatureAI
 		if (Config.AGGRO_DISTANCE_CHECK_ENABLED && _actor.isMonster() && !(_actor instanceof NpcWalker) && !(_actor instanceof GrandBoss))
 		{
 			final Spawn spawn = ((Npc) _actor).getSpawn();
-			if ((spawn != null) && !_actor.isInsideRadius2D(spawn.getX(), spawn.getY(), spawn.getZ(), (_actor.isRaid() ? Config.AGGRO_DISTANCE_CHECK_RAID_RANGE : Config.AGGRO_DISTANCE_CHECK_RANGE)))
+			if ((spawn != null) && !_actor.isInsideRadius2D(spawn.getX(), spawn.getY(), spawn.getZ(), _actor.isRaid() ? Config.AGGRO_DISTANCE_CHECK_RAID_RANGE : Config.AGGRO_DISTANCE_CHECK_RANGE))
 			{
 				if ((Config.AGGRO_DISTANCE_CHECK_RAIDS || !_actor.isRaid()) && (Config.AGGRO_DISTANCE_CHECK_INSTANCES || (_actor.getInstanceId() == 0)))
 				{
@@ -664,7 +666,7 @@ public class AttackableAI extends CreatureAI
 		
 		// Check if target is dead or if timeout is expired to stop this attack
 		final Creature originalAttackTarget = getAttackTarget();
-		if ((originalAttackTarget == null) || originalAttackTarget.isAlikeDead() || ((originalAttackTarget instanceof Player) && (((Player) originalAttackTarget).isInOfflineMode() || !((Player) originalAttackTarget).isOnline())) || (_attackTimeout < GameTimeTaskManager.getInstance().getGameTicks()))
+		if ((originalAttackTarget == null) || originalAttackTarget.isAlikeDead() || ((originalAttackTarget instanceof Player) && !((Player) originalAttackTarget).isOnline()) || (_attackTimeout < GameTimeTaskManager.getInstance().getGameTicks()))
 		{
 			// Stop hating this target after the attack timeout or if target is dead
 			if (originalAttackTarget != null)
@@ -997,8 +999,21 @@ public class AttackableAI extends CreatureAI
 	@Override
 	public void onEvtThink()
 	{
-		// Check if the actor can't use skills and if a thinking action isn't already in progress
-		if (_thinking || _actor.isAllSkillsDisabled())
+		// Check if a thinking action is already in progress.
+		if (_thinking)
+		{
+			return;
+		}
+		
+		// Check if region and its neighbors are active.
+		final WorldRegion region = _actor.getWorldRegion();
+		if ((region == null) || !region.areNeighborsActive())
+		{
+			return;
+		}
+		
+		// Check if the actor is all skills disabled.
+		if (getActiveChar().isAllSkillsDisabled())
 		{
 			return;
 		}

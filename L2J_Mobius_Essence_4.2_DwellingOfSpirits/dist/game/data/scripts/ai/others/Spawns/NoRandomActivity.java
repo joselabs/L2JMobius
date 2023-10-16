@@ -16,6 +16,8 @@
  */
 package ai.others.Spawns;
 
+import org.l2jmobius.gameserver.model.Spawn;
+import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.spawns.SpawnGroup;
 import org.l2jmobius.gameserver.model.spawns.SpawnTemplate;
@@ -34,13 +36,23 @@ public class NoRandomActivity extends AbstractNpcAI
 	@Override
 	public void onSpawnNpc(SpawnTemplate template, SpawnGroup group, Npc npc)
 	{
-		npc.setRandomAnimation(!template.getParameters().getBoolean("disableRandomAnimation", false));
-		final boolean randomWalk = !template.getParameters().getBoolean("disableRandomWalk", false);
-		npc.setRandomWalking(randomWalk);
-		if ((npc.getSpawn() != null))
+		final StatSet parameters = template.getParameters();
+		if (parameters == null)
 		{
-			npc.getSpawn().setRandomWalking(randomWalk);
+			return;
 		}
+		
+		npc.setRandomAnimation(!parameters.getBoolean("disableRandomAnimation", false));
+		final boolean randomWalk = !parameters.getBoolean("disableRandomWalk", false);
+		npc.setRandomWalking(randomWalk);
+		
+		final Spawn spawn = npc.getSpawn();
+		if (spawn == null)
+		{
+			return;
+		}
+		
+		spawn.setRandomWalking(randomWalk);
 	}
 	
 	public static void main(String[] args)

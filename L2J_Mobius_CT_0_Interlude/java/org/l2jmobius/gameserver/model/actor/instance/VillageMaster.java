@@ -56,7 +56,6 @@ import org.l2jmobius.gameserver.network.serverpackets.MagicSkillLaunched;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Util;
 
 /**
@@ -1136,8 +1135,7 @@ public class VillageMaster extends Folk
 			if (leaderPlayer != null)
 			{
 				leaderPlayer.setPledgeClass(ClanMember.calculatePledgeClass(leaderPlayer));
-				leaderPlayer.sendPacket(new UserInfo(leaderPlayer));
-				// leaderPlayer.sendPacket(new ExBrExtraUserInfo(leaderPlayer));
+				leaderPlayer.updateUserInfo();
 			}
 		}
 	}
@@ -1222,8 +1220,7 @@ public class VillageMaster extends Folk
 		if (leaderPlayer != null)
 		{
 			leaderPlayer.setPledgeClass(ClanMember.calculatePledgeClass(leaderPlayer));
-			leaderPlayer.sendPacket(new UserInfo(leaderPlayer));
-			// leaderPlayer.sendPacket(new ExBrExtraUserInfo(leaderPlayer));
+			leaderPlayer.updateUserInfo();
 		}
 		
 		clan.broadcastClanStatus();

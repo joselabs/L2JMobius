@@ -80,15 +80,20 @@ public class AutoUseTaskManager
 		@Override
 		public void run()
 		{
+			if (_players.isEmpty())
+			{
+				return;
+			}
+			
 			for (Player player : _players)
 			{
-				if (!player.isOnline() || player.isInOfflineMode())
+				if (player.getAutoUseSettings().isEmpty() || !player.isOnline() || (player.isInOfflineMode() && !player.isOfflinePlay()))
 				{
 					stopAutoUseTask(player);
 					continue;
 				}
 				
-				if (player.hasBlockActions() || player.isControlBlocked() || player.isAlikeDead() || player.isMounted() || (player.isTransformed() && player.getTransformation().get().isRiding()))
+				if (player.isSitting() || player.hasBlockActions() || player.isControlBlocked() || player.isAlikeDead() || player.isMounted() || (player.isTransformed() && player.getTransformation().get().isRiding()))
 				{
 					continue;
 				}
@@ -170,31 +175,33 @@ public class AutoUseTaskManager
 				
 				if (Config.ENABLE_AUTO_POTION && !isInPeaceZone && (player.getCurrentHpPercent() < player.getAutoPlaySettings().getAutoPotionPercent()))
 				{
-					POTIONS: for (Integer itemId : player.getAutoUseSettings().getAutoPotionItems())
+					final int itemId = player.getAutoUseSettings().getAutoPotionItem();
+					if (itemId > 0)
 					{
-						final Item item = player.getInventory().getItemByItemId(itemId.intValue());
+						final Item item = player.getInventory().getItemByItemId(itemId);
 						if (item == null)
 						{
-							player.getAutoUseSettings().getAutoPotionItems().remove(itemId);
-							continue POTIONS;
+							player.getAutoUseSettings().setAutoPotionItem(0);
 						}
-						
-						final int reuseDelay = item.getReuseDelay();
-						if ((reuseDelay <= 0) || (player.getItemRemainingReuseTime(item.getObjectId()) <= 0))
+						else
 						{
-							final EtcItem etcItem = item.getEtcItem();
-							final IItemHandler handler = ItemHandler.getInstance().getHandler(etcItem);
-							if ((handler != null) && handler.useItem(player, item, false))
+							final int reuseDelay = item.getReuseDelay();
+							if ((reuseDelay <= 0) || (player.getItemRemainingReuseTime(item.getObjectId()) <= 0))
 							{
-								if (reuseDelay > 0)
+								final EtcItem etcItem = item.getEtcItem();
+								final IItemHandler handler = ItemHandler.getInstance().getHandler(etcItem);
+								if ((handler != null) && handler.useItem(player, item, false))
 								{
-									player.addTimeStampItem(item, reuseDelay);
-								}
-								
-								// Notify events.
-								if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_USE, item.getTemplate()))
-								{
-									EventDispatcher.getInstance().notifyEventAsync(new OnItemUse(player, item), item.getTemplate());
+									if (reuseDelay > 0)
+									{
+										player.addTimeStampItem(item, reuseDelay);
+									}
+									
+									// Notify events.
+									if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_USE, item.getTemplate()))
+									{
+										EventDispatcher.getInstance().notifyEventAsync(new OnItemUse(player, item), item.getTemplate());
+									}
 								}
 							}
 						}
@@ -209,23 +216,25 @@ public class AutoUseTaskManager
 						final int percent = pet.getCurrentHpPercent();
 						if ((percent < 100) && (percent <= player.getAutoPlaySettings().getAutoPetPotionPercent()))
 						{
-							POTIONS: for (Integer itemId : player.getAutoUseSettings().getAutoPetPotionItems())
+							final int itemId = player.getAutoUseSettings().getAutoPetPotionItem();
+							if (itemId > 0)
 							{
-								final Item item = player.getInventory().getItemByItemId(itemId.intValue());
+								final Item item = player.getInventory().getItemByItemId(itemId);
 								if (item == null)
 								{
-									player.getAutoUseSettings().getAutoPetPotionItems().remove(itemId);
-									continue POTIONS;
+									player.getAutoUseSettings().setAutoPetPotionItem(0);
 								}
-								
-								final int reuseDelay = item.getReuseDelay();
-								if ((reuseDelay <= 0) || (player.getItemRemainingReuseTime(item.getObjectId()) <= 0))
+								else
 								{
-									final EtcItem etcItem = item.getEtcItem();
-									final IItemHandler handler = ItemHandler.getInstance().getHandler(etcItem);
-									if ((handler != null) && handler.useItem(player, item, false) && (reuseDelay > 0))
+									final int reuseDelay = item.getReuseDelay();
+									if ((reuseDelay <= 0) || (player.getItemRemainingReuseTime(item.getObjectId()) <= 0))
 									{
-										player.addTimeStampItem(item, reuseDelay);
+										final EtcItem etcItem = item.getEtcItem();
+										final IItemHandler handler = ItemHandler.getInstance().getHandler(etcItem);
+										if ((handler != null) && handler.useItem(player, item, false) && (reuseDelay > 0))
+										{
+											player.addTimeStampItem(item, reuseDelay);
+										}
 									}
 								}
 							}
@@ -312,7 +321,7 @@ public class AutoUseTaskManager
 					}
 					
 					// Continue when auto play is not enabled.
-					if (!AutoPlayTaskManager.getInstance().isAutoPlay(player))
+					if (!player.isAutoPlaying())
 					{
 						continue;
 					}
@@ -470,6 +479,11 @@ public class AutoUseTaskManager
 			}
 			
 			final Playable playableTarget = (target == null) || !target.isPlayable() || (skill.getTargetType() == TargetType.SELF) ? player : (Playable) target;
+			if ((player != playableTarget) && (player.calculateDistance3D(playableTarget) > skill.getCastRange()))
+			{
+				return false;
+			}
+			
 			if (!canUseMagic(player, playableTarget, skill))
 			{
 				return false;
@@ -491,6 +505,11 @@ public class AutoUseTaskManager
 		private boolean canUseMagic(Player player, WorldObject target, Skill skill)
 		{
 			if ((skill.getItemConsumeCount() > 0) && (player.getInventory().getInventoryItemCount(skill.getItemConsumeId(), -1) < skill.getItemConsumeCount()))
+			{
+				return false;
+			}
+			
+			if ((skill.getMpConsume() > 0) && (player.getCurrentMp() < skill.getMpConsume()))
 			{
 				return false;
 			}
@@ -536,7 +555,7 @@ public class AutoUseTaskManager
 	public void stopAutoUseTask(Player player)
 	{
 		player.getAutoUseSettings().resetSkillOrder();
-		if (player.getAutoUseSettings().isEmpty() || !player.isOnline() || player.isInOfflineMode())
+		if (player.getAutoUseSettings().isEmpty() || !player.isOnline() || (player.isInOfflineMode() && !player.isOfflinePlay()))
 		{
 			for (Set<Player> pool : POOLS)
 			{
@@ -560,27 +579,27 @@ public class AutoUseTaskManager
 		stopAutoUseTask(player);
 	}
 	
-	public void addAutoPotionItem(Player player, int itemId)
+	public void setAutoPotionItem(Player player, int itemId)
 	{
-		player.getAutoUseSettings().getAutoPotionItems().add(itemId);
+		player.getAutoUseSettings().setAutoPotionItem(itemId);
 		startAutoUseTask(player);
 	}
 	
-	public void removeAutoPotionItem(Player player, int itemId)
+	public void removeAutoPotionItem(Player player)
 	{
-		player.getAutoUseSettings().getAutoPotionItems().remove(itemId);
+		player.getAutoUseSettings().setAutoPotionItem(0);
 		stopAutoUseTask(player);
 	}
 	
-	public void addAutoPetPotionItem(Player player, int itemId)
+	public void setAutoPetPotionItem(Player player, int itemId)
 	{
-		player.getAutoUseSettings().getAutoPetPotionItems().add(itemId);
+		player.getAutoUseSettings().setAutoPetPotionItem(itemId);
 		startAutoUseTask(player);
 	}
 	
-	public void removeAutoPetPotionItem(Player player, int itemId)
+	public void removeAutoPetPotionItem(Player player)
 	{
-		player.getAutoUseSettings().getAutoPetPotionItems().remove(itemId);
+		player.getAutoUseSettings().setAutoPetPotionItem(0);
 		stopAutoUseTask(player);
 	}
 	

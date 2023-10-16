@@ -71,11 +71,6 @@ public class HuntPass
 	
 	public void restoreHuntPass()
 	{
-		final Calendar calendar = Calendar.getInstance();
-		if ((calendar.get(Calendar.DAY_OF_MONTH) == Config.HUNT_PASS_PERIOD) && (calendar.get(Calendar.HOUR_OF_DAY) == 6) && (calendar.get(Calendar.MINUTE) == 30))
-		{
-			deleteHuntPass();
-		}
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement statement = con.prepareStatement(RESTORE_SEASONPASS))
 		{
@@ -131,20 +126,6 @@ public class HuntPass
 		}
 	}
 	
-	public void deleteHuntPass()
-	{
-		try (Connection con = DatabaseFactory.getConnection())
-		{
-			PreparedStatement statement = con.prepareStatement("UPDATE huntpass SET current_step = ?, reward_step = ?, premium_reward_step = ?, sayha_points_available = ?, sayha_points_used = ? ");
-			statement.execute();
-			statement.close();
-		}
-		catch (SQLException e)
-		{
-			LOGGER.log(Level.WARNING, "HuntPass : Can't clear steps: " + e.getMessage(), e);
-		}
-	}
-	
 	public int getHuntPassDayEnd()
 	{
 		return _dayEnd;
@@ -175,34 +156,37 @@ public class HuntPass
 		return _points;
 	}
 	
-	public void addPassPoint(double point) // TODO: point is unused.
+	public void addPassPoint()
 	{
-		if (Config.ENABLE_HUNT_PASS)
+		if (!Config.ENABLE_HUNT_PASS)
 		{
-			final int seasonPasspoint = 1;
-			int calculate = seasonPasspoint + getPoints();
-			boolean hasNewLevel = false;
-			while (calculate >= Config.HUNT_PASS_POINTS_FOR_STEP)
-			{
-				calculate = calculate - Config.HUNT_PASS_POINTS_FOR_STEP;
-				setCurrentStep(getCurrentStep() + 1);
-				hasNewLevel = true;
-			}
-			if (hasNewLevel)
-			{
-				setRewardAlert(true);
-				_user.sendPacket(new HuntPassSimpleInfo(_user));
-			}
-			setPoints(calculate);
-			inTimeHuntingZone(calculate);
+			return;
 		}
-	}
-	
-	public void inTimeHuntingZone(int points) // TODO: points is unused.
-	{
+		
+		// Add points.
+		int points = getPoints() + 1;
 		if (_user.isInTimedHuntingZone())
 		{
-			_points += 1;
+			points++;
+		}
+		
+		// Check current step.
+		boolean hasNewLevel = false;
+		while (points >= Config.HUNT_PASS_POINTS_FOR_STEP)
+		{
+			points -= Config.HUNT_PASS_POINTS_FOR_STEP;
+			setCurrentStep(getCurrentStep() + 1);
+			hasNewLevel = true;
+		}
+		
+		// Save the current point count.
+		setPoints(points);
+		
+		// Send info when needed.
+		if (hasNewLevel)
+		{
+			setRewardAlert(true);
+			_user.sendPacket(new HuntPassSimpleInfo(_user));
 		}
 	}
 	
@@ -328,5 +312,4 @@ public class HuntPass
 			}
 		}
 	}
-	
 }

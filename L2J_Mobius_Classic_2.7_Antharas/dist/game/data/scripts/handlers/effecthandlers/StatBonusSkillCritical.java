@@ -33,12 +33,12 @@ import org.l2jmobius.gameserver.model.stats.Stat;
  */
 public class StatBonusSkillCritical extends AbstractEffect
 {
-	private final BaseStat _stat;
+	private final Double _stat;
 	private final Condition _armorTypeCondition;
 	
 	public StatBonusSkillCritical(StatSet params)
 	{
-		_stat = params.getEnum("stat", BaseStat.class, BaseStat.DEX);
+		_stat = Double.valueOf(params.getEnum("stat", BaseStat.class, BaseStat.DEX).ordinal());
 		
 		int armorTypesMask = 0;
 		final List<String> armorTypes = params.getList("armorType", String.class);
@@ -66,7 +66,7 @@ public class StatBonusSkillCritical extends AbstractEffect
 	{
 		if ((_armorTypeCondition == null) || _armorTypeCondition.test(effected, effected, skill))
 		{
-			effected.getStat().mergeAdd(Stat.STAT_BONUS_SKILL_CRITICAL, _stat.ordinal());
+			effected.getStat().mergeAdd(Stat.STAT_BONUS_SKILL_CRITICAL, _stat);
 		}
 	}
 }

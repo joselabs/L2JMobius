@@ -59,12 +59,15 @@ public class AcquireSkillList extends ServerPacket
 		writeShort(_learnable.size());
 		for (SkillLearn skill : _learnable)
 		{
-			writeInt(skill.getSkillId());
+			final int skillId = _player.getReplacementSkill(skill.getSkillId());
+			writeInt(skillId);
+			
 			writeInt(skill.getSkillLevel()); // Main writeInt, Classic writeShort.
 			writeLong(skill.getLevelUpSp());
 			writeByte(skill.getGetLevel());
 			writeByte(skill.getDualClassLevel());
-			writeByte(_player.getKnownSkill(skill.getSkillId()) == null);
+			
+			writeByte(_player.getKnownSkill(skillId) == null);
 			
 			writeByte(skill.getRequiredItems().size());
 			for (ItemHolder item : skill.getRequiredItems())
@@ -87,7 +90,7 @@ public class AcquireSkillList extends ServerPacket
 			for (Skill removed : removeSkills)
 			{
 				writeInt(removed.getId());
-				writeInt(removed.getLevel()); // Main writeD, Classic writeH.
+				writeInt(removed.getLevel()); // Main writeInt, Classic writeShort.
 			}
 		}
 	}

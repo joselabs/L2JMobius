@@ -260,8 +260,9 @@ public class MultisellData implements IXmlReader
 	 * @param inventoryOnly
 	 * @param ingredientMultiplierValue
 	 * @param productMultiplierValue
+	 * @param type
 	 */
-	public void separateAndSend(int listId, Player player, Npc npc, boolean inventoryOnly, double ingredientMultiplierValue, double productMultiplierValue)
+	public void separateAndSend(int listId, Player player, Npc npc, boolean inventoryOnly, double ingredientMultiplierValue, double productMultiplierValue, int type)
 	{
 		final MultisellListHolder template = _multisells.get(listId);
 		if (template == null)
@@ -291,7 +292,7 @@ public class MultisellData implements IXmlReader
 		do
 		{
 			// send list at least once even if size = 0
-			player.sendPacket(new MultiSellList(player, list, index));
+			player.sendPacket(new MultiSellList(player, list, index, type));
 			index += PAGE_SIZE;
 		}
 		while (index < list.getEntries().size());
@@ -301,7 +302,7 @@ public class MultisellData implements IXmlReader
 	
 	public void separateAndSend(int listId, Player player, Npc npc, boolean inventoryOnly)
 	{
-		separateAndSend(listId, player, npc, inventoryOnly, Double.NaN, Double.NaN);
+		separateAndSend(listId, player, npc, inventoryOnly, Double.NaN, Double.NaN, 0);
 	}
 	
 	private final boolean itemExists(ItemHolder holder)
@@ -314,6 +315,11 @@ public class MultisellData implements IXmlReader
 		
 		final ItemTemplate template = ItemTable.getInstance().getTemplate(holder.getId());
 		return (template != null) && (template.isStackable() ? (holder.getCount() >= 1) : (holder.getCount() == 1));
+	}
+	
+	public MultisellListHolder getMultisell(int id)
+	{
+		return _multisells.getOrDefault(id, null);
 	}
 	
 	public static MultisellData getInstance()

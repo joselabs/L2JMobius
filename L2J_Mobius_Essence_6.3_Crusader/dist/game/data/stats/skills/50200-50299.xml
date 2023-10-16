@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="50200" toLevel="10" name="Onyx">
-		<!-- Beast Soulshot Damage +$s1 -->
+		<!-- Beast Soulshot Damage +2% -->
 		<icon>icon.etc_bm_jewel_onyx_i00</icon>
 		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -22,7 +22,7 @@
 		</effects>
 	</skill>
 	<skill id="50201" toLevel="10" name="Onyx">
-		<!-- Spiritshot damage +$s1 -->
+		<!-- Spiritshot damage +2% -->
 		<icon>icon.etc_bm_jewel_onyx_i00</icon>
 		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -43,7 +43,7 @@
 		</effects>
 	</skill>
 	<skill id="50202" toLevel="10" name="Onyx">
-		<!-- Blessed Spiritshot Damage +$s1 -->
+		<!-- Blessed Spiritshot Damage +2% -->
 		<icon>icon.etc_bm_jewel_onyx_i00</icon>
 		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -64,7 +64,7 @@
 		</effects>
 	</skill>
 	<skill id="50203" toLevel="10" name="Onyx">
-		<!-- Beast Spiritshot Damage +$s1 -->
+		<!-- Beast Spiritshot Damage +2% -->
 		<icon>icon.etc_bm_jewel_onyx_i00</icon>
 		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -85,10 +85,9 @@
 		</effects>
 	</skill>
 	<skill id="50204" toLevel="10" name="Onyx">
-		<!-- Soulshot damage +$s1 Spiritshot damage +$s1 -->
+		<!-- Soulshot damage +2%. Spiritshot damage +2% -->
 		<icon>icon.etc_bm_jewel_onyx_i00</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="ShotsBonus">
 				<amount>
@@ -109,6 +108,7 @@
 					<value level="7">150</value>
 					<value level="8">300</value>
 				</amount>
+				<mode>DIFF</mode>
 			</effect>
 			<effect name="MAtk">
 				<amount>
@@ -116,71 +116,35 @@
 					<value level="7">150</value>
 					<value level="8">300</value>
 				</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50205" toLevel="10" name="Spinel - Mana Steal">
 		<icon>icon.etc_bm_jewel_garnet_i00</icon>
-		<castRange>600</castRange>
-		<effectPoint>-100</effectPoint>
-		<effectRange>1100</effectRange>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">10</value>
-			<value level="2">20</value>
-			<value level="3">30</value>
-			<value level="4">40</value>
-			<value level="5">50</value>
-			<value level="6">60</value>
-			<value level="7">70</value>
-			<value level="8">75</value>
-			<value level="9">80</value>
-			<value level="10">85</value>
-			<value level="11">90</value>
-			<value level="12">95</value>
-		</magicLevel>
-		<mpConsume>
-			<value level="1">13</value>
-			<value level="2">20</value>
-			<value level="3">27</value>
-			<value level="4">35</value>
-			<value level="5">45</value>
-			<value level="6">55</value>
-			<value level="7">65</value>
-			<value level="8">69</value>
-			<value level="9">73</value>
-			<value level="10">75</value>
-			<value level="11">77</value>
-			<value level="12">78</value>
-		</mpConsume>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
-		<reuseDelay>8000</reuseDelay>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
+		<reuseDelay>3000</reuseDelay>
+		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mp">
 				<amount>
-					<value level="1">-34</value>
-					<value level="2">-57</value>
-					<value level="3">-78</value>
-					<value level="4">-105</value>
-					<value level="5">-134</value>
-					<value level="6">-165</value>
-					<value level="7">-194</value>
-					<value level="8">-206</value>
-					<value level="9">-216</value>
-					<value level="10">-224</value>
-					<value level="11">-229</value>
-					<value level="12">-232</value>
+					<value level="1">12</value>
+					<value level="2">16</value>
+					<value level="3">20</value>
+					<value level="4">30</value>
+					<value level="5">40</value>
+					<value level="6">50</value>
+					<value level="7">60</value>
+					<value level="8">70</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50206" toLevel="10" name="Spinel">
-		<!-- P. Def. +$s1 M. Def. +$s2 CON +$s3 With a certain chance, recovers $s4 MP when using skills. (Cooldown: 3 sec.) -->
+		<!-- P. Def. +20. M. Def. +10. CON +1. With a certain chance, recovers 12 MP when using skills. (Cooldown: 3 sec.) -->
 		<icon>icon.etc_bm_jewel_garnet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -265,6 +229,7 @@
 					<value level="7">250</value>
 					<value level="8">350</value>
 				</amount>
+				<mode>DIFF</mode>
 			</effect>
 			<effect name="MagicalDefence">
 				<amount>
@@ -277,6 +242,7 @@
 					<value level="7">220</value>
 					<value level="8">300</value>
 				</amount>
+				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>
@@ -298,17 +264,21 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="1" toLevel="20">
-				<!-- Recover MP -->
+			<effect name="DefenceCriticalDamage">
+				<amount>
+					<value level="7">-15</value>
+					<value level="8">-20</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>2</chance>
-				<targetType>ENEMY</targetType>
+				<chance>10</chance>
+				<targetType>SELF</targetType>
 				<allowSkillAttack>true</allowSkillAttack>
 				<allowNormalAttack>false</allowNormalAttack>
-				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>55153</skillId> <!-- Recover MP -->
+				<skillId>50205</skillId> <!-- Spinel - Mana Steal -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -323,7 +293,7 @@
 		</effects>
 	</skill>
 	<skill id="50207" toLevel="10" name="Zircon">
-		<!-- P. Critical Damage +$s1 M. Skill Critical Damage +$s1 -->
+		<!-- P. Critical Damage +2%. M. Skill Critical Damage +2% -->
 		<icon>icon.etc_bm_jewel_bloodstone_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -361,17 +331,24 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="SkillPowerAdd">
+			<effect name="PhysicalSkillPower">
 				<amount>
 					<value level="7">2</value>
 					<value level="8">5</value>
 				</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalSkillPower">
+				<amount>
+					<value level="7">2</value>
+					<value level="8">5</value>
+				</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50208" toLevel="10" name="Moonstone">
-		<!-- With Sayha's Grace, acquired XP +$s1 With Sayha's Grace, acquired SP +$s1 -->
+		<!-- With Sayha's Grace, acquired XP +3%. With Sayha's Grace, acquired SP +3% -->
 		<icon>icon.etc_bm_jewel_moonstone_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -403,11 +380,11 @@
 			</effect>
 			<effect name="VitalityPointsRate">
 				<amount>
-					<value level="4">10</value>
-					<value level="5">20</value>
-					<value level="6">30</value>
-					<value level="7">30</value>
-					<value level="8">30</value>
+					<value level="4">-10</value>
+					<value level="5">-20</value>
+					<value level="6">-30</value>
+					<value level="7">-30</value>
+					<value level="8">-30</value>
 				</amount>
 			</effect>
 			<effect name="MagicLampExpRate">
@@ -420,7 +397,7 @@
 		</effects>
 	</skill>
 	<skill id="50209" toLevel="1" name="A-grade: Dark Crystal Helmet (Heavy)">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1500 M. Def. +10 P. Atk. +4% HP Recovery Rate +5.5% Max HP +100 -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1500. M. Def. +10. P. Atk. +4%. HP Recovery Rate +5.5%. Max HP +100 -->
 		<icon>icon.armor_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -451,7 +428,7 @@
 		</effects>
 	</skill>
 	<skill id="50210" toLevel="1" name="A-grade: Dark Crystal Helmet (Robe)">
-		<!-- <A-grade equipment effect> MEN +1 Overweight limit +1500 M. Def. +10 M. Atk. +8% MP Recovery Rate +5.5% P. Def. +8% -->
+		<!-- <A-grade equipment effect>. MEN +1. Overweight limit +1500. M. Def. +10. M. Atk. +8%. MP Recovery Rate +5.5%. P. Def. +8% -->
 		<icon>icon.armor_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -482,7 +459,7 @@
 		</effects>
 	</skill>
 	<skill id="50211" toLevel="1" name="A-grade: Dark Crystal Helmet (Light)">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1500 M. Def. +10 P. Atk. +4% MP Recovery Rate +5.5% P. Critical Damage +30 -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1500. M. Def. +10. P. Atk. +4%. MP Recovery Rate +5.5%. P. Critical Damage +30 -->
 		<icon>icon.armor_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -513,7 +490,7 @@
 		</effects>
 	</skill>
 	<skill id="50212" toLevel="1" name="A-grade: Majestic Circlet (Heavy)">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1500 M. Def. +10 P. Atk. +4% HP Recovery Rate +8% -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1500. M. Def. +10. P. Atk. +4%. HP Recovery Rate +8% -->
 		<icon>icon.armor_leather_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -540,7 +517,7 @@
 		</effects>
 	</skill>
 	<skill id="50213" toLevel="1" name="A-grade: Majestic Circlet (Robe)">
-		<!-- <A-grade equipment effect> MEN +1 Overweight limit +1500 M. Def. +10 M. Atk. +8% MP Recovery Rate +8% Max MP +300 -->
+		<!-- <A-grade equipment effect>. MEN +1. Overweight limit +1500. M. Def. +10. M. Atk. +8%. MP Recovery Rate +8%. Max MP +300 -->
 		<icon>icon.armor_leather_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -571,7 +548,7 @@
 		</effects>
 	</skill>
 	<skill id="50214" toLevel="1" name="A-grade: Majestic Circlet (Light)">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1500 M. Def. +10 P. Atk. +4% MP Recovery Rate +5.5% P. Atk. +8% when using a bow P. Atk. +8% when using firearms. -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1500. M. Def. +10. P. Atk. +4%. MP Recovery Rate +5.5%. P. Atk. +8% when using a bow. P. Atk. +8% when using firearms. -->
 		<icon>icon.armor_leather_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -605,7 +582,7 @@
 		</effects>
 	</skill>
 	<skill id="50215" toLevel="1" name="A-grade: Helm of Nightmare (Heavy)">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1500 M. Def. +10 P. Atk. +4% HP Recovery Rate +8% Reflects 5% of received damage -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1500. M. Def. +10. P. Atk. +4%. HP Recovery Rate +8%. Reflects 5% of received damage -->
 		<icon>icon.armor_leather_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -635,7 +612,7 @@
 		</effects>
 	</skill>
 	<skill id="50216" toLevel="1" name="A-grade: Helm of Nightmare (Robe)">
-		<!-- <A-grade equipment effect> MEN +1 Overweight limit +1500 M. Def. +10 M. Atk. +8% MP Recovery Rate +8% M. Skill Critical Damage +30 -->
+		<!-- <A-grade equipment effect>. MEN +1. Overweight limit +1500. M. Def. +10. M. Atk. +8%. MP Recovery Rate +8%. M. Skill Critical Damage +30 -->
 		<icon>icon.armor_leather_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -666,7 +643,7 @@
 		</effects>
 	</skill>
 	<skill id="50217" toLevel="1" name="A-grade: Helm of Nightmare (Light)">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1500 M. Def. +10 P. Atk. +4% MP Recovery Rate +8% -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1500. M. Def. +10. P. Atk. +4%. MP Recovery Rate +8% -->
 		<icon>icon.armor_leather_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -693,7 +670,7 @@
 		</effects>
 	</skill>
 	<skill id="50218" toLevel="1" name="A-grade: Tallum Helmet (Heavy)">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1500 M. Def. +10 P. Atk. +4% HP Recovery Rate +5.5% Max MP +50 -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1500. M. Def. +10. P. Atk. +4%. HP Recovery Rate +5.5%. Max MP +50 -->
 		<icon>icon.armor_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -724,7 +701,7 @@
 		</effects>
 	</skill>
 	<skill id="50219" toLevel="1" name="A-grade: Tallum Helmet (Robe)">
-		<!-- <A-grade equipment effect> MEN +1 Overweight limit +1500 M. Def. +10 M. Atk. +8% MP Recovery Rate +5.5% M. Def. +8% -->
+		<!-- <A-grade equipment effect>. MEN +1. Overweight limit +1500. M. Def. +10. M. Atk. +8%. MP Recovery Rate +5.5%. M. Def. +8% -->
 		<icon>icon.armor_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -755,7 +732,7 @@
 		</effects>
 	</skill>
 	<skill id="50220" toLevel="1" name="A-grade: Tallum Helmet (Light)">
-		<!-- <A-grade equipment effect> MEN +1 Overweight limit +1500 M. Def. +10 M. Atk. +8% MP Recovery Rate +8% -->
+		<!-- <A-grade equipment effect>. MEN +1. Overweight limit +1500. M. Def. +10. M. Atk. +8%. MP Recovery Rate +8% -->
 		<icon>icon.armor_helmet_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -782,7 +759,7 @@
 		</effects>
 	</skill>
 	<skill id="50221" toLevel="1" name="A-grade: Dark Crystal Breastplate">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1500 M. Def. +15 Paralysis Resistance +50% -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1500. M. Def. +15. Paralysis Resistance +50% -->
 		<icon>icon.armor_t74_u_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -808,7 +785,7 @@
 		</effects>
 	</skill>
 	<skill id="50222" toLevel="1" name="A-grade: Dark Crystal Leather Armor">
-		<!-- <A-grade equipment effect> DEX +1 Overweight limit +1500 M. Def. +15 Paralysis Resistance +50% -->
+		<!-- <A-grade equipment effect>. DEX +1. Overweight limit +1500. M. Def. +15. Paralysis Resistance +50% -->
 		<icon>icon.armor_t75_u_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -830,7 +807,7 @@
 		</effects>
 	</skill>
 	<skill id="50223" toLevel="1" name="A-grade: Tallum Tunic">
-		<!-- <A-grade equipment effect> WIT +1 Overweight limit +1500 M. Def. +15 Silence Resistance +50% Fear Resistance +50% -->
+		<!-- <A-grade equipment effect>. WIT +1. Overweight limit +1500. M. Def. +15. Silence Resistance +50%. Fear Resistance +50% -->
 		<icon>icon.armor_t79_u_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -852,7 +829,7 @@
 		</effects>
 	</skill>
 	<skill id="50224" toLevel="1" name="A-grade: Dark Crystal Gaiters">
-		<!-- <A-grade equipment effect> CON +1 Overweight limit +1000 M. Def. +10 Max HP +200 -->
+		<!-- <A-grade equipment effect>. CON +1. Overweight limit +1000. M. Def. +10. Max HP +200 -->
 		<icon>icon.armor_t74_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -875,7 +852,7 @@
 		</effects>
 	</skill>
 	<skill id="50225" toLevel="1" name="A-grade: Dark Crystal Leggings">
-		<!-- <A-grade equipment effect> DEX +1 Overweight limit +1000 M. Def. +10 Max HP +150 Max MP +80 -->
+		<!-- <A-grade equipment effect>. DEX +1. Overweight limit +1000. M. Def. +10. Max HP +150. Max MP +80 -->
 		<icon>icon.armor_t75_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -902,7 +879,7 @@
 		</effects>
 	</skill>
 	<skill id="50226" toLevel="1" name="A-grade: Tallum Stockings">
-		<!-- <A-grade equipment effect> WIT +1 Overweight limit +1000 M. Def. +10 Max HP +100 Max MP +120 -->
+		<!-- <A-grade equipment effect>. WIT +1. Overweight limit +1000. M. Def. +10. Max HP +100. Max MP +120 -->
 		<icon>icon.armor_t79_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -929,7 +906,7 @@
 		</effects>
 	</skill>
 	<skill id="50227" toLevel="1" name="A-grade: Dark Crystal Robe">
-		<!-- <A-grade equipment effect> WIT +2 Overweight limit +2500 M. Def. +25 Max HP +100 Max MP +120 Paralysis Resistance +50% -->
+		<!-- <A-grade equipment effect>. WIT +2. Overweight limit +2500. M. Def. +25. Max HP +100. Max MP +120. Paralysis Resistance +50% -->
 		<icon>icon.armor_t76_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -959,7 +936,7 @@
 		</effects>
 	</skill>
 	<skill id="50228" toLevel="1" name="A-grade: Majestic Plate Armor">
-		<!-- <A-grade equipment effect> CON +2 Overweight limit +2500 M. Def. +25 Max HP +200 Shock Resistance +50% -->
+		<!-- <A-grade equipment effect>. CON +2. Overweight limit +2500. M. Def. +25. Max HP +200. Shock Resistance +50% -->
 		<icon>icon.armor_t83_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -985,7 +962,7 @@
 		</effects>
 	</skill>
 	<skill id="50229" toLevel="1" name="A-grade: Majestic Robe">
-		<!-- <A-grade equipment effect> WIT +2 Overweight limit +2500 M. Def. +25 Max HP +100 Max MP +120 Shock Resistance +50% -->
+		<!-- <A-grade equipment effect>. WIT +2. Overweight limit +2500. M. Def. +25. Max HP +100. Max MP +120. Shock Resistance +50% -->
 		<icon>icon.armor_t85_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1015,7 +992,7 @@
 		</effects>
 	</skill>
 	<skill id="50230" toLevel="1" name="A-grade: Majestic Leather Armor">
-		<!-- <A-grade equipment effect> DEX +2 Overweight limit +2500 M. Def. +25 Max HP +150 Max MP +80 Shock Resistance +50% -->
+		<!-- <A-grade equipment effect>. DEX +2. Overweight limit +2500. M. Def. +25. Max HP +150. Max MP +80. Shock Resistance +50% -->
 		<icon>icon.armor_t84_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1045,7 +1022,7 @@
 		</effects>
 	</skill>
 	<skill id="50231" toLevel="1" name="A-grade: Armor of Nightmare">
-		<!-- <A-grade equipment effect> CON +2 Overweight limit +2500 M. Def. +25 Max HP +200 Sleep Resistance +70% Hold Resistance +70% -->
+		<!-- <A-grade equipment effect>. CON +2. Overweight limit +2500. M. Def. +25. Max HP +200. Sleep Resistance +70%. Hold Resistance +70% -->
 		<icon>icon.armor_t80_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1076,7 +1053,7 @@
 		</effects>
 	</skill>
 	<skill id="50232" toLevel="1" name="A-grade: Robe of Nightmare">
-		<!-- <A-grade equipment effect> WIT +2 Overweight limit +2500 M. Def. +25 Max HP +100 Max MP +120 Sleep Resistance +70% Hold Resistance +70% -->
+		<!-- <A-grade equipment effect>. WIT +2. Overweight limit +2500. M. Def. +25. Max HP +100. Max MP +120. Sleep Resistance +70%. Hold Resistance +70% -->
 		<icon>icon.armor_t82_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1107,7 +1084,7 @@
 		</effects>
 	</skill>
 	<skill id="50233" toLevel="1" name="A-grade: Leather Armor of Nightmare">
-		<!-- <A-grade equipment effect> DEX +2 Overweight limit +2500 M. Def. +25 Max HP +150 Max MP +80 Sleep Resistance +70% Hold Resistance +70% -->
+		<!-- <A-grade equipment effect>. DEX +2. Overweight limit +2500. M. Def. +25. Max HP +150. Max MP +80. Sleep Resistance +70%. Hold Resistance +70% -->
 		<icon>icon.armor_t81_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1138,7 +1115,7 @@
 		</effects>
 	</skill>
 	<skill id="50234" toLevel="1" name="A-grade: Tallum Plate Armor">
-		<!-- <A-grade equipment effect> CON +2 Overweight limit +2500 M. Def. +25 Max HP +200 Silence Resistance +50% Fear Resistance +50% -->
+		<!-- <A-grade equipment effect>. CON +2. Overweight limit +2500. M. Def. +25. Max HP +200. Silence Resistance +50%. Fear Resistance +50% -->
 		<icon>icon.armor_t77_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1164,7 +1141,7 @@
 		</effects>
 	</skill>
 	<skill id="50235" toLevel="1" name="A-grade: Tallum Leather Armor">
-		<!-- <A-grade equipment effect> MEN +2 Overweight limit +2500 M. Def. +25 Max HP +150 Max MP +80 Silence Resistance +50% Fear Resistance +50% -->
+		<!-- <A-grade equipment effect>. MEN +2. Overweight limit +2500. M. Def. +25. Max HP +150. Max MP +80. Silence Resistance +50%. Fear Resistance +50% -->
 		<icon>icon.armor_t78_ul_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1194,7 +1171,7 @@
 		</effects>
 	</skill>
 	<skill id="50236" toLevel="1" name="A-grade: Dark Crystal Gloves (Heavy)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +200 Atk. Spd. +8% Received Healing +2% -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +200. Atk. Spd. +8%. Received Healing +2% -->
 		<icon>icon.armor_t74_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1225,7 +1202,7 @@
 		</effects>
 	</skill>
 	<skill id="50237" toLevel="1" name="A-grade: Dark Crystal Gloves (Robe)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +10 Max HP +50 Casting Spd. +15% Casting Interruption Rate -25 -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +10. Max HP +50. Casting Spd. +15%. Casting Interruption Rate -25 -->
 		<icon>icon.armor_t76_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1256,7 +1233,7 @@
 		</effects>
 	</skill>
 	<skill id="50238" toLevel="1" name="A-grade: Dark Crystal Gloves (Light)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Atk. Spd. +8% P. Evasion +2 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Atk. Spd. +8%. P. Evasion +2 -->
 		<icon>icon.armor_t75_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1287,7 +1264,7 @@
 		</effects>
 	</skill>
 	<skill id="50239" toLevel="1" name="A-grade: Majestic Gauntlets (Heavy)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Atk. Spd. +8% Atk. Spd. +50 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Atk. Spd. +8%. Atk. Spd. +50 -->
 		<icon>icon.armor_t83_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1318,7 +1295,7 @@
 		</effects>
 	</skill>
 	<skill id="50240" toLevel="1" name="A-grade: Majestic Gauntlets (Robe)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +10 Max HP +50 Casting Spd. +15% Casting Spd. +50 -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +10. Max HP +50. Casting Spd. +15%. Casting Spd. +50 -->
 		<icon>icon.armor_t85_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1349,7 +1326,7 @@
 		</effects>
 	</skill>
 	<skill id="50241" toLevel="1" name="A-grade: Majestic Gauntlets (Light)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Atk. Spd. +8% P. Skill Critical Damage +50 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Atk. Spd. +8%. P. Skill Critical Damage +50 -->
 		<icon>icon.armor_t84_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1380,7 +1357,7 @@
 		</effects>
 	</skill>
 	<skill id="50242" toLevel="1" name="A-grade: Gauntlets of Nightmare (Heavy)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Atk. Spd. +8% P. Atk. +50 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Atk. Spd. +8%. P. Atk. +50 -->
 		<icon>icon.armor_t80_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1411,7 +1388,7 @@
 		</effects>
 	</skill>
 	<skill id="50243" toLevel="1" name="A-grade: Gauntlets of Nightmare (Robe)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +10 Max HP +50 Casting Spd. +15% M. Atk. +50 -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +10. Max HP +50. Casting Spd. +15%. M. Atk. +50 -->
 		<icon>icon.armor_t82_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1442,7 +1419,7 @@
 		</effects>
 	</skill>
 	<skill id="50244" toLevel="1" name="A-grade: Gauntlets of Nightmare (Light)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Atk. Spd. +8% Absorbs 2% of the inflicted damage as HP. -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Atk. Spd. +8%. Absorbs 2% of the inflicted damage as HP. -->
 		<icon>icon.armor_t81_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1473,7 +1450,7 @@
 		</effects>
 	</skill>
 	<skill id="50245" toLevel="1" name="A-grade: Tallum Gloves (Heavy)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Atk. Spd. +8% P. Def. +10 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Atk. Spd. +8%. P. Def. +10 -->
 		<icon>icon.armor_t77_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1504,7 +1481,7 @@
 		</effects>
 	</skill>
 	<skill id="50246" toLevel="1" name="A-grade: Tallum Gloves (Robe)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +20 Max HP +50 Casting Spd. +15% -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +20. Max HP +50. Casting Spd. +15% -->
 		<icon>icon.armor_t79_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1531,7 +1508,7 @@
 		</effects>
 	</skill>
 	<skill id="50247" toLevel="1" name="A-grade: Tallum Gloves (Light)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +10 Max HP +50 Max MP +120 Casting Spd. +15% -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +10. Max HP +50. Max MP +120. Casting Spd. +15% -->
 		<icon>icon.armor_t78_g_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1562,7 +1539,7 @@
 		</effects>
 	</skill>
 	<skill id="50248" toLevel="1" name="A-grade: Dark Crystal Boots (Heavy)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +200 Speed +4 Received Healing +2% -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +200. Speed +4. Received Healing +2% -->
 		<icon>icon.armor_t74_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1593,7 +1570,7 @@
 		</effects>
 	</skill>
 	<skill id="50249" toLevel="1" name="A-grade: Dark Crystal Boots (Robe)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +7 Casting Interruption Rate -25 -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +7. Casting Interruption Rate -25 -->
 		<icon>icon.armor_t76_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1624,7 +1601,7 @@
 		</effects>
 	</skill>
 	<skill id="50250" toLevel="1" name="A-grade: Dark Crystal Boots (Light)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +4 P. Evasion +2 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +4. P. Evasion +2 -->
 		<icon>icon.armor_t75_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1655,7 +1632,7 @@
 		</effects>
 	</skill>
 	<skill id="50251" toLevel="1" name="A-grade: Majestic Boots (Heavy)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +7 Atk. Spd. +50 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +7. Atk. Spd. +50 -->
 		<icon>icon.armor_t83_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1686,7 +1663,7 @@
 		</effects>
 	</skill>
 	<skill id="50252" toLevel="1" name="A-grade: Majestic Boots (Robe)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +4 Casting Spd. +50 -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +4. Casting Spd. +50 -->
 		<icon>icon.armor_t85_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1717,7 +1694,7 @@
 		</effects>
 	</skill>
 	<skill id="50253" toLevel="1" name="A-grade: Majestic Boots (Light)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +4 P. Skill Critical Damage +50 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +4. P. Skill Critical Damage +50 -->
 		<icon>icon.armor_t84_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1748,7 +1725,7 @@
 		</effects>
 	</skill>
 	<skill id="50254" toLevel="1" name="A-grade: Boots of Nightmare (Heavy)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +4 P. Atk. +50 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +4. P. Atk. +50 -->
 		<icon>icon.armor_t80_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1779,7 +1756,7 @@
 		</effects>
 	</skill>
 	<skill id="50255" toLevel="1" name="A-grade: Boots of Nightmare (Robe)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +4 M. Atk. +50 -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +4. M. Atk. +50 -->
 		<icon>icon.armor_t82_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1810,7 +1787,7 @@
 		</effects>
 	</skill>
 	<skill id="50256" toLevel="1" name="A-grade: Boots of Nightmare (Light)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +4 Absorbs 2% of inflicted damage as HP -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +4. Absorbs 2% of inflicted damage as HP -->
 		<icon>icon.armor_t81_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1841,7 +1818,7 @@
 		</effects>
 	</skill>
 	<skill id="50257" toLevel="1" name="A-grade: Tallum Boots (Heavy)">
-		<!-- <A-grade equipment effect> STR +1 Overweight limit +1000 M. Def. +10 Max HP +50 Speed +4 P. Def. +10 -->
+		<!-- <A-grade equipment effect>. STR +1. Overweight limit +1000. M. Def. +10. Max HP +50. Speed +4. P. Def. +10 -->
 		<icon>icon.armor_t77_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1872,7 +1849,7 @@
 		</effects>
 	</skill>
 	<skill id="50258" toLevel="1" name="A-grade: Tallum Boots (Robe)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +20 Max HP +50 Speed +4 -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +20. Max HP +50. Speed +4 -->
 		<icon>icon.armor_t79_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1899,7 +1876,7 @@
 		</effects>
 	</skill>
 	<skill id="50259" toLevel="1" name="A-grade: Tallum Boots (Light)">
-		<!-- <A-grade equipment effect> INT +1 Overweight limit +1000 M. Def. +10 Max HP +50 Max MP +120 Speed +4 -->
+		<!-- <A-grade equipment effect>. INT +1. Overweight limit +1000. M. Def. +10. Max HP +50. Max MP +120. Speed +4 -->
 		<icon>icon.armor_t78_b_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1930,7 +1907,7 @@
 		</effects>
 	</skill>
 	<skill id="50260" toLevel="10" name="Enchant Effect: A-grade Upper/ Lower Armor">
-		<!-- <Enchant effect of A-grade top and bottom armor> HP Recovery Rate +$s1 MP Recovery Rate +$s2 All received Critical Damage -$s3 -->
+		<!-- <Enchant effect of A-grade top and bottom armor>. HP Recovery Rate +5. MP Recovery Rate +3. All received Critical Damage -2% -->
 		<icon>icon.armor_t89_ul_i02</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1961,7 +1938,7 @@
 		</effects>
 	</skill>
 	<skill id="50261" toLevel="10" name="Enchant Effect: A-grade Upper Armor">
-		<!-- <Enchant effect of A-grade top and bottom armor> HP Recovery Rate +$s1 Received P. Critical Damage -$s2 Received P. Skill Critical Damage -$s3 -->
+		<!-- <Enchant effect of A-grade top and bottom armor>. HP Recovery Rate +5. Received P. Critical Damage -2%. Received P. Skill Critical Damage -2% -->
 		<icon>icon.armor_t601_u_i01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1980,7 +1957,7 @@
 		</effects>
 	</skill>
 	<skill id="50262" toLevel="10" name="Enchant Effect: A-grade Lower Armor">
-		<!-- <Enchant effect of A-grade top and bottom armor> MP Recovery Rate +$s1 Received M. Skill Critical Damage -$s2 -->
+		<!-- <Enchant effect of A-grade top and bottom armor>. MP Recovery Rate +3. Received M. Skill Critical Damage -2% -->
 		<icon>icon.armor_t601_l_i01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1999,7 +1976,7 @@
 		</effects>
 	</skill>
 	<skill id="50263" toLevel="10" name="Enchant Effect: A-grade Gloves (Physical)">
-		<!-- <Enchant effect of A-grade gloves> P. Skill Power +$s1 -->
+		<!-- <Enchant effect of A-grade gloves>. P. Skill Power +2% -->
 		<icon>icon.armor_t601_g_i01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2018,7 +1995,7 @@
 		</effects>
 	</skill>
 	<skill id="50264" toLevel="10" name="Enchant Effect: A-grade Gloves (Magic)">
-		<!-- <Enchant effect of A-grade gloves> M. Skill Power +$s1 -->
+		<!-- <Enchant effect of A-grade gloves>. M. Skill Power +2% -->
 		<icon>icon.armor_t601_g_i01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2037,7 +2014,7 @@
 		</effects>
 	</skill>
 	<skill id="50265" toLevel="10" name="Enchant Effect: A-grade Boots (Physical)">
-		<!-- <Enchant effect of A-grade boots> P. Skill Cooldown -$s1 -->
+		<!-- <Enchant effect of A-grade boots>. P. Skill Cooldown -1% -->
 		<icon>icon.armor_t601_b_i01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2057,7 +2034,7 @@
 		</effects>
 	</skill>
 	<skill id="50266" toLevel="10" name="Enchant Effect: A-grade Boots (Magic)">
-		<!-- <Enchant effect of A-grade boots> M. Skill Cooldown -$s1 -->
+		<!-- <Enchant effect of A-grade boots>. M. Skill Cooldown -1% -->
 		<icon>icon.armor_t601_b_i01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2077,7 +2054,7 @@
 		</effects>
 	</skill>
 	<skill id="50267" toLevel="10" name="Enchant Effect: A-grade Helmet">
-		<!-- <A-grade helmet's enchant effect> Max HP +$s1 All received Critical Rate -$s2 -->
+		<!-- <A-grade helmet's enchant effect>. Max HP +100. All received Critical Rate -2% -->
 		<icon>icon.armor_helmet_i02</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2099,31 +2076,9 @@
 		<!-- A weapon imbued with the power of Baium's soul. Makes an <font color="FFBB00">additional strike</font> with Baium's might. Baium's Thunder Bolt: makes a lightning attack according to M. Atk. -->
 		<icon>icon.skill1469</icon>
 		<operateType>P</operateType>
-		<effects>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>false</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50269</skillId> <!-- Baium's Thunder Bolt -->
-				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>true</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50269</skillId> <!-- Baium's Thunder Bolt -->
-				<skillLevel>1</skillLevel>
-			</effect>
-		</effects>
 	</skill>
 	<skill id="50269" toLevel="22" name="Baium's Thunder Bolt">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 113 power. -->
 		<icon>icon.skill1469</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -2197,6 +2152,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -2229,6 +2185,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -2253,6 +2210,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -2277,6 +2235,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="StatUp">
 				<amount>
@@ -2305,7 +2264,7 @@
 		</effects>
 	</skill>
 	<skill id="50271" toLevel="20" name="Baium's Enhanced Thunder Bolt">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 191 power. -->
 		<icon>icon.skill1469</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -2317,13 +2276,20 @@
 		<effects>
 			<effect name="MagicalAttack">
 				<power>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
 					<value level="5">191</value>
 					<value level="6">198</value>
 					<value level="7">204</value>
 					<value level="8">211</value>
 					<value level="9">217</value>
 					<value level="10">224</value>
-					
+					<value level="11">0</value>
+					<value level="12">0</value>
+					<value level="13">0</value>
+					<value level="14">0</value>
 					<value level="15">114</value>
 					<value level="16">118</value>
 					<value level="17">122</value>
@@ -2338,31 +2304,9 @@
 		<!-- A weapon imbued with the power of Queen Ant's soul. Makes an <font color="FFBB00">additional strike</font> with Queen Ant's might. Queen Ant's Rain of Stones: makes a stone attack according to M. Atk. -->
 		<icon>icon.skill4282_new</icon>
 		<operateType>P</operateType>
-		<effects>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>false</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50269</skillId> <!-- Baium's Thunder Bolt -->
-				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>true</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50269</skillId> <!-- Baium's Thunder Bolt -->
-				<skillLevel>1</skillLevel>
-			</effect>
-		</effects>
 	</skill>
 	<skill id="50274" toLevel="22" name="Queen Ant's Rain of Stones">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
 		<icon>icon.skill4282_new</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -2374,28 +2318,28 @@
 		<effects>
 			<effect name="MagicalAttack">
 				<power>
-					<value level="1">72</value>
-					<value level="2">73</value>
-					<value level="3">74</value>
-					<value level="4">76</value>
-					<value level="5">78</value>
-					<value level="6">81</value>
-					<value level="7">84</value>
-					<value level="8">86</value>
-					<value level="9">89</value>
-					<value level="10">92</value>
-					<value level="11">95</value>
-					<value level="12">43</value>
-					<value level="13">44</value>
-					<value level="14">44</value>
-					<value level="15">45</value>
-					<value level="16">47</value>
-					<value level="17">48</value>
-					<value level="18">50</value>
-					<value level="19">52</value>
-					<value level="20">53</value>
-					<value level="21">55</value>
-					<value level="22">57</value>
+					<value level="1">103</value>
+					<value level="2">105</value>
+					<value level="3">107</value>
+					<value level="4">109</value>
+					<value level="5">112</value>
+					<value level="6">116</value>
+					<value level="7">120</value>
+					<value level="8">124</value>
+					<value level="9">128</value>
+					<value level="10">132</value>
+					<value level="11">136</value>
+					<value level="12">61</value>
+					<value level="13">63</value>
+					<value level="14">64</value>
+					<value level="15">65</value>
+					<value level="16">67</value>
+					<value level="17">69</value>
+					<value level="18">72</value>
+					<value level="19">74</value>
+					<value level="20">76</value>
+					<value level="21">79</value>
+					<value level="22">81</value>
 				</power>
 			</effect>
 		</effects>
@@ -2436,6 +2380,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -2468,11 +2413,16 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
 					<value level="5">1</value>
 					<value level="6">1</value>
 					<value level="7">1</value>
@@ -2485,6 +2435,10 @@
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>50276</skillId> <!-- Queen Ant's Enhanced Rain of Stones -->
 				<skillLevel>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
 					<value level="5">5</value>
 					<value level="6">6</value>
 					<value level="7">7</value>
@@ -2492,11 +2446,16 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
 					<value level="5">1</value>
 					<value level="6">1</value>
 					<value level="7">1</value>
@@ -2509,6 +2468,10 @@
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>50276</skillId> <!-- Queen Ant's Enhanced Rain of Stones -->
 				<skillLevel>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
 					<value level="5">5</value>
 					<value level="6">6</value>
 					<value level="7">7</value>
@@ -2516,6 +2479,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="StatUp">
 				<amount>
@@ -2544,7 +2508,7 @@
 		</effects>
 	</skill>
 	<skill id="50276" toLevel="20" name="Queen Ant's Enhanced Rain of Stones">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
 		<icon>icon.skill4282_new</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -2584,31 +2548,9 @@
 		<!-- A weapon imbued with the power of Zaken's soul. Makes an <font color="FFBB00">additional strike</font> with Zaken's might. Zaken's Blood Prison: makes a blood attack according to M. Atk. -->
 		<icon>icon.skill32100</icon>
 		<operateType>P</operateType>
-		<effects>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>false</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50279</skillId> <!-- Zaken's Blood Prison -->
-				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>true</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50279</skillId> <!-- Zaken's Blood Prison -->
-				<skillLevel>1</skillLevel>
-			</effect>
-		</effects>
 	</skill>
 	<skill id="50279" toLevel="22" name="Zaken's Blood Prison">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
 		<icon>icon.skill32100</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -2682,6 +2624,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -2714,6 +2657,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -2746,6 +2690,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -2778,6 +2723,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="StatUp">
 				<amount>
@@ -2806,7 +2752,7 @@
 		</effects>
 	</skill>
 	<skill id="50281" toLevel="20" name="Zaken's Enhanced Blood Prison">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
 		<icon>icon.skill32100</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -2846,31 +2792,9 @@
 		<!-- A weapon imbued with the power of Orfen's soul. Makes an <font color="FFBB00">additional strike</font> with Orfen's might. Orfen's Poison Storm: makes a poison attack according to M. Atk. -->
 		<icon>icon.skill6435</icon>
 		<operateType>P</operateType>
-		<effects>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>false</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50284</skillId> <!-- Orfen's Poison Storm -->
-				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>true</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50284</skillId> <!-- Orfen's Poison Storm -->
-				<skillLevel>1</skillLevel>
-			</effect>
-		</effects>
 	</skill>
 	<skill id="50284" toLevel="22" name="Orfen's Poison Storm">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
 		<icon>icon.skill6435</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -2944,6 +2868,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -2976,6 +2901,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -3008,6 +2934,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -3040,6 +2967,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="StatUp">
 				<amount>
@@ -3068,7 +2996,7 @@
 		</effects>
 	</skill>
 	<skill id="50286" toLevel="20" name="Orfen's Enhanced Poison Storm">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
 		<icon>icon.skill6435</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -3108,31 +3036,9 @@
 		<!-- A weapon imbued with the power of Core's soul. Makes an <font color="FFBB00">additional strike</font> with Core's might. Core's Plasmic Shock: makes a shock attack according to M. Atk. -->
 		<icon>icon.skill32633</icon>
 		<operateType>P</operateType>
-		<effects>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>false</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50289</skillId> <!-- Core's Plasmic Shock -->
-				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>1</chance>
-				<targetType>ENEMY</targetType>
-				<isCritical>true</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50289</skillId> <!-- Core's Plasmic Shock -->
-				<skillLevel>1</skillLevel>
-			</effect>
-		</effects>
 	</skill>
 	<skill id="50289" toLevel="22" name="Core's Plasmic Shock">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
 		<icon>icon.skill32633</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -3144,28 +3050,28 @@
 		<effects>
 			<effect name="MagicalAttack">
 				<power>
-					<value level="1">72</value>
-					<value level="2">73</value>
-					<value level="3">74</value>
-					<value level="4">76</value>
-					<value level="5">78</value>
-					<value level="6">81</value>
-					<value level="7">84</value>
-					<value level="8">86</value>
-					<value level="9">89</value>
-					<value level="10">92</value>
-					<value level="11">95</value>
-					<value level="12">43</value>
-					<value level="13">44</value>
-					<value level="14">44</value>
-					<value level="15">45</value>
-					<value level="16">47</value>
-					<value level="17">48</value>
-					<value level="18">50</value>
-					<value level="19">52</value>
-					<value level="20">53</value>
-					<value level="21">55</value>
-					<value level="22">57</value>
+					<value level="1">103</value>
+					<value level="2">105</value>
+					<value level="3">107</value>
+					<value level="4">109</value>
+					<value level="5">112</value>
+					<value level="6">116</value>
+					<value level="7">120</value>
+					<value level="8">124</value>
+					<value level="9">128</value>
+					<value level="10">132</value>
+					<value level="11">136</value>
+					<value level="12">61</value>
+					<value level="13">63</value>
+					<value level="14">64</value>
+					<value level="15">65</value>
+					<value level="16">67</value>
+					<value level="17">69</value>
+					<value level="18">72</value>
+					<value level="19">74</value>
+					<value level="20">76</value>
+					<value level="21">79</value>
+					<value level="22">81</value>
 				</power>
 			</effect>
 		</effects>
@@ -3206,6 +3112,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -3238,6 +3145,7 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -3270,6 +3178,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
@@ -3302,6 +3211,7 @@
 					<value level="9">9</value>
 					<value level="10">10</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 			<effect name="StatUp">
 				<amount>
@@ -3330,7 +3240,7 @@
 		</effects>
 	</skill>
 	<skill id="50291" toLevel="20" name="Core's Enhanced Plasmic Shock">
-		<!-- <<font color="FFBB00">Additional attack</font>> Inflicts magic damage on the enemy with $s1 power. -->
+		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
 		<icon>icon.skill32633</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic>
@@ -3366,174 +3276,293 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="50293" toLevel="11" name="Talisman of Speed">
-		<!-- A talisman imbued with the energy of speed. P. Def. $s1 M. Def. $s1 <Energy of Speed> With a $s2 chance after a basic attack and a $s3 chance after a skill: Duration: 5 sec. Atk. Spd. $s4 Casting Spd. $s4 (Cooldown: 10 sec.) -->
-		<icon>icon.skill0000</icon>
+	<skill id="50293" toLevel="22" name="Talisman of Speed">
+		<!-- A talisman imbued with the energy of speed. P. Def. +5. M. Def. +5. <Energy of Speed>. With a 5% chance after a basic attack and a 10% chance after a skill:. Duration: 5 sec. Atk. Spd. +5. Casting Spd. +5. (Cooldown: 10 sec.) -->
+		<icon>
+			<value level="1">icon.tallisman_rapid</value>
+			<value level="2">icon.tallisman_rapid_01</value>
+			<value level="3">icon.tallisman_rapid</value>
+			<value level="4">icon.tallisman_rapid_01</value>
+			<value level="5">icon.tallisman_rapid</value>
+			<value level="6">icon.tallisman_rapid_01</value>
+			<value level="7">icon.tallisman_rapid</value>
+			<value level="8">icon.tallisman_rapid_01</value>
+			<value level="9">icon.tallisman_rapid</value>
+			<value level="10">icon.tallisman_rapid_01</value>
+			<value level="11">icon.tallisman_rapid</value>
+			<value level="12">icon.tallisman_rapid_01</value>
+			<value level="13">icon.tallisman_rapid</value>
+			<value level="14">icon.tallisman_rapid_01</value>
+			<value level="15">icon.tallisman_rapid</value>
+			<value level="16">icon.tallisman_rapid_01</value>
+			<value level="17">icon.tallisman_rapid</value>
+			<value level="18">icon.tallisman_rapid_01</value>
+			<value level="19">icon.tallisman_rapid</value>
+			<value level="20">icon.tallisman_rapid_01</value>
+			<value level="21">icon.tallisman_rapid</value>
+			<value level="22">icon.tallisman_rapid_01</value>
+		</icon>
 		<operateType>P</operateType>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>
 					<value level="1">5</value>
-					<value level="2">10</value>
-					<value level="3">20</value>
-					<value level="4">30</value>
-					<value level="5">40</value>
-					<value level="6">50</value>
-					<value level="7">60</value>
-					<value level="8">80</value>
-					<value level="9">200</value>
-					<value level="10">250</value>
-					<value level="11">300</value>
+					<value level="2">5</value>
+					<value level="3">10</value>
+					<value level="4">10</value>
+					<value level="5">20</value>
+					<value level="6">20</value>
+					<value level="7">30</value>
+					<value level="8">30</value>
+					<value level="9">40</value>
+					<value level="10">45</value>
+					<value level="11">50</value>
+					<value level="12">55</value>
+					<value level="13">60</value>
+					<value level="14">70</value>
+					<value level="15">80</value>
+					<value level="16">190</value>
+					<value level="17">200</value>
+					<value level="18">225</value>
+					<value level="19">250</value>
+					<value level="20">275</value>
+					<value level="21">300</value>
+					<value level="22">400</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="MagicalDefence">
 				<amount>
 					<value level="1">5</value>
-					<value level="2">10</value>
-					<value level="3">20</value>
-					<value level="4">30</value>
-					<value level="5">40</value>
-					<value level="6">50</value>
-					<value level="7">60</value>
-					<value level="8">80</value>
-					<value level="9">200</value>
-					<value level="10">250</value>
-					<value level="11">300</value>
+					<value level="2">5</value>
+					<value level="3">10</value>
+					<value level="4">10</value>
+					<value level="5">20</value>
+					<value level="6">20</value>
+					<value level="7">30</value>
+					<value level="8">30</value>
+					<value level="9">40</value>
+					<value level="10">45</value>
+					<value level="11">50</value>
+					<value level="12">55</value>
+					<value level="13">60</value>
+					<value level="14">70</value>
+					<value level="15">80</value>
+					<value level="16">190</value>
+					<value level="17">200</value>
+					<value level="18">225</value>
+					<value level="19">250</value>
+					<value level="20">275</value>
+					<value level="21">300</value>
+					<value level="22">400</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="MaxHp">
 				<amount>
-					<value level="2">50</value>
-					<value level="3">100</value>
-					<value level="4">200</value>
-					<value level="5">300</value>
-					<value level="6">600</value>
-					<value level="7">1000</value>
-					<value level="8">1500</value>
-					<value level="9">2000</value>
-					<value level="10">3000</value>
-					<value level="11">5000</value>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">50</value>
+					<value level="4">50</value>
+					<value level="5">100</value>
+					<value level="6">100</value>
+					<value level="7">200</value>
+					<value level="8">200</value>
+					<value level="9">300</value>
+					<value level="10">400</value>
+					<value level="11">600</value>
+					<value level="12">800</value>
+					<value level="13">1000</value>
+					<value level="14">1250</value>
+					<value level="15">1500</value>
+					<value level="16">1750</value>
+					<value level="17">2000</value>
+					<value level="18">2500</value>
+					<value level="19">3000</value>
+					<value level="20">4000</value>
+					<value level="21">5000</value>
+					<value level="22">6000</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="Speed">
 				<amount>
-					<value level="2">1</value>
+					<value level="1">0</value>
+					<value level="2">0</value>
 					<value level="3">1</value>
 					<value level="4">1</value>
 					<value level="5">1</value>
 					<value level="6">1</value>
-					<value level="7">2</value>
-					<value level="8">3</value>
-					<value level="9">4</value>
-					<value level="10">6</value>
-					<value level="11">8</value>
+					<value level="7">1</value>
+					<value level="8">1</value>
+					<value level="9">1</value>
+					<value level="10">1</value>
+					<value level="11">1</value>
+					<value level="12">1</value>
+					<value level="13">2</value>
+					<value level="14">2</value>
+					<value level="15">3</value>
+					<value level="16">3</value>
+					<value level="17">4</value>
+					<value level="18">5</value>
+					<value level="19">6</value>
+					<value level="20">7</value>
+					<value level="21">8</value>
+					<value level="22">10</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="1" toLevel="11">
+			<effect name="WeaponBonusPAtkMultiplier">
+				<amount>
+					<value level="22">5</value>
+				</amount>
+			</effect>
+			<effect name="WeaponBonusMAtkMultiplier">
+				<amount>
+					<value level="22">5</value>
+				</amount>
+			</effect>
+			<effect name="TriggerSkillByAttack">
+				<attackerType>Creature</attackerType>
+				<minDamage>1</minDamage>
 				<chance>10</chance>
 				<targetType>SELF</targetType>
 				<isCritical>true</isCritical>
-				<allowSkillAttack>true</allowSkillAttack>
+				<allowWeapons>ALL</allowWeapons>
 				<skillId>50294</skillId> <!-- Energy of Speed -->
-				<castSkillId>50294</castSkillId>
 				<skillLevel>
 					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-					<value level="5">5</value>
-					<value level="6">6</value>
-					<value level="7">7</value>
-					<value level="8">8</value>
-					<value level="9">9</value>
-					<value level="10">10</value>
-					<value level="11">11</value>
+					<value level="2">1</value>
+					<value level="3">2</value>
+					<value level="4">2</value>
+					<value level="5">3</value>
+					<value level="6">3</value>
+					<value level="7">4</value>
+					<value level="8">4</value>
+					<value level="9">5</value>
+					<value level="10">6</value>
+					<value level="11">7</value>
+					<value level="12">8</value>
+					<value level="13">9</value>
+					<value level="14">10</value>
+					<value level="15">11</value>
+					<value level="16">12</value>
+					<value level="17">13</value>
+					<value level="18">14</value>
+					<value level="19">15</value>
+					<value level="20">16</value>
+					<value level="21">17</value>
+					<value level="22">18</value>
 				</skillLevel>
-				<allowWeapons>ALL</allowWeapons>
+				<allowSkillAttack>true</allowSkillAttack>
+				<allowNormalAttack>false</allowNormalAttack>
+			</effect>
+			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="1" toLevel="11">
 				<chance>10</chance>
 				<targetType>SELF</targetType>
 				<isCritical>false</isCritical>
-				<allowSkillAttack>true</allowSkillAttack>
+				<allowWeapons>ALL</allowWeapons>
 				<skillId>50294</skillId> <!-- Energy of Speed -->
-				<castSkillId>50294</castSkillId>
 				<skillLevel>
 					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-					<value level="5">5</value>
-					<value level="6">6</value>
-					<value level="7">7</value>
-					<value level="8">8</value>
-					<value level="9">9</value>
-					<value level="10">10</value>
-					<value level="11">11</value>
+					<value level="2">1</value>
+					<value level="3">2</value>
+					<value level="4">2</value>
+					<value level="5">3</value>
+					<value level="6">3</value>
+					<value level="7">4</value>
+					<value level="8">4</value>
+					<value level="9">5</value>
+					<value level="10">6</value>
+					<value level="11">7</value>
+					<value level="12">8</value>
+					<value level="13">9</value>
+					<value level="14">10</value>
+					<value level="15">11</value>
+					<value level="16">12</value>
+					<value level="17">13</value>
+					<value level="18">14</value>
+					<value level="19">15</value>
+					<value level="20">16</value>
+					<value level="21">17</value>
+					<value level="22">18</value>
 				</skillLevel>
-				<allowWeapons>ALL</allowWeapons>
+				<allowSkillAttack>true</allowSkillAttack>
+				<allowNormalAttack>false</allowNormalAttack>
+			</effect>
+			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="1" toLevel="11">
 				<chance>5</chance>
 				<targetType>SELF</targetType>
 				<isCritical>true</isCritical>
-				<allowNormalAttack>true</allowNormalAttack>
+				<allowWeapons>ALL</allowWeapons>
 				<skillId>50294</skillId> <!-- Energy of Speed -->
-				<castSkillId>50294</castSkillId>
 				<skillLevel>
 					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-					<value level="5">5</value>
-					<value level="6">6</value>
-					<value level="7">7</value>
-					<value level="8">8</value>
-					<value level="9">9</value>
-					<value level="10">10</value>
-					<value level="11">11</value>
+					<value level="2">1</value>
+					<value level="3">2</value>
+					<value level="4">2</value>
+					<value level="5">3</value>
+					<value level="6">3</value>
+					<value level="7">4</value>
+					<value level="8">4</value>
+					<value level="9">5</value>
+					<value level="10">6</value>
+					<value level="11">7</value>
+					<value level="12">8</value>
+					<value level="13">9</value>
+					<value level="14">10</value>
+					<value level="15">11</value>
+					<value level="16">12</value>
+					<value level="17">13</value>
+					<value level="18">14</value>
+					<value level="19">15</value>
+					<value level="20">16</value>
+					<value level="21">17</value>
+					<value level="22">18</value>
 				</skillLevel>
-				<allowWeapons>ALL</allowWeapons>
+			</effect>
+			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="1" toLevel="11">
 				<chance>5</chance>
 				<targetType>SELF</targetType>
 				<isCritical>false</isCritical>
-				<allowNormalAttack>true</allowNormalAttack>
+				<allowWeapons>ALL</allowWeapons>
 				<skillId>50294</skillId> <!-- Energy of Speed -->
-				<castSkillId>50294</castSkillId>
 				<skillLevel>
 					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-					<value level="5">5</value>
-					<value level="6">6</value>
-					<value level="7">7</value>
-					<value level="8">8</value>
-					<value level="9">9</value>
-					<value level="10">10</value>
-					<value level="11">11</value>
+					<value level="2">1</value>
+					<value level="3">2</value>
+					<value level="4">2</value>
+					<value level="5">3</value>
+					<value level="6">3</value>
+					<value level="7">4</value>
+					<value level="8">4</value>
+					<value level="9">5</value>
+					<value level="10">6</value>
+					<value level="11">7</value>
+					<value level="12">8</value>
+					<value level="13">9</value>
+					<value level="14">10</value>
+					<value level="15">11</value>
+					<value level="16">12</value>
+					<value level="17">13</value>
+					<value level="18">14</value>
+					<value level="19">15</value>
+					<value level="20">16</value>
+					<value level="21">17</value>
+					<value level="22">18</value>
 				</skillLevel>
-				<allowWeapons>ALL</allowWeapons>
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="50294" toLevel="11" name="Energy of Speed">
-		<!-- The energy of speed runs through your body. Atk. Spd. $s1 Casting Spd. $s1 -->
-		<icon>icon.skill0000</icon>
+	<skill id="50294" toLevel="18" name="Energy of Speed">
+		<!-- The energy of speed runs through your body. Atk. Spd. +5. Casting Spd. +5 -->
+		<icon>icon.skill5662</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -3546,6 +3575,13 @@
 			<value level="9">9</value>
 			<value level="10">10</value>
 			<value level="11">11</value>
+			<value level="12">12</value>
+			<value level="13">13</value>
+			<value level="14">14</value>
+			<value level="15">15</value>
+			<value level="16">16</value>
+			<value level="17">17</value>
+			<value level="18">18</value>
 		</abnormalLevel>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -3555,18 +3591,22 @@
 			<value level="5">5</value>
 			<value level="6">5</value>
 			<value level="7">5</value>
-			<value level="8">10</value>
-			<value level="9">10</value>
-			<value level="10">10</value>
-			<value level="11">15</value>
+			<value level="8">5</value>
+			<value level="9">5</value>
+			<value level="10">5</value>
+			<value level="11">10</value>
+			<value level="12">10</value>
+			<value level="13">10</value>
+			<value level="14">10</value>
+			<value level="15">10</value>
+			<value level="16">10</value>
+			<value level="17">15</value>
+			<value level="18">15</value>
 		</abnormalTime>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<magicLevel>40</magicLevel>
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -3578,108 +3618,128 @@
 					<value level="3">30</value>
 					<value level="4">50</value>
 					<value level="5">80</value>
-					<value level="6">150</value>
-					<value level="7">170</value>
-					<value level="8">200</value>
-					<value level="9">230</value>
-					<value level="10">260</value>
-					<value level="11">300</value>
+					<value level="6">115</value>
+					<value level="7">150</value>
+					<value level="8">160</value>
+					<value level="9">170</value>
+					<value level="10">185</value>
+					<value level="11">200</value>
+					<value level="12">215</value>
+					<value level="13">230</value>
+					<value level="14">245</value>
+					<value level="15">260</value>
+					<value level="16">280</value>
+					<value level="17">300</value>
+					<value level="18">300</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="MagicalAttackSpeed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+					<value level="3">30</value>
+					<value level="4">50</value>
+					<value level="5">80</value>
+					<value level="6">115</value>
+					<value level="7">150</value>
+					<value level="8">160</value>
+					<value level="9">170</value>
+					<value level="10">185</value>
+					<value level="11">200</value>
+					<value level="12">215</value>
+					<value level="13">230</value>
+					<value level="14">245</value>
+					<value level="15">260</value>
+					<value level="16">280</value>
+					<value level="17">300</value>
+					<value level="18">300</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="PhysicalSkillCriticalDamage">
 				<amount>
 					<value level="5">30</value>
-					<value level="6">60</value>
-					<value level="7">100</value>
-					<value level="8">300</value>
-					<value level="9">600</value>
-					<value level="10">1100</value>
-					<value level="11">1500</value>
+					<value level="6">45</value>
+					<value level="7">60</value>
+					<value level="8">80</value>
+					<value level="9">100</value>
+					<value level="10">200</value>
+					<value level="11">300</value>
+					<value level="12">450</value>
+					<value level="13">600</value>
+					<value level="14">850</value>
+					<value level="15">1100</value>
+					<value level="16">1300</value>
+					<value level="17">1500</value>
+					<value level="18">1500</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="MagicCriticalDamage">
 				<amount>
 					<value level="5">30</value>
-					<value level="6">60</value>
-					<value level="7">100</value>
-					<value level="8">300</value>
-					<value level="9">600</value>
-					<value level="10">1100</value>
-					<value level="11">1500</value>
+					<value level="6">45</value>
+					<value level="7">60</value>
+					<value level="8">80</value>
+					<value level="9">100</value>
+					<value level="10">200</value>
+					<value level="11">300</value>
+					<value level="12">450</value>
+					<value level="13">600</value>
+					<value level="14">850</value>
+					<value level="15">1100</value>
+					<value level="16">1300</value>
+					<value level="17">1500</value>
+					<value level="18">1500</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50295" toLevel="1" name="Baium's Thunder Breaker">
-		<!-- A dagger containing Baium's soul. Allows to use Baium's power. <Level bonus effect> P./ M. Atk. are increased depending on your level. <Lv. 60-69> P. Atk. +3 ~ +5 M. Atk. +2 ~ +3 <Lv. 70-79> P. Atk. +8 M. Atk. +5 <Lv. 80-89> P. Atk. +13 ~ +50 M. Atk. +8 ~ +51 <Lv. 90+> P. Atk. +56 and higher M. Atk. +34 and higher -->
+		<!-- A dagger containing Baium's soul. Allows to use Baium's power. <Level bonus effect>. P./ M. Atk. are increased depending on your level. <Lv. 60-69>. P. Atk. +3 ~ +5. M. Atk. +2 ~ +3. <Lv. 70-79>. P. Atk. +8. M. Atk. +5. <Lv. 80-89>. P. Atk. +13 ~ +50. M. Atk. +8 ~ +51. <Lv. 90+>. P. Atk. +56 and higher. M. Atk. +34 and higher -->
 		<icon>icon.weapon_terakan_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="StatMulForLevel">
-				<stat>PHYSICAL_ATTACK</stat>
-				<level>60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99</level>
-				<amount>3,3,3,3,4,4,4,5,5,5,8,8,8,8,8,8,8,8,8,8,13,20,26,32,38,38,40,44,48,50,56,57,58,59,60,61,62,63,64,65</amount>
-			</effect>
-			<effect name="StatMulForLevel">
-				<stat>MAGIC_ATTACK</stat>
-				<level>60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99</level>
-				<amount>2,2,2,2,2,3,3,3,3,3,5,5,5,5,5,5,5,5,5,5,8,14,19,24,29,30,36,41,46,51,54,55,56,57,58,59,60,61,62,63</amount>
-			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
-				<targetType>SELF</targetType>
+				<chance>1</chance>
+				<targetType>ENEMY</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>50453</skillId> <!-- Baium Power -->
+				<allowSkillAttack>true</allowSkillAttack>
+				<skillId>50269</skillId> <!-- Baium's Thunder Bolt -->
 				<skillLevel>1</skillLevel>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
-				<targetType>SELF</targetType>
+				<chance>1</chance>
+				<targetType>ENEMY</targetType>
 				<isCritical>true</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>50453</skillId> <!-- Baium Power -->
+				<allowSkillAttack>true</allowSkillAttack>
+				<skillId>50269</skillId> <!-- Baium's Thunder Bolt -->
 				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="StatAddForLevel">
+				<stat>WEAPON_BONUS_PHYSICAL_ATTACK</stat>
+				<level>60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99</level>
+				<amount>3,3,3,3,4,4,4,5,5,5,8,8,8,8,8,8,8,8,8,8,13,16,19,22,25,30,35,40,45,50,56,62,68,74,80,87,94,101,108,115</amount>
+			</effect>
+			<effect name="StatAddForLevel">
+				<stat>WEAPON_BONUS_MAGIC_ATTACK</stat>
+				<level>60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99</level>
+				<amount>2,2,2,2,2,3,3,3,3,3,5,5,5,5,5,5,5,5,5,5,8,10,12,14,16,19,22,25,28,31,34,37,40,43,46,50,54,58,62,66</amount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50296" toLevel="1" name="Queen Ant's Stone Spear">
 		<!-- A spear containing Queen Ant's Soul. Allows to use Queen Ant's power. -->
-		<icon>icon.g_melisa_stormer_i00</icon>
+		<icon>BranchSys3.Icon.g_melisa_stormer_i00</icon>
 		<operateType>P</operateType>
-		<effects>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>10</chance>
-				<targetType>ENEMY</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
-				<isCritical>false</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50451</skillId> <!-- Queen Ant Power -->
-				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>10</chance>
-				<targetType>ENEMY</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
-				<isCritical>true</isCritical>
-				<allowWeapons>ALL</allowWeapons>
-				<skillId>50451</skillId> <!-- Queen Ant Power -->
-				<skillLevel>1</skillLevel>
-			</effect>
-		</effects>
 	</skill>
 	<skill id="50297" toLevel="1" name="Zaken's Blood Sword">
 		<!-- A sword containing Zaken's Soul. Allows to use Zaken's power. -->
@@ -3689,25 +3749,23 @@
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
+				<chance>1</chance>
 				<targetType>ENEMY</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>50455</skillId> <!-- Zaken Power -->
+				<allowSkillAttack>true</allowSkillAttack>
+				<skillId>50279</skillId> <!-- Zaken's Blood Prison -->
 				<skillLevel>1</skillLevel>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
+				<chance>1</chance>
 				<targetType>ENEMY</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
 				<isCritical>true</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>50455</skillId> <!-- Zaken Power -->
+				<allowSkillAttack>true</allowSkillAttack>
+				<skillId>50279</skillId> <!-- Zaken's Blood Prison -->
 				<skillLevel>1</skillLevel>
 			</effect>
 		</effects>
@@ -3720,25 +3778,23 @@
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
+				<chance>1</chance>
 				<targetType>ENEMY</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>50454</skillId> <!-- Orfen Power -->
+				<allowSkillAttack>true</allowSkillAttack>
+				<skillId>50284</skillId> <!-- Orfen's Poison Storm -->
 				<skillLevel>1</skillLevel>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
+				<chance>1</chance>
 				<targetType>ENEMY</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
 				<isCritical>true</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>50454</skillId> <!-- Orfen Power -->
+				<allowSkillAttack>true</allowSkillAttack>
+				<skillId>50284</skillId> <!-- Orfen's Poison Storm -->
 				<skillLevel>1</skillLevel>
 			</effect>
 		</effects>
@@ -3751,25 +3807,23 @@
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
+				<chance>1</chance>
 				<targetType>ENEMY</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>50452</skillId> <!-- Core Power -->
+				<allowSkillAttack>true</allowSkillAttack>
+				<skillId>50289</skillId> <!-- Core's Plasmic Shock -->
 				<skillLevel>1</skillLevel>
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
+				<chance>1</chance>
 				<targetType>ENEMY</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
 				<isCritical>true</isCritical>
 				<allowWeapons>ALL</allowWeapons>
-				<skillId>50452</skillId> <!-- Core Power -->
+				<allowSkillAttack>true</allowSkillAttack>
+				<skillId>50289</skillId> <!-- Core's Plasmic Shock -->
 				<skillLevel>1</skillLevel>
 			</effect>
 		</effects>

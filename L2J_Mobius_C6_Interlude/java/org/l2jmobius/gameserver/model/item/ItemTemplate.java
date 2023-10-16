@@ -670,6 +670,20 @@ public abstract class ItemTemplate
 		}
 	}
 	
+	public boolean hasSkills()
+	{
+		return _skills != null;
+	}
+	
+	/**
+	 * Method to retrieve skills linked to this item.
+	 * @return Skills linked to this item as Skill[]
+	 */
+	public Skill[] getAllSkills()
+	{
+		return _skills;
+	}
+	
 	/**
 	 * Returns the name of the item
 	 * @return String

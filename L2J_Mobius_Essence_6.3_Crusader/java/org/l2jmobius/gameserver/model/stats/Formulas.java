@@ -111,7 +111,7 @@ public class Formulas
 		final double pvpPveMod = calculatePvpPveBonus(attacker, target, skill, true);
 		
 		// Initial damage
-		final double ssmod = ss ? (2 * attacker.getStat().getValue(Stat.SHOTS_BONUS)) : 1; // 2.04 for dual weapon?
+		final double ssmod = ss ? 2 * attacker.getStat().getValue(Stat.SHOTS_BONUS) * target.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1) : 1; // 2.04 for dual weapon?
 		final double cdMult = criticalMod * (((criticalPositionMod - 1) / 2) + 1) * (((criticalVulnMod - 1) / 2) + 1);
 		final double cdPatk = (criticalAddMod + criticalAddVuln) * criticalSkillMod;
 		final Position position = Position.getPosition(attacker, target);
@@ -147,7 +147,7 @@ public class Formulas
 	public static double calcMagicDam(Creature attacker, Creature target, Skill skill, double mAtk, double power, double mDef, boolean sps, boolean bss, boolean mcrit)
 	{
 		// Bonus Spirit shot
-		final double shotsBonus = bss ? (4 * attacker.getStat().getValue(Stat.SHOTS_BONUS)) : sps ? (2 * attacker.getStat().getValue(Stat.SHOTS_BONUS)) : 1;
+		final double shotsBonus = bss ? 4 * attacker.getStat().getValue(Stat.SHOTS_BONUS) * target.getStat().getValue(Stat.SPIRITSHOT_RESISTANCE, 1) : sps ? 2 * attacker.getStat().getValue(Stat.SHOTS_BONUS) * target.getStat().getValue(Stat.SPIRITSHOT_RESISTANCE, 1) : 1;
 		final double critMod = mcrit ? calcCritDamage(attacker, target, skill) : 1; // TODO not really a proper way... find how it works then implement. // damage += attacker.getStat().getValue(Stats.MAGIC_CRIT_DMG_ADD, 0);
 		
 		// Trait, elements
@@ -270,6 +270,7 @@ public class Formulas
 			}
 			
 			final double rateBonus = creature.getStat().getMul(Stat.CRITICAL_RATE_SKILL, 1);
+			final double rateDefenceBonus = target.getStat().getValue(Stat.DEFENCE_PHYSICAL_SKILL_CRITICAL_RATE, 1) + (target.getStat().getValue(Stat.DEFENCE_PHYSICAL_SKILL_CRITICAL_RATE_ADD, 0) / 100);
 			
 			double balanceMod = 1;
 			if (creature.isPlayable())
@@ -277,7 +278,7 @@ public class Formulas
 				balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.getActingPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.getActingPlayer().getClassId().getId()];
 			}
 			
-			return CommonUtil.constrain(rate * statBonus * rateBonus * balanceMod, 5, 90) > Rnd.get(100);
+			return CommonUtil.constrain(rate * statBonus * rateBonus * rateDefenceBonus * balanceMod, 5, 90) > Rnd.get(100);
 		}
 		
 		// Autoattack critical rate.
@@ -885,7 +886,7 @@ public class Formulas
 		}
 		
 		// Bonus Spiritshot
-		final double shotsBonus = attacker.getStat().getValue(Stat.SHOTS_BONUS);
+		final double shotsBonus = attacker.getStat().getValue(Stat.SHOTS_BONUS) * target.getStat().getValue(Stat.SPIRITSHOT_RESISTANCE, 1);
 		double sapphireBonus = 0;
 		if (attacker.isPlayer() && (attacker.getActingPlayer().getActiveShappireJewel() != null))
 		{
@@ -946,7 +947,7 @@ public class Formulas
 		return restorePercent;
 	}
 	
-	public static boolean calcPhysicalSkillEvasion(Creature creature, Creature target, Skill skill)
+	public static boolean calcSkillEvasion(Creature creature, Creature target, Skill skill)
 	{
 		if (Rnd.get(100) < target.getStat().getSkillEvasionTypeValue(skill.getMagicType()))
 		{
@@ -1441,7 +1442,7 @@ public class Formulas
 		
 		final Weapon weapon = attacker.getActiveWeaponItem();
 		final boolean isRanged = (weapon != null) && weapon.getItemType().isRanged();
-		final double shotsBonus = attacker.getStat().getValue(Stat.SHOTS_BONUS);
+		final double shotsBonus = attacker.getStat().getValue(Stat.SHOTS_BONUS) * target.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1);
 		
 		final double cAtk = crit ? calcCritDamage(attacker, target, null) : 1;
 		final double cAtkAdd = crit ? calcCritDamageAdd(attacker, target, null) : 0;

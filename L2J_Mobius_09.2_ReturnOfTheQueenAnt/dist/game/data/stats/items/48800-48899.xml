@@ -196,7 +196,7 @@
 		</skills>
 	</item>
 	<item id="48814" name="Greater Tanzanite Lv. 5" type="Armor">
-		<!-- Creates a protective barrier that absorbs 70,000 damage for 15 sec, and instantly restores 15% HP. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. Equip various greater jewels to get additional effects. <Enhancing>. Compounding two jewels of the same level, you can get superior jewel. -->
+		<!-- Creates a protective barrier that absorbs 70,000 damage for 15 sec. and momentarily recovers 15% HP. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. Equip various greater jewels to get additional effects. <Enhancing>. Compounding two jewels of the same level can result in a superior one. -->
 		<set name="icon" val="icon.bm_jewel_tanzanite_high_lv1_lavianrose" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -301,7 +301,7 @@
 		</skills>
 	</item>
 	<item id="48822" name="Greater Blue Cat's Eye Lv. 5" type="Armor">
-		<!-- M. Skill Critical Damage +15%, M. Skill Power +7%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. Equip various greater jewels to get additional effects. <Enhancing>. Compounding two jewels of the same level, you can get superior jewel. -->
+		<!-- M. Skill Critical Damage +15%, M. Skill Power +7%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. Equip various greater jewels to get additional effects. <Enhancing>. Compounding two jewels of the same level can result in a superior one. -->
 		<set name="icon" val="icon.bm_jewel_blue_catseye_high_lv1_lavianrose" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -393,8 +393,8 @@
 		<set name="reuse_delay" val="300000" />
 		<set name="weight" val="1" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="is_event_restricted" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -419,6 +419,12 @@
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="36946" min="1" max="1" chance="100" /> <!-- Lindvior's Earring -->
+			<item id="19464" min="1" max="1" chance="100" /> <!-- Blessed Valakas' Necklace -->
+			<item id="19463" min="1" max="1" chance="100" /> <!-- Blessed Antharas' Earring -->
+		</capsuled_items>
 	</item>
 	<item id="48833" name="Giant Monster's Soul" type="EtcItem">
 		<!-- Defeat the giant monsters as requested by Head Priest of the Earth Daichir in the Town of Schuttgart. Gather their souls as evidence and take them to Head Priest of the Earth Daichir in the Town of Schuttgart. -->
@@ -546,7 +552,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48841" name="Angel's Earring" type="Armor">
-		<!-- An Angel's earring.When enchanted, increases Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect and P./ M. Atk., also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effect doesn't stack if two identical earrings are equipped. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, increases CHA/ LUC, Confusion Resistance/ Atk. Rate, Stupor Resistance/ Atk. Rate, Received Healing, Vampiric Rage effect and Power of standard attacks and P./ M. skills, also decreases Skill MP Consumption and Received P./ M. Critical Damage. The effect doesn't stack if two identical earrings are equipped. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel Accessory. <Enhancing>. To enhance this item enchanted to +6 an Angel's Earring Pack is needed. Can be augmented. -->
 		<set name="icon" val="icon.accessary_angel_of_earing" />
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="78" />
@@ -662,8 +668,8 @@
 		<set name="reuse_delay" val="300000" />
 		<set name="weight" val="1" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="is_event_restricted" val="true" />
 		<set name="is_tradable" val="false" />
@@ -711,7 +717,7 @@
 		</skills>
 	</item>
 	<item id="48851" name="Chronicle Support Box" type="EtcItem">
-		<!-- Double-click to obtain 1 Freya's Ice Rose (Event). There is a chance to obtain a Dark/ Bloody Enhancement Stone, Freya's Wind Scroll, Dandy's Home Run Ball, Vitality Replenishing Star Candy, or Shining Dragon Attribute Tonic (XP) at random. -->
+		<!-- Double-click to obtain Freya's Ice Rose (Event). There is also a chance to obtain a valuable item: Dark/ Bloody Weapon Enhancement Stone, Dark/ Bloody Armor Enhancement Stone, Freya's Frozen Scroll, Dandy's Home Run Ball, Vitality Replenishing Star Candy, Glowing Dragon's Attribute Potion (XP). -->
 		<set name="icon" val="icon.etc_elite_marguene_collection_box_i00" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -747,7 +753,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="etcitem_type" val="SCROLL" />
 		<skills>
-			<skill id="39171" level="4" /> <!--Lucky Gift Coupon (8-hour) -->
+			<skill id="39171" level="4" /> <!-- Lucky Gift Coupon (8-hour) -->
 		</skills>
 	</item>
 	<item id="48854" name="1 Billion Adena Box" type="EtcItem">
@@ -793,6 +799,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="3000000000" max="3000000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="48857" name="Glowing Dragon's Attribute Potion (XP)" additionalName="Event" type="EtcItem">
 		<!-- When used, Attribute Attack +70, Attribute Resistance +70, acquired XP/ SP +30% for 30 min. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. -->
@@ -818,7 +828,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="48859" name="Sayha's Talisman Lv. 8" type="Armor">
-		<!-- Grants Sayha's power: P. Def. +1576, M. Def. +1030, and acquired XP/ SP +20%. If equipped with Venir's Talisman Lv. 10 or higher, Skill Power +5% and Skill Cooldown -5%. Active Skill: Sayha's Grace Lv. 2. Sayha's Encouragement Lv. 2. Sayha's Anger Lv. 2. If two identical talismans are equipped, only the effect of the max level talisman is applied. -->
+		<!-- Grants Sayha's power, when equipped. P. Def. +1576, M. Def. +1030, acquired XP/ SP +20%. If equipped with Venir's Talisman Lv. 12+, Skill Power +5%, Skill Cooldown -5%. Active skills:. Sayha's Grace Lv. 2. Sayha's Encouragement Lv. 2. Sayha's Anger Lv. 2. Sayha's Support Lv. 1. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. -->
 		<set name="icon" val="icon.bm_sayhas_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -831,7 +841,7 @@
 		<set name="bodypart" val="deco1" />
 	</item>
 	<item id="48860" name="Fallen Angel's Ring Pack" type="EtcItem">
-		<!-- Double-click to obtain Fallen Angel's Ring and Scroll: Enchant Fallen Angel Accessory (10 pcs.). -->
+		<!-- Double-click to obtain Fallen Angel's Ring and Scroll: Enchant Fallen Angel's Accessory (10 pcs.). -->
 		<set name="icon" val="icon.sayha2017_box_i01" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -842,7 +852,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="48864" min="1" max="1" chance="100" /> <!-- Fallen Angel's Ring -->
-			<item id="48863" min="10" max="10" chance="100" /> <!-- Scroll: Enchant Fallen Angel Accessory -->
+			<item id="48863" min="10" max="10" chance="100" /> <!-- Scroll: Enchant Fallen Angel's Accessory -->
 		</capsuled_items>
 	</item>
 	<item id="48861" name="+9 Fallen Angel's Ring Pack" type="EtcItem">
@@ -860,7 +870,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48862" name="+10 Fallen Angel's Ring Pack" type="EtcItem">
-		<!-- Double-click to obtain 1 +10 Fallen Angel's Ring. -->
+		<!-- Double-click to obtain +10 Fallen Angel's Ring. -->
 		<set name="icon" val="icon.sayha2017_box_i01" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -889,7 +899,7 @@
 		</skills>
 	</item>
 	<item id="48864" name="Fallen Angel's Ring" type="Armor">
-		<!-- Fallen Angel's Ring. When enchanted, increases Confusion Resistance/ Atk. Rate, Vitality Bonus, acquired XP/ SP, P. Critical Damage, P. Skill/ M. Skill Critical Damage and damage to immobilized targets. The effect doesn't stack if two identical earring are equipped. The item can be changed. <Enchanting>. Use Scroll: Enchant Fallen Angel Accessory. Can be augmented. -->
+		<!-- When enchanted, increases Confusion Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, P. Critical Damage, P./ M. Skill Critical Damage and damage to immobilized targets. Effects of two identical rings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Enhancing>. Use Fallen Angel's Ring Pack to enhance the item enchanted to +6. Can be augmented. -->
 		<set name="icon" val="icon.bm_ring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -924,6 +934,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47908" min="360" max="360" chance="100" /> <!-- Shining Magic Bait Exchange Coupon -->
+			<item id="48630" min="3" max="3" chance="100" /> <!-- Master Fisherman's Blessing - 1-hr -->
+		</capsuled_items>
 	</item>
 	<item id="48867" name="Fantastic Fishing Intermediate Bundle" type="EtcItem">
 		<!-- Double-click to obtain Secret Embryo Bait Coupon (500 pcs.), Master Fisherman's Blessing (1-hour) (3 pcs.), and Fishing Dock Pass Box (1-hour) (2 pcs.). -->
@@ -935,6 +950,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47908" min="500" max="500" chance="100" /> <!-- Shining Magic Bait Exchange Coupon -->
+			<item id="48630" min="3" max="3" chance="100" /> <!-- Master Fisherman's Blessing - 1-hr -->
+			<item id="48634" min="2" max="2" chance="100" /> <!-- Fishing Dock Pass Box (1-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48868" name="Fantastic Fishing Advanced Bundle" type="EtcItem">
 		<!-- Double-click to obtain Secret Embryo Bait Coupon (600 pcs.), Master Fisherman's Blessing (1-hour) (4 pcs.), and Fishing Dock Pass Box (1-hour) (4 pcs.). -->
@@ -946,6 +967,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47908" min="600" max="600" chance="100" /> <!-- Shining Magic Bait Exchange Coupon -->
+			<item id="48630" min="4" max="4" chance="100" /> <!-- Master Fisherman's Blessing - 1-hr -->
+			<item id="48634" min="4" max="4" chance="100" /> <!-- Fishing Dock Pass Box (1-hour) -->
+		</capsuled_items>
 	</item>
 	<item id="48869" name="Fantastic Fishing Cube Box" type="EtcItem">
 		<!-- Use it to obtain a Fantastic Fishing Cube (15 times). -->
@@ -955,6 +982,10 @@
 		<set name="material" val="FISH" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48865" min="1" max="1" chance="100" /> <!-- Fantastic Fishing Cube (15 times) -->
+		</capsuled_items>
 	</item>
 	<item id="48870" name="Infinite Bliss" type="EtcItem">
 		<!-- Infinite bliss! Aurora is greatly surprised while telling your fortune. You will be incredibly lucky in 2018. Double-click to obtain a reward. -->
@@ -994,7 +1025,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48875" name="Forgotten Spellbook" type="EtcItem">
-		<!-- Double-click to randomly obtain a Forgotten Spellbook Chapter 1. Forgotten Spellbook Chapter 2. or Forgotten Spellbook Chapter 3. The Forgotten Spellbook can boost Forgotten Power: Physical Attack/Magical Attack/Armor Defense/Vitalizing/Elemental Guard Skills. -->
+		<!-- Double-click to obtain Forgotten Spellbook Chapter 1, Forgotten Spellbook Chapter 2, or Forgotten Spellbook Chapter 3. Enables the following Forgotten Power skills: Physical Attack/ Magical Attack/ Armor Defense/ Vitalizing/ Elemental Guard. -->
 		<set name="icon" val="icon.bm_skill_book_lock" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="immediate_effect" val="true" />
@@ -1008,9 +1039,9 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="48876" min="1" max="1" chance="60" /> <!-- Forgotten Spell Book 1 -->
-			<item id="48877" min="1" max="1" chance="30" /> <!-- Forgotten Spell Book 2 -->
-			<item id="48878" min="1" max="1" chance="10" /> <!-- Forgotten Spell Book 3 -->
+			<item id="48876" min="1" max="1" chance="60" /> <!-- Forgotten Spellbook Chapter 1 -->
+			<item id="48877" min="1" max="1" chance="30" /> <!-- Forgotten Spellbook Chapter 2 -->
+			<item id="48878" min="1" max="1" chance="10" /> <!-- Forgotten Spellbook Chapter 3 -->
 		</capsuled_items>
 	</item>
 	<item id="48876" name="Forgotten Spellbook Chapter 1" type="EtcItem">
@@ -1213,7 +1244,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48899" name="Shillien's Soul Crystal Lv. 1" type="EtcItem">
-		<!-- A special Soul Crystal with Shillien's Soul. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Shillien's Soul. -->
+		<!-- A special Soul Crystal that contains Shillien's soul. Imbues a weapon with the crystal effect. The higher the crystal's level is, the more powerful effect is granted. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Shillien's Soul. -->
 		<set name="icon" val="icon.bm_ensoul_stone_shilen" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="material" val="CRYSTAL" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="93300" name="Einhasad's Pendant Lv. 5" type="Armor">
-		<!-- <Invocation>. Increases Speed and recovers HP/ MP for 15 sec. <Einhasad's Pendant>. M. Def. +45. Acquired XP/ SP +35%. Received damage -25%. Atk. Spd. +10%. Casting Spd. +10%. P. Critical Damage +10%. M. Skill Critical Damage +10%. P. Atk. +15%. M. Atk. +15% -->
+		<!-- <Invocation>. Increases Speed and recovers HP/ MP for 15 sec. <Einhasad's Pendant>. M. Def. +45Acquired XP/ SP +35%. Received Damage -25%. Atk. Spd. +10%. Casting Spd. +10%. P. Critical Damage +10%. M. Skill Critical Damage +10%. P. Atk. +15%. M. Atk. +15%. -->
 		<set name="icon" val="BranchIcon.Icon.bm_pendant_pve_white" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -33,7 +33,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="93302" name="Scroll: Enchant Cloak of Protection" type="EtcItem">
-		<!-- Required for enchanting Cloak of Protection. The maximum enchant value is +10. -->
+		<!-- Required to enchant Cloak of Protection. The maximum enchant value is +10. -->
 		<set name="icon" val="icon.etc_kalie_hero_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -48,7 +48,7 @@
 		</skills>
 	</item>
 	<item id="93303" name="Package: Cloak of Protection" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_2018_sayha_cloak_back_i01" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -65,7 +65,7 @@
 		</capsuled_items>
 	</item>
 	<item id="93304" name="Package: Einhasad's Pendant Lv. 1" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="BranchIcon.Icon.bm_pendant_pve_white" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -140,7 +140,7 @@
 		</capsuled_items>
 	</item>
 	<item id="93309" name="Piglet-Bank Lv.1" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_piggy_bank" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -149,9 +149,16 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="92403" min="1" max="1" chance="20" /> <!-- Talisman of Speed -->
+			<item id="93080" min="1" max="1" chance="80" /> <!-- Charging Stone of Random Craft - 1 Charge -->
+		</capsuled_items>
 	</item>
 	<item id="93310" name="Piglet-Bank Lv.2" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_piggy_bank" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -160,9 +167,16 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="92403" min="1" max="1" chance="30" /> <!-- Talisman of Speed -->
+			<item id="93080" min="1" max="1" chance="70" /> <!-- Charging Stone of Random Craft - 1 Charge -->
+		</capsuled_items>
 	</item>
 	<item id="93311" name="Piglet-Bank Lv.3" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_piggy_bank" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -171,9 +185,17 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="49756" min="1" max="1" chance="10" /> <!-- Cloth Piece -->
+			<item id="92403" min="1" max="1" chance="30" /> <!-- Talisman of Speed -->
+			<item id="93080" min="1" max="1" chance="60" /> <!-- Charging Stone of Random Craft - 1 Charge -->
+		</capsuled_items>
 	</item>
 	<item id="93312" name="Piglet-Bank Lv.4" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_piggy_bank" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -182,9 +204,18 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="49088" min="1" max="1" chance="5" /> <!-- Gold Medal -->
+			<item id="49756" min="1" max="1" chance="10" /> <!-- Cloth Piece -->
+			<item id="92403" min="1" max="1" chance="30" /> <!-- Talisman of Speed -->
+			<item id="93080" min="1" max="1" chance="55" /> <!-- Charging Stone of Random Craft - 1 Charge -->
+		</capsuled_items>
 	</item>
 	<item id="93313" name="Piglet-Bank Lv.5" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_piggy_bank" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -193,9 +224,20 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="8868" min="1" max="1" chance="2" /> <!-- Ziggo's Jewel -->
+			<item id="49088" min="1" max="1" chance="5" /> <!-- Gold Medal -->
+			<item id="49756" min="1" max="1" chance="10" /> <!-- Cloth Piece -->
+			<item id="92403" min="1" max="1" chance="30" /> <!-- Talisman of Speed -->
+			<item id="93080" min="1" max="1" chance="30" /> <!-- Charging Stone of Random Craft - 1 Charge -->
+			<item id="92400" min="1" max="1" chance="23" /> <!-- Forgotten Primeval Garden's Time Stone - Event -->
+		</capsuled_items>
 	</item>
 	<item id="93314" name="Golden Pig's Leaf" type="EtcItem">
-		<!-- A leaf stuck to Golden Pig s smooth skin. It looks like you would get quite a large sum by selling it at a shop. -->
+		<!-- A leaf stuck to Golden Pig's smooth skin. It looks like you would get quite a large sum by selling it at a shop. -->
 		<set name="icon" val="icon.etc_leaf_gold_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -398,7 +440,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93326" name="Blessed Scroll Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -407,9 +449,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93255" min="1" max="1" chance="100" /> <!-- Improved Scroll: Enchant A-grade Weapon (Exchangeable) -->
+			<item id="93256" min="1" max="1" chance="100" /> <!-- Improved Scroll: Enchant A-grade Armor (Exchangeable) -->
+		</capsuled_items>
 	</item>
 	<item id="93327" name="Ice Crystal Armor Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_box_of_adventure_3_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -418,6 +465,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="93139" min="1" max="1" chance="50" /> <!-- Ice Crystal Breastplate -->
+			<item id="93140" min="1" max="1" chance="50" /> <!-- Ice Crystal Gaiters -->
+		</capsuled_items>
 	</item>
 	<item id="93328" name="Goddard Trophy Pack" type="EtcItem">
 		<!-- Double-click to obtain Giran Seals (1-100 pcs.). There is a small chance to obtain an additional item. -->
@@ -446,7 +500,7 @@
 		</skills>
 	</item>
 	<item id="93330" name="Enchant Kit: Talisman of Authority" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_silver_lure_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -505,7 +559,7 @@
 		</stats>
 	</item>
 	<item id="93333" name="+3 Talisman of Authority Pack" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_silver_lure_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -514,9 +568,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91061" min="1" max="1" minEnchant="3" maxEnchant="3" chance="100" /> <!-- Talisman of Authority -->
+		</capsuled_items>
 	</item>
 	<item id="93334" name="+4 Talisman of Authority" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.sayhas_talisman_new" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -525,6 +583,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91061" min="1" max="1" minEnchant="4" maxEnchant="4" chance="100" /> <!-- Talisman of Authority -->
+		</capsuled_items>
 	</item>
 	<item id="93335" name="Special Scroll of Escape: Orc Barracks" type="EtcItem">
 		<!-- Magic scroll that teleports one to a special zone of Orc Barracks. -->
@@ -828,7 +890,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93359" name="Deton's Pack Lv. 4" type="EtcItem">
-		<!-- Double-click to obtain one of the following items: Package: Deton's Request Lv. 5, Soulshot Ticket, Scroll: Boost Attack. -->
+		<!-- Double-click to obtain one of the following items: Package: Deton's Request Lv. 5, Soulshot Ticket, Scroll: Enchant Attack. -->
 		<set name="icon" val="icon.bm2018_transform_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -850,7 +912,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93361" name="Deton's Pack Lv. 6" type="EtcItem">
-		<!-- Double-click to obtain one of many items, including Package: Deton's Request Lv. 7, Talisman of Baium, Boss' Weapon Pack, Orc King's Treasure. -->
+		<!-- Double-click to obtain one of many items, including Package: Deton's Request Lv. 7, Talisman of Baium, Boss Weapon Pack, Orc King's Treasure. -->
 		<set name="icon" val="icon.bm2018_transform_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -861,7 +923,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93362" name="Deton's Pack Lv. 7" type="EtcItem">
-		<!-- Double-click to obtain one of many items, including Package: Deton's Request Lv. 8, Talisman of Baium, Boss' Weapon Pack, Orc King's Treasure. -->
+		<!-- Double-click to obtain one of many items, including Package: Deton's Request Lv. 8, Talisman of Baium, Boss Weapon Pack, Orc King's Treasure. -->
 		<set name="icon" val="icon.bm2018_transform_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -872,7 +934,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93363" name="Deton's Pack Lv. 8" type="EtcItem">
-		<!-- Double-click to obtain one of many items, including Package: Deton's Request Lv. 9, Talisman of Baium, Boss' Weapon Pack, Orc King's Treasure. -->
+		<!-- Double-click to obtain one of many items, including Package: Deton's Request Lv. 9, Talisman of Baium, Boss Weapon Pack, Orc King's Treasure. -->
 		<set name="icon" val="icon.bm2018_transform_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -883,7 +945,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93364" name="Deton's Pack Lv. 9" type="EtcItem">
-		<!-- Double-click to obtain one of many items, including Package: Deton's Request Lv. 10, Talisman of Baium, Boss' Weapon Pack, Orc King's Treasure. -->
+		<!-- Double-click to obtain one of many items, including Package: Deton's Request Lv. 10, Talisman of Baium, Boss Weapon Pack, Orc King's Treasure. -->
 		<set name="icon" val="icon.bm2018_transform_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -894,7 +956,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93365" name="Deton's Pack Lv. 10" type="EtcItem">
-		<!-- Double-click to obtain one of many items, including Talisman of Baium, Boss' Weapon Pack, Orc King's Treasure. -->
+		<!-- Double-click to obtain one of many items, including Talisman of Baium, Boss Weapon Pack, Orc King's Treasure. -->
 		<set name="icon" val="icon.bm2018_transform_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -995,7 +1057,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93374" name="Cloak of Protection Kit" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_2018_sayha_cloak_back_i01" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1010,7 +1072,7 @@
 		</capsuled_items>
 	</item>
 	<item id="93375" name="Agathion Ignis Kit" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.agathion_fire_1" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1025,7 +1087,7 @@
 		</capsuled_items>
 	</item>
 	<item id="93376" name="Agathion Nebula Kit" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.agathion_water_1" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1040,7 +1102,7 @@
 		</capsuled_items>
 	</item>
 	<item id="93377" name="Agathion Procella Kit" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.agathion_wind_1" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1055,7 +1117,7 @@
 		</capsuled_items>
 	</item>
 	<item id="93378" name="Agathion Petram Kit" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.agathion_earth_1" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1070,7 +1132,7 @@
 		</capsuled_items>
 	</item>
 	<item id="93379" name="Agathion Joy Kit" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.pleasure_agathion_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1085,7 +1147,7 @@
 		</capsuled_items>
 	</item>
 	<item id="93380" name="Kit: 10 Dragon Belt Packs" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_readybox_bronze" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1096,11 +1158,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="91864" min="10" max="10" chance="100" /> <!-- Dragon Belt -->
+			<item id="91864" min="10" max="10" chance="100" /> <!-- Dragon Belt Pack -->
 		</capsuled_items>
 	</item>
 	<item id="93381" name="Enchant Kit: Talisman of Aden (10 pcs.)" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_sheep_agathion_30d_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1111,11 +1173,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="91767" min="10" max="10" chance="100" /> <!-- Enchant Kit: Talisman of Aden Sealed -->
+			<item id="91767" min="10" max="10" chance="100" /> <!-- Enchant Kit: Talisman of Aden -->
 		</capsuled_items>
 	</item>
 	<item id="93382" name="Enchant Kit: Talisman of Eva (10 pcs.)" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_pirate_treasure_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1126,7 +1188,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="92020" min="10" max="10" chance="100" /> <!-- Enchant Kit: Talisman of Eva Sealed -->
+			<item id="92020" min="10" max="10" chance="100" /> <!-- Enchant Kit: Talisman of Eva -->
 		</capsuled_items>
 	</item>
 	<item id="93383" name="Spellbook: Mount Night Mare" type="EtcItem">
@@ -1198,14 +1260,14 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93392" name="Spellbook: Bone Cage" type="EtcItem">
-		<!-- A spellbook for learning the Bone Cage skill. <Class>. Death Messenger (all races). <Skill effect>. Puts the enemy into the bone cage. The imprisoned enemies cannot be attacked as well as they cannot move, attack, teleport, target, use skills, recover HP/ CP/ MP. An additional effect depends on the character's race. -->
+		<!-- A spellbook for learning the Bone Cage skill. <Class>. Death Messenger (all races). <Skill effect>. Puts the enemy into the bone cage. The imprisoned enemies cannot be attacked as well as they cannot move, attack, teleport, target, use skills, recover HP/ CP/ MP. An additional effect depends from the character's race. -->
 		<set name="icon" val="icon.etc_spell_books_black_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93393" name="Kit: 10 Reinforced Jewel Boxes" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_2018_jewelbox_random" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1216,7 +1278,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="92034" min="10" max="10" chance="100" /> <!-- Reinforced Jewel Boxes -->
+			<item id="92034" min="10" max="10" chance="100" /> <!-- Reinforced Jewel Box -->
 		</capsuled_items>
 	</item>
 	<item id="93394" name="Improved Lucky Enchant Stone: A-grade Weapon - Event" type="EtcItem">
@@ -1238,7 +1300,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="93396" name="Package: Deton's Request Lv. 1" type="EtcItem">
-		<!-- Double-click to obtain Deton s Request Lv. 1. -->
+		<!-- Double-click to obtain Deton's Request Lv. 1. -->
 		<set name="icon" val="icon.alchemy_master_scroll" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1247,11 +1309,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="93346" min="1" max="1" chance="100" /> <!-- Deton's Request Lv. 1 Sealed -->
+			<item id="93346" min="1" max="1" chance="100" /> <!-- Deton's Request Lv. 1 -->
 		</capsuled_items>
 	</item>
 	<item id="93397" name="Package: Deton's Request Lv. 2" type="EtcItem">
-		<!-- Double-click to obtain Deton s Request Lv. 2. -->
+		<!-- Double-click to obtain Deton's Request Lv. 2. -->
 		<set name="icon" val="icon.alchemy_master_scroll" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1260,11 +1322,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="93347" min="1" max="1" chance="100" /> <!-- Deton's Request Lv. 2 Sealed -->
+			<item id="93347" min="1" max="1" chance="100" /> <!-- Deton's Request Lv. 2 -->
 		</capsuled_items>
 	</item>
 	<item id="93398" name="Package: Deton's Request Lv. 3" type="EtcItem">
-		<!-- Double-click to obtain Deton s Request Lv. 3. -->
+		<!-- Double-click to obtain Deton's Request Lv. 3. -->
 		<set name="icon" val="icon.alchemy_master_scroll" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1273,11 +1335,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="93348" min="1" max="1" chance="100" /> <!-- Deton's Request Lv. 3 Sealed -->
+			<item id="93348" min="1" max="1" chance="100" /> <!-- Deton's Request Lv. 3 -->
 		</capsuled_items>
 	</item>
 	<item id="93399" name="Package: Deton's Request Lv. 4" type="EtcItem">
-		<!-- Double-click to obtain Deton s Request Lv. 4. -->
+		<!-- Double-click to obtain Deton's Request Lv. 4. -->
 		<set name="icon" val="icon.alchemy_master_scroll" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1286,7 +1348,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="93349" min="1" max="1" chance="100" /> <!-- Deton's Request Lv. 4 Sealed -->
+			<item id="93349" min="1" max="1" chance="100" /> <!-- Deton's Request Lv. 4 -->
 		</capsuled_items>
 	</item>
 </list>

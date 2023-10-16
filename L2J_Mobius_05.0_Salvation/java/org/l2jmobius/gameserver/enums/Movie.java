@@ -114,6 +114,8 @@ public enum Movie
 	SC_RAMONA_TRANS_B(120, true),
 	SC_HELIOS_TRANS_A(121, true),
 	SC_HELIOS_TRANS_B(122, true),
+	SC_ANTARAS_INTRO(138, true),
+	SC_ANTARAS_TRANS(139, true),
 	LAND_KSERTH_A(1000, true),
 	LAND_KSERTH_B(1001, true),
 	LAND_UNDEAD_A(1002, true),

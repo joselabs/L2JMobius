@@ -1663,6 +1663,9 @@
 															<xs:element name="attackSkillId" type="xs:unsignedShort" />
 															<xs:element name="adjustLevel" type="xs:boolean" />
 															<xs:element name="damageModifier" type="xs:decimal" />
+															<xs:element name="percentTo" type="xs:unsignedByte" />
+															<xs:element name="percentFrom" type="xs:unsignedByte" />
+															<xs:element name="pAtkMod" type="xs:decimal" />
 															<xs:element name="damage">
 																<xs:complexType>
 																	<xs:sequence>
@@ -2157,7 +2160,7 @@
 								<xs:element name="endEffects">
 									<xs:complexType>
 										<xs:sequence>
-											<xs:element name="effect">
+											<xs:element maxOccurs="unbounded" name="effect">
 												<xs:complexType>
 													<xs:sequence>
 														<xs:element minOccurs="0" name="power">
@@ -2264,6 +2267,22 @@
 								<xs:element name="irreplacableBuff" type="xs:boolean" />
 								<xs:element name="isSharedWithSummon" type="xs:boolean" />
 								<xs:element name="halfKillRate" type="xs:unsignedByte" />
+								<xs:element name="attachToggleGroupId" type="xs:unsignedByte" />
+								<xs:element name="reuseDelayGroup" type="xs:unsignedShort" />
+								<xs:element name="attachSkillList">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="item">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="requiredSkillId" type="xs:unsignedShort" />
+														<xs:element name="skillId" type="xs:unsignedShort" />
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
 								<xs:element name="stayAfterDeath" type="xs:string" />
 								<xs:element name="canCastWhileDisabled" type="xs:boolean" />
 								<xs:element name="minPledgeClass" type="xs:unsignedByte" />

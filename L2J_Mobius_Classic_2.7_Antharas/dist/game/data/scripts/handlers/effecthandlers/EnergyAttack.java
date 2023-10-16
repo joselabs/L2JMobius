@@ -58,7 +58,7 @@ public class EnergyAttack extends AbstractEffect
 	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
 	{
 		// TODO: Verify this on retail
-		return !Formulas.calcPhysicalSkillEvasion(effector, effected, skill);
+		return !Formulas.calcSkillEvasion(effector, effected, skill);
 	}
 	
 	@Override

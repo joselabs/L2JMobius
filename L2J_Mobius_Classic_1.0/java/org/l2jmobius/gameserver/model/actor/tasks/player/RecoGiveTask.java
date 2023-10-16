@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.model.actor.tasks.player;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * Task dedicated to increase player's recommendation bonus.
@@ -53,7 +52,7 @@ public class RecoGiveTask implements Runnable
 			final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_OBTAINED_S1_RECOMMENDATION_S);
 			sm.addInt(recoToGive);
 			_player.sendPacket(sm);
-			_player.sendPacket(new UserInfo(_player));
+			_player.updateUserInfo();
 		}
 	}
 }

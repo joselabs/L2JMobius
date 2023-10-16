@@ -71,9 +71,12 @@ import org.l2jmobius.gameserver.network.clientpackets.elementalspirits.ExElement
 import org.l2jmobius.gameserver.network.clientpackets.elementalspirits.ExElementalSpiritSetTalent;
 import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestItemEnsoul;
 import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestTryEnSoulExtraction;
-import org.l2jmobius.gameserver.network.clientpackets.equipmentupgrade.RequestUpgradeSystemResult;
 import org.l2jmobius.gameserver.network.clientpackets.equipmentupgrade.ExUpgradeSystemNormalRequest;
+import org.l2jmobius.gameserver.network.clientpackets.equipmentupgrade.RequestUpgradeSystemResult;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockMemo;
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestFriendDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestUpdateFriendMemo;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGamePlay;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGameStartInfo;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.ConfirmMenteeAdd;
@@ -261,8 +264,8 @@ public enum ExClientPackets
 	REQUEST_SURRENDER_PLEDGE_WAR_EX(0x92, null, ConnectionState.IN_GAME),
 	REQUEST_DYNAMIC_QUEST_ACTION(0x93, null, ConnectionState.IN_GAME), // TODO: Implement / HANDLE SWITCH
 	REQUEST_FRIEND_DETAIL_INFO(0x94, RequestFriendDetailInfo::new, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_FRIEND_MEMO(0x95, null, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_BLOCK_MEMO(0x96, null, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_FRIEND_MEMO(0x95, RequestUpdateFriendMemo::new, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_BLOCK_MEMO(0x96, RequestBlockMemo::new, ConnectionState.IN_GAME),
 	REQUEST_INZONE_PARTY_INFO_HISTORY(0x97, null, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_REGISTRABLE_ITEM_LIST(0x98, RequestCommissionRegistrableItemList::new, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_INFO(0x99, RequestCommissionInfo::new, ConnectionState.IN_GAME),
@@ -389,7 +392,7 @@ public enum ExClientPackets
 	REQUEST_USER_FACTION_INFO(0x118, null, ConnectionState.IN_GAME),
 	EX_EXIT_ARENA(0x119, null, ConnectionState.IN_GAME),
 	REQUEST_EVENT_BALTHUS_TOKEN(0x11A, null, ConnectionState.IN_GAME),
-	REQUEST_PARTY_MATCHING_HISTORY(0x11B, null, ConnectionState.IN_GAME),
+	REQUEST_PARTY_MATCHING_HISTORY(0x11B, RequestPartyMatchingHistory::new, ConnectionState.IN_GAME),
 	EX_ARENA_CUSTOM_NOTIFICATION(0x11C, null, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST(0x11D, RequestTodoList::new, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST_HTML(0x11E, null, ConnectionState.IN_GAME),
@@ -400,7 +403,7 @@ public enum ExClientPackets
 	REQUEST_PLEDGE_BONUS_REWARD(0x123, RequestPledgeBonusReward::new, ConnectionState.IN_GAME),
 	REQUEST_SSO_AUTHN_TOKEN(0x124, null, ConnectionState.IN_GAME),
 	REQUEST_QUEUE_TICKET_LOGIN(0x125, null, ConnectionState.IN_GAME),
-	REQUEST_BLOCK_MEMO_INFO(0x126, null, ConnectionState.IN_GAME),
+	REQUEST_BLOCK_MEMO_INFO(0x126, RequestBlockDetailInfo::new, ConnectionState.IN_GAME),
 	REQUEST_TRY_EN_SOUL_EXTRACTION(0x127, RequestTryEnSoulExtraction::new, ConnectionState.IN_GAME),
 	REQUEST_RAIDBOSS_SPAWN_INFO(0x128, RequestRaidBossSpawnInfo::new, ConnectionState.IN_GAME),
 	REQUEST_RAID_SERVER_INFO(0x129, RequestRaidServerInfo::new, ConnectionState.IN_GAME),
@@ -510,7 +513,7 @@ public enum ExClientPackets
 	EX_CRAFT_RANDOM_LOCK_SLOT(0x199, null, ConnectionState.IN_GAME),
 	EX_CRAFT_RANDOM_REFRESH(0x19A, null, ConnectionState.IN_GAME),
 	EX_CRAFT_RANDOM_MAKE(0x19B, null, ConnectionState.IN_GAME),
-	EX_MULTI_SELL_LIST(0x19C, null, ConnectionState.IN_GAME),
+	EX_MULTI_SELL_LIST(0x19C, RequestMultisellList::new, ConnectionState.IN_GAME),
 	EX_ANTIBOT(0x19E, null, ConnectionState.IN_GAME),
 	EX_DPSVR(0x19F, null, ConnectionState.IN_GAME),
 	EX_TENPROTECT_DECRYPT_ERROR(0x1A0, null, ConnectionState.IN_GAME),

@@ -18,6 +18,7 @@ package org.l2jmobius.gameserver.handler.skillhandlers;
 
 import java.util.List;
 
+import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.handler.ISkillHandler;
 import org.l2jmobius.gameserver.model.Skill;
 import org.l2jmobius.gameserver.model.actor.Attackable;
@@ -84,9 +85,24 @@ public class Sweep implements ISkillHandler
 					}
 					else
 					{
-						final Item item = player.getInventory().addItem("Sweep", ritem.getId(), ritem.getCount(), player, target);
-						iu.addItem(item);
-						send = true;
+						if (ItemTable.getInstance().createDummyItem(ritem.getId()).isStackable())
+						{
+							final int existingCount = player.getInventory().getInventoryItemCount(ritem.getId(), -1);
+							final Item item = player.getInventory().addItem("Sweep", ritem.getId(), ritem.getCount(), player, target);
+							if (existingCount > 0)
+							{
+								iu.addModifiedItem(item);
+								send = true;
+							}
+						}
+						else
+						{
+							for (int i = 0; i < ritem.getCount(); i++)
+							{
+								player.addItem("Sweep", ritem.getId(), 1, null, false);
+							}
+						}
+						
 						SystemMessage smsg;
 						if (ritem.getCount() > 1)
 						{

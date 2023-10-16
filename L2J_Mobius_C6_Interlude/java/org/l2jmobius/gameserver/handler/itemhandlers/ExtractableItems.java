@@ -28,6 +28,7 @@ import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
@@ -83,7 +84,16 @@ public class ExtractableItems implements IItemHandler
 			
 			if (ItemTable.getInstance().createDummyItem(createItemId).isStackable())
 			{
-				player.addItem("Extract", createItemId, createAmount, item, false);
+				final int existingCount = player.getInventory().getInventoryItemCount(createItemId, -1);
+				final Item extractedItem = player.getInventory().addItem("Extract", createItemId, createAmount, player, item);
+				
+				// Send inventory update packet
+				if (existingCount > 0)
+				{
+					final InventoryUpdate playerIU = new InventoryUpdate();
+					playerIU.addModifiedItem(extractedItem);
+					player.sendPacket(playerIU);
+				}
 			}
 			else
 			{

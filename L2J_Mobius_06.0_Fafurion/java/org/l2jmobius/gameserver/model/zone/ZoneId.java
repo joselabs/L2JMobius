@@ -48,7 +48,8 @@ public enum ZoneId
 	SAYUNE,
 	FISHING,
 	UNDYING,
-	TAX;
+	TAX,
+	BALTHUS_KNIGHT;
 	
 	public static int getZoneCount()
 	{

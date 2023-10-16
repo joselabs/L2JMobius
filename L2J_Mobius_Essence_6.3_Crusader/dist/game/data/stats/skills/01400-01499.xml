@@ -2,7 +2,6 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="1400" toLevel="10" name="Turn Undead">
 		<!-- Strikes fear into undead for $s1, causing them to flee. Consumes $s2 Spirit Ores. Lethal Strike is possible. -->
-		<icon>icon.skill1400</icon>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-532</value>
@@ -92,7 +91,6 @@
 	</skill>
 	<skill id="1401" toLevel="11" name="Major Heal">
 		<!-- Restores the target's HP by $s1 Power. Consumes $s2 Spirit Ore(s). -->
-		<icon>icon.skill1401</icon>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">403</value>
@@ -176,7 +174,6 @@
 	</skill>
 	<skill id="1402" toLevel="5" name="Major Group Heal">
 		<!-- Restores all party members' HP by $s1 Power. Consumes $s2 Spirit Ore(s). -->
-		<icon>icon.skill1402</icon>
 		<affectRange>1000</affectRange>
 		<effectPoint>
 			<value level="1">421</value>
@@ -252,7 +249,6 @@
 	</skill>
 	<skill id="1404" toLevel="1" name="Word of Invitation">
 		<!-- Teleports a party member to one's current location. Consumes 3 Spirit Ore. Requires a Summoning Crystal on the target. -->
-		<icon>icon.skill1404</icon>
 		<effectPoint>677</effectPoint>
 		<effectRange>-2</effectRange>
 		<hitTime>15000</hitTime>
@@ -281,7 +277,7 @@
 		</effects>
 	</skill>
 	<skill id="1405" toLevel="4" name="Divine Inspiration">
-		<!-- Max Buffs +$s1 -->
+		<!-- Max Buffs +1 -->
 		<icon>icon.skill1405</icon>
 		<magicLevel>
 			<value level="1">52</value>
@@ -303,7 +299,7 @@
 		</effects>
 	</skill>
 	<skill id="1406" toLevel="9" name="Summon Feline King">
-		<!-- <Summoning Skill> Summons Feline King. -->
+		<!-- <Summoning Skill>. Summons Feline King. -->
 		<icon>icon.skill1406</icon>
 		<hitTime>6000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
@@ -366,7 +362,7 @@
 		</effects>
 	</skill>
 	<skill id="1407" toLevel="9" name="Summon Magnus the Unicorn">
-		<!-- <Summoning Skill> Summons Magnus the Unicorn. -->
+		<!-- <Summoning Skill>. Summons Magnus the Unicorn. -->
 		<icon>icon.skill1407</icon>
 		<hitTime>6000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
@@ -429,7 +425,7 @@
 		</effects>
 	</skill>
 	<skill id="1408" toLevel="9" name="Summon Spectral Lord">
-		<!-- <Summoning Skill> Summons Spectral Lord. -->
+		<!-- <Summoning Skill>. Summons Spectral Lord. -->
 		<icon>icon.skill1408</icon>
 		<hitTime>6000</hitTime>
 		<inheritElementals>true</inheritElementals>
@@ -520,7 +516,7 @@
 		</effects>
 	</skill>
 	<skill id="1410" toLevel="1" name="Salvation">
-		<!-- <Skill with fixed cooldown> For $s1 Resurrects after death. Max. HP $s2 Buffs/ debuffs remain after death. -->
+		<!-- <Skill with fixed cooldown>. For 60 min. Resurrects after death. Max. HP +500. Buffs/ debuffs remain after death. -->
 		<icon>icon.skill1410</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
@@ -546,14 +542,15 @@
 			<effect name="ResurrectionSpecial">
 				<power>100</power>
 			</effect>
-			<effect name="Heal">
-				<power>500</power>
+			<effect name="MaxHp">
+				<amount>500</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="1411" toLevel="3" name="Mystic Resilience">
-		<!-- If the character takes damage while the effect is active, there is a certain chance to remove a debuff from them. Debuff Resistance $s1 Anomaly Resistance $s1 -->
-		<icon>icon.skill1411</icon>
+		<!-- If the character takes damage while the effect is active,. there is a certain chance to remove a debuff from them. Debuff Resistance +3%. Anomaly Resistance +3% -->
+		<icon>icon.skill1411_a</icon>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalType>ABNORMAL_INVINCIBILITY</abnormalType>
 		<abnormalTime>
@@ -592,7 +589,6 @@
 	</skill>
 	<skill id="1412" toLevel="1" name="Spell Turning">
 		<!-- Disrupts a nearby target's casting, disrupting their spell. -->
-		<icon>icon.skill1412</icon>
 		<castRange>150</castRange>
 		<effectPoint>-1</effectPoint>
 		<effectRange>650</effectRange>
@@ -613,7 +609,7 @@
 		</effects>
 	</skill>
 	<skill id="1413" toLevel="3" name="Chant of Wild Magic">
-		<!-- M. Skill Critical Rate $s1 -->
+		<!-- M. Skill Critical Rate +10 -->
 		<icon>icon.skill1413</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -645,7 +641,7 @@
 		</effects>
 	</skill>
 	<skill id="1414" toLevel="2" name="Prophecy of Pa'agrio">
-		<!-- Max CP $s1 CP Recovery Rate $s2 P. Accuracy $s3 M. Accuracy $s3 P. Evasion $s3 M. Evasion $s3 PvE damage bonus $s4 Atk. Spd. $s5 Casting Spd. $s5 P. Critical Rate $s4 M. Skill Critical Rate $s4 P. Critical Damage $s4 M. Skill Critical Damage $s4 -->
+		<!-- Max CP +10%. CP Recovery Rate +20%. P. Accuracy +4. M. Accuracy +4. P. Evasion +4. M. Evasion +4. PvE damage bonus +15%. Atk. Spd. +10%. Casting Spd. +10%. P. Critical Rate +15%. M. Skill Critical Rate +15%. P. Critical Damage +15%. M. Skill Critical Damage +15% -->
 		<icon>icon.skill1414</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
@@ -758,7 +754,6 @@
 	</skill>
 	<skill id="1415" toLevel="1" name="Pa'agrio's Emblem">
 		<!-- For 10 min., a powerful spirit acts to get nearby clan members' Max CP +15%, CP Recovery bonus +40%, P./ M. Accuracy +4, P./ M. Evasion +4, P./ M. Atk. +20%, Atk. Spd./ Casting Spd. +10%, P./ M. Critical Rate +20%, P./ M. Critical Damage +15%. Consumes 70 Spirit Ore. -->
-		<icon>icon.skill1415</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>RESIST_DEBUFF_DISPEL</abnormalType>
@@ -789,7 +784,7 @@
 		</effects>
 	</skill>
 	<skill id="1416" toLevel="7" name="Pa'agrio's Fist">
-		<!-- Max CP $s1 -->
+		<!-- Max CP +10% -->
 		<icon>icon.skill1416</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -818,7 +813,7 @@
 		</effects>
 	</skill>
 	<skill id="1417" toLevel="5" name="Aura Flash">
-		<!-- Deals damage to nearby enemies. Power $s1. -->
+		<!-- Deals damage to nearby enemies. Power 49. -->
 		<icon>icon.skill1417</icon>
 		<affectRange>200</affectRange>
 		<effectPoint>
@@ -882,7 +877,6 @@
 	</skill>
 	<skill id="1418" toLevel="1" name="Celestial Shield">
 		<!-- Protects the target with holy power, making it invincible for 10 sec. -->
-		<icon>icon.skill1418</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
@@ -918,7 +912,6 @@
 	</skill>
 	<skill id="1419" toLevel="1" name="Volcano">
 		<!-- Continuously inflicts powerful Fire damage. User cannot move while casting, and there is additional MP Consumption each time the effect occurs. Consumes 1 Magic Symbol. -->
-		<icon>icon.skill1419</icon>
 		<affectLimit>15-25</affectLimit>
 		<affectRange>200</affectRange>
 		<blockedInOlympiad>true</blockedInOlympiad>
@@ -953,7 +946,6 @@
 	</skill>
 	<skill id="1420" toLevel="1" name="Cyclone">
 		<!-- Continuously inflicts powerful Wind damage. User cannot move while casting, and there is additional MP Consumption each time the effect occurs. Consumes 1 Magic Symbol. -->
-		<icon>icon.skill1420</icon>
 		<affectLimit>15-25</affectLimit>
 		<affectRange>200</affectRange>
 		<blockedInOlympiad>true</blockedInOlympiad>
@@ -988,7 +980,6 @@
 	</skill>
 	<skill id="1421" toLevel="1" name="Raging Waves">
 		<!-- Continuously inflicts powerful Water damage. User cannot move while casting, and there is additional MP Consumption each time the effect occurs. Consumes 1 Magic Symbol. -->
-		<icon>icon.skill1421</icon>
 		<affectLimit>15-25</affectLimit>
 		<affectRange>200</affectRange>
 		<blockedInOlympiad>true</blockedInOlympiad>
@@ -1023,7 +1014,6 @@
 	</skill>
 	<skill id="1422" toLevel="1" name="Day of Doom">
 		<!-- Creates a seal that casts a powerful curse that decreases all the abilities of nearby enemies. The seal's effect disappears upon leaving the area. Consumes 1 Magic Symbol. -->
-		<icon>icon.skill1422</icon>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<castRange>900</castRange>
 		<hitTime>5000</hitTime>
@@ -1066,7 +1056,6 @@
 	</skill>
 	<skill id="1423" toLevel="1" name="Gehenna">
 		<!-- Continuously inflicts powerful Dark damage. User cannot move while casting, and there is additional MP Consumption each time the effect occurs. Consumes 1 Magic Symbol. -->
-		<icon>icon.skill1423</icon>
 		<affectLimit>15-25</affectLimit>
 		<affectRange>200</affectRange>
 		<blockedInOlympiad>true</blockedInOlympiad>
@@ -1101,7 +1090,6 @@
 	</skill>
 	<skill id="1424" toLevel="1" name="Anti-summoning Field">
 		<!-- Decreases all speeds of nearby enemies, gives speed-increasing buffs, and creates a seal that periodically banishes a servitor to another dimension. All characters and servitors in the area are affected. Consumes 1 Magic Symbol. -->
-		<icon>icon.skill1424</icon>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<castRange>900</castRange>
 		<hitTime>5000</hitTime>
@@ -1143,7 +1131,6 @@
 	</skill>
 	<skill id="1425" toLevel="1" name="Purification Field">
 		<!-- Cancel all the debuffs of nearby clan members. -->
-		<icon>icon.skill1425</icon>
 		<affectRange>1000</affectRange>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<hitTime>3000</hitTime>
@@ -1168,7 +1155,7 @@
 		</effects>
 	</skill>
 	<skill id="1426" toLevel="1" name="Miracle">
-		<!-- <Skill with fixed cooldown> Restores 100% of HP to nearby clan members. -->
+		<!-- <Skill with fixed cooldown>. Restores 100% of HP to nearby clan members. -->
 		<icon>icon.skill1426</icon>
 		<affectRange>1000</affectRange>
 		<blockedInOlympiad>true</blockedInOlympiad>
@@ -1197,7 +1184,6 @@
 	</skill>
 	<skill id="1427" toLevel="1" name="Flames of Invincibility">
 		<!-- Calls down a blessing of flames on nearby clan members to make them invincible. Consumes 100 Spirit Ore. -->
-		<icon>icon.skill1427</icon>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
@@ -1235,7 +1221,7 @@
 		</effects>
 	</skill>
 	<skill id="1428" toLevel="10" name="Rapid Recharge">
-		<!-- <Skill with fixed cooldown> Swiftly recovers $s1 MP. -->
+		<!-- <Skill with fixed cooldown>. Swiftly recovers 263 MP. -->
 		<icon>icon.skill1428</icon>
 		<affectRange>1000</affectRange>
 		<blockedInOlympiad>true</blockedInOlympiad>
@@ -1280,7 +1266,7 @@
 		</effects>
 	</skill>
 	<skill id="1429" toLevel="1" name="Chant of Gate">
-		<!-- <Skill with fixed cooldown> Summons party members. -->
+		<!-- <Skill with fixed cooldown>. Summons party members. -->
 		<icon>icon.skill1429</icon>
 		<effectPoint>467</effectPoint>
 		<hitTime>15000</hitTime>
@@ -1309,7 +1295,7 @@
 		</effects>
 	</skill>
 	<skill id="1430" toLevel="5" name="Invocation">
-		<!-- For $s1, P. Def. -$s2. Recovers $s3 MP per sec. The effect is cancelled when hit. -->
+		<!-- For 30 sec., P. Def. -90%. Recovers 54 MP per sec. The effect is cancelled when hit. -->
 		<icon>icon.skill1430</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
@@ -1367,7 +1353,6 @@
 	</skill>
 	<skill id="1431" toLevel="6" name="Fallen Arrow">
 		<!-- Fires an arrow with $s1 Power added to P. Atk. and inflicts Dark damage on the enemy. Increases Power upon the consumption of up to $s2 souls. -->
-		<icon>icon.skill1431</icon>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-92</value>
@@ -1433,7 +1418,7 @@
 		</effects>
 	</skill>
 	<skill id="1432" toLevel="5" name="Increase Power">
-		<!-- Unravels potential and increases M. Atk. P. Atk. Shock Atk. Rate $s1 -->
+		<!-- Unravels potential and increases M. Atk. P. Atk. Shock Atk. Rate +20% -->
 		<icon>icon.skill1432</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1488,7 +1473,6 @@
 	</skill>
 	<skill id="1433" toLevel="10" name="Abyssal Blaze">
 		<!-- Attacks an enemy with $s1 Power added to P. Atk. and inflicts Dark damage on the enemy. Increases Power upon the consumption of up to $s2 souls. -->
-		<icon>icon.skill1433</icon>
 		<castRange>750</castRange>
 		<effectPoint>
 			<value level="1">-189</value>
@@ -1568,7 +1552,6 @@
 	</skill>
 	<skill id="1434" toLevel="4" name="Dark Explosion">
 		<!-- Inflicts dark damage on nearby enemies with $s1 Power added to M. Atk. Increases Power upon the consumption of up to $s2 souls. -->
-		<icon>icon.skill1434</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -1620,7 +1603,7 @@
 		</effects>
 	</skill>
 	<skill id="1435" toLevel="5" name="Death Mark">
-		<!-- HP Recovery Rate $s1 With a certain chance, triggers Death Mark Lv. $s2 after an attack. (Cooldown: 10 sec.) <Death Mark> Received P. Critical Damage $s3 Received M. Skill Critical Damage $s3 -->
+		<!-- HP Recovery Rate +2.5. With a certain chance, triggers Death Mark Lv. 1 after an attack. (Cooldown: 10 sec.). <Death Mark>. Received P. Critical Damage +10%. Received M. Skill Critical Damage +10% -->
 		<icon>icon.skill1435</icon>
 		<excludedFromCheck>true</excludedFromCheck>
 		<magicLevel>15</magicLevel>
@@ -1675,7 +1658,6 @@
 	</skill>
 	<skill id="1436" toLevel="30" name="Soul of Pain">
 		<!-- Attacks with $s1 Power added to P. Atk. and inflicts Dark damage on the enemy. Increases Power upon the consumption of up to $s2 souls. -->
-		<icon>icon.skill1436</icon>
 		<castRange>700</castRange>
 		<effectPoint>
 			<value level="1">-369</value>
@@ -1858,7 +1840,6 @@
 	</skill>
 	<skill id="1437" toLevel="26" name="Dark Flame">
 		<!-- Inflicts dark damage on the enemies in front with $s1 Power added to M. Atk. For $s2, Speed -$s3. Increases Power upon the consumption of up to $s4 souls. -->
-		<icon>icon.skill1437</icon>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
@@ -2035,7 +2016,6 @@
 	</skill>
 	<skill id="1438" toLevel="9" name="Annihilation Circle">
 		<!-- Attacks an enemy with $s1 Power added to P. Atk. and inflicts Dark damage on the enemy. Increases Power upon the consumption of up to $s2 souls. -->
-		<icon>icon.skill1438</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>150</affectRange>
 		<castRange>500</castRange>
@@ -2113,7 +2093,6 @@
 	</skill>
 	<skill id="1439" toLevel="5" name="Curse of Divinity">
 		<!-- Inflicts magic damage on the enemy with $s1 Power added to M. Atk. Power changes depending on the target's altered state condition. -->
-		<icon>icon.skill1439</icon>
 		<castRange>600</castRange>
 		<coolTime>200</coolTime>
 		<effectPoint>
@@ -2166,8 +2145,8 @@
 		</effects>
 	</skill>
 	<skill id="1440" toLevel="3" name="Soul Steal">
-		<!-- <<font color="FF8000">Steal skill</font>> With a certain chance, steals up to $s1 of the enemy's buffs. Cannot be used on monsters. Stacks the Soul Harmony buff with each steal attempt. <Soul Harmony> For 5 min., increases P./ M. Atk. Lv. 1: P./ M. Atk. +100 Lv. 2: P./ M. Atk. +200 Lv. 3: P./ M. Atk. +300 -->
-		<icon>icon.skill1440</icon>
+		<!-- <<font color="FF8000">Steal skill</font>>. With a certain chance, steals up to 2 of the enemy's buffs. Cannot be used on monsters. Stacks the Soul Harmony buff with each steal attempt. <Soul Harmony>. For 5 min., increases P./ M. Atk. Lv. 1: P./ M. Atk. +100. Lv. 2: P./ M. Atk. +200. Lv. 3: P./ M. Atk. +300 -->
+		<icon>icon.s_soul_steal</icon>
 		<castRange>600</castRange>
 		<coolTime>200</coolTime>
 		<effectPoint>
@@ -2206,8 +2185,8 @@
 		</effects>
 	</skill>
 	<skill id="1441" toLevel="3" name="Soul Roar">
-		<!-- Increases Max HP. When used, recovers $s1 HP. Max HP $s2 -->
-		<icon>icon.skill1441</icon>
+		<!-- Increases Max HP. When used, recovers 15% HP. Max HP +15% -->
+		<icon>BranchSys2.icon.skill20006</icon>
 		<hitTime>1500</hitTime>
 		<mpConsume>
 			<value level="1">15</value>
@@ -2246,7 +2225,6 @@
 	</skill>
 	<skill id="1442" toLevel="3" name="Darkness Protection">
 		<!-- Target's Dark Attack Resistance +$s2 for $s1. -->
-		<icon>icon.skill1442</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2297,7 +2275,6 @@
 	</skill>
 	<skill id="1443" toLevel="1" name="Dark Weapon">
 		<!-- Target's Dark attack level +20 for 20 min. Can be used on party members. -->
-		<icon>icon.skill1443</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>HOLY_ATTACK</abnormalType>
@@ -2328,8 +2305,8 @@
 		</effects>
 	</skill>
 	<skill id="1444" toLevel="5" name="Rapier Master">
-		<!-- When using a rapier Atk. Spd. +$s1 -->
-		<icon>icon.skill1444</icon>
+		<!-- When using a rapier. Atk. Spd. +10 -->
+		<icon>Icon.ev_invasion_gun_shoot</icon>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">50</value>
@@ -2357,7 +2334,6 @@
 	</skill>
 	<skill id="1445" toLevel="18" name="Surrender to Dark">
 		<!-- For $s1, the enemy's Dark Attack Resistance -$s2 and Holy Attack Resistance +$s3. -->
-		<icon>icon.skill1445</icon>
 		<abnormalLevel>
 			<value level="1">3</value>
 			<value level="2">3</value>
@@ -2563,7 +2539,7 @@
 		</effects>
 	</skill>
 	<skill id="1446" toLevel="11" name="Shadow Bind">
-		<!-- <Hold Skill> The effect lasts for $s1 Holds the enemy. -->
+		<!-- <Hold Skill>. The effect lasts for 5 sec. Holds the enemy. -->
 		<icon>icon.skill1446</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
@@ -2629,7 +2605,7 @@
 		</effects>
 	</skill>
 	<skill id="1447" toLevel="11" name="Voice Bind">
-		<!-- <Silence Skill> The effect lasts for $s1 Blocks enemy's magical/ physical skill usage. -->
+		<!-- <Silence Skill>. The effect lasts for 3 sec. Blocks enemy's magical/ physical skill usage. -->
 		<icon>icon.skill1447</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -2694,7 +2670,7 @@
 	</skill>
 	<skill id="1448" toLevel="1" name="Blink">
 		<!-- Teleports the character backwards. -->
-		<icon>icon.skill1448</icon>
+		<icon>icon.skill11057</icon>
 		<affectRange>150</affectRange>
 		<affectLimit>6-12</affectLimit>
 		<activateRate>150</activateRate>
@@ -2727,7 +2703,6 @@
 	</skill>
 	<skill id="1449" toLevel="1" name="Transfer Soul">
 		<!-- Transfer a soul to the target. Only possible when the target is a Kamael. Consumes 1 Soul. -->
-		<icon>icon.skill1449</icon>
 		<castRange>400</castRange>
 		<effectPoint>150</effectPoint>
 		<effectRange>900</effectRange>
@@ -2758,7 +2733,6 @@
 	</skill>
 	<skill id="1450" toLevel="1" name="Chain Lightning">
 		<!-- Hurls thunderbolts and inflicts damage on the target and nearby enemies with 200 Power added to M. Atk. Increases Power upon the consumption of up to 5 souls. -->
-		<icon>icon.skill1450</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -2785,7 +2759,7 @@
 		</effects>
 	</skill>
 	<skill id="1451" toLevel="2" name="Fire Vortex Buster">
-		<!-- Attacks the target affected by Fire Vortex. Power $s1. -->
+		<!-- Attacks the target affected by Fire Vortex. Power 175. -->
 		<icon>icon.skill1451</icon>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -2832,7 +2806,6 @@
 	</skill>
 	<skill id="1452" toLevel="1" name="Count of Fire">
 		<!-- Uses the power of Fire to burn the enemy for 10 sec., inflicting damage of 173 HP per sec. -->
-		<icon>icon.skill1452</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>FIRE_DOT</abnormalType>
@@ -2865,7 +2838,7 @@
 		</effects>
 	</skill>
 	<skill id="1453" toLevel="2" name="Ice Vortex Crusher">
-		<!-- Attacks the target affected by Ice Vortex. Power $s1. -->
+		<!-- Attacks the target affected by Ice Vortex. Power 175. -->
 		<icon>icon.skill1453</icon>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -2912,7 +2885,6 @@
 	</skill>
 	<skill id="1454" toLevel="1" name="Diamond Dust">
 		<!-- Summons a bitter ice storm that inflicts Water damage on the enemy with 70 Power added to M. Atk. Nearby enemies' Speed -40% for 15 sec. -->
-		<icon>icon.skill1454</icon>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
@@ -2947,7 +2919,6 @@
 	</skill>
 	<skill id="1455" toLevel="1" name="Throne of Ice">
 		<!-- Summons a blast of icy air that freezes the enemy for 10 sec., causing loss of 173 HP per sec. -->
-		<icon>icon.skill1455</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>WATER_DOT</abnormalType>
@@ -2978,7 +2949,7 @@
 		</effects>
 	</skill>
 	<skill id="1456" toLevel="2" name="Wind Vortex Slug">
-		<!-- Attacks the target affected by Wind Vortex. Power $s1. -->
+		<!-- Attacks the target affected by Wind Vortex. Power 175. -->
 		<icon>icon.skill1456</icon>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -3025,7 +2996,6 @@
 	</skill>
 	<skill id="1457" toLevel="2" name="Empowering Echo">
 		<!-- For $s1, your magic MP Consumption +$s2 and M. Atk. +$s3. -->
-		<icon>icon.skill1457</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">1200</value>
@@ -3071,7 +3041,6 @@
 	</skill>
 	<skill id="1458" toLevel="1" name="Throne of Wind">
 		<!-- Uses the power of a storm to weaken the enemy for 10 sec., causing loss of 173 HP per sec. -->
-		<icon>icon.skill1458</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>WIND_DOT</abnormalType>
@@ -3103,7 +3072,7 @@
 		</effects>
 	</skill>
 	<skill id="1459" toLevel="3" name="Divine Power">
-		<!-- The effect lasts for $s1 Healing Power +$s2 -->
+		<!-- The effect lasts for 2 min. Healing Power +20 -->
 		<icon>icon.skill1459</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
@@ -3139,8 +3108,8 @@
 		</effects>
 	</skill>
 	<skill id="1460" toLevel="10" name="Mana Gain">
-		<!-- MP +$s1. Grants bonuses depending on Max MP: <2500+> M. Accuracy +1 <4000+> M. Accuracy +2 <6500+> M. Accuracy +3 <10,000+> M. Accuracy +4 <15,000+> M. Accuracy +5 -->
-		<icon>icon.skill1460</icon>
+		<!-- MP +240. Grants bonuses depending on Max MP:. <2500+>. M. Accuracy +1. <4000+>. M. Accuracy +2. <6500+>. M. Accuracy +3. <10,000+>. M. Accuracy +4. <15,000+>. M. Accuracy +5 -->
+		<icon>icon.mana_gain</icon>
 		<magicLevel>
 			<value level="1">76</value>
 			<value level="2">77</value>
@@ -3259,7 +3228,7 @@
 		</effects>
 	</skill>
 	<skill id="1461" toLevel="1" name="Chant of Protection">
-		<!-- Received P. Critical Damage $s1 -->
+		<!-- Received P. Critical Damage -30% -->
 		<icon>icon.skill1461</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -3287,7 +3256,7 @@
 		</effects>
 	</skill>
 	<skill id="1462" toLevel="3" name="Seal of Blockade">
-		<!-- <Silence Skill> The effect lasts for $s1 Blocks enemies' basic attacks. -->
+		<!-- <Silence Skill>. The effect lasts for 10 sec. Blocks enemies' basic attacks. -->
 		<icon>icon.skill1462</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
@@ -3327,7 +3296,6 @@
 	</skill>
 	<skill id="1463" toLevel="1" name="Fire Weapon">
 		<!-- Adds Fire damage to a P. Atk. -->
-		<icon>icon.skill1463</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>HOLY_ATTACK</abnormalType>
@@ -3355,7 +3323,6 @@
 	</skill>
 	<skill id="1464" toLevel="1" name="Ice Weapon">
 		<!-- Adds Water damage to a P. Atk. -->
-		<icon>icon.skill1464</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>HOLY_ATTACK</abnormalType>
@@ -3383,7 +3350,6 @@
 	</skill>
 	<skill id="1465" toLevel="1" name="Wind Weapon">
 		<!-- Adds Wind damage to a P. Atk. -->
-		<icon>icon.skill1465</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>HOLY_ATTACK</abnormalType>
@@ -3411,7 +3377,6 @@
 	</skill>
 	<skill id="1466" toLevel="1" name="Earth Weapon">
 		<!-- Bestows the Earth elemental to a P. Atk. -->
-		<icon>icon.skill1466</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>HOLY_ATTACK</abnormalType>
@@ -3439,7 +3404,6 @@
 	</skill>
 	<skill id="1467" toLevel="1" name="Meteor">
 		<!-- Crashes down meteors to inflict fire damage on the target and nearby enemies with 117 Power. For 10 sec., inflicts continuous fire damage. -->
-		<icon>icon.skill1467</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>DOT_ATTR</abnormalType>
@@ -3478,7 +3442,6 @@
 	</skill>
 	<skill id="1468" toLevel="1" name="Star Fall">
 		<!-- Crashes down meteors to inflict non-attribute damage on the target and nearby enemies with 117 Power. For 10 sec., inflicts continuous non-attribute damage. -->
-		<icon>icon.skill1468</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>DOT_ATTR</abnormalType>
@@ -3515,7 +3478,6 @@
 	</skill>
 	<skill id="1469" toLevel="1" name="Leopold">
 		<!-- Summons the devastating cannon Leopold to inflict Fire damage on the target and nearby enemies with 224 Power added to M. Atk. Increases Power upon the consumption of up to 5 souls. -->
-		<icon>icon.skill1469</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>100</affectRange>
 		<castRange>600</castRange>
@@ -3543,7 +3505,6 @@
 	</skill>
 	<skill id="1470" toLevel="1" name="Prahnah">
 		<!-- Party's M. Def. +3000 for 30 sec. -->
-		<icon>icon.skill1470</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PD_UP_SPECIAL</abnormalType>
@@ -3570,7 +3531,6 @@
 	</skill>
 	<skill id="1471" toLevel="2" name="Death Beam">
 		<!-- Attacks enemies in front of you. Power $s1. -->
-		<icon>icon.skill1471</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>400</affectRange>
 		<castRange>40</castRange>
@@ -3604,7 +3564,6 @@
 	</skill>
 	<skill id="1472" toLevel="1" name="Soul Sucking">
 		<!-- Continuously absorbs the enemy's soul. -->
-		<icon>icon.skill1472</icon>
 		<castRange>900</castRange>
 		<channelingStart>1</channelingStart>
 		<channelingTickInterval>2</channelingTickInterval>
@@ -3632,7 +3591,6 @@
 	</skill>
 	<skill id="1473" toLevel="1" name="Change Weapon">
 		<!-- Changes a general weapon to a Kamael exclusive weapon. The weapon can be reverted back to a general weapon. Using the Change Weapon skill resets the weapon's appearance. -->
-		<icon>icon.skill1473</icon>
 		<effectPoint>10</effectPoint>
 		<hitTime>5000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
@@ -3652,7 +3610,7 @@
 		</effects>
 	</skill>
 	<skill id="1474" toLevel="3" name="Abyssal Power">
-		<!-- M. Atk. +$s1. -->
+		<!-- M. Atk. +80. -->
 		<icon>icon.skill1474</icon>
 		<magicLevel>
 			<value level="1">45</value>
@@ -3674,7 +3632,6 @@
 	</skill>
 	<skill id="1475" toLevel="3" name="Erase Mark">
 		<!-- Removes minor Death Mark. -->
-		<icon>icon.skill1475</icon>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">235</value>
@@ -3716,7 +3673,6 @@
 	</skill>
 	<skill id="1476" toLevel="3" name="Appetite for Destruction">
 		<!-- For $s1, awakens a party member's destructive instincts and P. Atk./ P. Critical Rate/ P. Critical Damage +$s2. -->
-		<icon>icon.skill1476</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>INSTINCT</abnormalType>
@@ -3780,7 +3736,6 @@
 	</skill>
 	<skill id="1477" toLevel="3" name="Vampiric Impulse">
 		<!-- For $s1 recovers as HP $s2 of the physical damage inflicted on the enemy with a certain probability. -->
-		<icon>icon.skill1477</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>INSTINCT</abnormalType>
@@ -3828,7 +3783,6 @@
 	</skill>
 	<skill id="1478" toLevel="2" name="Protection Instinct">
 		<!-- Stirs up the defense instinct to get P. Def. +$s2 and M. Def. +$s3 for $s1. -->
-		<icon>icon.skill1478</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>INSTINCT</abnormalType>
@@ -3878,7 +3832,6 @@
 	</skill>
 	<skill id="1479" toLevel="3" name="Magic Impulse">
 		<!-- Stirs up the magic urge to get M. Atk. +$s2 Casting Spd. +$s3, and the chance of prominent magic damage +$s4 for $s1 -->
-		<icon>icon.skill1479</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>INSTINCT</abnormalType>
@@ -3938,7 +3891,6 @@
 	</skill>
 	<skill id="1480" toLevel="1" name="Soul Harmony">
 		<!-- Empathizes with the souls of party members for 15 sec. to recover 200 MP per sec., P. Def. -90%, and become unable to act. -->
-		<icon>icon.skill1480</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>INSTINCT</abnormalType>
@@ -3972,7 +3924,6 @@
 	</skill>
 	<skill id="1481" toLevel="7" name="Oblivion">
 		<!-- For $s1, inflicts the curse of forgetfulness on the enemy and makes him forget the target at a certain rate when damage is received. -->
-		<icon>icon.skill1481</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>OBLIVION</abnormalType>
@@ -4041,7 +3992,6 @@
 	</skill>
 	<skill id="1482" toLevel="4" name="Weak Constitution">
 		<!-- For $s1, inflicts the curse of weakness on the enemy and makes him faint at a certain rate when damage is received. -->
-		<icon>icon.skill1482</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>WEAK_CONSTITUTION</abnormalType>
@@ -4098,7 +4048,6 @@
 	</skill>
 	<skill id="1483" toLevel="7" name="Thin Skin">
 		<!-- For $s1, inflicts a curse that weakens the enemy's skin and causes injuries to appear when damage is received. -->
-		<icon>icon.skill1483</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>THIN_SKIN</abnormalType>
@@ -4167,7 +4116,6 @@
 	</skill>
 	<skill id="1484" toLevel="4" name="Enervation">
 		<!-- For $s1, makes the enemy lose his ambition, and decreases Atk. Spd./ Speed/ Casting Spd. at a certain rate when damage is received. -->
-		<icon>icon.skill1484</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>ENERVATION</abnormalType>
@@ -4224,7 +4172,6 @@
 	</skill>
 	<skill id="1485" toLevel="3" name="Spite">
 		<!-- For $s1, inflicts a curse that causes malice in the target that is attacking the enemy and causes great P. Critical Damage at a certain rate when damage is received. -->
-		<icon>icon.skill1485</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SPITE</abnormalType>
@@ -4276,7 +4223,6 @@
 	</skill>
 	<skill id="1486" toLevel="4" name="Mental Impoverish">
 		<!-- For $s1, causes mental impoverishment on the enemy and causes MP to disappear at a certain rate when damage is received. -->
-		<icon>icon.skill1486</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>MENTAL_IMPOVERISH</abnormalType>
@@ -4327,7 +4273,6 @@
 	</skill>
 	<skill id="1487" toLevel="8" name="Restoration">
 		<!-- Restores $s2 HP per sec. for $s1. -->
-		<icon>icon.skill1487</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>LIFE_FORCE_KAMAEL</abnormalType>
@@ -4400,7 +4345,6 @@
 	</skill>
 	<skill id="1488" toLevel="3" name="Restoration Impact">
 		<!-- Recovers $s1 of Max HP by catalysis under restoration. Restoration will disappear. -->
-		<icon>icon.skill1488</icon>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">701</value>
@@ -4452,7 +4396,6 @@
 	</skill>
 	<skill id="1489" toLevel="1" name="Summoner Ability: Attribute Resistance">
 		<!-- Increases the Elemental Resistance. -->
-		<icon>icon.skill0433</icon>
 		<excludedFromCheck>true</excludedFromCheck>
 		<magicLevel>75</magicLevel>
 		<operateType>P</operateType>
@@ -4478,7 +4421,6 @@
 	</skill>
 	<skill id="1490" toLevel="1" name="Healer Ability: Heal">
 		<!-- Has a chance to recover HP when striking. -->
-		<icon>icon.skill1011</icon>
 		<excludedFromCheck>true</excludedFromCheck>
 		<magicLevel>75</magicLevel>
 		<operateType>P</operateType>
@@ -4497,7 +4439,6 @@
 	</skill>
 	<skill id="1491" toLevel="1" name="Summoner Ability: Spirit">
 		<!-- Has a chance to channel the soul of an ancient spirit when being attacked. -->
-		<icon>icon.skill1349</icon>
 		<excludedFromCheck>true</excludedFromCheck>
 		<magicLevel>75</magicLevel>
 		<operateType>P</operateType>
@@ -4516,7 +4457,6 @@
 	</skill>
 	<skill id="1492" toLevel="1" name="Fire Armor">
 		<!-- Engulfs the user with a protective coat of fire. For 20 min., Fire Resistance +60 and causes burn damage on the attacking enemy. -->
-		<icon>icon.skill1492</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>ELEMENTAL_ARMOR</abnormalType>
@@ -4550,7 +4490,6 @@
 	</skill>
 	<skill id="1493" toLevel="1" name="Frost Armor">
 		<!-- Engulfs the user with a protective glacier barrier. For 20 min., Water Resistance +60 and slows down the attacking enemy. -->
-		<icon>icon.skill1493</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>ELEMENTAL_ARMOR</abnormalType>
@@ -4584,7 +4523,6 @@
 	</skill>
 	<skill id="1494" toLevel="1" name="Hurricane Armor">
 		<!-- Engulfs the body with a storm barrier. For 20 min., Wind Resistance +60 and slows down the attacking enemy's Atk. Spd. -->
-		<icon>icon.skill1494</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>ELEMENTAL_ARMOR</abnormalType>
@@ -4617,7 +4555,7 @@
 		</effects>
 	</skill>
 	<skill id="1495" toLevel="1" name="Vampiric Mist">
-		<!-- <Suppression skill> Creates a poisonous cloud that deals magic damage to nearby enemies with 117 power. Absorbs 20% of the inflicted damage as HP. For 10 sec., applies the following effect: Speed -30% P. Atk. -30% Atk. Spd. -30% P. Accuracy -8 -->
+		<!-- <Suppression skill>. Creates a poisonous cloud that deals magic damage to nearby enemies with 117 power. Absorbs 20% of the inflicted damage as HP. For 10 sec., applies the following effect:. Speed -30%. P. Atk. -30%. Atk. Spd. -30%. P. Accuracy -8 -->
 		<icon>icon.skill1495</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
@@ -4655,7 +4593,6 @@
 	</skill>
 	<skill id="1496" toLevel="1" name="Servitor Barrier">
 		<!-- Momentarily makes the servitor invincible. Consumes 5 Spirit Ore. -->
-		<icon>icon.skill1496</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
@@ -4688,7 +4625,6 @@
 	</skill>
 	<skill id="1497" toLevel="1" name="Excessive Loyalty">
 		<!-- When the master incurs damage, the servitor's battle skills are increased. -->
-		<icon>icon.skill1497</icon>
 		<magicLevel>81</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4706,7 +4642,6 @@
 	</skill>
 	<skill id="1498" toLevel="1" name="Mutual Response">
 		<!-- Creates chance to regenerate servitor's HP and MP when attacking. -->
-		<icon>icon.skill1498</icon>
 		<magicLevel>81</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
@@ -4726,7 +4661,6 @@
 	</skill>
 	<skill id="1499" toLevel="1" name="Improve Combat">
 		<!-- Combines P. Atk. increase and P. Def. increase to have more advanced combat power increase effect. For 40 min., P. Atk. +15% and P. Def. +15%. -->
-		<icon>icon.skill1499</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>2400</abnormalTime>
 		<abnormalType>IMPROVE_PA_PD_UP</abnormalType>

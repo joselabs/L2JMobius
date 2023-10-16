@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<event name="Watermelon Ninja" active="10 03 2017-11 03 2017" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../xsd/eventConfig.xsd">
+<event name="Watermelon Ninja" active="01 06 2022-30 08 2022" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../xsd/eventConfig.xsd">
 	<droplist>
-		<add item="6391" min="1" max="1" chance="50%" /> <!-- Nectar -->
+		<add item="6391" min="1" max="1" minLevel="60" chance="10%" /> <!-- Nectar -->
 	</droplist>
 	<spawnlist>
 		<add npc="31860" x="-84008" y="243032" z="-3728" heading="49744" /> <!-- Talking Island -->
@@ -18,6 +18,11 @@
 		<add npc="31860" x="117380" y="76684" z="-2672" heading="40961" /> <!-- Hunters Village -->
 		<add npc="31860" x="147464" y="-56984" z="-2784" heading="11547" /> <!-- Goddard -->
 	</spawnlist>
+	<destroyItemsOnEnd>
+		<item id="6391" /> <!-- Nectar -->
+		<item id="15366" /> <!-- Watermelon Seed -->
+		<item id="15367" /> <!-- Honey Watermelon Seed -->
+	</destroyItemsOnEnd>
 	<messages>
 		<add type="onEnd" text="Watermelon Ninja: Event end!" />
 		<add type="onEnter" text="Watermelon Ninja: Event ongoing!" />

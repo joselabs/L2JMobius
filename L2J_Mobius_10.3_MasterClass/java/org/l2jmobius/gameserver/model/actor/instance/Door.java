@@ -422,9 +422,13 @@ public class Door extends Creature
 			manageGroupOpen(true, getGroupName());
 			return;
 		}
-		setOpen(true);
-		broadcastStatusUpdate();
-		startAutoCloseTask();
+		
+		if (!isOpen())
+		{
+			setOpen(true);
+			broadcastStatusUpdate();
+			startAutoCloseTask();
+		}
 	}
 	
 	public void closeMe()
@@ -441,8 +445,12 @@ public class Door extends Creature
 			manageGroupOpen(false, getGroupName());
 			return;
 		}
-		setOpen(false);
-		broadcastStatusUpdate();
+		
+		if (isOpen())
+		{
+			setOpen(false);
+			broadcastStatusUpdate();
+		}
 	}
 	
 	private void manageGroupOpen(boolean open, String groupName)

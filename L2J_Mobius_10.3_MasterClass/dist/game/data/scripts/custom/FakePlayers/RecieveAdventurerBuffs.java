@@ -19,7 +19,6 @@ package custom.FakePlayers;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
-import org.l2jmobius.gameserver.enums.ClassId;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -75,7 +74,7 @@ public class RecieveAdventurerBuffs extends AbstractNpcAI
 						{
 							SkillCaster.triggerCast(nearby, npc, holder.getSkill());
 						}
-						if (ClassId.getClassId(FakePlayerData.getInstance().getInfo(npc.getId()).getClassId()).isMage())
+						if (FakePlayerData.getInstance().getInfo(npc.getId()).getClassId().isMage())
 						{
 							SkillCaster.triggerCast(nearby, npc, FANTASIA.getSkill()); // TODO: Merge events.
 						}

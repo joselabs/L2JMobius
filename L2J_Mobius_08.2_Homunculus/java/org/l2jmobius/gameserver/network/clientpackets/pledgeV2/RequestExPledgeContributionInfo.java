@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.pledgeV2;
 
+import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -26,6 +27,14 @@ import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeContribut
  */
 public class RequestExPledgeContributionInfo implements ClientPacket
 {
+	private boolean _cycle;
+	
+	@Override
+	public void read(ReadablePacket packet)
+	{
+		_cycle = packet.readBoolean();
+	}
+	
 	@Override
 	public void run(GameClient client)
 	{
@@ -35,6 +44,6 @@ public class RequestExPledgeContributionInfo implements ClientPacket
 			return;
 		}
 		
-		client.sendPacket(new ExPledgeContributionInfo(player));
+		client.sendPacket(new ExPledgeContributionInfo(player, _cycle));
 	}
 }

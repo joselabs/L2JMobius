@@ -30,7 +30,7 @@ import org.l2jmobius.gameserver.network.ServerPackets;
  */
 public class PartyMemberPosition extends ServerPacket
 {
-	private final Map<Integer, Location> locations = new HashMap<>();
+	private final Map<Integer, Location> _locations = new HashMap<>();
 	
 	public PartyMemberPosition(Party party)
 	{
@@ -39,14 +39,13 @@ public class PartyMemberPosition extends ServerPacket
 	
 	public void reuse(Party party)
 	{
-		locations.clear();
+		_locations.clear();
 		for (Player member : party.getMembers())
 		{
-			if (member == null)
+			if (member != null)
 			{
-				continue;
+				_locations.put(member.getObjectId(), member.getLocation());
 			}
-			locations.put(member.getObjectId(), member.getLocation());
 		}
 	}
 	
@@ -54,8 +53,8 @@ public class PartyMemberPosition extends ServerPacket
 	public void write()
 	{
 		ServerPackets.PARTY_MEMBER_POSITION.writeId(this);
-		writeInt(locations.size());
-		for (Entry<Integer, Location> entry : locations.entrySet())
+		writeInt(_locations.size());
+		for (Entry<Integer, Location> entry : _locations.entrySet())
 		{
 			final Location loc = entry.getValue();
 			writeInt(entry.getKey());

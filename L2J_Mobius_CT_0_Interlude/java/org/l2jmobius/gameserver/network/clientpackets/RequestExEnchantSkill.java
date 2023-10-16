@@ -38,7 +38,6 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ShortCutRegister;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Util;
 
 /**
@@ -205,7 +204,7 @@ public class RequestExEnchantSkill implements ClientPacket
 			}
 		}
 		((Folk) trainer).showEnchantSkillList(player);
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		player.sendSkillList();
 		
 		// Update all the shortcuts to this skill.

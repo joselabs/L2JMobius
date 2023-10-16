@@ -21,7 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -35,6 +35,7 @@ import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
+import org.l2jmobius.gameserver.model.clan.ClanMember;
 import org.l2jmobius.gameserver.model.holders.RevengeHistoryHolder;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
@@ -435,7 +436,40 @@ public class RevengeHistoryManager
 			revenge.setType(RevengeType.OWN_HELP_REQUEST);
 			revenge.setShareTime(currentTime);
 			
-			final Collection<Player> targets = type == 1 ? (player.getClan() == null ? Collections.emptyList() : player.getClan().getOnlineMembers(player.getObjectId())) : type == 2 ? RankManager.getInstance().getTop50() : Collections.emptyList();
+			final List<Player> targets = new LinkedList<>();
+			if (type == 1)
+			{
+				if (player.getClan() != null)
+				{
+					for (ClanMember member : player.getClan().getMembers())
+					{
+						if (member.isOnline())
+						{
+							targets.add(member.getPlayer());
+						}
+						else
+						{
+							saveToRevengeHistory(player, killer, revenge, currentTime, member.getObjectId());
+						}
+					}
+				}
+			}
+			else if (type == 2)
+			{
+				for (Integer playerObjectId : RankManager.getInstance().getTop50())
+				{
+					final Player plr = World.getInstance().getPlayer(playerObjectId);
+					if (plr != null)
+					{
+						targets.add(plr);
+					}
+					else
+					{
+						saveToRevengeHistory(player, killer, revenge, currentTime, playerObjectId);
+					}
+				}
+			}
+			
 			for (Player target : targets)
 			{
 				if (target == killer)
@@ -444,23 +478,29 @@ public class RevengeHistoryManager
 				}
 				
 				final int targetObjectId = target.getObjectId();
-				final List<RevengeHistoryHolder> targetHistory = REVENGE_HISTORY.containsKey(targetObjectId) ? REVENGE_HISTORY.get(targetObjectId) : new CopyOnWriteArrayList<>();
-				for (RevengeHistoryHolder temp : targetHistory)
-				{
-					if (temp.getVictimName().equals(player.getName()) && temp.getKillerName().equals(killer.getName()) && (temp != revenge))
-					{
-						targetHistory.remove(temp);
-						break;
-					}
-				}
-				targetHistory.add(new RevengeHistoryHolder(killer, player, RevengeType.HELP_REQUEST, 1, revenge.getKillTime(), currentTime));
-				REVENGE_HISTORY.put(targetObjectId, targetHistory);
+				saveToRevengeHistory(player, killer, revenge, currentTime, targetObjectId);
 				
 				target.sendPacket(new ExPvpBookShareRevengeNewRevengeInfo(player.getName(), killer.getName(), RevengeType.HELP_REQUEST));
 				target.sendPacket(new ExPvpBookShareRevengeList(target));
 			}
 		}
 		player.sendPacket(new ExPvpBookShareRevengeList(player));
+	}
+	
+	private void saveToRevengeHistory(Player player, Player killer, RevengeHistoryHolder revenge, long currentTime, int objectId)
+	{
+		final List<RevengeHistoryHolder> targetHistory = REVENGE_HISTORY.containsKey(objectId) ? REVENGE_HISTORY.get(objectId) : new CopyOnWriteArrayList<>();
+		for (RevengeHistoryHolder holder : targetHistory)
+		{
+			if (holder.getVictimName().equals(player.getName()) && holder.getKillerName().equals(killer.getName()) && (holder != revenge))
+			{
+				targetHistory.remove(holder);
+				break;
+			}
+		}
+		
+		targetHistory.add(new RevengeHistoryHolder(killer, player, RevengeType.HELP_REQUEST, 1, revenge.getKillTime(), currentTime));
+		REVENGE_HISTORY.put(objectId, targetHistory);
 	}
 	
 	public Collection<RevengeHistoryHolder> getHistory(Player player)

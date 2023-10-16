@@ -25,7 +25,7 @@ import java.net.Socket;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.CharNameTable;
+import org.l2jmobius.gameserver.data.CharInfoTable;
 import org.l2jmobius.gameserver.data.CharStatTable;
 import org.l2jmobius.gameserver.data.CharTemplateTable;
 import org.l2jmobius.gameserver.data.ClanTable;
@@ -80,7 +80,7 @@ public class GameServer extends Thread
 	protected final CharTemplateTable _charTemplates;
 	protected final IdManager _idFactory;
 	protected final SpawnTable _spawnTable;
-	protected final CharNameTable _charNametable;
+	protected final CharInfoTable _charInfotable;
 	protected final GameTimeTaskManager _gameTimeTaskManager;
 	protected final Announcements _announcements;
 	protected final MapRegionTable _mapRegions;
@@ -146,7 +146,7 @@ public class GameServer extends Thread
 		new File("data/crests").mkdirs();
 		_loginController = LoginController.getInstance();
 		_loginController.setMaxAllowedOnlinePlayers(Config.MAXIMUM_ONLINE_PLAYERS);
-		_charNametable = CharNameTable.getInstance();
+		_charInfotable = CharInfoTable.getInstance();
 		_idFactory = IdManager.getInstance();
 		_itemTable = ItemTable.getInstance();
 		if (!_itemTable.isInitialized())

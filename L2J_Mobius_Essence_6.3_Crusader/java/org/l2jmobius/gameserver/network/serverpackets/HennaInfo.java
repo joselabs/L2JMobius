@@ -39,6 +39,11 @@ public class HennaInfo extends ServerPacket
 		_player = player;
 		for (HennaPoten hennaPoten : _player.getHennaPotenList())
 		{
+			if (hennaPoten == null)
+			{
+				continue;
+			}
+			
 			final Henna henna = hennaPoten.getHenna();
 			if (henna != null)
 			{

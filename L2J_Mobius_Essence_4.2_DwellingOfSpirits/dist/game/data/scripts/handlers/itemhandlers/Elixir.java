@@ -34,15 +34,14 @@ public class Elixir extends ItemSkills
 		}
 		
 		final int elixirsAvailable = playable.getActingPlayer().getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0);
-		final int elixirsUsed = playable.getActingPlayer().getVariables().getInt(PlayerVariables.ELIXIRS_USED, 0) + elixirsAvailable;
 		if ((playable.getLevel() < 76) || //
-			((playable.getLevel() < 88) && (elixirsUsed >= 5)) || //
-			((playable.getLevel() < 91) && (elixirsUsed >= 10)) || //
-			((playable.getLevel() < 92) && (elixirsUsed >= 11)) || //
-			((playable.getLevel() < 93) && (elixirsUsed >= 12)) || //
-			((playable.getLevel() < 94) && (elixirsUsed >= 13)) || //
-			((playable.getLevel() < 95) && (elixirsUsed >= 14)) || //
-			((playable.getLevel() < 100) && (elixirsUsed >= 15)))
+			((playable.getLevel() < 88) && (elixirsAvailable >= 5)) || //
+			((playable.getLevel() < 91) && (elixirsAvailable >= 10)) || //
+			((playable.getLevel() < 92) && (elixirsAvailable >= 11)) || //
+			((playable.getLevel() < 93) && (elixirsAvailable >= 12)) || //
+			((playable.getLevel() < 94) && (elixirsAvailable >= 13)) || //
+			((playable.getLevel() < 95) && (elixirsAvailable >= 14)) || //
+			((playable.getLevel() < 100) && (elixirsAvailable >= 15)))
 		{
 			playable.sendPacket(SystemMessageId.THE_ELIXIR_UNAVAILABLE);
 			return false;
@@ -51,7 +50,7 @@ public class Elixir extends ItemSkills
 		if (super.useItem(playable, item, forceUse))
 		{
 			playable.getActingPlayer().getVariables().set(PlayerVariables.ELIXIRS_AVAILABLE, elixirsAvailable + 1);
-			playable.sendPacket(new SystemMessage(SystemMessageId.THANKS_TO_THE_ELIXIR_CHARACTER_S_STAT_POINTS_S1).addInt(elixirsUsed + 1));
+			playable.sendPacket(new SystemMessage(SystemMessageId.THANKS_TO_THE_ELIXIR_CHARACTER_S_STAT_POINTS_S1).addInt(elixirsAvailable + 1));
 			playable.getActingPlayer().broadcastUserInfo();
 			return true;
 		}

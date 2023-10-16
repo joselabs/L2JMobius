@@ -339,6 +339,7 @@ public class HeroBookManager
 			else
 			{
 				holder.setCurrentExp(0);
+				saveCurrentPlayerProgress(player, holder);
 				resultStatus = false;
 			}
 		}

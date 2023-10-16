@@ -24,6 +24,8 @@ import org.l2jmobius.gameserver.communitybbs.CommunityBoard;
 import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.handler.AdminCommandHandler;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
+import org.l2jmobius.gameserver.handler.IVoicedCommandHandler;
+import org.l2jmobius.gameserver.handler.VoicedCommandHandler;
 import org.l2jmobius.gameserver.instancemanager.RebirthManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
@@ -198,6 +200,14 @@ public class RequestBypassToServer implements ClientPacket
 				if (object instanceof Npc)
 				{
 					((Npc) object).onBypassFeedback(player, _command);
+				}
+			}
+			else if (_command.startsWith("voice ."))
+			{
+				final IVoicedCommandHandler vch = VoicedCommandHandler.getInstance().getVoicedCommandHandler("voice");
+				if (vch != null)
+				{
+					vch.useVoicedCommand(_command, player, null);
 				}
 			}
 			else if (_command.startsWith("bbs_") || _command.startsWith("_bbs") || _command.startsWith("_friend") || _command.startsWith("_mail") || _command.startsWith("_block"))

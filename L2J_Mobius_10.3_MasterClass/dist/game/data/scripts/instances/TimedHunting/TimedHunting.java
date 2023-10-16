@@ -37,8 +37,10 @@ public class TimedHunting extends AbstractInstance
 	// Misc
 	private static final int[] TEMPLATE_IDS =
 	{
-		1007, // Isle of Souls
-		1013, // Corroded Fields
+		1001, // Fioren's Crystal Prison
+		1006, // Jamoa Camp
+		1007, // Pantheon's Museum
+		1013, // Devastated Innadril
 		1020, // Tower of Insolence
 	};
 	

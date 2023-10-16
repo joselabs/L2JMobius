@@ -74,7 +74,7 @@ public class Q00377_ExplorationOfTheGiantsCavePart2 extends Quest
 			}
 			case "31147-04.htm":
 			{
-				htmltext = checkItems(st);
+				htmltext = checkItems(player);
 				break;
 			}
 			case "31147-07.htm":
@@ -91,11 +91,7 @@ public class Q00377_ExplorationOfTheGiantsCavePart2 extends Quest
 	public String onTalk(Npc npc, Player player)
 	{
 		String htmltext = getNoQuestMsg(player);
-		final QuestState st = player.getQuestState(getName());
-		if (st == null)
-		{
-			return htmltext;
-		}
+		final QuestState st = getQuestState(player, true);
 		
 		switch (st.getState())
 		{
@@ -106,7 +102,7 @@ public class Q00377_ExplorationOfTheGiantsCavePart2 extends Quest
 			}
 			case State.STARTED:
 			{
-				htmltext = checkItems(st);
+				htmltext = checkItems(player);
 				break;
 			}
 		}
@@ -117,22 +113,24 @@ public class Q00377_ExplorationOfTheGiantsCavePart2 extends Quest
 	@Override
 	public String onKill(Npc npc, Player player, boolean isSummon)
 	{
-		final QuestState qs = getRandomPartyMemberState(player, -1, 3, npc);
-		if (qs != null)
+		final Player partyMember = getRandomPartyMemberState(player, State.STARTED);
+		if (partyMember != null)
 		{
-			giveItemRandomly(qs.getPlayer(), npc, ANCIENT_BOOK, 1, 0, 0.8, true);
+			giveItemRandomly(partyMember, npc, ANCIENT_BOOK, 1, 0, 0.8, true);
+			return null;
 		}
+		
 		return super.onKill(npc, player, isSummon);
 	}
 	
-	private static String checkItems(QuestState st)
+	private static String checkItems(Player player)
 	{
 		for (int type = 0; type < BOOKS.length; type++)
 		{
 			boolean complete = true;
 			for (int book : BOOKS[type])
 			{
-				if (!hasQuestItems(st.getPlayer(), book))
+				if (!hasQuestItems(player, book))
 				{
 					complete = false;
 				}
@@ -142,10 +140,10 @@ public class Q00377_ExplorationOfTheGiantsCavePart2 extends Quest
 			{
 				for (int book : BOOKS[type])
 				{
-					takeItems(st.getPlayer(), book, 1);
+					takeItems(player, book, 1);
 				}
 				
-				giveItems(st.getPlayer(), RECIPES[type][getRandom(RECIPES[type].length)], 1);
+				giveItems(player, RECIPES[type][getRandom(RECIPES[type].length)], 1);
 				return "31147-04.htm";
 			}
 		}

@@ -31,6 +31,7 @@ import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
+import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
@@ -186,7 +187,7 @@ public class Die extends ServerPacket
 			
 			int getValue = maxResTime <= originalValue ? maxResTime : originalValue + 1;
 			ResurrectByPaymentHolder rbph = Config.RESURRECT_BY_PAYMENT_SECOND_RESURRECT_VALUES.get(level).get(getValue);
-			writeInt(rbph.getAmount()); // Adena resurrection
+			writeInt((int) (rbph.getAmount() * player.getStat().getValue(Stat.RESURRECTION_FEE_MODIFIER, 1))); // Adena resurrection
 			writeInt(Math.toIntExact(Math.round(rbph.getResurrectPercent()))); // Adena count%
 			break;
 		}
@@ -219,7 +220,7 @@ public class Die extends ServerPacket
 			
 			final int getValue = maxResTime <= originalValue ? maxResTime : originalValue + 1;
 			ResurrectByPaymentHolder rbph = Config.RESURRECT_BY_PAYMENT_FIRST_RESURRECT_VALUES.get(level).get(getValue);
-			writeInt(rbph.getAmount()); // L-Coin resurrection
+			writeInt((int) (rbph.getAmount() * player.getStat().getValue(Stat.RESURRECTION_FEE_MODIFIER, 1))); // L-Coin resurrection
 			writeInt(Math.toIntExact(Math.round(rbph.getResurrectPercent()))); // L-Coin count%
 			break;
 		}

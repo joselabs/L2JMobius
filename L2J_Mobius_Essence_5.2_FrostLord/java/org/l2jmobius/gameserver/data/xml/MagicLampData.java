@@ -73,7 +73,7 @@ public class MagicLampData implements IXmlReader
 	{
 		if (Config.ENABLE_MAGIC_LAMP && (player.getLampCount() < player.getMaxLampCount()))
 		{
-			final int lampExp = (int) (exp * (rateModifiers ? Config.MAGIC_LAMP_CHARGE_RATE * player.getStat().getMul(Stat.MAGIC_LAMP_EXP_RATE, 1) : 1));
+			final int lampExp = (int) ((exp * player.getStat().getExpBonusMultiplier()) * (rateModifiers ? Config.MAGIC_LAMP_CHARGE_RATE * player.getStat().getMul(Stat.MAGIC_LAMP_EXP_RATE, 1) : 1));
 			int calc = lampExp + player.getLampExp();
 			if (calc > Config.MAGIC_LAMP_MAX_LEVEL_EXP)
 			{

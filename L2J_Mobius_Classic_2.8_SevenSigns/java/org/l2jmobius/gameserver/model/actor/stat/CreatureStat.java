@@ -16,11 +16,9 @@
  */
 package org.l2jmobius.gameserver.model.actor.stat;
 
-import java.util.Collections;
 import java.util.Deque;
 import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -59,9 +57,12 @@ public class CreatureStat
 	/** Creature's maximum buff count. */
 	private int _maxBuffCount = Config.BUFFS_MAX_AMOUNT;
 	private double _vampiricSum = 0;
+	private double _mpVampiricSum = 0;
 	
 	private final Map<Stat, Double> _statsAdd = new EnumMap<>(Stat.class);
 	private final Map<Stat, Double> _statsMul = new EnumMap<>(Stat.class);
+	private final Map<Stat, Double> _addValueCache = new EnumMap<>(Stat.class);
+	private final Map<Stat, Double> _mulValueCache = new EnumMap<>(Stat.class);
 	private final Map<Stat, Map<MoveType, Double>> _moveTypeStats = new ConcurrentHashMap<>();
 	private final Map<Integer, Double> _reuseStat = new ConcurrentHashMap<>();
 	private final Map<Integer, Double> _mpConsumeStat = new ConcurrentHashMap<>();
@@ -760,7 +761,7 @@ public class CreatureStat
 	 * @param stat
 	 * @param value
 	 */
-	public void mergeAdd(Stat stat, double value)
+	public void mergeAdd(Stat stat, Double value)
 	{
 		_statsAdd.merge(stat, value, stat::functionAdd);
 	}
@@ -770,7 +771,7 @@ public class CreatureStat
 	 * @param stat
 	 * @param value
 	 */
-	public void mergeMul(Stat stat, double value)
+	public void mergeMul(Stat stat, Double value)
 	{
 		_statsMul.merge(stat, value, stat::functionMul);
 	}
@@ -857,17 +858,20 @@ public class CreatureStat
 		_statsAdd.clear();
 		_statsMul.clear();
 		_vampiricSum = 0;
+		_mpVampiricSum = 0;
 		
 		// Initialize default values
 		for (Stat stat : Stat.values())
 		{
-			if (stat.getResetAddValue() != 0)
+			final Double resetAddValue = stat.getResetAddValue();
+			if (resetAddValue.doubleValue() != 0)
 			{
-				_statsAdd.put(stat, stat.getResetAddValue());
+				_statsAdd.put(stat, resetAddValue);
 			}
-			if (stat.getResetMulValue() != 0)
+			final Double resetMulValue = stat.getResetMulValue();
+			if (resetMulValue.doubleValue() != 0)
 			{
-				_statsMul.put(stat, stat.getResetMulValue());
+				_statsMul.put(stat, resetMulValue);
 			}
 		}
 	}
@@ -878,17 +882,14 @@ public class CreatureStat
 	 */
 	public void recalculateStats(boolean broadcast)
 	{
-		// Copy old data before wiping it out
-		final Map<Stat, Double> adds = !broadcast ? Collections.emptyMap() : new EnumMap<>(_statsAdd);
-		final Map<Stat, Double> muls = !broadcast ? Collections.emptyMap() : new EnumMap<>(_statsMul);
-		
+		Set<Stat> changed = null;
 		_lock.writeLock().lock();
 		try
 		{
-			// Wipe all the data
+			// Wipe all the data.
 			resetStats();
 			
-			// Call pump to each effect
+			// Call pump to each effect.
 			for (BuffInfo info : _creature.getEffectList().getPassives())
 			{
 				if (info.isInUse() && info.getSkill().checkConditions(SkillConditionScope.PASSIVE, _creature, _creature))
@@ -947,7 +948,7 @@ public class CreatureStat
 				}
 			}
 			
-			// Merge with additional stats
+			// Merge with additional stats.
 			for (StatHolder holder : _additionalAdd)
 			{
 				if (holder.verifyCondition(_creature))
@@ -964,30 +965,45 @@ public class CreatureStat
 			}
 			_attackSpeedMultiplier = Formulas.calcAtkSpdMultiplier(_creature);
 			_mAttackSpeedMultiplier = Formulas.calcMAtkSpdMultiplier(_creature);
+			
+			if (broadcast)
+			{
+				// Calculate the difference between old and new stats.
+				changed = EnumSet.noneOf(Stat.class);
+				for (Stat stat : Stat.values())
+				{
+					// Check if add value changed for this stat.
+					final Double resetAddValue = stat.getResetAddValue();
+					final Double addValue = _statsAdd.getOrDefault(stat, resetAddValue);
+					if (addValue.doubleValue() != _addValueCache.getOrDefault(stat, resetAddValue).doubleValue())
+					{
+						_addValueCache.put(stat, addValue);
+						changed.add(stat);
+					}
+					else // Check if mul value changed for this stat.
+					{
+						final Double resetMulValue = stat.getResetMulValue();
+						final Double mulValue = _statsMul.getOrDefault(stat, resetMulValue);
+						if (mulValue.doubleValue() != _mulValueCache.getOrDefault(stat, resetMulValue).doubleValue())
+						{
+							_mulValueCache.put(stat, mulValue);
+							changed.add(stat);
+						}
+					}
+				}
+			}
 		}
 		finally
 		{
 			_lock.writeLock().unlock();
 		}
 		
-		// Notify recalculation to child classes
+		// Notify recalculation to child classes.
 		onRecalculateStats(broadcast);
 		
-		if (broadcast)
+		// Broadcast changes.
+		if ((changed != null) && !changed.isEmpty())
 		{
-			// Calculate the difference between old and new stats
-			final Set<Stat> changed = new HashSet<>();
-			for (Stat stat : Stat.values())
-			{
-				if (_statsAdd.getOrDefault(stat, stat.getResetAddValue()) != adds.getOrDefault(stat, stat.getResetAddValue()))
-				{
-					changed.add(stat);
-				}
-				else if (_statsMul.getOrDefault(stat, stat.getResetMulValue()) != muls.getOrDefault(stat, stat.getResetMulValue()))
-				{
-					changed.add(stat);
-				}
-			}
 			_creature.broadcastModifiedStats(changed);
 		}
 	}
@@ -1104,6 +1120,24 @@ public class CreatureStat
 		try
 		{
 			return _vampiricSum;
+		}
+		finally
+		{
+			_lock.readLock().unlock();
+		}
+	}
+	
+	public void addToMpVampiricSum(double sum)
+	{
+		_mpVampiricSum += sum;
+	}
+	
+	public double getMpVampiricSum()
+	{
+		_lock.readLock().lock();
+		try
+		{
+			return _mpVampiricSum;
 		}
 		finally
 		{

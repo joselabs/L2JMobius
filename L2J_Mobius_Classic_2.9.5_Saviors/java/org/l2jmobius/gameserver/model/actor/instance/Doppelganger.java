@@ -16,15 +16,16 @@
  */
 package org.l2jmobius.gameserver.model.actor.instance;
 
-import java.util.logging.Logger;
+import java.util.concurrent.ScheduledFuture;
 
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CreatureAI;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.DoppelgangerAI;
 import org.l2jmobius.gameserver.enums.Team;
+import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.effects.EffectFlag;
@@ -38,11 +39,11 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @author Nik
  */
-public class Doppelganger extends Npc
+public class Doppelganger extends Attackable
 {
-	protected static final Logger log = Logger.getLogger(Doppelganger.class.getName());
-	
 	private boolean _copySummonerEffects = true;
+	private ScheduledFuture<?> _attackTask = null;
+	private Creature _attackTarget = null;
 	
 	public Doppelganger(NpcTemplate template, Player owner)
 	{
@@ -101,6 +102,35 @@ public class Doppelganger extends Npc
 	public void setCopySummonerEffects(boolean copySummonerEffects)
 	{
 		_copySummonerEffects = copySummonerEffects;
+	}
+	
+	public void stopAttackTask()
+	{
+		if ((_attackTask != null) && !_attackTask.isCancelled() && !_attackTask.isDone())
+		{
+			_attackTask.cancel(false);
+			_attackTask = null;
+			_attackTarget = null;
+		}
+	}
+	
+	public void startAttackTask(Creature target)
+	{
+		stopAttackTask();
+		_attackTarget = target;
+		_attackTask = ThreadPool.scheduleAtFixedRate(this::thinkCombat, 1000, 1000);
+	}
+	
+	private void thinkCombat()
+	{
+		if (_attackTarget == null)
+		{
+			stopAttackTask();
+			return;
+		}
+		
+		doAutoAttack(_attackTarget);
+		// TODO: Cast skills.
 	}
 	
 	@Override
@@ -182,6 +212,13 @@ public class Doppelganger extends Npc
 	public Player getActingPlayer()
 	{
 		return getSummoner() != null ? getSummoner().getActingPlayer() : super.getActingPlayer();
+	}
+	
+	@Override
+	public boolean deleteMe()
+	{
+		stopAttackTask();
+		return super.deleteMe();
 	}
 	
 	@Override

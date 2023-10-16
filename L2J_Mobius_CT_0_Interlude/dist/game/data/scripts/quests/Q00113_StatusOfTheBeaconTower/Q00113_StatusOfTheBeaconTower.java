@@ -66,12 +66,8 @@ public class Q00113_StatusOfTheBeaconTower extends Quest
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState st = player.getQuestState(getName());
 		String htmltext = getNoQuestMsg(player);
-		if (st == null)
-		{
-			return htmltext;
-		}
+		final QuestState st = getQuestState(player, true);
 		
 		switch (st.getState())
 		{

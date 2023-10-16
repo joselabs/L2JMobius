@@ -39,6 +39,7 @@ public class MAttackFinalizer implements IStatFunction
 		if (creature.getActiveWeaponInstance() != null)
 		{
 			baseValue += creature.getStat().getWeaponBonusMAtk();
+			baseValue *= creature.getStat().getMul(Stat.WEAPON_BONUS_MAGIC_ATTACK_MULTIPIER, 1);
 		}
 		
 		baseValue += calcEnchantedItemBonus(creature, stat);

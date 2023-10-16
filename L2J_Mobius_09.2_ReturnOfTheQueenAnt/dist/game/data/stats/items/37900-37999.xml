@@ -7,6 +7,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37790" min="1" max="1" chance="100" /> <!-- High-grade SP Rune - 1-day -->
+		</capsuled_items>
 	</item>
 	<item id="37901" name="Low-grade SP Rune Box (7-day)" type="EtcItem">
 		<!-- Double-click to obtain Low-grade SP Rune (7-day). -->
@@ -15,6 +19,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37895" min="1" max="1" chance="100" /> <!-- Low-grade SP Rune - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="37902" name="Mid-grade SP Rune Box (7-day)" type="EtcItem">
 		<!-- Double-click to obtain Mid-grade SP Rune (7-day). -->
@@ -23,6 +31,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37896" min="1" max="1" chance="100" /> <!-- Mid-grade SP Rune - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="37903" name="High-grade SP Rune Box (7-day)" type="EtcItem">
 		<!-- Double-click to obtain an High-grade SP Rune (7-day). -->
@@ -40,14 +52,14 @@
 		</capsuled_items>
 	</item>
 	<item id="37904" name="Scroll: 1,000,000,000 SP" type="EtcItem">
-		<!-- Scroll the replenishes 1,000,000,000 SP. -->
+		<!-- SP +1,000,000,000. -->
 		<set name="icon" val="icon.etc_sp_scroll3_i00" />
 		<set name="weight" val="30" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
 		<set name="handler" val="ItemSkills" />
@@ -533,7 +545,7 @@
 		</stats>
 	</item>
 	<item id="37937" name="Awakened Hero's Bow (7-day)" additionalName="Haste" type="Weapon">
-		<!-- Awakened hero's weapon. Bow. Increases Atk. Spd. 7-day. Cannot be used in the Olympiad. Kamaels can use the Change Weapon skill to turn this into a Shooter. Cannot be used by Chaotic characters. -->
+		<!-- Awakened hero's weapon. Increases Atk. Spd when using a bow. Available for 7 d. Cannot be used in the Olympiad. Kamaels can use the Conversion skill to turn it into a crossbow. Cannot be used by Chaotic characters. -->
 		<set name="icon" val="icon.weapon_the_bow_of_hero_i00" />
 		<set name="weapon_type" val="BOW" />
 		<set name="default_action" val="EQUIP" />
@@ -929,7 +941,7 @@
 		</capsuled_items>
 	</item>
 	<item id="37957" name="Requiem Guardian Crafting Pack" type="EtcItem">
-		<!-- Double-click to obtain all ingredients needed for crafting Requiem Shooter. -->
+		<!-- Double-click to obtain all ingredients needed for crafting Requiem Guardian. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_sellable" val="false" />
@@ -940,11 +952,11 @@
 			<item id="36523" min="28" max="28" chance="100" /> <!-- Corroded Adamantite Nugget -->
 			<item id="36543" min="13" max="13" chance="100" /> <!-- Corroded Adamantite Wire -->
 			<item id="17371" min="181" max="181" chance="100" /> <!-- R-grade Crystal -->
-			<item id="36739" min="1" max="1" chance="100" /> <!-- Recipe: Requiem Shooter (60%) -->
+			<item id="36739" min="1" max="1" chance="100" /> <!-- Recipe: Requiem Guardian (60%) -->
 			<item id="19440" min="4" max="4" chance="100" /> <!-- R-grade Gemstone -->
 			<item id="36563" min="9" max="9" chance="100" /> <!-- Corroded Synthetic Cokes -->
 			<item id="36548" min="11" max="11" chance="100" /> <!-- Corroded Mid-grade Weapon Fragment -->
-			<item id="36801" min="10" max="10" chance="100" /> <!-- Corroded Requiem Shooter Fragment -->
+			<item id="36801" min="10" max="10" chance="100" /> <!-- Corroded Requiem Guardian Fragment -->
 		</capsuled_items>
 	</item>
 	<item id="37958" name="Requiem Buster Crafting Pack" type="EtcItem">
@@ -1530,7 +1542,7 @@
 		</capsuled_items>
 	</item>
 	<item id="37988" name="Apocalypse Guardian Crafting Pack" type="EtcItem">
-		<!-- Double-click to obtain all ingredients needed for crafting Apocalypse Shooter. -->
+		<!-- Double-click to obtain all ingredients needed for crafting Apocalypse Guardian. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_sellable" val="false" />
@@ -1541,11 +1553,11 @@
 			<item id="36523" min="75" max="75" chance="100" /> <!-- Corroded Adamantite Nugget -->
 			<item id="36543" min="35" max="35" chance="100" /> <!-- Corroded Adamantite Wire -->
 			<item id="17371" min="492" max="492" chance="100" /> <!-- R-grade Crystal -->
-			<item id="36770" min="1" max="1" chance="100" /> <!-- Recipe: Apocalypse Shooter (60%) -->
+			<item id="36770" min="1" max="1" chance="100" /> <!-- Recipe: Apocalypse Guardian (60%) -->
 			<item id="19440" min="9" max="9" chance="100" /> <!-- R-grade Gemstone -->
 			<item id="36563" min="22" max="22" chance="100" /> <!-- Corroded Synthetic Cokes -->
 			<item id="36548" min="30" max="30" chance="100" /> <!-- Corroded Mid-grade Weapon Fragment -->
-			<item id="36832" min="10" max="10" chance="100" /> <!-- Corroded Apocalypse Shooter Fragment -->
+			<item id="36832" min="10" max="10" chance="100" /> <!-- Corroded Apocalypse Guardian Fragment -->
 		</capsuled_items>
 	</item>
 	<item id="37989" name="Apocalypse Buster Crafting Pack" type="EtcItem">

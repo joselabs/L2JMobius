@@ -49,6 +49,11 @@ public class RequestQuestAbort implements ClientPacket
 		final Quest qe = QuestManager.getInstance().getQuest(_questId);
 		if (qe != null)
 		{
+			if ((_questId == 503) && (player.getClan() != null) && player.isClanLeader())
+			{
+				qe.finishQuestToClan(player);
+			}
+			
 			final QuestState qs = player.getQuestState(qe.getName());
 			if (qs != null)
 			{

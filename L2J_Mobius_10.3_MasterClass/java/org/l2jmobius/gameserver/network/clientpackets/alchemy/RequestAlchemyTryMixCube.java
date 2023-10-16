@@ -57,26 +57,22 @@ public class RequestAlchemyTryMixCube implements ClientPacket
 	public void read(ReadablePacket packet)
 	{
 		final int itemsCount = packet.readInt();
-		if ((itemsCount <= 0) || (itemsCount > 4))
+		if ((itemsCount < 1) || (itemsCount > 4))
 		{
 			return;
 		}
 		
-		int id;
-		long count;
 		for (int i = 0; i < itemsCount; i++)
 		{
-			id = packet.readInt();
-			count = packet.readLong();
-			if ((count > 0) && (count < Long.MAX_VALUE))
-			{
-				_items.add(new ItemHolder(id, count));
-			}
-			else // Player used packet injection tool.
+			final int id = packet.readInt();
+			final long count = packet.readLong();
+			if ((count < 1) || (count > 10000))
 			{
 				_items = null;
 				return;
 			}
+			
+			_items.add(new ItemHolder(id, count));
 		}
 	}
 	
@@ -140,7 +136,7 @@ public class RequestAlchemyTryMixCube implements ClientPacket
 				return;
 			}
 			
-			if ((itemInstance.getCount() <= 0) || (itemInstance.getCount() < item.getCount()))
+			if ((itemInstance.getCount() < 1) || (itemInstance.getCount() < item.getCount()))
 			{
 				player.sendPacket(new ExTryMixCube(TryMixCubeType.FAIL_ITEM_WRONG));
 				return;
@@ -171,8 +167,14 @@ public class RequestAlchemyTryMixCube implements ClientPacket
 			}
 		}
 		
+		if (itemsPrice < 0)
+		{
+			player.sendPacket(new ExTryMixCube(TryMixCubeType.FAIL_ITEM_WRONG));
+			return;
+		}
+		
 		// Calculate the amount of air stones the player should received based on the total price of items he mixed.
-		int airStonesCount = (int) Math.floor((itemsPrice / 5_000) * (_items.size() < 3 ? 0.3f : 0.5f));
+		int airStonesCount = (int) Math.floor((itemsPrice / 5000) * (_items.size() < 3 ? 0.3f : 0.5f));
 		
 		// Process only if there is at least one air stone to give
 		if (airStonesCount > 0)

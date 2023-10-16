@@ -34,7 +34,6 @@ import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.model.PetData;
 import org.l2jmobius.gameserver.model.StatSet;
-import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.olympiad.Hero;
 
@@ -439,9 +438,9 @@ public class RankManager
 		return 0;
 	}
 	
-	public Collection<Player> getTop50()
+	public Collection<Integer> getTop50()
 	{
-		final List<Player> result = new LinkedList<>();
+		final List<Integer> result = new LinkedList<>();
 		for (int i = 1; i <= 50; i++)
 		{
 			final StatSet rank = _mainList.get(i);
@@ -449,14 +448,7 @@ public class RankManager
 			{
 				break;
 			}
-			
-			final Player player = World.getInstance().getPlayer(rank.getInt("charId"));
-			if ((player == null) || (player.isOnlineInt() != 1))
-			{
-				continue;
-			}
-			
-			result.add(player);
+			result.add(rank.getInt("charId"));
 		}
 		return result;
 	}

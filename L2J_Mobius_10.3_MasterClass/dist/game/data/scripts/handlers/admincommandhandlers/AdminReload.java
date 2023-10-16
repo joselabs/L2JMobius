@@ -32,23 +32,38 @@ import org.l2jmobius.gameserver.data.xml.ArmorSetData;
 import org.l2jmobius.gameserver.data.xml.AttendanceRewardData;
 import org.l2jmobius.gameserver.data.xml.BuyListData;
 import org.l2jmobius.gameserver.data.xml.ClanShopData;
+import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.CombinationItemsData;
 import org.l2jmobius.gameserver.data.xml.DoorData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
 import org.l2jmobius.gameserver.data.xml.EquipmentUpgradeData;
+import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
 import org.l2jmobius.gameserver.data.xml.FishingData;
+import org.l2jmobius.gameserver.data.xml.InitialEquipmentData;
+import org.l2jmobius.gameserver.data.xml.InitialShortcutData;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
+import org.l2jmobius.gameserver.data.xml.LimitShopCraftData;
+import org.l2jmobius.gameserver.data.xml.LuckyGameData;
 import org.l2jmobius.gameserver.data.xml.MultisellData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.data.xml.NpcNameLocalisationData;
 import org.l2jmobius.gameserver.data.xml.OptionData;
+import org.l2jmobius.gameserver.data.xml.PetDataTable;
+import org.l2jmobius.gameserver.data.xml.PetSkillData;
+import org.l2jmobius.gameserver.data.xml.PlayerTemplateData;
+import org.l2jmobius.gameserver.data.xml.PlayerXpPercentLostData;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
+import org.l2jmobius.gameserver.data.xml.RecipeData;
 import org.l2jmobius.gameserver.data.xml.SayuneData;
+import org.l2jmobius.gameserver.data.xml.SecondaryAuthData;
 import org.l2jmobius.gameserver.data.xml.SendMessageLocalisationData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
+import org.l2jmobius.gameserver.data.xml.SkillTreeData;
+import org.l2jmobius.gameserver.data.xml.SpawnData;
 import org.l2jmobius.gameserver.data.xml.TeleporterData;
+import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
 import org.l2jmobius.gameserver.data.xml.TransformData;
 import org.l2jmobius.gameserver.data.xml.VariationData;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
@@ -194,6 +209,7 @@ public class AdminReload implements IAdminCommandHandler
 				case "skill":
 				{
 					SkillData.getInstance().reload();
+					SkillTreeData.getInstance().load();
 					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Skills.");
 					break;
 				}
@@ -319,6 +335,7 @@ public class AdminReload implements IAdminCommandHandler
 				case "fakeplayers":
 				{
 					FakePlayerData.getInstance().load();
+					FakePlayerChatManager.getInstance().load();
 					for (WorldObject obj : World.getInstance().getVisibleObjects())
 					{
 						if (obj.isFakePlayer())
@@ -368,10 +385,69 @@ public class AdminReload implements IAdminCommandHandler
 					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Equipment Upgrade data.");
 					break;
 				}
+				case "character":
+				{
+					ClassListData.getInstance().load();
+					PlayerTemplateData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Characters and Classes data.");
+					break;
+				}
 				case "variation":
 				{
 					VariationData.getInstance().load();
 					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Variation data.");
+					break;
+				}
+				case "exp":
+				{
+					ExperienceData.getInstance().load();
+					PlayerXpPercentLostData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Experience data.");
+					break;
+				}
+				case "initial":
+				{
+					InitialEquipmentData.getInstance().load();
+					InitialShortcutData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Initial data.");
+					break;
+				}
+				case "craft":
+				{
+					LimitShopCraftData.getInstance().load();
+					RecipeData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Craft data.");
+					break;
+				}
+				case "spawns":
+				{
+					SpawnData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Spawn data");
+					break;
+				}
+				case "session":
+				{
+					TimedHuntingZoneData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Session Zone data.");
+					break;
+				}
+				case "lucky":
+				{
+					LuckyGameData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Lucky Game data.");
+					break;
+				}
+				case "pet":
+				{
+					PetDataTable.getInstance().load();
+					PetSkillData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Pets data.");
+					break;
+				}
+				case "auth":
+				{
+					SecondaryAuthData.getInstance().load();
+					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Secondary Auth data.");
 					break;
 				}
 				default:

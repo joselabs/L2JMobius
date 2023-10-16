@@ -28,7 +28,7 @@ import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.network.NpcStringId;
 
-import quests.custom.Q10517_FafurionsMinions.Q10517_FafurionsMinions;
+import quests.Q10517_FafurionsMinions.Q10517_FafurionsMinions;
 
 /**
  * How to Overcome Fear (560)

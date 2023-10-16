@@ -17,7 +17,7 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.BlockList;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -60,14 +60,14 @@ public class RequestBlock implements ClientPacket
 			case UNBLOCK:
 			{
 				// Can't block/unblock inexisting or self.
-				final int targetId = CharNameTable.getInstance().getPlayerObjectId(_name);
+				final int targetId = CharInfoTable.getInstance().getIdByName(_name);
 				if ((targetId <= 0) || (player.getObjectId() == targetId))
 				{
 					player.sendPacket(SystemMessageId.YOU_HAVE_FAILED_TO_REGISTER_THE_USER_TO_YOUR_IGNORE_LIST);
 					return;
 				}
 				// Can't block a GM character.
-				if (CharNameTable.getInstance().getPlayerAccessLevel(targetId) > 0)
+				if (CharInfoTable.getInstance().getAccessLevelById(targetId) > 0)
 				{
 					player.sendPacket(SystemMessageId.YOU_MAY_NOT_IMPOSE_A_BLOCK_ON_A_GM);
 					return;

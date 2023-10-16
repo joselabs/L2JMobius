@@ -27,6 +27,8 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.enums.PrivateStoreType;
+import org.l2jmobius.gameserver.instancemanager.PrivateStoreHistoryManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
@@ -776,6 +778,8 @@ public class TradeList
 			}
 			removeItem(item.getObjectId(), -1, item.getCount());
 			
+			PrivateStoreHistoryManager.getInstance().registerTransaction(PrivateStoreType.SELL, newItem, item.getCount(), item.getCount() * item.getPrice());
+			
 			// Add changes to inventory update packets
 			if ((oldItem.getCount() > 0) && (oldItem != newItem))
 			{
@@ -958,6 +962,8 @@ public class TradeList
 			
 			removeItem(-1, item.getItemId(), item.getCount());
 			ok = true;
+			
+			PrivateStoreHistoryManager.getInstance().registerTransaction(PrivateStoreType.BUY, newItem, item.getCount(), item.getCount() * item.getPrice());
 			
 			// increase total price only after successful transaction
 			totalPrice = _totalPrice;

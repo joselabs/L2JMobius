@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.data.xml;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -90,7 +89,6 @@ public class LimitShopCraftData implements IXmlReader
 							final int category = parseInteger(attrs, "category");
 							final int minLevel = parseInteger(attrs, "minLevel", 1);
 							final int maxLevel = parseInteger(attrs, "maxLevel", 999);
-							final boolean announce = parseBoolean(attrs, "announce", false);
 							final int[] ingredientIds = new int[3];
 							ingredientIds[0] = 0;
 							ingredientIds[1] = 0;
@@ -117,6 +115,11 @@ public class LimitShopCraftData implements IXmlReader
 							float chance2 = 100f;
 							float chance3 = 100f;
 							float chance4 = 100f;
+							boolean announce = false;
+							boolean announce2 = false;
+							boolean announce3 = false;
+							boolean announce4 = false;
+							boolean announce5 = false;
 							int accountDailyLimit = 0;
 							int accountBuyLimit = 0;
 							for (Node b = d.getFirstChild(); b != null; b = b.getNextSibling())
@@ -129,11 +132,14 @@ public class LimitShopCraftData implements IXmlReader
 									final long ingredientQuantity = parseLong(attrs, "count", 1L);
 									final int ingredientEnchant = parseInteger(attrs, "enchant", 0);
 									
-									final ItemTemplate item = ItemTable.getInstance().getTemplate(ingredientId);
-									if (item == null)
+									if (ingredientId > 0)
 									{
-										LOGGER.severe(getClass().getSimpleName() + ": Item template null for itemId: " + productionId + " productId: " + id);
-										continue;
+										final ItemTemplate item = ItemTable.getInstance().getTemplate(ingredientId);
+										if (item == null)
+										{
+											LOGGER.severe(getClass().getSimpleName() + ": Item template null for itemId: " + productionId + " productId: " + id);
+											continue;
+										}
 									}
 									
 									if (ingredientIds[0] == 0)
@@ -180,17 +186,22 @@ public class LimitShopCraftData implements IXmlReader
 									productionId = parseInteger(attrs, "id");
 									count = parseLong(attrs, "count", 1L);
 									chance = parseFloat(attrs, "chance", 100f);
+									announce = parseBoolean(attrs, "announce", false);
 									productionId2 = parseInteger(attrs, "id2", 0);
 									count2 = parseLong(attrs, "count2", 1L);
 									chance2 = parseFloat(attrs, "chance2", 100f);
+									announce2 = parseBoolean(attrs, "announce2", false);
 									productionId3 = parseInteger(attrs, "id3", 0);
 									count3 = parseLong(attrs, "count3", 1L);
 									chance3 = parseFloat(attrs, "chance3", 100f);
+									announce3 = parseBoolean(attrs, "announce3", false);
 									productionId4 = parseInteger(attrs, "id4", 0);
 									count4 = parseLong(attrs, "count4", 1L);
 									chance4 = parseFloat(attrs, "chance4", 100f);
+									announce4 = parseBoolean(attrs, "announce4", false);
 									productionId5 = parseInteger(attrs, "id5", 0);
 									count5 = parseLong(attrs, "count5", 1L);
+									announce5 = parseBoolean(attrs, "announce5", false);
 									accountDailyLimit = parseInteger(attrs, "accountDailyLimit", 0);
 									accountBuyLimit = parseInteger(attrs, "accountBuyLimit", 0);
 									
@@ -203,7 +214,7 @@ public class LimitShopCraftData implements IXmlReader
 								}
 							}
 							
-							_products.add(new LimitShopProductHolder(id, category, minLevel, maxLevel, ingredientIds, ingredientQuantities, ingredientEnchants, productionId, count, chance, productionId2, count2, chance2, productionId3, count3, chance3, productionId4, count4, chance4, productionId5, count5, accountDailyLimit, accountBuyLimit, announce));
+							_products.add(new LimitShopProductHolder(id, category, minLevel, maxLevel, ingredientIds, ingredientQuantities, ingredientEnchants, productionId, count, chance, announce, productionId2, count2, chance2, announce2, productionId3, count3, chance3, announce3, productionId4, count4, chance4, announce4, productionId5, count5, announce5, accountDailyLimit, accountBuyLimit));
 						}
 					}
 				}
@@ -223,7 +234,7 @@ public class LimitShopCraftData implements IXmlReader
 		return null;
 	}
 	
-	public Collection<LimitShopProductHolder> getProducts()
+	public List<LimitShopProductHolder> getProducts()
 	{
 		return _products;
 	}

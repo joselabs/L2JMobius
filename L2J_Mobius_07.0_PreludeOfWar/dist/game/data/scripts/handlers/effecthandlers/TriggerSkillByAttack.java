@@ -16,11 +16,15 @@
  */
 package handlers.effecthandlers;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.enums.InstanceType;
+import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.handler.TargetHandler;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
@@ -56,6 +60,7 @@ public class TriggerSkillByAttack extends AbstractEffect
 	private final boolean _allowSkillAttack;
 	private final boolean _allowReflect;
 	private final int _skillLevelScaleTo;
+	private final List<SkillHolder> _triggerSkills;
 	
 	public TriggerSkillByAttack(StatSet params)
 	{
@@ -63,7 +68,7 @@ public class TriggerSkillByAttack extends AbstractEffect
 		_maxAttackerLevel = params.getInt("maxAttackerLevel", Integer.MAX_VALUE);
 		_minDamage = params.getInt("minDamage", 1);
 		_chance = params.getInt("chance", 100);
-		_skill = new SkillHolder(params.getInt("skillId"), params.getInt("skillLevel", 1));
+		_skill = new SkillHolder(params.getInt("skillId", 0), params.getInt("skillLevel", 1));
 		_targetType = params.getEnum("targetType", TargetType.class, TargetType.SELF);
 		_attackerType = params.getEnum("attackerType", InstanceType.class, InstanceType.Creature);
 		_isCritical = params.getBoolean("isCritical", false);
@@ -83,11 +88,28 @@ public class TriggerSkillByAttack extends AbstractEffect
 				_allowWeapons |= WeaponType.valueOf(s).mask();
 			}
 		}
+		
+		// Specific skills by level.
+		final String triggerSkills = params.getString("triggerSkills", "");
+		if (triggerSkills.isEmpty())
+		{
+			_triggerSkills = null;
+		}
+		else
+		{
+			final String[] split = triggerSkills.split(";");
+			_triggerSkills = new ArrayList<>(split.length);
+			for (String skill : split)
+			{
+				final String[] splitSkill = skill.split(",");
+				_triggerSkills.add(new SkillHolder(Integer.parseInt(splitSkill[0]), Integer.parseInt(splitSkill[1])));
+			}
+		}
 	}
 	
 	private void onAttackEvent(OnCreatureDamageDealt event)
 	{
-		if (event.isDamageOverTime() || (_chance == 0) || ((_skill.getSkillId() == 0) || (_skill.getSkillLevel() == 0)) || (!_allowNormalAttack && !_allowSkillAttack))
+		if (event.isDamageOverTime() || (_chance == 0) || ((_triggerSkills == null) && ((_skill.getSkillId() == 0) || (_skill.getSkillLevel() == 0))) || (!_allowNormalAttack && !_allowSkillAttack))
 		{
 			return;
 		}
@@ -138,7 +160,7 @@ public class TriggerSkillByAttack extends AbstractEffect
 		WorldObject target = null;
 		try
 		{
-			target = TargetHandler.getInstance().getHandler(_targetType).getTarget(event.getAttacker(), event.getTarget(), _skill.getSkill(), false, false, false);
+			target = TargetHandler.getInstance().getHandler(_targetType).getTarget(event.getAttacker(), event.getTarget(), _triggerSkills == null ? _skill.getSkill() : _triggerSkills.get(0).getSkill(), false, false, false);
 		}
 		catch (Exception e)
 		{
@@ -149,19 +171,48 @@ public class TriggerSkillByAttack extends AbstractEffect
 			return;
 		}
 		
-		final BuffInfo buffInfo = ((Creature) target).getEffectList().getBuffInfoBySkillId(_skill.getSkillId());
-		final Skill triggerSkill;
-		if ((_skillLevelScaleTo <= 0) || (buffInfo == null))
+		Skill triggerSkill = null;
+		if (_triggerSkills == null)
 		{
-			triggerSkill = _skill.getSkill();
+			final BuffInfo buffInfo = ((Creature) target).getEffectList().getBuffInfoBySkillId(_skill.getSkillId());
+			if ((_skillLevelScaleTo <= 0) || (buffInfo == null))
+			{
+				triggerSkill = _skill.getSkill();
+			}
+			else
+			{
+				triggerSkill = SkillData.getInstance().getSkill(_skill.getSkillId(), Math.min(_skillLevelScaleTo, buffInfo.getSkill().getLevel() + 1));
+			}
+			
+			if ((buffInfo == null) || (buffInfo.getSkill().getLevel() < triggerSkill.getLevel()))
+			{
+				SkillCaster.triggerCast(event.getAttacker(), (Creature) target, triggerSkill);
+			}
 		}
-		else
+		else // Multiple trigger skills.
 		{
-			triggerSkill = SkillData.getInstance().getSkill(_skill.getSkillId(), Math.min(_skillLevelScaleTo, buffInfo.getSkill().getLevel() + 1));
-		}
-		
-		if ((buffInfo == null) || (buffInfo.getSkill().getLevel() < triggerSkill.getLevel()))
-		{
+			final Iterator<SkillHolder> iterator = _triggerSkills.iterator();
+			while (iterator.hasNext())
+			{
+				final Skill nextSkill = iterator.next().getSkill();
+				if (((Creature) target).isAffectedBySkill(nextSkill.getId()))
+				{
+					if (iterator.hasNext())
+					{
+						((Creature) target).stopSkillEffects(SkillFinishType.SILENT, nextSkill.getId());
+						triggerSkill = iterator.next().getSkill();
+						break;
+					}
+					
+					// Already at last skill.
+					return;
+				}
+			}
+			if (triggerSkill == null)
+			{
+				triggerSkill = _triggerSkills.get(0).getSkill();
+			}
+			
 			SkillCaster.triggerCast(event.getAttacker(), (Creature) target, triggerSkill);
 		}
 	}

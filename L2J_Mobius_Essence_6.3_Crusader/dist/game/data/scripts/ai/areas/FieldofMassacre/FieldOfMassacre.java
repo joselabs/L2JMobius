@@ -29,12 +29,12 @@ import ai.AbstractNpcAI;
 public class FieldOfMassacre extends AbstractNpcAI
 {
 	// Monsters
-	private static final int ACHER_OF_DESTRUCTION = 21001;
-	private static final int GRAVEYARD_LICH = 21003;
-	private static final int DISMAL_POLE = 21004;
-	private static final int GRAVEYARD_PREDATOR = 21005;
 	private static final int DOOM_KNIGHT = 20674;
+	private static final int ACHER_OF_DESTRUCTION = 21001;
 	private static final int DOOM_SCOUT = 21002;
+	private static final int GRAVEYARD_LICH = 21003;
+	private static final int DISMAL_OAK = 21004;
+	private static final int GRAVEYARD_PREDATOR = 21005;
 	private static final int DOOM_SERVANT = 21006;
 	private static final int DOOM_GUARD = 21007;
 	private static final int DOOM_ARCHER = 21008;
@@ -45,13 +45,13 @@ public class FieldOfMassacre extends AbstractNpcAI
 	
 	private FieldOfMassacre()
 	{
-		addKillId(ACHER_OF_DESTRUCTION, GRAVEYARD_LICH, DISMAL_POLE, GRAVEYARD_PREDATOR, DOOM_KNIGHT, DOOM_SCOUT, DOOM_SERVANT, DOOM_GUARD, DOOM_ARCHER, DOOM_TROOPER, DOOM_WARRIOR);
+		addKillId(ACHER_OF_DESTRUCTION, GRAVEYARD_LICH, DISMAL_OAK, GRAVEYARD_PREDATOR, DOOM_KNIGHT, DOOM_SCOUT, DOOM_SERVANT, DOOM_GUARD, DOOM_ARCHER, DOOM_TROOPER, DOOM_WARRIOR);
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		if (getRandom(100) < 50)
+		if (getRandom(100) < 10)
 		{
 			final Npc spawnBanshee = addSpawn(GUARD_BUTCHER, npc, false, 300000);
 			final Playable attacker = isSummon ? killer.getServitors().values().stream().findFirst().orElse(killer.getPet()) : killer;

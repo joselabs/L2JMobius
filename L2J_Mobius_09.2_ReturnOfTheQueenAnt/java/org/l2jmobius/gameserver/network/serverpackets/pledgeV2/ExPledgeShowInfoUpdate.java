@@ -23,11 +23,11 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.AbstractItemPacket;
 
 /**
- * @author Mobius
+ * @author Atronic
  */
 public class ExPledgeShowInfoUpdate extends AbstractItemPacket
 {
-	final Player _player;
+	private final Player _player;
 	
 	public ExPledgeShowInfoUpdate(Player player)
 	{
@@ -44,9 +44,9 @@ public class ExPledgeShowInfoUpdate extends AbstractItemPacket
 		}
 		
 		ServerPackets.EX_PLEDGE_SHOW_INFO_UPDATE.writeId(this);
-		writeInt(clan.getId()); // Clan ID
-		writeInt(ClanLevelData.getLevelRequirement(clan.getLevel())); // Next level cost
-		writeInt(ClanLevelData.getCommonMemberLimit(clan.getLevel())); // Max pledge members
-		writeInt(ClanLevelData.getEliteMemberLimit(clan.getLevel())); // Max elite members
+		writeInt(clan.getId());
+		writeInt(ClanLevelData.getInstance().getLevelExp(clan.getLevel())); // Next level cost.
+		writeInt(ClanLevelData.getInstance().getCommonMemberLimit(clan.getLevel())); // Max pledge members.
+		writeInt(ClanLevelData.getInstance().getEliteMemberLimit(clan.getLevel())); // Max elite members.
 	}
 }

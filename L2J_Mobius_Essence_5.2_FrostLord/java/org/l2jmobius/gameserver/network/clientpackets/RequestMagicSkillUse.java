@@ -51,6 +51,9 @@ public class RequestMagicSkillUse implements ClientPacket
 			return;
 		}
 		
+		// Consider skill replacements.
+		_magicId = player.getReplacementSkill(_magicId);
+		
 		// Get the level of the used skill
 		Skill skill = player.getKnownSkill(_magicId);
 		if (skill == null)

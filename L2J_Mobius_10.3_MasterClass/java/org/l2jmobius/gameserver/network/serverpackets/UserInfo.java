@@ -78,7 +78,7 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 			_flyWalkSpd = player.isFlying() ? _walkSpd : 0;
 			_enchantLevel = player.getInventory().getWeaponEnchant();
 			_armorEnchant = player.getInventory().getArmorMinEnchant();
-			_title = player.getTitle();
+			_title = player.getAppearance().getVisibleTitle();
 			
 			if (player.isGM() && player.isInvisible())
 			{
@@ -146,7 +146,7 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		if (containsMask(UserInfoType.BASIC_INFO))
 		{
 			writeShort(23 + (_player.getAppearance().getVisibleName().length() * 2));
-			writeSizedString(_player.getName());
+			writeSizedString(_player.getAppearance().getVisibleName());
 			writeByte(_player.isGM() ? 1 : 0);
 			writeByte(_player.getRace().ordinal());
 			writeByte(_player.getAppearance().isFemale() ? 1 : 0);
@@ -423,6 +423,15 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		{
 			writeByte(0); // 362 - Vanguard mount.
 		}
+	}
+	
+	@Override
+	public void run()
+	{
+		if (_player == null)
+		{
+			return;
+		}
 		
 		// Send exp bonus change.
 		if (containsMask(UserInfoType.VITA_FAME))
@@ -446,7 +455,6 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		}
 		if (clan != null)
 		{
-			
 			if (player.getSiegeState() == 1)
 			{
 				relation |= 256; // Clan member

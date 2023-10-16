@@ -20,8 +20,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.model.actor.Npc;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.NpcStringId.NSLocalisation;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -37,7 +39,6 @@ public class NpcSay extends ServerPacket
 	private String _text;
 	private final int _npcString;
 	private List<String> _parameters;
-	private String _lang;
 	
 	/**
 	 * @param objectId
@@ -95,11 +96,6 @@ public class NpcSay extends ServerPacket
 		return this;
 	}
 	
-	public void setLang(String lang)
-	{
-		_lang = lang;
-	}
-	
 	@Override
 	public void write()
 	{
@@ -114,19 +110,29 @@ public class NpcSay extends ServerPacket
 				_text = _text.replace("$s" + (i + 1), _parameters.get(i));
 			}
 		}
+		
 		// Localisation related.
-		if (_lang != null)
+		if (Config.MULTILANG_ENABLE)
 		{
-			final NpcStringId ns = NpcStringId.getNpcStringId(_npcString);
-			if (ns != null)
+			final Player player = getPlayer();
+			if (player != null)
 			{
-				final NSLocalisation nsl = ns.getLocalisation(_lang);
-				if (nsl != null)
+				final String lang = player.getLang();
+				if ((lang != null) && !lang.equals("en"))
 				{
-					_text = nsl.getLocalisation(_parameters != null ? _parameters : Collections.emptyList());
+					final NpcStringId ns = NpcStringId.getNpcStringId(_npcString);
+					if (ns != null)
+					{
+						final NSLocalisation nsl = ns.getLocalisation(lang);
+						if (nsl != null)
+						{
+							_text = nsl.getLocalisation(_parameters != null ? _parameters : Collections.emptyList());
+						}
+					}
 				}
 			}
 		}
+		
 		writeString(_text);
 	}
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="1600" toLevel="1" name="Soul Instinct">
-		<!-- For 15 sec., P. Atk., P. Critical Rate, M. Atk., and M. Critical Rate +50%, Atk. Spd. and Casting Spd. +20%. -->
+		<!-- Awakens a party member's destructive instinct. For 15 seconds, P. Atk./P. Critical/M. Atk./M. Critical Rate +50% and Atk. Spd./Casting Spd. +20%. -->
 		<icon>icon.skill1600</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
@@ -73,7 +73,7 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1605" toLevel="3" name="Dual Weapon Defense">
-		<!-- For $s1 P. Atk Evasion Rate +$s2. Requires a dual sword. -->
+		<!-- For 1 minute, has a 30% chance to use a weapon to parry and evade P. Skill attacks. Requires a dualsword. <Auto Use Skill> -->
 		<icon>icon.skill1605</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -82,7 +82,7 @@
 		</abnormalLevel>
 		<effectPoint>268</effectPoint>
 		<abnormalTime>60</abnormalTime>
-		<abnormalType>AVOID_SKILL</abnormalType>
+		<abnormalType>AVOID_UP_SPECIAL</abnormalType>
 		<hitTime>1000</hitTime>
 		<magicLevel>
 			<value level="1">41</value>
@@ -95,7 +95,7 @@
 			<value level="3">21</value>
 		</mpConsume>
 		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
+		<reuseDelay>180000</reuseDelay>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
@@ -118,8 +118,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1606" toLevel="10" name="Quick Spear">
-		<!-- Attacks the enemy with $s1 Power added to P. Atk., inflicting Stun for $s2. Range 300. Requires a spear. Ignores Shield Defense. Over-hit. -->
+	<skill id="1606" toLevel="10" name="Lightning Spear">
+		<!-- Throws a spear to attack the enemy's surroundings with bonus 801 Power. Stuns for 5 seconds. Available when the distance is at least 300. Requires a spear. Ignores Shield Defense. Over-hit. -->
 		<icon>icon.skill1606</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
@@ -210,8 +210,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1607" toLevel="45" name="Excruciating Strike">
-		<!-- Attacks the enemies in front of the character with $s1 Power added to P. Atk. Ignores $s2 of the enemy's P. Def. Requires a sword/ two-handed sword. Ignores Shield Defense. Over-hit. -->
+	<skill id="1607" toLevel="45" name="Quake Attack">
+		<!-- Attacks frontal enemies with bonus 465 Power. Ignores 30% of target's P. Def. Requires a sword or two-handed sword. Ignores Shield Defense. Over-hit. -->
 		<icon>icon.skill1607</icon>
 		<castRange>40</castRange>
 		<coolTime>500</coolTime>
@@ -426,8 +426,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1608" toLevel="2" name="Immortal Life">
-		<!-- For 5 sec., HP doesn't drop below 1. Additionally recovers 20% HP if the effect of Immortality ends. -->
+	<skill id="1608" toLevel="2" name="Immortal">
+		<!-- For 5 seconds, HP does not go below 1, and after that, recovers 20% of HP. <Auto Use Skill> -->
 		<icon>icon.skill1608</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -461,8 +461,8 @@
 			</effect>
 		</endEffects>
 	</skill>
-	<skill id="1609" toLevel="4" name="Sword Expert">
-		<!-- P. Atk. +$s1, P. Accuracy +$s2. Atk. Spd. +$s3 when using a sword/ two-handed sword. Continuously consumes MP proportionately to your level. -->
+	<skill id="1609" toLevel="4" name="Proficient Sword">
+		<!-- Atk. Spd. +30 when equipped with a sword. P. Atk. +40 and P. Accuracy +1 when equipped with a two-handed sword. Consumes MP over time depending on your level. -->
 		<icon>icon.skill1609</icon>
 		<magicLevel>
 			<value level="1">46</value>
@@ -512,8 +512,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1610" toLevel="29" name="Life Rescue">
-		<!-- For $s1 restores $s2 HP of the target each sec. -->
+	<skill id="1610" toLevel="29" name="Life Saver">
+		<!-- For 10 seconds, recover target's HP by 19 per second. -->
 		<icon>icon.skill1610</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -719,8 +719,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1611" toLevel="6" name="Power Supremacy">
-		<!-- P. Atk. +$s1, Max HP -$s2. -->
+	<skill id="1611" toLevel="6" name="Physical Transcendence">
+		<!-- Gathers power that exceeds your physical limit. P. Atk. +10% and Max HP -10%. -->
 		<icon>icon.skill1611</icon>
 		<operateType>T</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -750,12 +750,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1612" toLevel="1" name="Slowing Power">
-		<!-- Speed -20% for 15 sec. -->
+	<skill id="1612" toLevel="1" name="Slow Force">
+		<!-- Movement Speed -20% for 15 seconds. -->
 		<icon>icon.skill0210</icon>
 		<operateType>A2</operateType>
 		<magicLevel>80</magicLevel>
-		<isMagic>0</isMagic>
 		<castRange>400</castRange>
 		<effectRange>900</effectRange>
 		<activateRate>80</activateRate>
@@ -779,8 +778,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1613" toLevel="11" name="Body Impale">
-		<!-- Attacks the enemy with $s1 Power added to P. Atk., inflicts Stun for $s2 and dispels $s3 buff(s) from a stunned target. Requires a blunt weapon. Ignores Shield Defense. Over-hit. -->
+	<skill id="1613" toLevel="11" name="Body Crush">
+		<!-- Attacks an enemy with bonus 680 Power and stuns for 5 seconds. Has a chance to remove 1 buffs of the stunned target. Requires a blunt weapon. Ignores Shield Defense. Over-hit. -->
 		<icon>icon.skill1613</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
@@ -864,8 +863,14 @@
 		</effects>
 	</skill>
 	<skill id="1615" toLevel="4" name="Weapon Reinforcement">
-		<!-- For $s1, enhances polearms, P. Atk. +$s2. At a certain chance target's Atk. Spd. and Casting Spd. -$s3. -->
+		<!-- Sharpens a spear or blunt weapon. For 20 minutes, P. Atk. +3% and when the enemy is wounded, Atk. Spd./Casting Spd. -10% at a set chance. <Auto Use Skill> -->
 		<icon>icon.skill1615</icon>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+		</abnormalLevel>
 		<reuseDelay>2000</reuseDelay>
 		<coolTime>500</coolTime>
 		<hitTime>2000</hitTime>
@@ -874,7 +879,7 @@
 			<value level="1">42</value>
 			<value level="2">52</value>
 			<value level="3">62</value>
-			<value level="4">82</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+			<value level="4">82</value>
 		</magicLevel>
 		<mpConsume>
 			<value level="1">12</value>
@@ -884,6 +889,7 @@
 		</mpConsume>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
+		<abnormalType>DWARF_ATTACK_BUFF</abnormalType>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -901,52 +907,33 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="1" toLevel="1">
+			<effect name="TriggerSkillByAttack">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
-				<chance>10</chance>
+				<chance>
+					<value level="1">10</value>
+					<value level="2">15</value>
+					<value level="3">20</value>
+					<value level="4">30</value>
+				</chance>
 				<targetType>TARGET</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>BLUNT,POLE</allowWeapons>
-				<skillId>1616</skillId>
+				<skillId>1616</skillId> <!-- Physical Damage -->
 				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="1" toLevel="1">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>20</chance>
-				<targetType>TARGET</targetType>
-				<isCritical>true</isCritical>
-				<allowWeapons>BLUNT,POLE</allowWeapons>
-				<skillId>1616</skillId>
-				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="2" toLevel="2">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>10</chance>
-				<targetType>TARGET</targetType>
-				<isCritical>false</isCritical>
-				<allowWeapons>BLUNT,POLE</allowWeapons>
-				<skillId>1616</skillId>
-				<skillLevel>2</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="2" toLevel="2">
-				<attackerType>Creature</attackerType>
-				<minDamage>1</minDamage>
-				<chance>20</chance>
-				<targetType>TARGET</targetType>
-				<isCritical>true</isCritical>
-				<allowWeapons>BLUNT,POLE</allowWeapons>
-				<skillId>1616</skillId>
-				<skillLevel>2</skillLevel>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="1616" toLevel="2" name="Physical Damage">
-		<!-- You were damaged and for 15 sec. Atk. Spd. and Casting Spd. -10%. -->
+		<!-- Atk. Spd./Casting Spd. -10% for 15 seconds due to an injury. -->
 		<icon>icon.skill1615</icon>
 		<operateType>A2</operateType>
+		<isMagic>2</isMagic>
+		<effectRange>1100</effectRange>
+		<activateRate>70</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
+		<abnormalType>ALL_SPEED_DOWN</abnormalType>
+		<abnormalVisualEffect>SPEED_DOWN</abnormalVisualEffect>
 		<effectPoint>-190</effectPoint>
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<abnormalLevel>1</abnormalLevel>
@@ -954,7 +941,7 @@
 		<castRange>600</castRange>
 		<reuseDelay>15000</reuseDelay>
 		<isDebuff>true</isDebuff>
-		<targetType>ENEMY</targetType>
+		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MagicalAttackSpeed">
@@ -973,9 +960,15 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1617" toLevel="4" name="Tenacity">
-		<!-- Enhances the body. For $s1, Stun Resistance +$s2, restores HP at a certain chance upon taking damage. -->
+	<skill id="1617" toLevel="4" name="Stubborn Body">
+		<!-- Gives you a sturdy body. For 20 minutes, Stun Resistance +3 and has a chance to recover HP when hit. <Auto Use Skill> -->
 		<icon>icon.skill1617</icon>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+		</abnormalLevel>
 		<reuseDelay>2000</reuseDelay>
 		<coolTime>500</coolTime>
 		<hitTime>2000</hitTime>
@@ -994,8 +987,8 @@
 		</mpConsume>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
+		<abnormalType>SUPER_BUFF</abnormalType>
 		<operateType>A2</operateType>
-		<isMagic>0</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
@@ -1007,43 +1000,25 @@
 					<value level="4">10</value>
 				</SHOCK>
 			</effect>
-			<effect name="TriggerSkillByDamage" fromLevel="1" toLevel="1">
+			<effect name="TriggerSkillByDamage">
 				<attackerType>Creature</attackerType>
 				<chance>5</chance>
 				<targetType>SELF</targetType>
 				<minDamage>1</minDamage>
-				<skillId>1618</skillId>
-				<skillLevel>1</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByDamage" fromLevel="2" toLevel="2">
-				<attackerType>Creature</attackerType>
-				<chance>10</chance>
-				<targetType>SELF</targetType>
-				<minDamage>1</minDamage>
-				<skillId>1618</skillId>
-				<skillLevel>2</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByDamage" fromLevel="3" toLevel="3">
-				<attackerType>Creature</attackerType>
-				<chance>15</chance>
-				<targetType>SELF</targetType>
-				<minDamage>1</minDamage>
-				<skillId>1618</skillId>
-				<skillLevel>3</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByDamage" fromLevel="4" toLevel="4">
-				<attackerType>Creature</attackerType>
-				<chance>20</chance>
-				<targetType>SELF</targetType>
-				<minDamage>1</minDamage>
-				<skillId>1618</skillId>
-				<skillLevel>4</skillLevel>
+				<skillId>1618</skillId> <!-- Body Recovery -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+				</skillLevel>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1618" toLevel="4" name="Body Reconstruction">
-		<!-- Restores the target's HP with $s1 Power. -->
+	<skill id="1618" toLevel="4" name="Body Recovery">
+		<!-- Recovers your HP with 188 Power. -->
 		<icon>icon.skill0045</icon>
+		<isMagic>1</isMagic>
 		<reuseDelay>5000</reuseDelay>
 		<magicLevel>
 			<value level="1">44</value>
@@ -1067,17 +1042,115 @@
 		</effects>
 	</skill>
 	<skill id="1619" toLevel="8" name="Sonic Focus">
-		<!-- Max. Energy $s1. -->
+		<!-- Max Momentum: 1 -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicLevel>
+			<value level="1">40</value>
+			<value level="2">43</value>
+			<value level="3">49</value>
+			<value level="4">55</value>
+			<value level="5">60</value>
+			<value level="6">66</value>
+			<value level="7">70</value>
+			<value level="8">79</value>
+		</magicLevel>
 		<reuseDelay>10000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>DUAL</item>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+				</weaponType>
+			</condition>
+			<condition name="OpEnergyMax">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+				</amount>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="FocusMomentum">
+				<maxCharges>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+				</maxCharges>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="1620" toLevel="8" name="Focus Force">
-		<!-- Max. Energy $s1. -->
+		<!-- Max Momentum: 1 -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicLevel>
+			<value level="1">40</value>
+			<value level="2">43</value>
+			<value level="3">49</value>
+			<value level="4">55</value>
+			<value level="5">60</value>
+			<value level="6">66</value>
+			<value level="7">70</value>
+			<value level="8">79</value>
+		</magicLevel>
 		<reuseDelay>10000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>DUALFIST</item>
+				</weaponType>
+			</condition>
+			<condition name="OpEnergyMax">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+				</amount>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="FocusMomentum">
+				<maxCharges>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+				</maxCharges>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="1621" toLevel="5" name="Shield of Sacrifice">
-		<!-- Sacrifices itself, decreasing Max HP by $s1. For party members P. Def. +$s3, M. Def. +$s4, Received Healing +$s1 for $s2 Requires a shield. -->
+		<!-- Sacrifices yourself. Max HP -20%, and for 5 minutes, a party member's P. Def. +15%, M. Def +20%, and Heal Received +20%. Requires a shield. -->
 		<icon>icon.skill1621</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1155,7 +1228,7 @@
 		</effects>
 	</skill>
 	<skill id="1622" toLevel="1" name="Blood of Sacrifice">
-		<!-- Sacrifices, decreasing Max HP by 20%. -->
+		<!-- Sacrificed. Max HP -20%. -->
 		<icon>icon.skill1621</icon>
 		<abnormalLevel>6</abnormalLevel>
 		<abnormalType>POSSESSION_SPECIAL</abnormalType>
@@ -1175,8 +1248,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1623" toLevel="5" name="Eva's Protection">
-		<!-- Party members' P. Def. +$s2, M. Def. +$s3 Speed +$s4 for $s1 Requires a shield. -->
+	<skill id="1623" toLevel="5" name="Protection of Eva">
+		<!-- With Eva's protection, for 5 minutes, a party member's P. Def. +15%, M. Def +10%, and Movement Speed +4. Requires a shield. -->
 		<icon>icon.skill1623</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1254,8 +1327,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1624" toLevel="4" name="Indestructible Sound">
-		<!-- Using Momentum, throws a powerful strike with a sword, blocking the target for $s1 Damage received by the target -$s2, blocks target's movements and skill usage. Requires a dual sword. Requires Momentum level 5. -->
+	<skill id="1624" toLevel="4" name="Unbreakable Sonic">
+		<!-- Using Momentum, throws a powerful strike with a sword, blocking the target for 10 seconds. The target is engulfed by Momentum. Damage received -50%, and becomes unable to use skills or move. Requires a dual sword. Requires Momentum Stage 5 recharge. -->
 		<icon>icon.skill1624</icon>
 		<abnormalLevel>
 			<value level="1">10</value>
@@ -1279,7 +1352,6 @@
 		<effectRange>1100</effectRange>
 		<hitTime>2500</hitTime>
 		<isDebuff>true</isDebuff>
-		<isMagic>0</isMagic>
 		<activateRate>60</activateRate>
 		<lvlBonusRate>20</lvlBonusRate>
 		<operateType>A2</operateType>
@@ -1345,8 +1417,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1625" toLevel="1" name="Throwing Spear">
-		<!-- Throws a spear at the enemy with 801 Power added to P. Atk., inflicting Immobilize for 10 sec. Range 300. Requires a spear. Ignores Shield Defense. Over-hit. -->
+	<skill id="1625" toLevel="1" name="Spear Shot">
+		<!-- Throws a spear to attack an enemy with bonus 801 Power. Becomes immobilized for 10 seconds. Available when the distance is at least 300. Requires a spear. Ignores Shield Defense. Over-hit. -->
 		<icon>icon.skill1625</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
@@ -1386,8 +1458,8 @@
 			<effect name="Root" />
 		</effects>
 	</skill>
-	<skill id="1626" toLevel="1" name="Spear Howl">
-		<!-- With a spear strike, inflicts damage on nearby enemies with 2911 Power added to P. Atk. Removes speed-increasing Buffs. Requires a polearm. -->
+	<skill id="1626" toLevel="1" name="Howl Spear">
+		<!-- Strikes with a spear to inflict damage on nearby enemies with bonus 2911 Power. Removes Movement Speed buffs. Requires a spear. -->
 		<icon>icon.skill1626</icon>
 		<basicProperty>PHYSICAL</basicProperty>
 		<hitTime>1000</hitTime>
@@ -1423,7 +1495,7 @@
 		</effects>
 	</skill>
 	<skill id="1627" toLevel="1" name="Destroyer's Roar">
-		<!-- Inflicts Fear on nearby enemies and their Speed -90%. Requires a sword/ blunt weapon/ two-handed sword. -->
+		<!-- Nearby targets' Movement Speed -90%, and becomes inflicted with fear. Requires a sword, blunt weapon, or two-handed sword. -->
 		<icon>icon.skill1627</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>7</abnormalTime>
@@ -1432,7 +1504,6 @@
 		<activateRate>40</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<isDebuff>true</isDebuff>
-		<isMagic>0</isMagic>
 		<lvlBonusRate>20</lvlBonusRate>
 		<operateType>A2</operateType>
 		<coolTime>500</coolTime>
@@ -1466,7 +1537,7 @@
 		</effects>
 	</skill>
 	<skill id="1628" toLevel="4" name="Broad Sweep">
-		<!-- For $s1 the number of attacking enemies +$s2. Requires a sword/ two-handed sword. -->
+		<!-- For 5 minutes the number of attacking enemies +2. Requires a sword/ two-handed sword. <Auto Use Skill> -->
 		<icon>icon.skill1628</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1521,8 +1592,8 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1629" toLevel="1" name="Throw Dagger in Wrist">
-		<!-- Throw Dagger in Wrist Throws a dagger at the enemy with $s1 Power added to P. Atk., and injures their wrist. Due to the wound, for $s2 there's a certain probability to interrupt target's skill casting. Requires a dagger. -->
+	<skill id="1629" toLevel="1" name="Wrist Throw Dagger">
+		<!-- Throws a dagger at an enemy with bonus 396 Power and injures their wrist. For 1 minute, there is a chance the wound will interrupt the target's skill casting. Requires a dagger. -->
 		<icon>icon.skill1629</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
@@ -1563,7 +1634,6 @@
 		</effectPoint>
 		<isDebuff>true</isDebuff>
 		<trait>BOSS</trait>
-		<isMagic>0</isMagic>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -1594,7 +1664,7 @@
 		</effects>
 	</skill>
 	<skill id="1630" toLevel="9" name="Throwing Blood Dagger">
-		<!-- Throws a dagger at an enemy with $s1 Power added to P. Atk. For $s2, with a certain probability, decreases target's HP when it tries to use skills. Requires a dagger. Over-hit. -->
+		<!-- Throws a dagger at an enemy with bonus 396 Power. While in PvP for 40 seconds, there is a chance the target's HP decreases whenever they cast a hostile skill. Requires a dagger. Over-hit. -->
 		<icon>icon.skill1630</icon>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>40</abnormalTime>
@@ -1635,7 +1705,6 @@
 		</effectPoint>
 		<isDebuff>true</isDebuff>
 		<trait>BOSS</trait>
-		<isMagic>0</isMagic>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -1663,7 +1732,7 @@
 			<effect name="TriggerSkillByMagicType">
 				<!-- Bloody Attack -->
 				<magicTypes>0</magicTypes>
-				<skillId>15677</skillId>
+				<skillId>15677</skillId> <!-- Bloody Attack -->
 				<skillLevel>1</skillLevel>
 				<chance>30</chance>
 				<targetType>SELF</targetType>
@@ -1671,7 +1740,7 @@
 			<effect name="TriggerSkillByMagicType">
 				<!-- Bloody Attack -->
 				<magicTypes>1</magicTypes>
-				<skillId>15677</skillId>
+				<skillId>15677</skillId> <!-- Bloody Attack -->
 				<skillLevel>1</skillLevel>
 				<chance>30</chance>
 				<targetType>SELF</targetType>
@@ -1679,7 +1748,7 @@
 			<effect name="TriggerSkillByMagicType">
 				<!-- Bloody Attack -->
 				<magicTypes>2</magicTypes>
-				<skillId>15677</skillId>
+				<skillId>15677</skillId> <!-- Bloody Attack -->
 				<skillLevel>1</skillLevel>
 				<chance>30</chance>
 				<targetType>SELF</targetType>
@@ -1687,15 +1756,15 @@
 			<effect name="TriggerSkillByMagicType">
 				<!-- Bloody Attack -->
 				<magicTypes>3</magicTypes>
-				<skillId>15677</skillId>
+				<skillId>15677</skillId> <!-- Bloody Attack -->
 				<skillLevel>1</skillLevel>
 				<chance>30</chance>
 				<targetType>SELF</targetType>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="1631" toLevel="2" name="Clear Movements">
-		<!-- All senses sharpen, resetting Cooldown time of "Hide" and "Shadow Step". (Requires a dagger.) -->
+	<skill id="1631" toLevel="2" name="Reset Movement">
+		<!-- Sharpens all senses related to movement. Resets the cooldown of Hide and Shadow Step. Requires a dagger. -->
 		<icon>icon.skill10518</icon>
 		<operateType>A1</operateType>
 		<coolTime>500</coolTime>
@@ -1719,7 +1788,6 @@
 			<value level="1">600000</value>
 			<value level="2">420000</value>
 		</reuseDelay>
-		<isMagic>0</isMagic>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1737,7 +1805,7 @@
 		</effects>
 	</skill>
 	<skill id="1632" toLevel="9" name="Deadly Strike">
-		<!-- Attacks the target with $s1 Power added to P. Atk. For $s2 decreases enemy's P. Def. by $s3. Requires dual swords. Over-hit. -->
+		<!-- Attacks the enemy with 2694 Power added to P. Atk. and decreases P. Def. by 23% for 10 seconds. Requires a sword, blunt weapon, or dualsword. Over-hit. -->
 		<icon>icon.skill0986</icon>
 		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
@@ -1762,31 +1830,30 @@
 			<value level="1">-1925</value>
 			<value level="2">-1973</value>
 			<value level="3">-2020</value>
-			<value level="4">-2067</value>
-			<value level="5">-2112</value>
-			<value level="6">-2156</value>
-			<value level="7">-2200</value>
-			<value level="8">-2241</value>
-			<value level="9">-2282</value>
+			<value level="4">-2112</value>
+			<value level="5">-2156</value>
+			<value level="6">-2200</value>
+			<value level="7">-2241</value>
+			<value level="8">-2282</value>
+			<value level="9">-2320</value>
 		</effectPoint>
 		<abnormalType>PD_DOWN</abnormalType>
-		<activateRate>80</activateRate>
+		<activateRate>60</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">76</value>
 			<value level="2">77</value>
 			<value level="3">78</value>
-			<value level="4">78</value>
-			<value level="5">78</value>
-			<value level="6">78</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">78</value>
+			<value level="4">80</value>
+			<value level="5">81</value>
+			<value level="6">82</value>
+			<value level="7">83</value>
+			<value level="8">84</value>
+			<value level="9">85</value>
 		</magicLevel>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
-		<isMagic>0</isMagic>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -1804,12 +1871,12 @@
 					<value level="1">2694</value>
 					<value level="2">2762</value>
 					<value level="3">2828</value>
-					<value level="4">2893</value>
-					<value level="5">2957</value>
-					<value level="6">3018</value>
-					<value level="7">3079</value>
-					<value level="8">3137</value>
-					<value level="9">3194</value>
+					<value level="4">2957</value>
+					<value level="5">3018</value>
+					<value level="6">3079</value>
+					<value level="7">3137</value>
+					<value level="8">3194</value>
+					<value level="9">3248</value>
 				</power>
 				<overHit>true</overHit>
 			</effect>

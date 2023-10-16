@@ -140,6 +140,8 @@ public abstract class ItemTemplate extends ListenersContainer implements IIdenti
 	private boolean _depositable;
 	private boolean _enchantable;
 	private int _enchantLimit;
+	private int _ensoulNormalSlots;
+	private int _ensoulSpecialSlots;
 	private boolean _elementable;
 	private boolean _questItem;
 	private boolean _freightable;
@@ -211,6 +213,9 @@ public abstract class ItemTemplate extends ListenersContainer implements IIdenti
 		{
 			_depositable = set.getBoolean("is_depositable", true);
 		}
+		
+		_ensoulNormalSlots = set.getInt("ensoulNormalSlots", 0);
+		_ensoulSpecialSlots = set.getInt("ensoulSpecialSlots", 0);
 		
 		_elementable = set.getBoolean("element_enabled", false);
 		_enchantable = set.getBoolean("enchant_enabled", false);
@@ -624,6 +629,22 @@ public abstract class ItemTemplate extends ListenersContainer implements IIdenti
 	public int getEnchantLimit()
 	{
 		return _enchantLimit > 0 ? _enchantLimit : 0;
+	}
+	
+	/**
+	 * @return the available ensoul slot count.
+	 */
+	public int getEnsoulSlots()
+	{
+		return _ensoulNormalSlots;
+	}
+	
+	/**
+	 * @return the available special ensoul slot count.
+	 */
+	public int getSpecialEnsoulSlots()
+	{
+		return _ensoulSpecialSlots;
 	}
 	
 	/**

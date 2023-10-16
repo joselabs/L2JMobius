@@ -38,12 +38,12 @@ import org.l2jmobius.gameserver.network.serverpackets.ExSpawnEmitter;
 public class SoulEating extends AbstractEffect
 {
 	private final int _expNeeded;
-	private final int _maxSouls;
+	private final Double _maxSouls;
 	
 	public SoulEating(StatSet params)
 	{
 		_expNeeded = params.getInt("expNeeded");
-		_maxSouls = params.getInt("maxSouls");
+		_maxSouls = params.getDouble("maxSouls");
 	}
 	
 	@Override

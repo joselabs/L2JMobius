@@ -16,11 +16,6 @@
  */
 package ai.others.AdditionalServicesAdvisor;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
-import org.l2jmobius.Config;
-import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.SubclassInfoType;
@@ -31,7 +26,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.olympiad.Hero;
-import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.network.serverpackets.ExSubjobInfo;
 import org.l2jmobius.gameserver.network.serverpackets.ExUserInfoInvenWeight;
 
@@ -190,10 +185,8 @@ public class AdditionalServicesAdvisor extends AbstractNpcAI
 					{
 						takeItems(player, CLASS_CHANGE_COUPON, 1);
 						
-						for (Skill skill : player.getAllSkills())
-						{
-							player.removeSkill(skill);
-						}
+						player.removeAllSkills();
+						
 						player.setVitalityPoints(0, true);
 						player.setExpBeforeDeath(0);
 						
@@ -269,18 +262,8 @@ public class AdditionalServicesAdvisor extends AbstractNpcAI
 						player.getAppearance().setHairColor(0);
 						player.getAppearance().setFace(0);
 						
-						// Set new classId and reset olympiad points.
-						try (Connection con = DatabaseFactory.getConnection();
-							PreparedStatement ps = con.prepareStatement("UPDATE olympiad_nobles SET olympiad_points=?, class_id=? WHERE charId='" + player.getObjectId() + "'"))
-						{
-							ps.setInt(1, Config.ALT_OLY_START_POINTS);
-							ps.setInt(2, classId);
-							ps.executeUpdate();
-						}
-						catch (Exception e)
-						{
-							LOGGER.warning(this.getClass().getSimpleName() + ": Set new classId and reset olympiad points: " + e.getMessage());
-						}
+						// Remove olympiad nobless.
+						Olympiad.removeNobleStats(player.getObjectId());
 						
 						player.store(false);
 						player.broadcastUserInfo();

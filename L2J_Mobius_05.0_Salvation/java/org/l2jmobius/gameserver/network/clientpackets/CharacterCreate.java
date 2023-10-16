@@ -21,7 +21,8 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
+import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
 import org.l2jmobius.gameserver.data.xml.InitialEquipmentData;
@@ -29,8 +30,8 @@ import org.l2jmobius.gameserver.data.xml.InitialShortcutData;
 import org.l2jmobius.gameserver.data.xml.PlayerTemplateData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
+import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.ClassId;
-import org.l2jmobius.gameserver.instancemanager.PremiumManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.World;
@@ -42,7 +43,6 @@ import org.l2jmobius.gameserver.model.events.Containers;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerCreate;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.PlayerItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
@@ -54,7 +54,6 @@ import org.l2jmobius.gameserver.network.serverpackets.CharCreateOk;
 import org.l2jmobius.gameserver.network.serverpackets.CharSelectionInfo;
 import org.l2jmobius.gameserver.util.Util;
 
-@SuppressWarnings("unused")
 public class CharacterCreate implements ClientPacket
 {
 	protected static final Logger LOGGER_ACCOUNTING = Logger.getLogger("accounting");
@@ -62,14 +61,8 @@ public class CharacterCreate implements ClientPacket
 	// cSdddddddddddd
 	private String _name;
 	private int _race;
-	private byte _sex;
+	private boolean _isFemale;
 	private int _classId;
-	private int _int;
-	private int _str;
-	private int _con;
-	private int _men;
-	private int _dex;
-	private int _wit;
 	private byte _hairStyle;
 	private byte _hairColor;
 	private byte _face;
@@ -79,14 +72,14 @@ public class CharacterCreate implements ClientPacket
 	{
 		_name = packet.readString();
 		_race = packet.readInt();
-		_sex = (byte) packet.readInt();
+		_isFemale = packet.readInt() != 0;
 		_classId = packet.readInt();
-		_int = packet.readInt();
-		_str = packet.readInt();
-		_con = packet.readInt();
-		_men = packet.readInt();
-		_dex = packet.readInt();
-		_wit = packet.readInt();
+		packet.readInt(); // _int
+		packet.readInt(); // _str
+		packet.readInt(); // _con
+		packet.readInt(); // _men
+		packet.readInt(); // _dex
+		packet.readInt(); // _wit
 		_hairStyle = (byte) packet.readInt();
 		_hairColor = (byte) packet.readInt();
 		_face = (byte) packet.readInt();
@@ -134,7 +127,7 @@ public class CharacterCreate implements ClientPacket
 			return;
 		}
 		
-		if ((_hairStyle < 0) || ((_sex == 0) && (_hairStyle > 4)) || ((_sex != 0) && (_hairStyle > 6)))
+		if ((_hairStyle < 0) || (!_isFemale && (_hairStyle > 4)) || (_isFemale && (_hairStyle > 6)))
 		{
 			PacketLogger.warning("Character Creation Failure: Character hair style " + _hairStyle + " is invalid. Possible client hack. " + client);
 			client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
@@ -149,74 +142,72 @@ public class CharacterCreate implements ClientPacket
 		}
 		
 		Player newChar = null;
-		PlayerTemplate template = null;
-		boolean balthusKnights = false;
+		final PlayerTemplate template = PlayerTemplateData.getInstance().getTemplate(_classId);
 		
 		/*
 		 * DrHouse: Since checks for duplicate names are done using SQL, lock must be held until data is written to DB as well.
 		 */
-		synchronized (CharNameTable.getInstance())
+		synchronized (CharInfoTable.getInstance())
 		{
-			if ((CharNameTable.getInstance().getAccountCharacterCount(client.getAccountName()) >= Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT) && (Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT != 0))
+			if ((CharInfoTable.getInstance().getAccountCharacterCount(client.getAccountName()) >= Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT) && (Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT != 0))
 			{
 				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_TOO_MANY_CHARACTERS));
 				return;
 			}
-			else if (CharNameTable.getInstance().doesCharNameExist(_name))
+			else if (CharInfoTable.getInstance().doesCharNameExist(_name))
 			{
 				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_NAME_ALREADY_EXISTS));
 				return;
 			}
 			
-			// Balthus Knights.
-			if (Config.BALTHUS_KNIGHTS_ENABLED && (!Config.BALTHUS_KNIGHTS_PREMIUM || (Config.PREMIUM_SYSTEM_ENABLED && (PremiumManager.getInstance().getPremiumExpiration(client.getAccountName()) > 0))))
+			if ((_race < 0) || (_race > 6))
 			{
-				if (_classId == 190)
-				{
-					_classId = 188; // Eviscerator
-					balthusKnights = true;
-				}
-				else if (_classId == 191)
-				{
-					_classId = 189; // Sayha Seer
-					balthusKnights = true;
-				}
-				else if ((_classId > 138) && (_classId < 147))
-				{
-					final String properClass = ClassId.getClassId(_classId).toString().split("_")[0];
-					for (ClassId classId : ClassId.values())
-					{
-						if (classId.getRace() == null)
-						{
-							continue;
-						}
-						if ((classId.getRace().ordinal() == _race) && classId.toString().startsWith(properClass))
-						{
-							_classId = classId.getId();
-							balthusKnights = true;
-							break;
-						}
-					}
-				}
-			}
-			if (!balthusKnights && (ClassId.getClassId(_classId).level() > 0))
-			{
+				PacketLogger.warning("Character Creation Failure: " + _name + " classId: " + _classId + " Race: " + _race + " Message generated: Your character creation has failed.");
 				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
 				return;
 			}
 			
-			template = PlayerTemplateData.getInstance().getTemplate(_classId);
+			final ClassId requestedClassId = ClassId.getClassId(_classId);
+			if (requestedClassId == null)
+			{
+				PacketLogger.warning("Character Creation Failure (Missing classId): " + _name + " classId: " + _classId + " Message generated: Your character creation has failed.");
+				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
+				return;
+			}
+			
+			if ((requestedClassId.getParent() != null))
+			{
+				PacketLogger.warning("Character Creation Failure (requestedClassId has parent!): " + _name + " classId: " + _classId + " Parent: " + requestedClassId.getParent() + " Message generated: Your character creation has failed.");
+				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
+				return;
+			}
+			
 			if (template == null)
 			{
+				PacketLogger.warning("Character Creation Failure (Missing template): " + _name + " classId: " + _classId + "  Template: " + template + " Message generated: Your character creation has failed.");
+				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
+				return;
+			}
+			
+			if ((Config.ALLOW_BALTHUS_KNIGHT_CREATE == 0) && CategoryData.getInstance().isInCategory(CategoryType.ALLOWED_BALTHUS_CLASSES, requestedClassId.getId()))
+			{
+				PacketLogger.warning("Character Creation Failure (BALTHUS_KNIGHT not enabled but player attempts to create one!): " + _name + " classId: " + _classId + " Template: " + template + " Message generated: Your character creation has failed.");
+				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
+				return;
+			}
+			
+			if (!CategoryData.getInstance().isInCategory(CategoryType.FIRST_CLASS_GROUP, requestedClassId.getId()) && !CategoryData.getInstance().isInCategory(CategoryType.ALLOWED_BALTHUS_CLASSES, requestedClassId.getId()))
+			{
+				PacketLogger.warning("Character Creation Failure (Class not in FIRST_CLASS_GROUP and ALLOWED_BALTHUS_CLASSES): " + _name + " classId: " + _classId + " Template: " + template + " Message generated: Your character creation has failed.");
 				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
 				return;
 			}
 			
 			// Custom Feature: Disallow a race to be created.
 			// Example: Humans can not be created if AllowHuman = False in Custom.properties
-			switch (template.getRace())
+			switch (_race)
 			{
-				case HUMAN:
+				case 0: // HUMAN
 				{
 					if (!Config.ALLOW_HUMAN)
 					{
@@ -225,7 +216,7 @@ public class CharacterCreate implements ClientPacket
 					}
 					break;
 				}
-				case ELF:
+				case 1: // ELF
 				{
 					if (!Config.ALLOW_ELF)
 					{
@@ -234,7 +225,7 @@ public class CharacterCreate implements ClientPacket
 					}
 					break;
 				}
-				case DARK_ELF:
+				case 2: // DARK_ELF
 				{
 					if (!Config.ALLOW_DARKELF)
 					{
@@ -243,7 +234,7 @@ public class CharacterCreate implements ClientPacket
 					}
 					break;
 				}
-				case ORC:
+				case 3: // ORC
 				{
 					if (!Config.ALLOW_ORC)
 					{
@@ -252,7 +243,7 @@ public class CharacterCreate implements ClientPacket
 					}
 					break;
 				}
-				case DWARF:
+				case 4: // DWARF
 				{
 					if (!Config.ALLOW_DWARF)
 					{
@@ -261,7 +252,7 @@ public class CharacterCreate implements ClientPacket
 					}
 					break;
 				}
-				case KAMAEL:
+				case 5: // KAMAEL
 				{
 					if (!Config.ALLOW_KAMAEL)
 					{
@@ -270,9 +261,14 @@ public class CharacterCreate implements ClientPacket
 					}
 					break;
 				}
-				case ERTHEIA:
+				case 6: // ERTHEIA
 				{
 					if (!Config.ALLOW_ERTHEIA)
+					{
+						client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
+						return;
+					}
+					if (!_isFemale)
 					{
 						client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
 						return;
@@ -280,17 +276,16 @@ public class CharacterCreate implements ClientPacket
 					break;
 				}
 			}
-			newChar = Player.create(template, client.getAccountName(), _name, new PlayerAppearance(_face, _hairColor, _hairStyle, _sex != 0));
+			
+			newChar = Player.create(template, client.getAccountName(), _name, new PlayerAppearance(_face, _hairColor, _hairStyle, _isFemale), _race);
 		}
 		
-		if (balthusKnights)
+		// Set level of Balthus Knight
+		final ClassId requestedClassId = ClassId.getClassId(_classId);
+		if (CategoryData.getInstance().isInCategory(CategoryType.ALLOWED_BALTHUS_CLASSES, requestedClassId.getId()))
 		{
 			newChar.setExp(ExperienceData.getInstance().getExpForLevel(Config.BALTHUS_KNIGHTS_LEVEL));
 			newChar.getStat().setLevel((byte) Config.BALTHUS_KNIGHTS_LEVEL);
-			if (Config.BALTHUS_KNIGHTS_REWARD_SKILLS)
-			{
-				newChar.giveAvailableSkills(Config.AUTO_LEARN_FS_SKILLS, true, Config.AUTO_LEARN_SKILLS_WITHOUT_ITEMS);
-			}
 		}
 		
 		// HP and MP are at maximum and CP is zero by default.
@@ -314,10 +309,6 @@ public class CharacterCreate implements ClientPacket
 		else if (Config.FACTION_SYSTEM_ENABLED)
 		{
 			newChar.setXYZInvisible(Config.FACTION_STARTING_LOCATION.getX(), Config.FACTION_STARTING_LOCATION.getY(), Config.FACTION_STARTING_LOCATION.getZ());
-		}
-		else if (balthusKnights)
-		{
-			newChar.setXYZInvisible(Config.BALTHUS_KNIGHTS_LOCATION.getX(), Config.BALTHUS_KNIGHTS_LOCATION.getY(), Config.BALTHUS_KNIGHTS_LOCATION.getZ());
 		}
 		else
 		{
@@ -352,23 +343,6 @@ public class CharacterCreate implements ClientPacket
 				}
 				
 				if (item.isEquipable() && ie.isEquipped())
-				{
-					newChar.getInventory().equipItem(item);
-				}
-			}
-		}
-		if (balthusKnights)
-		{
-			for (ItemHolder reward : Config.BALTHUS_KNIGHTS_REWARDS)
-			{
-				final Item item = newChar.getInventory().addItem("Balthus Rewards", reward.getId(), reward.getCount(), newChar, null);
-				if (item == null)
-				{
-					PacketLogger.warning("Could not create item during char creation: itemId " + reward.getId() + ", amount " + reward.getCount() + ".");
-					continue;
-				}
-				
-				if (item.isEquipable())
 				{
 					newChar.getInventory().equipItem(item);
 				}

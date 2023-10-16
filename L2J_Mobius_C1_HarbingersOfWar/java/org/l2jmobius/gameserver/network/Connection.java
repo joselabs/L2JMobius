@@ -29,8 +29,8 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerBasePacket;
 public class Connection
 {
 	private static Logger _log = Logger.getLogger(Connection.class.getName());
-	private final Crypt _inCrypt;
-	private final Crypt _outCrypt;
+	private final Encryption _inCrypt;
+	private final Encryption _outCrypt;
 	private final byte[] _cryptkey;
 	private final Socket _csocket;
 	private final InputStream _in;
@@ -41,8 +41,8 @@ public class Connection
 		_csocket = client;
 		_in = client.getInputStream();
 		_out = new BufferedOutputStream(client.getOutputStream());
-		_inCrypt = new Crypt();
-		_outCrypt = new Crypt();
+		_inCrypt = new Encryption();
+		_outCrypt = new Encryption();
 		_cryptkey = cryptKey;
 	}
 	

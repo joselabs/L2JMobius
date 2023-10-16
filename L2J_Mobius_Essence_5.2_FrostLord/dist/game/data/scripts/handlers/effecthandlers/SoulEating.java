@@ -40,13 +40,13 @@ public class SoulEating extends AbstractEffect
 {
 	private final SoulType _type;
 	private final int _expNeeded;
-	private final int _maxSouls;
+	private final Double _maxSouls;
 	
 	public SoulEating(StatSet params)
 	{
 		_type = params.getEnum("type", SoulType.class, SoulType.LIGHT);
 		_expNeeded = params.getInt("expNeeded");
-		_maxSouls = params.getInt("maxSouls");
+		_maxSouls = params.getDouble("maxSouls");
 	}
 	
 	@Override

@@ -21,7 +21,6 @@ import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
 import org.l2jmobius.gameserver.model.Location;
-import org.l2jmobius.gameserver.model.Spawn;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Attackable;
@@ -38,11 +37,11 @@ import ai.AbstractNpcAI;
 
 /**
  * Orfen's AI
- * @author Emperorc, NasSeKa
+ * @author Emperorc
  */
 public class Orfen extends AbstractNpcAI
 {
-	private static final Location POS = new Location(64418, 29467, -3792);
+	private static final Location SPAWN_LOCATION = new Location(64418, 29467, -3792);
 	
 	private static final NpcStringId[] TEXT =
 	{
@@ -77,9 +76,11 @@ public class Orfen extends AbstractNpcAI
 			else
 			{
 				// the time has already expired while the server was offline. Immediately spawn Orfen.
-				final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, POS, false, 0);
+				final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, SPAWN_LOCATION, false, 0);
 				GrandBossManager.getInstance().setStatus(ORFEN, ALIVE);
 				spawnBoss(orfen);
+				cancelQuestTimer("DISTANCE_CHECK", orfen, null);
+				startQuestTimer("DISTANCE_CHECK", 5000, orfen, null, true);
 			}
 		}
 		else
@@ -93,33 +94,44 @@ public class Orfen extends AbstractNpcAI
 			final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, loc_x, loc_y, loc_z, heading, false, 0);
 			orfen.setCurrentHpMp(hp, mp);
 			spawnBoss(orfen);
+			cancelQuestTimer("DISTANCE_CHECK", orfen, null);
+			startQuestTimer("DISTANCE_CHECK", 5000, orfen, null, true);
 		}
-	}
-	
-	public void setSpawnPoint(Npc npc, int index)
-	{
-		((Attackable) npc).clearAggroList();
-		npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE, null, null);
-		final Spawn spawn = npc.getSpawn();
-		spawn.setLocation(POS);
-		npc.teleToLocation(POS, false);
 	}
 	
 	public void spawnBoss(GrandBoss npc)
 	{
 		GrandBossManager.getInstance().addBoss(npc);
 		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
-		startQuestTimer("check_orfen_pos", 10000, npc, null, true);
 	}
 	
 	@Override
 	public String onAdvEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("orfen_unlock"))
+		switch (event)
 		{
-			final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, POS, false, 0);
-			GrandBossManager.getInstance().setStatus(ORFEN, ALIVE);
-			spawnBoss(orfen);
+			case "orfen_unlock":
+			{
+				final GrandBoss orfen = (GrandBoss) addSpawn(ORFEN, SPAWN_LOCATION, false, 0);
+				GrandBossManager.getInstance().setStatus(ORFEN, ALIVE);
+				spawnBoss(orfen);
+				cancelQuestTimer("DISTANCE_CHECK", orfen, null);
+				startQuestTimer("DISTANCE_CHECK", 5000, orfen, null, true);
+				break;
+			}
+			case "DISTANCE_CHECK":
+			{
+				if ((npc == null) || npc.isDead())
+				{
+					cancelQuestTimers("DISTANCE_CHECK");
+				}
+				else if (npc.calculateDistance2D(npc.getSpawn()) > 10000)
+				{
+					((Attackable) npc).clearAggroList();
+					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SPAWN_LOCATION);
+				}
+				break;
+			}
 		}
 		return super.onAdvEvent(event, npc, player);
 	}
@@ -165,15 +177,19 @@ public class Orfen extends AbstractNpcAI
 		{
 			npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 			GrandBossManager.getInstance().setStatus(ORFEN, DEAD);
+			
 			// Calculate Min and Max respawn times randomly.
 			long respawnTime = Config.ORFEN_SPAWN_INTERVAL + getRandom(-Config.ORFEN_SPAWN_RANDOM, Config.ORFEN_SPAWN_RANDOM);
 			respawnTime *= 3600000;
 			startQuestTimer("orfen_unlock", respawnTime, null, null);
-			// also save the respawn time so that the info is maintained past reboots
+			
+			// Also save the respawn time so that the info is maintained past reboots.
 			final StatSet info = GrandBossManager.getInstance().getStatSet(ORFEN);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 			GrandBossManager.getInstance().setStatSet(ORFEN, info);
-			cancelQuestTimer("check_orfen_pos", npc, null);
+			
+			// Stop distance check task.
+			cancelQuestTimers("DISTANCE_CHECK");
 		}
 		return super.onKill(npc, killer, isSummon);
 	}

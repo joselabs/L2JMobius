@@ -29,6 +29,7 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
+import org.l2jmobius.gameserver.network.serverpackets.TutorialShowHtml;
 
 /**
  * Secret Garden (10964)
@@ -125,6 +126,7 @@ public class Q10292_SecretGarden extends Quest
 					giveItems(player, TRAVELER_AGATHION_SUMMON_BRACELET);
 					giveItems(player, TRAVELER_AGATHION_GRIFFIN);
 					giveItems(player, SCROLL_ENCHANT_ADEN_WEAPON);
+					player.sendPacket(new TutorialShowHtml(0, "..\\L2text_classic\\eu\\QT_030_agathion_01.htm", 2));
 					qs.exitQuest(false, true);
 					htmltext = event;
 					break;

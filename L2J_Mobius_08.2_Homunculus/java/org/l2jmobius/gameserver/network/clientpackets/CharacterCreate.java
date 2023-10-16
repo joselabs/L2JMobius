@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
 import org.l2jmobius.gameserver.data.xml.InitialEquipmentData;
 import org.l2jmobius.gameserver.data.xml.InitialShortcutData;
@@ -50,22 +50,14 @@ import org.l2jmobius.gameserver.network.serverpackets.CharCreateOk;
 import org.l2jmobius.gameserver.network.serverpackets.CharSelectionInfo;
 import org.l2jmobius.gameserver.util.Util;
 
-@SuppressWarnings("unused")
 public class CharacterCreate implements ClientPacket
 {
 	protected static final Logger LOGGER_ACCOUNTING = Logger.getLogger("accounting");
 	
 	// cSdddddddddddd
 	private String _name;
-	private int _race;
-	private byte _sex;
+	private boolean _isFemale;
 	private int _classId;
-	private int _int;
-	private int _str;
-	private int _con;
-	private int _men;
-	private int _dex;
-	private int _wit;
 	private byte _hairStyle;
 	private byte _hairColor;
 	private byte _face;
@@ -74,15 +66,15 @@ public class CharacterCreate implements ClientPacket
 	public void read(ReadablePacket packet)
 	{
 		_name = packet.readString();
-		_race = packet.readInt();
-		_sex = (byte) packet.readInt();
+		packet.readInt(); // race
+		_isFemale = packet.readInt() != 0;
 		_classId = packet.readInt();
-		_int = packet.readInt();
-		_str = packet.readInt();
-		_con = packet.readInt();
-		_men = packet.readInt();
-		_dex = packet.readInt();
-		_wit = packet.readInt();
+		packet.readInt(); // _int
+		packet.readInt(); // _str
+		packet.readInt(); // _con
+		packet.readInt(); // _men
+		packet.readInt(); // _dex
+		packet.readInt(); // _wit
 		_hairStyle = (byte) packet.readInt();
 		_hairColor = (byte) packet.readInt();
 		_face = (byte) packet.readInt();
@@ -130,7 +122,7 @@ public class CharacterCreate implements ClientPacket
 			return;
 		}
 		
-		if ((_hairStyle < 0) || ((_sex == 0) && (_hairStyle > 4)) || ((_sex != 0) && (_hairStyle > 6)))
+		if ((_hairStyle < 0) || (!_isFemale && (_hairStyle > 4)) || (_isFemale && (_hairStyle > 6)))
 		{
 			PacketLogger.warning("Character Creation Failure: Character hair style " + _hairStyle + " is invalid. Possible client hack. " + client);
 			client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
@@ -150,14 +142,14 @@ public class CharacterCreate implements ClientPacket
 		/*
 		 * DrHouse: Since checks for duplicate names are done using SQL, lock must be held until data is written to DB as well.
 		 */
-		synchronized (CharNameTable.getInstance())
+		synchronized (CharInfoTable.getInstance())
 		{
-			if ((CharNameTable.getInstance().getAccountCharacterCount(client.getAccountName()) >= Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT) && (Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT != 0))
+			if ((CharInfoTable.getInstance().getAccountCharacterCount(client.getAccountName()) >= Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT) && (Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT != 0))
 			{
 				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_TOO_MANY_CHARACTERS));
 				return;
 			}
-			else if (CharNameTable.getInstance().doesCharNameExist(_name))
+			else if (CharInfoTable.getInstance().doesCharNameExist(_name))
 			{
 				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_NAME_ALREADY_EXISTS));
 				return;
@@ -235,10 +227,15 @@ public class CharacterCreate implements ClientPacket
 						client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
 						return;
 					}
+					if (!_isFemale)
+					{
+						client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
+						return;
+					}
 					break;
 				}
 			}
-			newChar = Player.create(template, client.getAccountName(), _name, new PlayerAppearance(_face, _hairColor, _hairStyle, _sex != 0));
+			newChar = Player.create(template, client.getAccountName(), _name, new PlayerAppearance(_face, _hairColor, _hairStyle, _isFemale));
 		}
 		
 		// HP and MP are at maximum and CP is zero by default.

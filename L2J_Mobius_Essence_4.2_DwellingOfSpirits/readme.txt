@@ -119,6 +119,7 @@ Death Knight: https://eu.4game.com/patchnotes/lineage2essence/196/
 -Sayha's Grace system
 -Random Craft system
 -Magic Lamp system
+-Orc Fortress
 
 Fluffy Reinforcement: https://eu.4game.com/patchnotes/lineage2essence/204/
 -Teleport favorites system

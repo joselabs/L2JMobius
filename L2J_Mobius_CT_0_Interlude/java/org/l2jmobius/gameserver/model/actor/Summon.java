@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.model.actor;
 
 import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
@@ -80,8 +79,6 @@ public abstract class Summon extends Playable
 	protected boolean _restoreSummon = true;
 	private int _shotsMask = 0;
 	private ScheduledFuture<?> _abnormalEffectTask;
-	private ScheduledFuture<?> _statusUpdateTask;
-	private final AtomicInteger _statusUpdateValue = new AtomicInteger();
 	
 	// @formatter:off
 	private static final int[] PASSIVE_SUMMONS =
@@ -642,7 +639,9 @@ public abstract class Summon extends Playable
 		// Check if this skill is enabled (e.g. reuse time)
 		if (isSkillDisabled(skill))
 		{
-			sendPacket(SystemMessageId.THAT_PET_SERVITOR_SKILL_CANNOT_BE_USED_BECAUSE_IT_IS_RECHARGING);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_NOT_AVAILABLE_AT_THIS_TIME_BEING_PREPARED_FOR_REUSE);
+			sm.addString(skill.getName());
+			sendPacket(sm);
 			return false;
 		}
 		
@@ -844,27 +843,19 @@ public abstract class Summon extends Playable
 			return;
 		}
 		
-		_statusUpdateValue.set(value);
-		if (_statusUpdateTask == null)
+		if (isSpawned())
 		{
-			_statusUpdateTask = ThreadPool.schedule(() ->
-			{
-				if (isSpawned())
-				{
-					sendPacket(new PetInfo(this, _statusUpdateValue.get()));
-					sendPacket(new PetStatusUpdate(this));
-					broadcastNpcInfo(_statusUpdateValue.get());
-					
-					// final Party party = _owner.getParty();
-					// if (party != null)
-					// {
-					// party.broadcastToPartyMembers(_owner, new ExPartyPetWindowUpdate(this));
-					// }
-					
-					updateEffectIcons(true);
-				}
-				_statusUpdateTask = null;
-			}, 50);
+			sendPacket(new PetInfo(this, value));
+			sendPacket(new PetStatusUpdate(this));
+			broadcastNpcInfo(value);
+			
+			// final Party party = _owner.getParty();
+			// if (party != null)
+			// {
+			// party.broadcastToPartyMembers(_owner, new ExPartyPetWindowUpdate(this));
+			// }
+			
+			updateEffectIcons(true);
 		}
 	}
 	

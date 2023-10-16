@@ -17,6 +17,7 @@
 package org.l2jmobius.gameserver.model.actor;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.model.Skill;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.knownlist.PlayableKnownList;
 import org.l2jmobius.gameserver.model.actor.stat.PlayableStat;
@@ -461,6 +462,8 @@ public abstract class Playable extends Creature
 	{
 		return false;
 	}
+	
+	public abstract boolean useMagic(Skill skill, boolean forceUse, boolean dontMove);
 	
 	/**
 	 * Gets the acting player.

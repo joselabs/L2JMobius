@@ -22,7 +22,6 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * Item Effect: Increase/decrease PK count permanently.
@@ -56,7 +55,7 @@ public class PkCount extends AbstractEffect
 		{
 			final int newPkCount = Math.max(player.getPkKills() + _amount, 0);
 			player.setPkKills(newPkCount);
-			player.sendPacket(new UserInfo(player));
+			player.updateUserInfo();
 		}
 	}
 }

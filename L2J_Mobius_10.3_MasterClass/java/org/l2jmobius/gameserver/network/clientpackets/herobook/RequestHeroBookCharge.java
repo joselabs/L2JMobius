@@ -40,15 +40,27 @@ public class RequestHeroBookCharge implements ClientPacket
 		final int size = packet.readInt();
 		for (int curr = 0; curr < size; curr++)
 		{
-			_items.put(packet.readInt(), packet.readLong());
+			final int id = packet.readInt();
+			final long count = packet.readLong();
+			if ((count < 1) || (count > 10000))
+			{
+				_items.clear();
+				return;
+			}
+			_items.put(id, count);
 		}
 	}
 	
 	@Override
 	public void run(GameClient client)
 	{
-		Player player = client.getPlayer();
+		final Player player = client.getPlayer();
 		if (player == null)
+		{
+			return;
+		}
+		
+		if (_items.isEmpty())
 		{
 			return;
 		}

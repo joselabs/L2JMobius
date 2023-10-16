@@ -29,6 +29,7 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.ai.AttackableAI;
+import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.FortSiegeGuardAI;
 import org.l2jmobius.gameserver.ai.SiegeGuardAI;
 import org.l2jmobius.gameserver.data.sql.SpawnTable;
@@ -156,7 +157,7 @@ public class WorldRegion
 					
 					if (mob.getAI() != null)
 					{
-						mob.getAI().setIntention(org.l2jmobius.gameserver.ai.CtrlIntention.AI_INTENTION_IDLE);
+						mob.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 						
 						// stop the ai tasks
 						if (mob.getAI() instanceof AttackableAI)
@@ -172,6 +173,9 @@ public class WorldRegion
 							((SiegeGuardAI) mob.getAI()).stopAITask();
 						}
 					}
+					
+					// Stop attack task.
+					mob.abortAttack();
 					
 					RandomAnimationTaskManager.getInstance().remove(mob);
 				}

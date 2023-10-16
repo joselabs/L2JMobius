@@ -66,7 +66,7 @@ public class Q00505_BloodOffering extends Quest
 	public String onTalk(Npc npc, Player player)
 	{
 		final String htmltext = getNoQuestMsg(player);
-		final QuestState qs = player.getQuestState(getName());
+		final QuestState qs = getQuestState(player, true);
 		if (qs == null)
 		{
 			return htmltext;

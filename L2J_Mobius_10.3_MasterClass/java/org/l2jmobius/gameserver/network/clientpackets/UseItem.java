@@ -25,7 +25,9 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.NextAction;
+import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
+import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.IllegalActionPunishmentType;
 import org.l2jmobius.gameserver.enums.ItemSkillType;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
@@ -46,6 +48,9 @@ import org.l2jmobius.gameserver.model.item.EtcItem;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.ActionType;
+import org.l2jmobius.gameserver.model.item.type.ArmorType;
+import org.l2jmobius.gameserver.model.item.type.WeaponType;
+import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
@@ -217,6 +222,30 @@ public class UseItem implements ClientPacket
 				player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 				return;
 			}
+			
+			if (CategoryData.getInstance().isInCategory(CategoryType.DEATH_KNIGHT_ALL_CLASS, player.getClassId().getId()))
+			{
+				// Death Knight class unequip shields.
+				if ((player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND) != null) && (player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND).getItemType() == ArmorType.SHIELD))
+				{
+					player.disarmShield();
+				}
+				
+				// Prevent Death Knight class to equip shields.
+				if (item.getItemType() == ArmorType.SHIELD)
+				{
+					player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+					return;
+				}
+				
+				// Prevent Death Knight class to equip other weapons.
+				if (item.isWeapon() && ((item.getWeaponItem().getItemType() != WeaponType.SWORD) || ((item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND))))
+				{
+					player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+					return;
+				}
+			}
+			
 			// Prevent players to equip weapon while wearing combat flag
 			// Don't allow weapon/shield equipment if a cursed weapon is equipped.
 			if ((item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_L_HAND) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_R_HAND))
@@ -279,8 +308,8 @@ public class UseItem implements ClientPacket
 					|| ((item.getTemplate().getType2() == ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > EnchantItemGroupsData.getInstance().getMaxAccessoryEnchant())) //
 					|| (item.isArmor() && (item.getTemplate().getType2() != ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > EnchantItemGroupsData.getInstance().getMaxArmorEnchant()))))
 			{
+				PacketLogger.info("Over-enchanted (+" + item.getEnchantLevel() + ") " + item + " has been removed from " + player);
 				player.getInventory().destroyItem("Over-enchant protection", item, player, null);
-				PacketLogger.info("Over-enchanted " + item + " has been removed from " + player);
 				if (Config.OVER_ENCHANT_PUNISHMENT != IllegalActionPunishmentType.NONE)
 				{
 					player.sendMessage("[Server]: You have over-enchanted items!");

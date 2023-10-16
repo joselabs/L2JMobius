@@ -23,6 +23,7 @@ import org.l2jmobius.gameserver.enums.DailyMissionStatus;
 import org.l2jmobius.gameserver.handler.AbstractDailyMissionHandler;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.DailyMissionPlayerEntry;
+import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.events.Containers;
 import org.l2jmobius.gameserver.model.events.EventType;
@@ -103,12 +104,16 @@ public class AugmentationDailyMissionHandler extends AbstractDailyMissionHandler
 		// Only missions with specific augment stones
 		if ((_missionId == 3055) || (_missionId == 3056) || (_missionId == 3057))
 		{
-			for (int mineralId : _mineralIds)
+			// Check if used item has been augmented with specified stones
+			final VariationInstance augmentation = event.getItem().getAugmentation();
+			if (augmentation != null)
 			{
-				// Check if used item has been augmented with specified stones
-				if (player.getInventory().getItemByItemId(event.getItem().getId()).isAugmented() && (event.getItem().getAugmentation().getMineralId() == mineralId))
+				for (int mineralId : _mineralIds)
 				{
-					processPlayerProgress(player);
+					if ((augmentation.getMineralId() == mineralId) && player.getInventory().getItemByItemId(event.getItem().getId()).isAugmented())
+					{
+						processPlayerProgress(player);
+					}
 				}
 			}
 		}

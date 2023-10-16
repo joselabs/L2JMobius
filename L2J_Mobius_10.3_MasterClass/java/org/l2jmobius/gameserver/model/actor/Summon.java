@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.model.actor;
 
 import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
@@ -88,8 +87,6 @@ public abstract class Summon extends Playable
 	protected boolean _restoreSummon = true;
 	private int _summonPoints = 0;
 	private ScheduledFuture<?> _abnormalEffectTask;
-	private ScheduledFuture<?> _statusUpdateTask;
-	private final AtomicInteger _statusUpdateValue = new AtomicInteger();
 	
 	// @formatter:off
 	private static final int[] PASSIVE_SUMMONS =
@@ -855,25 +852,17 @@ public abstract class Summon extends Playable
 			return;
 		}
 		
-		_statusUpdateValue.set(value);
-		if (_statusUpdateTask == null)
+		if (isSpawned())
 		{
-			_statusUpdateTask = ThreadPool.schedule(() ->
+			sendPacket(new PetInfo(this, value));
+			sendPacket(new PetStatusUpdate(this));
+			broadcastNpcInfo(value);
+			
+			final Party party = _owner.getParty();
+			if (party != null)
 			{
-				if (isSpawned())
-				{
-					sendPacket(new PetInfo(this, _statusUpdateValue.get()));
-					sendPacket(new PetStatusUpdate(this));
-					broadcastNpcInfo(_statusUpdateValue.get());
-					
-					final Party party = _owner.getParty();
-					if (party != null)
-					{
-						party.broadcastToPartyMembers(_owner, new ExPartyPetWindowUpdate(this));
-					}
-				}
-				_statusUpdateTask = null;
-			}, 50);
+				party.broadcastToPartyMembers(_owner, new ExPartyPetWindowUpdate(this));
+			}
 		}
 	}
 	

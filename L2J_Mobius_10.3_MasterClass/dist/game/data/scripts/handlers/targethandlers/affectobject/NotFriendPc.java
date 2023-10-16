@@ -138,8 +138,18 @@ public class NotFriendPc implements IAffectObjectHandler
 				return false;
 			}
 			
+			// Auto play target mode check.
+			if (player.isAutoPlaying() && ((targetPlayer.getPvpFlag() == 0) || (targetPlayer.getReputation() > -1)))
+			{
+				final int targetMode = player.getAutoPlaySettings().getNextTargetMode();
+				if ((targetMode != 0 /* Any Target */) && (targetMode != 2 /* Characters */))
+				{
+					return false;
+				}
+			}
+			
 			// By default any flagged/PK player is considered enemy.
-			return (target.getActingPlayer().getPvpFlag() > 0) || (target.getActingPlayer().getReputation() < 0);
+			return (targetPlayer.getPvpFlag() > 0) || (targetPlayer.getReputation() < 0);
 		}
 		
 		return target.isAutoAttackable(creature);

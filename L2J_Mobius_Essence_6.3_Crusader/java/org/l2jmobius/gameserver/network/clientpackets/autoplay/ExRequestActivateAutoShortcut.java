@@ -75,14 +75,15 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 		Skill skill = null;
 		if (shortcut.getType() == ShortcutType.SKILL)
 		{
-			skill = player.getKnownSkill(shortcut.getId());
+			final int skillId = player.getReplacementSkill(shortcut.getId());
+			skill = player.getKnownSkill(skillId);
 			if (skill == null)
 			{
 				if (player.hasServitors())
 				{
 					for (Summon summon : player.getServitors().values())
 					{
-						skill = summon.getKnownSkill(shortcut.getId());
+						skill = summon.getKnownSkill(skillId);
 						if (skill != null)
 						{
 							break;
@@ -91,7 +92,7 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 				}
 				if ((skill == null) && player.hasPet())
 				{
-					skill = player.getPet().getKnownSkill(shortcut.getId());
+					skill = player.getPet().getKnownSkill(skillId);
 				}
 			}
 		}
@@ -112,8 +113,8 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 				}
 				else // auto potion
 				{
-					AutoUseTaskManager.getInstance().removeAutoPotionItem(player, item.getId());
-					AutoUseTaskManager.getInstance().removeAutoPetPotionItem(player, item.getId());
+					AutoUseTaskManager.getInstance().removeAutoPotionItem(player);
+					AutoUseTaskManager.getInstance().removeAutoPetPotionItem(player);
 				}
 			}
 			// auto skill
@@ -153,7 +154,7 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 				{
 					if (Config.ENABLE_AUTO_POTION && (item != null) && item.isPotion())
 					{
-						AutoUseTaskManager.getInstance().addAutoPotionItem(player, item.getId());
+						AutoUseTaskManager.getInstance().setAutoPotionItem(player, item.getId());
 						return;
 					}
 				}
@@ -161,7 +162,7 @@ public class ExRequestActivateAutoShortcut implements ClientPacket
 				{
 					if (Config.ENABLE_AUTO_PET_POTION && (item != null) && item.isPotion())
 					{
-						AutoUseTaskManager.getInstance().addAutoPetPotionItem(player, item.getId());
+						AutoUseTaskManager.getInstance().setAutoPetPotionItem(player, item.getId());
 						return;
 					}
 				}

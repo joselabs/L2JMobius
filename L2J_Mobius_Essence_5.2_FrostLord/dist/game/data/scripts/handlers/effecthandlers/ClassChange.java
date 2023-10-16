@@ -143,7 +143,7 @@ public class ClassChange extends AbstractEffect
 					{
 						if (knownItem.isPotion())
 						{
-							AutoUseTaskManager.getInstance().removeAutoPotionItem(player, knownItem.getId());
+							AutoUseTaskManager.getInstance().removeAutoPotionItem(player);
 						}
 						else
 						{

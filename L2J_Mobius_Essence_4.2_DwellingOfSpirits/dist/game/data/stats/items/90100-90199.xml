@@ -268,7 +268,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="90136" name="Dimensional Gift" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_box_of_adventure_5_i00" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="FISH" />
@@ -422,7 +422,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="90148" name="Savior' Growth Scroll" type="EtcItem">
-		<!-- Acquired XP/ SP +50% for 2 h. Cooldown: 2 h. The effect remains after death. -->
+		<!-- Acquired XP/ SP +50% for 2 h. Cooldown: 2 hr. The effect remains after death. -->
 		<set name="icon" val="icon.etc_kalie_hero_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -433,7 +433,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="90149" name="Savior Scroll: Enchant Weapon" type="EtcItem">
-		<!-- Only for Savior s weapons. In the case of failure, the item does not disappear, and its enchantment level remains the same. -->
+		<!-- Only for Savior's weapons. In the case of failure, the item does not disappear, and its enchantment level remains the same. -->
 		<set name="icon" val="icon.yogi_scroll_of_enchant_weapon_grade_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -594,6 +594,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="90156" min="1" max="1" chance="100" /> <!-- Talisman of Border Lv. 6 - 30-day -->
+			<item id="90158" min="1" max="1" chance="100" /> <!-- Fire Dragon Pendant +6 - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="90156" name="Talisman of Border - Lv. 6" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. P./ M. Def. +24, P./ M. Evasion +2, HP/ MP/ CP +160, Speed +5, Atk. Spd./ Casting Spd. +15, Acquired XP/ SP +4%. Enables Border Purification (removes Paralysis, Petrification, Poisoning, and Bleeding). Effects of two identical talismans do not stack. -->
@@ -688,11 +693,11 @@
 		<set name="time" val="10080" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="90132" min="1" max="1" chance="100" /> <!-- Monster Arena Belt 7-day -->
+			<item id="90132" min="1" max="1" chance="100" /> <!-- Monster Arena Belt - 7-day -->
 		</capsuled_items>
 	</item>
 	<item id="90162" name="Warrior's Talisman Pack - Attack" additionalName="7-day" type="EtcItem">
-		<!-- Double-click to obtain Warrior s Talisman - Attack (7-day). -->
+		<!-- Double-click to obtain Warrior's Talisman - Attack (7-day). -->
 		<set name="icon" val="icon.new_user_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -704,11 +709,11 @@
 		<set name="time" val="10080" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="90157" min="1" max="1" chance="100" /> <!-- Warrior s Talisman - Attack - 7-day -->
+			<item id="90157" min="1" max="1" chance="100" /> <!-- Warrior's Talisman - Attack - 7-day -->
 		</capsuled_items>
 	</item>
 	<item id="90163" name="Warrior's Talisman Pack - Defense" additionalName="7-day" type="EtcItem">
-		<!-- Double-click to obtain Warrior s Talisman - Defense (7-day). -->
+		<!-- Double-click to obtain Warrior's Talisman - Defense (7-day). -->
 		<set name="icon" val="icon.new_user_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -720,7 +725,7 @@
 		<set name="time" val="10080" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="90160" min="1" max="1" chance="100" /> <!-- Warrior s Talisman - Defense - 7-day -->
+			<item id="90160" min="1" max="1" chance="100" /> <!-- Warrior's Talisman - Defense - 7-day -->
 		</capsuled_items>
 	</item>
 	<item id="90164" name="Battle Cure" type="EtcItem">
@@ -848,7 +853,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="90174" name="Silver Bait Box" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_silver_lure_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -862,7 +867,7 @@
 		</capsuled_items>
 	</item>
 	<item id="90175" name="Golden Bait Box" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_gold_lure_special_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -876,7 +881,7 @@
 		</capsuled_items>
 	</item>
 	<item id="90176" name="Golden Fishing kit Lv. 1" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_freya_sirr_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -885,12 +890,12 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest 30-day -->
-			<item id="90139" min="2160" max="2160" chance="100" /> <!-- Silver Bait Sealed -->
+			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest - 30-day -->
+			<item id="90139" min="2160" max="2160" chance="100" /> <!-- Silver Bait -->
 		</capsuled_items>
 	</item>
 	<item id="90177" name="Golden Fishing kit Lv. 2" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_freya_sirr_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -899,13 +904,13 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest 30-day -->
-			<item id="90139" min="2160" max="2160" chance="100" /> <!-- Silver Bait Sealed -->
-			<item id="90143" min="2" max="2" chance="100" /> <!-- Einhasad's Protection -->
+			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest - 30-day -->
+			<item id="90139" min="2160" max="2160" chance="100" /> <!-- Silver Bait -->
+			<item id="90143" min="2" max="2" chance="100" /> <!-- Einhasad's Protection (Exchangeable) -->
 		</capsuled_items>
 	</item>
 	<item id="90178" name="Golden Fishing kit Lv. 3" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_freya_sirr_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -914,9 +919,9 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest 30-day -->
-			<item id="90139" min="6480" max="6480" chance="100" /> <!-- Silver Bait Sealed -->
-			<item id="90143" min="4" max="4" chance="100" /> <!-- Einhasad's Protection -->
+			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest - 30-day -->
+			<item id="90139" min="6480" max="6480" chance="100" /> <!-- Silver Bait -->
+			<item id="90143" min="4" max="4" chance="100" /> <!-- Einhasad's Protection (Exchangeable) -->
 		</capsuled_items>
 	</item>
 	<item id="90179" name="Golden Fishing kit Lv. 4" type="EtcItem">
@@ -929,14 +934,14 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49521" min="1" max="1" chance="100" /> <!-- Refined Romantic Chapeau -->
-			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest 30-day -->
-			<item id="90139" min="6480" max="6480" chance="100" /> <!-- Silver Bait Sealed -->
-			<item id="90143" min="10" max="10" chance="100" /> <!-- Einhasad's Protection -->
+			<item id="49521" min="1" max="1" chance="100" /> <!-- Refined Romantic Chapeau <Str+1 Int+1> -->
+			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest - 30-day -->
+			<item id="90139" min="6480" max="6480" chance="100" /> <!-- Silver Bait -->
+			<item id="90143" min="10" max="10" chance="100" /> <!-- Einhasad's Protection (Exchangeable) -->
 		</capsuled_items>
 	</item>
 	<item id="90180" name="Golden Fishing kit Lv. 5" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_freya_sirr_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -945,15 +950,15 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49521" min="1" max="1" chance="100" /> <!-- Refined Romantic Chapeau -->
-			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest 30-day -->
-			<item id="49590" min="1" max="1" chance="100" /> <!-- Rare Accessory Pack Lv. 3 30-day -->
-			<item id="90139" min="12960" max="12960" chance="100" /> <!-- Silver Bait Sealed -->
-			<item id="90143" min="15" max="15" chance="100" /> <!-- Einhasad's Protection -->
+			<item id="49521" min="1" max="1" chance="100" /> <!-- Refined Romantic Chapeau <Str+1 Int+1> -->
+			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest - 30-day -->
+			<item id="49590" min="1" max="1" chance="100" /> <!-- Rare Accessory Pack Lv. 3 - 30-day -->
+			<item id="90139" min="12960" max="12960" chance="100" /> <!-- Silver Bait -->
+			<item id="90143" min="15" max="15" chance="100" /> <!-- Einhasad's Protection (Exchangeable) -->
 		</capsuled_items>
 	</item>
 	<item id="90181" name="Shiny Coin" type="EtcItem">
-		<!-- Take it to the Fishing Guild to obtain one of the following items: Fishing Rod Pack (10-day), Silver Bait Box, Golden Fishing Kit Lv. 1~5, Shining Fishing Kit Lv. 1~2. The price differs for various items. -->
+		<!-- Take it to the Fishermen's Guild to obtain one of the following items: Fishing Rod Chest (10-day), Silver Bait Box, Golden Fishing Kit Lv. 1~5, Shining Fishing Kit Lv. 1~2. The price differs for different items. -->
 		<set name="icon" val="icon.ev_festival_goldcoin" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1010,6 +1015,41 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="49518" min="3" max="3" chance="3.333333" /> <!-- Special Pirate Fruit -->
+			<item id="90186" min="10" max="10" chance="3.333333" /> <!-- Chef's Fish Stew - Wind (Exchangeable) -->
+			<item id="90185" min="10" max="10" chance="3.333333" /> <!-- Chef's Fish Stew - Water (Exchangeable) -->
+			<item id="90184" min="10" max="10" chance="3.333333" /> <!-- Chef's Fish Stew - Fire (Exchangeable) -->
+			<item id="13016" min="9" max="9" chance="3.333333" /> <!-- My Teleport Scroll -->
+			<item id="10649" min="1" max="1" chance="3.333333" /> <!-- Feather of Blessing -->
+			<item id="49845" min="1" max="1" chance="3.333333" /> <!-- Sayha's Blessing (Exchangeable) -->
+			<item id="90183" min="1" max="1" chance="3.333333" /> <!-- Chef's Fish Stew - Victory (Exchangeable) -->
+			<item id="90182" min="1" max="1" chance="3.333333" /> <!-- Shining Golden Bait -->
+			<item id="49846" min="1" max="1" chance="3.333333" /> <!-- Sayha's Silver Light Blessing -->
+			<item id="49847" min="1" max="1" chance="3.333333" /> <!-- Sayha's Golden Light Blessing -->
+			<item id="90143" min="1" max="1" chance="3.333333" /> <!-- Einhasad's Protection (Exchangeable) -->
+			<item id="90020" min="1" max="1" chance="3.333333" /> <!-- Best Dye Pack - 3rd Class Transfer -->
+			<item id="49472" min="1" max="1" chance="3.333333" /> <!-- Earth Dragon Pendant Pack -->
+			<item id="49471" min="1" max="1" chance="3.333333" /> <!-- Fire Dragon Pendant Pack -->
+			<item id="90045" min="1" max="1" chance="3.333333" /> <!-- Magical Tablet -->
+			<item id="49687" min="1" max="1" chance="3.333333" /> <!-- Chic Silver Chapeau <Str+1 Int+1> -->
+			<item id="49521" min="1" max="1" chance="3.333333" /> <!-- Refined Romantic Chapeau <Str+1 Int+1> -->
+			<item id="90137" min="1" max="1" chance="3.333333" /> <!-- Matte Pendant Polish -->
+			<item id="49756" min="1" max="1" chance="3.333333" /> <!-- Cloth Piece -->
+			<item id="49513" min="1" max="1" chance="3.333333" /> <!-- Shining Pendant Polish box -->
+			<item id="49580" min="1" max="1" chance="3.333333" /> <!-- Baium's Ring -->
+			<item id="6662" min="1" max="1" chance="3.333333" /> <!-- Ring of Core -->
+			<item id="6661" min="1" max="1" chance="3.333333" /> <!-- Orfen's Earring -->
+			<item id="6660" min="1" max="1" chance="3.333333" /> <!-- Queen Ant's Ring -->
+			<item id="90138" min="1" max="1" chance="3.333333" /> <!-- Glittering Pendant Polish -->
+			<item id="94403" min="1" max="1" chance="3.333333" /> <!-- Package: +2 Baium's Ring -->
+			<item id="94398" min="1" max="1" chance="3.333333" /> <!-- Package: +2 Ring of Core -->
+			<item id="94393" min="1" max="1" chance="3.333333" /> <!-- Package: +2 Orfen's Earring -->
+			<item id="94388" min="1" max="1" chance="3.333333" /> <!-- Package: +2 Queen Ant's Ring -->
+		</capsuled_items>
 	</item>
 	<item id="90188" name="Glowing Whale" type="EtcItem">
 		<!-- Double-click to obtain some SP. Can be exchanged for SP Scroll through a Fishing Guildsman. -->

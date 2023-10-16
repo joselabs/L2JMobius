@@ -89,12 +89,13 @@ public class Config
 	// --------------------------------------------------
 	// Config File Definitions
 	// --------------------------------------------------
-	public static final String GEOENGINE_CONFIG_FILE = "./config/GeoEngine.ini";
 	public static final String INTERFACE_CONFIG_FILE = "./config/Interface.ini";
 	public static final String NETWORK_CONFIG_FILE = "./config/Network.ini";
 	public static final String OLYMPIAD_CONFIG_FILE = "./config/Olympiad.ini";
-	public static final String SIEGE_CONFIG_FILE = "./config/Siege.ini";
+	
 	public static final String FORTSIEGE_CONFIG_FILE = "./config/FortSiege.ini";
+	public static final String SIEGE_CONFIG_FILE = "./config/Siege.ini";
+	
 	private static final String ATTENDANCE_CONFIG_FILE = "./config/AttendanceRewards.ini";
 	private static final String ATTRIBUTE_SYSTEM_FILE = "./config/AttributeSystem.ini";
 	private static final String CHARACTER_CONFIG_FILE = "./config/Character.ini";
@@ -102,22 +103,25 @@ public class Config
 	private static final String FLOOD_PROTECTOR_CONFIG_FILE = "./config/FloodProtector.ini";
 	private static final String GAME_ASSISTANT_CONFIG_FILE = "./config/GameAssistant.ini";
 	private static final String GENERAL_CONFIG_FILE = "./config/General.ini";
+	private static final String GEOENGINE_CONFIG_FILE = "./config/GeoEngine.ini";
 	private static final String GRACIASEEDS_CONFIG_FILE = "./config/GraciaSeeds.ini";
 	private static final String GRANDBOSS_CONFIG_FILE = "./config/GrandBoss.ini";
 	private static final String HUNT_PASS_CONFIG_FILE = "./config/HuntPass.ini";
 	private static final String ACHIEVEMENT_BOX_CONFIG_FILE = "./config/AchievementBox.ini";
 	private static final String LOGIN_CONFIG_FILE = "./config/LoginServer.ini";
+	private static final String MAGIC_LAMP_FILE = "./config/MagicLamp.ini";
 	private static final String NPC_CONFIG_FILE = "./config/NPC.ini";
+	private static final String ORC_FORTRESS_CONFIG_FILE = "./config/OrcFortress.ini";
 	private static final String PVP_CONFIG_FILE = "./config/PVP.ini";
+	private static final String RANDOM_CRAFT_FILE = "./config/RandomCraft.ini";
 	private static final String RATES_CONFIG_FILE = "./config/Rates.ini";
 	private static final String SERVER_CONFIG_FILE = "./config/Server.ini";
 	private static final String TRAINING_CAMP_CONFIG_FILE = "./config/TrainingCamp.ini";
+	private static final String WORLD_EXCHANGE_FILE = "./config/WorldExchange.ini";
+	
 	private static final String CHAT_FILTER_FILE = "./config/chatfilter.txt";
 	private static final String HEXID_FILE = "./config/hexid.txt";
 	private static final String IPCONFIG_FILE = "./config/ipconfig.xml";
-	private static final String MAGIC_LAMP_FILE = "./config/MagicLamp.ini";
-	private static final String RANDOM_CRAFT_FILE = "./config/RandomCraft.ini";
-	private static final String WORLD_EXCHANGE_FILE = "./config/WorldExchange.ini";
 	
 	// --------------------------------------------------
 	// Custom Config File Definitions
@@ -141,6 +145,7 @@ public class Config
 	private static final String CUSTOM_MULTILANGUAL_SUPPORT_CONFIG_FILE = "./config/Custom/MultilingualSupport.ini";
 	private static final String CUSTOM_NOBLESS_MASTER_CONFIG_FILE = "./config/Custom/NoblessMaster.ini";
 	private static final String CUSTOM_NPC_STAT_MULTIPLIERS_CONFIG_FILE = "./config/Custom/NpcStatMultipliers.ini";
+	private static final String CUSTOM_OFFLINE_PLAY_CONFIG_FILE = "./config/Custom/OfflinePlay.ini";
 	private static final String CUSTOM_OFFLINE_TRADE_CONFIG_FILE = "./config/Custom/OfflineTrade.ini";
 	private static final String CUSTOM_ONLINE_INFO_CONFIG_FILE = "./config/Custom/OnlineInfo.ini";
 	private static final String CUSTOM_PASSWORD_CHANGE_CONFIG_FILE = "./config/Custom/PasswordChange.ini";
@@ -211,6 +216,8 @@ public class Config
 	public static int BLOW_RATE_CHANCE_LIMIT;
 	public static int ITEM_EQUIP_ACTIVE_SKILL_REUSE;
 	public static int ARMOR_SET_EQUIP_ACTIVE_SKILL_REUSE;
+	public static double PLAYER_REFLECT_PERCENT_LIMIT;
+	public static double NON_PLAYER_REFLECT_PERCENT_LIMIT;
 	public static boolean LIFE_CRYSTAL_NEEDED;
 	public static boolean DIVINE_SP_BOOK_NEEDED;
 	public static boolean ALT_GAME_SUBCLASS_WITHOUT_QUESTS;
@@ -396,6 +403,10 @@ public class Config
 	public static int FS_FEE_FOR_CASTLE;
 	public static int FS_MAX_OWN_TIME;
 	
+	public static boolean ORC_FORTRESS_ENABLE;
+	public static int ORC_FORTRESS_HOUR;
+	public static int ORC_FORTRESS_MINUTE;
+	
 	// --------------------------------------------------
 	// Feature Settings
 	// --------------------------------------------------
@@ -517,7 +528,6 @@ public class Config
 	public static boolean MULTIPLE_ITEM_DROP;
 	public static boolean LAZY_CACHE;
 	public static boolean CHECK_HTML_ENCODING;
-	public static boolean CACHE_CHAR_NAMES;
 	public static int MIN_NPC_ANIMATION;
 	public static int MAX_NPC_ANIMATION;
 	public static int MIN_MONSTER_ANIMATION;
@@ -636,6 +646,8 @@ public class Config
 	public static boolean ENABLE_AUTO_ITEM;
 	public static boolean AUTO_PLAY_ATTACK_ACTION;
 	public static boolean RESUME_AUTO_PLAY;
+	public static AbnormalVisualEffect BLUE_TEAM_ABNORMAL_EFFECT;
+	public static AbnormalVisualEffect RED_TEAM_ABNORMAL_EFFECT;
 	public static int SHARING_LOCATION_COST;
 	public static int TELEPORT_SHARE_LOCATION_COST;
 	
@@ -760,13 +772,9 @@ public class Config
 	public static Map<Integer, Float> RATE_DROP_CHANCE_BY_ID;
 	public static int DROP_MAX_OCCURRENCES_NORMAL;
 	public static int DROP_MAX_OCCURRENCES_RAIDBOSS;
-	public static int DROP_ADENA_MIN_LEVEL_DIFFERENCE;
-	public static int DROP_ADENA_MAX_LEVEL_DIFFERENCE;
-	public static double DROP_ADENA_MIN_LEVEL_GAP_CHANCE;
-	public static int DROP_ITEM_MIN_LEVEL_DIFFERENCE;
-	public static int DROP_ITEM_MAX_LEVEL_DIFFERENCE;
-	public static double DROP_ITEM_MIN_LEVEL_GAP_CHANCE;
-	public static int EVENT_ITEM_MAX_LEVEL_DIFFERENCE;
+	public static int DROP_ADENA_MAX_LEVEL_LOWEST_DIFFERENCE;
+	public static int DROP_ITEM_MAX_LEVEL_LOWEST_DIFFERENCE;
+	public static int EVENT_ITEM_MAX_LEVEL_LOWEST_DIFFERENCE;
 	public static double BLESSING_CHANCE;
 	public static boolean BOSS_DROP_ENABLED;
 	public static int BOSS_DROP_MIN_LEVEL;
@@ -1157,6 +1165,13 @@ public class Config
 	public static double DEFENDER_MDEF_MULTIPLIER;
 	public static double DEFENDER_AGRRO_RANGE_MULTIPLIER;
 	public static double DEFENDER_CLAN_HELP_RANGE_MULTIPLIER;
+	public static boolean ENABLE_OFFLINE_PLAY_COMMAND;
+	public static boolean OFFLINE_PLAY_PREMIUM;
+	public static boolean OFFLINE_PLAY_LOGOUT_ON_DEATH;
+	public static String OFFLINE_PLAY_LOGIN_MESSAGE;
+	public static boolean OFFLINE_PLAY_SET_NAME_COLOR;
+	public static int OFFLINE_PLAY_NAME_COLOR;
+	public static List<AbnormalVisualEffect> OFFLINE_PLAY_ABNORMAL_EFFECTS = new ArrayList<>();
 	public static boolean OFFLINE_TRADE_ENABLE;
 	public static boolean OFFLINE_CRAFT_ENABLE;
 	public static boolean OFFLINE_MODE_IN_PEACE_ZONE;
@@ -1165,14 +1180,15 @@ public class Config
 	public static int OFFLINE_MAX_DAYS;
 	public static boolean OFFLINE_DISCONNECT_FINISHED;
 	public static boolean OFFLINE_DISCONNECT_SAME_ACCOUNT;
-	public static List<AbnormalVisualEffect> OFFLINE_ABNORMAL_EFFECTS = new ArrayList<>();
 	public static boolean OFFLINE_SET_NAME_COLOR;
 	public static int OFFLINE_NAME_COLOR;
+	public static List<AbnormalVisualEffect> OFFLINE_ABNORMAL_EFFECTS = new ArrayList<>();
 	public static boolean OFFLINE_FAME;
 	public static boolean STORE_OFFLINE_TRADE_IN_REALTIME;
 	public static boolean ENABLE_OFFLINE_COMMAND;
 	public static boolean DISPLAY_SERVER_TIME;
 	public static int BUFFER_MAX_SCHEMES;
+	public static int BUFFER_ITEM_ID;
 	public static int BUFFER_STATIC_BUFF_COST;
 	public static boolean WELCOME_MESSAGE_ENABLED;
 	public static String WELCOME_MESSAGE_TEXT;
@@ -1355,15 +1371,19 @@ public class Config
 	public static float PREMIUM_RATE_DROP_AMOUNT;
 	public static float PREMIUM_RATE_SPOIL_CHANCE;
 	public static float PREMIUM_RATE_SPOIL_AMOUNT;
+	public static float PREMIUM_RATE_QUEST_XP;
+	public static float PREMIUM_RATE_QUEST_SP;
 	public static Map<Integer, Float> PREMIUM_RATE_DROP_CHANCE_BY_ID;
 	public static Map<Integer, Float> PREMIUM_RATE_DROP_AMOUNT_BY_ID;
 	public static boolean PREMIUM_ONLY_FISHING;
 	public static boolean PC_CAFE_ENABLED;
 	public static boolean PC_CAFE_ONLY_PREMIUM;
 	public static boolean PC_CAFE_ONLY_VIP;
+	public static boolean PC_CAFE_RETAIL_LIKE;
 	public static int PC_CAFE_MAX_POINTS;
 	public static boolean PC_CAFE_ENABLE_DOUBLE_POINTS;
 	public static int PC_CAFE_DOUBLE_POINTS_CHANCE;
+	public static int ACQUISITION_PC_CAFE_RETAIL_LIKE_POINTS;
 	public static double PC_CAFE_POINT_RATE;
 	public static boolean PC_CAFE_RANDOM_POINT;
 	public static boolean PC_CAFE_REWARD_LOW_EXP_KILLS;
@@ -1900,6 +1920,8 @@ public class Config
 			BLOW_RATE_CHANCE_LIMIT = characterConfig.getInt("BlowRateChanceLimit", 100);
 			ITEM_EQUIP_ACTIVE_SKILL_REUSE = characterConfig.getInt("ItemEquipActiveSkillReuse", 300000);
 			ARMOR_SET_EQUIP_ACTIVE_SKILL_REUSE = characterConfig.getInt("ArmorSetEquipActiveSkillReuse", 60000);
+			PLAYER_REFLECT_PERCENT_LIMIT = characterConfig.getDouble("PlayerReflectPercentLimit", 100);
+			NON_PLAYER_REFLECT_PERCENT_LIMIT = characterConfig.getDouble("NonPlayerReflectPercentLimit", 100);
 			LIFE_CRYSTAL_NEEDED = characterConfig.getBoolean("LifeCrystalNeeded", true);
 			DIVINE_SP_BOOK_NEEDED = characterConfig.getBoolean("DivineInspirationSpBookNeeded", true);
 			ALT_GAME_SUBCLASS_WITHOUT_QUESTS = characterConfig.getBoolean("AltSubClassWithoutQuests", false);
@@ -1964,13 +1986,21 @@ public class Config
 			MIN_WEAPON_ENCHANT_ANNOUNCE = characterConfig.getInt("MinimumWeaponEnchantAnnounce", 7);
 			MAX_ARMOR_ENCHANT_ANNOUNCE = characterConfig.getInt("MaximumArmorEnchantAnnounce", 30);
 			MAX_WEAPON_ENCHANT_ANNOUNCE = characterConfig.getInt("MaximumWeaponEnchantAnnounce", 30);
-			final String[] array = characterConfig.getString("AugmentationBlackList", "6656,6657,6658,6659,6660,6661,6662,8191,10170,10314,13740,13741,13742,13743,13744,13745,13746,13747,13748,14592,14593,14594,14595,14596,14597,14598,14599,14600,14664,14665,14666,14667,14668,14669,14670,14671,14672,14801,14802,14803,14804,14805,14806,14807,14808,14809,15282,15283,15284,15285,15286,15287,15288,15289,15290,15291,15292,15293,15294,15295,15296,15297,15298,15299,16025,16026,21712,22173,22174,22175").split(",");
-			AUGMENTATION_BLACKLIST = new int[array.length];
-			for (int i = 0; i < array.length; i++)
+			final String augmentationBlackList = characterConfig.getString("AugmentationBlackList", "").trim();
+			if (augmentationBlackList.isEmpty())
 			{
-				AUGMENTATION_BLACKLIST[i] = Integer.parseInt(array[i]);
+				AUGMENTATION_BLACKLIST = new int[0];
 			}
-			Arrays.sort(AUGMENTATION_BLACKLIST);
+			else
+			{
+				final String[] array = augmentationBlackList.split(",");
+				AUGMENTATION_BLACKLIST = new int[array.length];
+				for (int i = 0; i < array.length; i++)
+				{
+					AUGMENTATION_BLACKLIST[i] = Integer.parseInt(array[i]);
+				}
+				Arrays.sort(AUGMENTATION_BLACKLIST);
+			}
 			ALT_ALLOW_AUGMENT_PVP_ITEMS = characterConfig.getBoolean("AltAllowAugmentPvPItems", false);
 			ALT_ALLOW_AUGMENT_TRADE = characterConfig.getBoolean("AltAllowAugmentTrade", false);
 			ALT_ALLOW_AUGMENT_DESTROY = characterConfig.getBoolean("AltAllowAugmentDestroy", true);
@@ -2133,36 +2163,6 @@ public class Config
 			
 			// Load GameAssistant config file (if exists)
 			final PropertiesParser gameAssistantConfig = new PropertiesParser(GAME_ASSISTANT_CONFIG_FILE);
-			PC_CAFE_ENABLED = gameAssistantConfig.getBoolean("PcCafeEnabled", false);
-			PC_CAFE_ONLY_PREMIUM = gameAssistantConfig.getBoolean("PcCafeOnlyPremium", false);
-			PC_CAFE_ONLY_VIP = gameAssistantConfig.getBoolean("PcCafeOnlyVip", false);
-			PC_CAFE_MAX_POINTS = gameAssistantConfig.getInt("MaxPcCafePoints", 200000);
-			if (PC_CAFE_MAX_POINTS < 0)
-			{
-				PC_CAFE_MAX_POINTS = 0;
-			}
-			PC_CAFE_ENABLE_DOUBLE_POINTS = gameAssistantConfig.getBoolean("DoublingAcquisitionPoints", false);
-			PC_CAFE_DOUBLE_POINTS_CHANCE = gameAssistantConfig.getInt("DoublingAcquisitionPointsChance", 1);
-			if ((PC_CAFE_DOUBLE_POINTS_CHANCE < 0) || (PC_CAFE_DOUBLE_POINTS_CHANCE > 100))
-			{
-				PC_CAFE_DOUBLE_POINTS_CHANCE = 1;
-			}
-			PC_CAFE_POINT_RATE = gameAssistantConfig.getDouble("AcquisitionPointsRate", 1.0);
-			PC_CAFE_RANDOM_POINT = gameAssistantConfig.getBoolean("AcquisitionPointsRandom", false);
-			if (PC_CAFE_POINT_RATE < 0)
-			{
-				PC_CAFE_POINT_RATE = 1;
-			}
-			PC_CAFE_REWARD_LOW_EXP_KILLS = gameAssistantConfig.getBoolean("RewardLowExpKills", true);
-			PC_CAFE_LOW_EXP_KILLS_CHANCE = gameAssistantConfig.getInt("RewardLowExpKillsChance", 50);
-			if (PC_CAFE_LOW_EXP_KILLS_CHANCE < 0)
-			{
-				PC_CAFE_LOW_EXP_KILLS_CHANCE = 0;
-			}
-			if (PC_CAFE_LOW_EXP_KILLS_CHANCE > 100)
-			{
-				PC_CAFE_LOW_EXP_KILLS_CHANCE = 100;
-			}
 			GAME_ASSISTANT_ENABLED = gameAssistantConfig.getBoolean("GameAssistantEnabled", false);
 			
 			// Load General config file (if exists)
@@ -2245,7 +2245,6 @@ public class Config
 			MULTIPLE_ITEM_DROP = generalConfig.getBoolean("MultipleItemDrop", true);
 			LAZY_CACHE = generalConfig.getBoolean("LazyCache", true);
 			CHECK_HTML_ENCODING = generalConfig.getBoolean("CheckHtmlEncoding", true);
-			CACHE_CHAR_NAMES = generalConfig.getBoolean("CacheCharNames", true);
 			MIN_NPC_ANIMATION = generalConfig.getInt("MinNpcAnimation", 5);
 			MAX_NPC_ANIMATION = generalConfig.getInt("MaxNpcAnimation", 60);
 			MIN_MONSTER_ANIMATION = generalConfig.getInt("MinMonsterAnimation", 5);
@@ -2341,6 +2340,18 @@ public class Config
 			ENABLE_AUTO_ITEM = generalConfig.getBoolean("EnableAutoItem", true);
 			AUTO_PLAY_ATTACK_ACTION = generalConfig.getBoolean("AutoPlayAttackAction", true);
 			RESUME_AUTO_PLAY = generalConfig.getBoolean("ResumeAutoPlay", false);
+			BLUE_TEAM_ABNORMAL_EFFECT = null;
+			final String blueTeamAve = generalConfig.getString("BlueTeamAbnormalEffect", "").trim();
+			if (!blueTeamAve.isEmpty())
+			{
+				BLUE_TEAM_ABNORMAL_EFFECT = Enum.valueOf(AbnormalVisualEffect.class, blueTeamAve);
+			}
+			RED_TEAM_ABNORMAL_EFFECT = null;
+			final String redTeamAve = generalConfig.getString("RedTeamAbnormalEffect", "").trim();
+			if (!redTeamAve.isEmpty())
+			{
+				RED_TEAM_ABNORMAL_EFFECT = Enum.valueOf(AbnormalVisualEffect.class, redTeamAve);
+			}
 			SUBJUGATION_TOPIC_BODY = generalConfig.getString("SubjugationTopicBody", "Reward for being in the top of the best players in clearing the lands of Aden");
 			SUBJUGATION_TOPIC_HEADER = generalConfig.getString("SubjugationTopicHeader", "Purge reward");
 			SHARING_LOCATION_COST = generalConfig.getInt("ShareLocationLcoinCost", 50);
@@ -2551,13 +2562,9 @@ public class Config
 			}
 			DROP_MAX_OCCURRENCES_NORMAL = ratesConfig.getInt("DropMaxOccurrencesNormal", 2);
 			DROP_MAX_OCCURRENCES_RAIDBOSS = ratesConfig.getInt("DropMaxOccurrencesRaidboss", 7);
-			DROP_ADENA_MIN_LEVEL_DIFFERENCE = ratesConfig.getInt("DropAdenaMinLevelDifference", 8);
-			DROP_ADENA_MAX_LEVEL_DIFFERENCE = ratesConfig.getInt("DropAdenaMaxLevelDifference", 15);
-			DROP_ADENA_MIN_LEVEL_GAP_CHANCE = ratesConfig.getDouble("DropAdenaMinLevelGapChance", 10);
-			DROP_ITEM_MIN_LEVEL_DIFFERENCE = ratesConfig.getInt("DropItemMinLevelDifference", 5);
-			DROP_ITEM_MAX_LEVEL_DIFFERENCE = ratesConfig.getInt("DropItemMaxLevelDifference", 10);
-			DROP_ITEM_MIN_LEVEL_GAP_CHANCE = ratesConfig.getDouble("DropItemMinLevelGapChance", 10);
-			EVENT_ITEM_MAX_LEVEL_DIFFERENCE = ratesConfig.getInt("EventItemMaxLevelDifference", 9);
+			DROP_ADENA_MAX_LEVEL_LOWEST_DIFFERENCE = ratesConfig.getInt("DropAdenaMaxLevelLowestDifference", 14);
+			DROP_ITEM_MAX_LEVEL_LOWEST_DIFFERENCE = ratesConfig.getInt("DropItemMaxLevelLowestDifference", 14);
+			EVENT_ITEM_MAX_LEVEL_LOWEST_DIFFERENCE = ratesConfig.getInt("EventItemMaxLevelLowestDifference", 14);
 			BLESSING_CHANCE = ratesConfig.getDouble("BlessingChance", 15.0);
 			BOSS_DROP_ENABLED = ratesConfig.getBoolean("BossDropEnable", false);
 			BOSS_DROP_MIN_LEVEL = ratesConfig.getInt("BossDropMinLevel", 40);
@@ -2719,6 +2726,13 @@ public class Config
 			ACHIEVEMENT_BOX_POINTS_FOR_REWARD = achievementBoxConfig.getInt("PointsForReward", 1000);
 			ENABLE_ACHIEVEMENT_PVP = achievementBoxConfig.getBoolean("EnabledAchievementPvP", true);
 			ACHIEVEMENT_BOX_PVP_POINTS_FOR_REWARD = achievementBoxConfig.getInt("PointsForPvpReward", 5);
+			
+			// Orc Fortress
+			final PropertiesParser orcFortressConfig = new PropertiesParser(ORC_FORTRESS_CONFIG_FILE);
+			final String[] orcFortressTime = orcFortressConfig.getString("OrcFortressTime", "20:00").trim().split(":");
+			ORC_FORTRESS_ENABLE = orcFortressConfig.getBoolean("OrcFortressEnable", true);
+			ORC_FORTRESS_HOUR = Integer.parseInt(orcFortressTime[0]);
+			ORC_FORTRESS_MINUTE = Integer.parseInt(orcFortressTime[1]);
 			
 			// Gracia Seeds
 			final PropertiesParser graciaSeedsConfig = new PropertiesParser(GRACIASEEDS_CONFIG_FILE);
@@ -3541,6 +3555,24 @@ public class Config
 			NOBLESS_MASTER_LEVEL_REQUIREMENT = noblessMasterConfig.getInt("LevelRequirement", 80);
 			NOBLESS_MASTER_REWARD_TIARA = noblessMasterConfig.getBoolean("RewardTiara", false);
 			
+			// Load OfflinePlay config file (if exists)
+			final PropertiesParser offlinePlayConfig = new PropertiesParser(CUSTOM_OFFLINE_PLAY_CONFIG_FILE);
+			ENABLE_OFFLINE_PLAY_COMMAND = offlinePlayConfig.getBoolean("EnableOfflinePlayCommand", false);
+			OFFLINE_PLAY_PREMIUM = offlinePlayConfig.getBoolean("OfflinePlayPremium", false);
+			OFFLINE_PLAY_LOGOUT_ON_DEATH = offlinePlayConfig.getBoolean("OfflinePlayLogoutOnDeath", true);
+			OFFLINE_PLAY_LOGIN_MESSAGE = offlinePlayConfig.getString("OfflinePlayLoginMessage", "");
+			OFFLINE_PLAY_SET_NAME_COLOR = offlinePlayConfig.getBoolean("OfflinePlaySetNameColor", false);
+			OFFLINE_PLAY_NAME_COLOR = Integer.decode("0x" + offlinePlayConfig.getString("OfflinePlayNameColor", "808080"));
+			OFFLINE_PLAY_ABNORMAL_EFFECTS.clear();
+			final String offlinePlayAbnormalEffects = offlinePlayConfig.getString("OfflinePlayAbnormalEffect", "").trim();
+			if (!offlinePlayAbnormalEffects.isEmpty())
+			{
+				for (String ave : offlinePlayAbnormalEffects.split(","))
+				{
+					OFFLINE_PLAY_ABNORMAL_EFFECTS.add(Enum.valueOf(AbnormalVisualEffect.class, ave.trim()));
+				}
+			}
+			
 			// Load OfflineTrade config file (if exists)
 			final PropertiesParser offlineTradeConfig = new PropertiesParser(CUSTOM_OFFLINE_TRADE_CONFIG_FILE);
 			OFFLINE_TRADE_ENABLE = offlineTradeConfig.getBoolean("OfflineTradeEnable", false);
@@ -3590,12 +3622,46 @@ public class Config
 			// Load PremiumSystem config file (if exists)
 			final PropertiesParser premiumSystemConfig = new PropertiesParser(CUSTOM_PREMIUM_SYSTEM_CONFIG_FILE);
 			PREMIUM_SYSTEM_ENABLED = premiumSystemConfig.getBoolean("EnablePremiumSystem", false);
+			PC_CAFE_ENABLED = premiumSystemConfig.getBoolean("PcCafeEnabled", false);
+			PC_CAFE_ONLY_PREMIUM = premiumSystemConfig.getBoolean("PcCafeOnlyPremium", false);
+			PC_CAFE_ONLY_VIP = premiumSystemConfig.getBoolean("PcCafeOnlyVip", false);
+			PC_CAFE_RETAIL_LIKE = premiumSystemConfig.getBoolean("PcCafeRetailLike", true);
+			PC_CAFE_MAX_POINTS = premiumSystemConfig.getInt("MaxPcCafePoints", 200000);
+			if (PC_CAFE_MAX_POINTS < 0)
+			{
+				PC_CAFE_MAX_POINTS = 0;
+			}
+			PC_CAFE_ENABLE_DOUBLE_POINTS = premiumSystemConfig.getBoolean("DoublingAcquisitionPoints", false);
+			PC_CAFE_DOUBLE_POINTS_CHANCE = premiumSystemConfig.getInt("DoublingAcquisitionPointsChance", 1);
+			if ((PC_CAFE_DOUBLE_POINTS_CHANCE < 0) || (PC_CAFE_DOUBLE_POINTS_CHANCE > 100))
+			{
+				PC_CAFE_DOUBLE_POINTS_CHANCE = 1;
+			}
+			ACQUISITION_PC_CAFE_RETAIL_LIKE_POINTS = premiumSystemConfig.getInt("AcquisitionPointsRetailLikePoints", 10);
+			PC_CAFE_POINT_RATE = premiumSystemConfig.getDouble("AcquisitionPointsRate", 1.0);
+			PC_CAFE_RANDOM_POINT = premiumSystemConfig.getBoolean("AcquisitionPointsRandom", false);
+			if (PC_CAFE_POINT_RATE < 0)
+			{
+				PC_CAFE_POINT_RATE = 1;
+			}
+			PC_CAFE_REWARD_LOW_EXP_KILLS = premiumSystemConfig.getBoolean("RewardLowExpKills", true);
+			PC_CAFE_LOW_EXP_KILLS_CHANCE = premiumSystemConfig.getInt("RewardLowExpKillsChance", 50);
+			if (PC_CAFE_LOW_EXP_KILLS_CHANCE < 0)
+			{
+				PC_CAFE_LOW_EXP_KILLS_CHANCE = 0;
+			}
+			if (PC_CAFE_LOW_EXP_KILLS_CHANCE > 100)
+			{
+				PC_CAFE_LOW_EXP_KILLS_CHANCE = 100;
+			}
 			PREMIUM_RATE_XP = premiumSystemConfig.getFloat("PremiumRateXp", 2);
 			PREMIUM_RATE_SP = premiumSystemConfig.getFloat("PremiumRateSp", 2);
 			PREMIUM_RATE_DROP_CHANCE = premiumSystemConfig.getFloat("PremiumRateDropChance", 2);
 			PREMIUM_RATE_DROP_AMOUNT = premiumSystemConfig.getFloat("PremiumRateDropAmount", 1);
 			PREMIUM_RATE_SPOIL_CHANCE = premiumSystemConfig.getFloat("PremiumRateSpoilChance", 2);
 			PREMIUM_RATE_SPOIL_AMOUNT = premiumSystemConfig.getFloat("PremiumRateSpoilAmount", 1);
+			PREMIUM_RATE_QUEST_XP = premiumSystemConfig.getFloat("PremiumRateQuestXp", 1);
+			PREMIUM_RATE_QUEST_SP = premiumSystemConfig.getFloat("PremiumRateQuestSp", 1);
 			final String[] premiumDropChanceMultiplier = premiumSystemConfig.getString("PremiumRateDropChanceByItemId", "").split(";");
 			PREMIUM_RATE_DROP_CHANCE_BY_ID = new HashMap<>(premiumDropChanceMultiplier.length);
 			if (!premiumDropChanceMultiplier[0].isEmpty())
@@ -3737,6 +3803,7 @@ public class Config
 			// Load SchemeBuffer config file (if exists)
 			final PropertiesParser schemeBufferConfig = new PropertiesParser(CUSTOM_SCHEME_BUFFER_CONFIG_FILE);
 			BUFFER_MAX_SCHEMES = schemeBufferConfig.getInt("BufferMaxSchemesPerChar", 4);
+			BUFFER_ITEM_ID = schemeBufferConfig.getInt("BufferItemId", 57);
 			BUFFER_STATIC_BUFF_COST = schemeBufferConfig.getInt("BufferStaticCostPerBuff", -1);
 			
 			// Load StartingLocation config file (if exists)
@@ -4051,7 +4118,7 @@ public class Config
 			}
 			else // Auto configuration...
 			{
-				LOGGER.info("Network Config: ipconfig.xml doesn't exists using automatic configuration...");
+				LOGGER.info("Network Config: ipconfig.xml doesn't exist using automatic configuration...");
 				autoIpConfig();
 			}
 		}

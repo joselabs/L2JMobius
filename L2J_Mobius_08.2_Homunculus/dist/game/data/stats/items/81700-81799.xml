@@ -21,13 +21,17 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81702" name="Red Libra Blessing Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain Red Libra's Blessing Rune (7-day). -->
+		<!-- Double-click to obtain Red Libra Blessing Rune (7-day). -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="80712" min="1" max="1" chance="100" /> <!-- Red Libra Blessing - Event -->
+		</capsuled_items>
 	</item>
 	<item id="81703" name="Leona's Grace Box" additionalName="Event" type="EtcItem">
 		<!-- For player of Leona server. Double-click to obtain one of the following items: Dark Weapon Enhancement Stone, Dragon's Ring, Dragon's Earring, Dragon's Necklace, Ruler's Authority, +8 Angel's Necklace Pack, +8 Angel's Earring Pack, +8 Angel's Ring Pack. -->
@@ -41,7 +45,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81704" name="Elysian Gift Box" additionalName="Event" type="EtcItem">
-		<!-- A gift from the Red Libra Guild. Double-click to obtain Emperor's Special Cocktail (100 pcs.), Freya's Ice Rose (100 pcs.), Honey Dark Beer (100 pcs.), Glowing Dragon's Attribute Potion (XP) (100 pcs.), Vitality (200 pcs.). -->
+		<!-- A present given by Red Libra Guild. Double-click to obtain Emperor's Special Cocktail (100 pcs.), Freya's Rose (100 pcs.), Honey Dark Beer (100 pcs.), Glowing Dragon's Attribute Potion (100 pcs.), Energy (200 pcs.). -->
 		<set name="icon" val="icon.ev_2018_xmas_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -51,6 +55,14 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="81012" min="100" max="100" chance="100" /> <!-- Emperor's Special Cocktail - Event -->
+			<item id="48848" min="100" max="100" chance="100" /> <!-- Freya's Ice Rose - Event -->
+			<item id="48857" min="100" max="100" chance="100" /> <!-- Glowing Dragon's Attribute Potion (XP) - Event -->
+			<item id="81011" min="100" max="100" chance="100" /> <!-- Honey Dark Beer - Event -->
+			<item id="81053" min="200" max="200" chance="100" /> <!-- Vitality -->
+		</capsuled_items>
 	</item>
 	<item id="81705" name="Relics of the Ancient Empress" type="EtcItem">
 		<!-- A precious treasure chest of the Ancient Empress. Double-click on it to obtain a rare item. -->
@@ -77,7 +89,7 @@
 		</skills>
 	</item>
 	<item id="81707" name="Festival Fairy's Gift" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain a useful item. -->
+		<!-- Double-click to obtain one of the following items: Sayha's Talisman Lv. 9, +9 Fallen Angel's Ring Pack, Bloody Weapon Enhancement Stone, Sealed Talisman of Longing, Energy of Longing, Forgotten Spellbook, Superior Giant's Codex - Mastery, Superior Giant's Codex, Sayha's Talisman Pack, Angel Necklace/ Earring/ Ring Pack, various supplies. -->
 		<set name="icon" val="icon.etc_treasure_box_i08" />
 		<set name="material" val="PAPER" />
 		<set name="is_stackable" val="true" />
@@ -93,17 +105,17 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="30297" min="1" max="1" chance="38" />
-			<item id="30298" min="1" max="1" chance="38" />
-			<item id="47820" min="1" max="1" chance="2" />
-			<item id="48861" min="1" max="1" chance="2" />
-			<item id="81153" min="1" max="1" chance="10" />
+			<item id="30297" min="1" max="1" chance="38" /> <!-- Superior Giant's Codex -->
+			<item id="30298" min="1" max="1" chance="38" /> <!-- Superior Giant's Codex - Mastery -->
+			<item id="47820" min="1" max="1" chance="2" /> <!-- Sayha's Talisman Pack Lv. 9 -->
+			<item id="48861" min="1" max="1" chance="2" /> <!-- +9 Fallen Angel's Ring Pack -->
+			<item id="81153" min="1" max="1" chance="10" /> <!-- Navari's Mask -->
 			<item id="82071" min="1" max="1" chance="5" />
 			<item id="82072" min="1" max="1" chance="5" />
 		</capsuled_items>
 	</item>
 	<item id="81708" name="Scroll: Festival Fairy's Spring Energy" additionalName="Event" type="EtcItem">
-		<!-- A scroll prepared by Festival Fairy. It is imbued with Aden's energy. For 10 min., acquired XP/ SP +200%. The effect disappears after the main/ dual class change, but remains after death. Cooldown: 9 min. Required level: 1-110. The effect does not stack with those of Freya's Frozen Scroll and Freya's Scroll of Storm. -->
+		<!-- A scroll prepared by Festival Fairy, it's imbued with spring energy. For 10 min., Acquired XP/ SP +200%. The effect disappears after main/dual class change, but remains after death. Cooldown: 9 min. Required level: 1-110. The effect does not stack with those of Freya's Frozen Scroll and Freya's Scroll of Storm. -->
 		<set name="icon" val="icon.etc_charm_of_luck_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -122,11 +134,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80104" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80105" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80106" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80107" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80108" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
+			<item id="80104" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Helmet - Heavy armor -->
+			<item id="80105" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Breastplate - Heavy armor -->
+			<item id="80106" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Gaiters - Heavy armor -->
+			<item id="80107" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Gauntlets - Heavy armor -->
+			<item id="80108" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Boots - Heavy armor -->
 		</capsuled_items>
 	</item>
 	<item id="81710" name="+6 Leviathan Light Armor Set Pack" additionalName="Event" type="EtcItem">
@@ -141,11 +153,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80110" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80111" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80112" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80113" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80114" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
+			<item id="80110" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Helmet - Light armor -->
+			<item id="80111" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Armor - Light armor -->
+			<item id="80112" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Leggings - Light armor -->
+			<item id="80113" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Gloves - Light armor -->
+			<item id="80114" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Leather Boots - Light armor -->
 		</capsuled_items>
 	</item>
 	<item id="81711" name="+6 Leviathan Robe Set Pack" additionalName="Event" type="EtcItem">
@@ -160,11 +172,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80115" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80116" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80117" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80118" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
-			<item id="80119" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" />
+			<item id="80115" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Circlet - Robe -->
+			<item id="80116" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Tunic - Robe -->
+			<item id="80117" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Stockings - Robe -->
+			<item id="80118" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Gloves - Robe -->
+			<item id="80119" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leviathan Shoes - Robe -->
 		</capsuled_items>
 	</item>
 	<item id="81712" name="+14 Krishna Shaper Pack" additionalName="Event" type="EtcItem">
@@ -179,7 +191,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80090" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80090" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Shaper -->
 		</capsuled_items>
 	</item>
 	<item id="81713" name="+14 Krishna Cutter Pack" additionalName="Event" type="EtcItem">
@@ -194,7 +206,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80091" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80091" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Cutter -->
 		</capsuled_items>
 	</item>
 	<item id="81714" name="+14 Krishna Slasher Pack" additionalName="Event" type="EtcItem">
@@ -209,7 +221,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80092" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80092" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Slasher -->
 		</capsuled_items>
 	</item>
 	<item id="81715" name="+14 Krishna Avenger Pack" additionalName="Event" type="EtcItem">
@@ -224,7 +236,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80093" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80093" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Avenger -->
 		</capsuled_items>
 	</item>
 	<item id="81716" name="+14 Krishna Fighter Pack" additionalName="Event" type="EtcItem">
@@ -239,7 +251,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80094" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80094" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Fighter -->
 		</capsuled_items>
 	</item>
 	<item id="81717" name="+14 Krishna Stormer Pack" additionalName="Event" type="EtcItem">
@@ -254,7 +266,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80095" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80095" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Stormer -->
 		</capsuled_items>
 	</item>
 	<item id="81718" name="+14 Krishna Thrower Pack" additionalName="Event" type="EtcItem">
@@ -269,7 +281,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80096" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80096" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Thrower -->
 		</capsuled_items>
 	</item>
 	<item id="81719" name="+14 Krishna Shooter Pack" additionalName="Event" type="EtcItem">
@@ -284,7 +296,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80097" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80097" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Shooter -->
 		</capsuled_items>
 	</item>
 	<item id="81720" name="+14 Krishna Buster Pack" additionalName="Event" type="EtcItem">
@@ -299,7 +311,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80098" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80098" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Buster -->
 		</capsuled_items>
 	</item>
 	<item id="81721" name="+14 Krishna Caster Pack" additionalName="Event" type="EtcItem">
@@ -314,7 +326,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80099" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80099" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Caster -->
 		</capsuled_items>
 	</item>
 	<item id="81722" name="+14 Krishna Retributer Pack" additionalName="Event" type="EtcItem">
@@ -329,7 +341,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80100" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80100" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Retributer -->
 		</capsuled_items>
 	</item>
 	<item id="81723" name="+14 Krishna Dual Swords Pack" additionalName="Event" type="EtcItem">
@@ -344,7 +356,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80101" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80101" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Dual Swords -->
 		</capsuled_items>
 	</item>
 	<item id="81724" name="+14 Krishna Dual Daggers Pack" additionalName="Event" type="EtcItem">
@@ -359,7 +371,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80102" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80102" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Dual Daggers -->
 		</capsuled_items>
 	</item>
 	<item id="81725" name="+14 Krishna Dual Blunt Weapon Pack" additionalName="Event" type="EtcItem">
@@ -374,7 +386,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80103" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" />
+			<item id="80103" min="1" max="1" minEnchant="14" maxEnchant="14" chance="100" /> <!-- Krishna Dual Blunt Weapon -->
 		</capsuled_items>
 	</item>
 	<item id="81726" name="+6 Leviathan Armor Coupon" additionalName="Event" type="EtcItem">
@@ -545,6 +557,15 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="81738" min="1" max="1" chance="100" /> <!-- Faeron's Protector Scroll - Event -->
+			<item id="48755" min="1" max="1" chance="100" /> <!-- Glowing Dragon's Attribute Potion (XP) - Event -->
+			<item id="80612" min="1" max="1" chance="100" /> <!-- Freya's Ice Rose - Event -->
+			<item id="80797" min="1" max="1" chance="100" /> <!-- Shining Nevit's Gold Hourglass - Event -->
+			<item id="80832" min="1" max="1" chance="100" /> <!-- Emperor's Special Cocktail - Event -->
+			<item id="81460" min="1" max="1" chance="100" /> <!-- Honey Dark Beer - Event -->
+		</capsuled_items>
 	</item>
 	<item id="81740" name="Orc Mutant's Treasure Chest" additionalName="Event" type="EtcItem">
 		<!-- Treasures piled up by Orc Mutant. Double-click to obtain one of the following items: Dark Weapon Enhancement Stone, Bloody Weapon Enhancement Stone, Blessed Valakas' Necklace, Blessed Antharas' Earring, Lindvior's Earring, Dragon's Ring/ Earring/ Necklace, +9 Fallen Angel's Ring Pack, Shillien's Soul Crystal Lv. 9. -->

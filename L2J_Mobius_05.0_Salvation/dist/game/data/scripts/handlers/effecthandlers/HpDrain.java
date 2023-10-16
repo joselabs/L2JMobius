@@ -41,6 +41,12 @@ public class HpDrain extends AbstractEffect
 	}
 	
 	@Override
+	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
+	{
+		return !Formulas.calcSkillEvasion(effector, effected, skill);
+	}
+	
+	@Override
 	public EffectType getEffectType()
 	{
 		return EffectType.HP_DRAIN;

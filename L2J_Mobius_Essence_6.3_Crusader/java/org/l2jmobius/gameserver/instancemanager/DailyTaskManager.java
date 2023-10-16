@@ -112,7 +112,8 @@ public class DailyTaskManager
 		GlobalVariablesManager.getInstance().set(GlobalVariablesManager.DAILY_TASK_RESET, System.currentTimeMillis());
 		
 		// Wednesday weekly tasks.
-		if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY)
+		final Calendar calendar = Calendar.getInstance();
+		if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY)
 		{
 			clanLeaderApply();
 			resetMonsterArenaWeekly();
@@ -123,6 +124,11 @@ public class DailyTaskManager
 		else // All days, except Wednesday.
 		{
 			resetVitalityDaily();
+		}
+		
+		if (Config.ENABLE_HUNT_PASS && (calendar.get(Calendar.DAY_OF_MONTH) == Config.HUNT_PASS_PERIOD))
+		{
+			resetHuntPass();
 		}
 		
 		// Daily tasks.
@@ -680,6 +686,26 @@ public class DailyTaskManager
 			}
 		}
 		LOGGER.info("LimitShopData has been resetted.");
+	}
+	
+	private void resetHuntPass()
+	{
+		// Update data for offline players.
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement statement = con.prepareStatement("DELETE FROM huntpass"))
+		{
+			statement.execute();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not delete entries from hunt pass: " + e);
+		}
+		
+		// Update data for online players.
+		for (Player player : World.getInstance().getPlayers())
+		{
+			player.getHuntPass().restoreHuntPass();
+		}
 	}
 	
 	private void resetResurrectionByPayment()

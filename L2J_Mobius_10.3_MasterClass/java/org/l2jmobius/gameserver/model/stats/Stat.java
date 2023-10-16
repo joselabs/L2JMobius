@@ -33,6 +33,7 @@ import org.l2jmobius.gameserver.model.stats.finalizers.MEvasionRateFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.MaxCpFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.MaxHpFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.MaxMpFinalizer;
+import org.l2jmobius.gameserver.model.stats.finalizers.MpVampiricChanceFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.PAccuracyFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.PAttackFinalizer;
 import org.l2jmobius.gameserver.model.stats.finalizers.PAttackSpeedFinalizer;
@@ -81,11 +82,15 @@ public enum Stat
 	PHYSICAL_ATTACK("pAtk", new PAttackFinalizer()),
 	MAGIC_ATTACK("mAtk", new MAttackFinalizer()),
 	WEAPON_BONUS_PHYSICAL_ATTACK("weaponBonusPAtk"),
+	WEAPON_BONUS_PHYSICAL_ATTACK_MULTIPIER("weaponBonusPAtkMultiplier"),
 	WEAPON_BONUS_MAGIC_ATTACK("weaponBonusMAtk"),
+	WEAPON_BONUS_MAGIC_ATTACK_MULTIPIER("weaponBonusMAtkMultiplier"),
 	PHYSICAL_ATTACK_SPEED("pAtkSpd", new PAttackSpeedFinalizer()),
 	MAGIC_ATTACK_SPEED("mAtkSpd", new MAttackSpeedFinalizer()), // Magic Skill Casting Time Rate
 	ATK_REUSE("atkReuse"), // Bows Hits Reuse Rate
 	SHIELD_DEFENCE("sDef", new ShieldDefenceFinalizer()),
+	SHIELD_DEFENCE_IGNORE_REMOVAL("shieldDefIgnoreRemoval"),
+	SHIELD_DEFENCE_IGNORE_REMOVAL_ADD("shieldDefIgnoreRemovalAdd"),
 	CRITICAL_DAMAGE("cAtk"),
 	CRITICAL_DAMAGE_ADD("cAtkAdd"), // this is another type for special critical damage mods - vicious stance, critical power and critical damage SA
 	HATE_ATTACK("attackHate"),
@@ -144,6 +149,10 @@ public enum Stat
 	DEFENCE_CRITICAL_DAMAGE_ADD("defCritDamageAdd"), // Resistance to critical damage in value (Example: +100 will be 100 more critical damage, NOT 100% more).
 	DEFENCE_PHYSICAL_SKILL_CRITICAL_DAMAGE("defCAtkSkill"),
 	DEFENCE_PHYSICAL_SKILL_CRITICAL_DAMAGE_ADD("defCAtkSkillAdd"),
+	DEFENCE_PHYSICAL_SKILL_CRITICAL_RATE("defPhysSkillCritRate"),
+	DEFENCE_PHYSICAL_SKILL_CRITICAL_RATE_ADD("defPhysSkillCritRateAdd"),
+	DEFENCE_IGNORE_REMOVAL("defIgnoreRemoval"),
+	DEFENCE_IGNORE_REMOVAL_ADD("defIgnoreRemovalAdd"),
 	AREA_OF_EFFECT_DAMAGE_DEFENCE("aoeDamageDefence"),
 	AREA_OF_EFFECT_DAMAGE_MODIFY("aoeDamageModify"),
 	BLOW_RATE("blowRate"),
@@ -242,6 +251,7 @@ public enum Stat
 	MANA_SHIELD_PERCENT("manaShield"),
 	TRANSFER_DAMAGE_TO_PLAYER("transDamToPlayer"),
 	ABSORB_MANA_DAMAGE_PERCENT("absorbDamMana"),
+	ABSORB_MANA_DAMAGE_CHANCE("absorbDamManaChance", new MpVampiricChanceFinalizer()),
 	
 	WEIGHT_LIMIT("weightLimit"),
 	WEIGHT_PENALTY("weightPenalty"),
@@ -309,6 +319,8 @@ public enum Stat
 	STAT_BONUS_SPEED("statSpeed"),
 	CRAFTING_CRITICAL("craftingCritical"),
 	SHOTS_BONUS("shotBonus", new ShotsBonusFinalizer()),
+	SOULSHOT_RESISTANCE("soulshotResistance"),
+	SPIRITSHOT_RESISTANCE("spiritshotResistance"),
 	WORLD_CHAT_POINTS("worldChatPoints"),
 	ATTACK_DAMAGE("attackDamage"),
 	
@@ -323,8 +335,8 @@ public enum Stat
 	private final IStatFunction _valueFinalizer;
 	private final DoubleBinaryOperator _addFunction;
 	private final DoubleBinaryOperator _mulFunction;
-	private final double _resetAddValue;
-	private final double _resetMulValue;
+	private final Double _resetAddValue;
+	private final Double _resetMulValue;
 	
 	public String getValue()
 	{
@@ -393,12 +405,12 @@ public enum Stat
 		return _mulFunction.applyAsDouble(oldValue, value);
 	}
 	
-	public double getResetAddValue()
+	public Double getResetAddValue()
 	{
 		return _resetAddValue;
 	}
 	
-	public double getResetMulValue()
+	public Double getResetMulValue()
 	{
 		return _resetMulValue;
 	}

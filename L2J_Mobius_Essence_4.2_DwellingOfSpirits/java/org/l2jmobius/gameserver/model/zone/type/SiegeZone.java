@@ -202,7 +202,7 @@ public class SiegeZone extends ZoneType
 			player.stopFameTask();
 			player.setInSiege(false);
 			
-			if ((getSettings().getSiege() instanceof FortSiege) && (player.getInventory().getItemByItemId(9819) != null))
+			if ((getSettings().getSiege() instanceof FortSiege) && (player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG) != null))
 			{
 				// drop combat flag
 				final Fort fort = FortManager.getInstance().getFortById(getSettings().getSiegeableId());
@@ -212,9 +212,9 @@ public class SiegeZone extends ZoneType
 				}
 				else
 				{
-					final long slot = player.getInventory().getSlotFromItem(player.getInventory().getItemByItemId(9819));
+					final long slot = player.getInventory().getSlotFromItem(player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG));
 					player.getInventory().unEquipItemInBodySlot(slot);
-					player.destroyItem("CombatFlag", player.getInventory().getItemByItemId(9819), null, true);
+					player.destroyItem("CombatFlag", player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG), null, true);
 				}
 			}
 			
@@ -230,6 +230,10 @@ public class SiegeZone extends ZoneType
 						servitor.unSummon(player);
 					}
 				});
+			}
+			if (player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG) != null)
+			{
+				FortSiegeManager.getInstance().dropCombatFlag(player, FortManager.ORC_FORTRESS);
 			}
 		}
 	}

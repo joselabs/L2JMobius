@@ -45,6 +45,7 @@ import org.l2jmobius.gameserver.model.siege.Castle.CastleFunction;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.siege.Fort.FortFunction;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
+import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
@@ -139,7 +140,7 @@ public class RequestRestartPoint implements ClientPacket
 		portPlayer(player);
 	}
 	
-	protected void portPlayer(Player player)
+	private void portPlayer(Player player)
 	{
 		Location loc = null;
 		Instance instance = null;
@@ -339,19 +340,19 @@ public class RequestRestartPoint implements ClientPacket
 						catch (Exception e)
 						{
 							player.sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
-							e.printStackTrace();
 							return;
 						}
 						
 						final int getValue = maxResTime <= originalValue ? maxResTime : originalValue + 1;
 						final ResurrectByPaymentHolder rbph = resMAP.get(level).get(getValue);
-						if (item.getCount() < rbph.getAmount())
+						final long fee = (int) (rbph.getAmount() * player.getStat().getValue(Stat.RESURRECTION_FEE_MODIFIER, 1));
+						if (item.getCount() < fee)
 						{
 							return;
 						}
 						
 						player.getVariables().set(PlayerVariables.RESURRECT_BY_PAYMENT_COUNT, originalValue + 1);
-						player.destroyItem("item revive", item, rbph.getAmount(), player, true);
+						player.destroyItem("item revive", item, fee, player, true);
 						player.doRevive(rbph.getResurrectPercent());
 						loc = MapRegionManager.getInstance().getTeleToLocation(player, TeleportWhereType.TOWN);
 						player.teleToLocation(loc, true, instance);
@@ -365,12 +366,21 @@ public class RequestRestartPoint implements ClientPacket
 				{
 					return;
 				}
+				
 				loc = new Location(-114356, -249645, -2984);
 				break;
 			}
 			default:
 			{
-				loc = MapRegionManager.getInstance().getTeleToLocation(player, TeleportWhereType.TOWN);
+				if (player.isInTimedHuntingZone())
+				{
+					instance = player.getInstanceWorld();
+					loc = player.getActingPlayer().getTimedHuntingZone().getEnterLocation();
+				}
+				else
+				{
+					loc = MapRegionManager.getInstance().getTeleToLocation(player, TeleportWhereType.TOWN);
+				}
 				break;
 			}
 		}

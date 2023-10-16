@@ -87,7 +87,7 @@ public class DailyMissionData implements IXmlReader
 			forEach(rewardNode, "classId", classRestrictionNode -> classRestriction.add(ClassId.getClassId(Integer.parseInt(classRestrictionNode.getTextContent()))));
 			set.set("classRestriction", classRestriction);
 			
-			// Initial values in case handler doesn't exists
+			// Initial values in case handler doesn't exist
 			set.set("handler", "");
 			set.set("params", StatSet.EMPTY_STATSET);
 			

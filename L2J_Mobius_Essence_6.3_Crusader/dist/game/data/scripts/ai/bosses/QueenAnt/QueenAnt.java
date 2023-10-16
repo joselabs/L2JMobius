@@ -225,11 +225,11 @@ public class QueenAnt extends AbstractNpcAI
 				spawnBoss(queen);
 				break;
 			}
-			case "ANT_QUEEN_TASK":
+			case "DISTANCE_CHECK":
 			{
 				if ((_queen == null) || _queen.isDead())
 				{
-					cancelQuestTimers("ANT_QUEEN_TASK");
+					cancelQuestTimers("DISTANCE_CHECK");
 				}
 				else if (_queen.calculateDistance2D(QUEEN_X, QUEEN_Y, QUEEN_Z) > 2000)
 				{
@@ -274,8 +274,8 @@ public class QueenAnt extends AbstractNpcAI
 				{
 					((Monster) npc).getMinionList().spawnMinions(npc.getParameters().getMinionList("Privates"));
 				}
-				cancelQuestTimer("ANT_QUEEN_TASK", npc, null);
-				startQuestTimer("ANT_QUEEN_TASK", 5000, npc, null, true);
+				cancelQuestTimer("DISTANCE_CHECK", npc, null);
+				startQuestTimer("DISTANCE_CHECK", 5000, npc, null, true);
 				break;
 			}
 		}
@@ -376,7 +376,7 @@ public class QueenAnt extends AbstractNpcAI
 			}
 			_larva = null;
 			_queen = null;
-			cancelQuestTimers("ANT_QUEEN_TASK");
+			cancelQuestTimers("DISTANCE_CHECK");
 		}
 		else if ((_queen != null) && !_queen.isAlikeDead())
 		{

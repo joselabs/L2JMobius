@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.taskmanager;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.NoSuchElementException;
@@ -23,6 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import org.l2jmobius.commons.threads.ThreadPool;
+import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.instance.RaidBoss;
 
@@ -33,7 +35,7 @@ public class DecayTaskManager implements Runnable
 {
 	protected static final Logger LOGGER = Logger.getLogger(DecayTaskManager.class.getName());
 	
-	protected Map<Creature, Long> _decayTasks = new ConcurrentHashMap<>();
+	protected static final Map<Creature, Long> DECAY_SCHEDULES = new ConcurrentHashMap<>();
 	
 	protected DecayTaskManager()
 	{
@@ -43,53 +45,61 @@ public class DecayTaskManager implements Runnable
 	@Override
 	public void run()
 	{
-		final long currentTime = System.currentTimeMillis();
-		int delay;
+		if (DECAY_SCHEDULES.isEmpty())
+		{
+			return;
+		}
+		
 		try
 		{
-			if (_decayTasks != null)
+			final long currentTime = System.currentTimeMillis();
+			final Iterator<Entry<Creature, Long>> iterator = DECAY_SCHEDULES.entrySet().iterator();
+			Entry<Creature, Long> entry;
+			Creature creature;
+			int delay;
+			
+			while (iterator.hasNext())
 			{
-				for (Entry<Creature, Long> entry : _decayTasks.entrySet())
+				entry = iterator.next();
+				creature = entry.getKey();
+				
+				if (creature instanceof RaidBoss)
 				{
-					final Creature actor = entry.getKey();
-					if (actor instanceof RaidBoss)
-					{
-						delay = 30000;
-					}
-					else
-					{
-						delay = 8500;
-					}
-					if ((currentTime - entry.getValue().longValue()) > delay)
-					{
-						actor.onDecay();
-						_decayTasks.remove(actor);
-					}
+					delay = 30000;
+				}
+				else
+				{
+					delay = 8500;
+				}
+				if ((currentTime - entry.getValue()) > delay)
+				{
+					creature.onDecay();
+					iterator.remove();
 				}
 			}
 		}
-		catch (Throwable e)
+		catch (Throwable t)
 		{
 			// TODO: Find out the reason for exception. Unless caught here, mob decay would stop.
-			LOGGER.warning(e.toString());
+			LOGGER.warning(CommonUtil.getStackTrace(t));
 		}
 	}
 	
 	public void addDecayTask(Creature actor)
 	{
-		_decayTasks.put(actor, System.currentTimeMillis());
+		DECAY_SCHEDULES.put(actor, System.currentTimeMillis());
 	}
 	
 	public void addDecayTask(Creature actor, int interval)
 	{
-		_decayTasks.put(actor, System.currentTimeMillis() + interval);
+		DECAY_SCHEDULES.put(actor, System.currentTimeMillis() + interval);
 	}
 	
 	public void cancelDecayTask(Creature actor)
 	{
 		try
 		{
-			_decayTasks.remove(actor);
+			DECAY_SCHEDULES.remove(actor);
 		}
 		catch (NoSuchElementException e)
 		{
@@ -100,13 +110,13 @@ public class DecayTaskManager implements Runnable
 	public String toString()
 	{
 		String ret = "============= DecayTask Manager Report ============\r\n";
-		ret += "Tasks count: " + _decayTasks.size() + "\r\n";
+		ret += "Tasks count: " + DECAY_SCHEDULES.size() + "\r\n";
 		ret += "Tasks dump:\r\n";
 		
 		final Long current = System.currentTimeMillis();
-		for (Creature actor : _decayTasks.keySet())
+		for (Creature actor : DECAY_SCHEDULES.keySet())
 		{
-			ret += "Class/Name: " + actor.getClass().getSimpleName() + "/" + actor.getName() + " decay timer: " + (current - _decayTasks.get(actor)) + "\r\n";
+			ret += "Class/Name: " + actor.getClass().getSimpleName() + "/" + actor.getName() + " decay timer: " + (current - DECAY_SCHEDULES.get(actor)) + "\r\n";
 		}
 		
 		return ret;

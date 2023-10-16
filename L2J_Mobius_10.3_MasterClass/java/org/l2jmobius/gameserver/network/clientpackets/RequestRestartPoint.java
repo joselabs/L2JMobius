@@ -123,7 +123,7 @@ public class RequestRestartPoint implements ClientPacket
 		portPlayer(player);
 	}
 	
-	protected void portPlayer(Player player)
+	private void portPlayer(Player player)
 	{
 		Location loc = null;
 		Instance instance = null;
@@ -275,12 +275,21 @@ public class RequestRestartPoint implements ClientPacket
 				{
 					return;
 				}
+				
 				loc = new Location(-114356, -249645, -2984);
 				break;
 			}
 			default:
 			{
-				loc = MapRegionManager.getInstance().getTeleToLocation(player, TeleportWhereType.TOWN);
+				if (player.isInTimedHuntingZone())
+				{
+					instance = player.getInstanceWorld();
+					loc = player.getActingPlayer().getTimedHuntingZone().getEnterLocation();
+				}
+				else
+				{
+					loc = MapRegionManager.getInstance().getTeleToLocation(player, TeleportWhereType.TOWN);
+				}
 				break;
 			}
 		}

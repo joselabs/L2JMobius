@@ -40,21 +40,14 @@ public class ExItemAnnounce extends ServerPacket
 		{
 			_announceName = player.getName();
 		}
+		else if ("ru".equals(player.getLang()))
+		{
+			_announceName = "Некто";
+			
+		}
 		else
 		{
-			switch (player.getLang())
-			{
-				case "ru":
-				{
-					_announceName = "Некто";
-					break;
-				}
-				default:
-				{
-					_announceName = "Someone";
-					break;
-				}
-			}
+			_announceName = "Someone";
 		}
 	}
 	

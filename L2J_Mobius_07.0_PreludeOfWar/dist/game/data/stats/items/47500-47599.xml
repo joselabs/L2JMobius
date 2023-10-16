@@ -21,7 +21,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="47503" name="High-grade Spirit Stone" type="EtcItem">
-		<!-- Ordinary mineral that has been petrified by a creature's physical or magical damage and dimensional anomalies. Key component used in weapon augmentation by characters level 95 or above. -->
+		<!-- Ordinary mineral that has been petrified by a creature's physical or magical damage and dimensional anomalies. Key component used in weapon Augmentation, and the higher the level of the Spirit Stone, the higher the augmentation option. -->
 		<set name="icon" val="icon.renewal_mineral_r95" />
 		<set name="weight" val="2" />
 		<set name="is_tradable" val="false" />
@@ -600,14 +600,14 @@
 		<set name="material" val="FISH" />
 	</item>
 	<item id="47552" name="Powerful Fish" type="EtcItem">
-		<!-- Can be exchanged for Elcyum Powder, Expertise Rune or another item through a Fishing Guild Member. -->
+		<!-- Can be exchanged for Elcyum Powder through a Fishing Guild Member. -->
 		<set name="icon" val="icon.etc_bream_i01" />
 		<set name="price" val="1000000" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
 	</item>
 	<item id="47553" name="Blueish Box" type="EtcItem">
-		<!-- Double-click to obtain the item. -->
+		<!-- Double-click to obtain an item. -->
 		<set name="icon" val="icon.etc_treasure_box_i01" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -624,7 +624,7 @@
 		</capsuled_items>
 	</item>
 	<item id="47554" name="Reddish Box" type="EtcItem">
-		<!-- Double-click to obtain the item. -->
+		<!-- Double-click to obtain an item. -->
 		<set name="icon" val="icon.etc_treasure_box_i03" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -646,7 +646,7 @@
 		</capsuled_items>
 	</item>
 	<item id="47555" name="Purplish Box" type="EtcItem">
-		<!-- Double-click to obtain the item. -->
+		<!-- Double-click to obtain an item. -->
 		<set name="icon" val="icon.etc_treasure_box_i04" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -661,7 +661,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="38154" min="50" max="50" chance="16.666666666667" /> <!-- Fishing Shot -->
-			<item id="39720" min="1" max="1" chance="16.666666666667" /> <!-- Freya's Luck Potion -->
+			<item id="39720" min="1" max="1" chance="16.666666666667" /> <!-- Maphr's Luck Potion -->
 			<item id="8034" min="1" max="1" chance="16.666666666667" /> <!-- Rainbow Springs Clan Hall War Decree -->
 			<item id="47556" min="1" max="1" chance="16.666666666667" /> <!-- Stardust -->
 			<item id="45494" min="1" max="1" chance="16.666666666667" /> <!-- Sturdy Fishing Rod -->
@@ -799,6 +799,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="48060" min="1" max="1" chance="100" /> <!-- Elementary Seed Bracelet -->
+		</capsuled_items>
 	</item>
 	<item id="47564" name="Reward for Defeating the Giant Monsters" type="EtcItem">
 		<!-- A reward given by the Hunter Guild for completing the mission to defeat the giant monsters. Double-click to obtain the item. -->
@@ -927,7 +933,7 @@
 		<set name="material" val="FISH" />
 	</item>
 	<item id="47574" name="PA Treasure Chest" type="EtcItem">
-		<!-- Double-click to obtain the item. -->
+		<!-- Double-click to obtain an item. -->
 		<set name="icon" val="icon.new_user_box" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="weight" val="10" />

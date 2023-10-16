@@ -28,6 +28,7 @@ public enum BroochJewel
 	RUBY_LV5(38859, 17817, 1, 0.2, true, false),
 	
 	GREATER_RUBY_LV1(47688, 18715, 1, 0.2, true, false),
+	GREATER_RUBY_LV1_EVENT(80473, 18715, 1, 0.2, true, false),
 	GREATER_RUBY_LV2(48771, 18715, 1, 0.2, true, false),
 	GREATER_RUBY_LV3(48772, 18715, 1, 0.2, true, false),
 	GREATER_RUBY_LV4(48773, 18715, 1, 0.2, true, false),
@@ -43,6 +44,7 @@ public enum BroochJewel
 	SUPERIOR_RUBY_LV8(81512, 39658, 1, 0.23, true, false),
 	SUPERIOR_RUBY_LV9(81513, 39658, 1, 0.23, true, false),
 	SUPERIOR_RUBY_LV10(81514, 39658, 1, 0.23, true, false),
+	SUPERIOR_RUBY_LV10_EVENT(81869, 39658, 1, 0.23, true, false),
 	
 	SAPPHIRE_LV1(38927, 17818, 1, 0.01, false, true),
 	SAPPHIRE_LV2(38928, 17818, 1, 0.035, false, true),
@@ -51,6 +53,7 @@ public enum BroochJewel
 	SAPPHIRE_LV5(38931, 17821, 1, 0.2, false, true),
 	
 	GREATER_SAPPHIRE_LV1(47689, 18718, 1, 0.2, false, true),
+	GREATER_SAPPHIRE_LV1_EVENT(80474, 18718, 1, 0.2, false, true),
 	GREATER_SAPPHIRE_LV2(48775, 18718, 1, 0.2, false, true),
 	GREATER_SAPPHIRE_LV3(48776, 18718, 1, 0.2, false, true),
 	GREATER_SAPPHIRE_LV4(48777, 18718, 1, 0.2, false, true),
@@ -65,7 +68,8 @@ public enum BroochJewel
 	SUPERIOR_SAPPHIRE_LV7(81521, 39660, 1, 0.23, false, true),
 	SUPERIOR_SAPPHIRE_LV8(81522, 39660, 1, 0.23, false, true),
 	SUPERIOR_SAPPHIRE_LV9(81523, 39660, 1, 0.23, false, true),
-	SUPERIOR_SAPPHIRE_LV10(81524, 39660, 1, 0.23, false, true);
+	SUPERIOR_SAPPHIRE_LV10(81524, 39660, 1, 0.23, false, true),
+	SUPERIOR_SAPPHIRE_LV10_EVENT(81870, 39660, 1, 0.23, false, true);
 	
 	private int _itemId;
 	private int _skillId;

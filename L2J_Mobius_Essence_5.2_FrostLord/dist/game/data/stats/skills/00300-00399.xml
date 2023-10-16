@@ -2,7 +2,6 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="301" toLevel="5" name="Summon Big Boom">
 		<!-- Summons a self-destructing Big Boom. Requires $s1 D-grade Crystals. Takes away $s2 of acquired XP. -->
-		<icon>icon.skill0301</icon>
 		<hitTime>6000</hitTime>
 		<itemConsumeCount>
 			<value level="1">3</value>
@@ -120,7 +119,6 @@
 	</skill>
 	<skill id="303" toLevel="4" name="Soul of Sagittarius">
 		<!-- Max MP +$s2 for $s1. -->
-		<icon>icon.skill0303</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -167,9 +165,9 @@
 		</effects>
 	</skill>
 	<skill id="304" toLevel="2" name="Song of Earth">
-		<!-- Elven earth-praising song. P. Def. $s1 M. Def. $s2 -->
+		<!-- Elven earth-praising song. P. Def. +200. M. Def. +250 -->
 		<icon>
-			<value level="1">icon.skill0304</value>
+			<value level="1">icon.skill0264</value>
 			<value level="2">icon.song_of_earth_02</value>
 		</icon>
 		<abnormalLevel>
@@ -209,12 +207,12 @@
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<conditions>
 			<condition name="OpNotAffectedBySkill">
-				<skillId>45404</skillId>
+				<skillId>45404</skillId> <!-- Song of Earth -->
 			</condition>
 		</conditions>
 		<selfEffects>
 			<effect name="CallSkill">
-				<skillId>45404</skillId>
+				<skillId>45404</skillId> <!-- Song of Earth -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -239,9 +237,9 @@
 		</effects>
 	</skill>
 	<skill id="305" toLevel="2" name="Song of Wind">
-		<!-- Elven wind-praising song. Speed $s1 -->
+		<!-- Elven wind-praising song. Speed +20 -->
 		<icon>
-			<value level="1">icon.skill0305</value>
+			<value level="1">icon.skill0268</value>
 			<value level="2">icon.song_of_wind_02</value>
 		</icon>
 		<abnormalLevel>
@@ -277,12 +275,12 @@
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<conditions>
 			<condition name="OpNotAffectedBySkill">
-				<skillId>45543</skillId>
+				<skillId>45543</skillId> <!-- Song of Wind -->
 			</condition>
 		</conditions>
 		<selfEffects>
 			<effect name="CallSkill">
-				<skillId>45543</skillId>
+				<skillId>45543</skillId> <!-- Song of Wind -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -307,7 +305,6 @@
 	</skill>
 	<skill id="306" toLevel="1" name="Flame Guard's Song">
 		<!-- For 2 min., increases party members' Fire Resistance by 30. Additionally increases MP Consumption when singing while song/ dance is in effect. -->
-		<icon>icon.skill0306</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>SONG_OF_FLAME_GUARD</abnormalType>
@@ -333,7 +330,6 @@
 	</skill>
 	<skill id="307" toLevel="1" name="Dance of Aqua Guard">
 		<!-- All party members' Dark resistance +30 for 2 min. MP Consumption is additionally increased if the skill is used while song/ dance effect is in place. -->
-		<icon>icon.skill0307</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>DANCE_OF_AQUA_GUARD</abnormalType>
@@ -367,7 +363,6 @@
 	</skill>
 	<skill id="308" toLevel="1" name="Storm Guard's Song">
 		<!-- All party members' Dark resistance +30 for 2 min. MP Consumption is additionally increased if the skill is used while song/ dance effect is in place. -->
-		<icon>icon.skill0308</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>SONG_OF_STORM_GUARD</abnormalType>
@@ -393,7 +388,6 @@
 	</skill>
 	<skill id="309" toLevel="1" name="Dance of Earth Guard">
 		<!-- Party members' Earth Resistance +30 for 20 min. Additionally increases MP Consumption when dancing while song/ dance is in effect. -->
-		<icon>icon.skill0309</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>DANCE_OF_EARTH_GUARD</abnormalType>
@@ -425,9 +419,9 @@
 		</effects>
 	</skill>
 	<skill id="310" toLevel="2" name="Dance of Fury">
-		<!-- Dark Elven fury-praising dance. Atk. Spd. $s1 -->
+		<!-- Dark Elven fury-praising dance. Atk. Spd. +100 -->
 		<icon>
-			<value level="1">icon.skill0310</value>
+			<value level="1">icon.skill0275</value>
 			<value level="2">icon.dance_of_fury_02</value>
 		</icon>
 		<abnormalLevel>
@@ -463,12 +457,12 @@
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<conditions>
 			<condition name="OpNotAffectedBySkill">
-				<skillId>45544</skillId>
+				<skillId>45544</skillId> <!-- Dance of Fury -->
 			</condition>
 		</conditions>
 		<selfEffects>
 			<effect name="CallSkill">
-				<skillId>45544</skillId>
+				<skillId>45544</skillId> <!-- Dance of Fury -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -501,8 +495,8 @@
 		</effects>
 	</skill>
 	<skill id="311" toLevel="2" name="Dark Elven Buff Cancel Resistance">
-		<!-- Buff Cancel Resistance $s1 -->
-		<icon>icon.skill0311</icon>
+		<!-- Buff Cancel Resistance +60% -->
+		<icon>icon.skill0309</icon>
 		<magicLevel>44</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -514,7 +508,7 @@
 		</effects>
 	</skill>
 	<skill id="312" toLevel="20" name="Vicious Stance">
-		<!-- P. Critical Damage +$s1 -->
+		<!-- P. Critical Damage +40 -->
 		<icon>icon.skill0312</icon>
 		<magicLevel>
 			<value level="1">20</value>
@@ -569,7 +563,7 @@
 		</effects>
 	</skill>
 	<skill id="313" toLevel="10" name="Snipe">
-		<!-- The effect lasts for $s1 When using a bow P. Accuracy +$s2 P. Atk. +$s3 P. Critical Rate +$s4 Speed -$s5 -->
+		<!-- The effect lasts for 20 min. When using a bow. P. Accuracy +3. P. Atk. +140. P. Critical Rate +20%. Speed -50 -->
 		<icon>icon.skill0313</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -688,7 +682,7 @@
 		</effects>
 	</skill>
 	<skill id="314" toLevel="19" name="Fatal Counter">
-		<!-- Fires an agony-inducing arrow at the target. Inflicts a physical attack with $s1 power. The power of the attack increases as your HP decreases. -->
+		<!-- Fires an agony-inducing arrow at the target. Inflicts a physical attack with 2908 power. The power of the attack increases as your HP decreases. -->
 		<icon>icon.skill0314</icon>
 		<castRange>700</castRange>
 		<coolTime>1000</coolTime>
@@ -799,7 +793,6 @@
 	</skill>
 	<skill id="315" toLevel="16" name="Crush of Doom">
 		<!-- Attacks the target with $s1 Power added to P. Atk. Requires a sword or blunt weapon to be equipped. Ignores Shield Defense. Over-hit. -->
-		<icon>icon.skill0315</icon>
 		<castRange>40</castRange>
 		<coolTime>1080</coolTime>
 		<effectPoint>
@@ -909,7 +902,7 @@
 		</effects>
 	</skill>
 	<skill id="317" toLevel="8" name="Focus Attack">
-		<!-- When activated Basic attack hit one target. P. Accuracy $s1 P. Critical Damage $s2 -->
+		<!-- When activated. Basic attack hit one target. P. Accuracy +2. P. Critical Damage +3% -->
 		<icon>icon.skill0317</icon>
 		<magicLevel>
 			<value level="1">46</value>
@@ -972,7 +965,6 @@
 	</skill>
 	<skill id="318" toLevel="1" name="Aegis Stance">
 		<!-- Enables Shield Defense from all directions and Shield Defense -30%. -->
-		<icon>icon.skill0318</icon>
 		<magicLevel>46</magicLevel>
 		<mpInitialConsume>9</mpInitialConsume>
 		<operateType>T</operateType>
@@ -988,7 +980,6 @@
 	</skill>
 	<skill id="319" toLevel="2" name="Agile Movement">
 		<!-- P. Accuracy +$s1 and Speed +$s2 when equipped with light armor. -->
-		<icon>icon.skill0319</icon>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">40</value>
@@ -1020,7 +1011,6 @@
 	</skill>
 	<skill id="320" toLevel="14" name="Wrath">
 		<!-- Swings a spear to decrease nearby enemies' CP -$s1. Requires a polearm to be equipped. -->
-		<icon>icon.skill0320</icon>
 		<affectLimit>5-12</affectLimit>
 		<affectRange>80</affectRange>
 		<castRange>40</castRange>
@@ -1113,7 +1103,6 @@
 	</skill>
 	<skill id="321" toLevel="10" name="Blinding Blow">
 		<!-- Attacks the target's vital points with $s1 Power added to P. Atk. and turns his/ her back to you. Speed +$s2. Requires a dagger. Over-hit. Half-kill. -->
-		<icon>icon.skill0321</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>SPEED_UP_SPECIAL</abnormalType>
@@ -1201,7 +1190,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="322" toLevel="6" name="Ultimate Shield">
-		<!-- Shield Defense +$s1 -->
+		<!-- Shield Defense +446 -->
 		<icon>icon.skill0322</icon>
 		<magicLevel>
 			<value level="1">64</value>
@@ -1230,7 +1219,6 @@
 	</skill>
 	<skill id="325" toLevel="1" name="Strider Siege Assault">
 		<!-- Uses 15005 Power to attack a castle's gate. Can be used while mounted on a Strider. Consumes 5 Spirit Ore. -->
-		<icon>icon.skill0325</icon>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -1286,7 +1274,6 @@
 	</skill>
 	<skill id="327" toLevel="1" name="Wyvern Aegis">
 		<!-- For 9 sec., P. Def. +7000, M. Def. +6000 and Buff-canceling Attack Resistance +100%. Can be used while mounted on a Wyvern. Consumes 20 Spirit Ore. -->
-		<icon>icon.skill0327</icon>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>PD_UP_SPECIAL</abnormalType>
@@ -1322,8 +1309,8 @@
 		</effects>
 	</skill>
 	<skill id="328" toLevel="1" name="Kamael's Dignity">
-		<!-- A Kamael will. Speed $s1 Atk. Spd. $s2 Casting Spd. $s3 -->
-		<icon>icon.skill0328</icon>
+		<!-- A Kamael will. Speed +20. Atk. Spd. +20. Casting Spd. +20 -->
+		<icon>icon.skill1923</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1343,8 +1330,8 @@
 		</effects>
 	</skill>
 	<skill id="329" toLevel="1" name="Pride of Kamael">
-		<!-- A Kamael race power. Infection Resistance $s1 Hold Resistance $s1 Sleep Resistance $s1 Shock Resistance $s1 Fear Resistance $s1 Silence Resistance $s1 -->
-		<icon>icon.skill0329</icon>
+		<!-- A Kamael race power. Infection Resistance +20%. Hold Resistance +20%. Sleep Resistance +20%. Shock Resistance +20%. Fear Resistance +20%. Silence Resistance +20% -->
+		<icon>icon.skill1925</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1360,7 +1347,6 @@
 	</skill>
 	<skill id="330" toLevel="1" name="Skill Mastery">
 		<!-- Depending on your STR, resets Cooldown resets or doubles the duration. -->
-		<icon>icon.skill0330</icon>
 		<magicLevel>77</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1372,7 +1358,6 @@
 	</skill>
 	<skill id="331" toLevel="1" name="Skill Mastery">
 		<!-- Depending on your INT, resets Cooldown resets or doubles the duration. -->
-		<icon>icon.skill0330</icon>
 		<magicLevel>77</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1384,7 +1369,6 @@
 	</skill>
 	<skill id="332" toLevel="1" name="Extra Inventory">
 		<!-- Inventory slots +1. -->
-		<icon>icon.skill0332</icon>
 		<magicLevel>76</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1396,7 +1380,6 @@
 	</skill>
 	<skill id="333" toLevel="1" name="Extra Sales Slots">
 		<!-- Private store transaction slots +1. -->
-		<icon>icon.skill0333</icon>
 		<magicLevel>76</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1415,7 +1398,6 @@
 	</skill>
 	<skill id="334" toLevel="1" name="Focus Skill Mastery">
 		<!-- By the effect of Skill Mastery Critical Rate +1000%. Continuously consumes MP proportionately to your level. -->
-		<icon>icon.skill0334</icon>
 		<magicLevel>78</magicLevel>
 		<mpConsume>36</mpConsume>
 		<operateType>T</operateType>
@@ -1433,7 +1415,7 @@
 		</effects>
 	</skill>
 	<skill id="335" toLevel="1" name="Fortitude">
-		<!-- Paralysis Resistance $s1 Shock Resistance $s1 -->
+		<!-- Paralysis Resistance +30%. Shock Resistance +30% -->
 		<icon>icon.skill0335</icon>
 		<magicLevel>76</magicLevel>
 		<operateType>P</operateType>
@@ -1447,7 +1429,6 @@
 	</skill>
 	<skill id="336" toLevel="1" name="Arcane Wisdom">
 		<!-- Maximizes magic efficiency, MP Consumption -30% and Casting Spd. -10%. 50 HP is consumed per sec. -->
-		<icon>icon.skill0336</icon>
 		<magicLevel>78</magicLevel>
 		<mpConsume>36</mpConsume>
 		<operateType>T</operateType>
@@ -1470,7 +1451,7 @@
 		</effects>
 	</skill>
 	<skill id="337" toLevel="8" name="Arcane Power">
-		<!-- When activated M. Atk. +$s1 M. Skill MP Consumption +$s2 HP per second -$s3 -->
+		<!-- When activated. M. Atk. +10%. M. Skill MP Consumption +5%. HP per second -15 -->
 		<icon>icon.skill0337</icon>
 		<magicLevel>
 			<value level="1">77</value>
@@ -1514,7 +1495,6 @@
 	</skill>
 	<skill id="338" toLevel="1" name="Arcane Agility">
 		<!-- Maximizes magic efficiency, MP Consumption +10% and Casting Spd. +20% and Cooldown time -10%. 50 HP is consumed per sec. -->
-		<icon>icon.skill0338</icon>
 		<magicLevel>78</magicLevel>
 		<mpConsume>36</mpConsume>
 		<operateType>T</operateType>
@@ -1543,7 +1523,6 @@
 	</skill>
 	<skill id="339" toLevel="1" name="Parry Stance">
 		<!-- Blocks an attack using a weapon. P. Def. +25% and M. Def. +25%. Speed -10%, Atk. Spd. -20%, and P. Accuracy -4. Continuously consumes MP proportionately to your level. -->
-		<icon>icon.skill0339</icon>
 		<magicLevel>78</magicLevel>
 		<mpConsume>36</mpConsume>
 		<operateType>T</operateType>
@@ -1578,7 +1557,6 @@
 	</skill>
 	<skill id="340" toLevel="1" name="Riposte Stance">
 		<!-- Parries and returns an attack using a weapon. Returns 30% of received damage back to the enemy, and reflects buff/ de-buff with a 30% chance. Speed -10%, Atk. Spd. -20%, and P. Accuracy -4. Continuously consumes MP proportionately to your level. -->
-		<icon>icon.skill0340</icon>
 		<magicLevel>77</magicLevel>
 		<mpConsume>35</mpConsume>
 		<operateType>T</operateType>
@@ -1616,7 +1594,7 @@
 		</effects>
 	</skill>
 	<skill id="341" toLevel="1" name="Touch of Life">
-		<!-- Grants a divine blessing by sacrificing oneself. Instantly restores 30% HP of the target. For 2 min. Buff Cancel Resistance +40% Debuff Resistance +10% Anomaly Resistance +10% Received Healing +10% Constantly restores HP. -->
+		<!-- Grants a divine blessing by sacrificing oneself. Instantly restores 30% HP of the target. For 2 min. Buff Cancel Resistance +40%. Debuff Resistance +10%. Anomaly Resistance +10%. Received Healing +10%. Constantly restores HP. -->
 		<icon>icon.skill0341</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
@@ -1661,7 +1639,7 @@
 		</effects>
 	</skill>
 	<skill id="342" toLevel="1" name="Touch of Death">
-		<!-- Sacrifices oneself to pronounce an Dark curse on the enemy. Cancels up to 3 buffs with a certain chance. Target's CP -50% For 2 min. Max CP -50% Received Healing -10% Debuff Resistance -10% Anomaly Resistance -10% -->
+		<!-- Sacrifices oneself to pronounce an Dark curse on the enemy. Cancels up to 3 buffs with a certain chance. Target's CP -50%. For 2 min. Max CP -50%. Received Healing -10%. Debuff Resistance -10%. Anomaly Resistance -10% -->
 		<icon>icon.skill0342</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
@@ -1714,7 +1692,7 @@
 		</effects>
 	</skill>
 	<skill id="343" toLevel="15" name="Lethal Shot">
-		<!-- Shoots with a deadly arrow. Attacks the target with $s1 power. Ignores Shield Defense. Ignores $s2 of the target's defense. Critical. -->
+		<!-- Shoots with a deadly arrow. Attacks the target with 8617 power. Ignores Shield Defense. Ignores 5% of the target's defense. Critical. -->
 		<icon>icon.skill0343</icon>
 		<castRange>700</castRange>
 		<coolTime>500</coolTime>
@@ -1811,7 +1789,7 @@
 		</effects>
 	</skill>
 	<skill id="344" toLevel="15" name="Lethal Blow">
-		<!-- Attacks the target's weak point. Deals physical damage with $s1 power. Critical. -->
+		<!-- Attacks the target's weak point. Deals physical damage with 7888 power. Critical. -->
 		<icon>icon.skill0344</icon>
 		<castRange>40</castRange>
 		<effectPoint>
@@ -1907,7 +1885,7 @@
 		</effects>
 	</skill>
 	<skill id="345" toLevel="5" name="Sonic Rage">
-		<!-- Attacks the target with $s1 power. For $s2, P. Def. $s3 Recovers Momentum. -->
+		<!-- Attacks the target with 195 power. For 20 sec., P. Def. -30%. Recovers Momentum. -->
 		<icon>icon.skill0345</icon>
 		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
@@ -1975,7 +1953,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="346" toLevel="5" name="Raging Force">
-		<!-- Attacks the target with $s1 power. For $s2, P. Def. $s3 Recovers Momentum. Critical. -->
+		<!-- Attacks the target with 195 power. For 20 sec., P. Def. -30%. Recovers Momentum. Critical. -->
 		<icon>icon.skill0346</icon>
 		<castRange>600</castRange>
 		<coolTime>300</coolTime>
@@ -2043,7 +2021,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="347" toLevel="9" name="Earthquake">
-		<!-- Attacks nearby enemies with $s1 power. Ignores Shield Defense. Critical. -->
+		<!-- Attacks nearby enemies with 3878 power. Ignores Shield Defense. Critical. -->
 		<icon>icon.skill0347</icon>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>150</affectRange>
@@ -2120,7 +2098,7 @@
 		</effects>
 	</skill>
 	<skill id="348" toLevel="15" name="Spoil Crush">
-		<!-- Deals damage with $s1 power. There is a certain chance of stealing items from monsters. Ignores Shield Defense. Ignores $s2 of Defense. Critical. -->
+		<!-- Deals damage with 4907 power. There is a certain chance of stealing items from monsters. Ignores Shield Defense. Ignores 10% of Defense. Critical. -->
 		<icon>icon.skill0348</icon>
 		<castRange>40</castRange>
 		<coolTime>500</coolTime>
@@ -2220,8 +2198,8 @@
 		</effects>
 	</skill>
 	<skill id="349" toLevel="2" name="Song of Vitality">
-		<!-- Elven life-praising song. P. damage to monsters $s1 P. Critical Damage $s1 Atk. Spd. $s2 -->
-		<icon>icon.skill0349</icon>
+		<!-- Elven life-praising song. P. damage to monsters +10%. P. Critical Damage +10%. Atk. Spd. +60 -->
+		<icon>icon.skill19423</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2263,7 +2241,6 @@
 	</skill>
 	<skill id="350" toLevel="1" name="Physical Mirror">
 		<!-- For 5 min., reflects physical buffs/ debuffs with 30% probability and magic buffs/ debuffs with 10% probability. Requires a shield. -->
-		<icon>icon.skill0350</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>REFLECT_ABNORMAL</abnormalType>
@@ -2300,7 +2277,6 @@
 	</skill>
 	<skill id="351" toLevel="1" name="Magical Mirror">
 		<!-- For 5 min., reflects physical buffs/ debuffs with 10% probability and magic buffs/ debuffs with 30% probability. Requires a shield. -->
-		<icon>icon.skill0351</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>REFLECT_ABNORMAL</abnormalType>
@@ -2336,7 +2312,7 @@
 		</effects>
 	</skill>
 	<skill id="352" toLevel="10" name="Shield Bash">
-		<!-- <Shock skill> Attacks the enemy with the shield. Power $s1. Stuns for $s2 -->
+		<!-- <Shock skill>. Attacks the enemy with the shield. Power 1970. Stuns for 3 sec. -->
 		<icon>icon.skill0352</icon>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
@@ -2455,7 +2431,7 @@
 		</effects>
 	</skill>
 	<skill id="354" toLevel="1" name="Hamstring Shot">
-		<!-- <Suppression Skill> Shoots an arrow with $s1 power. For $s2, Speed $s3. Critical. -->
+		<!-- <Suppression Skill>. Shoots an arrow with 1973 power. For 30 sec., Speed -30%. Critical. -->
 		<icon>icon.skill0354</icon>
 		<castRange>700</castRange>
 		<effectPoint>-405</effectPoint>
@@ -2490,7 +2466,7 @@
 		</effects>
 	</skill>
 	<skill id="355" toLevel="1" name="Focus Death">
-		<!-- Duration: $s1 P. Critical Rate $s2 Vital Point Attack Rate +$s3 When attacking from the front: P. Critical Damage $s4 When backstabbing: P. Critical Damage $s5 Note! Only one of the following skills can be used: Focus Death, Focus Chance, or Focus Power. -->
+		<!-- Duration: 20 min. P. Critical Rate -20%. Vital Point Attack Rate ++40%. When attacking from the front:. P. Critical Damage -30%. When backstabbing:. P. Critical Damage +90%. Note!. Only one of the following skills can be used: Focus Death, Focus Chance, or Focus Power. -->
 		<icon>icon.skill0355</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -2533,7 +2509,7 @@
 		</effects>
 	</skill>
 	<skill id="356" toLevel="1" name="Focus Chance">
-		<!-- Duration: $s1 Vital Point Attack Rate $s2 When attacking from the front: P. Critical Rate $s3 When flanking: P. Critical Rate $s4 When backstabbing: P. Critical Rate $s5 Note! Only one of the following skills can be used: Focus Death, Focus Chance, or Focus Power. -->
+		<!-- Duration: 20 min. Vital Point Attack Rate +20%. When attacking from the front:. P. Critical Rate -30%. When flanking:. P. Critical Rate +30%. When backstabbing:. P. Critical Rate +60%. Note!. Only one of the following skills can be used: Focus Death, Focus Chance, or Focus Power. -->
 		<icon>icon.skill0356</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -2577,7 +2553,7 @@
 		</effects>
 	</skill>
 	<skill id="357" toLevel="1" name="Focus Power">
-		<!-- Duration: $s1 When attacking from the front: P. Critical Damage $s2 When flanking: P. Critical Damage $s3 When flanking: P. Critical Damage $s4 Note! Only one of the following skills can be used: Focus Death, Focus Chance, or Focus Power. -->
+		<!-- Duration: 20 min. When attacking from the front:. P. Critical Damage -30%. When flanking:. P. Critical Damage +30%. When backstabbing:. P. Critical Damage +60%. Note!. Only one of the following skills can be used: Focus Death, Focus Chance, Focus Power. -->
 		<icon>icon.skill0357</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -2617,7 +2593,7 @@
 		</effects>
 	</skill>
 	<skill id="358" toLevel="12" name="Bluff">
-		<!-- <Shock skill> The effect lasts for $s1 Stuns the target. Tricks the enemy into showing their back. The enemy stops attacking the character. -->
+		<!-- <Shock skill>. The effect lasts for 3 sec. Stuns the target. Tricks the enemy into showing their back. The enemy stops attacking the character. -->
 		<icon>icon.skill0358</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -2703,7 +2679,6 @@
 	</skill>
 	<skill id="359" toLevel="1" name="Eye of Hunter">
 		<!-- For 10 min., P. Atk. for insects/ plants/ animals +5%. -->
-		<icon>icon.skill0359</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>DETECT_WEAKNESS</abnormalType>
@@ -2727,7 +2702,6 @@
 	</skill>
 	<skill id="360" toLevel="1" name="Eye of Slayer">
 		<!-- For 10 min., P. Atk. against monsters/ magic creatures/ giants/ dragons +5%. -->
-		<icon>icon.skill0360</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>DETECT_WEAKNESS</abnormalType>
@@ -2751,7 +2725,7 @@
 		</effects>
 	</skill>
 	<skill id="361" toLevel="3" name="Shocking Burst">
-		<!-- <Shock skill> Attacks nearby enemies with $s1 power. Stuns for $s2 P. Def. $s3 M. Def. $s4 Ignores Shield Defense. Critical. -->
+		<!-- <Shock skill>. Attacks nearby enemies with 2486 power. Stuns for 3 sec. P. Def. -30%. M. Def. -30%. Ignores Shield Defense. Critical. -->
 		<icon>icon.skill0361</icon>
 		<castRange>500</castRange>
 		<affectLimit>5-12</affectLimit>
@@ -2804,7 +2778,7 @@
 				<overHit>true</overHit>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>45490</skillId> <!-- Shocking Burst - Stun -->
+				<skillId>45490</skillId> <!-- Shocking Burst -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -2812,7 +2786,7 @@
 				</skillLevel>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>45489</skillId> <!-- Shocking Burst - -PDEF/MDEF -->
+				<skillId>45489</skillId> <!-- Shocking Burst -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -2822,7 +2796,7 @@
 		</effects>
 	</skill>
 	<skill id="362" toLevel="11" name="Armor Crush">
-		<!-- <Shock skill> Attacks the enemy with $s1 power. Stuns for $s2 P./ M. Def. -$s3 Ignores Shield Defense. Critical. -->
+		<!-- <Shock/ fixed cooldown skill>. Attacks the enemy with 4275 power. Stuns for 3 sec. P./ M. Def. -30%. Ignores Shield Defense. Critical. -->
 		<icon>icon.skill0362</icon>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
@@ -2903,7 +2877,7 @@
 				<overHit>true</overHit>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>45494</skillId> <!-- Armor Crush - Block Move -->
+				<skillId>45494</skillId> <!-- Armor Crush -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -2919,7 +2893,7 @@
 				</skillLevel>
 			</effect>
 			<effect name="CallSkill">
-				<skillId>45493</skillId> <!-- Armor Crush - -P/M. Def -->
+				<skillId>45493</skillId> <!-- Armor Crush -->
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -2938,7 +2912,6 @@
 	</skill>
 	<skill id="363" toLevel="1" name="Song of Meditation">
 		<!-- All party members' MP Recovery bonus +20% for 2 min. and Skill MP Consumption -10%. MP Consumption is additionally increased if the skill is used while song/ dance effect is in place. -->
-		<icon>icon.skill0363</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>SONG_OF_MEDITATION</abnormalType>
@@ -2968,8 +2941,8 @@
 		</effects>
 	</skill>
 	<skill id="364" toLevel="1" name="Elven Revival">
-		<!-- P. Skill MP Consumption $s1 P. Skill Cooldown $s2 -->
-		<icon>icon.skill0364</icon>
+		<!-- P. Skill MP Consumption -20%. P. Skill Cooldown -30% -->
+		<icon>icon.skill0349</icon>
 		<magicLevel>
 			<value level="1">71</value>
 			<value level="2">95</value>
@@ -3000,7 +2973,7 @@
 		</effects>
 	</skill>
 	<skill id="365" toLevel="2" name="Dark Elven Magic Affinity">
-		<!-- P. Skill MP Consumption $s1 Max MP $s2 -->
+		<!-- P. Skill MP Consumption -10%. Max MP +200 -->
 		<icon>icon.skill0365</icon>
 		<magicLevel>71</magicLevel>
 		<operateType>P</operateType>
@@ -3018,8 +2991,8 @@
 		</effects>
 	</skill>
 	<skill id="366" toLevel="3" name="Dance of Berserker">
-		<!-- Dark Elven frenzy-praising dance. P. damage to monsters $s1 P. Critical Rate $s2 Speed $s3 -->
-		<icon>icon.skill0366</icon>
+		<!-- Dark Elven frenzy-praising dance. P. damage to monsters +10%. P. Critical Rate +40. Speed +15 -->
+		<icon>icon.skill19424</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -3064,7 +3037,7 @@
 		</effects>
 	</skill>
 	<skill id="367" toLevel="3" name="Dance of Medusa">
-		<!-- <Imprisonment Skill> Dance that evokes the mirage of Medusa. Petrifies nearby enemies for $s1 -->
+		<!-- <Imprisonment Skill>. Dance that evokes the mirage of Medusa. Petrifies nearby enemies for 5 sec. -->
 		<icon>icon.skill0367</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -3125,7 +3098,7 @@
 		</effects>
 	</skill>
 	<skill id="368" toLevel="1" name="Vengeance">
-		<!-- Provokes nearby enemies with 8784 power The effect lasts for 30 sec. P. Def. +5400 M. Def. +4050 Buff Cancel Resistance +50% Speed -40% -->
+		<!-- Provokes nearby enemies with 8784 power. The effect lasts for 30 sec. P. Def. +5400. M. Def. +4050. Buff Cancel Resistance +50%. Speed -40% -->
 		<icon>icon.skill0368</icon>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
@@ -3175,7 +3148,6 @@
 	</skill>
 	<skill id="369" toLevel="1" name="Evade Shot">
 		<!-- Attacks the enemy with 2020 Power added to P. Atk. and P. Evasion +6 for 30 sec. Requires a bow. Over-hit. -->
-		<icon>icon.skill0369</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>SPEED_UP_SPECIAL</abnormalType>
@@ -3212,7 +3184,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="370" toLevel="5" name="Clan's Blessed Body">
-		<!-- Max HP $s1 -->
+		<!-- Max HP +100 -->
 		<icon>icon.skill0370</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3231,7 +3203,7 @@
 		</effects>
 	</skill>
 	<skill id="371" toLevel="5" name="Clan's Spirituality">
-		<!-- Max CP +$s1 -->
+		<!-- Max CP +200 -->
 		<icon>icon.skill0371</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3250,7 +3222,7 @@
 		</effects>
 	</skill>
 	<skill id="372" toLevel="5" name="Clan's Blessed Soul">
-		<!-- Max MP $s1 -->
+		<!-- Max MP +70 -->
 		<icon>icon.skill0372</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3269,7 +3241,7 @@
 		</effects>
 	</skill>
 	<skill id="373" toLevel="5" name="Clan's Regeneration">
-		<!-- HP Recovery Rate $s1 -->
+		<!-- HP Recovery Rate +3% -->
 		<icon>icon.skill0373</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3288,7 +3260,7 @@
 		</effects>
 	</skill>
 	<skill id="374" toLevel="5" name="Clan's Morale">
-		<!-- CP Recovery Rate $s1 -->
+		<!-- CP Recovery Rate +6% -->
 		<icon>icon.skill0374</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3307,7 +3279,7 @@
 		</effects>
 	</skill>
 	<skill id="375" toLevel="5" name="Clan's Clarity">
-		<!-- MP Recovery Rate $s1 -->
+		<!-- MP Recovery Rate +3% -->
 		<icon>icon.skill0375</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3326,7 +3298,7 @@
 		</effects>
 	</skill>
 	<skill id="376" toLevel="5" name="Clan's Might">
-		<!-- P. Atk. $s1 -->
+		<!-- P. Atk. +3% -->
 		<icon>icon.skill0376</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3345,7 +3317,7 @@
 		</effects>
 	</skill>
 	<skill id="377" toLevel="5" name="Clan's Shield">
-		<!-- P. Def. $s1 -->
+		<!-- P. Def. +3% -->
 		<icon>icon.skill0377</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3364,7 +3336,7 @@
 		</effects>
 	</skill>
 	<skill id="378" toLevel="5" name="Clan's Empower">
-		<!-- M. Atk. $s1 -->
+		<!-- M. Atk. +4% -->
 		<icon>icon.skill0378</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3383,7 +3355,7 @@
 		</effects>
 	</skill>
 	<skill id="379" toLevel="5" name="Clan's Magic Barrier">
-		<!-- M. Def. $s1 -->
+		<!-- M. Def. +6% -->
 		<icon>icon.skill0379</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3402,7 +3374,7 @@
 		</effects>
 	</skill>
 	<skill id="380" toLevel="5" name="Clan's Guidance">
-		<!-- P. Accuracy. $s1 -->
+		<!-- P. Accuracy. +1 -->
 		<icon>icon.skill0380</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3421,7 +3393,7 @@
 		</effects>
 	</skill>
 	<skill id="381" toLevel="5" name="Clan's Agility">
-		<!-- P. Evasion $s1 -->
+		<!-- P. Evasion +1 -->
 		<icon>icon.skill0381</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3441,7 +3413,6 @@
 	</skill>
 	<skill id="382" toLevel="5" name="Clan Shield Defense">
 		<!-- Clan members' Shield Defense Rate +$s1. -->
-		<icon>icon.skill0382</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3460,7 +3431,6 @@
 	</skill>
 	<skill id="383" toLevel="5" name="Clan Shield Block">
 		<!-- Clan members' Shield Defense +$s1. -->
-		<icon>icon.skill0383</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3479,7 +3449,6 @@
 	</skill>
 	<skill id="384" toLevel="5" name="Clan Cyclonic Resistance">
 		<!-- Clan members' Water/ Wind Resistance +$s1. -->
-		<icon>icon.skill0384</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3508,7 +3477,6 @@
 	</skill>
 	<skill id="385" toLevel="5" name="Clan Magmatic Resistance">
 		<!-- Clan members' Fire/ Earth Resistance +$s1. -->
-		<icon>icon.skill0385</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3537,7 +3505,6 @@
 	</skill>
 	<skill id="386" toLevel="5" name="Clan Stun Resistance">
 		<!-- Clan members' Stun Resistance +$s1. -->
-		<icon>icon.skill0386</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3555,7 +3522,6 @@
 	</skill>
 	<skill id="387" toLevel="5" name="Clan Hold Resistance">
 		<!-- Clan members' Hold Resistance +$s1. -->
-		<icon>icon.skill0387</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3573,7 +3539,6 @@
 	</skill>
 	<skill id="388" toLevel="5" name="Clan Sleep Resistance">
 		<!-- Clan members' Sleep Resistance +$s1. -->
-		<icon>icon.skill0388</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3590,7 +3555,7 @@
 		</effects>
 	</skill>
 	<skill id="389" toLevel="5" name="Clan's Wind Walk">
-		<!-- Speed $s1 -->
+		<!-- Speed +3 -->
 		<icon>icon.skill0389</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -3609,8 +3574,8 @@
 		</effects>
 	</skill>
 	<skill id="390" toLevel="1" name="Clan's Recovery">
-		<!-- HP Recovery Rate $s1 MP Recovery Rate $s2 -->
-		<icon>icon.skill0390</icon>
+		<!-- HP Recovery Rate +1%. MP Recovery Rate +1% -->
+		<icon>icon.skill_clan_restore</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3627,14 +3592,14 @@
 		</effects>
 	</skill>
 	<skill id="391" toLevel="1" name="Clan's Imperium">
-		<!-- Grants Command Channel formation. -->
+		<!-- Allows to use Command Channel if you have special privileges. -->
 		<icon>icon.skill0391</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 	</skill>
 	<skill id="392" toLevel="5" name="Clan's Fortune">
-		<!-- Acquired XP $s1. -->
+		<!-- Acquired XP +3% -->
 		<icon>icon.skill0390</icon>
 		<magicLevel>
 			<value level="1">1</value>
@@ -3665,7 +3630,8 @@
 		</effects>
 	</skill>
 	<skill id="393" toLevel="1" name="Absorb Light Souls">
-		<!-- Collects $s1 Light Souls. -->
+		<!-- Collects 2 Light Souls. -->
+		<icon>icon.skill55474</icon>
 		<isMagic>4</isMagic>
 		<effectPoint>150</effectPoint>
 		<hitTime>500</hitTime>
@@ -3692,7 +3658,8 @@
 		</effects>
 	</skill>
 	<skill id="394" toLevel="1" name="Absorb Shadow Souls">
-		<!-- Collects $s1 Shadow Souls. -->
+		<!-- Collects 2 Shadow Souls. -->
+		<icon>icon.skill55475</icon>
 		<isMagic>4</isMagic>
 		<effectPoint>150</effectPoint>
 		<hitTime>500</hitTime>
@@ -3830,7 +3797,8 @@
 		</effects>
 	</skill>
 	<skill id="397" toLevel="2" name="Light Veil">
-		<!-- Uses collected Light Souls to boost your parameters. <Evolved Wings Lv. 1> P. Atk. +130 Atk. Spd. +30 Casting Spd. +40 P. Def. +5% M. Def. +5% Speed +10 With a certain chance, absorbs part of the inflicted damage as MP. -->
+		<!-- Uses collected Light Souls to boost your parameters. <Evolved Wings Lv. 1>. P. Atk. +130. Atk. Spd. +30. Casting Spd. +40. P. Def. +5%. M. Def. +5%. Speed +10. With a certain chance, absorbs part of the inflicted damage as MP. -->
+		<icon>icon.skill_kamael_shineside</icon>
 		<operateType>A2</operateType>
 		<magicLevel>85</magicLevel>
 		<isMagic>2</isMagic>
@@ -3932,7 +3900,8 @@
 		</effects>
 	</skill>
 	<skill id="398" toLevel="2" name="Shadow Veil">
-		<!-- Uses collected Shadow Souls to boost your parameters. <Evolved Wings Lv. 2> P. Atk. +280 Atk. Spd. +80 Casting Spd. +120 Speed +15. There is a certain chance to deliver extra attacks when attacking. -->
+		<!-- Uses collected Shadow Souls to boost your parameters. <Evolved Wings Lv. 2>. P. Atk. +280. Atk. Spd. +80. Casting Spd. +120. Speed +15. There is a certain chance to deliver extra attacks when attacking. -->
+		<icon>icon.skill_kamael_shadowside</icon>
 		<operateType>A2</operateType>
 		<magicLevel>85</magicLevel>
 		<isMagic>2</isMagic>
@@ -4059,7 +4028,8 @@
 		</effects>
 	</skill>
 	<skill id="399" toLevel="10" name="Heavy Armor Mastery">
-		<!-- When using heavy armor P. Def. +$s1 Max HP +$s2 Received P. Critical Rate -$s3 Received P. Critical Damage -$s3 -->
+		<!-- When using heavy armor:. P. Def. +10. Max HP +20. Received P. Critical Rate -5%. Received P. Critical Damage -5% -->
+		<icon>icon.m_class_heavy</icon>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">30</value>

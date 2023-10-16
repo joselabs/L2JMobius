@@ -3066,9 +3066,19 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		{
 			return;
 		}
-		player.addExpAndSp((long) player.getStat().getValue(Stat.EXPSP_RATE, (exp * Config.RATE_QUEST_REWARD_XP)), (int) player.getStat().getValue(Stat.EXPSP_RATE, (sp * Config.RATE_QUEST_REWARD_SP)));
-		PcCafePointsManager.getInstance().givePcCafePoint(player, (long) (exp * Config.RATE_QUEST_REWARD_XP));
-		// MagicLampData.getInstance().addLampExp(player, exp, true);
+		
+		long addExp = exp;
+		int addSp = sp;
+		
+		// Premium rates
+		if (player.hasPremiumStatus())
+		{
+			addExp *= Config.PREMIUM_RATE_QUEST_XP;
+			addSp *= Config.PREMIUM_RATE_QUEST_SP;
+		}
+		
+		player.addExpAndSp((long) player.getStat().getValue(Stat.EXPSP_RATE, (addExp * Config.RATE_QUEST_REWARD_XP)), (int) player.getStat().getValue(Stat.EXPSP_RATE, (addSp * Config.RATE_QUEST_REWARD_SP)));
+		PcCafePointsManager.getInstance().givePcCafePoint(player, (long) (addExp * Config.RATE_QUEST_REWARD_XP));
 	}
 	
 	/**

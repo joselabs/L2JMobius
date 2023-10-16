@@ -772,7 +772,7 @@ public class SchedulingPattern
 	 * @return The parsed value.
 	 * @throws Exception If the expressed values doesn't match any alias.
 	 */
-	private static int parseAlias(String value, String[] aliases, int offset) throws Exception
+	protected static int parseAlias(String value, String[] aliases, int offset) throws Exception
 	{
 		for (int i = 0; i < aliases.length; i++)
 		{
@@ -900,7 +900,7 @@ public class SchedulingPattern
 	 * This ValueMatcher always returns true!
 	 * @author Carlo Pelliccia
 	 */
-	private static class AlwaysTrueValueMatcher implements ValueMatcher
+	protected static class AlwaysTrueValueMatcher implements ValueMatcher
 	{
 		/**
 		 * Always true!

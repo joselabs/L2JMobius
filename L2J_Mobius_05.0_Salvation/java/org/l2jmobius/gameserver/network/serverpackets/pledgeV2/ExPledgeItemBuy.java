@@ -24,7 +24,7 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
  */
 public class ExPledgeItemBuy extends ServerPacket
 {
-	final int _result;
+	private final int _result;
 	
 	public ExPledgeItemBuy(int result)
 	{

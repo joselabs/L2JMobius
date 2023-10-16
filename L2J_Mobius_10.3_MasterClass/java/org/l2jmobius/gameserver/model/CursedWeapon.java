@@ -42,7 +42,6 @@ import org.l2jmobius.gameserver.network.serverpackets.Earthquake;
 import org.l2jmobius.gameserver.network.serverpackets.ExRedSky;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Broadcast;
 
 public class CursedWeapon implements INamable
@@ -475,7 +474,7 @@ public class CursedWeapon implements INamable
 		if ((_player != null) && _player.isOnline())
 		{
 			_player.setPkKills(_nbKills);
-			_player.sendPacket(new UserInfo(_player));
+			_player.updateUserInfo();
 			if (((_nbKills % _stageKills) == 0) && (_nbKills <= (_stageKills * (_skillMaxLevel - 1))))
 			{
 				giveSkill();

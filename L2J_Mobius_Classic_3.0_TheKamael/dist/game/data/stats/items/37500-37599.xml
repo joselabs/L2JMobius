@@ -36,7 +36,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="37543" name="Snowy Squash Nectar" type="EtcItem">
-		<!-- Go to Santa to trade in for Snowy Squash Seed or Large Snowy Squash Seed. You can also use it to grow Snowy Squash and Large Snowy Squash. -->
+		<!-- Go to Santa Claus to trade in for Snowy Squash Seed or Large Snowy Squash Seed. You can also use it to grow Snowy Squash and Large Snowy Squash. -->
 		<set name="icon" val="icon.etc_nectar_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -50,7 +50,7 @@
 		</skills>
 	</item>
 	<item id="37544" name="Snowball" type="EtcItem">
-		<!-- Obtained from Squash. They say it brings good luck. Can be sold in any store or given to Aden Reconstruction Society. Will be deleted after event. -->
+		<!-- Obtained from Squash. They say it brings good luck. Can be sold in any store or given to Aden Reconstruction Society. -->
 		<set name="icon" val="BranchSys2.icon.g_illumination_white" />
 		<set name="material" val="PAPER" />
 		<set name="price" val="5000" />
@@ -58,7 +58,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="37545" name="Large Snowball" type="EtcItem">
-		<!-- Obtained from Large Squash. They say it brings good luck. Can be sold in any store or given to Aden Reconstruction Society. Will be deleted after event. -->
+		<!-- Obtained from Large Squash. They say it brings good luck. Can be sold in any store or given to Aden Reconstruction Society. -->
 		<set name="icon" val="BranchSys2.icon.g_illumination_white" />
 		<set name="material" val="PAPER" />
 		<set name="price" val="30000" />
@@ -73,6 +73,10 @@
 		<set name="material" val="FISH" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37543" min="10" max="10" chance="100" /> <!-- Snowy Squash Nectar -->
+		</capsuled_items>
 	</item>
 	<item id="37547" name="Rudolf's Gift 2015" additionalName="Lv. 2" type="EtcItem">
 		<!-- Santa's Reward. Inside there is Snowy Squash Nectar (15 pcs.). Will be removed after the event is over. -->
@@ -82,6 +86,10 @@
 		<set name="material" val="FISH" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37543" min="15" max="15" chance="100" /> <!-- Snowy Squash Nectar -->
+		</capsuled_items>
 	</item>
 	<item id="37548" name="Rudolf's Gift 2015" additionalName="Lv. 3" type="EtcItem">
 		<!-- Santa's Reward. Inside there is Snowy Squash Nectar (25 pcs.). Will be removed after the event is over. -->
@@ -91,6 +99,10 @@
 		<set name="material" val="FISH" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37543" min="25" max="25" chance="100" /> <!-- Snowy Squash Nectar -->
+		</capsuled_items>
 	</item>
 	<item id="37549" name="Rudolf's Gift 2015" additionalName="Lv. 4" type="EtcItem">
 		<!-- Santa's Reward. Inside there is Snowy Squash Nectar (60 pcs.). Will be removed after the event is over. -->
@@ -100,9 +112,13 @@
 		<set name="material" val="FISH" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37543" min="60" max="60" chance="100" /> <!-- Snowy Squash Nectar -->
+		</capsuled_items>
 	</item>
 	<item id="37550" name="Snowman's Buff" type="EtcItem">
-		<!-- When in a peaceful zone, restores energy for 3 hours. Will be deleted after event. -->
+		<!-- When in a peaceful zone, restores energy for 3 hours. -->
 		<set name="icon" val="icon.weapon_snowman_stick_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -110,7 +126,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="37551" name="Christmas Present" type="EtcItem">
-		<!-- Double-click to obtain one of the following presents: Bottle of Orfen's Soul, Bottle of Frintezza's Soul, Bottle of Queen Ant's Soul, Bottle of Baium's Soul. Will be deleted after the event is over. -->
+		<!-- Double-click to acquire one of the following: Bottle of Orfen's Soul, Bottle of Frintezza's Soul, Bottle of Queen Ant's Soul, or Bottle of Baium's Soul. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i04" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -119,7 +135,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="37552" name="Snowy Squash Seed" type="EtcItem">
-		<!-- Double-click to have a Young Snowy Squash appear. -->
+		<!-- Double-click to have a Snowy Young Squash appear. -->
 		<set name="icon" val="icon.etc_gourd_i10" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -132,7 +148,7 @@
 		</skills>
 	</item>
 	<item id="37553" name="Large Snowy Squash Seed" type="EtcItem">
-		<!-- Double-click to have a Young Large Snowy Squash appear. -->
+		<!-- Double-click to have a Snowy Large Young Squash appear. -->
 		<set name="icon" val="icon.etc_gourd_i11" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />

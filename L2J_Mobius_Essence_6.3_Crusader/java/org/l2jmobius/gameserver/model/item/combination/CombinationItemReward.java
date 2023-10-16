@@ -16,18 +16,18 @@
  */
 package org.l2jmobius.gameserver.model.item.combination;
 
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
+import org.l2jmobius.gameserver.model.holders.ItemEnchantHolder;
 
 /**
  * @author UnAfraid
  */
-public class CombinationItemReward extends ItemHolder
+public class CombinationItemReward extends ItemEnchantHolder
 {
 	private final CombinationItemType _type;
 	
-	public CombinationItemReward(int id, int count, CombinationItemType type)
+	public CombinationItemReward(int id, int count, CombinationItemType type, int enchant)
 	{
-		super(id, count);
+		super(id, count, enchant);
 		_type = type;
 	}
 	

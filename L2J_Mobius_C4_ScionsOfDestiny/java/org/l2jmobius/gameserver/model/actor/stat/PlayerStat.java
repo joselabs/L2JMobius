@@ -31,7 +31,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListUpdate
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 public class PlayerStat extends PlayableStat
 {
@@ -72,7 +71,7 @@ public class PlayerStat extends PlayableStat
 			}
 		}
 		
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		return true;
 	}
 	
@@ -237,7 +236,7 @@ public class PlayerStat extends PlayableStat
 		// Update the expertise status of the Player
 		getActiveChar().refreshExpertisePenalty();
 		// Send a Server->Client packet UserInfo to the Player
-		getActiveChar().sendPacket(new UserInfo(getActiveChar()));
+		getActiveChar().updateUserInfo();
 		// getActiveChar().setLocked(false);
 		return levelIncreased;
 	}

@@ -134,11 +134,7 @@ public class SkillCaster implements Runnable
 	 */
 	public static SkillCaster castSkill(Creature caster, WorldObject target, Skill skill, Item item, SkillCastingType castingType, boolean ctrlPressed, boolean shiftPressed)
 	{
-		if (caster.isPlayer() && caster.getActingPlayer().isInOlympiadMode() && !caster.getActingPlayer().isOlympiadStart() && skill.isBad() && (target != null) && (target.getId() != 36402))
-		{
-			return null;
-		}
-		// Prevent players from attacking before the Olympiad countdown ends. Olympiad Manager NPC is excluded.
+		// Prevent players from attacking before the Olympiad countdown ends.
 		if (caster.isPlayer() && caster.getActingPlayer().isInOlympiadMode() && !caster.getActingPlayer().isOlympiadStart() && skill.isBad())
 		{
 			return null;
@@ -1229,6 +1225,34 @@ public class SkillCaster implements Runnable
 		FlyType flyType = FlyType.CHARGE;
 		switch (_skill.getOperateType())
 		{
+			case DA1:
+			case DA2:
+			{
+				if (creature == target)
+				{
+					final double course = Math.toRadians(180);
+					final double radian = Math.toRadians(Util.convertHeadingToDegree(creature.getHeading()));
+					x = target.getX() + (int) (Math.cos(Math.PI + radian + course) * _skill.getCastRange());
+					y = target.getY() + (int) (Math.sin(Math.PI + radian + course) * _skill.getCastRange());
+					z = target.getZ();
+				}
+				else
+				{
+					x = target.getX();
+					y = target.getY();
+					z = target.getZ();
+				}
+				break;
+			}
+			case DA3:
+			{
+				flyType = FlyType.WARP_BACK;
+				final double radian = Math.toRadians(Util.convertHeadingToDegree(creature.getHeading()));
+				x = creature.getX() + (int) (Math.cos(Math.PI + radian) * _skill.getCastRange());
+				y = creature.getY() + (int) (Math.sin(Math.PI + radian) * _skill.getCastRange());
+				z = creature.getZ();
+				break;
+			}
 			case DA4:
 			case DA5:
 			{
@@ -1242,42 +1266,6 @@ public class SkillCaster implements Runnable
 				x = target.getX() + (int) (Math.cos(Math.PI + radian + course) * nRadius);
 				y = target.getY() + (int) (Math.sin(Math.PI + radian + course) * nRadius);
 				z = target.getZ();
-				break;
-			}
-			case DA3:
-			{
-				flyType = FlyType.WARP_BACK;
-				final double radian = Math.toRadians(Util.convertHeadingToDegree(creature.getHeading()));
-				x = creature.getX() + (int) (Math.cos(Math.PI + radian) * _skill.getCastRange());
-				y = creature.getY() + (int) (Math.sin(Math.PI + radian) * _skill.getCastRange());
-				z = creature.getZ();
-				break;
-			}
-			case DA2:
-			case DA1:
-			{
-				if (creature == target)
-				{
-					final double course = Math.toRadians(180);
-					final double radian = Math.toRadians(Util.convertHeadingToDegree(creature.getHeading()));
-					x = creature.getX() + (int) (Math.cos(Math.PI + radian + course) * _skill.getCastRange());
-					y = creature.getY() + (int) (Math.sin(Math.PI + radian + course) * _skill.getCastRange());
-					z = creature.getZ();
-				}
-				else
-				{
-					final int dx = target.getX() - creature.getX();
-					final int dy = target.getY() - creature.getY();
-					final double distance = Math.sqrt((dx * dx) + (dy * dy));
-					double nRadius = creature.getCollisionRadius();
-					if (target.isCreature())
-					{
-						nRadius += ((Creature) target).getCollisionRadius();
-					}
-					x = (int) (target.getX() - (nRadius * (dx / distance)));
-					y = (int) (target.getY() - (nRadius * (dy / distance)));
-					z = target.getZ();
-				}
 				break;
 			}
 		}

@@ -17,6 +17,7 @@
 package quests;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.HtmlActionScope;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.enums.Race;
@@ -216,7 +217,7 @@ public abstract class LetterQuest extends Quest
 		
 		final Player player = event.getPlayer();
 		final QuestState qs = getQuestState(player, false);
-		if ((qs == null) && (event.getOldLevel() < event.getNewLevel()) && canStartQuest(player))
+		if ((qs == null) && (event.getOldLevel() < event.getNewLevel()) && canStartQuest(player) && !player.isInCategory(CategoryType.ALLOWED_BALTHUS_CLASSES))
 		{
 			player.sendPacket(new TutorialShowQuestionMark(getId(), 1));
 			playSound(player, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
@@ -235,7 +236,7 @@ public abstract class LetterQuest extends Quest
 		
 		final Player player = event.getPlayer();
 		final QuestState qs = getQuestState(player, false);
-		if ((qs == null) && canStartQuest(player))
+		if ((qs == null) && canStartQuest(player) && !player.isInCategory(CategoryType.ALLOWED_BALTHUS_CLASSES))
 		{
 			player.sendPacket(new TutorialShowQuestionMark(getId(), 1));
 			playSound(player, QuestSound.ITEMSOUND_QUEST_TUTORIAL);

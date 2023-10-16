@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="30500" toLevel="28" name="Lateral Hit">
-		<!-- Attacks target with $s1 Power added to P. Atk., and decreases their P. Def. by $s3 for $s2. $s4 more damage if target is Stunned. Requires a fist weapon. -->
+		<!-- Attacks target with 22 Power added to P. Atk., and decreases P. Def. by 10% for 20 seconds. Till 20% more damage if target is stunned. Requires a fist weapon. -->
 		<icon>icon.skill30500</icon>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
@@ -139,7 +139,7 @@
 		</effects>
 	</skill>
 	<skill id="30501" toLevel="27" name="Backspin Blow">
-		<!-- Attacks target with $s1 Power added to P. Atk. Ignores $s2 of target's P. Def. Requires a fist weapon. -->
+		<!-- Attacks target with 129 Power added to P. Atk. Ignores 30% of target's P. Def. Requires a fist weapon. -->
 		<icon>icon.skill30501</icon>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
@@ -267,7 +267,7 @@
 		</effects>
 	</skill>
 	<skill id="30502" toLevel="24" name="Chin Strike">
-		<!-- Knocks down target for $s1. Requires a fist weapon. -->
+		<!-- Knocks down target for 3 seconds. Requires a fist weapon. -->
 		<icon>icon.skill30502</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -364,7 +364,7 @@
 		</effects>
 	</skill>
 	<skill id="30503" toLevel="11" name="Spinning Kick">
-		<!-- Attacks target with $s1 Power added to P. Atk. Ignores Shield Defense. Requires a fist weapon. -->
+		<!-- Attacks target with 35167 Power added to P. Atk. Ignores Shield Defense. Requires a fist weapon. -->
 		<icon>icon.skill30503</icon>
 		<castRange>60</castRange>
 		<coolTime>500</coolTime>
@@ -435,7 +435,7 @@
 		</effects>
 	</skill>
 	<skill id="30504" toLevel="16" name="Gravity Hit">
-		<!-- Attacks target with $s1 Power added to P. Atk. Ignores $s2 of target's P. Def. Requires a fist weapon. -->
+		<!-- Attacks target with 10417 Power added to P. Atk. Ignores 50% of target's P. Def. Requires a fist weapon. -->
 		<icon>icon.skill30504</icon>
 		<castRange>40</castRange>
 		<coolTime>500</coolTime>
@@ -521,7 +521,7 @@
 		</effects>
 	</skill>
 	<skill id="30505" toLevel="10" name="Pressure Punch">
-		<!-- Attacks target with $s1 Power added to P. Atk, causing target to tumble toward you. Requires a fist weapon. -->
+		<!-- Attacks nearby enemies with 17266 Power added to P. Atk, causing target to tumble toward you. Requires a fist weapon. -->
 		<icon>icon.skill30505</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1</abnormalTime>
@@ -603,7 +603,7 @@
 		</effects>
 	</skill>
 	<skill id="30506" toLevel="14" name="Distant Kick">
-		<!-- Attacks frontal target with $s1 Power added to P. Atk. and blows them away. Requires a fist weapon. -->
+		<!-- Attacks frontal target with 5164 Power added to P. Atk. and blows them away. Requires a fist weapon. -->
 		<icon>icon.skill30506</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>2</abnormalTime>
@@ -701,7 +701,7 @@
 		</effects>
 	</skill>
 	<skill id="30507" toLevel="24" name="Left Sidestep">
-		<!-- Disables targeting and finds weakness to the enemy's left. Enemy is stunned for$s1. Requires a fist weapon. -->
+		<!-- Moves to the enemy's left and finds weakness. Cancels the opponent's target. Enemy is stunned for 5 seconds. Requires a fist weapon. -->
 		<icon>icon.skill30507</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
@@ -769,7 +769,7 @@
 		</effects>
 	</skill>
 	<skill id="30508" toLevel="27" name="Right Sidestep">
-		<!-- Disables targeting and finds weakness to the enemy's right. Decreases enemy's resistance to Fist Weapons by $s2 for $s1. The decrease in resistance is not canceled when striking. Requires a fist weapon. -->
+		<!-- Moves to the enemy's right and finds weakness. Cancels the opponent's target. Decreases enemy's resistance to fist weapons by 10% for 5 seconds. The decrease in resistance is not canceled when striking. Requires a fist weapon. -->
 		<icon>icon.skill30508</icon>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>REAL_TARGET</abnormalType>
@@ -842,7 +842,7 @@
 		</effects>
 	</skill>
 	<skill id="30509" toLevel="5" name="Back Step">
-		<!-- Disables targeting and retreats backwards, increasing P. Atk. by $s1 for $s2. Requires a Fist Weapon. -->
+		<!-- Disables targeting and retreats backwards, increasing P. Atk. by 5 seconds for 5%. Requires a Fist Weapon. -->
 		<icon>icon.skill30509</icon>
 		<operateType>DA3</operateType>
 		<targetType>ENEMY</targetType>
@@ -888,7 +888,7 @@
 		</selfEffects>
 	</skill>
 	<skill id="30510" toLevel="1" name="Infighter">
-		<!-- Using Left/Right Sidestep increases P. Critical Rate. -->
+		<!-- Using Left/Right Sidestep increases P. Critical Ability. -->
 		<icon>icon.skill30510</icon>
 		<operateType>P</operateType>
 		<magicLevel>97</magicLevel>
@@ -896,19 +896,23 @@
 			<effect name="TriggerSkillBySkill">
 				<skillId>30532</skillId> <!-- Inside Position -->
 				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
 				<castSkillId>30507</castSkillId> <!-- Left Sidestep -->
 				<targetType>SELF</targetType>
+				<replace>false</replace>
 			</effect>
 			<effect name="TriggerSkillBySkill">
 				<skillId>30532</skillId> <!-- Inside Position -->
 				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
 				<castSkillId>30508</castSkillId> <!-- Right Sidestep -->
 				<targetType>SELF</targetType>
+				<replace>false</replace>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="30511" toLevel="7" name="Air Light">
-		<!-- For $s1, you're less bound by gravity and P. Atk. + $s2. -->
+		<!-- For 30 minutes, you're less bound by gravity and P. Atk. + 10%. -->
 		<icon>icon.skill30511</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1018,7 +1022,7 @@
 		</effects>
 	</skill>
 	<skill id="30512" toLevel="3" name="Distortion">
-		<!-- For $s1, distorts space to attack from behind. Increases P. Atk. by $s2, P. Critical Damage by $s3, and P. Skill Power by $s4. Requires a fist weapon. -->
+		<!-- For 60 seconds, distorts space to attack from behind. Increases P. Atk. by 5%, P. Critical Damage by 5%, and P. Skill Power by 5%. Requires a fist weapon. -->
 		<icon>icon.skill30512</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1080,7 +1084,7 @@
 		</effects>
 	</skill>
 	<skill id="30514" toLevel="3" name="Fluid Weave">
-		<!-- For $s1, P. Skill Evasion + $s2, P. Evasion + $s3, M. Evasion + $s4. Requires a fist weapon. -->
+		<!-- For 3 seconds, P. Skill Evasion + 50%, P. Evasion + 50, M. Evasion + 50. Requires a fist weapon. -->
 		<icon>icon.skill30514</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1282,7 +1286,7 @@
 		</effects>
 	</skill>
 	<skill id="30518" toLevel="11" name="Reverse Weight">
-		<!-- Attacks nearby enemies with $s1 Power added to P. Atk. and knocks them down. Damage increases with the number of enemies affected. Requires a fist weapon. -->
+		<!-- Attacks nearby enemies with 19693 Power added to P. Atk. and knocks them down. Damage increases with the number of enemies affected. Requires a fist weapon. -->
 		<icon>icon.skill30518</icon>
 		<abnormalTime>1</abnormalTime> <!-- Unconfirmed -->
 		<abnormalType>KNOCKDOWN</abnormalType>
@@ -1357,7 +1361,7 @@
 		</effects>
 	</skill>
 	<skill id="30519" toLevel="1" name="Warped Space">
-		<!-- The energy of the earth is used to Hold enemies in range. Can be used when Fist Weapons are equipped. -->
+		<!-- The energy of the earth is used to Hold enemies in range. Requires a fist weapon. -->
 		<icon>icon.skill30519</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
@@ -1395,7 +1399,7 @@
 		</effects>
 	</skill>
 	<skill id="30520" toLevel="3" name="Steel Mind">
-		<!-- Your Invincible Spirit increases Attack by $s2, P. Critical Damage by $s3, P. Skill Critical Damage by $s4, Speed by $s5, Knock Back/Knock Down/Pull/Danger Zone/Aerial Yoke/Aggression defense success rate by $s6 for $s1. Inflicts additional damage $s7 times stronger than the general attack. HP stays as low as $s8 and recovers by $s9 when the effect expires. Requires a fist weapon. -->
+		<!-- Your Invincible Spirit increases Attack by 15%, P. Critical Damage by 10%, P. Skill Critical Damage by 10%, Speed by 50, Knock Back/Knock Down/Pull/Danger Zone/Aerial Yoke/Aggression defense success rate by 90% for 30 seconds. Inflicts additional damage 5 times stronger than the general attack. HP stays as low as 1 and recovers by 30% when the effect expires. Requires a fist weapon. -->
 		<icon>icon.skill30520</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1487,6 +1491,7 @@
 	</skill>
 	<skill id="30521" toLevel="1" name="Damage Up">
 		<!-- Inflicts normal damage x 5. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>1000</reuseDelay>
 		<targetType>ENEMY</targetType>
@@ -1526,7 +1531,7 @@
 		</effects>
 	</skill>
 	<skill id="30523" toLevel="3" name="Battle Dash">
-		<!-- P. Def. + $s1, M. Def. + $s2, Speed + $s3. -->
+		<!-- P. Def. + 10%, M. Def. + 10%, Speed + 10. -->
 		<icon>icon.skill30523</icon>
 		<abnormalTime>10</abnormalTime> <!-- Unconfirmed -->
 		<operateType>A2</operateType>
@@ -1576,6 +1581,7 @@
 	</skill>
 	<skill id="30524" toLevel="1" name="Reliable Hit">
 		<!-- Fixed damage. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<effectPoint>-100</effectPoint>
 		<mpConsume>1</mpConsume>
@@ -1679,7 +1685,7 @@
 		</effects>
 	</skill>
 	<skill id="30532" toLevel="3" name="Inside Position">
-		<!-- P. Critical Rate + $s1, P. Skill Critical Rate + $s2. -->
+		<!-- P. Critical Rate + 10, P. Skill Critical Rate + 10%. -->
 		<icon>icon.skill30510</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1750,7 +1756,7 @@
 		</effects>
 	</skill>
 	<skill id="30540" toLevel="17" name="Eminent Fist Weapon Mastery">
-		<!-- When equipped with a fist weapon, P. Atk. + $s1 and + $s2. -->
+		<!-- When equipped with a fist weapon, P. Atk. + 10% and + 4. -->
 		<icon>icon.skill30524</icon>
 		<magicLevel>
 			<value level="1">5</value>
@@ -1865,7 +1871,7 @@
 		</effects>
 	</skill>
 	<skill id="30541" toLevel="17" name="Eminent Light Armor Mastery">
-		<!-- When equipped with light armor, P. Def. + $s1. -->
+		<!-- When equipped with light armor, P. Def. + 14. -->
 		<icon>icon.skill10254</icon>
 		<magicLevel>
 			<value level="1">5</value>
@@ -1988,7 +1994,7 @@
 		</effects>
 	</skill>
 	<skill id="30542" toLevel="13" name="Eminent Stability">
-		<!-- Max HP + $s1, HP Recovery Bonus + $s2, MP Recovery Bonus + $s3. -->
+		<!-- Max HP + 58, HP Recovery Bonus + 2.5, MP Recovery Bonus + 1.2. -->
 		<icon>icon.skill11506</icon>
 		<magicLevel>
 			<value level="1">20</value>
@@ -2076,7 +2082,7 @@
 		</effects>
 	</skill>
 	<skill id="30543" toLevel="11" name="Eminent Attribute Resistance">
-		<!-- Attack Attribute Bonus + $s1, Fire/Water/Wind/Earth/Holy Resistance + $s2. -->
+		<!-- Attack Attribute Bonus + 10, Fire/Water/Wind/Earth/Holy Resistance + 10. -->
 		<icon>icon.skill11006</icon>
 		<magicLevel>
 			<value level="1">76</value>
@@ -2288,7 +2294,7 @@
 		</effects>
 	</skill>
 	<skill id="30544" toLevel="2" name="Eminent Trait Resistance">
-		<!-- Hold/Mental Resistance + $s1. -->
+		<!-- Hold/Mental Resistance + 30. -->
 		<icon>icon.skill10005</icon>
 		<magicLevel>
 			<value level="1">76</value>
@@ -2319,7 +2325,7 @@
 		</effects>
 	</skill>
 	<skill id="30545" toLevel="3" name="Eminent Ability">
-		<!-- STR + $s1. -->
+		<!-- STR + 2. -->
 		<icon>icon.skill0430</icon>
 		<operateType>P</operateType>
 		<magicLevel>
@@ -2342,7 +2348,7 @@
 		</effects>
 	</skill>
 	<skill id="30546" toLevel="11" name="Flying Knee Kick">
-		<!-- Lands a knee kick on the target. Target is knocked down for $s1. Fist weapon must be equipped. -->
+		<!-- Lands a knee kick on the target. Target is knocked down for 3 seconds. Requires a fist weapon. -->
 		<icon>icon.skill30546</icon>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
@@ -2417,7 +2423,7 @@
 		</effects>
 	</skill>
 	<skill id="30547" toLevel="4" name="Stamp Punch">
-		<!-- Throws a powerful punch to a fallen target with $s1 Power added to P. Atk. Ignores $s2 of target's P. Def. Fist weapon must be equipped. -->
+		<!-- Throws a powerful punch to a fallen target with 91570 Power added to P. Atk. Ignores 50% of target's P. Def. Requires a fist weapon. -->
 		<icon>icon.skill30547</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>

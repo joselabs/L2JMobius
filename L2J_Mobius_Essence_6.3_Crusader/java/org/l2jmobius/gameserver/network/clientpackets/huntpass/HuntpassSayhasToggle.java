@@ -70,5 +70,4 @@ public class HuntpassSayhasToggle implements ClientPacket
 		}
 		player.sendPacket(new HuntPassSayhasSupportInfo(player));
 	}
-	
 }

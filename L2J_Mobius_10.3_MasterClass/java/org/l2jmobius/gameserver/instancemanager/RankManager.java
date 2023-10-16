@@ -32,6 +32,7 @@ import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.olympiad.Hero;
+import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 
 /**
  * @author NviX
@@ -43,6 +44,7 @@ public class RankManager
 	public static final Long TIME_LIMIT = 2592000000L; // 30 days in milliseconds
 	public static final long CURRENT_TIME = System.currentTimeMillis();
 	public static final int PLAYER_LIMIT = 500;
+	public static final int CONQUEST_PLAYER_LIMIT = 100;
 	
 	private static final String SELECT_CHARACTERS = "SELECT charId,char_name,level,race,base_class, clanid FROM characters WHERE (" + CURRENT_TIME + " - cast(lastAccess as signed) < " + TIME_LIMIT + ") AND accesslevel = 0 AND level > 84 ORDER BY exp DESC, onlinetime DESC LIMIT " + PLAYER_LIMIT;
 	private static final String SELECT_CHARACTERS_PVP = "SELECT charId,char_name,level,race,base_class, clanid, deaths, kills, pvpkills FROM characters WHERE (" + CURRENT_TIME + " - cast(lastAccess as signed) < " + TIME_LIMIT + ") AND accesslevel = 0 AND level > 84 ORDER BY kills DESC, onlinetime DESC LIMIT " + PLAYER_LIMIT;
@@ -51,12 +53,22 @@ public class RankManager
 	private static final String GET_CURRENT_CYCLE_DATA = "SELECT characters.char_name, characters.level, characters.base_class, characters.clanid, olympiad_nobles.charId, olympiad_nobles.olympiad_points, olympiad_nobles.competitions_won, olympiad_nobles.competitions_lost FROM characters, olympiad_nobles WHERE characters.charId = olympiad_nobles.charId ORDER BY olympiad_nobles.olympiad_points DESC LIMIT " + PLAYER_LIMIT;
 	private static final String GET_CHARACTERS_BY_CLASS = "SELECT charId FROM characters WHERE (" + CURRENT_TIME + " - cast(lastAccess as signed) < " + TIME_LIMIT + ") AND accesslevel = 0 AND level > 84 AND characters.base_class = ? ORDER BY exp DESC, onlinetime DESC LIMIT " + PLAYER_LIMIT;
 	
+	// Conquest Data
+	private static final String GET_CURRENT_CONQUEST_CYCLE_DATA = "SELECT characters.charId, characters.char_name, character_variables.charId, character_variables.var, character_variables.val FROM characters, character_variables WHERE characters.charId = character_variables.charId AND val > 0 AND var IN ('" + PlayerVariables.CONQUEST_PERSONAL_POINTS + "') ORDER BY CONVERT(val, UNSIGNED INTEGER) DESC LIMIT " + CONQUEST_PLAYER_LIMIT;
+	private static final String GET_PREVIOUS_CONQUEST_CYCLE_DATA = "SELECT * FROM conquest_prev_season_ranklist ORDER BY CONVERT(personal_points, UNSIGNED INTEGER) DESC LIMIT " + CONQUEST_PLAYER_LIMIT;
+	
 	private final Map<Integer, StatSet> _mainList = new ConcurrentHashMap<>();
 	private Map<Integer, StatSet> _snapshotList = new ConcurrentHashMap<>();
 	private final Map<Integer, StatSet> _mainOlyList = new ConcurrentHashMap<>();
 	private Map<Integer, StatSet> _snapshotOlyList = new ConcurrentHashMap<>();
 	private final Map<Integer, StatSet> _mainPvpList = new ConcurrentHashMap<>();
 	private Map<Integer, StatSet> _snapshotPvpList = new ConcurrentHashMap<>();
+	
+	// Conquest Lists
+	private final Map<Integer, StatSet> _currentConquestList = new ConcurrentHashMap<>();
+	private Map<Integer, StatSet> _snapshotCurrentConquestList = new ConcurrentHashMap<>();
+	private final Map<Integer, StatSet> _previousConquestList = new ConcurrentHashMap<>();
+	private Map<Integer, StatSet> _snapshotPreviousConquestList = new ConcurrentHashMap<>();
 	
 	protected RankManager()
 	{
@@ -72,6 +84,10 @@ public class RankManager
 		_mainOlyList.clear();
 		_snapshotPvpList = _mainPvpList;
 		_mainPvpList.clear();
+		_snapshotCurrentConquestList = _currentConquestList;
+		_currentConquestList.clear();
+		_snapshotPreviousConquestList = _previousConquestList;
+		_previousConquestList.clear();
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement statement = con.prepareStatement(SELECT_CHARACTERS))
@@ -213,6 +229,57 @@ public class RankManager
 		{
 			LOGGER.log(Level.WARNING, "Could not load pvp total rank data: " + this + " - " + e.getMessage(), e);
 		}
+		
+		// XXX conquest wip
+		// load conquest data.
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement statement = con.prepareStatement(GET_CURRENT_CONQUEST_CYCLE_DATA))
+		{
+			try (ResultSet rset = statement.executeQuery())
+			{
+				int i = 1;
+				while (rset.next())
+				{
+					final StatSet player = new StatSet();
+					final int charId = rset.getInt("charId");
+					player.set("charId", charId);
+					player.set("name", rset.getString("char_name"));
+					player.set("conquestPersonalPoints", rset.getLong("val"));
+					
+					_currentConquestList.put(i, player);
+					i++;
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.WARNING, "Could not load conquest rank data: " + this + " - " + e.getMessage(), e);
+		}
+		
+		// load previous season conquest data.
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement statement = con.prepareStatement(GET_PREVIOUS_CONQUEST_CYCLE_DATA))
+		{
+			try (ResultSet rset = statement.executeQuery())
+			{
+				int i = 1;
+				while (rset.next())
+				{
+					final StatSet player = new StatSet();
+					final int charId = rset.getInt("charId");
+					player.set("charId", charId);
+					player.set("conquest_name", rset.getString("char_name"));
+					player.set("conquestPersonalPoints", rset.getLong("personal_points"));
+					
+					_previousConquestList.put(i, player);
+					i++;
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.WARNING, "Could not load conquest previous season ranklist data: " + this + " - " + e.getMessage(), e);
+		}
 	}
 	
 	private void loadClassRank(int charId, int classId, StatSet player)
@@ -301,6 +368,71 @@ public class RankManager
 	public Map<Integer, StatSet> getSnapshotPvpRankList()
 	{
 		return _snapshotPvpList;
+	}
+	
+	// XXX conquest wip
+	public Map<Integer, StatSet> getCurrentConquestRankList()
+	{
+		return _currentConquestList;
+	}
+	
+	public Map<Integer, StatSet> getSnapshotCurrentConquestRankList()
+	{
+		return _snapshotCurrentConquestList;
+	}
+	
+	public Map<Integer, StatSet> getPreviousConquestRankList()
+	{
+		return _previousConquestList;
+	}
+	
+	public Map<Integer, StatSet> getSnapshotPreviousConquestRankList()
+	{
+		return _snapshotPreviousConquestList;
+	}
+	
+	public int getPlayerConquestGlobalRank(Player player)
+	{
+		final int playerOid = player.getObjectId();
+		for (Entry<Integer, StatSet> entry : _currentConquestList.entrySet())
+		{
+			final StatSet stats = entry.getValue();
+			if (stats.getInt("charId") != playerOid)
+			{
+				continue;
+			}
+			return entry.getKey();
+		}
+		return 0;
+	}
+	
+	public String getPlayerConquestGlobalRankName(int rank)
+	{
+		String conquestName = "";
+		
+		// load conquest name.
+		final StatSet info = _currentConquestList.get(rank);
+		if (info != null)
+		{
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement statement = con.prepareStatement("SELECT * FROM character_variables WHERE var='" + PlayerVariables.CONQUEST_NAME + "' AND charId=?"))
+			{
+				statement.setString(1, String.valueOf(info.getInt("charId")));
+				try (ResultSet rs = statement.executeQuery())
+				{
+					while (rs.next())
+					{
+						conquestName = rs.getString("val");
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.WARNING, "Could not load conquest name data: " + this + " - " + e.getMessage(), e);
+			}
+		}
+		
+		return conquestName;
 	}
 	
 	public int getPlayerGlobalRank(Player player)

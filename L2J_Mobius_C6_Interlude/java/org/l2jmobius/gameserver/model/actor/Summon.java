@@ -566,24 +566,25 @@ public abstract class Summon extends Playable
 	 * @param forceUse used to force ATTACK on players
 	 * @param dontMove used to prevent movement, if not in range
 	 */
-	public void useMagic(Skill skill, boolean forceUse, boolean dontMove)
+	@Override
+	public boolean useMagic(Skill skill, boolean forceUse, boolean dontMove)
 	{
 		if ((skill == null) || isDead())
 		{
-			return;
+			return false;
 		}
 		
 		// Check if the skill is active
 		if (skill.isPassive())
 		{
 			// just ignore the passive skill request. why does the client send it anyway ??
-			return;
+			return false;
 		}
 		
 		// If a skill is currently being used
 		if (isCastingNow())
 		{
-			return;
+			return false;
 		}
 		
 		// Set current pet skill
@@ -623,7 +624,7 @@ public abstract class Summon extends Playable
 			{
 				_owner.sendPacket(SystemMessageId.YOUR_TARGET_CANNOT_BE_FOUND);
 			}
-			return;
+			return false;
 		}
 		
 		// Check if this skill is enabled (ex : reuse time)
@@ -632,13 +633,13 @@ public abstract class Summon extends Playable
 			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_NOT_AVAILABLE_AT_THIS_TIME_BEING_PREPARED_FOR_REUSE);
 			sm.addString(skill.getName());
 			_owner.sendPacket(sm);
-			return;
+			return false;
 		}
 		
 		// Check if all skills are disabled
 		if (isAllSkillsDisabled() && (_owner != null) && _owner.getAccessLevel().allowPeaceAttack())
 		{
-			return;
+			return false;
 		}
 		
 		// Check if the summon has enough MP
@@ -650,7 +651,7 @@ public abstract class Summon extends Playable
 				_owner.sendPacket(SystemMessageId.NOT_ENOUGH_MP);
 			}
 			
-			return;
+			return false;
 		}
 		
 		// Check if the summon has enough HP
@@ -662,7 +663,7 @@ public abstract class Summon extends Playable
 				_owner.sendPacket(SystemMessageId.NOT_ENOUGH_HP);
 			}
 			
-			return;
+			return false;
 		}
 		
 		// Check if this is offensive magic skill
@@ -671,21 +672,21 @@ public abstract class Summon extends Playable
 			if ((_owner != null) && (_owner == target) && !_owner.isBetrayed())
 			{
 				sendPacket(new SystemMessage(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET));
-				return;
+				return false;
 			}
 			
 			if (isInsidePeaceZone(this, target) && (_owner != null) && !_owner.getAccessLevel().allowPeaceAttack())
 			{
 				// If summon or target is in a peace zone, send a system message TARGET_IN_PEACEZONE
 				sendPacket(new SystemMessage(SystemMessageId.YOU_MAY_NOT_ATTACK_THIS_TARGET_IN_A_PEACEFUL_ZONE));
-				return;
+				return false;
 			}
 			
 			if ((_owner != null) && _owner.isInOlympiadMode() && !_owner.isOlympiadStart())
 			{
 				// if Player is in Olympia and the match isn't already start, send a Server->Client packet ActionFailed
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 			
 			// Check if the target is attackable
@@ -693,26 +694,27 @@ public abstract class Summon extends Playable
 			{
 				if (!((Door) target).isAttackable(_owner))
 				{
-					return;
+					return false;
 				}
 			}
 			else
 			{
 				if (!target.canBeAttacked() && (_owner != null) && _owner.getAccessLevel().allowPeaceAttack())
 				{
-					return;
+					return false;
 				}
 				
 				// Check if a Forced ATTACK is in progress on non-attackable target
 				if (!target.isAutoAttackable(this) && !forceUse && (skill.getTargetType() != SkillTargetType.AURA) && (skill.getTargetType() != SkillTargetType.CLAN) && (skill.getTargetType() != SkillTargetType.ALLY) && (skill.getTargetType() != SkillTargetType.PARTY) && (skill.getTargetType() != SkillTargetType.SELF))
 				{
-					return;
+					return false;
 				}
 			}
 		}
 		
 		// Notify the AI with AI_INTENTION_CAST and target
 		getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target);
+		return true;
 	}
 	
 	@Override

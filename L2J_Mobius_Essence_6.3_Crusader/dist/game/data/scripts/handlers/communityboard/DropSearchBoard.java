@@ -131,7 +131,7 @@ public class DropSearchBoard implements IParseBoardHandler
 			}
 		});
 		
-		DROP_INDEX_CACHE.values().stream().forEach(l -> l.sort((d1, d2) -> Integer.valueOf(d1.npcLevel).compareTo(Integer.valueOf(d2.npcLevel))));
+		DROP_INDEX_CACHE.values().forEach(l -> l.sort((d1, d2) -> Integer.valueOf(d1.npcLevel).compareTo(Integer.valueOf(d2.npcLevel))));
 	}
 	
 	private void addToDropList(NpcTemplate npcTemplate, DropHolder dropHolder)

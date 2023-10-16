@@ -35,19 +35,19 @@ public class PlainsOfGlory extends AbstractNpcAI
 	private static final int VANOR_SILENOS_WARRIOR = 20684;
 	private static final int VANOR_SILENOS_SHAMAN = 20685;
 	private static final int VANOR_SILENOS_CHIEFTAIN = 20686;
-	private static final int VANOR_MERCENARY_OF_GLORY = 24014;
+	private static final int VANOR = 24014;
 	// Guard
 	private static final int GUARD_OF_HONOR = 22102;
 	
 	private PlainsOfGlory()
 	{
-		addKillId(VANOR_SILENOS, VANOR_SILENOS_SOLDIER, VANOR_SILENOS_SCOUT, VANOR_SILENOS_WARRIOR, VANOR_SILENOS_SHAMAN, VANOR_SILENOS_CHIEFTAIN, VANOR_MERCENARY_OF_GLORY);
+		addKillId(VANOR_SILENOS, VANOR_SILENOS_SOLDIER, VANOR_SILENOS_SCOUT, VANOR_SILENOS_WARRIOR, VANOR_SILENOS_SHAMAN, VANOR_SILENOS_CHIEFTAIN, VANOR);
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		if (getRandom(100) < 50)
+		if (getRandom(100) < 10)
 		{
 			final Npc spawnBanshee = addSpawn(GUARD_OF_HONOR, npc, false, 300000);
 			final Playable attacker = isSummon ? killer.getServitors().values().stream().findFirst().orElse(killer.getPet()) : killer;

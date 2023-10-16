@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +35,7 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
+import org.l2jmobius.gameserver.data.xml.SpawnData;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.FortTeleportWhoType;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
@@ -40,27 +43,57 @@ import org.l2jmobius.gameserver.enums.SiegeClanType;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.instancemanager.FortSiegeManager;
+import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.CombatFlag;
 import org.l2jmobius.gameserver.model.FortSiegeSpawn;
 import org.l2jmobius.gameserver.model.SiegeClan;
 import org.l2jmobius.gameserver.model.Spawn;
+import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Door;
 import org.l2jmobius.gameserver.model.actor.instance.FortCommander;
 import org.l2jmobius.gameserver.model.clan.Clan;
+import org.l2jmobius.gameserver.model.events.Containers;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
+import org.l2jmobius.gameserver.model.events.ListenersContainer;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerLogin;
 import org.l2jmobius.gameserver.model.events.impl.sieges.OnFortSiegeFinish;
 import org.l2jmobius.gameserver.model.events.impl.sieges.OnFortSiegeStart;
+import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
+import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.spawns.NpcSpawnTemplate;
+import org.l2jmobius.gameserver.model.spawns.SpawnGroup;
+import org.l2jmobius.gameserver.model.spawns.SpawnTemplate;
+import org.l2jmobius.gameserver.model.zone.ZoneType;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
+import org.l2jmobius.gameserver.network.serverpackets.orcfortress.OrcFortressSiegeInfoHUD;
+import org.l2jmobius.gameserver.util.Broadcast;
 
-public class FortSiege implements Siegable
+//public class FortSiege implements Siegable
+public class FortSiege extends ListenersContainer implements Siegable
 {
 	protected static final Logger LOGGER = Logger.getLogger(FortSiege.class.getName());
+	
+	public static final String ORC_FORTRESS_GREG_UPPER_LEFT_SPAWN = "orc_fortress_greg_upper_left";
+	public static final String ORC_FORTRESS_GREG_UPPER_RIGHT_SPAWN = "orc_fortress_greg_upper_right";
+	public static final String ORC_FORTRESS_GREG_BOTTOM_RIGHT_SPAWN = "orc_fortress_greg_bottom_right";
+	public static final String GREG_SPAWN_VAR = "GREG_SPAWN";
+	
+	boolean _hasSpawnedPreparationNpcs = false;
+	
+	private static final AtomicReference<SpawnTemplate> SPAWN_PREPARATION_NPCS = new AtomicReference<>();
+	
+	private static final ZoneType FORTRESS_ZONE = ZoneManager.getInstance().getZoneByName("orc_fortress_general_area");
+	
+	ScheduledFuture<?> _siegeGregSentryTask = null;
+	
+	int _flagCount = 0;
 	
 	// SQL
 	private static final String DELETE_FORT_SIEGECLANS_BY_CLAN_ID = "DELETE FROM fortsiege_clans WHERE fort_id = ? AND clan_id = ?";
@@ -88,15 +121,90 @@ public class FortSiege implements Siegable
 		}
 	}
 	
+	public class ScheduleGregSentrySpawnTask implements Runnable
+	{
+		@Override
+		public void run()
+		{
+			FORTRESS_ZONE.broadcastPacket(new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 8000, false, null, NpcStringId.FLAG_SENTRY_GREG_HAS_APPEARED, null));
+			if (!_isInProgress)
+			{
+				return;
+			}
+			try
+			{
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName(ORC_FORTRESS_GREG_UPPER_LEFT_SPAWN).forEach(holder ->
+				{
+					holder.spawnAll();
+					for (NpcSpawnTemplate nst : holder.getSpawns())
+					{
+						for (Npc npc : nst.getSpawnedNpcs())
+						{
+							Spawn spawn = npc.getSpawn();
+							if (spawn != null)
+							{
+								spawn.stopRespawn();
+							}
+						}
+					}
+				}));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName(ORC_FORTRESS_GREG_UPPER_RIGHT_SPAWN).forEach(holder ->
+				{
+					holder.spawnAll();
+					for (NpcSpawnTemplate nst : holder.getSpawns())
+					{
+						for (Npc npc : nst.getSpawnedNpcs())
+						{
+							Spawn spawn = npc.getSpawn();
+							if (spawn != null)
+							{
+								spawn.stopRespawn();
+							}
+						}
+					}
+				}));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName(ORC_FORTRESS_GREG_BOTTOM_RIGHT_SPAWN).forEach(holder ->
+				{
+					holder.spawnAll();
+					for (NpcSpawnTemplate nst : holder.getSpawns())
+					{
+						for (Npc npc : nst.getSpawnedNpcs())
+						{
+							Spawn spawn = npc.getSpawn();
+							if (spawn != null)
+							{
+								spawn.stopRespawn();
+							}
+						}
+					}
+				}));
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Exception: ScheduleGregSentrySpawn() for Fort: " + _fort.getName() + " " + e.getMessage(), e);
+			}
+		}
+	}
+	
 	public class ScheduleStartSiegeTask implements Runnable
 	{
 		private final Fort _fortInst;
 		private final int _time;
 		
+		private final long _initialDelayInMilliseconds;
+		
 		public ScheduleStartSiegeTask(int time)
 		{
 			_fortInst = _fort;
 			_time = time;
+			_initialDelayInMilliseconds = 0;
+		}
+		
+		public ScheduleStartSiegeTask(int time, long initialDelayInMilliseconds)
+		{
+			_fortInst = _fort;
+			_time = time;
+			_initialDelayInMilliseconds = initialDelayInMilliseconds;
 		}
 		
 		@Override
@@ -107,12 +215,74 @@ public class FortSiege implements Siegable
 				return;
 			}
 			
+			if (!_hasSpawnedPreparationNpcs)
+			{
+				_hasSpawnedPreparationNpcs = true;
+				
+				SPAWN_PREPARATION_NPCS.set(SpawnData.getInstance().getSpawns().stream().filter(t -> t.getName() != null).filter(t -> t.getName().contains("orc_fortress_preparation_npcs")).findAny().orElse(null));
+				SPAWN_PREPARATION_NPCS.get().getGroups().forEach(SpawnGroup::spawnAll);
+			}
 			try
 			{
 				final SystemMessage sm;
-				if (_time == 3600) // 1hr remains
+				if ((_initialDelayInMilliseconds != 0) && (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS))
+				{
+					int nextTask = 0;
+					if (_initialDelayInMilliseconds >= 1200000)
+					{
+						nextTask = 1200;
+					}
+					else
+					{
+						_isInPreparation = true;
+						if (_initialDelayInMilliseconds >= 600000)
+						{
+							nextTask = 600;
+						}
+						else if (_initialDelayInMilliseconds >= 300000)
+						{
+							nextTask = 300;
+						}
+						else if (_initialDelayInMilliseconds >= 60000)
+						{
+							nextTask = 60;
+						}
+						else if (_initialDelayInMilliseconds >= 30000)
+						{
+							nextTask = 30;
+						}
+						else if (_initialDelayInMilliseconds >= 10000)
+						{
+							nextTask = 10;
+						}
+						else if (_initialDelayInMilliseconds >= 5000)
+						{
+							nextTask = 5;
+						}
+						else
+						{
+							nextTask = 0;
+						}
+						
+						Broadcast.toAllOnlinePlayers(new OrcFortressSiegeInfoHUD(_fortInst.getResidenceId(), 0, (int) Calendar.getInstance().getTimeInMillis() / 1000, (int) _initialDelayInMilliseconds / 1000));
+					}
+					
+					ThreadPool.schedule(new ScheduleStartSiegeTask(nextTask), _initialDelayInMilliseconds - (nextTask * 1000)); // Prepare task for @nextTask minutes left.
+					LOGGER.info("scheduling " + nextTask + " in " + ((_initialDelayInMilliseconds / 1000) - nextTask) + " sec");
+				}
+				else if ((_time == 3600) && (_fortInst.getResidenceId() != FortManager.ORC_FORTRESS)) // 1hr remains
+				
 				{
 					ThreadPool.schedule(new ScheduleStartSiegeTask(600), 3000000); // Prepare task for 10 minutes left.
+				}
+				else if ((_time == 1200) && (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS)) // 20min remains
+				{
+					_isInPreparation = true;
+					sm = new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_STARTS_IN_S1_MIN);
+					sm.addInt(20);
+					announceToPlayer(sm);
+					Broadcast.toAllOnlinePlayers(new OrcFortressSiegeInfoHUD(_fortInst.getResidenceId(), 0, (int) Calendar.getInstance().getTimeInMillis() / 1000, 1200));
+					ThreadPool.schedule(new ScheduleStartSiegeTask(600), 600000); // Prepare task for 10 minutes left.
 				}
 				else if (_time == 600) // 10min remains
 				{
@@ -124,6 +294,10 @@ public class FortSiege implements Siegable
 				}
 				else if (_time == 300) // 5min remains
 				{
+					if (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS)
+					{
+						_fort.despawnSuspiciousMerchant();
+					}
 					sm = new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_STARTS_IN_S1_MIN);
 					sm.addInt(5);
 					announceToPlayer(sm);
@@ -131,6 +305,10 @@ public class FortSiege implements Siegable
 				}
 				else if (_time == 60) // 1min remains
 				{
+					if (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS)
+					{
+						_fort.despawnSuspiciousMerchant();
+					}
 					sm = new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_STARTS_IN_S1_MIN);
 					sm.addInt(1);
 					announceToPlayer(sm);
@@ -138,6 +316,11 @@ public class FortSiege implements Siegable
 				}
 				else if (_time == 30) // 30seconds remains
 				{
+					if (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS)
+					{
+						_fort.despawnSuspiciousMerchant();
+					}
+					
 					sm = new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_STARTS_IN_S1_SEC);
 					sm.addInt(30);
 					announceToPlayer(sm);
@@ -145,6 +328,11 @@ public class FortSiege implements Siegable
 				}
 				else if (_time == 10) // 10seconds remains
 				{
+					if (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS)
+					{
+						_fort.despawnSuspiciousMerchant();
+					}
+					
 					sm = new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_STARTS_IN_S1_SEC);
 					sm.addInt(10);
 					announceToPlayer(sm);
@@ -152,20 +340,28 @@ public class FortSiege implements Siegable
 				}
 				else if (_time == 5) // 5seconds remains
 				{
-					sm = new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_STARTS_IN_S1_SEC);
-					sm.addInt(5);
-					announceToPlayer(sm);
+					if (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS)
+					{
+						_fort.despawnSuspiciousMerchant();
+					}
+					
 					ThreadPool.schedule(new ScheduleStartSiegeTask(1), 4000); // Prepare task for 1 seconds left.
 				}
 				else if (_time == 1) // 1seconds remains
 				{
-					sm = new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_STARTS_IN_S1_SEC);
-					sm.addInt(1);
-					announceToPlayer(sm);
+					if (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS)
+					{
+						_fort.despawnSuspiciousMerchant();
+					}
+					
 					ThreadPool.schedule(new ScheduleStartSiegeTask(0), 1000); // Prepare task start siege.
 				}
-				else if (_time == 0)// start siege
+				else if (_time == 0) // start siege
 				{
+					if (_fortInst.getResidenceId() == FortManager.ORC_FORTRESS)
+					{
+						_isInPreparation = false;
+					}
 					_fortInst.getSiege().startSiege();
 				}
 				else
@@ -234,12 +430,46 @@ public class FortSiege implements Siegable
 	ScheduledFuture<?> _siegeEnd = null;
 	ScheduledFuture<?> _siegeRestore = null;
 	ScheduledFuture<?> _siegeStartTask = null;
+	// Orc Fortress
+	boolean _isInPreparation = false;
 	
 	public FortSiege(Fort fort)
 	{
 		_fort = fort;
 		checkAutoTask();
 		FortSiegeManager.getInstance().addSiege(this);
+		if (_fort.getResidenceId() == FortManager.ORC_FORTRESS)
+		{
+			Containers.Global().addListener(new ConsumerEventListener(this, EventType.ON_FORT_SIEGE_START, (OnFortSiegeStart event) -> announceStartToPlayers(event), this));
+			Containers.Global().addListener(new ConsumerEventListener(this, EventType.ON_FORT_SIEGE_FINISH, (OnFortSiegeFinish event) -> announceEndToPlayers(event), this));
+			Containers.Global().addListener(new ConsumerEventListener(this, EventType.ON_PLAYER_LOGIN, (OnPlayerLogin event) -> showHUDToPlayer(event), this));
+			
+		}
+	}
+	
+	private void announceStartToPlayers(OnFortSiegeStart event)
+	{
+		Broadcast.toAllOnlinePlayers(new OrcFortressSiegeInfoHUD(event.getSiege().getFort().getResidenceId(), 1, 0, 30 * 60));
+		Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessageId.SEAL_THE_SEAL_TOWER_AND_CONQUER_ORC_FORTRESS));
+	}
+	
+	private void announceEndToPlayers(OnFortSiegeFinish event)
+	{
+		Broadcast.toAllOnlinePlayers(new OrcFortressSiegeInfoHUD(event.getSiege().getFort().getResidenceId(), 0, 0, 0));
+	}
+	
+	private void showHUDToPlayer(OnPlayerLogin event)
+	{
+		if (_isInPreparation)
+		{
+			final int remainingTimeInSeconds = (int) (_fort.getSiegeDate().getTimeInMillis() - Calendar.getInstance().getTimeInMillis()) / 1000;
+			event.getPlayer().sendPacket(new OrcFortressSiegeInfoHUD(_fort.getResidenceId(), 0, (int) Calendar.getInstance().getTimeInMillis() / 1000, remainingTimeInSeconds));
+		}
+		else if (_isInProgress)
+		{
+			final int remainingTimeInSeconds = (int) _siegeEnd.getDelay(TimeUnit.SECONDS);
+			event.getPlayer().sendPacket(new OrcFortressSiegeInfoHUD(_fort.getResidenceId(), 1, (int) Calendar.getInstance().getTimeInMillis() / 1000, remainingTimeInSeconds));
+		}
 	}
 	
 	/**
@@ -250,10 +480,51 @@ public class FortSiege implements Siegable
 	{
 		if (_isInProgress)
 		{
+			// Orc Fortress spawn.
+			if (_siegeGregSentryTask != null)
+			{
+				_siegeGregSentryTask.cancel(true);
+				_siegeGregSentryTask = null;
+			}
+			
+			if (_fort.getResidenceId() == FortManager.ORC_FORTRESS)
+			{
+				for (Player player : World.getInstance().getPlayers())
+				{
+					Item weap = player.getActiveWeaponInstance();
+					if ((weap != null) && (weap.getId() == FortManager.ORC_FORTRESS_FLAG))
+					{
+						FortSiegeManager.getInstance().dropCombatFlag(player, getFort().getResidenceId());
+					}
+				}
+				
+				for (WorldObject obj : World.getInstance().getVisibleObjects())
+				{
+					if (obj instanceof Item)
+					{
+						if (obj.getId() == FortManager.ORC_FORTRESS_FLAG)
+						{
+							obj.decayMe();
+						}
+					}
+				}
+				
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_fortress").forEach(holder -> holder.despawnAll()));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_runners").forEach(holder -> holder.despawnAll()));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_fortress_inside").forEach(holder -> holder.despawnAll()));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_fortress_jeras_guards").forEach(holder -> holder.despawnAll()));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName(ORC_FORTRESS_GREG_UPPER_LEFT_SPAWN).forEach(holder -> holder.despawnAll()));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName(ORC_FORTRESS_GREG_UPPER_RIGHT_SPAWN).forEach(holder -> holder.despawnAll()));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName(ORC_FORTRESS_GREG_BOTTOM_RIGHT_SPAWN).forEach(holder -> holder.despawnAll()));
+				SPAWN_PREPARATION_NPCS.get().getGroups().forEach(SpawnGroup::despawnAll);
+			}
+			
 			_isInProgress = false; // Flag so that siege instance can be started
+			_hasSpawnedPreparationNpcs = false;
 			removeFlags(); // Removes all flags. Note: Remove flag before teleporting players
 			unSpawnFlags();
 			
+			teleportPlayer(FortTeleportWhoType.Attacker, TeleportWhereType.TOWN); // Teleport to the closest town
 			updatePlayerSiegeStateFlags(true);
 			
 			int ownerId = -1;
@@ -271,7 +542,18 @@ public class FortSiege implements Siegable
 			removeCommanders(); // Remove commander from this fort
 			_fort.spawnNpcCommanders(); // Spawn NPC commanders
 			unspawnSiegeGuard(); // Remove all spawned siege guard from this fort
-			_fort.resetDoors(); // Respawn door to fort
+			_fort.CloseOrcFortressDoors();
+			if (_fort.getResidenceId() != FortManager.ORC_FORTRESS)
+			{
+				_fort.resetDoors();
+				
+			}
+			else
+			{
+				_fort.CloseOrcFortressDoors();
+				LOGGER.info("FortSiege: Closed Orc Fortress doors.");
+			}
+			_fort.SetOrcFortressOwnerNpcs(true);
 			ThreadPool.schedule(new ScheduleSuspiciousMerchantSpawn(), FortSiegeManager.getInstance().getSuspiciousMerchantRespawnDelay() * 60 * 1000); // Prepare 3hr task for suspicious merchant respawn
 			setSiegeDateTime(true); // store suspicious merchant spawn in DB
 			if (_siegeEnd != null)
@@ -314,18 +596,33 @@ public class FortSiege implements Siegable
 				_fort.despawnSuspiciousMerchant();
 			}
 			_siegeStartTask = null;
-			if (_attackerClans.isEmpty())
+			
+			if (_attackerClans.isEmpty() && (_fort.getResidenceId() != FortManager.ORC_FORTRESS))
 			{
 				return;
 			}
 			
+			// Orc Fortress
 			_isInProgress = true; // Flag so that same siege instance cannot be started again
 			loadSiegeClan(); // Load siege clan from db
 			updatePlayerSiegeStateFlags(false);
-			teleportPlayer(FortTeleportWhoType.Attacker, TeleportWhereType.TOWN); // Teleport to the closest town
+			// teleportPlayer(FortTeleportWhoType.Attacker, TeleportWhereType.TOWN); // Teleport to the closest town
+			
+			setFlagCount(0);
 			_fort.despawnNpcCommanders(); // Despawn NPC commanders
 			spawnCommanders(); // Spawn commanders
-			_fort.resetDoors(); // Spawn door
+			
+			if (_fort.getResidenceId() != FortManager.ORC_FORTRESS)
+			{
+				_fort.resetDoors();
+			}
+			else
+			{
+				_fort.OpenOrcFortressDoors();
+				LOGGER.info("FortSiege: Opened Orc Fortress doors.");
+			}
+			
+			_fort.SetOrcFortressOwnerNpcs(false);
 			spawnSiegeGuard(); // Spawn siege guard
 			_fort.setVisibleFlag(false);
 			_fort.getZone().setSiegeInstance(this);
@@ -333,18 +630,96 @@ public class FortSiege implements Siegable
 			_fort.getZone().updateZoneStatusForCharactersInside();
 			
 			// Schedule a task to prepare auto siege end
-			_siegeEnd = ThreadPool.schedule(new ScheduleEndSiegeTask(), FortSiegeManager.getInstance().getSiegeLength() * 60 * 1000); // Prepare auto end task
+			if (_fort.getResidenceId() == FortManager.ORC_FORTRESS)
+			{
+				_siegeGregSentryTask = ThreadPool.schedule(new ScheduleGregSentrySpawnTask(), 20 * 60 * 1000L); // 20 min
+				// _siegeGregSentryTask = ThreadPool.schedule(new ScheduleGregSentrySpawnTask(), 2 * 60 * 1000L); // Prepare Greg Sentry spawn task, Test only
+				_siegeEnd = ThreadPool.schedule(new ScheduleEndSiegeTask(), 30 * 60 * 1000); // Prepare auto end task
+			}
+			else
+			{
+				_siegeEnd = ThreadPool.schedule(new ScheduleEndSiegeTask(), FortSiegeManager.getInstance().getSiegeLength() * 60 * 1000); // Prepare auto end task
+			}
 			
 			announceToPlayer(new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_HAS_BEGUN));
 			saveFortSiege();
 			
-			LOGGER.info(getClass().getSimpleName() + ": Siege of " + _fort.getName() + " fort started.");
-			
-			// Notify to scripts.
-			if (EventDispatcher.getInstance().hasListener(EventType.ON_FORT_SIEGE_START, getFort()))
+			if (_fort.getResidenceId() == FortManager.ORC_FORTRESS)
 			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnFortSiegeStart(this), getFort());
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_fortress").forEach(holder ->
+				{
+					holder.spawnAll();
+					for (NpcSpawnTemplate nst : holder.getSpawns())
+					{
+						for (Npc npc : nst.getSpawnedNpcs())
+						{
+							Spawn spawn = npc.getSpawn();
+							if (spawn != null)
+							{
+								spawn.setRespawnDelay(5);
+							}
+						}
+					}
+				}));
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_runners").forEach(holder ->
+				{
+					holder.spawnAll();
+					for (NpcSpawnTemplate nst : holder.getSpawns())
+					{
+						for (Npc npc : nst.getSpawnedNpcs())
+						{
+							Spawn spawn = npc.getSpawn();
+							if (spawn != null)
+							{
+								spawn.setRespawnDelay(5, 10);
+							}
+						}
+					}
+					
+				}));
+				
+				SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_fortress_inside").forEach(holder ->
+				{
+					holder.spawnAll();
+					for (NpcSpawnTemplate nst : holder.getSpawns())
+					{
+						for (Npc npc : nst.getSpawnedNpcs())
+						{
+							Spawn spawn = npc.getSpawn();
+							if (spawn != null)
+							{
+								spawn.setRespawnDelay(5);
+							}
+						}
+					}
+					
+				}));
 			}
+			SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName("orc_fortress_jeras_guards").forEach(holder ->
+			{
+				holder.spawnAll();
+				for (NpcSpawnTemplate nst : holder.getSpawns())
+				{
+					for (Npc npc : nst.getSpawnedNpcs())
+					{
+						Spawn spawn = npc.getSpawn();
+						if (spawn != null)
+						{
+							spawn.setRespawnDelay(160);
+						}
+					}
+				}
+				
+			}));
+		}
+		
+		LOGGER.info(getClass().getSimpleName() + ": Siege of " + _fort.getName() + " fort started.");
+		
+		// Notify to scripts.
+		if (EventDispatcher.getInstance().hasListener(EventType.ON_FORT_SIEGE_START, getFort()))
+		{
+			EventDispatcher.getInstance().notifyEventAsync(new OnFortSiegeStart(this), getFort());
+			
 		}
 	}
 	
@@ -607,7 +982,8 @@ public class FortSiege implements Siegable
 	 */
 	public void killedCommander(FortCommander instance)
 	{
-		if ((_fort != null) && (!_commanders.isEmpty()))
+		int RisidenceId = _fort.getResidenceId();
+		if ((_fort != null) && (!_commanders.isEmpty() && (RisidenceId != 122)))
 		{
 			final Spawn spawn = instance.getSpawn();
 			if (spawn != null)
@@ -646,6 +1022,7 @@ public class FortSiege implements Siegable
 						}
 					}
 				}
+				
 				_commanders.remove(spawn);
 				if (_commanders.isEmpty())
 				{
@@ -823,51 +1200,81 @@ public class FortSiege implements Siegable
 			return;
 		}
 		
-		final long delay = getFort().getSiegeDate().getTimeInMillis() - System.currentTimeMillis();
-		if (delay < 0)
+		if ((_fort.getResidenceId() == FortManager.ORC_FORTRESS) && Config.ORC_FORTRESS_ENABLE)
 		{
-			// siege time in past
-			saveFortSiege();
-			clearSiegeClan(); // remove all clans
-			// spawn suspicious merchant immediately
+			if (_siegeStartTask != null)
+			{
+				return;
+			}
+			
 			ThreadPool.execute(new ScheduleSuspiciousMerchantSpawn());
+			
+			final Calendar cal = Calendar.getInstance();
+			cal.set(Calendar.HOUR_OF_DAY, Config.ORC_FORTRESS_HOUR);
+			cal.set(Calendar.MINUTE, Config.ORC_FORTRESS_MINUTE);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MILLISECOND, 0);
+			if (cal.getTimeInMillis() < Calendar.getInstance().getTimeInMillis())
+			{
+				cal.add(Calendar.DAY_OF_MONTH, 1);
+			}
+			
+			_fort.setSiegeDate(cal);
+			saveSiegeDate();
+			
+			final long initialDelayInMilliseconds = _fort.getSiegeDate().getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
+			_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(0, initialDelayInMilliseconds), 0);
+			
 		}
 		else
 		{
-			loadSiegeClan();
-			if (_attackerClans.isEmpty())
+			
+			final long delay = getFort().getSiegeDate().getTimeInMillis() - System.currentTimeMillis();
+			if (delay < 0)
 			{
-				// no attackers - waiting for suspicious merchant spawn
-				ThreadPool.schedule(new ScheduleSuspiciousMerchantSpawn(), delay);
+				// siege time in past
+				saveFortSiege();
+				clearSiegeClan(); // remove all clans
+				// spawn suspicious merchant immediately
+				ThreadPool.execute(new ScheduleSuspiciousMerchantSpawn());
 			}
 			else
 			{
-				// preparing start siege task
-				if (delay > 3600000) // more than hour, how this can happens ? spawn suspicious merchant
+				loadSiegeClan();
+				if (_attackerClans.isEmpty())
 				{
-					ThreadPool.execute(new ScheduleSuspiciousMerchantSpawn());
-					_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(3600), delay - 3600000);
-				}
-				if (delay > 600000) // more than 10 min, spawn suspicious merchant
-				{
-					ThreadPool.execute(new ScheduleSuspiciousMerchantSpawn());
-					_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(600), delay - 600000);
-				}
-				else if (delay > 300000)
-				{
-					_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(300), delay - 300000);
-				}
-				else if (delay > 60000)
-				{
-					_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(60), delay - 60000);
+					// no attackers - waiting for suspicious merchant spawn
+					ThreadPool.schedule(new ScheduleSuspiciousMerchantSpawn(), delay);
 				}
 				else
 				{
-					// lower than 1 min, set to 1 min
-					_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(60), 0);
+					// preparing start siege task
+					if (delay > 3600000) // more than hour, how this can happens ? spawn suspicious merchant
+					{
+						ThreadPool.execute(new ScheduleSuspiciousMerchantSpawn());
+						_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(3600), delay - 3600000);
+					}
+					if (delay > 600000) // more than 10 min, spawn suspicious merchant
+					{
+						ThreadPool.execute(new ScheduleSuspiciousMerchantSpawn());
+						_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(600), delay - 600000);
+					}
+					else if (delay > 300000)
+					{
+						_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(300), delay - 300000);
+					}
+					else if (delay > 60000)
+					{
+						_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(60), delay - 60000);
+					}
+					else
+					{
+						// lower than 1 min, set to 1 min
+						_siegeStartTask = ThreadPool.schedule(new ScheduleStartSiegeTask(60), 0);
+					}
+					
+					LOGGER.info(getClass().getSimpleName() + ": Siege of " + _fort.getName() + " fort: " + _fort.getSiegeDate().getTime());
 				}
-				
-				LOGGER.info(getClass().getSimpleName() + ": Siege of " + _fort.getName() + " fort: " + _fort.getSiegeDate().getTime());
 			}
 		}
 	}
@@ -1133,6 +1540,22 @@ public class FortSiege implements Siegable
 		{
 			cf.unSpawnMe();
 		}
+	}
+	
+	public void addFlagCount(int count)
+	{
+		_flagCount += count;
+		_flagCount = _flagCount < 0 ? 0 : _flagCount;
+	}
+	
+	public int getFlagCount()
+	{
+		return _flagCount;
+	}
+	
+	public void setFlagCount(int count)
+	{
+		_flagCount = 0;
 	}
 	
 	public void loadSiegeGuard()

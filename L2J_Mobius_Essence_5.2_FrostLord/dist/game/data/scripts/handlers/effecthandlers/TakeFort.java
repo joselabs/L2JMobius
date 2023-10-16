@@ -16,11 +16,18 @@
  */
 package handlers.effecthandlers;
 
+import org.l2jmobius.gameserver.enums.MailType;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
+import org.l2jmobius.gameserver.instancemanager.FortSiegeManager;
+import org.l2jmobius.gameserver.instancemanager.MailManager;
+import org.l2jmobius.gameserver.model.Message;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
+import org.l2jmobius.gameserver.model.itemcontainer.Mail;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.skill.Skill;
 
@@ -49,9 +56,22 @@ public class TakeFort extends AbstractEffect
 		}
 		
 		final Fort fort = FortManager.getInstance().getFort(effector);
-		if (fort != null)
+		if ((fort != null) && (fort.getResidenceId() == FortManager.ORC_FORTRESS))
 		{
-			fort.endOfSiege(effector.getClan());
+			if (fort.getSiege().isInProgress())
+			{
+				fort.endOfSiege(effector.getClan());
+				if (effector.isPlayer())
+				{
+					final Player player = effector.getActingPlayer();
+					FortSiegeManager.getInstance().dropCombatFlag(player, FortManager.ORC_FORTRESS);
+					
+					final Message mail = new Message(player.getObjectId(), "Orc Fortress", "", MailType.NPC);
+					final Mail attachment = mail.createAttachments();
+					attachment.addItem("Orc Fortress", Inventory.ADENA_ID, 30_000_000, player, player);
+					MailManager.getInstance().sendMessage(mail);
+				}
+			}
 		}
 	}
 }

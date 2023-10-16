@@ -40,7 +40,7 @@ public class UserInfo extends ServerBasePacket
 		writeD(_cha.getObjectId());
 		writeS(_cha.getName());
 		writeD(_cha.getRace());
-		writeD(_cha.getSex());
+		writeD(_cha.isFemale() ? 1 : 0);
 		writeD(_cha.getClassId());
 		writeD(_cha.getLevel());
 		writeD(_cha.getExp());

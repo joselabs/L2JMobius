@@ -16,7 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.friend;
 
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -41,7 +41,7 @@ public class L2Friend extends ServerPacket
 	{
 		_action = action;
 		_objid = objId;
-		_name = CharNameTable.getInstance().getNameById(objId);
+		_name = CharInfoTable.getInstance().getNameById(objId);
 		_online = World.getInstance().getPlayer(objId) != null;
 	}
 	

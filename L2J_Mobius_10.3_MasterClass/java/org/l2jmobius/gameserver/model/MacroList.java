@@ -132,7 +132,7 @@ public class MacroList implements IRestorable
 			ps.setString(4, macro.getName());
 			ps.setString(5, macro.getDescr());
 			ps.setString(6, macro.getAcronym());
-			final StringBuilder sb = new StringBuilder(300);
+			final StringBuilder sb = new StringBuilder(1255);
 			for (MacroCmd cmd : macro.getCommands())
 			{
 				sb.append(cmd.getType().ordinal() + "," + cmd.getD1() + "," + cmd.getD2());
@@ -143,9 +143,9 @@ public class MacroList implements IRestorable
 				sb.append(';');
 			}
 			
-			if (sb.length() > 255)
+			if (sb.length() > 1000)
 			{
-				sb.setLength(255);
+				sb.setLength(1000);
 			}
 			
 			ps.setString(7, sb.toString());

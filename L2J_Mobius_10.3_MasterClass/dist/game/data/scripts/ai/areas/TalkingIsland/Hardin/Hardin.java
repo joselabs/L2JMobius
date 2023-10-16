@@ -178,7 +178,7 @@ public class Hardin extends AbstractNpcAI
 					{
 						if (knownItem.isPotion())
 						{
-							AutoUseTaskManager.getInstance().removeAutoPotionItem(player, knownItem.getId());
+							AutoUseTaskManager.getInstance().setAutoPotionItem(player, knownItem.getId());
 						}
 						else
 						{

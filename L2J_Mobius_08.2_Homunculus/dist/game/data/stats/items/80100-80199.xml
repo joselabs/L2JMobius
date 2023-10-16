@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="80100" name="Krishna Retributer" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_twohand_magic_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -19,6 +19,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="35309" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Retributer -->
@@ -35,7 +37,7 @@
 		</stats>
 	</item>
 	<item id="80101" name="Krishna Dual Sword" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -53,6 +55,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35302" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Sword -->
 		</skills>
@@ -66,7 +70,7 @@
 		</stats>
 	</item>
 	<item id="80102" name="Krishna Dual Dagger" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, has a certain chance to absorb some of the inflicted damage as HP. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, has a certain chance to absorb some of the inflicted damage as HP. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_dual_dagger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -84,6 +88,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35304" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Dagger -->
 		</skills>
@@ -98,7 +104,7 @@
 		</stats>
 	</item>
 	<item id="80103" name="Krishna Dual Blunt" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Max HP +4%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Max HP +4%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_dual_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -116,6 +122,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35303" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Blunt -->
 		</skills>
@@ -484,7 +492,7 @@
 		</stats>
 	</item>
 	<item id="80121" name="Eva's Summer Light Box" type="EtcItem">
-		<!-- Use it to obtain 1 Eva s Summer Fishing Pouch. -->
+		<!-- Use it to obtain 1 Eva's Summer Fishing Pouch. -->
 		<set name="icon" val="icon.sayha2017_box_i04" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -499,6 +507,12 @@
 		<set name="material" val="FISH" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48634" min="1" max="1" chance="100" /> <!-- Fishing Dock Pass Box (1-hour) -->
+			<item id="47908" min="120" max="120" chance="100" /> <!-- Shining Magic Bait Exchange Coupon -->
+			<item id="48630" min="1" max="1" chance="100" /> <!-- Master Fisherman's Blessing - 1-hr -->
+		</capsuled_items>
 	</item>
 	<item id="80123" name="Eva's Glittering Treasure Chest" type="EtcItem">
 		<!-- Double-click to obtain rare items. -->
@@ -557,7 +571,7 @@
 		</skills>
 	</item>
 	<item id="80127" name="Advanced Mammon's Talisman Box - Skill Power" additionalName="2-hour" type="EtcItem">
-		<!-- Double-click to obtain Advanced Mammon s Talisman - Skill Power (2-hour). -->
+		<!-- Double-click to obtain Advanced Mammon's Talisman - Skill Power (2-hour). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="is_stackable" val="true" />
 		<set name="is_sellable" val="false" />
@@ -569,11 +583,11 @@
 		<set name="weight" val="10" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="80124" min="1" max="1" chance="100" /> <!-- Advanced Mammon s Talisman - Skill Power -->
+			<item id="80124" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman - Skill Power -->
 		</capsuled_items>
 	</item>
 	<item id="80128" name="Advanced Mammon's Talisman Box - Attack Attribute" additionalName="2-hour" type="EtcItem">
-		<!-- Double-click to obtain the Advanced Mammon s Talisman Box - Attribute Attack (2-hour). -->
+		<!-- Double-click to obtain the Advanced Mammon's Talisman Box - Attribute Attack (2-hour). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="is_stackable" val="true" />
 		<set name="is_sellable" val="false" />
@@ -585,11 +599,11 @@
 		<set name="weight" val="10" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="80125" min="1" max="1" chance="100" /> <!-- Advanced Mammon s Talisman - Attribute Attack -->
+			<item id="80125" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman - Attribute Attack -->
 		</capsuled_items>
 	</item>
 	<item id="80129" name="Advanced Mammon's Talisman Box - Skill Cooldown" additionalName="2-hour" type="EtcItem">
-		<!-- Double-click to obtain Advanced Mammon s Talisman - Skill Cooldown (2-hour). -->
+		<!-- Double-click to obtain Advanced Mammon's Talisman - Skill Cooldown (2-hour). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="is_stackable" val="true" />
 		<set name="is_sellable" val="false" />
@@ -601,7 +615,7 @@
 		<set name="weight" val="10" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="80126" min="1" max="1" chance="100" /> <!-- Advanced Mammon s Talisman - Skill Cooldown -->
+			<item id="80126" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman - Skill Cooldown -->
 		</capsuled_items>
 	</item>
 	<item id="80130" name="Super Advanced Spirit Stones" type="EtcItem">
@@ -639,7 +653,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80133" name="Enchanted Krishna Shaper" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_dagger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -658,6 +672,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35299" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Shaper -->
 			<skill id="35277" level="1" /> <!-- Krishna Shaper Enchantment Effect -->
@@ -673,7 +689,7 @@
 		</stats>
 	</item>
 	<item id="80134" name="Enchanted Krishna Dicing Death" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. Enhancement effect: P. Skill Critical Damage +3%, P. Def. +5%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. Enhancement effect: P. Skill Critical Damage +3%, P. Def. +5%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -692,6 +708,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35296" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dicing Death -->
 			<skill id="35278" level="1" /> <!-- Krishna Dicing Death Enchantment Effect -->
@@ -706,7 +724,7 @@
 		</stats>
 	</item>
 	<item id="80135" name="Enchanted Krishna Slasher" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +5%. Enhancement effect: P. Skill Critical Damage +3%, P. Atk.+3%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +5%. Enhancement effect: P. Skill Critical Damage +3%, P. Atk.+3%. -->
 		<set name="icon" val="icon.weapon_r110_twohand_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -725,6 +743,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35297" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Slasher -->
 			<skill id="35279" level="1" /> <!-- Krishna Slasher Enchantment Effect -->
@@ -739,7 +759,7 @@
 		</stats>
 	</item>
 	<item id="80136" name="Enchanted Krishna Avenger" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -758,6 +778,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35298" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Avenger -->
 			<skill id="35280" level="1" /> <!-- Krishna Avenger Enchantment Effect -->
@@ -773,7 +795,7 @@
 		</stats>
 	</item>
 	<item id="80137" name="Enchanted Krishna Fighter" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. Enhancement effect: Critical Damage for standard attacks +3%, Attribute Attack +50. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. Enhancement effect: Critical Damage for standard attacks +3%, Attribute Attack +50. -->
 		<set name="icon" val="icon.weapon_r110_fist_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALFIST" />
@@ -792,6 +814,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35300" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Fighter -->
 			<skill id="35281" level="1" /> <!-- Krishna Fighter Enchantment Effect -->
@@ -807,7 +831,7 @@
 		</stats>
 	</item>
 	<item id="80138" name="Enchanted Krishna Stormer" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, increases the number of targets hit with a spear. Enhance effect: Critical Damage for standard attacks +3%, a chance to stun nearby enemies for 3 sec. after a standard attack. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, increases the number of targets hit with a spear. Enhance effect: Critical Damage for standard attacks +3%, a chance to stun nearby enemies for 3 sec. after a standard attack. -->
 		<set name="icon" val="icon.weapon_r110_spear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -826,6 +850,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="35301" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Stormer -->
@@ -842,7 +868,7 @@
 		</stats>
 	</item>
 	<item id="80139" name="Enchanted Krishna Thrower" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
 		<set name="icon" val="icon.weapon_r110_bow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -862,6 +888,8 @@
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="reuse_delay" val="1500" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35305" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Thrower -->
 			<skill id="35283" level="1" /> <!-- Krishna Thrower Enchantment Effect -->
@@ -877,7 +905,7 @@
 		</stats>
 	</item>
 	<item id="80140" name="Enchanted Krishna Shooter" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
 		<set name="icon" val="icon.weapon_r110_crossbow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -897,6 +925,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="reuse_delay" val="1350" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35306" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Shooter -->
 			<skill id="35284" level="1" /> <!-- Krishna Shooter Enchantment Effect -->
@@ -912,7 +942,7 @@
 		</stats>
 	</item>
 	<item id="80141" name="Enchanted Krishna Buster" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. Enhancement effect: M. Skill Critical Damage +3%, P. Def. +5%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. Enhancement effect: M. Skill Critical Damage +3%, P. Def. +5%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -931,6 +961,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="35307" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Buster -->
@@ -946,7 +978,7 @@
 		</stats>
 	</item>
 	<item id="80142" name="Enchanted Krishna Caster" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. Enhancement effect: M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. Enhancement effect: M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -965,6 +997,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="35308" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Caster -->
@@ -981,7 +1015,7 @@
 		</stats>
 	</item>
 	<item id="80143" name="Enchanted Krishna Retributer" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. Enhan?ement effect: P. Critical Damage +3%, P./ M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. Enhanсement effect: P. Critical Damage +3%, P./ M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_twohand_magic_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1000,6 +1034,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="35309" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Retributer -->
@@ -1017,7 +1053,7 @@
 		</stats>
 	</item>
 	<item id="80144" name="Enchanted Krishna Dual Sword" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1036,6 +1072,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35302" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Sword -->
 			<skill id="35288" level="1" /> <!-- Krishna Dual Sword Enchantment Effect -->
@@ -1050,7 +1088,7 @@
 		</stats>
 	</item>
 	<item id="80145" name="Enchanted Krishna Dual Dagger" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, a chance to absorb some of the inflicted damage as HP. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, a chance to absorb some of the inflicted damage as HP. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_dagger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1069,6 +1107,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35304" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Dagger -->
 			<skill id="35289" level="1" /> <!-- Krishna Dual Dagger Enchantment Effect -->
@@ -1084,7 +1124,7 @@
 		</stats>
 	</item>
 	<item id="80146" name="Enchanted Krishna Dual Blunt" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Max HP +4%. Enhancement effect: P. Skill Critical Damage +3%, Skill Cooldown -3%. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Max HP +4%. Enhancement effect: P. Skill Critical Damage +3%, Skill Cooldown -3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1103,6 +1143,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35303" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Blunt -->
 			<skill id="35290" level="1" /> <!-- Krishna Dual Blunt Enchantment Effect -->
@@ -1118,7 +1160,7 @@
 		</stats>
 	</item>
 	<item id="80147" name="Bloody Krishna Shaper" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_dagger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1138,6 +1180,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8849" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13787" level="1" /> <!-- Additional Ability Health -->
@@ -1155,7 +1199,7 @@
 		</stats>
 	</item>
 	<item id="80148" name="Bloody Krishna Cutter" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. Enhancement effect: P. Skill Critical Damage +3%, P. Def. +5%. -->
+		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. Enhancement effect: P. Skill Critical Damage +3%, P. Def. +5%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1174,6 +1218,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8850" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13788" level="1" /> <!-- Additional Ability Health -->
@@ -1190,7 +1236,7 @@
 		</stats>
 	</item>
 	<item id="80149" name="Bloody Krishna Slasher" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +5%. Enhancement effect: P. Skill Critical Damage +3%, P. Atk. +3%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +5%. Enhancement effect: P. Skill Critical Damage +3%, P. Atk. +3%. -->
 		<set name="icon" val="icon.weapon_r110_twohand_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -1209,6 +1255,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8851" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13789" level="1" /> <!-- Additional Ability Health -->
@@ -1225,7 +1273,7 @@
 		</stats>
 	</item>
 	<item id="80150" name="Bloody Krishna Avenger" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1244,6 +1292,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8852" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13790" level="1" /> <!-- Additional Ability Health -->
@@ -1261,7 +1311,7 @@
 		</stats>
 	</item>
 	<item id="80151" name="Bloody Krishna Fighter" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. Enhancement effect: Critical Damage for standard attacks +3%, Attribute Attack +50. -->
+		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. Enhancement effect: Critical Damage for standard attacks +3%, Attribute Attack +50. -->
 		<set name="icon" val="icon.weapon_r110_fist_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1280,6 +1330,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8853" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13791" level="1" /> <!-- Additional Ability Health -->
@@ -1297,7 +1349,7 @@
 		</stats>
 	</item>
 	<item id="80152" name="Bloody Krishna Stormer" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, increases the number of targets hit with a spear. Enhancement effect: Critical Damage for standard attacks +3%, a chance to stun nearby enemies for 3 sec. after a standard attack. -->
+		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, increases the number of targets hit with a spear. Enhancement effect: Critical Damage for standard attacks +3%, a chance to stun nearby enemies for 3 sec. after a standard attack. -->
 		<set name="icon" val="icon.weapon_r110_spear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
@@ -1316,6 +1368,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="8854" level="1" /> <!-- PvE Damage Increase -->
@@ -1334,7 +1388,7 @@
 		</stats>
 	</item>
 	<item id="80153" name="Bloody Krishna Thrower" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
+		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
 		<set name="icon" val="icon.weapon_r110_bow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1354,6 +1408,8 @@
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="reuse_delay" val="1500" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8855" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13793" level="1" /> <!-- Additional Ability Health -->
@@ -1371,7 +1427,7 @@
 		</stats>
 	</item>
 	<item id="80154" name="Bloody Krishna Shooter" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
 		<set name="icon" val="icon.weapon_r110_crossbow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1391,6 +1447,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="reuse_delay" val="1350" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8856" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13794" level="1" /> <!-- Additional Ability Health -->
@@ -1408,7 +1466,7 @@
 		</stats>
 	</item>
 	<item id="80155" name="Bloody Krishna Buster" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. Enhancement effect: M. Skill Critical Damage +3%, P. Def. +5%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. Enhancement effect: M. Skill Critical Damage +3%, P. Def. +5%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1427,6 +1485,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="8857" level="1" /> <!-- PvE Damage Increase -->
@@ -1444,7 +1504,7 @@
 		</stats>
 	</item>
 	<item id="80156" name="Bloody Krishna Caster" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. Enhancement effect: M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. Enhancement effect: M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1463,6 +1523,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8858" level="1" /> <!-- PvE Damage Increase -->
@@ -1481,7 +1543,7 @@
 		</stats>
 	</item>
 	<item id="80157" name="Bloody Krishna Retributer" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. Enhancement effect: P. Critical Damage +3%, P./ M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. Enhancement effect: P. Critical Damage +3%, P./ M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_twohand_magic_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1500,6 +1562,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8859" level="1" /> <!-- PvE Damage Increase -->
@@ -1519,7 +1583,7 @@
 		</stats>
 	</item>
 	<item id="80158" name="Bloody Krishna Dual Sword" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1538,6 +1602,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8860" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13798" level="1" /> <!-- Additional Ability Health -->
@@ -1554,7 +1620,7 @@
 		</stats>
 	</item>
 	<item id="80159" name="Bloody Krishna Dual Dagger" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, a chance to absorb some of the inflicted damage as HP. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
+		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, a chance to absorb some of the inflicted damage as HP. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_dagger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1573,6 +1639,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8861" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13799" level="1" /> <!-- Additional Ability Health -->
@@ -1590,7 +1658,7 @@
 		</stats>
 	</item>
 	<item id="80160" name="Bloody Krishna Dual Blunt Weapon" type="Weapon">
-		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Max HP +4%. Enhancement effect: P. Skill Critical Damage +3%, Skill Cooldown -3%. -->
+		<!-- PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Max HP +4%. Enhancement effect: P. Skill Critical Damage +3%, Skill Cooldown -3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1609,6 +1677,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8862" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13800" level="1" /> <!-- Additional Ability Health -->
@@ -1626,7 +1696,7 @@
 		</stats>
 	</item>
 	<item id="80161" name="Dark Krishna Shaper" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_dagger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1646,6 +1716,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8820" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13773" level="1" /> <!-- Additional Ability Health -->
@@ -1663,7 +1735,7 @@
 		</stats>
 	</item>
 	<item id="80162" name="Dark Krishna Cutter" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. Enhancement effect: P. Skill Critical Damage +3%, P. Def. +5%. -->
+		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. Enhancement effect: P. Skill Critical Damage +3%, P. Def. +5%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1682,6 +1754,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8821" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13774" level="1" /> <!-- Additional Ability Health -->
@@ -1698,7 +1772,7 @@
 		</stats>
 	</item>
 	<item id="80163" name="Dark Krishna Slasher" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +5%. Enhancement effect: P. Skill Critical Damage +3%, P. Atk. +3%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +5%. Enhancement effect: P. Skill Critical Damage +3%, P. Atk. +3%. -->
 		<set name="icon" val="icon.weapon_r110_twohand_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -1717,6 +1791,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8822" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13775" level="1" /> <!-- Additional Ability Health -->
@@ -1733,7 +1809,7 @@
 		</stats>
 	</item>
 	<item id="80164" name="Dark Krishna Avenger" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1752,6 +1828,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8823" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13776" level="1" /> <!-- Additional Ability Health -->
@@ -1769,7 +1847,7 @@
 		</stats>
 	</item>
 	<item id="80165" name="Dark Krishna Fighter" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. Enhancement effect: Critical Damage for standard attacks +3%, Attribute Attack +50. -->
+		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. Enhancement effect: Critical Damage for standard attacks +3%, Attribute Attack +50. -->
 		<set name="icon" val="icon.weapon_r110_fist_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALFIST" />
@@ -1788,6 +1866,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8824" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13777" level="1" /> <!-- Additional Ability Health -->
@@ -1805,7 +1885,7 @@
 		</stats>
 	</item>
 	<item id="80166" name="Dark Krishna Stormer" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, increases the number of targets hit with a spear. Enhancement effect: Critical Damage for standard attacks +3%, a chance to stun nearby enemies for 3 sec. after a standard attack. -->
+		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, increases the number of targets hit with a spear. Enhancement effect: Critical Damage for standard attacks +3%, a chance to stun nearby enemies for 3 sec. after a standard attack. -->
 		<set name="icon" val="icon.weapon_r110_spear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
@@ -1824,6 +1904,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="8825" level="1" /> <!-- PvP Damage Increase -->
@@ -1842,7 +1924,7 @@
 		</stats>
 	</item>
 	<item id="80167" name="Dark Krishna Thrower" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
+		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
 		<set name="icon" val="icon.weapon_r110_bow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
@@ -1862,6 +1944,8 @@
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="reuse_delay" val="1500" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8826" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13779" level="1" /> <!-- Additional Ability Health -->
@@ -1879,7 +1963,7 @@
 		</stats>
 	</item>
 	<item id="80168" name="Dark Krishna Shooter" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
 		<set name="icon" val="icon.weapon_r110_crossbow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1899,6 +1983,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="reuse_delay" val="1350" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8827" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13780" level="1" /> <!-- Additional Ability Health -->
@@ -1916,7 +2002,7 @@
 		</stats>
 	</item>
 	<item id="80169" name="Dark Krishna Buster" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. Enhancement effect: M. Skill Critical Damage +3%, P. Def. +5%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. Enhancement effect: M. Skill Critical Damage +3%, P. Def. +5%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1935,6 +2021,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="8828" level="1" /> <!-- PvP Damage Increase -->
@@ -1952,7 +2040,7 @@
 		</stats>
 	</item>
 	<item id="80170" name="Dark Krishna Caster" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. Enhancement effect: M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. Enhancement effect: M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1971,6 +2059,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8829" level="1" /> <!-- PvP Damage Increase -->
@@ -1989,7 +2079,7 @@
 		</stats>
 	</item>
 	<item id="80171" name="Dark Krishna Retributer" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. Enhancement effect: P. Critical Damage +3%, P./ M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. Enhancement effect: P. Critical Damage +3%, P./ M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_twohand_magic_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -2008,6 +2098,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8830" level="1" /> <!-- PvP Damage Increase -->
@@ -2027,7 +2119,7 @@
 		</stats>
 	</item>
 	<item id="80172" name="Dark Krishna Dual Sword" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
@@ -2046,6 +2138,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8831" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13784" level="1" /> <!-- Additional Ability Health -->
@@ -2062,7 +2156,7 @@
 		</stats>
 	</item>
 	<item id="80173" name="Dark Krishna Dual Dagger" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, a chance to absorb some of the inflicted damage as HP. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
+		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, a chance to absorb some of the inflicted damage as HP. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_dagger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -2081,6 +2175,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8832" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13785" level="1" /> <!-- Additional Ability Health -->
@@ -2098,7 +2194,7 @@
 		</stats>
 	</item>
 	<item id="80174" name="Dark Krishna Dual Blunt Weapon" type="Weapon">
-		<!-- PvP damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Max HP +4%. Enhancement effect: P. Skill Critical Damage +3%, Skill Cooldown -3%. -->
+		<!-- PvP Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Max HP +4%. Enhancement effect: P. Skill Critical Damage +3%, Skill Cooldown -3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -2117,6 +2213,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8833" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13786" level="1" /> <!-- Additional Ability Health -->
@@ -2134,7 +2232,7 @@
 		</stats>
 	</item>
 	<item id="80175" name="Limited Krishna Shaper" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_dagger_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DAGGER" />
@@ -2153,6 +2251,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8849" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8820" level="1" /> <!-- PvP Damage Increase -->
@@ -2171,7 +2271,7 @@
 		</stats>
 	</item>
 	<item id="80176" name="Limited Krishna Dicing Death" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. Enhancement effect: P. Skill Critical Damage +3%, P. Def. +5%. -->
+		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. Enhancement effect: P. Skill Critical Damage +3%, P. Def. +5%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -2190,6 +2290,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8850" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8821" level="1" /> <!-- PvP Damage Increase -->
@@ -2207,7 +2309,7 @@
 		</stats>
 	</item>
 	<item id="80177" name="Limited Krishna Slasher" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +5%. Enhancement effect: P. Skill Critical Damage +3%, P. Atk. +3%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +5%. Enhancement effect: P. Skill Critical Damage +3%, P. Atk. +3%. -->
 		<set name="icon" val="icon.weapon_r110_twohand_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -2226,6 +2328,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8851" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8822" level="1" /> <!-- PvP Damage Increase -->
@@ -2243,7 +2347,7 @@
 		</stats>
 	</item>
 	<item id="80178" name="Limited Krishna Avenger" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_blunt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -2262,6 +2366,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8852" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8823" level="1" /> <!-- PvP Damage Increase -->
@@ -2279,7 +2385,7 @@
 		</stats>
 	</item>
 	<item id="80179" name="Limited Krishna Fighter" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. Enhancement effect: Critical Damage for standard attacks +3%, Attribute Attack +50. -->
+		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. Enhancement effect: Critical Damage for standard attacks +3%, Attribute Attack +50. -->
 		<set name="icon" val="icon.weapon_r110_fist_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALFIST" />
@@ -2298,6 +2404,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8853" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8824" level="1" /> <!-- PvP Damage Increase -->
@@ -2316,7 +2424,7 @@
 		</stats>
 	</item>
 	<item id="80180" name="Limited Krishna Stormer" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, increases the number of targets hit with a spear. Enhancement effect: Critical Damage for standard attacks +3%, a chance to stun nearby enemies for 3 sec. after a standard attack. -->
+		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, increases the number of targets hit with a spear. Enhancement effect: Critical Damage for standard attacks +3%, a chance to stun nearby enemies for 3 sec. after a standard attack. -->
 		<set name="icon" val="icon.weapon_r110_spear_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
@@ -2335,6 +2443,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="8854" level="1" /> <!-- PvE Damage Increase -->
@@ -2354,7 +2464,7 @@
 		</stats>
 	</item>
 	<item id="80181" name="Limited Krishna Thrower" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
+		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
 		<set name="icon" val="icon.weapon_r110_bow_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
@@ -2374,6 +2484,8 @@
 		<set name="reuse_delay" val="1500" />
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8855" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8826" level="1" /> <!-- PvP Damage Increase -->
@@ -2392,7 +2504,7 @@
 		</stats>
 	</item>
 	<item id="80182" name="Limited Krishna Shooter" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
 		<set name="icon" val="icon.weapon_r110_crossbow_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="TWOHANDCROSSBOW" />
@@ -2412,6 +2524,8 @@
 		<set name="reuse_delay" val="1350" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8856" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8827" level="1" /> <!-- PvP Damage Increase -->
@@ -2430,7 +2544,7 @@
 		</stats>
 	</item>
 	<item id="80183" name="Limited Krishna Buster" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. Enhancement effect: M. Skill Critical Damage +3%, P. Def. +5%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. Enhancement effect: M. Skill Critical Damage +3%, P. Def. +5%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -2449,6 +2563,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="8857" level="1" /> <!-- PvE Damage Increase -->
@@ -2467,7 +2583,7 @@
 		</stats>
 	</item>
 	<item id="80184" name="Limited Krishna Caster" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. Enhancement effect: M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. Enhancement effect: M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_blunt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -2486,6 +2602,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8858" level="1" /> <!-- PvE Damage Increase -->
@@ -2505,7 +2623,7 @@
 		</stats>
 	</item>
 	<item id="80185" name="Limited Krishna Retributer" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. Enhancement effect: P. Critical Damage +3%, P./ M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Atk. +3%, M. Skill Critical Damage +2%. Enhancement effect: P. Critical Damage +3%, P./ M. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->
 		<set name="icon" val="icon.weapon_r110_twohand_magic_blunt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -2524,6 +2642,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8859" level="1" /> <!-- PvE Damage Increase -->
@@ -2544,7 +2664,7 @@
 		</stats>
 	</item>
 	<item id="80186" name="Limited Krishna Dual Sword" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. Enhancement effect: P. Skill Critical Damage +3%, P. Skill Power +3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
@@ -2563,6 +2683,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8860" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8831" level="1" /> <!-- PvP Damage Increase -->
@@ -2580,7 +2702,7 @@
 		</stats>
 	</item>
 	<item id="80187" name="Limited Krishna Dual Dagger" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, a chance to absorb some of the inflicted damage as HP. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
+		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, a chance to absorb some of the inflicted damage as HP. Enhancement effect: P. Skill Critical Damage +3%, Critical Damage for standard attacks +3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_dagger_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALDAGGER" />
@@ -2599,6 +2721,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8861" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8832" level="1" /> <!-- PvP Damage Increase -->
@@ -2617,7 +2741,7 @@
 		</stats>
 	</item>
 	<item id="80188" name="Limited Krishna Dual Blunt" type="Weapon">
-		<!-- PvP/ PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Max HP +4%. Enhancement effect: P. Skill Critical Damage +3%, Skill Cooldown -3%. -->
+		<!-- PvP/ PvE Damage +15%, Max HP/ MP/ CP +10%. You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Max HP +4%. Enhancement effect: P. Skill Critical Damage +3%, Skill Cooldown -3%. -->
 		<set name="icon" val="icon.weapon_r110_dual_blunt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALBLUNT" />
@@ -2636,6 +2760,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8862" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8833" level="1" /> <!-- PvP Damage Increase -->

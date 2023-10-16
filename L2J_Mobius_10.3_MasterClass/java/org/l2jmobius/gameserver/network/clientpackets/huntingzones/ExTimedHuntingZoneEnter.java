@@ -17,6 +17,7 @@
 package org.l2jmobius.gameserver.network.clientpackets.huntingzones;
 
 import org.l2jmobius.commons.network.ReadablePacket;
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
 import org.l2jmobius.gameserver.instancemanager.QuestManager;
@@ -68,11 +69,6 @@ public class ExTimedHuntingZoneEnter implements ClientPacket
 			player.sendMessage("You can only enter in time-limited hunting zones when you have positive reputation.");
 			return;
 		}
-		if (player.isMounted())
-		{
-			player.sendMessage("Cannot use time-limited hunting zones while mounted.");
-			return;
-		}
 		if (player.isInDuel())
 		{
 			player.sendMessage("Cannot use time-limited hunting zones during a duel.");
@@ -113,6 +109,27 @@ public class ExTimedHuntingZoneEnter implements ClientPacket
 			return;
 		}
 		
+		if (player.isMounted())
+		{
+			if (holder.useWorldPrefix())
+			{
+				player.sendPacket(SystemMessageId.YOU_CANNOT_TELEPORT_TO_THE_WORLD_HUNTING_ZONE_WHILE_RIDING_A_MOUNT);
+			}
+			else
+			{
+				player.sendMessage("Cannot use time-limited hunting zones while mounted.");
+			}
+			return;
+		}
+		if (holder.useWorldPrefix())
+		{
+			if (player.isCursedWeaponEquipped())
+			{
+				player.sendPacket(SystemMessageId.YOU_CANNOT_TELEPORT_TO_THE_WORLD_HUNTING_ZONE_WHILE_OWNING_A_CURSED_WEAPON);
+				return;
+			}
+		}
+		
 		final long currentTime = System.currentTimeMillis();
 		long endTime = currentTime + player.getTimedHuntingZoneRemainingTime(_zoneId);
 		final long lastEntryTime = player.getVariables().getLong(PlayerVariables.HUNTING_ZONE_ENTRY + _zoneId, 0);
@@ -149,11 +166,29 @@ public class ExTimedHuntingZoneEnter implements ClientPacket
 			
 			if (instanceId == 0)
 			{
-				player.teleToLocation(holder.getEnterLocation());
+				if (holder.useWorldPrefix())
+				{
+					player.sendPacket(SystemMessageId.YOU_LL_BE_TAKEN_TO_THE_WORLD_HUNTING_ZONE_IN_3_SEC);
+					player.stopMove(null);
+					ThreadPool.schedule(() -> player.teleToLocation(holder.getEnterLocation()), 3000);
+				}
+				else
+				{
+					player.teleToLocation(holder.getEnterLocation());
+				}
 			}
 			else // Instanced zones.
 			{
-				QuestManager.getInstance().getQuest("TimedHunting").notifyEvent("ENTER " + _zoneId, null, player);
+				if (holder.useWorldPrefix())
+				{
+					player.sendPacket(SystemMessageId.YOU_LL_BE_TAKEN_TO_THE_WORLD_HUNTING_ZONE_IN_3_SEC);
+					player.stopMove(null);
+					ThreadPool.schedule(() -> QuestManager.getInstance().getQuest("TimedHunting").notifyEvent("ENTER " + _zoneId, null, player), 3000);
+				}
+				else
+				{
+					QuestManager.getInstance().getQuest("TimedHunting").notifyEvent("ENTER " + _zoneId, null, player);
+				}
 			}
 			
 			// Send time icon.

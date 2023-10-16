@@ -347,7 +347,7 @@
 		<set name="is_depositable" val="false" />
 	</item>
 	<item id="49133" name="Venetian Fleece - Low Level" additionalName="15-day" type="EtcItem">
-		<!-- A 15-day item. When in inventory, your XP and SP gain is increased by 22%. Can be used only by characters whose level is less than 40. Cannot be exchanged, dropped, or sold in a private store. Can be stored in a private warehouse. This item will be removed after the event is over. -->
+		<!-- 15-day item. When in inventory, your XP and SP gain is increased by 22%. Can be used only by characters whose level is less than 40. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. This item will be deleted after the event is over. -->
 		<set name="icon" val="icon.skill19226" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -409,7 +409,7 @@
 		<set name="time" val="21600" />
 	</item>
 	<item id="49137" name="Venetian Fleece Chest (Low Level)" type="EtcItem">
-		<!-- Double-click the chest to receive 1 15-day Venetian Fleece (Low Level). The Fleece can be used only by characters whose level is less than 40. Cannot be exchanged, dropped, destroyed, or sold in a private store. Can be stored in a private warehouse. This item will be removed after the event is over. -->
+		<!-- Double-click the chest to receive 1 15-day Venetian Fleece (Low Level). The Fleece can be used only by characters whose level is less than 40. Cannot be exchanged, dropped, destroyed, or sold. Can be stored in a private warehouse. This item will be deleted after the event is over. -->
 		<set name="icon" val="icon.etc_pi_box_belief_pack" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -417,13 +417,16 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49133" min="1" max="1" chance="100" /> <!-- Venetian Fleece (Low Level) - 15-day -->
+		</capsuled_items>
 	</item>
 	<item id="49138" name="Venetian Fleece Chest (High Level)" type="EtcItem">
-		<!-- Double-click the chest to receive 15-day Venetian Fleece Chest (High Level, 1 pc.). Cannot be exchanged, dropped, destroyed, or sold in a private store. Can be stored in a private warehouse. This item will be deleted after the event is over. -->
+		<!-- Double-click the chest to receive 1 15-day Venetian Fleece (High Level). Cannot be exchanged, dropped, destroyed, or sold. Can be stored in a private warehouse. This item will be deleted after the event is over. -->
 		<set name="icon" val="icon.etc_pi_box_love_pack" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -431,10 +434,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49136" min="1" max="1" chance="100" /> <!-- Venetian Fleece (High Level) - 15-day -->
+		</capsuled_items>
 	</item>
 	<item id="49139" name="Dual Sword Gift Chest" type="EtcItem">
 		<!-- Double-click the chest to receive 15-day Dual Candle Sword. Cannot be exchanged, dropped, destroyed, or sold. Can be stored in a private warehouse. This item will be deleted after the event is over. -->
@@ -445,10 +451,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49134" min="1" max="1" chance="100" /> <!-- Dual Candle Sword (15-day) -->
+		</capsuled_items>
 	</item>
 	<item id="49140" name="Horn of Glory" additionalName="Empower" type="Weapon">
 		<!-- <Soul Crystal Enhancement>. M. Atk. + 46. -->
@@ -463,6 +472,7 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<set name="is_magic_weapon" val="true" />
 		<stats>
 			<stat type="pAtk">98</stat>
 			<stat type="mAtk">91</stat>
@@ -485,6 +495,7 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<set name="is_magic_weapon" val="true" />
 		<stats>
 			<stat type="pAtk">98</stat>
 			<stat type="mAtk">91</stat>
@@ -507,6 +518,7 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<set name="is_magic_weapon" val="true" />
 		<stats>
 			<stat type="pAtk">98</stat>
 			<stat type="mAtk">91</stat>

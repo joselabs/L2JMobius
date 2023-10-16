@@ -23,6 +23,7 @@ import org.l2jmobius.gameserver.enums.ShortcutType;
 import org.l2jmobius.gameserver.model.ShortCuts;
 import org.l2jmobius.gameserver.model.Shortcut;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ShortCutRegister;
@@ -69,6 +70,29 @@ public class RequestShortCutReg implements ClientPacket
 			return;
 		}
 		
+		// Auto play checks.
+		if (_page == 22)
+		{
+			if (_type != ShortcutType.ITEM)
+			{
+				return;
+			}
+			
+			final Item item = player.getInventory().getItemByObjectId(_id);
+			if ((item != null) && item.isPotion())
+			{
+				return;
+			}
+		}
+		else if (_page == 23)
+		{
+			final Item item = player.getInventory().getItemByObjectId(_id);
+			if ((item != null) && !item.isPotion())
+			{
+				return;
+			}
+		}
+		
 		// Delete the shortcut.
 		final Shortcut oldShortcut = player.getShortCut(_slot, _page);
 		player.deleteShortCut(_slot, _page);
@@ -103,7 +127,7 @@ public class RequestShortCutReg implements ClientPacket
 					{
 						if (player.getInventory().getItemByObjectId(oldShortcut.getId()).isPotion())
 						{
-							AutoUseTaskManager.getInstance().removeAutoPotionItem(player, oldShortcut.getId());
+							AutoUseTaskManager.getInstance().removeAutoPotionItem(player);
 						}
 						else
 						{

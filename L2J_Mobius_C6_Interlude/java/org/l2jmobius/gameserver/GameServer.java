@@ -39,7 +39,7 @@ import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.SchemeBufferTable;
 import org.l2jmobius.gameserver.data.SkillTable;
 import org.l2jmobius.gameserver.data.sql.AnnouncementsTable;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.ClanHallTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
@@ -194,7 +194,7 @@ public class GameServer
 		TeleportLocationTable.getInstance();
 		PartyMatchWaitingList.getInstance();
 		PartyMatchRoomList.getInstance();
-		CharNameTable.getInstance();
+		CharInfoTable.getInstance();
 		ExperienceData.getInstance();
 		DuelManager.getInstance();
 		

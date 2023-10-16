@@ -231,7 +231,7 @@ public interface IStatFunction
 			{
 				// M. Atk. increases by 6 for all A weapons.
 				// Starting at +4, M. Atk. bonus triple.
-				return (6 * enchant) + (12 * Math.max(0, enchant - 3));
+				return (6 * enchant) + (12 * Math.max(0, enchant - 3)) + (getFrostLordWeaponBonus(item, enchant) * (18 * Math.max(0, enchant - 7)));
 			}
 			case B:
 			case C:
@@ -286,15 +286,15 @@ public interface IStatFunction
 					{
 						// P. Atk. increases by 16 for A bows.
 						// Starting at +4, P. Atk. bonus triple.
-						return (16 * enchant) + (32 * Math.max(0, enchant - 3));
+						return (16 * enchant) + ((32 * Math.max(0, enchant - 3)) + (getFrostLordWeaponBonus(item, enchant) * (48 * Math.max(0, enchant - 7))));
 					}
 					// P. Atk. increases by 12 for two-handed swords, two-handed blunts, dualswords, and two-handed combat A weapons.
 					// Starting at +4, P. Atk. bonus triple.
-					return (12 * enchant) + (24 * Math.max(0, enchant - 3));
+					return (12 * enchant) + ((24 * Math.max(0, enchant - 3)) + (getFrostLordWeaponBonus(item, enchant) * (36 * Math.max(0, enchant - 7))));
 				}
 				// P. Atk. increases by 10 for one-handed swords, one-handed blunts, daggers, spears, and other A weapons.
 				// Starting at +4, P. Atk. bonus triple.
-				return (10 * enchant) + (20 * Math.max(0, enchant - 3));
+				return (10 * enchant) + ((20 * Math.max(0, enchant - 3)) + (getFrostLordWeaponBonus(item, enchant) * (30 * Math.max(0, enchant - 7))));
 			}
 			case B:
 			case C:
@@ -329,6 +329,11 @@ public interface IStatFunction
 				return (2 * enchant) + (2 * Math.max(0, enchant - 3));
 			}
 		}
+	}
+	
+	static int getFrostLordWeaponBonus(Item item, int enchant)
+	{
+		return Boolean.compare((enchant >= 8) && ((95725 <= item.getId()) && (item.getId() <= 95737)), false);
 	}
 	
 	default double validateValue(Creature creature, double value, double minValue, double maxValue)

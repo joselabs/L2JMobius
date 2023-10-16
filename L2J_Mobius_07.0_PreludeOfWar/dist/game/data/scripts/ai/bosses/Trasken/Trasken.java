@@ -99,6 +99,7 @@ public class Trasken extends AbstractNpcAI
 	private static final SkillHolder SKILL_5 = new SkillHolder(14340, 1); // Earth Wyrm Poison Cannon
 	// Status
 	private static final int ALIVE = 0;
+	private static final int FIGHTING = 1;
 	private static final int DEAD = 3;
 	// Spawns
 	private static final Location HEART_SPAWN = new Location(88292, -173758, -15965);
@@ -659,6 +660,36 @@ public class Trasken extends AbstractNpcAI
 						}
 						break;
 					}
+				}
+				break;
+			}
+			case "RESPAWN_TRASKEN":
+			{
+				if (GrandBossManager.getInstance().getStatus(TRASKEN) == DEAD)
+				{
+					cancelQuestTimer("unlock_trasken", null, null);
+					notifyEvent("unlock_trasken", null, null);
+					player.sendMessage(getClass().getSimpleName() + ": Earth Wyrm Trasken has been respawned.");
+				}
+				else
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't respawn Earth Wyrm Trasken while he is alive!");
+				}
+				break;
+			}
+			case "ABORT_FIGHT":
+			{
+				if (GrandBossManager.getInstance().getStatus(TRASKEN) == FIGHTING)
+				{
+					GrandBossManager.getInstance().setStatus(TRASKEN, ALIVE);
+					cancelQuestTimer("spawn_rnd", _trasken, null);
+					cancelQuestTimer("spawn_rnd", _tieTrasken, null);
+					cancelQuestTimer("finish", npc, null);
+					player.sendMessage(getClass().getSimpleName() + ": Fight has been aborted!");
+				}
+				else
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't abort fight right now!");
 				}
 				break;
 			}

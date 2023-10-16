@@ -22,16 +22,18 @@ import java.sql.ResultSet;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.enums.MailType;
 import org.l2jmobius.gameserver.model.Message;
 import org.l2jmobius.gameserver.model.StatSet;
@@ -83,7 +85,7 @@ public class PurgeRankingManager
 					int counter = 0;
 					for (Entry<String, Integer> purgeData : getTop5(category).entrySet())
 					{
-						final int charId = CharNameTable.getInstance().getIdByName(purgeData.getKey());
+						final int charId = CharInfoTable.getInstance().getIdByName(purgeData.getKey());
 						final Message msg = new Message(charId, Config.SUBJUGATION_TOPIC_HEADER, Config.SUBJUGATION_TOPIC_BODY, MailType.PURGE_REWARD);
 						final Mail attachment = msg.createAttachments();
 						int reward;
@@ -240,7 +242,7 @@ public class PurgeRankingManager
 					continue;
 				}
 				
-				final String charName = CharNameTable.getInstance().getNameById(ss.getInt("charId"));
+				final String charName = CharInfoTable.getInstance().getNameById(ss.getInt("charId"));
 				final int points = ss.getInt("points");
 				top5.put(charName, points);
 			}
@@ -248,7 +250,7 @@ public class PurgeRankingManager
 			{
 			}
 		}
-		return top5;
+		return top5.entrySet().stream().sorted(Map.Entry.<String, Integer> comparingByValue().reversed()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 	}
 	
 	public SimpleEntry<Integer, Integer> getPlayerRating(int category, int charId)

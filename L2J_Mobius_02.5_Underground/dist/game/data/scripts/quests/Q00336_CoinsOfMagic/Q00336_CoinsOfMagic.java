@@ -1783,7 +1783,7 @@ public class Q00336_CoinsOfMagic extends Quest
 		
 		if (player.isInParty())
 		{
-			player.getParty().getMembers().stream().forEach(pm ->
+			player.getParty().getMembers().forEach(pm ->
 			{
 				final QuestState qss = getQuestState(pm, false);
 				if ((qss != null) && qss.isStarted() && (qss.getMemoState() == memoState) && Util.checkIfInRange(1500, npc, pm, true))
@@ -1807,7 +1807,7 @@ public class Q00336_CoinsOfMagic extends Quest
 		
 		if (player.isInParty())
 		{
-			player.getParty().getMembers().stream().forEach(pm ->
+			player.getParty().getMembers().forEach(pm ->
 			{
 				final QuestState qss = getQuestState(pm, false);
 				if ((qss != null) && qss.isStarted() && (qss.getMemoState() == memoState) && !hasQuestItems(player, Q_KALDIS_GOLD_DRAGON) && Util.checkIfInRange(1500, npc, pm, true))

@@ -100,10 +100,24 @@ public class WorldExchangeManager implements IXmlReader
 		if (Config.MULTILANG_ENABLE)
 		{
 			_localItemNames.clear();
-			
 			for (String lang : Config.MULTILANG_ALLOWED)
 			{
+				final File file = new File("data/lang/" + lang + "/ItemNameLocalisation.xml");
+				if (!file.isFile())
+				{
+					continue;
+				}
+				
 				parseDatapackFile("data/lang/" + lang + "/ItemNameLocalisation.xml");
+				final int size = _localItemNames.get(lang).size();
+				if (size == 0)
+				{
+					_localItemNames.remove(lang);
+				}
+				else
+				{
+					LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Loaded ItemName localisations for [" + lang + "].");
+				}
 			}
 		}
 		
@@ -302,7 +316,7 @@ public class WorldExchangeManager implements IXmlReader
 	 * @param amount
 	 * @param priceForEach
 	 */
-	public void registerItemBid(Player player, int itemObjectId, long amount, long priceForEach)
+	public synchronized void registerItemBid(Player player, int itemObjectId, long amount, long priceForEach)
 	{
 		if (!Config.ENABLE_WORLD_EXCHANGE)
 		{
@@ -322,6 +336,12 @@ public class WorldExchangeManager implements IXmlReader
 			player.sendPacket(WorldExchangeRegisterItem.FAIL);
 			return;
 		}
+		if ((amount < 1) || (priceForEach < 1) || ((amount * priceForEach) < 1))
+		{
+			player.sendPacket(new SystemMessage(SystemMessageId.INCORRECT_ITEM_COUNT_2));
+			player.sendPacket(WorldExchangeRegisterItem.FAIL);
+			return;
+		}
 		
 		final Item item = player.getInventory().getItemByObjectId(itemObjectId);
 		long feePrice = calculateFeeForRegister(player, itemObjectId, amount, priceForEach);
@@ -332,6 +352,12 @@ public class WorldExchangeManager implements IXmlReader
 		if (feePrice > player.getAdena())
 		{
 			player.sendPacket(new SystemMessage(SystemMessageId.NOT_ENOUGH_ADENA));
+			player.sendPacket(WorldExchangeRegisterItem.FAIL);
+			return;
+		}
+		if (feePrice < 1)
+		{
+			player.sendPacket(new SystemMessage(SystemMessageId.INCORRECT_ITEM_COUNT_2));
 			player.sendPacket(WorldExchangeRegisterItem.FAIL);
 			return;
 		}

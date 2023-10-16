@@ -146,7 +146,7 @@ public class TimerHolder<T> implements Runnable
 	}
 	
 	/**
-	 * @return the remaining time of the timer, or -1 in case it doesn't exists.
+	 * @return the remaining time of the timer, or -1 in case it doesn't exist.
 	 */
 	public long getRemainingTime()
 	{

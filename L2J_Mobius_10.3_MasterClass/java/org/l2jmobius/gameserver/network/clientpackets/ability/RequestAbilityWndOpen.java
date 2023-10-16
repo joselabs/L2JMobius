@@ -43,6 +43,12 @@ public class RequestAbilityWndOpen implements ClientPacket
 			return;
 		}
 		
+		if (!player.isAwakenedClass())
+		{
+			player.sendPacket(SystemMessageId.ONLY_AWAKENED_CHARACTERS_OF_LV_85_OR_ABOVE_CAN_BE_ACTIVATED);
+			return;
+		}
+		
 		player.sendPacket(ExShowAPListWnd.STATIC_PACKET);
 		player.sendPacket(new ExAcquireAPSkillList(player));
 	}

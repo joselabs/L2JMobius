@@ -40,6 +40,7 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("AdditionalPotionCp", AdditionalPotionCp::new);
 		EffectHandler.getInstance().registerHandler("AdditionalPotionHp", AdditionalPotionHp::new);
 		EffectHandler.getInstance().registerHandler("AdditionalPotionMp", AdditionalPotionMp::new);
+		EffectHandler.getInstance().registerHandler("AddPcCafePoints", AddPcCafePoints::new);
 		EffectHandler.getInstance().registerHandler("AddSkillBySkill", AddSkillBySkill::new);
 		EffectHandler.getInstance().registerHandler("AddTeleportBookmarkSlot", AddTeleportBookmarkSlot::new);
 		EffectHandler.getInstance().registerHandler("AreaDamage", AreaDamage::new);

@@ -16,6 +16,9 @@
  */
 package org.l2jmobius.gameserver.model.actor.instance;
 
+import java.util.concurrent.ScheduledFuture;
+
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.Party;
@@ -23,22 +26,54 @@ import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
+import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 
 public class EffectPoint extends Npc
 {
 	private final Player _owner;
+	private ScheduledFuture<?> _skillTask;
 	
 	public EffectPoint(NpcTemplate template, Creature owner)
 	{
 		super(template);
 		setInstanceType(InstanceType.EffectPoint);
 		setInvul(false);
+		
 		_owner = owner == null ? null : owner.getActingPlayer();
 		if (owner != null)
 		{
 			setInstance(owner.getInstanceWorld());
 		}
+		
+		final SkillHolder skill = template.getParameters().getSkillHolder("union_skill");
+		if (skill != null)
+		{
+			final long castTime = (long) (template.getParameters().getFloat("cast_time", 0.1f) * 1000);
+			final long skillDelay = (long) (template.getParameters().getFloat("skill_delay", 2) * 1000);
+			_skillTask = ThreadPool.scheduleAtFixedRate(() ->
+			{
+				if ((isDead() || !isSpawned()) && (_skillTask != null))
+				{
+					_skillTask.cancel(false);
+					_skillTask = null;
+					return;
+				}
+				
+				doCast(skill.getSkill());
+			}, castTime, skillDelay);
+		}
+	}
+	
+	@Override
+	public boolean deleteMe()
+	{
+		if (_skillTask != null)
+		{
+			_skillTask.cancel(false);
+			_skillTask = null;
+		}
+		return super.deleteMe();
 	}
 	
 	@Override

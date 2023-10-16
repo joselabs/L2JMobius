@@ -35,6 +35,7 @@ import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.handler.AdminCommandHandler;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.handler.ItemHandler;
+import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.instancemanager.FortSiegeManager;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
@@ -256,7 +257,7 @@ public class UseItem implements ClientPacket
 			// Don't allow weapon/shield equipment if a cursed weapon is equipped.
 			if ((item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_L_HAND) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_R_HAND))
 			{
-				if ((player.getActiveWeaponItem() != null) && (player.getActiveWeaponItem().getId() == 9819))
+				if ((player.getActiveWeaponItem() != null) && (player.getActiveWeaponItem().getId() == FortManager.ORC_FORTRESS_FLAG))
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 					return;
@@ -314,8 +315,8 @@ public class UseItem implements ClientPacket
 					|| ((item.getTemplate().getType2() == ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > EnchantItemGroupsData.getInstance().getMaxAccessoryEnchant())) //
 					|| (item.isArmor() && (item.getTemplate().getType2() != ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > EnchantItemGroupsData.getInstance().getMaxArmorEnchant()))))
 			{
+				PacketLogger.info("Over-enchanted (+" + item.getEnchantLevel() + ") " + item + " has been removed from " + player);
 				player.getInventory().destroyItem("Over-enchant protection", item, player, null);
-				PacketLogger.info("Over-enchanted " + item + " has been removed from " + player);
 				if (Config.OVER_ENCHANT_PUNISHMENT != IllegalActionPunishmentType.NONE)
 				{
 					player.sendMessage("[Server]: You have over-enchanted items!");

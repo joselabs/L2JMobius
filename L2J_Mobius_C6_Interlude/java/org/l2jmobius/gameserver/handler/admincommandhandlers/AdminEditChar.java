@@ -28,6 +28,7 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.data.HeroSkillTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.enums.ClassId;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
@@ -133,7 +134,9 @@ public class AdminEditChar implements IAdminCommandHandler
 					oldName = player.getName();
 					World.getInstance().removeFromAllPlayers(player);
 					player.setName(val);
+					CharInfoTable.getInstance().addName(player);
 					player.store();
+					
 					World.getInstance().addToAllPlayers(player);
 					player.sendMessage("Your name has been changed by a GM.");
 					player.broadcastUserInfo();

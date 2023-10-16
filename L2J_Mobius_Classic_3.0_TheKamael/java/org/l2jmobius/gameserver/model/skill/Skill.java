@@ -1459,6 +1459,11 @@ public class Skill implements IIdentifiable
 				continue;
 			}
 			
+			if (targetObject.isSummon() && !isSharedWithSummon())
+			{
+				continue;
+			}
+			
 			final Creature target = (Creature) targetObject;
 			if (Formulas.calcBuffDebuffReflection(target, this))
 			{

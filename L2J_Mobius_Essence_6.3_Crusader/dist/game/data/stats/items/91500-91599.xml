@@ -606,7 +606,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="91550" name="Frintezza's Necklace" type="Armor">
-		<!-- Max enchant value: +6. (Requires Scroll: Enchant Rare Accessories.) Boosts the item's parameters after enchanting. Safe enchanting to +1 -->
+		<!-- Max enchant value: +6. (Requires Scroll: Enchant Rare Accessories.). Boosts the item's parameters after enchanting. Safe enchanting to +1 -->
 		<set name="icon" val="icon.accessory_necklace_of_frintessa_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -622,7 +622,7 @@
 		</stats>
 	</item>
 	<item id="91551" name="Frintezza's Necklace Lv. 2" type="Armor">
-		<!-- <Properties> P. Skill Power +10% M. Skill Power +10% All Critical Rate +3% All Critical Damage +50 Skill Cooldown -6% Max MP +36 Sleep Resistance/ Atk. Rate +15 Cannot be enchanted. -->
+		<!-- <Properties>. P. Skill Power +10%. M. Skill Power +10%. All Critical Rate +3%. All Critical Damage +50. Skill Cooldown -6%. Max MP +36. Sleep Resistance/ Atk. Rate +15. Cannot be enchanted. -->
 		<set name="icon" val="icon.accessory_necklace_of_frintessa_i03" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -638,7 +638,7 @@
 		</stats>
 	</item>
 	<item id="91552" name="Frintezza's Necklace Lv. 3" type="Armor">
-		<!-- <Properties> P. Skill Power +15% M. Skill Power +15% All Critical Rate +5% All Critical Damage +100 Skill Cooldown -8% Max MP +50 Sleep Resistance/ Atk. Rate +20 Damage Reflection +5% Cannot be enchanted. -->
+		<!-- <Properties>. P. Skill Power +15%. M. Skill Power +15%. All Critical Rate +5%. All Critical Damage +100. Skill Cooldown -8%. Max MP +50. Sleep Resistance/ Atk. Rate +20. Damage Reflection +5%. Cannot be enchanted. -->
 		<set name="icon" val="icon.accessory_necklace_of_frintessa_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -654,7 +654,7 @@
 		</stats>
 	</item>
 	<item id="91553" name="Frintezza's Necklace Lv. 4" type="Armor">
-		<!-- <Properties> P. Skill Power +20% M. Skill Power +20% All Critical Rate +10% All Critical Damage +200 Skill Cooldown -10% Max MP +65 Sleep Resistance/ Atk. Rate +30 Damage Reflection +10% Cannot be enchanted. -->
+		<!-- <Properties>. P. Skill Power +20%. M. Skill Power +20%. All Critical Rate +10%. All Critical Damage +200. Skill Cooldown -10%. Max MP +65. Sleep Resistance/ Atk. Rate +30. Damage Reflection +10%. Cannot be enchanted. -->
 		<set name="icon" val="icon.accessory_necklace_of_frintessa_i05" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1074,7 +1074,7 @@
 		</stats>
 	</item>
 	<item id="91575" name="Scroll: Enchant Yogi's Weapon" additionalName="Sealed" type="EtcItem">
-		<!-- <How to use> Required for enchanting a Yogi's weapon. <When enchanted to +3> P. Atk. +5, M. Atk. +3 <When enchanted to +4> P./ M. Atk. bonus doubled <Safe enchanting> Up to +4 <Max enchanting> Up to +16 -->
+		<!-- <How to use>. Required for enchanting a Yogi's weapon. <When enchanted to +3>. P. Atk. +5, M. Atk. +3. <When enchanted to +4>. P./ M. Atk. bonus doubled. <Safe enchanting>. Up to +4. <Max enchanting>. Up to +16 -->
 		<set name="icon" val="icon.yogi_scroll_of_enchant_weapon_grade_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1095,6 +1095,16 @@
 		<set name="material" val="FISH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="2130" min="20" max="20" chance="20" /> <!-- D-grade Gemstone -->
+			<item id="2131" min="10" max="10" chance="20" /> <!-- C-grade Gemstone -->
+			<item id="2132" min="10" max="10" chance="20" /> <!-- B-grade Gemstone -->
+			<item id="2133" min="10" max="10" chance="20" /> <!-- A-grade Gemstone -->
+			<item id="2134" min="10" max="10" chance="20" /> <!-- S-grade Gemstone -->
+		</capsuled_items>
 	</item>
 	<item id="91577" name="Life Stone Chest" type="EtcItem">
 		<!-- Double-click to get more information about the contents. -->
@@ -1103,6 +1113,16 @@
 		<set name="material" val="FISH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="90012" min="1" max="1" chance="20" /> <!-- Low-grade Life Stone - Weapon -->
+			<item id="90013" min="1" max="1" chance="20" /> <!-- Mid-grade Life Stone - Weapon -->
+			<item id="90014" min="1" max="1" chance="20" /> <!-- High-grade Life Stone - Weapon -->
+			<item id="90015" min="1" max="1" chance="20" /> <!-- Top-grade Life Stone - Weapon -->
+			<item id="90016" min="1" max="1" chance="20" /> <!-- Dim Shining Life Stone - Weapon -->
+		</capsuled_items>
 	</item>
 	<item id="91578" name="Stable Scroll: Enchant Box" type="EtcItem">
 		<!-- Double-click to get more information about the contents. -->
@@ -1230,6 +1250,42 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="90015" min="1" max="1" chance="3.225806" /> <!-- Top-grade Life Stone - Weapon -->
+			<item id="90014" min="1" max="1" chance="3.225806" /> <!-- High-grade Life Stone - Weapon -->
+			<item id="90013" min="1" max="1" chance="3.225806" /> <!-- Mid-grade Life Stone - Weapon -->
+			<item id="90519" min="5" max="5" chance="3.225806" /> <!-- Shining Scroll of Mood Melody -->
+			<item id="49845" min="1" max="1" chance="3.225806" /> <!-- Sayha's Blessing -->
+			<item id="49846" min="1" max="1" chance="3.225806" /> <!-- Sayha's Silver Light Blessing -->
+			<item id="49847" min="1" max="1" chance="3.225806" /> <!-- Sayha's Golden Light Blessing -->
+			<item id="13016" min="10" max="10" chance="3.225806" /> <!-- My Teleport Scroll -->
+			<item id="90487" min="1" max="1" chance="3.225806" /> <!-- Stone: Enchant D-grade Armor -->
+			<item id="91105" min="1" max="1" chance="3.225806" /> <!-- Improved Stone: Enchant B-grade Armor -->
+			<item id="91104" min="1" max="1" chance="3.225806" /> <!-- Improved Stone: Enchant A-grade Armor -->
+			<item id="33814" min="1" max="1" chance="3.225806" /> <!-- Improved Scroll: Enchant B-grade Armor -->
+			<item id="33815" min="1" max="1" chance="3.225806" /> <!-- Improved Scroll: Enchant A-grade Armor -->
+			<item id="49485" min="1" max="1" chance="3.225806" /> <!-- Stable Scroll: Enchant B-grade Armor -->
+			<item id="22224" min="1" max="1" chance="3.225806" /> <!-- Stable Scroll: Enchant A-grade Armor -->
+			<item id="49785" min="1" max="1" chance="3.225806" /> <!-- A-grade Weapon Pack -->
+			<item id="49786" min="1" max="1" chance="3.225806" /> <!-- A-grade Armor Pack -->
+			<item id="90824" min="1" max="1" chance="3.225806" /> <!-- Sealed Doll of Border - Orfen - 30-day -->
+			<item id="90823" min="1" max="1" chance="3.225806" /> <!-- Sealed Doll of Border - Queen Ant - 30-day -->
+			<item id="90822" min="1" max="1" chance="3.225806" /> <!-- Sealed Doll of Border - Baium - 30-day -->
+			<item id="91124" min="1" max="1" chance="3.225806" /> <!-- Radiant Spirit's Varnish -->
+			<item id="91121" min="1" max="1" chance="3.225806" /> <!-- Procella's Necklace -->
+			<item id="91123" min="1" max="1" chance="3.225806" /> <!-- Petram's Necklace -->
+			<item id="91117" min="1" max="1" chance="3.225806" /> <!-- Nebula's Necklace -->
+			<item id="91119" min="1" max="1" chance="3.225806" /> <!-- Ignis' Necklace -->
+			<item id="94393" min="1" max="1" chance="3.225806" /> <!-- Package: +2 Orfen's Earring - Sealed -->
+			<item id="94398" min="1" max="1" chance="3.225806" /> <!-- Package: +2 Ring of Core - Sealed -->
+			<item id="94388" min="1" max="1" chance="3.225806" /> <!-- Package: +2 Queen Ant's Ring - Sealed -->
+			<item id="94408" min="1" max="1" chance="3.225806" /> <!-- Package: +2 Zaken's Earring - Sealed -->
+			<item id="94403" min="1" max="1" chance="3.225806" /> <!-- Package: +2 Baium's Ring - Sealed -->
+			<item id="94418" min="1" max="1" chance="3.225806" /> <!-- Package: +2 Antharas' Earring - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="91588" name="Gran Kain's Golden Pack" type="EtcItem">
 		<!-- Double-click to get more information about the contents. -->
@@ -1239,6 +1295,45 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="90358" min="10" max="10" chance="2.941176" /> <!-- Shining Ore -->
+			<item id="91356" min="3" max="3" chance="2.941176" /> <!-- Jewel Energy -->
+			<item id="90016" min="1" max="1" chance="2.941176" /> <!-- Dim Shining Life Stone - Weapon -->
+			<item id="33807" min="1" max="1" chance="2.941176" /> <!-- Improved Scroll: Enchant C-grade Weapon -->
+			<item id="33808" min="1" max="1" chance="2.941176" /> <!-- Improved Scroll: Enchant B-grade Weapon -->
+			<item id="33809" min="1" max="1" chance="2.941176" /> <!-- Improved Scroll: Enchant A-grade Weapon -->
+			<item id="49484" min="1" max="1" chance="2.941176" /> <!-- Stable Scroll: Enchant C-grade Weapon -->
+			<item id="49486" min="1" max="1" chance="2.941176" /> <!-- Stable Scroll: Enchant B-grade Weapon -->
+			<item id="22223" min="1" max="1" chance="2.941176" /> <!-- Stable Scroll: Enchant A-grade Weapon -->
+			<item id="91250" min="1" max="1" chance="2.941176" /> <!-- Radiant Dragon Varnish -->
+			<item id="90138" min="1" max="1" chance="2.941176" /> <!-- Glittering Pendant Polish -->
+			<item id="90963" min="1" max="1" chance="2.941176" /> <!-- Stable Scroll: Enchant Agathion -->
+			<item id="48047" min="1" max="1" chance="2.941176" /> <!-- Scroll: Enchant High-grade Agathion -->
+			<item id="91214" min="1" max="1" chance="2.941176" /> <!-- Radiant Scroll: Enchant Sayha's Cloak -->
+			<item id="90497" min="1" max="1" chance="2.941176" /> <!-- Fire Dragon Belt -->
+			<item id="90496" min="1" max="1" chance="2.941176" /> <!-- Earth Dragon Belt -->
+			<item id="91303" min="1" max="1" chance="2.941176" /> <!-- Brooch Lv. 4 -->
+			<item id="91150" min="1" max="1" chance="2.941176" /> <!-- +10 Agathion Pack -->
+			<item id="91456" min="1" max="1" chance="2.941176" /> <!-- +10 Red Sayha's Cloak Chest -->
+			<item id="91455" min="1" max="1" chance="2.941176" /> <!-- +10 Black Sayha's Cloak Chest -->
+			<item id="91454" min="1" max="1" chance="2.941176" /> <!-- +10 White Sayha's Cloak Chest -->
+			<item id="91148" min="1" max="1" chance="2.941176" /> <!-- Jewel Box Lv. 5 -->
+			<item id="91258" min="1" max="1" chance="2.941176" /> <!-- Orfen Doll Lv. 2 -->
+			<item id="91257" min="1" max="1" chance="2.941176" /> <!-- Queen Ant Doll Lv. 2 -->
+			<item id="91256" min="1" max="1" chance="2.941176" /> <!-- Baium Doll Lv. 2 -->
+			<item id="91012" min="1" max="1" chance="2.941176" /> <!-- Top-grade A-grade Weapon Pack -->
+			<item id="49789" min="1" max="1" chance="2.941176" /> <!-- +8 B-grade Weapon Pack -->
+			<item id="91217" min="1" max="1" chance="2.941176" /> <!-- +10 Head Accessory Pack -->
+			<item id="49790" min="1" max="1" chance="2.941176" /> <!-- +16 C-grade Weapon Pack -->
+			<item id="91216" min="1" max="1" chance="2.941176" /> <!-- +16 B-grade Weapon Pack -->
+			<item id="90961" min="1" max="1" chance="2.941176" /> <!-- +15 A-grade Weapon Pack -->
+			<item id="91153" min="1" max="1" chance="2.941176" /> <!-- +15 Top-grade A-grade Weapon Pack -->
+			<item id="91590" min="1" max="1" chance="2.941176" /> <!-- Manuscript Chest -->
+			<item id="91550" min="1" max="1" chance="2.941176" /> <!-- Frintezza's Necklace -->
+		</capsuled_items>
 	</item>
 	<item id="91589" name="Gran Kain's Special Chest" type="EtcItem">
 		<!-- Double-click to get more information about the contents. -->
@@ -1248,6 +1343,35 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="90143" min="5" max="5" chance="4.166667" /> <!-- Einhasad's Protection -->
+			<item id="91027" min="5" max="5" chance="4.166667" /> <!-- Dragon's Miracle Potion -->
+			<item id="91250" min="1" max="1" chance="4.166667" /> <!-- Radiant Dragon Varnish -->
+			<item id="90138" min="1" max="1" chance="4.166667" /> <!-- Glittering Pendant Polish -->
+			<item id="91124" min="1" max="1" chance="4.166667" /> <!-- Radiant Spirit's Varnish -->
+			<item id="91356" min="3" max="3" chance="4.166667" /> <!-- Jewel Energy -->
+			<item id="91456" min="1" max="1" chance="4.166667" /> <!-- +10 Red Sayha's Cloak Chest -->
+			<item id="91455" min="1" max="1" chance="4.166667" /> <!-- +10 Black Sayha's Cloak Chest -->
+			<item id="91454" min="1" max="1" chance="4.166667" /> <!-- +10 White Sayha's Cloak Chest -->
+			<item id="49785" min="1" max="1" chance="4.166667" /> <!-- A-grade Weapon Pack -->
+			<item id="49786" min="1" max="1" chance="4.166667" /> <!-- A-grade Armor Pack -->
+			<item id="91258" min="1" max="1" chance="4.166667" /> <!-- Orfen Doll Lv. 2 -->
+			<item id="91257" min="1" max="1" chance="4.166667" /> <!-- Queen Ant Doll Lv. 2 -->
+			<item id="91256" min="1" max="1" chance="4.166667" /> <!-- Baium Doll Lv. 2 -->
+			<item id="94393" min="1" max="1" chance="4.166667" /> <!-- Package: +2 Orfen's Earring - Sealed -->
+			<item id="94398" min="1" max="1" chance="4.166667" /> <!-- Package: +2 Ring of Core - Sealed -->
+			<item id="94388" min="1" max="1" chance="4.166667" /> <!-- Package: +2 Queen Ant's Ring - Sealed -->
+			<item id="94408" min="1" max="1" chance="4.166667" /> <!-- Package: +2 Zaken's Earring - Sealed -->
+			<item id="94403" min="1" max="1" chance="4.166667" /> <!-- Package: +2 Baium's Ring - Sealed -->
+			<item id="94418" min="1" max="1" chance="4.166667" /> <!-- Package: +2 Antharas' Earring - Sealed -->
+			<item id="91590" min="1" max="1" chance="4.166667" /> <!-- Manuscript Chest -->
+			<item id="91550" min="1" max="1" chance="4.166667" /> <!-- Frintezza's Necklace -->
+			<item id="90961" min="1" max="1" chance="4.166667" /> <!-- +15 A-grade Weapon Pack -->
+			<item id="91153" min="1" max="1" chance="4.166667" /> <!-- +15 Top-grade A-grade Weapon Pack -->
+		</capsuled_items>
 	</item>
 	<item id="91590" name="Manuscript Chest" type="EtcItem">
 		<!-- Double-click to get more information about the contents. -->
@@ -1258,6 +1382,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91393" min="1" max="1" chance="100" /> <!-- Forgotten Manuscript - Page 1 -->
+			<item id="91394" min="1" max="1" chance="100" /> <!-- Forgotten Manuscript - Page 2 -->
+			<item id="91395" min="1" max="1" chance="100" /> <!-- Forgotten Manuscript - Page 3 -->
+			<item id="91396" min="1" max="1" chance="100" /> <!-- Forgotten Manuscript - Page 4 -->
+		</capsuled_items>
 	</item>
 	<item id="91591" name="Dimensional Spirit" type="EtcItem">
 		<!-- Required for creating and upgrading Dimensional Talisman. Take it to Alchemist Veruti in Giran. -->

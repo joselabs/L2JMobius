@@ -26,7 +26,7 @@ import java.util.logging.Level;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.enums.MailType;
 import org.l2jmobius.gameserver.instancemanager.MailManager;
 import org.l2jmobius.gameserver.model.Message;
@@ -95,7 +95,7 @@ public class TaskBirthday extends Task
 					String text = Config.ALT_BIRTHDAY_MAIL_TEXT;
 					if (text.contains("$c1"))
 					{
-						text = text.replace("$c1", CharNameTable.getInstance().getNameById(playerId));
+						text = text.replace("$c1", CharInfoTable.getInstance().getNameById(playerId));
 					}
 					if (text.contains("$s1"))
 					{

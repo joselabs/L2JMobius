@@ -16,6 +16,10 @@
  */
 package org.l2jmobius.gameserver.model.actor;
 
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.enums.ClanWarState;
 import org.l2jmobius.gameserver.enums.InstanceType;
@@ -49,6 +53,9 @@ public abstract class Playable extends Creature
 {
 	private Creature _lockedTarget = null;
 	private Player transferDmgTo = null;
+	
+	private final Map<Integer, Integer> _replacedSkills = new ConcurrentHashMap<>(1);
+	private final Map<Integer, Integer> _originalSkills = new ConcurrentHashMap<>(1);
 	
 	/**
 	 * Constructor of Playable.<br>
@@ -299,6 +306,61 @@ public abstract class Playable extends Creature
 	public Player getTransferingDamageTo()
 	{
 		return transferDmgTo;
+	}
+	
+	/**
+	 * Adds a replacement for an original skill.<br>
+	 * Both original and replacement skill IDs are stored in their respective maps.
+	 * @param originalId The ID of the original skill.
+	 * @param replacementId The ID of the replacement skill.
+	 */
+	public void addReplacedSkill(int originalId, int replacementId)
+	{
+		_replacedSkills.put(originalId, replacementId);
+		_originalSkills.put(replacementId, originalId);
+	}
+	
+	/**
+	 * Removes a replaced skill by the original skill ID.<br>
+	 * The corresponding replacement skill ID is also removed from its map.
+	 * @param originalId The ID of the original skill to be removed.
+	 */
+	public void removeReplacedSkill(int originalId)
+	{
+		final Integer replacementId = _replacedSkills.remove(originalId);
+		if (replacementId != null)
+		{
+			_originalSkills.remove(replacementId);
+		}
+	}
+	
+	/**
+	 * Retrieves the replacement skill for a given original skill.
+	 * @param originalId The ID of the original skill.
+	 * @return The ID of the replacement skill if it exists, or the original skill ID.
+	 */
+	public int getReplacementSkill(int originalId)
+	{
+		return _replacedSkills.getOrDefault(originalId, originalId);
+	}
+	
+	/**
+	 * Retrieves the original skill for a given replacement skill.
+	 * @param replacementId The ID of the replacement skill.
+	 * @return The ID of the original skill if it exists, or the replacement skill ID.
+	 */
+	public int getOriginalSkill(int replacementId)
+	{
+		return _originalSkills.getOrDefault(replacementId, replacementId);
+	}
+	
+	/**
+	 * Retrieves a collection of all original skills that have been replaced.
+	 * @return The collection of all replaced skill IDs.
+	 */
+	public Collection<Integer> getReplacedSkills()
+	{
+		return _replacedSkills.keySet();
 	}
 	
 	public abstract void doPickupItem(WorldObject object);

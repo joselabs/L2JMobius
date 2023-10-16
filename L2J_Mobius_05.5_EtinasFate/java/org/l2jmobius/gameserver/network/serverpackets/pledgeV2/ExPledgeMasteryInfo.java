@@ -28,7 +28,7 @@ import org.l2jmobius.gameserver.network.serverpackets.AbstractItemPacket;
  */
 public class ExPledgeMasteryInfo extends AbstractItemPacket
 {
-	final Player _player;
+	private final Player _player;
 	
 	public ExPledgeMasteryInfo(Player player)
 	{

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="36300" name="Unbind Scroll: Armor (R95-grade)" additionalName="Event" type="EtcItem">
-		<!-- Transforms an R95-grade bound armor item into a standard item through the Blacksmith of Mammon. -->
+		<!-- Transforms an R95-grade bound armor into a standard one through the Blacksmith of Mammon. -->
 		<set name="icon" val="icon.cursed_free_r95_armor" />
 		<set name="weight" val="2" />
 		<set name="is_tradable" val="false" />
@@ -252,7 +252,7 @@
 		</skills>
 	</item>
 	<item id="36325" name="Draco's Gift" additionalName="Event" type="EtcItem">
-		<!-- Gift from a Draco that hatched from a purified Draco Egg. -->
+		<!-- Gift from Draco that hatched from a purified Draco Egg. -->
 		<set name="icon" val="icon.etc_treasure_box_i03" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />
@@ -266,7 +266,7 @@
 		</skills>
 	</item>
 	<item id="36326" name="Draco's Shiny Gift" additionalName="Event" type="EtcItem">
-		<!-- Gift from a Draco that hatched from a purified Draco Egg. It shines. -->
+		<!-- Shining gift from Draco that hatched from a purified Draco Egg. -->
 		<set name="icon" val="icon.etc_treasure_box_i08" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />
@@ -394,9 +394,20 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="45931" min="1" max="1" chance="44.79" /> <!-- High-grade Spirit Stone -->
+			<item id="45931" min="1" max="1" chance="8.95" /> <!-- High-grade Spirit Stone -->
+			<item id="45932" min="1" max="1" chance="37.32" /> <!-- Top-grade Spirit Stone -->
+			<item id="45932" min="1" max="1" chance="7.46" /> <!-- Top-grade Spirit Stone -->
+			<item id="17526" min="1" max="1" chance="2.41" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+			<item id="17526" min="1" max="1" chance="0.42" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+		</capsuled_items>
 	</item>
 	<item id="36334" name="Adrenaline Energy Drink" additionalName="Event" type="EtcItem">
-		<!-- Pump-up drink that increases Movement Speed by 15. Formulated to train track and field athletes for Olympiad, it makes them run like slow wild horses. The recipe remains a secret. For fair play, it is prohibited in Olympiad matches. It is so potent that the body does not remember the effect of the previous drink. -->
+		<!-- Pump-up drink that increases Movement Speed by 15. Formulated to train track and field athletes for Olympiad, it makes them run like “slow” wild horses. The recipe remains a secret. For fair play, it is prohibited in Olympiad matches. It is so potent that the body does not remember the effect of the previous drink. -->
 		<set name="icon" val="icon.etc_oblivion_yellow_i00" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />
@@ -411,7 +422,7 @@
 		</skills>
 	</item>
 	<item id="36335" name="Caffeine Energy Drink" additionalName="Event" type="EtcItem">
-		<!-- Caffeine drink that increases DEX by 10. Formulated to train archers for Olympiad, it boosts dexterity and refreshes them with a single cup. This energy drink should be used with care as it can raise pulse rate and blood pressure. For the safety of athletes, it is prohibited in Olympiad matches. It is so potent that the body does not remember the effect of the previous drink. -->
+		<!-- Caffeine drink that increases DEX by 10. Formulated to train archers for Olympiad, it boosts dexterity and refreshes with a single cup. This energy drink should be used with care as it can raise pulse rate and blood pressure. For the safety of athletes, it is prohibited in the Olympiad. It is so potent that the body does not remember the effect of the previous drink. -->
 		<set name="icon" val="icon.etc_oblivion_green_i00" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />
@@ -776,7 +787,7 @@
 		</skills>
 	</item>
 	<item id="36365" name="Red Horns" additionalName="Accuracy (Event)" type="Armor">
-		<!-- Hair accessory for the Aden Golden Medal Event. Accuracy +5 when equipped. -->
+		<!-- Hair accessory for the Aden Golden Medal Event. P. Accuracy +5. -->
 		<set name="icon" val="icon.london_olympic_hair" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_sellable" val="false" />
@@ -793,6 +804,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="36395" min="1" max="1" chance="100" /> <!-- Golden Chest (Reward) -->
+		</capsuled_items>
 	</item>
 	<item id="36367" name="Luminous Golden Chest" additionalName="Event" type="EtcItem">
 		<!-- Luminous Golden Chest with bright energy. Special reward prepared by Amadeo Cadmus, the king of Aden. Double-click to get the reward. -->
@@ -946,7 +961,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="36386" name="Giant's Scroll: Enchant Weapon (R-grade)" type="EtcItem">
-		<!-- When enchanted, increases P. Atk. by 6 for R-grade one-handed swords, one-handed blunts, one-handed staffs, daggers, spears, and other weapons. Increases P. Atk. by 7 for two-handed swords, two-handed blunts, two-handed staffs, dual daggers, dual swords, fist weapons, and crossbows. Increases P. Atk. by 12 for bow weapons. Increases M. Atk. by 5 for all weapons. P. Atk./ M. Atk increases greatly starting at +4. For blessed weapons, all stats will increase more than standard weapons. Random enchantment from +1 to +3. -->
+		<!-- When enchanted. increases P. Atk. by 6 for R-grade one-handed swords. one-handed blunts. one-handed staffs. daggers. spears. and other weapons. Increases P. Atk. by 7 for two-handed swords. two-handed blunts. two-handed staffs. dual daggers. dualswords. fist weapons. and crossbows. Increases P. Atk. by 12 for bow weapons. Increases M. Atk. by 5 for all weapons. P. Atk./M. Atk increases greatly starting at +4. For blessed weapons. all stats will increase more than standard weapons. Random enchantment from +1 to +3. Cannot use on weapons above +30. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_r" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
@@ -963,7 +978,7 @@
 		</skills>
 	</item>
 	<item id="36387" name="Giant's Scroll: Enchant Weapon (S-grade)" type="EtcItem">
-		<!-- When enchanted, increases P. Atk. by 5 for S-grade one-handed swords, one-handed blunts, one-handed staffs, daggers, spears, and other weapons. Increases P. Atk. by 6 for two-handed swords, two-handed blunts, two-handed staffs, dual daggers, dual swords, and fist weapons. Increases P. Atk. by 10 for bow weapons. Increases M. Atk. by 4 for all weapons. P. Atk./ M. Atk doubles starting at +4. Random enchantment from +1 to +3. -->
+		<!-- When enchanted. increases P. Atk. by 5 for S-grade one-handed swords. one-handed blunts. one-handed staffs. daggers. spears. and other weapons. Increases P. Atk. by 6 for two-handed swords. two-handed blunts. two-handed staffs. dual daggers. dualswords. and fist weapons. Increases P. Atk. by 10 for bow weapons. Increases M. Atk. by 4 for all weapons. P. Atk./M. Atk doubles starting at +4. Random enchantment from +1 to +3. Cannot use on weapons above +30. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_s" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
@@ -980,7 +995,7 @@
 		</skills>
 	</item>
 	<item id="36388" name="Giant's Scroll: Enchant Weapon (A-grade)" type="EtcItem">
-		<!-- When enchanted, increases P. Atk. by 4 for A-grade one-handed swords, one-handed blunts, one-handed staffs, daggers, spears, and other weapons. Increases P. Atk. by 5 for two-handed swords, two-handed blunts, two-handed staffs, dual daggers, dual swords, and fist weapons. Increases P. Atk. by 8 for bow weapons. Increases M. Atk. by 3 for all weapons. P. Atk./ M. Atk doubles starting at +4. Random enchantment from +1 to +3. -->
+		<!-- When enchanted. increases P. Atk. by 4 for A-grade one-handed swords. one-handed blunts. one-handed staffs. daggers. spears. and other weapons. Increases P. Atk. by 5 for two-handed swords. two-handed blunts. two-handed staffs. dual daggers. dualswords. and fist weapons. Increases P. Atk. by 8 for bow weapons. Increases M. Atk. by 3 for all weapons. P. Atk./M. Atk doubles starting at +4. Random enchantment from +1 to +3. Cannot use on weapons above +30. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_a" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
@@ -997,7 +1012,7 @@
 		</skills>
 	</item>
 	<item id="36389" name="Giant's Scroll: Enchant Armor (R-grade)" type="EtcItem">
-		<!-- Upon enchantment, P. Def. for R-grade armor and accessories increases by 2, and by a significant amount starting from +4. Armor and accessories can be safely enchanted up to +3. When armor is enchanted to +4 or above, HP also increases according to the enchant value. Armor and accessories are randomly enchanted between +1 and +3. -->
+		<!-- Upon enchantment. P. Def. for R-grade armor and accessories increases by 2. and by a significant amount starting from +4. Armor and accessories can be safely enchanted up to +3. When armor is enchanted to +4 or above. HP also increases according to the enchant value. Armor and accessories are randomly enchanted between + 1 and + 3. Cannot use on armor or accessories above +30. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_r" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
@@ -1014,7 +1029,7 @@
 		</skills>
 	</item>
 	<item id="36390" name="Giant's Scroll: Enchant Armor (S-grade)" type="EtcItem">
-		<!-- P. Def. for S-grade armor and accessories increases by 1, and by 3 starting from +4. Armor and accessories can be safely enchanted up to +3. One-piece armor can be safely enchanted up to +4. When armor is enchanted to +4 or above, HP also increases according to the enchant value. Armor and accessories are randomly enchanted between +1 and +3. -->
+		<!-- P. Def. for S-grade armor and accessories increases by 1. and by 3 starting from +4. Armor and accessories can be safely enchanted up to +3. One-piece armor can be safely enchanted up to +4. When armor is enchanted to +4 or above. HP also increases according to the enchant value. Armor and accessories are randomly enchanted between +1 and +3. Cannot use on armor or accessories above +30. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_s" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
@@ -1031,7 +1046,7 @@
 		</skills>
 	</item>
 	<item id="36391" name="Giant's Scroll: Enchant Armor (A-grade)" type="EtcItem">
-		<!-- P. Def. for A-grade armor and accessories increases by 1, and by 3 starting from +4. Armor and accessories can be safely enchanted up to +3. One-piece armor can be safely enchanted up to +4. When armor is enchanted to +4 or above, HP also increases according to the enchant value. Armor and accessories are randomly enchanted between +1 and +3. -->
+		<!-- P. Def. for A-grade armor and accessories increases by 1. and by 3 starting from +4. Armor and accessories can be safely enchanted up to +3. One-piece armor can be safely enchanted up to +4. When armor is enchanted to +4 or above. HP also increases according to the enchant value. Armor and accessories are randomly enchanted between +1 and +3. Cannot use on armor or accessories above +30. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_a" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
@@ -1048,7 +1063,7 @@
 		</skills>
 	</item>
 	<item id="36392" name="Mark of Travis" type="EtcItem">
-		<!-- Mark of those who resurrected and returned with Travis. Take this to the Aden Vanguard Quartermaster at the border of the cemetery and the Seal of Shilen to get a reward. -->
+		<!-- Mark of those who resurrected and returned with Travis. Take this to the Aden Vanguard Quartermaster at the border of the Cemetery and the Seal of Shilen to get a reward. -->
 		<set name="icon" val="icon.item_normal89" />
 		<set name="is_depositable" val="false" />
 		<set name="is_tradable" val="false" />
@@ -1059,7 +1074,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="36393" name="Returner's Soul" type="EtcItem">
-		<!-- Soul of those who resurrected and returned with Travis. Take this to the Aden Vanguard Quartermaster at the border of the cemetery and the Seal of Shilen to get a reward. -->
+		<!-- Soul of those who resurrected and returned with Travis. Take this to the Aden Vanguard Quartermaster at the border of the Cemetery and the Seal of Shilen to get a reward. -->
 		<set name="icon" val="icon.etc_bead_gold_i00" />
 		<set name="is_depositable" val="false" />
 		<set name="is_tradable" val="false" />

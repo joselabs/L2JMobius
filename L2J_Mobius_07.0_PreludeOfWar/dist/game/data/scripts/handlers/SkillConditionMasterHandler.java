@@ -138,10 +138,12 @@ public class SkillConditionMasterHandler
 		SkillConditionHandler.getInstance().registerHandler("RemainHpPer", RemainHpPerSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("RemainMpPer", RemainMpPerSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("SoulSaved", SoulSavedSkillCondition::new);
+		SkillConditionHandler.getInstance().registerHandler("TargetAffectedBySkill", TargetAffectedBySkillSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("TargetItemCrystalType", TargetItemCrystalTypeSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("TargetMyMentee", TargetMyMenteeSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("TargetMyParty", TargetMyPartySkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("TargetMyPledge", TargetMyPledgeSkillCondition::new);
+		SkillConditionHandler.getInstance().registerHandler("TargetNotAffectedBySkill", TargetNotAffectedBySkillSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("TargetRace", TargetRaceSkillCondition::new);
 	}
 }

@@ -250,7 +250,7 @@ abstract class AbstractAI implements Ctrl
 	@Override
 	public void notifyEvent(CtrlEvent evt, Object arg0, Object arg1)
 	{
-		if (!_actor.isSpawned() || !_actor.hasAI() || ((_actor instanceof Player) && !((Player) _actor).isOnline()) || ((_actor instanceof Player) && ((Player) _actor).isInOfflineMode()))
+		if (!_actor.isSpawned() || !_actor.hasAI() || ((_actor instanceof Player) && !((Player) _actor).isOnline()))
 		{
 			return;
 		}
@@ -494,7 +494,7 @@ abstract class AbstractAI implements Ctrl
 				else if (sendPacket)
 				{
 					final WorldRegion region = _actor.getWorldRegion();
-					if ((region != null) && region.isActive())
+					if ((region != null) && region.isActive() && !_actor.isMovementSuspended())
 					{
 						_actor.broadcastPacket(new MoveToPawn(_actor, (Creature) pawn, offset));
 					}

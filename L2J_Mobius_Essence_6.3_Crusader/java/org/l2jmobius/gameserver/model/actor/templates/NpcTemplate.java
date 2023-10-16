@@ -45,7 +45,6 @@ import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.stats.Stat;
-import org.l2jmobius.gameserver.util.Util;
 
 /**
  * NPC template.
@@ -786,9 +785,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 	private List<ItemHolder> calculateGroupDrops(Creature victim, Creature killer)
 	{
 		// level difference calculations
-		final int levelDifference = victim.getLevel() - killer.getLevel();
-		final double levelGapChanceToDropAdena = Util.map(levelDifference, -Config.DROP_ADENA_MAX_LEVEL_DIFFERENCE, -Config.DROP_ADENA_MIN_LEVEL_DIFFERENCE, Config.DROP_ADENA_MIN_LEVEL_GAP_CHANCE, 100d);
-		final double levelGapChanceToDrop = Util.map(levelDifference, -Config.DROP_ITEM_MAX_LEVEL_DIFFERENCE, -Config.DROP_ITEM_MIN_LEVEL_DIFFERENCE, Config.DROP_ITEM_MIN_LEVEL_GAP_CHANCE, 100d);
+		final int levelDifference = killer.getLevel() - victim.getLevel();
 		
 		List<ItemHolder> calculatedDrops = null;
 		int dropOccurrenceCounter = victim.isRaid() ? Config.DROP_MAX_OCCURRENCES_RAIDBOSS : Config.DROP_MAX_OCCURRENCES_NORMAL;
@@ -880,8 +877,8 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 						dropOccurrenceCounter = 1;
 					}
 					
-					// check level gap that may prevent to drop item
-					if ((Rnd.nextDouble() * 100) > (dropItem.getItemId() == Inventory.ADENA_ID ? levelGapChanceToDropAdena : levelGapChanceToDrop))
+					// prevent to drop item if level of monster lower then level of player by [Config]
+					if (levelDifference > (dropItem.getItemId() == Inventory.ADENA_ID ? Config.DROP_ADENA_MAX_LEVEL_LOWEST_DIFFERENCE : Config.DROP_ITEM_MAX_LEVEL_LOWEST_DIFFERENCE))
 					{
 						continue GROUP_DROP;
 					}
@@ -979,9 +976,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 		final List<DropHolder> dropList = dropType == DropType.SPOIL ? _dropListSpoil : dropType == DropType.FORTUNE ? _dropListFortune : _dropListDeath;
 		
 		// level difference calculations
-		final int levelDifference = victim.getLevel() - killer.getLevel();
-		final double levelGapChanceToDropAdena = Util.map(levelDifference, -Config.DROP_ADENA_MAX_LEVEL_DIFFERENCE, -Config.DROP_ADENA_MIN_LEVEL_DIFFERENCE, Config.DROP_ADENA_MIN_LEVEL_GAP_CHANCE, 100d);
-		final double levelGapChanceToDrop = Util.map(levelDifference, -Config.DROP_ITEM_MAX_LEVEL_DIFFERENCE, -Config.DROP_ITEM_MIN_LEVEL_DIFFERENCE, Config.DROP_ITEM_MIN_LEVEL_GAP_CHANCE, 100d);
+		final int levelDifference = killer.getLevel() - victim.getLevel();
 		
 		int dropOccurrenceCounter = victim.isRaid() ? Config.DROP_MAX_OCCURRENCES_RAIDBOSS : Config.DROP_MAX_OCCURRENCES_NORMAL;
 		List<ItemHolder> calculatedDrops = null;
@@ -1001,8 +996,8 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 					dropOccurrenceCounter = 1;
 				}
 				
-				// check level gap that may prevent to drop item
-				if ((Rnd.nextDouble() * 100) > (dropItem.getItemId() == Inventory.ADENA_ID ? levelGapChanceToDropAdena : levelGapChanceToDrop))
+				// prevent to drop item if level of monster lower then level of player by [Config]
+				if (levelDifference > (dropItem.getItemId() == Inventory.ADENA_ID ? Config.DROP_ADENA_MAX_LEVEL_LOWEST_DIFFERENCE : Config.DROP_ITEM_MAX_LEVEL_LOWEST_DIFFERENCE))
 				{
 					continue;
 				}

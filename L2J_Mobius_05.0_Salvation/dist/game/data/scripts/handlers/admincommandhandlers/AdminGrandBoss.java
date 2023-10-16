@@ -29,11 +29,14 @@ import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.zone.type.NoRestartZone;
+import org.l2jmobius.gameserver.model.zone.type.NoSummonFriendZone;
+import org.l2jmobius.gameserver.model.zone.type.ScriptZone;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.util.BuilderUtil;
 
 import ai.bosses.Antharas.Antharas;
 import ai.bosses.Baium.Baium;
+import ai.bosses.Trasken.Trasken;
 
 /**
  * @author St3eT
@@ -42,12 +45,36 @@ public class AdminGrandBoss implements IAdminCommandHandler
 {
 	private static final int ANTHARAS = 29068; // Antharas
 	private static final int ANTHARAS_ZONE = 70050; // Antharas Nest
-	private static final int VALAKAS = 29028; // Valakas
+	
 	private static final int BAIUM = 29020; // Baium
 	private static final int BAIUM_ZONE = 70051; // Baium Nest
-	private static final int QUEENANT = 29001; // Queen Ant
-	private static final int ORFEN = 29014; // Orfen
+	
+	private static final int BELETH = 29118; // Beleth
+	private static final int BELETH_ZONE = 60022; // Beleth Zone
+	
 	private static final int CORE = 29006; // Core
+	private static final int CORE_ZONE = 12007; // Core Zone
+	
+	private static final int HELIOS = 29305; // Helios
+	private static final int HELIOS_ZONE = 210109; // Helios Zone
+	
+	private static final int KELBIM = 26124; // Kelbim
+	private static final int KELBIM_ZONE = 60023; // Kelbim Zone
+	
+	private static final int LINDVIOR = 29240; // Lindvior
+	private static final int LINDVIOR_ZONE = 12107; // Lindvior Zone
+	
+	private static final int ORFEN = 29325; // Orfen
+	private static final int ORFEN_ZONE = 12013; // Orfen Zone
+	
+	private static final int QUEENANT = 29001; // Queen Ant
+	private static final int QUEENANT_ZONE = 12012; // Queen Ant Nest Zone
+	
+	private static final int TRASKEN = 29197; // Trasken
+	private static final int TRASKEN_ZONE = 12108; // Trasken Nest
+	
+	private static final int VALAKAS = 29028; // Valakas
+	private static final int VALAKAS_ZONE = 12010; // Valakas Nest
 	
 	private static final String[] ADMIN_COMMANDS =
 	{
@@ -80,20 +107,23 @@ public class AdminGrandBoss implements IAdminCommandHandler
 				}
 				break;
 			}
-			
 			case "admin_grandboss_skip":
 			{
 				if (st.hasMoreTokens())
 				{
 					final int grandBossId = Integer.parseInt(st.nextToken());
-					if (grandBossId == ANTHARAS)
+					switch (grandBossId)
 					{
-						antharasAi().notifyEvent("SKIP_WAITING", null, activeChar);
-						manageHtml(activeChar, grandBossId);
-					}
-					else
-					{
-						BuilderUtil.sendSysMessage(activeChar, "Wrong ID!");
+						case ANTHARAS:
+						{
+							antharasAi().notifyEvent("SKIP_WAITING", null, activeChar);
+							manageHtml(activeChar, grandBossId);
+							break;
+						}
+						default:
+						{
+							BuilderUtil.sendSysMessage(activeChar, "Wrong ID!");
+						}
 					}
 				}
 				else
@@ -107,7 +137,6 @@ public class AdminGrandBoss implements IAdminCommandHandler
 				if (st.hasMoreTokens())
 				{
 					final int grandBossId = Integer.parseInt(st.nextToken());
-					
 					switch (grandBossId)
 					{
 						case ANTHARAS:
@@ -119,6 +148,12 @@ public class AdminGrandBoss implements IAdminCommandHandler
 						case BAIUM:
 						{
 							baiumAi().notifyEvent("RESPAWN_BAIUM", null, activeChar);
+							manageHtml(activeChar, grandBossId);
+							break;
+						}
+						case TRASKEN:
+						{
+							traskenAi().notifyEvent("RESPAWN_TRASKEN", null, activeChar);
 							manageHtml(activeChar, grandBossId);
 							break;
 						}
@@ -139,7 +174,6 @@ public class AdminGrandBoss implements IAdminCommandHandler
 				if (st.hasMoreTokens())
 				{
 					final int grandBossId = Integer.parseInt(st.nextToken());
-					
 					switch (grandBossId)
 					{
 						case ANTHARAS:
@@ -169,7 +203,6 @@ public class AdminGrandBoss implements IAdminCommandHandler
 				if (st.hasMoreTokens())
 				{
 					final int grandBossId = Integer.parseInt(st.nextToken());
-					
 					switch (grandBossId)
 					{
 						case ANTHARAS:
@@ -181,6 +214,12 @@ public class AdminGrandBoss implements IAdminCommandHandler
 						case BAIUM:
 						{
 							baiumAi().notifyEvent("ABORT_FIGHT", null, activeChar);
+							manageHtml(activeChar, grandBossId);
+							break;
+						}
+						case TRASKEN:
+						{
+							traskenAi().notifyEvent("ABORT_FIGHT", null, activeChar);
 							manageHtml(activeChar, grandBossId);
 							break;
 						}
@@ -202,52 +241,96 @@ public class AdminGrandBoss implements IAdminCommandHandler
 	
 	private void manageHtml(Player activeChar, int grandBossId)
 	{
-		if (Arrays.asList(ANTHARAS, VALAKAS, BAIUM, QUEENANT, ORFEN, CORE).contains(grandBossId))
+		if (Arrays.asList(ANTHARAS, BAIUM, BELETH, CORE, HELIOS, KELBIM, LINDVIOR, ORFEN, QUEENANT, TRASKEN, VALAKAS).contains(grandBossId))
 		{
 			final int bossStatus = GrandBossManager.getInstance().getStatus(grandBossId);
-			NoRestartZone bossZone = null;
+			NoRestartZone antharasZone = null;
+			NoRestartZone baiumZone = null;
+			ScriptZone belethZone = null;
+			ScriptZone coreZone = null;
+			NoSummonFriendZone heliosZone = null;
+			ScriptZone kelbimZone = null;
+			NoSummonFriendZone lindviorZone = null;
+			ScriptZone orfenZone = null;
+			ScriptZone queenantZone = null;
+			NoSummonFriendZone traskenZone = null;
+			ScriptZone valakasZone = null;
 			String textColor = null;
 			String text = null;
-			String htmlPatch = null;
+			String htmlPath = null;
 			int deadStatus = 0;
 			
 			switch (grandBossId)
 			{
 				case ANTHARAS:
 				{
-					bossZone = ZoneManager.getInstance().getZoneById(ANTHARAS_ZONE, NoRestartZone.class);
-					htmlPatch = "data/html/admin/grandboss/grandboss_antharas.htm";
-					break;
-				}
-				case VALAKAS:
-				{
-					htmlPatch = "data/html/admin/grandboss/grandboss_valakas.htm";
+					antharasZone = ZoneManager.getInstance().getZoneById(ANTHARAS_ZONE, NoRestartZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_antharas.htm";
 					break;
 				}
 				case BAIUM:
 				{
-					bossZone = ZoneManager.getInstance().getZoneById(BAIUM_ZONE, NoRestartZone.class);
-					htmlPatch = "data/html/admin/grandboss/grandboss_baium.htm";
+					baiumZone = ZoneManager.getInstance().getZoneById(BAIUM_ZONE, NoRestartZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_baium.htm";
 					break;
 				}
-				case QUEENANT:
+				case BELETH:
 				{
-					htmlPatch = "data/html/admin/grandboss/grandboss_queenant.htm";
-					break;
-				}
-				case ORFEN:
-				{
-					htmlPatch = "data/html/admin/grandboss/grandboss_orfen.htm";
+					belethZone = ZoneManager.getInstance().getZoneById(BELETH_ZONE, ScriptZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_beleth.htm";
 					break;
 				}
 				case CORE:
 				{
-					htmlPatch = "data/html/admin/grandboss/grandboss_core.htm";
+					coreZone = ZoneManager.getInstance().getZoneById(CORE_ZONE, ScriptZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_core.htm";
+					break;
+				}
+				case HELIOS:
+				{
+					heliosZone = ZoneManager.getInstance().getZoneById(HELIOS_ZONE, NoSummonFriendZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_helios.htm";
+					break;
+				}
+				case KELBIM:
+				{
+					kelbimZone = ZoneManager.getInstance().getZoneById(KELBIM_ZONE, ScriptZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_kelbim.htm";
+					break;
+				}
+				case LINDVIOR:
+				{
+					lindviorZone = ZoneManager.getInstance().getZoneById(LINDVIOR_ZONE, NoSummonFriendZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_lindvior.htm";
+					break;
+				}
+				case ORFEN:
+				{
+					orfenZone = ZoneManager.getInstance().getZoneById(ORFEN_ZONE, ScriptZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_orfen.htm";
+					break;
+				}
+				case QUEENANT:
+				{
+					queenantZone = ZoneManager.getInstance().getZoneById(QUEENANT_ZONE, ScriptZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_queenant.htm";
+					break;
+				}
+				case TRASKEN:
+				{
+					traskenZone = ZoneManager.getInstance().getZoneById(TRASKEN_ZONE, NoSummonFriendZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_trasken.htm";
+					break;
+				}
+				case VALAKAS:
+				{
+					valakasZone = ZoneManager.getInstance().getZoneById(VALAKAS_ZONE, ScriptZone.class);
+					htmlPath = "data/html/admin/grandboss/grandboss_valakas.htm";
 					break;
 				}
 			}
 			
-			if (Arrays.asList(ANTHARAS, VALAKAS, BAIUM).contains(grandBossId))
+			if (Arrays.asList(ANTHARAS, BAIUM, BELETH, CORE, HELIOS, KELBIM, LINDVIOR, TRASKEN, VALAKAS).contains(grandBossId))
 			{
 				deadStatus = 3;
 				switch (bossStatus)
@@ -308,15 +391,28 @@ public class AdminGrandBoss implements IAdminCommandHandler
 				}
 			}
 			
+			// @formatter:off
 			final StatSet info = GrandBossManager.getInstance().getStatSet(grandBossId);
 			final String bossRespawn = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(info.getLong("respawn_time"));
 			final NpcHtmlMessage html = new NpcHtmlMessage(0, 1);
-			html.setHtml(HtmCache.getInstance().getHtm(activeChar, htmlPatch));
+			html.setHtml(HtmCache.getInstance().getHtm(activeChar, htmlPath));
 			html.replace("%bossStatus%", text);
 			html.replace("%bossColor%", textColor);
 			html.replace("%respawnTime%", bossStatus == deadStatus ? bossRespawn : "Already respawned!");
-			html.replace("%playersInside%", bossZone != null ? String.valueOf(bossZone.getPlayersInside().size()) : "Zone not found!");
+			html.replace("%playersInside%", (antharasZone != null) ? String.valueOf(antharasZone.getPlayersInside().size()) :
+				 							(baiumZone != null) ? String.valueOf(baiumZone.getPlayersInside().size()) :
+				 							(belethZone != null) ? String.valueOf(belethZone.getPlayersInside().size()) :
+				 							(coreZone != null) ? String.valueOf(coreZone.getPlayersInside().size()) :
+						 					(heliosZone != null) ? String.valueOf(heliosZone.getPlayersInside().size()) :
+							 				(kelbimZone != null) ? String.valueOf(kelbimZone.getPlayersInside().size()) :
+										 	(lindviorZone != null) ? String.valueOf(lindviorZone.getPlayersInside().size()) :
+											(orfenZone != null) ? String.valueOf(orfenZone.getPlayersInside().size()) :
+											(queenantZone != null) ? String.valueOf(queenantZone.getPlayersInside().size()) :
+											(traskenZone != null) ? String.valueOf(traskenZone.getPlayersInside().size()) :
+											(valakasZone != null) ? String.valueOf(valakasZone.getPlayersInside().size()) :
+											"Zone not found!");
 			activeChar.sendPacket(html);
+			// @formatter:on
 		}
 		else
 		{
@@ -332,6 +428,11 @@ public class AdminGrandBoss implements IAdminCommandHandler
 	private Quest baiumAi()
 	{
 		return QuestManager.getInstance().getQuest(Baium.class.getSimpleName());
+	}
+	
+	private Quest traskenAi()
+	{
+		return QuestManager.getInstance().getQuest(Trasken.class.getSimpleName());
 	}
 	
 	@Override

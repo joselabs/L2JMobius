@@ -42,7 +42,7 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="35005" toLevel="10" name="Land Dragon Pendant Enchant Effect">
-		<!-- M. Def. + $s1. -->
+		<!-- M. Def. + 10. -->
 		<icon>icon.bm_pendant_pvp</icon>
 		<operateType>P</operateType>
 	</skill>
@@ -60,7 +60,7 @@
 		</effects>
 	</skill>
 	<skill id="35007" toLevel="10" name="Fire Dragon Pendant Enchant Effect">
-		<!-- M. Def. + $s1. -->
+		<!-- M. Def. + 10. -->
 		<icon>icon.bm_pendant_pve</icon>
 		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
@@ -105,7 +105,7 @@
 					<value level="10">30</value>
 				</amount>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="PAtk">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">10</value>
@@ -117,7 +117,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="MAtk">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">10</value>
@@ -129,7 +129,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="CriticalDamage">
 				<amount>
 					<value fromLevel="1" toLevel="7">0</value>
 					<value level="8">5</value>
@@ -187,6 +187,7 @@
 	</skill>
 	<skill id="35011" toLevel="1" name="Refined Romantic Chapeau: Teleport">
 		<!-- Teleports character to the nearest village. Cooldown - 2 hours. -->
+		<icon>icon.skill0000</icon>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<hitTime>1000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
@@ -214,6 +215,7 @@
 	</skill>
 	<skill id="35013" toLevel="1" name="Pirate King Hat: Teleport">
 		<!-- Teleports character to the nearest village. Cooldown - 2 hours. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>1000</hitTime>
 		<reuseDelay>7200000</reuseDelay>
@@ -225,6 +227,7 @@
 	</skill>
 	<skill id="35015" toLevel="1" name="Circlet of Devil: Teleport">
 		<!-- Teleports character to the nearest village. Cooldown - 2 hours. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>1000</hitTime>
 		<reuseDelay>7200000</reuseDelay>
@@ -250,7 +253,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="35017" toLevel="7" name="Talisman of Baium">
+	<skill id="35017" toLevel="7" name="Talisman of Insolence I">
 		<!-- P. Atk. +14, M. Atk. +22. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.tallisman_oman_i02</value>
@@ -620,11 +623,12 @@
 	</skill>
 	<skill id="35023" toLevel="1" name="Chic Silver Chapeau Teleport">
 		<!-- Teleports character to the nearest village. Cooldown - 2 hours. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>1000</hitTime>
 		<reuseDelay>7200000</reuseDelay>
 	</skill>
-	<skill id="35024" toLevel="11" name="Talisman of Border Lv. 2">
+	<skill id="35024" toLevel="11" name="Talisman of Border Lv. 1">
 		<!-- M. Def. + 12, P. Def. + +12. -->
 		<icon>
 			<value level="1">icon.bm_magic_square_talisman</value>
@@ -848,56 +852,32 @@
 					<value level="11">8</value>
 				</amount>
 			</effect>
-			<effect name="ReflectSkill">
-				<amount>
-					<value level="1">0</value>
-					<value level="2">0</value>
-					<value level="3">0</value>
-					<value level="4">0</value>
-					<value level="5">0</value>
-					<value level="6">0</value>
-					<value level="7">0</value>
-					<value level="8">0</value>
-					<value level="9">4</value>
-					<value level="10">6</value>
-					<value level="11">8</value>
-				</amount>
-				<mode>DIFF</mode>
-			</effect>
-			<effect name="ReflectMagic">
-				<amount>
-					<value level="1">0</value>
-					<value level="2">0</value>
-					<value level="3">0</value>
-					<value level="4">0</value>
-					<value level="5">0</value>
-					<value level="6">0</value>
-					<value level="7">0</value>
-					<value level="8">0</value>
-					<value level="9">4</value>
-					<value level="10">6</value>
-					<value level="11">8</value>
-				</amount>
-				<mode>DIFF</mode>
-			</effect>
-			<effect name="TriggerSkillByDamage">
-				<attackerType>Playable</attackerType>
+			<effect name="TriggerSkillByAttack" fromLevel="7" toLevel="11">
+				<attackerType>Creature</attackerType>
+				<chance>30</chance>
+				<targetType>SELF</targetType>
+				<minDamage>1</minDamage>
+				<allowWeapons>ALL</allowWeapons>
 				<skillId>35027</skillId> <!-- Border Power - Lv. 1 -->
 				<skillLevel>
-					<value level="1">0</value>
-					<value level="2">0</value>
-					<value level="3">0</value>
-					<value level="4">0</value>
-					<value level="5">0</value>
-					<value level="6">0</value>
 					<value level="7">1</value>
 					<value level="8">2</value>
 					<value level="9">2</value>
 					<value level="10">3</value>
 					<value level="11">4</value>
 				</skillLevel>
-				<minDamage>1</minDamage>
-				<chance>10</chance>
+			</effect>
+			<effect name="TriggerSkillByMagicType" fromLevel="7" toLevel="11">
+				<magicTypes>1;2;3</magicTypes>
+				<skillId>35027</skillId> <!-- Border Power - Lv. 1 -->
+				<skillLevel>
+					<value level="7">1</value>
+					<value level="8">2</value>
+					<value level="9">2</value>
+					<value level="10">3</value>
+					<value level="11">4</value>
+				</skillLevel>
+				<chance>30</chance>
 				<targetType>SELF</targetType>
 			</effect>
 		</effects>
@@ -941,9 +921,15 @@
 	<skill id="35027" toLevel="4" name="Border Power - Lv. 1">
 		<!-- During an attack P. / M. Atk. +2%, P. / M. Critical Damage +10% with some probability. -->
 		<icon>icon.skill10030</icon>
-		<abnormalLevel>1</abnormalLevel>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+		</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
-		<magicLevel>55</magicLevel>
+		<abnormalType>COUNTER_CRITICAL_TRIGGER</abnormalType>
+		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
 		<staticReuse>true</staticReuse>
 		<isMagic>4</isMagic>

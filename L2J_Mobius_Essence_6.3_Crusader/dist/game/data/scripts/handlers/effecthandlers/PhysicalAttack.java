@@ -17,10 +17,12 @@
 package handlers.effecthandlers;
 
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.ShotType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Attackable;
@@ -38,7 +40,7 @@ import org.l2jmobius.gameserver.model.stats.Stat;
  * Current formulas were tested to be the best matching retail, damage appears to be identical:<br>
  * For melee skills: 70 * graciaSkillBonus1.10113 * (patk * lvlmod + power) * crit * ss * skillpowerbonus / pdef<br>
  * For ranged skills: 70 * (patk * lvlmod + power + patk + power) * crit * ss * skillpower / pdef<br>
- * @author Nik
+ * @author Nik, Mobius
  */
 public class PhysicalAttack extends AbstractEffect
 {
@@ -51,6 +53,8 @@ public class PhysicalAttack extends AbstractEffect
 	private final Set<AbnormalType> _abnormals;
 	private final double _abnormalDamageMod;
 	private final double _abnormalPowerMod;
+	private final double _raceModifier;
+	private final Set<Race> _races = EnumSet.noneOf(Race.class);
 	
 	public PhysicalAttack(StatSet params)
 	{
@@ -60,6 +64,7 @@ public class PhysicalAttack extends AbstractEffect
 		_criticalChance = params.getDouble("criticalChance", 10);
 		_ignoreShieldDefence = params.getBoolean("ignoreShieldDefence", false);
 		_overHit = params.getBoolean("overHit", false);
+		
 		final String abnormals = params.getString("abnormalType", null);
 		if ((abnormals != null) && !abnormals.isEmpty())
 		{
@@ -71,16 +76,25 @@ public class PhysicalAttack extends AbstractEffect
 		}
 		else
 		{
-			_abnormals = Collections.<AbnormalType> emptySet();
+			_abnormals = Collections.emptySet();
 		}
 		_abnormalDamageMod = params.getDouble("damageModifier", 1);
 		_abnormalPowerMod = params.getDouble("powerModifier", 1);
+		
+		_raceModifier = params.getDouble("raceModifier", 1);
+		if (params.contains("races"))
+		{
+			for (String race : params.getString("races", "").split(";"))
+			{
+				_races.add(Race.valueOf(race));
+			}
+		}
 	}
 	
 	@Override
 	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
 	{
-		return !Formulas.calcPhysicalSkillEvasion(effector, effected, skill);
+		return !Formulas.calcSkillEvasion(effector, effected, skill);
 	}
 	
 	@Override
@@ -114,15 +128,42 @@ public class PhysicalAttack extends AbstractEffect
 		}
 		
 		final double attack = effector.getPAtk() * _pAtkMod;
-		double defence = effected.getPDef() * _pDefMod;
 		
-		if (!_ignoreShieldDefence)
+		final double defenceIgnoreRemoval = effected.getStat().getValue(Stat.DEFENCE_IGNORE_REMOVAL, 1);
+		final double defenceIgnoreRemovalAdd = effected.getStat().getValue(Stat.DEFENCE_IGNORE_REMOVAL_ADD, 0);
+		final double pDefMod = Math.min(1, (defenceIgnoreRemoval - 1) + (_pDefMod));
+		final int pDef = effected.getPDef();
+		double ignoredPDef = pDef - (pDef * pDefMod);
+		if (ignoredPDef > 0)
 		{
-			switch (Formulas.calcShldUse(effector, effected))
+			ignoredPDef = Math.max(0, ignoredPDef - defenceIgnoreRemovalAdd);
+		}
+		double defence = effected.getPDef() - ignoredPDef;
+		
+		final double shieldDefenceIgnoreRemoval = effected.getStat().getValue(Stat.SHIELD_DEFENCE_IGNORE_REMOVAL, 1);
+		final double shieldDefenceIgnoreRemovalAdd = effected.getStat().getValue(Stat.SHIELD_DEFENCE_IGNORE_REMOVAL_ADD, 0);
+		if (!_ignoreShieldDefence || (shieldDefenceIgnoreRemoval > 1) || (shieldDefenceIgnoreRemovalAdd > 0))
+		{
+			final byte shield = Formulas.calcShldUse(effector, effected);
+			switch (shield)
 			{
 				case Formulas.SHIELD_DEFENSE_SUCCEED:
 				{
-					defence += effected.getShldDef();
+					int shieldDef = effected.getShldDef();
+					if (_ignoreShieldDefence)
+					{
+						final double shieldDefMod = Math.max(0, shieldDefenceIgnoreRemoval - 1);
+						double ignoredShieldDef = shieldDef - (shieldDef * shieldDefMod);
+						if (ignoredShieldDef > 0)
+						{
+							ignoredShieldDef = Math.max(0, ignoredShieldDef - shieldDefenceIgnoreRemovalAdd);
+						}
+						defence += shieldDef - ignoredShieldDef;
+					}
+					else
+					{
+						defence += effected.getShldDef();
+					}
 					break;
 				}
 				case Formulas.SHIELD_DEFENSE_PERFECT_BLOCK:
@@ -146,7 +187,7 @@ public class PhysicalAttack extends AbstractEffect
 			final double pvpPveMod = Formulas.calculatePvpPveBonus(effector, effected, skill, true);
 			final double randomMod = effector.getRandomDamageMultiplier();
 			
-			// Skill specific mods.
+			// Skill specific modifiers.
 			boolean hasAbnormalType = false;
 			if (!_abnormals.isEmpty())
 			{
@@ -168,11 +209,11 @@ public class PhysicalAttack extends AbstractEffect
 			{
 				if (effector.isChargedShot(ShotType.SOULSHOTS))
 				{
-					ssmod = 2 * effector.getStat().getValue(Stat.SHOTS_BONUS); // 2.04 for dual weapon?
+					ssmod = 2 * effector.getStat().getValue(Stat.SHOTS_BONUS) * effected.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1); // 2.04 for dual weapon?
 				}
 				else if (effector.isChargedShot(ShotType.BLESSED_SOULSHOTS))
 				{
-					ssmod = 4 * effector.getStat().getValue(Stat.SHOTS_BONUS);
+					ssmod = 4 * effector.getStat().getValue(Stat.SHOTS_BONUS) * effected.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1);
 				}
 			}
 			
@@ -183,6 +224,12 @@ public class PhysicalAttack extends AbstractEffect
 			// Nasseka rev. 10200: generalTraitMod == 0 ? 1 : generalTraitMod (no invulnerable traits).
 			damage = baseMod * (hasAbnormalType ? _abnormalDamageMod : 1) * ssmod * critMod * weaponTraitMod * (generalTraitMod == 0 ? 1 : generalTraitMod) * weaknessMod * attributeMod * pvpPveMod * randomMod;
 			damage *= effector.getStat().getValue(Stat.PHYSICAL_SKILL_POWER, 1);
+			
+			// Apply race modifier.
+			if (_races.contains(effected.getRace()))
+			{
+				damage *= _raceModifier;
+			}
 		}
 		
 		effector.doAttack(damage, effected, skill, false, false, critical, false);

@@ -68,7 +68,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PlaySound;
 import org.l2jmobius.gameserver.network.serverpackets.RelationChanged;
 import org.l2jmobius.gameserver.network.serverpackets.SiegeInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Broadcast;
 
 public class Siege implements Siegable
@@ -615,7 +614,7 @@ public class Siege implements Siegable
 						member.startFameTask(Config.CASTLE_ZONE_FAME_TASK_FREQUENCY * 1000, Config.CASTLE_ZONE_FAME_AQUIRE_POINTS);
 					}
 				}
-				member.sendPacket(new UserInfo(member));
+				member.updateUserInfo();
 				World.getInstance().forEachVisibleObject(member, Player.class, player ->
 				{
 					if (!member.isVisibleFor(player))
@@ -675,7 +674,7 @@ public class Siege implements Siegable
 						member.startFameTask(Config.CASTLE_ZONE_FAME_TASK_FREQUENCY * 1000, Config.CASTLE_ZONE_FAME_AQUIRE_POINTS);
 					}
 				}
-				member.sendPacket(new UserInfo(member));
+				member.updateUserInfo();
 				World.getInstance().forEachVisibleObject(member, Player.class, player ->
 				{
 					if (!member.isVisibleFor(player))
@@ -1502,7 +1501,7 @@ public class Siege implements Siegable
 		
 		if (calendar.before(Calendar.getInstance()))
 		{
-			calendar.add(Calendar.WEEK_OF_YEAR, 2);
+			calendar.add(Calendar.WEEK_OF_YEAR, SiegeManager.getInstance().getSiegeCycle());
 		}
 		
 		if (CastleManager.getInstance().getSiegeDates(calendar.getTimeInMillis()) < holder.getMaxConcurrent())

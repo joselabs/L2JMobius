@@ -8,6 +8,7 @@ import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.NextAction;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
+import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -121,7 +122,7 @@ public class ExPetEquipItem implements ClientPacket
 			// Don't allow weapon/shield equipment if a cursed weapon is equipped.
 			if ((item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_L_HAND) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_R_HAND))
 			{
-				if ((player.getActiveWeaponItem() != null) && (player.getActiveWeaponItem().getId() == 9819))
+				if ((player.getActiveWeaponItem() != null) && (player.getActiveWeaponItem().getId() == FortManager.ORC_FORTRESS_FLAG))
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 					return;

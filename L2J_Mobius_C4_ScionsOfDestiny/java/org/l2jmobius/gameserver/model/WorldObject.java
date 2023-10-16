@@ -61,13 +61,11 @@ public abstract class WorldObject
 	
 	public void onActionShift(GameClient client)
 	{
-		// Like L2OFF send to Player
-		onActionShift(client.getPlayer());
+		final Player player = client.getPlayer();
+		onActionShift(player);
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
-	/**
-	 * @param player
-	 */
 	public void onActionShift(Player player)
 	{
 		player.sendPacket(ActionFailed.STATIC_PACKET);

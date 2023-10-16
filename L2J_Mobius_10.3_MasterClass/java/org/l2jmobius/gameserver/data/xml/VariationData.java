@@ -47,7 +47,8 @@ public class VariationData implements IXmlReader
 {
 	private static final Logger LOGGER = Logger.getLogger(VariationData.class.getSimpleName());
 	
-	private final Map<Integer, Variation> _variations = new ConcurrentHashMap<>();
+	private final Map<Integer, Set<Integer>> _itemGroups = new HashMap<>();
+	private final Map<Integer, List<Variation>> _variations = new ConcurrentHashMap<>();
 	private final Map<Integer, Map<Integer, VariationFee>> _fees = new ConcurrentHashMap<>();
 	
 	protected VariationData()
@@ -58,9 +59,11 @@ public class VariationData implements IXmlReader
 	@Override
 	public void load()
 	{
+		_itemGroups.clear();
 		_variations.clear();
 		_fees.clear();
 		parseDatapackFile("data/stats/augmentation/Variations.xml");
+		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _itemGroups.size() + " item groups.");
 		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _variations.size() + " variations.");
 		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _fees.size() + " fees.");
 	}
@@ -73,11 +76,12 @@ public class VariationData implements IXmlReader
 			forEach(listNode, "variations", variationsNode -> forEach(variationsNode, "variation", variationNode ->
 			{
 				final int mineralId = parseInteger(variationNode.getAttributes(), "mineralId");
+				final int itemGroup = parseInteger(variationNode.getAttributes(), "itemGroup", -1);
 				if (ItemTable.getInstance().getTemplate(mineralId) == null)
 				{
 					LOGGER.warning(getClass().getSimpleName() + ": Mineral with item id " + mineralId + " was not found.");
 				}
-				final Variation variation = new Variation(mineralId);
+				final Variation variation = new Variation(mineralId, itemGroup);
 				
 				forEach(variationNode, "optionGroup", groupNode ->
 				{
@@ -139,15 +143,21 @@ public class VariationData implements IXmlReader
 					variation.setEffectGroup(order, new OptionDataGroup(sets));
 				});
 				
-				_variations.put(mineralId, variation);
+				List<Variation> list = _variations.get(mineralId);
+				if (list == null)
+				{
+					list = new ArrayList<>();
+				}
+				list.add(variation);
+				
+				_variations.put(mineralId, list);
 				((EtcItem) ItemTable.getInstance().getTemplate(mineralId)).setMineral();
 			}));
 			
-			final Map<Integer, List<Integer>> itemGroups = new HashMap<>();
 			forEach(listNode, "itemGroups", variationsNode -> forEach(variationsNode, "itemGroup", variationNode ->
 			{
 				final int id = parseInteger(variationNode.getAttributes(), "id");
-				final List<Integer> items = new ArrayList<>();
+				final Set<Integer> items = new HashSet<>();
 				forEach(variationNode, "item", itemNode ->
 				{
 					final int itemId = parseInteger(itemNode.getAttributes(), "id");
@@ -158,13 +168,20 @@ public class VariationData implements IXmlReader
 					items.add(itemId);
 				});
 				
-				itemGroups.put(id, items);
+				if (_itemGroups.containsKey(id))
+				{
+					_itemGroups.get(id).addAll(items);
+				}
+				else
+				{
+					_itemGroups.put(id, items);
+				}
 			}));
 			
 			forEach(listNode, "fees", variationNode -> forEach(variationNode, "fee", feeNode ->
 			{
 				final int itemGroupId = parseInteger(feeNode.getAttributes(), "itemGroup");
-				final List<Integer> itemGroup = itemGroups.get(itemGroupId);
+				final Set<Integer> itemGroup = _itemGroups.get(itemGroupId);
 				final int itemId = parseInteger(feeNode.getAttributes(), "itemId", 0);
 				final long itemCount = parseLong(feeNode.getAttributes(), "itemCount", 0L);
 				final long adenaFee = parseLong(feeNode.getAttributes(), "adenaFee", 0L);
@@ -233,9 +250,30 @@ public class VariationData implements IXmlReader
 		return new VariationInstance(variation.getMineralId(), option1, option2);
 	}
 	
-	public Variation getVariation(int mineralId)
+	public Variation getVariation(int mineralId, Item item)
 	{
-		return _variations.get(mineralId);
+		final List<Variation> variations = _variations.get(mineralId);
+		if ((variations == null) || variations.isEmpty())
+		{
+			return null;
+		}
+		
+		for (Variation variation : variations)
+		{
+			final Set<Integer> group = _itemGroups.get(variation.getItemGroup());
+			if ((group != null) && group.contains(item.getId()))
+			{
+				return variation;
+			}
+		}
+		
+		return variations.get(0);
+	}
+	
+	public boolean hasVariation(int mineralId)
+	{
+		final List<Variation> variations = _variations.get(mineralId);
+		return (variations != null) && !variations.isEmpty();
 	}
 	
 	public VariationFee getFee(int itemId, int mineralId)

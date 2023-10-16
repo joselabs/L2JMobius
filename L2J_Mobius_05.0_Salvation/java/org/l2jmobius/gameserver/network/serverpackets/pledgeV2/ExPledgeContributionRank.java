@@ -56,16 +56,32 @@ public class ExPledgeContributionRank extends ServerPacket
 				writeInt(order++); // Order?
 				writeString(String.format("%1$-" + 24 + "s", player.getName()));
 				writeInt(player.getPledgeType());
-				writeInt(player.getClanContribution());
-				writeInt(player.getClanContributionTotal());
+				if (_cycle == 1)
+				{
+					writeInt(player.getClanContribution());
+					writeInt(player.getClanContributionTotal());
+				}
+				else if (_cycle == 0)
+				{
+					writeInt(player.getClanContributionPrevious());
+					writeInt(player.getClanContributionTotalPrevious());
+				}
 			}
 			else
 			{
 				writeInt(order++); // Order?
 				writeString(String.format("%1$-" + 24 + "s", member.getName()));
 				writeInt(member.getPledgeType());
-				writeInt(member.getClanContribution());
-				writeInt(member.getClanContributionTotal());
+				if (_cycle == 1)
+				{
+					writeInt(member.getClanContribution());
+					writeInt(member.getClanContributionTotal());
+				}
+				else if (_cycle == 0)
+				{
+					writeInt(member.getClanContributionPrevious());
+					writeInt(member.getClanContributionTotalPrevious());
+				}
 			}
 		}
 	}

@@ -24,6 +24,7 @@ import java.util.concurrent.ScheduledFuture;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.ai.AttackableAI;
+import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
 import org.l2jmobius.gameserver.enums.ShortcutType;
@@ -40,8 +41,6 @@ import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExSendUIEvent;
-import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
-import org.l2jmobius.gameserver.network.serverpackets.ShortCutRegister;
 import org.l2jmobius.gameserver.network.serverpackets.huntingzones.TimedHuntingZoneExit;
 
 import instances.AbstractInstance;
@@ -79,7 +78,6 @@ public class TimedHunting extends AbstractInstance
 		SKILL_REPLACEMENTS.put(16, 45200); // Mortal Blow
 		SKILL_REPLACEMENTS.put(56, 45201); // Power Shot
 		SKILL_REPLACEMENTS.put(29, 45202); // Iron Punch
-		SKILL_REPLACEMENTS.put(5, 45203); // Double Sonic Slash
 		SKILL_REPLACEMENTS.put(261, 45204); // Triple Sonic Slash
 		SKILL_REPLACEMENTS.put(19, 45205); // Double Shot
 		SKILL_REPLACEMENTS.put(190, 45206); // Fatal Strike
@@ -92,7 +90,7 @@ public class TimedHunting extends AbstractInstance
 		SKILL_REPLACEMENTS.put(401, 45213); // Judgment
 		SKILL_REPLACEMENTS.put(984, 45215); // Shield Strike
 		SKILL_REPLACEMENTS.put(1632, 45216); // Deadly Strike
-		SKILL_REPLACEMENTS.put(45184, 45217); // Guard Crush
+		SKILL_REPLACEMENTS.put(45187, 45217); // Guard Crush
 		SKILL_REPLACEMENTS.put(1230, 45218); // Prominence
 		SKILL_REPLACEMENTS.put(1235, 45219); // Hydro Blast
 		SKILL_REPLACEMENTS.put(1239, 45220); // Hurricane
@@ -106,19 +104,30 @@ public class TimedHunting extends AbstractInstance
 		SKILL_REPLACEMENTS.put(45163, 45229); // Soul Spark
 		SKILL_REPLACEMENTS.put(45168, 45230); // Twin Shot
 		SKILL_REPLACEMENTS.put(1148, 45231); // Death Spike
-		SKILL_REPLACEMENTS.put(1234, 45232); // Vampiric Claw
 		SKILL_REPLACEMENTS.put(1031, 45261); // Divine Strike
 		SKILL_REPLACEMENTS.put(45241, 45262); // Divine Beam
-		SKILL_REPLACEMENTS.put(45247, 45263); // Vampiric Touch
 		SKILL_REPLACEMENTS.put(1090, 45265); // Life Drain
 		SKILL_REPLACEMENTS.put(777, 45266); // Demolition Impact
 		SKILL_REPLACEMENTS.put(45249, 45267); // Earth Tremor
 		SKILL_REPLACEMENTS.put(348, 45268); // Spoil Crush
 		SKILL_REPLACEMENTS.put(45303, 45360); // Wipeout
 		SKILL_REPLACEMENTS.put(36, 45386); // Spinning Slasher
+		SKILL_REPLACEMENTS.put(45402, 45397); // Frantic Pace
 		SKILL_REPLACEMENTS.put(47011, 47015); // Freezing Wound
+		SKILL_REPLACEMENTS.put(47005, 47095); // Triple Blow
+		SKILL_REPLACEMENTS.put(47279, 47434); // Knight's Assault
+		SKILL_REPLACEMENTS.put(45377, 47435); // Ethereal Strike
+		SKILL_REPLACEMENTS.put(45378, 47436); // Flame Explosion
+		SKILL_REPLACEMENTS.put(45379, 47437); // Water Explosion
+		SKILL_REPLACEMENTS.put(45380, 47438); // Thunder Explosion
+		SKILL_REPLACEMENTS.put(45381, 47439); // Void Explosion
+		SKILL_REPLACEMENTS.put(45301, 47470); // Punishment
 		SKILL_REPLACEMENTS.put(47801, 47891); // Piercing
+		SKILL_REPLACEMENTS.put(47802, 47892); // Amazing Piercing
 		SKILL_REPLACEMENTS.put(47805, 47893); // Wild Scratch
+		SKILL_REPLACEMENTS.put(47806, 47893); // Shadow Scratch
+		SKILL_REPLACEMENTS.put(921, 47998); // Spike Thrust
+		SKILL_REPLACEMENTS.put(87006, 87018); // Fatal Crush
 	}
 	
 	public TimedHunting()
@@ -222,51 +231,38 @@ public class TimedHunting extends AbstractInstance
 		// Replace normal skills.
 		for (Entry<Integer, Integer> entry : SKILL_REPLACEMENTS.entrySet())
 		{
-			final int normalSkillId = entry.getKey().intValue();
-			player.addReplacedSkill(normalSkillId);
+			final Integer normalSkillId = entry.getKey();
+			final Integer transcendentSkillId = entry.getValue();
+			player.addReplacedSkill(normalSkillId, transcendentSkillId);
 			final Skill knownSkill = player.getKnownSkill(normalSkillId);
 			if (knownSkill == null)
 			{
 				continue;
 			}
 			
-			final int transcendentSkillId = entry.getValue().intValue();
 			player.addSkill(SkillData.getInstance().getSkill(transcendentSkillId, knownSkill.getLevel(), knownSkill.getSubLevel()), false);
 			for (Shortcut shortcut : player.getAllShortCuts())
 			{
-				if ((shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == normalSkillId))
+				if (shortcut.isAutoUse() && (shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == normalSkillId))
 				{
-					final Shortcut newShortcut = new Shortcut(shortcut.getSlot(), shortcut.getPage(), ShortcutType.SKILL, transcendentSkillId, shortcut.getLevel(), shortcut.getSubLevel(), shortcut.getCharacterType());
-					if (shortcut.isAutoUse())
+					if (knownSkill.isBad())
 					{
-						newShortcut.setAutoUse(true);
-						if (knownSkill.isBad())
+						if (player.getAutoUseSettings().getAutoSkills().contains(normalSkillId))
 						{
-							if (player.getAutoUseSettings().getAutoSkills().contains(normalSkillId))
-							{
-								player.getAutoUseSettings().getAutoSkills().add(transcendentSkillId);
-								player.getAutoUseSettings().getAutoSkills().remove(Integer.valueOf(normalSkillId));
-							}
-						}
-						else if (player.getAutoUseSettings().getAutoBuffs().contains(normalSkillId))
-						{
-							player.getAutoUseSettings().getAutoBuffs().add(transcendentSkillId);
-							player.getAutoUseSettings().getAutoBuffs().remove(normalSkillId);
+							player.getAutoUseSettings().getAutoSkills().add(transcendentSkillId);
+							player.getAutoUseSettings().getAutoSkills().remove(normalSkillId);
 						}
 					}
-					player.deleteShortCut(shortcut.getSlot(), shortcut.getPage());
-					player.registerShortCut(newShortcut);
-					player.sendPacket(new ShortCutRegister(newShortcut));
+					else if (player.getAutoUseSettings().getAutoBuffs().contains(normalSkillId))
+					{
+						player.getAutoUseSettings().getAutoBuffs().add(transcendentSkillId);
+						player.getAutoUseSettings().getAutoBuffs().remove(normalSkillId);
+					}
 				}
 			}
 			player.removeSkill(knownSkill, false);
 		}
 		player.sendSkillList();
-		ThreadPool.schedule(() ->
-		{
-			player.sendPacket(new ShortCutInit(player));
-			player.restoreAutoShortcutVisual();
-		}, 1100);
 	}
 	
 	@Override
@@ -285,52 +281,38 @@ public class TimedHunting extends AbstractInstance
 		// Restore normal skills.
 		for (Entry<Integer, Integer> entry : SKILL_REPLACEMENTS.entrySet())
 		{
-			final int transcendentSkillId = entry.getValue().intValue();
+			final Integer transcendentSkillId = entry.getValue();
 			final Skill knownSkill = player.getKnownSkill(transcendentSkillId);
 			if (knownSkill == null)
 			{
 				continue;
 			}
 			
-			final int normalSkillId = entry.getKey().intValue();
+			final Integer normalSkillId = entry.getKey();
 			player.removeReplacedSkill(normalSkillId);
 			player.addSkill(SkillData.getInstance().getSkill(normalSkillId, knownSkill.getLevel(), knownSkill.getSubLevel()), false);
 			for (Shortcut shortcut : player.getAllShortCuts())
 			{
-				if ((shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == transcendentSkillId))
+				if (shortcut.isAutoUse() && (shortcut.getType() == ShortcutType.SKILL) && (shortcut.getId() == transcendentSkillId))
 				{
-					final Shortcut newShortcut = new Shortcut(shortcut.getSlot(), shortcut.getPage(), ShortcutType.SKILL, normalSkillId, shortcut.getLevel(), shortcut.getSubLevel(), shortcut.getCharacterType());
-					if (shortcut.isAutoUse())
+					if (knownSkill.isBad())
 					{
-						newShortcut.setAutoUse(true);
-						if (knownSkill.isBad())
+						if (player.getAutoUseSettings().getAutoSkills().contains(transcendentSkillId))
 						{
-							if (player.getAutoUseSettings().getAutoSkills().contains(transcendentSkillId))
-							{
-								player.getAutoUseSettings().getAutoSkills().add(normalSkillId);
-								player.getAutoUseSettings().getAutoSkills().remove(Integer.valueOf(transcendentSkillId));
-							}
-						}
-						else if (player.getAutoUseSettings().getAutoBuffs().contains(transcendentSkillId))
-						{
-							player.getAutoUseSettings().getAutoBuffs().add(normalSkillId);
-							player.getAutoUseSettings().getAutoBuffs().remove(transcendentSkillId);
+							player.getAutoUseSettings().getAutoSkills().add(normalSkillId);
+							player.getAutoUseSettings().getAutoSkills().remove(transcendentSkillId);
 						}
 					}
-					player.deleteShortCut(shortcut.getSlot(), shortcut.getPage());
-					player.registerShortCut(newShortcut);
-					player.sendPacket(new ShortCutRegister(newShortcut));
+					else if (player.getAutoUseSettings().getAutoBuffs().contains(transcendentSkillId))
+					{
+						player.getAutoUseSettings().getAutoBuffs().add(normalSkillId);
+						player.getAutoUseSettings().getAutoBuffs().remove(transcendentSkillId);
+					}
 				}
 			}
-			
 			player.removeSkill(knownSkill, false);
 		}
 		player.sendSkillList();
-		ThreadPool.schedule(() ->
-		{
-			player.sendPacket(new ShortCutInit(player));
-			player.restoreAutoShortcutVisual();
-		}, 1100);
 	}
 	
 	private void startEvent(Player player)
@@ -355,12 +337,17 @@ public class TimedHunting extends AbstractInstance
 						{
 							player.getInstanceWorld().spawnGroup("treasures");
 						}
+						if (getRandom(7) == 0)
+						{
+							player.getInstanceWorld().spawnGroup("guardian");
+						}
 						for (Npc npc : player.getInstanceWorld().spawnGroup("monsters"))
 						{
 							if (npc.isAttackable())
 							{
 								((AttackableAI) npc.getAI()).setGlobalAggro(0);
 								((Attackable) npc).addDamageHate(player, 0, 9999);
+								npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK);
 							}
 						}
 					}

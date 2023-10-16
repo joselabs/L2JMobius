@@ -49,7 +49,9 @@ public class ClanMember
 	private int _apprentice;
 	private int _sponsor;
 	private int _clanContribution = -1;
+	private int _clanContributionPrevious = -1;
 	private int _clanContributionTotal = -1;
+	private int _clanContributionTotalPrevious = -1;
 	
 	/**
 	 * Used to restore a clan member from the database.
@@ -852,6 +854,70 @@ public class ClanMember
 		}
 		
 		return _clanContribution;
+	}
+	
+	public int getClanContributionPrevious()
+	{
+		if (_clanContributionPrevious == -1)
+		{
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement ps = con.prepareStatement("SELECT * FROM character_variables WHERE charId=? AND var=?"))
+			{
+				ps.setInt(1, _objectId);
+				ps.setString(2, PlayerVariables.CLAN_CONTRIBUTION_PREVIOUS);
+				try (ResultSet result = ps.executeQuery())
+				{
+					if (result.next())
+					{
+						_clanContributionPrevious = result.getInt("val");
+					}
+				}
+			}
+			catch (SQLException e)
+			{
+				LOGGER.log(Level.WARNING, "Could not load Previous Clan Contribution: " + e.getMessage(), e);
+			}
+			
+			// Avoid further queries.
+			if (_clanContributionPrevious == -1)
+			{
+				_clanContributionPrevious = 0;
+			}
+		}
+		
+		return _clanContributionPrevious;
+	}
+	
+	public int getClanContributionTotalPrevious()
+	{
+		if (_clanContributionTotalPrevious == -1)
+		{
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement ps = con.prepareStatement("SELECT * FROM character_variables WHERE charId=? AND var=?"))
+			{
+				ps.setInt(1, _objectId);
+				ps.setString(2, PlayerVariables.CLAN_CONTRIBUTION_TOTAL_PREVIOUS);
+				try (ResultSet result = ps.executeQuery())
+				{
+					if (result.next())
+					{
+						_clanContributionTotalPrevious = result.getInt("val");
+					}
+				}
+			}
+			catch (SQLException e)
+			{
+				LOGGER.log(Level.WARNING, "Could not load Previous Clan Contribution Total: " + e.getMessage(), e);
+			}
+			
+			// Avoid further queries.
+			if (_clanContributionTotalPrevious == -1)
+			{
+				_clanContributionTotalPrevious = 0;
+			}
+		}
+		
+		return _clanContributionTotalPrevious;
 	}
 	
 	public void setClanContributionTotal(int value)

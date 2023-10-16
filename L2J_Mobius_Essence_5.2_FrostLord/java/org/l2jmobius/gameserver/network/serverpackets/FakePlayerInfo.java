@@ -89,7 +89,7 @@ public class FakePlayerInfo extends ServerPacket
 		writeString(_npc.getName());
 		writeShort(_npc.getRace().ordinal());
 		writeByte(_npc.getTemplate().getSex() == Sex.FEMALE);
-		writeInt(_fpcHolder.getClassId());
+		writeInt(_fpcHolder.getClassId().getRootClassId().getId());
 		writeInt(0); // Inventory.PAPERDOLL_UNDER
 		writeInt(_fpcHolder.getEquipHead());
 		writeInt(_fpcHolder.getEquipRHand());
@@ -161,7 +161,7 @@ public class FakePlayerInfo extends ServerPacket
 		writeByte(_npc.isInsideZone(ZoneId.WATER));
 		writeShort(_fpcHolder.getRecommends());
 		writeInt(0); // getMountNpcId() == 0 ? 0 : getMountNpcId() + 1000000
-		writeInt(_fpcHolder.getClassId());
+		writeInt(_fpcHolder.getClassId().getId());
 		writeInt(0);
 		writeByte(_fpcHolder.getWeaponEnchantLevel()); // isMounted() ? 0 : _enchantLevel
 		writeByte(_npc.getTeam().getId());
@@ -198,8 +198,18 @@ public class FakePlayerInfo extends ServerPacket
 		{
 			writeShort(AbnormalVisualEffect.STEALTH.getClientId());
 		}
-		writeByte(0); // cocPlayer.getPosition()
+		
+		writeByte(0); // isTrueHero() ? 100 : 0
 		writeByte((_fpcHolder.getHair() > 0) || (_fpcHolder.getEquipHair2() > 0));
 		writeByte(0); // Used Ability Points
+		writeInt(0); // CursedWeaponClassId
+		
+		writeInt(0); // AFK animation.
+		
+		writeInt(0); // Rank.
+		writeShort(0);
+		writeByte(0);
+		writeInt(_fpcHolder.getClassId().getId());
+		writeByte(0);
 	}
 }

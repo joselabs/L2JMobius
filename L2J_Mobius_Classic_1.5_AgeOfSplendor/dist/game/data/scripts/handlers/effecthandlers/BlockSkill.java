@@ -16,7 +16,9 @@
  */
 package handlers.effecthandlers;
 
-import org.l2jmobius.commons.util.CommonUtil;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
@@ -28,32 +30,36 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
 
 /**
- * Block Skills by isMagic type.
- * @author Nik
+ * Block Skills by isMagic type or skill id.
+ * @author Nik, Mobius
  */
 public class BlockSkill extends AbstractEffect
 {
-	private final int[] _magicTypes;
+	private final Set<Integer> _magicTypes = new HashSet<>();
+	private final Set<Integer> _skillIds = new HashSet<>();
 	
 	public BlockSkill(StatSet params)
 	{
-		_magicTypes = params.getIntArray("magicTypes", ";");
-	}
-	
-	private TerminateReturn onSkillUseEvent(OnCreatureSkillUse event)
-	{
-		if (CommonUtil.contains(_magicTypes, event.getSkill().getMagicType()))
+		if (params.contains("magicTypes"))
 		{
-			return new TerminateReturn(true, true, true);
+			for (int id : params.getIntArray("magicTypes", ";"))
+			{
+				_magicTypes.add(id);
+			}
 		}
-		
-		return null;
+		if (params.contains("skillIds"))
+		{
+			for (int id : params.getIntArray("skillIds", ";"))
+			{
+				_skillIds.add(id);
+			}
+		}
 	}
 	
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if ((_magicTypes == null) || (_magicTypes.length == 0))
+		if (_magicTypes.isEmpty() && _skillIds.isEmpty())
 		{
 			return;
 		}
@@ -65,5 +71,15 @@ public class BlockSkill extends AbstractEffect
 	public void onExit(Creature effector, Creature effected, Skill skill)
 	{
 		effected.removeListenerIf(EventType.ON_CREATURE_SKILL_USE, listener -> listener.getOwner() == this);
+	}
+	
+	private TerminateReturn onSkillUseEvent(OnCreatureSkillUse event)
+	{
+		if (_magicTypes.contains(event.getSkill().getMagicType()) || _skillIds.contains(event.getSkill().getId()))
+		{
+			return new TerminateReturn(true, true, true);
+		}
+		
+		return null;
 	}
 }

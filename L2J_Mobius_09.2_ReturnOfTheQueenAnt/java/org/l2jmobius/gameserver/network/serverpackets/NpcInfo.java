@@ -25,6 +25,7 @@ import org.l2jmobius.gameserver.data.xml.NpcNameLocalisationData;
 import org.l2jmobius.gameserver.enums.NpcInfoType;
 import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.actor.Npc;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
@@ -55,38 +56,6 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 	private int _clanId = 0;
 	private int _statusMask = 0;
 	private final Set<AbnormalVisualEffect> _abnormalVisualEffects;
-	private String[] _localisation;
-	
-	public void setLang(String lang)
-	{
-		_localisation = NpcNameLocalisationData.getInstance().getLocalisation(lang, _npc.getId());
-		if (_localisation != null)
-		{
-			if (!containsMask(NpcInfoType.NAME))
-			{
-				addComponentType(NpcInfoType.NAME);
-			}
-			_blockSize -= _npc.getName().length() * 2;
-			_blockSize += _localisation[0].length() * 2;
-			if (!_localisation[1].equals(""))
-			{
-				if (!containsMask(NpcInfoType.TITLE))
-				{
-					addComponentType(NpcInfoType.TITLE);
-				}
-				final String title = _npc.getTitle();
-				_initSize -= title.length() * 2;
-				if (title.equals(""))
-				{
-					_initSize += _localisation[1].length() * 2;
-				}
-				else
-				{
-					_initSize += title.replace(NpcData.getInstance().getTemplate(_npc.getId()).getTitle(), _localisation[1]).length() * 2;
-				}
-			}
-		}
-	}
 	
 	public NpcInfo(Npc npc)
 	{
@@ -265,6 +234,47 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 	@Override
 	public void write()
 	{
+		// Localisation related.
+		String[] localisation = null;
+		if (Config.MULTILANG_ENABLE)
+		{
+			final Player player = getPlayer();
+			if (player != null)
+			{
+				final String lang = player.getLang();
+				if ((lang != null) && !lang.equals("en"))
+				{
+					localisation = NpcNameLocalisationData.getInstance().getLocalisation(lang, _npc.getId());
+					if (localisation != null)
+					{
+						if (!containsMask(NpcInfoType.NAME))
+						{
+							addComponentType(NpcInfoType.NAME);
+						}
+						_blockSize -= _npc.getName().length() * 2;
+						_blockSize += localisation[0].length() * 2;
+						if (!localisation[1].equals(""))
+						{
+							if (!containsMask(NpcInfoType.TITLE))
+							{
+								addComponentType(NpcInfoType.TITLE);
+							}
+							final String title = _npc.getTitle();
+							_initSize -= title.length() * 2;
+							if (title.equals(""))
+							{
+								_initSize += localisation[1].length() * 2;
+							}
+							else
+							{
+								_initSize += title.replace(NpcData.getInstance().getTemplate(_npc.getId()).getTitle(), localisation[1]).length() * 2;
+							}
+						}
+					}
+				}
+			}
+		}
+		
 		ServerPackets.NPC_INFO.writeId(this);
 		writeInt(_npc.getObjectId());
 		writeByte(_npc.isShowSummonAnimation() ? 2 : 0); // // 0=teleported 1=default 2=summoned
@@ -284,15 +294,15 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 		{
 			String title = _npc.getTitle();
 			// Localisation related.
-			if ((_localisation != null) && !_localisation[1].equals(""))
+			if ((localisation != null) && !localisation[1].equals(""))
 			{
 				if (title.equals(""))
 				{
-					title = _localisation[1];
+					title = localisation[1];
 				}
 				else
 				{
-					title = title.replace(NpcData.getInstance().getTemplate(_npc.getId()).getTitle(), _localisation[1]);
+					title = title.replace(NpcData.getInstance().getTemplate(_npc.getId()).getTitle(), localisation[1]);
 				}
 			}
 			writeString(title);
@@ -400,7 +410,7 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (containsMask(NpcInfoType.NAME))
 		{
-			writeString(_localisation != null ? _localisation[0] : _npc.getName());
+			writeString(localisation != null ? localisation[0] : _npc.getName());
 		}
 		if (containsMask(NpcInfoType.NAME_NPCSTRINGID))
 		{

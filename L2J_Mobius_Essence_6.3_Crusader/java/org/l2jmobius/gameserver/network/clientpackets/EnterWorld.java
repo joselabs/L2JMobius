@@ -42,6 +42,7 @@ import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.instancemanager.FortSiegeManager;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
 import org.l2jmobius.gameserver.instancemanager.MailManager;
+import org.l2jmobius.gameserver.instancemanager.PcCafePointsManager;
 import org.l2jmobius.gameserver.instancemanager.PetitionManager;
 import org.l2jmobius.gameserver.instancemanager.PunishmentManager;
 import org.l2jmobius.gameserver.instancemanager.ServerRestartManager;
@@ -114,11 +115,13 @@ import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
 import org.l2jmobius.gameserver.network.serverpackets.SkillCoolTime;
 import org.l2jmobius.gameserver.network.serverpackets.SkillList;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
+import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.attendance.ExVipAttendanceItemList;
 import org.l2jmobius.gameserver.network.serverpackets.collection.ExCollectionActiveEvent;
 import org.l2jmobius.gameserver.network.serverpackets.collection.ExCollectionInfo;
 import org.l2jmobius.gameserver.network.serverpackets.dailymission.ExConnectedTimeAndGettableReward;
 import org.l2jmobius.gameserver.network.serverpackets.dailymission.ExOneDayReceiveRewardList;
+import org.l2jmobius.gameserver.network.serverpackets.enchant.challengepoint.ExEnchantChallengePointInfo;
 import org.l2jmobius.gameserver.network.serverpackets.friend.L2FriendList;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSimpleInfo;
 import org.l2jmobius.gameserver.network.serverpackets.limitshop.ExBloodyCoinCount;
@@ -186,7 +189,7 @@ public class EnterWorld implements ClientPacket
 		LoginServerThread.getInstance().sendClientTracert(player.getAccountName(), adress);
 		client.setClientTracert(_tracert);
 		
-		player.broadcastUserInfo();
+		player.sendPacket(new UserInfo(player));
 		
 		// Restore to instanced area if enabled
 		if (Config.RESTORE_PLAYER_INSTANCE)
@@ -200,10 +203,13 @@ public class EnterWorld implements ClientPacket
 			vars.remove("INSTANCE_RESTORE");
 		}
 		
-		player.updatePvpTitleAndColor(false);
+		if (!player.isGM())
+		{
+			player.updatePvpTitleAndColor(false);
+		}
 		
 		// Apply special GM properties to the GM when entering
-		if (player.isGM())
+		else
 		{
 			gmStartupProcess:
 			{
@@ -417,6 +423,9 @@ public class EnterWorld implements ClientPacket
 		// Send VIP/Premium Info
 		player.sendPacket(new ExBrPremiumState(player));
 		
+		// Send Challenge Point info.
+		player.sendPacket(new ExEnchantChallengePointInfo(player));
+		
 		// Send Unread Mail Count
 		if (MailManager.getInstance().hasUnreadPost(player))
 		{
@@ -504,7 +513,7 @@ public class EnterWorld implements ClientPacket
 			final NpcHtmlMessage notice = new NpcHtmlMessage();
 			notice.setFile(player, "data/html/clanNotice.htm");
 			notice.replace("%clan_name%", player.getClan().getName());
-			notice.replace("%notice_text%", player.getClan().getNotice().replaceAll("\r\n", "<br>"));
+			notice.replace("%notice_text%", player.getClan().getNotice().replaceAll("(\r\n|\n)", "<br>"));
 			notice.disableValidation();
 			player.sendPacket(notice);
 		}
@@ -559,7 +568,7 @@ public class EnterWorld implements ClientPacket
 		}
 		
 		// remove combat flag before teleporting
-		if (player.getInventory().getItemByItemId(9819) != null)
+		if (player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG) != null)
 		{
 			final Fort fort = FortManager.getInstance().getFort(player);
 			if (fort != null)
@@ -568,9 +577,9 @@ public class EnterWorld implements ClientPacket
 			}
 			else
 			{
-				final long slot = player.getInventory().getSlotFromItem(player.getInventory().getItemByItemId(9819));
+				final long slot = player.getInventory().getSlotFromItem(player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG));
 				player.getInventory().unEquipItemInBodySlot(slot);
-				player.destroyItem("CombatFlag", player.getInventory().getItemByItemId(9819), null, true);
+				player.destroyItem("CombatFlag", player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG), null, true);
 			}
 		}
 		
@@ -592,8 +601,8 @@ public class EnterWorld implements ClientPacket
 						|| ((item.getTemplate().getType2() == ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > EnchantItemGroupsData.getInstance().getMaxAccessoryEnchant())) //
 						|| (item.isArmor() && (item.getTemplate().getType2() != ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > EnchantItemGroupsData.getInstance().getMaxArmorEnchant()))))
 				{
+					PacketLogger.info("Over-enchanted (+" + item.getEnchantLevel() + ") " + item + " has been removed from " + player);
 					player.getInventory().destroyItem("Over-enchant protection", item, player, null);
-					PacketLogger.info("Over-enchanted " + item + " has been removed from " + player);
 					punish = true;
 				}
 			}
@@ -870,6 +879,11 @@ public class EnterWorld implements ClientPacket
 		
 		// EnterWorld has finished.
 		player.setEnteredWorld();
+		
+		if ((player.hasPremiumStatus() || !Config.PC_CAFE_ONLY_PREMIUM) && Config.PC_CAFE_RETAIL_LIKE)
+		{
+			PcCafePointsManager.getInstance().run(player);
+		}
 	}
 	
 	/**

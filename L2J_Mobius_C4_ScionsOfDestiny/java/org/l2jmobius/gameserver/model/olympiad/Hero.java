@@ -41,7 +41,6 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowInfoUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * @author godson
@@ -291,7 +290,6 @@ public class Hero
 						iu.addRemovedItem(item);
 						player.sendPacket(iu);
 					}
-					player.sendPacket(new UserInfo(player));
 					player.broadcastUserInfo();
 				}
 				catch (NullPointerException e)
@@ -350,7 +348,6 @@ public class Hero
 					sm.addNumber(1000);
 					clan.broadcastToOnlineMembers(sm);
 				}
-				player.sendPacket(new UserInfo(player));
 				player.broadcastUserInfo();
 			}
 			else

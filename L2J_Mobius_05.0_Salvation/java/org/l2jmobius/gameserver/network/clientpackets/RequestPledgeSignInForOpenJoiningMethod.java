@@ -76,7 +76,7 @@ public class RequestPledgeSignInForOpenJoiningMethod implements ClientPacket
 					player.sendPacket(sm);
 					return;
 				}
-				if (clan.getSubPledgeMembersCount(Clan.PLEDGE_CLASS_COMMON) >= ClanLevelData.getCommonMemberLimit(pledgeRecruitInfo.getClan().getLevel()))
+				if (clan.getSubPledgeMembersCount(Clan.PLEDGE_CLASS_COMMON) >= ClanLevelData.getInstance().getCommonMemberLimit(pledgeRecruitInfo.getClan().getLevel()))
 				{
 					final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_FULL_AND_CANNOT_ACCEPT_ADDITIONAL_CLAN_MEMBERS_AT_THIS_TIME);
 					sm.addString(clan.getName());

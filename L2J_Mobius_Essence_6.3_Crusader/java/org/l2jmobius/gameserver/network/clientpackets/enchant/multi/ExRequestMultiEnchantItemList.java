@@ -17,12 +17,14 @@
 package org.l2jmobius.gameserver.network.clientpackets.enchant.multi;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
+import org.l2jmobius.gameserver.data.xml.EnchantChallengePointData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
 import org.l2jmobius.gameserver.model.World;
@@ -40,6 +42,7 @@ import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.enchant.EnchantResult;
+import org.l2jmobius.gameserver.network.serverpackets.enchant.challengepoint.ExEnchantChallengePointInfo;
 import org.l2jmobius.gameserver.network.serverpackets.enchant.multi.ExResultMultiEnchantItemList;
 import org.l2jmobius.gameserver.network.serverpackets.enchant.multi.ExResultSetMultiEnchantItemList;
 import org.l2jmobius.gameserver.network.serverpackets.enchant.single.ChangedEnchantTargetItemProbabilityList;
@@ -56,6 +59,7 @@ public class ExRequestMultiEnchantItemList implements ClientPacket
 	private final Map<Integer, String> _result = new HashMap<>();
 	private final Map<Integer, int[]> _successEnchant = new HashMap<>();
 	private final Map<Integer, Integer> _failureEnchant = new HashMap<>();
+	final Map<Integer, Integer> failChallengePointInfoList = new LinkedHashMap<>();
 	
 	/**
 	 * @code slot_id @code item_holder
@@ -83,6 +87,7 @@ public class ExRequestMultiEnchantItemList implements ClientPacket
 		{
 			return;
 		}
+		player.getChallengeInfo().setChallengePointsPendingRecharge(-1, -1);
 		
 		final EnchantItemRequest request = player.getRequest(EnchantItemRequest.class);
 		if (request == null)
@@ -254,7 +259,12 @@ public class ExRequestMultiEnchantItemList implements ClientPacket
 						}
 						else
 						{
-							// Enchant failed, destroy item.
+							final int[] challengePoints = EnchantChallengePointData.getInstance().handleFailure(player, enchantItem);
+							if ((challengePoints[0] != -1) && (challengePoints[1] != -1))
+							{
+								failChallengePointInfoList.compute(challengePoints[0], (k, v) -> v == null ? challengePoints[1] : v + challengePoints[1]);
+							}
+							
 							if (player.getInventory().destroyItem("Enchant", enchantItem, player, null) == null)
 							{
 								// Unable to destroy item, cheater?
@@ -359,7 +369,7 @@ public class ExRequestMultiEnchantItemList implements ClientPacket
 			}
 			else
 			{
-				player.sendPacket(new ExResultMultiEnchantItemList(player, true));
+				player.sendPacket(new ExResultMultiEnchantItemList(player, _successEnchant, _failureEnchant, failChallengePointInfoList, true));
 				player.sendPacket(new ShortCutInit(player));
 				return;
 			}
@@ -381,8 +391,9 @@ public class ExRequestMultiEnchantItemList implements ClientPacket
 			request.setMultiFailureEnchantList(_failureEnchant);
 		}
 		
-		player.sendPacket(new ExResultMultiEnchantItemList(player, _successEnchant, _failureEnchant));
+		player.sendPacket(new ExResultMultiEnchantItemList(player, _successEnchant, _failureEnchant, failChallengePointInfoList, true));
 		player.sendPacket(new ShortCutInit(player));
+		player.sendPacket(new ExEnchantChallengePointInfo(player));
 	}
 	
 	public int getMultiEnchantingSlotByObjectId(EnchantItemRequest request, int objectId)

@@ -91,7 +91,7 @@
 		<set name="is_questitem" val="true" />
 	</item>
 	<item id="49506" name="Fishing Rod" additionalName="10-day" type="Weapon">
-		<!-- A Fishing Rod for 10 days. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. Float usage: 1 -->
+		<!-- A Fishing Rod for 10 days. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. Consumes 1 Fishing Shot. -->
 		<set name="icon" val="icon.weapon_fishing_rod_i03" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="FISHINGROD" />
@@ -188,7 +188,6 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
@@ -199,7 +198,6 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="20160" />
 		<set name="immediate_effect" val="true" />
@@ -218,6 +216,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49470" min="1" max="1" chance="100" /> <!-- Shining Pendant Polish -->
+		</capsuled_items>
 	</item>
 	<item id="49514" name="Agathion - Aries" additionalName="60-day" type="Armor">
 		<!-- 60-day item. Bracelet that can be used to summon Agathion - Aries. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. <Active Skill>. Agathion Teleport: grants the ability to teleport to Gludio / Dion / Giran / Oren. (Cooldown: 30 minutes). <Item Skill>. 1. Aries Power: increases STR / INT / CON / MEN by 1. -->
@@ -289,9 +291,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="86400" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49514" min="1" max="1" chance="100" /> <!-- Agathion - Aries - 60-day -->
+		</capsuled_items>
 	</item>
 	<item id="49521" name="Refined Romantic Chapeau" additionalName="Special Trait" type="Armor">
-		<!-- Refined Romantic Chapeau Grants STR +1, INT +1 when equipped. Enables to use Refined Romantic Chapeau Skill: Teleport (Cooldown: 2 hours). Occupies two slots for headpieces. -->
+		<!-- Refined Romantic Chapeau Grants STR +1, INT +1 when equipped. Enables to use Refined Romantic Chapeau Skill: Teleport (Cooldown: 2 hours). Occupies 2 Hair Accessory slots. -->
 		<set name="icon" val="icon.accessory_archer_hat2_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hairall" />
@@ -300,7 +306,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="49522" name="Pirate King Hat" additionalName="Special Trait" type="Armor">
-		<!-- Pirate Captain Hat. Grants STR +1, INT +1 when equipped. Enables to use Pirate Captain Hat Skill: Teleport (Cooldown: 2 hours). Occupies two slots for headpieces. -->
+		<!-- Pirate Captain Hat. Grants STR +1, INT +1 when equipped. Enables to use Pirate Captain Hat Skill: Teleport (Cooldown: 2 hours). Occupies 2 Hair Accessory slots. -->
 		<set name="icon" val="BranchSys2.icon.zaken_hair_accessary" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hairall" />
@@ -309,7 +315,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="49523" name="Circlet of Devil" additionalName="Special Trait" type="Armor">
-		<!-- Circlet of Devil. When equipped: STR +1, INT +1. Enables to use Circlet of Devil Skill: Teleport (Cooldown: 2 hours). Occupies two slots for headpieces. -->
+		<!-- Circlet of Devil. When equipped: STR +1, INT +1. Enables to use Circlet of Devil Skill: Teleport (Cooldown: 2 hours). Occupies 2 Hair Accessory slots. -->
 		<set name="icon" val="icon.Accessary_demon_circlet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hairall" />
@@ -332,7 +338,6 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -356,6 +361,11 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="13015" min="1" max="1" chance="100" /> <!-- My Teleport Book -->
+			<item id="13016" min="10" max="10" chance="100" /> <!-- My Teleport Scroll -->
+		</capsuled_items>
 	</item>
 	<item id="49528" name="Pirate Healing Potion" type="EtcItem">
 		<!-- Instantly restores character's HP. Can't be used at full HP. -->
@@ -437,10 +447,16 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49506" min="1" max="1" chance="100" /> <!-- Fishing Rod - 10-day -->
+			<item id="49508" min="2160" max="2160" chance="100" /> <!-- Normal Bait - Event -->
+			<item id="49487" min="3" max="3" chance="100" /> <!-- Soulshot Ticket -->
+			<item id="49495" min="1" max="1" chance="100" /> <!-- Hero's Dual Swords - 15-day -->
+		</capsuled_items>
 	</item>
 	<item id="49536" name="Box of Scroll of Escape to the Base" type="EtcItem">
 		<!-- Double-click to get 1 Scroll of Escape to Dragon Valley Bridge, to Antharas' Lair, to the Entrance of Cruma Tower, to the Entrance of Orc Barracks, to the Entrance of Magic Valley. Cannot be exchanged, dropped or sold in a private store. Can be stored in a private warehouse. -->
@@ -450,9 +466,16 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49537" min="1" max="1" chance="100" /> <!-- Teleport: Dragon Valley Bridge -->
+			<item id="49538" min="1" max="1" chance="100" /> <!-- Teleport: Antharas' Lair -->
+			<item id="49539" min="1" max="1" chance="100" /> <!-- Teleport: Entrance to Cruma Tower -->
+			<item id="49540" min="1" max="1" chance="100" /> <!-- Teleport: Entrance to Orc Barracks -->
+			<item id="49550" min="1" max="1" chance="100" /> <!-- Teleport Device - Entrance to Enchanted Valley -->
+		</capsuled_items>
 	</item>
 	<item id="49537" name="Teleport: Dragon Valley Bridge" type="EtcItem">
 		<!-- Magic Scroll. Teleports its owner to the Dragon Valley Bridge. -->
@@ -497,7 +520,6 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -509,14 +531,20 @@
 		<!-- Magic scroll, restoring 50% of XP and resurrecting the character. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.etc_scroll_of_resurrection_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="120" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<skills>
+			<skill id="39109" level="1" /> <!-- Improved Scroll of Resurrection -->
+		</skills>
 	</item>
 	<item id="49543" name="Elemental Stone" type="EtcItem">
 		<!-- A stone containing incredible power. -->
@@ -767,10 +795,15 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49466" min="1" max="1" chance="100" /> <!-- Warrior Experience Rune - 30-day -->
+			<item id="21468" min="1" max="1" chance="100" /> <!-- Sheep Hat - 14-day -->
+			<item id="49031" min="1" max="1" chance="100" /> <!-- Ring of Heir -->
+		</capsuled_items>
 	</item>
 	<item id="49566" name="Roa's Gift" additionalName="Event" type="EtcItem">
 		<!-- Roa's Gift. This is the gift she put her soul into. Double-click the chest to receive Ticket for Soulshot, Buff Scrolls Chest, Scroll of Escape Chest to the Base, Fishing kit, Feather of Blessing, or Spellbook Box. Cannot be exchanged, dropped, or sold in a private store. Can be stored in a private warehouse. <Note>. Be careful before opening the items as their relocation is restricted. -->
@@ -838,6 +871,8 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="ensoulNormalSlots" val="1" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="time" val="43200" />
 		<stats>
 			<stat type="pAtk">155</stat>
@@ -1055,9 +1090,12 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39113" level="1" /> <!-- Golden Necklace of Mermaid -->
+		</skills>
 	</item>
 	<item id="49586" name="Mermaid's Golden Fishing Rod" additionalName="30-day" type="Weapon">
 		<!-- 30-day item. Mermaid's Golden Fishing Rod. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. Bobber usage: 1. Enables to teleport to Giran/Gludin. Cooldown: 1 min. -->
@@ -1070,7 +1108,6 @@
 		<set name="weight" val="1000" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<stats>
@@ -1083,7 +1120,7 @@
 		</stats>
 	</item>
 	<item id="49587" name="Mermaid's Golden Fishing Rod" type="Weapon">
-		<!-- Mermaid's Golden Fishing Rod. Bobber usage: 1. Enables to teleport to Giran/Gludin. Cooldown: 1 min. -->
+		<!-- Mermaid's Golden Fishing Rod. Consumes 1 Fishing Shot. Enables to teleport to Giran/Gludin. Cooldown: 1 min. -->
 		<set name="icon" val="icon.bm_gold_fishing_pole" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="FISHINGROD" />
@@ -1113,6 +1150,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49586" min="1" max="1" chance="100" /> <!-- Mermaid's Golden Fishing Rod - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="49589" name="Golden Bait" type="EtcItem">
 		<!-- Fishing Bait. Can be used for fishing Whales. Cannot be dropped. -->
@@ -1134,6 +1175,14 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="49591" min="1" max="1" chance="33.33333" /> <!-- Refined Queen Ant's Ring - 30-day -->
+			<item id="49592" min="1" max="1" chance="33.33333" /> <!-- Refined Orfen's Earring - 30-day -->
+			<item id="49593" min="1" max="1" chance="33.33333" /> <!-- Refined Ring of Core - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="49591" name="Refined Queen Ant's Ring" additionalName="30-day" type="Armor">
 		<!-- 30-day item. MP +21, Poison Chance and Resistance +20%, P/M Accuracy +3, P/M Attack +7%, Crit. Attack Power +10%, M. Crit. Attack Power +5%. The effect doesn't stack if two identical rings are worn. Cannot be enchanted. Cannot be enchanted. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. -->

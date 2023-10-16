@@ -102,7 +102,7 @@
 		</stats>
 	</item>
 	<item id="49507" name="Fishing Rod Chest (10-day)" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_box_of_adventure_1_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -191,7 +191,7 @@
 		</skills>
 	</item>
 	<item id="49513" name="Shining Pendant Polish box" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -359,13 +359,18 @@
 		</skills>
 	</item>
 	<item id="49527" name="My Teleport Pack" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i01" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="13015" min="1" max="1" chance="100" /> <!-- My Teleport Book (Exchangeable) -->
+			<item id="13016" min="10" max="10" chance="100" /> <!-- My Teleport Scroll -->
+		</capsuled_items>
 	</item>
 	<item id="49528" name="Pirate Healing Potion" type="EtcItem">
 		<!-- Restores 600 HP. The remaining points are used to restore CP. -->
@@ -416,7 +421,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="49533" name="Quick Hero Healing Potion" type="EtcItem">
-		<!-- Momentarily recovers 500 HP. If HP is full, CP is recovered. -->
+		<!-- Restores 500 HP. The remaining points are used to restore CP. -->
 		<set name="icon" val="icon.etc_potion_gold_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -439,7 +444,7 @@
 		<set name="time" val="10080" />
 	</item>
 	<item id="49535" name="Fishing kit of the Hero Who Came Back" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_elite_marguene_collection_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -451,13 +456,13 @@
 		<set name="is_freightable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49487" min="3" max="3" chance="100" /> <!-- Soulshot Ticket (Tradable within account) Sealed -->
-			<item id="49506" min="1" max="1" chance="100" /> <!-- Fishing Rod 10-day -->
-			<item id="49508" min="2160" max="2160" chance="100" /> <!-- Normal Bait Sealed -->
+			<item id="49487" min="3" max="3" chance="100" /> <!-- Soulshot Ticket (Tradable within account) -->
+			<item id="49506" min="1" max="1" chance="100" /> <!-- Fishing Rod - 10 days -->
+			<item id="49508" min="2160" max="2160" chance="100" /> <!-- Normal Bait - Event -->
 		</capsuled_items>
 	</item>
 	<item id="49536" name="Box of Scroll of Escape to the Base" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_treasure_box_i04" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -468,10 +473,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49537" min="1" max="1" chance="100" /> <!-- Teleport: Dragon Valley Bridge -->
-			<item id="49538" min="1" max="1" chance="100" /> <!-- Teleport: Antharas' Lair -->
-			<item id="49539" min="1" max="1" chance="100" /> <!-- Teleport: Entrance to Cruma Tower -->
-			<item id="49540" min="1" max="1" chance="100" /> <!-- Teleport: Entrance to Orc Barracks -->
+			<item id="49537" min="1" max="1" chance="100" /> <!-- Scroll of Escape: Dragon Valley Bridge (Exchangeable) -->
+			<item id="49538" min="1" max="1" chance="100" /> <!-- Scroll of Escape: Antharas' Lair -->
+			<item id="49539" min="1" max="1" chance="100" /> <!-- Teleport: Entrance to Cruma Tower (Exchangeable) -->
+			<item id="49540" min="1" max="1" chance="100" /> <!-- Scroll of Escape: Entrance to Orc Barracks -->
 		</capsuled_items>
 	</item>
 	<item id="49537" name="Teleport: Dragon Valley Bridge" type="EtcItem">
@@ -796,9 +801,15 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49466" min="1" max="1" chance="100" /> <!-- Hero's XP Amulet - 30-day -->
+			<item id="21468" min="1" max="1" chance="100" /> <!-- Sheep Hat - 14 days -->
+			<item id="49031" min="1" max="1" chance="100" /> <!-- Ring of Heir -->
+		</capsuled_items>
 	</item>
 	<item id="49566" name="Roa's Gift" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_ev_draco_gift_box" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -806,6 +817,17 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="49487" min="1" max="1" chance="16.66667" /> <!-- Soulshot Ticket (Tradable within account) -->
+			<item id="49494" min="1" max="1" chance="16.66667" /> <!-- Buff Scroll Chest -->
+			<item id="49536" min="1" max="1" chance="16.66667" /> <!-- Box of Scroll of Escape to Base -->
+			<item id="49490" min="1" max="1" chance="16.66667" /> <!-- Fishing Kit -->
+			<item id="10649" min="1" max="1" chance="16.66667" /> <!-- Feather of Blessing -->
+			<item id="49541" min="1" max="1" chance="16.66667" /> <!-- Spellbook Chest -->
+		</capsuled_items>
 	</item>
 	<item id="49567" name="Something Roa lost" additionalName="Event" type="EtcItem">
 		<!-- An item lost by Character Helper Roa. Bring it back to her to obtain valuable gifts. The exchange is available only once a day. Will be removed after the event. -->
@@ -1033,7 +1055,7 @@
 		</stats>
 	</item>
 	<item id="49583" name="Golden Mermaid's Fishing Supplies Chest" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.etc_treasure_box_i08" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1129,7 +1151,7 @@
 		<set name="time" val="43200" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49586" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod 30-day -->
+			<item id="49586" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod - 30-day -->
 		</capsuled_items>
 	</item>
 	<item id="49589" name="Golden Bait" type="EtcItem">
@@ -1154,9 +1176,9 @@
 		<set name="time" val="43200" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49591" min="1" max="1" chance="100" /> <!-- Refined Queen Ant's Ring 30-day -->
-			<item id="49592" min="1" max="1" chance="100" /> <!-- Refined Orfen's Earring 30-day -->
-			<item id="49593" min="1" max="1" chance="100" /> <!-- Refined Ring of Core 30-day -->
+			<item id="49591" min="1" max="1" chance="100" /> <!-- Queen Ant's Ring Lv. 3 - 30-day -->
+			<item id="49592" min="1" max="1" chance="100" /> <!-- Orfen's Earring Lv. 3 - 30-day -->
+			<item id="49593" min="1" max="1" chance="100" /> <!-- Ring of Core Lv. 3 - 30-day -->
 		</capsuled_items>
 	</item>
 	<item id="49591" name="Refined Queen Ant's Ring" additionalName="30-day" type="Armor">

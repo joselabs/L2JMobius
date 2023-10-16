@@ -41,21 +41,23 @@ import org.l2jmobius.gameserver.model.skill.targets.TargetType;
  */
 public class SummonNpc extends AbstractEffect
 {
-	private int _despawnDelay;
+	private final int _despawnDelay;
 	private final int _npcId;
 	private final int _npcCount;
 	private final boolean _randomOffset;
 	private final boolean _isSummonSpawn;
 	private final boolean _singleInstance; // Only one instance of this NPC is allowed.
+	private final boolean _isAggressive;
 	
 	public SummonNpc(StatSet params)
 	{
-		_despawnDelay = params.getInt("despawnDelay", 20000);
+		_despawnDelay = params.getInt("despawnDelay", 0);
 		_npcId = params.getInt("npcId", 0);
 		_npcCount = params.getInt("npcCount", 1);
 		_randomOffset = params.getBoolean("randomOffset", false);
 		_isSummonSpawn = params.getBoolean("isSummonSpawn", false);
 		_singleInstance = params.getBoolean("singleInstance", false);
+		_isAggressive = params.getBoolean("aggressive", true); // Used by Decoy.
 	}
 	
 	@Override
@@ -124,11 +126,23 @@ public class SummonNpc extends AbstractEffect
 			y += (Rnd.nextBoolean() ? Rnd.get(20, 50) : Rnd.get(-50, -20));
 		}
 		
+		// If only single instance is allowed, delete previous NPCs.
+		if (_singleInstance)
+		{
+			for (Npc npc : player.getSummonedNpcs())
+			{
+				if (npc.getId() == _npcId)
+				{
+					npc.deleteMe();
+				}
+			}
+		}
+		
 		switch (npcTemplate.getType())
 		{
 			case "Decoy":
 			{
-				final Decoy decoy = new Decoy(npcTemplate, player, _despawnDelay);
+				final Decoy decoy = new Decoy(npcTemplate, player, _despawnDelay > 0 ? _despawnDelay : 20000, _isAggressive);
 				decoy.setCurrentHp(decoy.getMaxHp());
 				decoy.setCurrentMp(decoy.getMaxMp());
 				decoy.setHeading(player.getHeading());
@@ -137,7 +151,7 @@ public class SummonNpc extends AbstractEffect
 				decoy.spawnMe(x, y, z);
 				break;
 			}
-			case "EffectPoint": // TODO: Implement proper signet skills.
+			case "EffectPoint":
 			{
 				final EffectPoint effectPoint = new EffectPoint(npcTemplate, player);
 				effectPoint.setCurrentHp(effectPoint.getMaxHp());
@@ -146,8 +160,13 @@ public class SummonNpc extends AbstractEffect
 				effectPoint.setSummoner(player);
 				effectPoint.setTitle(player.getName());
 				effectPoint.spawnMe(x, y, z);
-				_despawnDelay = effectPoint.getParameters().getInt("despawn_time", 0) * 1000;
-				if (_despawnDelay > 0)
+				// First consider NPC template despawn_time parameter.
+				final long despawnTime = (long) (effectPoint.getParameters().getFloat("despawn_time", 0) * 1000);
+				if (despawnTime > 0)
+				{
+					effectPoint.scheduleDespawn(despawnTime);
+				}
+				else if (_despawnDelay > 0) // Use skill despawnDelay parameter.
 				{
 					effectPoint.scheduleDespawn(_despawnDelay);
 				}
@@ -169,18 +188,6 @@ public class SummonNpc extends AbstractEffect
 				spawn.setXYZ(x, y, z);
 				spawn.setHeading(player.getHeading());
 				spawn.stopRespawn();
-				
-				// If only single instance is allowed, delete previous NPCs.
-				if (_singleInstance)
-				{
-					for (Npc npc : player.getSummonedNpcs())
-					{
-						if (npc.getId() == _npcId)
-						{
-							npc.deleteMe();
-						}
-					}
-				}
 				
 				final Npc npc = spawn.doSpawn(_isSummonSpawn);
 				player.addSummonedNpc(npc); // npc.setSummoner(player);

@@ -49,7 +49,7 @@ public class AdminMassRecall implements IAdminCommandHandler
 				final Clan clan = ClanTable.getInstance().getClanByName(val);
 				if (clan == null)
 				{
-					BuilderUtil.sendSysMessage(activeChar, "This clan doesn't exists.");
+					BuilderUtil.sendSysMessage(activeChar, "This clan doesn't exist.");
 					return true;
 				}
 				
@@ -71,7 +71,7 @@ public class AdminMassRecall implements IAdminCommandHandler
 				final Clan clan = ClanTable.getInstance().getClanByName(val);
 				if (clan == null)
 				{
-					BuilderUtil.sendSysMessage(activeChar, "This clan doesn't exists.");
+					BuilderUtil.sendSysMessage(activeChar, "This clan doesn't exist.");
 					return true;
 				}
 				

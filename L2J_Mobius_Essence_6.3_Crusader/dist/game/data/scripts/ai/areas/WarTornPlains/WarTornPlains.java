@@ -34,20 +34,21 @@ public class WarTornPlains extends AbstractNpcAI
 	private static final int HATAR_RATMAN_THIEF = 20661;
 	private static final int HATAR_RATMAN_BOSS = 20662;
 	private static final int HATAR_HANISHEE = 20663;
-	private static final int DEPRIVE = 20664;
-	private static final int TAIK_ORC_SUPPLY = 20665;
+	private static final int DEMONIC_EYE = 20664;
+	private static final int TAIK_ORC_ELDER = 20665;
+	private static final int FARCRAN = 20667;
 	// Guard
 	private static final int FIERCE_GUARD = 22103;
 	
 	private WarTornPlains()
 	{
-		addKillId(GRAVEYARD_WANDERER, ARCHER_OF_GREED, HATAR_RATMAN_THIEF, HATAR_RATMAN_BOSS, HATAR_HANISHEE, DEPRIVE, TAIK_ORC_SUPPLY);
+		addKillId(GRAVEYARD_WANDERER, ARCHER_OF_GREED, HATAR_RATMAN_THIEF, HATAR_RATMAN_BOSS, HATAR_HANISHEE, DEMONIC_EYE, TAIK_ORC_ELDER, FARCRAN);
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		if (getRandom(100) < 50)
+		if (getRandom(100) < 10)
 		{
 			final Npc spawnBanshee = addSpawn(FIERCE_GUARD, npc, false, 300000);
 			final Playable attacker = isSummon ? killer.getServitors().values().stream().findFirst().orElse(killer.getPet()) : killer;

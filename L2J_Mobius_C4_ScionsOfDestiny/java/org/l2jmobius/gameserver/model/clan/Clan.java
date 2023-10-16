@@ -56,7 +56,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListUpdate
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 public class Clan
 {
@@ -368,7 +367,7 @@ public class Clan
 		player.setClan(this);
 		player.setPledgeClass(member.calculatePledgeClass(player));
 		player.sendPacket(new PledgeShowMemberListUpdate(player));
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		player.rewardSkills();
 	}
 	
@@ -1611,7 +1610,7 @@ public class Clan
 				if (cm.isOnline() && (cm.getPowerGrade() == rank) && (cm.getPlayer() != null))
 				{
 					cm.getPlayer().setClanPrivileges(privs);
-					cm.getPlayer().sendPacket(new UserInfo(cm.getPlayer()));
+					cm.getPlayer().updateUserInfo();
 				}
 			}
 			broadcastClanStatus();
@@ -2075,9 +2074,8 @@ public class Clan
 		setAllyPenaltyExpiryTime(0, 0);
 		updateClanInDB();
 		
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		
-		//
 		player.sendMessage("Alliance " + allyName + " has been created.");
 	}
 	

@@ -269,7 +269,7 @@ public class ClanHall extends AbstractResidence
 			
 			final int failDays = getCostFailDay();
 			final long time = failDays > 0 ? (failDays > 8 ? Instant.now().toEpochMilli() : Instant.ofEpochMilli(_paidUntil).plus(Duration.ofDays(failDays + 1)).toEpochMilli()) : _paidUntil;
-			_checkPaymentTask = ThreadPool.schedule(new CheckPaymentTask(), time - System.currentTimeMillis());
+			_checkPaymentTask = ThreadPool.schedule(new CheckPaymentTask(), Math.max(0, time - System.currentTimeMillis()));
 		}
 		else
 		{

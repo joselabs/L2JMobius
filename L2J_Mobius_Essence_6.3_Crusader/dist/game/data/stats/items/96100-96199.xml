@@ -11,13 +11,21 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="96101" name="Battle Support Cube - 10 Charges (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to obtain the following items. <Guaranteed> Daily Supply Box <Special> When used 1 time: 1st Use Special Supply Box When used 5 times: 5th Use Special Supply Box When used 10 times: 10th Use Special Supply Box Can be used only once a day. Can be used up to 10 times in total. -->
+		<!-- Double-click to obtain the following items. <Guaranteed>. Daily Supply Box. <Special>. When used 1 time: 1st Use Special Supply Box. When used 5 times: 5th Use Special Supply Box. When used 10 times: 10th Use Special Supply Box. Can be used only once a day. Can be used up to 10 times in total. -->
 		<set name="icon" val="icon.star_agathion_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96111" min="1" max="1" chance="100000000" /> <!-- Daily Supply Box (Time-limited) - Sealed -->
+			<item id="96115" min="1" max="1" chance="100000000" /> <!-- 1st Use Special Supply Box (Time-limited) - Sealed -->
+			<item id="96116" min="1" max="1" chance="100000000" /> <!-- 5th Use Special Supply Box (Time-limited) - Sealed -->
+			<item id="96117" min="1" max="1" chance="100000000" /> <!-- 10th Use Special Supply Box (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96102" name="Torn Map Piece 1 (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- An unknown map filled with notes. -->
@@ -84,7 +92,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="96108" name="Battle Support Scroll (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Applies a buff when used. <Buff effect> STR/ INT +1 DEX/ WIT +1 CON/ MEN +1 Sayha's Grace Consumption -20% Duration: 180 min. Cooldown: 1 min. The effect remains after death. <font color=ff6666>Note!</font> Cannot be used while Sayla's Grace is active. -->
+		<!-- Applies a buff when used. <Buff effect>. STR/ INT +1. DEX/ WIT +1. CON/ MEN +1. Sayha's Grace Consumption -20%. Duration: 180 min. Cooldown: 1 min. The effect remains after death. <font color=ff6666>Note!</font>. Cannot be used while Sayla's Grace is active. -->
 		<set name="icon" val="icon.etc_pvppoint_scroll1" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -134,7 +142,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="96113" name="Sayha's Grace Scroll (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Applies a buff when used. <Buff> Temporarily maintains Sayha's Grace. Duration: 60 min. Cooldown: 1 min. The effect remains after death. -->
+		<!-- Applies a buff when used. <Buff>. Temporarily maintains Sayha's Grace. Duration: 60 min. Cooldown: 1 min. The effect remains after death. -->
 		<set name="icon" val="icon.ev_sayha_gold_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -144,7 +152,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="96114" name="Fragment of Grace (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Can be obtained for completing daily missions. <How to use> Special Craft - Sayha's Grace Scroll -->
+		<!-- Can be obtained for completing daily missions. <How to use>. Special Craft - Sayha's Grace Scroll -->
 		<set name="icon" val="icon.cube_piece_ag" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -193,6 +201,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96123" min="1" max="1" chance="100" /> <!-- +5 Time-limited A-grade Weapon Coupon (Time-limited) - Sealed -->
+			<item id="93421" min="1" max="1" chance="100" /> <!-- Valakas' Necklace - Sealed -->
+			<item id="96233" min="1" max="1" chance="100" /> <!-- Enhanced Growth Pack Lv. 55 (Time-limited) - Sealed -->
+			<item id="96222" min="1" max="1" chance="100" /> <!-- Herphah's Equipment Pack Lv. 55 (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96119" name="Kit: New Battle - Adventurer (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -204,6 +220,15 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96177" min="1" max="1" chance="100" /> <!-- Circlet of Hero - 30-day -->
+			<item id="96175" min="1" max="1" chance="100" /> <!-- Talisman of Authority - 30-day -->
+			<item id="96173" min="1" max="1" chance="100" /> <!-- Dragon Belt (Time-limited) - Sealed -->
+			<item id="96172" min="1" max="1" chance="100" /> <!-- Talisman of Eva - 30-day -->
+			<item id="96228" min="1" max="1" chance="100" /> <!-- Special Growth Pack Lv. 85 (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96120" name="Kit: Battle Chronicles (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -246,7 +271,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96122" name="Growth Scroll (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Applies a buff when used. <Buff effect> STR/ INT +1 DEX/ WIT +1 CON/ MEN +1 Sayha's Grace Consumption -20% Duration: 20 min. Cooldown: 1 min. The effect remains after death. <font color=ff6666>Note!</font> Cannot be used while Sayla's Grace is active. -->
+		<!-- Applies a buff when used. <Buff effect>. STR/ INT +1. DEX/ WIT +1. CON/ MEN +1. Sayha's Grace Consumption -20%. Duration: 20 min. Cooldown: 1 min. The effect remains after death. <font color=ff6666>Note!</font>. Cannot be used while Sayla's Grace is active. -->
 		<set name="icon" val="icon.ev_2020_mask_enchant_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -267,7 +292,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96124" name="Elmoreden Tower's Time Stone" additionalName="Sealed" type="EtcItem">
-		<!-- Prolongs your session zone's raid for 60 min. <Hunting zone> Elmoreden Tower - World Hunting Zone Note! The item will be deleted after the event (a special announcement will appear). -->
+		<!-- Prolongs your session zone's raid for 60 min. <Hunting zone>. Elmoreden Tower - World Hunting Zone. Note!. The item will be deleted after the event (a special announcement will appear). -->
 		<set name="icon" val="icon.timezone_refill_oman_a_60" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="immediate_effect" val="true" />
@@ -277,9 +302,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
 	</item>
 	<item id="96125" name="Sirra's Blade (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_sirr_blade_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -304,7 +330,7 @@
 		</stats>
 	</item>
 	<item id="96126" name="Themis' Tongue (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_tongue_of_themis_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -330,7 +356,7 @@
 		</stats>
 	</item>
 	<item id="96127" name="Naga's Storm (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_naga_storm_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DAGGER" />
@@ -355,7 +381,7 @@
 		</stats>
 	</item>
 	<item id="96128" name="Éclair Bijou (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. <font color=ff6666><Unavailable to Orcs/ Sylphs/ Dwarves.></font> -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. <font color=ff6666><Unavailable to Orcs/ Sylphs/ Dwarves.></font> -->
 		<set name="icon" val="icon.weapon_greed_stinger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="RAPIER" />
@@ -380,7 +406,7 @@
 		</stats>
 	</item>
 	<item id="96129" name="Sword of Ipos (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_sword_of_ipos_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -405,7 +431,7 @@
 		</stats>
 	</item>
 	<item id="96130" name="Durendal (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. <font color=ff6666><Unavailable to Humans/ Elves/ Dark Elves/ Sylphs/ Vanguard Riders.></font> -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. <font color=ff6666><Unavailable to Humans/ Elves/ Dark Elves/ Sylphs/ Vanguard Riders.></font> -->
 		<set name="icon" val="icon.weapon_death_bringer_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="ANCIENTSWORD" />
@@ -430,7 +456,7 @@
 		</stats>
 	</item>
 	<item id="96131" name="Tallum Blade*Damascus Sword (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
@@ -455,7 +481,7 @@
 		</stats>
 	</item>
 	<item id="96132" name="Barakiel's Axe (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_barakiel_axe_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -480,7 +506,7 @@
 		</stats>
 	</item>
 	<item id="96133" name="Cabrio's Hand (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_hand_of_cabrio_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -506,7 +532,7 @@
 		</stats>
 	</item>
 	<item id="96134" name="Behemoth' Tuning Fork (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_tuning_fork_of_behemoth_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -531,7 +557,7 @@
 		</stats>
 	</item>
 	<item id="96135" name="Daimon Crystal (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_crystal_of_deamon_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -557,7 +583,7 @@
 		</stats>
 	</item>
 	<item id="96136" name="Shyeed's Bow (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_shyid_bow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
@@ -585,7 +611,7 @@
 		</stats>
 	</item>
 	<item id="96137" name="Sobekk's Hurricane (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.weapon_sobekk_hurricane_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="FIST" />
@@ -610,7 +636,7 @@
 		</stats>
 	</item>
 	<item id="96138" name="Tiphon's Spear (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. <font color=ff6666><Unavailable to Sylphs.></font> -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. <font color=ff6666><Unavailable to Sylphs.></font> -->
 		<set name="icon" val="icon.weapon_tiphon_spear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
@@ -638,7 +664,7 @@
 		</stats>
 	</item>
 	<item id="96139" name="Zephyrus (Time-limited)" additionalName="Sealed" type="Weapon">
-		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font> A sealed item can be created in the Weapons tab of the Special Craft window. -->
+		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. Cannot be equipped on a pet. <font color=eeaa22><Permanent item craft></font>. A sealed item can be created in the Weapons tab of the Special Craft window. -->
 		<set name="icon" val="icon.shooter_a_high" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="PISTOLS" />
@@ -698,6 +724,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96125" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Sirra's Blade (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96143" name="Support Box: +5 Themis' Tongue (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -709,6 +740,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96126" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Themis' Tongue (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96144" name="Support Box: +5 Naga's Storm (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -720,6 +756,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96127" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Naga's Storm (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96145" name="Support Box: +5 Éclair Bijou (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -731,6 +772,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96128" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Éclair Bijou (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96146" name="Support Box: +5 Sword of Ipos (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -742,6 +788,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96129" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Sword of Ipos (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96147" name="Support Box: +5 Durendal (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -753,6 +804,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96130" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Durendal (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96148" name="Support Box: +5 Tallum Blade*Damascus Sword (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -764,6 +820,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96131" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Tallum Blade*Damascus Sword (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96149" name="Support Box: +5 Barakiel's Axe (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -775,6 +836,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96132" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Barakiel's Axe (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96150" name="Support Box: +5 Cabrio's Hand (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -786,6 +852,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96133" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Cabrio's Hand (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96151" name="Support Box: +5 Behemoth' Tuning Fork (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -797,6 +868,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96134" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Behemoth' Tuning Fork (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96152" name="Support Box: +5 Daimon Crystal (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -808,6 +884,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96135" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Daimon Crystal (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96153" name="Support Box: +5 Shyeed's Bow (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -819,6 +900,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96136" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Shyeed's Bow (Time-limited) - Sealed -->
+			<item id="96140" min="1" max="1" chance="100" /> <!-- Infinite Mithril Quiver (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96154" name="Support Box: +5 Sobekk's Hurricane (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -830,6 +917,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96137" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Sobekk's Hurricane (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96155" name="Support Box: +5 Tiphon's Spear (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -841,6 +933,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96138" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Tiphon's Spear (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96156" name="Support Box: +5 Zephyrus (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -852,6 +949,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96139" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Zephyrus (Time-limited) - Sealed -->
+			<item id="96141" min="1" max="1" chance="100" /> <!-- A-grade Elemental Orb (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96157" name="Package: +5 Sirra's Blade (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -863,6 +966,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92955" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Sirra's Blade - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96158" name="Package: +5 Themis' Tongue (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -874,6 +982,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92963" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Themis' Tongue - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96159" name="Package: +5 Naga's Storm (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -885,6 +998,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92959" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Naga's Storm - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96160" name="Package: +5 Éclair Bijou (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -896,6 +1014,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92970" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Éclair Bijou - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96161" name="Package: +5 Sword of Ipos (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -907,6 +1030,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92956" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Sword of Ipos - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96162" name="Package: +5 Durendal (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -918,6 +1046,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92967" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Durendal - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96163" name="Package: +5 Tallum Blade*Damascus Sword (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -929,6 +1062,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92966" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Tallum Blade*Damascus Sword - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96164" name="Package: +5 Barakiel's Axe (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -940,6 +1078,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92957" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Barakiel's Axe - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96165" name="Package: +5 Cabrio's Hand (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -951,6 +1094,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92964" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Cabrio's Hand - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96166" name="Package: +5 Behemoth' Tuning Fork (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -962,6 +1110,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92958" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Behemoth' Tuning Fork - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96167" name="Package: +5 Daimon Crystal (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -973,6 +1126,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92965" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Daimon Crystal - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96168" name="Package: +5 Shyeed's Bow (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -984,6 +1142,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92961" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Shyeed's Bow - Sealed -->
+			<item id="95494" min="1" max="1" chance="100" /> <!-- Infinite Mithril Quiver - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96169" name="Package: +5 Sobekk's Hurricane (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -995,6 +1159,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92962" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Sobekk's Hurricane - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96170" name="Package: +5 Tiphon's Spear (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -1006,6 +1175,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92960" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Tiphon's Spear - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96171" name="Package: +5 Zephyrus (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -1017,9 +1191,15 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95420" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Zephyrus - Sealed -->
+			<item id="94895" min="1" max="1" chance="100" /> <!-- A-grade Elemental Orb - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96172" name="Talisman of Eva (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- A talisman that contains the energy of Eva. <font color=ff6666>Note!</font> Effects of two identical talismans do not stack. Cannot be upgraded. -->
+		<!-- A talisman that contains the energy of Eva. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack. Cannot be upgraded. -->
 		<set name="icon" val="icon.bm_eva_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1032,7 +1212,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96173" name="Dragon Belt (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- A belt imbued with dragon power. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. -->
+		<!-- A belt imbued with dragon power. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. -->
 		<set name="icon" val="icon.r2_belt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -1048,7 +1228,7 @@
 		</stats>
 	</item>
 	<item id="96174" name="Cloak of Protection (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. -->
+		<!-- <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. -->
 		<set name="icon" val="icon.bm_2018_sayha_cloak_back_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="back" />
@@ -1061,7 +1241,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96175" name="Talisman of Authority (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- A talisman that contains the energy of authority. <font color=ff6666>Note!</font> Effects of two identical talismans do not stack. Cannot be upgraded. -->
+		<!-- A talisman that contains the energy of authority. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack. Cannot be upgraded. -->
 		<set name="icon" val="icon.sayhas_talisman_new" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1073,7 +1253,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96176" name="Einhasad's Pendant Lv. 2 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <Einhasad's Pendant> M. Def. +20 Acquired XP/ SP +20% Received damage -10% Atk. Spd. +3% Casting Spd. +3% <font color=eeaa22><Permanent item craft></font> Go to the Accessories tab of the Special Craft window. -->
+		<!-- <Einhasad's Pendant>. M. Def. +20. Acquired XP/ SP +20%. Received damage -10%. Atk. Spd. +3%. Casting Spd. +3%. <font color=eeaa22><Permanent item craft></font>. Go to the Accessories tab of the Special Craft window. -->
 		<set name="icon" val="BranchIcon.Icon.bm_pendant_pve_white" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1088,7 +1268,7 @@
 		</stats>
 	</item>
 	<item id="96177" name="Circlet of Hero (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- An enhanced Circlet of Hero. <font color=eeaa22>Equipped in the left head accessory slot.</font> <font color=ff6666>Note!</font> Cannot be enchanted or augmented. -->
+		<!-- An enhanced Circlet of Hero. <font color=eeaa22>Equipped in the left head accessory slot.</font>. <font color=ff6666>Note!</font>. Cannot be enchanted or augmented. -->
 		<set name="icon" val="icon.accessory_barka_karm_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hairall" />
@@ -1110,6 +1290,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96172" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Talisman of Eva - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="96179" name="Support Box: +6 Dragon Belt (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -1121,6 +1306,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96173" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Dragon Belt (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96180" name="Support Box: +6 Talisman of Authority (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -1132,6 +1322,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96175" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Talisman of Authority - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="96181" name="Support Box: +6 Circlet of Hero (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -1143,9 +1338,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96177" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Circlet of Hero - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="96182" name="Brooch Lv. 5 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- When equipped, unlocks 6 jewel slots. Inventory slots +15. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. -->
+		<!-- When equipped, unlocks 6 jewel slots. Inventory slots +15. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. -->
 		<set name="icon" val="icon.etc_bm_brooch_lavianrose_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1158,7 +1358,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96183" name="Opal Lv. 4 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <Properties> Shock/ Pull/ Fear/ Silence/ Paralysis Resistance +12% <Active skill> Grants immunity to debuffs and anomalies for 5 sec. Cooldown: 5 min. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Properties>. Shock/ Pull/ Fear/ Silence/ Paralysis Resistance +12%. <Active skill>. Grants immunity to debuffs and anomalies for 5 sec. Cooldown: 5 min. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_opal_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1171,7 +1371,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96184" name="Coral Lv. 4 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <Properties> Atk. Spd. +7% Casting Spd. +7% <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Properties>. Atk. Spd. +7%. Casting Spd. +7%. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_coral_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1184,7 +1384,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96185" name="Onyx Lv. 4 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <Properties> Soulshot/ Spiritshot damage +8% <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Properties>. Soulshot/ Spiritshot damage +8%. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_onyx_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1197,7 +1397,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96186" name="Spinel Lv. 4 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <Properties> DEX/ WIT +1 CON/ MEN +1 Received P. Critical Damage -4% Received M. Skill Critical Damage -4% P. Def. +100 M. Def. +60 With a certain chance, recovers 30 MP when using skills (cooldown: 3 sec.). <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Crfat windown. <font color=ff6666>Note!</font> Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Properties>. DEX/ WIT +1. CON/ MEN +1. Received P. Critical Damage -4%. Received M. Skill Critical Damage -4%. P. Def. +100. M. Def. +60. With a certain chance, recovers 30 MP when using skills (cooldown: 3 sec.). <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Crfat windown. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1210,7 +1410,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96187" name="Zircon Lv. 4 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <Properties> P. Critical Damage +8% M. Skill Critical Damage +8% <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Properties>. P. Critical Damage +8%. M. Skill Critical Damage +8%. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_bloodstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1223,7 +1423,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96188" name="Moonstone Lv. 4 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <Properties> While Sayha's Grace is active, acquired XP/ SP +8% Sayha's Grace Consumption -10% <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Properties>. While Sayha's Grace is active, acquired XP/ SP +8%. Sayha's Grace Consumption -10%. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_moonstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1236,7 +1436,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96189" name="Agathion Lv. 5 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- Unlocks 5 agathion slots. STR/ INT/ CON/ MEN/ DEX/ WIT +1 Shock/ Sleep/ Silence/ Fear/Paralysis Resistance +8% <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. -->
+		<!-- Unlocks 5 agathion slots. STR/ INT/ CON/ MEN/ DEX/ WIT +1. Shock/ Sleep/ Silence/ Fear/Paralysis Resistance +8%. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. -->
 		<set name="icon" val="icon.pi_high_agathion_bracelet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lbracelet" />
@@ -1249,7 +1449,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="96190" name="Agathion Ignis (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- Equipping it in the main slot summons Agathion Ignis. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=eeaa22>Note!</font> If equipped with Agathion Aquarius or Agathion Leo, only Agathion Ignis is active. -->
+		<!-- Equipping it in the main slot summons Agathion Ignis. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=eeaa22>Note!</font>. If equipped with Agathion Aquarius or Agathion Leo, only Agathion Ignis is active. -->
 		<set name="icon" val="icon.agathion_fire_1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -1266,7 +1466,7 @@
 		</skills>
 	</item>
 	<item id="96191" name="Agathion Nebula (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- Equipping it in the main slot summons Agathion Nebula. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> If equipped with Agathion Scorpio or Agathion Capricorn, only Agathion Nebula is active. -->
+		<!-- Equipping it in the main slot summons Agathion Nebula. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. If equipped with Agathion Scorpio or Agathion Capricorn, only Agathion Nebula is active. -->
 		<set name="icon" val="icon.agathion_water_1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -1283,7 +1483,7 @@
 		</skills>
 	</item>
 	<item id="96192" name="Agathion Procella (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- Equipping it in the main slot summons Agathion Procella. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> If equipped with Agathion Libra or Agathion Sagittarius, only Agathion Procella is active. -->
+		<!-- Equipping it in the main slot summons Agathion Procella. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. If equipped with Agathion Libra or Agathion Sagittarius, only Agathion Procella is active. -->
 		<set name="icon" val="icon.agathion_wind_1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -1300,7 +1500,7 @@
 		</skills>
 	</item>
 	<item id="96193" name="Agathion Petram (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- Equipping it in the main slot summons Agathion Petram. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> If equipped simultaneously with Agathion Taurus or Agathion Virgo, only Agathion Petram will be active. -->
+		<!-- Equipping it in the main slot summons Agathion Petram. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. If equipped simultaneously with Agathion Taurus or Agathion Virgo, only Agathion Petram will be active. -->
 		<set name="icon" val="icon.agathion_earth_1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -1317,7 +1517,7 @@
 		</skills>
 	</item>
 	<item id="96194" name="Agathion Joy (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- Equipping it in the main slot summons Agathion Joy. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> If equipped with Agathion Gemini, only Agathion Joy is active. -->
+		<!-- Equipping it in the main slot summons Agathion Joy. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. If equipped with Agathion Gemini, only Agathion Joy is active. -->
 		<set name="icon" val="icon.pleasure_agathion_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -1334,7 +1534,7 @@
 		</skills>
 	</item>
 	<item id="96195" name="Talisman Bracelet Lv. 5 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- Unlocks 5 talisman slots. <Special effects> HP/ MP Recovery Rate +15%, P. Accuracy +2, M. Accuracy +2, weight limit +10,000. <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. -->
+		<!-- Unlocks 5 talisman slots. <Special effects>. HP/ MP Recovery Rate +15%, P. Accuracy +2, M. Accuracy +2, weight limit +10,000. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. -->
 		<set name="icon" val="icon.dimension_bracelet_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rbracelet" />
@@ -1349,7 +1549,7 @@
 		</skills>
 	</item>
 	<item id="96196" name="Venir's Talisman Lv. 12 (Time-limited)" additionalName="Sealed" type="Armor">
-		<!-- <When equipped> CON +2 MEN +2 DEX +2 WIT +2 STR +2 INT +2 All received Critical Rate -2% P./ M. Skill Cooldown -1% <font color=eeaa22><Permanent item craft></font> Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font> Effects of two identical talismans do not stack. -->
+		<!-- <When equipped>. CON +2. MEN +2. DEX +2. WIT +2. STR +2. INT +2. All received Critical Rate -2%. P./ M. Skill Cooldown -1%. <font color=eeaa22><Permanent item craft></font>. Can be created in the Accessories tab of the Special Craft window. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1370,6 +1570,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92018" min="1" max="1" minEnchant="4" maxEnchant="4" chance="100" /> <!-- Talisman of Eva - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96198" name="Package: +4 Dragon Belt (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -1381,6 +1586,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91862" min="1" max="1" minEnchant="4" maxEnchant="4" chance="100" /> <!-- Dragon Belt - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="96199" name="Package: +4 Cloak of Protection (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -1392,5 +1602,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93301" min="1" max="1" minEnchant="4" maxEnchant="4" chance="100" /> <!-- Cloak of Protection - Sealed -->
+		</capsuled_items>
 	</item>
 </list>

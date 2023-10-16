@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="38400" name="Expertise Rune Pack" additionalName="C-grade" type="EtcItem">
-		<!-- Wrapped Pack containing Expertise Rune (C-grade) (2-hour). -->
+		<!-- Exchange with fishing guild member for Powerful Fish. Wrapped Pack containing Expertise Rune (C-grade) (2-hour). -->
 		<set name="icon" val="icon.etc_equip_item_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -28,7 +28,7 @@
 		</skills>
 	</item>
 	<item id="38402" name="Expertise Rune Pack" additionalName="B-grade" type="EtcItem">
-		<!-- Wrapped Pack containing Expertise Rune (B-grade) (2-hour). -->
+		<!-- Exchange with fishing guild member for Powerful Fish. Wrapped Pack containing Expertise Rune (B-grade) (2-hour). -->
 		<set name="icon" val="icon.etc_equip_item_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -55,7 +55,7 @@
 		</skills>
 	</item>
 	<item id="38404" name="Expertise Rune Pack" additionalName="A-grade" type="EtcItem">
-		<!-- Wrapped Pack containing Expertise Rune (A-grade) (2-hour). -->
+		<!-- Exchange with fishing guild member for Powerful Fish. Wrapped Pack containing Expertise Rune (A-grade) (2-hour). -->
 		<set name="icon" val="icon.etc_equip_item_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -82,7 +82,7 @@
 		</skills>
 	</item>
 	<item id="38406" name="Expertise Rune Pack" additionalName="S-grade" type="EtcItem">
-		<!-- Wrapped Pack containing Expertise Rune (S-grade) (2-hour). -->
+		<!-- Exchange with fishing guild member for Powerful Fish.Wrapped Pack containing Expertise Rune (S-grade) (2-hour). -->
 		<set name="icon" val="icon.etc_equip_item_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -109,7 +109,7 @@
 		</skills>
 	</item>
 	<item id="38408" name="Expertise Rune Pack" additionalName="S80-grade" type="EtcItem">
-		<!-- Wrapped Pack containing Expertise Rune (S80-grade) (2-hour). -->
+		<!-- Exchange with fishing guild member for Powerful Fish. Wrapped Pack containing Expertise Rune (S80-grade) (2-hour). -->
 		<set name="icon" val="icon.etc_equip_item_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -136,7 +136,7 @@
 		</skills>
 	</item>
 	<item id="38410" name="Expertise Rune Pack" additionalName="R-grade" type="EtcItem">
-		<!-- Wrapped Pack containing Expertise Rune (R-grade) (2-hour). -->
+		<!-- Exchange with fishing guild member for Powerful Fish. Wrapped Pack containing Expertise Rune (R-grade) (2-hour). -->
 		<set name="icon" val="icon.etc_equip_item_box_i01" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -163,7 +163,7 @@
 		</skills>
 	</item>
 	<item id="38412" name="Expertise Rune Pack" additionalName="R95-grade" type="EtcItem">
-		<!-- Wrapped Pack containing Expertise Rune (R95-grade) (2-hour). -->
+		<!-- Exchange with fishing guild member for Powerful Fish. Wrapped Pack containing Expertise Rune (R95-grade) (2-hour). -->
 		<set name="icon" val="icon.etc_equip_item_box_i02" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -190,7 +190,7 @@
 		</skills>
 	</item>
 	<item id="38414" name="Expertise Rune Pack" additionalName="R99-grade" type="EtcItem">
-		<!-- Wrapped Pack containing Expertise Rune (R99-grade) (2-hour). -->
+		<!-- Exchange with fishing guild member for Powerful Fish. Wrapped Pack containing Expertise Rune (R99-grade) (2-hour). -->
 		<set name="icon" val="icon.etc_equip_item_box_i03" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -589,7 +589,7 @@
 		</stats>
 	</item>
 	<item id="38434" name="Monster Only: Tiger Polearm" type="Weapon">
-		<!-- Monster weapon. Spear type. -->
+		<!-- Monster weapon. Spear. -->
 		<set name="icon" val="icon.Summon_orc_pole_wp_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -644,7 +644,7 @@
 		</stats>
 	</item>
 	<item id="38437" name="Monster Only: Tiger Staff" type="Weapon">
-		<!-- Monster weapon. Spear type. -->
+		<!-- Monster weapon. Spear. -->
 		<set name="icon" val="icon.Summon_orc_pole_wp_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -669,49 +669,69 @@
 		</stats>
 	</item>
 	<item id="38438" name="Agathion - Blessed Virgo Pack" type="EtcItem">
-		<!-- Wrapped Pack containing Agathion - Blessed Virgo -->
+		<!-- Double-click to obtain Agathion - Blessed Virgo -->
 		<set name="icon" val="icon.etc_exchange_box_i00" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38161" min="1" max="1" chance="100" /> <!-- Agathion - Blessed Virgo -->
+		</capsuled_items>
 	</item>
 	<item id="38439" name="Agathion - Twinkling Virgo Pack" type="EtcItem">
-		<!-- Wrapped Pack containing Agathion - Twinkling Virgo -->
+		<!-- Double-click to obtain Agathion - Twinkling Virgo -->
 		<set name="icon" val="icon.etc_exchange_box_i00" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38162" min="1" max="1" chance="100" /> <!-- Agathion - Twinkling Virgo -->
+		</capsuled_items>
 	</item>
 	<item id="38440" name="Agathion - Radiant Virgo Pack" type="EtcItem">
-		<!-- Wrapped Pack containing Agathion - Radiant Virgo -->
+		<!-- Double-click to obtain Agathion - Radiant Virgo -->
 		<set name="icon" val="icon.etc_exchange_box_i00" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38163" min="1" max="1" chance="100" /> <!-- Agathion - Radiant Virgo -->
+		</capsuled_items>
 	</item>
 	<item id="38441" name="Agathion - Virgo Pack" type="EtcItem">
-		<!-- Wrapped Pack containing Agathion - Virgo. -->
+		<!-- Double-click to obtain Agathion - Virgo. -->
 		<set name="icon" val="icon.etc_exchange_box_i00" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38164" min="1" max="1" chance="100" /> <!-- Agathion - Virgo -->
+		</capsuled_items>
 	</item>
 	<item id="38442" name="Agathion - Faint Virgo Pack" type="EtcItem">
-		<!-- Wrapped Pack containing Agathion - Faint Virgo. -->
+		<!-- Double-click to obtain Agathion - Faint Virgo. -->
 		<set name="icon" val="icon.etc_exchange_box_i00" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38165" min="1" max="1" chance="100" /> <!-- Agathion - Faint Virgo -->
+		</capsuled_items>
 	</item>
 	<item id="38443" name="Monster Only: Centaur Axe" type="Weapon">
 		<!-- Monster weapon. One-handed sword type. -->
@@ -804,7 +824,7 @@
 		</stats>
 	</item>
 	<item id="38447" name="Monster Only: Miniotaur Polearm" type="Weapon">
-		<!-- Monster weapon. Spear type. -->
+		<!-- Monster weapon. Spear. -->
 		<set name="icon" val="icon.Summon_orc_pole_wp_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />

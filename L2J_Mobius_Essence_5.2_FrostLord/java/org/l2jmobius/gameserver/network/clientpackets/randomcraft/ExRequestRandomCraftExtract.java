@@ -46,7 +46,10 @@ public class ExRequestRandomCraftExtract implements ClientPacket
 		{
 			final int objId = packet.readInt();
 			final long count = packet.readLong();
-			_items.put(objId, count);
+			if (count > 1)
+			{
+				_items.put(objId, count);
+			}
 		}
 	}
 	
@@ -76,16 +79,21 @@ public class ExRequestRandomCraftExtract implements ClientPacket
 		for (Entry<Integer, Long> e : _items.entrySet())
 		{
 			final int objId = e.getKey();
-			long count = e.getValue();
+			final long count = e.getValue();
 			if (count < 1)
 			{
 				player.removeRequest(RandomCraftRequest.class);
 				return;
 			}
+			
 			final Item item = player.getInventory().getItemByObjectId(objId);
 			if (item != null)
 			{
-				count = Math.min(item.getCount(), count);
+				if (count > item.getCount())
+				{
+					continue;
+				}
+				
 				toDestroy.put(objId, count);
 				points += RandomCraftData.getInstance().getPoints(item.getId()) * count;
 				fee += RandomCraftData.getInstance().getFee(item.getId()) * count;
@@ -94,6 +102,12 @@ public class ExRequestRandomCraftExtract implements ClientPacket
 			{
 				player.sendPacket(new ExCraftExtract());
 			}
+		}
+		
+		if ((points < 1) || (fee < 0))
+		{
+			player.removeRequest(RandomCraftRequest.class);
+			return;
 		}
 		
 		if (player.reduceAdena("RandomCraft Extract", fee, player, true))

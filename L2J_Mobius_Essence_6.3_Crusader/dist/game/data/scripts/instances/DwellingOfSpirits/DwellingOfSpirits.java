@@ -378,7 +378,10 @@ public class DwellingOfSpirits extends AbstractInstance
 				if (world != null)
 				{
 					final Player plr = world.getPlayers().stream().findAny().get();
-					startQuestTimer("CAST_AQUA_RAGE", 30000 + getRandom(-15000, 15000), npc, plr);
+					if (plr != null)
+					{
+						startQuestTimer("CAST_AQUA_RAGE", 30000 + getRandom(-15000, 15000), npc, plr);
+					}
 					if (npc.getId() == KING_NEBULA)
 					{
 						npc.doCast(AQUA_SUMMON.getSkill());

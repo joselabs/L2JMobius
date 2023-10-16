@@ -53,7 +53,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48706" name="Red Libra Specialty - Vitality Tonic" type="EtcItem">
-		<!-- A specialty traded by the Red Libra Merchants. Restores 1/ 2 of a Vitality Gauge bar. Cooldown is 1 min. Cannot be used in Olympiad. No weekly usage limit. -->
+		<!-- Orc's Special Medium Vitality Tonic. Restores 2 out of the 4 Vitality Gauge bars. Cooldown is 1 min. Cannot be used in Olympiad. The usage limit of 5 times per week does not apply. -->
 		<set name="icon" val="icon.bm_freya_potion" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -69,12 +69,18 @@
 		</skills>
 	</item>
 	<item id="48707" name="Red Libra Specialty - Fishing XP Bonus" additionalName="1-hour" type="EtcItem">
-		<!-- A specialty traded by the Red Libra Merchants. When used, increases Successful Fishing XP by 50% for 1 hour. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- A specialty traded by the Red Libra Merchants. When used. increases Successful Fishing XP by 50% for 1 hour. Applied to all bait. Can be stacked with Angler's Blessing. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39344" level="1" /> <!-- "Red Libra Specialty - Fishing XP Bonus -->
+		</skills>
 	</item>
 	<item id="48708" name="Chronicle Token (30-day) Box" additionalName="Not in Use" type="EtcItem">
 		<!-- Double-click to obtain a 14th Anniversary Rune (30-day). -->
@@ -87,9 +93,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48682" min="1" max="1" chance="100" /> <!-- Freya's Vital Rune - 30 days -->
+		</capsuled_items>
 	</item>
 	<item id="48709" name="Chronicle Token" type="EtcItem">
-		<!-- A 14th Anniversary Rune item. If stored in the inventory, increases P. Atk./ M. Atk./ P. Def./ M. Def./ Atk. Spd./ Casting Spd./ P. Critical Rate/ M. Critical Rate/ Max HP&MP&CP by 5%, and Vitality by 14%. Cannot be used in Olympiad. -->
+		<!-- A 14th Anniversary Rune item. If stored in the inventory, P./ M. Atk., P./ M. Def., Atk. Spd./ Casting Spd., P./ M. Critical Rate, Max HP/ MP/ CP +5% and Vitality Bonus +14%. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.etc_scroll_of_memory_i00" />
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
@@ -127,7 +137,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48712" name="14th Anniversary Gift Box" additionalName="Event" type="EtcItem">
-		<!-- Double-click to receive a gift from the Red Libra Merchants. -->
+		<!-- Double-click to receive supply items prepared by the Red Libra Guild. -->
 		<set name="icon" val="icon.ev_charge_box" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -137,7 +147,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48713" name="14th Anniversary Enchant Scroll Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to earn one of the Enchant Scroll items prepared by the Red Libra Merchants. -->
+		<!-- Double-click to receive enchant scrolls prepared by the Red Libra Guild. -->
 		<set name="icon" val="icon.etc_readybox_gold" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -357,7 +367,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48735" name="Red's Hidden Libra Cube Stage 1" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -367,7 +377,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48736" name="Red's Hidden Libra Cube Stage 2" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -377,7 +387,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48737" name="Red's Hidden Libra Cube Stage 3" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -387,7 +397,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48738" name="Red's Hidden Libra Cube Stage 4" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -397,7 +407,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48739" name="Red's Hidden Special Libra Cube Stage 5" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's 14th Anniversary Gift. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's 14th Anniversary Gift. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -407,7 +417,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48740" name="Red's Hidden Libra Cube Stage 6" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -417,7 +427,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48741" name="Red's Hidden Libra Cube Stage 7" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -427,7 +437,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48742" name="Red's Hidden Libra Cube Stage 8" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -437,7 +447,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48743" name="Red's Hidden Libra Cube Stage 9" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -447,7 +457,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48744" name="Red's Hidden Special Libra Cube Stage 10" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's 14th Anniversary Gift. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's 14th Anniversary Gift. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -457,7 +467,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48745" name="Red's Hidden Libra Cube Stage 11" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -467,7 +477,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48746" name="Red's Hidden Libra Cube Stage 12" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -477,7 +487,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48747" name="Red's Hidden Libra Cube Stage 13" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -487,7 +497,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48748" name="Red's Hidden Libra Cube Stage 14" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -497,7 +507,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48749" name="Red's Hidden Special Libra Cube Stage 15" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's 14th Anniversary Gift. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's 14th Anniversary Gift. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -507,7 +517,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48750" name="Red's Hidden Libra Cube Stage 16" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -517,7 +527,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48751" name="Red's Hidden Libra Cube Stage 17" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -527,7 +537,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48752" name="Red's Hidden Libra Cube Stage 18" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -537,7 +547,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48753" name="Red's Hidden Libra Cube Stage 19" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's special supply items. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -547,7 +557,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48754" name="Red's Hidden Special Libra Cube Stage 20" type="EtcItem">
-		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's 14th Anniversary Gift. On the 2nd use, you can earn a Libra Cube of the next level. -->
+		<!-- A commemorative 14th Anniversary cube item that the Red Libra Merchants prepared. Use it to obtain the Red Libra's 14th Anniversary Gift. On the 2nd use. you can earn a Libra Cube of the next level. -->
 		<set name="icon" val="icon.ev_libra_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -557,7 +567,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="48755" name="Shining Dragon Attribute Tonic (XP)" additionalName="Event" type="EtcItem">
-		<!-- When used, increases Attack Attributes by 70, all Attribute Resistance by 70, and Acquired XP/ SP by 30% for 30 min. Buffs persist after death. Cooldown is 5 min. Cannot be used in Olympiad. -->
+		<!-- When used. increases Attack Attributes by 70. all Defense Attributes by 70, and XP/SP gain by 30% for 30 min. Buffs persist after death. Cooldown is 5 min. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.bm_dragon_posion_special" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -575,7 +585,7 @@
 		</skills>
 	</item>
 	<item id="48756" name="+6 Shiny Elemental Shirt" additionalName="30-day" type="Armor">
-		<!-- A shining magic T-shirt imbued with Einhasad's Energy. <Item Skill>. Increases M. Def. by 14. Increases Speed by 7. Increases Max HP by 531. Increases Max MP by 531. Decreases Skill MP Consumption by 3%. Increases Damage Reflection Resistance by 5. Increases Water/ Fire/ Wind/ Earth/ Holy/ Dark Attack Resistance by 18. Increases STR by 3, DEX by 3, CON by 2, INT by 3, WIT by 3, MEN by 2. <Active Skill>. Einhasad's Wrath -->
+		<!-- Shining magic T-shirt imbued with Einhasad's energy. <Item skill>. M. Def. +14. Speed +7. Max HP/ MP +531, Skill MP Consumption -3%, Damage Reflection Resistance +5. Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +18. STR/ DEX/ INT/ WIT +3, CON/ MEN +2. <Active skill>. Einhasad's Wrath -->
 		<set name="icon" val="icon.ainhasard_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -704,7 +714,7 @@
 		<set name="material" val="FISH" />
 		<skills>
 			<skill id="18814" level="7" /> <!-- Topaz -->
-			<skill id="17701" level="7" />
+			<skill id="17701" level="7" /> <!-- Topaz - Spiritshot -->
 		</skills>
 	</item>
 	<item id="48768" name="Greater Topaz" additionalName="Lv. 3" type="Armor">
@@ -718,7 +728,7 @@
 		<set name="material" val="FISH" />
 		<skills>
 			<skill id="18814" level="8" /> <!-- Topaz -->
-			<skill id="17701" level="8" />
+			<skill id="17701" level="8" /> <!-- Topaz - Spiritshot -->
 		</skills>
 	</item>
 	<item id="48769" name="Greater Topaz" additionalName="Lv. 4" type="Armor">
@@ -732,7 +742,7 @@
 		<set name="material" val="FISH" />
 		<skills>
 			<skill id="18814" level="9" /> <!-- Topaz -->
-			<skill id="17701" level="9" />
+			<skill id="17701" level="9" /> <!-- Topaz - Spiritshot -->
 		</skills>
 	</item>
 	<item id="48770" name="Greater Topaz" additionalName="Lv. 5" type="Armor">
@@ -746,7 +756,7 @@
 		<set name="material" val="FISH" />
 		<skills>
 			<skill id="18814" level="10" /> <!-- Topaz -->
-			<skill id="17701" level="10" />
+			<skill id="17701" level="10" /> <!-- Topaz - Spiritshot -->
 		</skills>
 	</item>
 	<item id="48771" name="Greater Ruby" additionalName="Lv. 2" type="Armor">
@@ -880,7 +890,7 @@
 		<set name="material" val="FISH" />
 		<skills>
 			<skill id="18720" level="1" /> <!-- Greater Obsidian -->
-			<skill id="17704" level="7" />
+			<skill id="17704" level="7" /> <!-- Obsidian -->
 		</skills>
 	</item>
 	<item id="48780" name="Greater Obsidian" additionalName="Lv. 3" type="Armor">
@@ -894,7 +904,7 @@
 		<set name="material" val="FISH" />
 		<skills>
 			<skill id="18720" level="1" /> <!-- Greater Obsidian -->
-			<skill id="17704" level="8" />
+			<skill id="17704" level="8" /> <!-- Obsidian -->
 		</skills>
 	</item>
 	<item id="48781" name="Greater Obsidian" additionalName="Lv. 4" type="Armor">
@@ -908,7 +918,7 @@
 		<set name="material" val="FISH" />
 		<skills>
 			<skill id="18720" level="1" /> <!-- Greater Obsidian -->
-			<skill id="17704" level="9" />
+			<skill id="17704" level="9" /> <!-- Obsidian -->
 		</skills>
 	</item>
 	<item id="48782" name="Greater Obsidian" additionalName="Lv. 5" type="Armor">
@@ -921,7 +931,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17704" level="10" />
+			<skill id="17704" level="10" /> <!-- Obsidian -->
 		</skills>
 	</item>
 	<item id="48783" name="Greater Opal" additionalName="Lv. 2" type="Armor">
@@ -934,7 +944,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17705" level="7" />
+			<skill id="17705" level="7" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="48784" name="Greater Opal" additionalName="Lv. 3" type="Armor">
@@ -947,7 +957,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17705" level="8" />
+			<skill id="17705" level="8" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="48785" name="Greater Opal" additionalName="Lv. 4" type="Armor">
@@ -960,7 +970,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17705" level="9" />
+			<skill id="17705" level="9" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="48786" name="Greater Opal" additionalName="Lv. 5" type="Armor">
@@ -973,7 +983,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17705" level="10" />
+			<skill id="17705" level="10" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="48787" name="Greater Emerald" additionalName="Lv. 2" type="Armor">
@@ -986,7 +996,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17825" level="7" />
+			<skill id="17825" level="7" /> <!-- Emerald -->
 		</skills>
 	</item>
 	<item id="48788" name="Greater Emerald" additionalName="Lv. 3" type="Armor">
@@ -999,7 +1009,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17825" level="8" />
+			<skill id="17825" level="8" /> <!-- Emerald -->
 		</skills>
 	</item>
 	<item id="48789" name="Greater Emerald" additionalName="Lv. 4" type="Armor">
@@ -1012,7 +1022,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17825" level="9" />
+			<skill id="17825" level="9" /> <!-- Emerald -->
 		</skills>
 	</item>
 	<item id="48790" name="Greater Emerald" additionalName="Lv. 5" type="Armor">
@@ -1025,7 +1035,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17825" level="10" />
+			<skill id="17825" level="10" /> <!-- Emerald -->
 		</skills>
 	</item>
 	<item id="48791" name="Greater Aquamarine" additionalName="Lv. 2" type="Armor">
@@ -1038,7 +1048,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17823" level="7" />
+			<skill id="17823" level="7" /> <!-- Aquamarine -->
 		</skills>
 	</item>
 	<item id="48792" name="Greater Aquamarine" additionalName="Lv. 3" type="Armor">
@@ -1051,7 +1061,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17823" level="8" />
+			<skill id="17823" level="8" /> <!-- Aquamarine -->
 		</skills>
 	</item>
 	<item id="48793" name="Greater Aquamarine" additionalName="Lv. 4" type="Armor">
@@ -1064,7 +1074,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17823" level="9" />
+			<skill id="17823" level="9" /> <!-- Aquamarine -->
 		</skills>
 	</item>
 	<item id="48794" name="Greater Aquamarine" additionalName="Lv. 5" type="Armor">
@@ -1077,7 +1087,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17823" level="10" />
+			<skill id="17823" level="10" /> <!-- Aquamarine -->
 		</skills>
 	</item>
 	<item id="48795" name="Greater Diamond" additionalName="Lv. 2" type="Armor">
@@ -1090,7 +1100,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17708" level="7" />
+			<skill id="17708" level="7" /> <!-- Diamond -->
 		</skills>
 	</item>
 	<item id="48796" name="Greater Diamond" additionalName="Lv. 3" type="Armor">
@@ -1103,7 +1113,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17708" level="8" />
+			<skill id="17708" level="8" /> <!-- Diamond -->
 		</skills>
 	</item>
 	<item id="48797" name="Greater Diamond" additionalName="Lv. 4" type="Armor">
@@ -1116,7 +1126,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17708" level="9" />
+			<skill id="17708" level="9" /> <!-- Diamond -->
 		</skills>
 	</item>
 	<item id="48798" name="Greater Diamond" additionalName="Lv. 5" type="Armor">
@@ -1129,7 +1139,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17708" level="10" />
+			<skill id="17708" level="10" /> <!-- Diamond -->
 		</skills>
 	</item>
 	<item id="48799" name="Greater Pearl" additionalName="Lv. 2" type="Armor">
@@ -1142,7 +1152,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17709" level="7" />
+			<skill id="17709" level="7" /> <!-- Pearl -->
 		</skills>
 	</item>
 </list>

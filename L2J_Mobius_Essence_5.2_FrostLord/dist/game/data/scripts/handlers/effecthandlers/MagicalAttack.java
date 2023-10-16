@@ -16,7 +16,11 @@
  */
 package handlers.effecthandlers;
 
+import java.util.EnumSet;
+import java.util.Set;
+
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.ShotType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Attackable;
@@ -29,19 +33,35 @@ import org.l2jmobius.gameserver.model.stats.Formulas;
 
 /**
  * Magical Attack effect implementation.
- * @author Adry_85
+ * @author Adry_85, Mobius
  */
 public class MagicalAttack extends AbstractEffect
 {
 	private final double _power;
 	private final boolean _overHit;
 	private final double _debuffModifier;
+	private final double _raceModifier;
+	private final Set<Race> _races = EnumSet.noneOf(Race.class);
 	
 	public MagicalAttack(StatSet params)
 	{
 		_power = params.getDouble("power", 0);
 		_overHit = params.getBoolean("overHit", false);
 		_debuffModifier = params.getDouble("debuffModifier", 1);
+		_raceModifier = params.getDouble("raceModifier", 1);
+		if (params.contains("races"))
+		{
+			for (String race : params.getString("races", "").split(";"))
+			{
+				_races.add(Race.valueOf(race));
+			}
+		}
+	}
+	
+	@Override
+	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
+	{
+		return !Formulas.calcSkillEvasion(effector, effected, skill);
 	}
 	
 	@Override
@@ -79,10 +99,16 @@ public class MagicalAttack extends AbstractEffect
 		final boolean mcrit = Formulas.calcCrit(skill.getMagicCriticalRate(), effector, effected, skill);
 		double damage = Formulas.calcMagicDam(effector, effected, skill, effector.getMAtk(), _power, effected.getMDef(), sps, bss, mcrit);
 		
-		// Apply debuff mod
+		// Apply debuff modifier.
 		if (effected.getEffectList().getDebuffCount() > 0)
 		{
 			damage *= _debuffModifier;
+		}
+		
+		// Apply race modifier.
+		if (_races.contains(effected.getRace()))
+		{
+			damage *= _raceModifier;
 		}
 		
 		effector.doAttack(damage, effected, skill, false, false, mcrit, false);

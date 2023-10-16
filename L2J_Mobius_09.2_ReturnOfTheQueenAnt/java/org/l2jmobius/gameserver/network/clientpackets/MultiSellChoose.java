@@ -47,7 +47,6 @@ import org.l2jmobius.gameserver.network.serverpackets.ExMultiSellResult;
 import org.l2jmobius.gameserver.network.serverpackets.ExPCCafePointInfo;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * The Class MultiSellChoose.
@@ -365,14 +364,14 @@ public class MultiSellChoose implements ClientPacket
 						case FAME:
 						{
 							player.setFame(player.getFame() - (int) totalCount);
-							player.sendPacket(new UserInfo(player));
+							player.updateUserInfo();
 							// player.sendPacket(new ExBrExtraUserInfo(player));
 							break;
 						}
 						case RAIDBOSS_POINTS:
 						{
 							player.setRaidbossPoints(player.getRaidbossPoints() - (int) totalCount);
-							player.sendPacket(new UserInfo(player));
+							player.updateUserInfo();
 							player.sendPacket(new SystemMessage(SystemMessageId.YOU_CONSUMED_S1_RAID_POINTS).addLong(totalCount));
 							break;
 						}
@@ -487,14 +486,14 @@ public class MultiSellChoose implements ClientPacket
 						case FAME:
 						{
 							player.setFame((int) (player.getFame() + totalCount));
-							player.sendPacket(new UserInfo(player));
+							player.updateUserInfo();
 							// player.sendPacket(new ExBrExtraUserInfo(player));
 							break;
 						}
 						case RAIDBOSS_POINTS:
 						{
 							player.increaseRaidbossPoints((int) totalCount);
-							player.sendPacket(new UserInfo(player));
+							player.updateUserInfo();
 							break;
 						}
 						case HONOR_COINS:
@@ -638,7 +637,7 @@ public class MultiSellChoose implements ClientPacket
 		// Re-send multisell after successful exchange of inventory-only shown items.
 		if (list.isInventoryOnly())
 		{
-			MultisellData.getInstance().separateAndSend(list.getId(), player, npc, list.isInventoryOnly(), list.getProductMultiplier(), list.getIngredientMultiplier());
+			MultisellData.getInstance().separateAndSend(list.getId(), player, npc, list.isInventoryOnly(), list.getProductMultiplier(), list.getIngredientMultiplier(), 0);
 		}
 	}
 	

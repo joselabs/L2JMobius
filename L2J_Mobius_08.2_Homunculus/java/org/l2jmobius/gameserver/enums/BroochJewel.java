@@ -28,6 +28,7 @@ public enum BroochJewel
 	RUBY_LV5(38859, 17817, 1, 0.2, true, false),
 	
 	GREATER_RUBY_LV1(47688, 18715, 1, 0.2, true, false),
+	GREATER_RUBY_LV1_EVENT(80473, 18715, 1, 0.2, true, false),
 	GREATER_RUBY_LV2(48771, 18715, 1, 0.2, true, false),
 	GREATER_RUBY_LV3(48772, 18715, 1, 0.2, true, false),
 	GREATER_RUBY_LV4(48773, 18715, 1, 0.2, true, false),
@@ -51,6 +52,7 @@ public enum BroochJewel
 	SAPPHIRE_LV5(38931, 17821, 1, 0.2, false, true),
 	
 	GREATER_SAPPHIRE_LV1(47689, 18718, 1, 0.2, false, true),
+	GREATER_SAPPHIRE_LV1_EVENT(80474, 18718, 1, 0.2, false, true),
 	GREATER_SAPPHIRE_LV2(48775, 18718, 1, 0.2, false, true),
 	GREATER_SAPPHIRE_LV3(48776, 18718, 1, 0.2, false, true),
 	GREATER_SAPPHIRE_LV4(48777, 18718, 1, 0.2, false, true),

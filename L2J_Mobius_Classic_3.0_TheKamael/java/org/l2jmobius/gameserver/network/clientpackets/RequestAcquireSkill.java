@@ -106,8 +106,9 @@ public class RequestAcquireSkill implements ClientPacket
 			return;
 		}
 		
-		final Skill existingSkill = player.getKnownSkill(_id); // Mobius: Keep existing sublevel.
-		final Skill skill = SkillData.getInstance().getSkill(_id, _level, existingSkill == null ? 0 : existingSkill.getSubLevel());
+		final int skillId = player.getReplacementSkill(_id);
+		final Skill existingSkill = player.getKnownSkill(skillId); // Mobius: Keep existing sublevel.
+		final Skill skill = SkillData.getInstance().getSkill(skillId, _level, existingSkill == null ? 0 : existingSkill.getSubLevel());
 		if (skill == null)
 		{
 			PacketLogger.warning(RequestAcquireSkill.class.getSimpleName() + ": " + player + " is trying to learn a null skill Id: " + _id + " level: " + _level + "!");
@@ -115,7 +116,7 @@ public class RequestAcquireSkill implements ClientPacket
 		}
 		
 		// Hack check. Doesn't apply to all Skill Types
-		final int prevSkillLevel = player.getSkillLevel(_id);
+		final int prevSkillLevel = player.getSkillLevel(skillId);
 		if ((_skillType != AcquireSkillType.TRANSFER) && (_skillType != AcquireSkillType.SUBPLEDGE))
 		{
 			if (prevSkillLevel == _level)
@@ -132,7 +133,7 @@ public class RequestAcquireSkill implements ClientPacket
 			}
 		}
 		
-		final SkillLearn s = SkillTreeData.getInstance().getSkillLearn(_skillType, _id, _level, player);
+		final SkillLearn s = SkillTreeData.getInstance().getSkillLearn(_skillType, player.getOriginalSkill(_id), _level, player);
 		if (s == null)
 		{
 			return;
@@ -473,7 +474,7 @@ public class RequestAcquireSkill implements ClientPacket
 	 */
 	private boolean checkPlayerSkill(Player player, Npc trainer, SkillLearn skillLearn)
 	{
-		if ((skillLearn != null) && (skillLearn.getSkillId() == _id) && (skillLearn.getSkillLevel() == _level))
+		if ((skillLearn != null) && (skillLearn.getSkillLevel() == _level))
 		{
 			// Hack check.
 			if (skillLearn.getGetLevel() > player.getLevel())
@@ -605,7 +606,7 @@ public class RequestAcquireSkill implements ClientPacket
 		
 		player.addSkill(skill, store);
 		player.sendItemList();
-		player.updateShortCuts(_id, _level, 0);
+		player.updateShortCuts(_id, skill.getLevel(), skill.getSubLevel());
 		player.sendPacket(new ShortCutInit(player));
 		player.sendPacket(new ExBasicActionList(ExBasicActionList.DEFAULT_ACTION_LIST));
 		player.sendSkillList(skill.getId());

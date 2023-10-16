@@ -203,11 +203,11 @@ public class ExUserViewInfoParameter extends ServerPacket
 		
 		// Soulshot Damage Resistance
 		writeShort(index++);
-		writeInt(0);
+		writeInt((int) (100 - (_player.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1) * 100)));
 		
 		// Spiritshot Damage Resistance
 		writeShort(index++);
-		writeInt(0);
+		writeInt((int) (100 - (_player.getStat().getValue(Stat.SPIRITSHOT_RESISTANCE, 1) * 100)));
 		
 		// Received basic PvP Damage
 		writeShort(index++);

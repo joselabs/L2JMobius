@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="87001" toLevel="1" name="Crusader Transformation">
-		<!-- Those who have come to know the magic of light without applying strict rules wield the power that let them transform into crusaders who mastered their physical and magic skills to perfection. <Transformation effect> P. Atk. +1000 M. Atk. +500 Max HP +1000 Max MP +500 Atk. Spd. +20 Casting Spd. +20 Speed +10 P. Skill Critical Rate +15% P. Skill Critical Damage +15% P. Skill Power +15% M. Skill Critical Rate +5% M. Skill Critical Damage +5% M. Skill Power +5% When hit, there is a chance to block damage from <font color="FFBB00">additional attacks</font> for 10 sec. With a certain chance, applies a buff on party members for 10 sec. after an attack. (Cooldown: 15 sec.) - <font color="00abff">Blue Energy</font>: CON +1/ MEN +1 All received Critical Rate -2% - <font color="FFBB00">Yellow Energy</font>: DEX +1/ WIT +1 Skill Power +2% - <font color="FF0000">Red Energy</font>: STR +1/ INT +1 Weapon P./ M. Atk. +1 -->
+		<!-- Those who have come to know the magic of light without applying strict rules wield the power that let them transform into crusaders who mastered their physical and magic skills to perfection. <Transformation effect>. P. Atk. +1000. M. Atk. +500. Max HP +1000. Max MP +500. Atk. Spd. +20. Casting Spd. +20. Speed +10. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. P. Skill Power +15%. M. Skill Critical Rate +5%. M. Skill Critical Damage +5%. M. Skill Power +5%. When hit, there is a chance to block damage from <font color="FFBB00">additional attacks</font> for 10 sec. With a certain chance, applies a buff on party members for 10 sec. after an attack. (Cooldown: 15 sec.). - <font color="00abff">Blue Energy</font>: CON +1/ MEN +1. All received Critical Rate -2%. - <font color="FFBB00">Yellow Energy</font>: DEX +1/ WIT +1. Skill Power +2%. - <font color="FF0000">Red Energy</font>: STR +1/ INT +1. Weapon P./ M. Atk. +1 -->
 		<icon>icon.transform_priest</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>1200</abnormalTime>
@@ -137,8 +137,8 @@
 		</effects>
 	</skill>
 	<skill id="87002" toLevel="1" name="Crusader Transformation - Stat Increase">
+		<icon>icon.transform_priest</icon>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<staticReuse>true</staticReuse>
 		<reuseDelay>15000</reuseDelay>
@@ -151,8 +151,8 @@
 		</effects>
 	</skill>
 	<skill id="87003" toLevel="1" name="Crusader's Blue Energy">
-		<!-- Blue energy that was granted to crusaders. Makes the body tougher. For 10 sec. CON +1 MEN +1 All received Critical Rate -2% -->
-		<icon>icon.skill0000</icon>
+		<!-- Blue energy that was granted to crusaders. Makes the body tougher. For 10 sec. CON +1. MEN +1. All received Critical Rate -2% -->
+		<icon>icon.trigger_priest_heirophant_buff1</icon>
 		<operateType>A2</operateType>
 		<abnormalType>CRUSADER_ENERGY</abnormalType>
 		<abnormalLevel>1</abnormalLevel>
@@ -180,8 +180,8 @@
 		</effects>
 	</skill>
 	<skill id="87004" toLevel="1" name="Crusader's Yellow Energy">
-		<!-- Yellow energy that was granted to crusaders. Makes the body light like a feather. For 10 sec. DEX +1 WIT +1 Skill Power +2% -->
-		<icon>icon.skill0000</icon>
+		<!-- Yellow energy that was granted to crusaders. Makes the body light like a feather. For 10 sec. DEX +1. WIT +1. Skill Power +2% -->
+		<icon>icon.trigger_priest_heirophant_buff2</icon>
 		<operateType>A2</operateType>
 		<abnormalType>CRUSADER_ENERGY</abnormalType>
 		<abnormalLevel>1</abnormalLevel>
@@ -209,8 +209,8 @@
 		</effects>
 	</skill>
 	<skill id="87005" toLevel="1" name="Crusader's Red Energy">
-		<!-- Red energy that was granted to crusaders. Makes the body stronger. For 10 sec. STR +1 INT +1 All weapon P. Atk. +1 All weapon M. Atk. +1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Red energy that was granted to crusaders. Makes the body stronger. For 10 sec. STR +1. INT +1. All weapon P. Atk. +1. All weapon M. Atk. +1 -->
+		<icon>icon.trigger_priest_heirophant_buff3</icon>
 		<operateType>A2</operateType>
 		<abnormalType>CRUSADER_ENERGY</abnormalType>
 		<abnormalLevel>1</abnormalLevel>
@@ -236,8 +236,8 @@
 		</effects>
 	</skill>
 	<skill id="87006" toLevel="20" name="Fatal Crush">
-		<!-- A powerful strike. If the enemy's HP is higher than 30%: Attacks the target with $s1 power. If the enemy's HP is lower than 30%: Increases the number of attacks by 1. Ignores Shield Defense. Ignores $s2 of the target's defense. Critical. -->
-		<icon>icon.skill0000</icon>
+		<!-- A powerful strike. If the enemy's HP is higher than 30%:. Attacks the target with 6246 power. If the enemy's HP is lower than 30%:. Increases the number of attacks by 1. Ignores Shield Defense. Ignores 20% of the target's defense. Critical. -->
+		<icon>icon.fatal_smash</icon>
 		<operateType>A1</operateType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<isMagic>0</isMagic>
@@ -354,13 +354,13 @@
 		</effects>
 	</skill>
 	<skill id="87007" toLevel="4" name="Unique Seal of Damage">
-		<!-- <Special imprisonment skill> There is a certain chance to block the damage from the frontal enemy's <font color="FFBB00">additional attacks</font>. When the skill is used, there is a certain chance to apply Vampiric Decrease/P. Atk. Decrease. <Vampiric Decrease> HP Drain -95% <P. Atk. Decrease> P. Atk. -100 -->
-		<icon>icon.skill0000</icon>
+		<!-- <Special imprisonment skill>. There is a certain chance to block the damage from the frontal enemy's <font color="FFBB00">additional attacks</font>. When the skill is used, there is a certain chance to apply Vampiric Decrease/P. Atk. Decrease. <Vampiric Decrease>. HP Drain -95%. <P. Atk. Decrease>. P. Atk. -100 -->
+		<icon>icon.unique_silence</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87008" toLevel="1" name="Essential Energy">
-		<!-- <Skill upgrade> Fatal Crush ? Essential Fatal Crush <Upgrade effect> Number of targets is up to 2. Increases Power. Divine Beam ? Essential Divine Beam <Upgrade effect> Increases Power. -->
-		<icon>icon.skill0000</icon>
+		<!-- <Skill upgrade>. Fatal Crush → Essential Fatal Crush. <Upgrade effect>. Number of targets is up to 2. Increases Power. Divine Beam → Essential Divine Beam. <Upgrade effect>. Increases Power. -->
+		<icon>icon.essential_energy</icon>
 		<operateType>P</operateType>
 		<effects>
 			<effect name="ReplaceSkillBySkill">
@@ -374,8 +374,8 @@
 		</effects>
 	</skill>
 	<skill id="87009" toLevel="20" name="Essential Fatal Crush">
-		<!-- A powerful strike to 3 enemies. If the enemy has more than 30% HP: Attacks the target with $s1 power. If the enemy has less than 30% HP: Increases the number of attacks by 1. Ignores Shield Defense. Ignores $s2 of the target's defense. Critical. -->
-		<icon>icon.skill0000</icon>
+		<!-- A powerful strike to 3 enemies. If the enemy has more than 30% HP:. Attacks the target with 9369 power. If the enemy has less than 30% HP:. Increases the number of attacks by 1. Ignores Shield Defense. Ignores 20% of the target's defense. Critical. -->
+		<icon>icon.essential_fatal_smash</icon>
 		<operateType>A1</operateType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<isMagic>0</isMagic>
@@ -495,7 +495,7 @@
 		</effects>
 	</skill>
 	<skill id="87010" toLevel="1" name="Improved Condition">
-		<!-- Max HP $s1 Max MP $s2 -->
+		<!-- Max HP +400. Max MP +250 -->
 		<icon>icon.boost_condition</icon>
 		<operateType>P</operateType>
 		<magicLevel>76</magicLevel>
@@ -511,8 +511,8 @@
 		</effects>
 	</skill>
 	<skill id="87011" toLevel="20" name="Essential Divine Beam">
-		<!-- Purifies with holy light. Inflicts magic damage with $s1 power. The skill's power +10% if the target is inflicted with Hold. Deals heavy damage to demons and undead. Applies Essential Defense Decrease, which decreases enemy's P. Def. <Essential Defense Decrease> P. Def. $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- Purifies with holy light. Inflicts magic damage with 128 power. The skill's power +10% if the target is inflicted with Hold. Deals heavy damage to demons and undead. Applies Essential Defense Decrease, which decreases enemy's P. Def. <Essential Defense Decrease>. P. Def. -100 -->
+		<icon>icon.essential_holy_ray</icon>
 		<castRange>700</castRange>
 		<effectPoint>
 			<value level="1">-1140</value>
@@ -668,8 +668,8 @@
 		</effects>
 	</skill>
 	<skill id="87012" toLevel="2" name="Tower Shield">
-		<!-- P. Def. $s1 When hit, there is a certain chance to apply Protective Shield for $s2 Creates a shield with $s3 HP. (Cooldown: 20 sec.) -->
-		<icon>icon.skill0000</icon>
+		<!-- P. Def. +50. When hit, there is a certain chance to apply Protective Shield for 5 sec. Creates a shield with 500 HP. (Cooldown: 20 sec.) -->
+		<icon>icon.tower_shield</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>1200</abnormalTime>
 		<hitTime>1000</hitTime>
@@ -713,8 +713,8 @@
 		</effects>
 	</skill>
 	<skill id="87013" toLevel="3" name="Great Attack">
-		<!-- P. Atk. $s1 M. Atk. $s2 P. Skill Power $s3 -->
-		<icon>icon.skill0000</icon>
+		<!-- P. Atk. +500. M. Atk. +500. P. Skill Power +3% -->
+		<icon>icon.higher_attack</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -781,9 +781,9 @@
 		</effects>
 	</skill>
 	<skill id="87014" toLevel="3" name="Perfect Abilities">
-		<!-- P. Skill Critical Damage $s1 P. Skill Critical Rate $s2 -->
+		<!-- P. Skill Critical Damage +50. P. Skill Critical Rate +1% -->
+		<icon>icon.protect_critical</icon>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<icon>icon.skill0000</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>8</abnormalTime>
 		<abnormalType>COUNTER_CRITICAL_TRIGGER</abnormalType>
@@ -819,7 +819,7 @@
 		</effects>
 	</skill>
 	<skill id="87015" toLevel="6" name="Improved Sleep">
-		<!-- <Sleep skill> With a high chance, inflicts Sleep on the target. -->
+		<!-- <Sleep skill>. With a high chance, inflicts Sleep on the target. -->
 		<icon>icon.mount_sleep</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
@@ -870,8 +870,8 @@
 		</effects>
 	</skill>
 	<skill id="87016" toLevel="1" name="Power of Intelligence">
-		<!-- Increases P. Atk. according to INT. <INT 65 - 77> P. Atk. +200 <INT 78 - 90> P. Atk. +1000 <INT 91+> P. Atk. +3000 -->
-		<icon>icon.skill0000</icon>
+		<!-- Increases P. Atk. according to INT. <INT 65 - 77>. P. Atk. +200. <INT 78 - 90>. P. Atk. +1000. <INT 91+>. P. Atk. +3000 -->
+		<icon>icon.heirophant_mastery</icon>
 		<magicLevel>76</magicLevel>
 		<operateType>P</operateType>
 		<effects>
@@ -898,7 +898,7 @@
 		</effects>
 	</skill>
 	<skill id="87017" toLevel="14" name="Enchanter's Armor Mastery">
-		<!-- <Main effect> P. Def. $s9 P. Atk. $s1 <Heavy armor effect> P. Def. $s2 P. Atk. $s10 Atk. Spd. $s3 Casting Spd. $s3 <Robe effect> Received P. Skill Critical Damage $s5 M. Atk. $s11 Max HP $s4 <Light armor effect> P. Def. $s6 P. Atk. $s12 Atk. Spd. $s7 Casting Spd. $s7 Max MP $s8 -->
+		<!-- <Main effect>. P. Def. +10. P. Atk. +40. <Heavy armor effect>. P. Def. +40. P. Atk. +400. Atk. Spd. +50. Casting Spd. +50. <Robe effect>. Received P. Skill Critical Damage -1%. M. Atk. +401. Max HP +50. <Light armor effect>. P. Def. +40. P. Atk. +402. Atk. Spd. +100. Casting Spd. +100. Max MP +40 -->
 		<icon>icon.enchanter_armor_mastery</icon>
 		<operateType>P</operateType>
 		<magicLevel>
@@ -1201,8 +1201,8 @@
 		</effects>
 	</skill>
 	<skill id="87018" toLevel="20" name="Transcendent Fatal Crush">
-		<!-- A powerful strike. Attacks the target with $s1 power. Ignores Shield Defense. Ignores $s2 of the target's defense. Critical. The skill can only be used in transcendent instance zones. -->
-		<icon>icon.skill0000</icon>
+		<!-- A powerful strike. Attacks the target with 6246 power. Ignores Shield Defense. Ignores 20% of the target's defense. Critical. The skill can only be used in transcendent instance zones. -->
+		<icon>icon.fatal_smash</icon>
 		<operateType>A1</operateType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<isMagic>0</isMagic>
@@ -1322,11 +1322,11 @@
 		</effects>
 	</skill>
 	<skill id="87019" toLevel="40" name="Fatal Crush">
-		<icon>icon.skill0000</icon>
+		<icon>icon.fatal_smash</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87020" toLevel="9" name="Enchanter's Weapon Mastery">
-		<!-- P. Atk. $s1 M. Atk. $s2 HP Recovery Rate $s3 MP Recovery Rate $s4 When using a two-handed magic blunt weapon, P. Atk. $s5 When using a bow or a spear, Casting Spd. -30% -->
+		<!-- P. Atk. +20. M. Atk. +250. HP Recovery Rate +2.5. MP Recovery Rate +2. When using a two-handed magic blunt weapon, P. Atk. +200. When using a bow or a spear, Casting Spd. -30% -->
 		<icon>icon.enchanter_attack_mastery</icon>
 		<magicLevel>
 			<value level="1">43</value>
@@ -1425,8 +1425,8 @@
 		</effects>
 	</skill>
 	<skill id="87022" toLevel="20" name="Essential Defense Decrease">
-		<!-- P. Def. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- P. Def. -100 -->
+		<icon>icon.essential_holy_ray</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">1</value>
@@ -1509,36 +1509,36 @@
 		</effects>
 	</skill>
 	<skill id="87023" toLevel="1" name="Power of Intelligence">
-		<!-- Increases P. Atk. according to INT. <INT 65 - 77> P. Atk. +200 <INT 78 - 90> P. Atk. +1000 <INT 91+> P. Atk. +3000 -->
-		<icon>icon.skill0000</icon>
+		<!-- Increases P. Atk. according to INT. <INT 65 - 77>. P. Atk. +200. <INT 78 - 90>. P. Atk. +1000. <INT 91+>. P. Atk. +3000 -->
+		<icon>icon.heirophant_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87024" toLevel="1" name="Power of Intelligence Lv. 1">
-		<!-- <INT 65 - 77> P. Atk. +200 -->
-		<icon>icon.skill0000</icon>
+		<!-- <INT 65 - 77>. P. Atk. +200 -->
+		<icon>icon.heirophant_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87025" toLevel="1" name="Power of Intelligence Lv. 2">
-		<!-- <INT 78 - 90> P. Atk. +1000 -->
-		<icon>icon.skill0000</icon>
+		<!-- <INT 78 - 90>. P. Atk. +1000 -->
+		<icon>icon.heirophant_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87026" toLevel="1" name="Power of Intelligence Lv. 3">
-		<!-- <INT 91+> P. Atk. +3000 -->
-		<icon>icon.skill0000</icon>
+		<!-- <INT 91+>. P. Atk. +3000 -->
+		<icon>icon.heirophant_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87027" toLevel="1" name="Mystic Resilience">
-		<icon>icon.skill0000</icon>
+		<icon>icon.skill1411_a</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87028" toLevel="40" name="Essential Fatal Crush">
-		<icon>icon.skill0000</icon>
+		<icon>icon.essential_fatal_smash</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87029" toLevel="1" name="Quick Spellcasting">
-		<!-- M. Skill Cooldown $s1 Casting Spd. $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- M. Skill Cooldown -22%. Casting Spd. +100 -->
+		<icon>icon.mystic_hit</icon>
 		<operateType>P</operateType>
 		<magicLevel>76</magicLevel>
 		<effects>
@@ -1554,8 +1554,8 @@
 		</effects>
 	</skill>
 	<skill id="87030" toLevel="1" name="Rapid Movements">
-		<!-- P. Evasion $s1 M. Evasion $s1 P. Accuracy $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- P. Evasion +4. M. Evasion +4. P. Accuracy +5 -->
+		<icon>icon.magic_master</icon>
 		<operateType>P</operateType>
 		<magicLevel>76</magicLevel>
 		<effects>
@@ -1578,23 +1578,23 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87032" toLevel="10" name="Mana Burn">
-		<icon>icon.skill0000</icon>
+		<icon>icon.skill1398</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87033" toLevel="4" name="P. Atk. Decrease">
 		<!-- P. Atk. -100 -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.dual_a_pblock</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87034" toLevel="1" name="Essential Holy Buster">
-		<!-- When using the Essential Divine Beam skill: With a certain chance, makes an additional attack. The skill's power is increased if the target is inflicted with Hold. (Trigger cooldown: 10 sec.) <font color="FFBB00">The additional attack deals heavy damage to demons and undead. -->
-		<icon>icon.skill0000</icon>
+		<!-- When using the Essential Divine Beam skill:. With a certain chance, makes an additional attack. The skill's power is increased if the target is inflicted with Hold. (Trigger cooldown: 10 sec.). <font color="FFBB00">The additional attack deals heavy damage to demons and undead. -->
+		<icon>icon.skill11763</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87035" toLevel="2" name="Protective Shield">
-		<!-- The barrier's HP: $s1 Can be activated up to $s2. The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- The barrier's HP: 500. Can be activated up to 3. The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<icon>icon.tower_shield</icon>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<icon>icon.skill0000</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>5</abnormalTime>
 		<reuseDelay>20000</reuseDelay>
@@ -1612,17 +1612,17 @@
 	</skill>
 	<skill id="87036" toLevel="4" name="Vampiric Decrease">
 		<!-- HP Drain -95% -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.skill10310</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87037" toLevel="4" name="Unique Seal of Damage">
 		<!-- Blocks damage from <font color="FFBB00">additional attacks</font> with a certain chance. -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.unique_silence</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87038" toLevel="1" name="Crusader's Purple Seal">
 		<!-- Blocks damage from <font color="FFBB00">additional attacks</font> with a certain chance. -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.unique_silence</icon>
 		<operateType>A1</operateType>
 	</skill>
 </list>

@@ -23,6 +23,7 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExTutorialShowId;
+import org.l2jmobius.gameserver.network.serverpackets.TutorialShowHtml;
 
 import quests.Q10292_SecretGarden.Q10292_SecretGarden;
 
@@ -73,6 +74,7 @@ public class Q10973_EnchantingAgathions extends Quest
 				qs.startQuest();
 				giveItems(player, ENCHANT_SCROLL_AGATHION_GRIFFIN, 1);
 				player.sendPacket(new ExTutorialShowId(47));
+				player.sendPacket(new TutorialShowHtml(0, "..\\L2text_classic\\eu\\QT_030_agathion_02.htm", 2));
 				htmltext = event;
 				break;
 			}
@@ -92,6 +94,7 @@ public class Q10973_EnchantingAgathions extends Quest
 					if (foundEnchant)
 					{
 						addExpAndSp(player, 0, 10000);
+						player.sendPacket(new TutorialShowHtml(0, "..\\L2text_classic\\eu\\QT_030_agathion_02.htm", 2));
 						qs.exitQuest(false, true);
 						htmltext = event;
 						break;

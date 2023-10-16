@@ -30,7 +30,7 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
@@ -60,7 +60,6 @@ import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.PartySmallWindowAll;
 import org.l2jmobius.gameserver.network.serverpackets.PartySmallWindowDeleteAll;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.taskmanager.AutoUseTaskManager;
 import org.l2jmobius.gameserver.util.BuilderUtil;
 
@@ -251,7 +250,6 @@ public class AdminEditChar implements IAdminCommandHandler
 					player.setPkKills(pk);
 					player.setTotalKills(pk);
 					player.broadcastUserInfo();
-					player.sendPacket(new UserInfo(player));
 					player.sendMessage("A GM changed your PK count to " + pk);
 					activeChar.sendMessage(player.getName() + "'s PK count changed to " + pk);
 				}
@@ -283,7 +281,6 @@ public class AdminEditChar implements IAdminCommandHandler
 					player.setTotalKills(pvp);
 					player.updatePvpTitleAndColor(false);
 					player.broadcastUserInfo();
-					player.sendPacket(new UserInfo(player));
 					player.sendMessage("A GM changed your PVP count to " + pvp);
 					activeChar.sendMessage(player.getName() + "'s PVP count changed to " + pvp);
 				}
@@ -313,7 +310,6 @@ public class AdminEditChar implements IAdminCommandHandler
 					final Player player = (Player) target;
 					player.setFame(fame);
 					player.broadcastUserInfo();
-					player.sendPacket(new UserInfo(player));
 					player.sendMessage("A GM changed your Reputation points to " + fame);
 					activeChar.sendMessage(player.getName() + "'s Fame changed to " + fame);
 				}
@@ -508,16 +504,13 @@ public class AdminEditChar implements IAdminCommandHandler
 				{
 					return false;
 				}
-				if (CharNameTable.getInstance().doesCharNameExist(val))
+				if (CharInfoTable.getInstance().doesCharNameExist(val))
 				{
 					BuilderUtil.sendSysMessage(activeChar, "Warning, player " + val + " already exists");
 					return false;
 				}
 				player.setName(val);
-				if (Config.CACHE_CHAR_NAMES)
-				{
-					CharNameTable.getInstance().addName(player);
-				}
+				CharInfoTable.getInstance().addName(player);
 				player.storeMe();
 				
 				BuilderUtil.sendSysMessage(activeChar, "Changed name to " + val);

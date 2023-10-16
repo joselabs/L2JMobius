@@ -16,7 +16,9 @@
  */
 package handlers.dailymissionhandlers;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.DailyMissionStatus;
@@ -37,12 +39,31 @@ import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
  */
 public class BossDailyMissionHandler extends AbstractDailyMissionHandler
 {
+	private final int _requiredMissionCompleteId;
 	private final int _amount;
+	private final int _minLevel;
+	private final int _maxLevel;
+	private final Set<Integer> _ids = new HashSet<>();
 	
 	public BossDailyMissionHandler(DailyMissionDataHolder holder)
 	{
 		super(holder);
+		_requiredMissionCompleteId = holder.getRequiredMissionCompleteId();
 		_amount = holder.getRequiredCompletions();
+		_minLevel = holder.getParams().getInt("minLevel", 0);
+		_maxLevel = holder.getParams().getInt("maxLevel", Integer.MAX_VALUE);
+		final String ids = holder.getParams().getString("ids", "");
+		if (!ids.isEmpty())
+		{
+			for (String s : ids.split(","))
+			{
+				final int id = Integer.parseInt(s);
+				if (!_ids.contains(id))
+				{
+					_ids.add(id);
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -80,25 +101,33 @@ public class BossDailyMissionHandler extends AbstractDailyMissionHandler
 	private void onAttackableKill(OnAttackableKill event)
 	{
 		final Attackable monster = event.getTarget();
-		final Player player = event.getAttacker();
-		if (monster.isRaid() && (monster.getInstanceId() > 0) && (player != null))
+		if (!_ids.isEmpty() && !_ids.contains(monster.getId()))
 		{
-			final Party party = player.getParty();
-			if (party != null)
+			return;
+		}
+		
+		final Player player = event.getAttacker();
+		if (((_requiredMissionCompleteId != 0) && checkRequiredMission(player)) || (_requiredMissionCompleteId == 0))
+		{
+			if (monster.isRaid() && (player != null) && checkPlayerLevel(player))
 			{
-				final CommandChannel channel = party.getCommandChannel();
-				final List<Player> members = channel != null ? channel.getMembers() : party.getMembers();
-				for (Player member : members)
+				final Party party = player.getParty();
+				if (party != null)
 				{
-					if (member.calculateDistance3D(monster) <= Config.ALT_PARTY_RANGE)
+					final CommandChannel channel = party.getCommandChannel();
+					final List<Player> members = channel != null ? channel.getMembers() : party.getMembers();
+					for (Player member : members)
 					{
-						processPlayerProgress(member);
+						if (member.calculateDistance3D(monster) <= Config.ALT_PARTY_RANGE)
+						{
+							processPlayerProgress(member);
+						}
 					}
 				}
-			}
-			else
-			{
-				processPlayerProgress(player);
+				else
+				{
+					processPlayerProgress(player);
+				}
 			}
 		}
 	}
@@ -114,5 +143,20 @@ public class BossDailyMissionHandler extends AbstractDailyMissionHandler
 			}
 			storePlayerEntry(entry);
 		}
+	}
+	
+	private boolean checkPlayerLevel(Player player)
+	{
+		if (player == null)
+		{
+			return false;
+		}
+		return ((player.getLevel() >= _minLevel)) || (player.getLevel() <= _maxLevel);
+	}
+	
+	private boolean checkRequiredMission(Player player)
+	{
+		final DailyMissionPlayerEntry missionEntry = getPlayerEntry(player.getObjectId(), false);
+		return (missionEntry != null) && (_requiredMissionCompleteId != 0) && (missionEntry.getRewardId() == _requiredMissionCompleteId) && (getStatus(player) == DailyMissionStatus.COMPLETED.getClientId());
 	}
 }

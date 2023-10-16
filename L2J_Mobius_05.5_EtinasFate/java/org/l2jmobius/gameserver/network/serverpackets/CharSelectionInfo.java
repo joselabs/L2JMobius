@@ -163,9 +163,9 @@ public class CharSelectionInfo extends ServerPacket
 		writeInt(2); // if 1, Korean client
 		writeByte(0); // Gift message for inactive accounts // 152
 		// Balthus Knights
-		if (Config.BALTHUS_KNIGHTS_ENABLED)
+		if (Config.ALLOW_BALTHUS_KNIGHT_CREATE > 0)
 		{
-			if (Config.BALTHUS_KNIGHTS_PREMIUM)
+			if (Config.ALLOW_BALTHUS_KNIGHT_CREATE == 1) // Only Premium
 			{
 				if (Config.PREMIUM_SYSTEM_ENABLED)
 				{

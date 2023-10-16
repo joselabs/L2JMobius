@@ -27,44 +27,17 @@ public class StaticObjectInfo extends ServerPacket
 {
 	private final int _staticObjectId;
 	private final int _objectId;
-	private final int _type;
-	private final boolean _isTargetable;
-	private final int _meshIndex;
-	private final boolean _isClosed;
-	private final boolean _isEnemy;
-	private final int _maxHp;
-	private final int _currentHp;
-	private final boolean _showHp;
-	private final int _damageGrade;
 	
 	public StaticObjectInfo(StaticObject staticObject)
 	{
 		_staticObjectId = staticObject.getId();
 		_objectId = staticObject.getObjectId();
-		_type = 0;
-		_isTargetable = true;
-		_meshIndex = staticObject.getMeshIndex();
-		_isClosed = false;
-		_isEnemy = false;
-		_maxHp = 0;
-		_currentHp = 0;
-		_showHp = false;
-		_damageGrade = 0;
 	}
 	
-	public StaticObjectInfo(Door door, boolean targetable)
+	public StaticObjectInfo(Door door)
 	{
 		_staticObjectId = door.getId();
 		_objectId = door.getObjectId();
-		_type = 1;
-		_isTargetable = door.isTargetable() || targetable;
-		_meshIndex = door.getMeshIndex();
-		_isClosed = !door.isOpen();
-		_isEnemy = door.isEnemy();
-		_maxHp = door.getMaxHp();
-		_currentHp = (int) door.getCurrentHp();
-		_showHp = door.isShowHp();
-		_damageGrade = door.getDamage();
 	}
 	
 	@Override
@@ -73,14 +46,5 @@ public class StaticObjectInfo extends ServerPacket
 		ServerPackets.STATIC_OBJECT.writeId(this);
 		writeInt(_staticObjectId);
 		writeInt(_objectId);
-		writeInt(_type);
-		writeInt(_isTargetable);
-		writeInt(_meshIndex);
-		writeInt(_isClosed);
-		writeInt(_isEnemy);
-		writeInt(_currentHp);
-		writeInt(_maxHp);
-		writeInt(_showHp);
-		writeInt(_damageGrade);
 	}
 }

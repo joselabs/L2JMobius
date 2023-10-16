@@ -371,7 +371,7 @@
 		<mpConsume>12</mpConsume>
 	</skill>
 	<skill id="1825" toLevel="1" name="Cadmus - Recharge">
-		<!-- Recovers MP up to 94 power depending on the target's Lv.. -->
+		<!-- Recovers MP up to 94 power depending on the target's Lv. -->
 		<icon>icon.skill1013</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
@@ -394,10 +394,12 @@
 	</skill>
 	<skill id="1827" toLevel="1" name="Transformation Block">
 		<!-- You cannot attack while transformed. -->
+		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1828" toLevel="2" name="Transformation Protection">
 		<!-- P. Def. Enhance at Transformation. -->
+		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1829" toLevel="1" name="Spell Master">
@@ -906,10 +908,11 @@
 	</skill>
 	<skill id="1865" toLevel="1" name="Transformation Attack">
 		<!-- Increases P. Atk. during Transformation. -->
+		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1867" toLevel="4" name="Clan Exuberance">
-		<!-- Clan members' HP/ MP/ CP Recovery Bonus +$s1, received PVE damage -$s2, Sayha Grace Consumption -$s3. -->
+		<!-- Clan members' HP/ MP/ CP Recovery Bonus +4%, received PVE damage -3%, Sayha Grace Consumption -5%. -->
 		<icon>icon.skill19014</icon>
 		<operateType>P</operateType>
 	</skill>
@@ -1105,17 +1108,9 @@
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PveRaidPhysicalAttackDefenceBonus">
-				<amount>10</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PveRaidPhysicalSkillDefenceBonus">
-				<amount>10</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PveRaidMagicalSkillDefenceBonus">
-				<amount>10</amount>
-				<mode>PER</mode>
+			<effect name="DamageByAttack">
+				<amount>-10</amount>
+				<type>BOSS</type>
 			</effect>
 		</effects>
 	</skill>
@@ -1138,17 +1133,9 @@
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PveRaidPhysicalAttackDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PveRaidPhysicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PveRaidMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
+			<effect name="DamageByAttack">
+				<amount>-5</amount>
+				<type>BOSS</type>
 			</effect>
 		</effects>
 	</skill>

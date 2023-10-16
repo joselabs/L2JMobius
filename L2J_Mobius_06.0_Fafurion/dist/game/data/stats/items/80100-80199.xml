@@ -19,6 +19,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="35309" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Retributer -->
@@ -53,6 +55,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35302" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Sword -->
 		</skills>
@@ -84,6 +88,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35304" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Dagger -->
 		</skills>
@@ -116,6 +122,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35303" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Blunt -->
 		</skills>
@@ -484,7 +492,7 @@
 		</stats>
 	</item>
 	<item id="80121" name="Eva's Summer Light Box" type="EtcItem">
-		<!-- Use it to obtain 1 Eva s Summer Fishing Pouch. -->
+		<!-- Use it to obtain 1 Eva's Summer Fishing Pouch. -->
 		<set name="icon" val="icon.sayha2017_box_i04" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -499,6 +507,12 @@
 		<set name="material" val="FISH" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48634" min="1" max="1" chance="100" /> <!-- Fantastic Fishing Spot Entrance Pass Pack (1-hour) -->
+			<item id="47908" min="120" max="120" chance="100" /> <!-- Shining Magic Bait Exchange Coupon -->
+			<item id="48630" min="1" max="1" chance="100" /> <!-- Master Fisherman's Blessing - 1-hr -->
+		</capsuled_items>
 	</item>
 	<item id="80123" name="Eva's Glittering Treasure Chest" type="EtcItem">
 		<!-- If used, it returns a rare item. -->
@@ -557,7 +571,7 @@
 		</skills>
 	</item>
 	<item id="80127" name="Advanced Mammon's Talisman Box - Skill Power" additionalName="2-hour" type="EtcItem">
-		<!-- Double-click to obtain the Advanced Mammon s Talisman - Skill Power (2-hour). -->
+		<!-- Double-click to obtain the Advanced Mammon's Talisman - Skill Power (2-hour). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="is_stackable" val="true" />
 		<set name="is_sellable" val="false" />
@@ -569,11 +583,11 @@
 		<set name="weight" val="10" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="80124" min="1" max="1" chance="100" /> <!-- Advanced Mammon s Talisman - Skill Power -->
+			<item id="80124" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman - Skill Power -->
 		</capsuled_items>
 	</item>
 	<item id="80128" name="Advanced Mammon's Talisman Box - Attack Attribute" additionalName="2-hour" type="EtcItem">
-		<!-- Double-click to obtain the Advanced Mammon s Talisman Box - Attack Attribute (2-hour). -->
+		<!-- Double-click to obtain the Advanced Mammon's Talisman Box - Attack Attribute (2-hour). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="is_stackable" val="true" />
 		<set name="is_sellable" val="false" />
@@ -585,11 +599,11 @@
 		<set name="weight" val="10" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="80125" min="1" max="1" chance="100" /> <!-- Advanced Mammon s Talisman - Attribute Attack -->
+			<item id="80125" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman - Attack Attribute -->
 		</capsuled_items>
 	</item>
 	<item id="80129" name="Advanced Mammon's Talisman Box - Skill Cooldown" additionalName="2-hour" type="EtcItem">
-		<!-- Double-click to obtain the Advanced Mammon s Talisman - Skill Cooldown (2-hour). -->
+		<!-- Double-click to obtain the Advanced Mammon's Talisman - Skill Cooldown (2-hour). -->
 		<set name="icon" val="icon.bm_special_pendant_abradant_box" />
 		<set name="is_stackable" val="true" />
 		<set name="is_sellable" val="false" />
@@ -601,7 +615,7 @@
 		<set name="weight" val="10" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="80126" min="1" max="1" chance="100" /> <!-- Advanced Mammon s Talisman - Skill Cooldown -->
+			<item id="80126" min="1" max="1" chance="100" /> <!-- Advanced Mammon's Talisman - Skill Cooldown -->
 		</capsuled_items>
 	</item>
 	<item id="80130" name="Super Advanced Spirit Stones" type="EtcItem">
@@ -658,6 +672,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35299" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Shaper -->
 			<skill id="35277" level="1" /> <!-- Krishna Shaper Enchantment Effect -->
@@ -692,6 +708,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35296" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dicing Death -->
 			<skill id="35278" level="1" /> <!-- Krishna Dicing Death Enchantment Effect -->
@@ -725,6 +743,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35297" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Slasher -->
 			<skill id="35279" level="1" /> <!-- Krishna Slasher Enchantment Effect -->
@@ -758,6 +778,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35298" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Avenger -->
 			<skill id="35280" level="1" /> <!-- Krishna Avenger Enchantment Effect -->
@@ -792,6 +814,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35300" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Fighter -->
 			<skill id="35281" level="1" /> <!-- Krishna Fighter Enchantment Effect -->
@@ -826,6 +850,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="35301" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Stormer -->
@@ -862,6 +888,8 @@
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="reuse_delay" val="1500" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35305" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Thrower -->
 			<skill id="35283" level="1" /> <!-- Krishna Thrower Enchantment Effect -->
@@ -897,6 +925,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="reuse_delay" val="1350" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35306" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Shooter -->
 			<skill id="35284" level="1" /> <!-- Krishna Shooter Enchantment Effect -->
@@ -931,6 +961,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="35307" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Buster -->
@@ -965,6 +997,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="35308" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Caster -->
@@ -1000,6 +1034,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="35309" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Retributer -->
@@ -1036,6 +1072,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35302" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Sword -->
 			<skill id="35288" level="1" /> <!-- Krishna Dual Sword Enchantment Effect -->
@@ -1069,6 +1107,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35304" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Dagger -->
 			<skill id="35289" level="1" /> <!-- Krishna Dual Dagger Enchantment Effect -->
@@ -1103,6 +1143,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35303" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dual Blunt -->
 			<skill id="35290" level="1" /> <!-- Krishna Dual Blunt Enchantment Effect -->
@@ -1138,6 +1180,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8849" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13787" level="1" /> <!-- Additional Ability Health -->
@@ -1174,6 +1218,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8850" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13788" level="1" /> <!-- Additional Ability Health -->
@@ -1209,6 +1255,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8851" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13789" level="1" /> <!-- Additional Ability Health -->
@@ -1244,6 +1292,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8852" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13790" level="1" /> <!-- Additional Ability Health -->
@@ -1280,6 +1330,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8853" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13791" level="1" /> <!-- Additional Ability Health -->
@@ -1316,6 +1368,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="8854" level="1" /> <!-- PvE Damage Increase -->
@@ -1354,6 +1408,8 @@
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="reuse_delay" val="1500" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8855" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13793" level="1" /> <!-- Additional Ability Health -->
@@ -1391,6 +1447,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="reuse_delay" val="1350" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8856" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13794" level="1" /> <!-- Additional Ability Health -->
@@ -1427,6 +1485,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="8857" level="1" /> <!-- PvE Damage Increase -->
@@ -1463,6 +1523,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8858" level="1" /> <!-- PvE Damage Increase -->
@@ -1500,6 +1562,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8859" level="1" /> <!-- PvE Damage Increase -->
@@ -1538,6 +1602,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8860" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13798" level="1" /> <!-- Additional Ability Health -->
@@ -1573,6 +1639,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8861" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13799" level="1" /> <!-- Additional Ability Health -->
@@ -1609,6 +1677,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8862" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="13800" level="1" /> <!-- Additional Ability Health -->
@@ -1646,6 +1716,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8820" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13773" level="1" /> <!-- Additional Ability Health -->
@@ -1682,6 +1754,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8821" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13774" level="1" /> <!-- Additional Ability Health -->
@@ -1717,6 +1791,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8822" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13775" level="1" /> <!-- Additional Ability Health -->
@@ -1752,6 +1828,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8823" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13776" level="1" /> <!-- Additional Ability Health -->
@@ -1788,6 +1866,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8824" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13777" level="1" /> <!-- Additional Ability Health -->
@@ -1824,6 +1904,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="8825" level="1" /> <!-- PvP Damage Increase -->
@@ -1862,6 +1944,8 @@
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="reuse_delay" val="1500" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8826" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13779" level="1" /> <!-- Additional Ability Health -->
@@ -1899,6 +1983,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="reuse_delay" val="1350" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8827" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13780" level="1" /> <!-- Additional Ability Health -->
@@ -1935,6 +2021,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="8828" level="1" /> <!-- PvP Damage Increase -->
@@ -1971,6 +2059,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8829" level="1" /> <!-- PvP Damage Increase -->
@@ -2008,6 +2098,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8830" level="1" /> <!-- PvP Damage Increase -->
@@ -2046,6 +2138,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8831" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13784" level="1" /> <!-- Additional Ability Health -->
@@ -2081,6 +2175,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8832" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13785" level="1" /> <!-- Additional Ability Health -->
@@ -2117,6 +2213,8 @@
 		<set name="blessed" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8833" level="1" /> <!-- PvP Damage Increase -->
 			<skill id="13786" level="1" /> <!-- Additional Ability Health -->
@@ -2153,6 +2251,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8849" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8820" level="1" /> <!-- PvP Damage Increase -->
@@ -2190,6 +2290,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8850" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8821" level="1" /> <!-- PvP Damage Increase -->
@@ -2226,6 +2328,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8851" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8822" level="1" /> <!-- PvP Damage Increase -->
@@ -2262,6 +2366,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8852" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8823" level="1" /> <!-- PvP Damage Increase -->
@@ -2298,6 +2404,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8853" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8824" level="1" /> <!-- PvP Damage Increase -->
@@ -2335,6 +2443,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="8854" level="1" /> <!-- PvE Damage Increase -->
@@ -2374,6 +2484,8 @@
 		<set name="reuse_delay" val="1500" />
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8855" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8826" level="1" /> <!-- PvP Damage Increase -->
@@ -2412,6 +2524,8 @@
 		<set name="reuse_delay" val="1350" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8856" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8827" level="1" /> <!-- PvP Damage Increase -->
@@ -2449,6 +2563,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="8857" level="1" /> <!-- PvE Damage Increase -->
@@ -2486,6 +2602,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8858" level="1" /> <!-- PvE Damage Increase -->
@@ -2524,6 +2642,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="8859" level="1" /> <!-- PvE Damage Increase -->
@@ -2563,6 +2683,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DUALSWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8860" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8831" level="1" /> <!-- PvP Damage Increase -->
@@ -2599,6 +2721,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DUAL_DAGGER" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8861" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8832" level="1" /> <!-- PvP Damage Increase -->
@@ -2636,6 +2760,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DUAL_BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="8862" level="1" /> <!-- PvE Damage Increase -->
 			<skill id="8833" level="1" /> <!-- PvP Damage Increase -->

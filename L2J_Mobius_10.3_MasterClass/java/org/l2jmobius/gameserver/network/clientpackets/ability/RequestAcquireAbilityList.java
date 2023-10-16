@@ -104,6 +104,11 @@ public class RequestAcquireAbilityList implements ClientPacket
 			player.sendPacket(SystemMessageId.REACH_LV_85_TO_USE);
 			return;
 		}
+		else if (!player.isAwakenedClass())
+		{
+			player.sendPacket(SystemMessageId.ONLY_AWAKENED_CHARACTERS_OF_LV_85_OR_ABOVE_CAN_BE_ACTIVATED);
+			return;
+		}
 		else if (player.isInOlympiadMode())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_OR_RESET_ABILITY_POINTS_WHILE_PARTICIPATING_IN_THE_OLYMPIAD_OR_CEREMONY_OF_CHAOS);

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="87101" toLevel="1" name="Amadeus">
-		<!-- A beautiful melody flows from the string instrument and covers all battlefield. For $s1, the character gets Max HP $s2 P. Atk. $s3 P. Def. $s4 M. Def. $s5 Received P. Skill Critical Damage $s6 Speed $s7 <Use effect> For $s8, the character and their allies get P. Def. $s9 M. Def. $s10 Received P. Skill Critical Damage $s11 <Skill upgrade> Ultimate Defense ? Ultimate Defense: Bard Frantic Pace ? Rapid Frantic Pace When attacking with Rapid Frantic Pace, there is a certain chance to deliver an <font color="FFBB00">additional blow</font>. -->
+		<!-- A beautiful melody flows from the string instrument and covers all battlefield. For 20 min., the character gets. Max HP +1000. P. Atk. +1000. P. Def. +1000. M. Def. +500. Received P. Skill Critical Damage -500. Speed +15. <Use effect>. For 8 sec., the character and their allies get. P. Def. +300. M. Def. 20 min.0. Received P. Skill Critical Damage 20 min.1. <Skill upgrade>. Ultimate Defense → Ultimate Defense: Bard. Frantic Pace → Rapid Frantic Pace. When attacking with Rapid Frantic Pace,. there is a certain chance to deliver an <font color="FFBB00">additional blow</font>. -->
 		<icon>icon.s_amadeus_self</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -70,9 +70,9 @@
 		</effects>
 	</skill>
 	<skill id="87102" toLevel="2" name="Amadeus - C">
-		<!-- P. Def. $s1 M. Def. $s2 Received P. Skill Critical Damage $s3 -->
+		<!-- P. Def. +300. M. Def. +150. Received P. Skill Critical Damage -2000 -->
+		<icon>icon.s_amadeus_party</icon>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<icon>icon.skill0000</icon>
 		<effectPoint>600</effectPoint>
 		<affectRange>700</affectRange>
 		<abnormalTime>8</abnormalTime>
@@ -97,7 +97,7 @@
 		</effects>
 	</skill>
 	<skill id="87103" toLevel="1" name="Flamenco">
-		<!-- A colorful flower springs up on the battlefield. For $s1, the character gets Max HP $s2 P. Atk. $s3 P. Def. $s4 M. Def. $s5 Received P. Skill Critical Rate $s6 Speed $s7 <Use effect> For $s8, the character and their allies get P. Atk. $s9 M. Atk. $s10 Received P. Skill Critical Damage $s11 <Skill upgrade> Ultimate Defense ? Ultimate Defense: Bard Frantic Pace ? Rapid Frantic Pace When attacking with Rapid Frantic Pace, there is a certain chance to deliver an <font color="FFBB00">additional blow</font>. -->
+		<!-- A colorful flower springs up on the battlefield. For 20 min., the character gets. Max HP +1000. P. Atk. +1000. P. Def. +1000. M. Def. +500. Received P. Skill Critical Rate -5%. Speed +15. <Use effect>. For 8 sec., the character and their allies get. P. Atk. +300. M. Atk. 20 min.0. Received P. Skill Critical Damage 20 min.1. <Skill upgrade>. Ultimate Defense → Ultimate Defense: Bard. Frantic Pace → Rapid Frantic Pace. When attacking with Rapid Frantic Pace,. there is a certain chance to deliver an <font color="FFBB00">additional blow</font>. -->
 		<icon>icon.s_flamenco_self</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -166,9 +166,9 @@
 		</effects>
 	</skill>
 	<skill id="87104" toLevel="2" name="Flamenco - C">
-		<!-- P. Atk. $s1 M. Atk. $s2 Received P. Skill Critical Rate $s3 -->
+		<!-- P. Atk. +300. M. Atk. +300. Received P. Skill Critical Rate -20% -->
+		<icon>icon.s_flamenco_party</icon>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<icon>icon.skill0000</icon>
 		<effectPoint>600</effectPoint>
 		<affectRange>700</affectRange>
 		<abnormalTime>8</abnormalTime>
@@ -193,7 +193,7 @@
 		</effects>
 	</skill>
 	<skill id="87105" toLevel="10" name="Rapid Frantic Pace: Sword Muse">
-		<!-- Attacks the enemy with $s1 power. The skill's power $s2 if the target is inflicted with Hold. Deals damage to the target that is able, with a certain chance, to deliver an <font color="FFBB00">additional blow</font> -->
+		<!-- Attacks the enemy with 6267 power. The skill's power +50% if the target is inflicted with Hold. Deals damage to the target that is able, with a certain chance, to deliver an <font color="FFBB00">additional blow</font> -->
 		<icon>icon.s_rextemp_sodmz</icon>
 		<castRange>40</castRange>
 		<effectPoint>
@@ -272,7 +272,7 @@
 		</effects>
 	</skill>
 	<skill id="87106" toLevel="10" name="Rapid Frantic Pace: Dancer">
-		<!-- Attacks the enemy with $s1 power. The skill's power $s2 if the target is inflicted with Hold. Deals damage to the target that is able, with a certain chance, to deliver an <font color="FFBB00">additional blow</font> -->
+		<!-- Attacks the enemy with 6539 power. The skill's power +50% if the target is inflicted with Hold. Deals damage to the target that is able, with a certain chance, to deliver an <font color="FFBB00">additional blow</font> -->
 		<icon>icon.s_rextemp_sptdan</icon>
 		<castRange>40</castRange>
 		<effectPoint>
@@ -352,8 +352,8 @@
 	</skill>
 	<skill id="87107" toLevel="1" name="Rapid Frantic Pace: Sword Muse">
 		<!-- Sword Muse's Stigma is applied -->
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<icon>icon.s_rextemp_sodmz</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
 		<effectPoint>-225</effectPoint>
 		<reuseDelay>2000</reuseDelay>
@@ -379,8 +379,8 @@
 	</skill>
 	<skill id="87108" toLevel="1" name="Rapid Frantic Pace: Dancer">
 		<!-- Dancer's Stigma is applied -->
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<icon>icon.s_rextemp_sptdan</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
 		<effectPoint>-225</effectPoint>
 		<reuseDelay>2000</reuseDelay>
@@ -405,7 +405,7 @@
 		</pvpEffects>
 	</skill>
 	<skill id="87109" toLevel="1" name="Sword Muse's Stigma">
-		<!-- A stigma that was applied by Sword Muse. P. Atk. $s1 -->
+		<!-- A stigma that was applied by Sword Muse. P. Atk. -100 -->
 		<icon>icon.s_stigma_of_sodmz</icon>
 		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
@@ -423,7 +423,7 @@
 		</effects>
 	</skill>
 	<skill id="87110" toLevel="1" name="Dancer's Stigma">
-		<!-- A stigma that was applied by Dancer. P. Atk. $s1 -->
+		<!-- A stigma that was applied by Dancer. P. Atk. -100 -->
 		<icon>icon.s_stigma_of_sptdan</icon>
 		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
@@ -466,95 +466,95 @@
 		</effects>
 	</skill>
 	<skill id="87112" toLevel="1" name="Petrification Removal">
-		<icon>icon.skill0000</icon>
+		<icon>icon.skill1540</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87113" toLevel="2" name="Song of Hunter">
-		<!-- Elven hunters' song. P. Critical Rate $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven hunters' song. P. Critical Rate +100 -->
+		<icon>icon.song_of_hunter_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87114" toLevel="2" name="Song of Wind">
-		<!-- Elven wind-praising song. Speed $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven wind-praising song. Speed +20 -->
+		<icon>icon.song_of_wind_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87115" toLevel="2" name="Song of Earth">
-		<!-- Elven earth-praising song. P. Def. $s1 M. Def. $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven earth-praising song. P. Def. +200. M. Def. +250 -->
+		<icon>icon.song_of_earth_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87116" toLevel="2" name="Dance of Fury">
-		<!-- Dark Elven fury-praising dance. Atk. Spd. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven fury-praising dance. Atk. Spd. +100 -->
+		<icon>icon.dance_of_fury_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87117" toLevel="2" name="Dance of Fire">
-		<!-- Dark Elven fire-praising dance. P. Critical Damage $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven fire-praising dance. P. Critical Damage +40% -->
+		<icon>icon.dance_of_fire_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87118" toLevel="2" name="Dance of Warrior">
-		<!-- Dark Elven battle dance. P. Atk. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven battle dance. P. Atk. +200 -->
+		<icon>icon.dance_of_warrior_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87119" toLevel="1" name="Music Mastery">
-		<!-- Gives additional effects according to STR. <STR 68 - 80> The number of targets affected the following skills $s1 - Song of Hunter - Song of Earth - Song of Wind <STR 81 - 94> Hold Atk. Rate $s4 The number of targets affected the following skills $s2 - Song of Hunter - Song of Earth - Song of Wind <STR 95+> P. Atk. $s5 Hold/ Silence/ Paralysis Atk. Rate $s4 The number of targets affected the following skills $s3 - Song of Hunter - Song of Earth - Song of Wind -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 68 - 80>. The number of targets affected the following skills +2. - Song of Hunter. - Song of Earth. - Song of Wind. <STR 81 - 94>. Hold Atk. Rate +5%. The number of targets affected the following skills +4. - Song of Hunter. - Song of Earth. - Song of Wind. <STR 95+>. P. Atk. +400. Hold/ Silence/ Paralysis Atk. Rate +5%. The number of targets affected the following skills +10. - Song of Hunter. - Song of Earth. - Song of Wind -->
+		<icon>icon.s_sodmz_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87120" toLevel="1" name="Music Mastery">
-		<!-- Gives additional effects according to STR. <STR 68 - 80> The number of targets affected the following skills $s1 - Song of Hunter - Song of Earth - Song of Wind <STR 81 - 94> Hold Atk. Rate $s4 The number of targets affected the following skills $s2 - Song of Hunter - Song of Earth - Song of Wind <STR 95+> Hold/ Silence/ Paralysis Atk. Rate $s4 P. Atk. $s5 The number of targets affected the following skills $s3 - Song of Hunter - Song of Earth - Song of Wind -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 68 - 80>. The number of targets affected the following skills +2. - Song of Hunter. - Song of Earth. - Song of Wind. <STR 81 - 94>. Hold Atk. Rate +5%. The number of targets affected the following skills +4. - Song of Hunter. - Song of Earth. - Song of Wind. <STR 95+>. Hold/ Silence/ Paralysis Atk. Rate +5%. P. Atk. +400. The number of targets affected the following skills +10. - Song of Hunter. - Song of Earth. - Song of Wind -->
+		<icon>icon.s_sodmz_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87121" toLevel="1" name="Music Mastery Lv. 1">
-		<!-- Gives additional effects according to STR. <STR 68 - 80> The number of targets affected the following skills $s1 - Song of Hunter - Song of Earth - Song of Wind -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 68 - 80>. The number of targets affected the following skills +2. - Song of Hunter. - Song of Earth. - Song of Wind -->
+		<icon>icon.s_sodmz_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87122" toLevel="1" name="Music Mastery Lv. 2">
-		<!-- Gives additional effects according to STR. <STR 81 - 94> Hold Atk. Rate $s2 The number of targets affected the following skills $s1 - Song of Hunter - Song of Earth - Song of Wind -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 81 - 94>. Hold Atk. Rate +5%. The number of targets affected the following skills +4. - Song of Hunter. - Song of Earth. - Song of Wind -->
+		<icon>icon.s_sodmz_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87123" toLevel="1" name="Music Mastery Lv. 3">
-		<!-- Gives additional effects according to STR. <STR 95+> P. Atk. $s3 Hold/ Silence/ Paralysis Atk. Rate $s2 The number of targets affected the following skills $s1 - Song of Hunter - Song of Earth - Song of Wind -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 95+>. P. Atk. +400. Hold/ Silence/ Paralysis Atk. Rate +5%. The number of targets affected the following skills +10. - Song of Hunter. - Song of Earth. - Song of Wind -->
+		<icon>icon.s_sodmz_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87124" toLevel="1" name="Dance Mastery">
-		<!-- Gives additional effects according to STR. <STR 68 - 80> The number of targets affected the following skills $s1 - Dance of Fury - Dance of Fire - Dance of Warrior <STR 81 - 94> Hold Atk. Rate $s4 The number of targets affected the following skills $s2 - Dance of Fury - Dance of Fire - Dance of Warrior <STR 95+> P. Atk. $s5 Hold/ Imprisonment/ Sleep Atk. Rate $s4 The number of targets affected the following skills $s3 - Dance of Fury - Dance of Fire - Dance of Warrior -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 68 - 80>. The number of targets affected the following skills +2. - Dance of Fury. - Dance of Fire. - Dance of Warrior. <STR 81 - 94>. Hold Atk. Rate +5%. The number of targets affected the following skills +4. - Dance of Fury. - Dance of Fire. - Dance of Warrior. <STR 95+>. P. Atk. +400. Hold/ Imprisonment/ Sleep Atk. Rate +5%. The number of targets affected the following skills +10. - Dance of Fury. - Dance of Fire. - Dance of Warrior -->
+		<icon>icon.s_sptdan_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87125" toLevel="1" name="Dance Mastery">
-		<!-- Gives additional effects according to STR. <STR 68 - 80> The number of targets affected the following skills $s1 - Dance of Fury - Dance of Fire - Dance of Warrior <STR 81 - 94> Hold Atk. Rate $s4 The number of targets affected the following skills $s2 - Dance of Fury - Dance of Fire - Dance of Warrior <STR 95+> P. Atk. $s5 Hold/ Imprisonment/ Sleep Atk. Rate $s4 The number of targets affected the following skills $s3 - Dance of Fury - Dance of Fire - Dance of Warrior -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 68 - 80>. The number of targets affected the following skills +2. - Dance of Fury. - Dance of Fire. - Dance of Warrior. <STR 81 - 94>. Hold Atk. Rate +5%. The number of targets affected the following skills +4. - Dance of Fury. - Dance of Fire. - Dance of Warrior. <STR 95+>. P. Atk. +400. Hold/ Imprisonment/ Sleep Atk. Rate +5%. The number of targets affected the following skills +10. - Dance of Fury. - Dance of Fire. - Dance of Warrior -->
+		<icon>icon.s_sptdan_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87126" toLevel="1" name="Dance Mastery Lv. 1">
-		<!-- Gives additional effects according to STR. <STR 68 - 80> The number of targets affected the following skills $s1 - Dance of Fury - Dance of Fire - Dance of Warrior -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 68 - 80>. The number of targets affected the following skills +2. - Dance of Fury. - Dance of Fire. - Dance of Warrior -->
+		<icon>icon.s_sptdan_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87127" toLevel="1" name="Dance Mastery Lv. 2">
-		<!-- Gives additional effects according to STR. <STR 81 - 94> Hold Atk. Rate $s2 The number of targets affected the following skills $s1 - Dance of Fury - Dance of Fire - Dance of Warrior -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 81 - 94>. Hold Atk. Rate +5%. The number of targets affected the following skills +4. - Dance of Fury. - Dance of Fire. - Dance of Warrior -->
+		<icon>icon.s_sptdan_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87128" toLevel="1" name="Dance Mastery Lv. 3">
-		<!-- Gives additional effects according to STR. <STR 95+> P. Atk. $s3 Hold/ Imprisonment/ Sleep Atk. Rate $s2 The number of targets affected the following skills $s1 - Dance of Fury - Dance of Fire - Dance of Warrior -->
-		<icon>icon.skill0000</icon>
+		<!-- Gives additional effects according to STR. <STR 95+>. P. Atk. +400. Hold/ Imprisonment/ Sleep Atk. Rate +5%. The number of targets affected the following skills +10. - Dance of Fury. - Dance of Fire. - Dance of Warrior -->
+		<icon>icon.s_sptdan_mastery</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87129" toLevel="1" name="Eliminate Obstruction - Activation">
-		<icon>icon.skill0000</icon>
+		<icon>icon.skill0305</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87130" toLevel="12" name="Bard's Weapon Mastery">
-		<!-- <Basic effect> P. Atk. $s1 Shock Atk. Rate $s2 <When using swords/ blunt weapon> P. Atk. $s3 <When using dual swords> P. Atk. $s4 -->
+		<!-- <Basic effect>. P. Atk. +10%. Shock Atk. Rate +15%. <When using swords/ blunt weapon>. P. Atk. +325. <When using dual swords>. P. Atk. +335 -->
 		<icon>icon.s_bard_weapon_mastery</icon>
 		<magicLevel>
 			<value level="1">40</value>
@@ -623,7 +623,7 @@
 		</effects>
 	</skill>
 	<skill id="87131" toLevel="12" name="Bard's Armor Mastery">
-		<!-- <When using heavy armor> P. Def. $s1 M. Def. $s3 Received P. Critical Damage $s2 M. Damage Resistance $s4 Bow Resistance $s5 <Power Stance> When receiving damage, increases P. Atk. (Cooldown: 10 sec.) -->
+		<!-- <When using heavy armor>. P. Def. +200. M. Def. +130. Received P. Critical Damage -25%. M. Damage Resistance +5%. Bow Resistance +40%. <Power Stance>. When receiving damage, increases P. Atk. (Cooldown: 10 sec.) -->
 		<icon>icon.s_bard_armour_mastery</icon>
 		<magicLevel>
 			<value level="1">40</value>
@@ -721,7 +721,7 @@
 		</effects>
 	</skill>
 	<skill id="87132" toLevel="14" name="Bard's Recovery Mastery">
-		<!-- HP Recovery Rate $s1 MP Recovery Rate $s2 MP Recovery Rate $s3 -->
+		<!-- HP Recovery Rate +3. MP Recovery Rate +3.25. MP Recovery Rate +10% -->
 		<icon>icon.s_bard_recovery_mastery</icon>
 		<magicLevel>
 			<value level="1">40</value>
@@ -786,7 +786,7 @@
 		</effects>
 	</skill>
 	<skill id="87133" toLevel="8" name="Additional Strain">
-		<!-- For 8 sec., the target gets P. Skill Cooldown $s1 M. Skill Cooldown $s1 -->
+		<!-- For 8 sec., the target gets. P. Skill Cooldown +3 sec. M. Skill Cooldown +3 sec. -->
 		<icon>icon.s_walkout</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>8</abnormalTime>
@@ -848,7 +848,7 @@
 		</effects>
 	</skill>
 	<skill id="87134" toLevel="8" name="Break">
-		<!-- For 8 sec., decreases the target's P. Atk. and P. Def. <PvP effect> P. Atk. $s1 P. Def. $s2 <PvE effect> P. Atk. $s3 P. Def. $s4 -->
+		<!-- For 8 sec., decreases the target's P. Atk. and P. Def. <PvP effect>. P. Atk. -740. P. Def. -740. <PvE effect>. P. Atk. -100. P. Def. -300 -->
 		<icon>icon.s_break</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -963,78 +963,78 @@
 		</pveEffects>
 	</skill>
 	<skill id="87135" toLevel="2" name="Song of Hunter">
-		<!-- Elven hunters' song. P. Critical Rate $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven hunters' song. P. Critical Rate +100 -->
+		<icon>icon.song_of_hunter_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87136" toLevel="2" name="Song of Hunter">
-		<!-- Elven hunters' song. P. Critical Rate $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven hunters' song. P. Critical Rate +100 -->
+		<icon>icon.song_of_hunter_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87137" toLevel="2" name="Song of Wind">
-		<!-- Elven wind-praising song. Speed $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven wind-praising song. Speed +20 -->
+		<icon>icon.song_of_wind_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87138" toLevel="2" name="Song of Wind">
-		<!-- Elven wind-praising song. Speed $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven wind-praising song. Speed +20 -->
+		<icon>icon.song_of_wind_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87139" toLevel="2" name="Song of Earth">
-		<!-- Elven earth-praising song. P. Def. $s1 M. Def. $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven earth-praising song. P. Def. +200. M. Def. +250 -->
+		<icon>icon.song_of_earth_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87140" toLevel="2" name="Song of Earth">
-		<!-- Elven earth-praising song. P. Def. $s1 M. Def. $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- Elven earth-praising song. P. Def. +200. M. Def. +250 -->
+		<icon>icon.song_of_earth_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87141" toLevel="2" name="Dance of Fury">
-		<!-- Dark Elven fury-praising dance. Atk. Spd. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven fury-praising dance. Atk. Spd. +100 -->
+		<icon>icon.dance_of_fury_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87142" toLevel="2" name="Dance of Fury">
-		<!-- Dark Elven fury-praising dance. Atk. Spd. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven fury-praising dance. Atk. Spd. +100 -->
+		<icon>icon.dance_of_fury_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87143" toLevel="2" name="Dance of Fire">
-		<!-- Dark Elven fire-praising dance. P. Critical Damage $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven fire-praising dance. P. Critical Damage +40% -->
+		<icon>icon.dance_of_fire_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87144" toLevel="2" name="Dance of Fire">
-		<!-- Dark Elven fire-praising dance. P. Critical Damage $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven fire-praising dance. P. Critical Damage +40% -->
+		<icon>icon.dance_of_fire_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87145" toLevel="2" name="Dance of Warrior">
-		<!-- Dark Elven battle dance. P. Atk. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven battle dance. P. Atk. +200 -->
+		<icon>icon.dance_of_warrior_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87146" toLevel="2" name="Dance of Warrior">
-		<!-- Dark Elven battle dance. P. Atk. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- Dark Elven battle dance. P. Atk. +200 -->
+		<icon>icon.dance_of_warrior_02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87148" toLevel="1" name="Amadeus">
-		<!-- A beautiful melody flows from the string instrument and covers all battlefield. Max HP $s1 P. Atk. $s1 P. Def. $s1 M. Def. $s2 Received P. Skill Critical Damage $s3 Speed $s4 <Skill upgrade> Ultimate Defense ? Ultimate Defense: Bard Frantic Pace ? Rapid Frantic Pace When attacking with Rapid Frantic Pace, there is a certain chance to deliver an <font color="FFBB00">additional blow</font>. -->
-		<icon>icon.skill0000</icon>
+		<!-- A beautiful melody flows from the string instrument and covers all battlefield. Max HP +1000. P. Atk. +1000. P. Def. +1000. M. Def. +500. Received P. Skill Critical Damage -500. Speed +15. <Skill upgrade>. Ultimate Defense → Ultimate Defense: Bard. Frantic Pace → Rapid Frantic Pace. When attacking with Rapid Frantic Pace,. there is a certain chance to deliver an <font color="FFBB00">additional blow</font>. -->
+		<icon>icon.s_amadeus_self</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87149" toLevel="1" name="Flamenco">
-		<!-- A colorful flower springs up on the battlefield. Max HP $s1 P. Atk. $s1 P. Def. $s1 M. Def. $s2 Received P. Skill Critical Rate $s3 Speed $s4 <Skill upgrade> Ultimate Defense ? Ultimate Defense: Bard Frantic Pace ? Rapid Frantic Pace When attacking with Rapid Frantic Pace, there is a certain chance to deliver an <font color="FFBB00">additional blow</font>. -->
-		<icon>icon.skill0000</icon>
+		<!-- A colorful flower springs up on the battlefield. Max HP +1000. P. Atk. +1000. P. Def. +1000. M. Def. +500. Received P. Skill Critical Rate -5%. Speed +15. <Skill upgrade>. Ultimate Defense → Ultimate Defense: Bard. Frantic Pace → Rapid Frantic Pace. When attacking with Rapid Frantic Pace,. there is a certain chance to deliver an <font color="FFBB00">additional blow</font>. -->
+		<icon>icon.s_flamenco_self</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87150" toLevel="1" name="Ultimate Defense: Bard">
-		<!-- P. Def. $s1 M. Def. $s2 Buff Cancel Resistance $s3 -->
-		<icon>icon.skill0000</icon>
+		<!-- P. Def. +1800. M. Def. +1620. Buff Cancel Resistance +80% -->
+		<icon>icon.s_ultimate_defence_bard</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="87151" toLevel="1" name="Stigma Explosion">

@@ -574,6 +574,14 @@ public class Attackable extends Npc
 							{
 								exp = attacker.getStat().getValue(Stat.EXPSP_RATE, exp) * Config.EXP_AMOUNT_MULTIPLIERS[attacker.getClassId().getId()];
 								sp = attacker.getStat().getValue(Stat.EXPSP_RATE, sp) * Config.SP_AMOUNT_MULTIPLIERS[attacker.getClassId().getId()];
+								
+								// Premium rates
+								if (attacker.hasPremiumStatus())
+								{
+									exp *= Config.PREMIUM_RATE_XP;
+									sp *= Config.PREMIUM_RATE_SP;
+								}
+								
 								attacker.addExpAndSp(exp, sp, useVitalityRate());
 								if (exp > 0)
 								{

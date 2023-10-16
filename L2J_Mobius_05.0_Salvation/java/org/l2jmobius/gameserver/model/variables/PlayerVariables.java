@@ -48,6 +48,7 @@ public class PlayerVariables extends AbstractVariables
 	public static final String ATTENDANCE_DATE = "ATTENDANCE_DATE";
 	public static final String ATTENDANCE_INDEX = "ATTENDANCE_INDEX";
 	public static final String DAILY_MISSION_COUNT = "DAILY_MISSION_COUNT";
+	public static final String DAILY_MISSION_ONE_TIME = "DAILY_MISSION_ONE_TIME";
 	public static final String CEREMONY_OF_CHAOS_SCORE = "CEREMONY_OF_CHAOS_SCORE";
 	public static final String CEREMONY_OF_CHAOS_MARKS = "CEREMONY_OF_CHAOS_MARKS";
 	public static final String ABILITY_POINTS_MAIN_CLASS = "ABILITY_POINTS";
@@ -64,6 +65,18 @@ public class PlayerVariables extends AbstractVariables
 	public static final String CLAN_CONTRIBUTION = "CLAN_CONTRIBUTION";
 	public static final String CLAN_CONTRIBUTION_TOTAL = "CLAN_CONTRIBUTION_TOTAL";
 	public static final String CLAN_CONTRIBUTION_REWARDED = "CLAN_CONTRIBUTION_REWARDED";
+	public static final String CLAN_CONTRIBUTION_REWARDED_COUNT = "CLAN_CONTRIBUTION_REWARDED_COUNT";
+	public static final String CLAN_CONTRIBUTION_PREVIOUS = "CLAN_CONTRIBUTION_PREVIOUS";
+	public static final String CLAN_CONTRIBUTION_TOTAL_PREVIOUS = "CLAN_CONTRIBUTION_TOTAL_PREVIOUS";
+	public static final String PLAYER_RACE = "PLAYER_RACE";
+	public static final String BALTHUS_PHASE = "BALTHUS_PHASE";
+	public static final String BALTHUS_CAGE_EXP = "BALTHUS_CAGE_EXP";
+	public static final String AUTO_USE_SETTINGS = "AUTO_USE_SETTINGS";
+	public static final String AUTO_USE_ACTIONS = "AUTO_USE_ACTIONS";
+	public static final String AUTO_USE_BUFFS = "AUTO_USE_BUFFS";
+	public static final String AUTO_USE_SKILLS = "AUTO_USE_SKILLS";
+	public static final String AUTO_USE_ITEMS = "AUTO_USE_ITEMS";
+	public static final String AUTO_USE_POTION = "AUTO_USE_POTION";
 	
 	private final int _objectId;
 	

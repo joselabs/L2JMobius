@@ -21,6 +21,7 @@ import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.skill.AbnormalType;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.stats.Formulas;
 
@@ -40,7 +41,7 @@ public class TargetCancel extends AbstractEffect
 	@Override
 	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
 	{
-		return Formulas.calcProbability(_chance, effector, effected, skill);
+		return !(effected.hasAbnormalType(AbnormalType.ABNORMAL_INVINCIBILITY) || effected.hasAbnormalType(AbnormalType.INVINCIBILITY_SPECIAL) || effected.hasAbnormalType(AbnormalType.INVINCIBILITY)) && Formulas.calcProbability(_chance, effector, effected, skill);
 	}
 	
 	@Override

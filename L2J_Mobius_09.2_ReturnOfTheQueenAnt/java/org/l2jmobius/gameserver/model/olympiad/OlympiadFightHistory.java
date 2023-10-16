@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.l2jmobius.commons.database.DatabaseFactory;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.actor.Player;
 
 /**
@@ -142,7 +142,7 @@ public class OlympiadFightHistory
 					opponentCharId = charOneId == charId ? charTwoId : charOneId;
 					opponentClassId = charOneId == charId ? charTwoClass : charOneClass;
 					
-					final String name = CharNameTable.getInstance().getNameById(opponentCharId);
+					final String name = CharInfoTable.getInstance().getNameById(opponentCharId);
 					if ((name != null))
 					{
 						// winInfo: 0 = win, 1 = loss, 2 = draw

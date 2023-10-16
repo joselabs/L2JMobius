@@ -39,7 +39,7 @@ import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.data.BotReportTable;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.AnnouncementsTable;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
@@ -55,6 +55,7 @@ import org.l2jmobius.gameserver.data.xml.BeautyShopData;
 import org.l2jmobius.gameserver.data.xml.BuyListData;
 import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
+import org.l2jmobius.gameserver.data.xml.ClanLevelData;
 import org.l2jmobius.gameserver.data.xml.ClanMasteryData;
 import org.l2jmobius.gameserver.data.xml.ClanShopData;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
@@ -294,7 +295,7 @@ public class GameServer
 		KarmaData.getInstance();
 		HitConditionBonusData.getInstance();
 		PlayerTemplateData.getInstance();
-		CharNameTable.getInstance();
+		CharInfoTable.getInstance();
 		AdminData.getInstance();
 		PetDataTable.getInstance();
 		CubicData.getInstance();
@@ -309,6 +310,7 @@ public class GameServer
 		}
 		
 		printSection("Clans");
+		ClanLevelData.getInstance();
 		ClanTable.getInstance();
 		ResidenceFunctionsData.getInstance();
 		ClanHallData.getInstance();

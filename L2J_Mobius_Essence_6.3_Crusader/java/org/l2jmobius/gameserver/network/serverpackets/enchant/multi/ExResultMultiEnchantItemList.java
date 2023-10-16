@@ -18,6 +18,7 @@ package org.l2jmobius.gameserver.network.serverpackets.enchant.multi;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.EnchantItemRequest;
@@ -39,17 +40,20 @@ public class ExResultMultiEnchantItemList extends ServerPacket
 	private Map<Integer, int[]> _successEnchant = new HashMap<>();
 	private Map<Integer, Integer> _failureEnchant = new HashMap<>();
 	private Map<Integer, ItemHolder> _failureReward = new HashMap<>();
+	private final Map<Integer, Integer> _failChallengePointInfoList;
 	
 	public ExResultMultiEnchantItemList(Player player, boolean error)
 	{
 		_player = player;
 		_error = error;
+		_failChallengePointInfoList = new HashMap<>();
 	}
 	
 	public ExResultMultiEnchantItemList(Player player, Map<Integer, ItemHolder> failureReward)
 	{
 		_player = player;
 		_failureReward = failureReward;
+		_failChallengePointInfoList = new HashMap<>();
 	}
 	
 	public ExResultMultiEnchantItemList(Player player, Map<Integer, int[]> successEnchant, Map<Integer, Integer> failureEnchant)
@@ -57,6 +61,7 @@ public class ExResultMultiEnchantItemList extends ServerPacket
 		_player = player;
 		_successEnchant = successEnchant;
 		_failureEnchant = failureEnchant;
+		_failChallengePointInfoList = new HashMap<>();
 	}
 	
 	public ExResultMultiEnchantItemList(Player player, Map<Integer, int[]> successEnchant, Map<Integer, Integer> failureEnchant, boolean isResult)
@@ -65,6 +70,16 @@ public class ExResultMultiEnchantItemList extends ServerPacket
 		_successEnchant = successEnchant;
 		_failureEnchant = failureEnchant;
 		_isResult = isResult;
+		_failChallengePointInfoList = new HashMap<>();
+	}
+	
+	public ExResultMultiEnchantItemList(Player player, Map<Integer, int[]> successEnchant, Map<Integer, Integer> failureEnchant, Map<Integer, Integer> failChallengePointInfoList, boolean isResult)
+	{
+		_player = player;
+		_successEnchant = successEnchant;
+		_failureEnchant = failureEnchant;
+		_isResult = isResult;
+		_failChallengePointInfoList = failChallengePointInfoList;
 	}
 	
 	@Override
@@ -142,8 +157,12 @@ public class ExResultMultiEnchantItemList extends ServerPacket
 		}
 		
 		/* EnchantFailChallengePointInfo */
-		writeInt(1);
-		writeInt(0);
-		writeInt(0);
+		
+		writeInt(_failChallengePointInfoList.size());
+		for (Entry<Integer, Integer> item : _failChallengePointInfoList.entrySet())
+		{
+			writeInt(item.getKey());
+			writeInt(item.getValue());
+		}
 	}
 }

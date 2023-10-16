@@ -20,6 +20,7 @@ import org.l2jmobius.gameserver.geoengine.GeoEngine;
 import org.l2jmobius.gameserver.handler.ITargetTypeHandler;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.skill.targets.TargetType;
 import org.l2jmobius.gameserver.network.SystemMessageId;
@@ -48,7 +49,6 @@ public class Enemy implements ITargetTypeHandler
 		{
 			return null;
 		}
-		
 		final Creature target = (Creature) selectedTarget;
 		
 		// You cannot attack yourself even with force.
@@ -114,14 +114,22 @@ public class Enemy implements ITargetTypeHandler
 				return null;
 			}
 			
-			// Is this check still actual?
-			if (forceUse && (target.getActingPlayer() != null) && (creature.getActingPlayer() != null) && creature.getActingPlayer().isSiegeFriend(target))
+			if (forceUse)
 			{
-				if (sendMessage)
+				final Player player = creature.getActingPlayer();
+				final Player targetPlayer = target.getActingPlayer();
+				if ((player != null) && (targetPlayer != null))
 				{
-					creature.sendPacket(SystemMessageId.FORCE_ATTACK_IS_IMPOSSIBLE_AGAINST_A_TEMPORARY_ALLIED_MEMBER_DURING_A_SIEGE);
+					// Siege friend check.
+					if (player.isSiegeFriend(target))
+					{
+						if (sendMessage)
+						{
+							creature.sendPacket(SystemMessageId.FORCE_ATTACK_IS_IMPOSSIBLE_AGAINST_A_TEMPORARY_ALLIED_MEMBER_DURING_A_SIEGE);
+						}
+						return null;
+					}
 				}
-				return null;
 			}
 			
 			return target;

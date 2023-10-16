@@ -30,6 +30,7 @@ import org.l2jmobius.gameserver.enums.DailyMissionStatus;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.DailyMissionPlayerEntry;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.events.ListenersContainer;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.MissionLevelPlayerDataHolder;
@@ -131,9 +132,13 @@ public abstract class AbstractDailyMissionHandler extends ListenersContainer
 			{
 				case CLAN_EXP:
 				{
-					final int expAmount = (int) holder.getCount();
-					player.getClan().addExp(player.getObjectId(), expAmount);
-					player.sendPacket(new SystemMessage(SystemMessageId.YOU_HAVE_OBTAINED_S1_X_S2).addItemName(MISSION_LEVEL_POINTS).addLong(expAmount));
+					final Clan clan = player.getClan();
+					if (clan != null)
+					{
+						final int expAmount = (int) holder.getCount();
+						clan.addExp(player.getObjectId(), expAmount);
+						player.sendPacket(new SystemMessage(SystemMessageId.YOU_HAVE_OBTAINED_S1_X_S2).addItemName(MISSION_LEVEL_POINTS).addLong(expAmount));
+					}
 					break;
 				}
 				case MISSION_LEVEL_POINTS:

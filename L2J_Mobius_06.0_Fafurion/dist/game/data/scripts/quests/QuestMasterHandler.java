@@ -113,8 +113,10 @@ import quests.Q00499_IncarnationOfGluttonyKaliosSolo.Q00499_IncarnationOfGlutton
 import quests.Q00500_BrothersBoundInChains.Q00500_BrothersBoundInChains;
 import quests.Q00511_AwlUnderFoot.Q00511_AwlUnderFoot;
 import quests.Q00512_BladeUnderFoot.Q00512_BladeUnderFoot;
+import quests.Q00529_RegularBarrierMaintenance.Q00529_RegularBarrierMaintenance;
 import quests.Q00551_OlympiadStarter.Q00551_OlympiadStarter;
 import quests.Q00553_OlympiadUndefeated.Q00553_OlympiadUndefeated;
+import quests.Q00560_HowToOvercomeFear.Q00560_HowToOvercomeFear;
 import quests.Q00561_BasicMissionHarnakUndergroundRuins.Q00561_BasicMissionHarnakUndergroundRuins;
 import quests.Q00562_BasicMissionAltarOfEvil.Q00562_BasicMissionAltarOfEvil;
 import quests.Q00563_BasicMissionBloodySwampland.Q00563_BasicMissionBloodySwampland;
@@ -132,6 +134,7 @@ import quests.Q00574_SpecialMissionNornilsGarden.Q00574_SpecialMissionNornilsGar
 import quests.Q00576_SpecialMissionDefeatSpezion.Q00576_SpecialMissionDefeatSpezion;
 import quests.Q00577_BasicMissionSilentValley.Q00577_BasicMissionSilentValley;
 import quests.Q00578_BasicMissionCemetery.Q00578_BasicMissionCemetery;
+import quests.Q00579_BasicMissionBlazingSwamp.Q00579_BasicMissionBlazingSwamp;
 import quests.Q00580_BeyondTheMemories.Q00580_BeyondTheMemories;
 import quests.Q00581_ThePurificationRitual.Q00581_ThePurificationRitual;
 import quests.Q00582_WashBloodWithBlood.Q00582_WashBloodWithBlood;
@@ -161,6 +164,7 @@ import quests.Q00662_AGameOfCards.Q00662_AGameOfCards;
 import quests.Q00663_SeductiveWhispers.Q00663_SeductiveWhispers;
 import quests.Q00665_BasicTrainingForHunterGuildMember.Q00665_BasicTrainingForHunterGuildMember;
 import quests.Q00666_HunterGuildMembersKnowledge.Q00666_HunterGuildMembersKnowledge;
+import quests.Q00667_HowToCoverShilensEyes.Q00667_HowToCoverShilensEyes;
 import quests.Q00668_ABattleWithTheGiants.Q00668_ABattleWithTheGiants;
 import quests.Q00669_DesperateFightWithTheDragons.Q00669_DesperateFightWithTheDragons;
 import quests.Q00670_DefeatingTheLordOfSeed.Q00670_DefeatingTheLordOfSeed;
@@ -175,6 +179,11 @@ import quests.Q00727_HopeWithinTheDarkness.Q00727_HopeWithinTheDarkness;
 import quests.Q00737_ASwordHiddenInASmile.Q00737_ASwordHiddenInASmile;
 import quests.Q00738_DimensionalExplorationOfTheUnworldlyVisitors.Q00738_DimensionalExplorationOfTheUnworldlyVisitors;
 import quests.Q00743_AtTheAltarOfOblivion.Q00743_AtTheAltarOfOblivion;
+import quests.Q00744_TheAlligatorHunterReturns.Q00744_TheAlligatorHunterReturns;
+import quests.Q00745_TheOutlawsAreIncoming.Q00745_TheOutlawsAreIncoming;
+import quests.Q00747_DefendingTheForsakenPlains.Q00747_DefendingTheForsakenPlains;
+import quests.Q00748_EndlessRevenge.Q00748_EndlessRevenge;
+import quests.Q00749_TiesWithTheGuardians.Q00749_TiesWithTheGuardians;
 import quests.Q00751_LiberatingTheSpirits.Q00751_LiberatingTheSpirits;
 import quests.Q00752_UncoverTheSecret.Q00752_UncoverTheSecret;
 import quests.Q00753_ReactingToACrisis.Q00753_ReactingToACrisis;
@@ -183,20 +192,26 @@ import quests.Q00755_InNeedOfPetras.Q00755_InNeedOfPetras;
 import quests.Q00756_TopQualityPetra.Q00756_TopQualityPetra;
 import quests.Q00757_TriolsMovement.Q00757_TriolsMovement;
 import quests.Q00758_TheFallenKingsMen.Q00758_TheFallenKingsMen;
+import quests.Q00759_TheDwarvenNightmareContinues.Q00759_TheDwarvenNightmareContinues;
 import quests.Q00760_BlockTheExit.Q00760_BlockTheExit;
 import quests.Q00761_AssistingTheGoldenRamArmy.Q00761_AssistingTheGoldenRamArmy;
 import quests.Q00762_AnOminousRequest.Q00762_AnOminousRequest;
 import quests.Q00763_ADauntingTask.Q00763_ADauntingTask;
 import quests.Q00764_WeakeningTheVarkaSilenosForces.Q00764_WeakeningTheVarkaSilenosForces;
 import quests.Q00765_WeakeningTheKetraOrcForces.Q00765_WeakeningTheKetraOrcForces;
+import quests.Q00773_ToCalmTheFlood.Q00773_ToCalmTheFlood;
 import quests.Q00774_DreamingOfPeace.Q00774_DreamingOfPeace;
 import quests.Q00775_RetrievingTheChaosFragment.Q00775_RetrievingTheChaosFragment;
 import quests.Q00776_SlayDarkLordEkimus.Q00776_SlayDarkLordEkimus;
 import quests.Q00777_SlayDarkLordTiat.Q00777_SlayDarkLordTiat;
 import quests.Q00778_OperationRoaringFlame.Q00778_OperationRoaringFlame;
 import quests.Q00779_UtilizeTheDarknessSeedOfDestruction.Q00779_UtilizeTheDarknessSeedOfDestruction;
+import quests.Q00780_UtilizeTheDarknessSeedOfInfinity.Q00780_UtilizeTheDarknessSeedOfInfinity;
+import quests.Q00781_UtilizeTheDarknessSeedOfAnnihilation.Q00781_UtilizeTheDarknessSeedOfAnnihilation;
+import quests.Q00782_UtilizeTheDarknessSeedOfHellfire.Q00782_UtilizeTheDarknessSeedOfHellfire;
 import quests.Q00783_VestigeOfTheMagicPower.Q00783_VestigeOfTheMagicPower;
 import quests.Q00787_TheRoleOfAWatcher.Q00787_TheRoleOfAWatcher;
+import quests.Q00789_WaitingForPaagrio.Q00789_WaitingForPaagrio;
 import quests.Q00790_ObtainingFerinsTrust.Q00790_ObtainingFerinsTrust;
 import quests.Q00792_TheSuperionGiants.Q00792_TheSuperionGiants;
 import quests.Q00816_PlansToRepairTheStronghold.Q00816_PlansToRepairTheStronghold;
@@ -211,9 +226,12 @@ import quests.Q00830_TheWayOfTheGiantsPawn.Q00830_TheWayOfTheGiantsPawn;
 import quests.Q00831_SayhasScheme.Q00831_SayhasScheme;
 import quests.Q00833_DevilsTreasureTauti.Q00833_DevilsTreasureTauti;
 import quests.Q00835_PitiableMelisa.Q00835_PitiableMelisa;
+import quests.Q00841_ContaminationContainment.Q00841_ContaminationContainment;
 import quests.Q00842_CaptiveDemons.Q00842_CaptiveDemons;
+import quests.Q00843_GiantEvolutionControl.Q00843_GiantEvolutionControl;
 import quests.Q00844_GiantsTreasure.Q00844_GiantsTreasure;
 import quests.Q00845_SabotageTheEmbryoSupplies.Q00845_SabotageTheEmbryoSupplies;
+import quests.Q00846_BuildingUpStrength.Q00846_BuildingUpStrength;
 import quests.Q00901_HowLavasaurusesAreMade.Q00901_HowLavasaurusesAreMade;
 import quests.Q00902_ReclaimOurEra.Q00902_ReclaimOurEra;
 import quests.Q00903_TheCallOfAntharas.Q00903_TheCallOfAntharas;
@@ -349,6 +367,11 @@ import quests.Q10502_FreyaEmbroideredSoulCloak.Q10502_FreyaEmbroideredSoulCloak;
 import quests.Q10503_FrintezzaEmbroideredSoulCloak.Q10503_FrintezzaEmbroideredSoulCloak;
 import quests.Q10504_JewelOfAntharas.Q10504_JewelOfAntharas;
 import quests.Q10505_JewelOfValakas.Q10505_JewelOfValakas;
+import quests.Q10516_UnveiledFafurionTemple.Q10516_UnveiledFafurionTemple;
+import quests.Q10517_FafurionsMinions.Q10517_FafurionsMinions;
+import quests.Q10518_SucceedingThePriestess.Q10518_SucceedingThePriestess;
+import quests.Q10519_ControllingYourTemper.Q10519_ControllingYourTemper;
+import quests.Q10520_TempleGuardians.Q10520_TempleGuardians;
 import quests.Q10521_QueenNavarisLetterVarkaSilenosBarracks.Q10521_QueenNavarisLetterVarkaSilenosBarracks;
 import quests.Q10522_TheDarkSecretOfVarkaSilenos.Q10522_TheDarkSecretOfVarkaSilenos;
 import quests.Q10523_TheAssassinationOfTheVarkaSilenosCommander.Q10523_TheAssassinationOfTheVarkaSilenosCommander;
@@ -357,9 +380,11 @@ import quests.Q10525_QueenNavarisLetterKetraOrcOutpost.Q10525_QueenNavarisLetter
 import quests.Q10526_TheDarkSecretOfTheKetraOrcs.Q10526_TheDarkSecretOfTheKetraOrcs;
 import quests.Q10527_TheAssassinationOfTheKetraOrcCommander.Q10527_TheAssassinationOfTheKetraOrcCommander;
 import quests.Q10528_TheAssassinationOfTheKetraOrcChief.Q10528_TheAssassinationOfTheKetraOrcChief;
+import quests.Q10529_IvoryTowersResearchSeaOfSporesJournal.Q10529_IvoryTowersResearchSeaOfSporesJournal;
 import quests.Q10530_KekropusLetterTheDragonsTransition.Q10530_KekropusLetterTheDragonsTransition;
 import quests.Q10531_OddHappeningsAtDragonValley.Q10531_OddHappeningsAtDragonValley;
 import quests.Q10532_UncoveringTheConspiracy.Q10532_UncoveringTheConspiracy;
+import quests.Q10533_OrfensAmbition.Q10533_OrfensAmbition;
 import quests.Q10534_HatchlingResearch.Q10534_HatchlingResearch;
 import quests.Q10535_BlacksmithsSoul3.Q10535_BlacksmithsSoul3;
 import quests.Q10537_KamaelDisarray.Q10537_KamaelDisarray;
@@ -370,9 +395,19 @@ import quests.Q10541_TrainLikeTheRealThing.Q10541_TrainLikeTheRealThing;
 import quests.Q10542_SearchingForNewPower.Q10542_SearchingForNewPower;
 import quests.Q10543_SheddingWeight.Q10543_SheddingWeight;
 import quests.Q10544_SeekerSupplies.Q10544_SeekerSupplies;
+import quests.Q10552_ChallengeBalthusKnight.Q10552_ChallengeBalthusKnight;
+import quests.Q10553_WhatMattersMoreThanAbility.Q10553_WhatMattersMoreThanAbility;
+import quests.Q10554_GiftForYou.Q10554_GiftForYou;
+import quests.Q10555_ChargeAtAntharas.Q10555_ChargeAtAntharas;
+import quests.Q10556_ForgottenPowerStartOfFate.Q10556_ForgottenPowerStartOfFate;
+import quests.Q10557_NewPowerWindsOfFate.Q10557_NewPowerWindsOfFate;
+import quests.Q10559_BeforeTheGuide.Q10559_BeforeTheGuide;
 import quests.Q10560_WayOfWanderingKnight.Q10560_WayOfWanderingKnight;
 import quests.Q10561_AcrossTheDeathLine.Q10561_AcrossTheDeathLine;
 import quests.Q10562_TakeUpArms.Q10562_TakeUpArms;
+import quests.Q10563_ControlOfPower.Q10563_ControlOfPower;
+import quests.Q10564_ProveProgress.Q10564_ProveProgress;
+import quests.Q10565_NothingIsImpossible.Q10565_NothingIsImpossible;
 import quests.Q10566_BestChoice.Q10566_BestChoice;
 import quests.Q10567_SpecialMissionNornilsGarden.Q10567_SpecialMissionNornilsGarden;
 import quests.Q10568_KamaelsTechnologicalAdvancement.Q10568_KamaelsTechnologicalAdvancement;
@@ -383,6 +418,7 @@ import quests.Q10576_GlitteringWeapons.Q10576_GlitteringWeapons;
 import quests.Q10577_TemperARustingBlade.Q10577_TemperARustingBlade;
 import quests.Q10578_TheSoulOfASword.Q10578_TheSoulOfASword;
 import quests.Q10579_ContainingTheAttributePower.Q10579_ContainingTheAttributePower;
+import quests.Q10594_FergasonsScheme.Q10594_FergasonsScheme;
 import quests.Q10597_EscapeToTheShadowOfTheMotherTree.Q10597_EscapeToTheShadowOfTheMotherTree;
 import quests.Q10598_WithAllYourMight.Q10598_WithAllYourMight;
 import quests.Q10599_ThreadOfFateHangingOnTheMotherTree.Q10599_ThreadOfFateHangingOnTheMotherTree;
@@ -410,6 +446,8 @@ import quests.Q10743_StrangeFungus.Q10743_StrangeFungus;
 import quests.Q10744_StrongerThanSteel.Q10744_StrongerThanSteel;
 import quests.Q10745_TheSecretIngredients.Q10745_TheSecretIngredients;
 import quests.Q10746_SeeTheWorld.Q10746_SeeTheWorld;
+import quests.Q10748_MysteriousSuggestion1.Q10748_MysteriousSuggestion1;
+import quests.Q10749_MysteriousSuggestion2.Q10749_MysteriousSuggestion2;
 import quests.Q10751_WindsOfFateEncounters.Q10751_WindsOfFateEncounters;
 import quests.Q10752_WindsOfFateAPromise.Q10752_WindsOfFateAPromise;
 import quests.Q10753_WindsOfFateChoices.Q10753_WindsOfFateChoices;
@@ -485,12 +523,18 @@ import quests.Q10840_TimeToRecover.Q10840_TimeToRecover;
 import quests.Q10841_DeepInsideAteliaFortress.Q10841_DeepInsideAteliaFortress;
 import quests.Q10843_AnomalyInTheEnchantedValley.Q10843_AnomalyInTheEnchantedValley;
 import quests.Q10844_BloodyBattleSeizingSupplies.Q10844_BloodyBattleSeizingSupplies;
+import quests.Q10845_BloodyBattleRescueTheSmiths.Q10845_BloodyBattleRescueTheSmiths;
 import quests.Q10846_BloodyBattleMeetingTheCommander.Q10846_BloodyBattleMeetingTheCommander;
+import quests.Q10848_TrialsBeforeTheBattle.Q10848_TrialsBeforeTheBattle;
 import quests.Q10849_TrialsForAdaptation.Q10849_TrialsForAdaptation;
 import quests.Q10851_ElvenBotany.Q10851_ElvenBotany;
 import quests.Q10852_TheMotherTreeRevivalProject.Q10852_TheMotherTreeRevivalProject;
+import quests.Q10853_ToWeakenTheGiants.Q10853_ToWeakenTheGiants;
+import quests.Q10854_ToSeizeTheFortress.Q10854_ToSeizeTheFortress;
 import quests.Q10856_SuperionAppears.Q10856_SuperionAppears;
 import quests.Q10857_SecretTeleport.Q10857_SecretTeleport;
+import quests.Q10858_QueenRamonaControllerOfTheVessel.Q10858_QueenRamonaControllerOfTheVessel;
+import quests.Q10859_OwnTheEarthAndTheHeavens.Q10859_OwnTheEarthAndTheHeavens;
 import quests.Q10873_ExaltedReachingAnotherLevel.Q10873_ExaltedReachingAnotherLevel;
 import quests.Q10874_AgainstTheNewEnemy.Q10874_AgainstTheNewEnemy;
 import quests.Q10875_ForReputation.Q10875_ForReputation;
@@ -503,48 +547,24 @@ import quests.Q10882_VictoryCollection.Q10882_VictoryCollection;
 import quests.Q10883_ImmortalHonor.Q10883_ImmortalHonor;
 import quests.Q10891_AtANewPlace.Q10891_AtANewPlace;
 import quests.Q10892_RevengeOneStepAtATime.Q10892_RevengeOneStepAtATime;
+import quests.Q10895_RestrainQueenKrosha.Q10895_RestrainQueenKrosha;
 import quests.Q10896_VisitTheAdventureGuild.Q10896_VisitTheAdventureGuild;
 import quests.Q10897_ShowYourAbility.Q10897_ShowYourAbility;
 import quests.Q10898_TowardAGoal.Q10898_TowardAGoal;
 import quests.Q10899_VeteranAdventurer.Q10899_VeteranAdventurer;
 import quests.Q10900_PathToStrength.Q10900_PathToStrength;
 import quests.Q10901_AModelAdventurer.Q10901_AModelAdventurer;
-import quests.custom.Q00529_RegularBarrierMaintenance.Q00529_RegularBarrierMaintenance;
-import quests.custom.Q00560_HowToOvercomeFear.Q00560_HowToOvercomeFear;
 import quests.custom.Q00683_AdventOfKrofinSubspecies.Q00683_AdventOfKrofinSubspecies;
 import quests.custom.Q00684_DisturbedFields.Q00684_DisturbedFields;
-import quests.custom.Q10516_UnveiledFafurionTemple.Q10516_UnveiledFafurionTemple;
-import quests.custom.Q10517_FafurionsMinions.Q10517_FafurionsMinions;
-import quests.custom.Q10518_SucceedingThePriestess.Q10518_SucceedingThePriestess;
-import quests.custom.Q10519_ControllingYourTemper.Q10519_ControllingYourTemper;
-import quests.custom.Q10520_TempleGuardians.Q10520_TempleGuardians;
-import quests.custom.Q10529_IvoryTowersResearchFloatingSeaJournal.Q10529_IvoryTowersResearchFloatingSeaJournal;
-import quests.custom.Q10533_OrfensAmbition.Q10533_OrfensAmbition;
 import quests.not_done.Q00504_CompetitionForTheBanditStronghold;
-import quests.not_done.Q00579_BasicMissionBlazingSwamp;
 import quests.not_done.Q00591_GreatAmbitions;
 import quests.not_done.Q00655_AGrandPlanForTamingWildBeasts;
-import quests.not_done.Q00667_CoveringShilensEyes;
-import quests.not_done.Q00744_TheAlligatorHunterReturns;
-import quests.not_done.Q00745_TheOutlawsAreIncoming;
-import quests.not_done.Q00747_DefendingTheForsakenPlains;
-import quests.not_done.Q00748_EndlessRevenge;
-import quests.not_done.Q00749_TiesWithTheGuardians;
 import quests.not_done.Q00750_SevenFlowers;
-import quests.not_done.Q00759_TheDwarvenNightmareContinues;
-import quests.not_done.Q00773_ToCalmTheFlood;
-import quests.not_done.Q00780_UtilizeTheDarknessSeedOfInfinity;
-import quests.not_done.Q00781_UtilizeTheDarknessSeedOfAnnihilation;
-import quests.not_done.Q00782_UtilizeTheDarknessSeedOfHellfire;
-import quests.not_done.Q00789_WaitingForPaagrio;
 import quests.not_done.Q00836_RequestFromTheBlackbirdClan;
 import quests.not_done.Q00837_RequestFromTheGiantTrackers;
 import quests.not_done.Q00838_RequestFromTheMotherTreeGuardians;
 import quests.not_done.Q00839_RequestFromTheUnworldlyVisitors;
 import quests.not_done.Q00840_RequestFromTheKingdomsRoyalGuard;
-import quests.not_done.Q00841_ContaminationContainment;
-import quests.not_done.Q00843_GiantEvolutionControl;
-import quests.not_done.Q00846_BuildingUpStrength;
 import quests.not_done.Q00929_SeekerRescue;
 import quests.not_done.Q00985_AdventureGuildsSpecialRequestLv1;
 import quests.not_done.Q00986_AdventureGuildsSpecialRequestLv2;
@@ -552,39 +572,19 @@ import quests.not_done.Q00987_AdventureGuildsSpecialRequestLv3;
 import quests.not_done.Q00988_AdventureGuildsSpecialRequestLv4;
 import quests.not_done.Q00989_AdventureGuildsSpecialRequestLv5;
 import quests.not_done.Q10298_WastelandQueen;
-import quests.not_done.Q10552_ChallengeBalthusKnight;
-import quests.not_done.Q10553_WhatMattersMoreThanAbility;
-import quests.not_done.Q10554_GiftForYou;
-import quests.not_done.Q10555_ChargeAtAntharas;
-import quests.not_done.Q10556_ForgottenPowerStartOfFate;
-import quests.not_done.Q10557_NewPowerWindsOfFate;
 import quests.not_done.Q10558_HiddenInChaos;
-import quests.not_done.Q10559_BeforeTheGuide;
-import quests.not_done.Q10563_ControlOfPower;
-import quests.not_done.Q10564_ProveProgress;
-import quests.not_done.Q10565_NothingIsImpossible;
 import quests.not_done.Q10570_HurrahForKamaelsIndependence;
 import quests.not_done.Q10572_ToExpelTheEmbryosForces;
 import quests.not_done.Q10580_SpecialMissionDefeatSpezion;
 import quests.not_done.Q10588_SpecialMissionDefeatBaylor;
-import quests.not_done.Q10594_FergasonsScheme;
 import quests.not_done.Q10595_TheDimensionalWarpPart8;
 import quests.not_done.Q10596_TheDimensionalWarpPart9;
-import quests.not_done.Q10748_MysteriousSuggestion1;
-import quests.not_done.Q10749_MysteriousSuggestion2;
-import quests.not_done.Q10845_BloodyBattleRescueTheSmiths;
-import quests.not_done.Q10848_TrialsBeforeTheBattle;
-import quests.not_done.Q10853_ToWeakenTheGiants;
-import quests.not_done.Q10854_ToSeizeTheFortress;
-import quests.not_done.Q10858_QueenRamonaControllerOfTheVessel;
-import quests.not_done.Q10859_OwnTheEarthAndTheHeavens;
 import quests.not_done.Q10886_SaviorsPathSearchTheRefinery;
 import quests.not_done.Q10887_SaviorsPathDemonsAndAtelia;
 import quests.not_done.Q10888_SaviorsPathDefeatTheEmbryo;
 import quests.not_done.Q10889_SaviorsPathFallenEmperorsThrone;
 import quests.not_done.Q10890_SaviorsPathFallOfEtina;
 import quests.not_done.Q10893_EndOfTwistedFate;
-import quests.not_done.Q10895_RestrainQueenKrosha;
 
 /**
  * @author NosBit
@@ -690,10 +690,10 @@ public class QuestMasterHandler
 		Q00504_CompetitionForTheBanditStronghold.class, // TODO: Not done.
 		Q00511_AwlUnderFoot.class,
 		Q00512_BladeUnderFoot.class,
-		Q00529_RegularBarrierMaintenance.class, // FIXME: Custom.
+		Q00529_RegularBarrierMaintenance.class,
 		Q00551_OlympiadStarter.class,
 		Q00553_OlympiadUndefeated.class,
-		Q00560_HowToOvercomeFear.class, // FIXME: Custom.
+		Q00560_HowToOvercomeFear.class,
 		Q00561_BasicMissionHarnakUndergroundRuins.class,
 		Q00562_BasicMissionAltarOfEvil.class,
 		Q00563_BasicMissionBloodySwampland.class,
@@ -711,7 +711,7 @@ public class QuestMasterHandler
 		Q00576_SpecialMissionDefeatSpezion.class,
 		Q00577_BasicMissionSilentValley.class,
 		Q00578_BasicMissionCemetery.class,
-		Q00579_BasicMissionBlazingSwamp.class, // TODO: Not done.
+		Q00579_BasicMissionBlazingSwamp.class,
 		Q00580_BeyondTheMemories.class,
 		Q00581_ThePurificationRitual.class,
 		Q00582_WashBloodWithBlood.class,
@@ -743,7 +743,7 @@ public class QuestMasterHandler
 		Q00663_SeductiveWhispers.class,
 		Q00665_BasicTrainingForHunterGuildMember.class,
 		Q00666_HunterGuildMembersKnowledge.class,
-		Q00667_CoveringShilensEyes.class, // TODO: Not done.
+		Q00667_HowToCoverShilensEyes.class,
 		Q00668_ABattleWithTheGiants.class,
 		Q00669_DesperateFightWithTheDragons.class,
 		Q00670_DefeatingTheLordOfSeed.class,
@@ -760,11 +760,11 @@ public class QuestMasterHandler
 		Q00737_ASwordHiddenInASmile.class,
 		Q00738_DimensionalExplorationOfTheUnworldlyVisitors.class,
 		Q00743_AtTheAltarOfOblivion.class,
-		Q00744_TheAlligatorHunterReturns.class, // TODO: Not done.
-		Q00745_TheOutlawsAreIncoming.class, // TODO: Not done.
-		Q00747_DefendingTheForsakenPlains.class, // TODO: Not done.
-		Q00748_EndlessRevenge.class, // TODO: Not done.
-		Q00749_TiesWithTheGuardians.class, // TODO: Not done.
+		Q00744_TheAlligatorHunterReturns.class,
+		Q00745_TheOutlawsAreIncoming.class,
+		Q00747_DefendingTheForsakenPlains.class,
+		Q00748_EndlessRevenge.class,
+		Q00749_TiesWithTheGuardians.class,
 		Q00750_SevenFlowers.class, // TODO: Not done.
 		Q00751_LiberatingTheSpirits.class,
 		Q00752_UncoverTheSecret.class,
@@ -774,26 +774,26 @@ public class QuestMasterHandler
 		Q00756_TopQualityPetra.class,
 		Q00757_TriolsMovement.class,
 		Q00758_TheFallenKingsMen.class,
-		Q00759_TheDwarvenNightmareContinues.class, // TODO: Not done.
+		Q00759_TheDwarvenNightmareContinues.class,
 		Q00760_BlockTheExit.class,
 		Q00761_AssistingTheGoldenRamArmy.class,
 		Q00762_AnOminousRequest.class,
 		Q00763_ADauntingTask.class,
 		Q00764_WeakeningTheVarkaSilenosForces.class,
 		Q00765_WeakeningTheKetraOrcForces.class,
-		Q00773_ToCalmTheFlood.class, // TODO: Not done.
+		Q00773_ToCalmTheFlood.class,
 		Q00774_DreamingOfPeace.class,
 		Q00775_RetrievingTheChaosFragment.class,
 		Q00776_SlayDarkLordEkimus.class,
 		Q00777_SlayDarkLordTiat.class,
 		Q00778_OperationRoaringFlame.class,
 		Q00779_UtilizeTheDarknessSeedOfDestruction.class,
-		Q00780_UtilizeTheDarknessSeedOfInfinity.class, // TODO: Not done.
-		Q00781_UtilizeTheDarknessSeedOfAnnihilation.class, // TODO: Not done.
-		Q00782_UtilizeTheDarknessSeedOfHellfire.class, // TODO: Not done.
+		Q00780_UtilizeTheDarknessSeedOfInfinity.class,
+		Q00781_UtilizeTheDarknessSeedOfAnnihilation.class,
+		Q00782_UtilizeTheDarknessSeedOfHellfire.class,
 		Q00783_VestigeOfTheMagicPower.class,
 		Q00787_TheRoleOfAWatcher.class,
-		Q00789_WaitingForPaagrio.class, // TODO: Not done.
+		Q00789_WaitingForPaagrio.class,
 		Q00790_ObtainingFerinsTrust.class,
 		Q00792_TheSuperionGiants.class,
 		Q00816_PlansToRepairTheStronghold.class,
@@ -813,12 +813,12 @@ public class QuestMasterHandler
 		Q00838_RequestFromTheMotherTreeGuardians.class, // TODO: Not done.
 		Q00839_RequestFromTheUnworldlyVisitors.class, // TODO: Not done.
 		Q00840_RequestFromTheKingdomsRoyalGuard.class, // TODO: Not done.
-		Q00841_ContaminationContainment.class, // TODO: Not done.
+		Q00841_ContaminationContainment.class,
 		Q00842_CaptiveDemons.class,
-		Q00843_GiantEvolutionControl.class, // TODO: Not done.
+		Q00843_GiantEvolutionControl.class,
 		Q00844_GiantsTreasure.class,
 		Q00845_SabotageTheEmbryoSupplies.class,
-		Q00846_BuildingUpStrength.class, // TODO: Not done.
+		Q00846_BuildingUpStrength.class,
 		Q00901_HowLavasaurusesAreMade.class,
 		Q00902_ReclaimOurEra.class,
 		Q00903_TheCallOfAntharas.class,
@@ -961,11 +961,11 @@ public class QuestMasterHandler
 		Q10503_FrintezzaEmbroideredSoulCloak.class,
 		Q10504_JewelOfAntharas.class,
 		Q10505_JewelOfValakas.class,
-		Q10516_UnveiledFafurionTemple.class, // FIXME: Custom.
-		Q10517_FafurionsMinions.class, // FIXME: Custom.
-		Q10518_SucceedingThePriestess.class, // FIXME: Custom.
-		Q10519_ControllingYourTemper.class, // FIXME: Custom.
-		Q10520_TempleGuardians.class, // FIXME: Custom.
+		Q10516_UnveiledFafurionTemple.class,
+		Q10517_FafurionsMinions.class,
+		Q10518_SucceedingThePriestess.class,
+		Q10519_ControllingYourTemper.class,
+		Q10520_TempleGuardians.class,
 		Q10521_QueenNavarisLetterVarkaSilenosBarracks.class,
 		Q10522_TheDarkSecretOfVarkaSilenos.class,
 		Q10523_TheAssassinationOfTheVarkaSilenosCommander.class,
@@ -974,11 +974,11 @@ public class QuestMasterHandler
 		Q10526_TheDarkSecretOfTheKetraOrcs.class,
 		Q10527_TheAssassinationOfTheKetraOrcCommander.class,
 		Q10528_TheAssassinationOfTheKetraOrcChief.class,
-		Q10529_IvoryTowersResearchFloatingSeaJournal.class, // FIXME: Custom.
+		Q10529_IvoryTowersResearchSeaOfSporesJournal.class,
 		Q10530_KekropusLetterTheDragonsTransition.class,
 		Q10531_OddHappeningsAtDragonValley.class,
 		Q10532_UncoveringTheConspiracy.class,
-		Q10533_OrfensAmbition.class, // FIXME: Custom.
+		Q10533_OrfensAmbition.class,
 		Q10534_HatchlingResearch.class,
 		Q10535_BlacksmithsSoul3.class,
 		Q10537_KamaelDisarray.class,
@@ -989,20 +989,20 @@ public class QuestMasterHandler
 		Q10542_SearchingForNewPower.class,
 		Q10543_SheddingWeight.class,
 		Q10544_SeekerSupplies.class,
-		Q10552_ChallengeBalthusKnight.class, // TODO: Not done.
-		Q10553_WhatMattersMoreThanAbility.class, // TODO: Not done.
-		Q10554_GiftForYou.class, // TODO: Not done.
-		Q10555_ChargeAtAntharas.class, // TODO: Not done.
-		Q10556_ForgottenPowerStartOfFate.class, // TODO: Not done.
-		Q10557_NewPowerWindsOfFate.class, // TODO: Not done.
+		Q10552_ChallengeBalthusKnight.class,
+		Q10553_WhatMattersMoreThanAbility.class,
+		Q10554_GiftForYou.class,
+		Q10555_ChargeAtAntharas.class,
+		Q10556_ForgottenPowerStartOfFate.class,
+		Q10557_NewPowerWindsOfFate.class,
 		Q10558_HiddenInChaos.class, // TODO: Not done.
-		Q10559_BeforeTheGuide.class, // TODO: Not done.
+		Q10559_BeforeTheGuide.class,
 		Q10560_WayOfWanderingKnight.class,
 		Q10561_AcrossTheDeathLine.class,
 		Q10562_TakeUpArms.class,
-		Q10563_ControlOfPower.class, // TODO: Not done.
-		Q10564_ProveProgress.class, // TODO: Not done.
-		Q10565_NothingIsImpossible.class, // TODO: Not done.
+		Q10563_ControlOfPower.class,
+		Q10564_ProveProgress.class,
+		Q10565_NothingIsImpossible.class,
 		Q10566_BestChoice.class,
 		Q10567_SpecialMissionNornilsGarden.class,
 		Q10568_KamaelsTechnologicalAdvancement.class,
@@ -1017,7 +1017,7 @@ public class QuestMasterHandler
 		Q10579_ContainingTheAttributePower.class,
 		Q10580_SpecialMissionDefeatSpezion.class, // TODO: Not done.
 		Q10588_SpecialMissionDefeatBaylor.class, // TODO: Not done.
-		Q10594_FergasonsScheme.class, // TODO: Not done.
+		Q10594_FergasonsScheme.class,
 		Q10595_TheDimensionalWarpPart8.class, // TODO: Not done.
 		Q10596_TheDimensionalWarpPart9.class, // TODO: Not done.
 		Q10597_EscapeToTheShadowOfTheMotherTree.class,
@@ -1047,8 +1047,8 @@ public class QuestMasterHandler
 		Q10744_StrongerThanSteel.class,
 		Q10745_TheSecretIngredients.class,
 		Q10746_SeeTheWorld.class,
-		Q10748_MysteriousSuggestion1.class, // TODO: Not done.
-		Q10749_MysteriousSuggestion2.class, // TODO: Not done.
+		Q10748_MysteriousSuggestion1.class,
+		Q10749_MysteriousSuggestion2.class,
 		Q10751_WindsOfFateEncounters.class,
 		Q10752_WindsOfFateAPromise.class,
 		Q10753_WindsOfFateChoices.class,
@@ -1124,18 +1124,18 @@ public class QuestMasterHandler
 		Q10841_DeepInsideAteliaFortress.class,
 		Q10843_AnomalyInTheEnchantedValley.class,
 		Q10844_BloodyBattleSeizingSupplies.class,
-		Q10845_BloodyBattleRescueTheSmiths.class, // TODO: Not done.
+		Q10845_BloodyBattleRescueTheSmiths.class,
 		Q10846_BloodyBattleMeetingTheCommander.class,
-		Q10848_TrialsBeforeTheBattle.class, // TODO: Not done.
+		Q10848_TrialsBeforeTheBattle.class,
 		Q10849_TrialsForAdaptation.class,
 		Q10851_ElvenBotany.class,
 		Q10852_TheMotherTreeRevivalProject.class,
-		Q10853_ToWeakenTheGiants.class, // TODO: Not done.
-		Q10854_ToSeizeTheFortress.class, // TODO: Not done.
+		Q10853_ToWeakenTheGiants.class,
+		Q10854_ToSeizeTheFortress.class,
 		Q10856_SuperionAppears.class,
 		Q10857_SecretTeleport.class,
-		Q10858_QueenRamonaControllerOfTheVessel.class, // TODO: Not done.
-		Q10859_OwnTheEarthAndTheHeavens.class, // TODO: Not done.
+		Q10858_QueenRamonaControllerOfTheVessel.class,
+		Q10859_OwnTheEarthAndTheHeavens.class,
 		Q10873_ExaltedReachingAnotherLevel.class,
 		Q10874_AgainstTheNewEnemy.class,
 		Q10875_ForReputation.class,
@@ -1154,7 +1154,7 @@ public class QuestMasterHandler
 		Q10891_AtANewPlace.class,
 		Q10892_RevengeOneStepAtATime.class,
 		Q10893_EndOfTwistedFate.class, // TODO: Not done.
-		Q10895_RestrainQueenKrosha.class, // TODO: Not done.
+		Q10895_RestrainQueenKrosha.class,
 		Q10896_VisitTheAdventureGuild.class,
 		Q10897_ShowYourAbility.class,
 		Q10898_TowardAGoal.class,

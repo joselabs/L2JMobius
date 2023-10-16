@@ -48,6 +48,11 @@ public class WorldObjectKnownList
 			return false;
 		}
 		
+		if (_activeObject.getInstanceId() != object.getInstanceId())
+		{
+			return false;
+		}
+		
 		// Check if already know object
 		if (knowsObject(object))
 		{
@@ -126,6 +131,11 @@ public class WorldObjectKnownList
 					continue;
 				}
 				
+				if (_activeObject.getInstanceId() != object.getInstanceId())
+				{
+					continue;
+				}
+				
 				// Try to add object to active object's known objects
 				// PlayableInstance sees everything
 				addKnownObject(object);
@@ -145,7 +155,12 @@ public class WorldObjectKnownList
 			{
 				if ((object == null) || !object.isPlayable())
 				{
-					return;
+					continue;
+				}
+				
+				if (_activeObject.getInstanceId() != object.getInstanceId())
+				{
+					continue;
 				}
 				
 				// Try to add object to active object's known objects
@@ -163,6 +178,12 @@ public class WorldObjectKnownList
 		{
 			if (object == null)
 			{
+				continue;
+			}
+			
+			if (_activeObject.getInstanceId() != object.getInstanceId())
+			{
+				removeKnownObject(object);
 				continue;
 			}
 			

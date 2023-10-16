@@ -18,6 +18,7 @@ package handlers.itemhandlers;
 
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -33,20 +34,20 @@ public class Elixir extends ItemSkills
 			return false;
 		}
 		
+		final int effectBonus = (int) playable.getStat().getValue(Stat.ELIXIR_USAGE_LIMIT, 0);
 		final int elixirsAvailable = playable.getActingPlayer().getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0);
-		final int elixirsUsed = playable.getActingPlayer().getVariables().getInt(PlayerVariables.ELIXIRS_USED, 0) + elixirsAvailable;
 		if ((playable.getLevel() < 76) || //
-			((playable.getLevel() < 85) && (elixirsUsed >= 5)) || //
-			((playable.getLevel() < 87) && (elixirsUsed >= 7)) || //
-			((playable.getLevel() < 88) && (elixirsUsed >= 9)) || //
-			((playable.getLevel() < 89) && (elixirsUsed >= 11)) || //
-			((playable.getLevel() < 90) && (elixirsUsed >= 13)) || //
-			((playable.getLevel() < 91) && (elixirsUsed >= 15)) || //
-			((playable.getLevel() < 92) && (elixirsUsed >= 17)) || //
-			((playable.getLevel() < 93) && (elixirsUsed >= 19)) || //
-			((playable.getLevel() < 94) && (elixirsUsed >= 21)) || //
-			((playable.getLevel() < 95) && (elixirsUsed >= 23)) || //
-			((playable.getLevel() < 100) && (elixirsUsed >= 25)))
+			((playable.getLevel() < 85) && (elixirsAvailable >= (5 + effectBonus))) || //
+			((playable.getLevel() < 87) && (elixirsAvailable >= (7 + effectBonus))) || //
+			((playable.getLevel() < 88) && (elixirsAvailable >= (9 + effectBonus))) || //
+			((playable.getLevel() < 89) && (elixirsAvailable >= (11 + effectBonus))) || //
+			((playable.getLevel() < 90) && (elixirsAvailable >= (13 + effectBonus))) || //
+			((playable.getLevel() < 91) && (elixirsAvailable >= (15 + effectBonus))) || //
+			((playable.getLevel() < 92) && (elixirsAvailable >= (17 + effectBonus))) || //
+			((playable.getLevel() < 93) && (elixirsAvailable >= (19 + effectBonus))) || //
+			((playable.getLevel() < 94) && (elixirsAvailable >= (21 + effectBonus))) || //
+			((playable.getLevel() < 95) && (elixirsAvailable >= (23 + effectBonus))) || //
+			((playable.getLevel() < 100) && (elixirsAvailable >= (25 + effectBonus))))
 		{
 			playable.sendPacket(SystemMessageId.THE_ELIXIR_UNAVAILABLE);
 			return false;
@@ -55,7 +56,7 @@ public class Elixir extends ItemSkills
 		if (super.useItem(playable, item, forceUse))
 		{
 			playable.getActingPlayer().getVariables().set(PlayerVariables.ELIXIRS_AVAILABLE, elixirsAvailable + 1);
-			playable.sendPacket(new SystemMessage(SystemMessageId.THANKS_TO_THE_ELIXIR_CHARACTER_S_STAT_POINTS_S1).addInt(elixirsUsed + 1));
+			playable.sendPacket(new SystemMessage(SystemMessageId.THANKS_TO_THE_ELIXIR_CHARACTER_S_STAT_POINTS_S1).addInt(elixirsAvailable + 1));
 			playable.getActingPlayer().broadcastUserInfo();
 			return true;
 		}

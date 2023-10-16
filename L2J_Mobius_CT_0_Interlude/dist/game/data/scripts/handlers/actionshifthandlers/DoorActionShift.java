@@ -33,7 +33,7 @@ public class DoorActionShift implements IActionShiftHandler
 		{
 			player.setTarget(target);
 			final Door door = (Door) target;
-			player.sendPacket(new StaticObjectInfo(door, player.isGM()));
+			player.sendPacket(new StaticObjectInfo(door));
 			
 			final NpcHtmlMessage html = new NpcHtmlMessage();
 			html.setFile(player, "data/html/admin/doorinfo.htm");

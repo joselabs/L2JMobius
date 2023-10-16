@@ -29,7 +29,6 @@ import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.ItemContainer;
-import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExChangePostState;
@@ -75,9 +74,15 @@ public class RequestPostAttachment implements ClientPacket
 			return;
 		}
 		
-		if (!player.isInsideZone(ZoneId.PEACE))
+		if (player.isInCombat())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_RECEIVE_IN_A_NON_PEACE_ZONE_LOCATION);
+			player.sendPacket(SystemMessageId.CANNOT_BE_USED_WHILE_IN_COMBAT_MODE);
+			return;
+		}
+		
+		if (player.isDead())
+		{
+			player.sendPacket(SystemMessageId.YOU_ARE_DEAD_AND_CANNOT_PERFORM_THIS_ACTION);
 			return;
 		}
 		

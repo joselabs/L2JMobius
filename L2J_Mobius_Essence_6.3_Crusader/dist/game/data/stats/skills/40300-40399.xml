@@ -239,6 +239,7 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40328" toLevel="1" name="Special Scroll: Enchant Circlet of Hero">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLevel>1</magicLevel>
@@ -248,6 +249,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="40329" toLevel="1" name="Special Scroll: Enchant Cloak of Protection">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLevel>1</magicLevel>
@@ -257,6 +259,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="40330" toLevel="1" name="Special Scroll: Enchant Dragon Belt">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLevel>1</magicLevel>
@@ -306,11 +309,12 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40336" toLevel="1" name="17th Anniversary Blessing">
-		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font> Lost item recovery fee $s1 XP recovery fee $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font>. Lost item recovery fee -50%. XP recovery fee -50% -->
+		<icon>icon.ev_17th_logo_1</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40337" toLevel="1" name="Scroll: Enchant Clan Equipment">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLevel>1</magicLevel>
@@ -320,7 +324,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="40338" toLevel="1" name="Scroll: Enchant Adventurer's Talisman">
-		<icon>icon.giant_item_equip</icon>
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLevel>1</magicLevel>
@@ -330,32 +334,32 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="40339" toLevel="1" name="17th Anniversary Blessing">
-		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font> Lost item recovery fee $s1 XP recovery fee $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font>. Lost item recovery fee -99%. XP recovery fee -50% -->
+		<icon>icon.ev_17th_logo_1</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40340" toLevel="1" name="17th Anniversary Blessing">
-		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font> Lost item recovery fee $s1 XP recovery fee $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font>. Lost item recovery fee -90%. XP recovery fee -50% -->
+		<icon>icon.ev_17th_logo_1</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40341" toLevel="1" name="17th Anniversary Blessing">
-		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font> Lost item recovery fee $s1 XP recovery fee $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font>. Lost item recovery fee -80%. XP recovery fee -50% -->
+		<icon>icon.ev_17th_logo_1</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40342" toLevel="1" name="17th Anniversary Blessing">
-		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font> Lost item recovery fee $s1 XP recovery fee $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- <font color="00DCFF"><Great discounts for death penalty recovery fees.></font>. Lost item recovery fee -70%. XP recovery fee -50% -->
+		<icon>icon.ev_17th_logo_1</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40343" toLevel="1" name="Master's Blessing - More Adena">
-		<!-- The GM is always by your side. For $s1 acquired adena +100%. -->
-		<icon>icon.skill0000</icon>
+		<!-- The GM is always by your side. For 4 h. acquired adena +100%. -->
+		<icon>icon.buff_inc_adena</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40344" toLevel="1" name="Berserker's Scroll - Event">
-		<!-- STR $s1 INT $s1 Atk. Spd. $s2 Casting Spd. $s2 Speed $s3 P. Skill Power $s4 M. Skill Power $s4 -->
+		<!-- STR +1. INT +1. Atk. Spd. +100. Casting Spd. +100. Speed +5. P. Skill Power +5%. M. Skill Power +5% -->
 		<icon>icon.bereserker_scroll_i00</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -404,12 +408,45 @@
 	</skill>
 	<skill id="40345" toLevel="1" name="Antharas' Lair's Time Stone">
 		<icon>icon.skill0000</icon>
+		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<coolTime>500</coolTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>95694</itemConsumeId>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>80</minLevel>
+				<maxLevel>999</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="AddHuntingTime">
+				<zoneId>12</zoneId>
+				<time>3600000</time>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40346" toLevel="1" name="Spellbook: Mount Black Wyvern">
 		<!-- Double-click to learn how to ride Black Wyvern. -->
 		<icon>icon.skill0000</icon>
+		<hitTime>1500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>95712</itemConsumeId> <!-- Spellbook: Mount Black Wyvern -->
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="SetSkill">
+				<skillId>54227</skillId> <!-- Mount Black Wyvern -->
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40347" toLevel="1" name="Cursed Scroll: Enchant B-grade Weapon">
 		<icon>icon.skill0000</icon>
@@ -453,7 +490,7 @@
 	</skill>
 	<skill id="40357" toLevel="1" name="Sayha's Storm Lv. 4">
 		<!-- For 20 min. while hunting, Sayha's Grace Consumption +100%, acquired XP/ SP +250%. Cooldown: 1 min. The effect remains after death. You can cancel the effect by yourself. -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.bm_sayha_storm</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40358" toLevel="1" name="Alligator Island's Time Stone">
@@ -517,7 +554,7 @@
 		</effects>
 	</skill>
 	<skill id="40361" toLevel="1" name="Freya's Random Transformation Scroll">
-		<icon>icon.skill0000</icon>
+		<icon>icon.random_transform_00</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40362" toLevel="1" name="Scroll of Escape: Frost Lord's Castle">
@@ -549,32 +586,32 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40364" toLevel="1" name="Valentine's Day Blessing">
-		<icon>icon.skill0000</icon>
+		<icon>icon.event_altair_enchant_scroll_i00</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40365" toLevel="1" name="Valentine's Day Blessing - Attack">
-		<!-- P. Atk. $s1 M. Atk. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- P. Atk. +50. M. Atk. +50 -->
+		<icon>icon.event_altair_enchant_scroll_i00</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40366" toLevel="1" name="Valentine's Day Blessing - Defense">
-		<!-- P. Def. $s1 M. Def. $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- P. Def. +50. M. Def. +50 -->
+		<icon>icon.event_altair_enchant_scroll_i01</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40367" toLevel="1" name="Valentine's Day Blessing - Speed">
-		<!-- Atk. Spd. $s1 Casting Spd. $s1 Max HP $s2 Max MP $s2 -->
-		<icon>icon.skill0000</icon>
+		<!-- Atk. Spd. +10. Casting Spd. +10. Max HP +50. Max MP +50 -->
+		<icon>icon.event_altair_enchant_scroll_i02</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40368" toLevel="1" name="Valentine's Day Blessing - Harmony">
-		<!-- You've collected all Valentine's Day Blessings. P. Atk. $s1 M. Atk. $s1 P. Def. $s1 M. Def. $s1 Atk. Spd. $s2 Casting Spd. $s2 Max HP $s1 Max MP $s1 -->
-		<icon>icon.skill0000</icon>
+		<!-- You've collected all Valentine's Day Blessings. P. Atk. +100. M. Atk. +100. P. Def. +100. M. Def. +100. Atk. Spd. +20. Casting Spd. +20. Max HP +100. Max MP +100 -->
+		<icon>icon.event_altair_enchant_scroll_i03</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40369" toLevel="25" name="New Year Blessing">
-		<!-- Acquired XP +30% Acquired SP +30% The effect is renewed automatically every hour. Once the effect is renewed, you will get the following items. <Reward> Lv. 1-8: Package: New Year's Reward - Sayha's Cookie (Time-limited) Lv. 9-16: Package: New Year's Reward - Spirit Ore (Time-limited) Lv. 17-23: Package: New Year's Reward - Soulshot Ticket (Time-limited) Lv. 24: Package: New Year's Reward - Charging Stone of Random Craft - 1 Charge (Time-limited) Note! You cannot get the buff renewal or a gift if you are dead. You cannot get the buff renewal or a gift if you are teleporting. You cannot get the buff renewal or a gift if you have too little space in your inventory. -->
-		<icon>icon.skill0000</icon>
+		<!-- Acquired XP +30%. Acquired SP +30%. The effect is renewed automatically every hour. Once the effect is renewed, you will get the following items. <Reward>. Lv. 1-8: Package: New Year's Reward - Sayha's Cookie (Time-limited). Lv. 9-16: Package: New Year's Reward - Spirit Ore (Time-limited). Lv. 17-23: Package: New Year's Reward - Soulshot Ticket (Time-limited). Lv. 24: Package: New Year's Reward - Charging Stone of Random Craft - 1 Charge (Time-limited). Note!. You cannot get the buff renewal or a gift if you are dead. You cannot get the buff renewal or a gift if you are teleporting. You cannot get the buff renewal or a gift if you have too little space in your inventory. -->
+		<icon>icon.ev_cow_bless_scrl</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40370" toLevel="1" name="New Year Blessing - Reward">
@@ -594,8 +631,8 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40374" toLevel="1" name="Elmoreden Tower's Scroll of Blessing">
-		<!-- STR/ INT +1 DEX/ WIT +1 CON/ MEN +1 P./ M. Atk. +100 P./ M. Def. +100 XP recovery fee -10% The effect remains after death. You can cancel the effect by yourself. -->
-		<icon>icon.skill0000</icon>
+		<!-- STR/ INT +1. DEX/ WIT +1. CON/ MEN +1. P./ M. Atk. +100. P./ M. Def. +100. XP recovery fee -10%. The effect remains after death. You can cancel the effect by yourself. -->
+		<icon>icon.bm_challenger_scroll</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>60000</reuseDelay>
 		<hitTime>1000</hitTime>
@@ -661,7 +698,7 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40377" toLevel="1" name="Invigorating Spring Energy">
-		<icon>icon.skill0000</icon>
+		<icon>icon.etc_bm_hero_red_potion</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40378" toLevel="1" name="Scroll: 100,000,000 SP">
@@ -674,22 +711,81 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40380" toLevel="1" name="Battle Support Scroll">
-		<!-- STR/ INT +1 DEX/ WIT +1 CON/ MEN +1 Sayha's Grace Consumption -20% The effect remains after death. You can cancel the effect by yourself. Note! Cannot be used while Sayha's Grace is active. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- STR/ INT +1. DEX/ WIT +1. CON/ MEN +1. Sayha's Grace Consumption -20%. The effect remains after death. You can cancel the effect by yourself. Note!. Cannot be used while Sayha's Grace is active. -->
+		<icon>icon.etc_pvppoint_scroll1</icon>
+		<abnormalLevel>4</abnormalLevel>
+		<abnormalTime>10800</abnormalTime>
+		<abnormalType>SCROLL_BOOST_DEFENSE</abnormalType>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>96108</itemConsumeId>
+		<abnormalType>SAYHA_GRACE</abnormalType>
+		<isMagic>4</isMagic>
+		<magicLevel>1</magicLevel>
+		<operateType>A2</operateType>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<irreplacableBuff>true</irreplacableBuff>
+		<stayAfterDeath>true</stayAfterDeath>
+		<effects>
+			<effect name="StatUp">
+				<stat>STR</stat>
+				<amount>1</amount>
+			</effect>
+			<effect name="StatUp">
+				<stat>INT</stat>
+				<amount>1</amount>
+			</effect>
+			<effect name="StatUp">
+				<stat>WIT</stat>
+				<amount>1</amount>
+			</effect>
+			<effect name="StatUp">
+				<stat>DEX</stat>
+				<amount>1</amount>
+			</effect>
+			<effect name="StatUp">
+				<stat>CON</stat>
+				<amount>1</amount>
+			</effect>
+			<effect name="StatUp">
+				<stat>MEN</stat>
+				<amount>1</amount>
+			</effect>
+			<effect name="VitalityPointsRate">
+				<amount>-20</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40381" toLevel="1" name="Sayha's Grace Scroll">
 		<!-- Sustains Sayha's Grace. The effect remains after death. You can cancel the effect by yourself. -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.ev_sayha_gold_scroll</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40382" toLevel="1" name="Elmoreden Tower's Time Stone">
 		<icon>icon.skill0000</icon>
+		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>96124</itemConsumeId> <!-- Elmoreden Tower's Time Stone -->
+		<effects>
+			<effect name="AddHuntingTime">
+				<zoneId>23</zoneId>
+				<time>3600000</time>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40383" toLevel="1" name="Growth Scroll">
-		<!-- STR/ INT +1 DEX/ WIT +1 CON/ MEN +1 Sayha's Grace Consumption -20% The effect remains after death. You can cancel the effect by yourself. Note! Cannot be used while Sayha's Grace is active. -->
-		<icon>icon.skill0000</icon>
+		<!-- STR/ INT +1. DEX/ WIT +1. CON/ MEN +1. Sayha's Grace Consumption -20%. The effect remains after death. You can cancel the effect by yourself. Note!. Cannot be used while Sayha's Grace is active. -->
+		<icon>icon.ev_2020_mask_enchant_scroll</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40384" toLevel="1" name="Scroll: Enchant Aden Cloak">
@@ -697,22 +793,71 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40385" toLevel="1" name="Magic Lamp Charging Potion (1-time)">
-		<icon>icon.skill0000</icon>
+		<icon>icon.magic_lamp_charge_potion</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40386" toLevel="2" name="Discount XP Recovery Scroll Lv. 1">
-		<!-- XP recovery fee $s1 The effect remains after death. You can cancel the effect by yourself. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- XP recovery fee -20%. The effect remains after death. You can cancel the effect by yourself. -->
+		<icon>
+			<value level="1">icon.etc_charm_of_courage_i01</value>
+			<value level="2">icon.etc_charm_of_courage_i02</value>
+		</icon>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+		</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
+		<operateType>A2</operateType>
+		<isMagic>4</isMagic>
+		<reuseDelay>60000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<stayAfterDeath>true</stayAfterDeath>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<irreplacableBuff>true</irreplacableBuff>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="ResurrectionFeeModifier">
+				<amount>
+					<value level="1">-20</value>
+					<value level="2">-30</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40387" toLevel="1" name="Einhasad's Protection">
-		<!-- Acquired XP $s1 Acquired SP $s1 The effect remains after death. -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- Acquired XP +100%. Acquired SP +100%. The effect remains after death. -->
+		<icon>icon.etc_dragons_blood_i03</icon>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<itemConsumeId>96729</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount> <!-- Einhasad's Protection -->
+		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<operateType>A2</operateType>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="ExpModify">
+				<amount>100</amount>
+			</effect>
+			<effect name="SpModify">
+				<amount>100</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40388" toLevel="1" name="Einhasad's Protection">
-		<!-- Acquired XP $s1 Acquired SP $s1 The effect remains after death. -->
-		<icon>icon.skill0000</icon>
+		<!-- Acquired XP +100%. Acquired SP +100%. The effect remains after death. -->
+		<icon>icon.etc_dragons_blood_i03</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40389" toLevel="1" name="Adventurers' Guide's Special Ticket">
@@ -725,7 +870,7 @@
 	</skill>
 	<skill id="40391" toLevel="1" name="Sayha's Grace Scroll">
 		<!-- Sustains Sayha's Grace. The effect remains after death. You can cancel the effect by yourself. -->
-		<icon>icon.skill0000</icon>
+		<icon>icon.ev_sayha_gold_scroll</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40392" toLevel="1" name="Extra Pass: Training Zone">

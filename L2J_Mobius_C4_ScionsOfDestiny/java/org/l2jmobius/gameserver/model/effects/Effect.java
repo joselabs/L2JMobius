@@ -176,8 +176,11 @@ public abstract class Effect
 			_currentTask = null;
 			_periodfirsttime = newfirsttime;
 			final int duration = _period - _periodfirsttime;
-			_currentTask = new EffectTask(duration * 1000, -1);
-			_currentFuture = ThreadPool.schedule(_currentTask, duration * 1000);
+			if (duration > 0)
+			{
+				_currentTask = new EffectTask(duration * 1000, -1);
+				_currentFuture = ThreadPool.schedule(_currentTask, duration * 1000);
+			}
 		}
 	}
 	

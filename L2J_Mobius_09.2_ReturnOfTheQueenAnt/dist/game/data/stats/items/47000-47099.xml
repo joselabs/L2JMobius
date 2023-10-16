@@ -125,6 +125,13 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="33780" min="3000" max="3000" chance="100" /> <!-- R-grade Soulshot - Event -->
+			<item id="33794" min="2000" max="2000" chance="100" /> <!-- Blessed R-grade Spiritshot - Event -->
+			<item id="35675" min="3" max="3" chance="100" /> <!-- High-grade Elixir of Life - Event -->
+			<item id="47083" min="1" max="1" chance="100" /> <!-- Tulesir's Gift Box -->
+		</capsuled_items>
 	</item>
 	<item id="47007" name="Paulina's Apocalypse Shaper" additionalName="Not used" type="Weapon">
 		<!-- Apocalypse Shaper imbued with the energy of Paulina. -->
@@ -152,7 +159,7 @@
 		</stats>
 	</item>
 	<item id="47008" name="Paulina's Apocalypse Cutter" type="Weapon">
-		<!-- An Apocalypse Cutter imbued with the energy of Paulina. <Special Option>. Atk. Spd. +5%, Max HP +25%. Enchantment, Augment, Soul Crystal, Crystallization, Appearance Modification, Attribute Assignment not possible. -->
+		<!-- Apocalypse Cutter imbued with the energy of Paulina. <Special properties>. Atk. Spd. +5%, Max HP +25%. Cannot be enchanted, augmented, crystallized, imbued with an attribute, and its appearance cannot be modified. No Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_pasis_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -206,7 +213,7 @@
 		</skills>
 	</item>
 	<item id="47010" name="Paulina's Apocalypse Avenger" type="Weapon">
-		<!-- An Apocalypse Avenger imbued with the energy of Paulina. <Special Option>. Atk. Spd. +5%, P. Critical Rate +82. Enchantment, Augment, Soul Crystal, Crystallization, Appearance Modification, Attribute Assignment not possible. -->
+		<!-- Apocalypse Avenger imbued with the energy of Paulina. <Special properties>. Atk. Spd. +5%, P. Critical Rate +82. Cannot be enchanted, augmented, crystallized, imbued with an attribute, and its appearance cannot be modified. No Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_raksilion_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -323,7 +330,7 @@
 		</skills>
 	</item>
 	<item id="47014" name="Paulina's Apocalypse Guardian" type="Weapon">
-		<!-- An Apocalypse Shooter imbued with the energy of Paulina. <Special Option>. Atk. Spd. +5%, P. Skill Critical Damage +10%. Enchantment, Augment, Soul Crystal, Crystallization, Appearance Modification, Attribute Assignment not possible. -->
+		<!-- Apocalypse Guardian imbued with the energy of Paulina. <Special properties>. Atk. Spd. +5%, P. Skill Critical Damage +10%. The item's appearance cannot be modified. Cannot be enchanted, crystallized, augmented, assigned an attribute. No Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_medianox_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="TWOHANDCROSSBOW" />
@@ -409,7 +416,7 @@
 		</skills>
 	</item>
 	<item id="47017" name="Paulina's Apocalypse Retributer" type="Weapon">
-		<!-- An Apocalypse Retributer imbued with the energy of Paulina. <Special Option>. Casting Spd. +15%, Atk. Spd. +5%, M. Atk. +5%, P. Atk. +5%. Enchantment, Augment, Soul Crystal, Crystallization, Appearance Modification, Attribute Assignment not possible. -->
+		<!-- Apocalypse Retributer imbued with the energy of Paulina. <Special properties>. Casting Spd. +15%, Atk. Spd. +5%, M. Atk. +5%, P. Atk. +5%. Cannot be enchanted, augmented, crystallized, imbued with an attribute, and its appearance cannot be modified. No Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_herencia_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -818,7 +825,7 @@
 		</stats>
 	</item>
 	<item id="47037" name="Paulina's Twilight Sigil" type="Armor">
-		<!-- A Twilight Sigel imbued with the energy of Paulina. -->
+		<!-- A Twilight Sigil imbued with the energy of Paulina. -->
 		<set name="icon" val="icon.weapon_dynaksus_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="SIGIL" />
@@ -949,7 +956,7 @@
 		</capsuled_items>
 	</item>
 	<item id="47044" name="Commando Belt" type="Armor">
-		<!-- The Commando Belt is the symbol of the Dimensional Commandos. Damage +2%. Damage Received -2%. Weight +12800. Inventory Slots +18. -->
+		<!-- Damage +2%, received damage -2%, weight limit +12,800, inventory slots +18. -->
 		<set name="icon" val="icon.event_energy_belt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -1280,7 +1287,7 @@
 		</capsuled_items>
 	</item>
 	<item id="47068" name="Adventurer's Blessed Heavy Armor Pack (PA)" additionalName="1-day" type="EtcItem">
-		<!-- Double-click to obtain an Adventurer's Blessed Heavy Armor Set for 4 h. -->
+		<!-- Double-click to obtain an Adventurer's Blessed Heavy Armor Set for 1 d. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1299,7 +1306,7 @@
 		</capsuled_items>
 	</item>
 	<item id="47069" name="Adventurer's Blessed Light Armor Pack (PA)" additionalName="1-day" type="EtcItem">
-		<!-- Double-click to obtain an Adventurer's Blessed Light Armor Set for 4 h. -->
+		<!-- Double-click to obtain an Adventurer's Blessed Light Armor Set for 1 d. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1318,7 +1325,7 @@
 		</capsuled_items>
 	</item>
 	<item id="47070" name="Adventurer's Blessed Robe Pack (PA)" additionalName="1-day" type="EtcItem">
-		<!-- Double-click to obtain an Adventurer's Blessed Robe Set for 4 h. -->
+		<!-- Double-click to obtain an Adventurer's Blessed Robe Set for 1 d. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1338,7 +1345,7 @@
 		</capsuled_items>
 	</item>
 	<item id="47071" name="Adventurer's Blessed Accessory Pack (PA)" additionalName="1-day" type="EtcItem">
-		<!-- Double-click to obtain an Adventurer's Blessed Accessory Set for 4 h. -->
+		<!-- Double-click to obtain an Adventurer's Blessed Accessory Set for 1 d. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1367,6 +1374,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46853" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Dual Sword -->
+		</capsuled_items>
 	</item>
 	<item id="47073" name="Blessed Paulina's Specter Cutter Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Blessed Paulina's Specter Cutter. -->
@@ -1379,6 +1390,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46854" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Cutter -->
+		</capsuled_items>
 	</item>
 	<item id="47074" name="Blessed Paulina's Specter Slasher Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Blessed Paulina's Specter Slasher. -->
@@ -1391,6 +1406,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46855" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Slasher -->
+		</capsuled_items>
 	</item>
 	<item id="47075" name="Blessed Paulina's Specter Avenger Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Blessed Paulina's Specter Avenger. -->
@@ -1403,6 +1422,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46856" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Avenger -->
+		</capsuled_items>
 	</item>
 	<item id="47076" name="Blessed Paulina's Specter Fighter Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Blessed Paulina's Specter Fighter. -->
@@ -1415,6 +1438,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46857" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Fighter -->
+		</capsuled_items>
 	</item>
 	<item id="47077" name="Blessed Paulina's Specter Stormer Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Blessed Paulina's Specter Stormer. -->
@@ -1427,6 +1454,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46858" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Stormer -->
+		</capsuled_items>
 	</item>
 	<item id="47078" name="Blessed Paulina's Specter Thrower Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Paulina's Specter Thrower. -->
@@ -1439,9 +1470,13 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46859" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Thrower -->
+		</capsuled_items>
 	</item>
 	<item id="47079" name="Blessed Paulina's Specter Guardian Pack" additionalName="30-day" type="EtcItem">
-		<!-- Double-click to obtain a 30-day Paulina's Specter Shooter. -->
+		<!-- Double-click to obtain Blessed Paulina's Specter Guardian (30-day). -->
 		<set name="icon" val="br_cashtex.item.br_cash_lucky_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1451,6 +1486,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46860" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Guardian -->
+		</capsuled_items>
 	</item>
 	<item id="47080" name="Blessed Paulina's Specter Dual Dagger Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Paulina's Specter Dual Daggers. -->
@@ -1463,6 +1502,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46861" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Dual Dagger -->
+		</capsuled_items>
 	</item>
 	<item id="47081" name="Blessed Paulina's Specter Caster Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Paulina's Specter Caster. -->
@@ -1475,6 +1518,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46862" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Caster -->
+		</capsuled_items>
 	</item>
 	<item id="47082" name="Blessed Paulina's Specter Retributer Box" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain a 30-day Paulina's Specter Retributer. -->
@@ -1487,6 +1534,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46863" min="1" max="1" chance="100" /> <!-- Blessed Paulina's Specter Retributer -->
+		</capsuled_items>
 	</item>
 	<item id="47083" name="Tulesir's Gift Box" type="EtcItem">
 		<!-- Use it to receive one item at random. -->
@@ -1564,7 +1615,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="47089" name="Anakim's Soul Crystal Lv. 1" type="EtcItem">
-		<!-- A special Soul Crystal with Anakim's Soul. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
+		<!-- A special Soul Crystal that contains Anakim's soul. Imbues a weapon with the crystal effect. The higher the crystal's level is, the more powerful effect is granted. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
 		<set name="icon" val="icon.bm_ensoul_stone_pve" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -1572,7 +1623,7 @@
 		<set name="material" val="CRYSTAL" />
 	</item>
 	<item id="47090" name="Anakim's Soul Crystal Lv. 2" type="EtcItem">
-		<!-- A special Soul Crystal with Anakim's Soul. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
+		<!-- A special Soul Crystal that contains Anakim's soul. Imbues a weapon with the crystal effect. The higher the crystal's level is, the more powerful effect is granted. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
 		<set name="icon" val="icon.bm_ensoul_stone_pve" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -1612,7 +1663,7 @@
 		<set name="material" val="CRYSTAL" />
 	</item>
 	<item id="47095" name="Anakim's Soul Crystal Lv. 7" type="EtcItem">
-		<!-- A special Soul Crystal with Anakim's Soul. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
+		<!-- A special Soul Crystal that contains Anakim's soul. Imbues a weapon with the crystal effect. The higher the crystal's level is, the more powerful effect is granted. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
 		<set name="icon" val="icon.bm_ensoul_stone_pve" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -1620,7 +1671,7 @@
 		<set name="material" val="CRYSTAL" />
 	</item>
 	<item id="47096" name="Anakim's Soul Crystal Lv. 8" type="EtcItem">
-		<!-- A special Soul Crystal with Anakim's Soul. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
+		<!-- A special Soul Crystal that contains Anakim's soul. Imbues a weapon with the crystal effect. The higher the crystal's level is, the more powerful effect is granted. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
 		<set name="icon" val="icon.bm_ensoul_stone_pve" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -1628,7 +1679,7 @@
 		<set name="material" val="CRYSTAL" />
 	</item>
 	<item id="47097" name="Anakim's Soul Crystal Lv. 9" type="EtcItem">
-		<!-- A special Soul Crystal with Anakim's Soul. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
+		<!-- A special Soul Crystal that contains Anakim's soul. Imbues a weapon with the crystal effect. The higher the crystal's level is, the more powerful effect is granted. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Monster Spirit. -->
 		<set name="icon" val="icon.bm_ensoul_stone_pve" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />

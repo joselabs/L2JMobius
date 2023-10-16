@@ -30,7 +30,7 @@ import org.l2jmobius.loginserver.network.clientpackets.RequestServerLogin;
  */
 public class LoginPacketHandler
 {
-	private static final Logger LOGGER = Logger.getLogger(LoginPacketHandler.class.getName());
+	protected static final Logger LOGGER = Logger.getLogger(LoginPacketHandler.class.getName());
 	
 	public static AbstractClientPacket handlePacket(byte[] data, LoginClient client)
 	{

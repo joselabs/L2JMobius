@@ -29,8 +29,8 @@ import java.util.Stack;
 import org.l2jmobius.gameserver.model.Skill;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Creature.AIAccessor;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.StaticObject;
 
 public class PlayerAI extends CreatureAI
@@ -240,11 +240,6 @@ public class PlayerAI extends CreatureAI
 		
 		final WorldObject target = getTarget();
 		if (checkTargetLost(target))
-		{
-			return;
-		}
-		
-		if (maybeMoveToPawn(target, 36))
 		{
 			return;
 		}

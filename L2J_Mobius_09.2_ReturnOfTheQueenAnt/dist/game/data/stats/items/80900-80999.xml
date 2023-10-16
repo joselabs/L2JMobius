@@ -4,6 +4,7 @@
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
 		<set name="icon" val="icon.aka_manaf_dual_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALBLUNT" />
 		<set name="bodypart" val="lrhand" />
@@ -71,7 +72,7 @@
 			<item id="80702" min="1" max="1" chance="1" /> <!-- Bloodthirsty Zariche Fighter -->
 			<item id="80703" min="1" max="1" chance="1" /> <!-- Bloodthirsty Zariche Stormer -->
 			<item id="80704" min="1" max="1" chance="1" /> <!-- Bloodthirsty Zariche Thrower -->
-			<item id="80705" min="1" max="1" chance="1" /> <!-- Bloodthirsty Zariche Shooter -->
+			<item id="80705" min="1" max="1" chance="1" /> <!-- Bloodthirsty Zariche Guardian -->
 			<item id="80706" min="1" max="1" chance="1" /> <!-- Bloodthirsty Zariche Buster -->
 			<item id="80707" min="1" max="1" chance="1" /> <!-- Bloodthirsty Zariche Caster -->
 			<item id="80708" min="1" max="1" chance="1" /> <!-- Bloodthirsty Zariche Retributer -->
@@ -100,7 +101,7 @@
 			<item id="80863" min="1" max="1" chance="1" /> <!-- Bloodthirsty Akamanah Fighter -->
 			<item id="80864" min="1" max="1" chance="1" /> <!-- Bloodthirsty Akamanah Stormer -->
 			<item id="80865" min="1" max="1" chance="1" /> <!-- Bloodthirsty Akamanah Thrower -->
-			<item id="80866" min="1" max="1" chance="1" /> <!-- Bloodthirsty Akamanah Shooter -->
+			<item id="80866" min="1" max="1" chance="1" /> <!-- Bloodthirsty Akamanah Guardian -->
 			<item id="80867" min="1" max="1" chance="1" /> <!-- Bloodthirsty Akamanah Buster -->
 			<item id="80868" min="1" max="1" chance="1" /> <!-- Bloodthirsty Akamanah Caster -->
 			<item id="80869" min="1" max="1" chance="1" /> <!-- Bloodthirsty Akamanah Retributer -->
@@ -327,14 +328,13 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80920" name="Emperor's Vitality Tonic" additionalName="Event" type="EtcItem">
-		<!-- Water of Vitality containing the strength of the emperor. Recovers 1 of the 4 Vitality bars. Cannot be used in the Olympiad. -->
+		<!-- Contains the strength of the emperor. Recovers 1 of the 4 Vitality bars. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.etc_recall_potion3" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="is_stackable" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="reuse_delay" val="60000" />
 		<set name="handler" val="ItemSkills" />
@@ -396,7 +396,7 @@
 		</skills>
 	</item>
 	<item id="80925" name="Potion of Protection: Confusion" type="EtcItem">
-		<!-- When used, Confusion Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Confusion Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -404,7 +404,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80926" name="Potion of Protection: Infection" type="EtcItem">
-		<!-- When used, Infection Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Infection Resistance +5%, received PvP damage -3%.Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -412,7 +412,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80927" name="Potion of Protection: Obstruction" type="EtcItem">
-		<!-- When used, Obstruction Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Obstruction Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i04" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -427,7 +427,7 @@
 		</skills>
 	</item>
 	<item id="80928" name="Potion of Protection: Stupor" type="EtcItem">
-		<!-- When used, Stupor Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Stupor Resistance +5%, received PvP damage -3%.Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i07" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -470,11 +470,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="22889" min="20000" max="20000" chance="100" /> <!-- Mysterious R-grade Spiritshot -->
+			<item id="22889" min="20000" max="20000" chance="100" /> <!-- Mysterious Blessed R-grade Spiritshot -->
 		</capsuled_items>
 	</item>
 	<item id="80931" name="Greater Zodiac Agathion Cube" type="EtcItem">
-		<!-- A cube containing one of the Enhanced Zodiac Agathion Charms, imbued with power of stars. -->
+		<!-- Double-click to obtain one of the Enhanced Zodiac Agathion Charms, imbued with power of stars. -->
 		<set name="icon" val="icon.star_agathion_cube_2" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -877,7 +877,7 @@
 		</skills>
 	</item>
 	<item id="80958" name="Sealed Heavenly Talisman" type="EtcItem">
-		<!-- For characters of Lv. 85+. Double-click to obtain a Heavenly Talisman. Unsealed Heavenly Talisman cannot be exchanged, dropped or sold. -->
+		<!-- Required level: 85+. Double-click to obtain Heavenly Talisman. The unpacked item cannot be exchanged, dropped or sold in the private store. -->
 		<set name="icon" val="icon.accessory_heaven_talisman" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -890,7 +890,7 @@
 		</capsuled_items>
 	</item>
 	<item id="80959" name="Epic Talisman" type="Armor">
-		<!-- P./ M. Def. +1500, MP Recovery Rate +4, HP Recovery Rate +8, Attribute Resistance +30, Damage Reflection Resistance +20, received P. Critical Rate and received P./ M. Skill Critical Rate -15%, received P. Critical Damage and received P./ M. Skill Critical Damage -15%. When equipped with Heavenly Talisman/ Talisman of Longing/ Talisman of Insanity, Attribute Attack +50, Resistance to All Weapons +3%. Effects of two identical talismans do not stack. -->
+		<!-- M. Def. +1500, P. Def. +1500, MP Recovery Rate +4, HP Recovery Rate +8, Attribute Resistance +30, Damage Reflection Resistance +20, received P. Critical Rate and received P./ M. Skill Critical Rate -15%, received P. Critical Damage and received P./ M. Skill Critical Damage -15%. When equipped with Heavenly Talisman/ Talisman of Longing/ Talisman of Insanity, Attribute Attack +50, Resistance to All Weapons +3%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. -->
 		<set name="icon" val="icon.epic_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -904,7 +904,7 @@
 		</skills>
 	</item>
 	<item id="80960" name="Isle of Souls' Time Stone" additionalName="Event" type="EtcItem">
-		<!-- Adds 60 min. to the hunting time in the Isle of Souls. -->
+		<!-- When used, prolongs your Isle of Souls raid for 60 min. -->
 		<set name="icon" val="icon.timezone_refill_3" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -937,6 +937,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="80961" min="1" max="1" chance="100" /> <!-- Maphr's Blessing - 1-day -->
+		</capsuled_items>
 	</item>
 	<item id="80963" name="Bloodstained Talisman of Protection" additionalName="8-hour" type="Armor">
 		<!-- Talisman of Protection stained with the blood of Zariche or Akamanah. P./ M. Def. +850, Received Damage -3%, Bow/ Crossbow Resistance +3%, Dagger/ Dual Daggers Resistance +3%, Fixed Damage Resistance +5%, received M. Skill Critical Damage -3%, received damage when immobilized -3%. -->
@@ -973,7 +977,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80966" name="Dragon's Shining Box" type="EtcItem">
-		<!-- Double-click to obtain one rare item of the following: Dragon Claw, Dragon Ring, Dragon Earring, Dragon Necklace, High-grade Armor Dragon Weapon Box, Standard Dragon Weapon Box, Dragon Weapon Box (Fragment). -->
+		<!-- Double-click to obtain one of the following rare items: Dragon Claw, Dragon Ring, Dragon Earring, Dragon Necklace, High-grade Dragon Weapon Pack, Mid-grade Dragon Weapon Pack, Low-grade Dragon Weapon Pack. -->
 		<set name="icon" val="icon.bm_dragon_present_4" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -982,7 +986,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80967" name="Scroll of Aden Green Squad" additionalName="Event" type="EtcItem">
-		<!-- For 30 min., acquired XP/ SP +30%, Vitality XP/ SP bonus +30%, all stats +1. -->
+		<!-- For 30 min., acquired XP/ SP +30%, Vitality bonus +30%, all stats +1. -->
 		<set name="icon" val="icon.ev_green_aden_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -990,7 +994,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80968" name="Alice's Lost Time" additionalName="Event" type="EtcItem">
-		<!-- It seems the coins was accidentally dropped by a member of Red Libra Guild. It can be exchanged for useful items through members of Red Libra Guild in Giran. -->
+		<!-- Take it to Alice and receive a present in exchange. -->
 		<set name="icon" val="icon.etc_coins_gold_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
@@ -1030,7 +1034,7 @@
 		</skills>
 	</item>
 	<item id="80971" name="Dragon's Relic" type="EtcItem">
-		<!-- Double-click to obtain a rare item. -->
+		<!-- Double-click to obtain 1 rare item. -->
 		<set name="icon" val="icon.bm_dragon_present_poket" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />

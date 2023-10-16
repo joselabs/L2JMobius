@@ -28,7 +28,7 @@
 		<set name="material" val="LEATHER" />
 	</item>
 	<item id="37803" name="Master Yogi's Special Scroll: Enchant Weapon" type="EtcItem">
-		<!-- Special weapon enchant scroll containing Master Yogi's power, only usable on Master Yogi's Staff. The item and the enchant value remain intact when enchanting fails. Cannot be used on a Staff enchanted to + 15 or above. Lucky Enchant Stones cannot be used with this item. -->
+		<!-- Special weapon enchant scroll containing Master Yogi's power, only usable on Master Yogi's Staff. The item and the enchant value remain intact when enchanting fails. Cannot be used on a Staff enchanted to +15 or above. Lucky Enchant Stones cannot be used with this item. -->
 		<set name="icon" val="icon.yogi_scroll_of_enchant_weapon_grade_i00" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_WP" />
 		<set name="is_stackable" val="true" />
@@ -36,7 +36,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37804" name="Replica Tiara" type="Armor">
-		<!-- A replica of the Exalted Tiara. Attack Attribute Bonus + 30 when equipped. -->
+		<!-- A replica of the Exalted Tiara. Attack Attribute Bonus +30 when equipped. -->
 		<set name="icon" val="icon.accessory_noblesse2_tiara_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -185,6 +185,14 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37816" min="1" max="1" chance="100" /> <!-- Metal Suit Hair Accessory Appearance Stone - 30-day -->
+			<item id="37817" min="1" max="1" chance="100" /> <!-- Metal Suit Breastplate Appearance Stone - 30-day -->
+			<item id="37818" min="1" max="1" chance="100" /> <!-- Metal Suit Gaiters Appearance Stone - 30-day -->
+			<item id="37820" min="1" max="1" chance="100" /> <!-- Metal Suit Boots Appearance Stone - 30-day -->
+			<item id="37819" min="1" max="1" chance="100" /> <!-- Metal Suit Gloves Appearance Stone - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="37816" name="Metal Suit Hair Accessory Appearance Stone" additionalName="30-day" type="EtcItem">
 		<!-- Changes the appearance of a hair accessory to that of Metal Shoot hair for 30 days. -->
@@ -779,7 +787,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37867" name="Valiant Scroll" type="EtcItem">
-		<!-- For 30 minutes, P. Atk. + 10%, M. Atk. by 21%, P. Def. by 15%, M. Def. by 15%, Max HP, MP, and CP by 15%. Does not disappear upon death. Cannot be used in the Olympiad or the Ceremony of Chaos. -->
+		<!-- For 30 minutes, P. Atk. +10%, M. Atk. by 21%, P. Def. by 15%, M. Def. by 15%, Max HP, MP, and CP by 15%. Does not disappear upon death. Cannot be used in the Olympiad or the Ceremony of Chaos. -->
 		<set name="icon" val="icon.etc_cave_page_i00" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -1282,7 +1290,7 @@
 		<set name="bodypart" val="hairall" />
 	</item>
 	<item id="37889" name="Herb of Growth" type="EtcItem">
-		<!-- For 10 min., XP/SP obtained through hunting + 50%. -->
+		<!-- For 10 min., XP/SP obtained through hunting +50%. -->
 		<set name="icon" val="BranchSys.icon.br_herb_of_baguette_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="ex_immediate_effect" val="true" />
@@ -1295,7 +1303,7 @@
 		</skills>
 	</item>
 	<item id="37890" name="Major Herb of Growth" type="EtcItem">
-		<!-- For 10 min., XP/SP obtained through hunting + 100%. -->
+		<!-- For 10 min., XP/SP obtained through hunting +100%. -->
 		<set name="icon" val="BranchSys.icon.br_herb_of_baguette_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="ex_immediate_effect" val="true" />
@@ -1308,7 +1316,7 @@
 		</skills>
 	</item>
 	<item id="37891" name="Superior Herb of Growth" type="EtcItem">
-		<!-- For 5 min., XP/SP obtained through hunting + 200%. -->
+		<!-- For 5 min., XP/SP obtained through hunting +200%. -->
 		<set name="icon" val="BranchSys.icon.br_herb_of_baguette_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="ex_immediate_effect" val="true" />
@@ -1342,7 +1350,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="37894" name="Improved Warrior's Recovery Potion" type="EtcItem">
-		<!-- When used, recovers 5000 HP and the remaining power is recovered as CP. But, there is no duration. -->
+		<!-- When used, recovers 5000 HP and the remaining power is recovered as CP. But, there is no cooldown. -->
 		<set name="icon" val="icon.etc_potion_gold_i00" />
 		<set name="weight" val="180" />
 		<set name="default_action" val="SKILL_REDUCE" />
@@ -1403,6 +1411,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37788" min="1" max="1" chance="100" /> <!-- SP Rune (Low-grade) - 1-day -->
+		</capsuled_items>
 	</item>
 	<item id="37899" name="SP Rune Pack (Mid-grade) (1-day)" type="EtcItem">
 		<!-- Double click to acquire 1 Enhanced Rose Spirit Coupon (5 hours) and 150 Rose Essences. Cannot be used in the auction house. -->
@@ -1410,5 +1422,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37789" min="1" max="1" chance="100" /> <!-- SP Rune (Mid-grade) - 1-day -->
+		</capsuled_items>
 	</item>
 </list>

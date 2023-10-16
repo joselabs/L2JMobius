@@ -162,16 +162,28 @@ public class ClassMaster extends Folk
 				{
 					case 1:
 					{
+						if (!Config.ALLOW_CLASS_MASTERS_FIRST_CLASS)
+						{
+							return;
+						}
 						sb.append("Come back here when you reach level 20 to change your class.<br>");
 						break;
 					}
 					case 2:
 					{
+						if (!Config.ALLOW_CLASS_MASTERS_SECOND_CLASS)
+						{
+							return;
+						}
 						sb.append("Come back here when you reach level 40 to change your class.<br>");
 						break;
 					}
 					case 3:
 					{
+						if (!Config.ALLOW_CLASS_MASTERS_THIRD_CLASS)
+						{
+							return;
+						}
 						sb.append("Come back here when you reach level 76 to change your class.<br>");
 						break;
 					}

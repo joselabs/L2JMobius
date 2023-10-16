@@ -31,6 +31,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
@@ -38,7 +39,6 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.LoginServerThread;
 import org.l2jmobius.gameserver.ai.CreatureAI;
-import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.PlayerAI;
 import org.l2jmobius.gameserver.cache.HtmCache;
@@ -49,6 +49,7 @@ import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.NobleSkillTable;
 import org.l2jmobius.gameserver.data.SkillTable;
 import org.l2jmobius.gameserver.data.sql.AnnouncementsTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.NpcTable;
 import org.l2jmobius.gameserver.data.sql.SkillTreeTable;
@@ -125,6 +126,8 @@ import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanMember;
 import org.l2jmobius.gameserver.model.effects.Effect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
+import org.l2jmobius.gameserver.model.holders.AutoPlaySettingsHolder;
+import org.l2jmobius.gameserver.model.holders.AutoUseSettingsHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.PlayerStatsHolder;
 import org.l2jmobius.gameserver.model.holders.SkillUseHolder;
@@ -222,6 +225,8 @@ import org.l2jmobius.gameserver.network.serverpackets.TradePressOwnOk;
 import org.l2jmobius.gameserver.network.serverpackets.TradeStart;
 import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.ValidateLocation;
+import org.l2jmobius.gameserver.taskmanager.AutoPlayTaskManager;
+import org.l2jmobius.gameserver.taskmanager.AutoUseTaskManager;
 import org.l2jmobius.gameserver.taskmanager.GameTimeTaskManager;
 import org.l2jmobius.gameserver.taskmanager.ItemsAutoDestroyTaskManager;
 import org.l2jmobius.gameserver.taskmanager.PlayerAutoSaveTaskManager;
@@ -278,11 +283,15 @@ public class Player extends Playable
 	private String _accountName;
 	private long _deleteTimer;
 	private boolean _isOnline = false;
+	private boolean _offlinePlay = false;
 	private boolean _enteredWorld = false;
 	private long _onlineTime;
 	private long _onlineBeginTime;
 	private long _lastAccess;
 	private long _uptime;
+	private ScheduledFuture<?> _updateAndBroadcastStatusTask;
+	private ScheduledFuture<?> _broadcastCharInfoTask;
+	
 	protected int _baseClass;
 	protected int _activeClass;
 	protected int _classIndex = 0;
@@ -408,7 +417,7 @@ public class Player extends Playable
 	protected Map<Integer, Integer> _activeSoulShots = new ConcurrentHashMap<>();
 	public Quest dialog = null;
 	private final int[] _loto = new int[5];
-	private final int[] _race = new int[2];
+	private final int[] _raceTickets = new int[2];
 	private final BlockList _blockList = new BlockList(this);
 	private boolean _isRegisteredOnEvent = false;
 	private boolean _isOnSoloEvent = false;
@@ -484,6 +493,10 @@ public class Player extends Playable
 	private int _currentMultiSellId = -1;
 	private int _partyroom = 0;
 	
+	private final AutoPlaySettingsHolder _autoPlaySettings = new AutoPlaySettingsHolder();
+	private final AutoUseSettingsHolder _autoUseSettings = new AutoUseSettingsHolder();
+	private final AtomicBoolean _autoPlaying = new AtomicBoolean();
+	
 	/** The table containing all minimum level needed for each Expertise (None, D, C, B, A, S). */
 	private static final int[] EXPERTISE_LEVELS =
 	{
@@ -524,13 +537,13 @@ public class Player extends Playable
 	 * @param hairStyle The hair style Identifier of the Player
 	 * @param hairColor The hair color Identifier of the Player
 	 * @param face The face type Identifier of the Player
-	 * @param sex the sex
+	 * @param isFemale if player is female
 	 * @return The Player added to the database or null
 	 */
-	public static Player create(int objectId, PlayerTemplate template, String accountName, String name, byte hairStyle, byte hairColor, byte face, boolean sex)
+	public static Player create(int objectId, PlayerTemplate template, String accountName, String name, byte hairStyle, byte hairColor, byte face, boolean isFemale)
 	{
 		// Create a new Player with an account name
-		final PlayerAppearance app = new PlayerAppearance(face, hairColor, hairStyle, sex);
+		final PlayerAppearance app = new PlayerAppearance(face, hairColor, hairStyle, isFemale);
 		final Player player = new Player(objectId, template, accountName, app);
 		
 		// Set the name of the Player
@@ -552,6 +565,7 @@ public class Player extends Playable
 			return null;
 		}
 		
+		CharInfoTable.getInstance().addName(player);
 		return player;
 	}
 	
@@ -1628,7 +1642,7 @@ public class Player extends Playable
 		}
 		setPvpFlag(value);
 		
-		sendPacket(new UserInfo(this));
+		updateUserInfo();
 		
 		// If this player has a pet update the pets pvp flag as well
 		if (getPet() != null)
@@ -2064,7 +2078,7 @@ public class Player extends Playable
 			}
 		}
 		
-		sendPacket(new UserInfo(this));
+		updateUserInfo();
 	}
 	
 	/**
@@ -4254,8 +4268,6 @@ public class Player extends Playable
 			// Check if the Player is confused
 			if (player.isOutOfControl())
 			{
-				// Send a Server->Client packet ActionFailed to the player
-				player.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			
@@ -4310,10 +4322,6 @@ public class Player extends Playable
 								player.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, this);
 								player.onActionRequest();
 							}
-							else
-							{
-								player.sendPacket(ActionFailed.STATIC_PACKET);
-							}
 						}
 					}
 					else // Calculate the distance between the Player. Only archer can hit from long.
@@ -4326,10 +4334,6 @@ public class Player extends Playable
 					{
 						player.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, this);
 						player.onActionRequest();
-					}
-					else
-					{
-						player.sendPacket(ActionFailed.STATIC_PACKET);
 					}
 				}
 				else if (Config.PATHFINDING > 0)
@@ -4345,10 +4349,6 @@ public class Player extends Playable
 						{
 							player.getAI().setIntention(CtrlIntention.AI_INTENTION_FOLLOW, this);
 						}
-						else
-						{
-							player.sendPacket(ActionFailed.STATIC_PACKET);
-						}
 					}
 				}
 				else if ((currentWeapon != null) && (currentWeapon.getItemType() == WeaponType.BOW)) // Calculate the distance between the Player. Only archer can hit from long.
@@ -4358,10 +4358,6 @@ public class Player extends Playable
 				else if (canInteract(player))
 				{
 					player.getAI().setIntention(CtrlIntention.AI_INTENTION_FOLLOW, this);
-				}
-				else
-				{
-					player.sendPacket(ActionFailed.STATIC_PACKET);
 				}
 			}
 		}
@@ -4584,24 +4580,22 @@ public class Player extends Playable
 	}
 	
 	/**
-	 * Send a Server->Client packet UserInfo to this Player and CharInfo to all Player in its _KnownPlayers.<br>
-	 * <br>
-	 * <b><u>Concept</u>:</b><br>
-	 * <br>
-	 * Others Player in the detection area of the Player are identified in <b>_knownPlayers</b>. In order to inform other players of this Player state modifications, server just need to go through _knownPlayers to send Server->Client Packet<br>
-	 * <br>
-	 * <b><u>Actions</u>:</b><br>
-	 * <li>Send a Server->Client packet UserInfo to this Player (Public and Private Data)</li>
-	 * <li>Send a Server->Client packet CharInfo to all Player in _KnownPlayers of the Player (Public data only)</li><br>
-	 * <font color=#FF0000><b><u>Caution</u>: DON'T SEND UserInfo packet to other players instead of CharInfo packet. Indeed, UserInfo packet contains PRIVATE DATA as MaxHP, STR, DEX...</b></font>
+	 * Send a Server->Client packet UserInfo to this Player and CharInfo to all known players.<br>
+	 * <font color=#FF0000><b><u>Caution</u>: DON'T SEND UserInfo packet to other players instead of CharInfo packet.<br>
+	 * UserInfo packet contains PRIVATE DATA as MaxHP, STR, DEX...</b></font>
 	 */
 	public void broadcastUserInfo()
 	{
-		// Send a Server->Client packet UserInfo to this Player
-		sendPacket(new UserInfo(this));
+		// Send user info to the current player.
+		updateUserInfo();
 		
-		// Broadcast char info to known players
+		// Broadcast char info to known players.
 		broadcastCharInfo();
+	}
+	
+	public void updateUserInfo()
+	{
+		sendPacket(new UserInfo(this));
 	}
 	
 	public void broadcastCharInfo()
@@ -4612,28 +4606,29 @@ public class Player extends Playable
 			return;
 		}
 		
-		final CharInfo charInfo = new CharInfo(this, false);
-		for (Player player : getKnownList().getKnownPlayers().values())
+		if (_broadcastCharInfoTask == null)
 		{
-			if (player == null)
+			_broadcastCharInfoTask = ThreadPool.schedule(() ->
 			{
-				continue;
-			}
-			
-			try
-			{
-				if (player.isGM() && getAppearance().isInvisible())
+				final CharInfo charInfo = new CharInfo(this, false);
+				for (Player player : getKnownList().getKnownPlayers().values())
 				{
-					player.sendPacket(new CharInfo(this, true));
+					if (player == null)
+					{
+						continue;
+					}
+					
+					if (player.isGM() && _appearance.isInvisible())
+					{
+						player.sendPacket(new CharInfo(this, true));
+					}
+					else
+					{
+						player.sendPacket(charInfo);
+					}
 				}
-				else
-				{
-					player.sendPacket(charInfo);
-				}
-			}
-			catch (NullPointerException e)
-			{
-			}
+				_broadcastCharInfoTask = null;
+			}, 50);
 		}
 	}
 	
@@ -4643,7 +4638,7 @@ public class Player extends Playable
 	public void broadcastTitleInfo()
 	{
 		// Send a Server->Client packet UserInfo to this Player
-		sendPacket(new UserInfo(this));
+		updateUserInfo();
 		Broadcast.toKnownPlayers(this, new TitleUpdate(this));
 	}
 	
@@ -4799,7 +4794,7 @@ public class Player extends Playable
 	 * <font color=#FF0000><b><u>Caution</u>: If a Party is in progress, distribute Items between party members</b></font>
 	 * @param object The Item to pick up
 	 */
-	protected void doPickupItem(WorldObject object)
+	public void doPickupItem(WorldObject object)
 	{
 		if (isAlikeDead() || isFakeDeath())
 		{
@@ -5497,6 +5492,15 @@ public class Player extends Playable
 		// calculate death penalty buff
 		calculateDeathPenaltyBuffLevel(killer);
 		
+		if (_summon != null)
+		{
+			if (_summon.isBetrayed())
+			{
+				sendPacket(SystemMessageId.YOUR_PET_SERVITOR_IS_UNRESPONSIVE_AND_WILL_NOT_OBEY_ANY_ORDERS);
+			}
+			_summon.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
+		}
+		
 		stopRentPet();
 		stopWaterTask();
 		
@@ -5510,6 +5514,13 @@ public class Player extends Playable
 		
 		// Refresh focus force like L2OFF
 		sendPacket(new EtcStatusUpdate(this));
+		
+		if (Config.OFFLINE_PLAY_LOGOUT_ON_DEATH && isAutoPlaying())
+		{
+			store();
+			deleteMe();
+		}
+		
 		return true;
 	}
 	
@@ -5665,8 +5676,8 @@ public class Player extends Playable
 			return; // Target player is self
 		}
 		
-		// If in Arena, do nothing
-		if (isInsideZone(ZoneId.PVP) || targetPlayer.isInsideZone(ZoneId.PVP))
+		// Do nothing when in PVP zone.
+		if (isInsideZone(ZoneId.PVP) || target.isInsideZone(ZoneId.PVP))
 		{
 			return;
 		}
@@ -5683,7 +5694,7 @@ public class Player extends Playable
 		}
 		
 		// Check if it's pvp
-		if ((checkIfPvP(target) && (targetPlayer.getPvpFlag() != 0)) || (isInsideZone(ZoneId.PVP) && targetPlayer.isInsideZone(ZoneId.PVP)))
+		if (checkIfPvP(target) && (targetPlayer.getPvpFlag() != 0))
 		{
 			increasePvpKills();
 		}
@@ -5742,6 +5753,7 @@ public class Player extends Playable
 				}
 			}
 		}
+		
 		if ((target instanceof Player) && Config.ANNOUNCE_ALL_KILL)
 		{
 			AnnouncementsTable.getInstance().announceToAll("Player " + getName() + " killed Player " + target.getName());
@@ -5923,9 +5935,6 @@ public class Player extends Playable
 		// Update the character's name color if they reached any of the 5 PvP levels.
 		updatePvPColor(getPvpKills());
 		broadcastUserInfo();
-		
-		// Send a Server->Client UserInfo packet to attacker with its Karma and PK Counter
-		sendPacket(new UserInfo(this));
 	}
 	
 	/**
@@ -6011,9 +6020,6 @@ public class Player extends Playable
 		updatePkColor(getPkKills());
 		broadcastUserInfo();
 		
-		// Send a Server->Client UserInfo packet to attacker with its Karma and PK Counter
-		sendPacket(new UserInfo(this));
-		
 		// Prevent character get stuck.
 		sendPacket(ActionFailed.STATIC_PACKET);
 	}
@@ -6059,11 +6065,6 @@ public class Player extends Playable
 	 */
 	public void updatePvPStatus()
 	{
-		if (isOnEvent())
-		{
-			return;
-		}
-		
 		if (isInsideZone(ZoneId.PVP))
 		{
 			return;
@@ -6107,7 +6108,7 @@ public class Player extends Playable
 			return;
 		}
 		
-		if ((!isInsideZone(ZoneId.PVP) || !targetPlayer.isInsideZone(ZoneId.PVP)) && (targetPlayer.getKarma() == 0))
+		if ((!isInsideZone(ZoneId.PVP) || !target.isInsideZone(ZoneId.PVP)) && (targetPlayer.getKarma() == 0))
 		{
 			if (checkIfPvP(targetPlayer))
 			{
@@ -7060,22 +7061,22 @@ public class Player extends Playable
 	}
 	
 	/**
-	 * Update Stats of the Player client side by sending Server->Client packet UserInfo/StatusUpdate to this Player and CharInfo/StatusUpdate to all Player in its _KnownPlayers (broadcast).
-	 * @param broadcastType the broadcast type
+	 * Update Stats of the Player client side by sending Server->Client packet UserInfo/StatusUpdate to this Player and CharInfo/StatusUpdate to all known players (broadcast).
 	 */
-	public void updateAndBroadcastStatus(int broadcastType)
+	public void updateAndBroadcastStatus()
 	{
-		refreshOverloaded();
-		refreshExpertisePenalty();
-		// Send a Server->Client packet UserInfo to this Player and CharInfo to all Player in its _KnownPlayers (broadcast)
-		if (broadcastType == 1)
+		if (_updateAndBroadcastStatusTask == null)
 		{
-			sendPacket(new UserInfo(this));
-		}
-		
-		if (broadcastType == 2)
-		{
-			broadcastUserInfo();
+			_updateAndBroadcastStatusTask = ThreadPool.schedule(() ->
+			{
+				refreshOverloaded();
+				refreshExpertisePenalty();
+				
+				// Send a Server->Client packet UserInfo to this Player and CharInfo to all known players (broadcast)
+				broadcastUserInfo();
+				
+				_updateAndBroadcastStatusTask = null;
+			}, 50);
 		}
 	}
 	
@@ -7085,7 +7086,7 @@ public class Player extends Playable
 	 */
 	public void setKarmaFlag(int flag)
 	{
-		sendPacket(new UserInfo(this));
+		updateUserInfo();
 		for (Player player : getKnownList().getKnownPlayers().values())
 		{
 			player.sendPacket(new RelationChanged(this, getRelation(player), isAutoAttackable(player)));
@@ -7101,7 +7102,7 @@ public class Player extends Playable
 	 */
 	public void broadcastKarma()
 	{
-		sendPacket(new UserInfo(this));
+		updateUserInfo();
 		for (Player player : getKnownList().getKnownPlayers().values())
 		{
 			if (player == null)
@@ -8091,6 +8092,29 @@ public class Player extends Playable
 		return 0;
 	}
 	
+	public void startOfflinePlay()
+	{
+		sendPacket(LeaveWorld.STATIC_PACKET);
+		
+		if (Config.OFFLINE_PLAY_SET_NAME_COLOR)
+		{
+			getAppearance().setNameColor(Config.OFFLINE_PLAY_NAME_COLOR);
+		}
+		if (Config.OFFLINE_PLAY_SLEEP_EFFECT)
+		{
+			startAbnormalEffect(Creature.ABNORMAL_EFFECT_SLEEP);
+		}
+		broadcastUserInfo();
+		
+		_offlinePlay = true;
+		_client.setDetached(true);
+	}
+	
+	public boolean isOfflinePlay()
+	{
+		return _offlinePlay;
+	}
+	
 	public void setEnteredWorld()
 	{
 		_enteredWorld = true;
@@ -8672,7 +8696,7 @@ public class Player extends Playable
 		sendPacket(new HennaInfo(this));
 		
 		// Send UserInfo packet to this Player
-		sendPacket(new UserInfo(this));
+		updateUserInfo();
 		reduceAdena("Henna", henna.getPrice() / 5, this, false);
 		
 		// Add the recovered dyes to the player's inventory and notify them.
@@ -8712,7 +8736,7 @@ public class Player extends Playable
 				}
 				
 				sendPacket(new HennaInfo(this));
-				sendPacket(new UserInfo(this));
+				updateUserInfo();
 				sendPacket(SystemMessageId.THE_SYMBOL_HAS_BEEN_ADDED);
 				return;
 			}
@@ -9024,20 +9048,21 @@ public class Player extends Playable
 	 * @param forceUse used to force ATTACK on players
 	 * @param dontMove used to prevent movement, if not in range
 	 */
-	public void useMagic(Skill skill, boolean forceUse, boolean dontMove)
+	@Override
+	public boolean useMagic(Skill skill, boolean forceUse, boolean dontMove)
 	{
 		if (isDead())
 		{
 			abortCast();
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		if (skill == null)
 		{
 			abortCast();
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		final int skillId = skill.getId();
@@ -9053,7 +9078,7 @@ public class Player extends Playable
 			sendPacket(SystemMessageId.OBSERVERS_CANNOT_PARTICIPATE);
 			abortCast();
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if the caster is sitting
@@ -9064,7 +9089,7 @@ public class Player extends Playable
 			
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if the skill type is TOGGLE
@@ -9073,7 +9098,7 @@ public class Player extends Playable
 			// Like L2OFF you can't use fake death if you are mounted
 			if ((skill.getId() == 60 /* Fake Death */) && isMounted())
 			{
-				return;
+				return false;
 			}
 			
 			// Get effects of the skill
@@ -9084,7 +9109,7 @@ public class Player extends Playable
 			{
 				_toggleUse = 0;
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 			
 			_toggleUse = System.currentTimeMillis();
@@ -9098,7 +9123,7 @@ public class Player extends Playable
 				
 				// Send a Server->Client packet ActionFailed to the Player
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 		}
 		
@@ -9108,13 +9133,13 @@ public class Player extends Playable
 			// just ignore the passive skill request. why does the client send it anyway ??
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if it is ok to summon Siege Golem (13), Wild Hog Cannon (299) or Swoop Cannon (448).
 		if (((skillId == 13) || (skillId == 299) || (skillId == 448)) && !SiegeManager.getInstance().checkIfOkToSummon(this, false) && !FortSiegeManager.getInstance().checkIfOkToSummon(this, false))
 		{
-			return;
+			return false;
 		}
 		
 		// If a skill is currently being used, queue this one if this is not the same
@@ -9127,13 +9152,13 @@ public class Player extends Playable
 			if ((currentSkill != null) && (skill.getId() == currentSkill.getSkillId()))
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 			
 			// Create a new SkillUseHolder object and queue it in the player _queuedSkill
 			setQueuedSkill(skill, forceUse, dontMove);
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if skill is in reuse time
@@ -9159,7 +9184,7 @@ public class Player extends Playable
 			}
 			
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// ************************************* Check Casting in Progress *******************************************
@@ -9177,7 +9202,7 @@ public class Player extends Playable
 		if (!_triggeredSkills.isEmpty() && (_triggeredSkills.get(skill.getId()) != null))
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// ************************************* Check Target *******************************************
@@ -9223,7 +9248,7 @@ public class Player extends Playable
 		{
 			sendPacket(SystemMessageId.YOUR_TARGET_CANNOT_BE_FOUND);
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// skills can be used on Walls and Doors only durring siege
@@ -9234,7 +9259,7 @@ public class Player extends Playable
 			final boolean isFort = ((((Door) target).getFort() != null) && (((Door) target).getFort().getFortId() > 0) && ((Door) target).getFort().getSiege().isInProgress());
 			if ((!isCastle && !isFort))
 			{
-				return;
+				return false;
 			}
 		}
 		
@@ -9250,7 +9275,7 @@ public class Player extends Playable
 					{
 						sendPacket(SystemMessageId.INVALID_TARGET);
 						sendPacket(ActionFailed.STATIC_PACKET);
-						return;
+						return false;
 					}
 				}
 			}
@@ -9260,7 +9285,7 @@ public class Player extends Playable
 		if (!target.canBeAttacked() && !getAccessLevel().allowPeaceAttack() && !target.isDoor() && (skillType != SkillType.TAKECASTLE))
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Pk protection config
@@ -9273,7 +9298,7 @@ public class Player extends Playable
 			{
 				sendMessage("You can only engage in PvP when your target is within your level grade.");
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 		}
 		
@@ -9284,7 +9309,7 @@ public class Player extends Playable
 		{
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// prevent casting signets to peace zone
@@ -9293,7 +9318,7 @@ public class Player extends Playable
 			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CANNOT_BE_USED_DUE_TO_UNSUITABLE_TERMS);
 			sm.addSkillName(skillId);
 			sendPacket(sm);
-			return;
+			return false;
 		}
 		
 		// ************************************* Check Consumables *******************************************
@@ -9306,7 +9331,7 @@ public class Player extends Playable
 			
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if the caster has enough HP
@@ -9317,7 +9342,7 @@ public class Player extends Playable
 			
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if the spell consummes an Item
@@ -9342,7 +9367,7 @@ public class Player extends Playable
 					// Send a System Message to the caster
 					sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
 				}
-				return;
+				return false;
 			}
 		}
 		
@@ -9350,14 +9375,14 @@ public class Player extends Playable
 		if (isFlying() && (skillId != 327) && (skillId != 4289) && !skill.isPotion())
 		{
 			sendMessage("You cannot use skills while riding a wyvern.");
-			return;
+			return false;
 		}
 		
 		// Like L2OFF if you have a summon you can't summon another one (ignore cubics)
 		if ((skillType == SkillType.SUMMON) && (skill instanceof SkillSummon) && !((SkillSummon) skill).isCubic() && ((getPet() != null) || isMounted()))
 		{
 			sendPacket(SystemMessageId.YOU_ALREADY_HAVE_A_PET);
-			return;
+			return false;
 		}
 		
 		if ((skill.getNumCharges() > 0) && (skill.getSkillType() != SkillType.CHARGE) && (skill.getSkillType() != SkillType.CHARGEDAM) && (skill.getSkillType() != SkillType.CHARGE_EFFECT) && (skill.getSkillType() != SkillType.PDAM))
@@ -9366,7 +9391,7 @@ public class Player extends Playable
 			if ((effect == null) || (effect.numCharges < skill.getNumCharges()))
 			{
 				sendPacket(new SystemMessage(SystemMessageId.S1_IS_NOT_AVAILABLE_AT_THIS_TIME_BEING_PREPARED_FOR_REUSE).addSkillName(skillId));
-				return;
+				return false;
 			}
 			
 			effect.numCharges -= skill.getNumCharges();
@@ -9384,14 +9409,14 @@ public class Player extends Playable
 		{
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		// Check if all casting conditions are completed
 		if (!skill.checkCondition(this, target, false))
 		{
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// ************************************* Check Player State *******************************************
@@ -9403,14 +9428,14 @@ public class Player extends Playable
 		{
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		if (isFishing() && (skillType != SkillType.PUMPING) && (skillType != SkillType.REELING) && (skillType != SkillType.FISHING))
 		{
 			// Only fishing skills are available
 			sendPacket(SystemMessageId.ONLY_FISHING_SKILLS_MAY_BE_USED_AT_THIS_TIME);
-			return;
+			return false;
 		}
 		
 		// ************************************* Check Skill Type *******************************************
@@ -9425,19 +9450,19 @@ public class Player extends Playable
 				// If Creature or target is in a peace zone, send a system message TARGET_IN_PEACEZONE a Server->Client packet ActionFailed
 				sendPacket(SystemMessageId.YOU_MAY_NOT_ATTACK_THIS_TARGET_IN_A_PEACEFUL_ZONE);
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 			if (isInOlympiadMode() && !isOlympiadStart() && (skillTargetType != SkillTargetType.AURA))
 			{
 				// if Player is in Olympia and the match isn't already start, send a Server->Client packet ActionFailed
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 			
 			if (!(target instanceof Monster) && (skillType == SkillType.CONFUSE_MOB_ONLY))
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 			
 			// Check if a Forced ATTACK is in progress on non-attackable target
@@ -9452,7 +9477,7 @@ public class Player extends Playable
 			{
 				// Send a Server->Client packet ActionFailed to the Player
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 			
 			// Check if the target is in the skill cast range
@@ -9468,7 +9493,7 @@ public class Player extends Playable
 						
 						// Send a Server->Client packet ActionFailed to the Player
 						sendPacket(ActionFailed.STATIC_PACKET);
-						return;
+						return false;
 					}
 				}
 				else if ((skill.getCastRange() > 0) && !isInsideRadius2D(target, skill.getCastRange() + getTemplate().getCollisionRadius())) // Calculate the distance between the Player and the target
@@ -9478,7 +9503,7 @@ public class Player extends Playable
 					
 					// Send a Server->Client packet ActionFailed to the Player
 					sendPacket(ActionFailed.STATIC_PACKET);
-					return;
+					return false;
 				}
 			}
 			// Check range for SIGNET skills
@@ -9489,7 +9514,7 @@ public class Player extends Playable
 				
 				// Send a Server->Client packet ActionFailed to the Player
 				sendPacket(ActionFailed.STATIC_PACKET);
-				return;
+				return false;
 			}
 		}
 		// Check if the skill is defensive and if the target is a monster and if force attack is set.. if not then we don't want to cast.
@@ -9497,7 +9522,7 @@ public class Player extends Playable
 		{
 			// send the action failed so that the skill doens't go off.
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if the skill is Spoil type and if the target isn't already spoiled
@@ -9508,7 +9533,7 @@ public class Player extends Playable
 			
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if the skill is Sweep type and if conditions not apply
@@ -9524,7 +9549,7 @@ public class Player extends Playable
 					
 					// Send a Server->Client packet ActionFailed to the Player
 					sendPacket(ActionFailed.STATIC_PACKET);
-					return;
+					return false;
 				}
 				
 				if ((getObjectId() != spoilerId) && !isInLooterParty(spoilerId))
@@ -9534,7 +9559,7 @@ public class Player extends Playable
 					
 					// Send a Server->Client packet ActionFailed to the Player
 					sendPacket(ActionFailed.STATIC_PACKET);
-					return;
+					return false;
 				}
 			}
 		}
@@ -9547,13 +9572,13 @@ public class Player extends Playable
 			
 			// Send a Server->Client packet ActionFailed to the Player
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		if ((skillTargetType == SkillTargetType.GROUND) && (getCurrentSkillWorldPosition() == null))
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// Check if this is a Pvp skill and target isn't a non-flagged/non-karma player
@@ -9581,7 +9606,7 @@ public class Player extends Playable
 						
 						// Send a Server->Client packet ActionFailed to the Player
 						sendPacket(ActionFailed.STATIC_PACKET);
-						return;
+						return false;
 					}
 				}
 			}
@@ -9591,20 +9616,20 @@ public class Player extends Playable
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
 			abortCast();
-			return;
+			return false;
 		}
 		
 		if ((skillType == SkillType.SIEGEFLAG) && !SiegeFlag.checkIfOkToPlaceFlag(this, false))
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
 			abortCast();
-			return;
+			return false;
 		}
 		else if ((skillType == SkillType.STRSIEGEASSAULT) && !StrSiegeAssault.checkIfOkToUseStriderSiegeAssault(this, false))
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
 			abortCast();
-			return;
+			return false;
 		}
 		
 		// TEMPFIX: Check client Z coordinate instead of server z to avoid exploit killing Zaken from others floor
@@ -9613,7 +9638,7 @@ public class Player extends Playable
 			sendPacket(SystemMessageId.CANNOT_SEE_TARGET);
 			getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// GeoData Los Check here
@@ -9621,14 +9646,14 @@ public class Player extends Playable
 		{
 			sendPacket(SystemMessageId.CANNOT_SEE_TARGET);
 			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			return false;
 		}
 		
 		// If all conditions are checked, create a new SkillUseHolder object and set the player _currentSkill
 		setCurrentSkill(skill, forceUse, dontMove);
 		
 		// Check if the active Skill can be casted (ex : not sleeping...), Check if the target is correct and Notify the AI with AI_INTENTION_CAST and target
-		super.useMagic(skill);
+		return super.useMagic(skill);
 	}
 	
 	/**
@@ -9817,7 +9842,7 @@ public class Player extends Playable
 		_mountType = mountType;
 		
 		// Send a Server->Client packet InventoryUpdate to the Player in order to update speed
-		sendPacket(new UserInfo(this));
+		updateUserInfo();
 		return true;
 	}
 	
@@ -10585,9 +10610,9 @@ public class Player extends Playable
 	 * @param i the i
 	 * @param value the value
 	 */
-	public void setRace(int i, int value)
+	public void setRaceTicket(int i, int value)
 	{
-		_race[i] = value;
+		_raceTickets[i] = value;
 	}
 	
 	/**
@@ -10595,9 +10620,9 @@ public class Player extends Playable
 	 * @param i the i
 	 * @return the race
 	 */
-	public int getRace(int i)
+	public int getRaceTicket(int i)
 	{
-		return _race[i];
+		return _raceTickets[i];
 	}
 	
 	/**
@@ -10733,14 +10758,6 @@ public class Player extends Playable
 			return count;
 		}
 		return 0;
-	}
-	
-	/**
-	 * Reload pvp hero aura.
-	 */
-	public void reloadPVPHeroAura()
-	{
-		sendPacket(new UserInfo(this));
 	}
 	
 	/**
@@ -11448,6 +11465,8 @@ public class Player extends Playable
 		
 		synchronized (getAllSkills())
 		{
+			_autoUseSettings.getAutoSkills().clear();
+			_autoUseSettings.getAutoBuffs().clear();
 			for (Skill oldSkill : getAllSkills())
 			{
 				super.removeSkill(oldSkill);
@@ -11564,7 +11583,6 @@ public class Player extends Playable
 		refreshExpertisePenalty();
 		refreshMasteryPenality();
 		refreshMasteryWeapPenality();
-		sendPacket(new UserInfo(this));
 		sendPacket(new ItemList(this, false));
 		getInventory().refreshWeight();
 		
@@ -12089,71 +12107,18 @@ public class Player extends Playable
 			getTrainedBeast().getAI().startFollow(this);
 		}
 		
+		// Stop auto play.
+		if (Config.ENABLE_AUTO_PLAY)
+		{
+			AutoPlayTaskManager.getInstance().stopAutoPlay(this);
+			AutoUseTaskManager.getInstance().stopAutoUseTask(this);
+		}
+		
 		// To be sure update also the pvp flag / war tag status
 		if (!inObserverMode())
 		{
 			broadcastUserInfo();
 		}
-	}
-	
-	@Override
-	public boolean updatePosition()
-	{
-		// Get movement data
-		final MoveData m = _move;
-		if (_move == null)
-		{
-			return true;
-		}
-		
-		if (!isSpawned())
-		{
-			_move = null;
-			return true;
-		}
-		
-		// Check if the position has alreday be calculated
-		if (m._moveTimestamp == 0)
-		{
-			m._moveTimestamp = m._moveStartTime;
-		}
-		
-		final int gameTicks = GameTimeTaskManager.getInstance().getGameTicks();
-		
-		// Check if the position has alreday be calculated
-		if (m._moveTimestamp == gameTicks)
-		{
-			return false;
-		}
-		
-		final double dx = m._xDestination - getX();
-		final double dy = m._yDestination - getY();
-		final double dz = m._zDestination - getZ();
-		final int distPassed = ((int) getStat().getMoveSpeed() * (gameTicks - m._moveTimestamp)) / GameTimeTaskManager.TICKS_PER_SECOND;
-		final double distFraction = distPassed / Math.sqrt((dx * dx) + (dy * dy) + (dz * dz));
-		if (distFraction > 1)
-		{
-			// Set the position of the Creature to the destination
-			super.setXYZ(m._xDestination, m._yDestination, m._zDestination);
-		}
-		else
-		{
-			// Set the position of the Creature to estimated after parcial move
-			super.setXYZ(getX() + (int) ((dx * distFraction) + 0.5), getY() + (int) ((dy * distFraction) + 0.5), getZ() + (int) (dz * distFraction));
-		}
-		
-		// Set the timer of last position update to now
-		m._moveTimestamp = gameTicks;
-		revalidateZone(false);
-		
-		if (distFraction > 1)
-		{
-			getKnownList().updateKnownObjects();
-			ThreadPool.execute(() -> getAI().notifyEvent(CtrlEvent.EVT_ARRIVED));
-			return true;
-		}
-		
-		return false;
 	}
 	
 	/**
@@ -12786,6 +12751,34 @@ public class Player extends Playable
 	 */
 	public synchronized void deleteMe()
 	{
+		if (Config.ENABLE_AUTO_PLAY)
+		{
+			getVariables().setIntegerList(PlayerVariables.AUTO_USE_ACTIONS, new ArrayList<>(getAutoUseSettings().getAutoActions()));
+			getVariables().setIntegerList(PlayerVariables.AUTO_USE_BUFFS, new ArrayList<>(getAutoUseSettings().getAutoBuffs()));
+			getVariables().setIntegerList(PlayerVariables.AUTO_USE_SKILLS, new ArrayList<>(getAutoUseSettings().getAutoSkills()));
+			getVariables().setIntegerList(PlayerVariables.AUTO_USE_ITEMS, new ArrayList<>(getAutoUseSettings().getAutoSupplyItems()));
+			
+			final int potionId = getVariables().getInt(PlayerVariables.AUTO_USE_POTION, 0);
+			if (potionId < 1)
+			{
+				getVariables().remove(PlayerVariables.AUTO_USE_POTION);
+			}
+			else
+			{
+				getVariables().set(PlayerVariables.AUTO_USE_POTION, potionId);
+			}
+			
+			final List<Integer> settings = new ArrayList<>(7);
+			settings.add(0, getAutoPlaySettings().getOptions());
+			settings.add(1, isAutoPlaying() ? 1 : 0);
+			settings.add(2, getAutoPlaySettings().doPickup() ? 1 : 0);
+			settings.add(3, getAutoPlaySettings().getNextTargetMode());
+			settings.add(4, getAutoPlaySettings().isShortRange() ? 1 : 0);
+			settings.add(5, getAutoPlaySettings().getAutoPotionPercent());
+			settings.add(6, getAutoPlaySettings().isRespectfulHunting() ? 1 : 0);
+			getVariables().setIntegerList(PlayerVariables.AUTO_USE_SETTINGS, settings);
+		}
+		
 		// Check if the Player is in observer mode to set its position to its position before entering in observer mode
 		if (inObserverMode())
 		{
@@ -12824,6 +12817,12 @@ public class Player extends Playable
 		{
 			LOGGER.warning("deleteMe()" + t);
 		}
+		
+		// Make sure player variables are stored.
+		getVariables().storeMe();
+		
+		// Make sure account variables are stored.
+		getAccountVariables().storeMe();
 		
 		// Stop the HP/MP/CP Regeneration task (scheduled tasks)
 		try
@@ -15259,6 +15258,26 @@ public class Player extends Playable
 			return;
 		}
 		_currentPetSkill = new SkillUseHolder(currentSkill, ctrlPressed, shiftPressed);
+	}
+	
+	public AutoPlaySettingsHolder getAutoPlaySettings()
+	{
+		return _autoPlaySettings;
+	}
+	
+	public AutoUseSettingsHolder getAutoUseSettings()
+	{
+		return _autoUseSettings;
+	}
+	
+	public void setAutoPlaying(boolean value)
+	{
+		_autoPlaying.set(value);
+	}
+	
+	public boolean isAutoPlaying()
+	{
+		return _autoPlaying.get();
 	}
 	
 	@Override

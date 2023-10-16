@@ -19,6 +19,7 @@ package handlers.effecthandlers;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.enums.SubclassInfoType;
+import org.l2jmobius.gameserver.model.Shortcut;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -32,6 +33,7 @@ import org.l2jmobius.gameserver.network.serverpackets.ExSubjobInfo;
 import org.l2jmobius.gameserver.network.serverpackets.PartySmallWindowAll;
 import org.l2jmobius.gameserver.network.serverpackets.PartySmallWindowDeleteAll;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
+import org.l2jmobius.gameserver.taskmanager.AutoUseTaskManager;
 
 /**
  * @author Sdw
@@ -104,6 +106,48 @@ public class ClassChange extends AbstractEffect
 					if (member != player)
 					{
 						member.sendPacket(new PartySmallWindowAll(member, player.getParty()));
+					}
+				}
+			}
+			
+			// Stop auto use.
+			for (Shortcut shortcut : player.getAllShortCuts())
+			{
+				if (!shortcut.isAutoUse())
+				{
+					continue;
+				}
+				
+				player.removeAutoShortcut(shortcut.getSlot(), shortcut.getPage());
+				
+				if (player.getAutoUseSettings().isAutoSkill(shortcut.getId()))
+				{
+					final Skill knownSkill = player.getKnownSkill(shortcut.getId());
+					if (knownSkill != null)
+					{
+						if (knownSkill.isBad())
+						{
+							AutoUseTaskManager.getInstance().removeAutoSkill(player, shortcut.getId());
+						}
+						else
+						{
+							AutoUseTaskManager.getInstance().removeAutoBuff(player, shortcut.getId());
+						}
+					}
+				}
+				else
+				{
+					final Item knownItem = player.getInventory().getItemByObjectId(shortcut.getId());
+					if (knownItem != null)
+					{
+						if (knownItem.isPotion())
+						{
+							AutoUseTaskManager.getInstance().removeAutoPotionItem(player);
+						}
+						else
+						{
+							AutoUseTaskManager.getInstance().removeAutoSupplyItem(player, knownItem.getId());
+						}
 					}
 				}
 			}

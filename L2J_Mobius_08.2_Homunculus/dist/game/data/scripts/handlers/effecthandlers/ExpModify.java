@@ -36,14 +36,14 @@ public class ExpModify extends AbstractStatAddEffect
 	public void pump(Creature effected, Skill skill)
 	{
 		effected.getStat().mergeAdd(Stat.BONUS_EXP, _amount);
-		if (skill.isActive())
+		if ((skill != null) && skill.isActive())
 		{
 			effected.getStat().mergeAdd(Stat.ACTIVE_BONUS_EXP, _amount);
-			effected.getStat().mergeAdd(Stat.BONUS_EXP_BUFFS, 1);
+			effected.getStat().mergeAdd(Stat.BONUS_EXP_BUFFS, 1d);
 		}
 		else
 		{
-			effected.getStat().mergeAdd(Stat.BONUS_EXP_PASSIVES, 1);
+			effected.getStat().mergeAdd(Stat.BONUS_EXP_PASSIVES, 1d);
 		}
 		
 		final Player player = effected.getActingPlayer();

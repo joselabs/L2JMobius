@@ -322,6 +322,7 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<set name="is_magic_weapon" val="true" />
 		<stats>
 			<stat type="pAtk">90</stat>
 			<stat type="mAtk">79</stat>
@@ -345,6 +346,7 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<set name="is_magic_weapon" val="true" />
 		<stats>
 			<stat type="pAtk">90</stat>
 			<stat type="mAtk">79</stat>
@@ -368,6 +370,7 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<set name="is_magic_weapon" val="true" />
 		<stats>
 			<stat type="pAtk">90</stat>
 			<stat type="mAtk">79</stat>
@@ -441,10 +444,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49418" min="1" max="1" chance="100" /> <!-- Cube of Sayha - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="49422" name="Package: Cube of Sayha (90-day)" type="EtcItem">
 		<!-- Double-click the package to receive 90-day Cube of Sayha. Cannot be exchanged, dropped, destroyed, or sold. Can be stored in a private warehouse. Available since level 40. -->
@@ -455,10 +461,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49419" min="1" max="1" chance="100" /> <!-- Cube of Sayha - 90-day -->
+		</capsuled_items>
 	</item>
 	<item id="49423" name="Spellbook: Dual Weapon Defense" type="EtcItem">
 		<!-- Spellbook needed to learn Dual Weapon Defense. Used by Gladiator. Required level: 41 -->
@@ -496,7 +505,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="49428" name="Spellbook: Aegis" type="EtcItem">
-		<!-- Spellbook needed to learn Aegis. Used by Eva's Templars, Shillien Knights. Required level: 52 -->
+		<!-- Spellbook needed to learn Aegis. Used by Eva's Knights, Shillien Knights. Required level: 52 -->
 		<set name="icon" val="icon.etc_spell_books_hfighter_i00" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="120" />
@@ -524,14 +533,14 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="49432" name="Spellbook: Stigma of Shilen" type="EtcItem">
-		<!-- Spellbook needed to learn Stigma of Shilen. Used by Shillien Elders. Required level: 40 -->
+		<!-- Spellbook needed to learn Stigma of Shilen. Used by Elven Elders. Required level: 40 -->
 		<set name="icon" val="icon.etc_spell_books_assistance_i00" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="120" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="49433" name="Amulet: Chant of Movement" type="EtcItem">
-		<!-- Amulet required for the Chant of Movement spell. Used by Warcryers. Required level: 44 -->
+		<!-- Amulet required for the Chant of Revenge spell. Used by Warcryers. Required level: 44 -->
 		<set name="icon" val="icon.etc_orcish_talisman_i00" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="120" />
@@ -551,7 +560,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="49435" name="Scroll: Berserker Spirit" type="EtcItem">
-		<!-- P. Def. -5%, M. Def. -10%, Evasion -2 -->
+		<!-- P. Atk. + -5%, M. Atk. + -10%, Atk. Spd. + 5%, Casting Spd. + 5%, and Speed + 5. P. Def. - 5%, M. Def. - 10%, and Evasion - -2. Duration: 20 minutes. -->
 		<set name="icon" val="icon.etc_scroll_white_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -821,6 +830,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49436" min="1" max="1" chance="100" /> <!-- Blue Mackerel: One-handed Sword - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49447" name="Trumpetfish Chest: Dagger" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Trumpetfish: Dagger. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -830,6 +843,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49437" min="1" max="1" chance="100" /> <!-- Trumpetfish: Dagger - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49448" name="Shark Chest: Two-handed Sword" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Shark: Two-handed Sword. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -839,6 +856,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49438" min="1" max="1" chance="100" /> <!-- Shark: Two-handed Sword - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49449" name="Squid Chest: Spear" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Squid: Spear. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -848,6 +869,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49439" min="1" max="1" chance="100" /> <!-- Squid: Spear - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49450" name="Sea Horse Chest: Two-handed Magic Blunt Weapon" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Sea Horse: Two-handed Magic Blunt Weapon. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -857,6 +882,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49440" min="1" max="1" chance="100" /> <!-- Sea Horse: Two-handed Magic Blunt Weapon - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49451" name="Lobster Chest: Fist Weapon" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Lobster: Fist Weapon. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -866,6 +895,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49441" min="1" max="1" chance="100" /> <!-- Lobster: Fist Weapon - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49452" name="Giant Crab Chest: Bow" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Giant Crab: Bow. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -875,6 +908,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49442" min="1" max="1" chance="100" /> <!-- Giant Crab: Bow - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49453" name="Turtle Chest: Shield" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Turtle: Shield. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -884,6 +921,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49443" min="1" max="1" chance="100" /> <!-- Turtle: Shield - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49454" name="Blue Mackerel Chest: Dualsword" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Blue Mackerel: Dualsword. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -893,6 +934,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49444" min="1" max="1" chance="100" /> <!-- Blue Mackerel: Dualsword - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49455" name="Blue Mackerel Chest: One-handed Blunt Weapon" type="EtcItem">
 		<!-- Open the chest to receive 1 7-day Blue Mackerel: One-handed Blunt Weapon. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -902,6 +947,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49445" min="1" max="1" chance="100" /> <!-- Blue Mackerel: One-handed Blunt Weapon - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="49456" name="Blade Spirit Chest (5 pcs.)" type="EtcItem">
 		<!-- Open the chest to receive 5 Blade Spirit pieces. The chest cannot be transferred to another character on the same account, once opened. -->
@@ -911,6 +960,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49416" min="5" max="5" chance="100" /> <!-- Blade Spirit -->
+		</capsuled_items>
 	</item>
 	<item id="49457" name="Letter Collector's Gift" type="EtcItem">
 		<!-- Letter Collector's Gift. Increases XP and SP gain by 10%, Max. HP / MP by 10%, Speed by 5 for 1 hour. Your armor changes to Santa Suit. The item will be deleted after the event is over. -->
@@ -1178,6 +1231,11 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="49468" min="1" max="1" chance="100" /> <!-- Land Dragon Pendant -->
+			<item id="49469" min="10" max="10" chance="100" /> <!-- Pendant Polish -->
+		</capsuled_items>
 	</item>
 	<item id="49473" name="Mr. K's Hand of God Gift Basket" type="EtcItem">
 		<!-- Gift Basket that contains the spirit of Mr. K's Hand of God. Open it to receive 1 Black Mask, 30 Rice Cakes of Flaming Fighting Spirit, and 50 Rice Cakes of Fighting Spirit (XP). Cannot be exchanged, dropped, or sold. Can be stored in private warehouse. -->
@@ -1187,10 +1245,15 @@
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="13519" min="1" max="1" chance="100" /> <!-- Black Mask -->
+			<item id="49081" min="30" max="30" chance="100" /> <!-- Rice Cake of Flaming Fighting Spirit -->
+			<item id="49086" min="50" max="50" chance="100" /> <!-- Rice Cake of Fighting Spirit - For XP -->
+		</capsuled_items>
 	</item>
 	<item id="49474" name="Scroll Part: Enchant Weapon" type="EtcItem">
 		<!-- Take those to exquisite goods merchant Galladucci. If you are lucky, you will get one of these Scrolls: Scroll: Enchant Weapon D / C / B. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. -->
@@ -1220,7 +1283,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="49477" name="Queen Ant's Ring" additionalName="15-day" type="Armor">
-		<!-- 15-day item. MP +9, Poison Resistance/Poison Attack Rate +10%, P./M. Accuracy +1, P./M. Atk. +4%. The effect doesn't stack if two identical rings are worn. Cannot be enchanted. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. -->
+		<!-- 15-day item. Grants MP + 9, Poison Chance/Resistance +10%, P. / M. Accuracy. +1, P. / M. Atk +20. The effect does not stack, if two identical rings are equipped. Cannot be enchanted. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.accessory_ring_of_queen_ant_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1274,7 +1337,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="49481" name="Solid Scroll: Enchant Armor (D-grade)" type="EtcItem">
-		<!-- P. Def. +1 for D-grade armor and accessories. Starting from +4, P. Def. +3. If an item is enchanted up to more than +4, HP is increased proportionally. Safe enchantment. If enchantment is failed, the item is not broken into crystals and preserves the enchantment level. Cannot be applied to armor enchanted by 6 and higher. -->
+		<!-- P. Def. + 1 for D-grade armor and accessories. Starting from + 4, P. Def. + 3. Can be safely enchanted up to + 3. If an item is enchanted up to more than +4, HP is increased proportionally. Safe enchantment. If enchantment is failed, the item is not broken into crystals and preserves the enchantment level. Cannot be applied to armor enchanted by +6 and higher. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_d" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_AM" />
@@ -1290,7 +1353,7 @@
 		</skills>
 	</item>
 	<item id="49482" name="Solid Scroll: Enchant Weapon (D-grade)" type="EtcItem">
-		<!-- When enchanted, P. Atk. +4 for D-grade one-handed swords, one-handed blunts, daggers, and spears. P. Atk. +5 for two-handed swords, two-handed blunts, dualswords, and two-handed fist weapons. P. Atk. +8 for bows. M. Atk. +3 for all weapons. Starting at +4, P. Atk. / M. Atk. bonus double. Enchanting is safe. If enchanting is failed, items are not broken into crystals and remain enchanted to prior level. Cannot be applied to items enchanted to +7 or higher. -->
+		<!-- When enchanted, P. Atk. + 2 for D-grade one-handed swords, one-handed blunts, daggers, spears, and other weapons. P. Atk. + 2 for two-handed swords, two-handed blunts, dualswords, and two-handed fist weapons. P. Atk. + 4 for bows. M. Atk. + 2 for all weapons. Starting at + 4, P. Atk. / M. Atk. bonus double. Enchanting is safe. If enchanting is failed, items are not broken into crystals and remain enchanted to prior level. Cannot be applied to items enchanted to +7 or higher. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_d" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_WP" />
@@ -1306,7 +1369,7 @@
 		</skills>
 	</item>
 	<item id="49483" name="Solid Scroll: Enchant Armor (C-grade)" type="EtcItem">
-		<!-- P. Def. +1 for C-grade armor and accessories. Starting from +4, P. Def. +3. If an item is enchanted up to more than +4, HP is increased proportionally. Safe enchantment. If enchantment is failed, the item is not broken into crystals and preserves the enchantment level. Cannot be applied to armor enchanted by 6 and higher. -->
+		<!-- P. Def. + 1 for C-grade armor and accessories. Starting from + 4, P. Def. + 3. Can be safely enchanted up to + 3. If an item is enchanted up to more than +4, HP is increased proportionally. Safe enchantment. If enchantment is failed, the item is not broken into crystals and preserves the enchantment level. Cannot be applied to armor enchanted by +6 and higher. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_c" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_AM" />
@@ -1322,7 +1385,7 @@
 		</skills>
 	</item>
 	<item id="49484" name="Solid Scroll: Enchant Weapon (C-grade)" type="EtcItem">
-		<!-- When enchanted, P. Atk. +4 for C-grade one-handed swords, one-handed blunts, daggers, and spears. P. Atk. +5 for two-handed swords, two-handed blunts, dualswords, and two-handed fist weapons. P. Atk. +8 for bows. M. Atk. +3 for all weapons. Starting at +4, P. Atk. / M. Atk. bonus double. Enchanting is safe. If enchanting is failed, items are not broken into crystals and remain enchanted to prior level. Cannot be applied to items enchanted to +7 or higher. -->
+		<!-- When enchanted, P. Atk. + 2 for D-grade one-handed swords, one-handed blunts, daggers, spears, and other weapons. P. Atk. + 2 for two-handed swords, two-handed blunts, dualswords, and two-handed fist weapons. P. Atk. + 4 for bows. M. Atk. + 2 for all weapons. Starting at + 4, P. Atk. / M. Atk. bonus double. Enchanting is safe. If enchanting is failed, items are not broken into crystals and remain enchanted to prior level. Cannot be applied to items enchanted to +7 or higher. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_c" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_WP" />
@@ -1338,7 +1401,7 @@
 		</skills>
 	</item>
 	<item id="49485" name="Solid Scroll: Enchant Armor (B-grade)" type="EtcItem">
-		<!-- P. Def. +1 for B-grade armor and accessories. Starting from +4, P. Def. +3. If an item is enchanted up to more than +4, HP is increased proportionally. Safe enchantment. If enchantment is failed, the item is not broken into crystals and preserves the enchantment level. Cannot be applied to armor enchanted by 6 and higher. -->
+		<!-- P. Def. + 1 for B-grade armor and accessories. Starting from + 4, P. Def. + 3. Can be safely enchanted up to + 3. If an item is enchanted up to more than +4, HP is increased proportionally. Safe enchantment. If enchantment is failed, the item is not broken into crystals and preserves the enchantment level. Cannot be applied to armor enchanted by +6 and higher. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_b" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_AM" />
@@ -1354,7 +1417,7 @@
 		</skills>
 	</item>
 	<item id="49486" name="Solid Scroll: Enchant Weapon (B-grade)" type="EtcItem">
-		<!-- When enchanted, P. Atk. +2 for B-grade one-handed swords, one-handed blunts, daggers, spears, and other weapons. P. Atk. +2 for two-handed swords, two-handed blunts, dualswords, and two-handed fist weapons. P. Atk. +4 for bows. M. Atk. +2 for all weapons. Starting at +4, P. Atk. / M. Atk. bonus double. Enchanting is safe. If enchanting is failed, items are not broken into crystals and remain enchanted to prior level. Cannot be applied to items enchanted to +7 or higher. -->
+		<!-- When enchanted, P. Atk. + 2 for B-grade one-handed swords, one-handed blunts, daggers, spears, and other weapons. P. Atk. + 2 for two-handed swords, two-handed blunts, dualswords, and two-handed fist weapons. P. Atk. + 4 for bows. M. Atk. + 2 for all weapons. Starting at + 4, P. Atk. / M. Atk. bonus double. Enchanting is safe. If enchanting is failed, items are not broken into crystals and remain enchanted to prior level. Cannot be applied to items enchanted to +7 or higher. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_b" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_WP" />
@@ -1403,7 +1466,7 @@
 		</skills>
 	</item>
 	<item id="49489" name="Parts of Enchantment Scrolls Chest" type="EtcItem">
-		<!-- Double-click to receive a Part of Enchantment Scroll. Cannot be exchanged, dropped, or sold in a private store. Can be stored in a private warehouse. <Note>. Be careful before opening the items as their relocation is restricted. -->
+		<!-- Double-click to receive a Part of Enchantment Scroll. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. <Attention>. Be careful before opening the items as their relocation is restricted. -->
 		<set name="icon" val="icon.etc_treasure_box_i08" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1415,20 +1478,25 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="49490" name="Fishing kit" type="EtcItem">
-		<!-- Double-click to receive 1 Fishing Rod (1-day), Bait (720 pcs), 1 Hero's Dual Swords, 1 Soulshot Ticket. Cannot be exchanged, dropped, or sold in a private store. Can be stored in a private warehouse. <Note>. Be careful before opening the items as their relocation is restricted. -->
+		<!-- Double-click to receive 1 Fishing Rod (1-day), Bait (720 pcs), 1 Hero's Dual Swords, 1 Soulshot Ticket. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. <Attention>. Be careful before opening the items as their relocation is restricted. -->
 		<set name="icon" val="icon.etc_elite_marguene_collection_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="45492" min="1" max="1" chance="100" /> <!-- Fishing Rod - 1-day -->
+			<item id="49508" min="720" max="720" chance="100" /> <!-- Normal Bait - Event -->
+			<item id="49487" min="1" max="1" chance="100" /> <!-- Soulshot Ticket -->
+		</capsuled_items>
 	</item>
 	<item id="49491" name="Weapon Supply Box (D-grade)" type="EtcItem">
-		<!-- Double-click to get the highest quality D-grade weapon. Cannot be exchanged, dropped, or sold in a private store. Can be stored in a private warehouse. -->
+		<!-- Double-click to get the highest quality D-grade weapon. Cannot be exchanged, dropped or sold. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.etc_raid_e_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1439,7 +1507,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="49492" name="Weapon Supply Box (C-grade)" type="EtcItem">
-		<!-- Double-click to get the highest quality C-grade weapon. Cannot be exchanged, dropped, or sold in a private store. Can be stored in a private warehouse. -->
+		<!-- Double-click to get the highest quality C-grade weapon. Cannot be exchanged, dropped or sold. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.etc_raid_e_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1450,7 +1518,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="49493" name="Orfen's Earring" additionalName="15-day" type="Armor">
-		<!-- 15-day item. MP +19, Mental Resistance and Atk. Rate +5%, Hold Resistance and Atk. Rate +10%, Healing Power +2%, Skill MP Consumption -2%. The effect doesn't stack if two identical earrings are worn. Cannot be enchanted. Cannot be exchanged, dropped or sold. Can be stored in a private warehouse. -->
+		<!-- 15-day item. Provides the following effects: MP +19, Mental Attack Resistance/Chance +5%, Shackle Chance/Resistance +10%, Healing Effects +2%, MP cost for abilities -2%. The effect doesn't stack if two identical earrings are worn. Cannot be enchanted/ Cannot be exchanged, dropped or sold. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.accessory_earring_of_orfen_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1477,16 +1545,23 @@
 		</stats>
 	</item>
 	<item id="49494" name="Buff Scrolls Chest" type="EtcItem">
-		<!-- Double-click to get 1 Scroll: Greater Acumen, Empowerment, Speed, Death Whisper, Wind Walk Lv. 1. Cannot be exchanged, dropped or sold in a private store. Can be stored in a private warehouse. -->
+		<!-- Double-click to get 1 Scroll: Greater Acumen, Empowerment, Speed, Death Whisper, Wind Walk Lvl 1. Cannot be exchanged, dropped or sold. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.new_user_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="3929" min="1" max="1" chance="100" /> <!-- Scroll: Acumen -->
+			<item id="3932" min="1" max="1" chance="100" /> <!-- Scroll: Empower -->
+			<item id="3930" min="1" max="1" chance="100" /> <!-- Scroll: Haste -->
+			<item id="3927" min="1" max="1" chance="100" /> <!-- Scroll: Death Whisper -->
+			<item id="3934" min="1" max="1" chance="100" /> <!-- Scroll: Wind Walk -->
+		</capsuled_items>
 	</item>
 	<item id="49495" name="Hero's Dual Swords" additionalName="15-day" type="Weapon">
 		<set name="icon" val="icon.weapon_r_dualsword_i00" />
@@ -1525,32 +1600,42 @@
 		<set name="time" val="10080" />
 	</item>
 	<item id="49497" name="Hero's Fishing kit" type="EtcItem">
-		<!-- Double-click to receive 1 Fishing Rod (1-day), Bait (720 pcs), 1 Hero's Dual Swords, 1 Soulshot Ticket. Cannot be exchanged, dropped, or sold in a private store. Can be stored in a private warehouse. <Note>. Be careful before opening the items as their relocation is restricted. -->
+		<!-- Double-click to receive 1 Fishing Rod (1-day), Bait (720 pcs), 1 Hero's Dual Swords, 1 Soulshot Ticket. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. <Attention>. Be careful before opening the items as their relocation is restricted. -->
 		<set name="icon" val="icon.etc_elite_marguene_collection_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="45492" min="1" max="1" chance="100" /> <!-- Fishing Rod - 1-day -->
+			<item id="49508" min="720" max="720" chance="100" /> <!-- Normal Bait - Event -->
+			<item id="49487" min="1" max="1" chance="100" /> <!-- Soulshot Ticket -->
+			<item id="49495" min="1" max="1" chance="100" /> <!-- Hero's Dual Swords - 15-day -->
+		</capsuled_items>
 	</item>
 	<item id="49498" name="My Teleport Scroll Package" type="EtcItem">
-		<!-- Double-click to get 1 My Teleport Book or 30 My Teleport Scrolls. Cannot be exchanged, dropped, or sold in a private store. Can be stored in a private warehouse. -->
+		<!-- Double-click to get 1 My Teleport Book or 30 My Teleport Scrolls. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i01" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="13015" min="1" max="1" chance="100" /> <!-- My Teleport Book -->
+			<item id="13016" min="30" max="30" chance="100" /> <!-- My Teleport Scroll -->
+		</capsuled_items>
 	</item>
 	<item id="49499" name="Angel Cat's Energy" additionalName="30-day" type="EtcItem">
-		<!-- For 30 minutes, increases Max. HP / MP by 5%, XP and SP gain by 20%. This effect remains after character's death. Cannot be exchanged, dropped, or sold. -->
+		<!-- Increases Max. HP / MP by 5%, XP and SP gain by 20%. This effect remains after character's death. Cannot be exchanged, dropped, or sold. Duration: 30 minutes. -->
 		<set name="icon" val="icon.skilltransform4" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_tradable" val="false" />

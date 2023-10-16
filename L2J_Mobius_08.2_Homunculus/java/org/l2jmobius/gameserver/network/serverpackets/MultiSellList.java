@@ -35,8 +35,9 @@ public class MultiSellList extends AbstractItemPacket
 	private int _index;
 	private final PreparedMultisellListHolder _list;
 	private final boolean _finished;
+	private final int _type;
 	
-	public MultiSellList(Player player, PreparedMultisellListHolder list, int index)
+	public MultiSellList(Player player, PreparedMultisellListHolder list, int index, int type)
 	{
 		_player = player;
 		_list = list;
@@ -51,6 +52,12 @@ public class MultiSellList extends AbstractItemPacket
 		{
 			_finished = true;
 		}
+		_type = type;
+	}
+	
+	public MultiSellList(Player player, PreparedMultisellListHolder list, int index)
+	{
+		this(player, list, index, 0);
 	}
 	
 	@Override
@@ -59,7 +66,7 @@ public class MultiSellList extends AbstractItemPacket
 		ServerPackets.MULTI_SELL_LIST.writeId(this);
 		writeByte(0); // Helios
 		writeInt(_list.getId()); // list id
-		writeByte(0); // GOD Unknown
+		writeByte(_type); // 196?
 		writeInt(1 + (_index / PAGE_SIZE)); // page started from 1
 		writeInt(_finished); // finished
 		writeInt(PAGE_SIZE); // size of pages

@@ -27,8 +27,9 @@ import org.l2jmobius.gameserver.model.StatSet;
 public class CombinationItem
 {
 	private final int _itemOne;
-	private final int _enchant;
+	private final int _enchantOne;
 	private final int _itemTwo;
+	private final int _enchantTwo;
 	private final long _commission;
 	private final float _chance;
 	private final Map<CombinationItemType, CombinationItemReward> _rewards = new EnumMap<>(CombinationItemType.class);
@@ -36,8 +37,9 @@ public class CombinationItem
 	public CombinationItem(StatSet set)
 	{
 		_itemOne = set.getInt("one");
-		_enchant = set.getInt("enchant", 0);
+		_enchantOne = set.getInt("enchantOne", 0);
 		_itemTwo = set.getInt("two");
+		_enchantTwo = set.getInt("enchantTwo", 0);
 		_commission = set.getLong("commission", 0);
 		_chance = set.getFloat("chance", 33);
 	}
@@ -47,14 +49,19 @@ public class CombinationItem
 		return _itemOne;
 	}
 	
-	public int getEnchant()
+	public int getEnchantOne()
 	{
-		return _enchant;
+		return _enchantOne;
 	}
 	
 	public int getItemTwo()
 	{
 		return _itemTwo;
+	}
+	
+	public int getEnchantTwo()
+	{
+		return _enchantTwo;
 	}
 	
 	public long getCommission()

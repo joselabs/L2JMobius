@@ -27,7 +27,7 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.util.StringUtil;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.communitybbs.CommunityBoard;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.BlockList;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -128,7 +128,7 @@ public class FriendsBBSManager extends BaseBBSManager
 						statement.execute();
 						statement.close();
 						
-						final String name = CharNameTable.getInstance().getPlayerName(friendId);
+						final String name = CharInfoTable.getInstance().getNameById(friendId);
 						final Player player = World.getInstance().getPlayer(friendId);
 						if (player != null)
 						{
@@ -243,7 +243,7 @@ public class FriendsBBSManager extends BaseBBSManager
 				continue;
 			}
 			
-			final String friendName = CharNameTable.getInstance().getPlayerName(id);
+			final String friendName = CharInfoTable.getInstance().getNameById(id);
 			if (friendName == null)
 			{
 				continue;
@@ -260,7 +260,7 @@ public class FriendsBBSManager extends BaseBBSManager
 		// Selected friendlist
 		for (Integer id : slist)
 		{
-			final String friendName = CharNameTable.getInstance().getPlayerName(id);
+			final String friendName = CharInfoTable.getInstance().getNameById(id);
 			if (friendName == null)
 			{
 				continue;
@@ -297,7 +297,7 @@ public class FriendsBBSManager extends BaseBBSManager
 				continue;
 			}
 			
-			final String blockName = CharNameTable.getInstance().getPlayerName(id);
+			final String blockName = CharInfoTable.getInstance().getNameById(id);
 			if (blockName == null)
 			{
 				continue;
@@ -314,7 +314,7 @@ public class FriendsBBSManager extends BaseBBSManager
 		// Selected Blocklist
 		for (Integer id : slist)
 		{
-			final String blockName = CharNameTable.getInstance().getPlayerName(id);
+			final String blockName = CharInfoTable.getInstance().getNameById(id);
 			if (blockName == null)
 			{
 				continue;
@@ -341,7 +341,7 @@ public class FriendsBBSManager extends BaseBBSManager
 		final StringBuilder sb = new StringBuilder();
 		for (int id : activeChar.getSelectedFriendList())
 		{
-			final String friendName = CharNameTable.getInstance().getPlayerName(id);
+			final String friendName = CharInfoTable.getInstance().getNameById(id);
 			if (friendName == null)
 			{
 				continue;

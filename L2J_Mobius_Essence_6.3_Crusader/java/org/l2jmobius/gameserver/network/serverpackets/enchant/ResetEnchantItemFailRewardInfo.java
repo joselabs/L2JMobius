@@ -85,9 +85,13 @@ public class ResetEnchantItemFailRewardInfo extends ServerPacket
 		}
 		
 		ServerPackets.EX_RES_ENCHANT_ITEM_FAIL_REWARD_INFO.writeId(this);
+		
 		writeInt(enchantItem.getObjectId());
-		writeInt(0);
-		writeInt(0);
+		
+		int challengeGroup = _player.getChallengeInfo().getNowGroup();
+		int challengePoint = _player.getChallengeInfo().getNowPoint();
+		writeInt(challengeGroup);
+		writeInt(challengePoint);
 		
 		if (result != null)
 		{

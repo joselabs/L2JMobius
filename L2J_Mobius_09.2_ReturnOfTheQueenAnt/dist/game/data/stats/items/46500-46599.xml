@@ -81,7 +81,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="46510" name="Lionel's Soul Crystal Lv. 7" type="EtcItem">
-		<!-- Crystal containing the soul of a monster. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. -->
+		<!-- Crystal containing the soul of a monster. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Soul Crystal of the same level. -->
 		<set name="icon" val="icon.ensoul_big_pm" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -89,7 +89,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="46511" name="Lionel's Soul Crystal Lv. 8" type="EtcItem">
-		<!-- Crystal containing the soul of a monster. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. -->
+		<!-- Crystal containing the soul of a monster. Can bestow crystal effect to weapons. The higher level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Soul Crystal of the same level. -->
 		<set name="icon" val="icon.ensoul_big_pm" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -97,7 +97,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="46512" name="Lionel's Soul Crystal Lv. 9" type="EtcItem">
-		<!-- Crystal containing the soul of a monster. Can bestow special abilities to weapons. -->
+		<!-- Crystal containing the soul of a monster. Can bestow special abilities to a weapon. The higher the level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. <Enchanting>. Compound with Soul Crystal of the same level. -->
 		<set name="icon" val="icon.ensoul_big_pm" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -105,7 +105,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="46513" name="Lionel's Soul Crystal Lv. 10" type="EtcItem">
-		<!-- Crystal containing the soul of a monster. Can bestow special abilities to weapons. -->
+		<!-- Crystal containing the soul of a monster. Can bestow special abilities to a weapon. The higher the level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. -->
 		<set name="icon" val="icon.ensoul_big_pm" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -113,7 +113,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="46514" name="Lionel's Soul Crystal Lv. 11" type="EtcItem">
-		<!-- Crystal containing the soul of a monster. Can bestow special abilities to weapons. -->
+		<!-- Crystal containing the soul of a monster. Can bestow special abilities to a weapon. The higher the level is, the more powerful crystal effect is activated. <Using>. Visit a town blacksmith to imbue your equipment with a crystal effect. -->
 		<set name="icon" val="icon.ensoul_big_pm" />
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 		<set name="weight" val="20" />
@@ -267,7 +267,7 @@
 		<set name="enchant_enabled" val="true" />
 	</item>
 	<item id="46530" name="Top-grade Love Potion - Party" type="EtcItem">
-		<!-- For 15 sec., P./ M. Atk. and Atk./ Casting Spd. of party members are increased. A strange power changes the appearance of your weapon. Does not stack with Battle Rhapsody Dance. Cannot be used in the Olympiad. -->
+		<!-- For 15 sec., P./ M. Atk. and Atk. Spd./ Casting Spd. of party members are increased. A strange power changes the appearance of your weapon. The effect does not stack with Battle Rhapsody. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.love_potion_party" />
 		<set name="weight" val="2" />
 		<set name="default_action" val="SKILL_REDUCE" />
@@ -729,6 +729,10 @@
 		<!-- TODO: capsuledItem item 46569 -->
 		<set name="is_depositable" val="false" />
 		<set name="material" val="LEATHER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46569" min="1" max="1" chance="10" /> <!-- Soul Crystal Lv. 5 Coupon -->
+		</capsuled_items>
 	</item>
 	<item id="46571" name="For NPC_Left Hand Meat Plate" type="Weapon">
 		<!-- For NPC. -->

@@ -81,6 +81,20 @@ import org.l2jmobius.gameserver.network.clientpackets.compound.RequestNewEnchant
 import org.l2jmobius.gameserver.network.clientpackets.compound.RequestNewEnchantTry;
 import org.l2jmobius.gameserver.network.clientpackets.crystalization.RequestCrystallizeEstimate;
 import org.l2jmobius.gameserver.network.clientpackets.crystalization.RequestCrystallizeItemCancel;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneChangeName;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneCheckName;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneConnectCastle;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneDailyMissionGetReward;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneDailyMissionInfo;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneDisconnectCastle;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneDistrictOccupationInfo;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneEnter;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneGetReward;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneInfo;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneLeave;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethronePrevSeasonInfo;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneRankingInfo;
+import org.l2jmobius.gameserver.network.clientpackets.dethrone.RequestExDethroneServerInfo;
 import org.l2jmobius.gameserver.network.clientpackets.enchant.RequestExAddEnchantScrollItem;
 import org.l2jmobius.gameserver.network.clientpackets.enchant.RequestExCancelEnchantItem;
 import org.l2jmobius.gameserver.network.clientpackets.enchant.RequestExRemoveEnchantSupportItem;
@@ -98,7 +112,10 @@ import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestTryEnSoulExt
 import org.l2jmobius.gameserver.network.clientpackets.equipmentupgrade.RequestUpgradeSystemResult;
 import org.l2jmobius.gameserver.network.clientpackets.equipmentupgradenormal.ExUpgradeSystemNormalRequest;
 import org.l2jmobius.gameserver.network.clientpackets.faction.RequestUserFactionInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockMemo;
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestFriendDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestUpdateFriendMemo;
 import org.l2jmobius.gameserver.network.clientpackets.herobook.RequestHeroBookCharge;
 import org.l2jmobius.gameserver.network.clientpackets.herobook.RequestHeroBookEnchant;
 import org.l2jmobius.gameserver.network.clientpackets.homunculus.ExHomunculusEvolve;
@@ -141,6 +158,7 @@ import org.l2jmobius.gameserver.network.clientpackets.olympiad.RequestOlympiadOb
 import org.l2jmobius.gameserver.network.clientpackets.pk.RequestExPkPenaltyList;
 import org.l2jmobius.gameserver.network.clientpackets.pk.RequestExPkPenaltyListOnlyLoc;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeAnnounce;
+import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeAnnounceSet;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeContributionInfo;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeContributionRank;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV2.RequestExPledgeContributionReward;
@@ -169,6 +187,7 @@ import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestOlympiadMyR
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestOlympiadRankingInfo;
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestPvpRankingList;
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestPvpRankingMyInfo;
+import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestRankingCharHistory;
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestRankingCharInfo;
 import org.l2jmobius.gameserver.network.clientpackets.ranking.RequestRankingCharRankers;
 import org.l2jmobius.gameserver.network.clientpackets.sayune.RequestFlyMove;
@@ -358,8 +377,8 @@ public enum ExClientPackets
 	REQUEST_SURRENDER_PLEDGE_WAR_EX(0x92, null, ConnectionState.IN_GAME),
 	REQUEST_DYNAMIC_QUEST_ACTION(0x93, null, ConnectionState.IN_GAME), // TODO: Implement / HANDLE SWITCH
 	REQUEST_FRIEND_DETAIL_INFO(0x94, RequestFriendDetailInfo::new, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_FRIEND_MEMO(0x95, null, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_BLOCK_MEMO(0x96, null, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_FRIEND_MEMO(0x95, RequestUpdateFriendMemo::new, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_BLOCK_MEMO(0x96, RequestBlockMemo::new, ConnectionState.IN_GAME),
 	REQUEST_INZONE_PARTY_INFO_HISTORY(0x97, null, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_REGISTRABLE_ITEM_LIST(0x98, RequestCommissionRegistrableItemList::new, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_INFO(0x99, RequestCommissionInfo::new, ConnectionState.IN_GAME),
@@ -488,7 +507,7 @@ public enum ExClientPackets
 	REQUEST_USER_FACTION_INFO(0x118, RequestUserFactionInfo::new, ConnectionState.IN_GAME),
 	EX_EXIT_ARENA(0x119, null, ConnectionState.IN_GAME),
 	REQUEST_EVENT_BALTHUS_TOKEN(0x11A, RequestEventBalthusToken::new, ConnectionState.IN_GAME),
-	REQUEST_PARTY_MATCHING_HISTORY(0x11B, null, ConnectionState.IN_GAME),
+	REQUEST_PARTY_MATCHING_HISTORY(0x11B, RequestPartyMatchingHistory::new, ConnectionState.IN_GAME),
 	EX_ARENA_CUSTOM_NOTIFICATION(0x11C, null, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST(0x11D, null, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST_HTML(0x11E, null, ConnectionState.IN_GAME),
@@ -499,7 +518,7 @@ public enum ExClientPackets
 	REQUEST_PLEDGE_BONUS_REWARD(0x123, null, ConnectionState.IN_GAME),
 	REQUEST_SSO_AUTHN_TOKEN(0x124, null, ConnectionState.IN_GAME),
 	REQUEST_QUEUE_TICKET_LOGIN(0x125, null, ConnectionState.IN_GAME),
-	REQUEST_BLOCK_MEMO_INFO(0x126, null, ConnectionState.IN_GAME),
+	REQUEST_BLOCK_MEMO_INFO(0x126, RequestBlockDetailInfo::new, ConnectionState.IN_GAME),
 	REQUEST_TRY_EN_SOUL_EXTRACTION(0x127, RequestTryEnSoulExtraction::new, ConnectionState.IN_GAME),
 	REQUEST_RAIDBOSS_SPAWN_INFO(0x128, RequestRaidBossSpawnInfo::new, ConnectionState.IN_GAME),
 	REQUEST_RAID_SERVER_INFO(0x129, RequestRaidServerInfo::new, ConnectionState.IN_GAME),
@@ -536,7 +555,7 @@ public enum ExClientPackets
 	EX_PLEDGE_ITEM_LIST(0x148, RequestExPledgeItemList::new, ConnectionState.IN_GAME),
 	EX_PLEDGE_ITEM_ACTIVATE(0x149, null, ConnectionState.IN_GAME),
 	EX_PLEDGE_ANNOUNCE(0x14A, RequestExPledgeAnnounce::new, ConnectionState.IN_GAME),
-	EX_PLEDGE_ANNOUNCE_SET(0x14B, null, ConnectionState.IN_GAME),
+	EX_PLEDGE_ANNOUNCE_SET(0x14B, RequestExPledgeAnnounceSet::new, ConnectionState.IN_GAME),
 	EX_CREATE_PLEDGE(0x14C, null, ConnectionState.IN_GAME),
 	EX_PLEDGE_ITEM_INFO(0x14D, null, ConnectionState.IN_GAME),
 	EX_PLEDGE_ITEM_BUY(0x14E, RequestExPledgeItemBuy::new, ConnectionState.IN_GAME),
@@ -594,7 +613,7 @@ public enum ExClientPackets
 	EX_TIME_RESTRICT_FIELD_USER_ENTER(0x180, ExTimedHuntingZoneEnter::new, ConnectionState.IN_GAME),
 	EX_TIME_RESTRICT_FIELD_USER_LEAVE(0x181, ExTimedHuntingZoneLeave::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_INFO(0x182, RequestRankingCharInfo::new, ConnectionState.IN_GAME),
-	EX_RANKING_CHAR_HISTORY(0x183, null, ConnectionState.IN_GAME),
+	EX_RANKING_CHAR_HISTORY(0x183, RequestRankingCharHistory::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_RANKERS(0x184, RequestRankingCharRankers::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_SPAWN_BUFFZONE_NPC(0x185, null, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_BUFFZONE_NPC_POSITION(0x186, null, ConnectionState.IN_GAME),
@@ -622,7 +641,7 @@ public enum ExClientPackets
 	EX_CRAFT_RANDOM_LOCK_SLOTEX_CRAFT_RANDOM_INFO(0x19C, null, ConnectionState.IN_GAME),
 	EX_CRAFT_RANDOM_REFRESH(0x19D, null, ConnectionState.IN_GAME),
 	EX_CRAFT_RANDOM_MAKE(0x19E, null, ConnectionState.IN_GAME),
-	EX_MULTI_SELL_LIST(0x19F, null, ConnectionState.IN_GAME),
+	EX_MULTI_SELL_LIST(0x19F, RequestMultisellList::new, ConnectionState.IN_GAME),
 	EX_SAVE_ITEM_ANNOUNCE_SETTING(0x1A0, ExSaveItemAnnounceSetting::new, ConnectionState.IN_GAME),
 	EX_OLYMPIAD_UI(0x1A1, OlympiadUI::new, ConnectionState.IN_GAME),
 	// 270
@@ -716,20 +735,20 @@ public enum ExClientPackets
 	EX_ITEM_RESTORE_LIST(0x1F8, null, ConnectionState.IN_GAME),
 	EX_ITEM_RESTORE(0x1F9, null, ConnectionState.IN_GAME),
 	// 338
-	EX_DETHRONE_INFO(0x1FA, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_RANKING_INFO(0x1FB, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_SERVER_INFO(0x1FC, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_DISTRICT_OCCUPATION_INFO(0x1FD, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_DAILY_MISSION_INFO(0x1FE, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_DAILY_MISSION_GET_REWARD(0x1FF, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_PREV_SEASON_INFO(0x200, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_GET_REWARD(0x201, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_ENTER(0x202, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_LEAVE(0x203, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_CHECK_NAME(0x204, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_CHANGE_NAME(0x205, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_CONNECT_CASTLE(0x206, null, ConnectionState.IN_GAME),
-	EX_DETHRONE_DISCONNECT_CASTLE(0x207, null, ConnectionState.IN_GAME),
+	EX_DETHRONE_INFO(0x1FA, RequestExDethroneInfo::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_RANKING_INFO(0x1FB, RequestExDethroneRankingInfo::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_SERVER_INFO(0x1FC, RequestExDethroneServerInfo::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_DISTRICT_OCCUPATION_INFO(0x1FD, RequestExDethroneDistrictOccupationInfo::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_DAILY_MISSION_INFO(0x1FE, RequestExDethroneDailyMissionInfo::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_DAILY_MISSION_GET_REWARD(0x1FF, RequestExDethroneDailyMissionGetReward::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_PREV_SEASON_INFO(0x200, RequestExDethronePrevSeasonInfo::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_GET_REWARD(0x201, RequestExDethroneGetReward::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_ENTER(0x202, RequestExDethroneEnter::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_LEAVE(0x203, RequestExDethroneLeave::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_CHECK_NAME(0x204, RequestExDethroneCheckName::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_CHANGE_NAME(0x205, RequestExDethroneChangeName::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_CONNECT_CASTLE(0x206, RequestExDethroneConnectCastle::new, ConnectionState.IN_GAME),
+	EX_DETHRONE_DISCONNECT_CASTLE(0x207, RequestExDethroneDisconnectCastle::new, ConnectionState.IN_GAME),
 	EX_CHANGE_NICKNAME_COLOR_ICON(0x208, null, ConnectionState.IN_GAME),
 	EX_WORLDCASTLEWAR_MOVE_TO_HOST(0x209, null, ConnectionState.IN_GAME),
 	EX_WORLDCASTLEWAR_RETURN_TO_ORIGIN_PEER(0x20A, null, ConnectionState.IN_GAME),

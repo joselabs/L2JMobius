@@ -117,7 +117,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="47611" name="Chef Monkeys' Banana Herb" type="EtcItem">
-		<!-- Chef Monkeys' Banana Herb. P.Atk./ M. Atk./ P. Def./ M. Def. +50% for 5 min., and Acquired XP/ SP +10%. Effect disappears when restarted. -->
+		<!-- For 5 min., P. Atk./ M. Atk./ P. Def./ M. Def. +50%, acquired XP/ SP +10%. The effect disappears upon logout. -->
 		<set name="icon" val="icon.general_fuel_i00" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -191,6 +191,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="time" val="43200" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47617" min="1" max="1" chance="100" /> <!-- Master Fishing Rod Lv. 5 - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="47619" name="Angler's Shining Treasure Chest" type="EtcItem">
 		<!-- A reward for handing over the Angler's Bait Box. Double-clicking grants an item at random. -->
@@ -216,6 +220,11 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47616" min="120" max="120" chance="100" /> <!-- Angler's Bait Exchange Coupon -->
+			<item id="38154" min="120" max="120" chance="100" /> <!-- Fishing Shot -->
+		</capsuled_items>
 	</item>
 	<item id="47622" name="Royal R-grade Purple Save Ticket" type="EtcItem">
 		<!-- When using an R-grade Weapon Enchantment Standard Weapon Enchant Scroll, increases the chance by 10%. Can only be used on items enchanted to +12 or higher. In case of success, the existing enchant value is increased by 1. In case of failure, the item is not crystallized, but the existing enchant value is decreased by 1. -->
@@ -635,7 +644,7 @@
 		</stats>
 	</item>
 	<item id="47657" name="Potion of Protection: Confusion" type="EtcItem">
-		<!-- When used, Confusion Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Confusion Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i03" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -651,7 +660,7 @@
 		</skills>
 	</item>
 	<item id="47658" name="Potion of Protection: Danger Zone" type="EtcItem">
-		<!-- When used, increases Resistance to Danger Zone Attacks by 5%, and reduces damage taken in PvP by 3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Danger Zone Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i03" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -667,7 +676,7 @@
 		</skills>
 	</item>
 	<item id="47659" name="Potion of Protection: Confusion" type="EtcItem">
-		<!-- When used, Confusion Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Confusion Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i04" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -683,7 +692,7 @@
 		</skills>
 	</item>
 	<item id="47660" name="Potion of Protection: Obstruction" type="EtcItem">
-		<!-- When used, Obstruction Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Obstruction Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i09" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -699,7 +708,7 @@
 		</skills>
 	</item>
 	<item id="47661" name="Potion of Protection: Confusion" type="EtcItem">
-		<!-- When used, Confusion Resistance +5%, Received PvP Damage -3%. Cannot be used in the Olympiad. Does not stack when used with other Potions of Protection. -->
+		<!-- When used, Confusion Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
 		<set name="icon" val="icon.etc_fruit_juice_glass_bottle_i08" />
 		<set name="weight" val="10" />
 		<set name="etcitem_type" val="POTION" />
@@ -752,7 +761,7 @@
 		</skills>
 	</item>
 	<item id="47664" name="Freya's Art of Seduction" additionalName="EXP" type="EtcItem">
-		<!-- Dimensional Item. For 30 min., Max HP/ MP/ CP +30%, P. Atk. +10%, M. Atk. +20%, P./ M. Def. +30%, Speed +20, Skill MP Consumption -15%. Additionally, Acquired XP/ SP +30%, Vitality Bonus +12. Buff remains in place after death. Cooldown is 5 min. Cannot be stacked with Art of Seduction. Cannot be used in Olympiad. -->
+		<!-- For 30 min., Max HP/ MP/ CP +30%, P. Atk. +10%, M. Atk. +20%, P./ M. Def. +30%, Speed +20, Skill MP Consumption -15%. Additionally, Acquired XP/ SP +30%, Vitality Bonus +12. Buff remains in place after death. Cooldown is 5 min. Cannot be stacked with Art of Seduction. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.bm_freya_rose_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -913,7 +922,7 @@
 		</skills>
 	</item>
 	<item id="47675" name="Pa'agrio's Blessing - Might" additionalName="Event" type="EtcItem">
-		<!-- For 30 min., Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P. Accuracy +4, M. Accuracy +4, Atk. Spd./ Casting Spd. +10%, Speed +10, Attribute Attack +100, Skill MP Consumption -10%. Damage +10%, Skill Power +10%. The effect remains after death. Cooldown: 5 min. Effects of two identical buffs do not stack. Cannot be used in the Olympiad. -->
+		<!-- For 30 min., Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P./ M. Accuracy +4, Atk. Spd./ Casting Spd. +10%, Speed +10, Attribute Attack +100, Skill MP Consumption -10%. Additionally, damage +10%, Skill Power +10. The effect remains after death. Cooldown: 5 min. The effect does not stack with Art of Seduction and Pa'agrio's Blessing. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.nshop_bless_of_paagrio" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -934,7 +943,7 @@
 		</skills>
 	</item>
 	<item id="47676" name="Pa'agrio's Blessing - EXP" additionalName="Event" type="EtcItem">
-		<!-- For 30 min., Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P. Accuracy +4, M. Accuracy +4, Atk. Spd./ Casting Spd. +10%, Speed +10, Attribute Attack +100, Skill MP Consumption -10%. Additionally acquired XP +30%, Vitality bonus +12%. The effect remains after death. Cooldown: 5 min. Effects of two identical buffs do not stack. Cannot be used in the Olympiad. -->
+		<!-- For 30 min., Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P./ M. Accuracy +4, Atk./ Casting Spd. +10%, Speed +10, Attribute Attack +100, Skill MP Consumption -10%. Additionally, Acquired XP +30%, Vitality Bonus +12%. Buff remains after death. Cooldown: 5 min. Cannot be stacked with Art of Seduction and Pa'agrio's Blessing. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.nshop_bless_of_paagrio" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -1101,7 +1110,7 @@
 		</skills>
 	</item>
 	<item id="47687" name="Greater Topaz Lv. 1" type="Armor">
-		<!-- Interrupts the target's skill casting. In PvP ignores enemy's CP and deals fixed 13,275 damage. With a low chance, inflicts a lethal strike on the enemy. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. Equip various greater jewels to get additional effects. <Enchanting>. Compounding with Jewel Energy. -->
+		<!-- Interrupts the target's skill casting. In PvP ignores the enemy's CP and deals fixed 13,275 damage. Grants a low chance of killing the enemy instantly. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. Equip various greater jewels to get additional effects. <Enchanting>. Compounding with Jewel Energy. -->
 		<set name="icon" val="icon.bm_jewel_absdmg_high_lv1_lavianrose" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />

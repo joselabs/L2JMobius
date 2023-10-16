@@ -16,12 +16,9 @@
  */
 package events.RedLibra.Eraton;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.List;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
@@ -40,6 +37,7 @@ import org.l2jmobius.gameserver.model.events.annotations.RegisterType;
 import org.l2jmobius.gameserver.model.events.impl.creature.npc.OnNpcMenuSelect;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExSubjobInfo;
@@ -299,6 +297,8 @@ public class Eraton extends AbstractNpcAI
 				takeItem(player, STONE_OF_DESTINY);
 				takeItem(player, getCloakItemId(player));
 				
+				player.removeAllSkills();
+				
 				// Stop auto use.
 				for (Shortcut shortcut : player.getAllShortCuts())
 				{
@@ -331,7 +331,7 @@ public class Eraton extends AbstractNpcAI
 						{
 							if (knownItem.isPotion())
 							{
-								AutoUseTaskManager.getInstance().removeAutoPotionItem(player, knownItem.getId());
+								AutoUseTaskManager.getInstance().setAutoPotionItem(player, knownItem.getId());
 							}
 							else
 							{
@@ -347,6 +347,8 @@ public class Eraton extends AbstractNpcAI
 				player.stopCubics();
 				player.setClassId(classId);
 				player.setBaseClass(player.getActiveClass());
+				player.setAbilityPointsUsed(0);
+				player.storeMe();
 				SkillTreeData.getInstance().cleanSkillUponChangeClass(player);
 				for (SkillLearn skill : SkillTreeData.getInstance().getRaceSkillTree(player.getRace()))
 				{
@@ -377,19 +379,10 @@ public class Eraton extends AbstractNpcAI
 					takeItems(player, CHAOS_POMANDER.getId(), -1);
 				}
 				
-				// Set new classId and reset olympiad points.
-				try (Connection con = DatabaseFactory.getConnection();
-					PreparedStatement ps = con.prepareStatement("UPDATE olympiad_nobles SET olympiad_points=?, class_id=? WHERE charId='" + player.getObjectId() + "'"))
-				{
-					ps.setInt(1, Config.OLYMPIAD_START_POINTS);
-					ps.setInt(2, classId);
-					ps.executeUpdate();
-				}
-				catch (Exception e)
-				{
-					LOGGER.warning("Eraton: Set new classId and reset olympiad points: " + e.getMessage());
-				}
+				// Remove olympiad nobless.
+				Olympiad.removeNobleStats(player.getObjectId());
 				
+				// Set new classId.
 				player.restoreDualSkills();
 				player.store(false);
 				player.broadcastUserInfo();

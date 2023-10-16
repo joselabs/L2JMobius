@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets.pet;
 
 import java.util.Set;
 
+import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.EvolveLevel;
+import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.actor.instance.Servitor;
@@ -171,10 +173,26 @@ public class PetInfo extends ServerPacket
 		writeByte(0); // Used Summon Points
 		writeByte(0); // Maximum Summon Points
 		final Set<AbnormalVisualEffect> aves = _summon.getEffectList().getCurrentAbnormalVisualEffects();
-		writeShort(aves.size()); // Confirmed
+		final Team team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _summon.getTeam() : Team.NONE;
+		writeShort(aves.size() + (_summon.isInvisible() ? 1 : 0) + (team != Team.NONE ? 1 : 0)); // Confirmed
 		for (AbnormalVisualEffect ave : aves)
 		{
 			writeShort(ave.getClientId()); // Confirmed
+		}
+		if (_summon.isInvisible())
+		{
+			writeShort(AbnormalVisualEffect.STEALTH.getClientId());
+		}
+		if (team == Team.BLUE)
+		{
+			if (Config.BLUE_TEAM_ABNORMAL_EFFECT != null)
+			{
+				writeShort(Config.BLUE_TEAM_ABNORMAL_EFFECT.getClientId());
+			}
+		}
+		else if ((team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
+		{
+			writeShort(Config.RED_TEAM_ABNORMAL_EFFECT.getClientId());
 		}
 		writeByte(_statusMask);
 		if (_summon.isPet())

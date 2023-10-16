@@ -70,10 +70,8 @@ public class RequestExTryToPutEnchantTargetItem implements ClientPacket
 			return;
 		}
 		
-		request.setEnchantingItem(_objectId);
-		
 		final EnchantScroll scrollTemplate = EnchantItemData.getInstance().getEnchantScroll(scroll);
-		if ((scrollTemplate == null) || !scrollTemplate.isValid(item, null))
+		if (!item.isEnchantable() || (scrollTemplate == null) || !scrollTemplate.isValid(item, null))
 		{
 			player.sendPacket(SystemMessageId.DOES_NOT_FIT_STRENGTHENING_CONDITIONS_OF_THE_SCROLL);
 			player.removeRequest(request.getClass());
@@ -84,7 +82,10 @@ public class RequestExTryToPutEnchantTargetItem implements ClientPacket
 			}
 			return;
 		}
+		
+		request.setEnchantingItem(_objectId);
 		request.setTimestamp(System.currentTimeMillis());
+		
 		player.sendPacket(new ExPutEnchantTargetItemResult(_objectId));
 	}
 }

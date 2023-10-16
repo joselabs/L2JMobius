@@ -26,17 +26,17 @@ import org.l2jmobius.gameserver.model.actor.Creature;
 public class StatHolder
 {
 	private final Stat _stat;
-	private final double _value;
+	private final Double _value;
 	private final BiPredicate<Creature, StatHolder> _condition;
 	
-	public StatHolder(Stat stat, double value, BiPredicate<Creature, StatHolder> condition)
+	public StatHolder(Stat stat, Double value, BiPredicate<Creature, StatHolder> condition)
 	{
 		_stat = stat;
 		_value = value;
 		_condition = condition;
 	}
 	
-	public StatHolder(Stat stat, double value)
+	public StatHolder(Stat stat, Double value)
 	{
 		this(stat, value, null);
 	}
@@ -46,7 +46,7 @@ public class StatHolder
 		return _stat;
 	}
 	
-	public double getValue()
+	public Double getValue()
 	{
 		return _value;
 	}

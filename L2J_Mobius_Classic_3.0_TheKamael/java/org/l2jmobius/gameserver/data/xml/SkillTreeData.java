@@ -703,11 +703,6 @@ public class SkillTreeData implements IXmlReader
 				continue;
 			}
 			
-			if (player.hasReplacedSkill(skill.getSkillId()))
-			{
-				continue;
-			}
-			
 			if (player.getLevel() >= skill.getGetLevel())
 			{
 				if (skill.getSkillLevel() > SkillData.getInstance().getMaxLevel(skill.getSkillId()))
@@ -716,7 +711,7 @@ public class SkillTreeData implements IXmlReader
 					continue;
 				}
 				
-				final Skill oldSkill = holder.getKnownSkill(skill.getSkillId());
+				final Skill oldSkill = holder.getKnownSkill(player.getReplacementSkill(skill.getSkillId()));
 				if (oldSkill != null)
 				{
 					if (oldSkill.getLevel() == (skill.getSkillLevel() - 1))
@@ -731,29 +726,71 @@ public class SkillTreeData implements IXmlReader
 			}
 		}
 		
-		// Manage skill unlearn.
+		// Manage skill unlearn for player skills.
 		for (Skill knownSkill : player.getSkillList())
 		{
-			final SkillLearn skillLearn = getClassSkill(knownSkill.getId(), knownSkill.getLevel(), classId);
+			SkillLearn skillLearn = getClassSkill(player.getOriginalSkill(knownSkill.getId()), knownSkill.getLevel(), classId);
 			if (skillLearn == null)
 			{
 				continue;
 			}
 			
-			final Set<Integer> removeSkills = skillLearn.getRemoveSkills();
+			Set<Integer> removeSkills = skillLearn.getRemoveSkills();
 			if (removeSkills.isEmpty())
 			{
-				continue;
+				if (knownSkill.getLevel() > 1)
+				{
+					// Check first skill level for removed skills.
+					skillLearn = getClassSkill(knownSkill.getId(), 1, classId);
+					if (skillLearn == null)
+					{
+						continue;
+					}
+					
+					removeSkills = skillLearn.getRemoveSkills();
+					if (removeSkills.isEmpty())
+					{
+						continue;
+					}
+				}
+				else
+				{
+					continue;
+				}
 			}
 			
-			for (Integer removeId : removeSkills)
+			for (int removeId : removeSkills)
 			{
 				SEARCH: for (SkillLearn knownLearn : result)
 				{
-					if (knownLearn.getSkillId() == removeId.intValue())
+					if (knownLearn.getSkillId() == removeId)
 					{
 						result.remove(knownLearn);
 						break SEARCH;
+					}
+				}
+			}
+		}
+		
+		// Manage skill unlearn for player replaced skills.
+		for (int skillId : player.getReplacedSkills())
+		{
+			final SkillLearn skillLearn = getClassSkill(skillId, 1, classId);
+			if (skillLearn != null)
+			{
+				final Set<Integer> removeSkills = skillLearn.getRemoveSkills();
+				if (removeSkills != null)
+				{
+					for (int removeId : removeSkills)
+					{
+						SEARCH: for (SkillLearn knownLearn : result)
+						{
+							if (knownLearn.getSkillId() == removeId)
+							{
+								result.remove(knownLearn);
+								break SEARCH;
+							}
+						}
 					}
 				}
 			}
@@ -853,27 +890,81 @@ public class SkillTreeData implements IXmlReader
 		final Race race = player.getRace();
 		for (SkillLearn skill : skills.values())
 		{
+			if (!skill.isAutoGet())
+			{
+				continue;
+			}
+			
+			if ((player.getLevel() < skill.getGetLevel()))
+			{
+				continue;
+			}
+			
 			if (!skill.getRaces().isEmpty() && !skill.getRaces().contains(race))
 			{
 				continue;
 			}
 			
-			if (skill.isAutoGet() && (player.getLevel() >= skill.getGetLevel()))
+			final Skill oldSkill = player.getKnownSkill(player.getReplacementSkill(skill.getSkillId()));
+			if (oldSkill != null)
 			{
-				final Skill oldSkill = player.getKnownSkill(skill.getSkillId());
-				if (oldSkill != null)
-				{
-					if (oldSkill.getLevel() < skill.getSkillLevel())
-					{
-						result.add(skill);
-					}
-				}
-				else
+				if (oldSkill.getLevel() < skill.getSkillLevel())
 				{
 					result.add(skill);
 				}
 			}
+			else
+			{
+				result.add(skill);
+			}
 		}
+		
+		// Manage skill unlearn for player skills.
+		for (Skill knownSkill : player.getSkillList())
+		{
+			SkillLearn skillLearn = getClassSkill(player.getOriginalSkill(knownSkill.getId()), knownSkill.getLevel(), player.getClassId());
+			if (skillLearn == null)
+			{
+				continue;
+			}
+			
+			Set<Integer> removeSkills = skillLearn.getRemoveSkills();
+			if (removeSkills.isEmpty())
+			{
+				if (knownSkill.getLevel() > 1)
+				{
+					// Check first skill level for removed skills.
+					skillLearn = getClassSkill(knownSkill.getId(), 1, player.getClassId());
+					if (skillLearn == null)
+					{
+						continue;
+					}
+					
+					removeSkills = skillLearn.getRemoveSkills();
+					if (removeSkills.isEmpty())
+					{
+						continue;
+					}
+				}
+				else
+				{
+					continue;
+				}
+			}
+			
+			for (int removeId : removeSkills)
+			{
+				SEARCH: for (SkillLearn knownLearn : result)
+				{
+					if (knownLearn.getSkillId() == removeId)
+					{
+						result.remove(knownLearn);
+						break SEARCH;
+					}
+				}
+			}
+		}
+		
 		return result;
 	}
 	
@@ -1482,14 +1573,9 @@ public class SkillTreeData implements IXmlReader
 					continue;
 				}
 				
-				if (player.hasReplacedSkill(skill.getSkillId()))
-				{
-					continue;
-				}
-				
 				if (minLevelForNewSkill <= skill.getGetLevel())
 				{
-					final Skill oldSkill = player.getKnownSkill(skill.getSkillId());
+					final Skill oldSkill = player.getKnownSkill(player.getReplacementSkill(skill.getSkillId()));
 					if (oldSkill != null)
 					{
 						if (oldSkill.getLevel() == (skill.getSkillLevel() - 1))
@@ -1505,26 +1591,44 @@ public class SkillTreeData implements IXmlReader
 			}
 		}
 		
-		// Manage skill unlearn.
+		// Manage skill unlearn for player skills.
 		for (Skill knownSkill : player.getSkillList())
 		{
-			final SkillLearn skillLearn = getClassSkill(knownSkill.getId(), knownSkill.getLevel(), classId);
+			SkillLearn skillLearn = getClassSkill(player.getOriginalSkill(knownSkill.getId()), knownSkill.getLevel(), classId);
 			if (skillLearn == null)
 			{
 				continue;
 			}
 			
-			final Set<Integer> removeSkills = skillLearn.getRemoveSkills();
+			Set<Integer> removeSkills = skillLearn.getRemoveSkills();
 			if (removeSkills.isEmpty())
 			{
-				continue;
+				if (knownSkill.getLevel() > 1)
+				{
+					// Check first skill level for removed skills.
+					skillLearn = getClassSkill(knownSkill.getId(), 1, classId);
+					if (skillLearn == null)
+					{
+						continue;
+					}
+					
+					removeSkills = skillLearn.getRemoveSkills();
+					if (removeSkills.isEmpty())
+					{
+						continue;
+					}
+				}
+				else
+				{
+					continue;
+				}
 			}
 			
-			for (Integer removeId : removeSkills)
+			for (int removeId : removeSkills)
 			{
 				SEARCH: for (SkillLearn knownLearn : result)
 				{
-					if (knownLearn.getSkillId() == removeId.intValue())
+					if (knownLearn.getSkillId() == removeId)
 					{
 						result.remove(knownLearn);
 						break SEARCH;

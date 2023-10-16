@@ -31,9 +31,11 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.network.EncryptionInterface;
 import org.l2jmobius.commons.network.NetClient;
 import org.l2jmobius.commons.threads.ThreadPool;
+import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.LoginServerThread;
 import org.l2jmobius.gameserver.LoginServerThread.SessionKey;
 import org.l2jmobius.gameserver.data.SkillTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.OfflineTraderTable;
 import org.l2jmobius.gameserver.model.CharSelectInfoPackage;
@@ -173,8 +175,16 @@ public class GameClient extends NetClient
 	
 	public void sendPacket(ServerPacket packet)
 	{
-		if (_isDetached || (packet == null))
+		if (_isDetached)
 		{
+			return;
+		}
+		
+		// TODO: TO BE REMOVED!
+		if (packet == null)
+		{
+			LOGGER.warning("REPORT ON FORUM!");
+			LOGGER.warning(CommonUtil.getStackTrace(new Exception()));
 			return;
 		}
 		
@@ -304,6 +314,8 @@ public class GameClient extends NetClient
 		{
 			return;
 		}
+		
+		CharInfoTable.getInstance().removeName(objectId);
 		
 		try (Connection con = DatabaseFactory.getConnection())
 		{

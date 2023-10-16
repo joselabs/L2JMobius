@@ -26,7 +26,6 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExBaseAttributeCancelResult;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 public class RequestExRemoveItemAttribute implements ClientPacket
 {
@@ -70,7 +69,7 @@ public class RequestExRemoveItemAttribute implements ClientPacket
 		if (player.reduceAdena("RemoveElement", getPrice(targetItem), player, true))
 		{
 			targetItem.clearAttribute(type);
-			player.sendPacket(new UserInfo(player));
+			player.updateUserInfo();
 			
 			final InventoryUpdate iu = new InventoryUpdate();
 			iu.addModifiedItem(targetItem);

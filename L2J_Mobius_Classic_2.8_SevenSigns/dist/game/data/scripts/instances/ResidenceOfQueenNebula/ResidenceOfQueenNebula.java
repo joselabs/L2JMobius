@@ -76,8 +76,11 @@ public class ResidenceOfQueenNebula extends AbstractInstance
 				final Instance world = npc.getInstanceWorld();
 				if (world != null)
 				{
-					final Player plr = world.getPlayers().stream().findAny().get();
-					startQuestTimer("CAST_AQUA_RAGE", 60000 + getRandom(-15000, 15000), npc, plr);
+					final Player plr = world.getPlayers().stream().findAny().orElse(null);
+					if (plr != null)
+					{
+						startQuestTimer("CAST_AQUA_RAGE", 60000 + getRandom(-15000, 15000), npc, plr);
+					}
 					if (npc.getId() == NEBULA)
 					{
 						npc.doCast(AQUA_SUMMON.getSkill());

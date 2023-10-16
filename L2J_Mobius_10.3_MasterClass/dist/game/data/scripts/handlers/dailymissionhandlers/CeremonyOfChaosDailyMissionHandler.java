@@ -16,6 +16,8 @@
  */
 package handlers.dailymissionhandlers;
 
+import java.util.List;
+
 import org.l2jmobius.gameserver.enums.DailyMissionStatus;
 import org.l2jmobius.gameserver.handler.AbstractDailyMissionHandler;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
@@ -31,14 +33,26 @@ import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
  */
 public class CeremonyOfChaosDailyMissionHandler extends AbstractDailyMissionHandler
 {
+	private final int _missionId;
+	private final int _minLevel;
+	private final int _maxLevel;
+	private final int _minClanLevel;
+	private final int _minClanMasteryLevel;
 	private final int _amount;
+	private final boolean _winOnly;
 	private final int _requiredMissionCompleteId;
 	
 	public CeremonyOfChaosDailyMissionHandler(DailyMissionDataHolder holder)
 	{
 		super(holder);
-		_requiredMissionCompleteId = holder.getRequiredMissionCompleteId();
+		_missionId = holder.getId();
+		_minLevel = holder.getParams().getInt("minLevel", 0);
+		_maxLevel = holder.getParams().getInt("maxLevel", Integer.MAX_VALUE);
+		_minClanLevel = holder.getParams().getInt("minClanLevel", 0);
+		_minClanMasteryLevel = holder.getParams().getInt("minClanMasteryLevel", 0);
 		_amount = holder.getRequiredCompletions();
+		_winOnly = holder.getParams().getBoolean("winOnly", false);
+		_requiredMissionCompleteId = holder.getRequiredMissionCompleteId();
 	}
 	
 	@Override
@@ -75,11 +89,38 @@ public class CeremonyOfChaosDailyMissionHandler extends AbstractDailyMissionHand
 	
 	private void onCeremonyOfChaosMatchResult(OnCeremonyOfChaosMatchResult event)
 	{
-		event.getMembers().forEach(member ->
+		List<Player> members;
+		if (_winOnly)
 		{
-			if (((_requiredMissionCompleteId != 0) && checkRequiredMission(member)) || (_requiredMissionCompleteId == 0))
+			members = event.getWinners();
+		}
+		else
+		{
+			members = event.getMembers();
+		}
+		
+		members.forEach(member ->
+		{
+			if (checkPlayerLevel(member))
 			{
-				processPlayerProgress(member);
+				// Check clan only for specific missions
+				if ((_missionId == 2109) || (_missionId == 2110))
+				{
+					if (checkClan(member))
+					{
+						if (((_requiredMissionCompleteId != 0) && checkRequiredMission(member)) || (_requiredMissionCompleteId == 0))
+						{
+							processPlayerProgress(member);
+						}
+					}
+				}
+				else
+				{
+					if (((_requiredMissionCompleteId != 0) && checkRequiredMission(member)) || (_requiredMissionCompleteId == 0))
+					{
+						processPlayerProgress(member);
+					}
+				}
 			}
 		});
 	}
@@ -95,6 +136,26 @@ public class CeremonyOfChaosDailyMissionHandler extends AbstractDailyMissionHand
 			}
 			storePlayerEntry(entry);
 		}
+	}
+	
+	private boolean checkPlayerLevel(Player player)
+	{
+		if (player == null)
+		{
+			return false;
+		}
+		return ((player.getLevel() >= _minLevel)) || (player.getLevel() <= _maxLevel);
+	}
+	
+	private boolean checkClan(Player player)
+	{
+		if (player == null)
+		{
+			return false;
+		}
+		
+		final int clanMastery = player.getClan().hasMastery(14) ? 14 : player.getClan().hasMastery(15) ? 15 : player.getClan().hasMastery(16) ? 16 : 0;
+		return ((player.getClan().getLevel() >= _minClanLevel) && (clanMastery >= _minClanMasteryLevel));
 	}
 	
 	private boolean checkRequiredMission(Player player)

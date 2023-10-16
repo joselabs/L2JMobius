@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
@@ -27,6 +28,7 @@ import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.AbnormalType;
+import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.skill.SkillCaster;
 
@@ -111,13 +113,25 @@ public class Synergy extends AbstractEffect
 				final WorldObject target = partyBuffSkill.getTarget(effector, effected, false, false, false);
 				if ((target != null) && target.isCreature())
 				{
-					SkillCaster.triggerCast(effector, (Creature) target, partyBuffSkill);
+					final BuffInfo abnormalBuffInfo = effector.getEffectList().getFirstBuffInfoByAbnormalType(partyBuffSkill.getAbnormalType());
+					if ((abnormalBuffInfo != null) && (abnormalBuffInfo.getSkill().getAbnormalLevel() != (abnormalCount - 1)))
+					{
+						effector.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, _partyBuffSkillId);
+					}
+					else
+					{
+						SkillCaster.triggerCast(effector, (Creature) target, partyBuffSkill);
+					}
 				}
 			}
 			else
 			{
 				LOGGER.warning("Skill not found effect called from " + skill);
 			}
+		}
+		else
+		{
+			effector.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, _partyBuffSkillId);
 		}
 		
 		return skill.isToggle();

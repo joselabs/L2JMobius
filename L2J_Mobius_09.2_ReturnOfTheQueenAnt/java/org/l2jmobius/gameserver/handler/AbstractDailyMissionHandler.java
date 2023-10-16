@@ -19,7 +19,7 @@ package org.l2jmobius.gameserver.handler;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
@@ -85,30 +85,6 @@ public abstract class AbstractDailyMissionHandler extends ListenersContainer
 		return (entry != null) && entry.isRecentlyCompleted();
 	}
 	
-	public synchronized void reset()
-	{
-		if (!_holder.dailyReset())
-		{
-			return;
-		}
-		
-		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("DELETE FROM character_daily_rewards WHERE rewardId = ? AND status = ?"))
-		{
-			ps.setInt(1, _holder.getId());
-			ps.setInt(2, DailyMissionStatus.COMPLETED.getClientId());
-			ps.execute();
-		}
-		catch (SQLException e)
-		{
-			LOGGER.log(Level.WARNING, "Error while clearing data for: " + getClass().getSimpleName(), e);
-		}
-		finally
-		{
-			_entries.clear();
-		}
-	}
-	
 	public boolean requestReward(Player player)
 	{
 		if (isAvailable(player) || isLevelUpMission())
@@ -126,6 +102,9 @@ public abstract class AbstractDailyMissionHandler extends ListenersContainer
 			else
 			{
 				entry.setStatus(DailyMissionStatus.COMPLETED);
+				final List<Integer> missions = player.getVariables().getIntegerList(PlayerVariables.DAILY_MISSION_ONE_TIME);
+				missions.add(_holder.getId());
+				player.getVariables().setIntegerList(PlayerVariables.DAILY_MISSION_ONE_TIME, missions);
 			}
 			entry.setLastCompleted(System.currentTimeMillis());
 			entry.setRecentlyCompleted(true);

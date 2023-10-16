@@ -41,5 +41,6 @@ public class ExRequestFinishMultiEnchantScroll implements ClientPacket
 		}
 		
 		player.removeRequest(EnchantItemRequest.class);
+		player.getChallengeInfo().setChallengePointsPendingRecharge(-1, -1);
 	}
 }

@@ -56,7 +56,10 @@ import org.l2jmobius.gameserver.network.clientpackets.dailymission.RequestOneDay
 import org.l2jmobius.gameserver.network.clientpackets.dailymission.RequestTodoList;
 import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestItemEnsoul;
 import org.l2jmobius.gameserver.network.clientpackets.ensoul.RequestTryEnSoulExtraction;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockMemo;
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestFriendDetailInfo;
+import org.l2jmobius.gameserver.network.clientpackets.friend.RequestUpdateFriendMemo;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGamePlay;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGameStartInfo;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.ConfirmMenteeAdd;
@@ -241,8 +244,8 @@ public enum ExClientPackets
 	REQUEST_SURRENDER_PLEDGE_WAR_EX(0x92, null, ConnectionState.IN_GAME),
 	REQUEST_DYNAMIC_QUEST_ACTION(0x93, null, ConnectionState.IN_GAME), // TODO: Implement / HANDLE SWITCH
 	REQUEST_FRIEND_DETAIL_INFO(0x94, RequestFriendDetailInfo::new, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_FRIEND_MEMO(0x95, null, ConnectionState.IN_GAME),
-	REQUEST_UPDATE_BLOCK_MEMO(0x96, null, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_FRIEND_MEMO(0x95, RequestUpdateFriendMemo::new, ConnectionState.IN_GAME),
+	REQUEST_UPDATE_BLOCK_MEMO(0x96, RequestBlockMemo::new, ConnectionState.IN_GAME),
 	REQUEST_INZONE_PARTY_INFO_HISTORY(0x97, null, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_REGISTRABLE_ITEM_LIST(0x98, RequestCommissionRegistrableItemList::new, ConnectionState.IN_GAME),
 	REQUEST_COMMISSION_INFO(0x99, RequestCommissionInfo::new, ConnectionState.IN_GAME),
@@ -363,7 +366,7 @@ public enum ExClientPackets
 	REQUEST_USER_FACTION_INFO(0x119, null, ConnectionState.IN_GAME),
 	EX_EXIT_ARENA(0x11A, null, ConnectionState.IN_GAME),
 	REQUEST_EVENT_BALTHUS_TOKEN(0x11B, null, ConnectionState.IN_GAME),
-	REQUEST_PARTY_MATCHING_HISTORY(0x11C, null, ConnectionState.IN_GAME),
+	REQUEST_PARTY_MATCHING_HISTORY(0x11C, RequestPartyMatchingHistory::new, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST(0x11D, RequestTodoList::new, ConnectionState.IN_GAME),
 	REQUEST_TODO_LIST_HTML(0x11E, null, ConnectionState.IN_GAME),
 	REQUEST_ONE_DAY_REWARD_RECEIVE(0x11F, RequestOneDayRewardReceive::new, ConnectionState.IN_GAME),
@@ -373,7 +376,7 @@ public enum ExClientPackets
 	REQUEST_PLEDGE_BONUS_REWARD(0x123, RequestPledgeBonusReward::new, ConnectionState.IN_GAME),
 	REQUEST_SSO_AUTHN_TOKEN(0x124, null, ConnectionState.IN_GAME),
 	REQUEST_QUEUE_TICKET_LOGIN(0x125, null, ConnectionState.IN_GAME),
-	REQUEST_BLOCK_MEMO_INFO(0x126, null, ConnectionState.IN_GAME),
+	REQUEST_BLOCK_MEMO_INFO(0x126, RequestBlockDetailInfo::new, ConnectionState.IN_GAME),
 	REQUEST_TRY_EN_SOUL_EXTRACTION(0x127, RequestTryEnSoulExtraction::new, ConnectionState.IN_GAME);
 	
 	public static final ExClientPackets[] PACKET_ARRAY;

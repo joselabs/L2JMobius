@@ -1,38 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../xsd/optionsData.xsd">
-	<option id="39200" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50499" level="1" /> <!-- Anakim's Divine Pistols -->
-	</option>
-	<option id="39201" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="1" /> <!-- +1 Anakim's Divine Pistols -->
-	</option>
-	<option id="39202" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="2" /> <!-- +2 Anakim's Divine Pistols -->
-	</option>
-	<option id="39203" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="3" /> <!-- +3 Anakim's Divine Pistols -->
-	</option>
-	<option id="39204" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="4" /> <!-- +4 Anakim's Divine Pistols -->
-	</option>
-	<option id="39205" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="5" /> <!-- +5 Anakim's Divine Pistols -->
-	</option>
-	<option id="39206" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="6" /> <!-- +6 Anakim's Divine Pistols -->
-	</option>
-	<option id="39207" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="7" /> <!-- +7 Anakim's Divine Pistols -->
-	</option>
-	<option id="39208" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="8" /> <!-- +8 Anakim's Divine Pistols -->
-	</option>
-	<option id="39209" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="9" /> <!-- +9 Anakim's Divine Pistols -->
-	</option>
-	<option id="39210" name="A_weapon_empowered_by_Anakim_soul">
-		<passive_skill id="50500" level="10" /> <!-- +10 Anakim's Divine Pistols -->
-	</option>
 	<option id="39211" name="option_id_39211">
 	</option>
 	<option id="39212" name="option_id_39212">
@@ -138,7 +105,7 @@
 	<option id="39269" name="Col_167">
 		<!-- P. Skill Critical Rate +1% -->
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="PhysicalSkillCriticalRate">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -160,8 +127,8 @@
 	<option id="39271" name="Col_169">
 		<!-- Received P. Skill Critical Damage -1% -->
 		<effects>
-			<effect name="DefenceCriticalRate">
-				<amount>1</amount>
+			<effect name="DefencePhysicalSkillCriticalDamage">
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -182,8 +149,8 @@
 	<option id="39273" name="Col_171">
 		<!-- Received M. Skill Critical Damage -1% -->
 		<effects>
-			<effect name="DefenceMagicCriticalRate">
-				<amount>1</amount>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -201,16 +168,16 @@
 		<!-- M. Skill Critical Damage +55 -->
 		<effects>
 			<effect name="MagicCriticalDamage">
-				<amount>1</amount>
-				<mode>PER</mode>
+				<amount>55</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</option>
 	<option id="39276" name="Col_174">
 		<!-- Received P. Skill Critical Rate -1% -->
 		<effects>
-			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>1</amount>
+			<effect name="DefencePhysicalSkillCriticalRate">
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -218,8 +185,8 @@
 	<option id="39277" name="Col_175">
 		<!-- Received M. Skill Critical Rate -1% -->
 		<effects>
-			<effect name="DefenceMagicCriticalDamage">
-				<amount>1</amount>
+			<effect name="DefenceMagicCriticalRate">
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -274,15 +241,15 @@
 		<effects>
 			<effect name="CpRegen">
 				<amount>1</amount>
-				<mode>PER</mode>
+				<mode>DIFF</mode>
 			</effect>
 			<effect name="MpRegen">
 				<amount>1</amount>
-				<mode>PER</mode>
+				<mode>DIFF</mode>
 			</effect>
 			<effect name="HpRegen">
 				<amount>1</amount>
-				<mode>PER</mode>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</option>
@@ -299,7 +266,7 @@
 		<!-- Sayha's Grace charging rate +1% -->
 		<effects>
 			<effect name="VitalityPointsRate">
-				<amount>1</amount>
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -344,7 +311,7 @@
 		<!-- Sayha's Grace charging rate +1% -->
 		<effects>
 			<effect name="VitalityPointsRate">
-				<amount>1</amount>
+				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -388,9 +355,11 @@
 	<option id="39297" name="Col_194">
 		<!-- Acquired XP/ SP +1% -->
 		<effects>
-			<effect name="GiveExpAndSp">
+			<effect name="ExpModify">
 				<amount>1</amount>
-				<mode>PER</mode>
+			</effect>
+			<effect name="SpModify">
+				<amount>1</amount>
 			</effect>
 		</effects>
 	</option>

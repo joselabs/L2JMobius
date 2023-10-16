@@ -191,6 +191,7 @@ import handlers.itemhandlers.Bypass;
 import handlers.itemhandlers.Calculator;
 import handlers.itemhandlers.ChangeAttributeCrystal;
 import handlers.itemhandlers.CharmOfCourage;
+import handlers.itemhandlers.CreateHomunculus;
 import handlers.itemhandlers.Elixir;
 import handlers.itemhandlers.EnchantAttribute;
 import handlers.itemhandlers.EnchantScrolls;
@@ -199,6 +200,7 @@ import handlers.itemhandlers.ExtractableItems;
 import handlers.itemhandlers.FatedSupportBox;
 import handlers.itemhandlers.FishShots;
 import handlers.itemhandlers.Harvester;
+import handlers.itemhandlers.HomunculusHourglass;
 import handlers.itemhandlers.ItemSkills;
 import handlers.itemhandlers.ItemSkillsTemplate;
 import handlers.itemhandlers.Maps;
@@ -314,6 +316,7 @@ import handlers.voicedcommandhandlers.ChangePassword;
 import handlers.voicedcommandhandlers.ChatAdmin;
 import handlers.voicedcommandhandlers.Lang;
 import handlers.voicedcommandhandlers.Offline;
+import handlers.voicedcommandhandlers.OfflinePlay;
 import handlers.voicedcommandhandlers.Online;
 import handlers.voicedcommandhandlers.Premium;
 
@@ -516,6 +519,7 @@ public class MasterHandler
 			Calculator.class,
 			ChangeAttributeCrystal.class,
 			CharmOfCourage.class,
+			CreateHomunculus.class,
 			Elixir.class,
 			EnchantAttribute.class,
 			EnchantScrolls.class,
@@ -524,6 +528,7 @@ public class MasterHandler
 			FatedSupportBox.class,
 			FishShots.class,
 			Harvester.class,
+			HomunculusHourglass.class,
 			ItemSkills.class,
 			ItemSkillsTemplate.class,
 			Maps.class,
@@ -573,6 +578,7 @@ public class MasterHandler
 			Config.CHAT_ADMIN ? ChatAdmin.class : null,
 			Config.MULTILANG_ENABLE && Config.MULTILANG_VOICED_ALLOW ? Lang.class : null,
 			Config.ALLOW_CHANGE_PASSWORD ? ChangePassword.class : null,
+			Config.ENABLE_OFFLINE_PLAY_COMMAND ? OfflinePlay.class : null,
 			Config.ENABLE_OFFLINE_COMMAND && (Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) ? Offline.class : null,
 			Config.ENABLE_ONLINE_COMMAND ? Online.class : null,
 			Config.PREMIUM_SYSTEM_ENABLED ? Premium.class : null,

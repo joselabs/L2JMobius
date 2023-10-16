@@ -51,9 +51,9 @@
 			<player levelRange="1;75" />
 		</cond>
 		<capsuled_items>
-			<item id="91910" min="10" max="10" chance="100" /> <!-- Sayha's Blessing 1-75 (Event) -->
-			<item id="90907" min="30" max="30" chance="100" /> <!-- Soulshot Ticket (Event) -->
-			<item id="3031" min="500" max="500" chance="100" /> <!-- Soulshot Ticket (Event) -->
+			<item id="91910" min="10" max="10" chance="100" /> <!-- Sayha's Blessing - Lv. 1-75 -->
+			<item id="90907" min="30" max="30" chance="100" /> <!-- Soulshot Ticket -->
+			<item id="3031" min="500" max="500" chance="100" /> <!-- Spirit Ore -->
 		</capsuled_items>
 	</item>
 	<item id="92004" name="Inventory Expansion Ticket Lv. 1" type="EtcItem">
@@ -102,7 +102,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="92009" name="Shiny Unidentified Rock" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.destiny_stone" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -110,6 +110,20 @@
 		<set name="price" val="10000" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="91032" min="1" max="1" chance="11.11111" /> <!-- Fire Spirit Evolution Stone -->
+			<item id="91033" min="1" max="1" chance="11.11111" /> <!-- Wind Spirit Evolution Stone -->
+			<item id="91031" min="1" max="1" chance="11.11111" /> <!-- Water Spirit Evolution Stone -->
+			<item id="91034" min="1" max="1" chance="11.11111" /> <!-- Earth Spirit Evolution Stone -->
+			<item id="91976" min="1" max="1" chance="11.11111" /> <!-- Unidentified Rock -->
+			<item id="91036" min="1" max="1" chance="11.11111" /> <!-- Fire Spirit Ore -->
+			<item id="91037" min="1" max="1" chance="11.11111" /> <!-- Wind Spirit Ore -->
+			<item id="91035" min="1" max="1" chance="11.11111" /> <!-- Water Spirit Ore -->
+			<item id="91038" min="1" max="1" chance="11.11111" /> <!-- Earth Spirit Ore -->
+		</capsuled_items>
 	</item>
 	<item id="92010" name="Majestic Robe Set" type="EtcItem">
 		<!-- Double-click to obtain the Majestic robe set (robe, circlet, gauntlets, boots). -->
@@ -121,6 +135,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="2409" min="1" max="1" chance="100" /> <!-- Majestic Robe -->
+			<item id="90478" min="1" max="1" chance="100" /> <!-- Majestic Circlet (Robe) -->
+			<item id="5776" min="1" max="1" chance="100" /> <!-- Majestic Gauntlets (Robe) -->
+			<item id="5788" min="1" max="1" chance="100" /> <!-- Majestic Boots (Robe) -->
+		</capsuled_items>
 	</item>
 	<item id="92011" name="Majestic Light Armor Set" type="EtcItem">
 		<!-- Double-click to obtain the Majestic light armor set (leather armor, circlet, gauntlets, boots). -->
@@ -132,6 +153,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="5775" min="1" max="1" chance="100" /> <!-- Majestic Gauntlets (Light) -->
+			<item id="5787" min="1" max="1" chance="100" /> <!-- Majestic Boots (Light) -->
+			<item id="90477" min="1" max="1" chance="100" /> <!-- Majestic Circlet (Light) -->
+			<item id="2395" min="1" max="1" chance="100" /> <!-- Majestic Leather Armor -->
+		</capsuled_items>
 	</item>
 	<item id="92012" name="Dark Crystal Robe Set" type="EtcItem">
 		<!-- Double-click to obtain the Dark Crystal robe set (robe, helmet, gloves, boots). -->
@@ -143,6 +171,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="2407" min="1" max="1" chance="100" /> <!-- Dark Crystal Robe -->
+			<item id="5767" min="1" max="1" chance="100" /> <!-- Dark Crystal Gloves (Robe) -->
+			<item id="5779" min="1" max="1" chance="100" /> <!-- Dark Crystal Boots (Robe) -->
+			<item id="90472" min="1" max="1" chance="100" /> <!-- Dark Crystal Helmet - Robe -->
+		</capsuled_items>
 	</item>
 	<item id="92013" name="Dark Crystal Light Armor Set" type="EtcItem">
 		<!-- Double-click to obtain the Dark Crystal light armor set (leather armor, leggings, helmet, gloves, boots). -->
@@ -154,6 +189,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="5766" min="1" max="1" chance="100" /> <!-- Dark Crystal Gloves (Light) -->
+			<item id="5778" min="1" max="1" chance="100" /> <!-- Dark Crystal Boots (Light) -->
+			<item id="90471" min="1" max="1" chance="100" /> <!-- Dark Crystal Helmet - Light Armor -->
+			<item id="2385" min="1" max="1" chance="100" /> <!-- Dark Crystal Leather Armor -->
+			<item id="2389" min="1" max="1" chance="100" /> <!-- Dark Crystal Leggings -->
+		</capsuled_items>
 	</item>
 	<item id="92014" name="Heavy Armor of Nightmare Set" type="EtcItem">
 		<!-- Double-click to obtain the heavy armor of Nightmare set (armor, helm, gauntlets, boots). -->
@@ -165,6 +208,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="5771" min="1" max="1" chance="100" /> <!-- Gauntlets of Nightmare (Heavy) -->
+			<item id="5783" min="1" max="1" chance="100" /> <!-- Boots of Nightmare (Heavy) -->
+			<item id="90473" min="1" max="1" chance="100" /> <!-- Helm of Nightmare (Heavy) -->
+			<item id="374" min="1" max="1" chance="100" /> <!-- Armor of Nightmare -->
+		</capsuled_items>
 	</item>
 	<item id="92015" name="Tallum Heavy Armor Set" type="EtcItem">
 		<!-- Double-click to obtain the Tallum heavy armor set (plate armor, helmet, gloves, boots). -->
@@ -176,6 +226,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="2382" min="1" max="1" chance="100" /> <!-- Tallum Plate Armor -->
+			<item id="5768" min="1" max="1" chance="100" /> <!-- Tallum Gloves (Heavy) -->
+			<item id="5780" min="1" max="1" chance="100" /> <!-- Tallum Boots (Heavy) -->
+			<item id="90467" min="1" max="1" chance="100" /> <!-- Tallum Helmet - Heavy Armor -->
+		</capsuled_items>
 	</item>
 	<item id="92016" name="Sayha's Blessing Pack" type="EtcItem">
 		<!-- Double-click to obtain the specified item. -->
@@ -189,7 +246,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="91641" min="2" max="2" chance="100" /> <!-- Sayha's Blessing Sealed -->
+			<item id="91641" min="2" max="2" chance="100" /> <!-- Sayha's Blessing -->
 		</capsuled_items>
 	</item>
 	<item id="92017" name="Scroll: Enchant Talisman of Eva" type="EtcItem">
@@ -236,35 +293,35 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="49487" min="20" max="20" chance="4.0" /> <!-- Soulshots Coupon (Can be transferred by account) -->
-			<item id="49674" min="5" max="5" chance="4.0" /> <!-- Exp Scroll -->
-			<item id="49683" min="1" max="1" chance="4.0" /> <!-- Baium's Talisman -->
-			<item id="90045" min="31" max="31" chance="4.0" /> <!-- Magic Tablet -->
+			<item id="49487" min="20" max="20" chance="4.0" /> <!-- Soulshot Ticket (Tradable within account) -->
+			<item id="49674" min="5" max="5" chance="4.0" /> <!-- XP Growth Scroll -->
+			<item id="49683" min="1" max="1" chance="4.0" /> <!-- Talisman of Baium -->
+			<item id="90045" min="31" max="31" chance="4.0" /> <!-- Magical Tablet -->
 			<item id="91159" min="1" max="1" chance="4.0" /> <!-- Agathion Exchange Coupon -->
-			<item id="91213" min="1" max="1" chance="4.0" /> <!-- Scroll: Enchant Sayha's Cloak -->
+			<item id="91213" min="1" max="1" chance="4.0" /> <!-- Sayha's Cloak Enchantment Scroll -->
 			<item id="91227" min="1" max="1" chance="4.0" /> <!-- Sayha's Cloak Coupon -->
 			<item id="91246" min="1" max="1" chance="4.0" /> <!-- Dragon Pendant Lv. 3 -->
 			<item id="91247" min="1" max="1" chance="4.0" /> <!-- Dragon Pendant Lv. 4 -->
-			<item id="91690" min="5" max="5" chance="4.0" /> <!-- Special HP Recovery Potion Event -->
+			<item id="91690" min="5" max="5" chance="4.0" /> <!-- Special HP Recovery Potion - Event -->
 			<item id="91712" min="5" max="5" chance="4.0" /> <!-- Sayha's Storm Lv. 3 -->
-			<item id="91767" min="1" max="1" chance="4.0" /> <!-- Enchant Set: Talisman of Aden -->
-			<item id="91780" min="5" max="5" chance="4.0" /> <!-- Scroll of Battle -->
-			<item id="91781" min="5" max="5" chance="4.0" /> <!-- Sayha's Effects Scroll -->
-			<item id="91864" min="1" max="1" chance="4.0" /> <!-- Dragon Belt Chest -->
+			<item id="91767" min="1" max="1" chance="4.0" /> <!-- Enchant Kit: Talisman of Aden -->
+			<item id="91780" min="5" max="5" chance="4.0" /> <!-- Battle Scroll -->
+			<item id="91781" min="5" max="5" chance="4.0" /> <!-- Sayha's Buff Scroll -->
+			<item id="91864" min="1" max="1" chance="4.0" /> <!-- Dragon Belt Pack -->
 			<item id="92010" min="1" max="1" chance="4.0" /> <!-- Majestic Robe Set -->
 			<item id="92011" min="1" max="1" chance="4.0" /> <!-- Majestic Light Armor Set -->
 			<item id="92012" min="1" max="1" chance="4.0" /> <!-- Dark Crystal Robe Set -->
 			<item id="92013" min="1" max="1" chance="4.0" /> <!-- Dark Crystal Light Armor Set -->
 			<item id="92014" min="1" max="1" chance="4.0" /> <!-- Heavy Armor of Nightmare Set -->
 			<item id="92015" min="1" max="1" chance="4.0" /> <!-- Tallum Heavy Armor Set -->
-			<item id="92020" min="1" max="1" chance="4.0" /> <!-- Enchant Set: Talisman of Eva -->
+			<item id="92020" min="1" max="1" chance="4.0" /> <!-- Enchant Kit: Talisman of Eva -->
 			<item id="862" min="1" max="1" chance="4.0" /> <!-- Majestic Earring -->
-			<item id="893" min="1" max="1" chance="4.0" /> <!-- Ring of Majesty -->
-			<item id="924" min="1" max="1" chance="4.0" /> <!-- Necklace of Majesty -->
+			<item id="893" min="1" max="1" chance="4.0" /> <!-- Majestic Ring -->
+			<item id="924" min="1" max="1" chance="4.0" /> <!-- Majestic Necklace -->
 		</capsuled_items>
 	</item>
 	<item id="92020" name="Talisman of Eva Pack" type="EtcItem">
-		<!-- Double-click to obtain the following items. -->
+		<!-- Double-click to obtain specified items. -->
 		<set name="icon" val="icon.bm_pirate_treasure_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -319,7 +376,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="91953" min="1" max="1" minEnchant="9" maxEnchant="9" chance="100" /> <!-- +9 Dragon Valley's Earring -->
+			<item id="91953" min="1" max="1" minEnchant="9" maxEnchant="9" chance="100" /> <!-- Dragon Valley's Earring -->
 		</capsuled_items>
 	</item>
 	<item id="92025" name="Event Rune Chest" type="EtcItem">
@@ -335,8 +392,8 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="90836" min="1" max="1" chance="100" /> <!-- Hero's XP Amulet 7-day -->
-			<item id="91692" min="1" max="1" chance="100" /> <!-- Blessing of Plenty - 100% 3-day -->
+			<item id="90836" min="1" max="1" chance="100" /> <!-- Hero's XP Amulet - 7-day -->
+			<item id="91692" min="1" max="1" chance="100" /> <!-- Blessing of Plenty - 100% (Event) - 3-day -->
 		</capsuled_items>
 	</item>
 	<item id="92026" name="Majestic Heavy Armor Set" type="EtcItem">
@@ -349,6 +406,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="2383" min="1" max="1" chance="100" /> <!-- Majestic Plate Armor -->
+			<item id="5774" min="1" max="1" chance="100" /> <!-- Majestic Gauntlets (Heavy) -->
+			<item id="5786" min="1" max="1" chance="100" /> <!-- Majestic Boots (Heavy) -->
+			<item id="90476" min="1" max="1" chance="100" /> <!-- Majestic Circlet (Heavy) -->
+		</capsuled_items>
 	</item>
 	<item id="92027" name="Dark Crystal Heavy Armor Set" type="EtcItem">
 		<!-- Double-click to obtain the Dark Crystal heavy armor set (breastplate, gaiters, helmet, gloves, boots). -->
@@ -360,6 +424,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="365" min="1" max="1" chance="100" /> <!-- Dark Crystal Breastplate -->
+			<item id="388" min="1" max="1" chance="100" /> <!-- Dark Crystal Gaiters -->
+			<item id="5765" min="1" max="1" chance="100" /> <!-- Dark Crystal Gloves (Heavy) -->
+			<item id="5777" min="1" max="1" chance="100" /> <!-- Dark Crystal Boots (Heavy) -->
+			<item id="90470" min="1" max="1" chance="100" /> <!-- Dark Crystal Helmet - Heavy Armor -->
+		</capsuled_items>
 	</item>
 	<item id="92028" name="Tallum Light Armor Set" type="EtcItem">
 		<!-- Double-click to obtain the Tallum light armor set (leather armor, helmet, gloves, boots). -->
@@ -371,9 +443,16 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="2393" min="1" max="1" chance="100" /> <!-- Tallum Leather Armor -->
+			<item id="5769" min="1" max="1" chance="100" /> <!-- Tallum Gloves (Light) -->
+			<item id="5781" min="1" max="1" chance="100" /> <!-- Tallum Boots (Light) -->
+			<item id="90468" min="1" max="1" chance="100" /> <!-- Tallum Helmet - Light Armor -->
+		</capsuled_items>
 	</item>
 	<item id="92029" name="Tallum Robe Set" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.armor_t79_u_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -382,6 +461,16 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="2400" min="1" max="1" chance="20" /> <!-- Tallum Tunic -->
+			<item id="2405" min="1" max="1" chance="20" /> <!-- Tallum Stockings -->
+			<item id="5770" min="1" max="1" chance="20" /> <!-- Tallum Gloves (Robe) -->
+			<item id="5782" min="1" max="1" chance="20" /> <!-- Tallum Boots (Robe) -->
+			<item id="90469" min="1" max="1" chance="20" /> <!-- Tallum Helmet - Robe -->
+		</capsuled_items>
 	</item>
 	<item id="92030" name="Hero's XP Amulet Pack" type="EtcItem">
 		<!-- Double-click to obtain Hero's XP Amulet (7-day). -->
@@ -395,7 +484,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="90836" min="1" max="1" chance="100" /> <!-- Hero's XP Amulet 7-day -->
+			<item id="90836" min="1" max="1" chance="100" /> <!-- Hero's XP Amulet - 7-day -->
 		</capsuled_items>
 	</item>
 	<item id="92031" name="Talisman Bracelet Lv. 5" type="Armor">
@@ -429,7 +518,7 @@
 		</skills>
 	</item>
 	<item id="92033" name="Magic Fire" additionalName="Event" type="EtcItem">
-		<!-- Applies a buff when used. <Buff effect>. Magic Lamp charging rate +100%. Duration: 60 min. Cooldown: 1 min. Required level: 1-75. -->
+		<!-- Applies a buff when used. <Buff effect>. Magic Lamp Energy Replenishment +100%. Duration: 60 min. Cooldown: 1 min. For characters of Lv.1-74. -->
 		<set name="icon" val="icon.bm_soul_of_shilen" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -447,7 +536,7 @@
 		</skills>
 	</item>
 	<item id="92034" name="Reinforced Jewel Box" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.bm_2018_jewelbox_random" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -469,7 +558,7 @@
 		</capsuled_items>
 	</item>
 	<item id="92035" name="Shiny Jewelry Box" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain one of the specified items. -->
 		<set name="icon" val="icon.etc_bm_jewelbox_main_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -482,13 +571,13 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="92036" min="1" max="1" chance="14.2" /> <!-- Amber Lv. 1 -->
-			<item id="92046" min="1" max="1" chance="14.2" /> <!-- Opal Lv. 1 -->
-			<item id="92056" min="1" max="1" chance="14.2" /> <!-- Coral Lv. 1 -->
-			<item id="92066" min="1" max="1" chance="14.2" /> <!-- Onyx Lv. 1 -->
-			<item id="92076" min="1" max="1" chance="14.2" /> <!-- Spinel Lv. 1 -->
-			<item id="92086" min="1" max="1" chance="14.2" /> <!-- Zircon Lv. 1 -->
-			<item id="92096" min="1" max="1" chance="14.2" /> <!-- Moonstone Lv. 1 -->
+			<item id="92036" min="1" max="1" chance="14.2" /> <!-- Amber - Lv. 1 -->
+			<item id="92046" min="1" max="1" chance="14.2" /> <!-- Opal - Lv. 1 -->
+			<item id="92056" min="1" max="1" chance="14.2" /> <!-- Coral - Lv. 1 -->
+			<item id="92066" min="1" max="1" chance="14.2" /> <!-- Onyx - Lv. 1 -->
+			<item id="92076" min="1" max="1" chance="14.2" /> <!-- Spinel - Lv. 1 -->
+			<item id="92086" min="1" max="1" chance="14.2" /> <!-- Zircon - Lv. 1 -->
+			<item id="92096" min="1" max="1" chance="14.2" /> <!-- Moonstone - Lv. 1 -->
 		</capsuled_items>
 	</item>
 	<item id="92036" name="Amber" additionalName="Lv. 1" type="Armor">

@@ -327,7 +327,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="71031" name="Regular Dish (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Looks quite delicious. Applies a buff when used. <Buff effect> Acquired XP +30% Acquired SP +30% Max HP/ MP/ CP +5% P. Atk./ P. Def./ M. Atk./ M. Def. +5% Duration: 30 min. -->
+		<!-- Looks quite delicious. Applies a buff when used. <Buff effect>. Acquired XP +30%. Acquired SP +30%. Max HP/ MP/ CP +5%. P. Atk./ P. Def./ M. Atk./ M. Def. +5%. Duration: 30 min. -->
 		<set name="icon" val="icon.etc_food_dish_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
@@ -351,6 +351,19 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="72111" min="1" max="1" chance="12.5" /> <!-- New Year Gift (Time-limited) - Sealed -->
+			<item id="91983" min="1" max="1" chance="12.5" /> <!-- Primeval Isle's Time Stone - Sealed -->
+			<item id="92400" min="1" max="1" chance="12.5" /> <!-- Forgotten Garden's Time Stone - Sealed -->
+			<item id="93701" min="1" max="1" chance="12.5" /> <!-- Charging Stone of Regular Craft - 1 Charge (Time-limited) - Sealed -->
+			<item id="94380" min="1" max="1" chance="12.5" /> <!-- Scroll: Boost Attack (Time-limited) - Sealed -->
+			<item id="91840" min="1" max="1" chance="12.5" /> <!-- XP Growth Scroll (Time-limited) - Sealed -->
+			<item id="93848" min="1" max="1" chance="12.5" /> <!-- Sayha's Cookie (Time-limited) - Sealed -->
+			<item id="71031" min="1" max="1" chance="12.5" /> <!-- Regular Dish (Time-limited) - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="71034" name="Match Girls' Gratitude" type="EtcItem">
 		<!-- For 20 min., P./ M. Atk. +12%, P./ M. Def +15%, Max HP/ MP/ CP +25%, P./ M. Critical Rate +10, P./ M. Critical Damage +5%, HP/ MP Recovery Bonus +30%. At a certain chance absorbs 5% of the melee damage inflicted on target as HP.. <Note> When used simultaneously with Special Pirate Fruit or Special Dragon Fruit, effects do not stack. Will be deleted after the event. -->

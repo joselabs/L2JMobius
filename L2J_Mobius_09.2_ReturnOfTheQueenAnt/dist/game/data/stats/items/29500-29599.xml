@@ -53,7 +53,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29505" name="Freya's Fortune Box" type="EtcItem">
-		<!-- Double-click to obtain one of the following items: Ultimate Jewelry Box Lv. 4/ Lv. 5, Lindvior's Earring, Blessed Valakas' Necklace, Blessed Antharas' Earring, Mystic Soul Crystal, Sealed Talisman of Insanity/ Longing, Red Starlight Jar, Ancient Zodiac Agathion Charm Book of Growth, Mystic Soul Crystal Fragment, Life Stone: Giant's Power, Royal R99-grade White Save Ticket, Package: Lesser Giant's Lucky Enchant Stone: R-grade Weapon/ Armor, R99-grade Scroll of Blessing, Freya's Rune (30-day) Box, Apparition Stone (All-purpose), Life Stone: Giant's Power, Giant's Energy 100-unit Pack, Superior Giant's Codex - Mastery (2 pcs.)/ Mastery Chapter 1, Source of the Emperor, Package: Eva's Rune (3-day) - Event, Pa'agrio's Blessing Might (5 pcs.), Freya's Art of Seduction Barrier (5 pcs.). -->
+		<!-- Double-click to obtain one of the following items: Ultimate Jewelry Box Lv. 4/ Lv. 5, Lindvior's Earring, Blessed Valakas' Necklace, Blessed Antharas' Earring, Mystic Soul Crystal, Sealed Talisman of Insanity/ Longing, Red Starlight Jar, Ancient Zodiac Agathion Charm Book of Growth, Mystic Soul Crystal Fragment, Life Stone: Giant's Power, Royal R99-grade White Save Ticket, Package: Lesser Giant's Stone: Enchant R-grade Weapon/ Armor, R99-grade Scroll of Blessing, Freya's Rune (30-day) Box, Apparition Stone (All-purpose), Life Stone: Giant's Power, Giant's Energy 100-unit Pack, Superior Giant's Codex - Mastery (2 pcs.)/ Mastery Chapter 1, Source of the Emperor, Package: Eva's Rune (3-day) - Event, Pa'agrio's Blessing Might (5 pcs.), Freya's Art of Seduction Barrier (5 pcs.). -->
 		<set name="icon" val="icon.bm_freya_gift_box" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -245,9 +245,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
-		<set name="is_stackable" val="true" />
 		<capsuled_items>
-			<item id="29522" min="1" max="1" chance="100" /> <!-- High-grade Maphr's Rune 100% - 30-day -->
+			<item id="29522" min="1" max="1" chance="100" /> <!-- Maphr's Rune 300% - 1-hour -->
 		</capsuled_items>
 	</item>
 	<item id="29524" name="+3 Dragon Earring Box" type="EtcItem">
@@ -321,7 +320,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29530" name="Lucky Growth Scroll" additionalName="Event" type="EtcItem">
-		<!-- For 30 min., Acquired XP/ SP +30%, Vitality Bonus +30%, P./ M. Atk. and P./ M. Def. +30%. -->
+		<!-- When used, for 30 min., acquired XP/ SP +30%, Vitality bonus +30%, P. Atk./ M. Atk./ P. Def./ M. Def. +30%. -->
 		<set name="icon" val="icon.etc_charm_of_luck_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -475,7 +474,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29546" name="Enhanced La Vie En Rose's Brooch" type="Armor">
-		<!-- Unlocks 6 jewel slots. Inventory Slots +12. <Enchanting>. Use Blessed Scroll: Enchant Brooch. <Enhancing>. Take La Vie En Rose's Brooch enchanted to +5 to Head Blacksmith in any town to get Superior La Vie En Rose's Brooch. Can be augmented. -->
+		<!-- Unlocks 6 jewel slots. Inventory slots +12. <Enchanting>. Use Blessed Scroll: Enchant Brooch. <Enhancing>. Take La Vie En Rose's Brooch enchanted to +5 to Head Blacksmith in any town to get Superior La Vie En Rose's Brooch. Can be augmented. -->
 		<set name="icon" val="icon.bm_brooch_6slot_lavianrose_4" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch" />
@@ -498,7 +497,7 @@
 		</stats>
 	</item>
 	<item id="29547" name="Superior La Vie En Rose's Brooch" type="Armor">
-		<!-- Unlocks 6 jewel slots. Inventory Slots +12. <Enchanting>. Use Blessed Scroll: Enchant Brooch. Can be augmented. -->
+		<!-- Unlocks 6 jewel slots. Inventory slots +12. <Enchanting>. Use Blessed Scroll: Enchant Brooch. Can be augmented. -->
 		<set name="icon" val="icon.bm_brooch_6slot_lavianrose_5" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch" />
@@ -526,7 +525,7 @@
 		</stats>
 	</item>
 	<item id="29548" name="Blessed Scroll: Enchant Brooch" type="EtcItem">
-		<!-- A scroll for enchanting Enhanced La Vie En Rose's Brooch and Superior La Vie En Rose's Brooch. In case of failure, enchant value of La Vie En Rose's Brooch is reset, but its type is unchanged. -->
+		<!-- A scroll for enchanting Enhanced La Vie En Rose's Brooch and Superior La Vie En Rose's Brooch. In case of failure, the enchant value of La Vie En Rose's Brooch is reset, but its type remains the same. -->
 		<set name="icon" val="icon.bm_blessed_scrl_of_ench_brooch" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="BLESS_ENCHT_AM" />
@@ -604,7 +603,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29556" name="Requiem Guardian Fortune Box" type="EtcItem">
-		<!-- Double-click to obtain Requiem Shooter with a 60% chance. In case of failure you will get nothing. -->
+		<!-- Double-click to obtain Requiem Guardian with a 60% chance. In case of failure you will get nothing. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -883,7 +882,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29587" name="Apocalypse Guardian Fortune Box" type="EtcItem">
-		<!-- Double-click to obtain Apocalypse Shooter with a 60% chance. In case of failure you will get nothing. -->
+		<!-- Double-click to obtain Apocalypse Guardian with a 60% chance. In case of failure you will get nothing. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />

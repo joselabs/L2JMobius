@@ -34,16 +34,21 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.gameserver.data.xml.SpawnData;
 import org.l2jmobius.gameserver.model.CombatFlag;
 import org.l2jmobius.gameserver.model.FortSiegeSpawn;
+import org.l2jmobius.gameserver.model.Spawn;
 import org.l2jmobius.gameserver.model.WorldObject;
+import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.siege.FortSiege;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
+import org.l2jmobius.gameserver.model.spawns.NpcSpawnTemplate;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 public class FortSiegeManager
@@ -72,6 +77,131 @@ public class FortSiegeManager
 	{
 		character.addSkill(CommonSkill.SEAL_OF_RULER.getSkill(), false);
 		character.addSkill(CommonSkill.BUILD_HEADQUARTERS.getSkill(), false);
+	}
+	
+	public void addCombatFlaglagSkills(Player character)
+	{
+		Clan clan = character.getClan();
+		if ((clan != null))
+		{
+			if ((clan.getLevel() >= getSiegeClanMinLevel()) && FortManager.getInstance().getFortById(FortManager.ORC_FORTRESS).getSiege().isInProgress())
+			{
+				character.addSkill(CommonSkill.FLAG_DISPLAY.getSkill(), false);
+				character.addSkill(CommonSkill.REMOTE_FLAG_DISPLAY.getSkill(), false);
+				character.addSkill(CommonSkill.FLAG_POWER_FAST_RUN.getSkill(), false);
+				character.addSkill(CommonSkill.FLAG_EQUIP.getSkill(), false);
+				switch (character.getClassId())
+				{
+					// Warrior
+					case DUELIST:
+					case DREADNOUGHT:
+					case TITAN:
+					case GRAND_KHAVATARI:
+					case FORTUNE_SEEKER:
+					case MAESTRO:
+					case DOOMBRINGER:
+					case SOUL_HOUND:
+					case DEATH_KIGHT_HUMAN:
+					case DEATH_KIGHT_ELF:
+					case DEATH_KIGHT_DARK_ELF:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_WARRIOR.getSkill(), false);
+						break;
+					}
+					// Knight
+					case PHOENIX_KNIGHT:
+					case HELL_KNIGHT:
+					case EVA_TEMPLAR:
+					case SHILLIEN_TEMPLAR:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_KNIGHT.getSkill(), false);
+						break;
+					}
+					// Rogue
+					case ADVENTURER:
+					case WIND_RIDER:
+					case GHOST_HUNTER:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_ROGUE.getSkill(), false);
+						break;
+					}
+					// Archer
+					case SAGITTARIUS:
+					case MOONLIGHT_SENTINEL:
+					case GHOST_SENTINEL:
+					case TRICKSTER:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_ARCHER.getSkill(), false);
+						break;
+					}
+					// Mage
+					case ARCHMAGE:
+					case SOULTAKER:
+					case MYSTIC_MUSE:
+					case STORM_SCREAMER:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_MAGE.getSkill(), false);
+						break;
+					}
+					// Summoner
+					case ARCANA_LORD:
+					case ELEMENTAL_MASTER:
+					case SPECTRAL_MASTER:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_SUMMONER.getSkill(), false);
+						break;
+					}
+					// Healer
+					case CARDINAL:
+					case EVA_SAINT:
+					case SHILLIEN_SAINT:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_HEALER.getSkill(), false);
+						break;
+					}
+					// Enchanter
+					case HIEROPHANT:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_ENCHANTER.getSkill(), false);
+						break;
+					}
+					// Bard
+					case SWORD_MUSE:
+					case SPECTRAL_DANCER:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_BARD.getSkill(), false);
+						break;
+					}
+					// Shaman
+					case DOMINATOR:
+					case DOOMCRYER:
+					{
+						character.addSkill(CommonSkill.FLAG_POWER_SHAMAN.getSkill(), false);
+						break;
+					}
+				}
+			}
+		}
+	}
+	
+	public void removeCombatFlagSkills(Player character)
+	{
+		character.removeSkill(CommonSkill.FLAG_DISPLAY.getSkill());
+		character.removeSkill(CommonSkill.REMOTE_FLAG_DISPLAY.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_FAST_RUN.getSkill());
+		character.removeSkill(CommonSkill.FLAG_EQUIP.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_WARRIOR.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_KNIGHT.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_ROGUE.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_ARCHER.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_MAGE.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_SUMMONER.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_HEALER.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_ENCHANTER.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_BARD.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_SHAMAN.getSkill());
+		character.removeSkill(CommonSkill.FLAG_POWER_ENCHANTER.getSkill());
+		character.removeSkill(CommonSkill.FLAG_EQUIP.getSkill());
 	}
 	
 	/**
@@ -273,7 +403,7 @@ public class FortSiegeManager
 	
 	public boolean isCombat(int itemId)
 	{
-		return (itemId == 9819);
+		return itemId == FortManager.ORC_FORTRESS_FLAG;
 	}
 	
 	public boolean activateCombatFlag(Player player, Item item)
@@ -283,15 +413,27 @@ public class FortSiegeManager
 			return false;
 		}
 		
-		final Fort fort = FortManager.getInstance().getFort(player);
-		final List<CombatFlag> fcf = _flagList.get(fort.getResidenceId());
-		for (CombatFlag cf : fcf)
+		if (player.isMounted())
 		{
-			if (cf.getCombatFlagInstance() == item)
-			{
-				cf.activate(player, item);
-			}
+			player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 		}
+		else
+		{
+			player.getInventory().equipItem(item);
+			
+			final InventoryUpdate iu = new InventoryUpdate();
+			iu.addItem(item);
+			player.sendInventoryUpdate(iu);
+			
+			player.broadcastUserInfo();
+			player.setCombatFlagEquipped(true);
+			addCombatFlaglagSkills(player);
+			
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_EQUIPPED);
+			sm.addItemName(item);
+			player.sendPacket(sm);
+		}
+		
 		return true;
 	}
 	
@@ -301,20 +443,17 @@ public class FortSiegeManager
 		{
 			return false;
 		}
-		if (!player.isClanLeader())
+		
+		final Fort fort = FortManager.getInstance().getFort(player);
+		// if ((fort == null) || (fort.getResidenceId() <= 0) || (fort.getSiege().getAttackerClan(player.getClan()) == null))
+		if ((fort == null) || (fort.getResidenceId() <= 0))
 		{
-			player.sendMessage("The flag can only be picked up by a clan leader.");
 			return false;
 		}
 		
-		final Fort fort = FortManager.getInstance().getFort(player);
-		if ((fort == null) || (fort.getResidenceId() <= 0) || (fort.getSiege().getAttackerClan(player.getClan()) == null))
-		{
-			return false;
-		}
 		if (!fort.getSiege().isInProgress())
 		{
-			player.sendPacket(new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_OF_S1_HAS_FINISHED).addItemName(9819));
+			player.sendPacket(new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_OF_S1_HAS_FINISHED).addItemName(FortManager.ORC_FORTRESS_FLAG));
 			return false;
 		}
 		
@@ -324,18 +463,35 @@ public class FortSiegeManager
 	public void dropCombatFlag(Player player, int fortId)
 	{
 		final Fort fort = FortManager.getInstance().getFortById(fortId);
-		final List<CombatFlag> fcf = _flagList.get(fort.getResidenceId());
-		for (CombatFlag cf : fcf)
+		if (player != null)
 		{
-			if (cf.getPlayerObjectId() == player.getObjectId())
+			removeCombatFlagSkills(player);
+			final long slot = player.getInventory().getSlotFromItem(player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG));
+			player.getInventory().unEquipItemInBodySlot(slot);
+			Item flag = player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG);
+			player.destroyItem("CombatFlag", flag, null, true);
+			player.setCombatFlagEquipped(false);
+			player.broadcastUserInfo();
+			final InventoryUpdate iu = new InventoryUpdate();
+			player.sendInventoryUpdate(iu);
+			SpawnData.getInstance().getSpawns().forEach(spawnTemplate -> spawnTemplate.getGroupsByName(flag.getVariables().getString(FortSiege.GREG_SPAWN_VAR, FortSiege.ORC_FORTRESS_GREG_BOTTOM_RIGHT_SPAWN)).forEach(holder ->
 			{
-				cf.dropIt();
-				if (fort.getSiege().isInProgress())
+				holder.spawnAll();
+				for (NpcSpawnTemplate nst : holder.getSpawns())
 				{
-					cf.spawnMe();
+					for (Npc npc : nst.getSpawnedNpcs())
+					{
+						Spawn spawn = npc.getSpawn();
+						if (spawn != null)
+						{
+							spawn.stopRespawn();
+						}
+					}
 				}
-			}
+			}));
+			
 		}
+		fort.getSiege().addFlagCount(-1);
 	}
 	
 	public static FortSiegeManager getInstance()

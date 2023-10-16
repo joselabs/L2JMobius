@@ -24,7 +24,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.PartyDistributionType;
 import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.enums.Team;
@@ -59,6 +58,7 @@ import org.l2jmobius.gameserver.model.zone.ZoneType;
 import org.l2jmobius.gameserver.network.serverpackets.ExPVPMatchCCRecord;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
+import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.util.Broadcast;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -72,11 +72,9 @@ public class TvT extends Event
 	private static final int MANAGER = 70010;
 	// Skills
 	private static final SkillHolder GHOST_WALKING = new SkillHolder(100000, 1); // Custom Ghost Walking
-	private static final SkillHolder KNIGHT = new SkillHolder(15648, 1); // Knight's Harmony (Adventurer)
-	private static final SkillHolder WARRIOR = new SkillHolder(15649, 1); // Warrior's Harmony (Adventurer)
-	private static final SkillHolder WIZARD = new SkillHolder(15650, 1); // Wizard's Harmony (Adventurer)
 	private static final SkillHolder[] GROUP_BUFFS =
 	{
+		new SkillHolder(30812, 1), // Fantasia Harmony
 		new SkillHolder(15642, 1), // Horn Melody (Adventurer)
 		new SkillHolder(15643, 1), // Drum Melody (Adventurer)
 		new SkillHolder(15644, 1), // Pipe Organ Melody (Adventurer)
@@ -203,18 +201,6 @@ public class TvT extends Event
 						{
 							SkillCaster.triggerCast(npc, player, holder.getSkill());
 						}
-						if (player.isMageClass())
-						{
-							SkillCaster.triggerCast(npc, player, WIZARD.getSkill());
-						}
-						else if (player.isInCategory(CategoryType.KNIGHT_GROUP))
-						{
-							SkillCaster.triggerCast(npc, player, KNIGHT.getSkill());
-						}
-						else
-						{
-							SkillCaster.triggerCast(npc, player, WARRIOR.getSkill());
-						}
 						player.setCurrentHp(player.getMaxHp());
 						player.setCurrentMp(player.getMaxMp());
 						player.setCurrentCp(player.getMaxCp());
@@ -265,8 +251,8 @@ public class TvT extends Event
 						BLUE_TEAM.add(participant);
 						PVP_WORLD.addAllowed(participant);
 						participant.leaveParty();
-						participant.setTeam(Team.BLUE);
 						participant.teleToLocation(BLUE_SPAWN_LOC, PVP_WORLD);
+						participant.setTeam(Team.BLUE);
 						team = false;
 					}
 					else
@@ -274,8 +260,8 @@ public class TvT extends Event
 						RED_TEAM.add(participant);
 						PVP_WORLD.addAllowed(participant);
 						participant.leaveParty();
-						participant.setTeam(Team.RED);
 						participant.teleToLocation(RED_SPAWN_LOC, PVP_WORLD);
+						participant.setTeam(Team.RED);
 						team = true;
 					}
 					addDeathListener(participant);
@@ -533,6 +519,22 @@ public class TvT extends Event
 				broadcastScreenMessage(event, 4);
 				break;
 			}
+			case "manager-cancel":
+			{
+				final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+				html.setFile(player, "data/scripts/custom/events/TeamVsTeam/manager-cancel.html");
+				html.replace("%player_numbers%", String.valueOf(PLAYER_LIST.size()));
+				player.sendPacket(html);
+				break;
+			}
+			case "manager-register":
+			{
+				final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+				html.setFile(player, "data/scripts/custom/events/TeamVsTeam/manager-register.html");
+				html.replace("%player_numbers%", String.valueOf(PLAYER_LIST.size()));
+				player.sendPacket(html);
+				break;
+			}
 		}
 		// Activity timer.
 		if (event.startsWith("KickPlayer") && (player != null) && (player.getInstanceWorld() == PVP_WORLD))
@@ -587,9 +589,11 @@ public class TvT extends Event
 			{
 				return "manager-buffheal.html";
 			}
+			startQuestTimer("manager-cancel", 5, npc, player);
 			return "manager-cancel.html";
 		}
 		// Player is not registered.
+		startQuestTimer("manager-register", 5, npc, player);
 		return "manager-register.html";
 	}
 	
@@ -900,6 +904,15 @@ public class TvT extends Event
 			participant.setTeam(Team.NONE);
 			participant.setRegisteredOnEvent(false);
 			participant.setOnEvent(false);
+			participant.setInvul(false);
+			participant.setImmobilized(false);
+			participant.enableAllSkills();
+			for (Summon summon : participant.getServitors().values())
+			{
+				summon.setInvul(false);
+				summon.setImmobilized(false);
+				summon.enableAllSkills();
+			}
 		}
 		if (PVP_WORLD != null)
 		{

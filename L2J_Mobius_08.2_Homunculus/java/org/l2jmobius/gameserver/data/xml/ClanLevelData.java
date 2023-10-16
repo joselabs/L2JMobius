@@ -16,82 +16,93 @@
  */
 package org.l2jmobius.gameserver.data.xml;
 
+import java.io.File;
+import java.util.logging.Logger;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+
+import org.l2jmobius.commons.util.IXmlReader;
+
 /**
  * @author Mobius
  */
-public class ClanLevelData
+public class ClanLevelData implements IXmlReader
 {
-	// TODO: Move to XML.
-	private static final int[] CLAN_LEVEL_REQUIREMENTS =
-	{
-		35000,
-		80000,
-		140000,
-		315000,
-		560000,
-		965000,
-		2690000,
-		4050000,
-		5930000,
-		7560000,
-		11830000,
-		19110000,
-		27300000,
-		36400000,
-		46410000,
-		0
-	};
-	private static final int[] COMMON_CLAN_MEMBER_LIMIT =
-	{
-		10,
-		15,
-		20,
-		30,
-		40,
-		42,
-		68,
-		85,
-		94,
-		102,
-		111,
-		120,
-		128,
-		137,
-		145,
-		171
-	};
-	private static final int[] ELITE_CLAN_MEMBER_LIMIT =
-	{
-		0,
-		0,
-		0,
-		0,
-		0,
-		8,
-		12,
-		15,
-		16,
-		18,
-		19,
-		20,
-		22,
-		23,
-		25,
-		29
-	};
+	private static final Logger LOGGER = Logger.getLogger(ClanLevelData.class.getName());
 	
-	public static int getLevelRequirement(int clanLevel)
+	private static final int EXPECTED_CLAN_LEVEL_DATA = 16; // Level 0 included.
+	
+	private int[] CLAN_EXP;
+	private int[] CLAN_COMMON_MEMBERS;
+	private int[] CLAN_ELITE_MEMBERS;
+	
+	protected ClanLevelData()
 	{
-		return CLAN_LEVEL_REQUIREMENTS[clanLevel];
+		load();
 	}
 	
-	public static int getCommonMemberLimit(int clanLevel)
+	@Override
+	public synchronized void load()
 	{
-		return COMMON_CLAN_MEMBER_LIMIT[clanLevel];
+		CLAN_EXP = new int[EXPECTED_CLAN_LEVEL_DATA];
+		CLAN_COMMON_MEMBERS = new int[EXPECTED_CLAN_LEVEL_DATA];
+		CLAN_ELITE_MEMBERS = new int[EXPECTED_CLAN_LEVEL_DATA];
+		
+		parseDatapackFile("data/ClanLevelData.xml");
+		LOGGER.info(getClass().getSimpleName() + ": Loaded " + (EXPECTED_CLAN_LEVEL_DATA - 1) /* level 0 excluded */ + " clan level data.");
 	}
 	
-	public static int getEliteMemberLimit(int clanLevel)
+	@Override
+	public void parseDocument(Document doc, File f)
 	{
-		return ELITE_CLAN_MEMBER_LIMIT[clanLevel];
+		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
+		{
+			if ("list".equals(n.getNodeName()))
+			{
+				for (Node d = n.getFirstChild(); d != null; d = d.getNextSibling())
+				{
+					if ("clan".equals(d.getNodeName()))
+					{
+						NamedNodeMap attrs = d.getAttributes();
+						
+						final int level = parseInteger(attrs, "level");
+						final int exp = parseInteger(attrs, "exp");
+						final int commonMembers = parseInteger(attrs, "commonMembers");
+						final int eliteMembers = parseInteger(attrs, "eliteMembers");
+						
+						CLAN_EXP[level] = exp;
+						CLAN_COMMON_MEMBERS[level] = commonMembers;
+						CLAN_ELITE_MEMBERS[level] = eliteMembers;
+					}
+				}
+			}
+		}
+	}
+	
+	public int getLevelExp(int clanLevel)
+	{
+		return CLAN_EXP[clanLevel];
+	}
+	
+	public int getCommonMemberLimit(int clanLevel)
+	{
+		return CLAN_COMMON_MEMBERS[clanLevel];
+	}
+	
+	public int getEliteMemberLimit(int clanLevel)
+	{
+		return CLAN_ELITE_MEMBERS[clanLevel];
+	}
+	
+	public static ClanLevelData getInstance()
+	{
+		return SingletonHolder.INSTANCE;
+	}
+	
+	private static class SingletonHolder
+	{
+		protected static final ClanLevelData INSTANCE = new ClanLevelData();
 	}
 }

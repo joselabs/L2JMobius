@@ -2,6 +2,7 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="39330" toLevel="1" name="Summon Tersi's Guard Agathion">
 		<!-- Summons Tersi's Guard Agathion. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<coolTime>500</coolTime>
 		<hitTime>3000</hitTime>
@@ -22,7 +23,7 @@
 		<passiveConditions>
 			<condition name="OpSkillAcquire">
 				<!-- TODO: Enchant has to be higher than +8 13341 lvl 3-4-5 -->
-				<skillId>13341</skillId> <!-- Enchant Robe Armor Set + 6 (R-grade) -->
+				<skillId>13341</skillId> <!-- Enchant Robe Set +6 (R-grade) -->
 				<hasLearned>true</hasLearned>
 			</condition>
 		</passiveConditions>
@@ -220,30 +221,39 @@
 		</effects>
 	</skill>
 	<skill id="39334" toLevel="1" name="Red Libra Entrance Pass - Kartia Labyrinth (Lv. 95 Party)">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39335" toLevel="1" name="Red Libra Entrance Pass - Crystal Prison (Baylor)">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39336" toLevel="1" name="Red Libra Entrance Pass - Nightmare Kamaloka">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39337" toLevel="1" name="Red Libra Entrance Pass - Embryo Command Post">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39338" toLevel="1" name="Red Libra Entrance Pass - Altar of Shilen">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39339" toLevel="1" name="Red Libra Entrance Pass - Fallen Emperor's Throne">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39340" toLevel="1" name="Red Libra Entrance Pass - Fall of Etina">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39341" toLevel="1" name="Fallen Emperor's Throne Entrance Pass">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39342" toLevel="1" name="Fall of Etina Entrance Pass">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39343" toLevel="1" name="Red Libra Specialty - Vitality Tonic">
@@ -272,10 +282,21 @@
 	<skill id="39344" toLevel="1" name="Red Libra Specialty - Fishing XP Bonus">
 		<!-- When used, increases Successful Fishing XP by 50% for 1 hr.. Applies to all bait. Can be stacked with Angler's Blessing. Will be deleted during maintenance on Wednesday, November 29th when the Red Libra Merchants leave. -->
 		<icon>BranchIcon.etc_sign_agathion_feed_blue_i00</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
 		<isMagic>4</isMagic>
 		<coolTime>500</coolTime>
 		<reuseDelay>60000</reuseDelay>
+		<abnormalTime>3600</abnormalTime>
+		<itemConsumeId>48707</itemConsumeId> <!-- Red Libra Specialty - Fishing XP Bonus -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="FishingExpSpBonus">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="39345" toLevel="1" name="Chronicle Token">
 		<!-- If stored in the inventory, increases P. Atk./ M. Atk./ P./ M. Def./ Atk. Spd./ Casting Spd./ P./ M. Critical Rate/ Max HP&MP&CP by 5%, Bonus XP/ SP gain in Vitality state by 14%. -->
@@ -334,6 +355,7 @@
 		</effects>
 	</skill>
 	<skill id="39346" toLevel="4" name="Red Libra Supply Items">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
@@ -400,10 +422,11 @@
 	</skill>
 	<skill id="39349" toLevel="2" name="Scroll: Enchant Freya Staff">
 		<!-- An enchant scroll for Freya Staff. Failure to enchant destroys the weapon. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39350" toLevel="1" name="Freya's Ice Rose">
-		<!-- Increases Max HP/ MP/ CP by 30%, P. Atk./ M. Atk./ P. Def./ M. Def. by 30%, Atk. Spd./ Casting Spd. by 10%, Speed by 20, Attack Attribute/ Attribute Resistance by 100, Damage by 10%, P./ M. Skill Power by 10%, Acquired XP/ SP by 30%, and decreases Damage Received by 30 min.0 and Skill MP Consumption by 30 min.1 for 30 min. Buffs persist after death. -->
+		<!-- Increases Max HP/ MP/ CP by 30%, P. Atk./ M. Atk./ P./ M. Def. by 30%, Atk./ Casting Spd. by 10%, Speed by 20, Attack/ Attribute Resistance by 100, Damage by 10%, P./ M. Skill Power by 10%, Acquired XP/ SP by 30%, and decreases Damage Received by 30 min.0 and Skill MP Consumption by 30 min.1 for 30 min.. Buffs persist after death. -->
 		<icon>icon.bm_freya_ice_rose</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>2</abnormalLevel>
@@ -539,9 +562,11 @@
 		</effects>
 	</skill>
 	<skill id="39351" toLevel="1" name="Merkios' Altar Entrance Pass">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39352" toLevel="1" name="Scroll: Enchant Blessed Lucien's Bracelet">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
@@ -551,17 +576,19 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="39353" toLevel="1" name="Chronicle Support Box">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 	</skill>
 	<skill id="39354" toLevel="1" name="Freya's Secret Box">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 	</skill>
 	<skill id="39355" toLevel="1" name="Freya's Ice Rose - Event">
-		<!-- Increases Max HP/ MP/ CP by 30%, P. Atk./ M. Atk./ P. Def./ M. Def. by 30%, Atk. Spd./ Casting Spd. by 10%, Speed by 20, Attack Attribute/ Attribute Resistance by 100, Damage by 10%, P./ M. Skill Power by 10%, Acquired XP/ SP by 30%, and decreases Damage Received by 30 min.0 and Skill MP Consumption by 30 min.1 for 30 min. Buffs persist after death. -->
+		<!-- Increases Max HP/ MP/ CP by 30%, P. Atk./ M. Atk./ P./ M. Def. by 30%, Atk./ Casting Spd. by 10%, Speed by 20, Attack/ Attribute Resistance by 100, Damage by 10%, P./ M. Skill Power by 10%, Acquired XP/ SP by 30%, and decreases Damage Received by 30 min.0 and Skill MP Consumption by 30 min.1 for 30 min.. Buffs persist after death. -->
 		<icon>icon.bm_freya_ice_rose</icon>
 		<operateType>A2</operateType>
 		<abnormalLevel>2</abnormalLevel>
@@ -697,7 +724,7 @@
 		</effects>
 	</skill>
 	<skill id="39356" toLevel="1" name="Shining Dragon Attribute Tonic (XP)">
-		<!-- Increases Atk. Attribute by 70, Attribute Resistance by 70, and Acquired XP/ SP by 30% for 30 min. Buffs persist after death. -->
+		<!-- Increases Atk. Attribute by 70, Attribute Resistance by 70, and Acquired XP/ SP by 30% for 30 min.. Buffs persist after death. -->
 		<icon>icon.bm_dragon_posion_special</icon>
 		<operateType>A2</operateType>
 		<isMagic>2</isMagic>
@@ -750,11 +777,13 @@
 	</skill>
 	<skill id="39357" toLevel="2" name="+9 Fallen Angel's Ring Box">
 		<!-- Use to obtain a Fallen Angel's Ring enchanted to +9. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 	</skill>
 	<skill id="39358" toLevel="1" name="Scroll: Enchant Fallen Angel Accessory">
+		<icon>icon.skill0000</icon>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
@@ -764,6 +793,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="39359" toLevel="3" name="Infinite Bliss">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
@@ -776,27 +806,28 @@
 		<effectPoint>100</effectPoint>
 	</skill>
 	<skill id="39361" toLevel="1" name="Forgotten Spellbook">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39362" toLevel="1" name="Bobsleigh Potion">
-		<!-- Becomes possessed by a legendary bobsleigher's soul for 30 min. Increases STR by 7, Vitality Bonus by 15%, Acquired XP/ SP by 15%. -->
+		<!-- Becomes possessed by a legendary bobsleigher's soul for 30 min.. Increases STR by 7, Vitality Bonus by 15%, Acquired XP/ SP by 15%. -->
 		<icon>icon.etc_oblivion_yellow_i00</icon>
 		<operateType>A1</operateType>
 		<isMagic>4</isMagic>
 		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="39363" toLevel="1" name="Figure Skating Potion">
-		<!-- Becomes possessed by a legendary figure skater's soul for 30 min. Increases CON/ MEN by 7, Vitality Bonus by 15%, Acquired XP/ SP by 15%. -->
+		<!-- Becomes possessed by a legendary figure skater's soul for 30 min.. Increases CON/ MEN by 7, Vitality Bonus by 15%, Acquired XP/ SP by 15%. -->
 		<icon>icon.etc_oblivion_green_i00</icon>
 		<operateType>A1</operateType>
 		<isMagic>4</isMagic>
 		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="39364" toLevel="1" name="Curling Potion">
-		<!-- Becomes possessed by a legendary curling athlete's soul for 30 min. Increases INT by 7, Vitality Bonus by 15%, Acquired XP/ SP by 15%. -->
+		<!-- Becomes possessed by a legendary curling athlete's soul for 30 min.. Increases INT by 7, Vitality Bonus by 15%, Acquired XP/ SP by 15%. -->
 		<icon>icon.etc_oblivion_blue_i00</icon>
 		<operateType>A1</operateType>
 		<isMagic>4</isMagic>
@@ -804,18 +835,21 @@
 	</skill>
 	<skill id="39365" toLevel="4" name="Summon Puppy">
 		<!-- Summons a White Dog, Pink Dog, or Golden Dog. -->
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>7000</reuseDelay>
 	</skill>
 	<skill id="39366" toLevel="2" name="Happy Dog's Lucky Pouch">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39369" toLevel="1" name="Shilen's Scroll: Enchant Weapon (R-grade)">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
@@ -859,6 +893,7 @@
 		</effects>
 	</skill>
 	<skill id="39397" toLevel="4" name="+5 Radiant Circlet of Authority Box">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
@@ -877,28 +912,28 @@
 			<effect name="RestorationRandom" level="1">
 				<items>
 					<item chance="100">
-						<item id="48204" count="1" minEnchant="5" maxEnchant="5" />
+						<item id="48204" count="1" minEnchant="5" maxEnchant="5" /> <!-- Radiant Warrior's Circlet -->
 					</item>
 				</items>
 			</effect>
 			<effect name="RestorationRandom" level="2">
 				<items>
 					<item chance="100">
-						<item id="48207" count="1" minEnchant="5" maxEnchant="5" />
+						<item id="48207" count="1" minEnchant="5" maxEnchant="5" /> <!-- Radiant Wizard's Circlet -->
 					</item>
 				</items>
 			</effect>
 			<effect name="RestorationRandom" level="3">
 				<items>
 					<item chance="100">
-						<item id="48210" count="1" minEnchant="5" maxEnchant="5" />
+						<item id="48210" count="1" minEnchant="5" maxEnchant="5" /> <!-- Radiant Knight's Circlet -->
 					</item>
 				</items>
 			</effect>
 			<effect name="RestorationRandom" level="4">
 				<items>
 					<item chance="100">
-						<item id="48493" count="1" minEnchant="5" maxEnchant="5" />
+						<item id="48493" count="1" minEnchant="5" maxEnchant="5" /> <!-- Dragon Rind Leather Shirt -->
 					</item>
 				</items>
 			</effect>

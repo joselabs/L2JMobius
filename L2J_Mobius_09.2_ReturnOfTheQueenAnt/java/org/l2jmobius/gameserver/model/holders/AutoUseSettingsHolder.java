@@ -20,6 +20,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Mobius
@@ -27,10 +28,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class AutoUseSettingsHolder
 {
 	private final Collection<Integer> _autoSupplyItems = ConcurrentHashMap.newKeySet();
-	private final Collection<Integer> _autoPotionItems = ConcurrentHashMap.newKeySet();
 	private final Collection<Integer> _autoActions = ConcurrentHashMap.newKeySet();
 	private final Collection<Integer> _autoBuffs = ConcurrentHashMap.newKeySet();
 	private final List<Integer> _autoSkills = new CopyOnWriteArrayList<>();
+	private final AtomicInteger _autoPotionItem = new AtomicInteger();
 	private int _skillIndex = 0;
 	
 	public AutoUseSettingsHolder()
@@ -40,11 +41,6 @@ public class AutoUseSettingsHolder
 	public Collection<Integer> getAutoSupplyItems()
 	{
 		return _autoSupplyItems;
-	}
-	
-	public Collection<Integer> getAutoPotionItems()
-	{
-		return _autoPotionItems;
 	}
 	
 	public Collection<Integer> getAutoActions()
@@ -60,6 +56,16 @@ public class AutoUseSettingsHolder
 	public List<Integer> getAutoSkills()
 	{
 		return _autoSkills;
+	}
+	
+	public int getAutoPotionItem()
+	{
+		return _autoPotionItem.get();
+	}
+	
+	public void setAutoPotionItem(int itemId)
+	{
+		_autoPotionItem.set(itemId);
 	}
 	
 	public boolean isAutoSkill(int skillId)
@@ -99,6 +105,6 @@ public class AutoUseSettingsHolder
 	
 	public boolean isEmpty()
 	{
-		return _autoSupplyItems.isEmpty() && _autoPotionItems.isEmpty() && _autoSkills.isEmpty() && _autoActions.isEmpty();
+		return _autoSupplyItems.isEmpty() && (_autoPotionItem.get() == 0) && _autoSkills.isEmpty() && _autoBuffs.isEmpty() && _autoActions.isEmpty();
 	}
 }

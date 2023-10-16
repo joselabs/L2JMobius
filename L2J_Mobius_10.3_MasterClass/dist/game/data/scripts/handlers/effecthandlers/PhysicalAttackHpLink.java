@@ -48,7 +48,7 @@ public class PhysicalAttackHpLink extends AbstractEffect
 	@Override
 	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
 	{
-		return !Formulas.calcPhysicalSkillEvasion(effector, effected, skill);
+		return !Formulas.calcSkillEvasion(effector, effected, skill);
 	}
 	
 	@Override
@@ -116,11 +116,11 @@ public class PhysicalAttackHpLink extends AbstractEffect
 			{
 				if (effector.isChargedShot(ShotType.SOULSHOTS))
 				{
-					ssmod = 2 * effector.getStat().getValue(Stat.SHOTS_BONUS); // 2.04 for dual weapon?
+					ssmod = 2 * effector.getStat().getValue(Stat.SHOTS_BONUS) * effected.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1); // 2.04 for dual weapon?
 				}
 				else if (effector.isChargedShot(ShotType.BLESSED_SOULSHOTS))
 				{
-					ssmod = 4 * effector.getStat().getValue(Stat.SHOTS_BONUS);
+					ssmod = 4 * effector.getStat().getValue(Stat.SHOTS_BONUS) * effected.getStat().getValue(Stat.SOULSHOT_RESISTANCE, 1);
 				}
 			}
 			

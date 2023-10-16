@@ -16,8 +16,13 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.limitshop;
 
+import java.util.List;
+
 import org.l2jmobius.commons.network.ReadablePacket;
+import org.l2jmobius.gameserver.data.xml.LimitShopCraftData;
+import org.l2jmobius.gameserver.data.xml.LimitShopData;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.holders.LimitShopProductHolder;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.limitshop.ExPurchaseLimitShopItemListNew;
@@ -27,12 +32,12 @@ import org.l2jmobius.gameserver.network.serverpackets.limitshop.ExPurchaseLimitS
  */
 public class RequestPurchaseLimitShopItemList implements ClientPacket
 {
-	private int _category;
+	private int _shopType;
 	
 	@Override
 	public void read(ReadablePacket packet)
 	{
-		_category = packet.readByte();
+		_shopType = packet.readByte();
 	}
 	
 	@Override
@@ -44,6 +49,26 @@ public class RequestPurchaseLimitShopItemList implements ClientPacket
 			return;
 		}
 		
-		player.sendPacket(new ExPurchaseLimitShopItemListNew(_category, player));
+		final List<LimitShopProductHolder> products;
+		switch (_shopType)
+		{
+			case 3: // Normal Lcoin Shop
+			{
+				products = LimitShopData.getInstance().getProducts();
+				break;
+			}
+			case 4: // Lcoin Special Craft
+			{
+				products = LimitShopCraftData.getInstance().getProducts();
+				break;
+			}
+			default:
+			{
+				return;
+			}
+		}
+		
+		// Send the packet.
+		player.sendPacket(new ExPurchaseLimitShopItemListNew(player, _shopType, products));
 	}
 }

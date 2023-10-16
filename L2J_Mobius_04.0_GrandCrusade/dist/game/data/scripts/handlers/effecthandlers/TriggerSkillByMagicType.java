@@ -136,6 +136,15 @@ public class TriggerSkillByMagicType extends AbstractEffect
 			if (buffInfo != null)
 			{
 				triggerSkill = SkillData.getInstance().getSkill(_skill.getSkillId(), Math.min(_skillLevelScaleTo, buffInfo.getSkill().getLevel() + 1));
+				
+				if (event.getCaster().isSkillDisabled(buffInfo.getSkill()))
+				{
+					if ((_replace) && (buffInfo.getSkill().getLevel() == _skillLevelScaleTo))
+					{
+						((Creature) target).stopSkillEffects(SkillFinishType.SILENT, triggerSkill.getId());
+					}
+					return;
+				}
 			}
 			else
 			{

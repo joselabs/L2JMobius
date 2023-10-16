@@ -192,6 +192,7 @@ import handlers.itemhandlers.BlessingScrolls;
 import handlers.itemhandlers.Book;
 import handlers.itemhandlers.Bypass;
 import handlers.itemhandlers.Calculator;
+import handlers.itemhandlers.ChallengePointsCoupon;
 import handlers.itemhandlers.ChangeAttributeCrystal;
 import handlers.itemhandlers.CharmOfCourage;
 import handlers.itemhandlers.Elixir;
@@ -316,6 +317,7 @@ import handlers.voicedcommandhandlers.ChangePassword;
 import handlers.voicedcommandhandlers.ChatAdmin;
 import handlers.voicedcommandhandlers.Lang;
 import handlers.voicedcommandhandlers.Offline;
+import handlers.voicedcommandhandlers.OfflinePlay;
 import handlers.voicedcommandhandlers.Online;
 import handlers.voicedcommandhandlers.Premium;
 
@@ -519,6 +521,7 @@ public class MasterHandler
 			Book.class,
 			Bypass.class,
 			Calculator.class,
+			ChallengePointsCoupon.class,
 			ChangeAttributeCrystal.class,
 			CharmOfCourage.class,
 			Elixir.class,
@@ -576,6 +579,7 @@ public class MasterHandler
 			Config.CHAT_ADMIN ? ChatAdmin.class : null,
 			Config.MULTILANG_ENABLE && Config.MULTILANG_VOICED_ALLOW ? Lang.class : null,
 			Config.ALLOW_CHANGE_PASSWORD ? ChangePassword.class : null,
+			Config.ENABLE_OFFLINE_PLAY_COMMAND ? OfflinePlay.class : null,
 			Config.ENABLE_OFFLINE_COMMAND && (Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) ? Offline.class : null,
 			Config.ENABLE_ONLINE_COMMAND ? Online.class : null,
 			Config.PREMIUM_SYSTEM_ENABLED ? Premium.class : null,

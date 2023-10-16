@@ -37,6 +37,7 @@ import org.l2jmobius.gameserver.geoengine.GeoEngine;
 import org.l2jmobius.gameserver.instancemanager.WalkingManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.WorldObject;
+import org.l2jmobius.gameserver.model.WorldRegion;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -180,23 +181,32 @@ public class CreatureAI extends AbstractAI
 	protected void onIntentionActive()
 	{
 		// Check if the Intention is not already Active
-		if (getIntention() != AI_INTENTION_ACTIVE)
+		if (getIntention() == AI_INTENTION_ACTIVE)
 		{
-			// Set the AI Intention to AI_INTENTION_ACTIVE
-			changeIntention(AI_INTENTION_ACTIVE);
-			
-			// Init cast target
-			setCastTarget(null);
-			
-			// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
-			clientStopMoving(null);
-			
-			// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-			clientStopAutoAttack();
-			
-			// Launch the Think Event
-			onEvtThink();
+			return;
 		}
+		
+		// Set the AI Intention to AI_INTENTION_ACTIVE
+		changeIntention(AI_INTENTION_ACTIVE);
+		
+		// Check if region and its neighbors are active.
+		final WorldRegion region = _actor.getWorldRegion();
+		if ((region == null) || !region.areNeighborsActive())
+		{
+			return;
+		}
+		
+		// Init cast target
+		setCastTarget(null);
+		
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		clientStopMoving(null);
+		
+		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
+		clientStopAutoAttack();
+		
+		// Launch the Think Event
+		onEvtThink();
 	}
 	
 	/**
@@ -1110,26 +1120,18 @@ public class CreatureAI extends AbstractAI
 	protected boolean checkTargetLost(WorldObject target)
 	{
 		// Check if player is fakedeath.
-		if ((target != null) && target.isPlayer() && Config.FAKE_DEATH_DAMAGE_STAND)
+		if ((target != null) && target.isPlayer() && target.getActingPlayer().isFakeDeath() && Config.FAKE_DEATH_DAMAGE_STAND)
 		{
-			final Player target2 = (Player) target; // Convert object to player.
-			if (target2.isFakeDeath())
-			{
-				target2.stopFakeDeath(true);
-				return false;
-			}
+			target.getActingPlayer().stopFakeDeath(true);
+			return false;
 		}
-		if (target == null)
-		{
-			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
-			setIntention(AI_INTENTION_ACTIVE);
-			return true;
-		}
-		if ((_actor != null) && (_skill != null) && _skill.isBad() && (_skill.getAffectRange() > 0) && !GeoEngine.getInstance().canSeeTarget(_actor, target))
+		
+		if ((target == null) || ((_actor != null) && (_skill != null) && _skill.isBad() && (_skill.getAffectRange() > 0) && (_actor.isPlayer() && _actor.isMoving() ? !GeoEngine.getInstance().canMoveToTarget(_actor, target) : !GeoEngine.getInstance().canSeeTarget(_actor, target))))
 		{
 			setIntention(AI_INTENTION_ACTIVE);
 			return true;
 		}
+		
 		return false;
 	}
 	

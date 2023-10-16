@@ -23,7 +23,6 @@ import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * Itemhhandler for Character Appearance Change Potions
@@ -157,7 +156,7 @@ public class CharChangePotions implements IItemHandler
 		player.destroyItem("Consume", item.getObjectId(), 1, null, false);
 		
 		// Broadcast the changes to the char and all those nearby.
-		player.broadcastPacket(new UserInfo(player));
+		player.updateUserInfo();
 	}
 	
 	@Override

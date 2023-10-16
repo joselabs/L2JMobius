@@ -54,24 +54,6 @@ public class PartySmallWindowAll extends ServerPacket
 				writeInt(member.getClassId().getId());
 				writeInt(0); // writeInt(1); ??
 				writeInt(member.getRace().ordinal());
-				writeInt(0); // T2.3
-				writeInt(0); // T2.3
-				if (member.hasSummon())
-				{
-					writeInt(member.getSummon().getObjectId());
-					writeInt(member.getSummon().getId() + 1000000);
-					writeInt(member.getSummon().getSummonType());
-					writeString(member.getSummon().getName());
-					writeInt((int) member.getSummon().getCurrentHp());
-					writeInt(member.getSummon().getMaxHp());
-					writeInt((int) member.getSummon().getCurrentMp());
-					writeInt(member.getSummon().getMaxMp());
-					writeInt(member.getSummon().getLevel());
-				}
-				else
-				{
-					writeInt(0);
-				}
 			}
 		}
 	}

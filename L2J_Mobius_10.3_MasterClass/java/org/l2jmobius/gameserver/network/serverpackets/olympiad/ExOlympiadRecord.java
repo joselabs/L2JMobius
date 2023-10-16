@@ -19,20 +19,19 @@ package org.l2jmobius.gameserver.network.serverpackets.olympiad;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.olympiad.Olympiad;
-import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.PacketLogger;
+import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 public class ExOlympiadRecord extends ServerPacket
 {
-	private static final String GET_PREVIOUS_CYCLE_DATA = "SELECT charId, class_id, olympiad_points, competitions_won, competitions_lost FROM olympiad_nobles_eom WHERE class_id = ? ORDER BY olympiad_points DESC LIMIT " + RankManager.PLAYER_LIMIT;
+	private static final String GET_PREVIOUS_CYCLE_DATA = "SELECT charId, class_id, olympiad_points, competitions_won, competitions_lost, " + "(SELECT COUNT(*) FROM olympiad_nobles_eom WHERE olympiad_points > t.olympiad_points) AS previousPlaceTotal " + "FROM olympiad_nobles_eom t WHERE class_id = ? ORDER BY olympiad_points DESC LIMIT " + RankManager.PLAYER_LIMIT;
 	
 	private final Player _player;
 	private final int _gameRuleType;
@@ -59,35 +58,33 @@ public class ExOlympiadRecord extends ServerPacket
 		int previousLoses = 0;
 		int previousPoints = 0;
 		int previousClass = 0;
+		int previousPlaceTotal = 0;
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement statement = con.prepareStatement(GET_PREVIOUS_CYCLE_DATA))
 		{
 			statement.setInt(1, _player.getBaseClass());
+			
 			try (ResultSet rset = statement.executeQuery())
 			{
-				int i = 1;
-				while (rset.next())
+				if (rset.next())
 				{
-					if (rset.getInt("charId") == _player.getObjectId())
-					{
-						previousPlace = i;
-						previousWins = rset.getInt("competitions_won");
-						previousLoses = rset.getInt("competitions_lost");
-						previousPoints = rset.getInt("olympiad_points");
-						previousClass = rset.getInt("class_id");
-					}
-					i++;
+					previousPlace = rset.getRow();
+					previousWins = rset.getInt("competitions_won");
+					previousLoses = rset.getInt("competitions_lost");
+					previousPoints = rset.getInt("olympiad_points");
+					previousClass = rset.getInt("class_id");
+					previousPlaceTotal = rset.getInt("previousPlaceTotal") + 1;
 				}
 			}
 		}
-		catch (SQLException e)
+		catch (Exception e)
 		{
-			PacketLogger.warning("Olympiad my ranking: Couldnt load data: " + e.getMessage());
+			PacketLogger.warning("ExOlympiadRecord: Could not load data: " + e.getMessage());
 		}
 		
 		writeInt(previousClass); // nPrevClassType
-		writeInt(1); // nPrevRank in all servers
+		writeInt(previousPlaceTotal); // nPrevRank in all servers
 		writeInt(2); // nPrevRankCount number of participants with 25+ matches
 		writeInt(previousPlace); // nPrevClassRank in all servers
 		writeInt(4); // nPrevClassRankCount number of participants with 25+ matches

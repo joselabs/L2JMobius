@@ -524,6 +524,9 @@ public class Beleth extends AbstractNpcAI
 							}
 						}
 					}
+					_minions.clear();
+					_killedCount = 0;
+					
 					cancelQuestTimer("CHECK_ATTACK", null, null);
 				}
 				else
@@ -605,13 +608,7 @@ public class Beleth extends AbstractNpcAI
 				npc.doCast(LIGHTENING.getSkill());
 				return null;
 			}
-			//@formatter:off
-			final Player plr = World.getInstance().getVisibleObjectsInRange(npc, Player.class, 950)
-				.stream()
-				.findFirst()
-				.orElse(null);
-			//@formatter:on
-			if (plr != null)
+			for (Player plr : World.getInstance().getVisibleObjectsInRange(npc, Player.class, 950))
 			{
 				npc.setTarget(plr);
 				npc.doCast(FIREBALL.getSkill());
@@ -731,6 +728,9 @@ public class Beleth extends AbstractNpcAI
 			_priest.decayMe();
 			
 			_stone = addSpawn(STONE_COFFIN, new Location(12470, 215607, -9381, 49152));
+			
+			_killedCount = 0;
+			
 			startQuestTimer("SPAWN26", 1000, null, null);
 		}
 		else if (npc.getObjectId() == _allowedObjId)
@@ -772,13 +772,17 @@ public class Beleth extends AbstractNpcAI
 	
 	private void deleteAll()
 	{
-		_minions.stream().filter(n -> !n.isDead()).forEach(n ->
+		for (Npc minion : _minions)
 		{
-			n.abortCast();
-			n.setTarget(null);
-			n.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-			n.deleteMe();
-		});
+			if (!minion.isDead())
+			{
+				minion.abortCast();
+				minion.setTarget(null);
+				minion.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
+				minion.deleteMe();
+			}
+		}
+		_minions.clear();
 		_allowedObjId = 0;
 	}
 	

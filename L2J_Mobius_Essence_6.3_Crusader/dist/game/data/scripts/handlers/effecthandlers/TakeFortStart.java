@@ -46,14 +46,16 @@ public class TakeFortStart extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if (effector.isPlayer())
+		if (!effector.isPlayer())
 		{
-			final Fort fort = FortManager.getInstance().getFort(effector);
-			final Clan clan = effector.getClan();
-			if ((fort != null) && (clan != null))
-			{
-				fort.getSiege().announceToPlayer(new SystemMessage(SystemMessageId.S1_CLAN_IS_TRYING_TO_DISPLAY_A_FLAG), clan.getName());
-			}
+			return;
+		}
+		
+		final Fort fort = FortManager.getInstance().getFort(effector);
+		final Clan clan = effector.getClan();
+		if ((fort != null) && (clan != null))
+		{
+			fort.getSiege().announceToPlayer(new SystemMessage(SystemMessageId.S1_IS_TRYING_TO_DISPLAY_THE_FLAG), effector.getActingPlayer().getName());
 		}
 	}
 }

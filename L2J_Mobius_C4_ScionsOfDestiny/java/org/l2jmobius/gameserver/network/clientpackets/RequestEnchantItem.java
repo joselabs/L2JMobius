@@ -590,7 +590,7 @@ public class RequestEnchantItem implements ClientPacket
 		if (scroll == null)
 		{
 			player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
-			Util.handleIllegalPlayerAction(player, player + " tried to enchant with a scroll he doesnt have", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, player + " tried to enchant with a scroll he does not have!", Config.DEFAULT_PUNISH);
 			return;
 		}
 		

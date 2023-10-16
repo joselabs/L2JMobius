@@ -38,5 +38,6 @@ public class RequestExCancelEnchantItem implements ClientPacket
 		
 		player.sendPacket(new EnchantResult(EnchantResult.ERROR, null, null, 0));
 		player.removeRequest(EnchantItemRequest.class);
+		player.getChallengeInfo().setChallengePointsPendingRecharge(-1, -1);
 	}
 }

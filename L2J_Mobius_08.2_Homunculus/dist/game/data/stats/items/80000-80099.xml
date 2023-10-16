@@ -1154,7 +1154,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="80064" name="Challenger's Scroll of Growth" type="EtcItem">
-		<!-- For 10 min., acquired XP/ SP +200%. The effect remains after death. Cooldown: 9 min. Required level: 1-105. The effect does not stack with those of Freya's Frozen Scroll and Freya's Scroll of Storm. -->
+		<!-- For 10 min., Acquired XP/ SP +200%. The effect remains after death. Cooldown: 9 min. Required level: 1-105. The effect does not stack with those of Freya's Frozen Scroll and Freya's Scroll of Storm. -->
 		<set name="icon" val="icon.bm_challenger_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1169,9 +1169,17 @@
 		<!-- Additional pass to the Altar of Shillien. Double-click to reset cooldown to the dungeon. Can only be used when on a cooldown to the instance zone. Can only be used once during the set time period outside of the instance zone. -->
 		<set name="icon" val="icon.etc_bm_kalie_instantzone_re" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="weight" val="0" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="35031" level="1" /> <!-- Extra Pass: Altar of Shillien -->
+		</skills>
 	</item>
 	<item id="80066" name="Fafurion Avenger" additionalName="Fragment" type="Weapon">
 		<!-- Fafurion Avenger Fragment. Max HP can be more than 150,000. Cannot be enchanted, augmented, crystallized, appearance modified, assigned an attribute. <Enhancing>. Take the fragment and Dragon Claw to Lionel Hunter in Heine to get a Fafurion's standard weapon. -->
@@ -1331,6 +1339,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a high-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_avenger_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1360,6 +1369,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a high-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_fighter_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUALFIST" />
@@ -1389,6 +1399,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a high-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_stormer_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="POLE" />
@@ -1420,6 +1431,7 @@
 		<!-- A weapon imbued with the wisdom of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, Critical Rate for standard attacks +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%, damage to dragons +100%. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a high-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_retributer_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1450,6 +1462,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a high-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_dual_blunt_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUALBLUNT" />
@@ -1479,6 +1492,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a high-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_onehand_dual_sword_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUAL" />
@@ -1507,6 +1521,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Fafurion's Rising Wave skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a top-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_avenger_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1539,6 +1554,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Fafurion's Rising Wave skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a top-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_fighter_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUALFIST" />
@@ -1571,6 +1587,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Fafurion's Rising Wave skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a top-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_stormer_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="POLE" />
@@ -1605,6 +1622,7 @@
 		<!-- A weapon imbued with the wisdom of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, Critical Rate for standard attacks +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Fafurion's Rising Wave skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a top-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_retributer_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1638,6 +1656,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Fafurion's Rising Wave skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a top-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_dual_blunt_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUALBLUNT" />
@@ -1670,6 +1689,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for standard attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Fafurion's Rising Wave skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, given another appearance, or assigned an attribute. 1 special Soul Crystal can be inserted. <Enhancing>. Take the weapon and Dragon Claw to Lionel Hunter in Heine to get a top-grade Fafurion's weapon. -->
 		<set name="icon" val="icon.fafurion_onehand_dual_sword_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUAL" />
@@ -1701,6 +1721,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP Damage +50%, Max HP/ MP/ CP +100%, Atk. Spd. +100%, Critical Rate for standard attacks +500, P. Skill Critical Rate +50%, P. Skill Critical Damage +50%, and Damage to dragons +300%. Additionally, allows to use Dignity, Fafurion Rising Wave and Fafurion's Breath skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, appearance modified, imbued with an attribute. One special Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.fafurion_avenger_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1734,6 +1755,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP Damage +50%, Max HP/ MP/ CP +100%, Atk. Spd. +100%, Critical Rate for standard attacks +500, P. Skill Critical Rate +50%, P. Skill Critical Damage +50%, and Damage to dragons +300%. Additionally, allows to use Dignity, Fafurion Rising Wave and Fafurion's Breath skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, appearance modified, imbued with an attribute. One special Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.fafurion_fighter_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUALFIST" />
@@ -1767,6 +1789,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP Damage +50%, Max HP/ MP/ CP +100%, Atk. Spd. +100%, Critical Rate for standard attacks +500, P. Skill Critical Rate +50%, P. Skill Critical Damage +50%, and Damage to dragons +300%. Additionally, allows to use Dignity, Fafurion Rising Wave and Fafurion's Breath skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, appearance modified, imbued with an attribute. One special Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.fafurion_stormer_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="POLE" />
@@ -1802,6 +1825,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP Damage +50%, Max HP/ MP/ CP +100%, Casting Spd. +100%, Critical Rate for standard attacks +500, M. Skill Critical Rate +50%, M. Skill Critical Damage +50%, and Damage to dragons +300%. Additionally, allows to use Dignity, Fafurion Rising Wave and Fafurion's Breath skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, appearance modified, imbued with an attribute. One special Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.fafurion_retributer_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1836,6 +1860,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP Damage +50%, Max HP/ MP/ CP +100%, Atk. Spd. +100%, Critical Rate for standard attacks +500, P. Skill Critical Rate +50%, P. Skill Critical Damage +50%, and Damage to dragons +300%. Additionally, allows to use Dignity, Fafurion Rising Wave and Fafurion's Breath skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, appearance modified, imbued with an attribute. One special Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.fafurion_dual_blunt_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUALBLUNT" />
@@ -1869,6 +1894,7 @@
 		<!-- A weapon imbued with the power of the dragons. PvP Damage +50%, Max HP/ MP/ CP +100%, Atk. Spd. +100%, Critical Rate for standard attacks +500, P. Skill Critical Rate +50%, P. Skill Critical Damage +50%, and Damage to dragons +300%. Additionally, allows to use Dignity, Fafurion Rising Wave and Fafurion's Breath skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized, appearance modified, imbued with an attribute. One special Soul Crystal can be inserted. -->
 		<set name="icon" val="icon.fafurion_onehand_dual_sword_i01" />
 		<set name="is_dragon_weapon" val="true" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
 		<set name="weapon_type" val="DUAL" />
@@ -1898,7 +1924,7 @@
 		</stats>
 	</item>
 	<item id="80090" name="Krishna Shaper" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P. Skill Critical Damage +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_dagger_i00" />
 		<set name="bodypart" val="rhand" />
 		<set name="default_action" val="EQUIP" />
@@ -1916,6 +1942,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="DAGGER" />
 		<set name="damage_range" val="0;0;40;120" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35299" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Shaper -->
 		</skills>
@@ -1930,7 +1958,7 @@
 		</stats>
 	</item>
 	<item id="80091" name="Krishna Cutter" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, Critical Rate for standard attacks +30. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_onehand_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -1948,6 +1976,8 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="crystal_count" val="34485" />
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35296" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Dicing Death -->
 		</skills>
@@ -1961,7 +1991,7 @@
 		</stats>
 	</item>
 	<item id="80092" name="Krishna Slasher" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +5%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +5%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_twohand_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -1979,6 +2009,8 @@
 		<set name="crystal_count" val="34485" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35297" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Slasher -->
 		</skills>
@@ -1992,7 +2024,7 @@
 		</stats>
 	</item>
 	<item id="80093" name="Krishna Avenger" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Accuracy +4, P./ M. Skill Power +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_onehand_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -2010,6 +2042,8 @@
 		<set name="bodypart" val="rhand" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="commissionItemType" val="BLUNT_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35298" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Avenger -->
 		</skills>
@@ -2023,7 +2057,7 @@
 		</stats>
 	</item>
 	<item id="80094" name="Krishna Fighter" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Critical Damage for standard attacks +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_fist_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALFIST" />
@@ -2041,6 +2075,8 @@
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="crystal_count" val="34485" />
 		<set name="commissionItemType" val="FIST_WEAPON" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35300" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Fighter -->
 		</skills>
@@ -2055,7 +2091,7 @@
 		</stats>
 	</item>
 	<item id="80095" name="Krishna Stormer" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, increases the number of targets attacked with a spear. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, increases the number of targets attacked with a spear. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_spear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
@@ -2073,6 +2109,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="commissionItemType" val="SPEAR" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="35301" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Stormer -->
@@ -2088,7 +2126,7 @@
 		</stats>
 	</item>
 	<item id="80096" name="Krishna Thrower" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, Atk. Spd. +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_bow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
@@ -2107,6 +2145,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="commissionItemType" val="BOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35305" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Thrower -->
 		</skills>
@@ -2121,7 +2161,7 @@
 		</stats>
 	</item>
 	<item id="80097" name="Krishna Shooter" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, P. Atk. +2%, P. Skill Power +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_crossbow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -2140,6 +2180,8 @@
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="commissionItemType" val="CROSSBOW" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<skills>
 			<skill id="35306" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Shooter -->
 		</skills>
@@ -2154,7 +2196,7 @@
 		</stats>
 	</item>
 	<item id="80098" name="Krishna Buster" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, M. Skill Power +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -2173,6 +2215,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_SWORD" />
 		<skills>
 			<skill id="35307" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Buster -->
@@ -2186,7 +2230,7 @@
 		</stats>
 	</item>
 	<item id="80099" name="Krishna Caster" type="Weapon">
-		<!-- 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
+		<!-- You can insert 2 regular Soul Crystals and 1 special Soul Crystal. When enchanted to +4, M. Accuracy +4, Casting Spd. +2%. <Enchanting>. Use Scroll: Enchant R-grade Weapon. -->
 		<set name="icon" val="icon.weapon_r110_onehand_magic_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -2205,6 +2249,8 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="is_magic_weapon" val="true" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<skills>
 			<skill id="35308" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability Krishna Caster -->

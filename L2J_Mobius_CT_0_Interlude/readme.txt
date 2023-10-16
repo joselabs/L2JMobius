@@ -106,6 +106,12 @@ What is done
 -Adjusted MagicSkillUse packet.
 -Fixed item enchanting.
 -Updated supportmagic bypass handler. 
+-Added Miss Queen (31760) AI.
+-Replaced quests 501, 503, 508, 509 and 510.
+-Adjusted door packets.
+-Hot Springs one hour diseases.
+-Updated pledge skilltree data.
+-Adjusted custom community board htmls.
 
 TODO: Important (project unusable due to the following)
 -Adjust all skills according to Interlude description.
@@ -115,7 +121,6 @@ TODO: Important (project unusable due to the following)
 TODO: Not that important.
 -Update skilltrees with retail data.
 -Update buylists and multisells with retail data.
--Adjust custom community board htmls.
 -Adjust community board sell buff htmls.
 -Adjust community board announcements admin htmls.
 -Spawn monsters by zones on separate XML files.

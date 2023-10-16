@@ -18,6 +18,7 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Arrays;
 
+import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -108,7 +109,6 @@ public class SystemMessage extends ServerPacket
 	private SMParam[] _params;
 	private final SystemMessageId _smId;
 	private int _paramIndex;
-	private String _lang;
 	
 	public SystemMessage(int id)
 	{
@@ -370,33 +370,38 @@ public class SystemMessage extends ServerPacket
 		return _params;
 	}
 	
-	public void setLang(String lang)
-	{
-		_lang = lang;
-	}
-	
 	@Override
 	public void write()
 	{
 		ServerPackets.SYSTEM_MESSAGE.writeId(this);
+		
 		// Localisation related.
-		if (_lang != null)
+		if (Config.MULTILANG_ENABLE)
 		{
-			final SMLocalisation sml = _smId.getLocalisation(_lang);
-			if (sml != null)
+			final Player player = getPlayer();
+			if (player != null)
 			{
-				final Object[] params = new Object[_paramIndex];
-				for (int i = 0; i < _paramIndex; i++)
+				final String lang = player.getLang();
+				if ((lang != null) && !lang.equals("en"))
 				{
-					params[i] = _params[i].getValue();
+					final SMLocalisation sml = _smId.getLocalisation(lang);
+					if (sml != null)
+					{
+						final Object[] params = new Object[_paramIndex];
+						for (int i = 0; i < _paramIndex; i++)
+						{
+							params[i] = _params[i].getValue();
+						}
+						writeShort(SystemMessageId.S1_2.getId());
+						writeByte(1);
+						writeByte(TYPE_TEXT);
+						writeString(sml.getLocalisation(params));
+						return;
+					}
 				}
-				writeShort(SystemMessageId.S1_2.getId());
-				writeByte(1);
-				writeByte(TYPE_TEXT);
-				writeString(sml.getLocalisation(params));
-				return;
 			}
 		}
+		
 		writeShort(getId());
 		writeByte(_params.length);
 		for (SMParam param : _params)

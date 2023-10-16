@@ -18,7 +18,7 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ExIsCharNameCreatable;
@@ -46,7 +46,7 @@ public class RequestCharacterNameCreatable implements ClientPacket
 	@Override
 	public void run(GameClient client)
 	{
-		final int charId = CharNameTable.getInstance().getIdByName(_name);
+		final int charId = CharInfoTable.getInstance().getIdByName(_name);
 		int result;
 		if (!Util.isAlphaNumeric(_name) || !isValidName(_name))
 		{

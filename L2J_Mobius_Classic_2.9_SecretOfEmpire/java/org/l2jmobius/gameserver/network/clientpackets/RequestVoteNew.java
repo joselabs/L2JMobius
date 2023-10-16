@@ -24,7 +24,6 @@ import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExVoteSystemInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 public class RequestVoteNew implements ClientPacket
 {
@@ -66,7 +65,7 @@ public class RequestVoteNew implements ClientPacket
 				player.sendPacket(sm);
 				
 				player.setRecomLeft(player.getRecomLeft() - 1);
-				player.sendPacket(new UserInfo(player));
+				player.updateUserInfo();
 				player.sendPacket(new ExVoteSystemInfo(player));
 			}
 			else
@@ -111,7 +110,7 @@ public class RequestVoteNew implements ClientPacket
 		sm.addPcName(player);
 		target.sendPacket(sm);
 		
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		target.broadcastUserInfo();
 		
 		player.sendPacket(new ExVoteSystemInfo(player));

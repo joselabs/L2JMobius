@@ -190,6 +190,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47410" min="1" max="1" chance="100" /> <!-- Duo Growth Rune 30% (30-day) -->
+		</capsuled_items>
 	</item>
 	<item id="47412" name="Duo Vital Compression Stone" type="EtcItem">
 		<!-- Acquired XP +20%. Cannot be used together with Dandy's Home Run Ball/ Fall of the Dragon Buff/ Nevit's Hourglass. -->
@@ -263,15 +267,15 @@
 			<item id="27600" min="1" max="1" chance="2.6" /> <!-- Scroll of Blessing: R95-grade Armor -->
 			<item id="27599" min="1" max="1" chance="3.4" /> <!-- Scroll of Blessing: R-grade Armor -->
 			<item id="39720" min="1" max="1" chance="6" /> <!-- Freya's Luck Potion -->
-			<item id="34954" min="1" max="1" chance="2.5" /> <!-- Lv. 5 Legendary Dye Pack - Event -->
-			<item id="34955" min="1" max="1" chance="2.5" /> <!-- Lv. 5 Ancient Dye Pack - Event -->
-			<item id="34953" min="1" max="1" chance="2.5" /> <!-- Lv. 5 Giant's Dye Pack - Event -->
-			<item id="34951" min="1" max="1" chance="2.6" /> <!-- Lv. 4 Legendary Dye Pack - Event -->
-			<item id="34952" min="1" max="1" chance="2.6" /> <!-- Lv. 4 Ancient Dye Pack - Event -->
-			<item id="34950" min="1" max="1" chance="2.6" /> <!-- Lv. 4 Giant's Dye Pack - Event -->
+			<item id="34954" min="1" max="1" chance="2.5" /> <!-- Legendary Dye Pack Lv. 5 - Event -->
+			<item id="34955" min="1" max="1" chance="2.5" /> <!-- Ancient Dye Pack Lv. 5 - Event -->
+			<item id="34953" min="1" max="1" chance="2.5" /> <!-- Giant's Dye Pack Lv. 5 - Event -->
+			<item id="34951" min="1" max="1" chance="2.6" /> <!-- Legendary Dye Pack Lv. 4 - Event -->
+			<item id="34952" min="1" max="1" chance="2.6" /> <!-- Ancient Dye Pack Lv. 4 - Event -->
+			<item id="34950" min="1" max="1" chance="2.6" /> <!-- Giant's Dye Pack Lv. 4 - Event -->
 			<item id="34946" min="1" max="1" chance="3.4" /> <!-- Lv. 3 Legendary Dye Pack - Event -->
 			<item id="34947" min="1" max="1" chance="3.4" /> <!-- Lv. 3 Ancient Dye Pack - Event -->
-			<item id="34945" min="1" max="1" chance="3.4" /> <!-- Lv. 3 Giant's Dye Pack - Event -->
+			<item id="34945" min="1" max="1" chance="3.4" /> <!-- Giant's Dye Pack Lv. 3 - Event -->
 			<item id="27594" min="1" max="1" chance="5" /> <!-- Maphr's Wind Scroll -->
 			<item id="40227" min="1" max="1" chance="5" /> <!-- Freya's Frozen Scroll -->
 			<item id="27673" min="1" max="1" chance="3.5" /> <!-- Freya's Scroll of Storm -->
@@ -333,7 +337,7 @@
 		</stats>
 	</item>
 	<item id="47419" name="Commemorable Uniform for 2017 Championship" type="Armor">
-		<!-- Allows using Excellent Hit and Excellent Serve. Totally changes the appearance of the equipped armor. Hair accessory and robes do not change. -->
+		<!-- Allows using Perfect Swing and Perfect Pitch. Сhanges the appearance of the equipped armor. Headgear and accessories do not change. -->
 		<set name="icon" val="icon.london_olympic_bikini" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -407,16 +411,17 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="47428" name="Freya's Scroll of Storm" type="EtcItem">
-		<!-- For 10 min., Vitality Consumption +150%, acquired XP/ SP +150%. The effect remains after death. Cooldown: 9 min. Can be used only when 1 or more Vitality bars is full. Cannot be used in the Olympiad. The effect does not stack with those of Freya's Frozen Scroll, Maphr's Wind Scroll, Dandy's Scroll: Challenge, Emperor's Growth Scroll, Scroll: Midsummer Passion, Vital Wind, Wind of Bard. -->
+		<!-- For 10 min. while hunting Vitality Consumption +150%, acquired XP/ SP +150%. The effect remains after death. Cooldown: 9 min. Available if 1 or more Vitality bar is full. Cannot be used in the Olympiad. Can't be used simultaneously with the Maphr's Scroll of Storm effect. -->
 		<set name="icon" val="icon.bm_freya_storm_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
-		<set name="etcitem_type" val="POTION" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="handler" val="ItemSkills" />
-		<set name="material" val="PAPER" />
+		<set name="reuse_delay" val="600" />
 		<skills>
-			<skill id="18646" level="2" /> <!-- Freya's Scroll of Storm -->
+			<skill id="27629" level="1" /> <!-- Freya's Scroll of Storm -->
 		</skills>
 	</item>
 	<item id="47429" name="Freya's Bloody Rune Pack (2-hour)" type="EtcItem">
@@ -482,7 +487,7 @@
 		</skills>
 	</item>
 	<item id="47433" name="Freya's Vital Rune Pack (30-min.)" type="EtcItem">
-		<!-- Double-click to obtain Freya's Vital Rune (30 min.). -->
+		<!-- Double-click to obtain Freya's Vital Rune (30-min). -->
 		<set name="icon" val="br_cashtex.item.br_cash_lucky_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -624,6 +629,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47435" min="1" max="1" chance="100" /> <!-- Mysterious Talisman - STR - 2-hour -->
+		</capsuled_items>
 	</item>
 	<item id="47444" name="Mysterious Talisman - INT Pack (2-hour)" type="EtcItem">
 		<!-- Double-click to obtain Mysterious Talisman - INT (2-hour). -->
@@ -633,6 +642,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47436" min="1" max="1" chance="100" /> <!-- Mysterious Talisman - INT - 2-hour -->
+		</capsuled_items>
 	</item>
 	<item id="47445" name="Mysterious Talisman - DEX Pack (2-hour)" type="EtcItem">
 		<!-- Double-click to obtain Mysterious Talisman - DEX (2-hour). -->
@@ -642,6 +655,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47437" min="1" max="1" chance="100" /> <!-- Mysterious Talisman - DEX - 2-hour -->
+		</capsuled_items>
 	</item>
 	<item id="47446" name="Mysterious Talisman - WIT Pack (2-hour)" type="EtcItem">
 		<!-- Double-click to obtain Mysterious Talisman - WIT (2-hour). -->
@@ -651,6 +668,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47438" min="1" max="1" chance="100" /> <!-- Mysterious Talisman - WIT - 2-hour -->
+		</capsuled_items>
 	</item>
 	<item id="47447" name="Mysterious Talisman - CON Pack (2-hour)" type="EtcItem">
 		<!-- Double-click to obtain Mysterious Talisman - CON (2-hour). -->
@@ -660,6 +681,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47439" min="1" max="1" chance="100" /> <!-- Mysterious Talisman - CON - 2-hour -->
+		</capsuled_items>
 	</item>
 	<item id="47448" name="Mysterious Talisman - MEN Pack (2-hour)" type="EtcItem">
 		<!-- Double-click to obtain Mysterious Talisman - MEN (2-hour). -->
@@ -669,6 +694,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47440" min="1" max="1" chance="100" /> <!-- Mysterious Talisman - MEN - 2-hour -->
+		</capsuled_items>
 	</item>
 	<item id="47449" name="Mysterious Talisman - Attribute Attack Pack (2-hour)" type="EtcItem">
 		<!-- Double-click to obtain Mysterious Talisman - Attribute Attack (2-hour). -->
@@ -678,6 +707,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47441" min="1" max="1" chance="100" /> <!-- Mysterious Talisman - Attribute Attack - 2-hour -->
+		</capsuled_items>
 	</item>
 	<item id="47450" name="Mysterious Talisman - Attribute Resistance Pack (2-hour)" type="EtcItem">
 		<!-- Double-click to obtain Mysterious Talisman - Attribute Resistance (2-hour). -->
@@ -687,6 +720,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47442" min="1" max="1" chance="100" /> <!-- Mysterious Talisman - Attribute Resistance - 2-hour -->
+		</capsuled_items>
 	</item>
 	<item id="47451" name="+8 Shirt Pack (Shiny/ Attack/ Magic)" type="EtcItem">
 		<!-- Double-click to obtain one of the following +8 shirts: Shiny Elemental/ Physical Reflect/ Magical Reflect. -->
@@ -766,10 +803,10 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="47093" min="1" max="1" chance="40" /> <!-- Anakim' Soul Crystal Lv. 5 -->
-			<item id="47094" min="1" max="1" chance="30" /> <!-- Anakim' Soul Crystal Lv. 6 -->
-			<item id="47095" min="1" max="1" chance="20" /> <!-- Anakim' Soul Crystal Lv. 7 -->
-			<item id="47096" min="1" max="1" chance="10" /> <!-- Anakim' Soul Crystal Lv. 8 -->
+			<item id="47093" min="1" max="1" chance="40" /> <!-- Anakim's Soul Crystal Lv. 5 -->
+			<item id="47094" min="1" max="1" chance="30" /> <!-- Anakim's Soul Crystal Lv. 6 -->
+			<item id="47095" min="1" max="1" chance="20" /> <!-- Anakim's Soul Crystal Lv. 7 -->
+			<item id="47096" min="1" max="1" chance="10" /> <!-- Anakim's Soul Crystal Lv. 8 -->
 		</capsuled_items>
 	</item>
 	<item id="47456" name="Jewel Box Lv. 4" type="EtcItem">
@@ -848,7 +885,7 @@
 			<item id="46320" min="1" max="1" chance="10" /> <!-- Shadow Fighter -->
 			<item id="46321" min="1" max="1" chance="10" /> <!-- Shadow Stormer -->
 			<item id="46322" min="1" max="1" chance="10" /> <!-- Shadow Thrower -->
-			<item id="46323" min="1" max="1" chance="10" /> <!-- Shadow Shooter -->
+			<item id="46323" min="1" max="1" chance="10" /> <!-- Shadow Guardian -->
 			<item id="46324" min="1" max="1" chance="10" /> <!-- Shadow Buster -->
 			<item id="46325" min="1" max="1" chance="10" /> <!-- Shadow Retributer -->
 			<item id="46326" min="1" max="1" chance="10" /> <!-- Shadow Dual Sword -->
@@ -949,7 +986,7 @@
 		</capsuled_items>
 	</item>
 	<item id="47466" name="Baium's Soul Ring" additionalName="STR" type="Armor">
-		<!-- MP +31, P./ M. Accuracy +4, P. Critical Damage/ M. Skill Critical Damage +15%, Atk. Spd./ Casting Spd. +5%, Confusion Resistance/ Atk. Rate +25%, Obstruction Resistance/ Atk. Rate +25%. Effects of two identical rings do not stack. <Special effect>. STR +2 -->
+		<!-- MP +31, P./ M. Accuracy +4, Critical Damage for standard attacks/ M. Skill Critical Damage +15%, Atk. Spd./ Casting Spd. +5%, Confusion/ Obstruction Atk. Rate and Resistance +25%. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. STR +2 -->
 		<set name="icon" val="icon.accessory_ring_of_baium_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -970,7 +1007,7 @@
 		</stats>
 	</item>
 	<item id="47467" name="Baium's Soul Ring" additionalName="INT" type="Armor">
-		<!-- MP +31, P./ M. Accuracy +4, P. Critical Damage/ M. Skill Critical Damage +15%, Atk. Spd./ Casting Spd. +5%, Confusion Resistance/ Atk. Rate +25%, Obstruction Resistance/ Atk. Rate +25%. Effects of two identical rings do not stack. <Special effect>. INT +2 -->
+		<!-- MP +31, P./ M. Accuracy +4, P. Critical Damage/ M. Skill Critical Damage +15%, Atk. Spd./ Casting Spd. +5%, Confusion/ Obstruction Atk. Rate and Resistance +25%. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. INT +2 -->
 		<set name="icon" val="icon.accessory_ring_of_baium_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -991,7 +1028,7 @@
 		</stats>
 	</item>
 	<item id="47468" name="Baium's Soul Ring" additionalName="CON" type="Armor">
-		<!-- MP +31, P./ M. Accuracy +4, P. Critical Damage/ M. Skill Critical Damage +15%, Atk. Spd./ Casting Spd. +5%, Confusion Resistance/ Atk. Rate +25%, Obstruction Resistance/ Atk. Rate +25%. Effects of two identical rings do not stack. <Special effect>. CON +2 -->
+		<!-- MP +31, P./ M. Accuracy +4, P. Critical Damage/ M. Skill Critical Damage +15%, Atk. Spd./ Casting Spd. +5%, Confusion/ Obstruction Atk. Rate and Resistance +25%. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. CON +2 -->
 		<set name="icon" val="icon.accessory_ring_of_baium_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1012,7 +1049,7 @@
 		</stats>
 	</item>
 	<item id="47469" name="Frintezza's Soul Necklace" additionalName="Body" type="Armor">
-		<!-- MP +62, Speed +5, Infection Resistance/ Atk. Rate +20%, Confusion Resistance/ Atk. Rate +20%, Obstruction Resistance/ Atk. Rate +20%. Skill Cooldown -10%, Damage Reflection +5%. <Special effect>. Max HP +5% -->
+		<!-- MP +62, Speed +5, Infection Resistance/ Atk. Rate +20%, Confusion Resistance/ Atk. Rate +20%, Obstruction Resistance/ Atk. Rate +20%. Skill Cooldown -10%, Damage Reflection +5%. Can be crystallized to obtain Selenite. <Special effect>. Max HP +5% -->
 		<set name="icon" val="icon.accessory_necklace_of_frintessa_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1033,7 +1070,7 @@
 		</stats>
 	</item>
 	<item id="47470" name="Frintezza's Soul Necklace" additionalName="Mind" type="Armor">
-		<!-- MP +62, Speed +5, Infection Resistance/ Atk. Rate +20%, Confusion Resistance/ Atk. Rate +20%, Obstruction Resistance/ Atk. Rate +20%. Skill Cooldown -10%, Damage Reflection +5%. <Special effect>. Skill Cooldown -3% -->
+		<!-- MP +62, Speed +5, Infection Resistance/ Atk. Rate +20%, Confusion Resistance/ Atk. Rate +20%, Obstruction Resistance/ Atk. Rate +20%, Skill Cooldown -10%, Damage Reflection +5%. Can be crystallized to obtain Selenite. <Special effect>. Skill Cooldown -3% -->
 		<set name="icon" val="icon.accessory_necklace_of_frintessa_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1054,7 +1091,7 @@
 		</stats>
 	</item>
 	<item id="47471" name="Frintezza's Soul Necklace" additionalName="Barrier" type="Armor">
-		<!-- MP +62, Speed +5, Infection Resistance/ Atk. Rate +20%, Confusion Resistance/ Atk. Rate +20%, Obstruction Resistance/ Atk. Rate +20%. Skill Cooldown -10%, Damage Reflection +5%. <Special effect>. Fixed Damage Resistance +5% -->
+		<!-- MP +62, Speed +5, Infection Resistance/ Atk. Rate +20%, Confusion Resistance/ Atk. Rate +20%, Obstruction Resistance/ Atk. Rate +20%, Skill Cooldown -10%, Damage Reflection +5%. Can be crystallized to obtain Selenite. <Special effect>. Fixed Damage Resistance +5% -->
 		<set name="icon" val="icon.accessory_necklace_of_frintessa_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -1075,7 +1112,7 @@
 		</stats>
 	</item>
 	<item id="47472" name="Queen Ant's Soul Ring" additionalName="STR" type="Armor">
-		<!-- MP +31, P./ M. Accuracy +4, P. Critical Rate/ M. Skill Critical Rate +20, P./ M. Critical Damage +15%, Confusion Resistance/ Atk. Rate +25%, Infection Resistance/ Atk. Rate +25%. Effects of two identical rings do not stack. <Special effect>. STR +2 -->
+		<!-- MP +31, P./ M. Accuracy +4, P. Critical Rate/ M. Skill Critical Rate +20, Critical Damage for basic attacks/ M. Critical Damage +15%, Infection/ Confusion Atk. Rate and Resistance +25%. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. STR +2 -->
 		<set name="icon" val="icon.accessory_ring_of_queen_ant_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1096,7 +1133,7 @@
 		</stats>
 	</item>
 	<item id="47473" name="Queen Ant's Soul Ring" additionalName="INT" type="Armor">
-		<!-- MP +31, P./ M. Accuracy +4, P. Critical Rate/ M. Skill Critical Rate +20, P./ M. Critical Damage +15%, Confusion Resistance/ Atk. Rate +25%, Infection Resistance/ Atk. Rate +25%. Effects of two identical rings do not stack. <Special effect>. INT +2 -->
+		<!-- MP +31, P./ M. Accuracy +4, P. Critical Rate/ M. Skill Critical Rate +20, Critical Damage for basic attacks/ M. Critical Damage +15%, Infection/ Confusion Atk. Rate and Resistance +25%. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. INT +2 -->
 		<set name="icon" val="icon.accessory_ring_of_queen_ant_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1117,7 +1154,7 @@
 		</stats>
 	</item>
 	<item id="47474" name="Queen Ant's Soul Ring" additionalName="CON" type="Armor">
-		<!-- MP +31, P./ M. Accuracy +4, P. Critical Rate/ M. Skill Critical Rate +20, P./ M. Critical Damage +15%, Confusion Resistance/ Atk. Rate +25%, Infection Resistance/ Atk. Rate +25%. Effects of two identical rings do not stack. <Special effect>. CON +2 -->
+		<!-- MP +31, P./ M. Accuracy +4, P. Critical Rate/ M. Skill Critical Rate +20, Critical Damage for basic attacks/ M. Critical Damage +15%, Infection/ Confusion Atk. Rate and Resistance +25%. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. CON +2 -->
 		<set name="icon" val="icon.accessory_ring_of_queen_ant_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1138,7 +1175,7 @@
 		</stats>
 	</item>
 	<item id="47475" name="Orfen's Soul Earring" additionalName="Shield" type="Armor">
-		<!-- MP +46, Stupor Resistance/ Atk. Rate +25%, Confusion Resistance/ Atk. Rate +25%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Effects of two identical earrings do not stack. <Special effect>. P. Def. +4% -->
+		<!-- MP +46, Confusion/ Stupor Atk. Rate and Resistance/ Atk. Rate +25%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Effects of two identical earrings do not stack. Can be crystallized to obtain Selenite. <Special effect>. P. Def. +4% -->
 		<set name="icon" val="icon.accessory_earring_of_orfen_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1159,7 +1196,7 @@
 		</stats>
 	</item>
 	<item id="47476" name="Orfen's Soul Earring" additionalName="Earth" type="Armor">
-		<!-- MP +46, Stupor Resistance/ Atk. Rate +25%, Confusion Resistance/ Atk. Rate +25%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Effects of two identical earrings do not stack. <Special effect>. M. Def. +4% -->
+		<!-- MP +46, Confusion/ Stupor Atk. Rate and Resistance +25%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Effects of two identical earrings do not stack. Can be crystallized to obtain Selenite. <Special effect>. M. Def. +4% -->
 		<set name="icon" val="icon.accessory_earring_of_orfen_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1180,7 +1217,7 @@
 		</stats>
 	</item>
 	<item id="47477" name="Orfen's Soul Earring" additionalName="Clarity" type="Armor">
-		<!-- MP +46, Stupor Resistance/ Atk. Rate +25%, Confusion Resistance/ Atk. Rate +25%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Effects of two identical earrings do not stack. <Special effect>. 6 Attribute Resistance +25 -->
+		<!-- MP +46, Stupor Resistance/ Atk. Rate +25%, Confusion Resistance/ Atk. Rate +25%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Effects of two identical earrings do not stack. Can be crystallized to obtain Selenite. <Special effect>. 6 Major Attributes Def. +25 -->
 		<set name="icon" val="icon.accessory_earring_of_orfen_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1201,7 +1238,7 @@
 		</stats>
 	</item>
 	<item id="47478" name="Ruler's Ring of Authority" additionalName="STR" type="Armor">
-		<!-- MP +46, P. Atk. +5%, Critical Damage for standard attacks +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using attacking skills. Effects of two identical rings do not stack. <Special effect>. STR +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +46, P. Atk. +5%, Critical Damage for standard attacks +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using attack skills. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. STR +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_ring_of_helios_enchant_red" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1222,7 +1259,7 @@
 		</stats>
 	</item>
 	<item id="47479" name="Ruler's Ring of Authority" additionalName="INT" type="Armor">
-		<!-- MP +46, P. Atk. +5%, Critical Damage for standard attacks +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using attacking skills. Effects of two identical rings do not stack. <Special effect>. INT +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +46, P. Atk. +5%, Critical Damage for standard attacks +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using attack skills. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. INT +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_ring_of_helios_enchant_red" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1243,7 +1280,7 @@
 		</stats>
 	</item>
 	<item id="47480" name="Ruler's Ring of Authority" additionalName="CON" type="Armor">
-		<!-- MP +46, P. Atk. +5%, Critical Damage for standard attacks +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using attacking skills. Effects of two identical rings do not stack. <Special effect>. CON +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +46, P. Atk. +5%, Critical Damage for standard attacks +20%, LUC/ CHA +2, Confusion Atk. Rate and Resistance +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using attacking skills. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. CON +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_ring_of_helios_enchant_red" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1264,7 +1301,7 @@
 		</stats>
 	</item>
 	<item id="47481" name="Ring of the Truth-Seeker" additionalName="STR" type="Armor">
-		<!-- MP +46, M. Atk. +5%, M. Skill Critical Damage +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using M. skills. Effects of two identical rings do not stack. <Special effect>. STR +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +46, M. Atk. +5%, M. Skill Critical Damage +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using M. skills. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. STR +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_ring_of_helios_enchant" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1285,7 +1322,7 @@
 		</stats>
 	</item>
 	<item id="47482" name="Ring of the Truth-Seeker" additionalName="INT" type="Armor">
-		<!-- MP +46, M. Atk. +5%, M. Skill Critical Damage +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using M. skills. Effects of two identical rings do not stack. <Special effect>. INT +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +46, M. Atk. +5%, M. Skill Critical Damage +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using M. skills. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. INT +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_ring_of_helios_enchant" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1306,7 +1343,7 @@
 		</stats>
 	</item>
 	<item id="47483" name="Ring of the Truth-Seeker" additionalName="CON" type="Armor">
-		<!-- MP +46, M. Atk. +5%, M. Skill Critical Damage +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using M. skills. Effects of two identical rings do not stack. <Special effect>. CON +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +46, M. Atk. +5%, M. Skill Critical Damage +20%, LUC/ CHA +2, Confusion Resistance/ Atk. Rate +30%, damage to Giants +5%. Applies Confusion for 3 sec. when using M. skills. Effects of two identical rings do not stack. Can be crystallized to obtain Selenite. <Special effect>. CON +2. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_ring_of_helios_enchant" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1327,7 +1364,7 @@
 		</stats>
 	</item>
 	<item id="47484" name="Blessed Antharas' Earring" additionalName="Shield" type="Armor">
-		<!-- MP +59, P./ M. Def. +15%, CON/ MEN +3, Earth/ Holy Resistance +30, Infection Resistance/ Atk. Rate +50%, Confusion Resistance/ Atk. Rate +40%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Active skill: Removes Stun debuffs and grants immunity to Confusion for 5 sec. Effects of two identical earrings do not stack. <Special effect>. P. Def. +4%. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +59, P./ M. Def. +15%, CON/ MEN +3, Holy/ Earth Resistance +30, Infection Atk. Rate and Resistance +50%, Confusion Atk. Rate and Resistance +40%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Active skill: Removes Shock debuffs and grants immunity to Confusion for 5 sec. Effects of two identical earrings do not stack. <Special effect>. P. Def. +4%. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_earring_of_antaras_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1349,7 +1386,7 @@
 		</stats>
 	</item>
 	<item id="47485" name="Blessed Antharas' Earring" additionalName="Earth" type="Armor">
-		<!-- MP +59, P./ M. Def. +15%, CON/ MEN +3, Earth/ Holy Resistance +30, Infection Resistance/ Atk. Rate +50%, Confusion Resistance/ Atk. Rate +40%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Active skill: Removes Stun debuffs and grants immunity to Confusion for 5 sec. Effects of two identical earrings do not stack. <Special effect>. M. Def. +4%. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +59, P./ M. Def. +15%, CON/ MEN +3, Holy/ Earth Resistance +30, Infection Atk. Rate and Resistance +50%, Confusion Atk. Rate and Resistance +40%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Active skill: Removes Shock debuffs and grants immunity to Confusion for 5 sec. Effects of two identical earrings do not stack. <Special effect>. M. Def. +4%. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_earring_of_antaras_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1371,7 +1408,7 @@
 		</stats>
 	</item>
 	<item id="47486" name="Blessed Antharas' Earring" additionalName="Clarity" type="Armor">
-		<!-- MP +59, P./ M. Def. +15%, CON/ MEN +3, Earth/ Holy Resistance +30, Infection Resistance/ Atk. Rate +50%, Confusion Resistance/ Atk. Rate +40%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Active skill: Removes Stun debuffs and grants immunity to Confusion for 5 sec. Effects of two identical earrings do not stack. <Special effect>. 6 Attribute Resistance +25. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
+		<!-- MP +59, P./ M. Def. +15%, CON/ MEN +3, Holy/ Earth Resistance +30, Infection Atk. Rate and Resistance +50%, Confusion Atk. Rate and Resistance +40%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Active skill: Removes Shock debuffs and grants immunity to Confusion for 5 sec. Effects of two identical earrings do not stack. <Special effect>. 6 Attribute Resistance +25. <Enchanting>. Use Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.accessory_earring_of_antaras_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1525,7 +1562,7 @@
 		</stats>
 	</item>
 	<item id="47493" name="Accessory Solvent" type="EtcItem">
-		<!-- Denign uses this material to melt rare accessories. -->
+		<!-- Not in use anymore. Can be sold to any trader. -->
 		<set name="icon" val="icon.rare_acc_smith_solvent" />
 		<set name="price" val="5000000" />
 		<set name="is_stackable" val="true" />

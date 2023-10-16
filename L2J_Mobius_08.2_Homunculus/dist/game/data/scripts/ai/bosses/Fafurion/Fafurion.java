@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package ai.bosses.Fafurion;
 
 import java.util.List;
@@ -193,7 +192,10 @@ public class Fafurion extends AbstractNpcAI
 					}
 					GrandBossManager.getInstance().setStatus(FAFURION_GRANDBOSS_ID, ALIVE);
 					FAFURION_ZONE.oustAllPlayers();
-					npc.deleteMe();
+					if (npc != null)
+					{
+						npc.deleteMe();
+					}
 					if (_stage > 1)
 					{
 						_stage--;
@@ -266,6 +268,65 @@ public class Fafurion extends AbstractNpcAI
 					GrandBossManager.getInstance().setStatus(FAFURION_GRANDBOSS_ID, WAITING);
 					startQuestTimer("beginning", Config.FAFURION_WAIT_TIME * 60000, null, null);
 					startQuestTimer("warning", Config.FAFURION_WAIT_TIME > 0 ? (Config.FAFURION_WAIT_TIME * 60000) - 30000 : 0, null, player);
+				}
+				break;
+			}
+			case "RESPAWN_FAFURION":
+			{
+				if (GrandBossManager.getInstance().getStatus(FAFURION_GRANDBOSS_ID) == DEAD)
+				{
+					cancelQuestTimer("unlock_fafurion", null, null);
+					notifyEvent("unlock_fafurion", null, null);
+					player.sendMessage(getClass().getSimpleName() + ": Fafurion has been respawned.");
+				}
+				else
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't respawn Fafurion while he is alive!");
+				}
+				break;
+			}
+			case "SKIP_WAITING":
+			{
+				if (GrandBossManager.getInstance().getStatus(FAFURION_GRANDBOSS_ID) == WAITING)
+				{
+					cancelQuestTimer("warning", null, null);
+					cancelQuestTimer("beginning", null, null);
+					notifyEvent("beginning", null, null);
+					player.sendMessage(getClass().getSimpleName() + ": Skipping waiting time ...");
+				}
+				else
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't skip waiting time right now!");
+				}
+				break;
+			}
+			case "ABORT_FIGHT":
+			{
+				if (GrandBossManager.getInstance().getStatus(FAFURION_GRANDBOSS_ID) == FIGHTING)
+				{
+					GrandBossManager.getInstance().setStatus(FAFURION_GRANDBOSS_ID, ALIVE);
+					cancelQuestTimer("warning", null, null);
+					cancelQuestTimer("beginning", null, null);
+					cancelQuestTimer("resetRaid", npc, null);
+					if (npc.getId() == _fafurion.getId())
+					{
+						FAFURION_ZONE.getPlayersInside().forEach(p ->
+						{
+							FAFURION_ZONE.getCharactersInside().forEach(m ->
+							{
+								if (m.isMonster())
+								{
+									m.deleteMe();
+								}
+							});
+						});
+						FAFURION_ZONE.oustAllPlayers();
+						player.sendMessage(getClass().getSimpleName() + ": Fight has been aborted!");
+					}
+				}
+				else
+				{
+					player.sendMessage(getClass().getSimpleName() + ": You can't abort fight right now!");
 				}
 				break;
 			}

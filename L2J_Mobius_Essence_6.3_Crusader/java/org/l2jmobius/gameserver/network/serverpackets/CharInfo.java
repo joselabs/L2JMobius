@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.Set;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.CursedWeaponsManager;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
@@ -232,7 +233,8 @@ public class CharInfo extends ServerPacket
 		writeByte(0); // cBRLectureMark
 		
 		final Set<AbnormalVisualEffect> abnormalVisualEffects = _player.getEffectList().getCurrentAbnormalVisualEffects();
-		writeInt(abnormalVisualEffects.size() + (_gmSeeInvis ? 1 : 0)); // Confirmed
+		final Team team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _player.getTeam() : Team.NONE;
+		writeInt(abnormalVisualEffects.size() + (_gmSeeInvis ? 1 : 0) + (team != Team.NONE ? 1 : 0)); // Confirmed
 		for (AbnormalVisualEffect abnormalVisualEffect : abnormalVisualEffects)
 		{
 			writeShort(abnormalVisualEffect.getClientId()); // Confirmed
@@ -240,6 +242,17 @@ public class CharInfo extends ServerPacket
 		if (_gmSeeInvis)
 		{
 			writeShort(AbnormalVisualEffect.STEALTH.getClientId());
+		}
+		if (team == Team.BLUE)
+		{
+			if (Config.BLUE_TEAM_ABNORMAL_EFFECT != null)
+			{
+				writeShort(Config.BLUE_TEAM_ABNORMAL_EFFECT.getClientId());
+			}
+		}
+		else if ((team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
+		{
+			writeShort(Config.RED_TEAM_ABNORMAL_EFFECT.getClientId());
 		}
 		
 		writeByte(_player.isTrueHero() ? 100 : 0);

@@ -74,11 +74,8 @@ public class RequestExTryToPutEnchantTargetItem implements ClientPacket
 			return;
 		}
 		
-		request.setEnchantingItem(_objectId);
-		request.setEnchantLevel(item.getEnchantLevel());
-		
 		final EnchantScroll scrollTemplate = EnchantItemData.getInstance().getEnchantScroll(scroll);
-		if ((scrollTemplate == null) || !scrollTemplate.isValid(item, null) || (item.getEnchantLevel() >= scrollTemplate.getMaxEnchantLevel()))
+		if (!item.isEnchantable() || (scrollTemplate == null) || !scrollTemplate.isValid(item, null) || (item.getEnchantLevel() >= scrollTemplate.getMaxEnchantLevel()))
 		{
 			player.sendPacket(SystemMessageId.DOES_NOT_FIT_STRENGTHENING_CONDITIONS_OF_THE_SCROLL);
 			request.setEnchantingItem(0);
@@ -91,6 +88,9 @@ public class RequestExTryToPutEnchantTargetItem implements ClientPacket
 			}
 			return;
 		}
+		
+		request.setEnchantingItem(_objectId);
+		request.setEnchantLevel(item.getEnchantLevel());
 		
 		request.setTimestamp(System.currentTimeMillis());
 		player.sendPacket(new ExPutEnchantTargetItemResult(_objectId));

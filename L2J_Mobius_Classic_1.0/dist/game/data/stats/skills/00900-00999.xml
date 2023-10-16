@@ -1306,14 +1306,14 @@
 			<value level="1">15</value>
 			<value level="2">20</value>
 			<value level="3">25</value>
-			<value level="4">25</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+			<value level="4">30</value>
 		</abnormalTime>
 		<effectPoint>679</effectPoint>
 		<magicLevel>
 			<value level="1">51</value>
 			<value level="2">61</value>
 			<value level="3">71</value>
-			<value level="4">71</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+			<value level="4">76</value>
 		</magicLevel>
 		<operateType>A2</operateType>
 		<mpConsume>38</mpConsume>
@@ -4453,31 +4453,31 @@
 		<effects>
 			<effect name="PhysicalAttack">
 				<power>
-					<value level="1">833</value>
-					<value level="2">992</value>
-					<value level="3">1171</value>
-					<value level="4">1371</value>
-					<value level="5">1592</value>
-					<value level="6">1832</value>
-					<value level="7">2091</value>
-					<value level="8">2272</value>
-					<value level="9">2460</value>
-					<value level="10">2653</value>
-					<value level="11">2850</value>
-					<value level="12">3050</value>
-					<value level="13">3252</value>
-					<value level="14">3453</value>
-					<value level="15">3653</value>
-					<value level="16">3849</value>
-					<value level="17">3945</value>
-					<value level="18">4040</value>
-					<value level="19">4133</value>
-					<value level="20">4224</value>
-					<value level="21">4312</value>
-					<value level="22">4399</value>
-					<value level="23">4482</value>
-					<value level="24">4563</value>
-					<value level="25">4640</value>
+					<value level="1">500</value>
+					<value level="2">595</value>
+					<value level="3">703</value>
+					<value level="4">823</value>
+					<value level="5">955</value>
+					<value level="6">1099</value>
+					<value level="7">1255</value>
+					<value level="8">1363</value>
+					<value level="9">1476</value>
+					<value level="10">1592</value>
+					<value level="11">1710</value>
+					<value level="12">1830</value>
+					<value level="13">1951</value>
+					<value level="14">2072</value>
+					<value level="15">2192</value>
+					<value level="16">2309</value>
+					<value level="17">2367</value>
+					<value level="18">2424</value>
+					<value level="19">2480</value>
+					<value level="20">2534</value>
+					<value level="21">2587</value>
+					<value level="22">2639</value>
+					<value level="23">2689</value>
+					<value level="24">2738</value>
+					<value level="25">2784</value>
 				</power>
 			</effect>
 			<effect name="GetAgro" />
@@ -4838,7 +4838,7 @@
 		</effects>
 	</skill>
 	<skill id="992" toLevel="8" name="Sonic Mastery">
-		<!-- Absorbs the target's Momentum. Momentum can be absorbed with a $s1 chance for standard physical attacks and $s2 during a critical attack. Applies when a sword, blunt weapon, or dualsword is equipped. Up to level $s3 of Momentum can be absorbed. -->
+		<!-- Absorbs the target's Momentum. Momentum can be absorbed with a $s1 chance for standard physical attacks and $s2 during a physical critical attack. Applies when a sword, blunt weapon, or dual sword is equipped. Up to level $s3 of Momentum can be absorbed. -->
 		<icon>icon.skill0992</icon>
 		<magicLevel>
 			<value level="1">40</value>
@@ -4876,26 +4876,6 @@
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<!-- Focus Sonic -->
-				<isCritical>false</isCritical>
-				<skillId>6813</skillId> <!-- Sonic Focus -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-					<value level="5">5</value>
-					<value level="6">6</value>
-					<value level="7">7</value>
-					<value level="8">8</value>
-				</skillLevel>
-				<allowWeapons>DUAL,SWORD,BLUNT</allowWeapons>
-				<attackerType>Creature</attackerType>
-				<targetType>SELF</targetType>
-				<minDamage>1</minDamage>
-				<chance>15</chance>
-			</effect>
-			<effect name="TriggerSkillByAttack">
-				<!-- Focus Sonic -->
 				<isCritical>true</isCritical>
 				<skillId>6813</skillId> <!-- Sonic Focus -->
 				<skillLevel>
@@ -4908,7 +4888,6 @@
 					<value level="7">7</value>
 					<value level="8">8</value>
 				</skillLevel>
-				<allowWeapons>DUAL,SWORD,BLUNT</allowWeapons>
 				<minDamage>1</minDamage>
 				<chance>30</chance>
 				<targetType>SELF</targetType>
@@ -4917,7 +4896,7 @@
 		</effects>
 	</skill>
 	<skill id="993" toLevel="8" name="Force Mastery">
-		<!-- Absorbs the target's Momentum. Momentum can be absorbed with a $s1 chance for standard physical attacks and $s2 during a critical attack. Applies when a fist weapon is equipped. Up to level $s3 of Momentum can be absorbed. -->
+		<!-- Absorbs the target's Momentum. Momentum can be absorbed with a $s1 chance for standard physical attacks and $s2 during a physical critical attack. Applies when a fist weapon is equipped. Up to level $s3 of Momentum can be absorbed. -->
 		<icon>icon.skill0993</icon>
 		<magicLevel>
 			<value level="1">24</value>
@@ -4931,6 +4910,13 @@
 		</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<passiveConditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>DUALFIST</item>
+				</weaponType>
+			</condition>
+		</passiveConditions>
 		<effects>
 			<effect name="FocusEnergy">
 				<amount>
@@ -4946,26 +4932,6 @@
 			</effect>
 			<effect name="TriggerSkillByAttack">
 				<!-- Focus Force -->
-				<isCritical>false</isCritical>
-				<skillId>6814</skillId> <!-- Focus Force -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-					<value level="5">5</value>
-					<value level="6">6</value>
-					<value level="7">7</value>
-					<value level="8">8</value>
-				</skillLevel>
-				<allowWeapons>DUALFIST</allowWeapons>
-				<attackerType>Creature</attackerType>
-				<targetType>SELF</targetType>
-				<minDamage>1</minDamage>
-				<chance>15</chance>
-			</effect>
-			<effect name="TriggerSkillByAttack">
-				<!-- Focus Force -->
 				<isCritical>true</isCritical>
 				<skillId>6814</skillId> <!-- Focus Force -->
 				<skillLevel>
@@ -4978,7 +4944,6 @@
 					<value level="7">7</value>
 					<value level="8">8</value>
 				</skillLevel>
-				<allowWeapons>DUALFIST</allowWeapons>
 				<minDamage>1</minDamage>
 				<chance>30</chance>
 				<targetType>SELF</targetType>

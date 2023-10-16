@@ -537,6 +537,11 @@ public class World
 					continue; // skip our own character
 				}
 				
+				if (wo.getInstanceId() != object.getInstanceId())
+				{
+					continue;
+				}
+				
 				if (!wo.isSpawned())
 				{
 					continue; // skip dying objects
@@ -603,6 +608,11 @@ public class World
 					continue; // skip our own character
 				}
 				
+				if (wo.getInstanceId() != object.getInstanceId())
+				{
+					continue;
+				}
+				
 				final int x1 = wo.getX();
 				final int y1 = wo.getY();
 				final double dx = x1 - x;
@@ -664,6 +674,11 @@ public class World
 				if (wo.equals(object))
 				{
 					continue; // skip our own character
+				}
+				
+				if (wo.getInstanceId() != object.getInstanceId())
+				{
+					continue;
 				}
 				
 				final int x1 = wo.getX();

@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.model.actor.stat;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.FishingData;
 import org.l2jmobius.gameserver.enums.PartySmallWindowUpdateType;
@@ -45,7 +46,6 @@ import org.l2jmobius.gameserver.network.serverpackets.PartySmallWindowUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.friend.FriendStatus;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeMissionRewardCount;
 import org.l2jmobius.gameserver.util.Util;
@@ -92,7 +92,7 @@ public class PlayerStat extends PlayableStat
 		}
 		
 		// EXP status update currently not used in retail
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		return true;
 	}
 	
@@ -108,13 +108,6 @@ public class PlayerStat extends PlayableStat
 		
 		double addToExp = addToExpValue;
 		double addToSp = addToSpValue;
-		
-		// Premium rates
-		if (player.hasPremiumStatus())
-		{
-			addToExp *= Config.PREMIUM_RATE_XP;
-			addToSp *= Config.PREMIUM_RATE_SP;
-		}
 		
 		final double baseExp = addToExp;
 		final double baseSp = addToSp;
@@ -171,26 +164,27 @@ public class PlayerStat extends PlayableStat
 		final long finalSp = Math.round(addToSp);
 		final boolean expAdded = addExp(finalExp);
 		final boolean spAdded = addSp(finalSp);
-		SystemMessage sm = null;
 		if (!expAdded && spAdded)
 		{
-			sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_SP);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_SP);
 			sm.addLong(finalSp);
+			player.sendPacket(sm);
 		}
 		else if (expAdded && !spAdded)
 		{
-			sm = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S1_XP);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S1_XP);
 			sm.addLong(finalExp);
+			player.sendPacket(sm);
 		}
 		else if ((finalExp > 0) || (finalSp > 0))
 		{
-			sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_XP_BONUS_S2_AND_S3_SP_BONUS_S4);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_XP_BONUS_S2_AND_S3_SP_BONUS_S4);
 			sm.addLong(finalExp);
 			sm.addLong(Math.round(addToExp - baseExp));
 			sm.addLong(finalSp);
 			sm.addLong(Math.round(addToSp - baseSp));
+			player.sendPacket(sm);
 		}
-		player.sendPacket(sm);
 	}
 	
 	@Override
@@ -289,7 +283,7 @@ public class PlayerStat extends PlayableStat
 		// Update the expertise status of the Player
 		getActiveChar().refreshExpertisePenalty();
 		// Send a Server->Client packet UserInfo to the Player
-		getActiveChar().sendPacket(new UserInfo(getActiveChar()));
+		getActiveChar().updateUserInfo();
 		// Send acquirable skill list
 		getActiveChar().sendPacket(new AcquireSkillList(getActiveChar()));
 		getActiveChar().sendPacket(new ExVoteSystemInfo(getActiveChar()));
@@ -419,6 +413,8 @@ public class PlayerStat extends PlayableStat
 		{
 			level = (byte) (ExperienceData.getInstance().getMaxLevel() - 1);
 		}
+		
+		CharInfoTable.getInstance().setLevel(getActiveChar().getObjectId(), level);
 		
 		if (getActiveChar().isSubClassActive())
 		{
@@ -688,7 +684,7 @@ public class PlayerStat extends PlayableStat
 	@Override
 	public void recalculateStats(boolean broadcast)
 	{
-		if (!getActiveChar().isChangingClass() && !getActiveChar().isUsingSkillItem())
+		if (!getActiveChar().isChangingClass())
 		{
 			super.recalculateStats(broadcast);
 		}

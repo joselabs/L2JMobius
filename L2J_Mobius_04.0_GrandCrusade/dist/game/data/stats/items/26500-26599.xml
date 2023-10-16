@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="26500" name="Cat's Eye" additionalName="Lv. 4" type="Armor">
-		<!-- Decreases damage received from Reflect Damage by 40%. Effect does not stack with additional jewels of the same type. -->
+		<!-- Damage Reflect Resistance +40%. Effect does not stack with additional jewels of the same type. -->
 		<set name="icon" val="BranchIcon.Icon.etc_bm_jewel_catseye_i00" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -15,7 +15,7 @@
 		</skills>
 	</item>
 	<item id="26501" name="Cat's Eye" additionalName="Lv. 5" type="Armor">
-		<!-- Decreases damage received from Reflect Damage by 50%. Adds 10 second invincibility skill. Effect does not stack with additional jewels of the same type. -->
+		<!-- Damage Reflect Resistance +50%. Can remove invincibility. Effect does not stack with additional jewels of the same type. -->
 		<set name="icon" val="BranchIcon.Icon.etc_bm_jewel_catseye_i00" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -28,7 +28,7 @@
 		</skills>
 	</item>
 	<item id="26502" name="Amethyst" additionalName="Lv. 1" type="Armor">
-		<!-- PvP Damage + 3%. Effect does not stack with additional jewels of the same type. -->
+		<!-- PvP Damage +3%. Effect does not stack with additional jewels of the same type. -->
 		<set name="icon" val="BranchIcon.Icon.etc_bm_jewel_amethyst_i00" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -42,7 +42,7 @@
 		</skills>
 	</item>
 	<item id="26503" name="Amethyst" additionalName="Lv. 2" type="Armor">
-		<!-- PvP Damage + 5%. Effect does not stack with additional jewels of the same type. -->
+		<!-- PvP Damage +5%. Effect does not stack with additional jewels of the same type. -->
 		<set name="icon" val="BranchIcon.Icon.etc_bm_jewel_amethyst_i00" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -56,7 +56,7 @@
 		</skills>
 	</item>
 	<item id="26504" name="Amethyst" additionalName="Lv. 3" type="Armor">
-		<!-- PvP Damage + 7%. Effect does not stack with additional jewels of the same type. -->
+		<!-- PvP Damage +7%. Effect does not stack with additional jewels of the same type. -->
 		<set name="icon" val="BranchIcon.Icon.etc_bm_jewel_amethyst_i00" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -70,7 +70,7 @@
 		</skills>
 	</item>
 	<item id="26505" name="Amethyst" additionalName="Lv. 4" type="Armor">
-		<!-- PvP Damage + 10%. Effect does not stack with additional jewels of the same type. -->
+		<!-- PvP Damage +10%. Effect does not stack with additional jewels of the same type. -->
 		<set name="icon" val="BranchIcon.Icon.etc_bm_jewel_amethyst_i00" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -125,7 +125,7 @@
 		</capsuled_items>
 	</item>
 	<item id="26509" name="Summon Scroll: Pomona" additionalName="Event" type="EtcItem">
-		<!-- Scroll for summoning Pomona once. You receive a power-up buff -->
+		<!-- Scroll for summoning Pomona once. For 30 min., obtained XP +10%, Max HP/MP/CP +30%, P. Def./M. Def. +30%, Speed +20, P. Atk. +10%, and M. Atk. +20%. Skill MP Consumption - 15%. Cannot use with the Art of Seduction buff. -->
 		<set name="icon" val="icon.etc_star_scroll_baekisung" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -173,6 +173,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="40056" min="1" max="1" chance="100" /> <!-- Mysterious Wind Scroll -->
+		</capsuled_items>
 	</item>
 	<item id="26513" name="Lv. 5 Legendary CHA Dye Pack" type="EtcItem">
 		<!-- Double-click to get 1 of the following Lv. 5 Legendary Dyes: STR/DEX/CON/INT/WIT/MEN (CHA). -->
@@ -184,12 +188,12 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="LEATHER" />
 		<capsuled_items>
-			<item id="39415" min="1" max="1" chance="16" /> <!-- Legendary STR Dye Lv. 5 (Charisma) - STR +5, CHA +5 -->
-			<item id="39416" min="1" max="1" chance="17" /> <!-- Legendary DEX Dye Lv. 5 (Charisma) - DEX +5, CHA +5 -->
-			<item id="39417" min="1" max="1" chance="17" /> <!-- Legendary CON Dye Lv. 5 (Charisma) - CON +5, CHA +5 -->
-			<item id="39418" min="1" max="1" chance="16" /> <!-- Legendary INT Dye Lv. 5 (Charisma) - INT +5, CHA +5 -->
-			<item id="39419" min="1" max="1" chance="17" /> <!-- Legendary WIT Dye Lv. 5 (Charisma) - WIT +5, CHA +5 -->
-			<item id="39420" min="1" max="1" chance="17" /> <!-- Legendary MEN Dye Lv. 5 (Charisma) - MEN +5, CHA +5 -->
+			<item id="39415" min="1" max="1" chance="16" /> <!-- Lv. 5 Legendary STR Dye (Charisma) - STR +5 CHA +5 -->
+			<item id="39416" min="1" max="1" chance="17" /> <!-- Lv. 5 Legendary DEX Dye (Charisma) - DEX +5 CHA +5 -->
+			<item id="39417" min="1" max="1" chance="17" /> <!-- Lv. 5 Legendary CON Dye (Charisma) - CON +5 CHA +5 -->
+			<item id="39418" min="1" max="1" chance="16" /> <!-- Lv. 5 Legendary INT Dye (Charisma) - INT +5 CHA +5 -->
+			<item id="39419" min="1" max="1" chance="17" /> <!-- Lv. 5 Legendary WIT Dye (Charisma) - WIT +5 CHA +5 -->
+			<item id="39420" min="1" max="1" chance="17" /> <!-- Lv. 5 Legendary MEN Dye (Charisma) - MEN +5 CHA +5 -->
 		</capsuled_items>
 	</item>
 	<item id="26514" name="Lv. 5 Legendary LUC Dye Pack" type="EtcItem">
@@ -202,12 +206,12 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="LEATHER" />
 		<capsuled_items>
-			<item id="39445" min="1" max="1" chance="16" /> <!-- Legendary STR Dye Lv. 5 (Luck) - STR +5, LUC +5 -->
-			<item id="39446" min="1" max="1" chance="17" /> <!-- Legendary DEX Dye Lv. 5 (Luck) - DEX +5, LUC +5 -->
-			<item id="39447" min="1" max="1" chance="17" /> <!-- Legendary CON Dye Lv. 5 (Luck) - CON +5, LUC +5 -->
-			<item id="39448" min="1" max="1" chance="16" /> <!-- Legendary INT Dye Lv. 5 (Luck) - INT +5, LUC +5 -->
-			<item id="39449" min="1" max="1" chance="17" /> <!-- Legendary WIT Dye Lv. 5 (Luck) - WIT +5, LUC +5 -->
-			<item id="39450" min="1" max="1" chance="17" /> <!-- Legendary MEN Dye Lv. 5 (Luck) - MEN +5, LUC +5 -->
+			<item id="39445" min="1" max="1" chance="16" /> <!-- Lv. 5 Legendary STR Dye (Luck) - STR +5 LUC +5 -->
+			<item id="39446" min="1" max="1" chance="17" /> <!-- Lv. 5 Legendary DEX Dye (Luck) - DEX +5 LUC +5 -->
+			<item id="39447" min="1" max="1" chance="17" /> <!-- Lv. 5 Legendary CON Dye (Luck) - CON +5 LUC +5 -->
+			<item id="39448" min="1" max="1" chance="16" /> <!-- Lv. 5 Legendary INT Dye (Luck) - INT +5 LUC +5 -->
+			<item id="39449" min="1" max="1" chance="17" /> <!-- Lv. 5 Legendary WIT Dye (Luck) - WIT +5 LUC +5 -->
+			<item id="39450" min="1" max="1" chance="17" /> <!-- Lv. 5 Legendary MEN Dye (Luck) - MEN +5 LUC +5 -->
 		</capsuled_items>
 	</item>
 	<item id="26515" name="Lv. 3 Legendary CHA Dye Pack" type="EtcItem">
@@ -220,12 +224,12 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="LEATHER" />
 		<capsuled_items>
-			<item id="39403" min="1" max="1" chance="16" /> <!-- Legendary STR Dye Lv. 3 (Charisma) - STR +4, CHA +3 -->
-			<item id="39404" min="1" max="1" chance="17" /> <!-- Legendary DEX Dye Lv. 3 (Charisma) - DEX +4, CHA +3 -->
-			<item id="39405" min="1" max="1" chance="17" /> <!-- Legendary CON Dye Lv. 3 (Charisma) - CON +4, CHA +3 -->
-			<item id="39406" min="1" max="1" chance="16" /> <!-- Legendary INT Dye Lv. 3 (Charisma) - INT +4, CHA +3 -->
-			<item id="39407" min="1" max="1" chance="17" /> <!-- Legendary WIT Dye Lv. 3 (Charisma) - WIT +4, CHA +3 -->
-			<item id="39408" min="1" max="1" chance="17" /> <!-- Legendary MEN Dye Lv. 3 (Charisma) - MEN +4, CHA +3 -->
+			<item id="39403" min="1" max="1" chance="16" /> <!-- Lv. 3 Legendary STR Dye (Charisma) - STR +4 CHA +3 -->
+			<item id="39404" min="1" max="1" chance="17" /> <!-- Lv. 3 Legendary DEX Dye (Charisma) - DEX +4 CHA +3 -->
+			<item id="39405" min="1" max="1" chance="17" /> <!-- Lv. 3 Legendary CON Dye (Charisma) - CON +4 CHA +3 -->
+			<item id="39406" min="1" max="1" chance="16" /> <!-- Lv. 3 Legendary INT Dye (Charisma) - INT +4 CHA +3 -->
+			<item id="39407" min="1" max="1" chance="17" /> <!-- Lv. 3 Legendary WIT Dye (Charisma) - WIT +4 CHA +3 -->
+			<item id="39408" min="1" max="1" chance="17" /> <!-- Lv. 3 Legendary MEN Dye (Charisma) - MEN +4 CHA +3 -->
 		</capsuled_items>
 	</item>
 	<item id="26516" name="Lv. 3 Legendary LUC Dye Pack" type="EtcItem">
@@ -238,12 +242,12 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="LEATHER" />
 		<capsuled_items>
-			<item id="39433" min="1" max="1" chance="16" /> <!-- Legendary STR Dye Lv. 3 (Luck) - STR +4, LUC +3 -->
-			<item id="39434" min="1" max="1" chance="17" /> <!-- Legendary DEX Dye Lv. 3 (Luck) - DEX +4, LUC +3 -->
-			<item id="39435" min="1" max="1" chance="17" /> <!-- Legendary CON Dye Lv. 3 (Luck) - CON +4, LUC +3 -->
-			<item id="39436" min="1" max="1" chance="16" /> <!-- Legendary INT Dye Lv. 3 (Luck) - INT +4, LUC +3 -->
-			<item id="39437" min="1" max="1" chance="17" /> <!-- Legendary WIT Dye Lv. 3 (Luck) - WIT +4, LUC +3 -->
-			<item id="39438" min="1" max="1" chance="17" /> <!-- Legendary MEN Dye Lv. 3 (Luck) - MEN +4, LUC +3 -->
+			<item id="39433" min="1" max="1" chance="16" /> <!-- Lv. 3 Legendary STR Dye (Luck) - STR +4 LUC +3 -->
+			<item id="39434" min="1" max="1" chance="17" /> <!-- Lv. 3 Legendary DEX Dye (Luck) - DEX +4 LUC +3 -->
+			<item id="39435" min="1" max="1" chance="17" /> <!-- Lv. 3 Legendary CON Dye (Luck) - CON +4 LUC +3 -->
+			<item id="39436" min="1" max="1" chance="16" /> <!-- Lv. 3 Legendary INT Dye (Luck) - INT +4 LUC +3 -->
+			<item id="39437" min="1" max="1" chance="17" /> <!-- Lv. 3 Legendary WIT Dye (Luck) - WIT +4 LUC +3 -->
+			<item id="39438" min="1" max="1" chance="17" /> <!-- Lv. 3 Legendary MEN Dye (Luck) - MEN +4 LUC +3 -->
 		</capsuled_items>
 	</item>
 	<item id="26517" name="Apparition Stone (All-purpose)" type="EtcItem">
@@ -294,7 +298,7 @@
 		<set name="material" val="STEEL" />
 	</item>
 	<item id="26522" name="Rabbit Ears" additionalName="STR + Critical Rate" type="Armor">
-		<!-- STR + 3 and Critical Rate + 50 when equipped. -->
+		<!-- STR +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -310,7 +314,7 @@
 		</skills>
 	</item>
 	<item id="26523" name="Rabbit Ears" additionalName="DEX + Critical Rate" type="Armor">
-		<!-- DEX + 3 and Critical Rate + 50 when equipped. -->
+		<!-- DEX +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -326,7 +330,7 @@
 		</skills>
 	</item>
 	<item id="26524" name="Rabbit Ears" additionalName="CON + Critical Rate" type="Armor">
-		<!-- CON + 3 and Critical Rate + 50 when equipped. -->
+		<!-- CON +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -342,7 +346,7 @@
 		</skills>
 	</item>
 	<item id="26525" name="Rabbit Ears" additionalName="MEN + Critical Rate" type="Armor">
-		<!-- MEN + 3 and Critical Rate + 50 when equipped. -->
+		<!-- MEN +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -358,7 +362,7 @@
 		</skills>
 	</item>
 	<item id="26526" name="Rabbit Ears" additionalName="INT + Critical Rate" type="Armor">
-		<!-- INT + 3 and Critical Rate + 50 when equipped. -->
+		<!-- INT +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -374,7 +378,7 @@
 		</skills>
 	</item>
 	<item id="26527" name="Rabbit Ears" additionalName="WIT + Critical Rate" type="Armor">
-		<!-- WIT + 3 and Critical Rate + 50 when equipped. -->
+		<!-- WIT +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -390,7 +394,7 @@
 		</skills>
 	</item>
 	<item id="26528" name="Rabbit Ears" additionalName="STR + Critical Damage" type="Armor">
-		<!-- STR + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- STR +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -406,7 +410,7 @@
 		</skills>
 	</item>
 	<item id="26529" name="Rabbit Ears" additionalName="DEX + Critical Damage" type="Armor">
-		<!-- DEX + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- DEX +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -422,7 +426,7 @@
 		</skills>
 	</item>
 	<item id="26530" name="Rabbit Ears" additionalName="CON + Critical Damage" type="Armor">
-		<!-- CON + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- CON +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -438,7 +442,7 @@
 		</skills>
 	</item>
 	<item id="26531" name="Rabbit Ears" additionalName="MEN + Critical Damage" type="Armor">
-		<!-- MEN + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- MEN +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -454,7 +458,7 @@
 		</skills>
 	</item>
 	<item id="26532" name="Rabbit Ears" additionalName="INT + Critical Damage" type="Armor">
-		<!-- INT + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- INT +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -470,7 +474,7 @@
 		</skills>
 	</item>
 	<item id="26533" name="Rabbit Ears" additionalName="WIT + Critical Damage" type="Armor">
-		<!-- WIT + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- WIT +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -486,7 +490,7 @@
 		</skills>
 	</item>
 	<item id="26534" name="Rabbit Ears" additionalName="STR + P. Def." type="Armor">
-		<!-- STR + 3 and P. Def. + 5% when equipped. -->
+		<!-- STR +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -502,7 +506,7 @@
 		</skills>
 	</item>
 	<item id="26535" name="Rabbit Ears" additionalName="DEX + P. Def." type="Armor">
-		<!-- DEX + 3 and P. Def. + 5% when equipped. -->
+		<!-- DEX +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -518,7 +522,7 @@
 		</skills>
 	</item>
 	<item id="26536" name="Rabbit Ears" additionalName="CON + P. Def." type="Armor">
-		<!-- CON + 3 and P. Def. + 5% when equipped. -->
+		<!-- CON +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -534,7 +538,7 @@
 		</skills>
 	</item>
 	<item id="26537" name="Rabbit Ears" additionalName="MEN + P. Def." type="Armor">
-		<!-- MEN + 3 and P. Def. + 5% when equipped. -->
+		<!-- MEN +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -550,7 +554,7 @@
 		</skills>
 	</item>
 	<item id="26538" name="Rabbit Ears" additionalName="INT + P. Def." type="Armor">
-		<!-- INT + 3 and P. Def. + 5% when equipped. -->
+		<!-- INT +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -566,7 +570,7 @@
 		</skills>
 	</item>
 	<item id="26539" name="Rabbit Ears" additionalName="WIT + P. Def." type="Armor">
-		<!-- WIT + 3 and P. Def. + 5% when equipped. -->
+		<!-- WIT +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -582,7 +586,7 @@
 		</skills>
 	</item>
 	<item id="26540" name="Rabbit Ears" additionalName="STR + M. Def." type="Armor">
-		<!-- STR + 3 and M. Def. + 5% when equipped. -->
+		<!-- STR +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -598,7 +602,7 @@
 		</skills>
 	</item>
 	<item id="26541" name="Rabbit Ears" additionalName="DEX + M. Def." type="Armor">
-		<!-- DEX + 3 and M. Def. + 5% when equipped. -->
+		<!-- DEX +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -614,7 +618,7 @@
 		</skills>
 	</item>
 	<item id="26542" name="Rabbit Ears" additionalName="CON + M. Def." type="Armor">
-		<!-- CON + 3 and M. Def. + 5% when equipped. -->
+		<!-- CON +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -630,7 +634,7 @@
 		</skills>
 	</item>
 	<item id="26543" name="Rabbit Ears" additionalName="MEN + M. Def." type="Armor">
-		<!-- MEN + 3 and M. Def. + 5% when equipped. -->
+		<!-- MEN +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -646,7 +650,7 @@
 		</skills>
 	</item>
 	<item id="26544" name="Rabbit Ears" additionalName="INT + M. Def." type="Armor">
-		<!-- INT + 3 and M. Def. + 5% when equipped. -->
+		<!-- INT +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -662,7 +666,7 @@
 		</skills>
 	</item>
 	<item id="26545" name="Rabbit Ears" additionalName="WIT + M. Def." type="Armor">
-		<!-- WIT + 3 and M. Def. + 5% when equipped. -->
+		<!-- WIT +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -678,7 +682,7 @@
 		</skills>
 	</item>
 	<item id="26546" name="Rabbit Ears" additionalName="STR + Evasion" type="Armor">
-		<!-- STR + 3 and Evasion + 5 when equipped. -->
+		<!-- STR +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -694,7 +698,7 @@
 		</skills>
 	</item>
 	<item id="26547" name="Rabbit Ears" additionalName="DEX + Evasion" type="Armor">
-		<!-- DEX + 3 and Evasion + 5 when equipped. -->
+		<!-- DEX +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -710,7 +714,7 @@
 		</skills>
 	</item>
 	<item id="26548" name="Rabbit Ears" additionalName="CON + Evasion" type="Armor">
-		<!-- CON + 3 and Evasion + 5 when equipped. -->
+		<!-- CON +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -726,7 +730,7 @@
 		</skills>
 	</item>
 	<item id="26549" name="Rabbit Ears" additionalName="MEN + Evasion" type="Armor">
-		<!-- MEN + 3 and Evasion + 5 when equipped. -->
+		<!-- MEN +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -742,7 +746,7 @@
 		</skills>
 	</item>
 	<item id="26550" name="Rabbit Ears" additionalName="INT + Evasion" type="Armor">
-		<!-- INT + 3 and Evasion + 5 when equipped. -->
+		<!-- INT +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -758,7 +762,7 @@
 		</skills>
 	</item>
 	<item id="26551" name="Rabbit Ears" additionalName="WIT + Evasion" type="Armor">
-		<!-- WIT + 3 and Evasion + 5 when equipped. -->
+		<!-- WIT +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -774,7 +778,7 @@
 		</skills>
 	</item>
 	<item id="26552" name="Rabbit Ears" additionalName="STR + P. Atk." type="Armor">
-		<!-- STR + 3 and P. Atk. + 5% when equipped. -->
+		<!-- STR +3 and P. Atk. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -790,7 +794,7 @@
 		</skills>
 	</item>
 	<item id="26553" name="Rabbit Ears" additionalName="DEX + P. Atk." type="Armor">
-		<!-- DEX + 3 and P. Atk. + 5% when equipped. -->
+		<!-- DEX +3 and P. Atk. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -806,7 +810,7 @@
 		</skills>
 	</item>
 	<item id="26554" name="Rabbit Ears" additionalName="CON + P. Atk." type="Armor">
-		<!-- CON + 3 and P. Atk. + 5% when equipped. -->
+		<!-- CON +3 and P. Atk. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -822,7 +826,7 @@
 		</skills>
 	</item>
 	<item id="26555" name="Rabbit Ears" additionalName="MEN + P. Atk." type="Armor">
-		<!-- MEN + 3 and P. Atk. + 5% when equipped. -->
+		<!-- MEN +3 and P. Atk. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -838,7 +842,7 @@
 		</skills>
 	</item>
 	<item id="26556" name="Rabbit Ears" additionalName="INT + P. Atk." type="Armor">
-		<!-- INT + 3 and P. Atk. + 5% when equipped. -->
+		<!-- INT +3 and P. Atk. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -854,7 +858,7 @@
 		</skills>
 	</item>
 	<item id="26557" name="Rabbit Ears" additionalName="WIT + P. Atk." type="Armor">
-		<!-- WIT + 3 and P. Atk. + 5% when equipped. -->
+		<!-- WIT +3 and P. Atk. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -870,7 +874,7 @@
 		</skills>
 	</item>
 	<item id="26558" name="Rabbit Ears" additionalName="STR + M. Atk." type="Armor">
-		<!-- STR + 3 and M. Atk. + 10% when equipped. -->
+		<!-- STR +3 and M. Atk. +10% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -886,7 +890,7 @@
 		</skills>
 	</item>
 	<item id="26559" name="Rabbit Ears" additionalName="DEX + M. Atk." type="Armor">
-		<!-- DEX + 3 and M. Atk. + 10% when equipped. -->
+		<!-- DEX +3 and M. Atk. +10% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -902,7 +906,7 @@
 		</skills>
 	</item>
 	<item id="26560" name="Rabbit Ears" additionalName="CON + M. Atk." type="Armor">
-		<!-- CON + 3 and M. Atk. + 10% when equipped. -->
+		<!-- CON +3 and M. Atk. +10% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -918,7 +922,7 @@
 		</skills>
 	</item>
 	<item id="26561" name="Rabbit Ears" additionalName="MEN + M. Atk." type="Armor">
-		<!-- MEN + 3 and M. Atk. + 10% when equipped. -->
+		<!-- MEN +3 and M. Atk. +10% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -934,7 +938,7 @@
 		</skills>
 	</item>
 	<item id="26562" name="Rabbit Ears" additionalName="INT + M. Atk." type="Armor">
-		<!-- INT + 3 and M. Atk. + 10% when equipped. -->
+		<!-- INT +3 and M. Atk. +10% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -950,7 +954,7 @@
 		</skills>
 	</item>
 	<item id="26563" name="Rabbit Ears" additionalName="WIT + M. Atk." type="Armor">
-		<!-- WIT + 3 and M. Atk. + 10% when equipped. -->
+		<!-- WIT +3 and M. Atk. +10% when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -966,7 +970,7 @@
 		</skills>
 	</item>
 	<item id="26564" name="Rabbit Ears" additionalName="STR + Accuracy" type="Armor">
-		<!-- STR + 3 and Accuracy + 5 when equipped. -->
+		<!-- STR +3 and P. Accuracy +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -982,7 +986,7 @@
 		</skills>
 	</item>
 	<item id="26565" name="Rabbit Ears" additionalName="DEX + Accuracy" type="Armor">
-		<!-- DEX + 3 and Accuracy + 5 when equipped. -->
+		<!-- DEX +3 and P. Accuracy +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -998,7 +1002,7 @@
 		</skills>
 	</item>
 	<item id="26566" name="Rabbit Ears" additionalName="CON + Accuracy" type="Armor">
-		<!-- CON + 3 and Accuracy + 5 when equipped. -->
+		<!-- CON +3 and P. Accuracy +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1014,7 +1018,7 @@
 		</skills>
 	</item>
 	<item id="26567" name="Rabbit Ears" additionalName="MEN + Accuracy" type="Armor">
-		<!-- MEN + 3 and Accuracy + 5 when equipped. -->
+		<!-- MEN +3 and P. Accuracy +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1030,7 +1034,7 @@
 		</skills>
 	</item>
 	<item id="26568" name="Rabbit Ears" additionalName="INT + Accuracy" type="Armor">
-		<!-- INT + 3 and Accuracy + 5 when equipped. -->
+		<!-- INT +3 and P. Accuracy +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1046,7 +1050,7 @@
 		</skills>
 	</item>
 	<item id="26569" name="Rabbit Ears" additionalName="WIT + Accuracy" type="Armor">
-		<!-- WIT + 3 and Accuracy + 5 when equipped. -->
+		<!-- WIT +3 and P. Accuracy +5 when equipped. -->
 		<set name="icon" val="icon.accessory_rabbit_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1062,7 +1066,7 @@
 		</skills>
 	</item>
 	<item id="26570" name="Raccoon Ears" additionalName="STR + Critical Rate" type="Armor">
-		<!-- STR + 3 and Critical Rate + 50 when equipped. -->
+		<!-- STR +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1078,7 +1082,7 @@
 		</skills>
 	</item>
 	<item id="26571" name="Raccoon Ears" additionalName="DEX + Critical Rate" type="Armor">
-		<!-- DEX + 3 and Critical Rate + 50 when equipped. -->
+		<!-- DEX +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1094,7 +1098,7 @@
 		</skills>
 	</item>
 	<item id="26572" name="Raccoon Ears" additionalName="CON + Critical Rate" type="Armor">
-		<!-- CON + 3 and Critical Rate + 50 when equipped. -->
+		<!-- CON +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1110,7 +1114,7 @@
 		</skills>
 	</item>
 	<item id="26573" name="Raccoon Ears" additionalName="MEN + Critical Rate" type="Armor">
-		<!-- MEN + 3 and Critical Rate + 50 when equipped. -->
+		<!-- MEN +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1126,7 +1130,7 @@
 		</skills>
 	</item>
 	<item id="26574" name="Raccoon Ears" additionalName="INT + Critical Rate" type="Armor">
-		<!-- INT + 3 and Critical Rate + 50 when equipped. -->
+		<!-- INT +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1142,7 +1146,7 @@
 		</skills>
 	</item>
 	<item id="26575" name="Raccoon Ears" additionalName="WIT + Critical Rate" type="Armor">
-		<!-- WIT + 3 and Critical Rate + 50 when equipped. -->
+		<!-- WIT +3 and P. Critical Rate +50 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1158,7 +1162,7 @@
 		</skills>
 	</item>
 	<item id="26576" name="Raccoon Ears" additionalName="STR + Critical Damage" type="Armor">
-		<!-- STR + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- STR +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1174,7 +1178,7 @@
 		</skills>
 	</item>
 	<item id="26577" name="Raccoon Ears" additionalName="DEX + Critical Damage" type="Armor">
-		<!-- DEX + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- DEX +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1190,7 +1194,7 @@
 		</skills>
 	</item>
 	<item id="26578" name="Raccoon Ears" additionalName="CON + Critical Damage" type="Armor">
-		<!-- CON + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- CON +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1206,7 +1210,7 @@
 		</skills>
 	</item>
 	<item id="26579" name="Raccoon Ears" additionalName="MEN + Critical Damage" type="Armor">
-		<!-- MEN + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- MEN +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1222,7 +1226,7 @@
 		</skills>
 	</item>
 	<item id="26580" name="Raccoon Ears" additionalName="INT + Critical Damage" type="Armor">
-		<!-- INT + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- INT +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1238,7 +1242,7 @@
 		</skills>
 	</item>
 	<item id="26581" name="Raccoon Ears" additionalName="WIT + Critical Damage" type="Armor">
-		<!-- WIT + 3, P. Critical Damage + 90, and M. Critical Damage + 68 when equipped. -->
+		<!-- WIT +3, P. Critical Damage +90, and M. Critical Damage +68 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1254,7 +1258,7 @@
 		</skills>
 	</item>
 	<item id="26582" name="Raccoon Ears" additionalName="STR + P. Def." type="Armor">
-		<!-- STR + 3 and P. Def. + 5% when equipped. -->
+		<!-- STR +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1270,7 +1274,7 @@
 		</skills>
 	</item>
 	<item id="26583" name="Raccoon Ears" additionalName="DEX + P. Def." type="Armor">
-		<!-- DEX + 3 and P. Def. + 5% when equipped. -->
+		<!-- DEX +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1286,7 +1290,7 @@
 		</skills>
 	</item>
 	<item id="26584" name="Raccoon Ears" additionalName="CON + P. Def." type="Armor">
-		<!-- CON + 3 and P. Def. + 5% when equipped. -->
+		<!-- CON +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1302,7 +1306,7 @@
 		</skills>
 	</item>
 	<item id="26585" name="Raccoon Ears" additionalName="MEN + P. Def." type="Armor">
-		<!-- MEN + 3 and P. Def. + 5% when equipped. -->
+		<!-- MEN +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1318,7 +1322,7 @@
 		</skills>
 	</item>
 	<item id="26586" name="Raccoon Ears" additionalName="INT + P. Def." type="Armor">
-		<!-- INT + 3 and P. Def. + 5% when equipped. -->
+		<!-- INT +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1334,7 +1338,7 @@
 		</skills>
 	</item>
 	<item id="26587" name="Raccoon Ears" additionalName="WIT + P. Def." type="Armor">
-		<!-- WIT + 3 and P. Def. + 5% when equipped. -->
+		<!-- WIT +3 and P. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1350,7 +1354,7 @@
 		</skills>
 	</item>
 	<item id="26588" name="Raccoon Ears" additionalName="STR + M. Def." type="Armor">
-		<!-- STR + 3 and M. Def. + 5% when equipped. -->
+		<!-- STR +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1366,7 +1370,7 @@
 		</skills>
 	</item>
 	<item id="26589" name="Raccoon Ears" additionalName="DEX + M. Def." type="Armor">
-		<!-- DEX + 3 and M. Def. + 5% when equipped. -->
+		<!-- DEX +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1382,7 +1386,7 @@
 		</skills>
 	</item>
 	<item id="26590" name="Raccoon Ears" additionalName="CON + M. Def." type="Armor">
-		<!-- CON + 3 and M. Def. + 5% when equipped. -->
+		<!-- CON +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1398,7 +1402,7 @@
 		</skills>
 	</item>
 	<item id="26591" name="Raccoon Ears" additionalName="MEN + M. Def." type="Armor">
-		<!-- MEN + 3 and M. Def. + 5% when equipped. -->
+		<!-- MEN +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1414,7 +1418,7 @@
 		</skills>
 	</item>
 	<item id="26592" name="Raccoon Ears" additionalName="INT + M. Def." type="Armor">
-		<!-- INT + 3 and M. Def. + 5% when equipped. -->
+		<!-- INT +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1430,7 +1434,7 @@
 		</skills>
 	</item>
 	<item id="26593" name="Raccoon Ears" additionalName="WIT + M. Def." type="Armor">
-		<!-- WIT + 3 and M. Def. + 5% when equipped. -->
+		<!-- WIT +3 and M. Def. +5% when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1446,7 +1450,7 @@
 		</skills>
 	</item>
 	<item id="26594" name="Raccoon Ears" additionalName="STR + Evasion" type="Armor">
-		<!-- STR + 3 and Evasion + 5 when equipped. -->
+		<!-- STR +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1462,7 +1466,7 @@
 		</skills>
 	</item>
 	<item id="26595" name="Raccoon Ears" additionalName="DEX + Evasion" type="Armor">
-		<!-- DEX + 3 and Evasion + 5 when equipped. -->
+		<!-- DEX +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1478,7 +1482,7 @@
 		</skills>
 	</item>
 	<item id="26596" name="Raccoon Ears" additionalName="CON + Evasion" type="Armor">
-		<!-- CON + 3 and Evasion + 5 when equipped. -->
+		<!-- CON +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1494,7 +1498,7 @@
 		</skills>
 	</item>
 	<item id="26597" name="Raccoon Ears" additionalName="MEN + Evasion" type="Armor">
-		<!-- MEN + 3 and Evasion + 5 when equipped. -->
+		<!-- MEN +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1510,7 +1514,7 @@
 		</skills>
 	</item>
 	<item id="26598" name="Raccoon Ears" additionalName="INT + Evasion" type="Armor">
-		<!-- INT + 3 and Evasion + 5 when equipped. -->
+		<!-- INT +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1526,7 +1530,7 @@
 		</skills>
 	</item>
 	<item id="26599" name="Raccoon Ears" additionalName="WIT + Evasion" type="Armor">
-		<!-- WIT + 3 and Evasion + 5 when equipped. -->
+		<!-- WIT +3 and P. Evasion +5 when equipped. -->
 		<set name="icon" val="icon.accessory_racoon_ear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />

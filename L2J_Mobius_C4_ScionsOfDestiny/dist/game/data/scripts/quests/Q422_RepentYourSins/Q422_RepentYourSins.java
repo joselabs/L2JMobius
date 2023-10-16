@@ -22,7 +22,6 @@ import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 public class Q422_RepentYourSins extends Quest
 {
@@ -153,7 +152,7 @@ public class Q422_RepentYourSins extends Quest
 						st.exitQuest(true);
 						
 						player.setPkKills(0);
-						player.sendPacket(new UserInfo(player));
+						player.updateUserInfo();
 					}
 					// Player's PK are bigger than random amount ; continue the quest.
 					else
@@ -163,7 +162,7 @@ public class Q422_RepentYourSins extends Quest
 						st.playSound(QuestState.SOUND_MIDDLE);
 						
 						player.setPkKills(player.getPkKills() - removePkAmount);
-						player.sendPacket(new UserInfo(player));
+						player.updateUserInfo();
 					}
 				}
 				break;

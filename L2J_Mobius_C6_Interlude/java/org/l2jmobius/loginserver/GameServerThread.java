@@ -351,6 +351,7 @@ public class GameServerThread extends Thread
 	public void removeAccountOnGameServer(String account)
 	{
 		_accountsOnGameServer.remove(account);
+		LoginController.getInstance().removeAuthedLoginClient(account);
 	}
 	
 	public GameServerState getLoginConnectionState()

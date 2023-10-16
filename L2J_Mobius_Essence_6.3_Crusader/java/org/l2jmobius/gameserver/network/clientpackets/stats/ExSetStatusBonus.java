@@ -18,10 +18,10 @@ package org.l2jmobius.gameserver.network.clientpackets.stats;
 
 import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * @author Mobius
@@ -62,7 +62,8 @@ public class ExSetStatusBonus implements ClientPacket
 		}
 		
 		final int usedPoints = player.getVariables().getInt(PlayerVariables.STAT_POINTS, 0);
-		final int elixirsAvailable = player.getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0);
+		final int effectBonus = (int) player.getStat().getValue(Stat.ELIXIR_USAGE_LIMIT, 0);
+		final int elixirsAvailable = player.getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0) + effectBonus;
 		final int currentPoints = _str + _dex + _con + _int + _wit + _men;
 		final int possiblePoints = player.getLevel() < 76 ? 0 : ((player.getLevel() - 75) + elixirsAvailable) - usedPoints;
 		if ((possiblePoints <= 0) || (currentPoints > possiblePoints))
@@ -95,9 +96,10 @@ public class ExSetStatusBonus implements ClientPacket
 			player.getVariables().set(PlayerVariables.STAT_MEN, player.getVariables().getInt(PlayerVariables.STAT_MEN, 0) + _men);
 		}
 		
-		player.sendPacket(new UserInfo(player));
+		player.getStat().recalculateStats(true);
 		
 		// Calculate stat increase skills.
 		player.calculateStatIncreaseSkills();
+		player.updateUserInfo();
 	}
 }

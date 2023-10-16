@@ -21,12 +21,15 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.handler.voicedcommandhandlers.AutoPlay;
 import org.l2jmobius.gameserver.handler.voicedcommandhandlers.AutoPotion;
 import org.l2jmobius.gameserver.handler.voicedcommandhandlers.BankingCmd;
 import org.l2jmobius.gameserver.handler.voicedcommandhandlers.ExperienceGain;
+import org.l2jmobius.gameserver.handler.voicedcommandhandlers.OfflinePlay;
 import org.l2jmobius.gameserver.handler.voicedcommandhandlers.OfflineShop;
 import org.l2jmobius.gameserver.handler.voicedcommandhandlers.Online;
 import org.l2jmobius.gameserver.handler.voicedcommandhandlers.StatsCmd;
+import org.l2jmobius.gameserver.handler.voicedcommandhandlers.VoiceCommand;
 import org.l2jmobius.gameserver.handler.voicedcommandhandlers.Wedding;
 
 public class VoicedCommandHandler
@@ -38,6 +41,19 @@ public class VoicedCommandHandler
 	protected VoicedCommandHandler()
 	{
 		_datatable = new HashMap<>();
+		
+		registerVoicedCommandHandler(new VoiceCommand());
+		
+		if (Config.ENABLE_AUTO_PLAY)
+		{
+			registerVoicedCommandHandler(new AutoPlay());
+		}
+		
+		if (Config.ENABLE_OFFLINE_PLAY_COMMAND)
+		{
+			registerVoicedCommandHandler(new OfflinePlay());
+		}
+		
 		if (Config.BANKING_SYSTEM_ENABLED)
 		{
 			registerVoicedCommandHandler(new BankingCmd());

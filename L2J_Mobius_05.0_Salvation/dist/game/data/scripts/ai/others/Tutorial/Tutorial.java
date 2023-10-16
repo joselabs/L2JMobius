@@ -18,6 +18,7 @@ package ai.others.Tutorial;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
+import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.events.EventType;
@@ -53,6 +54,11 @@ public class Tutorial extends AbstractNpcAI
 	public void onPlayerLogin(OnPlayerLogin event)
 	{
 		final Player player = event.getPlayer();
+		if (player.isInCategory(CategoryType.ALLOWED_BALTHUS_CLASSES))
+		{
+			return;
+		}
+		
 		if (player.getVariables().getInt(TUTORIAL_VAR, 0) == 0)
 		{
 			if (player.getRace() == Race.ERTHEIA)

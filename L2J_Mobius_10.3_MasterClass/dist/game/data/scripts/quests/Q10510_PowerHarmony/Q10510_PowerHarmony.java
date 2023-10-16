@@ -22,6 +22,13 @@ import java.util.Set;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.events.EventType;
+import org.l2jmobius.gameserver.model.events.ListenerRegisterType;
+import org.l2jmobius.gameserver.model.events.annotations.Id;
+import org.l2jmobius.gameserver.model.events.annotations.RegisterEvent;
+import org.l2jmobius.gameserver.model.events.annotations.RegisterType;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerItemAdd;
+import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
 import org.l2jmobius.gameserver.model.holders.NpcLogListHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
@@ -329,6 +336,7 @@ public class Q10510_PowerHarmony extends Quest
 			case State.CREATED:
 			{
 				htmltext = "33907-01.htm";
+				player.addListener(new ConsumerEventListener(player, EventType.ON_PLAYER_ITEM_ADD, (OnPlayerItemAdd event) -> onPlayerItemAdd(event), this));
 				break;
 			}
 			case State.STARTED:
@@ -348,6 +356,7 @@ public class Q10510_PowerHarmony extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				player.removeListenerIf(EventType.ON_PLAYER_ITEM_ADD, listener -> listener.getOwner() == this);
 				break;
 			}
 		}
@@ -393,5 +402,21 @@ public class Q10510_PowerHarmony extends Quest
 			return holder;
 		}
 		return super.getNpcLogList(player);
+	}
+	
+	@RegisterEvent(EventType.ON_PLAYER_ITEM_ADD)
+	@RegisterType(ListenerRegisterType.ITEM)
+	@Id(PROOF_OF_UNITY)
+	private void onPlayerItemAdd(OnPlayerItemAdd event)
+	{
+		final QuestState qs = getQuestState(event.getPlayer(), false);
+		if (qs != null)
+		{
+			if ((getQuestItemsCount(event.getPlayer(), PROOF_OF_UNITY) >= PROOF_OF_UNITY_NEEDED) && (event.getPlayer().getLevel() >= MIN_COMPLETE_LEVEL))
+			{
+				qs.setCond(2, true);
+			}
+			sendNpcLogList(event.getPlayer());
+		}
 	}
 }

@@ -24,7 +24,8 @@ public enum PlayerAction
 	ADMIN_COMMAND,
 	ADMIN_POINT_PICKING,
 	ADMIN_SHOW_TERRITORY,
-	MERCENARY_CONFIRM;
+	MERCENARY_CONFIRM,
+	OFFLINE_PLAY;
 	
 	private final int _mask;
 	

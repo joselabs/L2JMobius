@@ -36,7 +36,6 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
 import org.l2jmobius.gameserver.network.serverpackets.OnEventTrigger;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Broadcast;
 
 import ai.AbstractNpcAI;
@@ -168,7 +167,7 @@ public class GainakSiege extends AbstractNpcAI
 		{
 			final Player attackerPlayer = event.getAttacker().getActingPlayer();
 			attackerPlayer.setPvpKills(attackerPlayer.getPvpKills() + 1);
-			attackerPlayer.sendPacket(new UserInfo(attackerPlayer));
+			attackerPlayer.updateUserInfo();
 		}
 	}
 	

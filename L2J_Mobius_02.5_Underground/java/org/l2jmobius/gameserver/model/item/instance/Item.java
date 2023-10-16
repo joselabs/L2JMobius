@@ -2170,7 +2170,10 @@ public class Item extends WorldObject
 			{
 				removeSpecialAbility(oldOption);
 			}
-			_ensoulOptions[position] = option;
+			if (position < _itemTemplate.getEnsoulSlots())
+			{
+				_ensoulOptions[position] = option;
+			}
 		}
 		else if (type == 2) // Adding special ability
 		{
@@ -2179,7 +2182,10 @@ public class Item extends WorldObject
 			{
 				removeSpecialAbility(oldOption);
 			}
-			_ensoulSpecialOptions[position] = option;
+			if (position < _itemTemplate.getSpecialEnsoulSlots())
+			{
+				_ensoulSpecialOptions[position] = option;
+			}
 		}
 		
 		if (updateInDB)

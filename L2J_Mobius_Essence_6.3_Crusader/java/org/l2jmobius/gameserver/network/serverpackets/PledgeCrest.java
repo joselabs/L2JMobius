@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
 import org.l2jmobius.gameserver.model.Crest;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -25,25 +24,28 @@ public class PledgeCrest extends ServerPacket
 {
 	private final int _crestId;
 	private final byte[] _data;
+	private final int _clanId;
 	
-	public PledgeCrest(int crestId)
+	public PledgeCrest(int crestId, int clanId)
 	{
 		_crestId = crestId;
 		final Crest crest = CrestTable.getInstance().getCrest(crestId);
 		_data = crest != null ? crest.getData() : null;
+		_clanId = clanId;
 	}
 	
-	public PledgeCrest(int crestId, byte[] data)
+	public PledgeCrest(int crestId, byte[] data, int clanId)
 	{
 		_crestId = crestId;
 		_data = data;
+		_clanId = clanId;
 	}
 	
 	@Override
 	public void write()
 	{
 		ServerPackets.PLEDGE_CREST.writeId(this);
-		writeInt(Config.SERVER_ID);
+		writeInt(_clanId);
 		writeInt(_crestId);
 		if (_data != null)
 		{

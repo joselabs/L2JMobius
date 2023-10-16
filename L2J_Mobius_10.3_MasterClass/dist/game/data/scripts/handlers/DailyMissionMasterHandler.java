@@ -38,6 +38,7 @@ import handlers.dailymissionhandlers.MentorDailyMissionHandler;
 import handlers.dailymissionhandlers.MonsterDailyMissionHandler;
 import handlers.dailymissionhandlers.NoblesseDailyMissionHandler;
 import handlers.dailymissionhandlers.OlympiadDailyMissionHandler;
+import handlers.dailymissionhandlers.OlympiadHeroDailyMissionHandler;
 import handlers.dailymissionhandlers.QuestDailyMissionHandler;
 import handlers.dailymissionhandlers.SiegeDailyMissionHandler;
 import handlers.dailymissionhandlers.UseItemDailyMissionHandler;
@@ -69,6 +70,7 @@ public class DailyMissionMasterHandler
 		DailyMissionHandler.getInstance().registerHandler("monster", MonsterDailyMissionHandler::new);
 		DailyMissionHandler.getInstance().registerHandler("noblesse", NoblesseDailyMissionHandler::new);
 		DailyMissionHandler.getInstance().registerHandler("olympiad", OlympiadDailyMissionHandler::new);
+		DailyMissionHandler.getInstance().registerHandler("olympiadhero", OlympiadHeroDailyMissionHandler::new);
 		DailyMissionHandler.getInstance().registerHandler("quest", QuestDailyMissionHandler::new);
 		DailyMissionHandler.getInstance().registerHandler("siege", SiegeDailyMissionHandler::new);
 		DailyMissionHandler.getInstance().registerHandler("useitem", UseItemDailyMissionHandler::new);

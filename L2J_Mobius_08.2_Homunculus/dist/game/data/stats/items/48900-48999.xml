@@ -103,7 +103,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48912" name="Gran Kain's Scroll: Enchant Weapon (R-grade)" type="EtcItem">
-		<!-- For R-grade weapons. P. Atk. +6 for one-handed swords/ blunts/ staffs, daggers, spears. P. Atk. +7 for two-handed swords/ blunts/ staffs, dual daggers, dual swords, fist weapons, crossbows. P. Atk. +12 for bows. M. Atk. +5 for all weapons. Starting from +4, P./ M. Atk. bonus increases greatly. For blessed weapons, the bonus increases more than for standard weapons. Thanks to Gran Kain's power, in case of failure the item is not crystallized, and its enchant value remains the same. Cannot be used for weapons enchanted to +20 or higher. -->
+		<!-- When enchanted, increases P. Atk. by +6 for R-grade one-handed swords, one-handed blunts, one-handed staffs, daggers, spears, and other weapons. Increases P. Atk. by +7 for two-handed swords, two-handed blunts, two-handed staffs, dual daggers, dual swords, fist weapons, and crossbows. Increases P. Atk. by +12 for bow weapons. Increases M. Atk. by +5 for all weapons. P./ M. Atk. increases greatly starting at +4. For blessed weapons, all stats will increase more than standard weapons. Failure to enchant does not crystallize the item and the enchantment level is retained thanks to the Gran Kain's power. Cannot be used on weapons enchanted to +20 or higher. -->
 		<set name="icon" val="icon.ev_shilen_scroll_of_enchant_wp" />
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
@@ -118,7 +118,7 @@
 		</skills>
 	</item>
 	<item id="48913" name="Gale Scroll" type="EtcItem">
-		<!-- A scroll to level up as fast as the wind. For 10 min., acquired XP/ SP +200%. The effect remains after death. Cooldown: 9 min. Required level: 1-107. The effect does not stack with those of Freya's Frozen Scroll or Freya's Scroll of Storm. -->
+		<!-- Scroll to level up fast as the wind. For 10 min., Acquired XP/ SP +200%. The effect remains after death. Cooldown: 9 min. Required level: 1-107. Does not stack with Freya's Wind Scroll or Freya's Storm Scroll. -->
 		<set name="icon" val="icon.scrl_of_storm" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -133,6 +133,7 @@
 		<!-- Scroll for easier hunting. For 30 min., Attribute Attack +100, Attribute Resistance +100, Acquired XP/ SP +100%. The effect remains after death. Cooldown: 5 min. Required level: 1-107. Cannot be used in the Olympiad. Does not stack with Dragon's Attribute Potion or Glowing Dragon's Attribute Potion. -->
 		<set name="icon" val="icon.etc_blesscharm_slay_val_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="1" />
 		<set name="is_tradable" val="false" />
@@ -140,6 +141,14 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="is_event_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="reuse_delay" val="300000" />
+		<skills>
+			<skill id="39371" level="1" /> <!-- Raging Billow Scroll -->
+		</skills>
 	</item>
 	<item id="48915" name="Instanced Dungeon Master Key" type="EtcItem">
 		<!-- When in inventory, allows to enter a daily instance zone regardless of its level restrictions. <Instance zones>. Kartia's Labyrinth Lv. 85/ 90/ 95 (Party), Emperor's Labyrinth, Nightmare Kamaloka, Embryo Command Post, Altar of Shillien, Fallen Emperor's Throne, Krofin's Nest. -->
@@ -325,7 +334,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48929" name="Orc's Gift Box" type="EtcItem">
-		<!-- A sweet, lovely box. Perhaps too lovely. It reminds you of Orc s longing look, making you slightly uncomfortable. Double-click to obtain one of the gifts that Orc has prepared to win the favor of warriors. -->
+		<!-- A sweet, lovely box. Perhaps too lovely. It reminds you of Orc's longing look, making you slightly uncomfortable. Double-click to obtain one of the gifts that Orc has prepared to win the favor of warriors. -->
 		<set name="icon" val="icon.etc_pi_box_love_pack" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -389,7 +398,7 @@
 		</skills>
 	</item>
 	<item id="48933" name="Lucien's Mark" type="EtcItem">
-		<!-- An item containing Lucien s power. Can be exchanged for special items through Meirin from the Golden Compass Explorers. -->
+		<!-- An item containing Lucien's power. Can be exchanged for special items through Meirin from the Golden Compass Explorers. -->
 		<set name="icon" val="icon.gc_symbol_of_lucien" />
 		<set name="material" val="LEATHER" />
 		<set name="is_tradable" val="false" />
@@ -408,7 +417,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48935" name="Toma's Divine Protection" type="EtcItem">
-		<!-- A mark showing that you are under Toma s protection. When stored in the inventory, it increases the number of Lucien's Marks you gain by 20%. It disappears once you defeat Lucien and obtains a Lucien's Mark. -->
+		<!-- A mark showing that you are under Toma's protection. When stored in the inventory, it increases the number of Lucien's Marks you gain by 20%. It disappears once you defeat Lucien and obtains a Lucien's Mark. -->
 		<set name="icon" val="icon.gc_rune_of_lucien" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="1" />
@@ -431,7 +440,7 @@
 		</skills>
 	</item>
 	<item id="48937" name="Mentee's Vitality Potion of Gratitude" type="EtcItem">
-		<!-- A token of gratitude from a mentee who has grown thanks to his mentor s aid. Recharges a certain amount of Vitality. Can be used only 5 times per week. -->
+		<!-- A token of gratitude from a mentee who has grown thanks to his mentor's aid. Recharges a certain amount of Vitality. Can be used only 5 times per week. -->
 		<set name="icon" val="icon.bm_freya_potion" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -560,18 +569,33 @@
 		<!-- An extra pass to a daily instance zone from the Red Libra Guild. Double-click to reset the instance zone timer for Krofin's Nest. Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. -->
 		<set name="icon" val="icon.ev_libra_reset_ticket" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="weight" val="0" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39388" level="1" /> <!-- Red Libra's Extra Pass: Krofin's Nest -->
+		</skills>
 	</item>
 	<item id="48948" name="Entrance Pass: Krofin's Nest" type="EtcItem">
 		<!-- An extra pass to a instance zone. Double-click to reset the instance zone timer for Krofin's Nest. Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. -->
 		<set name="icon" val="icon.etc_bm_kalie_instantzone_re" />
 		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="weight" val="0" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39389" level="1" /> <!-- Extra Pass: Krofin's Nest -->
+		</skills>
 	</item>
 	<item id="48949" name="Stage 5 Soul Crystal Box" type="EtcItem">
 		<!-- Double-click to obtain Kain's, Mermoden's, Leona's, Pantheon's, or Lionel's Soul Crystal Lv. 5. -->

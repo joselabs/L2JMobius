@@ -19,6 +19,7 @@ package handlers.admincommandhandlers;
 import java.util.StringTokenizer;
 
 import org.l2jmobius.gameserver.data.sql.ClanTable;
+import org.l2jmobius.gameserver.data.xml.ClanLevelData;
 import org.l2jmobius.gameserver.enums.UserInfoType;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
@@ -156,10 +157,10 @@ public class AdminPledge implements IAdminCommandHandler
 						}
 						
 						final int level = Integer.parseInt(param);
-						if ((level >= 0) && (level <= (Clan.EXP_TABLE.length - 1)))
+						if ((level >= 0) && (level <= ClanLevelData.getInstance().getMaxLevel()))
 						{
 							clan.changeLevel(level);
-							clan.setExp(activeChar.getObjectId(), Clan.EXP_TABLE[level]);
+							clan.setExp(activeChar.getObjectId(), ClanLevelData.getInstance().getLevelExp(level));
 							for (Player member : clan.getOnlineMembers(0))
 							{
 								member.broadcastUserInfo(UserInfoType.RELATION, UserInfoType.CLAN);

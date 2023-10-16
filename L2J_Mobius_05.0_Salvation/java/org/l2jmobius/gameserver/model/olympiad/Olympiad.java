@@ -512,6 +512,26 @@ public class Olympiad extends ListenersContainer
 		return NOBLES.get(playerId);
 	}
 	
+	public static void removeNobleStats(int playerId)
+	{
+		NOBLES.remove(playerId);
+		NOBLES_RANK.remove(playerId);
+		
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps1 = con.prepareStatement("DELETE FROM olympiad_nobles WHERE charId=?");
+			PreparedStatement ps2 = con.prepareStatement("DELETE FROM olympiad_nobles_eom WHERE charId=?"))
+		{
+			ps1.setInt(1, playerId);
+			ps2.setInt(1, playerId);
+			ps1.execute();
+			ps2.execute();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.WARNING, "Olympiad System: Error removing noblesse data from database: ", e);
+		}
+	}
+	
 	private void updateCompStatus()
 	{
 		// _compStarted = false;

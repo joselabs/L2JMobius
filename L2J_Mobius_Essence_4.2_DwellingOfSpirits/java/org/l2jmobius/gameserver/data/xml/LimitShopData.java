@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.data.xml;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -90,7 +89,6 @@ public class LimitShopData implements IXmlReader
 							final int category = parseInteger(attrs, "category");
 							final int minLevel = parseInteger(attrs, "minLevel", 1);
 							final int maxLevel = parseInteger(attrs, "maxLevel", 999);
-							final boolean announce = parseBoolean(attrs, "announce", false);
 							final int[] ingredientIds = new int[3];
 							ingredientIds[0] = 0;
 							ingredientIds[1] = 0;
@@ -180,7 +178,7 @@ public class LimitShopData implements IXmlReader
 								}
 							}
 							
-							_products.add(new LimitShopProductHolder(id, category, minLevel, maxLevel, ingredientIds, ingredientQuantities, ingredientEnchants, productionId, 1, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, accountDailyLimit, accountBuyLimit, announce));
+							_products.add(new LimitShopProductHolder(id, category, minLevel, maxLevel, ingredientIds, ingredientQuantities, ingredientEnchants, productionId, 1, 100, false, 0, 0, 0, false, 0, 0, 0, false, 0, 0, 0, false, 0, 0, false, accountDailyLimit, accountBuyLimit));
 						}
 					}
 				}
@@ -200,7 +198,7 @@ public class LimitShopData implements IXmlReader
 		return null;
 	}
 	
-	public Collection<LimitShopProductHolder> getProducts()
+	public List<LimitShopProductHolder> getProducts()
 	{
 		return _products;
 	}

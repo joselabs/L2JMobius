@@ -47,7 +47,6 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.RelationChanged;
 import org.l2jmobius.gameserver.network.serverpackets.SiegeInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.util.Broadcast;
 
 /**
@@ -457,7 +456,7 @@ public class FortSiege
 					member.setSiegeState((byte) 1);
 				}
 				
-				member.sendPacket(new UserInfo(member));
+				member.updateUserInfo();
 				for (Player player : member.getKnownList().getKnownPlayers().values())
 				{
 					player.sendPacket(new RelationChanged(member, member.getRelation(player), member.isAutoAttackable(player)));
@@ -479,7 +478,7 @@ public class FortSiege
 					member.setSiegeState((byte) 2);
 				}
 				
-				member.sendPacket(new UserInfo(member));
+				member.updateUserInfo();
 				for (Player player : member.getKnownList().getKnownPlayers().values())
 				{
 					player.sendPacket(new RelationChanged(member, member.getRelation(player), member.isAutoAttackable(player)));

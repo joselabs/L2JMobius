@@ -37,7 +37,7 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.communitybbs.BB.Forum;
 import org.l2jmobius.gameserver.communitybbs.Manager.ForumsBBSManager;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
 import org.l2jmobius.gameserver.data.xml.SkillData;
@@ -1529,7 +1529,7 @@ public class Clan implements IIdentifiable, INamable
 			}
 			else
 			{
-				player.enableSkill(skill);
+				player.enableSkill(skill, false);
 			}
 		}
 		
@@ -1543,7 +1543,7 @@ public class Clan implements IIdentifiable, INamable
 				}
 				else
 				{
-					player.enableSkill(skill);
+					player.enableSkill(skill, false);
 				}
 			}
 		}
@@ -1560,7 +1560,7 @@ public class Clan implements IIdentifiable, INamable
 					}
 					else
 					{
-						player.enableSkill(skill);
+						player.enableSkill(skill, false);
 					}
 				}
 			}
@@ -2024,7 +2024,7 @@ public class Clan implements IIdentifiable, INamable
 				if (cm.isOnline() && (cm.getPowerGrade() == rank) && (cm.getPlayer() != null))
 				{
 					cm.getPlayer().getClanPrivileges().setBitmask(privs);
-					cm.getPlayer().sendPacket(new UserInfo(cm.getPlayer()));
+					cm.getPlayer().updateUserInfo();
 				}
 			}
 			broadcastClanStatus();
@@ -2411,7 +2411,7 @@ public class Clan implements IIdentifiable, INamable
 		setAllyPenaltyExpiryTime(0, 0);
 		updateClanInDB();
 		
-		player.sendPacket(new UserInfo(player));
+		player.updateUserInfo();
 		
 		// TODO: Need correct message id
 		player.sendMessage("Alliance " + allyName + " has been created.");
@@ -2839,7 +2839,7 @@ public class Clan implements IIdentifiable, INamable
 	
 	public String getNewLeaderName()
 	{
-		return CharNameTable.getInstance().getNameById(_newLeaderId);
+		return CharInfoTable.getInstance().getNameById(_newLeaderId);
 	}
 	
 	public int getSiegeKills()

@@ -17,6 +17,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48402" name="Test_Count Items 1" type="EtcItem">
 		<!-- Specified Usage Count Item -->
@@ -137,6 +138,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48401" min="10" max="10" chance="100" /> <!-- Scroll: Release Item Seal - 15-min. -->
+		</capsuled_items>
 	</item>
 	<item id="48412" name="Scroll of Escape: Aden" type="EtcItem">
 		<!-- Use to move to the Town of Aden. -->
@@ -1026,6 +1032,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38855" min="1" max="1" chance="100" /> <!-- Ruby Lv. 1 -->
+			<item id="36094" min="45" max="45" chance="100" /> <!-- Vitality Replenishing Star Candy -->
+			<item id="80666" min="30" max="30" chance="100" /> <!-- Fried Fish - P. Atk. -->
+			<item id="39634" min="1" max="1" chance="100" /> <!-- Venir's Talisman Lv. 1 -->
+		</capsuled_items>
 	</item>
 	<item id="48471" name="Adventure Guild Supply Box" type="EtcItem">
 		<!-- A supply box received from Herphah for completing the Adventure Guild missions. Double-click to obtain a variety of supply items. -->
@@ -1036,6 +1049,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38927" min="1" max="1" chance="100" /> <!-- Sapphire Lv. 1 -->
+			<item id="36094" min="45" max="45" chance="100" /> <!-- Vitality Replenishing Star Candy -->
+			<item id="80667" min="30" max="30" chance="100" /> <!-- Steamed Fish - M. Atk. -->
+			<item id="39634" min="1" max="1" chance="100" /> <!-- Venir's Talisman Lv. 1 -->
+		</capsuled_items>
 	</item>
 	<item id="48472" name="Einhasad's Golden Coin" type="EtcItem">
 		<!-- Mysterious coin, filled with Einhasad's light. -->
@@ -1054,6 +1074,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48472" min="500" max="500" chance="100" /> <!-- Einhasad's Golden Coin -->
+		</capsuled_items>
 	</item>
 	<item id="48474" name="Night Goblin's Coin (800) Box" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain 800 Night Goblin's Coins. -->
@@ -1065,6 +1089,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48472" min="800" max="800" chance="100" /> <!-- Einhasad's Golden Coin -->
+		</capsuled_items>
 	</item>
 	<item id="48475" name="Night Goblin's Coin (2000) Box" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain 2000 Night Goblin's Coins. -->
@@ -1076,6 +1104,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48472" min="2000" max="2000" chance="100" /> <!-- Einhasad's Golden Coin -->
+		</capsuled_items>
 	</item>
 	<item id="48476" name="Dark/ Bloody Weapon Enhancement Stone Pack" type="EtcItem">
 		<!-- Use it to obtain a Dark Weapon Enhancement Stone or Bloody Weapon Enhancement Stone. -->
@@ -1116,6 +1148,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="17526" min="1" max="1" chance="100" /> <!-- Scroll: Enchant R-grade Weapon -->
+			<item id="17527" min="1" max="1" chance="100" /> <!-- Scroll: Enchant R-grade Armor -->
+		</capsuled_items>
 	</item>
 	<item id="48480" name="Package: +8 Shiny Elemental Shirt" type="EtcItem">
 		<!-- Double-click to get a +8 Shiny Elemental Shirt. -->
@@ -1157,7 +1194,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48483" name="PA +7 Shiny Elemental Shirt" additionalName="2-hour" type="Armor">
-		<!-- PA only A shining magic T-shirt imbued with Einhasad's energy. <Item skill> M. Def. +15 Speed +7 Max HP +536, Max MP +536, Skill MP Consumption -3%, Damage Reflection Resistance +5, Fire/ Wind/ Earth/ Holy/ Dark/ Water Resistance +24, STR +3, DEX +3, CON +3, INT +3, WIT +3, MEN +3 <Active skills> Einhasad's Wrath/ Einhasad's Protection Cannot be enchanted. -->
+		<!-- PA only. A shining magic T-shirt imbued with Einhasad's energy. <Item skill>. M. Def. +15. Speed +7. Max HP +536, Max MP +536, Skill MP Consumption -3%, Damage Reflection Resistance +5, Fire/ Wind/ Earth/ Holy/ Dark/ Water Resistance +24, STR +3, DEX +3, CON +3, INT +3, WIT +3, MEN +3. <Active skills>. Einhasad's Wrath/ Einhasad's Protection. Cannot be enchanted. -->
 		<set name="icon" val="icon.ainhasard_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -1173,7 +1210,7 @@
 		</stats>
 	</item>
 	<item id="48484" name="+7 Physical Reflect Shirt - PA" additionalName="2-hour" type="Armor">
-		<!-- PA. A magical t-shirt specialized for physical defense. <Item Skill> M. Def. +15. Speed +7. Max HP/ MP +536. Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24. STR/ DEX/ CON/ INT/ WIT/ MEN +3. P. Def. +8%. Received Critical Damage from standard attacks -12%. Has a 7% chance to reflect physical skill debuffs. Cannot be enchanted. -->
+		<!-- PA. A magical t-shirt specialized for physical defense. <Item Skill>. M. Def. +15. Speed +7. Max HP/ MP +536. Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24. STR/ DEX/ CON/ INT/ WIT/ MEN +3. P. Def. +8%. Received Critical Damage from standard attacks -12%. Has a 7% chance to reflect physical skill debuffs. Cannot be enchanted. -->
 		<set name="icon" val="icon.reflect_attack_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -1189,7 +1226,7 @@
 		</stats>
 	</item>
 	<item id="48485" name="+7 Magical Reflect Shirt - PA" additionalName="2-hour" type="Armor">
-		<!-- PA. A magical t-shirt for M. Def. <Item Skill> M. Def. +15. Speed +7. Max HP/ MP +536. Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24. STR/ DEX/ CON/ INT/ WIT/ MEN +3. M. Def. +8%. Received M. Skill Critical Damage -12%. Has a 7% chance to reflect magical skill debuffs. Cannot be enchanted. -->
+		<!-- PA. A magical t-shirt for M. Def. <Item Skill>. M. Def. +15. Speed +7. Max HP/ MP +536. Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24. STR/ DEX/ CON/ INT/ WIT/ MEN +3. M. Def. +8%. Received M. Skill Critical Damage -12%. Has a 7% chance to reflect magical skill debuffs. Cannot be enchanted. -->
 		<set name="icon" val="icon.reflect_magic_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="chest" />
@@ -1205,7 +1242,7 @@
 		</stats>
 	</item>
 	<item id="48486" name="Sayha Talisman Lv. 6" additionalName="Event" type="Armor">
-		<!-- When equipped, grants Sayha's power: P. Def. +1126, M. Def. +736, acquired XP/ SP +10%. If equipped with Venir's Talisman Lv. 12+ or Soul Talisman Lv. 1+: Skill Power +3%, Skill Cooldown -3%. Active skills: Sayha's Grace Lv. 1 Sayha's Encouragement Lv. 1 Effects of two identical talismans do not stack, the higher-level talisman takes precedence. -->
+		<!-- When equipped, grants Sayha's power: P. Def. +1126, M. Def. +736, acquired XP/ SP +10%. If equipped with Venir's Talisman Lv. 12+ or Soul Talisman Lv. 1+: Skill Power +3%, Skill Cooldown -3%. Active skills:. Sayha's Grace Lv. 1. Sayha's Encouragement Lv. 1. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. -->
 		<set name="icon" val="icon.bm_sayhas_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1262,7 +1299,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="48491" name="Dragon Skin Shirt" type="Armor">
-		<!-- Dragon Skin Shirt. <Enchanting> Use Blessed Scroll: Enchant Dragon Shirt. <Enhancing> Take the shirt enchanted to +5 and a Crystal of Dawn to the Head Blacksmith in any town to get a Dragon Leather Shirt. -->
+		<!-- Dragon Skin Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. <Enhancing>. Take the shirt enchanted to +5 and a Crystal of Dawn to the Head Blacksmith in any town to get a Dragon Leather Shirt. -->
 		<set name="icon" val="icon.bm_dragon_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1286,7 +1323,7 @@
 		</stats>
 	</item>
 	<item id="48492" name="Dragon Leather Shirt" type="Armor">
-		<!-- Dragon Leather Shirt. <Enchanting> Use Blessed Scroll: Enchant Dragon Shirt. <Enhancing> Take the shirt enchanted to +5 and a Crystal of Dawn to the Head Blacksmith in any town to get a Dragon Rind Leather Shirt. -->
+		<!-- Dragon Leather Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. <Enhancing>. Take the shirt enchanted to +5 and a Crystal of Dawn to the Head Blacksmith in any town to get a Dragon Rind Leather Shirt. -->
 		<set name="icon" val="icon.bm_dragon_leather_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1310,7 +1347,7 @@
 		</stats>
 	</item>
 	<item id="48493" name="Dragon Rind Leather Shirt" type="Armor">
-		<!-- Valuable Dragon Rind Leather Shirt. <Enchanting> Use Blessed Scroll: Enchant Dragon Shirt. Can be enchanted. -->
+		<!-- Valuable Dragon Rind Leather Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. Can be enchanted. -->
 		<set name="icon" val="icon.bm_dragon_rind_leather_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1397,7 +1434,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="immediate_effect" val="true" />
-		<set name="is_stackable" val="true" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
 			<skill id="39203" level="1" /> <!-- Blessed Scroll: Enchant Dragon Shirt -->

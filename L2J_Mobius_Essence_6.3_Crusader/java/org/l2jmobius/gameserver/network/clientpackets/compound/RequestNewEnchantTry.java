@@ -86,7 +86,7 @@ public class RequestNewEnchantTry implements ClientPacket
 			return;
 		}
 		
-		final CombinationItem combinationItem = CombinationItemsData.getInstance().getItemsBySlots(itemOne.getId(), itemOne.getEnchantLevel(), itemTwo.getId());
+		final CombinationItem combinationItem = CombinationItemsData.getInstance().getItemsBySlots(itemOne.getId(), itemOne.getEnchantLevel(), itemTwo.getId(), itemTwo.getEnchantLevel());
 		
 		// Not implemented or not able to merge!
 		if (combinationItem == null)
@@ -110,7 +110,7 @@ public class RequestNewEnchantTry implements ClientPacket
 		final CombinationItemReward rewardItem = combinationItem.getReward(success ? CombinationItemType.ON_SUCCESS : CombinationItemType.ON_FAILURE);
 		
 		// Add item (early).
-		final Item item = player.addItem("Compound-Result", rewardItem.getId(), rewardItem.getCount(), null, true);
+		final Item item = player.addItem("Compound-Result", rewardItem.getId(), rewardItem.getCount(), rewardItem.getEnchantLevel(), null, true);
 		
 		// Send success or fail packet.
 		if (success)

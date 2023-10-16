@@ -17,10 +17,7 @@
 package org.l2jmobius.gameserver.network.serverpackets.limitshop;
 
 import java.util.Collection;
-import java.util.Collections;
 
-import org.l2jmobius.gameserver.data.xml.LimitShopCraftData;
-import org.l2jmobius.gameserver.data.xml.LimitShopData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.LimitShopProductHolder;
 import org.l2jmobius.gameserver.model.variables.AccountVariables;
@@ -32,38 +29,22 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
  */
 public class ExPurchaseLimitShopItemListNew extends ServerPacket
 {
-	private final int _shopType; // 3 Lcoin Store, 4 Special Craft
 	private final Player _player;
+	private final int _shopType; // 3 Lcoin Store, 4 Special Craft
 	private final Collection<LimitShopProductHolder> _products;
 	
-	public ExPurchaseLimitShopItemListNew(int shopType, Player player)
+	public ExPurchaseLimitShopItemListNew(Player player, int shopType, Collection<LimitShopProductHolder> products)
 	{
-		_shopType = shopType;
 		_player = player;
-		switch (shopType)
-		{
-			case 3: // Normal Lcoin Shop
-			{
-				_products = LimitShopData.getInstance().getProducts();
-				break;
-			}
-			case 4: // Lcoin Special Craft
-			{
-				_products = LimitShopCraftData.getInstance().getProducts();
-				break;
-			}
-			default:
-			{
-				_products = Collections.emptyList();
-			}
-		}
+		_shopType = shopType;
+		_products = products;
 	}
 	
 	@Override
 	public void write()
 	{
 		ServerPackets.EX_PURCHASE_LIMIT_SHOP_ITEM_LIST_NEW.writeId(this);
-		writeByte(_shopType); //
+		writeByte(_shopType);
 		writeInt(_products.size());
 		for (LimitShopProductHolder product : _products)
 		{

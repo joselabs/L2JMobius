@@ -18,9 +18,7 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
-import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExReplyPostItemList;
 
 /**
@@ -42,11 +40,11 @@ public class RequestPostItemList implements ClientPacket
 			return;
 		}
 		
-		if (!player.isInsideZone(ZoneId.PEACE))
-		{
-			player.sendPacket(SystemMessageId.THE_MAILBOX_FUNCTIONS_CAN_BE_USED_ONLY_IN_PEACE_ZONES_OUTSIDE_OF_THEM_YOU_CAN_ONLY_CHECK_ITS_CONTENTS);
-			return;
-		}
+		// if (!player.isInsideZone(ZoneId.PEACE))
+		// {
+		// player.sendPacket(SystemMessageId.THE_MAILBOX_FUNCTIONS_CAN_BE_USED_ONLY_IN_PEACE_ZONES_OUTSIDE_OF_THEM_YOU_CAN_ONLY_CHECK_ITS_CONTENTS);
+		// return;
+		// }
 		
 		player.sendPacket(new ExReplyPostItemList(1, player));
 		player.sendPacket(new ExReplyPostItemList(2, player));

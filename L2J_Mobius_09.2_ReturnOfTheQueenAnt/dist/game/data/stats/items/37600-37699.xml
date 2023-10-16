@@ -52,6 +52,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37556" min="1" max="1" chance="100" /> <!-- Promise Cube - 100-day -->
+		</capsuled_items>
 	</item>
 	<item id="37607" name="Treasure Chest" additionalName="Western Winds" type="EtcItem">
 		<!-- Double-click to obtain one of the following items: Hair Accessory Pack, Pendant Pack, Enchant Scroll Pack, Attribute Stone Pack, Ingredient Box. -->
@@ -209,7 +213,7 @@
 		</capsuled_items>
 	</item>
 	<item id="37613" name="Hero's Treasure Chest" additionalName="Western Winds" type="EtcItem">
-		<!-- Double-click to obtain one of the following items: Hero's Lucky Enchant Stone Pack, Hero's Giant Enchant Scroll Pack, Hero's Blessed Enchant Scroll Pack, Hero's Unbind Scroll Pack, Hero's Attribute Crystal Pack, PK Pack, Reputation Pack, Mysterious Shot Box, Kaliel's Energy Box, Soul Bottle Pack, Spirit Stone Pack. -->
+		<!-- Double-click to obtain one of the following items: Hero's Enchant Stone Pack, Hero's Giant Enchant Scroll Pack, Hero's Blessed Enchant Scroll Pack, Hero's Unbind Scroll Pack, Hero's Attribute Crystal Pack, PK Pack, Reputation Pack, Mysterious Shot Box, Kaliel's Energy Box, Soul Bottle Pack, Spirit Stone Pack. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
@@ -225,7 +229,7 @@
 			<item id="37623" min="1" max="1" chance="4.05" /> <!-- Soul Bottle Pack - Western Winds -->
 			<item id="37619" min="1" max="1" chance="6" /> <!-- PK Pack - Western Winds -->
 			<item id="37616" min="1" max="1" chance="4" /> <!-- Hero's Blessed Enchant Scroll Pack - Western Winds -->
-			<item id="37614" min="1" max="1" chance="6" /> <!-- Hero's Lucky Enchant Stone Pack - Western Winds -->
+			<item id="37614" min="1" max="1" chance="6" /> <!-- Hero's Enchant Stone Pack - Western Winds -->
 			<item id="37618" min="1" max="1" chance="12" /> <!-- Hero's Attribute Crystal Pack - Western Winds -->
 			<item id="37615" min="1" max="1" chance="4" /> <!-- Hero's Giant Enchant Scroll Pack - Western Winds -->
 			<item id="37617" min="1" max="1" chance="7" /> <!-- Hero's Unbind Scroll Pack - Western Winds -->
@@ -236,7 +240,7 @@
 		</capsuled_items>
 	</item>
 	<item id="37614" name="Hero's Enchant Stone Pack" additionalName="Western Winds" type="EtcItem">
-		<!-- Double-click to obtain a Lucky Enchant Stone (S or R-grade). -->
+		<!-- Double-click to obtain an S-/ R-grade Enchant Stone. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
@@ -248,10 +252,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="33861" min="1" max="1" chance="20" /> <!-- Lucky Enchant Stone: R-grade Armor - Event -->
-			<item id="33860" min="1" max="1" chance="46" /> <!-- Lucky Enchant Stone: S-grade Armor - Event -->
-			<item id="33855" min="1" max="1" chance="10" /> <!-- Lucky Enchant Stone: R-grade Weapon - Event -->
-			<item id="33854" min="1" max="1" chance="24" /> <!-- Lucky Enchant Stone: S-grade Weapon - Event -->
+			<item id="33861" min="1" max="1" chance="20" /> <!-- Stone: Enchant R-grade Armor - Event -->
+			<item id="33860" min="1" max="1" chance="46" /> <!-- Stone: Enchant S-grade Armor - Event -->
+			<item id="33855" min="1" max="1" chance="10" /> <!-- Stone: Enchant R-grade Weapon - Event -->
+			<item id="33854" min="1" max="1" chance="24" /> <!-- Stone: Enchant S-grade Weapon - Event -->
 		</capsuled_items>
 	</item>
 	<item id="37615" name="Hero's Giant Enchant Scroll Pack" additionalName="Western Winds" type="EtcItem">
@@ -459,7 +463,7 @@
 		<set name="material" val="LEATHER" />
 	</item>
 	<item id="37626" name="Package: Mysterious Blessed R-grade Spiritshots" type="EtcItem">
-		<!-- Spiritshots increase M. Atk. Double-click to obtain 10,000 Mysterious Blessed Spiritshots. Can be used with R-grade weapons. -->
+		<!-- Spiritshots ncrease weapons' magic power. Double-click to obtain 10,000 Mysterious Blessed Spiritshots. Used with R-grade weapons. -->
 		<set name="icon" val="icon.br_cash_pack_of_spiritshot_r_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -478,7 +482,7 @@
 		</capsuled_items>
 	</item>
 	<item id="37627" name="Package: Mysterious R-grade Soulshots" type="EtcItem">
-		<!-- Spiritshots increase M. Atk. Double-click to obtain 20,000 Mysterious Blessed Spiritshots. Can be used with R-grade weapons. -->
+		<!-- Soulshots increase weapons' physical power. Double-click to obtain 20,000 Mysterious Soulshots. Used with R-grade weapons. -->
 		<set name="icon" val="icon.br_cash_pack_of_soulshot_r_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1396,6 +1400,10 @@
 		<set name="is_freightable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37659" min="3" max="3" chance="100" /> <!-- Mysterious Healthy Juice (HP/CP) -->
+		</capsuled_items>
 	</item>
 	<item id="37659" name="Mysterious Healthy Juice (HP/CP)" type="EtcItem">
 		<!-- Mysterious juice that momentarily replenishes 30,000 HP and CP. Cannot be used in the Olympiad or Ceremony of Chaos. -->
@@ -1518,9 +1526,16 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37667" min="1" max="1" chance="100" /> <!-- Blessed Antharas' Earring - 30-day -->
+			<item id="37668" min="1" max="1" chance="100" /> <!-- Blessed Valakas' Necklace - 30-day -->
+			<item id="37669" min="1" max="1" chance="100" /> <!-- Tauti's Ring - 30-day -->
+			<item id="37670" min="1" max="1" chance="100" /> <!-- Earth Wyrm's Heart Ring - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="37667" name="Blessed Antharas' Earring" additionalName="30-day" type="Armor">
-		<!-- MP +59. P./ M. Def. +15%. CON/ MEN +3. Earth/ Holy Resistance +30. Infection Atk. Rate/ Resistance +50%, Confusion Atk. Rate/ Resistance +40%. Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage +4%. Active skill: removes the Stun effect and grants immune to Confusion for 5 sec. The effect doesn't stack if two identical earrings are equipped. -->
+		<!-- MP +59, P./ M. Def. +15%, CON/ MEN +3, Holy/ Earth Resistance +30, Infection Atk. Rate and Resistance +50%, Confusion Atk. Rate and Resistance +40%, Received Healing +10%, Skill MP Consumption -5%, Vampiric Rage effect +4%. Active skill: removes Shock debuffs and grants immunity to Confusion for 5 sec. Effects of two identical earrings do not stack. -->
 		<set name="icon" val="icon.bm_earring_of_antaras" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -1603,7 +1618,7 @@
 		</stats>
 	</item>
 	<item id="37671" name="Heavenly Recovery Potion" type="EtcItem">
-		<!-- When used, recovers 2500 HP, also recovers CP. There is no cooldown. Cannot be used in the Olympiad. -->
+		<!-- When used, recovers 2500 HP. If HP is full, recovers CP. No cooldown. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.etc_recall_potion2" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
@@ -1639,6 +1654,10 @@
 		<set name="is_freightable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="37672" min="1" max="1" chance="100" /> <!-- Mysterious Friend Summon Bracelet - 30-day -->
+		</capsuled_items>
 	</item>
 	<item id="37674" name="Scroll: Modify Demonic Sword Zariche" type="EtcItem">
 		<!-- A scroll that changes the appearance of a two-handed sword to that of Demonic Sword Zariche. 30-day. -->

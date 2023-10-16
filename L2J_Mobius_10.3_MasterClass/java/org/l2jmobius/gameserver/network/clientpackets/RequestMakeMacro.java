@@ -32,7 +32,7 @@ public class RequestMakeMacro implements ClientPacket
 	private Macro _macro;
 	private int _commandsLength = 0;
 	
-	private static final int MAX_MACRO_LENGTH = 12;
+	private static final int MAX_MACRO_LENGTH = 20;
 	
 	@Override
 	public void read(ReadablePacket packet)

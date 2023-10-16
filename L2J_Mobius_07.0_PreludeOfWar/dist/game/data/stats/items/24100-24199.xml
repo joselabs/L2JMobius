@@ -846,6 +846,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="19440" min="5266" max="5266" chance="100" /> <!-- Gemstone (R-grade) -->
+		</capsuled_items>
 	</item>
 	<item id="24145" name="Rare Soul Crystal Ingredient Pack (R95-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing all Gemstones required for rare soul crystal enchantment of a Specter weapon. -->
@@ -857,6 +861,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="19440" min="1249" max="1249" chance="100" /> <!-- Gemstone (R-grade) -->
+		</capsuled_items>
 	</item>
 	<item id="24146" name="Top-grade Augmentation Pack (R99-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Top-grade Life Stone (R99-grade) and all fees required for augmentation and de-augmentation. -->
@@ -871,8 +879,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="57" min="6485800" max="6485800" chance="100" /> <!-- Adena -->
-			<item id="2133" min="118" max="118" chance="100" /> <!-- A-grade Gemstone -->
-			<item id="45932" min="1" max="1" chance="100" /> <!-- Top-grade Augmenting Stone: Weapon -->
+			<item id="2133" min="118" max="118" chance="100" /> <!-- Gemstone (A-grade) -->
+			<item id="45932" min="1" max="1" chance="100" /> <!-- Top-grade Spirit Stone -->
 		</capsuled_items>
 	</item>
 	<item id="24147" name="Top-grade Augmentation Pack (R95-grade)" type="EtcItem">
@@ -888,12 +896,12 @@
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="57" min="2943200" max="2943200" chance="100" /> <!-- Adena -->
-			<item id="2133" min="45" max="45" chance="100" /> <!-- A-grade Gemstone -->
-			<item id="45931" min="1" max="1" chance="100" /> <!-- High-grade Augmenting Stone: Weapon -->
+			<item id="2133" min="45" max="45" chance="100" /> <!-- Gemstone (A-grade) -->
+			<item id="45931" min="1" max="1" chance="100" /> <!-- High-grade Spirit Stone -->
 		</capsuled_items>
 	</item>
 	<item id="24148" name="Wondrous Casket" additionalName="Taurus" type="EtcItem">
-		<!-- Has a chance of obtaining either a Sealed Talisman - Longing, Immortal Scroll, Talisman - Abundance, Elycum, Energy of Destruction 20-unit Pack, Giant's Energy, Top-grade Augmentation Pack (R95-grade), Top-grade Augmentation Pack (R99-grade), or Agathion - Taurus. -->
+		<!-- Double-click to obtain one of the following items: Sealed Talisman - Longing, Immortal Scroll, Talisman - Abundance, Elycum, Energy of Destruction 20-unit Pack, Giant's Energy, Top-grade Augmentation Pack (R95-grade), Top-grade Augmentation Pack (R99-grade), Agathion - Taurus. -->
 		<set name="icon" val="icon.event_big_july_seven_park_i00" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />
@@ -904,18 +912,18 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="24146" min="1" max="1" chance="8.333333333333334" /> <!-- Package: Top-grade Augmenting Stone -->
-			<item id="24147" min="1" max="1" chance="8.333333333333334" /> <!-- Package: High-grade Augmenting Stone -->
-			<item id="35649" min="1" max="1" chance="8.333333333333334" /> <!-- Sealed Talisman of Longing -->
-			<item id="38762" min="1" max="1" chance="8.333333333333334" /> <!-- Destructive Energy 20-unit Pack -->
-			<item id="23833" min="1" max="1" chance="8.333333333333334" /> <!-- Talisman of Abundance [War] -->
-			<item id="23834" min="1" max="1" chance="8.333333333333334" /> <!-- Talisman of Abundance [Tactics] -->
-			<item id="23835" min="1" max="1" chance="8.333333333333334" /> <!-- Talisman of Abundance [Esprit] -->
-			<item id="23836" min="1" max="1" chance="8.333333333333334" /> <!-- Talisman of Abundance [Physique] -->
+			<item id="24146" min="1" max="1" chance="8.333333333333334" /> <!-- Top-grade Augmentation Pack (R99-grade) -->
+			<item id="24147" min="1" max="1" chance="8.333333333333334" /> <!-- Top-grade Augmentation Pack (R95-grade) -->
+			<item id="35649" min="1" max="1" chance="8.333333333333334" /> <!-- Sealed Talisman - Longing -->
+			<item id="38762" min="1" max="1" chance="8.333333333333334" /> <!-- Energy of Destruction 20-unit Pack -->
+			<item id="23833" min="1" max="1" chance="8.333333333333334" /> <!-- Talisman - Abundance - War -->
+			<item id="23834" min="1" max="1" chance="8.333333333333334" /> <!-- Talisman - Abundance - Tactics -->
+			<item id="23835" min="1" max="1" chance="8.333333333333334" /> <!-- Talisman - Abundance - Morale -->
+			<item id="23836" min="1" max="1" chance="8.333333333333334" /> <!-- Talisman - Abundance - Physique -->
 			<item id="35563" min="10" max="10" chance="8.333333333333334" /> <!-- Giant's Energy -->
 			<item id="36515" min="1" max="1" chance="8.333333333333334" /> <!-- Elcyum -->
 			<item id="37044" min="1" max="1" chance="8.333333333333334" /> <!-- Immortal Scroll -->
-			<item id="24037" min="1" max="1" chance="8.333333333333343" /> <!-- Agathion Taurus [Lv. 1] -->
+			<item id="24037" min="1" max="1" chance="8.333333333333343" /> <!-- Agathion - Taurus - Lv. 1 -->
 		</capsuled_items>
 	</item>
 	<item id="24149" name="Vintage Casket" type="EtcItem">
@@ -930,25 +938,25 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="19447" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed Scroll: Enchant R-grade Weapon -->
-			<item id="19448" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed Scroll: Enchant R-grade Armor -->
-			<item id="23342" min="1" max="1" chance="5.2631578947368425" /> <!-- Ancient Crystal: Enchant R-grade Weapon -->
-			<item id="23344" min="1" max="1" chance="5.2631578947368425" /> <!-- Ancient Crystal: Enchant R-grade Armor -->
-			<item id="23646" min="1" max="1" chance="5.2631578947368425" /> <!-- High-grade Stone: Enchant R-grade Weapon -->
-			<item id="23647" min="1" max="1" chance="5.2631578947368425" /> <!-- High-grade Stone: Enchant R-grade Armor -->
-			<item id="24341" min="1" max="1" chance="5.2631578947368425" /> <!-- Package: Blessed Giant's Stone: Enchant R-grade Weapon -->
-			<item id="24342" min="1" max="1" chance="5.2631578947368425" /> <!-- Package: Blessed Giant's Stone: Enchant R-grade Armor -->
-			<item id="24343" min="1" max="1" chance="5.2631578947368425" /> <!-- Package: Blessed Stone: Enchant R-grade Weapon -->
-			<item id="24344" min="1" max="1" chance="5.2631578947368425" /> <!-- Package: Lesser Giant's Stone: Enchant R-grade Weapon -->
-			<item id="24345" min="1" max="1" chance="5.2631578947368425" /> <!-- Package: Blessed Stone: Enchant R-grade Armor -->
-			<item id="24346" min="1" max="1" chance="5.2631578947368425" /> <!-- Package: Lesser Giant's Stone: Enchant R-grade Armor -->
-			<item id="24347" min="1" max="1" chance="5.2631578947368425" /> <!-- Package: Scroll: Enchant R-grade Weapon -->
-			<item id="24348" min="3" max="3" chance="5.2631578947368425" /> <!-- Package: Scroll: Enchant R-grade Armor -->
-			<item id="36163" min="1" max="1" chance="5.2631578947368425" /> <!-- Giant's Scroll: Enchant R-grade Weapon [Event] -->
-			<item id="36164" min="1" max="1" chance="5.2631578947368425" /> <!-- Giant's Scroll: Enchant R-grade Armor [Event] -->
-			<item id="38757" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed High-grade Stone: Enchant R-grade Weapon -->
-			<item id="38758" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed High-grade Stone: Enchant R-grade Armor -->
-			<item id="24148" min="1" max="1" chance="5.263157894736793" /> <!-- Wondrous Casket [Taurus] -->
+			<item id="19447" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+			<item id="19448" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+			<item id="23342" min="1" max="1" chance="5.2631578947368425" /> <!-- Ancient Scroll: Enchant Weapon (R-grade) -->
+			<item id="23344" min="1" max="1" chance="5.2631578947368425" /> <!-- Ancient Scroll: Enchant Armor (R-grade) -->
+			<item id="23646" min="1" max="1" chance="5.2631578947368425" /> <!-- High-grade Lucky Enchant Stone: Weapon (R-grade) -->
+			<item id="23647" min="1" max="1" chance="5.2631578947368425" /> <!-- High-grade Lucky Enchant Stone: Armor (R-grade) -->
+			<item id="24341" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed Giant's Lucky Enchant Stone: Weapon Pack (R-grade) -->
+			<item id="24342" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed Giant's Lucky Enchant Stone: Armor Pack (R-grade) -->
+			<item id="24343" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed Lucky Enchant Stone: Weapon Pack (R-grade) -->
+			<item id="24344" min="1" max="1" chance="5.2631578947368425" /> <!-- Lesser Giant's Lucky Enchant Stone: Weapon Pack (R-grade) -->
+			<item id="24345" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed Lucky Enchant Stone: Armor Pack (R-grade) -->
+			<item id="24346" min="1" max="1" chance="5.2631578947368425" /> <!-- Lesser Giant's Lucky Enchant Stone: Armor Pack (R-grade) -->
+			<item id="24347" min="1" max="1" chance="5.2631578947368425" /> <!-- Scroll: Enchant Weapon Pack (R-grade) -->
+			<item id="24348" min="3" max="3" chance="5.2631578947368425" /> <!-- Scroll: Enchant Armor Pack (R-grade) -->
+			<item id="36163" min="1" max="1" chance="5.2631578947368425" /> <!-- Giant's Scroll: Enchant Weapon (R-grade) - Event -->
+			<item id="36164" min="1" max="1" chance="5.2631578947368425" /> <!-- Giant's Scroll: Enchant Armor (R-grade) - Event -->
+			<item id="38757" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed High-grade Lucky Enchant Stone: Weapon (R-grade) -->
+			<item id="38758" min="1" max="1" chance="5.2631578947368425" /> <!-- Blessed High-grade Lucky Enchant Stone: Armor (R-grade) -->
+			<item id="24148" min="1" max="1" chance="5.263157894736793" /> <!-- Wondrous Casket - Taurus -->
 		</capsuled_items>
 	</item>
 	<item id="24150" name="Shabby Casket" type="EtcItem">
@@ -963,19 +971,19 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="23147" min="1" max="1" chance="7.142857142857143" /> <!-- Ghost Potion [Event] -->
+			<item id="23147" min="1" max="1" chance="7.142857142857143" /> <!-- Ghost Potion - Event -->
 			<item id="23346" min="1" max="1" chance="7.142857142857143" /> <!-- Letter Collector's Gift -->
-			<item id="23439" min="1" max="1" chance="7.142857142857143" /> <!-- Package: Feather of Blessing (1 pc.) -->
-			<item id="24349" min="1" max="1" chance="7.142857142857143" /> <!-- Package: XP Rune 100% (30-day) -->
-			<item id="24350" min="1" max="1" chance="7.142857142857143" /> <!-- Package: High-grade Maphr's Rune 100% [30-day] -->
+			<item id="23439" min="1" max="1" chance="7.142857142857143" /> <!-- Feather of Blessing Pack -->
+			<item id="24349" min="1" max="1" chance="7.142857142857143" /> <!-- XP Rune III (Lv. 1-100+) 100% Pack (30-day) -->
+			<item id="24350" min="1" max="1" chance="7.142857142857143" /> <!-- High-grade Maphr's Rune 100% Pack - 30 days -->
 			<item id="37563" min="1" max="1" chance="7.142857142857143" /> <!-- Emperor's Growth Scroll -->
-			<item id="37659" min="2" max="2" chance="7.142857142857143" /> <!-- Mysterious Healthy Juice (HP/CP) -->
+			<item id="37659" min="2" max="2" chance="7.142857142857143" /> <!-- Mysterious Healthy Juice (HP/ CP) -->
 			<item id="37671" min="5" max="5" chance="7.142857142857143" /> <!-- Heavenly Recovery Potion -->
 			<item id="37906" min="1" max="1" chance="7.142857142857143" /> <!-- Kat the Cat's Box of Roses -->
-			<item id="19440" min="500" max="500" chance="7.142857142857143" /> <!-- R-grade Gemstone -->
-			<item id="19440" min="50" max="50" chance="7.142857142857143" /> <!-- R-grade Gemstone -->
-			<item id="19440" min="5" max="5" chance="7.142857142857143" /> <!-- R-grade Gemstone -->
-			<item id="24148" min="1" max="1" chance="7.142857142857143" /> <!-- Wondrous Casket [Taurus] -->
+			<item id="19440" min="500" max="500" chance="7.142857142857143" /> <!-- Gemstone (R-grade) -->
+			<item id="19440" min="50" max="50" chance="7.142857142857143" /> <!-- Gemstone (R-grade) -->
+			<item id="19440" min="5" max="5" chance="7.142857142857143" /> <!-- Gemstone (R-grade) -->
+			<item id="24148" min="1" max="1" chance="7.142857142857143" /> <!-- Wondrous Casket - Taurus -->
 			<item id="24149" min="1" max="1" chance="7.142857142857153" /> <!-- Vintage Casket -->
 		</capsuled_items>
 	</item>
@@ -992,10 +1000,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="23989" min="1" max="1" chance="50" /> <!-- Agathion - Virgo (Lv.1) -->
-			<item id="23990" min="1" max="1" chance="35" /> <!-- Agathion - Virgo (Lv.2) -->
-			<item id="23991" min="1" max="1" chance="10" /> <!-- Agathion - Virgo (Lv.3) -->
-			<item id="23992" min="1" max="1" chance="5" /> <!-- Agathion - Virgo (Lv.4) -->
+			<item id="23989" min="1" max="1" chance="50" /> <!-- Agathion - Virgo - Lv. 1 -->
+			<item id="23990" min="1" max="1" chance="35" /> <!-- Agathion - Virgo - Lv. 2 -->
+			<item id="23991" min="1" max="1" chance="10" /> <!-- Agathion - Virgo - Lv. 3 -->
+			<item id="23992" min="1" max="1" chance="5" /> <!-- Agathion - Virgo - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24152" name="Agathion - Virgo Pack (Mid-grade)" type="EtcItem">
@@ -1011,8 +1019,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="23993" min="1" max="1" chance="90" /> <!-- Agathion - Virgo (Lv.5) -->
-			<item id="23994" min="1" max="1" chance="10" /> <!-- Agathion - Virgo (Lv.6) -->
+			<item id="23993" min="1" max="1" chance="90" /> <!-- Agathion - Virgo - Lv. 5 -->
+			<item id="23994" min="1" max="1" chance="10" /> <!-- Agathion - Virgo - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24153" name="Agathion - Virgo Pack (High-grade)" type="EtcItem">
@@ -1042,10 +1050,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24001" min="1" max="1" chance="50" /> <!-- Agathion - Capricorn (Lv.1) -->
-			<item id="24002" min="1" max="1" chance="35" /> <!-- Agathion - Capricorn (Lv.2) -->
-			<item id="24003" min="1" max="1" chance="10" /> <!-- Agathion - Capricorn (Lv.3) -->
-			<item id="24004" min="1" max="1" chance="5" /> <!-- Agathion - Capricorn (Lv.4) -->
+			<item id="24001" min="1" max="1" chance="50" /> <!-- Agathion - Capricorn - Lv. 1 -->
+			<item id="24002" min="1" max="1" chance="35" /> <!-- Agathion - Capricorn - Lv. 2 -->
+			<item id="24003" min="1" max="1" chance="10" /> <!-- Agathion - Capricorn - Lv. 3 -->
+			<item id="24004" min="1" max="1" chance="5" /> <!-- Agathion - Capricorn - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24155" name="Agathion - Capricorn Pack (Mid-grade)" type="EtcItem">
@@ -1061,8 +1069,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24005" min="1" max="1" chance="90" /> <!-- Agathion - Capricorn (Lv.5) -->
-			<item id="24006" min="1" max="1" chance="10" /> <!-- Agathion - Capricorn (Lv.6) -->
+			<item id="24005" min="1" max="1" chance="90" /> <!-- Agathion - Capricorn - Lv. 5 -->
+			<item id="24006" min="1" max="1" chance="10" /> <!-- Agathion - Capricorn - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24156" name="Agathion - Capricorn Pack (High-grade)" type="EtcItem">
@@ -1092,10 +1100,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24013" min="1" max="1" chance="50" /> <!-- Agathion - Libra (Lv.1) -->
-			<item id="24014" min="1" max="1" chance="35" /> <!-- Agathion - Libra (Lv.2) -->
-			<item id="24015" min="1" max="1" chance="10" /> <!-- Agathion - Libra (Lv.3) -->
-			<item id="24016" min="1" max="1" chance="5" /> <!-- Agathion - Libra (Lv.4) -->
+			<item id="24013" min="1" max="1" chance="50" /> <!-- Agathion - Libra - Lv. 1 -->
+			<item id="24014" min="1" max="1" chance="35" /> <!-- Agathion - Libra - Lv. 2 -->
+			<item id="24015" min="1" max="1" chance="10" /> <!-- Agathion - Libra - Lv. 3 -->
+			<item id="24016" min="1" max="1" chance="5" /> <!-- Agathion - Libra - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24158" name="Agathion - Libra Pack (Mid-grade)" type="EtcItem">
@@ -1111,8 +1119,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24017" min="1" max="1" chance="90" /> <!-- Agathion - Libra (Lv.5) -->
-			<item id="24018" min="1" max="1" chance="10" /> <!-- Agathion - Libra (Lv.6) -->
+			<item id="24017" min="1" max="1" chance="90" /> <!-- Agathion - Libra - Lv. 5 -->
+			<item id="24018" min="1" max="1" chance="10" /> <!-- Agathion - Libra - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24159" name="Agathion - Libra Pack (High-grade)" type="EtcItem">
@@ -1142,10 +1150,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24025" min="1" max="1" chance="50" /> <!-- Agathion - Aries (Lv.1) -->
-			<item id="24026" min="1" max="1" chance="35" /> <!-- Agathion - Aries (Lv.2) -->
-			<item id="24027" min="1" max="1" chance="10" /> <!-- Agathion - Aries (Lv.3) -->
-			<item id="24028" min="1" max="1" chance="5" /> <!-- Agathion - Aries (Lv.4) -->
+			<item id="24025" min="1" max="1" chance="50" /> <!-- Agathion - Aries - Lv. 1 -->
+			<item id="24026" min="1" max="1" chance="35" /> <!-- Agathion - Aries - Lv. 2 -->
+			<item id="24027" min="1" max="1" chance="10" /> <!-- Agathion - Aries - Lv. 3 -->
+			<item id="24028" min="1" max="1" chance="5" /> <!-- Agathion - Aries - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24161" name="Agathion - Aries Pack (Mid-grade)" type="EtcItem">
@@ -1161,8 +1169,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24029" min="1" max="1" chance="90" /> <!-- Agathion - Aries (Lv.5) -->
-			<item id="24030" min="1" max="1" chance="10" /> <!-- Agathion - Aries (Lv.6) -->
+			<item id="24029" min="1" max="1" chance="90" /> <!-- Agathion - Aries - Lv. 5 -->
+			<item id="24030" min="1" max="1" chance="10" /> <!-- Agathion - Aries - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24162" name="Agathion - Aries Pack (High-grade)" type="EtcItem">
@@ -1192,10 +1200,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24037" min="1" max="1" chance="50" /> <!-- Agathion - Taurus (Lv.1) -->
-			<item id="24038" min="1" max="1" chance="35" /> <!-- Agathion - Taurus (Lv.2) -->
-			<item id="24039" min="1" max="1" chance="10" /> <!-- Agathion - Taurus (Lv.3) -->
-			<item id="24040" min="1" max="1" chance="5" /> <!-- Agathion - Taurus (Lv.4) -->
+			<item id="24037" min="1" max="1" chance="50" /> <!-- Agathion - Taurus - Lv. 1 -->
+			<item id="24038" min="1" max="1" chance="35" /> <!-- Agathion - Taurus - Lv. 2 -->
+			<item id="24039" min="1" max="1" chance="10" /> <!-- Agathion - Taurus - Lv. 3 -->
+			<item id="24040" min="1" max="1" chance="5" /> <!-- Agathion - Taurus - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24164" name="Agathion - Taurus Pack (Mid-grade)" type="EtcItem">
@@ -1211,8 +1219,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24041" min="1" max="1" chance="90" /> <!-- Agathion - Taurus (Lv.5) -->
-			<item id="24042" min="1" max="1" chance="10" /> <!-- Agathion - Taurus (Lv.6) -->
+			<item id="24041" min="1" max="1" chance="90" /> <!-- Agathion - Taurus - Lv. 5 -->
+			<item id="24042" min="1" max="1" chance="10" /> <!-- Agathion - Taurus - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24165" name="Agathion - Taurus Pack (High-grade)" type="EtcItem">
@@ -1242,10 +1250,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24049" min="1" max="1" chance="50" /> <!-- Agathion - Leo (Lv.1) -->
-			<item id="24050" min="1" max="1" chance="35" /> <!-- Agathion - Leo (Lv.2) -->
-			<item id="24051" min="1" max="1" chance="10" /> <!-- Agathion - Leo (Lv.3) -->
-			<item id="24052" min="1" max="1" chance="5" /> <!-- Agathion - Leo (Lv.4) -->
+			<item id="24049" min="1" max="1" chance="50" /> <!-- Agathion - Leo - Lv. 1 -->
+			<item id="24050" min="1" max="1" chance="35" /> <!-- Agathion - Leo - Lv. 2 -->
+			<item id="24051" min="1" max="1" chance="10" /> <!-- Agathion - Leo - Lv. 3 -->
+			<item id="24052" min="1" max="1" chance="5" /> <!-- Agathion - Leo - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24167" name="Agathion - Leo Pack (Mid-grade)" type="EtcItem">
@@ -1261,8 +1269,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24053" min="1" max="1" chance="90" /> <!-- Agathion - Leo (Lv.5) -->
-			<item id="24054" min="1" max="1" chance="10" /> <!-- Agathion - Leo (Lv.6) -->
+			<item id="24053" min="1" max="1" chance="90" /> <!-- Agathion - Leo - Lv. 5 -->
+			<item id="24054" min="1" max="1" chance="10" /> <!-- Agathion - Leo - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24168" name="Agathion - Leo Pack (High-grade)" type="EtcItem">
@@ -1292,10 +1300,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24061" min="1" max="1" chance="50" /> <!-- Agathion - Gemini (Lv.1) -->
-			<item id="24062" min="1" max="1" chance="35" /> <!-- Agathion - Gemini (Lv.2) -->
-			<item id="24063" min="1" max="1" chance="10" /> <!-- Agathion - Gemini (Lv.3) -->
-			<item id="24064" min="1" max="1" chance="5" /> <!-- Agathion - Gemini (Lv.4) -->
+			<item id="24061" min="1" max="1" chance="50" /> <!-- Agathion - Gemini - Lv. 1 -->
+			<item id="24062" min="1" max="1" chance="35" /> <!-- Agathion - Gemini - Lv. 2 -->
+			<item id="24063" min="1" max="1" chance="10" /> <!-- Agathion - Gemini - Lv. 3 -->
+			<item id="24064" min="1" max="1" chance="5" /> <!-- Agathion - Gemini - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24170" name="Agathion - Gemini Pack (Mid-grade)" type="EtcItem">
@@ -1311,8 +1319,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24065" min="1" max="1" chance="90" /> <!-- Agathion - Gemini (Lv.5) -->
-			<item id="24066" min="1" max="1" chance="10" /> <!-- Agathion - Gemini (Lv.6) -->
+			<item id="24065" min="1" max="1" chance="90" /> <!-- Agathion - Gemini - Lv. 5 -->
+			<item id="24066" min="1" max="1" chance="10" /> <!-- Agathion - Gemini - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24171" name="Agathion - Gemini Pack (High-grade)" type="EtcItem">
@@ -1342,10 +1350,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24073" min="1" max="1" chance="50" /> <!-- Agathion - Scorpio (Lv.1) -->
-			<item id="24074" min="1" max="1" chance="35" /> <!-- Agathion - Scorpio (Lv.2) -->
-			<item id="24075" min="1" max="1" chance="10" /> <!-- Agathion - Scorpio (Lv.3) -->
-			<item id="24076" min="1" max="1" chance="5" /> <!-- Agathion - Scorpio (Lv.4) -->
+			<item id="24073" min="1" max="1" chance="50" /> <!-- Agathion - Scorpio - Lv. 1 -->
+			<item id="24074" min="1" max="1" chance="35" /> <!-- Agathion - Scorpio - Lv. 2 -->
+			<item id="24075" min="1" max="1" chance="10" /> <!-- Agathion - Scorpio - Lv. 3 -->
+			<item id="24076" min="1" max="1" chance="5" /> <!-- Agathion - Scorpio - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24173" name="Agathion - Scorpio Pack (Mid-grade)" type="EtcItem">
@@ -1361,8 +1369,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24077" min="1" max="1" chance="90" /> <!-- Agathion - Scorpio (Lv.5) -->
-			<item id="24078" min="1" max="1" chance="10" /> <!-- Agathion - Scorpio (Lv.6) -->
+			<item id="24077" min="1" max="1" chance="90" /> <!-- Agathion - Scorpio - Lv. 5 -->
+			<item id="24078" min="1" max="1" chance="10" /> <!-- Agathion - Scorpio - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24174" name="Agathion - Scorpio Pack (High-grade)" type="EtcItem">
@@ -1392,10 +1400,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24085" min="1" max="1" chance="50" /> <!-- Agathion - Aquarius (Lv.1) -->
-			<item id="24086" min="1" max="1" chance="35" /> <!-- Agathion - Aquarius (Lv.2) -->
-			<item id="24087" min="1" max="1" chance="10" /> <!-- Agathion - Aquarius (Lv.3) -->
-			<item id="24088" min="1" max="1" chance="5" /> <!-- Agathion - Aquarius (Lv.4) -->
+			<item id="24085" min="1" max="1" chance="50" /> <!-- Agathion - Aquarius - Lv. 1 -->
+			<item id="24086" min="1" max="1" chance="35" /> <!-- Agathion - Aquarius - Lv. 2 -->
+			<item id="24087" min="1" max="1" chance="10" /> <!-- Agathion - Aquarius - Lv. 3 -->
+			<item id="24088" min="1" max="1" chance="5" /> <!-- Agathion - Aquarius - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24176" name="Agathion - Aquarius Pack (Mid-grade)" type="EtcItem">
@@ -1411,8 +1419,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24089" min="1" max="1" chance="90" /> <!-- Agathion - Aquarius (Lv.5) -->
-			<item id="24090" min="1" max="1" chance="10" /> <!-- Agathion - Aquarius (Lv.6) -->
+			<item id="24089" min="1" max="1" chance="90" /> <!-- Agathion - Aquarius - Lv. 5 -->
+			<item id="24090" min="1" max="1" chance="10" /> <!-- Agathion - Aquarius - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24177" name="Agathion - Aquarius Pack (High-grade)" type="EtcItem">
@@ -1443,10 +1451,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24097" min="1" max="1" chance="50" /> <!-- Agathion - Pisces (Lv.1) -->
-			<item id="24098" min="1" max="1" chance="35" /> <!-- Agathion - Pisces (Lv.2) -->
-			<item id="24099" min="1" max="1" chance="10" /> <!-- Agathion - Pisces (Lv.3) -->
-			<item id="24100" min="1" max="1" chance="5" /> <!-- Agathion - Pisces (Lv.4) -->
+			<item id="24097" min="1" max="1" chance="50" /> <!-- Agathion - Pisces - Lv. 1 -->
+			<item id="24098" min="1" max="1" chance="35" /> <!-- Agathion - Pisces - Lv. 2 -->
+			<item id="24099" min="1" max="1" chance="10" /> <!-- Agathion - Pisces - Lv. 3 -->
+			<item id="24100" min="1" max="1" chance="5" /> <!-- Agathion - Pisces - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24179" name="Agathion - Pisces Pack (Mid-grade)" type="EtcItem">
@@ -1462,8 +1470,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24101" min="1" max="1" chance="90" /> <!-- Agathion - Pisces (Lv.5) -->
-			<item id="24102" min="1" max="1" chance="10" /> <!-- Agathion - Pisces (Lv.6) -->
+			<item id="24101" min="1" max="1" chance="90" /> <!-- Agathion - Pisces - Lv. 5 -->
+			<item id="24102" min="1" max="1" chance="10" /> <!-- Agathion - Pisces - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24180" name="Agathion - Pisces Pack (High-grade)" type="EtcItem">
@@ -1493,10 +1501,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24109" min="1" max="1" chance="50" /> <!-- Agathion - Sagittarius (Lv.1) -->
-			<item id="24110" min="1" max="1" chance="35" /> <!-- Agathion - Sagittarius (Lv.2) -->
-			<item id="24111" min="1" max="1" chance="10" /> <!-- Agathion - Sagittarius (Lv.3) -->
-			<item id="24112" min="1" max="1" chance="5" /> <!-- Agathion - Sagittarius (Lv.4) -->
+			<item id="24109" min="1" max="1" chance="50" /> <!-- Agathion - Sagittarius - Lv. 1 -->
+			<item id="24110" min="1" max="1" chance="35" /> <!-- Agathion - Sagittarius - Lv. 2 -->
+			<item id="24111" min="1" max="1" chance="10" /> <!-- Agathion - Sagittarius - Lv. 3 -->
+			<item id="24112" min="1" max="1" chance="5" /> <!-- Agathion - Sagittarius - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24182" name="Agathion - Sagittarius Pack (Mid-grade)" type="EtcItem">
@@ -1512,8 +1520,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24113" min="1" max="1" chance="90" /> <!-- Agathion - Sagittarius (Lv.5) -->
-			<item id="24114" min="1" max="1" chance="10" /> <!-- Agathion - Sagittarius (Lv.6) -->
+			<item id="24113" min="1" max="1" chance="90" /> <!-- Agathion - Sagittarius - Lv. 5 -->
+			<item id="24114" min="1" max="1" chance="10" /> <!-- Agathion - Sagittarius - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24183" name="Agathion - Sagittarius Pack (High-grade)" type="EtcItem">
@@ -1543,10 +1551,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24121" min="1" max="1" chance="50" /> <!-- Agathion - Cancer (Lv.1) -->
-			<item id="24122" min="1" max="1" chance="35" /> <!-- Agathion - Cancer (Lv.2) -->
-			<item id="24123" min="1" max="1" chance="10" /> <!-- Agathion - Cancer (Lv.3) -->
-			<item id="24124" min="1" max="1" chance="5" /> <!-- Agathion - Cancer (Lv.4) -->
+			<item id="24121" min="1" max="1" chance="50" /> <!-- Agathion - Cancer - Lv. 1 -->
+			<item id="24122" min="1" max="1" chance="35" /> <!-- Agathion - Cancer - Lv. 2 -->
+			<item id="24123" min="1" max="1" chance="10" /> <!-- Agathion - Cancer - Lv. 3 -->
+			<item id="24124" min="1" max="1" chance="5" /> <!-- Agathion - Cancer - Lv. 4 -->
 		</capsuled_items>
 	</item>
 	<item id="24185" name="Agathion - Cancer Pack (Mid-grade)" type="EtcItem">
@@ -1562,8 +1570,8 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="material" val="PAPER" />
 		<capsuled_items>
-			<item id="24125" min="1" max="1" chance="90" /> <!-- Agathion - Cancer (Lv.5) -->
-			<item id="24126" min="1" max="1" chance="10" /> <!-- Agathion - Cancer (Lv.6) -->
+			<item id="24125" min="1" max="1" chance="90" /> <!-- Agathion - Cancer - Lv. 5 -->
+			<item id="24126" min="1" max="1" chance="10" /> <!-- Agathion - Cancer - Lv. 6 -->
 		</capsuled_items>
 	</item>
 	<item id="24186" name="Agathion - Cancer Pack (High-grade)" type="EtcItem">

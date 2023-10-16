@@ -27,17 +27,13 @@ import org.l2jmobius.gameserver.network.PacketLogger;
 public class RequestMagicSkillList implements ClientPacket
 {
 	private int _objectId;
-	@SuppressWarnings("unused")
-	private int _charId;
-	@SuppressWarnings("unused")
-	private int _unk;
 	
 	@Override
 	public void read(ReadablePacket packet)
 	{
 		_objectId = packet.readInt();
-		_charId = packet.readInt();
-		_unk = packet.readInt();
+		// packet.readInt(); _charId
+		// packet.readInt(); _unk
 	}
 	
 	@Override

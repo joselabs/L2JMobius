@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.model.holders;
 
+import org.l2jmobius.gameserver.enums.ClassId;
 import org.l2jmobius.gameserver.model.StatSet;
 
 /**
@@ -23,7 +24,7 @@ import org.l2jmobius.gameserver.model.StatSet;
  */
 public class FakePlayerHolder
 {
-	private final int _classId;
+	private final ClassId _classId;
 	private final int _hair;
 	private final int _hairColor;
 	private final int _face;
@@ -54,7 +55,7 @@ public class FakePlayerHolder
 	
 	public FakePlayerHolder(StatSet set)
 	{
-		_classId = set.getInt("classId", 182);
+		_classId = ClassId.getClassId(set.getInt("classId", 1));
 		_hair = set.getInt("hair", 1);
 		_hairColor = set.getInt("hairColor", 1);
 		_face = set.getInt("face", 1);
@@ -84,7 +85,7 @@ public class FakePlayerHolder
 		_pledgeStatus = set.getInt("pledgeStatus", 0);
 	}
 	
-	public int getClassId()
+	public ClassId getClassId()
 	{
 		return _classId;
 	}

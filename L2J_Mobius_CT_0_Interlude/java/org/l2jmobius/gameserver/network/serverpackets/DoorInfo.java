@@ -34,5 +34,12 @@ public class DoorInfo extends ServerPacket
 		ServerPackets.DOOR_INFO.writeId(this);
 		writeInt(_door.getObjectId());
 		writeInt(_door.getId());
+		writeInt(_door.isShowHp());
+		writeInt(1); // ??? (can target)
+		writeInt(!_door.isOpen());
+		writeInt(_door.getMaxHp());
+		writeInt((int) _door.getCurrentHp());
+		writeInt(0); // ??? (show HP)
+		writeInt(0); // ??? (Damage)
 	}
 }

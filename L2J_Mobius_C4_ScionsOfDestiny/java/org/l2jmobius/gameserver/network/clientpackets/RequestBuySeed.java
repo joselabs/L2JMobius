@@ -202,8 +202,7 @@ public class RequestBuySeed implements ClientPacket
 			}
 			
 			// Send Char Buy Messages
-			SystemMessage sm = null;
-			sm = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S2_S1_S);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S2_S1_S);
 			sm.addItemName(seedId);
 			sm.addNumber(count);
 			player.sendPacket(sm);

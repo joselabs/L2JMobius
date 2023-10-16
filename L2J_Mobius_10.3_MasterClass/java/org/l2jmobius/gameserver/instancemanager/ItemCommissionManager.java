@@ -43,6 +43,9 @@ import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.CommissionManager;
 import org.l2jmobius.gameserver.model.commission.CommissionItem;
+import org.l2jmobius.gameserver.model.events.EventDispatcher;
+import org.l2jmobius.gameserver.model.events.EventType;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerAuctionWin;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
@@ -438,6 +441,11 @@ public class ItemCommissionManager
 			
 			player.sendPacket(new ExResponseCommissionBuyItem(commissionItem));
 			player.getInventory().addItem("Commission Buy Item", commissionItem.getItemInstance(), player, null);
+			// Notify to scripts.
+			if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_AUCTION_WIN))
+			{
+				EventDispatcher.getInstance().notifyEventAsync(new OnPlayerAuctionWin(player, itemInstance));
+			}
 		}
 		else
 		{

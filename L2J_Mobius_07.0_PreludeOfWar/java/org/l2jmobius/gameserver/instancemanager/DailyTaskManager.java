@@ -439,34 +439,24 @@ public class DailyTaskManager
 	
 	private void resetClanContribution()
 	{
-		// Update data for offline players.
-		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("DELETE FROM character_variables WHERE var=?"))
-		{
-			ps.setString(1, PlayerVariables.CLAN_CONTRIBUTION);
-			ps.executeUpdate();
-		}
-		catch (Exception e)
-		{
-			LOGGER.log(Level.SEVERE, "Could not reset Clan contributions: ", e);
-		}
-		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("DELETE FROM character_variables WHERE var=?"))
-		{
-			ps.setString(1, PlayerVariables.CLAN_CONTRIBUTION_REWARDED);
-			ps.executeUpdate();
-		}
-		catch (Exception e)
-		{
-			LOGGER.log(Level.SEVERE, "Could not reset Clan contributions: ", e);
-		}
-		
 		// Update data for online players.
 		for (Player player : World.getInstance().getPlayers())
 		{
+			player.getVariables().set(PlayerVariables.CLAN_CONTRIBUTION_PREVIOUS, player.getClanContribution());
+			player.getVariables().set(PlayerVariables.CLAN_CONTRIBUTION_TOTAL_PREVIOUS, player.getClanContributionTotal());
 			player.getVariables().remove(PlayerVariables.CLAN_CONTRIBUTION);
-			player.getVariables().remove(PlayerVariables.CLAN_CONTRIBUTION_REWARDED);
 			player.getVariables().storeMe();
+		}
+		
+		// Update data for offline players.
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement("UPDATE character_variables SET var = 'CLAN_CONTRIBUTION_PREVIOUS' WHERE `var` = 'CLAN_CONTRIBUTION'"))
+		{
+			ps.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, "Could not reset Clan contributions: ", e);
 		}
 		
 		LOGGER.info("Clan contributions has been resetted.");

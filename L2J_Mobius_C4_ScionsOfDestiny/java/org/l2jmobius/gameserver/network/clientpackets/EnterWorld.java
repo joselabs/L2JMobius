@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -60,6 +61,7 @@ import org.l2jmobius.gameserver.model.sevensigns.SevenSigns;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.FortSiege;
 import org.l2jmobius.gameserver.model.siege.Siege;
+import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.ConnectionState;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -89,6 +91,7 @@ import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
 import org.l2jmobius.gameserver.network.serverpackets.SignsSky;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
+import org.l2jmobius.gameserver.taskmanager.AutoPlayTaskManager;
 import org.l2jmobius.gameserver.taskmanager.GameTimeTaskManager;
 import org.l2jmobius.gameserver.util.BuilderUtil;
 import org.l2jmobius.gameserver.util.Util;
@@ -107,7 +110,7 @@ public class EnterWorld implements ClientPacket
 		final Player player = client.getPlayer();
 		if (player == null)
 		{
-			PacketLogger.warning("EnterWorld failed! player is null...");
+			PacketLogger.warning("EnterWorld failed! player returned 'null'.");
 			client.close(LeaveWorld.STATIC_PACKET);
 			return;
 		}
@@ -126,13 +129,18 @@ public class EnterWorld implements ClientPacket
 			return;
 		}
 		
-		// Set online status
+		player.sendPacket(new UserInfo(player));
+		
+		// Set online status.
 		player.setOnlineStatus(true);
-		// running is default
+		
+		// Running is default.
 		player.setRunning();
-		// standing is default
+		
+		// Standing is default.
 		player.standUp();
-		// include UserInfo
+		
+		// Broadcast karma.
 		player.broadcastKarma();
 		
 		// Engage and notify Partner
@@ -162,7 +170,7 @@ public class EnterWorld implements ClientPacket
 				final NpcHtmlMessage html = new NpcHtmlMessage(0);
 				html.setFile("data/html/clan_notice.htm");
 				html.replace("%clan_name%", player.getClan().getName());
-				html.replace("%notice_text%", player.getClan().getNotice().replaceAll("\r\n", "<br>").replaceAll("action", "").replace("bypass", ""));
+				html.replace("%notice_text%", player.getClan().getNotice().replaceAll("(\r\n|\n)", "<br>"));
 				player.sendPacket(html);
 			}
 		}
@@ -216,8 +224,8 @@ public class EnterWorld implements ClientPacket
 						|| ((item.getTemplate().getType2() == ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > Config.ENCHANT_JEWELRY_MAX)) //
 						|| ((item.getTemplate().getType2() != ItemTemplate.TYPE2_WEAPON) && (item.getTemplate().getType2() != ItemTemplate.TYPE2_ACCESSORY) && (item.getEnchantLevel() > Config.ENCHANT_ARMOR_MAX))))
 				{
+					PacketLogger.info("Over-enchanted (+" + item.getEnchantLevel() + ") " + item + " has been removed from " + player);
 					player.getInventory().destroyItem("Over-enchant protection", item, player, null);
-					PacketLogger.info("Over-enchanted " + item + " has been removed from " + player);
 					punish = true;
 				}
 			}
@@ -240,7 +248,6 @@ public class EnterWorld implements ClientPacket
 		
 		// Send packets info
 		player.sendPacket(new ClientSetTime());
-		player.sendPacket(new UserInfo(player));
 		player.sendPacket(new HennaInfo(player));
 		player.sendPacket(new FriendList(player));
 		player.sendPacket(new ItemList(player, false));
@@ -269,7 +276,7 @@ public class EnterWorld implements ClientPacket
 				player.getAppearance().setTitleColor(Config.FACTION_GOOD_NAME_COLOR);
 				player.sendMessage("Welcome " + player.getName() + ", you are fighting for the " + Config.FACTION_GOOD_TEAM_NAME + " faction.");
 				player.sendPacket(new ExShowScreenMessage("Welcome " + player.getName() + ", you are fighting for the " + Config.FACTION_GOOD_TEAM_NAME + " faction.", 10000));
-				player.broadcastUserInfo(); // for seeing self name color
+				player.updateUserInfo(); // for seeing self name color
 			}
 			else if (player.isEvil())
 			{
@@ -277,7 +284,7 @@ public class EnterWorld implements ClientPacket
 				player.getAppearance().setTitleColor(Config.FACTION_EVIL_NAME_COLOR);
 				player.sendMessage("Welcome " + player.getName() + ", you are fighting for the " + Config.FACTION_EVIL_TEAM_NAME + " faction.");
 				player.sendPacket(new ExShowScreenMessage("Welcome " + player.getName() + ", you are fighting for the " + Config.FACTION_EVIL_TEAM_NAME + " faction.", 10000));
-				player.broadcastUserInfo(); // for seeing self name color
+				player.updateUserInfo(); // for seeing self name color
 			}
 		}
 		
@@ -476,6 +483,8 @@ public class EnterWorld implements ClientPacket
 		
 		// Remain in party after logout fix.
 		player.sendPacket(new PartySmallWindowDeleteAll());
+		
+		player.broadcastUserInfo();
 		
 		// Close lock at login
 		player.setLocked(false);
@@ -703,13 +712,57 @@ public class EnterWorld implements ClientPacket
 		
 		player.updateNameTitleColor();
 		
-		player.sendPacket(new UserInfo(player));
 		player.sendPacket(new HennaInfo(player));
 		player.sendPacket(new FriendList(player));
 		player.sendPacket(new ItemList(player, false));
 		player.sendPacket(new ShortCutInit(player));
 		player.broadcastUserInfo();
 		player.sendPacket(new EtcStatusUpdate(player));
+		
+		if (Config.ENABLE_AUTO_PLAY)
+		{
+			if (!Config.AUTO_PLAY_LOGIN_MESSAGE.isEmpty())
+			{
+				player.sendPacket(new CreatureSay(2, ChatType.ANNOUNCEMENT, "AutoPlay", Config.AUTO_PLAY_LOGIN_MESSAGE));
+			}
+			
+			player.getVariables().getIntegerList(PlayerVariables.AUTO_USE_ACTIONS).forEach(id -> player.getAutoUseSettings().getAutoActions().add(id));
+			player.getVariables().getIntegerList(PlayerVariables.AUTO_USE_BUFFS).forEach(id -> player.getAutoUseSettings().getAutoBuffs().add(id));
+			player.getVariables().getIntegerList(PlayerVariables.AUTO_USE_SKILLS).forEach(id -> player.getAutoUseSettings().getAutoSkills().add(id));
+			player.getVariables().getIntegerList(PlayerVariables.AUTO_USE_ITEMS).forEach(id -> player.getAutoUseSettings().getAutoSupplyItems().add(id));
+			player.getAutoUseSettings().setAutoPotionItem(player.getVariables().getInt(PlayerVariables.AUTO_USE_POTION, 0));
+			
+			final List<Integer> settings = player.getVariables().getIntegerList(PlayerVariables.AUTO_USE_SETTINGS);
+			if (settings.isEmpty())
+			{
+				return;
+			}
+			
+			final int options = settings.get(0);
+			final boolean active = Config.RESUME_AUTO_PLAY && (settings.get(1) == 1);
+			final boolean pickUp = settings.get(2) == 1;
+			final int nextTargetMode = settings.get(3);
+			final boolean shortRange = settings.get(4) == 1;
+			final int potionPercent = settings.get(5);
+			final boolean respectfulHunting = settings.get(6) == 1;
+			
+			player.getAutoPlaySettings().setAutoPotionPercent(potionPercent);
+			player.getAutoPlaySettings().setOptions(options);
+			player.getAutoPlaySettings().setPickup(pickUp);
+			player.getAutoPlaySettings().setNextTargetMode(nextTargetMode);
+			player.getAutoPlaySettings().setShortRange(shortRange);
+			player.getAutoPlaySettings().setRespectfulHunting(respectfulHunting);
+			
+			if (active)
+			{
+				AutoPlayTaskManager.getInstance().startAutoPlay(player);
+			}
+		}
+		
+		if (Config.ENABLE_OFFLINE_PLAY_COMMAND && !Config.OFFLINE_PLAY_LOGIN_MESSAGE.isEmpty())
+		{
+			player.sendPacket(new CreatureSay(2, ChatType.ANNOUNCEMENT, "OfflinePlay", Config.OFFLINE_PLAY_LOGIN_MESSAGE));
+		}
 	}
 	
 	private void onEnterAio(Player player)

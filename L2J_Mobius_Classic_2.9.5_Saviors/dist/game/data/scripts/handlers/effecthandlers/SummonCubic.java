@@ -48,6 +48,11 @@ public class SummonCubic extends AbstractEffect
 		_cubicLvl = params.getInt("cubicLvl", 0);
 	}
 	
+	public int getCubicId()
+	{
+		return _cubicId;
+	}
+	
 	@Override
 	public boolean isInstant()
 	{

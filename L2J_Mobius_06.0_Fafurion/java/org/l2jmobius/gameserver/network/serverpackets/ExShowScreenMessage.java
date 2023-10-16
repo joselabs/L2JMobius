@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.NpcStringId.NSLocalisation;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -32,6 +34,16 @@ import org.l2jmobius.gameserver.network.SystemMessageId.SMLocalisation;
  */
 public class ExShowScreenMessage extends ServerPacket
 {
+	// Positions
+	public static final byte TOP_LEFT = 1;
+	public static final byte TOP_CENTER = 2;
+	public static final byte TOP_RIGHT = 3;
+	public static final byte MIDDLE_LEFT = 4;
+	public static final byte MIDDLE_CENTER = 5;
+	public static final byte MIDDLE_RIGHT = 6;
+	public static final byte BOTTOM_CENTER = 7;
+	public static final byte BOTTOM_RIGHT = 8;
+	
 	private final int _type;
 	private final int _sysMessageId;
 	private final int _unk1;
@@ -45,22 +57,6 @@ public class ExShowScreenMessage extends ServerPacket
 	private final int _time;
 	private final int _npcString;
 	private List<String> _parameters;
-	// Localisation related.
-	private String _lang;
-	// Positions
-	public static final byte TOP_LEFT = 0x01;
-	public static final byte TOP_CENTER = 0x02;
-	public static final byte TOP_RIGHT = 0x03;
-	public static final byte MIDDLE_LEFT = 0x04;
-	public static final byte MIDDLE_CENTER = 0x05;
-	public static final byte MIDDLE_RIGHT = 0x06;
-	public static final byte BOTTOM_CENTER = 0x07;
-	public static final byte BOTTOM_RIGHT = 0x08;
-	
-	public void setLang(String lang)
-	{
-		_lang = lang;
-	}
 	
 	/**
 	 * Display a String on the screen for a given time.
@@ -264,58 +260,68 @@ public class ExShowScreenMessage extends ServerPacket
 	public void write()
 	{
 		ServerPackets.EX_SHOW_SCREEN_MESSAGE.writeId(this);
+		
 		// Localisation related.
-		if (_lang != null)
+		if (Config.MULTILANG_ENABLE)
 		{
-			if (_sysMessageId > -1)
+			final Player player = getPlayer();
+			if (player != null)
 			{
-				final SystemMessageId sm = SystemMessageId.getSystemMessageId(_sysMessageId);
-				if (sm != null)
+				final String lang = player.getLang();
+				if ((lang != null) && !lang.equals("en"))
 				{
-					final SMLocalisation sml = sm.getLocalisation(_lang);
-					if (sml != null)
+					if (_sysMessageId > -1)
 					{
-						writeInt(_type);
-						writeInt(-1);
-						writeInt(_position);
-						writeInt(_unk1);
-						writeInt(_size);
-						writeInt(_unk2);
-						writeInt(_unk3);
-						writeInt(_effect);
-						writeInt(_time);
-						writeInt(_fade);
-						writeInt(-1);
-						writeString(sml.getLocalisation(_parameters != null ? _parameters : Collections.emptyList()));
-						return;
+						final SystemMessageId sm = SystemMessageId.getSystemMessageId(_sysMessageId);
+						if (sm != null)
+						{
+							final SMLocalisation sml = sm.getLocalisation(lang);
+							if (sml != null)
+							{
+								writeInt(_type);
+								writeInt(-1);
+								writeInt(_position);
+								writeInt(_unk1);
+								writeInt(_size);
+								writeInt(_unk2);
+								writeInt(_unk3);
+								writeInt(_effect);
+								writeInt(_time);
+								writeInt(_fade);
+								writeInt(-1);
+								writeString(sml.getLocalisation(_parameters != null ? _parameters : Collections.emptyList()));
+								return;
+							}
+						}
 					}
-				}
-			}
-			else if (_npcString > -1)
-			{
-				final NpcStringId ns = NpcStringId.getNpcStringId(_npcString);
-				if (ns != null)
-				{
-					final NSLocalisation nsl = ns.getLocalisation(_lang);
-					if (nsl != null)
+					else if (_npcString > -1)
 					{
-						writeInt(_type);
-						writeInt(-1);
-						writeInt(_position);
-						writeInt(_unk1);
-						writeInt(_size);
-						writeInt(_unk2);
-						writeInt(_unk3);
-						writeInt(_effect);
-						writeInt(_time);
-						writeInt(_fade);
-						writeInt(-1);
-						writeString(nsl.getLocalisation(_parameters != null ? _parameters : Collections.emptyList()));
-						return;
+						final NpcStringId ns = NpcStringId.getNpcStringId(_npcString);
+						if (ns != null)
+						{
+							final NSLocalisation nsl = ns.getLocalisation(lang);
+							if (nsl != null)
+							{
+								writeInt(_type);
+								writeInt(-1);
+								writeInt(_position);
+								writeInt(_unk1);
+								writeInt(_size);
+								writeInt(_unk2);
+								writeInt(_unk3);
+								writeInt(_effect);
+								writeInt(_time);
+								writeInt(_fade);
+								writeInt(-1);
+								writeString(nsl.getLocalisation(_parameters != null ? _parameters : Collections.emptyList()));
+								return;
+							}
+						}
 					}
 				}
 			}
 		}
+		
 		writeInt(_type);
 		writeInt(_sysMessageId);
 		writeInt(_position);

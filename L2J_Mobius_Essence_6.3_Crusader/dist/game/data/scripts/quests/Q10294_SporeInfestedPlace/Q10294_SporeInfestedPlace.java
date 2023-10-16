@@ -19,6 +19,7 @@ package quests.Q10294_SporeInfestedPlace;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -128,7 +129,15 @@ public class Q10294_SporeInfestedPlace extends Quest
 			{
 				if (qs.isCond(3))
 				{
-					addExpAndSp(player, 10000000, 270000);
+					if (player.getLevel() < 45)
+					{
+						long exp = ExperienceData.getInstance().getExpForLevel(45) - player.getExp();
+						addExpAndSp(player, exp, 270000);
+					}
+					else
+					{
+						addExpAndSp(player, 0, 270000);
+					}
 					giveItems(player, SPIRIT_ORE);
 					giveItems(player, SOULSHOT_TICKET);
 					giveItems(player, HP_POTS);
@@ -201,9 +210,11 @@ public class Q10294_SporeInfestedPlace extends Quest
 				playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 				sendNpcLogList(killer);
 			}
-			else if (allConditionsMet(killer, qs))
+			else
 			{
-				prepareToFinishQuest(killer, qs);
+				qs.setCond(3, true);
+				giveItems(killer, SOE_HIGH_PRIEST_OVEN);
+				qs.unset(KILL_COUNT_VAR);
 			}
 		}
 		return super.onKill(npc, killer, isSummon);
@@ -217,7 +228,6 @@ public class Q10294_SporeInfestedPlace extends Quest
 		{
 			final Set<NpcLogListHolder> holder = new HashSet<>();
 			holder.add(new NpcLogListHolder(NpcStringId.KILL_MONSTERS_IN_THE_SEA_OF_SPORES.getId(), true, qs.getInt(KILL_COUNT_VAR)));
-			holder.add(new NpcLogListHolder(NpcStringId.REACH_LV_44, player.getLevel() > 43 ? 1 : 0));
 			return holder;
 		}
 		return super.getNpcLogList(player);

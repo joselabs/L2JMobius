@@ -126,7 +126,16 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 		// Check limits.
 		if (_product.getAccountDailyLimit() > 0) // Sale period.
 		{
-			if (player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_DAILY_COUNT + _product.getProductionId(), 0) >= (_product.getAccountDailyLimit() * _amount))
+			final long amount = _product.getAccountDailyLimit() * _amount;
+			if (amount < 1)
+			{
+				player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
+				player.removeRequest(PrimeShopRequest.class);
+				player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, 0, Collections.emptyList()));
+				return;
+			}
+			
+			if (player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_DAILY_COUNT + _product.getProductionId(), 0) >= amount)
 			{
 				player.sendMessage("You have reached your daily limit."); // TODO: Retail system message?
 				player.removeRequest(PrimeShopRequest.class);
@@ -136,7 +145,16 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 		}
 		else if (_product.getAccountBuyLimit() > 0) // Count limit.
 		{
-			if (player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_COUNT + _product.getProductionId(), 0) >= (_product.getAccountBuyLimit() * _amount))
+			final long amount = _product.getAccountBuyLimit() * _amount;
+			if (amount < 1)
+			{
+				player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
+				player.removeRequest(PrimeShopRequest.class);
+				player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, 0, Collections.emptyList()));
+				return;
+			}
+			
+			if (player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_COUNT + _product.getProductionId(), 0) >= amount)
 			{
 				player.sendMessage("You cannot buy any more of this item."); // TODO: Retail system message?
 				player.removeRequest(PrimeShopRequest.class);
@@ -155,7 +173,16 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 			}
 			if (_product.getIngredientIds()[i] == Inventory.ADENA_ID)
 			{
-				if (player.getAdena() < (_product.getIngredientQuantities()[i] * _amount))
+				final long amount = _product.getIngredientQuantities()[i] * _amount;
+				if (amount < 1)
+				{
+					player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
+					player.removeRequest(PrimeShopRequest.class);
+					player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, remainingInfo, Collections.emptyList()));
+					return;
+				}
+				
+				if (player.getPcCafePoints() < amount)
 				{
 					player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
 					player.removeRequest(PrimeShopRequest.class);
@@ -163,12 +190,24 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 					return;
 				}
 			}
-			else if (player.getInventory().getInventoryItemCount(_product.getIngredientIds()[i], _product.getIngredientEnchants()[i] == 0 ? -1 : _product.getIngredientEnchants()[i], true) < (_product.getIngredientQuantities()[i] * _amount))
+			else
 			{
-				player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
-				player.removeRequest(PrimeShopRequest.class);
-				player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, remainingInfo, Collections.emptyList()));
-				return;
+				final long amount = _product.getIngredientQuantities()[i] * _amount;
+				if (amount < 1)
+				{
+					player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
+					player.removeRequest(PrimeShopRequest.class);
+					player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, remainingInfo, Collections.emptyList()));
+					return;
+				}
+				
+				if (player.getInventory().getInventoryItemCount(_product.getIngredientIds()[i], _product.getIngredientEnchants()[i] == 0 ? -1 : _product.getIngredientEnchants()[i], true) < amount)
+				{
+					player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
+					player.removeRequest(PrimeShopRequest.class);
+					player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, remainingInfo, Collections.emptyList()));
+					return;
+				}
 			}
 		}
 		
@@ -201,7 +240,16 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 				}
 				else
 				{
-					player.destroyItemByItemId("LCoinShop", _product.getIngredientIds()[i], _product.getIngredientQuantities()[i] * _amount, player, true);
+					final long amount = _product.getIngredientQuantities()[i] * _amount;
+					if (amount < 1)
+					{
+						player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
+						player.removeRequest(PrimeShopRequest.class);
+						player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, remainingInfo, Collections.emptyList()));
+						return;
+					}
+					
+					player.destroyItemByItemId("LCoinShop", _product.getIngredientIds()[i], amount, player, true);
 				}
 			}
 			if (Config.VIP_SYSTEM_L_SHOP_AFFECT)
@@ -229,7 +277,7 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 				{
 					rewards.computeIfAbsent(1, k -> new LimitShopRandomCraftReward(_product.getProductionId2(), 0, 1)).getCount().addAndGet((int) _product.getCount2());
 					final Item item = player.addItem("LCoinShop", _product.getProductionId2(), _product.getCount2(), player, true);
-					if (_product.isAnnounce())
+					if (_product.isAnnounce2())
 					{
 						Broadcast.toAllOnlinePlayers(new ExItemAnnounce(player, item, ExItemAnnounce.SPECIAL_CREATION));
 					}
@@ -238,7 +286,7 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 				{
 					rewards.computeIfAbsent(2, k -> new LimitShopRandomCraftReward(_product.getProductionId3(), 0, 2)).getCount().addAndGet((int) _product.getCount3());
 					final Item item = player.addItem("LCoinShop", _product.getProductionId3(), _product.getCount3(), player, true);
-					if (_product.isAnnounce())
+					if (_product.isAnnounce3())
 					{
 						Broadcast.toAllOnlinePlayers(new ExItemAnnounce(player, item, ExItemAnnounce.SPECIAL_CREATION));
 					}
@@ -247,7 +295,7 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 				{
 					rewards.computeIfAbsent(3, k -> new LimitShopRandomCraftReward(_product.getProductionId4(), 0, 3)).getCount().addAndGet((int) _product.getCount4());
 					final Item item = player.addItem("LCoinShop", _product.getProductionId4(), _product.getCount4(), player, true);
-					if (_product.isAnnounce())
+					if (_product.isAnnounce4())
 					{
 						Broadcast.toAllOnlinePlayers(new ExItemAnnounce(player, item, ExItemAnnounce.SPECIAL_CREATION));
 					}
@@ -256,7 +304,7 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 				{
 					rewards.computeIfAbsent(4, k -> new LimitShopRandomCraftReward(_product.getProductionId5(), 0, 4)).getCount().addAndGet((int) _product.getCount5());
 					final Item item = player.addItem("LCoinShop", _product.getProductionId5(), _product.getCount5(), player, true);
-					if (_product.isAnnounce())
+					if (_product.isAnnounce5())
 					{
 						Broadcast.toAllOnlinePlayers(new ExItemAnnounce(player, item, ExItemAnnounce.SPECIAL_CREATION));
 					}

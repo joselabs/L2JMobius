@@ -30,9 +30,7 @@ import org.l2jmobius.gameserver.network.ServerPackets;
  */
 public class ExShowCastleInfo extends ServerPacket
 {
-	public static final ExShowCastleInfo STATIC_PACKET = new ExShowCastleInfo();
-	
-	private ExShowCastleInfo()
+	public ExShowCastleInfo()
 	{
 	}
 	

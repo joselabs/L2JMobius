@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="47201" toLevel="1" name="Fortune Time">
-		<!-- Max HP $s1 Max HP $s2 P. Skill Power $s3 With a certain chance after an attack on a raid boss: For $s3, the <font color="FF8000">Fortune Seeker's Mark</font> debuff is applied. (Cooldown: 10 sec.) <font color="FF8000">When Fortune Seeker's Mark is active: An additional reward is dropped after killing the boss.</font> Note! The additional reward can be obtained only from certain bosses. -->
+		<!-- Max HP +20%. Max HP +2500. P. Skill Power +5%. With a certain chance after an attack on a raid boss:. For +5%, the <font color="FF8000">Fortune Seeker's Mark</font> debuff is applied. (Cooldown: 10 sec.). <font color="FF8000">When Fortune Seeker's Mark is active:. An additional reward is dropped after killing the boss.</font>. Note!. The additional reward can be obtained only from certain bosses. -->
 		<icon>icon.fortune_time</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
@@ -54,42 +54,297 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="47204" toLevel="5" name="Golden Stone">
-		<!-- <Imprisonment/ Suppression skill> For $s1, inflicts Imprisonment on nearby enemies turning them into golden statues. When Imprisonment is over: Attacks the enemies with $s2 power. For $s1, P./ M. Def. and Speed $s3. -->
+		<!-- <Imprisonment/ Suppression skill>. For 5 sec., inflicts Imprisonment on nearby enemies turning them into golden statues. When Imprisonment is over:. Attacks the enemies with 3256 power. For 5 sec., P./ M. Def. and Speed -10%. -->
 		<icon>icon.gold_stone</icon>
-		<operateType>A1</operateType>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>200</affectRange>
+		<effectPoint>
+			<value level="1">-14800</value>
+			<value level="2">-14950</value>
+			<value level="3">-15100</value>
+			<value level="4">-15250</value>
+			<value level="5">-15350</value>
+		</effectPoint>
+		<hitTime>1000</hitTime>
+		<magicLevel>
+			<value level="1">79</value>
+			<value level="2">82</value>
+			<value level="3">85</value>
+			<value level="4">88</value>
+			<value level="5">90</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">60</value>
+			<value level="2">61</value>
+			<value level="3">62</value>
+			<value level="4">63</value>
+			<value level="5">64</value>
+		</mpConsume>
+		<operateType>A2</operateType>
+		<abnormalTime>5</abnormalTime>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+			<value level="5">5</value>
+		</abnormalLevel>
+		<activateRate>80</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
+		<trait>ROOT_MAGICALLY</trait>
+		<abnormalType>ROOT_MAGICALLY</abnormalType>
+		<abnormalVisualEffect>V_GOLD_STONE;V_GOLD_STONE_DEBUFF</abnormalVisualEffect>
+		<isDebuff>true</isDebuff>
+		<reuseDelay>20000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<conditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+					<item>POLE</item>
+				</weaponType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="BlockActions">
+				<allowedSkills>35016;35045;18103</allowedSkills>
+			</effect>
+			<effect name="DamageBlock">
+				<type>BLOCK_HP</type>
+			</effect>
+			<effect name="DamageBlock">
+				<type>BLOCK_MP</type>
+			</effect>
+			<effect name="HpRegen">
+				<amount>-100</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47205" toLevel="5" name="Stone Body">
-		<!-- P. Def. $s1 M. Def. $s1 Speed $s1 -->
+		<!-- P. Def. -10%. M. Def. -10%. Speed -10% -->
 		<icon>icon.gold_stone_debuff</icon>
-		<operateType>A1</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>5</abnormalTime>
+		<castRange>-1</castRange>
+		<activateRate>-1</activateRate>
+		<effectPoint>-220</effectPoint>
+		<isDebuff>true</isDebuff>
+		<trait>SUPPRESSION</trait>
+		<lvlBonusRate>2</lvlBonusRate>
+		<magicLevel>
+			<value level="1">79</value>
+			<value level="2">82</value>
+			<value level="3">85</value>
+			<value level="4">88</value>
+			<value level="5">90</value>
+		</magicLevel>
+		<operateType>A2</operateType>
+		<reuseDelay>0</reuseDelay>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">3256</value>
+					<value level="2">3390</value>
+					<value level="3">3525</value>
+					<value level="4">3659</value>
+					<value level="5">3749</value>
+				</power>
+			</effect>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">-10</value>
+					<value level="2">-11</value>
+					<value level="3">-12</value>
+					<value level="4">-13</value>
+					<value level="5">-15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">-10</value>
+					<value level="2">-11</value>
+					<value level="3">-12</value>
+					<value level="4">-13</value>
+					<value level="5">-15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="Speed">
+				<amount>
+					<value level="1">-10</value>
+					<value level="2">-11</value>
+					<value level="3">-12</value>
+					<value level="4">-13</value>
+					<value level="5">-15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47210" toLevel="1" name="Life Gain">
-		<!-- Max HP $s1 The effect determined by Max HP. <Max HP is less than 15,000> - P. Atk. $s12 <Max HP: 15,000 - 24,999> - P. Atk. $s2 <Max HP: 25,000 - 49,999> - P. Atk. $s3 - P. Skill Power $s4 <Max HP: 50,000 - 74,9999> - P. Atk. $s5 - P. Skill Power $s6 <Max HP: 75,000 - 99,999> - P. Atk. $s7 - P. Skill Power $s8 - Debuff Resistance $s9 - Anomaly Resistance $s9 <Max HP: 100,000 - 150,000> - P. Atk. $s10 - P. Skill Power $s9 - Debuff Resistance $s11 - Anomaly Resistance $s11 -->
+		<!-- Max HP +5000. The effect determined by Max HP. <Max HP is less than 15,000>. - P. Atk. +50002. <Max HP: 15,000 - 24,999>. - P. Atk. +100. <Max HP: 25,000 - 49,999>. - P. Atk. +200. - P. Skill Power +1%. <Max HP: 50,000 - 74,9999>. - P. Atk. +300. - P. Skill Power +2%. <Max HP: 75,000 - 99,999>. - P. Atk. +400. - P. Skill Power +3%. - Debuff Resistance +5%. - Anomaly Resistance +5%. <Max HP: 100,000 - 150,000>. - P. Atk. +50000. - P. Skill Power +5%. - Debuff Resistance +50001. - Anomaly Resistance +50001 -->
 		<icon>icon.vital_gain</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="MaxHp">
+				<amount>5000</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="TriggerSkillByMaxHp">
+				<from>0</from>
+				<to>14999</to>
+				<skillId>47230</skillId> <!-- Life Gain Lv. 1 -->
+			</effect>
+			<effect name="TriggerSkillByMaxHp">
+				<from>15000</from>
+				<to>24999</to>
+				<skillId>47212</skillId> <!-- Life Gain Lv. 2 -->
+			</effect>
+			<effect name="TriggerSkillByMaxHp">
+				<from>25000</from>
+				<to>49999</to>
+				<skillId>47213</skillId> <!-- Life Gain Lv. 3 -->
+			</effect>
+			<effect name="TriggerSkillByMaxHp">
+				<from>50000</from>
+				<to>74999</to>
+				<skillId>47214</skillId> <!-- Life Gain Lv. 4 -->
+			</effect>
+			<effect name="TriggerSkillByMaxHp">
+				<from>75000</from>
+				<to>99999</to>
+				<skillId>47215</skillId> <!-- Life Gain Lv. 5 -->
+			</effect>
+			<effect name="TriggerSkillByMaxHp">
+				<from>100000</from>
+				<to>150000</to>
+				<skillId>47231</skillId> <!-- Life Gain Lv. 6 -->
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47212" toLevel="1" name="Life Gain Lv. 2">
-		<!-- The effect is determined by Max HP. <Max HP: 15,000 - 24,999> - P. Atk. $s1 -->
+		<!-- The effect is determined by Max HP. <Max HP: 15,000 - 24,999>. - P. Atk. +100 -->
 		<icon>icon.vital_gain</icon>
-		<operateType>A1</operateType>
+		<magicLevel>40</magicLevel>
+		<operateType>A2</operateType>
+		<abnormalType>LIFE_GAIN</abnormalType>
+		<abnormalVisualEffect>V_VITAL_GAIN_LV1</abnormalVisualEffect>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<irreplacableBuff>true</irreplacableBuff>
+		<canBeDispelled>false</canBeDispelled>
+		<stayAfterDeath>true</stayAfterDeath>
+		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PAtk">
+				<amount>100</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47213" toLevel="1" name="Life Gain Lv. 3">
-		<!-- The effect is determined by Max HP. <Max HP: 25,000 - 49,999> - P. Atk. $s1 - P. Skill Power $s2 -->
+		<!-- The effect is determined by Max HP. <Max HP: 25,000 - 49,999>. - P. Atk. +200. - P. Skill Power +1% -->
 		<icon>icon.vital_gain</icon>
-		<operateType>A1</operateType>
+		<magicLevel>40</magicLevel>
+		<operateType>A2</operateType>
+		<abnormalType>LIFE_GAIN</abnormalType>
+		<abnormalVisualEffect>V_VITAL_GAIN_LV2</abnormalVisualEffect>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<irreplacableBuff>true</irreplacableBuff>
+		<canBeDispelled>false</canBeDispelled>
+		<stayAfterDeath>true</stayAfterDeath>
+		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PAtk">
+				<amount>200</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="PhysicalSkillPower">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47214" toLevel="1" name="Life Gain Lv. 4">
-		<!-- The effect is determined by Max HP. <Max HP: 50,000 - 74,999> - P. Atk. $s1 - P. Skill Power $s2 -->
+		<!-- The effect is determined by Max HP. <Max HP: 50,000 - 74,999>. - P. Atk. +300. - P. Skill Power +2% -->
 		<icon>icon.vital_gain</icon>
-		<operateType>A1</operateType>
+		<magicLevel>40</magicLevel>
+		<operateType>A2</operateType>
+		<abnormalType>LIFE_GAIN</abnormalType>
+		<abnormalVisualEffect>V_VITAL_GAIN_LV3</abnormalVisualEffect>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<irreplacableBuff>true</irreplacableBuff>
+		<canBeDispelled>false</canBeDispelled>
+		<stayAfterDeath>true</stayAfterDeath>
+		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PAtk">
+				<amount>300</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="PhysicalSkillPower">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47215" toLevel="1" name="Life Gain Lv. 5">
-		<!-- The effect is determined by Max HP. <Max HP: 75,000 - 99,999> - P. Atk. $s1 - P. Skill Power $s2 - Debuff Resistance $s3 - Anomaly Resistance $s3 -->
+		<!-- The effect is determined by Max HP. <Max HP: 75,000 - 99,999>. - P. Atk. +400. - P. Skill Power +3%. - Debuff Resistance +5%. - Anomaly Resistance +5% -->
 		<icon>icon.vital_gain</icon>
-		<operateType>A1</operateType>
+		<magicLevel>40</magicLevel>
+		<operateType>A2</operateType>
+		<abnormalType>LIFE_GAIN</abnormalType>
+		<abnormalVisualEffect>V_VITAL_GAIN_LV4</abnormalVisualEffect>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<irreplacableBuff>true</irreplacableBuff>
+		<canBeDispelled>false</canBeDispelled>
+		<stayAfterDeath>true</stayAfterDeath>
+		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PAtk">
+				<amount>400</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="PhysicalSkillPower">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="ResistAbnormalByCategory">
+				<amount>-5</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47216" toLevel="12" name="Crushing Leap">
-		<!-- Attacks the target with $s1 power. There is a certain chance to increase power after using skills. Ignores Shield Defense. Ignores $s2 of the target's defense. Critical. -->
+		<!-- Attacks the target with 5545 power. There is a certain chance to increase power after using skills. Ignores Shield Defense. Ignores 10% of the target's defense. Critical. -->
 		<icon>icon.little_big_attack</icon>
 		<basicProperty>PHYSICAL</basicProperty>
 		<isMagic>0</isMagic>
@@ -176,14 +431,146 @@
 	</skill>
 	<skill id="47217" toLevel="8" name="Crushing Leap">
 		<icon>icon.little_big_attack</icon>
+		<castRange>40</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>
+			<value level="1">-400</value>
+			<value level="2">-405</value>
+			<value level="3">-410</value>
+			<value level="4">-415</value>
+			<value level="5">-420</value>
+			<value level="6">-425</value>
+			<value level="7">-430</value>
+			<value level="8">-435</value>
+		</effectPoint>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
+		<magicLevel>
+			<value level="1">76</value>
+			<value level="2">77</value>
+			<value level="3">78</value>
+			<value level="4">79</value>
+			<value level="5">80</value>
+			<value level="6">81</value>
+			<value level="7">82</value>
+			<value level="8">83</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">60</value>
+			<value level="2">60</value>
+			<value level="3">61</value>
+			<value level="4">62</value>
+			<value level="5">63</value>
+			<value level="6">63</value>
+			<value level="7">64</value>
+			<value level="8">65</value>
+		</mpConsume>
+		<nextAction>ATTACK</nextAction>
 		<operateType>A1</operateType>
+		<reuseDelay>1000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+					<item>POLE</item>
+				</weaponType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">5545</value>
+					<value level="2">5702</value>
+					<value level="3">5860</value>
+					<value level="4">6020</value>
+					<value level="5">6179</value>
+					<value level="6">6337</value>
+					<value level="7">6496</value>
+					<value level="8">6657</value>
+				</power>
+				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<pDefMod>0.9</pDefMod>
+				<overHit>true</overHit>
+				<criticalChance>20</criticalChance>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47218" toLevel="8" name="Crushing Leap">
 		<icon>icon.little_big_attack</icon>
+		<castRange>40</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>
+			<value level="1">-400</value>
+			<value level="2">-405</value>
+			<value level="3">-410</value>
+			<value level="4">-415</value>
+			<value level="5">-420</value>
+			<value level="6">-425</value>
+			<value level="7">-430</value>
+			<value level="8">-435</value>
+		</effectPoint>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
+		<magicLevel>
+			<value level="1">76</value>
+			<value level="2">77</value>
+			<value level="3">78</value>
+			<value level="4">79</value>
+			<value level="5">80</value>
+			<value level="6">81</value>
+			<value level="7">82</value>
+			<value level="8">83</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">60</value>
+			<value level="2">60</value>
+			<value level="3">61</value>
+			<value level="4">62</value>
+			<value level="5">63</value>
+			<value level="6">63</value>
+			<value level="7">64</value>
+			<value level="8">65</value>
+		</mpConsume>
+		<nextAction>ATTACK</nextAction>
 		<operateType>A1</operateType>
+		<reuseDelay>1000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+					<item>POLE</item>
+				</weaponType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">5545</value>
+					<value level="2">5702</value>
+					<value level="3">5860</value>
+					<value level="4">6020</value>
+					<value level="5">6179</value>
+					<value level="6">6337</value>
+					<value level="7">6496</value>
+					<value level="8">6657</value>
+				</power>
+				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<pDefMod>0.9</pDefMod>
+				<overHit>true</overHit>
+				<criticalChance>20</criticalChance>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47219" toLevel="6" name="Adena Stun">
-		<!-- <Shock skill> Throws some adena at the target. Attacks the enemy with $s1 power. Stuns for $s2 With a certain chance, removes up to $s3 buff(s) from the target. Ignores Shield Defense. -->
+		<!-- <Shock skill>. Throws some adena at the target. Attacks the enemy with 5018 power. Stuns for 3 sec. With a certain chance, removes up to 3 buff(s) from the target. Ignores Shield Defense. -->
 		<icon>icon.coin_stun</icon>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>500</castRange>
@@ -262,36 +649,201 @@
 		</effects>
 	</skill>
 	<skill id="47221" toLevel="1" name="Mechanical Hero">
-		<!-- <Skill with fixed cooldown> Allows to ride a battle mech <font color="FF8000"><Mechanical Hero></font> animated by a Dwarven spirit. <Mounting effect> Max HP $s1 P. Atk. $s2 Debuff/ Anomaly Resistance $s3 Object damage in the World Siege $s4 Your attack skills switch to the golem's skills. The maximum level buffs become available. Note! The mech disappears if it steps into the water. It also disappears after entering or leaving the Olympiad. -->
+		<!-- <Skill with fixed cooldown>. Allows to ride a battle mech <font color="FF8000"><Mechanical Hero></font> animated by a Dwarven spirit. <Mounting effect>. Max HP +40000. P. Atk. +5%. Debuff/ Anomaly Resistance +10%. Object damage in the World Siege +25%. Your attack skills switch to the golem's skills. The maximum level buffs become available. Note!. The mech disappears if it steps into the water. It also disappears after entering or leaving the Olympiad. -->
 		<icon>icon.mechanic_hero</icon>
-		<operateType>A1</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>TRANSFORM</abnormalType>
+		<reuseDelay>300000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<operateType>A2</operateType>
+		<effectPoint>1</effectPoint>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-1</specialLevel>
+		<hitCancelTime>0</hitCancelTime>
+		<irreplacableBuff>true</irreplacableBuff>
+		<mpConsume>150</mpConsume>
+		<itemConsumeCount>50</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<isMagic>0</isMagic> <!-- Auto generated with parser -->
+		<hitTime>1000</hitTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CanTransform">
+				<transformId>221</transformId>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="Transformation">
+				<transformationId>221</transformationId>
+			</effect>
+			<effect name="MaxHp">
+				<amount>25000</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="PAtk">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="ResistAbnormalByCategory">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47222" toLevel="1" name="Hero's Attack">
-		<!-- Attacks the target with $s1 power. Ignores Shield Defense. Ignores $s2 of the target's defense. Critical. -->
+		<!-- Attacks the target with 5891 power. Ignores Shield Defense. Ignores 10% of the target's defense. Critical. -->
 		<icon>icon.hero_attack</icon>
+		<castRange>120</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-810</effectPoint>
+		<effectRange>600</effectRange>
+		<hitTime>1300</hitTime>
+		<magicLevel>90</magicLevel>
+		<mpConsume>71</mpConsume>
+		<nextAction>ATTACK</nextAction>
 		<operateType>A1</operateType>
+		<reuseDelay>1000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+					<item>POLE</item>
+				</weaponType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>5891</power>
+				<criticalChance>10</criticalChance>
+				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<pDefMod>0.9</pDefMod>
+				<overHit>true</overHit>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47223" toLevel="1" name="Hero's Swing">
-		<!-- Attacks nearby enemies with $s1 power. Ignores Shield Defense. Ignores $s2 of the target's defense. Critical. -->
+		<!-- Attacks nearby enemies with 7583 power. Ignores Shield Defense. Ignores 10% of the target's defense. Critical. -->
 		<icon>icon.hero_swing</icon>
 		<operateType>A1</operateType>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>200</affectRange>
+		<hitTime>2000</hitTime>
+		<coolTime>2000</coolTime>
+		<reuseDelay>8000</reuseDelay>
+		<effectPoint>-1010</effectPoint>
+		<magicLevel>90</magicLevel>
+		<mpConsume>89</mpConsume>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<conditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+					<item>POLE</item>
+				</weaponType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>7583</power>
+				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<criticalChance>15</criticalChance>
+				<pDefMod>0.9</pDefMod>
+				<overHit>true</overHit>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47224" toLevel="1" name="Hero's Stomp">
-		<!-- <Knockback skill> Attacks nearby characters with $s1 power, knocking them back. The knockback effect doesn't affect monsters. Ignores Shield Defense. Critical. -->
+		<!-- <Knockback skill>. Attacks nearby characters with 5799 power, knocking them back. The knockback effect doesn't affect monsters. Ignores Shield Defense. Critical. -->
 		<icon>icon.hero_stump</icon>
-		<operateType>A1</operateType>
+		<abnormalLevel>6</abnormalLevel>
+		<abnormalTime>3</abnormalTime>
+		<activateRate>80</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
+		<isDebuff>true</isDebuff>
+		<basicProperty>PHYSICAL</basicProperty>
+		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<trait>KNOCKDOWN</trait>
+		<operateType>A2</operateType>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>200</affectRange>
+		<hitTime>2000</hitTime>
+		<coolTime>500</coolTime>
+		<reuseDelay>15000</reuseDelay>
+		<effectPoint>-15000</effectPoint>
+		<magicLevel>90</magicLevel>
+		<mpConsume>103</mpConsume>
+		<itemConsumeCount>2</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND_PC</affectObject>
+		<conditions>
+			<condition name="EquipWeapon">
+				<weaponType>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+					<item>POLE</item>
+				</weaponType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>5799</power>
+				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<criticalChance>15</criticalChance>
+				<overHit>true</overHit>
+			</effect>
+			<effect name="KnockBack">
+				<distance>250</distance>
+				<speed>600</speed>
+				<knockDown>false</knockDown>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47225" toLevel="1" name="Hero's Stomp">
 		<icon>icon.hero_stump</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="47226" toLevel="1" name="Increased Speed">
-		<!-- For $s1, Speed $s2 Constantly recovers HP. -->
+		<!-- For 10 sec., Speed +50. Constantly recovers HP. -->
 		<icon>icon.overdrive</icon>
-		<operateType>A1</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>10</abnormalTime>
+		<hitTime>0</hitTime>
+		<isMagic>1</isMagic>
+		<magicLevel>90</magicLevel>
+		<itemConsumeCount>5</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<operateType>A2</operateType>
+		<reuseDelay>30000</reuseDelay>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="Speed">
+				<amount>50</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="HealOverTime">
+				<power>333</power>
+				<ticks>1</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47227" toLevel="7" name="Blacksmith's Attack">
-		<!-- <Shock skill> Rushes forward to attack an enemy with $s1 power, stunning them for $s2 Can be used if the distance to the target is more than $s3. -->
+		<!-- <Shock skill>. Rushes forward to attack an enemy with 4588 power, stunning them for 3 sec. Can be used if the distance to the target is more than 80. -->
 		<icon>icon.forge_attack</icon>
 		<castRange>500</castRange>
 		<coolTime>200</coolTime>
@@ -418,19 +970,98 @@
 		</effects>
 	</skill>
 	<skill id="47230" toLevel="1" name="Life Gain Lv. 1">
-		<!-- The effect is determined by Max HP. <Max HP is less than 15,000> - P. Atk. $s1 -->
+		<!-- The effect is determined by Max HP. <Max HP is less than 15,000>. - P. Atk. +10 -->
 		<icon>icon.vital_gain</icon>
-		<operateType>A1</operateType>
+		<magicLevel>40</magicLevel>
+		<operateType>A2</operateType>
+		<abnormalType>LIFE_GAIN</abnormalType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<irreplacableBuff>true</irreplacableBuff>
+		<canBeDispelled>false</canBeDispelled>
+		<stayAfterDeath>true</stayAfterDeath>
+		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PAtk">
+				<amount>10</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47231" toLevel="1" name="Life Gain Lv. 6">
-		<!-- The effect is determined by Max HP. <Max HP: 100,000 - 150,000> - P. Atk. $s1 - P. Skill Power $s2 - Debuff Resistance $s3 - Anomaly Resistance $s3 -->
+		<!-- The effect is determined by Max HP. <Max HP: 100,000 - 150,000>. - P. Atk. +500. - P. Skill Power +5%. - Debuff Resistance +10%. - Anomaly Resistance +10% -->
 		<icon>icon.vital_gain</icon>
-		<operateType>A1</operateType>
+		<magicLevel>40</magicLevel>
+		<operateType>A2</operateType>
+		<abnormalType>LIFE_GAIN</abnormalType>
+		<abnormalVisualEffect>V_VITAL_GAIN_LV5</abnormalVisualEffect>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<irreplacableBuff>true</irreplacableBuff>
+		<canBeDispelled>false</canBeDispelled>
+		<stayAfterDeath>true</stayAfterDeath>
+		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PAtk">
+				<amount>500</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="PhysicalSkillPower">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="ResistAbnormalByCategory">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47232" toLevel="7" name="Shield Throwing">
-		<!-- P. Skill Critical Rate $s1 P. Skill Critical Damage $s1 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- P. Skill Critical Rate -5%. P. Skill Critical Damage -5% -->
+		<icon>icon.shield_throwing</icon>
+		<magicLevel>
+			<value level="1">77</value>
+			<value level="2">79</value>
+			<value level="3">81</value>
+			<value level="4">83</value>
+			<value level="5">85</value>
+			<value level="6">87</value>
+			<value level="7">89</value>
+		</magicLevel>
+		<operateType>A2</operateType>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+			<value level="5">5</value>
+			<value level="6">6</value>
+			<value level="7">7</value>
+		</abnormalLevel>
+		<abnormalTime>10</abnormalTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<activateRate>80</activateRate>
+		<isDebuff>true</isDebuff>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PhysicalSkillCriticalRate">
+				<amount>-5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PhysicalSkillCriticalDamage">
+				<amount>-5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47233" toLevel="7" name="Blacksmith's Attack">
 		<!-- Cannot move due to shock. -->
@@ -502,7 +1133,7 @@
 		</effects>
 	</skill>
 	<skill id="47235" toLevel="15" name="Dwarven Weapon Mastery">
-		<!-- P. Atk. $s1 -->
+		<!-- P. Atk. +10 -->
 		<icon>icon.dwarf_weapon_mastery</icon>
 		<magicLevel>
 			<value level="1">20</value>
@@ -557,7 +1188,7 @@
 		</effects>
 	</skill>
 	<skill id="47236" toLevel="15" name="Dwarven Armor Mastery">
-		<!-- P. Def. $s1 -->
+		<!-- P. Def. +10 -->
 		<icon>icon.dwarf_armor_mastery</icon>
 		<magicLevel>
 			<value level="1">20</value>
@@ -671,7 +1302,7 @@
 		</effects>
 	</skill>
 	<skill id="47237" toLevel="10" name="Dwarven Recovery Mastery">
-		<!-- HP Recovery Rate $s1 MP Recovery Rate $s2 -->
+		<!-- HP Recovery Rate +5. MP Recovery Rate +2 -->
 		<icon>icon.skill1919</icon>
 		<magicLevel>
 			<value level="1">20</value>
@@ -723,36 +1354,55 @@
 	<skill id="47238" toLevel="1" name="Mechanical Masterpiece">
 		<!-- Cannot move due to shock. -->
 		<icon>icon.mechanic_masterpiece</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<isDebuff>true</isDebuff>
+		<castRange>1000</castRange>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1</abnormalTime>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<trait>SHOCK</trait>
+		<activateRate>10</activateRate>
+		<magicLevel>80</magicLevel>
+		<effects>
+			<effect name="BlockActions">
+				<allowedSkills>35016;35045;18103</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47239" toLevel="1" name="Transcendent Hero's Attack">
-		<!-- Attacks the target with $s1 power. Ignores Shield Defense. Ignores $s2 of the target's defense. Critical. The skill can only be used in transcendent instance zones. -->
+		<!-- Attacks the target with 5891 power. Ignores Shield Defense. Ignores 10% of the target's defense. Critical. The skill can only be used in transcendent instance zones. -->
 		<icon>icon.hero_attack</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="47240" toLevel="1" name="Glorious Warrior's Resurrection Cost Decrease">
-		<!-- XP recovery fee $s1 -->
-		<icon>icon.lv_benefit_panel</icon>
-		<operateType>A1</operateType>
-	</skill>
-	<skill id="47240" toLevel="1" name="Glorious Warrior's Resurrection Cost Decrease">
-		<!-- XP recovery fee $s1 -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<!-- XP recovery fee -10% -->
+		<icon>icon.skill5662</icon>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="ResurrectionFeeModifier">
+				<amount>-10</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47241" toLevel="1" name="Sensation">
 		<!-- Restores 100% of HP/CP to nearby clan members. -->
 		<icon>icon.s_sensation</icon>
+		<affectRange>1000</affectRange>
+		<blockedInOlympiad>true</blockedInOlympiad>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<itemConsumeCount>50</itemConsumeCount>
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<magicLevel>85</magicLevel>
-		<mpConsume>78</mpConsume>
+		<mpConsume>103</mpConsume>
 		<mpInitialConsume>25</mpInitialConsume>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
 		<reuseDelay>900000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>PLEDGE</affectScope>
 		<affectObject>FRIEND</affectObject>
@@ -788,7 +1438,7 @@
 		</effects>
 	</skill>
 	<skill id="47243" toLevel="1" name="Advanced Cleanse">
-		<!-- Removes debuffs and anomalies. For $s1, Debuff/ Anomaly Resistance $s2 -->
+		<!-- Removes debuffs and anomalies. For 5 sec., Debuff/ Anomaly Resistance +10% -->
 		<icon>icon.s_erase</icon>
 		<abnormalTime>5</abnormalTime>
 		<abnormalLevel>1</abnormalLevel>
@@ -825,24 +1475,87 @@
 	<skill id="47244" toLevel="1" name="Exclusion">
 		<!-- Speed buffs are disabled. Gap-closing skills cannot be used. -->
 		<icon>icon.expel</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalTime>10</abnormalTime>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalType>BLOCK_SPEED_UP</abnormalType>
+		<isDebuff>true</isDebuff>
+		<effectPoint>-500</effectPoint>
+		<effects>
+			<effect name="DispelBySlot">
+				<dispel>SPEED_UP,-1</dispel>
+			</effect>
+			<effect name="BlockAbnormalSlot">
+				<slot>SPEED_UP</slot>
+			</effect>
+			<effect name="BlockSkill">
+				<skillIds>1204;1535;45107;45117;45124;45142;47024;47061;4;451;994;45159;45252;45253;45183;47227</skillIds>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47245" toLevel="1" name="Holy Buster">
-		<!-- When using the Divine Beam skill: With a certain chance, makes an <font color="FFBB00">additional attack</font>. The skill's power is increased if the target is inflicted with Hold. (Trigger cooldown: 10 sec.) The <font color="FFBB00">additional attack</font> deals heavy damage to demons and undead. -->
+		<!-- When using the Divine Beam skill:. With a certain chance, makes an <font color="FFBB00">additional attack</font>. The skill's power is increased if the target is inflicted with Hold. (Trigger cooldown: 10 sec.). The <font color="FFBB00">additional attack</font> deals heavy damage to demons and undead. -->
 		<icon>icon.skill11763</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="TriggerSkillBySkill">
+				<castSkillId>45241</castSkillId>
+				<skillId>47246</skillId> <!-- Holy Buster -->
+				<skillLevel>1</skillLevel>
+				<chance>15</chance>
+				<targetType>TARGET</targetType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47246" toLevel="1" name="Holy Buster">
 		<icon>icon.skill11763</icon>
+		<isMagic>1</isMagic>
+		<magicLevel>78</magicLevel>
 		<operateType>A1</operateType>
+		<reuseDelay>10000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>160</power>
+				<raceModifier>1.3</raceModifier>
+				<races>DEMONIC;UNDEAD</races>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47247" toLevel="1" name="Treatment">
-		<!-- For the target and 10 nearby allies Removes Paralysis/ Shock/ Sleep/ Fear/ Imprison/ Knockback. Recovers 15% of Max HP. The effect is applied to immobilized allies first. The amount of recovered HP for the rest decreases. -->
+		<!-- For the target and 10 nearby allies. Removes Paralysis/ Shock/ Sleep/ Fear/ Imprison/ Knockback. Recovers 15% of Max HP. The effect is applied to immobilized allies first. The amount of recovered HP for the rest decreases. -->
 		<icon>icon.s_refine</icon>
+		<castRange>700</castRange>
+		<effectPoint>1301</effectPoint>
+		<effectRange>1300</effectRange>
+		<affectLimit>10-10</affectLimit>
+		<affectRange>300</affectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic>
+		<itemConsumeCount>2</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<magicLevel>85</magicLevel>
+		<mpConsume>152</mpConsume>
 		<operateType>A1</operateType>
+		<abnormalTime>5</abnormalTime>
+		<reuseDelay>10000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="DispelBySlot">
+				<dispel>PARALYZE,-1;STUN,-1;SLEEP,-1;TURN_FLEE,-1;ROOT_MAGICALLY,-1;TURN_STONE,-1;KNOCKDOWN,-1</dispel>
+			</effect>
+			<effect name="HealPercent">
+				<power>15</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="47248" toLevel="1" name="Eva's Nocturne">
-		<!-- Removes debuffs and anomalies from nearby party members. For $s1, Debuff/ Anomaly Resistance $s2 -->
+		<!-- Removes debuffs and anomalies from nearby party members. For 5 sec., Debuff/ Anomaly Resistance +20% -->
 		<icon>icon.s_nocturn_of_eva</icon>
 		<abnormalTime>5</abnormalTime>
 		<abnormalLevel>1</abnormalLevel>
@@ -877,29 +1590,29 @@
 		</effects>
 	</skill>
 	<skill id="47249" toLevel="1" name="Eva's Power">
-		<!-- Enhances the following skills by increasing the successful attack chance. - Sleep - Dryad Root -->
+		<!-- Enhances the following skills by increasing the successful attack chance. - Sleep. - Dryad Root -->
 		<icon>icon.skill11187</icon>
 		<magicLevel>78</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 	</skill>
 	<skill id="47250" toLevel="60" name="Improved Sleep">
-		<!-- <Sleep skill> The effect lasts for $s1 Inflicts Sleep on the target. -->
+		<!-- <Sleep skill>. The effect lasts for 5 sec. Inflicts Sleep on the target. -->
 		<icon>icon.skill4046_a</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="47251" toLevel="27" name="Improved Wind Shackle">
-		<!-- <Suppression skill> Slows the enemy down. The effect lasts for $s1 Atk. Spd. -$s2 Casting Spd. -$s2 -->
+		<!-- <Suppression skill>. Slows the enemy down. The effect lasts for 30 sec. Atk. Spd. -17%. Casting Spd. -17% -->
 		<icon>icon.skill4038_a</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="47252" toLevel="45" name="Improved Dryad Root">
-		<!-- <Hold Skill> The effect lasts for $s1 Holds the enemy. -->
+		<!-- <Hold Skill>. The effect lasts for 5 sec. Holds the enemy. -->
 		<icon>icon.skill4047_a</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="47253" toLevel="3" name="Duress">
-		<!-- <Hold skill> For the target and nearby enemies: Holds for$s1 P. Atk. $s2 M. Atk. $s2 -->
+		<!-- <Hold skill>. For the target and nearby enemies:. Holds for5 sec. P. Atk. -30%. M. Atk. -30% -->
 		<icon>icon.s_imprison</icon>
 		<castRange>600</castRange>
 		<abnormalLevel>1</abnormalLevel>
@@ -996,7 +1709,7 @@
 		</effects>
 	</skill>
 	<skill id="47255" toLevel="1" name="Nemesis">
-		<!-- For the target and nearby enemies: Received Healing $s2 for $s1 -->
+		<!-- For the target and nearby enemies:. Received Healing -70% for 10 sec. -->
 		<icon>icon.s_nemesis</icon>
 		<castRange>600</castRange>
 		<abnormalLevel>1</abnormalLevel>
@@ -1032,7 +1745,7 @@
 		</effects>
 	</skill>
 	<skill id="47256" toLevel="1" name="Dark Disruption">
-		<!-- Removes the following buffs and blocks them for 10 sec.: - Special class transformation -->
+		<!-- Removes the following buffs and blocks them for 10 sec.:. - Special class transformation -->
 		<icon>icon.banish</icon>
 		<castRange>600</castRange>
 		<abnormalLevel>1</abnormalLevel>
@@ -1068,7 +1781,7 @@
 		</effects>
 	</skill>
 	<skill id="47257" toLevel="1" name="Shillien's Power">
-		<!-- M. Atk. $s1 <Shillien's Power - Burst> When using magic skills (attack/ anomaly/ debuff): With a certain chance for $s2: M. Atk. $s3 Casting Spd. $s4 (Trigger cooldown: 60 sec.) -->
+		<!-- M. Atk. +18%. <Shillien's Power - Burst>. When using magic skills (attack/ anomaly/ debuff):. With a certain chance for 10 sec.:. M. Atk. +5%. Casting Spd. +10%. (Trigger cooldown: 60 sec.) -->
 		<icon>icon.skill19167</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -1097,7 +1810,7 @@
 		</effects>
 	</skill>
 	<skill id="47258" toLevel="1" name="Shillien's Power - Burst">
-		<!-- M. Atk. $s1 Casting Spd. $s2 -->
+		<!-- M. Atk. +5%. Casting Spd. +10% -->
 		<icon>icon.skill19167</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
@@ -1121,7 +1834,7 @@
 		</effects>
 	</skill>
 	<skill id="47259" toLevel="1" name="Unleashing">
-		<!-- <Skill with fixed cooldown> For $s1, your mental power awakens. M. Atk. $s2 Casting Spd. $s3 M. Skill Critical Rate $s4 M. Skill MP Consumption $s5 Healing Power $s6 -->
+		<!-- <Skill with fixed cooldown>. For 30 sec., your mental power awakens. M. Atk. +15%. Casting Spd. +30%. M. Skill Critical Rate +50%. M. Skill MP Consumption -80%. Healing Power +500 -->
 		<icon>icon.s_awaken</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
@@ -1190,7 +1903,7 @@
 		</effects>
 	</skill>
 	<skill id="47261" toLevel="3" name="Divine Recovery">
-		<!-- Consumes the target's soul and recovers MP. (Trigger cooldown: 10 sec.) Recovers $s1 MP after killing monsters. Recovers $s2 MP after killing characters. -->
+		<!-- Consumes the target's soul and recovers MP. (Trigger cooldown: 10 sec.). Recovers 96 MP after killing monsters. Recovers 768 MP after killing characters. -->
 		<icon>icon.s_saint_recovery</icon>
 		<castRange>600</castRange>
 		<effectRange>1100</effectRange>
@@ -1230,7 +1943,7 @@
 		</effects>
 	</skill>
 	<skill id="47263" toLevel="1" name="Sacred Power">
-		<!-- M. Def. $s2 The effect is determined by M. Def. <M. Def. is less than 1500> - M. Atk. $s1 <M. Def.: 1500 - 3999> - M. Atk. $s3 <M. Def.: 4000 - 7999> - M. Atk. $s4 <M. Def.: 8000 and higher> - M. Atk. $s5 -->
+		<!-- M. Def. +200. The effect is determined by M. Def. <M. Def. is less than 1500>. - M. Atk. +75. <M. Def.: 1500 - 3999>. - M. Atk. +180. <M. Def.: 4000 - 7999>. - M. Atk. +420. <M. Def.: 8000 and higher>. - M. Atk. +800 -->
 		<icon>icon.s_sacred_power</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1252,7 +1965,7 @@
 		</effects>
 	</skill>
 	<skill id="47264" toLevel="4" name="Sacred Power Lv. 1">
-		<!-- The effect is determined by M. Def. <M. Def. is less than 1500> - M. Atk. $s1 -->
+		<!-- The effect is determined by M. Def. <M. Def. is less than 1500>. - M. Atk. +75 -->
 		<icon>icon.s_sacred_power</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1305,7 +2018,7 @@
 		</effects>
 	</skill>
 	<skill id="47265" toLevel="1" name="Improved Resilience">
-		<!-- Infection Resistance $s1 Shock Resistance $s2 Knockback Resistance $s3 -->
+		<!-- Infection Resistance +30%. Shock Resistance +20%. Knockback Resistance +10% -->
 		<icon>icon.skill11765</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1319,7 +2032,7 @@
 		</effects>
 	</skill>
 	<skill id="47266" toLevel="3" name="Favorable Cover">
-		<!-- Swiftly switches the defense stance. For $s1 Max HP $s2 P. Def. $s2 Dagger Resistance $s3 -->
+		<!-- Swiftly switches the defense stance. For 1 min. Max HP +10%. P. Def. +10%. Dagger Resistance -30% -->
 		<icon>icon.skill11785</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
@@ -1371,7 +2084,7 @@
 		</effects>
 	</skill>
 	<skill id="47267" toLevel="15" name="Priest's Armor Mastery">
-		<!-- <Robe effect> P. Def. $s1 M. Def. $s2 <Light armor effect> P. Def. $s3 Atk. Spd. $s5 Casting Spd. $s4 MP Recovery Rate $s6 -->
+		<!-- <Robe effect>. P. Def. +20. M. Def. +5. <Light armor effect>. P. Def. +15. Atk. Spd. +25%. Casting Spd. +91%. MP Recovery Rate +20% -->
 		<icon>icon.m_class_robe</icon>
 		<magicLevel>
 			<value level="1">20</value>
@@ -1506,7 +2219,7 @@
 		</effects>
 	</skill>
 	<skill id="47268" toLevel="15" name="Priest's Attack Mastery">
-		<!-- P. Atk. $s1 M. Atk. $s2 When using a bow or a spear, Casting Spd. -30%. -->
+		<!-- P. Atk. +5. M. Atk. +150. When using a bow or a spear, Casting Spd. -30%. -->
 		<icon>icon.s_priest_attack_mastery</icon>
 		<magicLevel>
 			<value level="1">20</value>
@@ -1579,7 +2292,7 @@
 		</effects>
 	</skill>
 	<skill id="47269" toLevel="9" name="Mana Effect Boost">
-		<!-- Max MP $s1 MP Recovery Rate $s2 -->
+		<!-- Max MP +5%. MP Recovery Rate +1.6 -->
 		<icon>icon.skill1013</icon>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>MAX_MP_UP</abnormalType>
@@ -1659,7 +2372,7 @@
 		</effects>
 	</skill>
 	<skill id="47270" toLevel="11" name="Anti Magic">
-		<!-- M. Def. $s1 M. Damage Resistance $s2 -->
+		<!-- M. Def. +23. M. Damage Resistance +5% -->
 		<icon>icon.skill0146</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1712,7 +2425,7 @@
 		</effects>
 	</skill>
 	<skill id="47271" toLevel="7" name="Priest's Recovery Mastery">
-		<!-- HP Recovery Rate $s1 MP Recovery Rate $s2 -->
+		<!-- HP Recovery Rate +1.8. MP Recovery Rate +1.5 -->
 		<icon>icon.skill11788</icon>
 		<magicLevel>
 			<value level="1">25</value>
@@ -1805,7 +2518,7 @@
 		</effects>
 	</skill>
 	<skill id="47273" toLevel="7" name="Shield Throwing">
-		<!-- <Skill with fixed cast time> Throws the shield at the target. Attacks the target with $s1 power. For 10 sec., P. Skill Critical Rate -5%. P. Skill Critical Damage -5% Ignores Shield Defense. Ignores 20% of the target's defense. Critical. -->
+		<!-- <Skill with fixed cast time>. Throws the shield at the target. Attacks the target with 5658 power. For 10 sec., P. Skill Critical Rate -5%. P. Skill Critical Damage -5%. Ignores Shield Defense. Ignores 20% of the target's defense. Critical. -->
 		<icon>icon.shield_throwing</icon>
 		<castRange>400</castRange>
 		<effectPoint>
@@ -1865,7 +2578,7 @@
 		</effects>
 	</skill>
 	<skill id="47274" toLevel="3" name="Power of Life">
-		<!-- Fills your body with power and energy. Max HP $s1 Max HP $s2 P. Def. $s3 Shield Defense $s4 -->
+		<!-- Fills your body with power and energy. Max HP +12%. Max HP +1200. P. Def. +300. Shield Defense +200 -->
 		<icon>icon.stamina</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -1933,7 +2646,7 @@
 		</effects>
 	</skill>
 	<skill id="47275" toLevel="3" name="Toughness">
-		<!-- Enables a stance that increases your defense. Max HP $s1 P. Def. $s2 P. Def. $s3 Shield Defense $s4 -->
+		<!-- Enables a stance that increases your defense. Max HP +1200. P. Def. +14%. P. Def. +300. Shield Defense +200 -->
 		<icon>icon.toughness</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -2002,7 +2715,7 @@
 		</effects>
 	</skill>
 	<skill id="47276" toLevel="1" name="Chain Strike (Shock)">
-		<!-- Enchants Chain Strike. <Enchant effect> Increases the Chain Strike success rate. With a certain chance, stuns the target for 3 sec. after pulling them. -->
+		<!-- Enchants Chain Strike. <Enchant effect>. Increases the Chain Strike success rate. With a certain chance, stuns the target for 3 sec. after pulling them. -->
 		<icon>icon.chain_shock</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2026,7 +2739,7 @@
 		</effects>
 	</skill>
 	<skill id="47277" toLevel="3" name="Chain Strike (Shock)">
-		<!-- <Pull/ shock skill> Pulls the target and stuns them for 3 sec. with a certain chance. -->
+		<!-- <Pull/ shock skill>. Pulls the target and stuns them for 3 sec. with a certain chance. -->
 		<icon>icon.chain_shock</icon>
 		<abnormalLevel>
 			<value level="1">1</value>
@@ -2108,7 +2821,7 @@
 		</effects>
 	</skill>
 	<skill id="47279" toLevel="13" name="Knight's Assault">
-		<!-- Swings your weapon at the target. Attacks with $s1 power. Ignores Shield Defense. Ignores 10% of the target's defense. Critical. -->
+		<!-- Swings your weapon at the target. Attacks with 4907 power. Ignores Shield Defense. Ignores 10% of the target's defense. Critical. -->
 		<icon>icon.knight_assault</icon>
 		<castRange>60</castRange>
 		<basicProperty>PHYSICAL</basicProperty>
@@ -2197,7 +2910,7 @@
 		</effects>
 	</skill>
 	<skill id="47280" toLevel="2" name="Knight's Power">
-		<!-- P. Def. $s1 The effect is affected by your P. Def. <P. Def. lower than 5000> - P. Atk. $s2 <P. Def. 5000-6999> - P. Atk. $s3 <P. Def. 7000-8999> - P. Atk. $s4 <P. Def. 9000-10999> - P. Atk. $s5 <P. Def. 11000-14499> - P. Atk. $s6 <P. Def. 14500 - 16999> -P. Atk. $s7 <P. Def. 17000 - 19499> -P. Atk. $s8 <P. Def. 19500 - 21999> - P. Atk. $s9 <P. Def. 22000 - 24999> - P. Atk. $s10 <P. Def. 25000+> - P. Atk. $s11 -->
+		<!-- P. Def. +200. The effect is affected by your P. Def. <P. Def. lower than 5000>. - P. Atk. +125. <P. Def. 5000-6999>. - P. Atk. +190. <P. Def. 7000-8999>. - P. Atk. +250. <P. Def. 9000-10999>. - P. Atk. +375. <P. Def. 11000-14499>. - P. Atk. +500. <P. Def. 14500 - 16999>. -P. Atk. +625. <P. Def. 17000 - 19499>. -P. Atk. +750. <P. Def. 19500 - 21999>. - P. Atk. +875. <P. Def. 22000 - 24999>. - P. Atk. +2000. <P. Def. 25000+>. - P. Atk. +2001 -->
 		<icon>icon.strength_of_knight</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2282,7 +2995,7 @@
 		</effects>
 	</skill>
 	<skill id="47281" toLevel="2" name="Masterpiece Shield">
-		<!-- Makes you use your shield more effectively. Shield Defense ignoring effects are $s1 less effective. -->
+		<!-- Makes you use your shield more effectively. Shield Defense ignoring effects are 3% less effective. -->
 		<icon>icon.skill0475</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2295,7 +3008,7 @@
 		</passiveConditions>
 	</skill>
 	<skill id="47282" toLevel="10" name="Shield Stun">
-		<!-- <Shock skill> Attacks the enemy with the shield. Power $s1. Stuns for $s2 -->
+		<!-- <Shock skill>. Attacks the enemy with the shield. Power 203. Stuns for 3 sec. -->
 		<icon>icon.skill0092</icon>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
@@ -2415,7 +3128,7 @@
 		</effects>
 	</skill>
 	<skill id="47284" toLevel="11" name="Slowdown">
-		<!-- Duration: $s1 P. Skill Cooldown +$s2 M. Skill Cooldown +$s2 -->
+		<!-- Duration: 3 sec. P. Skill Cooldown +200%. M. Skill Cooldown +200% -->
 		<icon>icon.skill11767</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
@@ -2473,7 +3186,7 @@
 		</effects>
 	</skill>
 	<skill id="47285" toLevel="10" name="Bloody Weapon">
-		<!-- Sharpens your weapon for $s1 With a certain chance, uses Bloody Strike after an attack. (Cooldown: 10 sec.) Cannot be used with Freezing Weapon. <Bloody Strike> Attacks the enemy with $s2 power. For $s3, deals additional damage. -->
+		<!-- Sharpens your weapon for 20 min. With a certain chance, uses Bloody Strike after an attack. (Cooldown: 10 sec.). Cannot be used with Freezing Weapon. <Bloody Strike>. Attacks the enemy with 46 power. For 5 sec., deals additional damage. -->
 		<icon>icon.skill0223</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalType>BLEEDING</abnormalType>
@@ -2673,7 +3386,7 @@
 		</effects>
 	</skill>
 	<skill id="47288" toLevel="9" name="Freezing Weapon">
-		<!-- Imbues your weapon with ice power for $s1 With a certain chance, uses Freezing Strike after a physical attack. (Cooldown: 10 sec.) Cannot be used with Bloody Weapon. <Freezing Strike> Attacks the enemy with $s2 power. For $s3, Speed -$s4. -->
+		<!-- Imbues your weapon with ice power for 20 min. With a certain chance, uses Freezing Strike after a physical attack. (Cooldown: 10 sec.). Cannot be used with Bloody Weapon. <Freezing Strike>. Attacks the enemy with 64 power. For 5 sec., Speed -20%. -->
 		<icon>icon.skill0105</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -2797,7 +3510,7 @@
 		</effects>
 	</skill>
 	<skill id="47290" toLevel="9" name="Freezing Strike">
-		<!-- Speed $s1 -->
+		<!-- Speed -20% -->
 		<icon>icon.skill0105</icon>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
@@ -2833,7 +3546,7 @@
 		</effects>
 	</skill>
 	<skill id="47291" toLevel="5" name="Slaughter">
-		<!-- P. Atk. $s1 -->
+		<!-- P. Atk. +20 -->
 		<icon>icon.skill0103</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
@@ -2862,7 +3575,7 @@
 		</effects>
 	</skill>
 	<skill id="47292" toLevel="4" name="Life's Return">
-		<!-- For 20 min., increases the Elves' unique vitality. When hit, recovers $s1 of Max HP. (Cooldown: $s2) -->
+		<!-- For 20 min., increases the Elves' unique vitality. When hit, recovers 1% of Max HP. (Cooldown: 12 sec.) -->
 		<icon>icon.life_return</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
@@ -2955,8 +3668,8 @@
 		</effects>
 	</skill>
 	<skill id="47294" toLevel="4" name="Life Steal">
-		<!-- For 20 min., increases the Dark Elves' unique ability to steal others' health. Recovers $s1 of Max HP after an attack. (Cooldown: $s2) -->
-		<icon>icon.life_return</icon>
+		<!-- For 20 min., increases the Dark Elves' unique ability to steal others' health. Recovers 1% of Max HP after an attack. (Cooldown: 20 sec.) -->
+		<icon>icon.life_steal</icon>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<castRange>400</castRange>
@@ -3048,7 +3761,7 @@
 		</effects>
 	</skill>
 	<skill id="47296" toLevel="9" name="Knight's Magic Resistance">
-		<!-- M. Def. $s1 M. Damage Resistance +$s2 -->
+		<!-- M. Def. +210. M. Damage Resistance +5% -->
 		<icon>icon.skill0147</icon>
 		<magicLevel>
 			<value level="1">40</value>
@@ -3095,7 +3808,7 @@
 		</effects>
 	</skill>
 	<skill id="47297" toLevel="12" name="Knight's Armor Mastery">
-		<!-- When using heavy armor: P. Def. $s1 Received P. Critical Damage $s2 With a certain chance, triggers Power Stance when hit. (Cooldown: 10 sec.) <Power Stance> Increases P. Atk. Increases Atk. Spd. -->
+		<!-- When using heavy armor:. P. Def. +60. Received P. Critical Damage -25%. With a certain chance, triggers Power Stance when hit. (Cooldown: 10 sec.). <Power Stance>. Increases P. Atk. Increases Atk. Spd. -->
 		<icon>icon.knight_armor_mastery</icon>
 		<magicLevel>
 			<value level="1">40</value>
@@ -3222,7 +3935,7 @@
 		</effects>
 	</skill>
 	<skill id="47298" toLevel="12" name="Knight's Weapon Mastery">
-		<!-- When using a sword or a blunt weapon: P. Atk. $s1 -->
+		<!-- When using a sword or a blunt weapon:. P. Atk. +60 -->
 		<icon>icon.knight_weapon_mastery</icon>
 		<magicLevel>
 			<value level="1">40</value>

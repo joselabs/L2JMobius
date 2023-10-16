@@ -250,19 +250,20 @@ public class PlayerRandomCraft
 		{
 			final int madeId = Rnd.get(0, 4);
 			final RandomCraftRewardItemHolder holder = _rewardList.get(madeId);
+			_rewardList.clear();
+			
 			final int itemId = holder.getItemId();
 			final long itemCount = holder.getItemCount();
-			_rewardList.clear();
 			final Item item = _player.addItem("RandomCraft Make", itemId, itemCount, _player, true);
 			if (RandomCraftData.getInstance().isAnnounce(itemId))
 			{
 				Broadcast.toAllOnlinePlayers(new ExItemAnnounce(_player, item, ExItemAnnounce.RANDOM_CRAFT));
-				// LOGGER.log(Level.INFO, _player + " randomly crafted " + item.getTemplate() + " [" + item.getObjectId() + "]");
 			}
+			
 			_player.sendPacket(new ExCraftRandomMake(itemId, itemCount));
 			_player.sendPacket(new ExCraftRandomInfo(_player));
-			
 		}
+		
 		_player.removeRequest(RandomCraftRequest.class);
 	}
 	
@@ -316,7 +317,7 @@ public class PlayerRandomCraft
 		
 		_craftPoints -= pointsToRemove;
 		addFullCraftPoints(fullPointsToAdd);
-		if (_fullCraftPoints == MAX_FULL_CRAFT_POINTS)
+		if (_fullCraftPoints >= MAX_FULL_CRAFT_POINTS)
 		{
 			_craftPoints = MAX_CRAFT_POINTS;
 		}

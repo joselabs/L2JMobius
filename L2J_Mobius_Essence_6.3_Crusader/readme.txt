@@ -119,6 +119,7 @@ Death Knight: https://eu.4game.com/patchnotes/lineage2essence/196/
 -Sayha's Grace system
 -Random Craft system
 -Magic Lamp system
+-Orc Fortress
 
 Fluffy Reinforcement: https://eu.4game.com/patchnotes/lineage2essence/204/
 -Teleport favorites system
@@ -134,6 +135,7 @@ Sylph: https://eu.4game.com/patchnotes/lineage2essence/281/
 -Pledge donation system
 -Hellbound spawns
 -Achievement box
+-Surveillance system
 
 Frost Lord: https://eu.4game.com/patchnotes/lineage2essence/329/
 -Resurrection with payment
@@ -143,6 +145,7 @@ Frost Lord: https://eu.4game.com/patchnotes/lineage2essence/329/
 Battle Chronicle: https://eu.4game.com/patchnotes/lineage2essence/353/
 -New henna pattern potential system
 -Private shop review
+-Party/Command channel request
 
 Vanguard: https://eu.4game.com/patchnotes/lineage2essence/387/
 -Vanguard creation support
@@ -150,9 +153,12 @@ Vanguard: https://eu.4game.com/patchnotes/lineage2essence/387/
 -World exchange system
 -Chest and box auto-use
 -Dream Dungeon
+-Challenge Points system
 
 Crusader: https://eu.4game.com/patchnotes/lineage2essence/416/
 -New character creation templates
+-Magic Lamp Genie's quests
+-Valakas Temple instance
 
 Customs:
 -Newbie Helper NPC location info

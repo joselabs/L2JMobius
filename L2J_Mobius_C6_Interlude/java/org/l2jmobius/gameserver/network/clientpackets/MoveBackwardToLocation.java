@@ -93,7 +93,7 @@ public class MoveBackwardToLocation implements ClientPacket
 			return;
 		}
 		
-		// Mobius: Check for possible door logout and move over exploit. Also checked at ValidatePosition.
+		// Check for possible door logout and move over exploit. Also checked at ValidatePosition.
 		if (DoorData.getInstance().checkIfDoorsBetween(player.getLastServerPosition(), player.getLocation(), player.getInstanceId()))
 		{
 			player.stopMove(player.getLastServerPosition());
@@ -112,7 +112,13 @@ public class MoveBackwardToLocation implements ClientPacket
 				return;
 			}
 			player.setCursorKeyMovement(true);
+			player.setLastServerPosition(player.getX(), player.getY(), player.getZ());
 		}
+		
+		// Correcting targetZ from floor level to head level.
+		// Client is giving floor level as targetZ, but that floor level doesn't match our current geodata and teleport coordinates as good as head level!
+		// L2J uses floor, not head level as char coordinates. This is some sort of incompatibility fix. Validate position packets sends head level.
+		_targetZ += player.getTemplate().getCollisionHeight();
 		
 		if (player.getTeleMode() > 0)
 		{

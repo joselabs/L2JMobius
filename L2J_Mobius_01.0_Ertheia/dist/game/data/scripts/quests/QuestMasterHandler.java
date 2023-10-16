@@ -203,6 +203,7 @@ import quests.Q00755_InNeedOfPetras.Q00755_InNeedOfPetras;
 import quests.Q00756_TopQualityPetra.Q00756_TopQualityPetra;
 import quests.Q00757_TriolsMovement.Q00757_TriolsMovement;
 import quests.Q00758_TheFallenKingsMen.Q00758_TheFallenKingsMen;
+import quests.Q00759_TheDwarvenNightmareContinues.Q00759_TheDwarvenNightmareContinues;
 import quests.Q00761_AssistingTheGoldenRamArmy.Q00761_AssistingTheGoldenRamArmy;
 import quests.Q00762_AnOminousRequest.Q00762_AnOminousRequest;
 import quests.Q00763_ADauntingTask.Q00763_ADauntingTask;
@@ -214,10 +215,14 @@ import quests.Q00776_SlayDarkLordEkimus.Q00776_SlayDarkLordEkimus;
 import quests.Q00777_SlayDarkLordTiat.Q00777_SlayDarkLordTiat;
 import quests.Q00778_OperationRoaringFlame.Q00778_OperationRoaringFlame;
 import quests.Q00779_UtilizeTheDarknessSeedOfDestruction.Q00779_UtilizeTheDarknessSeedOfDestruction;
+import quests.Q00780_UtilizeTheDarknessSeedOfInfinity.Q00780_UtilizeTheDarknessSeedOfInfinity;
+import quests.Q00781_UtilizeTheDarknessSeedOfAnnihilation.Q00781_UtilizeTheDarknessSeedOfAnnihilation;
+import quests.Q00782_UtilizeTheDarknessSeedOfHellfire.Q00782_UtilizeTheDarknessSeedOfHellfire;
 import quests.Q00784_TheQuietKiller.Q00784_TheQuietKiller;
 import quests.Q00785_ASuspiciousIngredient.Q00785_ASuspiciousIngredient;
 import quests.Q00786_AwaitingTheVoiceOfTheGods.Q00786_AwaitingTheVoiceOfTheGods;
 import quests.Q00787_TheRoleOfAWatcher.Q00787_TheRoleOfAWatcher;
+import quests.Q00789_WaitingForPaagrio.Q00789_WaitingForPaagrio;
 import quests.Q00901_HowLavasaurusesAreMade.Q00901_HowLavasaurusesAreMade;
 import quests.Q00902_ReclaimOurEra.Q00902_ReclaimOurEra;
 import quests.Q00903_TheCallOfAntharas.Q00903_TheCallOfAntharas;
@@ -408,6 +413,8 @@ import quests.Q10743_StrangeFungus.Q10743_StrangeFungus;
 import quests.Q10744_StrongerThanSteel.Q10744_StrongerThanSteel;
 import quests.Q10745_TheSecretIngredients.Q10745_TheSecretIngredients;
 import quests.Q10746_SeeTheWorld.Q10746_SeeTheWorld;
+import quests.Q10748_MysteriousSuggestion1.Q10748_MysteriousSuggestion1;
+import quests.Q10749_MysteriousSuggestion2.Q10749_MysteriousSuggestion2;
 import quests.Q10751_WindsOfFateEncounters.Q10751_WindsOfFateEncounters;
 import quests.Q10752_WindsOfFateAPromise.Q10752_WindsOfFateAPromise;
 import quests.Q10753_WindsOfFateChoices.Q10753_WindsOfFateChoices;
@@ -457,16 +464,11 @@ import quests.not_done.Q00480_AnotherLegacyOfCrumaTower;
 import quests.not_done.Q00504_CompetitionForTheBanditStronghold;
 import quests.not_done.Q00655_AGrandPlanForTamingWildBeasts;
 import quests.not_done.Q00750_SevenFlowers;
-import quests.not_done.Q00759_TheDwarvenNightmareContinues;
 import quests.not_done.Q00767_BanishingEvil;
 import quests.not_done.Q00768_TerrorOfTown;
 import quests.not_done.Q00769_TheTruthConcealedInBeauty;
 import quests.not_done.Q00770_MaintainingTheFieldBusiness;
 import quests.not_done.Q00771_PartakingInThePurificationCampaign;
-import quests.not_done.Q00780_UtilizeTheDarknessSeedOfInfinity;
-import quests.not_done.Q00781_UtilizeTheDarknessSeedOfAnnihilation;
-import quests.not_done.Q00782_UtilizeTheDarknessSeedOfHellfire;
-import quests.not_done.Q00789_WaitingForPaagrio;
 import quests.not_done.Q10352_LegacyOfCrumaTower;
 import quests.not_done.Q10357_AltarOfBloodThatAwakensDestruction;
 import quests.not_done.Q10456_OperationRescue;
@@ -489,8 +491,6 @@ import quests.not_done.Q10728_TheHerosJourneyCemetary;
 import quests.not_done.Q10729_TheHerosJourneyGuillotineFortress;
 import quests.not_done.Q10730_TheHerosJourneyOrbisTemple;
 import quests.not_done.Q10747_TheHerosJourneyPaganTemple;
-import quests.not_done.Q10748_MysteriousSuggestion1;
-import quests.not_done.Q10749_MysteriousSuggestion2;
 import quests.not_done.Q10809_TheHerosJourneyBlazingSwamp;
 
 /**
@@ -691,7 +691,7 @@ public class QuestMasterHandler
 		Q00756_TopQualityPetra.class,
 		Q00757_TriolsMovement.class,
 		Q00758_TheFallenKingsMen.class,
-		Q00759_TheDwarvenNightmareContinues.class, // TODO: Not done.
+		Q00759_TheDwarvenNightmareContinues.class,
 		Q00761_AssistingTheGoldenRamArmy.class,
 		Q00762_AnOminousRequest.class,
 		Q00763_ADauntingTask.class,
@@ -708,14 +708,14 @@ public class QuestMasterHandler
 		Q00777_SlayDarkLordTiat.class,
 		Q00778_OperationRoaringFlame.class,
 		Q00779_UtilizeTheDarknessSeedOfDestruction.class,
-		Q00780_UtilizeTheDarknessSeedOfInfinity.class, // TODO: Not done.
-		Q00781_UtilizeTheDarknessSeedOfAnnihilation.class, // TODO: Not done.
-		Q00782_UtilizeTheDarknessSeedOfHellfire.class, // TODO: Not done.
+		Q00780_UtilizeTheDarknessSeedOfInfinity.class,
+		Q00781_UtilizeTheDarknessSeedOfAnnihilation.class,
+		Q00782_UtilizeTheDarknessSeedOfHellfire.class,
 		Q00784_TheQuietKiller.class,
 		Q00785_ASuspiciousIngredient.class,
 		Q00786_AwaitingTheVoiceOfTheGods.class,
 		Q00787_TheRoleOfAWatcher.class,
-		Q00789_WaitingForPaagrio.class, // TODO: Not done.
+		Q00789_WaitingForPaagrio.class,
 		Q00901_HowLavasaurusesAreMade.class,
 		Q00902_ReclaimOurEra.class,
 		Q00903_TheCallOfAntharas.class,
@@ -928,8 +928,8 @@ public class QuestMasterHandler
 		Q10745_TheSecretIngredients.class,
 		Q10746_SeeTheWorld.class,
 		Q10747_TheHerosJourneyPaganTemple.class, // TODO: Not done.
-		Q10748_MysteriousSuggestion1.class, // TODO: Not done.
-		Q10749_MysteriousSuggestion2.class, // TODO: Not done.
+		Q10748_MysteriousSuggestion1.class,
+		Q10749_MysteriousSuggestion2.class,
 		Q10751_WindsOfFateEncounters.class,
 		Q10752_WindsOfFateAPromise.class,
 		Q10753_WindsOfFateChoices.class,

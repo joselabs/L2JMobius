@@ -21,7 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.MailType;
 import org.l2jmobius.gameserver.instancemanager.IdManager;
@@ -255,7 +255,7 @@ public class Message
 		{
 			case REGULAR:
 			{
-				_senderName = CharNameTable.getInstance().getNameById(_senderId);
+				_senderName = CharInfoTable.getInstance().getNameById(_senderId);
 				break;
 			}
 			default:
@@ -271,7 +271,7 @@ public class Message
 	{
 		if (_receiverName == null)
 		{
-			_receiverName = CharNameTable.getInstance().getNameById(_receiverId);
+			_receiverName = CharInfoTable.getInstance().getNameById(_receiverId);
 			if (_receiverName == null)
 			{
 				_receiverName = "";

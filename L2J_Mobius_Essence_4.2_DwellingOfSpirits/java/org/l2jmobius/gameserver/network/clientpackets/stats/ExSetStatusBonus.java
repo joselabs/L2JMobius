@@ -21,7 +21,6 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
-import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 
 /**
  * @author Mobius
@@ -95,9 +94,10 @@ public class ExSetStatusBonus implements ClientPacket
 			player.getVariables().set(PlayerVariables.STAT_MEN, player.getVariables().getInt(PlayerVariables.STAT_MEN, 0) + _men);
 		}
 		
-		player.sendPacket(new UserInfo(player));
+		player.getStat().recalculateStats(true);
 		
 		// Calculate stat increase skills.
 		player.calculateStatIncreaseSkills();
+		player.updateUserInfo();
 	}
 }

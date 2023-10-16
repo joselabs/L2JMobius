@@ -26,7 +26,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ScheduledFuture;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -34,14 +33,12 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
-import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.cache.PaperdollCache;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.AgathionData;
 import org.l2jmobius.gameserver.data.xml.AppearanceItemData;
 import org.l2jmobius.gameserver.data.xml.ArmorSetData;
-import org.l2jmobius.gameserver.data.xml.EnchantItemOptionsData;
 import org.l2jmobius.gameserver.enums.ItemLocation;
 import org.l2jmobius.gameserver.enums.ItemSkillType;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
@@ -77,8 +74,6 @@ import org.l2jmobius.gameserver.network.serverpackets.SkillCoolTime;
 public abstract class Inventory extends ItemContainer
 {
 	protected static final Logger LOGGER = Logger.getLogger(Inventory.class.getName());
-	
-	private ScheduledFuture<?> _skillItemTask;
 	
 	public interface PaperdollListener
 	{
@@ -1471,12 +1466,6 @@ public abstract class Inventory extends ItemContainer
 		{
 			if (old != null)
 			{
-				// Prevent flood from using items with skills.
-				if (old.getTemplate().hasSkills() || EnchantItemOptionsData.getInstance().hasOptions(old.getId()))
-				{
-					checkEquipTask();
-				}
-				
 				_paperdoll[slot] = null;
 				_paperdollCache.getPaperdollItems().remove(old);
 				
@@ -1536,12 +1525,6 @@ public abstract class Inventory extends ItemContainer
 			// Add new item in slot of paperdoll
 			if (item != null)
 			{
-				// Prevent flood from using items with skills.
-				if (item.getTemplate().hasSkills() || EnchantItemOptionsData.getInstance().hasOptions(item.getId()))
-				{
-					checkEquipTask();
-				}
-				
 				_paperdoll[slot] = item;
 				_paperdollCache.getPaperdollItems().add(item);
 				
@@ -1618,33 +1601,6 @@ public abstract class Inventory extends ItemContainer
 		}
 		
 		return old;
-	}
-	
-	/**
-	 * Prevent flood from using items with skills.
-	 */
-	private void checkEquipTask()
-	{
-		if (_skillItemTask == null)
-		{
-			final Creature owner = getOwner();
-			if ((owner != null) && owner.isPlayer())
-			{
-				final Player player = owner.getActingPlayer();
-				if (player.hasEnteredWorld())
-				{
-					player.setUsingSkillItem(true);
-					_skillItemTask = ThreadPool.schedule(() ->
-					{
-						player.setUsingSkillItem(false);
-						player.getStat().recalculateStats(true);
-						player.updateAbnormalVisualEffects();
-						player.sendSkillList();
-						_skillItemTask = null;
-					}, 50);
-				}
-			}
-		}
 	}
 	
 	/**

@@ -65,6 +65,8 @@
 		<set name="bodypart" val="rhand" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">149</stat>
 			<stat type="mAtk">110</stat>
@@ -85,6 +87,8 @@
 		<set name="weight" val="1530" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
+		<set name="ensoulNormalSlots" val="2" />
+		<set name="ensoulSpecialSlots" val="1" />
 		<stats>
 			<stat type="pAtk">172</stat>
 			<stat type="mAtk">91</stat>
@@ -365,6 +369,19 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="92403" min="1" max="1" chance="12.5" /> <!-- Talisman of Speed - Sealed -->
+			<item id="93080" min="1" max="1" chance="12.5" /> <!-- Charging Stone of Regular Craft - 1 Charge - Sealed -->
+			<item id="91983" min="1" max="1" chance="12.5" /> <!-- Primeval Isle's Time Stone - Sealed -->
+			<item id="94187" min="1" max="1" chance="12.5" /> <!-- Dim Life Stone Lv. 1 - Armor -->
+			<item id="94185" min="1" max="1" chance="12.5" /> <!-- Dim Life Stone Lv. 1 - Weapon -->
+			<item id="92402" min="1" max="1" chance="12.5" /> <!-- Scroll: Enchant Talisman of Speed - Sealed -->
+			<item id="3031" min="50" max="50" chance="12.5" /> <!-- Spirit Ore - Sealed -->
+			<item id="91912" min="100" max="100" chance="12.5" /> <!-- HP Potion -->
+		</capsuled_items>
 	</item>
 	<item id="94025" name="Piglet-Bank Lv.3" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to get more information about the contents. -->
@@ -376,6 +393,20 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="49756" min="1" max="1" chance="11.11111" /> <!-- Cloth Piece -->
+			<item id="92403" min="1" max="1" chance="11.11111" /> <!-- Talisman of Speed - Sealed -->
+			<item id="93080" min="1" max="1" chance="11.11111" /> <!-- Charging Stone of Regular Craft - 1 Charge - Sealed -->
+			<item id="91983" min="1" max="1" chance="11.11111" /> <!-- Primeval Isle's Time Stone - Sealed -->
+			<item id="94187" min="1" max="1" chance="11.11111" /> <!-- Dim Life Stone Lv. 1 - Armor -->
+			<item id="94185" min="1" max="1" chance="11.11111" /> <!-- Dim Life Stone Lv. 1 - Weapon -->
+			<item id="92402" min="3" max="3" chance="11.11111" /> <!-- Scroll: Enchant Talisman of Speed - Sealed -->
+			<item id="3031" min="50" max="50" chance="11.11111" /> <!-- Spirit Ore - Sealed -->
+			<item id="91912" min="100" max="100" chance="11.11111" /> <!-- HP Potion -->
+		</capsuled_items>
 	</item>
 	<item id="94026" name="Emerald Weapon: One-handed Sword" type="Weapon">
 		<set name="icon" val="BranchSys3.Icon.g_beam_sword" />
@@ -654,8 +685,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="120" />
+		<set name="price" val="100000" />
 		<skills>
-			<skill id="40160" level="1" /> <!-- Equipment Restoration Stone  -->
+			<skill id="40160" level="1" /> <!-- Equipment Restoration Stone -->
 		</skills>
 	</item>
 	<item id="94042" name="Emerald Weapon Appearance Stone" additionalName="Sealed" type="EtcItem">
@@ -712,7 +744,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="94046" name="Spellbook: Glorious Warrior's Ability Lv. 1" additionalName="Sealed" type="EtcItem">
-		<!-- A commemorative spellbook for reaching Lv. 90. Double-click to learn Glorious Warrior's Ability Lv. 1. <Classes> All classes <Skill effect> Increases CON and MEN. -->
+		<!-- A commemorative spellbook for reaching Lv. 90. Double-click to learn Glorious Warrior's Ability Lv. 1. <Classes>. All classes. <Skill effect>. Increases CON and MEN. -->
 		<set name="icon" val="icon.etc_spell_books_black_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -1129,7 +1161,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="94083" name="Helmet of Mana" type="Armor">
-		<!-- <Properties> STR +1 INT +1 Overweight limit +1500 M. Def. +10 HP Recovery Rate +8% MP Recovery Rate +8% P. Atk. +6% M. Atk. +8% -->
+		<!-- <Properties>. STR +1. INT +1. Overweight limit +1500. M. Def. +10. HP Recovery Rate +8%. MP Recovery Rate +8%. P. Atk. +6%. M. Atk. +8% -->
 		<set name="icon" val="icon.armor_leather_helmet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="head" />
@@ -1138,12 +1170,12 @@
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="560" />
 		<set name="enchant_enabled" val="true" />
+		<set name="ensoulNormalSlots" val="1" />
 		<stats>
 			<stat type="pDef">88</stat>
 		</stats>
 		<skills>
 			<skill id="50380" level="1" /> <!-- Helmet of Mana -->
-			<skill id="50381" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Helmet of Mana -->
@@ -1154,10 +1186,14 @@
 			<skill id="50382" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Helmet of Mana -->
+			<skill id="83215" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
+			<skill id="83113" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
+			<skill id="83114" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
+			<skill id="83115" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
 		</skills>
 	</item>
 	<item id="94084" name="Helmet of Mana" additionalName="Sealed" type="Armor">
-		<!-- <Properties> STR +1 INT +1 Overweight limit +1500 M. Def. +10 HP Recovery Rate +8% MP Recovery Rate +8% P. Atk. +6% M. Atk. +8% -->
+		<!-- <Properties>. STR +1. INT +1. Overweight limit +1500. M. Def. +10. HP Recovery Rate +8%. MP Recovery Rate +8%. P. Atk. +6%. M. Atk. +8% -->
 		<set name="icon" val="icon.armor_leather_helmet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="head" />
@@ -1169,12 +1205,12 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="ensoulNormalSlots" val="1" />
 		<stats>
 			<stat type="pDef">88</stat>
 		</stats>
 		<skills>
 			<skill id="50380" level="1" /> <!-- Helmet of Mana -->
-			<skill id="50381" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Helmet of Mana -->
@@ -1185,10 +1221,14 @@
 			<skill id="50382" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Helmet of Mana -->
 			<skill id="50382" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Helmet of Mana -->
+			<skill id="83215" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
+			<skill id="83113" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
+			<skill id="83114" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
+			<skill id="83115" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
 		</skills>
 	</item>
 	<item id="94085" name="Boots of Evasion" type="Armor">
-		<!-- <Properties> STR +1 INT +1 Overweight limit +1000 M. Def. +10 Max HP +200 Speed +8 -->
+		<!-- <Properties>. STR +1. INT +1. Overweight limit +1000. M. Def. +10. Max HP +200. Speed +8 -->
 		<set name="icon" val="icon.armor_t100_b_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="feet" />
@@ -1197,6 +1237,7 @@
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="1070" />
 		<set name="enchant_enabled" val="true" />
+		<set name="ensoulNormalSlots" val="1" />
 		<stats>
 			<stat type="pDef">59</stat>
 		</stats>
@@ -1213,10 +1254,14 @@
 			<skill id="50386" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Boots of Evasion -->
 			<skill id="50386" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Boots of Evasion -->
 			<skill id="50386" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Boots of Evasion -->
+			<skill id="83223" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
+			<skill id="83209" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
+			<skill id="83210" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
+			<skill id="83211" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
 		</skills>
 	</item>
 	<item id="94086" name="Boots of Evasion" additionalName="Sealed" type="Armor">
-		<!-- <Properties> STR +1 INT +1 Overweight limit +1000 M. Def. +10 Max HP +200 Speed +8 -->
+		<!-- <Properties>. STR +1. INT +1. Overweight limit +1000. M. Def. +10. Max HP +200. Speed +8 -->
 		<set name="icon" val="icon.armor_t100_b_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="feet" />
@@ -1228,6 +1273,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="ensoulNormalSlots" val="1" />
 		<stats>
 			<stat type="pDef">59</stat>
 		</stats>
@@ -1244,6 +1290,10 @@
 			<skill id="50386" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Boots of Evasion -->
 			<skill id="50386" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Boots of Evasion -->
 			<skill id="50386" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Boots of Evasion -->
+			<skill id="83223" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
+			<skill id="83209" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
+			<skill id="83210" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
+			<skill id="83211" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
 		</skills>
 	</item>
 	<item id="94087" name="Package: Helmet of Mana" additionalName="Sealed" type="EtcItem">
@@ -1368,7 +1418,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94093" name="High-grade Item Craft Coupon (Time-limited)" type="EtcItem">
-		<!-- Required for creating various items through the Special Craft. <font color=bbaa88><Items to create></font> Spellbook: Ultimate Death Knight Transformation Spellbook: Titan Champion Spellbook: Pa'agrio's Touch Spellbook: Cacophony of War Spellbook: Dragon Strike Spellbook: Meteor Spellbook: Tranquility Spellbook: Exclusion Spellbook: Dark Disruption + other items -->
+		<!-- Required for creating various items through the Special Craft. <font color=bbaa88><Items to create></font>. Spellbook: Ultimate Death Knight Transformation. Spellbook: Titan Champion. Spellbook: Pa'agrio's Touch. Spellbook: Cacophony of War. Spellbook: Dragon Strike. Spellbook: Meteor. Spellbook: Tranquility. Spellbook: Exclusion. Spellbook: Dark Disruption. + other items -->
 		<set name="icon" val="icon.bm_jewel_ticket" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -1386,6 +1436,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91061" min="1" max="1" minEnchant="7" maxEnchant="7" chance="100" /> <!-- Talisman of Authority - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="94095" name="Package: Inventory Expansion Ticket Lv. 4-5" type="EtcItem">
 		<!-- Double-click to get more information about the contents. -->

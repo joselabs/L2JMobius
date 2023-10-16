@@ -16,13 +16,11 @@
  */
 package org.l2jmobius.gameserver.model;
 
-import java.util.Calendar;
 import java.util.List;
 import java.util.function.Function;
 
 import org.l2jmobius.gameserver.enums.ClassId;
 import org.l2jmobius.gameserver.enums.DailyMissionStatus;
-import org.l2jmobius.gameserver.enums.MissionResetType;
 import org.l2jmobius.gameserver.handler.AbstractDailyMissionHandler;
 import org.l2jmobius.gameserver.handler.DailyMissionHandler;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -45,7 +43,6 @@ public class DailyMissionDataHolder
 	private final boolean _isDualClassOnly;
 	private final boolean _isDisplayedWhenNotAvailable;
 	private final AbstractDailyMissionHandler _handler;
-	private final MissionResetType _missionResetSlot;
 	
 	public DailyMissionDataHolder(StatSet set)
 	{
@@ -62,7 +59,6 @@ public class DailyMissionDataHolder
 		_isDualClassOnly = set.getBoolean("isDualClassOnly", false);
 		_isDisplayedWhenNotAvailable = set.getBoolean("isDisplayedWhenNotAvailable", true);
 		_handler = handler != null ? handler.apply(this) : null;
-		_missionResetSlot = set.getObject("duration", MissionResetType.class, MissionResetType.DAY);
 	}
 	
 	public int getId()
@@ -176,28 +172,5 @@ public class DailyMissionDataHolder
 	public boolean isLevelUpMission()
 	{
 		return (_handler != null) && _handler.isLevelUpMission();
-	}
-	
-	public void reset()
-	{
-		if (_handler != null)
-		{
-			if ((_missionResetSlot == MissionResetType.WEEK) && (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY))
-			{
-				_handler.reset();
-			}
-			else if ((_missionResetSlot == MissionResetType.MONTH) && (Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1))
-			{
-				_handler.reset();
-			}
-			else if ((_missionResetSlot == MissionResetType.WEEKEND) && (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY))
-			{
-				_handler.reset();
-			}
-			else if (_dailyReset)
-			{
-				_handler.reset();
-			}
-		}
 	}
 }

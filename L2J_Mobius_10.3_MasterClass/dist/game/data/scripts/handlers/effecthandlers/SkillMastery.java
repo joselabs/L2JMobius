@@ -28,16 +28,16 @@ import org.l2jmobius.gameserver.model.stats.Stat;
  */
 public class SkillMastery extends AbstractEffect
 {
-	private final BaseStat _stat;
+	private final Double _stat;
 	
 	public SkillMastery(StatSet params)
 	{
-		_stat = params.getEnum("stat", BaseStat.class, BaseStat.STR);
+		_stat = Double.valueOf(params.getEnum("stat", BaseStat.class, BaseStat.STR).ordinal());
 	}
 	
 	@Override
 	public void pump(Creature effected, Skill skill)
 	{
-		effected.getStat().mergeAdd(Stat.SKILL_MASTERY, _stat.ordinal());
+		effected.getStat().mergeAdd(Stat.SKILL_MASTERY, _stat);
 	}
 }

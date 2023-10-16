@@ -108,7 +108,6 @@ public class Antharas extends AbstractInstance
 		addSpellFinishedId(ANTHARAS);
 		addAttackId(ANTHARAS);
 		addKillId(ANTHARAS);
-		
 	}
 	
 	@Override
@@ -128,9 +127,9 @@ public class Antharas extends AbstractInstance
 				antharas.disableCoreAI(true);
 				antharas.setRandomWalking(false);
 				antharas.teleToLocation(181323, 114850, -7623, 32542);
-				broadcastPacket(world, null, new PlaySound("BS02_A"));
+				broadcastPacket(world, new PlaySound("BS02_A"));
 				startQuestTimer("CAMERA_1", 23, antharas, null, false);
-				broadcastPacket(world, new NpcInfo(antharas), null);
+				broadcastPacket(world, new NpcInfo(antharas));
 				world.setParameter("antharas", antharas);
 				break;
 			}
@@ -143,7 +142,7 @@ public class Antharas extends AbstractInstance
 				}
 				
 				final Npc antharas = world.getParameters().getObject("antharas", Npc.class);
-				broadcastPacket(world, new SpecialCamera(antharas, 700, 13, -19, 0, 10000, 20000, 0, 0, 0, 0, 0), null);
+				broadcastPacket(world, new SpecialCamera(antharas, 700, 13, -19, 0, 10000, 20000, 0, 0, 0, 0, 0));
 				startQuestTimer("CAMERA_2", 3000, npc, null, false);
 				break;
 			}
@@ -156,7 +155,7 @@ public class Antharas extends AbstractInstance
 				}
 				
 				final Npc antharas = world.getParameters().getObject("antharas", Npc.class);
-				broadcastPacket(world, new SpecialCamera(antharas, 700, 13, 0, 6000, 10000, 20000, 0, 0, 0, 0, 0), null);
+				broadcastPacket(world, new SpecialCamera(antharas, 700, 13, 0, 6000, 10000, 20000, 0, 0, 0, 0, 0));
 				startQuestTimer("CAMERA_3", 10000, npc, null, false);
 				break;
 			}
@@ -169,8 +168,8 @@ public class Antharas extends AbstractInstance
 				}
 				
 				final Npc antharas = world.getParameters().getObject("antharas", Npc.class);
-				broadcastPacket(world, new SpecialCamera(antharas, 3700, 0, -3, 0, 10000, 10000, 0, 0, 0, 0, 0), null);
-				broadcastPacket(world, new SocialAction(antharas.getObjectId(), 1), null);
+				broadcastPacket(world, new SpecialCamera(antharas, 3700, 0, -3, 0, 10000, 10000, 0, 0, 0, 0, 0));
+				broadcastPacket(world, new SocialAction(antharas.getObjectId(), 1));
 				startQuestTimer("CAMERA_4", 200, npc, null, false);
 				startQuestTimer("SOCIAL", 5200, npc, null, false);
 				break;
@@ -184,7 +183,7 @@ public class Antharas extends AbstractInstance
 				}
 				
 				final Npc antharas = world.getParameters().getObject("antharas", Npc.class);
-				broadcastPacket(world, new SpecialCamera(antharas, 1100, 0, -3, 22000, 10000, 30000, 0, 0, 0, 0, 0), null);
+				broadcastPacket(world, new SpecialCamera(antharas, 1100, 0, -3, 22000, 10000, 30000, 0, 0, 0, 0, 0));
 				startQuestTimer("CAMERA_5", 10800, npc, null, false);
 				break;
 			}
@@ -197,7 +196,7 @@ public class Antharas extends AbstractInstance
 				}
 				
 				final Npc antharas = world.getParameters().getObject("antharas", Npc.class);
-				broadcastPacket(world, new SpecialCamera(antharas, 1100, 0, -3, 300, 10000, 7000, 0, 0, 0, 0, 0), null);
+				broadcastPacket(world, new SpecialCamera(antharas, 1100, 0, -3, 300, 10000, 7000, 0, 0, 0, 0, 0));
 				startQuestTimer("START_MOVE", 1900, npc, null, false);
 				break;
 			}
@@ -210,7 +209,7 @@ public class Antharas extends AbstractInstance
 				}
 				
 				final Npc antharas = world.getParameters().getObject("antharas", Npc.class);
-				broadcastPacket(world, new SocialAction(antharas.getObjectId(), 2), null);
+				broadcastPacket(world, new SocialAction(antharas.getObjectId(), 2));
 				break;
 			}
 			case "START_MOVE":
@@ -229,7 +228,7 @@ public class Antharas extends AbstractInstance
 				{
 					if (players.isHero())
 					{
-						broadcastPacket(world, new ExShowScreenMessage(NpcStringId.S1_YOU_CANNOT_HOPE_TO_DEFEAT_ME_WITH_YOUR_MEAGER_STRENGTH, 2, 4000, players.getName()), null);
+						broadcastPacket(world, new ExShowScreenMessage(NpcStringId.S1_YOU_CANNOT_HOPE_TO_DEFEAT_ME_WITH_YOUR_MEAGER_STRENGTH, 2, 4000, players.getName()));
 						break;
 					}
 				}
@@ -512,8 +511,9 @@ public class Antharas extends AbstractInstance
 		{
 			enterInstance(player, npc, TEMPLATE_ID);
 			Instance world = player.getInstanceWorld();
-			if ((world != null))
+			if ((world != null) && world.isStatus(0))
 			{
+				world.setStatus(1);
 				startQuestTimer("SPAWN_ANTHARAS", Config.ANTHARAS_WAIT_TIME * 60000, null, player);
 			}
 		}
@@ -528,7 +528,7 @@ public class Antharas extends AbstractInstance
 		return null;
 	}
 	
-	void broadcastPacket(Instance world, ServerPacket packet, PlaySound playSound)
+	private void broadcastPacket(Instance world, ServerPacket packet)
 	{
 		for (Player player : world.getPlayers())
 		{

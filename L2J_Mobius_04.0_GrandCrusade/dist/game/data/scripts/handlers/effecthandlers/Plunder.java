@@ -59,7 +59,7 @@ public class Plunder extends AbstractEffect
 		{
 			return;
 		}
-		else if (!effected.isMonster() || effected.isDead())
+		else if (!effected.isMonster())
 		{
 			effector.sendPacket(SystemMessageId.INVALID_TARGET);
 			return;

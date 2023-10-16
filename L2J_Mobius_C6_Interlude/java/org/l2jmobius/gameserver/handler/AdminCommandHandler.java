@@ -166,7 +166,7 @@ public class AdminCommandHandler
 		final String[] ids = handler.getAdminCommandList();
 		for (String element : ids)
 		{
-			if (_datatable.keySet().contains(element))
+			if (_datatable.containsKey(element))
 			{
 				LOGGER.warning("Duplicated command \"" + element + "\" definition in " + handler.getClass().getName() + ".");
 			}

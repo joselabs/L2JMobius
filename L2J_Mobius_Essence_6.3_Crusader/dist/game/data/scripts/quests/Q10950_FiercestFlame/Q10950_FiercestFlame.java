@@ -31,6 +31,7 @@ import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
+import org.l2jmobius.gameserver.network.serverpackets.TutorialShowHtml;
 
 /**
  * Fiercest Flame (10950)
@@ -241,6 +242,7 @@ public class Q10950_FiercestFlame extends Quest
 		final QuestState qs = getQuestState(player, false);
 		if ((qs == null) || (player.getLevel() < 3))
 		{
+			player.sendPacket(new TutorialShowHtml(0, "..\\L2text\\eu\\QT_001_Radar_01.htm", 2));
 			showOnScreenMsg(player, NpcStringId.TALK_TO_FLAME_GUARDIAN_VULKUS, ExShowScreenMessage.TOP_CENTER, 10000, player.getName());
 		}
 	}

@@ -30,7 +30,7 @@
 		</stats>
 	</item>
 	<item id="38701" name="Steel Arbalest" type="Weapon">
-		<!-- <Special Option>. Accuracy +5. Cannot augment or bestow a Soul Crystal option. -->
+		<!-- <Special Option>. P. Accuracy +5. Cannot augment or bestow a Soul Crystal option. -->
 		<set name="icon" val="icon.weapon_arbalest_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1352,7 +1352,7 @@
 		</stats>
 	</item>
 	<item id="38750" name="Uldie's Portrait With No Make-up" type="EtcItem">
-		<!-- Portrait of Uldie with no make-up on her. Always keep it in your inventory to receive Uldie s special buff. Temporary event item. -->
+		<!-- Portrait of Uldie with no make-up on her. Always keep it in your inventory to receive Uldie's special buff. -->
 		<set name="icon" val="icon.cardkey_raracat" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1363,7 +1363,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="38751" name="Uldie's Certificate of Secret Pinky Promise of Top Secrecy" type="EtcItem">
-		<!-- Uldie can exchange these Certificates for Halloween items in her store. Temporary event item. -->
+		<!-- If you've collected 10 or 15 certificates, you can get a gift, its value depends on a number of certificates. -->
 		<set name="icon" val="icon.namecard_raracat" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1381,14 +1381,14 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="38753" name="Secret Gift From Uldie" type="EtcItem">
-		<!-- A box with Ultimate Secret Gift from Uldie. Nobody in the world can ever tell what you will find in this Secret Box. Temporary event item. -->
+		<!-- A box with a gift from Team Leader Lara. You can find a very valuable item inside. -->
 		<set name="icon" val="BranchSys.icon.br_ghost_magicalbox_i00" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="38754" name="Shiny Elemental Shirt +8 Coupon" type="EtcItem">
-		<!-- Talk to a GM to receive a Shiny Elemental Shirt +8. -->
+		<!-- Talk to a GM to receive +8 Shiny Elemental Shirt. -->
 		<set name="icon" val="icon.etc_lottery_card_i00" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="MATERIAL" />
@@ -1396,7 +1396,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="38755" name="Shiny Elemental Shirt +7 Coupon" type="EtcItem">
-		<!-- Talk to a GM to receive a Shiny Elemental Shirt +7. -->
+		<!-- Talk to a GM to receive +7 Shiny Elemental Shirt. -->
 		<set name="icon" val="icon.etc_lottery_card_i00" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="MATERIAL" />
@@ -1516,9 +1516,14 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="13015" min="1" max="1" chance="100" /> <!-- My Teleport Book -->
+			<item id="13016" min="10" max="10" chance="100" /> <!-- My Teleport Scroll -->
+		</capsuled_items>
 	</item>
 	<item id="38765" name="Lara's Key Card Pack" additionalName="Luxury" type="EtcItem">
-		<!-- Double-click to obtain Lara's Key Card and Lara's Gift. Temporary event item. -->
+		<!-- Double-click to obtain Lara's Key Card and Ultimate Secret Lara's Gift. -->
 		<set name="icon" val="icon.etc_pouch_yellow_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1526,6 +1531,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="FISH" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38750" min="1" max="1" chance="100" /> <!-- Uldie's Portrait With No Make-up -->
+			<item id="38752" min="1" max="1" chance="100" /> <!-- Team Leader Lara's Gift -->
+		</capsuled_items>
 	</item>
 	<item id="38766" name="La Vie En Rose's Brooch" type="Armor">
 		<!-- Activates 2 jewel slots when equipped. -->
@@ -1634,7 +1644,7 @@
 		<set name="bodypart" val="underwear" />
 	</item>
 	<item id="38775" name="Sealed Antharas Shaper Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_dagger_i00" />
 		<set name="weapon_type" val="DAGGER" />
 		<set name="crystal_type" val="R" />
@@ -1662,7 +1672,7 @@
 		</stats>
 	</item>
 	<item id="38776" name="Sealed Antharas Slasher Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_twohand_sword_i00" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="crystal_type" val="R" />
@@ -1689,7 +1699,7 @@
 		</stats>
 	</item>
 	<item id="38777" name="Sealed Antharas Thrower Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_bow_i00" />
 		<set name="weapon_type" val="BOW" />
 		<set name="crystal_type" val="R" />
@@ -1717,7 +1727,7 @@
 		</stats>
 	</item>
 	<item id="38778" name="Sealed Antharas Buster Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot can be used. <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot be appearance modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_onehand_magic_sword_i00" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="crystal_type" val="R" />
@@ -1745,7 +1755,7 @@
 		</stats>
 	</item>
 	<item id="38779" name="Sealed Antharas Cutter Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_onehand_sword_i00" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="crystal_type" val="R" />
@@ -1772,7 +1782,7 @@
 		</stats>
 	</item>
 	<item id="38780" name="Sealed Antharas Stormer Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_spear_i00" />
 		<set name="weapon_type" val="POLE" />
 		<set name="crystal_type" val="R" />
@@ -1801,7 +1811,7 @@
 		</stats>
 	</item>
 	<item id="38781" name="Sealed Antharas Fighter Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_fist_i00" />
 		<set name="weapon_type" val="DUALFIST" />
 		<set name="crystal_type" val="R" />
@@ -1829,7 +1839,7 @@
 		</stats>
 	</item>
 	<item id="38782" name="Sealed Antharas Avenger Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_onehand_blunt_i00" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="crystal_type" val="R" />
@@ -1857,7 +1867,7 @@
 		</stats>
 	</item>
 	<item id="38783" name="Sealed Antharas Dual Blunt Weapon Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_dual_blunt_i00" />
 		<set name="weapon_type" val="DUALBLUNT" />
 		<set name="crystal_type" val="R" />
@@ -1885,7 +1895,7 @@
 		</stats>
 	</item>
 	<item id="38784" name="Sealed Antharas Dual Sword Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Antharas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_dual_sword_i00" />
 		<set name="weapon_type" val="DUAL" />
 		<set name="crystal_type" val="R" />
@@ -1912,7 +1922,7 @@
 		</stats>
 	</item>
 	<item id="38785" name="Sealed Valakas Shaper Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Valakas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Valakas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_valrakas_dagger_i00" />
 		<set name="weapon_type" val="DAGGER" />
 		<set name="crystal_type" val="R" />
@@ -1940,7 +1950,7 @@
 		</stats>
 	</item>
 	<item id="38786" name="Sealed Valakas Cutter Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Valakas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Valakas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_valrakas_onehand_sword_i00" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="crystal_type" val="R" />
@@ -1967,7 +1977,7 @@
 		</stats>
 	</item>
 	<item id="38787" name="Sealed Valakas Slasher Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Valakas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Valakas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_valrakas_twohand_sword_i00" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="crystal_type" val="R" />
@@ -1994,7 +2004,7 @@
 		</stats>
 	</item>
 	<item id="38788" name="Sealed Valakas Thrower Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Valakas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Valakas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_valrakas_bow_i00" />
 		<set name="weapon_type" val="BOW" />
 		<set name="crystal_type" val="R" />
@@ -2022,7 +2032,7 @@
 		</stats>
 	</item>
 	<item id="38789" name="Sealed Valakas Buster Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Valakas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Valakas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_valrakas_onehand_magic_sword_i00" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="crystal_type" val="R" />
@@ -2050,7 +2060,7 @@
 		</stats>
 	</item>
 	<item id="38790" name="Sealed Valakas Caster Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Valakas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Valakas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_valrakas_onehand_magic_blunt_i00" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="crystal_type" val="R" />
@@ -2079,7 +2089,7 @@
 		</stats>
 	</item>
 	<item id="38791" name="Sealed Valakas Retributer Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Valakas lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Valakas' weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_valrakas_twohand_magic_blunt_i00" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="crystal_type" val="R" />
@@ -2109,7 +2119,7 @@
 		</stats>
 	</item>
 	<item id="38792" name="Sealed Lindvior Shaper Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Lindvior lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Lindvior's weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_lind_dagger_i00" />
 		<set name="weapon_type" val="DAGGER" />
 		<set name="crystal_type" val="R" />
@@ -2137,7 +2147,7 @@
 		</stats>
 	</item>
 	<item id="38793" name="Sealed Lindvior Thrower Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Lindvior lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Lindvior's weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_lind_bow_i00" />
 		<set name="weapon_type" val="BOW" />
 		<set name="crystal_type" val="R" />
@@ -2165,7 +2175,7 @@
 		</stats>
 	</item>
 	<item id="38794" name="Sealed Lindvior Slasher Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Lindvior lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Lindvior's weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_lind_twohand_sword_i00" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="crystal_type" val="R" />
@@ -2192,7 +2202,7 @@
 		</stats>
 	</item>
 	<item id="38795" name="Sealed Lindvior Caster Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Lindvior lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Dragon weapon that Lindvior lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot can be used. <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot be appearance modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_lind_onehand_magic_blunt_i00" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="crystal_type" val="R" />
@@ -2220,7 +2230,7 @@
 		</stats>
 	</item>
 	<item id="38796" name="Sealed Lindvior Cutter Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Lindvior lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Lindvior's weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_lind_onehand_sword_i00" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="crystal_type" val="R" />
@@ -2247,7 +2257,7 @@
 		</stats>
 	</item>
 	<item id="38797" name="Sealed Lindvior Shooter Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Lindvior lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Lindvior's weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_lind_crossbow_i00" />
 		<set name="weapon_type" val="TWOHANDCROSSBOW" />
 		<set name="crystal_type" val="R" />
@@ -2275,7 +2285,7 @@
 		</stats>
 	</item>
 	<item id="38798" name="Sealed Lindvior Dual Dagger Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Lindvior lent to Toy Knight. Use the Dandy's Breath skill while possessing Dandy's Scroll: Release Seal to acquire Dandy's borrowed dragon weapon. Bring Dandy the Dragon Scroll: Boost Weapon to exchange it for a Genuine dragon weapon. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. <Passive: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Lindvior's weapon lent by Toy Knight. Can be released with Dandy's Breath from Toy Knight's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Item Skill: Toy Knight's Strength>. PvP Damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_lind_dual_dagger_i00" />
 		<set name="weapon_type" val="DUALDAGGER" />
 		<set name="crystal_type" val="R" />
@@ -2303,7 +2313,7 @@
 		</stats>
 	</item>
 	<item id="38799" name="Antharas Shaper Borrowed by Toy Knight" type="Weapon">
-		<!-- Dragon weapon that Antharas lent to Toy Knight. No-grade Soulshot, Spiritshot, and Blessed Spiritshot must be used. 1 hour limit. <Passive: Assisting Strength>. PvP damage +10%, Max HP/ MP/ CP +20%, Atk. Spd. +15%. Cannot be used in the Olympiad or Ceremony of of Chaos. Cannot enchant, crystallize, modify, or assign an attribute. -->
+		<!-- Available for 1 h. Antharas' weapon lent by Toy Knight. Used with Soulshots/ Spiritshots/ Blessed Spiritshots (No-grade). <Active Skill: Assisting Strength>. PvP Damage +10%, Max HP/ MP/ CP +20%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
 		<set name="icon" val="icon.weapon_antaras_dagger_i01" />
 		<set name="weapon_type" val="DAGGER" />
 		<set name="crystal_type" val="R" />

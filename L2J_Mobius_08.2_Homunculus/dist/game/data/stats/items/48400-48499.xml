@@ -17,6 +17,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48402" name="Test_Count Items 1" type="EtcItem">
 		<!-- Specified Usage Count Item -->
@@ -137,6 +138,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48401" min="10" max="10" chance="100" /> <!-- Item Unseal Scroll - 15 min. -->
+		</capsuled_items>
 	</item>
 	<item id="48412" name="Scroll of Escape - Town of Aden" type="EtcItem">
 		<!-- Use to move to the Town of Aden. -->
@@ -538,7 +544,7 @@
 		</skills>
 	</item>
 	<item id="48439" name="Fortress Talisman - Vitality" additionalName="15-day" type="Armor">
-		<!-- Vitality bonus +10%. -->
+		<!-- Vitality Bonus +10%. -->
 		<set name="icon" val="icon.r85_talisman_ca_up_passive" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1026,6 +1032,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38855" min="1" max="1" chance="100" /> <!-- Ruby Lv. 1 -->
+			<item id="36094" min="45" max="45" chance="100" /> <!-- Vitality Replenishing Star Candy -->
+			<item id="80666" min="30" max="30" chance="100" /> <!-- Fried Fish - P. Atk. -->
+			<item id="39634" min="1" max="1" chance="100" /> <!-- Venir's Talisman Lv. 1 -->
+		</capsuled_items>
 	</item>
 	<item id="48471" name="Adventure Guild Supply Box" type="EtcItem">
 		<!-- A supply box received from Herphah for completing the Adventure Guild missions. Double-click to obtain a variety of supply items. -->
@@ -1036,6 +1049,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38927" min="1" max="1" chance="100" /> <!-- Sapphire Lv. 1 -->
+			<item id="36094" min="45" max="45" chance="100" /> <!-- Vitality Replenishing Star Candy -->
+			<item id="80667" min="30" max="30" chance="100" /> <!-- Steamed Fish - M. Atk. -->
+			<item id="39634" min="1" max="1" chance="100" /> <!-- Venir's Talisman Lv. 1 -->
+		</capsuled_items>
 	</item>
 	<item id="48472" name="Night Goblin Coin" type="EtcItem">
 		<!-- Contains Night Goblin's power. Can be used through the Black Marketeer of Mammon. -->
@@ -1054,6 +1074,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48472" min="500" max="500" chance="100" /> <!-- Night Goblin's Coin -->
+		</capsuled_items>
 	</item>
 	<item id="48474" name="Night Goblin Coin (800) Box" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain 800 Night Goblin's Coins. -->
@@ -1065,6 +1089,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48472" min="800" max="800" chance="100" /> <!-- Night Goblin's Coin -->
+		</capsuled_items>
 	</item>
 	<item id="48475" name="Night Goblin Coin (2000) Box" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain 2000 Night Goblin's Coins. -->
@@ -1076,6 +1104,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48472" min="2000" max="2000" chance="100" /> <!-- Night Goblin's Coin -->
+		</capsuled_items>
 	</item>
 	<item id="48476" name="Dark/ Bloody Weapon Enhancement Stone Treasure Chest" type="EtcItem">
 		<!-- Use it to obtain a Dark Weapon Enhancement Stone or Bloody Weapon Enhancement Stone. -->
@@ -1116,6 +1148,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="17526" min="1" max="1" chance="100" /> <!-- Scroll: Enchant R-grade Weapon -->
+			<item id="17527" min="1" max="1" chance="100" /> <!-- Scroll: Enchant R-grade Armor -->
+		</capsuled_items>
 	</item>
 	<item id="48480" name="+8 Shiny Elemental T-shirt Pack" type="EtcItem">
 		<!-- Double-click to obtain a +8 Shiny Elemental Shirt. -->
@@ -1205,7 +1242,7 @@
 		</stats>
 	</item>
 	<item id="48486" name="Sayha Talisman Stage 6" additionalName="1-day" type="Armor">
-		<!-- P. Def. +1126. M. Def. +736, and Acquired XP/ SP +10%. When equipped with Venir s Talisman Lv. 10 or higher, Skill Power +3% Skill Cooldown -3%. <Active Skills>. Sayha's Grace Lv. 1. Sayha's Encouragement Lv. 1. When identical Talismans are equipped, only the effect of the highest level Talisman is active. -->
+		<!-- P. Def. +1126. M. Def. +736, and Acquired XP/ SP +10%. When equipped with Venir's Talisman Lv. 10 or higher, Skill Power +3% Skill Cooldown -3%. <Active Skills>. Sayha's Grace Lv. 1. Sayha's Encouragement Lv. 1. When identical Talismans are equipped, only the effect of the highest level Talisman is active. -->
 		<set name="icon" val="icon.bm_sayhas_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1341,7 +1378,7 @@
 		</stats>
 	</item>
 	<item id="48494" name="Mysterious Dragon Slayer" type="Weapon">
-		<!-- ?ontains the power of an ancient dragon, which can be drawn by enchanting. Enchant it to a high level and take it to Luna to obtain a special reward. -->
+		<!-- Сontains the power of an ancient dragon, which can be drawn by enchanting. Enchant it to a high level and take it to Luna to obtain a special reward. -->
 		<set name="icon" val="icon.bm_the_two_handed_sword_of_hero" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -1378,7 +1415,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48497" name="Glowing Dragon's Attribute Potion" additionalName="EXP" type="EtcItem">
-		<!-- When used, Attribute Attack +70, Attribute Resistance +70, acquired XP/ SP +30% for 30 min. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. -->
+		<!-- When used, Attribute Attack +70, Attribute Resistance +70, acquired XP/ SP +30% for +30 min. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.bm_dragon_posion_special" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -1406,7 +1443,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="immediate_effect" val="true" />
-		<set name="is_stackable" val="true" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
 			<skill id="39203" level="1" /> <!-- Blessed Scroll: Enchant Dragon Shirt -->

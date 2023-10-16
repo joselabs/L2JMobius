@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.model.actor.stat;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
+import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -32,7 +33,7 @@ public class PetStat extends SummonStat
 	
 	public boolean addExp(int value)
 	{
-		if (getActiveChar().isUncontrollable() || !super.addExp(value))
+		if (getActiveChar().isUncontrollable() || !super.addExp(Math.round(value * (1 + (getValue(Stat.BONUS_EXP_PET, 0) / 100)))))
 		{
 			return false;
 		}
@@ -43,7 +44,7 @@ public class PetStat extends SummonStat
 	
 	public boolean addExpAndSp(double addToExp)
 	{
-		final long finalExp = Math.round(addToExp);
+		final long finalExp = Math.round(addToExp * (1 + (getValue(Stat.BONUS_EXP_PET, 0) / 100)));
 		if (getActiveChar().isUncontrollable() || !addExp(finalExp))
 		{
 			return false;

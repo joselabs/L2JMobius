@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.taskmanager;
 
+import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
@@ -32,7 +33,7 @@ public class ItemsAutoDestroyTaskManager implements Runnable
 {
 	protected static final Logger LOGGER = Logger.getLogger(ItemsAutoDestroyTaskManager.class.getName());
 	
-	private final Set<Item> _items = ConcurrentHashMap.newKeySet();
+	private static final Set<Item> ITEMS = ConcurrentHashMap.newKeySet();
 	
 	protected ItemsAutoDestroyTaskManager()
 	{
@@ -42,41 +43,45 @@ public class ItemsAutoDestroyTaskManager implements Runnable
 	@Override
 	public void run()
 	{
-		if (_items.isEmpty())
+		if (ITEMS.isEmpty())
 		{
 			return;
 		}
 		
-		final long curtime = System.currentTimeMillis();
-		for (Item item : _items)
+		final long currentTime = System.currentTimeMillis();
+		final Iterator<Item> iterator = ITEMS.iterator();
+		Item itemInstance;
+		
+		while (iterator.hasNext())
 		{
-			if ((item == null) || (item.getDropTime() == 0) || (item.getItemLocation() != ItemLocation.VOID))
+			itemInstance = iterator.next();
+			if ((itemInstance == null) || (itemInstance.getDropTime() == 0) || (itemInstance.getItemLocation() != ItemLocation.VOID))
 			{
-				_items.remove(item);
+				iterator.remove();
 			}
-			else if (item.getItemType() == EtcItemType.HERB)
+			else if (itemInstance.getItemType() == EtcItemType.HERB)
 			{
-				if ((curtime - item.getDropTime()) > Config.HERB_AUTO_DESTROY_TIME)
+				if ((currentTime - itemInstance.getDropTime()) > Config.HERB_AUTO_DESTROY_TIME)
 				{
-					World.getInstance().removeVisibleObject(item, item.getWorldRegion());
-					World.getInstance().removeObject(item);
-					_items.remove(item);
+					World.getInstance().removeVisibleObject(itemInstance, itemInstance.getWorldRegion());
+					World.getInstance().removeObject(itemInstance);
+					iterator.remove();
 					
 					if (Config.SAVE_DROPPED_ITEM)
 					{
-						ItemsOnGroundManager.getInstance().removeObject(item);
+						ItemsOnGroundManager.getInstance().removeObject(itemInstance);
 					}
 				}
 			}
-			else if ((curtime - item.getDropTime()) > (Config.AUTODESTROY_ITEM_AFTER * 1000))
+			else if ((currentTime - itemInstance.getDropTime()) > (Config.AUTODESTROY_ITEM_AFTER * 1000))
 			{
-				World.getInstance().removeVisibleObject(item, item.getWorldRegion());
-				World.getInstance().removeObject(item);
-				_items.remove(item);
+				World.getInstance().removeVisibleObject(itemInstance, itemInstance.getWorldRegion());
+				World.getInstance().removeObject(itemInstance);
+				iterator.remove();
 				
 				if (Config.SAVE_DROPPED_ITEM)
 				{
-					ItemsOnGroundManager.getInstance().removeObject(item);
+					ItemsOnGroundManager.getInstance().removeObject(itemInstance);
 				}
 			}
 		}
@@ -85,7 +90,7 @@ public class ItemsAutoDestroyTaskManager implements Runnable
 	public void addItem(Item item)
 	{
 		item.setDropTime(System.currentTimeMillis());
-		_items.add(item);
+		ITEMS.add(item);
 	}
 	
 	public static ItemsAutoDestroyTaskManager getInstance()

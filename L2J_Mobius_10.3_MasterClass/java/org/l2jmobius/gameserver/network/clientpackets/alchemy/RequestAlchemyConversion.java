@@ -71,6 +71,12 @@ public class RequestAlchemyConversion implements ClientPacket
 			return;
 		}
 		
+		if (_craftTimes < 1)
+		{
+			player.sendPacket(new ExAlchemyConversion(0, 0));
+			return;
+		}
+		
 		if (AttackStanceTaskManager.getInstance().hasAttackStanceTask(player))
 		{
 			player.sendPacket(new ExAlchemyConversion(0, 0));
@@ -166,7 +172,14 @@ public class RequestAlchemyConversion implements ClientPacket
 		// Check if player has enough ingredients.
 		for (ItemHolder ingredient : data.getIngredients())
 		{
-			if (player.getInventory().getInventoryItemCount(ingredient.getId(), -1) < (ingredient.getCount() * _craftTimes))
+			final long count = ingredient.getCount() * _craftTimes;
+			if (count < 0)
+			{
+				player.sendPacket(new ExAlchemyConversion(0, 0));
+				return;
+			}
+			
+			if (player.getInventory().getInventoryItemCount(ingredient.getId(), -1) < count)
 			{
 				player.sendPacket(new ExAlchemyConversion(0, 0));
 				player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_MATERIALS_TO_PERFORM_THAT_ACTION);

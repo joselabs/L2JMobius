@@ -363,7 +363,7 @@
 		</effects>
 	</skill>
 	<skill id="21327" toLevel="10" name="Enchant Effect: Elemental Shirt">
-		<!-- M. Def. +$s1. -->
+		<!-- M. Def. +9.0. -->
 		<icon>BranchSys2.icon.etc_scroll_of_enchant_shirt_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -580,7 +580,7 @@
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="21333" toLevel="2" name="Adenia's Vampiric Rage">
-		<!-- Passive: Has a chance of absorbing $s1 of damage inflicted on enemy as HP when equipped. -->
+		<!-- Passive: Has a chance of absorbing 3% of damage inflicted on enemy as HP when equipped. -->
 		<icon>icon.skill3080</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -590,7 +590,7 @@
 		</magicLevel>
 	</skill>
 	<skill id="21334" toLevel="2" name="Adenia's Vampiric Rage">
-		<!-- Active: For $s1, has a chance of absorbing $s2 of damage inflicted on enemy as HP when used. -->
+		<!-- Active: For 30 minutes, has a chance of absorbing 4% of damage inflicted on enemy as HP when used. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>7200000</reuseDelay>
@@ -609,7 +609,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="21335" toLevel="2" name="Adenia's Damage Reflect">
-		<!-- Passive: Reflects $s1 of received damage back to enemy. -->
+		<!-- Passive: Reflects 3% of received damage back to enemy. -->
 		<icon>icon.skill3080</icon>
 		<operateType>P</operateType>
 		<effectPoint>379</effectPoint>
@@ -621,7 +621,7 @@
 		<isMagic>1</isMagic>
 	</skill>
 	<skill id="21336" toLevel="2" name="Adenia's Damage Reflect">
-		<!-- Active: For $s1, reflects $s2 of received damage back to enemy. -->
+		<!-- Active: For 5 minutes, reflects 7% of received damage back to enemy. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A2</operateType>
 		<mpConsume>25</mpConsume>
@@ -663,7 +663,7 @@
 		<magicLevel>61</magicLevel>
 	</skill>
 	<skill id="21340" toLevel="2" name="Adenia's Instant Recovery">
-		<!-- Active: Recovers $s1 HP, $s2 MP, and $s3 CP. Usable in the Olympiad. -->
+		<!-- Active: Recovers 15% HP, 15% MP, and 20% CP. Usable in the Olympiad. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
@@ -733,7 +733,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="21344" toLevel="2" name="Adenia's Invincibility">
-		<!-- Active: Removes all abnormal states and grants invincibility for $s1. Cannot use when rendered immobile. Usable in the Olympiad. -->
+		<!-- Active: Removes all abnormal states and grants invincibility for 3 seconds. Cannot use when rendered immobile. Usable in the Olympiad. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
@@ -838,7 +838,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 	</skill>
 	<skill id="21350" toLevel="5" name="Modified Set Effect Test">
-		<!-- For testing the modified set effects. STR +$s1. -->
+		<!-- For testing the modified set effects. STR +2. -->
 		<icon>BranchSys3.icon1.g_co_sf_b</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1151,7 +1151,20 @@
 	</skill>
 	<skill id="21364" toLevel="12" name="Talisman - Abundance">
 		<!-- P. Atk. +154, M. Atk. +181, P./ M. Evasion +4. -->
-		<icon>BranchSys2.icon.g_giant_gem</icon>
+		<icon>
+			<value level="1">BranchSys2.icon.g_giant_gem</value>
+			<value level="2">BranchSys2.icon.g_giant_gem</value>
+			<value level="3">BranchSys2.icon.g_giant_gem</value>
+			<value level="4">BranchSys2.icon.g_giant_gem</value>
+			<value level="5">BranchSys2.icon.g_twilight_gem</value>
+			<value level="6">BranchSys2.icon.g_twilight_gem</value>
+			<value level="7">BranchSys2.icon.g_twilight_gem</value>
+			<value level="8">BranchSys2.icon.g_twilight_gem</value>
+			<value level="9">BranchIcon.Icon.g_therich_i00</value>
+			<value level="10">BranchIcon.Icon.g_therich_i01</value>
+			<value level="11">BranchIcon.Icon.g_therich_i02</value>
+			<value level="12">BranchIcon.Icon.g_therich_i03</value>
+		</icon>
 		<magicLevel>55</magicLevel>
 		<abnormalLevel>
 			<value level="1">1</value> <!-- Talisman - Abundance War -->
@@ -1878,7 +1891,7 @@
 		</effects>
 	</skill>
 	<skill id="21368" toLevel="5" name="Wondrous Slaughter Dye">
-		<!-- Received Damage -$s1 and Damage Reflect Resistance +$s2. -->
+		<!-- Received Damage -5% and Damage Reflect Resistance +5. -->
 		<icon>BranchSys3.icon1.g_premium_hena_etc_slaughter</icon>
 		<abnormalLevel>
 			<value level="1">2</value>
@@ -2758,7 +2771,7 @@
 		</effects>
 	</skill>
 	<skill id="21377" toLevel="3" name="Adenian Tattoo: Protection">
-		<!-- Active Skill: P./ M. Def. +$s1, Max HP/ CP +$s2. Lasts $s3. Cooldown is $s4 hr. Can be used in the Olympiad. -->
+		<!-- Active Skill: P./ M. Def. +5%, Max HP/ CP +200. Lasts 1 minute. Cooldown is 1 hr. Can be used in the Olympiad. -->
 		<icon>BranchSys3.icon1.g_co_tatu_i01</icon>
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
@@ -2850,7 +2863,7 @@
 		</effects>
 	</skill>
 	<skill id="21378" toLevel="3" name="Adenian Tattoo: Valor">
-		<!-- Active Skill: P. Atk. +$s1, M. Atk. +$s2 . Lasts $s3. Cooldown is $s4 hr. Can be used in the Olympiad. -->
+		<!-- Active Skill: P. Atk. +5%, M. Atk. +10%. Lasts 1 minute. Cooldown is 1 hr. Can be used in the Olympiad. -->
 		<icon>BranchSys3.icon1.g_co_tatu_i02</icon>
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
@@ -2886,7 +2899,7 @@
 		</effects>
 	</skill>
 	<skill id="21379" toLevel="3" name="Adenian Tattoo: Deviance">
-		<!-- Active Skill: P./ M. Def. +$s1, P. Atk. +$s2, M. Atk. +$s3. Lasts $s4. Cooldown is $s5 hr. Can be used in the Olympiad. -->
+		<!-- Active Skill: P./ M. Def. +3%, P. Atk. +3%, M. Atk. +5%. Lasts 1 minute. Cooldown is 1 hr. Can be used in the Olympiad. -->
 		<icon>BranchSys3.icon1.g_co_tatu_i03</icon>
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>

@@ -237,7 +237,7 @@
 		<!-- P. Def. +33 -->
 		<effects>
 			<effect name="PhysicalDefence">
-				<amount>55</amount>
+				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -380,7 +380,11 @@
 	<option id="39066" name="Col_36">
 		<!-- Received Skill Critical Rate -3% -->
 		<effects>
-			<effect name="DefenceCriticalRate">
+			<effect name="DefenceMagicCriticalRate">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefencePhysicalSkillCriticalRate">
 				<amount>-3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -451,7 +455,7 @@
 	<option id="39073" name="Col_43">
 		<!-- Received M. Skill Critical Rate -1% -->
 		<effects>
-			<effect name="SkillMasteryRate">
+			<effect name="DefenceMagicCriticalRate">
 				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -460,7 +464,7 @@
 	<option id="39074" name="Col_44">
 		<!-- Received M. Skill Critical Damage -1% -->
 		<effects>
-			<effect name="DefenceCriticalRate">
+			<effect name="DefenceMagicCriticalDamage">
 				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -478,20 +482,24 @@
 	<option id="39076" name="Col_46">
 		<!-- Effect slots +1 -->
 		<effects>
-			<effect name="SkillMasteryRate">
-				<amount>-1</amount>
-				<mode>PER</mode>
+			<effect name="EnlargeAbnormalSlot">
+				<amount>1</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</option>
 	<option id="39077" name="Col_47">
 		<!-- Inventory slots +1 -->
-		<passive_skill id="81825" level="1" /> <!-- Inventory Slots -->
+		<effects>
+			<effect name="EnlargeSlot">
+				<amount>1</amount>
+			</effect>
+		</effects>
 	</option>
 	<option id="39078" name="Col_48">
 		<!-- Received P. Skill Critical Rate -1% -->
 		<effects>
-			<effect name="SkillMasteryRate">
+			<effect name="DefencePhysicalSkillCriticalRate">
 				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -500,7 +508,7 @@
 	<option id="39079" name="Col_49">
 		<!-- Received P. Skill Critical Damage -1% -->
 		<effects>
-			<effect name="PhysicalSkillCriticalDamage">
+			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>-1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -567,7 +575,7 @@
 	<option id="39086" name="Col_56">
 		<!-- M. Skill Critical Damage +15 -->
 		<effects>
-			<effect name="PhysicalSkillCriticalDamage">
+			<effect name="MagicCriticalDamage">
 				<amount>15</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -593,7 +601,11 @@
 	</option>
 	<option id="39089" name="Col_59">
 		<!-- Paralysis Resistance +1% -->
-		<passive_skill id="50011" level="1" /> <!-- Greater Paralysis Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<PARALYZE>1</PARALYZE>
+			</effect>
+		</effects>
 	</option>
 	<option id="39090" name="Col_60">
 		<!-- HP/ MP/ CP Recovery Rate +1 -->
@@ -614,11 +626,19 @@
 	</option>
 	<option id="39091" name="Col_61">
 		<!-- Imprisonment Resistance +1% -->
-		<passive_skill id="50011" level="2" /> <!-- Greater Paralysis Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<IMPRISON>1</IMPRISON>
+			</effect>
+		</effects>
 	</option>
 	<option id="39092" name="Col_62">
 		<!-- Paralysis Resistance +1% -->
-		<passive_skill id="50010" level="1" /> <!-- Greater Hold Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<PARALYZE>1</PARALYZE>
+			</effect>
+		</effects>
 	</option>
 	<option id="39093" name="Col_63">
 		<!-- Speed +1 -->
@@ -633,7 +653,7 @@
 		<!-- M. Def. +56 -->
 		<effects>
 			<effect name="MagicalDefence">
-				<amount>24</amount>
+				<amount>56</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -649,11 +669,19 @@
 	</option>
 	<option id="39096" name="Col_66">
 		<!-- Imprisonment Resistance +1% -->
-		<passive_skill id="50010" level="2" /> <!-- Greater Hold Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<IMPRISON>1</IMPRISON>
+			</effect>
+		</effects>
 	</option>
 	<option id="39097" name="Col_67">
 		<!-- Pull Resistance +1% -->
-		<passive_skill id="16317" level="1" /> <!-- Pull Resistance -->
+		<effects>
+			<effect name="DefenceTrait">
+				<PULL>1</PULL>
+			</effect>
+		</effects>
 	</option>
 	<option id="39098" name="Col_68">
 		<!-- Max HP +65 -->

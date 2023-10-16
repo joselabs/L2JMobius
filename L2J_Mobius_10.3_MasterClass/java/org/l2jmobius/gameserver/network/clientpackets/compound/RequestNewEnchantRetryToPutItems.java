@@ -96,7 +96,7 @@ public class RequestNewEnchantRetryToPutItems implements ClientPacket
 		}
 		
 		// Not implemented or not able to merge!
-		final CombinationItem combinationItem = CombinationItemsData.getInstance().getItemsBySlots(itemOne.getId(), itemOne.getEnchantLevel(), itemTwo.getId());
+		final CombinationItem combinationItem = CombinationItemsData.getInstance().getItemsBySlots(itemOne.getId(), itemOne.getEnchantLevel(), itemTwo.getId(), itemTwo.getEnchantLevel());
 		if (combinationItem == null)
 		{
 			client.sendPacket(ExEnchantRetryToPutItemFail.STATIC_PACKET);

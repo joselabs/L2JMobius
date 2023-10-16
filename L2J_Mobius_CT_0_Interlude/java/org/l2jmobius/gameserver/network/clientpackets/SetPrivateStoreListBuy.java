@@ -45,7 +45,7 @@ public class SetPrivateStoreListBuy implements ClientPacket
 	public void read(ReadablePacket packet)
 	{
 		final int count = packet.readInt();
-		if ((count < 1) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getRemainingLength()))
+		if ((count < 1) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) > packet.getRemainingLength()))
 		{
 			return;
 		}
@@ -54,6 +54,7 @@ public class SetPrivateStoreListBuy implements ClientPacket
 		for (int i = 0; i < count; i++)
 		{
 			final int itemId = packet.readInt();
+			packet.readShort(); // Enchant?
 			packet.readShort(); // TODO analyse this
 			
 			final int cnt = packet.readInt();
@@ -63,10 +64,6 @@ public class SetPrivateStoreListBuy implements ClientPacket
 				_items = null;
 				return;
 			}
-			packet.readInt(); // Unk
-			packet.readInt(); // Unk
-			packet.readInt(); // Unk
-			packet.readInt(); // Unk
 			
 			_items[i] = new Item(itemId, cnt, price);
 		}

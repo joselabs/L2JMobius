@@ -27,7 +27,7 @@ import org.l2jmobius.gameserver.network.serverpackets.AbstractItemPacket;
  */
 public class ExPledgeItemList extends AbstractItemPacket
 {
-	final Player _player;
+	private final Player _player;
 	
 	public ExPledgeItemList(Player player)
 	{

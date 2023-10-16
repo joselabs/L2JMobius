@@ -22,17 +22,15 @@ import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.enums.TaxType;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.model.siege.Castle;
-import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.PacketLogger;
+import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
  * @author KenM
  */
 public class ExShowCastleInfo extends ServerPacket
 {
-	public static final ExShowCastleInfo STATIC_PACKET = new ExShowCastleInfo();
-	
-	private ExShowCastleInfo()
+	public ExShowCastleInfo()
 	{
 	}
 	

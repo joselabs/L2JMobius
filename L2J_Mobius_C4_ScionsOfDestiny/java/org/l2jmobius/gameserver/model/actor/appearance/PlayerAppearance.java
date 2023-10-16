@@ -21,19 +21,19 @@ public class PlayerAppearance
 	private byte _face;
 	private byte _hairColor;
 	private byte _hairStyle;
-	private boolean _sex; // Female true(1)
+	private boolean _isFemale;
 	private boolean _invisible = false;
 	/** The hexadecimal Color of players name (white is 0xFFFFFF) */
 	private int _nameColor = 0xFFFFFF;
 	/** The hexadecimal Color of players name (white is 0xFFFFFF) */
 	private int _titleColor = 0xFFFF77;
 	
-	public PlayerAppearance(byte face, byte hColor, byte hStyle, boolean sex)
+	public PlayerAppearance(byte face, byte hColor, byte hStyle, boolean isFemale)
 	{
 		_face = face;
 		_hairColor = hColor;
 		_hairStyle = hStyle;
-		_sex = sex;
+		_isFemale = isFemale;
 	}
 	
 	public byte getFace()
@@ -68,17 +68,17 @@ public class PlayerAppearance
 	
 	public boolean isFemale()
 	{
-		return _sex;
+		return _isFemale;
 	}
 	
 	public void setFemale()
 	{
-		_sex = true;
+		_isFemale = true;
 	}
 	
 	public void setMale()
 	{
-		_sex = false;
+		_isFemale = false;
 	}
 	
 	public void setInvisible()

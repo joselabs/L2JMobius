@@ -1071,8 +1071,8 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -1266,16 +1266,28 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39492" level="1" /> <!-- PA Angler's Blessing - 1-hr -->
+		</skills>
 	</item>
 	<item id="80760" name="PA Blue Potion - Fishing XP Bonus" type="EtcItem">
 		<!-- For PA. For 1 h., Acquired XP/ SP +50% when fishing succeeds. Applies to all baits. Can be stacked with Angler's Blessing. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="material" val="PAPER" />
+		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="etcitem_type" val="POTION" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39493" level="1" /> <!-- PA Blue Potion - Fishing XP Bonus -->
+		</skills>
 	</item>
 	<item id="80761" name="PA Bait" additionalName="105" type="EtcItem">
 		<!-- PA only. Required level: 105. Fishing time: 105 sec. Standby time: 15 sec. A special fishing bait. There is a low chance to obtain Purple Box. -->
@@ -1408,6 +1420,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48878" min="2" max="2" chance="100" /> <!-- Forgotten Spellbook Chapter 3 -->
+		</capsuled_items>
 	</item>
 	<item id="80770" name="Brilliant Scroll: Enchant Elemental Shirt x2 Pack" type="EtcItem">
 		<!-- Use it to obtain 2 Brilliant Scroll: Enchant Elemental Shirt. -->
@@ -1420,6 +1436,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="47805" min="2" max="2" chance="100" /> <!-- Scroll: Enchant Brilliant Elemental Shirt -->
+		</capsuled_items>
 	</item>
 	<item id="80771" name="PA Event Box" type="EtcItem">
 		<!-- A box that can be purchased for PA Points. Double-click to obtain rare items, such as Dragon and Angel accessories. -->

@@ -304,12 +304,14 @@ import handlers.usercommandhandlers.PartyInfo;
 import handlers.usercommandhandlers.SiegeStatus;
 import handlers.usercommandhandlers.Time;
 import handlers.usercommandhandlers.Unstuck;
+import handlers.voicedcommandhandlers.AutoPlay;
 import handlers.voicedcommandhandlers.AutoPotion;
 import handlers.voicedcommandhandlers.Banking;
 import handlers.voicedcommandhandlers.ChangePassword;
 import handlers.voicedcommandhandlers.ChatAdmin;
 import handlers.voicedcommandhandlers.Lang;
 import handlers.voicedcommandhandlers.Offline;
+import handlers.voicedcommandhandlers.OfflinePlay;
 import handlers.voicedcommandhandlers.Online;
 import handlers.voicedcommandhandlers.Premium;
 
@@ -561,10 +563,12 @@ public class MasterHandler
 			// TODO: Add configuration options for this voiced commands:
 			// CastleVCmd.class,
 			// SetVCmd.class,
+			Config.ENABLE_AUTO_PLAY ? AutoPlay.class : null,
 			Config.BANKING_SYSTEM_ENABLED ? Banking.class : null,
 			Config.CHAT_ADMIN ? ChatAdmin.class : null,
 			Config.MULTILANG_ENABLE && Config.MULTILANG_VOICED_ALLOW ? Lang.class : null,
 			Config.ALLOW_CHANGE_PASSWORD ? ChangePassword.class : null,
+			Config.ENABLE_OFFLINE_PLAY_COMMAND ? OfflinePlay.class : null,
 			Config.ENABLE_OFFLINE_COMMAND && (Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) ? Offline.class : null,
 			Config.ENABLE_ONLINE_COMMAND ? Online.class : null,
 			Config.PREMIUM_SYSTEM_ENABLED ? Premium.class : null,

@@ -301,20 +301,32 @@
 	<item id="46624" name="Extra Pass: Embryo Command Post" type="EtcItem">
 		<!-- Double-click to reset cooldown to Embryo Command Post. Can only be used when on a cooldown to the instance zone. Can only be used once during the set time period outside of the instance zone. -->
 		<set name="icon" val="icon.etc_bm_kalie_instantzone_re" />
-		<set name="is_sellable" val="false" />
-		<set name="time" val="1440" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="weight" val="5" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="27758" level="1" /> <!-- Extra Pass: Embryo Command Post -->
+		</skills>
 	</item>
 	<item id="46625" name="Extra Pass: Nightmare Kamaloka" additionalName="1-day" type="EtcItem">
 		<!-- An extra pass to a daily instance zone. Double-click to reset the instance zone timer for Nightmare Kamaloka Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. -->
 		<set name="icon" val="icon.etc_ticket_red_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="1440" />
+		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
-		<set name="reuse_delay" val="86400000" />
-		<set name="material" val="PAPER" />
+		<set name="time" val="1440" />
 		<skills>
 			<skill id="18559" level="1" /> <!-- Extra Pass: Nightmare Kamaloka -->
 		</skills>
@@ -372,6 +384,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="ensoulNormalSlots" val="1" />
 		<set name="element_enabled" val="true" />
 		<set name="isAppearanceable" val="true" />
 		<set name="immediate_effect" val="true" />
@@ -567,7 +580,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="46642" name="Proof of Red" additionalName="Event" type="EtcItem">
-		<!-- Red Libra-exclusive item A certificate given to those who complete the request of the Red Libra Temple. It is used to change a dual class through Elder Green or exchange a weapon through Artisan Black. -->
+		<!-- Red Libra-exclusive item. A certificate given to those who complete the request of the Red Libra Temple. It is used to change a dual class through Elder Green or exchange a weapon through Artisan Black. -->
 		<set name="icon" val="icon.event_mahum_memo" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -576,7 +589,7 @@
 		<set name="material" val="LEATHER" />
 	</item>
 	<item id="46643" name="Rudi" additionalName="Event" type="EtcItem">
-		<!-- Red Libra item Oil made by Grocer Pink. Collect 1320 of these and take them to Grocer Pink to receive Lv.5 Giant Dyes (10 pcs.). -->
+		<!-- Red Libra item. Oil made by Grocer Pink. Collect 1320 of these and take them to Grocer Pink to receive Lv.5 Giant Dyes (10 pcs.). -->
 		<set name="icon" val="icon.five_vairy_potion" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -620,7 +633,7 @@
 		<set name="material" val="LEATHER" />
 	</item>
 	<item id="46648" name="Red Libra Talisman - Resurrection" additionalName="Event" type="Armor">
-		<!-- Red Libra-exclusive item When used, it resurrects all dead party members and additionally restores 100% XP. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. When used, it resurrects all dead party members and additionally restores 100% XP. Cannot be used in Olympiad. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_dropable" val="false" />
@@ -630,7 +643,7 @@
 		<set name="bodypart" val="deco1" />
 	</item>
 	<item id="46649" name="Red Libra Talisman - Restoration" additionalName="Event" type="Armor">
-		<!-- Red Libra-exclusive item When used, it restores all party members' HP/ MP/ CP completely and has a chance to remove debuffs from them. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. When used, it restores all party members' HP/ MP/ CP completely and has a chance to remove debuffs from them. Cannot be used in Olympiad. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_dropable" val="false" />
@@ -640,7 +653,7 @@
 		<set name="bodypart" val="deco1" />
 	</item>
 	<item id="46650" name="Red Libra Talisman - Cancel" additionalName="Event" type="Armor">
-		<!-- Red Libra-exclusive item When used, it removes debuffs from all party members and makes them immune to debuffs for 7 sec. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. When used, it removes debuffs from all party members and makes them immune to debuffs for 7 sec. Cannot be used in Olympiad. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_dropable" val="false" />
@@ -650,7 +663,7 @@
 		<set name="bodypart" val="deco1" />
 	</item>
 	<item id="46651" name="Red Libra Talisman - Speed" additionalName="Event" type="Armor">
-		<!-- Red Libra-exclusive item When used, it increases all party members' Speed by 70 for 10 sec. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. When used, it increases all party members' Speed by 70 for 10 sec. Cannot be used in Olympiad. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_dropable" val="false" />
@@ -660,7 +673,7 @@
 		<set name="bodypart" val="deco1" />
 	</item>
 	<item id="46652" name="Red Libra Talisman - Resistance" additionalName="Event" type="Armor">
-		<!-- Red Libra item When used, Received damage -10%. Cannot be used in Olympiad. -->
+		<!-- Red Libra item. When used, Received damage -10%. Cannot be used in Olympiad. -->
 		<set name="icon" val="BranchSys2.icon.g_giant_gem" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_dropable" val="false" />
@@ -670,7 +683,7 @@
 		<set name="bodypart" val="deco1" />
 	</item>
 	<item id="46653" name="Elysium Shaper" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_dagger_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DAGGER" />
@@ -696,7 +709,7 @@
 		</skills>
 	</item>
 	<item id="46654" name="Elysium Cutter" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_sword_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -722,7 +735,7 @@
 		</skills>
 	</item>
 	<item id="46655" name="Elysium Slasher" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_two_handed_sword_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -748,7 +761,7 @@
 		</skills>
 	</item>
 	<item id="46656" name="Elysium Avenger" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_axe_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -775,7 +788,7 @@
 		</skills>
 	</item>
 	<item id="46657" name="Elysium Fighter" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_fist_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALFIST" />
@@ -802,7 +815,7 @@
 		</skills>
 	</item>
 	<item id="46658" name="Elysium Stormer" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_pole_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
@@ -830,7 +843,7 @@
 		</stats>
 	</item>
 	<item id="46659" name="Elysium Thrower" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_bow_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
@@ -857,7 +870,7 @@
 		</skills>
 	</item>
 	<item id="46660" name="Elysium Guardian" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_infinity_shooter_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="TWOHANDCROSSBOW" />
@@ -884,7 +897,7 @@
 		</skills>
 	</item>
 	<item id="46661" name="Elysium Buster" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_infinity_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -911,7 +924,7 @@
 		</skills>
 	</item>
 	<item id="46662" name="Elysium Caster" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_mace_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -939,7 +952,7 @@
 		</skills>
 	</item>
 	<item id="46663" name="Elysium Retributer" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_the_staff_of_hero_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -968,7 +981,7 @@
 		</skills>
 	</item>
 	<item id="46664" name="Elysium Dual Swords" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_r_dualsword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
@@ -994,7 +1007,7 @@
 		</skills>
 	</item>
 	<item id="46665" name="Elysium Dual Daggers" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_r_dualdagger_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALDAGGER" />
@@ -1021,7 +1034,7 @@
 		</skills>
 	</item>
 	<item id="46666" name="Elysium Dual Blunt Weapon" additionalName="Event" type="Weapon">
-		<!-- Red Libra-exclusive item A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
+		<!-- Red Libra-exclusive item. A weapon widely used in Elysium. However. it cannot be enchanted in Aden. Cannot be used in Olympiad. -->
 		<set name="icon" val="icon.weapon_r_dualblunt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUALBLUNT" />
@@ -1055,7 +1068,7 @@
 		<set name="material" val="LEATHER" />
 	</item>
 	<item id="46668" name="La Vie En Rose's Brooch Lv. 2" type="Armor">
-		<!-- Unlocks 5 jewel slots. Inventory slots +12. <Upgrading> Can be upgraded to La Vie En Rose's Brooch Lv. 3 through Shadai in Heine. -->
+		<!-- Unlocks 5 jewel slots. Inventory slots +12. <Upgrading>. Can be upgraded to La Vie En Rose's Brooch Lv. 3 through Shadai in Heine. -->
 		<set name="icon" val="icon.bm_brooch_6slot_lavianrose_3" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch" />
@@ -1080,7 +1093,7 @@
 		<set name="material" val="LEATHER" />
 	</item>
 	<item id="46670" name="Vital Stone Lv. 1" type="Armor">
-		<!-- Vitality bonus +3%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Vitality bonus +3%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_vital" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1094,7 +1107,7 @@
 		</skills>
 	</item>
 	<item id="46671" name="Vital Stone Lv. 2" type="Armor">
-		<!-- Vitality bonus +6%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Vitality bonus +6%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_vital" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1108,7 +1121,7 @@
 		</skills>
 	</item>
 	<item id="46672" name="Vital Stone Lv. 3" type="Armor">
-		<!-- Vitality bonus +12%. Enables the Vital Wind skill. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Vitality bonus +12%. Enables the Vital Wind skill. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_vital" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1123,7 +1136,7 @@
 		</skills>
 	</item>
 	<item id="46673" name="Vital Stone Lv. 4" type="Armor">
-		<!-- Vitality bonus +25%, Vitality Consumption -7%. Enables the Vital Wind skill. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Vitality bonus +25%, Vitality Consumption -7%. Enables the Vital Wind skill. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_vital" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1138,7 +1151,7 @@
 		</skills>
 	</item>
 	<item id="46674" name="Vital Stone Lv. 5" type="Armor">
-		<!-- Vitality bonus +50%, Vitality Consumption -15%. Enables the Vital Wind skill. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Upgrading> A greater jewel can be obtained through compounding of two of these jewels. -->
+		<!-- Vitality bonus +50%, Vitality Consumption -15%. Enables the Vital Wind skill. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Upgrading>. A greater jewel can be obtained through compounding of two of these jewels. -->
 		<set name="icon" val="icon.etc_bm_jewel_vital" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1152,7 +1165,7 @@
 		</skills>
 	</item>
 	<item id="46675" name="Garnet Lv. 1" type="Armor">
-		<!-- Debuff Resistance +3%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Debuff Resistance +3%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1166,7 +1179,7 @@
 		</skills>
 	</item>
 	<item id="46676" name="Garnet Lv. 2" type="Armor">
-		<!-- Debuff Resistance +6%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Debuff Resistance +6%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1180,7 +1193,7 @@
 		</skills>
 	</item>
 	<item id="46677" name="Garnet Lv. 3" type="Armor">
-		<!-- Debuff Resistance +12%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Debuff Resistance +12%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1194,7 +1207,7 @@
 		</skills>
 	</item>
 	<item id="46678" name="Garnet Lv. 4" type="Armor">
-		<!-- Debuff Resistance +20%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Debuff Resistance +20%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1208,7 +1221,7 @@
 		</skills>
 	</item>
 	<item id="46679" name="Garnet Lv. 5" type="Armor">
-		<!-- Debuff Resistance +30%. Removes debuffs from you. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Upgrading> A greater jewel can be obtained through compounding of two of these jewels. -->
+		<!-- Debuff Resistance +30%. Removes debuffs from you. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Upgrading>. A greater jewel can be obtained through compounding of two of these jewels. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1223,7 +1236,7 @@
 		</skills>
 	</item>
 	<item id="46680" name="Tanzanite Lv. 1" type="Armor">
-		<!-- Creates a protective barrier that absorbs 5000 damage for 5 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Creates a protective barrier that absorbs 5000 damage for 5 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_tanzanite" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1238,7 +1251,7 @@
 		</skills>
 	</item>
 	<item id="46681" name="Tanzanite Lv. 2" type="Armor">
-		<!-- Creates a protective barrier that absorbs 10,000 damage for 5 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Creates a protective barrier that absorbs 10,000 damage for 5 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_tanzanite" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1253,7 +1266,7 @@
 		</skills>
 	</item>
 	<item id="46682" name="Tanzanite Lv. 3" type="Armor">
-		<!-- Creates a protective barrier that absorbs 15,000 damage for 10 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Creates a protective barrier that absorbs 15,000 damage for 10 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_tanzanite" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1268,7 +1281,7 @@
 		</skills>
 	</item>
 	<item id="46683" name="Tanzanite Lv. 4" type="Armor">
-		<!-- Creates a protective barrier that absorbs 30,000 damage for 10 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting> 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading> A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
+		<!-- Creates a protective barrier that absorbs 30,000 damage for 10 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Enchanting>. 1. Compounding of two jewels of the same level. 2. Compounding with Jewel Energy. <Upgrading>. A greater jewel can be obtained through compounding of two jewels of Lv. 5. -->
 		<set name="icon" val="icon.etc_bm_jewel_tanzanite" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1283,7 +1296,7 @@
 		</skills>
 	</item>
 	<item id="46684" name="Tanzanite Lv. 5" type="Armor">
-		<!-- Creates a protective barrier that absorbs 50,000 damage for 15 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Upgrading> A greater jewel can be obtained through compounding of two of these jewels. -->
+		<!-- Creates a protective barrier that absorbs 50,000 damage for 15 sec. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. <Upgrading>. A greater jewel can be obtained through compounding of two of these jewels. -->
 		<set name="icon" val="icon.etc_bm_jewel_tanzanite" />
 		<set name="bodypart" val="brooch_jewel" />
 		<set name="default_action" val="EQUIP" />
@@ -1385,11 +1398,18 @@
 	<item id="46692" name="Extra Pass: Embryo Command Post" type="EtcItem">
 		<!-- Double-click to reset cooldown to Embryo Command Post. Can only be used when on a cooldown to the instance zone. Can only be used once during the set time period outside of the instance zone. -->
 		<set name="icon" val="icon.etc_ticket_red_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
-		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="27776" level="1" /> <!-- Extra Pass: Embryo Command Post -->
+		</skills>
 	</item>
 	<item id="46693" name="Emperor Shunaiman's Shaper" additionalName="30-day" type="Weapon">
 		<!-- Emperor Shunaiman's Weapon. All levels. Can be used with No-grade Soulshot/ Spiritshot/ Blessed Spiritshot. Cannot be used in the Olympiad. -->

@@ -19,11 +19,13 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.olympiad.Olympiad;
+import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 
 /**
- * @author Dezmond_snz - Packet Format: cddd
+ * @author Dezmond_snz
  */
 public class DlgAnswer implements ClientPacket
 {
@@ -71,9 +73,48 @@ public class DlgAnswer implements ClientPacket
 		{
 			player.gatesAnswer(_answer, 0);
 		}
-		else if ((_messageId == SystemMessageId.S1_S2.getId()) && Config.ALLOW_WEDDING)
+		else if (_messageId == SystemMessageId.S1_S2.getId())
 		{
-			player.engageAnswer(_answer);
+			// Custom .offlineplay voiced command dialog.
+			if (player.getVariables().getBoolean("ASK_AUTO_PLAY", false))
+			{
+				player.getVariables().remove("ASK_AUTO_PLAY");
+				
+				if ((_answer == 0) || !Config.ENABLE_OFFLINE_PLAY_COMMAND)
+				{
+					return;
+				}
+				
+				if (!player.isAutoPlaying())
+				{
+					player.sendMessage("You need to enable auto play before exiting.");
+					return;
+				}
+				
+				if (player.isInBoat() || player.isInsideZone(ZoneId.PEACE))
+				{
+					player.sendPacket(SystemMessageId.YOU_MAY_NOT_LOG_OUT_FROM_THIS_LOCATION);
+					return;
+				}
+				
+				if (player.isRegisteredOnEvent())
+				{
+					player.sendMessage("Cannot use this command while registered on an event.");
+					return;
+				}
+				
+				// Unregister from olympiad.
+				if (Olympiad.getInstance().isRegistered(player))
+				{
+					Olympiad.getInstance().unRegisterNoble(player);
+				}
+				
+				player.startOfflinePlay();
+			}
+			else if (Config.ALLOW_WEDDING)
+			{
+				player.engageAnswer(_answer);
+			}
 		}
 		else if (_messageId == SystemMessageId.S1.getId())
 		{

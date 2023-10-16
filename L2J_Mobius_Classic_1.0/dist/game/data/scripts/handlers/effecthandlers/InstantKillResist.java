@@ -27,11 +27,11 @@ import org.l2jmobius.gameserver.model.stats.Stat;
  */
 public class InstantKillResist extends AbstractEffect
 {
-	private final int _amount;
+	private final Double _amount;
 	
 	public InstantKillResist(StatSet params)
 	{
-		_amount = params.getInt("amount", 0);
+		_amount = params.getDouble("amount", 0);
 	}
 	
 	@Override

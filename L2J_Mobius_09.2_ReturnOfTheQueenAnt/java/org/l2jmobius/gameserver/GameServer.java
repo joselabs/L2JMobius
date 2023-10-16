@@ -39,7 +39,7 @@ import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.data.BotReportTable;
 import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.AnnouncementsTable;
-import org.l2jmobius.gameserver.data.sql.CharNameTable;
+import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
@@ -55,6 +55,7 @@ import org.l2jmobius.gameserver.data.xml.BeautyShopData;
 import org.l2jmobius.gameserver.data.xml.BuyListData;
 import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
+import org.l2jmobius.gameserver.data.xml.ClanLevelData;
 import org.l2jmobius.gameserver.data.xml.ClanMasteryData;
 import org.l2jmobius.gameserver.data.xml.ClanShopData;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
@@ -95,6 +96,7 @@ import org.l2jmobius.gameserver.data.xml.PetSkillData;
 import org.l2jmobius.gameserver.data.xml.PlayerTemplateData;
 import org.l2jmobius.gameserver.data.xml.PlayerXpPercentLostData;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
+import org.l2jmobius.gameserver.data.xml.RaidDropAnnounceData;
 import org.l2jmobius.gameserver.data.xml.RecipeData;
 import org.l2jmobius.gameserver.data.xml.ResidenceFunctionsData;
 import org.l2jmobius.gameserver.data.xml.SayuneData;
@@ -284,6 +286,7 @@ public class GameServer
 		HennaData.getInstance();
 		PrimeShopData.getInstance();
 		CollectionData.getInstance();
+		RaidDropAnnounceData.getInstance();
 		PcCafePointsManager.getInstance();
 		AppearanceItemData.getInstance();
 		AlchemyData.getInstance();
@@ -300,7 +303,7 @@ public class GameServer
 		KarmaData.getInstance();
 		HitConditionBonusData.getInstance();
 		PlayerTemplateData.getInstance();
-		CharNameTable.getInstance();
+		CharInfoTable.getInstance();
 		AdminData.getInstance();
 		PetDataTable.getInstance();
 		CubicData.getInstance();
@@ -315,6 +318,7 @@ public class GameServer
 		}
 		
 		printSection("Clans");
+		ClanLevelData.getInstance();
 		ClanTable.getInstance();
 		ResidenceFunctionsData.getInstance();
 		ClanHallData.getInstance();

@@ -26,7 +26,6 @@ import org.l2jmobius.gameserver.model.skill.ISkillCondition;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
-import org.l2jmobius.gameserver.util.Util;
 
 /**
  * @author UnAfraid
@@ -66,11 +65,7 @@ public class PossessHolythingSkillCondition implements ISkillCondition
 			player.sendPacket(SystemMessageId.INVALID_TARGET);
 			canTakeCastle = false;
 		}
-		else if (!Util.checkIfInRange(skill.getCastRange(), player, target, true) || (Math.abs(player.getZ() - target.getZ()) > 45))
-		{
-			player.sendPacket(SystemMessageId.THE_DISTANCE_IS_TOO_FAR_AND_SO_THE_CASTING_HAS_BEEN_CANCELLED);
-			canTakeCastle = false;
-		}
+		
 		return canTakeCastle;
 	}
 }
