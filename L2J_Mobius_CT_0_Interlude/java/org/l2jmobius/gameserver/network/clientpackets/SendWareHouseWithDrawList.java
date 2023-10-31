@@ -179,7 +179,7 @@ public class SendWareHouseWithDrawList implements ClientPacket
 				return;
 			}
 			
-			if (newItem.getCount() > i.getCount())
+			if (newItem.isStackable() && !player.getInventory().getAllItemsByItemId(newItem.getId()).isEmpty())
 			{
 				playerIU.addModifiedItem(newItem);
 			}
