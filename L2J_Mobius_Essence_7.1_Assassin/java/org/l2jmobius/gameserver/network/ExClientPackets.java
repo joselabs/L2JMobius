@@ -150,6 +150,7 @@ import org.l2jmobius.gameserver.network.clientpackets.newskillenchant.RequestExS
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExEvolvePet;
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExPetEquipItem;
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExPetUnequipItem;
+import org.l2jmobius.gameserver.network.clientpackets.pet.ExTryPetExtractSystem;
 import org.l2jmobius.gameserver.network.clientpackets.pet.RequestExAcquirePetSkill;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV3.RequestExPledgeEnemyDelete;
 import org.l2jmobius.gameserver.network.clientpackets.pledgeV3.RequestExPledgeEnemyInfoList;
@@ -717,7 +718,7 @@ public enum ExClientPackets
 	EX_PLEDGE_ENEMY_INFO_LIST(0x1C8, RequestExPledgeEnemyInfoList::new, ConnectionState.IN_GAME),
 	EX_PLEDGE_ENEMY_REGISTER(0x1C9, RequestExPledgeEnemyRegister::new, ConnectionState.IN_GAME),
 	EX_PLEDGE_ENEMY_DELETE(0x1CA, RequestExPledgeEnemyDelete::new, ConnectionState.IN_GAME),
-	EX_TRY_PET_EXTRACT_SYSTEM(0x1CB, null, ConnectionState.IN_GAME),
+	EX_TRY_PET_EXTRACT_SYSTEM(0x1CB, ExTryPetExtractSystem::new, ConnectionState.IN_GAME),
 	EX_PLEDGE_V3_SET_ANNOUNCE(0x1CC, RequestExPledgeV3SetAnnounce::new, ConnectionState.IN_GAME),
 	// 306
 	EX_RANKING_FESTIVAL_OPEN(0x1CD, null, ConnectionState.IN_GAME),

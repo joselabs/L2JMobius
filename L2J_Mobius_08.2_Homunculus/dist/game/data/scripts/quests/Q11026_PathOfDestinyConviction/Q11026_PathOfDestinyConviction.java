@@ -315,7 +315,6 @@ public class Q11026_PathOfDestinyConviction extends Quest
 				{
 					player.teleToLocation(TRAINING_GROUNDS_TELEPORT1);
 				}
-				htmltext = event;
 				break;
 			}
 			case "teleport2":
@@ -324,7 +323,6 @@ public class Q11026_PathOfDestinyConviction extends Quest
 				{
 					player.teleToLocation(TRAINING_GROUNDS_TELEPORT2);
 				}
-				htmltext = event;
 				break;
 			}
 			case "teleport3":
@@ -333,7 +331,6 @@ public class Q11026_PathOfDestinyConviction extends Quest
 				{
 					player.teleToLocation(TRAINING_GROUNDS_TELEPORT3);
 				}
-				htmltext = event;
 				break;
 			}
 			case "teleport4":
@@ -342,7 +339,6 @@ public class Q11026_PathOfDestinyConviction extends Quest
 				{
 					player.teleToLocation(TRAINING_GROUNDS_TELEPORT4);
 				}
-				htmltext = event;
 				break;
 			}
 			case "teleport5":
@@ -351,10 +347,8 @@ public class Q11026_PathOfDestinyConviction extends Quest
 				{
 					player.teleToLocation(TRAINING_GROUNDS_TELEPORT5);
 				}
-				htmltext = event;
 				break;
 			}
-			
 		}
 		return htmltext;
 	}

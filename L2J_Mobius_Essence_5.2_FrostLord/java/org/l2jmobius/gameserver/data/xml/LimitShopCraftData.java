@@ -127,6 +127,7 @@ public class LimitShopCraftData implements IXmlReader
 							boolean announce4 = false;
 							boolean announce5 = false;
 							int accountDailyLimit = 0;
+							int accountMontlyLimit = 0;
 							int accountBuyLimit = 0;
 							for (Node b = d.getFirstChild(); b != null; b = b.getNextSibling())
 							{
@@ -233,6 +234,7 @@ public class LimitShopCraftData implements IXmlReader
 									count5 = parseLong(attrs, "count5", 1L);
 									announce5 = parseBoolean(attrs, "announce5", false);
 									accountDailyLimit = parseInteger(attrs, "accountDailyLimit", 0);
+									accountMontlyLimit = parseInteger(attrs, "accountMontlyLimit", 0);
 									accountBuyLimit = parseInteger(attrs, "accountBuyLimit", 0);
 									
 									final ItemTemplate item = ItemTable.getInstance().getTemplate(productionId);
@@ -244,7 +246,7 @@ public class LimitShopCraftData implements IXmlReader
 								}
 							}
 							
-							_products.add(new LimitShopProductHolder(id, category, minLevel, maxLevel, ingredientIds, ingredientQuantities, ingredientEnchants, productionId, count, chance, announce, productionId2, count2, chance2, announce2, productionId3, count3, chance3, announce3, productionId4, count4, chance4, announce4, productionId5, count5, announce5, accountDailyLimit, accountBuyLimit));
+							_products.add(new LimitShopProductHolder(id, category, minLevel, maxLevel, ingredientIds, ingredientQuantities, ingredientEnchants, productionId, count, chance, announce, productionId2, count2, chance2, announce2, productionId3, count3, chance3, announce3, productionId4, count4, chance4, announce4, productionId5, count5, announce5, accountDailyLimit, accountMontlyLimit, accountBuyLimit));
 						}
 					}
 				}

@@ -4628,7 +4628,7 @@ public class Player extends Playable
 	{
 		super.doAutoAttack(target);
 		setRecentFakeDeath(false);
-		if (target.isFakePlayer())
+		if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
 		{
 			updatePvPStatus();
 		}
@@ -8416,9 +8416,13 @@ public class Player extends Playable
 				if ((getWantsPeace() == 0) && (attackerPlayer.getWantsPeace() == 0) && !isAcademyMember())
 				{
 					final ClanWar war = attackerClan.getWarWith(getClanId());
-					if ((war != null) && ((war.getState() == ClanWarState.MUTUAL) || (((war.getState() == ClanWarState.BLOOD_DECLARATION) || (war.getState() == ClanWarState.DECLARATION)) && (war.getAttackerClanId() == attackerClan.getId()))))
+					if (war != null)
 					{
-						return true;
+						final ClanWarState warState = war.getState();
+						if ((warState == ClanWarState.MUTUAL) || (((warState == ClanWarState.BLOOD_DECLARATION) || (warState == ClanWarState.DECLARATION)) && (war.getAttackerClanId() == clan.getId())))
+						{
+							return true;
+						}
 					}
 				}
 			}

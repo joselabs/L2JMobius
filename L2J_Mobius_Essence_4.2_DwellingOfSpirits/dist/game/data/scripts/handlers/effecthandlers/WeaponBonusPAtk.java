@@ -17,7 +17,13 @@
 package handlers.effecthandlers;
 
 import org.l2jmobius.gameserver.model.StatSet;
+import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
+import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.stats.Stat;
+import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 
 /**
  * @author Sero
@@ -27,5 +33,47 @@ public class WeaponBonusPAtk extends AbstractStatAddEffect
 	public WeaponBonusPAtk(StatSet params)
 	{
 		super(params, Stat.WEAPON_BONUS_PHYSICAL_ATTACK);
+	}
+	
+	@Override
+	public void onStart(Creature effector, Creature effected, Skill skill, Item item)
+	{
+		final Player player = effected.getActingPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		final Item weapon = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
+		if (weapon == null)
+		{
+			return;
+		}
+		
+		final InventoryUpdate iu = new InventoryUpdate();
+		iu.addModifiedItem(weapon);
+		player.sendInventoryUpdate(iu);
+		player.broadcastUserInfo();
+	}
+	
+	@Override
+	public void onExit(Creature effector, Creature effected, Skill skill)
+	{
+		final Player player = effected.getActingPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		final Item weapon = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
+		if (weapon == null)
+		{
+			return;
+		}
+		
+		final InventoryUpdate iu = new InventoryUpdate();
+		iu.addModifiedItem(weapon);
+		player.sendInventoryUpdate(iu);
+		player.broadcastUserInfo();
 	}
 }

@@ -23,7 +23,6 @@ import org.l2jmobius.gameserver.model.actor.request.VariationRequest;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
-import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.variation.ApplyVariationOption;
 
 /**
@@ -58,34 +57,26 @@ public class ExApplyVariationOption implements ClientPacket
 		final int option1Id = augment.getOption1Id();
 		final int option2Id = augment.getOption2Id();
 		
-		// Unequip item.
-		final InventoryUpdate iu = new InventoryUpdate();
-		if (targetItem.isEquipped())
-		{
-			for (Item itm : player.getInventory().unEquipItemInSlotAndRecord(targetItem.getLocationSlot()))
-			{
-				iu.addModifiedItem(itm);
-			}
-			player.broadcastUserInfo();
-		}
-		
 		if ((targetItem.getObjectId() != _enchantedObjectId) || (_option1 != option1Id) || (_option2 != option2Id))
 		{
 			player.sendPacket(new ApplyVariationOption(0, 0, 0, 0));
 			return;
 		}
 		
-		// Remove the augmentation if any (286).
-		if (targetItem.isAugmented())
-		{
-			targetItem.removeAugmentation();
-		}
-		
 		targetItem.setAugmentation(augment, true);
 		
-		iu.addModifiedItem(targetItem);
-		player.sendInventoryUpdate(iu);
 		player.sendPacket(new ApplyVariationOption(1, _enchantedObjectId, _option1, _option2));
+		
+		// Apply new augment.
+		if (targetItem.isEquipped())
+		{
+			targetItem.getAugmentation().applyBonus(player);
+		}
+		
+		// Recalculate all stats.
+		player.getStat().recalculateStats(true);
+		
+		player.sendItemList();
 		player.removeRequest(VariationRequest.class);
 	}
 }

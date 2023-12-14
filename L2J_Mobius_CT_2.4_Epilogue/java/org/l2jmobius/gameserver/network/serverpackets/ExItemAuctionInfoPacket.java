@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.gameserver.model.ItemInfo;
 import org.l2jmobius.gameserver.model.itemauction.ItemAuction;
 import org.l2jmobius.gameserver.model.itemauction.ItemAuctionBid;
 import org.l2jmobius.gameserver.model.itemauction.ItemAuctionState;
@@ -59,12 +60,55 @@ public class ExItemAuctionInfoPacket extends AbstractItemPacket
 		final ItemAuctionBid highestBid = _currentAuction.getHighestBid();
 		writeLong(highestBid != null ? highestBid.getLastBid() : _currentAuction.getAuctionInitBid());
 		writeInt(_timeRemaining);
-		writeItem(_currentAuction.getItemInfo());
+		writeItemInfo(_currentAuction.getItemInfo());
 		if (_nextAuction != null)
 		{
 			writeLong(_nextAuction.getAuctionInitBid());
 			writeInt((int) (_nextAuction.getStartingTime() / 1000)); // unix time in seconds
-			writeItem(_nextAuction.getItemInfo());
+			writeItemInfo(_nextAuction.getItemInfo());
 		}
+	}
+	
+	private void writeItemInfo(ItemInfo info)
+	{
+		writeInt(info.getItem().getId());
+		writeInt(info.getItem().getId());
+		writeInt(info.getLocation());
+		writeLong(info.getCount());
+		writeShort(info.getEnchant());
+		
+		// TODO: Find bellow values.
+		writeShort(0);
+		writeInt(0);
+		writeShort(0);
+		writeShort(0);
+		
+		writeShort(0);
+		writeShort(0);
+		writeShort(0);
+		writeShort(0);
+		writeShort(0);
+		writeShort(0);
+		
+		writeInt(0);
+		
+		writeShort(0);
+		writeShort(0);
+		writeShort(0);
+		
+		// Example.
+		// writeShort(info.getItem().getType2());
+		// writeInt(info.getAugmentationBonus());
+		// writeShort(info.getAttackElementType());
+		// writeShort(info.getAttackElementPower());
+		// for (byte i = 0; i < 6; i++)
+		// {
+		// writeShort(info.getElementDefAttr(i));
+		// }
+		// writeInt(info.getTime());
+		// for (int op : info.getEnchantOptions())
+		// {
+		// writeShort(op);
+		// }
 	}
 }

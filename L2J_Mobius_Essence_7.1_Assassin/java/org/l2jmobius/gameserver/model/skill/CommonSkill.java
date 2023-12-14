@@ -95,7 +95,8 @@ public enum CommonSkill
 	FLAG_EQUIP(52013, 1),
 	REMOTE_FLAG_DISPLAY(52017, 1),
 	EINHASAD_OVERSEEING(60002, 1),
-	TELEPORT(60018, 1);
+	TELEPORT(60018, 1),
+	BRUTALITY(87366, 1);
 	
 	private final SkillHolder _holder;
 	

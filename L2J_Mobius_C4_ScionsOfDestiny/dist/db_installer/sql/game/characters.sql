@@ -88,4 +88,9 @@ CREATE TABLE IF NOT EXISTS characters (
   aio_end decimal(20,0) NOT NULL DEFAULT 0,
   PRIMARY KEY  (charId),
   KEY `clanid` (`clanid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE INDEX idx_charId ON characters (charId);
+CREATE INDEX idx_char_name ON characters (char_name);
+CREATE INDEX idx_account_name ON characters (account_name);
+

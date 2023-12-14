@@ -222,7 +222,7 @@ public class UseItem implements ClientPacket
 			}
 			
 			// Prevent Death Knight players to equip other weapons.
-			if (item.isWeapon() && (CategoryData.getInstance().isInCategory(CategoryType.DEATH_KNIGHT_ALL_CLASS, player.getClassId().getId())) && ((item.getWeaponItem().getItemType() != WeaponType.SWORD) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND)))
+			if (item.isWeapon() && CategoryData.getInstance().isInCategory(CategoryType.DEATH_KNIGHT_ALL_CLASS, player.getClassId().getId()) && (item.getWeaponItem().getItemType() != WeaponType.FISHINGROD) && ((item.getWeaponItem().getItemType() != WeaponType.SWORD) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND)))
 			{
 				player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 				return;

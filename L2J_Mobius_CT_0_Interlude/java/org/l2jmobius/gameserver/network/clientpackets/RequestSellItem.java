@@ -44,7 +44,6 @@ import org.l2jmobius.gameserver.util.Util;
 public class RequestSellItem implements ClientPacket
 {
 	private static final int BATCH_LENGTH = 12;
-	private static final int CUSTOM_CB_SELL_LIST = 423;
 	
 	private int _listId;
 	private List<UniqueItemHolder> _items = null;
@@ -104,7 +103,7 @@ public class RequestSellItem implements ClientPacket
 		
 		final WorldObject target = player.getTarget();
 		Creature merchant = null;
-		if (!player.isGM() && (_listId != CUSTOM_CB_SELL_LIST))
+		if (!player.isGM())
 		{
 			if ((target == null) || (!player.isInsideRadius3D(target, INTERACTION_DISTANCE)) || (player.getInstanceId() != target.getInstanceId()))
 			{
@@ -122,7 +121,7 @@ public class RequestSellItem implements ClientPacket
 			}
 		}
 		
-		if ((merchant == null) && !player.isGM() && (_listId != CUSTOM_CB_SELL_LIST))
+		if ((merchant == null) && !player.isGM())
 		{
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;

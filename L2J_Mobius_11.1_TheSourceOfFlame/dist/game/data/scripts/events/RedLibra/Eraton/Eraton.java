@@ -291,7 +291,20 @@ public class Eraton extends AbstractNpcAI
 				}
 				takeItem(player, STONE_OF_DESTINY);
 				
-				player.removeAllSkills();
+				if (Config.ERATON_RETAINED_SKILLS.isEmpty())
+				{
+					player.removeAllSkills();
+				}
+				else
+				{
+					for (Skill skill : player.getAllSkills())
+					{
+						if (!Config.ERATON_RETAINED_SKILLS.contains(skill.getId()))
+						{
+							player.removeSkill(skill);
+						}
+					}
+				}
 				
 				// Stop auto use.
 				for (Shortcut shortcut : player.getAllShortCuts())

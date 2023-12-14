@@ -25,6 +25,9 @@ import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.events.EventDispatcher;
+import org.l2jmobius.gameserver.model.events.EventType;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerBecomeNoblesse;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
@@ -209,6 +212,7 @@ public class Q10591_NobleMaterial extends Quest
 					giveItems(player, WARRIOR_CICLET_BOX_LV5, 1);
 					basicRewards(player);
 					player.setNobleLevel(1);
+					checkNobleListener(player);
 					player.broadcastInfo();
 					showOnScreenMsg(player, NpcStringId.CONGRATULATIONS_S1_YOU_ARE_NOW_A_NOBLESSE, ExShowScreenMessage.TOP_CENTER, 10000, player.getName());
 					player.doCast(NOBLESSE_PRESENTATION.getSkill());
@@ -225,6 +229,7 @@ public class Q10591_NobleMaterial extends Quest
 					giveItems(player, WIZARD_CICLET_BOX_LV5, 1);
 					basicRewards(player);
 					player.setNobleLevel(1);
+					checkNobleListener(player);
 					player.broadcastInfo();
 					showOnScreenMsg(player, NpcStringId.CONGRATULATIONS_S1_YOU_ARE_NOW_A_NOBLESSE, ExShowScreenMessage.TOP_CENTER, 10000, player.getName());
 					player.doCast(NOBLESSE_PRESENTATION.getSkill());
@@ -241,6 +246,7 @@ public class Q10591_NobleMaterial extends Quest
 					giveItems(player, KNIGHT_CICLET_BOX_LV5, 1);
 					basicRewards(player);
 					player.setNobleLevel(1);
+					checkNobleListener(player);
 					player.broadcastInfo();
 					showOnScreenMsg(player, NpcStringId.CONGRATULATIONS_S1_YOU_ARE_NOW_A_NOBLESSE, ExShowScreenMessage.TOP_CENTER, 10000, player.getName());
 					player.doCast(NOBLESSE_PRESENTATION.getSkill());
@@ -571,6 +577,15 @@ public class Q10591_NobleMaterial extends Quest
 				}
 				break;
 			}
+		}
+	}
+	
+	private void checkNobleListener(Player player)
+	{
+		// Notify to scripts.
+		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_BECOME_NOBLESSE))
+		{
+			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerBecomeNoblesse(player));
 		}
 	}
 }

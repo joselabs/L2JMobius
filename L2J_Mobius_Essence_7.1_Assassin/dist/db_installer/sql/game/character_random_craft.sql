@@ -25,4 +25,4 @@ CREATE TABLE IF NOT EXISTS `character_random_craft` (
   `item_5_locked` TINYINT NOT NULL DEFAULT 0,
   `item_5_lock_left` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`charId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

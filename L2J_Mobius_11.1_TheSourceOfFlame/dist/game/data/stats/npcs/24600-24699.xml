@@ -3101,391 +3101,1958 @@
 			<height normal="73" />
 		</collision>
 	</npc>
-	<npc id="24663" level="85" type="Folk" name="Graveyard Death Archer" title="Dragon Valley Protector">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24663" level="120" type="Monster" name="Graveyard Death Archer" title="Dragon Valley Protector">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
 		<equipment rhand="15302" /> <!-- Transparent Bow (NPC) -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2012329" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2012329" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="1599215" magical="145753" random="5" critical="8" accuracy="0" attackSpeed="253" type="BOW" range="1100" distance="10" width="0" />
+			<defence physical="753240" magical="364523" />
+			<attribute>
+				<defence fire="1200" water="1200" wind="1200" earth="1200" holy="1200" dark="1200" />
+				<attack type="DARK" value="1250" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="70" />
 				<run ground="150" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
+		<ai type="FIGHTER" aggroRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="16.9" />
 			<height normal="54.2" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="32675" level="1" /> <!-- Improved Immunity -->
+			<skill id="33123" level="2" /> <!-- Gloomy Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
 	</npc>
-	<npc id="24664" level="85" type="Folk" name="Graveyard Death Lich">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24664" level="120" type="Monster" name="Graveyard Death Lich">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
+		<acquire exp="538517" sp="485" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2012329" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2012329" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="617815.429469286" magical="1368.16567732246" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="5043.54066985646" magical="1934.40396671246" />
+			<attribute>
+				<defence fire="1200" water="1200" wind="1200" earth="1200" holy="1200" dark="1200" />
+				<attack type="DARK" value="1250" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="70" />
 				<run ground="170" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="28.6" />
 			<height normal="67.2" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="33123" level="2" /> <!-- Gloomy Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="2.583" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="4.13" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="4.13" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="4.13" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="10.727" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24665" level="85" type="Folk" name="Graveyard Death Berserker">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24665" level="120" type="Monster" name="Graveyard Death Berserker">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
+		<acquire exp="538517" sp="485" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2012329" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2012329" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="617815.429469286" magical="1368.16567732246" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="5043.54066985646" magical="1934.40396671246" />
+			<attribute>
+				<defence fire="1200" water="1200" wind="1200" earth="1200" holy="1200" dark="1200" />
+				<attack type="DARK" value="1250" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="65" />
 				<run ground="110" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="49.5" />
 			<height normal="78" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="33123" level="2" /> <!-- Gloomy Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="2.583" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="4.13" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="4.13" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="4.13" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="10.727" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24666" level="85" type="Folk" name="Graveyard Death Soldier">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24666" level="120" type="Monster" name="Graveyard Death Soldier">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
+		<acquire exp="538517" sp="485" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2012329" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2012329" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="617815.429469286" magical="1368.16567732246" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="5043.54066985646" magical="1934.40396671246" />
+			<attribute>
+				<defence fire="1200" water="1200" wind="1200" earth="1200" holy="1200" dark="1200" />
+				<attack type="DARK" value="1250" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="70" />
 				<run ground="150" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="16.9" />
 			<height normal="54.2" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="33123" level="2" /> <!-- Gloomy Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="2.583" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="4.13" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="4.13" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="4.13" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="10.727" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24667" level="85" type="Folk" name="Graveyard Death Knight">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24667" level="120" type="Monster" name="Graveyard Death Knight">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
 		<equipment rhand="35639" /> <!-- Two-handed Sword of Protection -->
+		<acquire exp="538517" sp="485" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2012329" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2012329" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="617815.429469286" magical="1368.16567732246" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="5043.54066985646" magical="1934.40396671246" />
+			<attribute>
+				<defence fire="1200" water="1200" wind="1200" earth="1200" holy="1200" dark="1200" />
+				<attack type="DARK" value="1250" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="90" />
 				<run ground="220" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
-			<radius normal="27.3" />
-			<height normal="41.2" />
+			<radius normal="27.3" grown="31.2" />
+			<height normal="41.2" grown="50.3" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="33123" level="2" /> <!-- Gloomy Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="2.583" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="4.13" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="4.13" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="4.13" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="10.727" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24668" level="85" type="Folk" name="Dragon Peltast" title="Earth Dragon's Guardian">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24668" level="122" type="Monster" name="Dragon Peltast" title="Earth Dragon's Guardian">
+		<race>DRAGON</race>
+		<sex>MALE</sex>
 		<equipment rhand="13843" /> <!-- Dragon Peltast's Weapon -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2524268" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2524268" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="753240" magical="364523" />
+			<attribute>
+				<defence fire="1220" water="1220" wind="1220" earth="1220" holy="1220" dark="1220" />
+				<attack type="EARTH" value="1270" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="89" />
 				<run ground="220" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
+		<ai type="FIGHTER" aggroRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="32.5" />
 			<height normal="61.35" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="10" /> <!-- Dragons -->
+			<skill id="5465" level="1" /> <!-- Earth Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="32675" level="1" /> <!-- Improved Immunity -->
+			<skill id="33123" level="3" /> <!-- Darkest Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
 	</npc>
-	<npc id="24669" level="85" type="Folk" name="Dragon Officer">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24669" level="122" type="Monster" name="Dragon Officer">
+		<race>DRAGON</race>
+		<sex>MALE</sex>
+		<acquire exp="637272" sp="574" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2524268" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2524268" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="665659.901743584" magical="1444.35390697649" random="40" critical="4.75" accuracy="8" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="5338.77216096896" magical="2047.72727463440" />
+			<attribute>
+				<defence fire="1220" water="1220" wind="1220" earth="1220" holy="1220" dark="1220" />
+				<attack type="EARTH" value="1270" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="92" />
 				<run ground="170" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="36.4" />
 			<height normal="69.8" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="10" /> <!-- Dragons -->
+			<skill id="5465" level="1" /> <!-- Earth Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="33123" level="3" /> <!-- Darkest Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="2.857" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="4.568" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="4.568" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="4.568" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="11.865" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24670" level="85" type="Folk" name="Dragon Beast">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24670" level="122" type="Monster" name="Dragon Beast">
+		<race>DRAGON</race>
+		<sex>MALE</sex>
+		<acquire exp="637272" sp="574" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2524268" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2524268" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="665659.901743584" magical="1444.35390697649" random="40" critical="4.75" accuracy="8" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="5338.77216096896" magical="2047.72727463440" />
+			<attribute>
+				<defence fire="1220" water="1220" wind="1220" earth="1220" holy="1220" dark="1220" />
+				<attack type="EARTH" value="1270" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="55" />
 				<run ground="180" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="75.6" />
 			<height normal="65.4" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="10" /> <!-- Dragons -->
+			<skill id="5465" level="1" /> <!-- Earth Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="33123" level="3" /> <!-- Darkest Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="2.857" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="4.568" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="4.568" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="4.568" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="11.865" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24671" level="85" type="Folk" name="Dragon Centurion">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24671" level="122" type="Monster" name="Dragon Centurion">
+		<race>DRAGON</race>
+		<sex>MALE</sex>
 		<equipment rhand="13978" /> <!-- Monster Only (Dragontroop Commander) -->
+		<acquire exp="637272" sp="574" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2524268" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2524268" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="665659.901743584" magical="1444.35390697649" random="40" critical="4.75" accuracy="8" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="5338.77216096896" magical="2047.72727463440" />
+			<attribute>
+				<defence fire="1220" water="1220" wind="1220" earth="1220" holy="1220" dark="1220" />
+				<attack type="EARTH" value="1270" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="55" />
 				<run ground="210" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="30" />
 			<height normal="51" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="10" /> <!-- Dragons -->
+			<skill id="5465" level="1" /> <!-- Earth Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="33123" level="3" /> <!-- Darkest Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="2.857" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="4.568" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="4.568" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="4.568" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="11.865" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24672" level="85" type="Folk" name="Elite Dragon Guard">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24672" level="122" type="Monster" name="Elite Dragon Guard">
+		<race>DRAGON</race>
+		<sex>MALE</sex>
+		<acquire exp="637272" sp="574" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2524268" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="2524268" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="665659.901743584" magical="1444.35390697649" random="40" critical="4.75" accuracy="8" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="5338.77216096896" magical="2047.72727463440" />
+			<attribute>
+				<defence fire="1220" water="1220" wind="1220" earth="1220" holy="1220" dark="1220" />
+				<attack type="EARTH" value="1270" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="100" />
 				<run ground="200" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="40" />
 			<height normal="55" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="10" /> <!-- Dragons -->
+			<skill id="5465" level="1" /> <!-- Earth Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="33123" level="3" /> <!-- Darkest Night of Valley -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="2.857" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="4.568" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="4.568" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="4.568" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="11.865" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24673" level="85" type="Folk" name="Zombie Orc">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24673" level="126" type="Monster" name="Zombie Orc">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
+		<acquire exp="891007" sp="802" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="6057.47663551402" magical="2350.44514357978" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="35" />
 				<run ground="220" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="22" />
 			<height normal="53" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="3.322" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="5.31" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="5.31" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="5.31" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="13.794" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24674" level="85" type="Folk" name="Zombie Dark Elf">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24674" level="126" type="Monster" name="Zombie Dark Elf">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
+		<acquire exp="891007" sp="802" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="6057.47663551402" magical="2350.44514357978" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="45" />
 				<run ground="160" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="14" />
 			<height normal="43" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="3.322" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="5.31" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="5.31" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="5.31" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="13.794" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24675" level="85" type="Folk" name="Zombie Dwarf">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24675" level="126" type="Monster" name="Zombie Dwarf">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
+		<acquire exp="891007" sp="802" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="6057.47663551402" magical="2350.44514357978" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="35" />
 				<run ground="120" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="16" />
 			<height normal="35" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="3.322" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="5.31" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="5.31" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="5.31" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="13.794" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24676" level="85" type="Folk" name="Schnabel Stalker">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24676" level="126" type="Monster" name="Schnabel Stalker">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
+		<acquire exp="891007" sp="802" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="6057.47663551402" magical="2350.44514357978" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="75" />
 				<run ground="210" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="18" />
 			<height normal="60" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="3.322" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="5.31" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="5.31" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="5.31" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="13.794" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24677" level="85" type="Folk" name="Henker Hacker">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24677" level="126" type="Monster" name="Henker Hacker">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
 		<equipment rhand="82622" /> <!-- Only_NPC_Execution_Grounds -->
+		<acquire exp="891007" sp="802" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="6057.47663551402" magical="2350.44514357978" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="85" />
 				<run ground="234" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="29.9" />
 			<height normal="75" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="3.322" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="5.31" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="5.31" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="5.31" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="13.794" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24678" level="85" type="Folk" name="Schnabel Doctor">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24678" level="126" type="Monster" name="Schnabel Doctor">
+		<race>HUMANOID</race>
+		<sex>MALE</sex>
+		<acquire exp="891007" sp="802" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="6057.47663551402" magical="2350.44514357978" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="31" />
 				<run ground="64" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="30" />
 			<height normal="51" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="6" /> <!-- Humanoids -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="3.322" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="5.31" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="5.31" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="5.31" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="13.794" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24679" level="85" type="Folk" name="Henker Anatomist">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24679" level="126" type="Monster" name="Henker Anatomist">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
+		<acquire exp="891007" sp="802" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="6057.47663551402" magical="2350.44514357978" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="90" />
 				<run ground="160" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
 		<collision>
 			<radius normal="20" />
 			<height normal="53" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="33104" level="1" /> <!-- Party Bonus -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
+		<dropLists>
+			<drop>
+				<item id="57" min="100000" max="200000" chance="0.159" /> <!-- Adena -->
+				<item id="47494" min="1" max="1" chance="0.0005" /> <!-- Selenite -->
+				<item id="48065" min="1" max="1" chance="0.029" /> <!-- Zodiac Cube Fragment -->
+				<item id="81836" min="1" max="1" chance="0.035" /> <!-- Orb of Bloody Soul -->
+				<item id="35566" min="1" max="1" chance="0.00001" /> <!-- Dark Weapon Upgrade Stone -->
+				<item id="35567" min="1" max="1" chance="0.00001" /> <!-- Dark Armor Upgrade Stone -->
+				<item id="35568" min="1" max="1" chance="0.00001" /> <!-- Bloody Weapon Upgrade Stone -->
+				<item id="35569" min="1" max="1" chance="0.00001" /> <!-- Bloody Armor Upgrade Stone -->
+				<item id="81216" min="1" max="1" chance="3.322" /> <!-- Black Mithril -->
+				<item id="81217" min="1" max="1" chance="5.31" /> <!-- Oriharukon Ore -->
+				<item id="81218" min="1" max="1" chance="5.31" /> <!-- Dragon Scale -->
+				<item id="81219" min="1" max="1" chance="5.31" /> <!-- Angel's Feather -->
+				<item id="48669" min="1" max="1" chance="0.00010" /> <!-- Angel's Necklace -->
+				<item id="48841" min="1" max="1" chance="0.00010" /> <!-- Angel's Earring -->
+				<item id="81154" min="1" max="1" chance="0.00010" /> <!-- Angel's Ring -->
+				<item id="17416" min="1" max="1" chance="0.00001" /> <!-- Helios Shaper -->
+				<item id="17417" min="1" max="1" chance="0.00001" /> <!-- Helios Cutter -->
+				<item id="17418" min="1" max="1" chance="0.00001" /> <!-- Helios Slasher -->
+				<item id="17419" min="1" max="1" chance="0.00001" /> <!-- Helios Avenger -->
+				<item id="17420" min="1" max="1" chance="0.00001" /> <!-- Helios Fighter -->
+				<item id="17421" min="1" max="1" chance="0.00001" /> <!-- Helios Stormer -->
+				<item id="17422" min="1" max="1" chance="0.00001" /> <!-- Helios Thrower -->
+				<item id="17423" min="1" max="1" chance="0.00001" /> <!-- Helios Guardian -->
+				<item id="17424" min="1" max="1" chance="0.00001" /> <!-- Helios Buster -->
+				<item id="17425" min="1" max="1" chance="0.00001" /> <!-- Helios Caster -->
+				<item id="17426" min="1" max="1" chance="0.00001" /> <!-- Helios Retributer -->
+				<item id="17427" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Swords -->
+				<item id="17428" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Daggers -->
+				<item id="17429" min="1" max="1" chance="0.00001" /> <!-- Helios Dual Blunt Weapons -->
+				<item id="17430" min="1" max="1" chance="0.00006" /> <!-- Eternal Helmet - Heavy armor -->
+				<item id="17431" min="1" max="1" chance="0.00002" /> <!-- Eternal Breastplate - Heavy armor -->
+				<item id="17432" min="1" max="1" chance="0.00004" /> <!-- Eternal Gaiters - Heavy armor -->
+				<item id="17433" min="1" max="1" chance="0.00009" /> <!-- Eternal Gauntlets - Heavy armor -->
+				<item id="17434" min="1" max="1" chance="0.00009" /> <!-- Eternal Boots - Heavy armor -->
+				<item id="17435" min="1" max="1" chance="0.00009" /> <!-- Eternal Shield -->
+				<item id="17436" min="1" max="1" chance="0.00006" /> <!-- Eternal Leather Helmet - Light armor -->
+				<item id="17437" min="1" max="1" chance="0.00002" /> <!-- Eternal Leather Armor - Light armor -->
+				<item id="17438" min="1" max="1" chance="0.00004" /> <!-- Eternal Leather Leggings - Light armor -->
+				<item id="17439" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Gloves - Light armor -->
+				<item id="17440" min="1" max="1" chance="0.00009" /> <!-- Eternal Leather Boots - Light armor -->
+				<item id="17441" min="1" max="1" chance="0.00006" /> <!-- Eternal Circlet - Robe -->
+				<item id="17442" min="1" max="1" chance="0.00002" /> <!-- Eternal Tunic - Robe -->
+				<item id="17443" min="1" max="1" chance="0.00004" /> <!-- Eternal Stockings - Robe -->
+				<item id="17444" min="1" max="1" chance="0.00009" /> <!-- Eternal Gloves - Robe -->
+				<item id="17445" min="1" max="1" chance="0.00009" /> <!-- Eternal Shoes - Robe -->
+				<item id="17446" min="1" max="1" chance="0.00009" /> <!-- Eternal Sigil -->
+				<item id="80090" min="1" max="1" chance="0.00001" /> <!-- Krishna Shaper -->
+				<item id="80091" min="1" max="1" chance="0.00001" /> <!-- Krishna Cutter -->
+				<item id="80092" min="1" max="1" chance="0.00001" /> <!-- Krishna Slasher -->
+				<item id="80093" min="1" max="1" chance="0.00001" /> <!-- Krishna Avenger -->
+				<item id="80094" min="1" max="1" chance="0.00001" /> <!-- Krishna Fighter -->
+				<item id="80095" min="1" max="1" chance="0.00001" /> <!-- Krishna Stormer -->
+				<item id="80096" min="1" max="1" chance="0.00001" /> <!-- Krishna Thrower -->
+				<item id="80097" min="1" max="1" chance="0.00001" /> <!-- Krishna Guardian -->
+				<item id="80098" min="1" max="1" chance="0.00001" /> <!-- Krishna Buster -->
+				<item id="80099" min="1" max="1" chance="0.00001" /> <!-- Krishna Caster -->
+				<item id="80100" min="1" max="1" chance="0.00001" /> <!-- Krishna Retributer -->
+				<item id="80101" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Swords -->
+				<item id="80102" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Daggers -->
+				<item id="80103" min="1" max="1" chance="0.00001" /> <!-- Krishna Dual Blunt Weapons -->
+				<item id="80104" min="1" max="1" chance="0.00002" /> <!-- Leviathan Helmet - Heavy armor -->
+				<item id="80105" min="1" max="1" chance="0.00001" /> <!-- Leviathan Breastplate - Heavy armor -->
+				<item id="80106" min="1" max="1" chance="0.00001" /> <!-- Leviathan Gaiters - Heavy armor -->
+				<item id="80107" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gauntlets - Heavy armor -->
+				<item id="80108" min="1" max="1" chance="0.00004" /> <!-- Leviathan Boots - Heavy armor -->
+				<item id="80109" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shield -->
+				<item id="80110" min="1" max="1" chance="0.00002" /> <!-- Leviathan Leather Helmet - Light armor -->
+				<item id="80111" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Armor - Light armor -->
+				<item id="80112" min="1" max="1" chance="0.00001" /> <!-- Leviathan Leather Leggings - Light armor -->
+				<item id="80113" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Gloves - Light armor -->
+				<item id="80114" min="1" max="1" chance="0.00004" /> <!-- Leviathan Leather Boots - Light armor -->
+				<item id="80115" min="1" max="1" chance="0.00002" /> <!-- Leviathan Circlet - Robe -->
+				<item id="80116" min="1" max="1" chance="0.00001" /> <!-- Leviathan Tunic - Robe -->
+				<item id="80117" min="1" max="1" chance="0.00001" /> <!-- Leviathan Stockings - Robe -->
+				<item id="80118" min="1" max="1" chance="0.00004" /> <!-- Leviathan Gloves - Robe -->
+				<item id="80119" min="1" max="1" chance="0.00004" /> <!-- Leviathan Shoes - Robe -->
+				<item id="80120" min="1" max="1" chance="0.00004" /> <!-- Leviathan Sigil -->
+			</drop>
+			<spoil>
+				<item id="81344" min="1" max="1" chance="13.794" /> <!-- Augmenting Stone Crystal -->
+			</spoil>
+		</dropLists>
 	</npc>
-	<npc id="24680" level="85" type="Folk" name="Schnabel Inspector" title="Execution Grounds Defender">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24680" level="126" type="Monster" name="Schnabel Inspector" title="Execution Grounds Defender">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
 		<equipment rhand="15304" /> <!-- Transparent Crossbow (NPC) -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="1599215" magical="145753" random="5" critical="8" accuracy="0" attackSpeed="253" type="BOW" range="1100" distance="10" width="0" />
+			<defence physical="753240" magical="364523" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="90" />
 				<run ground="270" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
+		<ai type="FIGHTER" aggroRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="20" />
 			<height normal="67" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="32675" level="1" /> <!-- Improved Immunity -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14823" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
 	</npc>
-	<npc id="24681" level="85" type="Folk" name="Henker Inspector" title="Execution Grounds Defender">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24681" level="126" type="Monster" name="Henker Inspector" title="Execution Grounds Defender">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
 		<equipment rhand="82656" /> <!-- Only_for_NPC_Execution_Grounds_Range -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="753240" magical="364523" />
+			<attribute>
+				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
+				<attack type="DARK" value="1310" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="62" />
 				<run ground="240" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
+		<ai type="FIGHTER" aggroRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="28" />
 			<height normal="65" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="32675" level="1" /> <!-- Improved Immunity -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14823" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
 	</npc>
-	<npc id="24682" level="85" type="Folk" name="Frail Zombie" title="Execution Grounds Defender">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="24682" level="126" type="Monster" name="Frail Zombie" title="Execution Grounds Defender">
+		<race>UNDEAD</race>
+		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5838786" hpRegen="10.5" mp="3190" mpRegen="3.6" />
+			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="753240" magical="364523" />
 			<speed>
 				<walk ground="10" />
 				<run ground="10" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
+		<ai type="FIGHTER" aggroRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="30" />
 			<height normal="97" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="14765" level="5" /> <!-- Vampiric Rage Resistance -->
+			<skill id="32675" level="1" /> <!-- Improved Immunity -->
+			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
+			<skill id="14823" level="1" /> <!-- Instant Kill Resistance -->
+			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+		</skillList>
 	</npc>
 </list>

@@ -29,7 +29,7 @@ public class RequestHeroBookEnchant implements ClientPacket
 	@Override
 	public void run(GameClient client)
 	{
-		Player player = client.getPlayer();
+		final Player player = client.getPlayer();
 		if (player == null)
 		{
 			return;

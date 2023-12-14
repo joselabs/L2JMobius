@@ -701,7 +701,7 @@ public class RequestAcquireSkill implements ClientPacket
 		player.sendItemList();
 		player.updateShortCuts(_id, _level, 0);
 		player.sendPacket(new ShortCutInit(player));
-		player.sendPacket(new ExBasicActionList(ExBasicActionList.DEFAULT_ACTION_LIST));
+		player.sendPacket(ExBasicActionList.STATIC_PACKET);
 		player.sendSkillList(skill.getId());
 		showSkillList(trainer, player);
 		

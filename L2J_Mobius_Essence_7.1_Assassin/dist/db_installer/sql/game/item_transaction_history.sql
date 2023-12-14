@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS `item_transaction_history` (
    `price` BIGINT UNSIGNED NOT NULL,
    `count` BIGINT UNSIGNED NOT NULL,
    PRIMARY KEY (`created_time`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

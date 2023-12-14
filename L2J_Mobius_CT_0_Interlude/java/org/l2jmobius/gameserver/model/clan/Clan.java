@@ -2569,44 +2569,6 @@ public class Clan implements IIdentifiable, INamable
 				}
 				break;
 			}
-			case 8:
-			{
-				// Upgrade to 9 (itemId 9910 = Blood Oath)
-				if ((_reputationScore >= Config.CLAN_LEVEL_9_COST) && (player.getInventory().getItemByItemId(9910) != null) && (_members.size() >= Config.CLAN_LEVEL_9_REQUIREMENT) && player.destroyItemByItemId("ClanLvl", 9910, 150, player.getTarget(), false))
-				{
-					setReputationScore(_reputationScore - Config.CLAN_LEVEL_9_COST);
-					final SystemMessage cr = new SystemMessage(SystemMessageId.S1_POINTS_HAVE_BEEN_DEDUCTED_FROM_THE_CLAN_S_REPUTATION_SCORE);
-					cr.addInt(Config.CLAN_LEVEL_9_COST);
-					player.sendPacket(cr);
-					final SystemMessage sm = new SystemMessage(SystemMessageId.S2_S1_HAS_DISAPPEARED);
-					sm.addItemName(9910);
-					sm.addInt(150);
-					player.sendPacket(sm);
-					increaseClanLevel = true;
-				}
-				break;
-			}
-			case 9:
-			{
-				// Upgrade to 10
-				if ((_reputationScore >= Config.CLAN_LEVEL_10_COST) && (player.getInventory().getItemByItemId(9911) != null) && (_members.size() >= Config.CLAN_LEVEL_10_REQUIREMENT))
-				{
-					// itemId 9911 == Blood Alliance
-					if (player.destroyItemByItemId("ClanLvl", 9911, 5, player.getTarget(), false))
-					{
-						setReputationScore(_reputationScore - Config.CLAN_LEVEL_10_COST);
-						final SystemMessage cr = new SystemMessage(SystemMessageId.S1_POINTS_HAVE_BEEN_DEDUCTED_FROM_THE_CLAN_S_REPUTATION_SCORE);
-						cr.addInt(Config.CLAN_LEVEL_10_COST);
-						player.sendPacket(cr);
-						final SystemMessage sm = new SystemMessage(SystemMessageId.S2_S1_HAS_DISAPPEARED);
-						sm.addItemName(9911);
-						sm.addInt(5);
-						player.sendPacket(sm);
-						increaseClanLevel = true;
-					}
-				}
-				break;
-			}
 			default:
 			{
 				return false;

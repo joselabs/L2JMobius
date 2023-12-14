@@ -27,6 +27,7 @@ import org.l2jmobius.gameserver.ai.AttackableAI;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
+import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.ShortcutType;
 import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
@@ -59,6 +60,8 @@ public class TimedHunting extends AbstractInstance
 	private static final int PANJI = 34125;
 	// Skill
 	private static final int BUFF = 45197;
+	private static final int BUFF_FOR_KAMAEL = 45198;
+	
 	// Misc
 	private static final int[] TEMPLATES =
 	{
@@ -187,7 +190,14 @@ public class TimedHunting extends AbstractInstance
 		}
 		
 		npc.setTarget(player);
-		if (!player.getEffectList().isAffectedBySkill(BUFF))
+		if (player.getRace() == Race.KAMAEL)
+		{
+			if (!player.getEffectList().isAffectedBySkill(BUFF_FOR_KAMAEL))
+			{
+				npc.doCast(new SkillHolder(BUFF_FOR_KAMAEL, 1).getSkill());
+			}
+		}
+		else if (!player.getEffectList().isAffectedBySkill(BUFF))
 		{
 			npc.doCast(new SkillHolder(BUFF, 1).getSkill());
 		}
@@ -257,6 +267,7 @@ public class TimedHunting extends AbstractInstance
 		player.sendPacket(new TimedHuntingZoneExit(108)); // Training Zone id.
 		
 		player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, BUFF);
+		player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, BUFF_FOR_KAMAEL);
 		instance.setParameter("PlayerIsOut", true);
 		
 		// Restore normal skills.

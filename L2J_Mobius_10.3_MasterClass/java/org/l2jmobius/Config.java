@@ -611,6 +611,7 @@ public class Config
 	public static boolean ENABLE_AUTO_SKILL;
 	public static boolean ENABLE_AUTO_ITEM;
 	public static boolean RESUME_AUTO_PLAY;
+	public static boolean ENABLE_AUTO_ASSIST;
 	public static AbnormalVisualEffect BLUE_TEAM_ABNORMAL_EFFECT;
 	public static AbnormalVisualEffect RED_TEAM_ABNORMAL_EFFECT;
 	
@@ -841,6 +842,9 @@ public class Config
 	public static boolean HARDIN_ENABLE_ERTHEIAS;
 	public static Map<Integer, List<Integer>> HARDIN_REMOVED_SKILLS;
 	
+	// Eraton
+	public static Set<Integer> ERATON_RETAINED_SKILLS = new HashSet<>();
+	
 	// --------------------------------------------------
 	// Vitality Settings
 	// --------------------------------------------------
@@ -848,6 +852,7 @@ public class Config
 	public static int STARTING_VITALITY_POINTS;
 	public static boolean RAIDBOSS_USE_VITALITY;
 	public static float RATE_VITALITY_EXP_MULTIPLIER;
+	public static float RATE_VITALITY_EXP_PREMIUM_MULTIPLIER;
 	public static int VITALITY_MAX_ITEMS_ALLOWED;
 	public static float RATE_VITALITY_LOST;
 	public static float RATE_VITALITY_GAIN;
@@ -1153,6 +1158,7 @@ public class Config
 	public static int CONQUEST_RATE_SERVER_POINTS;
 	public static int CONQUEST_RATE_SERVER_SOUL_ORBS;
 	public static int CONQUEST_RATE_ZONE_POINTS;
+	public static int CONQUEST_RATE_BLOODY_COINS;
 	public static int CONQUEST_ATTACK_POINTS;
 	public static int CONQUEST_LIFE_POINTS;
 	public static boolean CONQUEST_PVP_ZONE;
@@ -1425,6 +1431,7 @@ public class Config
 	public static boolean FAKE_PLAYER_USE_SHOTS;
 	public static boolean FAKE_PLAYER_KILL_PVP;
 	public static boolean FAKE_PLAYER_KILL_KARMA;
+	public static boolean FAKE_PLAYER_AUTO_ATTACKABLE;
 	public static boolean FAKE_PLAYER_AGGRO_MONSTERS;
 	public static boolean FAKE_PLAYER_AGGRO_PLAYERS;
 	public static boolean FAKE_PLAYER_AGGRO_FPC;
@@ -1912,6 +1919,15 @@ public class Config
 					HARDIN_REMOVED_SKILLS.get(classId).add(Integer.parseInt(classInfo[i]));
 				}
 			}
+			ERATON_RETAINED_SKILLS.clear();
+			final String eratonRetainedSkills = characterConfig.getString("EratonRetainedSkills", "").trim();
+			if (!eratonRetainedSkills.isEmpty())
+			{
+				for (String id : eratonRetainedSkills.split(","))
+				{
+					ERATON_RETAINED_SKILLS.add(Integer.parseInt(id));
+				}
+			}
 			ENABLE_VITALITY = characterConfig.getBoolean("EnableVitality", true);
 			STARTING_VITALITY_POINTS = characterConfig.getInt("StartingVitalityPoints", 140000);
 			RAIDBOSS_USE_VITALITY = characterConfig.getBoolean("RaidbossUseVitality", true);
@@ -2134,6 +2150,7 @@ public class Config
 			CONQUEST_RATE_SERVER_POINTS = conquestConfig.getInt("ConquestRateServerPoints", 1);
 			CONQUEST_RATE_SERVER_SOUL_ORBS = conquestConfig.getInt("ConquestRateServerSoulOrbs", 100);
 			CONQUEST_RATE_ZONE_POINTS = conquestConfig.getInt("ConquestRateZonePoints", 1);
+			CONQUEST_RATE_BLOODY_COINS = conquestConfig.getInt("ConquestRateBloodyCoins", 1);
 			CONQUEST_ATTACK_POINTS = conquestConfig.getInt("ConquestCharacterAttackPoints", 100);
 			CONQUEST_LIFE_POINTS = conquestConfig.getInt("ConquestCharacterLifePoints", 20);
 			CONQUEST_PVP_ZONE = conquestConfig.getBoolean("ConquestIsPvpZone", false);
@@ -2452,6 +2469,7 @@ public class Config
 			ENABLE_AUTO_SKILL = generalConfig.getBoolean("EnableAutoSkill", true);
 			ENABLE_AUTO_ITEM = generalConfig.getBoolean("EnableAutoItem", true);
 			RESUME_AUTO_PLAY = generalConfig.getBoolean("ResumeAutoPlay", false);
+			ENABLE_AUTO_ASSIST = generalConfig.getBoolean("AssistLeader", false);
 			BLUE_TEAM_ABNORMAL_EFFECT = null;
 			final String blueTeamAve = generalConfig.getString("BlueTeamAbnormalEffect", "").trim();
 			if (!blueTeamAve.isEmpty())
@@ -2580,6 +2598,7 @@ public class Config
 			MONSTER_EXP_MAX_LEVEL_DIFFERENCE = ratesConfig.getInt("MonsterExpMaxLevelDifference", 11);
 			RATE_RAIDBOSS_POINTS = ratesConfig.getFloat("RateRaidbossPointsReward", 1);
 			RATE_VITALITY_EXP_MULTIPLIER = ratesConfig.getFloat("RateVitalityExpMultiplier", 2);
+			RATE_VITALITY_EXP_PREMIUM_MULTIPLIER = ratesConfig.getFloat("RateVitalityExpPremiumMultiplier", 3);
 			VITALITY_MAX_ITEMS_ALLOWED = ratesConfig.getInt("VitalityMaxItemsAllowed", 999);
 			RATE_VITALITY_LOST = ratesConfig.getFloat("RateVitalityLost", 1);
 			RATE_VITALITY_GAIN = ratesConfig.getFloat("RateVitalityGain", 1);
@@ -3647,6 +3666,7 @@ public class Config
 			FAKE_PLAYER_USE_SHOTS = fakePlayerConfig.getBoolean("FakePlayerUseShots", false);
 			FAKE_PLAYER_KILL_PVP = fakePlayerConfig.getBoolean("FakePlayerKillsRewardPvP", false);
 			FAKE_PLAYER_KILL_KARMA = fakePlayerConfig.getBoolean("FakePlayerUnflaggedKillsKarma", false);
+			FAKE_PLAYER_AUTO_ATTACKABLE = fakePlayerConfig.getBoolean("FakePlayerAutoAttackable", false);
 			FAKE_PLAYER_AGGRO_MONSTERS = fakePlayerConfig.getBoolean("FakePlayerAggroMonsters", false);
 			FAKE_PLAYER_AGGRO_PLAYERS = fakePlayerConfig.getBoolean("FakePlayerAggroPlayers", false);
 			FAKE_PLAYER_AGGRO_FPC = fakePlayerConfig.getBoolean("FakePlayerAggroFPC", false);

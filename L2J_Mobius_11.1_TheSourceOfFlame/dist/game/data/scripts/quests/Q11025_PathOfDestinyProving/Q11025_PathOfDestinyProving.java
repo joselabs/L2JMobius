@@ -614,7 +614,7 @@ public class Q11025_PathOfDestinyProving extends Quest
 				holder.add(new NpcLogListHolder(NpcStringId.KILL_SKELETONS_3.getId(), true, qs.getInt(KILL_COUNT_VAR)));
 				return holder;
 			}
-			else if (qs.isCond(11))
+			else if (qs.isCond(12))
 			{
 				final Set<NpcLogListHolder> holder = new HashSet<>();
 				holder.add(new NpcLogListHolder(NpcStringId.INVESTIGATE_THE_SURROUNDINGS.getId(), true, qs.getInt(KILL_COUNT_VAR2)));

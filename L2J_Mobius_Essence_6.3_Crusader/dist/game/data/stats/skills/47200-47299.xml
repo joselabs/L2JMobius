@@ -1876,38 +1876,7 @@
 	</skill>
 	<skill id="47260" toLevel="3" name="Divine Recovery">
 		<icon>icon.s_saint_recovery</icon>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<magicLevel>76</magicLevel>
-		<effects>
-			<effect name="TriggerSkillByKill">
-				<!-- HP Drain -->
-				<chance>100</chance>
-				<skillId>47261</skillId> <!-- Divine Recovery -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-				</skillLevel>
-			</effect>
-			<effect name="TriggerSkillByKill">
-				<!-- HP Drain -->
-				<chance>100</chance>
-				<skillId>47262</skillId> <!-- Divine Recovery -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-				</skillLevel>
-			</effect>
-		</effects>
-	</skill>
-	<skill id="47261" toLevel="3" name="Divine Recovery">
-		<!-- Consumes the target's soul and recovers MP. (Trigger cooldown: 10 sec.). Recovers 96 MP after killing monsters. Recovers 768 MP after killing characters. -->
-		<icon>icon.s_saint_recovery</icon>
-		<castRange>600</castRange>
-		<effectRange>1100</effectRange>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
@@ -1922,10 +1891,35 @@
 			</effect>
 		</effects>
 	</skill>
+	<skill id="47261" toLevel="3" name="Divine Recovery">
+		<!-- Consumes the target's soul and recovers MP. (Trigger cooldown: 10 sec.) Recovers $s1 MP after killing monsters. Recovers $s2 MP after killing characters. -->
+		<icon>icon.s_saint_recovery</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>76</magicLevel>
+		<effects>
+			<effect name="TriggerSkillByKill">
+				<chance>100</chance>
+				<skillId>47260</skillId> <!-- Divine Recovery -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+				</skillLevel>
+			</effect>
+			<effect name="TriggerSkillByKill">
+				<chance>100</chance>
+				<skillId>47262</skillId> <!-- Divine Recovery -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+				</skillLevel>
+			</effect>
+		</effects>
+	</skill>
 	<skill id="47262" toLevel="3" name="Divine Recovery">
 		<icon>icon.s_saint_recovery</icon>
-		<castRange>600</castRange>
-		<effectRange>1100</effectRange>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<operateType>A1</operateType>
 		<reuseDelay>60000</reuseDelay>
@@ -3921,7 +3915,7 @@
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>20</chance>
-				<targetType>TARGET</targetType>
+				<targetType>SELF</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>53007</skillId> <!-- Power Stance -->

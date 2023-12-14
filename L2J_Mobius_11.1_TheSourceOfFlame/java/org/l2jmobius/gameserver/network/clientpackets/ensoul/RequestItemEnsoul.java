@@ -126,8 +126,12 @@ public class RequestItemEnsoul implements ClientPacket
 		final ItemTemplate template = item.getTemplate();
 		if ((_type == 1) && (template.getEnsoulSlots() == 0))
 		{
-			PacketLogger.warning("Player: " + player + " attempting to ensoul non ensoulable item: " + item + "!");
-			return;
+			// We use special ensoul slots for jewels.
+			if ((template.getType1() != ItemTemplate.TYPE1_WEAPON_RING_EARRING_NECKLACE) || (template.getSpecialEnsoulSlots() == 0))
+			{
+				PacketLogger.warning("Player: " + player + " attempting to ensoul non ensoulable item: " + item + "!");
+				return;
+			}
 		}
 		if ((_type == 2) && (template.getSpecialEnsoulSlots() == 0))
 		{

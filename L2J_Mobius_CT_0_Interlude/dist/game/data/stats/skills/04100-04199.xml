@@ -1295,8 +1295,9 @@
 		<!-- Paralyzes a target, instantly immobilizing it. -->
 		<table name="#magicLevel">40 44 48 52 56 60 64 68 72 74 76 78 80 81 82 83 84 85</table>
 		<set name="abnormalLevel" val="1" />
-		<set name="abnormalTime" val="15" />
+		<set name="abnormalTime" val="120" />
 		<set name="abnormalType" val="PARALYZE" />
+		<set name="abnormalVisualEffect" val="PARALYZE" />
 		<set name="activateRate" val="40" />
 		<set name="basicProperty" val="MEN" />
 		<set name="icon" val="icon.skill1170" />
@@ -1313,12 +1314,8 @@
 				<mul stat="pAtkSpd" val="0.5" />
 				<mul stat="mAtkSpd" val="0.5" />
 			</effect>
+			<effect name="Paralyze" />
 		</for>
-		<endEffects>
-			<effect name="CallSkill">
-				<param skillId="6125" skillLevel="1" />
-			</effect>
-		</endEffects>
 	</skill>
 	<skill id="4165" levels="17" name="Icy Air">
 		<!-- Inflicts continuous damage by Icy Air. Effect 5. -->

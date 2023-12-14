@@ -757,7 +757,8 @@ public abstract class Inventory extends ItemContainer
 			final int itemVisualId = item.getVisualId();
 			if (itemVisualId > 0)
 			{
-				final AppearanceStone stone = AppearanceItemData.getInstance().getStone(itemVisualId);
+				final int appearanceStoneId = item.getAppearanceStoneId();
+				final AppearanceStone stone = AppearanceItemData.getInstance().getStone(appearanceStoneId > 0 ? appearanceStoneId : itemVisualId);
 				if ((stone != null) && (stone.getType() == AppearanceType.FIXED) && verifyAndApply(player, item, Item::getVisualId))
 				{
 					update = true;
@@ -909,7 +910,8 @@ public abstract class Inventory extends ItemContainer
 			final int itemVisualId = item.getVisualId();
 			if (itemVisualId > 0)
 			{
-				final AppearanceStone stone = AppearanceItemData.getInstance().getStone(itemVisualId);
+				final int appearanceStoneId = item.getAppearanceStoneId();
+				final AppearanceStone stone = AppearanceItemData.getInstance().getStone(appearanceStoneId > 0 ? appearanceStoneId : itemVisualId);
 				if ((stone != null) && (stone.getType() == AppearanceType.FIXED) && verifyAndRemove(player, item, Item::getVisualId))
 				{
 					remove = true;

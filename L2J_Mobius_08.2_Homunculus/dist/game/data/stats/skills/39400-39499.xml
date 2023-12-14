@@ -2087,6 +2087,7 @@
 		</effects>
 	</skill>
 	<skill id="39494" toLevel="1" name="Dye Powder">
+		<!-- Powder for replenishing the Dye Engraving scale. Restores 25% of the full scale. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2096,6 +2097,11 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CanUseSymbolSealIncreaseItem">
+				<amount>25</amount> <!-- 25% from max symbol seal points -->
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="RestoreSymbolSeal">
 				<amount>25</amount>

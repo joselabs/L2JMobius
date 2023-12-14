@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `seven_signs_festival` (
 	`score` int(5) NOT NULL default '0',
 	`members` varchar(255) NOT NULL default '',
 	PRIMARY KEY (`festivalId`,`cabal`,`cycle`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT IGNORE INTO `seven_signs_festival` VALUES 
 (0, "dawn", 1, 0, 0, ""),

@@ -482,7 +482,11 @@ public class PlayerStat extends PlayableStat
 	
 	public double getVitalityExpBonus()
 	{
-		return (getVitalityPoints() > 0) ? getMul(Stat.VITALITY_EXP_RATE, Config.RATE_VITALITY_EXP_MULTIPLIER) : 1.0;
+		if (getVitalityPoints() > 0)
+		{
+			return getMul(Stat.VITALITY_EXP_RATE, 1) * (getActiveChar().hasPremiumStatus() ? Config.RATE_VITALITY_EXP_PREMIUM_MULTIPLIER : Config.RATE_VITALITY_EXP_MULTIPLIER);
+		}
+		return 0;
 	}
 	
 	public void setVitalityPoints(int value)

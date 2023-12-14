@@ -47,6 +47,7 @@ public class SkillConditionMasterHandler
 		SkillConditionHandler.getInstance().registerHandler("CanUseInBattlefield", CanUseInBattlefieldSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("CanUseInDragonLair", CanUseInDragonLairSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("CanUseSwoopCannon", CanUseSwoopCannonSkillCondition::new);
+		SkillConditionHandler.getInstance().registerHandler("CanUseSymbolSealIncreaseItem", CanUseSymbolSealIncreaseItemSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("CanUseVitalityIncreaseItem", CanUseVitalityIncreaseItemSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("CheckLevel", CheckLevelSkillCondition::new);
 		SkillConditionHandler.getInstance().registerHandler("CheckSex", CheckSexSkillCondition::new);

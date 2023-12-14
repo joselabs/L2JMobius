@@ -13,4 +13,10 @@ CREATE TABLE IF NOT EXISTS character_skills_save (
   `class_index` INT(1) NOT NULL DEFAULT 0,
   buff_index INT(2) NOT NULL default 0,
   PRIMARY KEY  (char_obj_id,skill_id,`class_index`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+# ADD_SKILL_SAVE, DELETE_SKILL_SAVE
+CREATE INDEX idx_charId_classIndex ON character_skills_save (char_obj_id, class_index);
+
+# RESTORE_SKILL_SAVE
+CREATE INDEX idx_charId_classIndex_buffIndex ON character_skills_save (char_obj_id, class_index, buff_index);

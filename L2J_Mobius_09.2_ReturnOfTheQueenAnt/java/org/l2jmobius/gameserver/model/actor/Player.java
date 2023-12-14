@@ -327,6 +327,7 @@ import org.l2jmobius.gameserver.network.serverpackets.ExUserInfoAbnormalVisualEf
 import org.l2jmobius.gameserver.network.serverpackets.ExUserInfoCubic;
 import org.l2jmobius.gameserver.network.serverpackets.ExUserInfoEquipSlot;
 import org.l2jmobius.gameserver.network.serverpackets.ExUserInfoInvenWeight;
+import org.l2jmobius.gameserver.network.serverpackets.ExVitalityEffectInfo;
 import org.l2jmobius.gameserver.network.serverpackets.GetOnVehicle;
 import org.l2jmobius.gameserver.network.serverpackets.HennaInfo;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -4617,7 +4618,7 @@ public class Player extends Playable
 	{
 		super.doAutoAttack(target);
 		setRecentFakeDeath(false);
-		if (target.isFakePlayer())
+		if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
 		{
 			updatePvPStatus();
 		}
@@ -8594,9 +8595,13 @@ public class Player extends Playable
 				if ((getWantsPeace() == 0) && (attackerPlayer.getWantsPeace() == 0) && !isAcademyMember())
 				{
 					final ClanWar war = attackerClan.getWarWith(getClanId());
-					if ((war != null) && ((war.getState() == ClanWarState.MUTUAL) || (((war.getState() == ClanWarState.BLOOD_DECLARATION) || (war.getState() == ClanWarState.DECLARATION)) && (war.getAttackerClanId() == attackerClan.getId()))))
+					if (war != null)
 					{
-						return true;
+						final ClanWarState warState = war.getState();
+						if ((warState == ClanWarState.MUTUAL) || (((warState == ClanWarState.BLOOD_DECLARATION) || (warState == ClanWarState.DECLARATION)) && (war.getAttackerClanId() == clan.getId())))
+						{
+							return true;
+						}
 					}
 				}
 			}
@@ -9919,6 +9924,7 @@ public class Player extends Playable
 				sendPacket(new ExUserBoostStat(this, BonusExpType.VITALITY));
 				sendPacket(new ExUserBoostStat(this, BonusExpType.BUFFS));
 				sendPacket(new ExUserBoostStat(this, BonusExpType.PASSIVE));
+				sendPacket(new ExVitalityEffectInfo(this));
 				_userBoostStatTask = null;
 			}, 300);
 		}

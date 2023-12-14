@@ -170,7 +170,6 @@ public class LionelHunter extends AbstractNpcAI
 					htmltext = "33907-not-completed.html";
 				}
 				break;
-				
 			}
 		}
 		return htmltext;

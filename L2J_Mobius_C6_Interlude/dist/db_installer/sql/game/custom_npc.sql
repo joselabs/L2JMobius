@@ -46,7 +46,7 @@ CREATE TABLE `custom_npc`(
   `absorb_level` decimal(2,0) default 0,
   `absorb_type` enum('FULL_PARTY','LAST_HIT','PARTY_ONE_RANDOM') DEFAULT 'LAST_HIT' NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT ignore INTO custom_npc values
 ('500', '30115', 'Jurek', '1', 'Faction Manager', '1', 'NPC.a_mageguild_master_MHuman', '8.00', '24.00', '70', 'male', 'Folk', '40', '3862', '1493', '11.85', '2.78', '40', '43', '30', '21', '20', '10', '0', '0', '1314', '470', '780', '382', '278', '0', '333', '0', '0', '0', '55', '132', null, '0', '1', '0', 'LAST_HIT'),

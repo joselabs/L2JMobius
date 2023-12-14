@@ -41,6 +41,8 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("AdditionalPotionHp", AdditionalPotionHp::new);
 		EffectHandler.getInstance().registerHandler("AdditionalPotionMp", AdditionalPotionMp::new);
 		EffectHandler.getInstance().registerHandler("AddPcCafePoints", AddPcCafePoints::new);
+		EffectHandler.getInstance().registerHandler("AddMaxPhysicalCriticalRate", AddMaxPhysicalCriticalRate::new);
+		EffectHandler.getInstance().registerHandler("AddMaxMagicCriticalRate", AddMaxMagicCriticalRate::new);
 		EffectHandler.getInstance().registerHandler("AddSkillBySkill", AddSkillBySkill::new);
 		EffectHandler.getInstance().registerHandler("AddTeleportBookmarkSlot", AddTeleportBookmarkSlot::new);
 		EffectHandler.getInstance().registerHandler("AreaDamage", AreaDamage::new);
@@ -222,7 +224,6 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("MAtk", MAtk::new);
 		EffectHandler.getInstance().registerHandler("MaxCp", MaxCp::new);
 		EffectHandler.getInstance().registerHandler("MaxHp", MaxHp::new);
-		EffectHandler.getInstance().registerHandler("MaxMagicCriticalRate", MaxMagicCriticalRate::new);
 		EffectHandler.getInstance().registerHandler("MaxMp", MaxMp::new);
 		EffectHandler.getInstance().registerHandler("ModifyVital", ModifyVital::new);
 		EffectHandler.getInstance().registerHandler("Mp", Mp::new);

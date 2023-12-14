@@ -15,4 +15,4 @@ CREATE TABLE IF NOT EXISTS `achievement_box` (
 `box_state_slot_4` INT NOT NULL DEFAULT 0,
 `boxtype_slot_4` INT NOT NULL DEFAULT 0,
 PRIMARY KEY (`charId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

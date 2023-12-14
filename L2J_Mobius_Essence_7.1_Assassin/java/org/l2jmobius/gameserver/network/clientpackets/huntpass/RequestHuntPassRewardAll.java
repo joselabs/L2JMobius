@@ -115,26 +115,9 @@ public class RequestHuntPassRewardAll implements ClientPacket
 				break REWARD_LOOP;
 			}
 			
-			// Normal reward.
-			if (!huntPass.isPremium() && (rewardIndex <= HuntPassData.getInstance().getRewardsCount()))
-			{
-				rewardItem(player, HuntPassData.getInstance().getRewards().get(rewardIndex));
-				huntPass.setRewardStep(rewardIndex + 1);
-			}
-			// Premium reward.
-			else if (huntPass.isPremium())
-			{
-				if ((rewardIndex < HuntPassData.getInstance().getRewardsCount()) && (rewardIndex <= premiumRewardIndex))
-				{
-					rewardItem(player, HuntPassData.getInstance().getRewards().get(rewardIndex));
-					huntPass.setRewardStep(rewardIndex + 1);
-				}
-				else if ((premiumRewardIndex < rewardIndex) && (premiumRewardIndex <= HuntPassData.getInstance().getPremiumRewardsCount()))
-				{
-					rewardItem(player, HuntPassData.getInstance().getPremiumRewards().get(premiumRewardIndex));
-					huntPass.setPremiumRewardStep(premiumRewardIndex + 1);
-				}
-			}
+			normalReward(player);
+			premiumReward(player);
+			huntPass.setRewardStep(rewardIndex + 1);
 		}
 		
 		if (!inventoryLimitReached)
@@ -164,5 +147,40 @@ public class RequestHuntPassRewardAll implements ClientPacket
 		{
 			player.addItem("HuntPassReward", reward, player, true);
 		}
+	}
+	
+	private void premiumReward(Player player)
+	{
+		final HuntPass huntPass = player.getHuntPass();
+		final int premiumRewardIndex = huntPass.getPremiumRewardStep();
+		if (premiumRewardIndex >= HuntPassData.getInstance().getPremiumRewardsCount())
+		{
+			return;
+		}
+		
+		if (!huntPass.isPremium())
+		{
+			return;
+		}
+		
+		rewardItem(player, HuntPassData.getInstance().getPremiumRewards().get(premiumRewardIndex));
+		huntPass.setPremiumRewardStep(premiumRewardIndex + 1);
+	}
+	
+	private void normalReward(Player player)
+	{
+		final HuntPass huntPass = player.getHuntPass();
+		final int rewardIndex = huntPass.getRewardStep();
+		if (rewardIndex >= HuntPassData.getInstance().getRewardsCount())
+		{
+			return;
+		}
+		
+		if (huntPass.isPremium() && ((huntPass.getPremiumRewardStep() < rewardIndex) || (huntPass.getPremiumRewardStep() >= HuntPassData.getInstance().getPremiumRewardsCount())))
+		{
+			return;
+		}
+		
+		rewardItem(player, HuntPassData.getInstance().getRewards().get(rewardIndex));
 	}
 }

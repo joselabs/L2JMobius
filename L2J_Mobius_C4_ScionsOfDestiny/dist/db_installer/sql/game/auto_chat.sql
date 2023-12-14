@@ -4,7 +4,7 @@ CREATE TABLE `auto_chat` (
   `npcId` INT NOT NULL default '0',
   `chatDelay` BIGINT NOT NULL default '-1',
   PRIMARY KEY  (`groupId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 INSERT INTO `auto_chat` VALUES 
 

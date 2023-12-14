@@ -795,14 +795,19 @@
 	<item id="46254" name="Dandy's Golden Ball" type="EtcItem">
 		<!-- For 1 hr., XP/SP gain +100%, and changes the appearance of your armor into that of an NC Dinos uniform. Cannot be stacked with the Fall of the Dragon or XP Buff 50%. -->
 		<set name="icon" val="icon.ev_dinos_baseball_gold" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="material" val="PAPER" />
+		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
-		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="material" val="PAPER" />
+		<set name="is_freightable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="18471" level="1" /> <!-- Dandy's Golden Ball -->
+		</skills>
 	</item>
 	<item id="46255" name="Automatic Appearance: Halloween Outfit" type="EtcItem">
 		<!-- Changes the appearance of upper armor into that of a Halloween Outfit. Works on one-pieces too. -->

@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.model.zone.type;
 
+import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.zone.ZoneType;
@@ -32,6 +33,7 @@ public class TeleportZone extends ZoneType
 	public TeleportZone(int id)
 	{
 		super(id);
+		setTargetType(InstanceType.Player); // Default only player.
 	}
 	
 	@Override

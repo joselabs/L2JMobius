@@ -5,4 +5,4 @@ CREATE TABLE IF NOT EXISTS `enchant_challenge_points_recharges` (
   `optionIndex` INT NOT NULL,
   `count` INT NOT NULL,
   PRIMARY KEY (`charId`, `groupId`, `optionIndex`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

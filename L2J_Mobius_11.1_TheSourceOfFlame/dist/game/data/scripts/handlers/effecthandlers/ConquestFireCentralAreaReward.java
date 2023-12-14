@@ -27,6 +27,7 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneType;
+import org.l2jmobius.gameserver.network.SystemMessageId;
 
 /**
  * @author CostyKiller
@@ -59,6 +60,8 @@ public class ConquestFireCentralAreaReward extends AbstractEffect
 			if (AbstractScript.getRandom(100) < Config.CONQUEST_ABILITY_FIRE_SOURCE_UPGRADE_CHANCE)
 			{
 				player.getVariables().set(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_EXP, player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_EXP, 0) + Config.CONQUEST_ABILITY_FIRE_SOURCE_EXP_AMOUNT);
+				player.sendPacket(SystemMessageId.YOU_HAVE_RECEIVED_FIRE_SOURCE_POINTS);
+				AbstractScript.showOnScreenMsg(player, "You have received Fire Source points.", 5000);
 			}
 		}
 	}

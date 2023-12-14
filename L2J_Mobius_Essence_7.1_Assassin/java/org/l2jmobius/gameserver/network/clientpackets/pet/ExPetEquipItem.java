@@ -21,7 +21,7 @@ import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.pet.ExPetSkillList;
-import org.l2jmobius.gameserver.network.serverpackets.pet.PetInfo;
+import org.l2jmobius.gameserver.network.serverpackets.pet.PetSummonInfo;
 
 /**
  * @author Berezkin Nikolay
@@ -230,7 +230,7 @@ public class ExPetEquipItem implements ClientPacket
 	private void sendInfos(Pet pet, Player player)
 	{
 		pet.getStat().recalculateStats(true);
-		player.sendPacket(new PetInfo(pet, 1));
+		player.sendPacket(new PetSummonInfo(pet, 1));
 		player.sendPacket(new ExPetSkillList(false, pet));
 	}
 }

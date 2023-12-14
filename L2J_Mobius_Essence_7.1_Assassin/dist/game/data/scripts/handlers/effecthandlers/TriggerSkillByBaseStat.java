@@ -34,6 +34,7 @@ public class TriggerSkillByBaseStat extends AbstractEffect
 	private final BaseStat _baseStat;
 	private final int _skillId;
 	private final int _skillLevel;
+	private final int _skillSubLevel;
 	private final int _min;
 	private final int _max;
 	
@@ -42,6 +43,7 @@ public class TriggerSkillByBaseStat extends AbstractEffect
 		_baseStat = params.getEnum("baseStat", BaseStat.class);
 		_skillId = params.getInt("skillId", 0);
 		_skillLevel = params.getInt("skillLevel", 1);
+		_skillSubLevel = params.getInt("skillSubLevel", 0);
 		_min = params.getInt("min", 0);
 		_max = params.getInt("max", 9999);
 	}
@@ -101,7 +103,7 @@ public class TriggerSkillByBaseStat extends AbstractEffect
 				{
 					if (!target.isAffectedBySkill(_skillId))
 					{
-						SkillCaster.triggerCast(target, target, SkillData.getInstance().getSkill(_skillId, _skillLevel));
+						SkillCaster.triggerCast(target, target, SkillData.getInstance().getSkill(_skillId, _skillLevel, _skillSubLevel));
 					}
 				}
 				else

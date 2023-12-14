@@ -43,6 +43,8 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("AdditionalPotionHp", AdditionalPotionHp::new);
 		EffectHandler.getInstance().registerHandler("AdditionalPotionMp", AdditionalPotionMp::new);
 		EffectHandler.getInstance().registerHandler("AddPcCafePoints", AddPcCafePoints::new);
+		EffectHandler.getInstance().registerHandler("AddMaxPhysicalCriticalRate", AddMaxPhysicalCriticalRate::new);
+		EffectHandler.getInstance().registerHandler("AddMaxMagicCriticalRate", AddMaxMagicCriticalRate::new);
 		EffectHandler.getInstance().registerHandler("AddSkillBySkill", AddSkillBySkill::new);
 		EffectHandler.getInstance().registerHandler("AddTeleportBookmarkSlot", AddTeleportBookmarkSlot::new);
 		EffectHandler.getInstance().registerHandler("AgathionSlot", AgathionSlot::new);
@@ -171,6 +173,7 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("GiveExpAndSp", GiveExpAndSp::new);
 		EffectHandler.getInstance().registerHandler("GiveFame", GiveFame::new);
 		EffectHandler.getInstance().registerHandler("GiveItemByExp", GiveItemByExp::new);
+		EffectHandler.getInstance().registerHandler("GivePetXp", GivePetXp::new);
 		EffectHandler.getInstance().registerHandler("GiveRecommendation", GiveRecommendation::new);
 		EffectHandler.getInstance().registerHandler("GiveSp", GiveSp::new);
 		EffectHandler.getInstance().registerHandler("GiveXp", GiveXp::new);
@@ -194,6 +197,7 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("HpRegen", HpRegen::new);
 		EffectHandler.getInstance().registerHandler("HpToOwner", HpToOwner::new);
 		EffectHandler.getInstance().registerHandler("IgnoreDeath", IgnoreDeath::new);
+		EffectHandler.getInstance().registerHandler("IgnoreReduceDamage", IgnoreReduceDamage::new);
 		EffectHandler.getInstance().registerHandler("ImmobileDamageBonus", ImmobileDamageBonus::new);
 		EffectHandler.getInstance().registerHandler("ImmobileDamageResist", ImmobileDamageResist::new);
 		EffectHandler.getInstance().registerHandler("ImmobilePetBuff", ImmobilePetBuff::new);
@@ -235,7 +239,6 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("MAtkByPAtk", MAtkByPAtk::new);
 		EffectHandler.getInstance().registerHandler("MaxCp", MaxCp::new);
 		EffectHandler.getInstance().registerHandler("MaxHp", MaxHp::new);
-		EffectHandler.getInstance().registerHandler("MaxMagicCriticalRate", MaxMagicCriticalRate::new);
 		EffectHandler.getInstance().registerHandler("MaxMp", MaxMp::new);
 		EffectHandler.getInstance().registerHandler("ModifyCraftPoints", ModifyCraftPoints::new);
 		EffectHandler.getInstance().registerHandler("ModifyDeathPoints", ModifyDeathPoints::new);

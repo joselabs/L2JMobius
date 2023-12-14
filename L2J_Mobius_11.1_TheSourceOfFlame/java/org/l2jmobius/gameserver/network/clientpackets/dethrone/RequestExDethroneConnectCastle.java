@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.dethrone;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -56,11 +55,11 @@ public class RequestExDethroneConnectCastle implements ClientPacket
 			GlobalVariablesManager.getInstance().set("CONQUEST_CONNECTED", true);
 			
 			final long serverPoints = GlobalVariablesManager.getInstance().getLong("CONQUEST_SERVER_POINTS", 0L);
-			final long soulOrbScore = serverPoints * Config.CONQUEST_RATE_SERVER_SOUL_ORBS; // Custom value.
+			final long serverSoulOrbs = GlobalVariablesManager.getInstance().getLong("CONQUEST_SERVER_SOUL_ORBS", 0L);
 			final boolean _bAdenCastleOwner = (player.getClan() != null) && (player.getObjectId() == player.getClan().getLeaderId()) && (player.getClan().getCastleId() == 5); // Aden Castle Id is 5 _bConnected = true
 			
 			player.sendPacket(new ExDethroneConnectCastle(true));
-			player.sendPacket(new ExDethroneServerInfo(serverPoints, soulOrbScore, _bAdenCastleOwner, true));
+			player.sendPacket(new ExDethroneServerInfo(serverPoints, serverSoulOrbs, _bAdenCastleOwner, true));
 			player.sendPacket(SystemMessageId.THE_CONNECTION_TO_THE_CONQUEST_WORLD_WAS_MADE);
 		}
 		else // Already connected.

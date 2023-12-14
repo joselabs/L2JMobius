@@ -16,6 +16,7 @@
  */
 package quests.Q10885_SaviorsPathDiscovery;
 
+import org.l2jmobius.gameserver.enums.Movie;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
@@ -58,20 +59,27 @@ public class Q10885_SaviorsPathDiscovery extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "34057-03.html":
+			case "34057-02.htm":
+			{
+				qs.startQuest();
+				htmltext = event;
+				break;
+			}
+			case "34057-03.htm":
 			{
 				if (qs.isCond(1))
 				{
-					takeItems(player, -1, LEONA_BLACKBIRDS_MESSAGE);
 					qs.setCond(2);
 				}
 				htmltext = event;
 				break;
 			}
-			case "34057-05.html":
+			case "34057-04.html":
 			{
 				if (qs.isCond(2))
 				{
+					giveItems(player, LEONA_BLACKBIRDS_MESSAGE, 1, true);
+					playMovie(player, Movie.EP5_ASTATINE_QST_START);
 					qs.setCond(3);
 				}
 				htmltext = event;
@@ -83,6 +91,7 @@ public class Q10885_SaviorsPathDiscovery extends Quest
 				{
 					if ((player.getLevel() >= MIN_LEVEL))
 					{
+						takeItems(player, -1, LEONA_BLACKBIRDS_MESSAGE);
 						addExpAndSp(player, 90638, 82);
 						qs.exitQuest(false, true);
 						htmltext = event;
@@ -137,7 +146,11 @@ public class Q10885_SaviorsPathDiscovery extends Quest
 						}
 						else if (qs.isCond(2))
 						{
-							htmltext = "34057-04.htm";
+							htmltext = "34057-03.htm";
+						}
+						else if (qs.isCond(3))
+						{
+							htmltext = "34057-04.html";
 						}
 						break;
 					}

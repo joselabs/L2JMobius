@@ -888,17 +888,17 @@
 	<item id="82658" name="Sealed Fire Source" type="EtcItem">
 		<!-- This flickering flame is emanating the power of the Primordial Fire. Double-click to obtain Fire Source points. Fire Source points are required for enhancing the <Fire Source> ability of the Primordial Fire Source. -->
 		<set name="icon" val="icon.dethrone_fire_source" />
-		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="ExtractableItems" />
-		<capsuled_items>
-			<item id="82609" min="1" max="1" chance="100" /> <!-- Fire Source -->
-		</capsuled_items>
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39824" level="1" /> <!-- Sealed Fire Source -->
+		</skills>
 	</item>
 	<item id="82659" name="Server Conquest points" type="EtcItem">
 		<!-- Points accumulated by characters from one server for their actions in the Conquest world: monster hunting, PvP, missions and the Sacred Fire summoning. The server that gets the most points per cycle becomes the Conqueror server. Characters from this server are rewarded with various bonuses. -->

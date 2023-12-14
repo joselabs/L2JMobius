@@ -38,16 +38,16 @@ public class WaterDragonEliteSupplyDrops extends AbstractNpcAI
 	// Monsters
 	private static final int[] MONSTERS =
 	{
-		24596, // Water Dragon's Elite Archer
-		24597, // Water Dragon's Elite Mage
 		24598, // Water Dragon's Elite Raider
 		24599, // Water Dragon's Elite Swordsman
 		24600, // Water Dragon's Elite Wyrm
-		24601, // Water Dragon's Shaman
-		24602, // Water Dragon's Mage
 		24603, // Water Dragon's Pikeman
 		24604, // Water Dragon's Swordsman
 		24605, // Weakened Krotania
+		24957, // Fafurion's Praetorian Knight
+		24958, // Fafurion's Praetorian Pikeman
+		24959, // Fafurion's Praetorian Swordsman
+		24960 // Fafurion's Praetorian Water Dragon
 	};
 	// Item
 	private static final int WATER_DRAGON_ELITE_SUPPLIES = 81758;
@@ -57,7 +57,7 @@ public class WaterDragonEliteSupplyDrops extends AbstractNpcAI
 	private static final int DROP_DAILY = 100;
 	private static final int DROP_MIN = 1;
 	private static final int DROP_MAX = 1;
-	private static final double CHANCE = 10;
+	private static final double CHANCE = 7.2;
 	
 	private WaterDragonEliteSupplyDrops()
 	{
@@ -97,7 +97,7 @@ public class WaterDragonEliteSupplyDrops extends AbstractNpcAI
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Could not reset Corroded Fields drop count: ", e);
+				LOGGER.log(Level.SEVERE, "Could not reset Ravaged Innadril drop count: ", e);
 			}
 			
 			// Update data for online players.

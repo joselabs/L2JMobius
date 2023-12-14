@@ -139,6 +139,11 @@ public class DailyTaskManager
 			resetHuntPass();
 		}
 		
+		if (calendar.get(Calendar.DAY_OF_MONTH) == 1)
+		{
+			resetMontlyLimitShopData();
+		}
+		
 		// Daily tasks.
 		resetAttendanceRewards();
 		resetDailySkills();
@@ -777,6 +782,31 @@ public class DailyTaskManager
 			}
 		}
 		LOGGER.info("LimitShopData has been reset.");
+	}
+	
+	private void resetMontlyLimitShopData()
+	{
+		for (LimitShopProductHolder holder : LimitShopData.getInstance().getProducts())
+		{
+			// Update data for offline players.
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement ps = con.prepareStatement("DELETE FROM account_gsdata WHERE var=?"))
+			{
+				ps.setString(1, AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + holder.getProductionId());
+				ps.executeUpdate();
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not reset LimitShopData: " + e);
+			}
+			// Update data for online players.
+			for (Player player : World.getInstance().getPlayers())
+			{
+				player.getAccountVariables().remove(AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + holder.getProductionId());
+				player.getAccountVariables().storeMe();
+			}
+		}
+		LOGGER.info("LimitShopData has been resetted.");
 	}
 	
 	private void resetHuntPass()

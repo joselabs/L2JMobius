@@ -143,6 +143,25 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 				return;
 			}
 		}
+		else if (_product.getAccountMontlyLimit() > 0)
+		{
+			final long amount = _product.getAccountMontlyLimit() * _amount;
+			if (amount < 1)
+			{
+				player.sendPacket(SystemMessageId.INCORRECT_ITEM_COUNT_2);
+				player.removeRequest(PrimeShopRequest.class);
+				player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, 0, Collections.emptyList()));
+				return;
+			}
+			if (player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + _product.getProductionId(), 0) >= amount)
+			{
+				player.sendMessage("You have reached your montly limit.");
+				player.removeRequest(PrimeShopRequest.class);
+				player.sendPacket(new ExPurchaseLimitShopItemResult(false, _shopIndex, _productId, 0, Collections.emptyList()));
+				return;
+			}
+			
+		}
 		else if (_product.getAccountBuyLimit() > 0) // Count limit.
 		{
 			final long amount = _product.getAccountBuyLimit() * _amount;
@@ -164,7 +183,7 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 		}
 		
 		// Check existing items.
-		final int remainingInfo = Math.max(0, Math.max(_product.getAccountBuyLimit(), _product.getAccountDailyLimit()));
+		final int remainingInfo = Math.max(0, Math.max(_product.getAccountBuyLimit(), Math.max(_product.getAccountDailyLimit(), _product.getAccountMontlyLimit())));
 		for (int i = 0; i < _product.getIngredientIds().length; i++)
 		{
 			if (_product.getIngredientIds()[i] == 0)
@@ -325,6 +344,10 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 		if (_product.getAccountDailyLimit() > 0)
 		{
 			player.getAccountVariables().set(AccountVariables.LCOIN_SHOP_PRODUCT_DAILY_COUNT + _product.getProductionId(), player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_DAILY_COUNT + _product.getProductionId(), 0) + _amount);
+		}
+		if (_product.getAccountMontlyLimit() > 0)
+		{
+			player.getAccountVariables().set(AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + _product.getProductionId(), player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + _product.getProductionId(), 0) + _amount);
 		}
 		else if (_product.getAccountBuyLimit() > 0)
 		{

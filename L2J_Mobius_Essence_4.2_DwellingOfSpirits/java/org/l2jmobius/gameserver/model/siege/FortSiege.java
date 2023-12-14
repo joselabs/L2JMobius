@@ -268,7 +268,7 @@ public class FortSiege extends ListenersContainer implements Siegable
 					}
 					
 					ThreadPool.schedule(new ScheduleStartSiegeTask(nextTask), _initialDelayInMilliseconds - (nextTask * 1000)); // Prepare task for @nextTask minutes left.
-					LOGGER.info("scheduling " + nextTask + " in " + ((_initialDelayInMilliseconds / 1000) - nextTask) + " sec");
+					// LOGGER.info("scheduling " + nextTask + " in " + ((_initialDelayInMilliseconds / 1000) - nextTask) + " sec");
 				}
 				else if ((_time == 3600) && (_fortInst.getResidenceId() != FortManager.ORC_FORTRESS)) // 1hr remains
 				

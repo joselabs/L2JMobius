@@ -659,7 +659,7 @@ public class SkillCaster implements Runnable
 							((Creature) obj).addAttackerToAttackByList(caster);
 							
 							// Summoning a servitor should not renew your own PvP flag time.
-							if (obj.isFakePlayer() && (!obj.isServitor() || (obj.getObjectId() != player.getFirstServitor().getObjectId())))
+							if (obj.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE && (!obj.isServitor() || (obj.getObjectId() != player.getFirstServitor().getObjectId())))
 							{
 								player.updatePvPStatus();
 							}
@@ -682,7 +682,7 @@ public class SkillCaster implements Runnable
 						{
 							// Consider fake player PvP status.
 							if (!obj.isFakePlayer() //
-								|| (obj.isFakePlayer() && (!((Npc) obj).isScriptValue(0) || (((Npc) obj).getReputation() < 0))))
+								|| (obj.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE && (!((Npc) obj).isScriptValue(0) || (((Npc) obj).getReputation() < 0))))
 							{
 								player.updatePvPStatus();
 							}
@@ -717,7 +717,7 @@ public class SkillCaster implements Runnable
 					}
 				});
 			}
-			else if (caster.isFakePlayer()) // fake player attacks player
+			else if (caster.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE) // fake player attacks player
 			{
 				if (target.isPlayable() || target.isFakePlayer())
 				{

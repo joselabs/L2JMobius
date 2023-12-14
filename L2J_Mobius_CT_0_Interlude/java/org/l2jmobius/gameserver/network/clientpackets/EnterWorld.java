@@ -339,17 +339,11 @@ public class EnterWorld implements ClientPacket
 		// Send Macro List
 		player.getMacros().sendUpdate();
 		
-		// Apply item skills.
-		player.getInventory().applyItemSkills();
-		
 		// Send Item List
 		player.sendPacket(new ItemList(player, false));
 		
 		// Send Shortcuts
 		player.sendPacket(new ShortCutInit(player));
-		
-		// Send Skill list
-		player.sendSkillList();
 		
 		// Send Dye Information
 		player.sendPacket(new HennaInfo(player));
@@ -455,6 +449,12 @@ public class EnterWorld implements ClientPacket
 		}
 		
 		player.onPlayerEnter();
+		
+		// Apply item skills.
+		player.getInventory().applyItemSkills();
+		
+		// Send Skill list
+		player.sendSkillList();
 		
 		player.sendPacket(new SkillCoolTime(player));
 		for (Item i : player.getInventory().getItems())

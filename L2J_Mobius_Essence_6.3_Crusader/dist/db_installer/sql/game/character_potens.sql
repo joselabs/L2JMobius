@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS `character_potens` (
   `enchant_level` INT NOT NULL DEFAULT 0,
   `enchant_exp` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`charId`,`slot_position`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

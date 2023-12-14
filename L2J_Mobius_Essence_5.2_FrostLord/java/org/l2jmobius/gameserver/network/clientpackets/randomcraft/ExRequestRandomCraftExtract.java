@@ -46,7 +46,7 @@ public class ExRequestRandomCraftExtract implements ClientPacket
 		{
 			final int objId = packet.readInt();
 			final long count = packet.readLong();
-			if (count > 1)
+			if (count > 0)
 			{
 				_items.put(objId, count);
 			}

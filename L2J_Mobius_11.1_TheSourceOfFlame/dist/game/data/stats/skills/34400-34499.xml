@@ -188,42 +188,264 @@
 	<skill id="34437" toLevel="2" name="Queen's Ice Bolt">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<castRange>2000</castRange>
+		<hitTime>2200</hitTime>
+		<coolTime>300</coolTime>
+		<effectPoint>-704</effectPoint>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<nextAction>ATTACK</nextAction>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>
+					<value level="1">553</value>
+					<value level="2">685</value>
+				</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34438" toLevel="2" name="Queen's Ice Storm">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>400</affectRange>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<hitTime>4500</hitTime>
+		<coolTime>500</coolTime>
+		<effectPoint>-731</effectPoint>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>
+					<value level="1">553</value>
+					<value level="2">685</value>
+				</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34439" toLevel="2" name="Queen's Ice Hurricane">
 		<!-- The rebels are filled with soul-chilling terror!. For 10 sec., inflicts Aerial Yoke on the target. -->
 		<icon>icon.ev_magic_flame_game_wind2</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>10</abnormalTime>
+		<abnormalType>AIRBIND</abnormalType>
+		<abnormalVisualEffect>ASTATINE_WATER</abnormalVisualEffect>
+		<activateRate>100</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
+		<basicProperty>NONE</basicProperty>
+		<trait>AIRBIND</trait>
+		<affectRange>150</affectRange>
+		<hitTime>3000</hitTime>
+		<coolTime>200</coolTime>
+		<effectPoint>-708</effectPoint>
+		<abnormalResists>STUN;TURN_FLEE</abnormalResists>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>120</magicLevel>
+		<isDebuff>true</isDebuff>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="AirBind" />
+			<effect name="BlockActions">
+				<allowedSkills>13565;35190;27548;1904;1912;10517;30868;19573;10279;11264;30516;30017;30018</allowedSkills>
+			</effect>
+			<effect name="DefenceTrait">
+				<SLEEP>100</SLEEP>
+				<CHANGEBODY>100</CHANGEBODY>
+				<AIRBIND>100</AIRBIND>
+				<KNOCKDOWN>100</KNOCKDOWN>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<DERANGEMENT>100</DERANGEMENT>
+				<KNOCKBACK>100</KNOCKBACK>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34440" toLevel="1" name="Queen's Freezing Blizzard">
 		<!-- Merciless fury freezes everything on its way. For 20 sec., freezes the target. The effect cannot be removed or resisted. -->
 		<icon>icon.skill1237</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>20</abnormalTime>
+		<abnormalType>FREEZING</abnormalType>
+		<abnormalVisualEffect>FREEZING2</abnormalVisualEffect>
+		<activateRate>100</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
+		<basicProperty>NONE</basicProperty>
+		<affectRange>150</affectRange>
+		<hitTime>3000</hitTime>
+		<coolTime>200</coolTime>
+		<effectPoint>-708</effectPoint>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>120</magicLevel>
+		<isDebuff>true</isDebuff>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<irreplacableBuff>true</irreplacableBuff>
+		<canBeDispelled>false</canBeDispelled>
+		<effects>
+			<effect name="BlockActions" />
+		</effects>
 	</skill>
 	<skill id="34441" toLevel="1" name="Queen's Freezing Wave">
 		<!-- Ice energy fills the victim's body with paralyzing fear. For 20 sec., greatly decreases the target's Speed and Atk. Spd./ Casting Spd. and increases Skill Cooldown. The effect cannot be removed or resisted. -->
 		<icon>icon.skill6274</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>20</abnormalTime>
+		<abnormalType>BLEEDING</abnormalType>
+		<activateRate>120</activateRate>
+		<basicProperty>MAGIC</basicProperty>
+		<trait>DERANGEMENT</trait>
+		<magicLevel>120</magicLevel>
+		<lvlBonusRate>20</lvlBonusRate>
+		<castRange>800</castRange>
+		<effectRange>600</effectRange>
+		<hitTime>2200</hitTime>
+		<coolTime>300</coolTime>
+		<isMagic>1</isMagic>
+		<effectPoint>-704</effectPoint>
+		<magicCriticalRate>5</magicCriticalRate>
+		<isDebuff>true</isDebuff>
+		<targetType>ENEMY</targetType>
+		<affectScope>SQUARE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<fanRange>0;0;500;600</fanRange>
+		<affectLimit>5-12</affectLimit>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>
+					<value level="1">553</value>
+					<value level="2">685</value>
+				</power>
+			</effect>
+			<effect name="Speed">
+				<amount>-80</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="PhysicalAttackSpeed">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalAttackSpeed">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="Reuse">
+				<amount>20</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="Reuse">
+				<amount>20</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="Reuse">
+				<amount>20</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34442" toLevel="1" name="Eternal Blizzard">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>400</affectRange>
+		<hitTime>10500</hitTime>
+		<isMagic>1</isMagic>
+		<effectPoint>-731</effectPoint>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>120</magicLevel>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="34443" toLevel="1" name="Freezing Strike">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicLevel>120</magicLevel>
+		<castRange>350</castRange>
+		<effectRange>500</effectRange>
+		<hitTime>1200</hitTime>
+		<coolTime>300</coolTime>
+		<effectPoint>-712</effectPoint>
+		<magicCriticalRate>10</magicCriticalRate>
+		<isMagic>1</isMagic>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>553</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34444" toLevel="1" name="Freezing Smash">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>400</affectRange>
+		<hitTime>4500</hitTime>
+		<isMagic>1</isMagic>
+		<effectPoint>-731</effectPoint>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>120</magicLevel>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>553</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34445" toLevel="1" name="Freezing Wave">
 		<!-- Abruptly knocks the target down. -->
 		<icon>icon.oasis_feel</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>5</abnormalTime>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>120</magicLevel>
+		<hitTime>4500</hitTime>
+		<effectPoint>-731</effectPoint>
+		<basicProperty>NONE</basicProperty>
+		<isDebuff>true</isDebuff>
+		<activateRate>100</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
+		<trait>KNOCKDOWN</trait>
+		<affectRange>400</affectRange>
+		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="KnockBack">
+				<distance>200</distance>
+				<speed>400</speed>
+				<knockDown>true</knockDown>
+			</effect>
+			<effect name="DefenceTrait">
+				<DERANGEMENT>100</DERANGEMENT>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<CHANGEBODY>100</CHANGEBODY>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>13542;13565;35190;27548;1904;1912;10517;30868;19573;10279;11264;30516;30017;30018</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34446" toLevel="2" name="Queen's Ice Hurricane">
 		<icon>icon.skill0000</icon>
@@ -232,6 +454,16 @@
 	<skill id="34447" toLevel="1" name="Final Freezing Burst">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>400</affectRange>
+		<hitTime>10500</hitTime>
+		<isMagic>1</isMagic>
+		<effectPoint>-731</effectPoint>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>120</magicLevel>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="34448" toLevel="1" name="Queen's Freezing Sting">
 		<icon>icon.skill0000</icon>
@@ -240,12 +472,86 @@
 	<skill id="34449" toLevel="2" name="Freezing Chain">
 		<!-- The enemy is struck with acute pain that prevents them from moving. Stuns for 2 sec. Cannot be removed. -->
 		<icon>icon.skill10015</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+		</abnormalLevel>
+		<abnormalTime>
+			<value level="1">2</value>
+			<value level="2">1</value>
+		</abnormalTime>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>
+			<value level="1">STUN</value>
+		</abnormalVisualEffect>
+		<affectRange>
+			<value level="1">2200</value>
+			<value level="2">1000</value>
+		</affectRange>
+		<activateRate>100</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
+		<basicProperty>PHYSICAL</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>120</magicLevel>
+		<castRange>
+			<value level="1">2000</value>
+			<value level="2">900</value>
+		</castRange>
+		<effectRange>2200</effectRange>
+		<hitTime>
+			<value level="1">1000</value>
+			<value level="2">1500</value>
+		</hitTime>
+		<coolTime>500</coolTime>
+		<effectPoint>-2161</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<trait>PULL</trait>
+		<isDebuff>true</isDebuff>
+		<targetType>
+			<value level="1">ENEMY</value>
+			<value level="2">SELF</value>
+		</targetType>
+		<affectScope>
+			<value level="1">SINGLE</value>
+			<value level="2">RANGE</value>
+		</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="AirBind" />
+			<effect name="Bluff" fromLevel="2" toLevel="2">
+				<chance>100</chance>
+			</effect>
+			<effect name="PullBack" fromLevel="2" toLevel="2">
+				<speed>600</speed>
+				<delay>650</delay>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
+			</effect>
+			<effect name="GetAgro" fromLevel="2" toLevel="2" />
+		</effects>
 	</skill>
 	<skill id="34451" toLevel="1" name="Frosty Command">
 		<!-- The Ice Queen's will is absolute!. Greatly increases P. Atk. -->
 		<icon>icon.skill1001</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>300</abnormalTime>
+		<abnormalType>PA_UP</abnormalType>
+		<magicLevel>120</magicLevel>
+		<magicCriticalRate>5</magicCriticalRate>
+		<operateType>A2</operateType>
+		<basicProperty>NONE</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PAtk">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34452" toLevel="2" name="Summon Ice Bolts">
 		<!-- The Ice Queen's energy deals great damage and knocks down. The effect cannot be removed or resisted. -->
@@ -253,17 +559,54 @@
 			<value level="1">icon.skill1399</value>
 			<value level="2">icon.skill0000</value>
 		</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>3</abnormalTime>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>120</magicLevel>
+		<hitTime>5000</hitTime>
+		<effectPoint>-731</effectPoint>
+		<basicProperty>NONE</basicProperty>
+		<isDebuff>true</isDebuff>
+		<activateRate>100</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
+		<trait>KNOCKDOWN</trait>
+		<affectRange>200</affectRange>
+		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>553</power>
+			</effect>
+			<effect name="KnockBack">
+				<distance>200</distance>
+				<speed>400</speed>
+				<knockDown>true</knockDown>
+			</effect>
+			<effect name="DefenceTrait">
+				<DERANGEMENT>100</DERANGEMENT>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<CHANGEBODY>100</CHANGEBODY>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>13542;13565;35190;27548;1904;1912;10517;30868;19573;10279;11264;30516;30017;30018</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34453" toLevel="1" name="Ice Queen's Authority">
 		<!-- Frosty current is covering the Ice Queen making her unbelievably powerful. -->
 		<icon>icon.skillboss</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
 	</skill>
 	<skill id="34454" toLevel="1" name="Frozen Kanna's Knight">
 		<!-- A knight who served Melisa until she turned into the Ice Queen Freya. Together with Knight Captain Kier, he tried to persuade Freya to return to herself, but she was just angered by his pleas and turned him into an ice statue. -->
 		<icon>icon.skill6301</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
 	</skill>
 	<skill id="34455" toLevel="1" name="Deadly Earth Strike">
 		<!-- An attack on a single target. -->

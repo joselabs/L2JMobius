@@ -148,6 +148,7 @@ import handlers.bypasshandlers.Link;
 import handlers.bypasshandlers.Multisell;
 import handlers.bypasshandlers.NpcViewMod;
 import handlers.bypasshandlers.Observation;
+import handlers.bypasshandlers.PetExtractWindow;
 import handlers.bypasshandlers.PlayerHelp;
 import handlers.bypasshandlers.PrivateWarehouse;
 import handlers.bypasshandlers.QuestLink;
@@ -468,6 +469,7 @@ public class MasterHandler
 			Multisell.class,
 			NpcViewMod.class,
 			Observation.class,
+			PetExtractWindow.class,
 			QuestLink.class,
 			PlayerHelp.class,
 			PrivateWarehouse.class,

@@ -51,7 +51,7 @@ public class Q00933_TombRaiders extends Quest
 	private static final int TOMB_SOULTAKER = 24583;
 	private static final int TOMB_PATROL = 24582;
 	// Item
-	private static final int BENUSTA_REWARD_BOX = 81151;
+	private static final int BENUSTA_REWARD_BOX = 82453;
 	// Misc
 	private static final String KILL_COUNT_VAR = "KillCount";
 	// Zone
@@ -177,7 +177,14 @@ public class Q00933_TombRaiders extends Quest
 		final Party party = killer.getParty();
 		if (party != null)
 		{
-			party.getMembers().forEach(p -> processKill(npc, p));
+			for (Player member : party.getMembers())
+			{
+				final QuestState qs = getQuestState(member, false);
+				if (qs != null)
+				{
+					processKill(npc, member);
+				}
+			}
 		}
 		else
 		{

@@ -20,20 +20,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.l2jmobius.gameserver.data.xml.SkillData;
-import org.l2jmobius.gameserver.enums.ChatType;
-import org.l2jmobius.gameserver.enums.SkillFinishType;
+import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
-import org.l2jmobius.gameserver.instancemanager.ZoneManager;
+import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Party;
+import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
-import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
-import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.model.skill.SkillCaster;
 import org.l2jmobius.gameserver.model.zone.ZoneType;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExSendUIEvent;
@@ -47,8 +42,12 @@ import instances.AbstractInstance;
  */
 public class DwellingOfSpirits extends AbstractInstance
 {
+	private static final int PORTAL_OPEN_CHANCE = 40;
+	
 	// CRITICAL NPCs
 	private static final int RUIP = 22273;
+	private static final int FAIRY_C1 = 22271;
+	private static final int FAIRY_C2 = 22272;
 	private static final int SEALSTONE = 34178;
 	private static final int ANIMAEL = 34176;
 	private static final int PORTAL_EVENT_FIRE = 15969;
@@ -56,46 +55,10 @@ public class DwellingOfSpirits extends AbstractInstance
 	private static final int PORTAL_EVENT_EARTH = 15972;
 	private static final int PORTAL_EVENT_WIND = 15971;
 	
-	// PROCELLA BOSS WIND
 	private static final int KING_PROCELLA = 29107;
-	private static final int PROCELLA_GUARDIAN_1 = 29112;
-	private static final int PROCELLA_STORM = 29115;
-	
-	private static final SkillHolder HURRICANE_SUMMON = new SkillHolder(50042, 1);
-	private static final int HURRICANE_BOLT = 50043;
-	private static final SkillHolder HURRICANE_BOLT_LV_1 = new SkillHolder(50043, 1);
-	private static final int STORM_MAX_COUNT = 20; //
-	
-	// PETRAM BOSS EARTH
 	private static final int KING_PETRAM = 29108;
-	private static final int PETRAM_PIECE = 29116;
-	private static final int PETRAM_FRAGMENT = 29117;
-	// Skills
-	private static final SkillHolder EARTH_ENERGY = new SkillHolder(50066, 1);
-	private static final SkillHolder EARTH_FURY = new SkillHolder(50059, 1);
-	private static final SkillHolder TEST = new SkillHolder(5712, 1);
-	
-	// IGNIS BOSS FIRE
-	// NPCs
 	private static final int KING_IGNIS = 29105;
-	// Skills
-	private static final SkillHolder FIRE_RAG_2 = new SkillHolder(50050, 2);
-	private static final SkillHolder FIRE_RAG_4 = new SkillHolder(50050, 4);
-	private static final SkillHolder FIRE_RAG_6 = new SkillHolder(50050, 6);
-	private static final SkillHolder FIRE_RAG_8 = new SkillHolder(50050, 8);
-	
-	// NEBULA BOSS WATER
-	// NPCs
 	private static final int KING_NEBULA = 29106;
-	private static final int WATER_SLIME = 29111;
-	// Skills
-	private static final int AQUA_RAGE = 50036;
-	private static final SkillHolder AQUA_RAGE_1 = new SkillHolder(AQUA_RAGE, 1);
-	private static final SkillHolder AQUA_RAGE_2 = new SkillHolder(AQUA_RAGE, 2);
-	private static final SkillHolder AQUA_RAGE_3 = new SkillHolder(AQUA_RAGE, 3);
-	private static final SkillHolder AQUA_RAGE_4 = new SkillHolder(AQUA_RAGE, 4);
-	private static final SkillHolder AQUA_RAGE_5 = new SkillHolder(AQUA_RAGE, 5);
-	private static final SkillHolder AQUA_SUMMON = new SkillHolder(50037, 1);
 	
 	// Entrace Portal Triggers
 	private static final int WIND_FIRST_TRIGGER_1 = 16158880;
@@ -107,38 +70,86 @@ public class DwellingOfSpirits extends AbstractInstance
 	private static final int WATER_FIRST_TRIGGER_1 = 16157770;
 	private static final int WATER_FIRST_TRIGGER_2 = 16157772;
 	
-	// Statue Kill Indicator Triggers
-	private static final int KILL_INDICATOR_TRIGGER_1 = 16159990;
-	private static final int KILL_INDICATOR_TRIGGER_2 = 16159994;
-	private static final int KILL_INDICATOR_TRIGGER_3 = 16159996;
-	private static final int KILL_INDICATOR_TRIGGER_4 = 16159998;
-	private static final int KILL_INDICATOR_TRIGGER_5 = 16159992;
+	// @formatter:off
+	private static final int[][] PORTAL_TRIGGER_IDS = 
+	{
+	    { 16158880, 16158882 },
+	    { 16156660, 16156662 },
+	    { 16155550, 16155552 },
+	    { 16157770, 16157772 }
+	};
+	
+	private static final Location IGNIS_FIRE_L = new Location(202374, 168153, -15485);
+	private static final Location PETRAM_EARTH_L = new Location(222081, 190538, -15485);
+	private static final Location NEBULA_WATER_L = new Location(222149, 168087, -15485);
+	private static final Location PROCELLA_WIN_L = new Location(212884, 178847, -15485);
+	
+	private static final Location PETRAM_EARTH_RETURN_L = new Location(-114321, -77262, -11445);
+	private static final Location IGNIS_FIRE_RETURN_L = new Location(-114322, -77262, -11445);
+	private static final Location NEBULA_WATER_RETURN_L = new Location(-114323, -77262, -11445);
+	private static final Location PROCELLA_WIN_RETURN_L = new Location(-114324, -77262, -11445);
+	
+	private static final int[][][] portalConfigs = 
+	{
+	    {{EARTH_FIRST_TRIGGER_1, EARTH_FIRST_TRIGGER_2, KING_PETRAM}},
+	    {{FIRE_FIRST_TRIGGER_1, FIRE_FIRST_TRIGGER_2, KING_IGNIS}},
+	    {{WATER_FIRST_TRIGGER_1, WATER_FIRST_TRIGGER_2, KING_NEBULA}},
+	    {{WIND_FIRST_TRIGGER_1, WIND_FIRST_TRIGGER_2, KING_PROCELLA}}
+	};
+
+	private static final int[][] portalSpawnCoordinates = 
+	{
+	    {222063, 191514, -15486, 50142},  
+	    {202350, 169121, -15484, 48103},  
+	    {222127, 169057, -15486, 48730},  
+	    {212862, 179828, -15489, 48103}   
+	};
+	// @formatter:on
 	
 	private static final int TEMPLATE_ID = 214;
 	
 	private static final Map<Integer, NpcStringId> PORTAL_MSG = new HashMap<>();
 	static
 	{
-		PORTAL_MSG.put(1, NpcStringId.DIMENSIONAL_DOOR_TO_THE_SPIRIT_OF_EARTH_IS_OPEN);
+		PORTAL_MSG.put(0, NpcStringId.DIMENSIONAL_DOOR_TO_THE_SPIRIT_OF_EARTH_IS_OPEN);
+		PORTAL_MSG.put(1, NpcStringId.DIMENSIONAL_DOOR_TO_THE_SPIRIT_OF_FIRE_IS_OPEN);
 		PORTAL_MSG.put(2, NpcStringId.DIMENSIONAL_DOOR_TO_THE_SPIRIT_OF_WATER_IS_OPEN);
 		PORTAL_MSG.put(3, NpcStringId.DIMENSIONAL_DOOR_TO_THE_SPIRIT_OF_WIND_IS_OPEN);
-		PORTAL_MSG.put(4, NpcStringId.DIMENSIONAL_DOOR_TO_THE_SPIRIT_OF_FIRE_IS_OPEN);
-		PORTAL_MSG.put(5, NpcStringId.SEAL_STONE_DISAPPEARS_AFTER_RESONATING_WITH_THE_STATUE);
+		PORTAL_MSG.put(4, NpcStringId.SEAL_STONE_DISAPPEARS_AFTER_RESONATING_WITH_THE_STATUE);
 	}
+	
+	// Zone
+	private static final int DWELLING_CENTRAL = 21400000;
+	
+	private static final int IGNIS_PORTAL_ENTER_ID = 202201;
+	private static final int PETRAM_PORTAL_ENTER_ID = 202202;
+	private static final int NEBULA_PORTAL_ENTER_ID = 202203;
+	private static final int PROCELLA_PORTAL_ENTER_ID = 202204;
+	
+	// Portals return IDs
+	private static final int IGNIS_PORTAL_RETURN_ID = 202205;
+	private static final int PETRAM_PORTAL_RETURN_ID = 202206;
+	private static final int NEBULA_PORTAL_RETURN_ID = 202207;
+	private static final int PROCELLA_PORTAL_RETURN_ID = 202208;
 	
 	public DwellingOfSpirits()
 	{
 		super(TEMPLATE_ID);
 		addKillId(KING_PETRAM, KING_NEBULA, KING_PROCELLA, KING_IGNIS);
-		addKillId(PROCELLA_GUARDIAN_1);
-		addKillId(PETRAM_PIECE, PETRAM_FRAGMENT);
-		addKillId(WATER_SLIME);
+		addKillId(FAIRY_C1, FAIRY_C2, RUIP);
 		addAttackId(KING_PETRAM, KING_NEBULA, KING_PROCELLA, KING_IGNIS);
 		addSpawnId(KING_NEBULA);
 		addFirstTalkId(ANIMAEL, SEALSTONE);
 		addTalkId(ANIMAEL);
 		addStartNpc(SEALSTONE);
-		addCreatureSeeId(RUIP, ANIMAEL);
+		addCreatureSeeId(ANIMAEL);
+		addEnterZoneId(DWELLING_CENTRAL);
+		addEnterZoneId(IGNIS_PORTAL_ENTER_ID, IGNIS_PORTAL_RETURN_ID);
+		addEnterZoneId(PETRAM_PORTAL_ENTER_ID, PETRAM_PORTAL_RETURN_ID);
+		addEnterZoneId(NEBULA_PORTAL_ENTER_ID, NEBULA_PORTAL_RETURN_ID);
+		addEnterZoneId(PROCELLA_PORTAL_ENTER_ID, PROCELLA_PORTAL_RETURN_ID);
+		addInstanceEnterId(TEMPLATE_ID);
+		addInstanceLeaveId(TEMPLATE_ID);
 	}
 	
 	@Override
@@ -180,777 +191,104 @@ public class DwellingOfSpirits extends AbstractInstance
 			
 			case "TELEPORT":
 			{
-				player.teleToLocation(TeleportWhereType.TOWN, null);
-				return null;
-			}
-			//////////////// BOSS PROCELLA WIND ACTION /////////////
-			case "SPAWN_MINION_PROCELLA":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if ((world != null) && (npc.getId() == KING_PROCELLA))
+				final Instance instance = player.getInstanceWorld();
+				if (instance != null)
 				{
-					world.setParameter("minion1", addSpawn(PROCELLA_GUARDIAN_1, 212663, 179421, -15486, 31011, true, 0, true, npc.getInstanceId()));
-					world.setParameter("minion2", addSpawn(PROCELLA_GUARDIAN_1, 213258, 179822, -15486, 12001, true, 0, true, npc.getInstanceId()));
-					world.setParameter("minion3", addSpawn(PROCELLA_GUARDIAN_1, 212558, 179974, -15486, 12311, true, 0, true, npc.getInstanceId()));
-					startQuestTimer("HIDE_PROCELLA", 1000, world.getNpc(KING_PROCELLA), player);
+					instance.finishInstance();
+					player.teleToLocation(TeleportWhereType.TOWN, null);
 				}
-				break;
-			}
-			case "SPAWN_STORM_PROCELLA":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if ((world != null) && (world.getParameters().getInt("stormCount", 0) < STORM_MAX_COUNT))
-				{
-					world.getNpc(KING_PROCELLA).doCast(HURRICANE_SUMMON.getSkill());
-					final Npc procellaStorm = addSpawn(PROCELLA_STORM, world.getNpc(KING_PROCELLA).getX() + getRandom(-500, 500), world.getNpc(KING_PROCELLA).getY() + getRandom(-500, 500), world.getNpc(KING_PROCELLA).getZ(), 31011, true, 0, true, npc.getInstanceId());
-					procellaStorm.setRandomWalking(true);
-					world.getParameters().increaseInt("stormCount", 1);
-					startQuestTimer("SPAWN_STORM_PROCELLA", 30000, world.getNpc(KING_PROCELLA), player);
-					startQuestTimer("CHECK_CHAR_INSIDE_RADIUS_NPC_PROCELLA", 100, procellaStorm, player);
-				}
-				break;
-			}
-			case "HIDE_PROCELLA":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if (world.getAliveNpcCount(PROCELLA_GUARDIAN_1) >= 1)
-				{
-					world.getNpc(KING_PROCELLA).setInvisible(true);
-				}
-				else if (world.getAliveNpcCount(PROCELLA_GUARDIAN_1) == 0)
-				{
-					world.getNpc(KING_PROCELLA).setInvisible(false);
-					startQuestTimer("SPAWN_MINION_PROCELLA", 90000 + getRandom(-15000, 11000), world.getNpc(KING_PROCELLA), player);
-				}
-				break;
-			}
-			case "CHECK_CHAR_INSIDE_RADIUS_NPC_PROCELLA":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if (world != null)
-				{
-					final Player plr = world.getPlayers().stream().findAny().orElse(null);
-					if ((plr != null) && (plr.isInsideRadius3D(npc, 200)))
-					{
-						npc.abortAttack();
-						npc.abortCast();
-						npc.setTarget(plr);
-						if (plr.getAffectedSkillLevel(HURRICANE_BOLT) == 1)
-						{
-							npc.abortCast();
-							startQuestTimer("CHECK_CHAR_INSIDE_RADIUS_NPC_PROCELLA", 100, npc, player);
-						}
-						else
-						{
-							if (SkillCaster.checkUseConditions(npc, HURRICANE_BOLT_LV_1.getSkill()))
-							{
-								npc.doCast(HURRICANE_BOLT_LV_1.getSkill());
-							}
-						}
-						startQuestTimer("CHECK_CHAR_INSIDE_RADIUS_NPC_PROCELLA", 100, npc, player);
-					}
-					else
-					{
-						startQuestTimer("CHECK_CHAR_INSIDE_RADIUS_NPC_PROCELLA", 100, npc, player);
-					}
-				}
-				break;
-			}
-			//////////////// BOSS PETRAM EARTH ACTION /////////////
-			case "SPAWN_MINION":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if (world.getAliveNpcCount(PETRAM_FRAGMENT) == 0)
-				{
-					npc.doCast(EARTH_ENERGY.getSkill());
-					
-					if (!world.getParameters().getBoolean("spawnedMinions", false))
-					{
-						world.getParameters().set("spawnedMinions", true);
-						
-						final int stage = world.getParameters().getInt("stage", 0);
-						world.getParameters().set("stage", stage + 1);
-						
-						world.setParameter("minionpetram1", addSpawn(npc, PETRAM_FRAGMENT, 221543, 191530, -15486, 1131, false, -1, true, npc.getInstanceId()));
-						world.setParameter("minionpetram2", addSpawn(npc, PETRAM_FRAGMENT, 222069, 192019, -15486, 49364, false, -1, true, npc.getInstanceId()));
-						world.setParameter("minionpetram3", addSpawn(npc, PETRAM_FRAGMENT, 222595, 191479, -15486, 34013, false, -1, true, npc.getInstanceId()));
-						world.setParameter("minionpetram4", addSpawn(npc, PETRAM_FRAGMENT, 222077, 191017, -15486, 16383, false, -1, true, npc.getInstanceId()));
-						
-						npc.setInvul(true);
-						npc.broadcastSay(ChatType.NPC_SHOUT, "HaHahaha, fighters lets kill them. Now Im invul!!!");
-					}
-					
-					startQuestTimer("SUPPORT_PETRAM", 3000, npc, player);
-				}
-				break;
-			}
-			case "UNSPAWN_MINION":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if (world.getAliveNpcCount(PETRAM_FRAGMENT) == 0)
-				{
-					world.getParameters().set("spawnedMinions", false);
-					
-					npc.setInvul(false);
-					npc.broadcastSay(ChatType.NPC_SHOUT, "Nooooo... Nooooo...");
-				}
-				break;
-			}
-			case "SUPPORT_PETRAM":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if (world != null)
-				{
-					final Npc m1 = world.getParameters().getObject("minionpetram1", Npc.class);
-					final Npc m2 = world.getParameters().getObject("minionpetram2", Npc.class);
-					final Npc m3 = world.getParameters().getObject("minionpetram3", Npc.class);
-					final Npc m4 = world.getParameters().getObject("minionpetram4", Npc.class);
-					if (!m1.isDead())
-					{
-						m1.setTarget(world.getNpc(KING_PETRAM));
-						m1.doCast(TEST.getSkill());
-					}
-					if (!m2.isDead())
-					{
-						m2.setTarget(world.getNpc(KING_PETRAM));
-						m2.doCast(TEST.getSkill());
-					}
-					if (!m3.isDead())
-					{
-						m3.setTarget(world.getNpc(KING_PETRAM));
-						m3.doCast(TEST.getSkill());
-					}
-					if (!m4.isDead())
-					{
-						m4.setTarget(world.getNpc(KING_PETRAM));
-						m4.doCast(TEST.getSkill());
-					}
-					
-					startQuestTimer("SUPPORT_PETRAM", 10100, npc, player);
-				}
-				break;
-			}
-			case "EARTH_FURY":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if (world != null)
-				{
-					npc.doCast(EARTH_FURY.getSkill());
-				}
-				break;
-			}
-			//////////////// BOSS IGNIS ACTION /////////////
-			case "CAST_FIRE_RAGE_1":
-			{
-				if (SkillCaster.checkUseConditions(npc, FIRE_RAG_2.getSkill()))
-				{
-					npc.doCast(FIRE_RAG_2.getSkill());
-				}
-				break;
-			}
-			case "CAST_FIRE_RAGE_2":
-			{
-				if (SkillCaster.checkUseConditions(npc, FIRE_RAG_4.getSkill()))
-				{
-					npc.doCast(FIRE_RAG_4.getSkill());
-				}
-				break;
-			}
-			case "CAST_FIRE_RAGE_3":
-			{
-				if (SkillCaster.checkUseConditions(npc, FIRE_RAG_6.getSkill()))
-				{
-					npc.doCast(FIRE_RAG_6.getSkill());
-				}
-				break;
-			}
-			case "CAST_FIRE_RAGE_4":
-			{
-				if (SkillCaster.checkUseConditions(npc, FIRE_RAG_8.getSkill()))
-				{
-					npc.doCast(FIRE_RAG_8.getSkill());
-				}
-				break;
-			}
-			//////////////// BOSS NEBULA ACTION /////////////
-			case "SPAWN_WATER_SLIME":
-			{
-				final Instance world = npc.getInstanceWorld();
-				if (world != null)
-				{
-					final Player plr = world.getPlayers().stream().findAny().get();
-					if (plr != null)
-					{
-						startQuestTimer("CAST_AQUA_RAGE", 30000 + getRandom(-15000, 15000), npc, plr);
-					}
-					if (npc.getId() == KING_NEBULA)
-					{
-						npc.doCast(AQUA_SUMMON.getSkill());
-						for (int i = 0; i < getRandom(4, 6); i++)
-						{
-							addSpawn(npc, WATER_SLIME, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, -1, true, npc.getInstanceId());
-							startQuestTimer("SPAWN_WATER_SLIME", 80000, npc, null);
-						}
-					}
-				}
-				break;
-			}
-			case "PLAYER_PARA":
-			{
-				if (player.getAffectedSkillLevel(AQUA_RAGE) == 5)
-				{
-					player.getEffectList().startAbnormalVisualEffect(AbnormalVisualEffect.FROZEN_PILLAR);
-					player.setImmobilized(true);
-					startQuestTimer("PLAYER_UNPARA", 5000, npc, player);
-				}
-				break;
-			}
-			case "PLAYER_UNPARA":
-			{
-				player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, AQUA_RAGE_5.getSkill());
-				player.getEffectList().stopAbnormalVisualEffect(AbnormalVisualEffect.FROZEN_PILLAR);
-				player.setImmobilized(false);
-				break;
-			}
-			case "CAST_AQUA_RAGE":
-			{
-				startQuestTimer("CAST_AQUA_RAGE", 5000, npc, player);
-				if ((player.isInsideRadius3D(npc, 1000)))
-				{
-					if (player.getAffectedSkillLevel(AQUA_RAGE) == 1)
-					{
-						if (SkillCaster.checkUseConditions(npc, AQUA_RAGE_2.getSkill()))
-						{
-							npc.doCast(AQUA_RAGE_2.getSkill());
-						}
-					}
-					else if (player.getAffectedSkillLevel(AQUA_RAGE) == 2)
-					{
-						if (SkillCaster.checkUseConditions(npc, AQUA_RAGE_3.getSkill()))
-						{
-							npc.doCast(AQUA_RAGE_3.getSkill());
-						}
-					}
-					else if (player.getAffectedSkillLevel(AQUA_RAGE) == 3)
-					{
-						if (SkillCaster.checkUseConditions(npc, AQUA_RAGE_4.getSkill()))
-						{
-							npc.doCast(AQUA_RAGE_4.getSkill());
-						}
-					}
-					else if (player.getAffectedSkillLevel(AQUA_RAGE) == 4)
-					{
-						if (SkillCaster.checkUseConditions(npc, AQUA_RAGE_5.getSkill()))
-						{
-							npc.doCast(AQUA_RAGE_5.getSkill());
-							startQuestTimer("PLAYER_PARA", 100, npc, player);
-						}
-					}
-					else if (player.getAffectedSkillLevel(AQUA_RAGE) == 5)
-					{
-						npc.abortCast();
-					}
-					else
-					{
-						if (SkillCaster.checkUseConditions(npc, AQUA_RAGE_1.getSkill()))
-						{
-							npc.doCast(AQUA_RAGE_1.getSkill());
-						}
-					}
-				}
-				break;
-			}
-			case "check_status":
-			{
-				final Instance world = player.getInstanceWorld();
-				if (!isInInstance(world))
-				{
-					return null;
-				}
-				
-				switch (world.getStatus())
-				{
-					case 0:
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							world.setStatus(1);
-							world.despawnGroup("sealstone");
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 1:
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							world.setStatus(2);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_1, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 2:
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							world.setStatus(3);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_2, true));
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_3, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 3:
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							world.setStatus(4);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_4, true));
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_5, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 4:
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							world.setStatus(5);
-							player.sendPacket(new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 8000, false, null, PORTAL_MSG.get(3), null));
-							addSpawn(KING_PROCELLA, 212862, 179828, -15489, 48103, false, 0, false, world.getId());
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 5: // Dummy stage pause, u need defeat boss to continue.
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 6:
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							world.setStatus(7);
-							world.spawnGroup("ruipwave_1");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_1, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 7:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 3)
-						{
-							world.setStatus(8);
-							world.spawnGroup("NormalMobs");
-							world.spawnGroup("ruipwave_1");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_2, true));
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_3, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 8:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 3)
-						{
-							world.setStatus(9);
-							world.spawnGroup("NormalMobs");
-							world.spawnGroup("ruipwave_2");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_4, true));
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_5, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 9:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 3)
-						{
-							world.setStatus(10);
-							player.sendPacket(new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 8000, false, null, PORTAL_MSG.get(1), null));
-							addSpawn(KING_PETRAM, 222063, 191514, -15486, 50142, false, 0, false, world.getId());
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 10: // Dummy stage pause, u need defeat boss to continue.
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 11:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 1)
-						{
-							world.setStatus(12);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_1, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 12:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 1)
-						{
-							world.setStatus(13);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_2, true));
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_3, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 13:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 1)
-						{
-							world.setStatus(14);
-							world.spawnGroup("ruipwave_2");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_4, true));
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_5, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 14:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 1)
-						{
-							world.setStatus(15);
-							player.sendPacket(new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 8000, false, null, PORTAL_MSG.get(4), null));
-							addSpawn(KING_IGNIS, 202350, 169121, -15484, 48103, false, 0, false, world.getId());
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 15: // Dummy stage pause, u need defeat boss for continue.
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 16:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 3)
-						{
-							world.setStatus(17);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_1, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 17:
-					{
-						if (world.getAliveNpcCount(RUIP) <= 3)
-						{
-							world.setStatus(18);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_2, true));
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_3, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 18:
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							world.setStatus(19);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_4, true));
-							player.broadcastPacket(new OnEventTrigger(KILL_INDICATOR_TRIGGER_5, true));
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 19: // need defeat boss for finish.
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						
-						{
-							world.setStatus(20);
-							world.spawnGroup("ruipwave_1");
-							world.spawnGroup("NormalMobs");
-							player.sendPacket(new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 8000, false, null, PORTAL_MSG.get(2), null));
-							addSpawn(KING_NEBULA, 222127, 169057, -15486, 48730, false, 0, false, world.getId());
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-					case 20:
-					{
-						if (world.getAliveNpcCount(RUIP) == 0)
-						{
-							world.getParameters().set("DwellingOfSpiritsFinished", true);
-							world.setStatus(21);
-						}
-						startQuestTimer("check_status", 1000, null, player);
-						break;
-					}
-				}
-				
-				return null;
 			}
 		}
 		
 		return super.onAdvEvent(event, npc, player);
-		
-	}
-	
-	@Override
-	public String onSpawn(Npc npc)
-	{
-		startQuestTimer("SPAWN_WATER_SLIME", 40000, npc, null);
-		return super.onSpawn(npc);
-	}
-	
-	@Override
-	public String onAttack(Npc npc, Player player, int damage, boolean isSummon, Skill skill)
-	{
-		final Instance world = npc.getInstanceWorld();
-		if (world == null)
-		{
-			return null;
-		}
-		
-		switch (npc.getId())
-		{
-			case KING_PROCELLA:
-			{
-				if (npc.getCurrentHp() < (npc.getMaxHp() * 0.90))
-				{
-					startQuestTimer("SPAWN_MINION_PROCELLA", 80000 + getRandom(-15000, 15000), npc, player);
-					startQuestTimer("SPAWN_STORM_PROCELLA", 4000, npc, player);
-					world.setParameter("stormCount", 0);
-				}
-				break;
-			}
-			case KING_PETRAM:
-			{
-				if (npc.getCurrentHp() < (npc.getMaxHp() * 0.80))
-				{
-					startQuestTimer("EARTH_FURY", 1000, npc, player);
-					if ((world.getParameters().getInt("stage", 0) == 0) || (npc.getCurrentHp() < (npc.getMaxHp() * 0.50)))
-					{
-						startQuestTimer("SPAWN_MINION", 1000, npc, player);
-					}
-				}
-				break;
-			}
-			case KING_IGNIS:
-			{
-				if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.90)) && (npc.getCurrentHp() > (npc.getMaxHp() * 0.70)))
-				{
-					startQuestTimer("CAST_FIRE_RAGE_1", 1000, npc, null);
-				}
-				else if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.70)) && (npc.getCurrentHp() > (npc.getMaxHp() * 0.50)))
-				{
-					startQuestTimer("CAST_FIRE_RAGE_2", 1000, npc, null);
-				}
-				else if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.50)) && (npc.getCurrentHp() > (npc.getMaxHp() * 0.40)))
-				{
-					startQuestTimer("CAST_FIRE_RAGE_3", 1000, npc, null);
-				}
-				else if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.40)) && (npc.getCurrentHp() > (npc.getMaxHp() * 0.25)))
-				{
-					startQuestTimer("CAST_FIRE_RAGE_4", 1000, npc, null);
-				}
-				break;
-			}
-		}
-		
-		return null;
-	}
-	
-	@Override
-	public String onCreatureSee(Npc npc, Creature creature)
-	{
-		if (creature.isPlayer())
-		{
-			final Instance world = creature.getInstanceWorld();
-			if (world.getStatus() >= 5)
-			{
-				enableZoneWind();
-				creature.getActingPlayer().sendPacket(new OnEventTrigger(WIND_FIRST_TRIGGER_1, true));
-				creature.getActingPlayer().sendPacket(new OnEventTrigger(WIND_FIRST_TRIGGER_2, true));
-			}
-			else if (world.getStatus() >= 10)
-			{
-				enableZoneEarth();
-				creature.getActingPlayer().sendPacket(new OnEventTrigger(EARTH_FIRST_TRIGGER_1, true));
-				creature.getActingPlayer().sendPacket(new OnEventTrigger(EARTH_FIRST_TRIGGER_2, true));
-			}
-			else if (world.getStatus() >= 15)
-			{
-				enableZoneFire();
-				creature.getActingPlayer().sendPacket(new OnEventTrigger(FIRE_FIRST_TRIGGER_1, true));
-				creature.getActingPlayer().sendPacket(new OnEventTrigger(FIRE_FIRST_TRIGGER_2, true));
-			}
-			else if (world.getStatus() >= 20)
-			{
-				enableZoneWater();
-				creature.getActingPlayer().sendPacket(new OnEventTrigger(WATER_FIRST_TRIGGER_1, true));
-				creature.getActingPlayer().sendPacket(new OnEventTrigger(WATER_FIRST_TRIGGER_2, true));
-			}
-			else if (world.getStatus() >= 21)
-			{
-				world.despawnGroup("ruipwave_1");
-				world.despawnGroup("ruipwave_2");
-				world.despawnGroup("NormalMobs");
-				world.finishInstance();
-			}
-		}
-		
-		return super.onCreatureSee(npc, creature);
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final Instance instance = npc.getInstanceWorld();
+		final StatSet worldParameters = instance.getParameters();
+		
+		int totalBossDefeatCount = worldParameters.getInt("totalBossDefeatCount", 0);
 		
 		switch (npc.getId())
 		{
-			case KING_PETRAM:
+			case RUIP:
+			case FAIRY_C1:
+			case FAIRY_C2:
 			{
-				final Npc portal = addSpawn(PORTAL_EVENT_EARTH, 222065, 192767, -15488, 16384, false, 0, false, instance.getId());
-				portal.setDisplayEffect(1); // set the portal visible
-				player.getVariables().set("DSIGNIS", 1);
-				setActive(true);
-				enableZoneEarthExit();
-				cancelQuestTimer("SPAWN_MINION", npc, player);
-				instance.setStatus(12);
-				final Instance world = npc.getInstanceWorld();
-				for (Npc spawn : world.getNpcs(PETRAM_FRAGMENT))
+				if (Rnd.get(100) <= PORTAL_OPEN_CHANCE)
 				{
-					spawn.deleteMe();
-				}
-				break;
-			}
-			case KING_NEBULA:
-			{
-				final Npc portal = addSpawn(PORTAL_EVENT_WATER, 222127, 170488, -15488, 16384, false, 0, false, instance.getId());
-				portal.setDisplayEffect(1);
-				player.getVariables().set("DSIGNIS", 1);
-				player.sendPacket(new ExSendUIEvent(player, false, false, 0, 0, NpcStringId.TIME_LEFT));
-				setActive(true);
-				enableZoneWindExit();
-				instance.setStatus(21);
-				instance.spawnGroup("animael");
-				break;
-			}
-			case KING_IGNIS:
-			{
-				final Npc portal = addSpawn(PORTAL_EVENT_FIRE, 202349, 170533, -15488, 16384, false, 0, false, instance.getId());
-				portal.setDisplayEffect(1);
-				player.getVariables().set("DSIGNIS", 1);
-				setActive(true);
-				enableZoneFireExit();
-				instance.setStatus(17);
-				break;
-			}
-			case KING_PROCELLA:
-			{
-				final Npc portal = addSpawn(PORTAL_EVENT_WIND, 212863, 181090, -15487, 16384, false, 0, false, instance.getId());
-				portal.setDisplayEffect(1);
-				player.getVariables().set("DSIGNIS", 1);
-				setActive(true);
-				enableZoneWaterExit();
-				instance.setStatus(7);
-				final Instance world = npc.getInstanceWorld();
-				for (Npc spawn : world.getNpcs(PROCELLA_GUARDIAN_1))
-				{
-					spawn.deleteMe();
-				}
-				break;
-			}
-			case PETRAM_FRAGMENT:
-			{
-				startQuestTimer("UNSPAWN_MINION", 1000, instance.getNpc(KING_PETRAM), player);
-				break;
-			}
-			case PROCELLA_GUARDIAN_1:
-			{
-				
-				startQuestTimer("HIDE_PROCELLA", 1000, instance.getNpc(KING_PROCELLA), player);
-				break;
-			}
-			case WATER_SLIME:
-			{
-				if (getRandomBoolean())
-				{
-					switch (player.getAffectedSkillLevel(AQUA_RAGE))
+					int portalId = Rnd.get(4);
+					boolean isPortalOpened = worldParameters.getBoolean("portal" + portalId + "Opened", false);
+					
+					if (!isPortalOpened)
 					{
-						case 1:
+						if (instance.getStatus() > totalBossDefeatCount)
 						{
-							player.stopSkillEffects(AQUA_RAGE_1.getSkill());
-							break;
+							return super.onKill(npc, player, isSummon);
 						}
-						case 2:
-						{
-							player.stopSkillEffects(AQUA_RAGE_2.getSkill());
-							final Skill skill = SkillData.getInstance().getSkill(AQUA_RAGE, 1);
-							skill.applyEffects(player, player);
-							break;
-						}
-						case 3:
-						{
-							player.stopSkillEffects(AQUA_RAGE_3.getSkill());
-							final Skill skill = SkillData.getInstance().getSkill(AQUA_RAGE, 2);
-							skill.applyEffects(player, player);
-							break;
-						}
-						case 4:
-						{
-							player.stopSkillEffects(AQUA_RAGE_4.getSkill());
-							final Skill skill = SkillData.getInstance().getSkill(AQUA_RAGE, 3);
-							skill.applyEffects(player, player);
-							break;
-						}
+						instance.setStatus(instance.getStatus() + 1);
+						openPortal(player, portalId, instance);
+						worldParameters.set("portal" + portalId + "Opened", true);
 					}
 				}
+				break;
+			}
+			
+			case KING_PETRAM:
+			case KING_PROCELLA:
+			case KING_IGNIS:
+			case KING_NEBULA:
+			{
+				spawnExitPortal(instance, player, npc.getId());
+				CheckGeneralResidenceStages(npc, instance);
+				
 				break;
 			}
 		}
 		
 		return super.onKill(npc, player, isSummon);
+	}
+	
+	@Override
+	public String onEnterZone(Creature creature, ZoneType zone)
+	{
+		Instance instance = creature.getInstanceWorld();
+		if ((instance != null) && creature.isPlayer())
+		{
+			
+			final StatSet worldParameters = instance.getParameters();
+			
+			if (zone.getId() == DWELLING_CENTRAL)
+			{
+				worldParameters.set("InsideResidence", true);
+				handleCentralZone(instance, worldParameters);
+			}
+			
+			int portalId = getPortalIdByZone(zone.getId());
+			Location[] locations = getLocationsForPortal(portalId);
+			
+			if ((portalId >= 0) && (locations[0] != null))
+			{
+				boolean isPortalOpened = worldParameters.getBoolean("portal" + portalId + "Opened", false);
+				boolean isPortalExitOpened = worldParameters.getBoolean("portalExit" + portalId, false);
+				boolean InsideResidence = worldParameters.getBoolean("InsideResidence", false);
+				
+				if (isPortalOpened && (InsideResidence))
+				{
+					creature.teleToLocation(locations[0], instance);
+					worldParameters.set("InsideResidence", false);
+				}
+				
+				if (isPortalExitOpened && (!InsideResidence))
+				{
+					creature.teleToLocation(locations[1], instance);
+				}
+			}
+			
+		}
+		return null;
 	}
 	
 	@Override
@@ -971,87 +309,251 @@ public class DwellingOfSpirits extends AbstractInstance
 		return super.onFirstTalk(npc, player);
 	}
 	
-	// PORTALS
-	private void enableZoneWind()
+	private void openPortal(Player player, int id, Instance instance)
 	{
-		final ZoneType zone = ZoneManager.getInstance().getZoneByName("dwelling_portal_wind");
-		if (zone != null)
+		
+		if ((id >= 0) && (id < portalSpawnCoordinates.length))
 		{
-			zone.setEnabled(true);
+			int[] coordinates = portalSpawnCoordinates[id];
+			int trigger1 = portalConfigs[id][0][0];
+			int trigger2 = portalConfigs[id][0][1];
+			int kingId = portalConfigs[id][0][2];
+			
+			if ((id >= 0) && (id < PORTAL_MSG.size()))
+			{
+				NpcStringId portalMessage = PORTAL_MSG.get(id);
+				player.sendPacket(new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 8000, false, null, portalMessage, null));
+			}
+			addSpawn(kingId, coordinates[0], coordinates[1], coordinates[2], coordinates[3], false, 0, false, instance.getId());
+			
+			instance.setParameter("TRIGGER_1_" + id, trigger1);
+			instance.setParameter("TRIGGER_2_" + id, trigger2);
+			
+			instance.broadcastPacket(new OnEventTrigger(trigger1, true));
+			instance.broadcastPacket(new OnEventTrigger(trigger2, true));
+			
 		}
 	}
 	
-	private void enableZoneEarth()
+	private void spawnExitPortal(Instance instance, Player player, int bossId)
 	{
-		final ZoneType zone = ZoneManager.getInstance().getZoneByName("dwelling_portal_earth");
-		if (zone != null)
+		Npc portal;
+		int portalId;
+		Location portalLocation;
+		
+		final StatSet worldParameters = instance.getParameters();
+		worldParameters.set("portalExit" + getPortalByBossId(bossId), true);
+		
+		switch (bossId)
 		{
-			zone.setEnabled(true);
+			case KING_PROCELLA:
+			{
+				portalId = PORTAL_EVENT_WIND;
+				portalLocation = new Location(212863, 181090, -15487);
+				break;
+			}
+			case KING_PETRAM:
+			{
+				portalId = PORTAL_EVENT_EARTH;
+				portalLocation = new Location(222065, 192767, -15488);
+				break;
+			}
+			case KING_IGNIS:
+			{
+				portalId = PORTAL_EVENT_FIRE;
+				portalLocation = new Location(202349, 170533, -15488);
+				break;
+			}
+			case KING_NEBULA:
+			{
+				portalId = PORTAL_EVENT_WATER;
+				portalLocation = new Location(222127, 170488, -15488);
+				break;
+			}
+			default:
+			{
+				return;
+			}
+		}
+		portal = addSpawn(portalId, portalLocation, false, 0, false, instance.getId());
+		
+		if (portal != null)
+		{
+			portal.setDisplayEffect(1);
+		}
+		
+	}
+	
+	private int getPortalByBossId(int bossId)
+	{
+		switch (bossId)
+		{
+			case KING_PETRAM:
+			{
+				return 0;
+			}
+			case KING_IGNIS:
+			{
+				return 1;
+			}
+			case KING_NEBULA:
+			{
+				return 2;
+			}
+			case KING_PROCELLA:
+			{
+				return 3;
+			}
+			default:
+				return -1;
 		}
 	}
 	
-	private void enableZoneFire()
+	private int getPortalIdByZone(int zoneId)
 	{
-		final ZoneType zone = ZoneManager.getInstance().getZoneByName("dwelling_portal_fire");
-		if (zone != null)
+		switch (zoneId)
 		{
-			zone.setEnabled(true);
+			case PETRAM_PORTAL_ENTER_ID:
+			case PETRAM_PORTAL_RETURN_ID:
+			{
+				return 0;
+			}
+			case IGNIS_PORTAL_ENTER_ID:
+			case IGNIS_PORTAL_RETURN_ID:
+			{
+				return 1;
+			}
+			case NEBULA_PORTAL_ENTER_ID:
+			case NEBULA_PORTAL_RETURN_ID:
+			{
+				return 2;
+			}
+			case PROCELLA_PORTAL_ENTER_ID:
+			case PROCELLA_PORTAL_RETURN_ID:
+			{
+				return 3;
+			}
+			default:
+			{
+				return -1;
+			}
 		}
 	}
 	
-	private void enableZoneWater()
+	private Location[] getLocationsForPortal(int portalId)
 	{
-		final ZoneType zone = ZoneManager.getInstance().getZoneByName("dwelling_portal_water");
-		if (zone != null)
+		Location[] locations = new Location[2];
+		
+		switch (portalId)
 		{
-			zone.setEnabled(true);
+			case 0:
+			{
+				locations[0] = PETRAM_EARTH_L;
+				locations[1] = PETRAM_EARTH_RETURN_L;
+				break;
+			}
+			case 1:
+			{
+				locations[0] = IGNIS_FIRE_L;
+				locations[1] = IGNIS_FIRE_RETURN_L;
+				break;
+			}
+			case 2:
+			{
+				locations[0] = NEBULA_WATER_L;
+				locations[1] = NEBULA_WATER_RETURN_L;
+				break;
+			}
+			case 3:
+			{
+				locations[0] = PROCELLA_WIN_L;
+				locations[1] = PROCELLA_WIN_RETURN_L;
+				break;
+			}
+		}
+		
+		return locations;
+	}
+	
+	private void CheckGeneralResidenceStages(Npc npc, Instance instance)
+	{
+		final StatSet worldParameters = instance.getParameters();
+		
+		int portalId = getPortalByBossId(npc.getId());
+		
+		if ((portalId >= 0) && (portalId < portalConfigs.length))
+		{
+			String bossDefeatCountKey = "bossOfPortal_" + portalId + "_defeat_count";
+			int currentDefeatCount = worldParameters.getInt(bossDefeatCountKey, 0);
+			int newDefeatCount = currentDefeatCount + 1;
+			
+			worldParameters.set(bossDefeatCountKey, newDefeatCount);
+		}
+		
+		int totalBossDefeatCount = 0;
+		
+		for (int i = 0; i < portalConfigs.length; i++)
+		{
+			String bossDefeatCountKey = "bossOfPortal_" + i + "_defeat_count";
+			totalBossDefeatCount += worldParameters.getInt(bossDefeatCountKey, 0);
+		}
+		
+		worldParameters.set("totalBossDefeatCount", totalBossDefeatCount);
+		
+		if (totalBossDefeatCount >= 4)
+		{
+			instance.spawnGroup("animael");
+			instance.despawnGroup("ruipwave_1");
+			instance.despawnGroup("NormalMobs");
 		}
 	}
 	
-	private void enableZoneWindExit()
+	private void handleCentralZone(Instance instance, StatSet worldParameters)
 	{
-		final ZoneType zone = ZoneManager.getInstance().getZoneByName("return_portal_procella");
-		if (zone != null)
+		for (int id = 0; id < PORTAL_TRIGGER_IDS.length; id++)
 		{
-			zone.setEnabled(true);
-		}
-	}
-	
-	private void enableZoneEarthExit()
-	{
-		final ZoneType zone = ZoneManager.getInstance().getZoneByName("return_portal_petram");
-		if (zone != null)
-		{
-			zone.setEnabled(true);
-		}
-	}
-	
-	private void enableZoneFireExit()
-	{
-		final ZoneType zone = ZoneManager.getInstance().getZoneByName("return_portal_ignis");
-		if (zone != null)
-		{
-			zone.setEnabled(true);
-		}
-	}
-	
-	private void enableZoneWaterExit()
-	{
-		final ZoneType zone = ZoneManager.getInstance().getZoneByName("return_portal_nebula");
-		if (zone != null)
-		{
-			zone.setEnabled(true);
+			int trigger1 = worldParameters.getInt("TRIGGER_1_" + id, -1);
+			int trigger2 = worldParameters.getInt("TRIGGER_2_" + id, -1);
+			
+			if ((trigger1 != -1) && (trigger2 != -1))
+			{
+				instance.broadcastPacket(new OnEventTrigger(trigger1, true));
+				instance.broadcastPacket(new OnEventTrigger(trigger2, true));
+			}
 		}
 	}
 	
 	private void startEvent(Npc npc, Player player)
 	{
-		if (!player.getInstanceWorld().getParameters().getBoolean("DwellingOfSpiritsFinished", false))
+		final Instance instance = player.getInstanceWorld();
+		instance.setParameter("Running", true);
+		player.getInstanceWorld().broadcastPacket(new ExSendUIEvent(player, false, false, (int) (instance.getRemainingTime() / 1000), 0, NpcStringId.TIME_LEFT));
+		player.sendPacket(new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 8000, false, null, PORTAL_MSG.get(4), null));
+		instance.spawnGroup("ruipwave_1");
+		instance.spawnGroup("NormalMobs");
+		
+		if (npc.getId() == SEALSTONE)
 		{
-			player.sendPacket(new ExSendUIEvent(player, false, false, 1800, 2, NpcStringId.TIME_LEFT));
-			player.sendPacket(new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 8000, false, null, PORTAL_MSG.get(5), null));
-			startQuestTimer("check_status", 1000, null, player);
+			instance.despawnGroup("sealstone");
 		}
+		
+	}
+	
+	@Override
+	public void onInstanceEnter(Player player, Instance instance)
+	{
+		boolean Running = instance.getParameters().getBoolean("Running", false);
+		if ((instance.getRemainingTime() > 0) && Running)
+		{
+			player.sendPacket(new ExSendUIEvent(player, false, false, (int) (instance.getRemainingTime() / 1000), 0, NpcStringId.TIME_LEFT));
+		}
+	}
+	
+	@Override
+	public void onInstanceLeave(Player player, Instance instance)
+	{
+		
+		player.sendPacket(new ExSendUIEvent(player, false, false, 0, 0, NpcStringId.TIME_LEFT));
 	}
 	
 	public static void main(String[] args)

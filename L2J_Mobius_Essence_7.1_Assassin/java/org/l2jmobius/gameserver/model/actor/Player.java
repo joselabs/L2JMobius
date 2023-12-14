@@ -395,7 +395,7 @@ import org.l2jmobius.gameserver.network.serverpackets.elementalspirits.ExElement
 import org.l2jmobius.gameserver.network.serverpackets.friend.FriendStatus;
 import org.l2jmobius.gameserver.network.serverpackets.huntingzones.TimeRestrictFieldDieLimitTime;
 import org.l2jmobius.gameserver.network.serverpackets.limitshop.ExBloodyCoinCount;
-import org.l2jmobius.gameserver.network.serverpackets.pet.PetInfo;
+import org.l2jmobius.gameserver.network.serverpackets.pet.PetSummonInfo;
 import org.l2jmobius.gameserver.network.serverpackets.surveillance.ExUserWatcherTargetStatus;
 import org.l2jmobius.gameserver.network.serverpackets.vip.ReceiveVipInfo;
 import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
@@ -4788,7 +4788,7 @@ public class Player extends Playable
 	{
 		super.doAutoAttack(target);
 		setRecentFakeDeath(false);
-		if (target.isFakePlayer())
+		if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
 		{
 			updatePvPStatus();
 		}
@@ -7167,7 +7167,11 @@ public class Player extends Playable
 			player.setOnlineStatus(true, false);
 			
 			PlayerAutoSaveTaskManager.getInstance().add(player);
-			player.getAchievementBox().restore();
+			
+			if (Config.ENABLE_ACHIEVEMENT_BOX)
+			{
+				player.getAchievementBox().restore();
+			}
 		}
 		catch (Exception e)
 		{
@@ -8812,9 +8816,13 @@ public class Player extends Playable
 				if ((getWantsPeace() == 0) && (attackerPlayer.getWantsPeace() == 0) && !isAcademyMember())
 				{
 					final ClanWar war = attackerClan.getWarWith(getClanId());
-					if ((war != null) && ((war.getState() == ClanWarState.MUTUAL) || (((war.getState() == ClanWarState.BLOOD_DECLARATION) || (war.getState() == ClanWarState.DECLARATION)) && (war.getAttackerClanId() == attackerClan.getId()))))
+					if (war != null)
 					{
-						return true;
+						final ClanWarState warState = war.getState();
+						if ((warState == ClanWarState.MUTUAL) || (((warState == ClanWarState.BLOOD_DECLARATION) || (warState == ClanWarState.DECLARATION)) && (war.getAttackerClanId() == clan.getId())))
+						{
+							return true;
+						}
 					}
 				}
 			}
@@ -11095,7 +11103,7 @@ public class Player extends Playable
 			_pet.setFollowStatus(true);
 			_pet.setInstance(getInstanceWorld());
 			_pet.updateAndBroadcastStatus(0);
-			sendPacket(new PetInfo(_pet, 0));
+			sendPacket(new PetSummonInfo(_pet, 0));
 		}
 		
 		getServitors().values().forEach(s ->
@@ -11106,7 +11114,7 @@ public class Player extends Playable
 			s.setFollowStatus(true);
 			s.setInstance(getInstanceWorld());
 			s.updateAndBroadcastStatus(0);
-			sendPacket(new PetInfo(s, 0));
+			sendPacket(new PetSummonInfo(s, 0));
 		});
 		
 		// Show movie if available.

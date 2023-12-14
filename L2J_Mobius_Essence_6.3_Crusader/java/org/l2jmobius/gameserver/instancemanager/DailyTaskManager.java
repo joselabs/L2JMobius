@@ -65,7 +65,7 @@ public class DailyTaskManager
 	private static final Set<Integer> RESET_SKILLS = new HashSet<>();
 	static
 	{
-		// No known skills.
+		RESET_SKILLS.add(39199); // Hero's Wondrous Cubic
 	}
 	public static final Set<Integer> RESET_ITEMS = new HashSet<>();
 	static
@@ -129,6 +129,11 @@ public class DailyTaskManager
 		if (Config.ENABLE_HUNT_PASS && (calendar.get(Calendar.DAY_OF_MONTH) == Config.HUNT_PASS_PERIOD))
 		{
 			resetHuntPass();
+		}
+		
+		if (calendar.get(Calendar.DAY_OF_MONTH) == 1)
+		{
+			resetMontlyLimitShopData();
 		}
 		
 		// Daily tasks.
@@ -682,6 +687,31 @@ public class DailyTaskManager
 			for (Player player : World.getInstance().getPlayers())
 			{
 				player.getAccountVariables().remove(AccountVariables.LCOIN_SHOP_PRODUCT_DAILY_COUNT + holder.getProductionId());
+				player.getAccountVariables().storeMe();
+			}
+		}
+		LOGGER.info("LimitShopData has been resetted.");
+	}
+	
+	private void resetMontlyLimitShopData()
+	{
+		for (LimitShopProductHolder holder : LimitShopData.getInstance().getProducts())
+		{
+			// Update data for offline players.
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement ps = con.prepareStatement("DELETE FROM account_gsdata WHERE var=?"))
+			{
+				ps.setString(1, AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + holder.getProductionId());
+				ps.executeUpdate();
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not reset LimitShopData: " + e);
+			}
+			// Update data for online players.
+			for (Player player : World.getInstance().getPlayers())
+			{
+				player.getAccountVariables().remove(AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + holder.getProductionId());
 				player.getAccountVariables().storeMe();
 			}
 		}

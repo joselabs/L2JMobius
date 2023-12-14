@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `grandboss_data` (
   `currentMP` decimal(30,15) NOT NULL,
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`boss_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 INSERT IGNORE INTO `grandboss_data` (`boss_id`,`loc_x`,`loc_y`,`loc_z`,`heading`,`currentHP`,`currentMP`) VALUES
 (29381, -6505, 183040, -3419, 0, 1342845023, 133301), -- Queen Ant

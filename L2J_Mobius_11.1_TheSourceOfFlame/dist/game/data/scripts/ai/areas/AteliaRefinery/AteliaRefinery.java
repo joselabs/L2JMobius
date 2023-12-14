@@ -39,6 +39,7 @@ public class AteliaRefinery extends AbstractNpcAI
 		new Location(-56096, 49688, -8729), // First Area
 		new Location(-56160, 45406, -8847), // Second Area
 		new Location(-56140, 41067, -8965), // Third Area
+		new Location(-51716, 60243, -3344), // Exit
 	};
 	// Special Mobs
 	private static final int HARKE = 24161;
@@ -109,6 +110,12 @@ public class AteliaRefinery extends AbstractNpcAI
 				htmltext = "34441-01.html";
 				break;
 			}
+			case "exit":
+			{
+				player.teleToLocation(TELE_LOCATIONS[5]);
+				htmltext = "34441-01.html";
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -136,10 +143,19 @@ public class AteliaRefinery extends AbstractNpcAI
 	public String onFirstTalk(Npc npc, Player player)
 	{
 		String htmltext = null;
+		Location npcLoc = npc.getLocation();
 		final QuestState qs = player.getQuestState(Q10890_SaviorsPathHallOfEtina.class.getSimpleName());
-		if (((qs != null) && qs.isCompleted()))
+		if (((qs != null) && qs.isCompleted()) && ((npcLoc.getX() == -59891) && (npcLoc.getY() == 52625)))
+		{
+			htmltext = "34441-03.html";
+		}
+		else if (((qs != null) && qs.isCompleted()))
 		{
 			htmltext = "34441-00.html";
+		}
+		else if ((npcLoc.getX() == -59891) && (npcLoc.getY() == 52625))
+		{
+			htmltext = "34441-02.html";
 		}
 		else
 		{

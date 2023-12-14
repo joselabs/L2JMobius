@@ -9,4 +9,4 @@ CREATE TABLE `world_exchange_items`  (
   `start_time` bigint(13) unsigned NOT NULL DEFAULT '0',
   `end_time` bigint(13) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`world_exchange_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

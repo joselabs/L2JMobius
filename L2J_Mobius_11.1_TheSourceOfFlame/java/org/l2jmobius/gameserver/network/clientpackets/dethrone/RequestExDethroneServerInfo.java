@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.dethrone;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -38,9 +37,9 @@ public class RequestExDethroneServerInfo implements ClientPacket
 		}
 		
 		final long serverPoints = GlobalVariablesManager.getInstance().getLong("CONQUEST_SERVER_POINTS", 0);
-		final long soulOrbScore = serverPoints * Config.CONQUEST_RATE_SERVER_SOUL_ORBS; // Custom value.
+		final long serverSoulOrbs = GlobalVariablesManager.getInstance().getLong("CONQUEST_SERVER_SOUL_ORBS", 0L);
 		final boolean adenOwner = (player.getClan() != null) && (player.getObjectId() == player.getClan().getLeaderId()) && (player.getClan().getCastleId() == 5); // Aden Castle Id is 5
 		final boolean connected = GlobalVariablesManager.getInstance().getBoolean("CONQUEST_CONNECTED", false);
-		player.sendPacket(new ExDethroneServerInfo(serverPoints, soulOrbScore, adenOwner, connected));
+		player.sendPacket(new ExDethroneServerInfo(serverPoints, serverSoulOrbs, adenOwner, connected));
 	}
 }

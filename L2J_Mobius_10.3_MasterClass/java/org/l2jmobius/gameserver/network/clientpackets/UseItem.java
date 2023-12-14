@@ -225,21 +225,21 @@ public class UseItem implements ClientPacket
 			
 			if (CategoryData.getInstance().isInCategory(CategoryType.DEATH_KNIGHT_ALL_CLASS, player.getClassId().getId()))
 			{
-				// Death Knight class unequip shields.
+				// Unequip shields.
 				if ((player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND) != null) && (player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND).getItemType() == ArmorType.SHIELD))
 				{
 					player.disarmShield();
 				}
 				
-				// Prevent Death Knight class to equip shields.
+				// Prevent equipping shields.
 				if (item.getItemType() == ArmorType.SHIELD)
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 					return;
 				}
 				
-				// Prevent Death Knight class to equip other weapons.
-				if (item.isWeapon() && ((item.getWeaponItem().getItemType() != WeaponType.SWORD) || ((item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND))))
+				// Prevent equipping other weapons.
+				if (item.isWeapon() && (item.getWeaponItem().getItemType() != WeaponType.FISHINGROD) && ((item.getWeaponItem().getItemType() != WeaponType.SWORD) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND)))
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 					return;

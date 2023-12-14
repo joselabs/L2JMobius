@@ -339,23 +339,51 @@
 		<set name="icon" val="icon.immortal_weapon_bg0000" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
-		<set name="bodypart" val="lhand" />
+		<set name="bodypart" val="rhand" />
+		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1550" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
+		<set name="commissionItemType" val="BLUNT_WEAPON" />
 		<stats>
 			<stat type="pAtk">543</stat>
 			<stat type="mAtk">304</stat>
 			<stat type="pAtkSpd">379</stat>
+			<stat type="accCombat">8</stat>
+			<stat type="rCrit">6</stat>
 			<stat type="randomDamage">19</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50397" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon Enchant Effect -->
+			<skill id="50625" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50625" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50625" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50625" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50625" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50625" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50625" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50625" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50625" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50625" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50625" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96928" name="Demon King's Ancient Sword" additionalName="In development" type="Weapon">
 		<!-- <font color=ff6666><Unavailable to Humans/ Elves/ Dark Elves/ Sylphs/ Vanguard Riders/ Assassins.></font> -->
@@ -363,69 +391,153 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="ANCIENTSWORD" />
 		<set name="bodypart" val="lrhand" />
+		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1530" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
+		<set name="commissionItemType" val="ANCIENT_SWORD" />
 		<stats>
 			<stat type="pAtk">597</stat>
 			<stat type="mAtk">304</stat>
 			<stat type="pAtkSpd">379</stat>
+			<stat type="accCombat">5</stat>
+			<stat type="rCrit">10</stat>
 			<stat type="randomDamage">15</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50392" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50628" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50628" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50628" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50628" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50628" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50628" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50628" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50628" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50628" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50628" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50628" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96929" name="Demon King's Magic Blunt Weapon" additionalName="In development" type="Weapon">
 		<!-- <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins.></font> -->
 		<set name="icon" val="icon.immortal_weapon_bg0000" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
-		<set name="bodypart" val="lhand" />
+		<set name="bodypart" val="rhand" />
+		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1510" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="is_magic_weapon" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<set name="commissionItemType" val="ONE_HAND_MAGIC_BLUNT_WEAPON" />
 		<stats>
 			<stat type="pAtk">462</stat>
 			<stat type="mAtk">357</stat>
 			<stat type="pAtkSpd">379</stat>
+			<stat type="accCombat">8</stat>
+			<stat type="rCrit">6</stat>
 			<stat type="randomDamage">19</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50397" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50634" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50634" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50634" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50634" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50634" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50634" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50634" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50634" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50634" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50634" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50634" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96930" name="Demon King's Fire Gloves" additionalName="In development" type="Weapon">
 		<!-- <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins.></font> -->
 		<set name="icon" val="icon.immortal_weapon_bg0000" />
 		<set name="default_action" val="EQUIP" />
-		<set name="weapon_type" val="FIST" />
+		<set name="weapon_type" val="DUALFIST" />
 		<set name="bodypart" val="lrhand" />
+		<set name="damage_range" val="0;0;32;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="ADAMANTAITE" />
 		<set name="weight" val="1330" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
+		<set name="commissionItemType" val="FIST_WEAPON" />
 		<stats>
 			<stat type="pAtk">628</stat>
 			<stat type="mAtk">304</stat>
 			<stat type="pAtkSpd">325</stat>
+			<stat type="accCombat">8</stat>
+			<stat type="rCrit">6</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50404" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50630" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50630" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50630" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50630" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50630" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50630" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50630" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50630" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50630" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50630" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50630" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96931" name="Demon King's Pistols" additionalName="In development" type="Weapon">
 		<!-- <font color=bbaa88><Sylph-exclusive Weapon.></font> -->
@@ -433,45 +545,101 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="PISTOLS" />
 		<set name="bodypart" val="lrhand" />
+		<set name="damage_range" val="0;0;10;0" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="ADAMANTAITE" />
 		<set name="weight" val="1640" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
+		<set name="commissionItemType" val="SPEAR" />
 		<stats>
 			<stat type="pAtk">1018</stat>
 			<stat type="mAtk">319</stat>
 			<stat type="pAtkSpd">293</stat>
+			<stat type="accCombat">-3.75</stat>
+			<stat type="rCrit">10</stat>
 			<stat type="randomDamage">5</stat>
-			<stat type="pAtkRange">80</stat>
+			<stat type="pAtkRange">400</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50403" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50637" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50637" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50637" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50637" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50637" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50637" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50637" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50637" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50637" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50637" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50637" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96932" name="Demon King's Rapier" additionalName="In development" type="Weapon">
 		<!-- <font color=ff6666><Unavailable to Orcs/ Sylphs/ Dwarves/ Assassins.></font> -->
 		<set name="icon" val="icon.immortal_weapon_bg0000" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="RAPIER" />
-		<set name="bodypart" val="lhand" />
+		<set name="bodypart" val="rhand" />
+		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1300" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
+		<set name="commissionItemType" val="RAPIER" />
 		<stats>
 			<stat type="pAtk">506</stat>
 			<stat type="mAtk">337</stat>
 			<stat type="pAtkSpd">406</stat>
+			<stat type="accCombat">8</stat>
+			<stat type="rCrit">10</stat>
 			<stat type="randomDamage">19</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50395" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50633" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50633" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50633" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50633" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50633" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50633" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50633" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50633" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50633" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50633" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50633" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96933" name="Demon King's Staff" additionalName="In development" type="Weapon">
 		<!-- <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins.></font> -->
@@ -479,23 +647,51 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="lrhand" />
+		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="880" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="is_magic_weapon" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<set name="commissionItemType" val="TWO_HAND_MAGIC_BLUNT_WEAPON" />
 		<stats>
 			<stat type="pAtk">532</stat>
 			<stat type="mAtk">377</stat>
 			<stat type="pAtkSpd">325</stat>
+			<stat type="accCombat">8</stat>
+			<stat type="rCrit">6</stat>
 			<stat type="randomDamage">19</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50397" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50635" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50635" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50635" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50635" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50635" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50635" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50635" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50635" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50635" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50635" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50635" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96934" name="Demon King's Crossbow" additionalName="In development" type="Weapon">
 		<set name="icon" val="BranchSys3.Icon.g_beam_shield" />
@@ -519,23 +715,51 @@
 		<set name="icon" val="icon.immortal_weapon_bg0000" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DAGGER" />
-		<set name="bodypart" val="lhand" />
+		<set name="bodypart" val="rhand" />
+		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="930" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
+		<set name="commissionItemType" val="DAGGER" />
 		<stats>
 			<stat type="pAtk">458</stat>
 			<stat type="mAtk">304</stat>
 			<stat type="pAtkSpd">433</stat>
+			<stat type="accCombat">-3.75</stat>
+			<stat type="rCrit">12</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50402" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50632" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50632" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50632" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50632" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50632" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50632" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50632" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50632" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50632" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50632" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50632" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96936" name="Demon King's Shield" additionalName="In development" type="Armor">
 		<set name="icon" val="icon.shield_of_protection" />
@@ -574,22 +798,49 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="lrhand" />
+		<set name="damage_range" val="0;0;46;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1820" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
+		<set name="commissionItemType" val="TWO_HAND_SWORD" />
 		<stats>
 			<stat type="pAtk">628</stat>
 			<stat type="mAtk">304</stat>
 			<stat type="pAtkSpd">325</stat>
+			<stat type="rCrit">8</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50392" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50626" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50626" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50626" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50626" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50626" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50626" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50626" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50626" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50626" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50626" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50626" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96939" name="Demon King's Spear" additionalName="In development" type="Weapon">
 		<!-- <font color=ff6666><Unavailable to Sylphs/ Assassins.></font> -->
@@ -597,25 +848,51 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
 		<set name="bodypart" val="lrhand" />
+		<set name="damage_range" val="0;0;66;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="1820" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
+		<set name="commissionItemType" val="SPEAR" />
 		<stats>
 			<stat type="pAtk">543</stat>
 			<stat type="mAtk">304</stat>
 			<stat type="pAtkSpd">325</stat>
+			<stat type="accCombat">-3.75</stat>
+			<stat type="rCrit">8</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50405" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+			<skill id="50631" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50631" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50631" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50631" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50631" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50631" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50631" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50631" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50631" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50631" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50631" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96940" name="Demon King's Bow" additionalName="In development" type="Weapon">
 		<!-- <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins.></font> -->
@@ -623,23 +900,51 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
 		<set name="bodypart" val="lrhand" />
+		<set name="damage_range" val="0;0;10;0" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1640" />
+		<set name="mp_consume" val="5" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="2" />
-		<set name="mp_consume" val="5" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
+		<set name="commissionItemType" val="BOW" />
 		<stats>
 			<stat type="pAtk">1018</stat>
 			<stat type="mAtk">319</stat>
 			<stat type="pAtkSpd">293</stat>
+			<stat type="accCombat">-3.75</stat>
+			<stat type="rCrit">12</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
 		</stats>
+		<skills>
+			<!-- Weapon Blessing Effect -->
+			<skill id="50401" level="1" type="ON_BLESSING" />
+			<skill id="50418" level="1" type="ON_BLESSING" />
+			<skill id="50419" level="1" type="ON_BLESSING" type_value="1" />
+			<skill id="50420" level="1" type="ON_BLESSING" type_value="2" />
+			<skill id="50421" level="1" type="ON_BLESSING" type_value="3" />
+			<skill id="50422" level="1" type="ON_BLESSING" type_value="4" />
+			<skill id="50423" level="1" type="ON_BLESSING" type_value="5" />
+			<!-- Weapon enchant Effect -->
+			<skill id="50636" level="1" type="ON_ENCHANT" type_value="0" />
+			<skill id="50636" level="2" type="ON_ENCHANT" type_value="1" />
+			<skill id="50636" level="3" type="ON_ENCHANT" type_value="2" />
+			<skill id="50636" level="4" type="ON_ENCHANT" type_value="3" />
+			<skill id="50636" level="5" type="ON_ENCHANT" type_value="4" />
+			<skill id="50636" level="6" type="ON_ENCHANT" type_value="5" />
+			<skill id="50636" level="6" type="ON_ENCHANT" type_value="6" />
+			<skill id="50636" level="6" type="ON_ENCHANT" type_value="7" />
+			<skill id="50636" level="6" type="ON_ENCHANT" type_value="8" />
+			<skill id="50636" level="6" type="ON_ENCHANT" type_value="9" />
+			<skill id="50636" level="6" type="ON_ENCHANT" type_value="10" />
+		</skills>
 	</item>
 	<item id="96941" name="Extra Pass: Training Zone" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to get an extra pass to the Training Zone. Note!. Can be used once a day outside of instance zones. Can only be used when the Training Zone is on cooldown. -->

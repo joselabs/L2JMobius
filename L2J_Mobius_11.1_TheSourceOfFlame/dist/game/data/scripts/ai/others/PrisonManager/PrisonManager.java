@@ -37,6 +37,16 @@ import ai.AbstractNpcAI;
  */
 public class PrisonManager extends AbstractNpcAI
 {
+	// NPC
+	private static final int MORENDO = 34637;
+	private static final int POMPOSO = 34638;
+	private static final int DOLLOROSO = 34639;
+	private static final int DOLCE = 34640;
+	private static final int CANTABILE = 34641;
+	private static final int AMOROSO = 34642;
+	private static final int DELICATO = 34643;
+	private static final int COMODO = 34644;
+	// Misc
 	private static final ScriptZone PRISON_ZONE_1 = ZoneManager.getInstance().getZoneById(26010, ScriptZone.class);
 	private static final ScriptZone PRISON_ZONE_2 = ZoneManager.getInstance().getZoneById(26011, ScriptZone.class);
 	private static final ScriptZone PRISON_ZONE_3 = ZoneManager.getInstance().getZoneById(26012, ScriptZone.class);
@@ -48,8 +58,8 @@ public class PrisonManager extends AbstractNpcAI
 	
 	public PrisonManager()
 	{
-		addFirstTalkId(34637, 34638, 34639, 34640);
-		addTalkId(34637, 34638, 34639, 34640);
+		addFirstTalkId(MORENDO, POMPOSO, DOLLOROSO, DOLCE, CANTABILE, AMOROSO, DELICATO, COMODO);
+		addTalkId(MORENDO, POMPOSO, DOLLOROSO, DOLCE, CANTABILE, AMOROSO, DELICATO, COMODO);
 		addEnterZoneId(PRISON_ZONE_1.getId(), PRISON_ZONE_2.getId(), PRISON_ZONE_3.getId(), PRISON_ENTER_ZONE.getId(), PRISON_ENTER_ZONE2.getId());
 		addExitZoneId(PRISON_ZONE_1.getId(), PRISON_ZONE_2.getId(), PRISON_ZONE_3.getId(), PRISON_ENTER_ZONE2.getId());
 	}
@@ -68,6 +78,10 @@ public class PrisonManager extends AbstractNpcAI
 			case "34639-no.html":
 			case "34640.html":
 			case "34640-no.html":
+			case "34641.html":
+			case "34642.html":
+			case "34643.html":
+			case "34644.html":
 			{
 				htmltext = event;
 				break;

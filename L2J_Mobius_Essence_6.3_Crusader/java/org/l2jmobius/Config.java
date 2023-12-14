@@ -646,6 +646,7 @@ public class Config
 	public static boolean ENABLE_AUTO_ITEM;
 	public static boolean AUTO_PLAY_ATTACK_ACTION;
 	public static boolean RESUME_AUTO_PLAY;
+	public static boolean ENABLE_AUTO_ASSIST;
 	public static AbnormalVisualEffect BLUE_TEAM_ABNORMAL_EFFECT;
 	public static AbnormalVisualEffect RED_TEAM_ABNORMAL_EFFECT;
 	public static int SHARING_LOCATION_COST;
@@ -1356,6 +1357,7 @@ public class Config
 	public static boolean FAKE_PLAYER_USE_SHOTS;
 	public static boolean FAKE_PLAYER_KILL_PVP;
 	public static boolean FAKE_PLAYER_KILL_KARMA;
+	public static boolean FAKE_PLAYER_AUTO_ATTACKABLE;
 	public static boolean FAKE_PLAYER_AGGRO_MONSTERS;
 	public static boolean FAKE_PLAYER_AGGRO_PLAYERS;
 	public static boolean FAKE_PLAYER_AGGRO_FPC;
@@ -2340,6 +2342,7 @@ public class Config
 			ENABLE_AUTO_ITEM = generalConfig.getBoolean("EnableAutoItem", true);
 			AUTO_PLAY_ATTACK_ACTION = generalConfig.getBoolean("AutoPlayAttackAction", true);
 			RESUME_AUTO_PLAY = generalConfig.getBoolean("ResumeAutoPlay", false);
+			ENABLE_AUTO_ASSIST = generalConfig.getBoolean("AssistLeader", false);
 			BLUE_TEAM_ABNORMAL_EFFECT = null;
 			final String blueTeamAve = generalConfig.getString("BlueTeamAbnormalEffect", "").trim();
 			if (!blueTeamAve.isEmpty())
@@ -3514,6 +3517,7 @@ public class Config
 			FAKE_PLAYER_USE_SHOTS = fakePlayerConfig.getBoolean("FakePlayerUseShots", false);
 			FAKE_PLAYER_KILL_PVP = fakePlayerConfig.getBoolean("FakePlayerKillsRewardPvP", false);
 			FAKE_PLAYER_KILL_KARMA = fakePlayerConfig.getBoolean("FakePlayerUnflaggedKillsKarma", false);
+			FAKE_PLAYER_AUTO_ATTACKABLE = fakePlayerConfig.getBoolean("FakePlayerAutoAttackable", false);
 			FAKE_PLAYER_AGGRO_MONSTERS = fakePlayerConfig.getBoolean("FakePlayerAggroMonsters", false);
 			FAKE_PLAYER_AGGRO_PLAYERS = fakePlayerConfig.getBoolean("FakePlayerAggroPlayers", false);
 			FAKE_PLAYER_AGGRO_FPC = fakePlayerConfig.getBoolean("FakePlayerAggroFPC", false);

@@ -127,6 +127,8 @@ Fluffy Reinforcement: https://eu.4game.com/patchnotes/lineage2essence/204/
 
 Dwelling of Spirits: https://eu.4game.com/patchnotes/lineage2essence/261/
 -Transcendent hunting zones
+-Pet extraction system
+
 
 Customs:
 -Newbie Helper NPC location info

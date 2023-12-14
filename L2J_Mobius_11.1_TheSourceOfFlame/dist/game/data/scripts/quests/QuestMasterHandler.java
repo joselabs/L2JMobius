@@ -60,6 +60,14 @@ import quests.Q10887_SaviorsPathDemonsAndAtelia.Q10887_SaviorsPathDemonsAndAteli
 import quests.Q10888_SaviorsPathDefeatTheEmbryo.Q10888_SaviorsPathDefeatTheEmbryo;
 import quests.Q10889_SaviorsPathFallenEmperorsThrone.Q10889_SaviorsPathFallenEmperorsThrone;
 import quests.Q10890_SaviorsPathHallOfEtina.Q10890_SaviorsPathHallOfEtina;
+import quests.Q10904_JourneyToTheConquestWorld.Q10904_JourneyToTheConquestWorld;
+import quests.Q10905_HuntingTime.Q10905_HuntingTime;
+import quests.Q10906_ChasingTheLight.Q10906_ChasingTheLight;
+import quests.Q10907_WhereFlowersBlossom.Q10907_WhereFlowersBlossom;
+import quests.Q10908_DarkSunPrimordialFlame.Q10908_DarkSunPrimordialFlame;
+import quests.Q10909_FlameHunting.Q10909_FlameHunting;
+import quests.Q10910_InSearchOfTheFireSource.Q10910_InSearchOfTheFireSource;
+import quests.Q10911_FireSmell.Q10911_FireSmell;
 import quests.Q11024_PathOfDestinyBeginning.Q11024_PathOfDestinyBeginning;
 import quests.Q11025_PathOfDestinyProving.Q11025_PathOfDestinyProving;
 import quests.Q11026_PathOfDestinyConviction.Q11026_PathOfDestinyConviction;
@@ -75,10 +83,6 @@ import quests.not_done.Q01900_StormIsleSecretSpot;
 import quests.not_done.Q01901_StormIsleFurtiveDeal;
 import quests.not_done.Q10595_TheDimensionalWarpPart8;
 import quests.not_done.Q10596_TheDimensionalWarpPart9;
-import quests.not_done.Q10904_JourneyToTheConquestWorld;
-import quests.not_done.Q10905_HuntingTime;
-import quests.not_done.Q10906_ChasingTheLight;
-import quests.not_done.Q10907_WhereFlowersBlossom;
 import quests.not_done.Q11028_WindOfDestinyEncounter;
 import quests.not_done.Q11029_WindOfDestinyPromise;
 import quests.not_done.Q11030_WindOfDestinyChoice;
@@ -144,10 +148,14 @@ public class QuestMasterHandler
 		Q10888_SaviorsPathDefeatTheEmbryo.class,
 		Q10889_SaviorsPathFallenEmperorsThrone.class,
 		Q10890_SaviorsPathHallOfEtina.class,
-		Q10904_JourneyToTheConquestWorld.class, // TODO: Not done.
-		Q10905_HuntingTime.class, // TODO: Not done.
-		Q10906_ChasingTheLight.class, // TODO: Not done.
-		Q10907_WhereFlowersBlossom.class, // TODO: Not done.
+		Q10904_JourneyToTheConquestWorld.class,
+		Q10905_HuntingTime.class,
+		Q10906_ChasingTheLight.class,
+		Q10907_WhereFlowersBlossom.class,
+		Q10908_DarkSunPrimordialFlame.class,
+		Q10909_FlameHunting.class,
+		Q10910_InSearchOfTheFireSource.class,
+		Q10911_FireSmell.class,
 		Q11028_WindOfDestinyEncounter.class, // TODO: Not done.
 		Q11029_WindOfDestinyPromise.class, // TODO: Not done.
 		Q11030_WindOfDestinyChoice.class, // TODO: Not done.

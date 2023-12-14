@@ -26,14 +26,14 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 public class ExDethroneServerInfo extends ServerPacket
 {
 	private final long _serverPoints;
-	private final long _soulOrbScore;
+	private final long _serverSoulOrbs;
 	private final boolean _adenCastleOwner;
 	private final boolean _connected;
 	
-	public ExDethroneServerInfo(long serverPoints, long soulOrbScore, boolean adenCastleOwner, boolean connected)
+	public ExDethroneServerInfo(long serverPoints, long serverSoulOrbs, boolean adenCastleOwner, boolean connected)
 	{
 		_serverPoints = serverPoints;
-		_soulOrbScore = soulOrbScore;
+		_serverSoulOrbs = serverSoulOrbs;
 		_adenCastleOwner = adenCastleOwner;
 		_connected = connected;
 	}
@@ -70,7 +70,7 @@ public class ExDethroneServerInfo extends ServerPacket
 		
 		writeInt(1); // server rank 1
 		writeInt(Config.SERVER_ID); // server id 4
-		writeLong(_soulOrbScore); // server score 4
+		writeLong(_serverSoulOrbs); // server score 4
 		
 		// Connection List Array
 		// this number must match the number of server in both arrays

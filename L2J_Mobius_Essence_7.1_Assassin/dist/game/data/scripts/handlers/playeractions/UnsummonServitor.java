@@ -69,4 +69,10 @@ public class UnsummonServitor implements IPlayerActionHandler
 			player.sendPacket(SystemMessageId.YOU_DON_T_HAVE_A_SERVITOR);
 		}
 	}
+	
+	@Override
+	public boolean isPetAction()
+	{
+		return true;
+	}
 }

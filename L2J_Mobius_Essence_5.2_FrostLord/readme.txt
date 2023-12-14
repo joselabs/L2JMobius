@@ -127,6 +127,7 @@ Fluffy Reinforcement: https://eu.4game.com/patchnotes/lineage2essence/204/
 
 Dwelling of Spirits: https://eu.4game.com/patchnotes/lineage2essence/261/
 -Transcendent hunting zones
+-Pet extraction system
 
 Sylph: https://eu.4game.com/patchnotes/lineage2essence/281/
 -Sylph creation support
@@ -141,6 +142,7 @@ Frost Lord: https://eu.4game.com/patchnotes/lineage2essence/329/
 -Resurrection with payment
 -Frost Lord castle
 -Revenge system
+
 
 Customs:
 -Newbie Helper NPC location info

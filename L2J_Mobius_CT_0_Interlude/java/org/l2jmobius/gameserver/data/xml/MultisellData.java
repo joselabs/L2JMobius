@@ -424,10 +424,11 @@ public class MultisellData implements IXmlReader
 		}
 	}
 	
-	private final boolean verifyIngredient(Ingredient ing)
+	private boolean verifyIngredient(Ingredient ing)
 	{
 		switch (ing.getItemId())
 		{
+			case PC_CAFE_POINTS:
 			case CLAN_REPUTATION:
 			case FAME:
 			{

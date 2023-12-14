@@ -170,6 +170,8 @@
 		<stayAfterDeath>true</stayAfterDeath>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<canDoubleCast>false</canDoubleCast>
 		<effects>
 			<effect name="PAtk">
 				<amount>25</amount>
@@ -232,6 +234,26 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>2</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
 			<effect name="AttackAttributeAdd">
 				<amount>100</amount>
 				<mode>DIFF</mode>
@@ -252,7 +274,7 @@
 				<magicType>22</magicType>
 			</effect>
 			<effect name="DispelBySlotProbability">
-				<dispel>MULTI_BUFF;DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL</dispel>
+				<dispel>MULTI_BUFF;DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL;BUFF_SPECIAL_CLASS</dispel>
 				<rate>100</rate>
 			</effect>
 			<effect name="BlockAbnormalSlot">
@@ -265,8 +287,113 @@
 		<icon>icon.soul_spirit1</icon>
 		<operateType>A2</operateType>
 		<hitTime>100</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>100</effectPoint>
+		<abnormalType>BUFF_SPECIAL_CLASS</abnormalType>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>420</abnormalTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>2000</reuseDelay>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PAtk">
+				<amount>22</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MAtk">
+				<amount>40</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PhysicalDefence">
+				<amount>45</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="CriticalRate">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicCriticalRate">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="CriticalDamage">
+				<amount>70</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PhysicalAttackSpeed">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalAttackSpeed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="ShieldDefence">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="ShieldDefenceRate">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>2</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
+			<effect name="Reuse">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="Reuse">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="Reuse">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
+			<effect name="DisableSkill">
+				<disable>30833</disable>
+			</effect>
+			<effect name="DispelBySlotProbability">
+				<dispel>MULTI_BUFF;DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL;BUFF_SPECIAL_CLASS</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="BlockAbnormalSlot">
+				<slot>MULTI_BUFF;DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL;BUFF_SPECIAL_CLASS</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="39516" toLevel="1" name="Elixir of Harmony">
 		<!-- For 30 min., P. Atk. +22%, M. Atk. +40%, P. Def. +45%, M. Def. +15%, P./ M. Critical Rate +100%, Critical Damage for basic attacks +70%, Atk. Spd. +10%, Casting Spd. +15%, Shield Defense Rate +30 min.0, Shield Defense +30 min.1, Skill Cooldown -30 min.2, Skill MP Consumption -30 min.3. PA only. -->
@@ -298,6 +425,8 @@
 		<stayAfterDeath>true</stayAfterDeath>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<canDoubleCast>false</canDoubleCast>
 		<effects>
 			<effect name="AttackAttributeAdd">
 				<amount>10</amount>
@@ -357,19 +486,81 @@
 	<skill id="39520" toLevel="3" name="Emperor's Special Cocktail">
 		<!-- For 60 min., applies the following effects: Musician's Melody Lv. 5, Fantasia Harmony Lv. 2, Drum Concert, Fantasia Melody, United Resistance. To remove the effect, press Alt + Mouse Left Click. -->
 		<icon>icon.bm_special_cocktail_of_king_p</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalTime>
+			<value level="1">3600</value>
+			<value level="2">14400</value>
+			<value level="3">28800</value>
+		</abnormalTime>
+		<effectPoint>1</effectPoint>
+		<basicProperty>NONE</basicProperty>
+		<abnormalLevel>7</abnormalLevel>
+		<specialLevel>-2</specialLevel>
+		<magicLevel>-2</magicLevel>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<stayAfterDeath>true</stayAfterDeath>
+		<irreplacableBuff>true</irreplacableBuff>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<canDoubleCast>false</canDoubleCast>
 		<reuseDelay>5000</reuseDelay>
+		<effects>
+			<effect name="DispelBySlotProbability">
+				<dispel>BUFF_SPECIAL_CLASS;DITTY;BUFF_SPECIAL_ATTACK;BUFF_SPECIAL_AURA;ARMOR_ELEMENT_ALL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="CallSkill">
+				<skillId>39514</skillId> <!-- Fantasia Harmony - Emperor's Special Cocktail -->
+				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="CallSkill">
+				<skillId>39517</skillId> <!-- Fantasia Melody - Emperor's Special Cocktail -->
+				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="CallSkill">
+				<skillId>39766</skillId> <!-- Musician's Melody - Emperor's Special Cocktail -->
+				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="CallSkill">
+				<skillId>39771</skillId> <!-- Drum Concert - Emperor's Special Cocktail -->
+				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="CallSkill">
+				<skillId>39772</skillId> <!-- United Resistance - Emperor's Special Cocktail -->
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
+		<endEffects>
+			<effect name="DispelBySlotProbability">
+				<dispel>BUFF_SPECIAL_CLASS;DITTY;BUFF_SPECIAL_ATTACK;BUFF_SPECIAL_AURA;ARMOR_ELEMENT_ALL</dispel>
+				<rate>100</rate>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="39521" toLevel="1" name="PA Emperor's Special Cocktail">
 		<!-- For 60 min., applies the following effects: Musician's Melody Lv. 5, Fantasia Harmony Lv. 2, Drum Concert, Fantasia Melody, United Resistance. To remove the effect, press Alt + Mouse Left Click. -->
 		<icon>icon.bm_special_cocktail_of_king_p</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalTime>3600</abnormalTime>
+		<effectPoint>1</effectPoint>
+		<basicProperty>NONE</basicProperty>
+		<abnormalLevel>7</abnormalLevel>
+		<specialLevel>-2</specialLevel>
+		<magicLevel>-2</magicLevel>
+		<isMagic>22</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<stayAfterDeath>true</stayAfterDeath>
+		<irreplacableBuff>true</irreplacableBuff>
+		<blockedInOlympiad>true</blockedInOlympiad>
 		<reuseDelay>5000</reuseDelay>
 	</skill>
 	<skill id="39522" toLevel="1" name="Emperor's Special Cocktail">
 		<!-- For 60 min., applies the following effects: Musician's Melody Lv. 5, Fantasia Harmony Lv. 2, Drum Concert, Fantasia Melody, United Resistance. To remove the effect, press Alt + Mouse Left Click. -->
 		<icon>icon.bm_special_cocktail_of_king_p</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
 		<reuseDelay>5000</reuseDelay>
 	</skill>
 	<skill id="39523" toLevel="1" name="Golden Pig's Medium Vitality Tonic">
@@ -1189,11 +1380,16 @@
 	<skill id="39580" toLevel="1" name="Pink's Style Potion - Red Archer">
 		<!-- Changes the armor appearance to that of Red Archer Garment. -->
 		<icon>icon.armor_t2000_b_i00</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalTime>86400</abnormalTime>
+		<abnormalVisualEffect>CGRADE_CHANGE</abnormalVisualEffect>
 		<isMagic>4</isMagic>
 		<hitTime>1500</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>780</effectPoint>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>81016</itemConsumeId>
+		<stayAfterDeath>true</stayAfterDeath>
 	</skill>
 	<skill id="39581" toLevel="1" name="Pink's Style Potion - Green Archer">
 		<!-- Changes the armor appearance to that of Green Archer Garment. -->

@@ -112,6 +112,7 @@ What is done
 -Hot Springs one hour diseases.
 -Updated pledge skilltree data.
 -Adjusted custom community board htmls.
+-Replaced quest 639.
 
 TODO: Important (project unusable due to the following)
 -Adjust all skills according to Interlude description.

@@ -48,6 +48,11 @@ public class RequestSubjugationGacha implements ClientPacket
 	@Override
 	public void run(GameClient client)
 	{
+		if ((_amount < 1) || ((_amount * 20000L) < 1))
+		{
+			return;
+		}
+		
 		final Player player = client.getPlayer();
 		if (player == null)
 		{

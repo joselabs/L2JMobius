@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `engraved_items` (
   `object_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `engraver_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 
 CREATE TABLE IF NOT EXISTS `engraved_log` (
@@ -12,4 +12,4 @@ CREATE TABLE IF NOT EXISTS `engraved_log` (
   `itemName` varchar(64) NOT NULL,
   `form_char` varchar(64) NOT NULL,
   `to_char` varchar(64) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

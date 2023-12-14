@@ -38,6 +38,7 @@ import org.l2jmobius.gameserver.model.DropProtection;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
+import org.l2jmobius.gameserver.model.WorldRegion;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.knownlist.NullKnownList;
@@ -1107,10 +1108,11 @@ public class Item extends WorldObject
 			// Set the x,y,z position of the Item dropped and update its _worldregion
 			setSpawned(true);
 			getLocation().setXYZ(x, y, z);
-			setWorldRegion(World.getInstance().getRegion(getLocation()));
+			final WorldRegion region = World.getInstance().getRegion(getLocation());
+			setWorldRegion(region);
 			
 			// Add the Item dropped to _visibleObjects of its WorldRegion
-			getWorldRegion().addVisibleObject(this);
+			region.addVisibleObject(this);
 		}
 		
 		setDropTime(System.currentTimeMillis());

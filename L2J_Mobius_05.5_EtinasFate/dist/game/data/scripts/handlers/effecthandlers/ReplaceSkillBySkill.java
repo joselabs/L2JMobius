@@ -26,7 +26,9 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.network.serverpackets.AbnormalStatusUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
 import org.l2jmobius.gameserver.network.serverpackets.ShortCutRegister;
 
@@ -73,7 +75,36 @@ public class ReplaceSkillBySkill extends AbstractEffect
 				player.deleteShortCut(slot, page);
 				final Shortcut newShortcut = new Shortcut(slot, page, ShortcutType.SKILL, addedSkill.getId(), addedSkill.getLevel(), addedSkill.getSubLevel(), characterType);
 				player.registerShortCut(newShortcut);
-				player.sendPacket(new ShortCutRegister(newShortcut));
+				player.sendPacket(new ShortCutRegister(newShortcut, player));
+			}
+		}
+		
+		// Replace continuous effects.
+		if (knownSkill.isContinuous() && player.isAffectedBySkill(knownSkill.getId()))
+		{
+			int abnormalTime = 0;
+			for (BuffInfo info : player.getEffectList().getEffects())
+			{
+				if (info.getSkill().getId() == knownSkill.getId())
+				{
+					abnormalTime = info.getAbnormalTime();
+					break;
+				}
+			}
+			
+			if (abnormalTime > 2000)
+			{
+				addedSkill.applyEffects(player, player);
+				final AbnormalStatusUpdate asu = new AbnormalStatusUpdate();
+				for (BuffInfo info : player.getEffectList().getEffects())
+				{
+					if (info.getSkill().getId() == addedSkill.getId())
+					{
+						info.resetAbnormalTime(abnormalTime);
+						asu.addSkill(info);
+					}
+				}
+				player.sendPacket(asu);
 			}
 		}
 		
@@ -105,7 +136,36 @@ public class ReplaceSkillBySkill extends AbstractEffect
 				player.deleteShortCut(slot, page);
 				final Shortcut newShortcut = new Shortcut(slot, page, ShortcutType.SKILL, addedSkill.getId(), addedSkill.getLevel(), addedSkill.getSubLevel(), characterType);
 				player.registerShortCut(newShortcut);
-				player.sendPacket(new ShortCutRegister(newShortcut));
+				player.sendPacket(new ShortCutRegister(newShortcut, player));
+			}
+		}
+		
+		// Replace continuous effects.
+		if (knownSkill.isContinuous() && player.isAffectedBySkill(knownSkill.getId()))
+		{
+			int abnormalTime = 0;
+			for (BuffInfo info : player.getEffectList().getEffects())
+			{
+				if (info.getSkill().getId() == knownSkill.getId())
+				{
+					abnormalTime = info.getAbnormalTime();
+					break;
+				}
+			}
+			
+			if (abnormalTime > 2000)
+			{
+				addedSkill.applyEffects(player, player);
+				final AbnormalStatusUpdate asu = new AbnormalStatusUpdate();
+				for (BuffInfo info : player.getEffectList().getEffects())
+				{
+					if (info.getSkill().getId() == addedSkill.getId())
+					{
+						info.resetAbnormalTime(abnormalTime);
+						asu.addSkill(info);
+					}
+				}
+				player.sendPacket(asu);
 			}
 		}
 		

@@ -170,14 +170,14 @@ public class DropSearchBoard implements IParseBoardHandler
 				final int itemId = Integer.parseInt(params[1]);
 				int page = Integer.parseInt(params[2]);
 				final List<CBDropHolder> list = DROP_INDEX_CACHE.get(itemId);
-				int pages = list.size() / 14;
+				int pages = list.size() / 4;
 				if (pages == 0)
 				{
 					pages++;
 				}
 				
-				final int start = (page - 1) * 14;
-				final int end = Math.min(list.size() - 1, start + 14);
+				final int start = (page - 1) * 4;
+				final int end = Math.min(list.size() - 1, start + 4);
 				final StringBuilder builder = new StringBuilder();
 				for (int index = start; index <= end; index++)
 				{
@@ -347,7 +347,7 @@ public class DropSearchBoard implements IParseBoardHandler
 				limit++;
 			}
 			
-			if (limit == 14)
+			if (limit == 6)
 			{
 				break;
 			}
@@ -396,9 +396,9 @@ public class DropSearchBoard implements IParseBoardHandler
 			builder.append("</tr>");
 		}
 		
-		if (line < 7)
+		if (line < 6)
 		{
-			for (i = 0; i < (7 - line); i++)
+			for (i = 0; i < (6 - line); i++)
 			{
 				builder.append("<tr><td height=36></td></tr>");
 			}

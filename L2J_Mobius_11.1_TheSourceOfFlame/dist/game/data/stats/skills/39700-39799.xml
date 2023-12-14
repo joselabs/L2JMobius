@@ -1067,6 +1067,11 @@
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
+			<effect name="MagicMpCost">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
 			<effect name="VampiricAttack">
 				<amount>9</amount>
 				<chance>30</chance>
@@ -1192,6 +1197,16 @@
 				<amount>-22</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-22</amount>
+				<mode>PER</mode>
+				<magicType>2</magicType>
+			</effect>
+			<effect name="MagicMpCost">
+				<amount>-22</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
 			</effect>
 			<effect name="VampiricAttack">
 				<amount>8</amount>
@@ -1515,7 +1530,33 @@
 	<skill id="39794" toLevel="1" name="Freya's Scroll of Blessing">
 		<!-- For 30 min., sustains Vitality, acquired XP/ SP +150%, Vitality bonus +100%. Doesn't stack with effects from Freya's Frozen Scroll, Freya's Scroll of Storm, and Maphr's Scroll of Storm. Cooldown: 5 min. The effect remains after death. -->
 		<icon>icon.bless_scroll</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>FREYA_SCROLL_VIT</abnormalType>
+		<itemConsumeId>82295</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
+		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<stayAfterDeath>true</stayAfterDeath>
+		<effects>
+			<effect name="VitalityExpRate">
+				<amount>100</amount>
+			</effect>
+			<effect name="ExpModify">
+				<amount>150</amount>
+			</effect>
+			<effect name="SpModify">
+				<amount>150</amount>
+			</effect>
+			<effect name="VitalityPointsRate">
+				<amount>-100</amount>
+			</effect>
+			<effect name="DispelBySlot">
+				<dispel>EXP_SPECIAL,-1;DANDY_CHALLENGE,-1;SANTIAGO_SCROLL,-1</dispel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="39795" toLevel="1" name="Tavern Special Drink">
 		<!-- For 30 min., damage +15%, Attribute Attack/ Resistance +100, received damage -15%. Doesn't stack with effects from Freya's Charisma Potion, Einhasad's Charisma Potion, and Freya's Luck Potion. Cooldown: 5 min. The effect remains after death. -->

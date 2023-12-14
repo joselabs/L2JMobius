@@ -16,6 +16,11 @@
  */
 package handlers.effecthandlers;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.enums.Race;
@@ -33,11 +38,12 @@ import org.l2jmobius.gameserver.model.skill.Skill;
 
 /**
  * SummonMulti effect implementation.
- * @author UnAfraid
+ * @author UnAfraid, Mobius
  */
 public class SummonMulti extends AbstractEffect
 {
 	private final int _npcId;
+	private final Map<Integer, Integer> _levelTemplates;
 	private final float _expMultiplier;
 	private final ItemHolder _consumeItem;
 	private final int _lifeTime;
@@ -46,7 +52,21 @@ public class SummonMulti extends AbstractEffect
 	
 	public SummonMulti(StatSet params)
 	{
-		_npcId = params.getInt("npcId");
+		_npcId = params.getInt("npcId", 0);
+		if (_npcId > 0)
+		{
+			_levelTemplates = null;
+		}
+		else
+		{
+			final List<Integer> summonerLevels = params.getIntegerList("summonerLevels");
+			final List<Integer> npcIds = params.getIntegerList("npcIds");
+			_levelTemplates = new LinkedHashMap<>(npcIds.size());
+			for (int i = 0; i < npcIds.size(); i++)
+			{
+				_levelTemplates.put(summonerLevels.get(i), npcIds.get(i));
+			}
+		}
 		_expMultiplier = params.getFloat("expMultiplier", 1);
 		_consumeItem = new ItemHolder(params.getInt("consumeItemId", 0), params.getInt("consumeItemCount", 1));
 		_consumeItemInterval = params.getInt("consumeItemInterval", 0);
@@ -80,7 +100,31 @@ public class SummonMulti extends AbstractEffect
 			return;
 		}
 		
-		final NpcTemplate template = NpcData.getInstance().getTemplate(_npcId);
+		final NpcTemplate template;
+		if (_npcId > 0)
+		{
+			template = NpcData.getInstance().getTemplate(_npcId);
+		}
+		else
+		{
+			Entry<Integer, Integer> levelTemplate = null;
+			for (Entry<Integer, Integer> entry : _levelTemplates.entrySet())
+			{
+				if ((levelTemplate == null) || (player.getLevel() >= entry.getKey()))
+				{
+					levelTemplate = entry;
+				}
+			}
+			if (levelTemplate != null)
+			{
+				template = NpcData.getInstance().getTemplate(levelTemplate.getValue());
+			}
+			else // Should never happen.
+			{
+				template = NpcData.getInstance().getTemplate(_levelTemplates.keySet().stream().findFirst().get());
+			}
+		}
+		
 		final Servitor summon = new Servitor(template, player);
 		final int consumeItemInterval = (_consumeItemInterval > 0 ? _consumeItemInterval : (template.getRace() != Race.SIEGE_WEAPON ? 240 : 60)) * 1000;
 		

@@ -657,7 +657,7 @@ public class ConquestEngine extends AbstractNpcAI
 				updatePoints(attackerPlayer, CONQUEST_POINT_DATA.getPvpPersonalPointsAmount(targetPlayer.getLevel()), CONQUEST_POINT_DATA.getPvpServerPointsAmount(targetPlayer.getLevel()), 0, 0, true);
 				if ((getAttackPoints(attackerPlayer) >= 1) && (getLifePoints(targetPlayer) >= 1))
 				{
-					attackerPlayer.addItem("ConquestCoins", BLOODY_COIN, CONQUEST_POINT_DATA.getCoinsAmount(targetPlayer.getLevel()), attackerPlayer, true);
+					attackerPlayer.addItem("ConquestCoins", BLOODY_COIN, CONQUEST_POINT_DATA.getCoinsAmount(targetPlayer.getLevel()) * Config.CONQUEST_RATE_BLOODY_COINS, attackerPlayer, true);
 					setAttackPoints(attackerPlayer, -1);
 					setLifePoints(targetPlayer, -1);
 					
@@ -669,7 +669,7 @@ public class ConquestEngine extends AbstractNpcAI
 					// Winner Message
 					SystemMessage sm2 = new SystemMessage(SystemMessageId.YOU_HAVE_DEFEATED_C1_AND_GOT_BLOODY_COINS_X_S2_PERSONAL_CONQUEST_POINTS_X_S3_SERVER_CONQUEST_POINTS_X_S4_ATTACK_POINTS_1_TO_CHECK_THEIR_CURRENT_AMOUNT_ENTER_BLOODYCOIN_IN_YOUR_CHAT_WINDOW);
 					sm2.addString(targetPlayer.getName());
-					sm2.addString(Integer.toString(CONQUEST_POINT_DATA.getCoinsAmount(targetPlayer.getLevel())));
+					sm2.addString(Integer.toString(CONQUEST_POINT_DATA.getCoinsAmount(targetPlayer.getLevel()) * Config.CONQUEST_RATE_BLOODY_COINS));
 					sm2.addString(Long.toString(CONQUEST_POINT_DATA.getPvpPersonalPointsAmount(targetPlayer.getLevel())));
 					sm2.addString(Long.toString(CONQUEST_POINT_DATA.getPvpServerPointsAmount(targetPlayer.getLevel())));
 					attackerPlayer.sendPacket(sm2);

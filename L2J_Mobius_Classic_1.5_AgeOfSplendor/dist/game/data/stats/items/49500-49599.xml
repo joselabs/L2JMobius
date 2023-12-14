@@ -8,6 +8,13 @@
 		<set name="weight" val="120" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="SCROLL" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<skills>
+			<skill id="39075" level="1" /> <!-- Improved Scroll of Escape -->
+		</skills>
 	</item>
 	<item id="49501" name="Fish Stew. The guild's gratitude." type="EtcItem">
 		<!-- Increases XP/SP gain + 10% for 20 minutes. The item cannot be dropped. -->
@@ -418,14 +425,21 @@
 		<!-- Magic potion that quickly restores HP. Instant cooldown. Cannot be used when HP is full. Cannot be exchanged, dropped, or sold. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.etc_potion_gold_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="material" val="PAPER" />
+		<set name="etcitem_type" val="POTION" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
 		<set name="weight" val="180" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="is_event_restricted" val="true" />
+		<set name="commissionItemType" val="POTION" />
+		<skills>
+			<skill id="39103" level="1" /> <!-- Quick Hero Healing Potion -->
+		</skills>
 	</item>
 	<item id="49534" name="Hero Cube" additionalName="7-day" type="EtcItem">
 		<!-- 7-day item. Available at level 20 or higher. Double-click the Cube to receive Soulshot Ticket, Buff Scrolls Chest, Major Healing Potion, Warrior's Quick Healing Potion, Warrior's Quick Healing Potion, Angel Cat's Blessing, Improved Scroll of Resurrection, Parts of Enchantment Scrolls Chest, Fishing kit chest, My Teleport to the Base Package, Blade Spirit, Spellbook Box. (Can be used only once per day.) Cannot be exchanged, dropped, destroyed, or sold. Can be stored in a private warehouse. -->

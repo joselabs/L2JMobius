@@ -5,4 +5,4 @@ CREATE TABLE `pet_evolves` (
 	`level` int NOT NULL DEFAULT '0',
 	PRIMARY KEY  (`itemObjId`, `index`, `level`),
     UNIQUE KEY `pet_evolves` (`itemObjId`, `index`, `level`)
-) ENGINE=MyISAM;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

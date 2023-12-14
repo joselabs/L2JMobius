@@ -127,6 +127,7 @@ Fluffy Reinforcement: https://eu.4game.com/patchnotes/lineage2essence/204/
 
 Dwelling of Spirits: https://eu.4game.com/patchnotes/lineage2essence/261/
 -Transcendent hunting zones
+-Pet extraction system
 
 Sylph: https://eu.4game.com/patchnotes/lineage2essence/281/
 -Sylph creation support
@@ -166,6 +167,7 @@ Assassin: https://eu.4game.com/patchnotes/lineage2essence/426/
 -Skill enchanting system
 -New quest system
 -Elemental spirit changes
+
 
 Customs:
 -Newbie Helper NPC location info

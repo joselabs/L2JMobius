@@ -107,6 +107,7 @@ public class LimitShopClanData implements IXmlReader
 							ingredientEnchants[4] = 0;
 							int productionId = 0;
 							int accountDailyLimit = 0;
+							int accountMontlyLimit = 0;
 							int accountBuyLimit = 0;
 							for (Node b = d.getFirstChild(); b != null; b = b.getNextSibling())
 							{
@@ -185,11 +186,12 @@ public class LimitShopClanData implements IXmlReader
 								{
 									productionId = parseInteger(attrs, "id");
 									accountDailyLimit = parseInteger(attrs, "accountDailyLimit", 0);
+									accountMontlyLimit = parseInteger(attrs, "accountMontlyLimit", 0);
 									accountBuyLimit = parseInteger(attrs, "accountBuyLimit", 0);
 								}
 							}
 							
-							_products.add(new LimitShopProductHolder(id, category, minLevel, maxLevel, ingredientIds, ingredientQuantities, ingredientEnchants, productionId, 1, 100, false, 0, 0, 0, false, 0, 0, 0, false, 0, 0, 0, false, 0, 0, false, accountDailyLimit, accountBuyLimit));
+							_products.add(new LimitShopProductHolder(id, category, minLevel, maxLevel, ingredientIds, ingredientQuantities, ingredientEnchants, productionId, 1, 100, false, 0, 0, 0, 0, false, 0, 0, 0, false, 0, 0, 0, false, 0, 0, false, accountDailyLimit, accountMontlyLimit, accountBuyLimit));
 						}
 					}
 				}

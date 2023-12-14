@@ -27,7 +27,7 @@ CREATE TABLE `pets_stats` (
   `mpregen` int(11) NOT NULL default '0',
   `owner_exp_taken` DECIMAL(3,2) DEFAULT '0' NOT NULL,
   PRIMARY KEY  (`typeID`,`level`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 #----------------------------
 # Records for table pets_stats

@@ -39,4 +39,4 @@ CREATE TABLE IF NOT EXISTS `fake_players` (
   `max_rnd_enchant` int(7) NOT NULL default '0',
   KEY `spawn` (`spawn`),
   KEY `template` (`template`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

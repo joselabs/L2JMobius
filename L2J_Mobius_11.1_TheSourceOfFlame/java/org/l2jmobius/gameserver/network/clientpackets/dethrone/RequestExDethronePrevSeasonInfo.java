@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.dethrone;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -38,7 +37,7 @@ public class RequestExDethronePrevSeasonInfo implements ClientPacket
 		}
 		
 		final long prevServerPoints = GlobalVariablesManager.getInstance().getLong("CONQUEST_PREV_SEASON_SERVER_POINTS", 0);
-		final long prevSoulOrbsScore = prevServerPoints * Config.CONQUEST_RATE_SERVER_SOUL_ORBS; // Custom value.
-		player.sendPacket(new ExDethronePrevSeasonInfo(player, prevServerPoints, prevSoulOrbsScore));
+		final long prevServerSoulOrbs = GlobalVariablesManager.getInstance().getLong("CONQUEST_PREV_SEASON_SERVER_SOUL_ORBS", 0);
+		player.sendPacket(new ExDethronePrevSeasonInfo(player, prevServerPoints, prevServerSoulOrbs));
 	}
 }

@@ -45,6 +45,7 @@ public class AccountVariables extends AbstractVariables
 	public static final String PRIME_SHOP_PRODUCT_DAILY_COUNT = "PSPDailyCount";
 	public static final String LCOIN_SHOP_PRODUCT_COUNT = "LCSCount";
 	public static final String LCOIN_SHOP_PRODUCT_DAILY_COUNT = "LCSDailyCount";
+	public static final String LCOIN_SHOP_PRODUCT_MONTLY_COUNT = "LCSMontlyCount";
 	
 	private final String _accountName;
 	

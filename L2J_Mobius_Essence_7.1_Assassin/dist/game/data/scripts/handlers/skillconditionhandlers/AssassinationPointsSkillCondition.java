@@ -31,7 +31,7 @@ public class AssassinationPointsSkillCondition implements ISkillCondition
 	
 	public AssassinationPointsSkillCondition(StatSet params)
 	{
-		_amount = params.getInt("amount");
+		_amount = params.getInt("amount") * 10000;
 	}
 	
 	@Override

@@ -28,6 +28,8 @@ import org.l2jmobius.gameserver.model.quest.newquestdata.QuestCondType;
 import org.l2jmobius.gameserver.network.serverpackets.quest.ExQuestDialog;
 import org.l2jmobius.gameserver.network.serverpackets.quest.ExQuestNotification;
 
+import quests.Q10063_LearningAutoHunt.Q10063_LearningAutoHunt;
+
 /**
  * @author Magik
  */
@@ -36,7 +38,7 @@ public class Q10062_StrengthOfSpirit extends Quest
 	private static final int QUEST_ID = 10062;
 	private static final int[] MONSTERS =
 	{
-		22324 // Training dummy
+		22183 // Training dummy
 	};
 	
 	public Q10062_StrengthOfSpirit()
@@ -104,10 +106,10 @@ public class Q10062_StrengthOfSpirit extends Quest
 					questState.exitQuest(false, true);
 					rewardPlayer(player);
 					
-					final QuestState nextQuestState = player.getQuestState(Q10062_StrengthOfSpirit.class.getSimpleName());
+					final QuestState nextQuestState = player.getQuestState(Q10063_LearningAutoHunt.class.getSimpleName());
 					if (nextQuestState == null)
 					{
-						player.sendPacket(new ExQuestDialog(10062, QuestDialogType.ACCEPT));
+						player.sendPacket(new ExQuestDialog(10063, QuestDialogType.ACCEPT));
 					}
 				}
 				break;

@@ -127,6 +127,7 @@ Fluffy Reinforcement: https://eu.4game.com/patchnotes/lineage2essence/204/
 
 Dwelling of Spirits: https://eu.4game.com/patchnotes/lineage2essence/261/
 -Transcendent hunting zones
+-Pet extraction system
 
 Sylph: https://eu.4game.com/patchnotes/lineage2essence/281/
 -Sylph creation support
@@ -159,6 +160,7 @@ Crusader: https://eu.4game.com/patchnotes/lineage2essence/416/
 -New character creation templates
 -Magic Lamp Genie's quests
 -Valakas Temple instance
+
 
 Customs:
 -Newbie Helper NPC location info

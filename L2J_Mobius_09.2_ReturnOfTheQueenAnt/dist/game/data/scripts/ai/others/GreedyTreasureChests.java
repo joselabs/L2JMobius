@@ -213,7 +213,7 @@ public class GreedyTreasureChests extends AbstractNpcAI
 					else if (currentTime > GlobalVariablesManager.getInstance().getLong("TREASURE_CHEST_RESPAWN_FM_2", 0))
 					{
 						addSpawn(CHEST_LV110, npc, true, 0, true);
-						GlobalVariablesManager.getInstance().set("TREASURE_CHEST_RESPAWN_FM_2", Long.toString(currentTime + RESPAWN_DELAY + getRandom(RND_OFFSET)));
+						GlobalVariablesManager.getInstance().set("TREASURE_CHEST_RESPAWN_NZ_2", Long.toString(currentTime + RESPAWN_DELAY + getRandom(RND_OFFSET)));
 					}
 					else if (currentTime > GlobalVariablesManager.getInstance().getLong("TREASURE_CHEST_RESPAWN_FM_3", 0))
 					{

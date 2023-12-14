@@ -1494,19 +1494,13 @@
 		<set name="targetType" val="PARTY_MEMBER" />
 		<for>
 			<effect name="Buff">
-				<add stat="mCritRate" val="2" />
-				<mul stat="regMp" val="1.2" />
-				<mul stat="pAtk" val="1.1" />
-				<mul stat="pDef" val="1.2" />
-				<mul stat="pAtkSpd" val="1.2" />
 				<mul stat="mAtk" val="1.2" />
 				<mul stat="mDef" val="1.2" />
 				<mul stat="mAtkSpd" val="1.2" />
-				<sub stat="debuffVuln" val="10" />
+				<mul stat="mCritRate" val="2.0" />
+				<mul stat="regMp" val="1.2" />
 				<mul stat="runSpd" val="0.8" />
-				<mul stat="magicalMpConsumeRate" val="0.95" />
-				<mul stat="physicalMpConsumeRate" val="0.95" />
-				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="debuffVuln" val="0.9" />
 			</effect>
 		</for>
 	</skill>
@@ -1531,19 +1525,14 @@
 		<set name="targetType" val="PARTY_MEMBER" />
 		<for>
 			<effect name="Buff">
-				<mul stat="maxMp" val="1.2" />
-				<mul stat="regHp" val="1.2" />
-				<add stat="mCritRate" val="2" />
-				<mul stat="critDmg" val="1.2" />
 				<mul stat="pAtk" val="1.1" />
 				<mul stat="pDef" val="1.2" />
-				<mul stat="pAtkSpd" val="1.2" />
-				<mul stat="mAtk" val="1.2" />
-				<mul stat="mDef" val="1.2" />
-				<mul stat="mAtkSpd" val="1.2" />
 				<add stat="accCombat" val="4" />
-				<sub stat="debuffVuln" val="10" />
-				<mul stat="runSpd" val="0.8" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="runSpd" val="0.9" />
+				<mul stat="maxHp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="debuffVuln" val="0.9" />
 			</effect>
 		</for>
 	</skill>
@@ -1568,18 +1557,17 @@
 		<set name="targetType" val="PARTY_MEMBER" />
 		<for>
 			<effect name="Buff">
-				<mul stat="maxHp" val="1.2" />
-				<mul stat="critRate" val="1.2" />
-				<mul stat="mCritPower" val="1.2" />
-				<mul stat="pAtk" val="1.1" />
-				<mul stat="pDef" val="1.2" />
+				<add stat="accCombat" val="4" />
+				<add stat="rEvas" val="4" />
 				<mul stat="pAtkSpd" val="1.2" />
-				<mul stat="mAtk" val="1.2" />
-				<mul stat="mDef" val="1.2" />
-				<mul stat="mAtkSpd" val="1.2" />
-				<sub stat="debuffVuln" val="10" />
-				<mul stat="runSpd" val="0.8" />
-				<add stat="absorbDam" val="5" /> <!-- absorb 5% HP from damage inflicted on enemies -->
+				<add stat="absorbDam" val="5" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="critDmg" val="1.2">
+					<and>
+						<player behind="true" />
+					</and>
+				</mul>
+				<mul stat="debuffVuln" val="0.9" />
 			</effect>
 		</for>
 	</skill>
@@ -1757,21 +1745,19 @@
 		<set name="reuseDelay" val="300000" />
 		<set name="targetType" val="PARTY" />
 		<for>
-			<effect name="MaxHp">
-				<param power="20" />
-				<param type="PER" />
-				<param heal="true" />
-				<add stat="mCritRate" val="2" />
-				<mul stat="critDmg" val="1.2" />
+			<effect name="Buff">
 				<mul stat="pAtk" val="1.1" />
 				<mul stat="pDef" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<add stat="accCombat" val="4" />
 				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<mul stat="critDmg" val="1.2" />
 				<mul stat="mAtk" val="1.2" />
 				<mul stat="mDef" val="1.2" />
-				<mul stat="mAtkSpd" val="1.2" />
-				<sub stat="debuffVuln" val="10" />
-				<add stat="accCombat" val="4" />
 				<mul stat="runSpd" val="0.8" />
+				<mul stat="maxHp" val="1.2" />
+				<mul stat="debuffVuln" val="0.8" />
 			</effect>
 		</for>
 	</skill>

@@ -42,10 +42,12 @@ import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.ListenerRegisterType;
 import org.l2jmobius.gameserver.model.events.annotations.RegisterEvent;
 import org.l2jmobius.gameserver.model.events.annotations.RegisterType;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerBecomeNoblesse;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerBypass;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerLevelChanged;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerLogin;
@@ -266,6 +268,7 @@ public class ClassMaster extends AbstractNpcAI implements IXmlReader
 				else
 				{
 					player.setNobleLevel(1);
+					checkNobleListener(player);
 					player.broadcastUserInfo();
 					// TODO: SetOneTimeQuestFlag(talker, 10385, 1);
 					htmltext = "test_server_helper025.html";
@@ -402,6 +405,7 @@ public class ClassMaster extends AbstractNpcAI implements IXmlReader
 						if (data.isRewardNoblesse())
 						{
 							player.setNobleLevel(1);
+							checkNobleListener(player);
 						}
 						// Give possible hero status reward.
 						if (data.isRewardHero())
@@ -859,6 +863,7 @@ public class ClassMaster extends AbstractNpcAI implements IXmlReader
 				if (data.isRewardNoblesse())
 				{
 					player.setNobleLevel(1);
+					checkNobleListener(player);
 				}
 				// Give possible hero status reward.
 				if (data.isRewardHero())
@@ -1168,6 +1173,15 @@ public class ClassMaster extends AbstractNpcAI implements IXmlReader
 			return _classChangeData.get(index);
 		}
 		return null;
+	}
+	
+	private void checkNobleListener(Player player)
+	{
+		// Notify to scripts.
+		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_BECOME_NOBLESSE))
+		{
+			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerBecomeNoblesse(player));
+		}
 	}
 	
 	public static void main(String[] args)

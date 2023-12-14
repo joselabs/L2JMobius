@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS `enchant_challenge_points` (
   `groupId` INT NOT NULL,
   `points` INT NOT NULL,
   PRIMARY KEY (`charId`,`groupId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

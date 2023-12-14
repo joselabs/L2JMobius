@@ -140,8 +140,10 @@ Master Class Chapter 3: https://eu.4game.com/patchnotes/lineage2/417/
 The Source of Flame: https://eu.4game.com/patchnotes/lineage2/427/
 -Dethrone Shop
 -Fire Conquest area
+-Water Conquest area
 -Primordial Fire Source Abilities
 -Krofin's Nest instance changes
+-Freya instance changes
 
 
 Events:

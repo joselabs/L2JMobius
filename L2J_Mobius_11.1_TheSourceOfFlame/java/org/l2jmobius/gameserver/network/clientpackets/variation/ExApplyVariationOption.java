@@ -63,21 +63,20 @@ public class ExApplyVariationOption implements ClientPacket
 			return;
 		}
 		
-		// Remove the augmentation if any (286).
-		if (targetItem.isAugmented())
-		{
-			targetItem.getAugmentation().removeBonus(player);
-			targetItem.removeAugmentation();
-		}
-		
 		targetItem.setAugmentation(augment, true);
 		
 		player.sendPacket(new ApplyVariationOption(1, _enchantedObjectId, _option1, _option2));
-		// apply new augment
-		targetItem.getAugmentation().applyBonus(player);
-		// Recalculate all stats
+		
+		// Apply new augment.
+		if (targetItem.isEquipped())
+		{
+			targetItem.getAugmentation().applyBonus(player);
+		}
+		
+		// Recalculate all stats.
 		player.getStat().recalculateStats(true);
 		
+		player.sendItemList();
 		player.removeRequest(VariationRequest.class);
 	}
 }

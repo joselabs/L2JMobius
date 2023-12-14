@@ -167,12 +167,6 @@ public class Q10507_ObtainingNewPower extends Quest
 		24633, // Ketra Orc Warrior
 		24634, // Ketra Orc Lieutenant
 		24635, // Ketra Orc Battalion Commander
-		// Varka Silenos Barracks
-		24636, // Varka Silenos Magus
-		24637, // Varka Silenos Shaman
-		24638, // Varka Silenos Footman
-		24639, // Varka Silenos Sergeant
-		24640, // Varka Silenos Officer
 		// Breka's Stronghold
 		24420, // Breka Orc Prefect
 		24416, // Breka Orc Scout Captain
@@ -180,16 +174,22 @@ public class Q10507_ObtainingNewPower extends Quest
 		24415, // Breka Orc Scout
 		24417, // Breka Orc Archer
 		24418, // Breka Orc Shaman
-		// Sel Mahum Training Grounds
-		24492, // Sel Mahum Soldier
-		24494, // Sel Mahum Warrior
-		24493, // Sel Mahum Squad Leader
-		24495, // Keltron
 		// Plains of the Lizardmen
 		24496, // Tanta Lizardman Warrior
 		24498, // Tanta Lizardman Wizard
 		24499, // Priest Ugoros
 		24497, // Tanta Lizardman Archer
+		// Varka Silenos Barracks
+		24636, // Varka Silenos Magus
+		24637, // Varka Silenos Shaman
+		24638, // Varka Silenos Footman
+		24639, // Varka Silenos Sergeant
+		24640, // Varka Silenos Officer
+		// Sel Mahum Training Grounds
+		24492, // Sel Mahum Soldier
+		24494, // Sel Mahum Warrior
+		24493, // Sel Mahum Squad Leader
+		24495, // Keltron
 		// Fields of Massacre
 		24486, // Dismal Pole
 		24487, // Graveyard Predator
@@ -197,13 +197,6 @@ public class Q10507_ObtainingNewPower extends Quest
 		24491, // Doom Knight
 		24490, // Doom Soldier
 		24488, // Doom Archer
-		// Wall of Argos
-		24606, // Captive Antelope
-		24607, // Captive Bandersnatch
-		24608, // Captive Buffalo
-		24609, // Captive Grendel
-		24610, // Eye of Watchman
-		24611, // Elder Homunculus
 		// Sea Of Spores
 		24226, // Aranea
 		24227, // Keros
@@ -216,6 +209,13 @@ public class Q10507_ObtainingNewPower extends Quest
 		24236, // Tergus
 		24237, // Skeletus
 		24238, // Atrofine
+		// Wall of Argos
+		24606, // Captive Antelope
+		24607, // Captive Bandersnatch
+		24608, // Captive Buffalo
+		24609, // Captive Grendel
+		24610, // Eye of Watchman
+		24611, // Elder Homunculus
 		// Wasteland
 		24501, // Centaur Fighter
 		24504, // Centaur Warlord
@@ -223,6 +223,15 @@ public class Q10507_ObtainingNewPower extends Quest
 		24503, // Centaur Wizard
 		24500, // Sand Golem
 		24502, // Centaur Marksman
+		// Beast Farm
+		24651, // Red Kookaburra
+		24652, // Blue Kookaburra
+		24653, // White Cougar
+		24654, // Cougar
+		24655, // Black Buffalo
+		24656, // White Buffalo
+		24657, // Grandel
+		24658, // Black Grandel
 		// Cemetery
 		19455, // Aden Raider
 		19456, // Te Ochdumann
@@ -239,22 +248,6 @@ public class Q10507_ObtainingNewPower extends Quest
 		23298, // Royal Quartermaster
 		23299, // Operations Chief of the 7th Division
 		23300, // Commander of Operations
-		// Fafurion Temple
-		24329, // Starving Water Dragon
-		24318, // Temple Guard Captain
-		24325, // Temple Wizard
-		24324, // Temple Guardian Warrior
-		24326, // Temple Guardian Wizard
-		24323, // Temple Guard
-		24321, // Temple Patrol Guard
-		24322, // Temple Knight Recruit
-		// Dragon Valley
-		24480, // Dragon Legionnaire
-		24482, // Dragon Officer
-		24481, // Dragon Peltast
-		24483, // Dragon Centurion
-		24484, // Dragon Elite Guard
-		24485, // Behemoth Dragon
 		// Valley of Saints
 		24876, // Guide of Splendor
 		24877, // Herald of Splendor
@@ -268,15 +261,55 @@ public class Q10507_ObtainingNewPower extends Quest
 		24884, // Springs Dwarf Berserker
 		24885, // Springs Dwarf Priest
 		24886, // Springs Yeti
-		// Beast Farm
-		24651, // Red Kookaburra
-		24652, // Blue Kookaburra
-		24653, // White Cougar
-		24654, // Cougar
-		24655, // Black Buffalo
-		24656, // White Buffalo
-		24657, // Grandel
-		24658, // Black Grandel
+		// Cruma Marshlands
+		24930, // Black Demon Knight
+		24931, // Black Demon Warrior
+		24932, // Black Demon Scout
+		24933, // Black Demon Wizard
+		// Frozen Labyrinth
+		24934, // Frozen Soldier
+		24935, // Frozen Defender
+		24936, // Ice Knight
+		24937, // Glacier Golem
+		24938, // Ice Fairy
+		// Sel Mahum Base
+		24961, // Sel Mahum Footman
+		24962, // Sel Mahum Elite Soldier
+		24963, // Sel Mahum Shaman
+		24964, // Sel Mahum Wizard
+		// Fafurion Temple
+		24329, // Starving Water Dragon
+		24318, // Temple Guard Captain
+		24325, // Temple Wizard
+		24324, // Temple Guardian Warrior
+		24326, // Temple Guardian Wizard
+		24323, // Temple Guard
+		24321, // Temple Patrol Guard
+		24322, // Temple Knight Recruit
+		// Dragon Valley West
+		24664, // Graveyard Death Lich
+		24665, // Graveyard Death Berserker
+		24666, // Graveyard Death Soldier
+		24667, // Graveyard Death Knight
+		// Dragon Valley East
+		24669, // Dragon Officer
+		24670, // Dragon Beast
+		24671, // Dragon Centurion
+		24672, // Elite Dragon Guard
+		// Shadow Of The Mother Tree
+		24965, // Creeper Rampike
+		24966, // Fila Aprias
+		24967, // Flush Teasle
+		24968, // Treant Blossom
+		24969, // Arsos Butterfly
+		// Execution Grounds
+		24673, // Zombie Orc
+		24674, // Zombie Dark Elf
+		24675, // Zombie Dwarf
+		24676, // Schnabel Stalker
+		24677, // Henker Hacker
+		24678, // Schnabel Doctor
+		24679, // Henker Anatomist
 	};
 	
 	public Q10507_ObtainingNewPower()

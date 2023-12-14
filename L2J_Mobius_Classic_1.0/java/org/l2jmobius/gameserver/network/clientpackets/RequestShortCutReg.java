@@ -61,6 +61,6 @@ public class RequestShortCutReg implements ClientPacket
 		
 		final Shortcut sc = new Shortcut(_slot, _page, _type, _id, _level, 0, _characterType);
 		player.registerShortCut(sc);
-		player.sendPacket(new ShortCutRegister(sc));
+		player.sendPacket(new ShortCutRegister(sc, player));
 	}
 }

@@ -32,12 +32,14 @@ import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
+import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.ListenerRegisterType;
 import org.l2jmobius.gameserver.model.events.annotations.Id;
 import org.l2jmobius.gameserver.model.events.annotations.RegisterEvent;
 import org.l2jmobius.gameserver.model.events.annotations.RegisterType;
 import org.l2jmobius.gameserver.model.events.impl.OnServerStart;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSummonSacredFire;
 import org.l2jmobius.gameserver.model.events.impl.item.OnItemUse;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
@@ -352,6 +354,8 @@ public class SacredFire extends AbstractNpcAI
 				sacredFire.getVariables().set("SLOT", sacredFireSlot);
 				sacredFire.getVariables().set("SUMMON_TIME", System.currentTimeMillis());
 				
+				checkSummonSacredFireListener(player);
+				
 				// Update owner current Sacred Fires count.
 				player.getVariables().set(PlayerVariables.CONQUEST_SACRED_FIRE_SLOT_COUNT, player.getVariables().getInt(PlayerVariables.CONQUEST_SACRED_FIRE_SLOT_COUNT, 0) + 1);
 				
@@ -468,6 +472,15 @@ public class SacredFire extends AbstractNpcAI
 	public void onServerStart(OnServerStart event)
 	{
 		removeSacredFireVars();
+	}
+	
+	private void checkSummonSacredFireListener(Player player)
+	{
+		// Notify to scripts.
+		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_SUMMON_SACRED_FIRE))
+		{
+			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerSummonSacredFire(player, SACRED_FIRE));
+		}
 	}
 	
 	public static void main(String[] args)

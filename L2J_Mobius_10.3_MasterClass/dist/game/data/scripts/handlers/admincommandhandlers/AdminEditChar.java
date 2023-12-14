@@ -49,6 +49,10 @@ import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
+import org.l2jmobius.gameserver.model.events.EventDispatcher;
+import org.l2jmobius.gameserver.model.events.EventType;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerBecomeExalted;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerBecomeNoblesse;
 import org.l2jmobius.gameserver.model.html.PageBuilder;
 import org.l2jmobius.gameserver.model.html.PageResult;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -913,12 +917,22 @@ public class AdminEditChar implements IAdminCommandHandler
 					{
 						player.setNobleLevel(1);
 						player.sendMessage("A GM added you nobless status!");
+						// Notify to scripts.
+						if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_BECOME_NOBLESSE))
+						{
+							EventDispatcher.getInstance().notifyEventAsync(new OnPlayerBecomeNoblesse(player));
+						}
 						break;
 					}
 					case 1:
 					{
 						player.setNobleLevel(2);
 						player.sendMessage("A GM changed your nobless status to exalted!");
+						// Notify to scripts.
+						if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_BECOME_EXALTED))
+						{
+							EventDispatcher.getInstance().notifyEventAsync(new OnPlayerBecomeExalted(player));
+						}
 						break;
 					}
 					case 2:

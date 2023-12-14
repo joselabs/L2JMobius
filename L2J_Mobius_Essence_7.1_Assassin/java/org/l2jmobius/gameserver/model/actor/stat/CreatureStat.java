@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.model.actor.stat;
 
+import java.util.Collections;
 import java.util.Deque;
 import java.util.EnumMap;
 import java.util.EnumSet;
@@ -61,8 +62,6 @@ public class CreatureStat
 	
 	private final Map<Stat, Double> _statsAdd = new EnumMap<>(Stat.class);
 	private final Map<Stat, Double> _statsMul = new EnumMap<>(Stat.class);
-	private final Map<Stat, Double> _addValueCache = new EnumMap<>(Stat.class);
-	private final Map<Stat, Double> _mulValueCache = new EnumMap<>(Stat.class);
 	private final Map<Stat, Map<MoveType, Double>> _moveTypeStats = new ConcurrentHashMap<>();
 	private final Map<Integer, Double> _reuseStat = new ConcurrentHashMap<>();
 	private final Map<Integer, Double> _mpConsumeStat = new ConcurrentHashMap<>();
@@ -873,15 +872,13 @@ public class CreatureStat
 		// Initialize default values
 		for (Stat stat : Stat.values())
 		{
-			final Double resetAddValue = stat.getResetAddValue();
-			if (resetAddValue.doubleValue() != 0)
+			if (stat.getResetAddValue() != 0)
 			{
-				_statsAdd.put(stat, resetAddValue);
+				_statsAdd.put(stat, stat.getResetAddValue());
 			}
-			final Double resetMulValue = stat.getResetMulValue();
-			if (resetMulValue.doubleValue() != 0)
+			if (stat.getResetMulValue() != 0)
 			{
-				_statsMul.put(stat, resetMulValue);
+				_statsMul.put(stat, stat.getResetMulValue());
 			}
 		}
 	}
@@ -892,8 +889,12 @@ public class CreatureStat
 	 */
 	public void recalculateStats(boolean broadcast)
 	{
-		Set<Stat> changed = null;
+		// Copy old data before wiping it out.
+		final Map<Stat, Double> adds = !broadcast ? Collections.emptyMap() : new EnumMap<>(_statsAdd);
+		final Map<Stat, Double> muls = !broadcast ? Collections.emptyMap() : new EnumMap<>(_statsMul);
+		
 		_lock.writeLock().lock();
+		
 		try
 		{
 			// Wipe all the data.
@@ -902,7 +903,7 @@ public class CreatureStat
 			// Call pump to each effect.
 			for (BuffInfo info : _creature.getEffectList().getPassives())
 			{
-				if (info.isInUse() && info.getSkill().checkConditions(SkillConditionScope.PASSIVE, _creature, _creature))
+				if (info.isInUse() && info.getSkill().checkConditions(SkillConditionScope.PASSIVE, _creature, _creature.getTarget()))
 				{
 					for (AbstractEffect effect : info.getEffects())
 					{
@@ -975,33 +976,6 @@ public class CreatureStat
 			}
 			_attackSpeedMultiplier = Formulas.calcAtkSpdMultiplier(_creature);
 			_mAttackSpeedMultiplier = Formulas.calcMAtkSpdMultiplier(_creature);
-			
-			if (broadcast)
-			{
-				// Calculate the difference between old and new stats.
-				changed = EnumSet.noneOf(Stat.class);
-				for (Stat stat : Stat.values())
-				{
-					// Check if add value changed for this stat.
-					final Double resetAddValue = stat.getResetAddValue();
-					final Double addValue = _statsAdd.getOrDefault(stat, resetAddValue);
-					if (addValue.doubleValue() != _addValueCache.getOrDefault(stat, resetAddValue).doubleValue())
-					{
-						_addValueCache.put(stat, addValue);
-						changed.add(stat);
-					}
-					else // Check if mul value changed for this stat.
-					{
-						final Double resetMulValue = stat.getResetMulValue();
-						final Double mulValue = _statsMul.getOrDefault(stat, resetMulValue);
-						if (mulValue.doubleValue() != _mulValueCache.getOrDefault(stat, resetMulValue).doubleValue())
-						{
-							_mulValueCache.put(stat, mulValue);
-							changed.add(stat);
-						}
-					}
-				}
-			}
 		}
 		finally
 		{
@@ -1011,9 +985,17 @@ public class CreatureStat
 		// Notify recalculation to child classes.
 		onRecalculateStats(broadcast);
 		
-		// Broadcast changes.
-		if ((changed != null) && !changed.isEmpty())
+		if (broadcast)
 		{
+			// Calculate the difference between old and new stats
+			final Set<Stat> changed = EnumSet.noneOf(Stat.class);
+			for (Stat stat : Stat.values())
+			{
+				if (_statsAdd.getOrDefault(stat, stat.getResetAddValue()).equals(adds.getOrDefault(stat, stat.getResetAddValue())) || _statsMul.getOrDefault(stat, stat.getResetMulValue()).equals(muls.getOrDefault(stat, stat.getResetMulValue())))
+				{
+					changed.add(stat);
+				}
+			}
 			_creature.broadcastModifiedStats(changed);
 		}
 	}

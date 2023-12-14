@@ -1288,7 +1288,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 				player.updatePvPStatus(target);
 			}
 			
-			if (isFakePlayer() && (target.isPlayable() || target.isFakePlayer()))
+			if (isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE && (target.isPlayable() || target.isFakePlayer()))
 			{
 				final Npc npc = ((Npc) this);
 				if (!npc.isScriptValue(1))
@@ -2816,7 +2816,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 				}
 				
 				// If this creature was previously moving, but now due to stat change can no longer move, broadcast StopMove packet.
-				if (isMoving() && (_stat.getMoveSpeed() <= 0))
+				if (isMoving() && (getMoveSpeed() <= 0))
 				{
 					stopMove(null);
 				}
@@ -2829,178 +2829,142 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 						summon.updateAndBroadcastStatus(1);
 					}
 				}
-				else
+				else if (isPlayer())
 				{
-					final boolean broadcastFull = true;
-					final StatusUpdate su = new StatusUpdate(this);
-					UserInfo info = null;
-					if (isPlayer())
+					final UserInfo info = new UserInfo(getActingPlayer(), false);
+					info.addComponentType(UserInfoType.SLOTS, UserInfoType.ENCHANTLEVEL);
+					
+					boolean updateWeight = false;
+					for (Stat stat : currentChanges)
 					{
-						info = new UserInfo(getActingPlayer(), false);
-						info.addComponentType(UserInfoType.SLOTS, UserInfoType.ENCHANTLEVEL);
-					}
-					if (info != null)
-					{
-						for (Stat stat : currentChanges)
+						switch (stat)
 						{
-							switch (stat)
+							case MOVE_SPEED:
+							case RUN_SPEED:
+							case WALK_SPEED:
+							case SWIM_RUN_SPEED:
+							case SWIM_WALK_SPEED:
+							case FLY_RUN_SPEED:
+							case FLY_WALK_SPEED:
 							{
-								case MOVE_SPEED:
-								case RUN_SPEED:
-								case WALK_SPEED:
-								case SWIM_RUN_SPEED:
-								case SWIM_WALK_SPEED:
-								case FLY_RUN_SPEED:
-								case FLY_WALK_SPEED:
-								{
-									info.addComponentType(UserInfoType.MULTIPLIER);
-									break;
-								}
-								case PHYSICAL_ATTACK_SPEED:
-								{
-									info.addComponentType(UserInfoType.MULTIPLIER, UserInfoType.STATS);
-									break;
-								}
-								case PHYSICAL_ATTACK:
-								case PHYSICAL_DEFENCE:
-								case EVASION_RATE:
-								case ACCURACY_COMBAT:
-								case CRITICAL_RATE:
-								case MAGIC_CRITICAL_RATE:
-								case MAGIC_EVASION_RATE:
-								case ACCURACY_MAGIC:
-								case MAGIC_ATTACK:
-								case MAGIC_ATTACK_SPEED:
-								case MAGICAL_DEFENCE:
-								{
-									info.addComponentType(UserInfoType.STATS);
-									break;
-								}
-								case MAX_CP:
-								{
-									if (isPlayer())
-									{
-										info.addComponentType(UserInfoType.MAX_HPCPMP);
-									}
-									else
-									{
-										su.addUpdate(StatusUpdateType.MAX_CP, _stat.getMaxCp());
-									}
-									break;
-								}
-								case MAX_HP:
-								{
-									if (isPlayer())
-									{
-										info.addComponentType(UserInfoType.MAX_HPCPMP);
-									}
-									else
-									{
-										su.addUpdate(StatusUpdateType.MAX_HP, _stat.getMaxHp());
-									}
-									break;
-								}
-								case MAX_MP:
-								{
-									if (isPlayer())
-									{
-										info.addComponentType(UserInfoType.MAX_HPCPMP);
-									}
-									else
-									{
-										su.addUpdate(StatusUpdateType.MAX_CP, _stat.getMaxMp());
-									}
-									break;
-								}
-								case STAT_STR:
-								case STAT_CON:
-								case STAT_DEX:
-								case STAT_INT:
-								case STAT_WIT:
-								case STAT_MEN:
-								{
-									info.addComponentType(UserInfoType.BASE_STATS);
-									break;
-								}
-								case FIRE_RES:
-								case WATER_RES:
-								case WIND_RES:
-								case EARTH_RES:
-								case HOLY_RES:
-								case DARK_RES:
-								{
-									info.addComponentType(UserInfoType.ELEMENTALS);
-									break;
-								}
-								case FIRE_POWER:
-								case WATER_POWER:
-								case WIND_POWER:
-								case EARTH_POWER:
-								case HOLY_POWER:
-								case DARK_POWER:
-								{
-									info.addComponentType(UserInfoType.ATK_ELEMENTAL);
-									break;
-								}
+								info.addComponentType(UserInfoType.MULTIPLIER);
+								break;
+							}
+							case PHYSICAL_ATTACK_SPEED:
+							{
+								info.addComponentType(UserInfoType.MULTIPLIER, UserInfoType.STATS);
+								break;
+							}
+							case PHYSICAL_ATTACK:
+							case PHYSICAL_DEFENCE:
+							case EVASION_RATE:
+							case ACCURACY_COMBAT:
+							case CRITICAL_RATE:
+							case MAGIC_CRITICAL_RATE:
+							case MAGIC_EVASION_RATE:
+							case ACCURACY_MAGIC:
+							case MAGIC_ATTACK:
+							case MAGIC_ATTACK_SPEED:
+							case MAGICAL_DEFENCE:
+							{
+								info.addComponentType(UserInfoType.STATS);
+								break;
+							}
+							case MAX_CP:
+							{
+								info.addComponentType(UserInfoType.MAX_HPCPMP);
+								break;
+							}
+							case MAX_HP:
+							{
+								info.addComponentType(UserInfoType.MAX_HPCPMP);
+								break;
+							}
+							case MAX_MP:
+							{
+								info.addComponentType(UserInfoType.MAX_HPCPMP);
+								break;
+							}
+							case STAT_STR:
+							case STAT_CON:
+							case STAT_DEX:
+							case STAT_INT:
+							case STAT_WIT:
+							case STAT_MEN:
+							case STAT_CHA:
+							case STAT_LUC:
+							{
+								info.addComponentType(UserInfoType.BASE_STATS);
+								updateWeight = true;
+								break;
+							}
+							case FIRE_RES:
+							case WATER_RES:
+							case WIND_RES:
+							case EARTH_RES:
+							case HOLY_RES:
+							case DARK_RES:
+							{
+								info.addComponentType(UserInfoType.ELEMENTALS);
+								break;
+							}
+							case FIRE_POWER:
+							case WATER_POWER:
+							case WIND_POWER:
+							case EARTH_POWER:
+							case HOLY_POWER:
+							case DARK_POWER:
+							{
+								info.addComponentType(UserInfoType.ATK_ELEMENTAL);
+								break;
+							}
+							case WEIGHT_LIMIT:
+							case WEIGHT_PENALTY:
+							{
+								updateWeight = true;
+								break;
 							}
 						}
-						// currentChanges.clear();
 					}
 					
-					if (isPlayer())
+					final Player player = getActingPlayer();
+					if (updateWeight)
 					{
-						final Player player = getActingPlayer();
 						player.refreshOverloaded(true);
-						player.refreshExpertisePenalty();
-						sendPacket(info);
+					}
+					player.refreshExpertisePenalty();
+					
+					sendPacket(info);
+					
+					player.broadcastCharInfo();
+					
+					if (hasServitors() && hasAbnormalType(AbnormalType.ABILITY_CHANGE))
+					{
+						getServitors().values().forEach(Summon::broadcastStatusUpdate);
+					}
+				}
+				else if (isNpc())
+				{
+					World.getInstance().forEachVisibleObject(this, Player.class, player ->
+					{
+						if (!isVisibleFor(player))
+						{
+							return;
+						}
 						
-						if (broadcastFull)
+						if (isFakePlayer())
 						{
-							player.broadcastCharInfo();
+							player.sendPacket(new FakePlayerInfo((Npc) this));
 						}
-						else if (su.hasUpdates())
+						else if (getRunSpeed() == 0)
 						{
-							broadcastPacket(su);
+							player.sendPacket(new ServerObjectInfo((Npc) this, player));
 						}
-						if (hasServitors() && hasAbnormalType(AbnormalType.ABILITY_CHANGE))
+						else
 						{
-							getServitors().values().forEach(Summon::broadcastStatusUpdate);
+							player.sendPacket(new NpcInfo((Npc) this));
 						}
-					}
-					else if (isNpc())
-					{
-						if (broadcastFull)
-						{
-							World.getInstance().forEachVisibleObject(this, Player.class, player ->
-							{
-								if (!isVisibleFor(player))
-								{
-									return;
-								}
-								
-								if (isFakePlayer())
-								{
-									player.sendPacket(new FakePlayerInfo((Npc) this));
-								}
-								else if (_stat.getRunSpeed() == 0)
-								{
-									player.sendPacket(new ServerObjectInfo((Npc) this, player));
-								}
-								else
-								{
-									player.sendPacket(new NpcInfo((Npc) this));
-								}
-							});
-						}
-						else if (su.hasUpdates())
-						{
-							broadcastPacket(su);
-						}
-					}
-					else if (su.hasUpdates())
-					{
-						broadcastPacket(su);
-					}
+					});
 				}
 				
 				_broadcastModifiedStatTask = null;

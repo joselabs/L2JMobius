@@ -242,6 +242,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
+			<skill id="39520" level="1" /> <!-- Emperor's Special Cocktail -->
 			<skill id="39766" level="1" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
 			<skill id="39771" level="1" /> <!-- Drum Concert - Emperor's Special Cocktail -->
 			<skill id="39772" level="1" /> <!-- United Resistance - Emperor's Special Cocktail -->
@@ -263,6 +264,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
+			<skill id="39520" level="2" /> <!-- Emperor's Special Cocktail -->
 			<skill id="39766" level="2" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
 			<skill id="39771" level="2" /> <!-- Drum Concert - Emperor's Special Cocktail -->
 			<skill id="39772" level="2" /> <!-- United Resistance - Emperor's Special Cocktail -->
@@ -284,6 +286,7 @@
 		<set name="is_freightable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
+			<skill id="39520" level="3" /> <!-- Emperor's Special Cocktail -->
 			<skill id="39766" level="3" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
 			<skill id="39771" level="3" /> <!-- Drum Concert - Emperor's Special Cocktail -->
 			<skill id="39772" level="3" /> <!-- United Resistance - Emperor's Special Cocktail -->
@@ -299,6 +302,7 @@
 		<set name="reuse_delay" val="300000" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="true" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
@@ -307,6 +311,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
+			<skill id="39521" level="1" /> <!-- PA Emperor's Special Cocktail -->
 			<skill id="39766" level="1" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
 			<skill id="39771" level="1" /> <!-- Drum Concert - Emperor's Special Cocktail -->
 			<skill id="39772" level="1" /> <!-- United Resistance - Emperor's Special Cocktail -->
@@ -323,7 +328,24 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="reuse_delay" val="1000" />
+		<set name="shared_reuse_group" val="7" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="etcitem_type" val="ELIXIR" />
+		<set name="handler" val="ItemSkills" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<cond addName="1" msgId="113">
+			<player instanceId="224,225,226,227" />
+		</cond>
+		<skills>
+			<skill id="9545" level="1" /> <!-- Horn Melody - Chaos Arena -->
+			<skill id="9546" level="1" /> <!-- Drum Melody - Chaos Arena -->
+			<skill id="9547" level="1" /> <!-- Pipe Organ Melody - Chaos Arena -->
+			<skill id="9548" level="1" /> <!-- Guitar Melody - Chaos Arena -->
+			<skill id="39515" level="1" /> <!-- Fantasia Harmony - Chaos Arena -->
+		</skills>
 	</item>
 	<item id="80822" name="Elixir of Harmony" type="EtcItem">
 		<!-- For 30 minutes, provides the effect of Fantasia Harmony. Can be used only by characters above level 85. Cooldown is 2 min. -->
@@ -439,25 +461,21 @@
 		<set name="reuse_delay" val="300000" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="true" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="reuse_delay" val="300000" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="is_event_restricted" val="true" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39407" level="1" /> <!-- Horn Melody - Emperor's Special Cocktail -->
-			<skill id="39408" level="1" /> <!-- Drum Melody - Emperor's Special Cocktail -->
-			<skill id="39409" level="1" /> <!-- Pipe Organ Melody - Emperor's Special Cocktail -->
-			<skill id="39410" level="1" /> <!-- Guitar Melody - Emperor's Special Cocktail -->
-			<skill id="39414" level="1" /> <!-- War Drum - Emperor's Special Cocktail -->
-			<skill id="39415" level="1" /> <!-- Marching Drum - Emperor's Special Cocktail -->
-			<skill id="39416" level="1" /> <!-- Soothing Drum - Emperor's Special Cocktail -->
-			<skill id="39413" level="1" /> <!-- Mental Attack Resistance - Emperor's Special Cocktail -->
-			<skill id="39412" level="1" /> <!-- Resistance Debuff - Emperor's Special Cocktail -->
-			<skill id="39411" level="1" /> <!-- Elemental Resistance - Emperor's Special Cocktail -->
+			<skill id="39520" level="1" /> <!-- Emperor's Special Cocktail -->
 			<skill id="39514" level="1" /> <!-- Fantasia Harmony - Emperor's Special Cocktail -->
 			<skill id="39517" level="1" /> <!-- Fantasia Melody - Emperor's Special Cocktail -->
+			<skill id="39766" level="1" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
+			<skill id="39771" level="1" /> <!-- Drum Concert - Emperor's Special Cocktail -->
+			<skill id="39772" level="1" /> <!-- United Resistance - Emperor's Special Cocktail -->
 		</skills>
 	</item>
 	<item id="80833" name="Golden Pig's Medium Vitality Tonic" type="EtcItem">

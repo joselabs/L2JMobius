@@ -1185,6 +1185,7 @@ public class Config
 	public static boolean ENABLE_AUTO_SKILL;
 	public static boolean ENABLE_AUTO_ITEM;
 	public static boolean RESUME_AUTO_PLAY;
+	public static boolean ENABLE_AUTO_ASSIST;
 	public static boolean AUTO_PLAY_PREMIUM;
 	public static Set<Integer> DISABLED_AUTO_SKILLS = new HashSet<>();
 	public static Set<Integer> DISABLED_AUTO_ITEMS = new HashSet<>();
@@ -1260,6 +1261,7 @@ public class Config
 	public static boolean FAKE_PLAYER_USE_SHOTS;
 	public static boolean FAKE_PLAYER_KILL_PVP;
 	public static boolean FAKE_PLAYER_KILL_KARMA;
+	public static boolean FAKE_PLAYER_AUTO_ATTACKABLE;
 	public static boolean FAKE_PLAYER_AGGRO_MONSTERS;
 	public static boolean FAKE_PLAYER_AGGRO_PLAYERS;
 	public static boolean FAKE_PLAYER_AGGRO_FPC;
@@ -2471,6 +2473,7 @@ public class Config
 			ENABLE_AUTO_SKILL = autoPlayConfig.getBoolean("EnableAutoSkill", true);
 			ENABLE_AUTO_ITEM = autoPlayConfig.getBoolean("EnableAutoItem", true);
 			RESUME_AUTO_PLAY = autoPlayConfig.getBoolean("ResumeAutoPlay", false);
+			ENABLE_AUTO_ASSIST = autoPlayConfig.getBoolean("AssistLeader", false);
 			AUTO_PLAY_PREMIUM = autoPlayConfig.getBoolean("AutoPlayPremium", false);
 			DISABLED_AUTO_SKILLS.clear();
 			final String disabledSkills = autoPlayConfig.getString("DisabledSkillIds", "");
@@ -3227,6 +3230,7 @@ public class Config
 			FAKE_PLAYER_USE_SHOTS = fakePlayerConfig.getBoolean("FakePlayerUseShots", false);
 			FAKE_PLAYER_KILL_PVP = fakePlayerConfig.getBoolean("FakePlayerKillsRewardPvP", false);
 			FAKE_PLAYER_KILL_KARMA = fakePlayerConfig.getBoolean("FakePlayerUnflaggedKillsKarma", false);
+			FAKE_PLAYER_AUTO_ATTACKABLE = fakePlayerConfig.getBoolean("FakePlayerAutoAttackable", false);
 			FAKE_PLAYER_AGGRO_MONSTERS = fakePlayerConfig.getBoolean("FakePlayerAggroMonsters", false);
 			FAKE_PLAYER_AGGRO_PLAYERS = fakePlayerConfig.getBoolean("FakePlayerAggroPlayers", false);
 			FAKE_PLAYER_AGGRO_FPC = fakePlayerConfig.getBoolean("FakePlayerAggroFPC", false);

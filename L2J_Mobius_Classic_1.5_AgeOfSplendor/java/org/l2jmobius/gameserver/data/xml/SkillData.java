@@ -549,9 +549,10 @@ public class SkillData implements IXmlReader
 								variables.put("index", (i - fromLevel) + 1d);
 								variables.put("subIndex", (j - fromSubLevel) + 1d);
 								final Object base = values.getOrDefault(i, Collections.emptyMap()).get(-1);
-								if ((base != null) && !(base instanceof StatSet))
+								final String baseText = String.valueOf(base);
+								if ((base != null) && !(base instanceof StatSet) && (!baseText.equalsIgnoreCase("true") && !baseText.equalsIgnoreCase("false")))
 								{
-									variables.put("base", Double.parseDouble(String.valueOf(base)));
+									variables.put("base", Double.parseDouble(baseText));
 								}
 								parsedValue = parseValue(n, false, false, variables);
 								if (parsedValue != null)

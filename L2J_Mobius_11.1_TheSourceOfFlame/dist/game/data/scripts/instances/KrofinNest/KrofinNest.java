@@ -487,7 +487,7 @@ public class KrofinNest extends AbstractInstance
 				}
 				
 				final Npc dummy = world.getNpc(DUMMY);
-				if (!isInInstance(world))
+				if ((dummy == null) || !isInInstance(world))
 				{
 					return null;
 				}

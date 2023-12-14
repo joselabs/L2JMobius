@@ -94,6 +94,7 @@ import org.l2jmobius.gameserver.data.xml.NpcNameLocalisationData;
 import org.l2jmobius.gameserver.data.xml.OptionData;
 import org.l2jmobius.gameserver.data.xml.PetAcquireList;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
+import org.l2jmobius.gameserver.data.xml.PetExtractData;
 import org.l2jmobius.gameserver.data.xml.PetSkillData;
 import org.l2jmobius.gameserver.data.xml.PetTypeData;
 import org.l2jmobius.gameserver.data.xml.PlayerTemplateData;
@@ -333,6 +334,8 @@ public class GameServer
 		CharInfoTable.getInstance();
 		AdminData.getInstance();
 		PetDataTable.getInstance();
+		PetTypeData.getInstance();
+		PetExtractData.getInstance();
 		CubicData.getInstance();
 		CharSummonTable.getInstance().init();
 		BeautyShopData.getInstance();
@@ -382,7 +385,6 @@ public class GameServer
 		CrestTable.getInstance();
 		TeleportListData.getInstance();
 		SharedTeleportManager.getInstance();
-		PetTypeData.getInstance();
 		TeleporterData.getInstance();
 		TimedHuntingZoneData.getInstance();
 		MatchingRoomManager.getInstance();

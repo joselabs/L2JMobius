@@ -17,18 +17,24 @@
 package org.l2jmobius.gameserver.network.serverpackets;
 
 import org.l2jmobius.gameserver.model.Shortcut;
+import org.l2jmobius.gameserver.model.VariationInstance;
+import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ShortCutRegister extends ServerPacket
 {
+	private final Player _player;
 	private final Shortcut _shortcut;
 	
 	/**
 	 * Register new skill shortcut
 	 * @param shortcut
+	 * @param player
 	 */
-	public ShortCutRegister(Shortcut shortcut)
+	public ShortCutRegister(Shortcut shortcut, Player player)
 	{
+		_player = player;
 		_shortcut = shortcut;
 	}
 	
@@ -43,14 +49,16 @@ public class ShortCutRegister extends ServerPacket
 		{
 			case ITEM:
 			{
+				final Item item = _player.getInventory().getItemByObjectId(_shortcut.getId());
+				final VariationInstance augment = item.getAugmentation();
 				writeInt(_shortcut.getId());
 				writeInt(_shortcut.getCharacterType());
 				writeInt(_shortcut.getSharedReuseGroup());
 				writeInt(0); // unknown
 				writeInt(0); // unknown
-				writeInt(0); // item augment id
-				writeInt(0); // item augment id
-				writeInt(0); // visual id
+				writeInt(augment != null ? augment.getOption1Id() : 0); // item augment id
+				writeInt(augment != null ? augment.getOption2Id() : 0); // item augment id
+				writeInt(item.getVisualId()); // visual id
 				break;
 			}
 			case SKILL:

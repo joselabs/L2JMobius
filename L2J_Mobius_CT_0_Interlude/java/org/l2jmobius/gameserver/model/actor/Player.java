@@ -4348,7 +4348,7 @@ public class Player extends Playable
 	{
 		super.doAttack(target);
 		setRecentFakeDeath(false);
-		if (target.isFakePlayer())
+		if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
 		{
 			updatePvPStatus();
 		}
@@ -4893,7 +4893,7 @@ public class Player extends Playable
 					}
 					
 					// Should not penalize player when lucky, in a non siege PvP zone or is in an event.
-					if (!isLucky() && (insideSiegeZone || !insidePvpZone) && !isOnEvent())
+					if (Config.PLAYER_DELEVEL && !isLucky() && (insideSiegeZone || !insidePvpZone) && !isOnEvent())
 					{
 						calculateDeathExpPenalty(killer, isAtWarWith(pk));
 					}

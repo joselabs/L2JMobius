@@ -26,15 +26,22 @@ import org.l2jmobius.gameserver.model.events.impl.IBaseEvent;
 public class OnConquestFlowerCollect implements IBaseEvent
 {
 	private final Player _player;
+	private final int _npcId;
 	
-	public OnConquestFlowerCollect(Player player)
+	public OnConquestFlowerCollect(Player player, int npcId)
 	{
 		_player = player;
+		_npcId = npcId;
 	}
 	
 	public Player getPlayer()
 	{
 		return _player;
+	}
+	
+	public int getNpcId()
+	{
+		return _npcId;
 	}
 	
 	@Override

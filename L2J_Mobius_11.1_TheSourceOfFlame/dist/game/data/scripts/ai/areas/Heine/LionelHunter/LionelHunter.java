@@ -58,10 +58,10 @@ public class LionelHunter extends AbstractNpcAI
 	private static final int VITALITY_OF_THE_EXALTED_LV2 = 47855;
 	private static final int DIGNITY_OF_THE_EXALTED_LV6 = 80970;
 	private static final int FAVOR_OF_THE_EXLATED = 45870;
-	private static final int COMMON_BOX_PHYSCAL = 81207;
+	private static final int COMMON_BOX_PHYSICAL = 81207;
 	private static final int COMMON_BOX_MAGIC = 81208;
-	private static final int SPECIAL_BOX_MAGIC = 81209;
-	private static final int SPECIAL_BOX_PHYSICAL = 81210;
+	private static final int SPECIAL_BOX_PHYSICAL = 81209;
+	private static final int SPECIAL_BOX_MAGIC = 81210;
 	
 	private LionelHunter()
 	{
@@ -98,28 +98,31 @@ public class LionelHunter extends AbstractNpcAI
 			}
 			case "getSupplyBox":
 			{
-				if ((qs7 != null) && qs7.isCompleted())
+				if (((qs7 != null) && !qs7.isCompleted()) || (qs7 == null))
 				{
-					if (player.isMageClass())
+					htmltext = "33907-06-no.html";
+				}
+				else if (qs7.isCompleted())
+				{
+					if (player.getVariables().getBoolean("LIONEL_REWARD_RECEIVED", false) == true)
 					{
-						giveItems(player, COMMON_BOX_MAGIC, 1);
-						giveItems(player, SPECIAL_BOX_MAGIC, 1);
+						htmltext = "33907-06-received.html";
 					}
 					else
 					{
-						giveItems(player, COMMON_BOX_PHYSCAL, 1);
-						giveItems(player, SPECIAL_BOX_PHYSICAL, 1);
+						if (player.isMageClass())
+						{
+							giveItems(player, COMMON_BOX_MAGIC, 1);
+							giveItems(player, SPECIAL_BOX_MAGIC, 1);
+						}
+						else
+						{
+							giveItems(player, COMMON_BOX_PHYSICAL, 1);
+							giveItems(player, SPECIAL_BOX_PHYSICAL, 1);
+						}
+						player.getVariables().set("LIONEL_REWARD_RECEIVED", true);
+						player.getVariables().storeMe();
 					}
-					player.getVariables().set("LIONEL_REWARD_RECEIVED", true);
-					player.getVariables().storeMe();
-				}
-				else if (player.getVariables().getBoolean("LIONEL_REWARD_RECEIVED", false))
-				{
-					htmltext = "33907-06-received.html";
-				}
-				else
-				{
-					htmltext = "33907-06-no.html";
 				}
 				break;
 			}
@@ -234,7 +237,6 @@ public class LionelHunter extends AbstractNpcAI
 					htmltext = "33907-not-completed.html";
 				}
 				break;
-				
 			}
 		}
 		return htmltext;

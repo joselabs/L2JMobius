@@ -230,7 +230,7 @@ public class ShortCuts implements IRestorable
 			if ((sc.getId() == skillId) && (sc.getType() == ShortcutType.SKILL))
 			{
 				final Shortcut newsc = new Shortcut(sc.getSlot(), sc.getPage(), sc.getType(), sc.getId(), skillLevel, skillSubLevel, 1);
-				_owner.sendPacket(new ShortCutRegister(newsc));
+				_owner.sendPacket(new ShortCutRegister(newsc, _owner));
 				_owner.registerShortCut(newsc);
 			}
 		}

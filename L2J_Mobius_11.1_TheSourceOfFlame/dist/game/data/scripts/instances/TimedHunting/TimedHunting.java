@@ -30,10 +30,7 @@ import instances.AbstractInstance;
  */
 public class TimedHunting extends AbstractInstance
 {
-	// NPCs
-	private static final int PATROL_TELEPORTER = 34568;
-	private static final int PATROL_GUARD = 34569;
-	private static final int TELEPORT_SCOUT = 34549;
+	
 	// Misc
 	private static final int[] TEMPLATE_IDS =
 	{
@@ -47,9 +44,6 @@ public class TimedHunting extends AbstractInstance
 	public TimedHunting()
 	{
 		super(TEMPLATE_IDS);
-		addStartNpc(PATROL_TELEPORTER, PATROL_GUARD, TELEPORT_SCOUT);
-		addTalkId(PATROL_TELEPORTER, PATROL_GUARD, TELEPORT_SCOUT);
-		addFirstTalkId(PATROL_TELEPORTER, PATROL_GUARD, TELEPORT_SCOUT);
 	}
 	
 	@Override

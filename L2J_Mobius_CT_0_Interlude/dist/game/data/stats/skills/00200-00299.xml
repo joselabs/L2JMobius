@@ -1580,7 +1580,9 @@
 		<table name="#ench2MpConsume">80 79 78 77 76 75 74 72 71 70 69 68 67 65 64 63 62 61 60 59 57 56 55 54 53 52 50 49 48 47</table>
 		<table name="#ench2MpInitialConsume">20 19 19 19 19 18 18 18 17 17 17 17 16 16 16 15 15 15 15 14 14 14 13 13 13 13 12 12 12 11</table>
 		<table name="#enchMagicLvl">76 76 76 77 77 77 78 78 78 79 79 79 80 80 80 81 81 81 82 82 82 83 83 83 84 84 84 85 85 85</table>
-		<set name="abnormalTime" val="15" />
+		<set name="abnormalTime" val="30" />
+		<set name="abnormalType" val="PARALYZE" />
+		<set name="abnormalVisualEffect" val="PARALYZE" />
 		<set name="activateRate" val="40" />
 		<set name="basicProperty" val="MEN" />
 		<set name="castRange" val="400" />
@@ -1611,12 +1613,8 @@
 				<mul stat="runSpd" val="0.5" />
 				<mul stat="mAtkSpd" val="0.5" />
 			</effect>
+			<effect name="Paralyze" />
 		</for>
-		<endEffects>
-			<effect name="CallSkill">
-				<param skillId="6090" skillLevel="1" />
-			</effect>
-		</endEffects>
 	</skill>
 	<skill id="280" levels="37" name="Burning Fist" enchantGroup1="2" enchantGroup2="2">
 		<!-- Propels a powerful fiery iron fist. An equipped hand-to-hand combat weapon is required to use this skill. Ignores Shield Defense. Over-hit is possible. Power 431. -->

@@ -104,7 +104,7 @@ public class Flowers extends AbstractNpcAI
 					// Notify to scripts.
 					if (EventDispatcher.getInstance().hasListener(EventType.ON_CONQUEST_FLOWER_COLLECT))
 					{
-						EventDispatcher.getInstance().notifyEventAsync(new OnConquestFlowerCollect(player));
+						EventDispatcher.getInstance().notifyEventAsync(new OnConquestFlowerCollect(player, npc.getId()));
 					}
 					
 					if (player.isInventoryUnder90(false))
@@ -144,7 +144,7 @@ public class Flowers extends AbstractNpcAI
 						}
 						else
 						{
-							player.getVariables().set(PlayerVariables.CONQUEST_PERSONAL_POINTS, player.getVariables().getLong(PlayerVariables.CONQUEST_PERSONAL_POINTS) + PERSONAL_POINTS_AMOUNT);
+							player.getVariables().set(PlayerVariables.CONQUEST_PERSONAL_POINTS, player.getVariables().getLong(PlayerVariables.CONQUEST_PERSONAL_POINTS, 0) + PERSONAL_POINTS_AMOUNT);
 							player.sendPacket(SystemMessageId.YOU_HAVE_RECEIVED_PERSONAL_CONQUEST_POINTS);
 						}
 					}

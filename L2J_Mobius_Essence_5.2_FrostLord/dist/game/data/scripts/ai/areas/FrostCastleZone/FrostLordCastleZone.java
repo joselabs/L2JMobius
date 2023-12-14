@@ -53,12 +53,12 @@ public class FrostLordCastleZone extends AbstractNpcAI
 	private static final AtomicReference<SpawnTemplate> SPAWN_BATTLE_MOBS = new AtomicReference<>();
 	private static final AtomicReference<SpawnTemplate> SPAWN_ENCHANCED_MOBS = new AtomicReference<>();
 	
-	public static final int[] REGGIESYS_GLAKIAS =
+	protected static final int[] REGGIESYS_GLAKIAS =
 	{
 		29136,
 		29137
 	};
-	public static final int[] SLICING_GLAKIAS =
+	protected static final int[] SLICING_GLAKIAS =
 	{
 		29138,
 		29139
@@ -71,21 +71,20 @@ public class FrostLordCastleZone extends AbstractNpcAI
 	private static final Location GLAKIAS_SPAWN_LOC = new Location(114713, -114799, -11209, 33289);
 	
 	// Teleports
-	private static final Location The_north_eastern_entrance = new Location(-56255, 13537, -3336);
-	private static final Location The_south_eastern_entrance = new Location(-49550, 17189, -3016);
-	private static final Location The_north_western_entrance = new Location(-52849, 5272, -240);
-	private static final Location The_south_western_entrance = new Location(-52849, 5272, -240);
+	private static final Location NORTH_EASTERN_ENTRANCE = new Location(-56255, 13537, -3336);
+	private static final Location SOUTH_EASTERN_ENTRANCE = new Location(-49550, 17189, -3016);
+	private static final Location NORTH_WESTERN_ENTRANCE = new Location(-52849, 5272, -240);
+	private static final Location SOUTH_WESTERN_ENTRANCE = new Location(-52849, 5272, -240);
 	
-	private static final Location Crossroad = new Location(145598, 144091, -11789);
-	private static final Location Northern_Secret_Passage = new Location(149478, 147145, -12339);
+	private static final Location CROSSROAD = new Location(145598, 144091, -11789);
+	private static final Location NOTHERN_SECRET_PASSAGE = new Location(149478, 147145, -12339);
 	
-	private static final Location Glakias_House = new Location(113479, -114804, -11076);
+	private static final Location GLAKIAS_RESIDENCE = new Location(113479, -114804, -11076);
 	
 	public static final int UNDERCOVER_AGENT = 34230; // Teleport npc
 	public static final int CRYSTAL_ENERGY = 34232; // Teleport npc
 	
 	// Zones
-	
 	private static final ZoneType[] ZONES =
 	{
 		ZoneManager.getInstance().getZoneByName("frost_castle_zone"),
@@ -93,7 +92,6 @@ public class FrostLordCastleZone extends AbstractNpcAI
 	};
 	
 	// Timings
-	
 	private static final int[] DAYS_OF_WEEK =
 	{
 		Calendar.TUESDAY,
@@ -112,7 +110,7 @@ public class FrostLordCastleZone extends AbstractNpcAI
 	
 	private static final long DESPAWN_DELAY = 16 * 60 * 60 * 1000;
 	
-	private static Npc _TeleportchargedCrystal = null;
+	private static Npc _teleportchargedCrystal = null;
 	
 	private static final String SCRIPT_BYPASS = "Quest FrostLordCastleZone ";
 	
@@ -137,148 +135,73 @@ public class FrostLordCastleZone extends AbstractNpcAI
 		{
 			case "Crossroad":
 			{
-				TeleportCheck(player, 1);
+				teleportCheck(player, 1);
 				break;
 			}
-			
 			case "Northern_Secret_Passage":
 			{
-				TeleportCheck(player, 2);
+				teleportCheck(player, 2);
 				break;
 			}
-			
 			case "The_north_eastern_entrance":
 			{
-				TeleportCheck(player, 3);
+				teleportCheck(player, 3);
 				break;
 			}
-			
 			case "The_south_eastern_entrance":
 			{
-				TeleportCheck(player, 4);
+				teleportCheck(player, 4);
 				break;
 			}
-			
 			case "The_north_western_entrance":
 			{
-				TeleportCheck(player, 5);
+				teleportCheck(player, 5);
 				break;
 			}
-			
 			case "The_south_western_entrance":
 			{
-				TeleportCheck(player, 6);
+				teleportCheck(player, 6);
 				break;
 			}
-			
 			case "Crystal_Energy_Teleport":
 			{
-				player.teleToLocation(Glakias_House);
+				player.teleToLocation(GLAKIAS_RESIDENCE);
 				break;
 			}
-			
 			case "FIRST_RAID_SPAWN":
 			{
 				int id = Rnd.get(100) < 7 ? SLICING : REGGIESYS;
 				addSpawn(id, REGGIESYS_SLICING_SPAWN_LOC, false, DESPAWN_DELAY);
 				break;
 			}
-			
 			case "SECOND_RAID_SPAWN":
 			{
 				addSpawn(TIRON, TIRON_SPAWN_LOC, false, DESPAWN_DELAY);
-				break;
-			}
-			
-			default:
-			{
 				break;
 			}
 		}
 		return super.onAdvEvent(event, npc, player);
 	}
 	
-	private void scheduleFirstRaid()
-	{
-		long time = Long.MAX_VALUE;
-		
-		for (int day : DAYS_OF_WEEK)
-		{
-			long nextDateMillis = getNextDateMilis(day, FIRST_RAID_TIME[0], FIRST_RAID_TIME[1]);
-			if (nextDateMillis < time)
-			{
-				time = nextDateMillis;
-			}
-		}
-		
-		startQuestTimer("FIRST_RAID_SPAWN", time - System.currentTimeMillis(), null, null);
-	}
-	
-	private void scheduleSecondRaid()
-	{
-		long time = Long.MAX_VALUE;
-		for (int day : DAYS_OF_WEEK)
-		{
-			long temp = getNextDateMilis(day, SECOND_RAID_TIME[0], SECOND_RAID_TIME[1]);
-			if (temp < time)
-			{
-				time = temp;
-			}
-		}
-		startQuestTimer("SECOND_RAID_SPAWN", time - System.currentTimeMillis(), null, null);
-		
-	}
-	
-	private long getNextDateMilis(int dayOfWeek, int hour, int minute)
-	{
-		Calendar c = Calendar.getInstance();
-		c.set(Calendar.HOUR_OF_DAY, hour);
-		c.set(Calendar.MINUTE, minute);
-		c.set(Calendar.SECOND, 0);
-		for (int i = 0; i < 7; i++)
-		{
-			if ((c.get(Calendar.DAY_OF_WEEK) == dayOfWeek) && (c.getTimeInMillis() > System.currentTimeMillis()))
-			{
-				return c.getTimeInMillis();
-			}
-			c.add(Calendar.DAY_OF_WEEK, 1);
-		}
-		return c.getTimeInMillis();
-	}
-	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onFirstTalk(Npc npc, Player player)
 	{
-		switch (npc.getId())
+		if (npc.getId() == CRYSTAL_ENERGY)
 		{
-			case REGGIESYS:
-			{
-				addSpawn(REGGIESYS_GLAKIAS[Rnd.get(0, REGGIESYS_GLAKIAS.length - 1)], GLAKIAS_SPAWN_LOC, false, DESPAWN_DELAY);
-				
-				SPAWN_BATTLE_MOBS.set(SpawnData.getInstance().getSpawnByName("glakias_mobs_pretorian"));
-				SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::despawnAll);
-				SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::spawnAll);
-				
-				break;
-			}
-			case SLICING:
-			{
-				addSpawn(SLICING_GLAKIAS[Rnd.get(0, SLICING_GLAKIAS.length - 1)], GLAKIAS_SPAWN_LOC, false, DESPAWN_DELAY);
-				
-				SPAWN_BATTLE_MOBS.set(SpawnData.getInstance().getSpawnByName("glakias_mobs_pretorian"));
-				SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::despawnAll);
-				SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::spawnAll);
-				
-				break;
-			}
-			case TIRON:
-			{
-				_TeleportchargedCrystal = addSpawn(CHARGED_CRYSTAL, CHARGED_CRYSTAL_SPAWN_LOC, false, DESPAWN_DELAY);
-				break;
-			}
+			return getHtm(player, "34232.htm");
 		}
-		DeleteGlakiasSpawns(npc);
-		return super.onKill(npc, killer, false);
+		
+		if (npc.getId() == UNDERCOVER_AGENT)
+		{
+			if ((_teleportchargedCrystal != null) && _teleportchargedCrystal.isSpawned())
+			{
+				return getHtm(player, "34230-full.htm");
+			}
+			
+			return getHtm(player, "34230.htm");
+		}
+		
+		return null;
 	}
 	
 	@Override
@@ -324,47 +247,133 @@ public class FrostLordCastleZone extends AbstractNpcAI
 		}
 	}
 	
-	public void TeleportCheck(Player player, int locNum)
+	@Override
+	public String onKill(Npc npc, Player killer, boolean isSummon)
+	{
+		switch (npc.getId())
+		{
+			case REGGIESYS:
+			{
+				addSpawn(REGGIESYS_GLAKIAS[Rnd.get(0, REGGIESYS_GLAKIAS.length - 1)], GLAKIAS_SPAWN_LOC, false, DESPAWN_DELAY);
+				SPAWN_BATTLE_MOBS.set(SpawnData.getInstance().getSpawnByName("glakias_mobs_pretorian"));
+				SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::despawnAll);
+				SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::spawnAll);
+				break;
+			}
+			case SLICING:
+			{
+				addSpawn(SLICING_GLAKIAS[Rnd.get(0, SLICING_GLAKIAS.length - 1)], GLAKIAS_SPAWN_LOC, false, DESPAWN_DELAY);
+				SPAWN_BATTLE_MOBS.set(SpawnData.getInstance().getSpawnByName("glakias_mobs_pretorian"));
+				SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::despawnAll);
+				SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::spawnAll);
+				break;
+			}
+			case TIRON:
+			{
+				_teleportchargedCrystal = addSpawn(CHARGED_CRYSTAL, CHARGED_CRYSTAL_SPAWN_LOC, false, DESPAWN_DELAY);
+				break;
+			}
+		}
+		deleteGlakiasSpawns(npc);
+		return super.onKill(npc, killer, false);
+	}
+	
+	@RegisterEvent(EventType.ON_PLAYER_BYPASS)
+	@RegisterType(ListenerRegisterType.GLOBAL_PLAYERS)
+	public void onPlayerBypass(OnPlayerBypass event)
+	{
+		final Player player = event.getPlayer();
+		if (event.getCommand().startsWith(SCRIPT_BYPASS))
+		{
+			notifyEvent(event.getCommand().replace(SCRIPT_BYPASS, ""), null, player);
+		}
+	}
+	
+	private void scheduleFirstRaid()
+	{
+		long time = Long.MAX_VALUE;
+		for (int day : DAYS_OF_WEEK)
+		{
+			final long nextDateMillis = getNextDateMilis(day, FIRST_RAID_TIME[0], FIRST_RAID_TIME[1]);
+			if (nextDateMillis < time)
+			{
+				time = nextDateMillis;
+			}
+		}
+		startQuestTimer("FIRST_RAID_SPAWN", time - System.currentTimeMillis(), null, null);
+	}
+	
+	private void scheduleSecondRaid()
+	{
+		long time = Long.MAX_VALUE;
+		for (int day : DAYS_OF_WEEK)
+		{
+			final long nextDateMillis = getNextDateMilis(day, SECOND_RAID_TIME[0], SECOND_RAID_TIME[1]);
+			if (nextDateMillis < time)
+			{
+				time = nextDateMillis;
+			}
+		}
+		startQuestTimer("SECOND_RAID_SPAWN", time - System.currentTimeMillis(), null, null);
+	}
+	
+	private long getNextDateMilis(int dayOfWeek, int hour, int minute)
+	{
+		final Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, hour);
+		calendar.set(Calendar.MINUTE, minute);
+		calendar.set(Calendar.SECOND, 0);
+		for (int i = 0; i < 7; i++)
+		{
+			if ((calendar.get(Calendar.DAY_OF_WEEK) == dayOfWeek) && (calendar.getTimeInMillis() > System.currentTimeMillis()))
+			{
+				return calendar.getTimeInMillis();
+			}
+			calendar.add(Calendar.DAY_OF_WEEK, 1);
+		}
+		return calendar.getTimeInMillis();
+	}
+	
+	public void teleportCheck(Player player, int locationId)
 	{
 		int requiredMoney = 0;
 		Location teleportLocation = null;
-		
-		switch (locNum)
+		switch (locationId)
 		{
 			case 1:
 			{
 				requiredMoney = 100000;
-				teleportLocation = Crossroad;
+				teleportLocation = CROSSROAD;
 				break;
 			}
 			case 2:
 			{
 				requiredMoney = 100000;
-				teleportLocation = Northern_Secret_Passage;
+				teleportLocation = NOTHERN_SECRET_PASSAGE;
 				break;
 			}
 			case 3:
 			{
 				requiredMoney = 500000;
-				teleportLocation = The_north_eastern_entrance;
+				teleportLocation = NORTH_EASTERN_ENTRANCE;
 				break;
 			}
 			case 4:
 			{
 				requiredMoney = 500000;
-				teleportLocation = The_south_eastern_entrance;
+				teleportLocation = SOUTH_EASTERN_ENTRANCE;
 				break;
 			}
 			case 5:
 			{
 				requiredMoney = 500000;
-				teleportLocation = The_north_western_entrance;
+				teleportLocation = NORTH_WESTERN_ENTRANCE;
 				break;
 			}
 			case 6:
 			{
 				requiredMoney = 500000;
-				teleportLocation = The_south_western_entrance;
+				teleportLocation = SOUTH_WESTERN_ENTRANCE;
 				break;
 			}
 			default:
@@ -382,49 +391,12 @@ public class FrostLordCastleZone extends AbstractNpcAI
 		player.teleToLocation(teleportLocation);
 	}
 	
-	@Override
-	public String onFirstTalk(Npc npc, Player player)
-	{
-		String html;
-		if (npc.getId() == CRYSTAL_ENERGY)
-		{
-			html = getHtm(player, "34232.htm");
-			return html;
-		}
-		
-		if (npc.getId() == UNDERCOVER_AGENT)
-		{
-			if ((_TeleportchargedCrystal != null) && _TeleportchargedCrystal.isSpawned())
-			{
-				html = getHtm(player, "34230-full.htm");
-			}
-			else
-			{
-				html = getHtm(player, "34230.htm");
-			}
-			
-			return html;
-		}
-		return null;
-	}
-	
-	private void DeleteGlakiasSpawns(Npc npc)
+	private void deleteGlakiasSpawns(Npc npc)
 	{
 		int npcId = npc.getId();
 		if ((npcId == REGGIESYS_GLAKIAS[0]) || (npcId == REGGIESYS_GLAKIAS[1]) || (npcId == SLICING_GLAKIAS[0]) || (npcId == SLICING_GLAKIAS[1]))
 		{
 			SPAWN_BATTLE_MOBS.get().getGroups().forEach(SpawnGroup::despawnAll);
-		}
-	}
-	
-	@RegisterEvent(EventType.ON_PLAYER_BYPASS)
-	@RegisterType(ListenerRegisterType.GLOBAL_PLAYERS)
-	public void onPlayerBypass(OnPlayerBypass event)
-	{
-		final Player player = event.getPlayer();
-		if (event.getCommand().startsWith(SCRIPT_BYPASS))
-		{
-			notifyEvent(event.getCommand().replace(SCRIPT_BYPASS, ""), null, player);
 		}
 	}
 	

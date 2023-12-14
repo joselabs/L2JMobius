@@ -32,6 +32,7 @@ public class LimitShopProductHolder
 	private final long _count;
 	private final float _chance;
 	private final boolean _announce;
+	private final int _enchant;
 	private final int _productionId2;
 	private final long _count2;
 	private final float _chance2;
@@ -48,9 +49,10 @@ public class LimitShopProductHolder
 	private final long _count5;
 	private final boolean _announce5;
 	private final int _accountDailyLimit;
+	private final int _accountMontlyLimit;
 	private final int _accountBuyLimit;
 	
-	public LimitShopProductHolder(int id, int category, int minLevel, int maxLevel, int[] ingredientIds, long[] ingredientQuantities, int[] ingredientEnchants, int productionId, long count, float chance, boolean announce, int productionId2, long count2, float chance2, boolean announce2, int productionId3, long count3, float chance3, boolean announce3, int productionId4, long count4, float chance4, boolean announce4, int productionId5, long count5, boolean announce5, int accountDailyLimit, int accountBuyLimit)
+	public LimitShopProductHolder(int id, int category, int minLevel, int maxLevel, int[] ingredientIds, long[] ingredientQuantities, int[] ingredientEnchants, int productionId, long count, float chance, boolean announce, int enchant, int productionId2, long count2, float chance2, boolean announce2, int productionId3, long count3, float chance3, boolean announce3, int productionId4, long count4, float chance4, boolean announce4, int productionId5, long count5, boolean announce5, int accountDailyLimit, int accountMontlyLimit, int accountBuyLimit)
 	{
 		_id = id;
 		_category = category;
@@ -63,6 +65,7 @@ public class LimitShopProductHolder
 		_count = count;
 		_chance = chance;
 		_announce = announce;
+		_enchant = enchant;
 		_productionId2 = productionId2;
 		_count2 = count2;
 		_chance2 = chance2;
@@ -79,6 +82,7 @@ public class LimitShopProductHolder
 		_count5 = count5;
 		_announce5 = announce5;
 		_accountDailyLimit = accountDailyLimit;
+		_accountMontlyLimit = accountMontlyLimit;
 		_accountBuyLimit = accountBuyLimit;
 	}
 	
@@ -135,6 +139,11 @@ public class LimitShopProductHolder
 	public boolean isAnnounce()
 	{
 		return _announce;
+	}
+	
+	public int getEnchant()
+	{
+		return _enchant;
 	}
 	
 	public int getProductionId2()
@@ -215,6 +224,11 @@ public class LimitShopProductHolder
 	public int getAccountDailyLimit()
 	{
 		return _accountDailyLimit;
+	}
+	
+	public int getAccountMontlyLimit()
+	{
+		return _accountMontlyLimit;
 	}
 	
 	public int getAccountBuyLimit()

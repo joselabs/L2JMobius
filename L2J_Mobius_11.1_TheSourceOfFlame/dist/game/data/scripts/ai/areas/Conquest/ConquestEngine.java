@@ -70,17 +70,27 @@ public class ConquestEngine extends AbstractNpcAI
 	// Queries
 	private static final String LOAD_CONQUEST_DATA = "SELECT current_cycle, conquest_season_end FROM conquest_data WHERE id = 0";
 	private static final String SAVE_CONQUEST_DATA = "INSERT INTO conquest_data (id, current_cycle, conquest_season_end) VALUES (0,?,?) ON DUPLICATE KEY UPDATE current_cycle=?, conquest_season_end=?";
-	private static final String CLEAR_CONQUEST_PREVIOUS_RANKLIST = "DELETE FROM conquest_prev_season_ranklist;";
-	private static final String SAVE_CONQUEST_PREVIOUS_RANKLIST = "INSERT INTO conquest_prev_season_ranklist (charId, char_name, personal_points) SELECT a.charId, a.val, b.val FROM character_variables a, character_variables b WHERE a.var=\"CONQUEST_NAME\" AND b.var=\"CONQUEST_PERSONAL_POINTS\" AND a.charId=b.charId;";
+	private static final String CLEAR_CONQUEST_PREVIOUS_RANKLIST = "DELETE FROM conquest_prev_season_ranklist";
+	private static final String SAVE_CONQUEST_PREVIOUS_RANKLIST = "INSERT INTO conquest_prev_season_ranklist (charId, char_name, personal_points) SELECT a.charId, a.val, b.val FROM character_variables a, character_variables b WHERE a.var=\"CONQUEST_NAME\" AND b.var=\"CONQUEST_PERSONAL_POINTS\" AND a.charId=b.charId";
+	private static final String CLEAR_CONQUEST_PREVIOUS_PLAYER_DATA = "DELETE FROM character_variables WHERE var=?";
 	
 	// Variables
 	private static final String CONQUEST_AVAILABLE_VAR = "CONQUEST_AVAILABLE";
 	private static final String CONQUEST_CONNECTED_VAR = "CONQUEST_CONNECTED";
 	private static final String CONQUEST_SERVER_POINTS_VAR = "CONQUEST_SERVER_POINTS";
 	private static final String CONQUEST_PREV_SEASON_SERVER_POINTS_VAR = "CONQUEST_PREV_SEASON_SERVER_POINTS";
+	private static final String CONQUEST_SERVER_SOUL_ORBS_VAR = "CONQUEST_SOUL_ORBS";
+	private static final String CONQUEST_PREV_SEASON_SERVER_SOUL_ORBS_VAR = "CONQUEST_PREV_SEASON_SERVER_SOUL_ORBS";
+	
+	// Zone Name Vars used only for reset points
+	private static final String CONQUEST_ZONE_ASA_VAR = "CONQUEST_ZONE_ASA_POINTS";
+	private static final String CONQUEST_ZONE_ANIMA_VAR = "CONQUEST_ZONE_ANIMA_POINTS";
+	private static final String CONQUEST_ZONE_NOX_VAR = "CONQUEST_ZONE_NOX_POINTS";
+	private static final String CONQUEST_ZONE_VITA_VAR = "CONQUEST_ZONE_VITA_POINTS";
+	private static final String CONQUEST_ZONE_IGNIS_VAR = "CONQUEST_ZONE_IGNIS_POINTS";
 	
 	// Skills
-	private static final int FIRE_SOURCE_CENTER = 34490;
+	private static final int FIRE_SOURCE_CENTER_SKILL_ID = 34490;
 	
 	protected static boolean _isConquestAvailable = GlobalVariablesManager.getInstance().getBoolean(CONQUEST_AVAILABLE_VAR, false);
 	protected int _currentCycle;
@@ -408,6 +418,7 @@ public class ConquestEngine extends AbstractNpcAI
 			saveConquestData();
 			saveConquestPrevSeasonRanklistData();
 			saveConquestPrevSeasonServerPoints();
+			clearConquestPrevSeasonPlayerData();
 			_currentCycle++;
 			setNewConquestSeasonEnd();
 			init();
@@ -442,7 +453,7 @@ public class ConquestEngine extends AbstractNpcAI
 	{
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps1 = con.prepareStatement(CLEAR_CONQUEST_PREVIOUS_RANKLIST);
-			PreparedStatement ps2 = con.prepareStatement(SAVE_CONQUEST_PREVIOUS_RANKLIST))
+			PreparedStatement ps2 = con.prepareStatement(SAVE_CONQUEST_PREVIOUS_RANKLIST);)
 		{
 			ps1.execute();
 			ps2.execute();
@@ -458,9 +469,44 @@ public class ConquestEngine extends AbstractNpcAI
 	 */
 	public void saveConquestPrevSeasonServerPoints()
 	{
+		// Save previous season Server Points and Soul Orbs
 		GlobalVariablesManager.getInstance().set(CONQUEST_PREV_SEASON_SERVER_POINTS_VAR, GlobalVariablesManager.getInstance().getLong(CONQUEST_SERVER_POINTS_VAR));
+		GlobalVariablesManager.getInstance().set(CONQUEST_PREV_SEASON_SERVER_SOUL_ORBS_VAR, GlobalVariablesManager.getInstance().getLong(CONQUEST_SERVER_SOUL_ORBS_VAR));
+		// Reset Server Points and Soul Orbs for next season
 		GlobalVariablesManager.getInstance().set(CONQUEST_SERVER_POINTS_VAR, 0);
-		// Maybe add here soul orbs as well.
+		GlobalVariablesManager.getInstance().set(CONQUEST_SERVER_SOUL_ORBS_VAR, 0);
+		// Reset Zone Points for next season
+		GlobalVariablesManager.getInstance().set(CONQUEST_ZONE_ASA_VAR, 0);
+		GlobalVariablesManager.getInstance().set(CONQUEST_ZONE_ANIMA_VAR, 0);
+		GlobalVariablesManager.getInstance().set(CONQUEST_ZONE_NOX_VAR, 0);
+		GlobalVariablesManager.getInstance().set(CONQUEST_ZONE_VITA_VAR, 0);
+		GlobalVariablesManager.getInstance().set(CONQUEST_ZONE_IGNIS_VAR, 0);
+		GlobalVariablesManager.getInstance().storeMe();
+	}
+	
+	public void clearConquestPrevSeasonPlayerData()
+	{
+		// Update data for offline players.
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement(CLEAR_CONQUEST_PREVIOUS_PLAYER_DATA);)
+		
+		{
+			ps.setString(1, PlayerVariables.CONQUEST_PERSONAL_POINTS);
+			ps.execute();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not reset Conquest Previous Season player data: " + e);
+		}
+		
+		// Update data for online players.
+		for (Player player : World.getInstance().getPlayers())
+		{
+			player.getVariables().remove(PlayerVariables.CONQUEST_PERSONAL_POINTS);
+			player.getVariables().storeMe();
+		}
+		
+		LOGGER.info(ConquestEngine.class.getSimpleName() + ": Conquest Previous Season player data has been reset.");
 	}
 	
 	/**
@@ -474,7 +520,7 @@ public class ConquestEngine extends AbstractNpcAI
 		{
 			LOGGER.info(ConquestEngine.class.getSimpleName() + ": Attack Points updated for player: " + player.getName() + " from " + getAttackPoints(player) + " to " + (getAttackPoints(player) + attackPoints) + ".");
 		}
-		player.getVariables().set("CONQUEST_ATTACK_POINTS", getAttackPoints(player) + attackPoints);
+		player.getVariables().set(PlayerVariables.CONQUEST_ATTACK_POINTS, getAttackPoints(player) + attackPoints);
 	}
 	
 	/**
@@ -488,7 +534,7 @@ public class ConquestEngine extends AbstractNpcAI
 		{
 			LOGGER.info(ConquestEngine.class.getSimpleName() + ": Life Points updated for player: " + player.getName() + " from " + getLifePoints(player) + " to " + (getLifePoints(player) + lifePoints) + ".");
 		}
-		player.getVariables().set("CONQUEST_LIFE_POINTS", getLifePoints(player) + lifePoints);
+		player.getVariables().set(PlayerVariables.CONQUEST_LIFE_POINTS, getLifePoints(player) + lifePoints);
 	}
 	
 	/**
@@ -517,6 +563,20 @@ public class ConquestEngine extends AbstractNpcAI
 			LOGGER.info(ConquestEngine.class.getSimpleName() + ": Server Points updated from " + getServerPoints() + " to " + (getServerPoints() + serverPoints) + ".");
 		}
 		GlobalVariablesManager.getInstance().set(CONQUEST_SERVER_POINTS_VAR, getServerPoints() + serverPoints);
+	}
+	
+	/**
+	 * Sets the Conquest Soul Orbs.
+	 * @param player the activeChar
+	 * @param serverSoulOrbs the server soul orbs amount to set
+	 */
+	public void setServerSoulOrbs(Player player, long serverSoulOrbs)
+	{
+		if (DEBUG)
+		{
+			LOGGER.info(ConquestEngine.class.getSimpleName() + ": Soul Orbs updated from " + getServerSoulOrbs() + " to " + (getServerSoulOrbs() + serverSoulOrbs) + ".");
+		}
+		GlobalVariablesManager.getInstance().set(CONQUEST_SERVER_SOUL_ORBS_VAR, getServerSoulOrbs() + serverSoulOrbs);
 	}
 	
 	/**
@@ -575,11 +635,12 @@ public class ConquestEngine extends AbstractNpcAI
 	 * @param player the activeChar
 	 * @param personalPoints the personal points
 	 * @param serverPoints the server points
+	 * @param serverSoulOrbs the server soul orbs
 	 * @param zonePoints the zone points
 	 * @param zoneId the zone id
 	 * @param useRates if {@code true} it will use Conquest rates multipliers
 	 */
-	public synchronized void updatePoints(Player player, int personalPoints, int serverPoints, int zonePoints, int zoneId, boolean useRates)
+	public synchronized void updatePoints(Player player, int personalPoints, int serverPoints, int serverSoulOrbs, int zonePoints, int zoneId, boolean useRates)
 	{
 		if (!_isConquestAvailable)
 		{
@@ -588,15 +649,18 @@ public class ConquestEngine extends AbstractNpcAI
 		
 		long finalPersonalPoints = personalPoints;
 		long finalServerPoints = serverPoints;
+		long finalServerSoulOrbs = serverSoulOrbs;
 		int finalZonePoints = zonePoints;
 		if (useRates)
 		{
 			finalPersonalPoints = personalPoints * Config.CONQUEST_RATE_PERSONAL_POINTS;
 			finalServerPoints = serverPoints * Config.CONQUEST_RATE_SERVER_POINTS;
+			finalServerSoulOrbs = serverSoulOrbs * Config.CONQUEST_RATE_SERVER_SOUL_ORBS;
 			finalZonePoints = zonePoints * Config.CONQUEST_RATE_ZONE_POINTS;
 		}
 		setPersonalPoints(player, finalPersonalPoints);
 		setServerPoints(player, finalServerPoints);
+		setServerSoulOrbs(player, finalServerSoulOrbs);
 		setZonePoints(zoneId, finalZonePoints);
 	}
 	
@@ -607,7 +671,7 @@ public class ConquestEngine extends AbstractNpcAI
 	 */
 	public int getAttackPoints(Player player)
 	{
-		return player.getVariables().getInt("CONQUEST_ATTACK_POINTS", Config.CONQUEST_ATTACK_POINTS);
+		return player.getVariables().getInt(PlayerVariables.CONQUEST_ATTACK_POINTS, Config.CONQUEST_ATTACK_POINTS);
 	}
 	
 	/**
@@ -617,7 +681,7 @@ public class ConquestEngine extends AbstractNpcAI
 	 */
 	public int getLifePoints(Player player)
 	{
-		return player.getVariables().getInt("CONQUEST_LIFE_POINTS", Config.CONQUEST_LIFE_POINTS);
+		return player.getVariables().getInt(PlayerVariables.CONQUEST_LIFE_POINTS, Config.CONQUEST_LIFE_POINTS);
 	}
 	
 	/**
@@ -640,6 +704,15 @@ public class ConquestEngine extends AbstractNpcAI
 	}
 	
 	/**
+	 * Gets the Conquest soul orbs.
+	 * @return the soul orbs amount
+	 */
+	public long getServerSoulOrbs()
+	{
+		return GlobalVariablesManager.getInstance().getLong(CONQUEST_SERVER_SOUL_ORBS_VAR, 0);
+	}
+	
+	/**
 	 * Gets the Conquest zone points.
 	 * @param zoneId the zone id to get point for
 	 * @return the server points amount
@@ -655,7 +728,7 @@ public class ConquestEngine extends AbstractNpcAI
 		if (_isConquestAvailable)
 		{
 			final int npcId = npc.getId();
-			updatePoints(killer, CONQUEST_POINT_DATA.getPersonalPointsAmount(npcId), CONQUEST_POINT_DATA.getServerPointsAmount(npcId), CONQUEST_POINT_DATA.getZonePointsAmount(npcId), CONQUEST_POINT_DATA.getZoneId(npcId), true);
+			updatePoints(killer, CONQUEST_POINT_DATA.getPersonalPointsAmount(npcId), CONQUEST_POINT_DATA.getServerPointsAmount(npcId), 1, CONQUEST_POINT_DATA.getZonePointsAmount(npcId), CONQUEST_POINT_DATA.getZoneId(npcId), true);
 		}
 		return super.onKill(npc, killer, isSummon);
 	}
@@ -664,16 +737,16 @@ public class ConquestEngine extends AbstractNpcAI
 	@RegisterType(ListenerRegisterType.GLOBAL_PLAYERS)
 	public void onPlayerPvPKill(OnPlayerPvPKill event)
 	{
-		if (_isConquestAvailable && event.getPlayer().isInsideZone(ZoneId.CONQUEST) && event.getTarget().isInsideZone(ZoneId.CONQUEST) && !event.getPlayer().getEffectList().isAffectedBySkill(FIRE_SOURCE_CENTER))
+		if (_isConquestAvailable && event.getPlayer().isInsideZone(ZoneId.CONQUEST) && event.getTarget().isInsideZone(ZoneId.CONQUEST) && !event.getPlayer().getEffectList().isAffectedBySkill(FIRE_SOURCE_CENTER_SKILL_ID))
 		{
 			final Player attackerPlayer = event.getPlayer();
 			final Player targetPlayer = event.getTarget();
 			if (CONQUEST_POINT_DATA.getPvpPointsInfo().containsKey(targetPlayer.getLevel()))
 			{
-				updatePoints(attackerPlayer, CONQUEST_POINT_DATA.getPvpPersonalPointsAmount(targetPlayer.getLevel()), CONQUEST_POINT_DATA.getPvpServerPointsAmount(targetPlayer.getLevel()), 0, 0, true);
+				updatePoints(attackerPlayer, CONQUEST_POINT_DATA.getPvpPersonalPointsAmount(targetPlayer.getLevel()), CONQUEST_POINT_DATA.getPvpServerPointsAmount(targetPlayer.getLevel()), 0, 0, 0, true);
 				if ((getAttackPoints(attackerPlayer) >= 1) && (getLifePoints(targetPlayer) >= 1))
 				{
-					attackerPlayer.addItem("ConquestCoins", BLOODY_COIN, CONQUEST_POINT_DATA.getCoinsAmount(targetPlayer.getLevel()), attackerPlayer, true);
+					attackerPlayer.addItem("ConquestCoins", BLOODY_COIN, CONQUEST_POINT_DATA.getCoinsAmount(targetPlayer.getLevel()) * Config.CONQUEST_RATE_BLOODY_COINS, attackerPlayer, true);
 					setAttackPoints(attackerPlayer, -1);
 					setLifePoints(targetPlayer, -1);
 					
@@ -685,7 +758,7 @@ public class ConquestEngine extends AbstractNpcAI
 					// Winner Message
 					SystemMessage sm2 = new SystemMessage(SystemMessageId.YOU_HAVE_DEFEATED_C1_AND_GOT_BLOODY_COINS_X_S2_PERSONAL_CONQUEST_POINTS_X_S3_SERVER_CONQUEST_POINTS_X_S4_ATTACK_POINTS_1_TO_CHECK_THEIR_CURRENT_AMOUNT_ENTER_BLOODYCOIN_IN_YOUR_CHAT_WINDOW);
 					sm2.addString(targetPlayer.getName());
-					sm2.addString(Integer.toString(CONQUEST_POINT_DATA.getCoinsAmount(targetPlayer.getLevel())));
+					sm2.addString(Integer.toString(CONQUEST_POINT_DATA.getCoinsAmount(targetPlayer.getLevel()) * Config.CONQUEST_RATE_BLOODY_COINS));
 					sm2.addString(Long.toString(CONQUEST_POINT_DATA.getPvpPersonalPointsAmount(targetPlayer.getLevel())));
 					sm2.addString(Long.toString(CONQUEST_POINT_DATA.getPvpServerPointsAmount(targetPlayer.getLevel())));
 					attackerPlayer.sendPacket(sm2);

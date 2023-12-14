@@ -35,6 +35,7 @@ import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
+import org.l2jmobius.gameserver.model.actor.transform.TransformTemplate;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
@@ -51,7 +52,6 @@ import org.l2jmobius.gameserver.model.skill.targets.AffectScope;
 import org.l2jmobius.gameserver.model.skill.targets.TargetType;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.ExBasicActionList;
 
 /**
  * @author Mobius
@@ -381,8 +381,9 @@ public class AutoUseTaskManager
 						// Do not allow to do some action if player is transformed.
 						if (player.isTransformed())
 						{
-							final int[] allowedActions = player.isTransformed() ? ExBasicActionList.ACTIONS_ON_TRANSFORM : ExBasicActionList.DEFAULT_ACTION_LIST;
-							if (Arrays.binarySearch(allowedActions, actionId) < 0)
+							final TransformTemplate transformTemplate = player.getTransformation().get().getTemplate(player);
+							final int[] allowedActions = transformTemplate.getBasicActionList();
+							if ((allowedActions == null) || (Arrays.binarySearch(allowedActions, actionId) < 0))
 							{
 								continue ACTIONS;
 							}

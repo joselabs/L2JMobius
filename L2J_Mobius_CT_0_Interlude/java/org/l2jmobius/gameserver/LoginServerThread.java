@@ -73,6 +73,7 @@ import org.l2jmobius.gameserver.network.loginserverpackets.login.PlayerAuthRespo
 import org.l2jmobius.gameserver.network.loginserverpackets.login.RequestCharacters;
 import org.l2jmobius.gameserver.network.serverpackets.CharSelectionInfo;
 import org.l2jmobius.gameserver.network.serverpackets.LoginFail;
+import org.l2jmobius.gameserver.network.serverpackets.ServerClose;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 public class LoginServerThread extends Thread
@@ -436,12 +437,7 @@ public class LoginServerThread extends Thread
 			return;
 		}
 		
-		final GameClient removed = _accountsInGameServer.remove(account);
-		if (removed != null)
-		{
-			removed.disconnect();
-		}
-		
+		_accountsInGameServer.remove(account);
 		sendPacket(new PlayerLogout(account));
 	}
 	
@@ -517,17 +513,24 @@ public class LoginServerThread extends Thread
 		final GameClient client = _accountsInGameServer.get(account);
 		if (client != null)
 		{
+			final Player player = client.getPlayer();
 			if (client.isDetached())
 			{
-				if (client.getPlayer() != null)
+				if (player != null)
 				{
-					client.getPlayer().deleteMe();
+					player.deleteMe();
 				}
+				
 				client.close(new SystemMessage(SystemMessageId.ANOTHER_PERSON_HAS_LOGGED_IN_WITH_THE_SAME_ACCOUNT));
 			}
 			else
 			{
-				Disconnection.of(client).defaultSequence(new SystemMessage(SystemMessageId.ANOTHER_PERSON_HAS_LOGGED_IN_WITH_THE_SAME_ACCOUNT));
+				if (player != null)
+				{
+					player.sendPacket(SystemMessageId.ANOTHER_PERSON_HAS_LOGGED_IN_WITH_THE_SAME_ACCOUNT);
+				}
+				
+				Disconnection.of(client).defaultSequence(ServerClose.STATIC_PACKET);
 				ACCOUNTING_LOGGER.info("Kicked by login, " + client);
 			}
 		}

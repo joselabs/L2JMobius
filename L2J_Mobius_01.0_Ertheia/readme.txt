@@ -6,7 +6,7 @@ Eclipse: https://www.mediafire.com/file/dd2fj30rtvj33lz/eclipse-java-2023-03-R-w
 Geodata: http://www.mediafire.com/file/pzykzq2vpy4po2u/L2J_Mobius_01.0_Ertheia_Geodata.zip
 
 Client (password L2jMobius): https://drive.google.com/u/0/uc?id=1MhjWZwmgfNVQeuTLWPJsFIDfeZi2300T&export=download
-System: https://mega.nz/#!s8lghARA!f7Hi1Yx5JWrNjT3kMRaGK_StI1Tnrxnhia8kaG8edSs
+System: https://mega.nz/file/opMwVYTb#GxZnLjDOV0lJvz4oUTwyojVJa9AE_mm1ypcTGSxV1KQ
 
 All provided download links are for personal use. Redistribution of these links is bannable.
 

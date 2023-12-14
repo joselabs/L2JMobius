@@ -93,6 +93,7 @@ import org.l2jmobius.gameserver.network.serverpackets.FakePlayerInfo;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.NpcSay;
+import org.l2jmobius.gameserver.network.serverpackets.ServerObjectInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.taskmanager.DecayTaskManager;
 import org.l2jmobius.gameserver.taskmanager.ItemsAutoDestroyTaskManager;
@@ -389,10 +390,10 @@ public class Npc extends Creature
 			{
 				player.sendPacket(new FakePlayerInfo(this));
 			}
-			// else if (getRunSpeed() == 0)
-			// {
-			// player.sendPacket(new ServerObjectInfo(this, player));
-			// }
+			else if (getRunSpeed() == 0)
+			{
+				player.sendPacket(new ServerObjectInfo(this, player));
+			}
 			else if (isSpawned())
 			{
 				player.sendPacket(new AbstractNpcInfo.NpcInfo(this, player));
@@ -1402,10 +1403,10 @@ public class Npc extends Creature
 			{
 				player.sendPacket(new FakePlayerInfo(this));
 			}
-			// else if (getRunSpeed() == 0)
-			// {
-			// player.sendPacket(new ServerObjectInfo(this, player));
-			// }
+			else if (getRunSpeed() == 0)
+			{
+				player.sendPacket(new ServerObjectInfo(this, player));
+			}
 			else
 			{
 				player.sendPacket(new AbstractNpcInfo.NpcInfo(this, player));

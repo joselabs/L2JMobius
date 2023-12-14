@@ -32,7 +32,7 @@ public class ModifyAssassinationPoints extends AbstractEffect
 	
 	public ModifyAssassinationPoints(StatSet params)
 	{
-		_amount = params.getInt("amount");
+		_amount = params.getInt("amount") * 10000;
 	}
 	
 	@Override
@@ -55,6 +55,6 @@ public class ModifyAssassinationPoints extends AbstractEffect
 			return;
 		}
 		
-		player.setBeastPoints(player.getAssassinationPoints() + _amount);
+		player.setAssassinationPoints(player.getAssassinationPoints() + _amount);
 	}
 }

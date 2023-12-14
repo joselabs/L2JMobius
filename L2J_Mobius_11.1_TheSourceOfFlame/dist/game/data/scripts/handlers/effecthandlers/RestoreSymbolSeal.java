@@ -16,14 +16,21 @@
  */
 package handlers.effecthandlers;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.enums.StatModifierType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
+import org.l2jmobius.gameserver.model.effects.EffectType;
+import org.l2jmobius.gameserver.model.holders.ItemSkillHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 
 /**
  * @author NviX
@@ -37,6 +44,12 @@ public class RestoreSymbolSeal extends AbstractEffect
 	{
 		_amount = params.getInt("amount", 0);
 		_mode = params.getEnum("mode", StatModifierType.class, StatModifierType.PER);
+	}
+	
+	@Override
+	public EffectType getEffectType()
+	{
+		return EffectType.RESTORE_SYMBOL_SEAL;
 	}
 	
 	@Override
@@ -77,6 +90,33 @@ public class RestoreSymbolSeal extends AbstractEffect
 			player.updateSymbolSealSkills();
 			player.sendSkillList();
 			player.broadcastUserInfo();
+			
+			// Send item list to update Dye Powder with red icon in inventory.
+			ThreadPool.schedule(() ->
+			{
+				final List<Item> items = new LinkedList<>();
+				ITEMS: for (Item i : effected.getActingPlayer().getInventory().getItems())
+				{
+					if (i.getTemplate().hasSkills())
+					{
+						for (ItemSkillHolder s : i.getTemplate().getAllSkills())
+						{
+							if (s.getSkill().hasEffectType(EffectType.RESTORE_SYMBOL_SEAL))
+							{
+								items.add(i);
+								continue ITEMS;
+							}
+						}
+					}
+				}
+				
+				if (!items.isEmpty())
+				{
+					final InventoryUpdate iu = new InventoryUpdate();
+					iu.addItems(items);
+					effected.getActingPlayer().sendInventoryUpdate(iu);
+				}
+			}, 1000);
 		}
 	}
 }

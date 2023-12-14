@@ -116,6 +116,7 @@ import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSkillL
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSocialAction;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSubChange;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSummonAgathion;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSummonSacredFire;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSummonSpawn;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSummonTalk;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerTakeHero;
@@ -296,6 +297,7 @@ public enum EventType
 	ON_PLAYER_QUEST_COMPLETE(OnPlayerQuestComplete.class, void.class),
 	ON_PLAYER_SUMMON_AGATHION(OnPlayerSummonAgathion.class, void.class),
 	ON_PLAYER_UNSUMMON_AGATHION(OnPlayerUnsummonAgathion.class, void.class),
+	ON_PLAYER_SUMMON_SACRED_FIRE(OnPlayerSummonSacredFire.class, void.class),
 	
 	// Trap events
 	ON_TRAP_ACTION(OnTrapAction.class, void.class),

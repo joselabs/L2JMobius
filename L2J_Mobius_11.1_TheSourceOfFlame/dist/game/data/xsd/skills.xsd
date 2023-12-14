@@ -710,6 +710,36 @@
 																	</xs:sequence>
 																</xs:complexType>
 															</xs:element>
+															<xs:element name="summonerLevels">
+																<xs:complexType mixed="true">
+																	<xs:sequence minOccurs="0">
+																		<xs:element maxOccurs="unbounded" name="value">
+																			<xs:complexType>
+																				<xs:simpleContent>
+																					<xs:extension base="xs:unsignedShort">
+																						<xs:attribute name="level" type="xs:integer" use="required" />
+																					</xs:extension>
+																				</xs:simpleContent>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="npcIds">
+																<xs:complexType mixed="true">
+																	<xs:sequence minOccurs="0">
+																		<xs:element maxOccurs="unbounded" name="value">
+																			<xs:complexType>
+																				<xs:simpleContent>
+																					<xs:extension base="xs:unsignedShort">
+																						<xs:attribute name="level" type="xs:integer" use="required" />
+																					</xs:extension>
+																				</xs:simpleContent>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
 															<xs:element name="lifeTime">
 																<xs:complexType mixed="true">
 																	<xs:sequence minOccurs="0">
@@ -2752,6 +2782,9 @@
 																</xs:sequence>
 															</xs:complexType>
 														</xs:element>
+														<xs:element minOccurs="0" name="slot" type="xs:string" />
+														<xs:element minOccurs="0" name="dispel" type="xs:string" />
+														<xs:element minOccurs="0" name="rate" type="xs:unsignedByte" />
 													</xs:sequence>
 													<xs:attribute name="name" type="xs:string" use="required" />
 													<xs:attribute name="fromLevel" type="xs:unsignedByte" use="optional" />

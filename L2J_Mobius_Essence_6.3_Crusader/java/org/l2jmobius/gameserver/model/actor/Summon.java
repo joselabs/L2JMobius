@@ -74,10 +74,10 @@ import org.l2jmobius.gameserver.network.serverpackets.TeleportToLocation;
 import org.l2jmobius.gameserver.network.serverpackets.pet.ExPetInfo;
 import org.l2jmobius.gameserver.network.serverpackets.pet.ExPetSkillList;
 import org.l2jmobius.gameserver.network.serverpackets.pet.PetDelete;
-import org.l2jmobius.gameserver.network.serverpackets.pet.PetInfo;
 import org.l2jmobius.gameserver.network.serverpackets.pet.PetInventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.pet.PetItemList;
 import org.l2jmobius.gameserver.network.serverpackets.pet.PetStatusUpdate;
+import org.l2jmobius.gameserver.network.serverpackets.pet.PetSummonInfo;
 import org.l2jmobius.gameserver.taskmanager.DecayTaskManager;
 
 public abstract class Summon extends Playable
@@ -134,7 +134,7 @@ public abstract class Summon extends Playable
 		{
 			if (isPet())
 			{
-				sendPacket(new PetInfo(this, 1));
+				sendPacket(new PetSummonInfo(this, 1));
 				sendPacket(new ExPetSkillList(true, (Pet) this));
 				if (getInventory() != null)
 				{
@@ -228,7 +228,7 @@ public abstract class Summon extends Playable
 					{
 						if (player == _owner)
 						{
-							player.sendPacket(new PetInfo(this, 1));
+							player.sendPacket(new PetSummonInfo(this, 1));
 							return;
 						}
 						
@@ -392,7 +392,7 @@ public abstract class Summon extends Playable
 	@Override
 	public void onDecay()
 	{
-		super.onDecay();
+		unSummon(_owner);
 		deleteMe(_owner);
 	}
 	
@@ -879,7 +879,7 @@ public abstract class Summon extends Playable
 		
 		if (isSpawned())
 		{
-			sendPacket(new PetInfo(this, value));
+			sendPacket(new PetSummonInfo(this, value));
 			sendPacket(new PetStatusUpdate(this));
 			broadcastNpcInfo(value);
 			
@@ -900,7 +900,14 @@ public abstract class Summon extends Playable
 				return;
 			}
 			
-			player.sendPacket(new ExPetInfo(this, player, value));
+			if (isPet())
+			{
+				player.sendPacket(new ExPetInfo(this, player, value));
+			}
+			else
+			{
+				player.sendPacket(new SummonInfo(this, player, value));
+			}
 		});
 	}
 	
@@ -925,7 +932,7 @@ public abstract class Summon extends Playable
 		// Check if the Player is the owner of the Pet
 		if (player == _owner)
 		{
-			player.sendPacket(new PetInfo(this, isDead() ? 0 : 1));
+			player.sendPacket(new PetSummonInfo(this, isDead() ? 0 : 1));
 			if (isPet())
 			{
 				player.sendPacket(new PetItemList(getInventory().getItems()));
@@ -933,7 +940,14 @@ public abstract class Summon extends Playable
 		}
 		else
 		{
-			player.sendPacket(new ExPetInfo(this, player, 0));
+			if (isPet())
+			{
+				player.sendPacket(new ExPetInfo(this, player, 0));
+			}
+			else
+			{
+				player.sendPacket(new SummonInfo(this, player, 0));
+			}
 		}
 	}
 	
@@ -979,7 +993,7 @@ public abstract class Summon extends Playable
 		{
 			setTarget(target);
 			getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, target);
-			if (target.isFakePlayer())
+			if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
 			{
 				_owner.updatePvPStatus();
 			}
@@ -1166,7 +1180,7 @@ public abstract class Summon extends Playable
 			{
 				owner.sendPacket(new PetItemList(getInventory().getItems()));
 			}
-			owner.sendPacket(new PetInfo(this, 1));
+			owner.sendPacket(new PetSummonInfo(this, 1));
 		}
 	}
 	

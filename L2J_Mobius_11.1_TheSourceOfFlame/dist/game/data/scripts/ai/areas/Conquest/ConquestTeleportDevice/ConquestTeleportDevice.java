@@ -21,6 +21,7 @@ import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.ClanMember;
 
 import ai.AbstractNpcAI;
 
@@ -35,7 +36,16 @@ public class ConquestTeleportDevice extends AbstractNpcAI
 	private static final int DEVICE2 = 34597; // Teleport Device 2 ( Water Side Teleporter)
 	private static final int DEVICE3 = 34661; // Teleport Device 3 ( Fire Side Teleporter)
 	
-	// Locations
+	// Enter Locations
+	private static final Location[] ENTER_LOCS =
+	{
+		// Water Area
+		new Location(-525, -201894, -3016), // Fire & Water Border (Water Side)
+		// Fire Area
+		new Location(446, -201800, -3000), // Fire & Water Border (Fire Side)
+	};
+	
+	// Hunt Locations
 	private static final Location[] HUNT_LOCS =
 	{
 		// Water Areas
@@ -45,9 +55,7 @@ public class ConquestTeleportDevice extends AbstractNpcAI
 		new Location(-2570, -213261, -3603), // Zone 3 - Nox
 		new Location(-11731, -215556, -2800), // Zone 4 - Callide Hall
 		new Location(-24036, -220963, -3511), // Eigis Seat
-		new Location(-525, -201894, -3016), // Fire & Water Border (Water Side)
 		// Fire Areas
-		new Location(446, -201800, -3000), // Fire & Water Border (Fire Side)
 		new Location(7515, -202872, -3184), // Fire Fortress
 		new Location(21937, -225270, -3800), // Kellond's Secret Barracks
 		new Location(10256, -217176, -3568), // Zone 1 - Vita (Lv. 124)
@@ -80,86 +88,111 @@ public class ConquestTeleportDevice extends AbstractNpcAI
 				checkPrivs(player);
 				break;
 			}
-		}
-		if (checkPrivs(player))
-		{
-			switch (event)
+			case "waterZone0":
 			{
-				case "waterZone1":
+				player.teleToLocation(ENTER_LOCS[0], 0, player.getInstanceWorld());
+				break;
+			}
+			case "fireZone0":
+			{
+				player.teleToLocation(ENTER_LOCS[1], 0, player.getInstanceWorld());
+				break;
+			}
+			case "waterZone1":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[0], 0, player.getInstanceWorld());
-					break;
 				}
-				case "waterZone2":
+				break;
+			}
+			case "waterZone2":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[1], 0, player.getInstanceWorld());
-					break;
 				}
-				case "waterZone3":
+				break;
+			}
+			case "waterZone3":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[2], 0, player.getInstanceWorld());
-					break;
 				}
-				case "waterZone4":
+				break;
+			}
+			case "waterZone4":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[3], 0, player.getInstanceWorld());
-					break;
 				}
-				case "waterZone5":
+				break;
+			}
+			case "waterZone5":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[4], 0, player.getInstanceWorld());
-					break;
 				}
-				case "waterZone6":
+				break;
+			}
+			case "waterZone6":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[5], 0, player.getInstanceWorld());
-					break;
 				}
-				case "waterZone7":
+				break;
+			}
+			case "fireZone1":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[6], 0, player.getInstanceWorld());
-					break;
 				}
-				case "fireZone1":
+				break;
+			}
+			case "fireZone2":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[7], 0, player.getInstanceWorld());
-					break;
 				}
-				case "fireZone2":
+				break;
+			}
+			case "fireZone3":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[8], 0, player.getInstanceWorld());
-					break;
 				}
-				case "fireZone3":
+				break;
+			}
+			case "fireZone4":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[9], 0, player.getInstanceWorld());
-					break;
 				}
-				case "fireZone4":
+				break;
+			}
+			case "fireZone5":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[10], 0, player.getInstanceWorld());
-					break;
 				}
-				case "fireZone5":
+				break;
+			}
+			case "fireZone6":
+			{
+				if (checkPrivs(player))
 				{
 					player.teleToLocation(HUNT_LOCS[11], 0, player.getInstanceWorld());
-					break;
 				}
-				case "fireZone6":
-				{
-					player.teleToLocation(HUNT_LOCS[12], 0, player.getInstanceWorld());
-					break;
-				}
-				case "fireZone7":
-				{
-					player.teleToLocation(HUNT_LOCS[13], 0, player.getInstanceWorld());
-					break;
-				}
-				default:
-				{
-					player.sendMessage("You can't use the teleport device.");
-					break;
-				}
+				break;
 			}
 		}
 		return htmltext;
@@ -167,13 +200,28 @@ public class ConquestTeleportDevice extends AbstractNpcAI
 	
 	private boolean checkPrivs(Player player)
 	{
-		final int prevSeasonConquerorId = RankManager.getInstance().getPreviousConquestRankList().get(1) != null ? RankManager.getInstance().getPreviousConquestRankList().get(1).getInt("charId") : 0;
-		if (Config.CONQUEST_TELEPORTS_FOR_ALL || (player.getClan().getLeaderId() == prevSeasonConquerorId))
+		final int prevSeasonRank1Id = RankManager.getInstance().getPreviousConquestRankList().get(1) != null ? RankManager.getInstance().getPreviousConquestRankList().get(1).getInt("charId") : 0;
+		final int currentSeasonRank1Id = RankManager.getInstance().getCurrentConquestRankList().get(1) != null ? RankManager.getInstance().getCurrentConquestRankList().get(1).getInt("charId") : 0;
+		if (Config.CONQUEST_TELEPORTS_FOR_ALL)
 		{
 			player.sendMessage("You are free to use this teleport device.");
 			return true;
 		}
-		
+		// Check if rank 1 player id is in checker clan or not
+		else if (player.getClan() != null)
+		{
+			for (ClanMember member : player.getClan().getMembers())
+			{
+				if ((member.getObjectId() == prevSeasonRank1Id) || (member.getObjectId() == (currentSeasonRank1Id)))
+				{
+					player.sendMessage("You are free to use this teleport device.");
+					return true;
+				}
+				player.sendMessage("You can't use this teleport device, because you don't belong to the conquest conqueror clan.");
+				return false;
+			}
+		}
+		// If no clan
 		player.sendMessage("You can't use this teleport device, because you don't belong to the conquest conqueror clan.");
 		return false;
 	}

@@ -103,10 +103,6 @@ public class RequestEnchantItem implements ClientPacket
 			player.removeRequest(request.getClass());
 			return;
 		}
-		if (item.getEnchantLevel() != request.getEnchantLevel())
-		{
-			item.setEnchantLevel(request.getEnchantLevel());
-		}
 		
 		// Template for scroll.
 		final EnchantScroll scrollTemplate = EnchantItemData.getInstance().getEnchantScroll(scroll);

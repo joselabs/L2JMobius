@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `raidboss_spawnlist` (
   `currentHp` decimal(8,0) DEFAULT NULL,
   `currentMp` decimal(8,0) DEFAULT NULL,
   PRIMARY KEY (`boss_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 INSERT IGNORE INTO `raidboss_spawnlist` (`boss_id`,`loc_x`,`loc_y`,`loc_z`,`heading`,`respawn_delay`,`respawn_random`,`currentHp`,`currentMp`) VALUES
 (25001,-54416,146480,-2887,0,86400,43200,95986,514), -- Greyclaw Kutus (23)
@@ -82,18 +82,18 @@ INSERT IGNORE INTO `raidboss_spawnlist` (`boss_id`,`loc_x`,`loc_y`,`loc_z`,`head
 (25170,26064,121808,-3738,0,86400,43200,195371,994), -- Lizardmen Leader Hellion (38)
 (25173,75968,110784,-2512,0,86400,43200,288415,1355), -- Tiger King Karuta (45)
 -- (25176,92544,115232,-3200,0,86400,43200,451391,1975), -- Black Lily (55) (Not spawned anymore in H5)
-(25179,167152,53120,-4148,0,86400,43200,526218,2301), -- Guardian Of The Statue Of Giant Karum (60)
+(25179,181814,52379,-4344,0,86400,43200,526218,2301), -- Guardian Of The Statue Of Giant Karum (60)
 (25182,41966,215417,-3728,0,86400,43200,512194,2235), -- Demon Kurikups (59)
-(25185,99732,204331,-3784,0,86400,43200,165289,893), -- Tasaba Patriarch Hellena (35)
+(25185,88123,166312,-3412,0,86400,43200,165289,893), -- Tasaba Patriarch Hellena (35)
 (25188,127544,215264,-2960,0,86400,43200,255564,731), -- Apepi (30)
-(25189,127837,200661,-3792,0,86400,43200,156584,860), -- Cronos's Servitor Mumu (34)
+(25189,68832,203024,-3547,0,86400,43200,156584,860), -- Cronos's Servitor Mumu (34)
 (25192,125920,190208,-3291,0,86400,43200,258849,1237), -- Earth Protector Panathen (43)
 (25198,102656,157424,-3735,0,86400,43200,1777317,2987), -- Fafurion's Herald Lokness (70)
 (25199,108096,157408,-3688,0,86400,43200,912634,3130), -- Water Dragon Seer Sheshark (72)
 (25202,119760,157392,-3744,0,86400,43200,935092,3274), -- Krokian Padisha Sobekk (74)
 (25205,123808,153408,-3671,0,86400,43200,956490,3420), -- Ocean Flame Ashakiel (76)
-(25208,109663,213615,-3624,0,86400,43200,218810,1062), -- Water Couatle Ateka (40)
-(25211,113456,198118,-3689,0,86400,43200,174646,927), -- Sebek (36)
+(25208,73776,201552,-3760,0,86400,43200,218810,1062), -- Water Couatle Ateka (40)
+(25211,76352,193216,-3648,0,86400,43200,174646,927), -- Sebek (36)
 (25214,111582,209341,-3687,0,86400,43200,218810,1062), -- Fafurion's Page Sika (40)
 -- (25217,89904,105712,-3292,0,86400,43200,369009,1660), -- Cursed Clara (50) (Not spawned anymore in H5)
 (25220,113551,17083,-2120,0,86400,43200,924022,3202), -- Death Lord Hallate (73)
@@ -122,7 +122,7 @@ INSERT IGNORE INTO `raidboss_spawnlist` (`boss_id`,`loc_x`,`loc_y`,`loc_z`,`head
 -- (25273,23800,119500,-8976,0,86400,43200,507285,2104), -- Carnamakos (50) (Spawn by Quest)
 (25276,154088,-14116,-3736,0,86400,43200,1891801,3347), -- Death Lord Ipos (75)
 (25277,54651,180269,-4976,0,86400,43200,507285,1660), -- Lilith's Witch Marilion (50)
-(25280,85622,88766,-5120,0,86400,43200,1248928,1975), -- Pagan Watcher Cerberon (55)
+(25280,-12621,-240437,-8160,0,86400,43200,1248928,1975), -- Pagan Watcher Cerberon (55)
 (25281,151053,88124,-5424,0,86400,43200,1777317,2987), -- Anakim's Nemesis Zakaron (70)
 (25282,179311,-7632,-4896,0,86400,43200,1891801,3347), -- Death Lord Shax (75)
 -- (25283,184410,-10111,-5488,0,86400,43200,1639146,3793), -- Lilith (80) (Spawn by Seven Signs)
@@ -170,7 +170,7 @@ INSERT IGNORE INTO `raidboss_spawnlist` (`boss_id`,`loc_x`,`loc_y`,`loc_z`,`head
 (25388,40128,101920,-1241,0,86400,43200,165289,893), -- Red Eye Captain Trakia (35)
 (25391,45600,120592,-2455,0,86400,43200,297015,827), -- Nurka's Messenger (33)
 (25392,29928,107160,-3708,0,86400,43200,141034,795), -- Captain Of Queen's Royal Guards (32)
-(25394,129481,219722,-3600,0,86400,43200,390743,994), -- Premo Prime (38)
+(25394,101888,200224,-3708,0,86400,43200,390743,994), -- Premo Prime (38)
 (25395,15000,119000,-11900,0,86400,43200,288415,1355), -- Archon Suscepter (45)
 (25398,5000,189000,-3728,0,86400,43200,165289,893), -- Eye Of Beleth (35)
 (25401,117808,102880,-3600,0,86400,43200,141034,795), -- Skyla (32)

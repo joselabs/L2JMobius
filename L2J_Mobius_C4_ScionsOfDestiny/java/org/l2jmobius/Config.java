@@ -550,6 +550,7 @@ public class Config
 	public static boolean ENABLE_AUTO_SKILL;
 	public static boolean ENABLE_AUTO_ITEM;
 	public static boolean RESUME_AUTO_PLAY;
+	public static boolean ENABLE_AUTO_ASSIST;
 	public static Set<Integer> DISABLED_AUTO_SKILLS = new HashSet<>();
 	public static Set<Integer> DISABLED_AUTO_ITEMS = new HashSet<>();
 	public static String AUTO_PLAY_LOGIN_MESSAGE;
@@ -1802,6 +1803,7 @@ public class Config
 		ENABLE_AUTO_SKILL = autoPlayConfig.getBoolean("EnableAutoSkill", true);
 		ENABLE_AUTO_ITEM = autoPlayConfig.getBoolean("EnableAutoItem", true);
 		RESUME_AUTO_PLAY = autoPlayConfig.getBoolean("ResumeAutoPlay", false);
+		ENABLE_AUTO_ASSIST = autoPlayConfig.getBoolean("AssistLeader", false);
 		DISABLED_AUTO_SKILLS.clear();
 		final String disabledSkills = autoPlayConfig.getString("DisabledSkillIds", "");
 		if (!disabledSkills.isEmpty())

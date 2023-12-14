@@ -28,6 +28,8 @@ import org.l2jmobius.gameserver.model.quest.newquestdata.QuestCondType;
 import org.l2jmobius.gameserver.network.serverpackets.quest.ExQuestDialog;
 import org.l2jmobius.gameserver.network.serverpackets.quest.ExQuestNotification;
 
+import quests.Q10062_StrengthOfSpirit.Q10062_StrengthOfSpirit;
+
 /**
  * @author Magik
  */
@@ -104,10 +106,10 @@ public class Q10061_NewLifesLessons extends Quest
 					questState.exitQuest(false, true);
 					rewardPlayer(player);
 					
-					final QuestState nextQuestState = player.getQuestState(Q10061_NewLifesLessons.class.getSimpleName());
+					final QuestState nextQuestState = player.getQuestState(Q10062_StrengthOfSpirit.class.getSimpleName());
 					if (nextQuestState == null)
 					{
-						player.sendPacket(new ExQuestDialog(10061, QuestDialogType.ACCEPT));
+						player.sendPacket(new ExQuestDialog(10062, QuestDialogType.ACCEPT));
 					}
 				}
 				break;

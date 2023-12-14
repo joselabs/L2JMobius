@@ -36,6 +36,8 @@ import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureZoneEnter;
 import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureZoneExit;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.interfaces.ILocational;
+import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
@@ -215,6 +217,10 @@ public abstract class ZoneType extends ListenersContainer
 		// Check level
 		if ((creature.getLevel() < _minLevel) || (creature.getLevel() > _maxLevel))
 		{
+			if (creature.isPlayer())
+			{
+				creature.getActingPlayer().sendPacket(new ExShowScreenMessage(SystemMessageId.YOU_CANNOT_ENTER_AS_YOUR_LEVEL_DOES_NOT_MEET_THE_REQUIREMENTS, ExShowScreenMessage.TOP_CENTER, 10000));
+			}
 			return false;
 		}
 		

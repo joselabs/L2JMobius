@@ -177,7 +177,14 @@ public class Q00933_TombRaiders extends Quest
 		final Party party = killer.getParty();
 		if (party != null)
 		{
-			party.getMembers().forEach(p -> processKill(npc, p));
+			for (Player member : party.getMembers())
+			{
+				final QuestState qs = getQuestState(member, false);
+				if (qs != null)
+				{
+					processKill(npc, member);
+				}
+			}
 		}
 		else
 		{

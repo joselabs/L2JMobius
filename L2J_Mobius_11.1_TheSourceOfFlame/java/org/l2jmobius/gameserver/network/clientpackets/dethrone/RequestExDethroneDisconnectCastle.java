@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.dethrone;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -55,11 +54,11 @@ public class RequestExDethroneDisconnectCastle implements ClientPacket
 			player.sendMessage("Conquest connection is inactive.");
 			
 			final long serverPoints = GlobalVariablesManager.getInstance().getLong("CONQUEST_SERVER_POINTS", 0);
-			final long soulOrbScore = (serverPoints * Config.CONQUEST_RATE_SERVER_SOUL_ORBS); // Custom value.
+			final long serverSoulOrbs = GlobalVariablesManager.getInstance().getLong("CONQUEST_SERVER_SOUL_ORBS", 0L);
 			final boolean adenCastleOwner = (player.getClan() != null) && (player.getObjectId() == player.getClan().getLeaderId()) && (player.getClan().getCastleId() == 5); // Aden Castle Id is 5 _bConnected = true
 			GlobalVariablesManager.getInstance().set("CONQUEST_CONNECTED", false);
 			player.sendPacket(new ExDethroneDisconnectCastle(false));
-			player.sendPacket(new ExDethroneServerInfo(serverPoints, soulOrbScore, adenCastleOwner, false));
+			player.sendPacket(new ExDethroneServerInfo(serverPoints, serverSoulOrbs, adenCastleOwner, false));
 			player.sendPacket(SystemMessageId.THE_CONNECTION_TO_THE_CONQUEST_WORLD_IS_LOST);
 		}
 	}

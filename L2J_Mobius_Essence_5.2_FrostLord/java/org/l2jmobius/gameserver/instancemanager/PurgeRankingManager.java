@@ -225,7 +225,7 @@ public class PurgeRankingManager
 			{
 			}
 		}
-		return top5.entrySet().stream().sorted(Map.Entry.<String, Integer> comparingByValue().reversed()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+		return top5.entrySet().stream().sorted(Entry.<String, Integer> comparingByValue().reversed()).collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 	}
 	
 	public SimpleEntry<Integer, Integer> getPlayerRating(int category, int charId)

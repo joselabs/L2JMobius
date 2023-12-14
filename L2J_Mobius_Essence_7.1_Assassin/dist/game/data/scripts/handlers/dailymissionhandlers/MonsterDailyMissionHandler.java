@@ -113,7 +113,7 @@ public class MonsterDailyMissionHandler extends AbstractDailyMissionHandler
 		
 		final Player player = event.getAttacker();
 		final int monsterLevel = monster.getLevel();
-		if ((_minLevel > 0) && ((monsterLevel < _minLevel) || (monsterLevel > _maxLevel) || ((player.getLevel() - monsterLevel) > 5)))
+		if ((_minLevel > 0) && ((monsterLevel < _minLevel) || (monsterLevel > _maxLevel) || ((player.getLevel() - monsterLevel) > 15)))
 		{
 			return;
 		}

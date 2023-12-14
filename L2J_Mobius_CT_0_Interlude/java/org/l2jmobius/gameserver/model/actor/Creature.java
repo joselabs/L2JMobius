@@ -153,6 +153,7 @@ import org.l2jmobius.gameserver.network.serverpackets.MagicSkillLaunched;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.MoveToLocation;
 import org.l2jmobius.gameserver.network.serverpackets.Revive;
+import org.l2jmobius.gameserver.network.serverpackets.ServerObjectInfo;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SetupGauge;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
@@ -1111,7 +1112,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 				_attackEndTime = currentTime + TimeUnit.MILLISECONDS.toNanos(Integer.MAX_VALUE);
 			}
 			
-			if (isFakePlayer() && (target.isPlayable() || target.isFakePlayer()))
+			if (isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE && (target.isPlayable() || target.isFakePlayer()))
 			{
 				final Npc npc = ((Npc) this);
 				if (!npc.isScriptValue(1))
@@ -1857,7 +1858,10 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 				}
 			}
 			
-			sendPacket(sm);
+			if (sm != null)
+			{
+				sendPacket(sm);
+			}
 		}
 		
 		if (skill.hasEffects(EffectScope.START))
@@ -2464,6 +2468,12 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	{
 		if (hasAI())
 		{
+			if (isAttackable())
+			{
+				getAttackByList().clear();
+				((Attackable) this).clearAggroList();
+				getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
+			}
 			getAI().stopAITask();
 		}
 		
@@ -2485,12 +2495,6 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	{
 		if (hasAI())
 		{
-			if (isAttackable())
-			{
-				getAttackByList().clear();
-				((Attackable) this).clearAggroList();
-				getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-			}
 			getAI().stopAITask();
 		}
 		
@@ -2901,10 +2905,10 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 				{
 					player.sendPacket(new FakePlayerInfo((Npc) this));
 				}
-				// else if (_stat.getRunSpeed() == 0)
-				// {
-				// player.sendPacket(new ServerObjectInfo((Npc) this, player));
-				// }
+				else if (_stat.getRunSpeed() == 0)
+				{
+					player.sendPacket(new ServerObjectInfo((Npc) this, player));
+				}
 				else
 				{
 					player.sendPacket(new AbstractNpcInfo.NpcInfo((Npc) this, player));
@@ -3736,10 +3740,10 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 						{
 							player.sendPacket(new FakePlayerInfo((Npc) this));
 						}
-						// else if (_stat.getRunSpeed() == 0)
-						// {
-						// player.sendPacket(new ServerObjectInfo((Npc) this, player));
-						// }
+						else if (_stat.getRunSpeed() == 0)
+						{
+							player.sendPacket(new ServerObjectInfo((Npc) this, player));
+						}
 						else
 						{
 							player.sendPacket(new AbstractNpcInfo.NpcInfo((Npc) this, player));
@@ -5856,7 +5860,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 							}
 						}
 					}
-					if (target.isFakePlayer())
+					if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
 					{
 						player.updatePvPStatus();
 					}

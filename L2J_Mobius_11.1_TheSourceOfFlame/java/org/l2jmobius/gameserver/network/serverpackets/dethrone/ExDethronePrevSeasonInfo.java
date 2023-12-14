@@ -34,14 +34,14 @@ public class ExDethronePrevSeasonInfo extends ServerPacket
 {
 	private final Player _player;
 	private final Long _previousSeasonServerPoints;
-	private final Long _previousSeasonSoulOrbsScore;
+	private final Long _previousSeasonServerSoulOrbs;
 	private final Map<Integer, StatSet> _previousConquestPlayerList;
 	
-	public ExDethronePrevSeasonInfo(Player player, Long prevServerPoints, Long prevSoulOrbsScore)
+	public ExDethronePrevSeasonInfo(Player player, Long prevServerPoints, Long prevServerSoulOrbs)
 	{
 		_player = player;
 		_previousSeasonServerPoints = prevServerPoints;
-		_previousSeasonSoulOrbsScore = prevSoulOrbsScore;
+		_previousSeasonServerSoulOrbs = prevServerSoulOrbs;
 		_previousConquestPlayerList = RankManager.getInstance().getPreviousConquestRankList();
 	}
 	
@@ -81,13 +81,13 @@ public class ExDethronePrevSeasonInfo extends ServerPacket
 		writeInt(Config.SERVER_ID); // server id
 		writeLong(_previousSeasonServerPoints); // Server points
 		
-		writeLong(_previousSeasonSoulOrbsScore); // Total Soul Orbs
+		writeLong(_previousSeasonServerSoulOrbs); // Total Soul Orbs
 		writeLong(_previousSeasonServerPoints); // Server points
 		
 		// Personal Reward
 		if (personalPoints > Config.CONQUEST_PERSONAL_REWARD_MIN_POINTS)
 		{
-			int rewardRank = 0;		
+			int rewardRank = 0;
 			// rank percent formula
 			double rankPercent = ((rank * 100) / (RankManager.getInstance().getPreviousConquestRankList().size()));
 			
