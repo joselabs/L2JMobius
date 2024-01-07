@@ -499,7 +499,7 @@ public class MailBBSManager extends BaseBBSManager
 		content = content.replace("%receiver%", letter.recipientNames);
 		content = content.replace("%delDate%", "Unknown");
 		content = content.replace("%title%", letter.subject.replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;"));
-		content = content.replace("%mes%", letter.message.replace("\r\n", "<br>").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;"));
+		content = content.replace("%mes%", letter.message.replace("\r\n", "<br>").replace("<br1>", "|||BR1|||").replace("<br>", "|||BR|||").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;").replace("|||BR|||", "<br>").replace("|||BR1|||", "<br1>"));
 		content = content.replace("%letterId%", letter.letterId + "");
 		separateAndSend(content, activeChar);
 	}
