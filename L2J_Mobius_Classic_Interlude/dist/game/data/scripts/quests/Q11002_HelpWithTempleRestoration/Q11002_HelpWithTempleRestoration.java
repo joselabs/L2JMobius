@@ -45,7 +45,7 @@ public class Q11002_HelpWithTempleRestoration extends Quest
 	private static final int WARRIORS_GAITERS = 90307;
 	private static final int MEDIUMS_TUNIC = 90308;
 	private static final int MEDIUMS_STOCKINGS = 90309;
-	private static final int RING_NOVICE = 29497;
+	private static final int EARRING_NOVICE = 49040;
 	// Monsters
 	private static final int ORC_LIEUTENANT = 20096;
 	private static final int ORC_CAPTAIN = 20098;
@@ -97,7 +97,7 @@ public class Q11002_HelpWithTempleRestoration extends Quest
 					takeItems(player, STONE_POWDER, 20);
 					giveItems(player, WARRIORS_ARMOR, 1);
 					giveItems(player, WARRIORS_GAITERS, 1);
-					giveItems(player, RING_NOVICE, 2);
+					giveItems(player, EARRING_NOVICE, 2);
 					addExpAndSp(player, 80000, 0);
 					qs.exitQuest(false, true);
 					htmltext = "30035-03.html";
@@ -114,7 +114,7 @@ public class Q11002_HelpWithTempleRestoration extends Quest
 					takeItems(player, STONE_POWDER, 20);
 					giveItems(player, MEDIUMS_TUNIC, 1);
 					giveItems(player, MEDIUMS_STOCKINGS, 1);
-					giveItems(player, RING_NOVICE, 2);
+					giveItems(player, EARRING_NOVICE, 2);
 					addExpAndSp(player, 80000, 0);
 					qs.exitQuest(false, true);
 					htmltext = "30035-04.html";

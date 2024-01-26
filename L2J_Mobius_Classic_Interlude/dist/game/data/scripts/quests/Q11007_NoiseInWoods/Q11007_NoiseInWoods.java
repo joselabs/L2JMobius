@@ -45,7 +45,7 @@ public class Q11007_NoiseInWoods extends Quest
 	// Rewards
 	private static final int RED_SUNSET_SWORD = 49046;
 	private static final int RED_SUNSET_STAFF = 49045;
-	private static final int RING_NOVICE = 29497;
+	private static final int RING_NOVICE = 49041;
 	private static final int NECKLACE_NOVICE = 49039;
 	// Monsters
 	private static final int GRAY_WOLF = 20525;

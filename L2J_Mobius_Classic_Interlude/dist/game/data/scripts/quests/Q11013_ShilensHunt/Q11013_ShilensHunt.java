@@ -45,7 +45,7 @@ public class Q11013_ShilensHunt extends Quest
 	// Rewards
 	private static final int BLOOD_SABER = 49050;
 	private static final int ELDRITCH_DAGGER = 49049;
-	private static final int RING_NOVICE = 29497;
+	private static final int RING_NOVICE = 49041;
 	private static final int NECKLACE_NOVICE = 49039;
 	// Monsters
 	private static final int ASHEN_WOLVES = 20456;

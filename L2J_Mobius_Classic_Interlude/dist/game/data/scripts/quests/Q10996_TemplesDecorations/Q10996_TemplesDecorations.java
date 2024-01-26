@@ -46,7 +46,7 @@ public class Q10996_TemplesDecorations extends Quest
 	private static final int WARRIORS_GAITERS = 90307;
 	private static final int MEDIUMS_TUNIC = 90308;
 	private static final int MEDIUMS_STOCKINGS = 90309;
-	private static final int RING_NOVICE = 29497;
+	private static final int EARRING_NOVICE = 49040;
 	// Monsters
 	private static final int BARBED_BATS = 20370;
 	private static final int CRYSTAL_PUMA = 20510;
@@ -99,7 +99,7 @@ public class Q10996_TemplesDecorations extends Quest
 					takeItems(player, GOLEM_ORE, 20);
 					giveItems(player, WARRIORS_ARMOR, 1);
 					giveItems(player, WARRIORS_GAITERS, 1);
-					giveItems(player, RING_NOVICE, 2);
+					giveItems(player, EARRING_NOVICE, 2);
 					addExpAndSp(player, 80000, 0);
 					qs.exitQuest(false, true);
 					htmltext = "30538-03.html";
@@ -117,7 +117,7 @@ public class Q10996_TemplesDecorations extends Quest
 					takeItems(player, GOLEM_ORE, 20);
 					giveItems(player, MEDIUMS_TUNIC, 1);
 					giveItems(player, MEDIUMS_STOCKINGS, 1);
-					giveItems(player, RING_NOVICE, 2);
+					giveItems(player, EARRING_NOVICE, 2);
 					addExpAndSp(player, 80000, 0);
 					qs.exitQuest(false, true);
 					htmltext = "30538-04.html";

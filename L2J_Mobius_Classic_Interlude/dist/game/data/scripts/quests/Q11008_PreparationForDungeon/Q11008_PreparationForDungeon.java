@@ -45,7 +45,7 @@ public class Q11008_PreparationForDungeon extends Quest
 	private static final int WARRIORS_GAITERS = 90307;
 	private static final int MEDIUMS_TUNIC = 90308;
 	private static final int MEDIUMS_STOCKINGS = 90309;
-	private static final int RING_NOVICE = 29497;
+	private static final int EARRING_NOVICE = 49040;
 	// Monsters
 	private static final int KABOO_ORC_WARRIOR_CAPTAIN = 20472;
 	private static final int KABOO_ORC_WARRIOR_LIEUTENANT = 20473;
@@ -99,7 +99,7 @@ public class Q11008_PreparationForDungeon extends Quest
 					takeItems(player, SPIDER_VENOM, 20);
 					giveItems(player, WARRIORS_ARMOR, 1);
 					giveItems(player, WARRIORS_GAITERS, 1);
-					giveItems(player, RING_NOVICE, 2);
+					giveItems(player, EARRING_NOVICE, 2);
 					addExpAndSp(player, 80000, 0);
 					qs.exitQuest(false, true);
 					htmltext = "30220-03.html";
@@ -116,7 +116,7 @@ public class Q11008_PreparationForDungeon extends Quest
 					takeItems(player, SPIDER_VENOM, 20);
 					giveItems(player, MEDIUMS_TUNIC, 1);
 					giveItems(player, MEDIUMS_STOCKINGS, 1);
-					giveItems(player, RING_NOVICE, 2);
+					giveItems(player, EARRING_NOVICE, 2);
 					addExpAndSp(player, 80000, 0);
 					qs.exitQuest(false, true);
 					htmltext = "30220-04.html"; // Custom

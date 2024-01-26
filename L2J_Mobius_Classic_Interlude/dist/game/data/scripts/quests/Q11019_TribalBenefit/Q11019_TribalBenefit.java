@@ -45,7 +45,7 @@ public class Q11019_TribalBenefit extends Quest
 	private static final int TRIBAL_CHRONICLE = 90261;
 	// Rewards
 	private static final int BUTCHERS_SWORD = 49052;
-	private static final int RING_NOVICE = 29497;
+	private static final int RING_NOVICE = 49041;
 	private static final int NECKLACE_NOVICE = 49039;
 	// Monsters
 	private static final int KASHA_WOLF = 20475;

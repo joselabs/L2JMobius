@@ -5,8 +5,8 @@ XAMPP: https://www.mediafire.com/file/hkehxpyjn81ybsw/xampp-windows-x64-8.0.11-2
 Eclipse: https://www.mediafire.com/file/dd2fj30rtvj33lz/eclipse-java-2023-03-R-win32-x86_64.zip
 Geodata: https://www.mediafire.com/file/9huhlj0ehyas458/L2J_Mobius_Classic_Interlude_Geodata.zip
 
-Client (password L2jMobius): https://drive.google.com/file/d/1SM79tmgvgqh1TufVZfE93_7kuU_ZRvNz
-System: https://www.mediafire.com/file/0frfpbf65hhbb3c/L2J_Mobius_Classic_Interlude_System_v14.zip
+Client (password L2jMobius): https://drive.google.com/file/d/1oCTAk_XhumKgIdfOrQ7sOb0ISYalNMgL
+System: https://www.mediafire.com/file/1zwjcykzy4kpwmo/L2J_Mobius_Classic_Interlude_System_v15.zip
 
 All provided download links are for personal use. Redistribution of these links is bannable.
 

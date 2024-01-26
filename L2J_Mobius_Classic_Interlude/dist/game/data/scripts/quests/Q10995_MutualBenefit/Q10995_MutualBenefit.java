@@ -46,7 +46,7 @@ public class Q10995_MutualBenefit extends Quest
 	private static final int BOUNTY_POSTER = 90283;
 	// Rewards
 	private static final int SILVERSMITH_HAMMER = 49053;
-	private static final int RING_NOVICE = 29497;
+	private static final int RING_NOVICE = 49041;
 	private static final int NECKLACE_NOVICE = 49039;
 	// Monsters
 	private static final int BLACK_WOLF = 20317;
