@@ -50,7 +50,7 @@ public class ExAbnormalStatusUpdateFromTarget extends ServerPacket
 		{
 			writeInt(info.getSkill().getDisplayId());
 			writeShort(info.getSkill().getDisplayLevel());
-			// writeShort(info.getSkill().getSubLevel());
+			writeShort(info.getSkill().getSubLevel());
 			writeShort(info.getSkill().getAbnormalType().getClientId());
 			writeOptionalInt(info.getSkill().isAura() ? -1 : info.getTime());
 			writeInt(info.getEffectorObjectId());

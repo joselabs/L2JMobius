@@ -45,7 +45,7 @@ public class AbnormalStatusUpdate extends ServerPacket
 			{
 				writeInt(info.getSkill().getDisplayId());
 				writeShort(info.getSkill().getDisplayLevel());
-				// writeShort(info.getSkill().getSubLevel());
+				writeShort(info.getSkill().getSubLevel());
 				writeInt(info.getSkill().getAbnormalType().getClientId());
 				writeOptionalInt(info.getSkill().isAura() || info.getSkill().isToggle() ? -1 : info.getTime());
 			}
