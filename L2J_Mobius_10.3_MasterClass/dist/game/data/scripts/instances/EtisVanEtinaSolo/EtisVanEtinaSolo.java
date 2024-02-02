@@ -57,9 +57,9 @@ public class EtisVanEtinaSolo extends AbstractInstance
 	// Corridor Mobs
 	//@formatter:off
 	private static final int[] CORRIDOR_MOBS_1 = {24173, 24174, 24175, 24176};
-	private static final int[] CORRIDOR_MOBS_2 = {24180, 24181, 24182, 24183};
-	private static final int[] CORRIDOR_MOBS_3 = {24184, 24185, 24186, 24187, 24188, 24189, 24190, 24191, 24192};
-	private static final int[] CORRIDOR_MOBS_4 = {24189, 24190, 24191, 24192};
+	private static final int[] CORRIDOR_MOBS_2 = {24180, 24181, 24182, 24183, 24164, 24165, 24166, 24167};
+	private static final int[] CORRIDOR_MOBS_3 = {24184, 24185, 24186, 24187, 24188, 24189, 24190, 24191, 24192, 24168, 24169, 24170, 24171, 24172, 24173, 24174, 24175, 24176};
+	private static final int[] CORRIDOR_MOBS_4 = {24189, 24190, 24191, 24192, 24173, 24174, 24175, 24176};
 	//@formatter:on
 	private static final int PARAGON = 24193;
 	// Seals
@@ -156,6 +156,12 @@ public class EtisVanEtinaSolo extends AbstractInstance
 			}
 			case "talkLeona":
 			{
+				// Check distance from Camille spawn.
+				if (player.calculateDistance2D(-245766, 192148, 3054) > 2300)
+				{
+					return "34471-01.html";
+				}
+				
 				final Instance world = player.getInstanceWorld();
 				if (isInInstance(world))
 				{

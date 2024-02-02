@@ -112,7 +112,7 @@ public class EtinaHelperAliber extends AbstractNpcAI
 					if (plr != null)
 					{
 						final double distance = npc.calculateDistance2D(plr);
-						if (!npc.isAttackingNow() && !npc.isMoving() && (distance > 250))
+						if (!npc.isAttackingNow() && !npc.isMoving() && (distance > 250) && instance.getParameters().getBoolean("BARRICADE_DESTROYED", true))
 						{
 							final Location loc = new Location(plr.getX(), plr.getY(), plr.getZ() + 50);
 							final Location randLoc = new Location(loc.getX() + getRandom(-100, 100), loc.getY() + getRandom(-100, 100), loc.getZ());
@@ -156,8 +156,7 @@ public class EtinaHelperAliber extends AbstractNpcAI
 						aliber.setRunning();
 						aliber.setInvul(true);
 						aliber.setCanReturnToSpawnPoint(false);
-						aliber.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SKILL_CAST_LOCATIONS[0]);
-						if (aliber.getLocation().isIn2DRadius(SKILL_CAST_LOCATIONS[0], 200) && !destroyed)
+						if (aliber.getLocation().isIn2DRadius(SKILL_CAST_LOCATIONS[0], 10) && !destroyed && !aliber.isMoving())
 						{
 							aliber.broadcastPacket(new MagicSkillUse(aliber, aliber, BARRICADE_DESTRUCTION.getSkillId(), 1, 500, 0));
 							aliber.broadcastPacket(new ExShowScreenMessage(NpcStringId.ALIBER_IS_CASTING_A_SPELL_TO_DESTROY_THE_BARRICADE, ExShowScreenMessage.TOP_CENTER, 7000, true));
@@ -168,15 +167,18 @@ public class EtinaHelperAliber extends AbstractNpcAI
 									barricade.decayMe();
 								}
 							});
-							instance.getParameters().set("BARRICADE_DESTROYED", true);
 							instance.despawnGroup("BARRICADES_1");
+							instance.getParameters().set("BARRICADE_DESTROYED", true);
+						}
+						else
+						{
+							aliber.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SKILL_CAST_LOCATIONS[0]);
 						}
 					}
 					else if (!instance.getNpcsOfGroup("BARRICADES_2").isEmpty() && (instance.getAliveNpcCount(CORRIDOR_MOBS_1) == 0) && instance.getNpcsOfGroup("BARRICADES_1").isEmpty())
 					{
 						aliber.setRunning();
-						aliber.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SKILL_CAST_LOCATIONS[1]);
-						if (aliber.getLocation().isIn2DRadius(SKILL_CAST_LOCATIONS[1], 200) && !destroyed)
+						if (aliber.getLocation().isIn2DRadius(SKILL_CAST_LOCATIONS[1], 10) && !destroyed && !aliber.isMoving())
 						{
 							aliber.broadcastPacket(new MagicSkillUse(aliber, aliber, BARRICADE_DESTRUCTION.getSkillId(), 1, 500, 0));
 							aliber.broadcastPacket(new ExShowScreenMessage(NpcStringId.ALIBER_IS_CASTING_A_SPELL_TO_DESTROY_THE_BARRICADE, ExShowScreenMessage.TOP_CENTER, 7000, true));
@@ -187,15 +189,18 @@ public class EtinaHelperAliber extends AbstractNpcAI
 									barricade.decayMe();
 								}
 							});
-							instance.getParameters().set("BARRICADE_DESTROYED", true);
 							instance.despawnGroup("BARRICADES_2");
+							instance.getParameters().set("BARRICADE_DESTROYED", true);
+						}
+						else
+						{
+							aliber.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SKILL_CAST_LOCATIONS[1]);
 						}
 					}
 					else if (!instance.getNpcsOfGroup("BARRICADES_3").isEmpty() && (instance.getAliveNpcCount(CORRIDOR_MOBS_2) == 0) && instance.getNpcsOfGroup("BARRICADES_2").isEmpty())
 					{
 						aliber.setRunning();
-						aliber.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SKILL_CAST_LOCATIONS[2]);
-						if (aliber.getLocation().isIn2DRadius(SKILL_CAST_LOCATIONS[2], 200) && !destroyed)
+						if (aliber.getLocation().isIn2DRadius(SKILL_CAST_LOCATIONS[2], 10) && !destroyed && !aliber.isMoving())
 						{
 							aliber.broadcastPacket(new MagicSkillUse(aliber, aliber, BARRICADE_DESTRUCTION.getSkillId(), 1, 500, 0));
 							aliber.broadcastPacket(new ExShowScreenMessage(NpcStringId.ALIBER_IS_CASTING_A_SPELL_TO_DESTROY_THE_BARRICADE, ExShowScreenMessage.TOP_CENTER, 7000, true));
@@ -206,15 +211,18 @@ public class EtinaHelperAliber extends AbstractNpcAI
 									barricade.decayMe();
 								}
 							});
-							instance.getParameters().set("BARRICADE_DESTROYED", true);
 							instance.despawnGroup("BARRICADES_3");
+							instance.getParameters().set("BARRICADE_DESTROYED", true);
+						}
+						else
+						{
+							aliber.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SKILL_CAST_LOCATIONS[2]);
 						}
 					}
 					else if (!instance.getNpcsOfGroup("BARRICADES_4").isEmpty() && (instance.getAliveNpcCount(CORRIDOR_MOBS_3) == 0) && instance.getNpcsOfGroup("BARRICADES_3").isEmpty())
 					{
 						aliber.setRunning();
-						aliber.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SKILL_CAST_LOCATIONS[3]);
-						if (aliber.getLocation().isIn2DRadius(SKILL_CAST_LOCATIONS[3], 200) && !destroyed)
+						if (aliber.getLocation().isIn2DRadius(SKILL_CAST_LOCATIONS[3], 10) && !destroyed && !aliber.isMoving())
 						{
 							aliber.broadcastPacket(new MagicSkillUse(aliber, aliber, BARRICADE_DESTRUCTION.getSkillId(), 1, 500, 0));
 							aliber.broadcastPacket(new ExShowScreenMessage(NpcStringId.ALIBER_IS_CASTING_A_SPELL_TO_DESTROY_THE_BARRICADE, ExShowScreenMessage.TOP_CENTER, 7000, true));
@@ -225,8 +233,12 @@ public class EtinaHelperAliber extends AbstractNpcAI
 									barricade.decayMe();
 								}
 							});
-							instance.getParameters().set("BARRICADE_DESTROYED", true);
 							instance.despawnGroup("BARRICADES_4");
+							instance.getParameters().set("BARRICADE_DESTROYED", true);
+						}
+						else
+						{
+							aliber.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SKILL_CAST_LOCATIONS[3]);
 						}
 					}
 					break;
