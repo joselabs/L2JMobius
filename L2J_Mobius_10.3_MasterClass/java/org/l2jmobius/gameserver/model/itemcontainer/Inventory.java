@@ -1474,6 +1474,7 @@ public abstract class Inventory extends ItemContainer
 	 */
 	public synchronized Item setPaperdollItem(int slot, Item item)
 	{
+		final Creature owner = getOwner();
 		final Item old = _paperdoll[slot];
 		if (old != item)
 		{
@@ -1511,25 +1512,26 @@ public abstract class Inventory extends ItemContainer
 				old.updateDatabase();
 				
 				// Remove agathion skills.
-				if ((slot >= PAPERDOLL_AGATHION1) && (slot <= PAPERDOLL_AGATHION5) && getOwner().isPlayer())
+				if ((slot >= PAPERDOLL_AGATHION1) && (slot <= PAPERDOLL_AGATHION5) && owner.isPlayer())
 				{
 					final AgathionSkillHolder agathionSkills = AgathionData.getInstance().getSkills(old.getId());
 					if (agathionSkills != null)
 					{
 						boolean update = false;
+						final Player player = owner.getActingPlayer();
 						for (Skill skill : agathionSkills.getMainSkills(old.getEnchantLevel()))
 						{
-							getOwner().getActingPlayer().removeSkill(skill, false, skill.isPassive());
+							player.removeSkill(skill, false, skill.isPassive());
 							update = true;
 						}
 						for (Skill skill : agathionSkills.getSubSkills(old.getEnchantLevel()))
 						{
-							getOwner().getActingPlayer().removeSkill(skill, false, skill.isPassive());
+							player.removeSkill(skill, false, skill.isPassive());
 							update = true;
 						}
 						if (update)
 						{
-							getOwner().getActingPlayer().sendSkillList();
+							player.sendSkillList();
 						}
 					}
 				}
@@ -1559,57 +1561,70 @@ public abstract class Inventory extends ItemContainer
 				item.updateDatabase();
 				
 				// Add agathion skills.
-				if ((slot >= PAPERDOLL_AGATHION1) && (slot <= PAPERDOLL_AGATHION5) && getOwner().isPlayer())
+				if ((slot >= PAPERDOLL_AGATHION1) && (slot <= PAPERDOLL_AGATHION5) && owner.isPlayer())
 				{
 					final AgathionSkillHolder agathionSkills = AgathionData.getInstance().getSkills(item.getId());
 					if (agathionSkills != null)
 					{
 						boolean update = false;
+						final Player player = owner.getActingPlayer();
 						if (slot == PAPERDOLL_AGATHION1)
 						{
 							for (Skill skill : agathionSkills.getMainSkills(item.getEnchantLevel()))
 							{
-								if (skill.isPassive() && !skill.checkConditions(SkillConditionScope.PASSIVE, getOwner().getActingPlayer(), getOwner().getActingPlayer()))
+								if (skill.isPassive() && !skill.checkConditions(SkillConditionScope.PASSIVE, player, player))
 								{
 									continue;
 								}
-								getOwner().getActingPlayer().addSkill(skill, false);
+								player.addSkill(skill, false);
 								update = true;
 							}
 						}
 						for (Skill skill : agathionSkills.getSubSkills(item.getEnchantLevel()))
 						{
-							if (skill.isPassive() && !skill.checkConditions(SkillConditionScope.PASSIVE, getOwner().getActingPlayer(), getOwner().getActingPlayer()))
+							if (skill.isPassive() && !skill.checkConditions(SkillConditionScope.PASSIVE, player, player))
 							{
 								continue;
 							}
-							getOwner().getActingPlayer().addSkill(skill, false);
+							player.addSkill(skill, false);
 							update = true;
 						}
 						if (update)
 						{
-							getOwner().getActingPlayer().sendSkillList();
+							player.sendSkillList();
 						}
 					}
 				}
 			}
 			
 			_paperdollCache.clearCachedStats();
-			getOwner().getStat().recalculateStats(!getOwner().isPlayer());
+			owner.getStat().recalculateStats(!owner.isPlayer());
 			
-			if (getOwner().isPlayer())
+			if (owner.isPlayer())
 			{
-				getOwner().sendPacket(new ExUserInfoEquipSlot(getOwner().getActingPlayer()));
+				owner.sendPacket(new ExUserInfoEquipSlot(owner.getActingPlayer()));
 			}
 		}
 		
-		// Notify to scripts
 		if (old != null)
 		{
-			final Creature owner = getOwner();
-			if ((owner != null) && owner.isPlayer() && EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_ITEM_UNEQUIP, old.getTemplate()))
+			if ((owner != null) && owner.isPlayer())
 			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnPlayerItemUnequip(owner.getActingPlayer(), old), old.getTemplate());
+				// Proper talisman display on login.
+				final Player player = owner.getActingPlayer();
+				if ((slot == PAPERDOLL_RBRACELET) && !player.hasEnteredWorld())
+				{
+					for (ItemSkillHolder skill : old.getTemplate().getAllSkills())
+					{
+						player.addSkill(skill.getSkill(), false);
+					}
+				}
+				
+				// Notify to scripts.
+				if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_ITEM_UNEQUIP, old.getTemplate()))
+				{
+					EventDispatcher.getInstance().notifyEventAsync(new OnPlayerItemUnequip(player, old), old.getTemplate());
+				}
 			}
 		}
 		

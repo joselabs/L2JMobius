@@ -1356,6 +1356,7 @@ public abstract class Inventory extends ItemContainer
 	 */
 	public synchronized Item setPaperdollItem(int slot, Item item)
 	{
+		final Creature owner = getOwner();
 		final Item old = _paperdoll[slot];
 		if (old != item)
 		{
@@ -1418,21 +1419,33 @@ public abstract class Inventory extends ItemContainer
 			}
 			
 			_paperdollCache.clearCachedStats();
-			getOwner().getStat().recalculateStats(!getOwner().isPlayer());
+			owner.getStat().recalculateStats(!owner.isPlayer());
 			
-			if (getOwner().isPlayer())
+			if (owner.isPlayer())
 			{
-				getOwner().sendPacket(new ExUserInfoEquipSlot(getOwner().getActingPlayer()));
+				owner.sendPacket(new ExUserInfoEquipSlot(owner.getActingPlayer()));
 			}
 		}
 		
-		// Notify to scripts
 		if (old != null)
 		{
-			final Creature owner = getOwner();
-			if ((owner != null) && owner.isPlayer() && EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_ITEM_UNEQUIP, old.getTemplate()))
+			if ((owner != null) && owner.isPlayer())
 			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnPlayerItemUnequip(owner.getActingPlayer(), old), old.getTemplate());
+				// Proper talisman display on login.
+				final Player player = owner.getActingPlayer();
+				if ((slot == PAPERDOLL_RBRACELET) && !player.hasEnteredWorld())
+				{
+					for (ItemSkillHolder skill : old.getTemplate().getAllSkills())
+					{
+						player.addSkill(skill.getSkill(), false);
+					}
+				}
+				
+				// Notify to scripts.
+				if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_ITEM_UNEQUIP, old.getTemplate()))
+				{
+					EventDispatcher.getInstance().notifyEventAsync(new OnPlayerItemUnequip(player, old), old.getTemplate());
+				}
 			}
 		}
 		

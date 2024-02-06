@@ -373,6 +373,11 @@ public class PlayerStat extends PlayableStat
 	 */
 	public int getTalismanSlots()
 	{
+		if (!getActiveChar().hasEnteredWorld())
+		{
+			return 6;
+		}
+		
 		return _talismanSlots.get();
 	}
 	
