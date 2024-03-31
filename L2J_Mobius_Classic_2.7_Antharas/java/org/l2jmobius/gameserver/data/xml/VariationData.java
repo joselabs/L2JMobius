@@ -28,7 +28,6 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.options.OptionDataCategory;
@@ -71,7 +70,7 @@ public class VariationData implements IXmlReader
 			forEach(listNode, "variations", variationsNode -> forEach(variationsNode, "variation", variationNode ->
 			{
 				final int mineralId = parseInteger(variationNode.getAttributes(), "mineralId");
-				if (ItemTable.getInstance().getTemplate(mineralId) == null)
+				if (ItemData.getInstance().getTemplate(mineralId) == null)
 				{
 					LOGGER.warning(getClass().getSimpleName() + ": Mineral with item id " + mineralId + " was not found.");
 				}
@@ -133,7 +132,7 @@ public class VariationData implements IXmlReader
 				forEach(variationNode, "item", itemNode ->
 				{
 					final int itemId = parseInteger(itemNode.getAttributes(), "id");
-					if (ItemTable.getInstance().getTemplate(itemId) == null)
+					if (ItemData.getInstance().getTemplate(itemId) == null)
 					{
 						LOGGER.warning(getClass().getSimpleName() + ": Item with id " + itemId + " was not found.");
 					}
@@ -150,7 +149,7 @@ public class VariationData implements IXmlReader
 				final int itemId = parseInteger(feeNode.getAttributes(), "itemId");
 				final int itemCount = parseInteger(feeNode.getAttributes(), "itemCount");
 				final int cancelFee = parseInteger(feeNode.getAttributes(), "cancelFee");
-				if (ItemTable.getInstance().getTemplate(itemId) == null)
+				if (ItemData.getInstance().getTemplate(itemId) == null)
 				{
 					LOGGER.warning(getClass().getSimpleName() + ": Item with id " + itemId + " was not found.");
 				}

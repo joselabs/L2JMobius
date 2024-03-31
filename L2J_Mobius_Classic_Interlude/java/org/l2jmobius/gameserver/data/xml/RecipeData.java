@@ -29,7 +29,6 @@ import org.w3c.dom.Node;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.RecipeList;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -178,7 +177,7 @@ public class RecipeData implements IXmlReader
 								final int itemId = Integer.parseInt(c.getAttributes().getNamedItem("id").getNodeValue());
 								
 								// Max equipable item grade configuration.
-								final ItemTemplate item = ItemTable.getInstance().getTemplate(id);
+								final ItemTemplate item = ItemData.getInstance().getTemplate(id);
 								if (item != null)
 								{
 									final int itemCrystalLevel = item.getCrystalType().getLevel();

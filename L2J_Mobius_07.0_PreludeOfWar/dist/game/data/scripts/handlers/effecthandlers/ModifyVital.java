@@ -67,6 +67,12 @@ public class ModifyVital extends AbstractEffect
 	}
 	
 	@Override
+	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
+	{
+		return !effected.isRaid() && !effected.isRaidMinion();
+	}
+	
+	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
 		if (effected.isDead())

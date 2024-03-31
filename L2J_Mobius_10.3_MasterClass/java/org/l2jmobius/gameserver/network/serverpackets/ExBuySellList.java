@@ -21,12 +21,14 @@ import java.util.Collection;
 import java.util.List;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.buylist.Product;
 import org.l2jmobius.gameserver.model.buylist.ProductList;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.siege.Castle;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
@@ -109,30 +111,30 @@ public class ExBuySellList extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_BUY_SELL_LIST.writeId(this);
-		writeInt(_type);
+		ServerPackets.EX_BUY_SELL_LIST.writeId(this, buffer);
+		buffer.writeInt(_type);
 		switch (_type)
 		{
 			case BUY_SELL_LIST_BUY:
 			{
-				sendBuyList();
+				sendBuyList(buffer);
 				break;
 			}
 			case BUY_SELL_LIST_SELL:
 			{
-				sendSellList();
+				sendSellList(buffer);
 				break;
 			}
 			case BUY_SELL_LIST_UNK:
 			{
-				sendUnk();
+				sendUnk(buffer);
 				break;
 			}
 			case BUY_SELL_LIST_TAX:
 			{
-				sendCurrentTax();
+				sendCurrentTax(buffer);
 				break;
 			}
 			default:
@@ -143,68 +145,68 @@ public class ExBuySellList extends AbstractItemPacket
 		}
 	}
 	
-	private void sendBuyList()
+	private void sendBuyList(WritableBuffer buffer)
 	{
-		writeLong(_money); // current money
-		writeInt(_listId);
-		writeInt(_inventorySlots);
-		writeShort(_list.size());
+		buffer.writeLong(_money); // current money
+		buffer.writeInt(_listId);
+		buffer.writeInt(_inventorySlots);
+		buffer.writeShort(_list.size());
 		for (Product product : _list)
 		{
 			if ((product.getCount() > 0) || !product.hasLimitedStock())
 			{
-				writeItem(product);
-				writeLong((long) (product.getPrice() * (1.0 + _castleTaxRate + product.getBaseTaxRate())));
+				writeItem(product, buffer);
+				buffer.writeLong((long) (product.getPrice() * (1.0 + _castleTaxRate + product.getBaseTaxRate())));
 			}
 		}
 	}
 	
-	private void sendSellList()
+	private void sendSellList(WritableBuffer buffer)
 	{
-		writeInt(_inventorySlots);
+		buffer.writeInt(_inventorySlots);
 		if (!_sellList.isEmpty())
 		{
-			writeShort(_sellList.size());
+			buffer.writeShort(_sellList.size());
 			for (Item item : _sellList)
 			{
-				writeItem(item);
-				writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : item.getTemplate().getReferencePrice() / 2);
+				writeItem(item, buffer);
+				buffer.writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : item.getTemplate().getReferencePrice() / 2);
 			}
 		}
 		else
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
 		if (!_refundList.isEmpty())
 		{
-			writeShort(_refundList.size());
+			buffer.writeShort(_refundList.size());
 			int i = 0;
 			for (Item item : _refundList)
 			{
-				writeItem(item);
-				writeInt(i++);
-				writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : (item.getTemplate().getReferencePrice() / 2) * item.getCount());
+				writeItem(item, buffer);
+				buffer.writeInt(i++);
+				buffer.writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : (item.getTemplate().getReferencePrice() / 2) * item.getCount());
 			}
 		}
 		else
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
-		writeByte(_done ? 1 : 0);
+		buffer.writeByte(_done ? 1 : 0);
 	}
 	
-	private void sendUnk()
+	private void sendUnk(WritableBuffer buffer)
 	{
-		writeByte(_unkType);
+		buffer.writeByte(_unkType);
 	}
 	
-	private void sendCurrentTax()
+	private void sendCurrentTax(WritableBuffer buffer)
 	{
-		writeInt(_nearestCastle);
+		buffer.writeInt(_nearestCastle);
 		if (_nearestCastle != 0)
 		{
-			writeInt(_nearestCastle);
-			writeInt(_applyTax ? (int) _castleTaxRate : 0);
+			buffer.writeInt(_nearestCastle);
+			buffer.writeInt(_applyTax ? (int) _castleTaxRate : 0);
 		}
 	}
 }

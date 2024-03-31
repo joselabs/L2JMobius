@@ -17,17 +17,14 @@
 package org.l2jmobius.gameserver.network.clientpackets.teleports;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.TeleportListData;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.effects.EffectFlag;
 import org.l2jmobius.gameserver.model.holders.TeleportListHolder;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -35,20 +32,20 @@ import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 /**
  * @author NviX, Mobius
  */
-public class ExRequestTeleport implements ClientPacket
+public class ExRequestTeleport extends ClientPacket
 {
 	private int _teleportId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_teleportId = packet.readInt();
+		_teleportId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -90,7 +87,7 @@ public class ExRequestTeleport implements ClientPacket
 		}
 		
 		// Cannot escape effect.
-		if (player.isAffected(EffectFlag.CANNOT_ESCAPE))
+		if (player.cannotEscape())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_TELEPORT_RIGHT_NOW);
 			return;

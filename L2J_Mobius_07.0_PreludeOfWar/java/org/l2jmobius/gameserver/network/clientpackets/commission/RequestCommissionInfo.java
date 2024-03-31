@@ -16,11 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.commission;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.ItemCommissionManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.commission.ExCloseCommission;
 import org.l2jmobius.gameserver.network.serverpackets.commission.ExResponseCommissionInfo;
@@ -28,20 +26,20 @@ import org.l2jmobius.gameserver.network.serverpackets.commission.ExResponseCommi
 /**
  * @author NosBit
  */
-public class RequestCommissionInfo implements ClientPacket
+public class RequestCommissionInfo extends ClientPacket
 {
 	private int _itemObjectId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemObjectId = packet.readInt();
+		_itemObjectId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

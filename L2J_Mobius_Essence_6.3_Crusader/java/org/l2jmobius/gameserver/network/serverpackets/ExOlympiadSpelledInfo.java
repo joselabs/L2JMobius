@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -49,31 +51,31 @@ public class ExOlympiadSpelledInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_OLYMPIAD_SPELLED_INFO.writeId(this);
-		writeInt(_playerId);
-		writeInt(_effects.size() + _effects2.size());
+		ServerPackets.EX_OLYMPIAD_SPELLED_INFO.writeId(this, buffer);
+		buffer.writeInt(_playerId);
+		buffer.writeInt(_effects.size() + _effects2.size());
 		for (BuffInfo info : _effects)
 		{
 			if ((info != null) && info.isInUse())
 			{
-				writeInt(info.getSkill().getDisplayId());
-				writeShort(info.getSkill().getDisplayLevel());
-				writeShort(0); // Sub level
-				writeInt(info.getSkill().getAbnormalType().getClientId());
-				writeOptionalInt(info.getSkill().isAura() ? -1 : info.getTime());
+				buffer.writeInt(info.getSkill().getDisplayId());
+				buffer.writeShort(info.getSkill().getDisplayLevel());
+				buffer.writeShort(0); // Sub level
+				buffer.writeInt(info.getSkill().getAbnormalType().getClientId());
+				writeOptionalInt(info.getSkill().isAura() ? -1 : info.getTime(), buffer);
 			}
 		}
 		for (Skill skill : _effects2)
 		{
 			if (skill != null)
 			{
-				writeInt(skill.getDisplayId());
-				writeShort(skill.getDisplayLevel());
-				writeShort(0); // Sub level
-				writeInt(skill.getAbnormalType().getClientId());
-				writeShort(-1);
+				buffer.writeInt(skill.getDisplayId());
+				buffer.writeShort(skill.getDisplayLevel());
+				buffer.writeShort(0); // Sub level
+				buffer.writeInt(skill.getAbnormalType().getClientId());
+				buffer.writeShort(-1);
 			}
 		}
 	}

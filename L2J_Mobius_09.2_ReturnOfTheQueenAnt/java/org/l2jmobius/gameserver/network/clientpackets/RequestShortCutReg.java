@@ -18,19 +18,17 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.ShortcutType;
 import org.l2jmobius.gameserver.model.ShortCuts;
 import org.l2jmobius.gameserver.model.Shortcut;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ShortCutRegister;
 import org.l2jmobius.gameserver.network.serverpackets.autoplay.ExActivateAutoShortcut;
 import org.l2jmobius.gameserver.taskmanager.AutoUseTaskManager;
 
-public class RequestShortCutReg implements ClientPacket
+public class RequestShortCutReg extends ClientPacket
 {
 	private ShortcutType _type;
 	private int _id;
@@ -42,24 +40,24 @@ public class RequestShortCutReg implements ClientPacket
 	private boolean _active;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int typeId = packet.readInt();
+		final int typeId = readInt();
 		_type = ShortcutType.values()[(typeId < 1) || (typeId > 6) ? 0 : typeId];
-		final int position = packet.readInt();
+		final int position = readInt();
 		_slot = position % ShortCuts.MAX_SHORTCUTS_PER_BAR;
 		_page = position / ShortCuts.MAX_SHORTCUTS_PER_BAR;
-		_active = packet.readByte() == 1; // 228
-		_id = packet.readInt();
-		_level = packet.readShort();
-		_subLevel = packet.readShort(); // Sublevel
-		_characterType = packet.readInt();
+		_active = readByte() == 1; // 228
+		_id = readInt();
+		_level = readShort();
+		_subLevel = readShort(); // Sublevel
+		_characterType = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -150,6 +148,7 @@ public class RequestShortCutReg implements ClientPacket
 		player.registerShortCut(sc);
 		player.sendPacket(new ShortCutRegister(sc, player));
 		player.sendPacket(new ExActivateAutoShortcut(sc, _active));
+		player.sendSkillList();
 		
 		// When id is not auto used, deactivate auto shortcuts.
 		if (!player.getAutoUseSettings().isAutoSkill(_id) && !player.getAutoUseSettings().getAutoSupplyItems().contains(_id))

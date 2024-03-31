@@ -16,27 +16,25 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.RecipeBookItemList;
 
-public class RequestRecipeBookOpen implements ClientPacket
+public class RequestRecipeBookOpen extends ClientPacket
 {
 	private boolean _isDwarvenCraft;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_isDwarvenCraft = (packet.readInt() == 0);
+		_isDwarvenCraft = (readInt() == 0);
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -50,13 +48,13 @@ public class RequestRecipeBookOpen implements ClientPacket
 		
 		if (player.getPrivateStoreType() == PrivateStoreType.MANUFACTURE)
 		{
-			client.sendPacket(SystemMessageId.YOU_MAY_NOT_ALTER_YOUR_RECIPE_BOOK_WHILE_ENGAGED_IN_MANUFACTURING);
+			player.sendPacket(SystemMessageId.YOU_MAY_NOT_ALTER_YOUR_RECIPE_BOOK_WHILE_ENGAGED_IN_MANUFACTURING);
 			return;
 		}
 		
 		if (player.isProcessingTransaction())
 		{
-			client.sendPacket(SystemMessageId.ITEM_CREATION_IS_NOT_POSSIBLE_WHILE_ENGAGED_IN_A_TRADE);
+			player.sendPacket(SystemMessageId.ITEM_CREATION_IS_NOT_POSSIBLE_WHILE_ENGAGED_IN_A_TRADE);
 			return;
 		}
 		

@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.BotReportTable;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.BlockList;
@@ -27,7 +26,6 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.skill.AbnormalType;
 import org.l2jmobius.gameserver.model.skill.BuffInfo;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.SendTradeRequest;
@@ -36,20 +34,20 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * This packet manages the trade request.
  */
-public class TradeRequest implements ClientPacket
+public class TradeRequest extends ClientPacket
 {
 	private int _objectId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
+		_objectId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -69,7 +67,7 @@ public class TradeRequest implements ClientPacket
 			{
 				if (!effect.checkCondition(BotReportTable.TRADE_ACTION_BLOCK_ID))
 				{
-					player.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_SO_YOUR_ACTIONS_HAVE_BEEN_RESTRICTED);
+					player.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_AND_YOUR_ACTIVITIES_ARE_ONLY_ALLOWED_WITHIN_LIMITATION);
 					player.sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
@@ -89,7 +87,7 @@ public class TradeRequest implements ClientPacket
 		// and the following system message is sent to acting player.
 		if (target.getObjectId() == player.getObjectId())
 		{
-			player.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			player.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return;
 		}
 		
@@ -113,7 +111,7 @@ public class TradeRequest implements ClientPacket
 			{
 				if (!effect.checkCondition(BotReportTable.TRADE_ACTION_BLOCK_ID))
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_AND_IS_CURRENTLY_BEING_INVESTIGATED);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_AND_HAS_BEEN_INVESTIGATED);
 					sm.addString(partner.getName());
 					player.sendPacket(sm);
 					player.sendPacket(ActionFailed.STATIC_PACKET);

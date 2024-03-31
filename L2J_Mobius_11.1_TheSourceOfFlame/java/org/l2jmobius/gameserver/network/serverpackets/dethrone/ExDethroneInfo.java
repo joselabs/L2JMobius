@@ -20,9 +20,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -53,18 +55,18 @@ public class ExDethroneInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_DETHRONE_INFO.writeId(this);
+		ServerPackets.EX_DETHRONE_INFO.writeId(this, buffer);
 		
-		writeSizedString(_playerName);
+		buffer.writeSizedString(_playerName);
 		
-		writeInt(_attackPoint); // nAttackPoint 100
-		writeInt(_life); // nLife 20
+		buffer.writeInt(_attackPoint); // nAttackPoint 100
+		buffer.writeInt(_life); // nLife 20
 		
-		writeInt(RankManager.getInstance().getPlayerConquestGlobalRank(_player)); // nRank
-		writeInt(RankManager.getInstance().getCurrentConquestRankList().size()); // rank percents
-		writeLong(_personalDethronePoint); // nPersonalDethronePoint
+		buffer.writeInt(RankManager.getInstance().getPlayerConquestGlobalRank(_player)); // nRank
+		buffer.writeInt(RankManager.getInstance().getCurrentConquestRankList().size()); // rank percents
+		buffer.writeLong(_personalDethronePoint); // nPersonalDethronePoint
 		
 		int rank = 0;
 		long prevPersonalPoints = 0;
@@ -81,30 +83,30 @@ public class ExDethroneInfo extends ServerPacket
 			}
 		}
 		
-		writeInt(rank); // nPrevRank
-		writeInt(_previousConquestPlayerList.size()); // rank percents
-		writeLong(prevPersonalPoints); // nPrevDethronePoint
+		buffer.writeInt(rank); // nPrevRank
+		buffer.writeInt(_previousConquestPlayerList.size()); // rank percents
+		buffer.writeLong(prevPersonalPoints); // nPrevDethronePoint
 		
-		writeInt(1); // nServerRank
-		writeLong(_serverDethronePoint); // nServerDethronePoint
+		buffer.writeInt(1); // nServerRank
+		buffer.writeLong(_serverDethronePoint); // nServerDethronePoint
 		
 		// Terr. Owner
-		writeInt(Config.SERVER_ID); // nConquerorWorldID (Server Id of the conqueror player)
+		buffer.writeInt(Config.SERVER_ID); // nConquerorWorldID (Server Id of the conqueror player)
 		// writeSizedString(RankManager.getInstance().getCurrentConquestRankList().get(1).getString("name")); // sConquerorName // real char name
-		writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(1)); // sTopRankerName; // conquest char name
+		buffer.writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(1)); // sTopRankerName; // conquest char name
 		
 		// Conqueror Server
-		writeInt(Config.SERVER_ID); // nOccupyingServerWorldID
+		buffer.writeInt(Config.SERVER_ID); // nOccupyingServerWorldID
 		
 		// Conquest Status
 		// set from SeasonInfo Packet
 		
 		// Rank 1
-		writeInt(Config.SERVER_ID); // nTopRankerWorldID
+		buffer.writeInt(Config.SERVER_ID); // nTopRankerWorldID
 		// writeSizedString(RankManager.getInstance().getCurrentConquestRankList().get(1).getString("name")); // sTopRankerName; // real char name
-		writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(1)); // sTopRankerName; // conquest char name
+		buffer.writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(1)); // sTopRankerName; // conquest char name
 		
-		writeInt(Config.SERVER_ID); // Leading Server nTopServerWorldID
-		writeLong(_topServerDethronePoint); // Server Points nTopServerDethronePoint
+		buffer.writeInt(Config.SERVER_ID); // Leading Server nTopServerWorldID
+		buffer.writeLong(_topServerDethronePoint); // Server Points nTopServerDethronePoint
 	}
 }

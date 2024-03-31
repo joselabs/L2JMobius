@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.holders.ClanShopProductHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -63,7 +62,7 @@ public class ClanShopData implements IXmlReader
 			final int count = set.getInt("count");
 			final long adena = set.getLong("adena");
 			final int fame = set.getInt("fame");
-			final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+			final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 			if (item == null)
 			{
 				LOGGER.info(getClass().getSimpleName() + ": Could not create clan shop item " + itemId + ", it does not exist.");

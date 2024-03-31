@@ -316,6 +316,7 @@ public class Eraton extends AbstractNpcAI
 						}
 					}
 				}
+				player.getEffectList().stopAllEffectsWithoutExclusions(false, false);
 				
 				// Stop auto use.
 				for (Shortcut shortcut : player.getAllShortCuts())

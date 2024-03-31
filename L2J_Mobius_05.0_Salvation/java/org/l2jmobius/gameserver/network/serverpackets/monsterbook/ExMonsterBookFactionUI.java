@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.monsterbook;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -25,8 +27,8 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 public class ExMonsterBookFactionUI extends ServerPacket
 {
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MONSTER_BOOK_REWARD_FACTION_UI.writeId(this);
+		ServerPackets.EX_MONSTER_BOOK_REWARD_FACTION_UI.writeId(this, buffer);
 	}
 }

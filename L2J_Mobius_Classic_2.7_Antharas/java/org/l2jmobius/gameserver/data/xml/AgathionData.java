@@ -26,7 +26,6 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.holders.AgathionSkillHolder;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -61,7 +60,7 @@ public class AgathionData implements IXmlReader
 			final StatSet set = new StatSet(parseAttributes(agathionNode));
 			
 			final int id = set.getInt("id");
-			if (ItemTable.getInstance().getTemplate(id) == null)
+			if (ItemData.getInstance().getTemplate(id) == null)
 			{
 				LOGGER.info(getClass().getSimpleName() + ": Could not find agathion with id " + id + ".");
 				return;

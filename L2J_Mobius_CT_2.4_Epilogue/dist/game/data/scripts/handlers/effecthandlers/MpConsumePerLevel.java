@@ -49,7 +49,7 @@ public class MpConsumePerLevel extends AbstractEffect
 		final double consume = _power * getTicksMultiplier() * ((target.getLevel() - 1) / 7.5);
 		if (consume > target.getCurrentMp())
 		{
-			target.sendPacket(SystemMessageId.YOUR_SKILL_WAS_DEACTIVATED_DUE_TO_LACK_OF_MP);
+			target.sendPacket(SystemMessageId.YOUR_SKILL_WAS_REMOVED_DUE_TO_A_LACK_OF_MP);
 			return false;
 		}
 		

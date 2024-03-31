@@ -159,7 +159,7 @@ public class HallOfSufferingDefence extends AbstractNpcAI
 		}
 		if (party.getLeader() != player)
 		{
-			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_MAKE_THE_REQUEST_TO_ENTER);
+			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_TRY_TO_ENTER);
 			return false;
 		}
 		for (Player partyMember : party.getMembers())
@@ -444,7 +444,7 @@ public class HallOfSufferingDefence extends AbstractNpcAI
 				final Calendar reenter = Calendar.getInstance();
 				reenter.add(Calendar.HOUR, INSTANCEPENALTY);
 				
-				final SystemMessage sm = new SystemMessage(SystemMessageId.INSTANT_ZONE_S1_S_ENTRY_HAS_BEEN_RESTRICTED_YOU_CAN_CHECK_THE_NEXT_POSSIBLE_ENTRY_TIME_BY_USING_THE_COMMAND_INSTANCEZONE);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.INSTANT_ZONE_FROM_HERE_S1_S_ENTRY_HAS_BEEN_RESTRICTED_YOU_CAN_CHECK_THE_NEXT_ENTRY_POSSIBLE_TIME_WITH_THE_COMMAND_INSTANCEZONE);
 				sm.addInstanceName(INSTANCEID);
 				
 				// set instance reenter time for all allowed players

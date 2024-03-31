@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -32,36 +34,36 @@ public class ExRpItemLink extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RP_ITEM_LINK.writeId(this);
-		writeInt(_item.getObjectId());
-		writeInt(_item.getDisplayId());
-		writeLong(_item.getCount());
-		writeShort(_item.getTemplate().getType2());
-		writeInt(_item.getTemplate().getBodyPart());
-		writeShort(_item.getEnchantLevel());
-		writeShort(_item.getCustomType2());
-		writeShort(0); // ??
+		ServerPackets.EX_RP_ITEM_LINK.writeId(this, buffer);
+		buffer.writeInt(_item.getObjectId());
+		buffer.writeInt(_item.getDisplayId());
+		buffer.writeLong(_item.getCount());
+		buffer.writeShort(_item.getTemplate().getType2());
+		buffer.writeInt(_item.getTemplate().getBodyPart());
+		buffer.writeShort(_item.getEnchantLevel());
+		buffer.writeShort(_item.getCustomType2());
+		buffer.writeShort(0); // ??
 		if (_item.isAugmented())
 		{
-			writeInt(_item.getAugmentation().getAugmentationId());
+			buffer.writeInt(_item.getAugmentation().getAugmentationId());
 		}
 		else
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
-		writeInt(_item.getMana());
-		writeShort(_item.getAttackElementType());
-		writeShort(_item.getAttackElementPower());
+		buffer.writeInt(_item.getMana());
+		buffer.writeShort(_item.getAttackElementType());
+		buffer.writeShort(_item.getAttackElementPower());
 		for (byte i = 0; i < 6; i++)
 		{
-			writeShort(_item.getElementDefAttr(i));
+			buffer.writeShort(_item.getElementDefAttr(i));
 		}
 		// Enchant Effects
 		for (int op : _item.getEnchantOptions())
 		{
-			writeShort(op);
+			buffer.writeShort(op);
 		}
 	}
 }

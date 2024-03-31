@@ -78,30 +78,6 @@ public class Q00504_CompetitionForTheBanditStronghold extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs == null) || !hasQuestItems(killer, CONTEST_CERTIFICATE) || !qs.isStarted())
-		{
-			return null;
-		}
-		
-		if (getRandom(10) < MONSTERS.get(npc.getId()))
-		{
-			giveItems(killer, TARLK_AMULET, 1);
-			if (getQuestItemsCount(killer, TARLK_AMULET) < 30)
-			{
-				playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-			}
-			else
-			{
-				playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-			}
-		}
-		return null;
-	}
-	
-	@Override
 	public String onTalk(Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, true);
@@ -164,5 +140,29 @@ public class Q00504_CompetitionForTheBanditStronghold extends Quest
 			}
 		}
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player killer, boolean isSummon)
+	{
+		final QuestState qs = getQuestState(killer, false);
+		if ((qs == null) || !hasQuestItems(killer, CONTEST_CERTIFICATE) || !qs.isStarted())
+		{
+			return null;
+		}
+		
+		if (getRandom(10) < MONSTERS.get(npc.getId()))
+		{
+			giveItems(killer, TARLK_AMULET, 1);
+			if (getQuestItemsCount(killer, TARLK_AMULET) < 30)
+			{
+				playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+			}
+		}
+		return null;
 	}
 }

@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.LimitShopClanData;
 import org.l2jmobius.gameserver.data.xml.LimitShopCraftData;
@@ -36,7 +35,6 @@ import org.l2jmobius.gameserver.model.holders.LimitShopRandomCraftReward;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.variables.AccountVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ExItemAnnounce;
@@ -47,7 +45,7 @@ import org.l2jmobius.gameserver.util.Broadcast;
 /**
  * @author Mobius
  */
-public class RequestPurchaseLimitShopItemBuy implements ClientPacket
+public class RequestPurchaseLimitShopItemBuy extends ClientPacket
 {
 	private int _shopIndex;
 	private int _productId;
@@ -55,11 +53,11 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 	private LimitShopProductHolder _product;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_shopIndex = packet.readByte(); // 3 Lcoin Store, 4 Special Craft, 100 Clan Shop
-		_productId = packet.readInt();
-		_amount = packet.readInt();
+		_shopIndex = readByte(); // 3 Lcoin Store, 4 Special Craft, 100 Clan Shop
+		_productId = readInt();
+		_amount = readInt();
 		
 		switch (_shopIndex)
 		{
@@ -86,9 +84,9 @@ public class RequestPurchaseLimitShopItemBuy implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

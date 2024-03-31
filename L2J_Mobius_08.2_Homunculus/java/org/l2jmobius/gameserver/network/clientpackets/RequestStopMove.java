@@ -17,17 +17,21 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 
 /**
  * @author Mobius
  */
-public class RequestStopMove implements ClientPacket
+public class RequestStopMove extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player != null)
 		{
 			player.stopMove(player.getLocation());

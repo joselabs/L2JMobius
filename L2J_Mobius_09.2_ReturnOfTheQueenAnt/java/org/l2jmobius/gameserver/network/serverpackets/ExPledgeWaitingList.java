@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Map;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.ClanEntryManager;
 import org.l2jmobius.gameserver.model.clan.entry.PledgeApplicantInfo;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -35,16 +37,16 @@ public class ExPledgeWaitingList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_WAITING_LIST.writeId(this);
-		writeInt(_pledgePlayerRecruitInfos.size());
+		ServerPackets.EX_PLEDGE_WAITING_LIST.writeId(this, buffer);
+		buffer.writeInt(_pledgePlayerRecruitInfos.size());
 		for (PledgeApplicantInfo recruitInfo : _pledgePlayerRecruitInfos.values())
 		{
-			writeInt(recruitInfo.getPlayerId());
-			writeString(recruitInfo.getPlayerName());
-			writeInt(recruitInfo.getClassId());
-			writeInt(recruitInfo.getPlayerLvl());
+			buffer.writeInt(recruitInfo.getPlayerId());
+			buffer.writeString(recruitInfo.getPlayerName());
+			buffer.writeInt(recruitInfo.getClassId());
+			buffer.writeInt(recruitInfo.getPlayerLvl());
 		}
 	}
 }

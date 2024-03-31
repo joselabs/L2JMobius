@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `castle` (
   `name` varchar(25) NOT NULL,
   `side` enum('NEUTRAL','LIGHT','DARK') DEFAULT 'NEUTRAL' NOT NULL,
   `treasury` BIGINT NOT NULL DEFAULT 0,
+  `dynamicTreasury` BIGINT NOT NULL DEFAULT 0,
   `siegeDate` bigint(13) unsigned NOT NULL DEFAULT '0',
   `regTimeOver` enum('true','false') DEFAULT 'true' NOT NULL,
   `regTimeEnd` bigint(13) unsigned NOT NULL DEFAULT '0',
@@ -14,12 +15,12 @@ CREATE TABLE IF NOT EXISTS `castle` (
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT IGNORE INTO `castle` VALUES
--- (1,'Gludio','NEUTRAL',0,0,'true',0,'false',0),
--- (2,'Dion','NEUTRAL',0,0,'true',0,'false',0),
- (3,'Giran','NEUTRAL',0,0,'true',0,'false',0),
--- (4,'Oren','NEUTRAL',0,0,'true',0,'false',0),
--- (5,'Aden','NEUTRAL',0,0,'true',0,'false',0),
--- (6,'Innadril','NEUTRAL',0,0,'true',0,'false',0),
-(7,'Goddard','NEUTRAL',0,0,'true',0,'false',0);
--- (8,'Rune','NEUTRAL',0,0,'true',0,'false',0),
--- (9,'Schuttgart','NEUTRAL',0,0,'true',0,'false',0);
+-- (1,'Gludio','NEUTRAL',0,0,0,'true',0,'false',0),
+-- (2,'Dion','NEUTRAL',0,0,0,'true',0,'false',0),
+(3,'Giran','NEUTRAL',0,0,0,'true',0,'false',0),
+-- (4,'Oren','NEUTRAL',0,0,0,'true',0,'false',0),
+-- (5,'Aden','NEUTRAL',0,0,0,'true',0,'false',0),
+-- (6,'Innadril','NEUTRAL',0,0,0,'true',0,'false',0),
+(7,'Goddard','NEUTRAL',0,0,0,'true',0,'false',0);
+-- (8,'Rune','NEUTRAL',0,0,0,'true',0,'false',0),
+-- (9,'Schuttgart','NEUTRAL',0,0,0,'true',0,'false',0);

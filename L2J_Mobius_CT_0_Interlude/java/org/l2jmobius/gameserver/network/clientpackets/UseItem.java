@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.concurrent.TimeUnit;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
@@ -40,7 +39,6 @@ import org.l2jmobius.gameserver.model.item.type.WeaponType;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -50,30 +48,30 @@ import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.util.Util;
 
-public class UseItem implements ClientPacket
+public class UseItem extends ClientPacket
 {
 	private int _objectId;
 	private boolean _ctrlPressed;
 	private int _itemId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_ctrlPressed = packet.readInt() != 0;
+		_objectId = readInt();
+		_ctrlPressed = readInt() != 0;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
 		// Flood protect UseItem
-		if (!client.getFloodProtectors().canUseItem())
+		if (!getClient().getFloodProtectors().canUseItem())
 		{
 			return;
 		}
@@ -298,27 +296,20 @@ public class UseItem implements ClientPacket
 		final int hours = (int) (remainingTime / 3600000);
 		final int minutes = (int) (remainingTime % 3600000) / 60000;
 		final int seconds = (int) ((remainingTime / 1000) % 60);
-		final SystemMessage sm;
+		final String sm;
 		if (hours > 0)
 		{
-			sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_HOUR_S_S3_MINUTE_S_AND_S4_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
-			sm.addItemName(item);
-			sm.addInt(hours);
-			sm.addInt(minutes);
+			sm = "There are " + hours + " hour(s), " + minutes + " minute(s), and " + seconds + " second(s) remaining in " + item.getName() + "'s re-use time.";
 		}
 		else if (minutes > 0)
 		{
-			sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_MINUTE_S_S3_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
-			sm.addItemName(item);
-			sm.addInt(minutes);
+			sm = "There are " + minutes + " minute(s), " + seconds + " second(s) remaining in " + item.getName() + "'s re-use time.";
 		}
 		else
 		{
-			sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
-			sm.addItemName(item);
+			sm = "There are " + seconds + " second(s) remaining in " + item.getName() + "'s re-use time.";
 		}
-		sm.addInt(seconds);
-		player.sendPacket(sm);
+		player.sendMessage(sm);
 	}
 	
 	private void sendSharedGroupUpdate(Player player, int group, long remaining, int reuse)

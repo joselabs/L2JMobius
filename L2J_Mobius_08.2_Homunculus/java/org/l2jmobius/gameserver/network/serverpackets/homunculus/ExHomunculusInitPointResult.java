@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -35,20 +37,20 @@ public class ExHomunculusInitPointResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_HOMUNCULUS_INIT_POINT_RESULT.writeId(this);
+		ServerPackets.EX_HOMUNCULUS_INIT_POINT_RESULT.writeId(this, buffer);
 		if (_success)
 		{
-			writeInt(1); // success
-			writeInt(_type); // init type
-			writeInt(SystemMessageId.THE_RECEIVED_UPGRADE_POINTS_ARE_RESET.getId());
+			buffer.writeInt(1); // success
+			buffer.writeInt(_type); // init type
+			buffer.writeInt(SystemMessageId.THE_RECEIVED_UPGRADE_POINTS_ARE_RESET.getId());
 		}
 		else
 		{
-			writeInt(0);
-			writeInt(_type);
-			writeInt(SystemMessageId.NOT_ENOUGH_ITEMS_FOR_RESETTING.getId());
+			buffer.writeInt(0);
+			buffer.writeInt(_type);
+			buffer.writeInt(SystemMessageId.NOT_ENOUGH_ITEMS_FOR_RESETTING.getId());
 		}
 	}
 }

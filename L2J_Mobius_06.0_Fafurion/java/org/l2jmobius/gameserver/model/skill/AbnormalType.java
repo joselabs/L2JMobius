@@ -573,7 +573,7 @@ public enum AbnormalType
 	SUMMONER_BIGBODY1(629),
 	SUMMON_MASTER_BUFF1(630);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	protected static final Logger LOGGER = Logger.getLogger(AbnormalType.class.getName());
 	

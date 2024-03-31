@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.homunculus;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExEnchantHomunculusSkillResult;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExHomunculusHPSPVP;
@@ -29,7 +27,7 @@ import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExShowHomunculu
 /**
  * @author Mobius
  */
-public class RequestExEnchantHomunculusSkill implements ClientPacket
+public class RequestExEnchantHomunculusSkill extends ClientPacket
 {
 	private static final int SP_COST = 100000;
 	
@@ -37,17 +35,17 @@ public class RequestExEnchantHomunculusSkill implements ClientPacket
 	private int _skillNumber;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readInt();
-		_slot = packet.readInt();
-		_skillNumber = packet.readInt();
+		readInt();
+		_slot = readInt();
+		_skillNumber = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

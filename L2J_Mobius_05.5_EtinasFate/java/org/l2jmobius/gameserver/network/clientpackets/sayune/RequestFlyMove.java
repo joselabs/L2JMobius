@@ -16,29 +16,27 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.sayune;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.SayuneRequest;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 
 /**
  * @author UnAfraid
  */
-public class RequestFlyMove implements ClientPacket
+public class RequestFlyMove extends ClientPacket
 {
 	private int _locationId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_locationId = packet.readInt();
+		_locationId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

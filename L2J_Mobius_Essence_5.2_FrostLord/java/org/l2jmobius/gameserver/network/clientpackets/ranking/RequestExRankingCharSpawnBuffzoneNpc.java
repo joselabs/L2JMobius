@@ -22,7 +22,6 @@ import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ranking.ExRankingBuffZoneNpcInfo;
@@ -31,14 +30,19 @@ import org.l2jmobius.gameserver.network.serverpackets.ranking.ExRankingBuffZoneN
 /**
  * @author Serenitty
  */
-public class RequestExRankingCharSpawnBuffzoneNpc implements ClientPacket
+public class RequestExRankingCharSpawnBuffzoneNpc extends ClientPacket
 {
 	private static final int COST = 20000000;
 	
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

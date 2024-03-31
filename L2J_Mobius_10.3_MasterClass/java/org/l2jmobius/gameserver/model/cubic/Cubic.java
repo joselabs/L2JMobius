@@ -23,20 +23,31 @@ import java.util.stream.Stream;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
+import org.l2jmobius.gameserver.enums.InstanceType;
+import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.templates.CubicTemplate;
+import org.l2jmobius.gameserver.model.instancezone.Instance;
+import org.l2jmobius.gameserver.model.item.ItemTemplate;
+import org.l2jmobius.gameserver.model.item.Weapon;
+import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.olympiad.OlympiadGameManager;
 import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.model.stats.Stat;
+import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExUserInfoCubic;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
+import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
+import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
- * @author UnAfraid
+ * @author UnAfraid, Mobius
  */
-public class Cubic
+public class Cubic extends Creature
 {
 	private final Player _owner;
 	private final Player _caster;
@@ -46,6 +57,8 @@ public class Cubic
 	
 	public Cubic(Player owner, Player caster, CubicTemplate template)
 	{
+		super(template);
+		setInstanceType(InstanceType.Cubic);
 		_owner = owner;
 		_caster = caster == null ? owner : caster;
 		_template = template;
@@ -106,7 +119,7 @@ public class Cubic
 	{
 		final double random = Rnd.nextDouble() * 100;
 		double commulativeChance = 0;
-		for (CubicSkill cubicSkill : _template.getSkills())
+		for (CubicSkill cubicSkill : _template.getCubicSkills())
 		{
 			if ((commulativeChance += cubicSkill.getTriggerRate()) > random)
 			{
@@ -160,7 +173,7 @@ public class Cubic
 	{
 		final double random = Rnd.nextDouble() * 100;
 		double commulativeChance = 0;
-		for (CubicSkill cubicSkill : _template.getSkills())
+		for (CubicSkill cubicSkill : _template.getCubicSkills())
 		{
 			if ((commulativeChance += cubicSkill.getTriggerRate()) > random)
 			{
@@ -239,10 +252,45 @@ public class Cubic
 		}
 	}
 	
-	/**
-	 * @return the {@link Creature} that owns this cubic
-	 */
-	public Creature getOwner()
+	@Override
+	public void sendDamageMessage(Creature target, Skill skill, int damage, boolean crit, boolean miss)
+	{
+		if (miss || (_owner == null))
+		{
+			return;
+		}
+		
+		if (_owner.isInOlympiadMode() && target.isPlayer() && ((Player) target).isInOlympiadMode() && (((Player) target).getOlympiadGameId() == _owner.getOlympiadGameId()))
+		{
+			OlympiadGameManager.getInstance().notifyCompetitorDamage(_owner, damage);
+		}
+		
+		if (target.isHpBlocked() && !target.isNpc())
+		{
+			_owner.sendPacket(SystemMessageId.THE_ATTACK_HAS_BEEN_BLOCKED);
+		}
+		else
+		{
+			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_DEALT_S3_DAMAGE_TO_C2);
+			sm.addString(getName());
+			sm.addString(target.getName());
+			sm.addInt(damage);
+			sm.addPopup(target.getObjectId(), _owner.getObjectId(), (damage * -1));
+			_owner.sendPacket(sm);
+		}
+	}
+	
+	@Override
+	public void sendPacket(ServerPacket packet)
+	{
+		if (_owner != null)
+		{
+			_owner.sendPacket(packet);
+		}
+	}
+	
+	@Override
+	public Player getActingPlayer()
 	{
 		return _owner;
 	}
@@ -264,10 +312,209 @@ public class Cubic
 	}
 	
 	/**
+	 * @return the owner's name.
+	 */
+	@Override
+	public String getName()
+	{
+		return _owner.getName();
+	}
+	
+	/**
+	 * @return the owner's level.
+	 */
+	@Override
+	public int getLevel()
+	{
+		return _owner.getLevel();
+	}
+	
+	@Override
+	public int getX()
+	{
+		return _owner.getX();
+	}
+	
+	@Override
+	public int getY()
+	{
+		return _owner.getY();
+	}
+	
+	@Override
+	public int getZ()
+	{
+		return _owner.getZ();
+	}
+	
+	@Override
+	public int getHeading()
+	{
+		return _owner.getHeading();
+	}
+	
+	@Override
+	public int getInstanceId()
+	{
+		return _owner.getInstanceId();
+	}
+	
+	@Override
+	public boolean isInInstance()
+	{
+		return _owner.isInInstance();
+	}
+	
+	@Override
+	public Instance getInstanceWorld()
+	{
+		return _owner.getInstanceWorld();
+	}
+	
+	@Override
+	public Location getLocation()
+	{
+		return _owner.getLocation();
+	}
+	
+	@Override
+	public double getRandomDamageMultiplier()
+	{
+		final int random = (int) _owner.getStat().getValue(Stat.RANDOM_DAMAGE);
+		return (1 + ((double) Rnd.get(-random, random) / 100));
+	}
+	
+	@Override
+	public int getMagicAccuracy()
+	{
+		return _owner.getMagicAccuracy();
+	}
+	
+	/**
 	 * @return the {@link CubicTemplate} of this cubic
 	 */
+	@Override
 	public CubicTemplate getTemplate()
 	{
 		return _template;
+	}
+	
+	@Override
+	public int getId()
+	{
+		return _template.getId();
+	}
+	
+	@Override
+	public int getPAtk()
+	{
+		return _template.getBasePAtk();
+	}
+	
+	@Override
+	public int getMAtk()
+	{
+		return _template.getBaseMAtk();
+	}
+	
+	@Override
+	public Item getActiveWeaponInstance()
+	{
+		return null;
+	}
+	
+	@Override
+	public Weapon getActiveWeaponItem()
+	{
+		return null;
+	}
+	
+	@Override
+	public Item getSecondaryWeaponInstance()
+	{
+		return null;
+	}
+	
+	@Override
+	public ItemTemplate getSecondaryWeaponItem()
+	{
+		return null;
+	}
+	
+	@Override
+	public boolean isAutoAttackable(Creature attacker)
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean spawnMe()
+	{
+		return true;
+	}
+	
+	@Override
+	public void onSpawn()
+	{
+	}
+	
+	@Override
+	public boolean deleteMe()
+	{
+		return true;
+	}
+	
+	@Override
+	public boolean decayMe()
+	{
+		return true;
+	}
+	
+	@Override
+	public void onDecay()
+	{
+	}
+	
+	@Override
+	public synchronized void onTeleported()
+	{
+	}
+	
+	@Override
+	public void sendInfo(Player player)
+	{
+	}
+	
+	@Override
+	public boolean isInvul()
+	{
+		return _owner.isInvul();
+	}
+	
+	@Override
+	public boolean isTargetable()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean isUndying()
+	{
+		return true;
+	}
+	
+	/**
+	 * Considered a player in order to send messages, calculate magic fail formula etc...
+	 */
+	@Override
+	public boolean isPlayer()
+	{
+		return true;
+	}
+	
+	@Override
+	public boolean isCubic()
+	{
+		return true;
 	}
 }

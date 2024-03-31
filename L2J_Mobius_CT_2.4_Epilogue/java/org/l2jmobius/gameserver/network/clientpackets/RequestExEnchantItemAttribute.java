@@ -17,34 +17,32 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.Elementals;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ElementalItemHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExAttributeEnchantResult;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.util.Util;
 
-public class RequestExEnchantItemAttribute implements ClientPacket
+public class RequestExEnchantItemAttribute extends ClientPacket
 {
 	private int _objectId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
+		_objectId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -218,40 +216,19 @@ public class RequestExEnchantItemAttribute implements ClientPacket
 			SystemMessage sm;
 			if (item.getEnchantLevel() == 0)
 			{
-				if (item.isArmor())
-				{
-					sm = new SystemMessage(SystemMessageId.THE_S2_S_ATTRIBUTE_WAS_SUCCESSFULLY_BESTOWED_ON_S1_AND_RESISTANCE_TO_S3_WAS_INCREASED);
-				}
-				else
-				{
-					sm = new SystemMessage(SystemMessageId.S2_ELEMENTAL_POWER_HAS_BEEN_ADDED_SUCCESSFULLY_TO_S1);
-				}
+				sm = new SystemMessage(SystemMessageId.S2_ELEMENTAL_POWER_HAS_BEEN_ADDED_SUCCESSFULLY_TO_S1);
 				sm.addItemName(item);
 				sm.addElemental(realElement);
-				if (item.isArmor())
-				{
-					sm.addElemental(Elementals.getOppositeElement(realElement));
-				}
 			}
 			else
 			{
-				if (item.isArmor())
-				{
-					sm = new SystemMessage(SystemMessageId.THE_S3_S_ATTRIBUTE_WAS_SUCCESSFULLY_BESTOWED_ON_S1_S2_AND_RESISTANCE_TO_S4_WAS_INCREASED);
-				}
-				else
-				{
-					sm = new SystemMessage(SystemMessageId.S3_ELEMENTAL_POWER_HAS_BEEN_ADDED_SUCCESSFULLY_TO_S1_S2);
-				}
+				sm = new SystemMessage(SystemMessageId.S3_ELEMENTAL_POWER_HAS_BEEN_ADDED_SUCCESSFULLY_TO_S1_S2);
 				sm.addInt(item.getEnchantLevel());
 				sm.addItemName(item);
 				sm.addElemental(realElement);
-				if (item.isArmor())
-				{
-					sm.addElemental(Elementals.getOppositeElement(realElement));
-				}
 			}
 			player.sendPacket(sm);
+			
 			item.setElementAttr(elementToAdd, newPower);
 			if (item.isEquipped())
 			{

@@ -105,7 +105,7 @@ public class HealerTrainer extends AbstractNpcAI
 				
 				if (player.getAdena() < Config.FEE_DELETE_TRANSFER_SKILLS)
 				{
-					player.sendPacket(SystemMessageId.YOU_CANNOT_RESET_THE_SKILL_LINK_BECAUSE_THERE_IS_NOT_ENOUGH_ADENA);
+					player.sendMessage("You cannot reset the Skill Link because there is not enough Adena.");
 					break;
 				}
 				

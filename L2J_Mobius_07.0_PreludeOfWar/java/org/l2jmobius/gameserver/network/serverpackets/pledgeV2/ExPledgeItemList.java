@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgeV2;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.ClanShopData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ClanShopProductHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.AbstractItemPacket;
 
@@ -35,29 +37,29 @@ public class ExPledgeItemList extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (_player.getClan() == null)
 		{
 			return;
 		}
 		
-		ServerPackets.EX_PLEDGE_ITEM_LIST.writeId(this);
-		writeShort(ClanShopData.getInstance().getProducts().size()); // Product count.
+		ServerPackets.EX_PLEDGE_ITEM_LIST.writeId(this, buffer);
+		buffer.writeShort(ClanShopData.getInstance().getProducts().size()); // Product count.
 		for (ClanShopProductHolder product : ClanShopData.getInstance().getProducts())
 		{
-			writeItem(product.getTradeItem());
-			writeByte(_player.getClan().getLevel() < product.getClanLevel() ? 0 : 2); // 0 locked, 1 need activation, 2 available
-			writeLong(product.getAdena()); // Purchase price: adena
-			writeInt(product.getFame()); // Purchase price: fame
-			writeByte(product.getClanLevel()); // Required pledge level
-			writeByte(0); // Required pledge mastery
-			writeLong(0); // Activation price: adena
-			writeInt(0); // Activation price: reputation
-			writeInt(0); // Time to deactivation
-			writeInt(0); // Time to restock
-			writeShort(0); // Current stock
-			writeShort(0); // Total stock
+			writeItem(product.getTradeItem(), buffer);
+			buffer.writeByte(_player.getClan().getLevel() < product.getClanLevel() ? 0 : 2); // 0 locked, 1 need activation, 2 available
+			buffer.writeLong(product.getAdena()); // Purchase price: adena
+			buffer.writeInt(product.getFame()); // Purchase price: fame
+			buffer.writeByte(product.getClanLevel()); // Required pledge level
+			buffer.writeByte(0); // Required pledge mastery
+			buffer.writeLong(0); // Activation price: adena
+			buffer.writeInt(0); // Activation price: reputation
+			buffer.writeInt(0); // Time to deactivation
+			buffer.writeInt(0); // Time to restock
+			buffer.writeShort(0); // Current stock
+			buffer.writeShort(0); // Total stock
 		}
 	}
 }

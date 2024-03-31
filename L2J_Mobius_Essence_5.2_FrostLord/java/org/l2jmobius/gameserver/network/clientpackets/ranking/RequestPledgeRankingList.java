@@ -16,29 +16,27 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.ranking;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ranking.ExPledgeRankingList;
 
 /**
  * @author Berezkin Nikolay
  */
-public class RequestPledgeRankingList implements ClientPacket
+public class RequestPledgeRankingList extends ClientPacket
 {
 	private int _category;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_category = packet.readByte();
+		_category = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

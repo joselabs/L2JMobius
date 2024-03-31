@@ -75,7 +75,7 @@ public class ConditionPlayerCanCreateOutpost extends Condition
 		}
 		else if (TerritoryWarManager.getInstance().getHQForClan(player.getClan()) != null)
 		{
-			player.sendPacket(SystemMessageId.AN_OUTPOST_OR_HEADQUARTERS_CANNOT_BE_BUILT_BECAUSE_ONE_ALREADY_EXISTS);
+			player.sendPacket(SystemMessageId.AN_OUTPOST_OR_HEADQUARTERS_CANNOT_BE_BUILT_BECAUSE_AT_LEAST_ONE_ALREADY_EXISTS);
 			canCreateOutpost = false;
 		}
 		else if (TerritoryWarManager.getInstance().getFlagForClan(player.getClan()) != null)

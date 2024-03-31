@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -35,11 +37,11 @@ public class ExVariationResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_VARIATION_RESULT.writeId(this);
-		writeInt(_option1);
-		writeInt(_option2);
-		writeInt(_success);
+		ServerPackets.EX_VARIATION_RESULT.writeId(this, buffer);
+		buffer.writeInt(_option1);
+		buffer.writeInt(_option2);
+		buffer.writeInt(_success);
 	}
 }

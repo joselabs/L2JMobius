@@ -16,14 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.equipmentupgrade;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.EquipmentUpgradeData;
 import org.l2jmobius.gameserver.enums.UpgradeType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.EquipmentUpgradeHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -33,22 +31,22 @@ import org.l2jmobius.gameserver.network.serverpackets.equipmentupgrade.ExUpgrade
 /**
  * @author Mobius
  */
-public class RequestUpgradeSystemResult implements ClientPacket
+public class RequestUpgradeSystemResult extends ClientPacket
 {
 	private int _objectId;
 	private int _upgradeId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_upgradeId = packet.readInt();
+		_objectId = readInt();
+		_upgradeId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -119,7 +117,7 @@ public class RequestUpgradeSystemResult implements ClientPacket
 		// Save item.
 		addedItem.updateDatabase(true);
 		
-		// Send result packet.
+		// Send result
 		
 		player.sendPacket(new SystemMessage(SystemMessageId.C1_YOU_OBTAINED_S2_THROUGH_EQUIPMENT_UPGRADE).addPcName(player).addItemName(addedItem));
 		player.sendPacket(new InventoryUpdate());

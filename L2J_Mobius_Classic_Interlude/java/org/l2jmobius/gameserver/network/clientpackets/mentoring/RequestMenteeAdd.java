@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.mentoring;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -28,20 +26,20 @@ import org.l2jmobius.gameserver.network.serverpackets.mentoring.ExMentorAdd;
 /**
  * @author Gnacik, UnAfraid
  */
-public class RequestMenteeAdd implements ClientPacket
+public class RequestMenteeAdd extends ClientPacket
 {
 	private String _target;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_target = packet.readString();
+		_target = readString();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player mentor = client.getPlayer();
+		final Player mentor = getPlayer();
 		if (mentor == null)
 		{
 			return;

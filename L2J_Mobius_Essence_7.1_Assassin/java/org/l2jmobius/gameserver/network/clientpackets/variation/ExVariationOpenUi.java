@@ -16,23 +16,21 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.variation;
 
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 
 /**
  * @author Index
  */
-public class ExVariationOpenUi implements ClientPacket
+public class ExVariationOpenUi extends ClientPacket
 {
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readByte();
+		readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		// final Player player = client.getPlayer();
 		// if (player == null)

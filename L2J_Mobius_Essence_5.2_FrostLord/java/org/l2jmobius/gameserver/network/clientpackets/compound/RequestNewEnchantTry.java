@@ -24,7 +24,6 @@ import org.l2jmobius.gameserver.model.item.combination.CombinationItem;
 import org.l2jmobius.gameserver.model.item.combination.CombinationItemReward;
 import org.l2jmobius.gameserver.model.item.combination.CombinationItemType;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -35,12 +34,17 @@ import org.l2jmobius.gameserver.network.serverpackets.compound.ExEnchantSucess;
 /**
  * @author UnAfraid
  */
-public class RequestNewEnchantTry implements ClientPacket
+public class RequestNewEnchantTry extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -98,7 +102,7 @@ public class RequestNewEnchantTry implements ClientPacket
 		
 		if (combinationItem.getCommission() > player.getAdena())
 		{
-			client.sendPacket(new ExEnchantFail(itemOne.getId(), itemTwo.getId()));
+			player.sendPacket(new ExEnchantFail(itemOne.getId(), itemTwo.getId()));
 			player.removeRequest(request.getClass());
 			player.sendPacket(SystemMessageId.NOT_ENOUGH_ADENA);
 			return;

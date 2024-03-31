@@ -50,7 +50,7 @@ public class FameTask implements Runnable
 		}
 		
 		_player.setFame(_player.getFame() + _value);
-		final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_REPUTATION);
+		final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_REPUTATION_SCORE);
 		sm.addInt(_value);
 		_player.sendPacket(sm);
 		_player.updateUserInfo();

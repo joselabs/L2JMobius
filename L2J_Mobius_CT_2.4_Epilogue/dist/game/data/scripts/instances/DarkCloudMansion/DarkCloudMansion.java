@@ -239,7 +239,7 @@ public class DarkCloudMansion extends AbstractInstance
 		}
 		if (party.getLeader() != player)
 		{
-			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_MAKE_THE_REQUEST_TO_ENTER);
+			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_TRY_TO_ENTER);
 			return false;
 		}
 		if (party.getMemberCount() > 2)

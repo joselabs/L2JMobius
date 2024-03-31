@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -33,21 +35,21 @@ public class ExHomunculusInsertResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_HOMUNCULUS_INSERT_RESULT.writeId(this);
-		writeInt(1); // 1 - success
+		ServerPackets.EX_HOMUNCULUS_INSERT_RESULT.writeId(this, buffer);
+		buffer.writeInt(1); // 1 - success
 		if (_type == 0)
 		{
-			writeInt(SystemMessageId.THE_HOMUNCULUS_TAKES_YOUR_BLOOD_HP.getId());
+			buffer.writeInt(SystemMessageId.THE_HOMUNCULUS_TAKES_YOUR_BLOOD_HP.getId());
 		}
 		else if (_type == 1)
 		{
-			writeInt(SystemMessageId.THE_HOMUNCULUS_TAKES_YOUR_SPIRIT_SP.getId());
+			buffer.writeInt(SystemMessageId.THE_HOMUNCULUS_TAKES_YOUR_SPIRIT_SP.getId());
 		}
 		else
 		{
-			writeInt(SystemMessageId.THE_HOMUNCULUS_TAKES_YOUR_TEARS_VP.getId());
+			buffer.writeInt(SystemMessageId.THE_HOMUNCULUS_TAKES_YOUR_TEARS_VP.getId());
 		}
 	}
 }

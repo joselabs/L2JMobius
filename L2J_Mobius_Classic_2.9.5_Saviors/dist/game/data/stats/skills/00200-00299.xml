@@ -1290,7 +1290,7 @@
 		<effects>
 			<effect name="HealOverTime">
 				<power>-12</power>
-				<ticks>2</ticks>
+				<ticks>5</ticks>
 			</effect>
 			<effect name="PhysicalAttackSpeed">
 				<amount>15</amount>
@@ -1542,8 +1542,6 @@
 					<item>SWORD</item>
 					<item>DAGGER</item>
 					<item>DUAL</item>
-					<item>DUALBLUNT</item>
-					<item>DUALDAGGER</item>
 				</weaponType>
 			</condition>
 		</conditions>
@@ -1660,7 +1658,7 @@
 					<value level="51">67</value>
 					<value level="52">67</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -1683,9 +1681,6 @@
 					<value level="2">5</value>
 					<value level="3">6</value>
 				</value>
-			</effect>
-			<effect name="DefenceTrait">
-				<SHOCK>-11</SHOCK>
 			</effect>
 		</effects>
 	</skill>
@@ -1990,7 +1985,6 @@
 			<value level="2">495</value>
 		</effectPoint>
 		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicLevel>
 			<value level="1">32</value>
 			<value level="2">52</value>
@@ -4949,6 +4943,10 @@
 					<value level="45">3005</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<criticalChance>
+					<value fromLevel="1" toLevel="37">0</value>
+					<value fromLevel="38" toLevel="45">10</value>
+				</criticalChance>
 				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
@@ -5080,6 +5078,7 @@
 		<effects>
 			<effect name="EnergyAttack">
 				<chargeConsume>3</chargeConsume>
+				<criticalChance>10</criticalChance>
 				<power>
 					<value level="1">1948</value>
 					<value level="2">2042</value>
@@ -6162,12 +6161,12 @@
 					<value level="4">4</value>
 					<value level="5">5</value>
 					<value level="6">6</value>
-					<value level="7">101</value>
-					<value level="8">102</value>
-					<value level="9">103</value>
-					<value level="10">104</value>
-					<value level="11">105</value>
-					<value level="12">106</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+					<value level="11">11</value>
+					<value level="12">12</value>
 				</cubicLvl>
 			</effect>
 		</effects>
@@ -6179,7 +6178,7 @@
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
-		<activateRate>40</activateRate>
+		<activateRate>80</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>400</castRange>
 		<coolTime>500</coolTime>
@@ -6197,7 +6196,7 @@
 		<effectRange>900</effectRange>
 		<hitTime>1500</hitTime>
 		<isDebuff>true</isDebuff>
-		<lvlBonusRate>20</lvlBonusRate>
+		<lvlBonusRate>30</lvlBonusRate>
 		<magicLevel>
 			<value level="1">58</value>
 			<value level="2">62</value>
@@ -6240,9 +6239,13 @@
 					<value level="8">5776</value>
 					<value level="9">6007</value>
 				</power>
+				<criticalChance>5</criticalChance>
 			</effect>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
+			<effect name="DefenceTrait">
+				<PARALYZE>100</PARALYZE>
 			</effect>
 		</effects>
 	</skill>
@@ -7138,7 +7141,7 @@
 					<value level="48">3457</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
-				<criticalChance>15</criticalChance>
+				<criticalChance>5</criticalChance>
 				<overHit>true</overHit>
 			</effect>
 		</effects>

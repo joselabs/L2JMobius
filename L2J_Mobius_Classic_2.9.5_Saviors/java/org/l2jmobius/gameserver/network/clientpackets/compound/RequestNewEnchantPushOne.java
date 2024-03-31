@@ -18,13 +18,11 @@ package org.l2jmobius.gameserver.network.clientpackets.compound;
 
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.CombinationItemsData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.CompoundRequest;
 import org.l2jmobius.gameserver.model.item.combination.CombinationItem;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.compound.ExEnchantOneFail;
@@ -33,20 +31,20 @@ import org.l2jmobius.gameserver.network.serverpackets.compound.ExEnchantOneOK;
 /**
  * @author UnAfraid
  */
-public class RequestNewEnchantPushOne implements ClientPacket
+public class RequestNewEnchantPushOne extends ClientPacket
 {
 	private int _objectId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
+		_objectId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

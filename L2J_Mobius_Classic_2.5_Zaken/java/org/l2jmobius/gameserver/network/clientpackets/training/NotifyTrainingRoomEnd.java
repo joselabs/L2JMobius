@@ -18,19 +18,23 @@ package org.l2jmobius.gameserver.network.clientpackets.training;
 
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.TrainingHolder;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.training.ExTrainingZone_Leaving;
 
 /**
  * @author Sdw
  */
-public class NotifyTrainingRoomEnd implements ClientPacket
+public class NotifyTrainingRoomEnd extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

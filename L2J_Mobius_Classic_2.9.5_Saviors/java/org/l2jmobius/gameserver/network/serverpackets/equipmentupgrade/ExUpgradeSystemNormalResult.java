@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets.equipmentupgrade;
 
 import java.util.Map;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.holders.EquipmentUpgradeHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -37,23 +39,23 @@ public class ExUpgradeSystemNormalResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_UPGRADE_SYSTEM_NORMAL_RESULT.writeId(this);
-		writeShort(1);
-		writeInt(_upgrade.getId());
-		writeByte(_success);
+		ServerPackets.EX_UPGRADE_SYSTEM_NORMAL_RESULT.writeId(this, buffer);
+		buffer.writeShort(1);
+		buffer.writeInt(_upgrade.getId());
+		buffer.writeByte(_success);
 		
-		writeInt(_items.size());
+		buffer.writeInt(_items.size());
 		_items.forEach((objectId, item) ->
 		{
-			writeInt(objectId);
-			writeInt(item.getId());
-			writeInt(item.getEnchantLevel());
-			writeInt((int) item.getCount());
+			buffer.writeInt(objectId);
+			buffer.writeInt(item.getId());
+			buffer.writeInt(item.getEnchantLevel());
+			buffer.writeInt((int) item.getCount());
 		});
 		
-		writeShort(0);
-		writeInt(0);
+		buffer.writeShort(0);
+		buffer.writeInt(0);
 	}
 }

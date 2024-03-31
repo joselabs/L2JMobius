@@ -120,7 +120,7 @@ public enum QuestSound
 	
 	private final PlaySound _playSound;
 	
-	private static Map<String, PlaySound> soundPackets = new HashMap<>();
+	private static final Map<String, PlaySound> soundPackets = new HashMap<>();
 	
 	private QuestSound(PlaySound playSound)
 	{

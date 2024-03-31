@@ -16,33 +16,31 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.ShortCuts;
 import org.l2jmobius.gameserver.model.Shortcut;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.taskmanager.AutoUseTaskManager;
 
 /**
  * @version $Revision: 1.3.4.2 $ $Date: 2005/03/27 15:29:30 $
  */
-public class RequestShortCutDel implements ClientPacket
+public class RequestShortCutDel extends ClientPacket
 {
 	private int _slot;
 	private int _page;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int position = packet.readInt();
+		final int position = readInt();
 		_slot = position % ShortCuts.MAX_SHORTCUTS_PER_BAR;
 		_page = position / ShortCuts.MAX_SHORTCUTS_PER_BAR;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

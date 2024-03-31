@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.fishing;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.FishingEndReason;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,10 +38,10 @@ public class ExFishingEnd extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_FISHING_END.writeId(this);
-		writeInt(_player.getObjectId());
-		writeByte(_reason.getReason());
+		ServerPackets.EX_FISHING_END.writeId(this, buffer);
+		buffer.writeInt(_player.getObjectId());
+		buffer.writeByte(_reason.getReason());
 	}
 }

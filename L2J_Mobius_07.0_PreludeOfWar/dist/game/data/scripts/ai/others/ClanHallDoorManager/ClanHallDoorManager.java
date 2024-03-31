@@ -116,7 +116,8 @@ public class ClanHallDoorManager extends AbstractNpcAI
 	
 	private boolean isOwningClan(Player player, Npc npc)
 	{
-		return ((npc.getClanHall().getOwnerId() == player.getClanId()) && (player.getClanId() != 0));
+		final ClanHall clanHall = npc.getClanHall();
+		return ((clanHall != null) && (clanHall.getOwnerId() == player.getClanId()) && (player.getClanId() != 0));
 	}
 	
 	public static void main(String[] args)

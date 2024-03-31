@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.variation;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,12 +40,12 @@ public class ApplyVariationOption extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_APPLY_VARIATION_OPTION.writeId(this);
-		writeByte(_result);
-		writeInt(_enchantedObjectId);
-		writeInt(_option1);
-		writeInt(_option2);
+		ServerPackets.EX_APPLY_VARIATION_OPTION.writeId(this, buffer);
+		buffer.writeByte(_result);
+		buffer.writeInt(_enchantedObjectId);
+		buffer.writeInt(_option1);
+		buffer.writeInt(_option2);
 	}
 }

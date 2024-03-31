@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets.autoplay;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.ActionData;
 import org.l2jmobius.gameserver.enums.ShortcutType;
 import org.l2jmobius.gameserver.handler.IPlayerActionHandler;
@@ -29,32 +28,31 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.taskmanager.AutoUseTaskManager;
 
 /**
  * @author Mobius
  */
-public class ExRequestActivateAutoShortcut implements ClientPacket
+public class ExRequestActivateAutoShortcut extends ClientPacket
 {
 	private int _slot;
 	private int _page;
 	private boolean _active;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int position = packet.readShort();
+		final int position = readShort();
 		_slot = position % ShortCuts.MAX_SHORTCUTS_PER_BAR;
 		_page = position / ShortCuts.MAX_SHORTCUTS_PER_BAR;
-		_active = packet.readByte() == 1;
+		_active = readByte() == 1;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

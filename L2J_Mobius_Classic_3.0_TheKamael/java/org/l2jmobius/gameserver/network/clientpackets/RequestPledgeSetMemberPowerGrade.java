@@ -16,12 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanMember;
 import org.l2jmobius.gameserver.model.clan.ClanPrivilege;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -30,22 +28,22 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * Format: (ch) Sd
  * @author -Wooden-
  */
-public class RequestPledgeSetMemberPowerGrade implements ClientPacket
+public class RequestPledgeSetMemberPowerGrade extends ClientPacket
 {
 	private String _member;
 	private int _powerGrade;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_member = packet.readString();
-		_powerGrade = packet.readInt();
+		_member = readString();
+		_powerGrade = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

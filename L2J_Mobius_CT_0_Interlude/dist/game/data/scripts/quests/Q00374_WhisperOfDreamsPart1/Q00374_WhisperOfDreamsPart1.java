@@ -62,7 +62,7 @@ public class Q00374_WhisperOfDreamsPart1 extends Quest
 	public String onAdvEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -86,7 +86,7 @@ public class Q00374_WhisperOfDreamsPart1 extends Quest
 				takeItems(player, CAVE_BEAST_TOOTH, -1);
 				takeItems(player, DEATH_WAVE_LIGHT, -1);
 				
-				rewardItems(player, 57, reward[2]);
+				giveAdena(player, reward[2], true);
 				giveItems(player, reward[0], reward[1]);
 			}
 			else

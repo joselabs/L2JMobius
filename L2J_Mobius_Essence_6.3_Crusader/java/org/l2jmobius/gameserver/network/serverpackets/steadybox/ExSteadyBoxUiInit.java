@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.steadybox;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -58,40 +60,40 @@ public class ExSteadyBoxUiInit extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_STEADY_BOX_UI_INIT.writeId(this);
+		ServerPackets.EX_STEADY_BOX_UI_INIT.writeId(this, buffer);
 		
-		writeInt(Config.ACHIEVEMENT_BOX_POINTS_FOR_REWARD);
-		writeInt(Config.ACHIEVEMENT_BOX_PVP_POINTS_FOR_REWARD);
+		buffer.writeInt(Config.ACHIEVEMENT_BOX_POINTS_FOR_REWARD);
+		buffer.writeInt(Config.ACHIEVEMENT_BOX_PVP_POINTS_FOR_REWARD);
 		if (Config.ENABLE_ACHIEVEMENT_PVP)
 		{
-			writeInt(2); // EventID Normal Point + Pvp Point Bar
+			buffer.writeInt(2); // EventID Normal Point + Pvp Point Bar
 		}
 		else
 		{
-			writeInt(0); // EventID Normal Point + Pvp Point Bar
+			buffer.writeInt(0); // EventID Normal Point + Pvp Point Bar
 		}
-		writeInt(0); // nEventStartTime time for limitkill
-		writeInt(_player.getAchievementBox().pvpEndDate());
+		buffer.writeInt(0); // nEventStartTime time for limitkill
+		buffer.writeInt(_player.getAchievementBox().pvpEndDate());
 		
-		writeInt(OPEN_PRICE.length);
+		buffer.writeInt(OPEN_PRICE.length);
 		for (int i = 0; i < OPEN_PRICE.length; i++)
 		{
-			writeInt(i + 1);
-			writeInt(Inventory.LCOIN_ID);
-			writeLong(OPEN_PRICE[i]);
+			buffer.writeInt(i + 1);
+			buffer.writeInt(Inventory.LCOIN_ID);
+			buffer.writeLong(OPEN_PRICE[i]);
 		}
 		
-		writeInt(TIME_PRICE.length);
+		buffer.writeInt(TIME_PRICE.length);
 		for (int i = 0; i < TIME_PRICE.length; i++)
 		{
-			writeInt(WAIT_TIME[i]);
-			writeInt(Inventory.LCOIN_ID);
-			writeLong(TIME_PRICE[i]);
+			buffer.writeInt(WAIT_TIME[i]);
+			buffer.writeInt(Inventory.LCOIN_ID);
+			buffer.writeLong(TIME_PRICE[i]);
 		}
 		
 		final int rewardTimeStage = (int) (_player.getAchievementBox().getBoxOpenTime() - System.currentTimeMillis()) / 1000;
-		writeInt(rewardTimeStage > 0 ? rewardTimeStage : 0);
+		buffer.writeInt(rewardTimeStage > 0 ? rewardTimeStage : 0);
 	}
 }

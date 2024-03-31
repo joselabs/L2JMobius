@@ -18,24 +18,28 @@ package org.l2jmobius.gameserver.network.clientpackets.randomcraft;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.randomcraft.ExCraftRandomInfo;
 
 /**
  * @author Mode
  */
-public class ExRequestRandomCraftInfo implements ClientPacket
+public class ExRequestRandomCraftInfo extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
 	{
 		if (!Config.ENABLE_RANDOM_CRAFT)
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

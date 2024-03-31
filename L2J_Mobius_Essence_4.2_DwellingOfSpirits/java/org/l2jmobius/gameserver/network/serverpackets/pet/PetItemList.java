@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets.pet;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.AbstractItemPacket;
 
@@ -32,13 +34,13 @@ public class PetItemList extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PET_ITEM_LIST.writeId(this);
-		writeShort(_items.size());
+		ServerPackets.PET_ITEM_LIST.writeId(this, buffer);
+		buffer.writeShort(_items.size());
 		for (Item item : _items)
 		{
-			writeItem(item);
+			writeItem(item, buffer);
 		}
 	}
 }

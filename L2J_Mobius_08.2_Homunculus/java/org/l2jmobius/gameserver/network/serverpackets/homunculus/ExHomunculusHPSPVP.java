@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -37,11 +39,11 @@ public class ExHomunculusHPSPVP extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_HOMUNCULUS_HPSPVP.writeId(this);
-		writeInt(_hp);
-		writeLong(_sp);
-		writeInt(_vp);
+		ServerPackets.EX_HOMUNCULUS_HPSPVP.writeId(this, buffer);
+		buffer.writeInt(_hp);
+		buffer.writeLong(_sp);
+		buffer.writeInt(_vp);
 	}
 }

@@ -1,11 +1,11 @@
 L2J-Mobius Grand Crusade
 
-JDK: https://www.mediafire.com/file/kb2nfx54wojys4f/bellsoft-jdk17.0.2%252B9-windows-amd64.msi
-XAMPP: https://www.mediafire.com/file/hkehxpyjn81ybsw/xampp-windows-x64-8.0.11-2-VS16-installer.exe
-Eclipse: https://www.mediafire.com/file/dd2fj30rtvj33lz/eclipse-java-2023-03-R-win32-x86_64.zip
+JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
+XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
+Eclipse: https://www.mediafire.com/file/kryxpp6u4m49eo9/eclipse-java-2024-03-R-win32-x86_64.zip
 Geodata: http://www.mediafire.com/file/3wru8ll42xoqzn4/L2J_Mobius_04.0_GrandCrusade_Geodata.zip
 
-Client (password L2jMobius): https://drive.google.com/u/1/uc?id=1LpjE7GPJSZHFN9V5dMP0vC5YUsuAtA21&export=download
+Client (password L2jMobius): https://drive.google.com/file/d/10X9i3FU8A96obuYG5ITmbm6S-DizA8aP
 System: https://mega.nz/#!Fk0SAK6L!v3JSzKN6QuNzINgel0wp7zXovh0DOYzqxcm7etQOSLI
 
 All provided download links are for personal use. Redistribution of these links is bannable.

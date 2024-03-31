@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.subjugation;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.PurgePlayerHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,12 +38,12 @@ public class ExSubjugationSidebar extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SUBJUGATION_SIDEBAR.writeId(this);
-		writeInt(_player == null ? 0 : _player.getPurgeLastCategory());
-		writeInt(_purgeData == null ? 0 : _purgeData.getPoints()); // 1000000 = 100 percent
-		writeInt(_purgeData == null ? 0 : _purgeData.getKeys());
-		writeInt(0);
+		ServerPackets.EX_SUBJUGATION_SIDEBAR.writeId(this, buffer);
+		buffer.writeInt(_player == null ? 0 : _player.getPurgeLastCategory());
+		buffer.writeInt(_purgeData == null ? 0 : _purgeData.getPoints()); // 1000000 = 100 percent
+		buffer.writeInt(_purgeData == null ? 0 : _purgeData.getKeys());
+		buffer.writeInt(0);
 	}
 }

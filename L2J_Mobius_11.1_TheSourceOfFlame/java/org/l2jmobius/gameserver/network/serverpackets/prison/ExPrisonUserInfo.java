@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.prison;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -49,11 +51,11 @@ public class ExPrisonUserInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PRISON_USER_INFO.writeId(this);
-		writeByte(_prisonType);
-		writeInt(_itemAmount);
-		writeInt(_remainTime);
+		ServerPackets.EX_PRISON_USER_INFO.writeId(this, buffer);
+		buffer.writeByte(_prisonType);
+		buffer.writeInt(_itemAmount);
+		buffer.writeInt(_remainTime);
 	}
 }

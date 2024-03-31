@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -31,9 +33,9 @@ public class ExCubeGameCloseUI extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_BLOCK_UP_SET_LIST.writeId(this);
-		writeInt(0xffffffff);
+		ServerPackets.EX_BLOCK_UP_SET_LIST.writeId(this, buffer);
+		buffer.writeInt(0xffffffff);
 	}
 }

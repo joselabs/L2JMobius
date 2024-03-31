@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.ClanMember;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -46,17 +48,17 @@ public class PledgeShowMemberListUpdate extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PLEDGE_SHOW_MEMBER_LIST_UPDATE.writeId(this);
-		writeString(_name);
-		writeInt(_level);
-		writeInt(_classId);
-		writeInt(0); // _sex
-		writeInt(0); // _race
-		writeInt(_objectId);
-		writeInt(_pledgeType);
-		writeInt(0); // _hasSponsor
-		writeByte(0);
+		ServerPackets.PLEDGE_SHOW_MEMBER_LIST_UPDATE.writeId(this, buffer);
+		buffer.writeString(_name);
+		buffer.writeInt(_level);
+		buffer.writeInt(_classId);
+		buffer.writeInt(0); // _sex
+		buffer.writeInt(0); // _race
+		buffer.writeInt(_objectId);
+		buffer.writeInt(_pledgeType);
+		buffer.writeInt(0); // _hasSponsor
+		buffer.writeByte(0);
 	}
 }

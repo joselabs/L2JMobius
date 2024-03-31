@@ -16,34 +16,32 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.pledgeV2;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeContributionInfo;
 
 /**
  * @author Mobius
  */
-public class RequestExPledgeContributionInfo implements ClientPacket
+public class RequestExPledgeContributionInfo extends ClientPacket
 {
 	private boolean _cycle;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_cycle = packet.readBoolean();
+		_cycle = readBoolean();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (player.getClan() == null))
 		{
 			return;
 		}
 		
-		client.sendPacket(new ExPledgeContributionInfo(player, _cycle));
+		player.sendPacket(new ExPledgeContributionInfo(player, _cycle));
 	}
 }

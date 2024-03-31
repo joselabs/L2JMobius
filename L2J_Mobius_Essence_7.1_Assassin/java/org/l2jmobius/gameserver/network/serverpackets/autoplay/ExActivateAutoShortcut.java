@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.autoplay;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.ShortCuts;
 import org.l2jmobius.gameserver.model.Shortcut;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,10 +38,10 @@ public class ExActivateAutoShortcut extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ACTIVATE_AUTO_SHORTCUT.writeId(this);
-		writeShort(_position);
-		writeByte(_active);
+		ServerPackets.EX_ACTIVATE_AUTO_SHORTCUT.writeId(this, buffer);
+		buffer.writeShort(_position);
+		buffer.writeByte(_active);
 	}
 }

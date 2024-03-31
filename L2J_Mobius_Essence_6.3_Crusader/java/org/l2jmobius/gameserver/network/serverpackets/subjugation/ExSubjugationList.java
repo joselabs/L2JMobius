@@ -21,7 +21,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.holders.PurgePlayerHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,16 +40,16 @@ public class ExSubjugationList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SUBJUGATION_LIST.writeId(this);
-		writeInt(_playerHolder.size());
+		ServerPackets.EX_SUBJUGATION_LIST.writeId(this, buffer);
+		buffer.writeInt(_playerHolder.size());
 		for (Entry<Integer, PurgePlayerHolder> integerPurgePlayerHolderEntry : _playerHolder)
 		{
-			writeInt(integerPurgePlayerHolderEntry.getKey());
-			writeInt(integerPurgePlayerHolderEntry.getValue() != null ? integerPurgePlayerHolderEntry.getValue().getPoints() : 0);
-			writeInt(integerPurgePlayerHolderEntry.getValue() != null ? integerPurgePlayerHolderEntry.getValue().getKeys() : 0);
-			writeInt(integerPurgePlayerHolderEntry.getValue() != null ? integerPurgePlayerHolderEntry.getValue().getRemainingKeys() : 40);
+			buffer.writeInt(integerPurgePlayerHolderEntry.getKey());
+			buffer.writeInt(integerPurgePlayerHolderEntry.getValue() != null ? integerPurgePlayerHolderEntry.getValue().getPoints() : 0);
+			buffer.writeInt(integerPurgePlayerHolderEntry.getValue() != null ? integerPurgePlayerHolderEntry.getValue().getKeys() : 0);
+			buffer.writeInt(integerPurgePlayerHolderEntry.getValue() != null ? integerPurgePlayerHolderEntry.getValue().getRemainingKeys() : 40);
 		}
 	}
 }

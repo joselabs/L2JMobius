@@ -88,13 +88,13 @@ public class Harvesting extends AbstractEffect
 					{
 						if (item.getCount() == 1)
 						{
-							sm = new SystemMessage(SystemMessageId.C1_HARVESTED_S2);
+							sm = new SystemMessage(SystemMessageId.S1_HARVESTED_S2_S);
 							sm.addString(player.getName());
 							sm.addItemName(item.getId());
 						}
 						else
 						{
-							sm = new SystemMessage(SystemMessageId.C1_HARVESTED_S3_S2_S);
+							sm = new SystemMessage(SystemMessageId.S1_HARVESTED_S3_S2_S);
 							sm.addString(player.getName());
 							sm.addInt(item.getCount());
 							sm.addItemName(item.getId());

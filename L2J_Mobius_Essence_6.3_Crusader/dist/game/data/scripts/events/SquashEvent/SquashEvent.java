@@ -19,7 +19,7 @@ package events.SquashEvent;
 import java.util.Arrays;
 import java.util.List;
 
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Npc;
@@ -583,7 +583,7 @@ public class SquashEvent extends LongTimeEvent
 				}
 				if (getRandom(100) < drop[2])
 				{
-					if (ItemTable.getInstance().getTemplate(drop[1]).getCrystalType() != CrystalType.NONE)
+					if (ItemData.getInstance().getTemplate(drop[1]).getCrystalType() != CrystalType.NONE)
 					{
 						((Monster) mob).dropItem(player, drop[1], 1);
 						break;

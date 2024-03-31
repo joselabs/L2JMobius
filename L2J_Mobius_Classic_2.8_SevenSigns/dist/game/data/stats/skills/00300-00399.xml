@@ -1159,7 +1159,7 @@
 		<targetType>NONE</targetType>
 		<effects>
 			<effect name="MpConsumePerLevel">
-				<power>0.8</power>
+				<power>0.6</power>
 				<ticks>5</ticks>
 			</effect>
 			<effect name="ShieldDefence">
@@ -1741,7 +1741,7 @@
 					<value level="2">8577</value>
 				</power>
 				<criticalChance>20</criticalChance>
-				<chanceBoost>300</chanceBoost>
+				<chanceBoost>250</chanceBoost>
 				<overHit>true</overHit>
 			</effect>
 		</effects>
@@ -1749,10 +1749,10 @@
 	<skill id="345" toLevel="12" name="Sonic Rage">
 		<!-- Attacks the target with a deadly energy storm with 195 Power, lowers P. Def., and absorbs Momentum. Requires a sword, spear, blunt weapon, fist weapon, or dual sword. -->
 		<icon>icon.skill0345</icon>
-		<abnormalLevel>5</abnormalLevel>
+		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>PD_DOWN</abnormalType>
-		<activateRate>80</activateRate>
+		<activateRate>120</activateRate>
 		<castRange>600</castRange>
 		<coolTime>300</coolTime>
 		<effectPoint>
@@ -1804,6 +1804,7 @@
 					<item>SWORD</item>
 					<item>BLUNT</item>
 					<item>DUALFIST</item>
+					<item>POLE</item>
 					<item>DUAL</item>
 				</weaponType>
 			</condition>
@@ -1824,9 +1825,10 @@
 					<value level="11">725</value>
 					<value level="12">757</value>
 				</power>
+				<criticalChance>5</criticalChance>
 			</effect>
 			<effect name="PhysicalDefence">
-				<amount>-23</amount>
+				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1857,9 +1859,8 @@
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>PD_DOWN</abnormalType>
-		<activateRate>80</activateRate>
+		<activateRate>120</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
-		<lvlBonusRate>30</lvlBonusRate>
 		<effectRange>1100</effectRange>
 		<hitTime>1200</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1917,9 +1918,10 @@
 					<value level="11">725</value>
 					<value level="12">757</value>
 				</power>
+				<criticalChance>5</criticalChance>
 			</effect>
 			<effect name="PhysicalDefence">
-				<amount>-23</amount>
+				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1945,8 +1947,6 @@
 			<value level="8">-784</value>
 			<value level="9">-800</value>
 		</effectPoint>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>1800</hitTime>
 		<hpConsume>
 			<value level="1">340</value>
@@ -2205,7 +2205,7 @@
 		<abnormalTime>2</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<activateRate>80</activateRate>
+		<activateRate>60</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<effectPoint>
@@ -2323,7 +2323,7 @@
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>40</activateRate>
-		<basicProperty>MAGIC</basicProperty>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
 		<effectPoint>-507</effectPoint>
 		<effectRange>1400</effectRange>
@@ -2636,14 +2636,14 @@
 				<chance>60</chance>
 			</effect>
 			<effect name="PhysicalAttack">
-				<criticalChance>20</criticalChance>
-				<overHit>true</overHit>
 				<power>
 					<value level="1">2486</value>
 					<value level="2">2731</value>
 					<value level="3">2991</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<criticalChance>20</criticalChance>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>

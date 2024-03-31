@@ -19,7 +19,9 @@ package org.l2jmobius.gameserver.network.serverpackets.subjugation;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.PurgeRankingManager;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -40,19 +42,19 @@ public class ExSubjugationRanking extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SUBJUGATION_RANKING.writeId(this);
-		writeInt(_ranking.entrySet().size());
+		ServerPackets.EX_SUBJUGATION_RANKING.writeId(this, buffer);
+		buffer.writeInt(_ranking.entrySet().size());
 		int counter = 1;
 		for (Entry<String, Integer> data : _ranking.entrySet())
 		{
-			writeSizedString(data.getKey());
-			writeInt(data.getValue());
-			writeInt(counter++);
+			buffer.writeSizedString(data.getKey());
+			buffer.writeInt(data.getValue());
+			buffer.writeInt(counter++);
 		}
-		writeInt(_category);
-		writeInt(PurgeRankingManager.getInstance().getPlayerRating(_category, _objectId).getValue());
-		writeInt(PurgeRankingManager.getInstance().getPlayerRating(_category, _objectId).getKey());
+		buffer.writeInt(_category);
+		buffer.writeInt(PurgeRankingManager.getInstance().getPlayerRating(_category, _objectId).getValue());
+		buffer.writeInt(PurgeRankingManager.getInstance().getPlayerRating(_category, _objectId).getKey());
 	}
 }

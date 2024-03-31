@@ -20,12 +20,12 @@ import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.stats.Stat;
 
 /**
- * @author quangnguyen
+ * @author quangnguyen, fruit
  */
 public class AreaOfEffectDamageDefence extends AbstractStatEffect
 {
 	public AreaOfEffectDamageDefence(StatSet params)
 	{
-		super(params, Stat.AREA_OF_EFFECT_DAMAGE_DEFENCE);
+		super(params, Stat.AREA_OF_EFFECT_DAMAGE_DEFENCE, Stat.AREA_OF_EFFECT_DAMAGE_DEFENCE_ADD);
 	}
 }

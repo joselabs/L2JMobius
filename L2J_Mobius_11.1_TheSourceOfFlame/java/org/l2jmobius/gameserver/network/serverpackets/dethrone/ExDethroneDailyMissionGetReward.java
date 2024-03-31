@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.dethrone;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,12 +40,12 @@ public class ExDethroneDailyMissionGetReward extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_DETHRONE_DAILY_MISSION_GET_REWARD.writeId(this);
-		writeInt(_id);
-		writeBoolean(_success);
-		writeLong(_personalDethronePoint);
-		writeLong(_serverDethronePoint);
+		ServerPackets.EX_DETHRONE_DAILY_MISSION_GET_REWARD.writeId(this, buffer);
+		buffer.writeInt(_id);
+		buffer.writeByte(_success);
+		buffer.writeLong(_personalDethronePoint);
+		buffer.writeLong(_serverDethronePoint);
 	}
 }

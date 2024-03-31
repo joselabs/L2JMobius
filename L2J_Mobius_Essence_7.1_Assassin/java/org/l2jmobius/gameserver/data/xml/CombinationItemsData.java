@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.item.combination.CombinationItem;
 import org.l2jmobius.gameserver.model.item.combination.CombinationItemReward;
@@ -64,7 +63,7 @@ public class CombinationItemsData implements IXmlReader
 				final int enchant = parseInteger(rewardNode.getAttributes(), "enchant", 0);
 				final CombinationItemType type = parseEnum(rewardNode.getAttributes(), CombinationItemType.class, "type");
 				item.addReward(new CombinationItemReward(id, count, type, enchant));
-				if (ItemTable.getInstance().getTemplate(id) == null)
+				if (ItemData.getInstance().getTemplate(id) == null)
 				{
 					LOGGER.info(getClass().getSimpleName() + ": Could not find item with id " + id);
 				}

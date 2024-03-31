@@ -19,7 +19,8 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.Arrays;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
@@ -27,6 +28,7 @@ import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
@@ -260,7 +262,7 @@ public class SystemMessage extends ServerPacket
 	
 	public SystemMessage addItemName(int id)
 	{
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(id);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(id);
 		if (item.getDisplayId() != id)
 		{
 			return addString(item.getName());
@@ -378,14 +380,14 @@ public class SystemMessage extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SYSTEM_MESSAGE.writeId(this);
+		ServerPackets.SYSTEM_MESSAGE.writeId(this, buffer);
 		
 		// Localisation related.
 		if (Config.MULTILANG_ENABLE)
 		{
-			final Player player = getPlayer();
+			final Player player = client.getPlayer();
 			if (player != null)
 			{
 				final String lang = player.getLang();
@@ -399,18 +401,18 @@ public class SystemMessage extends ServerPacket
 						{
 							params[i] = _params[i].getValue();
 						}
-						writeShort(SystemMessageId.S1_2.getId());
-						writeByte(1);
-						writeByte(TYPE_TEXT);
-						writeString(sml.getLocalisation(params));
+						buffer.writeShort(SystemMessageId.S1_2.getId());
+						buffer.writeByte(1);
+						buffer.writeByte(TYPE_TEXT);
+						buffer.writeString(sml.getLocalisation(params));
 						return;
 					}
 				}
 			}
 		}
 		
-		writeShort(getId());
-		writeByte(_params.length);
+		buffer.writeShort(getId());
+		buffer.writeByte(_params.length);
 		for (SMParam param : _params)
 		{
 			if (param == null)
@@ -418,14 +420,14 @@ public class SystemMessage extends ServerPacket
 				PacketLogger.warning("Found null parameter for SystemMessageId " + _smId);
 				continue;
 			}
-			writeByte(param.getType());
+			buffer.writeByte(param.getType());
 			switch (param.getType())
 			{
 				case TYPE_ELEMENT_NAME:
 				case TYPE_BYTE:
 				case TYPE_FACTION_NAME:
 				{
-					writeByte(param.getIntValue());
+					buffer.writeByte(param.getIntValue());
 					break;
 				}
 				case TYPE_CASTLE_NAME:
@@ -433,7 +435,7 @@ public class SystemMessage extends ServerPacket
 				case TYPE_INSTANCE_NAME:
 				case TYPE_CLASS_ID:
 				{
-					writeShort(param.getIntValue());
+					buffer.writeShort(param.getIntValue());
 					break;
 				}
 				case TYPE_ITEM_NAME:
@@ -441,35 +443,35 @@ public class SystemMessage extends ServerPacket
 				case TYPE_NPC_NAME:
 				case TYPE_DOOR_NAME:
 				{
-					writeInt(param.getIntValue());
+					buffer.writeInt(param.getIntValue());
 					break;
 				}
 				case TYPE_LONG_NUMBER:
 				{
-					writeLong(param.getLongValue());
+					buffer.writeLong(param.getLongValue());
 					break;
 				}
 				case TYPE_TEXT:
 				case TYPE_PLAYER_NAME:
 				{
-					writeString(param.getStringValue());
+					buffer.writeString(param.getStringValue());
 					break;
 				}
 				case TYPE_SKILL_NAME:
 				{
 					final int[] array = param.getIntArrayValue();
-					writeInt(array[0]); // skill id
-					writeShort(array[1]); // skill level
-					writeShort(array[2]); // skill sub level
+					buffer.writeInt(array[0]); // skill id
+					buffer.writeShort(array[1]); // skill level
+					buffer.writeShort(array[2]); // skill sub level
 					break;
 				}
 				case TYPE_POPUP_ID:
 				case TYPE_ZONE_NAME:
 				{
 					final int[] array = param.getIntArrayValue();
-					writeInt(array[0]); // x
-					writeInt(array[1]); // y
-					writeInt(array[2]); // z
+					buffer.writeInt(array[0]); // x
+					buffer.writeInt(array[1]); // y
+					buffer.writeInt(array[2]); // z
 					break;
 				}
 			}

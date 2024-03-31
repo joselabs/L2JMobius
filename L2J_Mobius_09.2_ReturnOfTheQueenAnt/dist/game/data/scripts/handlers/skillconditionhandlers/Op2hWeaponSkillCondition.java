@@ -57,11 +57,12 @@ public class Op2hWeaponSkillCondition implements ISkillCondition
 			return false;
 		}
 		
-		for (WeaponType weaponType : _weaponTypes)
+		final WeaponType weaponType = weapon.getItemType();
+		for (WeaponType type : _weaponTypes)
 		{
-			if ((weapon.getItemType() == weaponType) && ((weapon.getBodyPart() & ItemTemplate.SLOT_LR_HAND) != 0))
+			if (type == weaponType)
 			{
-				return true;
+				return (weapon.getBodyPart() & ItemTemplate.SLOT_LR_HAND) != 0;
 			}
 		}
 		

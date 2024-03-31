@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.GraciaSeedsManager;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ExShowSeedMapInfo extends ServerPacket
@@ -28,20 +30,20 @@ public class ExShowSeedMapInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHOW_SEED_MAP_INFO.writeId(this);
-		writeInt(2); // seed count
+		ServerPackets.EX_SHOW_SEED_MAP_INFO.writeId(this, buffer);
+		buffer.writeInt(2); // seed count
 		// Seed of Destruction
-		writeInt(-246857); // x coord
-		writeInt(251960); // y coord
-		writeInt(4331); // z coord
-		writeInt(2770 + GraciaSeedsManager.getInstance().getSoDState()); // sys msg id
+		buffer.writeInt(-246857); // x coord
+		buffer.writeInt(251960); // y coord
+		buffer.writeInt(4331); // z coord
+		buffer.writeInt(2770 + GraciaSeedsManager.getInstance().getSoDState()); // sys msg id
 		// Seed of Infinity
-		writeInt(-213770); // x coord
-		writeInt(210760); // y coord
-		writeInt(4400); // z coord
+		buffer.writeInt(-213770); // x coord
+		buffer.writeInt(210760); // y coord
+		buffer.writeInt(4400); // z coord
 		// Manager not implemented yet
-		writeInt(2766); // sys msg id
+		buffer.writeInt(2766); // sys msg id
 	}
 }

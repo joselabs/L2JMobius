@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.elementalspirits;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -30,9 +32,9 @@ public class ElementalSpiritEvolution extends UpdateElementalSpiritPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ELEMENTAL_SPIRIT_EVOLUTION.writeId(this);
-		writeUpdate();
+		ServerPackets.EX_ELEMENTAL_SPIRIT_EVOLUTION.writeId(this, buffer);
+		writeUpdate(buffer);
 	}
 }

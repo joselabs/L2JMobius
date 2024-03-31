@@ -18,13 +18,11 @@ package org.l2jmobius.gameserver.network.clientpackets.ensoul;
 
 import java.util.Collection;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.EnsoulData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -33,24 +31,24 @@ import org.l2jmobius.gameserver.network.serverpackets.ensoul.ExEnSoulExtractionR
 /**
  * @author Mobius
  */
-public class RequestTryEnSoulExtraction implements ClientPacket
+public class RequestTryEnSoulExtraction extends ClientPacket
 {
 	private int _itemObjectId;
 	private int _type;
 	private int _position;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemObjectId = packet.readInt();
-		_type = packet.readByte();
-		_position = packet.readByte() - 1;
+		_itemObjectId = readInt();
+		_type = readByte();
+		_position = readByte() - 1;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

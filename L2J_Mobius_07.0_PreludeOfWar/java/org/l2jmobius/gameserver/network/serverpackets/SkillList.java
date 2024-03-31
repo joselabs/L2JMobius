@@ -20,7 +20,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.SkillData;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class SkillList extends ServerPacket
@@ -30,26 +32,25 @@ public class SkillList extends ServerPacket
 	
 	public SkillList()
 	{
-		super(1024);
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SKILL_LIST.writeId(this);
+		ServerPackets.SKILL_LIST.writeId(this, buffer);
 		_skills.sort(Comparator.comparing(s -> SkillData.getInstance().getSkill(s.id, s.level, s.subLevel).isToggle()));
-		writeInt(_skills.size());
+		buffer.writeInt(_skills.size());
 		for (Skill temp : _skills)
 		{
-			writeInt(temp.passive);
-			writeShort(temp.level);
-			writeShort(temp.subLevel);
-			writeInt(temp.id);
-			writeInt(temp.reuseDelayGroup); // GOD ReuseDelayShareGroupID
-			writeByte(temp.disabled); // iSkillDisabled
-			writeByte(temp.enchanted); // CanEnchant
+			buffer.writeInt(temp.passive);
+			buffer.writeShort(temp.level);
+			buffer.writeShort(temp.subLevel);
+			buffer.writeInt(temp.id);
+			buffer.writeInt(temp.reuseDelayGroup); // GOD ReuseDelayShareGroupID
+			buffer.writeByte(temp.disabled); // iSkillDisabled
+			buffer.writeByte(temp.enchanted); // CanEnchant
 		}
-		writeInt(_lastLearnedSkillId);
+		buffer.writeInt(_lastLearnedSkillId);
 	}
 	
 	public void addSkill(int id, int reuseDelayGroup, int level, int subLevel, boolean passive, boolean disabled, boolean enchanted)

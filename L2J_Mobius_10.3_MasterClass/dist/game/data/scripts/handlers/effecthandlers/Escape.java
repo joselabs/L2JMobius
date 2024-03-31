@@ -61,7 +61,14 @@ public class Escape extends AbstractEffect
 	{
 		if (_escapeType != null)
 		{
-			effected.teleToLocation(_escapeType, null);
+			if (effected.isInInstance() && effected.getActingPlayer().isInTimedHuntingZone())
+			{
+				effected.teleToLocation(effected.getActingPlayer().getTimedHuntingZone().getEnterLocation(), effected.getInstanceId());
+			}
+			else
+			{
+				effected.teleToLocation(_escapeType, null);
+			}
 		}
 	}
 }

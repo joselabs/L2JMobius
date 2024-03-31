@@ -626,7 +626,7 @@ public class Door extends Creature
 		final boolean isHall = ((_clanHall != null) && _clanHall.isSiegableHall() && ((SiegableHall) _clanHall).isInSiege());
 		if (isFort || isCastle || isHall)
 		{
-			broadcastPacket(new SystemMessage(SystemMessageId.THE_CASTLE_GATE_HAS_BEEN_DESTROYED));
+			broadcastPacket(new SystemMessage(SystemMessageId.THE_CASTLE_GATE_HAS_BEEN_BROKEN_DOWN));
 		}
 		
 		return true;

@@ -45,6 +45,9 @@ import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExMercenaryCastl
 import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExMercenaryCastleWarCastleSiegeDefenderList;
 import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExMercenaryCastleWarCastleSiegeHudInfo;
 import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExMercenaryCastleWarCastleSiegeInfo;
+import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExPledgeMercenaryMemberJoin;
+import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExPledgeMercenaryMemberList;
+import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExPledgeMercenaryRecruitInfoSet;
 import org.l2jmobius.gameserver.network.clientpackets.classchange.ExRequestClassChange;
 import org.l2jmobius.gameserver.network.clientpackets.classchange.ExRequestClassChangeVerifying;
 import org.l2jmobius.gameserver.network.clientpackets.commission.RequestCommissionBuyInfo;
@@ -245,7 +248,7 @@ public enum ExClientPackets
 	REQUEST_EX_CANCEL_ENCHANT_ITEM(0x4B, RequestExCancelEnchantItem::new, ConnectionState.IN_GAME),
 	REQUEST_CHANGE_NICKNAME_COLOR(0x4C, RequestChangeNicknameColor::new, ConnectionState.IN_GAME),
 	REQUEST_RESET_NICKNAME(0x4D, RequestResetNickname::new, ConnectionState.IN_GAME),
-	EX_BOOKMARK_PACKET(0x4E, ExBookmarkPacket::new, ConnectionState.IN_GAME),
+	EX_BOOKMARK_PACKET(0x4E, null, ConnectionState.IN_GAME),
 	REQUEST_WITHDRAW_PREMIUM_ITEM(0x4F, RequestWithDrawPremiumItem::new, ConnectionState.IN_GAME),
 	REQUEST_EX_JUMP(0x50, null, ConnectionState.IN_GAME),
 	REQUEST_EX_START_SHOW_CRATAE_CUBE_RANK(0x51, null, ConnectionState.IN_GAME),
@@ -555,13 +558,13 @@ public enum ExClientPackets
 	EX_RANKING_CHAR_RANKERS(0x183, RequestRankingCharRankers::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_SPAWN_BUFFZONE_NPC(0x184, RequestExRankingCharSpawnBuffzoneNpc::new, ConnectionState.IN_GAME),
 	EX_RANKING_CHAR_BUFFZONE_NPC_POSITION(0x185, RequestExRankingCharBuffzoneNpcPosition::new, ConnectionState.IN_GAME),
-	EX_PLEDGE_MERCENARY_RECRUIT_INFO_SET(0x186, null, ConnectionState.IN_GAME),
+	EX_PLEDGE_MERCENARY_RECRUIT_INFO_SET(0x186, ExPledgeMercenaryRecruitInfoSet::new, ConnectionState.IN_GAME),
 	EX_MERCENARY_CASTLEWAR_CASTLE_INFO(0x187, ExMercenaryCastleWarCastleSiegeInfo::new, ConnectionState.IN_GAME),
 	EX_MERCENARY_CASTLEWAR_CASTLE_SIEGE_INFO(0x188, ExMercenaryCastleWarCastleSiegeHudInfo::new, ConnectionState.IN_GAME),
 	EX_MERCENARY_CASTLEWAR_CASTLE_SIEGE_ATTACKER_LIST(0x189, ExMercenaryCastleWarCastleSiegeAttackerList::new, ConnectionState.IN_GAME),
 	EX_MERCENARY_CASTLEWAR_CASTLE_SIEGE_DEFENDER_LIST(0x18A, ExMercenaryCastleWarCastleSiegeDefenderList::new, ConnectionState.IN_GAME),
-	EX_PLEDGE_MERCENARY_MEMBER_LIST(0x18B, null, ConnectionState.IN_GAME),
-	EX_PLEDGE_MERCENARY_MEMBER_JOIN(0x18C, null, ConnectionState.IN_GAME),
+	EX_PLEDGE_MERCENARY_MEMBER_LIST(0x18B, ExPledgeMercenaryMemberList::new, ConnectionState.IN_GAME),
+	EX_PLEDGE_MERCENARY_MEMBER_JOIN(0x18C, ExPledgeMercenaryMemberJoin::new, ConnectionState.IN_GAME),
 	EX_PVP_BOOK_LIST(0x18D, ExPvpBookList::new, ConnectionState.IN_GAME),
 	EX_PVPBOOK_KILLER_LOCATION(0x18E, null, ConnectionState.IN_GAME),
 	EX_PVPBOOK_TELEPORT_TO_KILLER(0x18F, null, ConnectionState.IN_GAME),
@@ -640,9 +643,9 @@ public enum ExClientPackets
 		}
 	}
 	
-	private int _packetId;
-	private Supplier<ClientPacket> _packetSupplier;
-	private Set<ConnectionState> _connectionStates;
+	private final int _packetId;
+	private final Supplier<ClientPacket> _packetSupplier;
+	private final Set<ConnectionState> _connectionStates;
 	
 	ExClientPackets(int packetId, Supplier<ClientPacket> packetSupplier, ConnectionState... connectionStates)
 	{

@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -33,10 +35,10 @@ public class TutorialShowQuestionMark extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.TUTORIAL_SHOW_QUESTION_MARK.writeId(this);
-		writeByte(_markType);
-		writeInt(_markId);
+		ServerPackets.TUTORIAL_SHOW_QUESTION_MARK.writeId(this, buffer);
+		buffer.writeByte(_markType);
+		buffer.writeInt(_markId);
 	}
 }

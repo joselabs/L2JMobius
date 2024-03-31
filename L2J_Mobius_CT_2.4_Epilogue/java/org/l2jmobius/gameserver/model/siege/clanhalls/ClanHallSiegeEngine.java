@@ -346,7 +346,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 	@Override
 	public void endSiege()
 	{
-		final SystemMessage end = new SystemMessage(SystemMessageId.THE_S1_SIEGE_HAS_FINISHED);
+		final SystemMessage end = new SystemMessage(SystemMessageId.THE_SIEGE_OF_S1_HAS_FINISHED);
 		end.addString(_hall.getName());
 		Broadcast.toAllOnlinePlayers(end);
 		

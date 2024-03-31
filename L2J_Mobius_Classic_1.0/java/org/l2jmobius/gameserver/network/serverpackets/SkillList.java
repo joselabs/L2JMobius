@@ -20,7 +20,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.SkillData;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.util.SkillEnchantConverter;
 
@@ -62,20 +64,20 @@ public class SkillList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SKILL_LIST.writeId(this);
+		ServerPackets.SKILL_LIST.writeId(this, buffer);
 		_skills.sort(Comparator.comparing(s -> SkillData.getInstance().getSkill(s.id, s.level, s.subLevel).isToggle() ? 1 : 0));
-		writeInt(_skills.size());
+		buffer.writeInt(_skills.size());
 		for (Skill temp : _skills)
 		{
-			writeInt(temp.passive);
-			writeInt(temp.subLevel > 1000 ? SkillEnchantConverter.levelToErtheia(temp.subLevel) : temp.level);
-			writeInt(temp.id);
-			writeInt(temp.reuseDelayGroup); // GOD ReuseDelayShareGroupID
-			writeByte(temp.disabled); // iSkillDisabled
-			writeByte(temp.enchanted); // CanEnchant
+			buffer.writeInt(temp.passive);
+			buffer.writeInt(temp.subLevel > 1000 ? SkillEnchantConverter.levelToErtheia(temp.subLevel) : temp.level);
+			buffer.writeInt(temp.id);
+			buffer.writeInt(temp.reuseDelayGroup); // GOD ReuseDelayShareGroupID
+			buffer.writeByte(temp.disabled); // iSkillDisabled
+			buffer.writeByte(temp.enchanted); // CanEnchant
 		}
-		writeInt(_lastLearnedSkillId);
+		buffer.writeInt(_lastLearnedSkillId);
 	}
 }

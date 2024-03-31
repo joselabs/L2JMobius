@@ -16,13 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.ClanLevelData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanMember;
 import org.l2jmobius.gameserver.model.clan.ClanPrivilege;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
@@ -30,24 +28,24 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * Format: (ch) dSdS
  * @author -Wooden-
  */
-public class RequestPledgeReorganizeMember implements ClientPacket
+public class RequestPledgeReorganizeMember extends ClientPacket
 {
 	private String _memberName;
 	private int _newPledgeType;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readInt(); // _isMemberSelected
-		_memberName = packet.readString();
-		_newPledgeType = packet.readInt();
-		packet.readString(); // _selectedMember
+		readInt(); // _isMemberSelected
+		_memberName = readString();
+		_newPledgeType = readInt();
+		readString(); // _selectedMember
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

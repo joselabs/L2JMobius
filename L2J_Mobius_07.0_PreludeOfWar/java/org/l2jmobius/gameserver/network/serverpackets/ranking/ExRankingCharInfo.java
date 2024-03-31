@@ -18,9 +18,11 @@ package org.l2jmobius.gameserver.network.serverpackets.ranking;
 
 import java.util.Map;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -41,9 +43,9 @@ public class ExRankingCharInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RANKING_CHAR_INFO.writeId(this);
+		ServerPackets.EX_RANKING_CHAR_INFO.writeId(this, buffer);
 		if (!_playerList.isEmpty())
 		{
 			for (Integer id : _playerList.keySet())
@@ -51,31 +53,31 @@ public class ExRankingCharInfo extends ServerPacket
 				final StatSet player = _playerList.get(id);
 				if (player.getInt("charId") == _player.getObjectId())
 				{
-					writeInt(id); // server rank
-					writeInt(player.getInt("raceRank")); // race rank
+					buffer.writeInt(id); // server rank
+					buffer.writeInt(player.getInt("raceRank")); // race rank
 					for (Integer id2 : _snapshotList.keySet())
 					{
 						final StatSet snapshot = _snapshotList.get(id2);
 						if (player.getInt("charId") == snapshot.getInt("charId"))
 						{
-							writeInt(id2); // server rank snapshot
-							writeInt(snapshot.getInt("raceRank")); // race rank snapshot
+							buffer.writeInt(id2); // server rank snapshot
+							buffer.writeInt(snapshot.getInt("raceRank")); // race rank snapshot
 							return;
 						}
 					}
 				}
 			}
-			writeInt(0); // server rank
-			writeInt(0); // race rank
-			writeInt(0); // server rank snapshot
-			writeInt(0); // race rank snapshot
+			buffer.writeInt(0); // server rank
+			buffer.writeInt(0); // race rank
+			buffer.writeInt(0); // server rank snapshot
+			buffer.writeInt(0); // race rank snapshot
 		}
 		else
 		{
-			writeInt(0); // server rank
-			writeInt(0); // race rank
-			writeInt(0); // server rank snapshot
-			writeInt(0); // race rank snapshot
+			buffer.writeInt(0); // server rank
+			buffer.writeInt(0); // race rank
+			buffer.writeInt(0); // server rank snapshot
+			buffer.writeInt(0); // race rank snapshot
 		}
 	}
 }

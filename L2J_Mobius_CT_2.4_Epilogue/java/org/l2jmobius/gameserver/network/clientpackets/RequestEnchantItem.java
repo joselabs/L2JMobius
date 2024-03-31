@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -30,7 +29,6 @@ import org.l2jmobius.gameserver.model.item.enchant.EnchantSupportItem;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.EnchantResult;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -39,7 +37,7 @@ import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.util.Util;
 
-public class RequestEnchantItem implements ClientPacket
+public class RequestEnchantItem extends ClientPacket
 {
 	protected static final Logger LOGGER_ENCHANT = Logger.getLogger("enchant.items");
 	
@@ -47,22 +45,22 @@ public class RequestEnchantItem implements ClientPacket
 	private int _supportId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_supportId = packet.readInt();
+		_objectId = readInt();
+		_supportId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (_objectId == 0))
 		{
 			return;
 		}
 		
-		if (!player.isOnline() || client.isDetached())
+		if (!player.isOnline() || getClient().isDetached())
 		{
 			player.setActiveEnchantItemId(Player.ID_NONE);
 			return;
@@ -210,7 +208,7 @@ public class RequestEnchantItem implements ClientPacket
 					final int maxEnchantAnnounce = item.isArmor() ? 0 : 15;
 					if ((item.getEnchantLevel() == minEnchantAnnounce) || (item.getEnchantLevel() == maxEnchantAnnounce))
 					{
-						final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_SUCCESSFULLY_ENCHANTED_A_S2_S3);
+						final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_SUCCESSFULY_ENCHANTED_A_S2_S3);
 						sm.addString(player.getName());
 						sm.addInt(item.getEnchantLevel());
 						sm.addItemName(item);
@@ -240,7 +238,7 @@ public class RequestEnchantItem implements ClientPacket
 					if (scrollTemplate.isSafe())
 					{
 						// safe enchant - remain old value
-						player.sendPacket(SystemMessageId.ENCHANT_FAILED_THE_ENCHANT_LEVEL_FOR_THE_CORRESPONDING_ITEM_WILL_BE_EXACTLY_RETAINED);
+						player.sendPacket(SystemMessageId.ENCHANT_FAILED_THE_ENCHANT_SKILL_FOR_THE_CORRESPONDING_ITEM_WILL_BE_EXACTLY_RETAINED);
 						player.sendPacket(new EnchantResult(5, 0, 0));
 						if (Config.LOG_ITEM_ENCHANTS)
 						{
@@ -296,7 +294,7 @@ public class RequestEnchantItem implements ClientPacket
 						if (scrollTemplate.isBlessed())
 						{
 							// blessed enchant - clear enchant value
-							player.sendPacket(SystemMessageId.THE_BLESSED_ENCHANT_FAILED_THE_ENCHANT_VALUE_OF_THE_ITEM_BECAME_0);
+							player.sendPacket(SystemMessageId.FAILED_IN_BLESSED_ENCHANT_THE_ENCHANT_VALUE_OF_THE_ITEM_BECAME_0);
 							
 							item.setEnchantLevel(0);
 							item.updateDatabase();

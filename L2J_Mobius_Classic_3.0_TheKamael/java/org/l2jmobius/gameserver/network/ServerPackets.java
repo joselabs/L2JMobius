@@ -17,6 +17,7 @@
 package org.l2jmobius.gameserver.network;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
@@ -889,7 +890,7 @@ public enum ServerPackets
 		_id2 = id2;
 	}
 	
-	public void writeId(ServerPacket packet)
+	public void writeId(ServerPacket packet, WritableBuffer buffer)
 	{
 		if (Config.DEBUG_SERVER_PACKETS)
 		{
@@ -900,10 +901,10 @@ public enum ServerPackets
 			}
 		}
 		
-		packet.writeByte(_id1);
+		buffer.writeByte(_id1);
 		if (_id2 > 0)
 		{
-			packet.writeShort(_id2);
+			buffer.writeShort(_id2);
 		}
 	}
 }

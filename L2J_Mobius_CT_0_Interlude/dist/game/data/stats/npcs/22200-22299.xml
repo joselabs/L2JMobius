@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/npcs.xsd">
-	<npc id="22200" level="80" type="Monster" name="Ornithomimus">
+	<npc id="22200" level="84" type="Monster" name="Ornithomimus">
 		<parameters>
 			<param name="ag_type" value="0" />
 			<param name="ProbSelfRangeBuff1" value="50" />
 			<param name="ProbPhysicalSpecial1" value="33" />
 			<param name="ProbPhysicalSpecial2" value="5" />
+			<minions name="Privates">
+				<npc id="22201" count="1" max="1" respawnTime="0" />
+				<npc id="22202" count="1" max="1" respawnTime="0" />
+				<npc id="22219" count="1" max="1" respawnTime="0" />
+			</minions>
 			<param name="BroadCastRange" value="100" />
 			<param name="BroadCastReception" value="1" />
 			<param name="HpChkRate5" value="80" />
@@ -16,10 +21,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7788" hpRegen="13.43" mp="2211" mpRegen="3.09" />
+			<attack physical="1149" magical="699.84" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="367.2" magical="235.94" />
 			<speed>
 				<walk ground="36" />
 				<run ground="170" />
@@ -28,21 +33,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="5" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500">
@@ -55,22 +47,21 @@
 				<group chance="70">
 					<item id="57" min="6036" max="12300" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="6.1053">
-					<item id="5533" min="1" max="1" chance="3.24964" /> <!-- Elysian Head -->
-					<item id="8342" min="1" max="1" chance="6.49927" /> <!-- Flaming Dragon Skull Piece -->
-					<item id="8349" min="1" max="1" chance="3.24964" /> <!-- Doom Crusher Head -->
-					<item id="8954" min="1" max="1" chance="11.2181" /> <!-- Blue Primeval Crystal -->
-					<item id="8897" min="1" max="1" chance="14.8903" /> <!-- Ancient Tactical Manual: Symbol of the Sniper -->
-					<item id="8878" min="1" max="1" chance="33.4267" /> <!-- Spellbook: Summon Feline King -->
-					<item id="8633" min="1" max="1" chance="6.49927" /> <!-- Elixir of Mental Strength (S-Grade) -->
-					<item id="8627" min="1" max="1" chance="9.74891" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8955" min="1" max="1" chance="11.2181" /> <!-- Green Primeval Crystal -->
+				<group chance="0.3719">
+					<item id="5533" min="1" max="1" chance="20.0052" /> <!-- Elysian Head -->
+					<item id="5544" min="1" max="1" chance="40.0109" /> <!-- Branch of The Mother Tree Head -->
+					<item id="8342" min="1" max="1" chance="35.0095" /> <!-- Flaming Dragon Skull Piece -->
+					<item id="8349" min="1" max="1" chance="4.9744" /> <!-- Doom Crusher Head -->
 				</group>
-				<group chance="100">
-					<item id="8888" min="1" max="1" chance="1.2858" /> <!-- Amulet: Pa'agrio's Fist -->
-				</group>
-				<group chance="100">
-					<item id="8886" min="1" max="1" chance="1.2858" /> <!-- Amulet: Victories of Pa'agrio -->
+				<group chance="1.77">
+					<item id="8955" min="1" max="1" chance="4.2033" /> <!-- Green Primeval Crystal -->
+					<item id="8954" min="1" max="1" chance="5.2542" /> <!-- Blue Primeval Crystal -->
+					<item id="8888" min="1" max="1" chance="9.4632" /> <!-- Amulet: Pa'agrio's Fist -->
+					<item id="8886" min="1" max="1" chance="3.1525" /> <!-- Amulet: Victories of Pa'agrio -->
+					<item id="8879" min="1" max="1" chance="3.3898" /> <!-- Spellbook: Summon Magnus the Unicorn -->
+					<item id="8633" min="1" max="1" chance="36.6841" /> <!-- Elixir of Mental Strength (S-Grade) -->
+					<item id="8627" min="1" max="1" chance="35.757" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8956" min="1" max="1" chance="2.0959" /> <!-- Red Primeval Crystal -->
 				</group>
 			</drop>
 		</dropLists>
@@ -79,7 +70,7 @@
 			<height normal="37.2" />
 		</collision>
 	</npc>
-	<npc id="22201" level="80" type="Monster" name="Ornithomimus">
+	<npc id="22201" level="84" type="Monster" name="Ornithomimus">
 		<parameters>
 			<param name="ag_type" value="0" />
 			<param name="IsSayPrivate" value="0" />
@@ -89,10 +80,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7788" hpRegen="13.43" mp="2211" mpRegen="3.09" />
+			<attack physical="1149" magical="699.84" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="367.2" magical="235.94" />
 			<speed>
 				<walk ground="36" />
 				<run ground="200" />
@@ -101,22 +92,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="5" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
-			<skill id="5084" level="1" /> <!-- NPC Blinding Blow -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" isAggressive="false">
@@ -129,24 +106,17 @@
 				<group chance="70">
 					<item id="57" min="6034" max="12320" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="4.3156">
-					<item id="5533" min="1" max="1" chance="2.22912" /> <!-- Elysian Head -->
-					<item id="5544" min="1" max="1" chance="3.12355" /> <!-- Branch of The Mother Tree Head -->
-					<item id="8342" min="1" max="1" chance="1.78422" /> <!-- Flaming Dragon Skull Piece -->
-					<item id="8349" min="1" max="1" chance="3.12355" /> <!-- Doom Crusher Head -->
-					<item id="8955" min="1" max="1" chance="1.72398" /> <!-- Green Primeval Crystal -->
-					<item id="8954" min="1" max="1" chance="1.33701" /> <!-- Blue Primeval Crystal -->
-					<item id="8888" min="1" max="1" chance="32.1832" /> <!-- Amulet: Pa'agrio's Fist -->
-					<item id="8886" min="1" max="1" chance="40.6525" /> <!-- Amulet: Victories of Pa'agrio -->
-					<item id="8633" min="1" max="1" chance="4.91009" /> <!-- Elixir of Mental Strength (S-Grade) -->
-					<item id="8627" min="1" max="1" chance="8.48781" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8956" min="1" max="1" chance="0.4449" /> <!-- Red Primeval Crystal -->
+				<group chance="0.2201">
+					<item id="8342" min="1" max="1" chance="66.6971" /> <!-- Flaming Dragon Skull Piece -->
+					<item id="8349" min="1" max="1" chance="33.3029" /> <!-- Doom Crusher Head -->
 				</group>
-				<group chance="100">
-					<item id="8889" min="1" max="1" chance="0.8571" /> <!-- Amulet: Gate Chant -->
-				</group>
-				<group chance="100">
-					<item id="8882" min="1" max="1" chance="0.8571" /> <!-- Spellbook: Salvation -->
+				<group chance="1.6038">
+					<item id="8627" min="1" max="1" chance="36.6752" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8633" min="1" max="1" chance="41.2899" /> <!-- Elixir of Mental Strength (S-Grade) -->
+					<item id="8879" min="1" max="1" chance="3.741" /> <!-- Spellbook: Summon Magnus the Unicorn -->
+					<item id="8882" min="1" max="1" chance="4.5703" /> <!-- Spellbook: Salvation -->
+					<item id="8889" min="1" max="1" chance="9.1531" /> <!-- Amulet: Gate Chant -->
+					<item id="8954" min="1" max="1" chance="4.5705" /> <!-- Blue Primeval Crystal -->
 				</group>
 			</drop>
 		</dropLists>
@@ -155,12 +125,9 @@
 			<height normal="37.2" />
 		</collision>
 	</npc>
-	<npc id="22202" level="80" type="Monster" name="Ornithomimus">
+	<npc id="22202" level="84" type="Monster" name="Ornithomimus">
 		<parameters>
 			<param name="ag_type" value="0" />
-			<minions name="Privates">
-				<npc id="22201" count="3" respawnTime="0" weightPoint="1" />
-			</minions>
 			<param name="mobile_type" value="1" />
 			<param name="ProbSelfRangeBuff1" value="50" />
 			<param name="ProbPhysicalSpecial1" value="33" />
@@ -175,10 +142,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7788" hpRegen="13.43" mp="2211" mpRegen="3.09" />
+			<attack physical="1149" magical="699.84" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="367.2" magical="235.94" />
 			<speed>
 				<walk ground="36" />
 				<run ground="160" />
@@ -187,21 +154,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="5" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="500" clanHelpRange="500" isAggressive="false">
@@ -214,19 +168,19 @@
 				<group chance="70">
 					<item id="57" min="4475" max="13610" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="4.838">
-					<item id="5533" min="1" max="1" chance="2.60232" /> <!-- Elysian Head -->
-					<item id="5544" min="1" max="1" chance="2.60232" /> <!-- Branch of The Mother Tree Head -->
-					<item id="8342" min="1" max="1" chance="3.03431" /> <!-- Flaming Dragon Skull Piece -->
-					<item id="8349" min="1" max="1" chance="5.2067" /> <!-- Doom Crusher Head -->
-					<item id="8889" min="1" max="1" chance="38.9996" /> <!-- Amulet: Gate Chant -->
-					<item id="8882" min="1" max="1" chance="35.6366" /> <!-- Spellbook: Salvation -->
-					<item id="8633" min="1" max="1" chance="2.60232" /> <!-- Elixir of Mental Strength (S-Grade) -->
-					<item id="8627" min="1" max="1" chance="7.80074" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8954" min="1" max="1" chance="1.51509" /> <!-- Blue Primeval Crystal -->
+				<group chance="0.5145">
+					<item id="5533" min="1" max="1" chance="7.6773" /> <!-- Elysian Head -->
+					<item id="5544" min="1" max="1" chance="30.7872" /> <!-- Branch of The Mother Tree Head -->
+					<item id="8342" min="1" max="1" chance="46.1614" /> <!-- Flaming Dragon Skull Piece -->
+					<item id="8349" min="1" max="1" chance="15.3741" /> <!-- Doom Crusher Head -->
 				</group>
-				<group chance="100">
-					<item id="8896" min="1" max="1" chance="0.2373" /> <!-- Ancient Tactical Manual: Symbol of Energy -->
+				<group chance="1.6843">
+					<item id="8954" min="1" max="1" chance="9.4044" /> <!-- Blue Primeval Crystal -->
+					<item id="8896" min="1" max="1" chance="4.6963" /> <!-- Ancient Tactical Manual: Symbol of Energy -->
+					<item id="8879" min="1" max="1" chance="3.5622" /> <!-- Spellbook: Summon Magnus the Unicorn -->
+					<item id="8633" min="1" max="1" chance="18.7851" /> <!-- Elixir of Mental Strength (S-Grade) -->
+					<item id="8627" min="1" max="1" chance="61.2068" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8955" min="1" max="1" chance="2.3452" /> <!-- Green Primeval Crystal -->
 				</group>
 			</drop>
 		</dropLists>
@@ -235,12 +189,17 @@
 			<height normal="37.2" />
 		</collision>
 	</npc>
-	<npc id="22203" level="80" type="Monster" name="Deinonychus">
+	<npc id="22203" level="83" type="Monster" name="Deinonychus">
 		<parameters>
 			<param name="ag_type" value="0" />
 			<param name="ProbSelfRangeBuff1" value="100" />
 			<param name="ProbPhysicalSpecial1" value="33" />
 			<param name="ProbPhysicalSpecial2" value="20" />
+			<minions name="Privates">
+				<npc id="22204" count="1" max="1" respawnTime="0" />
+				<npc id="22205" count="1" max="1" respawnTime="0" />
+				<npc id="22220" count="1" max="1" respawnTime="0" />
+			</minions>
 			<param name="BroadCastRange" value="100" />
 			<param name="BroadCastReception" value="1" />
 			<param name="HpChkRate5" value="80" />
@@ -251,10 +210,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7711" hpRegen="13.43" mp="2168" mpRegen="3.09" />
+			<attack physical="1347.5" magical="679.32" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="342.6" magical="232.18" />
 			<speed>
 				<walk ground="24" />
 				<run ground="160" />
@@ -263,21 +222,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4287" level="5" /> <!-- Resist Hold Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500">
@@ -290,15 +236,16 @@
 				<group chance="70">
 					<item id="57" min="5953" max="12100" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="8.6353">
-					<item id="5534" min="1" max="1" chance="6.65524" /> <!-- Soul Bow Stave -->
-					<item id="8627" min="1" max="1" chance="40.3483" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8879" min="1" max="1" chance="46.3215" /> <!-- Spellbook: Summon Magnus the Unicorn -->
-					<item id="8954" min="1" max="1" chance="3.33746" /> <!-- Blue Primeval Crystal -->
-					<item id="8956" min="1" max="1" chance="3.33746" /> <!-- Red Primeval Crystal -->
+				<group chance="0.3378">
+					<item id="5534" min="1" max="1" chance="100.0" /> <!-- Soul Bow Stave -->
 				</group>
-				<group chance="100">
-					<item id="8883" min="1" max="1" chance="0.8571" /> <!-- Spellbook: Mystic Immunity -->
+				<group chance="1.5892">
+					<item id="8627" min="1" max="1" chance="35.1475" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8633" min="1" max="1" chance="44.6238" /> <!-- Elixir of Mental Strength (S-Grade) -->
+					<item id="8883" min="1" max="1" chance="5.3231" /> <!-- Spellbook: Mystic Immunity -->
+					<item id="8954" min="1" max="1" chance="11.7157" /> <!-- Blue Primeval Crystal -->
+					<item id="8955" min="1" max="1" chance="2.1267" /> <!-- Green Primeval Crystal -->
+					<item id="8956" min="1" max="1" chance="1.0632" /> <!-- Red Primeval Crystal -->
 				</group>
 			</drop>
 		</dropLists>
@@ -307,7 +254,7 @@
 			<height normal="14.3" />
 		</collision>
 	</npc>
-	<npc id="22204" level="80" type="Monster" name="Deinonychus">
+	<npc id="22204" level="83" type="Monster" name="Deinonychus">
 		<parameters>
 			<param name="ag_type" value="0" />
 			<param name="IsSayPrivate" value="0" />
@@ -316,10 +263,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7711" hpRegen="13.43" mp="2168" mpRegen="3.09" />
+			<attack physical="1347.5" magical="679.32" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="342.6" magical="232.18" />
 			<speed>
 				<walk ground="24" />
 				<run ground="190" />
@@ -328,21 +275,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4287" level="5" /> <!-- Resist Hold Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" isAggressive="false">
@@ -355,17 +289,15 @@
 				<group chance="70">
 					<item id="57" min="5790" max="11810" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="4.1913">
-					<item id="5534" min="1" max="1" chance="11.0467" /> <!-- Soul Bow Stave -->
-					<item id="8627" min="1" max="1" chance="7.64679" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8633" min="1" max="1" chance="9.3193" /> <!-- Elixir of Mental Strength (S-Grade) -->
-					<item id="8883" min="1" max="1" chance="68.1674" /> <!-- Spellbook: Mystic Immunity -->
-					<item id="8954" min="1" max="1" chance="2.54575" /> <!-- Blue Primeval Crystal -->
-					<item id="8955" min="1" max="1" chance="0.84938" /> <!-- Green Primeval Crystal -->
-					<item id="8956" min="1" max="1" chance="0.42469" /> <!-- Red Primeval Crystal -->
+				<group chance="0.2506">
+					<item id="5534" min="1" max="1" chance="100.0" /> <!-- Soul Bow Stave -->
 				</group>
-				<group chance="100">
-					<item id="8887" min="1" max="1" chance="1.2858" /> <!-- Amulet: Pa'agrio's Emblem -->
+				<group chance="2.422">
+					<item id="8627" min="1" max="1" chance="27.5227" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8633" min="1" max="1" chance="44.8764" /> <!-- Elixir of Mental Strength (S-Grade) -->
+					<item id="8887" min="1" max="1" chance="10.3468" /> <!-- Amulet: Pa'agrio's Emblem -->
+					<item id="8954" min="1" max="1" chance="13.8067" /> <!-- Blue Primeval Crystal -->
+					<item id="8955" min="1" max="1" chance="3.4474" /> <!-- Green Primeval Crystal -->
 				</group>
 			</drop>
 		</dropLists>
@@ -374,12 +306,9 @@
 			<height normal="14.3" />
 		</collision>
 	</npc>
-	<npc id="22205" level="80" type="Monster" name="Deinonychus">
+	<npc id="22205" level="83" type="Monster" name="Deinonychus">
 		<parameters>
 			<param name="ag_type" value="0" />
-			<minions name="Privates">
-				<npc id="22204" count="4" respawnTime="0" weightPoint="1" />
-			</minions>
 			<param name="mobile_type" value="1" />
 			<param name="ProbSelfRangeBuff1" value="100" />
 			<param name="ProbPhysicalSpecial1" value="33" />
@@ -394,10 +323,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7711" hpRegen="13.43" mp="2168" mpRegen="3.09" />
+			<attack physical="1347.5" magical="679.32" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="342.6" magical="232.18" />
 			<speed>
 				<walk ground="24" />
 				<run ground="160" />
@@ -406,21 +335,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4287" level="5" /> <!-- Resist Hold Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" isAggressive="false">
@@ -433,16 +349,14 @@
 				<group chance="70">
 					<item id="57" min="5987" max="12110" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="5.4183">
-					<item id="5534" min="1" max="1" chance="9.04712" /> <!-- Soul Bow Stave -->
-					<item id="8627" min="1" max="1" chance="20.5064" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8633" min="1" max="1" chance="2.26824" /> <!-- Elixir of Mental Strength (S-Grade) -->
-					<item id="8887" min="1" max="1" chance="63.6417" /> <!-- Amulet: Pa'agrio's Emblem -->
-					<item id="8954" min="1" max="1" chance="2.26824" /> <!-- Blue Primeval Crystal -->
-					<item id="8955" min="1" max="1" chance="2.26824" /> <!-- Green Primeval Crystal -->
+				<group chance="0.2247">
+					<item id="5534" min="1" max="1" chance="100.0" /> <!-- Soul Bow Stave -->
 				</group>
-				<group chance="100">
-					<item id="8880" min="1" max="1" chance="1.9713" /> <!-- Spellbook: Summon Spectral Knight -->
+				<group chance="1.0289">
+					<item id="8627" min="1" max="1" chance="76.2661" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8633" min="1" max="1" chance="10.9146" /> <!-- Elixir of Mental Strength (S-Grade) -->
+					<item id="8880" min="1" max="1" chance="7.367" /> <!-- Spellbook: Summon Spectral Knight -->
+					<item id="8954" min="1" max="1" chance="5.4523" /> <!-- Blue Primeval Crystal -->
 				</group>
 			</drop>
 		</dropLists>
@@ -451,12 +365,17 @@
 			<height normal="14.3" />
 		</collision>
 	</npc>
-	<npc id="22208" level="80" type="Monster" name="Pachycephalosaurus">
+	<npc id="22208" level="85" type="Monster" name="Pachycephalosaurus">
 		<parameters>
 			<param name="ag_type" value="1" />
 			<param name="ProbSelfRangeBuff1" value="50" />
 			<param name="ProbPhysicalSpecial1" value="33" />
 			<param name="ProbPhysicalSpecial2" value="5" />
+			<minions name="Privates">
+				<npc id="22209" count="1" max="1" respawnTime="0" />
+				<npc id="22210" count="1" max="1" respawnTime="0" />
+				<npc id="22221" count="1" max="1" respawnTime="0" />
+			</minions>
 			<param name="BroadCastRange" value="100" />
 			<param name="BroadCastReception" value="1" />
 			<param name="HpChkRate5" value="80" />
@@ -467,10 +386,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="33" />
 				<run ground="150" />
@@ -479,21 +398,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" />
@@ -502,9 +408,12 @@
 				<group chance="70">
 					<item id="57" min="6613" max="13420" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.0549">
-					<item id="5537" min="1" max="1" chance="57.1049" /> <!-- Soul Separator Head -->
-					<item id="8954" min="1" max="1" chance="42.8951" /> <!-- Blue Primeval Crystal -->
+				<group chance="0.2932">
+					<item id="5537" min="1" max="1" chance="100.0" /> <!-- Soul Separator Head -->
+				</group>
+				<group chance="0.2196">
+					<item id="960" min="1" max="1" chance="66.6667" /> <!-- Scroll: Enchant Armor (Grade S) -->
+					<item id="8954" min="1" max="1" chance="33.3333" /> <!-- Blue Primeval Crystal -->
 				</group>
 			</drop>
 		</dropLists>
@@ -513,7 +422,7 @@
 			<height normal="40" />
 		</collision>
 	</npc>
-	<npc id="22209" level="80" type="Monster" name="Pachycephalosaurus">
+	<npc id="22209" level="85" type="Monster" name="Pachycephalosaurus">
 		<parameters>
 			<param name="IsSayPrivate" value="0" />
 			<param name="ag_type" value="1" />
@@ -522,10 +431,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="33" />
 				<run ground="170" />
@@ -534,21 +443,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="2" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" />
@@ -557,13 +453,11 @@
 				<group chance="70">
 					<item id="57" min="6054" max="12340" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.9996">
-					<item id="5537" min="1" max="1" chance="58.1633" /> <!-- Soul Separator Head -->
-					<item id="960" min="1" max="1" chance="4.85194" /> <!-- Scroll: Enchant Armor (Grade S) -->
-					<item id="8954" min="1" max="1" chance="24.2797" /> <!-- Blue Primeval Crystal -->
-					<item id="8955" min="1" max="1" chance="4.85194" /> <!-- Green Primeval Crystal -->
-					<item id="8956" min="1" max="1" chance="4.85194" /> <!-- Red Primeval Crystal -->
-					<item id="8752" min="1" max="1" chance="3.0012" /> <!-- High-Grade Life Stone: level 76 -->
+				<group chance="1.1363">
+					<item id="5537" min="1" max="1" chance="100.0" /> <!-- Soul Separator Head -->
+				</group>
+				<group chance="0.7633">
+					<item id="8954" min="1" max="1" chance="100.0" /> <!-- Blue Primeval Crystal -->
 				</group>
 			</drop>
 		</dropLists>
@@ -572,12 +466,9 @@
 			<height normal="40" />
 		</collision>
 	</npc>
-	<npc id="22210" level="80" type="Monster" name="Pachycephalosaurus">
+	<npc id="22210" level="85" type="Monster" name="Pachycephalosaurus">
 		<parameters>
 			<param name="mobile_type" value="1" />
-			<minions name="Privates">
-				<npc id="22209" count="1" respawnTime="0" weightPoint="1" />
-			</minions>
 			<param name="ProbSelfRangeBuff1" value="50" />
 			<param name="ProbPhysicalSpecial1" value="33" />
 			<param name="ProbPhysicalSpecial2" value="5" />
@@ -591,10 +482,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="33" />
 				<run ground="150" />
@@ -603,21 +494,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="500" clanHelpRange="500" />
@@ -641,12 +519,17 @@
 			<height normal="40" />
 		</collision>
 	</npc>
-	<npc id="22211" level="80" type="Monster" name="Wild Strider">
+	<npc id="22211" level="85" type="Monster" name="Wild Strider">
 		<parameters>
 			<param name="ag_type" value="1" />
 			<param name="ProbSelfRangeBuff1" value="100" />
 			<param name="ProbPhysicalSpecial1" value="3" />
 			<param name="ProbPhysicalSpecial2" value="33" />
+			<minions name="Privates">
+				<npc id="22212" count="1" max="1" respawnTime="0" />
+				<npc id="22213" count="1" max="1" respawnTime="0" />
+				<npc id="22222" count="1" max="1" respawnTime="0" />
+			</minions>
 			<param name="BroadCastRange" value="100" />
 			<param name="BroadCastReception" value="1" />
 			<param name="HpChkRate5" value="80" />
@@ -657,10 +540,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="50" />
 				<run ground="150" />
@@ -669,21 +552,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="4" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" />
@@ -705,7 +575,7 @@
 			<height normal="44.2" />
 		</collision>
 	</npc>
-	<npc id="22212" level="80" type="Monster" name="Wild Strider">
+	<npc id="22212" level="85" type="Monster" name="Wild Strider">
 		<parameters>
 			<param name="IsSayPrivate" value="0" />
 			<param name="ag_type" value="1" />
@@ -715,10 +585,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="50" />
 				<run ground="170" />
@@ -727,22 +597,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4067" level="10" /> <!-- NPC Mortal Blow -->
-			<skill id="4071" level="4" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" />
@@ -765,12 +621,9 @@
 			<height normal="44.2" />
 		</collision>
 	</npc>
-	<npc id="22213" level="80" type="Monster" name="Wild Strider">
+	<npc id="22213" level="85" type="Monster" name="Wild Strider">
 		<parameters>
 			<param name="mobile_type" value="1" />
-			<minions name="Privates">
-				<npc id="22212" count="1" respawnTime="0" weightPoint="1" />
-			</minions>
 			<param name="ProbSelfRangeBuff1" value="100" />
 			<param name="ProbPhysicalSpecial1" value="3" />
 			<param name="ProbPhysicalSpecial2" value="33" />
@@ -784,10 +637,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="50" />
 				<run ground="150" />
@@ -796,21 +649,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="4" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="500" clanHelpRange="500" />
@@ -830,7 +670,7 @@
 			<height normal="44.2" />
 		</collision>
 	</npc>
-	<npc id="22214" level="80" type="Monster" name="Elroki">
+	<npc id="22214" level="85" type="Monster" name="Elroki">
 		<parameters>
 			<param name="ag_type" value="1" />
 			<param name="ai_type1" value="pachycephalosaurus" />
@@ -852,10 +692,10 @@
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="15732" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -863,25 +703,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="2" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4151" level="10" /> <!-- NPC Windstrike - Magic -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4438" level="5" /> <!-- Greater Resist Sleep -->
-			<skill id="4439" level="5" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
-			<skill id="4486" level="10" /> <!-- Decrease P. Def. -->
-			<skill id="5080" level="1" /> <!-- NPC Mighty Haste -->
-			<skill id="5178" level="1" /> <!-- NPC Burn -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="300" />
@@ -908,7 +731,7 @@
 			<height normal="33" />
 		</collision>
 	</npc>
-	<npc id="22215" level="80" type="Monster" name="Tyrannosaurus">
+	<npc id="22215" level="87" type="Monster" name="Tyrannosaurus">
 		<parameters>
 			<param name="ag_type" value="1" />
 			<param name="ProbSelfBuff1" value="100" />
@@ -941,15 +764,14 @@
 			<skill name="CaptureCancel_all" id="5102" level="1" /> <!-- Cancel All Capture -->
 			<skill name="DeBuff1Cancel" id="5102" level="1" /> <!-- Cancel All Capture -->
 			<skill name="DeBuff2Cancel" id="5102" level="1" /> <!-- Cancel All Capture -->
-			<skill name="crew_skill" id="6172" level="1" /> <!-- Presentation - Tyranno -->
 		</parameters>
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="727609" sp="81666" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="339687.157685998" hpRegen="195.708888732201" mp="1674.8" mpRegen="3" />
-			<attack physical="7476.5080117304" magical="5105.4857482389" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="546.2" magical="599.528184" />
+		<stats str="60" int="21" dex="35" wit="24" con="63" men="60">
+			<vitals hp="193928" hpRegen="13.43" mp="2339" mpRegen="3.09" />
+			<attack physical="3134.5" magical="763.02" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="60" distance="80" width="120" />
+			<defence physical="581" magical="449.57" />
 			<speed>
 				<walk ground="105" />
 				<run ground="220" />
@@ -958,29 +780,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4438" level="5" /> <!-- Greater Resist Sleep -->
-			<skill id="4439" level="5" /> <!-- Greater Resist Hold -->
-			<skill id="4440" level="5" /> <!-- Greater Resist Paralysis -->
-			<skill id="4441" level="5" /> <!-- Greater Resist Mental Derangement -->
-			<skill id="4444" level="2" /> <!-- Higher Resist Bow/Crossbow Weapons -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
-			<skill id="5082" level="4" /> <!-- NPC Spinning, Slashing Trick -->
-			<skill id="5098" level="1" /> <!-- Capture Penalty -->
-			<skill id="5099" level="1" /> <!-- Cancel Capture A -->
-			<skill id="5100" level="1" /> <!-- Cancel Capture B -->
-			<skill id="5101" level="1" /> <!-- Cancel Capture C -->
-			<skill id="5102" level="1" /> <!-- Cancel All Capture -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
 		<ai type="BALANCED" aggroRange="300" clanHelpRange="300">
@@ -993,19 +794,16 @@
 				<group chance="70">
 					<item id="57" min="80380" max="138860" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="51.5217">
-					<item id="5541" min="1" max="1" chance="3.88186" /> <!-- Tallum Glaive Edge -->
-					<item id="8627" min="1" max="1" chance="8.8223" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8633" min="1" max="1" chance="11.4171" /> <!-- Elixir of Mental Strength (S-Grade) -->
-					<item id="8894" min="1" max="1" chance="10.2155" /> <!-- Ancient Tactical Manual: Symbol of Resistance -->
-					<item id="8895" min="1" max="1" chance="64.6976" /> <!-- Ancient Tactical Manual: Symbol of Honor -->
-					<item id="8956" min="1" max="1" chance="0.96561" /> <!-- Red Primeval Crystal -->
+				<group chance="6.6666">
+					<item id="5541" min="1" max="1" chance="100.0" /> <!-- Tallum Glaive Edge -->
 				</group>
-				<group chance="100">
-					<item id="8894" min="1" max="1" chance="4.4775" /> <!-- Ancient Tactical Manual: Symbol of Resistance -->
-				</group>
-				<group chance="100">
-					<item id="8895" min="1" max="1" chance="2.9412" /> <!-- Ancient Tactical Manual: Symbol of Honor -->
+				<group chance="16.4284">
+					<item id="8627" min="1" max="1" chance="27.668" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8633" min="1" max="1" chance="35.8058" /> <!-- Elixir of Mental Strength (S-Grade) -->
+					<item id="8894" min="1" max="1" chance="9.0849" /> <!-- Ancient Tactical Manual: Symbol of Resistance -->
+					<item id="8895" min="1" max="1" chance="5.9676" /> <!-- Ancient Tactical Manual: Symbol of Honor -->
+					<item id="8956" min="1" max="1" chance="3.0282" /> <!-- Red Primeval Crystal -->
+					<item id="8762" min="1" max="1" chance="18.4455" /> <!-- Top-Grade Life Stone: level 76 -->
 				</group>
 			</drop>
 		</dropLists>
@@ -1014,7 +812,7 @@
 			<height normal="89.7" />
 		</collision>
 	</npc>
-	<npc id="22216" level="80" type="Monster" name="Tyrannosaurus">
+	<npc id="22216" level="87" type="Monster" name="Tyrannosaurus">
 		<parameters>
 			<param name="ag_type" value="1" />
 			<param name="ProbSelfBuff1" value="100" />
@@ -1049,15 +847,14 @@
 			<skill name="CaptureCancel_all" id="5102" level="1" /> <!-- Cancel All Capture -->
 			<skill name="DeBuff1Cancel" id="5102" level="1" /> <!-- Cancel All Capture -->
 			<skill name="DeBuff2Cancel" id="5102" level="1" /> <!-- Cancel All Capture -->
-			<skill name="crew_skill" id="6172" level="1" /> <!-- Presentation - Tyranno -->
 		</parameters>
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="727609" sp="81666" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="339687.157685998" hpRegen="195.708888732201" mp="1674.8" mpRegen="3" />
-			<attack physical="7476.5080117304" magical="5105.4857482389" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="546.2" magical="599.528184" />
+		<stats str="60" int="21" dex="35" wit="24" con="63" men="60">
+			<vitals hp="193928" hpRegen="13.43" mp="2339" mpRegen="3.09" />
+			<attack physical="3134.5" magical="763.02" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="60" distance="80" width="120" />
+			<defence physical="581" magical="449.57" />
 			<speed>
 				<walk ground="105" />
 				<run ground="220" />
@@ -1066,29 +863,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4438" level="5" /> <!-- Greater Resist Sleep -->
-			<skill id="4439" level="5" /> <!-- Greater Resist Hold -->
-			<skill id="4440" level="5" /> <!-- Greater Resist Paralysis -->
-			<skill id="4441" level="5" /> <!-- Greater Resist Mental Derangement -->
-			<skill id="4444" level="2" /> <!-- Higher Resist Bow/Crossbow Weapons -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
-			<skill id="5082" level="4" /> <!-- NPC Spinning, Slashing Trick -->
-			<skill id="5098" level="1" /> <!-- Capture Penalty -->
-			<skill id="5099" level="1" /> <!-- Cancel Capture A -->
-			<skill id="5100" level="1" /> <!-- Cancel Capture B -->
-			<skill id="5101" level="1" /> <!-- Cancel Capture C -->
-			<skill id="5102" level="1" /> <!-- Cancel All Capture -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
 		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" />
@@ -1097,19 +873,13 @@
 				<group chance="70">
 					<item id="57" min="54300" max="110530" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="80.6469">
-					<item id="5541" min="1" max="1" chance="7.29389" /> <!-- Tallum Glaive Edge -->
-					<item id="8900" min="1" max="1" chance="17.3596" /> <!-- Ancient Spellbook: Cyclone -->
-					<item id="8905" min="1" max="1" chance="17.3596" /> <!-- Ancient Spellbook: Purification Field -->
-					<item id="8627" min="1" max="1" chance="43.3991" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8633" min="1" max="1" chance="7.29389" /> <!-- Elixir of Mental Strength (S-Grade) -->
-					<item id="8762" min="1" max="1" chance="7.29389" /> <!-- Top-Grade Life Stone: level 76 -->
+				<group chance="5.8823">
+					<item id="5541" min="1" max="1" chance="100.0" /> <!-- Tallum Glaive Edge -->
 				</group>
-				<group chance="100">
-					<item id="8905" min="1" max="1" chance="7.317" /> <!-- Ancient Spellbook: Purification Field -->
-				</group>
-				<group chance="100">
-					<item id="8900" min="1" max="1" chance="7.2858" /> <!-- Ancient Spellbook: Cyclone -->
+				<group chance="43.3213">
+					<item id="8905" min="1" max="1" chance="5.63" /> <!-- Ancient Spellbook: Purification Field -->
+					<item id="8627" min="1" max="1" chance="80.7918" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8633" min="1" max="1" chance="13.5782" /> <!-- Elixir of Mental Strength (S-Grade) -->
 				</group>
 			</drop>
 		</dropLists>
@@ -1118,7 +888,7 @@
 			<height normal="89.7" />
 		</collision>
 	</npc>
-	<npc id="22217" level="80" type="Monster" name="Tyrannosaurus">
+	<npc id="22217" level="87" type="Monster" name="Tyrannosaurus">
 		<parameters>
 			<param name="ag_type" value="1" />
 			<param name="mobile_type" value="1" />
@@ -1152,15 +922,14 @@
 			<skill name="CaptureCancel_all" id="5102" level="1" /> <!-- Cancel All Capture -->
 			<skill name="DeBuff1Cancel" id="5102" level="1" /> <!-- Cancel All Capture -->
 			<skill name="DeBuff2Cancel" id="5102" level="1" /> <!-- Cancel All Capture -->
-			<skill name="crew_skill" id="6172" level="1" /> <!-- Presentation - Tyranno -->
 		</parameters>
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="727609" sp="81666" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="339687.157685998" hpRegen="195.708888732201" mp="1674.8" mpRegen="3" />
-			<attack physical="7476.5080117304" magical="5105.4857482389" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="546.2" magical="599.528184" />
+		<stats str="60" int="21" dex="35" wit="24" con="63" men="60">
+			<vitals hp="193928" hpRegen="13.43" mp="2339" mpRegen="3.09" />
+			<attack physical="3134.5" magical="763.02" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="60" distance="80" width="120" />
+			<defence physical="581" magical="449.57" />
 			<speed>
 				<walk ground="105" />
 				<run ground="220" />
@@ -1169,29 +938,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4438" level="5" /> <!-- Greater Resist Sleep -->
-			<skill id="4439" level="5" /> <!-- Greater Resist Hold -->
-			<skill id="4440" level="5" /> <!-- Greater Resist Paralysis -->
-			<skill id="4441" level="5" /> <!-- Greater Resist Mental Derangement -->
-			<skill id="4444" level="2" /> <!-- Higher Resist Bow/Crossbow Weapons -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
-			<skill id="5082" level="4" /> <!-- NPC Spinning, Slashing Trick -->
-			<skill id="5098" level="1" /> <!-- Capture Penalty -->
-			<skill id="5099" level="1" /> <!-- Cancel Capture A -->
-			<skill id="5100" level="1" /> <!-- Cancel Capture B -->
-			<skill id="5101" level="1" /> <!-- Cancel Capture C -->
-			<skill id="5102" level="1" /> <!-- Cancel All Capture -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
 		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" />
@@ -1200,16 +948,15 @@
 				<group chance="70">
 					<item id="57" min="77220" max="132850" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="25.411">
-					<item id="5541" min="1" max="1" chance="17.8875" /> <!-- Tallum Glaive Edge -->
-					<item id="8627" min="1" max="1" chance="13.1176" /> <!-- Elixir of Life (S-Grade) -->
-					<item id="8633" min="1" max="1" chance="23.149" /> <!-- Elixir of Mental Strength (S-Grade) -->
-					<item id="8903" min="1" max="1" chance="20.7123" /> <!-- Ancient Spellbook: Gehenna -->
-					<item id="8908" min="1" max="1" chance="20.7123" /> <!-- Ancient Spellbook: Mass Recharge -->
-					<item id="8954" min="1" max="1" chance="4.42131" /> <!-- Blue Primeval Crystal -->
+				<group chance="4.5454">
+					<item id="5541" min="1" max="1" chance="100.0" /> <!-- Tallum Glaive Edge -->
 				</group>
-				<group chance="100">
-					<item id="8903" min="1" max="1" chance="3.3705" /> <!-- Ancient Spellbook: Gehenna -->
+				<group chance="15.7947">
+					<item id="8627" min="1" max="1" chance="21.1039" /> <!-- Elixir of Life (S-Grade) -->
+					<item id="8633" min="1" max="1" chance="57.557" /> <!-- Elixir of Mental Strength (S-Grade) -->
+					<item id="8903" min="1" max="1" chance="7.113" /> <!-- Ancient Spellbook: Gehenna -->
+					<item id="8908" min="1" max="1" chance="7.113" /> <!-- Ancient Spellbook: Mass Recharge -->
+					<item id="8954" min="1" max="1" chance="7.1131" /> <!-- Blue Primeval Crystal -->
 				</group>
 			</drop>
 			<spoil>
@@ -1221,17 +968,17 @@
 			<height normal="89.7" />
 		</collision>
 	</npc>
-	<npc id="22218" level="80" type="Monster" name="Velociraptor">
+	<npc id="22218" level="86" type="Monster" name="Velociraptor">
 		<parameters>
 			<skill name="PhysicalSpecial" id="4032" level="10" /> <!-- NPC Strike -->
 		</parameters>
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="24829" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7945" hpRegen="13.43" mp="2296" mpRegen="3.09" />
+			<attack physical="1099.5" magical="741.42" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="375" magical="244.87" />
 			<speed>
 				<walk ground="33" />
 				<run ground="200" />
@@ -1240,22 +987,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4032" level="10" /> <!-- NPC Strike -->
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="12" /> <!-- Slightly Strong P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500">
@@ -1286,17 +1019,17 @@
 			<height normal="47.2" />
 		</collision>
 	</npc>
-	<npc id="22219" level="80" type="Monster" name="Ornithomimus">
+	<npc id="22219" level="84" type="Monster" name="Ornithomimus">
 		<parameters>
 			<skill name="PhysicalSpecial" id="5084" level="1" /> <!-- NPC Blinding Blow -->
 		</parameters>
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7788" hpRegen="13.43" mp="2211" mpRegen="3.09" />
+			<attack physical="1149" magical="699.84" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="367.2" magical="235.94" />
 			<speed>
 				<walk ground="36" />
 				<run ground="190" />
@@ -1305,22 +1038,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="5" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
-			<skill id="5084" level="1" /> <!-- NPC Blinding Blow -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="100" isAggressive="false">
@@ -1354,17 +1073,17 @@
 			<height normal="37.2" />
 		</collision>
 	</npc>
-	<npc id="22220" level="80" type="Monster" name="Deinonychus">
+	<npc id="22220" level="83" type="Monster" name="Deinonychus">
 		<parameters>
 			<skill name="PhysicalSpecial" id="4067" level="10" /> <!-- NPC Mortal Blow -->
 		</parameters>
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7711" hpRegen="13.43" mp="2168" mpRegen="3.09" />
+			<attack physical="1347.5" magical="679.32" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="342.6" magical="232.18" />
 			<speed>
 				<walk ground="24" />
 				<run ground="180" />
@@ -1373,22 +1092,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4067" level="10" /> <!-- NPC Mortal Blow -->
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4287" level="5" /> <!-- Resist Hold Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="100" isAggressive="false">
@@ -1420,14 +1125,14 @@
 			<height normal="14.3" />
 		</collision>
 	</npc>
-	<npc id="22221" level="80" type="Monster" name="Pachycephalosaurus">
+	<npc id="22221" level="84" type="Monster" name="Pachycephalosaurus">
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7788" hpRegen="13.43" mp="2211" mpRegen="3.09" />
+			<attack physical="1149" magical="699.84" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="367.2" magical="235.94" />
 			<speed>
 				<walk ground="33" />
 				<run ground="150" />
@@ -1436,21 +1141,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="2" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="100" />
@@ -1474,17 +1166,17 @@
 			<height normal="40" />
 		</collision>
 	</npc>
-	<npc id="22222" level="80" type="Monster" name="Wild Strider">
+	<npc id="22222" level="85" type="Monster" name="Wild Strider">
 		<parameters>
 			<skill name="PhysicalSpecial" id="4067" level="10" /> <!-- NPC Mortal Blow -->
 		</parameters>
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="50" />
 				<run ground="150" />
@@ -1493,22 +1185,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4067" level="10" /> <!-- NPC Mortal Blow -->
-			<skill id="4071" level="4" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="100" />
@@ -1535,12 +1213,9 @@
 			<height normal="44.2" />
 		</collision>
 	</npc>
-	<npc id="22223" level="80" type="Monster" name="Velociraptor">
+	<npc id="22223" level="86" type="Monster" name="Velociraptor">
 		<parameters>
 			<param name="ag_type" value="1" />
-			<minions name="Privates">
-				<npc id="22197" count="2" respawnTime="0" weightPoint="1" />
-			</minions>
 			<param name="ProbSelfRangeBuff1" value="100" />
 			<param name="ProbPhysicalSpecial1" value="3" />
 			<param name="ProbPhysicalSpecial2" value="20" />
@@ -1554,10 +1229,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="24829" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7945" hpRegen="13.43" mp="2296" mpRegen="3.09" />
+			<attack physical="1099.5" magical="741.42" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="375" magical="244.87" />
 			<speed>
 				<walk ground="33" />
 				<run ground="180" />
@@ -1566,21 +1241,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="12" /> <!-- Slightly Strong P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500">
@@ -1609,11 +1271,13 @@
 			<height normal="47.2" />
 		</collision>
 	</npc>
-	<npc id="22224" level="80" type="Monster" name="Ornithomimus">
+	<npc id="22224" level="84" type="Monster" name="Ornithomimus">
 		<parameters>
 			<param name="ag_type" value="0" />
 			<minions name="Privates">
 				<npc id="22201" count="1" respawnTime="0" weightPoint="1" />
+				<npc id="22202" count="1" respawnTime="0" weightPoint="1" />
+				<npc id="22219" count="1" respawnTime="0" weightPoint="1" />
 			</minions>
 			<param name="ProbSelfRangeBuff1" value="50" />
 			<param name="ProbPhysicalSpecial1" value="33" />
@@ -1628,10 +1292,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7788" hpRegen="13.43" mp="2211" mpRegen="3.09" />
+			<attack physical="1149" magical="699.84" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="367.2" magical="235.94" />
 			<speed>
 				<walk ground="36" />
 				<run ground="170" />
@@ -1640,21 +1304,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="5" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" isAggressive="false">
@@ -1689,11 +1340,13 @@
 			<height normal="37.2" />
 		</collision>
 	</npc>
-	<npc id="22225" level="80" type="Monster" name="Deinonychus">
+	<npc id="22225" level="83" type="Monster" name="Deinonychus">
 		<parameters>
 			<param name="ag_type" value="0" />
 			<minions name="Privates">
 				<npc id="22204" count="1" respawnTime="0" weightPoint="1" />
+				<npc id="22205" count="1" respawnTime="0" weightPoint="1" />
+				<npc id="22220" count="1" respawnTime="0" weightPoint="1" />
 			</minions>
 			<param name="ProbSelfRangeBuff1" value="100" />
 			<param name="ProbPhysicalSpecial1" value="33" />
@@ -1708,10 +1361,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7711" hpRegen="13.43" mp="2168" mpRegen="3.09" />
+			<attack physical="1347.5" magical="679.32" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="342.6" magical="232.18" />
 			<speed>
 				<walk ground="24" />
 				<run ground="160" />
@@ -1720,21 +1373,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4287" level="5" /> <!-- Resist Hold Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500">
@@ -1764,7 +1404,7 @@
 			<height normal="14.3" />
 		</collision>
 	</npc>
-	<npc id="22226" level="80" type="Monster" name="Pachycephalosaurus">
+	<npc id="22226" level="85" type="Monster" name="Pachycephalosaurus">
 		<parameters>
 			<param name="ag_type" value="1" />
 			<param name="ProbSelfRangeBuff1" value="50" />
@@ -1780,10 +1420,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="33" />
 				<run ground="140" />
@@ -1792,21 +1432,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="3" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" />
@@ -1829,7 +1456,7 @@
 			<height normal="40" />
 		</collision>
 	</npc>
-	<npc id="22227" level="80" type="Monster" name="Wild Strider">
+	<npc id="22227" level="85" type="Monster" name="Wild Strider">
 		<parameters>
 			<param name="ag_type" value="1" />
 			<param name="ProbSelfRangeBuff1" value="100" />
@@ -1845,10 +1472,10 @@
 		<race>BEAST</race>
 		<sex>MALE</sex>
 		<acquire exp="14514" sp="2715" />
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
-			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
-			<attack physical="970.537548504614" magical="662.751329129412" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
-			<defence physical="341.375" magical="249.80341" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="7866" hpRegen="13.43" mp="2253" mpRegen="3.09" />
+			<attack physical="1064.5" magical="719.82" random="7" critical="8" accuracy="0" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<defence physical="369" magical="240.17" />
 			<speed>
 				<walk ground="50" />
 				<run ground="140" />
@@ -1857,21 +1484,8 @@
 		</stats>
 		<status undying="false" />
 		<skillList>
-			<skill id="4071" level="4" /> <!-- Resist Bow/Crossbow Weapons -->
-			<skill id="4084" level="9" /> <!-- Resist Physical Attack -->
-			<skill id="4285" level="5" /> <!-- Resist Sleep Attacks -->
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
-			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
-			<skill id="4412" level="12" /> <!-- Slightly Strong P. Def. -->
-			<skill id="4413" level="11" /> <!-- Average M. Def. -->
-			<skill id="4414" level="3" /> <!-- Light Armor Type -->
-			<skill id="4415" level="5" /> <!-- Blunt Weapons -->
+			<skill id="4416" level="3" /> <!-- Beast -->
 			<skill id="4416" level="24" /> <!-- Unknown Creature -->
-			<skill id="4417" level="4" /> <!-- Beasts -->
-			<skill id="4439" level="2" /> <!-- Greater Resist Hold -->
-			<skill id="4445" level="1" /> <!-- Greater Resist Spear Weapons -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<ai aggroRange="300" clanHelpRange="500" />

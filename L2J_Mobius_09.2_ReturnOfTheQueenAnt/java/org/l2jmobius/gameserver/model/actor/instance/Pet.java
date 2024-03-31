@@ -33,11 +33,11 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.sql.SummonEffectTable;
 import org.l2jmobius.gameserver.data.sql.SummonEffectTable.SummonEffect;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.enums.InstanceType;
@@ -585,7 +585,7 @@ public class Pet extends Summon
 				handler.useItem(this, target, false);
 			}
 			
-			ItemTable.getInstance().destroyItem("Consume", target, getOwner(), null);
+			ItemData.getInstance().destroyItem("Consume", target, getOwner(), null);
 			broadcastStatusUpdate();
 		}
 		else

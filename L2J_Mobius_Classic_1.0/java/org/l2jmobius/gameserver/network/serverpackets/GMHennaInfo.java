@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.Henna;
 import org.l2jmobius.gameserver.model.stats.BaseStat;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -46,26 +48,26 @@ public class GMHennaInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.GMHENNA_INFO.writeId(this);
-		writeByte(_player.getHennaValue(BaseStat.INT)); // equip INT
-		writeByte(_player.getHennaValue(BaseStat.STR)); // equip STR
-		writeByte(_player.getHennaValue(BaseStat.CON)); // equip CON
-		writeByte(_player.getHennaValue(BaseStat.MEN)); // equip MEN
-		writeByte(_player.getHennaValue(BaseStat.DEX)); // equip DEX
-		writeByte(_player.getHennaValue(BaseStat.WIT)); // equip WIT
-		writeByte(0); // equip LUC
-		writeByte(0); // equip CHA
-		writeInt(3); // Slots
-		writeInt(_hennas.size()); // Size
+		ServerPackets.GMHENNA_INFO.writeId(this, buffer);
+		buffer.writeByte(_player.getHennaValue(BaseStat.INT)); // equip INT
+		buffer.writeByte(_player.getHennaValue(BaseStat.STR)); // equip STR
+		buffer.writeByte(_player.getHennaValue(BaseStat.CON)); // equip CON
+		buffer.writeByte(_player.getHennaValue(BaseStat.MEN)); // equip MEN
+		buffer.writeByte(_player.getHennaValue(BaseStat.DEX)); // equip DEX
+		buffer.writeByte(_player.getHennaValue(BaseStat.WIT)); // equip WIT
+		buffer.writeByte(0); // equip LUC
+		buffer.writeByte(0); // equip CHA
+		buffer.writeInt(3); // Slots
+		buffer.writeInt(_hennas.size()); // Size
 		for (Henna henna : _hennas)
 		{
-			writeInt(henna.getDyeId());
-			writeInt(1);
+			buffer.writeInt(henna.getDyeId());
+			buffer.writeInt(1);
 		}
-		writeInt(0);
-		writeInt(0);
-		writeInt(0);
+		buffer.writeInt(0);
+		buffer.writeInt(0);
+		buffer.writeInt(0);
 	}
 }

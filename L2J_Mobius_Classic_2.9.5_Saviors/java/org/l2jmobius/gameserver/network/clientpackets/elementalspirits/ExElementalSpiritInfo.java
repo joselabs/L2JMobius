@@ -16,34 +16,32 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.elementalspirits;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.elementalspirits.ElementalSpiritInfo;
 
 /**
  * @author JoeAlisson
  */
-public class ExElementalSpiritInfo implements ClientPacket
+public class ExElementalSpiritInfo extends ClientPacket
 {
 	private byte _type;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = (byte) packet.readByte();
+		_type = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		client.sendPacket(new ElementalSpiritInfo(player, player.getActiveElementalSpiritType(), _type));
+		player.sendPacket(new ElementalSpiritInfo(player, player.getActiveElementalSpiritType(), _type));
 	}
 }

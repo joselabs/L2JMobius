@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.homunculus.Homunculus;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,62 +36,62 @@ public class ExShowHomunculusList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHOW_HOMUNCULUS_LIST.writeId(this);
+		ServerPackets.EX_SHOW_HOMUNCULUS_LIST.writeId(this, buffer);
 		int counter = 0;
 		final int slotCount = _player.getAvailableHomunculusSlotCount();
-		writeInt(slotCount);
+		buffer.writeInt(slotCount);
 		for (int i = 0; i <= slotCount; i++)
 		{
 			if (_player.getHomunculusList().get(i) != null)
 			{
 				final Homunculus homunculus = _player.getHomunculusList().get(i);
-				writeInt(counter); // slot
-				writeInt(homunculus.getId()); // homunculus id
-				writeInt(homunculus.getType());
-				writeByte(homunculus.isActive());
-				writeInt(homunculus.getTemplate().getBasicSkillId());
-				writeInt(homunculus.getSkillLevel1() > 0 ? homunculus.getTemplate().getSkillId1() : 0);
-				writeInt(homunculus.getSkillLevel2() > 0 ? homunculus.getTemplate().getSkillId2() : 0);
-				writeInt(homunculus.getSkillLevel3() > 0 ? homunculus.getTemplate().getSkillId3() : 0);
-				writeInt(homunculus.getSkillLevel4() > 0 ? homunculus.getTemplate().getSkillId4() : 0);
-				writeInt(homunculus.getSkillLevel5() > 0 ? homunculus.getTemplate().getSkillId5() : 0);
-				writeInt(homunculus.getTemplate().getBasicSkillLevel());
-				writeInt(homunculus.getSkillLevel1());
-				writeInt(homunculus.getSkillLevel2());
-				writeInt(homunculus.getSkillLevel3());
-				writeInt(homunculus.getSkillLevel4());
-				writeInt(homunculus.getSkillLevel5());
-				writeInt(homunculus.getLevel());
-				writeInt(homunculus.getExp());
-				writeInt(homunculus.getHp());
-				writeInt(homunculus.getAtk());
-				writeInt(homunculus.getDef());
-				writeInt(homunculus.getCritRate());
+				buffer.writeInt(counter); // slot
+				buffer.writeInt(homunculus.getId()); // homunculus id
+				buffer.writeInt(homunculus.getType());
+				buffer.writeByte(homunculus.isActive());
+				buffer.writeInt(homunculus.getTemplate().getBasicSkillId());
+				buffer.writeInt(homunculus.getSkillLevel1() > 0 ? homunculus.getTemplate().getSkillId1() : 0);
+				buffer.writeInt(homunculus.getSkillLevel2() > 0 ? homunculus.getTemplate().getSkillId2() : 0);
+				buffer.writeInt(homunculus.getSkillLevel3() > 0 ? homunculus.getTemplate().getSkillId3() : 0);
+				buffer.writeInt(homunculus.getSkillLevel4() > 0 ? homunculus.getTemplate().getSkillId4() : 0);
+				buffer.writeInt(homunculus.getSkillLevel5() > 0 ? homunculus.getTemplate().getSkillId5() : 0);
+				buffer.writeInt(homunculus.getTemplate().getBasicSkillLevel());
+				buffer.writeInt(homunculus.getSkillLevel1());
+				buffer.writeInt(homunculus.getSkillLevel2());
+				buffer.writeInt(homunculus.getSkillLevel3());
+				buffer.writeInt(homunculus.getSkillLevel4());
+				buffer.writeInt(homunculus.getSkillLevel5());
+				buffer.writeInt(homunculus.getLevel());
+				buffer.writeInt(homunculus.getExp());
+				buffer.writeInt(homunculus.getHp());
+				buffer.writeInt(homunculus.getAtk());
+				buffer.writeInt(homunculus.getDef());
+				buffer.writeInt(homunculus.getCritRate());
 			}
 			else
 			{
-				writeInt(counter); // slot
-				writeInt(0); // homunculus id
-				writeInt(0);
-				writeByte(0);
-				writeInt(0);
+				buffer.writeInt(counter); // slot
+				buffer.writeInt(0); // homunculus id
+				buffer.writeInt(0);
+				buffer.writeByte(0);
+				buffer.writeInt(0);
 				for (int j = 1; j <= 5; j++)
 				{
-					writeInt(0);
+					buffer.writeInt(0);
 				}
-				writeInt(0);
+				buffer.writeInt(0);
 				for (int j = 1; j <= 5; j++)
 				{
-					writeInt(0);
+					buffer.writeInt(0);
 				}
-				writeInt(0); // Level
-				writeInt(0); // HP
-				writeInt(0); // HP
-				writeInt(0); // Attack
-				writeInt(0); // Defence
-				writeInt(0); // Critical
+				buffer.writeInt(0); // Level
+				buffer.writeInt(0); // HP
+				buffer.writeInt(0); // HP
+				buffer.writeInt(0); // Attack
+				buffer.writeInt(0); // Defence
+				buffer.writeInt(0); // Critical
 			}
 			counter++;
 		}

@@ -56,7 +56,6 @@ import org.l2jmobius.gameserver.ai.SummonAI;
 import org.l2jmobius.gameserver.cache.RelationCache;
 import org.l2jmobius.gameserver.communitybbs.BB.Forum;
 import org.l2jmobius.gameserver.communitybbs.Manager.ForumsBBSManager;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
@@ -67,6 +66,7 @@ import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.HennaData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.data.xml.NpcNameLocalisationData;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
@@ -609,7 +609,7 @@ public class Player extends Playable
 	private boolean _simulatedTalking = false;
 	
 	/** The table containing all Quests began by the Player */
-	private final Map<String, QuestState> _quests = new ConcurrentHashMap<>();
+	private final Map<String, QuestState> _quests = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
 	
 	/** The list containing all shortCuts of this player. */
 	private final ShortCuts _shortCuts = new ShortCuts(this);
@@ -2576,55 +2576,55 @@ public class Player extends Playable
 		if ((classId >= 0x00) && (classId <= 0x09))
 		{
 			// human fighter fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(246);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(246);
 			weaponItem = (Weapon) temp;
 		}
 		else if ((classId >= 0x0a) && (classId <= 0x11))
 		{
 			// human mage fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(251);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(251);
 			weaponItem = (Weapon) temp;
 		}
 		else if ((classId >= 0x12) && (classId <= 0x18))
 		{
 			// elven fighter fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(244);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(244);
 			weaponItem = (Weapon) temp;
 		}
 		else if ((classId >= 0x19) && (classId <= 0x1e))
 		{
 			// elven mage fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(249);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(249);
 			weaponItem = (Weapon) temp;
 		}
 		else if ((classId >= 0x1f) && (classId <= 0x25))
 		{
 			// dark elven fighter fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(245);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(245);
 			weaponItem = (Weapon) temp;
 		}
 		else if ((classId >= 0x26) && (classId <= 0x2b))
 		{
 			// dark elven mage fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(250);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(250);
 			weaponItem = (Weapon) temp;
 		}
 		else if ((classId >= 0x2c) && (classId <= 0x30))
 		{
 			// orc fighter fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(248);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(248);
 			weaponItem = (Weapon) temp;
 		}
 		else if ((classId >= 0x31) && (classId <= 0x34))
 		{
 			// orc mage fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(252);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(252);
 			weaponItem = (Weapon) temp;
 		}
 		else if ((classId >= 0x35) && (classId <= 0x39))
 		{
 			// dwarven fists
-			final ItemTemplate temp = ItemTable.getInstance().getTemplate(247);
+			final ItemTemplate temp = ItemData.getInstance().getTemplate(247);
 			weaponItem = (Weapon) temp;
 		}
 		return weaponItem;
@@ -3376,7 +3376,7 @@ public class Player extends Playable
 	{
 		if (count > 0)
 		{
-			final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+			final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 			if (item == null)
 			{
 				LOGGER.severe("Item doesn't exist so cannot be added. Item ID: " + itemId);
@@ -4375,7 +4375,7 @@ public class Player extends Playable
 	 */
 	public void doAutoLoot(Attackable target, int itemId, long itemCount)
 	{
-		if (isInParty() && !ItemTable.getInstance().getTemplate(itemId).hasExImmediateEffect())
+		if (isInParty() && !ItemData.getInstance().getTemplate(itemId).hasExImmediateEffect())
 		{
 			_party.distributeItem(this, itemId, itemCount, false, target);
 		}
@@ -4525,7 +4525,7 @@ public class Player extends Playable
 			{
 				handler.useItem(this, target, false);
 			}
-			ItemTable.getInstance().destroyItem("Consume", target, this, null);
+			ItemData.getInstance().destroyItem("Consume", target, this, null);
 		}
 		// Cursed Weapons are not distributed
 		else if (CursedWeaponsManager.getInstance().isCursed(target.getId()))
@@ -4566,7 +4566,7 @@ public class Player extends Playable
 			else if ((target.getId() == Inventory.ADENA_ID) && (_inventory.getAdenaInstance() != null))
 			{
 				addAdena("Pickup", target.getCount(), null, true);
-				ItemTable.getInstance().destroyItem("Pickup", target, this, null);
+				ItemData.getInstance().destroyItem("Pickup", target, this, null);
 			}
 			else
 			{
@@ -8551,7 +8551,13 @@ public class Player extends Playable
 				sm.addSkillName(usedSkill);
 			}
 			
-			sendPacket(sm);
+			// Don't send packet for Raise/Focus Shield if Final Ultimate Defense is active.
+			if ((getEffectList().getBuffInfoBySkillId(10017 /* Final Ultimate Defense */) == null) && ((usedSkill.getId() == 10020 /* Focus Shield */) || (usedSkill.getId() == 10021 /* Raise Shield */)))
+			{
+				sendPacket(sm);
+			}
+			
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return false;
 		}
 		
@@ -8936,7 +8942,7 @@ public class Player extends Playable
 	{
 		for (int itemId : _activeSoulShots)
 		{
-			if (ItemTable.getInstance().getTemplate(itemId).getCrystalType().getLevel() == crystalType)
+			if (ItemData.getInstance().getTemplate(itemId).getCrystalType().getLevel() == crystalType)
 			{
 				disableAutoShot(itemId);
 			}
@@ -10221,14 +10227,6 @@ public class Player extends Playable
 			restoreEffects();
 		}
 		
-		// TODO : Need to fix that hack!
-		if (!isDead())
-		{
-			setCurrentCp(_originalCp);
-			setCurrentHp(_originalHp);
-			setCurrentMp(_originalMp);
-		}
-		
 		revalidateZone(true);
 		
 		notifyFriends(FriendStatus.MODE_ONLINE);
@@ -10278,6 +10276,18 @@ public class Player extends Playable
 		{
 			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerMentorStatus(this, true), this);
 		}
+		
+		// TODO : Need to fix that hack!
+		if (!isDead())
+		{
+			// Run on a separate thread to give time to above events to be notified.
+			ThreadPool.schedule(() ->
+			{
+				setCurrentCp(_originalCp);
+				setCurrentHp(_originalHp);
+				setCurrentMp(_originalMp);
+			}, 300);
+		}
 	}
 	
 	public long getLastAccess()
@@ -10295,10 +10305,8 @@ public class Player extends Playable
 	{
 		super.doRevive();
 		
-		if (Config.DISCONNECT_AFTER_DEATH)
-		{
-			DecayTaskManager.getInstance().cancel(this);
-		}
+		// Stop decay task.
+		DecayTaskManager.getInstance().cancel(this);
 		
 		sendPacket(new EtcStatusUpdate(this));
 		_revivePet = false;

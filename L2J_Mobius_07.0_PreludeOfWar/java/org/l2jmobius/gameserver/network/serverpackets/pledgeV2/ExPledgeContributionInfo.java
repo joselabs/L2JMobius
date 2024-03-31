@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgeV2;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -54,38 +56,38 @@ public class ExPledgeContributionInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (_player.getClan() == null)
 		{
 			return;
 		}
 		
-		ServerPackets.EX_PLEDGE_CONTRIBUTION_INFO.writeId(this);
+		ServerPackets.EX_PLEDGE_CONTRIBUTION_INFO.writeId(this, buffer);
 		if (_cycle)
 		{
-			writeInt(_player.getClanContribution());
+			buffer.writeInt(_player.getClanContribution());
 		}
 		else
 		{
-			writeInt(_player.getVariables().getInt(PlayerVariables.CLAN_CONTRIBUTION_PREVIOUS, 0));
+			buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CLAN_CONTRIBUTION_PREVIOUS, 0));
 		}
-		writeInt(_player.getClanContributionTotal());
+		buffer.writeInt(_player.getClanContributionTotal());
 		if (_previousClaims < 4)
 		{
-			writeInt(_reputationRequiredTiers[_previousClaims]);
-			writeInt(-1);
-			writeInt(0);
-			writeInt(_fameRewardTiers[_previousClaims]);
+			buffer.writeInt(_reputationRequiredTiers[_previousClaims]);
+			buffer.writeInt(-1);
+			buffer.writeInt(0);
+			buffer.writeInt(_fameRewardTiers[_previousClaims]);
 		}
 		else
 		{
 			int reputationRequired = 15000 * (_previousClaims);
 			int fameReward = 10600 + ((_previousClaims - 4) * 200);
-			writeInt(reputationRequired);
-			writeInt(-1);
-			writeInt(0);
-			writeInt(fameReward);
+			buffer.writeInt(reputationRequired);
+			buffer.writeInt(-1);
+			buffer.writeInt(0);
+			buffer.writeInt(fameReward);
 		}
 	}
 }

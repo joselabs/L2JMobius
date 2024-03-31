@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.HomunculusCreationData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -47,9 +49,9 @@ public class ExShowHomunculusBirthInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHOW_HOMUNCULUS_BIRTH_INFO.writeId(this);
+		ServerPackets.EX_SHOW_HOMUNCULUS_BIRTH_INFO.writeId(this, buffer);
 		int creationStage = 0;
 		if (_homunculusCreateTime > 0)
 		{
@@ -62,11 +64,11 @@ public class ExShowHomunculusBirthInfo extends ServerPacket
 				creationStage = 1;
 			}
 		}
-		writeInt(creationStage); // in creation process (0: can create, 1: in process, 2: can awake
-		writeInt(_hpPoints); // hp points
-		writeInt(_spPoints); // sp points
-		writeInt(_vpPoints); // vp points
-		writeLong(_homunculusCreateTime); // finish time
-		// writeInt(0); // JP = 0. ?
+		buffer.writeInt(creationStage); // in creation process (0: can create, 1: in process, 2: can awake
+		buffer.writeInt(_hpPoints); // hp points
+		buffer.writeInt(_spPoints); // sp points
+		buffer.writeInt(_vpPoints); // vp points
+		buffer.writeLong(_homunculusCreateTime); // finish time
+		// buffer.writeInt(0); // JP = 0. ?
 	}
 }

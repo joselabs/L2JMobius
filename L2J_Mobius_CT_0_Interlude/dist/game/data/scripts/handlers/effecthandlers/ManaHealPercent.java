@@ -74,7 +74,7 @@ public class ManaHealPercent extends AbstractEffect
 		SystemMessage sm;
 		if (info.getEffector().getObjectId() != target.getObjectId())
 		{
-			sm = new SystemMessage(SystemMessageId.S2_MP_HAS_BEEN_RESTORED_BY_C1);
+			sm = new SystemMessage(SystemMessageId.S2_MP_HAS_BEEN_RESTORED_BY_S1);
 			sm.addString(info.getEffector().getName());
 		}
 		else

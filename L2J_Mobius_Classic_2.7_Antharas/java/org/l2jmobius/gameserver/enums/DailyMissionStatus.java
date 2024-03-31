@@ -25,7 +25,7 @@ public enum DailyMissionStatus
 	NOT_AVAILABLE(2),
 	COMPLETED(3);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	private DailyMissionStatus(int clientId)
 	{

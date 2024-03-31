@@ -19,18 +19,22 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.EnchantItemRequest;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ExRemoveEnchantSupportItemResult;
 
 /**
  * @author Sdw
  */
-public class RequestExRemoveEnchantSupportItem implements ClientPacket
+public class RequestExRemoveEnchantSupportItem extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

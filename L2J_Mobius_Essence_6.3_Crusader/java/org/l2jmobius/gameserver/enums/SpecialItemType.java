@@ -28,7 +28,7 @@ public enum SpecialItemType
 	RAIDBOSS_POINTS(-500),
 	HONOR_COINS(-700);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	private SpecialItemType(int clientId)
 	{

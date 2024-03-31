@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets.crystalization;
 
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -35,15 +37,15 @@ public class ExGetCrystalizingEstimation extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_GET_CRYSTALIZING_ESTIMATION.writeId(this);
-		writeInt(_items.size());
+		ServerPackets.EX_GET_CRYSTALIZING_ESTIMATION.writeId(this, buffer);
+		buffer.writeInt(_items.size());
 		for (ItemChanceHolder holder : _items)
 		{
-			writeInt(holder.getId());
-			writeLong(holder.getCount());
-			writeDouble(holder.getChance());
+			buffer.writeInt(holder.getId());
+			buffer.writeLong(holder.getCount());
+			buffer.writeDouble(holder.getChance());
 		}
 	}
 }

@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets.pledgeV2;
 
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeAnnounce;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeShowInfoUpdate;
@@ -26,12 +25,17 @@ import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeShowInfoU
 /**
  * @author Mobius
  */
-public class RequestExPledgeAnnounce implements ClientPacket
+public class RequestExPledgeAnnounce extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -43,7 +47,7 @@ public class RequestExPledgeAnnounce implements ClientPacket
 			return;
 		}
 		
-		client.sendPacket(new ExPledgeShowInfoUpdate(player));
-		client.sendPacket(new ExPledgeAnnounce(player));
+		player.sendPacket(new ExPledgeShowInfoUpdate(player));
+		player.sendPacket(new ExPledgeAnnounce(player));
 	}
 }

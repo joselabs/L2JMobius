@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.SpecialItemType;
 import org.l2jmobius.gameserver.enums.TeleportType;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
@@ -332,7 +332,7 @@ public class TeleportHolder
 				return "<fstring>1000309</fstring>";
 			}
 		}
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 		if (item != null)
 		{
 			return item.getName();

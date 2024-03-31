@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -37,17 +39,17 @@ public class ExCollectionRegister extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_COLLECTION_REGISTER.writeId(this);
-		writeShort(_collectionId);
-		writeByte(1);
-		writeByte(0x0E);
-		writeByte(0);
-		writeByte(_index);
-		writeInt(_item.getId());
-		writeShort(0);
-		writeByte(0);
-		writeInt(0);
+		ServerPackets.EX_COLLECTION_REGISTER.writeId(this, buffer);
+		buffer.writeShort(_collectionId);
+		buffer.writeByte(1);
+		buffer.writeByte(0x0E);
+		buffer.writeByte(0);
+		buffer.writeByte(_index);
+		buffer.writeInt(_item.getId());
+		buffer.writeShort(0);
+		buffer.writeByte(0);
+		buffer.writeInt(0);
 	}
 }

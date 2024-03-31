@@ -392,7 +392,7 @@ public class NornilsGarden extends AbstractInstance
 		// ...and be party leader
 		if (party.getLeader() != player)
 		{
-			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_MAKE_THE_REQUEST_TO_ENTER);
+			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_TRY_TO_ENTER);
 			return "32330-08.html";
 		}
 		boolean kamael = false;

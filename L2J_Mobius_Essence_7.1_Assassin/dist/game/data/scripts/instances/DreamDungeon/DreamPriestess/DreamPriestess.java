@@ -53,6 +53,7 @@ public class DreamPriestess extends AbstractInstance
 		addFirstTalkId(DREAM_PRIESTESS);
 		addStartNpc(DREAM_PRIESTESS);
 		addTalkId(DREAM_PRIESTESS);
+		addInstanceCreatedId(INSTANCE_IDS);
 	}
 	
 	@Override
@@ -225,6 +226,13 @@ public class DreamPriestess extends AbstractInstance
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public void onInstanceCreated(Instance instance, Player player)
+	{
+		super.onInstanceCreated(instance, player);
+		instance.setStatus(0);
 	}
 	
 	public static void main(String[] args)

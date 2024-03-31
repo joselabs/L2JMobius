@@ -299,7 +299,7 @@ public class Q00726_LightWithinTheDarkness extends Quest
 		}
 		else if (party.getLeader() != player)
 		{
-			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_MAKE_THE_REQUEST_TO_ENTER);
+			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_TRY_TO_ENTER);
 			return null;
 		}
 		for (Player partymember : party.getMembers())

@@ -28,6 +28,7 @@ import java.net.InetAddress;
 import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.net.URI;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
@@ -87,7 +88,6 @@ public class Config
 	// Config File Definitions
 	// --------------------------------------------------
 	public static final String INTERFACE_CONFIG_FILE = "./config/Interface.ini";
-	public static final String NETWORK_CONFIG_FILE = "./config/Network.ini";
 	public static final String OLYMPIAD_CONFIG_FILE = "./config/Olympiad.ini";
 	
 	public static final String SIEGE_CONFIG_FILE = "./config/Siege.ini";
@@ -198,7 +198,6 @@ public class Config
 	public static boolean DIVINE_SP_BOOK_NEEDED;
 	public static boolean ALT_GAME_SKILL_LEARN;
 	public static boolean ALT_GAME_SUBCLASS_WITHOUT_QUESTS;
-	public static boolean ALT_GAME_SUBCLASS_EVERYWHERE;
 	public static int FEE_DELETE_TRANSFER_SKILLS;
 	public static int FEE_DELETE_SUBCLASS_SKILLS;
 	public static boolean RESTORE_SERVITOR_ON_RECONNECT;
@@ -246,13 +245,11 @@ public class Config
 	public static int CASTLE_ZONE_FAME_AQUIRE_POINTS;
 	public static boolean FAME_FOR_DEAD_PLAYERS;
 	public static boolean IS_CRAFTING_ENABLED;
-	public static boolean CRAFT_MASTERWORK;
 	public static int DWARF_RECIPE_LIMIT;
 	public static int COMMON_RECIPE_LIMIT;
 	public static boolean ALT_GAME_CREATION;
 	public static double ALT_GAME_CREATION_SPEED;
 	public static double ALT_GAME_CREATION_XP_RATE;
-	public static double ALT_GAME_CREATION_RARE_XPSP_RATE;
 	public static double ALT_GAME_CREATION_SP_RATE;
 	public static boolean ALT_BLACKSMITH_USE_RECIPES;
 	public static int ALT_CLAN_LEADER_DATE_CHANGE;
@@ -267,6 +264,7 @@ public class Config
 	public static int ALT_CREATE_ALLY_DAYS_WHEN_DISSOLVED;
 	public static int ALT_MAX_NUM_OF_CLANS_IN_ALLY;
 	public static int ALT_CLAN_MEMBERS_FOR_WAR;
+	public static boolean ALT_GAME_NEW_CHAR_ALWAYS_IS_NEWBIE;
 	public static boolean ALT_MEMBERS_CAN_WITHDRAW_FROM_CLANWH;
 	public static boolean REMOVE_CASTLE_CIRCLETS;
 	public static int ALT_PARTY_RANGE;
@@ -515,6 +513,7 @@ public class Config
 	public static boolean DEBUG_UNKNOWN_PACKETS;
 	public static Set<String> ALT_DEV_EXCLUDED_PACKETS;
 	public static int SCHEDULED_THREAD_POOL_SIZE;
+	public static int HIGH_PRIORITY_SCHEDULED_THREAD_POOL_SIZE;
 	public static int INSTANT_THREAD_POOL_SIZE;
 	public static boolean THREADS_FOR_LOADING;
 	public static boolean DEADLOCK_DETECTOR;
@@ -537,8 +536,9 @@ public class Config
 	public static boolean CLEAR_DROPPED_ITEM_TABLE;
 	public static boolean AUTODELETE_INVALID_QUEST_DATA;
 	public static boolean MULTIPLE_ITEM_DROP;
-	public static boolean LAZY_CACHE;
+	public static boolean HTM_CACHE;
 	public static boolean CHECK_HTML_ENCODING;
+	public static boolean HIDE_BYPASS_REMOVAL;
 	public static int MIN_NPC_ANIMATION;
 	public static int MAX_NPC_ANIMATION;
 	public static int MIN_MONSTER_ANIMATION;
@@ -559,6 +559,7 @@ public class Config
 	public static boolean ALLOW_WEAR;
 	public static int WEAR_DELAY;
 	public static int WEAR_PRICE;
+	public static boolean ALT_VILLAGES_REPEATABLE_QUEST_REWARD;
 	public static int INSTANCE_FINISH_TIME;
 	public static boolean RESTORE_PLAYER_INSTANCE;
 	public static boolean ALLOW_SUMMON_IN_INSTANCE;
@@ -580,7 +581,6 @@ public class Config
 	public static boolean OLYMPIAD_ENABLED;
 	public static int ALT_OLY_START_TIME;
 	public static int ALT_OLY_MIN;
-	public static int ALT_OLY_MAX_BUFFS;
 	public static long ALT_OLY_CPERIOD;
 	public static long ALT_OLY_BATTLE;
 	public static long ALT_OLY_WPERIOD;
@@ -870,6 +870,7 @@ public class Config
 	public static String DATABASE_LOGIN;
 	public static String DATABASE_PASSWORD;
 	public static int DATABASE_MAX_CONNECTIONS;
+	public static boolean DATABASE_TEST_CONNECTIONS;
 	public static boolean BACKUP_DATABASE;
 	public static String MYSQL_BIN_PATH;
 	public static String BACKUP_PATH;
@@ -908,16 +909,7 @@ public class Config
 	// --------------------------------------------------
 	// Network Settings
 	// --------------------------------------------------
-	public static int CLIENT_READ_POOL_SIZE;
-	public static int CLIENT_SEND_POOL_SIZE;
-	public static int CLIENT_EXECUTE_POOL_SIZE;
-	public static int PACKET_QUEUE_LIMIT;
-	public static boolean PACKET_FLOOD_DISCONNECT;
-	public static boolean PACKET_FLOOD_DROP;
-	public static boolean PACKET_FLOOD_LOGGED;
 	public static boolean PACKET_ENCRYPTION;
-	public static boolean FAILED_DECRYPTION_LOGGED;
-	public static boolean TCP_NO_DELAY;
 	
 	// --------------------------------------------------
 	// Vitality Settings
@@ -1036,6 +1028,7 @@ public class Config
 	// --------------------------------------------------
 	public static Path GEODATA_PATH;
 	public static Path PATHNODE_PATH;
+	public static Path GEOEDIT_PATH;
 	public static int PATHFINDING;
 	public static String PATHFIND_BUFFERS;
 	public static float LOW_WEIGHT;
@@ -1304,6 +1297,7 @@ public class Config
 	public static boolean PC_CAFE_ENABLED;
 	public static boolean PC_CAFE_ONLY_PREMIUM;
 	public static boolean PC_CAFE_RETAIL_LIKE;
+	public static int PC_CAFE_REWARD_TIME;
 	public static int PC_CAFE_MAX_POINTS;
 	public static boolean PC_CAFE_ENABLE_DOUBLE_POINTS;
 	public static int PC_CAFE_DOUBLE_POINTS_CHANCE;
@@ -1354,13 +1348,15 @@ public class Config
 			PORT_GAME = serverConfig.getInt("GameserverPort", 7777);
 			GAME_SERVER_LOGIN_PORT = serverConfig.getInt("LoginPort", 9014);
 			GAME_SERVER_LOGIN_HOST = serverConfig.getString("LoginHost", "127.0.0.1");
+			PACKET_ENCRYPTION = serverConfig.getBoolean("PacketEncryption", false);
 			REQUEST_ID = serverConfig.getInt("RequestServerID", 0);
 			ACCEPT_ALTERNATE_ID = serverConfig.getBoolean("AcceptAlternateID", true);
 			DATABASE_DRIVER = serverConfig.getString("Driver", "org.mariadb.jdbc.Driver");
 			DATABASE_URL = serverConfig.getString("URL", "jdbc:mariadb://localhost/l2jmobiush5?useUnicode=true&characterEncoding=utf-8");
 			DATABASE_LOGIN = serverConfig.getString("Login", "root");
 			DATABASE_PASSWORD = serverConfig.getString("Password", "");
-			DATABASE_MAX_CONNECTIONS = serverConfig.getInt("MaximumDbConnections", 10);
+			DATABASE_MAX_CONNECTIONS = serverConfig.getInt("MaximumDatabaseConnections", 10);
+			DATABASE_TEST_CONNECTIONS = serverConfig.getBoolean("TestDatabaseConnections", false);
 			BACKUP_DATABASE = serverConfig.getBoolean("BackupDatabase", false);
 			MYSQL_BIN_PATH = serverConfig.getString("MySqlBinLocation", "C:/xampp/mysql/bin/");
 			BACKUP_PATH = serverConfig.getString("BackupPath", "../backup/");
@@ -1426,6 +1422,7 @@ public class Config
 			{
 				SCHEDULED_THREAD_POOL_SIZE = Runtime.getRuntime().availableProcessors() * 4;
 			}
+			HIGH_PRIORITY_SCHEDULED_THREAD_POOL_SIZE = Math.max(2, SCHEDULED_THREAD_POOL_SIZE / 4);
 			INSTANT_THREAD_POOL_SIZE = serverConfig.getInt("InstantThreadPoolSize", -1);
 			if (INSTANT_THREAD_POOL_SIZE == -1)
 			{
@@ -1453,18 +1450,6 @@ public class Config
 			PRECAUTIONARY_RESTART_CHECKS = serverConfig.getBoolean("PrecautionaryRestartChecks", true);
 			PRECAUTIONARY_RESTART_PERCENTAGE = serverConfig.getInt("PrecautionaryRestartPercentage", 95);
 			PRECAUTIONARY_RESTART_DELAY = serverConfig.getInt("PrecautionaryRestartDelay", 60) * 1000;
-			
-			final PropertiesParser networkConfig = new PropertiesParser(NETWORK_CONFIG_FILE);
-			CLIENT_READ_POOL_SIZE = networkConfig.getInt("ClientReadPoolSize", 100);
-			CLIENT_SEND_POOL_SIZE = networkConfig.getInt("ClientSendPoolSize", 100);
-			CLIENT_EXECUTE_POOL_SIZE = networkConfig.getInt("ClientExecutePoolSize", 100);
-			PACKET_QUEUE_LIMIT = networkConfig.getInt("PacketQueueLimit", 80);
-			PACKET_FLOOD_DISCONNECT = networkConfig.getBoolean("PacketFloodDisconnect", false);
-			PACKET_FLOOD_DROP = networkConfig.getBoolean("PacketFloodDrop", false);
-			PACKET_FLOOD_LOGGED = networkConfig.getBoolean("PacketFloodLogged", true);
-			PACKET_ENCRYPTION = networkConfig.getBoolean("PacketEncryption", false);
-			FAILED_DECRYPTION_LOGGED = networkConfig.getBoolean("FailedDecryptionLogged", true);
-			TCP_NO_DELAY = networkConfig.getBoolean("TcpNoDelay", true);
 			
 			// Hosts and Subnets
 			final IPConfigData ipcd = new IPConfigData();
@@ -1751,7 +1736,6 @@ public class Config
 			DIVINE_SP_BOOK_NEEDED = characterConfig.getBoolean("DivineInspirationSpBookNeeded", true);
 			ALT_GAME_SKILL_LEARN = characterConfig.getBoolean("AltGameSkillLearn", false);
 			ALT_GAME_SUBCLASS_WITHOUT_QUESTS = characterConfig.getBoolean("AltSubClassWithoutQuests", false);
-			ALT_GAME_SUBCLASS_EVERYWHERE = characterConfig.getBoolean("AltSubclassEverywhere", false);
 			RESTORE_SERVITOR_ON_RECONNECT = characterConfig.getBoolean("RestoreServitorOnReconnect", true);
 			RESTORE_PET_ON_RECONNECT = characterConfig.getBoolean("RestorePetOnReconnect", true);
 			FEE_DELETE_TRANSFER_SKILLS = characterConfig.getInt("FeeDeleteTransferSkills", 10000000);
@@ -1859,14 +1843,12 @@ public class Config
 			CASTLE_ZONE_FAME_AQUIRE_POINTS = characterConfig.getInt("CastleZoneFameAquirePoints", 125);
 			FAME_FOR_DEAD_PLAYERS = characterConfig.getBoolean("FameForDeadPlayers", true);
 			IS_CRAFTING_ENABLED = characterConfig.getBoolean("CraftingEnabled", true);
-			CRAFT_MASTERWORK = characterConfig.getBoolean("CraftMasterwork", true);
 			DWARF_RECIPE_LIMIT = characterConfig.getInt("DwarfRecipeLimit", 50);
 			COMMON_RECIPE_LIMIT = characterConfig.getInt("CommonRecipeLimit", 50);
 			ALT_GAME_CREATION = characterConfig.getBoolean("AltGameCreation", false);
 			ALT_GAME_CREATION_SPEED = characterConfig.getDouble("AltGameCreationSpeed", 1);
 			ALT_GAME_CREATION_XP_RATE = characterConfig.getDouble("AltGameCreationXpRate", 1);
 			ALT_GAME_CREATION_SP_RATE = characterConfig.getDouble("AltGameCreationSpRate", 1);
-			ALT_GAME_CREATION_RARE_XPSP_RATE = characterConfig.getDouble("AltGameCreationRareXpSpRate", 2);
 			ALT_BLACKSMITH_USE_RECIPES = characterConfig.getBoolean("AltBlacksmithUseRecipes", true);
 			ALT_CLAN_LEADER_DATE_CHANGE = characterConfig.getInt("AltClanLeaderDateChange", 3);
 			if ((ALT_CLAN_LEADER_DATE_CHANGE < 1) || (ALT_CLAN_LEADER_DATE_CHANGE > 7))
@@ -1885,6 +1867,7 @@ public class Config
 			ALT_CREATE_ALLY_DAYS_WHEN_DISSOLVED = characterConfig.getInt("DaysBeforeCreateNewAllyWhenDissolved", 1);
 			ALT_MAX_NUM_OF_CLANS_IN_ALLY = characterConfig.getInt("AltMaxNumOfClansInAlly", 3);
 			ALT_CLAN_MEMBERS_FOR_WAR = characterConfig.getInt("AltClanMembersForWar", 15);
+			ALT_GAME_NEW_CHAR_ALWAYS_IS_NEWBIE = characterConfig.getBoolean("AltNewCharAlwaysIsNewbie", false);
 			ALT_MEMBERS_CAN_WITHDRAW_FROM_CLANWH = characterConfig.getBoolean("AltMembersCanWithdrawFromClanWH", false);
 			REMOVE_CASTLE_CIRCLETS = characterConfig.getBoolean("RemoveCastleCirclets", true);
 			ALT_PARTY_RANGE = characterConfig.getInt("AltPartyRange", 1500);
@@ -2042,8 +2025,9 @@ public class Config
 			CLEAR_DROPPED_ITEM_TABLE = generalConfig.getBoolean("ClearDroppedItemTable", false);
 			AUTODELETE_INVALID_QUEST_DATA = generalConfig.getBoolean("AutoDeleteInvalidQuestData", false);
 			MULTIPLE_ITEM_DROP = generalConfig.getBoolean("MultipleItemDrop", true);
-			LAZY_CACHE = generalConfig.getBoolean("LazyCache", true);
+			HTM_CACHE = generalConfig.getBoolean("HtmCache", true);
 			CHECK_HTML_ENCODING = generalConfig.getBoolean("CheckHtmlEncoding", true);
+			HIDE_BYPASS_REMOVAL = generalConfig.getBoolean("HideBypassRemoval", true);
 			MIN_NPC_ANIMATION = generalConfig.getInt("MinNpcAnimation", 5);
 			MAX_NPC_ANIMATION = generalConfig.getInt("MaxNpcAnimation", 60);
 			MIN_MONSTER_ANIMATION = generalConfig.getInt("MinMonsterAnimation", 5);
@@ -2060,6 +2044,7 @@ public class Config
 			ALLOW_WEAR = generalConfig.getBoolean("AllowWear", true);
 			WEAR_DELAY = generalConfig.getInt("WearDelay", 5);
 			WEAR_PRICE = generalConfig.getInt("WearPrice", 10);
+			ALT_VILLAGES_REPEATABLE_QUEST_REWARD = generalConfig.getBoolean("AltVillagesRepQuestReward", false);
 			INSTANCE_FINISH_TIME = generalConfig.getInt("DefaultFinishTime", 300) * 1000;
 			RESTORE_PLAYER_INSTANCE = generalConfig.getBoolean("RestorePlayerInstance", false);
 			ALLOW_SUMMON_IN_INSTANCE = generalConfig.getBoolean("AllowSummonInInstance", false);
@@ -2411,7 +2396,6 @@ public class Config
 			OLYMPIAD_ENABLED = olympiadConfig.getBoolean("OlympiadEnabled", true);
 			ALT_OLY_START_TIME = olympiadConfig.getInt("AltOlyStartTime", 18);
 			ALT_OLY_MIN = olympiadConfig.getInt("AltOlyMin", 0);
-			ALT_OLY_MAX_BUFFS = olympiadConfig.getInt("AltOlyMaxBuffs", 5);
 			ALT_OLY_CPERIOD = olympiadConfig.getLong("AltOlyCPeriod", 21600000);
 			ALT_OLY_BATTLE = olympiadConfig.getLong("AltOlyBattle", 360000);
 			ALT_OLY_WPERIOD = olympiadConfig.getLong("AltOlyWPeriod", 604800000);
@@ -2539,6 +2523,7 @@ public class Config
 			final PropertiesParser geoEngineConfig = new PropertiesParser(GEOENGINE_CONFIG_FILE);
 			GEODATA_PATH = Paths.get(Config.DATAPACK_ROOT.getPath() + "/" + geoEngineConfig.getString("GeoDataPath", "geodata"));
 			PATHNODE_PATH = Paths.get(Config.DATAPACK_ROOT.getPath() + "/" + geoEngineConfig.getString("PathnodePath", "pathnode"));
+			GEOEDIT_PATH = Paths.get(Config.DATAPACK_ROOT.getPath() + "/" + geoEngineConfig.getString("GeoEditPath", "saves"));
 			PATHFINDING = geoEngineConfig.getInt("PathFinding", 0);
 			PATHFIND_BUFFERS = geoEngineConfig.getString("PathFindBuffers", "100x6;128x6;192x6;256x4;320x4;384x4;500x2");
 			LOW_WEIGHT = geoEngineConfig.getFloat("LowWeight", 0.5f);
@@ -2909,6 +2894,7 @@ public class Config
 			PC_CAFE_ENABLED = premiumSystemConfig.getBoolean("PcCafeEnabled", false);
 			PC_CAFE_ONLY_PREMIUM = premiumSystemConfig.getBoolean("PcCafeOnlyPremium", false);
 			PC_CAFE_RETAIL_LIKE = premiumSystemConfig.getBoolean("PcCafeRetailLike", true);
+			PC_CAFE_REWARD_TIME = premiumSystemConfig.getInt("PcCafeRewardTime", 300000);
 			PC_CAFE_MAX_POINTS = premiumSystemConfig.getInt("MaxPcCafePoints", 200000);
 			if (PC_CAFE_MAX_POINTS < 0)
 			{
@@ -3137,7 +3123,8 @@ public class Config
 			DATABASE_URL = loginConfig.getString("URL", "jdbc:mariadb://localhost/l2jmobiush5?useUnicode=true&characterEncoding=utf-8");
 			DATABASE_LOGIN = loginConfig.getString("Login", "root");
 			DATABASE_PASSWORD = loginConfig.getString("Password", "");
-			DATABASE_MAX_CONNECTIONS = loginConfig.getInt("MaximumDbConnections", 10);
+			DATABASE_MAX_CONNECTIONS = loginConfig.getInt("MaximumDatabaseConnections", 10);
+			DATABASE_TEST_CONNECTIONS = loginConfig.getBoolean("TestDatabaseConnections", false);
 			BACKUP_DATABASE = loginConfig.getBoolean("BackupDatabase", false);
 			MYSQL_BIN_PATH = loginConfig.getString("MySqlBinLocation", "C:/xampp/mysql/bin/");
 			BACKUP_PATH = loginConfig.getString("BackupPath", "../backup/");
@@ -3147,6 +3134,7 @@ public class Config
 			{
 				SCHEDULED_THREAD_POOL_SIZE = Math.max(2, Runtime.getRuntime().availableProcessors() / 2);
 			}
+			HIGH_PRIORITY_SCHEDULED_THREAD_POOL_SIZE = 0;
 			INSTANT_THREAD_POOL_SIZE = loginConfig.getInt("InstantThreadPoolSize", 2);
 			if (INSTANT_THREAD_POOL_SIZE == -1)
 			{
@@ -3159,17 +3147,6 @@ public class Config
 			NORMAL_CONNECTION_TIME = loginConfig.getInt("NormalConnectionTime", 700);
 			FAST_CONNECTION_TIME = loginConfig.getInt("FastConnectionTime", 350);
 			MAX_CONNECTION_PER_IP = loginConfig.getInt("MaxConnectionPerIP", 50);
-			
-			final PropertiesParser networkConfig = new PropertiesParser(NETWORK_CONFIG_FILE);
-			CLIENT_READ_POOL_SIZE = networkConfig.getInt("ClientReadPoolSize", 100);
-			CLIENT_SEND_POOL_SIZE = networkConfig.getInt("ClientSendPoolSize", 100);
-			CLIENT_EXECUTE_POOL_SIZE = networkConfig.getInt("ClientExecutePoolSize", 100);
-			PACKET_QUEUE_LIMIT = networkConfig.getInt("PacketQueueLimit", 80);
-			PACKET_FLOOD_DISCONNECT = networkConfig.getBoolean("PacketFloodDisconnect", true);
-			PACKET_FLOOD_DROP = networkConfig.getBoolean("PacketFloodDrop", false);
-			PACKET_FLOOD_LOGGED = networkConfig.getBoolean("PacketFloodLogged", true);
-			FAILED_DECRYPTION_LOGGED = networkConfig.getBoolean("FailedDecryptionLogged", false);
-			TCP_NO_DELAY = networkConfig.getBoolean("TcpNoDelay", true);
 		}
 		else
 		{
@@ -3470,7 +3447,10 @@ public class Config
 			String externalIp = "127.0.0.1";
 			try
 			{
-				final URL autoIp = new URL("http://checkip.amazonaws.com");
+				// Java 19
+				// final URL autoIp = new URL("http://checkip.amazonaws.com");
+				// Java 20
+				final URL autoIp = URI.create("http://checkip.amazonaws.com").toURL();
 				try (BufferedReader in = new BufferedReader(new InputStreamReader(autoIp.openStream())))
 				{
 					externalIp = in.readLine();

@@ -17,7 +17,7 @@
 package handlers.effecthandlers;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
@@ -68,7 +68,7 @@ public class Restoration extends AbstractEffect
 		}
 		
 		// Max equipable item grade configuration.
-		final ItemTemplate extractable = ItemTable.getInstance().getTemplate(_itemId);
+		final ItemTemplate extractable = ItemData.getInstance().getTemplate(_itemId);
 		if (extractable != null)
 		{
 			final int itemCrystalLevel = extractable.getCrystalType().getLevel();

@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.LoginServerThread;
 import org.l2jmobius.gameserver.cache.HtmCache;
@@ -140,33 +139,34 @@ import org.l2jmobius.gameserver.util.Util;
  * packet format rev87 bddddbdcccccccccccccccccccc
  * <p>
  */
-public class EnterWorld implements ClientPacket
+public class EnterWorld extends ClientPacket
 {
 	private static final Map<String, ClientHardwareInfoHolder> TRACE_HWINFO = new ConcurrentHashMap<>();
 	
 	private final int[][] _tracert = new int[5][4];
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
 		for (int i = 0; i < 5; i++)
 		{
 			for (int o = 0; o < 4; o++)
 			{
-				_tracert[i][o] = packet.readByte();
+				_tracert[i][o] = readUnsignedByte();
 			}
 		}
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readBytes(64); // Unknown Byte Array
-		packet.readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readBytes(64); // Unknown Byte Array
+		readInt(); // Unknown Value
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
+		final GameClient client = getClient();
 		final Player player = client.getPlayer();
 		if (player == null)
 		{
@@ -188,16 +188,16 @@ public class EnterWorld implements ClientPacket
 		
 		player.sendPacket(new UserInfo(player));
 		
-		// Restore to instanced area if enabled
+		// Restore to instanced area if enabled.
+		final PlayerVariables vars = player.getVariables();
 		if (Config.RESTORE_PLAYER_INSTANCE)
 		{
-			final PlayerVariables vars = player.getVariables();
 			final Instance instance = InstanceManager.getInstance().getPlayerInstance(player, false);
-			if ((instance != null) && (instance.getId() == vars.getInt("INSTANCE_RESTORE", 0)))
+			if ((instance != null) && (instance.getId() == vars.getInt(PlayerVariables.INSTANCE_RESTORE, 0)))
 			{
 				player.setInstance(instance);
 			}
-			vars.remove("INSTANCE_RESTORE");
+			vars.remove(PlayerVariables.INSTANCE_RESTORE);
 		}
 		
 		if (!player.isGM())
@@ -339,6 +339,12 @@ public class EnterWorld implements ClientPacket
 			}
 			
 			showClanNotice = clan.isNoticeEnabled();
+		}
+		
+		// Mercenary Siege.
+		if (player.isMercenary())
+		{
+			player.updateMercenary();
 		}
 		
 		// Send time.
@@ -643,7 +649,7 @@ public class EnterWorld implements ClientPacket
 		}
 		
 		// Check if expoff is enabled.
-		if (player.getVariables().getBoolean("EXPOFF", false))
+		if (vars.getBoolean("EXPOFF", false))
 		{
 			player.disableExpGain();
 			player.sendMessage("Experience gain is disabled.");
@@ -688,7 +694,7 @@ public class EnterWorld implements ClientPacket
 		{
 			// Send twice.
 			player.setDeathPoints(500);
-			player.setDeathPoints(player.getVariables().getInt(PlayerVariables.DEATH_POINT_COUNT, 0));
+			player.setDeathPoints(vars.getInt(PlayerVariables.DEATH_POINT_COUNT, 0));
 		}
 		
 		// Sayha's Grace.

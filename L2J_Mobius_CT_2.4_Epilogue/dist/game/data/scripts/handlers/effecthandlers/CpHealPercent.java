@@ -75,7 +75,7 @@ public class CpHealPercent extends AbstractEffect
 		}
 		else
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CP_HAS_BEEN_RESTORED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CPS_HAVE_BEEN_RESTORED);
 			sm.addInt((int) amount);
 			target.sendPacket(sm);
 		}

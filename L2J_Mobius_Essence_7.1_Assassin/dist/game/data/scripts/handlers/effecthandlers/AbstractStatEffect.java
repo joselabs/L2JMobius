@@ -25,6 +25,8 @@ import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.conditions.Condition;
 import org.l2jmobius.gameserver.model.conditions.ConditionPlayerIsInCombat;
 import org.l2jmobius.gameserver.model.conditions.ConditionUsingItemType;
+import org.l2jmobius.gameserver.model.conditions.ConditionUsingMagicWeapon;
+import org.l2jmobius.gameserver.model.conditions.ConditionUsingTwoHandWeapon;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.type.ArmorType;
 import org.l2jmobius.gameserver.model.item.type.WeaponType;
@@ -105,6 +107,16 @@ public abstract class AbstractStatEffect extends AbstractEffect
 		if (params.contains("inCombat"))
 		{
 			_conditions.add(new ConditionPlayerIsInCombat(params.getBoolean("inCombat")));
+		}
+		
+		if (params.contains("magicWeapon"))
+		{
+			_conditions.add(new ConditionUsingMagicWeapon(params.getBoolean("magicWeapon")));
+		}
+		
+		if (params.contains("twoHandWeapon"))
+		{
+			_conditions.add(new ConditionUsingTwoHandWeapon(params.getBoolean("twoHandWeapon")));
 		}
 	}
 	

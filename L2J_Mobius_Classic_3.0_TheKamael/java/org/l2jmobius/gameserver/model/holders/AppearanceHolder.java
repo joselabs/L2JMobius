@@ -16,7 +16,7 @@
  */
 package org.l2jmobius.gameserver.model.holders;
 
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.item.appearance.AppearanceHandType;
 import org.l2jmobius.gameserver.model.item.appearance.AppearanceMagicType;
@@ -45,7 +45,7 @@ public class AppearanceHolder
 		_handType = set.getEnum("handType", AppearanceHandType.class, AppearanceHandType.NONE);
 		_magicType = set.getEnum("magicType", AppearanceMagicType.class, AppearanceMagicType.NONE);
 		_targetType = set.getEnum("targetType", AppearanceTargetType.class, AppearanceTargetType.NONE);
-		_bodyPart = ItemTable.SLOTS.get(set.getString("bodyPart", "none"));
+		_bodyPart = ItemData.SLOTS.get(set.getString("bodyPart", "none"));
 	}
 	
 	public WeaponType getWeaponType()

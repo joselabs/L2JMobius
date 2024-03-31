@@ -18,18 +18,22 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ExAlchemySkillList;
 
 /**
  * @author UnAfraid
  */
-public class RequestAlchemySkillList implements ClientPacket
+public class RequestAlchemySkillList extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if ((player == null) || (player.getRace() != Race.ERTHEIA))
 		{
 			return;

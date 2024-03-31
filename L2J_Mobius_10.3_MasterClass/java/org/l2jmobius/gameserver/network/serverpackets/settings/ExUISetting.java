@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.settings;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -43,17 +45,17 @@ public class ExUISetting extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_UI_SETTING.writeId(this);
+		ServerPackets.EX_UI_SETTING.writeId(this, buffer);
 		if (_uiKeyMapping != null)
 		{
-			writeInt(_uiKeyMapping.length);
-			writeBytes(_uiKeyMapping);
+			buffer.writeInt(_uiKeyMapping.length);
+			buffer.writeBytes(_uiKeyMapping);
 		}
 		else
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
 	}
 }

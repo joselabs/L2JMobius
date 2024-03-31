@@ -36,11 +36,6 @@ public abstract class AbstractMaskPacket<T extends IUpdateTypeComponent>extends 
 		0x01
 	};
 	
-	protected AbstractMaskPacket()
-	{
-		super(256);
-	}
-	
 	protected abstract byte[] getMasks();
 	
 	protected void onNewMaskAdded(T component)

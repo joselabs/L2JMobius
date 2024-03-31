@@ -1572,7 +1572,7 @@
 					<value level="11">1.8</value>
 					<value level="12">1.8</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -2010,7 +2010,7 @@
 					<value level="11">68</value>
 					<value level="12">68</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -2076,7 +2076,7 @@
 					<value level="11">71</value>
 					<value level="12">71</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -2142,7 +2142,7 @@
 					<value level="11">74</value>
 					<value level="12">74</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -2906,13 +2906,12 @@
 		<!-- Paralyzed and unable to move temporarily. -->
 		<icon>icon.skill1170</icon>
 		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>15</abnormalTime>
+		<abnormalTime>5</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
-		<activateRate>40</activateRate>
+		<activateRate>100</activateRate>
 		<basicProperty>MAGIC</basicProperty>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<lvlBonusRate>1</lvlBonusRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">44</value>
@@ -2927,15 +2926,14 @@
 			<value level="11">76</value>
 			<value level="12">78</value>
 			<value level="13">80</value>
-			<value level="14">81</value>
-			<value level="15">82</value>
-			<value level="16">83</value>
-			<value level="17">84</value>
+			<value level="14">82</value>
+			<value level="15">84</value>
+			<value level="16">85</value>
+			<value level="17">85</value>
 			<value level="18">85</value>
 		</magicLevel>
 		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<trait>PARALYZE</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -2951,6 +2949,9 @@
 			<effect name="MagicalAttackSpeed">
 				<amount>-50</amount>
 				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceTrait">
+				<PARALYZE>100</PARALYZE>
 			</effect>
 		</effects>
 		<endEffects>
@@ -2982,15 +2983,14 @@
 			<value level="16">8</value>
 			<value level="17">8</value>
 		</abnormalLevel>
-		<abnormalTime>15</abnormalTime>
+		<abnormalTime>10</abnormalTime>
 		<abnormalType>DOT_ATTR</abnormalType>
-		<activateRate>70</activateRate>
+		<activateRate>100</activateRate>
 		<basicProperty>MAGIC</basicProperty>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<lvlBonusRate>1</lvlBonusRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">44</value>
@@ -3004,37 +3004,36 @@
 			<value level="10">76</value>
 			<value level="11">78</value>
 			<value level="12">80</value>
-			<value level="13">81</value>
-			<value level="14">82</value>
-			<value level="15">83</value>
-			<value level="16">84</value>
+			<value level="13">82</value>
+			<value level="14">84</value>
+			<value level="15">85</value>
+			<value level="16">85</value>
 			<value level="17">85</value>
 		</magicLevel>
 		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
 					<value level="1">102</value>
-					<value level="2">102</value>
-					<value level="3">102</value>
+					<value level="2">108</value>
+					<value level="3">116</value>
 					<value level="4">125</value>
-					<value level="5">125</value>
+					<value level="5">134</value>
 					<value level="6">144</value>
-					<value level="7">144</value>
+					<value level="7">149</value>
 					<value level="8">157</value>
-					<value level="9">157</value>
-					<value level="10">157</value>
-					<value level="11">157</value>
-					<value level="12">164</value>
-					<value level="13">164</value>
-					<value level="14">164</value>
-					<value level="15">164</value>
-					<value level="16">164</value>
-					<value level="17">164</value>
+					<value level="9">164</value>
+					<value level="10">171</value>
+					<value level="11">178</value>
+					<value level="12">184</value>
+					<value level="13">200</value>
+					<value level="14">200</value>
+					<value level="15">200</value>
+					<value level="16">200</value>
+					<value level="17">200</value>
 				</power>
 				<ticks>1</ticks>
 			</effect>
@@ -3044,14 +3043,13 @@
 		<!-- Immobilizes and stuns target. -->
 		<icon>icon.skill0279</icon>
 		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>9</abnormalTime>
+		<abnormalTime>5</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<activateRate>80</activateRate>
+		<activateRate>100</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<lvlBonusRate>1</lvlBonusRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">44</value>
@@ -3066,20 +3064,21 @@
 			<value level="11">76</value>
 			<value level="12">78</value>
 			<value level="13">80</value>
-			<value level="14">81</value>
-			<value level="15">82</value>
-			<value level="16">83</value>
-			<value level="17">84</value>
+			<value level="14">82</value>
+			<value level="15">84</value>
+			<value level="16">85</value>
+			<value level="17">85</value>
 			<value level="18">85</value>
 		</magicLevel>
 		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<trait>SHOCK</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="4167" toLevel="1" name="Curse of Fairy Mimyu">
@@ -4002,7 +4001,7 @@
 					<value level="11">53</value>
 					<value level="12">53</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -4446,7 +4445,7 @@
 					<value level="11">79</value>
 					<value level="12">79</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -4589,7 +4588,7 @@
 					<value level="11">12</value>
 					<value level="12">12</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -5100,7 +5099,7 @@
 					<value level="11">53</value>
 					<value level="12">53</value>
 				</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>

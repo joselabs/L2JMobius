@@ -403,7 +403,9 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5013" toLevel="1" name="Frintezza Energy Drain">
@@ -418,7 +420,6 @@
 		<magicLevel>85</magicLevel>
 		<operateType>A1</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
@@ -520,12 +521,12 @@
 		<!-- Unable to move momentarily. -->
 		<icon>icon.skill5016</icon>
 		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>20</abnormalTime>
+		<abnormalTime>10</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>FLOATING_ROOT</abnormalVisualEffect>
 		<activateRate>80</activateRate>
 		<affectRange>200</affectRange>
-		<basicProperty>MAGIC</basicProperty>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>500</castRange>
 		<coolTime>1000</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -541,7 +542,9 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5017" toLevel="1" name="Demon">
@@ -551,14 +554,12 @@
 		<abnormalTime>7200</abnormalTime>
 		<abnormalType>BIG_BODY</abnormalType>
 		<abnormalVisualEffect>BIG_BODY</abnormalVisualEffect>
-		<activateRate>0</activateRate>
 		<coolTime>1000</coolTime>
 		<effectPoint>100</effectPoint>
 		<hitTime>1000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLevel>85</magicLevel>
 		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<targetType>SELF</targetType>
@@ -3158,7 +3159,7 @@
 			<effect name="DamOverTime">
 				<canKill>true</canKill>
 				<power>12</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>

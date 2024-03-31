@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets.pledgeV3;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.ClanWarState;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanWar;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -40,17 +42,17 @@ public class ExPledgeEnemyInfoList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_ENEMY_INFO_LIST.writeId(this);
-		writeInt(_warList.size());
+		ServerPackets.EX_PLEDGE_ENEMY_INFO_LIST.writeId(this, buffer);
+		buffer.writeInt(_warList.size());
 		for (ClanWar war : _warList)
 		{
 			final Clan clan = war.getOpposingClan(_playerClan);
-			writeInt(clan.getRank());
-			writeInt(clan.getId());
-			writeSizedString(clan.getName());
-			writeSizedString(clan.getLeaderName());
+			buffer.writeInt(clan.getRank());
+			buffer.writeInt(clan.getId());
+			buffer.writeSizedString(clan.getName());
+			buffer.writeSizedString(clan.getLeaderName());
 		}
 	}
 }

@@ -758,11 +758,11 @@ public class CreatureStat
 	
 	/**
 	 * Sets the maximum buff count.
-	 * @param buffCount the buff count
+	 * @param value the buff count
 	 */
-	public void setMaxBuffCount(int buffCount)
+	public void setMaxBuffCount(int value)
 	{
-		_maxBuffCount = buffCount;
+		_maxBuffCount = value;
 	}
 	
 	/**
@@ -814,6 +814,30 @@ public class CreatureStat
 	}
 	
 	/**
+	 * Non blocking stat ADD getter.<br>
+	 * WARNING: Only use with effect handlers!
+	 * @param stat
+	 * @return the add value
+	 */
+	public double getAddValue(Stat stat)
+	{
+		return getAddValue(stat, 0d);
+	}
+	
+	/**
+	 * Non blocking stat ADD getter.<br>
+	 * WARNING: Only use with effect handlers!
+	 * @param stat
+	 * @param defaultValue
+	 * @return the add value
+	 */
+	public double getAddValue(Stat stat, double defaultValue)
+	{
+		final Double val = _statsAdd.get(stat);
+		return val != null ? val.doubleValue() : defaultValue;
+	}
+	
+	/**
 	 * @param stat
 	 * @return the mul value
 	 */
@@ -839,6 +863,30 @@ public class CreatureStat
 		{
 			_lock.readLock().unlock();
 		}
+	}
+	
+	/**
+	 * Non blocking stat MUL getter.<br>
+	 * WARNING: Only use with effect handlers!
+	 * @param stat
+	 * @return the mul value
+	 */
+	public double getMulValue(Stat stat)
+	{
+		return getMulValue(stat, 1d);
+	}
+	
+	/**
+	 * Non blocking stat MUL getter.<br>
+	 * WARNING: Only use with effect handlers!
+	 * @param stat
+	 * @param defaultValue
+	 * @return the mul value
+	 */
+	public double getMulValue(Stat stat, double defaultValue)
+	{
+		final Double val = _statsMul.get(stat);
+		return val != null ? val.doubleValue() : defaultValue;
 	}
 	
 	/**
@@ -987,11 +1035,23 @@ public class CreatureStat
 		
 		if (broadcast)
 		{
-			// Calculate the difference between old and new stats
+			// Calculate the difference between old and new stats.
 			final Set<Stat> changed = EnumSet.noneOf(Stat.class);
+			Double statAddResetValue;
+			Double statMulResetValue;
+			Double statAddValue;
+			Double statMulValue;
+			Double addsValue;
+			Double mulsValue;
 			for (Stat stat : Stat.values())
 			{
-				if (_statsAdd.getOrDefault(stat, stat.getResetAddValue()).equals(adds.getOrDefault(stat, stat.getResetAddValue())) || _statsMul.getOrDefault(stat, stat.getResetMulValue()).equals(muls.getOrDefault(stat, stat.getResetMulValue())))
+				statAddResetValue = stat.getResetAddValue();
+				statMulResetValue = stat.getResetMulValue();
+				addsValue = adds.getOrDefault(stat, statAddResetValue);
+				mulsValue = muls.getOrDefault(stat, statMulResetValue);
+				statAddValue = _statsAdd.getOrDefault(stat, statAddResetValue);
+				statMulValue = _statsMul.getOrDefault(stat, statMulResetValue);
+				if (addsValue.equals(statAddResetValue) || mulsValue.equals(statMulResetValue) || !addsValue.equals(statAddValue) || !mulsValue.equals(statMulValue))
 				{
 					changed.add(stat);
 				}

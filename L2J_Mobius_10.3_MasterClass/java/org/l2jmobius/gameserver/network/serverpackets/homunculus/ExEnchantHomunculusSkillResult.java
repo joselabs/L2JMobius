@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.homunculus.Homunculus;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -39,9 +41,9 @@ public class ExEnchantHomunculusSkillResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ENCHANT_HOMUNCULUS_SKILL_RESULT.writeId(this);
+		ServerPackets.EX_ENCHANT_HOMUNCULUS_SKILL_RESULT.writeId(this, buffer);
 		final int playerNumber = Rnd.get(1, 6);
 		final int homunculusNumber = Rnd.get(1, 6);
 		final int systemNumber = Rnd.get(1, 6);
@@ -85,12 +87,12 @@ public class ExEnchantHomunculusSkillResult extends ServerPacket
 		}
 		_player.getHomunculusList().update(homunculus);
 		_player.getHomunculusList().refreshStats(true);
-		writeInt(boundLevel); // skill bound level result
-		writeInt(homunculus.getId()); // homunculus id? random value on JP
-		writeInt(_slot); // slot
-		writeInt(_skillNumber); // skill number
-		writeInt(playerNumber); // player number
-		writeInt(homunculusNumber); // homunculus number
-		writeInt(systemNumber); // system number
+		buffer.writeInt(boundLevel); // skill bound level result
+		buffer.writeInt(homunculus.getId()); // homunculus id? random value on JP
+		buffer.writeInt(_slot); // slot
+		buffer.writeInt(_skillNumber); // skill number
+		buffer.writeInt(playerNumber); // player number
+		buffer.writeInt(homunculusNumber); // homunculus number
+		buffer.writeInt(systemNumber); // system number
 	}
 }

@@ -19,8 +19,10 @@ package org.l2jmobius.gameserver.network.serverpackets.alchemy;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.TryMixCubeType;
 import org.l2jmobius.gameserver.model.holders.AlchemyResult;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -43,16 +45,16 @@ public class ExTryMixCube extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_TRY_MIX_CUBE.writeId(this);
-		writeByte(_type.ordinal());
-		writeInt(_items.size());
+		ServerPackets.EX_TRY_MIX_CUBE.writeId(this, buffer);
+		buffer.writeByte(_type.ordinal());
+		buffer.writeInt(_items.size());
 		for (AlchemyResult holder : _items)
 		{
-			writeByte(holder.getType().ordinal());
-			writeInt(holder.getId());
-			writeLong(holder.getCount());
+			buffer.writeByte(holder.getType().ordinal());
+			buffer.writeInt(holder.getId());
+			buffer.writeLong(holder.getCount());
 		}
 	}
 }

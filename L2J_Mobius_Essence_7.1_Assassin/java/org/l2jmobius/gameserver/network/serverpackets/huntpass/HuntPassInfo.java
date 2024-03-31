@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.huntpass;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.HuntPass;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -48,15 +50,15 @@ public class HuntPassInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_L2PASS_INFO.writeId(this);
-		writeByte(_interfaceType);
-		writeInt(_timeEnd); // LeftTime
-		writeByte(_isPremium); // Premium
-		writeInt(_points); // Points
-		writeInt(_step); // CurrentStep
-		writeInt(_rewardStep); // Reward
-		writeInt(_premiumRewardStep); // PremiumReward
+		ServerPackets.EX_L2PASS_INFO.writeId(this, buffer);
+		buffer.writeByte(_interfaceType);
+		buffer.writeInt(_timeEnd); // LeftTime
+		buffer.writeByte(_isPremium); // Premium
+		buffer.writeInt(_points); // Points
+		buffer.writeInt(_step); // CurrentStep
+		buffer.writeInt(_rewardStep); // Reward
+		buffer.writeInt(_premiumRewardStep); // PremiumReward
 	}
 }

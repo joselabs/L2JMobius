@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.attendance;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.AttendanceRewardData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.AttendanceInfoHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -39,27 +41,27 @@ public class ExVipAttendanceItemList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_VIP_ATTENDANCE_ITEM_LIST.writeId(this);
-		writeByte(_available ? _index + 1 : _index); // index to receive?
-		writeByte(_index); // last received index?
-		writeInt(0);
-		writeInt(0);
-		writeByte(1);
-		writeByte(_available); // player can receive reward today?
-		writeByte(250);
-		writeByte(AttendanceRewardData.getInstance().getRewardsCount()); // reward size
+		ServerPackets.EX_VIP_ATTENDANCE_ITEM_LIST.writeId(this, buffer);
+		buffer.writeByte(_available ? _index + 1 : _index); // index to receive?
+		buffer.writeByte(_index); // last received index?
+		buffer.writeInt(0);
+		buffer.writeInt(0);
+		buffer.writeByte(1);
+		buffer.writeByte(_available); // player can receive reward today?
+		buffer.writeByte(250);
+		buffer.writeByte(AttendanceRewardData.getInstance().getRewardsCount()); // reward size
 		int rewardCounter = 0;
 		for (ItemHolder reward : AttendanceRewardData.getInstance().getRewards())
 		{
 			rewardCounter++;
-			writeInt(reward.getId());
-			writeLong(reward.getCount());
-			writeByte(1); // is unknown?
-			writeByte((rewardCounter % 7) == 0); // is last in row?
+			buffer.writeInt(reward.getId());
+			buffer.writeLong(reward.getCount());
+			buffer.writeByte(1); // is unknown?
+			buffer.writeByte((rewardCounter % 7) == 0); // is last in row?
 		}
-		writeByte(0);
-		writeInt(0);
+		buffer.writeByte(0);
+		buffer.writeInt(0);
 	}
 }

@@ -31,9 +31,9 @@ import org.w3c.dom.Node;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.enums.CategoryType;
@@ -1011,7 +1011,7 @@ public class ClassMaster extends AbstractNpcAI implements IXmlReader
 			}
 			else
 			{
-				option.getItemsRequired().forEach(ih -> sb.append("<tr><td><font color=\"LEVEL\">" + ih.getCount() + "</font></td><td>" + ItemTable.getInstance().getTemplate(ih.getId()).getName() + "</td><td width=30></td></tr>"));
+				option.getItemsRequired().forEach(ih -> sb.append("<tr><td><font color=\"LEVEL\">" + ih.getCount() + "</font></td><td>" + ItemData.getInstance().getTemplate(ih.getId()).getName() + "</td><td width=30></td></tr>"));
 			}
 			sb.append("<tr><td>Rewards:</td></tr>");
 			if (option.getItemsRewarded().isEmpty())
@@ -1033,7 +1033,7 @@ public class ClassMaster extends AbstractNpcAI implements IXmlReader
 			}
 			else
 			{
-				option.getItemsRewarded().forEach(ih -> sb.append("<tr><td><font color=\"LEVEL\">" + ih.getCount() + "</font></td><td>" + ItemTable.getInstance().getTemplate(ih.getId()).getName() + "</td><td width=30></td></tr>"));
+				option.getItemsRewarded().forEach(ih -> sb.append("<tr><td><font color=\"LEVEL\">" + ih.getCount() + "</font></td><td>" + ItemData.getInstance().getTemplate(ih.getId()).getName() + "</td><td width=30></td></tr>"));
 				if (option.isRewardNoblesse())
 				{
 					sb.append("<tr><td><font color=\"LEVEL\">Noblesse status.</font></td></tr>");

@@ -16,14 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.VariationData;
 import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.options.Variation;
 import org.l2jmobius.gameserver.model.options.VariationFee;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExVariationResult;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -39,18 +37,18 @@ public class RequestRefine extends AbstractRefinePacket
 	private long _feeCount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_targetItemObjId = packet.readInt();
-		_mineralItemObjId = packet.readInt();
-		packet.readInt(); // _feeItemObjId
-		_feeCount = packet.readLong();
+		_targetItemObjId = readInt();
+		_mineralItemObjId = readInt();
+		readInt(); // _feeItemObjId
+		_feeCount = readLong();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

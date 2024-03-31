@@ -17,13 +17,11 @@
 package org.l2jmobius.gameserver.network.clientpackets.newhenna;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.HennaData;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.henna.Henna;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -35,28 +33,28 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @author Index, Serenitty
  */
-public class RequestNewHennaEquip implements ClientPacket
+public class RequestNewHennaEquip extends ClientPacket
 {
 	private int _slotId;
 	private int _symbolId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_slotId = packet.readByte();
-		_symbolId = packet.readInt();
+		_slotId = readByte();
+		_symbolId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canPerformTransaction())
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			return;
 		}
@@ -65,7 +63,7 @@ public class RequestNewHennaEquip implements ClientPacket
 		{
 			PacketLogger.warning(player + ": Invalid Henna error 0 Id " + _symbolId + " " + _slotId);
 			player.sendPacket(SystemMessageId.YOU_CANNOT_MAKE_A_PATTERN);
-			client.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -81,7 +79,7 @@ public class RequestNewHennaEquip implements ClientPacket
 		if (henna == null)
 		{
 			PacketLogger.warning(player + ": Invalid Henna SymbolId " + _symbolId + " " + _slotId + " " + item.getTemplate());
-			client.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			player.sendPacket(SystemMessageId.YOU_CANNOT_MAKE_A_PATTERN);
 			return;
 		}
@@ -105,7 +103,7 @@ public class RequestNewHennaEquip implements ClientPacket
 				Util.handleIllegalPlayerAction(player, "Exploit attempt: Character " + player.getName() + " of account " + player.getAccountName() + " tryed to add a forbidden henna.", Config.DEFAULT_PUNISH);
 			}
 			PacketLogger.warning(player + ": Invalid Henna error 2 " + _symbolId + " " + _slotId + " " + item.getTemplate());
-			client.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}
 	}
 }

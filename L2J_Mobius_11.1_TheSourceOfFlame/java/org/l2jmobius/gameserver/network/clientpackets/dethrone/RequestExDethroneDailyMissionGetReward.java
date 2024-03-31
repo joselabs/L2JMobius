@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets.dethrone;
 
 import java.util.Collection;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.DailyMissionDataConquest;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
@@ -26,7 +25,6 @@ import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.RewardRequest;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.dethrone.ExDethroneDailyMissionComplete;
 import org.l2jmobius.gameserver.network.serverpackets.dethrone.ExDethroneDailyMissionGetReward;
@@ -35,25 +33,25 @@ import org.l2jmobius.gameserver.network.serverpackets.dethrone.ExDethroneDailyMi
 /**
  * @author CostyKiller
  */
-public class RequestExDethroneDailyMissionGetReward implements ClientPacket
+public class RequestExDethroneDailyMissionGetReward extends ClientPacket
 {
 	private int _id;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_id = packet.readInt();
+		_id = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		if (!client.getFloodProtectors().canPerformPlayerAction())
+		if (!getClient().getFloodProtectors().canPerformPlayerAction())
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (player.getClan() == null))
 		{
 			return;

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.model.SiegeClan;
@@ -27,6 +28,7 @@ import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Fort;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -109,22 +111,22 @@ public class Die extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.DIE.writeId(this);
-		writeInt(_objectId);
-		writeInt(_toVillage);
-		writeInt(_toClanHall);
-		writeInt(_toCastle);
-		writeInt(_toOutpost);
-		writeInt(_isSweepable);
-		writeInt(_useFeather);
-		writeInt(_toFortress);
-		writeInt(0); // Disables use Feather button for X seconds
-		writeInt(0); // Adventure's Song
-		writeByte(_hideAnimation);
-		writeInt(_itemsEnabled);
-		writeInt(getItems().size());
-		getItems().forEach(this::writeInt);
+		ServerPackets.DIE.writeId(this, buffer);
+		buffer.writeInt(_objectId);
+		buffer.writeInt(_toVillage);
+		buffer.writeInt(_toClanHall);
+		buffer.writeInt(_toCastle);
+		buffer.writeInt(_toOutpost);
+		buffer.writeInt(_isSweepable);
+		buffer.writeInt(_useFeather);
+		buffer.writeInt(_toFortress);
+		buffer.writeInt(0); // Disables use Feather button for X seconds
+		buffer.writeInt(0); // Adventure's Song
+		buffer.writeByte(_hideAnimation);
+		buffer.writeInt(_itemsEnabled);
+		buffer.writeInt(getItems().size());
+		getItems().forEach(buffer::writeInt);
 	}
 }

@@ -16,12 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.elementalspirits;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.ElementalSpiritData;
 import org.l2jmobius.gameserver.enums.ElementalType;
 import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -30,20 +28,20 @@ import org.l2jmobius.gameserver.network.serverpackets.elementalspirits.Elemental
 /**
  * @author JoeAlisson
  */
-public class ExElementalInitTalent implements ClientPacket
+public class ExElementalInitTalent extends ClientPacket
 {
 	private byte _type;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = (byte) packet.readByte();
+		_type = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -52,26 +50,26 @@ public class ExElementalInitTalent implements ClientPacket
 		final ElementalSpirit spirit = player.getElementalSpirit(ElementalType.of(_type));
 		if (spirit == null)
 		{
-			client.sendPacket(SystemMessageId.NO_SPIRITS_ARE_AVAILABLE);
+			player.sendPacket(SystemMessageId.NO_SPIRITS_ARE_AVAILABLE);
 			return;
 		}
 		
 		if (player.isInBattle())
 		{
-			client.sendPacket(new SystemMessage(SystemMessageId.UNABLE_TO_RESET_SPIRIT_ATTRIBUTE_DURING_BATTLE));
-			client.sendPacket(new ElementalSpiritSetTalent(player, _type, false));
+			player.sendPacket(new SystemMessage(SystemMessageId.UNABLE_TO_RESET_SPIRIT_ATTRIBUTE_DURING_BATTLE));
+			player.sendPacket(new ElementalSpiritSetTalent(player, _type, false));
 			return;
 		}
 		
 		if (player.reduceAdena("Talent", ElementalSpiritData.TALENT_INIT_FEE, player, true))
 		{
 			spirit.resetCharacteristics();
-			client.sendPacket(new SystemMessage(SystemMessageId.RESET_THE_SELECTED_SPIRIT_S_CHARACTERISTICS_SUCCESSFULLY));
-			client.sendPacket(new ElementalSpiritSetTalent(player, _type, true));
+			player.sendPacket(new SystemMessage(SystemMessageId.RESET_THE_SELECTED_SPIRIT_S_CHARACTERISTICS_SUCCESSFULLY));
+			player.sendPacket(new ElementalSpiritSetTalent(player, _type, true));
 		}
 		else
 		{
-			client.sendPacket(new ElementalSpiritSetTalent(player, _type, false));
+			player.sendPacket(new ElementalSpiritSetTalent(player, _type, false));
 		}
 	}
 }

@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.appearance;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -43,11 +45,11 @@ public class ExShapeShiftingResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHAPE_SHIFTING_RESULT.writeId(this);
-		writeInt(_result);
-		writeInt(_targetItemId);
-		writeInt(_extractItemId);
+		ServerPackets.EX_SHAPE_SHIFTING_RESULT.writeId(this, buffer);
+		buffer.writeInt(_result);
+		buffer.writeInt(_targetItemId);
+		buffer.writeInt(_extractItemId);
 	}
 }

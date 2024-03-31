@@ -34,7 +34,6 @@ import org.w3c.dom.Node;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.IXmlReader;
 import org.l2jmobius.commons.util.file.filter.NumericNameFilter;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.enums.SpecialItemType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Npc;
@@ -138,7 +137,7 @@ public class MultisellData implements IXmlReader
 								byte enchantmentLevel = parseByte(d.getAttributes(), "enchantmentLevel", (byte) 0);
 								if (enchantmentLevel > 0)
 								{
-									final ItemTemplate item = ItemTable.getInstance().getTemplate(id);
+									final ItemTemplate item = ItemData.getInstance().getTemplate(id);
 									if (item != null)
 									{
 										if (item.isWeapon())
@@ -164,7 +163,7 @@ public class MultisellData implements IXmlReader
 									
 									products.add(product);
 									
-									final ItemTemplate item = ItemTable.getInstance().getTemplate(id);
+									final ItemTemplate item = ItemData.getInstance().getTemplate(id);
 									if (item != null)
 									{
 										if (chance > 0)
@@ -313,7 +312,7 @@ public class MultisellData implements IXmlReader
 			return true;
 		}
 		
-		final ItemTemplate template = ItemTable.getInstance().getTemplate(holder.getId());
+		final ItemTemplate template = ItemData.getInstance().getTemplate(holder.getId());
 		return (template != null) && (template.isStackable() ? (holder.getCount() >= 1) : (holder.getCount() == 1));
 	}
 	

@@ -21,11 +21,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.buylist.BuyListHolder;
 import org.l2jmobius.gameserver.model.buylist.Product;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -83,113 +85,113 @@ public class ExBuySellList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_BUY_SELL_LIST.writeId(this);
-		writeLong(_money);
-		writeInt(_buyListId);
-		writeShort(_buyList.size());
+		ServerPackets.EX_BUY_SELL_LIST.writeId(this, buffer);
+		buffer.writeLong(_money);
+		buffer.writeInt(_buyListId);
+		buffer.writeShort(_buyList.size());
 		for (Product item : _buyList)
 		{
-			writeShort(item.getItem().getType1());
-			writeInt(0); // objectId
-			writeInt(item.getItemId());
-			writeLong(item.getCount() < 0 ? 0 : item.getCount());
-			writeShort(item.getItem().getType2());
-			writeShort(0); // ?
+			buffer.writeShort(item.getItem().getType1());
+			buffer.writeInt(0); // objectId
+			buffer.writeInt(item.getItemId());
+			buffer.writeLong(item.getCount() < 0 ? 0 : item.getCount());
+			buffer.writeShort(item.getItem().getType2());
+			buffer.writeShort(0); // ?
 			if (item.getItem().getType1() != ItemTemplate.TYPE1_ITEM_QUESTITEM_ADENA)
 			{
-				writeInt(item.getItem().getBodyPart());
-				writeShort(0); // item enchant level
-				writeShort(0); // ?
-				writeShort(0);
+				buffer.writeInt(item.getItem().getBodyPart());
+				buffer.writeShort(0); // item enchant level
+				buffer.writeShort(0); // ?
+				buffer.writeShort(0);
 			}
 			else
 			{
-				writeInt(0);
-				writeShort(0);
-				writeShort(0);
-				writeShort(0);
+				buffer.writeInt(0);
+				buffer.writeShort(0);
+				buffer.writeShort(0);
+				buffer.writeShort(0);
 			}
 			if ((item.getItemId() >= 3960) && (item.getItemId() <= 4026))
 			{
-				writeLong((long) (item.getPrice() * Config.RATE_SIEGE_GUARDS_PRICE));
+				buffer.writeLong((long) (item.getPrice() * Config.RATE_SIEGE_GUARDS_PRICE));
 			}
 			else
 			{
-				writeLong((long) (item.getPrice() * (1 + (_taxRate / 2))));
+				buffer.writeLong((long) (item.getPrice() * (1 + (_taxRate / 2))));
 			}
 			// T1
 			for (byte i = 0; i < 8; i++)
 			{
-				writeShort(0);
+				buffer.writeShort(0);
 			}
-			writeShort(0); // Enchant effect 1
-			writeShort(0); // Enchant effect 2
-			writeShort(0); // Enchant effect 3
+			buffer.writeShort(0); // Enchant effect 1
+			buffer.writeShort(0); // Enchant effect 2
+			buffer.writeShort(0); // Enchant effect 3
 		}
 		if ((_sellList != null) && !_sellList.isEmpty())
 		{
-			writeShort(_sellList.size());
+			buffer.writeShort(_sellList.size());
 			for (Item item : _sellList)
 			{
-				writeShort(item.getTemplate().getType1());
-				writeInt(item.getObjectId());
-				writeInt(item.getId());
-				writeLong(item.getCount());
-				writeShort(item.getTemplate().getType2());
-				writeShort(0);
-				writeInt(item.getTemplate().getBodyPart());
-				writeShort(item.getEnchantLevel());
-				writeShort(0);
-				writeShort(0);
-				writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : item.getTemplate().getReferencePrice() / 2);
+				buffer.writeShort(item.getTemplate().getType1());
+				buffer.writeInt(item.getObjectId());
+				buffer.writeInt(item.getId());
+				buffer.writeLong(item.getCount());
+				buffer.writeShort(item.getTemplate().getType2());
+				buffer.writeShort(0);
+				buffer.writeInt(item.getTemplate().getBodyPart());
+				buffer.writeShort(item.getEnchantLevel());
+				buffer.writeShort(0);
+				buffer.writeShort(0);
+				buffer.writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : item.getTemplate().getReferencePrice() / 2);
 				// T1
-				writeShort(item.getAttackElementType());
-				writeShort(item.getAttackElementPower());
+				buffer.writeShort(item.getAttackElementType());
+				buffer.writeShort(item.getAttackElementPower());
 				for (byte i = 0; i < 6; i++)
 				{
-					writeShort(item.getElementDefAttr(i));
+					buffer.writeShort(item.getElementDefAttr(i));
 				}
-				writeShort(0); // Enchant effect 1
-				writeShort(0); // Enchant effect 2
-				writeShort(0); // Enchant effect 3
+				buffer.writeShort(0); // Enchant effect 1
+				buffer.writeShort(0); // Enchant effect 2
+				buffer.writeShort(0); // Enchant effect 3
 			}
 		}
 		else
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
 		if ((_refundList != null) && !_refundList.isEmpty())
 		{
-			writeShort(_refundList.size());
+			buffer.writeShort(_refundList.size());
 			int idx = 0;
 			for (Item item : _refundList)
 			{
-				writeInt(idx++);
-				writeInt(item.getId());
-				writeLong(item.getCount());
-				writeShort(item.getTemplate().getType2());
-				writeShort(0); // ?
-				writeShort(item.getEnchantLevel());
-				writeShort(0); // ?
-				writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : (item.getTemplate().getReferencePrice() / 2) * item.getCount());
+				buffer.writeInt(idx++);
+				buffer.writeInt(item.getId());
+				buffer.writeLong(item.getCount());
+				buffer.writeShort(item.getTemplate().getType2());
+				buffer.writeShort(0); // ?
+				buffer.writeShort(item.getEnchantLevel());
+				buffer.writeShort(0); // ?
+				buffer.writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : (item.getTemplate().getReferencePrice() / 2) * item.getCount());
 				// T1
-				writeShort(item.getAttackElementType());
-				writeShort(item.getAttackElementPower());
+				buffer.writeShort(item.getAttackElementType());
+				buffer.writeShort(item.getAttackElementPower());
 				for (byte i = 0; i < 6; i++)
 				{
-					writeShort(item.getElementDefAttr(i));
+					buffer.writeShort(item.getElementDefAttr(i));
 				}
-				writeShort(0); // Enchant effect 1
-				writeShort(0); // Enchant effect 2
-				writeShort(0); // Enchant effect 3
+				buffer.writeShort(0); // Enchant effect 1
+				buffer.writeShort(0); // Enchant effect 2
+				buffer.writeShort(0); // Enchant effect 3
 			}
 		}
 		else
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
-		writeByte(_done);
+		buffer.writeByte(_done);
 	}
 }

@@ -16,16 +16,20 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.commons.network.WritablePacket;
+import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
+import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.network.PacketLogger;
 
 /**
  * @author Mobius
  */
-public abstract class ServerPacket extends WritablePacket
+public abstract class ServerPacket extends WritablePacket<GameClient>
 {
-	protected static final int[] PAPERDOLL_ORDER =
+	private static final int[] PAPERDOLL_ORDER =
 	{
 		Inventory.PAPERDOLL_UNDER,
 		Inventory.PAPERDOLL_REAR,
@@ -66,13 +70,13 @@ public abstract class ServerPacket extends WritablePacket
 		Inventory.PAPERDOLL_BROOCH_JEWEL5,
 		Inventory.PAPERDOLL_BROOCH_JEWEL6
 	};
-	protected static final int[] PAPERDOLL_ORDER_AUGMENT =
+	private static final int[] PAPERDOLL_ORDER_AUGMENT =
 	{
 		Inventory.PAPERDOLL_RHAND,
 		Inventory.PAPERDOLL_LHAND,
 		Inventory.PAPERDOLL_RHAND
 	};
-	protected static final int[] PAPERDOLL_ORDER_VISUAL_ID =
+	private static final int[] PAPERDOLL_ORDER_VISUAL_ID =
 	{
 		Inventory.PAPERDOLL_RHAND,
 		Inventory.PAPERDOLL_LHAND,
@@ -100,51 +104,38 @@ public abstract class ServerPacket extends WritablePacket
 		return PAPERDOLL_ORDER_VISUAL_ID;
 	}
 	
-	/**
-	 * Construct a ServerPacket with an initial data size of 32 bytes.
-	 */
-	protected ServerPacket()
-	{
-		super(32);
-	}
-	
-	/**
-	 * Construct a ServerPacket with a given initial data size.
-	 * @param initialSize
-	 */
-	protected ServerPacket(int initialSize)
-	{
-		super(initialSize);
-	}
-	
-	private Player _player;
-	
-	/**
-	 * @return the Player
-	 */
-	public Player getPlayer()
-	{
-		return _player;
-	}
-	
-	/**
-	 * @param player the Player to set.
-	 */
-	public void setPlayer(Player player)
-	{
-		_player = player;
-	}
-	
-	protected void writeOptionalInt(int value)
+	protected void writeOptionalInt(int value, WritableBuffer buffer)
 	{
 		if (value >= Short.MAX_VALUE)
 		{
-			writeShort(Short.MAX_VALUE);
-			writeInt(value);
+			buffer.writeShort(Short.MAX_VALUE);
+			buffer.writeInt(value);
 		}
 		else
 		{
-			writeShort(value);
+			buffer.writeShort(value);
 		}
 	}
+	
+	@Override
+	protected boolean write(GameClient client, WritableBuffer buffer)
+	{
+		try
+		{
+			writeImpl(client, buffer);
+			return true;
+		}
+		catch (Exception e)
+		{
+			PacketLogger.warning("Error writing packet " + this + " to client (" + e.getMessage() + ") " + client + "]]");
+			PacketLogger.warning(CommonUtil.getStackTrace(e));
+		}
+		return false;
+	}
+	
+	public void runImpl(Player player)
+	{
+	}
+	
+	protected abstract void writeImpl(GameClient client, WritableBuffer buffer) throws Exception;
 }

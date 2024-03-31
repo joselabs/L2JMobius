@@ -23,7 +23,6 @@ import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ability.ExAcquireAPSkillList;
@@ -31,12 +30,17 @@ import org.l2jmobius.gameserver.network.serverpackets.ability.ExAcquireAPSkillLi
 /**
  * @author UnAfraid
  */
-public class RequestResetAbilityPoint implements ClientPacket
+public class RequestResetAbilityPoint extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

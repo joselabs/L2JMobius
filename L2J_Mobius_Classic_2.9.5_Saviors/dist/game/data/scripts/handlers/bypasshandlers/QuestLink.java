@@ -131,7 +131,7 @@ public class QuestLink implements IBypassHandler
 					startQuest = quest.getName();
 					
 					sbCanStart.append("<font color=\"bbaa88\">");
-					sbCanStart.append("<button icon=\"quest\" align=\"left\" action=\"bypass -h npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
+					sbCanStart.append("<button icon=\"quest\" align=\"left\" action=\"bypass npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
 					String localisation = quest.isCustomQuest() ? quest.getPath() : "<fstring>" + quest.getNpcStringId() + "01</fstring>";
 					if (Config.MULTILANG_ENABLE)
 					{
@@ -151,7 +151,7 @@ public class QuestLink implements IBypassHandler
 				else
 				{
 					sbCantStart.append("<font color=\"a62f31\">");
-					sbCantStart.append("<button icon=\"quest\" align=\"left\" action=\"bypass -h npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
+					sbCantStart.append("<button icon=\"quest\" align=\"left\" action=\"bypass npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
 					String localisation = quest.isCustomQuest() ? quest.getPath() : "<fstring>" + quest.getNpcStringId() + "01</fstring>";
 					if (Config.MULTILANG_ENABLE)
 					{
@@ -179,7 +179,7 @@ public class QuestLink implements IBypassHandler
 				startQuest = quest.getName();
 				
 				sbStarted.append("<font color=\"ffdd66\">");
-				sbStarted.append("<button icon=\"quest\" align=\"left\" action=\"bypass -h npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
+				sbStarted.append("<button icon=\"quest\" align=\"left\" action=\"bypass npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
 				String localisation = quest.isCustomQuest() ? quest.getPath() + " (In Progress)" : "<fstring>" + quest.getNpcStringId() + "02</fstring>";
 				if (Config.MULTILANG_ENABLE)
 				{
@@ -199,7 +199,7 @@ public class QuestLink implements IBypassHandler
 			else if (qs.isCompleted())
 			{
 				sbCompleted.append("<font color=\"787878\">");
-				sbCompleted.append("<button icon=\"quest\" align=\"left\" action=\"bypass -h npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
+				sbCompleted.append("<button icon=\"quest\" align=\"left\" action=\"bypass npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
 				String localisation = quest.isCustomQuest() ? quest.getPath() + " (Done) " : "<fstring>" + quest.getNpcStringId() + "03</fstring>";
 				if (Config.MULTILANG_ENABLE)
 				{

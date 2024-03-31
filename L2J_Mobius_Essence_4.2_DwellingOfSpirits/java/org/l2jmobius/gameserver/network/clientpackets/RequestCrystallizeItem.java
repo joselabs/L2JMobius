@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.List;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
@@ -30,7 +29,6 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.CrystalType;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -41,22 +39,22 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @version $Revision: 1.2.2.3.2.5 $ $Date: 2005/03/27 15:29:30 $
  */
-public class RequestCrystallizeItem implements ClientPacket
+public class RequestCrystallizeItem extends ClientPacket
 {
 	private int _objectId;
 	private long _count;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_count = packet.readLong();
+		_objectId = readInt();
+		_count = readLong();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			// PacketLogger.finer("RequestCrystalizeItem: activeChar was null.");

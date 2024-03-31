@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.dethrone;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.dethrone.ExDethroneDisconnectCastle;
@@ -28,18 +26,18 @@ import org.l2jmobius.gameserver.network.serverpackets.dethrone.ExDethroneServerI
 /**
  * @author CostyKiller
  */
-public class RequestExDethroneDisconnectCastle implements ClientPacket
+public class RequestExDethroneDisconnectCastle extends ClientPacket
 {
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		// _connected = packet.readBoolean(); // cDummy
+		// _connected = readBoolean(); // cDummy
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

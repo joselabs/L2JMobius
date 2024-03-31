@@ -16,17 +16,21 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ExBRVersion;
 
 /**
  * @author Index
  */
-public class RequestBRVersion implements ClientPacket
+public class RequestBRVersion extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		client.sendPacket(new ExBRVersion());
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		getClient().sendPacket(new ExBRVersion());
 	}
 }

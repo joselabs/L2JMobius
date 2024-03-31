@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -37,11 +39,11 @@ public class Ex2ndPasswordAck extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_2ND_PASSWORD_ACK.writeId(this);
-		writeByte(_status);
-		writeInt(_response == WRONG_PATTERN);
-		writeInt(0);
+		ServerPackets.EX_2ND_PASSWORD_ACK.writeId(this, buffer);
+		buffer.writeByte(_status);
+		buffer.writeInt(_response == WRONG_PATTERN);
+		buffer.writeInt(0);
 	}
 }

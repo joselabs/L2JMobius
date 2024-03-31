@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.enums.ServerMode;
 import org.l2jmobius.gameserver.cache.HtmCache;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
 import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.data.xml.AppearanceItemData;
@@ -44,6 +43,7 @@ import org.l2jmobius.gameserver.data.xml.FishingData;
 import org.l2jmobius.gameserver.data.xml.InitialEquipmentData;
 import org.l2jmobius.gameserver.data.xml.InitialShortcutData;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.LimitShopCraftData;
 import org.l2jmobius.gameserver.data.xml.LuckyGameData;
 import org.l2jmobius.gameserver.data.xml.MultisellData;
@@ -215,7 +215,7 @@ public class AdminReload implements IAdminCommandHandler
 				}
 				case "item":
 				{
-					ItemTable.getInstance().reload();
+					ItemData.getInstance().reload();
 					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Items.");
 					break;
 				}

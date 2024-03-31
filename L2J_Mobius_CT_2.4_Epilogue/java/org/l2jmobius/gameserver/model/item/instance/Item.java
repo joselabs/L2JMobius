@@ -33,8 +33,8 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.util.StringUtil;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.EnchantItemOptionsData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.OptionData;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.ItemLocation;
@@ -176,7 +176,7 @@ public class Item extends WorldObject
 		super(objectId);
 		setInstanceType(InstanceType.Item);
 		_itemId = itemId;
-		_itemTemplate = ItemTable.getInstance().getTemplate(itemId);
+		_itemTemplate = ItemData.getInstance().getTemplate(itemId);
 		if ((_itemId == 0) || (_itemTemplate == null))
 		{
 			throw new IllegalArgumentException();
@@ -1523,7 +1523,7 @@ public class Item extends WorldObject
 			LOGGER.log(Level.SEVERE, "Could not restore an item owned by " + ownerId + " from DB:", e);
 			return null;
 		}
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 		if (item == null)
 		{
 			LOGGER.severe("Item item_id=" + itemId + " not known, object_id=" + objectId);
@@ -1857,7 +1857,7 @@ public class Item extends WorldObject
 		{
 			player.getWarehouse().destroyItem("Item", this, player, null);
 		}
-		player.sendPacket(SystemMessageId.THE_LIMITED_TIME_ITEM_HAS_DISAPPEARED_BECAUSE_THE_REMAINING_TIME_RAN_OUT);
+		player.sendPacket(SystemMessageId.THE_LIMITED_TIME_ITEM_HAS_BEEN_DELETED);
 		// delete from world
 		World.getInstance().removeObject(this);
 	}

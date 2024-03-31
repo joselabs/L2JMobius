@@ -96,7 +96,7 @@ public class Q00639_GuardiansOfTheHolyGrail extends Quest
 			{
 				final int count = getQuestItemsCount(player, SCRIPTURE);
 				takeItems(player, SCRIPTURE, -1);
-				rewardItems(player, 57, (1625 * count) + ((count >= 10) ? 33940 : 0));
+				giveAdena(player, (1625 * count) + ((count >= 10) ? 33940 : 0), true);
 				htmltext = event;
 				break;
 			}
@@ -233,10 +233,10 @@ public class Q00639_GuardiansOfTheHolyGrail extends Quest
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		final QuestState qs = getRandomPartyMemberState(killer, 4, 3, npc);
+		final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
 		if ((qs != null) && (Rnd.get(1000000) < CHANCES.get(npc.getId())))
 		{
-			playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
 			giveItems(qs.getPlayer(), SCRIPTURE, 1);
 		}
 		

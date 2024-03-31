@@ -75,7 +75,7 @@ public class Q00127_KamaelAWindowToTheFuture extends Quest
 				takeItems(player, MARK_DELF, -1);
 				takeItems(player, MARK_ORC, -1);
 				takeItems(player, MARK_DOMINIC, -1);
-				rewardItems(player, 57, 159100);
+				giveAdena(player, 159100, true);
 				st.exitQuest(false, true);
 				break;
 			}

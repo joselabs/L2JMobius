@@ -415,7 +415,7 @@ public class VillageMaster extends Folk
 						final StringBuilder content1 = new StringBuilder(200);
 						for (ClassId subClass : subsAvailable)
 						{
-							content1.append("<a action=\"bypass -h npc_%objectId%_Subclass 4 " + subClass.getId() + "\" msg=\"1268;" + ClassListData.getInstance().getClass(subClass.getId()).getClassName() + "\">" + ClassListData.getInstance().getClass(subClass.getId()).getClientCode() + "</a><br>");
+							content1.append("<a action=\"bypass npc_%objectId%_Subclass 4 " + subClass.getId() + "\" msg=\"1268;" + ClassListData.getInstance().getClass(subClass.getId()).getClassName() + "\">" + ClassListData.getInstance().getClass(subClass.getId()).getClientCode() + "</a><br>");
 						}
 						html.replace("%list%", content1.toString());
 					}
@@ -502,7 +502,7 @@ public class VillageMaster extends Folk
 						}
 						else
 						{
-							html.replace("<Button ALIGN=LEFT ICON=\"NORMAL\" action=\"bypass -h npc_%objectId%_Subclass 6 1\">%sub1%</Button>", "");
+							html.replace("<Button ALIGN=LEFT ICON=\"NORMAL\" action=\"bypass npc_%objectId%_Subclass 6 1\">%sub1%</Button>", "");
 						}
 						
 						if (player.getSubClasses().containsKey(2))
@@ -511,7 +511,7 @@ public class VillageMaster extends Folk
 						}
 						else
 						{
-							html.replace("<Button ALIGN=LEFT ICON=\"NORMAL\" action=\"bypass -h npc_%objectId%_Subclass 6 2\">%sub2%</Button>", "");
+							html.replace("<Button ALIGN=LEFT ICON=\"NORMAL\" action=\"bypass npc_%objectId%_Subclass 6 2\">%sub2%</Button>", "");
 						}
 						
 						if (player.getSubClasses().containsKey(3))
@@ -520,7 +520,7 @@ public class VillageMaster extends Folk
 						}
 						else
 						{
-							html.replace("<Button ALIGN=LEFT ICON=\"NORMAL\" action=\"bypass -h npc_%objectId%_Subclass 6 3\">%sub3%</Button>", "");
+							html.replace("<Button ALIGN=LEFT ICON=\"NORMAL\" action=\"bypass npc_%objectId%_Subclass 6 3\">%sub3%</Button>", "");
 						}
 					}
 					break;
@@ -648,7 +648,7 @@ public class VillageMaster extends Folk
 					final StringBuilder content6 = new StringBuilder(200);
 					for (ClassId subClass : subsAvailable)
 					{
-						content6.append("<a action=\"bypass -h npc_%objectId%_Subclass 7 " + paramOne + " " + subClass.getId() + "\" msg=\"1445;\">" + ClassListData.getInstance().getClass(subClass.getId()).getClientCode() + "</a><br>");
+						content6.append("<a action=\"bypass npc_%objectId%_Subclass 7 " + paramOne + " " + subClass.getId() + "\" msg=\"1445;\">" + ClassListData.getInstance().getClass(subClass.getId()).getClientCode() + "</a><br>");
 					}
 					
 					switch (paramOne)

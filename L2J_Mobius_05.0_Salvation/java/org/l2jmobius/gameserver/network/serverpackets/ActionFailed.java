@@ -19,7 +19,9 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.EnumMap;
 import java.util.Map;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.skill.SkillCastingType;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ActionFailed extends ServerPacket
@@ -53,9 +55,15 @@ public class ActionFailed extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.ACTION_FAIL.writeId(this);
-		writeInt(_castingType); // MagicSkillUse castingType
+		ServerPackets.ACTION_FAIL.writeId(this, buffer);
+		buffer.writeInt(_castingType); // MagicSkillUse castingType
 	}
+	
+	// @Override
+	// public boolean canBeDropped(GameClient client)
+	// {
+	// return true;
+	// }
 }

@@ -16,14 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.elementalspirits;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.ElementalSpiritData;
 import org.l2jmobius.gameserver.enums.ElementalType;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.UserInfoType;
 import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -33,20 +31,20 @@ import org.l2jmobius.gameserver.network.serverpackets.elementalspirits.Elemental
 /**
  * @author JoeAlisson
  */
-public class ExElementalSpiritExtract implements ClientPacket
+public class ExElementalSpiritExtract extends ClientPacket
 {
 	private byte _type;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = (byte) packet.readByte();
+		_type = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -55,7 +53,7 @@ public class ExElementalSpiritExtract implements ClientPacket
 		final ElementalSpirit spirit = player.getElementalSpirit(ElementalType.of(_type));
 		if (spirit == null)
 		{
-			client.sendPacket(SystemMessageId.NO_SPIRITS_ARE_AVAILABLE);
+			player.sendPacket(SystemMessageId.NO_SPIRITS_ARE_AVAILABLE);
 			return;
 		}
 		
@@ -63,16 +61,16 @@ public class ExElementalSpiritExtract implements ClientPacket
 		if (canExtract)
 		{
 			final int amount = spirit.getExtractAmount();
-			client.sendPacket(new SystemMessage(SystemMessageId.EXTRACTED_S1_S2_SUCCESSFULLY).addItemName(spirit.getExtractItem()).addInt(amount));
+			player.sendPacket(new SystemMessage(SystemMessageId.EXTRACTED_S1_S2_SUCCESSFULLY).addItemName(spirit.getExtractItem()).addInt(amount));
 			spirit.reduceLevel();
 			player.addItem("Extract", spirit.getExtractItem(), amount, player, true);
 			
 			final UserInfo userInfo = new UserInfo(player);
 			userInfo.addComponentType(UserInfoType.ATT_SPIRITS);
-			client.sendPacket(userInfo);
+			player.sendPacket(userInfo);
 		}
 		
-		client.sendPacket(new ElementalSpiritExtract(player, _type, canExtract));
+		player.sendPacket(new ElementalSpiritExtract(player, _type, canExtract));
 	}
 	
 	private boolean checkConditions(Player player, ElementalSpirit spirit)

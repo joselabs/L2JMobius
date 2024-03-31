@@ -38,6 +38,7 @@ public class MagicLampData implements IXmlReader
 {
 	private static final List<MagicLampDataHolder> LAMPS = new ArrayList<>();
 	private static final List<GreaterMagicLampHolder> GREATER_LAMPS = new ArrayList<>();
+	private final int FLAT_BONUS = 100000;
 	
 	protected MagicLampData()
 	{
@@ -75,6 +76,10 @@ public class MagicLampData implements IXmlReader
 		{
 			final int lampExp = (int) ((exp * player.getStat().getExpBonusMultiplier()) * (rateModifiers ? Config.MAGIC_LAMP_CHARGE_RATE * player.getStat().getMul(Stat.MAGIC_LAMP_EXP_RATE, 1) : 1));
 			int calc = lampExp + player.getLampExp();
+			if (player.getLevel() < 64)
+			{
+				calc = calc + FLAT_BONUS;
+			}
 			if (calc > Config.MAGIC_LAMP_MAX_LEVEL_EXP)
 			{
 				calc %= Config.MAGIC_LAMP_MAX_LEVEL_EXP;

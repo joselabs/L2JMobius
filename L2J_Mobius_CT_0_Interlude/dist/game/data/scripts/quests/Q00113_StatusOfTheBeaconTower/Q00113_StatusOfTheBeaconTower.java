@@ -56,7 +56,7 @@ public class Q00113_StatusOfTheBeaconTower extends Quest
 		else if (event.equals("32016-02.htm"))
 		{
 			takeItems(player, BOX, 1);
-			rewardItems(player, 57, 21578);
+			giveAdena(player, 21578, true);
 			st.exitQuest(false, true);
 		}
 		

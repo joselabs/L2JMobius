@@ -17,41 +17,39 @@
 package org.l2jmobius.gameserver.network.clientpackets.settings;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.ConnectionState;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 
 /**
- * Request Save Key Mapping client packet.
+ * Request Save Key Mapping client 
  * @author Mobius
  */
-public class RequestSaveKeyMapping implements ClientPacket
+public class RequestSaveKeyMapping extends ClientPacket
 {
 	public static final String SPLIT_VAR = "	";
 	
 	private byte[] _uiKeyMapping;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int dataSize = packet.readInt();
+		final int dataSize = readInt();
 		if (dataSize > 0)
 		{
-			_uiKeyMapping = packet.readBytes(dataSize);
+			_uiKeyMapping = readBytes(dataSize);
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (!Config.STORE_UI_SETTINGS || //
 			(player == null) || //
 			(_uiKeyMapping == null) || //
-			(client.getConnectionState() != ConnectionState.IN_GAME))
+			(getClient().getConnectionState() != ConnectionState.IN_GAME))
 		{
 			return;
 		}

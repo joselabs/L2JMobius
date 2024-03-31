@@ -27,7 +27,6 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.enums.UpgradeType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.holders.EquipmentUpgradeHolder;
@@ -72,7 +71,7 @@ public class EquipmentUpgradeData implements IXmlReader
 			final String[] item = set.getString("item").split(","); // Required Item
 			final int requiredItemId = Integer.parseInt(item[0]);
 			ItemEnchantHolder requiredItem = null;
-			if (ItemTable.getInstance().getTemplate(requiredItemId) == null)
+			if (ItemData.getInstance().getTemplate(requiredItemId) == null)
 			{
 				LOGGER.info(getClass().getSimpleName() + ": Required item with id " + requiredItemId + " does not exist.");
 			}
@@ -90,7 +89,7 @@ public class EquipmentUpgradeData implements IXmlReader
 				{
 					final String[] matValues = mat.split(",");
 					final int matItemId = Integer.parseInt(matValues[0]);
-					if (ItemTable.getInstance().getTemplate(matItemId) == null)
+					if (ItemData.getInstance().getTemplate(matItemId) == null)
 					{
 						LOGGER.info(getClass().getSimpleName() + ": Material item with id " + matItemId + " does not exist.");
 					}
@@ -107,7 +106,7 @@ public class EquipmentUpgradeData implements IXmlReader
 			final String[] result = set.getString("result").split(","); // Result
 			final int resultId = Integer.parseInt(result[0]);
 			
-			if (ItemTable.getInstance().getTemplate(resultId) == null)
+			if (ItemData.getInstance().getTemplate(resultId) == null)
 			{
 				LOGGER.info(getClass().getSimpleName() + ": Result item with id " + resultId + " does not exist.");
 			}
@@ -126,7 +125,7 @@ public class EquipmentUpgradeData implements IXmlReader
 				{
 					final String[] failValues = fail.split(",");
 					final int failItemId = Integer.parseInt(failValues[0]);
-					if (ItemTable.getInstance().getTemplate(failItemId) == null)
+					if (ItemData.getInstance().getTemplate(failItemId) == null)
 					{
 						LOGGER.info(getClass().getSimpleName() + ": Material item with id " + failItemId + " does not exist.");
 					}
@@ -143,7 +142,7 @@ public class EquipmentUpgradeData implements IXmlReader
 			if (!Objects.equals(bonus, ""))
 			{
 				final int bonusId = Integer.parseInt(bonus.split(",")[0]);
-				if (ItemTable.getInstance().getTemplate(bonusId) == null)
+				if (ItemData.getInstance().getTemplate(bonusId) == null)
 				{
 					LOGGER.info(getClass().getSimpleName() + ": Required bonus with id " + bonusId + " does not exist.");
 				}

@@ -17,24 +17,28 @@
 package org.l2jmobius.gameserver.network.clientpackets.pledgeV2;
 
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeItemList;
 
 /**
  * @author Mobius
  */
-public class RequestExPledgeItemList implements ClientPacket
+public class RequestExPledgeItemList extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if ((player == null) || (player.getClan() == null))
 		{
 			return;
 		}
 		
-		client.sendPacket(new ExPledgeItemList(player));
+		player.sendPacket(new ExPledgeItemList(player));
 	}
 }

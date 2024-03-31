@@ -16,33 +16,31 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.mentoring;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.mentoring.ListMenteeWaiting;
 
 /**
  * @author UnAfraid
  */
-public class RequestMenteeWaitingList implements ClientPacket
+public class RequestMenteeWaitingList extends ClientPacket
 {
 	private int _page;
 	private int _minLevel;
 	private int _maxLevel;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_page = packet.readInt();
-		_minLevel = packet.readInt();
-		_maxLevel = packet.readInt();
+		_page = readInt();
+		_minLevel = readInt();
+		_maxLevel = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

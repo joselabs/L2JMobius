@@ -597,7 +597,7 @@ public enum AbnormalType
 	GLOWING_DRAGON_POTION(604),
 	DWARF_GOLEM(605);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	protected static final Logger LOGGER = Logger.getLogger(AbnormalType.class.getName());
 	

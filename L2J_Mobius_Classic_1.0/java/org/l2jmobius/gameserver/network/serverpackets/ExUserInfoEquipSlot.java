@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.InventorySlot;
 import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -58,25 +60,25 @@ public class ExUserInfoEquipSlot extends AbstractMaskPacket<InventorySlot>
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_USER_INFO_EQUIP_SLOT.writeId(this);
-		writeInt(_player.getObjectId());
-		writeShort(InventorySlot.values().length);
-		writeBytes(_masks);
+		ServerPackets.EX_USER_INFO_EQUIP_SLOT.writeId(this, buffer);
+		buffer.writeInt(_player.getObjectId());
+		buffer.writeShort(InventorySlot.values().length);
+		buffer.writeBytes(_masks);
 		final PlayerInventory inventory = _player.getInventory();
 		for (InventorySlot slot : InventorySlot.values())
 		{
 			if (containsMask(slot))
 			{
 				final VariationInstance augment = inventory.getPaperdollAugmentation(slot.getSlot());
-				writeShort(18); // 2 + 4 * 4
-				writeInt(inventory.getPaperdollObjectId(slot.getSlot()));
-				writeInt(inventory.getPaperdollItemId(slot.getSlot()));
-				writeInt(augment != null ? augment.getOption1Id() : 0);
+				buffer.writeShort(18); // 2 + 4 * 4
+				buffer.writeInt(inventory.getPaperdollObjectId(slot.getSlot()));
+				buffer.writeInt(inventory.getPaperdollItemId(slot.getSlot()));
+				buffer.writeInt(augment != null ? augment.getOption1Id() : 0);
 				// Mobius: Maybe use 2x writeH?
-				// writeInt(augment != null ? augment.getOption2Id() : 0);
-				writeInt(inventory.getPaperdollItemVisualId(slot.getSlot()));
+				// buffer.writeInt(augment != null ? augment.getOption2Id() : 0);
+				buffer.writeInt(inventory.getPaperdollItemVisualId(slot.getSlot()));
 			}
 		}
 	}

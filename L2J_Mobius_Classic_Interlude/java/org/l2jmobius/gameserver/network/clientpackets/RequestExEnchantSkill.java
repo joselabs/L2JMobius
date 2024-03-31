@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.EnchantSkillGroupsData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
@@ -30,7 +29,6 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.EnchantSkillHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExEnchantSkillInfo;
@@ -41,7 +39,7 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @author -Wooden-
  */
-public class RequestExEnchantSkill implements ClientPacket
+public class RequestExEnchantSkill extends ClientPacket
 {
 	private static final Logger LOGGER = Logger.getLogger(RequestExEnchantSkill.class.getName());
 	private static final Logger LOGGER_ENCHANT = Logger.getLogger("enchant.skills");
@@ -52,9 +50,9 @@ public class RequestExEnchantSkill implements ClientPacket
 	private int _skillSubLevel;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int type = packet.readInt();
+		final int type = readInt();
 		if ((type < 0) || (type >= SkillEnchantType.values().length))
 		{
 			PacketLogger.warning("Client send incorrect type " + type + " on packet: " + getClass().getSimpleName());
@@ -62,20 +60,20 @@ public class RequestExEnchantSkill implements ClientPacket
 		}
 		
 		_type = SkillEnchantType.values()[type];
-		_skillId = packet.readInt();
-		_skillLevel = packet.readShort();
-		_skillSubLevel = packet.readShort();
+		_skillId = readInt();
+		_skillLevel = readShort();
+		_skillSubLevel = readShort();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		if (!client.getFloodProtectors().canPerformPlayerAction())
+		if (!getClient().getFloodProtectors().canPerformPlayerAction())
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -87,7 +85,7 @@ public class RequestExEnchantSkill implements ClientPacket
 			return;
 		}
 		
-		if (!player.isInCategory(CategoryType.SIXTH_CLASS_GROUP))
+		if (!player.isInCategory(CategoryType.FOURTH_CLASS_GROUP))
 		{
 			return;
 		}
@@ -136,35 +134,51 @@ public class RequestExEnchantSkill implements ClientPacket
 				final int group2 = (skill.getSubLevel() % 1000);
 				if (group1 != group2)
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": Client: " + client + " send incorrect sub level group: " + group1 + " expected: " + group2 + " for skill " + _skillId);
+					LOGGER.warning(getClass().getSimpleName() + ": Client: " + getClient() + " send incorrect sub level group: " + group1 + " expected: " + group2 + " for skill " + _skillId);
 					return;
 				}
 			}
 			else if ((skill.getSubLevel() + 1) != _skillSubLevel)
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Client: " + client + " send incorrect sub level: " + _skillSubLevel + " expected: " + (skill.getSubLevel() + 1) + " for skill " + _skillId);
+				LOGGER.warning(getClass().getSimpleName() + ": Client: " + getClient() + " send incorrect sub level: " + _skillSubLevel + " expected: " + (skill.getSubLevel() + 1) + " for skill " + _skillId);
 				return;
 			}
 		}
 		
 		final EnchantSkillHolder enchantSkillHolder = EnchantSkillGroupsData.getInstance().getEnchantSkillHolder(_skillSubLevel % 1000);
 		
-		// Verify if player has all the ingredients
+		// Verify if player has all the ingredients.
 		for (ItemHolder holder : enchantSkillHolder.getRequiredItems(_type))
 		{
-			if (player.getInventory().getInventoryItemCount(holder.getId(), 0) < holder.getCount())
+			if (skill.getSubLevel() <= 1001)
 			{
-				player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ALL_OF_THE_ITEMS_NEEDED_TO_ENCHANT_THAT_SKILL);
-				return;
+				if (player.getInventory().getInventoryItemCount(holder.getId(), 0) < holder.getCount())
+				{
+					player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ALL_OF_THE_ITEMS_NEEDED_TO_ENCHANT_THAT_SKILL);
+					return;
+				}
 			}
 		}
 		
-		// Consume all ingredients
-		for (ItemHolder holder : enchantSkillHolder.getRequiredItems(_type))
+		// Consume all ingredients.
+		if ((skill.getSubLevel() + 1) >= 1002)
 		{
-			if (!player.destroyItemByItemId("Skill enchanting", holder.getId(), holder.getCount(), player, true))
+			for (ItemHolder holder : enchantSkillHolder.getRequiredItems(_type))
 			{
-				return;
+				if (!player.destroyItemByItemId("Skill enchanting", 57, holder.getCount(), player, true))
+				{
+					return;
+				}
+			}
+		}
+		else
+		{
+			for (ItemHolder holder : enchantSkillHolder.getRequiredItems(_type))
+			{
+				if (!player.destroyItemByItemId("Skill enchanting", holder.getId(), holder.getCount(), player, true))
+				{
+					return;
+				}
 			}
 		}
 		
@@ -190,6 +204,12 @@ public class RequestExEnchantSkill implements ClientPacket
 						final StringBuilder sb = new StringBuilder();
 						LOGGER_ENCHANT.info(sb.append("Success, Character:").append(player.getName()).append(" [").append(player.getObjectId()).append("] Account:").append(player.getAccountName()).append(" IP:").append(player.getIPAddress()).append(", +").append(enchantedSkill.getLevel()).append(" ").append(enchantedSkill.getSubLevel()).append(" - ").append(enchantedSkill.getName()).append(" (").append(enchantedSkill.getId()).append("), ").append(enchantSkillHolder.getChance(_type)).toString());
 					}
+					
+					final long reuse = player.getSkillRemainingReuseTime(skill.getReuseHashCode());
+					if (reuse > 0)
+					{
+						player.addTimeStamp(enchantedSkill, reuse);
+					}
 					player.addSkill(enchantedSkill, true);
 					
 					final SystemMessage sm = new SystemMessage(SystemMessageId.SKILL_ENCHANT_WAS_SUCCESSFUL_S1_HAS_BEEN_ENCHANTED);
@@ -204,7 +224,13 @@ public class RequestExEnchantSkill implements ClientPacket
 					final Skill enchantedSkill = SkillData.getInstance().getSkill(_skillId, _skillLevel, _type == SkillEnchantType.NORMAL ? newSubLevel : skill.getSubLevel());
 					if (_type == SkillEnchantType.NORMAL)
 					{
+						final long reuse = player.getSkillRemainingReuseTime(skill.getReuseHashCode());
+						if (reuse > 0)
+						{
+							player.addTimeStamp(enchantedSkill, reuse);
+						}
 						player.addSkill(enchantedSkill, true);
+						
 						player.sendPacket(SystemMessageId.SKILL_ENCHANT_FAILED_THE_SKILL_WILL_BE_INITIALIZED);
 					}
 					else if (_type == SkillEnchantType.BLESSED)
@@ -231,18 +257,29 @@ public class RequestExEnchantSkill implements ClientPacket
 						final StringBuilder sb = new StringBuilder();
 						LOGGER_ENCHANT.info(sb.append("Success, Character:").append(player.getName()).append(" [").append(player.getObjectId()).append("] Account:").append(player.getAccountName()).append(" IP:").append(player.getIPAddress()).append(", +").append(enchantedSkill.getLevel()).append(" ").append(enchantedSkill.getSubLevel()).append(" - ").append(enchantedSkill.getName()).append(" (").append(enchantedSkill.getId()).append("), ").append(enchantSkillHolder.getChance(_type)).toString());
 					}
+					
+					final long reuse = player.getSkillRemainingReuseTime(skill.getReuseHashCode());
+					if (reuse > 0)
+					{
+						player.addTimeStamp(enchantedSkill, reuse);
+					}
 					player.addSkill(enchantedSkill, true);
 					
 					final SystemMessage sm = new SystemMessage(SystemMessageId.ENCHANT_SKILL_ROUTE_CHANGE_WAS_SUCCESSFUL_LV_OF_ENCHANT_SKILL_S1_WILL_REMAIN);
 					sm.addSkillName(_skillId);
 					player.sendPacket(sm);
-					
 					player.sendPacket(ExEnchantSkillResult.STATIC_PACKET_TRUE);
 				}
 				else
 				{
 					final Skill enchantedSkill = SkillData.getInstance().getSkill(_skillId, _skillLevel, enchantSkillHolder.getEnchantFailLevel());
+					final long reuse = player.getSkillRemainingReuseTime(skill.getReuseHashCode());
+					if (reuse > 0)
+					{
+						player.addTimeStamp(enchantedSkill, reuse);
+					}
 					player.addSkill(enchantedSkill, true);
+					
 					player.sendPacket(SystemMessageId.SKILL_ENCHANT_FAILED_THE_SKILL_WILL_BE_INITIALIZED);
 					player.sendPacket(ExEnchantSkillResult.STATIC_PACKET_FALSE);
 					

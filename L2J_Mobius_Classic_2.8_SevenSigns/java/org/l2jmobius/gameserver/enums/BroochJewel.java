@@ -69,12 +69,12 @@ public enum BroochJewel
 	GREATER_SAPPHIRE_LV4_2(91328, 59151, 1, 0.20, false, true), // + 10 % m attack
 	GREATER_SAPPHIRE_LV5_2(91329, 59151, 1, 0.20, false, true); // + 14 % m attack + crit. m. ata +10%
 	
-	private int _itemId;
-	private int _skillId;
-	private int _skillLevel;
-	private double _bonus;
-	private boolean _isRuby;
-	private boolean _isSapphire;
+	private final int _itemId;
+	private final int _skillId;
+	private final int _skillLevel;
+	private final double _bonus;
+	private final boolean _isRuby;
+	private final boolean _isSapphire;
 	
 	private BroochJewel(int itemId, int skillId, int skillLevel, double bonus, boolean isRuby, boolean isSapphire)
 	{

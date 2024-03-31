@@ -25,7 +25,6 @@ import org.w3c.dom.Document;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.IXmlReader;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.ElementalItemType;
 import org.l2jmobius.gameserver.model.StatSet;
@@ -116,7 +115,7 @@ public class ElementalAttributeData implements IXmlReader
 			final StatSet set = new StatSet(parseAttributes(itemNode));
 			
 			final int id = set.getInt("id");
-			if (ItemTable.getInstance().getTemplate(id) == null)
+			if (ItemData.getInstance().getTemplate(id) == null)
 			{
 				LOGGER.info(getClass().getSimpleName() + ": Could not find item with id " + id + ".");
 				return;

@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -30,10 +32,10 @@ public class ExHomunculusSummonResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_HOMUNCULUS_SUMMON_RESULT.writeId(this);
-		writeInt(_success); // 1 - success
-		writeInt(SystemMessageId.A_NEW_HOMUNCULUS_IS_CREATED.getId());
+		ServerPackets.EX_HOMUNCULUS_SUMMON_RESULT.writeId(this, buffer);
+		buffer.writeInt(_success); // 1 - success
+		buffer.writeInt(SystemMessageId.A_NEW_HOMUNCULUS_IS_CREATED.getId());
 	}
 }

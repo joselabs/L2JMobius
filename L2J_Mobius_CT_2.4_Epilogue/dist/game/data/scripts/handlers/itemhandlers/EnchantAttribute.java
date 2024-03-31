@@ -42,7 +42,7 @@ public class EnchantAttribute implements IItemHandler
 		
 		if (player.isEnchanting())
 		{
-			player.sendPacket(SystemMessageId.ANOTHER_ENCHANTMENT_IS_IN_PROGRESS_PLEASE_COMPLETE_THE_PREVIOUS_TASK_THEN_TRY_AGAIN);
+			player.sendPacket(SystemMessageId.ANOTHER_ENCHANTMENT_IS_IN_PROGRESS_PLEASE_COMPLETE_PREVIOUS_TASK_AND_TRY_AGAIN);
 			return false;
 		}
 		

@@ -333,7 +333,7 @@ public class Trap extends Npc
 		}
 		else
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_DONE_S3_POINTS_OF_DAMAGE_TO_C2);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3);
 			sm.addString(getName());
 			sm.addString(target.getName());
 			sm.addInt(damage);

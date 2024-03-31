@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -34,10 +36,10 @@ public class ExAskJoinPartyRoom extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ASK_JOIN_PARTY_ROOM.writeId(this);
-		writeString(_charName);
-		writeString(_roomName);
+		ServerPackets.EX_ASK_JOIN_PARTY_ROOM.writeId(this, buffer);
+		buffer.writeString(_charName);
+		buffer.writeString(_roomName);
 	}
 }

@@ -23,11 +23,13 @@ import java.sql.SQLException;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.olympiad.Hero;
-import org.l2jmobius.gameserver.network.ServerPackets;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
+import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
@@ -43,9 +45,9 @@ public class ExOlympiadHeroAndLegendInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_OLYMPIAD_HERO_AND_LEGEND_INFO.writeId(this);
+		ServerPackets.EX_OLYMPIAD_HERO_AND_LEGEND_INFO.writeId(this, buffer);
 		if (!Hero.getInstance().getHeroes().isEmpty())
 		{
 			try (Connection con = DatabaseFactory.getConnection();
@@ -59,34 +61,34 @@ public class ExOlympiadHeroAndLegendInfo extends ServerPacket
 					{
 						if (i == 1)
 						{
-							writeByte(1); // ?? shows 78 on JP
-							writeByte(1); // ?? shows 0 on JP
-							writeSizedString(rset.getString("char_name"));
+							buffer.writeByte(1); // ?? shows 78 on JP
+							buffer.writeByte(1); // ?? shows 0 on JP
+							buffer.writeSizedString(rset.getString("char_name"));
 							final int clanId = rset.getInt("clanid");
 							if (clanId > 0)
 							{
-								writeSizedString(ClanTable.getInstance().getClan(clanId).getName());
+								buffer.writeSizedString(ClanTable.getInstance().getClan(clanId).getName());
 							}
 							else
 							{
-								writeSizedString("");
+								buffer.writeSizedString("");
 							}
-							writeInt(Config.SERVER_ID);
-							writeInt(rset.getInt("race"));
-							writeInt(rset.getInt("sex") != 1);
-							writeInt(rset.getInt("base_class"));
-							writeInt(rset.getInt("level"));
-							writeInt(rset.getInt("legend_count"));
-							writeInt(rset.getInt("competitions_won"));
-							writeInt(rset.getInt("competitions_lost"));
-							writeInt(rset.getInt("olympiad_points"));
+							buffer.writeInt(Config.SERVER_ID);
+							buffer.writeInt(rset.getInt("race"));
+							buffer.writeInt(rset.getInt("sex") != 1);
+							buffer.writeInt(rset.getInt("base_class"));
+							buffer.writeInt(rset.getInt("level"));
+							buffer.writeInt(rset.getInt("legend_count"));
+							buffer.writeInt(rset.getInt("competitions_won"));
+							buffer.writeInt(rset.getInt("competitions_lost"));
+							buffer.writeInt(rset.getInt("olympiad_points"));
 							if (clanId > 0)
 							{
-								writeInt(ClanTable.getInstance().getClan(clanId).getLevel());
+								buffer.writeInt(ClanTable.getInstance().getClan(clanId).getLevel());
 							}
 							else
 							{
-								writeInt(0);
+								buffer.writeInt(0);
 							}
 							i++;
 						}
@@ -94,37 +96,37 @@ public class ExOlympiadHeroAndLegendInfo extends ServerPacket
 						{
 							if (!wroteCount)
 							{
-								writeInt(Hero.getInstance().getHeroes().size() - 1);
+								buffer.writeInt(Hero.getInstance().getHeroes().size() - 1);
 								wroteCount = true;
 							}
 							if (Hero.getInstance().getHeroes().size() > 1)
 							{
-								writeSizedString(rset.getString("char_name"));
+								buffer.writeSizedString(rset.getString("char_name"));
 								final int clanId = rset.getInt("clanid");
 								if (clanId > 0)
 								{
-									writeSizedString(ClanTable.getInstance().getClan(clanId).getName());
+									buffer.writeSizedString(ClanTable.getInstance().getClan(clanId).getName());
 								}
 								else
 								{
-									writeSizedString("");
+									buffer.writeSizedString("");
 								}
-								writeInt(Config.SERVER_ID);
-								writeInt(rset.getInt("race"));
-								writeInt(rset.getInt("sex") != 1);
-								writeInt(rset.getInt("base_class"));
-								writeInt(rset.getInt("level"));
-								writeInt(rset.getInt("count"));
-								writeInt(rset.getInt("competitions_won"));
-								writeInt(rset.getInt("competitions_lost"));
-								writeInt(rset.getInt("olympiad_points"));
+								buffer.writeInt(Config.SERVER_ID);
+								buffer.writeInt(rset.getInt("race"));
+								buffer.writeInt(rset.getInt("sex") != 1);
+								buffer.writeInt(rset.getInt("base_class"));
+								buffer.writeInt(rset.getInt("level"));
+								buffer.writeInt(rset.getInt("count"));
+								buffer.writeInt(rset.getInt("competitions_won"));
+								buffer.writeInt(rset.getInt("competitions_lost"));
+								buffer.writeInt(rset.getInt("olympiad_points"));
 								if (clanId > 0)
 								{
-									writeInt(ClanTable.getInstance().getClan(clanId).getLevel());
+									buffer.writeInt(ClanTable.getInstance().getClan(clanId).getLevel());
 								}
 								else
 								{
-									writeInt(0);
+									buffer.writeInt(0);
 								}
 							}
 						}

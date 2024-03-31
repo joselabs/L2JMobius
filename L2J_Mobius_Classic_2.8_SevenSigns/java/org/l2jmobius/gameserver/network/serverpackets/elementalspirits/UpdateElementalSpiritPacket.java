@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.elementalspirits;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.ElementalType;
 import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -36,10 +37,10 @@ public abstract class UpdateElementalSpiritPacket extends AbstractElementalSpiri
 		_update = update;
 	}
 	
-	protected void writeUpdate()
+	protected void writeUpdate(WritableBuffer buffer)
 	{
-		writeByte(_update);
-		writeByte(_type);
+		buffer.writeByte(_update);
+		buffer.writeByte(_type);
 		if (_update)
 		{
 			final ElementalSpirit spirit = _player.getElementalSpirit(ElementalType.of(_type));
@@ -47,8 +48,8 @@ public abstract class UpdateElementalSpiritPacket extends AbstractElementalSpiri
 			{
 				return;
 			}
-			writeByte(_type);
-			writeSpiritInfo(spirit);
+			buffer.writeByte(_type);
+			writeSpiritInfo(buffer, spirit);
 		}
 	}
 }

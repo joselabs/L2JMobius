@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.ItemInfo;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 
@@ -81,15 +82,15 @@ public abstract class AbstractInventoryUpdate extends AbstractItemPacket
 		return _items.values();
 	}
 	
-	protected void writeItems()
+	protected void writeItems(WritableBuffer buffer)
 	{
-		writeByte(0); // 140
-		writeInt(0); // 140
-		writeInt(_items.size()); // 140
+		buffer.writeByte(0); // 140
+		buffer.writeInt(0); // 140
+		buffer.writeInt(_items.size()); // 140
 		for (ItemInfo item : _items.values())
 		{
-			writeShort(item.getChange()); // Update type : 01-add, 02-modify, 03-remove
-			writeItem(item);
+			buffer.writeShort(item.getChange()); // Update type : 01-add, 02-modify, 03-remove
+			writeItem(item, buffer);
 		}
 	}
 }

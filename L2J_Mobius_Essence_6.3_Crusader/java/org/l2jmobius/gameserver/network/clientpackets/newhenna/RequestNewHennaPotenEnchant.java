@@ -18,35 +18,33 @@ package org.l2jmobius.gameserver.network.clientpackets.newhenna;
 
 import java.util.Map.Entry;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.HennaPatternPotentialData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.henna.DyePotentialFee;
 import org.l2jmobius.gameserver.model.item.henna.HennaPoten;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.newhenna.NewHennaPotenEnchant;
 
 /**
  * @author Index, Serenitty
  */
-public class RequestNewHennaPotenEnchant implements ClientPacket
+public class RequestNewHennaPotenEnchant extends ClientPacket
 {
 	private int _slotId;
 	private int _costItemId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_slotId = packet.readByte();
-		_costItemId = packet.readInt();
+		_slotId = readByte();
+		_costItemId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

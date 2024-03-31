@@ -319,11 +319,12 @@
 	<npc id="25407" level="60" type="RaidBoss" name="Lord Ishka" title="Raid Boss">
 		<parameters>
 			<minions name="Privates">
-				<npc id="25408" count="1" respawnTime="360" weightPoint="1" />
-				<npc id="25409" count="2" respawnTime="360" weightPoint="1" />
+				<npc id="25408" count="1" respawnTime="120" weightPoint="1" />
+				<npc id="25409" count="2" respawnTime="120" weightPoint="1" />
 			</minions>
 			<param name="RaidSpawnMusic" value="Rm01_A" />
 			<skill name="RangeHold_a" id="4197" level="6" />
+			<skill name="SelfBuff" id="50122" level="1" />
 		</parameters>
 		<race>UNDEAD</race>
 		<sex>MALE</sex>
@@ -332,7 +333,7 @@
 		<stats str="60" int="76" dex="73" wit="70" con="57" men="80">
 			<vitals hp="1005193.5" hpRegen="4970" mp="335065" mpRegen="10" />
 			<attack physical="7489.35" magical="3082.47" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="742" magical="362" />
+			<defence physical="742" magical="362" evasion="-18" />
 			<speed>
 				<walk ground="100" />
 				<run ground="190" />
@@ -340,12 +341,13 @@
 			<hitTime>450</hitTime>
 			<abnormalResist physical="230" magical="230" />
 		</stats>
-		<status attackable="true" />
+		<status undying="false" />
 		<skillList>
-			<skill id="4494" level="1" /> <!-- Raid Boss -->
-			<skill id="4947" level="1" /> <!-- Raid Boss (Lv. 60) -->
-			<skill id="4416" level="1" /> <!-- Undead -->
-			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
+			<skill id="4045" level="1" /> <!-- Resist Full Magic Attack -->
+			<skill id="4197" level="6" /> <!-- Hold -->
+			<skill id="50122" level="1" /> <!-- Lord Ishka's Raid Shield -->
+			<skill id="4273" level="3" /> <!-- Resist Daggers/Rapier Weapon -->
+			<skill id="4274" level="1" /> <!-- Blunt Weapon Weak Point -->
 			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
 			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
 			<skill id="4410" level="11" /> <!-- Average Damage Dealer -->
@@ -354,10 +356,11 @@
 			<skill id="4413" level="11" /> <!-- Average M. Def. -->
 			<skill id="4414" level="2" /> <!-- Standard Type -->
 			<skill id="4415" level="3" /> <!-- One-handed Sword -->
-			<skill id="4045" level="1" /> <!-- Full Magic Attack Resistance -->
-			<skill id="4273" level="3" /> <!-- Dagger Resistance -->
-			<skill id="4274" level="1" /> <!-- Blunt Weapon Vulnerability -->
-			<skill id="4197" level="6" /> <!-- Hold -->
+			<skill id="4416" level="1" /> <!-- Undead -->
+			<skill id="4494" level="1" /> <!-- Raid Boss -->
+			<skill id="4275" level="2" /> <!-- Holy Attack Vulnerability -->
+			<skill id="4278" level="1" /> <!-- Dark Attack -->
+			<skill id="4947" level="1" /> <!-- Raid Boss - Level 60 -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
 		<ai type="BALANCED" clanHelpRange="300" />

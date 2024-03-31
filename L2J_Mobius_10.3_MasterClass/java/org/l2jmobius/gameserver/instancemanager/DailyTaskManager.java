@@ -806,7 +806,7 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 		}
-		LOGGER.info("LimitShopData has been resetted.");
+		LOGGER.info("LimitShopData has been reset.");
 	}
 	
 	private void resetHuntPass()
@@ -825,8 +825,9 @@ public class DailyTaskManager
 		// Update data for online players.
 		for (Player player : World.getInstance().getPlayers())
 		{
-			player.getHuntPass().restoreHuntPass();
+			player.getHuntPass().resetHuntPass();
 		}
+		LOGGER.info("HuntPassData has been reset.");
 	}
 	
 	public void resetPrivateStoreHistory()
@@ -840,7 +841,7 @@ public class DailyTaskManager
 			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not reset private store history! " + e);
 		}
 		
-		LOGGER.info("Private store history has been resetted.");
+		LOGGER.info("Private store history has been reset.");
 	}
 	
 	public static DailyTaskManager getInstance()

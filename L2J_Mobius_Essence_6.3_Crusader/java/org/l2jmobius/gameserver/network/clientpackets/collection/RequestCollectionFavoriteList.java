@@ -16,27 +16,25 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.collection;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.collection.ExCollectionFavoriteList;
 
 /**
  * @author Berezkin Nikolay
  */
-public class RequestCollectionFavoriteList implements ClientPacket
+public class RequestCollectionFavoriteList extends ClientPacket
 {
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readByte(); // ?
+		readByte(); // ?
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

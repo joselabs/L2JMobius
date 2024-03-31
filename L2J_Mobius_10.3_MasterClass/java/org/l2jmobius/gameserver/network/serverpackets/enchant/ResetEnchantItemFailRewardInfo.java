@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.enchant;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.EnchantItemRequest;
@@ -23,6 +24,7 @@ import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.enchant.EnchantScroll;
 import org.l2jmobius.gameserver.model.item.enchant.EnchantSupportItem;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -39,7 +41,7 @@ public class ResetEnchantItemFailRewardInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (_player.getRequest(EnchantItemRequest.class) == null)
 		{
@@ -84,26 +86,26 @@ public class ResetEnchantItemFailRewardInfo extends ServerPacket
 			}
 		}
 		
-		ServerPackets.EX_RES_ENCHANT_ITEM_FAIL_REWARD_INFO.writeId(this);
-		writeInt(enchantItem.getObjectId());
-		writeInt(0);
-		writeInt(0);
+		ServerPackets.EX_RES_ENCHANT_ITEM_FAIL_REWARD_INFO.writeId(this, buffer);
+		buffer.writeInt(enchantItem.getObjectId());
+		buffer.writeInt(0);
+		buffer.writeInt(0);
 		
 		if (result != null)
 		{
-			writeInt(1); // Loop count.
-			writeInt(result.getId());
-			writeInt((int) result.getCount());
+			buffer.writeInt(1); // Loop count.
+			buffer.writeInt(result.getId());
+			buffer.writeInt((int) result.getCount());
 		}
 		else if (addedItem != null)
 		{
-			writeInt(1); // Loop count.
-			writeInt(enchantItem.getId());
-			writeInt(1);
+			buffer.writeInt(1); // Loop count.
+			buffer.writeInt(enchantItem.getId());
+			buffer.writeInt(1);
 		}
 		else
 		{
-			writeInt(0); // Loop count.
+			buffer.writeInt(0); // Loop count.
 		}
 	}
 }

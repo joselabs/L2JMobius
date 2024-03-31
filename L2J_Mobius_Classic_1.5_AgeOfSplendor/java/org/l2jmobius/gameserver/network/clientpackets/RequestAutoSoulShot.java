@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.ShotType;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -24,7 +23,6 @@ import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.ActionType;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExAutoSoulShot;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -32,24 +30,24 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @author Unknown, UnAfraid
  */
-public class RequestAutoSoulShot implements ClientPacket
+public class RequestAutoSoulShot extends ClientPacket
 {
 	private int _itemId;
 	private boolean _enable;
 	private int _type;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemId = packet.readInt();
-		_enable = packet.readInt() == 1;
-		_type = packet.readInt();
+		_itemId = readInt();
+		_enable = readInt() == 1;
+		_type = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

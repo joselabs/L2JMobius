@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class SocialAction extends ServerPacket
@@ -33,11 +35,17 @@ public class SocialAction extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SOCIAL_ACTION.writeId(this);
-		writeInt(_objectId);
-		writeInt(_actionId);
-		writeInt(0); // TODO: Find me!
+		ServerPackets.SOCIAL_ACTION.writeId(this, buffer);
+		buffer.writeInt(_objectId);
+		buffer.writeInt(_actionId);
+		buffer.writeInt(0); // TODO: Find me!
+	}
+	
+	@Override
+	public boolean canBeDropped(GameClient client)
+	{
+		return true;
 	}
 }

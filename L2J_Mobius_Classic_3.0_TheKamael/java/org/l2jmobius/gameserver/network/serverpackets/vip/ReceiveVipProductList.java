@@ -19,10 +19,12 @@ package org.l2jmobius.gameserver.network.serverpackets.vip;
 import java.util.Collection;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.primeshop.PrimeShopGroup;
 import org.l2jmobius.gameserver.model.primeshop.PrimeShopItem;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,7 +38,7 @@ public class ReceiveVipProductList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (!Config.VIP_SYSTEM_ENABLED)
 		{
@@ -45,41 +47,41 @@ public class ReceiveVipProductList extends ServerPacket
 		
 		final Collection<PrimeShopGroup> products = PrimeShopData.getInstance().getPrimeItems().values();
 		final PrimeShopGroup gift = PrimeShopData.getInstance().getVipGiftOfTier(_player.getVipTier());
-		ServerPackets.RECIVE_VIP_PRODUCT_LIST.writeId(this);
-		writeLong(_player.getAdena());
-		writeLong(_player.getGoldCoin()); // Gold Coin Amount
-		writeLong(_player.getSilverCoin()); // Silver Coin Amount
-		writeByte(1); // Show Reward tab
+		ServerPackets.RECIVE_VIP_PRODUCT_LIST.writeId(this, buffer);
+		buffer.writeLong(_player.getAdena());
+		buffer.writeLong(_player.getGoldCoin()); // Gold Coin Amount
+		buffer.writeLong(_player.getSilverCoin()); // Silver Coin Amount
+		buffer.writeByte(1); // Show Reward tab
 		if (gift != null)
 		{
-			writeInt(products.size() + 1);
-			writeProduct(gift);
+			buffer.writeInt(products.size() + 1);
+			writeProduct(gift, buffer);
 		}
 		else
 		{
-			writeInt(products.size());
+			buffer.writeInt(products.size());
 		}
 		for (PrimeShopGroup product : products)
 		{
-			writeProduct(product);
+			writeProduct(product, buffer);
 		}
 	}
 	
-	private void writeProduct(PrimeShopGroup product)
+	private void writeProduct(PrimeShopGroup product, WritableBuffer buffer)
 	{
-		writeInt(product.getBrId());
-		writeByte(product.getCat());
-		writeByte(product.getPaymentType());
-		writeInt(product.getPrice()); // L2 Coin | Gold Coin seems to use the same field based on payment type
-		writeInt(product.getSilverCoin());
-		writeByte(product.getPanelType()); // NEW - 6; HOT - 5 ... Unk
-		writeByte(product.getVipTier());
-		writeByte(10);
-		writeByte(product.getItems().size());
+		buffer.writeInt(product.getBrId());
+		buffer.writeByte(product.getCat());
+		buffer.writeByte(product.getPaymentType());
+		buffer.writeInt(product.getPrice()); // L2 Coin | Gold Coin seems to use the same field based on payment type
+		buffer.writeInt(product.getSilverCoin());
+		buffer.writeByte(product.getPanelType()); // NEW - 6; HOT - 5 ... Unk
+		buffer.writeByte(product.getVipTier());
+		buffer.writeByte(10);
+		buffer.writeByte(product.getItems().size());
 		for (PrimeShopItem item : product.getItems())
 		{
-			writeInt(item.getId());
-			writeInt((int) item.getCount());
+			buffer.writeInt(item.getId());
+			buffer.writeInt((int) item.getCount());
 		}
 	}
 }

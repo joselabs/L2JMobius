@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets.magiclamp;
 import java.util.List;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.MagicLampData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.GreaterMagicLampHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -42,21 +44,21 @@ public class ExMagicLampGameInfoUI extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MAGICLAMP_GAME_INFO.writeId(this);
-		writeInt(_player.getMaxLampCount()); // MagicLampGameMaxCCount
-		writeInt(_count); // MagicLampGameCCount
-		writeInt(_mode == 0 ? Config.MAGIC_LAMP_CONSUME_COUNT : Config.MAGIC_LAMP_GREATER_CONSUME_COUNT); // MagicLampCountPerGame
-		writeInt(_player.getLampCount()); // MagicLampCount
-		writeByte(_mode); // GameMode
+		ServerPackets.EX_MAGICLAMP_GAME_INFO.writeId(this, buffer);
+		buffer.writeInt(_player.getMaxLampCount()); // MagicLampGameMaxCCount
+		buffer.writeInt(_count); // MagicLampGameCCount
+		buffer.writeInt(_mode == 0 ? Config.MAGIC_LAMP_CONSUME_COUNT : Config.MAGIC_LAMP_GREATER_CONSUME_COUNT); // MagicLampCountPerGame
+		buffer.writeInt(_player.getLampCount()); // MagicLampCount
+		buffer.writeByte(_mode); // GameMode
 		final List<GreaterMagicLampHolder> greater = MagicLampData.getInstance().getGreaterLamps();
-		writeInt(greater.size()); // costItemList
+		buffer.writeInt(greater.size()); // costItemList
 		for (GreaterMagicLampHolder lamp : greater)
 		{
-			writeInt(lamp.getItemId()); // ItemClassID
-			writeLong(lamp.getCount()); // ItemAmountPerGame
-			writeLong(_player.getInventory().getInventoryItemCount(lamp.getItemId(), -1)); // ItemAmount
+			buffer.writeInt(lamp.getItemId()); // ItemClassID
+			buffer.writeLong(lamp.getCount()); // ItemAmountPerGame
+			buffer.writeLong(_player.getInventory().getInventoryItemCount(lamp.getItemId(), -1)); // ItemAmount
 		}
 	}
 }

@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -35,23 +37,23 @@ public class ExHomunculusEnchantEXPResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_HOMUNCULUS_ENCHANT_EXP_RESULT.writeId(this);
+		ServerPackets.EX_HOMUNCULUS_ENCHANT_EXP_RESULT.writeId(this, buffer);
 		if (!_success)
 		{
-			writeInt(0);
-			writeInt(SystemMessageId.NOT_ENOUGH_UPGRADE_POINTS.getId());
+			buffer.writeInt(0);
+			buffer.writeInt(SystemMessageId.NOT_ENOUGH_UPGRADE_POINTS.getId());
 		}
 		else if (!_newLevel)
 		{
-			writeInt(1); // success
-			writeInt(0); // SystemMessageId
+			buffer.writeInt(1); // success
+			buffer.writeInt(0); // SystemMessageId
 		}
 		else
 		{
-			writeInt(1);
-			writeInt(SystemMessageId.THE_HOMUNCULUS_LEVEL_IS_INCREASED.getId());
+			buffer.writeInt(1);
+			buffer.writeInt(SystemMessageId.THE_HOMUNCULUS_LEVEL_IS_INCREASED.getId());
 		}
 	}
 }

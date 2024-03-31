@@ -16,13 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.pledgeV3;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanMember;
 import org.l2jmobius.gameserver.model.clan.ClanPrivilege;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -32,20 +30,20 @@ import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
 /**
  * @author Mobius
  */
-public class RequestExPledgeEnemyDelete implements ClientPacket
+public class RequestExPledgeEnemyDelete extends ClientPacket
 {
 	private int _clanId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_clanId = packet.readInt();
+		_clanId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

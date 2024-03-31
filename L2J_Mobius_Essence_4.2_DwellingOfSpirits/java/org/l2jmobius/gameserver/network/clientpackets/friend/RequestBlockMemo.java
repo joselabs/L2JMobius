@@ -16,31 +16,29 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.friend;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.friend.ExFriendDetailInfo;
 
 /**
  * @author Atronic
  */
-public class RequestBlockMemo implements ClientPacket
+public class RequestBlockMemo extends ClientPacket
 {
 	private String _name;
 	private String _memo;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_name = packet.readString();
-		_memo = packet.readString();
+		_name = readString();
+		_memo = readString();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

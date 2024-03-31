@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets.dethrone;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.DailyMissionDataConquest;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -46,15 +48,15 @@ public class ExDethroneDailyMissionInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (!DailyMissionDataConquest.getInstance().isAvailable() || (_player.getClan() == null))
 		{
 			return;
 		}
 		
-		ServerPackets.EX_DETHRONE_DAILY_MISSION_INFO.writeId(this);
-		writeInt(_rewards.size()); // how many missions have
+		ServerPackets.EX_DETHRONE_DAILY_MISSION_INFO.writeId(this, buffer);
+		buffer.writeInt(_rewards.size()); // how many missions have
 		for (DailyMissionDataHolder reward : _rewards)
 		{
 			int progress = reward.getProgress(_player);
@@ -67,9 +69,9 @@ public class ExDethroneDailyMissionInfo extends ServerPacket
 			{
 				status = 2; // mission complete status
 			}
-			writeInt(reward.getId()); // mission name (only can use is 1)
-			writeInt(progress); // current item count/300
-			writeByte(status); // 1 - receive, 0 - no receive
+			buffer.writeInt(reward.getId()); // mission name (only can use is 1)
+			buffer.writeInt(progress); // current item count/300
+			buffer.writeByte(status); // 1 - receive, 0 - no receive
 		}
 	}
 }

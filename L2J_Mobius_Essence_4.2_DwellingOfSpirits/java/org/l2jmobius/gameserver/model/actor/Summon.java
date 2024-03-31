@@ -25,9 +25,9 @@ import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CreatureAI;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.SummonAI;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.NpcInfoType;
 import org.l2jmobius.gameserver.enums.Race;
@@ -514,7 +514,7 @@ public abstract class Summon extends Playable
 			{
 				for (int itemId : owner.getAutoSoulShot())
 				{
-					final String handler = ((EtcItem) ItemTable.getInstance().getTemplate(itemId)).getHandlerName();
+					final String handler = ((EtcItem) ItemData.getInstance().getTemplate(itemId)).getHandlerName();
 					if ((handler != null) && handler.contains("Beast"))
 					{
 						owner.disableAutoShot(itemId);
@@ -1047,12 +1047,12 @@ public abstract class Summon extends Playable
 			return false;
 		}
 		
-		if (_owner.isSiegeFriend(target))
-		{
-			sendPacket(SystemMessageId.FORCE_ATTACK_IS_IMPOSSIBLE_AGAINST_A_TEMPORARY_ALLIED_MEMBER_DURING_A_SIEGE);
-			sendPacket(ActionFailed.STATIC_PACKET);
-			return false;
-		}
+		// if (_owner.isSiegeFriend(target))
+		// {
+		// sendPacket(SystemMessageId.FORCE_ATTACK_IS_IMPOSSIBLE_AGAINST_A_TEMPORARY_ALLIED_MEMBER_DURING_A_SIEGE);
+		// sendPacket(ActionFailed.STATIC_PACKET);
+		// return false;
+		// }
 		
 		if (!_owner.getAccessLevel().allowPeaceAttack() && _owner.isInsidePeaceZone(this, target))
 		{

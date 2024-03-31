@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets.ceremonyofchaos;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -39,21 +41,21 @@ public class ExCuriousHouseMemberList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_CURIOUS_HOUSE_MEMBER_LIST.writeId(this);
-		writeInt(_id);
-		writeInt(_maxPlayers);
-		writeInt(_players.size());
+		ServerPackets.EX_CURIOUS_HOUSE_MEMBER_LIST.writeId(this, buffer);
+		buffer.writeInt(_id);
+		buffer.writeInt(_maxPlayers);
+		buffer.writeInt(_players.size());
 		int pos = 0;
 		for (Player player : _players)
 		{
-			writeInt(player.getObjectId());
-			writeInt(pos++);
-			writeInt(player.getMaxHp());
-			writeInt(player.getMaxCp());
-			writeInt((int) player.getCurrentHp());
-			writeInt((int) player.getCurrentCp());
+			buffer.writeInt(player.getObjectId());
+			buffer.writeInt(pos++);
+			buffer.writeInt(player.getMaxHp());
+			buffer.writeInt(player.getMaxCp());
+			buffer.writeInt((int) player.getCurrentHp());
+			buffer.writeInt((int) player.getCurrentCp());
 		}
 	}
 }

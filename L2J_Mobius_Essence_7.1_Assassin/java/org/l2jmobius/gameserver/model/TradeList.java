@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.instancemanager.PrivateStoreHistoryManager;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -247,7 +247,7 @@ public class TradeList
 			return null;
 		}
 		
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 		if (item == null)
 		{
 			LOGGER.warning(_owner.getName() + ": Attempt to add invalid item to TradeList!");
@@ -532,7 +532,7 @@ public class TradeList
 			{
 				continue;
 			}
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(item.getItem().getId());
+			final ItemTemplate template = ItemData.getInstance().getTemplate(item.getItem().getId());
 			if (template == null)
 			{
 				continue;
@@ -561,7 +561,7 @@ public class TradeList
 			{
 				continue;
 			}
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(item.getItem().getId());
+			final ItemTemplate template = ItemData.getInstance().getTemplate(item.getItem().getId());
 			if (template == null)
 			{
 				continue;
@@ -703,7 +703,7 @@ public class TradeList
 				return 2;
 			}
 			
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(item.getItemId());
+			final ItemTemplate template = ItemData.getInstance().getTemplate(item.getItemId());
 			if (template == null)
 			{
 				continue;

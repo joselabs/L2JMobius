@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -34,10 +36,10 @@ public class ExShowContactList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RECEIVE_SHOW_POST_FRIEND.writeId(this);
-		writeInt(_contacts.size());
-		_contacts.forEach(this::writeString);
+		ServerPackets.EX_RECEIVE_SHOW_POST_FRIEND.writeId(this, buffer);
+		buffer.writeInt(_contacts.size());
+		_contacts.forEach(buffer::writeString);
 	}
 }

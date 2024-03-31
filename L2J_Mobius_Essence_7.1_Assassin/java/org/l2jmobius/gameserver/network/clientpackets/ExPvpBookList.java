@@ -16,17 +16,21 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.PvpBookList;
 
 /**
  * @author JoeAlisson
  */
-public class ExPvpBookList implements ClientPacket
+public class ExPvpBookList extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		client.sendPacket(new PvpBookList());
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		getClient().sendPacket(new PvpBookList());
 	}
 }

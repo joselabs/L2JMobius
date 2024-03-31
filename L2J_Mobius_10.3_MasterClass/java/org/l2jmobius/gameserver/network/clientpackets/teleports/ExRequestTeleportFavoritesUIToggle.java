@@ -16,34 +16,32 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.teleports;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.teleports.ExTeleportFavoritesList;
 
 /**
  * @author Mobius
  */
-public class ExRequestTeleportFavoritesUIToggle implements ClientPacket
+public class ExRequestTeleportFavoritesUIToggle extends ClientPacket
 {
 	private boolean _enable;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_enable = packet.readByte() == 1;
+		_enable = readByte() == 1;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		client.sendPacket(new ExTeleportFavoritesList(player, _enable));
+		player.sendPacket(new ExTeleportFavoritesList(player, _enable));
 	}
 }

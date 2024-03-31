@@ -19,9 +19,7 @@ package org.l2jmobius.gameserver.network.clientpackets.huntpass;
 import java.util.Calendar;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassInfo;
@@ -30,20 +28,20 @@ import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSayhasSup
 /**
  * @author Serenitty
  */
-public class RequestHuntPassBuyPremium implements ClientPacket
+public class RequestHuntPassBuyPremium extends ClientPacket
 {
 	private int _huntPassType;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_huntPassType = packet.readByte();
+		_huntPassType = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

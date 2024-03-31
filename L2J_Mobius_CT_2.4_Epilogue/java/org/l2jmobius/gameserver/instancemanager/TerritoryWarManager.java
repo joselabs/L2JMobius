@@ -565,7 +565,7 @@ public class TerritoryWarManager implements Siegable
 				}
 				if (isKilled)
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.THE_CHARACTER_THAT_ACQUIRED_S1_S_WARD_HAS_BEEN_KILLED);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.THE_CHARACTER_THAT_ACQUIRED_S1_WARD_HAS_BEEN_KILLED);
 					sm.addString(twWard.getNpc().getName().replace(" Ward", ""));
 					announceToParticipants(sm, 0, 0);
 				}
@@ -1288,7 +1288,7 @@ public class TerritoryWarManager implements Siegable
 				}
 				else if ((timeRemaining <= 1200000) && (timeRemaining > 600000))
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.THE_TERRITORY_WAR_WILL_BEGIN_IN_20_MINUTES_TERRITORY_RELATED_FUNCTIONS_I_E_BATTLEFIELD_CHANNEL_DISGUISE_SCROLLS_TRANSFORMATIONS_ETC_CAN_NOW_BE_USED);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.THE_TERRITORY_WAR_WILL_BEGIN_IN_20_MINUTES_TERRITORY_RELATED_FUNCTIONS_IE_BATTLEFIELD_CHANNEL_DISGUISE_SCROLLS_TRANSFORMATIONS_ETC_CAN_NOW_BE_USED);
 					Broadcast.toAllOnlinePlayers(sm);
 					_isTWChannelOpen = true;
 					_isRegistrationOver = true;
@@ -1297,7 +1297,7 @@ public class TerritoryWarManager implements Siegable
 				}
 				else if ((timeRemaining <= 600000) && (timeRemaining > 300000))
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.THE_TERRITORY_WAR_BEGINS_IN_10_MINUTES);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.TERRITORY_WAR_BEGINS_IN_10_MINUTES);
 					Broadcast.toAllOnlinePlayers(sm);
 					_isTWChannelOpen = true;
 					_isRegistrationOver = true;
@@ -1306,7 +1306,7 @@ public class TerritoryWarManager implements Siegable
 				}
 				else if ((timeRemaining <= 300000) && (timeRemaining > 60000))
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.THE_TERRITORY_WAR_BEGINS_IN_5_MINUTES);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.TERRITORY_WAR_BEGINS_IN_5_MINUTES);
 					Broadcast.toAllOnlinePlayers(sm);
 					_isTWChannelOpen = true;
 					_isRegistrationOver = true;
@@ -1315,7 +1315,7 @@ public class TerritoryWarManager implements Siegable
 				}
 				else if ((timeRemaining <= 60000) && (timeRemaining > 0))
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.THE_TERRITORY_WAR_BEGINS_IN_1_MINUTE);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.TERRITORY_WAR_BEGINS_IN_1_MINUTE);
 					Broadcast.toAllOnlinePlayers(sm);
 					_isTWChannelOpen = true;
 					_isRegistrationOver = true;

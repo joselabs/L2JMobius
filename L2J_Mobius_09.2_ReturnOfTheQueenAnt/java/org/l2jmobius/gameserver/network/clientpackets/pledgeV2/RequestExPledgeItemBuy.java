@@ -16,55 +16,58 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.pledgeV2;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.ClanShopData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ClanShopProductHolder;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeItemBuy;
 
 /**
  * @author Mobius
  */
-public class RequestExPledgeItemBuy implements ClientPacket
+public class RequestExPledgeItemBuy extends ClientPacket
 {
 	private int _itemId;
 	private int _count;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemId = packet.readInt();
-		_count = packet.readInt();
+		_itemId = readInt();
+		_count = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		if ((_count < 1) || (_count > 10000))
+		final Player player = getPlayer();
+		if (player == null)
 		{
-			client.sendPacket(new ExPledgeItemBuy(1));
 			return;
 		}
 		
-		final Player player = client.getPlayer();
-		if ((player == null) || (player.getClan() == null))
+		if (player.getClan() == null)
 		{
-			client.sendPacket(new ExPledgeItemBuy(1));
+			player.sendPacket(new ExPledgeItemBuy(1));
+			return;
+		}
+		
+		if ((_count < 1) || (_count > 10000))
+		{
+			player.sendPacket(new ExPledgeItemBuy(1));
 			return;
 		}
 		
 		final ClanShopProductHolder product = ClanShopData.getInstance().getProduct(_itemId);
 		if (product == null)
 		{
-			client.sendPacket(new ExPledgeItemBuy(1));
+			player.sendPacket(new ExPledgeItemBuy(1));
 			return;
 		}
 		
 		if (player.getClan().getLevel() < product.getClanLevel())
 		{
-			client.sendPacket(new ExPledgeItemBuy(2));
+			player.sendPacket(new ExPledgeItemBuy(2));
 			return;
 		}
 		
@@ -72,13 +75,13 @@ public class RequestExPledgeItemBuy implements ClientPacket
 		final long weight = product.getTradeItem().getItem().getWeight() * product.getTradeItem().getCount() * _count;
 		if (!player.getInventory().validateWeight(weight) || !player.getInventory().validateCapacity(slots))
 		{
-			client.sendPacket(new ExPledgeItemBuy(3));
+			player.sendPacket(new ExPledgeItemBuy(3));
 			return;
 		}
 		
 		if ((player.getAdena() < (product.getAdena() * _count)) || (player.getFame() < (product.getFame() * _count)))
 		{
-			client.sendPacket(new ExPledgeItemBuy(3));
+			player.sendPacket(new ExPledgeItemBuy(3));
 			return;
 		}
 		
@@ -93,6 +96,6 @@ public class RequestExPledgeItemBuy implements ClientPacket
 		}
 		
 		player.addItem("ClanShop", _itemId, product.getCount() * _count, player, true);
-		client.sendPacket(new ExPledgeItemBuy(0));
+		player.sendPacket(new ExPledgeItemBuy(0));
 	}
 }

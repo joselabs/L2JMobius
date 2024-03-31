@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets.autopeel;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -41,18 +43,18 @@ public class ExResultItemAutoPeel extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RESULT_ITEM_AUTO_PEEL.writeId(this);
-		writeByte(_result);
-		writeLong(_totalPeelCount);
-		writeLong(_remainingPeelCount);
-		writeInt(_itemList.size());
+		ServerPackets.EX_RESULT_ITEM_AUTO_PEEL.writeId(this, buffer);
+		buffer.writeByte(_result);
+		buffer.writeLong(_totalPeelCount);
+		buffer.writeLong(_remainingPeelCount);
+		buffer.writeInt(_itemList.size());
 		for (ItemHolder holder : _itemList)
 		{
-			writeInt(holder.getId());
-			writeLong(holder.getCount());
-			writeInt(0); // TODO: Announce level.
+			buffer.writeInt(holder.getId());
+			buffer.writeLong(holder.getCount());
+			buffer.writeInt(0); // TODO: Announce level.
 		}
 	}
 }

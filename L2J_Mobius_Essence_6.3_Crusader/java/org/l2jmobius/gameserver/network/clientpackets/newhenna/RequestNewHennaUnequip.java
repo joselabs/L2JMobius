@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.newhenna;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.henna.Henna;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -29,26 +27,26 @@ import org.l2jmobius.gameserver.network.serverpackets.newhenna.NewHennaUnequip;
 /**
  * @author Index, Serenitty
  */
-public class RequestNewHennaUnequip implements ClientPacket
+public class RequestNewHennaUnequip extends ClientPacket
 {
 	private int _slotId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_slotId = packet.readByte();
+		_slotId = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canPerformTransaction())
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			player.sendPacket(new NewHennaUnequip(_slotId, 0));

@@ -159,7 +159,7 @@ public class ClanTable
 		
 		if (10 > player.getLevel())
 		{
-			player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_CRITERIA_IN_ORDER_TO_CREATE_A_CLAN);
+			player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_CRITERIA_IR_ORDER_TO_CREATE_A_CLAN);
 			return null;
 		}
 		if (0 != player.getClanId())
@@ -396,7 +396,7 @@ public class ClanTable
 		// msg.addString(clan1.getName());
 		// clan2.broadcastToOnlineMembers(msg);
 		// clan1 declared clan war.
-		msg = new SystemMessage(SystemMessageId.S1_HAS_DECLARED_A_CLAN_WAR);
+		msg = new SystemMessage(SystemMessageId.THE_CLAN_S1_HAS_DECLARED_A_CLAN_WAR);
 		msg.addString(clan1.getName());
 		clan2.broadcastToOnlineMembers(msg);
 	}

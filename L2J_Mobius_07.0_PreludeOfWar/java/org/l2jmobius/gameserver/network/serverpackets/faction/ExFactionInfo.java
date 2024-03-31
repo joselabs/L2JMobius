@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.faction;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.Faction;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,17 +38,17 @@ public class ExFactionInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_FACTION_INFO.writeId(this);
-		writeInt(_player.getObjectId());
-		writeByte(_openDialog);
-		writeInt(Faction.values().length);
+		ServerPackets.EX_FACTION_INFO.writeId(this, buffer);
+		buffer.writeInt(_player.getObjectId());
+		buffer.writeByte(_openDialog);
+		buffer.writeInt(Faction.values().length);
 		for (Faction faction : Faction.values())
 		{
-			writeByte(faction.getId());
-			writeShort(_player.getFactionLevel(faction));
-			writeFloat(_player.getFactionProgress(faction));
+			buffer.writeByte(faction.getId());
+			buffer.writeShort(_player.getFactionLevel(faction));
+			buffer.writeFloat(_player.getFactionProgress(faction));
 		}
 	}
 }

@@ -67,6 +67,7 @@ import handlers.admincommandhandlers.AdminClan;
 import handlers.admincommandhandlers.AdminClanHall;
 import handlers.admincommandhandlers.AdminCreateItem;
 import handlers.admincommandhandlers.AdminCursedWeapons;
+import handlers.admincommandhandlers.AdminDebug;
 import handlers.admincommandhandlers.AdminDelete;
 import handlers.admincommandhandlers.AdminDestroyItems;
 import handlers.admincommandhandlers.AdminDisconnect;
@@ -387,6 +388,7 @@ public class MasterHandler
 			AdminPcCondOverride.class,
 			AdminCreateItem.class,
 			AdminCursedWeapons.class,
+			AdminDebug.class,
 			AdminDelete.class,
 			AdminDestroyItems.class,
 			AdminDisconnect.class,

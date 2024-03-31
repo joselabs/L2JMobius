@@ -31,7 +31,7 @@ import org.l2jmobius.gameserver.model.options.VariationFee;
 import org.l2jmobius.gameserver.model.skill.AbnormalType;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 
-public abstract class AbstractRefinePacket implements ClientPacket
+public abstract class AbstractRefinePacket extends ClientPacket
 {
 	/**
 	 * Checks player, source item, lifestone and gemstone validity for augmentation process

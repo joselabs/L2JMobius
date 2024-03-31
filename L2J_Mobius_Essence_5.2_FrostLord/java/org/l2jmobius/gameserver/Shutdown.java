@@ -77,7 +77,7 @@ public class Shutdown extends Thread
 	private int _shutdownMode;
 	
 	/**
-	 * This function starts a shutdown count down from Telnet (Copied from Function startShutdown())
+	 * This function starts a shutdown count down (Copied from Function startShutdown())
 	 * @param seconds seconds until shutdown
 	 */
 	private void sendServerQuit(int seconds)

@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class EnchantResult extends ServerPacket
@@ -54,16 +56,16 @@ public class EnchantResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.ENCHANT_RESULT.writeId(this);
-		writeInt(_result);
-		writeInt(_crystal);
-		writeLong(_count);
-		writeInt(_enchantLevel);
+		ServerPackets.ENCHANT_RESULT.writeId(this, buffer);
+		buffer.writeInt(_result);
+		buffer.writeInt(_crystal);
+		buffer.writeLong(_count);
+		buffer.writeInt(_enchantLevel);
 		for (int option : _enchantOptions)
 		{
-			writeShort(option);
+			buffer.writeShort(option);
 		}
 	}
 }

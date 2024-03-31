@@ -20,7 +20,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.ItemLocation;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -90,7 +90,7 @@ public class PetInventory extends Inventory
 	public boolean validateWeight(Item item, long count)
 	{
 		int weight = 0;
-		final ItemTemplate template = ItemTable.getInstance().getTemplate(item.getId());
+		final ItemTemplate template = ItemData.getInstance().getTemplate(item.getId());
 		if (template == null)
 		{
 			return false;

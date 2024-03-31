@@ -642,23 +642,23 @@ public class Util
 			player.sendPacket(new ShowBoard(html, "1001"));
 			fillMultiEditContent(player, fillMultiEdit);
 		}
-		else if (html.length() < 16250)
+		else if (html.length() < 4090)
 		{
 			player.sendPacket(new ShowBoard(html, "101"));
 			player.sendPacket(new ShowBoard(null, "102"));
 			player.sendPacket(new ShowBoard(null, "103"));
 		}
-		else if (html.length() < (16250 * 2))
+		else if (html.length() < 8180)
 		{
-			player.sendPacket(new ShowBoard(html.substring(0, 16250), "101"));
-			player.sendPacket(new ShowBoard(html.substring(16250), "102"));
+			player.sendPacket(new ShowBoard(html.substring(0, 4090), "101"));
+			player.sendPacket(new ShowBoard(html.substring(4090), "102"));
 			player.sendPacket(new ShowBoard(null, "103"));
 		}
-		else if (html.length() < (16250 * 3))
+		else if (html.length() < 12270)
 		{
-			player.sendPacket(new ShowBoard(html.substring(0, 16250), "101"));
-			player.sendPacket(new ShowBoard(html.substring(16250, 16250 * 2), "102"));
-			player.sendPacket(new ShowBoard(html.substring(16250 * 2), "103"));
+			player.sendPacket(new ShowBoard(html.substring(0, 4090), "101"));
+			player.sendPacket(new ShowBoard(html.substring(4090, 8180), "102"));
+			player.sendPacket(new ShowBoard(html.substring(8180), "103"));
 		}
 		else
 		{

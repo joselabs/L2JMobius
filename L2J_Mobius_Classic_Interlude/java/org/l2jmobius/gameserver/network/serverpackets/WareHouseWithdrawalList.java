@@ -20,8 +20,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
@@ -69,24 +71,24 @@ public class WareHouseWithdrawalList extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.WAREHOUSE_WITHDRAW_LIST.writeId(this);
-		writeShort(_whType);
-		writeLong(_playerAdena);
-		writeShort(_items.size());
-		writeShort(_itemsStackable.size());
+		ServerPackets.WAREHOUSE_WITHDRAW_LIST.writeId(this, buffer);
+		buffer.writeShort(_whType);
+		buffer.writeLong(_playerAdena);
+		buffer.writeShort(_items.size());
+		buffer.writeShort(_itemsStackable.size());
 		for (int itemId : _itemsStackable)
 		{
-			writeInt(itemId);
+			buffer.writeInt(itemId);
 		}
-		writeInt(_invSize);
+		buffer.writeInt(_invSize);
 		for (Item item : _items)
 		{
-			writeItem(item);
-			writeInt(item.getObjectId());
-			writeInt(0);
-			writeInt(0);
+			writeItem(item, buffer);
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(0);
+			buffer.writeInt(0);
 		}
 	}
 }

@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.awakening;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,11 +36,11 @@ public class ExCallToChangeClass extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_CALL_TO_CHANGE_CLASS.writeId(this);
-		writeInt(_classId);
-		writeInt(_showMessage);
-		writeInt(1); // Force - 0 you have to do it; 1 it's optional
+		ServerPackets.EX_CALL_TO_CHANGE_CLASS.writeId(this, buffer);
+		buffer.writeInt(_classId);
+		buffer.writeInt(_showMessage);
+		buffer.writeInt(1); // Force - 0 you have to do it; 1 it's optional
 	}
 }

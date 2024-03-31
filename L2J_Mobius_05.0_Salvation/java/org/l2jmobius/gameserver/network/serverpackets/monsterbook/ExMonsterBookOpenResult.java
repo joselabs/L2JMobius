@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.monsterbook;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -32,9 +34,9 @@ public class ExMonsterBookOpenResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MONSTER_BOOK_OPEN_RESULT.writeId(this);
-		writeByte(_isOpen);
+		ServerPackets.EX_MONSTER_BOOK_OPEN_RESULT.writeId(this, buffer);
+		buffer.writeByte(_isOpen);
 	}
 }

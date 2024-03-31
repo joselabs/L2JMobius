@@ -87,39 +87,6 @@ public class Q00003_WillTheSealBeBroken extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
-	{
-		final Player member = getRandomPartyMember(player, 1);
-		if (member == null)
-		{
-			return super.onKill(npc, player, isSummon);
-		}
-		final QuestState qs = getQuestState(member, false);
-		switch (npc.getId())
-		{
-			case OMEN_BEAST:
-			{
-				giveItem(member, qs, OMEN_BEAST_EYE, getRegisteredItemIds());
-				break;
-			}
-			case STINK_ZOMBIE:
-			case TAINTED_ZOMBIE:
-			{
-				giveItem(member, qs, TAINT_STONE, getRegisteredItemIds());
-				break;
-			}
-			case LESSER_SUCCUBUS:
-			case LESSER_SUCCUBUS_TILFO:
-			case LESSER_SUCCUBUS_TUREN:
-			{
-				giveItem(member, qs, SUCCUBUS_BLOOD, getRegisteredItemIds());
-				break;
-			}
-		}
-		return super.onKill(npc, player, isSummon);
-	}
-	
-	@Override
 	public String onTalk(Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, true);
@@ -152,6 +119,39 @@ public class Q00003_WillTheSealBeBroken extends Quest
 			}
 		}
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isSummon)
+	{
+		final Player member = getRandomPartyMember(player, 1);
+		if (member == null)
+		{
+			return super.onKill(npc, player, isSummon);
+		}
+		final QuestState qs = getQuestState(member, false);
+		switch (npc.getId())
+		{
+			case OMEN_BEAST:
+			{
+				giveItem(member, qs, OMEN_BEAST_EYE, getRegisteredItemIds());
+				break;
+			}
+			case STINK_ZOMBIE:
+			case TAINTED_ZOMBIE:
+			{
+				giveItem(member, qs, TAINT_STONE, getRegisteredItemIds());
+				break;
+			}
+			case LESSER_SUCCUBUS:
+			case LESSER_SUCCUBUS_TILFO:
+			case LESSER_SUCCUBUS_TUREN:
+			{
+				giveItem(member, qs, SUCCUBUS_BLOOD, getRegisteredItemIds());
+				break;
+			}
+		}
+		return super.onKill(npc, player, isSummon);
 	}
 	
 	private void giveItem(Player player, QuestState qs, int item, int... items)

@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.Set;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.CursedWeaponsManager;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
@@ -30,6 +31,7 @@ import org.l2jmobius.gameserver.model.interfaces.ILocational;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class CharInfo extends ServerPacket
@@ -74,8 +76,6 @@ public class CharInfo extends ServerPacket
 	
 	public CharInfo(Player player, boolean gmSeeInvis)
 	{
-		super(256);
-		
 		_player = player;
 		_objId = player.getObjectId();
 		_clan = player.getClan();
@@ -119,150 +119,150 @@ public class CharInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.CHAR_INFO.writeId(this);
-		writeByte(0); // Grand Crusade
-		writeInt(_x); // Confirmed
-		writeInt(_y); // Confirmed
-		writeInt(_z); // Confirmed
-		writeInt(_vehicleId); // Confirmed
-		writeInt(_objId); // Confirmed
-		writeString(_player.getAppearance().getVisibleName()); // Confirmed
-		writeShort(_player.getRace().ordinal()); // Confirmed
-		writeByte(_player.getAppearance().isFemale()); // Confirmed
-		writeInt(_player.getBaseTemplate().getClassId().getRootClassId().getId());
+		ServerPackets.CHAR_INFO.writeId(this, buffer);
+		buffer.writeByte(0); // Grand Crusade
+		buffer.writeInt(_x); // Confirmed
+		buffer.writeInt(_y); // Confirmed
+		buffer.writeInt(_z); // Confirmed
+		buffer.writeInt(_vehicleId); // Confirmed
+		buffer.writeInt(_objId); // Confirmed
+		buffer.writeString(_player.getAppearance().getVisibleName()); // Confirmed
+		buffer.writeShort(_player.getRace().ordinal()); // Confirmed
+		buffer.writeByte(_player.getAppearance().isFemale()); // Confirmed
+		buffer.writeInt(_player.getBaseTemplate().getClassId().getRootClassId().getId());
 		
 		for (int slot : getPaperdollOrder())
 		{
-			writeInt(_player.getInventory().getPaperdollItemDisplayId(slot)); // Confirmed
+			buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(slot)); // Confirmed
 		}
 		
 		for (int slot : getPaperdollOrderAugument())
 		{
 			final VariationInstance augment = _player.getInventory().getPaperdollAugmentation(slot);
-			writeInt(augment != null ? augment.getOption1Id() : 0); // Confirmed
-			writeInt(augment != null ? augment.getOption2Id() : 0); // Confirmed
+			buffer.writeInt(augment != null ? augment.getOption1Id() : 0); // Confirmed
+			buffer.writeInt(augment != null ? augment.getOption2Id() : 0); // Confirmed
 		}
 		
-		writeByte(_armorEnchant);
+		buffer.writeByte(_armorEnchant);
 		
 		for (int slot : getPaperdollOrderVisualId())
 		{
-			writeInt(_player.getInventory().getPaperdollItemVisualId(slot));
+			buffer.writeInt(_player.getInventory().getPaperdollItemVisualId(slot));
 		}
 		
-		writeByte(_player.getPvpFlag());
-		writeInt(_player.getReputation());
-		writeInt(_mAtkSpd);
-		writeInt(_pAtkSpd);
-		writeShort(_runSpd);
-		writeShort(_walkSpd);
-		writeShort(_swimRunSpd);
-		writeShort(_swimWalkSpd);
-		writeShort(_flyRunSpd);
-		writeShort(_flyWalkSpd);
-		writeShort(_flyRunSpd);
-		writeShort(_flyWalkSpd);
-		writeDouble(_moveMultiplier);
-		writeDouble(_attackSpeedMultiplier);
-		writeDouble(_player.getCollisionRadius());
-		writeDouble(_player.getCollisionHeight());
-		writeInt(_player.getVisualHair());
-		writeInt(_player.getVisualHairColor());
-		writeInt(_player.getVisualFace());
-		writeString(_gmSeeInvis ? "Invisible" : _player.getAppearance().getVisibleTitle());
-		writeInt(_player.getAppearance().getVisibleClanId());
-		writeInt(_player.getAppearance().getVisibleClanCrestId());
-		writeInt(_player.getAppearance().getVisibleAllyId());
-		writeInt(_player.getAppearance().getVisibleAllyCrestId());
-		writeByte(!_player.isSitting()); // Confirmed
-		writeByte(_player.isRunning()); // Confirmed
-		writeByte(_player.isInCombat()); // Confirmed
-		writeByte(!_player.isInOlympiadMode() && _player.isAlikeDead()); // Confirmed
-		writeByte(_player.isInvisible());
-		writeByte(_player.getMountType().ordinal()); // 1-on Strider, 2-on Wyvern, 3-on Great Wolf, 0-no mount
-		writeByte(_player.getPrivateStoreType().getId()); // Confirmed
+		buffer.writeByte(_player.getPvpFlag());
+		buffer.writeInt(_player.getReputation());
+		buffer.writeInt(_mAtkSpd);
+		buffer.writeInt(_pAtkSpd);
+		buffer.writeShort(_runSpd);
+		buffer.writeShort(_walkSpd);
+		buffer.writeShort(_swimRunSpd);
+		buffer.writeShort(_swimWalkSpd);
+		buffer.writeShort(_flyRunSpd);
+		buffer.writeShort(_flyWalkSpd);
+		buffer.writeShort(_flyRunSpd);
+		buffer.writeShort(_flyWalkSpd);
+		buffer.writeDouble(_moveMultiplier);
+		buffer.writeDouble(_attackSpeedMultiplier);
+		buffer.writeDouble(_player.getCollisionRadius());
+		buffer.writeDouble(_player.getCollisionHeight());
+		buffer.writeInt(_player.getVisualHair());
+		buffer.writeInt(_player.getVisualHairColor());
+		buffer.writeInt(_player.getVisualFace());
+		buffer.writeString(_gmSeeInvis ? "Invisible" : _player.getAppearance().getVisibleTitle());
+		buffer.writeInt(_player.getAppearance().getVisibleClanId());
+		buffer.writeInt(_player.getAppearance().getVisibleClanCrestId());
+		buffer.writeInt(_player.getAppearance().getVisibleAllyId());
+		buffer.writeInt(_player.getAppearance().getVisibleAllyCrestId());
+		buffer.writeByte(!_player.isSitting()); // Confirmed
+		buffer.writeByte(_player.isRunning()); // Confirmed
+		buffer.writeByte(_player.isInCombat()); // Confirmed
+		buffer.writeByte(!_player.isInOlympiadMode() && _player.isAlikeDead()); // Confirmed
+		buffer.writeByte(_player.isInvisible());
+		buffer.writeByte(_player.getMountType().ordinal()); // 1-on Strider, 2-on Wyvern, 3-on Great Wolf, 0-no mount
+		buffer.writeByte(_player.getPrivateStoreType().getId()); // Confirmed
 		
-		writeShort(_player.getCubics().size()); // Confirmed
-		_player.getCubics().keySet().forEach(this::writeShort);
+		buffer.writeShort(_player.getCubics().size()); // Confirmed
+		_player.getCubics().keySet().forEach(buffer::writeShort);
 		
-		writeByte(_player.isInMatchingRoom()); // Confirmed
-		writeByte(_player.isInsideZone(ZoneId.WATER) ? 1 : _player.isFlyingMounted() ? 2 : 0);
-		writeShort(_player.getRecomHave()); // Confirmed
-		writeInt(_player.getMountNpcId() == 0 ? 0 : _player.getMountNpcId() + 1000000);
-		writeInt(_player.getClassId().getId()); // Confirmed
-		writeInt(0); // TODO: Find me!
-		writeByte(_player.isMounted() ? 0 : _enchantLevel); // Confirmed
-		writeByte(_player.getTeam().getId()); // Confirmed
-		writeInt(_player.getClanCrestLargeId());
-		writeByte(_player.getNobleLevel()); // Confirmed
-		writeByte(_player.isLegend() ? 4 : _player.isHero() || (_player.isGM() && Config.GM_HERO_AURA) ? 2 : 0); // 152 - Value for enabled changed to 2? 4 = legend
+		buffer.writeByte(_player.isInMatchingRoom()); // Confirmed
+		buffer.writeByte(_player.isInsideZone(ZoneId.WATER) ? 1 : _player.isFlyingMounted() ? 2 : 0);
+		buffer.writeShort(_player.getRecomHave()); // Confirmed
+		buffer.writeInt(_player.getMountNpcId() == 0 ? 0 : _player.getMountNpcId() + 1000000);
+		buffer.writeInt(_player.getClassId().getId()); // Confirmed
+		buffer.writeInt(0); // TODO: Find me!
+		buffer.writeByte(_player.isMounted() ? 0 : _enchantLevel); // Confirmed
+		buffer.writeByte(_player.getTeam().getId()); // Confirmed
+		buffer.writeInt(_player.getClanCrestLargeId());
+		buffer.writeByte(_player.getNobleLevel()); // Confirmed
+		buffer.writeByte(_player.isLegend() ? 4 : _player.isHero() || (_player.isGM() && Config.GM_HERO_AURA) ? 2 : 0); // 152 - Value for enabled changed to 2? 4 = legend
 		
-		writeByte(_player.isFishing()); // Confirmed
+		buffer.writeByte(_player.isFishing()); // Confirmed
 		final ILocational baitLocation = _player.getFishing().getBaitLocation();
 		if (baitLocation != null)
 		{
-			writeInt(baitLocation.getX()); // Confirmed
-			writeInt(baitLocation.getY()); // Confirmed
-			writeInt(baitLocation.getZ()); // Confirmed
+			buffer.writeInt(baitLocation.getX()); // Confirmed
+			buffer.writeInt(baitLocation.getY()); // Confirmed
+			buffer.writeInt(baitLocation.getZ()); // Confirmed
 		}
 		else
 		{
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
 		}
 		
-		writeInt(_player.getAppearance().getNameColor()); // Confirmed
-		writeInt(_heading); // Confirmed
-		writeByte(_player.getPledgeClass());
-		writeShort(_player.getPledgeType());
-		writeInt(_player.getAppearance().getTitleColor()); // Confirmed
-		writeByte(_player.isCursedWeaponEquipped() ? CursedWeaponsManager.getInstance().getLevel(_player.getCursedWeaponEquippedId()) : 0);
-		writeInt(_clan != null ? _clan.getReputationScore() : 0);
-		writeInt(_player.getTransformationDisplayId()); // Confirmed
-		writeInt(_player.getAgathionId()); // Confirmed
-		writeByte(0); // nPvPRestrainStatus
-		writeInt((int) Math.round(_player.getCurrentCp())); // Confirmed
-		writeInt(_player.getMaxHp()); // Confirmed
-		writeInt((int) Math.round(_player.getCurrentHp())); // Confirmed
-		writeInt(_player.getMaxMp()); // Confirmed
-		writeInt((int) Math.round(_player.getCurrentMp())); // Confirmed
-		writeByte(0); // cBRLectureMark
+		buffer.writeInt(_player.getAppearance().getNameColor()); // Confirmed
+		buffer.writeInt(_heading); // Confirmed
+		buffer.writeByte(_player.getPledgeClass());
+		buffer.writeShort(_player.getPledgeType());
+		buffer.writeInt(_player.getAppearance().getTitleColor()); // Confirmed
+		buffer.writeByte(_player.isCursedWeaponEquipped() ? CursedWeaponsManager.getInstance().getLevel(_player.getCursedWeaponEquippedId()) : 0);
+		buffer.writeInt(_clan != null ? _clan.getReputationScore() : 0);
+		buffer.writeInt(_player.getTransformationDisplayId()); // Confirmed
+		buffer.writeInt(_player.getAgathionId()); // Confirmed
+		buffer.writeByte(0); // nPvPRestrainStatus
+		buffer.writeInt((int) Math.round(_player.getCurrentCp())); // Confirmed
+		buffer.writeInt(_player.getMaxHp()); // Confirmed
+		buffer.writeInt((int) Math.round(_player.getCurrentHp())); // Confirmed
+		buffer.writeInt(_player.getMaxMp()); // Confirmed
+		buffer.writeInt((int) Math.round(_player.getCurrentMp())); // Confirmed
+		buffer.writeByte(0); // cBRLectureMark
 		
 		final Set<AbnormalVisualEffect> abnormalVisualEffects = _player.getEffectList().getCurrentAbnormalVisualEffects();
-		writeInt(abnormalVisualEffects.size() + (_gmSeeInvis ? 1 : 0)); // Confirmed
+		buffer.writeInt(abnormalVisualEffects.size() + (_gmSeeInvis ? 1 : 0)); // Confirmed
 		for (AbnormalVisualEffect abnormalVisualEffect : abnormalVisualEffects)
 		{
-			writeShort(abnormalVisualEffect.getClientId()); // Confirmed
+			buffer.writeShort(abnormalVisualEffect.getClientId()); // Confirmed
 		}
 		if (_gmSeeInvis)
 		{
-			writeShort(AbnormalVisualEffect.STEALTH.getClientId());
+			buffer.writeShort(AbnormalVisualEffect.STEALTH.getClientId());
 		}
 		
-		writeByte(_player.isTrueHero() ? 100 : 0);
-		writeByte(_player.isHairAccessoryEnabled()); // Hair accessory
-		writeByte(_player.getAbilityPointsUsed()); // Used Ability Points
-		writeInt(0); // nCursedWeaponClassId
+		buffer.writeByte(_player.isTrueHero() ? 100 : 0);
+		buffer.writeByte(_player.isHairAccessoryEnabled()); // Hair accessory
+		buffer.writeByte(_player.getAbilityPointsUsed()); // Used Ability Points
+		buffer.writeInt(0); // nCursedWeaponClassId
 		
 		// AFK animation.
 		if ((_player.getClan() != null) && (CastleManager.getInstance().getCastleByOwner(_player.getClan()) != null))
 		{
-			writeInt(_player.isClanLeader() ? 100 : 101);
+			buffer.writeInt(_player.isClanLeader() ? 100 : 101);
 		}
 		else
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
 		
 		// Rank.
-		writeInt(RankManager.getInstance().getPlayerGlobalRank(_player) == 1 ? 1 : RankManager.getInstance().getPlayerRaceRank(_player) == 1 ? 2 : RankManager.getInstance().getPlayerClassRank(_player) == 1 ? 4 : 0);
-		writeShort(0);
-		writeByte(0);
-		writeInt(_player.getClassId().getId());
-		writeByte(0);
+		buffer.writeInt(RankManager.getInstance().getPlayerGlobalRank(_player) == 1 ? 1 : RankManager.getInstance().getPlayerRaceRank(_player) == 1 ? 2 : RankManager.getInstance().getPlayerClassRank(_player) == 1 ? 4 : 0);
+		buffer.writeShort(0);
+		buffer.writeByte(0);
+		buffer.writeInt(_player.getClassId().getId());
+		buffer.writeByte(0);
 	}
 	
 	@Override

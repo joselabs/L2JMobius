@@ -16,12 +16,14 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.castlewar;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.enums.SiegeClanType;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.model.SiegeClan;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.siege.Castle;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,41 +40,41 @@ public class MercenaryCastleWarCastleSiegeDefenderList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MERCENARY_CASTLEWAR_CASTLE_SIEGE_DEFENDER_LIST.writeId(this);
+		ServerPackets.EX_MERCENARY_CASTLEWAR_CASTLE_SIEGE_DEFENDER_LIST.writeId(this, buffer);
 		
-		writeInt(_castleId);
-		writeInt(0);
-		writeInt(1);
-		writeInt(0);
+		buffer.writeInt(_castleId);
+		buffer.writeInt(0);
+		buffer.writeInt(1);
+		buffer.writeInt(0);
 		
 		final Castle castle = CastleManager.getInstance().getCastleById(_castleId);
 		if (castle == null)
 		{
-			writeInt(0);
-			writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
 		}
 		else
 		{
 			final int size = castle.getSiege().getDefenderWaitingClans().size() + castle.getSiege().getDefenderClans().size() + (castle.getOwner() != null ? 1 : 0);
-			writeInt(size);
-			writeInt(size);
+			buffer.writeInt(size);
+			buffer.writeInt(size);
 			
 			// Owners.
 			final Clan owner = castle.getOwner();
 			if (owner != null)
 			{
-				writeInt(owner.getId());
-				writeString(owner.getName());
-				writeString(owner.getLeaderName());
-				writeInt(owner.getAllyCrestId());
-				writeInt(0); // time (seconds)
-				writeInt(SiegeClanType.OWNER.ordinal());
-				writeInt(owner.getAllyId());
-				writeString(owner.getAllyName());
-				writeString(""); // Ally Leader Name
-				writeInt(owner.getAllyCrestId());
+				buffer.writeInt(owner.getId());
+				buffer.writeString(owner.getName());
+				buffer.writeString(owner.getLeaderName());
+				buffer.writeInt(owner.getAllyCrestId());
+				buffer.writeInt(0); // time (seconds)
+				buffer.writeInt(SiegeClanType.OWNER.ordinal());
+				buffer.writeInt(owner.getAllyId());
+				buffer.writeString(owner.getAllyName());
+				buffer.writeString(""); // Ally Leader Name
+				buffer.writeInt(owner.getAllyCrestId());
 			}
 			
 			// Defenders.
@@ -84,16 +86,16 @@ public class MercenaryCastleWarCastleSiegeDefenderList extends ServerPacket
 					continue;
 				}
 				
-				writeInt(defender.getId());
-				writeString(defender.getName());
-				writeString(defender.getLeaderName());
-				writeInt(defender.getCrestId());
-				writeInt(0); // time (seconds)
-				writeInt(SiegeClanType.DEFENDER.ordinal());
-				writeInt(defender.getAllyId());
-				writeString(defender.getAllyName());
-				writeString(""); // AllyLeaderName
-				writeInt(defender.getAllyCrestId());
+				buffer.writeInt(defender.getId());
+				buffer.writeString(defender.getName());
+				buffer.writeString(defender.getLeaderName());
+				buffer.writeInt(defender.getCrestId());
+				buffer.writeInt(0); // time (seconds)
+				buffer.writeInt(SiegeClanType.DEFENDER.ordinal());
+				buffer.writeInt(defender.getAllyId());
+				buffer.writeString(defender.getAllyName());
+				buffer.writeString(""); // AllyLeaderName
+				buffer.writeInt(defender.getAllyCrestId());
 			}
 			
 			// Defenders waiting.
@@ -105,16 +107,16 @@ public class MercenaryCastleWarCastleSiegeDefenderList extends ServerPacket
 					continue;
 				}
 				
-				writeInt(defender.getId());
-				writeString(defender.getName());
-				writeString(defender.getLeaderName());
-				writeInt(defender.getCrestId());
-				writeInt(0); // time (seconds)
-				writeInt(SiegeClanType.DEFENDER_PENDING.ordinal());
-				writeInt(defender.getAllyId());
-				writeString(defender.getAllyName());
-				writeString(""); // AllyLeaderName
-				writeInt(defender.getAllyCrestId());
+				buffer.writeInt(defender.getId());
+				buffer.writeString(defender.getName());
+				buffer.writeString(defender.getLeaderName());
+				buffer.writeInt(defender.getCrestId());
+				buffer.writeInt(0); // time (seconds)
+				buffer.writeInt(SiegeClanType.DEFENDER_PENDING.ordinal());
+				buffer.writeInt(defender.getAllyId());
+				buffer.writeString(defender.getAllyName());
+				buffer.writeString(""); // AllyLeaderName
+				buffer.writeInt(defender.getAllyCrestId());
 			}
 		}
 	}

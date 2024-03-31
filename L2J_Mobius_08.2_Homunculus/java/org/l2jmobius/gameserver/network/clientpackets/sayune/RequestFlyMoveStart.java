@@ -25,7 +25,6 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.SayuneRequest;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.model.zone.type.SayuneZone;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -33,12 +32,17 @@ import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 /**
  * @author UnAfraid
  */
-public class RequestFlyMoveStart implements ClientPacket
+public class RequestFlyMoveStart extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if ((player == null) || !player.isInsideZone(ZoneId.SAYUNE) || player.hasRequest(SayuneRequest.class) || (!player.isInCategory(CategoryType.SIXTH_CLASS_GROUP) && !Config.FREE_JUMPS_FOR_ALL))
 		{
 			return;

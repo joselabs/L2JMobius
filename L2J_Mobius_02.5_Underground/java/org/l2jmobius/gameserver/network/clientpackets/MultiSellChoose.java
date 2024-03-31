@@ -20,10 +20,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.CommonUtil;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.EnsoulData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.MultisellData;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.SpecialItemType;
@@ -40,7 +39,6 @@ import org.l2jmobius.gameserver.model.item.enchant.attribute.AttributeHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExPCCafePointInfo;
@@ -50,7 +48,7 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * The Class MultiSellChoose.
  */
-public class MultiSellChoose implements ClientPacket
+public class MultiSellChoose extends ClientPacket
 {
 	private int _listId;
 	private int _entryId;
@@ -70,46 +68,46 @@ public class MultiSellChoose implements ClientPacket
 	private EnsoulOption[] _soulCrystalSpecialOptions;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_listId = packet.readInt();
-		_entryId = packet.readInt();
-		_amount = packet.readLong();
-		_enchantLevel = packet.readShort();
-		_augmentOption1 = packet.readInt();
-		_augmentOption2 = packet.readInt();
-		_attackAttribute = (short) packet.readShort();
-		_attributePower = (short) packet.readShort();
-		_fireDefence = (short) packet.readShort();
-		_waterDefence = (short) packet.readShort();
-		_windDefence = (short) packet.readShort();
-		_earthDefence = (short) packet.readShort();
-		_holyDefence = (short) packet.readShort();
-		_darkDefence = (short) packet.readShort();
-		_soulCrystalOptions = new EnsoulOption[packet.readByte()]; // Ensoul size
+		_listId = readInt();
+		_entryId = readInt();
+		_amount = readLong();
+		_enchantLevel = readShort();
+		_augmentOption1 = readInt();
+		_augmentOption2 = readInt();
+		_attackAttribute = readShort();
+		_attributePower = readShort();
+		_fireDefence = readShort();
+		_waterDefence = readShort();
+		_windDefence = readShort();
+		_earthDefence = readShort();
+		_holyDefence = readShort();
+		_darkDefence = readShort();
+		_soulCrystalOptions = new EnsoulOption[readByte()]; // Ensoul size
 		for (int i = 0; i < _soulCrystalOptions.length; i++)
 		{
-			final int ensoulId = packet.readInt(); // Ensoul option id
+			final int ensoulId = readInt(); // Ensoul option id
 			_soulCrystalOptions[i] = EnsoulData.getInstance().getOption(ensoulId);
 		}
-		_soulCrystalSpecialOptions = new EnsoulOption[packet.readByte()]; // Special ensoul size
+		_soulCrystalSpecialOptions = new EnsoulOption[readByte()]; // Special ensoul size
 		for (int i = 0; i < _soulCrystalSpecialOptions.length; i++)
 		{
-			final int ensoulId = packet.readInt(); // Special ensoul option id.
+			final int ensoulId = readInt(); // Special ensoul option id.
 			_soulCrystalSpecialOptions[i] = EnsoulData.getInstance().getOption(ensoulId);
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canUseMultiSell())
+		if (!getClient().getFloodProtectors().canUseMultiSell())
 		{
 			player.setMultiSell(null);
 			return;
@@ -237,7 +235,7 @@ public class MultiSellChoose implements ClientPacket
 					continue;
 				}
 				
-				final ItemTemplate template = ItemTable.getInstance().getTemplate(product.getId());
+				final ItemTemplate template = ItemData.getInstance().getTemplate(product.getId());
 				if (template == null)
 				{
 					player.setMultiSell(null);
@@ -321,7 +319,7 @@ public class MultiSellChoose implements ClientPacket
 					if (found < ingredient.getCount())
 					{
 						final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_NEED_A_N_S1);
-						sm.addString("+" + ingredient.getEnchantmentLevel() + " " + ItemTable.getInstance().getTemplate(ingredient.getId()).getName());
+						sm.addString("+" + ingredient.getEnchantmentLevel() + " " + ItemData.getInstance().getTemplate(ingredient.getId()).getName());
 						player.sendPacket(sm);
 						return;
 					}

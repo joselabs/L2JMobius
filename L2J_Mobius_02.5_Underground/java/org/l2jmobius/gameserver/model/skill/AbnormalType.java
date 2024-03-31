@@ -522,7 +522,7 @@ public enum AbnormalType
 	STEEL_MIND(596),
 	HELLBOUND_BUFF(598);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	protected static final Logger LOGGER = Logger.getLogger(AbnormalType.class.getName());
 	

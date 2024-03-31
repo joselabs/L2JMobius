@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets.pk;
 
 import java.util.Set;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -33,18 +35,18 @@ public class ExPkPenaltyList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PK_PENALTY_LIST.writeId(this);
+		ServerPackets.EX_PK_PENALTY_LIST.writeId(this, buffer);
 		final Set<Player> players = World.getInstance().getPkPlayers();
-		writeInt(World.getInstance().getLastPkTime());
-		writeInt(players.size());
+		buffer.writeInt(World.getInstance().getLastPkTime());
+		buffer.writeInt(players.size());
 		for (Player player : players)
 		{
-			writeInt(player.getObjectId());
-			writeString(String.format("%1$-" + 23 + "s", player.getName()));
-			writeInt(player.getLevel());
-			writeInt(player.getClassId().getId());
+			buffer.writeInt(player.getObjectId());
+			buffer.writeString(String.format("%1$-" + 23 + "s", player.getName()));
+			buffer.writeInt(player.getLevel());
+			buffer.writeInt(player.getClassId().getId());
 		}
 	}
 }

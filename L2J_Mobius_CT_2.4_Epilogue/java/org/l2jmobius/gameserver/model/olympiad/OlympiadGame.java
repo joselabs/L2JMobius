@@ -368,6 +368,14 @@ class OlympiadGame
 			
 			_gamestarted = true;
 			
+			_playerOne.setInstanceId(0);
+			_playerOne.teleToLocation(_stadiumPort[0] + 1200, _stadiumPort[1], _stadiumPort[2], false);
+			_playerTwo.setInstanceId(0);
+			_playerTwo.teleToLocation(_stadiumPort[0] - 1200, _stadiumPort[1], _stadiumPort[2], false);
+			
+			_playerOne.sendPacket(new ExOlympiadMode(2));
+			_playerTwo.sendPacket(new ExOlympiadMode(2));
+			
 			_playerOne.setInOlympiadMode(true);
 			_playerOne.setOlympiadStart(false);
 			_playerOne.setOlympiadSide(1);
@@ -377,14 +385,6 @@ class OlympiadGame
 			_playerTwo.setOlympiadStart(false);
 			_playerTwo.setOlympiadSide(2);
 			_playerTwo.setOlympiadBuffCount(Config.ALT_OLY_MAX_BUFFS);
-			
-			_playerOne.setInstanceId(0);
-			_playerOne.teleToLocation(_stadiumPort[0] + 1200, _stadiumPort[1], _stadiumPort[2], false);
-			_playerTwo.setInstanceId(0);
-			_playerTwo.teleToLocation(_stadiumPort[0] - 1200, _stadiumPort[1], _stadiumPort[2], false);
-			
-			_playerOne.sendPacket(new ExOlympiadMode(2));
-			_playerTwo.sendPacket(new ExOlympiadMode(2));
 			
 			_spawnOne = SpawnBuffer(_stadiumPort[0] + 1100, _stadiumPort[1], _stadiumPort[2], OLY_BUFFER);
 			_spawnTwo = SpawnBuffer(_stadiumPort[0] - 1100, _stadiumPort[1], _stadiumPort[2], OLY_BUFFER);
@@ -1425,18 +1425,18 @@ class OlympiadGameTask implements Runnable
 		_game._playerOne.broadcastInfo();
 		_game._playerTwo.broadcastInfo();
 		
-		_game._playerOne.sendPacket(new ExOlympiadUserInfo(_game._playerOne));
-		_game._playerOne.sendPacket(new ExOlympiadUserInfo(_game._playerTwo));
-		_game._playerTwo.sendPacket(new ExOlympiadUserInfo(_game._playerTwo));
-		_game._playerTwo.sendPacket(new ExOlympiadUserInfo(_game._playerOne));
+		_game._playerOne.sendPacket(new ExOlympiadUserInfo(_game._playerOne, 1));
+		_game._playerOne.sendPacket(new ExOlympiadUserInfo(_game._playerTwo, 2));
+		_game._playerTwo.sendPacket(new ExOlympiadUserInfo(_game._playerTwo, 1));
+		_game._playerTwo.sendPacket(new ExOlympiadUserInfo(_game._playerOne, 2));
 		if (OlympiadManager.STADIUMS[_game._stadiumID].getSpectators() != null)
 		{
 			for (Player spec : OlympiadManager.STADIUMS[_game._stadiumID].getSpectators())
 			{
 				if (spec != null)
 				{
-					spec.sendPacket(new ExOlympiadUserInfo(_game._playerOne));
-					spec.sendPacket(new ExOlympiadUserInfo(_game._playerTwo));
+					spec.sendPacket(new ExOlympiadUserInfo(_game._playerOne, 1));
+					spec.sendPacket(new ExOlympiadUserInfo(_game._playerTwo, 2));
 				}
 			}
 		}

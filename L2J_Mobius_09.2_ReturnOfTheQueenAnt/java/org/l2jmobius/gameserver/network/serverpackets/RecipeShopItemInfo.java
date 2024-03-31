@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.stats.Stat;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class RecipeShopItemInfo extends ServerPacket
@@ -53,20 +55,20 @@ public class RecipeShopItemInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.RECIPE_SHOP_ITEM_INFO.writeId(this);
-		writeInt(_manufacturer.getObjectId());
-		writeInt(_recipeId);
-		writeInt((int) _manufacturer.getCurrentMp());
-		writeInt(_manufacturer.getMaxMp());
-		writeInt(_success == null ? -1 : (_success ? 1 : 0)); // item creation none/success/failed
-		writeLong(_manufacturePrice);
-		writeByte(_offeringMaximumAdena > 0); // Trigger offering window if 1
-		writeLong(_offeringMaximumAdena);
-		writeDouble(Math.min(_craftRate, 100.0));
-		writeByte(_craftCritical > 0);
-		writeDouble(Math.min(_craftCritical, 100.0));
-		writeByte(0); // find me
+		ServerPackets.RECIPE_SHOP_ITEM_INFO.writeId(this, buffer);
+		buffer.writeInt(_manufacturer.getObjectId());
+		buffer.writeInt(_recipeId);
+		buffer.writeInt((int) _manufacturer.getCurrentMp());
+		buffer.writeInt(_manufacturer.getMaxMp());
+		buffer.writeInt(_success == null ? -1 : (_success ? 1 : 0)); // item creation none/success/failed
+		buffer.writeLong(_manufacturePrice);
+		buffer.writeByte(_offeringMaximumAdena > 0); // Trigger offering window if 1
+		buffer.writeLong(_offeringMaximumAdena);
+		buffer.writeDouble(Math.min(_craftRate, 100.0));
+		buffer.writeByte(_craftCritical > 0);
+		buffer.writeDouble(Math.min(_craftCritical, 100.0));
+		buffer.writeByte(0); // find me
 	}
 }

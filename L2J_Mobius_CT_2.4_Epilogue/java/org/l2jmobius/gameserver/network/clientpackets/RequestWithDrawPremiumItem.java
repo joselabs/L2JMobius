@@ -17,10 +17,8 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.PremiumItem;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExGetPremiumItemList;
 import org.l2jmobius.gameserver.util.Util;
@@ -28,24 +26,24 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @author Gnacik
  */
-public class RequestWithDrawPremiumItem implements ClientPacket
+public class RequestWithDrawPremiumItem extends ClientPacket
 {
 	private int _itemNum;
 	private int _charId;
 	private long _itemCount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemNum = packet.readInt();
-		_charId = packet.readInt();
-		_itemCount = packet.readLong();
+		_itemNum = readInt();
+		_charId = readInt();
+		_itemCount = readLong();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -66,12 +64,12 @@ public class RequestWithDrawPremiumItem implements ClientPacket
 		}
 		else if ((player.getWeightPenalty() >= 3) || !player.isInventoryUnder90(false))
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_RECEIVE_THE_DIMENSIONAL_ITEM_BECAUSE_YOU_HAVE_EXCEED_YOUR_INVENTORY_WEIGHT_QUANTITY_LIMIT);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_RECEIVE_THE_VITAMIN_ITEM_BECAUSE_YOU_HAVE_EXCEED_YOUR_INVENTORY_WEIGHT_QUANTITY_LIMIT);
 			return;
 		}
 		else if (player.isProcessingTransaction())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_RECEIVE_A_DIMENSIONAL_ITEM_DURING_AN_EXCHANGE);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_RECEIVE_A_VITAMIN_ITEM_DURING_AN_EXCHANGE);
 			return;
 		}
 		
@@ -100,7 +98,7 @@ public class RequestWithDrawPremiumItem implements ClientPacket
 		
 		if (player.getPremiumItemList().isEmpty())
 		{
-			player.sendPacket(SystemMessageId.THERE_ARE_NO_MORE_DIMENSIONAL_ITEMS_TO_BE_FOUND);
+			player.sendPacket(SystemMessageId.THERE_ARE_NO_MORE_VITAMIN_ITEMS_TO_BE_FOUND);
 		}
 		else
 		{

@@ -48,7 +48,6 @@ import org.l2jmobius.gameserver.handler.TargetHandler;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.cubic.Cubic;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectFlag;
 import org.l2jmobius.gameserver.model.effects.EffectType;
@@ -1430,34 +1429,12 @@ public class Skill implements IIdentifiable
 	}
 	
 	/**
-	 * Activates a skill for the given creature and targets.
+	 * Activates the skill to the targets.
 	 * @param caster the caster
 	 * @param item
 	 * @param targets the targets
 	 */
 	public void activateSkill(Creature caster, Item item, WorldObject... targets)
-	{
-		activateSkill(caster, null, item, targets);
-	}
-	
-	/**
-	 * Activates a skill for the given cubic and targets.
-	 * @param cubic the cubic
-	 * @param targets the targets
-	 */
-	public void activateSkill(Cubic cubic, WorldObject... targets)
-	{
-		activateSkill(cubic.getOwner(), cubic, null, targets);
-	}
-	
-	/**
-	 * Activates the skill to the targets.
-	 * @param caster the caster
-	 * @param cubic the cubic that cast the skill, can be {@code null}
-	 * @param item
-	 * @param targets the targets
-	 */
-	public void activateSkill(Creature caster, Cubic cubic, Item item, WorldObject... targets)
 	{
 		for (WorldObject targetObject : targets)
 		{
@@ -1500,7 +1477,7 @@ public class Skill implements IIdentifiable
 			applyEffects(caster, caster, true, false, true, 0, item);
 		}
 		
-		if (cubic == null)
+		if (!caster.isCubic())
 		{
 			if (useSpiritShot())
 			{

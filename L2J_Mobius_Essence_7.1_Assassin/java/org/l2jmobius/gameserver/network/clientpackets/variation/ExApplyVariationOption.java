@@ -16,36 +16,34 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.variation;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.VariationRequest;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.variation.ApplyVariationOption;
 
 /**
  * @author Index
  */
-public class ExApplyVariationOption implements ClientPacket
+public class ExApplyVariationOption extends ClientPacket
 {
 	private int _enchantedObjectId;
 	private int _option1;
 	private int _option2;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_enchantedObjectId = packet.readInt();
-		_option1 = packet.readInt();
-		_option2 = packet.readInt();
+		_enchantedObjectId = readInt();
+		_option1 = readInt();
+		_option2 = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

@@ -16,34 +16,32 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.SkillEnchantType;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ExEnchantSkillInfoDetail;
 import org.l2jmobius.gameserver.util.SkillEnchantConverter;
 
 /**
  * @author -Wooden-
  */
-public class RequestExEnchantSkillInfoDetail implements ClientPacket
+public class RequestExEnchantSkillInfoDetail extends ClientPacket
 {
 	private SkillEnchantType _type;
 	private int _skillId;
 	private int _skillLevel;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = SkillEnchantType.values()[packet.readInt()];
-		_skillId = packet.readInt();
-		_skillLevel = packet.readInt();
+		_type = SkillEnchantType.values()[readInt()];
+		_skillId = readInt();
+		_skillLevel = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

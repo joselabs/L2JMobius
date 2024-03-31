@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
 import org.l2jmobius.gameserver.enums.PartyDistributionType;
@@ -27,7 +26,6 @@ import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.PartyRequest;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.AskJoinParty;
@@ -37,16 +35,16 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * sample 29 42 00 00 10 01 00 00 00 format cdd
  * @version $Revision: 1.7.4.4 $ $Date: 2005/03/27 15:29:30 $
  */
-public class RequestJoinParty implements ClientPacket
+public class RequestJoinParty extends ClientPacket
 {
 	private String _name;
 	private int _partyDistributionTypeId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_name = packet.readString();
-		_partyDistributionTypeId = packet.readInt();
+		_name = readString();
+		_partyDistributionTypeId = readInt();
 	}
 	
 	private void scheduleDeny(Player player)
@@ -66,9 +64,9 @@ public class RequestJoinParty implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player requestor = client.getPlayer();
+		final Player requestor = getPlayer();
 		if (requestor == null)
 		{
 			return;

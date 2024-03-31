@@ -16,11 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.elementalspirits;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.ElementalType;
 import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -29,22 +27,22 @@ import org.l2jmobius.gameserver.network.serverpackets.elementalspirits.Elemental
 /**
  * @author JoeAlisson
  */
-public class ExElementalSpiritChangeType implements ClientPacket
+public class ExElementalSpiritChangeType extends ClientPacket
 {
 	private byte _type;
 	private byte _element;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = (byte) packet.readByte();
-		_element = (byte) packet.readByte(); // 1 - Fire, 2 - Water, 3 - Wind, 4 Earth
+		_type = readByte();
+		_element = readByte(); // 1 - Fire, 2 - Water, 3 - Wind, 4 Earth
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -53,12 +51,12 @@ public class ExElementalSpiritChangeType implements ClientPacket
 		final ElementalSpirit spirit = player.getElementalSpirit(ElementalType.of(_type));
 		if (spirit == null)
 		{
-			client.sendPacket(SystemMessageId.NO_SPIRITS_ARE_AVAILABLE);
+			player.sendPacket(SystemMessageId.NO_SPIRITS_ARE_AVAILABLE);
 			return;
 		}
 		
 		player.changeElementalSpirit(_element);
-		client.sendPacket(new ElementalSpiritInfo(player, _element, _type));
-		client.sendPacket(new SystemMessage(SystemMessageId.S1_WILL_BE_YOUR_ATTRIBUTE_ATTACK_FROM_NOW_ON).addElementalSpirit(_element));
+		player.sendPacket(new ElementalSpiritInfo(player, _element, _type));
+		player.sendPacket(new SystemMessage(SystemMessageId.S1_WILL_BE_YOUR_ATTRIBUTE_ATTACK_FROM_NOW_ON).addElementalSpirit(_element));
 	}
 }

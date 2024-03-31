@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.ensoul;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,19 +38,19 @@ public class ExEnsoulResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ENSOUL_RESULT.writeId(this);
-		writeByte(_success); // success / failure
-		writeByte(_item.getSpecialAbilities().size());
+		ServerPackets.EX_ENSOUL_RESULT.writeId(this, buffer);
+		buffer.writeByte(_success); // success / failure
+		buffer.writeByte(_item.getSpecialAbilities().size());
 		for (EnsoulOption option : _item.getSpecialAbilities())
 		{
-			writeInt(option.getId());
+			buffer.writeInt(option.getId());
 		}
-		writeByte(_item.getAdditionalSpecialAbilities().size());
+		buffer.writeByte(_item.getAdditionalSpecialAbilities().size());
 		for (EnsoulOption option : _item.getAdditionalSpecialAbilities())
 		{
-			writeInt(option.getId());
+			buffer.writeInt(option.getId());
 		}
 	}
 }

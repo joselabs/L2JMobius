@@ -57,7 +57,7 @@ public class ReduceDamage extends AbstractEffect
 		}
 		else // DIFF
 		{
-			newDamage = event.getDamage() - Math.max((_amount - event.getAttacker().getStat().getAdd(Stat.IGNORE_REDUCE_DAMAGE)), 0.0);
+			newDamage = event.getDamage() - Math.max((_amount - event.getAttacker().getStat().getAddValue(Stat.IGNORE_REDUCE_DAMAGE)), 0.0);
 		}
 		
 		return new DamageReturn(false, true, false, newDamage);

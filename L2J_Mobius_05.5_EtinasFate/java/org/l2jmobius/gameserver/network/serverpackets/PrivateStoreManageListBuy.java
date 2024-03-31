@@ -18,9 +18,11 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class PrivateStoreManageListBuy extends AbstractItemPacket
@@ -41,37 +43,37 @@ public class PrivateStoreManageListBuy extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PRIVATE_STORE_BUY_MANAGE_LIST.writeId(this);
-		writeByte(_sendType);
+		ServerPackets.PRIVATE_STORE_BUY_MANAGE_LIST.writeId(this, buffer);
+		buffer.writeByte(_sendType);
 		if (_sendType == 2)
 		{
-			writeInt(_itemList.size());
-			writeInt(_itemList.size());
+			buffer.writeInt(_itemList.size());
+			buffer.writeInt(_itemList.size());
 			for (Item item : _itemList)
 			{
-				writeItem(item);
-				writeLong(item.getTemplate().getReferencePrice() * 2);
+				writeItem(item, buffer);
+				buffer.writeLong(item.getTemplate().getReferencePrice() * 2);
 			}
 		}
 		else
 		{
-			writeInt(_objId);
-			writeLong(_playerAdena);
-			writeInt(0);
+			buffer.writeInt(_objId);
+			buffer.writeLong(_playerAdena);
+			buffer.writeInt(0);
 			for (Item item : _itemList)
 			{
-				writeItem(item);
-				writeLong(item.getTemplate().getReferencePrice() * 2);
+				writeItem(item, buffer);
+				buffer.writeLong(item.getTemplate().getReferencePrice() * 2);
 			}
-			writeInt(0);
-			for (TradeItem item2 : _buyList)
+			buffer.writeInt(0);
+			for (TradeItem item : _buyList)
 			{
-				writeItem(item2);
-				writeLong(item2.getPrice());
-				writeLong(item2.getItem().getReferencePrice() * 2);
-				writeLong(item2.getCount());
+				writeItem(item, buffer);
+				buffer.writeLong(item.getPrice());
+				buffer.writeLong(item.getItem().getReferencePrice() * 2);
+				buffer.writeLong(item.getCount());
 			}
 		}
 	}

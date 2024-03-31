@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgedonation;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,16 +38,16 @@ public class ExPledgeDonationRequest extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_DONATION_REQUEST.writeId(this);
-		writeByte(_type);
-		writeInt(_success);
-		writeShort(0);
-		writeInt(3);
-		writeInt(14);
-		writeLong(0);
-		writeShort(0);
-		writeInt(_curPoints);
+		ServerPackets.EX_PLEDGE_DONATION_REQUEST.writeId(this, buffer);
+		buffer.writeByte(_type);
+		buffer.writeInt(_success);
+		buffer.writeShort(0);
+		buffer.writeInt(3);
+		buffer.writeInt(14);
+		buffer.writeLong(0);
+		buffer.writeShort(0);
+		buffer.writeInt(_curPoints);
 	}
 }

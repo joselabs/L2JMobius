@@ -19,10 +19,12 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.instancemanager.MentorManager;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
@@ -47,8 +49,6 @@ public class CreatureSay extends ServerPacket
 	 */
 	public CreatureSay(Player sender, Player receiver, String name, ChatType chatType, String text)
 	{
-		super(128);
-		
 		_sender = sender;
 		_senderName = name;
 		_chatType = chatType;
@@ -81,8 +81,6 @@ public class CreatureSay extends ServerPacket
 	
 	public CreatureSay(Creature sender, ChatType chatType, String senderName, String text)
 	{
-		super(128);
-		
 		_sender = sender;
 		_chatType = chatType;
 		_senderName = senderName;
@@ -91,8 +89,6 @@ public class CreatureSay extends ServerPacket
 	
 	public CreatureSay(Creature sender, ChatType chatType, NpcStringId npcStringId)
 	{
-		super(128);
-		
 		_sender = sender;
 		_chatType = chatType;
 		_messageId = npcStringId.getId();
@@ -104,8 +100,6 @@ public class CreatureSay extends ServerPacket
 	
 	public CreatureSay(ChatType chatType, int charId, SystemMessageId systemMessageId)
 	{
-		super(128);
-		
 		_sender = null;
 		_chatType = chatType;
 		_charId = charId;
@@ -126,29 +120,29 @@ public class CreatureSay extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SAY2.writeId(this);
-		writeInt(_sender == null ? 0 : _sender.getObjectId());
-		writeInt(_chatType.getClientId());
+		ServerPackets.SAY2.writeId(this, buffer);
+		buffer.writeInt(_sender == null ? 0 : _sender.getObjectId());
+		buffer.writeInt(_chatType.getClientId());
 		if (_senderName != null)
 		{
-			writeString(_senderName);
+			buffer.writeString(_senderName);
 		}
 		else
 		{
-			writeInt(_charId);
+			buffer.writeInt(_charId);
 		}
-		writeInt(_messageId); // High Five NPCString ID
+		buffer.writeInt(_messageId); // High Five NPCString ID
 		if (_text != null)
 		{
-			writeString(_text);
+			buffer.writeString(_text);
 			if ((_sender != null) && (_sender.isPlayer() || _sender.isFakePlayer()) && (_chatType == ChatType.WHISPER))
 			{
-				writeByte(_mask);
+				buffer.writeByte(_mask);
 				if ((_mask & 0x10) == 0)
 				{
-					writeByte(_sender.getLevel());
+					buffer.writeByte(_sender.getLevel());
 				}
 			}
 		}
@@ -156,15 +150,14 @@ public class CreatureSay extends ServerPacket
 		{
 			for (String s : _parameters)
 			{
-				writeString(s);
+				buffer.writeString(s);
 			}
 		}
 	}
 	
 	@Override
-	public void run()
+	public void runImpl(Player player)
 	{
-		final Player player = getPlayer();
 		if (player != null)
 		{
 			player.broadcastSnoop(_chatType, _senderName, _text);

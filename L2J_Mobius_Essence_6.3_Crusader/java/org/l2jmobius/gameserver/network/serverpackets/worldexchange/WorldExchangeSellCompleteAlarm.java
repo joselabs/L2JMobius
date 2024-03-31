@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.worldexchange;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,10 +36,10 @@ public class WorldExchangeSellCompleteAlarm extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_WORLD_EXCHANGE_SELL_COMPLETE_ALARM.writeId(this);
-		writeInt(_itemId);
-		writeLong(_amount);
+		ServerPackets.EX_WORLD_EXCHANGE_SELL_COMPLETE_ALARM.writeId(this, buffer);
+		buffer.writeInt(_itemId);
+		buffer.writeLong(_amount);
 	}
 }

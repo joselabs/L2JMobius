@@ -22,7 +22,7 @@ import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -105,7 +105,7 @@ public class AppearanceStone
 			addCrystalType(crystalType);
 		}
 		
-		final int bodyPart = ItemTable.SLOTS.get(set.getString("bodyPart", "none"));
+		final int bodyPart = ItemData.SLOTS.get(set.getString("bodyPart", "none"));
 		if (bodyPart != ItemTemplate.SLOT_NONE)
 		{
 			addBodyPart(bodyPart);

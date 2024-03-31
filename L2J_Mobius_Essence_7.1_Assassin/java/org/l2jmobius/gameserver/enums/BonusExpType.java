@@ -25,7 +25,7 @@ public enum BonusExpType
 	BUFFS(2),
 	PASSIVE(3);
 	
-	private int _id;
+	private final int _id;
 	
 	private BonusExpType(int id)
 	{

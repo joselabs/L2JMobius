@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.appearance;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.AppearanceItemData;
 import org.l2jmobius.gameserver.enums.ItemLocation;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -24,7 +23,6 @@ import org.l2jmobius.gameserver.model.actor.request.ShapeShiftingItemRequest;
 import org.l2jmobius.gameserver.model.item.appearance.AppearanceStone;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.appearance.ExPutShapeShiftingTargetItemResult;
@@ -32,20 +30,20 @@ import org.l2jmobius.gameserver.network.serverpackets.appearance.ExPutShapeShift
 /**
  * @author UnAfraid
  */
-public class RequestExTryToPutShapeShiftingTargetItem implements ClientPacket
+public class RequestExTryToPutShapeShiftingTargetItem extends ClientPacket
 {
 	private int _targetItemObjId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_targetItemObjId = packet.readInt();
+		_targetItemObjId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

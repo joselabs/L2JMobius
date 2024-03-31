@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class EnchantResult extends ServerPacket
@@ -55,22 +57,22 @@ public class EnchantResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.ENCHANT_RESULT.writeId(this);
-		writeInt(_result);
-		writeInt(_crystal);
-		writeLong(_count);
+		ServerPackets.ENCHANT_RESULT.writeId(this, buffer);
+		buffer.writeInt(_result);
+		buffer.writeInt(_crystal);
+		buffer.writeLong(_count);
 		// Guessing.
 		// With 166 options became 3x write integers instead of shorts and enchant level moved bellow.
 		// Commenting until actually knowing.
 		// for (int option : _enchantOptions)
 		// {
-		// writeInt(option);
+		// buffer.writeInt(option);
 		// }
-		writeInt(0);
-		writeInt(0);
-		writeInt(0);
-		writeInt(_enchantLevel); // Confirmed.
+		buffer.writeInt(0);
+		buffer.writeInt(0);
+		buffer.writeInt(0);
+		buffer.writeInt(_enchantLevel); // Confirmed.
 	}
 }

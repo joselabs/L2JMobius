@@ -522,7 +522,7 @@ public enum AbnormalType
 	HERB_SPEED(-1),
 	HERB_ACCURANCY(-1);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	protected static final Logger LOGGER = Logger.getLogger(AbnormalType.class.getName());
 	

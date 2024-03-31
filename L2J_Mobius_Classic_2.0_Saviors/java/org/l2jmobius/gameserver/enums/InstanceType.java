@@ -36,6 +36,7 @@ public enum InstanceType
 	// Summons, Pets, Decoys and Traps
 	Servitor(Summon),
 	Pet(Summon),
+	Cubic(Creature),
 	Decoy(Creature),
 	Trap(Npc),
 	// Attackable

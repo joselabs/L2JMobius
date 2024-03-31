@@ -28,7 +28,7 @@ import java.util.StringJoiner;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.cache.HtmCache;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.data.xml.SpawnData;
 import org.l2jmobius.gameserver.enums.DropType;
@@ -209,7 +209,7 @@ public class DropSearchBoard implements IParseBoardHandler
 					}
 					else
 					{
-						final ItemTemplate item = ItemTable.getInstance().getTemplate(cbDropHolder.itemId);
+						final ItemTemplate item = ItemData.getInstance().getTemplate(cbDropHolder.itemId);
 						if (Config.RATE_DROP_CHANCE_BY_ID.get(cbDropHolder.itemId) != null)
 						{
 							rateChance *= Config.RATE_DROP_CHANCE_BY_ID.get(cbDropHolder.itemId);
@@ -352,7 +352,7 @@ public class DropSearchBoard implements IParseBoardHandler
 		int limit = 0;
 		final Set<Integer> existInDropData = DROP_INDEX_CACHE.keySet();
 		final List<ItemTemplate> items = new ArrayList<>();
-		for (ItemTemplate item : ItemTable.getInstance().getAllItems())
+		for (ItemTemplate item : ItemData.getInstance().getAllItems())
 		{
 			if (item == null)
 			{

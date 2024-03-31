@@ -17,7 +17,9 @@
 package org.l2jmobius.gameserver.network.serverpackets.magiclamp;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,12 +36,12 @@ public class ExMagicLampExpInfoUI extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MAGICLAMP_EXP_INFO.writeId(this);
-		writeInt(Config.ENABLE_MAGIC_LAMP); // IsOpen
-		writeInt(Config.MAGIC_LAMP_MAX_LEVEL_EXP); // MaxMagicLampExp
-		writeInt(_player.getLampExp()); // MagicLampExp
-		writeInt(_player.getLampCount()); // MagicLampCount
+		ServerPackets.EX_MAGICLAMP_EXP_INFO.writeId(this, buffer);
+		buffer.writeInt(Config.ENABLE_MAGIC_LAMP); // IsOpen
+		buffer.writeInt(Config.MAGIC_LAMP_MAX_LEVEL_EXP); // MaxMagicLampExp
+		buffer.writeInt(_player.getLampExp()); // MagicLampExp
+		buffer.writeInt(_player.getLampCount()); // MagicLampCount
 	}
 }

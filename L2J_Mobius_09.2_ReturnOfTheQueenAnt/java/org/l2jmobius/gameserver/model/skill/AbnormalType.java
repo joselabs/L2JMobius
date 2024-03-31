@@ -578,7 +578,7 @@ public enum AbnormalType
 	HONEY_BEER(603),
 	GLOWING_DRAGON_POTION(604);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	protected static final Logger LOGGER = Logger.getLogger(AbnormalType.class.getName());
 	

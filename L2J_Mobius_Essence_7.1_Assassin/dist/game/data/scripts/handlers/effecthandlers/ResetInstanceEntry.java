@@ -63,6 +63,8 @@ public class ResetInstanceEntry extends AbstractEffect
 		for (int instanceId : _instanceId)
 		{
 			InstanceManager.getInstance().deleteInstanceTime(effector.getActingPlayer(), instanceId);
+			final String instanceName = InstanceManager.getInstance().getInstanceName(instanceId);
+			effector.sendMessage(instanceName + " entry has been reset.");
 		}
 	}
 }

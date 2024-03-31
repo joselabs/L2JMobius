@@ -22,6 +22,7 @@ import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.skill.ISkillCondition;
 import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 
 /**
@@ -53,7 +54,10 @@ public class CanTransformSkillCondition implements ISkillCondition
 		}
 		else if (player.isTransformed())
 		{
-			player.sendPacket(SystemMessageId.YOU_ALREADY_POLYMORPHED_AND_CANNOT_POLYMORPH_AGAIN);
+			if (!player.isInsideZone(ZoneId.CONQUEST))
+			{
+				player.sendPacket(SystemMessageId.YOU_ALREADY_POLYMORPHED_AND_CANNOT_POLYMORPH_AGAIN);
+			}
 			canTransform = false;
 		}
 		else if (player.isInWater())

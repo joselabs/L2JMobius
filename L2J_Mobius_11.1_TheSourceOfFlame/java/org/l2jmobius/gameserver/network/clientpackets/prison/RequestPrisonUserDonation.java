@@ -21,14 +21,13 @@ import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.type.ScriptZone;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.prison.ExPrisonUserDonation;
 
 /**
  * @author Fakee
  */
-public class RequestPrisonUserDonation implements ClientPacket
+public class RequestPrisonUserDonation extends ClientPacket
 {
 	private static final ScriptZone PRISON_ZONE_1 = ZoneManager.getInstance().getZoneById(26010, ScriptZone.class);
 	private static final ScriptZone PRISON_ZONE_2 = ZoneManager.getInstance().getZoneById(26011, ScriptZone.class);
@@ -41,9 +40,14 @@ public class RequestPrisonUserDonation implements ClientPacket
 	private static final long PRISON_ZONE_3_DONATION = 2000000000;
 	
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

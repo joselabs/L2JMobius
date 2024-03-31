@@ -29,8 +29,8 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.AgathionData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.InventoryBlockType;
 import org.l2jmobius.gameserver.enums.ItemLocation;
 import org.l2jmobius.gameserver.enums.StatusUpdateType;
@@ -655,7 +655,8 @@ public class PlayerInventory extends Inventory
 	{
 		// Attempt to find non equipped items.
 		Item destroyItem = null;
-		for (Item item : getAllItemsByItemId(itemId))
+		final Collection<Item> items = getAllItemsByItemId(itemId);
+		for (Item item : items)
 		{
 			destroyItem = item;
 			if (!destroyItem.isEquipped())
@@ -663,7 +664,42 @@ public class PlayerInventory extends Inventory
 				break;
 			}
 		}
-		return destroyItem == null ? null : destroyItem(process, destroyItem, count, actor, reference);
+		
+		// No item found.
+		if (destroyItem == null)
+		{
+			return null;
+		}
+		
+		// Support destroying multiple non stackable items.
+		if (!destroyItem.isStackable() && (count > 1))
+		{
+			if (getInventoryItemCount(itemId, -1, false) >= count)
+			{
+				final InventoryUpdate iu = new InventoryUpdate();
+				long destroyed = 0;
+				for (Item item : items)
+				{
+					if (!item.isEquipped() && (destroyItem(process, item, 1, actor, reference) != null))
+					{
+						iu.addRemovedItem(item);
+						if (++destroyed == count)
+						{
+							_owner.sendInventoryUpdate(iu);
+							refreshWeight();
+							return item;
+						}
+					}
+				}
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		// Single item or stackable.
+		return destroyItem(process, destroyItem, count, actor, reference);
 	}
 	
 	/**
@@ -920,7 +956,7 @@ public class PlayerInventory extends Inventory
 		{
 			slots++;
 		}
-		return validateCapacity(slots, ItemTable.getInstance().getTemplate(itemId).isQuestItem());
+		return validateCapacity(slots, ItemData.getInstance().getTemplate(itemId).isQuestItem());
 	}
 	
 	@Override

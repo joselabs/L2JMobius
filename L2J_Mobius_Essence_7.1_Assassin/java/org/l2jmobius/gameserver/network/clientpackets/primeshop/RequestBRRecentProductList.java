@@ -21,6 +21,15 @@ import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 /**
  * @author Gnacik, UnAfraid
  */
-public class RequestBRRecentProductList implements ClientPacket
+public class RequestBRRecentProductList extends ClientPacket
 {
+	@Override
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+	}
 }

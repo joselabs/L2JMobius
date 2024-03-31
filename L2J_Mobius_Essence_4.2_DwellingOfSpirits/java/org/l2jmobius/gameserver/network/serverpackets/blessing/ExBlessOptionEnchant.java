@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.blessing;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -32,9 +34,9 @@ public class ExBlessOptionEnchant extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_BLESS_OPTION_ENCHANT.writeId(this);
-		writeInt(_result);
+		ServerPackets.EX_BLESS_OPTION_ENCHANT.writeId(this, buffer);
+		buffer.writeInt(_result);
 	}
 }

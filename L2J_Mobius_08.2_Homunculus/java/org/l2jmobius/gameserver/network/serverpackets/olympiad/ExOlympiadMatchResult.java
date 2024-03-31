@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets.olympiad;
 
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadInfo;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -56,48 +58,48 @@ public class ExOlympiadMatchResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RECEIVE_OLYMPIAD.writeId(this);
-		writeInt(2); // Type 0 = Match List, 1 = Match Result, 2 = New Oly look, 3 = 3v3
-		writeInt(_tie); // 0 - win, 1 - tie
-		writeString(_winnerList.get(0).getName());
-		writeInt(_winTeam);
-		writeInt(_winnerList.size());
+		ServerPackets.EX_RECEIVE_OLYMPIAD.writeId(this, buffer);
+		buffer.writeInt(2); // Type 0 = Match List, 1 = Match Result, 2 = New Oly look, 3 = 3v3
+		buffer.writeInt(_tie); // 0 - win, 1 - tie
+		buffer.writeString(_winnerList.get(0).getName());
+		buffer.writeInt(_winTeam);
+		buffer.writeInt(_winnerList.size());
 		for (OlympiadInfo info : _winnerList)
 		{
-			writeString(info.getName());
+			buffer.writeString(info.getName());
 			
 			// New UI doesn't support clan name/id
-			writeShort(0); // clan name
-			writeInt(0); // clan id
+			buffer.writeShort(0); // clan name
+			buffer.writeInt(0); // clan id
 			
-			writeInt(info.getClassId());
-			writeInt(info.getDamage());
-			writeInt(info.getCurrentPoints());
-			writeInt(info.getDiffPoints());
-			writeInt(1); // Helios
+			buffer.writeInt(info.getClassId());
+			buffer.writeInt(info.getDamage());
+			buffer.writeInt(info.getCurrentPoints());
+			buffer.writeInt(info.getDiffPoints());
+			buffer.writeInt(1); // Helios
 		}
-		writeInt(_loseTeam);
-		writeInt(_loserList.size());
+		buffer.writeInt(_loseTeam);
+		buffer.writeInt(_loserList.size());
 		for (OlympiadInfo info : _loserList)
 		{
-			writeString(info.getName());
+			buffer.writeString(info.getName());
 			
 			// New UI doesn't support clan name/id
-			writeShort(0); // clan name
-			writeInt(0); // clan id
+			buffer.writeShort(0); // clan name
+			buffer.writeInt(0); // clan id
 			
-			writeInt(info.getClassId());
-			writeInt(info.getDamage());
-			writeInt(info.getCurrentPoints());
-			writeInt(info.getDiffPoints());
-			writeInt(1); // Helios
+			buffer.writeInt(info.getClassId());
+			buffer.writeInt(info.getDamage());
+			buffer.writeInt(info.getCurrentPoints());
+			buffer.writeInt(info.getDiffPoints());
+			buffer.writeInt(1); // Helios
 		}
-		writeByte(_round1winner); // Round 1 outcome
-		writeByte(_round2winner); // Round 2 outcome
-		writeByte(_round3winner); // Round 3 outcome
-		writeInt(15); // Bonus Reward
-		writeInt(0); // Bonus Reward for looser
+		buffer.writeByte(_round1winner); // Round 1 outcome
+		buffer.writeByte(_round2winner); // Round 2 outcome
+		buffer.writeByte(_round3winner); // Round 3 outcome
+		buffer.writeInt(15); // Bonus Reward
+		buffer.writeInt(0); // Bonus Reward for looser
 	}
 }

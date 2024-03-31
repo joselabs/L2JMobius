@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets.stats;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
@@ -27,12 +26,17 @@ import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 /**
  * @author Mobius
  */
-public class ExResetStatusBonus implements ClientPacket
+public class ExResetStatusBonus extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

@@ -17,7 +17,9 @@
 package org.l2jmobius.gameserver.network.serverpackets.dethrone;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -27,54 +29,54 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 public class ExDethroneDistrictOccupationInfo extends ServerPacket
 {
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_DETHRONE_DISTRICT_OCCUPATION_INFO.writeId(this);
-		writeInt(3); // array size for conquest regions (currently 3)
+		ServerPackets.EX_DETHRONE_DISTRICT_OCCUPATION_INFO.writeId(this, buffer);
+		buffer.writeInt(3); // array size for conquest regions (currently 3)
 		
 		// Zone 1 ASA
-		writeInt(1); // zone name id for ASA
-		writeInt(Config.SERVER_ID); // server id for ASA ZONE CONQUERER
-		writeInt(1); // array size for ASA servers (only one server atm)
+		buffer.writeInt(1); // zone name id for ASA
+		buffer.writeInt(Config.SERVER_ID); // server id for ASA ZONE CONQUERER
+		buffer.writeInt(1); // array size for ASA servers (only one server atm)
 		
-		writeInt(1); // server rank 1
-		writeInt(Config.SERVER_ID); // rank 1 server id
-		writeInt(GlobalVariablesManager.getInstance().getInt("CONQUEST_ZONE_ASA_POINTS", 0)); // rank 1 server points
-		writeInt(0);
+		buffer.writeInt(1); // server rank 1
+		buffer.writeInt(Config.SERVER_ID); // rank 1 server id
+		buffer.writeInt(GlobalVariablesManager.getInstance().getInt("CONQUEST_ZONE_ASA_POINTS", 0)); // rank 1 server points
+		buffer.writeInt(0);
 		
-		// writeInt(2); // server rank 2
-		// writeInt(0); // rank 2 server id
-		// writeInt(0); // rank 2 server points
-		// writeInt(0);
+		// buffer.writeInt(2); // server rank 2
+		// buffer.writeInt(0); // rank 2 server id
+		// buffer.writeInt(0); // rank 2 server points
+		// buffer.writeInt(0);
 		
 		// Zone 2 ANIMA
-		writeInt(2); // zone name id for ANIMA
-		writeInt(Config.SERVER_ID); // server id for ANIMA ZONE CONQUERER
-		writeInt(1); // array size for ANIMA servers (only one server atm)
+		buffer.writeInt(2); // zone name id for ANIMA
+		buffer.writeInt(Config.SERVER_ID); // server id for ANIMA ZONE CONQUERER
+		buffer.writeInt(1); // array size for ANIMA servers (only one server atm)
 		
-		writeInt(1); // server rank 1
-		writeInt(Config.SERVER_ID); // rank 1 server id
-		writeInt(GlobalVariablesManager.getInstance().getInt("CONQUEST_ZONE_ANIMA_POINTS", 0)); // rank 1 server points
-		writeInt(0);
+		buffer.writeInt(1); // server rank 1
+		buffer.writeInt(Config.SERVER_ID); // rank 1 server id
+		buffer.writeInt(GlobalVariablesManager.getInstance().getInt("CONQUEST_ZONE_ANIMA_POINTS", 0)); // rank 1 server points
+		buffer.writeInt(0);
 		
-		// writeInt(2); // server rank 2
-		// writeInt(0); // rank 2 server id
-		// writeInt(0); // rank 2 server points
-		// writeInt(0);
+		// buffer.writeInt(2); // server rank 2
+		// buffer.writeInt(0); // rank 2 server id
+		// buffer.writeInt(0); // rank 2 server points
+		// buffer.writeInt(0);
 		
 		// Zone 3 NOX
-		writeInt(3); // zone name id for NOX
-		writeInt(Config.SERVER_ID); // server id for NOX ZONE CONQUERER
-		writeInt(1); // array size for NOX servers (only one server atm)
+		buffer.writeInt(3); // zone name id for NOX
+		buffer.writeInt(Config.SERVER_ID); // server id for NOX ZONE CONQUERER
+		buffer.writeInt(1); // array size for NOX servers (only one server atm)
 		
-		writeInt(1); // server rank 1
-		writeInt(Config.SERVER_ID); // rank 1 server id
-		writeInt(GlobalVariablesManager.getInstance().getInt("CONQUEST_ZONE_NOX_POINTS", 0)); // rank 1 server points
-		writeInt(0);
+		buffer.writeInt(1); // server rank 1
+		buffer.writeInt(Config.SERVER_ID); // rank 1 server id
+		buffer.writeInt(GlobalVariablesManager.getInstance().getInt("CONQUEST_ZONE_NOX_POINTS", 0)); // rank 1 server points
+		buffer.writeInt(0);
 		
-		// writeInt(2); // server rank 2
-		// writeInt(0); // rank 2 server id
-		// writeInt(0); // rank 2 server points
-		// writeInt(0);
+		// buffer.writeInt(2); // server rank 2
+		// buffer.writeInt(0); // rank 2 server id
+		// buffer.writeInt(0); // rank 2 server points
+		// buffer.writeInt(0);
 	}
 }

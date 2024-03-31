@@ -18,19 +18,23 @@ package org.l2jmobius.gameserver.network.clientpackets.appearance;
 
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.ShapeShiftingItemRequest;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.appearance.ExShapeShiftingResult;
 
 /**
  * @author UnAfraid
  */
-public class RequestExCancelShape_Shifting_Item implements ClientPacket
+public class RequestExCancelShape_Shifting_Item extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

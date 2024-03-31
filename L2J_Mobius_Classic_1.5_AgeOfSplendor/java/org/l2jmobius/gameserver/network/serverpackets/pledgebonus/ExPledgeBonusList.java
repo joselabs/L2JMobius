@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets.pledgebonus;
 import java.util.Comparator;
 import java.util.logging.Logger;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.ClanRewardData;
 import org.l2jmobius.gameserver.enums.ClanRewardType;
 import org.l2jmobius.gameserver.model.clan.ClanRewardBonus;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -33,9 +35,9 @@ public class ExPledgeBonusList extends ServerPacket
 	private static final Logger LOGGER = Logger.getLogger(ExPledgeBonusList.class.getName());
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_BONUS_LIST.writeId(this);
+		ServerPackets.EX_PLEDGE_BONUS_LIST.writeId(this, buffer);
 		for (ClanRewardType type : ClanRewardType.values())
 		{
 			ClanRewardData.getInstance().getClanRewardBonuses(type).stream().sorted(Comparator.comparingInt(ClanRewardBonus::getLevel)).forEach(bonus ->
@@ -47,10 +49,10 @@ public class ExPledgeBonusList extends ServerPacket
 						if (bonus.getSkillReward() == null)
 						{
 							LOGGER.warning("Missing clan reward skill for reward level: " + bonus.getLevel());
-							writeInt(0);
+							buffer.writeInt(0);
 							return;
 						}
-						writeInt(bonus.getSkillReward().getSkillId());
+						buffer.writeInt(bonus.getSkillReward().getSkillId());
 						break;
 					}
 					case HUNTING_MONSTERS:
@@ -58,10 +60,10 @@ public class ExPledgeBonusList extends ServerPacket
 						if (bonus.getItemReward() == null)
 						{
 							LOGGER.warning("Missing clan reward skill for reward level: " + bonus.getLevel());
-							writeInt(0);
+							buffer.writeInt(0);
 							return;
 						}
-						writeInt(bonus.getItemReward().getId());
+						buffer.writeInt(bonus.getItemReward().getId());
 						break;
 					}
 				}

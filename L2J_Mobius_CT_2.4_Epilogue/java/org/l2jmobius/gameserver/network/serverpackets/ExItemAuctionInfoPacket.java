@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.ItemInfo;
 import org.l2jmobius.gameserver.model.itemauction.ItemAuction;
 import org.l2jmobius.gameserver.model.itemauction.ItemAuctionBid;
 import org.l2jmobius.gameserver.model.itemauction.ItemAuctionState;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -52,63 +54,63 @@ public class ExItemAuctionInfoPacket extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ITEM_AUCTION_INFO.writeId(this);
-		writeByte(!_refresh);
-		writeInt(_currentAuction.getInstanceId());
+		ServerPackets.EX_ITEM_AUCTION_INFO.writeId(this, buffer);
+		buffer.writeByte(!_refresh);
+		buffer.writeInt(_currentAuction.getInstanceId());
 		final ItemAuctionBid highestBid = _currentAuction.getHighestBid();
-		writeLong(highestBid != null ? highestBid.getLastBid() : _currentAuction.getAuctionInitBid());
-		writeInt(_timeRemaining);
-		writeItemInfo(_currentAuction.getItemInfo());
+		buffer.writeLong(highestBid != null ? highestBid.getLastBid() : _currentAuction.getAuctionInitBid());
+		buffer.writeInt(_timeRemaining);
+		writeItemInfo(_currentAuction.getItemInfo(), buffer);
 		if (_nextAuction != null)
 		{
-			writeLong(_nextAuction.getAuctionInitBid());
-			writeInt((int) (_nextAuction.getStartingTime() / 1000)); // unix time in seconds
-			writeItemInfo(_nextAuction.getItemInfo());
+			buffer.writeLong(_nextAuction.getAuctionInitBid());
+			buffer.writeInt((int) (_nextAuction.getStartingTime() / 1000)); // unix time in seconds
+			writeItemInfo(_nextAuction.getItemInfo(), buffer);
 		}
 	}
 	
-	private void writeItemInfo(ItemInfo info)
+	private void writeItemInfo(ItemInfo info, WritableBuffer buffer)
 	{
-		writeInt(info.getItem().getId());
-		writeInt(info.getItem().getId());
-		writeInt(info.getLocation());
-		writeLong(info.getCount());
-		writeShort(info.getEnchant());
+		buffer.writeInt(info.getItem().getId());
+		buffer.writeInt(info.getItem().getId());
+		buffer.writeInt(info.getLocation());
+		buffer.writeLong(info.getCount());
+		buffer.writeShort(info.getEnchant());
 		
 		// TODO: Find bellow values.
-		writeShort(0);
-		writeInt(0);
-		writeShort(0);
-		writeShort(0);
+		buffer.writeShort(0);
+		buffer.writeInt(0);
+		buffer.writeShort(0);
+		buffer.writeShort(0);
 		
-		writeShort(0);
-		writeShort(0);
-		writeShort(0);
-		writeShort(0);
-		writeShort(0);
-		writeShort(0);
+		buffer.writeShort(0);
+		buffer.writeShort(0);
+		buffer.writeShort(0);
+		buffer.writeShort(0);
+		buffer.writeShort(0);
+		buffer.writeShort(0);
 		
-		writeInt(0);
+		buffer.writeInt(0);
 		
-		writeShort(0);
-		writeShort(0);
-		writeShort(0);
+		buffer.writeShort(0);
+		buffer.writeShort(0);
+		buffer.writeShort(0);
 		
 		// Example.
-		// writeShort(info.getItem().getType2());
-		// writeInt(info.getAugmentationBonus());
-		// writeShort(info.getAttackElementType());
-		// writeShort(info.getAttackElementPower());
+		// buffer.writeShort(info.getItem().getType2());
+		// buffer.writeInt(info.getAugmentationBonus());
+		// buffer.writeShort(info.getAttackElementType());
+		// buffer.writeShort(info.getAttackElementPower());
 		// for (byte i = 0; i < 6; i++)
 		// {
-		// writeShort(info.getElementDefAttr(i));
+		// buffer.writeShort(info.getElementDefAttr(i));
 		// }
-		// writeInt(info.getTime());
+		// buffer.writeInt(info.getTime());
 		// for (int op : info.getEnchantOptions())
 		// {
-		// writeShort(op);
+		// buffer.writeShort(op);
 		// }
 	}
 }

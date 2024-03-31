@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.skill.SkillCastingType;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -41,7 +43,6 @@ public class MagicSkillUse extends ServerPacket
 	
 	public MagicSkillUse(Creature creature, WorldObject target, int skillId, int skillLevel, int hitTime, int reuseDelay, int reuseGroup, int actionId, SkillCastingType castingType)
 	{
-		super(83);
 		_creature = creature;
 		_target = target;
 		_skillId = skillId;
@@ -65,36 +66,36 @@ public class MagicSkillUse extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.MAGIC_SKILL_USE.writeId(this);
-		writeInt(_castingType.getClientBarId()); // Casting bar type: 0 - default, 1 - default up, 2 - blue, 3 - green, 4 - red.
-		writeInt(_creature.getObjectId());
-		writeInt(_target.getObjectId());
-		writeInt(_skillId);
-		writeInt(_skillLevel);
-		writeInt(_hitTime);
-		writeInt(_reuseGroup);
-		writeInt(_reuseDelay);
-		writeInt(_creature.getX());
-		writeInt(_creature.getY());
-		writeInt(_creature.getZ());
-		writeShort(0); // isGroundTargetSkill ? 65535 : 0
+		ServerPackets.MAGIC_SKILL_USE.writeId(this, buffer);
+		buffer.writeInt(_castingType.getClientBarId()); // Casting bar type: 0 - default, 1 - default up, 2 - blue, 3 - green, 4 - red.
+		buffer.writeInt(_creature.getObjectId());
+		buffer.writeInt(_target.getObjectId());
+		buffer.writeInt(_skillId);
+		buffer.writeInt(_skillLevel);
+		buffer.writeInt(_hitTime);
+		buffer.writeInt(_reuseGroup);
+		buffer.writeInt(_reuseDelay);
+		buffer.writeInt(_creature.getX());
+		buffer.writeInt(_creature.getY());
+		buffer.writeInt(_creature.getZ());
+		buffer.writeShort(0); // isGroundTargetSkill ? 65535 : 0
 		if (_groundLocation == null)
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
 		else
 		{
-			writeShort(1);
-			writeInt(_groundLocation.getX());
-			writeInt(_groundLocation.getY());
-			writeInt(_groundLocation.getZ());
+			buffer.writeShort(1);
+			buffer.writeInt(_groundLocation.getX());
+			buffer.writeInt(_groundLocation.getY());
+			buffer.writeInt(_groundLocation.getZ());
 		}
-		writeInt(_target.getX());
-		writeInt(_target.getY());
-		writeInt(_target.getZ());
-		writeInt(_actionId >= 0); // 1 when ID from RequestActionUse is used
-		writeInt(_actionId >= 0 ? _actionId : 0); // ID from RequestActionUse. Used to set cooldown on summon skills.
+		buffer.writeInt(_target.getX());
+		buffer.writeInt(_target.getY());
+		buffer.writeInt(_target.getZ());
+		buffer.writeInt(_actionId >= 0); // 1 when ID from RequestActionUse is used
+		buffer.writeInt(_actionId >= 0 ? _actionId : 0); // ID from RequestActionUse. Used to set cooldown on summon skills.
 	}
 }

@@ -18,12 +18,10 @@ package org.l2jmobius.gameserver.network.clientpackets.adenadistribution;
 
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.CommandChannel;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.AdenaDistributionRequest;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.adenadistribution.ExDivideAdenaCancel;
@@ -32,22 +30,22 @@ import org.l2jmobius.gameserver.network.serverpackets.adenadistribution.ExDivide
 /**
  * @author Sdw
  */
-public class RequestDivideAdena implements ClientPacket
+public class RequestDivideAdena extends ClientPacket
 {
 	private int _adenaObjId;
 	private long _adenaCount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_adenaObjId = packet.readInt();
-		_adenaCount = packet.readLong();
+		_adenaObjId = readInt();
+		_adenaCount = readLong();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

@@ -31,6 +31,7 @@ import org.l2jmobius.gameserver.enums.CastleSide;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
 import org.l2jmobius.gameserver.instancemanager.CastleManorManager;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
+import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Door;
@@ -77,7 +78,7 @@ public class CastleChamberlain extends AbstractNpcAI
 		35226, 36656, // Oren
 		35274, 36657, // Aden
 		// 35316, 36658, // Innadril
-		// 35363, 36659, // Goddard
+		35363, 36659, // Goddard
 		// 35509, 36660, // Rune
 		// 35555, 36661, // Schuttgart
 	};
@@ -88,7 +89,6 @@ public class CastleChamberlain extends AbstractNpcAI
 	private static final int LORD_CLOAK_OF_DARK = 34926;
 	// Fortress
 	private static final Map<Integer, List<Integer>> FORTRESS = new HashMap<>();
-	
 	static
 	{
 		FORTRESS.put(1, Arrays.asList(101, 102, 112, 113)); // Gludio Castle
@@ -1084,6 +1084,33 @@ public class CastleChamberlain extends AbstractNpcAI
 				if (isOwner(player, npc) && player.hasClanPrivilege(ClanPrivilege.CS_MANAGE_SIEGE))
 				{
 					castle.getSiege().listRegisterClan(player);
+				}
+				else
+				{
+					htmltext = "chamberlain-21.html";
+				}
+				break;
+			}
+			case "manage_taxes":
+			{
+				if (isOwner(player, npc) && player.hasClanPrivilege(ClanPrivilege.CS_TAXES))
+				{
+					final NpcHtmlMessage html = getHtmlPacket(player, npc, "castle_tax_manage.html");
+					html.replace("%current_tax%", GlobalVariablesManager.getInstance().getInt(Clan.TAX_RATE_VAR + castle.getResidenceId(), 0));
+					player.sendPacket(html);
+				}
+				else
+				{
+					htmltext = "chamberlain-21.html";
+				}
+				break;
+			}
+			case "change_tax":
+			{
+				if (isOwner(player, npc) && player.hasClanPrivilege(ClanPrivilege.CS_TAXES))
+				{
+					int newTax = Integer.parseInt(st.nextToken());
+					GlobalVariablesManager.getInstance().set(Clan.TAX_RATE_VAR + castle.getResidenceId(), Math.min(newTax, Clan.MAX_TAX_RATE));
 				}
 				else
 				{

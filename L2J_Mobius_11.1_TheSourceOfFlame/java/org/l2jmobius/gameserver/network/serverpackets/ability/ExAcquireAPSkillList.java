@@ -20,10 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -55,20 +57,20 @@ public class ExAcquireAPSkillList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ACQUIRE_AP_SKILL_LIST.writeId(this);
-		writeByte(_enable ? 1 : 0); // 414
-		writeLong(Config.ABILITY_POINTS_RESET_SP); // Changed to from Adena to SP on Grand Crusade
-		// writeLong(_price); Removed on Grand Crusade
-		// writeInt(Config.ABILITY_MAX_POINTS); Removed on Grand Crusade
-		writeInt(_abilityPoints);
-		writeInt(_usedAbilityPoints);
-		writeInt(_skills.size());
+		ServerPackets.EX_ACQUIRE_AP_SKILL_LIST.writeId(this, buffer);
+		buffer.writeByte(_enable ? 1 : 0); // 414
+		buffer.writeLong(Config.ABILITY_POINTS_RESET_SP); // Changed to from Adena to SP on Grand Crusade
+		// buffer.writeLong(_price); Removed on Grand Crusade
+		// buffer.writeInt(Config.ABILITY_MAX_POINTS); Removed on Grand Crusade
+		buffer.writeInt(_abilityPoints);
+		buffer.writeInt(_usedAbilityPoints);
+		buffer.writeInt(_skills.size());
 		for (Skill skill : _skills)
 		{
-			writeInt(skill.getId());
-			writeInt(skill.getLevel());
+			buffer.writeInt(skill.getId());
+			buffer.writeInt(skill.getLevel());
 		}
 	}
 }

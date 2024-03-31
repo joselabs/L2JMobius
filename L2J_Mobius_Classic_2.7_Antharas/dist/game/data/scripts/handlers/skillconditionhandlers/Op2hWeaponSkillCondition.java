@@ -16,8 +16,9 @@
  */
 package handlers.skillconditionhandlers;
 
-import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
@@ -29,18 +30,21 @@ import org.l2jmobius.gameserver.model.skill.ISkillCondition;
 import org.l2jmobius.gameserver.model.skill.Skill;
 
 /**
- * @author UnAfraid
+ * @author UnAfraid, Mobius
  */
 public class Op2hWeaponSkillCondition implements ISkillCondition
 {
-	private final List<WeaponType> _weaponTypes = new ArrayList<>();
+	private final Set<WeaponType> _weaponTypes = EnumSet.noneOf(WeaponType.class);
 	
 	public Op2hWeaponSkillCondition(StatSet params)
 	{
 		final List<String> weaponTypes = params.getList("weaponType", String.class);
 		if (weaponTypes != null)
 		{
-			weaponTypes.stream().map(WeaponType::valueOf).forEach(_weaponTypes::add);
+			for (String type : weaponTypes)
+			{
+				_weaponTypes.add(WeaponType.valueOf(type));
+			}
 		}
 	}
 	
@@ -52,6 +56,16 @@ public class Op2hWeaponSkillCondition implements ISkillCondition
 		{
 			return false;
 		}
-		return _weaponTypes.stream().anyMatch(weaponType -> (weapon.getItemType() == weaponType) && ((weapon.getBodyPart() & ItemTemplate.SLOT_LR_HAND) != 0));
+		
+		final WeaponType weaponType = weapon.getItemType();
+		for (WeaponType type : _weaponTypes)
+		{
+			if (type == weaponType)
+			{
+				return (weapon.getBodyPart() & ItemTemplate.SLOT_LR_HAND) != 0;
+			}
+		}
+		
+		return false;
 	}
 }

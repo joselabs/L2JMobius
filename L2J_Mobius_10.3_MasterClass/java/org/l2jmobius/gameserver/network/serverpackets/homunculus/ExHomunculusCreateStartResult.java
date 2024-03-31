@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -31,10 +33,10 @@ public class ExHomunculusCreateStartResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_HOMUNCULUS_CREATE_START_RESULT.writeId(this);
-		writeInt(1); // 1 - success
-		writeInt(SystemMessageId.YOU_VE_SEALED_A_HOMUNCULUS_HEART_IN_ORDER_TO_CREATE_IT_YOUR_BLOOD_SPIRIT_AND_TEARS_ARE_REQUIRED.getId());
+		ServerPackets.EX_HOMUNCULUS_CREATE_START_RESULT.writeId(this, buffer);
+		buffer.writeInt(1); // 1 - success
+		buffer.writeInt(SystemMessageId.YOU_VE_SEALED_A_HOMUNCULUS_HEART_IN_ORDER_TO_CREATE_IT_YOUR_BLOOD_SPIRIT_AND_TEARS_ARE_REQUIRED.getId());
 	}
 }

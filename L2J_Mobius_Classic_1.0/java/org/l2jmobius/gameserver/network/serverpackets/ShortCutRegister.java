@@ -16,16 +16,18 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.Shortcut;
 import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ShortCutRegister extends ServerPacket
 {
-	private final Shortcut _shortcut;
 	private final Player _player;
+	private final Shortcut _shortcut;
 	
 	/**
 	 * Register new skill shortcut
@@ -34,42 +36,60 @@ public class ShortCutRegister extends ServerPacket
 	 */
 	public ShortCutRegister(Shortcut shortcut, Player player)
 	{
-		_shortcut = shortcut;
 		_player = player;
+		_shortcut = shortcut;
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SHORT_CUT_REGISTER.writeId(this);
-		writeInt(_shortcut.getType().ordinal());
-		writeInt(_shortcut.getSlot() + (_shortcut.getPage() * 12)); // C4 Client
+		ServerPackets.SHORT_CUT_REGISTER.writeId(this, buffer);
+		buffer.writeInt(_shortcut.getType().ordinal());
+		buffer.writeInt(_shortcut.getSlot() + (_shortcut.getPage() * 12)); // C4 Client
 		switch (_shortcut.getType())
 		{
 			case ITEM:
 			{
+				buffer.writeInt(_shortcut.getId());
+				buffer.writeInt(_shortcut.getCharacterType());
+				buffer.writeInt(_shortcut.getSharedReuseGroup());
+				buffer.writeInt(0); // unknown
+				buffer.writeInt(0); // unknown
 				final Item item = _player.getInventory().getItemByObjectId(_shortcut.getId());
-				final VariationInstance augment = item.getAugmentation();
-				writeInt(_shortcut.getId());
-				writeInt(_shortcut.getCharacterType());
-				writeInt(_shortcut.getSharedReuseGroup());
-				writeInt(0); // unknown
-				writeInt(0); // unknown
-				writeInt(augment != null ? augment.getOption1Id() : 0); // item augment id
-				writeInt(augment != null ? augment.getOption2Id() : 0); // item augment id
-				writeInt(item.getVisualId()); // visual id
+				if (item != null)
+				{
+					final VariationInstance augment = item.getAugmentation();
+					if (augment != null)
+					{
+						buffer.writeShort(augment.getOption1Id());
+						buffer.writeShort(augment.getOption2Id());
+					}
+					else
+					{
+						buffer.writeShort(0);
+						buffer.writeShort(0);
+					}
+					buffer.writeInt(item.getVisualId());
+				}
+				else
+				{
+					buffer.writeShort(0);
+					buffer.writeShort(0);
+					buffer.writeInt(0);
+				}
+				
 				break;
 			}
 			case SKILL:
 			{
-				writeInt(_shortcut.getId());
-				writeShort(_shortcut.getLevel());
-				writeShort(_shortcut.getSubLevel());
-				writeInt(_shortcut.getSharedReuseGroup());
-				writeByte(0); // C5
-				writeInt(_shortcut.getCharacterType());
-				writeInt(0); // if 1 - cant use
-				writeInt(0); // reuse delay ?
+				buffer.writeInt(_shortcut.getId());
+				buffer.writeShort(_shortcut.getLevel());
+				buffer.writeShort(_shortcut.getSubLevel());
+				buffer.writeInt(_shortcut.getSharedReuseGroup());
+				buffer.writeByte(0); // C5
+				buffer.writeInt(_shortcut.getCharacterType());
+				buffer.writeInt(0); // if 1 - cant use
+				buffer.writeInt(0); // reuse delay ?
 				break;
 			}
 			case ACTION:
@@ -77,8 +97,8 @@ public class ShortCutRegister extends ServerPacket
 			case RECIPE:
 			case BOOKMARK:
 			{
-				writeInt(_shortcut.getId());
-				writeInt(_shortcut.getCharacterType());
+				buffer.writeInt(_shortcut.getId());
+				buffer.writeInt(_shortcut.getCharacterType());
 			}
 		}
 	}

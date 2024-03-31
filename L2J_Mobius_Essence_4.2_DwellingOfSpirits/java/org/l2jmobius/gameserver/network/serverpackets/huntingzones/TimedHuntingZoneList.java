@@ -16,11 +16,13 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.huntingzones;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.TimedHuntingZoneHolder;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -39,36 +41,36 @@ public class TimedHuntingZoneList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_TIME_RESTRICT_FIELD_LIST.writeId(this);
+		ServerPackets.EX_TIME_RESTRICT_FIELD_LIST.writeId(this, buffer);
 		final long currentTime = System.currentTimeMillis();
-		writeInt(TimedHuntingZoneData.getInstance().getSize()); // zone count
+		buffer.writeInt(TimedHuntingZoneData.getInstance().getSize()); // zone count
 		for (TimedHuntingZoneHolder holder : TimedHuntingZoneData.getInstance().getAllHuntingZones())
 		{
-			writeInt(holder.getEntryFee() != 0); // required item count
-			writeInt(holder.getEntryItemId());
-			writeLong(holder.getEntryFee());
-			writeInt(!holder.isWeekly()); // reset cycle
-			writeInt(holder.getZoneId());
-			writeInt(holder.getMinLevel());
-			writeInt(holder.getMaxLevel());
-			writeInt(holder.getInitialTime() / 1000); // remain time base
+			buffer.writeInt(holder.getEntryFee() != 0); // required item count
+			buffer.writeInt(holder.getEntryItemId());
+			buffer.writeLong(holder.getEntryFee());
+			buffer.writeInt(!holder.isWeekly()); // reset cycle
+			buffer.writeInt(holder.getZoneId());
+			buffer.writeInt(holder.getMinLevel());
+			buffer.writeInt(holder.getMaxLevel());
+			buffer.writeInt(holder.getInitialTime() / 1000); // remain time base
 			int remainingTime = _player.getTimedHuntingZoneRemainingTime(holder.getZoneId());
 			if ((remainingTime == 0) && ((_player.getTimedHuntingZoneInitialEntry(holder.getZoneId()) + holder.getResetDelay()) < currentTime))
 			{
 				remainingTime = holder.getInitialTime();
 			}
-			writeInt(remainingTime / 1000); // remain time
-			writeInt(holder.getMaximumAddedTime() / 1000);
-			writeInt(_player.getVariables().getInt(PlayerVariables.HUNTING_ZONE_REMAIN_REFILL + holder.getZoneId(), holder.getRemainRefillTime()));
-			writeInt(holder.getRefillTimeMax());
-			writeByte(!_isInTimedHuntingZone); // field activated (272 byte to int)
-			writeByte(0); // bUserBound
-			writeByte(0); // bCanReEnter
-			writeByte(holder.zonePremiumUserOnly()); // bIsInZonePCCafeUserOnly
-			writeByte(_player.hasPremiumStatus()); // bIsPCCafeUser
-			writeByte(holder.useWorldPrefix()); // bWorldInZone
+			buffer.writeInt(remainingTime / 1000); // remain time
+			buffer.writeInt(holder.getMaximumAddedTime() / 1000);
+			buffer.writeInt(_player.getVariables().getInt(PlayerVariables.HUNTING_ZONE_REMAIN_REFILL + holder.getZoneId(), holder.getRemainRefillTime()));
+			buffer.writeInt(holder.getRefillTimeMax());
+			buffer.writeByte(!_isInTimedHuntingZone); // field activated (272 byte to int)
+			buffer.writeByte(0); // bUserBound
+			buffer.writeByte(0); // bCanReEnter
+			buffer.writeByte(holder.zonePremiumUserOnly()); // bIsInZonePCCafeUserOnly
+			buffer.writeByte(_player.hasPremiumStatus()); // bIsPCCafeUser
+			buffer.writeByte(holder.useWorldPrefix()); // bWorldInZone
 		}
 	}
 }

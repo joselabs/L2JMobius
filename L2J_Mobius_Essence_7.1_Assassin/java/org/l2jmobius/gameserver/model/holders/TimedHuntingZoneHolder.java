@@ -50,8 +50,10 @@ public class TimedHuntingZoneHolder
 	private final Location _subEnterLocation2;
 	private final Location _exitLocation;
 	private final List<MapHolder> _maps = new ArrayList<>();
+	private final boolean _isEvenWeek;
+	private final boolean _isSwapWeek;
 	
-	public TimedHuntingZoneHolder(int id, String name, int initialTime, int maximumAddedTime, int resetDelay, int entryItemId, int entryFee, int minLevel, int maxLevel, int remainRefillTime, int refillTimeMax, boolean pvpZone, boolean noPvpZone, int instanceId, boolean soloInstance, boolean weekly, boolean useWorldPrefix, boolean zonePremiumUserOnly, Location enterLocation, Location subEnterLocation1, Location subEnterLocation2, Location exitLocation)
+	public TimedHuntingZoneHolder(int id, String name, int initialTime, int maximumAddedTime, int resetDelay, int entryItemId, int entryFee, int minLevel, int maxLevel, int remainRefillTime, int refillTimeMax, boolean pvpZone, boolean noPvpZone, int instanceId, boolean soloInstance, boolean weekly, boolean useWorldPrefix, boolean zonePremiumUserOnly, Location enterLocation, Location subEnterLocation1, Location subEnterLocation2, Location exitLocation, boolean isEvenWeek, boolean isSwapWeek)
 	{
 		_id = id;
 		_name = name;
@@ -75,6 +77,8 @@ public class TimedHuntingZoneHolder
 		_subEnterLocation1 = subEnterLocation1;
 		_subEnterLocation2 = subEnterLocation2;
 		_exitLocation = exitLocation;
+		_isEvenWeek = isEvenWeek;
+		_isSwapWeek = isSwapWeek;
 		_maps.add(new MapHolder(getMapX(_enterLocation), getMapY(_enterLocation)));
 		if (_subEnterLocation1 != null)
 		{
@@ -199,5 +203,15 @@ public class TimedHuntingZoneHolder
 	public Location getExitLocation()
 	{
 		return _exitLocation;
+	}
+	
+	public boolean isEvenWeek()
+	{
+		return _isEvenWeek;
+	}
+	
+	public boolean isSwapWeek()
+	{
+		return _isSwapWeek;
 	}
 }

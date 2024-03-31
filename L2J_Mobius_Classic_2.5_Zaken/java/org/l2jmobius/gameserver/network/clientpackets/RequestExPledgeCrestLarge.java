@@ -16,32 +16,30 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
 import org.l2jmobius.gameserver.model.Crest;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ExPledgeEmblem;
 
 /**
  * @author -Wooden-, Sdw
  */
-public class RequestExPledgeCrestLarge implements ClientPacket
+public class RequestExPledgeCrestLarge extends ClientPacket
 {
 	private int _crestId;
 	private int _clanId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_crestId = packet.readInt();
-		_clanId = packet.readInt();
+		_crestId = readInt();
+		_clanId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

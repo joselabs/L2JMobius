@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.EnchantSkillGroupsData;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.util.SkillEnchantConverter;
 
@@ -40,18 +42,18 @@ public class ExEnchantSkillInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ENCHANT_SKILL_INFO.writeId(this);
-		writeInt(_skillId);
-		writeInt(_skillSubLevel > 1000 ? SkillEnchantConverter.levelToErtheia(_skillSubLevel) : _skillLevel);
-		writeInt((_skillSubLevel % 1000) != EnchantSkillGroupsData.MAX_ENCHANT_LEVEL);
-		writeInt(_skillSubLevel > 1000);
-		writeInt(_routes.size());
+		ServerPackets.EX_ENCHANT_SKILL_INFO.writeId(this, buffer);
+		buffer.writeInt(_skillId);
+		buffer.writeInt(_skillSubLevel > 1000 ? SkillEnchantConverter.levelToErtheia(_skillSubLevel) : _skillLevel);
+		buffer.writeInt((_skillSubLevel % 1000) != EnchantSkillGroupsData.MAX_ENCHANT_LEVEL);
+		buffer.writeInt(_skillSubLevel > 1000);
+		buffer.writeInt(_routes.size());
 		_routes.forEach(route ->
 		{
 			final int subLevel = (_currentSubLevel > 0 ? (route + (_currentSubLevel % 1000)) - 1 : route);
-			writeInt(subLevel > 1000 ? SkillEnchantConverter.levelToErtheia(subLevel) : subLevel);
+			buffer.writeInt(subLevel > 1000 ? SkillEnchantConverter.levelToErtheia(subLevel) : subLevel);
 		});
 	}
 }

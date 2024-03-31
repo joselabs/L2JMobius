@@ -26,7 +26,6 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.holders.EquipmentUpgradeHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
@@ -70,7 +69,7 @@ public class EquipmentUpgradeData implements IXmlReader
 				{
 					final String[] matValues = mat.split(",");
 					final int matItemId = Integer.parseInt(matValues[0]);
-					if (ItemTable.getInstance().getTemplate(matItemId) == null)
+					if (ItemData.getInstance().getTemplate(matItemId) == null)
 					{
 						LOGGER.info(getClass().getSimpleName() + ": Material item with id " + matItemId + " does not exist.");
 					}
@@ -84,7 +83,7 @@ public class EquipmentUpgradeData implements IXmlReader
 			final String[] resultItem = set.getString("result").split(",");
 			final int resultItemId = Integer.parseInt(resultItem[0]);
 			final int resultItemEnchant = Integer.parseInt(resultItem[1]);
-			if (ItemTable.getInstance().getTemplate(requiredItemId) == null)
+			if (ItemData.getInstance().getTemplate(requiredItemId) == null)
 			{
 				LOGGER.info(getClass().getSimpleName() + ": Required item with id " + requiredItemId + " does not exist.");
 			}

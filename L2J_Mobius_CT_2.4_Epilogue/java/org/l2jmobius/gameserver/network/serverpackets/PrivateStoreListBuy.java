@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class PrivateStoreListBuy extends ServerPacket
@@ -37,34 +39,34 @@ public class PrivateStoreListBuy extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PRIVATE_STORE_BUY_LIST.writeId(this);
-		writeInt(_objId);
-		writeLong(_playerAdena);
-		writeInt(_items.size());
+		ServerPackets.PRIVATE_STORE_BUY_LIST.writeId(this, buffer);
+		buffer.writeInt(_objId);
+		buffer.writeLong(_playerAdena);
+		buffer.writeInt(_items.size());
 		for (TradeItem item : _items)
 		{
-			writeInt(item.getObjectId());
-			writeInt(item.getItem().getId());
-			writeShort(item.getEnchant());
-			writeLong(item.getCount()); // give max possible sell amount
-			writeLong(item.getItem().getReferencePrice());
-			writeShort(0);
-			writeInt(item.getItem().getBodyPart());
-			writeShort(item.getItem().getType2());
-			writeLong(item.getPrice()); // buyers price
-			writeLong(item.getStoreCount()); // maximum possible tradecount
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getItem().getId());
+			buffer.writeShort(item.getEnchant());
+			buffer.writeLong(item.getCount()); // give max possible sell amount
+			buffer.writeLong(item.getItem().getReferencePrice());
+			buffer.writeShort(0);
+			buffer.writeInt(item.getItem().getBodyPart());
+			buffer.writeShort(item.getItem().getType2());
+			buffer.writeLong(item.getPrice()); // buyers price
+			buffer.writeLong(item.getStoreCount()); // maximum possible tradecount
 			// T1
-			writeShort(item.getAttackElementType());
-			writeShort(item.getAttackElementPower());
+			buffer.writeShort(item.getAttackElementType());
+			buffer.writeShort(item.getAttackElementPower());
 			for (byte i = 0; i < 6; i++)
 			{
-				writeShort(item.getElementDefAttr(i));
+				buffer.writeShort(item.getElementDefAttr(i));
 			}
 			for (int op : item.getEnchantOptions())
 			{
-				writeShort(op);
+				buffer.writeShort(op);
 			}
 		}
 	}

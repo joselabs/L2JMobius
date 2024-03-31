@@ -157,7 +157,7 @@ public class PlayerStatus extends PlayableStatus
 				mpDam = (int) (amount - mpDam);
 				if (mpDam > getActiveChar().getCurrentMp())
 				{
-					getActiveChar().sendPacket(SystemMessageId.MP_BECAME_0_AND_THE_ARCANE_SHIELD_IS_DISAPPEARING);
+					getActiveChar().sendMessage("MP became 0 and the Arcane Shield is disappearing.");
 					getActiveChar().stopSkillEffects(SkillFinishType.REMOVED, 1556);
 					amount = mpDam - getActiveChar().getCurrentMp();
 					getActiveChar().setCurrentMp(0);
@@ -165,9 +165,7 @@ public class PlayerStatus extends PlayableStatus
 				else
 				{
 					getActiveChar().reduceCurrentMp(mpDam);
-					final SystemMessage smsg = new SystemMessage(SystemMessageId.ARCANE_SHIELD_DECREASED_YOUR_MP_BY_S1_INSTEAD_OF_HP);
-					smsg.addInt(mpDam);
-					getActiveChar().sendPacket(smsg);
+					getActiveChar().sendMessage("Arcane Shield decreased your MP by " + mpDam + " instead of HP.");
 					return;
 				}
 			}
@@ -246,7 +244,7 @@ public class PlayerStatus extends PlayableStatus
 				
 				if ((tDmg > 0) && (attackerPlayer != null))
 				{
-					smsg = new SystemMessage(SystemMessageId.YOU_HAVE_DEALT_S1_DAMAGE_TO_YOUR_TARGET_AND_S2_DAMAGE_TO_THE_SERVITOR);
+					smsg = new SystemMessage(SystemMessageId.YOU_HAVE_GIVEN_S1_DAMAGE_TO_YOUR_TARGET_AND_S2_DAMAGE_TO_THE_SERVITOR);
 					smsg.addInt(fullValue);
 					smsg.addInt(tDmg);
 					attackerPlayer.sendPacket(smsg);

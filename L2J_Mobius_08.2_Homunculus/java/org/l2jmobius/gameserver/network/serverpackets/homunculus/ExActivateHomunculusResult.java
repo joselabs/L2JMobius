@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -33,19 +35,19 @@ public class ExActivateHomunculusResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ACTIVATE_HOMUNCULUS_RESULT.writeId(this);
-		writeInt(1); // success
+		ServerPackets.EX_ACTIVATE_HOMUNCULUS_RESULT.writeId(this, buffer);
+		buffer.writeInt(1); // success
 		if (_activate)
 		{
-			writeByte(1); // activate
-			writeInt(SystemMessageId.THE_RELATIONS_ARE_BEING_ESTABLISHED.getId());
+			buffer.writeByte(1); // activate
+			buffer.writeInt(SystemMessageId.THE_RELATIONS_ARE_BEING_ESTABLISHED.getId());
 		}
 		else
 		{
-			writeByte(0); // activate
-			writeInt(SystemMessageId.THE_RELATIONS_ARE_BROKEN.getId());
+			buffer.writeByte(0); // activate
+			buffer.writeInt(SystemMessageId.THE_RELATIONS_ARE_BROKEN.getId());
 		}
 	}
 }

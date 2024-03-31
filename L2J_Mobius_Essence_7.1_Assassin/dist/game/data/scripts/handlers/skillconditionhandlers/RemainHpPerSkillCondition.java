@@ -57,6 +57,14 @@ public class RemainHpPerSkillCondition implements ISkillCondition
 				}
 				break;
 			}
+			case SUMMON:
+			{
+				if (caster.hasServitors())
+				{
+					return _percentType.test(caster.getActingPlayer().getAnyServitor().getCurrentHpPercent(), _amount);
+				}
+				break;
+			}
 		}
 		return false;
 	}

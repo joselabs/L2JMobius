@@ -16,29 +16,27 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.settings;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.settings.ExItemAnnounceSetting;
 
 /**
  * @author Index
  */
-public class ExSaveItemAnnounceSetting implements ClientPacket
+public class ExSaveItemAnnounceSetting extends ClientPacket
 {
 	private boolean _announceType;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_announceType = packet.readByte() == 1;
+		_announceType = readByte() == 1;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

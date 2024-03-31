@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.balthusevent;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.events.BalthusEventManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,16 +38,16 @@ public class ExBalthusEvent extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_BALTHUS_EVENT.writeId(this);
-		writeInt(BalthusEventManager.getInstance().getCurrentState()); // CurrentState (max 24, because 1 state going 1 hour)
-		writeInt(BalthusEventManager.getInstance().getCurrentProgress()); // Progress
-		writeInt(BalthusEventManager.getInstance().getCurrRewardItem()); // CurrentRewardItem (current event item, what can be rewarded)
-		writeInt(_player.getVariables().getInt(PlayerVariables.BALTHUS_REWARD, 0)); // RewardTokenCount (current items for withdraw (available rewards))
-		writeInt((int) BalthusEventManager.getInstance().getConsolation().getCount()); // CurrentTokenCount (current count of "consolation prize")
-		writeInt(BalthusEventManager.getInstance().isPlayerParticipant(_player)); // Participated (player in event?)
-		writeByte(!BalthusEventManager.getInstance().isRunning()); // Running (0 - already someone get this reward ? / 1 - item can be rewarded)
-		writeInt(BalthusEventManager.getInstance().getTime()); // Time (in seconds)
+		ServerPackets.EX_BALTHUS_EVENT.writeId(this, buffer);
+		buffer.writeInt(BalthusEventManager.getInstance().getCurrentState()); // CurrentState (max 24, because 1 state going 1 hour)
+		buffer.writeInt(BalthusEventManager.getInstance().getCurrentProgress()); // Progress
+		buffer.writeInt(BalthusEventManager.getInstance().getCurrRewardItem()); // CurrentRewardItem (current event item, what can be rewarded)
+		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.BALTHUS_REWARD, 0)); // RewardTokenCount (current items for withdraw (available rewards))
+		buffer.writeInt((int) BalthusEventManager.getInstance().getConsolation().getCount()); // CurrentTokenCount (current count of "consolation prize")
+		buffer.writeInt(BalthusEventManager.getInstance().isPlayerParticipant(_player)); // Participated (player in event?)
+		buffer.writeByte(!BalthusEventManager.getInstance().isRunning()); // Running (0 - already someone get this reward ? / 1 - item can be rewarded)
+		buffer.writeInt(BalthusEventManager.getInstance().getTime()); // Time (in seconds)
 	}
 }

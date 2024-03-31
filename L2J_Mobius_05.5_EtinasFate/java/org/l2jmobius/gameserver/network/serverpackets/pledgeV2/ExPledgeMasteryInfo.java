@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgeV2;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.ClanMasteryData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.holders.ClanMasteryHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.AbstractItemPacket;
 
@@ -36,7 +38,7 @@ public class ExPledgeMasteryInfo extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		final Clan clan = _player.getClan();
 		if (clan == null)
@@ -44,17 +46,17 @@ public class ExPledgeMasteryInfo extends AbstractItemPacket
 			return;
 		}
 		
-		ServerPackets.EX_PLEDGE_MASTERY_INFO.writeId(this);
-		writeInt(clan.getUsedDevelopmentPoints()); // Consumed development points
-		writeInt(clan.getTotalDevelopmentPoints()); // Total development points
-		writeInt(16); // Mastery count
+		ServerPackets.EX_PLEDGE_MASTERY_INFO.writeId(this, buffer);
+		buffer.writeInt(clan.getUsedDevelopmentPoints()); // Consumed development points
+		buffer.writeInt(clan.getTotalDevelopmentPoints()); // Total development points
+		buffer.writeInt(16); // Mastery count
 		for (ClanMasteryHolder mastery : ClanMasteryData.getInstance().getMasteries())
 		{
 			if (mastery.getId() < 17)
 			{
 				final int id = mastery.getId();
-				writeInt(id); // Mastery
-				writeInt(0); // ?
+				buffer.writeInt(id); // Mastery
+				buffer.writeInt(0); // ?
 				boolean available = true;
 				if (clan.getLevel() < mastery.getClanLevel())
 				{
@@ -73,7 +75,7 @@ public class ExPledgeMasteryInfo extends AbstractItemPacket
 						available = clan.hasMastery(previous);
 					}
 				}
-				writeByte(clan.hasMastery(id) ? 2 : available ? 1 : 0); // Availability.
+				buffer.writeByte(clan.hasMastery(id) ? 2 : available ? 1 : 0); // Availability.
 			}
 		}
 	}

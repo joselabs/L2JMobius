@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgeV2;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -32,9 +34,9 @@ public class ExPledgeItemBuy extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_ITEM_BUY.writeId(this);
-		writeInt(_result); // 0 success, 2 not authorized, 3 trade requirements not met
+		ServerPackets.EX_PLEDGE_ITEM_BUY.writeId(this, buffer);
+		buffer.writeInt(_result); // 0 success, 2 not authorized, 3 trade requirements not met
 	}
 }

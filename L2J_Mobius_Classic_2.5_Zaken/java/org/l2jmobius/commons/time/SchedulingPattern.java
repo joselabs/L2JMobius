@@ -18,14 +18,17 @@ package org.l2jmobius.commons.time;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.TimeZone;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 import org.l2jmobius.commons.util.Rnd;
+import org.l2jmobius.gameserver.util.Util;
 
 /**
  * <p>
@@ -843,6 +846,25 @@ public class SchedulingPattern
 		{
 			return value == getLastDayOfMonth(month, isLeapYear);
 		}
+	}
+	
+	/**
+	 * It returns the next matching moment as a long.
+	 * @return The next matching moment as a long.
+	 */
+	public long getDelayToNextFromNow()
+	{
+		return next(System.currentTimeMillis()) - System.currentTimeMillis();
+	}
+	
+	public long getOffsettedDelayToNextFromNow(int offsetInMinutes)
+	{
+		return Math.max(0, getDelayToNextFromNow() - TimeUnit.MINUTES.toMillis(offsetInMinutes));
+	}
+	
+	public String getNextAsFormattedDateString()
+	{
+		return Util.formatDate(new Date(next(System.currentTimeMillis())), "dd.MM.yyyy HH:mm:ss");
 	}
 	
 	/**

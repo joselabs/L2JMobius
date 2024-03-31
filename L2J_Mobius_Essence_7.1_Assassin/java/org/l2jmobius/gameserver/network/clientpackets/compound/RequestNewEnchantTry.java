@@ -24,7 +24,6 @@ import org.l2jmobius.gameserver.model.item.combination.CombinationItem;
 import org.l2jmobius.gameserver.model.item.combination.CombinationItemReward;
 import org.l2jmobius.gameserver.model.item.combination.CombinationItemType;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -33,14 +32,19 @@ import org.l2jmobius.gameserver.network.serverpackets.compound.ExEnchantOneFail;
 import org.l2jmobius.gameserver.network.serverpackets.compound.ExEnchantSucess;
 
 /**
- * @author UnAfraid
+ * @author UnAfraid, nasseka
  */
-public class RequestNewEnchantTry implements ClientPacket
+public class RequestNewEnchantTry extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -98,7 +102,7 @@ public class RequestNewEnchantTry implements ClientPacket
 		
 		if (combinationItem.getCommission() > player.getAdena())
 		{
-			client.sendPacket(new ExEnchantFail(itemOne.getId(), itemTwo.getId()));
+			player.sendPacket(new ExEnchantFail(itemOne.getId(), itemTwo.getId()));
 			player.removeRequest(request.getClass());
 			player.sendPacket(SystemMessageId.NOT_ENOUGH_ADENA);
 			return;
@@ -110,23 +114,28 @@ public class RequestNewEnchantTry implements ClientPacket
 		final CombinationItemReward rewardItem = combinationItem.getReward(success ? CombinationItemType.ON_SUCCESS : CombinationItemType.ON_FAILURE);
 		
 		// Add item (early).
-		final Item item = player.addItem("Compound-Result", rewardItem.getId(), rewardItem.getCount(), rewardItem.getEnchantLevel(), null, true);
+		final int itemId = rewardItem.getId();
+		final Item item = itemId == 0 ? null : player.addItem("Compound-Result", itemId, rewardItem.getCount(), rewardItem.getEnchantLevel(), null, true);
 		
-		// Send success or fail packet.
+		// Send success or fail.
 		if (success)
 		{
-			player.sendPacket(new ExEnchantSucess(item.getId()));
+			player.sendPacket(new ExEnchantSucess(itemId, rewardItem.getEnchantLevel()));
 		}
 		else
 		{
-			player.sendPacket(new ExEnchantFail(item.getId(), itemTwo.getId()));
+			player.sendPacket(new ExEnchantSucess(itemId, rewardItem.getEnchantLevel()));
 		}
 		
 		// Take required items.
 		if (player.destroyItem("Compound-Item-One", itemOne, 1, null, true) && player.destroyItem("Compound-Item-Two", itemTwo, 1, null, true) && ((combinationItem.getCommission() <= 0) || player.reduceAdena("Compound-Commission", combinationItem.getCommission(), player, true)))
 		{
 			final InventoryUpdate iu = new InventoryUpdate();
-			iu.addModifiedItem(item);
+			if (item != null)
+			{
+				iu.addModifiedItem(item);
+			}
+			
 			if (itemOne.isStackable() && (itemOne.getCount() > 0))
 			{
 				iu.addModifiedItem(itemOne);

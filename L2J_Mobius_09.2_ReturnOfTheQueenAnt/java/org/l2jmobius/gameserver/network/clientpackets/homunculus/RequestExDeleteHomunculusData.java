@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.homunculus;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.homunculus.Homunculus;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExDeleteHomunculusDataResult;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExShowHomunculusList;
@@ -27,26 +25,32 @@ import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExShowHomunculu
 /**
  * @author Mobius
  */
-public class RequestExDeleteHomunculusData implements ClientPacket
+public class RequestExDeleteHomunculusData extends ClientPacket
 {
 	private int _slot;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_slot = packet.readInt(); // Position?
+		_slot = readInt(); // Position?
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
 		final Homunculus homunculus = player.getHomunculusList().get(_slot);
+		if (homunculus.isActive())
+		{
+			player.sendMessage("A homunculus can't be destroyed if there are established relations with it. Break the relations and try again.");
+			return;
+		}
+		
 		if (player.getHomunculusList().remove(homunculus))
 		{
 			player.sendPacket(new ExDeleteHomunculusDataResult());

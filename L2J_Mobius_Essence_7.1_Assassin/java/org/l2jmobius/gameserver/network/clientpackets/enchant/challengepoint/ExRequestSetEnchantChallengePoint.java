@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.enchant.challengepoint;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.EnchantChallengePointData;
 import org.l2jmobius.gameserver.data.xml.EnchantChallengePointData.EnchantChallengePointsItemInfo;
 import org.l2jmobius.gameserver.data.xml.EnchantChallengePointData.EnchantChallengePointsOptionInfo;
@@ -27,7 +26,6 @@ import org.l2jmobius.gameserver.model.item.enchant.EnchantScroll;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.CrystalType;
 import org.l2jmobius.gameserver.model.stats.Stat;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.enchant.challengepoint.ExEnchantChallengePointInfo;
 import org.l2jmobius.gameserver.network.serverpackets.enchant.challengepoint.ExSetEnchantChallengePoint;
@@ -37,22 +35,22 @@ import org.l2jmobius.gameserver.network.serverpackets.enchant.single.ExChangedEn
 /**
  * @author Serenitty
  */
-public class ExRequestSetEnchantChallengePoint implements ClientPacket
+public class ExRequestSetEnchantChallengePoint extends ClientPacket
 {
 	private int _useType;
 	private boolean _useTicket;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_useType = packet.readInt();
-		_useTicket = packet.readBoolean();
+		_useType = readInt();
+		_useTicket = readBoolean();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

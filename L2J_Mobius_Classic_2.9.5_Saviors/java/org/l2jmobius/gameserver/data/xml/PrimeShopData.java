@@ -28,7 +28,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -101,7 +100,7 @@ public class PrimeShopData implements IXmlReader
 									
 									final int itemId = parseInteger(attrs, "itemId");
 									final int count = parseInteger(attrs, "count");
-									final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+									final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 									if (item == null)
 									{
 										LOGGER.severe(getClass().getSimpleName() + ": Item template null for itemId: " + itemId + " brId: " + set.getInt("id"));

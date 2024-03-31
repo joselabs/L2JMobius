@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets.vip;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.vip.VipManager;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -35,7 +37,7 @@ public class ReceiveVipInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (!Config.VIP_SYSTEM_ENABLED)
 		{
@@ -46,13 +48,13 @@ public class ReceiveVipInfo extends ServerPacket
 		final byte vipTier = _player.getVipTier();
 		final int vipDuration = (int) ChronoUnit.SECONDS.between(Instant.now(), Instant.ofEpochMilli(_player.getVipTierExpiration()));
 		
-		ServerPackets.RECIVE_VIP_INFO.writeId(this);
-		writeByte(vipTier);
-		writeLong(_player.getVipPoints());
-		writeInt(vipDuration);
-		writeLong(vipManager.getPointsToLevel((byte) (vipTier + 1)));
-		writeLong(vipManager.getPointsDepreciatedOnLevel(vipTier));
-		writeByte(vipTier);
-		writeLong(vipManager.getPointsToLevel(vipTier));
+		ServerPackets.RECIVE_VIP_INFO.writeId(this, buffer);
+		buffer.writeByte(vipTier);
+		buffer.writeLong(_player.getVipPoints());
+		buffer.writeInt(vipDuration);
+		buffer.writeLong(vipManager.getPointsToLevel((byte) (vipTier + 1)));
+		buffer.writeLong(vipManager.getPointsDepreciatedOnLevel(vipTier));
+		buffer.writeByte(vipTier);
+		buffer.writeLong(vipManager.getPointsToLevel(vipTier));
 	}
 }

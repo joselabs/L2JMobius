@@ -90,6 +90,7 @@ public class DraconidFortress extends AbstractInstance
 		addKillId(MONSTERS);
 		addKillId(RED_DRACONID_FOLLOWER_MONSTER_ID);
 		addKillId(TIAD, BAINT);
+		addInstanceCreatedId(INSTANCE_ID);
 		setInstanceStatusChangeId(this::onInstanceStatusChange, INSTANCE_ID);
 	}
 	
@@ -304,9 +305,6 @@ public class DraconidFortress extends AbstractInstance
 		getDoor(SECOND_DOOR, instanceId).broadcastInfo();
 		getDoor(CLOSED_DOOR[0], instanceId).broadcastInfo();
 		getDoor(CLOSED_DOOR[1], instanceId).broadcastInfo();
-		/*
-		 * instance.broadcastPacket(new StaticObject(getDoor(FIRST_DOOR, instanceId), false)); instance.broadcastPacket(new StaticObject(getDoor(SECOND_DOOR, instanceId), false));
-		 */
 		super.onInstanceCreated(instance, player);
 	}
 	

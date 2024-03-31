@@ -603,7 +603,7 @@ public enum AbnormalType
 	BR_CLAN_XP(998),
 	BR_CLAN_ATTACK(999);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	protected static final Logger LOGGER = Logger.getLogger(AbnormalType.class.getName());
 	

@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.huntpass;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.HuntPass;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -29,7 +31,7 @@ public class HuntPassInfo extends ServerPacket
 	private final int _interfaceType;
 	private final HuntPass _huntPass;
 	private final int _timeEnd;
-	private final int _isPremium;
+	private final boolean _isPremium;
 	private final int _points;
 	private final int _step;
 	private final int _rewardStep;
@@ -37,28 +39,26 @@ public class HuntPassInfo extends ServerPacket
 	
 	public HuntPassInfo(Player player, int interfaceType)
 	{
-		
 		_interfaceType = interfaceType;
 		_huntPass = player.getHuntPass();
 		_timeEnd = _huntPass.getHuntPassDayEnd();
-		_isPremium = _huntPass.isPremium() ? 1 : 0;
+		_isPremium = _huntPass.isPremium();
 		_points = _huntPass.getPoints();
 		_step = _huntPass.getCurrentStep();
 		_rewardStep = _huntPass.getRewardStep();
 		_premiumRewardStep = _huntPass.getPremiumRewardStep();
-		
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_L2PASS_INFO.writeId(this);
-		writeByte(_interfaceType);
-		writeInt(_timeEnd); // LeftTime
-		writeByte(_isPremium); // Premium
-		writeInt(_points); // Points
-		writeInt(_step); // CurrentStep
-		writeInt(_rewardStep); // Reward
-		writeInt(_premiumRewardStep); // PremiumReward
+		ServerPackets.EX_L2PASS_INFO.writeId(this, buffer);
+		buffer.writeByte(_interfaceType);
+		buffer.writeInt(_timeEnd); // LeftTime
+		buffer.writeByte(_isPremium); // Premium
+		buffer.writeInt(_points); // Points
+		buffer.writeInt(_step); // CurrentStep
+		buffer.writeInt(_rewardStep); // Reward
+		buffer.writeInt(_premiumRewardStep); // PremiumReward
 	}
 }

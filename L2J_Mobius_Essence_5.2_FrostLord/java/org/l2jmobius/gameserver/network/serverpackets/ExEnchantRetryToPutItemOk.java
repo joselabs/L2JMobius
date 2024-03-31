@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -30,8 +32,8 @@ public class ExEnchantRetryToPutItemOk extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ENCHANT_RETRY_TO_PUT_ITEM_OK.writeId(this);
+		ServerPackets.EX_ENCHANT_RETRY_TO_PUT_ITEM_OK.writeId(this, buffer);
 	}
 }

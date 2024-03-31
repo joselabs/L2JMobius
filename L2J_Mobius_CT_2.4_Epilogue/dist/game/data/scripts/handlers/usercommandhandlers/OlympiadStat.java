@@ -69,7 +69,7 @@ public class OlympiadStat implements IUserCommandHandler
 			return false;
 		}
 		
-		final SystemMessage sm = new SystemMessage(SystemMessageId.FOR_THE_CURRENT_GRAND_OLYMPIAD_YOU_HAVE_PARTICIPATED_IN_S1_MATCH_ES_S2_WIN_S_AND_S3_DEFEAT_S_YOU_CURRENTLY_HAVE_S4_OLYMPIAD_POINT_S);
+		final SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_CURRENT_RECORD_FOR_THIS_GRAND_OLYMPIAD_IS_S1_MATCH_ES_S2_WIN_S_AND_S3_DEFEAT_S_YOU_HAVE_EARNED_S4_OLYMPIAD_POINT_S);
 		sm.addInt(Olympiad.getInstance().getCompetitionDone(nobleObjId));
 		sm.addInt(Olympiad.getInstance().getCompetitionWon(nobleObjId));
 		sm.addInt(Olympiad.getInstance().getCompetitionLost(nobleObjId));

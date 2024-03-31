@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.l2jmobius.commons.util.CommonUtil;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.instancemanager.QuestManager;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -239,7 +239,7 @@ public class Q10814_BefittingOfTheStatus extends Quest
 				for (int i = 1; i < 5; i++)
 				{
 					final int itemId = qs.getMemoStateEx(i);
-					final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+					final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 					if (item != null)
 					{
 						htmlFile.replace("%slot" + i + "%", item.getName());
@@ -251,7 +251,7 @@ public class Q10814_BefittingOfTheStatus extends Quest
 				{
 					if (!itemList.contains(itemId))
 					{
-						final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+						final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 						if (item != null)
 						{
 							sb.append("<Button ALIGN=LEFT ICON=\"NORMAL\" action=\"bypass -h Quest Q10814_BefittingOfTheStatus insertItem_" + itemId + "\">" + item.getName() + "</Button>");

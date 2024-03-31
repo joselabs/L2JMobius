@@ -18,6 +18,8 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -37,15 +39,15 @@ public class ExRaidDropItemAnnounce extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RAID_DROP_ITEM_ANNOUNCE.writeId(this);
-		writeSizedString(_killerName);
-		writeInt(_npcId);
-		writeInt(_items.size());
+		ServerPackets.EX_RAID_DROP_ITEM_ANNOUNCE.writeId(this, buffer);
+		buffer.writeSizedString(_killerName);
+		buffer.writeInt(_npcId);
+		buffer.writeInt(_items.size());
 		for (int itemId : _items)
 		{
-			writeInt(itemId);
+			buffer.writeInt(itemId);
 		}
 	}
 }

@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.LoginServerThread;
 import org.l2jmobius.gameserver.cache.HtmCache;
@@ -116,34 +115,35 @@ import org.l2jmobius.gameserver.util.Util;
  * packet format rev87 bddddbdcccccccccccccccccccc
  * <p>
  */
-public class EnterWorld implements ClientPacket
+public class EnterWorld extends ClientPacket
 {
 	private static final Map<String, ClientHardwareInfoHolder> TRACE_HWINFO = new ConcurrentHashMap<>();
 	
 	private final int[][] _tracert = new int[5][4];
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readBytes(32); // Unknown Byte Array
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readBytes(32); // Unknown Byte Array
-		packet.readInt(); // Unknown Value
+		readBytes(32); // Unknown Byte Array
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readBytes(32); // Unknown Byte Array
+		readInt(); // Unknown Value
 		for (int i = 0; i < 5; i++)
 		{
 			for (int o = 0; o < 4; o++)
 			{
-				_tracert[i][o] = packet.readByte();
+				_tracert[i][o] = readUnsignedByte();
 			}
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
+		final GameClient client = getClient();
 		final Player player = client.getPlayer();
 		if (player == null)
 		{
@@ -460,7 +460,7 @@ public class EnterWorld implements ClientPacket
 		// Expand Skill
 		player.sendPacket(new ExStorageMaxCount(player));
 		player.sendPacket(new FriendList(player));
-		SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_FRIEND_S1_JUST_LOGGED_IN);
+		SystemMessage sm = new SystemMessage(SystemMessageId.S1_FRIEND_HAS_LOGGED_IN);
 		sm.addString(player.getName());
 		for (int id : player.getFriendList())
 		{
@@ -633,13 +633,13 @@ public class EnterWorld implements ClientPacket
 			now.setTimeInMillis(System.currentTimeMillis());
 			if ((nextBirthday == null) || (Integer.parseInt(nextBirthday) == now.get(Calendar.YEAR)))
 			{
-				player.sendPacket(SystemMessageId.HAPPY_BIRTHDAY_ALEGRIA_HAS_SENT_YOU_A_BIRTHDAY_GIFT);
+				player.sendPacket(SystemMessageId.YOUR_BIRTHDAY_GIFT_HAS_ARRIVED_YOU_CAN_OBTAIN_IT_FROM_THE_GATEKEEPER_IN_ANY_VILLAGE);
 				player.sendPacket(new ExBirthdayPopup());
 			}
 		}
 		else if (birthday != -1)
 		{
-			sm = new SystemMessage(SystemMessageId.THERE_ARE_S1_DAYS_REMAINING_UNTIL_YOUR_BIRTHDAY_ON_YOUR_BIRTHDAY_YOU_WILL_RECEIVE_A_GIFT_THAT_ALEGRIA_HAS_CAREFULLY_PREPARED);
+			sm = new SystemMessage(SystemMessageId.THERE_ARE_S1_DAYS_UNTIL_YOUR_CHARACTER_S_BIRTHDAY_ON_THAT_DAY_YOU_CAN_OBTAIN_A_SPECIAL_GIFT_FROM_THE_GATEKEEPER_IN_ANY_VILLAGE);
 			sm.addString(Integer.toString(birthday));
 			player.sendPacket(sm);
 		}

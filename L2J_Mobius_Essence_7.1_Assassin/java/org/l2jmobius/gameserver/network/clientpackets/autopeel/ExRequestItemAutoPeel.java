@@ -18,38 +18,36 @@ package org.l2jmobius.gameserver.network.clientpackets.autopeel;
 
 import java.util.Collections;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.handler.ItemHandler;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.AutoPeelRequest;
 import org.l2jmobius.gameserver.model.item.EtcItem;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.autopeel.ExResultItemAutoPeel;
 
 /**
  * @author Mobius
  */
-public class ExRequestItemAutoPeel implements ClientPacket
+public class ExRequestItemAutoPeel extends ClientPacket
 {
 	private int _itemObjectId;
 	private long _totalPeelCount;
 	private long _remainingPeelCount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemObjectId = packet.readInt();
-		_totalPeelCount = packet.readLong();
-		_remainingPeelCount = packet.readLong();
+		_itemObjectId = readInt();
+		_totalPeelCount = readLong();
+		_remainingPeelCount = readLong();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -63,6 +61,7 @@ public class ExRequestItemAutoPeel implements ClientPacket
 			{
 				return;
 			}
+			
 			request = new AutoPeelRequest(player, item);
 			player.addRequest(request);
 		}

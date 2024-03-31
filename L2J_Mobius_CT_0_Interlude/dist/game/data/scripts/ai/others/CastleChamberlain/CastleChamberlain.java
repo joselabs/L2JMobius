@@ -1355,7 +1355,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (manor.isManorApproved())
 					{
-						player.sendPacket(SystemMessageId.A_MANOR_CANNOT_BE_SET_UP_BETWEEN_4_30_AM_AND_8_PM);
+						player.sendPacket(SystemMessageId.A_MANOR_CANNOT_BE_SET_UP_BETWEEN_6_A_M_AND_8_P_M);
 						return;
 					}
 					player.sendPacket(new ExShowSeedSetting(castleId));
@@ -1365,7 +1365,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (manor.isManorApproved())
 					{
-						player.sendPacket(SystemMessageId.A_MANOR_CANNOT_BE_SET_UP_BETWEEN_4_30_AM_AND_8_PM);
+						player.sendPacket(SystemMessageId.A_MANOR_CANNOT_BE_SET_UP_BETWEEN_6_A_M_AND_8_P_M);
 						return;
 					}
 					player.sendPacket(new ExShowCropSetting(castleId));

@@ -17,13 +17,11 @@
 package org.l2jmobius.gameserver.network.clientpackets.attributechange;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.enchant.attribute.AttributeHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -35,24 +33,24 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @author Mobius
  */
-public class RequestChangeAttributeItem implements ClientPacket
+public class RequestChangeAttributeItem extends ClientPacket
 {
 	private int _consumeItemId;
 	private int _itemObjId;
 	private int _newElementId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_consumeItemId = packet.readInt();
-		_itemObjId = packet.readInt();
-		_newElementId = packet.readInt();
+		_consumeItemId = readInt();
+		_itemObjId = readInt();
+		_newElementId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

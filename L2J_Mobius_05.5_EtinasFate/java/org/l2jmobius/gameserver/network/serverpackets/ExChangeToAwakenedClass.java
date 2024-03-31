@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -31,9 +33,9 @@ public class ExChangeToAwakenedClass extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_CHANGE_TO_AWAKENED_CLASS.writeId(this);
-		writeInt(_classId);
+		ServerPackets.EX_CHANGE_TO_AWAKENED_CLASS.writeId(this, buffer);
+		buffer.writeInt(_classId);
 	}
 }

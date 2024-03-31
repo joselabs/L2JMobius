@@ -19,10 +19,8 @@ package org.l2jmobius.gameserver.network.clientpackets.herobook;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.herobook.HeroBookManager;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.herobook.ExHeroBookCharge;
 import org.l2jmobius.gameserver.network.serverpackets.herobook.ExHeroBookInfo;
@@ -30,18 +28,18 @@ import org.l2jmobius.gameserver.network.serverpackets.herobook.ExHeroBookInfo;
 /**
  * @author Index
  */
-public class RequestHeroBookCharge implements ClientPacket
+public class RequestHeroBookCharge extends ClientPacket
 {
 	private final Map<Integer, Long> _items = new HashMap<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int size = packet.readInt();
+		final int size = readInt();
 		for (int curr = 0; curr < size; curr++)
 		{
-			final int id = packet.readInt();
-			final long count = packet.readLong();
+			final int id = readInt();
+			final long count = readLong();
 			if ((count < 1) || (count > 10000))
 			{
 				_items.clear();
@@ -52,9 +50,9 @@ public class RequestHeroBookCharge implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

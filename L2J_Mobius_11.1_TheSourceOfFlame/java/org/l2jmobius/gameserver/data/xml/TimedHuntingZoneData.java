@@ -98,6 +98,8 @@ public class TimedHuntingZoneData implements IXmlReader
 							Location subEnterLocation1 = null;
 							Location subEnterLocation2 = null;
 							Location exitLocation = null;
+							boolean isEvenWeek = true;
+							boolean isSwapWeek = false;
 							for (Node zoneNode = listNode.getFirstChild(); zoneNode != null; zoneNode = zoneNode.getNextSibling())
 							{
 								switch (zoneNode.getNodeName())
@@ -206,9 +208,19 @@ public class TimedHuntingZoneData implements IXmlReader
 										zonePremiumUserOnly = Boolean.parseBoolean(zoneNode.getTextContent());
 										break;
 									}
+									
+									case "isEvenWeek":
+									{
+										isEvenWeek = Boolean.parseBoolean(zoneNode.getTextContent());
+										break;
+									}
+									case "isSwapWeek":
+									{
+										isSwapWeek = Boolean.parseBoolean(zoneNode.getTextContent());
+									}
 								}
 							}
-							_timedHuntingZoneData.put(id, new TimedHuntingZoneHolder(id, name, initialTime, maxAddedTime, resetDelay, entryItemId, entryFee, minLevel, maxLevel, remainRefillTime, refillTimeMax, pvpZone, noPvpZone, instanceId, soloInstance, weekly, useWorldPrefix, zonePremiumUserOnly, enterLocation, subEnterLocation1, subEnterLocation2, exitLocation));
+							_timedHuntingZoneData.put(id, new TimedHuntingZoneHolder(id, name, initialTime, maxAddedTime, resetDelay, entryItemId, entryFee, minLevel, maxLevel, remainRefillTime, refillTimeMax, pvpZone, noPvpZone, instanceId, soloInstance, weekly, useWorldPrefix, zonePremiumUserOnly, enterLocation, subEnterLocation1, subEnterLocation2, exitLocation, isEvenWeek, isSwapWeek));
 						}
 					}
 				}

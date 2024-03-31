@@ -19,8 +19,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class QuestList extends ServerPacket
@@ -50,15 +52,15 @@ public class QuestList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.QUEST_LIST.writeId(this);
-		writeShort(_activeQuests.size());
+		ServerPackets.QUEST_LIST.writeId(this, buffer);
+		buffer.writeShort(_activeQuests.size());
 		for (QuestState qs : _activeQuests)
 		{
-			writeInt(qs.getQuest().getId());
-			writeInt(qs.getCondBitSet());
+			buffer.writeInt(qs.getQuest().getId());
+			buffer.writeInt(qs.getCondBitSet());
 		}
-		writeBytes(_oneTimeQuestMask);
+		buffer.writeBytes(_oneTimeQuestMask);
 	}
 }

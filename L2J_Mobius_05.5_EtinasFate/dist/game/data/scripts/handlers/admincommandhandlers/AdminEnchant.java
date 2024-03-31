@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.cache.HtmCache;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -432,7 +432,7 @@ public class AdminEnchant implements IAdminCommandHandler
 			int currentEnch = 0;
 			for (int i = 0; i < 21; i++)
 			{
-				final ItemTemplate item = ItemTable.getInstance().getTemplate(player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_ARTIFACT1 + i));
+				final ItemTemplate item = ItemData.getInstance().getTemplate(player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_ARTIFACT1 + i));
 				findItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_ARTIFACT1 + i);
 				if (findItem != null) // null check for unequipped slots
 				{
@@ -470,7 +470,7 @@ public class AdminEnchant implements IAdminCommandHandler
 			int currentEnch = 0;
 			for (int i = 0; i < 5; i++)
 			{
-				final ItemTemplate item = ItemTable.getInstance().getTemplate(player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_AGATHION1 + i));
+				final ItemTemplate item = ItemData.getInstance().getTemplate(player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_AGATHION1 + i));
 				findItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_AGATHION1 + i);
 				if (findItem != null) // null check for unequipped slots
 				{

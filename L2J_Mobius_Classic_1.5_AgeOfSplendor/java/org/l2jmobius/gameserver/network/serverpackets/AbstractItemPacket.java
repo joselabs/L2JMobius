@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.ItemListType;
 import org.l2jmobius.gameserver.model.ItemInfo;
@@ -41,74 +42,74 @@ public abstract class AbstractItemPacket extends AbstractMaskPacket<ItemListType
 		return MASKS;
 	}
 	
-	protected void writeItem(TradeItem item)
+	protected void writeItem(TradeItem item, WritableBuffer buffer)
 	{
-		writeItem(new ItemInfo(item));
+		writeItem(new ItemInfo(item), buffer);
 	}
 	
-	protected void writeItem(WarehouseItem item)
+	protected void writeItem(WarehouseItem item, WritableBuffer buffer)
 	{
-		writeItem(new ItemInfo(item));
+		writeItem(new ItemInfo(item), buffer);
 	}
 	
-	protected void writeItem(Item item)
+	protected void writeItem(Item item, WritableBuffer buffer)
 	{
-		writeItem(new ItemInfo(item));
+		writeItem(new ItemInfo(item), buffer);
 	}
 	
-	protected void writeItem(Product item)
+	protected void writeItem(Product item, WritableBuffer buffer)
 	{
-		writeItem(new ItemInfo(item));
+		writeItem(new ItemInfo(item), buffer);
 	}
 	
-	protected void writeTradeItem(TradeItem item)
+	protected void writeTradeItem(TradeItem item, WritableBuffer buffer)
 	{
-		writeShort(item.getItem().getType1());
-		writeInt(item.getObjectId()); // ObjectId
-		writeInt(item.getItem().getDisplayId()); // ItemId
-		writeLong(item.getCount()); // Quantity
-		writeByte(item.getItem().getType2()); // Item Type 2 : 00-weapon, 01-shield/armor, 02-ring/earring/necklace, 03-questitem, 04-adena, 05-item
-		writeByte(item.getCustomType1()); // Filler (always 0)
-		writeLong(item.getItem().getBodyPart()); // Slot : 0006-lr.ear, 0008-neck, 0030-lr.finger, 0040-head, 0100-l.hand, 0200-gloves, 0400-chest, 0800-pants, 1000-feet, 4000-r.hand, 8000-r.hand
-		writeShort(item.getEnchant()); // Enchant level (pet level shown in control item)
-		writeShort(0); // Equipped : 00-No, 01-yes
-		writeShort(item.getCustomType2());
-		writeItemElementalAndEnchant(new ItemInfo(item));
+		buffer.writeShort(item.getItem().getType1());
+		buffer.writeInt(item.getObjectId()); // ObjectId
+		buffer.writeInt(item.getItem().getDisplayId()); // ItemId
+		buffer.writeLong(item.getCount()); // Quantity
+		buffer.writeByte(item.getItem().getType2()); // Item Type 2 : 00-weapon, 01-shield/armor, 02-ring/earring/necklace, 03-questitem, 04-adena, 05-item
+		buffer.writeByte(item.getCustomType1()); // Filler (always 0)
+		buffer.writeLong(item.getItem().getBodyPart()); // Slot : 0006-lr.ear, 0008-neck, 0030-lr.finger, 0040-head, 0100-l.hand, 0200-gloves, 0400-chest, 0800-pants, 1000-feet, 4000-r.hand, 8000-r.hand
+		buffer.writeShort(item.getEnchant()); // Enchant level (pet level shown in control item)
+		buffer.writeShort(0); // Equipped : 00-No, 01-yes
+		buffer.writeShort(item.getCustomType2());
+		writeItemElementalAndEnchant(new ItemInfo(item), buffer);
 	}
 	
-	protected void writeItem(ItemInfo item)
+	protected void writeItem(ItemInfo item, WritableBuffer buffer)
 	{
 		final int mask = calculateMask(item);
 		// cddcQcchQccddc
-		writeByte(mask);
-		writeInt(item.getObjectId()); // ObjectId
-		writeInt(item.getItem().getDisplayId()); // ItemId
-		writeByte(item.getItem().isQuestItem() || (item.getEquipped() == 1) ? 0xFF : item.getLocation()); // T1
-		writeLong(item.getCount()); // Quantity
-		writeByte(item.getItem().getType2()); // Item Type 2 : 00-weapon, 01-shield/armor, 02-ring/earring/necklace, 03-questitem, 04-adena, 05-item
-		writeByte(item.getCustomType1()); // Filler (always 0)
-		writeShort(item.getEquipped()); // Equipped : 00-No, 01-yes
-		writeLong(item.getItem().getBodyPart()); // Slot : 0006-lr.ear, 0008-neck, 0030-lr.finger, 0040-head, 0100-l.hand, 0200-gloves, 0400-chest, 0800-pants, 1000-feet, 4000-r.hand, 8000-r.hand
-		writeByte(item.getEnchantLevel()); // Enchant level (pet level shown in control item)
-		writeByte(item.getCustomType2()); // Pet name exists or not shown in control item
-		writeInt(item.getMana());
-		writeInt(item.getTime());
-		writeByte(item.isAvailable()); // GOD Item enabled = 1 disabled (red) = 0
+		buffer.writeByte(mask);
+		buffer.writeInt(item.getObjectId()); // ObjectId
+		buffer.writeInt(item.getItem().getDisplayId()); // ItemId
+		buffer.writeByte(item.getItem().isQuestItem() || (item.getEquipped() == 1) ? 0xFF : item.getLocation()); // T1
+		buffer.writeLong(item.getCount()); // Quantity
+		buffer.writeByte(item.getItem().getType2()); // Item Type 2 : 00-weapon, 01-shield/armor, 02-ring/earring/necklace, 03-questitem, 04-adena, 05-item
+		buffer.writeByte(item.getCustomType1()); // Filler (always 0)
+		buffer.writeShort(item.getEquipped()); // Equipped : 00-No, 01-yes
+		buffer.writeLong(item.getItem().getBodyPart()); // Slot : 0006-lr.ear, 0008-neck, 0030-lr.finger, 0040-head, 0100-l.hand, 0200-gloves, 0400-chest, 0800-pants, 1000-feet, 4000-r.hand, 8000-r.hand
+		buffer.writeByte(item.getEnchantLevel()); // Enchant level (pet level shown in control item)
+		buffer.writeByte(item.getCustomType2()); // Pet name exists or not shown in control item
+		buffer.writeInt(item.getMana());
+		buffer.writeInt(item.getTime());
+		buffer.writeByte(item.isAvailable()); // GOD Item enabled = 1 disabled (red) = 0
 		if (containsMask(mask, ItemListType.AUGMENT_BONUS))
 		{
-			writeItemAugment(item);
+			writeItemAugment(item, buffer);
 		}
 		if (containsMask(mask, ItemListType.ELEMENTAL_ATTRIBUTE))
 		{
-			writeItemElemental(item);
+			writeItemElemental(item, buffer);
 		}
 		if (containsMask(mask, ItemListType.ENCHANT_EFFECT))
 		{
-			writeItemEnchantEffect(item);
+			writeItemEnchantEffect(item, buffer);
 		}
 		if (containsMask(mask, ItemListType.VISUAL_ID))
 		{
-			writeInt(item.getVisualId()); // Item remodel visual ID
+			buffer.writeInt(item.getVisualId()); // Item remodel visual ID
 		}
 	}
 	
@@ -141,88 +142,88 @@ public abstract class AbstractItemPacket extends AbstractMaskPacket<ItemListType
 		return mask;
 	}
 	
-	protected void writeItemAugment(ItemInfo item)
+	protected void writeItemAugment(ItemInfo item, WritableBuffer buffer)
 	{
 		if ((item != null) && (item.getAugmentation() != null))
 		{
-			writeInt(item.getAugmentation().getOption1Id());
-			writeInt(item.getAugmentation().getOption2Id());
+			buffer.writeInt(item.getAugmentation().getOption1Id());
+			buffer.writeInt(item.getAugmentation().getOption2Id());
 		}
 		else
 		{
-			writeInt(0);
-			writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
 		}
 	}
 	
-	protected void writeItemElementalAndEnchant(ItemInfo item)
+	protected void writeItemElementalAndEnchant(ItemInfo item, WritableBuffer buffer)
 	{
-		writeItemElemental(item);
-		writeItemEnchantEffect(item);
+		writeItemElemental(item, buffer);
+		writeItemEnchantEffect(item, buffer);
 	}
 	
-	protected void writeItemElemental(ItemInfo item)
+	protected void writeItemElemental(ItemInfo item, WritableBuffer buffer)
 	{
 		if (item != null)
 		{
-			writeShort(item.getAttackElementType());
-			writeShort(item.getAttackElementPower());
-			writeShort(item.getAttributeDefence(AttributeType.FIRE));
-			writeShort(item.getAttributeDefence(AttributeType.WATER));
-			writeShort(item.getAttributeDefence(AttributeType.WIND));
-			writeShort(item.getAttributeDefence(AttributeType.EARTH));
-			writeShort(item.getAttributeDefence(AttributeType.HOLY));
-			writeShort(item.getAttributeDefence(AttributeType.DARK));
+			buffer.writeShort(item.getAttackElementType());
+			buffer.writeShort(item.getAttackElementPower());
+			buffer.writeShort(item.getAttributeDefence(AttributeType.FIRE));
+			buffer.writeShort(item.getAttributeDefence(AttributeType.WATER));
+			buffer.writeShort(item.getAttributeDefence(AttributeType.WIND));
+			buffer.writeShort(item.getAttributeDefence(AttributeType.EARTH));
+			buffer.writeShort(item.getAttributeDefence(AttributeType.HOLY));
+			buffer.writeShort(item.getAttributeDefence(AttributeType.DARK));
 		}
 		else
 		{
-			writeShort(0);
-			writeShort(0);
-			writeShort(0);
-			writeShort(0);
-			writeShort(0);
-			writeShort(0);
-			writeShort(0);
-			writeShort(0);
+			buffer.writeShort(0);
+			buffer.writeShort(0);
+			buffer.writeShort(0);
+			buffer.writeShort(0);
+			buffer.writeShort(0);
+			buffer.writeShort(0);
+			buffer.writeShort(0);
+			buffer.writeShort(0);
 		}
 	}
 	
-	protected void writeItemEnchantEffect(ItemInfo item)
+	protected void writeItemEnchantEffect(ItemInfo item, WritableBuffer buffer)
 	{
 		// Enchant Effects
 		for (int op : item.getEnchantOptions())
 		{
-			writeInt(op);
+			buffer.writeInt(op);
 		}
 	}
 	
-	protected void writeInventoryBlock(PlayerInventory inventory)
+	protected void writeInventoryBlock(PlayerInventory inventory, WritableBuffer buffer)
 	{
 		if (inventory.hasInventoryBlock())
 		{
-			writeShort(inventory.getBlockItems().size());
-			writeByte(inventory.getBlockMode().getClientId());
+			buffer.writeShort(inventory.getBlockItems().size());
+			buffer.writeByte(inventory.getBlockMode().getClientId());
 			for (int id : inventory.getBlockItems())
 			{
-				writeInt(id);
+				buffer.writeInt(id);
 			}
 		}
 		else
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
 	}
 	
-	protected void writeCommissionItem(ItemInfo item)
+	protected void writeCommissionItem(ItemInfo item, WritableBuffer buffer)
 	{
-		writeInt(0); // Always 0
-		writeInt(item.getItem().getId());
-		writeLong(item.getCount());
-		writeShort(item.getItem().getType2());
-		writeLong(item.getItem().getBodyPart());
-		writeShort(item.getEnchantLevel());
-		writeShort(item.getCustomType2());
-		writeItemElementalAndEnchant(item);
-		writeInt(item.getVisualId());
+		buffer.writeInt(0); // Always 0
+		buffer.writeInt(item.getItem().getId());
+		buffer.writeLong(item.getCount());
+		buffer.writeShort(item.getItem().getType2());
+		buffer.writeLong(item.getItem().getBodyPart());
+		buffer.writeShort(item.getEnchantLevel());
+		buffer.writeShort(item.getCustomType2());
+		writeItemElementalAndEnchant(item, buffer);
+		buffer.writeInt(item.getVisualId());
 	}
 }

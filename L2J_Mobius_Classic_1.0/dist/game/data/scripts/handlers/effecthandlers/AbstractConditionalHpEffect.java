@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.events.EventType;
@@ -94,13 +95,13 @@ abstract class AbstractConditionalHpEffect extends AbstractStatEffect
 			if (update.get())
 			{
 				update.set(false);
-				creature.getStat().recalculateStats(true);
+				ThreadPool.execute(() -> creature.getStat().recalculateStats(true));
 			}
 		}
 		else if (!update.get())
 		{
 			update.set(true);
-			creature.getStat().recalculateStats(true);
+			ThreadPool.execute(() -> creature.getStat().recalculateStats(true));
 		}
 	}
 }

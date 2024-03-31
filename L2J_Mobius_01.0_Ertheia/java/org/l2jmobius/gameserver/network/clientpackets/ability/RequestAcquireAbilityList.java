@@ -23,7 +23,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
@@ -31,7 +30,6 @@ import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -41,22 +39,22 @@ import org.l2jmobius.gameserver.network.serverpackets.ability.ExAcquireAPSkillLi
 /**
  * @author UnAfraid
  */
-public class RequestAcquireAbilityList implements ClientPacket
+public class RequestAcquireAbilityList extends ClientPacket
 {
 	private static final int TREE_SIZE = 3;
 	
 	private Map<Integer, SkillHolder> _skills = new LinkedHashMap<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readInt(); // Total size
+		readInt(); // Total size
 		for (int i = 0; i < TREE_SIZE; i++)
 		{
-			final int size = packet.readInt();
+			final int size = readInt();
 			for (int j = 0; j < size; j++)
 			{
-				final SkillHolder holder = new SkillHolder(packet.readInt(), packet.readInt());
+				final SkillHolder holder = new SkillHolder(readInt(), readInt());
 				if (holder.getSkillLevel() < 1)
 				{
 					_skills = null;
@@ -74,9 +72,9 @@ public class RequestAcquireAbilityList implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

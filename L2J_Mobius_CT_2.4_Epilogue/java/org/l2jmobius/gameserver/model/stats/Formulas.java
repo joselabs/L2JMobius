@@ -314,7 +314,7 @@ public class Formulas
 					final Fort fort = FortManager.getInstance().getFortById(fortIndex);
 					if ((fort != null) && (fort.getFunction(Fort.FUNC_RESTORE_HP) != null))
 					{
-						hpRegenMultiplier *= 1 + ((double) fort.getFunction(Fort.FUNC_RESTORE_HP).getLvl() / 100);
+						hpRegenMultiplier *= 1 + ((double) fort.getFunction(Fort.FUNC_RESTORE_HP).getLevel() / 100);
 					}
 				}
 			}
@@ -421,7 +421,7 @@ public class Formulas
 					final Fort fort = FortManager.getInstance().getFortById(fortIndex);
 					if ((fort != null) && (fort.getFunction(Fort.FUNC_RESTORE_MP) != null))
 					{
-						mpRegenMultiplier *= 1 + ((double) fort.getFunction(Fort.FUNC_RESTORE_MP).getLvl() / 100);
+						mpRegenMultiplier *= 1 + ((double) fort.getFunction(Fort.FUNC_RESTORE_MP).getLevel() / 100);
 					}
 				}
 			}
@@ -1502,7 +1502,7 @@ public class Formulas
 		{
 			if (attacker.isPlayer())
 			{
-				final SystemMessage sm = new SystemMessage(SystemMessageId.DAMAGE_IS_DECREASED_BECAUSE_C1_RESISTED_C2_S_MAGIC);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.DAMAGE_IS_DECREASED_BECAUSE_C1_RESISTED_AGAINST_C2_S_MAGIC);
 				sm.addString(target.getName());
 				sm.addString(attacker.getName());
 				attacker.sendPacket(sm);

@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.enums.AISkillScope;
 import org.l2jmobius.gameserver.enums.AIType;
@@ -36,6 +36,7 @@ import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.Sex;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.DropGroupHolder;
 import org.l2jmobius.gameserver.model.holders.DropHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
@@ -143,17 +144,17 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 		setRace(set.getEnum("race", Race.class, Race.NONE));
 		_sex = set.getEnum("sex", Sex.class, Sex.ETC);
 		_chestId = set.getInt("chestId", 0);
-		if ((_chestId > 0) && (ItemTable.getInstance().getTemplate(_chestId) == null))
+		if ((_chestId > 0) && (ItemData.getInstance().getTemplate(_chestId) == null))
 		{
 			LOGGER.warning("NpcTemplate " + _id + ": Could not find item for chestId with id " + _chestId + ".");
 		}
 		_rhandId = set.getInt("rhandId", 0);
-		if ((_rhandId > 0) && (ItemTable.getInstance().getTemplate(_rhandId) == null))
+		if ((_rhandId > 0) && (ItemData.getInstance().getTemplate(_rhandId) == null))
 		{
 			LOGGER.warning("NpcTemplate " + _id + ": Could not find item for rhandId with id " + _rhandId + ".");
 		}
 		_lhandId = set.getInt("lhandId", 0);
-		if ((_lhandId > 0) && (ItemTable.getInstance().getTemplate(_lhandId) == null))
+		if ((_lhandId > 0) && (ItemData.getInstance().getTemplate(_lhandId) == null))
 		{
 			LOGGER.warning("NpcTemplate " + _id + ": Could not find item for lhandId with id " + _lhandId + ".");
 		}
@@ -593,7 +594,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 			return false;
 		}
 		
-		int clanId = NpcData.getInstance().getClanId("ALL");
+		int clanId = NpcData.getInstance().getGenericClanId();
 		if (clans.contains(clanId))
 		{
 			return true;
@@ -613,6 +614,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 				return true;
 			}
 		}
+		
 		return false;
 	}
 	
@@ -629,7 +631,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 			return false;
 		}
 		
-		final int clanId = NpcData.getInstance().getClanId("ALL");
+		final int clanId = NpcData.getInstance().getGenericClanId();
 		if (clanSet.contains(clanId))
 		{
 			return true;
@@ -642,12 +644,18 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 				return true;
 			}
 		}
+		
 		return false;
 	}
 	
 	public Set<Integer> getIgnoreClanNpcIds()
 	{
 		return _ignoreClanNpcIds;
+	}
+	
+	public boolean hasIgnoreClanNpcIds()
+	{
+		return _ignoreClanNpcIds != null;
 	}
 	
 	/**
@@ -761,6 +769,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 		int dropOccurrenceCounter = victim.isRaid() ? Config.DROP_MAX_OCCURRENCES_RAIDBOSS : Config.DROP_MAX_OCCURRENCES_NORMAL;
 		if (dropOccurrenceCounter > 0)
 		{
+			final Player player = killer.getActingPlayer();
 			List<ItemHolder> randomDrops = null;
 			ItemHolder cachedItem = null;
 			double totalChance; // total group chance is 100
@@ -770,7 +779,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 				GROUP_DROP: for (DropHolder dropItem : group.getDropList())
 				{
 					final int itemId = dropItem.getItemId();
-					final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+					final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 					final boolean champion = victim.isChampion();
 					
 					// chance
@@ -797,27 +806,31 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 					}
 					
 					// premium chance
-					if (Config.PREMIUM_SYSTEM_ENABLED && (killer.getActingPlayer() != null) && killer.getActingPlayer().hasPremiumStatus())
+					if (player != null)
 					{
-						if (Config.PREMIUM_RATE_DROP_CHANCE_BY_ID.get(itemId) != null)
+						if (Config.PREMIUM_SYSTEM_ENABLED && player.hasPremiumStatus())
 						{
-							rateChance *= Config.PREMIUM_RATE_DROP_CHANCE_BY_ID.get(itemId);
+							if (Config.PREMIUM_RATE_DROP_CHANCE_BY_ID.get(itemId) != null)
+							{
+								rateChance *= Config.PREMIUM_RATE_DROP_CHANCE_BY_ID.get(itemId);
+							}
+							else if (item.hasExImmediateEffect())
+							{
+								// TODO: Premium herb chance? :)
+							}
+							else if (victim.isRaid())
+							{
+								// TODO: Premium raid chance? :)
+							}
+							else
+							{
+								rateChance *= Config.PREMIUM_RATE_DROP_CHANCE;
+							}
 						}
-						else if (item.hasExImmediateEffect())
-						{
-							// TODO: Premium herb chance? :)
-						}
-						else if (victim.isRaid())
-						{
-							// TODO: Premium raid chance? :)
-						}
-						else
-						{
-							rateChance *= Config.PREMIUM_RATE_DROP_CHANCE;
-						}
+						
+						// bonus drop rate effect
+						rateChance *= player.getStat().getMul(Stat.BONUS_DROP_RATE, 1);
 					}
-					// bonus drop rate effect
-					rateChance *= killer.getStat().getMul(Stat.BONUS_DROP_RATE, 1);
 					
 					// only use total chance on x1, custom rates break this logic because total chance is more than 100%
 					if (rateChance == 1)
@@ -1055,7 +1068,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 	private ItemHolder calculateGroupDrop(DropGroupHolder group, DropHolder dropItem, Creature victim, Creature killer, double chance)
 	{
 		final int itemId = dropItem.getItemId();
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 		final boolean champion = victim.isChampion();
 		
 		// calculate if item will drop
@@ -1085,30 +1098,34 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 			}
 			
 			// premium amount
-			if (Config.PREMIUM_SYSTEM_ENABLED && (killer.getActingPlayer() != null) && killer.getActingPlayer().hasPremiumStatus())
+			final Player player = killer.getActingPlayer();
+			if (player != null)
 			{
-				if (Config.PREMIUM_RATE_DROP_AMOUNT_BY_ID.get(itemId) != null)
+				if (Config.PREMIUM_SYSTEM_ENABLED && player.hasPremiumStatus())
 				{
-					rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT_BY_ID.get(itemId);
-				}
-				else if (item.hasExImmediateEffect())
-				{
-					// TODO: Premium herb amount? :)
-				}
-				else if (victim.isRaid())
-				{
-					// TODO: Premium raid amount? :)
-				}
-				else
-				{
-					rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT;
+					if (Config.PREMIUM_RATE_DROP_AMOUNT_BY_ID.get(itemId) != null)
+					{
+						rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT_BY_ID.get(itemId);
+					}
+					else if (item.hasExImmediateEffect())
+					{
+						// TODO: Premium herb amount? :)
+					}
+					else if (victim.isRaid())
+					{
+						// TODO: Premium raid amount? :)
+					}
+					else
+					{
+						rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT;
+					}
 				}
 				
 				// bonus drop amount effect
-				rateAmount *= killer.getStat().getMul(Stat.BONUS_DROP_AMOUNT, 1);
+				rateAmount *= player.getStat().getMul(Stat.BONUS_DROP_AMOUNT, 1);
 				if (itemId == Inventory.ADENA_ID)
 				{
-					rateAmount *= killer.getStat().getMul(Stat.BONUS_DROP_ADENA, 1);
+					rateAmount *= player.getStat().getMul(Stat.BONUS_DROP_ADENA, 1);
 				}
 			}
 			
@@ -1133,7 +1150,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 			case LUCKY:
 			{
 				final int itemId = dropItem.getItemId();
-				final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+				final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 				final boolean champion = victim.isChampion();
 				
 				// chance
@@ -1160,28 +1177,32 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 				}
 				
 				// premium chance
-				if (Config.PREMIUM_SYSTEM_ENABLED && (killer.getActingPlayer() != null) && killer.getActingPlayer().hasPremiumStatus())
+				final Player player = killer.getActingPlayer();
+				if (player != null)
 				{
-					if (Config.PREMIUM_RATE_DROP_CHANCE_BY_ID.get(itemId) != null)
+					if (Config.PREMIUM_SYSTEM_ENABLED && player.hasPremiumStatus())
 					{
-						rateChance *= Config.PREMIUM_RATE_DROP_CHANCE_BY_ID.get(itemId);
+						if (Config.PREMIUM_RATE_DROP_CHANCE_BY_ID.get(itemId) != null)
+						{
+							rateChance *= Config.PREMIUM_RATE_DROP_CHANCE_BY_ID.get(itemId);
+						}
+						else if (item.hasExImmediateEffect())
+						{
+							// TODO: Premium herb chance? :)
+						}
+						else if (victim.isRaid())
+						{
+							// TODO: Premium raid chance? :)
+						}
+						else
+						{
+							rateChance *= Config.PREMIUM_RATE_DROP_CHANCE;
+						}
 					}
-					else if (item.hasExImmediateEffect())
-					{
-						// TODO: Premium herb chance? :)
-					}
-					else if (victim.isRaid())
-					{
-						// TODO: Premium raid chance? :)
-					}
-					else
-					{
-						rateChance *= Config.PREMIUM_RATE_DROP_CHANCE;
-					}
+					
+					// bonus drop rate effect
+					rateChance *= player.getStat().getMul(Stat.BONUS_DROP_RATE, 1);
 				}
-				
-				// bonus drop rate effect
-				rateChance *= killer.getStat().getMul(Stat.BONUS_DROP_RATE, 1);
 				
 				// calculate if item will drop
 				if ((Rnd.nextDouble() * 100) < (dropItem.getChance() * rateChance))
@@ -1210,31 +1231,34 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 					}
 					
 					// premium amount
-					if (Config.PREMIUM_SYSTEM_ENABLED && (killer.getActingPlayer() != null) && killer.getActingPlayer().hasPremiumStatus())
+					if (player != null)
 					{
-						if (Config.PREMIUM_RATE_DROP_AMOUNT_BY_ID.get(itemId) != null)
+						if (Config.PREMIUM_SYSTEM_ENABLED && player.hasPremiumStatus())
 						{
-							rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT_BY_ID.get(itemId);
+							if (Config.PREMIUM_RATE_DROP_AMOUNT_BY_ID.get(itemId) != null)
+							{
+								rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT_BY_ID.get(itemId);
+							}
+							else if (item.hasExImmediateEffect())
+							{
+								// TODO: Premium herb amount? :)
+							}
+							else if (victim.isRaid())
+							{
+								// TODO: Premium raid amount? :)
+							}
+							else
+							{
+								rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT;
+							}
 						}
-						else if (item.hasExImmediateEffect())
+						
+						// bonus drop amount effect
+						rateAmount *= player.getStat().getMul(Stat.BONUS_DROP_AMOUNT, 1);
+						if (itemId == Inventory.ADENA_ID)
 						{
-							// TODO: Premium herb amount? :)
+							rateAmount *= player.getStat().getMul(Stat.BONUS_DROP_ADENA, 1);
 						}
-						else if (victim.isRaid())
-						{
-							// TODO: Premium raid amount? :)
-						}
-						else
-						{
-							rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT;
-						}
-					}
-					
-					// bonus drop amount effect
-					rateAmount *= killer.getStat().getMul(Stat.BONUS_DROP_AMOUNT, 1);
-					if (itemId == Inventory.ADENA_ID)
-					{
-						rateAmount *= killer.getStat().getMul(Stat.BONUS_DROP_ADENA, 1);
 					}
 					
 					// finally
@@ -1247,12 +1271,17 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 				// chance
 				double rateChance = Config.RATE_SPOIL_DROP_CHANCE_MULTIPLIER;
 				// premium chance
-				if (Config.PREMIUM_SYSTEM_ENABLED && (killer.getActingPlayer() != null) && killer.getActingPlayer().hasPremiumStatus())
+				final Player player = killer.getActingPlayer();
+				if (player != null)
 				{
-					rateChance *= Config.PREMIUM_RATE_SPOIL_CHANCE;
+					if (Config.PREMIUM_SYSTEM_ENABLED && player.hasPremiumStatus())
+					{
+						rateChance *= Config.PREMIUM_RATE_SPOIL_CHANCE;
+					}
+					
+					// bonus spoil rate effect
+					rateChance *= player.getStat().getMul(Stat.BONUS_SPOIL_RATE, 1);
 				}
-				// bonus spoil rate effect
-				rateChance *= killer.getStat().getMul(Stat.BONUS_SPOIL_RATE, 1);
 				
 				// calculate if item will be rewarded
 				if ((Rnd.nextDouble() * 100) < (dropItem.getChance() * rateChance))
@@ -1260,7 +1289,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 					// amount is calculated after chance returned success
 					double rateAmount = Config.RATE_SPOIL_DROP_AMOUNT_MULTIPLIER;
 					// premium amount
-					if (Config.PREMIUM_SYSTEM_ENABLED && (killer.getActingPlayer() != null) && killer.getActingPlayer().hasPremiumStatus())
+					if (Config.PREMIUM_SYSTEM_ENABLED && (player != null) && player.hasPremiumStatus())
 					{
 						rateAmount *= Config.PREMIUM_RATE_SPOIL_AMOUNT;
 					}

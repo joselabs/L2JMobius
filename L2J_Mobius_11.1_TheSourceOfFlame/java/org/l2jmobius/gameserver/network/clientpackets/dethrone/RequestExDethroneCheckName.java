@@ -22,10 +22,8 @@ import java.sql.ResultSet;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.dethrone.ExDethroneCheckName;
@@ -34,7 +32,7 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @author Negrito8
  */
-public class RequestExDethroneCheckName implements ClientPacket
+public class RequestExDethroneCheckName extends ClientPacket
 {
 	private static final int CHANGE_NAME = 1; // A fee charged with your name. (ok message ?)
 	private static final int ALREADY_EXISTS = -1; // The name already exists
@@ -44,15 +42,15 @@ public class RequestExDethroneCheckName implements ClientPacket
 	private String _conquestName;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_conquestName = packet.readString();
+		_conquestName = readString();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

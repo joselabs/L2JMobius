@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.appearance;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -41,13 +43,13 @@ public class ExCuriousHouseMemberUpdate extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_CURIOUS_HOUSE_MEMBER_UPDATE.writeId(this);
-		writeInt(_objId);
-		writeInt(_maxHp);
-		writeInt(_maxCp);
-		writeInt(_currentHp);
-		writeInt(_currentCp);
+		ServerPackets.EX_CURIOUS_HOUSE_MEMBER_UPDATE.writeId(this, buffer);
+		buffer.writeInt(_objId);
+		buffer.writeInt(_maxHp);
+		buffer.writeInt(_maxCp);
+		buffer.writeInt(_currentHp);
+		buffer.writeInt(_currentCp);
 	}
 }

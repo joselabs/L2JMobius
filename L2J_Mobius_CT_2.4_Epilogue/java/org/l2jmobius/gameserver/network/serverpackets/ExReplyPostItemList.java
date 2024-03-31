@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -37,29 +39,29 @@ public class ExReplyPostItemList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_REPLY_POST_ITEM_LIST.writeId(this);
-		writeInt(_itemList.size());
+		ServerPackets.EX_REPLY_POST_ITEM_LIST.writeId(this, buffer);
+		buffer.writeInt(_itemList.size());
 		for (Item item : _itemList)
 		{
-			writeInt(item.getObjectId());
-			writeInt(item.getId());
-			writeLong(item.getCount());
-			writeShort(item.getTemplate().getType2());
-			writeShort(item.getCustomType1());
-			writeInt(item.getTemplate().getBodyPart());
-			writeShort(item.getEnchantLevel());
-			writeShort(item.getCustomType2());
-			writeShort(item.getAttackElementType());
-			writeShort(item.getAttackElementPower());
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getId());
+			buffer.writeLong(item.getCount());
+			buffer.writeShort(item.getTemplate().getType2());
+			buffer.writeShort(item.getCustomType1());
+			buffer.writeInt(item.getTemplate().getBodyPart());
+			buffer.writeShort(item.getEnchantLevel());
+			buffer.writeShort(item.getCustomType2());
+			buffer.writeShort(item.getAttackElementType());
+			buffer.writeShort(item.getAttackElementPower());
 			for (byte i = 0; i < 6; i++)
 			{
-				writeShort(item.getElementDefAttr(i));
+				buffer.writeShort(item.getElementDefAttr(i));
 			}
 			for (int op : item.getEnchantOptions())
 			{
-				writeShort(op);
+				buffer.writeShort(op);
 			}
 		}
 	}

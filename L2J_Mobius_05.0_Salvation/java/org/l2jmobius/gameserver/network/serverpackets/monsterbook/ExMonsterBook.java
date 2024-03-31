@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets.monsterbook;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.MonsterBookData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.MonsterBookCardHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -46,15 +48,15 @@ public class ExMonsterBook extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MONSTER_BOOK.writeId(this);
-		writeShort(_cardIds.size()); // loop count
+		ServerPackets.EX_MONSTER_BOOK.writeId(this, buffer);
+		buffer.writeShort(_cardIds.size()); // loop count
 		for (int cardId : _cardIds)
 		{
-			writeShort(cardId); // card id
-			writeByte(_player.getMonsterBookRewardLevel(cardId)); // player reward level
-			writeInt(_player.getMonsterBookKillCount(cardId)); // player kills
+			buffer.writeShort(cardId); // card id
+			buffer.writeByte(_player.getMonsterBookRewardLevel(cardId)); // player reward level
+			buffer.writeInt(_player.getMonsterBookKillCount(cardId)); // player kills
 		}
 	}
 }

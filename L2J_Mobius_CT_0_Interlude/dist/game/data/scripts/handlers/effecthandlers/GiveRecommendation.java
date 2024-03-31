@@ -22,7 +22,6 @@ import org.l2jmobius.gameserver.model.conditions.Condition;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * Give Recommendation effect implementation.
@@ -64,10 +63,7 @@ public class GiveRecommendation extends AbstractEffect
 			if (recommendationsGiven > 0)
 			{
 				target.setRecomHave(target.getRecomHave() + recommendationsGiven);
-				
-				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_OBTAINED_S1_RECOMMENDATION_S);
-				sm.addInt(recommendationsGiven);
-				target.sendPacket(sm);
+				target.sendMessage("You obtained " + recommendationsGiven + " Recommendation(s).");
 				target.updateUserInfo();
 			}
 			else

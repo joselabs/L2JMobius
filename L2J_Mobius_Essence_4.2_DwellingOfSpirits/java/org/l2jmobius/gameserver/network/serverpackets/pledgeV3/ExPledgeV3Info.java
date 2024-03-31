@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgeV3;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,12 +40,12 @@ public class ExPledgeV3Info extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_V3_INFO.writeId(this);
-		writeInt(_points);
-		writeInt(_rank);
-		writeSizedString(_announce);
-		writeByte(_isShowOnEnter);
+		ServerPackets.EX_PLEDGE_V3_INFO.writeId(this, buffer);
+		buffer.writeInt(_points);
+		buffer.writeInt(_rank);
+		buffer.writeSizedString(_announce);
+		buffer.writeByte(_isShowOnEnter);
 	}
 }

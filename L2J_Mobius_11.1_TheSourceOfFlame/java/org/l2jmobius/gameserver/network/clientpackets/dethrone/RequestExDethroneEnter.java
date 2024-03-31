@@ -17,14 +17,12 @@
 package org.l2jmobius.gameserver.network.clientpackets.dethrone;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowUsm;
@@ -33,7 +31,7 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @author Negrito8
  */
-public class RequestExDethroneEnter implements ClientPacket
+public class RequestExDethroneEnter extends ClientPacket
 {
 	// First Memory Locations
 	private static final Location[] ENTRY_LOCS =
@@ -48,15 +46,15 @@ public class RequestExDethroneEnter implements ClientPacket
 	private static final Location CONQUEST_ENTER_LOC = new Location(-16630, -189326, -4005);
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		// packet.readByte(); // cDummy
+		// readByte(); // cDummy
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

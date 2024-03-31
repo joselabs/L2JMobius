@@ -17,12 +17,10 @@
 package org.l2jmobius.gameserver.network.clientpackets.randomcraft;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerRandomCraft;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.randomcraft.ExCraftRandomInfo;
 import org.l2jmobius.gameserver.network.serverpackets.randomcraft.ExCraftRandomLockSlot;
@@ -30,7 +28,7 @@ import org.l2jmobius.gameserver.network.serverpackets.randomcraft.ExCraftRandomL
 /**
  * @author Mode
  */
-public class ExRequestRandomCraftLockSlot implements ClientPacket
+public class ExRequestRandomCraftLockSlot extends ClientPacket
 {
 	private static final int[] LOCK_PRICE =
 	{
@@ -42,20 +40,20 @@ public class ExRequestRandomCraftLockSlot implements ClientPacket
 	private int _id;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_id = packet.readInt();
+		_id = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		if (!Config.ENABLE_RANDOM_CRAFT)
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

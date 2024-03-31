@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class JoinParty extends ServerPacket
@@ -31,15 +33,15 @@ public class JoinParty extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.JOIN_PARTY.writeId(this);
-		writeInt(_response);
-		writeInt(_type);
+		ServerPackets.JOIN_PARTY.writeId(this, buffer);
+		buffer.writeInt(_response);
+		buffer.writeInt(_type);
 		if (_type != 0)
 		{
-			writeInt(0); // TODO: Find me!
-			writeInt(0); // TODO: Find me!
+			buffer.writeInt(0); // TODO: Find me!
+			buffer.writeInt(0); // TODO: Find me!
 		}
 	}
 }

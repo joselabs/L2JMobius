@@ -19,7 +19,7 @@ package org.l2jmobius.gameserver.model.holders;
 import java.util.Collections;
 import java.util.List;
 
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 
 /**
@@ -38,7 +38,7 @@ public class MultisellEntryHolder
 		
 		for (ItemChanceHolder product : products)
 		{
-			final ItemTemplate item = ItemTable.getInstance().getTemplate(product.getId());
+			final ItemTemplate item = ItemData.getInstance().getTemplate(product.getId());
 			if ((item == null) || !item.isStackable())
 			{
 				_stackable = false;

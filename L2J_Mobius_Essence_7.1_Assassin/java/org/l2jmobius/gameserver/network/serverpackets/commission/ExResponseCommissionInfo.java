@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.commission;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -51,13 +53,13 @@ public class ExResponseCommissionInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RESPONSE_COMMISSION_INFO.writeId(this);
-		writeInt(_result);
-		writeInt(_itemId);
-		writeLong(_presetPricePerUnit);
-		writeLong(_presetAmount);
-		writeInt(_presetDurationType);
+		ServerPackets.EX_RESPONSE_COMMISSION_INFO.writeId(this, buffer);
+		buffer.writeInt(_result);
+		buffer.writeInt(_itemId);
+		buffer.writeLong(_presetPricePerUnit);
+		buffer.writeLong(_presetAmount);
+		buffer.writeInt(_presetDurationType);
 	}
 }

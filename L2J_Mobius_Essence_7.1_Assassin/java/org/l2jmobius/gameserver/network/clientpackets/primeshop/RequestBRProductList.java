@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.primeshop;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.primeshop.ExBRProductList;
@@ -27,20 +25,20 @@ import org.l2jmobius.gameserver.network.serverpackets.primeshop.ExBRProductList;
 /**
  * @author Gnacik, UnAfraid
  */
-public class RequestBRProductList implements ClientPacket
+public class RequestBRProductList extends ClientPacket
 {
 	private int _type;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = packet.readInt();
+		_type = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player != null)
 		{
 			switch (_type)

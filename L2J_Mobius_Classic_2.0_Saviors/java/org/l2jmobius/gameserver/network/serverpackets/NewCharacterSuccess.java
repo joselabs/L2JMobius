@@ -19,7 +19,9 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.templates.PlayerTemplate;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class NewCharacterSuccess extends ServerPacket
@@ -32,10 +34,10 @@ public class NewCharacterSuccess extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.NEW_CHARACTER_SUCCESS.writeId(this);
-		writeInt(_chars.size());
+		ServerPackets.NEW_CHARACTER_SUCCESS.writeId(this, buffer);
+		buffer.writeInt(_chars.size());
 		for (PlayerTemplate chr : _chars)
 		{
 			if (chr == null)
@@ -43,26 +45,26 @@ public class NewCharacterSuccess extends ServerPacket
 				continue;
 			}
 			// TODO: Unhardcode these
-			writeInt(chr.getRace().ordinal());
-			writeInt(chr.getClassId().getId());
-			writeInt(99);
-			writeInt(chr.getBaseSTR());
-			writeInt(1);
-			writeInt(99);
-			writeInt(chr.getBaseDEX());
-			writeInt(1);
-			writeInt(99);
-			writeInt(chr.getBaseCON());
-			writeInt(1);
-			writeInt(99);
-			writeInt(chr.getBaseINT());
-			writeInt(1);
-			writeInt(99);
-			writeInt(chr.getBaseWIT());
-			writeInt(1);
-			writeInt(99);
-			writeInt(chr.getBaseMEN());
-			writeInt(1);
+			buffer.writeInt(chr.getRace().ordinal());
+			buffer.writeInt(chr.getClassId().getId());
+			buffer.writeInt(99);
+			buffer.writeInt(chr.getBaseSTR());
+			buffer.writeInt(1);
+			buffer.writeInt(99);
+			buffer.writeInt(chr.getBaseDEX());
+			buffer.writeInt(1);
+			buffer.writeInt(99);
+			buffer.writeInt(chr.getBaseCON());
+			buffer.writeInt(1);
+			buffer.writeInt(99);
+			buffer.writeInt(chr.getBaseINT());
+			buffer.writeInt(1);
+			buffer.writeInt(99);
+			buffer.writeInt(chr.getBaseWIT());
+			buffer.writeInt(1);
+			buffer.writeInt(99);
+			buffer.writeInt(chr.getBaseMEN());
+			buffer.writeInt(1);
 		}
 	}
 }

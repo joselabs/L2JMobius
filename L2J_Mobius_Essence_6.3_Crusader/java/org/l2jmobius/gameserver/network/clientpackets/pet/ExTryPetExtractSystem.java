@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.pet;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.data.xml.PetExtractData;
@@ -28,7 +27,6 @@ import org.l2jmobius.gameserver.model.holders.PetExtractionHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.PetInventory;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pet.ResultPetExtractSystem;
@@ -36,20 +34,20 @@ import org.l2jmobius.gameserver.network.serverpackets.pet.ResultPetExtractSystem
 /**
  * @author Geremy
  */
-public class ExTryPetExtractSystem implements ClientPacket
+public class ExTryPetExtractSystem extends ClientPacket
 {
 	private int _itemObjId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemObjId = packet.readInt();
+		_itemObjId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

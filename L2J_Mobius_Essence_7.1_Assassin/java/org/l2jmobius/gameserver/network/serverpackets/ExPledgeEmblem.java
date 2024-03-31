@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -40,22 +42,22 @@ public class ExPledgeEmblem extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_EMBLEM.writeId(this);
-		writeInt(Config.SERVER_ID);
-		writeInt(_clanId);
-		writeInt(_crestId);
-		writeInt(_chunkId);
-		writeInt(TOTAL_SIZE);
+		ServerPackets.EX_PLEDGE_EMBLEM.writeId(this, buffer);
+		buffer.writeInt(Config.SERVER_ID);
+		buffer.writeInt(_clanId);
+		buffer.writeInt(_crestId);
+		buffer.writeInt(_chunkId);
+		buffer.writeInt(TOTAL_SIZE);
 		if (_data != null)
 		{
-			writeInt(_data.length);
-			writeBytes(_data);
+			buffer.writeInt(_data.length);
+			buffer.writeBytes(_data);
 		}
 		else
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
 	}
 }

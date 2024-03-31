@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.attributechange;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.attributechange.ExChangeAttributeInfo;
@@ -27,22 +25,22 @@ import org.l2jmobius.gameserver.network.serverpackets.attributechange.ExChangeAt
 /**
  * @author Mobius
  */
-public class SendChangeAttributeTargetItem implements ClientPacket
+public class SendChangeAttributeTargetItem extends ClientPacket
 {
 	private int _crystalItemId;
 	private int _itemObjId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_crystalItemId = packet.readInt();
-		_itemObjId = packet.readInt();
+		_crystalItemId = readInt();
+		_itemObjId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

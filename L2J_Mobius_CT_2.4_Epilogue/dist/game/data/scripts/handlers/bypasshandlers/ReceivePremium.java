@@ -39,7 +39,7 @@ public class ReceivePremium implements IBypassHandler
 		
 		if (player.getPremiumItemList().isEmpty())
 		{
-			player.sendPacket(SystemMessageId.THERE_ARE_NO_MORE_DIMENSIONAL_ITEMS_TO_BE_FOUND);
+			player.sendPacket(SystemMessageId.THERE_ARE_NO_MORE_VITAMIN_ITEMS_TO_BE_FOUND);
 			return false;
 		}
 		

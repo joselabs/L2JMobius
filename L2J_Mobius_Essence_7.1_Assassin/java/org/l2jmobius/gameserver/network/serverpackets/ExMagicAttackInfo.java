@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -45,11 +47,11 @@ public class ExMagicAttackInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MAGIC_ATTACK_INFO.writeId(this);
-		writeInt(_caster);
-		writeInt(_target);
-		writeInt(_type);
+		ServerPackets.EX_MAGIC_ATTACK_INFO.writeId(this, buffer);
+		buffer.writeInt(_caster);
+		buffer.writeInt(_target);
+		buffer.writeInt(_type);
 	}
 }

@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.olympiad;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -29,11 +31,11 @@ public class ExOlympiadInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_OLYMPIAD_INFO.writeId(this);
-		writeByte(_open);
-		writeInt(0); // RemainTime
-		writeByte(1); // GameRuleType
+		ServerPackets.EX_OLYMPIAD_INFO.writeId(this, buffer);
+		buffer.writeByte(_open);
+		buffer.writeInt(0); // RemainTime
+		buffer.writeByte(1); // GameRuleType
 	}
 }

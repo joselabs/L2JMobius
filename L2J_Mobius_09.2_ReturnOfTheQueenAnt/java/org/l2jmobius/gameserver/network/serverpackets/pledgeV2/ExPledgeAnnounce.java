@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgeV2;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.AbstractItemPacket;
 
@@ -34,7 +36,7 @@ public class ExPledgeAnnounce extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		final Clan clan = _player.getClan();
 		if (clan == null)
@@ -42,8 +44,8 @@ public class ExPledgeAnnounce extends AbstractItemPacket
 			return;
 		}
 		
-		ServerPackets.EX_PLEDGE_ANNOUNCE.writeId(this);
-		writeSizedString(clan.getNotice());
-		writeByte(clan.isNoticeEnabled());
+		ServerPackets.EX_PLEDGE_ANNOUNCE.writeId(this, buffer);
+		buffer.writeSizedString(clan.getNotice());
+		buffer.writeByte(clan.isNoticeEnabled());
 	}
 }

@@ -20,10 +20,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.DailyMissionData;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -48,15 +50,15 @@ public class ExPledgeMissionInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (!DailyMissionData.getInstance().isAvailable() || (_player.getClan() == null))
 		{
 			return;
 		}
 		
-		ServerPackets.EX_PLEDGE_MISSION_INFO.writeId(this);
-		writeInt(_rewards.size());
+		ServerPackets.EX_PLEDGE_MISSION_INFO.writeId(this, buffer);
+		buffer.writeInt(_rewards.size());
 		final List<Integer> missions = _player.getVariables().getIntegerList(PlayerVariables.DAILY_MISSION_ONE_TIME);
 		for (DailyMissionDataHolder reward : _rewards)
 		{
@@ -87,9 +89,9 @@ public class ExPledgeMissionInfo extends ServerPacket
 			{
 				status = 2;
 			}
-			writeInt(reward.getId());
-			writeInt(progress);
-			writeByte(status);
+			buffer.writeInt(reward.getId());
+			buffer.writeInt(progress);
+			buffer.writeByte(status);
 		}
 	}
 }

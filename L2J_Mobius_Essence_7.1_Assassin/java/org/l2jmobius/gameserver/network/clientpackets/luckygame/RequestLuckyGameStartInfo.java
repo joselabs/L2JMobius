@@ -21,6 +21,15 @@ import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 /**
  * @author Sdw
  */
-public class RequestLuckyGameStartInfo implements ClientPacket
+public class RequestLuckyGameStartInfo extends ClientPacket
 {
+	@Override
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+	}
 }

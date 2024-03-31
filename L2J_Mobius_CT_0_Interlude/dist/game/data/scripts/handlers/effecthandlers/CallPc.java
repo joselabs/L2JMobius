@@ -86,7 +86,7 @@ public class CallPc extends AbstractEffect
 				}
 				target.addScript(new SummonRequestHolder(player));
 				
-				final ConfirmDlg confirm = new ConfirmDlg(SystemMessageId.C1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT.getId());
+				final ConfirmDlg confirm = new ConfirmDlg(SystemMessageId.S1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT.getId());
 				confirm.getSystemMessage().addString(player.getName());
 				confirm.getSystemMessage().addZoneName(player.getX(), player.getY(), player.getZ());
 				confirm.addTime(30000);
@@ -111,7 +111,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.isAlikeDead())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_DEAD_AT_THE_MOMENT_AND_CANNOT_BE_SUMMONED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_DEAD_AT_THE_MOMENT_AND_CANNOT_BE_SUMMONED);
 			sm.addPcName(target);
 			activeChar.sendPacket(sm);
 			return false;
@@ -119,7 +119,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.isInStoreMode())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_CURRENTLY_TRADING_OR_OPERATING_A_PRIVATE_STORE_AND_CANNOT_BE_SUMMONED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_CURRENTLY_TRADING_OR_OPERATING_A_PRIVATE_STORE_AND_CANNOT_BE_SUMMONED);
 			sm.addPcName(target);
 			activeChar.sendPacket(sm);
 			return false;
@@ -127,7 +127,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.isRooted() || target.isInCombat())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_ENGAGED_IN_COMBAT_AND_CANNOT_BE_SUMMONED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_ENGAGED_IN_COMBAT_AND_CANNOT_BE_SUMMONED);
 			sm.addPcName(target);
 			activeChar.sendPacket(sm);
 			return false;
@@ -147,7 +147,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.inObserverMode())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_IN_A_STATE_WHICH_PREVENTS_SUMMONING);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_IN_A_STATE_WHICH_PREVENTS_SUMMONING);
 			sm.addString(target.getName());
 			activeChar.sendPacket(sm);
 			return false;
@@ -155,7 +155,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.isInsideZone(ZoneId.NO_SUMMON_FRIEND) || target.isInsideZone(ZoneId.JAIL))
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_IN_AN_AREA_WHICH_BLOCKS_SUMMONING);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_IN_AN_AREA_WHICH_BLOCKS_SUMMONING);
 			sm.addString(target.getName());
 			activeChar.sendPacket(sm);
 			return false;

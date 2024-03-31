@@ -19,18 +19,22 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.RecipeShopManageList;
 import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
 
-public class RequestRecipeShopManageList implements ClientPacket
+public class RequestRecipeShopManageList extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -56,15 +60,15 @@ public class RequestRecipeShopManageList implements ClientPacket
 		
 		if (AttackStanceTaskManager.getInstance().hasAttackStanceTask(player) || player.isInDuel())
 		{
-			client.sendPacket(SystemMessageId.WHILE_YOU_ARE_ENGAGED_IN_COMBAT_YOU_CANNOT_OPERATE_A_PRIVATE_STORE_OR_PRIVATE_WORKSHOP);
-			client.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(SystemMessageId.WHILE_YOU_ARE_ENGAGED_IN_COMBAT_YOU_CANNOT_OPERATE_A_PRIVATE_STORE_OR_PRIVATE_WORKSHOP);
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (player.isInsideZone(ZoneId.NO_STORE))
 		{
-			client.sendPacket(SystemMessageId.YOU_CANNOT_OPEN_A_PRIVATE_WORKSHOP_HERE);
-			client.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_OPEN_A_PRIVATE_WORKSHOP_HERE);
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		

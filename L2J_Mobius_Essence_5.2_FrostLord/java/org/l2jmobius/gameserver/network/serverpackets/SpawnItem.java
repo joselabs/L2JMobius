@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class SpawnItem extends ServerPacket
@@ -29,20 +31,20 @@ public class SpawnItem extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SPAWN_ITEM.writeId(this);
-		writeInt(_item.getObjectId());
-		writeInt(_item.getDisplayId());
-		writeInt(_item.getX());
-		writeInt(_item.getY());
-		writeInt(_item.getZ());
+		ServerPackets.SPAWN_ITEM.writeId(this, buffer);
+		buffer.writeInt(_item.getObjectId());
+		buffer.writeInt(_item.getDisplayId());
+		buffer.writeInt(_item.getX());
+		buffer.writeInt(_item.getY());
+		buffer.writeInt(_item.getZ());
 		// only show item count if it is a stackable item
-		writeInt(_item.isStackable());
-		writeLong(_item.getCount());
-		writeInt(0); // c2
-		writeByte(_item.getEnchantLevel()); // Grand Crusade
-		writeByte(_item.getAugmentation() != null); // Grand Crusade
-		writeByte(_item.getSpecialAbilities().size()); // Grand Crusade
+		buffer.writeInt(_item.isStackable());
+		buffer.writeLong(_item.getCount());
+		buffer.writeInt(0); // c2
+		buffer.writeByte(_item.getEnchantLevel()); // Grand Crusade
+		buffer.writeByte(_item.getAugmentation() != null); // Grand Crusade
+		buffer.writeByte(_item.getSpecialAbilities().size()); // Grand Crusade
 	}
 }

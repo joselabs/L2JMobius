@@ -148,10 +148,7 @@ public abstract class BaseGameServerRegister
 			"\t\t\t\t\tYou can provide a negative value for <id> to register under the first available ID.",
 			"\t\t\t\t\tNothing is done if <id> is already in use, unless --force or --fallback is used.",
 			"",
-			"-u, --unregister <id>|all\t\tRemoves the GameServer specified by <id>, use \"all\" to remove all currently registered GameServers.",
-			"",
-			"© 2008-2009 L2J Team. All rights reserved.",
-			"Bug Reports: http://www.l2jserver.com"
+			"-u, --unregister <id>|all\t\tRemoves the GameServer specified by <id>, use \"all\" to remove all currently registered GameServers."
 		};
 		
 		for (String str : help)

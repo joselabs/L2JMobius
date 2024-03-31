@@ -22,6 +22,15 @@ import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
  * This Packet doesn't seem to be doing anything.
  * @author NosBit
  */
-public class RequestCommissionCancel implements ClientPacket
+public class RequestCommissionCancel extends ClientPacket
 {
+	@Override
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+	}
 }

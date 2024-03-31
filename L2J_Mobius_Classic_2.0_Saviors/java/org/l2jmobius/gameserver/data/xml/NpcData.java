@@ -38,7 +38,6 @@ import org.w3c.dom.Node;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.enums.AISkillScope;
 import org.l2jmobius.gameserver.enums.DropType;
 import org.l2jmobius.gameserver.enums.MpRewardAffectType;
@@ -61,6 +60,7 @@ public class NpcData implements IXmlReader
 	private final Map<Integer, NpcTemplate> _npcs = new ConcurrentHashMap<>();
 	private final Map<String, Integer> _clans = new ConcurrentHashMap<>();
 	private static final Collection<Integer> _masterMonsterIDs = ConcurrentHashMap.newKeySet();
+	private static Integer _genericClanId = null;
 	
 	protected NpcData()
 	{
@@ -460,7 +460,7 @@ public class NpcData implements IXmlReader
 															final NamedNodeMap groupAttrs = groupNode.getAttributes();
 															final int itemId = parseInteger(groupAttrs, "id");
 															
-															if (ItemTable.getInstance().getTemplate(itemId) == null)
+															if (ItemData.getInstance().getTemplate(itemId) == null)
 															{
 																LOGGER.warning("DropListItem: Could not find item with id " + itemId + ".");
 															}
@@ -483,7 +483,7 @@ public class NpcData implements IXmlReader
 													final NamedNodeMap dropAttrs = dropNode.getAttributes();
 													final int itemId = parseInteger(dropAttrs, "id");
 													
-													if (ItemTable.getInstance().getTemplate(itemId) == null)
+													if (ItemData.getInstance().getTemplate(itemId) == null)
 													{
 														LOGGER.warning("DropListItem: Could not find item with id " + itemId + ".");
 													}
@@ -729,6 +729,26 @@ public class NpcData implements IXmlReader
 	{
 		final Integer id = _clans.get(clanName);
 		return id != null ? id : -1;
+	}
+	
+	public int getGenericClanId()
+	{
+		if (_genericClanId != null)
+		{
+			return _genericClanId;
+		}
+		
+		synchronized (this)
+		{
+			_genericClanId = _clans.get("ALL");
+			
+			if (_genericClanId == null)
+			{
+				_genericClanId = -1;
+			}
+		}
+		
+		return _genericClanId;
 	}
 	
 	public Set<String> getClansByIds(Set<Integer> clanIds)

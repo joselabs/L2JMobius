@@ -553,7 +553,7 @@ public enum AbnormalType
 	EVAS_DEBUFF(601),
 	RIGHT_SIDESTEP(602);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	protected static final Logger LOGGER = Logger.getLogger(AbnormalType.class.getName());
 	

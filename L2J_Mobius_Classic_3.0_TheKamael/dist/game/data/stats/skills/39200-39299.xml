@@ -264,10 +264,92 @@
 	<skill id="39219" toLevel="3" name="Dark Knight">
 		<!-- Transformed into Dark Knight. Max HP/ MP +10%, Stun/ Paralysis/ Mental Resistance +5%, PvP Damage +5%, Received Damage -5%. -->
 		<icon>icon.dark_kninght</icon>
-		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<reuseDelay>3600000</reuseDelay>
+		<abnormalLevel>
+			<value level="1">4</value>
+			<value level="2">5</value>
+			<value level="3">6</value>
+		</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>SYSTEM_EVENT_BUF6</abnormalType>
+		<abnormalVisualEffect>COSTUME_DARK_KNIGHT</abnormalVisualEffect>
+		<blockedInOlympiad>true</blockedInOlympiad>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
+		<magicLevel>85</magicLevel>
+		<operateType>A2</operateType>
+		<reuseDelay>60000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<irreplacableBuff>true</irreplacableBuff>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="MaxHp">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MaxMp">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalAttackDamageBonus">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">7</value>
+					<value level="3">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDamageBonus">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">7</value>
+					<value level="3">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDamageBonus">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">7</value>
+					<value level="3">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DamageByAttack">
+				<amount>
+					<value level="1">-5</value>
+					<value level="2">-7</value>
+					<value level="3">-10</value>
+				</amount>
+				<type>PK</type>
+			</effect>
+			<effect name="DamageByAttack">
+				<amount>
+					<value level="1">-5</value>
+					<value level="2">-7</value>
+					<value level="3">-10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+			</effect>
+			<effect name="DefenceTrait">
+				<DERANGEMENT>
+					<value level="1">5</value>
+					<value level="2">7</value>
+					<value level="3">10</value>
+				</DERANGEMENT>
+				<PARALYZE>
+					<value level="1">5</value>
+					<value level="2">7</value>
+					<value level="3">10</value>
+				</PARALYZE>
+				<SHOCK>
+					<value level="1">5</value>
+					<value level="2">7</value>
+					<value level="3">10</value>
+				</SHOCK>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="39220" toLevel="1" name="Ticket for Monster Arena">
 		<icon>icon.etc_ticket_red_i00</icon>

@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.clan.entry.PledgeWaitingInfo;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -34,17 +36,17 @@ public class ExPledgeDraftListSearch extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_DRAFT_LIST_SEARCH.writeId(this);
-		writeInt(_pledgeRecruitList.size());
+		ServerPackets.EX_PLEDGE_DRAFT_LIST_SEARCH.writeId(this, buffer);
+		buffer.writeInt(_pledgeRecruitList.size());
 		for (PledgeWaitingInfo prl : _pledgeRecruitList)
 		{
-			writeInt(prl.getPlayerId());
-			writeString(prl.getPlayerName());
-			writeInt(prl.getKarma());
-			writeInt(prl.getPlayerClassId());
-			writeInt(prl.getPlayerLvl());
+			buffer.writeInt(prl.getPlayerId());
+			buffer.writeString(prl.getPlayerName());
+			buffer.writeInt(prl.getKarma());
+			buffer.writeInt(prl.getPlayerClassId());
+			buffer.writeInt(prl.getPlayerLvl());
 		}
 	}
 }

@@ -36,8 +36,8 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.DoorData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.Faction;
@@ -1681,7 +1681,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 					}
 					case ITEM:
 					{
-						final ItemTemplate template = ItemTable.getInstance().getTemplate(id);
+						final ItemTemplate template = ItemData.getInstance().getTemplate(id);
 						if (template != null)
 						{
 							listeners.add(template.addListener(action.apply(template)));
@@ -1801,7 +1801,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 					}
 					case ITEM:
 					{
-						final ItemTemplate template = ItemTable.getInstance().getTemplate(id);
+						final ItemTemplate template = ItemData.getInstance().getTemplate(id);
 						if (template != null)
 						{
 							listeners.add(template.addListener(action.apply(template)));
@@ -2609,7 +2609,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 			return;
 		}
 		
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 		if (item == null)
 		{
 			return;
@@ -3318,17 +3318,14 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	public Door getDoor(int doorId, int instanceId)
 	{
 		Door door = null;
-		if (instanceId <= 0)
+		final Instance instance = InstanceManager.getInstance().getInstance(instanceId);
+		if (instance != null)
 		{
-			door = DoorData.getInstance().getDoor(doorId);
+			door = instance.getDoor(doorId);
 		}
 		else
 		{
-			final Instance inst = InstanceManager.getInstance().getInstance(instanceId);
-			if (inst != null)
-			{
-				door = inst.getDoor(doorId);
-			}
+			door = DoorData.getInstance().getDoor(doorId);
 		}
 		return door;
 	}

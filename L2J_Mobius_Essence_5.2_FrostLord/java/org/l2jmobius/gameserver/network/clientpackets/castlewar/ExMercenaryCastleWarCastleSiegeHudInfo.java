@@ -16,29 +16,27 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.castlewar;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.castlewar.MercenaryCastleWarCastleSiegeInfo;
 
 /**
  * @author Mobius
  */
-public class ExMercenaryCastleWarCastleSiegeHudInfo implements ClientPacket
+public class ExMercenaryCastleWarCastleSiegeHudInfo extends ClientPacket
 {
 	private int _castleId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_castleId = packet.readInt();
+		_castleId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

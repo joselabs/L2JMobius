@@ -186,6 +186,7 @@ public class AdditionalServicesAdvisor extends AbstractNpcAI
 						takeItems(player, CLASS_CHANGE_COUPON, 1);
 						
 						player.removeAllSkills();
+						player.getEffectList().stopAllEffectsWithoutExclusions(false, false);
 						
 						player.setVitalityPoints(0, true);
 						player.setExpBeforeDeath(0);

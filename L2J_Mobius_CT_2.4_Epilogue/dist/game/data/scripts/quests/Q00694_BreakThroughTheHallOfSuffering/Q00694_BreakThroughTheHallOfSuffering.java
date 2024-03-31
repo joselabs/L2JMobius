@@ -284,7 +284,7 @@ public class Q00694_BreakThroughTheHallOfSuffering extends Quest
 		}
 		reenter.set(Calendar.HOUR_OF_DAY, 6);
 		
-		final SystemMessage sm = new SystemMessage(SystemMessageId.INSTANT_ZONE_S1_S_ENTRY_HAS_BEEN_RESTRICTED_YOU_CAN_CHECK_THE_NEXT_POSSIBLE_ENTRY_TIME_BY_USING_THE_COMMAND_INSTANCEZONE);
+		final SystemMessage sm = new SystemMessage(SystemMessageId.INSTANT_ZONE_FROM_HERE_S1_S_ENTRY_HAS_BEEN_RESTRICTED_YOU_CAN_CHECK_THE_NEXT_ENTRY_POSSIBLE_TIME_WITH_THE_COMMAND_INSTANCEZONE);
 		sm.addInstanceName(TEMPLATE_ID);
 		
 		for (Player plr : world.getAllowed())

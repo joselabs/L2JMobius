@@ -51,6 +51,8 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  */
 public class Q00350_EnhanceYourWeapon extends Quest
 {
+	private static final int MIN_LEVEL = 40;
+	
 	private enum AbsorbCrystalType
 	{
 		LAST_HIT,
@@ -220,7 +222,14 @@ public class Q00350_EnhanceYourWeapon extends Quest
 		String htmltext = getNoQuestMsg(player);
 		if (qs.getState() == State.CREATED)
 		{
-			htmltext = npc.getId() + "-01.htm";
+			if (player.getLevel() < MIN_LEVEL)
+			{
+				htmltext = npc.getId() + "-lvl.htm";
+			}
+			else
+			{
+				htmltext = npc.getId() + "-01.htm";
+			}
 		}
 		else if (check(player))
 		{
@@ -326,7 +335,7 @@ public class Q00350_EnhanceYourWeapon extends Quest
 		// If the crystal level is way too high for this mob, say that we can't increase it
 		if (!NPC_LEVELING_INFO.get(mob.getId()).containsKey(sc.getLevel()))
 		{
-			player.sendPacket(SystemMessageId.THE_SOUL_CRYSTAL_IS_REFUSING_TO_ABSORB_THE_SOUL);
+			player.sendPacket(SystemMessageId.THE_SOUL_CRYSTAL_IS_REFUSING_TO_ABSORB_A_SOUL);
 			return;
 		}
 		
@@ -336,7 +345,7 @@ public class Q00350_EnhanceYourWeapon extends Quest
 		}
 		else
 		{
-			player.sendPacket(SystemMessageId.THE_SOUL_CRYSTAL_WAS_NOT_ABLE_TO_ABSORB_THE_SOUL);
+			player.sendPacket(SystemMessageId.THE_SOUL_CRYSTAL_WAS_NOT_ABLE_TO_ABSORB_A_SOUL);
 		}
 	}
 	

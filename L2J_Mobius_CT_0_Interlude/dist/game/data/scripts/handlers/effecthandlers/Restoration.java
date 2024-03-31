@@ -54,9 +54,14 @@ public class Restoration extends AbstractEffect
 			return;
 		}
 		
+		if (info.getEffected().isMoving() && !info.getEffected().isDisabled())
+		{
+			info.getEffected().stopMove(info.getEffected().getLocation());
+		}
+		
 		if ((_itemId <= 0) || (_itemCount <= 0))
 		{
-			info.getEffected().sendPacket(SystemMessageId.THERE_WAS_NOTHING_FOUND_INSIDE);
+			info.getEffected().sendPacket(SystemMessageId.THERE_WAS_NOTHING_FOUND_INSIDE_OF_THAT);
 			LOGGER.warning(Restoration.class.getSimpleName() + " effect with wrong item Id/count: " + _itemId + "/" + _itemCount + "!");
 			return;
 		}

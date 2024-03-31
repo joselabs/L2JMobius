@@ -27,7 +27,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.holders.AppearanceHolder;
@@ -68,7 +67,7 @@ public class AppearanceItemData implements IXmlReader
 		
 		//@formatter:off
 		/*
-		for (Item item : ItemTable.getInstance().getAllItems())
+		for (Item item : ItemData.getInstance().getAllItems())
 		{
 			if ((item == null) || !item.getName().contains("Appearance Stone"))
 			{
@@ -117,7 +116,7 @@ public class AppearanceItemData implements IXmlReader
 								}
 								case "bodyPart":
 								{
-									final int part = ItemTable.SLOTS.get(c.getTextContent());
+									final int part = ItemData.SLOTS.get(c.getTextContent());
 									stone.addBodyPart(part);
 									break;
 								}
@@ -139,7 +138,7 @@ public class AppearanceItemData implements IXmlReader
 								}
 							}
 						}
-						if (ItemTable.getInstance().getTemplate(stone.getId()) != null)
+						if (ItemData.getInstance().getTemplate(stone.getId()) != null)
 						{
 							_stoneMap.put(stone.getId(), stone);
 						}

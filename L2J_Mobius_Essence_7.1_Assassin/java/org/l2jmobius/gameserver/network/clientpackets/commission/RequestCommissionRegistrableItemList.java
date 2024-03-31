@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets.commission;
 
 import org.l2jmobius.gameserver.instancemanager.ItemCommissionManager;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.commission.ExCloseCommission;
 import org.l2jmobius.gameserver.network.serverpackets.commission.ExResponseCommissionItemList;
@@ -26,12 +25,17 @@ import org.l2jmobius.gameserver.network.serverpackets.commission.ExResponseCommi
 /**
  * @author NosBit
  */
-public class RequestCommissionRegistrableItemList implements ClientPacket
+public class RequestCommissionRegistrableItemList extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

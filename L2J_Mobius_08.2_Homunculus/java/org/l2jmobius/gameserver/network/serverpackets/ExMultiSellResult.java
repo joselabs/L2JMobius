@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -35,11 +37,11 @@ public class ExMultiSellResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MULTISELL_RESULT.writeId(this);
-		writeByte(_success);
-		writeInt(_type);
-		writeInt(_count);
+		ServerPackets.EX_MULTISELL_RESULT.writeId(this, buffer);
+		buffer.writeByte(_success);
+		buffer.writeInt(_type);
+		buffer.writeInt(_count);
 	}
 }

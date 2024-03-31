@@ -24,7 +24,7 @@ import java.util.Map.Entry;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.SpecialItemType;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.instancemanager.DailyTaskManager;
@@ -133,7 +133,7 @@ public class ExtractableItems implements IItemHandler
 							continue;
 						}
 						
-						final ItemTemplate template = ItemTable.getInstance().getTemplate(expi.getId());
+						final ItemTemplate template = ItemData.getInstance().getTemplate(expi.getId());
 						if (template == null)
 						{
 							LOGGER.warning("ExtractableItems: Could not find " + item + " product template with id " + expi.getId() + "!");
@@ -206,7 +206,7 @@ public class ExtractableItems implements IItemHandler
 						continue;
 					}
 					
-					final ItemTemplate template = ItemTable.getInstance().getTemplate(expi.getId());
+					final ItemTemplate template = ItemData.getInstance().getTemplate(expi.getId());
 					if (template == null)
 					{
 						LOGGER.warning("ExtractableItems: Could not find " + item + " product template with id " + expi.getId() + "!");

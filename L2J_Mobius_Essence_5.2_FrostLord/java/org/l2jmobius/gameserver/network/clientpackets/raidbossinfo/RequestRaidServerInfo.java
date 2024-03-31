@@ -21,6 +21,15 @@ import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 /**
  * @author Mobius
  */
-public class RequestRaidServerInfo implements ClientPacket
+public class RequestRaidServerInfo extends ClientPacket
 {
+	@Override
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+	}
 }

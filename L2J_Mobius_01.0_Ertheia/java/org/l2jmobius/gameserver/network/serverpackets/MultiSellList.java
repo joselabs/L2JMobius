@@ -18,7 +18,8 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import static org.l2jmobius.gameserver.data.xml.MultisellData.PAGE_SIZE;
 
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.ItemInfo;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
@@ -26,6 +27,7 @@ import org.l2jmobius.gameserver.model.holders.MultisellEntryHolder;
 import org.l2jmobius.gameserver.model.holders.PreparedMultisellListHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class MultiSellList extends AbstractItemPacket
@@ -54,16 +56,16 @@ public class MultiSellList extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.MULTI_SELL_LIST.writeId(this);
-		writeInt(_list.getId()); // list id
-		writeByte(0); // GOD Unknown
-		writeInt(1 + (_index / PAGE_SIZE)); // page started from 1
-		writeInt(_finished); // finished
-		writeInt(PAGE_SIZE); // size of pages
-		writeInt(_size); // list length
-		writeByte(_list.isChanceMultisell()); // new multisell window
+		ServerPackets.MULTI_SELL_LIST.writeId(this, buffer);
+		buffer.writeInt(_list.getId()); // list id
+		buffer.writeByte(0); // GOD Unknown
+		buffer.writeInt(1 + (_index / PAGE_SIZE)); // page started from 1
+		buffer.writeInt(_finished); // finished
+		buffer.writeInt(PAGE_SIZE); // size of pages
+		buffer.writeInt(_size); // list length
+		buffer.writeByte(_list.isChanceMultisell()); // new multisell window
 		while (_size-- > 0)
 		{
 			ItemInfo itemEnchantment = _list.getItemEnchantment(_index);
@@ -80,57 +82,57 @@ public class MultiSellList extends AbstractItemPacket
 					}
 				}
 			}
-			writeInt(_index); // Entry ID. Start from 1.
-			writeByte(entry.isStackable());
+			buffer.writeInt(_index); // Entry ID. Start from 1.
+			buffer.writeByte(entry.isStackable());
 			// Those values will be passed down to MultiSellChoose packet.
-			writeShort(itemEnchantment != null ? itemEnchantment.getEnchantLevel() : 0); // enchant level
-			writeInt((itemEnchantment != null) && (itemEnchantment.getAugmentation() != null) ? itemEnchantment.getAugmentation().getOption1Id() : 0);
-			writeInt((itemEnchantment != null) && (itemEnchantment.getAugmentation() != null) ? itemEnchantment.getAugmentation().getOption2Id() : 0);
-			writeItemElemental(itemEnchantment);
-			writeShort(entry.getProducts().size());
-			writeShort(entry.getIngredients().size());
+			buffer.writeShort(itemEnchantment != null ? itemEnchantment.getEnchantLevel() : 0); // enchant level
+			buffer.writeInt((itemEnchantment != null) && (itemEnchantment.getAugmentation() != null) ? itemEnchantment.getAugmentation().getOption1Id() : 0);
+			buffer.writeInt((itemEnchantment != null) && (itemEnchantment.getAugmentation() != null) ? itemEnchantment.getAugmentation().getOption2Id() : 0);
+			writeItemElemental(itemEnchantment, buffer);
+			buffer.writeShort(entry.getProducts().size());
+			buffer.writeShort(entry.getIngredients().size());
 			for (ItemChanceHolder product : entry.getProducts())
 			{
-				final ItemTemplate template = ItemTable.getInstance().getTemplate(product.getId());
+				final ItemTemplate template = ItemData.getInstance().getTemplate(product.getId());
 				final ItemInfo displayItemEnchantment = _list.isMaintainEnchantment() && (itemEnchantment != null) && (template != null) && template.getClass().equals(itemEnchantment.getItem().getClass()) ? itemEnchantment : null;
 				if (template != null)
 				{
-					writeInt(template.getDisplayId());
-					writeLong(template.getBodyPart());
-					writeShort(template.getType2());
+					buffer.writeInt(template.getDisplayId());
+					buffer.writeLong(template.getBodyPart());
+					buffer.writeShort(template.getType2());
 				}
 				else
 				{
-					writeInt(product.getId());
-					writeLong(0);
-					writeShort(65535);
+					buffer.writeInt(product.getId());
+					buffer.writeLong(0);
+					buffer.writeShort(65535);
 				}
-				writeLong(_list.getProductCount(product));
-				writeShort(product.getEnchantmentLevel() > 0 ? product.getEnchantmentLevel() : displayItemEnchantment != null ? displayItemEnchantment.getEnchantLevel() : 0); // enchant level
-				writeInt((int) Math.ceil(product.getChance())); // chance
-				writeInt((displayItemEnchantment != null) && (displayItemEnchantment.getAugmentation() != null) ? displayItemEnchantment.getAugmentation().getOption1Id() : 0);
-				writeInt((displayItemEnchantment != null) && (displayItemEnchantment.getAugmentation() != null) ? displayItemEnchantment.getAugmentation().getOption2Id() : 0);
-				writeItemElemental(displayItemEnchantment);
+				buffer.writeLong(_list.getProductCount(product));
+				buffer.writeShort(product.getEnchantmentLevel() > 0 ? product.getEnchantmentLevel() : displayItemEnchantment != null ? displayItemEnchantment.getEnchantLevel() : 0); // enchant level
+				buffer.writeInt((int) Math.ceil(product.getChance())); // chance
+				buffer.writeInt((displayItemEnchantment != null) && (displayItemEnchantment.getAugmentation() != null) ? displayItemEnchantment.getAugmentation().getOption1Id() : 0);
+				buffer.writeInt((displayItemEnchantment != null) && (displayItemEnchantment.getAugmentation() != null) ? displayItemEnchantment.getAugmentation().getOption2Id() : 0);
+				writeItemElemental(displayItemEnchantment, buffer);
 			}
 			for (ItemChanceHolder ingredient : entry.getIngredients())
 			{
-				final ItemTemplate template = ItemTable.getInstance().getTemplate(ingredient.getId());
+				final ItemTemplate template = ItemData.getInstance().getTemplate(ingredient.getId());
 				final ItemInfo displayItemEnchantment = (itemEnchantment != null) && (template != null) && template.getClass().equals(itemEnchantment.getItem().getClass()) ? itemEnchantment : null;
 				if (template != null)
 				{
-					writeInt(template.getDisplayId());
-					writeShort(template.getType2());
+					buffer.writeInt(template.getDisplayId());
+					buffer.writeShort(template.getType2());
 				}
 				else
 				{
-					writeInt(ingredient.getId());
-					writeShort(65535);
+					buffer.writeInt(ingredient.getId());
+					buffer.writeShort(65535);
 				}
-				writeLong(_list.getIngredientCount(ingredient));
-				writeShort(ingredient.getEnchantmentLevel() > 0 ? ingredient.getEnchantmentLevel() : displayItemEnchantment != null ? displayItemEnchantment.getEnchantLevel() : 0); // enchant level
-				writeInt((displayItemEnchantment != null) && (displayItemEnchantment.getAugmentation() != null) ? displayItemEnchantment.getAugmentation().getOption1Id() : 0);
-				writeInt((displayItemEnchantment != null) && (displayItemEnchantment.getAugmentation() != null) ? displayItemEnchantment.getAugmentation().getOption2Id() : 0);
-				writeItemElemental(displayItemEnchantment);
+				buffer.writeLong(_list.getIngredientCount(ingredient));
+				buffer.writeShort(ingredient.getEnchantmentLevel() > 0 ? ingredient.getEnchantmentLevel() : displayItemEnchantment != null ? displayItemEnchantment.getEnchantLevel() : 0); // enchant level
+				buffer.writeInt((displayItemEnchantment != null) && (displayItemEnchantment.getAugmentation() != null) ? displayItemEnchantment.getAugmentation().getOption1Id() : 0);
+				buffer.writeInt((displayItemEnchantment != null) && (displayItemEnchantment.getAugmentation() != null) ? displayItemEnchantment.getAugmentation().getOption2Id() : 0);
+				writeItemElemental(displayItemEnchantment, buffer);
 			}
 		}
 	}

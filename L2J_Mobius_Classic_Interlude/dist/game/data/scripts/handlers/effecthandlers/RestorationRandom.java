@@ -24,7 +24,7 @@ import java.util.Map.Entry;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.ExtractableProductItem;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
@@ -113,7 +113,7 @@ public class RestorationRandom extends AbstractEffect
 			}
 			
 			// Max equipable item grade configuration.
-			final ItemTemplate extractable = ItemTable.getInstance().getTemplate(createdItem.getId());
+			final ItemTemplate extractable = ItemData.getInstance().getTemplate(createdItem.getId());
 			if (extractable != null)
 			{
 				final int itemCrystalLevel = extractable.getCrystalType().getLevel();

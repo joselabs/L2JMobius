@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.BonusExpType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.stats.Stat;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -36,9 +38,9 @@ public class ExUserBoostStat extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_USER_BOOST_STAT.writeId(this);
+		ServerPackets.EX_USER_BOOST_STAT.writeId(this, buffer);
 		int count = 0;
 		int bonus = 0;
 		switch (_type)
@@ -66,8 +68,8 @@ public class ExUserBoostStat extends ServerPacket
 				break;
 			}
 		}
-		writeByte(_type.getId());
-		writeByte(count);
-		writeShort(bonus);
+		buffer.writeByte(_type.getId());
+		buffer.writeByte(count);
+		buffer.writeShort(bonus);
 	}
 }

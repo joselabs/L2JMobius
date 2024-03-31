@@ -16,19 +16,17 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.MatchingRoomType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.matching.CommandChannelMatchingRoom;
 import org.l2jmobius.gameserver.model.matching.MatchingRoom;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExMPCCRoomInfo;
 
 /**
  * @author Sdw
  */
-public class RequestExManageMpccRoom implements ClientPacket
+public class RequestExManageMpccRoom extends ClientPacket
 {
 	private int _roomId;
 	private int _maxMembers;
@@ -37,20 +35,20 @@ public class RequestExManageMpccRoom implements ClientPacket
 	private String _title;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_roomId = packet.readInt();
-		_maxMembers = packet.readInt();
-		_minLevel = packet.readInt();
-		_maxLevel = packet.readInt();
-		packet.readInt(); // Party Distrubtion Type
-		_title = packet.readString();
+		_roomId = readInt();
+		_maxMembers = readInt();
+		_minLevel = readInt();
+		_maxLevel = readInt();
+		readInt(); // Party Distrubtion Type
+		_title = readString();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

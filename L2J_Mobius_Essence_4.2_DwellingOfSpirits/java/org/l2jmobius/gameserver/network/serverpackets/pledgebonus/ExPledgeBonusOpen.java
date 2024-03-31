@@ -16,11 +16,13 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgebonus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.ClanRewardData;
 import org.l2jmobius.gameserver.enums.ClanRewardType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanRewardBonus;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -38,7 +40,7 @@ public class ExPledgeBonusOpen extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		final Clan clan = _player.getClan();
 		if (clan == null)
@@ -72,20 +74,20 @@ public class ExPledgeBonusOpen extends ServerPacket
 		}
 		
 		// General OP Code
-		ServerPackets.EX_PLEDGE_BONUS_OPEN.writeId(this);
+		ServerPackets.EX_PLEDGE_BONUS_OPEN.writeId(this, buffer);
 		// Members online bonus
-		writeInt(highestMembersOnlineBonus.getRequiredAmount());
-		writeInt(clan.getMaxOnlineMembers());
-		writeByte(0); // 140
-		writeInt(membersOnlineBonus != null ? highestMembersOnlineBonus.getSkillReward().getSkillId() : 0);
-		writeByte(membersOnlineBonus != null ? membersOnlineBonus.getLevel() : 0);
-		writeByte(clan.canClaimBonusReward(_player, ClanRewardType.MEMBERS_ONLINE) ? 1 : 0);
+		buffer.writeInt(highestMembersOnlineBonus.getRequiredAmount());
+		buffer.writeInt(clan.getMaxOnlineMembers());
+		buffer.writeByte(0); // 140
+		buffer.writeInt(membersOnlineBonus != null ? highestMembersOnlineBonus.getSkillReward().getSkillId() : 0);
+		buffer.writeByte(membersOnlineBonus != null ? membersOnlineBonus.getLevel() : 0);
+		buffer.writeByte(clan.canClaimBonusReward(_player, ClanRewardType.MEMBERS_ONLINE) ? 1 : 0);
 		// Hunting bonus
-		writeInt(highestHuntingBonus.getRequiredAmount());
-		writeInt(clan.getHuntingPoints());
-		writeByte(0); // 140
-		writeInt(huntingBonus != null ? highestHuntingBonus.getItemReward().getId() : 0);
-		writeByte(huntingBonus != null ? huntingBonus.getLevel() : 0);
-		writeByte(clan.canClaimBonusReward(_player, ClanRewardType.HUNTING_MONSTERS) ? 1 : 0);
+		buffer.writeInt(highestHuntingBonus.getRequiredAmount());
+		buffer.writeInt(clan.getHuntingPoints());
+		buffer.writeByte(0); // 140
+		buffer.writeInt(huntingBonus != null ? highestHuntingBonus.getItemReward().getId() : 0);
+		buffer.writeByte(huntingBonus != null ? huntingBonus.getLevel() : 0);
+		buffer.writeByte(clan.canClaimBonusReward(_player, ClanRewardType.HUNTING_MONSTERS) ? 1 : 0);
 	}
 }

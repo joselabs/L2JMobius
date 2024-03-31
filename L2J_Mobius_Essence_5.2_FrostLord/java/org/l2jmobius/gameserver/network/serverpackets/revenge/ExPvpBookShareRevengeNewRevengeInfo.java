@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.revenge;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.RevengeType;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -37,11 +39,11 @@ public class ExPvpBookShareRevengeNewRevengeInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PVPBOOK_SHARE_REVENGE_NEW_REVENGEINFO.writeId(this);
-		writeInt(_type.ordinal());
-		writeSizedString(_victimName);
-		writeSizedString(_killerName);
+		ServerPackets.EX_PVPBOOK_SHARE_REVENGE_NEW_REVENGEINFO.writeId(this, buffer);
+		buffer.writeInt(_type.ordinal());
+		buffer.writeSizedString(_victimName);
+		buffer.writeSizedString(_killerName);
 	}
 }

@@ -20,9 +20,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -47,11 +49,11 @@ public class ExDethroneRankingInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_DETHRONE_RANKING_INFO.writeId(this);
-		writeByte(_bCurrentSeason);
-		writeByte(_cRankingScope);
+		ServerPackets.EX_DETHRONE_RANKING_INFO.writeId(this, buffer);
+		buffer.writeByte(_bCurrentSeason);
+		buffer.writeByte(_cRankingScope);
 		
 		if (_bCurrentSeason == 1) // Current Cycle
 		{
@@ -59,16 +61,21 @@ public class ExDethroneRankingInfo extends ServerPacket
 			{
 				if (!_currentConquestPlayerList.isEmpty())
 				{
-					writeInt(_currentConquestPlayerList.size() > 100 ? 100 : _currentConquestPlayerList.size()); // ranking percents seems is calculated inside client (must be same number as ranking list size)
-					writeInt(_currentConquestPlayerList.size() > 100 ? 100 : _currentConquestPlayerList.size()); // ranking list size
+					buffer.writeInt(_currentConquestPlayerList.size() > 100 ? 100 : _currentConquestPlayerList.size()); // ranking percents seems is calculated inside client (must be same number as ranking list size)
+					buffer.writeInt(_currentConquestPlayerList.size() > 100 ? 100 : _currentConquestPlayerList.size()); // ranking list size
 					for (Entry<Integer, StatSet> entry : _currentConquestPlayerList.entrySet())
 					{
-						writeInt(entry.getKey()); // server rank
-						writeInt(Config.SERVER_ID);
-						writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(entry.getKey())); // conquest char name
+						buffer.writeInt(entry.getKey()); // server rank
+						buffer.writeInt(Config.SERVER_ID);
+						buffer.writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(entry.getKey())); // conquest char name
 						// writeSizedString(player.getString("name")); // real char name
-						writeLong(entry.getValue().getLong("conquestPersonalPoints"));
+						buffer.writeLong(entry.getValue().getLong("conquestPersonalPoints"));
 					}
+				}
+				else
+				{
+					buffer.writeInt(0);
+					buffer.writeInt(0);
 				}
 			}
 			else // Personal Ranking
@@ -86,30 +93,35 @@ public class ExDethroneRankingInfo extends ServerPacket
 							final int last = _currentConquestPlayerList.size() >= (id + 10) ? id + 10 : id + (_currentConquestPlayerList.size() - id);
 							if (first == 1)
 							{
-								writeInt(_currentConquestPlayerList.size()); // rank percents
-								writeInt(last - (first - 1));
+								buffer.writeInt(_currentConquestPlayerList.size()); // rank percents
+								buffer.writeInt(last - (first - 1));
 							}
 							else
 							{
-								writeInt(_currentConquestPlayerList.size()); // rank percents
-								writeInt(last - first);
+								buffer.writeInt(_currentConquestPlayerList.size()); // rank percents
+								buffer.writeInt(last - first);
 							}
 							for (int id2 = first; id2 <= last; id2++)
 							{
 								final StatSet plr = _currentConquestPlayerList.get(id2);
-								writeInt(id2); // server rank
-								writeInt(Config.SERVER_ID);
-								writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(id2)); // conquest char name
+								buffer.writeInt(id2); // server rank
+								buffer.writeInt(Config.SERVER_ID);
+								buffer.writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(id2)); // conquest char name
 								// writeSizedString(plr.getString("name")); // real char name
-								writeLong(plr.getLong("conquestPersonalPoints"));
+								buffer.writeLong(plr.getLong("conquestPersonalPoints"));
 							}
 						}
 					}
 					if (!found)
 					{
-						writeInt(0);
-						writeInt(0);
+						buffer.writeInt(0);
+						buffer.writeInt(0);
 					}
+				}
+				else
+				{
+					buffer.writeInt(0);
+					buffer.writeInt(0);
 				}
 			}
 		}
@@ -119,26 +131,31 @@ public class ExDethroneRankingInfo extends ServerPacket
 			{
 				if (!_previousConquestPlayerList.isEmpty())
 				{
-					writeInt(_previousConquestPlayerList.size()); // ranking percents seems is calculated inside client (must be same number as ranking list size)
-					writeInt(_previousConquestPlayerList.size()); // ranking list size
+					buffer.writeInt(_previousConquestPlayerList.size()); // ranking percents seems is calculated inside client (must be same number as ranking list size)
+					buffer.writeInt(_previousConquestPlayerList.size()); // ranking list size
 					for (Entry<Integer, StatSet> entry : _previousConquestPlayerList.entrySet())
 					{
 						final StatSet info = entry.getValue();
-						writeInt(entry.getKey()); // server rank
-						writeInt(Config.SERVER_ID);
-						writeSizedString(info.getString("conquest_name")); // conquest char name
-						writeLong(info.getLong("conquestPersonalPoints"));
+						buffer.writeInt(entry.getKey()); // server rank
+						buffer.writeInt(Config.SERVER_ID);
+						buffer.writeSizedString(info.getString("conquest_name")); // conquest char name
+						buffer.writeLong(info.getLong("conquestPersonalPoints"));
 					}
 					
-					// writeInt(1); // Rank percent
-					// writeInt(Config.SERVER_ID); // WorldId
+					// buffer.writeInt(1); // Rank percent
+					// buffer.writeInt(Config.SERVER_ID); // WorldId
 					// writeSizedString("Player1"); // name
-					// writeLong(30000);
+					// buffer.writeLong(30000);
 					//
-					// writeInt(2); // Rank percent
-					// writeInt(Config.SERVER_ID); // WorldId
+					// buffer.writeInt(2); // Rank percent
+					// buffer.writeInt(Config.SERVER_ID); // WorldId
 					// writeSizedString("Player2"); // name
-					// writeLong(15000);
+					// buffer.writeLong(15000);
+				}
+				else
+				{
+					buffer.writeInt(0);
+					buffer.writeInt(0);
 				}
 			}
 			else // Personal Ranking
@@ -157,42 +174,47 @@ public class ExDethroneRankingInfo extends ServerPacket
 							
 							if (first == 1)
 							{
-								writeInt(_previousConquestPlayerList.size()); // rank percents
-								writeInt(last - (first - 1));
+								buffer.writeInt(_previousConquestPlayerList.size()); // rank percents
+								buffer.writeInt(last - (first - 1));
 							}
 							else
 							{
-								writeInt(_previousConquestPlayerList.size()); // rank percents
-								writeInt(last - first);
+								buffer.writeInt(_previousConquestPlayerList.size()); // rank percents
+								buffer.writeInt(last - first);
 							}
 							for (int id2 = first; id2 <= last; id2++)
 							{
 								final StatSet plr = _previousConquestPlayerList.get(id2);
-								writeInt(id2); // server rank
-								writeInt(Config.SERVER_ID);
-								writeSizedString(plr.getString("conquest_name")); // conquest char name
-								writeLong(plr.getLong("conquestPersonalPoints"));
+								buffer.writeInt(id2); // server rank
+								buffer.writeInt(Config.SERVER_ID);
+								buffer.writeSizedString(plr.getString("conquest_name")); // conquest char name
+								buffer.writeLong(plr.getLong("conquestPersonalPoints"));
 							}
 						}
 					}
 					if (!found)
 					{
-						writeInt(0);
-						writeInt(0);
+						buffer.writeInt(0);
+						buffer.writeInt(0);
 					}
 					
-					// writeInt(0); // ???
-					// writeInt(2); // ranking list size
+					// buffer.writeInt(0); // ???
+					// buffer.writeInt(2); // ranking list size
 					//
-					// writeInt(1); // Rank Slot
-					// writeInt(Config.SERVER_ID); // WorldId
+					// buffer.writeInt(1); // Rank Slot
+					// buffer.writeInt(Config.SERVER_ID); // WorldId
 					// writeSizedString("Player1"); // name
-					// writeLong(6000);
+					// buffer.writeLong(6000);
 					//
-					// writeInt(2); // Rank Slot
-					// writeInt(Config.SERVER_ID); // WorldId
+					// buffer.writeInt(2); // Rank Slot
+					// buffer.writeInt(Config.SERVER_ID); // WorldId
 					// writeSizedString("Player2"); // name
-					// writeLong(5000);
+					// buffer.writeLong(5000);
+				}
+				else
+				{
+					buffer.writeInt(0);
+					buffer.writeInt(0);
 				}
 			}
 		}

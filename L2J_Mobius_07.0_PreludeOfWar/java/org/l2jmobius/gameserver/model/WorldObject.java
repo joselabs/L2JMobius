@@ -381,6 +381,15 @@ public abstract class WorldObject extends ListenersContainer implements IIdentif
 	}
 	
 	/**
+	 * Verify if object is instance of Cubic.
+	 * @return {@code true} if object is instance of Cubic, {@code false} otherwise
+	 */
+	public boolean isCubic()
+	{
+		return false;
+	}
+	
+	/**
 	 * Verify if object is instance of Item.
 	 * @return {@code true} if object is instance of Item, {@code false} otherwise
 	 */

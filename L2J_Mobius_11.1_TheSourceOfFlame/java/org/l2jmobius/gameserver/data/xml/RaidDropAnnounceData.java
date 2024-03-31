@@ -26,7 +26,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 
@@ -76,7 +75,7 @@ public class RaidDropAnnounceData implements IXmlReader
 						}
 						
 						final int id = parseInteger(attrs, "id");
-						final ItemTemplate item = ItemTable.getInstance().getTemplate(id);
+						final ItemTemplate item = ItemData.getInstance().getTemplate(id);
 						if (item != null)
 						{
 							_itemIds.add(id);

@@ -35,7 +35,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.ArmorSet;
 import org.l2jmobius.gameserver.model.holders.ArmorsetSkillHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -110,7 +109,7 @@ public class ArmorSetData implements IXmlReader
 									{
 										final NamedNodeMap attrs = node.getAttributes();
 										final int itemId = parseInteger(attrs, "id");
-										final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+										final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 										if (item == null)
 										{
 											LOGGER.warning("Attempting to register non existing required item: " + itemId + " to a set: " + f.getName());
@@ -128,7 +127,7 @@ public class ArmorSetData implements IXmlReader
 									{
 										final NamedNodeMap attrs = node.getAttributes();
 										final int itemId = parseInteger(attrs, "id");
-										final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+										final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 										if (item == null)
 										{
 											LOGGER.warning("Attempting to register non existing optional item: " + itemId + " to a set: " + f.getName());

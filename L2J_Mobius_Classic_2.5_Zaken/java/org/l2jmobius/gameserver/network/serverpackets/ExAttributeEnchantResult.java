@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.AttributeType;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ExAttributeEnchantResult extends ServerPacket
@@ -41,15 +43,15 @@ public class ExAttributeEnchantResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ATTRIBUTE_ENCHANT_RESULT.writeId(this);
-		writeInt(_result);
-		writeByte(_isWeapon);
-		writeShort(_type);
-		writeShort(_before);
-		writeShort(_after);
-		writeShort(_successCount);
-		writeShort(_failedCount);
+		ServerPackets.EX_ATTRIBUTE_ENCHANT_RESULT.writeId(this, buffer);
+		buffer.writeInt(_result);
+		buffer.writeByte(_isWeapon);
+		buffer.writeShort(_type);
+		buffer.writeShort(_before);
+		buffer.writeShort(_after);
+		buffer.writeShort(_successCount);
+		buffer.writeShort(_failedCount);
 	}
 }

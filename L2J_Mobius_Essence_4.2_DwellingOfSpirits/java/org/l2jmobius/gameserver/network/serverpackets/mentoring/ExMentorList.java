@@ -20,9 +20,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.MentorManager;
 import org.l2jmobius.gameserver.model.Mentee;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -59,19 +61,19 @@ public class ExMentorList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MENTOR_LIST.writeId(this);
-		writeInt(_type);
-		writeInt(0);
-		writeInt(_mentees.size());
+		ServerPackets.EX_MENTOR_LIST.writeId(this, buffer);
+		buffer.writeInt(_type);
+		buffer.writeInt(0);
+		buffer.writeInt(_mentees.size());
 		for (Mentee mentee : _mentees)
 		{
-			writeInt(mentee.getObjectId());
-			writeString(mentee.getName());
-			writeInt(mentee.getClassId());
-			writeInt(mentee.getLevel());
-			writeInt(mentee.isOnlineInt());
+			buffer.writeInt(mentee.getObjectId());
+			buffer.writeString(mentee.getName());
+			buffer.writeInt(mentee.getClassId());
+			buffer.writeInt(mentee.getLevel());
+			buffer.writeInt(mentee.isOnlineInt());
 		}
 	}
 }

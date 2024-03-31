@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import java.util.Arrays;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.ActionData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.handler.IPlayerActionHandler;
@@ -29,7 +28,6 @@ import org.l2jmobius.gameserver.model.actor.transform.TransformTemplate;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.skill.AbnormalType;
 import org.l2jmobius.gameserver.model.skill.BuffInfo;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -39,24 +37,24 @@ import org.l2jmobius.gameserver.network.serverpackets.RecipeShopManageList;
  * This class manages the action use request packet.
  * @author Zoey76
  */
-public class RequestActionUse implements ClientPacket
+public class RequestActionUse extends ClientPacket
 {
 	private int _actionId;
 	private boolean _ctrlPressed;
 	private boolean _shiftPressed;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_actionId = packet.readInt();
-		_ctrlPressed = (packet.readInt() == 1);
-		_shiftPressed = (packet.readByte() == 1);
+		_actionId = readInt();
+		_ctrlPressed = readInt() == 1;
+		_shiftPressed = readByte() == 1;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

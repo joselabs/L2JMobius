@@ -23,7 +23,7 @@ import java.util.Set;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.CommonUtil;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.enums.QuestType;
@@ -350,7 +350,7 @@ public class Q00456_DontKnowDontCare extends Quest
 		}
 		
 		giveItems(player, reward, count);
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(reward);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(reward);
 		npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.S1_RECEIVED_A_S2_ITEM_AS_A_REWARD_FROM_THE_SEPARATED_SOUL, player.getName(), item.getName());
 	}
 }

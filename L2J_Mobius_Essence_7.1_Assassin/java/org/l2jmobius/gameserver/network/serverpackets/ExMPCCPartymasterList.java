@@ -18,6 +18,8 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -33,10 +35,10 @@ public class ExMPCCPartymasterList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MPCC_PARTYMASTER_LIST.writeId(this);
-		writeInt(_leadersName.size());
-		_leadersName.forEach(this::writeString);
+		ServerPackets.EX_MPCC_PARTYMASTER_LIST.writeId(this, buffer);
+		buffer.writeInt(_leadersName.size());
+		_leadersName.forEach(buffer::writeString);
 	}
 }

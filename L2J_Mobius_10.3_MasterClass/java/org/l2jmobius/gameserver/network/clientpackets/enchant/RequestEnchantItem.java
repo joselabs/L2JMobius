@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets.enchant;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
@@ -36,7 +35,6 @@ import org.l2jmobius.gameserver.model.item.enchant.EnchantSupportItem;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ExItemAnnounce;
@@ -47,23 +45,23 @@ import org.l2jmobius.gameserver.network.serverpackets.enchant.EnchantResult;
 import org.l2jmobius.gameserver.util.Broadcast;
 import org.l2jmobius.gameserver.util.Util;
 
-public class RequestEnchantItem implements ClientPacket
+public class RequestEnchantItem extends ClientPacket
 {
 	protected static final Logger LOGGER_ENCHANT = Logger.getLogger("enchant.items");
 	
 	private int _objectId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		packet.readByte(); // Unknown.
+		_objectId = readInt();
+		readByte(); // Unknown.
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -78,7 +76,7 @@ public class RequestEnchantItem implements ClientPacket
 		request.setEnchantingItem(_objectId);
 		request.setProcessing(true);
 		
-		if (!player.isOnline() || client.isDetached())
+		if (!player.isOnline() || getClient().isDetached())
 		{
 			player.removeRequest(request.getClass());
 			return;
@@ -120,7 +118,7 @@ public class RequestEnchantItem implements ClientPacket
 		}
 		
 		// First validation check, also over enchant check.
-		if (!scrollTemplate.isValid(item, supportTemplate) || (Config.DISABLE_OVER_ENCHANTING && ((item.getEnchantLevel() == scrollTemplate.getMaxEnchantLevel()) || (!(item.getTemplate().getEnchantLimit() == 0) && (item.getEnchantLevel() == item.getTemplate().getEnchantLimit())))))
+		if (!scrollTemplate.isValid(item, supportTemplate) || (Config.DISABLE_OVER_ENCHANTING && ((item.getEnchantLevel() == scrollTemplate.getMaxEnchantLevel()) || ((item.getTemplate().getEnchantLimit() != 0) && (item.getEnchantLevel() == item.getTemplate().getEnchantLimit())))))
 		{
 			player.sendPacket(SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITIONS);
 			player.removeRequest(request.getClass());
@@ -319,7 +317,7 @@ public class RequestEnchantItem implements ClientPacket
 							// Blessed enchant: Enchant value down by 1.
 							if (scrollTemplate.isBlessedDown() || ((supportTemplate != null) && supportTemplate.isDown()))
 							{
-								client.sendPacket(SystemMessageId.THE_ENCHANT_VALUE_IS_DECREASED_BY_1);
+								player.sendPacket(SystemMessageId.THE_ENCHANT_VALUE_IS_DECREASED_BY_1);
 								item.setEnchantLevel(item.getEnchantLevel() - 1);
 							}
 							else // Blessed enchant: Clear enchant value.
@@ -327,7 +325,7 @@ public class RequestEnchantItem implements ClientPacket
 								player.sendPacket(SystemMessageId.THE_BLESSED_ENCHANT_FAILED_THE_ENCHANT_VALUE_OF_THE_ITEM_BECAME_0);
 								item.setEnchantLevel(0);
 							}
-							player.sendPacket(new EnchantResult(EnchantResult.SUCCESS, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
+							player.sendPacket(new EnchantResult(EnchantResult.SAFE_FAIL_02, new ItemHolder(item.getId(), 1), null, item.getEnchantLevel()));
 							item.updateDatabase();
 							if (Config.LOG_ITEM_ENCHANTS)
 							{

@@ -69,12 +69,12 @@ public enum BroochJewel
 	SUPERIOR_SAPPHIRE_LV9(81523, 39660, 1, 0.23, false, true),
 	SUPERIOR_SAPPHIRE_LV10(81524, 39660, 1, 0.23, false, true);
 	
-	private int _itemId;
-	private int _skillId;
-	private int _skillLevel;
-	private double _bonus;
-	private boolean _isRuby;
-	private boolean _isSapphire;
+	private final int _itemId;
+	private final int _skillId;
+	private final int _skillLevel;
+	private final double _bonus;
+	private final boolean _isRuby;
+	private final boolean _isSapphire;
 	
 	private BroochJewel(int itemId, int skillId, int skillLevel, double bonus, boolean isRuby, boolean isSapphire)
 	{

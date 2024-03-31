@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.HomunculusCreationData;
 import org.l2jmobius.gameserver.data.xml.HomunculusData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.homunculus.HomunculusCreationTemplate;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,7 +40,7 @@ public class ExHomunculusCouponProbabilityList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (_player == null)
 		{
@@ -51,17 +53,17 @@ public class ExHomunculusCouponProbabilityList extends ServerPacket
 			return;
 		}
 		
-		ServerPackets.EX_HOMUNCULUS_COUPON_PROB_LIST.writeId(this);
-		writeInt(_couponId);
-		writeInt(creationTemplate.getCreationChance().size());
+		ServerPackets.EX_HOMUNCULUS_COUPON_PROB_LIST.writeId(this, buffer);
+		buffer.writeInt(_couponId);
+		buffer.writeInt(creationTemplate.getCreationChance().size());
 		for (int type = 0; type < 3; type++)
 		{
 			for (Double[] homunculusChance : creationTemplate.getCreationChance())
 			{
 				if (HomunculusData.getInstance().getTemplate(homunculusChance[0].intValue()).getType() == type)
 				{
-					writeInt(homunculusChance[0].intValue());
-					writeInt((int) (homunculusChance[1] * 1000000));
+					buffer.writeInt(homunculusChance[0].intValue());
+					buffer.writeInt((int) (homunculusChance[1] * 1000000));
 				}
 			}
 		}

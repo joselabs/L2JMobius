@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.friend;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,10 +36,10 @@ public class FriendRemove extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.FRIEND_REMOVE.writeId(this);
-		writeInt(_responce);
-		writeString(_charName);
+		ServerPackets.FRIEND_REMOVE.writeId(this, buffer);
+		buffer.writeInt(_responce);
+		buffer.writeString(_charName);
 	}
 }

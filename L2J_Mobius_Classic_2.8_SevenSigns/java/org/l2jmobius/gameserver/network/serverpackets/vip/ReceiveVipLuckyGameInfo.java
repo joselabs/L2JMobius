@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.vip;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -35,12 +37,12 @@ public class ReceiveVipLuckyGameInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.RECIVE_VIP_LUCKY_GAME_INFO.writeId(this);
-		writeByte(1); // enabled
-		writeShort((int) _player.getAdena());
+		ServerPackets.RECIVE_VIP_LUCKY_GAME_INFO.writeId(this, buffer);
+		buffer.writeByte(1); // enabled
+		buffer.writeShort((int) _player.getAdena());
 		Item item = _player.getInventory().getItemByItemId(LCOIN_ID);
-		writeShort(item == null ? 0 : (int) item.getCount()); // L Coin count
+		buffer.writeShort(item == null ? 0 : (int) item.getCount()); // L Coin count
 	}
 }

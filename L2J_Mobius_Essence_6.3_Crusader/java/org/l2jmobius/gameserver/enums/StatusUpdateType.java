@@ -61,8 +61,8 @@ public enum StatusUpdateType
 	CUR_BP(0x2B, creature -> creature.isPlayer() ? creature.getActingPlayer().getBeastPoints() : 0),
 	MAX_BP(0x2C, creature -> creature.isPlayer() ? creature.getActingPlayer().getMaxBeastPoints() : 0);
 	
-	private int _clientId;
-	private Function<Creature, Integer> _valueSupplier;
+	private final int _clientId;
+	private final Function<Creature, Integer> _valueSupplier;
 	
 	StatusUpdateType(int clientId, Function<Creature, Integer> valueSupplier)
 	{

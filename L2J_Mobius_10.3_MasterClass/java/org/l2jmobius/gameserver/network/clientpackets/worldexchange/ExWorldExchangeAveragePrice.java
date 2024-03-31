@@ -16,29 +16,27 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.worldexchange;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.worldexchange.WorldExchangeAveragePrice;
 
 /**
  * @author Mobius
  */
-public class ExWorldExchangeAveragePrice implements ClientPacket
+public class ExWorldExchangeAveragePrice extends ClientPacket
 {
 	private int _itemId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemId = packet.readInt();
+		_itemId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

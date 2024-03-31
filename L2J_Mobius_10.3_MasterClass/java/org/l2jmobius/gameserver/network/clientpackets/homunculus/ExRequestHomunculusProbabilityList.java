@@ -16,9 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.homunculus;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExHomunculusCouponProbabilityList;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExHomunculusCreateProbabilityList;
@@ -26,22 +24,22 @@ import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExHomunculusCre
 /**
  * @author Index
  */
-public class ExRequestHomunculusProbabilityList implements ClientPacket
+public class ExRequestHomunculusProbabilityList extends ClientPacket
 {
 	private int _type;
 	private int _slotItemClassId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = packet.readByte();
-		_slotItemClassId = packet.readInt();
+		_type = readByte();
+		_slotItemClassId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

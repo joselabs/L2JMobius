@@ -19,12 +19,10 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExTryEnchantArtifactResult;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -33,7 +31,7 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @author Bonux
  */
-public class RequestExTryEnchantArtifact implements ClientPacket
+public class RequestExTryEnchantArtifact extends ClientPacket
 {
 	private static final int[] ENCHANT_CHANCES =
 	{
@@ -54,25 +52,25 @@ public class RequestExTryEnchantArtifact implements ClientPacket
 	private final Set<Integer> _ingredients = new HashSet<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_targetObjectId = packet.readInt();
-		_count = packet.readInt();
+		_targetObjectId = readInt();
+		_count = readInt();
 		for (int i = 0; i < _count; i++)
 		{
-			_ingredients.add(packet.readInt());
+			_ingredients.add(readInt());
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		if (_ingredients.contains(_targetObjectId))
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

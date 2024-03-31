@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -31,9 +33,9 @@ public class ExBRNewIconCashBtnWnd extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_BR_NEW_ICON_CASH_BTN_WND.writeId(this);
-		writeShort(_active);
+		ServerPackets.EX_BR_NEW_ICON_CASH_BTN_WND.writeId(this, buffer);
+		buffer.writeShort(_active);
 	}
 }

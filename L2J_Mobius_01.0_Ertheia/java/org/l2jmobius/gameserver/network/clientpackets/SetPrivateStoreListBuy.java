@@ -19,8 +19,7 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import static org.l2jmobius.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.TradeItem;
@@ -28,7 +27,6 @@ import org.l2jmobius.gameserver.model.TradeList;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.PrivateStoreManageListBuy;
@@ -36,14 +34,14 @@ import org.l2jmobius.gameserver.network.serverpackets.PrivateStoreMsgBuy;
 import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
 import org.l2jmobius.gameserver.util.Util;
 
-public class SetPrivateStoreListBuy implements ClientPacket
+public class SetPrivateStoreListBuy extends ClientPacket
 {
 	private TradeItem[] _items = null;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int count = packet.readInt();
+		final int count = readInt();
 		if ((count < 1) || (count > Config.MAX_ITEM_IN_PACKET))
 		{
 			return;
@@ -52,34 +50,34 @@ public class SetPrivateStoreListBuy implements ClientPacket
 		_items = new TradeItem[count];
 		for (int i = 0; i < count; i++)
 		{
-			final int itemId = packet.readInt();
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(itemId);
+			final int itemId = readInt();
+			final ItemTemplate template = ItemData.getInstance().getTemplate(itemId);
 			if (template == null)
 			{
 				_items = null;
 				return;
 			}
 			
-			final int enchantLevel = packet.readShort();
-			packet.readShort(); // TODO analyse this
+			final int enchantLevel = readShort();
+			readShort(); // TODO analyse this
 			
-			final long cnt = packet.readLong();
-			final long price = packet.readLong();
+			final long cnt = readLong();
+			final long price = readLong();
 			if ((itemId < 1) || (cnt < 1) || (price < 0))
 			{
 				_items = null;
 				return;
 			}
 			
-			final short attackAttributeId = (short) packet.readShort();
-			final int attackAttributeValue = packet.readShort();
-			final int defenceFire = packet.readShort();
-			final int defenceWater = packet.readShort();
-			final int defenceWind = packet.readShort();
-			final int defenceEarth = packet.readShort();
-			final int defenceHoly = packet.readShort();
-			final int defenceDark = packet.readShort();
-			final int visualId = packet.readInt();
+			final short attackAttributeId = readShort();
+			final int attackAttributeValue = readShort();
+			final int defenceFire = readShort();
+			final int defenceWater = readShort();
+			final int defenceWind = readShort();
+			final int defenceEarth = readShort();
+			final int defenceHoly = readShort();
+			final int defenceDark = readShort();
+			final int visualId = readInt();
 			final TradeItem item = new TradeItem(template, cnt, price);
 			item.setEnchant(enchantLevel);
 			item.setAttackElementType(AttributeType.findByClientId(attackAttributeId));
@@ -96,9 +94,9 @@ public class SetPrivateStoreListBuy implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

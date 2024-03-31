@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.handler.ChatHandler;
 import org.l2jmobius.gameserver.handler.IChatHandler;
@@ -42,7 +41,7 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @version $Revision: 1.16.2.12.2.7 $ $Date: 2005/04/11 10:06:11 $
  */
-public class Say2 implements ClientPacket
+public class Say2 extends ClientPacket
 {
 	private static Logger LOGGER_CHAT = Logger.getLogger("chat");
 	
@@ -91,22 +90,22 @@ public class Say2 implements ClientPacket
 	private boolean _shareLocation;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_text = packet.readString();
-		_type = packet.readInt();
-		_shareLocation = packet.readByte() == 1;
+		_text = readString();
+		_type = readInt();
+		_shareLocation = readByte() == 1;
 		if (_type == ChatType.WHISPER.getClientId())
 		{
-			_target = packet.readString();
+			_target = readString();
 			_shareLocation = false;
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -118,6 +117,11 @@ public class Say2 implements ClientPacket
 			PacketLogger.warning("Say2: Invalid type: " + _type + " Player : " + player.getName() + " text: " + _text);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			Disconnection.of(player).defaultSequence(LeaveWorld.STATIC_PACKET);
+			return;
+		}
+		
+		if (player.isMercenary())
+		{
 			return;
 		}
 		
@@ -202,7 +206,7 @@ public class Say2 implements ClientPacket
 			}
 		}
 		
-		if ((_text.indexOf(8) >= 0) && !parseAndPublishItem(client, player))
+		if ((_text.indexOf(8) >= 0) && !parseAndPublishItem(getClient(), player))
 		{
 			return;
 		}
@@ -230,7 +234,7 @@ public class Say2 implements ClientPacket
 		}
 		else
 		{
-			PacketLogger.info("No handler registered for ChatType: " + _type + " Player: " + client);
+			PacketLogger.info("No handler registered for ChatType: " + _type + " Player: " + getClient());
 		}
 	}
 	

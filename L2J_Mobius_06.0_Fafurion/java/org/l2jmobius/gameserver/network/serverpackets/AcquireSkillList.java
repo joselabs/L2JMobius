@@ -17,14 +17,17 @@
 package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -37,40 +40,46 @@ public class AcquireSkillList extends ServerPacket
 	
 	public AcquireSkillList(Player player)
 	{
-		super(512);
-		
 		if (!player.isSubclassLocked()) // Changing class.
 		{
 			_player = player;
-			_learnable = SkillTreeData.getInstance().getAvailableSkills(player, player.getClassId(), false, true, false);
-			_learnable.addAll(SkillTreeData.getInstance().getNextAvailableSkills(player, player.getClassId(), false, true, false));
+			
+			if (player.isTransformed())
+			{
+				_learnable = Collections.emptyList();
+			}
+			else
+			{
+				_learnable = SkillTreeData.getInstance().getAvailableSkills(player, player.getClassId(), false, true, false);
+				_learnable.addAll(SkillTreeData.getInstance().getNextAvailableSkills(player, player.getClassId(), false, true, false));
+			}
 		}
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (_player == null)
 		{
 			return;
 		}
 		
-		ServerPackets.ACQUIRE_SKILL_LIST.writeId(this);
-		writeShort(_learnable.size());
+		ServerPackets.ACQUIRE_SKILL_LIST.writeId(this, buffer);
+		buffer.writeShort(_learnable.size());
 		for (SkillLearn skill : _learnable)
 		{
-			writeInt(skill.getSkillId());
-			writeInt(skill.getSkillLevel()); // Main writeInt, Classic writeShort.
-			writeLong(skill.getLevelUpSp());
-			writeByte(skill.getGetLevel());
-			writeByte(skill.getDualClassLevel());
-			writeByte(_player.getKnownSkill(skill.getSkillId()) == null);
+			buffer.writeInt(skill.getSkillId());
+			buffer.writeInt(skill.getSkillLevel()); // Main writeInt, Classic writeShort.
+			buffer.writeLong(skill.getLevelUpSp());
+			buffer.writeByte(skill.getGetLevel());
+			buffer.writeByte(skill.getDualClassLevel());
+			buffer.writeByte(_player.getKnownSkill(skill.getSkillId()) == null);
 			
-			writeByte(skill.getRequiredItems().size());
+			buffer.writeByte(skill.getRequiredItems().size());
 			for (ItemHolder item : skill.getRequiredItems())
 			{
-				writeInt(item.getId());
-				writeLong(item.getCount());
+				buffer.writeInt(item.getId());
+				buffer.writeLong(item.getCount());
 			}
 			
 			final List<Skill> removeSkills = new LinkedList<>();
@@ -83,11 +92,11 @@ public class AcquireSkillList extends ServerPacket
 				}
 			}
 			
-			writeByte(removeSkills.size());
+			buffer.writeByte(removeSkills.size());
 			for (Skill removed : removeSkills)
 			{
-				writeInt(removed.getId());
-				writeInt(removed.getLevel()); // Main writeD, Classic writeH.
+				buffer.writeInt(removed.getId());
+				buffer.writeInt(removed.getLevel()); // Main writeD, Classic writeH.
 			}
 		}
 	}

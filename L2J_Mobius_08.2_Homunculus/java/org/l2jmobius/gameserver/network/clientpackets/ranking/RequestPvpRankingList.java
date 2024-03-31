@@ -16,16 +16,14 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.ranking;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ranking.ExPvpRankingList;
 
 /**
  * @author Berezkin Nikolay
  */
-public class RequestPvpRankingList implements ClientPacket
+public class RequestPvpRankingList extends ClientPacket
 {
 	private int _season;
 	private int _tabId;
@@ -34,19 +32,19 @@ public class RequestPvpRankingList implements ClientPacket
 	private int _class;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_season = packet.readByte();
-		_tabId = packet.readByte();
-		_type = packet.readByte();
-		_race = packet.readInt();
-		_class = packet.readInt();
+		_season = readByte();
+		_tabId = readByte();
+		_type = readByte();
+		_race = readInt();
+		_class = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

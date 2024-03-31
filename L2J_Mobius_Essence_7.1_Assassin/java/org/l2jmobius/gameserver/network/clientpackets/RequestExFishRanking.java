@@ -16,17 +16,21 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 
 /**
  * Format: (ch) just a trigger
  * @author -Wooden-
  */
-public class RequestExFishRanking implements ClientPacket
+public class RequestExFishRanking extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
 	{
 		PacketLogger.info("C5: RequestExFishRanking");
 	}

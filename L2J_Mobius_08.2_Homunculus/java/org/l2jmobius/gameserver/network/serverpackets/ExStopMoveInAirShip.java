@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -40,14 +42,14 @@ public class ExStopMoveInAirShip extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_STOP_MOVE_IN_AIR_SHIP.writeId(this);
-		writeInt(_player.getObjectId());
-		writeInt(_shipObjId);
-		writeInt(_loc.getX());
-		writeInt(_loc.getY());
-		writeInt(_loc.getZ());
-		writeInt(_h);
+		ServerPackets.EX_STOP_MOVE_IN_AIR_SHIP.writeId(this, buffer);
+		buffer.writeInt(_player.getObjectId());
+		buffer.writeInt(_shipObjId);
+		buffer.writeInt(_loc.getX());
+		buffer.writeInt(_loc.getY());
+		buffer.writeInt(_loc.getZ());
+		buffer.writeInt(_h);
 	}
 }

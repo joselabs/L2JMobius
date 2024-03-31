@@ -52,6 +52,7 @@ public enum AbnormalType
 	BR_EVENT_BUF4(-1),
 	BR_EVENT_BUF6(-1),
 	BR_EVENT_BUF7(-1),
+	SYSTEM_EVENT_BUF6(-1),
 	BRIGHTNESS_BLESS(-1),
 	BUFF_MENTEE1(-1),
 	BUFF_PCCAFE_EXP1(-1),
@@ -225,6 +226,7 @@ public enum AbnormalType
 	SONG_WEAPON(-1),
 	HEAL_RESISTANCE(-1),
 	AVE_BROOCH(-1),
+	PULLING(-1),
 	AB_HAWK_EYE(0),
 	ALL_ATTACK_DOWN(1),
 	ALL_ATTACK_UP(2),
@@ -537,7 +539,7 @@ public enum AbnormalType
 	DRAGON_EVASION(605),
 	TRANSFORM_DRAGONSKILL(606);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	protected static final Logger LOGGER = Logger.getLogger(AbnormalType.class.getName());
 	

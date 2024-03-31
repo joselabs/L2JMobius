@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.ClanEntryStatus;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -32,9 +34,9 @@ public class ExPledgeRecruitApplyInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_RECRUIT_APPLY_INFO.writeId(this);
-		writeInt(_status.ordinal());
+		ServerPackets.EX_PLEDGE_RECRUIT_APPLY_INFO.writeId(this, buffer);
+		buffer.writeInt(_status.ordinal());
 	}
 }

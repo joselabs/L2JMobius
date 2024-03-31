@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -33,10 +35,10 @@ public class ExShowQuestMark extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHOW_QUEST_MARK.writeId(this);
-		writeInt(_questId);
-		writeInt(_questState);
+		ServerPackets.EX_SHOW_QUEST_MARK.writeId(this, buffer);
+		buffer.writeInt(_questId);
+		buffer.writeInt(_questState);
 	}
 }

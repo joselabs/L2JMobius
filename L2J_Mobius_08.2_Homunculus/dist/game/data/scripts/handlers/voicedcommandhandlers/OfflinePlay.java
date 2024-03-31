@@ -332,11 +332,11 @@ public class OfflinePlay implements IVoicedCommandHandler
 						sb.append(((row % 2) == 0 ? "<table width=\"295\" bgcolor=\"000000\"><tr>" : "<table width=\"295\"><tr>"));
 						if (player.getAutoUseSettings().getAutoBuffs().contains(skill.getId()) || player.getAutoUseSettings().getAutoSkills().contains(skill.getId()))
 						{
-							sb.append("<td height=40 width=40><img src=\"" + skill.getIcon() + "\" width=32 height=32></td><td width=190>" + skill.getName() + "</td><td><button value=\" \" action=\"bypass -h voice .skills " + page + " " + skill.getId() + "\" width=32 height=32 back=\"L2UI_CH3.mapbutton_zoomout2\" fore=\"L2UI_CH3.mapbutton_zoomout1\"></td>");
+							sb.append("<td height=40 width=40><img src=\"" + skill.getIcon() + "\" width=32 height=32></td><td width=190>" + skill.getName() + "</td><td><button value=\" \" action=\"bypass voice .skills " + page + " " + skill.getId() + "\" width=32 height=32 back=\"L2UI_CH3.mapbutton_zoomout2\" fore=\"L2UI_CH3.mapbutton_zoomout1\"></td>");
 						}
 						else
 						{
-							sb.append("<td height=40 width=40><img src=\"" + skill.getIcon() + "\" width=32 height=32></td><td width=190><font color=\"B09878\">" + skill.getName() + "</font></td><td><button value=\" \" action=\"bypass -h voice .skills " + page + " " + skill.getId() + "\" width=32 height=32 back=\"L2UI_CH3.mapbutton_zoomin2\" fore=\"L2UI_CH3.mapbutton_zoomin1\"></td>");
+							sb.append("<td height=40 width=40><img src=\"" + skill.getIcon() + "\" width=32 height=32></td><td width=190><font color=\"B09878\">" + skill.getName() + "</font></td><td><button value=\" \" action=\"bypass voice .skills " + page + " " + skill.getId() + "\" width=32 height=32 back=\"L2UI_CH3.mapbutton_zoomin2\" fore=\"L2UI_CH3.mapbutton_zoomin1\"></td>");
 						}
 						sb.append("</tr></table><img src=\"L2UI.SquareGray\" width=295 height=1>");
 					}
@@ -345,7 +345,7 @@ public class OfflinePlay implements IVoicedCommandHandler
 					sb.append("<br><img src=\"L2UI.SquareGray\" width=295 height=1><table width=\"100%\" bgcolor=000000><tr>");
 					if (page > 1)
 					{
-						sb.append("<td align=left width=70><a action=\"bypass -h voice .skills " + (page - 1) + "\"><font color=\"CDB67F\">Previous</font></a></td>");
+						sb.append("<td align=left width=70><a action=\"bypass voice .skills " + (page - 1) + "\"><font color=\"CDB67F\">Previous</font></a></td>");
 					}
 					else
 					{
@@ -354,7 +354,7 @@ public class OfflinePlay implements IVoicedCommandHandler
 					sb.append("<td align=center width=100>Page " + page + " of " + max + "</td>");
 					if (page < max)
 					{
-						sb.append("<td align=right width=70><a action=\"bypass -h voice .skills " + (page + 1) + "\"><font color=\"CDB67F\">Next</font></a></td>");
+						sb.append("<td align=right width=70><a action=\"bypass voice .skills " + (page + 1) + "\"><font color=\"CDB67F\">Next</font></a></td>");
 					}
 					else
 					{

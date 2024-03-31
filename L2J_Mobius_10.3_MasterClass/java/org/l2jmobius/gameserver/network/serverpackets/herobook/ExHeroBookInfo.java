@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.herobook;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.herobook.HeroBookInfoHolder;
 import org.l2jmobius.gameserver.model.herobook.HeroBookManager;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,10 +38,10 @@ public class ExHeroBookInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_HERO_BOOK_INFO.writeId(this);
-		writeInt(_points);
-		writeInt(_level);
+		ServerPackets.EX_HERO_BOOK_INFO.writeId(this, buffer);
+		buffer.writeInt(_points);
+		buffer.writeInt(_level);
 	}
 }

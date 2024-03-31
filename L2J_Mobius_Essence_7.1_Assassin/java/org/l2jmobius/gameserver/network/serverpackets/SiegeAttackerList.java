@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.model.SiegeClan;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.siege.Castle;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -54,19 +56,19 @@ public class SiegeAttackerList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.CASTLE_SIEGE_ATTACKER_LIST.writeId(this);
-		writeInt(_castle.getResidenceId());
-		writeInt(0); // 0
-		writeInt(1); // 1
-		writeInt(0); // 0
+		ServerPackets.CASTLE_SIEGE_ATTACKER_LIST.writeId(this, buffer);
+		buffer.writeInt(_castle.getResidenceId());
+		buffer.writeInt(0); // 0
+		buffer.writeInt(1); // 1
+		buffer.writeInt(0); // 0
 		final int size = _castle.getSiege().getAttackerClans().size();
 		if (size > 0)
 		{
 			Clan clan;
-			writeInt(size);
-			writeInt(size);
+			buffer.writeInt(size);
+			buffer.writeInt(size);
 			for (SiegeClan siegeclan : _castle.getSiege().getAttackerClans())
 			{
 				clan = ClanTable.getInstance().getClan(siegeclan.getClanId());
@@ -74,21 +76,21 @@ public class SiegeAttackerList extends ServerPacket
 				{
 					continue;
 				}
-				writeInt(clan.getId());
-				writeString(clan.getName());
-				writeString(clan.getLeaderName());
-				writeInt(clan.getCrestId());
-				writeInt(0); // signed time (seconds) (not storated by L2J)
-				writeInt(clan.getAllyId());
-				writeString(clan.getAllyName());
-				writeString(""); // AllyLeaderName
-				writeInt(clan.getAllyCrestId());
+				buffer.writeInt(clan.getId());
+				buffer.writeString(clan.getName());
+				buffer.writeString(clan.getLeaderName());
+				buffer.writeInt(clan.getCrestId());
+				buffer.writeInt(0); // signed time (seconds) (not storated by L2J)
+				buffer.writeInt(clan.getAllyId());
+				buffer.writeString(clan.getAllyName());
+				buffer.writeString(""); // AllyLeaderName
+				buffer.writeInt(clan.getAllyCrestId());
 			}
 		}
 		else
 		{
-			writeInt(0);
-			writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
 		}
 	}
 }

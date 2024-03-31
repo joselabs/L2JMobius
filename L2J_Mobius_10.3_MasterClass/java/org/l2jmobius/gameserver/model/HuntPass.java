@@ -31,7 +31,6 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.HuntPassData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSimpleInfo;
 
 /**
@@ -96,6 +95,19 @@ public class HuntPass
 		{
 			LOGGER.log(Level.SEVERE, "Could not restore Season Pass for playerId: " + _user.getAccountName());
 		}
+	}
+	
+	public void resetHuntPass()
+	{
+		setPoints(0);
+		setCurrentStep(0);
+		setRewardStep(0);
+		setPremium(false);
+		setPremiumRewardStep(0);
+		setAvailableSayhaTime(0);
+		setUsedSayhaTime(0);
+		setRewardAlert(false);
+		store();
 	}
 	
 	public String getAccountName()
@@ -212,6 +224,11 @@ public class HuntPass
 	
 	public void setRewardStep(int step)
 	{
+		if (_isPremium && (_premiumRewardStep <= _rewardStep))
+		{
+			return;
+		}
+		
 		_rewardStep = Math.max(0, Math.min(step, HuntPassData.getInstance().getRewardsCount()));
 	}
 	
@@ -297,7 +314,7 @@ public class HuntPass
 				_sayhasSustentionTask.cancel(true);
 				_sayhasSustentionTask = null;
 			}
-			_user.sendPacket(new SystemMessage(SystemMessageId.THE_MAXIMUM_NUMBER_OF_WORLD_TRADE_ITEMS_FOR_REGISTRATION_IS_10));
+			_user.sendPacket(SystemMessageId.VITALITY_SUSTENTION_EFFECT_OF_THE_SEASON_PASS_IS_ACTIVATED_AVAILABLE_VITALITY_SUSTENTION_TIME_IS_BEING_CONSUMED);
 			_sayhasSustentionTask = ThreadPool.schedule(this::onSayhaEndTime, Math.max(0, getAvailableSayhaTime() - getUsedSayhaTime()) * 1000L);
 		}
 		else
@@ -308,7 +325,7 @@ public class HuntPass
 				_toggleStartTime = 0;
 				_sayhasSustentionTask.cancel(true);
 				_sayhasSustentionTask = null;
-				_user.sendPacket(new SystemMessage(SystemMessageId.THE_MAXIMUM_NUMBER_OF_WORLD_TRADE_ITEMS_FOR_REGISTRATION_IS_10));
+				_user.sendPacket(SystemMessageId.VITALITY_SUSTENTION_EFFECT_OF_THE_SEASON_PASS_HAS_BEEN_DEACTIVATED_THE_SUSTENTION_TIME_YOU_HAVE_DOES_NOT_DECREASE);
 			}
 		}
 	}

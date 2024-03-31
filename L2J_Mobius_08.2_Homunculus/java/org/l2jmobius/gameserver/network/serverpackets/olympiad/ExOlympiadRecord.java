@@ -22,9 +22,11 @@ import java.sql.ResultSet;
 import java.util.Calendar;
 
 import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.olympiad.Olympiad;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -45,13 +47,13 @@ public class ExOlympiadRecord extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_OLYMPIAD_RECORD.writeId(this);
-		writeInt(Olympiad.getInstance().getNoblePoints(_player)); // nPoint
-		writeInt(Olympiad.getInstance().getCompetitionWon(_player.getObjectId())); // nWinCount
-		writeInt(Olympiad.getInstance().getCompetitionLost(_player.getObjectId())); // nLoseCount
-		writeInt(Olympiad.getInstance().getRemainingWeeklyMatches(_player.getObjectId())); // nMatchCount
+		ServerPackets.EX_OLYMPIAD_RECORD.writeId(this, buffer);
+		buffer.writeInt(Olympiad.getInstance().getNoblePoints(_player)); // nPoint
+		buffer.writeInt(Olympiad.getInstance().getCompetitionWon(_player.getObjectId())); // nWinCount
+		buffer.writeInt(Olympiad.getInstance().getCompetitionLost(_player.getObjectId())); // nLoseCount
+		buffer.writeInt(Olympiad.getInstance().getRemainingWeeklyMatches(_player.getObjectId())); // nMatchCount
 		// Previous Cycle
 		int previousPlace = 0;
 		int previousWins = 0;
@@ -83,22 +85,22 @@ public class ExOlympiadRecord extends ServerPacket
 			PacketLogger.warning("ExOlympiadRecord: Could not load data: " + e.getMessage());
 		}
 		
-		writeInt(previousClass); // nPrevClassType
-		writeInt(previousPlaceTotal); // nPrevRank in all servers
-		writeInt(2); // nPrevRankCount number of participants with 25+ matches
-		writeInt(previousPlace); // nPrevClassRank in all servers
-		writeInt(4); // nPrevClassRankCount number of participants with 25+ matches
-		writeInt(5); // nPrevClassRankByServer in current server
-		writeInt(6); // nPrevClassRankByServerCount number of participants with 25+ matches
-		writeInt(previousPoints); // nPrevPoint
-		writeInt(previousWins); // nPrevWinCount
-		writeInt(previousLoses); // nPrevLoseCount
-		writeInt(previousPlace); // nPrevGrade
-		writeInt(Calendar.getInstance().get(Calendar.YEAR)); // nSeasonYear
-		writeInt(Calendar.getInstance().get(Calendar.MONTH) + 1); // nSeasonMonth
-		writeByte(Olympiad.getInstance().inCompPeriod()); // bMatchOpen
-		writeInt(Olympiad.getInstance().getCurrentCycle()); // nSeason
-		writeByte(_type); // bRegistered
-		writeInt(_gameRuleType); // cGameRuleType
+		buffer.writeInt(previousClass); // nPrevClassType
+		buffer.writeInt(previousPlaceTotal); // nPrevRank in all servers
+		buffer.writeInt(2); // nPrevRankCount number of participants with 25+ matches
+		buffer.writeInt(previousPlace); // nPrevClassRank in all servers
+		buffer.writeInt(4); // nPrevClassRankCount number of participants with 25+ matches
+		buffer.writeInt(5); // nPrevClassRankByServer in current server
+		buffer.writeInt(6); // nPrevClassRankByServerCount number of participants with 25+ matches
+		buffer.writeInt(previousPoints); // nPrevPoint
+		buffer.writeInt(previousWins); // nPrevWinCount
+		buffer.writeInt(previousLoses); // nPrevLoseCount
+		buffer.writeInt(previousPlace); // nPrevGrade
+		buffer.writeInt(Calendar.getInstance().get(Calendar.YEAR)); // nSeasonYear
+		buffer.writeInt(Calendar.getInstance().get(Calendar.MONTH) + 1); // nSeasonMonth
+		buffer.writeByte(Olympiad.getInstance().inCompPeriod()); // bMatchOpen
+		buffer.writeInt(Olympiad.getInstance().getCurrentCycle()); // nSeason
+		buffer.writeByte(_type); // bRegistered
+		buffer.writeInt(_gameRuleType); // cGameRuleType
 	}
 }

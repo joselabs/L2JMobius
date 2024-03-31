@@ -96,7 +96,7 @@ public class Lethal extends AbstractEffect
 			{
 				target.setCurrentCp(1);
 				target.sendPacket(SystemMessageId.HALF_KILL);
-				target.sendPacket(SystemMessageId.YOUR_CP_WAS_DRAINED_BECAUSE_YOU_WERE_HIT_WITH_A_HALF_KILL_SKILL);
+				target.sendPacket(SystemMessageId.CP_DISAPPEARS_WHEN_HIT_WITH_A_HALF_KILL_SKILL);
 			}
 			// for Monsters HP is set to 50%.
 			else if (target.isMonster() || target.isSummon())

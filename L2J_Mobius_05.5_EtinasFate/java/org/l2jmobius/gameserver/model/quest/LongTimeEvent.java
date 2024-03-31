@@ -38,8 +38,8 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.IXmlReader;
 import org.l2jmobius.commons.util.TimeUtil;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.AnnouncementsTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.instancemanager.events.EventDropManager;
 import org.l2jmobius.gameserver.instancemanager.events.EventShrineManager;
@@ -205,7 +205,7 @@ public class LongTimeEvent extends Quest
 											}
 										}
 										
-										if (ItemTable.getInstance().getTemplate(itemId) == null)
+										if (ItemData.getInstance().getTemplate(itemId) == null)
 										{
 											LOGGER.warning(getName() + " event: " + itemId + " is wrong item id, item was not added in droplist");
 											continue;
@@ -305,7 +305,7 @@ public class LongTimeEvent extends Quest
 								try
 								{
 									final int itemId = Integer.parseInt(d.getAttributes().getNamedItem("id").getNodeValue());
-									if (ItemTable.getInstance().getTemplate(itemId) == null)
+									if (ItemData.getInstance().getTemplate(itemId) == null)
 									{
 										LOGGER.warning(getScriptName() + " event: Item " + itemId + " does not exist.");
 										continue;

@@ -26,8 +26,8 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.cache.HtmCache;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.AISkillScope;
 import org.l2jmobius.gameserver.enums.AIType;
 import org.l2jmobius.gameserver.enums.ChatType;
@@ -530,20 +530,37 @@ public class Npc extends Creature
 	 */
 	public double getCastleTaxRate(TaxType type)
 	{
-		final Castle castle = getTaxCastle();
-		return (castle != null) ? (castle.getTaxPercent(type) / 100.0) : 0;
+		// Global tax by all castles.
+		final Castle giran = CastleManager.getInstance().getCastleById(3);
+		final Castle goddart = CastleManager.getInstance().getCastleById(7);
+		final double giranTaxPercent = giran == null ? 0 : giran.getTaxPercent(type);
+		final double goddartTaxPercent = goddart == null ? 0 : goddart.getTaxPercent(type);
+		final double taxPercent = giranTaxPercent + goddartTaxPercent;
+		return taxPercent / 100.0;
 	}
 	
 	/**
 	 * Increase castle vault by specified tax amount.
-	 * @param amount tax amount
+	 * @param amount total price with tax
 	 */
 	public void handleTaxPayment(long amount)
 	{
-		final Castle taxCastle = getTaxCastle();
-		if (taxCastle != null)
+		final Castle giran = CastleManager.getInstance().getCastleById(3);
+		final double giranTax = giran.getTaxPercent(TaxType.BUY) / 100.0;
+		final Castle goddart = CastleManager.getInstance().getCastleById(7);
+		final double goddartTax = goddart.getTaxPercent(TaxType.BUY) / 100.0;
+		if (giranTax == 0)
 		{
-			taxCastle.addToTreasury(amount);
+			goddart.addToTreasuryTemp((long) (amount * goddartTax));
+		}
+		else if (goddartTax == 0)
+		{
+			giran.addToTreasuryTemp((long) (amount * giranTax));
+		}
+		else
+		{
+			goddart.addToTreasuryTemp((long) (amount * goddartTax));
+			giran.addToTreasuryTemp((long) (amount * giranTax));
 		}
 	}
 	
@@ -689,7 +706,7 @@ public class Npc extends Creature
 		}
 		
 		final String temp = "data/html/default/" + pom + ".htm";
-		if (!Config.LAZY_CACHE)
+		if (Config.HTM_CACHE)
 		{
 			// If not running lazy cache the file must be in the cache or it does not exist
 			if (HtmCache.getInstance().contains(temp))
@@ -1420,7 +1437,7 @@ public class Npc extends Creature
 			}
 			if (magic)
 			{
-				Broadcast.toSelfAndKnownPlayersInRadius(this, new MagicSkillUse(this, this, 2061, 1, 0, 0), 600);
+				Broadcast.toSelfAndKnownPlayersInRadius(this, new MagicSkillUse(this, this, 2159, 1, 0, 0), 600);
 				chargeShot(ShotType.SPIRITSHOTS);
 			}
 		}
@@ -1443,7 +1460,7 @@ public class Npc extends Creature
 					return;
 				}
 				_spiritshotamount--;
-				Broadcast.toSelfAndKnownPlayersInRadius(this, new MagicSkillUse(this, this, 2061, 1, 0, 0), 600);
+				Broadcast.toSelfAndKnownPlayersInRadius(this, new MagicSkillUse(this, this, 2159, 1, 0, 0), 600);
 				chargeShot(ShotType.SPIRITSHOTS);
 			}
 		}
@@ -1571,13 +1588,13 @@ public class Npc extends Creature
 		Item item = null;
 		for (int i = 0; i < itemCount; i++)
 		{
-			if (ItemTable.getInstance().getTemplate(itemId) == null)
+			if (ItemData.getInstance().getTemplate(itemId) == null)
 			{
 				LOGGER.severe("Item doesn't exist so cannot be dropped. Item ID: " + itemId + " Quest: " + getName());
 				return null;
 			}
 			
-			item = ItemTable.getInstance().createItem("Loot", itemId, itemCount, creature, this);
+			item = ItemData.getInstance().createItem("Loot", itemId, itemCount, creature, this);
 			if (item == null)
 			{
 				return null;

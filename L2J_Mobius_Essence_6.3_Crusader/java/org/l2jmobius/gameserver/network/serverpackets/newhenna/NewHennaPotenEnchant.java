@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.newhenna;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -44,17 +46,17 @@ public class NewHennaPotenEnchant extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_NEW_HENNA_POTEN_ENCHANT.writeId(this);
-		writeByte(_slotId);
-		writeShort(_enchantStep);
-		writeInt(_enchantExp);
-		writeShort(_dailyStep);
-		writeShort(_dailyCount);
-		writeShort(_activeStep);
-		writeByte(_success);
-		writeShort(_dailyStep);
-		writeShort(_dailyCount);
+		ServerPackets.EX_NEW_HENNA_POTEN_ENCHANT.writeId(this, buffer);
+		buffer.writeByte(_slotId);
+		buffer.writeShort(_enchantStep);
+		buffer.writeInt(_enchantExp);
+		buffer.writeShort(_dailyStep);
+		buffer.writeShort(_dailyCount);
+		buffer.writeShort(_activeStep);
+		buffer.writeByte(_success);
+		buffer.writeShort(_dailyStep);
+		buffer.writeShort(_dailyCount);
 	}
 }

@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -54,15 +56,15 @@ public class ExRequestNewInvitePartyInquiry extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_REQUEST_INVITE_PARTY.writeId(this);
-		writeSizedString(_player.getName());
-		writeByte(_reqType);
-		writeByte(_sayType.ordinal());
-		writeByte(_charRankGrade);
-		writeByte(_pledgeCastleDBID);
-		writeByte(_player.isInTimedHuntingZone() || _player.isInSiege() || _player.isRegisteredOnEvent());
-		writeInt(_userID);
+		ServerPackets.EX_REQUEST_INVITE_PARTY.writeId(this, buffer);
+		buffer.writeSizedString(_player.getName());
+		buffer.writeByte(_reqType);
+		buffer.writeByte(_sayType.ordinal());
+		buffer.writeByte(_charRankGrade);
+		buffer.writeByte(_pledgeCastleDBID);
+		buffer.writeByte(_player.isInTimedHuntingZone() || _player.isInSiege() || _player.isRegisteredOnEvent());
+		buffer.writeInt(_userID);
 	}
 }

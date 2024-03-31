@@ -201,12 +201,12 @@ public class AirShipGludioGracia extends AbstractNpcAI implements Runnable
 		}
 		else if (player.isCastingNow())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_CASTING);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_SKILL_CASTING);
 			return null;
 		}
 		else if (player.isCursedWeaponEquipped())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHEN_A_CURSED_WEAPON_IS_EQUIPPED);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_A_CURSED_WEAPON_IS_EQUIPPED);
 			return null;
 		}
 		else if (player.isCombatFlagEquipped())

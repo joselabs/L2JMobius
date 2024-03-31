@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.RecipeData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
@@ -27,7 +26,6 @@ import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.RecipeHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.stats.Stat;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.RecipeShopItemInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -38,7 +36,7 @@ import org.l2jmobius.gameserver.util.Util;
  * from your own recipe list crafting are skipped. With the exception of trading, if you request trade, it is cancelled, if you are already trading, you get message.
  * @author Nik
  */
-public class RequestRecipeShopMakeItem implements ClientPacket
+public class RequestRecipeShopMakeItem extends ClientPacket
 {
 	private int _objectId;
 	private int _recipeId;
@@ -46,29 +44,29 @@ public class RequestRecipeShopMakeItem implements ClientPacket
 	private ItemHolder[] _offeredItems;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_recipeId = packet.readInt();
-		_manufacturePrice = packet.readLong();
+		_objectId = readInt();
+		_recipeId = readInt();
+		_manufacturePrice = readLong();
 		
-		final int offeringsCount = packet.readInt();
+		final int offeringsCount = readInt();
 		if (offeringsCount > 0)
 		{
 			_offeredItems = new ItemHolder[offeringsCount];
 			for (int i = 0; i < offeringsCount; i++)
 			{
-				final int objectId = packet.readInt();
-				final long count = packet.readLong();
+				final int objectId = readInt();
+				final long count = readLong();
 				_offeredItems[i] = new ItemHolder(objectId, count);
 			}
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -80,7 +78,7 @@ public class RequestRecipeShopMakeItem implements ClientPacket
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canManufacture())
+		if (!getClient().getFloodProtectors().canManufacture())
 		{
 			return;
 		}

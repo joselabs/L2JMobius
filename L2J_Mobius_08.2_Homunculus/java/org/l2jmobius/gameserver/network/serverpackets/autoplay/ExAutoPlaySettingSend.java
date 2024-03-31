@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.autoplay;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -44,16 +46,16 @@ public class ExAutoPlaySettingSend extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_AUTOPLAY_SETTING.writeId(this);
-		writeShort(_options);
-		writeByte(_active);
-		writeByte(_pickUp);
-		writeShort(_nextTargetMode);
-		writeByte(_shortRange);
-		writeInt(_potionPercent);
-		writeInt(0); // 272
-		writeByte(_respectfulHunting);
+		ServerPackets.EX_AUTOPLAY_SETTING.writeId(this, buffer);
+		buffer.writeShort(_options);
+		buffer.writeByte(_active);
+		buffer.writeByte(_pickUp);
+		buffer.writeShort(_nextTargetMode);
+		buffer.writeByte(_shortRange);
+		buffer.writeInt(_potionPercent);
+		buffer.writeInt(0); // 272
+		buffer.writeByte(_respectfulHunting);
 	}
 }

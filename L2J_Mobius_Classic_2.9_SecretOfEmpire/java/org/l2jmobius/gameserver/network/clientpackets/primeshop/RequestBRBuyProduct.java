@@ -21,7 +21,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
 import org.l2jmobius.gameserver.enums.ExBrProductReplyType;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -31,7 +30,6 @@ import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.primeshop.PrimeShopGroup;
 import org.l2jmobius.gameserver.model.primeshop.PrimeShopItem;
 import org.l2jmobius.gameserver.model.variables.AccountVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.primeshop.ExBRBuyProduct;
 import org.l2jmobius.gameserver.network.serverpackets.primeshop.ExBRGamePoint;
@@ -40,7 +38,7 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @author Gnacik, UnAfraid
  */
-public class RequestBRBuyProduct implements ClientPacket
+public class RequestBRBuyProduct extends ClientPacket
 {
 	private static final int HERO_COINS = 23805;
 	
@@ -48,16 +46,16 @@ public class RequestBRBuyProduct implements ClientPacket
 	private int _count;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_brId = packet.readInt();
-		_count = packet.readInt();
+		_brId = readInt();
+		_count = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

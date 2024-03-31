@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -35,21 +37,21 @@ public class ExUserInfoAbnormalVisualEffect extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_USER_INFO_ABNORMAL_VISUAL_EFFECT.writeId(this);
-		writeInt(_player.getObjectId());
-		writeInt(_player.getTransformationId());
+		ServerPackets.EX_USER_INFO_ABNORMAL_VISUAL_EFFECT.writeId(this, buffer);
+		buffer.writeInt(_player.getObjectId());
+		buffer.writeInt(_player.getTransformationId());
 		final Set<AbnormalVisualEffect> abnormalVisualEffects = _player.getEffectList().getCurrentAbnormalVisualEffects();
 		final boolean isInvisible = _player.isInvisible();
-		writeInt(abnormalVisualEffects.size() + (isInvisible ? 1 : 0));
+		buffer.writeInt(abnormalVisualEffects.size() + (isInvisible ? 1 : 0));
 		for (AbnormalVisualEffect abnormalVisualEffect : abnormalVisualEffects)
 		{
-			writeShort(abnormalVisualEffect.getClientId());
+			buffer.writeShort(abnormalVisualEffect.getClientId());
 		}
 		if (isInvisible)
 		{
-			writeShort(AbnormalVisualEffect.STEALTH.getClientId());
+			buffer.writeShort(AbnormalVisualEffect.STEALTH.getClientId());
 		}
 	}
 }

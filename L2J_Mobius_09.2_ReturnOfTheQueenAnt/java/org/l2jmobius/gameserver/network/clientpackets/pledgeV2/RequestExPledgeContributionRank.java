@@ -16,30 +16,28 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.pledgeV2;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeContributionRank;
 
 /**
  * @author Mobius
  */
-public class RequestExPledgeContributionRank implements ClientPacket
+public class RequestExPledgeContributionRank extends ClientPacket
 {
 	private int _cycle;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_cycle = packet.readByte();
+		_cycle = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -51,6 +49,6 @@ public class RequestExPledgeContributionRank implements ClientPacket
 			return;
 		}
 		
-		client.sendPacket(new ExPledgeContributionRank(clan, _cycle));
+		player.sendPacket(new ExPledgeContributionRank(clan, _cycle));
 	}
 }

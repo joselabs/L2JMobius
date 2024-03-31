@@ -19,33 +19,31 @@ package org.l2jmobius.gameserver.network.clientpackets.worldexchange;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.worldexchange.WorldExchangeTotalList;
 
 /**
  * @author Index
  */
-public class ExWorldExchangeTotalList implements ClientPacket
+public class ExWorldExchangeTotalList extends ClientPacket
 {
 	private final List<Integer> itemIds = new LinkedList<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int size = packet.readInt();
+		final int size = readInt();
 		for (int index = 0; index < size; index++)
 		{
-			itemIds.add(packet.readInt());
+			itemIds.add(readInt());
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

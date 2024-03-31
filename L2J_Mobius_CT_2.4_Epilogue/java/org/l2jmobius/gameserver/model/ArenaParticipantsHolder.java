@@ -145,7 +145,7 @@ public class ArenaParticipantsHolder
 		final int blueSize = _bluePlayers.size();
 		if (redSize > (blueSize + 1))
 		{
-			broadCastPacketToTeam(new SystemMessage(SystemMessageId.TEAM_MEMBERS_WERE_MODIFIED_BECAUSE_THE_TEAMS_WERE_UNBALANCED));
+			broadCastPacketToTeam(new SystemMessage(SystemMessageId.THE_TEAM_WAS_ADJUSTED_BECAUSE_THE_POPULATION_RATIO_WAS_NOT_CORRECT));
 			for (int i = 0; i < ((redSize - (blueSize + 1)) + 1); i++)
 			{
 				final Player plr = _redPlayers.get(i);
@@ -158,7 +158,7 @@ public class ArenaParticipantsHolder
 		}
 		else if (blueSize > (redSize + 1))
 		{
-			broadCastPacketToTeam(new SystemMessage(SystemMessageId.TEAM_MEMBERS_WERE_MODIFIED_BECAUSE_THE_TEAMS_WERE_UNBALANCED));
+			broadCastPacketToTeam(new SystemMessage(SystemMessageId.THE_TEAM_WAS_ADJUSTED_BECAUSE_THE_POPULATION_RATIO_WAS_NOT_CORRECT));
 			for (int i = 0; i < ((blueSize - (redSize + 1)) + 1); i++)
 			{
 				final Player plr = _bluePlayers.get(i);

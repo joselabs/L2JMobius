@@ -21,10 +21,9 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.LuckyGameData;
 import org.l2jmobius.gameserver.enums.LuckyGameItemType;
 import org.l2jmobius.gameserver.enums.LuckyGameResultType;
@@ -35,7 +34,6 @@ import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.LuckyGameDataHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -44,7 +42,7 @@ import org.l2jmobius.gameserver.network.serverpackets.luckygame.ExBettingLuckyGa
 /**
  * @author Sdw
  */
-public class RequestLuckyGamePlay implements ClientPacket
+public class RequestLuckyGamePlay extends ClientPacket
 {
 	private static final int FORTUNE_READING_TICKET = 23767;
 	private static final int LUXURY_FORTUNE_READING_TICKET = 23768;
@@ -52,17 +50,17 @@ public class RequestLuckyGamePlay implements ClientPacket
 	private int _reading;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int type = CommonUtil.constrain(packet.readInt(), 0, LuckyGameType.values().length);
+		final int type = CommonUtil.constrain(readInt(), 0, LuckyGameType.values().length);
 		_type = LuckyGameType.values()[type];
-		_reading = CommonUtil.constrain(packet.readInt(), 0, 50); // max play is 50
+		_reading = CommonUtil.constrain(readInt(), 0, 50); // max play is 50
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -124,7 +122,7 @@ public class RequestLuckyGamePlay implements ClientPacket
 			}
 		}
 		
-		final int totalWeight = rewards.values().stream().mapToInt(list -> list.stream().mapToInt(item -> ItemTable.getInstance().getTemplate(item.getId()).getWeight()).sum()).sum();
+		final int totalWeight = rewards.values().stream().mapToInt(list -> list.stream().mapToInt(item -> ItemData.getInstance().getTemplate(item.getId()).getWeight()).sum()).sum();
 		
 		// Check inventory capacity
 		if (!rewards.isEmpty() && (!player.getInventory().validateCapacity(rewards.size()) || !player.getInventory().validateWeight(totalWeight)))

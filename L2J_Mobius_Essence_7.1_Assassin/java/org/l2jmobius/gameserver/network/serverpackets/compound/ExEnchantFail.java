@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.compound;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -36,10 +38,10 @@ public class ExEnchantFail extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ENCHANT_FAIL.writeId(this);
-		writeInt(_itemOne);
-		writeInt(_itemTwo);
+		ServerPackets.EX_ENCHANT_FAIL.writeId(this, buffer);
+		buffer.writeInt(_itemOne);
+		buffer.writeInt(_itemTwo);
 	}
 }

@@ -255,9 +255,11 @@
 	<skill id="47910" toLevel="4" name="Summon Cubic of Secrets">
 		<!-- Summons Cubic of Secrets. M. Atk. +150. When using magic skills (attack/ anomaly/ debuff):. Delivers <font color="FFBB00">an additional attack</font>. The summoner's illusions attack the target. (Trigger cooldown: 15 sec.) -->
 		<icon>icon.skill19565</icon>
+		<operateType>A2</operateType>
 		<hitTime>4000</hitTime>
 		<coolTime>500</coolTime>
-		<isMagic>1</isMagic>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<abnormalTime>1200</abnormalTime>
 		<magicLevel>
 			<value level="1">76</value>
 			<value level="2">85</value>
@@ -270,22 +272,33 @@
 			<value level="3">84</value>
 			<value level="4">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<abnormalLevel>
-			<value level="1">1</value>
-			<value level="2">2</value>
-			<value level="3">3</value>
-			<value level="4">4</value>
-		</abnormalLevel>
 		<reuseDelay>10000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<itemConsumeCount>
+			<value level="1">0</value>
+			<value level="2">0</value>
+			<value level="3">0</value>
+			<value level="4">0</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+		</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanSummonCubic" />
 		</conditions>
 		<effects>
+			<!-- <effect name="SummonCubic">
+				<cubicId>24</cubicId>
+				<cubicLvl>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+				</cubicLvl>
+			</effect> -->
 			<effect name="MAtk">
 				<amount>
 					<value level="1">150</value>
@@ -304,14 +317,189 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceTrait" fromLevel="2" toLevel="4">
+			<effect name="DefenceTrait">
 				<SWORD>
+					<value level="1">0</value>
 					<value level="2">5</value>
 					<value level="3">7</value>
 					<value level="4">10</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">11</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">12</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">13</value>
 				</SWORD>
+				<DAGGER>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</DAGGER>
+				<PISTOLS>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</PISTOLS>
+				<BLUNT>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</BLUNT>
+				<BOW>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</BOW>
+				<POLE>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</POLE>
+				<DUAL>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</DUAL>
+				<DUALFIST>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</DUALFIST>
+				<RAPIER>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</RAPIER>
+				<ANCIENTSWORD>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</ANCIENTSWORD>
 			</effect>
-			<effect name="SummonCubic">
+			<effect name="TriggerSkillByMagicType">
+				<magicTypes>1</magicTypes>
+				<chance>100</chance>
+				<skillId>
+					<value level="1">47911</value>
+					<value level="2">47911</value>
+					<value level="3">47911</value>
+					<value level="4">47911</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1047911</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2047911</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3047911</value>
+				</skillId>
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">4</value>
+				</skillLevel>
+				<targetType>ENEMY</targetType>
+				<allowBadSkills>true</allowBadSkills>
+				<allowGoodSkills>false</allowGoodSkills>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="47911" toLevel="4" name="Attack of Secrets">
+		<icon>icon.skill19565</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<operateType>A1</operateType>
+		<effectPoint>-500</effectPoint>
+		<reuseDelay>
+			<value level="1">15000</value>
+			<value level="2">8000</value>
+			<value level="3">8000</value>
+			<value level="4">7000</value>
+		</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>
+					<value level="1">147</value>
+					<value level="2">165</value>
+					<value level="3">174</value>
+					<value level="4">185</value>
+				</power>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="47912" toLevel="4" name="Summon Elemental Cubic">
+		<!-- Summons Elemental Cubic. M. Atk. +150. When using magic skills (attack/ anomaly/ debuff):. Delivers <font color="FFBB00">an additional attack</font>. The summoner's illusions attack the target. (Trigger cooldown: 15 sec.) -->
+		<icon>icon.skill10073_2</icon>
+		<operateType>A2</operateType>
+		<hitTime>4000</hitTime>
+		<coolTime>500</coolTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<abnormalTime>1200</abnormalTime>
+		<magicLevel>
+			<value level="1">76</value>
+			<value level="2">85</value>
+			<value level="3">88</value>
+			<value level="4">91</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">78</value>
+			<value level="2">81</value>
+			<value level="3">84</value>
+			<value level="4">87</value>
+		</mpConsume>
+		<reuseDelay>10000</reuseDelay>
+		<basicProperty>NONE</basicProperty>
+		<itemConsumeCount>
+			<value level="1">0</value>
+			<value level="2">0</value>
+			<value level="3">0</value>
+			<value level="4">0</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+		</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CanSummonCubic" />
+		</conditions>
+		<effects>
+			<!-- <effect name="SummonCubic">
 				<cubicId>23</cubicId>
 				<cubicLvl>
 					<value level="1">1</value>
@@ -319,6 +507,116 @@
 					<value level="3">3</value>
 					<value level="4">4</value>
 				</cubicLvl>
+			</effect> -->
+			<effect name="MAtk">
+				<amount>
+					<value level="1">150</value>
+					<value level="2">500</value>
+					<value toLevel="2" fromLevel="2" toSubLevel="1001" fromSubLevel="1001">1300</value>
+					<value toLevel="2" fromLevel="2" toSubLevel="1002" fromSubLevel="1002">2300</value>
+					<value toLevel="2" fromLevel="2" toSubLevel="1003" fromSubLevel="1003">3300</value>
+					<value level="3">550</value>
+					<value toLevel="3" fromLevel="3" toSubLevel="1001" fromSubLevel="1001">1400</value>
+					<value toLevel="3" fromLevel="3" toSubLevel="1002" fromSubLevel="1002">2400</value>
+					<value toLevel="3" fromLevel="3" toSubLevel="1003" fromSubLevel="1003">3400</value>
+					<value level="4">600</value>
+					<value toLevel="4" fromLevel="4" toSubLevel="1001" fromSubLevel="1001">1500</value>
+					<value toLevel="4" fromLevel="4" toSubLevel="1002" fromSubLevel="1002">2500</value>
+					<value toLevel="4" fromLevel="4" toSubLevel="1003" fromSubLevel="1003">3500</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="DefenceTrait">
+				<BOW>
+					<value level="1">0</value>
+					<value level="2">5</value>
+					<value level="3">7</value>
+					<value level="4">10</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">11</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">12</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">13</value>
+				</BOW>
+				<PISTOLS>
+					<value level="1">0</value>
+					<value level="2">5</value>
+					<value level="3">7</value>
+					<value level="4">10</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">11</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">12</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">13</value>
+				</PISTOLS>
+				<SWORD>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</SWORD>
+				<BLUNT>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</BLUNT>
+				<DAGGER>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</DAGGER>
+				<POLE>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</POLE>
+				<DUAL>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</DUAL>
+				<DUALFIST>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</DUALFIST>
+				<RAPIER>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</RAPIER>
+				<ANCIENTSWORD>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</ANCIENTSWORD>
 			</effect>
 			<effect name="TriggerSkillByMagicType">
 				<magicTypes>1</magicTypes>
@@ -328,130 +626,20 @@
 					<value level="2">47913</value>
 					<value level="3">47913</value>
 					<value level="4">47913</value>
-					<value toLevel="2" fromLevel="4" toSubLevel="1001" fromSubLevel="1001">1047913</value>
-					<value toLevel="2" fromLevel="4" toSubLevel="1002" fromSubLevel="1002">2047913</value>
-					<value toLevel="2" fromLevel="4" toSubLevel="1003" fromSubLevel="1003">3047913</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1047913</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2047913</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3047913</value>
 				</skillId>
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
 					<value level="3">3</value>
 					<value level="4">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">4</value>
 				</skillLevel>
-				<allowBadSkills>true</allowBadSkills>
-				<allowGoodSkills>false</allowGoodSkills>
-			</effect>
-		</effects>
-	</skill>
-	<skill id="47911" toLevel="4" name="Attack of Secrets">
-		<icon>icon.skill19565</icon>
-		<effectPoint>-500</effectPoint>
-		<magicLevel>
-			<value level="1">76</value>
-			<value level="2">85</value>
-			<value level="3">88</value>
-			<value level="4">91</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<reuseDelay>
-			<value level="1">15000</value>
-			<value level="2">8000</value>
-			<value level="3">8000</value>
-			<value level="4">7000</value>
-		</reuseDelay>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<effects>
-			<effect name="MagicalAttack">
-				<power>
-					<value level="1">245</value>
-					<value level="2">262</value>
-					<value level="3">279</value>
-					<value level="4">304</value>
-				</power>
-			</effect>
-		</effects>
-	</skill>
-	<skill id="47912" toLevel="4" name="Summon Elemental Cubic">
-		<!-- Summons Elemental Cubic. M. Atk. +150. When using magic skills (attack/ anomaly/ debuff):. Delivers <font color="FFBB00">an additional attack</font>. The summoner's illusions attack the target. (Trigger cooldown: 15 sec.) -->
-		<icon>icon.skill10073_2</icon>
-		<hitTime>4000</hitTime>
-		<coolTime>500</coolTime>
-		<isMagic>1</isMagic>
-		<magicLevel>
-			<value level="1">76</value>
-			<value level="2">85</value>
-			<value level="3">88</value>
-			<value level="4">91</value>
-		</magicLevel>
-		<mpConsume>
-			<value level="1">78</value>
-			<value level="2">81</value>
-			<value level="3">84</value>
-			<value level="4">87</value>
-		</mpConsume>
-		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<abnormalLevel>
-			<value level="1">1</value>
-			<value level="2">2</value>
-			<value level="3">3</value>
-			<value level="4">4</value>
-		</abnormalLevel>
-		<reuseDelay>10000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<conditions>
-			<condition name="CanSummonCubic" />
-		</conditions>
-		<effects>
-			<effect name="MAtk">
-				<amount>
-					<value level="1">150</value>
-					<value level="2">500</value>
-					<value toLevel="2" fromLevel="2" toSubLevel="1001" fromSubLevel="1001">1300</value>
-					<value toLevel="2" fromLevel="2" toSubLevel="1002" fromSubLevel="1002">2300</value>
-					<value toLevel="2" fromLevel="2" toSubLevel="1003" fromSubLevel="1003">3300</value>
-					<value level="3">550</value>
-					<value toLevel="3" fromLevel="3" toSubLevel="1001" fromSubLevel="1001">1400</value>
-					<value toLevel="3" fromLevel="3" toSubLevel="1002" fromSubLevel="1002">2400</value>
-					<value toLevel="3" fromLevel="3" toSubLevel="1003" fromSubLevel="1003">3400</value>
-					<value level="4">600</value>
-					<value toLevel="4" fromLevel="4" toSubLevel="1001" fromSubLevel="1001">1500</value>
-					<value toLevel="4" fromLevel="4" toSubLevel="1002" fromSubLevel="1002">2500</value>
-					<value toLevel="4" fromLevel="4" toSubLevel="1003" fromSubLevel="1003">3500</value>
-				</amount>
-				<mode>DIFF</mode>
-			</effect>
-			<effect name="DefenceTrait" fromLevel="2" toLevel="4">
-				<BOW>
-					<value level="2">5</value>
-					<value level="3">7</value>
-					<value level="4">10</value>
-				</BOW>
-			</effect>
-			<effect name="SummonCubic">
-				<cubicId>24</cubicId>
-				<cubicLvl>
-					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-				</cubicLvl>
-			</effect>
-			<effect name="TriggerSkillByMagicType">
-				<magicTypes>1</magicTypes>
-				<chance>100</chance>
-				<skillId>47913</skillId> <!-- Attribute Attack -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-				</skillLevel>
+				<targetType>ENEMY</targetType>
 				<allowBadSkills>true</allowBadSkills>
 				<allowGoodSkills>false</allowGoodSkills>
 			</effect>
@@ -459,31 +647,25 @@
 	</skill>
 	<skill id="47913" toLevel="4" name="Attribute Attack">
 		<icon>icon.skill10073_2</icon>
-		<effectPoint>-500</effectPoint>
-		<magicLevel>
-			<value level="1">76</value>
-			<value level="2">85</value>
-			<value level="3">88</value>
-			<value level="4">91</value>
-		</magicLevel>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<effectPoint>-500</effectPoint>
 		<reuseDelay>
 			<value level="1">15000</value>
 			<value level="2">8000</value>
 			<value level="3">8000</value>
 			<value level="4">7000</value>
 		</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MagicalAttack">
 				<power>
-					<value level="1">245</value>
-					<value level="2">262</value>
-					<value level="3">279</value>
-					<value level="4">304</value>
+					<value level="1">147</value>
+					<value level="2">165</value>
+					<value level="3">174</value>
+					<value level="4">185</value>
 				</power>
 			</effect>
 		</effects>
@@ -491,9 +673,11 @@
 	<skill id="47914" toLevel="4" name="Summon Phantom Cubic">
 		<!-- Summons Phantom Cubic. M. Atk. +150. When using magic skills (attack/ anomaly/ debuff):. Delivers <font color="FFBB00">an additional attack</font>. The summoner's illusions attack the target. (Trigger cooldown: 15 sec.) -->
 		<icon>icon.skill10079_3</icon>
+		<operateType>A2</operateType>
 		<hitTime>4000</hitTime>
 		<coolTime>500</coolTime>
-		<isMagic>1</isMagic>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<abnormalTime>1200</abnormalTime>
 		<magicLevel>
 			<value level="1">76</value>
 			<value level="2">85</value>
@@ -506,22 +690,33 @@
 			<value level="3">84</value>
 			<value level="4">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<abnormalLevel>
-			<value level="1">1</value>
-			<value level="2">2</value>
-			<value level="3">3</value>
-			<value level="4">4</value>
-		</abnormalLevel>
 		<reuseDelay>10000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<itemConsumeCount>
+			<value level="1">0</value>
+			<value level="2">0</value>
+			<value level="3">0</value>
+			<value level="4">0</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+			<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+		</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanSummonCubic" />
 		</conditions>
 		<effects>
+			<!-- <effect name="SummonCubic">
+				<cubicId>25</cubicId>
+				<cubicLvl>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+				</cubicLvl>
+			</effect> -->
 			<effect name="MAtk">
 				<amount>
 					<value level="1">150</value>
@@ -540,32 +735,120 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceTrait" fromLevel="2" toLevel="4">
+			<effect name="DefenceTrait">
 				<DAGGER>
+					<value level="1">0</value>
 					<value level="2">5</value>
 					<value level="3">7</value>
 					<value level="4">10</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">11</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">12</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">13</value>
 				</DAGGER>
-			</effect>
-			<effect name="SummonCubic">
-				<cubicId>25</cubicId>
-				<cubicLvl>
-					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-				</cubicLvl>
+				<PISTOLS>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</PISTOLS>
+				<SWORD>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</SWORD>
+				<BLUNT>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</BLUNT>
+				<BOW>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</BOW>
+				<POLE>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</POLE>
+				<DUAL>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</DUAL>
+				<DUALFIST>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</DUALFIST>
+				<RAPIER>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</RAPIER>
+				<ANCIENTSWORD>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3</value>
+				</ANCIENTSWORD>
 			</effect>
 			<effect name="TriggerSkillByMagicType">
 				<magicTypes>1</magicTypes>
 				<chance>100</chance>
-				<skillId>47915</skillId> <!-- Phantom Attack -->
+				<skillId>
+					<value level="1">47915</value>
+					<value level="2">47915</value>
+					<value level="3">47915</value>
+					<value level="4">47915</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">1047915</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">2047915</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">3047915</value>
+				</skillId>
 				<skillLevel>
 					<value level="1">1</value>
 					<value level="2">2</value>
 					<value level="3">3</value>
 					<value level="4">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1001" toSubLevel="1001">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1002" toSubLevel="1002">4</value>
+					<value fromLevel="4" toLevel="4" fromSubLevel="1003" toSubLevel="1003">4</value>
 				</skillLevel>
+				<targetType>ENEMY</targetType>
 				<allowBadSkills>true</allowBadSkills>
 				<allowGoodSkills>false</allowGoodSkills>
 			</effect>
@@ -573,31 +856,25 @@
 	</skill>
 	<skill id="47915" toLevel="4" name="Phantom Attack">
 		<icon>icon.skill10079_3</icon>
-		<effectPoint>-500</effectPoint>
-		<magicLevel>
-			<value level="1">76</value>
-			<value level="2">85</value>
-			<value level="3">88</value>
-			<value level="4">91</value>
-		</magicLevel>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<effectPoint>-500</effectPoint>
 		<reuseDelay>
 			<value level="1">15000</value>
 			<value level="2">8000</value>
 			<value level="3">8000</value>
 			<value level="4">7000</value>
 		</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MagicalAttack">
 				<power>
-					<value level="1">245</value>
-					<value level="2">262</value>
-					<value level="3">279</value>
-					<value level="4">304</value>
+					<value level="1">147</value>
+					<value level="2">165</value>
+					<value level="3">174</value>
+					<value level="4">185</value>
 				</power>
 			</effect>
 		</effects>

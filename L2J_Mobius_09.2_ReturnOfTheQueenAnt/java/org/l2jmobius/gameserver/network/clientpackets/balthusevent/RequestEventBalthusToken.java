@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets.balthusevent;
 import org.l2jmobius.gameserver.instancemanager.events.BalthusEventManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.balthusevent.ExBalthusEvent;
@@ -27,12 +26,17 @@ import org.l2jmobius.gameserver.network.serverpackets.balthusevent.ExBalthusEven
 /**
  * @author Index
  */
-public class RequestEventBalthusToken implements ClientPacket
+public class RequestEventBalthusToken extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

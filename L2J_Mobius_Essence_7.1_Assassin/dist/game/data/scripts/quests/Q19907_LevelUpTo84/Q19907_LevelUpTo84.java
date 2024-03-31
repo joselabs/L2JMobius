@@ -86,7 +86,11 @@ public class Q19907_LevelUpTo84 extends Quest
 					if (questLocation.getStartLocationId() > 0)
 					{
 						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getStartLocationId()).getLocation();
-						teleportToQuestLocation(player, location);
+						if (teleportToQuestLocation(player, location) && (questLocation.getStartLocationId() == questLocation.getEndLocationId()))
+						{
+							questState.setCond(QuestCondType.DONE);
+							sendEndDialog(player);
+						}
 					}
 				}
 				else if (questState.isCond(QuestCondType.DONE) && !questState.isCompleted())
@@ -94,7 +98,10 @@ public class Q19907_LevelUpTo84 extends Quest
 					if (questLocation.getEndLocationId() > 0)
 					{
 						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getEndLocationId()).getLocation();
-						teleportToQuestLocation(player, location);
+						if (teleportToQuestLocation(player, location))
+						{
+							sendEndDialog(player);
+						}
 					}
 				}
 				break;

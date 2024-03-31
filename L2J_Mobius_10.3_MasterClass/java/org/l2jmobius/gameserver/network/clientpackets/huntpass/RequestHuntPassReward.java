@@ -16,16 +16,14 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.huntpass;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.HuntPassData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.HuntPass;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.RewardRequest;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -36,21 +34,21 @@ import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSimpleInf
 /**
  * @author Serenitty, Mobius, Fakee
  */
-public class RequestHuntPassReward implements ClientPacket
+public class RequestHuntPassReward extends ClientPacket
 {
 	private int _huntPassType;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_huntPassType = packet.readByte();
-		packet.readByte(); // is Premium?
+		_huntPassType = readByte();
+		readByte(); // is Premium?
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -102,7 +100,7 @@ public class RequestHuntPassReward implements ClientPacket
 			return;
 		}
 		
-		final ItemTemplate itemTemplate = ItemTable.getInstance().getTemplate(reward.getId());
+		final ItemTemplate itemTemplate = ItemData.getInstance().getTemplate(reward.getId());
 		final long weight = itemTemplate.getWeight() * reward.getCount();
 		final long slots = itemTemplate.isStackable() ? 1 : reward.getCount();
 		if (!player.getInventory().validateWeight(weight) || !player.getInventory().validateCapacity(slots))

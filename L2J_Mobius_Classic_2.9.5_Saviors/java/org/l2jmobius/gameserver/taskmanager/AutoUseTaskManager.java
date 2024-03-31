@@ -24,6 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.ActionData;
+import org.l2jmobius.gameserver.data.xml.PetSkillData;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.handler.IPlayerActionHandler;
 import org.l2jmobius.gameserver.handler.ItemHandler;
@@ -35,6 +36,7 @@ import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
+import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.actor.transform.TransformTemplate;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
@@ -212,6 +214,12 @@ public class AutoUseTaskManager
 							break BUFFS;
 						}
 						
+						// Attacking.
+						if (player.isAttackingNow())
+						{
+							break BUFFS;
+						}
+						
 						// Player is teleporting.
 						if (player.isTeleporting())
 						{
@@ -296,8 +304,9 @@ public class AutoUseTaskManager
 						
 						// Acquire next skill.
 						Playable pet = null;
+						final WorldObject target = player.getTarget();
 						final Integer skillId = player.getAutoUseSettings().getNextSkillId();
-						Skill skill = player.getKnownSkill(skillId.intValue());
+						Skill skill = player.getKnownSkill(skillId);
 						if (skill == null)
 						{
 							if (player.hasServitors())
@@ -305,9 +314,14 @@ public class AutoUseTaskManager
 								SUMMON_SEARCH: for (Summon summon : player.getServitors().values())
 								{
 									skill = summon.getKnownSkill(skillId.intValue());
+									if (skill == null)
+									{
+										skill = PetSkillData.getInstance().getKnownSkill(summon, skillId);
+									}
 									if (skill != null)
 									{
 										pet = summon;
+										pet.setTarget(target);
 										break SUMMON_SEARCH;
 									}
 								}
@@ -315,7 +329,11 @@ public class AutoUseTaskManager
 							if ((skill == null) && player.hasPet())
 							{
 								pet = player.getPet();
-								skill = pet.getKnownSkill(skillId.intValue());
+								skill = pet.getKnownSkill(skillId);
+								if (skill == null)
+								{
+									skill = PetSkillData.getInstance().getKnownSkill((Summon) pet, skillId);
+								}
 								if (pet.isSkillDisabled(skill))
 								{
 									player.getAutoUseSettings().incrementSkillOrder();
@@ -331,7 +349,6 @@ public class AutoUseTaskManager
 						}
 						
 						// Casting on self stops movement.
-						final WorldObject target = player.getTarget();
 						if (target == player)
 						{
 							break SKILLS;
@@ -359,7 +376,8 @@ public class AutoUseTaskManager
 							}
 						}
 						
-						if (!canUseMagic(player, target, skill) || (pet != null ? pet : player).useMagic(skill, null, true, false))
+						final Playable caster = pet != null ? pet : player;
+						if (!canUseMagic(caster, target, skill) || caster.useMagic(skill, null, true, false))
 						{
 							player.getAutoUseSettings().incrementSkillOrder();
 						}
@@ -474,28 +492,34 @@ public class AutoUseTaskManager
 			return buffInfo == null;
 		}
 		
-		private boolean canUseMagic(Player player, WorldObject target, Skill skill)
+		private boolean canUseMagic(Playable playable, WorldObject target, Skill skill)
 		{
-			if ((skill.getItemConsumeCount() > 0) && (player.getInventory().getInventoryItemCount(skill.getItemConsumeId(), -1) < skill.getItemConsumeCount()))
+			if ((skill.getItemConsumeCount() > 0) && (playable.getInventory().getInventoryItemCount(skill.getItemConsumeId(), -1) < skill.getItemConsumeCount()))
 			{
 				return false;
 			}
 			
-			if ((skill.getMpConsume() > 0) && (player.getCurrentMp() < skill.getMpConsume()))
+			if ((skill.getMpConsume() > 0) && (playable.getCurrentMp() < skill.getMpConsume()))
+			{
+				return false;
+			}
+			
+			// Check if monster is spoiled to avoid Spoil (254) skill recast.
+			if ((skill.getId() == 254) && (target != null) && target.isMonster() && ((Monster) target).isSpoiled())
 			{
 				return false;
 			}
 			
 			for (AttachSkillHolder holder : skill.getAttachSkills())
 			{
-				if (player.isAffectedBySkill(holder.getRequiredSkillId()) //
-					&& (player.hasSkillReuse(holder.getSkill().getReuseHashCode()) || player.isAffectedBySkill(holder)))
+				if (playable.isAffectedBySkill(holder.getRequiredSkillId()) //
+					&& (playable.hasSkillReuse(holder.getSkill().getReuseHashCode()) || playable.isAffectedBySkill(holder)))
 				{
 					return false;
 				}
 			}
 			
-			return !player.isSkillDisabled(skill) && skill.checkCondition(player, target, false);
+			return !playable.isSkillDisabled(skill) && skill.checkCondition(playable, target, false);
 		}
 		
 		private boolean canSummonCastSkill(Player player, Summon summon, Skill skill)
@@ -573,7 +597,7 @@ public class AutoUseTaskManager
 		
 		final Set<Player> pool = ConcurrentHashMap.newKeySet(POOL_SIZE);
 		pool.add(player);
-		ThreadPool.scheduleAtFixedRate(new AutoUse(pool), TASK_DELAY, TASK_DELAY);
+		ThreadPool.schedulePriorityTaskAtFixedRate(new AutoUse(pool), TASK_DELAY, TASK_DELAY);
 		POOLS.add(pool);
 	}
 	

@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -32,10 +34,10 @@ public class ExCollectionList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_COLLECTION_LIST.writeId(this);
-		writeByte(_category);
-		writeInt(0); // size & loop body
+		ServerPackets.EX_COLLECTION_LIST.writeId(this, buffer);
+		buffer.writeByte(_category);
+		buffer.writeInt(0); // size & loop body
 	}
 }

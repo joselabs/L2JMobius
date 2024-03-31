@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.ManufactureItem;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.stats.Stat;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class RecipeShopSellList extends ServerPacket
@@ -37,28 +39,28 @@ public class RecipeShopSellList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.RECIPE_SHOP_SELL_LIST.writeId(this);
-		writeInt(_manufacturer.getObjectId());
-		writeInt((int) _manufacturer.getCurrentMp()); // Creator's MP
-		writeInt(_manufacturer.getMaxMp()); // Creator's MP
-		writeLong(_buyer.getAdena()); // Buyer Adena
+		ServerPackets.RECIPE_SHOP_SELL_LIST.writeId(this, buffer);
+		buffer.writeInt(_manufacturer.getObjectId());
+		buffer.writeInt((int) _manufacturer.getCurrentMp()); // Creator's MP
+		buffer.writeInt(_manufacturer.getMaxMp()); // Creator's MP
+		buffer.writeLong(_buyer.getAdena()); // Buyer Adena
 		if (!_manufacturer.hasManufactureShop())
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
 		else
 		{
-			writeInt(_manufacturer.getManufactureItems().size());
+			buffer.writeInt(_manufacturer.getManufactureItems().size());
 			for (ManufactureItem item : _manufacturer.getManufactureItems().values())
 			{
-				writeInt(item.getRecipeId());
-				writeInt(0); // CanCreate?
-				writeLong(item.getCost());
-				writeDouble(Math.min(_craftRate, 100.0));
-				writeByte(_craftCritical > 0);
-				writeDouble(Math.min(_craftCritical, 100.0));
+				buffer.writeInt(item.getRecipeId());
+				buffer.writeInt(0); // CanCreate?
+				buffer.writeLong(item.getCost());
+				buffer.writeDouble(Math.min(_craftRate, 100.0));
+				buffer.writeByte(_craftCritical > 0);
+				buffer.writeDouble(Math.min(_craftCritical, 100.0));
 			}
 		}
 	}

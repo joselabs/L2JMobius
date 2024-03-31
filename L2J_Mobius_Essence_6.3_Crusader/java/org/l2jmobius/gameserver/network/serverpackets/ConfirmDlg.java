@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage.SMParam;
@@ -64,15 +66,15 @@ public class ConfirmDlg extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.CONFIRM_DLG.writeId(this);
+		ServerPackets.CONFIRM_DLG.writeId(this, buffer);
 		final SMParam[] params = _systemMessage.getParams();
-		writeInt(_systemMessage.getId());
-		writeInt(params.length);
+		buffer.writeInt(_systemMessage.getId());
+		buffer.writeInt(params.length);
 		for (SMParam param : params)
 		{
-			writeInt(param.getType());
+			buffer.writeInt(param.getType());
 			switch (param.getType())
 			{
 				case SystemMessage.TYPE_ELEMENT_NAME:
@@ -80,7 +82,7 @@ public class ConfirmDlg extends ServerPacket
 				case SystemMessage.TYPE_FACTION_NAME:
 				case SystemMessage.TYPE_ELEMENTAL_SPIRIT:
 				{
-					writeByte(param.getIntValue());
+					buffer.writeByte(param.getIntValue());
 					break;
 				}
 				case SystemMessage.TYPE_CASTLE_NAME:
@@ -88,7 +90,7 @@ public class ConfirmDlg extends ServerPacket
 				case SystemMessage.TYPE_INSTANCE_NAME:
 				case SystemMessage.TYPE_CLASS_ID:
 				{
-					writeShort(param.getIntValue());
+					buffer.writeShort(param.getIntValue());
 					break;
 				}
 				case SystemMessage.TYPE_ITEM_NAME:
@@ -96,40 +98,40 @@ public class ConfirmDlg extends ServerPacket
 				case SystemMessage.TYPE_NPC_NAME:
 				case SystemMessage.TYPE_DOOR_NAME:
 				{
-					writeInt(param.getIntValue());
+					buffer.writeInt(param.getIntValue());
 					break;
 				}
 				case SystemMessage.TYPE_LONG_NUMBER:
 				{
-					writeLong(param.getLongValue());
+					buffer.writeLong(param.getLongValue());
 					break;
 				}
 				case SystemMessage.TYPE_TEXT:
 				case SystemMessage.TYPE_PLAYER_NAME:
 				{
-					writeString(param.getStringValue());
+					buffer.writeString(param.getStringValue());
 					break;
 				}
 				case SystemMessage.TYPE_SKILL_NAME:
 				{
 					final int[] array = param.getIntArrayValue();
-					writeInt(array[0]); // skill id
-					writeShort(array[1]); // skill level
-					writeShort(array[2]); // skill sub level
+					buffer.writeInt(array[0]); // skill id
+					buffer.writeShort(array[1]); // skill level
+					buffer.writeShort(array[2]); // skill sub level
 					break;
 				}
 				case SystemMessage.TYPE_POPUP_ID:
 				case SystemMessage.TYPE_ZONE_NAME:
 				{
 					final int[] array = param.getIntArrayValue();
-					writeInt(array[0]); // x
-					writeInt(array[1]); // y
-					writeInt(array[2]); // z
+					buffer.writeInt(array[0]); // x
+					buffer.writeInt(array[1]); // y
+					buffer.writeInt(array[2]); // z
 					break;
 				}
 			}
 		}
-		writeInt(_time);
-		writeInt(_requesterId);
+		buffer.writeInt(_time);
+		buffer.writeInt(_requesterId);
 	}
 }

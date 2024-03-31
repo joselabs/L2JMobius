@@ -16,7 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.monsterbook;
 
-import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.monsterbook.ExMonsterBook;
 import org.l2jmobius.gameserver.network.serverpackets.monsterbook.ExMonsterBookOpenResult;
@@ -24,12 +24,23 @@ import org.l2jmobius.gameserver.network.serverpackets.monsterbook.ExMonsterBookO
 /**
  * @author Mobius
  */
-public class RequestMonsterBookOpen implements ClientPacket
+public class RequestMonsterBookOpen extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		client.sendPacket(new ExMonsterBookOpenResult(true));
-		client.sendPacket(new ExMonsterBook(client.getPlayer()));
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		player.sendPacket(new ExMonsterBookOpenResult(true));
+		player.sendPacket(new ExMonsterBook(player));
 	}
 }

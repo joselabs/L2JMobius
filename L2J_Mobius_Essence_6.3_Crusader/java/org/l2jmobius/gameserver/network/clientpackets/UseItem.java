@@ -20,14 +20,11 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.NextAction;
-import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
-import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.IllegalActionPunishmentType;
 import org.l2jmobius.gameserver.enums.ItemSkillType;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
@@ -53,7 +50,6 @@ import org.l2jmobius.gameserver.model.item.type.ActionType;
 import org.l2jmobius.gameserver.model.item.type.ArmorType;
 import org.l2jmobius.gameserver.model.item.type.WeaponType;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -65,30 +61,30 @@ import org.l2jmobius.gameserver.network.serverpackets.ensoul.ExShowEnsoulWindow;
 import org.l2jmobius.gameserver.network.serverpackets.variation.ExShowVariationMakeWindow;
 import org.l2jmobius.gameserver.util.Util;
 
-public class UseItem implements ClientPacket
+public class UseItem extends ClientPacket
 {
 	private int _objectId;
 	private boolean _ctrlPressed;
 	private int _itemId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_ctrlPressed = packet.readInt() != 0;
+		_objectId = readInt();
+		_ctrlPressed = readInt() != 0;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
 		// Flood protect UseItem
-		if (!client.getFloodProtectors().canUseItem())
+		if (!getClient().getFloodProtectors().canUseItem())
 		{
 			return;
 		}
@@ -225,32 +221,74 @@ public class UseItem implements ClientPacket
 				return;
 			}
 			
-			// Prevent Death Knight players to equip other weapons.
-			if (item.isWeapon() && CategoryData.getInstance().isInCategory(CategoryType.DEATH_KNIGHT_ALL_CLASS, player.getClassId().getId()) && (item.getWeaponItem().getItemType() != WeaponType.FISHINGROD) && ((item.getWeaponItem().getItemType() != WeaponType.SWORD) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_LR_HAND)))
+			if (item.isArmor())
 			{
-				player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
-				return;
+				// Prevent equip shields for Death Knight, Sylph or Vanguard players.
+				if ((item.getItemType() == ArmorType.SHIELD) && (player.isDeathKnight() || (player.getRace() == Race.SYLPH) || player.isVanguard()))
+				{
+					player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+					return;
+				}
 			}
-			
-			// Prevent equip shields for Death Knight, Sylph or Vanguard players.
-			if (item.isArmor() && (item.getArmorItem().getItemType() == ArmorType.SHIELD) && (CategoryData.getInstance().isInCategory(CategoryType.DEATH_KNIGHT_ALL_CLASS, player.getClassId().getId()) || CategoryData.getInstance().isInCategory(CategoryType.SYLPH_ALL_CLASS, player.getClassId().getId()) || CategoryData.getInstance().isInCategory(CategoryType.VANGUARD_ALL_CLASS, player.getClassId().getId())))
+			else if (item.isWeapon() && (item.getItemType() != WeaponType.FISHINGROD)) // Fishing rods are enabled for all players.
 			{
-				player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
-				return;
-			}
-			
-			// Prevent equip pistols for non Sylph players.
-			if (item.isWeapon() && (item.getWeaponItem().getItemType() == WeaponType.PISTOLS) && (player.getRace() != Race.SYLPH))
-			{
-				player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
-				return;
-			}
-			
-			// Prevent Sylph players to equip other weapons.
-			if (item.isWeapon() && (player.getRace() == Race.SYLPH) && (item.getWeaponItem().getItemType() != WeaponType.FISHINGROD) && (item.getWeaponItem().getItemType() != WeaponType.PISTOLS))
-			{
-				player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
-				return;
+				// Prevent equip pistols for non Sylph players.
+				if (item.getItemType() == WeaponType.PISTOLS)
+				{
+					if ((player.getRace() != Race.SYLPH))
+					{
+						player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+						return;
+					}
+				}
+				else
+				{
+					// Prevent Dwarf players equip rapiers.
+					if ((player.getRace() == Race.DWARF))
+					{
+						if (item.getItemType() == WeaponType.RAPIER)
+						{
+							player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+							return;
+						}
+					}
+					// Prevent Orc players equip rapiers.
+					else if ((player.getRace() == Race.ORC))
+					{
+						if (item.getItemType() == WeaponType.RAPIER)
+						{
+							player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+							return;
+						}
+					}
+					// Prevent Sylph players to equip other weapons than Pistols.
+					else if ((player.getRace() == Race.SYLPH))
+					{
+						if (item.getItemType() != WeaponType.PISTOLS)
+						{
+							player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+							return;
+						}
+					}
+					// Prevent Vanguard Rider players to equip other weapons than Pole.
+					else if (player.isVanguard())
+					{
+						if (item.getItemType() != WeaponType.POLE)
+						{
+							player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+							return;
+						}
+					}
+					// Prevent other races using Ancient swords.
+					else if ((player.getRace() != Race.KAMAEL))
+					{
+						if (item.getItemType() == WeaponType.ANCIENTSWORD)
+						{
+							player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
+							return;
+						}
+					}
+				}
 			}
 			
 			// Prevent players to equip weapon while wearing combat flag

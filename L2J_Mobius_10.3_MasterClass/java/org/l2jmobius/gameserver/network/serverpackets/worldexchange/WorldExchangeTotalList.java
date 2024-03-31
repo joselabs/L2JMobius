@@ -18,6 +18,8 @@ package org.l2jmobius.gameserver.network.serverpackets.worldexchange;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,16 +36,16 @@ public class WorldExchangeTotalList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_WORLD_EXCHANGE_TOTAL_LIST.writeId(this);
-		writeInt(_itemIds.size());
+		ServerPackets.EX_WORLD_EXCHANGE_TOTAL_LIST.writeId(this, buffer);
+		buffer.writeInt(_itemIds.size());
 		for (int id : _itemIds)
 		{
-			writeInt(id); // ItemClassID
-			writeLong(0); // MinPricePerPiece
-			writeLong(0); // Price
-			writeLong(1); // Amount
+			buffer.writeInt(id); // ItemClassID
+			buffer.writeLong(0); // MinPricePerPiece
+			buffer.writeLong(0); // Price
+			buffer.writeLong(1); // Amount
 		}
 	}
 }

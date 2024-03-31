@@ -17,8 +17,10 @@
 package org.l2jmobius.gameserver.network.serverpackets;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -40,16 +42,16 @@ public class ExAlterSkillRequest extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (!Config.ENABLE_ALTER_SKILLS)
 		{
 			return;
 		}
-		ServerPackets.EX_ALTER_SKILL_REQUEST.writeId(this);
-		writeInt(_nextSkillId);
-		writeInt(_currentSkillId);
-		writeInt(_alterTime);
+		ServerPackets.EX_ALTER_SKILL_REQUEST.writeId(this, buffer);
+		buffer.writeInt(_nextSkillId);
+		buffer.writeInt(_currentSkillId);
+		buffer.writeInt(_alterTime);
 		if (_alterTime > 0)
 		{
 			_player.setAlterSkillActive(true);

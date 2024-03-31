@@ -16,18 +16,22 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.monsterbook;
 
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.monsterbook.ExMonsterBookCloseForce;
 
 /**
  * @author Mobius
  */
-public class RequestMonsterBookClose implements ClientPacket
+public class RequestMonsterBookClose extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		client.sendPacket(new ExMonsterBookCloseForce());
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		getClient().sendPacket(new ExMonsterBookCloseForce());
 	}
 }

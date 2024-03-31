@@ -32,6 +32,7 @@ import org.l2jmobius.gameserver.enums.CastleSide;
 import org.l2jmobius.gameserver.enums.SiegeGuardType;
 import org.l2jmobius.gameserver.model.holders.CastleSpawnHolder;
 import org.l2jmobius.gameserver.model.holders.SiegeGuardHolder;
+import org.l2jmobius.gameserver.model.holders.SkillHolder;
 
 /**
  * @author St3eT
@@ -40,6 +41,8 @@ public class CastleData implements IXmlReader
 {
 	private final Map<Integer, List<CastleSpawnHolder>> _spawns = new ConcurrentHashMap<>();
 	private static final Map<Integer, List<SiegeGuardHolder>> _siegeGuards = new ConcurrentHashMap<>();
+	
+	private static final Map<Integer, List<SkillHolder>> skills = new ConcurrentHashMap<>();
 	
 	protected CastleData()
 	{
@@ -105,6 +108,21 @@ public class CastleData implements IXmlReader
 								}
 								_siegeGuards.put(castleId, guards);
 							}
+							else if ("skills".equalsIgnoreCase(tpNode.getNodeName()))
+							{
+								final List<SkillHolder> list = new ArrayList<>();
+								for (Node npcNode = tpNode.getFirstChild(); npcNode != null; npcNode = npcNode.getNextSibling())
+								{
+									if ("skill".equals(npcNode.getNodeName()))
+									{
+										final NamedNodeMap np = npcNode.getAttributes();
+										final int id = parseInteger(np, "id");
+										final int lvl = parseInteger(np, "lvl");
+										list.add(new SkillHolder(id, lvl));
+									}
+									skills.put(castleId, list);
+								}
+							}
 						}
 					}
 				}
@@ -136,6 +154,11 @@ public class CastleData implements IXmlReader
 	public Map<Integer, List<SiegeGuardHolder>> getSiegeGuards()
 	{
 		return _siegeGuards;
+	}
+	
+	public static Map<Integer, List<SkillHolder>> getSkills()
+	{
+		return skills;
 	}
 	
 	/**

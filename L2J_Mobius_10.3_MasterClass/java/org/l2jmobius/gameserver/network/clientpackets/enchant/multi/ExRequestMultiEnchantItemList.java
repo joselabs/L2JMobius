@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
@@ -33,7 +32,6 @@ import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.enchant.EnchantResultType;
 import org.l2jmobius.gameserver.model.item.enchant.EnchantScroll;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -48,7 +46,7 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @author Index
  */
-public class ExRequestMultiEnchantItemList implements ClientPacket
+public class ExRequestMultiEnchantItemList extends ClientPacket
 {
 	private int _useLateAnnounce;
 	private int _slotId;
@@ -65,20 +63,20 @@ public class ExRequestMultiEnchantItemList implements ClientPacket
 	protected static final Logger LOGGER_ENCHANT = Logger.getLogger("enchant.items");
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_useLateAnnounce = packet.readByte();
-		_slotId = packet.readInt();
-		for (int i = 1; packet.getRemainingLength() != 0; i++)
+		_useLateAnnounce = readByte();
+		_slotId = readInt();
+		for (int i = 1; remaining() != 0; i++)
 		{
-			_itemObjectId.put(i, packet.readInt());
+			_itemObjectId.put(i, readInt());
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -223,7 +221,7 @@ public class ExRequestMultiEnchantItemList implements ClientPacket
 							// Blessed enchant: Enchant value down by 1.
 							if (scrollTemplate.isBlessedDown())
 							{
-								client.sendPacket(SystemMessageId.THE_ENCHANT_VALUE_IS_DECREASED_BY_1);
+								player.sendPacket(SystemMessageId.THE_ENCHANT_VALUE_IS_DECREASED_BY_1);
 								enchantItem.setEnchantLevel(enchantItem.getEnchantLevel() - 1);
 							}
 							else // Blessed enchant: Clear enchant value.

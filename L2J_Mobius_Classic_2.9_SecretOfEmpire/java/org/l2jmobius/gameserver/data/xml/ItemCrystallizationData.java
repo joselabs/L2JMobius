@@ -29,7 +29,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.enums.CrystallizationType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -206,7 +205,7 @@ public class ItemCrystallizationData implements IXmlReader
 	private void generateCrystallizationData()
 	{
 		final int previousCount = _items.size();
-		for (ItemTemplate item : ItemTable.getInstance().getAllItems())
+		for (ItemTemplate item : ItemData.getInstance().getAllItems())
 		{
 			// Check if the data has not been generated.
 			if (((item instanceof Weapon) || (item instanceof Armor)) && item.isCrystallizable() && !_items.containsKey(item.getId()))

@@ -32,7 +32,7 @@ import org.l2jmobius.gameserver.model.cubic.conditions.ICubicCondition;
 /**
  * @author UnAfraid
  */
-public class CubicTemplate implements ICubicConditionHolder
+public class CubicTemplate extends CreatureTemplate implements ICubicConditionHolder
 {
 	private final int _id;
 	private final int _level;
@@ -44,10 +44,11 @@ public class CubicTemplate implements ICubicConditionHolder
 	private final double _power;
 	private final CubicTargetType _targetType;
 	private final List<ICubicCondition> _conditions = new ArrayList<>();
-	public List<CubicSkill> _skills = new ArrayList<>();
+	private final List<CubicSkill> _skills = new ArrayList<>();
 	
 	public CubicTemplate(StatSet set)
 	{
+		super(set);
 		_id = set.getInt("id");
 		_level = set.getInt("level");
 		_slot = set.getInt("slot");
@@ -55,7 +56,7 @@ public class CubicTemplate implements ICubicConditionHolder
 		_delay = set.getInt("delay");
 		_maxCount = set.getInt("maxCount");
 		_useUp = set.getInt("useUp");
-		_power = set.getDouble("power");
+		_power = set.getDouble("power") / 10;
 		_targetType = set.getEnum("targetType", CubicTargetType.class, CubicTargetType.TARGET);
 	}
 	
@@ -94,19 +95,26 @@ public class CubicTemplate implements ICubicConditionHolder
 		return _useUp;
 	}
 	
-	public double getPower()
-	{
-		return _power;
-	}
-	
 	public CubicTargetType getTargetType()
 	{
 		return _targetType;
 	}
 	
-	public List<CubicSkill> getSkills()
+	public List<CubicSkill> getCubicSkills()
 	{
 		return _skills;
+	}
+	
+	@Override
+	public int getBasePAtk()
+	{
+		return (int) _power;
+	}
+	
+	@Override
+	public int getBaseMAtk()
+	{
+		return (int) _power;
 	}
 	
 	@Override

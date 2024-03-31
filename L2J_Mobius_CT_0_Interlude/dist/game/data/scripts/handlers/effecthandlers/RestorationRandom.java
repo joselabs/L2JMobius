@@ -21,7 +21,7 @@ import java.util.List;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.ExtractableProductItem;
 import org.l2jmobius.gameserver.model.ExtractableSkill;
 import org.l2jmobius.gameserver.model.StatSet;
@@ -72,6 +72,11 @@ public class RestorationRandom extends AbstractEffect
 			return;
 		}
 		
+		if (info.getEffected().isMoving() && !info.getEffected().isDisabled())
+		{
+			info.getEffected().stopMove(info.getEffected().getLocation());
+		}
+		
 		final double rndNum = 100 * Rnd.nextDouble();
 		double chance = 0;
 		double chanceFrom = 0;
@@ -100,7 +105,7 @@ public class RestorationRandom extends AbstractEffect
 		final Player player = info.getEffected().getActingPlayer();
 		if (creationList.isEmpty())
 		{
-			player.sendPacket(SystemMessageId.THERE_WAS_NOTHING_FOUND_INSIDE);
+			player.sendPacket(SystemMessageId.THERE_WAS_NOTHING_FOUND_INSIDE_OF_THAT);
 			return;
 		}
 		
@@ -112,7 +117,7 @@ public class RestorationRandom extends AbstractEffect
 			}
 			
 			final int itemCount = (int) (item.getCount() * Config.RATE_EXTRACTABLE);
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(item.getId());
+			final ItemTemplate template = ItemData.getInstance().getTemplate(item.getId());
 			if (template.isStackable())
 			{
 				player.addItem("Extract", item.getId(), itemCount, info.getEffector(), true);

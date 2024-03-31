@@ -18,9 +18,11 @@ package org.l2jmobius.gameserver.network.serverpackets.ceremonyofchaos;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.CeremonyOfChaosResult;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -41,21 +43,21 @@ public class ExCuriousHouseResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_CURIOUS_HOUSE_RESULT.writeId(this);
-		writeInt(0); // _event.getId()
-		writeShort(_result.ordinal());
-		writeInt(18); // max players
-		writeInt(_players.size());
+		ServerPackets.EX_CURIOUS_HOUSE_RESULT.writeId(this, buffer);
+		buffer.writeInt(0); // _event.getId()
+		buffer.writeShort(_result.ordinal());
+		buffer.writeInt(18); // max players
+		buffer.writeInt(_players.size());
 		int pos = 0;
 		for (Player player : _players)
 		{
-			writeInt(player.getObjectId());
-			writeInt(pos++); // position
-			writeInt(player.getClassId().getId());
-			writeInt(_time); // getLifeTime
-			writeInt(player.getVariables().getInt(PlayerVariables.CEREMONY_OF_CHAOS_SCORE, 0));
+			buffer.writeInt(player.getObjectId());
+			buffer.writeInt(pos++); // position
+			buffer.writeInt(player.getClassId().getId());
+			buffer.writeInt(_time); // getLifeTime
+			buffer.writeInt(player.getVariables().getInt(PlayerVariables.CEREMONY_OF_CHAOS_SCORE, 0));
 		}
 	}
 }

@@ -16,15 +16,19 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.vip;
 
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.vip.ReceiveVipInfo;
 
-public class ExRequestVipInfo implements ClientPacket
+public class ExRequestVipInfo extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		client.sendPacket(new ReceiveVipInfo(client.getPlayer()));
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		getClient().sendPacket(new ReceiveVipInfo(getPlayer()));
 	}
 }

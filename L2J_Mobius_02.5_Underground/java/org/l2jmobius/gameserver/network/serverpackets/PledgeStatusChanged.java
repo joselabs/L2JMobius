@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.clan.Clan;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class PledgeStatusChanged extends ServerPacket
@@ -29,16 +31,16 @@ public class PledgeStatusChanged extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PLEDGE_STATUS_CHANGED.writeId(this);
-		writeInt(0);
-		writeInt(_clan.getLeaderId());
-		writeInt(_clan.getId());
-		writeInt(_clan.getCrestId());
-		writeInt(_clan.getAllyId());
-		writeInt(_clan.getAllyCrestId());
-		writeInt(_clan.getCrestLargeId());
-		writeInt(0); // pledge type ?
+		ServerPackets.PLEDGE_STATUS_CHANGED.writeId(this, buffer);
+		buffer.writeInt(0);
+		buffer.writeInt(_clan.getLeaderId());
+		buffer.writeInt(_clan.getId());
+		buffer.writeInt(_clan.getCrestId());
+		buffer.writeInt(_clan.getAllyId());
+		buffer.writeInt(_clan.getAllyCrestId());
+		buffer.writeInt(_clan.getCrestLargeId());
+		buffer.writeInt(0); // pledge type ?
 	}
 }

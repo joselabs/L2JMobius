@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.surveillance;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,11 +36,11 @@ public class ExUserWatcherTargetStatus extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_USER_WATCHER_TARGET_STATUS.writeId(this);
-		writeSizedString(_name);
-		writeInt(0); // client.getProxyServerId()
-		writeByte(_online ? 1 : 0);
+		ServerPackets.EX_USER_WATCHER_TARGET_STATUS.writeId(this, buffer);
+		buffer.writeSizedString(_name);
+		buffer.writeInt(0); // client.getProxyServerId()
+		buffer.writeByte(_online ? 1 : 0);
 	}
 }

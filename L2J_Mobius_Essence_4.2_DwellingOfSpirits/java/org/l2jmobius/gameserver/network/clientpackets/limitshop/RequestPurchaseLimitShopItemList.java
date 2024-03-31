@@ -18,32 +18,30 @@ package org.l2jmobius.gameserver.network.clientpackets.limitshop;
 
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.LimitShopCraftData;
 import org.l2jmobius.gameserver.data.xml.LimitShopData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.LimitShopProductHolder;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.limitshop.ExPurchaseLimitShopItemListNew;
 
 /**
  * @author Mobius
  */
-public class RequestPurchaseLimitShopItemList implements ClientPacket
+public class RequestPurchaseLimitShopItemList extends ClientPacket
 {
 	private int _shopType;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_shopType = packet.readByte();
+		_shopType = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

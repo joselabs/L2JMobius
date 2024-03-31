@@ -21,9 +21,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.RecipeData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.RecipeHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class RecipeShopManageList extends ServerPacket
@@ -53,38 +55,38 @@ public class RecipeShopManageList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.RECIPE_SHOP_MANAGE_LIST.writeId(this);
-		writeInt(_seller.getObjectId());
-		writeInt((int) _seller.getAdena());
-		writeInt(!_isDwarven);
+		ServerPackets.RECIPE_SHOP_MANAGE_LIST.writeId(this, buffer);
+		buffer.writeInt(_seller.getObjectId());
+		buffer.writeInt((int) _seller.getAdena());
+		buffer.writeInt(!_isDwarven);
 		if ((_recipes == null) || _recipes.isEmpty())
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
 		else
 		{
-			writeInt(_recipes.size()); // number of items in recipe book
+			buffer.writeInt(_recipes.size()); // number of items in recipe book
 			int count = 1;
 			for (RecipeHolder recipe : _recipes)
 			{
-				writeInt(recipe.getId());
-				writeInt(count++);
+				buffer.writeInt(recipe.getId());
+				buffer.writeInt(count++);
 			}
 		}
 		if ((_manufacture == null) || _manufacture.isEmpty())
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
 		else
 		{
-			writeInt(_manufacture.size());
+			buffer.writeInt(_manufacture.size());
 			for (Entry<Integer, Long> item : _manufacture)
 			{
-				writeInt(item.getKey());
-				writeInt(0); // CanCraft?
-				writeLong(item.getValue());
+				buffer.writeInt(item.getKey());
+				buffer.writeInt(0); // CanCraft?
+				buffer.writeLong(item.getValue());
 			}
 		}
 	}

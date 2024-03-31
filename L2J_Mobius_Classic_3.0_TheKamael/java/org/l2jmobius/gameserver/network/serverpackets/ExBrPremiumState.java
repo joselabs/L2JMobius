@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -32,10 +34,10 @@ public class ExBrPremiumState extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_BR_PREMIUM_STATE.writeId(this);
-		writeInt(_player.getObjectId());
-		writeByte(_player.hasPremiumStatus() || (_player.getVipTier() > 0));
+		ServerPackets.EX_BR_PREMIUM_STATE.writeId(this, buffer);
+		buffer.writeInt(_player.getObjectId());
+		buffer.writeByte(_player.hasPremiumStatus() || (_player.getVipTier() > 0));
 	}
 }

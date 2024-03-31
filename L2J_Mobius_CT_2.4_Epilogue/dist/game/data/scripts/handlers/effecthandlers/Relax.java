@@ -73,7 +73,7 @@ public class Relax extends AbstractEffect
 		final double manaDam = _power * getTicksMultiplier();
 		if ((manaDam > info.getEffected().getCurrentMp()) && info.getSkill().isToggle())
 		{
-			info.getEffected().sendPacket(SystemMessageId.YOUR_SKILL_WAS_DEACTIVATED_DUE_TO_LACK_OF_MP);
+			info.getEffected().sendPacket(SystemMessageId.YOUR_SKILL_WAS_REMOVED_DUE_TO_A_LACK_OF_MP);
 			return false;
 		}
 		

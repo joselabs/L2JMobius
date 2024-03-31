@@ -16,31 +16,29 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.AskJoinPledge;
 
 /**
  * @author Mobius
  */
-public class RequestClanAskJoinByName implements ClientPacket
+public class RequestClanAskJoinByName extends ClientPacket
 {
 	private String _playerName;
 	private int _pledgeType;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_playerName = packet.readString();
-		_pledgeType = packet.readInt();
+		_playerName = readString();
+		_pledgeType = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (player.getClan() == null))
 		{
 			return;

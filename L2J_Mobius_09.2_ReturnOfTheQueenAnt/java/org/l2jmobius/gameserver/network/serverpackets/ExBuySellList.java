@@ -21,9 +21,11 @@ import java.util.Collection;
 import java.util.List;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -55,39 +57,39 @@ public class ExBuySellList extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_BUY_SELL_LIST.writeId(this);
-		writeInt(1); // Type SELL
-		writeInt(_inventorySlots);
+		ServerPackets.EX_BUY_SELL_LIST.writeId(this, buffer);
+		buffer.writeInt(1); // Type SELL
+		buffer.writeInt(_inventorySlots);
 		if ((_sellList != null))
 		{
-			writeShort(_sellList.size());
+			buffer.writeShort(_sellList.size());
 			for (Item item : _sellList)
 			{
-				writeItem(item);
-				writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : item.getTemplate().getReferencePrice() / 2);
+				writeItem(item, buffer);
+				buffer.writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : item.getTemplate().getReferencePrice() / 2);
 			}
 		}
 		else
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
 		if ((_refundList != null) && !_refundList.isEmpty())
 		{
-			writeShort(_refundList.size());
+			buffer.writeShort(_refundList.size());
 			int i = 0;
 			for (Item item : _refundList)
 			{
-				writeItem(item);
-				writeInt(i++);
-				writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : (item.getTemplate().getReferencePrice() / 2) * item.getCount());
+				writeItem(item, buffer);
+				buffer.writeInt(i++);
+				buffer.writeLong(Config.MERCHANT_ZERO_SELL_PRICE ? 0 : (item.getTemplate().getReferencePrice() / 2) * item.getCount());
 			}
 		}
 		else
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
-		writeByte(_done);
+		buffer.writeByte(_done);
 	}
 }

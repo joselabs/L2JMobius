@@ -30,7 +30,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.holders.CollectionDataHolder;
 import org.l2jmobius.gameserver.model.holders.ItemEnchantHolder;
@@ -100,7 +99,7 @@ public class CollectionData implements IXmlReader
 								final int itemId = parseInteger(attrs, "id");
 								final long itemCount = parseLong(attrs, "count", 1L);
 								final int itemEnchantLevel = parseInteger(attrs, "enchantLevel", 0);
-								final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+								final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 								if (item == null)
 								{
 									LOGGER.severe(getClass().getSimpleName() + ": Item template null for itemId: " + itemId + " collection item: " + id);

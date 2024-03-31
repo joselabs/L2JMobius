@@ -101,7 +101,7 @@ public class MaxHp extends AbstractEffect
 			final Creature caster = info.getEffector();
 			if ((caster != null) && (caster != effected))
 			{
-				final SystemMessage sm = new SystemMessage(SystemMessageId.S2_HP_HAS_BEEN_RESTORED_BY_C1);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.S2_HP_HAS_BEEN_RESTORED_BY_S1);
 				sm.addString(caster.getName());
 				sm.addInt((int) amount);
 				effected.sendPacket(sm);

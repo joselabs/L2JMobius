@@ -16,7 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+
 import org.l2jmobius.gameserver.model.Location;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -36,13 +39,13 @@ public class ExMagicSkillUseGround extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_MAGIC_SKILL_USE_GROUND.writeId(this);
-		writeInt(_playerObjectId);
-		writeInt(_skillId);
-		writeInt(_location.getX());
-		writeInt(_location.getY());
-		writeInt(_location.getZ());
+		ServerPackets.EX_MAGIC_SKILL_USE_GROUND.writeId(this, buffer);
+		buffer.writeInt(_playerObjectId);
+		buffer.writeInt(_skillId);
+		buffer.writeInt(_location.getX());
+		buffer.writeInt(_location.getY());
+		buffer.writeInt(_location.getZ());
 	}
 }

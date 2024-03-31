@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets.storereview;
 
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.clientpackets.storereview.ExRequestPrivateStoreSearchList;
 import org.l2jmobius.gameserver.network.clientpackets.storereview.ExRequestPrivateStoreSearchList.ShopItem;
@@ -43,13 +45,13 @@ public class ExPrivateStoreSearchItem extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PRIVATE_STORE_SEARCH_ITEM.writeId(this);
+		ServerPackets.EX_PRIVATE_STORE_SEARCH_ITEM.writeId(this, buffer);
 		
-		writeByte(_page); // cPage
-		writeByte(_maxPage); // cMaxPage
-		writeInt(_nSize); // nSize
+		buffer.writeByte(_page); // cPage
+		buffer.writeByte(_maxPage); // cMaxPage
+		buffer.writeInt(_nSize); // nSize
 		
 		if (_nSize > 0)
 		{
@@ -57,14 +59,14 @@ public class ExPrivateStoreSearchItem extends AbstractItemPacket
 			{
 				final ShopItem shopItem = _items.get(itemIndex);
 				
-				writeSizedString(shopItem.getOwner().getName()); // Vendor name
-				writeByte(shopItem.getStoreType() == PrivateStoreType.PACKAGE_SELL ? 0x02 : shopItem.getStoreType() == PrivateStoreType.SELL ? 0x00 : 0x01); // store type (maybe "sold"/buy/Package (translated as Total Score...))
-				writeLong(shopItem.getPrice()); // Price
-				writeInt(shopItem.getOwner().getX()); // X
-				writeInt(shopItem.getOwner().getY()); // Y
-				writeInt(shopItem.getOwner().getZ()); // Z
-				writeInt(calculatePacketSize(shopItem.getItemInfo() /* , shopItem.getCount() */)); // size
-				writeItem(shopItem.getItemInfo(), shopItem.getCount()); // itemAssemble
+				buffer.writeSizedString(shopItem.getOwner().getName()); // Vendor name
+				buffer.writeByte(shopItem.getStoreType() == PrivateStoreType.PACKAGE_SELL ? 0x02 : shopItem.getStoreType() == PrivateStoreType.SELL ? 0x00 : 0x01); // store type (maybe "sold"/buy/Package (translated as Total Score...))
+				buffer.writeLong(shopItem.getPrice()); // Price
+				buffer.writeInt(shopItem.getOwner().getX()); // X
+				buffer.writeInt(shopItem.getOwner().getY()); // Y
+				buffer.writeInt(shopItem.getOwner().getZ()); // Z
+				buffer.writeInt(calculatePacketSize(shopItem.getItemInfo() /* , shopItem.getCount() */)); // size
+				writeItem(shopItem.getItemInfo(), shopItem.getCount(), buffer); // itemAssemble
 			}
 		}
 	}

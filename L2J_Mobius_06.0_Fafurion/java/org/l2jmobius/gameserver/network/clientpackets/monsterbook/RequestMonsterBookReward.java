@@ -16,26 +16,31 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.monsterbook;
 
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 
 /**
  * @author Mobius
  */
-public class RequestMonsterBookReward implements ClientPacket
+public class RequestMonsterBookReward extends ClientPacket
 {
 	private int _id;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_id = packet.readShort();
+		_id = readShort();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		client.getPlayer().rewardMonsterBook(_id);
+		final Player player = getPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		player.rewardMonsterBook(_id);
 	}
 }

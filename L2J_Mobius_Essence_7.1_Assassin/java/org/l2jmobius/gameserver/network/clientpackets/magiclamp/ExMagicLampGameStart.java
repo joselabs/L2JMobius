@@ -22,7 +22,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.MagicLampData;
 import org.l2jmobius.gameserver.enums.LampMode;
@@ -30,7 +29,6 @@ import org.l2jmobius.gameserver.enums.LampType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.MagicLampDataHolder;
 import org.l2jmobius.gameserver.model.holders.MagicLampHolder;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.magiclamp.ExMagicLampExpInfoUI;
 import org.l2jmobius.gameserver.network.serverpackets.magiclamp.ExMagicLampGameInfoUI;
@@ -39,22 +37,22 @@ import org.l2jmobius.gameserver.network.serverpackets.magiclamp.ExMagicLampGameR
 /**
  * @author L2CCCP
  */
-public class ExMagicLampGameStart implements ClientPacket
+public class ExMagicLampGameStart extends ClientPacket
 {
 	private int _count;
 	private byte _mode;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_count = packet.readInt(); // MagicLampGameCCount
-		_mode = (byte) packet.readByte(); // GameMode
+		_count = readInt(); // MagicLampGameCCount
+		_mode = readByte(); // GameMode
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

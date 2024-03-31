@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets.olympiad;
 
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.olympiad.ExOlympiadMatchList;
 
@@ -25,12 +24,17 @@ import org.l2jmobius.gameserver.network.serverpackets.olympiad.ExOlympiadMatchLi
  * Format: (ch)d d: unknown (always 0?)
  * @author mrTJO
  */
-public class RequestExOlympiadMatchListRefresh implements ClientPacket
+public class RequestExOlympiadMatchListRefresh extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

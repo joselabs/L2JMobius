@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -38,12 +40,12 @@ public class ExShowBeautyMenu extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHOW_BEAUTY_MENU.writeId(this);
-		writeInt(_type);
-		writeInt(_player.getVisualHair());
-		writeInt(_player.getVisualHairColor());
-		writeInt(_player.getVisualFace());
+		ServerPackets.EX_SHOW_BEAUTY_MENU.writeId(this, buffer);
+		buffer.writeInt(_type);
+		buffer.writeInt(_player.getVisualHair());
+		buffer.writeInt(_player.getVisualHairColor());
+		buffer.writeInt(_player.getVisualFace());
 	}
 }

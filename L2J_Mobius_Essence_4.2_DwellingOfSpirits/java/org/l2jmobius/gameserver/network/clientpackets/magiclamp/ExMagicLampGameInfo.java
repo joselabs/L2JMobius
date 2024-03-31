@@ -16,29 +16,27 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.magiclamp;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.magiclamp.ExMagicLampGameInfoUI;
 
 /**
  * @author L2CCCP
  */
-public class ExMagicLampGameInfo implements ClientPacket
+public class ExMagicLampGameInfo extends ClientPacket
 {
 	private byte _mode;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_mode = (byte) packet.readByte(); // cGameMode
+		_mode = readByte(); // cGameMode
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

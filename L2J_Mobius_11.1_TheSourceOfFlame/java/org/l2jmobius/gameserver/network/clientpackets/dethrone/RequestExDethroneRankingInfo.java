@@ -16,31 +16,29 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.dethrone;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.dethrone.ExDethroneRankingInfo;
 
 /**
  * @author Lefteris
  */
-public class RequestExDethroneRankingInfo implements ClientPacket
+public class RequestExDethroneRankingInfo extends ClientPacket
 {
 	private int _currentSeason;
 	private int _rankingScope;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_currentSeason = packet.readByte();
-		_rankingScope = packet.readByte();
+		_currentSeason = readByte();
+		_rankingScope = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

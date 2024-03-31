@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.cache.HtmCache;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.DropType;
 import org.l2jmobius.gameserver.handler.IBypassHandler;
@@ -432,7 +432,7 @@ public class NpcViewMod implements IBypassHandler
 			final StringBuilder sb = new StringBuilder();
 			final int height = 64;
 			final DropHolder dropItem = dropList.get(i);
-			final ItemTemplate item = ItemTable.getInstance().getTemplate(dropItem.getItemId());
+			final ItemTemplate item = ItemData.getInstance().getTemplate(dropItem.getItemId());
 			
 			// real time server rate calculations
 			double rateChance = 1;

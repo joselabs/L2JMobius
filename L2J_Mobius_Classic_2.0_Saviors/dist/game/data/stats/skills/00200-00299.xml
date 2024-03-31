@@ -1013,7 +1013,7 @@
 		<effects>
 			<effect name="HealOverTime">
 				<power>-12</power>
-				<ticks>2</ticks>
+				<ticks>5</ticks>
 			</effect>
 			<effect name="PhysicalAttackSpeed">
 				<amount>25</amount>
@@ -1265,8 +1265,6 @@
 					<item>SWORD</item>
 					<item>DAGGER</item>
 					<item>DUAL</item>
-					<item>DUALBLUNT</item>
-					<item>DUALDAGGER</item>
 				</weaponType>
 			</condition>
 		</conditions>
@@ -1406,9 +1404,6 @@
 					<value level="2">5</value>
 					<value level="3">6</value>
 				</value>
-			</effect>
-			<effect name="DefenceTrait">
-				<SHOCK>-11</SHOCK>
 			</effect>
 		</effects>
 	</skill>
@@ -4213,7 +4208,10 @@
 					<value level="40">2609</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
-				<criticalChance>15</criticalChance>
+				<criticalChance>
+					<value fromLevel="1" toLevel="37">0</value>
+					<value fromLevel="38" toLevel="40">10</value>
+				</criticalChance>
 				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
@@ -4325,13 +4323,8 @@
 		</conditions>
 		<effects>
 			<effect name="EnergyAttack">
-				<chargeConsume>4</chargeConsume>
-				<criticalChance>
-					<value fromLevel="1" toLevel="25">15</value>
-				</criticalChance>
-				<pDefMod>
-					<value fromLevel="1" toLevel="25">1</value>
-				</pDefMod>
+				<chargeConsume>3</chargeConsume>
+				<criticalChance>10</criticalChance>
 				<overHit>true</overHit>
 				<power>
 					<value level="1">1948</value>
@@ -5224,10 +5217,8 @@
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
-		<activateRate>
-			<value fromLevel="1" toLevel="6">40</value>
-		</activateRate>
-		<basicProperty>MAGIC</basicProperty>
+		<activateRate>80</activateRate>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>400</castRange>
 		<coolTime>500</coolTime>
 		<effectPoint>
@@ -5241,15 +5232,14 @@
 		<effectRange>900</effectRange>
 		<hitTime>1500</hitTime>
 		<isDebuff>true</isDebuff>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<lvlBonusRate>20</lvlBonusRate>
+		<lvlBonusRate>30</lvlBonusRate>
 		<magicLevel>
 			<value level="1">58</value>
 			<value level="2">62</value>
 			<value level="3">66</value>
 			<value level="4">70</value>
 			<value level="5">74</value>
-			<value level="6">75</value>
+			<value level="6">78</value>
 		</magicLevel>
 		<mpConsume>
 			<value level="1">64</value>
@@ -5276,6 +5266,7 @@
 					<value level="5">5114</value>
 					<value level="6">5131</value>
 				</power>
+				<criticalChance>5</criticalChance>
 			</effect>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
@@ -5478,7 +5469,6 @@
 					<value level="40">2627</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
-				<criticalChance>15</criticalChance>
 				<overHit>true</overHit>
 			</effect>
 		</effects>
@@ -5765,7 +5755,6 @@
 					<value level="40">2609</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
-				<criticalChance>15</criticalChance>
 				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
@@ -6056,7 +6045,7 @@
 		<effects>
 			<effect name="EnergyAttack">
 				<chargeConsume>2</chargeConsume>
-				<criticalChance>15</criticalChance>
+				<criticalChance>5</criticalChance>
 				<overHit>true</overHit>
 				<power>
 					<value level="1">501</value>

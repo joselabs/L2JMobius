@@ -125,13 +125,12 @@
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<activateRate>50</activateRate>
-		<staticReuse>true</staticReuse>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>150</affectRange>
+		<activateRate>90</activateRate>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>200</affectRange>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
-		<effectRange>1000</effectRange>
+		<effectRange>1300</effectRange>
 		<hitTime>2500</hitTime>
 		<effectPoint>-507</effectPoint>
 		<lvlBonusRate>20</lvlBonusRate>
@@ -174,7 +173,7 @@
 				</weaponType>
 			</condition>
 			<condition name="OpCheckCastRange">
-				<distance>200</distance>
+				<distance>300</distance>
 			</condition>
 		</conditions>
 		<effects>
@@ -192,6 +191,7 @@
 					<value level="10">3435</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<criticalChance>20</criticalChance>
 				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
@@ -335,9 +335,11 @@
 		<nextAction>ATTACK</nextAction>
 		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
+		<affectLimit>5-12</affectLimit>
+		<fanRange>0;0;60;120</fanRange>
 		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<affectScope>FAN</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -444,30 +446,26 @@
 		<targetType>NONE</targetType>
 		<effects>
 			<effect name="ManaDamOverTime">
-				<power>1</power>
-				<ticks>2</ticks>
+				<power>
+					<value level="1">10</value>
+					<value level="2">12</value>
+					<value level="3">13</value>
+				</power>
+				<ticks>3</ticks>
 			</effect>
-			<effect name="PAtk">
-				<amount>
+			<effect name="TwoHandedSwordBonus">
+				<pAtkAmount>
 					<value level="1">40</value>
 					<value level="2">50</value>
 					<value level="3">60</value>
-				</amount>
-				<mode>DIFF</mode>
-				<weaponType>
-					<item>SWORD</item>
-				</weaponType>
-			</effect>
-			<effect name="Accuracy">
-				<amount>
+				</pAtkAmount>
+				<pAtkMode>PER</pAtkMode>
+				<accuracyAmount>
 					<value level="1">1</value>
 					<value level="2">2</value>
 					<value level="3">3</value>
-				</amount>
-				<mode>DIFF</mode>
-				<weaponType>
-					<item>SWORD</item>
-				</weaponType>
+				</accuracyAmount>
+				<accuracyMode>DIFF</accuracyMode>
 			</effect>
 			<effect name="PhysicalAttackSpeed">
 				<amount>30</amount>
@@ -668,6 +666,7 @@
 		<activateRate>100</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
+		<effectRange>400</effectRange>
 		<hitTime>1200</hitTime>
 		<effectPoint>-183</effectPoint>
 		<magicLevel>
@@ -732,7 +731,7 @@
 			</effect>
 			<effect name="DispelByCategory">
 				<slot>BUFF</slot>
-				<rate>25</rate>
+				<rate>5</rate>
 				<max>1</max>
 			</effect>
 			<effect name="BlockActions">

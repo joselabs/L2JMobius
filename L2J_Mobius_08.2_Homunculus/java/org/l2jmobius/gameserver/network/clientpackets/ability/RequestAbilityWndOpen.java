@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets.ability;
 
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ability.ExAcquireAPSkillList;
@@ -26,12 +25,17 @@ import org.l2jmobius.gameserver.network.serverpackets.ability.ExShowAPListWnd;
 /**
  * @author Sdw
  */
-public class RequestAbilityWndOpen implements ClientPacket
+public class RequestAbilityWndOpen extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

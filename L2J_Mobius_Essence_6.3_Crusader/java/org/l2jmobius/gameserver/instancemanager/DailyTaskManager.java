@@ -276,7 +276,7 @@ public class DailyTaskManager
 		{
 			LOGGER.log(Level.WARNING, "Error while updating vitality", e);
 		}
-		LOGGER.info("Vitality resetted");
+		LOGGER.info("Vitality reset");
 	}
 	
 	private void resetMonsterArenaWeekly()
@@ -290,7 +290,7 @@ public class DailyTaskManager
 	private void resetClanBonus()
 	{
 		ClanTable.getInstance().getClans().forEach(Clan::resetClanBonus);
-		LOGGER.info("Daily clan bonus has been resetted.");
+		LOGGER.info("Daily clan bonus has been reset.");
 	}
 	
 	private void resetDailySkills()
@@ -432,7 +432,7 @@ public class DailyTaskManager
 			player.getVariables().storeMe();
 		}
 		
-		LOGGER.info("Daily world chat points has been resetted.");
+		LOGGER.info("Daily world chat points has been reset.");
 	}
 	
 	private void resetRecommends()
@@ -488,7 +488,7 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 			
-			LOGGER.info("Training Camp daily time has been resetted.");
+			LOGGER.info("Training Camp daily time has been reset.");
 		}
 	}
 	
@@ -548,7 +548,7 @@ public class DailyTaskManager
 			}
 		}
 		
-		LOGGER.info("Special Hunting Zones has been resetted.");
+		LOGGER.info("Special Hunting Zones has been reset.");
 	}
 	
 	private void resetTimedHuntingZonesWeekly()
@@ -584,7 +584,7 @@ public class DailyTaskManager
 			}
 		}
 		
-		LOGGER.info("Weekly Special Hunting Zones has been resetted.");
+		LOGGER.info("Weekly Special Hunting Zones has been reset.");
 	}
 	
 	private void resetAttendanceRewards()
@@ -612,7 +612,7 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 			
-			LOGGER.info("Account shared Attendance Rewards has been resetted.");
+			LOGGER.info("Account shared Attendance Rewards has been reset.");
 		}
 		else
 		{
@@ -637,7 +637,7 @@ public class DailyTaskManager
 				player.getVariables().storeMe();
 			}
 			
-			LOGGER.info("Attendance Rewards has been resetted.");
+			LOGGER.info("Attendance Rewards has been reset.");
 		}
 	}
 	
@@ -664,7 +664,7 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 		}
-		LOGGER.info("PrimeShopData has been resetted.");
+		LOGGER.info("PrimeShopData has been reset.");
 	}
 	
 	private void resetDailyLimitShopData()
@@ -690,7 +690,7 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 		}
-		LOGGER.info("LimitShopData has been resetted.");
+		LOGGER.info("LimitShopData has been reset.");
 	}
 	
 	private void resetMontlyLimitShopData()
@@ -715,7 +715,7 @@ public class DailyTaskManager
 				player.getAccountVariables().storeMe();
 			}
 		}
-		LOGGER.info("LimitShopData has been resetted.");
+		LOGGER.info("LimitShopData has been reset.");
 	}
 	
 	private void resetHuntPass()
@@ -734,8 +734,9 @@ public class DailyTaskManager
 		// Update data for online players.
 		for (Player player : World.getInstance().getPlayers())
 		{
-			player.getHuntPass().restoreHuntPass();
+			player.getHuntPass().resetHuntPass();
 		}
+		LOGGER.info("HuntPassData has been reset.");
 	}
 	
 	private void resetResurrectionByPayment()
@@ -761,7 +762,7 @@ public class DailyTaskManager
 			player.getVariables().storeMe();
 		}
 		
-		LOGGER.info("Daily payment resurrection count for player has been resetted.");
+		LOGGER.info("Daily payment resurrection count for player has been reset.");
 	}
 	
 	public void resetPrivateStoreHistory()
@@ -775,7 +776,7 @@ public class DailyTaskManager
 			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not reset private store history! " + e);
 		}
 		
-		LOGGER.info("Private store history has been resetted.");
+		LOGGER.info("Private store history has been reset.");
 	}
 	
 	private void resetDailyHennaPattern()
@@ -791,7 +792,7 @@ public class DailyTaskManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not reset Daily Henna Count: " + e);
+			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not reset Daily Pouch Extract: " + e);
 		}
 		
 		// Update data for online players.
@@ -801,7 +802,7 @@ public class DailyTaskManager
 			player.getVariables().storeMe();
 		}
 		
-		LOGGER.info("Daily Henna Count has been resetted.");
+		LOGGER.info("Daily Henna Count has been reset.");
 	}
 	
 	private void resetMorgosMilitaryBase()
@@ -827,7 +828,7 @@ public class DailyTaskManager
 			player.getAccountVariables().storeMe();
 		}
 		
-		LOGGER.info("MorgosMilitaryBase has been resetted.");
+		LOGGER.info("MorgosMilitaryBase has been reset.");
 	}
 	
 	public static DailyTaskManager getInstance()

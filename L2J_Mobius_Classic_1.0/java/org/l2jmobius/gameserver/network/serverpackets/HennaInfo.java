@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.Henna;
 import org.l2jmobius.gameserver.model.stats.BaseStat;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -46,26 +48,26 @@ public class HennaInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.HENNA_INFO.writeId(this);
-		writeByte(_player.getHennaValue(BaseStat.INT)); // equip INT
-		writeByte(_player.getHennaValue(BaseStat.STR)); // equip STR
-		writeByte(_player.getHennaValue(BaseStat.CON)); // equip CON
-		writeByte(_player.getHennaValue(BaseStat.MEN)); // equip MEN
-		writeByte(_player.getHennaValue(BaseStat.DEX)); // equip DEX
-		writeByte(_player.getHennaValue(BaseStat.WIT)); // equip WIT
-		writeByte(0); // equip LUC
-		writeByte(0); // equip CHA
-		writeInt(3 - _player.getHennaEmptySlots()); // Slots
-		writeInt(_hennas.size()); // Size
+		ServerPackets.HENNA_INFO.writeId(this, buffer);
+		buffer.writeByte(_player.getHennaValue(BaseStat.INT)); // equip INT
+		buffer.writeByte(_player.getHennaValue(BaseStat.STR)); // equip STR
+		buffer.writeByte(_player.getHennaValue(BaseStat.CON)); // equip CON
+		buffer.writeByte(_player.getHennaValue(BaseStat.MEN)); // equip MEN
+		buffer.writeByte(_player.getHennaValue(BaseStat.DEX)); // equip DEX
+		buffer.writeByte(_player.getHennaValue(BaseStat.WIT)); // equip WIT
+		buffer.writeByte(0); // equip LUC
+		buffer.writeByte(0); // equip CHA
+		buffer.writeInt(3 - _player.getHennaEmptySlots()); // Slots
+		buffer.writeInt(_hennas.size()); // Size
 		for (Henna henna : _hennas)
 		{
-			writeInt(henna.getDyeId());
-			writeInt(henna.isAllowedClass(_player.getClassId()));
+			buffer.writeInt(henna.getDyeId());
+			buffer.writeInt(henna.isAllowedClass(_player.getClassId()));
 		}
-		writeInt(0); // Premium Slot Dye ID
-		writeInt(0); // Premium Slot Dye Time Left
-		writeInt(0); // Premium Slot Dye ID isValid
+		buffer.writeInt(0); // Premium Slot Dye ID
+		buffer.writeInt(0); // Premium Slot Dye Time Left
+		buffer.writeInt(0); // Premium Slot Dye ID isValid
 	}
 }

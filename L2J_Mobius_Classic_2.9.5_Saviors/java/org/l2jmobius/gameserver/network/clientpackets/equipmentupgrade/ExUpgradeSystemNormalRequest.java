@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets.equipmentupgrade;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.EquipmentUpgradeData;
 import org.l2jmobius.gameserver.enums.UpgradeType;
@@ -28,7 +27,6 @@ import org.l2jmobius.gameserver.model.holders.EquipmentUpgradeHolder;
 import org.l2jmobius.gameserver.model.holders.ItemEnchantHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -36,24 +34,24 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.equipmentupgrade.ExUpgradeSystemNormalResult;
 import org.l2jmobius.gameserver.network.serverpackets.equipmentupgrade.ExUpgradeSystemResult;
 
-public class ExUpgradeSystemNormalRequest implements ClientPacket
+public class ExUpgradeSystemNormalRequest extends ClientPacket
 {
 	private int _objectId;
 	private UpgradeType _type;
 	private int _upgradeId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_type = UpgradeType.ofId(packet.readInt());
-		_upgradeId = packet.readInt();
+		_objectId = readInt();
+		_type = UpgradeType.ofId(readInt());
+		_upgradeId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (_type == null))
 		{
 			return;

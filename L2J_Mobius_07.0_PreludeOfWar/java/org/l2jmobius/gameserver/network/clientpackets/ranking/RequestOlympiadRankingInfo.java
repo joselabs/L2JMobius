@@ -16,15 +16,14 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.ranking;
 
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ranking.ExOlympiadRankingInfo;
 
 /**
  * @author NviX
  */
-public class RequestOlympiadRankingInfo implements ClientPacket
+public class RequestOlympiadRankingInfo extends ClientPacket
 {
 	private int _tabId;
 	private int _rankingType;
@@ -33,18 +32,24 @@ public class RequestOlympiadRankingInfo implements ClientPacket
 	private int _serverId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_tabId = packet.readByte();
-		_rankingType = packet.readByte();
-		_unk = packet.readByte();
-		_classId = packet.readInt();
-		_serverId = packet.readInt();
+		_tabId = readByte();
+		_rankingType = readByte();
+		_unk = readByte();
+		_classId = readInt();
+		_serverId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		client.sendPacket(new ExOlympiadRankingInfo(client.getPlayer(), _tabId, _rankingType, _unk, _classId, _serverId));
+		final Player player = getPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		player.sendPacket(new ExOlympiadRankingInfo(player, _tabId, _rankingType, _unk, _classId, _serverId));
 	}
 }

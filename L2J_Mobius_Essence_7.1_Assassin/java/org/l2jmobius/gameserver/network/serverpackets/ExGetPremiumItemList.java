@@ -19,8 +19,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.PremiumItem;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -38,18 +40,18 @@ public class ExGetPremiumItemList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_GET_PREMIUM_ITEM_LIST.writeId(this);
-		writeInt(_map.size());
+		ServerPackets.EX_GET_PREMIUM_ITEM_LIST.writeId(this, buffer);
+		buffer.writeInt(_map.size());
 		for (Entry<Integer, PremiumItem> entry : _map.entrySet())
 		{
 			final PremiumItem item = entry.getValue();
-			writeLong(entry.getKey());
-			writeInt(item.getItemId());
-			writeLong(item.getCount());
-			writeInt(0); // ?
-			writeString(item.getSender());
+			buffer.writeLong(entry.getKey());
+			buffer.writeInt(item.getItemId());
+			buffer.writeLong(item.getCount());
+			buffer.writeInt(0); // ?
+			buffer.writeString(item.getSender());
 		}
 	}
 }

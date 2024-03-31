@@ -16,10 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.alchemy;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.AlchemyData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -28,7 +27,6 @@ import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -38,7 +36,7 @@ import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
 /**
  * @author Sdw
  */
-public class RequestAlchemyConversion implements ClientPacket
+public class RequestAlchemyConversion extends ClientPacket
 {
 	private int _craftTimes;
 	private int _skillId;
@@ -46,23 +44,23 @@ public class RequestAlchemyConversion implements ClientPacket
 	// private final Set<ItemHolder> _ingredients = new HashSet<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_craftTimes = packet.readInt();
-		packet.readShort();
-		_skillId = packet.readInt();
-		_skillLevel = packet.readInt();
-		// final int ingredientsSize = packet.readInt();
+		_craftTimes = readInt();
+		readShort();
+		_skillId = readInt();
+		_skillLevel = readInt();
+		// final int ingredientsSize = readInt();
 		// for (int i = 0; i < ingredientsSize; i++)
 		// {
-		// _ingredients.add(new ItemHolder(packet.readInt(), packet.readLong()));
+		// _ingredients.add(new ItemHolder(readInt(), readLong()));
 		// }
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (player.getRace() != Race.ERTHEIA))
 		{
 			return;
@@ -144,8 +142,8 @@ public class RequestAlchemyConversion implements ClientPacket
 		}
 		
 		// Calculate success and failure count.
-		final ItemTemplate successItemTemplate = ItemTable.getInstance().getTemplate(data.getProductionSuccess().getId());
-		final ItemTemplate failureItemTemplate = ItemTable.getInstance().getTemplate(data.getProductionFailure().getId());
+		final ItemTemplate successItemTemplate = ItemData.getInstance().getTemplate(data.getProductionSuccess().getId());
+		final ItemTemplate failureItemTemplate = ItemData.getInstance().getTemplate(data.getProductionFailure().getId());
 		int totalWeight = 0;
 		int totalslots = (successItemTemplate.isStackable() ? 1 : 0) + (failureItemTemplate.isStackable() ? 1 : 0);
 		int successCount = 0;

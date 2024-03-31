@@ -206,7 +206,7 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 		final boolean isPartyLeader = (isInCC) ? party.getCommandChannel().isLeader(player) : party.isLeader(player);
 		if (!isPartyLeader)
 		{
-			broadcastSystemMessage(player, null, SystemMessageId.ONLY_A_PARTY_LEADER_CAN_MAKE_THE_REQUEST_TO_ENTER, false);
+			broadcastSystemMessage(player, null, SystemMessageId.ONLY_A_PARTY_LEADER_CAN_TRY_TO_ENTER, false);
 			return false;
 		}
 		

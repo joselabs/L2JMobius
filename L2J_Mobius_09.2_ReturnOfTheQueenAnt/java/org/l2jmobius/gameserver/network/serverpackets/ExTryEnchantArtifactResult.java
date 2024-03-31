@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -39,13 +41,13 @@ public class ExTryEnchantArtifactResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_TRY_ENCHANT_ARTIFACT_RESULT.writeId(this);
-		writeInt(_state);
-		writeInt(_enchant);
-		writeInt(0);
-		writeInt(0);
-		writeInt(0);
+		ServerPackets.EX_TRY_ENCHANT_ARTIFACT_RESULT.writeId(this, buffer);
+		buffer.writeInt(_state);
+		buffer.writeInt(_enchant);
+		buffer.writeInt(0);
+		buffer.writeInt(0);
+		buffer.writeInt(0);
 	}
 }

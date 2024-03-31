@@ -16,17 +16,17 @@
  */
 package org.l2jmobius.loginserver.network.serverpackets;
 
-import org.l2jmobius.commons.network.WritablePacket;
-import org.l2jmobius.loginserver.network.LoginServerPackets;
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.loginserver.network.LoginClient;
 
 /**
  * @author UnAfraid
  */
-public class LoginOtpFail extends WritablePacket
+public class LoginOtpFail extends LoginServerPacket
 {
 	@Override
-	public void write()
+	protected void writeImpl(LoginClient client, WritableBuffer buffer)
 	{
-		LoginServerPackets.LOGIN_OPT_FAIL.writeId(this);
+		buffer.writeByte(0x0D);
 	}
 }

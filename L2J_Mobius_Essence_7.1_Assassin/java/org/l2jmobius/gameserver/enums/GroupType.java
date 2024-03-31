@@ -27,7 +27,7 @@ public enum GroupType implements IUpdateTypeComponent
 	PARTY(2),
 	COMMAND_CHANNEL(4);
 	
-	private int _mask;
+	private final int _mask;
 	
 	private GroupType(int mask)
 	{

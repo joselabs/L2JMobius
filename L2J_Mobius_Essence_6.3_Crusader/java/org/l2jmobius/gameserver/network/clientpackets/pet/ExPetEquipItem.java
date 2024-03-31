@@ -2,7 +2,6 @@ package org.l2jmobius.gameserver.network.clientpackets.pet;
 
 import java.util.concurrent.TimeUnit;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
@@ -15,7 +14,6 @@ import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.ArmorType;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -26,21 +24,21 @@ import org.l2jmobius.gameserver.network.serverpackets.pet.PetSummonInfo;
 /**
  * @author Berezkin Nikolay
  */
-public class ExPetEquipItem implements ClientPacket
+public class ExPetEquipItem extends ClientPacket
 {
 	private int _objectId;
 	private int _itemId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
+		_objectId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -52,7 +50,7 @@ public class ExPetEquipItem implements ClientPacket
 		}
 		
 		// Flood protect UseItem
-		if (!client.getFloodProtectors().canUseItem())
+		if (!getClient().getFloodProtectors().canUseItem())
 		{
 			return;
 		}

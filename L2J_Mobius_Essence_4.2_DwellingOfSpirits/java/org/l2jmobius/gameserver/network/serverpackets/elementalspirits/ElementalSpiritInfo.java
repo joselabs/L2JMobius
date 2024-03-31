@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.elementalspirits;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -37,32 +39,32 @@ public class ElementalSpiritInfo extends AbstractElementalSpiritPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ELEMENTAL_SPIRIT_INFO.writeId(this);
+		ServerPackets.EX_ELEMENTAL_SPIRIT_INFO.writeId(this, buffer);
 		final ElementalSpirit[] spirits = _player.getSpirits();
 		if (spirits == null)
 		{
-			writeByte(0);
-			writeByte(0);
-			writeByte(0);
+			buffer.writeByte(0);
+			buffer.writeByte(0);
+			buffer.writeByte(0);
 			return;
 		}
-		writeByte(_type); // show spirit info window 1; Change type 2; Only update 0
-		writeByte(_spiritType);
-		writeByte(spirits.length); // spirit count
+		buffer.writeByte(_type); // show spirit info window 1; Change type 2; Only update 0
+		buffer.writeByte(_spiritType);
+		buffer.writeByte(spirits.length); // spirit count
 		for (ElementalSpirit spirit : spirits)
 		{
-			writeByte(spirit.getType());
-			writeByte(1); // spirit active ?
+			buffer.writeByte(spirit.getType());
+			buffer.writeByte(1); // spirit active ?
 			// if active
-			writeSpiritInfo(spirit);
+			writeSpiritInfo(buffer, spirit);
 		}
-		writeInt(1); // Reset talent items count
+		buffer.writeInt(1); // Reset talent items count
 		for (int j = 0; j < 1; j++)
 		{
-			writeInt(57);
-			writeLong(50000);
+			buffer.writeInt(57);
+			buffer.writeLong(50000);
 		}
 	}
 }

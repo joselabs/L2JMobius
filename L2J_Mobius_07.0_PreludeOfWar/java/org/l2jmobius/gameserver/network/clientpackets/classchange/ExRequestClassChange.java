@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
@@ -30,7 +29,6 @@ import org.l2jmobius.gameserver.enums.ClassId;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.PlaySound;
@@ -39,7 +37,7 @@ import org.l2jmobius.gameserver.network.serverpackets.classchange.ExRequestClass
 /**
  * @author Mobius
  */
-public class ExRequestClassChange implements ClientPacket
+public class ExRequestClassChange extends ClientPacket
 {
 	private int _classId;
 	private static final String AWAKE_POWER_REWARDED_VAR = "AWAKE_POWER_REWARDED";
@@ -62,15 +60,15 @@ public class ExRequestClassChange implements ClientPacket
 	}
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_classId = packet.readInt();
+		_classId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

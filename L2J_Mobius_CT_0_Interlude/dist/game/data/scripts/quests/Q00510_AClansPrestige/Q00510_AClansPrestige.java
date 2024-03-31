@@ -49,7 +49,7 @@ public class Q00510_AClansPrestige extends Quest
 	public String onAdvEvent(String event, Npc npc, Player player)
 	{
 		final String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;

@@ -30,7 +30,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.enums.ItemLocation;
 import org.l2jmobius.gameserver.geoengine.GeoEngine;
@@ -40,7 +39,6 @@ import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.WorldRegion;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
-import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
@@ -1084,19 +1082,12 @@ public class CreatureAI extends AbstractAI
 	 */
 	protected boolean checkTargetLostOrDead(Creature target)
 	{
-		if ((target == null) || target.isAlikeDead())
+		if ((target == null) || target.isDead())
 		{
-			// check if player is fakedeath
-			if ((target != null) && target.isPlayer() && ((Player) target).isFakeDeath() && Config.FAKE_DEATH_DAMAGE_STAND)
-			{
-				target.stopFakeDeath(true);
-				return false;
-			}
-			
-			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
 			setIntention(AI_INTENTION_ACTIVE);
 			return true;
 		}
+		
 		return false;
 	}
 	
@@ -1119,13 +1110,6 @@ public class CreatureAI extends AbstractAI
 	 */
 	protected boolean checkTargetLost(WorldObject target)
 	{
-		// Check if player is fakedeath.
-		if ((target != null) && target.isPlayer() && target.getActingPlayer().isFakeDeath() && Config.FAKE_DEATH_DAMAGE_STAND)
-		{
-			target.getActingPlayer().stopFakeDeath(true);
-			return false;
-		}
-		
 		if ((target == null) || ((_actor != null) && (_skill != null) && _skill.isBad() && (_skill.getAffectRange() > 0) && (_actor.isPlayer() && _actor.isMoving() ? !GeoEngine.getInstance().canMoveToTarget(_actor, target) : !GeoEngine.getInstance().canSeeTarget(_actor, target))))
 		{
 			setIntention(AI_INTENTION_ACTIVE);
@@ -1299,7 +1283,7 @@ public class CreatureAI extends AbstractAI
 					hasLongRangeDamageSkill = true;
 				}
 				
-				if (castRange > 70)
+				if (castRange > 150)
 				{
 					hasLongRangeSkills = true;
 					if (hasLongRangeDamageSkill)

@@ -20,7 +20,6 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.xml.AbilityPointsData;
 import org.l2jmobius.gameserver.enums.UserInfoType;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -30,12 +29,17 @@ import org.l2jmobius.gameserver.network.serverpackets.ability.ExAcquireAPSkillLi
 /**
  * @author UnAfraid
  */
-public class RequestChangeAbilityPoint implements ClientPacket
+public class RequestChangeAbilityPoint extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

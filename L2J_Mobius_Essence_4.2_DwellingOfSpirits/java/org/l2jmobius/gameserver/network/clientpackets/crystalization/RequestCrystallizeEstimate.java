@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets.crystalization;
 import java.util.List;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -27,7 +26,6 @@ import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.CrystalType;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -38,22 +36,22 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @author UnAfraid
  */
-public class RequestCrystallizeEstimate implements ClientPacket
+public class RequestCrystallizeEstimate extends ClientPacket
 {
 	private int _objectId;
 	private long _count;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_count = packet.readLong();
+		_objectId = readInt();
+		_count = readLong();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || player.isInCrystallize())
 		{
 			return;

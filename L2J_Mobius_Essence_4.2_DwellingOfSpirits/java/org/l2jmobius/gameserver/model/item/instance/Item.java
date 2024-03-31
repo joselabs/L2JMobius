@@ -36,12 +36,12 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.util.StringUtil;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.AgathionData;
 import org.l2jmobius.gameserver.data.xml.AppearanceItemData;
 import org.l2jmobius.gameserver.data.xml.ArmorSetData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemOptionsData;
 import org.l2jmobius.gameserver.data.xml.EnsoulData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.OptionData;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.InstanceType;
@@ -199,7 +199,7 @@ public class Item extends WorldObject
 		super(objectId);
 		setInstanceType(InstanceType.Item);
 		_itemId = itemId;
-		_itemTemplate = ItemTable.getInstance().getTemplate(itemId);
+		_itemTemplate = ItemData.getInstance().getTemplate(itemId);
 		if ((_itemId == 0) || (_itemTemplate == null))
 		{
 			throw new IllegalArgumentException();
@@ -244,7 +244,7 @@ public class Item extends WorldObject
 	 */
 	public Item(ResultSet rs) throws SQLException
 	{
-		this(rs.getInt("object_id"), ItemTable.getInstance().getTemplate(rs.getInt("item_id")));
+		this(rs.getInt("object_id"), ItemData.getInstance().getTemplate(rs.getInt("item_id")));
 		_count = rs.getLong("count");
 		_ownerId = rs.getInt("owner_id");
 		_loc = ItemLocation.valueOf(rs.getString("loc"));

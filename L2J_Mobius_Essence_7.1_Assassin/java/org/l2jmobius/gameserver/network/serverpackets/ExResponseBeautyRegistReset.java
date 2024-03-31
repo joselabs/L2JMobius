@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -41,15 +43,15 @@ public class ExResponseBeautyRegistReset extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RESPONSE_BEAUTY_REGIST_RESET.writeId(this);
-		writeLong(_player.getAdena());
-		writeLong(_player.getBeautyTickets());
-		writeInt(_type);
-		writeInt(_result);
-		writeInt(_player.getVisualHair());
-		writeInt(_player.getVisualFace());
-		writeInt(_player.getVisualHairColor());
+		ServerPackets.EX_RESPONSE_BEAUTY_REGIST_RESET.writeId(this, buffer);
+		buffer.writeLong(_player.getAdena());
+		buffer.writeLong(_player.getBeautyTickets());
+		buffer.writeInt(_type);
+		buffer.writeInt(_result);
+		buffer.writeInt(_player.getVisualHair());
+		buffer.writeInt(_player.getVisualFace());
+		buffer.writeInt(_player.getVisualHairColor());
 	}
 }

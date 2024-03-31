@@ -16,32 +16,30 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.pledgeV2;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeSkillInfo;
 
 /**
  * @author Mobius
  */
-public class RequestExPledgeSkillInfo implements ClientPacket
+public class RequestExPledgeSkillInfo extends ClientPacket
 {
 	private int _skillId;
 	private int _skillLevel;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_skillId = packet.readInt();
-		_skillLevel = packet.readInt();
+		_skillId = readInt();
+		_skillLevel = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -93,6 +91,6 @@ public class RequestExPledgeSkillInfo implements ClientPacket
 		{
 			available = 1;
 		}
-		client.sendPacket(new ExPledgeSkillInfo(_skillId, _skillLevel, time, available));
+		player.sendPacket(new ExPledgeSkillInfo(_skillId, _skillLevel, time, available));
 	}
 }

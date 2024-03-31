@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.Location;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ObservationMode extends ServerPacket
@@ -29,13 +31,13 @@ public class ObservationMode extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.OBSERVER_START.writeId(this);
-		writeInt(_loc.getX());
-		writeInt(_loc.getY());
-		writeInt(_loc.getZ());
-		writeInt(0); // TODO: Find me
-		writeInt(0xc0); // TODO: Find me
+		ServerPackets.OBSERVER_START.writeId(this, buffer);
+		buffer.writeInt(_loc.getX());
+		buffer.writeInt(_loc.getY());
+		buffer.writeInt(_loc.getZ());
+		buffer.writeInt(0); // TODO: Find me
+		buffer.writeInt(0xc0); // TODO: Find me
 	}
 }

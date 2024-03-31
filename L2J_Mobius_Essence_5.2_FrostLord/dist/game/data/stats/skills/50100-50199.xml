@@ -183,9 +183,37 @@
 	<skill id="50122" toLevel="1" name="Lord Ishka's Raid Shield">
 		<!-- P./ M. Def. are increased for 5 min. -->
 		<icon>icon.skill0110</icon>
-		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<operateType>A2</operateType>
 		<hitTime>100</hitTime>
+		<isMagic>1</isMagic>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>300</abnormalTime>
+		<abnormalType>PD_UP_SPECIAL</abnormalType>
+		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
+		<magicLevel>-1</magicLevel>
+		<canBeDispelled>false</canBeDispelled>
+		<operateType>A2</operateType>
+		<reuseDelay>600000</reuseDelay>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="RemainHpPer">
+				<amount>50</amount>
+				<percentType>LESS</percentType>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="PhysicalDefence">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50123" toLevel="1" name="Benefaction of Blue Hawk">
 		<!-- Sayha's Grace Consumption -50%. -->

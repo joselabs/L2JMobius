@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets.elementalspirits;
 
 import java.util.stream.Collectors;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.ElementalType;
 import org.l2jmobius.gameserver.enums.InventoryBlockType;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
@@ -27,7 +26,6 @@ import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -37,20 +35,20 @@ import org.l2jmobius.gameserver.network.serverpackets.elementalspirits.Elemental
 /**
  * @author JoeAlisson
  */
-public class ExElementalSpiritEvolution implements ClientPacket
+public class ExElementalSpiritEvolution extends ClientPacket
 {
 	private byte _type;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = (byte) packet.readByte();
+		_type = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -59,7 +57,7 @@ public class ExElementalSpiritEvolution implements ClientPacket
 		final ElementalSpirit spirit = player.getElementalSpirit(ElementalType.of(_type));
 		if (spirit == null)
 		{
-			client.sendPacket(SystemMessageId.NO_SPIRITS_ARE_AVAILABLE);
+			player.sendPacket(SystemMessageId.NO_SPIRITS_ARE_AVAILABLE);
 			return;
 		}
 		
@@ -67,12 +65,12 @@ public class ExElementalSpiritEvolution implements ClientPacket
 		if (canEvolve)
 		{
 			spirit.upgrade();
-			client.sendPacket(new SystemMessage(SystemMessageId.S1_EVOLVED_TO_S2_STAR).addElementalSpirit(_type).addInt(spirit.getStage()));
+			player.sendPacket(new SystemMessage(SystemMessageId.S1_EVOLVED_TO_S2_STAR).addElementalSpirit(_type).addInt(spirit.getStage()));
 			final UserInfo userInfo = new UserInfo(player);
 			userInfo.addComponentType(UserInfoType.ATT_SPIRITS);
-			client.sendPacket(userInfo);
+			player.sendPacket(userInfo);
 		}
-		client.sendPacket(new ElementalSpiritEvolution(player, _type, canEvolve));
+		player.sendPacket(new ElementalSpiritEvolution(player, _type, canEvolve));
 	}
 	
 	private boolean checkConditions(Player player, ElementalSpirit spirit)

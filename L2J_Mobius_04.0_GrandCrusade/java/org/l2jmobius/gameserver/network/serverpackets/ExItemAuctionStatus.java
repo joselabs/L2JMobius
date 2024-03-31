@@ -16,11 +16,13 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.SpawnTable;
 import org.l2jmobius.gameserver.instancemanager.ItemAuctionManager;
 import org.l2jmobius.gameserver.model.Spawn;
 import org.l2jmobius.gameserver.model.itemauction.ItemAuction;
 import org.l2jmobius.gameserver.model.itemauction.ItemAuctionInstance;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -56,13 +58,13 @@ public class ExItemAuctionStatus extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ITEM_AUCTION_STATUS.writeId(this);
-		writeInt(_x);
-		writeInt(_y);
-		writeInt(_z);
-		writeInt(0);
-		writeShort(_status);
+		ServerPackets.EX_ITEM_AUCTION_STATUS.writeId(this, buffer);
+		buffer.writeInt(_x);
+		buffer.writeInt(_y);
+		buffer.writeInt(_z);
+		buffer.writeInt(0);
+		buffer.writeShort(_status);
 	}
 }

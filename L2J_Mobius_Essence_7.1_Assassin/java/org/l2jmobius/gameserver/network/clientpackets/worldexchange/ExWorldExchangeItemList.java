@@ -20,47 +20,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.WorldExchangeItemSubType;
 import org.l2jmobius.gameserver.enums.WorldExchangeSortType;
 import org.l2jmobius.gameserver.instancemanager.WorldExchangeManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.WorldExchangeHolder;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.worldexchange.WorldExchangeItemList;
 
 /**
  * @author Index
  */
-public class ExWorldExchangeItemList implements ClientPacket
+public class ExWorldExchangeItemList extends ClientPacket
 {
 	private int _category;
 	private int _sortType;
 	private final List<Integer> _itemIdList = new ArrayList<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_category = packet.readShort();
-		_sortType = packet.readByte();
-		packet.readInt(); // page
-		int size = packet.readInt();
+		_category = readShort();
+		_sortType = readByte();
+		readInt(); // page
+		int size = readInt();
 		for (int i = 0; i < size; i++)
 		{
-			_itemIdList.add(packet.readInt());
+			_itemIdList.add(readInt());
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		if (!Config.ENABLE_WORLD_EXCHANGE)
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

@@ -18,6 +18,8 @@ package org.l2jmobius.gameserver.network.serverpackets.dethrone;
 
 import java.util.Calendar;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,11 +40,11 @@ public class ExDethroneSeasonInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_DETHRONE_SEASON_INFO.writeId(this);
-		writeInt(_seasonYear);
-		writeInt(_seasonMonth);
-		writeByte(_open);
+		ServerPackets.EX_DETHRONE_SEASON_INFO.writeId(this, buffer);
+		buffer.writeInt(_seasonYear);
+		buffer.writeInt(_seasonMonth);
+		buffer.writeByte(_open);
 	}
 }

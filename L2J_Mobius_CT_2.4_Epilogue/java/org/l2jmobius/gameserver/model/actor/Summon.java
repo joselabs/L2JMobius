@@ -25,8 +25,8 @@ import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CreatureAI;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.SummonAI;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.ShotType;
@@ -443,7 +443,7 @@ public abstract class Summon extends Playable
 			{
 				for (int itemId : owner.getAutoSoulShot())
 				{
-					final String handler = ((EtcItem) ItemTable.getInstance().getTemplate(itemId)).getHandlerName();
+					final String handler = ((EtcItem) ItemData.getInstance().getTemplate(itemId)).getHandlerName();
 					if ((handler != null) && handler.contains("Beast"))
 					{
 						owner.disableAutoShot(itemId);
@@ -795,7 +795,7 @@ public abstract class Summon extends Playable
 			}
 			else
 			{
-				sm = new SystemMessage(SystemMessageId.C1_HAS_DONE_S3_POINTS_OF_DAMAGE_TO_C2);
+				sm = new SystemMessage(SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3);
 				sm.addNpcName(this);
 				sm.addString(target.getName());
 				sm.addInt(damage);
@@ -826,7 +826,7 @@ public abstract class Summon extends Playable
 		if (!actingPlayer.checkPvpSkill(getTarget(), skill) && !actingPlayer.getAccessLevel().allowPeaceAttack())
 		{
 			// Send a System Message to the Player
-			actingPlayer.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			actingPlayer.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			
 			// Send a Server->Client packet ActionFailed to the Player
 			actingPlayer.sendPacket(ActionFailed.STATIC_PACKET);

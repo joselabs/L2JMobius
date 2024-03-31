@@ -16,28 +16,29 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.huntpass;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.HuntPass;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSayhasSupportInfo;
 
-public class HuntpassSayhasToggle implements ClientPacket
+/**
+ * @author Serenitty
+ */
+public class HuntpassSayhasToggle extends ClientPacket
 {
 	private boolean _sayhaToggle;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_sayhaToggle = packet.readByte() != 0;
+		_sayhaToggle = readByte() != 0;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -53,7 +54,7 @@ public class HuntpassSayhasToggle implements ClientPacket
 		int timeUsed = huntPass.getUsedSayhaTime();
 		if (player.getVitalityPoints() < 35000)
 		{
-			player.sendPacket(SystemMessageId.THE_MAXIMUM_NUMBER_OF_WORLD_TRADE_ITEMS_FOR_REGISTRATION_IS_10);
+			player.sendPacket(SystemMessageId.UNABLE_TO_ACTIVATE_YOU_CAN_USE_VITALITY_SUSTENTION_EFFECT_OF_THE_SEASON_PASS_ONLY_IF_YOU_HAVE_AT_LEAST_35_000_VITALITY_POINTS);
 			return;
 		}
 		

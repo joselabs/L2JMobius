@@ -19,8 +19,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class WareHouseDepositList extends ServerPacket
@@ -57,46 +59,46 @@ public class WareHouseDepositList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.WAREHOUSE_DEPOSIT_LIST.writeId(this);
-		writeShort(_whType);
-		writeLong(_playerAdena);
-		writeShort(_items.size());
+		ServerPackets.WAREHOUSE_DEPOSIT_LIST.writeId(this, buffer);
+		buffer.writeShort(_whType);
+		buffer.writeLong(_playerAdena);
+		buffer.writeShort(_items.size());
 		for (Item item : _items)
 		{
-			writeShort(item.getTemplate().getType1());
-			writeInt(item.getObjectId());
-			writeInt(item.getId());
-			writeLong(item.getCount());
-			writeShort(item.getTemplate().getType2());
-			writeShort(item.getCustomType1());
-			writeInt(item.getTemplate().getBodyPart());
-			writeShort(item.getEnchantLevel());
-			writeShort(0);
-			writeShort(item.getCustomType2());
-			writeInt(item.getObjectId());
+			buffer.writeShort(item.getTemplate().getType1());
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getId());
+			buffer.writeLong(item.getCount());
+			buffer.writeShort(item.getTemplate().getType2());
+			buffer.writeShort(item.getCustomType1());
+			buffer.writeInt(item.getTemplate().getBodyPart());
+			buffer.writeShort(item.getEnchantLevel());
+			buffer.writeShort(0);
+			buffer.writeShort(item.getCustomType2());
+			buffer.writeInt(item.getObjectId());
 			if (item.isAugmented())
 			{
-				writeInt(0x0000FFFF & item.getAugmentation().getAugmentationId());
-				writeInt(item.getAugmentation().getAugmentationId() >> 16);
+				buffer.writeInt(0x0000FFFF & item.getAugmentation().getAugmentationId());
+				buffer.writeInt(item.getAugmentation().getAugmentationId() >> 16);
 			}
 			else
 			{
-				writeLong(0);
+				buffer.writeLong(0);
 			}
-			writeShort(item.getAttackElementType());
-			writeShort(item.getAttackElementPower());
+			buffer.writeShort(item.getAttackElementType());
+			buffer.writeShort(item.getAttackElementPower());
 			for (byte i = 0; i < 6; i++)
 			{
-				writeShort(item.getElementDefAttr(i));
+				buffer.writeShort(item.getElementDefAttr(i));
 			}
-			writeInt(item.getMana());
+			buffer.writeInt(item.getMana());
 			// T2
-			writeInt(item.isTimeLimitedItem() ? (int) (item.getRemainingTime() / 1000) : -1);
+			buffer.writeInt(item.isTimeLimitedItem() ? (int) (item.getRemainingTime() / 1000) : -1);
 			for (int op : item.getEnchantOptions())
 			{
-				writeShort(op);
+				buffer.writeShort(op);
 			}
 		}
 	}

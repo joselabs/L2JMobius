@@ -38,7 +38,6 @@ import org.w3c.dom.Document;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.IXmlReader;
 import org.l2jmobius.gameserver.scripting.java.JavaExecutionContext;
-import org.l2jmobius.gameserver.scripting.java.JavaScriptingEngine;
 
 /**
  * @author Mobius
@@ -53,8 +52,8 @@ public class ScriptEngineManager implements IXmlReader
 	public static final Path SKILL_CONDITION_HANDLER_FILE = Paths.get(SCRIPT_FOLDER.toString(), "handlers", "SkillConditionMasterHandler.java");
 	public static final Path CONDITION_HANDLER_FILE = Paths.get(SCRIPT_FOLDER.toString(), "handlers", "ConditionMasterHandler.java");
 	
-	private static final JavaExecutionContext _javaExecutionContext = new JavaScriptingEngine().createExecutionContext();
-	protected static final List<String> _exclusions = new ArrayList<>();
+	private static final JavaExecutionContext JAVA_EXECUTION_CONTEXT = new JavaExecutionContext();
+	private static final List<String> EXCLUSIONS = new ArrayList<>();
 	
 	protected ScriptEngineManager()
 	{
@@ -65,9 +64,9 @@ public class ScriptEngineManager implements IXmlReader
 	@Override
 	public void load()
 	{
-		_exclusions.clear();
+		EXCLUSIONS.clear();
 		parseDatapackFile("config/Scripts.xml");
-		LOGGER.info("Loaded " + _exclusions.size() + " files to exclude.");
+		LOGGER.info("Loaded " + EXCLUSIONS.size() + " files to exclude.");
 	}
 	
 	@Override
@@ -115,7 +114,7 @@ public class ScriptEngineManager implements IXmlReader
 								}
 								if (excludeScript)
 								{
-									_exclusions.add(file.toUri().getPath());
+									EXCLUSIONS.add(file.toUri().getPath());
 									break;
 								}
 							}
@@ -138,7 +137,7 @@ public class ScriptEngineManager implements IXmlReader
 			if (file.isFile())
 			{
 				final String filePath = file.toURI().getPath();
-				if (filePath.endsWith(".java") && !_exclusions.contains(filePath))
+				if (filePath.endsWith(".java") && !EXCLUSIONS.contains(filePath))
 				{
 					files.add(file.toPath().toAbsolutePath());
 				}
@@ -160,7 +159,7 @@ public class ScriptEngineManager implements IXmlReader
 		
 		path = path.toAbsolutePath();
 		
-		final Entry<Path, Throwable> error = _javaExecutionContext.executeScript(path);
+		final Entry<Path, Throwable> error = JAVA_EXECUTION_CONTEXT.executeScript(path);
 		if (error != null)
 		{
 			throw new Exception("ScriptEngine: " + error.getKey() + " failed execution!", error.getValue());
@@ -177,7 +176,7 @@ public class ScriptEngineManager implements IXmlReader
 		final List<Path> files = new ArrayList<>();
 		processDirectory(SCRIPT_FOLDER.toFile(), files);
 		
-		final Map<Path, Throwable> invokationErrors = _javaExecutionContext.executeScripts(files);
+		final Map<Path, Throwable> invokationErrors = JAVA_EXECUTION_CONTEXT.executeScripts(files);
 		for (Entry<Path, Throwable> entry : invokationErrors.entrySet())
 		{
 			LOGGER.log(Level.WARNING, "ScriptEngine: " + entry.getKey() + " failed execution!", entry.getValue());
@@ -186,7 +185,7 @@ public class ScriptEngineManager implements IXmlReader
 	
 	public Path getCurrentLoadingScript()
 	{
-		return _javaExecutionContext.getCurrentExecutingScript();
+		return JAVA_EXECUTION_CONTEXT.getCurrentExecutingScript();
 	}
 	
 	public static ScriptEngineManager getInstance()

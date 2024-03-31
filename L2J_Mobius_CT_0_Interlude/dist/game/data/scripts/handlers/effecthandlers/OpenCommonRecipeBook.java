@@ -53,7 +53,7 @@ public class OpenCommonRecipeBook extends AbstractEffect
 		final Player player = info.getEffector().getActingPlayer();
 		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
 		{
-			player.sendPacket(SystemMessageId.ITEM_CREATION_IS_NOT_POSSIBLE_WHILE_ENGAGED_IN_A_TRADE);
+			player.sendPacket(SystemMessageId.AN_ITEM_MAY_NOT_BE_CREATED_WHILE_ENGAGED_IN_TRADING);
 			return;
 		}
 		

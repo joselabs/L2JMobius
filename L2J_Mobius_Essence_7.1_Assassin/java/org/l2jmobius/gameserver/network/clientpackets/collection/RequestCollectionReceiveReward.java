@@ -21,6 +21,15 @@ import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 /**
  * @author Berezkin Nikolay
  */
-public class RequestCollectionReceiveReward implements ClientPacket
+public class RequestCollectionReceiveReward extends ClientPacket
 {
+	@Override
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+	}
 }

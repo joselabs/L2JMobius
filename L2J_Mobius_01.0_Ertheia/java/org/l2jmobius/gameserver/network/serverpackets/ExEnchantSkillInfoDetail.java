@@ -16,10 +16,12 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.EnchantSkillGroupsData;
 import org.l2jmobius.gameserver.enums.SkillEnchantType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.EnchantSkillHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.util.SkillEnchantConverter;
 
@@ -42,26 +44,26 @@ public class ExEnchantSkillInfoDetail extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (_enchantSkillHolder == null)
 		{
 			return;
 		}
 		
-		ServerPackets.EX_ENCHANT_SKILL_INFO_DETAIL.writeId(this);
-		writeInt(_type.ordinal());
-		writeInt(_skillId);
-		writeInt(_skillLevel);
+		ServerPackets.EX_ENCHANT_SKILL_INFO_DETAIL.writeId(this, buffer);
+		buffer.writeInt(_type.ordinal());
+		buffer.writeInt(_skillId);
+		buffer.writeInt(_skillLevel);
 		if (_type != SkillEnchantType.UNTRAIN)
 		{
-			writeLong(_enchantSkillHolder.getSp(_type));
-			writeInt(_enchantSkillHolder.getChance(_type));
-			writeInt(2); // item count
-			writeInt(_enchantSkillHolder.getRequiredAdena(_type).getId());
-			writeInt((int) _enchantSkillHolder.getRequiredAdena(_type).getCount());
-			writeInt(_enchantSkillHolder.getRequiredBook(_type).getId());
-			writeInt((int) _enchantSkillHolder.getRequiredBook(_type).getCount());
+			buffer.writeLong(_enchantSkillHolder.getSp(_type));
+			buffer.writeInt(_enchantSkillHolder.getChance(_type));
+			buffer.writeInt(2); // item count
+			buffer.writeInt(_enchantSkillHolder.getRequiredAdena(_type).getId());
+			buffer.writeInt((int) _enchantSkillHolder.getRequiredAdena(_type).getCount());
+			buffer.writeInt(_enchantSkillHolder.getRequiredBook(_type).getId());
+			buffer.writeInt((int) _enchantSkillHolder.getRequiredBook(_type).getCount());
 		}
 	}
 }

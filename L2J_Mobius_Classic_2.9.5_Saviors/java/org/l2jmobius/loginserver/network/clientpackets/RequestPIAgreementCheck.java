@@ -17,32 +17,31 @@
 package org.l2jmobius.loginserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.loginserver.network.LoginClient;
 import org.l2jmobius.loginserver.network.serverpackets.PIAgreementCheck;
 
 /**
  * @author UnAfraid
  */
-public class RequestPIAgreementCheck implements LoginClientPacket
+public class RequestPIAgreementCheck extends LoginClientPacket
 {
 	private int _accountId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected boolean readImpl()
 	{
-		_accountId = packet.readInt();
+		_accountId = readInt();
 		final byte[] padding0 = new byte[3];
 		final byte[] checksum = new byte[4];
 		final byte[] padding1 = new byte[12];
-		packet.readBytes(padding0);
-		packet.readBytes(checksum);
-		packet.readBytes(padding1);
+		readBytes(padding0);
+		readBytes(checksum);
+		readBytes(padding1);
+		return true;
 	}
 	
 	@Override
-	public void run(LoginClient client)
+	public void run()
 	{
-		client.sendPacket(new PIAgreementCheck(_accountId, Config.SHOW_PI_AGREEMENT ? 0x01 : 0x00));
+		getClient().sendPacket(new PIAgreementCheck(_accountId, Config.SHOW_PI_AGREEMENT ? 0x01 : 0x00));
 	}
 }

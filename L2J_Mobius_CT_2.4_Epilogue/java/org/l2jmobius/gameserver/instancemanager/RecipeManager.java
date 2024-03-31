@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.RecipeData;
 import org.l2jmobius.gameserver.enums.StatType;
 import org.l2jmobius.gameserver.model.ManufactureItem;
@@ -97,7 +97,7 @@ public class RecipeManager
 		// Check if manufacturer is under manufacturing store or private store.
 		if (Config.ALT_GAME_CREATION && _activeMakers.containsKey(manufacturer.getObjectId()))
 		{
-			player.sendPacket(SystemMessageId.PLEASE_CLOSE_THE_SETUP_WINDOW_FOR_YOUR_PRIVATE_MANUFACTURING_STORE_OR_PRIVATE_STORE_AND_TRY_AGAIN);
+			player.sendPacket(SystemMessageId.PLEASE_CLOSE_THE_THE_SETUP_WINDOW_FOR_YOUR_PRIVATE_MANUFACTURING_STORE_OR_PRIVATE_STORE_AND_TRY_AGAIN);
 			return;
 		}
 		
@@ -397,7 +397,7 @@ public class RecipeManager
 				{
 					if (_target != _player)
 					{
-						SystemMessage msg = new SystemMessage(SystemMessageId.YOUR_ATTEMPT_TO_CREATE_S2_FOR_C1_AT_THE_PRICE_OF_S3_ADENA_HAS_FAILED);
+						SystemMessage msg = new SystemMessage(SystemMessageId.THE_ATTEMPT_TO_CREATE_S2_FOR_C1_AT_THE_PRICE_OF_S3_ADENA_HAS_FAILED);
 						msg.addString(_target.getName());
 						msg.addItemName(_recipeList.getItemId());
 						msg.addLong(_price);
@@ -635,7 +635,7 @@ public class RecipeManager
 			final int rareProdId = _recipeList.getRareItemId();
 			int itemId = _recipeList.getItemId();
 			int itemCount = _recipeList.getCount();
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(itemId);
+			final ItemTemplate template = ItemData.getInstance().getTemplate(itemId);
 			
 			// check that the current recipe has a rare production or not
 			if ((rareProdId != -1) && ((rareProdId == itemId) || Config.CRAFT_MASTERWORK) && (Rnd.get(100) < _recipeList.getRarity()))
@@ -653,7 +653,7 @@ public class RecipeManager
 				// inform manufacturer of earned profit
 				if (itemCount == 1)
 				{
-					sm = new SystemMessage(SystemMessageId.S2_HAS_BEEN_CREATED_FOR_C1_AFTER_THE_PAYMENT_OF_S3_ADENA_WAS_RECEIVED);
+					sm = new SystemMessage(SystemMessageId.S2_HAS_BEEN_CREATED_FOR_C1_AFTER_THE_PAYMENT_OF_S3_ADENA_IS_RECEIVED);
 					sm.addString(_target.getName());
 					sm.addItemName(itemId);
 					sm.addLong(_price);

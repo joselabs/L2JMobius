@@ -19,24 +19,28 @@ package org.l2jmobius.gameserver.network.clientpackets.pledgeV2;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.pledgeV2.ExPledgeContributionInfo;
 
 /**
  * @author Mobius
  */
-public class RequestExPledgeContributionReward implements ClientPacket
+public class RequestExPledgeContributionReward extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		if (!client.getFloodProtectors().canPerformTransaction())
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (player.getClan() == null))
 		{
 			return;

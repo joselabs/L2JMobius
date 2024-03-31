@@ -252,7 +252,7 @@ public class ItemAuction
 		
 		if (newBid < _auctionItem.getAuctionInitBid())
 		{
-			player.sendPacket(SystemMessageId.YOUR_BID_PRICE_MUST_BE_HIGHER_THAN_THE_MINIMUM_PRICE_CURRENTLY_BEING_BID);
+			player.sendPacket(SystemMessageId.YOUR_BID_PRICE_MUST_BE_HIGHER_THAN_THE_MINIMUM_PRICE_THAT_CAN_BE_BID);
 			return;
 		}
 		
@@ -317,7 +317,7 @@ public class ItemAuction
 			onPlayerBid(player, bid);
 			updatePlayerBid(bid, false);
 			
-			final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_SUBMITTED_A_BID_FOR_THE_AUCTION_OF_S1);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_SUBMITTED_A_BID_IN_THE_AUCTION_OF_S1);
 			sm.addLong(newBid);
 			player.sendPacket(sm);
 		}

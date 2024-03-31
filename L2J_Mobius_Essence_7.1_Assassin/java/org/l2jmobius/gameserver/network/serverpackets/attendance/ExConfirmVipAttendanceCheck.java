@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.attendance;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,12 +36,12 @@ public class ExConfirmVipAttendanceCheck extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_CONFIRM_VIP_ATTENDANCE_CHECK.writeId(this);
-		writeByte(_available); // can receive reward today? 1 else 0
-		writeByte(_index); // active reward index
-		writeInt(0);
-		writeInt(0);
+		ServerPackets.EX_CONFIRM_VIP_ATTENDANCE_CHECK.writeId(this, buffer);
+		buffer.writeByte(_available); // can receive reward today? 1 else 0
+		buffer.writeByte(_index); // active reward index
+		buffer.writeInt(0);
+		buffer.writeInt(0);
 	}
 }

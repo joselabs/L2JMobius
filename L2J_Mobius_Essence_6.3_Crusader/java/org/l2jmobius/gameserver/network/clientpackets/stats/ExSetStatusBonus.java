@@ -16,17 +16,15 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.stats;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 
 /**
  * @author Mobius
  */
-public class ExSetStatusBonus implements ClientPacket
+public class ExSetStatusBonus extends ClientPacket
 {
 	private int _str;
 	private int _dex;
@@ -36,22 +34,22 @@ public class ExSetStatusBonus implements ClientPacket
 	private int _men;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readShort(); // unk
-		packet.readShort(); // totalBonus
-		_str = packet.readShort();
-		_dex = packet.readShort();
-		_con = packet.readShort();
-		_int = packet.readShort();
-		_wit = packet.readShort();
-		_men = packet.readShort();
+		readShort(); // unk
+		readShort(); // totalBonus
+		_str = readShort();
+		_dex = readShort();
+		_con = readShort();
+		_int = readShort();
+		_wit = readShort();
+		_men = readShort();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

@@ -19,28 +19,27 @@ package org.l2jmobius.gameserver.network.clientpackets.raidbossinfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.RaidBossStatus;
 import org.l2jmobius.gameserver.instancemanager.DBSpawnManager;
 import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
-import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.raidbossinfo.ExRaidBossSpawnInfo;
 
 /**
  * @author Mobius
  */
-public class RequestRaidBossSpawnInfo implements ClientPacket
+public class RequestRaidBossSpawnInfo extends ClientPacket
 {
 	private final List<Integer> _bossIds = new ArrayList<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int count = packet.readInt();
+		final int count = readInt();
 		for (int i = 0; i < count; i++)
 		{
-			final int bossId = packet.readInt();
+			final int bossId = readInt();
 			if (DBSpawnManager.getInstance().getStatus(bossId) == RaidBossStatus.ALIVE)
 			{
 				_bossIds.add(bossId);
@@ -57,8 +56,14 @@ public class RequestRaidBossSpawnInfo implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		client.sendPacket(new ExRaidBossSpawnInfo(_bossIds));
+		final Player player = getPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		player.sendPacket(new ExRaidBossSpawnInfo(_bossIds));
 	}
 }

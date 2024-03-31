@@ -125,12 +125,12 @@
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<activateRate>50</activateRate>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>150</affectRange>
+		<activateRate>90</activateRate>
+		<affectLimit>6-12</affectLimit>
+		<affectRange>200</affectRange>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
-		<effectRange>1200</effectRange>
+		<effectRange>1300</effectRange>
 		<hitTime>2500</hitTime>
 		<effectPoint>
 			<value level="1">-254</value>
@@ -184,7 +184,7 @@
 				</weaponType>
 			</condition>
 			<condition name="OpCheckCastRange">
-				<distance>200</distance>
+				<distance>300</distance>
 			</condition>
 		</conditions>
 		<effects>
@@ -202,7 +202,6 @@
 					<value level="10">3435</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
-				<criticalChance>20</criticalChance>
 				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
@@ -362,8 +361,11 @@
 		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
+		<affectLimit>5-12</affectLimit>
+		<fanRange>0;0;60;120</fanRange>
 		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<affectScope>FAN</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -476,32 +478,29 @@
 		<targetType>NONE</targetType>
 		<effects>
 			<effect name="ManaDamOverTime">
-				<power>1</power>
-				<ticks>2</ticks>
+				<power>
+					<value level="1">10</value>
+					<value level="2">12</value>
+					<value level="3">13</value>
+					<value level="4">14</value>
+				</power>
+				<ticks>3</ticks>
 			</effect>
-			<effect name="PAtk">
-				<amount>
+			<effect name="TwoHandedSwordBonus">
+				<pAtkAmount>
 					<value level="1">40</value>
 					<value level="2">50</value>
 					<value level="3">60</value>
 					<value level="4">90</value>
-				</amount>
-				<mode>DIFF</mode>
-				<weaponType>
-					<item>SWORD</item>
-				</weaponType>
-			</effect>
-			<effect name="Accuracy">
-				<amount>
+				</pAtkAmount>
+				<pAtkMode>PER</pAtkMode>
+				<accuracyAmount>
 					<value level="1">1</value>
 					<value level="2">2</value>
 					<value level="3">3</value>
 					<value level="4">3</value>
-				</amount>
-				<mode>DIFF</mode>
-				<weaponType>
-					<item>SWORD</item>
-				</weaponType>
+				</accuracyAmount>
+				<accuracyMode>DIFF</accuracyMode>
 			</effect>
 			<effect name="PhysicalAttackSpeed">
 				<amount>30</amount>
@@ -788,6 +787,7 @@
 		<activateRate>50</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
+		<effectRange>400</effectRange>
 		<hitTime>1200</hitTime>
 		<effectPoint>-183</effectPoint>
 		<magicLevel>
@@ -854,7 +854,7 @@
 			</effect>
 			<effect name="DispelByCategory">
 				<slot>BUFF</slot>
-				<rate>25</rate>
+				<rate>5</rate>
 				<max>1</max>
 			</effect>
 			<effect name="BlockActions">
@@ -920,7 +920,12 @@
 				<isCritical>false</isCritical>
 				<allowWeapons>BLUNT,POLE</allowWeapons>
 				<skillId>1616</skillId> <!-- Physical Damage -->
-				<skillLevel>1</skillLevel>
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">1</value>
+					<value level="3">1</value>
+					<value level="4">2</value>
+				</skillLevel>
 			</effect>
 		</effects>
 	</skill>
@@ -1345,7 +1350,6 @@
 		<abnormalType>DEPORT</abnormalType>
 		<abnormalVisualEffect>WA_UNBREAKABLE_SONIC_AVE</abnormalVisualEffect>
 		<basicProperty>PHYSICAL</basicProperty>
-		<canBeDispelled>false</canBeDispelled>
 		<castRange>600</castRange>
 		<coolTime>500</coolTime>
 		<effectPoint>-687</effectPoint>
@@ -1424,17 +1428,17 @@
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>ROOT_PHYSICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
-		<activateRate>80</activateRate>
+		<activateRate>60</activateRate>
 		<castRange>900</castRange>
 		<coolTime>500</coolTime>
 		<effectPoint>-655</effectPoint>
 		<basicProperty>PHYSICAL</basicProperty>
-		<effectRange>1400</effectRange>
+		<effectRange>1300</effectRange>
 		<hitTime>1500</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
 		<mpConsume>63</mpConsume>
-		<magicLevel>78</magicLevel>
+		<magicLevel>76</magicLevel>
 		<nextAction>ATTACK</nextAction>
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
@@ -1447,6 +1451,9 @@
 				<weaponType>
 					<item>POLE</item>
 				</weaponType>
+			</condition>
+			<condition name="OpCheckCastRange">
+				<distance>300</distance>
 			</condition>
 		</conditions>
 		<effects>
@@ -1463,9 +1470,8 @@
 		<icon>icon.skill1626</icon>
 		<basicProperty>PHYSICAL</basicProperty>
 		<hitTime>1000</hitTime>
-		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
-		<magicLevel>80</magicLevel>
+		<magicLevel>78</magicLevel>
 		<mpConsume>67</mpConsume>
 		<operateType>A1</operateType>
 		<coolTime>500</coolTime>
@@ -1475,7 +1481,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
-		<affectRange>150</affectRange>
+		<affectRange>200</affectRange>
 		<affectLimit>6-12</affectLimit>
 		<conditions>
 			<condition name="EquipWeapon">
@@ -1489,7 +1495,7 @@
 				<power>2911</power>
 			</effect>
 			<effect name="DispelBySlotProbability">
-				<dispel>IMPROVE_SPEED_AVOID_UP;SPEED_UP;SPEED_UP_SPECIAL;SONG_OF_WIND</dispel>
+				<dispel>IMPROVE_SPEED_AVOID_UP;SPEED_UP</dispel>
 				<rate>100</rate>
 			</effect>
 		</effects>
@@ -1501,7 +1507,7 @@
 		<abnormalTime>7</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
-		<activateRate>40</activateRate>
+		<activateRate>60</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
@@ -1511,9 +1517,9 @@
 		<effectPoint>-137</effectPoint>
 		<magicCriticalRate>5</magicCriticalRate>
 		<trait>DERANGEMENT</trait>
-		<affectLimit>10-10</affectLimit>
+		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
-		<magicLevel>77</magicLevel>
+		<magicLevel>78</magicLevel>
 		<mpConsume>57</mpConsume>
 		<reuseDelay>60000</reuseDelay>
 		<targetType>SELF</targetType>
@@ -1839,6 +1845,7 @@
 		</effectPoint>
 		<abnormalType>PD_DOWN</abnormalType>
 		<activateRate>60</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>

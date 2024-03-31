@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.List;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
@@ -46,7 +45,6 @@ import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.AcquireSkillDone;
@@ -63,7 +61,7 @@ import org.l2jmobius.gameserver.util.Util;
  * Request Acquire Skill client packet implementation.
  * @author Zoey76
  */
-public class RequestAcquireSkill implements ClientPacket
+public class RequestAcquireSkill extends ClientPacket
 {
 	private static final String[] REVELATION_VAR_NAMES =
 	{
@@ -83,23 +81,29 @@ public class RequestAcquireSkill implements ClientPacket
 	private int _subType;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_id = packet.readInt();
-		_level = packet.readInt();
-		_skillType = AcquireSkillType.getAcquireSkillType(packet.readInt());
+		_id = readInt();
+		_level = readInt();
+		_skillType = AcquireSkillType.getAcquireSkillType(readInt());
 		if (_skillType == AcquireSkillType.SUBPLEDGE)
 		{
-			_subType = packet.readInt();
+			_subType = readInt();
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
+			return;
+		}
+		
+		if (player.isTransformed() || player.isMounted())
+		{
+			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THE_SKILL_ENHANCING_FUNCTION_IN_THIS_STATE_YOU_CAN_ENHANCE_SKILLS_WHEN_NOT_IN_BATTLE_AND_CANNOT_USE_THE_FUNCTION_WHILE_TRANSFORMED_IN_BATTLE_ON_A_MOUNT_OR_WHILE_THE_SKILL_IS_ON_COOLDOWN);
 			return;
 		}
 		

@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.Arrays;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.data.xml.DoorData;
 import org.l2jmobius.gameserver.enums.AdminTeleportType;
@@ -32,7 +31,6 @@ import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerMoveRequest;
 import org.l2jmobius.gameserver.model.events.returns.TerminateReturn;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.FlyToLocation;
@@ -43,7 +41,7 @@ import org.l2jmobius.gameserver.network.serverpackets.sayune.ExFlyMove;
 import org.l2jmobius.gameserver.network.serverpackets.sayune.ExFlyMoveBroadcast;
 import org.l2jmobius.gameserver.util.Broadcast;
 
-public class MoveBackwardToLocation implements ClientPacket
+public class MoveBackwardToLocation extends ClientPacket
 {
 	private int _targetX;
 	private int _targetY;
@@ -54,21 +52,21 @@ public class MoveBackwardToLocation implements ClientPacket
 	private int _movementMode;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_targetX = packet.readInt();
-		_targetY = packet.readInt();
-		_targetZ = packet.readInt();
-		_originX = packet.readInt();
-		_originY = packet.readInt();
-		_originZ = packet.readInt();
-		_movementMode = packet.readInt(); // is 0 if cursor keys are used 1 if mouse is used
+		_targetX = readInt();
+		_targetY = readInt();
+		_targetZ = readInt();
+		_originX = readInt();
+		_originY = readInt();
+		_originZ = readInt();
+		_movementMode = readInt(); // is 0 if cursor keys are used 1 if mouse is used
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

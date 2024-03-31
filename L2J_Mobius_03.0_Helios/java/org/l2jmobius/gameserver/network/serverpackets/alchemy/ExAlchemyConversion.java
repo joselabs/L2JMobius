@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.alchemy;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,11 +36,11 @@ public class ExAlchemyConversion extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ALCHEMY_CONVERSION.writeId(this);
-		writeByte((_successCount == 0) && (_failureCount == 0));
-		writeInt(_successCount);
-		writeInt(_failureCount);
+		ServerPackets.EX_ALCHEMY_CONVERSION.writeId(this, buffer);
+		buffer.writeByte((_successCount == 0) && (_failureCount == 0));
+		buffer.writeInt(_successCount);
+		buffer.writeInt(_failureCount);
 	}
 }

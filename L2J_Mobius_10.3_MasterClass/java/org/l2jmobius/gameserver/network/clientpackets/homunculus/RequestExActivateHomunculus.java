@@ -17,10 +17,8 @@
 package org.l2jmobius.gameserver.network.clientpackets.homunculus;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.homunculus.Homunculus;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExActivateHomunculusResult;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExShowHomunculusList;
@@ -28,34 +26,34 @@ import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExShowHomunculu
 /**
  * @author Mobius
  */
-public class RequestExActivateHomunculus implements ClientPacket
+public class RequestExActivateHomunculus extends ClientPacket
 {
 	private int _slot;
 	private boolean _activate;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_slot = packet.readInt();
-		_activate = packet.readByte() == 1; // enabled?
+		_slot = readInt();
+		_activate = readByte() == 1; // enabled?
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player activeChar = client.getPlayer();
-		if (activeChar == null)
+		final Player player = getPlayer();
+		if (player == null)
 		{
 			return;
 		}
 		
-		final int size = activeChar.getHomunculusList().size();
+		final int size = player.getHomunculusList().size();
 		if (size == 0)
 		{
 			return;
 		}
 		
-		final Homunculus homunculus = activeChar.getHomunculusList().get(_slot);
+		final Homunculus homunculus = player.getHomunculusList().get(_slot);
 		if (homunculus == null)
 		{
 			return;
@@ -68,7 +66,7 @@ public class RequestExActivateHomunculus implements ClientPacket
 				break;
 			}
 			
-			final Homunculus homu = activeChar.getHomunculusList().get(i);
+			final Homunculus homu = player.getHomunculusList().get(i);
 			if (homu == null)
 			{
 				continue;
@@ -77,10 +75,10 @@ public class RequestExActivateHomunculus implements ClientPacket
 			if (homu.isActive())
 			{
 				homu.setActive(false);
-				activeChar.getHomunculusList().update(homu);
-				activeChar.getHomunculusList().refreshStats(true);
-				activeChar.sendPacket(new ExShowHomunculusList(activeChar));
-				activeChar.sendPacket(new ExActivateHomunculusResult(false));
+				player.getHomunculusList().update(homu);
+				player.getHomunculusList().refreshStats(true);
+				player.sendPacket(new ExShowHomunculusList(player));
+				player.sendPacket(new ExActivateHomunculusResult(false));
 			}
 		}
 		
@@ -90,10 +88,10 @@ public class RequestExActivateHomunculus implements ClientPacket
 			{
 				
 				homunculus.setActive(true);
-				activeChar.getHomunculusList().update(homunculus);
-				activeChar.getHomunculusList().refreshStats(true);
-				activeChar.sendPacket(new ExShowHomunculusList(activeChar));
-				activeChar.sendPacket(new ExActivateHomunculusResult(true));
+				player.getHomunculusList().update(homunculus);
+				player.getHomunculusList().refreshStats(true);
+				player.sendPacket(new ExShowHomunculusList(player));
+				player.sendPacket(new ExActivateHomunculusResult(true));
 			}
 		}
 		else
@@ -101,10 +99,10 @@ public class RequestExActivateHomunculus implements ClientPacket
 			if (homunculus.isActive())
 			{
 				homunculus.setActive(false);
-				activeChar.getHomunculusList().update(homunculus);
-				activeChar.getHomunculusList().refreshStats(true);
-				activeChar.sendPacket(new ExShowHomunculusList(activeChar));
-				activeChar.sendPacket(new ExActivateHomunculusResult(false));
+				player.getHomunculusList().update(homunculus);
+				player.getHomunculusList().refreshStats(true);
+				player.sendPacket(new ExShowHomunculusList(player));
+				player.sendPacket(new ExActivateHomunculusResult(false));
 			}
 		}
 	}

@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.item.combination.CombinationItemType;
 import org.l2jmobius.gameserver.model.item.henna.CombinationHenna;
@@ -67,7 +66,7 @@ public class HennaCombinationData implements IXmlReader
 					final int count = parseInteger(rewardNode.getAttributes(), "count", 0);
 					final CombinationItemType type = parseEnum(rewardNode.getAttributes(), CombinationItemType.class, "type");
 					henna.addReward(new CombinationHennaReward(hennaId, id, count, type));
-					if ((id != -1) && (ItemTable.getInstance().getTemplate(id) == null))
+					if ((id != -1) && (ItemData.getInstance().getTemplate(id) == null))
 					{
 						LOGGER.info(getClass().getSimpleName() + ": Could not find item with id " + id);
 					}

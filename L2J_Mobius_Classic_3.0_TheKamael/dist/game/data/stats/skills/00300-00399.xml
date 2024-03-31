@@ -625,7 +625,7 @@
 		<targetType>NONE</targetType>
 		<effects>
 			<effect name="MpConsumePerLevel">
-				<power>0.8</power>
+				<power>0.6</power>
 				<ticks>5</ticks>
 			</effect>
 			<effect name="ShieldDefence">
@@ -739,13 +739,12 @@
 		</magicLevel>
 		<mpConsume>36</mpConsume>
 		<operateType>T</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>NONE</targetType>
 		<effects>
 			<effect name="HealOverTime">
 				<power>-15</power>
-				<ticks>2</ticks>
+				<ticks>5</ticks>
 			</effect>
 			<effect name="MAtk">
 				<amount>
@@ -793,7 +792,7 @@
 			</effect>
 			<effect name="HealOverTime">
 				<power>30</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 			<effect name="HealEffect">
 				<amount>10</amount>
@@ -926,17 +925,7 @@
 				</power>
 				<overHit>true</overHit>
 				<criticalChance>50</criticalChance>
-				<pDefMod>
-					<value level="1">0.8</value>
-					<value level="2">0.79</value>
-					<value level="3">0.78</value>
-					<value level="4">0.77</value>
-					<value level="5">0.76</value>
-					<value level="6">0.75</value>
-					<value level="7">0.74</value>
-					<value level="8">0.72</value>
-					<value level="9">0.7</value>
-				</pDefMod>
+				<pDefMod>0.9</pDefMod>
 			</effect>
 		</effects>
 	</skill>
@@ -979,7 +968,7 @@
 					<value level="2">8577</value>
 				</power>
 				<criticalChance>20</criticalChance>
-				<chanceBoost>300</chanceBoost>
+				<chanceBoost>250</chanceBoost>
 				<overHit>true</overHit>
 			</effect>
 		</effects>
@@ -987,10 +976,10 @@
 	<skill id="345" toLevel="5" name="Sonic Rage">
 		<!-- Attacks the target with a burst of sword energy. P. Def -30%, absorbs Momentum. Power 195 Requires a sword, blunt weapon, or dual sword. -->
 		<icon>icon.skill0345</icon>
-		<abnormalLevel>5</abnormalLevel>
+		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>PD_DOWN</abnormalType>
-		<activateRate>80</activateRate>
+		<activateRate>120</activateRate>
 		<castRange>600</castRange>
 		<coolTime>300</coolTime>
 		<effectPoint>
@@ -1028,6 +1017,7 @@
 					<item>SWORD</item>
 					<item>BLUNT</item>
 					<item>DUALFIST</item>
+					<item>POLE</item>
 					<item>DUAL</item>
 				</weaponType>
 			</condition>
@@ -1041,9 +1031,10 @@
 					<value level="4">225</value>
 					<value level="5">235</value>
 				</power>
+				<criticalChance>5</criticalChance>
 			</effect>
 			<effect name="PhysicalDefence">
-				<amount>-23</amount>
+				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1067,9 +1058,8 @@
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>PD_DOWN</abnormalType>
-		<activateRate>80</activateRate>
+		<activateRate>120</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
-		<lvlBonusRate>30</lvlBonusRate>
 		<effectRange>1100</effectRange>
 		<hitTime>1200</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1113,9 +1103,10 @@
 					<value level="4">225</value>
 					<value level="5">235</value>
 				</power>
+				<criticalChance>5</criticalChance>
 			</effect>
 			<effect name="PhysicalDefence">
-				<amount>-23</amount>
+				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1141,8 +1132,6 @@
 			<value level="8">-392</value>
 			<value level="9">-400</value>
 		</effectPoint>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>1800</hitTime>
 		<hpConsume>
 			<value level="1">340</value>
@@ -1353,7 +1342,7 @@
 		<abnormalTime>2</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<activateRate>80</activateRate>
+		<activateRate>60</activateRate>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<effectPoint>
@@ -1468,7 +1457,7 @@
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>40</activateRate>
-		<basicProperty>MAGIC</basicProperty>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
 		<effectPoint>-507</effectPoint>
 		<effectRange>1400</effectRange>
@@ -1746,14 +1735,14 @@
 		</conditions>
 		<effects>
 			<effect name="PhysicalAttack">
-				<criticalChance>20</criticalChance>
-				<overHit>true</overHit>
 				<power>
 					<value level="1">2486</value>
 					<value level="2">2731</value>
 					<value level="3">2991</value>
 				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<criticalChance>20</criticalChance>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
@@ -1835,6 +1824,7 @@
 				<weaponType>
 					<item>SWORD</item>
 					<item>BLUNT</item>
+					<item>POLE</item>
 				</weaponType>
 			</condition>
 		</conditions>

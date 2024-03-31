@@ -16,7 +16,7 @@
  */
 package org.l2jmobius.gameserver.model.itemauction;
 
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.instancemanager.IdManager;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.World;
@@ -48,7 +48,7 @@ public class AuctionItem
 	
 	public boolean checkItemExists()
 	{
-		return ItemTable.getInstance().getTemplate(_itemId) != null;
+		return ItemData.getInstance().getTemplate(_itemId) != null;
 	}
 	
 	public int getAuctionItemId()

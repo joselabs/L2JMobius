@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.commission;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.ItemCommissionManager;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.commission.ExCloseCommission;
@@ -27,7 +25,7 @@ import org.l2jmobius.gameserver.network.serverpackets.commission.ExCloseCommissi
 /**
  * @author NosBit, Ren
  */
-public class RequestCommissionRegister implements ClientPacket
+public class RequestCommissionRegister extends ClientPacket
 {
 	private int _itemObjectId;
 	private long _pricePerUnit;
@@ -36,23 +34,23 @@ public class RequestCommissionRegister implements ClientPacket
 	private int _feeDiscountType; // 0 = none, 1 = 30% discount, 2 = 100% discount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemObjectId = packet.readInt();
-		packet.readString(); // Item Name they use it for search we will use server side available names.
-		_pricePerUnit = packet.readLong();
-		_itemCount = packet.readLong();
-		_durationType = packet.readInt();
-		_feeDiscountType = packet.readShort();
-		// packet.readShort(); // Unknown IDS;
-		// packet.readInt(); // Unknown
-		// packet.readInt(); // Unknown
+		_itemObjectId = readInt();
+		readString(); // Item Name they use it for search we will use server side available names.
+		_pricePerUnit = readLong();
+		_itemCount = readLong();
+		_durationType = readInt();
+		_feeDiscountType = readShort();
+		// readShort(); // Unknown IDS;
+		// readInt(); // Unknown
+		// readInt(); // Unknown
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

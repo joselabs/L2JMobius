@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.pledgeV2;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanMember;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -37,50 +39,50 @@ public class ExPledgeContributionRank extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (_clan == null)
 		{
 			return;
 		}
 		
-		ServerPackets.EX_PLEDGE_CONTRIBUTION_RANK.writeId(this);
-		writeByte(_cycle);
-		writeInt(_clan.getMembersCount());
+		ServerPackets.EX_PLEDGE_CONTRIBUTION_RANK.writeId(this, buffer);
+		buffer.writeByte(_cycle);
+		buffer.writeInt(_clan.getMembersCount());
 		int order = 1;
 		for (ClanMember member : _clan.getMembers())
 		{
 			if (member.isOnline())
 			{
 				final Player player = member.getPlayer();
-				writeInt(order++); // Order?
-				writeString(String.format("%1$-" + 24 + "s", player.getName()));
-				writeInt(player.getPledgeType());
+				buffer.writeInt(order++); // Order?
+				buffer.writeString(String.format("%1$-" + 24 + "s", player.getName()));
+				buffer.writeInt(player.getPledgeType());
 				if (_cycle == 1)
 				{
-					writeInt(player.getClanContribution());
-					writeInt(player.getClanContributionTotal());
+					buffer.writeInt(player.getClanContribution());
+					buffer.writeInt(player.getClanContributionTotal());
 				}
 				else if (_cycle == 0)
 				{
-					writeInt(player.getClanContributionPrevious());
-					writeInt(player.getClanContributionTotalPrevious());
+					buffer.writeInt(player.getClanContributionPrevious());
+					buffer.writeInt(player.getClanContributionTotalPrevious());
 				}
 			}
 			else
 			{
-				writeInt(order++); // Order?
-				writeString(String.format("%1$-" + 24 + "s", member.getName()));
-				writeInt(member.getPledgeType());
+				buffer.writeInt(order++); // Order?
+				buffer.writeString(String.format("%1$-" + 24 + "s", member.getName()));
+				buffer.writeInt(member.getPledgeType());
 				if (_cycle == 1)
 				{
-					writeInt(member.getClanContribution());
-					writeInt(member.getClanContributionTotal());
+					buffer.writeInt(member.getClanContribution());
+					buffer.writeInt(member.getClanContributionTotal());
 				}
 				else if (_cycle == 0)
 				{
-					writeInt(member.getClanContributionPrevious());
-					writeInt(member.getClanContributionTotalPrevious());
+					buffer.writeInt(member.getClanContributionPrevious());
+					buffer.writeInt(member.getClanContributionTotalPrevious());
 				}
 			}
 		}

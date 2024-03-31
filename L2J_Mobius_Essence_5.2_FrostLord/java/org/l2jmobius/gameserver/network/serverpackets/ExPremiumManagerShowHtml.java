@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.HtmlActionScope;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -30,13 +32,13 @@ public class ExPremiumManagerShowHtml extends AbstractHtmlPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PREMIUM_MANAGER_SHOW_HTML.writeId(this);
-		writeInt(getNpcObjId());
-		writeString(getHtml());
-		writeInt(-1);
-		writeInt(0);
+		ServerPackets.EX_PREMIUM_MANAGER_SHOW_HTML.writeId(this, buffer);
+		buffer.writeInt(getNpcObjId());
+		buffer.writeString(getHtml());
+		buffer.writeInt(-1);
+		buffer.writeInt(0);
 	}
 	
 	@Override

@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.huntingzones;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -35,12 +37,12 @@ public class TimedHuntingZoneEnter extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_TIME_RESTRICT_FIELD_USER_ENTER.writeId(this);
-		writeByte(1); // bEnterSuccess
-		writeInt(_zoneId);
-		writeInt((int) (System.currentTimeMillis() / 1000)); // nEnterTimeStamp
-		writeInt((_player.getTimedHuntingZoneRemainingTime(_zoneId) / 1000) + 59); // nRemainTime (zone left time)
+		ServerPackets.EX_TIME_RESTRICT_FIELD_USER_ENTER.writeId(this, buffer);
+		buffer.writeByte(1); // bEnterSuccess
+		buffer.writeInt(_zoneId);
+		buffer.writeInt((int) (System.currentTimeMillis() / 1000)); // nEnterTimeStamp
+		buffer.writeInt((_player.getTimedHuntingZoneRemainingTime(_zoneId) / 1000) + 59); // nRemainTime (zone left time)
 	}
 }

@@ -18,54 +18,76 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.Shortcut;
+import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ShortCutInit extends ServerPacket
 {
-	private Collection<Shortcut> _shortCuts;
+	private final Player _player;
+	private final Collection<Shortcut> _shortCuts;
 	
 	public ShortCutInit(Player player)
 	{
-		if (player == null)
-		{
-			return;
-		}
+		_player = player;
 		_shortCuts = player.getAllShortCuts();
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SHORT_CUT_INIT.writeId(this);
-		writeInt(_shortCuts.size());
+		ServerPackets.SHORT_CUT_INIT.writeId(this, buffer);
+		buffer.writeInt(_shortCuts.size());
 		for (Shortcut sc : _shortCuts)
 		{
-			writeInt(sc.getType().ordinal());
-			writeInt(sc.getSlot() + (sc.getPage() * 12));
+			buffer.writeInt(sc.getType().ordinal());
+			buffer.writeInt(sc.getSlot() + (sc.getPage() * 12));
 			switch (sc.getType())
 			{
 				case ITEM:
 				{
-					writeInt(sc.getId());
-					writeInt(1); // Enabled or not
-					writeInt(sc.getSharedReuseGroup());
-					writeInt(0);
-					writeInt(0);
-					writeShort(0);
-					writeShort(0);
-					writeInt(0); // Visual id
+					buffer.writeInt(sc.getId());
+					buffer.writeInt(1); // Enabled or not
+					buffer.writeInt(sc.getSharedReuseGroup());
+					buffer.writeInt(0);
+					buffer.writeInt(0);
+					
+					final Item item = _player.getInventory().getItemByObjectId(sc.getId());
+					if (item != null)
+					{
+						final VariationInstance augment = item.getAugmentation();
+						if (augment != null)
+						{
+							buffer.writeShort(augment.getOption1Id());
+							buffer.writeShort(augment.getOption2Id());
+						}
+						else
+						{
+							buffer.writeShort(0);
+							buffer.writeShort(0);
+						}
+						buffer.writeInt(item.getVisualId());
+					}
+					else
+					{
+						buffer.writeShort(0);
+						buffer.writeShort(0);
+						buffer.writeInt(0);
+					}
 					break;
 				}
 				case SKILL:
 				{
-					writeInt(sc.getId());
-					writeShort(sc.getLevel());
-					writeShort(sc.getSubLevel());
-					writeInt(sc.getSharedReuseGroup());
-					writeByte(0); // C5
-					writeInt(1); // C6
+					buffer.writeInt(sc.getId());
+					buffer.writeShort(sc.getLevel());
+					buffer.writeShort(sc.getSubLevel());
+					buffer.writeInt(sc.getSharedReuseGroup());
+					buffer.writeByte(0); // C5
+					buffer.writeInt(1); // C6
 					break;
 				}
 				case ACTION:
@@ -73,8 +95,8 @@ public class ShortCutInit extends ServerPacket
 				case RECIPE:
 				case BOOKMARK:
 				{
-					writeInt(sc.getId());
-					writeInt(1); // C6
+					buffer.writeInt(sc.getId());
+					buffer.writeInt(1); // C6
 				}
 			}
 		}

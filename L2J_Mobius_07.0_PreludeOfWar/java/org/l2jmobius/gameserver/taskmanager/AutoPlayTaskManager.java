@@ -96,20 +96,28 @@ public class AutoPlayTaskManager
 					}
 					else if ((creature.getTarget() == player) || (creature.getTarget() == null))
 					{
+						// GeoEngine can see target check.
+						if (!GeoEngine.getInstance().canSeeTarget(player, creature))
+						{
+							player.setTarget(null);
+							continue PLAY;
+						}
+						
+						// Logic adjustment for summons not attacking when in offline play.
+						if (player.isOfflinePlay() && player.hasSummon())
+						{
+							for (Summon summon : player.getServitors().values())
+							{
+								if (summon.hasAI() && !summon.isMoving() && !summon.isDisabled() && (summon.getAI().getIntention() != CtrlIntention.AI_INTENTION_ATTACK) && (summon.getAI().getIntention() != CtrlIntention.AI_INTENTION_CAST) && creature.isAutoAttackable(player) && GeoEngine.getInstance().canSeeTarget(player, creature))
+								{
+									summon.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, creature);
+								}
+							}
+						}
+						
 						// We take granted that mage classes do not auto hit.
 						if (isMageCaster(player))
 						{
-							// Logic adjustment for summons not attacking when in offline play.
-							if (player.isOfflinePlay() && player.hasSummon())
-							{
-								for (Summon summon : player.getServitors().values())
-								{
-									if (summon.hasAI() && !summon.isMoving() && !summon.isDisabled() && (summon.getAI().getIntention() != CtrlIntention.AI_INTENTION_ATTACK) && (summon.getAI().getIntention() != CtrlIntention.AI_INTENTION_CAST) && creature.isAutoAttackable(player) && GeoEngine.getInstance().canSeeTarget(player, creature))
-									{
-										summon.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, creature);
-									}
-								}
-							}
 							continue PLAY;
 						}
 						
@@ -335,7 +343,7 @@ public class AutoPlayTaskManager
 		final Set<Player> pool = ConcurrentHashMap.newKeySet(POOL_SIZE);
 		player.onActionRequest();
 		pool.add(player);
-		ThreadPool.scheduleAtFixedRate(new AutoPlay(pool), TASK_DELAY, TASK_DELAY);
+		ThreadPool.schedulePriorityTaskAtFixedRate(new AutoPlay(pool), TASK_DELAY, TASK_DELAY);
 		POOLS.add(pool);
 	}
 	

@@ -27,14 +27,16 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.olympiad.Hero;
 import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadFight;
-import org.l2jmobius.gameserver.network.ServerPackets;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
+import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
@@ -54,9 +56,9 @@ public class ExOlympiadMyRankingInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_OLYMPIAD_MY_RANKING_INFO.writeId(this);
+		ServerPackets.EX_OLYMPIAD_MY_RANKING_INFO.writeId(this, buffer);
 		final Date date = new Date();
 		final Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
@@ -128,19 +130,19 @@ public class ExOlympiadMyRankingInfo extends ServerPacket
 			heroCount = hero.getInt("count", 0);
 			legendCount = hero.getInt("legend_count", 0);
 		}
-		writeInt(year); // Year
-		writeInt(month); // Month
-		writeInt(Math.min(Olympiad.getInstance().getCurrentCycle() - 1, 0)); // cycle ?
-		writeInt(currentPlace); // Place on current cycle ?
-		writeInt(currentWins); // Wins
-		writeInt(currentLoses); // Loses
-		writeInt(currentPoints); // Points
-		writeInt(previousPlace); // Place on previous cycle
-		writeInt(previousWins); // win count & lose count previous cycle? lol
-		writeInt(previousLoses); // ??
-		writeInt(previousPoints); // Points on previous cycle
-		writeInt(heroCount); // Hero counts
-		writeInt(legendCount); // Legend counts
+		buffer.writeInt(year); // Year
+		buffer.writeInt(month); // Month
+		buffer.writeInt(Math.min(Olympiad.getInstance().getCurrentCycle() - 1, 0)); // cycle ?
+		buffer.writeInt(currentPlace); // Place on current cycle ?
+		buffer.writeInt(currentWins); // Wins
+		buffer.writeInt(currentLoses); // Loses
+		buffer.writeInt(currentPoints); // Points
+		buffer.writeInt(previousPlace); // Place on previous cycle
+		buffer.writeInt(previousWins); // win count & lose count previous cycle? lol
+		buffer.writeInt(previousLoses); // ??
+		buffer.writeInt(previousPoints); // Points on previous cycle
+		buffer.writeInt(heroCount); // Hero counts
+		buffer.writeInt(legendCount); // Legend counts
 		
 		List<OlympiadFight> fightList = _player.getOlympiadFightHistory().getFights();
 		if (fightList == null)
@@ -148,7 +150,7 @@ public class ExOlympiadMyRankingInfo extends ServerPacket
 			fightList = new ArrayList<>();
 		}
 		
-		writeInt(fightList.size());
+		buffer.writeInt(fightList.size());
 		int count = 1;
 		for (OlympiadFight fight : fightList)
 		{
@@ -157,11 +159,11 @@ public class ExOlympiadMyRankingInfo extends ServerPacket
 				break;
 			}
 			
-			writeShort(fight.getOpponentName().length() + 1);
-			writeString(fight.getOpponentName());
-			writeByte(fight.getWinner());
-			writeInt(fight.getOpponentLevel());
-			writeInt(fight.getOpponentClassId());
+			buffer.writeShort(fight.getOpponentName().length() + 1);
+			buffer.writeString(fight.getOpponentName());
+			buffer.writeByte(fight.getWinner());
+			buffer.writeInt(fight.getOpponentLevel());
+			buffer.writeInt(fight.getOpponentClassId());
 			
 			count++;
 		}

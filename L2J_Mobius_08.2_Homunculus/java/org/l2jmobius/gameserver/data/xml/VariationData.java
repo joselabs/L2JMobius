@@ -30,7 +30,6 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.item.EtcItem;
 import org.l2jmobius.gameserver.model.item.instance.Item;
@@ -73,7 +72,7 @@ public class VariationData implements IXmlReader
 			forEach(listNode, "variations", variationsNode -> forEach(variationsNode, "variation", variationNode ->
 			{
 				final int mineralId = parseInteger(variationNode.getAttributes(), "mineralId");
-				if (ItemTable.getInstance().getTemplate(mineralId) == null)
+				if (ItemData.getInstance().getTemplate(mineralId) == null)
 				{
 					LOGGER.warning(getClass().getSimpleName() + ": Mineral with item id " + mineralId + " was not found.");
 				}
@@ -140,7 +139,7 @@ public class VariationData implements IXmlReader
 				});
 				
 				_variations.put(mineralId, variation);
-				((EtcItem) ItemTable.getInstance().getTemplate(mineralId)).setMineral();
+				((EtcItem) ItemData.getInstance().getTemplate(mineralId)).setMineral();
 			}));
 			
 			final Map<Integer, List<Integer>> itemGroups = new HashMap<>();
@@ -151,7 +150,7 @@ public class VariationData implements IXmlReader
 				forEach(variationNode, "item", itemNode ->
 				{
 					final int itemId = parseInteger(itemNode.getAttributes(), "id");
-					if (ItemTable.getInstance().getTemplate(itemId) == null)
+					if (ItemData.getInstance().getTemplate(itemId) == null)
 					{
 						LOGGER.warning(getClass().getSimpleName() + ": Item with id " + itemId + " was not found.");
 					}
@@ -169,7 +168,7 @@ public class VariationData implements IXmlReader
 				final long itemCount = parseLong(feeNode.getAttributes(), "itemCount", 0L);
 				final long adenaFee = parseLong(feeNode.getAttributes(), "adenaFee", 0L);
 				final long cancelFee = parseLong(feeNode.getAttributes(), "cancelFee", 0L);
-				if ((itemId != 0) && (ItemTable.getInstance().getTemplate(itemId) == null))
+				if ((itemId != 0) && (ItemData.getInstance().getTemplate(itemId) == null))
 				{
 					LOGGER.warning(getClass().getSimpleName() + ": Item with id " + itemId + " was not found.");
 				}

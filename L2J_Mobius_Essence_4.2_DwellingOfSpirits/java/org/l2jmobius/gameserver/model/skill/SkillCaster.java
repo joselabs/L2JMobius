@@ -32,8 +32,8 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.ActionData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.FlyType;
 import org.l2jmobius.gameserver.enums.ItemSkillType;
 import org.l2jmobius.gameserver.enums.NextActionType;
@@ -292,7 +292,7 @@ public class SkillCaster implements Runnable
 		}
 		
 		// Reduce talisman mana on skill use
-		if ((_skill.getReferenceItemId() > 0) && (ItemTable.getInstance().getTemplate(_skill.getReferenceItemId()).getBodyPart() == ItemTemplate.SLOT_DECO))
+		if ((_skill.getReferenceItemId() > 0) && (ItemData.getInstance().getTemplate(_skill.getReferenceItemId()).getBodyPart() == ItemTemplate.SLOT_DECO))
 		{
 			for (Item item : caster.getInventory().getItems())
 			{

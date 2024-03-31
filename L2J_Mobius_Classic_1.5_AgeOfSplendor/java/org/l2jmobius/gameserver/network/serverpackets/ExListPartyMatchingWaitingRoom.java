@@ -22,11 +22,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.ClassId;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
 import org.l2jmobius.gameserver.instancemanager.MatchingRoomManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -56,25 +58,25 @@ public class ExListPartyMatchingWaitingRoom extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_LIST_PARTY_MATCHING_WAITING_ROOM.writeId(this);
-		writeInt(_size);
-		writeInt(_players.size());
+		ServerPackets.EX_LIST_PARTY_MATCHING_WAITING_ROOM.writeId(this, buffer);
+		buffer.writeInt(_size);
+		buffer.writeInt(_players.size());
 		for (Player player : _players)
 		{
-			writeString(player.getName());
-			writeInt(player.getClassId().getId());
-			writeInt(player.getLevel());
+			buffer.writeString(player.getName());
+			buffer.writeInt(player.getClassId().getId());
+			buffer.writeInt(player.getLevel());
 			final Instance instance = InstanceManager.getInstance().getPlayerInstance(player, false);
-			writeInt((instance != null) && (instance.getTemplateId() >= 0) ? instance.getTemplateId() : -1);
+			buffer.writeInt((instance != null) && (instance.getTemplateId() >= 0) ? instance.getTemplateId() : -1);
 			final Map<Integer, Long> instanceTimes = InstanceManager.getInstance().getAllInstanceTimes(player);
-			writeInt(instanceTimes.size());
+			buffer.writeInt(instanceTimes.size());
 			for (Entry<Integer, Long> entry : instanceTimes.entrySet())
 			{
 				final long instanceTime = TimeUnit.MILLISECONDS.toSeconds(entry.getValue() - System.currentTimeMillis());
-				writeInt(entry.getKey());
-				writeInt((int) instanceTime);
+				buffer.writeInt(entry.getKey());
+				buffer.writeInt((int) instanceTime);
 			}
 		}
 	}

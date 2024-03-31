@@ -166,7 +166,7 @@ public class HandysBlockCheckerManager
 			
 			if (player.isCursedWeaponEquipped())
 			{
-				player.sendPacket(SystemMessageId.YOU_CANNOT_REGISTER_WHILE_IN_POSSESSION_OF_A_CURSED_WEAPON);
+				player.sendPacket(SystemMessageId.YOU_CANNOT_REGISTER_WHILE_POSSESSING_A_CURSED_WEAPON);
 				return false;
 			}
 			
@@ -195,7 +195,7 @@ public class HandysBlockCheckerManager
 			
 			if (_registrationPenalty.contains(player.getObjectId()))
 			{
-				player.sendPacket(SystemMessageId.YOU_MUST_WAIT_10_SECONDS_BEFORE_ATTEMPTING_TO_REGISTER_AGAIN);
+				player.sendPacket(SystemMessageId.YOU_CANNOT_MAKE_ANOTHER_REQUEST_FOR_10_SECONDS_AFTER_CANCELLING_A_MATCH_REGISTRATION);
 				return false;
 			}
 			

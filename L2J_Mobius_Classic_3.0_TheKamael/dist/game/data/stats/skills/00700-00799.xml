@@ -566,7 +566,7 @@
 		<effects>
 			<effect name="MpConsumePerLevel">
 				<power>0.4</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 			<effect name="TransferDamageToSummon">
 				<amount>50</amount>
@@ -1397,7 +1397,7 @@
 		<effects>
 			<effect name="DamOverTime">
 				<power>351</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 		<endEffects>
@@ -1603,7 +1603,7 @@
 		<effects>
 			<effect name="DamOverTime">
 				<power>52</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -2061,7 +2061,7 @@
 			</effect>
 			<effect name="DamOverTime">
 				<power>134</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>
@@ -2457,6 +2457,7 @@
 				<power>8452</power>
 				<overHit>true</overHit>
 				<criticalChance>15</criticalChance>
+				<pDefMod>0.9</pDefMod>
 			</effect>
 			<effect name="CallSkill">
 				<skillId>23300</skillId> <!-- Ghost Piercing -->
@@ -2467,16 +2468,15 @@
 	<skill id="777" toLevel="1" name="Demolition Impact">
 		<!-- Unleashes a destructive impulse wave to attack the target with 5980 power added to P. Atk. For 10 sec., P./ M. Def. -30%. Requires a sword or a blunt weapon. Critical, over-hit. -->
 		<icon>icon.skill0777</icon>
-		<abnormalLevel>4</abnormalLevel>
+		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
-		<abnormalType>PD_DOWN</abnormalType>
-		<activateRate>70</activateRate>
-		<affectRange>500</affectRange>
+		<abnormalType>ULTIMATE_DEBUFF</abnormalType>
+		<activateRate>60</activateRate>
+		<lvlBonusRate>20</lvlBonusRate>
 		<hitTime>1200</hitTime>
 		<castRange>150</castRange>
 		<effectPoint>-686</effectPoint>
 		<effectRange>200</effectRange>
-		<fanRange>0;0;500;60</fanRange>
 		<isDebuff>true</isDebuff>
 		<magicLevel>80</magicLevel>
 		<mpConsume>240</mpConsume>
@@ -2817,7 +2817,7 @@
 			</effect>
 			<effect name="DamOverTime">
 				<power>69</power>
-				<ticks>5</ticks>
+				<ticks>1</ticks>
 			</effect>
 		</effects>
 	</skill>

@@ -494,7 +494,7 @@ public class Olympiad extends ListenersContainer
 		@Override
 		public void run()
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.ROUND_S1_OF_THE_GRAND_OLYMPIAD_GAMES_HAS_NOW_ENDED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.PERIOD_S1_OF_THE_GRAND_OLYMPIAD_GAMES_HAS_NOW_ENDED);
 			sm.addInt(_currentCycle);
 			
 			Broadcast.toAllOnlinePlayers(sm);
@@ -554,7 +554,7 @@ public class Olympiad extends ListenersContainer
 		
 		if (!noble.isNoble())
 		{
-			sm = new SystemMessage(SystemMessageId.C1_DOES_NOT_MEET_THE_PARTICIPATION_REQUIREMENTS_ONLY_NOBLESSE_CHARACTERS_CAN_PARTICIPATE_IN_THE_OLYMPIAD);
+			sm = new SystemMessage(SystemMessageId.C1_DOES_NOT_MEET_THE_PARTICIPATION_REQUIREMENTS_ONLY_NOBLESSE_CAN_PARTICIPATE_IN_THE_OLYMPIAD);
 			sm.addPcName(noble);
 			noble.sendPacket(sm);
 			return false;
@@ -563,7 +563,7 @@ public class Olympiad extends ListenersContainer
 		/** Begin Olympiad Restrictions */
 		if (noble.getBaseClass() != noble.getClassId().getId())
 		{
-			sm = new SystemMessage(SystemMessageId.C1_DOES_NOT_MEET_THE_PARTICIPATION_REQUIREMENTS_A_SUBCLASS_CHARACTER_CANNOT_PARTICIPATE_IN_THE_OLYMPIAD);
+			sm = new SystemMessage(SystemMessageId.C1_DOES_NOT_MEET_THE_PARTICIPATION_REQUIREMENTS_A_SUB_CLASS_CHARACTER_CANNOT_PARTICIPATE_IN_THE_OLYMPIAD);
 			sm.addPcName(noble);
 			noble.sendPacket(sm);
 			return false;
@@ -662,7 +662,7 @@ public class Olympiad extends ListenersContainer
 				
 				_classBasedRegisters.put(noble.getClassId().getId(), classed);
 			}
-			sm = new SystemMessage(SystemMessageId.YOU_HAVE_BEEN_REGISTERED_FOR_THE_GRAND_OLYMPIAD_WAITING_LIST_FOR_A_CLASS_SPECIFIC_MATCH);
+			sm = new SystemMessage(SystemMessageId.YOU_HAVE_BEEN_REGISTERED_IN_THE_GRAND_OLYMPIAD_GAMES_WAITING_LIST_FOR_A_CLASS_SPECIFIC_MATCH);
 			noble.sendPacket(sm);
 		}
 		else
@@ -764,7 +764,7 @@ public class Olympiad extends ListenersContainer
 		
 		if (!noble.isNoble())
 		{
-			sm = new SystemMessage(SystemMessageId.C1_DOES_NOT_MEET_THE_PARTICIPATION_REQUIREMENTS_ONLY_NOBLESSE_CHARACTERS_CAN_PARTICIPATE_IN_THE_OLYMPIAD);
+			sm = new SystemMessage(SystemMessageId.C1_DOES_NOT_MEET_THE_PARTICIPATION_REQUIREMENTS_ONLY_NOBLESSE_CAN_PARTICIPATE_IN_THE_OLYMPIAD);
 			sm.addString(noble.getName());
 			noble.sendPacket(sm);
 			return false;
@@ -772,7 +772,7 @@ public class Olympiad extends ListenersContainer
 		
 		if (!isRegistered(noble))
 		{
-			sm = new SystemMessage(SystemMessageId.YOU_ARE_NOT_CURRENTLY_REGISTERED_FOR_THE_GRAND_OLYMPIAD);
+			sm = new SystemMessage(SystemMessageId.YOU_ARE_NOT_CURRENTLY_REGISTERED_ON_ANY_GRAND_OLYMPIAD_GAMES_WAITING_LIST);
 			noble.sendPacket(sm);
 			return false;
 		}
@@ -804,7 +804,7 @@ public class Olympiad extends ListenersContainer
 			_classBasedRegisters.put(noble.getClassId().getId(), classed);
 		}
 		
-		sm = new SystemMessage(SystemMessageId.YOU_HAVE_BEEN_REMOVED_FROM_THE_GRAND_OLYMPIAD_WAITING_LIST);
+		sm = new SystemMessage(SystemMessageId.YOU_HAVE_BEEN_REMOVED_FROM_THE_GRAND_OLYMPIAD_GAMES_WAITING_LIST);
 		noble.sendPacket(sm);
 		
 		if (Config.DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP > 0)
@@ -875,7 +875,7 @@ public class Olympiad extends ListenersContainer
 			_inCompPeriod = true;
 			final OlympiadManager om = OlympiadManager.getInstance();
 			
-			Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessageId.SHARPEN_YOUR_SWORDS_TIGHTEN_THE_STITCHING_IN_YOUR_ARMOR_AND_MAKE_HASTE_TO_A_GRAND_OLYMPIAD_MANAGER_BATTLES_IN_THE_GRAND_OLYMPIAD_GAMES_ARE_NOW_TAKING_PLACE));
+			Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessageId.SHARPEN_YOUR_SWORDS_TIGHTEN_THE_STITCHINGS_IN_YOUR_ARMOR_AND_MAKE_HASTE_TO_A_GRAND_OLYMPIAD_MANAGER_BATTLES_IN_THE_GRAND_OLYMPIAD_GAMES_ARE_NOW_TAKING_PLACE));
 			LOGGER.info("Olympiad System: Olympiad Game Started");
 			LOGGER_OLYMPIAD.info("Result,Player1,Player2,Player1 HP,Player2 HP,Player1 Damage,Player2 Damage,Points,Classed");
 			
@@ -951,7 +951,7 @@ public class Olympiad extends ListenersContainer
 	
 	protected void setNewOlympiadEnd()
 	{
-		final SystemMessage sm = new SystemMessage(SystemMessageId.ROUND_S1_OF_THE_GRAND_OLYMPIAD_GAMES_HAS_STARTED);
+		final SystemMessage sm = new SystemMessage(SystemMessageId.PERIOD_S1_OF_THE_GRAND_OLYMPIAD_GAMES_HAS_STARTED);
 		sm.addInt(_currentCycle);
 		Broadcast.toAllOnlinePlayers(sm);
 		
@@ -1791,8 +1791,8 @@ public class Olympiad extends ListenersContainer
 				return;
 			}
 			
-			player.sendPacket(new ExOlympiadUserInfo(game._playerOne));
-			player.sendPacket(new ExOlympiadUserInfo(game._playerTwo));
+			player.sendPacket(new ExOlympiadUserInfo(game._playerOne, 1));
+			player.sendPacket(new ExOlympiadUserInfo(game._playerTwo, 2));
 		}
 	}
 	

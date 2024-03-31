@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class AskJoinPledge extends ServerPacket
@@ -33,15 +35,15 @@ public class AskJoinPledge extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.ASK_JOIN_PLEDGE.writeId(this);
-		writeInt(_requestor.getObjectId());
-		writeString(_requestor.getName());
-		writeString(_pledgeName);
+		ServerPackets.ASK_JOIN_PLEDGE.writeId(this, buffer);
+		buffer.writeInt(_requestor.getObjectId());
+		buffer.writeString(_requestor.getName());
+		buffer.writeString(_pledgeName);
 		if (_pledgeType != 0)
 		{
-			writeInt(_pledgeType);
+			buffer.writeInt(_pledgeType);
 		}
 	}
 }

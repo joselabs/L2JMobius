@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.teleports;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -32,9 +34,9 @@ public class ExShowSharingLocationUi extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHARED_POSITION_SHARING_UI.writeId(this);
-		writeLong(Config.SHARING_LOCATION_COST);
+		ServerPackets.EX_SHARED_POSITION_SHARING_UI.writeId(this, buffer);
+		buffer.writeLong(Config.SHARING_LOCATION_COST);
 	}
 }

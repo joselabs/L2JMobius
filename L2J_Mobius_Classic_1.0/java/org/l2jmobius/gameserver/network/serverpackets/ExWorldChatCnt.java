@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -33,9 +35,9 @@ public class ExWorldChatCnt extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_WORLD_CHAT_CNT.writeId(this);
-		writeInt(_points);
+		ServerPackets.EX_WORLD_CHAT_CNT.writeId(this, buffer);
+		buffer.writeInt(_points);
 	}
 }

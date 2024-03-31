@@ -31,9 +31,9 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.sql.SummonEffectTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.enums.InstanceType;
@@ -168,6 +168,7 @@ public class Pet extends Summon
 					stopFeed();
 					return;
 				}
+				
 				setCurrentFed(_curFed > getFeedConsume() ? _curFed - getFeedConsume() : 0);
 				broadcastStatusUpdate();
 				
@@ -181,12 +182,12 @@ public class Pet extends Summon
 						{
 							getOwner().setPkKills(Math.max(0, getOwner().getPkKills() - Rnd.get(1, 6)));
 						}
-						sendPacket(SystemMessageId.THE_HUNTING_HELPER_PET_IS_NOW_LEAVING);
+						getOwner().sendMessage("The hunting helper pet is now leaving.");
 						deleteMe(getOwner());
 					}
 					else if (isHungry())
 					{
-						sendPacket(SystemMessageId.THERE_IS_NOT_MUCH_TIME_REMAINING_UNTIL_THE_HUNTING_HELPER_PET_LEAVES);
+						getOwner().sendMessage("There is not much time remaining until the hunting helper pet leaves.");
 					}
 					return;
 				}
@@ -215,7 +216,7 @@ public class Pet extends Summon
 				
 				if (isUncontrollable())
 				{
-					sendPacket(SystemMessageId.YOUR_PET_IS_STARVING_AND_WILL_NOT_OBEY_UNTIL_IT_GETS_IT_S_FOOD_FEED_YOUR_PET);
+					getOwner().sendMessage("Your pet is starving and will not obey until it gets it's food. Feed your pet!");
 				}
 			}
 			catch (Exception e)
@@ -498,7 +499,7 @@ public class Pet extends Summon
 			if (((isInParty() && (getParty().getDistributionType() == PartyDistributionType.FINDERS_KEEPERS)) || !isInParty()) && !_inventory.validateCapacity(target))
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
-				sendPacket(SystemMessageId.YOUR_PET_CANNOT_CARRY_ANY_MORE_ITEMS);
+				sendPacket(SystemMessageId.UNABLE_TO_PLACE_ITEM_YOUR_PET_IS_TOO_ENCUMBERED);
 				return;
 			}
 			
@@ -552,7 +553,7 @@ public class Pet extends Summon
 				handler.useItem(this, target, false);
 			}
 			
-			ItemTable.getInstance().destroyItem("Consume", target, getOwner(), null);
+			ItemData.getInstance().destroyItem("Consume", target, getOwner(), null);
 			broadcastStatusUpdate();
 		}
 		else
@@ -627,7 +628,7 @@ public class Pet extends Summon
 			return false;
 		}
 		stopFeed();
-		sendPacket(SystemMessageId.THE_PET_HAS_BEEN_KILLED_IF_YOU_DON_T_RESURRECT_IT_WITHIN_24_HOURS_THE_PET_S_BODY_WILL_DISAPPEAR_ALONG_WITH_ALL_THE_PET_S_ITEMS);
+		sendPacket(SystemMessageId.YOUR_PET_HAS_BEEN_KILLED_MAKE_SURE_YOU_RESURRECT_YOUR_PET_WITHIN_20_MINUTES_OR_YOUR_PET_AND_ALL_OF_IT_S_ITEMS_WILL_DISAPPEAR_FOREVER);
 		DecayTaskManager.getInstance().add(this);
 		// do not decrease exp if is in duel, arena
 		return true;

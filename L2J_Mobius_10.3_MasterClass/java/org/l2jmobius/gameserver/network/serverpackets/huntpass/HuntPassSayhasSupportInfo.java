@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.huntpass;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.HuntPass;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,11 +40,11 @@ public class HuntPassSayhasSupportInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SAYHAS_SUPPORT_INFO.writeId(this);
-		writeByte(_sayhaToggle);
-		writeInt(_huntPass.getAvailableSayhaTime());
-		writeInt(_timeUsed);
+		ServerPackets.EX_SAYHAS_SUPPORT_INFO.writeId(this, buffer);
+		buffer.writeByte(_sayhaToggle);
+		buffer.writeInt(_huntPass.getAvailableSayhaTime());
+		buffer.writeInt(_timeUsed);
 	}
 }

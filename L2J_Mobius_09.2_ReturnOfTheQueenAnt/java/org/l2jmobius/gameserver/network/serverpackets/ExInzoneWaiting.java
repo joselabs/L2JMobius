@@ -20,9 +20,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -43,17 +45,17 @@ public class ExInzoneWaiting extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_INZONE_WAITING_INFO.writeId(this);
-		writeByte(!_hide); // Grand Crusade
-		writeInt(_currentTemplateId);
-		writeInt(_instanceTimes.size());
+		ServerPackets.EX_INZONE_WAITING_INFO.writeId(this, buffer);
+		buffer.writeByte(!_hide); // Grand Crusade
+		buffer.writeInt(_currentTemplateId);
+		buffer.writeInt(_instanceTimes.size());
 		for (Entry<Integer, Long> entry : _instanceTimes.entrySet())
 		{
 			final long instanceTime = TimeUnit.MILLISECONDS.toSeconds(entry.getValue() - System.currentTimeMillis());
-			writeInt(entry.getKey());
-			writeInt((int) instanceTime);
+			buffer.writeInt(entry.getKey());
+			buffer.writeInt((int) instanceTime);
 		}
 	}
 }

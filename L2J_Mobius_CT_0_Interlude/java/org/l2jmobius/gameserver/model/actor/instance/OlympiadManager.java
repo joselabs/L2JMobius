@@ -26,13 +26,9 @@ import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
-import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.olympiad.Olympiad;
-import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.serverpackets.ExHeroList;
-import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
-import org.l2jmobius.gameserver.util.Util;
 
 /**
  * Olympiad NPCs Instance
@@ -45,19 +41,6 @@ public class OlympiadManager extends Npc
 	private static final int GATE_PASS = Config.ALT_OLY_COMP_RITEM;
 	private static final String FEWER_THAN = "Fewer than " + String.valueOf(Config.ALT_OLY_REG_DISPLAY);
 	private static final String MORE_THAN = "More than " + String.valueOf(Config.ALT_OLY_REG_DISPLAY);
-	private static final SkillHolder[] ALLOWED_BUFFS =
-	{
-		new SkillHolder(4357, 2), // Haste Lv2
-		new SkillHolder(4342, 2), // Wind Walk Lv2
-		new SkillHolder(4356, 3), // Empower Lv3
-		new SkillHolder(4355, 3), // Acumen Lv3
-		new SkillHolder(4351, 6), // Concentration Lv6
-		new SkillHolder(4345, 3), // Might Lv3
-		new SkillHolder(4358, 3), // Guidance Lv3
-		new SkillHolder(4359, 3), // Focus Lv3
-		new SkillHolder(4360, 3), // Death Whisper Lv3
-		new SkillHolder(4352, 2), // Berserker Spirit Lv2
-	};
 	
 	/**
 	 * Creates an olympiad manager.
@@ -191,51 +174,6 @@ public class OlympiadManager extends Npc
 					_logOlymp.warning("Olympiad System: Couldnt send packet for request " + val);
 					break;
 				}
-			}
-		}
-		else if (command.startsWith("OlyBuff"))
-		{
-			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-			final String[] params = command.split(" ");
-			if (!Util.isDigit(params[1]))
-			{
-				LOGGER.warning("Olympiad Buffer Warning: npcId = " + this + " has invalid buffGroup set in the bypass for the buff selected: " + params[1]);
-				return;
-			}
-			
-			final int index = Integer.parseInt(params[1]);
-			if ((index < 0) || (index >= ALLOWED_BUFFS.length))
-			{
-				LOGGER.warning("Olympiad Buffer Warning: npcId = " + this + " has invalid index sent in the bypass: " + index);
-				return;
-			}
-			
-			setTarget(player);
-			
-			if (player.getOlympiadBuffCount() > 0)
-			{
-				final Skill skill = ALLOWED_BUFFS[index].getSkill();
-				if (skill != null)
-				{
-					int buffCount = player.getOlympiadBuffCount();
-					broadcastPacket(new MagicSkillUse(this, player, skill.getId(), skill.getLevel(), 0, 0));
-					skill.applyEffects(player, player);
-					player.setOlympiadBuffCount(--buffCount);
-				}
-			}
-			
-			if (player.getOlympiadBuffCount() > 0)
-			{
-				html.setFile(player, player.getOlympiadBuffCount() == 5 ? Olympiad.OLYMPIAD_HTML_PATH + "olympiad_buffs.htm" : Olympiad.OLYMPIAD_HTML_PATH + "olympiad_5buffs.htm");
-				html.replace("%objectId%", String.valueOf(getObjectId()));
-				player.sendPacket(html);
-			}
-			else
-			{
-				html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "olympiad_nobuffs.htm");
-				html.replace("%objectId%", String.valueOf(getObjectId()));
-				player.sendPacket(html);
-				deleteMe();
 			}
 		}
 		else if (command.startsWith("Olympiad"))

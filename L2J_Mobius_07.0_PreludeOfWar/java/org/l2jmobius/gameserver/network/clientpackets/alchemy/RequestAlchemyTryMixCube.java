@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets.alchemy;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
@@ -32,7 +31,6 @@ import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -43,7 +41,7 @@ import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
 /**
  * @author Sdw
  */
-public class RequestAlchemyTryMixCube implements ClientPacket
+public class RequestAlchemyTryMixCube extends ClientPacket
 {
 	// TODO: Figure out how much stones are given
 	private static final int TEMPEST_STONE_AMOUNT = 1;
@@ -51,9 +49,9 @@ public class RequestAlchemyTryMixCube implements ClientPacket
 	private List<ItemHolder> _items = new LinkedList<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int itemsCount = packet.readInt();
+		final int itemsCount = readInt();
 		if ((itemsCount < 1) || (itemsCount > 4))
 		{
 			return;
@@ -61,8 +59,8 @@ public class RequestAlchemyTryMixCube implements ClientPacket
 		
 		for (int i = 0; i < itemsCount; i++)
 		{
-			final int id = packet.readInt();
-			final long count = packet.readLong();
+			final int id = readInt();
+			final long count = readLong();
 			if ((count < 1) || (count > 10000))
 			{
 				_items = null;
@@ -74,9 +72,9 @@ public class RequestAlchemyTryMixCube implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (player.getRace() != Race.ERTHEIA))
 		{
 			return;

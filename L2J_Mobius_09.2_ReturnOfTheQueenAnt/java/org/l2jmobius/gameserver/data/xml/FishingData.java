@@ -27,7 +27,6 @@ import org.w3c.dom.Node;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.fishing.FishingBait;
 import org.l2jmobius.gameserver.model.fishing.FishingCatch;
 import org.l2jmobius.gameserver.model.fishing.FishingRod;
@@ -110,7 +109,7 @@ public class FishingData implements IXmlReader
 									final int waitMin = parseInteger(attrs, "waitMin");
 									final int waitMax = parseInteger(attrs, "waitMax", waitMin);
 									final boolean isPremiumOnly = parseBoolean(attrs, "isPremiumOnly", false);
-									if (ItemTable.getInstance().getTemplate(itemId) == null)
+									if (ItemData.getInstance().getTemplate(itemId) == null)
 									{
 										LOGGER.info(getClass().getSimpleName() + ": Could not find item with id " + itemId);
 										continue;
@@ -125,7 +124,7 @@ public class FishingData implements IXmlReader
 											final int cId = parseInteger(cAttrs, "itemId");
 											final float cChance = parseFloat(cAttrs, "chance");
 											final float cMultiplier = parseFloat(cAttrs, "multiplier", 1f);
-											if (ItemTable.getInstance().getTemplate(cId) == null)
+											if (ItemData.getInstance().getTemplate(cId) == null)
 											{
 												LOGGER.info(getClass().getSimpleName() + ": Could not find item with id " + itemId);
 												continue;
@@ -150,7 +149,7 @@ public class FishingData implements IXmlReader
 									final int reduceFishingTime = parseInteger(attrs, "reduceFishingTime", 0);
 									final float xpMultiplier = parseFloat(attrs, "xpMultiplier", 1f);
 									final float spMultiplier = parseFloat(attrs, "spMultiplier", 1f);
-									if (ItemTable.getInstance().getTemplate(itemId) == null)
+									if (ItemData.getInstance().getTemplate(itemId) == null)
 									{
 										LOGGER.info(getClass().getSimpleName() + ": Could not find item with id " + itemId);
 										continue;

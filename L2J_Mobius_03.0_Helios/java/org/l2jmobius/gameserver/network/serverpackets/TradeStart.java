@@ -19,10 +19,12 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.Collection;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
 import org.l2jmobius.gameserver.instancemanager.MentorManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class TradeStart extends AbstractItemPacket
@@ -64,24 +66,24 @@ public class TradeStart extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if ((_player.getActiveTradeList() == null) || (_partner == null))
 		{
 			return;
 		}
 		
-		ServerPackets.TRADE_START.writeId(this);
-		writeInt(_partner.getObjectId());
-		writeByte(_mask); // some kind of mask
+		ServerPackets.TRADE_START.writeId(this, buffer);
+		buffer.writeInt(_partner.getObjectId());
+		buffer.writeByte(_mask); // some kind of mask
 		if ((_mask & 0x10) == 0)
 		{
-			writeByte(_partner.getLevel());
+			buffer.writeByte(_partner.getLevel());
 		}
-		writeShort(_itemList.size());
+		buffer.writeShort(_itemList.size());
 		for (Item item : _itemList)
 		{
-			writeItem(item);
+			writeItem(item, buffer);
 		}
 	}
 }

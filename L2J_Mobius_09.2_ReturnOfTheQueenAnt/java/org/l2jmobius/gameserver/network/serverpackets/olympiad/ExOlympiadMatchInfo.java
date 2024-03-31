@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.olympiad;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -42,14 +44,14 @@ public class ExOlympiadMatchInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_OLYMPIAD_MATCH_INFO.writeId(this);
-		writeString(String.format("%1$-" + 23 + "s", _name2));
-		writeInt(_wins2);
-		writeString(String.format("%1$-" + 23 + "s", _name1));
-		writeInt(_wins1);
-		writeInt(_round);
-		writeInt(_time); // Seconds
+		ServerPackets.EX_OLYMPIAD_MATCH_INFO.writeId(this, buffer);
+		buffer.writeString(String.format("%1$-" + 23 + "s", _name2));
+		buffer.writeInt(_wins2);
+		buffer.writeString(String.format("%1$-" + 23 + "s", _name1));
+		buffer.writeInt(_wins1);
+		buffer.writeInt(_round);
+		buffer.writeInt(_time); // Seconds
 	}
 }

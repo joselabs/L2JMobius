@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ExPrivateStoreSellingResult extends ServerPacket
@@ -32,11 +34,11 @@ public class ExPrivateStoreSellingResult extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PRIVATE_STORE_SELLING_RESULT.writeId(this);
-		writeInt(_objectId);
-		writeLong(_count);
-		writeString(_buyer);
+		ServerPackets.EX_PRIVATE_STORE_SELLING_RESULT.writeId(this, buffer);
+		buffer.writeInt(_objectId);
+		buffer.writeLong(_count);
+		buffer.writeString(_buyer);
 	}
 }

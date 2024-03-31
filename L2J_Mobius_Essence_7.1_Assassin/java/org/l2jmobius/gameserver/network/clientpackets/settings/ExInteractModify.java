@@ -16,31 +16,29 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.settings;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.ClientSettings;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 
 /**
  * @author Index
  */
-public class ExInteractModify implements ClientPacket
+public class ExInteractModify extends ClientPacket
 {
 	private int _type;
 	private int _settings;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_type = packet.readByte();
-		_settings = packet.readByte();
+		_type = readByte();
+		_settings = readByte();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

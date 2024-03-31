@@ -34,7 +34,6 @@ import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.SiegeFlag;
 import org.l2jmobius.gameserver.model.actor.instance.StaticObject;
-import org.l2jmobius.gameserver.model.cubic.Cubic;
 import org.l2jmobius.gameserver.model.effects.EffectFlag;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.interfaces.ILocational;
@@ -199,12 +198,6 @@ public class Formulas
 		damage *= attacker.getStat().getValue(Stat.MAGICAL_SKILL_POWER, 1);
 		
 		return damage;
-	}
-	
-	public static double calcMagicDam(Cubic attacker, Creature target, Skill skill, double power, boolean mcrit, byte shld)
-	{
-		final double mAtk = attacker.getTemplate().getPower();
-		return calcMagicDam(attacker.getOwner(), target, skill, mAtk, power, shld, false, false, mcrit);
 	}
 	
 	/**
@@ -747,63 +740,6 @@ public class Formulas
 			return false;
 		}
 		return true;
-	}
-	
-	public static boolean calcCubicSkillSuccess(Cubic attacker, Creature target, Skill skill, byte shld)
-	{
-		if (skill.isDebuff())
-		{
-			if (skill.getActivateRate() == -1)
-			{
-				return true;
-			}
-			
-			if (target.getAbnormalShieldBlocks() > 0)
-			{
-				target.decrementAbnormalShieldBlocks();
-				return false;
-			}
-		}
-		
-		// Perfect Shield Block.
-		if (shld == SHIELD_DEFENSE_PERFECT_BLOCK)
-		{
-			return false;
-		}
-		
-		// if target reflect this skill then the effect will fail
-		if (calcBuffDebuffReflection(target, skill))
-		{
-			return false;
-		}
-		
-		final double targetBasicProperty = getAbnormalResist(skill.getBasicProperty(), target);
-		
-		// Calculate BaseRate.
-		final double baseRate = skill.getActivateRate();
-		final double statMod = 1 + (targetBasicProperty / 100);
-		double rate = (baseRate / statMod);
-		
-		// Resist Modifier.
-		final double resMod = calcGeneralTraitBonus(attacker.getOwner(), target, skill.getTraitType(), false);
-		rate *= resMod;
-		
-		// Lvl Bonus Modifier.
-		final double lvlBonusMod = calcLvlBonusMod(attacker.getOwner(), target, skill);
-		rate *= lvlBonusMod;
-		
-		// Element Modifier.
-		final double elementMod = calcAttributeBonus(attacker.getOwner(), target, skill);
-		rate *= elementMod;
-		
-		final double basicPropertyResist = getBasicPropertyResistBonus(skill.getBasicProperty(), target);
-		
-		// Add Matk/Mdef Bonus (TODO: Pending)
-		
-		// Check the Rate Limits.
-		final double finalRate = CommonUtil.constrain(rate, skill.getMinChance(), skill.getMaxChance()) * basicPropertyResist;
-		
-		return Rnd.get(100) < finalRate;
 	}
 	
 	public static boolean calcMagicSuccess(Creature attacker, Creature target, Skill skill)

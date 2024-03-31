@@ -26,7 +26,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 
@@ -139,7 +138,7 @@ public class EnchantChallengePointData implements IXmlReader
 										for (String itemIdStr : itemIdsStr)
 										{
 											final int itemId = Integer.parseInt(itemIdStr);
-											if (ItemTable.getInstance().getTemplate(itemId) == null)
+											if (ItemData.getInstance().getTemplate(itemId) == null)
 											{
 												LOGGER.info(getClass().getSimpleName() + ": Item with id " + itemId + " does not exist.");
 											}

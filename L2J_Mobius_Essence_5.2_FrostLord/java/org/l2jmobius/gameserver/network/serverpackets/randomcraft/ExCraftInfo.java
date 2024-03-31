@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.randomcraft;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerRandomCraft;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,12 +36,12 @@ public class ExCraftInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_CRAFT_INFO.writeId(this);
+		ServerPackets.EX_CRAFT_INFO.writeId(this, buffer);
 		final PlayerRandomCraft rc = _player.getRandomCraft();
-		writeInt(rc.getFullCraftPoints()); // Full points owned
-		writeInt(rc.getCraftPoints()); // Craft Points (10k = 1%)
-		writeByte(rc.isSayhaRoll()); // Will get sayha?
+		buffer.writeInt(rc.getFullCraftPoints()); // Full points owned
+		buffer.writeInt(rc.getCraftPoints()); // Craft Points (10k = 1%)
+		buffer.writeByte(rc.isSayhaRoll()); // Will get sayha?
 	}
 }

@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets.homunculus;
 import org.l2jmobius.gameserver.data.xml.HomunculusCreationData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExHomunculusCreateStartResult;
@@ -28,12 +27,17 @@ import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExShowHomunculu
 /**
  * @author Mobius
  */
-public class RequestExHomunculusCreateStart implements ClientPacket
+public class RequestExHomunculusCreateStart extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -49,7 +53,7 @@ public class RequestExHomunculusCreateStart implements ClientPacket
 		player.reduceAdena("Homunculus creation", fee, player, true);
 		player.getVariables().set(PlayerVariables.HOMUNCULUS_CREATION_TIME, System.currentTimeMillis() + HomunculusCreationData.getInstance().getDefaultTemplate().getCreationTime());
 		
-		client.sendPacket(new ExShowHomunculusBirthInfo(player));
-		client.sendPacket(new ExHomunculusCreateStartResult(player));
+		player.sendPacket(new ExShowHomunculusBirthInfo(player));
+		player.sendPacket(new ExHomunculusCreateStartResult(player));
 	}
 }

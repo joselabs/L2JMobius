@@ -139,7 +139,7 @@ public class CubicData implements IXmlReader
 		{
 			final CubicSkill skill = new CubicSkill(new StatSet(parseAttributes(skillNode)));
 			forEach(cubicNode, "conditions", conditionNode -> parseConditions(cubicNode, template, skill));
-			template.getSkills().add(skill);
+			template.getCubicSkills().add(skill);
 		});
 	}
 	

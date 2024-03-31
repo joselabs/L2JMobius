@@ -18,6 +18,7 @@ package handlers.effecthandlers;
 
 import java.util.Set;
 
+import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.World;
@@ -35,15 +36,25 @@ import org.l2jmobius.gameserver.model.skill.BuffInfo;
  */
 public class GetAgro extends AbstractEffect
 {
+	private final int _chance;
+	
 	public GetAgro(Condition attachCond, Condition applyCond, StatSet set, StatSet params)
 	{
 		super(attachCond, applyCond, set, params);
+		
+		_chance = params.getInt("chance", 100);
 	}
 	
 	@Override
 	public EffectType getEffectType()
 	{
 		return EffectType.AGGRESSION;
+	}
+	
+	@Override
+	public boolean calcSuccess(BuffInfo info)
+	{
+		return Rnd.get(100) < _chance;
 	}
 	
 	@Override

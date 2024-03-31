@@ -21,12 +21,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.RandomCraftData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.RandomCraftRequest;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.randomcraft.ExCraftExtract;
 import org.l2jmobius.gameserver.network.serverpackets.randomcraft.ExCraftInfo;
@@ -34,18 +32,18 @@ import org.l2jmobius.gameserver.network.serverpackets.randomcraft.ExCraftInfo;
 /**
  * @author Mode
  */
-public class ExRequestRandomCraftExtract implements ClientPacket
+public class ExRequestRandomCraftExtract extends ClientPacket
 {
 	private final Map<Integer, Long> _items = new HashMap<>();
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		final int size = packet.readInt();
+		final int size = readInt();
 		for (int i = 0; i < size; i++)
 		{
-			final int objId = packet.readInt();
-			final long count = packet.readLong();
+			final int objId = readInt();
+			final long count = readLong();
 			if (count > 0)
 			{
 				_items.put(objId, count);
@@ -54,14 +52,14 @@ public class ExRequestRandomCraftExtract implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		if (!Config.ENABLE_RANDOM_CRAFT)
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

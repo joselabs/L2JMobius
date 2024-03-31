@@ -18,9 +18,11 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.MailType;
 import org.l2jmobius.gameserver.instancemanager.MailManager;
 import org.l2jmobius.gameserver.model.Message;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 
@@ -40,41 +42,41 @@ public class ExShowReceivedPostList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHOW_RECEIVED_POST_LIST.writeId(this);
-		writeInt((int) (System.currentTimeMillis() / 1000));
+		ServerPackets.EX_SHOW_RECEIVED_POST_LIST.writeId(this, buffer);
+		buffer.writeInt((int) (System.currentTimeMillis() / 1000));
 		if ((_inbox != null) && !_inbox.isEmpty())
 		{
-			writeInt(_inbox.size());
+			buffer.writeInt(_inbox.size());
 			for (Message msg : _inbox)
 			{
-				writeInt(msg.getMailType().ordinal());
+				buffer.writeInt(msg.getMailType().ordinal());
 				if (msg.getMailType() == MailType.COMMISSION_ITEM_SOLD)
 				{
-					writeInt(SystemMessageId.THE_ITEM_YOU_REGISTERED_HAS_BEEN_SOLD.getId());
+					buffer.writeInt(SystemMessageId.THE_ITEM_YOU_REGISTERED_HAS_BEEN_SOLD.getId());
 				}
 				else if (msg.getMailType() == MailType.COMMISSION_ITEM_RETURNED)
 				{
-					writeInt(SystemMessageId.THE_REGISTRATION_PERIOD_FOR_THE_ITEM_YOU_REGISTERED_HAS_EXPIRED.getId());
+					buffer.writeInt(SystemMessageId.THE_REGISTRATION_PERIOD_FOR_THE_ITEM_YOU_REGISTERED_HAS_EXPIRED.getId());
 				}
-				writeInt(msg.getId());
-				writeString(msg.getSubject());
-				writeString(msg.getSenderName());
-				writeInt(msg.isLocked());
-				writeInt(msg.getExpirationSeconds());
-				writeInt(msg.isUnread());
-				writeInt(!((msg.getMailType() == MailType.COMMISSION_ITEM_SOLD) || (msg.getMailType() == MailType.COMMISSION_ITEM_RETURNED)));
-				writeInt(msg.hasAttachments());
-				writeInt(msg.isReturned());
-				writeInt(0); // SysString in some case it seems
+				buffer.writeInt(msg.getId());
+				buffer.writeString(msg.getSubject());
+				buffer.writeString(msg.getSenderName());
+				buffer.writeInt(msg.isLocked());
+				buffer.writeInt(msg.getExpirationSeconds());
+				buffer.writeInt(msg.isUnread());
+				buffer.writeInt(!((msg.getMailType() == MailType.COMMISSION_ITEM_SOLD) || (msg.getMailType() == MailType.COMMISSION_ITEM_RETURNED)));
+				buffer.writeInt(msg.hasAttachments());
+				buffer.writeInt(msg.isReturned());
+				buffer.writeInt(0); // SysString in some case it seems
 			}
 		}
 		else
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
-		writeInt(MESSAGE_FEE);
-		writeInt(MESSAGE_FEE_PER_SLOT);
+		buffer.writeInt(MESSAGE_FEE);
+		buffer.writeInt(MESSAGE_FEE_PER_SLOT);
 	}
 }

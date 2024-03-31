@@ -26,7 +26,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.holders.LimitShopProductHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -123,7 +122,7 @@ public class LimitShopData implements IXmlReader
 									
 									if (ingredientId > 0)
 									{
-										final ItemTemplate item = ItemTable.getInstance().getTemplate(ingredientId);
+										final ItemTemplate item = ItemData.getInstance().getTemplate(ingredientId);
 										if (item == null)
 										{
 											LOGGER.severe(getClass().getSimpleName() + ": Item template null for itemId: " + productionId + " productId: " + id);
@@ -201,7 +200,7 @@ public class LimitShopData implements IXmlReader
 									accountMontlyLimit = parseInteger(attrs, "accountMontlyLimit", 0);
 									accountBuyLimit = parseInteger(attrs, "accountBuyLimit", 0);
 									
-									final ItemTemplate item = ItemTable.getInstance().getTemplate(productionId);
+									final ItemTemplate item = ItemData.getInstance().getTemplate(productionId);
 									if (item == null)
 									{
 										LOGGER.severe(getClass().getSimpleName() + ": Item template null for itemId: " + productionId + " productId: " + id);

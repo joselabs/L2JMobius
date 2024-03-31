@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Set;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -34,14 +36,14 @@ public class BlockListPacket extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.BLOCK_LIST.writeId(this);
-		writeInt(_playerIds.size());
+		ServerPackets.BLOCK_LIST.writeId(this, buffer);
+		buffer.writeInt(_playerIds.size());
 		for (int playerId : _playerIds)
 		{
-			writeString(CharInfoTable.getInstance().getNameById(playerId));
-			writeString(""); // memo ?
+			buffer.writeString(CharInfoTable.getInstance().getNameById(playerId));
+			buffer.writeString(""); // memo ?
 		}
 	}
 }

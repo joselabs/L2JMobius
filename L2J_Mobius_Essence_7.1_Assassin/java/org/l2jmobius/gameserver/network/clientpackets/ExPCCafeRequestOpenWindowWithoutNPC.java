@@ -18,18 +18,22 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 
 /**
  * @author Mobius
  */
-public class ExPCCafeRequestOpenWindowWithoutNPC implements ClientPacket
+public class ExPCCafeRequestOpenWindowWithoutNPC extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if ((player != null) && Config.PC_CAFE_ENABLED)
 		{
 			final NpcHtmlMessage html = new NpcHtmlMessage();

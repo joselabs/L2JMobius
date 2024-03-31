@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.castlewar;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.SiegeManager;
 import org.l2jmobius.gameserver.model.siege.Castle;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -35,7 +37,7 @@ public class MercenaryCastleWarCastleSiegeHudInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		final Castle castle = CastleManager.getInstance().getCastleById(_castleId);
 		if (castle == null)
@@ -43,19 +45,19 @@ public class MercenaryCastleWarCastleSiegeHudInfo extends ServerPacket
 			return;
 		}
 		
-		ServerPackets.EX_MERCENARY_CASTLEWAR_CASTLE_SIEGE_HUD_INFO.writeId(this);
-		writeInt(_castleId);
+		ServerPackets.EX_MERCENARY_CASTLEWAR_CASTLE_SIEGE_HUD_INFO.writeId(this, buffer);
+		buffer.writeInt(_castleId);
 		if (castle.getSiege().isInProgress())
 		{
-			writeInt(1);
-			writeInt(0);
-			writeInt((int) (((CastleManager.getInstance().getCastleById(_castleId).getSiegeDate().getTimeInMillis() + (SiegeManager.getInstance().getSiegeLength() * 60000)) - System.currentTimeMillis()) / 1000));
+			buffer.writeInt(1);
+			buffer.writeInt(0);
+			buffer.writeInt((int) (((CastleManager.getInstance().getCastleById(_castleId).getSiegeDate().getTimeInMillis() + (SiegeManager.getInstance().getSiegeLength() * 60000)) - System.currentTimeMillis()) / 1000));
 		}
 		else
 		{
-			writeInt(0);
-			writeInt(0);
-			writeInt((int) ((CastleManager.getInstance().getCastleById(_castleId).getSiegeDate().getTimeInMillis() - System.currentTimeMillis()) / 1000));
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt((int) ((CastleManager.getInstance().getCastleById(_castleId).getSiegeDate().getTimeInMillis() - System.currentTimeMillis()) / 1000));
 		}
 	}
 }

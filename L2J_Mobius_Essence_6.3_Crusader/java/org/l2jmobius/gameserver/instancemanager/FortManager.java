@@ -118,9 +118,7 @@ public class FortManager
 	
 	public Fort getFort(WorldObject activeObject)
 	{
-		// TODO: Make this more abstract?
-		// return getFort(activeObject.getX(), activeObject.getY(), activeObject.getZ());
-		return getFortById(FortManager.ORC_FORTRESS);
+		return getFort(activeObject.getX(), activeObject.getY(), activeObject.getZ());
 	}
 	
 	public Collection<Fort> getForts()

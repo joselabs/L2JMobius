@@ -54,7 +54,6 @@ import org.l2jmobius.gameserver.ai.SummonAI;
 import org.l2jmobius.gameserver.cache.RelationCache;
 import org.l2jmobius.gameserver.communitybbs.BB.Forum;
 import org.l2jmobius.gameserver.communitybbs.Manager.ForumsBBSManager;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
@@ -65,6 +64,7 @@ import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.FishData;
 import org.l2jmobius.gameserver.data.xml.HennaData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.data.xml.PlayerTemplateData;
@@ -181,6 +181,7 @@ import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerPvPCha
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerPvPKill;
 import org.l2jmobius.gameserver.model.events.listeners.FunctionEventListener;
 import org.l2jmobius.gameserver.model.events.returns.TerminateReturn;
+import org.l2jmobius.gameserver.model.events.timers.TimerHolder;
 import org.l2jmobius.gameserver.model.fishing.Fish;
 import org.l2jmobius.gameserver.model.fishing.Fishing;
 import org.l2jmobius.gameserver.model.holders.AutoPlaySettingsHolder;
@@ -528,9 +529,7 @@ public class Player extends Playable
 	// Multisell
 	private PreparedListContainer _currentMultiSell = null;
 	
-	/** Bitmask used to keep track of one-time/newbie quest rewards */
-	private int _newbie;
-	
+	private boolean _newbie = false;
 	private boolean _noble = false;
 	private boolean _hero = false;
 	
@@ -548,7 +547,7 @@ public class Player extends Playable
 	private int _questNpcObject = 0;
 	
 	/** The table containing all Quests began by the Player */
-	private final Map<String, QuestState> _quests = new ConcurrentHashMap<>();
+	private final Map<String, QuestState> _quests = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
 	
 	/** The list containing all shortCuts of this player. */
 	private final ShortCuts _shortCuts = new ShortCuts(this);
@@ -864,6 +863,7 @@ public class Player extends Playable
 	private final AtomicBoolean _autoPlaying = new AtomicBoolean();
 	
 	private final List<QuestTimer> _questTimers = new ArrayList<>();
+	private final List<TimerHolder<?>> _timerHolders = new ArrayList<>();
 	
 	// Selling buffs system
 	private boolean _isSellingBuffs = false;
@@ -914,7 +914,7 @@ public class Player extends Playable
 		// Set the base class ID to that of the actual class ID.
 		player.setBaseClass(player.getClassId());
 		// Kept for backwards compatibility.
-		player.setNewbie(1);
+		player.setNewbie(Config.ALT_GAME_NEW_CHAR_ALWAYS_IS_NEWBIE || (CharInfoTable.getInstance().accountCharNumber(accountName) == 0));
 		// Add the player in the characters table of the database
 		return player.createDb() ? player : null;
 	}
@@ -1077,20 +1077,21 @@ public class Player extends Playable
 	}
 	
 	/**
-	 * @return the _newbie rewards state of the Player.
+	 * Return the _newbie state of the Player.
+	 * @return true, if is newbie.
 	 */
-	public int getNewbie()
+	public boolean isNewbie()
 	{
-		return _newbie;
+		return Config.ALT_GAME_NEW_CHAR_ALWAYS_IS_NEWBIE || _newbie;
 	}
 	
 	/**
-	 * Set the _newbie rewards state of the Player.
-	 * @param newbieRewards The Identifier of the _newbie state
+	 * Set the _newbie state of the Player.
+	 * @param isNewbie The Identifier of the _newbie state.
 	 */
-	public void setNewbie(int newbieRewards)
+	public void setNewbie(boolean isNewbie)
 	{
-		_newbie = newbieRewards;
+		_newbie = isNewbie;
 	}
 	
 	public void setBaseClass(int baseClass)
@@ -1317,10 +1318,15 @@ public class Player extends Playable
 			return;
 		}
 		
-		if (_questNpcObject > 0)
+		final Npc target = _lastFolkNpc;
+		if ((target != null) && isInsideRadius2D(target, Npc.INTERACTION_DISTANCE))
+		{
+			quest.notifyEvent(event, target, this);
+		}
+		else if (_questNpcObject > 0)
 		{
 			final WorldObject object = World.getInstance().findObject(getLastQuestNpcObject());
-			if (object.isNpc() && isInsideRadius2D(object, Npc.INTERACTION_DISTANCE))
+			if ((object != null) && object.isNpc() && isInsideRadius2D(object, Npc.INTERACTION_DISTANCE))
 			{
 				final Npc npc = (Npc) object;
 				quest.notifyEvent(event, npc, this);
@@ -2278,7 +2284,7 @@ public class Player extends Playable
 			setClassTemplate(id);
 			if (getClassId().level() == 3)
 			{
-				sendPacket(SystemMessageId.CONGRATULATIONS_YOU_VE_COMPLETED_YOUR_THIRD_CLASS_TRANSFER_QUEST);
+				sendPacket(SystemMessageId.CONGRATULATIONS_YOU_VE_COMPLETED_THE_THIRD_CLASS_TRANSFER_QUEST);
 			}
 			else
 			{
@@ -2417,47 +2423,47 @@ public class Player extends Playable
 		if ((classId >= 0x00) && (classId <= 0x09))
 		{
 			// human fighter fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(246);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(246);
 		}
 		else if ((classId >= 0x0a) && (classId <= 0x11))
 		{
 			// human mage fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(251);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(251);
 		}
 		else if ((classId >= 0x12) && (classId <= 0x18))
 		{
 			// elven fighter fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(244);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(244);
 		}
 		else if ((classId >= 0x19) && (classId <= 0x1e))
 		{
 			// elven mage fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(249);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(249);
 		}
 		else if ((classId >= 0x1f) && (classId <= 0x25))
 		{
 			// dark elven fighter fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(245);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(245);
 		}
 		else if ((classId >= 0x26) && (classId <= 0x2b))
 		{
 			// dark elven mage fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(250);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(250);
 		}
 		else if ((classId >= 0x2c) && (classId <= 0x30))
 		{
 			// orc fighter fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(248);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(248);
 		}
 		else if ((classId >= 0x31) && (classId <= 0x34))
 		{
 			// orc mage fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(252);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(252);
 		}
 		else if ((classId >= 0x35) && (classId <= 0x39))
 		{
 			// dwarven fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(247);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(247);
 		}
 		return weaponItem;
 	}
@@ -3128,7 +3134,7 @@ public class Player extends Playable
 	{
 		if (count > 0)
 		{
-			final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+			final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 			if (item == null)
 			{
 				LOGGER.severe("Item doesn't exist so cannot be added. Item ID: " + itemId);
@@ -3783,7 +3789,7 @@ public class Player extends Playable
 		
 		if (_inOlympiadMode && skill.isBlockedInOlympiad())
 		{
-			sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_SKILL_IN_A_GRAND_OLYMPIAD_MATCH);
+			sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_SKILL_IN_A_GRAND_OLYMPIAD_GAMES_MATCH);
 			return false;
 		}
 		
@@ -3901,7 +3907,7 @@ public class Player extends Playable
 			Collection<Player> players = World.getInstance().getVisibleObjects(this, Player.class);
 			if ((players != null) && !players.isEmpty())
 			{
-				final ExOlympiadUserInfo olyInfo = new ExOlympiadUserInfo(this);
+				final ExOlympiadUserInfo olyInfo = new ExOlympiadUserInfo(this, 1);
 				for (Player player : players)
 				{
 					if ((player != null) && player.isInOlympiadMode() && (player.getOlympiadGameId() == _olympiadGameId))
@@ -3914,7 +3920,7 @@ public class Player extends Playable
 			players = Olympiad.getInstance().getSpectators(_olympiadGameId);
 			if ((players != null) && !players.isEmpty())
 			{
-				final ExOlympiadUserInfo olyInfo = new ExOlympiadUserInfo(this);
+				final ExOlympiadUserInfo olyInfo = new ExOlympiadUserInfo(this, getOlympiadSide());
 				for (Player spectator : players)
 				{
 					if (spectator == null)
@@ -4007,6 +4013,19 @@ public class Player extends Playable
 		
 		// Send a Server->Client packet TitleUpdate to all known players.
 		broadcastPacket(new NicknameChanged(this));
+	}
+	
+	public void broadcastMessage(String text)
+	{
+		World.getInstance().forEachVisibleObject(this, Player.class, player ->
+		{
+			if (!isVisibleFor(player))
+			{
+				return;
+			}
+			
+			player.sendMessage(text);
+		});
 	}
 	
 	@Override
@@ -4167,7 +4186,7 @@ public class Player extends Playable
 	 */
 	public void doAutoLoot(Attackable target, int itemId, int itemCount)
 	{
-		if (isInParty() && !ItemTable.getInstance().getTemplate(itemId).hasExImmediateEffect())
+		if (isInParty() && !ItemData.getInstance().getTemplate(itemId).hasExImmediateEffect())
 		{
 			_party.distributeItem(this, itemId, itemCount, false, target);
 		}
@@ -4302,7 +4321,7 @@ public class Player extends Playable
 			{
 				LOGGER.warning("No item handler registered for item ID: " + target.getId() + ".");
 			}
-			ItemTable.getInstance().destroyItem("Consume", target, this, null);
+			ItemData.getInstance().destroyItem("Consume", target, this, null);
 		}
 		// Cursed Weapons are not distributed
 		else if (CursedWeaponsManager.getInstance().isCursed(target.getId()))
@@ -4316,13 +4335,13 @@ public class Player extends Playable
 			{
 				if (target.getEnchantLevel() > 0)
 				{
-					smsg = new SystemMessage(SystemMessageId.ATTENTION_C1_HAS_PICKED_UP_S2_S3);
+					smsg = new SystemMessage(SystemMessageId.ATTENTION_S1_PICKED_UP_S2_S3);
 					smsg.addPcName(this);
 					smsg.addInt(target.getEnchantLevel());
 				}
 				else
 				{
-					smsg = new SystemMessage(SystemMessageId.ATTENTION_C1_HAS_PICKED_UP_S2);
+					smsg = new SystemMessage(SystemMessageId.ATTENTION_S1_PICKED_UP_S2);
 					smsg.addPcName(this);
 				}
 				smsg.addItemName(target.getId());
@@ -4337,7 +4356,7 @@ public class Player extends Playable
 			else if ((target.getId() == Inventory.ADENA_ID) && (_inventory.getAdenaInstance() != null))
 			{
 				addAdena("Pickup", target.getCount(), null, true);
-				ItemTable.getInstance().destroyItem("Pickup", target, this, null);
+				ItemData.getInstance().destroyItem("Pickup", target, this, null);
 			}
 			else
 			{
@@ -5602,7 +5621,7 @@ public class Player extends Playable
 		_activeTradeList = new TradeList(this);
 		_activeTradeList.setPartner(partner);
 		
-		final SystemMessage msg = new SystemMessage(SystemMessageId.YOU_BEGIN_TRADING_WITH_C1);
+		final SystemMessage msg = new SystemMessage(SystemMessageId.YOU_BEGIN_TRADING_WITH_S1);
 		msg.addPcName(partner);
 		sendPacket(msg);
 		sendPacket(new TradeStart(this));
@@ -5610,7 +5629,7 @@ public class Player extends Playable
 	
 	public void onTradeConfirm(Player partner)
 	{
-		final SystemMessage msg = new SystemMessage(SystemMessageId.C1_HAS_CONFIRMED_THE_TRADE);
+		final SystemMessage msg = new SystemMessage(SystemMessageId.S1_HAS_CONFIRMED_THE_TRADE);
 		msg.addPcName(partner);
 		sendPacket(msg);
 		sendPacket(TradeOtherDone.STATIC_PACKET);
@@ -5626,7 +5645,7 @@ public class Player extends Playable
 		_activeTradeList.lock();
 		_activeTradeList = null;
 		sendPacket(new TradeDone(0));
-		final SystemMessage msg = new SystemMessage(SystemMessageId.C1_HAS_CANCELLED_THE_TRADE);
+		final SystemMessage msg = new SystemMessage(SystemMessageId.S1_HAS_CANCELED_THE_TRADE);
 		msg.addPcName(partner);
 		sendPacket(msg);
 	}
@@ -5637,7 +5656,7 @@ public class Player extends Playable
 		sendPacket(new TradeDone(1));
 		if (successfull)
 		{
-			sendPacket(SystemMessageId.YOUR_TRADE_WAS_SUCCESSFUL);
+			sendPacket(SystemMessageId.YOUR_TRADE_IS_SUCCESSFUL);
 		}
 	}
 	
@@ -6087,7 +6106,7 @@ public class Player extends Playable
 			else if (!Util.checkIfInRange(200, this, pet, true))
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
-				sendPacket(SystemMessageId.YOU_ARE_TOO_FAR_AWAY_FROM_YOUR_MOUNT_TO_RIDE);
+				sendPacket(SystemMessageId.YOU_ARE_TOO_FAR_AWAY_FROM_THE_STRIDER_TO_MOUNT_IT);
 				return false;
 			}
 			else if (!pet.isDead() && !isMounted())
@@ -6104,7 +6123,7 @@ public class Player extends Playable
 			if ((_mountType == MountType.WYVERN) && isInsideZone(ZoneId.NO_LANDING))
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
-				sendPacket(SystemMessageId.YOU_ARE_NOT_ALLOWED_TO_DISMOUNT_IN_THIS_LOCATION);
+				sendPacket(SystemMessageId.YOU_ARE_NOT_ALLOWED_TO_DISMOUNT_AT_THIS_LOCATION);
 				return false;
 			}
 			else if (isHungry())
@@ -6127,7 +6146,7 @@ public class Player extends Playable
 		{
 			if (!isInWater() && (getZ() > 10000))
 			{
-				sendPacket(SystemMessageId.YOU_ARE_NOT_ALLOWED_TO_DISMOUNT_IN_THIS_LOCATION);
+				sendPacket(SystemMessageId.YOU_ARE_NOT_ALLOWED_TO_DISMOUNT_AT_THIS_LOCATION);
 				sendPacket(ActionFailed.STATIC_PACKET);
 				return false;
 			}
@@ -6445,7 +6464,7 @@ public class Player extends Playable
 			ps.setInt(31, _clanPrivileges.getBitmask());
 			ps.setInt(32, _wantsPeace);
 			ps.setInt(33, _baseClass);
-			ps.setInt(34, _newbie);
+			ps.setInt(34, _newbie ? 1 : 0);
 			ps.setInt(35, _noble ? 1 : 0);
 			ps.setLong(36, 0);
 			ps.setTimestamp(37, new Timestamp(_createDate.getTimeInMillis()));
@@ -6505,7 +6524,7 @@ public class Player extends Playable
 					player.setPvpKills(rset.getInt("pvpkills"));
 					player.setPkKills(rset.getInt("pkkills"));
 					player.setOnlineTime(rset.getLong("onlinetime"));
-					player.setNewbie(rset.getInt("newbie"));
+					player.setNewbie(rset.getInt("newbie") == 1);
 					player.setNoble(rset.getInt("nobless") == 1);
 					
 					final int factionId = rset.getInt("faction");
@@ -6989,7 +7008,7 @@ public class Player extends Playable
 				totalOnlineTime += (System.currentTimeMillis() - _onlineBeginTime) / 1000;
 			}
 			ps.setLong(35, _offlineShopStart > 0 ? _onlineTime : totalOnlineTime);
-			ps.setInt(36, _newbie);
+			ps.setInt(36, _newbie ? 1 : 0);
 			ps.setInt(37, _noble ? 1 : 0);
 			ps.setInt(38, _powerGrade);
 			ps.setInt(39, _pledgeType);
@@ -7913,7 +7932,7 @@ public class Player extends Playable
 		
 		if (AttackStanceTaskManager.getInstance().hasAttackStanceTask(this) && !(isGM() && Config.GM_RESTART_FIGHTING))
 		{
-			sendPacket(SystemMessageId.YOU_CANNOT_EXIT_THE_GAME_WHILE_IN_COMBAT);
+			sendPacket(SystemMessageId.YOU_CANNOT_EXIT_WHILE_IN_COMBAT);
 			return false;
 		}
 		
@@ -8352,7 +8371,6 @@ public class Player extends Playable
 		// Check if this skill is enabled (ex : reuse time)
 		if (isSkillDisabled(skill))
 		{
-			final SystemMessage sm;
 			if (hasSkillReuse(skill.getReuseHashCode()))
 			{
 				final int remainingTime = (int) (getSkillRemainingReuseTime(skill.getReuseHashCode()) / 1000);
@@ -8361,32 +8379,23 @@ public class Player extends Playable
 				final int seconds = remainingTime % 60;
 				if (hours > 0)
 				{
-					sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_HOUR_S_S3_MINUTE_S_AND_S4_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
-					sm.addSkillName(skill);
-					sm.addInt(hours);
-					sm.addInt(minutes);
+					sendMessage("There are " + hours + " hour(s), " + minutes + " minute(s), and " + seconds + " second(s) remaining in " + skill + "'s re-use time.");
 				}
 				else if (minutes > 0)
 				{
-					sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_MINUTE_S_S3_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
-					sm.addSkillName(skill);
-					sm.addInt(minutes);
+					sendMessage("There are " + minutes + " minute(s), " + seconds + " second(s) remaining in " + skill + "'s re-use time.");
 				}
 				else
 				{
-					sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
-					sm.addSkillName(skill);
+					sendMessage("There are " + seconds + " second(s) remaining in " + skill + "'s re-use time.");
 				}
-				
-				sm.addInt(seconds);
 			}
 			else
 			{
-				sm = new SystemMessage(SystemMessageId.S1_IS_NOT_AVAILABLE_AT_THIS_TIME_BEING_PREPARED_FOR_REUSE);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_NOT_AVAILABLE_AT_THIS_TIME_BEING_PREPARED_FOR_REUSE);
 				sm.addSkillName(skill);
+				sendPacket(sm);
 			}
-			
-			sendPacket(sm);
 			return false;
 		}
 		
@@ -8422,7 +8431,7 @@ public class Player extends Playable
 			
 			if (isSiegeFriend(target))
 			{
-				sendPacket(SystemMessageId.FORCE_ATTACK_IS_IMPOSSIBLE_AGAINST_A_TEMPORARY_ALLIED_MEMBER_DURING_A_SIEGE);
+				sendMessage("Force attack is impossible against a temporary allied member during a siege.");
 				sendPacket(ActionFailed.STATIC_PACKET);
 				return false;
 			}
@@ -8524,7 +8533,7 @@ public class Player extends Playable
 				if (target.isPlayable() && !getAccessLevel().allowPeaceAttack() && !checkPvpSkill(target, skill))
 				{
 					// Send a System Message to the player
-					sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+					sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 					
 					// Send a Server->Client packet ActionFailed to the player
 					sendPacket(ActionFailed.STATIC_PACKET);
@@ -8624,7 +8633,7 @@ public class Player extends Playable
 			// Siege
 			if (isSiegeFriend(targetPlayer))
 			{
-				sendPacket(SystemMessageId.FORCE_ATTACK_IS_IMPOSSIBLE_AGAINST_A_TEMPORARY_ALLIED_MEMBER_DURING_A_SIEGE);
+				sendMessage("Force attack is impossible against a temporary allied member during a siege.");
 				return false;
 			}
 			
@@ -8959,7 +8968,7 @@ public class Player extends Playable
 	{
 		for (int itemId : _activeSoulShots)
 		{
-			if (ItemTable.getInstance().getTemplate(itemId).getCrystalType().getLevel() == crystalType)
+			if (ItemData.getInstance().getTemplate(itemId).getCrystalType().getLevel() == crystalType)
 			{
 				disableAutoShot(itemId);
 			}
@@ -9427,47 +9436,47 @@ public class Player extends Playable
 	{
 		if (isInCombat() || isJailed())
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_IS_CURRENTLY_ENGAGED_IN_BATTLE;
+			_noDuelReason = SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_IS_CURRENTLY_ENGAGED_IN_BATTLE;
 			return false;
 		}
 		if (isDead() || isAlikeDead() || ((getCurrentHp() < (getMaxHp() / 2)) || (getCurrentMp() < (getMaxMp() / 2))))
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_S_HP_OR_MP_IS_BELOW_50;
+			_noDuelReason = SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_S_HP_OR_MP_IS_BELOW_50_PERCENT;
 			return false;
 		}
 		if (_isInDuel || _startingDuel)
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_IS_ALREADY_ENGAGED_IN_A_DUEL;
+			_noDuelReason = SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_IS_ALREADY_ENGAGED_IN_A_DUEL;
 			return false;
 		}
 		if (_inOlympiadMode)
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_IS_PARTICIPATING_IN_THE_OLYMPIAD;
+			_noDuelReason = SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_IS_PARTICIPATING_IN_THE_OLYMPIAD;
 			return false;
 		}
 		if (isCursedWeaponEquipped())
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_IS_IN_A_CHAOTIC_STATE;
+			_noDuelReason = SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_IS_IN_A_CHAOTIC_STATE;
 			return false;
 		}
 		if (_privateStoreType != PrivateStoreType.NONE)
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_IS_CURRENTLY_ENGAGED_IN_A_PRIVATE_STORE_OR_MANUFACTURE;
+			_noDuelReason = SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_IS_CURRENTLY_ENGAGED_IN_A_PRIVATE_STORE_OR_MANUFACTURE;
 			return false;
 		}
 		if (isMounted() || isInBoat())
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_IS_CURRENTLY_RIDING_A_BOAT_STEED_OR_STRIDER;
+			_noDuelReason = SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_IS_CURRENTLY_RIDING_A_BOAT_WYVERN_OR_STRIDER;
 			return false;
 		}
 		if (_fishing)
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_IS_CURRENTLY_FISHING;
+			_noDuelReason = SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_IS_CURRENTLY_FISHING;
 			return false;
 		}
 		if (isInsideZone(ZoneId.PVP) || isInsideZone(ZoneId.PEACE) || isInsideZone(ZoneId.SIEGE))
 		{
-			_noDuelReason = SystemMessageId.C1_CANNOT_MAKE_A_CHALLENGE_TO_A_DUEL_BECAUSE_C1_IS_CURRENTLY_IN_A_DUEL_PROHIBITED_AREA_PEACEFUL_ZONE_SEVEN_SIGNS_ZONE_NEAR_WATER_RESTART_PROHIBITED_AREA;
+			_noDuelReason = SystemMessageId.S1_CANNOT_MAKE_A_CHALLENGE_TO_A_DUEL_BECAUSE_S1_IS_CURRENTLY_IN_A_DUEL_PROHIBITED_AREA_PEACEFUL_ZONE_SEVEN_SIGNS_ZONE_NEAR_WATER_RESTART_PROHIBITED_AREA;
 			return false;
 		}
 		return true;
@@ -10109,10 +10118,8 @@ public class Player extends Playable
 	{
 		super.doRevive();
 		
-		if (Config.DISCONNECT_AFTER_DEATH)
-		{
-			DecayTaskManager.getInstance().cancel(this);
-		}
+		// Stop decay task.
+		DecayTaskManager.getInstance().cancel(this);
 		
 		updateEffectIcons();
 		sendPacket(new EtcStatusUpdate(this));
@@ -10179,27 +10186,18 @@ public class Player extends Playable
 			}
 			else
 			{
-				reviver.sendPacket(SystemMessageId.WHILE_A_PET_IS_BEING_RESURRECTED_IT_CANNOT_HELP_IN_RESURRECTING_ITS_MASTER); // While a pet is attempting to resurrect, it cannot help in resurrecting its master.
+				reviver.sendPacket(SystemMessageId.WHILE_A_PET_IS_ATTEMPTING_TO_RESURRECT_IT_CANNOT_HELP_IN_RESURRECTING_ITS_MASTER); // While a pet is attempting to resurrect, it cannot help in resurrecting its master.
 			}
 			return;
 		}
 		if ((pet && hasPet() && _summon.isDead()) || (!pet && isDead()))
 		{
 			_reviveRequested = 1;
-			int restoreExp = 0;
 			_revivePower = Formulas.calculateSkillResurrectRestorePercent(power, reviver);
-			restoreExp = (int) Math.round(((_expBeforeDeath - getExp()) * _revivePower) / 100);
 			_revivePet = pet;
-			if (_hasCharmOfCourage)
-			{
-				final ConfirmDlg dlg = new ConfirmDlg(SystemMessageId.YOUR_CHARM_OF_COURAGE_IS_TRYING_TO_RESURRECT_YOU_WOULD_YOU_LIKE_TO_RESURRECT_NOW.getId());
-				dlg.addTime(60000);
-				sendPacket(dlg);
-				return;
-			}
-			final ConfirmDlg dlg = new ConfirmDlg(SystemMessageId.C1_IS_MAKING_AN_ATTEMPT_TO_RESURRECT_YOU_IF_YOU_CHOOSE_THIS_PATH_S2_EXPERIENCE_POINTS_WILL_BE_RETURNED_TO_YOU_DO_YOU_WANT_TO_BE_RESURRECTED.getId());
+			
+			final ConfirmDlg dlg = new ConfirmDlg(SystemMessageId.S1_IS_MAKING_AN_ATTEMPT_AT_RESURRECTION_DO_YOU_WANT_TO_CONTINUE_WITH_THIS_RESURRECTION.getId());
 			dlg.getSystemMessage().addPcName(reviver);
-			dlg.getSystemMessage().addString(Integer.toString(restoreExp));
 			sendPacket(dlg);
 		}
 	}
@@ -11433,7 +11431,7 @@ public class Player extends Playable
 		// broadcastUserInfo();
 		if (_fishCombat == null)
 		{
-			sendPacket(SystemMessageId.THE_BAIT_HAS_BEEN_LOST_BECAUSE_THE_FISH_GOT_AWAY);
+			sendPacket(SystemMessageId.BAITS_HAVE_BEEN_LOST_BECAUSE_THE_FISH_GOT_AWAY);
 		}
 		_fishCombat = null;
 		_lure = null;
@@ -11891,7 +11889,7 @@ public class Player extends Playable
 				SystemMessage sm = null;
 				if (equippedItem.getTemplate().getBodyPart() == ItemTemplate.SLOT_BACK)
 				{
-					sendPacket(SystemMessageId.YOUR_CLOAK_HAS_BEEN_UNEQUIPPED_BECAUSE_YOUR_ARMOR_SET_IS_NO_LONGER_COMPLETE);
+					sendMessage("Your cloak has been unequipped because your armor set is no longer complete.");
 					return;
 				}
 				
@@ -12083,7 +12081,7 @@ public class Player extends Playable
 		}
 		else
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_FORCE_HAS_INCREASED_TO_LEVEL_S1);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_FORCE_HAS_INCREASED_TO_S1_LEVEL);
 			sm.addInt(_charges.get());
 			sendPacket(sm);
 		}
@@ -12499,7 +12497,7 @@ public class Player extends Playable
 			if ((_fallingDamage > 0) && !isInvul())
 			{
 				reduceCurrentHp(Math.min(_fallingDamage, getCurrentHp() - 1), null, false, true, null);
-				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_RECEIVED_S1_FALLING_DAMAGE);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_RECEIVED_S1_DAMAGE_FROM_TAKING_A_HIGH_FALL);
 				sm.addInt(_fallingDamage);
 				sendPacket(sm);
 			}
@@ -13306,6 +13304,15 @@ public class Player extends Playable
 			}
 			_questTimers.clear();
 		}
+		
+		synchronized (_timerHolders)
+		{
+			for (TimerHolder<?> timer : _timerHolders)
+			{
+				timer.cancelTask();
+			}
+			_timerHolders.clear();
+		}
 	}
 	
 	public void addQuestTimer(QuestTimer questTimer)
@@ -13321,6 +13328,22 @@ public class Player extends Playable
 		synchronized (_questTimers)
 		{
 			_questTimers.remove(questTimer);
+		}
+	}
+	
+	public void addTimerHolder(TimerHolder<?> timer)
+	{
+		synchronized (_timerHolders)
+		{
+			_timerHolders.add(timer);
+		}
+	}
+	
+	public void removeTimerHolder(TimerHolder<?> timer)
+	{
+		synchronized (_timerHolders)
+		{
+			_timerHolders.remove(timer);
 		}
 	}
 	

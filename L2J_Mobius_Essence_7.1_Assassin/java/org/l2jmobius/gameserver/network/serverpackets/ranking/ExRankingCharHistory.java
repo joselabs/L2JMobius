@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets.ranking;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.RankingHistoryDataHolder;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,23 +40,23 @@ public class ExRankingCharHistory extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_RANKING_CHAR_HISTORY.writeId(this);
-		writeInt(_history.size());
+		ServerPackets.EX_RANKING_CHAR_HISTORY.writeId(this, buffer);
+		buffer.writeInt(_history.size());
 		if (_history.isEmpty())
 		{
-			writeByte(0);
-			writeByte(0);
-			writeByte(0);
+			buffer.writeByte(0);
+			buffer.writeByte(0);
+			buffer.writeByte(0);
 		}
 		else
 		{
 			for (RankingHistoryDataHolder rankingData : _history)
 			{
-				writeInt((int) (rankingData.getDay()));
-				writeInt(rankingData.getRank());
-				writeLong(rankingData.getExp());
+				buffer.writeInt((int) (rankingData.getDay()));
+				buffer.writeInt(rankingData.getRank());
+				buffer.writeLong(rankingData.getExp());
 			}
 		}
 	}

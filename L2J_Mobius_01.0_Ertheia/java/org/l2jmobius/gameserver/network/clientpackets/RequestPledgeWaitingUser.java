@@ -16,33 +16,31 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.ClanEntryManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.entry.PledgeApplicantInfo;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.ExPledgeWaitingList;
 import org.l2jmobius.gameserver.network.serverpackets.ExPledgeWaitingUser;
 
 /**
  * @author Sdw
  */
-public class RequestPledgeWaitingUser implements ClientPacket
+public class RequestPledgeWaitingUser extends ClientPacket
 {
 	private int _clanId;
 	private int _playerId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_clanId = packet.readInt();
-		_playerId = packet.readInt();
+		_clanId = readInt();
+		_playerId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || (player.getClanId() != _clanId))
 		{
 			return;

@@ -124,7 +124,7 @@ public class Heal extends AbstractEffect
 			{
 				if (creature.isPlayer() && (creature != target))
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.S2_HP_HAS_BEEN_RESTORED_BY_C1);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.S2_HP_HAS_BEEN_RESTORED_BY_S1);
 					sm.addString(creature.getName());
 					sm.addInt((int) amount);
 					target.sendPacket(sm);

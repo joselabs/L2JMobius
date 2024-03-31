@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.orcfortress;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -38,12 +40,12 @@ public class OrcFortressSiegeInfoHUD extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_ADEN_FORTRESS_SIEGE_HUD_INFO.writeId(this);
-		writeInt(_fortressId);
-		writeInt(_siegeState);
-		writeInt(_nowTime);
-		writeInt(_remainTime);
+		ServerPackets.EX_ADEN_FORTRESS_SIEGE_HUD_INFO.writeId(this, buffer);
+		buffer.writeInt(_fortressId);
+		buffer.writeInt(_siegeState);
+		buffer.writeInt(_nowTime);
+		buffer.writeInt(_remainTime);
 	}
 }

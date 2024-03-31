@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -35,11 +37,11 @@ public class TradeUpdate extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.TRADE_UPDATE.writeId(this);
-		writeShort(1);
-		writeShort((_newCount > 0) && _item.getItem().isStackable() ? 3 : 2);
-		writeItem(_item);
+		ServerPackets.TRADE_UPDATE.writeId(this, buffer);
+		buffer.writeShort(1);
+		buffer.writeShort((_newCount > 0) && _item.getItem().isStackable() ? 3 : 2);
+		writeItem(_item, buffer);
 	}
 }

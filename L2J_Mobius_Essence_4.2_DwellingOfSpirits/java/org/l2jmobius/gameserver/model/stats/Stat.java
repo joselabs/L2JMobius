@@ -433,15 +433,15 @@ public enum Stat
 	
 	public static double defaultValue(Creature creature, OptionalDouble base, Stat stat)
 	{
-		final double mul = creature.getStat().getMul(stat);
-		final double add = creature.getStat().getAdd(stat);
+		final double mul = creature.getStat().getMulValue(stat);
+		final double add = creature.getStat().getAddValue(stat);
 		return base.isPresent() ? defaultValue(creature, stat, base.getAsDouble()) : mul * (add + creature.getStat().getMoveTypeValue(stat, creature.getMoveType()));
 	}
 	
 	public static double defaultValue(Creature creature, Stat stat, double baseValue)
 	{
-		final double mul = creature.getStat().getMul(stat);
-		final double add = creature.getStat().getAdd(stat);
+		final double mul = creature.getStat().getMulValue(stat);
+		final double add = creature.getStat().getAddValue(stat);
 		return (mul * baseValue) + add + creature.getStat().getMoveTypeValue(stat, creature.getMoveType());
 	}
 }

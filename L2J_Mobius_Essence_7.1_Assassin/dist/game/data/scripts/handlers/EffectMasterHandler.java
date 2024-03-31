@@ -247,7 +247,9 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("MaxHp", MaxHp::new);
 		EffectHandler.getInstance().registerHandler("MaxMp", MaxMp::new);
 		EffectHandler.getInstance().registerHandler("ModifyAssassinationPoints", ModifyAssassinationPoints::new);
+		EffectHandler.getInstance().registerHandler("ModifyAssassinationPointsMax", ModifyAssassinationPointsMax::new);
 		EffectHandler.getInstance().registerHandler("ModifyBeastPoints", ModifyBeastPoints::new);
+		EffectHandler.getInstance().registerHandler("ModifyBeastPointsMax", ModifyBeastPointsMax::new);
 		EffectHandler.getInstance().registerHandler("ModifyCraftPoints", ModifyCraftPoints::new);
 		EffectHandler.getInstance().registerHandler("ModifyDeathPoints", ModifyDeathPoints::new);
 		EffectHandler.getInstance().registerHandler("ModifyMagicLampPoints", ModifyMagicLampPoints::new);

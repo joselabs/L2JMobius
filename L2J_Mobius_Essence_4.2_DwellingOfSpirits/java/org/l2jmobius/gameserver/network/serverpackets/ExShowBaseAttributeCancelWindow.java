@@ -19,8 +19,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ExShowBaseAttributeCancelWindow extends ServerPacket
@@ -40,14 +42,14 @@ public class ExShowBaseAttributeCancelWindow extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SHOW_BASE_ATTRIBUTE_CANCEL_WINDOW.writeId(this);
-		writeInt(_items.size());
+		ServerPackets.EX_SHOW_BASE_ATTRIBUTE_CANCEL_WINDOW.writeId(this, buffer);
+		buffer.writeInt(_items.size());
 		for (Item item : _items)
 		{
-			writeInt(item.getObjectId());
-			writeLong(getPrice(item));
+			buffer.writeInt(item.getObjectId());
+			buffer.writeLong(getPrice(item));
 		}
 	}
 	

@@ -31,7 +31,6 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.HuntPassData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSimpleInfo;
 
 /**
@@ -96,6 +95,19 @@ public class HuntPass
 		{
 			LOGGER.log(Level.SEVERE, "Could not restore Season Pass for playerId: " + _user.getAccountName());
 		}
+	}
+	
+	public void resetHuntPass()
+	{
+		setPoints(0);
+		setCurrentStep(0);
+		setRewardStep(0);
+		setPremium(false);
+		setPremiumRewardStep(0);
+		setAvailableSayhaTime(0);
+		setUsedSayhaTime(0);
+		setRewardAlert(false);
+		store();
 	}
 	
 	public String getAccountName()
@@ -302,7 +314,7 @@ public class HuntPass
 				_sayhasSustentionTask.cancel(true);
 				_sayhasSustentionTask = null;
 			}
-			_user.sendPacket(new SystemMessage(SystemMessageId.SAYHA_S_GRACE_SUSTENTION_EFFECT_OF_THE_SEASON_PASS_IS_ACTIVATED_AVAILABLE_SAYHA_S_GRACE_SUSTENTION_TIME_IS_BEING_CONSUMED));
+			_user.sendPacket(SystemMessageId.SAYHA_S_GRACE_SUSTENTION_EFFECT_OF_THE_SEASON_PASS_IS_ACTIVATED_AVAILABLE_SAYHA_S_GRACE_SUSTENTION_TIME_IS_BEING_CONSUMED);
 			_sayhasSustentionTask = ThreadPool.schedule(this::onSayhaEndTime, Math.max(0, getAvailableSayhaTime() - getUsedSayhaTime()) * 1000L);
 		}
 		else
@@ -313,7 +325,7 @@ public class HuntPass
 				_toggleStartTime = 0;
 				_sayhasSustentionTask.cancel(true);
 				_sayhasSustentionTask = null;
-				_user.sendPacket(new SystemMessage(SystemMessageId.SAYHA_S_GRACE_SUSTENTION_EFFECT_OF_THE_SEASON_PASS_HAS_BEEN_DEACTIVATED_THE_SUSTENTION_TIME_YOU_HAVE_DOES_NOT_DECREASE));
+				_user.sendPacket(SystemMessageId.SAYHA_S_GRACE_SUSTENTION_EFFECT_OF_THE_SEASON_PASS_HAS_BEEN_DEACTIVATED_THE_SUSTENTION_TIME_YOU_HAVE_DOES_NOT_DECREASE);
 			}
 		}
 	}

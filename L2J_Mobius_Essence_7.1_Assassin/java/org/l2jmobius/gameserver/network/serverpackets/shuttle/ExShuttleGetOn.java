@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.shuttle;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Shuttle;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -39,13 +41,13 @@ public class ExShuttleGetOn extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SUTTLE_GET_ON.writeId(this);
-		writeInt(_playerObjectId);
-		writeInt(_shuttleObjectId);
-		writeInt(_pos.getX());
-		writeInt(_pos.getY());
-		writeInt(_pos.getZ());
+		ServerPackets.EX_SUTTLE_GET_ON.writeId(this, buffer);
+		buffer.writeInt(_playerObjectId);
+		buffer.writeInt(_shuttleObjectId);
+		buffer.writeInt(_pos.getX());
+		buffer.writeInt(_pos.getY());
+		buffer.writeInt(_pos.getZ());
 	}
 }

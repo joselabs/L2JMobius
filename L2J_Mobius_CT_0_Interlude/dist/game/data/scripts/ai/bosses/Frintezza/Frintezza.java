@@ -1038,7 +1038,7 @@ public class Frintezza extends AbstractNpcAI
 					if ((cha instanceof Player) && (Rnd.get(100) < 80))
 					{
 						skill.applyEffects(_frintezza, cha);
-						cha.sendPacket(new SystemMessage(SystemMessageId.S1_S_EFFECT_CAN_BE_FELT).addSkillName(5008, 4));
+						cha.sendPacket(new SystemMessage(SystemMessageId.THE_EFFECTS_OF_S1_FLOW_THROUGH_YOU).addSkillName(5008, 4));
 					}
 				}
 			}
@@ -1057,7 +1057,7 @@ public class Frintezza extends AbstractNpcAI
 						cha.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 						skill.applyEffects(_frintezza, cha);
 						cha.startAbnormalVisualEffect(true, AbnormalVisualEffect.DANCE_ROOT);
-						cha.sendPacket(new SystemMessage(SystemMessageId.S1_S_EFFECT_CAN_BE_FELT).addSkillName(5008, 5));
+						cha.sendPacket(new SystemMessage(SystemMessageId.THE_EFFECTS_OF_S1_FLOW_THROUGH_YOU).addSkillName(5008, 5));
 					}
 				}
 				startQuestTimer("stop_effect", 25000, _frintezza, null);

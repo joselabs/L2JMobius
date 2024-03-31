@@ -188,7 +188,7 @@ public enum ClientPackets
 	REQUEST_SEND_FRIEND_MSG(0xCC, RequestSendFriendMsg::new, ConnectionState.IN_GAME),
 	REQUEST_SHOW_MINI_MAP(0xCD, RequestShowMiniMap::new, ConnectionState.IN_GAME),
 	REQUEST_RECORD_INFO(0xCF, RequestRecordInfo::new, ConnectionState.IN_GAME),
-	EX_PACKET(0xD0, ExPacket::new, ConnectionState.values()); // This packet has its own connection state checking so we allow all of them
+	EX_PACKET(0xD0, null, ConnectionState.values()); // This packet has its own connection state checking so we allow all of them.
 	
 	public static final ClientPackets[] PACKET_ARRAY;
 	static
@@ -201,9 +201,9 @@ public enum ClientPackets
 		}
 	}
 	
-	private int _packetId;
-	private Supplier<ClientPacket> _packetSupplier;
-	private Set<ConnectionState> _connectionStates;
+	private final int _packetId;
+	private final Supplier<ClientPacket> _packetSupplier;
+	private final Set<ConnectionState> _connectionStates;
 	
 	ClientPackets(int packetId, Supplier<ClientPacket> packetSupplier, ConnectionState... connectionStates)
 	{

@@ -35,7 +35,7 @@ import org.l2jmobius.gameserver.ai.AttackableAI;
 import org.l2jmobius.gameserver.ai.CreatureAI;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.MagicLampData;
 import org.l2jmobius.gameserver.data.xml.RaidDropAnnounceData;
 import org.l2jmobius.gameserver.enums.ChatType;
@@ -618,7 +618,6 @@ public class Attackable extends Npc
 											attacker.updateVitalityPoints(getVitalityPoints(attacker.getLevel(), exp, _isRaid), true, false);
 										}
 										PcCafePointsManager.getInstance().givePcCafePoint(attacker, exp);
-										MagicLampData.getInstance().addLampExp(attacker, exp, true);
 										
 										final HuntPass huntPass = attacker.getHuntPass();
 										if (huntPass != null)
@@ -633,7 +632,7 @@ public class Attackable extends Npc
 										}
 									}
 								}
-								
+								MagicLampData.getInstance().addLampExp(attacker, exp, true);
 								rewardAttributeExp(attacker, damage, totalDamage);
 							}
 						}
@@ -1166,7 +1165,7 @@ public class Attackable extends Npc
 				{
 					for (ItemHolder drop : deathItems)
 					{
-						final ItemTemplate item = ItemTable.getInstance().getTemplate(drop.getId());
+						final ItemTemplate item = ItemData.getInstance().getTemplate(drop.getId());
 						// Check if the autoLoot mode is active
 						if (Config.AUTO_LOOT_ITEM_IDS.contains(item.getId()) || isFlying() || (!item.hasExImmediateEffect() && ((!_isRaid && Config.AUTO_LOOT) || (_isRaid && Config.AUTO_LOOT_RAIDS))))
 						{
@@ -1207,7 +1206,7 @@ public class Attackable extends Npc
 			List<Integer> announceItems = null;
 			for (ItemHolder drop : deathItems)
 			{
-				final ItemTemplate item = ItemTable.getInstance().getTemplate(drop.getId());
+				final ItemTemplate item = ItemData.getInstance().getTemplate(drop.getId());
 				// Check if the autoLoot mode is active
 				if (Config.AUTO_LOOT_ITEM_IDS.contains(item.getId()) || isFlying() || (!item.hasExImmediateEffect() && ((!_isRaid && Config.AUTO_LOOT) || (_isRaid && Config.AUTO_LOOT_RAIDS))) || (item.hasExImmediateEffect() && Config.AUTO_LOOT_HERBS))
 				{
@@ -1253,7 +1252,7 @@ public class Attackable extends Npc
 				{
 					for (ItemHolder drop : fortuneItems)
 					{
-						final ItemTemplate item = ItemTable.getInstance().getTemplate(drop.getId());
+						final ItemTemplate item = ItemData.getInstance().getTemplate(drop.getId());
 						// Check if the autoLoot mode is active.
 						if (Config.AUTO_LOOT_ITEM_IDS.contains(item.getId()) || isFlying() || (!item.hasExImmediateEffect() && ((!_isRaid && Config.AUTO_LOOT) || (_isRaid && Config.AUTO_LOOT_RAIDS))) || (item.hasExImmediateEffect() && Config.AUTO_LOOT_HERBS))
 						{
@@ -1331,7 +1330,7 @@ public class Attackable extends Npc
 		{
 			for (ItemHolder item : sweepItems)
 			{
-				lootItems.add(ItemTable.getInstance().getTemplate(item.getId()));
+				lootItems.add(ItemData.getInstance().getTemplate(item.getId()));
 			}
 		}
 		return lootItems;

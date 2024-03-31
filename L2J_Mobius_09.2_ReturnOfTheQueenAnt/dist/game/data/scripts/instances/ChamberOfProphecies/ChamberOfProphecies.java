@@ -192,12 +192,13 @@ public class ChamberOfProphecies extends AbstractInstance
 			case "CHECK_STATUS":
 			{
 				final Instance world = player.getInstanceWorld();
-				final FriendlyNpc ferin = (FriendlyNpc) world.getNpc(HELPER_FERIN);
-				final FriendlyNpc vanHalter = (FriendlyNpc) world.getNpc(HELPER_VAN_HALTER);
 				if (!isInInstance(world))
 				{
 					return null;
 				}
+				
+				final FriendlyNpc ferin = (FriendlyNpc) world.getNpc(HELPER_FERIN);
+				final FriendlyNpc vanHalter = (FriendlyNpc) world.getNpc(HELPER_VAN_HALTER);
 				switch (world.getStatus())
 				{
 					case 0:

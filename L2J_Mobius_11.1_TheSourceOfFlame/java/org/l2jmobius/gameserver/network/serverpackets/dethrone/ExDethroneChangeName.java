@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.dethrone;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -34,10 +36,10 @@ public class ExDethroneChangeName extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_DETHRONE_CHANGE_NAME.writeId(this);
-		writeByte(_success);
-		writeString(_conquestName);
+		ServerPackets.EX_DETHRONE_CHANGE_NAME.writeId(this, buffer);
+		buffer.writeByte(_success);
+		buffer.writeString(_conquestName);
 	}
 }

@@ -27,7 +27,7 @@ public enum SpecialItemType
 	FIELD_CYCLE_POINTS(-400),
 	RAIDBOSS_POINTS(-500);
 	
-	private int _clientId;
+	private final int _clientId;
 	
 	private SpecialItemType(int clientId)
 	{

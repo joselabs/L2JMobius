@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.model.SiegeClan;
@@ -25,6 +26,7 @@ import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -98,16 +100,16 @@ public class Die extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.DIE.writeId(this);
-		writeInt(_objectId);
-		writeLong(_flags);
-		writeInt(_isSweepable ? 1 : 0);
-		writeInt(_delayFeather); // Feather item time.
-		writeByte(0); // Hide die animation.
-		writeInt(0);
-		writeInt(0);
-		writeInt(0);
+		ServerPackets.DIE.writeId(this, buffer);
+		buffer.writeInt(_objectId);
+		buffer.writeLong(_flags);
+		buffer.writeInt(_isSweepable ? 1 : 0);
+		buffer.writeInt(_delayFeather); // Feather item time.
+		buffer.writeByte(0); // Hide die animation.
+		buffer.writeInt(0);
+		buffer.writeInt(0);
+		buffer.writeInt(0);
 	}
 }

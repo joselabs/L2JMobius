@@ -55,7 +55,6 @@ import org.l2jmobius.gameserver.ai.SummonAI;
 import org.l2jmobius.gameserver.cache.RelationCache;
 import org.l2jmobius.gameserver.communitybbs.BB.Forum;
 import org.l2jmobius.gameserver.communitybbs.Manager.ForumsBBSManager;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.sql.CharSummonTable;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
@@ -67,6 +66,7 @@ import org.l2jmobius.gameserver.data.xml.EnchantSkillGroupsData;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.FishData;
 import org.l2jmobius.gameserver.data.xml.HennaData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.data.xml.NpcNameLocalisationData;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
@@ -200,6 +200,7 @@ import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerPvPKil
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerTransform;
 import org.l2jmobius.gameserver.model.events.listeners.FunctionEventListener;
 import org.l2jmobius.gameserver.model.events.returns.TerminateReturn;
+import org.l2jmobius.gameserver.model.events.timers.TimerHolder;
 import org.l2jmobius.gameserver.model.fishing.Fish;
 import org.l2jmobius.gameserver.model.fishing.Fishing;
 import org.l2jmobius.gameserver.model.holders.AdditionalSkillHolder;
@@ -594,7 +595,7 @@ public class Player extends Playable
 	private int _questNpcObject = 0;
 	
 	/** The table containing all Quests began by the Player */
-	private final Map<String, QuestState> _quests = new ConcurrentHashMap<>();
+	private final Map<String, QuestState> _quests = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
 	
 	/** The list containing all shortCuts of this player. */
 	private final ShortCuts _shortCuts = new ShortCuts(this);
@@ -925,6 +926,7 @@ public class Player extends Playable
 	private final AtomicBoolean _autoPlaying = new AtomicBoolean();
 	
 	private final List<QuestTimer> _questTimers = new ArrayList<>();
+	private final List<TimerHolder<?>> _timerHolders = new ArrayList<>();
 	
 	// Selling buffs system
 	private boolean _isSellingBuffs = false;
@@ -1474,10 +1476,15 @@ public class Player extends Playable
 			return;
 		}
 		
-		if (_questNpcObject > 0)
+		final Npc target = _lastFolkNpc;
+		if ((target != null) && isInsideRadius2D(target, Npc.INTERACTION_DISTANCE))
+		{
+			quest.notifyEvent(event, target, this);
+		}
+		else if (_questNpcObject > 0)
 		{
 			final WorldObject object = World.getInstance().findObject(getLastQuestNpcObject());
-			if (object.isNpc() && isInsideRadius2D(object, Npc.INTERACTION_DISTANCE))
+			if ((object != null) && object.isNpc() && isInsideRadius2D(object, Npc.INTERACTION_DISTANCE))
 			{
 				final Npc npc = (Npc) object;
 				quest.notifyEvent(event, npc, this);
@@ -2460,7 +2467,7 @@ public class Player extends Playable
 			setClassTemplate(id);
 			if (getClassId().level() == 3)
 			{
-				sendPacket(SystemMessageId.CONGRATULATIONS_YOU_VE_COMPLETED_YOUR_THIRD_CLASS_TRANSFER_QUEST);
+				sendPacket(SystemMessageId.CONGRATULATIONS_YOU_VE_COMPLETED_THE_THIRD_CLASS_TRANSFER_QUEST);
 			}
 			else
 			{
@@ -2620,47 +2627,47 @@ public class Player extends Playable
 		if ((classId >= 0x00) && (classId <= 0x09))
 		{
 			// human fighter fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(246);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(246);
 		}
 		else if ((classId >= 0x0a) && (classId <= 0x11))
 		{
 			// human mage fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(251);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(251);
 		}
 		else if ((classId >= 0x12) && (classId <= 0x18))
 		{
 			// elven fighter fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(244);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(244);
 		}
 		else if ((classId >= 0x19) && (classId <= 0x1e))
 		{
 			// elven mage fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(249);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(249);
 		}
 		else if ((classId >= 0x1f) && (classId <= 0x25))
 		{
 			// dark elven fighter fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(245);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(245);
 		}
 		else if ((classId >= 0x26) && (classId <= 0x2b))
 		{
 			// dark elven mage fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(250);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(250);
 		}
 		else if ((classId >= 0x2c) && (classId <= 0x30))
 		{
 			// orc fighter fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(248);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(248);
 		}
 		else if ((classId >= 0x31) && (classId <= 0x34))
 		{
 			// orc mage fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(252);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(252);
 		}
 		else if ((classId >= 0x35) && (classId <= 0x39))
 		{
 			// dwarven fists
-			weaponItem = (Weapon) ItemTable.getInstance().getTemplate(247);
+			weaponItem = (Weapon) ItemData.getInstance().getTemplate(247);
 		}
 		return weaponItem;
 	}
@@ -3358,7 +3365,7 @@ public class Player extends Playable
 	{
 		if (count > 0)
 		{
-			final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+			final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 			if (item == null)
 			{
 				LOGGER.severe("Item doesn't exist so cannot be added. Item ID: " + itemId);
@@ -4021,7 +4028,7 @@ public class Player extends Playable
 		
 		if (_inOlympiadMode && skill.isBlockedInOlympiad())
 		{
-			sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_SKILL_IN_A_GRAND_OLYMPIAD_MATCH);
+			sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_SKILL_IN_A_GRAND_OLYMPIAD_GAMES_MATCH);
 			return false;
 		}
 		
@@ -4139,7 +4146,7 @@ public class Player extends Playable
 			Collection<Player> players = World.getInstance().getVisibleObjects(this, Player.class);
 			if ((players != null) && !players.isEmpty())
 			{
-				final ExOlympiadUserInfo olyInfo = new ExOlympiadUserInfo(this);
+				final ExOlympiadUserInfo olyInfo = new ExOlympiadUserInfo(this, 2);
 				for (Player player : players)
 				{
 					if ((player != null) && player.isInOlympiadMode() && (player.getOlympiadGameId() == _olympiadGameId))
@@ -4152,7 +4159,7 @@ public class Player extends Playable
 			players = Olympiad.getInstance().getSpectators(_olympiadGameId);
 			if ((players != null) && !players.isEmpty())
 			{
-				final ExOlympiadUserInfo olyInfo = new ExOlympiadUserInfo(this);
+				final ExOlympiadUserInfo olyInfo = new ExOlympiadUserInfo(this, getOlympiadSide());
 				for (Player spectator : players)
 				{
 					if (spectator == null)
@@ -4405,7 +4412,7 @@ public class Player extends Playable
 	 */
 	public void doAutoLoot(Attackable target, int itemId, long itemCount)
 	{
-		if (isInParty() && !ItemTable.getInstance().getTemplate(itemId).hasExImmediateEffect())
+		if (isInParty() && !ItemData.getInstance().getTemplate(itemId).hasExImmediateEffect())
 		{
 			_party.distributeItem(this, itemId, itemCount, false, target);
 		}
@@ -4546,7 +4553,7 @@ public class Player extends Playable
 			{
 				LOGGER.warning("No item handler registered for item ID: " + target.getId() + ".");
 			}
-			ItemTable.getInstance().destroyItem("Consume", target, this, null);
+			ItemData.getInstance().destroyItem("Consume", target, this, null);
 		}
 		// Cursed Weapons are not distributed
 		else if (CursedWeaponsManager.getInstance().isCursed(target.getId()))
@@ -4564,13 +4571,13 @@ public class Player extends Playable
 			{
 				if (target.getEnchantLevel() > 0)
 				{
-					smsg = new SystemMessage(SystemMessageId.ATTENTION_C1_HAS_PICKED_UP_S2_S3);
+					smsg = new SystemMessage(SystemMessageId.ANNOUNCEMENT_C1_HAS_PICKED_UP_S2_S3);
 					smsg.addPcName(this);
 					smsg.addInt(target.getEnchantLevel());
 				}
 				else
 				{
-					smsg = new SystemMessage(SystemMessageId.ATTENTION_C1_HAS_PICKED_UP_S2);
+					smsg = new SystemMessage(SystemMessageId.ANNOUNCEMENT_C1_HAS_PICKED_UP_S2);
 					smsg.addPcName(this);
 				}
 				smsg.addItemName(target.getId());
@@ -4585,7 +4592,7 @@ public class Player extends Playable
 			else if ((target.getId() == Inventory.ADENA_ID) && (_inventory.getAdenaInstance() != null))
 			{
 				addAdena("Pickup", target.getCount(), null, true);
-				ItemTable.getInstance().destroyItem("Pickup", target, this, null);
+				ItemData.getInstance().destroyItem("Pickup", target, this, null);
 			}
 			else
 			{
@@ -6001,7 +6008,7 @@ public class Player extends Playable
 		sendPacket(new TradeDone(1));
 		if (successfull)
 		{
-			sendPacket(SystemMessageId.YOUR_TRADE_WAS_SUCCESSFUL);
+			sendPacket(SystemMessageId.YOUR_TRADE_IS_SUCCESSFUL);
 		}
 	}
 	
@@ -6517,7 +6524,7 @@ public class Player extends Playable
 			if ((_mountType == MountType.WYVERN) && isInsideZone(ZoneId.NO_LANDING))
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
-				sendPacket(SystemMessageId.YOU_ARE_NOT_ALLOWED_TO_DISMOUNT_IN_THIS_LOCATION);
+				sendPacket(SystemMessageId.YOU_ARE_NOT_ALLOWED_TO_DISMOUNT_AT_THIS_LOCATION);
 				return false;
 			}
 			else if (isHungry())
@@ -6540,7 +6547,7 @@ public class Player extends Playable
 		{
 			if (!isInWater() && (getZ() > 10000))
 			{
-				sendPacket(SystemMessageId.YOU_ARE_NOT_ALLOWED_TO_DISMOUNT_IN_THIS_LOCATION);
+				sendPacket(SystemMessageId.YOU_ARE_NOT_ALLOWED_TO_DISMOUNT_AT_THIS_LOCATION);
 				sendPacket(ActionFailed.STATIC_PACKET);
 				return false;
 			}
@@ -8401,7 +8408,7 @@ public class Player extends Playable
 		
 		if (AttackStanceTaskManager.getInstance().hasAttackStanceTask(this) && !(isGM() && Config.GM_RESTART_FIGHTING))
 		{
-			sendPacket(SystemMessageId.YOU_CANNOT_EXIT_THE_GAME_WHILE_IN_COMBAT);
+			sendPacket(SystemMessageId.YOU_CANNOT_EXIT_WHILE_IN_COMBAT);
 			return false;
 		}
 		
@@ -9024,7 +9031,7 @@ public class Player extends Playable
 				if (target.isPlayable() && !getAccessLevel().allowPeaceAttack() && !checkPvpSkill(target, skill))
 				{
 					// Send a System Message to the player
-					sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+					sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 					
 					// Send a Server->Client packet ActionFailed to the player
 					sendPacket(ActionFailed.STATIC_PACKET);
@@ -9465,7 +9472,7 @@ public class Player extends Playable
 	{
 		for (int itemId : _activeSoulShots)
 		{
-			if (ItemTable.getInstance().getTemplate(itemId).getCrystalType().getLevel() == crystalType)
+			if (ItemData.getInstance().getTemplate(itemId).getCrystalType().getLevel() == crystalType)
 			{
 				disableAutoShot(itemId);
 			}
@@ -10674,10 +10681,8 @@ public class Player extends Playable
 	{
 		super.doRevive();
 		
-		if (Config.DISCONNECT_AFTER_DEATH)
-		{
-			DecayTaskManager.getInstance().cancel(this);
-		}
+		// Stop decay task.
+		DecayTaskManager.getInstance().cancel(this);
 		
 		updateEffectIcons();
 		sendPacket(new EtcStatusUpdate(this));
@@ -10744,7 +10749,7 @@ public class Player extends Playable
 			}
 			else
 			{
-				reviver.sendPacket(SystemMessageId.WHILE_A_PET_IS_BEING_RESURRECTED_IT_CANNOT_HELP_IN_RESURRECTING_ITS_MASTER); // While a pet is attempting to resurrect, it cannot help in resurrecting its master.
+				reviver.sendPacket(SystemMessageId.WHILE_A_PET_IS_ATTEMPTING_TO_RESURRECT_IT_CANNOT_HELP_IN_RESURRECTING_ITS_MASTER); // While a pet is attempting to resurrect, it cannot help in resurrecting its master.
 			}
 			return;
 		}
@@ -10757,12 +10762,12 @@ public class Player extends Playable
 			_revivePet = pet;
 			if (_hasCharmOfCourage)
 			{
-				final ConfirmDlg dlg = new ConfirmDlg(SystemMessageId.YOUR_CHARM_OF_COURAGE_IS_TRYING_TO_RESURRECT_YOU_WOULD_YOU_LIKE_TO_RESURRECT_NOW.getId());
+				final ConfirmDlg dlg = new ConfirmDlg(SystemMessageId.RESURRECTION_IS_POSSIBLE_BECAUSE_OF_THE_COURAGE_CHARM_S_EFFECT_WOULD_YOU_LIKE_TO_RESURRECT_NOW.getId());
 				dlg.addTime(60000);
 				sendPacket(dlg);
 				return;
 			}
-			final ConfirmDlg dlg = new ConfirmDlg(SystemMessageId.C1_IS_MAKING_AN_ATTEMPT_TO_RESURRECT_YOU_IF_YOU_CHOOSE_THIS_PATH_S2_EXPERIENCE_POINTS_WILL_BE_RETURNED_TO_YOU_DO_YOU_WANT_TO_BE_RESURRECTED.getId());
+			final ConfirmDlg dlg = new ConfirmDlg(SystemMessageId.C1_IS_MAKING_AN_ATTEMPT_AT_RESURRECTION_WITH_S2_EXPERIENCE_POINTS_DO_YOU_WANT_TO_BE_RESURRECTED.getId());
 			dlg.getSystemMessage().addPcName(reviver);
 			dlg.getSystemMessage().addString(Integer.toString(restoreExp));
 			sendPacket(dlg);
@@ -12071,7 +12076,7 @@ public class Player extends Playable
 		// broadcastUserInfo();
 		if (_fishCombat == null)
 		{
-			sendPacket(SystemMessageId.THE_BAIT_HAS_BEEN_LOST_BECAUSE_THE_FISH_GOT_AWAY);
+			sendPacket(SystemMessageId.BAITS_HAVE_BEEN_LOST_BECAUSE_THE_FISH_GOT_AWAY);
 		}
 		_fishCombat = null;
 		_lure = null;
@@ -12559,7 +12564,7 @@ public class Player extends Playable
 		// Check if hit is critical
 		if (pcrit)
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_LANDED_A_CRITICAL_HIT);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAD_A_CRITICAL_HIT);
 			sm.addPcName(this);
 			sendPacket(sm);
 		}
@@ -12585,7 +12590,7 @@ public class Player extends Playable
 		}
 		else if (this != target)
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_DONE_S3_POINTS_OF_DAMAGE_TO_C2);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3);
 			sm.addPcName(this);
 			
 			// Localisation related.
@@ -12660,7 +12665,7 @@ public class Player extends Playable
 				SystemMessage sm = null;
 				if (equippedItem.getTemplate().getBodyPart() == ItemTemplate.SLOT_BACK)
 				{
-					sendPacket(SystemMessageId.YOUR_CLOAK_HAS_BEEN_UNEQUIPPED_BECAUSE_YOUR_ARMOR_SET_IS_NO_LONGER_COMPLETE);
+					sendPacket(SystemMessageId.THE_CLOAK_EQUIP_HAS_BEEN_REMOVED_BECAUSE_THE_ARMOR_SET_EQUIP_HAS_BEEN_REMOVED);
 					return;
 				}
 				
@@ -12881,7 +12886,7 @@ public class Player extends Playable
 		}
 		else
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_FORCE_HAS_INCREASED_TO_LEVEL_S1);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_FORCE_HAS_INCREASED_TO_S1_LEVEL);
 			sm.addInt(_charges.get());
 			sendPacket(sm);
 		}
@@ -13045,7 +13050,7 @@ public class Player extends Playable
 		}
 		else if (isParalyzed())
 		{
-			sendPacket(SystemMessageId.YOU_CANNOT_USE_MY_TELEPORTS_WHILE_YOU_ARE_IN_A_PETRIFIED_OR_PARALYZED_STATE);
+			sendPacket(SystemMessageId.YOU_CANNOT_USE_MY_TELEPORTS_WHILE_YOU_ARE_IN_A_FLINT_OR_PARALYZED_STATE);
 			return false;
 		}
 		else if (isDead())
@@ -13595,7 +13600,7 @@ public class Player extends Playable
 			if ((_fallingDamage > 0) && !isInvul())
 			{
 				reduceCurrentHp(Math.min(_fallingDamage, getCurrentHp() - 1), null, false, true, null);
-				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_RECEIVED_S1_FALLING_DAMAGE);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_RECEIVED_S1_DAMAGE_FROM_TAKING_A_HIGH_FALL);
 				sm.addInt(_fallingDamage);
 				sendPacket(sm);
 			}
@@ -14472,6 +14477,15 @@ public class Player extends Playable
 			}
 			_questTimers.clear();
 		}
+		
+		synchronized (_timerHolders)
+		{
+			for (TimerHolder<?> timer : _timerHolders)
+			{
+				timer.cancelTask();
+			}
+			_timerHolders.clear();
+		}
 	}
 	
 	public void addQuestTimer(QuestTimer questTimer)
@@ -14487,6 +14501,22 @@ public class Player extends Playable
 		synchronized (_questTimers)
 		{
 			_questTimers.remove(questTimer);
+		}
+	}
+	
+	public void addTimerHolder(TimerHolder<?> timer)
+	{
+		synchronized (_timerHolders)
+		{
+			_timerHolders.add(timer);
+		}
+	}
+	
+	public void removeTimerHolder(TimerHolder<?> timer)
+	{
+		synchronized (_timerHolders)
+		{
+			_timerHolders.remove(timer);
 		}
 	}
 	

@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `character_shortcuts` (
   `page` decimal(3) NOT NULL DEFAULT 0,
   `type` decimal(3) ,
   `shortcut_id` decimal(16) ,
-  `level` SMALLINT UNSIGNED ,
+  `level` MEDIUMINT,
   `sub_level` INT(4) NOT NULL DEFAULT '0',
   `class_index` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`charId`,`slot`,`page`,`class_index`),

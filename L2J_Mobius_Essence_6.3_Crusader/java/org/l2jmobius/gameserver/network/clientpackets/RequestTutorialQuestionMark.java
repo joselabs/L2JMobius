@@ -16,28 +16,26 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerPressTutorialMark;
-import org.l2jmobius.gameserver.network.GameClient;
 
-public class RequestTutorialQuestionMark implements ClientPacket
+public class RequestTutorialQuestionMark extends ClientPacket
 {
 	private int _number = 0;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readByte(); // index ?
-		_number = packet.readInt();
+		readByte(); // index ?
+		_number = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

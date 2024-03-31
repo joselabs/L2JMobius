@@ -101,14 +101,14 @@ public class MaxCp extends AbstractEffect
 			final Creature caster = info.getEffector();
 			if ((caster != null) && (caster != effected))
 			{
-				final SystemMessage sm = new SystemMessage(SystemMessageId.S2_CP_HAS_BEEN_RESTORED_BY_C1);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.S1_RESTORES_S2_CP);
 				sm.addString(caster.getName());
 				sm.addInt((int) amount);
 				effected.sendPacket(sm);
 			}
 			else
 			{
-				final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CP_HAS_BEEN_RESTORED);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CPS_HAVE_BEEN_RESTORED);
 				sm.addInt((int) amount);
 				effected.sendPacket(sm);
 			}

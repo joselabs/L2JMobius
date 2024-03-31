@@ -34,7 +34,7 @@ import org.l2jmobius.gameserver.ai.CreatureAI;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.SiegeGuardAI;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.DropType;
 import org.l2jmobius.gameserver.enums.InstanceType;
@@ -1051,7 +1051,7 @@ public class Attackable extends Npc
 				{
 					for (ItemHolder drop : deathItems)
 					{
-						final ItemTemplate item = ItemTable.getInstance().getTemplate(drop.getId());
+						final ItemTemplate item = ItemData.getInstance().getTemplate(drop.getId());
 						// Check if the autoLoot mode is active
 						if (Config.AUTO_LOOT_ITEM_IDS.contains(item.getId()) || isFlying() || (!item.hasExImmediateEffect() && ((!_isRaid && Config.AUTO_LOOT) || (_isRaid && Config.AUTO_LOOT_RAIDS))))
 						{
@@ -1092,7 +1092,7 @@ public class Attackable extends Npc
 		{
 			for (ItemHolder drop : deathItems)
 			{
-				final ItemTemplate item = ItemTable.getInstance().getTemplate(drop.getId());
+				final ItemTemplate item = ItemData.getInstance().getTemplate(drop.getId());
 				// Check if the autoLoot mode is active
 				if (Config.AUTO_LOOT_ITEM_IDS.contains(item.getId()) || isFlying() || (!item.hasExImmediateEffect() && ((!_isRaid && Config.AUTO_LOOT) || (_isRaid && Config.AUTO_LOOT_RAIDS))) || (item.hasExImmediateEffect() && Config.AUTO_LOOT_HERBS))
 				{
@@ -1106,7 +1106,7 @@ public class Attackable extends Npc
 				// Broadcast message if RaidBoss was defeated
 				if (_isRaid && !_isRaidMinion && (drop.getCount() > 0))
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.C1_DIED_AND_DROPPED_S3_S2);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.S1_DIED_AND_DROPPED_S3_S2);
 					sm.addString(getName());
 					sm.addItemName(item);
 					sm.addInt(drop.getCount());
@@ -1168,7 +1168,7 @@ public class Attackable extends Npc
 		{
 			for (ItemHolder item : sweepItems)
 			{
-				lootItems.add(ItemTable.getInstance().getTemplate(item.getId()));
+				lootItems.add(ItemData.getInstance().getTemplate(item.getId()));
 			}
 		}
 		return lootItems;

@@ -20,12 +20,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.SubjugationGacha;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.PurgePlayerHolder;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.subjugation.ExSubjugationGacha;
 import org.l2jmobius.gameserver.network.serverpackets.subjugation.ExSubjugationGachaUI;
@@ -33,27 +31,27 @@ import org.l2jmobius.gameserver.network.serverpackets.subjugation.ExSubjugationG
 /**
  * @author Berezkin Nikolay
  */
-public class RequestSubjugationGacha implements ClientPacket
+public class RequestSubjugationGacha extends ClientPacket
 {
 	private int _category;
 	private int _amount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_category = packet.readInt();
-		_amount = packet.readInt();
+		_category = readInt();
+		_amount = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		if ((_amount < 1) || ((_amount * 20000L) < 1))
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

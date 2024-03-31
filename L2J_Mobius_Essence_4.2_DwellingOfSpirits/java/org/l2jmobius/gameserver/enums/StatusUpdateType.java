@@ -58,8 +58,8 @@ public enum StatusUpdateType
 	CUR_DP(0x28, creature -> creature.isPlayer() ? creature.getActingPlayer().getDeathPoints() : 0),
 	MAX_DP(0x29, creature -> creature.isPlayer() ? creature.getActingPlayer().getMaxDeathPoints() : 0);
 	
-	private int _clientId;
-	private Function<Creature, Integer> _valueSupplier;
+	private final int _clientId;
+	private final Function<Creature, Integer> _valueSupplier;
 	
 	StatusUpdateType(int clientId, Function<Creature, Integer> valueSupplier)
 	{

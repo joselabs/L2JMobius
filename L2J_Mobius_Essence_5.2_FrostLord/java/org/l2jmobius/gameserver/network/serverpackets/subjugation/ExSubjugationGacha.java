@@ -19,6 +19,8 @@ package org.l2jmobius.gameserver.network.serverpackets.subjugation;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -35,14 +37,14 @@ public class ExSubjugationGacha extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_SUBJUGATION_GACHA.writeId(this);
-		writeInt(_rewards.size());
+		ServerPackets.EX_SUBJUGATION_GACHA.writeId(this, buffer);
+		buffer.writeInt(_rewards.size());
 		for (Entry<Integer, Integer> entry : _rewards.entrySet())
 		{
-			writeInt(entry.getKey());
-			writeInt(entry.getValue());
+			buffer.writeInt(entry.getKey());
+			buffer.writeInt(entry.getValue());
 		}
 	}
 }

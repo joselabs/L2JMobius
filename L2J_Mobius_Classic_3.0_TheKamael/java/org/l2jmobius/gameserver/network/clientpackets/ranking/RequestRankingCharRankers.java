@@ -16,31 +16,36 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.ranking;
 
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.network.GameClient;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.ranking.ExRankingCharRankers;
 
 /**
  * @author JoeAlisson
  */
-public class RequestRankingCharRankers implements ClientPacket
+public class RequestRankingCharRankers extends ClientPacket
 {
 	private int _group;
 	private int _scope;
 	private int _race;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_group = packet.readByte(); // Tab Id
-		_scope = packet.readByte(); // All or personal
-		_race = packet.readInt();
+		_group = readByte(); // Tab Id
+		_scope = readByte(); // All or personal
+		_race = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		client.sendPacket(new ExRankingCharRankers(client.getPlayer(), _group, _scope, _race));
+		final Player player = getPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		player.sendPacket(new ExRankingCharRankers(player, _group, _scope, _race));
 	}
 }

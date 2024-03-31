@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets.attendance;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.attendance.ExVipAttendanceItemList;
@@ -26,12 +25,17 @@ import org.l2jmobius.gameserver.network.serverpackets.attendance.ExVipAttendance
 /**
  * @author Mobius
  */
-public class RequestVipAttendanceItemList implements ClientPacket
+public class RequestVipAttendanceItemList extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

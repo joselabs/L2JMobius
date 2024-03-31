@@ -35,10 +35,10 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.cache.PaperdollCache;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.AgathionData;
 import org.l2jmobius.gameserver.data.xml.AppearanceItemData;
 import org.l2jmobius.gameserver.data.xml.ArmorSetData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.ItemLocation;
 import org.l2jmobius.gameserver.enums.ItemSkillType;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
@@ -1200,7 +1200,7 @@ public abstract class Inventory extends ItemContainer
 				item.setLastChange(Item.MODIFIED);
 				item.updateDatabase();
 				
-				final Item newItem = ItemTable.getInstance().createItem(process, item.getId(), count, actor, reference);
+				final Item newItem = ItemData.getInstance().createItem(process, item.getId(), count, actor, reference);
 				newItem.updateDatabase();
 				refreshWeight();
 				return newItem;

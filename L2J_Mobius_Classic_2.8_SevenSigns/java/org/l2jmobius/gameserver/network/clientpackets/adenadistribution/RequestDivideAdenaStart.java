@@ -22,7 +22,6 @@ import org.l2jmobius.gameserver.model.CommandChannel;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.AdenaDistributionRequest;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.adenadistribution.ExDivideAdenaStart;
@@ -30,12 +29,17 @@ import org.l2jmobius.gameserver.network.serverpackets.adenadistribution.ExDivide
 /**
  * @author Sdw
  */
-public class RequestDivideAdenaStart implements ClientPacket
+public class RequestDivideAdenaStart extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;

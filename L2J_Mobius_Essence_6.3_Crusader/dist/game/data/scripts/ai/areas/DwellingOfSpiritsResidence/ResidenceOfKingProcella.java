@@ -114,14 +114,14 @@ public class ResidenceOfKingProcella extends AbstractNpcAI
 				final Instance world = npc.getInstanceWorld();
 				if (world != null)
 				{
-					final Player plr = world.getPlayers().stream().findAny().orElse(null); // Usamos orElse(null) para evitar el Optional vacΞ“Β­o
+					final Player plr = world.getPlayers().stream().findAny().orElse(null);
 					if ((plr != null) && (plr.isInsideRadius3D(npc, 100)))
 					{
 						npc.abortAttack();
 						npc.abortCast();
 						npc.setTarget(plr);
 						
-						if (plr.getKnownSkill(HURRICANE_BOLT) != null) // Verificamos si el jugador tiene la habilidad
+						if (plr.getKnownSkill(HURRICANE_BOLT) != null)
 						{
 							if (plr.getAffectedSkillLevel(HURRICANE_BOLT) == 1)
 							{

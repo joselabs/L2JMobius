@@ -21,7 +21,8 @@ package org.l2jmobius.gameserver.enums;
  */
 public enum SkillConditionAffectType
 {
-	BOTH,
+	BOTH, // Caster + Target
 	CASTER,
-	TARGET
+	TARGET,
+	SUMMON
 }

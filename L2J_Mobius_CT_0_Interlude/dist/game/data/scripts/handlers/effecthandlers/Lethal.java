@@ -95,8 +95,8 @@ public class Lethal extends AbstractEffect
 			if (target.isPlayer())
 			{
 				target.setCurrentCp(1);
-				target.sendPacket(SystemMessageId.HALF_KILL);
-				target.sendPacket(SystemMessageId.YOUR_CP_WAS_DRAINED_BECAUSE_YOU_WERE_HIT_WITH_A_HALF_KILL_SKILL);
+				target.sendMessage("Half-Kill!");
+				target.sendMessage("Your CP was drained because you were hit with a Half-Kill skill.");
 			}
 			// for Monsters HP is set to 50%.
 			else if (target.isMonster() || target.isSummon())
@@ -104,7 +104,7 @@ public class Lethal extends AbstractEffect
 				target.notifyDamageReceived(target.getCurrentHp() * 0.5, info.getEffector(), info.getSkill(), true, false);
 				target.setCurrentHp(target.getCurrentHp() * 0.5);
 			}
-			creature.sendPacket(SystemMessageId.HALF_KILL);
+			creature.sendMessage("Half-Kill!");
 		}
 	}
 }

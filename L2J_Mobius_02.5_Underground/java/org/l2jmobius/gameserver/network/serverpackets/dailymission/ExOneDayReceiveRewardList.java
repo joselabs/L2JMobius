@@ -19,9 +19,11 @@ package org.l2jmobius.gameserver.network.serverpackets.dailymission;
 import java.time.LocalDate;
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.DailyMissionData;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
@@ -40,24 +42,24 @@ public class ExOneDayReceiveRewardList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (!DailyMissionData.getInstance().isAvailable())
 		{
 			return;
 		}
 		
-		ServerPackets.EX_ONE_DAY_RECEIVE_REWARD_LIST.writeId(this);
-		writeInt(_player.getClassId().getId());
-		writeInt(LocalDate.now().getDayOfWeek().ordinal()); // Day of week
-		writeInt(_rewards.size());
+		ServerPackets.EX_ONE_DAY_RECEIVE_REWARD_LIST.writeId(this, buffer);
+		buffer.writeInt(_player.getClassId().getId());
+		buffer.writeInt(LocalDate.now().getDayOfWeek().ordinal()); // Day of week
+		buffer.writeInt(_rewards.size());
 		for (DailyMissionDataHolder reward : _rewards)
 		{
-			writeShort(reward.getId());
-			writeByte(reward.getStatus(_player));
-			writeByte(reward.getRequiredCompletions() > 0);
-			writeInt(reward.getProgress(_player));
-			writeInt(reward.getRequiredCompletions());
+			buffer.writeShort(reward.getId());
+			buffer.writeByte(reward.getStatus(_player));
+			buffer.writeByte(reward.getRequiredCompletions() > 0);
+			buffer.writeInt(reward.getProgress(_player));
+			buffer.writeInt(reward.getRequiredCompletions());
 		}
 	}
 }

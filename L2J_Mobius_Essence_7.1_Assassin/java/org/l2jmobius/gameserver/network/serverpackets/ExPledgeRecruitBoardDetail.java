@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.clan.entry.PledgeRecruitInfo;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -32,14 +34,14 @@ public class ExPledgeRecruitBoardDetail extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.EX_PLEDGE_RECRUIT_BOARD_DETAIL.writeId(this);
-		writeInt(_pledgeRecruitInfo.getClanId());
-		writeInt(_pledgeRecruitInfo.getKarma());
-		writeString(_pledgeRecruitInfo.getInformation());
-		writeString(_pledgeRecruitInfo.getDetailedInformation());
-		writeInt(_pledgeRecruitInfo.getApplicationType());
-		writeInt(_pledgeRecruitInfo.getRecruitType());
+		ServerPackets.EX_PLEDGE_RECRUIT_BOARD_DETAIL.writeId(this, buffer);
+		buffer.writeInt(_pledgeRecruitInfo.getClanId());
+		buffer.writeInt(_pledgeRecruitInfo.getKarma());
+		buffer.writeString(_pledgeRecruitInfo.getInformation());
+		buffer.writeString(_pledgeRecruitInfo.getDetailedInformation());
+		buffer.writeInt(_pledgeRecruitInfo.getApplicationType());
+		buffer.writeInt(_pledgeRecruitInfo.getRecruitType());
 	}
 }

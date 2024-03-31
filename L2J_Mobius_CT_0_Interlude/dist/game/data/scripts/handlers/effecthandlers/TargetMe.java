@@ -16,6 +16,7 @@
  */
 package handlers.effecthandlers;
 
+import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -29,18 +30,19 @@ import org.l2jmobius.gameserver.model.skill.BuffInfo;
  */
 public class TargetMe extends AbstractEffect
 {
+	private final int _chance;
+	
 	public TargetMe(Condition attachCond, Condition applyCond, StatSet set, StatSet params)
 	{
 		super(attachCond, applyCond, set, params);
+		
+		_chance = params.getInt("chance", 100);
 	}
 	
 	@Override
-	public void onExit(BuffInfo info)
+	public boolean calcSuccess(BuffInfo info)
 	{
-		if (info.getEffected().isPlayable())
-		{
-			((Playable) info.getEffected()).setLockedTarget(null);
-		}
+		return Rnd.get(100) < _chance;
 	}
 	
 	@Override
@@ -60,6 +62,15 @@ public class TargetMe extends AbstractEffect
 			}
 			
 			((Playable) info.getEffected()).setLockedTarget(info.getEffector());
+		}
+	}
+	
+	@Override
+	public void onExit(BuffInfo info)
+	{
+		if (info.getEffected().isPlayable())
+		{
+			((Playable) info.getEffected()).setLockedTarget(null);
 		}
 	}
 }

@@ -18,6 +18,15 @@ package org.l2jmobius.gameserver.network.clientpackets.ability;
 
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 
-public class RequestChangeAbilityPoint implements ClientPacket
+public class RequestChangeAbilityPoint extends ClientPacket
 {
+	@Override
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+	}
 }

@@ -20,7 +20,6 @@ import static org.l2jmobius.gameserver.model.itemcontainer.Inventory.ADENA_ID;
 import static org.l2jmobius.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.data.xml.FakePlayerData;
@@ -32,7 +31,6 @@ import org.l2jmobius.gameserver.model.Message;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.Mail;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExNoticePostSent;
@@ -42,7 +40,7 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @author Migi, DS
  */
-public class RequestSendPost implements ClientPacket
+public class RequestSendPost extends ClientPacket
 {
 	private static final int BATCH_LENGTH = 12; // length of the one item
 	
@@ -64,15 +62,15 @@ public class RequestSendPost implements ClientPacket
 	private long _reqAdena;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_receiver = packet.readString();
-		_isCod = packet.readInt() != 0;
-		_subject = packet.readString();
-		_text = packet.readString();
+		_receiver = readString();
+		_isCod = readInt() != 0;
+		_subject = readString();
+		_text = readString();
 		
-		final int attachCount = packet.readInt();
-		if ((attachCount < 0) || (attachCount > Config.MAX_ITEM_IN_PACKET) || (((attachCount * BATCH_LENGTH) + 8) != packet.getRemainingLength()))
+		final int attachCount = readInt();
+		if ((attachCount < 0) || (attachCount > Config.MAX_ITEM_IN_PACKET) || (((attachCount * BATCH_LENGTH) + 8) != remaining()))
 		{
 			return;
 		}
@@ -82,8 +80,8 @@ public class RequestSendPost implements ClientPacket
 			_items = new AttachmentItem[attachCount];
 			for (int i = 0; i < attachCount; i++)
 			{
-				final int objectId = packet.readInt();
-				final long count = packet.readLong();
+				final int objectId = readInt();
+				final long count = readLong();
 				if ((objectId < 1) || (count < 0))
 				{
 					_items = null;
@@ -93,19 +91,19 @@ public class RequestSendPost implements ClientPacket
 			}
 		}
 		
-		_reqAdena = packet.readLong();
+		_reqAdena = readLong();
 		return;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		if (!Config.ALLOW_MAIL)
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -255,7 +253,7 @@ public class RequestSendPost implements ClientPacket
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canSendMail())
+		if (!getClient().getFloodProtectors().canSendMail())
 		{
 			player.sendPacket(SystemMessageId.THE_PREVIOUS_MAIL_WAS_FORWARDED_LESS_THAN_10_SEC_AGO_AND_THIS_CANNOT_BE_FORWARDED);
 			return;

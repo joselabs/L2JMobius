@@ -19,8 +19,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class WareHouseDepositList extends AbstractItemPacket
@@ -64,22 +66,22 @@ public class WareHouseDepositList extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.WAREHOUSE_DEPOSIT_LIST.writeId(this);
-		writeShort(_whType);
-		writeLong(_playerAdena);
-		writeInt(_warehouseSize);
-		writeShort(_itemsStackable.size());
+		ServerPackets.WAREHOUSE_DEPOSIT_LIST.writeId(this, buffer);
+		buffer.writeShort(_whType);
+		buffer.writeLong(_playerAdena);
+		buffer.writeInt(_warehouseSize);
+		buffer.writeShort(_itemsStackable.size());
 		for (int itemId : _itemsStackable)
 		{
-			writeInt(itemId);
+			buffer.writeInt(itemId);
 		}
-		writeShort(_items.size());
+		buffer.writeShort(_items.size());
 		for (Item item : _items)
 		{
-			writeItem(item);
-			writeInt(item.getObjectId());
+			writeItem(item, buffer);
+			buffer.writeInt(item.getObjectId());
 		}
 	}
 }
