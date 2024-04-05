@@ -163,6 +163,10 @@ import quests.Q00418_PathOfTheArtisan.Q00418_PathOfTheArtisan;
 import quests.Q00420_LittleWing.Q00420_LittleWing;
 import quests.Q00421_LittleWingsBigAdventure.Q00421_LittleWingsBigAdventure;
 import quests.Q00500_BrothersBoundInChains.Q00500_BrothersBoundInChains;
+import quests.Q00605_AllianceWithKetraOrcs.Q00605_AllianceWithKetraOrcs;
+import quests.Q00606_BattleAgainstVarkaSilenos.Q00606_BattleAgainstVarkaSilenos;
+import quests.Q00611_AllianceWithVarkaSilenos.Q00611_AllianceWithVarkaSilenos;
+import quests.Q00612_BattleAgainstKetraOrcs.Q00612_BattleAgainstKetraOrcs;
 import quests.Q00620_FourGoblets.Q00620_FourGoblets;
 import quests.Q00641_AttackSailren.Q00641_AttackSailren;
 import quests.Q00642_APowerfulPrimevalCreature.Q00642_APowerfulPrimevalCreature;
@@ -374,6 +378,10 @@ public class QuestMasterHandler
 		Q00420_LittleWing.class, // FIXME: Underground
 		Q00421_LittleWingsBigAdventure.class, // FIXME: Underground
 		Q00500_BrothersBoundInChains.class,
+		Q00605_AllianceWithKetraOrcs.class,
+		Q00606_BattleAgainstVarkaSilenos.class,
+		Q00611_AllianceWithVarkaSilenos.class,
+		Q00612_BattleAgainstKetraOrcs.class,
 		Q00620_FourGoblets.class, // FIXME: Grand Crusade
 		Q00630_PirateTreasureHunt.class, // TODO: Not done.
 		Q00641_AttackSailren.class, // FIXME: Grand Crusade
