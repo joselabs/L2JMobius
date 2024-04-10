@@ -59,6 +59,7 @@ import quests.Q00097_SagaOfTheShillienTemplar.Q00097_SagaOfTheShillienTemplar;
 import quests.Q00098_SagaOfTheShillienSaint.Q00098_SagaOfTheShillienSaint;
 import quests.Q00099_SagaOfTheFortuneSeeker.Q00099_SagaOfTheFortuneSeeker;
 import quests.Q00100_SagaOfTheMaestro.Q00100_SagaOfTheMaestro;
+import quests.Q00109_InSearchOfTheNest.Q00109_InSearchOfTheNest;
 import quests.Q00110_ToThePrimevalIsle.Q00110_ToThePrimevalIsle;
 import quests.Q00111_ElrokianHuntersProof.Q00111_ElrokianHuntersProof;
 import quests.Q00124_MeetingTheElroki.Q00124_MeetingTheElroki;
@@ -167,7 +168,12 @@ import quests.Q00605_AllianceWithKetraOrcs.Q00605_AllianceWithKetraOrcs;
 import quests.Q00606_BattleAgainstVarkaSilenos.Q00606_BattleAgainstVarkaSilenos;
 import quests.Q00611_AllianceWithVarkaSilenos.Q00611_AllianceWithVarkaSilenos;
 import quests.Q00612_BattleAgainstKetraOrcs.Q00612_BattleAgainstKetraOrcs;
+import quests.Q00617_GatherTheFlames.Q00617_GatherTheFlames;
 import quests.Q00620_FourGoblets.Q00620_FourGoblets;
+import quests.Q00622_SpecialtyLiquorDelivery.Q00622_SpecialtyLiquorDelivery;
+import quests.Q00623_TheFinestFood.Q00623_TheFinestFood;
+import quests.Q00628_HuntGoldenRam.Q00628_HuntGoldenRam;
+import quests.Q00640_TheZeroHour.Q00640_TheZeroHour;
 import quests.Q00641_AttackSailren.Q00641_AttackSailren;
 import quests.Q00642_APowerfulPrimevalCreature.Q00642_APowerfulPrimevalCreature;
 import quests.Q00643_RiseAndFallOfTheElrokiTribe.Q00643_RiseAndFallOfTheElrokiTribe;
@@ -274,6 +280,7 @@ public class QuestMasterHandler
 		Q00098_SagaOfTheShillienSaint.class,
 		Q00099_SagaOfTheFortuneSeeker.class,
 		Q00100_SagaOfTheMaestro.class,
+		Q00109_InSearchOfTheNest.class,
 		Q00110_ToThePrimevalIsle.class, // FIXME: Grand Crusade
 		Q00111_ElrokianHuntersProof.class, // FIXME: Grand Crusade
 		Q00124_MeetingTheElroki.class, // FIXME: Grand Crusade
@@ -382,8 +389,13 @@ public class QuestMasterHandler
 		Q00606_BattleAgainstVarkaSilenos.class,
 		Q00611_AllianceWithVarkaSilenos.class,
 		Q00612_BattleAgainstKetraOrcs.class,
+		Q00617_GatherTheFlames.class,
 		Q00620_FourGoblets.class, // FIXME: Grand Crusade
+		Q00622_SpecialtyLiquorDelivery.class,
+		Q00623_TheFinestFood.class,
+		Q00628_HuntGoldenRam.class,
 		Q00630_PirateTreasureHunt.class, // TODO: Not done.
+		Q00640_TheZeroHour.class,
 		Q00641_AttackSailren.class, // FIXME: Grand Crusade
 		Q00642_APowerfulPrimevalCreature.class, // FIXME: Grand Crusade
 		Q00643_RiseAndFallOfTheElrokiTribe.class, // FIXME: Grand Crusade
