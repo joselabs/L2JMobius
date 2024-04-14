@@ -2097,23 +2097,34 @@ public class Item extends WorldObject
 	
 	public void giveSkillsToOwner()
 	{
-		if (!hasPassiveSkills())
+		if (!isEquipped() && !hasPassiveSkills())
 		{
 			return;
 		}
 		
 		final Player player = getActingPlayer();
-		if (player != null)
+		if (player == null)
 		{
-			_itemTemplate.forEachSkill(ItemSkillType.NORMAL, holder ->
-			{
-				final Skill skill = holder.getSkill();
-				if (skill.isPassive())
-				{
-					player.addSkill(skill, false);
-				}
-			});
+			return;
 		}
+		
+		_itemTemplate.forEachSkill(ItemSkillType.NORMAL, holder ->
+		{
+			final Skill skill = holder.getSkill();
+			if (skill.isPassive())
+			{
+				player.addSkill(skill, false);
+			}
+		});
+		
+		_itemTemplate.forEachSkill(ItemSkillType.ON_ENCHANT, holder ->
+		{
+			final Skill skill = holder.getSkill();
+			if (skill.isPassive() && (getEnchantLevel() >= holder.getValue()))
+			{
+				player.addSkill(skill, false);
+			}
+		});
 	}
 	
 	public void removeSkillsFromOwner()
