@@ -90,6 +90,8 @@ import quests.Q00230_TestOfTheSummoner.Q00230_TestOfTheSummoner;
 import quests.Q00231_TestOfTheMaestro.Q00231_TestOfTheMaestro;
 import quests.Q00232_TestOfTheLord.Q00232_TestOfTheLord;
 import quests.Q00233_TestOfTheWarSpirit.Q00233_TestOfTheWarSpirit;
+import quests.Q00234_FatesWhisper.Q00234_FatesWhisper;
+import quests.Q00235_MimirsElixir.Q00235_MimirsElixir;
 import quests.Q00255_Tutorial.Q00255_Tutorial;
 import quests.Q00257_TheGuardIsBusy.Q00257_TheGuardIsBusy;
 import quests.Q00258_BringWolfPelts.Q00258_BringWolfPelts;
@@ -141,6 +143,7 @@ import quests.Q00358_IllegitimateChildOfTheGoddess.Q00358_IllegitimateChildOfThe
 import quests.Q00360_PlunderTheirSupplies.Q00360_PlunderTheirSupplies;
 import quests.Q00369_CollectorOfJewels.Q00369_CollectorOfJewels;
 import quests.Q00370_AnElderSowsSeeds.Q00370_AnElderSowsSeeds;
+import quests.Q00373_SupplierOfReagents.Q00373_SupplierOfReagents;
 import quests.Q00374_WhisperOfDreamsPart1.Q00374_WhisperOfDreamsPart1;
 import quests.Q00375_WhisperOfDreamsPart2.Q00375_WhisperOfDreamsPart2;
 import quests.Q00401_PathOfTheWarrior.Q00401_PathOfTheWarrior;
@@ -311,6 +314,8 @@ public class QuestMasterHandler
 		Q00231_TestOfTheMaestro.class,
 		Q00232_TestOfTheLord.class,
 		Q00233_TestOfTheWarSpirit.class,
+		Q00234_FatesWhisper.class,
+		Q00235_MimirsElixir.class,
 		Q00255_Tutorial.class,
 		Q00257_TheGuardIsBusy.class,
 		Q00258_BringWolfPelts.class,
@@ -362,6 +367,7 @@ public class QuestMasterHandler
 		Q00360_PlunderTheirSupplies.class,
 		Q00369_CollectorOfJewels.class,
 		Q00370_AnElderSowsSeeds.class,
+		Q00373_SupplierOfReagents.class,
 		Q00374_WhisperOfDreamsPart1.class,
 		Q00375_WhisperOfDreamsPart2.class,
 		Q00401_PathOfTheWarrior.class,
