@@ -53,7 +53,7 @@ public class FactionCertificates extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final QuestState qs1 = player.getQuestState(Q10875_ForReputation.class.getSimpleName());

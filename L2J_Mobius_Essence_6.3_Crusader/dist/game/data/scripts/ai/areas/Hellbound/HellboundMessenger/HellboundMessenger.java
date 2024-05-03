@@ -42,7 +42,7 @@ public class HellboundMessenger extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if ((npc.getId() == MESSENGER) && event.equals("teleport"))
 		{
@@ -55,7 +55,7 @@ public class HellboundMessenger extends AbstractNpcAI
 			return null;
 		}
 		
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

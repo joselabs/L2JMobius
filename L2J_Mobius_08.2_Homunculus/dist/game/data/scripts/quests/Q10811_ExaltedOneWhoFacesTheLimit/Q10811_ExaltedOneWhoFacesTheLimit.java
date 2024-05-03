@@ -226,7 +226,7 @@ public class Q10811_ExaltedOneWhoFacesTheLimit extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final Race race = player.getRace();
 		final ClassId classId = player.getBaseTemplate().getClassId();

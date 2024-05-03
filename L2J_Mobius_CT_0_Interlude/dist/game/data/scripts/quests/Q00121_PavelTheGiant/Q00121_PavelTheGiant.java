@@ -36,7 +36,7 @@ public class Q00121_PavelTheGiant extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
 		final QuestState st = getQuestState(player, false);

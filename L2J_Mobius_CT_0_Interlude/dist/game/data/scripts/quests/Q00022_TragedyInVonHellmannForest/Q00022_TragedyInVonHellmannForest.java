@@ -75,7 +75,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = player.getQuestState(getName());
 		String htmltext = null;

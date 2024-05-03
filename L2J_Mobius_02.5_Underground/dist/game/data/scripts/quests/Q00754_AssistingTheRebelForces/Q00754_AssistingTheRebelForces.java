@@ -54,7 +54,7 @@ public class Q00754_AssistingTheRebelForces extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
 		final QuestState qs = getQuestState(player, false);

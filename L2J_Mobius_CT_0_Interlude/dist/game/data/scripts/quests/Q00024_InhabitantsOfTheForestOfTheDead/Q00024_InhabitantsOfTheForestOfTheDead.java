@@ -65,7 +65,7 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		QuestState st = player.getQuestState(getName());
 		if (st == null)

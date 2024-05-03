@@ -49,7 +49,7 @@ public class Q10419_TaygaTheLeaderOfSelMahum4 extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{

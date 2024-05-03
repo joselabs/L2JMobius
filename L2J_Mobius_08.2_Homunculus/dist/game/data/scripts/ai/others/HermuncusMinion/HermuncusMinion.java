@@ -89,7 +89,7 @@ public class HermuncusMinion extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String eventValue, Npc npc, Player player)
+	public String onEvent(String eventValue, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final StringTokenizer st = new StringTokenizer(eventValue, " ");

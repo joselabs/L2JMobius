@@ -54,7 +54,7 @@ public class Q10374_ExploringTheCrumaTowers2ndFloor3 extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{

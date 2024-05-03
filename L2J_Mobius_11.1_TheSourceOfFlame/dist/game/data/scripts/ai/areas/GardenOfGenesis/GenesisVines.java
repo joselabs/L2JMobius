@@ -42,7 +42,7 @@ public class GenesisVines extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("CAST_SKILL") && npc.isScriptValue(1))
 		{
@@ -58,7 +58,7 @@ public class GenesisVines extends AbstractNpcAI
 			npc.setScriptValue(0);
 			npc.deleteMe();
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

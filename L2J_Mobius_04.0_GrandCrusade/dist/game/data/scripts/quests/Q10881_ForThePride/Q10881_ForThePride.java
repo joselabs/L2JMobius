@@ -56,7 +56,7 @@ public class Q10881_ForThePride extends Quest
 	private static final int MIN_LEVEL = 104;
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
 		if (qs == null)

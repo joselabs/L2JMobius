@@ -39,13 +39,13 @@ public class Fioren extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("startMovie"))
 		{
 			playMovie(player, Movie.SI_BARLOG_STORY);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	public static void main(String[] args)

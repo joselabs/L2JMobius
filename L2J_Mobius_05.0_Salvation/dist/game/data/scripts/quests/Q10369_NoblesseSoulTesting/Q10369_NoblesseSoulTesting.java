@@ -122,11 +122,11 @@ public class Q10369_NoblesseSoulTesting extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (player == null)
 		{
-			return super.onAdvEvent(event, npc, player);
+			return super.onEvent(event, npc, player);
 		}
 		
 		final QuestState qs = getQuestState(player, false);
@@ -321,7 +321,7 @@ public class Q10369_NoblesseSoulTesting extends Quest
 									final Quest instance = QuestManager.getInstance().getQuest(EvasHiddenSpace.class.getSimpleName());
 									if (instance != null)
 									{
-										instance.onAdvEvent("enterInstance", npc, player);
+										instance.onEvent("enterInstance", npc, player);
 									}
 									htmltext = null;
 									break;

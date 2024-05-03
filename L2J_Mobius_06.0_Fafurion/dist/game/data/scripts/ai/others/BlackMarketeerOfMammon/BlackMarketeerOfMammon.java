@@ -42,7 +42,7 @@ public class BlackMarketeerOfMammon extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
 		if (event.equals("31092-01.html") || event.equals("31092-05.html"))
@@ -79,7 +79,7 @@ public class BlackMarketeerOfMammon extends AbstractNpcAI
 			giveAdena(player, count, false);
 			return "31092-04.html";
 		}
-		return super.onAdvEvent(htmltext, npc, player);
+		return super.onEvent(htmltext, npc, player);
 	}
 	
 	public static void main(String[] args)

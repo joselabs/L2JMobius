@@ -120,7 +120,7 @@ public class Q10385_RedThreadOfFate extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
 		if (qs == null)
@@ -755,7 +755,7 @@ public class Q10385_RedThreadOfFate extends Quest
 						final Quest instance = QuestManager.getInstance().getQuest(TalkingIslandPast.class.getSimpleName());
 						if (instance != null)
 						{
-							instance.onAdvEvent("enterInstance", npc, player);
+							instance.onEvent("enterInstance", npc, player);
 						}
 					}
 					break;
@@ -843,7 +843,7 @@ public class Q10385_RedThreadOfFate extends Quest
 							final Quest instance = QuestManager.getInstance().getQuest(TalkingIslandPast.class.getSimpleName());
 							if (instance != null)
 							{
-								instance.onAdvEvent("enterInstance", npc, player);
+								instance.onEvent("enterInstance", npc, player);
 							}
 							break;
 						}

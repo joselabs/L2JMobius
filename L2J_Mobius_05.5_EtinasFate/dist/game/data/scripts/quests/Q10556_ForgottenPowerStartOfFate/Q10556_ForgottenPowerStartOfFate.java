@@ -137,7 +137,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final QuestState qs = getQuestState(player, false);
@@ -298,7 +298,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 					final Quest abelius = QuestManager.getInstance().getQuest(PowerOfAbelius.class.getSimpleName());
 					if (abelius != null)
 					{
-						abelius.onAdvEvent("enterInstance", npc, player);
+						abelius.onEvent("enterInstance", npc, player);
 					}
 					break;
 				}
@@ -308,7 +308,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 					final Quest sapyros = QuestManager.getInstance().getQuest(PowerOfSapyros.class.getSimpleName());
 					if (sapyros != null)
 					{
-						sapyros.onAdvEvent("enterInstance", npc, player);
+						sapyros.onEvent("enterInstance", npc, player);
 					}
 					break;
 				}
@@ -318,7 +318,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 					final Quest kashnaga = QuestManager.getInstance().getQuest(PowerOfKashnaga.class.getSimpleName());
 					if (kashnaga != null)
 					{
-						kashnaga.onAdvEvent("enterInstance", npc, player);
+						kashnaga.onEvent("enterInstance", npc, player);
 					}
 					break;
 				}
@@ -328,7 +328,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 					final Quest cranigg = QuestManager.getInstance().getQuest(PowerOfCranigg.class.getSimpleName());
 					if (cranigg != null)
 					{
-						cranigg.onAdvEvent("enterInstance", npc, player);
+						cranigg.onEvent("enterInstance", npc, player);
 					}
 					break;
 				}
@@ -338,7 +338,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 					final Quest naviarope = QuestManager.getInstance().getQuest(PowerOfNaviarope.class.getSimpleName());
 					if (naviarope != null)
 					{
-						naviarope.onAdvEvent("enterInstance", npc, player);
+						naviarope.onEvent("enterInstance", npc, player);
 					}
 					break;
 				}
@@ -348,7 +348,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 					final Quest raister = QuestManager.getInstance().getQuest(PowerOfRaister.class.getSimpleName());
 					if (raister != null)
 					{
-						raister.onAdvEvent("enterInstance", npc, player);
+						raister.onEvent("enterInstance", npc, player);
 					}
 					break;
 				}
@@ -358,7 +358,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 					final Quest soltkreig = QuestManager.getInstance().getQuest(PowerOfSoltkreig.class.getSimpleName());
 					if (soltkreig != null)
 					{
-						soltkreig.onAdvEvent("enterInstance", npc, player);
+						soltkreig.onEvent("enterInstance", npc, player);
 					}
 					break;
 				}
@@ -368,7 +368,7 @@ public final class Q10556_ForgottenPowerStartOfFate extends Quest
 					final Quest lakcis = QuestManager.getInstance().getQuest(PowerOfLakcis.class.getSimpleName());
 					if (lakcis != null)
 					{
-						lakcis.onAdvEvent("enterInstance", npc, player);
+						lakcis.onEvent("enterInstance", npc, player);
 					}
 					break;
 				}

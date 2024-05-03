@@ -48,7 +48,7 @@ public class AltarOfSacrifice extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equalsIgnoreCase("msg_text"))
 		{
@@ -68,7 +68,7 @@ public class AltarOfSacrifice extends AbstractNpcAI
 			startQuestTimer("msg_text", 135000, npc, null);
 			_jenas_guard.setScriptValue(0);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

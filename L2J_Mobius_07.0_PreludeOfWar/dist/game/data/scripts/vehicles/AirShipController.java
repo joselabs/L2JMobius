@@ -117,7 +117,7 @@ public abstract class AirShipController extends AbstractNpcAI
 	private static final SystemMessage SM_NEED_MORE = new SystemMessage(SystemMessageId.AN_AIRSHIP_CANNOT_BE_SUMMONED_BECAUSE_YOU_DON_T_HAVE_ENOUGH_S1).addItemName(STARSTONE);
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if ("summon".equalsIgnoreCase(event))
 		{

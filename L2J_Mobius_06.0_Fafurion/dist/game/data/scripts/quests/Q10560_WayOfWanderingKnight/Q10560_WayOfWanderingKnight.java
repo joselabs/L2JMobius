@@ -80,7 +80,7 @@ public class Q10560_WayOfWanderingKnight extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
 		final ClassId classId = player.getClassId();

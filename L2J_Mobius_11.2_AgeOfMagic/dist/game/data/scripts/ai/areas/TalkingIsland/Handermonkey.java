@@ -38,7 +38,7 @@ public class Handermonkey extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("NPC_MOVE") && (npc != null))
 		{
@@ -54,7 +54,7 @@ public class Handermonkey extends AbstractNpcAI
 				npc.broadcastSocialAction(9);
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

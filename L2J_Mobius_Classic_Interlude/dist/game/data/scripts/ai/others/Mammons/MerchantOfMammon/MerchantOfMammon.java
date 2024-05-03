@@ -50,12 +50,12 @@ public class MerchantOfMammon extends AbstractNpcAI
 	private MerchantOfMammon()
 	{
 		addFirstTalkId(MERCHANT);
-		onAdvEvent("RESPAWN_MERCHANT", null, null);
+		onEvent("RESPAWN_MERCHANT", null, null);
 		startQuestTimer("RESPAWN_MERCHANT", TELEPORT_DELAY, null, null, true);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		switch (event)

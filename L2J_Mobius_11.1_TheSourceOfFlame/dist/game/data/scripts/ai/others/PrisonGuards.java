@@ -53,7 +53,7 @@ public class PrisonGuards extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("CLEAR_STATUS"))
 		{
@@ -67,7 +67,7 @@ public class PrisonGuards extends AbstractNpcAI
 			}
 			startQuestTimer("CHECK_HOME", 30000, npc, null);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

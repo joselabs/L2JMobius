@@ -114,13 +114,13 @@ public class CrystalCavernsCoralGarden extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("enterInstance"))
 		{
 			enterInstance(player, npc, TEMPLATE_ID);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

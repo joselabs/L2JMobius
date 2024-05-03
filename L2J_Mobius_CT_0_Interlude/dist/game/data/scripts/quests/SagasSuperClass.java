@@ -227,7 +227,7 @@ public class SagasSuperClass extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState st = player.getQuestState(getName());
 		String htmltext = "";

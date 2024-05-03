@@ -47,7 +47,7 @@ public class Erda extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("teleport"))
 		{
@@ -113,7 +113,7 @@ public class Erda extends AbstractNpcAI
 		{
 			player.teleToLocation(CAMILLE_LOC, true);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

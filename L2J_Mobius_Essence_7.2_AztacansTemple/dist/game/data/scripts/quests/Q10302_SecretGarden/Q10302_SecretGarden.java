@@ -53,7 +53,7 @@ public class Q10302_SecretGarden extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{
@@ -68,7 +68,7 @@ public class Q10302_SecretGarden extends Quest
 				if (!questState.isStarted() && !questState.isCompleted())
 				{
 					questState.startQuest();
-					onAdvEvent("TELEPORT", npc, player);
+					onEvent("TELEPORT", npc, player);
 				}
 				break;
 			}

@@ -58,7 +58,7 @@ public class HarnakUndergroundRuinsZone extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("HARNAK_SPAWN"))
 		{
@@ -70,7 +70,7 @@ public class HarnakUndergroundRuinsZone extends AbstractNpcAI
 				_templates.forEach(t -> t.spawn(g -> String.valueOf(g.getName()).equalsIgnoreCase(zoneName), null));
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	private static class zoneInfo

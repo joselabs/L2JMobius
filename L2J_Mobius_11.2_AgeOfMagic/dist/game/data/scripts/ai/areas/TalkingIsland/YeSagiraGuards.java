@@ -42,7 +42,7 @@ public class YeSagiraGuards extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if ((npc != null) && !npc.isDead())
 		{
@@ -56,7 +56,7 @@ public class YeSagiraGuards extends AbstractNpcAI
 			}
 			startQuestTimer("GUARD_AGGRO", 10000, npc, null);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

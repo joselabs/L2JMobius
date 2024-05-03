@@ -50,7 +50,7 @@ public class Q10368_ThwartingDragonsPlans2 extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{

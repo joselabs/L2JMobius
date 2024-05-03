@@ -52,7 +52,7 @@ public class Q10384_AnAudienceWithTauti extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);

@@ -93,7 +93,7 @@ public class PrimeTimePaganTemple extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final int id = Integer.parseInt(event);
 		switch (id)
@@ -119,7 +119,7 @@ public class PrimeTimePaganTemple extends AbstractNpcAI
 				break;
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	private void spawnOrStartScheduler()

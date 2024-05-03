@@ -74,7 +74,7 @@ public class Q10447_TimingIsEverything extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final QuestState qs = getQuestState(player, false);

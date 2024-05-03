@@ -48,12 +48,12 @@ public class BlacksmithOfMammon extends AbstractNpcAI
 	private BlacksmithOfMammon()
 	{
 		addFirstTalkId(BLACKSMITH);
-		onAdvEvent("RESPAWN_BLACKSMITH", null, null);
+		onEvent("RESPAWN_BLACKSMITH", null, null);
 		startQuestTimer("RESPAWN_BLACKSMITH", TELEPORT_DELAY, null, null, true);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		switch (event)

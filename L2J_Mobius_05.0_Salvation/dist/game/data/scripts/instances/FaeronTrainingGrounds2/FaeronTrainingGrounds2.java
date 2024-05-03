@@ -68,7 +68,7 @@ public class FaeronTrainingGrounds2 extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = player.getQuestState(Q10736_ASpecialPower.class.getSimpleName());
 		String htmltext = null;

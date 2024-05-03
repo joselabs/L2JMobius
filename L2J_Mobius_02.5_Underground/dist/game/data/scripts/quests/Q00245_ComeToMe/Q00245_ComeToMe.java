@@ -77,7 +77,7 @@ public class Q00245_ComeToMe extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (player.isMentor() && event.equals("30847-13.html"))
 		{

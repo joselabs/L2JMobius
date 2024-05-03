@@ -56,7 +56,7 @@ public class BabyPets extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("HEAL") && (player != null))
 		{
@@ -78,7 +78,7 @@ public class BabyPets extends AbstractNpcAI
 				cancelQuestTimer("HEAL", null, player);
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@RegisterEvent(EventType.ON_PLAYER_LOGOUT)

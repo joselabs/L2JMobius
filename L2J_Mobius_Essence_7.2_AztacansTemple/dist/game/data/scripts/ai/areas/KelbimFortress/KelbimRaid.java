@@ -84,7 +84,7 @@ public class KelbimRaid extends Event
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equalsIgnoreCase("start_stage_2"))
 		{
@@ -138,7 +138,7 @@ public class KelbimRaid extends Event
 				npc.doCast(skill);
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

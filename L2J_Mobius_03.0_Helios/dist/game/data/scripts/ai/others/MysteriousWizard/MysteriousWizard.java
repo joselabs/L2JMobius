@@ -41,7 +41,7 @@ public class MysteriousWizard extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		return event.equals("33980-01.html") ? event : null;
 	}

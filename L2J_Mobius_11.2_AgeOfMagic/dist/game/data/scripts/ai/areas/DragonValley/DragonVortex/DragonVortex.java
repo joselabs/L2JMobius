@@ -53,7 +53,7 @@ public class DragonVortex extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if ("Spawn".equals(event))
 		{
@@ -104,7 +104,7 @@ public class DragonVortex extends AbstractNpcAI
 		{
 			npc.setScriptValue(0);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	public static void main(String[] args)

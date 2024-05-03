@@ -93,7 +93,7 @@ public class NornilsGarden extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final Instance world = npc.getInstanceWorld();
 		if (isInInstance(world))
@@ -157,7 +157,7 @@ public class NornilsGarden extends AbstractInstance
 		{
 			enterInstance(player, npc, TEMPLATE_ID);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

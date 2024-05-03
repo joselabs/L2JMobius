@@ -60,7 +60,7 @@ public class RecieveAdventurerBuffs extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.startsWith("AUTOBUFF") && (npc != null) && !npc.isDead())
 		{
@@ -88,7 +88,7 @@ public class RecieveAdventurerBuffs extends AbstractNpcAI
 			}
 			startQuestTimer("AUTOBUFF", 30000, npc, null);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

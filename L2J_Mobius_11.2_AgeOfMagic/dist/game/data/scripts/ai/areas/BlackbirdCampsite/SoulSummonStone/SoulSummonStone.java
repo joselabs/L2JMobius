@@ -47,7 +47,7 @@ public class SoulSummonStone extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{
@@ -80,7 +80,7 @@ public class SoulSummonStone extends AbstractNpcAI
 				return "34434-05.html";
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

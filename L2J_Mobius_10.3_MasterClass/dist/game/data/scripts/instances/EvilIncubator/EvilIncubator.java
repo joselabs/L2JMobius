@@ -189,12 +189,12 @@ public class EvilIncubator extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState st = getQuestState(player);
 		if ((st == null) || !st.isStarted())
 		{
-			return super.onAdvEvent(event, npc, player);
+			return super.onEvent(event, npc, player);
 		}
 		String htmltext = null;
 		if (event.equals("enterInstance"))

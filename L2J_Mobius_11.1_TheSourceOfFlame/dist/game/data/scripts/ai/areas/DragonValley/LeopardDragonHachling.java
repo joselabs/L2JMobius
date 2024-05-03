@@ -55,7 +55,7 @@ public class LeopardDragonHachling extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if ((npc != null) && event.equals("MOVE_TO_TRANSFORM"))
 		{
@@ -77,7 +77,7 @@ public class LeopardDragonHachling extends AbstractNpcAI
 				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, nearestLocation(npc));
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

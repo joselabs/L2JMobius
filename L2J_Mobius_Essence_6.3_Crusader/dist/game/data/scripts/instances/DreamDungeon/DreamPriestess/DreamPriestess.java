@@ -63,11 +63,11 @@ public class DreamPriestess extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (player == null)
 		{
-			return super.onAdvEvent(event, npc, null);
+			return super.onEvent(event, npc, null);
 		}
 		
 		if (event.startsWith("enter_dream_dungeon"))
@@ -98,7 +98,7 @@ public class DreamPriestess extends AbstractInstance
 				{
 					enterInstance(player, npc, DraconidFortress.INSTANCE_ID);
 					ThreadPool.schedule(() -> CatGuildsLair.startCatLairInstance(player), 5000);
-					return super.onAdvEvent(event, npc, player);
+					return super.onEvent(event, npc, player);
 				}
 				
 				if (!INSTANCE_IDS.contains(dungeonId))
@@ -155,7 +155,7 @@ public class DreamPriestess extends AbstractInstance
 			}
 			return DREAM_PRIESTESS + "-gm.htm";
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	private static boolean checkRequirementsForEnter(Player requestor)

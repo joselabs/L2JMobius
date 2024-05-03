@@ -68,7 +68,7 @@ public class AncientArcanCity extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("CHANGE_STATE"))
 		{
@@ -102,7 +102,7 @@ public class AncientArcanCity extends AbstractNpcAI
 				cat.broadcastSocialAction(2);
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

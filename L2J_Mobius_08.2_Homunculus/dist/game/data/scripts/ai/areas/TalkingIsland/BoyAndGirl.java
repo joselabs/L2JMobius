@@ -45,7 +45,7 @@ public class BoyAndGirl extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("NPC_CHANGEWEAP"))
 		{
@@ -66,7 +66,7 @@ public class BoyAndGirl extends AbstractNpcAI
 			npc.broadcastSay(ChatType.NPC_GENERAL, npc.getId() == BOY ? NpcStringId.WOW_2 : NpcStringId.BOYS_ARE_SO_ANNOYING);
 			startQuestTimer("NPC_SHOUT", 10000 + (getRandom(5) * 1000), npc, null);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

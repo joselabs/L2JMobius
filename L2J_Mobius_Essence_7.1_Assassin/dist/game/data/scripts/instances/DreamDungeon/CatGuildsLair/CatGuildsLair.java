@@ -155,7 +155,7 @@ public class CatGuildsLair extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final Instance instance = npc.getInstanceWorld();
 		if ((instance == null) || (instance.getStatus() < CREATED))
@@ -169,7 +169,7 @@ public class CatGuildsLair extends AbstractInstance
 			setRandomTitles(instance, true);
 		}
 		
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	private void spawnBoss(Instance instance)

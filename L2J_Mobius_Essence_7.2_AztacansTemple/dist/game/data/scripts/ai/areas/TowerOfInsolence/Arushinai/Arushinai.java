@@ -49,7 +49,7 @@ public class Arushinai extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("30401-1.htm") || event.equals("30401-2.htm"))
 		{

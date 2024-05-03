@@ -44,7 +44,7 @@ public class Q00641_AttackSailren extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState st = player.getQuestState(getName());
 		if (st == null)

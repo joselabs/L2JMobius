@@ -64,7 +64,7 @@ public class Q00669_DesperateFightWithTheDragons extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final QuestState qs = getQuestState(player, false);

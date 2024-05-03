@@ -41,7 +41,7 @@ public class RemembranceTower extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("action") && npc.isScriptValue(0))
 		{
@@ -54,7 +54,7 @@ public class RemembranceTower extends AbstractNpcAI
 			npc.setScriptValue(0);
 			npc.broadcastPacket(new OnEventTrigger(EMMITER_ID, false));
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	public static void main(String[] args)

@@ -68,7 +68,7 @@ public final class Q10552_ChallengeBalthusKnight extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final QuestState qs = getQuestState(player, false);
@@ -87,7 +87,7 @@ public final class Q10552_ChallengeBalthusKnight extends Quest
 			final Quest instance = QuestManager.getInstance().getQuest(HatchlingNest.class.getSimpleName());
 			if (instance != null)
 			{
-				instance.onAdvEvent("enterInstance", npc, player);
+				instance.onEvent("enterInstance", npc, player);
 			}
 			htmltext = "tarti_balthus_q10552_03.htm";
 		}
@@ -125,7 +125,7 @@ public final class Q10552_ChallengeBalthusKnight extends Quest
 							final Quest instance = QuestManager.getInstance().getQuest(HatchlingNest.class.getSimpleName());
 							if (instance != null)
 							{
-								instance.onAdvEvent("enterInstance", npc, player);
+								instance.onEvent("enterInstance", npc, player);
 							}
 							htmltext = "tarti_balthus_q10552_04.htm";
 							break;

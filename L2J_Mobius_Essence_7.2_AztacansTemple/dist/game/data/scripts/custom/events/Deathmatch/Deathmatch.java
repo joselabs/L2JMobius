@@ -169,7 +169,7 @@ public class Deathmatch extends Event
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (!EVENT_ACTIVE)
 		{

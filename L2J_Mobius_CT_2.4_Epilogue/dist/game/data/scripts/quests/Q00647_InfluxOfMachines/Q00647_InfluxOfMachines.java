@@ -48,7 +48,7 @@ public class Q00647_InfluxOfMachines extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final String htmltext = event;
 		final QuestState st = player.getQuestState(getName());

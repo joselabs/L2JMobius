@@ -40,7 +40,7 @@ public class Acateo extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("give_circlet"))
 		{
@@ -51,7 +51,7 @@ public class Acateo extends AbstractNpcAI
 			giveItems(player, ACADEMY_CIRCLET, 1);
 			return "33905-2.html";
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

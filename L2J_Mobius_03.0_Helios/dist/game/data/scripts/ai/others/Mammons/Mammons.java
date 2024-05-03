@@ -79,12 +79,12 @@ public class Mammons extends AbstractNpcAI
 		addTalkId(MAMMONS);
 		addFirstTalkId(MAMMONS);
 		
-		onAdvEvent("RESPAWN_MAMMONS", null, null);
+		onEvent("RESPAWN_MAMMONS", null, null);
 		startQuestTimer("RESPAWN_MAMMONS", TELEPORT_DELAY, null, null, true);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		switch (event)

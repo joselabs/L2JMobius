@@ -105,7 +105,7 @@ public class MuseumDungeon extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("enter_instance"))
 		{
@@ -166,7 +166,7 @@ public class MuseumDungeon extends AbstractInstance
 				}
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

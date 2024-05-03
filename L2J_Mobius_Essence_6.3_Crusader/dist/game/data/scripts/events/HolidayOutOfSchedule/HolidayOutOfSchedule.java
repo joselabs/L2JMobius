@@ -167,7 +167,7 @@ public class HolidayOutOfSchedule extends LongTimeEvent
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (npc != null)
 		{
@@ -242,7 +242,7 @@ public class HolidayOutOfSchedule extends LongTimeEvent
 				despawnSanta();
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

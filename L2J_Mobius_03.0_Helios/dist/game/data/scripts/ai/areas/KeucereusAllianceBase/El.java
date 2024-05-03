@@ -38,13 +38,13 @@ public class El extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("SPAM_TEXT") && (npc != null))
 		{
 			npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.YOU_CAN_USE_THE_JUMP_BOARD_TO_GET_STRAIGHT_TO_THE_2ND_FLOOR, 1000);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

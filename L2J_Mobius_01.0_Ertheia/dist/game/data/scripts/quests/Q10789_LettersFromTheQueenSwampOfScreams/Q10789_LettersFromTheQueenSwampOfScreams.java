@@ -56,7 +56,7 @@ public class Q10789_LettersFromTheQueenSwampOfScreams extends LetterQuest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final QuestState qs = getQuestState(player, false);

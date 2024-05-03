@@ -43,7 +43,7 @@ public class DimensionMakkum extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final Instance world = getPlayerInstance(player);
 		switch (event)
@@ -67,7 +67,7 @@ public class DimensionMakkum extends AbstractInstance
 				break;
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

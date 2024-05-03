@@ -38,7 +38,7 @@ public class GuardSoldier extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("SPAM_TEXT") && (npc != null))
 		{
@@ -49,7 +49,7 @@ public class GuardSoldier extends AbstractNpcAI
 		{
 			npc.broadcastSocialAction(2);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

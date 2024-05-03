@@ -198,7 +198,7 @@ public class AshenShadowRevolutionaries extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.contains("enterInstance"))
 		{
@@ -314,7 +314,7 @@ public class AshenShadowRevolutionaries extends AbstractInstance
 			}
 			return null;
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

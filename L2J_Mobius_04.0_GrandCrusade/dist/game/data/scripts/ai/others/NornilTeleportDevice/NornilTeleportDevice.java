@@ -48,14 +48,14 @@ public class NornilTeleportDevice extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.startsWith("teleport_"))
 		{
 			final int locId = Integer.parseInt(event.replace("teleport_", ""));
 			player.teleToLocation(LOCATIONS[locId - 1]);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

@@ -75,7 +75,7 @@ public class TersisHerald extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("giveBuff"))
 		{
@@ -87,7 +87,7 @@ public class TersisHerald extends AbstractNpcAI
 			npc.setTarget(player);
 			npc.doCast(DRAGON_BUFF.getSkill());
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

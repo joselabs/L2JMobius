@@ -38,7 +38,7 @@ public class TomaJunior extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("SPAM_TEXT") && (npc != null))
 		{
@@ -49,7 +49,7 @@ public class TomaJunior extends AbstractNpcAI
 		{
 			npc.broadcastSocialAction(6);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

@@ -84,7 +84,7 @@ public class YeSegiraTeleportDevice extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (LOCATIONS.containsKey(event))
 		{
@@ -107,7 +107,7 @@ public class YeSegiraTeleportDevice extends AbstractNpcAI
 				// }
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@RegisterEvent(EventType.ON_PLAYER_CREATE)

@@ -45,12 +45,12 @@ public class PriestOfMammon extends AbstractNpcAI
 	private PriestOfMammon()
 	{
 		addFirstTalkId(PRIEST);
-		onAdvEvent("RESPAWN_PRIEST", null, null);
+		onEvent("RESPAWN_PRIEST", null, null);
 		startQuestTimer("RESPAWN_PRIEST", TELEPORT_DELAY, null, null, true);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		switch (event)

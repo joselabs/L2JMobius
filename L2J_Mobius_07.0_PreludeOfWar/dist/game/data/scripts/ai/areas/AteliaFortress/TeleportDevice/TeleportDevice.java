@@ -45,7 +45,7 @@ public class TeleportDevice extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (player.getFactionLevel(Faction.KINGDOM_ROYAL_GUARDS) < 3)
 		{

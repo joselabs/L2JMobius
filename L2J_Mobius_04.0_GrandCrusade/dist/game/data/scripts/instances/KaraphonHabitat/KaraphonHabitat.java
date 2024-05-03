@@ -48,7 +48,7 @@ public class KaraphonHabitat extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = player.getQuestState(Q10745_TheSecretIngredients.class.getSimpleName());
 		if (qs != null)

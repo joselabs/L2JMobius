@@ -46,7 +46,7 @@ public class ValakasTempleTeleport extends AbstractInstance
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{
@@ -73,7 +73,7 @@ public class ValakasTempleTeleport extends AbstractInstance
 				PLAYER_TO_LOGIN.remove(player.getObjectId());
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	private static boolean checkRequirementsForEnter(Player requestor)

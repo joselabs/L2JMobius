@@ -85,7 +85,7 @@ public final class Q10557_NewPowerWindsOfFate extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final QuestState qs = getQuestState(player, false);
@@ -180,7 +180,7 @@ public final class Q10557_NewPowerWindsOfFate extends Quest
 					final Quest faeron = QuestManager.getInstance().getQuest(FaeronVillage.class.getSimpleName());
 					if (faeron != null)
 					{
-						faeron.onAdvEvent("enterInstance", npc, player);
+						faeron.onEvent("enterInstance", npc, player);
 						switch (player.getClassId())
 						{
 							case EVISCERATOR_BALTHUS:

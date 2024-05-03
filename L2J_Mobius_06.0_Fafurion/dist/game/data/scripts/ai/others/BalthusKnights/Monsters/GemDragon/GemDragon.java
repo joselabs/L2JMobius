@@ -88,7 +88,7 @@ public final class GemDragon extends AbstractNpcAI
 				{
 					ThreadPool.schedule(() ->
 					{
-						instance.onAdvEvent("continueGemDragonsAttack", npc, killer);
+						instance.onEvent("continueGemDragonsAttack", npc, killer);
 					}, 4000); // 4 sec
 					
 				}

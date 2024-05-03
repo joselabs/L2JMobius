@@ -64,7 +64,7 @@ public class Q10735_ASpecialPower extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
 		if ((qs != null) && event.equals("33942-02.htm"))

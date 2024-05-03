@@ -71,7 +71,7 @@ public class Q00783_VestigeOfTheMagicPower extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final QuestState qs = getQuestState(player, false);
@@ -175,17 +175,17 @@ public class Q00783_VestigeOfTheMagicPower extends Quest
 					else if (qs.isCond(5))
 					{
 						htmltext = "31595-05b.htm";
-						onAdvEvent(htmltext, npc, player);
+						onEvent(htmltext, npc, player);
 					}
 					else if (qs.isCond(6))
 					{
 						htmltext = "31595-06b.htm";
-						onAdvEvent(htmltext, npc, player);
+						onEvent(htmltext, npc, player);
 					}
 					else if (qs.isCond(7))
 					{
 						htmltext = "31595-07b.htm";
-						onAdvEvent(htmltext, npc, player);
+						onEvent(htmltext, npc, player);
 					}
 					else if (qs.isCond(2) || qs.isCond(3) || qs.isCond(4))
 					{

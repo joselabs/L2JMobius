@@ -38,13 +38,13 @@ public class Plenos extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equals("SPAM_TEXT") && (npc != null))
 		{
 			npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.YOU_CAN_BE_TELEPORTED_TO_EACH_SEED_IF_YOU_VOLUNTEER_WHY_NOT_TRY, 1000);
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override
