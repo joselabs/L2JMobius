@@ -596,14 +596,18 @@
 	<item id="98034" name="Tower of Insolence's Time Stone" additionalName="Sealed" type="EtcItem">
 		<!-- Prolongs your session zone's raid for 60 min. <Hunting zone>. Tower of Insolence - World Hunting Zone -->
 		<set name="icon" val="Icon.tower_of_insolence" />
-		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
-		<set name="immediate_effect" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="immediate_effect" val="true" />
+		<skills>
+			<skill id="40461" level="1" /> <!-- Tower of Insolence's Time Stone - Sealed -->
+		</skills>
 	</item>
 	<item id="98035" name="Crusader's Assistance Rare Accessory Gift Box (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->

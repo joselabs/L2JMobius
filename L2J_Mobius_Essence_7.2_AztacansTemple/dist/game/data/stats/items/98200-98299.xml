@@ -260,23 +260,34 @@
 	<item id="98213" name="Pagan Temple's Time Stone" type="EtcItem">
 		<!-- Prolongs your session zone's raid for 60 min. <Hunting zone>. Pagan Temple - World hunting zone. <font color=ff6666>Note!</font>. Required level: 85+. -->
 		<set name="icon" val="icon.temple_of_heresy" />
-		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
-		<set name="immediate_effect" val="true" />
-		<set name="material" val="LIQUID" />
-		<set name="weight" val="5" />
-		<set name="is_dropable" val="false" />
-		<set name="is_sellable" val="false" />
-	</item>
-	<item id="98214" name="Pagan Temple's Time Stone" additionalName="Sealed" type="EtcItem">
-		<!-- Prolongs your session zone's raid for 60 min. <Hunting zone>. Pagan Temple - World hunting zone. <font color=ff6666>Note!</font>. Required level: 85+. -->
-		<set name="icon" val="icon.temple_of_heresy" />
-		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
-		<set name="immediate_effect" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="immediate_effect" val="true" />
+		<skills>
+			<skill id="40471" level="1" /> <!-- Pagan Temple's Time Stone -->
+		</skills>
+	</item>
+	<item id="98214" name="Pagan Temple's Time Stone" additionalName="Sealed" type="EtcItem">
+		<!-- Prolongs your session zone's raid for 60 min. <Hunting zone>. Pagan Temple - World hunting zone. <font color=ff6666>Note!</font>. Required level: 85+. -->
+		<set name="icon" val="icon.temple_of_heresy" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="material" val="LIQUID" />
+		<set name="weight" val="5" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="immediate_effect" val="true" />
+		<skills>
+			<skill id="40472" level="1" /> <!-- Pagan Temple's Time Stone -->
+		</skills>
 	</item>
 	<item id="98215" name="Temple Catacomb Pass (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to get an extra pass to the Temple Catacomb. Note!. Can be used once a day outside of instance zones. Can only be used when the Temple Catacomb is on cooldown. -->
