@@ -276,6 +276,12 @@ public class CharacterCreate extends ClientPacket
 				return;
 			}
 			
+			if (!Config.ALLOW_ASSASSIN && CategoryData.getInstance().isInCategory(CategoryType.ASSASSIN_ALL_CLASS, _classId))
+			{
+				client.sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
+				return;
+			}
+			
 			newChar = Player.create(template, client.getAccountName(), _name, new PlayerAppearance(_face, _hairColor, _hairStyle, _isFemale));
 		}
 		
