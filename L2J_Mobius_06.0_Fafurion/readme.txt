@@ -2,7 +2,7 @@ L2J-Mobius Fafurion
 
 JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
 XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
-Eclipse: https://www.mediafire.com/file/kryxpp6u4m49eo9/eclipse-java-2024-03-R-win32-x86_64.zip
+Eclipse: https://www.mediafire.com/file/ef5eub52bx4iixc/eclipse-java-2024-06-R-win32-x86_64.zip
 Geodata: http://www.mediafire.com/file/dcpw8w5u60alw14/L2J_Mobius_06.0_Fafurion_Geodata.zip
 
 Client (password L2jMobius): https://drive.google.com/u/1/uc?id=1EW-r8oUNWuRXUXmQ_tPbY8zIBEATgvZV&export=download
