@@ -60,6 +60,7 @@ import org.l2jmobius.gameserver.network.clientpackets.collection.RequestCollecti
 import org.l2jmobius.gameserver.network.clientpackets.collection.RequestCollectionUpdateFavorite;
 import org.l2jmobius.gameserver.network.clientpackets.collection.RequestExCollectionList;
 import org.l2jmobius.gameserver.network.clientpackets.collection.RequestExCollectionOpenUI;
+import org.l2jmobius.gameserver.network.clientpackets.collection.RequestExCollectionSummary;
 import org.l2jmobius.gameserver.network.clientpackets.commission.RequestCommissionBuyInfo;
 import org.l2jmobius.gameserver.network.clientpackets.commission.RequestCommissionBuyItem;
 import org.l2jmobius.gameserver.network.clientpackets.commission.RequestCommissionCancel;
@@ -104,6 +105,11 @@ import org.l2jmobius.gameserver.network.clientpackets.huntingzones.ExTimedHuntin
 import org.l2jmobius.gameserver.network.clientpackets.huntingzones.ExTimedHuntingZoneList;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGamePlay;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGameStartInfo;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameClose;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameOpen;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGamePopupOk;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameReset;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameRollDice;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.ConfirmMenteeAdd;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.RequestMenteeAdd;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.RequestMenteeWaitingList;
@@ -612,11 +618,11 @@ public enum ExClientPackets
 	EX_DPSVR(0x1B6, null, ConnectionState.IN_GAME),
 	EX_TENPROTECT_DECRYPT_ERROR(0x1B7, null, ConnectionState.IN_GAME),
 	EX_NET_LATENCY(0x1B8, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_OPEN(0x1B9, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_ROLL_DICE(0x1BA, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_POPUP_OK(0x1BB, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_RESET(0x1BC, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_CLOSE(0x1BD, null, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_OPEN(0x1B9, ExRequestMableGameOpen::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_ROLL_DICE(0x1BA, ExRequestMableGameRollDice::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_POPUP_OK(0x1BB, ExRequestMableGamePopupOk::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_RESET(0x1BC, ExRequestMableGameReset::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_CLOSE(0x1BD, ExRequestMableGameClose::new, ConnectionState.IN_GAME),
 	EX_RETURN_TO_ORIGIN(0x1BE, null, ConnectionState.IN_GAME),
 	EX_BLESS_OPTION_PUT_ITEM(0x1BF, null, ConnectionState.IN_GAME),
 	EX_BLESS_OPTION_ENCHANT(0x1C0, null, ConnectionState.IN_GAME),
@@ -651,7 +657,7 @@ public enum ExClientPackets
 	EX_COLLECTION_LIST(0x1DC, RequestExCollectionList::new, ConnectionState.IN_GAME),
 	EX_COLLECTION_UPDATE_FAVORITE(0x1DD, RequestCollectionUpdateFavorite::new, ConnectionState.IN_GAME),
 	EX_COLLECTION_FAVORITE_LIST(0x1DE, RequestCollectionFavoriteList::new, ConnectionState.IN_GAME),
-	EX_COLLECTION_SUMMARY(0x1DF, null, ConnectionState.IN_GAME),
+	EX_COLLECTION_SUMMARY(0x1DF, RequestExCollectionSummary::new, ConnectionState.IN_GAME),
 	EX_COLLECTION_REGISTER(0x1E0, RequestCollectionRegister::new, ConnectionState.IN_GAME),
 	EX_COLLECTION_RECEIVE_REWARD(0x1E1, RequestCollectionReceiveReward::new, ConnectionState.IN_GAME),
 	EX_PVPBOOK_SHARE_REVENGE_LIST(0x1E2, null, ConnectionState.IN_GAME),

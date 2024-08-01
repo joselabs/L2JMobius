@@ -75,7 +75,6 @@ import org.l2jmobius.gameserver.network.serverpackets.CreatureSay;
 import org.l2jmobius.gameserver.network.serverpackets.ExMagicAttackInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.taskmanager.DecayTaskManager;
-import org.l2jmobius.gameserver.util.Util;
 
 public class Attackable extends Npc
 {
@@ -362,7 +361,7 @@ public class Attackable extends Npc
 				if (damage > 1)
 				{
 					// Check if damage dealer isn't too far from this (killed monster)
-					if (!Util.checkIfInRange(Config.ALT_PARTY_RANGE, this, attacker, true))
+					if (calculateDistance3D(attacker) > Config.ALT_PARTY_RANGE)
 					{
 						continue;
 					}
@@ -616,7 +615,7 @@ public class Attackable extends Npc
 							// If the Player is in the Attackable rewards add its damages to party damages
 							if (reward2 != null)
 							{
-								if (Util.checkIfInRange(Config.ALT_PARTY_RANGE, this, partyPlayer, true))
+								if (calculateDistance3D(partyPlayer) < Config.ALT_PARTY_RANGE)
 								{
 									partyDmg += reward2.getDamage(); // Add Player damages to party damages
 									rewardedMembers.add(partyPlayer);
@@ -635,7 +634,7 @@ public class Attackable extends Npc
 								}
 								rewards.remove(partyPlayer); // Remove the Player from the Attackable rewards
 							}
-							else if (Util.checkIfInRange(Config.ALT_PARTY_RANGE, this, partyPlayer, true))
+							else if (calculateDistance3D(partyPlayer) < Config.ALT_PARTY_RANGE)
 							{
 								rewardedMembers.add(partyPlayer);
 								if (partyPlayer.getLevel() > partyLvl)
@@ -726,7 +725,7 @@ public class Attackable extends Npc
 		Creature damageDealer = null;
 		for (AggroInfo info : _aggroList.values())
 		{
-			if ((info != null) && (info.getDamage() > damage) && Util.checkIfInRange(Config.ALT_PARTY_RANGE, this, info.getAttacker(), true))
+			if ((info != null) && (info.getDamage() > damage) && (calculateDistance3D(info.getAttacker()) < Config.ALT_PARTY_RANGE))
 			{
 				damage = info.getDamage();
 				damageDealer = info.getAttacker();
@@ -1184,7 +1183,7 @@ public class Attackable extends Npc
 	 */
 	public boolean isInAggroList(Creature creature)
 	{
-		return _aggroList.containsKey(creature);
+		return (creature != null) && _aggroList.containsKey(creature);
 	}
 	
 	/**
@@ -1353,8 +1352,8 @@ public class Attackable extends Npc
 		double sp = 0;
 		if ((levelDiff < Config.MONSTER_EXP_MAX_LEVEL_DIFFERENCE) && (levelDiff > -Config.MONSTER_EXP_MAX_LEVEL_DIFFERENCE))
 		{
-			xp = Math.max(0, (getExpReward() * damage) / totalDamage);
-			sp = Math.max(0, (getSpReward() * damage) / totalDamage);
+			xp = Math.max(0, (getExpReward(charLevel) * damage) / totalDamage);
+			sp = Math.max(0, (getSpReward(charLevel) * damage) / totalDamage);
 			if ((charLevel > 84) && (levelDiff <= -3))
 			{
 				double mul;
@@ -1514,8 +1513,8 @@ public class Attackable extends Npc
 	}
 	
 	/**
-	 * Checks if its spoiled.
-	 * @return {@code true} if its spoiled, {@code false} otherwise
+	 * Checks if it is spoiled.
+	 * @return {@code true} if it is spoiled, {@code false} otherwise
 	 */
 	public boolean isSpoiled()
 	{
@@ -1524,7 +1523,7 @@ public class Attackable extends Npc
 	
 	/**
 	 * Gets the spoiler object ID.
-	 * @return the spoiler object ID if its spoiled, 0 otherwise
+	 * @return the spoiler object ID if it is spoiled, 0 otherwise
 	 */
 	public int getSpoilerObjectId()
 	{
@@ -1708,7 +1707,7 @@ public class Attackable extends Npc
 	 */
 	public int getVitalityPoints(int level, double exp, boolean isBoss)
 	{
-		if ((getLevel() <= 0) || (getExpReward() <= 0) || (isBoss && (Config.VITALITY_CONSUME_BY_BOSS == 0)))
+		if ((getLevel() <= 0) || (getExpReward(level) <= 0) || (isBoss && (Config.VITALITY_CONSUME_BY_BOSS == 0)))
 		{
 			return 0;
 		}

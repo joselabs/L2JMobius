@@ -481,8 +481,12 @@ public class Helios extends AbstractNpcAI
 			{
 				clean();
 				_bossZone.broadcastPacket(new ExShowScreenMessage(NpcStringId.HELIOS_DEFEATED_TAKES_FLIGHT_DEEP_IN_TO_THE_SUPERION_FORT_HIS_THRONE_IS_RENDERED_INACTIVE, ExShowScreenMessage.TOP_CENTER, 10000, true));
+				
 				GrandBossManager.getInstance().setStatus(HELIOS3, DEAD);
-				final long respawnTime = (Config.HELIOS_SPAWN_INTERVAL + getRandom(-Config.HELIOS_SPAWN_RANDOM, Config.HELIOS_SPAWN_RANDOM)) * 3600000;
+				
+				final long baseIntervalMillis = Config.HELIOS_SPAWN_INTERVAL * 3600000;
+				final long randomRangeMillis = Config.HELIOS_SPAWN_RANDOM * 3600000;
+				final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 				final StatSet info = GrandBossManager.getInstance().getStatSet(HELIOS3);
 				info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 				GrandBossManager.getInstance().setStatSet(HELIOS3, info);

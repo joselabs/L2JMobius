@@ -61,9 +61,10 @@ public class Escape extends AbstractEffect
 	{
 		if (_escapeType != null)
 		{
-			if (effected.isInInstance() && effected.getActingPlayer().isInTimedHuntingZone())
+			// Essence "Training Zone" - teleport back to entrance.
+			if (effected.isInInstance() && effected.getActingPlayer().getInstanceWorld().getTemplateId() == 228)
 			{
-				effected.teleToLocation(effected.getActingPlayer().getTimedHuntingZone().getEnterLocation(), effected.getInstanceId());
+				effected.teleToLocation(effected.getActingPlayer().getInstanceWorld().getEnterLocation(), effected.getInstanceId());
 			}
 			else
 			{

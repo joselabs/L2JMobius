@@ -20,10 +20,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
+import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.buylist.Product;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
+import org.l2jmobius.gameserver.model.holders.PetEvolveHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.WarehouseItem;
 import org.l2jmobius.gameserver.model.item.instance.Item;
@@ -89,6 +91,8 @@ public class ItemInfo
 	
 	private int _reuseDelay;
 	private Player _owner;
+	
+	private PetEvolveHolder _petData;
 	
 	/**
 	 * Get all information from Item to generate ItemInfo.
@@ -159,6 +163,7 @@ public class ItemInfo
 		_visualExpiration = item.getVisualLifeTime() > 0 ? (item.getVisualLifeTime() - System.currentTimeMillis()) / 1000 : 0;
 		_reuseDelay = item.getReuseDelay();
 		_owner = item.getActingPlayer();
+		_petData = item.getActingPlayer() != null ? PetDataTable.getInstance().getPetDataByItemId(item.getId()) != null ? item.getActingPlayer().getPetEvolve(getObjectId()) : null : null;
 	}
 	
 	public ItemInfo(Item item, int change)
@@ -483,6 +488,11 @@ public class ItemInfo
 	public Player getOwner()
 	{
 		return _owner;
+	}
+	
+	public PetEvolveHolder getPetData()
+	{
+		return _petData;
 	}
 	
 	@Override

@@ -1335,7 +1335,7 @@ public class Frintezza extends AbstractNpcAI
 				}
 				else if (player.getInventory().getItemByItemId(8073) == null)
 				{
-					htmltext = "<html><body>You dont have required item.</body></html>";
+					htmltext = "<html><body>You do n0t have the required item.</body></html>";
 				}
 				else
 				{
@@ -1467,8 +1467,10 @@ public class Frintezza extends AbstractNpcAI
 			startQuestTimer("minions_despawn", 60000, npc, null);
 			startQuestTimer("remove_players", 900000, npc, null);
 			GrandBossManager.getInstance().setStatus(FRINTEZZA, DEAD);
-			long respawnTime = Config.FRINTEZZA_SPAWN_INTERVAL + getRandom(-Config.FRINTEZZA_SPAWN_RANDOM, Config.FRINTEZZA_SPAWN_RANDOM);
-			respawnTime *= 3600000;
+			
+			final long baseIntervalMillis = Config.FRINTEZZA_SPAWN_INTERVAL * 3600000;
+			final long randomRangeMillis = Config.FRINTEZZA_SPAWN_RANDOM * 3600000;
+			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			startQuestTimer("frintezza_unlock", respawnTime, npc, null);
 			// also save the respawn time so that the info is maintained past reboots
 			final StatSet info = GrandBossManager.getInstance().getStatSet(FRINTEZZA);

@@ -41,6 +41,7 @@ import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadGameManager;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadGameTask;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadManager;
+import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.olympiad.ExOlympiadMatchList;
 
@@ -233,6 +234,7 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 			case "rank_149": // Sigel Hell Knight
 			case "rank_150": // Sigel Eva's Templar
 			case "rank_151": // Sigel Shillien Templar
+			case "rank_216": // Sigel Death Knight
 			case "rank_152": // Tyrr Duelist
 			case "rank_153": // Tyrr Dreadnought
 			case "rank_154": // Tyrr Titan
@@ -311,7 +313,6 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 	{
 		try
 		{
-			final Npc olymanager = player.getLastFolkNPC();
 			if (command.startsWith(BYPASSES[0])) // list
 			{
 				if (!Olympiad.getInstance().inCompPeriod())
@@ -322,8 +323,9 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 				
 				player.sendPacket(new ExOlympiadMatchList());
 			}
-			else if ((olymanager == null) || (olymanager.getId() != MANAGER) || (!player.inObserverMode() && !player.isInsideRadius2D(olymanager, 300)))
+			else if (!player.isInsideZone(ZoneId.PEACE) || player.isInInstance() || player.isInTimedHuntingZone() || player.isTeleporting())
 			{
+				player.sendPacket(SystemMessageId.OLYMPIAD_CAN_BE_WATCHES_IN_PEACE_ZONE_ONLY);
 				return false;
 			}
 			else if (OlympiadManager.getInstance().isRegisteredInComp(player))
@@ -353,6 +355,7 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 						LOGGER.warning(getClass().getSimpleName() + ": Zone: " + nextArena.getStadium().getZone() + " doesn't have specatator spawns defined!");
 						return false;
 					}
+					
 					final Location loc = spectatorSpawns.get(getRandom(spectatorSpawns.size()));
 					player.enterOlympiadObserverMode(loc, arenaId);
 				}

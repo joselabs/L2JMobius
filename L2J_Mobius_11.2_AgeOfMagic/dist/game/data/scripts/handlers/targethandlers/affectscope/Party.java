@@ -88,7 +88,7 @@ public class Party implements IAffectScopeHandler
 				return true;
 			};
 			
-			// Affect object of origin since its skipped in the forEachVisibleObjectInRange method.
+			// Affect object of origin since it is skipped in the forEachVisibleObjectInRange method.
 			if (filter.test((Playable) target))
 			{
 				action.accept(target);
@@ -132,7 +132,7 @@ public class Party implements IAffectScopeHandler
 				return true;
 			};
 			
-			// Add object of origin since its skipped in the getVisibleObjects method.
+			// Add object of origin since it is skipped in the getVisibleObjects method.
 			if (filter.test(npc))
 			{
 				action.accept(npc);

@@ -29,6 +29,7 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.AgathionData;
 import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.InventoryBlockType;
@@ -37,6 +38,7 @@ import org.l2jmobius.gameserver.enums.StatusUpdateType;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.TradeList;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerItemAdd;
@@ -481,6 +483,17 @@ public class PlayerInventory extends Inventory
 			{
 				_beautyTickets = item;
 			}
+			else if ((item.getId() == CLAN_EXP))
+			{
+				final long xpCount = item.getCount();
+				final Clan clan = actor.getClan();
+				if (clan != null)
+				{
+					clan.addExp(actor.getObjectId(), (int) xpCount);
+				}
+				ThreadPool.schedule(() -> actor.destroyItemByItemId("Clan Exp Item Consume", CLAN_EXP, xpCount, actor, false), 100);
+				return item;
+			}
 			
 			if (actor != null)
 			{
@@ -878,7 +891,7 @@ public class PlayerInventory extends Inventory
 					paperdoll[slot][0] = invdata.getInt("object_id");
 					paperdoll[slot][1] = invdata.getInt("item_id");
 					paperdoll[slot][2] = invdata.getInt("enchant_level");
-					paperdoll[slot][3] = vars.getInt(ItemVariables.VISUAL_ID, 0);
+					paperdoll[slot][3] = vars.getInt(ItemVariables.VISUAL_ID, Config.ENABLE_TRANSMOG ? vars.getInt(ItemVariables.TRANSMOG_ID, 0) : 0);
 					if (paperdoll[slot][3] > 0) // fix for hair appearance conflicting with original model
 					{
 						paperdoll[slot][1] = paperdoll[slot][3];

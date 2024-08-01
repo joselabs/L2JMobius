@@ -63,13 +63,13 @@ public class RequestShortCutReg extends ClientPacket
 			return;
 		}
 		
-		if ((_page > 23) || (_page < 0))
+		if ((_page > 25) || (_page < 0))
 		{
 			return;
 		}
 		
 		// Auto play checks.
-		if (_page == 22)
+		if ((_page == 22) || (_page == 24)) // Consumables.
 		{
 			if (_type != ShortcutType.ITEM)
 			{
@@ -77,17 +77,27 @@ public class RequestShortCutReg extends ClientPacket
 			}
 			
 			final Item item = player.getInventory().getItemByObjectId(_id);
-			if ((item != null) && item.isPotion())
+			if ((item == null) || item.isPotion())
 			{
 				return;
 			}
 		}
 		else if (_page == 23)
 		{
-			final Item item = player.getInventory().getItemByObjectId(_id);
-			if (((item != null) && !item.isPotion()) || (_type == ShortcutType.ACTION))
+			if ((_slot == 0) || (_slot == 3)) // Macro.
 			{
-				return;
+				if (_type != ShortcutType.MACRO)
+				{
+					return;
+				}
+			}
+			else // Healing potion.
+			{
+				final Item item = player.getInventory().getItemByObjectId(_id);
+				if ((item == null) || !item.isPotion())
+				{
+					return;
+				}
 			}
 		}
 		

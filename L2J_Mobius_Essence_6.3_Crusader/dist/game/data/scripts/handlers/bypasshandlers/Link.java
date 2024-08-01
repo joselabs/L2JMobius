@@ -52,7 +52,10 @@ public class Link implements IBypassHandler
 		VALID_LINKS.add("fortress/foreman.htm");
 		VALID_LINKS.add("petmanager/evolve.htm");
 		VALID_LINKS.add("petmanager/exchange.htm");
-		VALID_LINKS.add("petmanager/instructions.htm");
+		VALID_LINKS.add("petmanager/instructions1.htm");
+		VALID_LINKS.add("petmanager/instructions2.htm");
+		VALID_LINKS.add("petmanager/instructions3.htm");
+		VALID_LINKS.add("petmanager/instructions4.htm");
 		VALID_LINKS.add("warehouse/clanwh.htm");
 		VALID_LINKS.add("warehouse/privatewh.htm");
 	}

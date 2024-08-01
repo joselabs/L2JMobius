@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets.ensoul;
 
 import org.l2jmobius.gameserver.data.xml.EnsoulData;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulStone;
@@ -75,7 +74,7 @@ public class RequestItemEnsoul extends ClientPacket
 			return;
 		}
 		
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.CANNOT_USE_THE_SOUL_CRYSTAL_SYSTEM_WHILE_USING_THE_PRIVATE_STORE_WORKSHOP);
 			return;

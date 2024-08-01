@@ -74,7 +74,8 @@ public enum CommonSkill
 	TELEPORTATION_CUBE(39723, 1),
 	OLYMPIAD_MELODY(34247, 1),
 	OLYMPIAD_HARMONY(32415, 1),
-	OLYMPIAD_WIN(32417, 1);
+	OLYMPIAD_WIN(32417, 1),
+	BOT_REPORT_STATUS(55031, 1);
 	
 	private final SkillHolder _holder;
 	

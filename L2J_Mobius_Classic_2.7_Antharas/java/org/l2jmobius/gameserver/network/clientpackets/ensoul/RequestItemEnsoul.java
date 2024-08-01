@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets.ensoul;
 
 import org.l2jmobius.gameserver.data.xml.EnsoulData;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulStone;
@@ -72,7 +71,7 @@ public class RequestItemEnsoul extends ClientPacket
 			return;
 		}
 		
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.RUNE_INSERTION_IS_IMPOSSIBLE_WHEN_PRIVATE_STORE_AND_WORKSHOP_ARE_OPENED);
 			return;

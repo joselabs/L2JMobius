@@ -30,20 +30,22 @@ public class Q00366_SilverHairedShaman extends Quest
 	// NPC
 	private static final int DIETER = 30111;
 	// Item
-	private static final int HAIR = 5874;
+	private static final int SAIRONS_SILVER_HAIR = 5874;
+	// Misc
+	private static final int MIN_LEVEL = 48;
 	// Drop chances
 	private static final Map<Integer, Integer> CHANCES = new HashMap<>();
 	static
 	{
-		CHANCES.put(20986, 560000);
-		CHANCES.put(20987, 660000);
-		CHANCES.put(20988, 620000);
+		CHANCES.put(20986, 56);
+		CHANCES.put(20987, 66);
+		CHANCES.put(20988, 62);
 	}
 	
 	public Q00366_SilverHairedShaman()
 	{
 		super(366);
-		registerQuestItems(HAIR);
+		registerQuestItems(SAIRONS_SILVER_HAIR);
 		addStartNpc(DIETER);
 		addTalkId(DIETER);
 		addKillId(20986, 20987, 20988);
@@ -81,12 +83,12 @@ public class Q00366_SilverHairedShaman extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() < 48) ? "30111-0.htm" : "30111-1.htm";
+				htmltext = (player.getLevel() < MIN_LEVEL) ? "30111-0.htm" : "30111-1.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				final int count = getQuestItemsCount(player, HAIR);
+				final int count = getQuestItemsCount(player, SAIRONS_SILVER_HAIR);
 				if (count == 0)
 				{
 					htmltext = "30111-3.htm";
@@ -94,7 +96,7 @@ public class Q00366_SilverHairedShaman extends Quest
 				else
 				{
 					htmltext = "30111-4.htm";
-					takeItems(player, HAIR, -1);
+					takeItems(player, SAIRONS_SILVER_HAIR, -1);
 					giveAdena(player, 12070 + (500 * count), true);
 				}
 				break;
@@ -105,16 +107,13 @@ public class Q00366_SilverHairedShaman extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
+	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		if (getRandom(1000000) < CHANCES.get(npc.getId()))
+		final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
+		if ((qs != null) && (getRandom(100) < CHANCES.get(npc.getId())))
 		{
-			final Player luckyPlayer = getRandomPartyMember(player, npc);
-			if (luckyPlayer != null)
-			{
-				giveItemRandomly(luckyPlayer, npc, HAIR, 1, 0, 1, true);
-			}
+			giveItemRandomly(qs.getPlayer(), npc, SAIRONS_SILVER_HAIR, 1, 0, 1, true);
 		}
-		return super.onKill(npc, player, isSummon);
+		return super.onKill(npc, killer, isSummon);
 	}
 }

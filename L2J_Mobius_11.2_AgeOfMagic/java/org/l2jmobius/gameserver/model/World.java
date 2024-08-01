@@ -18,6 +18,7 @@ package org.l2jmobius.gameserver.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -327,6 +328,23 @@ public class World
 	public void removePet(int ownerId)
 	{
 		_petsInstance.remove(ownerId);
+	}
+	
+	/**
+	 * This operation is quite heave as it iterates all world visible objects.
+	 * @param npcId the id of the NPC to find.
+	 * @return the first NPC found corresponding to the given id.
+	 */
+	public Npc getNpc(int npcId)
+	{
+		for (WorldObject wo : getVisibleObjects())
+		{
+			if (wo.isNpc() && (wo.getId() == npcId))
+			{
+				return (Npc) wo;
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -882,6 +900,11 @@ public class World
 	
 	public Set<Player> getPkPlayers()
 	{
+		if (!Config.PK_PENALTY_LIST)
+		{
+			return Collections.emptySet();
+		}
+		
 		return _pkPlayers;
 	}
 	

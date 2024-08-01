@@ -99,6 +99,7 @@ public class Party extends AbstractPlayerGroup
 	private Future<?> _positionBroadcastTask = null;
 	protected PartyMemberPosition _positionPacket;
 	private boolean _disbanding = false;
+	private Object _ucState = null;
 	private Map<Integer, Creature> _tacticalSigns = null;
 	private static final int[] TACTICAL_SYS_STRINGS =
 	{
@@ -321,7 +322,7 @@ public class Party extends AbstractPlayerGroup
 		
 		msg = new SystemMessage(SystemMessageId.C1_HAS_JOINED_THE_PARTY);
 		msg.addString(player.getName());
-		broadcastPacket(msg);
+		broadcastToPartyMembers(player, msg);
 		
 		for (Player member : _members)
 		{
@@ -1090,6 +1091,16 @@ public class Party extends AbstractPlayerGroup
 			return null;
 		}
 		return _members.get(0);
+	}
+	
+	public Object getUCState()
+	{
+		return _ucState;
+	}
+	
+	public void setUCState(Object uc)
+	{
+		_ucState = uc;
 	}
 	
 	public synchronized void requestLootChange(PartyDistributionType partyDistributionType)

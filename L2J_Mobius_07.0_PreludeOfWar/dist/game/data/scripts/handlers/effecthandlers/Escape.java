@@ -19,9 +19,11 @@ package handlers.effecthandlers;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.krateisCube.KrateiArena;
 import org.l2jmobius.gameserver.model.skill.Skill;
 
 /**
@@ -59,16 +61,32 @@ public class Escape extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if (_escapeType != null)
+		if (_escapeType == null)
 		{
-			if (effected.isInInstance() && effected.getActingPlayer().isInTimedHuntingZone())
+			return;
+		}
+		
+		if (effected.isPlayer())
+		{
+			final Player player = effected.getActingPlayer();
+			final KrateiArena arena = player.getKrateiArena();
+			if (arena != null)
 			{
-				effected.teleToLocation(effected.getActingPlayer().getTimedHuntingZone().getEnterLocation(), effected.getInstanceId());
+				arena.removePlayer(player);
 			}
-			else
+			else if (player.getUCState() != Player.UC_STATE_NONE)
 			{
-				effected.teleToLocation(_escapeType, null);
+				return;
 			}
+		}
+		
+		if (effected.isInInstance() && effected.getActingPlayer().isInTimedHuntingZone())
+		{
+			effected.teleToLocation(effected.getActingPlayer().getTimedHuntingZone().getEnterLocation(), effected.getInstanceId());
+		}
+		else
+		{
+			effected.teleToLocation(_escapeType, null);
 		}
 	}
 }

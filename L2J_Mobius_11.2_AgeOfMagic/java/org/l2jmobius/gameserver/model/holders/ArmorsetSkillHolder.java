@@ -67,13 +67,13 @@ public class ArmorsetSkillHolder extends SkillHolder
 		}
 		
 		// Player doesn't have enough items equipped to use this skill
-		if (_minimumPieces > armorSet.getPiecesCount(player, idProvider))
+		if (_minimumPieces > armorSet.getPieceCount(player, idProvider))
 		{
 			return false;
 		}
 		
 		// Player's set enchantment isn't enough to use this skill
-		if (_minEnchant > armorSet.getLowestSetEnchant(player))
+		if (_minEnchant > armorSet.getSetEnchant(player))
 		{
 			return false;
 		}

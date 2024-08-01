@@ -32,8 +32,6 @@ import java.util.Locale;
 import java.util.StringJoiner;
 import java.util.StringTokenizer;
 
-import org.l2jmobius.Config;
-
 public class CommonUtil
 {
 	private static final char[] ILLEGAL_CHARACTERS =
@@ -218,7 +216,7 @@ public class CommonUtil
 	
 	public static String getTraceString(StackTraceElement[] stackTraceElements)
 	{
-		final StringJoiner sj = new StringJoiner(Config.EOL);
+		final StringJoiner sj = new StringJoiner(System.lineSeparator());
 		for (StackTraceElement stackTraceElement : stackTraceElements)
 		{
 			sj.add(stackTraceElement.toString());

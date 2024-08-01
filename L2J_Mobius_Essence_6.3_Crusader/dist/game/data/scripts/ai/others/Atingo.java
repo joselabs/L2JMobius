@@ -40,7 +40,7 @@ public class Atingo extends AbstractNpcAI
 	// NPCs
 	private static final int ATINGO = 25914;
 	private static final int SIN_EATER = 25924;
-	private static final int[] PETS = new int[]
+	public static final int[] PETS = new int[]
 	{
 		25923,
 		25922,

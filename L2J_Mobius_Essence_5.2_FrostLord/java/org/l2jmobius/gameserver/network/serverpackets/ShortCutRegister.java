@@ -89,7 +89,7 @@ public class ShortCutRegister extends ServerPacket
 				buffer.writeInt(_shortcut.getSharedReuseGroup());
 				buffer.writeByte(0); // C5
 				buffer.writeInt(_shortcut.getCharacterType());
-				buffer.writeInt(0); // if 1 - cant use
+				buffer.writeInt(0); // if 1 - cannot use
 				buffer.writeInt(0); // reuse delay ?
 				break;
 			}

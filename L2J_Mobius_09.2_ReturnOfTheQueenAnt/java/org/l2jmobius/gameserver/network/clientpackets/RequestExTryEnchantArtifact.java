@@ -157,7 +157,7 @@ public class RequestExTryEnchantArtifact extends ClientPacket
 			targetItem.setEnchantLevel(enchantLevel + 1);
 			final InventoryUpdate iu = new InventoryUpdate();
 			iu.addModifiedItem(targetItem);
-			player.sendPacket(iu);
+			player.sendInventoryUpdate(iu);
 			player.sendPacket(new SystemMessage(SystemMessageId.ARTIFACT_UPGRADE_SUCCEEDED_AND_YOU_OBTAINED_S1).addItemName(targetItem.getId()));
 			player.sendPacket(new ExTryEnchantArtifactResult(ExTryEnchantArtifactResult.SUCCESS, targetItem.getEnchantLevel()));
 		}

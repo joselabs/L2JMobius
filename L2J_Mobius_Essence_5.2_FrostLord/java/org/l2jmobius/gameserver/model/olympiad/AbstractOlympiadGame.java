@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
+import org.l2jmobius.gameserver.enums.OlympiadMode;
 import org.l2jmobius.gameserver.enums.PartyMessageType;
 import org.l2jmobius.gameserver.instancemanager.AntiFeedManager;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
@@ -39,11 +40,11 @@ import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.ExOlympiadMode;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SkillCoolTime;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
+import org.l2jmobius.gameserver.network.serverpackets.olympiad.ExOlympiadMode;
 
 /**
  * @author godson, GodKratos, Pere, DS
@@ -163,7 +164,7 @@ public abstract class AbstractOlympiadGame
 		return null;
 	}
 	
-	protected static boolean portPlayerToArena(Participant par, Location loc, int id, Instance instance)
+	protected static boolean portPlayerToArena(Participant par, Location loc, int id, Instance instance, OlympiadMode mode)
 	{
 		final Player player = par.getPlayer();
 		if ((player == null) || !player.isOnline())
@@ -173,6 +174,7 @@ public abstract class AbstractOlympiadGame
 		
 		try
 		{
+			player.setPvpFlag(0);
 			player.setLastLocation();
 			if (player.isSitting())
 			{
@@ -185,7 +187,7 @@ public abstract class AbstractOlympiadGame
 			player.setOlympiadStart(false);
 			player.setOlympiadSide(par.getSide());
 			player.teleToLocation(loc, instance);
-			player.sendPacket(new ExOlympiadMode(2));
+			player.sendPacket(new ExOlympiadMode(mode));
 		}
 		catch (Exception e)
 		{
@@ -371,7 +373,7 @@ public abstract class AbstractOlympiadGame
 			player.setOlympiadStart(false);
 			player.setOlympiadSide(-1);
 			player.setOlympiadGameId(-1);
-			player.sendPacket(new ExOlympiadMode(0));
+			player.sendPacket(new ExOlympiadMode(OlympiadMode.NONE));
 			
 			// Add Clan Skills
 			final Clan clan = player.getClan();
@@ -420,6 +422,7 @@ public abstract class AbstractOlympiadGame
 		{
 			return;
 		}
+		
 		final Location loc = player.getLastLocation();
 		if (loc != null)
 		{

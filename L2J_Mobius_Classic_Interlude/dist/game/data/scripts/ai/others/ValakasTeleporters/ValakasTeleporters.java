@@ -68,6 +68,7 @@ public class ValakasTeleporters extends AbstractNpcAI
 		final QuestState qs = getQuestState(player, false);
 		if (hasQuestItems(player, VACUALITE_FLOATING_STONE))
 		{
+			takeItems(player, VACUALITE_FLOATING_STONE, 1);
 			player.teleToLocation(ENTER_HALL_OF_FLAMES);
 			qs.set("allowEnter", "1");
 		}

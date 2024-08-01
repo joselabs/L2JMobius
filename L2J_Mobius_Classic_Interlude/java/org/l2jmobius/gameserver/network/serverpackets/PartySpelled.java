@@ -60,6 +60,7 @@ public class PartySpelled extends ServerPacket
 			{
 				buffer.writeInt(info.getSkill().getDisplayId());
 				buffer.writeShort(info.getSkill().getDisplayLevel());
+				buffer.writeShort(0); // Sub level
 				buffer.writeInt(info.getSkill().getAbnormalType().getClientId());
 				writeOptionalInt(info.getTime(), buffer);
 			}
@@ -70,6 +71,7 @@ public class PartySpelled extends ServerPacket
 			{
 				buffer.writeInt(skill.getDisplayId());
 				buffer.writeShort(skill.getDisplayLevel());
+				buffer.writeShort(0); // Sub level
 				buffer.writeInt(skill.getAbnormalType().getClientId());
 				buffer.writeShort(-1);
 			}

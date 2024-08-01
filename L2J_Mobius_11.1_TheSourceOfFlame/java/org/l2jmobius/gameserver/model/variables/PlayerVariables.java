@@ -96,6 +96,7 @@ public class PlayerVariables extends AbstractVariables
 	public static final String PRISON_WAIT_TIME = "PRISON_WAIT_TIME";
 	public static final String PRISON_2_POINTS = "PRISON_2_POINTS";
 	public static final String PRISON_3_POINTS = "PRISON_3_POINTS";
+	public static final String CONQUEST_ORIGIN = "CONQUEST_ORIGIN";
 	public static final String CONQUEST_NAME = "CONQUEST_NAME";
 	public static final String CONQUEST_INTRO = "CONQUEST_INTRO";
 	public static final String CONQUEST_ATTACK_POINTS = "CONQUEST_ATTACK_POINTS";

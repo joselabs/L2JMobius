@@ -65,7 +65,7 @@ public class RequestFriendInvite extends ClientPacket
 		// Target blocked active player.
 		if (BlockList.isBlocked(friend, player))
 		{
-			player.sendMessage("You are in target's block list.");
+			player.sendMessage("You are in " + _name + "'s block list.");
 			return;
 		}
 		SystemMessage sm;
@@ -95,5 +95,9 @@ public class RequestFriendInvite extends ClientPacket
 		player.onTransactionRequest(friend);
 		friend.sendPacket(new FriendAddRequest(player.getName()));
 		player.sendMessage("You've requested " + _name + " to be on your Friends List.");
+		// Notify the friend about the request.
+		sm = new SystemMessage(SystemMessageId.S1_HAS_REQUESTED_TO_BECOME_FRIENDS);
+		sm.addString(player.getName());
+		friend.sendPacket(sm);
 	}
 }

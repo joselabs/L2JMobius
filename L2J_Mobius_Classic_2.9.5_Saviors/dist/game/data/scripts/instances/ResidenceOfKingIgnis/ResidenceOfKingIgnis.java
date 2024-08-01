@@ -34,8 +34,8 @@ import instances.AbstractInstance;
  * @author RobikBobik
  * @NOTE: Retail like working - I get informations from wiki and youtube video.
  * @TODO: Maybe rewrite code to modern style.
- * @TODO: Check skill 50050 - working, but I dont know if is correct.
- * @TODO: Ignis other skills - skills are implemented, but I dont know if is correct.
+ * @TODO: Check skill 50050 - working, but I do not know if is correct.
+ * @TODO: Ignis other skills - skills are implemented, but I do not know if is correct.
  */
 public class ResidenceOfKingIgnis extends AbstractInstance
 {

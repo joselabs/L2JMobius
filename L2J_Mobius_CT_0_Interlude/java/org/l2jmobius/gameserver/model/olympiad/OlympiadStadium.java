@@ -61,7 +61,7 @@ class OlympiadStadium
 	
 	protected void addSpectator(int id, Player spec, boolean storeCoords)
 	{
-		final Location loc = new Location(getCoordinates()[0] + 1200, getCoordinates()[1], getCoordinates()[2]);
+		final Location loc = new Location(getCoordinates()[0], getCoordinates()[1], getCoordinates()[2]);
 		spec.enterOlympiadObserverMode(loc, id, storeCoords);
 		_spectators.add(spec);
 	}

@@ -145,8 +145,7 @@ public class PetSummonInfo extends ServerPacket
 		buffer.writeInt(_summon.getMaxMp()); // max mp
 		buffer.writeLong(_summon.getStat().getSp()); // sp
 		buffer.writeShort(_summon.getLevel()); // level
-		buffer.writeLong(_summon.getStat().getExp());
-		// 0% absolute value
+		buffer.writeLong(_summon.getStat().getExp()); // 0% absolute value
 		buffer.writeLong(Math.min(_summon.getExpForThisLevel(), _summon.getStat().getExp())); // 0% absolute value
 		buffer.writeLong(_summon.getExpForNextLevel()); // 100% absoulte value
 		buffer.writeInt(_summon.isPet() ? _summon.getInventory().getTotalWeight() : 0); // weight

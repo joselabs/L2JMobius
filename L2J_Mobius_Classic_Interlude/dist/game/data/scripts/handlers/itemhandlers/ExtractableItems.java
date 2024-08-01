@@ -212,7 +212,7 @@ public class ExtractableItems implements IItemHandler
 			{
 				playerIU.addModifiedItem(i);
 			}
-			player.sendPacket(playerIU);
+			player.sendInventoryUpdate(playerIU);
 		}
 		
 		for (Entry<Item, Long> entry : extractedItems.entrySet())

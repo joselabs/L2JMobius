@@ -27,13 +27,13 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
+import org.l2jmobius.gameserver.data.xml.DynamicExpRateData;
 import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.AISkillScope;
 import org.l2jmobius.gameserver.enums.AIType;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.MpRewardAffectType;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.RaidBossStatus;
 import org.l2jmobius.gameserver.enums.ShotType;
@@ -485,7 +485,7 @@ public class Npc extends Creature
 		{
 			return false;
 		}
-		else if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		else if (player.isInStoreMode())
 		{
 			return false;
 		}
@@ -859,20 +859,32 @@ public class Npc extends Creature
 	}
 	
 	/**
-	 * @return the Exp Reward of this Npc (modified by RATE_XP).
+	 * @param level
+	 * @return the Exp Reward of this Npc (modified by RATE_XP, or from DynamicExpRates.xml if enabled).
 	 */
-	public double getExpReward()
+	public double getExpReward(int level)
 	{
+		if (DynamicExpRateData.getInstance().isEnabled())
+		{
+			return getTemplate().getExp() * DynamicExpRateData.getInstance().getDynamicExpRate(level);
+		}
+		
 		final Instance instance = getInstanceWorld();
 		final float rateMul = instance != null ? instance.getExpRate() : Config.RATE_XP;
 		return getTemplate().getExp() * rateMul;
 	}
 	
 	/**
-	 * @return the SP Reward of this Npc (modified by RATE_SP).
+	 * @param level
+	 * @return the SP Reward of this Npc (modified by RATE_SP, or from DynamicExpRates.xml if enabled).
 	 */
-	public double getSpReward()
+	public double getSpReward(int level)
 	{
+		if (DynamicExpRateData.getInstance().isEnabled())
+		{
+			return getTemplate().getSP() * DynamicExpRateData.getInstance().getDynamicSpRate(level);
+		}
+		
 		final Instance instance = getInstanceWorld();
 		final float rateMul = instance != null ? instance.getSPRate() : Config.RATE_SP;
 		return getTemplate().getSP() * rateMul;

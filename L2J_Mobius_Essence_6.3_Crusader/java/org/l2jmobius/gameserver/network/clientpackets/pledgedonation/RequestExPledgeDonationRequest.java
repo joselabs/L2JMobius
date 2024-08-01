@@ -26,7 +26,6 @@ import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.itemcontainer.Mail;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
-import org.l2jmobius.gameserver.network.serverpackets.limitshop.ExBloodyCoinCount;
 import org.l2jmobius.gameserver.network.serverpackets.pledgedonation.ExPledgeDonationInfo;
 import org.l2jmobius.gameserver.network.serverpackets.pledgedonation.ExPledgeDonationRequest;
 
@@ -103,7 +102,6 @@ public class RequestExPledgeDonationRequest extends ClientPacket
 		}
 		player.getVariables().set(PlayerVariables.CLAN_DONATION_POINTS, Math.max(player.getClanDonationPoints() - 1, 0));
 		criticalSuccess(player, clan, _type);
-		player.sendPacket(new ExBloodyCoinCount(player));
 		player.sendItemList();
 		player.sendPacket(new ExPledgeDonationRequest(true, _type, player.getClanDonationPoints()));
 		player.sendPacket(new ExPledgeDonationInfo(player.getClanDonationPoints(), true));

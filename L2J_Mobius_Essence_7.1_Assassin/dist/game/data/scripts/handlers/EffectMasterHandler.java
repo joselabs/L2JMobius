@@ -337,6 +337,7 @@ public class EffectMasterHandler
 		EffectHandler.getInstance().registerHandler("Reuse", Reuse::new);
 		EffectHandler.getInstance().registerHandler("ReuseSkillById", ReuseSkillById::new);
 		EffectHandler.getInstance().registerHandler("ReuseSkillIdByDamage", ReuseSkillIdByDamage::new);
+		EffectHandler.getInstance().registerHandler("Ride", Ride::new);
 		EffectHandler.getInstance().registerHandler("Root", Root::new);
 		EffectHandler.getInstance().registerHandler("SacrificeSummon", SacrificeSummon::new);
 		EffectHandler.getInstance().registerHandler("SafeFallHeight", SafeFallHeight::new);

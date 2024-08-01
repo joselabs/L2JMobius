@@ -56,6 +56,7 @@ public class RankingSkillBonuses extends AbstractNpcAI
 	private static final Skill ORC_LEVEL_TRANSFORM_CLASS = SkillData.getInstance().getSkill(54209, 1);
 	private static final Skill DWARF_LEVEL_TRANSFORM_CLASS = SkillData.getInstance().getSkill(54212, 1);
 	private static final Skill KAMAEL_LEVEL_TRANSFORM_CLASS = SkillData.getInstance().getSkill(54205, 1);
+	private static final Skill DEATH_KNIGHT_LEVEL_TRANSFORM_CLASS = SkillData.getInstance().getSkill(54208, 1);
 	private static final Skill SYLPH_LEVEL_TRANSFORM_CLASS = SkillData.getInstance().getSkill(54226, 1);
 	
 	@RegisterEvent(EventType.ON_PLAYER_LOGIN)
@@ -84,6 +85,7 @@ public class RankingSkillBonuses extends AbstractNpcAI
 		player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, ORC_LEVEL_TRANSFORM_CLASS);
 		player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, DWARF_LEVEL_TRANSFORM_CLASS);
 		player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, KAMAEL_LEVEL_TRANSFORM_CLASS);
+		player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, DEATH_KNIGHT_LEVEL_TRANSFORM_CLASS);
 		player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, SYLPH_LEVEL_TRANSFORM_CLASS);
 		player.removeSkill(SERVER_RANKING_BENEFIT_1);
 		player.removeSkill(SERVER_RANKING_BENEFIT_2);
@@ -168,18 +170,38 @@ public class RankingSkillBonuses extends AbstractNpcAI
 			{
 				case HUMAN:
 				{
-					
-					player.addSkill(HUMAN_LEVEL_TRANSFORM_CLASS, false);
+					if (player.isDeathKnight())
+					{
+						player.addSkill(DEATH_KNIGHT_LEVEL_TRANSFORM_CLASS, false);
+					}
+					else
+					{
+						player.addSkill(HUMAN_LEVEL_TRANSFORM_CLASS, false);
+					}
 					break;
 				}
 				case ELF:
 				{
-					player.addSkill(ELF_LEVEL_TRANSFORM_CLASS, false);
+					if (player.isDeathKnight())
+					{
+						player.addSkill(DEATH_KNIGHT_LEVEL_TRANSFORM_CLASS, false);
+					}
+					else
+					{
+						player.addSkill(ELF_LEVEL_TRANSFORM_CLASS, false);
+					}
 					break;
 				}
 				case DARK_ELF:
 				{
-					player.addSkill(DARK_ELF_LEVEL_TRANSFORM_CLASS, false);
+					if (player.isDeathKnight())
+					{
+						player.addSkill(DEATH_KNIGHT_LEVEL_TRANSFORM_CLASS, false);
+					}
+					else
+					{
+						player.addSkill(DARK_ELF_LEVEL_TRANSFORM_CLASS, false);
+					}
 					break;
 				}
 				case ORC:

@@ -88,7 +88,9 @@ public class RequestExDethroneEnter extends ClientPacket
 		player.sendPacket(new SystemMessage(SystemMessageId.YOU_LL_BE_TAKEN_TO_THE_WORLD_HUNTING_ZONE_IN_3_SEC));
 		player.stopMove(null);
 		
-		// TODO: Maybe teleport player to the last location where he leaves conquest zone?
+		// Save player last location when he leaves conquest zone.
+		player.getVariables().set(PlayerVariables.CONQUEST_ORIGIN, player.getX() + ";" + player.getY() + ";" + player.getZ());
+		
 		ThreadPool.schedule(() -> teleToConquest(player), 3000);
 	}
 	

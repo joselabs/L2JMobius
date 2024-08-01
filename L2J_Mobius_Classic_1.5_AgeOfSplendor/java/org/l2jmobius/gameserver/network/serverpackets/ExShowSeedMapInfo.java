@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.serverpackets;
 
 import org.l2jmobius.commons.network.WritableBuffer;
-import org.l2jmobius.gameserver.instancemanager.GraciaSeedsManager;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
@@ -38,7 +37,7 @@ public class ExShowSeedMapInfo extends ServerPacket
 		buffer.writeInt(-246857); // x coord
 		buffer.writeInt(251960); // y coord
 		buffer.writeInt(4331); // z coord
-		buffer.writeInt(2770 + GraciaSeedsManager.getInstance().getSoDState()); // sys msg id
+		buffer.writeInt(2770 + 1 /* + GraciaSeedsManager.getInstance().getSoDState() */ ); // sys msg id
 		// Seed of Infinity
 		buffer.writeInt(-213770); // x coord
 		buffer.writeInt(210760); // y coord

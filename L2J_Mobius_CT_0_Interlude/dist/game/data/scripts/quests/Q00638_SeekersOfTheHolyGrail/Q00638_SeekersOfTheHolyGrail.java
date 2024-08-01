@@ -111,18 +111,14 @@ public class Q00638_SeekersOfTheHolyGrail extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player player, boolean isPet)
+	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		final QuestState st = getRandomPartyMemberState(player, -1, 3, npc);
-		if ((st == null) || !st.isStarted())
+		final QuestState qs = getRandomPartyMemberState(killer, -1, 3, npc);
+		if ((qs != null))
 		{
-			return null;
+			giveItemRandomly(qs.getPlayer(), npc, PAGAN_TOTEM, 1, 0, 1, true);
 		}
-		final Player partyMember = st.getPlayer();
 		
-		giveItems(partyMember, PAGAN_TOTEM, 1);
-		playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-		
-		return null;
+		return super.onKill(npc, killer, isSummon);
 	}
 }

@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets.pet;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.item.instance.Item;
@@ -68,7 +67,7 @@ public class RequestGiveItemToPet extends ClientPacket
 			return;
 		}
 		
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendMessage("You cannot exchange items while trading.");
 			return;

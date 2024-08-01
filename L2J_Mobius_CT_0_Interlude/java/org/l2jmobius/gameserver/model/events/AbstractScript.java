@@ -2549,7 +2549,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 			{
 				iu.addModifiedItem(itm);
 			}
-			player.sendPacket(iu);
+			player.sendInventoryUpdate(iu);
 			player.broadcastUserInfo();
 		}
 		return player.destroyItemByItemId("Quest", item.getId(), toDelete, player, true);
@@ -2675,6 +2675,29 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @return a random integer number from {@code min} to {@code max}
 	 */
 	public static int getRandom(int min, int max)
+	{
+		return Rnd.get(min, max);
+	}
+	
+	/**
+	 * Get a random long from 0 (inclusive) to {@code max} (exclusive).<br>
+	 * Use this method instead of importing {@link org.l2jmobius.commons.util.Rnd} utility.
+	 * @param max the maximum value for randomization
+	 * @return a random long number from 0 to {@code max - 1}
+	 */
+	public static long getRandom(long max)
+	{
+		return Rnd.get(max);
+	}
+	
+	/**
+	 * Get a random long from {@code min} (inclusive) to {@code max} (inclusive).<br>
+	 * Use this method instead of importing {@link org.l2jmobius.commons.util.Rnd} utility.
+	 * @param min the minimum value for randomization
+	 * @param max the maximum value for randomization
+	 * @return a random long number from {@code min} to {@code max}
+	 */
+	public static long getRandom(long min, long max)
 	{
 		return Rnd.get(min, max);
 	}

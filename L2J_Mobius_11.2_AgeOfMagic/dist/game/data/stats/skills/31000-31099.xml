@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="31000" toLevel="1" name="Novice Dance of Master">
 		<!-- Inspires you and your party members with a refined dance. For 5 min., Max HP +15%, P. Atk. +15%, M. Atk. +15%, Atk. Spd. +15%, Casting Spd. +15%, P./ M. Evasion +3, Damage Reflection +5%, HP Recovery Rate +35%, MP Recovery Rate +5 min.0, Casting Interruption Rate -5 min.1, Skill Cooldown -5 min.2, MP Consumption -5 min.3. With a certain chance, Vampiric Rage effect +5 min.4. -->
@@ -884,21 +884,29 @@
 		<!-- Attacks nearby enemies dealing them damage equal to 130% of your P. Atk., ignoring 7% of their P. Def. Additionally, their Atk. Spd./ Casting Spd. -30%, Speed -70. Applies the Mocking Barrier effect: your P. Def. +20% for 5 sec. -->
 		<icon>icon.skill30963</icon>
 		<operateType>A1</operateType>
+		<effectPoint>-167</effectPoint>
+		<mpConsume>159</mpConsume>
 	</skill>
 	<skill id="31017" toLevel="1" name="Hellfire - Damage Increase - target">
 		<!-- It is necessary to check whether the damage increase effect and the damage are applied at the same time. -->
 		<icon>icon.skill30963</icon>
 		<operateType>A1</operateType>
+		<effectPoint>-167</effectPoint>
+		<mpConsume>159</mpConsume>
 	</skill>
 	<skill id="31018" toLevel="1" name="Furious Eruption - Damage Increase - target">
 		<!-- Unleashes your fury into the ground. Attacks the target and nearby enemies dealing them damage equal to 110% of your P. Atk., ignoring 10% of their P. Def. Requires a one-handed sword. -->
 		<icon>icon.skill30971</icon>
 		<operateType>A1</operateType>
+		<effectPoint>-709</effectPoint>
+		<mpConsume>161</mpConsume>
 	</skill>
 	<skill id="31019" toLevel="1" name="Furious Eruption - Damage Increase - self">
 		<!-- Unleashes your fury into the ground. Attacks the target and nearby enemies dealing them damage equal to 110% of your P. Atk., ignoring 10% of their P. Def. Requires a one-handed sword. -->
 		<icon>icon.skill30971</icon>
 		<operateType>A1</operateType>
+		<effectPoint>-709</effectPoint>
+		<mpConsume>161</mpConsume>
 	</skill>
 	<skill id="31020" toLevel="3" name="Mocking Barrier - pb Damage Resistance">
 		<!-- point_blank damage -50% -->
@@ -1034,14 +1042,19 @@
 		<!-- The Infinite Hydro Flare cooldown is reset upon attacking the target with Storm Punishment Lv. 4. -->
 		<icon>icon.skill30027_b</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">707</value>
+			<value level="2">-100</value>
+		</effectPoint>
 	</skill>
 	<skill id="31047" toLevel="2" name="Servitor Enhancement">
 		<!-- For 30 min., all servitors' Casting Spd. +200%. Also, applies Master Enhancement that boosts the summoner's combat abilities. <Master Enhancement>. For 30 min. summoner's M. Atk. +50%, P./ M. Def. +10%. Does not stack with Ultimate Servitor Enhancement. Consumes 5 Spirit Ore. -->
 		<icon>icon.skill30857_new</icon>
-		<abnormalLevel>1</abnormalLevel>
+		<abnormalLevel>5</abnormalLevel>
 		<abnormalType>BUFF_SPECIAL_CLASS</abnormalType>
 		<abnormalTime>1800</abnormalTime>
 		<operateType>A2</operateType>
+		<effectPoint>687</effectPoint>
 		<mpConsume>
 			<value level="1">78</value>
 			<value level="2">86</value>
@@ -1066,82 +1079,20 @@
 			<condition name="OpHaveSummon" />
 		</conditions>
 		<effects>
-			<effect name="PvePhysicalAttackDamageBonus">
-				<amount>
-					<value level="1">15</value>
-					<value level="2">30</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
-				<amount>
-					<value level="1">15</value>
-					<value level="2">30</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
-				<amount>
-					<value level="1">15</value>
-					<value level="2">30</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
-				<amount>
-					<value level="1">15</value>
-					<value level="2">30</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PhysicalAttackSpeed">
-				<amount>
-					<value level="1">20</value>
-					<value level="2">34</value>
-				</amount>
-				<mode>PER</mode>
+			<effect name="TriggerSkill">
+				<skillId>31226</skillId> <!-- Master Enhancement  -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+				</skillLevel>
+				<targetType>SELF</targetType>
 			</effect>
 			<effect name="MagicalAttackSpeed">
 				<amount>
-					<value level="1">20</value>
-					<value level="2">34</value>
+					<value level="1">200</value>
+					<value level="2">200</value>
 				</amount>
 				<mode>PER</mode>
-			</effect>
-			<effect name="Speed">
-				<amount>
-					<value level="1">20</value>
-					<value level="2">34</value>
-				</amount>
-				<mode>DIFF</mode>
-			</effect>
-			<effect name="DefenceCriticalDamage">
-				<amount>
-					<value level="1">-5</value>
-					<value level="2">-10</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="DefenceMagicCriticalDamage">
-				<amount>
-					<value level="1">-5</value>
-					<value level="2">-10</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="DamageByAttack">
-				<amount>
-					<value level="1">-15</value>
-					<value level="2">-30</value>
-				</amount>
-				<type>ENEMY_ALL</type>
-			</effect>
-			<effect name="ResistAbnormalByCategory">
-				<amount>
-					<value level="1">5</value>
-					<value level="2">10</value>
-				</amount>
-				<slot>DEBUFF</slot>
 			</effect>
 		</effects>
 	</skill>
@@ -1661,6 +1612,7 @@
 		<abnormalType>BUFF_SPECIAL_CLASS</abnormalType>
 		<abnormalTime>1800</abnormalTime>
 		<operateType>A2</operateType>
+		<effectPoint>687</effectPoint>
 		<mpConsume>78</mpConsume>
 		<castRange>800</castRange>
 		<hitTime>3800</hitTime>
@@ -1701,11 +1653,11 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceCriticalDamage">
-				<amount>-2</amount>
+				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>-2</amount>
+				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="Speed">
@@ -2357,17 +2309,17 @@
 		<effects>
 			<effect name="DefenceCriticalRate">
 				<amount>
-					<value level="1">-15</value>
-					<value level="2">-30</value>
-					<value level="3">-50</value>
+					<value level="1">15</value>
+					<value level="2">30</value>
+					<value level="3">50</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalRate">
 				<amount>
-					<value level="1">-15</value>
-					<value level="2">-30</value>
-					<value level="3">-50</value>
+					<value level="1">15</value>
+					<value level="2">30</value>
+					<value level="3">50</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2380,17 +2332,17 @@
 		<effects>
 			<effect name="DefenceCriticalDamage">
 				<amount>
-					<value level="1">-10</value>
-					<value level="2">-20</value>
-					<value level="3">-35</value>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">35</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>
-					<value level="1">-10</value>
-					<value level="2">-20</value>
-					<value level="3">-35</value>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">35</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>

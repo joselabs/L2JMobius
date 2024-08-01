@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/npcs.xsd">
 	<npc id="20919" level="20" type="Monster" name="Maille Lizardman">
 		<parameters>
@@ -3825,11 +3825,17 @@
 		</collision>
 	</npc>
 	<npc id="20964" level="70" type="Monster" name="Huge Footmark">
+		<parameters>
+			<param name="MoveAroundSocial" value="0" />
+			<param name="MoveAroundSocial1" value="0" />
+			<param name="MoveAroundSocial2" value="0" />
+		</parameters>
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
+		<acquire exp="6757" sp="670" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2444.46819" hpRegen="7.5" mp="1345.8" mpRegen="2.7" />
-			<attack physical="688.86373" magical="470.40463" random="10" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
+			<attack physical="688.86373" magical="470.40463" random="7" critical="8" accuracy="-3.75" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="295.91597" magical="216.53847" />
 			<speed>
 				<walk ground="23" />
@@ -3838,12 +3844,6 @@
 			<hitTime>410</hitTime>
 		</stats>
 		<status undying="false" />
-		<shots shotChance="30" spiritChance="30" />
-		<exCrtEffect>false</exCrtEffect>
-		<collision>
-			<radius normal="20" grown="25" />
-			<height normal="31" grown="37.5" />
-		</collision>
 		<skillList>
 			<skill id="4250" level="7" /> <!-- NPC Twister - Slow -->
 			<skill id="4273" level="3" /> <!-- Resist Daggers -->
@@ -3854,6 +3854,71 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 			<skill id="4444" level="2" /> <!-- Greater Resist Bow Weapons -->
 		</skillList>
+		<shots shotChance="30" spiritChance="30" />
+		<exCrtEffect>false</exCrtEffect>
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
+		<dropLists>
+			<drop>
+				<group chance="70">
+					<item id="57" min="741" max="1507" chance="100.0" /> <!-- Adena -->
+				</group>
+				<group chance="0.4731">
+					<item id="5525" min="1" max="1" chance="29.5492" /> <!-- Sealed Dark Crystal Helmet Design -->
+					<item id="5494" min="1" max="1" chance="40.1342" /> <!-- Sealed Dark Crystal Shield Fragment -->
+					<item id="5294" min="1" max="1" chance="0.2274" /> <!-- Sealed Tallum Helmet -->
+					<item id="5292" min="1" max="1" chance="0.3127" /> <!-- Sealed Dark Crystal Shield -->
+					<item id="5289" min="1" max="1" chance="0.2274" /> <!-- Sealed Dark Crystal Helmet -->
+					<item id="5526" min="1" max="1" chance="29.5491" /> <!-- Sealed Tallum Helm Design -->
+				</group>
+				<group chance="26.4214">
+					<item id="4042" min="1" max="1" chance="0.5707" /> <!-- Enria -->
+					<item id="1895" min="1" max="1" chance="9.7791" /> <!-- Metallic Fiber -->
+					<item id="1876" min="1" max="1" chance="6.8455" /> <!-- Mithril Ore -->
+					<item id="1873" min="1" max="1" chance="13.6907" /> <!-- Silver Nugget -->
+					<item id="1868" min="1" max="1" chance="68.4543" /> <!-- Thread -->
+					<item id="4174" min="1" max="1" chance="0.6597" /> <!-- Recipe: Zubei's Boots -->
+				</group>
+				<group chance="20">
+					<item id="8601" min="1" max="1" chance="70" /> <!-- Greater Herb of Life -->
+					<item id="8602" min="1" max="1" chance="30" /> <!-- Superior Herb of Life -->
+				</group>
+				<group chance="5">
+					<item id="8604" min="1" max="1" chance="70" /> <!-- Greater Herb of Mana -->
+					<item id="8605" min="1" max="1" chance="30" /> <!-- Superior Herb of Mana -->
+				</group>
+				<group chance="38">
+					<item id="8606" min="1" max="1" chance="34" /> <!-- Herb of Power -->
+					<item id="8608" min="1" max="1" chance="33" /> <!-- Herb of Atk. Spd. -->
+					<item id="8610" min="1" max="1" chance="33" /> <!-- Herb of Critical Attack. -->
+				</group>
+				<group chance="25">
+					<item id="8607" min="1" max="1" chance="50" /> <!-- Herb of Magic -->
+					<item id="8609" min="1" max="1" chance="50" /> <!-- Herb of Casting Spd. -->
+				</group>
+				<group chance="1">
+					<item id="8612" min="1" max="1" chance="33" /> <!-- Herb of the Warrior -->
+					<item id="8613" min="1" max="1" chance="33" /> <!-- Herb of the Mystic -->
+					<item id="8614" min="1" max="1" chance="34" /> <!-- Herb of Recovery -->
+				</group>
+				<group chance="11">
+					<item id="8611" min="1" max="1" chance="100" /> <!-- Herb of Speed -->
+				</group>
+			</drop>
+			<spoil>
+				<item id="1874" min="1" max="1" chance="12.246" /> <!-- Oriharukon Ore -->
+					<item id="1875" min="1" max="1" chance="12.246" /> <!-- Stone of Purity -->
+					<item id="3035" min="1" max="1" chance="0.2449" /> <!-- Recipe: Spiritshot A -->
+			</spoil>
+		</dropLists>
+		<collision>
+			<radius normal="20" grown="25" />
+			<height normal="31" grown="37.5" />
+		</collision>
 	</npc>
 	<npc id="20965" level="72" type="Monster" name="Chimera Piece">
 		<parameters>
@@ -3866,29 +3931,33 @@
 			<param name="SpiritShotRate" value="5" />
 			<param name="LongRangeGuardRate" value="5" />
 		</parameters>
-		<race>CONSTRUCT</race>
+		<race>ANIMAL</race>
 		<sex>MALE</sex>
 		<acquire exp="7391" sp="730" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2586.66898" hpRegen="8.5" mp="1442.4" mpRegen="3" />
-			<attack physical="752.73928" magical="514.02335" random="7" critical="8" accuracy="-3.75" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<attack physical="752.73928" magical="514.02335" random="7" critical="8" accuracy="-3.75" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="310.02959" magical="226.8662" />
 			<speed>
 				<walk ground="80" />
 				<run ground="140" />
 			</speed>
-			<hitTime>100</hitTime>
+			<hitTime>450</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true" />
 		<skillList>
 			<skill id="4073" level="7" /> <!-- Shock -->
 			<skill id="4408" level="9" /> <!-- HP Increase (1/2x) -->
-			<skill id="4416" level="2" /> <!-- Magic Creatures -->
+			<skill id="4416" level="4" /> <!-- Animals -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30" />
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>2</sNpcPropHpRate>
-		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -3945,15 +4014,15 @@
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="13" />
-			<height normal="22" />
+			<radius normal="34" />
+			<height normal="28" />
 		</collision>
 	</npc>
-	<npc id="20966" level="74" type="Monster" name="Changed Creation">
+	<npc id="20966" level="74" type="Monster" name="Black Shadow">
 		<parameters>
-			<param name="MoveAroundSocial" value="0" />
-			<param name="MoveAroundSocial1" value="0" />
-			<param name="MoveAroundSocial2" value="0" />
+			<param name="MoveAroundSocial" value="60" />
+			<param name="MoveAroundSocial1" value="60" />
+			<param name="MoveAroundSocial2" value="60" />
 			<minions name="Privates">
 				<npc id="20964" count="1" max="2" respawnTime="0" />
 				<npc id="20965" count="1" max="2" respawnTime="0" />
@@ -3964,18 +4033,18 @@
 			<param name="SpiritShotRate" value="5" />
 			<param name="LongRangeGuardRate" value="5" />
 		</parameters>
-		<race>CONSTRUCT</race>
+		<race>DRAGON</race>
 		<sex>MALE</sex>
 		<acquire exp="7747" sp="808" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2632.19636" hpRegen="8.5" mp="1475" mpRegen="3" />
-			<attack physical="773.81598" magical="528.41601" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="773.81598" magical="528.41601" random="7" critical="8" accuracy="-3.75" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="314.65987" magical="230.25444" />
 			<speed>
 				<walk ground="80" />
 				<run ground="170" />
 			</speed>
-			<hitTime>720</hitTime>
+			<hitTime>840</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true" />
 		<skillList>
@@ -3983,12 +4052,16 @@
 			<skill id="4276" level="1" /> <!-- Bow Weapon Weak Point -->
 			<skill id="4281" level="1" /> <!-- Wind Attack Weak Point -->
 			<skill id="4408" level="9" /> <!-- HP Increase (1/2x) -->
-			<skill id="4416" level="2" /> <!-- Magic Creatures -->
+			<skill id="4416" level="10" /> <!-- Dragons -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30" />
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>3</sNpcPropHpRate>
-		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="true">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -4046,8 +4119,8 @@
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="15" />
-			<height normal="35" />
+			<radius normal="30" />
+			<height normal="100" />
 		</collision>
 	</npc>
 	<npc id="20967" level="76" type="Monster" name="Past Creature">
@@ -4062,7 +4135,7 @@
 		<acquire exp="8010" sp="856" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
-			<attack physical="824.422073095" magical="562.9734023" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="824.422073095" magical="562.9734023" random="7" critical="8" accuracy="-3.75" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="323.78455" magical="236.93149" />
 			<speed>
 				<walk ground="80" />
@@ -4077,8 +4150,12 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>2</sNpcPropHpRate>
-		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -4151,7 +4228,7 @@
 		<acquire exp="7791" sp="853" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2974.35686398316" hpRegen="8.5" mp="1607.4" mpRegen="3" />
-			<attack physical="890.50085998804" magical="608.096657928153" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<attack physical="890.50085998804" magical="608.096657928153" random="7" critical="8" accuracy="-3.75" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
 				<walk ground="27" />
@@ -4167,8 +4244,12 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>2</sNpcPropHpRate>
-		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -4249,7 +4330,7 @@
 		<acquire exp="6357" sp="723" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2974.35686398316" hpRegen="8.5" mp="1607.4" mpRegen="3" />
-			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
+			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="12" accuracy="-3.75" attackSpeed="253" reuseDelay="1500" type="BOW" range="500" distance="10" width="0" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
 				<walk ground="80" />
@@ -4266,8 +4347,12 @@
 			<skill id="4416" level="11" /> <!-- Giants -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>3</sNpcPropHpRate>
-		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="true">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -4325,7 +4410,7 @@
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="50" />
+			<radius normal="21" />
 			<height normal="44" />
 		</collision>
 	</npc>
@@ -4346,7 +4431,7 @@
 		<acquire exp="5457" sp="561" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2586.66898" hpRegen="8.5" mp="1442.4" mpRegen="3" />
-			<attack physical="752.73928" magical="514.02335" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="752.73928" magical="514.02335" random="30" critical="4" accuracy="-3.75" attackSpeed="253" type="POLE" range="80" distance="66" width="120" />
 			<defence physical="310.02959" magical="226.8662" />
 			<speed>
 				<walk ground="15" />
@@ -4363,8 +4448,12 @@
 		</skillList>
 		<shots shotChance="30" spiritChance="30" />
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>2</sNpcPropHpRate>
-		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -4415,7 +4504,7 @@
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="50" />
+			<radius normal="21" />
 			<height normal="44" />
 		</collision>
 	</npc>
@@ -4436,7 +4525,7 @@
 		<acquire exp="7801" sp="823" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2676.65854" hpRegen="8.5" mp="1507.8" mpRegen="3" />
-			<attack physical="794.70901" magical="542.68324" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="794.70901" magical="542.68324" random="30" critical="4" accuracy="-3.75" attackSpeed="253" type="POLE" range="80" distance="66" width="120" />
 			<defence physical="319.24623" magical="233.61053" />
 			<speed>
 				<walk ground="15" />
@@ -4453,8 +4542,12 @@
 		</skillList>
 		<shots shotChance="30" spiritChance="30" />
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>2</sNpcPropHpRate>
-		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -4503,7 +4596,7 @@
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="50" />
+			<radius normal="21" />
 			<height normal="44" />
 		</collision>
 	</npc>
@@ -4526,7 +4619,7 @@
 		<acquire exp="5485" sp="579" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2676.65854" hpRegen="8.5" mp="1507.8" mpRegen="3" />
-			<attack physical="794.70901" magical="542.68324" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<attack physical="794.70901" magical="542.68324" random="30" critical="4" accuracy="-3.75" attackSpeed="253" type="POLE" range="80" distance="66" width="120" />
 			<defence physical="319.24623" magical="233.61053" />
 			<speed>
 				<walk ground="15" />
@@ -4545,8 +4638,12 @@
 		</skillList>
 		<shots shotChance="30" spiritChance="30" />
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>2</sNpcPropHpRate>
-		<ai type="MAGE" aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai type="MAGE" aggroRange="1000" clanHelpRange="300" isAggressive="false">
+			<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -4597,7 +4694,7 @@
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="50" />
+			<radius normal="21" />
 			<height normal="44" />
 		</collision>
 	</npc>
@@ -4618,7 +4715,7 @@
 		<acquire exp="8479" sp="918" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
 			<vitals hp="2856.7687256316" hpRegen="8.5" mp="1574" mpRegen="3" />
-			<attack physical="856.44055895414" magical="584.837886935576" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
+			<attack physical="856.44055895414" magical="584.837886935576" random="30" critical="4" accuracy="-3.75" attackSpeed="253" type="POLE" range="80" distance="66" width="120" />
 			<defence physical="328.27073" magical="240.21427" />
 			<speed>
 				<walk ground="15" />
@@ -4635,8 +4732,12 @@
 			<skill id="4416" level="11" /> <!-- Giants -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
-		<sNpcPropHpRate>3</sNpcPropHpRate>
-		<ai type="MAGE" aggroRange="1000" clanHelpRange="300" isAggressive="false" />
+		<sNpcPropHpRate>0.5</sNpcPropHpRate>
+		<ai type="MAGE" aggroRange="1000" clanHelpRange="300" isAggressive="true">
+		<clanList>
+				<clan>GIANT</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
 				<group chance="70">
@@ -4701,7 +4802,7 @@
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="50" />
+			<radius normal="21" />
 			<height normal="44" />
 		</collision>
 	</npc>

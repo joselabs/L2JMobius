@@ -121,7 +121,7 @@ public class Friend implements IAffectObjectHandler
 				return (target.getActingPlayer().getPvpFlag() == 0) && (target.getActingPlayer().getReputation() >= 0);
 			}
 			
-			// By default any npc that isnt mob is considered friend.
+			// By default any npc that is not mob is considered friend.
 			return !target.isMonster() && !target.isAutoAttackable(player);
 		}
 		

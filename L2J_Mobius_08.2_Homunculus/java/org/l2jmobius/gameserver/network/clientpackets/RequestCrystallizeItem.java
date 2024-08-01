@@ -21,7 +21,6 @@ import java.util.List;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.ItemCrystallizationData;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
@@ -67,13 +66,13 @@ public class RequestCrystallizeItem extends ClientPacket
 		// return;
 		// }
 		
-		if (_count <= 0)
+		if (_count < 1)
 		{
 			Util.handleIllegalPlayerAction(player, "[RequestCrystallizeItem] count <= 0! ban! oid: " + _objectId + " owner: " + player.getName(), Config.DEFAULT_PUNISH);
 			return;
 		}
 		
-		if ((player.getPrivateStoreType() != PrivateStoreType.NONE) || !player.isInCrystallize())
+		if (player.isInStoreMode() || !player.isInCrystallize())
 		{
 			player.sendPacket(SystemMessageId.WHILE_OPERATING_A_PRIVATE_STORE_OR_WORKSHOP_YOU_CANNOT_DISCARD_DESTROY_OR_TRADE_AN_ITEM);
 			return;
@@ -208,7 +207,7 @@ public class RequestCrystallizeItem extends ClientPacket
 			{
 				iu.addModifiedItem(item);
 			}
-			player.sendInventoryUpdate(iu);
+			player.sendPacket(iu); // Sent inventory update for unequip instantly.
 			
 			if (itemToRemove.getEnchantLevel() > 0)
 			{
@@ -228,7 +227,8 @@ public class RequestCrystallizeItem extends ClientPacket
 		final Item removedItem = player.getInventory().destroyItem("Crystalize", _objectId, _count, player, null);
 		final InventoryUpdate iu = new InventoryUpdate();
 		iu.addRemovedItem(removedItem);
-		player.sendInventoryUpdate(iu);
+		player.sendPacket(iu); // Sent inventory update for destruction instantly.
+		player.updateAdenaAndWeight();
 		
 		for (ItemChanceHolder holder : crystallizationRewards)
 		{

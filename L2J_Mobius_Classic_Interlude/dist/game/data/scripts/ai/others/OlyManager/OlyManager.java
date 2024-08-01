@@ -112,7 +112,7 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 				{
 					htmltext = "OlyManager-subclass.html";
 				}
-				else if ((!player.isInCategory(CategoryType.THIRD_CLASS_GROUP) && !player.isInCategory(CategoryType.FOURTH_CLASS_GROUP)) || (player.getLevel() < 55)) // avoid exploits
+				else if (!player.isInCategory(CategoryType.FOURTH_CLASS_GROUP) || !player.isNoble()) // avoid exploits
 				{
 					htmltext = "OlyManager-noNoble.html";
 				}
@@ -155,7 +155,7 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 					if (tradePoints > 0)
 					{
 						player.getVariables().remove(Olympiad.UNCLAIMED_OLYMPIAD_POINTS_VAR);
-						giveItems(player, Config.ALT_OLY_COMP_RITEM, tradePoints * Config.ALT_OLY_MARK_PER_POINT);
+						giveItems(player, Config.OLYMPIAD_COMP_RITEM, tradePoints * Config.OLYMPIAD_MARK_PER_POINT);
 					}
 				}
 				else
@@ -262,7 +262,7 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 		String htmltext = null;
 		if (!player.isCursedWeaponEquipped())
 		{
-			htmltext = (!player.isInCategory(CategoryType.THIRD_CLASS_GROUP) && !player.isInCategory(CategoryType.FOURTH_CLASS_GROUP)) || (player.getLevel() < 55) ? "OlyManager-noNoble.html" : "OlyManager-noble.html";
+			htmltext = !player.isInCategory(CategoryType.FOURTH_CLASS_GROUP) || !player.isNoble() ? "OlyManager-noNoble.html" : "OlyManager-noble.html";
 		}
 		else
 		{

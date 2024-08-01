@@ -26,6 +26,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
+import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
 
 public class Q00234_FatesWhisper extends Quest
@@ -81,13 +82,14 @@ public class Q00234_FatesWhisper extends Quest
 		addKillId(25035, 25054, 25126, 25220);
 		// Baium
 		addAttackId(29020);
+		setQuestNameNpcStringId(NpcStringId.FATE_S_WHISPER);
 	}
 	
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = getQuestState(player, false);
+		final QuestState st = player.getQuestState(getName());
 		if (st == null)
 		{
 			return htmltext;

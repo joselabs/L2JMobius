@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="1403" toLevel="1" name="Summon Your Spouse">
 		<!-- Teleports a party member to one's current location. Requires a Summoning Crystal on the target. -->
@@ -757,7 +757,9 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
 			<effect name="ManaHealOverTime">
 				<power>
 					<value level="1">27</value>
@@ -1394,7 +1396,7 @@
 		<affectObject>FRIEND</affectObject>
 		<effects>
 			<effect name="DefenceCriticalDamage">
-				<amount>-30</amount>
+				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>

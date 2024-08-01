@@ -5065,8 +5065,8 @@ public class SystemMessageId
 	@ClientString(id = 1673, message = "For the current Olympiad you have participated in $s1 match(es) and had $s2 win(s) and $s3 defeat(s). You currently have $s4 Olympiad Point(s).")
 	public static SystemMessageId FOR_THE_CURRENT_OLYMPIAD_YOU_HAVE_PARTICIPATED_IN_S1_MATCH_ES_AND_HAD_S2_WIN_S_AND_S3_DEFEAT_S_YOU_CURRENTLY_HAVE_S4_OLYMPIAD_POINT_S;
 	
-	@ClientString(id = 1674, message = "Command available for those who have completed 2nd Class Transfer.")
-	public static SystemMessageId COMMAND_AVAILABLE_FOR_THOSE_WHO_HAVE_COMPLETED_2ND_CLASS_TRANSFER;
+	@ClientString(id = 1674, message = "This command can only be used by a Noblesse.")
+	public static SystemMessageId THIS_COMMAND_CAN_ONLY_BE_USED_BY_A_NOBLESSE;
 	
 	@ClientString(id = 1675, message = "A manor cannot be set up between 4:30 am and 8 pm.")
 	public static SystemMessageId A_MANOR_CANNOT_BE_SET_UP_BETWEEN_4_30_AM_AND_8_PM;

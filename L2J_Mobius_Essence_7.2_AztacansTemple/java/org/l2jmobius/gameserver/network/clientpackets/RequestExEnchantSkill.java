@@ -22,7 +22,6 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillEnchantData;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.SkillEnchantType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.EnchantStarHolder;
@@ -98,7 +97,7 @@ public class RequestExEnchantSkill extends ClientPacket
 			return;
 		}
 		
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			return;
 		}
@@ -141,13 +140,13 @@ public class RequestExEnchantSkill extends ClientPacket
 		SkillEnchantHolder skillEnchantHolder = SkillEnchantData.getInstance().getSkillEnchant(skill.getId());
 		if (skillEnchantHolder == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + " request enchant skill dont have star lvl skillId-" + skill.getId());
+			LOGGER.warning(getClass().getSimpleName() + " request enchant skill does not have star lvl skillId-" + skill.getId());
 			return;
 		}
 		EnchantStarHolder starHolder = SkillEnchantData.getInstance().getEnchantStar(skillEnchantHolder.getStarLevel());
 		if (starHolder == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + " request enchant skill dont have star lvl-" + skill.getId());
+			LOGGER.warning(getClass().getSimpleName() + " request enchant skill does not have star lvl-" + skill.getId());
 			return;
 		}
 		

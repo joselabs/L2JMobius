@@ -18,6 +18,7 @@ package org.l2jmobius.gameserver.model.stats.finalizers;
 
 import java.util.OptionalDouble;
 
+import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
@@ -43,11 +44,31 @@ public class ShotsBonusFinalizer implements IStatFunction
 			{
 				baseValue += (weapon.getEnchantLevel() * 0.7) / 100;
 			}
-			if (player.getActiveRubyJewel() != null)
+			
+			if (isMageCaster(player))
+			{
+				if ((player.getActiveShappireJewel() != null))
+				{
+					baseValue += player.getActiveShappireJewel().getBonus();
+				}
+			}
+			else if (player.getActiveRubyJewel() != null)
 			{
 				baseValue += player.getActiveRubyJewel().getBonus();
 			}
 		}
 		return Stat.defaultValue(creature, stat, baseValue);
+	}
+	
+	private boolean isMageCaster(Player player)
+	{
+		// Iss classes considered fighters.
+		final int classId = player.getActiveClass();
+		if ((classId > 170) && (classId < 176))
+		{
+			return false;
+		}
+		
+		return player.isMageClass() && (player.getRace() != Race.ORC);
 	}
 }

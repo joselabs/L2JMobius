@@ -276,7 +276,7 @@ public class MultiSellChoose extends ClientPacket
 				}
 			}
 			
-			// Check for enchanted item if its present in the inventory.
+			// Check for enchanted item if it is present in the inventory.
 			if ((itemEnchantment != null) && (inventory.getItemByObjectId(itemEnchantment.getObjectId()) == null))
 			{
 				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_NEED_A_N_S1);
@@ -624,7 +624,7 @@ public class MultiSellChoose extends ClientPacket
 		}
 		
 		// Re-send multisell after successful exchange of inventory-only shown items.
-		if (list.isInventoryOnly())
+		if (list.isInventoryOnly() || list.isMaintainEnchantment())
 		{
 			MultisellData.getInstance().separateAndSend(list.getId(), player, npc, list.isInventoryOnly(), list.getProductMultiplier(), list.getIngredientMultiplier(), 0);
 		}

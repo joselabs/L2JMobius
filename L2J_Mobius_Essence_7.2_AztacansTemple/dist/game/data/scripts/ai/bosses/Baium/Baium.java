@@ -426,7 +426,7 @@ public class Baium extends AbstractNpcAI
 				}
 				else
 				{
-					player.sendMessage(getClass().getSimpleName() + ": You cant respawn Baium while Baium is alive!");
+					player.sendMessage(getClass().getSimpleName() + ": You cannot respawn Baium while Baium is alive!");
 				}
 				break;
 			}
@@ -441,7 +441,7 @@ public class Baium extends AbstractNpcAI
 				}
 				else
 				{
-					player.sendMessage(getClass().getSimpleName() + ": You cant abort attack right now!");
+					player.sendMessage(getClass().getSimpleName() + ": You cannot abort attack right now!");
 				}
 				cancelQuestTimers("CHECK_ATTACK");
 				cancelQuestTimers("SELECT_TARGET");
@@ -465,7 +465,7 @@ public class Baium extends AbstractNpcAI
 				}
 				else if (player != null)
 				{
-					player.sendMessage(getClass().getSimpleName() + ": You cant despawn archangels right now!");
+					player.sendMessage(getClass().getSimpleName() + ": You cannot despawn archangels right now!");
 				}
 				break;
 			}
@@ -550,7 +550,10 @@ public class Baium extends AbstractNpcAI
 			setStatus(DEAD);
 			addSpawn(TELE_CUBE, TELEPORT_CUBIC_LOC, false, 900000);
 			zone.broadcastPacket(new PlaySound("BS01_D"));
-			final long respawnTime = Config.BAIUM_SPAWN_INTERVAL * 3600000;
+			
+			final long baseIntervalMillis = Config.BAIUM_SPAWN_INTERVAL * 3600000;
+			final long randomRangeMillis = Config.BAIUM_SPAWN_RANDOM * 3600000;
+			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			setRespawn(respawnTime);
 			startQuestTimer("CLEAR_STATUS", respawnTime, null, null);
 			startQuestTimer("CLEAR_ZONE", 900000, null, null);

@@ -19,6 +19,7 @@ package handlers.usercommandhandlers;
 import static org.l2jmobius.gameserver.ai.CtrlIntention.AI_INTENTION_ACTIVE;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.handler.IUserCommandHandler;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -101,7 +102,30 @@ public class Unstuck implements IUserCommandHandler
 				player.sendMessage("You use Escape: " + (unstuckTimer / 1000) + " seconds.");
 			}
 		}
+		
+		ThreadPool.schedule(new EscapeFinalizer(player), unstuckTimer);
 		return true;
+	}
+	
+	private static class EscapeFinalizer implements Runnable
+	{
+		private final Player _player;
+		
+		protected EscapeFinalizer(Player player)
+		{
+			_player = player;
+		}
+		
+		@Override
+		public void run()
+		{
+			if (_player.isDead())
+			{
+				return;
+			}
+			
+			_player.setIn7sDungeon(false);
+		}
 	}
 	
 	@Override

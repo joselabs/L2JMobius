@@ -117,6 +117,7 @@ What is done
 -Made Olympiad adjustments.
 -Replaced quests 257, 260, 265, 273 and 293.
 -Removed subclass certification AI.
+-Removed masterwork craft.
 
 
 TODO: Not that important.

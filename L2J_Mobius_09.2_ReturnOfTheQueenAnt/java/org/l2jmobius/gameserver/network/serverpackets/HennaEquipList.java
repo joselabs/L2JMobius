@@ -63,7 +63,7 @@ public class HennaEquipList extends ServerPacket
 				buffer.writeLong(henna.getWearCount()); // amount of dyes required
 				buffer.writeLong(henna.getWearFee()); // amount of Adena required
 				buffer.writeInt(henna.isAllowedClass(_player.getClassId())); // meet the requirement or not
-				buffer.writeInt(0); // TODO: Find me!
+				buffer.writeInt(henna.getDuration());
 			}
 		}
 	}

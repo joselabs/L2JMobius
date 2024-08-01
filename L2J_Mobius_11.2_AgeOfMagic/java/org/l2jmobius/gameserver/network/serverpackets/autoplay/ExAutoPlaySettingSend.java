@@ -33,8 +33,9 @@ public class ExAutoPlaySettingSend extends ServerPacket
 	private final boolean _shortRange;
 	private final int _potionPercent;
 	private final boolean _respectfulHunting;
+	private final int _macroIndex;
 	
-	public ExAutoPlaySettingSend(int options, boolean active, boolean pickUp, int nextTargetMode, boolean shortRange, int potionPercent, boolean respectfulHunting)
+	public ExAutoPlaySettingSend(int options, boolean active, boolean pickUp, int nextTargetMode, boolean shortRange, int potionPercent, boolean respectfulHunting, int macroIndex)
 	{
 		_options = options;
 		_active = active;
@@ -43,6 +44,7 @@ public class ExAutoPlaySettingSend extends ServerPacket
 		_shortRange = shortRange;
 		_potionPercent = potionPercent;
 		_respectfulHunting = respectfulHunting;
+		_macroIndex = macroIndex;
 	}
 	
 	@Override
@@ -55,7 +57,8 @@ public class ExAutoPlaySettingSend extends ServerPacket
 		buffer.writeShort(_nextTargetMode);
 		buffer.writeByte(_shortRange);
 		buffer.writeInt(_potionPercent);
-		buffer.writeInt(0); // 272
+		buffer.writeInt(0); // 272 - Pet potion percent.
 		buffer.writeByte(_respectfulHunting);
+		buffer.writeByte(_macroIndex);
 	}
 }

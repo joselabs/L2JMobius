@@ -124,7 +124,7 @@ public class RequestActionUse extends ClientPacket
 					return;
 				}
 				
-				if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+				if (player.isInStoreMode())
 				{
 					player.setPrivateStoreType(PrivateStoreType.NONE);
 					player.broadcastUserInfo();

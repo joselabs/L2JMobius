@@ -69,6 +69,7 @@ public class GetAgro extends AbstractEffect
 					{
 						nearby.addDamageHate(effector, 1, 200);
 						nearby.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, effector);
+						nearby.setRunning();
 					}
 				});
 			}

@@ -16,102 +16,84 @@
  */
 package quests.Q00655_AGrandPlanForTamingWildBeasts;
 
+import org.l2jmobius.gameserver.instancemanager.CHSiegeManager;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
+import org.l2jmobius.gameserver.model.siege.clanhalls.SiegableHall;
 
 /**
- * @author Mobius
- * @note Based on python script
+ * @author LordWinter
  */
 public class Q00655_AGrandPlanForTamingWildBeasts extends Quest
 {
-	// NPCs
 	private static final int MESSENGER = 35627;
-	// Items
-	private static final int CRYSTAL_PURITY = 8084;
-	private static final int LICENSE = 8293;
+	
+	private static final int STONE = 8084;
+	private static final int TRAINER_LICENSE = 8293;
+	
+	private static final SiegableHall BEAST_STRONGHOLD = CHSiegeManager.getInstance().getSiegableHall(63);
 	
 	public Q00655_AGrandPlanForTamingWildBeasts()
 	{
 		super(655);
+		
 		addStartNpc(MESSENGER);
 		addTalkId(MESSENGER);
 	}
 	
 	@Override
-	public String onEvent(String event, Npc npc, Player player)
+	public final String onTalk(Npc npc, Player player)
 	{
-		String htmltext = event;
-		final QuestState qs = player.getQuestState(getName());
-		if (qs == null)
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		if (st == null)
 		{
 			return htmltext;
 		}
 		
-		if (event.equals("a2.htm"))
+		switch (st.getState())
 		{
-			qs.startQuest();
-		}
-		else if (event.equals("a4.htm"))
-		{
-			if (getQuestItemsCount(player, CRYSTAL_PURITY) == 10)
+			case State.CREATED:
 			{
-				takeItems(player, CRYSTAL_PURITY, -10);
-				giveItems(player, LICENSE, 1);
-				qs.setCond(3, true);
+				if (BEAST_STRONGHOLD.getSiege().getAttackers().size() >= 5)
+				{
+					htmltext = "35627-00.htm";
+				}
+				else
+				{
+					htmltext = "35627-01.htm";
+					st.startQuest();
+				}
+				break;
 			}
-			else
+			case State.STARTED:
 			{
-				htmltext = "a5.htm";
+				if (getQuestItemsCount(player, STONE) < 10)
+				{
+					htmltext = "35627-02.htm";
+				}
+				else
+				{
+					takeItems(player, STONE, 10);
+					giveItems(player, TRAINER_LICENSE, 1);
+					st.exitQuest(true, true);
+					htmltext = "35627-03.htm";
+				}
+				break;
 			}
 		}
 		return htmltext;
 	}
 	
-	@Override
-	public String onTalk(Npc npc, Player player)
+	public static void checkCrystalofPurity(Player player)
 	{
-		String htmltext = getNoQuestMsg(player);
-		final QuestState st = getQuestState(player, true);
-		
-		final Clan clan = player.getClan();
-		if (clan == null)
+		final QuestState st = player.getQuestState(Q00655_AGrandPlanForTamingWildBeasts.class.getSimpleName());
+		if ((st != null) && st.isCond(1) && (getQuestItemsCount(player, STONE) < 10))
 		{
-			return "a6.htm";
+			giveItems(player, STONE, 1);
 		}
-		
-		if (clan.getLevel() < 4)
-		{
-			return "a6.htm";
-		}
-		
-		if (!clan.getLeaderName().equals(player.getName()))
-		{
-			return "a6.htm";
-		}
-		
-		final int npcId = npc.getId();
-		if (npcId == MESSENGER)
-		{
-			final int cond = st.getCond();
-			if (cond == 0)
-			{
-				htmltext = "a1.htm";
-			}
-			else if (cond > 1)
-			{
-				htmltext = "a3.htm";
-			}
-		}
-		else
-		{
-			htmltext = null;
-			npc.showChatWindow(player, 3);
-		}
-		
-		return htmltext;
 	}
 }

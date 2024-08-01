@@ -48,9 +48,9 @@ public class LimitBarrier extends AbstractNpcAI
 	// NPCs
 	private static final int[] RAID_BOSSES =
 	{
-		29001, // Queen Ant
-		29006, // Core
-		29014, // Orfen
+		// 29001, // Queen Ant
+		// 29006, // Core
+		// 29014, // Orfen
 		25010, // Furious Thiles
 		25013, // Ghose of Peasant Captain
 		25050, // Verfa

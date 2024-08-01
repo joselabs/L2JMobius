@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -127,7 +126,7 @@ public class AttackRequest extends ClientPacket
 		{
 			target.onAction(player);
 		}
-		else if ((target.getObjectId() != player.getObjectId()) && (player.getPrivateStoreType() == PrivateStoreType.NONE) && (player.getActiveRequester() == null))
+		else if ((target.getObjectId() != player.getObjectId()) && !player.isInStoreMode() && (player.getActiveRequester() == null))
 		{
 			target.onForcedAttack(player);
 		}

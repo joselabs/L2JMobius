@@ -37,6 +37,7 @@ import org.l2jmobius.gameserver.enums.SubclassInfoType;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.CursedWeaponsManager;
+import org.l2jmobius.gameserver.instancemanager.DimensionalRiftManager;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.instancemanager.FortSiegeManager;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
@@ -59,11 +60,13 @@ import org.l2jmobius.gameserver.model.punishment.PunishmentAffect;
 import org.l2jmobius.gameserver.model.punishment.PunishmentType;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.residences.ClanHall;
+import org.l2jmobius.gameserver.model.sevensigns.SevenSigns;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.siege.FortSiege;
 import org.l2jmobius.gameserver.model.siege.Siege;
 import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
+import org.l2jmobius.gameserver.model.skill.CommonSkill;
 import org.l2jmobius.gameserver.model.variables.AccountVariables;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
@@ -275,7 +278,6 @@ public class EnterWorld extends ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getCastle().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);
@@ -295,7 +297,6 @@ public class EnterWorld extends ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getFort().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);
@@ -323,6 +324,28 @@ public class EnterWorld extends ClientPacket
 			}
 			
 			showClanNotice = clan.isNoticeEnabled();
+		}
+		
+		// Updating Seal of Strife Buff/Debuff
+		if (SevenSigns.getInstance().isSealValidationPeriod() && (SevenSigns.getInstance().getSealOwner(SevenSigns.SEAL_STRIFE) != SevenSigns.CABAL_NULL))
+		{
+			final int cabal = SevenSigns.getInstance().getPlayerCabal(player.getObjectId());
+			if (cabal != SevenSigns.CABAL_NULL)
+			{
+				if (cabal == SevenSigns.getInstance().getSealOwner(SevenSigns.SEAL_STRIFE))
+				{
+					player.addSkill(CommonSkill.THE_VICTOR_OF_WAR.getSkill());
+				}
+				else
+				{
+					player.addSkill(CommonSkill.THE_VANQUISHED_OF_WAR.getSkill());
+				}
+			}
+		}
+		else
+		{
+			player.removeSkill(CommonSkill.THE_VICTOR_OF_WAR.getSkill());
+			player.removeSkill(CommonSkill.THE_VANQUISHED_OF_WAR.getSkill());
 		}
 		
 		if (Config.ENABLE_VITALITY)
@@ -467,6 +490,7 @@ public class EnterWorld extends ClientPacket
 		
 		player.sendPacket(SystemMessageId.WELCOME_TO_THE_WORLD_OF_LINEAGE_II);
 		
+		SevenSigns.getInstance().sendCurrentPeriodMsg(player);
 		AnnouncementsTable.getInstance().showAnnouncements(player);
 		
 		if ((Config.SERVER_RESTART_SCHEDULE_ENABLED) && (Config.SERVER_RESTART_SCHEDULE_MESSAGE))
@@ -525,6 +549,11 @@ public class EnterWorld extends ClientPacket
 			{
 				whItem.scheduleLifeTimeTask();
 			}
+		}
+		
+		if (DimensionalRiftManager.getInstance().checkIfInRiftZone(player.getX(), player.getY(), player.getZ(), false))
+		{
+			DimensionalRiftManager.getInstance().teleportToWaitingRoom(player);
 		}
 		
 		if (player.getClanJoinExpiryTime() > System.currentTimeMillis())

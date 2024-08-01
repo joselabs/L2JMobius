@@ -230,6 +230,16 @@ public class PhysicalAttack extends AbstractEffect
 			{
 				damage *= _raceModifier;
 			}
+			
+			// AoE modifiers.
+			if (skill.isBad() && (skill.getAffectLimit() > 0))
+			{
+				damage *= Math.max((effector.getStat().getMulValue(Stat.AREA_OF_EFFECT_DAMAGE_MODIFY, 1) - effected.getStat().getValue(Stat.AREA_OF_EFFECT_DAMAGE_DEFENCE, 0)), 0.01);
+				if (damage < 1)
+				{
+					damage = 1;
+				}
+			}
 		}
 		
 		effector.doAttack(damage, effected, skill, false, false, critical, false);

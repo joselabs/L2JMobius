@@ -110,6 +110,7 @@ import org.l2jmobius.gameserver.handler.ItemHandler;
 import org.l2jmobius.gameserver.instancemanager.AntiFeedManager;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.CursedWeaponsManager;
+import org.l2jmobius.gameserver.instancemanager.DimensionalRiftManager;
 import org.l2jmobius.gameserver.instancemanager.DuelManager;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.instancemanager.FortSiegeManager;
@@ -152,6 +153,7 @@ import org.l2jmobius.gameserver.model.actor.instance.AirShip;
 import org.l2jmobius.gameserver.model.actor.instance.Boat;
 import org.l2jmobius.gameserver.model.actor.instance.ControlTower;
 import org.l2jmobius.gameserver.model.actor.instance.Defender;
+import org.l2jmobius.gameserver.model.actor.instance.Doppelganger;
 import org.l2jmobius.gameserver.model.actor.instance.FriendlyMob;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
@@ -248,6 +250,8 @@ import org.l2jmobius.gameserver.model.punishment.PunishmentType;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.QuestTimer;
+import org.l2jmobius.gameserver.model.sevensigns.SevenSigns;
+import org.l2jmobius.gameserver.model.sevensigns.SevenSignsFestival;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.siege.Siege;
@@ -378,8 +382,8 @@ public class Player extends Playable
 	private static final String DELETE_ITEM_REUSE_SAVE = "DELETE FROM character_item_reuse_save WHERE charId=?";
 	
 	// Character Character SQL String Definitions:
-	private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,charId,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,reputation,fame,raidbossPoints,pvpkills,pkkills,clanid,race,classid,deletetime,cancraft,title,title_color,online,clan_privs,wantspeace,base_class,nobless,power_grade,vitality_points,createDate) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String UPDATE_CHARACTER = "UPDATE characters SET level=?,maxHp=?,curHp=?,maxCp=?,curCp=?,maxMp=?,curMp=?,face=?,hairStyle=?,hairColor=?,sex=?,heading=?,x=?,y=?,z=?,exp=?,expBeforeDeath=?,sp=?,reputation=?,fame=?,raidbossPoints=?,pvpkills=?,pkkills=?,clanid=?,race=?,classid=?,deletetime=?,title=?,title_color=?,online=?,clan_privs=?,wantspeace=?,base_class=?,onlinetime=?,nobless=?,power_grade=?,subpledge=?,lvl_joined_academy=?,apprentice=?,sponsor=?,clan_join_expiry_time=?,clan_create_expiry_time=?,char_name=?,bookmarkslot=?,vitality_points=?,language=?,faction=?,pccafe_points=? WHERE charId=?";
+	private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,charId,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,reputation,fame,raidbossPoints,pvpkills,pkkills,clanid,race,classid,deletetime,cancraft,title,title_color,online,clan_privs,wantspeace,base_class,nobless,power_grade,vitality_points,createDate,isin7sdungeon) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String UPDATE_CHARACTER = "UPDATE characters SET level=?,maxHp=?,curHp=?,maxCp=?,curCp=?,maxMp=?,curMp=?,face=?,hairStyle=?,hairColor=?,sex=?,heading=?,x=?,y=?,z=?,exp=?,expBeforeDeath=?,sp=?,reputation=?,fame=?,raidbossPoints=?,pvpkills=?,pkkills=?,clanid=?,race=?,classid=?,deletetime=?,title=?,title_color=?,online=?,clan_privs=?,wantspeace=?,base_class=?,onlinetime=?,nobless=?,power_grade=?,subpledge=?,lvl_joined_academy=?,apprentice=?,sponsor=?,clan_join_expiry_time=?,clan_create_expiry_time=?,char_name=?,bookmarkslot=?,vitality_points=?,language=?,faction=?,pccafe_points=?,isin7sdungeon=? WHERE charId=?";
 	private static final String UPDATE_CHARACTER_ACCESS = "UPDATE characters SET accesslevel = ? WHERE charId = ?";
 	private static final String RESTORE_CHARACTER = "SELECT * FROM characters WHERE charId=?";
 	
@@ -437,7 +441,10 @@ public class Player extends Playable
 	private long _lastAccess;
 	private long _uptime;
 	
+	private final InventoryUpdate _inventoryUpdate = new InventoryUpdate();
+	private ScheduledFuture<?> _inventoryUpdateTask;
 	private ScheduledFuture<?> _itemListTask;
+	private ScheduledFuture<?> _adenaAndWeightTask;
 	private ScheduledFuture<?> _skillListTask;
 	private ScheduledFuture<?> _storageCountTask;
 	private ScheduledFuture<?> _abnormalVisualEffectTask;
@@ -494,6 +501,8 @@ public class Player extends Playable
 	
 	private int _lastCompassZone; // the last compass zone update send to the client
 	
+	private boolean _isIn7sDungeon = false;
+	
 	private final ContactList _contactList = new ContactList(this);
 	
 	private int _bookmarkslot = 0; // The Teleport Bookmark Slot
@@ -542,7 +551,8 @@ public class Player extends Playable
 	private final Map<Integer, PremiumItem> _premiumItems = new ConcurrentSkipListMap<>();
 	
 	/** True if the Player is sitting */
-	private boolean _waitTypeSitting = false;
+	private boolean _waitTypeSitting;
+	private boolean _sittingInProgress;
 	
 	/** Location before entering Observer Mode */
 	private Location _lastLoc;
@@ -1642,28 +1652,34 @@ public class Player extends Playable
 			return false;
 		}
 		
-		// Check first castle mid victory.
 		final Castle castle = CastleManager.getInstance().getCastleById(_siegeSide);
-		final Player targetPlayer = target.getActingPlayer();
-		if ((castle != null) && (targetPlayer != null) && !castle.isFirstMidVictory())
-		{
-			return true;
-		}
-		
-		// If target isn't a player, is self, isn't on same siege or not on same state, not friends.
-		if ((targetPlayer == null) || (targetPlayer == this) || (targetPlayer.getSiegeSide() != _siegeSide) || (_siegeState != targetPlayer.getSiegeState()))
+		if (castle == null)
 		{
 			return false;
 		}
 		
-		// Attackers are considered friends only if castle has no owner.
+		// If target isn't a player, is self.
+		final Player targetPlayer = target.getActingPlayer();
+		if ((targetPlayer == null) || (targetPlayer == this))
+		{
+			return false;
+		}
+		
+		// If target isn't on same siege or not on same state, not friends.
+		if ((targetPlayer.getSiegeSide() != _siegeSide) || (_siegeState != targetPlayer.getSiegeState()))
+		{
+			return false;
+		}
+		
 		if (_siegeState == 1)
 		{
-			if (castle == null)
+			// Check first castle mid victory.
+			if (!castle.isFirstMidVictory() && (_siegeState == targetPlayer.getSiegeState()))
 			{
-				return false;
+				return true;
 			}
 			
+			// Attackers are considered friends only if castle has no owner.
 			return castle.getOwner() == null;
 		}
 		
@@ -1800,6 +1816,15 @@ public class Player extends Playable
 			}
 			_lastCompassZone = ExSetCompassZoneCode.PVPZONE;
 			sendPacket(new ExSetCompassZoneCode(ExSetCompassZoneCode.PVPZONE));
+		}
+		else if (_isIn7sDungeon)
+		{
+			if (_lastCompassZone == ExSetCompassZoneCode.SEVENSIGNSZONE)
+			{
+				return;
+			}
+			_lastCompassZone = ExSetCompassZoneCode.SEVENSIGNSZONE;
+			sendPacket(new ExSetCompassZoneCode(ExSetCompassZoneCode.SEVENSIGNSZONE));
 		}
 		else if (isInsideZone(ZoneId.PEACE))
 		{
@@ -2868,6 +2893,11 @@ public class Player extends Playable
 		_onlineBeginTime = System.currentTimeMillis();
 	}
 	
+	public int getOnlineTimeMillis()
+	{
+		return (int) (System.currentTimeMillis() - _onlineBeginTime);
+	}
+	
 	/**
 	 * Return the PcInventory Inventory of the Player contained in _inventory.
 	 */
@@ -2895,12 +2925,21 @@ public class Player extends Playable
 	}
 	
 	/**
-	 * Set _waitTypeSitting to given value
+	 * Set _waitTypeSitting to given value.
 	 * @param value
 	 */
 	public void setSitting(boolean value)
 	{
 		_waitTypeSitting = value;
+	}
+	
+	/**
+	 * Set _sittingInProgress to given value.
+	 * @param value
+	 */
+	public void setSittingProgress(boolean value)
+	{
+		_sittingInProgress = value;
 	}
 	
 	/**
@@ -2913,6 +2952,11 @@ public class Player extends Playable
 	
 	public void sitDown(boolean checkCast)
 	{
+		if (_sittingInProgress)
+		{
+			return;
+		}
+		
 		if (checkCast && isCastingNow())
 		{
 			sendMessage("Cannot sit while casting.");
@@ -2923,11 +2967,12 @@ public class Player extends Playable
 		{
 			breakAttack();
 			setSitting(true);
+			setSittingProgress(true);
 			getAI().setIntention(CtrlIntention.AI_INTENTION_REST);
 			broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_SITTING));
+			
 			// Schedule a sit down task to wait for the animation to finish
 			ThreadPool.schedule(new SitDownTask(this), 2500);
-			setBlockActions(true);
 		}
 	}
 	
@@ -2936,15 +2981,21 @@ public class Player extends Playable
 	 */
 	public void standUp()
 	{
+		if (_sittingInProgress)
+		{
+			return;
+		}
+		
 		if (_waitTypeSitting && !isInStoreMode() && !isAlikeDead())
 		{
+			setSittingProgress(true);
 			if (getEffectList().isAffected(EffectFlag.RELAXING))
 			{
 				stopEffects(EffectFlag.RELAXING);
 			}
-			
 			broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_STANDING));
-			// Schedule a stand up task to wait for the animation to finish
+			
+			// Schedule a stand up task to wait for the animation to finish.
 			ThreadPool.schedule(new StandUpTask(this), 2500);
 		}
 	}
@@ -4355,13 +4406,20 @@ public class Player extends Playable
 			return;
 		}
 		
+		if (getActiveTradeList() != null)
+		{
+			sendPacket(SystemMessageId.YOU_CANNOT_PICK_UP_OR_USE_ITEMS_WHILE_TRADING);
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
 		// Set the AI Intention to AI_INTENTION_IDLE
 		getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 		
 		// Check if the WorldObject to pick up is a Item
 		if (!object.isItem())
 		{
-			// dont try to pickup anything that is not an item :)
+			// do not try to pickup anything that is not an item :)
 			LOGGER.warning(this + " trying to pickup wrong target." + getTarget());
 			return;
 		}
@@ -4635,7 +4693,7 @@ public class Player extends Playable
 				newTarget = null;
 			}
 			
-			// vehicles cant be targeted
+			// vehicles cannot be targeted
 			if (!isGM() && (newTarget instanceof Vehicle))
 			{
 				newTarget = null;
@@ -4967,9 +5025,22 @@ public class Player extends Playable
 			_cubics.clear();
 		}
 		
+		for (Npc npc : getSummonedNpcs())
+		{
+			if (npc instanceof Doppelganger)
+			{
+				npc.deleteMe();
+			}
+		}
+		
 		if (isChannelized())
 		{
 			getSkillChannelized().abortChannelization();
+		}
+		
+		if (isInParty() && _party.isInDimensionalRift())
+		{
+			_party.getDimensionalRift().getDeadMemberList().add(this);
 		}
 		
 		if (_agathionId != 0)
@@ -5060,8 +5131,8 @@ public class Player extends Playable
 				for (Item itemDrop : _inventory.getItems())
 				{
 					// Don't drop
-					if (itemDrop.isShadowItem() || // Dont drop Shadow Items
-						itemDrop.isTimeLimitedItem() || // Dont drop Time Limited Items
+					if (itemDrop.isShadowItem() || // do not drop Shadow Items
+						itemDrop.isTimeLimitedItem() || // do not drop Time Limited Items
 						!itemDrop.isDropable() || (itemDrop.getId() == Inventory.ADENA_ID) || // Adena
 						(itemDrop.getTemplate().getType2() == ItemTemplate.TYPE2_QUEST) || // Quest Items
 						((_pet != null) && (_pet.getControlObjectId() == itemDrop.getId())) || // Control Item of active pet
@@ -6415,6 +6486,11 @@ public class Player extends Playable
 		}
 	}
 	
+	public void setIn7sDungeon(boolean isIn7sDungeon)
+	{
+		_isIn7sDungeon = isIn7sDungeon;
+	}
+	
 	/**
 	 * Update the characters table of the database with online status and lastAccess of this Player (called when login and logout).
 	 */
@@ -6479,6 +6555,7 @@ public class Player extends Playable
 			statement.setLong(34, 0);
 			statement.setInt(35, PlayerStat.MIN_VITALITY_POINTS);
 			statement.setDate(36, new Date(_createDate.getTimeInMillis()));
+			statement.setInt(37, _isIn7sDungeon ? 1 : 0);
 			statement.executeUpdate();
 		}
 		catch (Exception e)
@@ -6567,29 +6644,31 @@ public class Player extends Playable
 					player.setPledgeType(rset.getInt("subpledge"));
 					// player.setApprentice(rset.getInt("apprentice"));
 					
+					Clan clan = null;
 					if (clanId > 0)
 					{
-						player.setClan(ClanTable.getInstance().getClan(clanId));
-					}
-					
-					if (player.getClan() != null)
-					{
-						if (player.getClan().getLeaderId() != player.getObjectId())
+						clan = ClanTable.getInstance().getClan(clanId);
+						player.setClan(clan);
+						if ((clan != null) && clan.isMember(objectId))
 						{
-							if (player.getPowerGrade() == 0)
+							if (clan.getLeaderId() != player.getObjectId())
 							{
-								player.setPowerGrade(5);
+								if (player.getPowerGrade() == 0)
+								{
+									player.setPowerGrade(5);
+								}
+								player.setClanPrivileges(clan.getRankPrivs(player.getPowerGrade()));
 							}
-							player.setClanPrivileges(player.getClan().getRankPrivs(player.getPowerGrade()));
+							else
+							{
+								player.getClanPrivileges().setAll();
+								player.setPowerGrade(1);
+							}
+							
+							player.setPledgeClass(ClanMember.calculatePledgeClass(player));
 						}
-						else
-						{
-							player.getClanPrivileges().setAll();
-							player.setPowerGrade(1);
-						}
-						player.setPledgeClass(ClanMember.calculatePledgeClass(player));
 					}
-					else
+					if (clan == null)
 					{
 						if (player.isNoble())
 						{
@@ -6677,6 +6756,9 @@ public class Player extends Playable
 					
 					// Language
 					player.setLang(rset.getString("language"));
+					
+					// Seven Signs
+					player.setIn7sDungeon(rset.getInt("isin7sdungeon") == 1);
 					
 					// Retrieve the name and ID of the other characters assigned to this account.
 					try (PreparedStatement stmt = con.prepareStatement("SELECT charId, char_name FROM characters WHERE account_name=? AND charId<>?"))
@@ -7040,6 +7122,7 @@ public class Player extends Playable
 		{
 			storeRecipeShopList();
 		}
+		SevenSigns.getInstance().saveSevenSignsData(getObjectId());
 		
 		final PlayerVariables vars = getScript(PlayerVariables.class);
 		if (vars != null)
@@ -7135,7 +7218,9 @@ public class Player extends Playable
 			}
 			statement.setInt(47, factionId);
 			statement.setInt(48, _pcCafePoints);
-			statement.setInt(49, getObjectId());
+			statement.setInt(49, _isIn7sDungeon ? 1 : 0);
+			statement.setInt(50, getObjectId());
+			
 			statement.execute();
 		}
 		catch (Exception e)
@@ -7390,6 +7475,11 @@ public class Player extends Playable
 	public boolean isInOfflineMode()
 	{
 		return (_client == null) || _client.isDetached();
+	}
+	
+	public boolean isIn7sDungeon()
+	{
+		return _isIn7sDungeon;
 	}
 	
 	@Override
@@ -8104,7 +8194,25 @@ public class Player extends Playable
 		
 		if (isRegisteredOnEvent())
 		{
+			sendMessage("A superior power doesn't allow you to leave.");
 			return false;
+		}
+		
+		// Prevent player from logging out if they are a festival participant
+		// and it is in progress, otherwise notify party members that the player
+		// is not longer a participant.
+		if (isFestivalParticipant())
+		{
+			if (SevenSignsFestival.getInstance().isFestivalInitialized())
+			{
+				sendMessage("You cannot log out while you are a participant in a Festival.");
+				return false;
+			}
+			
+			if (isInParty())
+			{
+				_party.broadcastPacket(new SystemMessage(getName() + " has been removed from the upcoming Festival."));
+			}
 		}
 		
 		return true;
@@ -8235,7 +8343,7 @@ public class Player extends Playable
 			}
 			
 			// Check if the Player is in an arena, but NOT siege zone. NOTE: This check comes before clan/ally checks, but after party checks.
-			// This is done because in arenas, clan/ally members can autoattack if they arent in party.
+			// This is done because in arenas, clan/ally members can autoattack if they are not in party.
 			if ((isInsideZone(ZoneId.PVP) && attackerPlayer.isInsideZone(ZoneId.PVP)) && !(isInsideZone(ZoneId.SIEGE) && attackerPlayer.isInsideZone(ZoneId.SIEGE)))
 			{
 				return true;
@@ -8748,6 +8856,14 @@ public class Player extends Playable
 	public Npc getLastFolkNPC()
 	{
 		return _lastFolkNpc;
+	}
+	
+	/**
+	 * @return True if Player is a participant in the Festival of Darkness.
+	 */
+	public boolean isFestivalParticipant()
+	{
+		return SevenSignsFestival.getInstance().isParticipant(this);
 	}
 	
 	public void addAutoSoulShot(int itemId)
@@ -10069,6 +10185,25 @@ public class Player extends Playable
 	{
 		startWarnUserTakeBreak();
 		
+		if (SevenSigns.getInstance().isSealValidationPeriod() || SevenSigns.getInstance().isCompResultsPeriod())
+		{
+			if (!isGM() && isIn7sDungeon() && (SevenSigns.getInstance().getPlayerCabal(getObjectId()) != SevenSigns.getInstance().getCabalHighestScore()))
+			{
+				teleToLocation(TeleportWhereType.TOWN);
+				setIn7sDungeon(false);
+				sendMessage("You have been teleported to the nearest town due to the beginning of the Seal Validation period.");
+			}
+		}
+		else
+		{
+			if (!isGM() && isIn7sDungeon() && (SevenSigns.getInstance().getPlayerCabal(getObjectId()) == SevenSigns.CABAL_NULL))
+			{
+				teleToLocation(TeleportWhereType.TOWN);
+				setIn7sDungeon(false);
+				sendMessage("You have been teleported to the nearest town because you have not signed for any cabal.");
+			}
+		}
+		
 		if (isGM() && !Config.GM_STARTUP_BUILDER_HIDE)
 		{
 			// Bleah, see L2J custom below.
@@ -10151,9 +10286,9 @@ public class Player extends Playable
 			// Run on a separate thread to give time to above events to be notified.
 			ThreadPool.schedule(() ->
 			{
-				setCurrentCp(_originalCp);
 				setCurrentHp(_originalHp);
 				setCurrentMp(_originalMp);
+				setCurrentCp(_originalCp);
 			}, 300);
 		}
 	}
@@ -10201,6 +10336,11 @@ public class Player extends Playable
 		if (isMounted())
 		{
 			startFeed(_mountNpcId);
+		}
+		
+		if (isInParty() && _party.isInDimensionalRift() && !DimensionalRiftManager.getInstance().checkIfInPeaceZone(getX(), getY(), getZ()))
+		{
+			_party.getDimensionalRift().memberRessurected(this);
 		}
 		
 		// Notify instance
@@ -10679,10 +10819,10 @@ public class Player extends Playable
 	 * <ul>
 	 * <li>Inventory contains item</li>
 	 * <li>Item owner id == owner id</li>
-	 * <li>It isnt pet control item while mounting pet or pet summoned</li>
-	 * <li>It isnt active enchant item</li>
-	 * <li>It isnt cursed weapon/item</li>
-	 * <li>It isnt wear item</li>
+	 * <li>It is not pet control item while mounting pet or pet summoned</li>
+	 * <li>It is not active enchant item</li>
+	 * <li>It is not cursed weapon/item</li>
+	 * <li>It is not wear item</li>
 	 * </ul>
 	 * @param objectId item object id
 	 * @param action just for login porpouse
@@ -12109,6 +12249,11 @@ public class Player extends Playable
 		else if (isDead())
 		{
 			sendPacket(SystemMessageId.YOU_CANNOT_USE_MY_TELEPORTS_WHILE_YOU_ARE_DEAD);
+			return false;
+		}
+		else if ((type == 1) && (_isIn7sDungeon || (isInParty() && _party.isInDimensionalRift())))
+		{
+			sendPacket(SystemMessageId.YOU_CANNOT_USE_MY_TELEPORTS_TO_REACH_THIS_AREA);
 			return false;
 		}
 		else if (isInWater())
@@ -13780,24 +13925,49 @@ public class Player extends Playable
 	
 	public void sendInventoryUpdate(InventoryUpdate iu)
 	{
-		sendPacket(iu);
-		sendPacket(new ExAdenaInvenCount(this));
-		sendPacket(new ExUserInfoInvenWeight(this));
+		if (_inventoryUpdateTask != null)
+		{
+			_inventoryUpdateTask.cancel(false);
+		}
+		
+		_inventoryUpdate.putAll(iu.getItemEntries());
+		
+		_inventoryUpdateTask = ThreadPool.schedule(() ->
+		{
+			sendPacket(_inventoryUpdate);
+			
+			updateAdenaAndWeight();
+		}, 100);
 	}
 	
 	public void sendItemList(boolean open)
 	{
-		if (_itemListTask == null)
+		if (_itemListTask != null)
 		{
-			_itemListTask = ThreadPool.schedule(() ->
-			{
-				sendPacket(new ItemList(this, open));
-				sendPacket(new ExQuestItemList(this));
-				sendPacket(new ExAdenaInvenCount(this));
-				sendPacket(new ExUserInfoInvenWeight(this));
-				_itemListTask = null;
-			}, 300);
+			_itemListTask.cancel(false);
 		}
+		
+		_itemListTask = ThreadPool.schedule(() ->
+		{
+			sendPacket(new ItemList(this, open));
+			sendPacket(new ExQuestItemList(this));
+			
+			updateAdenaAndWeight();
+		}, 250);
+	}
+	
+	public void updateAdenaAndWeight()
+	{
+		if (_adenaAndWeightTask != null)
+		{
+			_adenaAndWeightTask.cancel(false);
+		}
+		
+		_adenaAndWeightTask = ThreadPool.schedule(() ->
+		{
+			sendPacket(new ExAdenaInvenCount(this));
+			sendPacket(new ExUserInfoInvenWeight(this));
+		}, 800);
 	}
 	
 	public Fishing getFishing()

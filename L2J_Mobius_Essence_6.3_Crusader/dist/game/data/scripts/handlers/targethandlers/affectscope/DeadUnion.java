@@ -94,7 +94,7 @@ public class DeadUnion implements IAffectScopeHandler
 				return true;
 			};
 			
-			// Affect object of origin since its skipped in the forEachVisibleObjectInRange method.
+			// Affect object of origin since it is skipped in the forEachVisibleObjectInRange method.
 			if (filter.test((Playable) target))
 			{
 				action.accept(target);

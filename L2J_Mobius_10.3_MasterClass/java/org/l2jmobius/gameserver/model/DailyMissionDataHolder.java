@@ -118,13 +118,13 @@ public class DailyMissionDataHolder
 	
 	public boolean isDisplayable(Player player)
 	{
-		// Check if its main class only
+		// Check if it is main class only
 		if (_isMainClassOnly && (player.isSubClassActive() || player.isDualClassActive()))
 		{
 			return false;
 		}
 		
-		// Check if its dual class only.
+		// Check if it is dual class only.
 		if (_isDualClassOnly && !player.isDualClassActive())
 		{
 			return false;
@@ -142,7 +142,7 @@ public class DailyMissionDataHolder
 			return false;
 		}
 		
-		// Show only if its repeatable, recently completed or incompleted that has met the checks above.
+		// Show only if it is repeatable, recently completed or incompleted that has met the checks above.
 		return (!_isOneTime || isRecentlyCompleted(player) || (status != DailyMissionStatus.COMPLETED.getClientId()));
 	}
 	

@@ -146,7 +146,7 @@ public enum Movie
 	/**
 	 * Finds the {@code Movie} by its clientId
 	 * @param clientId the clientId
-	 * @return the {@code Movie} if its found, {@code null} otherwise.
+	 * @return the {@code Movie} if it is found, {@code null} otherwise.
 	 */
 	public static Movie findByClientId(int clientId)
 	{

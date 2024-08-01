@@ -18,12 +18,14 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
+import org.l2jmobius.gameserver.data.xml.PetTypeData;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.ItemListType;
 import org.l2jmobius.gameserver.model.ItemInfo;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.buylist.Product;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
+import org.l2jmobius.gameserver.model.holders.PetEvolveHolder;
 import org.l2jmobius.gameserver.model.item.WarehouseItem;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
@@ -108,14 +110,27 @@ public abstract class AbstractItemPacket extends AbstractMaskPacket<ItemListType
 		{
 			writeItemEnsoulOptions(item, buffer);
 		}
-		if (containsMask(mask, ItemListType.EVOLVE))
+		if (containsMask(mask, ItemListType.PET_EVOLVE))
 		{
-			buffer.writeInt(item.getPetData().getEvolve().ordinal()); // petEvolve step
-			buffer.writeInt(0); // petName id
-			buffer.writeInt(2);
-			buffer.writeInt(3);
-			buffer.writeInt(PetDataTable.getInstance().getTypeByIndex(item.getPetData().getIndex())); // pet id
-			buffer.writeLong(item.getPetData().getExp()); // pet exp
+			final PetEvolveHolder petData = item.getPetData();
+			if (petData != null)
+			{
+				buffer.writeInt(petData.getEvolve().ordinal());
+				buffer.writeInt(PetTypeData.getInstance().getIdByName(petData.getName())); // PetName id from PetName_ClassicAden-eu.
+				buffer.writeInt(0); // SkillId
+				buffer.writeInt(0); // SkillLevel
+				buffer.writeInt(PetDataTable.getInstance().getTypeByIndex(petData.getIndex())); // Pet id.
+				buffer.writeLong(petData.getExp());
+			}
+			else
+			{
+				buffer.writeInt(0);
+				buffer.writeInt(0);
+				buffer.writeInt(0);
+				buffer.writeInt(0);
+				buffer.writeInt(0);
+				buffer.writeLong(0);
+			}
 		}
 		if (containsMask(mask, ItemListType.BLESSED))
 		{
@@ -162,14 +177,27 @@ public abstract class AbstractItemPacket extends AbstractMaskPacket<ItemListType
 		{
 			writeItemEnsoulOptions(item, buffer);
 		}
-		if (containsMask(mask, ItemListType.EVOLVE))
+		if (containsMask(mask, ItemListType.PET_EVOLVE))
 		{
-			buffer.writeInt(item.getPetData().getEvolve().ordinal()); // petEvolve step
-			buffer.writeInt(0);
-			buffer.writeInt(2);
-			buffer.writeInt(3);
-			buffer.writeInt(PetDataTable.getInstance().getTypeByIndex(item.getPetData().getIndex())); // pet id
-			buffer.writeLong(item.getPetData().getExp()); // pet exp
+			final PetEvolveHolder petData = item.getPetData();
+			if (petData != null)
+			{
+				buffer.writeInt(petData.getEvolve().ordinal());
+				buffer.writeInt(PetTypeData.getInstance().getIdByName(petData.getName())); // PetName id from PetName_ClassicAden-eu.
+				buffer.writeInt(0); // SkillId
+				buffer.writeInt(0); // SkillLevel
+				buffer.writeInt(PetDataTable.getInstance().getTypeByIndex(petData.getIndex())); // Pet id.
+				buffer.writeLong(petData.getExp());
+			}
+			else
+			{
+				buffer.writeInt(0);
+				buffer.writeInt(0);
+				buffer.writeInt(0);
+				buffer.writeInt(0);
+				buffer.writeInt(0);
+				buffer.writeLong(0);
+			}
 		}
 		if (containsMask(mask, ItemListType.BLESSED))
 		{
@@ -207,9 +235,9 @@ public abstract class AbstractItemPacket extends AbstractMaskPacket<ItemListType
 		{
 			mask |= ItemListType.SOUL_CRYSTAL.getMask();
 		}
-		if (item.getPetData() != null)
+		if (item.getItem().isPetItem() && (item.getPetData() != null))
 		{
-			mask |= ItemListType.EVOLVE.getMask();
+			mask |= ItemListType.PET_EVOLVE.getMask();
 		}
 		if (item.isBlessed())
 		{

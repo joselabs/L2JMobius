@@ -145,7 +145,7 @@ public class RestorationRandom extends AbstractEffect
 				}
 				sendMessage(player, entry.getKey(), entry.getValue().longValue());
 			}
-			player.sendPacket(playerIU);
+			player.sendInventoryUpdate(playerIU);
 		}
 	}
 	

@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets.ability;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -51,7 +50,7 @@ public class RequestResetAbilityPoint extends ClientPacket
 			return;
 		}
 		
-		if ((player.getPrivateStoreType() != PrivateStoreType.NONE) || (player.getActiveRequester() != null))
+		if (player.isInStoreMode() || (player.getActiveRequester() != null))
 		{
 			return;
 		}

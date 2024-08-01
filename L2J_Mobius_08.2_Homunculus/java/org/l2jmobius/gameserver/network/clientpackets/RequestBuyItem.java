@@ -165,7 +165,7 @@ public class RequestBuyItem extends ClientPacket
 			
 			if ((price == 0) && !player.isGM() && Config.ONLY_GM_ITEMS_FREE)
 			{
-				player.sendMessage("Ohh Cheat dont work? You have a problem now!");
+				player.sendMessage("Ohh Cheat does not work? You have a problem now!");
 				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried buy item for 0 adena.", Config.DEFAULT_PUNISH);
 				return;
 			}

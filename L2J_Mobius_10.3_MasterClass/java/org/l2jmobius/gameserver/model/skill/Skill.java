@@ -198,7 +198,7 @@ public class Skill implements IIdentifiable
 	private final boolean _isSharedWithSummon;
 	private final boolean _isNecessaryToggle;
 	private final boolean _deleteAbnormalOnLeave;
-	private final boolean _irreplacableBuff; // Stays after death, on subclass change, cant be canceled.
+	private final boolean _irreplacableBuff; // Stays after death, on subclass change, cannot be canceled.
 	private final boolean _blockActionUseSkill; // Blocks the use skill client action and is not showed on skill list.
 	
 	private final int _toggleGroupId;
@@ -1075,7 +1075,7 @@ public class Skill implements IIdentifiable
 	/**
 	 * @param creature the creature that requests getting the skill target.
 	 * @param forceUse if character pressed ctrl (force pick target)
-	 * @param dontMove if character pressed shift (dont move and pick target only if in range)
+	 * @param dontMove if character pressed shift (do not move and pick target only if in range)
 	 * @param sendMessage send SystemMessageId packet if target is incorrect.
 	 * @return {@code WorldObject} this skill can be used on, or {@code null} if there is no such.
 	 */
@@ -1088,7 +1088,7 @@ public class Skill implements IIdentifiable
 	 * @param creature the creature that requests getting the skill target.
 	 * @param seletedTarget the target that has been selected by this character to be checked.
 	 * @param forceUse if character pressed ctrl (force pick target)
-	 * @param dontMove if character pressed shift (dont move and pick target only if in range)
+	 * @param dontMove if character pressed shift (do not move and pick target only if in range)
 	 * @param sendMessage send SystemMessageId packet if target is incorrect.
 	 * @return the selected {@code WorldObject} this skill can be used on, or {@code null} if there is no such.
 	 */
@@ -1592,7 +1592,7 @@ public class Skill implements IIdentifiable
 	}
 	
 	/**
-	 * @param effectType Effect type to check if its present on this skill effects.
+	 * @param effectType Effect type to check if it is present on this skill effects.
 	 * @param effectTypes Effect types to check if are present on this skill effects.
 	 * @return {@code true} if at least one of specified {@link EffectType} types is present on this skill effects, {@code false} otherwise.
 	 */
@@ -1640,7 +1640,7 @@ public class Skill implements IIdentifiable
 	
 	/**
 	 * @param effectScope Effect Scope to look inside for the specific effect type.
-	 * @param effectType Effect type to check if its present on this skill effects.
+	 * @param effectType Effect type to check if it is present on this skill effects.
 	 * @param effectTypes Effect types to check if are present on this skill effects.
 	 * @return {@code true} if at least one of specified {@link EffectType} types is present on this skill effects, {@code false} otherwise.
 	 */

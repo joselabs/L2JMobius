@@ -6,7 +6,7 @@ Eclipse: https://www.mediafire.com/file/kryxpp6u4m49eo9/eclipse-java-2024-03-R-w
 Geodata: https://www.mediafire.com/file/r7byt5pc9uw4ajw/L2J_Mobius_Essence_7.1_Assassin_Geodata.zip
 
 Client (password L2jMobius): https://drive.google.com/u/1/uc?id=1bjQebC-vN3F2COGCaRipRJlknKgVCtvd&export=download
-System: https://mega.nz/file/9hdEXKzb#sr8wpdVSmFJySIrpmJA0jNK2vLriN9sMxKYpypK1jJQ
+System: https://mega.nz/file/QptHBS5B#_IJE2-6DRk9IAzB4PMAbsUAiPTDZZtRmnbkUjihePVI
 
 All provided download links are for personal use. Redistribution of these links is bannable.
 

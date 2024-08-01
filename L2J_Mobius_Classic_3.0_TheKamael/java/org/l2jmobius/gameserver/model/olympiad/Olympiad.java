@@ -71,13 +71,13 @@ public class Olympiad extends ListenersContainer
 	private static final String OLYMPIAD_LOAD_NOBLES = "SELECT olympiad_nobles.charId, olympiad_nobles.class_id, characters.char_name, olympiad_nobles.olympiad_points, olympiad_nobles.competitions_done, olympiad_nobles.competitions_won, olympiad_nobles.competitions_lost, olympiad_nobles.competitions_drawn, olympiad_nobles.competitions_done_week FROM olympiad_nobles, characters WHERE characters.charId = olympiad_nobles.charId";
 	private static final String OLYMPIAD_SAVE_NOBLES = "INSERT INTO olympiad_nobles (`charId`,`class_id`,`olympiad_points`,`competitions_done`,`competitions_won`,`competitions_lost`,`competitions_drawn`, `competitions_done_week`) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String OLYMPIAD_UPDATE_NOBLES = "UPDATE olympiad_nobles SET olympiad_points = ?, competitions_done = ?, competitions_won = ?, competitions_lost = ?, competitions_drawn = ?, competitions_done_week = ? WHERE charId = ?";
-	private static final String OLYMPIAD_GET_HEROS = "SELECT olympiad_nobles.charId, characters.char_name FROM olympiad_nobles, characters WHERE characters.charId = olympiad_nobles.charId AND olympiad_nobles.class_id in (?, ?) AND olympiad_nobles.competitions_done >= " + Config.ALT_OLY_MIN_MATCHES + " AND olympiad_nobles.competitions_won > 0 ORDER BY olympiad_nobles.olympiad_points DESC, olympiad_nobles.competitions_done DESC, olympiad_nobles.competitions_won DESC";
-	private static final String OLYMPIAD_GET_LEGEND = "SELECT olympiad_nobles.charId FROM olympiad_nobles WHERE olympiad_nobles.competitions_done >=" + Config.ALT_OLY_MIN_MATCHES + " ORDER BY olympiad_nobles.olympiad_points DESC LIMIT 1";
-	private static final String GET_ALL_CLASSIFIED_NOBLESS = "SELECT charId from olympiad_nobles_eom WHERE competitions_done >= " + Config.ALT_OLY_MIN_MATCHES + " ORDER BY olympiad_points DESC, competitions_done DESC, competitions_won DESC";
-	private static final String GET_EACH_CLASS_LEADER = "SELECT characters.char_name from olympiad_nobles_eom, characters WHERE characters.charId = olympiad_nobles_eom.charId AND olympiad_nobles_eom.class_id = ? AND olympiad_nobles_eom.competitions_done >= " + Config.ALT_OLY_MIN_MATCHES + " ORDER BY olympiad_nobles_eom.olympiad_points DESC, olympiad_nobles_eom.competitions_done DESC, olympiad_nobles_eom.competitions_won DESC LIMIT 10";
-	private static final String GET_EACH_CLASS_LEADER_CURRENT = "SELECT characters.char_name from olympiad_nobles, characters WHERE characters.charId = olympiad_nobles.charId AND olympiad_nobles.class_id = ? AND olympiad_nobles.competitions_done >= " + Config.ALT_OLY_MIN_MATCHES + " ORDER BY olympiad_nobles.olympiad_points DESC, olympiad_nobles.competitions_done DESC, olympiad_nobles.competitions_won DESC LIMIT 10";
-	private static final String GET_EACH_CLASS_LEADER_SOULHOUND = "SELECT characters.char_name from olympiad_nobles_eom, characters WHERE characters.charId = olympiad_nobles_eom.charId AND (olympiad_nobles_eom.class_id = ? OR olympiad_nobles_eom.class_id = 133) AND olympiad_nobles_eom.competitions_done >= " + Config.ALT_OLY_MIN_MATCHES + " ORDER BY olympiad_nobles_eom.olympiad_points DESC, olympiad_nobles_eom.competitions_done DESC, olympiad_nobles_eom.competitions_won DESC LIMIT 10";
-	private static final String GET_EACH_CLASS_LEADER_CURRENT_SOULHOUND = "SELECT characters.char_name from olympiad_nobles, characters WHERE characters.charId = olympiad_nobles.charId AND (olympiad_nobles.class_id = ? OR olympiad_nobles.class_id = 133) AND olympiad_nobles.competitions_done >= " + Config.ALT_OLY_MIN_MATCHES + " ORDER BY olympiad_nobles.olympiad_points DESC, olympiad_nobles.competitions_done DESC, olympiad_nobles.competitions_won DESC LIMIT 10";
+	private static final String OLYMPIAD_GET_HEROS = "SELECT olympiad_nobles.charId, characters.char_name FROM olympiad_nobles, characters WHERE characters.charId = olympiad_nobles.charId AND olympiad_nobles.class_id in (?, ?) AND olympiad_nobles.competitions_done >= " + Config.OLYMPIAD_MIN_MATCHES + " AND olympiad_nobles.competitions_won > 0 ORDER BY olympiad_nobles.olympiad_points DESC, olympiad_nobles.competitions_done DESC, olympiad_nobles.competitions_won DESC";
+	private static final String OLYMPIAD_GET_LEGEND = "SELECT olympiad_nobles.charId FROM olympiad_nobles WHERE olympiad_nobles.competitions_done >=" + Config.OLYMPIAD_MIN_MATCHES + " ORDER BY olympiad_nobles.olympiad_points DESC LIMIT 1";
+	private static final String GET_ALL_CLASSIFIED_NOBLESS = "SELECT charId from olympiad_nobles_eom WHERE competitions_done >= " + Config.OLYMPIAD_MIN_MATCHES + " ORDER BY olympiad_points DESC, competitions_done DESC, competitions_won DESC";
+	private static final String GET_EACH_CLASS_LEADER = "SELECT characters.char_name from olympiad_nobles_eom, characters WHERE characters.charId = olympiad_nobles_eom.charId AND olympiad_nobles_eom.class_id = ? AND olympiad_nobles_eom.competitions_done >= " + Config.OLYMPIAD_MIN_MATCHES + " ORDER BY olympiad_nobles_eom.olympiad_points DESC, olympiad_nobles_eom.competitions_done DESC, olympiad_nobles_eom.competitions_won DESC LIMIT 10";
+	private static final String GET_EACH_CLASS_LEADER_CURRENT = "SELECT characters.char_name from olympiad_nobles, characters WHERE characters.charId = olympiad_nobles.charId AND olympiad_nobles.class_id = ? AND olympiad_nobles.competitions_done >= " + Config.OLYMPIAD_MIN_MATCHES + " ORDER BY olympiad_nobles.olympiad_points DESC, olympiad_nobles.competitions_done DESC, olympiad_nobles.competitions_won DESC LIMIT 10";
+	private static final String GET_EACH_CLASS_LEADER_SOULHOUND = "SELECT characters.char_name from olympiad_nobles_eom, characters WHERE characters.charId = olympiad_nobles_eom.charId AND (olympiad_nobles_eom.class_id = ? OR olympiad_nobles_eom.class_id = 133) AND olympiad_nobles_eom.competitions_done >= " + Config.OLYMPIAD_MIN_MATCHES + " ORDER BY olympiad_nobles_eom.olympiad_points DESC, olympiad_nobles_eom.competitions_done DESC, olympiad_nobles_eom.competitions_won DESC LIMIT 10";
+	private static final String GET_EACH_CLASS_LEADER_CURRENT_SOULHOUND = "SELECT characters.char_name from olympiad_nobles, characters WHERE characters.charId = olympiad_nobles.charId AND (olympiad_nobles.class_id = ? OR olympiad_nobles.class_id = 133) AND olympiad_nobles.competitions_done >= " + Config.OLYMPIAD_MIN_MATCHES + " ORDER BY olympiad_nobles.olympiad_points DESC, olympiad_nobles.competitions_done DESC, olympiad_nobles.competitions_won DESC LIMIT 10";
 	
 	private static final String REMOVE_UNCLAIMED_POINTS = "DELETE FROM character_variables WHERE charId=? AND var=?";
 	private static final String INSERT_UNCLAIMED_POINTS = "INSERT INTO character_variables (charId, var, val) VALUES (?, ?, ?)";
@@ -89,14 +89,14 @@ public class Olympiad extends ListenersContainer
 	
 	private static final Set<Integer> HERO_IDS = CategoryData.getInstance().getCategoryByType(CategoryType.FOURTH_CLASS_GROUP);
 	
-	private static final int COMP_START = Config.ALT_OLY_START_TIME; // 6PM
-	private static final int COMP_MIN = Config.ALT_OLY_MIN; // 00 mins
-	private static final long COMP_PERIOD = Config.ALT_OLY_CPERIOD; // 6 hours
-	protected static final long WEEKLY_PERIOD = Config.ALT_OLY_WPERIOD; // 1 week
-	protected static final long VALIDATION_PERIOD = Config.ALT_OLY_VPERIOD; // 24 hours
+	private static final int COMP_START = Config.OLYMPIAD_START_TIME; // 6PM
+	private static final int COMP_MIN = Config.OLYMPIAD_MIN; // 00 mins
+	private static final long COMP_PERIOD = Config.OLYMPIAD_CPERIOD; // 6 hours
+	protected static final long WEEKLY_PERIOD = Config.OLYMPIAD_WPERIOD; // 1 week
+	protected static final long VALIDATION_PERIOD = Config.OLYMPIAD_VPERIOD; // 24 hours
 	
-	public static final int DEFAULT_POINTS = Config.ALT_OLY_START_POINTS;
-	protected static final int WEEKLY_POINTS = Config.ALT_OLY_WEEKLY_POINTS;
+	public static final int DEFAULT_POINTS = Config.OLYMPIAD_START_POINTS;
+	protected static final int WEEKLY_POINTS = Config.OLYMPIAD_WEEKLY_POINTS;
 	
 	public static final String CHAR_ID = "charId";
 	public static final String CLASS_ID = "class_id";
@@ -422,7 +422,7 @@ public class Olympiad extends ListenersContainer
 		int dayCounter = 0;
 		for (int i = currentDay; i < 8; i++)
 		{
-			if (Config.ALT_OLY_COMPETITION_DAYS.contains(i))
+			if (Config.OLYMPIAD_COMPETITION_DAYS.contains(i))
 			{
 				dayFound = true;
 				break;
@@ -433,7 +433,7 @@ public class Olympiad extends ListenersContainer
 		{
 			for (int i = 1; i < 8; i++)
 			{
-				if (Config.ALT_OLY_COMPETITION_DAYS.contains(i))
+				if (Config.OLYMPIAD_COMPETITION_DAYS.contains(i))
 				{
 					break;
 				}
@@ -569,7 +569,7 @@ public class Olympiad extends ListenersContainer
 			LOGGER_OLYMPIAD.info("Result,Player1,Player2,Player1 HP,Player2 HP,Player1 Damage,Player2 Damage,Points,Classed");
 			
 			_gameManager = ThreadPool.scheduleAtFixedRate(OlympiadGameManager.getInstance(), 30000, 30000);
-			if (Config.ALT_OLY_ANNOUNCE_GAMES)
+			if (Config.OLYMPIAD_ANNOUNCE_GAMES)
 			{
 				_gameAnnouncer = ThreadPool.scheduleAtFixedRate(new OlympiadAnnouncer(), 30000, 500);
 			}
@@ -668,33 +668,33 @@ public class Olympiad extends ListenersContainer
 		
 		final Calendar nextChange = Calendar.getInstance();
 		
-		switch (Config.ALT_OLY_PERIOD)
+		switch (Config.OLYMPIAD_PERIOD)
 		{
 			case "DAY":
 			{
-				currentTime.add(Calendar.DAY_OF_MONTH, Config.ALT_OLY_PERIOD_MULTIPLIER);
+				currentTime.add(Calendar.DAY_OF_MONTH, Config.OLYMPIAD_PERIOD_MULTIPLIER);
 				currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
 				
-				if (Config.ALT_OLY_PERIOD_MULTIPLIER >= 14)
+				if (Config.OLYMPIAD_PERIOD_MULTIPLIER >= 14)
 				{
 					_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
 				}
-				else if (Config.ALT_OLY_PERIOD_MULTIPLIER >= 7)
+				else if (Config.OLYMPIAD_PERIOD_MULTIPLIER >= 7)
 				{
 					_nextWeeklyChange = nextChange.getTimeInMillis() + (WEEKLY_PERIOD / 2);
 				}
 				else
 				{
-					LOGGER.warning("Invalid config value for Config.ALT_OLY_PERIOD_MULTIPLIER, must be >= 7");
+					LOGGER.warning("Invalid config value for Config.OLYMPIAD_PERIOD_MULTIPLIER, must be >= 7");
 				}
 				break;
 			}
 			case "WEEK":
 			{
-				currentTime.add(Calendar.WEEK_OF_MONTH, Config.ALT_OLY_PERIOD_MULTIPLIER);
+				currentTime.add(Calendar.WEEK_OF_MONTH, Config.OLYMPIAD_PERIOD_MULTIPLIER);
 				currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
 				
-				if (Config.ALT_OLY_PERIOD_MULTIPLIER > 1)
+				if (Config.OLYMPIAD_PERIOD_MULTIPLIER > 1)
 				{
 					_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
 				}
@@ -706,7 +706,7 @@ public class Olympiad extends ListenersContainer
 			}
 			case "MONTH":
 			{
-				currentTime.add(Calendar.MONTH, Config.ALT_OLY_PERIOD_MULTIPLIER);
+				currentTime.add(Calendar.MONTH, Config.OLYMPIAD_PERIOD_MULTIPLIER);
 				currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
 				
 				_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
@@ -764,7 +764,7 @@ public class Olympiad extends ListenersContainer
 		int dayCounter = 0;
 		for (int i = currentDay; i < 8; i++)
 		{
-			if (Config.ALT_OLY_COMPETITION_DAYS.contains(i))
+			if (Config.OLYMPIAD_COMPETITION_DAYS.contains(i))
 			{
 				dayFound = true;
 				break;
@@ -775,7 +775,7 @@ public class Olympiad extends ListenersContainer
 		{
 			for (int i = 1; i < 8; i++)
 			{
-				if (Config.ALT_OLY_COMPETITION_DAYS.contains(i))
+				if (Config.OLYMPIAD_COMPETITION_DAYS.contains(i))
 				{
 					break;
 				}
@@ -1040,7 +1040,7 @@ public class Olympiad extends ListenersContainer
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Olympiad System: Couldnt load legend from DB", e);
+			LOGGER.log(Level.WARNING, "Olympiad System: Could not load legend from DB", e);
 		}
 		
 		try (Connection con = DatabaseFactory.getConnection();
@@ -1073,7 +1073,7 @@ public class Olympiad extends ListenersContainer
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Olympiad System: Couldnt load heros from DB");
+			LOGGER.warning("Olympiad System: Could not load heros from DB");
 		}
 		
 		return heroesToBe;
@@ -1082,7 +1082,7 @@ public class Olympiad extends ListenersContainer
 	public List<String> getClassLeaderBoard(int classId)
 	{
 		final List<String> names = new ArrayList<>();
-		final String query = Config.ALT_OLY_SHOW_MONTHLY_WINNERS ? ((classId == 132) ? GET_EACH_CLASS_LEADER_SOULHOUND : GET_EACH_CLASS_LEADER) : ((classId == 132) ? GET_EACH_CLASS_LEADER_CURRENT_SOULHOUND : GET_EACH_CLASS_LEADER_CURRENT);
+		final String query = Config.OLYMPIAD_SHOW_MONTHLY_WINNERS ? ((classId == 132) ? GET_EACH_CLASS_LEADER_SOULHOUND : GET_EACH_CLASS_LEADER) : ((classId == 132) ? GET_EACH_CLASS_LEADER_CURRENT_SOULHOUND : GET_EACH_CLASS_LEADER_CURRENT);
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement(query))
 		{
@@ -1121,33 +1121,33 @@ public class Olympiad extends ListenersContainer
 		}
 		
 		// Hero point bonus
-		int points = Hero.getInstance().isHero(objectId) || Hero.getInstance().isUnclaimedHero(objectId) ? Config.ALT_OLY_HERO_POINTS : 0;
+		int points = Hero.getInstance().isHero(objectId) || Hero.getInstance().isUnclaimedHero(objectId) ? Config.OLYMPIAD_HERO_POINTS : 0;
 		// Rank point bonus
 		switch (NOBLES_RANK.get(objectId))
 		{
 			case 1:
 			{
-				points += Config.ALT_OLY_RANK1_POINTS;
+				points += Config.OLYMPIAD_RANK1_POINTS;
 				break;
 			}
 			case 2:
 			{
-				points += Config.ALT_OLY_RANK2_POINTS;
+				points += Config.OLYMPIAD_RANK2_POINTS;
 				break;
 			}
 			case 3:
 			{
-				points += Config.ALT_OLY_RANK3_POINTS;
+				points += Config.OLYMPIAD_RANK3_POINTS;
 				break;
 			}
 			case 4:
 			{
-				points += Config.ALT_OLY_RANK4_POINTS;
+				points += Config.OLYMPIAD_RANK4_POINTS;
 				break;
 			}
 			default:
 			{
-				points += Config.ALT_OLY_RANK5_POINTS;
+				points += Config.OLYMPIAD_RANK5_POINTS;
 			}
 		}
 		
@@ -1249,7 +1249,7 @@ public class Olympiad extends ListenersContainer
 	 */
 	public int getRemainingWeeklyMatches(int objId)
 	{
-		return Math.max(Config.ALT_OLY_MAX_WEEKLY_MATCHES - getCompetitionDoneWeek(objId), 0);
+		return Math.max(Config.OLYMPIAD_MAX_WEEKLY_MATCHES - getCompetitionDoneWeek(objId), 0);
 	}
 	
 	protected void deleteNobles()

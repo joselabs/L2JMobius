@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
@@ -236,8 +235,7 @@ public class Q00639_GuardiansOfTheHolyGrail extends Quest
 		final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
 		if ((qs != null) && (Rnd.get(1000000) < CHANCES.get(npc.getId())))
 		{
-			playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-			giveItems(qs.getPlayer(), SCRIPTURE, 1);
+			giveItemRandomly(qs.getPlayer(), npc, SCRIPTURE, 1, 0, 1, true);
 		}
 		
 		return super.onKill(npc, killer, isSummon);

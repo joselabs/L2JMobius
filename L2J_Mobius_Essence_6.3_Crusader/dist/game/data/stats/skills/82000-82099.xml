@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="82000" toLevel="20" name="Health Boost">
 		<!-- <Effect>. Max HP +4% -->
@@ -775,35 +775,30 @@
 	<skill id="82014" toLevel="20" name="Shock Attack">
 		<!-- Stuns making unable to move. -->
 		<icon>icon.skill3080</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
 		<reuseDelay>30000</reuseDelay>
-		<basicProperty>PHYSICAL</basicProperty>
-		<castRange>40</castRange>
+		<staticReuse>true</staticReuse>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>-100</effectPoint>
-		<effectRange>400</effectRange>
-		<hitTime>2500</hitTime>
 		<isDebuff>true</isDebuff>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<lvlBonusRate>1</lvlBonusRate>
-		<magicLevel>90</magicLevel>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
+		<lvlBonusRate>3</lvlBonusRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY_ONLY</targetType>
+		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="TargetCancel">
-				<chance>80</chance>
+			<effect name="BlockActions">
+				<allowedSkills>461;35016;50196</allowedSkills> <!-- Break Duress, Core's Blessing, Opal - Special Property -->
 			</effect>
 		</effects>
 	</skill>
 	<skill id="82015" toLevel="20" name="Silence Attack">
-		<!-- <Effect>. For 5 sec., inflicts Silence on the target after an attack. (Probability: 3%, cooldown: 30 sec.) -->
+		<!-- <Effect>. For 5 sec., inflicts Silence on the target after an attack. (Probability: 3%, trigger cooldown: 30 sec.) -->
 		<icon>
 			<value level="1">icon.aden_rune_i01</value>
 			<value level="2">icon.aden_rune_i01</value>
@@ -826,12 +821,9 @@
 			<value level="19">icon.aden_rune_i04</value>
 			<value level="20">icon.aden_rune_i04</value>
 		</icon>
-		<magicLevel>90</magicLevel>
 		<operateType>P</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
 			<effect name="TriggerSkillByAttack">
-				<!-- Silence Attack -->
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -856,8 +848,60 @@
 					<value level="19">24</value>
 					<value level="20">25</value>
 				</chance>
-				<targetType>TARGET</targetType>
+				<targetType>ENEMY</targetType>
 				<isCritical>false</isCritical>
+				<allowWeapons>ALL</allowWeapons>
+				<skillId>82016</skillId> <!-- Silence Attack -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+					<value level="11">11</value>
+					<value level="12">12</value>
+					<value level="13">13</value>
+					<value level="14">14</value>
+					<value level="15">15</value>
+					<value level="16">16</value>
+					<value level="17">17</value>
+					<value level="18">18</value>
+					<value level="19">19</value>
+					<value level="20">20</value>
+				</skillLevel>
+			</effect>
+			<effect name="TriggerSkillByAttack">
+				<attackerType>Creature</attackerType>
+				<minDamage>1</minDamage>
+				<chance>
+					<value level="1">3</value>
+					<value level="2">4</value>
+					<value level="3">5</value>
+					<value level="4">6</value>
+					<value level="5">7</value>
+					<value level="6">9</value>
+					<value level="7">10</value>
+					<value level="8">11</value>
+					<value level="9">12</value>
+					<value level="10">13</value>
+					<value level="11">15</value>
+					<value level="12">16</value>
+					<value level="13">17</value>
+					<value level="14">18</value>
+					<value level="15">19</value>
+					<value level="16">21</value>
+					<value level="17">22</value>
+					<value level="18">23</value>
+					<value level="19">24</value>
+					<value level="20">25</value>
+				</chance>
+				<targetType>ENEMY</targetType>
+				<isCritical>true</isCritical>
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>82016</skillId> <!-- Silence Attack -->
 				<skillLevel>
@@ -888,49 +932,24 @@
 	<skill id="82016" toLevel="20" name="Silence Attack">
 		<!-- Silence makes skills unusable. -->
 		<icon>icon.skill3080</icon>
-		<abnormalLevel>
-			<value level="1">1</value>
-			<value level="2">2</value>
-			<value level="3">3</value>
-			<value level="4">4</value>
-			<value level="5">5</value>
-			<value level="6">6</value>
-			<value level="7">7</value>
-			<value level="8">8</value>
-			<value level="9">9</value>
-			<value level="10">10</value>
-			<value level="11">11</value>
-			<value level="12">12</value>
-			<value level="13">13</value>
-			<value level="14">14</value>
-			<value level="15">15</value>
-			<value level="16">16</value>
-			<value level="17">17</value>
-			<value level="18">18</value>
-			<value level="19">19</value>
-			<value level="20">20</value>
-		</abnormalLevel>
+		<operateType>A2</operateType>
+		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>SILENCE</abnormalType>
+		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
 		<reuseDelay>30000</reuseDelay>
-		<basicProperty>MAGIC</basicProperty>
-		<castRange>300</castRange>
-		<effectPoint>-10000</effectPoint>
-		<effectRange>500</effectRange>
-		<hitTime>3000</hitTime>
+		<staticReuse>true</staticReuse>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>-1000</effectPoint>
 		<isDebuff>true</isDebuff>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<lvlBonusRate>2</lvlBonusRate>
-		<magicLevel>90</magicLevel>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
-		<trait>DERANGEMENT</trait>
+		<lvlBonusRate>3</lvlBonusRate>
+		<trait>SILENCE</trait>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mute" />
+			<effect name="PhysicalMute" />
 		</effects>
 	</skill>
 	<skill id="82017" toLevel="20" name="Magical Abilities">
@@ -1009,16 +1028,6 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalSkillPower">
-				<amount>
-					<value level="16">1</value>
-					<value level="17">2</value>
-					<value level="18">3</value>
-					<value level="19">4</value>
-					<value level="20">5</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
 			<effect name="StatUp">
 				<amount>
 					<value level="11">1</value>
@@ -1034,14 +1043,22 @@
 				</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="TriggerSkillByAttack">
-				<!-- Recover MP -->
+			<effect name="MagicalSkillPower">
+				<amount>
+					<value level="16">1</value>
+					<value level="17">2</value>
+					<value level="18">3</value>
+					<value level="19">4</value>
+					<value level="20">5</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="20">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>30</chance>
+				<isCritical>true</isCritical>
 				<targetType>SELF</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>82019</skillId> <!-- MP Recovery -->
 				<skillLevel>
@@ -1061,12 +1078,16 @@
 					<value level="19">6</value>
 					<value level="20">6</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByMagicType" fromLevel="6" toLevel="20">
-				<!-- Recover MP -->
-				<magicTypes>0;1</magicTypes>
+			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="20">
+				<attackerType>Creature</attackerType>
+				<minDamage>1</minDamage>
+				<chance>30</chance>
+				<isCritical>false</isCritical>
+				<targetType>SELF</targetType>
+				<allowWeapons>ALL</allowWeapons>
 				<skillId>82019</skillId> <!-- MP Recovery -->
-				<chance>10</chance>
 				<skillLevel>
 					<value level="6">1</value>
 					<value level="7">2</value>
@@ -1084,7 +1105,7 @@
 					<value level="19">6</value>
 					<value level="20">6</value>
 				</skillLevel>
-				<targetType>SELF</targetType>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 		</effects>
 	</skill>
@@ -1162,17 +1183,7 @@
 					<value level="19">15</value>
 					<value level="20">15</value>
 				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PhysicalSkillPower">
-				<amount>
-					<value level="16">1</value>
-					<value level="17">2</value>
-					<value level="18">3</value>
-					<value level="19">4</value>
-					<value level="20">5</value>
-				</amount>
-				<mode>PER</mode>
+				<mode>DIFF</mode>
 			</effect>
 			<effect name="StatUp">
 				<amount>
@@ -1189,14 +1200,22 @@
 				</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="TriggerSkillByAttack">
-				<!-- Recover HP -->
+			<effect name="PhysicalSkillPower">
+				<amount>
+					<value level="16">1</value>
+					<value level="17">2</value>
+					<value level="18">3</value>
+					<value level="19">4</value>
+					<value level="20">5</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="20">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>30</chance>
+				<isCritical>true</isCritical>
 				<targetType>SELF</targetType>
-				<allowSkillAttack>true</allowSkillAttack>
-				<allowNormalAttack>true</allowNormalAttack>
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>82020</skillId> <!-- HP Recovery -->
 				<skillLevel>
@@ -1216,12 +1235,16 @@
 					<value level="19">6</value>
 					<value level="20">6</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByMagicType" fromLevel="6" toLevel="20">
-				<!-- Recover HP -->
-				<magicTypes>0;1</magicTypes>
+			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="20">
+				<attackerType>Creature</attackerType>
+				<minDamage>1</minDamage>
+				<chance>30</chance>
+				<isCritical>false</isCritical>
+				<targetType>SELF</targetType>
+				<allowWeapons>ALL</allowWeapons>
 				<skillId>82020</skillId> <!-- HP Recovery -->
-				<chance>10</chance>
 				<skillLevel>
 					<value level="6">1</value>
 					<value level="7">2</value>
@@ -1239,28 +1262,28 @@
 					<value level="19">6</value>
 					<value level="20">6</value>
 				</skillLevel>
-				<targetType>SELF</targetType>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="82019" toLevel="6" name="MP Recovery">
 		<!-- <Effect>. Recovers 75 MP -->
 		<icon>icon.skill0000</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
-		<effectPoint>1000</effectPoint>
 		<reuseDelay>60000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mp">
 				<amount>
-					<value fromLevel="1" toLevel="5">0</value>
-					<value level="6">75</value>
-					<value level="7">150</value>
-					<value level="8">225</value>
-					<value level="9">300</value>
-					<value level="10">400</value>
-					<value fromLevel="11" toLevel="20">600</value>
+					<value level="1">75</value>
+					<value level="2">150</value>
+					<value level="3">225</value>
+					<value level="4">300</value>
+					<value level="5">400</value>
+					<value level="6">600</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1269,21 +1292,21 @@
 	<skill id="82020" toLevel="6" name="HP Recovery">
 		<!-- <Effect>. Restores 100 HP -->
 		<icon>icon.skill0000</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<operateType>A1</operateType>
-		<effectPoint>1000</effectPoint>
 		<reuseDelay>60000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Hp">
 				<amount>
-					<value fromLevel="1" toLevel="5">0</value>
-					<value level="6">100</value>
-					<value level="7">200</value>
-					<value level="8">300</value>
-					<value level="9">400</value>
-					<value level="10">500</value>
-					<value fromLevel="11" toLevel="20">900</value>
+					<value level="1">100</value>
+					<value level="2">200</value>
+					<value level="3">300</value>
+					<value level="4">400</value>
+					<value level="5">500</value>
+					<value level="6">900</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1448,7 +1471,6 @@
 		<!-- <Effect>. Suppression Resistance +1% -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="DefenceTrait">
 				<SUPPRESSION>
@@ -1476,25 +1498,6 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceTrait">
-				<POISON>
-					<value level="1">1</value>
-					<value level="2">2</value>
-					<value level="3">3</value>
-					<value level="4">4</value>
-					<value level="5">5</value>
-					<value level="6">6</value>
-					<value level="7">7</value>
-					<value level="8">8</value>
-					<value level="9">9</value>
-					<value level="10">10</value>
-					<value level="11">11</value>
-					<value level="12">12</value>
-					<value level="13">13</value>
-					<value level="14">14</value>
-					<value level="15">15</value>
-				</POISON>
-			</effect>
 			<effect name="DefenceTrait">
 				<INFECTION>
 					<value level="1">1</value>
@@ -1623,12 +1626,54 @@
 	<skill id="82058" toLevel="15" name="Silence Mastery">
 		<!-- <Effect>. Silence Atk. Rate +1% -->
 		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="AttackTrait">
+				<SILENCE>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+					<value level="11">11</value>
+					<value level="12">12</value>
+					<value level="13">13</value>
+					<value level="14">14</value>
+					<value level="15">15</value>
+				</SILENCE>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="82059" toLevel="15" name="Imprisonment Mastery">
 		<!-- <Effect>. Imprisonment Atk. Rate +1% -->
 		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="AttackTrait">
+				<IMPRISON>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+					<value level="11">11</value>
+					<value level="12">12</value>
+					<value level="13">13</value>
+					<value level="14">14</value>
+					<value level="15">15</value>
+				</IMPRISON>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="82060" toLevel="15" name="Sleep Mastery">
 		<!-- <Effect>. Sleep Atk. Rate +1% -->
@@ -1659,15 +1704,10 @@
 	<skill id="82061" toLevel="15" name="Fear Mastery">
 		<!-- <Effect>. Fear Atk. Rate +1% -->
 		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-	</skill>
-	<skill id="82062" toLevel="15" name="Hold Mastery">
-		<!-- <Effect>. Hold Atk. Rate +1% -->
-		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
 			<effect name="AttackTrait">
-				<ANOMALY>
+				<FEAR>
 					<value level="1">1</value>
 					<value level="2">2</value>
 					<value level="3">3</value>
@@ -1683,12 +1723,64 @@
 					<value level="13">13</value>
 					<value level="14">14</value>
 					<value level="15">15</value>
-				</ANOMALY>
+				</FEAR>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="82062" toLevel="15" name="Hold Mastery">
+		<!-- <Effect>. Hold Atk. Rate +1% -->
+		<icon>icon.skill0000</icon>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="AttackTrait">
+				<HOLD>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+					<value level="11">11</value>
+					<value level="12">12</value>
+					<value level="13">13</value>
+					<value level="14">14</value>
+					<value level="15">15</value>
+				</HOLD>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="82063" toLevel="15" name="Slow Mastery">
 		<!-- <Effect>. Suppression Atk. Rate +1% -->
+		<icon>icon.skill0000</icon>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="AttackTrait">
+				<SUPPRESSION>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+					<value level="11">11</value>
+					<value level="12">12</value>
+					<value level="13">13</value>
+					<value level="14">14</value>
+					<value level="15">15</value>
+				</SUPPRESSION>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="82064" toLevel="15" name="Infection Mastery">
+		<!-- <Effect>. Infection Atk. Rate +1% -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1713,18 +1805,13 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="82064" toLevel="15" name="Infection Mastery">
-		<!-- <Effect>. Infection Atk. Rate +1% -->
-		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
-	</skill>
 	<skill id="82065" toLevel="1" name="Received P. Skill Critical Damage Decrease">
 		<icon>icon.skill3080</icon>
 		<operateType>P</operateType>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1734,7 +1821,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1744,7 +1831,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1754,7 +1841,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1764,7 +1851,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1774,7 +1861,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1784,7 +1871,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1794,7 +1881,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1804,7 +1891,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1814,7 +1901,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1824,7 +1911,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1834,7 +1921,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1844,7 +1931,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1854,7 +1941,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1864,7 +1951,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1874,7 +1961,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1884,7 +1971,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1894,7 +1981,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1904,7 +1991,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1914,7 +2001,7 @@
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1924,7 +2011,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1934,7 +2021,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1944,7 +2031,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1954,7 +2041,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1964,7 +2051,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1974,7 +2061,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1984,7 +2071,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1994,7 +2081,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2004,7 +2091,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2014,7 +2101,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2024,7 +2111,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2034,7 +2121,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2044,7 +2131,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2054,7 +2141,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2064,7 +2151,7 @@
 		<effects>
 			<effect name="DefenceMagicCriticalDamage">
 				<amount>1</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>

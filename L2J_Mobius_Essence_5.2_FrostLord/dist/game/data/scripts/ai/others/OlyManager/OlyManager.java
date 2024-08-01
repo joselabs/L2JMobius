@@ -34,8 +34,9 @@ import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadGameManager;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadGameTask;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadManager;
+import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.ExOlympiadMatchList;
+import org.l2jmobius.gameserver.network.serverpackets.olympiad.ExOlympiadMatchList;
 
 import ai.AbstractNpcAI;
 
@@ -155,7 +156,7 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 					if (tradePoints > 0)
 					{
 						player.getVariables().remove(Olympiad.UNCLAIMED_OLYMPIAD_POINTS_VAR);
-						giveItems(player, Config.ALT_OLY_COMP_RITEM, tradePoints * Config.ALT_OLY_MARK_PER_POINT);
+						giveItems(player, Config.OLYMPIAD_COMP_RITEM, tradePoints * Config.OLYMPIAD_MARK_PER_POINT);
 					}
 				}
 				else
@@ -230,6 +231,14 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 			case "rank_116": // Doom Cryer
 			case "rank_117": // Fortune Seeker
 			case "rank_118": // Maestro
+			case "rank_198": // Human Death Knight 2nd
+			case "rank_199": // Human Death Knight 3rd
+			case "rank_202": // Elf Death Knight 2nd
+			case "rank_203": // Elf Death Knight 3rd
+			case "rank_206": // Dark Elf Death Knight 2nd
+			case "rank_207": // Dark Elf Death Knight 3rd
+			case "rank_210": // Wind Sniper
+			case "rank_211": // Storm Blaster
 			{
 				final int classId = Integer.parseInt(event.replace("rank_", ""));
 				final List<String> names = Olympiad.getInstance().getClassLeaderBoard(classId);
@@ -276,7 +285,6 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 	{
 		try
 		{
-			final Npc olymanager = player.getLastFolkNPC();
 			if (command.startsWith(BYPASSES[0])) // list
 			{
 				if (!Olympiad.getInstance().inCompPeriod())
@@ -287,8 +295,9 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 				
 				player.sendPacket(new ExOlympiadMatchList());
 			}
-			else if ((olymanager == null) || (olymanager.getId() != MANAGER) || (!player.inObserverMode() && !player.isInsideRadius2D(olymanager, 300)))
+			else if (!player.isInsideZone(ZoneId.PEACE) || player.isInInstance() || player.isInTimedHuntingZone() || player.isTeleporting())
 			{
+				player.sendPacket(SystemMessageId.OLYMPIAD_CAN_BE_WATCHES_IN_PEACE_ZONE_ONLY);
 				return false;
 			}
 			else if (OlympiadManager.getInstance().isRegisteredInComp(player))
@@ -318,6 +327,7 @@ public class OlyManager extends AbstractNpcAI implements IBypassHandler
 						LOGGER.warning(getClass().getSimpleName() + ": Zone: " + nextArena.getStadium().getZone() + " doesn't have specatator spawns defined!");
 						return false;
 					}
+					
 					final Location loc = spectatorSpawns.get(getRandom(spectatorSpawns.size()));
 					player.enterOlympiadObserverMode(loc, arenaId);
 				}

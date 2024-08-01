@@ -18,7 +18,7 @@ package quests.Q10036_FromTheDepthOfAbyss;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.xml.TeleportListData;
-import org.l2jmobius.gameserver.enums.ClassId;
+import org.l2jmobius.gameserver.instancemanager.QuestManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -39,7 +39,7 @@ import quests.Q10037_NewLifesLessons.Q10037_NewLifesLessons;
 import quests.Q10038_NewLifesLessons.Q10038_NewLifesLessons;
 
 /**
- * @author Magik
+ * @author Magik, Mobius
  */
 public class Q10036_FromTheDepthOfAbyss extends Quest
 {
@@ -71,19 +71,36 @@ public class Q10036_FromTheDepthOfAbyss extends Quest
 			}
 			case "TELEPORT":
 			{
-				final QuestState questState = getQuestState(player, false);
+				QuestState questState = getQuestState(player, false);
 				if (questState == null)
 				{
+					if (!canStartQuest(player))
+					{
+						break;
+					}
+					
+					questState = getQuestState(player, true);
+					
+					final NewQuestLocation questLocation = getQuestData().getLocation();
+					if (questLocation.getStartLocationId() > 0)
+					{
+						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getStartLocationId()).getLocation();
+						if (teleportToQuestLocation(player, location))
+						{
+							questState.setCond(QuestCondType.ACT);
+							sendAcceptDialog(player);
+						}
+					}
 					break;
 				}
 				
 				final NewQuestLocation questLocation = getQuestData().getLocation();
 				if (questState.isCond(QuestCondType.STARTED))
 				{
-					if (questLocation.getStartLocationId() > 0)
+					if (questLocation.getQuestLocationId() > 0)
 					{
-						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getStartLocationId()).getLocation();
-						if (teleportToQuestLocation(player, location) && (questLocation.getStartLocationId() == questLocation.getEndLocationId()))
+						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getQuestLocationId()).getLocation();
+						if (teleportToQuestLocation(player, location) && (questLocation.getQuestLocationId() == questLocation.getEndLocationId()))
 						{
 							questState.setCond(QuestCondType.DONE);
 							sendEndDialog(player);
@@ -115,7 +132,8 @@ public class Q10036_FromTheDepthOfAbyss extends Quest
 				{
 					questState.exitQuest(false, true);
 					
-					if ((player.getClassId().getId() >= ClassId.DARK_FIGHTER.getId()) && (player.getClassId().getId() < ClassId.DARK_MAGE.getId()))
+					Quest quest = QuestManager.getInstance().getQuest(10037);
+					if (quest.canStartQuest(player))
 					{
 						final QuestState nextQuestState = player.getQuestState(Q10037_NewLifesLessons.class.getSimpleName());
 						if (nextQuestState == null)
@@ -125,10 +143,14 @@ public class Q10036_FromTheDepthOfAbyss extends Quest
 					}
 					else
 					{
-						final QuestState nextQuestState = player.getQuestState(Q10038_NewLifesLessons.class.getSimpleName());
-						if (nextQuestState == null)
+						quest = QuestManager.getInstance().getQuest(10038);
+						if (quest.canStartQuest(player))
 						{
-							player.sendPacket(new ExQuestDialog(10038, QuestDialogType.ACCEPT));
+							final QuestState nextQuestState = player.getQuestState(Q10038_NewLifesLessons.class.getSimpleName());
+							if (nextQuestState == null)
+							{
+								player.sendPacket(new ExQuestDialog(10038, QuestDialogType.ACCEPT));
+							}
 						}
 					}
 				}

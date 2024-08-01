@@ -108,6 +108,11 @@ public class ChangedEnchantTargetItemProbabilityList extends ServerPacket
 	private int getBaseRate(EnchantItemRequest request, int iteration)
 	{
 		final EnchantScroll enchantScroll = EnchantItemData.getInstance().getEnchantScroll(request.getEnchantingScroll());
+		if (enchantScroll == null)
+		{
+			return 0;
+		}
+		
 		return (int) Math.min(100, enchantScroll.getChance(_player, _isMulti ? _player.getInventory().getItemByObjectId(request.getMultiEnchantingItemsBySlot(iteration)) : request.getEnchantingItem()) + enchantScroll.getBonusRate()) * 100;
 	}
 	

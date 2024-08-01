@@ -538,8 +538,12 @@ public class Ramona extends AbstractNpcAI
 			case RAMONA_3:
 			{
 				_boss = Status.DEAD;
-				final long respawnTime = (Config.RAMONA_SPAWN_INTERVAL + getRandom(-Config.RAMONA_SPAWN_RANDOM, Config.RAMONA_SPAWN_RANDOM)) * 3600000;
+				
+				final long baseIntervalMillis = Config.RAMONA_SPAWN_INTERVAL * 3600000;
+				final long randomRangeMillis = Config.RAMONA_SPAWN_RANDOM * 3600000;
+				final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 				GlobalVariablesManager.getInstance().set(RAMONA_RESPAWN_VAR, System.currentTimeMillis() + respawnTime);
+				
 				startQuestTimer("RAMONA_UNLOCK", respawnTime, null, null);
 				startQuestTimer("END_RAMONA", 90000, null, null);
 				break;

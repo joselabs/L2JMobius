@@ -19,8 +19,8 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.model.SiegeClan;
@@ -193,9 +193,17 @@ public class Die extends ServerPacket
 			}
 			
 			int getValue = maxResTime <= originalValue ? maxResTime : originalValue + 1;
-			ResurrectByPaymentHolder rbph = Config.RESURRECT_BY_PAYMENT_SECOND_RESURRECT_VALUES.get(level).get(getValue);
-			buffer.writeInt((int) (rbph.getAmount() * player.getStat().getValue(Stat.RESURRECTION_FEE_MODIFIER, 1))); // Adena resurrection
-			buffer.writeInt(Math.toIntExact(Math.round(rbph.getResurrectPercent()))); // Adena count%
+			final ResurrectByPaymentHolder rbph = Config.RESURRECT_BY_PAYMENT_SECOND_RESURRECT_VALUES.get(level).get(getValue);
+			if (rbph != null)
+			{
+				buffer.writeInt((int) (rbph.getAmount() * player.getStat().getValue(Stat.RESURRECTION_FEE_MODIFIER, 1))); // Adena resurrection
+				buffer.writeInt(Math.toIntExact(Math.round(rbph.getResurrectPercent()))); // Adena count%
+			}
+			else
+			{
+				buffer.writeInt(0);
+				buffer.writeInt(-1);
+			}
 			break;
 		}
 		
@@ -226,9 +234,17 @@ public class Die extends ServerPacket
 			}
 			
 			final int getValue = maxResTime <= originalValue ? maxResTime : originalValue + 1;
-			ResurrectByPaymentHolder rbph = Config.RESURRECT_BY_PAYMENT_FIRST_RESURRECT_VALUES.get(level).get(getValue);
-			buffer.writeInt((int) (rbph.getAmount() * player.getStat().getValue(Stat.RESURRECTION_FEE_MODIFIER, 1))); // L-Coin resurrection
-			buffer.writeInt(Math.toIntExact(Math.round(rbph.getResurrectPercent()))); // L-Coin count%
+			final ResurrectByPaymentHolder rbph = Config.RESURRECT_BY_PAYMENT_FIRST_RESURRECT_VALUES.get(level).get(getValue);
+			if (rbph != null)
+			{
+				buffer.writeInt((int) (rbph.getAmount() * player.getStat().getValue(Stat.RESURRECTION_FEE_MODIFIER, 1))); // L-Coin resurrection
+				buffer.writeInt(Math.toIntExact(Math.round(rbph.getResurrectPercent()))); // L-Coin count%
+			}
+			else
+			{
+				buffer.writeInt(0);
+				buffer.writeInt(-1);
+			}
 			break;
 		}
 	}

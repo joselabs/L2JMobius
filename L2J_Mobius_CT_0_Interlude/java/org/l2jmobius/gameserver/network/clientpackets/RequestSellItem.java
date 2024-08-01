@@ -31,8 +31,8 @@ import org.l2jmobius.gameserver.model.actor.instance.Merchant;
 import org.l2jmobius.gameserver.model.buylist.BuyListHolder;
 import org.l2jmobius.gameserver.model.holders.UniqueItemHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -42,6 +42,7 @@ import org.l2jmobius.gameserver.util.Util;
 public class RequestSellItem extends ClientPacket
 {
 	private static final int BATCH_LENGTH = 12;
+	private static final int CUSTOM_CB_SELL_LIST = 423;
 	
 	private int _listId;
 	private List<UniqueItemHolder> _items = null;
@@ -101,7 +102,7 @@ public class RequestSellItem extends ClientPacket
 		
 		final WorldObject target = player.getTarget();
 		Creature merchant = null;
-		if (!player.isGM())
+		if (!player.isGM() && (_listId != CUSTOM_CB_SELL_LIST))
 		{
 			if ((target == null) || (!player.isInsideRadius3D(target, INTERACTION_DISTANCE)) || (player.getInstanceId() != target.getInstanceId()))
 			{
@@ -119,7 +120,7 @@ public class RequestSellItem extends ClientPacket
 			}
 		}
 		
-		if ((merchant == null) && !player.isGM())
+		if ((merchant == null) && !player.isGM() && (_listId != CUSTOM_CB_SELL_LIST))
 		{
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
@@ -178,6 +179,7 @@ public class RequestSellItem extends ClientPacket
 		final StatusUpdate su = new StatusUpdate(player);
 		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());
 		player.sendPacket(su);
-		player.sendPacket(new ItemList(player, true));
+		player.sendItemList(true);
+		player.sendPacket(SystemMessageId.THE_TRANSACTION_IS_COMPLETE);
 	}
 }

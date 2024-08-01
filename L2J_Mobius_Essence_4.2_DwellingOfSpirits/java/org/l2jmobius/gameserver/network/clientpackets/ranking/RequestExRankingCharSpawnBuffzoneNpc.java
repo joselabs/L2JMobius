@@ -18,8 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets.ranking;
 
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.instancemanager.RankingPowerManager;
-import org.l2jmobius.gameserver.model.World;
-import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
@@ -54,18 +52,19 @@ public class RequestExRankingCharSpawnBuffzoneNpc extends ClientPacket
 			return;
 		}
 		
-		if (!player.destroyItemByItemId("Adena", 57, COST, player, true))
-		{
-			player.sendPacket(SystemMessageId.NOT_ENOUGH_MONEY_TO_USE_THE_FUNCTION);
-			return;
-		}
-		
-		if (!player.isInsideZone(ZoneId.PEACE) || player.isInStoreMode() || !World.getInstance().getVisibleObjectsInRange(player, Creature.class, 50).isEmpty())
+		if (!player.isInsideZone(ZoneId.PEACE) || player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_RANKING_POWER_HERE);
 			return;
 		}
 		
+		if (player.getAdena() < COST)
+		{
+			player.sendPacket(SystemMessageId.NOT_ENOUGH_MONEY_TO_USE_THE_FUNCTION);
+			return;
+		}
+		
+		player.destroyItemByItemId("Adena", 57, COST, player, true);
 		RankingPowerManager.getInstance().activatePower(player);
 		player.sendPacket(new ExRankingBuffZoneNpcPosition());
 		player.sendPacket(new ExRankingBuffZoneNpcInfo());

@@ -129,7 +129,7 @@ public class SkillCaster implements Runnable
 	 * @param item the reference item which requests the skill cast
 	 * @param castingType the type of casting
 	 * @param ctrlPressed force casting
-	 * @param shiftPressed dont move while casting
+	 * @param shiftPressed do not move while casting
 	 * @return {@code SkillCaster} object containing casting data if casting has started or {@code null} if casting was not started.
 	 */
 	public static SkillCaster castSkill(Creature caster, WorldObject target, Skill skill, Item item, SkillCastingType castingType, boolean ctrlPressed, boolean shiftPressed)
@@ -151,7 +151,7 @@ public class SkillCaster implements Runnable
 	 * @param item the reference item which requests the skill cast
 	 * @param castingType the type of casting
 	 * @param ctrlPressed force casting
-	 * @param shiftPressed dont move while casting
+	 * @param shiftPressed do not move while casting
 	 * @param castTime custom cast time in milliseconds or -1 for default.
 	 * @return {@code SkillCaster} object containing casting data if casting has started or {@code null} if casting was not started.
 	 */
@@ -867,6 +867,28 @@ public class SkillCaster implements Runnable
 	
 	public static void triggerCast(Creature creature, WorldObject target, Skill skill, Item item, boolean ignoreTargetType)
 	{
+		if (target == null)
+		{
+			creature.addTriggerCast(new TriggerCastInfo(creature, target, skill, item, ignoreTargetType));
+		}
+		else
+		{
+			target.addTriggerCast(new TriggerCastInfo(creature, target, skill, item, ignoreTargetType));
+		}
+	}
+	
+	/**
+	 * CAUTION! Do not use this method to trigger cast skills!
+	 * @param info the TriggerCastInfo
+	 */
+	public static void triggerCast(TriggerCastInfo info)
+	{
+		final Creature creature = info.getCreature();
+		final WorldObject target = info.getTarget();
+		final Skill skill = info.getSkill();
+		final Item item = info.getItem();
+		final boolean ignoreTargetType = info.isIgnoreTargetType();
+		
 		try
 		{
 			if ((creature == null) || (skill == null))
@@ -905,7 +927,7 @@ public class SkillCaster implements Runnable
 				
 				final WorldObject[] targets = skill.getTargetsAffected(creature, currentTarget).toArray(new WorldObject[0]);
 				
-				if (!skill.isNotBroadcastable())
+				if (!skill.isNotBroadcastable() && !creature.isChanneling())
 				{
 					creature.broadcastPacket(new MagicSkillUse(creature, currentTarget, skill.getDisplayId(), skill.getLevel(), 0, 0));
 				}

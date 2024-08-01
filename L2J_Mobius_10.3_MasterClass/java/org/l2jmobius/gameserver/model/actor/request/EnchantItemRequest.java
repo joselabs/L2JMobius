@@ -75,7 +75,7 @@ public class EnchantItemRequest extends AbstractRequest
 	
 	public Item getEnchantingItem()
 	{
-		return getActiveChar().getInventory().getItemByObjectId(_enchantingItemObjectId);
+		return getPlayer().getInventory().getItemByObjectId(_enchantingItemObjectId);
 	}
 	
 	public void setEnchantingItem(int objectId)
@@ -85,7 +85,7 @@ public class EnchantItemRequest extends AbstractRequest
 	
 	public Item getEnchantingScroll()
 	{
-		return getActiveChar().getInventory().getItemByObjectId(_enchantingScrollObjectId);
+		return getPlayer().getInventory().getItemByObjectId(_enchantingScrollObjectId);
 	}
 	
 	public void setEnchantingScroll(int objectId)
@@ -95,7 +95,7 @@ public class EnchantItemRequest extends AbstractRequest
 	
 	public Item getSupportItem()
 	{
-		return getActiveChar().getInventory().getItemByObjectId(_supportItemObjectId);
+		return getPlayer().getInventory().getItemByObjectId(_supportItemObjectId);
 	}
 	
 	public void setSupportItem(int objectId)

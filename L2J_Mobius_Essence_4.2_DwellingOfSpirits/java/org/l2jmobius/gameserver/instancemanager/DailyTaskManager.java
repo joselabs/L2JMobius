@@ -32,6 +32,7 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.xml.DailyMissionData;
 import org.l2jmobius.gameserver.data.xml.LimitShopData;
+import org.l2jmobius.gameserver.data.xml.MableGameData;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
@@ -127,7 +128,7 @@ public class DailyTaskManager
 		
 		if (calendar.get(Calendar.DAY_OF_MONTH) == 1)
 		{
-			resetMontlyLimitShopData();
+			resetMonthlyLimitShopData();
 		}
 		
 		// Daily tasks.
@@ -154,6 +155,8 @@ public class DailyTaskManager
 			Olympiad.getInstance().saveOlympiadStatus();
 			LOGGER.info("Olympiad System: Data updated.");
 		}
+		
+		MableGameData.getInstance().save();
 	}
 	
 	private void clanLeaderApply()
@@ -641,7 +644,7 @@ public class DailyTaskManager
 		LOGGER.info("LimitShopData has been resetted.");
 	}
 	
-	private void resetMontlyLimitShopData()
+	private void resetMonthlyLimitShopData()
 	{
 		for (LimitShopProductHolder holder : LimitShopData.getInstance().getProducts())
 		{
@@ -649,7 +652,7 @@ public class DailyTaskManager
 			try (Connection con = DatabaseFactory.getConnection();
 				PreparedStatement ps = con.prepareStatement("DELETE FROM account_gsdata WHERE var=?"))
 			{
-				ps.setString(1, AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + holder.getProductionId());
+				ps.setString(1, AccountVariables.LCOIN_SHOP_PRODUCT_MONTHLY_COUNT + holder.getProductionId());
 				ps.executeUpdate();
 			}
 			catch (Exception e)
@@ -659,7 +662,7 @@ public class DailyTaskManager
 			// Update data for online players.
 			for (Player player : World.getInstance().getPlayers())
 			{
-				player.getAccountVariables().remove(AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + holder.getProductionId());
+				player.getAccountVariables().remove(AccountVariables.LCOIN_SHOP_PRODUCT_MONTHLY_COUNT + holder.getProductionId());
 				player.getAccountVariables().storeMe();
 			}
 		}

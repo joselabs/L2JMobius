@@ -34,13 +34,13 @@ import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.util.Util;
 
 public class RequestBuyItem extends ClientPacket
 {
 	private static final int BATCH_LENGTH = 8;
+	private static final int CUSTOM_CB_SELL_LIST = 423;
 	
 	private int _listId;
 	private List<ItemHolder> _items = null;
@@ -107,7 +107,7 @@ public class RequestBuyItem extends ClientPacket
 		
 		final WorldObject target = player.getTarget();
 		Creature merchant = null;
-		if (!player.isGM())
+		if (!player.isGM() && (_listId != CUSTOM_CB_SELL_LIST))
 		{
 			if (!(target instanceof Merchant) || (!player.isInsideRadius3D(target, INTERACTION_DISTANCE)) || (player.getInstanceId() != target.getInstanceId()))
 			{
@@ -119,7 +119,7 @@ public class RequestBuyItem extends ClientPacket
 		
 		double castleTaxRate = 0;
 		double baseTaxRate = 0;
-		if ((merchant == null) && !player.isGM())
+		if ((merchant == null) && !player.isGM() && (_listId != CUSTOM_CB_SELL_LIST))
 		{
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
@@ -189,7 +189,7 @@ public class RequestBuyItem extends ClientPacket
 			
 			if ((price == 0) && !player.isGM() && Config.ONLY_GM_ITEMS_FREE)
 			{
-				player.sendMessage("Ohh Cheat dont work? You have a problem now!");
+				player.sendMessage("Ohh Cheat does not work? You have a problem now!");
 				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried buy item for 0 adena.", Config.DEFAULT_PUNISH);
 				return;
 			}
@@ -276,6 +276,7 @@ public class RequestBuyItem extends ClientPacket
 		final StatusUpdate su = new StatusUpdate(player);
 		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());
 		player.sendPacket(su);
-		player.sendPacket(new ItemList(player, true));
+		player.sendItemList(true);
+		player.sendPacket(SystemMessageId.THE_TRANSACTION_IS_COMPLETE);
 	}
 }

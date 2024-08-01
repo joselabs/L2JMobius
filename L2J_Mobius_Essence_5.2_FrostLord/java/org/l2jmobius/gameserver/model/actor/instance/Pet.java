@@ -156,7 +156,7 @@ public class Pet extends Summon
 		}
 		catch (SQLException e)
 		{
-			e.printStackTrace();
+			LOGGER.log(Level.WARNING, "Could not store evolved pets: ", e);
 		}
 		getOwner().setPetEvolve(controlItemObjId, new PetEvolveHolder(index, evolveLevel, getName(), getLevel(), getExpForThisLevel()));
 	}
@@ -606,7 +606,7 @@ public class Pet extends Summon
 		broadcastPacket(new StopMove(this));
 		if (!object.isItem())
 		{
-			// dont try to pickup anything that is not an item :)
+			// do not try to pickup anything that is not an item :)
 			LOGGER_PET.warning(this + " trying to pickup wrong target." + object);
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
@@ -737,7 +737,7 @@ public class Pet extends Summon
 				sendPacket(smsg);
 			}
 			
-			// If owner is in party and it isnt finders keepers, distribute the item instead of stealing it -.-
+			// If owner is in party and it is not finders keepers, distribute the item instead of stealing it -.-
 			if (getOwner().isInParty() && (getOwner().getParty().getDistributionType() != PartyDistributionType.FINDERS_KEEPERS))
 			{
 				getOwner().getParty().distributeItem(getOwner(), target);
@@ -1262,7 +1262,7 @@ public class Pet extends Summon
 	
 	public synchronized void startFeed()
 	{
-		// stop feeding task if its active
+		// stop feeding task if it is active
 		stopFeed();
 		if (!isDead() && (getOwner().getPet() == this))
 		{

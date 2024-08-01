@@ -231,7 +231,7 @@ public class Kelbim extends AbstractNpcAI
 							}
 							if (getRandom(100) > 40)
 							{
-								final Npc skillMob = addSpawn(KELBIM_SHOUT, pl.getX(), pl.getY(), pl.getZ() + 10, 0, true, 60000, false, 0);
+								final Npc skillMob = addSpawn(KELBIM_SHOUT, pl.getX(), pl.getY(), pl.getZ() + 20, 0, true, 60000, false, 0);
 								skillNpcs.add(skillMob);
 								_minions.add(skillMob);
 							}
@@ -430,8 +430,12 @@ public class Kelbim extends AbstractNpcAI
 		notifyEvent("cancel_timers", null, null);
 		closeDoor(DOOR1, 0);
 		closeDoor(DOOR2, 0);
+		
 		GrandBossManager.getInstance().setStatus(KELBIM, DEAD);
-		final long respawnTime = (Config.KELBIM_SPAWN_INTERVAL + getRandom(-Config.KELBIM_SPAWN_RANDOM, Config.KELBIM_SPAWN_RANDOM)) * 3600000;
+		
+		final long baseIntervalMillis = Config.KELBIM_SPAWN_INTERVAL * 3600000;
+		final long randomRangeMillis = Config.KELBIM_SPAWN_RANDOM * 3600000;
+		final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 		final StatSet info = GrandBossManager.getInstance().getStatSet(KELBIM);
 		info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 		GrandBossManager.getInstance().setStatSet(KELBIM, info);

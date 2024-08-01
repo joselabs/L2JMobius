@@ -80,7 +80,6 @@ public class ConfirmDlg extends ServerPacket
 				case SystemMessage.TYPE_ELEMENT_NAME:
 				case SystemMessage.TYPE_BYTE:
 				case SystemMessage.TYPE_FACTION_NAME:
-				case SystemMessage.TYPE_ELEMENTAL_SPIRIT:
 				{
 					buffer.writeByte(param.getIntValue());
 					break;

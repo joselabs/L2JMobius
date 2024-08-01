@@ -254,31 +254,34 @@ public class AutoUseTaskManager
 							}
 						}
 						
+						// Buff use check.
 						final WorldObject target = player.getTarget();
-						if (canCastBuff(player, target, skill))
+						if (!canCastBuff(player, target, skill))
 						{
-							ATTACH_SEARCH: for (AttachSkillHolder holder : skill.getAttachSkills())
+							continue BUFFS;
+						}
+						
+						ATTACH_SEARCH: for (AttachSkillHolder holder : skill.getAttachSkills())
+						{
+							if (player.isAffectedBySkill(holder.getRequiredSkillId()))
 							{
-								if (player.isAffectedBySkill(holder.getRequiredSkillId()))
-								{
-									skill = holder.getSkill();
-									break ATTACH_SEARCH;
-								}
+								skill = holder.getSkill();
+								break ATTACH_SEARCH;
 							}
-							
-							// Playable target cast.
-							final Playable caster = pet != null ? pet : player;
-							if ((target != null) && target.isPlayable() && (target.getActingPlayer().getPvpFlag() == 0) && (target.getActingPlayer().getReputation() >= 0))
-							{
-								caster.doCast(skill);
-							}
-							else // Target self, cast and re-target.
-							{
-								final WorldObject savedTarget = target;
-								caster.setTarget(caster);
-								caster.doCast(skill);
-								caster.setTarget(savedTarget);
-							}
+						}
+						
+						// Playable target cast.
+						final Playable caster = pet != null ? pet : player;
+						if ((target != null) && target.isPlayable() && (target.getActingPlayer().getPvpFlag() == 0) && (target.getActingPlayer().getReputation() >= 0))
+						{
+							caster.doCast(skill);
+						}
+						else // Target self, cast and re-target.
+						{
+							final WorldObject savedTarget = target;
+							caster.setTarget(caster);
+							caster.doCast(skill);
+							caster.setTarget(savedTarget);
 						}
 					}
 					
@@ -288,7 +291,8 @@ public class AutoUseTaskManager
 						continue;
 					}
 					
-					SKILLS:
+					final int count = player.getAutoUseSettings().getAutoSkills().size();
+					SKILLS: for (int i = 0; i < count; i++)
 					{
 						// Already casting.
 						if (player.isCastingNow())
@@ -376,11 +380,20 @@ public class AutoUseTaskManager
 							}
 						}
 						
+						// Increment skill order.
+						player.getAutoUseSettings().incrementSkillOrder();
+						
+						// Skill use check.
 						final Playable caster = pet != null ? pet : player;
-						if (!canUseMagic(caster, target, skill) || caster.useMagic(skill, null, true, false))
+						if (!canUseMagic(caster, target, skill))
 						{
-							player.getAutoUseSettings().incrementSkillOrder();
+							continue SKILLS;
 						}
+						
+						// Use the skill.
+						caster.useMagic(skill, null, true, false);
+						
+						break SKILLS;
 					}
 					
 					ACTIONS: for (Integer actionId : player.getAutoUseSettings().getAutoActions())

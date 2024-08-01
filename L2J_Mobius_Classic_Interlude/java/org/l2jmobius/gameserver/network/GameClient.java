@@ -218,16 +218,6 @@ public class GameClient extends Client<org.l2jmobius.commons.network.Connection<
 	
 	public void sendPacket(ServerPacket packet)
 	{
-		if (_isDetached)
-		{
-			return;
-		}
-		
-		if (_connectionState == ConnectionState.DISCONNECTED)
-		{
-			return;
-		}
-		
 		// Packet should never be null.
 		if (packet == null)
 		{
@@ -456,6 +446,12 @@ public class GameClient extends Client<org.l2jmobius.commons.network.Connection<
 			}
 			
 			try (PreparedStatement ps = con.prepareStatement("DELETE FROM item_variables WHERE id IN (SELECT object_id FROM items WHERE items.owner_id=?)"))
+			{
+				ps.setInt(1, objectId);
+				ps.execute();
+			}
+			
+			try (PreparedStatement ps = con.prepareStatement("DELETE FROM seven_signs WHERE charId=?"))
 			{
 				ps.setInt(1, objectId);
 				ps.execute();

@@ -98,6 +98,7 @@ public class Party extends AbstractPlayerGroup
 	private Future<?> _positionBroadcastTask = null;
 	protected PartyMemberPosition _positionPacket;
 	private boolean _disbanding = false;
+	private Object _ucState = null;
 	private Map<Integer, Creature> _tacticalSigns = null;
 	private static final int[] TACTICAL_SYS_STRINGS =
 	{
@@ -318,8 +319,8 @@ public class Party extends AbstractPlayerGroup
 		player.sendPacket(msg);
 		
 		msg = new SystemMessage(SystemMessageId.C1_HAS_JOINED_THE_PARTY);
-		msg.addString(player.getName());
-		broadcastPacket(msg);
+		msg.addString(player.getAppearance().getVisibleName());
+		broadcastToPartyMembers(player, msg);
 		
 		for (Player member : _members)
 		{
@@ -542,14 +543,14 @@ public class Party extends AbstractPlayerGroup
 			{
 				player.sendPacket(SystemMessageId.YOU_ARE_DISMISSED_FROM_THE_PARTY);
 				msg = new SystemMessage(SystemMessageId.C1_IS_DISMISSED_FROM_THE_PARTY);
-				msg.addString(player.getName());
+				msg.addString(player.getAppearance().getVisibleName());
 				broadcastPacket(msg);
 			}
 			else if ((type == PartyMessageType.LEFT) || (type == PartyMessageType.DISCONNECTED))
 			{
 				player.sendPacket(SystemMessageId.YOU_HAVE_LEFT_THE_PARTY);
 				msg = new SystemMessage(SystemMessageId.C1_HAS_LEFT_THE_PARTY);
-				msg.addString(player.getName());
+				msg.addString(player.getAppearance().getVisibleName());
 				broadcastPacket(msg);
 			}
 			
@@ -574,7 +575,7 @@ public class Party extends AbstractPlayerGroup
 			if (isLeader && (_members.size() > 1) && (Config.ALT_LEAVE_PARTY_LEADER || (type == PartyMessageType.DISCONNECTED)))
 			{
 				msg = new SystemMessage(SystemMessageId.C1_HAS_BECOME_THE_PARTY_LEADER);
-				msg.addString(getLeader().getName());
+				msg.addString(getLeader().getAppearance().getVisibleName());
 				broadcastPacket(msg);
 				broadcastToPartyMembersNewLeader();
 			}
@@ -673,7 +674,7 @@ public class Party extends AbstractPlayerGroup
 					{
 						_commandChannel.setLeader(getLeader());
 						msg = new SystemMessage(SystemMessageId.COMMAND_CHANNEL_AUTHORITY_HAS_BEEN_TRANSFERRED_TO_C1);
-						msg.addString(_commandChannel.getLeader().getName());
+						msg.addString(_commandChannel.getLeader().getAppearance().getVisibleName());
 						_commandChannel.broadcastPacket(msg);
 					}
 				}
@@ -694,7 +695,7 @@ public class Party extends AbstractPlayerGroup
 	{
 		for (Player member : _members)
 		{
-			if (member.getName().equalsIgnoreCase(name))
+			if (member.getAppearance().getVisibleName().equalsIgnoreCase(name))
 			{
 				return member;
 			}
@@ -723,7 +724,7 @@ public class Party extends AbstractPlayerGroup
 		if (item.getCount() > 1)
 		{
 			final SystemMessage msg = new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S2_X_S3);
-			msg.addString(target.getName());
+			msg.addString(target.getAppearance().getVisibleName());
 			msg.addItemName(item);
 			msg.addLong(item.getCount());
 			broadcastToPartyMembers(target, msg);
@@ -731,7 +732,7 @@ public class Party extends AbstractPlayerGroup
 		else
 		{
 			final SystemMessage msg = new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S2);
-			msg.addString(target.getName());
+			msg.addString(target.getAppearance().getVisibleName());
 			msg.addItemName(item);
 			broadcastToPartyMembers(target, msg);
 		}
@@ -760,7 +761,7 @@ public class Party extends AbstractPlayerGroup
 		if (itemCount > 1)
 		{
 			final SystemMessage msg = spoil ? new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S2_X_S3_BY_USING_SWEEPER) : new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S2_X_S3);
-			msg.addString(looter.getName());
+			msg.addString(looter.getAppearance().getVisibleName());
 			msg.addItemName(itemId);
 			msg.addLong(itemCount);
 			broadcastToPartyMembers(looter, msg);
@@ -768,7 +769,7 @@ public class Party extends AbstractPlayerGroup
 		else
 		{
 			final SystemMessage msg = spoil ? new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S2_BY_USING_SWEEPER) : new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S2);
-			msg.addString(looter.getName());
+			msg.addString(looter.getAppearance().getVisibleName());
 			msg.addItemName(itemId);
 			broadcastToPartyMembers(looter, msg);
 		}
@@ -1094,6 +1095,16 @@ public class Party extends AbstractPlayerGroup
 		return _members.get(0);
 	}
 	
+	public Object getUCState()
+	{
+		return _ucState;
+	}
+	
+	public void setUCState(Object uc)
+	{
+		_ucState = uc;
+	}
+	
 	public synchronized void requestLootChange(PartyDistributionType partyDistributionType)
 	{
 		if (_changeRequestDistributionType != null)
@@ -1103,7 +1114,7 @@ public class Party extends AbstractPlayerGroup
 		_changeRequestDistributionType = partyDistributionType;
 		_changeDistributionTypeAnswers = new HashSet<>();
 		_changeDistributionTypeRequestTask = ThreadPool.schedule(() -> finishLootRequest(false), PARTY_DISTRIBUTION_TYPE_REQUEST_TIMEOUT.toMillis());
-		broadcastToPartyMembers(getLeader(), new ExAskModifyPartyLooting(getLeader().getName(), partyDistributionType));
+		broadcastToPartyMembers(getLeader(), new ExAskModifyPartyLooting(getLeader().getAppearance().getVisibleName(), partyDistributionType));
 		
 		final SystemMessage sm = new SystemMessage(SystemMessageId.REQUESTING_APPROVAL_FOR_CHANGING_PARTY_LOOT_TO_S1);
 		sm.addSystemString(partyDistributionType.getSysStringId());

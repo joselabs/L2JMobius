@@ -136,7 +136,7 @@ public class CharacterBirthday extends AbstractNpcAI
 		if ((st != null) && (player.checkBirthDay() == 0))
 		{
 			player.sendPacket(new PlaySound(1, "HB01", 0, 0, 0, 0, 0));
-			final Npc spawned = addSpawn(32600, player.getX() + 10, player.getY() + 10, player.getZ() + 10, 0, false, 0, true);
+			final Npc spawned = addSpawn(32600, player.getX() + 10, player.getY() + 10, player.getZ() + 20, 0, false, 0, true);
 			st.setState(State.STARTED);
 			startQuestTimer("despawn_npc", 60000, spawned, null);
 			HAS_SPAWNED = true;

@@ -29,6 +29,7 @@ import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
+import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -194,7 +195,22 @@ public class ConquestZone extends ZoneType
 			{
 				if (!creature.isGM())
 				{
-					creature.teleToLocation(TeleportWhereType.TOWN);
+					final PlayerVariables vars = creature.getActingPlayer().getVariables();
+					Location location = new Location(147458, 26903, -2206); // Aden center if no location stored
+					if (vars.contains(PlayerVariables.CONQUEST_ORIGIN))
+					{
+						final int[] loc = vars.getIntArray(PlayerVariables.CONQUEST_ORIGIN, ";");
+						if ((loc != null) && (loc.length == 3))
+						{
+							location = new Location(loc[0], loc[1], loc[2]);
+						}
+						creature.getActingPlayer().teleToLocation(location);
+						vars.remove(PlayerVariables.CONQUEST_ORIGIN);
+					}
+					else
+					{
+						creature.getActingPlayer().teleToLocation(location);
+					}
 					onExit(creature);
 				}
 			}

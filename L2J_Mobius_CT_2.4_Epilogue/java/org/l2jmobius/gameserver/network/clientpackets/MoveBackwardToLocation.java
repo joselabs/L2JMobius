@@ -26,7 +26,6 @@ import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerMoveRequest;
 import org.l2jmobius.gameserver.model.events.returns.TerminateReturn;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
-import org.l2jmobius.gameserver.network.serverpackets.StopMove;
 
 public class MoveBackwardToLocation extends ClientPacket
 {
@@ -68,7 +67,7 @@ public class MoveBackwardToLocation extends ClientPacket
 		
 		if ((_targetX == _originX) && (_targetY == _originY) && (_targetZ == _originZ))
 		{
-			player.sendPacket(new StopMove(player));
+			player.stopMove(player.getLocation());
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}

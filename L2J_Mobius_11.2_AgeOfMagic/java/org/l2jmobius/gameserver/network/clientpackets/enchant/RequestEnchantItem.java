@@ -405,10 +405,10 @@ public class RequestEnchantItem extends ClientPacket
 								player.sendPacket(sm);
 							}
 							
-							if (crystals != null)
-							{
-								iu.addItem(crystals);
-							}
+							// if (crystals != null)
+							// {
+							// iu.addItem(crystals); // FIXME: Packet never sent?
+							// }
 							
 							if ((crystalId == 0) || (count == 0))
 							{

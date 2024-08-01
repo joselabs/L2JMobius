@@ -35,6 +35,7 @@ import org.l2jmobius.gameserver.model.skill.Skill;
 
 import ai.AbstractNpcAI;
 import quests.Q00020_BringUpWithLove.Q00020_BringUpWithLove;
+import quests.Q00655_AGrandPlanForTamingWildBeasts.Q00655_AGrandPlanForTamingWildBeasts;
 
 /**
  * Growth-capable mobs: Polymorphing upon successful feeding.
@@ -421,6 +422,8 @@ public class FeedableBeasts extends AbstractNpcAI
 				giveItems(player, 7185, 1);
 				st.setCond(2);
 			}
+			
+			Q00655_AGrandPlanForTamingWildBeasts.checkCrystalofPurity(player);
 			
 			// Also, perform a rare random chat
 			final int rand = getRandom(20);

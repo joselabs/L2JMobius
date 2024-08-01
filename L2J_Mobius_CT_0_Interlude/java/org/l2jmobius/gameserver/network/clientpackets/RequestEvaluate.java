@@ -68,7 +68,7 @@ public class RequestEvaluate extends ClientPacket
 		
 		if (player.getRecomLeft() <= 0)
 		{
-			player.sendMessage("You are out of Recommendations. Try again later.");
+			player.sendPacket(SystemMessageId.YOU_ARE_NOT_AUTHORIZED_TO_MAKE_FURTHER_RECOMMENDATIONS_AT_THIS_TIME_YOU_WILL_RECEIVE_MORE_RECOMMENDATION_CREDITS_EACH_DAY_AT_1_P_M);
 			return;
 		}
 		

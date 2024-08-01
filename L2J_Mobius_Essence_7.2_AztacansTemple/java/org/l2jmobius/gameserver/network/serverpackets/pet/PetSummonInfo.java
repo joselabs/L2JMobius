@@ -18,8 +18,8 @@ package org.l2jmobius.gameserver.network.serverpackets.pet;
 
 import java.util.Set;
 
-import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.EvolveLevel;
 import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.actor.Summon;
@@ -147,8 +147,7 @@ public class PetSummonInfo extends ServerPacket
 		buffer.writeInt(_summon.getMaxMp()); // max mp
 		buffer.writeLong(_summon.getStat().getSp()); // sp
 		buffer.writeShort(_summon.getLevel()); // level
-		buffer.writeLong(_summon.getStat().getExp());
-		// 0% absolute value
+		buffer.writeLong(_summon.getStat().getExp()); // 0% absolute value
 		buffer.writeLong(Math.min(_summon.getExpForThisLevel(), _summon.getStat().getExp())); // 0% absolute value
 		buffer.writeLong(_summon.getExpForNextLevel()); // 100% absoulte value
 		buffer.writeInt(_summon.isPet() ? _summon.getInventory().getTotalWeight() : 0); // weight

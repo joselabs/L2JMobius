@@ -23,16 +23,19 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 public class AskJoinAlly extends ServerPacket
 {
 	private final String _requestorName;
+	private final String _requestorAllyName;
 	private final int _requestorObjId;
 	
 	/**
 	 * @param requestorObjId
 	 * @param requestorName
+	 * @param requestorAllyName
 	 */
-	public AskJoinAlly(int requestorObjId, String requestorName)
+	public AskJoinAlly(int requestorObjId, String requestorName, String requestorAllyName)
 	{
 		_requestorName = requestorName;
 		_requestorObjId = requestorObjId;
+		_requestorAllyName = requestorAllyName;
 	}
 	
 	@Override
@@ -40,7 +43,7 @@ public class AskJoinAlly extends ServerPacket
 	{
 		ServerPackets.ASK_JOIN_ALLIANCE.writeId(this, buffer);
 		buffer.writeInt(_requestorObjId);
-		buffer.writeString(null); // Ally Name ?
+		buffer.writeString(_requestorAllyName);
 		buffer.writeString(null); // TODO: Find me!
 		buffer.writeString(_requestorName);
 	}

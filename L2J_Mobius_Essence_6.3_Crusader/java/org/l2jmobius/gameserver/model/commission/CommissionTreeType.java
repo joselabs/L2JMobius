@@ -99,7 +99,7 @@ public enum CommissionTreeType
 	/**
 	 * Finds the commission tree type by the client id
 	 * @param clientId the client id
-	 * @return the commission tree type if its found, {@code null} otherwise
+	 * @return the commission tree type if it is found, {@code null} otherwise
 	 */
 	public static CommissionTreeType findByClientId(int clientId)
 	{

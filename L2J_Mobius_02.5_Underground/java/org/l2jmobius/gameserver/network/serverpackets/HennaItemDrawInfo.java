@@ -63,6 +63,6 @@ public class HennaItemDrawInfo extends ServerPacket
 		buffer.writeInt(_player.getLUC() + _player.getHennaValue(BaseStat.LUC)); // equip LUC
 		buffer.writeInt(_player.getCHA()); // current CHA
 		buffer.writeInt(_player.getCHA() + _player.getHennaValue(BaseStat.CHA)); // equip CHA
-		buffer.writeInt(0); // TODO: Find me!
+		buffer.writeInt(_henna.getDuration());
 	}
 }

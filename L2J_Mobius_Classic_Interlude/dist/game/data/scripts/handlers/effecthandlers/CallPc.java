@@ -26,6 +26,7 @@ import org.l2jmobius.gameserver.model.holders.SummonRequestHolder;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadManager;
+import org.l2jmobius.gameserver.model.sevensigns.SevenSigns;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.skill.targets.TargetType;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
@@ -178,6 +179,24 @@ public class CallPc extends AbstractEffect
 			return false;
 		}
 		
+		// TODO: on retail character can enter 7s dungeon with summon friend, but should be teleported away by mobs, because currently this is not working in L2J we do not allowing summoning.
+		if (effector.getActingPlayer().isIn7sDungeon())
+		{
+			final int targetCabal = SevenSigns.getInstance().getPlayerCabal(target.getObjectId());
+			if (SevenSigns.getInstance().isSealValidationPeriod())
+			{
+				if (targetCabal != SevenSigns.getInstance().getCabalHighestScore())
+				{
+					effector.sendMessage("Your target is in an area which blocks summoning.");
+					return false;
+				}
+			}
+			else if (targetCabal == SevenSigns.CABAL_NULL)
+			{
+				effector.sendMessage("Your target is in an area which blocks summoning.");
+				return false;
+			}
+		}
 		return true;
 	}
 }

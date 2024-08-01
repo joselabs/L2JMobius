@@ -723,7 +723,7 @@ public class PlayerStat extends PlayableStat
 	
 	public double getElementalSpiritDefense(ElementalType type, double base)
 	{
-		return type == null ? 0 : getValue(type.getDefenseStat(), base);
+		return type == null ? 0 : getValue(type.getAttackStat(), base);
 	}
 	
 	@Override

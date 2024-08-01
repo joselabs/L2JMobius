@@ -22,7 +22,7 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
- * Written by Berezkin Nikolay, on 13.04.2021
+ * @author Berezkin Nikolay
  */
 public class ExCollectionComplete extends ServerPacket
 {
@@ -38,5 +38,6 @@ public class ExCollectionComplete extends ServerPacket
 	{
 		ServerPackets.EX_COLLECTION_COMPLETE.writeId(this, buffer);
 		buffer.writeShort(_collectionId);
+		buffer.writeInt(0); // remainingTime
 	}
 }

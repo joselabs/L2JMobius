@@ -38,9 +38,9 @@ public class OlympiadManager extends Npc
 {
 	private static Logger _logOlymp = Logger.getLogger(OlympiadManager.class.getName());
 	
-	private static final int GATE_PASS = Config.ALT_OLY_COMP_RITEM;
-	private static final String FEWER_THAN = "Fewer than " + String.valueOf(Config.ALT_OLY_REG_DISPLAY);
-	private static final String MORE_THAN = "More than " + String.valueOf(Config.ALT_OLY_REG_DISPLAY);
+	private static final int GATE_PASS = Config.OLYMPIAD_COMP_RITEM;
+	private static final String FEWER_THAN = "Fewer than " + String.valueOf(Config.OLYMPIAD_REG_DISPLAY);
+	private static final String MORE_THAN = "More than " + String.valueOf(Config.OLYMPIAD_REG_DISPLAY);
 	
 	/**
 	 * Creates an olympiad manager.
@@ -89,11 +89,11 @@ public class OlympiadManager extends Npc
 						nonClassed = array[1];
 					}
 					html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_registered.htm");
-					if (Config.ALT_OLY_REG_DISPLAY > 0)
+					if (Config.OLYMPIAD_REG_DISPLAY > 0)
 					{
-						html.replace("%listClassed%", classed < Config.ALT_OLY_REG_DISPLAY ? FEWER_THAN : MORE_THAN);
+						html.replace("%listClassed%", classed < Config.OLYMPIAD_REG_DISPLAY ? FEWER_THAN : MORE_THAN);
 						html.replace("%listNonClassedTeam%", FEWER_THAN);
-						html.replace("%listNonClassed%", nonClassed < Config.ALT_OLY_REG_DISPLAY ? FEWER_THAN : MORE_THAN);
+						html.replace("%listNonClassed%", nonClassed < Config.OLYMPIAD_REG_DISPLAY ? FEWER_THAN : MORE_THAN);
 					}
 					else
 					{
@@ -165,13 +165,13 @@ public class OlympiadManager extends Npc
 					if (passes > 0)
 					{
 						player.getVariables().remove(Olympiad.UNCLAIMED_OLYMPIAD_PASSES_VAR);
-						player.addItem("Olympiad", GATE_PASS, passes * Config.ALT_OLY_GP_PER_POINT, player, true);
+						player.addItem("Olympiad", GATE_PASS, passes * Config.OLYMPIAD_GP_PER_POINT, player, true);
 					}
 					break;
 				}
 				default:
 				{
-					_logOlymp.warning("Olympiad System: Couldnt send packet for request " + val);
+					_logOlymp.warning("Olympiad System: Could not send packet for request " + val);
 					break;
 				}
 			}
@@ -241,7 +241,7 @@ public class OlympiadManager extends Npc
 				}
 				default:
 				{
-					_logOlymp.warning("Olympiad System: Couldnt send packet for request " + val);
+					_logOlymp.warning("Olympiad System: Could not send packet for request " + val);
 					break;
 				}
 			}

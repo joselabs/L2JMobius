@@ -16,7 +16,6 @@
  */
 package quests.Q00640_TheZeroHour;
 
-import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
@@ -134,14 +133,11 @@ public class Q00640_TheZeroHour extends Quest
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		final Player partyMember = getRandomPartyMemberState(killer, State.STARTED);
-		if (partyMember == null)
+		final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
+		if (qs != null)
 		{
-			return super.onKill(npc, killer, isSummon);
+			giveItemRandomly(qs.getPlayer(), npc, FANG_OF_STAKATO, 1, 0, 1, true);
 		}
-		
-		giveItems(partyMember, FANG_OF_STAKATO, 1);
-		playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 		
 		return super.onKill(npc, killer, isSummon);
 	}

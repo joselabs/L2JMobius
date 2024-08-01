@@ -96,6 +96,7 @@ public class Party extends AbstractPlayerGroup
 	private Set<Integer> _changeDistributionTypeAnswers = null;
 	private int _itemLastLoot = 0;
 	private CommandChannel _commandChannel = null;
+	private DimensionalRift _dr;
 	private Future<?> _positionBroadcastTask = null;
 	protected PartyMemberPosition _positionPacket;
 	private boolean _disbanding = false;
@@ -321,7 +322,7 @@ public class Party extends AbstractPlayerGroup
 		
 		msg = new SystemMessage(SystemMessageId.C1_HAS_JOINED_THE_PARTY);
 		msg.addString(player.getName());
-		broadcastPacket(msg);
+		broadcastToPartyMembers(player, msg);
 		
 		for (Player member : _members)
 		{
@@ -374,6 +375,11 @@ public class Party extends AbstractPlayerGroup
 				// send hp status update
 				member.sendPacket(su);
 			}
+		}
+		
+		if (isInDimensionalRift())
+		{
+			_dr.partyMemberInvited();
 		}
 		
 		// open the CCInformationwindow
@@ -567,6 +573,11 @@ public class Party extends AbstractPlayerGroup
 				broadcastPacket(new ExPartyPetWindowDelete(pet));
 			}
 			player.getServitors().values().forEach(s -> player.sendPacket(new ExPartyPetWindowDelete(s)));
+			
+			if (isInDimensionalRift())
+			{
+				_dr.partyMemberExited(player);
+			}
 			
 			// Close the CCInfoWindow
 			if (isInCommandChannel())
@@ -1077,6 +1088,21 @@ public class Party extends AbstractPlayerGroup
 	public void setCommandChannel(CommandChannel channel)
 	{
 		_commandChannel = channel;
+	}
+	
+	public boolean isInDimensionalRift()
+	{
+		return _dr != null;
+	}
+	
+	public void setDimensionalRift(DimensionalRift dr)
+	{
+		_dr = dr;
+	}
+	
+	public DimensionalRift getDimensionalRift()
+	{
+		return _dr;
 	}
 	
 	/**

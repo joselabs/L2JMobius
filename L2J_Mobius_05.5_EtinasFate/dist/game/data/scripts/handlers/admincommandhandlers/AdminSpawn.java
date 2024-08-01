@@ -541,7 +541,16 @@ public class AdminSpawn implements IAdminCommandHandler
 		
 		if (index == 0)
 		{
-			activeChar.sendMessage(getClass().getSimpleName() + ": No current spawns found.");
+			final Npc npc = World.getInstance().getNpc(npcId);
+			if (npc != null)
+			{
+				activeChar.teleToLocation(npc.getLocation(), Config.MAX_OFFSET_ON_TELEPORT, npc.getInstanceWorld());
+				activeChar.sendMessage("The current spawn is not stored.");
+			}
+			else
+			{
+				activeChar.sendMessage(getClass().getSimpleName() + ": No current spawns found.");
+			}
 		}
 	}
 	

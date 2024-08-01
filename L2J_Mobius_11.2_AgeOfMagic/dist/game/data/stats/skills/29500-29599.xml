@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="29500" toLevel="1" name="Ice Power">
 		<!-- PvE damage +15% -->
@@ -566,15 +566,15 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceCriticalDamage">
-				<amount>-5</amount>
+				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>-5</amount>
+				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>-5</amount>
+				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -662,7 +662,54 @@
 	<skill id="29538" toLevel="1" name="Royal Honey Dark Beer">
 		<!-- For 30 min., all basic stats +3, Vitality bonus +50%, P./ M. Def. +15%. Cooldown: 5 min. The effect remains after death. Cannot be used in the Olympiad. -->
 		<icon>icon.bm_royal_black_beer</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<isMagic>2</isMagic>
+		<reuseDelay>300000</reuseDelay>
+		<coolTime>500</coolTime>
+		<abnormalType>HONEY_BEER</abnormalType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1800</abnormalTime>
+		<stayAfterDeath>true</stayAfterDeath>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="StatUp">
+				<amount>3</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>3</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>3</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>3</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>3</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>3</amount>
+				<stat>MEN</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>3</amount>
+				<stat>LUC</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>3</amount>
+				<stat>CHA</stat>
+			</effect>
+			<effect name="VitalityExpRate">
+				<amount>30</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="29539" toLevel="1" name="Glowing Royal Dragon's Attribute Potion">
 		<!-- For 30 min., Attribute Attack +100, Attribute Resistance +100, acquired XP/ SP +50%. The effect remains after death. -->
@@ -1561,43 +1608,60 @@
 	<skill id="29591" toLevel="1" name="Angel's Advent - Anakim">
 		<!-- Angel Anakim has descended granting her blessing. Required level: 1-110. Acquired XP/ SP while hunting +500%. -->
 		<icon>icon.s_buff_boost_archangel1</icon>
-		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
+		<operateType>P</operateType>
 	</skill>
 	<skill id="29592" toLevel="1" name="Angel's Advent - Anakim">
 		<!-- Angel Anakim has descended granting her blessing. Required level: 111. Acquired XP/ SP while hunting +400%. -->
 		<icon>icon.s_buff_boost_archangel1</icon>
-		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
+		<operateType>P</operateType>
 	</skill>
 	<skill id="29593" toLevel="1" name="Angel's Advent - Anakim">
 		<!-- Angel Anakim has descended granting her blessing. Required level: 112. Acquired XP/ SP while hunting +300%. -->
 		<icon>icon.s_buff_boost_archangel1</icon>
-		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
+		<operateType>P</operateType>
 	</skill>
 	<skill id="29594" toLevel="1" name="Angel's Advent - Anakim">
 		<!-- Angel Anakim has descended granting her blessing. Required level: 113. Acquired XP/ SP while hunting +200%. -->
 		<icon>icon.s_buff_boost_archangel1</icon>
-		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
+		<operateType>P</operateType>
 	</skill>
 	<skill id="29595" toLevel="3" name="+10 Radiant Warrior's Circlet Box">
 		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
 	</skill>
 	<skill id="29596" toLevel="1" name="Mimi's Potion">
 		<!-- For 30 min., acquired XP/ SP +50%, Vitality bonus +50%, P. Atk./ P. Def./ M. Atk./ M. Def./ Critical Damage for basic attacks/ Skill Power +15%. The effect remains after death, after switching to a dual class or entering instance zones. Removed when entering the Olympiad or the Ceremony of Chaos. -->
 		<icon>BranchIcon.Icon.bm_unique_gacha_potion_i00</icon>
-		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<reuseDelay>5000</reuseDelay>
+		<operateType>A2</operateType>
+		<abnormalTime>1800</abnormalTime>
+		<stayAfterDeath>true</stayAfterDeath>
+		<effects>
+			<effect name="ExpModify">
+				<amount>
+					<value level="1">50</value>
+				</amount>
+			</effect>
+			<effect name="SpModify">
+				<amount>
+					<value level="1">50</value>
+				</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="29597" toLevel="1" name="Nana's Potion">
 		<!-- For 30 min., Weapon P./ M. Atk. +150, P./ M. Def. +10%, STR/ INT/ CON +3, acquired XP/ SP +10%. The effect remains after death, after switching to a dual class or entering instance zones. Removed when entering the Olympiad or the Ceremony of Chaos. -->
 		<icon>BranchIcon.Icon.bm_unique_gacha_potion_i01</icon>
-		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
+		<operateType>A2</operateType>
+		<abnormalTime>1800</abnormalTime>
+		<stayAfterDeath>true</stayAfterDeath>
+		<effects>
+			<effect name="ExpModify">
+				<amount>10</amount>
+			</effect>
+			<effect name="SpModify">
+				<amount>10</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="29598" toLevel="1" name="Golden Week Celebration">
 		<!-- Power of basic attacks and P./ M. skills +5%, P./ M. Def. +5%, acquired XP/ SP +10% -->

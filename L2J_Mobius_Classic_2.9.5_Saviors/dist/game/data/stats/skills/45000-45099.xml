@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="45000" toLevel="20" name="Item Skill: Stun">
 		<!-- Effect: Stuns the target during a normal physical attack. -->
@@ -887,75 +887,80 @@
 	<skill id="45017" toLevel="1" name="Immortal Orfen's Earring - Special Ability">
 		<!-- Enemy's MP -10% during PvP. -->
 		<icon>icon.accessory_earring_of_orfen_i04</icon>
-		<magicLevel>75</magicLevel>
-		<operateType>P</operateType>
+		<magicLevel>90</magicLevel>
+		<operateType>A1</operateType>
 		<castRange>600</castRange>
+		<effectRange>1000</effectRange>
+		<isMagic>2</isMagic>
 		<hitTime>1000</hitTime>
 		<reuseDelay>120000</reuseDelay>
 		<effectPoint>-679</effectPoint>
 		<magicCriticalRate>5</magicCriticalRate>
-		<effects>
-			<effect name="VampiricAttack">
-				<amount>
-					<value level="1">0</value>
-				</amount>
-				<chance>80</chance>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<pvpEffects>
+			<effect name="ManaHealPercent">
+				<power>-10</power>
 			</effect>
-			<effect name="AttackTrait">
-				<SHOCK>
-					<value level="1">5</value>
-				</SHOCK>
-				<BLEED>
-					<value level="1">10</value>
-				</BLEED>
-				<DERANGEMENT>
-					<value level="1">5</value>
-				</DERANGEMENT>
-			</effect>
-			<effect name="DefenceTrait">
-				<SHOCK>
-					<value level="1">5</value>
-				</SHOCK>
-				<BLEED>
-					<value level="1">10</value>
-				</BLEED>
-				<DERANGEMENT>
-					<value level="1">5</value>
-				</DERANGEMENT>
-			</effect>
-			<effect name="HpRegen">
-				<amount>
-					<value level="1">10</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="HealEffect">
-				<amount>
-					<value level="1">4</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-		</effects>
+		</pvpEffects>
 	</skill>
 	<skill id="45018" toLevel="1" name="Immortal Zaken's Earring - Special Ability">
 		<!-- For 30 seconds, limits enemy's CP/HP/MP Recovery up to 80% during PvP. -->
 		<icon>icon.accessory_earring_of_zaken_i04</icon>
-		<operateType>A1</operateType>
+		<magicLevel>90</magicLevel>
+		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
 		<castRange>600</castRange>
+		<effectRange>1000</effectRange>
+		<isMagic>2</isMagic>
 		<hitTime>1000</hitTime>
 		<reuseDelay>120000</reuseDelay>
 		<effectPoint>-679</effectPoint>
+		<activateRate>90</activateRate>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>30</abnormalTime>
+		<abnormalType>LIMIT</abnormalType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<pvpEffects>
+			<effect name="LimitHp">
+				<amount>-20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="LimitMp">
+				<amount>-20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="LimitCp">
+				<amount>-20</amount>
+				<mode>PER</mode>
+			</effect>
+		</pvpEffects>
 	</skill>
 	<skill id="45019" toLevel="1" name="Immortal Antharas' Earring - Special Ability">
 		<!-- Blocks all the enemy's P. Skills/M. Skills for 24 seconds. -->
 		<icon>icon.accessory_earring_of_antaras_i04</icon>
-		<operateType>A1</operateType>
+		<magicLevel>90</magicLevel>
+		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
 		<castRange>600</castRange>
+		<effectRange>1000</effectRange>
+		<isMagic>2</isMagic>
 		<hitTime>1000</hitTime>
 		<reuseDelay>120000</reuseDelay>
 		<effectPoint>-666</effectPoint>
+		<activateRate>80</activateRate>
+		<abnormalTime>24</abnormalTime>
+		<abnormalType>SILENCE_ALL</abnormalType>
+		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
+		<trait>DERANGEMENT</trait>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="Mute" />
+			<effect name="PhysicalMute" />
+		</effects>
 	</skill>
 	<skill id="45020" toLevel="1" name="Zaken's Cloak">
 		<!-- Max HP +5%. -->

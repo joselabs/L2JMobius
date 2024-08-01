@@ -31,6 +31,7 @@ import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.enums.AISkillScope;
 import org.l2jmobius.gameserver.enums.AIType;
 import org.l2jmobius.gameserver.geoengine.GeoEngine;
+import org.l2jmobius.gameserver.instancemanager.DimensionalRiftManager;
 import org.l2jmobius.gameserver.instancemanager.ItemsOnGroundManager;
 import org.l2jmobius.gameserver.model.AggroInfo;
 import org.l2jmobius.gameserver.model.Location;
@@ -46,6 +47,7 @@ import org.l2jmobius.gameserver.model.actor.instance.GrandBoss;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
 import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.actor.instance.RaidBoss;
+import org.l2jmobius.gameserver.model.actor.instance.RiftInvader;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
@@ -144,6 +146,16 @@ public class AttackableAI extends CreatureAI
 			if (player.isRecentFakeDeath())
 			{
 				return false;
+			}
+			
+			if (player.isInParty() && player.getParty().isInDimensionalRift())
+			{
+				final byte riftType = player.getParty().getDimensionalRift().getType();
+				final byte riftRoom = player.getParty().getDimensionalRift().getCurrentRoom();
+				if ((me instanceof RiftInvader) && !DimensionalRiftManager.getInstance().getRoom(riftType, riftRoom).checkIfInZone(me.getX(), me.getY(), me.getZ()))
+				{
+					return false;
+				}
 			}
 			
 			if (me instanceof Guard)
@@ -756,6 +768,17 @@ public class AttackableAI extends CreatureAI
 						
 						if (finalTarget.isPlayable())
 						{
+							// Dimensional Rift check.
+							if (finalTarget.isInParty() && finalTarget.getParty().isInDimensionalRift())
+							{
+								final byte riftType = finalTarget.getParty().getDimensionalRift().getType();
+								final byte riftRoom = finalTarget.getParty().getDimensionalRift().getCurrentRoom();
+								if ((npc instanceof RiftInvader) && !DimensionalRiftManager.getInstance().getRoom(riftType, riftRoom).checkIfInZone(npc.getX(), npc.getY(), npc.getZ()))
+								{
+									return;
+								}
+							}
+							
 							// By default, when a faction member calls for help, attack the caller's attacker.
 							// Notify the AI with EVT_AGGRESSION
 							nearby.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, finalTarget, 1);
@@ -1362,8 +1385,11 @@ public class AttackableAI extends CreatureAI
 			_globalAggro = 0;
 		}
 		
-		// Add the attacker to the _aggroList of the actor
-		me.addDamageHate(attacker, 0, 1);
+		// Add the attacker to the _aggroList of the actor if not present.
+		if (!me.isInAggroList(attacker))
+		{
+			me.addDamageHate(attacker, 0, 1);
+		}
 		
 		// Set the Creature movement type to run and send Server->Client packet ChangeMoveType to all others Player
 		if (!me.isRunning())

@@ -43,12 +43,19 @@ public class RequestWithDrawalParty extends ClientPacket
 		final Party party = player.getParty();
 		if (party != null)
 		{
-			party.removePartyMember(player, PartyMessageType.LEFT);
-			
-			final MatchingRoom room = player.getMatchingRoom();
-			if (room != null)
+			if (player.getUCState() != Player.UC_STATE_NONE)
 			{
-				room.deleteMember(player, false);
+				player.sendMessage("You can't dismiss party member when you are in Underground Coliseum.");
+			}
+			else
+			{
+				party.removePartyMember(player, PartyMessageType.LEFT);
+				
+				final MatchingRoom room = player.getMatchingRoom();
+				if (room != null)
+				{
+					room.deleteMember(player, false);
+				}
 			}
 		}
 	}

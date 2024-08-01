@@ -94,6 +94,11 @@ import org.l2jmobius.gameserver.network.clientpackets.limitshop.RequestPurchaseL
 import org.l2jmobius.gameserver.network.clientpackets.limitshop.RequestPurchaseLimitShopItemList;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGamePlay;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGameStartInfo;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameClose;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameOpen;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGamePopupOk;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameReset;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameRollDice;
 import org.l2jmobius.gameserver.network.clientpackets.magiclamp.ExMagicLampGameInfo;
 import org.l2jmobius.gameserver.network.clientpackets.magiclamp.ExMagicLampGameStart;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.ConfirmMenteeAdd;
@@ -101,6 +106,12 @@ import org.l2jmobius.gameserver.network.clientpackets.mentoring.RequestMenteeAdd
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.RequestMenteeWaitingList;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.RequestMentorCancel;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.RequestMentorList;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.OlympiadMatchMaking;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.OlympiadMatchMakingCancel;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.OlympiadUI;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.RequestExOlympiadMatchListRefresh;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.RequestOlympiadMatchList;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.RequestOlympiadObserverEnd;
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExEvolvePet;
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExPetEquipItem;
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExPetUnequipItem;
@@ -544,8 +555,8 @@ public enum ExClientPackets
 	EX_PAYBACK_LIST(0x175, null, ConnectionState.IN_GAME),
 	EX_PAYBACK_GIVE_REWARD(0x176, null, ConnectionState.IN_GAME),
 	EX_AUTOPLAY_SETTING(0x177, ExAutoPlaySetting::new, ConnectionState.IN_GAME),
-	EX_OLYMPIAD_MATCH_MAKING(0x178, null, ConnectionState.IN_GAME),
-	EX_OLYMPIAD_MATCH_MAKING_CANCEL(0x179, null, ConnectionState.IN_GAME),
+	EX_OLYMPIAD_MATCH_MAKING(0x178, OlympiadMatchMaking::new, ConnectionState.IN_GAME),
+	EX_OLYMPIAD_MATCH_MAKING_CANCEL(0x179, OlympiadMatchMakingCancel::new, ConnectionState.IN_GAME),
 	EX_FESTIVAL_BM_INFO(0x17A, null, ConnectionState.IN_GAME),
 	EX_FESTIVAL_BM_GAME(0x17B, null, ConnectionState.IN_GAME),
 	EX_GACHA_SHOP_INFO(0x17C, null, ConnectionState.IN_GAME),
@@ -584,7 +595,7 @@ public enum ExClientPackets
 	EX_CRAFT_RANDOM_MAKE(0x19D, ExRequestRandomCraftMake::new, ConnectionState.IN_GAME),
 	EX_MULTI_SELL_LIST(0x19E, RequestMultisellList::new, ConnectionState.IN_GAME),
 	EX_SAVE_ITEM_ANNOUNCE_SETTING(0x19F, ExSaveItemAnnounceSetting::new, ConnectionState.IN_GAME),
-	EX_OLYMPIAD_UI(0x1A0, null, ConnectionState.IN_GAME),
+	EX_OLYMPIAD_UI(0x1A0, OlympiadUI::new, ConnectionState.IN_GAME),
 	// 270
 	EX_SHARED_POSITION_SHARING_UI(0x1A1, ExRequestSharingLocationUi::new, ConnectionState.IN_GAME),
 	EX_SHARED_POSITION_TELEPORT_UI(0x1A2, ExRequestSharedLocationTeleportUi::new, ConnectionState.IN_GAME),
@@ -610,11 +621,11 @@ public enum ExClientPackets
 	EX_DPSVR(0x1B6, null, ConnectionState.IN_GAME),
 	EX_TENPROTECT_DECRYPT_ERROR(0x1B7, null, ConnectionState.IN_GAME),
 	EX_NET_LATENCY(0x1B8, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_OPEN(0x1B9, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_ROLL_DICE(0x1BA, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_POPUP_OK(0x1BB, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_RESET(0x1BC, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_CLOSE(0x1BD, null, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_OPEN(0x1B9, ExRequestMableGameOpen::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_ROLL_DICE(0x1BA, ExRequestMableGameRollDice::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_POPUP_OK(0x1BB, ExRequestMableGamePopupOk::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_RESET(0x1BC, ExRequestMableGameReset::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_CLOSE(0x1BD, ExRequestMableGameClose::new, ConnectionState.IN_GAME),
 	EX_RETURN_TO_ORIGIN(0x1BE, null, ConnectionState.IN_GAME),
 	EX_BLESS_OPTION_PUT_ITEM(0x1BF, RequestBlessOptionPutItem::new, ConnectionState.IN_GAME),
 	EX_BLESS_OPTION_ENCHANT(0x1C0, RequestBlessOptionEnchant::new, ConnectionState.IN_GAME),

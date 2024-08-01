@@ -21,7 +21,6 @@ import java.util.List;
 
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.TryMixCubeResultType;
 import org.l2jmobius.gameserver.enums.TryMixCubeType;
@@ -85,7 +84,7 @@ public class RequestAlchemyTryMixCube extends ClientPacket
 			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_ALCHEMY_DURING_BATTLE);
 			return;
 		}
-		else if (player.isInStoreMode() || (player.getPrivateStoreType() != PrivateStoreType.NONE))
+		else if (player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_ALCHEMY_WHILE_TRADING_OR_USING_A_PRIVATE_STORE_OR_SHOP);
 			return;

@@ -6,7 +6,7 @@ Eclipse: https://www.mediafire.com/file/kryxpp6u4m49eo9/eclipse-java-2024-03-R-w
 Geodata: https://www.mediafire.com/file/j3dt6bpwswuqon3/L2J_Mobius_Essence_7.2_AztacansTemple_Geodata.zip
 
 Client (password L2jMobius): https://drive.google.com/u/3/uc?id=1MT12V4HsEibVb3V4_huf782HKcwo3h05
-System: https://mega.nz/file/MwkDyb4C#1two6lrWAbHhbUXB615KxdbUXomz-ZtWW0W8E_BCwyg
+System: https://mega.nz/file/58lXhJrS#mtnawPW9xCuIXwxVhdrBv-klUKIKSBuxHuCJPbhJXxE
 
 All provided download links are for personal use. Redistribution of these links is bannable.
 

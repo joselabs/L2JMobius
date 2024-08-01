@@ -45,6 +45,19 @@ public class KeyPacket extends ServerPacket
 		buffer.writeInt(Config.SERVER_ID); // server id
 		buffer.writeByte(1);
 		buffer.writeInt(0); // obfuscation key
-		buffer.writeByte((Config.SERVER_LIST_TYPE & 0x400) == 0x400); // isClassic
+		if ((Config.SERVER_LIST_TYPE & 0x1000) == 0x1000)
+		{
+			buffer.writeByte(4); // Aden
+		}
+		else if ((Config.SERVER_LIST_TYPE & 0x400) == 0x400)
+		{
+			buffer.writeByte(1); // Classic
+		}
+		else
+		{
+			buffer.writeByte(0); // Live
+		}
+		buffer.writeByte(0);
+		buffer.writeByte(0);
 	}
 }

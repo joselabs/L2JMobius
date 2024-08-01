@@ -22,7 +22,6 @@ import java.sql.PreparedStatement;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.handler.AdminCommandHandler;
 import org.l2jmobius.gameserver.instancemanager.CursedWeaponsManager;
 import org.l2jmobius.gameserver.model.World;
@@ -60,8 +59,9 @@ public class RequestDestroyItem extends ClientPacket
 			return;
 		}
 		
-		if (_count <= 0)
+		if (_count < 1)
 		{
+			player.sendPacket(SystemMessageId.YOU_CANNOT_DESTROY_IT_BECAUSE_THE_NUMBER_IS_INCORRECT);
 			if (_count < 0)
 			{
 				Util.handleIllegalPlayerAction(player, "[RequestDestroyItem] Character " + player.getName() + " of account " + player.getAccountName() + " tried to destroy item with oid " + _objectId + " but has count < 0!", Config.DEFAULT_PUNISH);
@@ -76,7 +76,7 @@ public class RequestDestroyItem extends ClientPacket
 		}
 		
 		long count = _count;
-		if (player.isProcessingTransaction() || (player.getPrivateStoreType() != PrivateStoreType.NONE))
+		if (player.isProcessingTransaction() || player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.WHILE_OPERATING_A_PRIVATE_STORE_OR_WORKSHOP_YOU_CANNOT_DISCARD_DESTROY_OR_TRADE_AN_ITEM);
 			return;
@@ -90,7 +90,7 @@ public class RequestDestroyItem extends ClientPacket
 		
 		final Item itemToRemove = player.getInventory().getItemByObjectId(_objectId);
 		
-		// if we can't find the requested item, its actually a cheat
+		// if we can't find the requested item, it is actually a cheat
 		if (itemToRemove == null)
 		{
 			// GM can destroy other player items
@@ -152,10 +152,12 @@ public class RequestDestroyItem extends ClientPacket
 		
 		if (itemToRemove.getTemplate().isPetItem())
 		{
+			// Check if the player has a summoned pet or mount active with the same object ID.
 			final Summon pet = player.getPet();
-			if ((pet != null) && (pet.getControlObjectId() == _objectId))
+			if (((pet != null) && (pet.getControlObjectId() == _objectId)) || (player.isMounted() && (player.getMountObjectID() == _objectId)))
 			{
-				pet.unSummon(player);
+				player.sendPacket(SystemMessageId.AS_YOUR_PET_IS_CURRENTLY_OUT_ITS_SUMMONING_ITEM_CANNOT_BE_DESTROYED);
+				return;
 			}
 			
 			try (Connection con = DatabaseFactory.getConnection();
@@ -195,7 +197,7 @@ public class RequestDestroyItem extends ClientPacket
 			{
 				iu.addModifiedItem(itm);
 			}
-			player.sendInventoryUpdate(iu);
+			player.sendPacket(iu); // Sent inventory update for unequip instantly.
 		}
 		
 		final Item removedItem = player.getInventory().destroyItem("Destroy", itemToRemove, count, player, null);
@@ -213,6 +215,21 @@ public class RequestDestroyItem extends ClientPacket
 		{
 			iu.addModifiedItem(removedItem);
 		}
-		player.sendInventoryUpdate(iu);
+		player.sendPacket(iu); // Sent inventory update for destruction instantly.
+		player.updateAdenaAndWeight();
+		
+		final SystemMessage sm;
+		if (count > 1)
+		{
+			sm = new SystemMessage(SystemMessageId.S1_X_S2_DISAPPEARED);
+			sm.addItemName(removedItem);
+			sm.addLong(count);
+		}
+		else
+		{
+			sm = new SystemMessage(SystemMessageId.S1_HAS_DISAPPEARED);
+			sm.addItemName(removedItem);
+		}
+		player.sendPacket(sm);
 	}
 }

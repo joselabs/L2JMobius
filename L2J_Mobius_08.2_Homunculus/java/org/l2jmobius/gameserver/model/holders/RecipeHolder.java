@@ -114,7 +114,7 @@ public class RecipeHolder implements IIdentifiable
 	}
 	
 	/**
-	 * @return {@code true} if this a Dwarven recipe or {@code false} if its a Common recipe
+	 * @return {@code true} if this a Dwarven recipe or {@code false} if it is a Common recipe
 	 */
 	public boolean isDwarvenRecipe()
 	{
@@ -197,7 +197,7 @@ public class RecipeHolder implements IIdentifiable
 			final StatusUpdateType stat = entry.getKey();
 			final double requiredAmount = entry.getValue();
 			
-			// Less than or equals to because some stats bad interraction - like HP could kill the player if its taken all.
+			// Less than or equals to because some stats bad interraction - like HP could kill the player if it is taken all.
 			if (stat.getValue(manufacturer) <= requiredAmount)
 			{
 				if (sendMessage)
@@ -259,7 +259,7 @@ public class RecipeHolder implements IIdentifiable
 	 * @param success {@code true} to give the product item to the player, {@code false} otherwise.
 	 * @param craftingCritical {@code true} to give double of the product (if success), {@code false} otherwise.
 	 * @param sendMessage send system messages of the process.
-	 * @return {@code ItemHolder} of the randomly created product (even if its failing craft), {@code null} if the item creation was not performed due to failed checks.
+	 * @return {@code ItemHolder} of the randomly created product (even if it is failing craft), {@code null} if the item creation was not performed due to failed checks.
 	 */
 	public ItemHolder doCraft(Player player, Player manufacturer, boolean success, boolean craftingCritical, boolean sendMessage)
 	{
@@ -324,7 +324,7 @@ public class RecipeHolder implements IIdentifiable
 		{
 			player.addItem("Craft", result, manufacturer, true);
 			
-			// Award another item if its crafting critical. Double blessed items is very, very rare, but still possible.
+			// Award another item if it is crafting critical. Double blessed items is very, very rare, but still possible.
 			if (craftingCritical)
 			{
 				player.addItem("CraftCritical", result, manufacturer, true);

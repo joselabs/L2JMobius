@@ -78,7 +78,7 @@ public class Fan implements IAffectScopeHandler
 			return true;
 		};
 		
-		// Add object of origin since its skipped in the forEachVisibleObjectInRange method.
+		// Add object of origin since it is skipped in the forEachVisibleObjectInRange method.
 		if (filter.test(creature))
 		{
 			action.accept(creature);

@@ -135,7 +135,7 @@ public class ExOlympiadHeroAndLegendInfo extends ServerPacket
 			}
 			catch (SQLException e)
 			{
-				PacketLogger.warning("Hero and Legend Info: Couldnt load data: " + e.getMessage());
+				PacketLogger.warning("Hero and Legend Info: Could not load data: " + e.getMessage());
 			}
 		}
 	}

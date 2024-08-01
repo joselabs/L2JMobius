@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.clan.Clan;
@@ -31,7 +30,7 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 public class PledgeSkillList extends ServerPacket
 {
 	private final Collection<Skill> _skills;
-	private final List<SubPledgeSkill> _subSkills;
+	private final Collection<SubPledgeSkill> _subSkills;
 	
 	public static class SubPledgeSkill
 	{

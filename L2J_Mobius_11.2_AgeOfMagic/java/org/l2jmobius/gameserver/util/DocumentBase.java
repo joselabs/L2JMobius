@@ -265,8 +265,8 @@ public abstract class DocumentBase
 			value = Double.parseDouble(valueString);
 		}
 		
-		final Condition applayCond = parseCondition(n.getFirstChild(), template);
-		final FuncTemplate ft = new FuncTemplate(attachCond, applayCond, functionName, order, stat, value);
+		final Condition applyCond = parseCondition(n.getFirstChild(), template);
+		final FuncTemplate ft = new FuncTemplate(attachCond, applyCond, functionName, order, stat, value);
 		if (template instanceof ItemTemplate)
 		{
 			((ItemTemplate) template).addFunctionTemplate(ft);

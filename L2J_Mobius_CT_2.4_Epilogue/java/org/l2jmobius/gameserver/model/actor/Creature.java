@@ -65,6 +65,7 @@ import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.geoengine.GeoEngine;
 import org.l2jmobius.gameserver.geoengine.pathfinding.AbstractNodeLoc;
 import org.l2jmobius.gameserver.geoengine.pathfinding.PathFinding;
+import org.l2jmobius.gameserver.instancemanager.CaptchaManager;
 import org.l2jmobius.gameserver.instancemanager.IdManager;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
 import org.l2jmobius.gameserver.instancemanager.MapRegionManager;
@@ -158,6 +159,7 @@ import org.l2jmobius.gameserver.network.serverpackets.MagicSkillCanceled;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillLaunched;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.MoveToLocation;
+import org.l2jmobius.gameserver.network.serverpackets.MoveToPawn;
 import org.l2jmobius.gameserver.network.serverpackets.Revive;
 import org.l2jmobius.gameserver.network.serverpackets.ServerClose;
 import org.l2jmobius.gameserver.network.serverpackets.ServerObjectInfo;
@@ -198,7 +200,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 {
 	public static final Logger LOGGER = Logger.getLogger(Creature.class.getName());
 	
-	private Set<Creature> _attackByList;
+	private final Set<Creature> _attackByList = ConcurrentHashMap.newKeySet(1);
 	private volatile boolean _isCastingNow = false;
 	private volatile boolean _isCastingSimultaneouslyNow = false;
 	private Skill _lastSkillCast;
@@ -252,9 +254,9 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	
 	private boolean _lethalable = true;
 	
-	private Map<Integer, OptionSkillHolder> _triggerSkills;
+	private final Map<Integer, OptionSkillHolder> _triggerSkills = new ConcurrentHashMap<>(1);
 	
-	private Map<Integer, InvulSkillHolder> _invulAgainst;
+	private final Map<Integer, InvulSkillHolder> _invulAgainst = new ConcurrentHashMap<>(1);
 	/** Creatures effect list. */
 	private final EffectList _effectList = new EffectList(this);
 	/** The creature that summons this character. */
@@ -563,7 +565,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 		else if (isRaid() && Config.RAIDBOSS_SPAWN_ANNOUNCEMENTS && ((getInstanceId() == 0) || Config.RAIDBOSS_INSTANCE_ANNOUNCEMENTS) && !isMinion() && !isRaidMinion())
 		{
 			final String name = NpcData.getInstance().getTemplate(getId()).getName();
-			if (name != null)
+			if ((name != null) && !Config.RAIDBOSSES_EXLUDED_FROM_ANNOUNCEMENTS.contains(getId()))
 			{
 				Broadcast.toAllOnlinePlayers(name + " has spawned!");
 				Broadcast.toAllOnlinePlayersOnScreen(name + " has spawned!");
@@ -607,6 +609,9 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	 */
 	public void broadcastPacket(ServerPacket packet)
 	{
+		// TODO: Maybe add some nearby player count logic here.
+		packet.sendInBroadcast(true);
+		
 		World.getInstance().forEachVisibleObject(this, Player.class, player ->
 		{
 			if (isVisibleFor(player))
@@ -639,15 +644,20 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	
 	public void broadcastMoveToLocation()
 	{
+		broadcastMoveToLocation(false);
+	}
+	
+	public void broadcastMoveToLocation(boolean force)
+	{
 		final MoveData move = _move;
 		if (move == null)
 		{
 			return;
 		}
 		
-		// Broadcast MoveToLocation (once per 300ms).
+		// Broadcast MoveToLocation when forced or once per second.
 		final int gameTicks = GameTimeTaskManager.getInstance().getGameTicks();
-		if ((gameTicks - move.lastBroadcastTime) < 3)
+		if (!force && (move.moveTimestamp > 0) && ((gameTicks - move.lastBroadcastTime) < 10))
 		{
 			return;
 		}
@@ -662,7 +672,15 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 			final WorldRegion region = getWorldRegion();
 			if ((region != null) && region.areNeighborsActive())
 			{
-				broadcastPacket(new MoveToLocation(this));
+				final WorldObject target = hasAI() ? _target : null;
+				if ((target != null) && (target != this) && (move.moveTimestamp == 0) && (getAI().getIntention() != CtrlIntention.AI_INTENTION_ACTIVE) && (getAI().getIntention() != CtrlIntention.AI_INTENTION_MOVE_TO))
+				{
+					broadcastPacket(new MoveToPawn(this, target, getAI().getClientMovingToPawnOffset()));
+				}
+				else
+				{
+					broadcastPacket(new MoveToLocation(this));
+				}
 			}
 		}
 	}
@@ -2518,6 +2536,11 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	 */
 	public boolean doDie(Creature killer)
 	{
+		if (Config.ENABLE_CAPTCHA)
+		{
+			CaptchaManager.getInstance().updateCounter(killer, this);
+		}
+		
 		// killing is only possible one time
 		synchronized (this)
 		{
@@ -2844,16 +2867,6 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	 */
 	public Set<Creature> getAttackByList()
 	{
-		if (_attackByList == null)
-		{
-			synchronized (this)
-			{
-				if (_attackByList == null)
-				{
-					_attackByList = ConcurrentHashMap.newKeySet();
-				}
-			}
-		}
 		return _attackByList;
 	}
 	
@@ -4376,7 +4389,8 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 			distFraction = distPassed / delta;
 		}
 		
-		if (distFraction > 1.79)
+		final boolean arrived = distFraction > 1.79;
+		if (arrived)
 		{
 			// Set the position of the Creature to the destination.
 			super.setXYZ(move.xDestination, move.yDestination, move.zDestination);
@@ -4394,14 +4408,13 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 		// Set the timer of last position update to now.
 		move.moveTimestamp = gameTicks;
 		
-		// Broadcast MoveToLocation (once per 300ms).
-		if (isPlayable() && ((gameTicks - move.lastBroadcastTime) >= 3) && isOnGeodataPath(move))
+		// Broadcast MoveToLocation on arrived.
+		if (arrived && !isOnGeodataPath())
 		{
-			move.lastBroadcastTime = gameTicks;
-			broadcastPacket(new MoveToLocation(this));
+			broadcastMoveToLocation(true);
 		}
 		
-		return distFraction > 1.79; // Arrived.
+		return arrived;
 	}
 	
 	public void revalidateZone(boolean force)
@@ -4608,7 +4621,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 		double sin;
 		
 		// Check if a movement offset is defined or no distance to go through
-		if ((offset > 0) || (distance < 1))
+		if ((offset > 0) || (distance < 1.79))
 		{
 			// approximation for moving closer when z coordinates are different
 			// TODO: handle Z axis movement better
@@ -4619,10 +4632,11 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 			}
 			
 			// If no distance to go through, the movement is canceled
-			if ((distance < 1) || ((distance - offset) <= 0))
+			if ((distance < 1.79) || ((distance - offset) <= 0))
 			{
 				// Notify the AI that the Creature is arrived at destination
 				getAI().notifyEvent(CtrlEvent.EVT_ARRIVED);
+				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			
@@ -4672,6 +4686,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 					{
 						if ((gtx == _move.geoPathGtx) && (gty == _move.geoPathGty))
 						{
+							sendPacket(ActionFailed.STATIC_PACKET);
 							return;
 						}
 						
@@ -4796,7 +4811,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 			}
 			
 			// If no distance to go through, the movement is canceled
-			if ((distance < 1) && ((Config.PATHFINDING > 0) || isPlayable()))
+			if ((distance < 1.79) && ((Config.PATHFINDING > 0) || isPlayable()))
 			{
 				if (isSummon())
 				{
@@ -4936,7 +4951,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 		// the CtrlEvent.EVT_ARRIVED will be sent when the character will actually arrive to destination by MovementTaskManager
 		
 		// Send a Server->Client packet MoveToLocation to the actor and all Player in its _knownPlayers
-		broadcastMoveToLocation();
+		broadcastMoveToLocation(true);
 		return true;
 	}
 	
@@ -5256,7 +5271,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 				target.breakCast();
 			}
 			
-			if (_triggerSkills != null)
+			if (!_triggerSkills.isEmpty())
 			{
 				for (OptionSkillHolder holder : _triggerSkills.values())
 				{
@@ -6077,7 +6092,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 						activeWeapon.castOnMagicSkill(this, target, skill);
 					}
 					
-					if (_triggerSkills != null)
+					if (!_triggerSkills.isEmpty())
 					{
 						for (OptionSkillHolder holder : _triggerSkills.values())
 						{
@@ -6514,6 +6529,10 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 		}
 		else
 		{
+			if (isPlayer() && !isDOT && (skill != null) && (skill.getCastRange() > 0) && (attacker != null) && !GeoEngine.getInstance().canSeeTarget(attacker, this))
+			{
+				amount = 0;
+			}
 			_status.reduceHp(amount, attacker, awake, isDOT, false);
 		}
 	}
@@ -6693,6 +6712,16 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 		return _effectList.isAffected(flag);
 	}
 	
+	/**
+	 * Check if target is affected by AbnormalType.
+	 * @param type the AbnormalType
+	 * @return boolean true if affected
+	 */
+	public boolean isAffectedByAbnormalType(AbnormalType type)
+	{
+		return _effectList.isAffectedByAbnormalType(type);
+	}
+	
 	public Team getTeam()
 	{
 		return _team;
@@ -6741,16 +6770,6 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	
 	public Map<Integer, OptionSkillHolder> getTriggerSkills()
 	{
-		if (_triggerSkills == null)
-		{
-			synchronized (this)
-			{
-				if (_triggerSkills == null)
-				{
-					_triggerSkills = new ConcurrentHashMap<>();
-				}
-			}
-		}
 		return _triggerSkills;
 	}
 	
@@ -7069,7 +7088,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	
 	public boolean isInvulAgainst(int skillId, int skillLevel)
 	{
-		if (_invulAgainst != null)
+		if (!_invulAgainst.isEmpty())
 		{
 			final SkillHolder holder = getInvulAgainstSkills().get(skillId);
 			return ((holder != null) && ((holder.getSkillLevel() < 1) || (holder.getSkillLevel() == skillLevel)));
@@ -7079,16 +7098,6 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	
 	private Map<Integer, InvulSkillHolder> getInvulAgainstSkills()
 	{
-		if (_invulAgainst == null)
-		{
-			synchronized (this)
-			{
-				if (_invulAgainst == null)
-				{
-					_invulAgainst = new ConcurrentHashMap<>();
-				}
-			}
-		}
 		return _invulAgainst;
 	}
 	

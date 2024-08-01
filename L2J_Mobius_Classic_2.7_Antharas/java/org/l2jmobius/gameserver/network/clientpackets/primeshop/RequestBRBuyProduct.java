@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
 import org.l2jmobius.gameserver.enums.ExBrProductReplyType;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -153,7 +154,7 @@ public class RequestBRBuyProduct extends ClientPacket
 			player.sendPacket(new ExBRGamePoint(player));
 		}
 		
-		player.removeRequest(PrimeShopRequest.class);
+		ThreadPool.schedule(() -> player.removeRequest(PrimeShopRequest.class), 1000);
 	}
 	
 	/**

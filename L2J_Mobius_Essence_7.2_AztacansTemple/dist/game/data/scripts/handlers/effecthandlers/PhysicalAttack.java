@@ -148,44 +148,43 @@ public class PhysicalAttack extends AbstractEffect
 		
 		final double shieldDefenceIgnoreRemoval = effected.getStat().getValue(Stat.SHIELD_DEFENCE_IGNORE_REMOVAL, 1);
 		final double shieldDefenceIgnoreRemovalAdd = effected.getStat().getValue(Stat.SHIELD_DEFENCE_IGNORE_REMOVAL_ADD, 0);
+		if (!_ignoreShieldDefence || (shieldDefenceIgnoreRemoval > 1) || (shieldDefenceIgnoreRemovalAdd > 0))
+		{
+			final byte shield = Formulas.calcShldUse(effector, effected);
+			switch (shield)
+			{
+				case Formulas.SHIELD_DEFENSE_SUCCEED:
+				{
+					int shieldDef = effected.getShldDef();
+					if (_ignoreShieldDefence)
+					{
+						final double shieldDefMod = Math.max(0, shieldDefenceIgnoreRemoval - 1);
+						double ignoredShieldDef = shieldDef - (shieldDef * shieldDefMod);
+						if (ignoredShieldDef > 0)
+						{
+							ignoredShieldDef = Math.max(0, ignoredShieldDef - shieldDefenceIgnoreRemovalAdd);
+						}
+						defence += shieldDef - ignoredShieldDef;
+					}
+					else
+					{
+						defence += effected.getShldDef();
+					}
+					break;
+				}
+				case Formulas.SHIELD_DEFENSE_PERFECT_BLOCK:
+				{
+					defence = -1;
+					break;
+				}
+			}
+		}
 		
 		for (int i = 0; i < _repeatCount; i++)
 		{
 			if ((i > 0) && (_chanceToRepeat > 0) && (Rnd.get(100) >= _chanceToRepeat))
 			{
 				break;
-			}
-			
-			if (!_ignoreShieldDefence || (shieldDefenceIgnoreRemoval > 1) || (shieldDefenceIgnoreRemovalAdd > 0))
-			{
-				final byte shield = Formulas.calcShldUse(effector, effected);
-				switch (shield)
-				{
-					case Formulas.SHIELD_DEFENSE_SUCCEED:
-					{
-						int shieldDef = effected.getShldDef();
-						if (_ignoreShieldDefence)
-						{
-							final double shieldDefMod = Math.max(0, shieldDefenceIgnoreRemoval - 1);
-							double ignoredShieldDef = shieldDef - (shieldDef * shieldDefMod);
-							if (ignoredShieldDef > 0)
-							{
-								ignoredShieldDef = Math.max(0, ignoredShieldDef - shieldDefenceIgnoreRemovalAdd);
-							}
-							defence += shieldDef - ignoredShieldDef;
-						}
-						else
-						{
-							defence += effected.getShldDef();
-						}
-						break;
-					}
-					case Formulas.SHIELD_DEFENSE_PERFECT_BLOCK:
-					{
-						defence = -1;
-						break;
-					}
-				}
 			}
 			
 			double damage = 1;

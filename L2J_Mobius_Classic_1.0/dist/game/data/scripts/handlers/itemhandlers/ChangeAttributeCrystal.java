@@ -17,12 +17,8 @@
 package handlers.itemhandlers;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.l2jmobius.gameserver.enums.ItemGrade;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.model.ItemInfo;
 import org.l2jmobius.gameserver.model.actor.Playable;
@@ -36,14 +32,6 @@ import org.l2jmobius.gameserver.network.serverpackets.attributechange.ExChangeAt
  */
 public class ChangeAttributeCrystal implements IItemHandler
 {
-	private static final Map<Integer, ItemGrade> ITEM_GRADES = new HashMap<>();
-	static
-	{
-		ITEM_GRADES.put(33502, ItemGrade.S);
-		ITEM_GRADES.put(35749, ItemGrade.R);
-		ITEM_GRADES.put(45817, ItemGrade.R);
-	}
-	
 	@Override
 	public boolean useItem(Playable playable, Item item, boolean forceUse)
 	{
@@ -54,22 +42,16 @@ public class ChangeAttributeCrystal implements IItemHandler
 		}
 		
 		final Player player = playable.getActingPlayer();
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_CHANGE_AN_ATTRIBUTE_WHILE_USING_A_PRIVATE_STORE_OR_WORKSHOP);
-			return false;
-		}
-		
-		if (ITEM_GRADES.get(item.getId()) == null)
-		{
-			player.sendPacket(SystemMessageId.CHANGING_ATTRIBUTES_HAS_BEEN_FAILED);
 			return false;
 		}
 		
 		final List<ItemInfo> itemList = new ArrayList<>();
 		for (Item i : player.getInventory().getItems())
 		{
-			if (i.isWeapon() && i.hasAttributes() && (i.getTemplate().getItemGrade() == ITEM_GRADES.get(item.getId())))
+			if (i.isWeapon() && i.hasAttributes() && (i.getTemplate().getCrystalTypePlus() == item.getTemplate().getCrystalTypePlus()))
 			{
 				itemList.add(new ItemInfo(i));
 			}

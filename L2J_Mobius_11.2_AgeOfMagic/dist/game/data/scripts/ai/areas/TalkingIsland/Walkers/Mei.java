@@ -49,7 +49,7 @@ public class Mei extends AbstractNpcAI
 		}
 		else if (event.equals("NPC_FOLLOW"))
 		{
-			addSpawn(ROTINA, npc.getX() + 10, npc.getY() + 10, npc.getZ() + 10, 0, false, 0);
+			addSpawn(ROTINA, npc.getX() + 10, npc.getY() + 10, npc.getZ() + 20, 0, false, 0);
 		}
 	}
 	

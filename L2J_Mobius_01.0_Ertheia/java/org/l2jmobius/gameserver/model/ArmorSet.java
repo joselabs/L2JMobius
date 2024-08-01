@@ -132,10 +132,10 @@ public class ArmorSet
 	 * @param player
 	 * @return true if all parts of set are enchanted to +6 or more
 	 */
-	public int getLowestSetEnchant(Player player)
+	public int getSetEnchant(Player player)
 	{
 		// Player don't have full set
-		if (getPiecesCountById(player) < _minimumPieces)
+		if (getPieceCount(player) < _minimumPieces)
 		{
 			return 0;
 		}
@@ -154,6 +154,7 @@ public class ArmorSet
 		{
 			enchantLevel = 0;
 		}
+		
 		return enchantLevel;
 	}
 	
@@ -174,12 +175,12 @@ public class ArmorSet
 	 * @param idProvider
 	 * @return the amount of set visual items that player has equipped
 	 */
-	public long getPiecesCount(Player player, Function<Item, Integer> idProvider)
+	public long getPieceCount(Player player, Function<Item, Integer> idProvider)
 	{
 		return player.getInventory().getPaperdollItemCount(item -> CommonUtil.contains(_requiredItems, idProvider.apply(item)));
 	}
 	
-	public long getPiecesCountById(Player player)
+	public long getPieceCount(Player player)
 	{
 		return player.getInventory().getPaperdollItemCount(item -> CommonUtil.contains(_requiredItems, item.getId()));
 	}

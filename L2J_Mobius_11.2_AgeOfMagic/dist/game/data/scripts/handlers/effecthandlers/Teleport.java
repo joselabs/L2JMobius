@@ -19,9 +19,11 @@ package handlers.effecthandlers;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.krateisCube.KrateiArena;
 import org.l2jmobius.gameserver.model.skill.Skill;
 
 /**
@@ -52,6 +54,20 @@ public class Teleport extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
+		if (effected.isPlayer())
+		{
+			final Player player = effected.getActingPlayer();
+			final KrateiArena arena = player.getKrateiArena();
+			if (arena != null)
+			{
+				arena.removePlayer(player);
+			}
+			else if (player.getUCState() != Player.UC_STATE_NONE)
+			{
+				return;
+			}
+		}
+		
 		effected.teleToLocation(_loc, true, null);
 	}
 }

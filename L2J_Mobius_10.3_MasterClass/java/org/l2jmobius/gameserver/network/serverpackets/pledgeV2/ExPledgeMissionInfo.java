@@ -64,30 +64,47 @@ public class ExPledgeMissionInfo extends ServerPacket
 		{
 			int progress = reward.getProgress(_player);
 			int status = reward.getStatus(_player);
-			// TODO: Figure out this.
-			if (reward.isLevelUpMission())
+			// Client status:
+			// 0 - Not displayed.
+			// 1 - Locked or not available.
+			// 2 - Available.
+			// 3 - Completed.
+			
+			// One time missions that are completed should not be displayed.
+			if (missions.contains(reward.getId()))
+			{
+				status = 0;
+			}
+			// Missions that don't meet the requirements should be locked.
+			else if (((reward.getRequiredMissionCompleteId() != 0) && !missions.contains(reward.getRequiredMissionCompleteId())) || (_player.getLevel() < reward.getParams().getInt("minLevel", 0)))
+			{
+				status = 1;
+			}
+			// Level Up Missions.
+			else if (reward.isLevelUpMission())
 			{
 				progress = 1;
-				if (status == 2)
-				{
-					status = reward.getRequiredCompletions() > _player.getLevel() ? 1 : 3;
-				}
-				else if (status != 3)
-				{
-					status = reward.isRecentlyCompleted(_player) ? 0 : 3;
-				}
-				else if ((status == 3) && !missions.isEmpty() && missions.contains(reward.getId()))
+				// Dualclass and Mainclass missions should not be displayed while you are on the other class.
+				if ((_player.isDualClassActive() && reward.isMainClassOnly()) || (!_player.isDualClassActive() && reward.isDualClassOnly()))
 				{
 					status = 0;
 				}
+				else
+				{
+					status = _player.getLevel() >= reward.getParams().getInt("minLevel", 0) ? 3 : 1;
+				}
 			}
-			else if (status == 1)
+			// Other daily missions.
+			else if (!reward.isLevelUpMission())
 			{
-				status = 3;
-			}
-			else if (status == 3)
-			{
-				status = 2;
+				if ((reward.getRequiredCompletions() == progress) && (_player.getLevel() >= reward.getParams().getInt("minLevel", 0)))
+				{
+					status = 3; // Completed.
+				}
+				else
+				{
+					status = 2; // Available.
+				}
 			}
 			buffer.writeInt(reward.getId());
 			buffer.writeInt(progress);

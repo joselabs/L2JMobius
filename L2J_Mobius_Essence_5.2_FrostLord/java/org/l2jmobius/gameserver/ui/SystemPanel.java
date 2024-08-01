@@ -118,7 +118,7 @@ public class SystemPanel extends JPanel
 			@Override
 			public void run()
 			{
-				lblProtocol.setText((Config.PROTOCOL_LIST.size() > 1 ? "Protocols: " : "Protocol: ") + (Config.SERVER_LIST_TYPE >= 400 ? "Essence " : "") + Config.PROTOCOL_LIST.toString());
+				lblProtocol.setText((Config.PROTOCOL_LIST.size() > 1 ? "Protocols: " : "Protocol: ") + ((Config.SERVER_LIST_TYPE & 0x1000) == 0x1000 ? "Essence " : (Config.SERVER_LIST_TYPE & 0x400) == 0x400 ? "Classic " : "") + Config.PROTOCOL_LIST.toString());
 			}
 		}, 4500);
 		

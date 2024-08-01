@@ -100,18 +100,18 @@ public class CharInfo extends ServerPacket
 		buffer.writeInt(_player.getAppearance().isFemale());
 		buffer.writeInt(_player.getBaseClass());
 		
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_UNDER));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HEAD));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LHAND));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_GLOVES));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_CHEST));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LEGS));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_FEET));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_CLOAK));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HAIR));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HAIR2));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_UNDER));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_HEAD));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_RHAND));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_LHAND));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_GLOVES));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_CHEST));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_LEGS));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_FEET));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_CLOAK));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_RHAND));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_HAIR));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_HAIR2));
 		// c6 new h's
 		buffer.writeShort(0);
 		buffer.writeShort(0);
@@ -201,7 +201,7 @@ public class CharInfo extends ServerPacket
 		buffer.writeByte(_player.isNoble()); // Symbol on char menu ctrl+I
 		buffer.writeByte(_player.isHero() || (_player.isGM() && Config.GM_HERO_AURA)); // Hero Aura
 		
-		buffer.writeByte(_player.isFishing()); // 1: Fishing Mode (Cant be undone by setting back to 0)
+		buffer.writeByte(_player.isFishing()); // 1: Fishing Mode (Cannot be undone by setting back to 0)
 		buffer.writeInt(_player.getFishX());
 		buffer.writeInt(_player.getFishY());
 		buffer.writeInt(_player.getFishZ());

@@ -130,7 +130,7 @@ public class SayuneRequest extends AbstractRequest
 			if (_isSelecting || ((nextEntry != null) && nextEntry.isSelector()))
 			{
 				// If player is on selector or next entry is selector go back to first entry
-				getActiveChar().setXYZ(map);
+				getPlayer().setXYZ(map);
 			}
 			else
 			{
@@ -138,11 +138,11 @@ public class SayuneRequest extends AbstractRequest
 				final SayuneEntry lastEntry = map.getInnerEntries().get(map.getInnerEntries().size() - 1);
 				if (lastEntry != null)
 				{
-					getActiveChar().setXYZ(lastEntry);
+					getPlayer().setXYZ(lastEntry);
 				}
 				else
 				{
-					getActiveChar().setXYZ(map);
+					getPlayer().setXYZ(map);
 				}
 			}
 		}

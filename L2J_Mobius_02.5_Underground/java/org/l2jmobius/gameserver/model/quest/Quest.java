@@ -1771,7 +1771,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	
 	public void addFirstTalkId(int npcId)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcId);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcId);
 	}
 	
 	public void addTalkId(int npcId)
@@ -1813,7 +1813,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(int... npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1822,7 +1822,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(Collection<Integer> npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1849,7 +1849,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(int... itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1858,7 +1858,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(Collection<Integer> itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1867,7 +1867,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(int... itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -1876,7 +1876,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(Collection<Integer> itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -2057,7 +2057,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(int... npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -2066,7 +2066,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(Collection<Integer> npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -2217,7 +2217,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2226,7 +2226,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2271,7 +2271,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	/**
@@ -2280,7 +2280,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	public void addOlympiadMatchFinishId()

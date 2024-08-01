@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="29200" name="Dormant User Sprout" additionalName="14-day" type="Armor">
 		<!-- A special head accessory for adventurers who've returned to the world of Aden. -->
@@ -67,10 +67,20 @@
 	<item id="29206" name="Honey Vitality Beer" type="EtcItem">
 		<!-- Honey beer made from Mystic Tavern's special recipe. Recovers Vitality. For 10 min., CON/ MEN/ LUC/ CHA +1. Using another Honey Vitality Beer while its effect is active stacks it up to Lv. 3. Vitality item with no restrictions. Honey Vitality Beer Lv. 2: For 10 min., CON/ MEN/ LUC/ CHA +2, acquired XP +10%. Honey Vitality Beer Lv. 3: For 10 min, CON/ MEN/ LUC/ CHA +3, acquired XP +30%. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.bm_royal_honey_beer" />
-		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="is_sellable" val="false" />
+		<set name="reuse_delay" val="300000" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_sellable" val="false" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="is_event_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29538" level="1" /> <!-- Royal Honey Dark Beer -->
+		</skills>
 	</item>
 	<item id="29207" name="Teddy Bear Appearance Stone" type="EtcItem">
 		<!-- Changes the armor appearance to that of Teddy Bear. Used with upper or one-piece armor. The original appearance can be restored with Scroll: Restore Equipment. -->
@@ -145,6 +155,7 @@
 		<set name="bodypart" val="hairall" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
+		<set name="enchant_enabled" val="true" />
 		<set name="commissionItemType" val="HAIR_ACCESSORY" />
 		<set name="weight" val="10" />
 		<set name="is_sellable" val="false" />

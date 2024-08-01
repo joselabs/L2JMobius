@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.xml.ElementalAttributeData;
 import org.l2jmobius.gameserver.enums.AttributeType;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.EnchantItemAttributeRequest;
 import org.l2jmobius.gameserver.model.holders.ElementalItemHolder;
@@ -74,7 +73,7 @@ public class RequestExEnchantItemAttribute extends ClientPacket
 			return;
 		}
 		
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_ADD_ELEMENTAL_POWER_WHILE_OPERATING_A_PRIVATE_STORE_OR_PRIVATE_WORKSHOP);
 			player.removeRequest(request.getClass());
@@ -103,6 +102,12 @@ public class RequestExEnchantItemAttribute extends ClientPacket
 		if (!item.isElementable())
 		{
 			player.sendPacket(SystemMessageId.ELEMENTAL_POWER_ENHANCER_USAGE_REQUIREMENT_IS_NOT_SUFFICIENT);
+			player.removeRequest(request.getClass());
+			return;
+		}
+		
+		if (_count < 1)
+		{
 			player.removeRequest(request.getClass());
 			return;
 		}

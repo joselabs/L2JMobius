@@ -1671,7 +1671,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(int... npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1680,7 +1680,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(Collection<Integer> npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1707,7 +1707,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(int... itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1716,7 +1716,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(Collection<Integer> itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1725,7 +1725,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(int... itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -1734,7 +1734,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(Collection<Integer> itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -1897,7 +1897,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(int... npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -1906,7 +1906,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(Collection<Integer> npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -2057,7 +2057,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2066,7 +2066,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2111,7 +2111,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	/**
@@ -2120,7 +2120,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	/**
@@ -2782,7 +2782,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	{
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement stm = con.prepareStatement("INSERT INTO character_quests (char_id,name,var,value) VALUES (?,?,?,?)");
+			final PreparedStatement stm = con.prepareStatement("INSERT INTO character_quests (charId,name,var,value) VALUES (?,?,?,?)");
 			for (Integer charId : objectsId)
 			{
 				stm.setInt(1, charId.intValue());
@@ -2806,7 +2806,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	{
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement stm = con.prepareStatement("DELETE FROM character_quests WHERE name = ? and char_id IN (SELECT charId FROM characters WHERE clanid = ? AND online = 0)");
+			final PreparedStatement stm = con.prepareStatement("DELETE FROM character_quests WHERE name = ? and charId IN (SELECT charId FROM characters WHERE clanid = ? AND online = 0)");
 			stm.setString(1, getName());
 			stm.setInt(2, clanId);
 			stm.executeUpdate();

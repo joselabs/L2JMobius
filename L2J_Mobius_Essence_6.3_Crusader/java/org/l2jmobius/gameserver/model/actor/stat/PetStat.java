@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.model.actor.stat;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
+import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
@@ -123,14 +124,16 @@ public class PetStat extends SummonStat
 		{
 			throw new IllegalArgumentException("No pet data for npc: " + getActiveChar().getTemplate().getId() + " level: " + value);
 		}
+		
 		getActiveChar().stopFeed();
 		super.setLevel(value);
-		
 		getActiveChar().startFeed();
 		
-		if (getActiveChar().getControlItem() != null)
+		final Item item = getActiveChar().getControlItem();
+		if (item != null)
 		{
-			getActiveChar().getControlItem().setEnchantLevel(getLevel());
+			item.setEnchantLevel(getLevel());
+			getActiveChar().getOwner().sendItemList();
 		}
 	}
 	

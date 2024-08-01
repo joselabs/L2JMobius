@@ -57,6 +57,7 @@ import org.l2jmobius.gameserver.data.xml.BuyListData;
 import org.l2jmobius.gameserver.data.xml.CategoryData;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.DoorData;
+import org.l2jmobius.gameserver.data.xml.DynamicExpRateData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemHPBonusData;
@@ -93,6 +94,7 @@ import org.l2jmobius.gameserver.handler.EffectHandler;
 import org.l2jmobius.gameserver.instancemanager.AntiFeedManager;
 import org.l2jmobius.gameserver.instancemanager.BoatManager;
 import org.l2jmobius.gameserver.instancemanager.CHSiegeManager;
+import org.l2jmobius.gameserver.instancemanager.CaptchaManager;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.CastleManorManager;
 import org.l2jmobius.gameserver.instancemanager.ClanHallAuctionManager;
@@ -125,8 +127,8 @@ import org.l2jmobius.gameserver.instancemanager.ServerRestartManager;
 import org.l2jmobius.gameserver.instancemanager.SiegeManager;
 import org.l2jmobius.gameserver.instancemanager.WalkingManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
-import org.l2jmobius.gameserver.instancemanager.games.Lottery;
-import org.l2jmobius.gameserver.instancemanager.games.MonsterRace;
+import org.l2jmobius.gameserver.instancemanager.games.LotteryManager;
+import org.l2jmobius.gameserver.instancemanager.games.MonsterRaceManager;
 import org.l2jmobius.gameserver.model.AutoSpawnHandler;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
@@ -219,6 +221,7 @@ public class GameServer
 		
 		printSection("Data");
 		CategoryData.getInstance();
+		DynamicExpRateData.getInstance();
 		
 		printSection("Skills");
 		EffectHandler.getInstance().executeScript();
@@ -259,6 +262,7 @@ public class GameServer
 		RaidBossPointsManager.getInstance();
 		PetDataTable.getInstance();
 		CharSummonTable.getInstance().init();
+		CaptchaManager.getInstance();
 		
 		if (Config.PREMIUM_SYSTEM_ENABLED)
 		{
@@ -356,8 +360,8 @@ public class GameServer
 		{
 			ItemsAutoDestroyTaskManager.getInstance();
 		}
-		MonsterRace.getInstance();
-		Lottery.getInstance();
+		MonsterRaceManager.getInstance();
+		LotteryManager.getInstance();
 		SevenSigns.getInstance().spawnSevenSignsNPC();
 		SevenSignsFestival.getInstance();
 		AutoSpawnHandler.getInstance();

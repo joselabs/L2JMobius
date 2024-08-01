@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="40100" toLevel="1" name="Purple Lantern - 2nd Place">
 		<icon>icon.etc_holy_grail_i01</icon>
@@ -168,6 +168,15 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<staticReuse>true</staticReuse>
+		<reuseDelay>86400</reuseDelay>
+		<conditions>
+			<condition name="OpNotInstantzone" />
+			<condition name="CanAddMaxEntranceInzone">
+				<instanceId>208;209;210;211;212;213</instanceId>
+				<amount>1</amount>
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="ResetInstanceEntry">
 				<instanceId>208;209;210;211;212;213</instanceId>
@@ -185,6 +194,15 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<staticReuse>true</staticReuse>
+		<reuseDelay>86400</reuseDelay>
+		<conditions>
+			<condition name="OpNotInstantzone" />
+			<condition name="CanAddMaxEntranceInzone">
+				<instanceId>208;209;210;211;212;213</instanceId>
+				<amount>1</amount>
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="ResetInstanceEntry">
 				<instanceId>208;209;210;211;212;213</instanceId>
@@ -584,6 +602,11 @@
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="Ride">
+				<npcId>15955</npcId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40141" toLevel="1" name="Combat Scroll">
 		<!-- For 20 min., Max HP/ MP/ CP +300, P./ M. Atk. +200, Atk. Spd./ Casting Spd. +60, P. Critical Rate/ M. Skill Critical Rate +20, P. Critical Damage/ M. Skill Critical Damage +10%. The effect remains after death. You can cancel the effect by yourself. -->
@@ -1055,6 +1078,23 @@
 	<skill id="40181" toLevel="1" name="Antharas' Lair's Time Stone">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>93903</itemConsumeId> <!-- Antharas' Lair's Time Stone (Time-limited) -->
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>80</minLevel>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="AddHuntingTime">
+				<zoneId>12</zoneId>
+				<time>3600000</time>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40182" toLevel="1" name="Lucky Energy Card">
 		<icon>icon.skill0000</icon>
@@ -1156,6 +1196,15 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<staticReuse>true</staticReuse>
+		<reuseDelay>86400</reuseDelay>
+		<conditions>
+			<condition name="OpNotInstantzone" />
+			<condition name="CanAddMaxEntranceInzone">
+				<instanceId>208;209;210;211;212;213</instanceId>
+				<amount>1</amount>
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="ResetInstanceEntry">
 				<instanceId>208;209;210;211;212;213</instanceId>
@@ -1173,6 +1222,15 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<staticReuse>true</staticReuse>
+		<reuseDelay>86400</reuseDelay>
+		<conditions>
+			<condition name="OpNotInstantzone" />
+			<condition name="CanAddMaxEntranceInzone">
+				<instanceId>208;209;210;211;212;213</instanceId>
+				<amount>1</amount>
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="ResetInstanceEntry">
 				<instanceId>208;209;210;211;212;213</instanceId>

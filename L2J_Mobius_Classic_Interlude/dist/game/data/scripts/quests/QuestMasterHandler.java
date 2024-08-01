@@ -92,6 +92,10 @@ import quests.Q00232_TestOfTheLord.Q00232_TestOfTheLord;
 import quests.Q00233_TestOfTheWarSpirit.Q00233_TestOfTheWarSpirit;
 import quests.Q00234_FatesWhisper.Q00234_FatesWhisper;
 import quests.Q00235_MimirsElixir.Q00235_MimirsElixir;
+import quests.Q00241_PossessorOfAPreciousSoul1.Q00241_PossessorOfAPreciousSoul1;
+import quests.Q00242_PossessorOfAPreciousSoul2.Q00242_PossessorOfAPreciousSoul2;
+import quests.Q00246_PossessorOfAPreciousSoul3.Q00246_PossessorOfAPreciousSoul3;
+import quests.Q00247_PossessorOfAPreciousSoul4.Q00247_PossessorOfAPreciousSoul4;
 import quests.Q00255_Tutorial.Q00255_Tutorial;
 import quests.Q00257_TheGuardIsBusy.Q00257_TheGuardIsBusy;
 import quests.Q00258_BringWolfPelts.Q00258_BringWolfPelts;
@@ -133,6 +137,7 @@ import quests.Q00328_SenseForBusiness.Q00328_SenseForBusiness;
 import quests.Q00329_CuriosityOfADwarf.Q00329_CuriosityOfADwarf;
 import quests.Q00331_ArrowOfVengeance.Q00331_ArrowOfVengeance;
 import quests.Q00333_HuntOfTheBlackLion.Q00333_HuntOfTheBlackLion;
+import quests.Q00337_AudienceWithTheLandDragon.Q00337_AudienceWithTheLandDragon;
 import quests.Q00344_1000YearsTheEndOfLamentation.Q00344_1000YearsTheEndOfLamentation;
 import quests.Q00348_AnArrogantSearch.Q00348_AnArrogantSearch;
 import quests.Q00350_EnhanceYourWeapon.Q00350_EnhanceYourWeapon;
@@ -167,15 +172,25 @@ import quests.Q00418_PathOfTheArtisan.Q00418_PathOfTheArtisan;
 import quests.Q00420_LittleWing.Q00420_LittleWing;
 import quests.Q00421_LittleWingsBigAdventure.Q00421_LittleWingsBigAdventure;
 import quests.Q00500_BrothersBoundInChains.Q00500_BrothersBoundInChains;
+import quests.Q00501_ProofOfClanAlliance.Q00501_ProofOfClanAlliance;
+import quests.Q00503_PursuitOfClanAmbition.Q00503_PursuitOfClanAmbition;
+import quests.Q00505_BloodOffering.Q00505_BloodOffering;
 import quests.Q00605_AllianceWithKetraOrcs.Q00605_AllianceWithKetraOrcs;
 import quests.Q00606_BattleAgainstVarkaSilenos.Q00606_BattleAgainstVarkaSilenos;
 import quests.Q00611_AllianceWithVarkaSilenos.Q00611_AllianceWithVarkaSilenos;
 import quests.Q00612_BattleAgainstKetraOrcs.Q00612_BattleAgainstKetraOrcs;
 import quests.Q00617_GatherTheFlames.Q00617_GatherTheFlames;
+import quests.Q00618_IntoTheFlame.Q00618_IntoTheFlame;
+import quests.Q00619_RelicsOfTheOldEmpire.Q00619_RelicsOfTheOldEmpire;
 import quests.Q00620_FourGoblets.Q00620_FourGoblets;
 import quests.Q00622_SpecialtyLiquorDelivery.Q00622_SpecialtyLiquorDelivery;
 import quests.Q00623_TheFinestFood.Q00623_TheFinestFood;
 import quests.Q00628_HuntGoldenRam.Q00628_HuntGoldenRam;
+import quests.Q00634_InSearchOfFragmentsOfDimension.Q00634_InSearchOfFragmentsOfDimension;
+import quests.Q00635_IntoTheDimensionalRift.Q00635_IntoTheDimensionalRift;
+import quests.Q00636_TruthBeyond.Q00636_TruthBeyond;
+import quests.Q00638_SeekersOfTheHolyGrail.Q00638_SeekersOfTheHolyGrail;
+import quests.Q00639_GuardiansOfTheHolyGrail.Q00639_GuardiansOfTheHolyGrail;
 import quests.Q00640_TheZeroHour.Q00640_TheZeroHour;
 import quests.Q00641_AttackSailren.Q00641_AttackSailren;
 import quests.Q00642_APowerfulPrimevalCreature.Q00642_APowerfulPrimevalCreature;
@@ -316,6 +331,10 @@ public class QuestMasterHandler
 		Q00233_TestOfTheWarSpirit.class,
 		Q00234_FatesWhisper.class,
 		Q00235_MimirsElixir.class,
+		Q00241_PossessorOfAPreciousSoul1.class,
+		Q00242_PossessorOfAPreciousSoul2.class,
+		Q00246_PossessorOfAPreciousSoul3.class,
+		Q00247_PossessorOfAPreciousSoul4.class,
 		Q00255_Tutorial.class,
 		Q00257_TheGuardIsBusy.class,
 		Q00258_BringWolfPelts.class,
@@ -357,6 +376,7 @@ public class QuestMasterHandler
 		Q00329_CuriosityOfADwarf.class,
 		Q00331_ArrowOfVengeance.class,
 		Q00333_HuntOfTheBlackLion.class,
+		Q00337_AudienceWithTheLandDragon.class,
 		Q00344_1000YearsTheEndOfLamentation.class,
 		Q00348_AnArrogantSearch.class,
 		Q00350_EnhanceYourWeapon.class,
@@ -391,16 +411,26 @@ public class QuestMasterHandler
 		Q00420_LittleWing.class, // FIXME: Underground
 		Q00421_LittleWingsBigAdventure.class, // FIXME: Underground
 		Q00500_BrothersBoundInChains.class,
+		Q00501_ProofOfClanAlliance.class,
+		Q00503_PursuitOfClanAmbition.class,
+		Q00505_BloodOffering.class,
 		Q00605_AllianceWithKetraOrcs.class,
 		Q00606_BattleAgainstVarkaSilenos.class,
 		Q00611_AllianceWithVarkaSilenos.class,
 		Q00612_BattleAgainstKetraOrcs.class,
 		Q00617_GatherTheFlames.class,
+		Q00619_RelicsOfTheOldEmpire.class,
+		Q00618_IntoTheFlame.class,
 		Q00620_FourGoblets.class, // FIXME: Grand Crusade
 		Q00622_SpecialtyLiquorDelivery.class,
 		Q00623_TheFinestFood.class,
 		Q00628_HuntGoldenRam.class,
 		Q00630_PirateTreasureHunt.class, // TODO: Not done.
+		Q00634_InSearchOfFragmentsOfDimension.class,
+		Q00635_IntoTheDimensionalRift.class,
+		Q00636_TruthBeyond.class,
+		Q00638_SeekersOfTheHolyGrail.class,
+		Q00639_GuardiansOfTheHolyGrail.class,
 		Q00640_TheZeroHour.class,
 		Q00641_AttackSailren.class, // FIXME: Grand Crusade
 		Q00642_APowerfulPrimevalCreature.class, // FIXME: Grand Crusade
@@ -457,7 +487,7 @@ public class QuestMasterHandler
 		Q11020_BlacksmithsRequest.class,
 		Q11021_RedGemNecklace1.class,
 		Q11022_RedGemNecklace2.class,
-		Q11023_RedGemNecklace3.class,
+		Q11023_RedGemNecklace3.class
 	};
 	
 	public static void main(String[] args)

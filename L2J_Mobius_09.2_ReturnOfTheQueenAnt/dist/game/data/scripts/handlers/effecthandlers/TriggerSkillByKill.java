@@ -17,6 +17,7 @@
 package handlers.effecthandlers;
 
 import org.l2jmobius.commons.util.Rnd;
+import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
@@ -36,14 +37,28 @@ public class TriggerSkillByKill extends AbstractEffect
 {
 	private final int _chance;
 	private final SkillHolder _skill;
+	private final InstanceType _victimType;
 	
 	public TriggerSkillByKill(StatSet params)
 	{
 		_chance = params.getInt("chance", 100);
 		_skill = new SkillHolder(params.getInt("skillId", 0), params.getInt("skillLevel", 0));
+		_victimType = params.getEnum("victimType", InstanceType.class, InstanceType.Creature);
 	}
 	
-	private void onCreatureKilled(OnCreatureKilled event, Creature target)
+	@Override
+	public void onStart(Creature effector, Creature effected, Skill skill, Item item)
+	{
+		effected.addListener(new ConsumerEventListener(effected, EventType.ON_CREATURE_KILLED, (OnCreatureKilled event) -> onCreatureKilled(event), this));
+	}
+	
+	@Override
+	public void onExit(Creature effector, Creature effected, Skill skill)
+	{
+		effected.removeListenerIf(EventType.ON_CREATURE_KILLED, listener -> listener.getOwner() == this);
+	}
+	
+	private void onCreatureKilled(OnCreatureKilled event)
 	{
 		if ((_chance == 0) || ((_skill.getSkillId() == 0) || (_skill.getSkillLevel() == 0)))
 		{
@@ -55,23 +70,11 @@ public class TriggerSkillByKill extends AbstractEffect
 			return;
 		}
 		
-		final Skill triggerSkill = _skill.getSkill();
-		
-		if (event.getAttacker() == target)
+		if (!event.getTarget().getInstanceType().isType(_victimType))
 		{
-			SkillCaster.triggerCast(target, target, triggerSkill);
+			return;
 		}
-	}
-	
-	@Override
-	public void onExit(Creature effector, Creature effected, Skill skill)
-	{
-		effected.removeListenerIf(EventType.ON_CREATURE_KILLED, listener -> listener.getOwner() == this);
-	}
-	
-	@Override
-	public void onStart(Creature effector, Creature effected, Skill skill, Item item)
-	{
-		effected.addListener(new ConsumerEventListener(effected, EventType.ON_CREATURE_KILLED, (OnCreatureKilled event) -> onCreatureKilled(event, effected), this));
+		
+		SkillCaster.triggerCast(event.getAttacker(), event.getAttacker(), _skill.getSkill());
 	}
 }

@@ -77,7 +77,6 @@ import org.l2jmobius.gameserver.model.quest.newquestdata.NewQuestCondition;
 import org.l2jmobius.gameserver.model.quest.newquestdata.NewQuestReward;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.skill.SkillCaster;
-import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.model.zone.ZoneType;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
@@ -1796,7 +1795,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	
 	public void addFirstTalkId(int npcId)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcId);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcId);
 	}
 	
 	public void addTalkId(int npcId)
@@ -1838,7 +1837,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(int... npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1847,7 +1846,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(Collection<Integer> npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1874,7 +1873,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(int... itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1883,7 +1882,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(Collection<Integer> itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1892,7 +1891,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(int... itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -1901,7 +1900,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(Collection<Integer> itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -2082,7 +2081,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(int... npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -2091,7 +2090,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(Collection<Integer> npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -2224,7 +2223,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2233,7 +2232,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2278,7 +2277,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	/**
@@ -2287,7 +2286,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	public void addOlympiadMatchFinishId()
@@ -3134,6 +3133,22 @@ public class Quest extends AbstractScript implements IIdentifiable
 		addCondStart(p -> classIds.contains(p.getClassId()), html);
 	}
 	
+	/**
+	 * Adds an item ID start condition to the quest.
+	 * @param itemId the item ID
+	 * @param pairs the HTML to display if the condition is not met per each npc
+	 */
+	@SafeVarargs
+	public final void addCondItemId(int itemId, KeyValuePair<Integer, String>... pairs)
+	{
+		addCondStart(p -> !p.getInventory().getAllItemsByItemId(itemId).isEmpty(), pairs);
+	}
+	
+	public void addCondPlayerKarma()
+	{
+		addCondStart(p -> p.getReputation() < 0);
+	}
+	
 	public void addNewQuestConditions(NewQuestCondition condition, String html)
 	{
 		if (!condition.getAllowedClassIds().isEmpty())
@@ -3337,7 +3352,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 		}
 		
 		// Players should not be able to teleport if in a special location.
-		if ((player.getMovieHolder() != null) || player.isFishing() || player.isInInstance() || player.isOnEvent() || player.isInOlympiadMode() || player.inObserverMode() || player.isInTraingCamp() || player.isInsideZone(ZoneId.TIMED_HUNTING))
+		if ((player.getMovieHolder() != null) || player.isFishing() || player.isInInstance() || player.isOnEvent() || player.isInOlympiadMode() || player.inObserverMode() || player.isInTraingCamp() || player.isInTimedHuntingZone())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_TELEPORT_RIGHT_NOW);
 			return false;
@@ -3368,6 +3383,11 @@ public class Quest extends AbstractScript implements IIdentifiable
 		player.stopMove(null);
 		player.teleToLocation(loc);
 		return true;
+	}
+	
+	public void sendAcceptDialog(Player player)
+	{
+		ThreadPool.schedule(() -> player.sendPacket(new ExQuestDialog(getId(), QuestDialogType.ACCEPT)), 2000);
 	}
 	
 	public void sendEndDialog(Player player)

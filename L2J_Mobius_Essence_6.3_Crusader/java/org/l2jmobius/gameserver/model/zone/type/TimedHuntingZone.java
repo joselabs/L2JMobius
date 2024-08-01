@@ -16,18 +16,15 @@
  */
 package org.l2jmobius.gameserver.model.zone.type;
 
-import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.MapRegionManager;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.TimedHuntingZoneHolder;
-import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.model.zone.ZoneType;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.huntingzones.TimedHuntingZoneExit;
 
 /**
  * @author Mobius
@@ -62,8 +59,7 @@ public class TimedHuntingZone extends ZoneType
 				final int remainingTime = player.getTimedHuntingZoneRemainingTime(holder.getZoneId());
 				if (remainingTime > 0)
 				{
-					player.startTimedHuntingZone(holder.getZoneId(), remainingTime);
-					player.getVariables().set(PlayerVariables.LAST_HUNTING_ZONE_ID, holder.getZoneId());
+					player.startTimedHuntingZone(holder.getZoneId());
 					if (holder.isPvpZone())
 					{
 						if (!player.isInsideZone(ZoneId.PVP))
@@ -124,8 +120,7 @@ public class TimedHuntingZone extends ZoneType
 		{
 			player.setInsideZone(ZoneId.TIMED_HUNTING, false);
 			
-			final int lastHuntingZoneId = player.getVariables().getInt(PlayerVariables.LAST_HUNTING_ZONE_ID, 0);
-			final TimedHuntingZoneHolder holder = TimedHuntingZoneData.getInstance().getHuntingZone(lastHuntingZoneId);
+			final TimedHuntingZoneHolder holder = player.getTimedHuntingZone();
 			if (holder != null)
 			{
 				if (holder.isPvpZone())
@@ -164,14 +159,6 @@ public class TimedHuntingZone extends ZoneType
 					player.broadcastInfo();
 				}
 			}
-			
-			ThreadPool.schedule(() ->
-			{
-				if (!player.isInTimedHuntingZone())
-				{
-					player.sendPacket(new TimedHuntingZoneExit(lastHuntingZoneId));
-				}
-			}, 1000);
 		}
 	}
 }

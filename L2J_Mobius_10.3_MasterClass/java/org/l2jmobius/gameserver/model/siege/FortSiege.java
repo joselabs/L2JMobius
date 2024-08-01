@@ -722,7 +722,7 @@ public class FortSiege implements Siegable
 	{
 		if (player.getClan() == null)
 		{
-			return 0; // Player dont have clan
+			return 0; // Player does not have clan
 		}
 		
 		if (checkConditions)

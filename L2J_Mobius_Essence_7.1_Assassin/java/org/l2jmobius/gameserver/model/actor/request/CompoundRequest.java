@@ -34,7 +34,7 @@ public class CompoundRequest extends AbstractRequest
 	
 	public Item getItemOne()
 	{
-		return getActiveChar().getInventory().getItemByObjectId(_itemOne);
+		return getPlayer().getInventory().getItemByObjectId(_itemOne);
 	}
 	
 	public void setItemOne(int itemOne)
@@ -44,7 +44,7 @@ public class CompoundRequest extends AbstractRequest
 	
 	public Item getItemTwo()
 	{
-		return getActiveChar().getInventory().getItemByObjectId(_itemTwo);
+		return getPlayer().getInventory().getItemByObjectId(_itemTwo);
 	}
 	
 	public void setItemTwo(int itemTwo)

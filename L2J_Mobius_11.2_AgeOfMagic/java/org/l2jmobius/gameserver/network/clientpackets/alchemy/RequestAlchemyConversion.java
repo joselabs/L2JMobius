@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.clientpackets.alchemy;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.xml.AlchemyData;
 import org.l2jmobius.gameserver.data.xml.ItemData;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.alchemy.AlchemyCraftData;
@@ -81,7 +80,7 @@ public class RequestAlchemyConversion extends ClientPacket
 			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_ALCHEMY_WHILE_IN_BATTLE);
 			return;
 		}
-		else if (player.isInStoreMode() || (player.getPrivateStoreType() != PrivateStoreType.NONE))
+		else if (player.isInStoreMode())
 		{
 			player.sendPacket(new ExAlchemyConversion(0, 0));
 			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_ALCHEMY_WHILE_TRADING_OR_USING_A_PRIVATE_STORE_OR_SHOP);

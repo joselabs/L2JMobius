@@ -38,7 +38,7 @@ public abstract class AbstractRequest
 		_player = player;
 	}
 	
-	public Player getActiveChar()
+	public Player getPlayer()
 	{
 		return _player;
 	}
@@ -61,6 +61,14 @@ public abstract class AbstractRequest
 	public boolean isTimeout()
 	{
 		return (_timeOutTask != null) && !_timeOutTask.isDone();
+	}
+	
+	public void cancelTimeout()
+	{
+		if (_timeOutTask != null)
+		{
+			_timeOutTask.cancel(false);
+		}
 	}
 	
 	public boolean isProcessing()

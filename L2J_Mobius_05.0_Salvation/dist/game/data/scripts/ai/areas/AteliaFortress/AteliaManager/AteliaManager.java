@@ -590,7 +590,7 @@ public class AteliaManager extends AbstractNpcAI
 				final int rnd = getRandom(3, 4);
 				for (int i = 0; i < rnd; i++)
 				{
-					final Npc alert = addSpawn(ALERT[i], npc.getX() + 10, npc.getY() + 10, npc.getZ() + 10, npc.getHeading(), false, 0, false);
+					final Npc alert = addSpawn(ALERT[i], npc.getX() + 10, npc.getY() + 10, npc.getZ() + 20, npc.getHeading(), false, 0, false);
 					alert.setTitle("On Alert Stage 1");
 					addAttackDesire(alert, player);
 				}

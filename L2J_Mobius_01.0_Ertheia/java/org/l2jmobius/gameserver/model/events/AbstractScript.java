@@ -3141,6 +3141,29 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	}
 	
 	/**
+	 * Get a random long from 0 (inclusive) to {@code max} (exclusive).<br>
+	 * Use this method instead of importing {@link org.l2jmobius.commons.util.Rnd} utility.
+	 * @param max the maximum value for randomization
+	 * @return a random long number from 0 to {@code max - 1}
+	 */
+	public static long getRandom(long max)
+	{
+		return Rnd.get(max);
+	}
+	
+	/**
+	 * Get a random long from {@code min} (inclusive) to {@code max} (inclusive).<br>
+	 * Use this method instead of importing {@link org.l2jmobius.commons.util.Rnd} utility.
+	 * @param min the minimum value for randomization
+	 * @param max the maximum value for randomization
+	 * @return a random long number from {@code min} to {@code max}
+	 */
+	public static long getRandom(long min, long max)
+	{
+		return Rnd.get(min, max);
+	}
+	
+	/**
 	 * Get a random boolean.<br>
 	 * Use this method instead of importing {@link org.l2jmobius.commons.util.Rnd} utility.
 	 * @return {@code true} or {@code false} randomly
@@ -3262,7 +3285,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	}
 	
 	/**
-	 * Open a door if it is present on the instance and its not open.
+	 * Open a door if it is present on the instance and it is not open.
 	 * @param doorId the ID of the door to open
 	 * @param instanceId the ID of the instance the door is in (0 if the door is not not inside an instance)
 	 */
@@ -3271,7 +3294,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		final Door door = getDoor(doorId, instanceId);
 		if (door == null)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": called openDoor(" + doorId + ", " + instanceId + "); but door wasnt found!", new NullPointerException());
+			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": called openDoor(" + doorId + ", " + instanceId + "); but door was not found!", new NullPointerException());
 		}
 		else if (!door.isOpen())
 		{
@@ -3280,7 +3303,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	}
 	
 	/**
-	 * Close a door if it is present in a specified the instance and its open.
+	 * Close a door if it is present in a specified the instance and it is open.
 	 * @param doorId the ID of the door to close
 	 * @param instanceId the ID of the instance the door is in (0 if the door is not not inside an instance)
 	 */
@@ -3289,7 +3312,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		final Door door = getDoor(doorId, instanceId);
 		if (door == null)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": called closeDoor(" + doorId + ", " + instanceId + "); but door wasnt found!", new NullPointerException());
+			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": called closeDoor(" + doorId + ", " + instanceId + "); but door was not found!", new NullPointerException());
 		}
 		else if (door.isOpen())
 		{

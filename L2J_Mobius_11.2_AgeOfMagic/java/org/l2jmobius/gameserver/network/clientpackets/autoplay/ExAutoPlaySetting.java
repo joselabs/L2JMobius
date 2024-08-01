@@ -37,7 +37,9 @@ public class ExAutoPlaySetting extends ClientPacket
 	private int _nextTargetMode;
 	private boolean _shortRange;
 	private int _potionPercent;
+	private int _petPotionPercent;
 	private boolean _respectfulHunting;
+	private int _macroIndex;
 	
 	@Override
 	protected void readImpl()
@@ -48,8 +50,9 @@ public class ExAutoPlaySetting extends ClientPacket
 		_nextTargetMode = readShort();
 		_shortRange = readByte() == 1;
 		_potionPercent = readInt();
-		readInt(); // 272
+		_petPotionPercent = readInt(); // 272
 		_respectfulHunting = readByte() == 1;
+		_macroIndex = readByte();
 	}
 	
 	@Override
@@ -69,7 +72,7 @@ public class ExAutoPlaySetting extends ClientPacket
 			return;
 		}
 		
-		player.sendPacket(new ExAutoPlaySettingSend(_options, _active, _pickUp, _nextTargetMode, _shortRange, _potionPercent, _respectfulHunting));
+		player.sendPacket(new ExAutoPlaySettingSend(_options, _active, _pickUp, _nextTargetMode, _shortRange, _potionPercent, _respectfulHunting, _macroIndex));
 		player.getAutoPlaySettings().setAutoPotionPercent(_potionPercent);
 		
 		if (!Config.ENABLE_AUTO_PLAY)
@@ -77,7 +80,7 @@ public class ExAutoPlaySetting extends ClientPacket
 			return;
 		}
 		
-		final List<Integer> settings = new ArrayList<>(7);
+		final List<Integer> settings = new ArrayList<>(8);
 		settings.add(0, _options);
 		settings.add(1, _active ? 1 : 0);
 		settings.add(2, _pickUp ? 1 : 0);
@@ -85,6 +88,8 @@ public class ExAutoPlaySetting extends ClientPacket
 		settings.add(4, _shortRange ? 1 : 0);
 		settings.add(5, _potionPercent);
 		settings.add(6, _respectfulHunting ? 1 : 0);
+		settings.add(7, _petPotionPercent); // Not used.
+		settings.add(8, _macroIndex);
 		player.getVariables().setIntegerList(PlayerVariables.AUTO_USE_SETTINGS, settings);
 		
 		player.getAutoPlaySettings().setOptions(_options);
@@ -92,6 +97,7 @@ public class ExAutoPlaySetting extends ClientPacket
 		player.getAutoPlaySettings().setNextTargetMode(_nextTargetMode);
 		player.getAutoPlaySettings().setShortRange(_shortRange);
 		player.getAutoPlaySettings().setRespectfulHunting(_respectfulHunting);
+		player.getAutoPlaySettings().setMacroIndex(_macroIndex);
 		
 		if (_active)
 		{

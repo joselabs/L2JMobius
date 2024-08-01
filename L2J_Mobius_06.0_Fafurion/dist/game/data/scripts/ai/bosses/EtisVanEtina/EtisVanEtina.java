@@ -794,8 +794,12 @@ public class EtisVanEtina extends AbstractNpcAI
 		{
 			notifyEvent("cancel_timers", null, null);
 			BOSS_ZONE.getPlayersInside().forEach(player -> playMovie(player, Movie.SC_ETIS_VAN_ETINA_ENDING));
+			
 			GrandBossManager.getInstance().setStatus(ETIS_VAN_ETINA1, DEAD);
-			final long respawnTime = (Config.ETINA_SPAWN_INTERVAL + getRandom(-Config.ETINA_SPAWN_RANDOM, Config.ETINA_SPAWN_RANDOM)) * 3600000;
+			
+			final long baseIntervalMillis = Config.ETINA_SPAWN_INTERVAL * 3600000;
+			final long randomRangeMillis = Config.ETINA_SPAWN_RANDOM * 3600000;
+			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			final StatSet info = GrandBossManager.getInstance().getStatSet(ETIS_VAN_ETINA1);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 			GrandBossManager.getInstance().setStatSet(ETIS_VAN_ETINA1, info);

@@ -25,6 +25,8 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.ai.AttackableAI;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
+import org.l2jmobius.gameserver.cache.HtmCache;
+import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
 import org.l2jmobius.gameserver.enums.Race;
@@ -42,6 +44,7 @@ import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExSendUIEvent;
+import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.huntingzones.TimedHuntingZoneExit;
 
 import instances.AbstractInstance;
@@ -167,6 +170,7 @@ public class TimedHunting extends AbstractInstance
 			final Instance world = player.getInstanceWorld();
 			if ((world != null) && CommonUtil.contains(TEMPLATES, world.getTemplateId()))
 			{
+				world.setReenterTime();
 				world.destroy();
 			}
 		}
@@ -202,7 +206,13 @@ public class TimedHunting extends AbstractInstance
 			npc.doCast(new SkillHolder(BUFF, 1).getSkill());
 		}
 		
-		return super.onFirstTalk(npc, player);
+		String content = HtmCache.getInstance().getHtm(player, "data/scripts/instances/TimedHunting/" + npc.getId() + ".html");
+		content = content.replace("%playerClass%", ClassListData.getInstance().getClass(player.getClassId()).getClassName());
+		content = content.replace("%replacedSkill%", getReplacedSkillNames(player));
+		final NpcHtmlMessage msg = new NpcHtmlMessage(npc.getObjectId());
+		msg.setHtml(content);
+		player.sendPacket(msg);
+		return null;
 	}
 	
 	@Override
@@ -307,6 +317,35 @@ public class TimedHunting extends AbstractInstance
 		player.sendSkillList();
 	}
 	
+	private String getReplacedSkillNames(Player player)
+	{
+		int count = 0;
+		final StringBuilder sb = new StringBuilder();
+		for (int transcendentSkillId : SKILL_REPLACEMENTS.values())
+		{
+			final Skill knownSkill = player.getKnownSkill(transcendentSkillId);
+			if (knownSkill == null)
+			{
+				continue;
+			}
+			
+			if (count > 0)
+			{
+				sb.append(", ");
+			}
+			count++;
+			
+			sb.append(knownSkill.getName());
+		}
+		
+		if (count > 1)
+		{
+			sb.append(".");
+		}
+		
+		return sb.toString();
+	}
+	
 	private void startEvent(Player player)
 	{
 		// Start instance tasks.
@@ -352,7 +391,7 @@ public class TimedHunting extends AbstractInstance
 				}
 			}, instance.getRemainingTime() - 30000);
 			
-			ThreadPool.schedule(() -> instance.finishInstance(), instance.getRemainingTime());
+			ThreadPool.schedule(instance::finishInstance, instance.getRemainingTime());
 		}
 	}
 	

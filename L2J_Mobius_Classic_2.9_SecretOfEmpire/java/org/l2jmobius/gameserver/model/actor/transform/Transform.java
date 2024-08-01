@@ -343,7 +343,7 @@ public class Transform implements IIdentifiable
 			}
 			
 			// I don't know why, but you need to broadcast this to trigger the transformation client-side.
-			// Usually should be sent naturally after applying effect, but sometimes is sent before that... i just dont know...
+			// Usually should be sent naturally after applying effect, but sometimes is sent before that... i just do not know...
 			creature.updateAbnormalVisualEffects();
 		}
 	}

@@ -140,7 +140,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 				takeItems(player, SCEPTER_JUDGEMENT, -1);
 				giveItems(player, PROOF_ASPIRATION, 1);
 				addExpAndSp(player, 0, 250000);
-				st.exitQuest(false);
+				st.exitQuest(false, true);
 				finishQuestToClan(player);
 				break;
 			}
@@ -154,7 +154,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 				takeItems(player, SCEPTER_JUDGEMENT, -1);
 				giveItems(player, PROOF_ASPIRATION, 1);
 				addExpAndSp(player, 0, 250000);
-				st.exitQuest(false);
+				st.exitQuest(false, true);
 				finishQuestToClan(player);
 				break;
 			}

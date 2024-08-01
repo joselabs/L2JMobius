@@ -280,6 +280,7 @@ public class RequestRestartPoint extends ClientPacket
 		// Teleport and revive
 		if (loc != null)
 		{
+			player.setIn7sDungeon(false);
 			player.setIsPendingRevive(true);
 			player.teleToLocation(loc, true, instance);
 		}

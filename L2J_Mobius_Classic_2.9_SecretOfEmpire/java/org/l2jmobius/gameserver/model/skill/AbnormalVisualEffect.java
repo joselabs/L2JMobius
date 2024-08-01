@@ -476,7 +476,7 @@ public enum AbnormalVisualEffect
 	/**
 	 * Finds abnormal visual effect by name.
 	 * @param name the name
-	 * @return The abnormal visual effect if its found, {@code null} otherwise
+	 * @return The abnormal visual effect if it is found, {@code null} otherwise
 	 */
 	public static AbnormalVisualEffect findByName(String name)
 	{

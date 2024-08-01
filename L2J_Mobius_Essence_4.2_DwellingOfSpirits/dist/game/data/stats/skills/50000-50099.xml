@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="50000" toLevel="1" name="Haste">
 		<!-- Atk. Spd. +50%. -->
@@ -27,11 +27,36 @@
 	<skill id="50003" toLevel="2" name="Crescent Slash">
 		<!-- Deals a horizontal slashing blow with a sword. Inflicts bleeding. -->
 		<icon>icon.skill0223</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
-		<castRange>40</castRange>
+		<castRange>400</castRange>
 		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>300</effectRange>
+		<magicLevel>73</magicLevel>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
+		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
+		<abnormalType>BLEEDING</abnormalType>
+		<trait>BLEED</trait>
+		<activateRate>100</activateRate>
+		<fanRange>0;0;300;180</fanRange>
+		<targetType>ENEMY</targetType>
+		<affectScope>FAN</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">25000</value>
+					<value level="2">30000</value>
+				</power>
+			</effect>
+			<effect name="DamOverTime">
+				<power>134</power>
+				<ticks>5</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50004" toLevel="2" name="Phantom Archer">
 		<!-- Releases Skeletal Ghost from the sword. The Ghost breaks free and deals damage to the target. -->
@@ -41,6 +66,20 @@
 		<hitTime>2000</hitTime>
 		<reuseDelay>30000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<effectRange>2000</effectRange>
+		<magicLevel>73</magicLevel>
+		<fanRange>0;0;2000;75</fanRange>
+		<targetType>ENEMY</targetType>
+		<affectScope>SQUARE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="HealPercent">
+				<power>
+					<value level="1">-30</value>
+					<value level="2">-90</value>
+				</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50005" toLevel="2" name="Multiple Slash">
 		<!-- Swings dual swords. Deals huge damage and inflicts bleeding. -->
@@ -50,6 +89,30 @@
 		<castRange>40</castRange>
 		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>40</effectRange>
+		<magicLevel>73</magicLevel>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
+		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
+		<abnormalType>BLEEDING</abnormalType>
+		<trait>BLEED</trait>
+		<activateRate>100</activateRate>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">70000</value>
+					<value level="2">100000</value>
+				</power>
+			</effect>
+			<effect name="DamOverTime">
+				<power>140</power>
+				<ticks>5</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50006" toLevel="2" name="Blood To Flesh">
 		<!-- Decreases HP/ MP of the target and restores player's HP. -->
@@ -58,6 +121,25 @@
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<hitTime>20000</hitTime>
 		<effectPoint>-100</effectPoint>
+		<magicLevel>73</magicLevel>
+		<affectRange>700</affectRange>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="HpDrain">
+				<power>
+					<value level="1">100</value>
+					<value level="2">800</value>
+				</power>
+				<percentage>80</percentage>
+			</effect>
+			<effect name="MagicalAttackMp" fromLevel="2" toLevel="2">
+				<power>246</power>
+				<critical>true</critical>
+				<criticalLimit>1450</criticalLimit>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50007" toLevel="2" name="Typhoon Slash">
 		<!-- Deals ranged damage to all targets around you. Inflicts bleeding. -->
@@ -66,6 +148,31 @@
 		<isDebuff>true</isDebuff>
 		<hitTime>10000</hitTime>
 		<effectPoint>-100</effectPoint>
+		<magicLevel>73</magicLevel>
+		<abnormalLevel>3</abnormalLevel>
+		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
+		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
+		<abnormalType>BLEEDING</abnormalType>
+		<trait>BLEED</trait>
+		<activateRate>100</activateRate>
+		<affectRange>1500</affectRange>
+		<fanRange>0;0;600;1500</fanRange>
+		<targetType>SELF</targetType>
+		<affectScope>RING_RANGE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">70000</value>
+					<value level="2">100000</value>
+				</power>
+			</effect>
+			<effect name="DamOverTime">
+				<power>142</power>
+				<ticks>5</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50008" toLevel="2" name="Pirate King Fury">
 		<!-- Attacks and knocks down the target. The attack energy dissolves among multiple enemies. -->
@@ -76,6 +183,32 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-52</effectPoint>
+		<magicLevel>73</magicLevel>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>5</abnormalTime>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<trait>KNOCKDOWN</trait>
+		<affectRange>1200</affectRange>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">1000000</value>
+					<value level="2">7500000</value>
+				</power>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
+			<effect name="KnockBack">
+				<distance>150</distance>
+				<speed>100</speed>
+				<knockDown>true</knockDown>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50009" toLevel="52" name="Raid Boss (Lv. 60)">
 		<!-- A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->

@@ -18,9 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Arrays;
 
-import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.ItemData;
+import org.l2jmobius.gameserver.enums.ElementalType;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
@@ -83,7 +84,6 @@ public class SystemMessage extends ServerPacket
 		}
 	}
 	
-	public static final byte TYPE_ELEMENTAL_SPIRIT = 26;
 	public static final byte TYPE_FACTION_NAME = 24; // c(short), faction id.
 	// id 22 d (shared with 1-3,17,22
 	// id 21 h
@@ -375,9 +375,9 @@ public class SystemMessage extends ServerPacket
 		return this;
 	}
 	
-	public SystemMessage addElementalSpirit(int elementType)
+	public SystemMessage addElementalSpiritName(byte elementType)
 	{
-		append(new SMParam(TYPE_ELEMENTAL_SPIRIT, elementType));
+		append(new SMParam(TYPE_TEXT, ElementalType.of(elementType).getName()));
 		return this;
 	}
 	
@@ -433,7 +433,6 @@ public class SystemMessage extends ServerPacket
 				case TYPE_ELEMENT_NAME:
 				case TYPE_BYTE:
 				case TYPE_FACTION_NAME:
-				case TYPE_ELEMENTAL_SPIRIT:
 				{
 					buffer.writeByte(param.getIntValue());
 					break;

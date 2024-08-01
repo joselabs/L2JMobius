@@ -55,6 +55,7 @@ import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.actor.instance.Trap;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.events.AbstractScript;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.listeners.AbstractEventListener;
@@ -1744,7 +1745,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	
 	public void addFirstTalkId(int npcId)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcId);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcId);
 	}
 	
 	public void addTalkId(int npcId)
@@ -1786,7 +1787,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(int... npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1795,7 +1796,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(Collection<Integer> npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1822,7 +1823,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(int... itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1831,7 +1832,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(Collection<Integer> itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1840,7 +1841,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(int... itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -1849,7 +1850,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(Collection<Integer> itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -2030,7 +2031,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(int... npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -2039,7 +2040,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(Collection<Integer> npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -2172,7 +2173,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2181,7 +2182,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2226,7 +2227,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	/**
@@ -2235,7 +2236,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	public void addOlympiadMatchFinishId()
@@ -3183,6 +3184,129 @@ public class Quest extends AbstractScript implements IIdentifiable
 		if (Config.ENABLE_STORY_QUEST_BUFF_REWARD)
 		{
 			STORY_QUEST_REWARD.getSkill().applyEffects(player, player);
+		}
+	}
+	
+	public QuestState getClanLeaderQuestState(Player player, Npc npc)
+	{
+		// If player is the leader, retrieves directly the qS and bypass others checks
+		if (player.isClanLeader() && player.isInsideRadius3D(npc, Config.ALT_PARTY_RANGE))
+		{
+			return player.getQuestState(getName());
+		}
+		
+		// Verify if the player got a clan
+		final Clan clan = player.getClan();
+		if (clan == null)
+		{
+			return null;
+		}
+		
+		// Verify if the leader is online
+		final Player leader = clan.getLeader().getPlayer();
+		if (leader == null)
+		{
+			return null;
+		}
+		
+		if (leader.isDead())
+		{
+			return null;
+		}
+		
+		// Verify if the player is on the radius of the leader. If true, send leader's quest state.
+		if (leader.isInsideRadius3D(npc, Config.ALT_PARTY_RANGE))
+		{
+			return leader.getQuestState(getName());
+		}
+		
+		return null;
+	}
+	
+	private void setQuestToOfflineMembers(List<Integer> objectsId)
+	{
+		try (Connection con = DatabaseFactory.getConnection())
+		{
+			final PreparedStatement stm = con.prepareStatement("INSERT INTO character_quests (char_id,name,var,value) VALUES (?,?,?,?)");
+			for (Integer charId : objectsId)
+			{
+				stm.setInt(1, charId.intValue());
+				stm.setString(2, getName());
+				stm.setString(3, "<state>");
+				stm.setString(4, "1");
+				stm.executeUpdate();
+			}
+			
+			stm.close();
+			con.close();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.WARNING, "Error in updating character_quest table from Quest.java on method setQuestToOfflineMembers");
+			LOGGER.info(e.toString());
+		}
+	}
+	
+	private void deleteQuestToOfflineMembers(int clanId)
+	{
+		try (Connection con = DatabaseFactory.getConnection())
+		{
+			final PreparedStatement stm = con.prepareStatement("DELETE FROM character_quests WHERE name = ? and char_id IN (SELECT charId FROM characters WHERE clanid = ? AND online = 0)");
+			stm.setString(1, getName());
+			stm.setInt(2, clanId);
+			stm.executeUpdate();
+			
+			stm.close();
+			con.close();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.WARNING, "Error in deleting infos from character_quest table from Quest.java on method deleteQuestToOfflineMembers");
+			LOGGER.info(e.toString());
+		}
+	}
+	
+	/**
+	 * Sets the current quest to clan offline's members
+	 * @param player the current player (should be clan leader)
+	 */
+	public void setQuestToClanMembers(Player player)
+	{
+		if (player.isClanLeader())
+		{
+			// Setting it for online members...
+			for (Player onlineMember : player.getClan().getOnlineMembers(0))
+			{
+				if (!onlineMember.isClanLeader())
+				{
+					onlineMember.setQuestState(player.getQuestState(getName()));
+				}
+			}
+			
+			// Setting it for offline members...
+			setQuestToOfflineMembers(player.getClan().getOfflineMembersIds());
+		}
+	}
+	
+	/**
+	 * Finish the current quest to a clan's members
+	 * @param player clan's leader
+	 */
+	public void finishQuestToClan(Player player)
+	{
+		if (player.isClanLeader())
+		{
+			// Deleting it for online members...
+			for (Player onlineMember : player.getClan().getOnlineMembers(0))
+			{
+				if (!onlineMember.isClanLeader())
+				{
+					onlineMember.delQuestState(getName());
+				}
+			}
+			
+			// Deleting it for offline members...
+			deleteQuestToOfflineMembers(player.getClanId());
 		}
 	}
 }

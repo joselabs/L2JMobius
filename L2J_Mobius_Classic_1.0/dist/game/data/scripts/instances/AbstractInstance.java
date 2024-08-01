@@ -117,9 +117,16 @@ public abstract class AbstractInstance extends AbstractNpcAI
 		{
 			if (instance.getTemplateId() != templateId)
 			{
-				player.sendPacket(SystemMessageId.YOU_HAVE_ENTERED_ANOTHER_INSTANT_ZONE_THEREFORE_YOU_CANNOT_ENTER_CORRESPONDING_DUNGEON);
-				return;
+				if (instance.getPlayersCount() > 0)
+				{
+					player.sendPacket(SystemMessageId.YOU_HAVE_ENTERED_ANOTHER_INSTANT_ZONE_THEREFORE_YOU_CANNOT_ENTER_CORRESPONDING_DUNGEON);
+					return;
+				}
+				
+				instance.finishInstance(0);
+				instance.destroy();
 			}
+			
 			onEnter(player, instance, false);
 		}
 		else
@@ -158,10 +165,17 @@ public abstract class AbstractInstance extends AbstractNpcAI
 			// Check if any player from enter group has active instance
 			for (Player member : enterGroup)
 			{
-				if (getPlayerInstance(member) != null)
+				final Instance memberInstance = getPlayerInstance(member);
+				if (memberInstance != null)
 				{
-					enterGroup.forEach(p -> p.sendPacket(SystemMessageId.YOU_HAVE_ENTERED_ANOTHER_INSTANT_ZONE_THEREFORE_YOU_CANNOT_ENTER_CORRESPONDING_DUNGEON));
-					return;
+					if (memberInstance.getPlayersCount() > 0)
+					{
+						enterGroup.forEach(p -> p.sendPacket(SystemMessageId.YOU_HAVE_ENTERED_ANOTHER_INSTANT_ZONE_THEREFORE_YOU_CANNOT_ENTER_CORRESPONDING_DUNGEON));
+						return;
+					}
+					
+					memberInstance.finishInstance(0);
+					memberInstance.destroy();
 				}
 				
 				// Check if any player from the group has already finished the instance

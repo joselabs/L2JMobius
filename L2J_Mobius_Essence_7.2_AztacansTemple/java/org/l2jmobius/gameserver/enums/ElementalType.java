@@ -19,7 +19,7 @@ package org.l2jmobius.gameserver.enums;
 import org.l2jmobius.gameserver.model.stats.Stat;
 
 /**
- * @author JoeAlisson
+ * @author JoeAlisson, Mobius
  */
 public enum ElementalType
 {
@@ -131,6 +131,33 @@ public enum ElementalType
 			default:
 			{
 				return null;
+			}
+		}
+	}
+	
+	public String getName()
+	{
+		switch (this)
+		{
+			case FIRE:
+			{
+				return "Fire";
+			}
+			case WATER:
+			{
+				return "Water";
+			}
+			case WIND:
+			{
+				return "Wind";
+			}
+			case EARTH:
+			{
+				return "Earth";
+			}
+			default:
+			{
+				return "None";
 			}
 		}
 	}

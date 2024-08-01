@@ -81,11 +81,6 @@ public class Config
 	private static final Logger LOGGER = Logger.getLogger(Config.class.getName());
 	
 	// --------------------------------------------------
-	// Constants
-	// --------------------------------------------------
-	public static final String EOL = System.lineSeparator();
-	
-	// --------------------------------------------------
 	// Config File Definitions
 	// --------------------------------------------------
 	public static final String INTERFACE_CONFIG_FILE = "./config/Interface.ini";
@@ -112,6 +107,7 @@ public class Config
 	private static final String RATES_CONFIG_FILE = "./config/Rates.ini";
 	private static final String SERVER_CONFIG_FILE = "./config/Server.ini";
 	private static final String TRAINING_CAMP_CONFIG_FILE = "./config/TrainingCamp.ini";
+	private static final String UNDERGROUND_COLISEUM_CONFIG_FILE = "./config/UndergroundColiseum.ini";
 	private static final String WORLD_EXCHANGE_FILE = "./config/WorldExchange.ini";
 	
 	private static final String CHAT_FILTER_FILE = "./config/chatfilter.txt";
@@ -125,6 +121,7 @@ public class Config
 	private static final String CUSTOM_AUTO_POTIONS_CONFIG_FILE = "./config/Custom/AutoPotions.ini";
 	private static final String CUSTOM_BANKING_CONFIG_FILE = "./config/Custom/Banking.ini";
 	private static final String CUSTOM_BOSS_ANNOUNCEMENTS_CONFIG_FILE = "./config/Custom/BossAnnouncements.ini";
+	private static final String CUSTOM_CAPTCHA_CONFIG_FILE = "./config/Custom/Captcha.ini";
 	private static final String CUSTOM_CHAMPION_MONSTERS_CONFIG_FILE = "./config/Custom/ChampionMonsters.ini";
 	private static final String CUSTOM_CHAT_MODERATION_CONFIG_FILE = "./config/Custom/ChatModeration.ini";
 	private static final String CUSTOM_CLASS_BALANCE_CONFIG_FILE = "./config/Custom/ClassBalance.ini";
@@ -155,6 +152,7 @@ public class Config
 	private static final String CUSTOM_SELL_BUFFS_CONFIG_FILE = "./config/Custom/SellBuffs.ini";
 	private static final String CUSTOM_SERVER_TIME_CONFIG_FILE = "./config/Custom/ServerTime.ini";
 	private static final String CUSTOM_STARTING_LOCATION_CONFIG_FILE = "./config/Custom/StartingLocation.ini";
+	private static final String CUSTOM_TRANSMOG_CONFIG_FILE = "./config/Custom/Transmog.ini";
 	private static final String CUSTOM_WALKER_BOT_PROTECTION_CONFIG_FILE = "./config/Custom/WalkerBotProtection.ini";
 	
 	// --------------------------------------------------
@@ -185,6 +183,7 @@ public class Config
 	public static boolean AUTO_LEARN_SKILLS_WITHOUT_ITEMS;
 	public static boolean AUTO_LEARN_FS_SKILLS;
 	public static boolean AUTO_LEARN_FP_SKILLS;
+	public static boolean SHOW_EFFECT_MESSAGES_ON_LOGIN;
 	public static boolean AUTO_LOOT_HERBS;
 	public static byte BUFFS_MAX_AMOUNT;
 	public static byte TRIGGERED_BUFFS_MAX_AMOUNT;
@@ -416,6 +415,7 @@ public class Config
 	public static int REPUTATION_SCORE_PER_KILL;
 	public static int JOIN_ACADEMY_MIN_REP_SCORE;
 	public static int JOIN_ACADEMY_MAX_REP_SCORE;
+	public static boolean PK_PENALTY_LIST;
 	public static boolean ALLOW_WYVERN_ALWAYS;
 	public static boolean ALLOW_WYVERN_DURING_SIEGE;
 	public static boolean ALLOW_MOUNTS_DURING_SIEGE;
@@ -588,7 +588,6 @@ public class Config
 	public static boolean JAIL_DISABLE_CHAT;
 	public static boolean JAIL_DISABLE_TRANSACTION;
 	public static boolean CUSTOM_NPC_DATA;
-	public static boolean CUSTOM_TELEPORT_TABLE;
 	public static boolean CUSTOM_SKILLS_LOAD;
 	public static boolean CUSTOM_ITEMS_LOAD;
 	public static boolean CUSTOM_MULTISELL_LOAD;
@@ -889,6 +888,11 @@ public class Config
 	public static int TRAINING_CAMP_MAX_LEVEL;
 	public static double TRAINING_CAMP_EXP_MULTIPLIER;
 	public static double TRAINING_CAMP_SP_MULTIPLIER;
+	public static String UC_START_TIME;
+	public static int UC_TIME_PERIOD;
+	public static boolean UC_ALLOW_ANNOUNCE;
+	public static int UC_PARTY_SIZE;
+	public static int UC_RESS_TIME;
 	public static boolean PC_CAFE_ENABLED;
 	public static boolean PC_CAFE_ONLY_PREMIUM;
 	public static boolean PC_CAFE_RETAIL_LIKE;
@@ -1258,6 +1262,7 @@ public class Config
 	public static boolean GRANDBOSS_SPAWN_ANNOUNCEMENTS;
 	public static boolean GRANDBOSS_DEFEAT_ANNOUNCEMENTS;
 	public static boolean GRANDBOSS_INSTANCE_ANNOUNCEMENTS;
+	public static Set<Integer> RAIDBOSSES_EXLUDED_FROM_ANNOUNCEMENTS = new HashSet<>();
 	public static boolean ENABLE_NPC_STAT_MULTIPLIERS;
 	public static double MONSTER_HP_MULTIPLIER;
 	public static double MONSTER_MP_MULTIPLIER;
@@ -1294,6 +1299,7 @@ public class Config
 	public static boolean ENABLE_OFFLINE_PLAY_COMMAND;
 	public static boolean OFFLINE_PLAY_PREMIUM;
 	public static boolean OFFLINE_PLAY_LOGOUT_ON_DEATH;
+	public static boolean OFFLINE_PLAY_DISCONNECT_SAME_ACCOUNT;
 	public static Set<Integer> DISABLED_AUTO_SKILLS = new HashSet<>();
 	public static String OFFLINE_PLAY_LOGIN_MESSAGE;
 	public static boolean OFFLINE_PLAY_SET_NAME_COLOR;
@@ -1394,6 +1400,12 @@ public class Config
 	public static boolean NOBLESS_MASTER_REWARD_TIARA;
 	public static int NOBLESS_MASTER_LEVEL_REWARDED;
 	public static boolean L2WALKER_PROTECTION;
+	public static boolean ENABLE_CAPTCHA;
+	public static int KILL_COUNTER;
+	public static int KILL_COUNTER_RANDOMIZATION;
+	public static boolean KILL_COUNTER_RESET;
+	public static int KILL_COUNTER_RESET_TIME;
+	public static int VALIDATION_TIME;
 	public static int DUALBOX_CHECK_MAX_PLAYERS_PER_IP;
 	public static int DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP;
 	public static int DUALBOX_CHECK_MAX_L2EVENT_PARTICIPANTS_PER_IP;
@@ -1425,6 +1437,11 @@ public class Config
 	public static int CUSTOM_STARTING_LOC_X;
 	public static int CUSTOM_STARTING_LOC_Y;
 	public static int CUSTOM_STARTING_LOC_Z;
+	public static boolean ENABLE_TRANSMOG;
+	public static boolean TRANSMOG_SHARE_ACCOUNT;
+	public static int TRANSMOG_APPLY_COST;
+	public static int TRANSMOG_REMOVE_COST;
+	public static Set<Integer> TRANSMOG_BANNED_ITEM_IDS = new HashSet<>();
 	public static int SHOP_MIN_RANGE_FROM_NPC;
 	public static int SHOP_MIN_RANGE_FROM_PLAYER;
 	public static boolean ENABLE_RANDOM_MONSTER_SPAWNS;
@@ -1444,6 +1461,8 @@ public class Config
 	public static int COMMUNITYBOARD_BUFF_PRICE;
 	public static int COMMUNITYBOARD_HEAL_PRICE;
 	public static int COMMUNITYBOARD_DELEVEL_PRICE;
+	public static boolean COMMUNITYBOARD_PEACE_ONLY;
+	public static boolean COMMUNITYBOARD_COMBAT_DISABLED;
 	public static boolean COMMUNITYBOARD_KARMA_DISABLED;
 	public static boolean COMMUNITYBOARD_CAST_ANIMATIONS;
 	public static boolean COMMUNITY_PREMIUM_SYSTEM_ENABLED;
@@ -1738,6 +1757,7 @@ public class Config
 			REPUTATION_SCORE_PER_KILL = featureConfig.getInt("ReputationScorePerKill", 1);
 			JOIN_ACADEMY_MIN_REP_SCORE = featureConfig.getInt("CompleteAcademyMinPoints", 190);
 			JOIN_ACADEMY_MAX_REP_SCORE = featureConfig.getInt("CompleteAcademyMaxPoints", 650);
+			PK_PENALTY_LIST = featureConfig.getBoolean("PkPenaltyList", true);
 			ALLOW_WYVERN_ALWAYS = featureConfig.getBoolean("AllowRideWyvernAlways", false);
 			ALLOW_WYVERN_DURING_SIEGE = featureConfig.getBoolean("AllowRideWyvernDuringSiege", true);
 			ALLOW_MOUNTS_DURING_SIEGE = featureConfig.getBoolean("AllowRideMountsDuringSiege", false);
@@ -1920,6 +1940,7 @@ public class Config
 			AUTO_LEARN_SKILLS_WITHOUT_ITEMS = characterConfig.getBoolean("AutoLearnSkillsWithoutItems", false);
 			AUTO_LEARN_FS_SKILLS = characterConfig.getBoolean("AutoLearnForgottenScrollSkills", false);
 			AUTO_LEARN_FP_SKILLS = characterConfig.getBoolean("AutoLearnForgottenPowerSkills", false);
+			SHOW_EFFECT_MESSAGES_ON_LOGIN = characterConfig.getBoolean("ShowEffectMessagesOnLogin", false);
 			AUTO_LOOT_HERBS = characterConfig.getBoolean("AutoLootHerbs", false);
 			BUFFS_MAX_AMOUNT = characterConfig.getByte("MaxBuffAmount", (byte) 20);
 			TRIGGERED_BUFFS_MAX_AMOUNT = characterConfig.getByte("MaxTriggeredBuffAmount", (byte) 12);
@@ -2543,6 +2564,14 @@ public class Config
 			TRAINING_CAMP_EXP_MULTIPLIER = trainingCampConfig.getDouble("TrainingCampExpMultiplier", 1.0);
 			TRAINING_CAMP_SP_MULTIPLIER = trainingCampConfig.getDouble("TrainingCampSpMultiplier", 1.0);
 			
+			// Load UndergroundColiseum config file
+			final PropertiesParser undergroundColiseumConfig = new PropertiesParser(UNDERGROUND_COLISEUM_CONFIG_FILE);
+			UC_START_TIME = undergroundColiseumConfig.getString("BattleStartTime", "0 17 * * *");
+			UC_TIME_PERIOD = undergroundColiseumConfig.getInt("BattlePeriod", 2);
+			UC_ALLOW_ANNOUNCE = undergroundColiseumConfig.getBoolean("AllowAnnouncements", false);
+			UC_PARTY_SIZE = undergroundColiseumConfig.getInt("PartySize", 7);
+			UC_RESS_TIME = undergroundColiseumConfig.getInt("ResurrectionTime", 10);
+			
 			// Load GameAssistant config file (if exists)
 			final PropertiesParser gameAssistantConfig = new PropertiesParser(GAME_ASSISTANT_CONFIG_FILE);
 			GAME_ASSISTANT_ENABLED = gameAssistantConfig.getBoolean("GameAssistantEnabled", false);
@@ -2704,7 +2733,6 @@ public class Config
 			JAIL_DISABLE_CHAT = generalConfig.getBoolean("JailDisableChat", true);
 			JAIL_DISABLE_TRANSACTION = generalConfig.getBoolean("JailDisableTransaction", false);
 			CUSTOM_NPC_DATA = generalConfig.getBoolean("CustomNpcData", false);
-			CUSTOM_TELEPORT_TABLE = generalConfig.getBoolean("CustomTeleportTable", false);
 			CUSTOM_SKILLS_LOAD = generalConfig.getBoolean("CustomSkillsLoad", false);
 			CUSTOM_ITEMS_LOAD = generalConfig.getBoolean("CustomItemsLoad", false);
 			CUSTOM_MULTISELL_LOAD = generalConfig.getBoolean("CustomMultisellLoad", false);
@@ -2712,7 +2740,7 @@ public class Config
 			BOOKMARK_CONSUME_ITEM_ID = generalConfig.getInt("BookmarkConsumeItemId", -1);
 			ALT_BIRTHDAY_GIFT = generalConfig.getInt("AltBirthdayGift", 22187);
 			ALT_BIRTHDAY_MAIL_SUBJECT = generalConfig.getString("AltBirthdayMailSubject", "Happy Birthday!");
-			ALT_BIRTHDAY_MAIL_TEXT = generalConfig.getString("AltBirthdayMailText", "Hello Adventurer!! Seeing as you're one year older now, I thought I would send you some birthday cheer :) Please find your birthday pack attached. May these gifts bring you joy and happiness on this very special day." + EOL + EOL + "Sincerely, Alegria");
+			ALT_BIRTHDAY_MAIL_TEXT = generalConfig.getString("AltBirthdayMailText", "Hello Adventurer!! Seeing as you're one year older now, I thought I would send you some birthday cheer :) Please find your birthday pack attached. May these gifts bring you joy and happiness on this very special day." + System.lineSeparator() + System.lineSeparator() + "Sincerely, Alegria");
 			ENABLE_BLOCK_CHECKER_EVENT = generalConfig.getBoolean("EnableBlockCheckerEvent", false);
 			MIN_BLOCK_CHECKER_TEAM_MEMBERS = generalConfig.getInt("BlockCheckerMinTeamMembers", 2);
 			if (MIN_BLOCK_CHECKER_TEAM_MEMBERS < 1)
@@ -3236,6 +3264,16 @@ public class Config
 			GRANDBOSS_SPAWN_ANNOUNCEMENTS = bossAnnouncementsConfig.getBoolean("GrandBossSpawnAnnouncements", false);
 			GRANDBOSS_DEFEAT_ANNOUNCEMENTS = bossAnnouncementsConfig.getBoolean("GrandBossDefeatAnnouncements", false);
 			GRANDBOSS_INSTANCE_ANNOUNCEMENTS = bossAnnouncementsConfig.getBoolean("GrandBossInstanceAnnouncements", false);
+			
+			RAIDBOSSES_EXLUDED_FROM_ANNOUNCEMENTS.clear();
+			final String[] raidbossExcludesNpcId = bossAnnouncementsConfig.getString("RaidbossExcludedFromAnnouncements", "").split(",");
+			for (String raidbossId : raidbossExcludesNpcId)
+			{
+				if (!raidbossId.isEmpty())
+				{
+					RAIDBOSSES_EXLUDED_FROM_ANNOUNCEMENTS.add(Integer.parseInt(raidbossId.trim()));
+				}
+			}
 			
 			// Load BoostNpcStats config file (if exists)
 			final PropertiesParser boostNpcStatConfig = new PropertiesParser(CUSTOM_NPC_STAT_MULTIPLIERS_CONFIG_FILE);
@@ -3830,6 +3868,8 @@ public class Config
 			COMMUNITYBOARD_BUFF_PRICE = communityBoardConfig.getInt("CommunityBuffPrice", 0);
 			COMMUNITYBOARD_HEAL_PRICE = communityBoardConfig.getInt("CommunityHealPrice", 0);
 			COMMUNITYBOARD_DELEVEL_PRICE = communityBoardConfig.getInt("CommunityDelevelPrice", 0);
+			COMMUNITYBOARD_PEACE_ONLY = communityBoardConfig.getBoolean("CommunityBoardPeaceOnly", false);
+			COMMUNITYBOARD_COMBAT_DISABLED = communityBoardConfig.getBoolean("CommunityCombatDisabled", true);
 			COMMUNITYBOARD_KARMA_DISABLED = communityBoardConfig.getBoolean("CommunityKarmaDisabled", true);
 			COMMUNITYBOARD_CAST_ANIMATIONS = communityBoardConfig.getBoolean("CommunityCastAnimations", false);
 			COMMUNITY_PREMIUM_SYSTEM_ENABLED = communityBoardConfig.getBoolean("CommunityPremiumSystem", false);
@@ -3979,6 +4019,7 @@ public class Config
 			ENABLE_OFFLINE_PLAY_COMMAND = offlinePlayConfig.getBoolean("EnableOfflinePlayCommand", false);
 			OFFLINE_PLAY_PREMIUM = offlinePlayConfig.getBoolean("OfflinePlayPremium", false);
 			OFFLINE_PLAY_LOGOUT_ON_DEATH = offlinePlayConfig.getBoolean("OfflinePlayLogoutOnDeath", true);
+			OFFLINE_PLAY_DISCONNECT_SAME_ACCOUNT = offlinePlayConfig.getBoolean("OfflinePlayDisconnectSameAccount", false);
 			DISABLED_AUTO_SKILLS.clear();
 			final String disabledSkills = offlinePlayConfig.getString("DisabledSkillIds", "");
 			if (!disabledSkills.isEmpty())
@@ -4225,6 +4266,31 @@ public class Config
 			CUSTOM_STARTING_LOC_Y = startingLocationConfig.getInt("CustomStartingLocY", 186527);
 			CUSTOM_STARTING_LOC_Z = startingLocationConfig.getInt("CustomStartingLocZ", -3625);
 			
+			// Load Transmog config file (if exists)
+			final PropertiesParser transmogConfig = new PropertiesParser(CUSTOM_TRANSMOG_CONFIG_FILE);
+			ENABLE_TRANSMOG = transmogConfig.getBoolean("TransmogEnabled", false);
+			TRANSMOG_SHARE_ACCOUNT = transmogConfig.getBoolean("TransmogShareAccount", false);
+			TRANSMOG_APPLY_COST = transmogConfig.getInt("TransmogApplyCost", 0);
+			TRANSMOG_REMOVE_COST = transmogConfig.getInt("TransmogRemoveCost", 0);
+			TRANSMOG_BANNED_ITEM_IDS.clear();
+			final String transmogBannedItemIds = transmogConfig.getString("TransmogBannedItemIds", "");
+			if (!transmogBannedItemIds.isEmpty())
+			{
+				for (String s : transmogBannedItemIds.split(","))
+				{
+					TRANSMOG_BANNED_ITEM_IDS.add(Integer.parseInt(s.trim()));
+				}
+			}
+			
+			// Load Captcha config file (if exists)
+			final PropertiesParser captchaConfig = new PropertiesParser(CUSTOM_CAPTCHA_CONFIG_FILE);
+			ENABLE_CAPTCHA = captchaConfig.getBoolean("EnableCaptcha", false);
+			KILL_COUNTER = captchaConfig.getInt("KillCounter", 100);
+			KILL_COUNTER_RANDOMIZATION = captchaConfig.getInt("KillCounterRandomization", 50);
+			KILL_COUNTER_RESET = captchaConfig.getBoolean("KillCounterReset", false);
+			KILL_COUNTER_RESET_TIME = captchaConfig.getInt("KillCounterResetTime", 20) * 60000;
+			VALIDATION_TIME = captchaConfig.getInt("ValidationTime", 60);
+			
 			// Load WalkerBotProtection config file (if exists)
 			final PropertiesParser walkerBotProtectionConfig = new PropertiesParser(CUSTOM_WALKER_BOT_PROTECTION_CONFIG_FILE);
 			L2WALKER_PROTECTION = walkerBotProtectionConfig.getBoolean("L2WalkerProtection", false);
@@ -4424,6 +4490,11 @@ public class Config
 				case "classic":
 				{
 					serverType |= 0x400;
+					break;
+				}
+				case "essence":
+				{
+					serverType |= 0x1000;
 					break;
 				}
 			}

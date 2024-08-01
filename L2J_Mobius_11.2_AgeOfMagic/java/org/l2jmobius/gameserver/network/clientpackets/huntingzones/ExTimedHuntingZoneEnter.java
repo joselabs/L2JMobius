@@ -82,7 +82,7 @@ public class ExTimedHuntingZoneEnter extends ClientPacket
 			player.sendMessage("Cannot use time-limited hunting zones while registered on an event.");
 			return;
 		}
-		if (player.isInInstance() || player.isInTimedHuntingZone())
+		if (player.isInInstance() /* || player.isInTimedHuntingZone() */)
 		{
 			player.sendMessage("Cannot use time-limited hunting zones while in an instance.");
 			return;
@@ -160,6 +160,7 @@ public class ExTimedHuntingZoneEnter extends ClientPacket
 				return;
 			}
 			
+			player.getVariables().set(PlayerVariables.LAST_HUNTING_ZONE_ID, _zoneId);
 			player.getVariables().set(PlayerVariables.HUNTING_ZONE_TIME + _zoneId, endTime - currentTime);
 			
 			if (instanceId == 0)

@@ -47,6 +47,7 @@ import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneType;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
+import org.l2jmobius.gameserver.network.serverpackets.dethroneability.ExHolyFireNotify;
 
 import ai.AbstractNpcAI;
 
@@ -60,7 +61,8 @@ public class SacredFire extends AbstractNpcAI
 	
 	// NPCs
 	private static final int SACRED_FIRE = 34658;
-	private static final int FLAME_GUARDIAN = 34664;
+	private static final int FIRE_POWER_ZEALOT = 34663;
+	private static final int FLAME_POWER_GUARD = 34664;
 	
 	// Items
 	private static final int SACRED_FIRE_SUMMON_SCROLL = 82614;
@@ -99,13 +101,13 @@ public class SacredFire extends AbstractNpcAI
 	private static final int EXTINGUISHED_STATE = 3;
 	
 	// Tasks
-	private static ScheduledFuture<?> _scheduledSuccessfulDefenseRewardTask;
-	private static ScheduledFuture<?> _scheduledSacredFireCountSetupTask;
+	protected ScheduledFuture<?> _scheduledSuccessfulDefenseRewardTask;
+	protected ScheduledFuture<?> _scheduledSacredFireCountSetupTask;
 	
 	private SacredFire()
 	{
 		addStartNpc(SACRED_FIRE);
-		addFirstTalkId(SACRED_FIRE);
+		addFirstTalkId(SACRED_FIRE, FIRE_POWER_ZEALOT);
 		addTalkId(SACRED_FIRE);
 		addExitZoneId(CONQUEST_ZONE.getId());
 	}
@@ -173,7 +175,7 @@ public class SacredFire extends AbstractNpcAI
 						// TODO: Check with increased range if more guardians attack.
 						World.getInstance().forEachVisibleObjectInRange(player, Guard.class, 1000, guard ->
 						{
-							if ((guard.getId() == FLAME_GUARDIAN) && !guard.isDead() && !guard.isDecayed() && !guard.isInCombat() && npc.getEffectList().isAffectedBySkill(FLAME_GUARDIAN_ENERGY_BUFF.getSkillId()))
+							if ((guard.getId() == FLAME_POWER_GUARD) && !guard.isDead() && !guard.isDecayed() && !guard.isInCombat() && npc.getEffectList().isAffectedBySkill(FLAME_GUARDIAN_ENERGY_BUFF.getSkillId()))
 							{
 								addAttackPlayerDesire(guard, player);
 							}
@@ -290,24 +292,26 @@ public class SacredFire extends AbstractNpcAI
 						_scheduledSacredFireCountSetupTask = null;
 					}
 					
-					// Check if the player exits the zone and remove Sacred Fire progress
-					player.getVariables().remove("SACRED_FIRE_SLOT_" + i);
-					player.getVariables().remove("SACRED_FIRE_SLOT_" + i + "_SUMMON_TIME");
-					player.getVariables().remove("SACRED_FIRE_SLOT_" + i + "_OID");
-					player.getVariables().remove(PlayerVariables.CONQUEST_SACRED_FIRE_SLOT_COUNT);
-					player.getVariables().storeMe();
 					if (DEBUG)
 					{
 						LOGGER.info("Sacred Fire Decay. -> " + player.getObjectId() + " - " + "SACRED_FIRE_SLOT_" + i);
 					}
 				}
+				// Remove Sacred Fire progress if the player exits the conquest zone
+				player.getVariables().remove("SACRED_FIRE_SLOT_" + i);
+				player.getVariables().remove("SACRED_FIRE_SLOT_" + i + "_SUMMON_TIME");
+				player.getVariables().remove("SACRED_FIRE_SLOT_" + i + "_OID");
+				player.getVariables().remove(PlayerVariables.CONQUEST_SACRED_FIRE_SLOT_COUNT);
+				player.getVariables().storeMe();
 			}
+			// Custom message
+			player.sendMessage("Sacred Fire progress was lost, since you exit the conquest zone");
 			if (DEBUG)
 			{
 				LOGGER.info("Sacred Fire Vars have been reset, since you exit the conquest zone");
 			}
 		}
-		return super.onEnterZone(creature, zone);
+		return super.onExitZone(creature, zone);
 	}
 	
 	@RegisterEvent(EventType.ON_ITEM_USE)
@@ -341,11 +345,11 @@ public class SacredFire extends AbstractNpcAI
 					if ((player.getVariables().getInt("SACRED_FIRE_SLOT_" + i, 0) == 0) || (player.getVariables().getInt("SACRED_FIRE_SLOT_" + i, 0) == 3))
 					{
 						sacredFireSlot = i;
-						if (DEBUG)
-						{
-							LOGGER.info("Sacred Fire Slot Calculation. -> " + player.getObjectId() + " - " + "SACRED_FIRE_SLOT_" + i);
-						}
 					}
+				}
+				if (DEBUG)
+				{
+					LOGGER.info("Sacred Fire Script -> " + player.getName() + " (" + player.getObjectId() + ") - " + " Sacred Fire Slots: " + sacredFireSlot);
 				}
 				
 				final Npc sacredFire = addSpawn(SACRED_FIRE, player, true, LIFETIME, false, player.getInstanceId());
@@ -353,6 +357,8 @@ public class SacredFire extends AbstractNpcAI
 				sacredFire.getVariables().set("OWNER_OID", player.getObjectId());
 				sacredFire.getVariables().set("SLOT", sacredFireSlot);
 				sacredFire.getVariables().set("SUMMON_TIME", System.currentTimeMillis());
+				// Send Flame notify packet
+				player.sendPacket(new ExHolyFireNotify(2));
 				
 				checkSummonSacredFireListener(player);
 				
@@ -372,6 +378,8 @@ public class SacredFire extends AbstractNpcAI
 					if (player.isInventoryUnder90(false))
 					{
 						// Set Sacred Fire state to 2 (summoning flame is finished get reward).
+						// Send Flame notify packet
+						player.sendPacket(new ExHolyFireNotify(2));
 						player.getVariables().set("SACRED_FIRE_SLOT_" + sacredFire.getVariables().getInt("SLOT", 0), REWARDING_STATE);
 						player.getVariables().storeMe();
 						final SystemMessage sm = new SystemMessage(SystemMessageId.FIRE_SOURCE_POINTS_S1_PERSONAL_CONQUEST_POINTS_S2_SERVER_CONQUEST_POINTS_S3);
@@ -386,7 +394,7 @@ public class SacredFire extends AbstractNpcAI
 						sm.addInt(Config.CONQUEST_SACRED_FIRE_REWARD_FIRE_SOURCE_POINTS != 0 ? Config.CONQUEST_SACRED_FIRE_REWARD_FIRE_SOURCE_POINTS : 0);
 						if (Config.CONQUEST_SACRED_FIRE_REWARD_PERSONAL_POINTS != 0)
 						{
-							player.getVariables().set(PlayerVariables.CONQUEST_PERSONAL_POINTS, player.getVariables().getLong(PlayerVariables.CONQUEST_PERSONAL_POINTS) + Config.CONQUEST_SACRED_FIRE_REWARD_PERSONAL_POINTS);
+							player.getVariables().set(PlayerVariables.CONQUEST_PERSONAL_POINTS, player.getVariables().getLong(PlayerVariables.CONQUEST_PERSONAL_POINTS, 0) + Config.CONQUEST_SACRED_FIRE_REWARD_PERSONAL_POINTS);
 						}
 						
 						// Message update.
@@ -412,6 +420,8 @@ public class SacredFire extends AbstractNpcAI
 					else
 					{
 						// Set Sacred Fire state to 3 (flame is extinguished).
+						// Send Flame notify packet
+						player.sendPacket(new ExHolyFireNotify(2));
 						player.getVariables().set("SACRED_FIRE_SLOT_" + sacredFire.getVariables().getInt("SLOT", 0), EXTINGUISHED_STATE);
 						player.getVariables().storeMe();
 						player.sendPacket(SystemMessageId.YOUR_INVENTORY_S_WEIGHT_SLOT_LIMIT_HAS_BEEN_EXCEEDED_SO_YOU_CAN_T_RECEIVE_THE_REWARD_PLEASE_FREE_UP_SOME_SPACE_AND_TRY_AGAIN);

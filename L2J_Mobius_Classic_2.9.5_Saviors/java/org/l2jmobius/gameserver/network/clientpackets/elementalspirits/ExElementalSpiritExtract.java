@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.network.clientpackets.elementalspirits;
 
 import org.l2jmobius.gameserver.data.xml.ElementalSpiritData;
 import org.l2jmobius.gameserver.enums.ElementalType;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.UserInfoType;
 import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -85,7 +84,7 @@ public class ExElementalSpiritExtract extends ClientPacket
 			player.sendPacket(SystemMessageId.INVENTORY_IS_FULL_CANNOT_EXTRACT);
 			return false;
 		}
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.CANNOT_EVOLVE_ABSORB_EXTRACT_WHILE_USING_THE_PRIVATE_STORE_WORKSHOP);
 			return false;

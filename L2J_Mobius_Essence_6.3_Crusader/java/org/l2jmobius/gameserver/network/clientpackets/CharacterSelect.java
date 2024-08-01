@@ -22,9 +22,12 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.data.xml.SecondaryAuthData;
+import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.AntiFeedManager;
+import org.l2jmobius.gameserver.instancemanager.MapRegionManager;
 import org.l2jmobius.gameserver.instancemanager.PunishmentManager;
 import org.l2jmobius.gameserver.model.CharSelectInfoPackage;
+import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.events.Containers;
@@ -32,6 +35,7 @@ import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerSelect;
 import org.l2jmobius.gameserver.model.events.returns.TerminateReturn;
+import org.l2jmobius.gameserver.model.holders.TimedHuntingZoneHolder;
 import org.l2jmobius.gameserver.model.punishment.PunishmentAffect;
 import org.l2jmobius.gameserver.model.punishment.PunishmentType;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
@@ -180,6 +184,16 @@ public class CharacterSelect extends ClientPacket
 						final String[] split = restore.split(";");
 						cha.setXYZ(Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]));
 						vars.remove(PlayerVariables.RESTORE_LOCATION);
+					}
+					else
+					{
+						final TimedHuntingZoneHolder zone = cha.getTimedHuntingZone();
+						if (zone != null)
+						{
+							final Location exit = zone.getExitLocation();
+							cha.setXYZ(exit != null ? exit : MapRegionManager.getInstance().getTeleToLocation(cha, TeleportWhereType.TOWN));
+							vars.remove(PlayerVariables.LAST_HUNTING_ZONE_ID);
+						}
 					}
 					
 					cha.setClient(client);

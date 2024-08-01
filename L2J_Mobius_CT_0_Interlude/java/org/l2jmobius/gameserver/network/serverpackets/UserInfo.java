@@ -107,23 +107,23 @@ public class UserInfo extends ServerPacket
 		buffer.writeInt(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_HAIR));
 		buffer.writeInt(_player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_FACE));
 		
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_UNDER));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_REAR));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LEAR));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_NECK));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RFINGER));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LFINGER));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HEAD));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LHAND));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_GLOVES));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_CHEST));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LEGS));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_FEET));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_CLOAK));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HAIR));
-		buffer.writeInt(_player.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_FACE));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_UNDER));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_REAR));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_LEAR));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_NECK));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_RFINGER));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_LFINGER));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_HEAD));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_RHAND));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_LHAND));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_GLOVES));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_CHEST));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_LEGS));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_FEET));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_CLOAK));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_RHAND));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_HAIR));
+		buffer.writeInt(_player.getInventory().getPaperdollItemDisplayId(Inventory.PAPERDOLL_FACE));
 		
 		// c6 new h's
 		buffer.writeShort(0);

@@ -31,7 +31,7 @@ public class RequestMultisellList extends ClientPacket
 	@Override
 	protected void readImpl()
 	{
-		_multiSellId = readShort();
+		_multiSellId = readInt();
 	}
 	
 	@Override

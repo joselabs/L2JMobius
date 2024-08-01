@@ -1323,10 +1323,6 @@ public class Clan implements IIdentifiable, INamable
 	 */
 	public Collection<Skill> getAllSkills()
 	{
-		if (_skills == null)
-		{
-			return Collections.emptyList();
-		}
 		return _skills.values();
 	}
 	
@@ -2167,7 +2163,7 @@ public class Clan implements IIdentifiable, INamable
 		return _reputationScore;
 	}
 	
-	public void setRank(int rank)
+	public synchronized void setRank(int rank)
 	{
 		_rank = rank;
 	}
@@ -2633,6 +2629,7 @@ public class Clan implements IIdentifiable, INamable
 		}
 		
 		setLevel(level);
+		setRank(ClanTable.getInstance().getClanRank(this));
 		
 		if (_leader.isOnline())
 		{
@@ -2842,7 +2839,7 @@ public class Clan implements IIdentifiable, INamable
 		return false;
 	}
 	
-	public List<SubPledgeSkill> getAllSubSkills()
+	public Collection<SubPledgeSkill> getAllSubSkills()
 	{
 		final List<SubPledgeSkill> list = new LinkedList<>();
 		for (Skill skill : _subPledgeSkills.values())

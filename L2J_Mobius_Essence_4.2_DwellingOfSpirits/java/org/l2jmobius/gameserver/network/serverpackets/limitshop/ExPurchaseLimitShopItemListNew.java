@@ -73,15 +73,15 @@ public class ExPurchaseLimitShopItemListNew extends ServerPacket
 					buffer.writeInt(product.getAccountDailyLimit() - _player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_DAILY_COUNT + product.getProductionId(), 0));
 				}
 			}
-			else if (product.getAccountMontlyLimit() > 0)
+			else if (product.getAccountMonthlyLimit() > 0)
 			{
-				if (_player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + product.getProductionId(), 0) >= product.getAccountMontlyLimit())
+				if (_player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_MONTHLY_COUNT + product.getProductionId(), 0) >= product.getAccountMonthlyLimit())
 				{
 					buffer.writeInt(0);
 				}
 				else
 				{
-					buffer.writeInt(product.getAccountMontlyLimit() - _player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_MONTLY_COUNT + product.getProductionId(), 0));
+					buffer.writeInt(product.getAccountMonthlyLimit() - _player.getAccountVariables().getInt(AccountVariables.LCOIN_SHOP_PRODUCT_MONTHLY_COUNT + product.getProductionId(), 0));
 				}
 			}
 			else if (product.getAccountBuyLimit() > 0) // Count limit.

@@ -30,12 +30,12 @@ public class FuncTemplate
 {
 	private final Class<?> _functionClass;
 	private final Condition _attachCond;
-	private final Condition _applayCond;
+	private final Condition _applyCond;
 	private final Stat _stat;
 	private final int _order;
 	private final double _value;
 	
-	public FuncTemplate(Condition attachCond, Condition applayCond, String functionName, int order, Stat stat, double value)
+	public FuncTemplate(Condition attachCond, Condition applyCond, String functionName, int order, Stat stat, double value)
 	{
 		final StatFunction function = StatFunction.valueOf(functionName.toUpperCase());
 		if (order >= 0)
@@ -48,7 +48,7 @@ public class FuncTemplate
 		}
 		
 		_attachCond = attachCond;
-		_applayCond = applayCond;
+		_applyCond = applyCond;
 		_stat = stat;
 		_value = value;
 		
@@ -101,7 +101,7 @@ public class FuncTemplate
 			return false;
 		}
 		
-		if ((_applayCond != null) && !_applayCond.test(effected, effected, skill))
+		if ((_applyCond != null) && !_applyCond.test(effected, effected, skill))
 		{
 			return false;
 		}

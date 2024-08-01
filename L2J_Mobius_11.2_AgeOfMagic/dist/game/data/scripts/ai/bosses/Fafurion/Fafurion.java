@@ -508,11 +508,15 @@ public class Fafurion extends AbstractNpcAI
 			});
 			
 			GrandBossManager.getInstance().setStatus(FAFURION_GRANDBOSS_ID, DEAD);
-			final long respawnTime = (Config.FAFURION_SPAWN_INTERVAL + getRandom(-Config.FAFURION_SPAWN_RANDOM, Config.FAFURION_SPAWN_RANDOM)) * 3600000;
+			
+			final long baseIntervalMillis = Config.FAFURION_SPAWN_INTERVAL * 3600000;
+			final long randomRangeMillis = Config.FAFURION_SPAWN_RANDOM * 3600000;
+			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			final StatSet info = GrandBossManager.getInstance().getStatSet(FAFURION_GRANDBOSS_ID);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 			GrandBossManager.getInstance().setStatSet(FAFURION_GRANDBOSS_ID, info);
 			startQuestTimer("unlock_fafurion", respawnTime, null, null);
+			
 			if (_stage < 7)
 			{
 				_stage++;

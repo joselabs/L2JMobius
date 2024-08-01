@@ -38,6 +38,6 @@ public class ExCollectionComplete extends ServerPacket
 	{
 		ServerPackets.EX_COLLECTION_COMPLETE.writeId(this, buffer);
 		buffer.writeShort(_collectionId);
-		buffer.writeInt(0);
+		buffer.writeInt(0); // remainingTime
 	}
 }

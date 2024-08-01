@@ -78,9 +78,9 @@ public class Q10115_OnlyForNodaMembers extends Quest
 				final NewQuestLocation questLocation = getQuestData().getLocation();
 				if (questState.isCond(QuestCondType.STARTED))
 				{
-					if (questLocation.getStartLocationId() > 0)
+					if (questLocation.getQuestLocationId() > 0)
 					{
-						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getStartLocationId()).getLocation();
+						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getQuestLocationId()).getLocation();
 						teleportToQuestLocation(player, location);
 					}
 				}

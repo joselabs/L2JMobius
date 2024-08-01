@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 
 /**
  * @author Mobius
@@ -37,14 +38,21 @@ public class RequestTargetActionMenu extends ClientPacket
 	@Override
 	protected void runImpl()
 	{
-		if (!getClient().getFloodProtectors().canPerformPlayerAction())
+		final Player player = getPlayer();
+		if (player == null)
 		{
 			return;
 		}
 		
-		final Player player = getPlayer();
-		if ((player == null) || player.isTargetingDisabled())
+		if (!getClient().getFloodProtectors().canPerformPlayerAction())
 		{
+			player.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		if (player.isTargetingDisabled())
+		{
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -56,8 +64,10 @@ public class RequestTargetActionMenu extends ClientPacket
 				{
 					player.setTarget(object);
 				}
-				break;
+				return;
 			}
 		}
+		
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 }

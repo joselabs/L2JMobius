@@ -28,7 +28,7 @@ import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.conditions.Condition;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
-import org.l2jmobius.gameserver.model.skill.BuffInfo;
+import org.l2jmobius.gameserver.model.skill.Skill;
 
 /**
  * Get Agro effect implementation.
@@ -52,7 +52,7 @@ public class GetAgro extends AbstractEffect
 	}
 	
 	@Override
-	public boolean calcSuccess(BuffInfo info)
+	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
 	{
 		return Rnd.get(100) < _chance;
 	}
@@ -64,12 +64,10 @@ public class GetAgro extends AbstractEffect
 	}
 	
 	@Override
-	public void onStart(BuffInfo info)
+	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		final Creature effected = info.getEffected();
 		if ((effected != null) && effected.isAttackable())
 		{
-			final Creature effector = info.getEffector();
 			effected.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, effector);
 			
 			// Monsters from the same clan should assist.
@@ -83,6 +81,7 @@ public class GetAgro extends AbstractEffect
 					{
 						nearby.addDamageHate(effector, 1, 200);
 						nearby.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, effector);
+						nearby.setRunning();
 					}
 				});
 			}

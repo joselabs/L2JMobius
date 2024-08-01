@@ -16,20 +16,32 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets.collection;
 
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
+import org.l2jmobius.gameserver.network.serverpackets.collection.ExCollectionReceiveReward;
 
 /**
- * @author Berezkin Nikolay
+ * @author Mobius
  */
 public class RequestCollectionReceiveReward extends ClientPacket
 {
+	private int _collectionId;
+	
 	@Override
 	protected void readImpl()
 	{
+		_collectionId = readShort();
 	}
 	
 	@Override
 	protected void runImpl()
 	{
+		final Player player = getClient().getPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		
+		player.sendPacket(new ExCollectionReceiveReward(_collectionId, true));
 	}
 }

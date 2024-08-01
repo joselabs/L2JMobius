@@ -30,6 +30,7 @@ public class AutoPlaySettingsHolder
 	private final AtomicBoolean _shortRange = new AtomicBoolean();
 	private final AtomicBoolean _respectfulHunting = new AtomicBoolean();
 	private final AtomicInteger _autoPotionPercent = new AtomicInteger();
+	private final AtomicInteger _macroIndex = new AtomicInteger();
 	
 	public AutoPlaySettingsHolder()
 	{
@@ -93,5 +94,15 @@ public class AutoPlaySettingsHolder
 	public void setAutoPotionPercent(int value)
 	{
 		_autoPotionPercent.set(value);
+	}
+	
+	public void setMacroIndex(int value)
+	{
+		_macroIndex.set(value);
+	}
+	
+	public int getMacroIndex()
+	{
+		return _macroIndex.get();
 	}
 }

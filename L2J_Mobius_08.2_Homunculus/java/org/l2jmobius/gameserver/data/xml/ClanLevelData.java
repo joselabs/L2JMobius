@@ -37,6 +37,7 @@ public class ClanLevelData implements IXmlReader
 	private int[] CLAN_EXP;
 	private int[] CLAN_COMMON_MEMBERS;
 	private int[] CLAN_ELITE_MEMBERS;
+	private int MAX_CLAN_LEVEL = 0;
 	
 	protected ClanLevelData()
 	{
@@ -49,6 +50,7 @@ public class ClanLevelData implements IXmlReader
 		CLAN_EXP = new int[EXPECTED_CLAN_LEVEL_DATA];
 		CLAN_COMMON_MEMBERS = new int[EXPECTED_CLAN_LEVEL_DATA];
 		CLAN_ELITE_MEMBERS = new int[EXPECTED_CLAN_LEVEL_DATA];
+		MAX_CLAN_LEVEL = 0;
 		
 		parseDatapackFile("data/ClanLevelData.xml");
 		LOGGER.info(getClass().getSimpleName() + ": Loaded " + (EXPECTED_CLAN_LEVEL_DATA - 1) /* level 0 excluded */ + " clan level data.");
@@ -72,6 +74,11 @@ public class ClanLevelData implements IXmlReader
 						final int commonMembers = parseInteger(attrs, "commonMembers");
 						final int eliteMembers = parseInteger(attrs, "eliteMembers");
 						
+						if (MAX_CLAN_LEVEL < level)
+						{
+							MAX_CLAN_LEVEL = level;
+						}
+						
 						CLAN_EXP[level] = exp;
 						CLAN_COMMON_MEMBERS[level] = commonMembers;
 						CLAN_ELITE_MEMBERS[level] = eliteMembers;
@@ -94,6 +101,11 @@ public class ClanLevelData implements IXmlReader
 	public int getEliteMemberLimit(int clanLevel)
 	{
 		return CLAN_ELITE_MEMBERS[clanLevel];
+	}
+	
+	public int getMaxLevel()
+	{
+		return MAX_CLAN_LEVEL;
 	}
 	
 	public static ClanLevelData getInstance()

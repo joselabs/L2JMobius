@@ -164,6 +164,7 @@ import org.l2jmobius.gameserver.model.actor.instance.AirShip;
 import org.l2jmobius.gameserver.model.actor.instance.Boat;
 import org.l2jmobius.gameserver.model.actor.instance.ControlTower;
 import org.l2jmobius.gameserver.model.actor.instance.Defender;
+import org.l2jmobius.gameserver.model.actor.instance.Doppelganger;
 import org.l2jmobius.gameserver.model.actor.instance.FriendlyMob;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
@@ -227,7 +228,6 @@ import org.l2jmobius.gameserver.model.holders.CollectionDataHolder;
 import org.l2jmobius.gameserver.model.holders.DamageTakenHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.ItemSkillHolder;
-import org.l2jmobius.gameserver.model.holders.MapHolder;
 import org.l2jmobius.gameserver.model.holders.MovieHolder;
 import org.l2jmobius.gameserver.model.holders.PlayerCollectionData;
 import org.l2jmobius.gameserver.model.holders.PreparedMultisellListHolder;
@@ -257,6 +257,7 @@ import org.l2jmobius.gameserver.model.itemcontainer.PlayerFreight;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerRefund;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerWarehouse;
+import org.l2jmobius.gameserver.model.krateisCube.KrateiArena;
 import org.l2jmobius.gameserver.model.matching.MatchingRoom;
 import org.l2jmobius.gameserver.model.olympiad.Hero;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadFightHistory;
@@ -286,6 +287,7 @@ import org.l2jmobius.gameserver.model.stats.BaseStat;
 import org.l2jmobius.gameserver.model.stats.Formulas;
 import org.l2jmobius.gameserver.model.stats.MoveType;
 import org.l2jmobius.gameserver.model.stats.Stat;
+import org.l2jmobius.gameserver.model.undergroundColiseum.UCTeam;
 import org.l2jmobius.gameserver.model.variables.AccountVariables;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
@@ -371,6 +373,7 @@ import org.l2jmobius.gameserver.network.serverpackets.autoplay.ExActivateAutoSho
 import org.l2jmobius.gameserver.network.serverpackets.autoplay.ExAutoPlaySettingSend;
 import org.l2jmobius.gameserver.network.serverpackets.commission.ExResponseCommissionInfo;
 import org.l2jmobius.gameserver.network.serverpackets.friend.FriendStatus;
+import org.l2jmobius.gameserver.network.serverpackets.huntingzones.TimedHuntingZoneExit;
 import org.l2jmobius.gameserver.network.serverpackets.olympiad.ExOlympiadMode;
 import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
 import org.l2jmobius.gameserver.taskmanager.AutoPlayTaskManager;
@@ -474,7 +477,10 @@ public class Player extends Playable
 	private long _lastAccess;
 	private long _uptime;
 	
+	private final InventoryUpdate _inventoryUpdate = new InventoryUpdate();
+	private ScheduledFuture<?> _inventoryUpdateTask;
 	private ScheduledFuture<?> _itemListTask;
+	private ScheduledFuture<?> _adenaAndWeightTask;
 	private ScheduledFuture<?> _skillListTask;
 	private ScheduledFuture<?> _storageCountTask;
 	private ScheduledFuture<?> _userBoostStatTask;
@@ -590,7 +596,8 @@ public class Player extends Playable
 	private final Map<Integer, PremiumItem> _premiumItems = new ConcurrentSkipListMap<>();
 	
 	/** True if the Player is sitting */
-	private boolean _waitTypeSitting = false;
+	private boolean _waitTypeSitting;
+	private boolean _sittingInProgress;
 	
 	/** Location before entering Observer Mode */
 	private Location _lastLoc;
@@ -775,6 +782,13 @@ public class Player extends Playable
 	private boolean _isOnEvent = false;
 	
 	private byte _handysBlockCheckerEventArena = -1;
+	private KrateiArena _krateiArena = null;
+	private int _ucKills = 0;
+	private int _ucDeaths = 0;
+	private int _ucState = 0;
+	public static final int UC_STATE_NONE = 0;
+	public static final int UC_STATE_POINT = 1;
+	public static final int UC_STATE_ARENA = 2;
 	
 	/** new race ticket **/
 	private final int[] _raceTickets = new int[2];
@@ -1770,28 +1784,34 @@ public class Player extends Playable
 			return false;
 		}
 		
-		// Check first castle mid victory.
 		final Castle castle = CastleManager.getInstance().getCastleById(_siegeSide);
-		final Player targetPlayer = target.getActingPlayer();
-		if ((castle != null) && (targetPlayer != null) && !castle.isFirstMidVictory())
-		{
-			return true;
-		}
-		
-		// If target isn't a player, is self, isn't on same siege or not on same state, not friends.
-		if ((targetPlayer == null) || (targetPlayer == this) || (targetPlayer.getSiegeSide() != _siegeSide) || (_siegeState != targetPlayer.getSiegeState()))
+		if (castle == null)
 		{
 			return false;
 		}
 		
-		// Attackers are considered friends only if castle has no owner.
+		// If target isn't a player, is self.
+		final Player targetPlayer = target.getActingPlayer();
+		if ((targetPlayer == null) || (targetPlayer == this))
+		{
+			return false;
+		}
+		
+		// If target isn't on same siege or not on same state, not friends.
+		if ((targetPlayer.getSiegeSide() != _siegeSide) || (_siegeState != targetPlayer.getSiegeState()))
+		{
+			return false;
+		}
+		
 		if (_siegeState == 1)
 		{
-			if (castle == null)
+			// Check first castle mid victory.
+			if (!castle.isFirstMidVictory() && (_siegeState == targetPlayer.getSiegeState()))
 			{
-				return false;
+				return true;
 			}
 			
+			// Attackers are considered friends only if castle has no owner.
 			return castle.getOwner() == null;
 		}
 		
@@ -3001,6 +3021,11 @@ public class Player extends Playable
 		_onlineBeginTime = System.currentTimeMillis();
 	}
 	
+	public int getOnlineTimeMillis()
+	{
+		return (int) (System.currentTimeMillis() - _onlineBeginTime);
+	}
+	
 	/**
 	 * Return the PcInventory Inventory of the Player contained in _inventory.
 	 */
@@ -3028,12 +3053,21 @@ public class Player extends Playable
 	}
 	
 	/**
-	 * Set _waitTypeSitting to given value
+	 * Set _waitTypeSitting to given value.
 	 * @param value
 	 */
 	public void setSitting(boolean value)
 	{
 		_waitTypeSitting = value;
+	}
+	
+	/**
+	 * Set _sittingInProgress to given value.
+	 * @param value
+	 */
+	public void setSittingProgress(boolean value)
+	{
+		_sittingInProgress = value;
 	}
 	
 	/**
@@ -3046,6 +3080,11 @@ public class Player extends Playable
 	
 	public void sitDown(boolean checkCast)
 	{
+		if (_sittingInProgress)
+		{
+			return;
+		}
+		
 		if (checkCast && isCastingNow())
 		{
 			sendMessage("Cannot sit while casting.");
@@ -3056,11 +3095,12 @@ public class Player extends Playable
 		{
 			breakAttack();
 			setSitting(true);
+			setSittingProgress(true);
 			getAI().setIntention(CtrlIntention.AI_INTENTION_REST);
 			broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_SITTING));
+			
 			// Schedule a sit down task to wait for the animation to finish
 			ThreadPool.schedule(new SitDownTask(this), 2500);
-			setBlockActions(true);
 		}
 	}
 	
@@ -3069,15 +3109,21 @@ public class Player extends Playable
 	 */
 	public void standUp()
 	{
+		if (_sittingInProgress)
+		{
+			return;
+		}
+		
 		if (_waitTypeSitting && !isInStoreMode() && !isAlikeDead())
 		{
+			setSittingProgress(true);
 			if (getEffectList().isAffected(EffectFlag.RELAXING))
 			{
 				stopEffects(EffectFlag.RELAXING);
 			}
-			
 			broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_STANDING));
-			// Schedule a stand up task to wait for the animation to finish
+			
+			// Schedule a stand up task to wait for the animation to finish.
 			ThreadPool.schedule(new StandUpTask(this), 2500);
 		}
 	}
@@ -4474,13 +4520,20 @@ public class Player extends Playable
 			return;
 		}
 		
+		if (getActiveTradeList() != null)
+		{
+			sendPacket(SystemMessageId.YOU_CANNOT_PICK_UP_OR_USE_ITEMS_WHILE_TRADING);
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
 		// Set the AI Intention to AI_INTENTION_IDLE
 		getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 		
 		// Check if the WorldObject to pick up is a Item
 		if (!object.isItem())
 		{
-			// dont try to pickup anything that is not an item :)
+			// do not try to pickup anything that is not an item :)
 			LOGGER.warning(this + " trying to pickup wrong target." + getTarget());
 			return;
 		}
@@ -4741,7 +4794,7 @@ public class Player extends Playable
 				newTarget = null;
 			}
 			
-			// vehicles cant be targeted
+			// vehicles cannot be targeted
 			if (!isGM() && (newTarget instanceof Vehicle))
 			{
 				newTarget = null;
@@ -4927,6 +4980,24 @@ public class Player extends Playable
 	@Override
 	public boolean doDie(Creature killer)
 	{
+		final KrateiArena arena = getKrateiArena();
+		if (arena != null)
+		{
+			arena.setRespawnTask(this);
+			if ((killer != null) && killer.isPlayable())
+			{
+				final Player player = killer.getActingPlayer();
+				if (player != null)
+				{
+					final KrateiArena killerArena = player.getKrateiArena();
+					if (killerArena != null)
+					{
+						killerArena.addPoints(player, true);
+					}
+				}
+			}
+		}
+		
 		// Add Tranquil Soul effect.
 		SkillCaster.triggerCast(this, this, CommonSkill.TRANQUIL_SOUL.getSkill());
 		
@@ -4938,6 +5009,11 @@ public class Player extends Playable
 			final boolean fpcKill = killer.isFakePlayer();
 			if ((pk != null) || fpcKill)
 			{
+				if ((getParty() != null) && (getParty().getUCState() instanceof UCTeam))
+				{
+					((UCTeam) getParty().getUCState()).onKill(this, pk);
+				}
+				
 				if (pk != null)
 				{
 					if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_PVP_KILL, this))
@@ -5086,6 +5162,14 @@ public class Player extends Playable
 			_cubics.clear();
 		}
 		
+		for (Npc npc : getSummonedNpcs())
+		{
+			if (npc instanceof Doppelganger)
+			{
+				npc.deleteMe();
+			}
+		}
+		
 		if (isChannelized())
 		{
 			getSkillChannelized().abortChannelization();
@@ -5129,7 +5213,7 @@ public class Player extends Playable
 		return true;
 	}
 	
-	public void addDamageTaken(Creature attacker, int skillId, double damage)
+	public void addDamageTaken(Creature attacker, int skillId, double damage, boolean isDOT, boolean reflect)
 	{
 		if (attacker == this)
 		{
@@ -5138,7 +5222,7 @@ public class Player extends Playable
 		
 		synchronized (_lastDamageTaken)
 		{
-			_lastDamageTaken.add(new DamageTakenHolder(attacker, skillId, damage));
+			_lastDamageTaken.add(new DamageTakenHolder(attacker, skillId, damage, isDOT, reflect));
 			if (_lastDamageTaken.size() > 20)
 			{
 				_lastDamageTaken.removeFirst();
@@ -5204,8 +5288,8 @@ public class Player extends Playable
 				for (Item itemDrop : _inventory.getItems())
 				{
 					// Don't drop
-					if (itemDrop.isShadowItem() || // Dont drop Shadow Items
-						itemDrop.isTimeLimitedItem() || // Dont drop Time Limited Items
+					if (itemDrop.isShadowItem() || // do not drop Shadow Items
+						itemDrop.isTimeLimitedItem() || // do not drop Time Limited Items
 						!itemDrop.isDropable() || (itemDrop.getId() == Inventory.ADENA_ID) || // Adena
 						(itemDrop.getTemplate().getType2() == ItemTemplate.TYPE2_QUEST) || // Quest Items
 						((_pet != null) && (_pet.getControlObjectId() == itemDrop.getId())) || // Control Item of active pet
@@ -6790,29 +6874,31 @@ public class Player extends Playable
 					player.setPledgeType(rset.getInt("subpledge"));
 					// player.setApprentice(rset.getInt("apprentice"));
 					
+					Clan clan = null;
 					if (clanId > 0)
 					{
-						player.setClan(ClanTable.getInstance().getClan(clanId));
-					}
-					
-					if (player.getClan() != null)
-					{
-						if (player.getClan().getLeaderId() != player.getObjectId())
+						clan = ClanTable.getInstance().getClan(clanId);
+						player.setClan(clan);
+						if ((clan != null) && clan.isMember(objectId))
 						{
-							if (player.getPowerGrade() == 0)
+							if (clan.getLeaderId() != player.getObjectId())
 							{
-								player.setPowerGrade(5);
+								if (player.getPowerGrade() == 0)
+								{
+									player.setPowerGrade(5);
+								}
+								player.setClanPrivileges(clan.getRankPrivs(player.getPowerGrade()));
 							}
-							player.setClanPrivileges(player.getClan().getRankPrivs(player.getPowerGrade()));
+							else
+							{
+								player.getClanPrivileges().setAll();
+								player.setPowerGrade(1);
+							}
+							
+							player.setPledgeClass(ClanMember.calculatePledgeClass(player));
 						}
-						else
-						{
-							player.getClanPrivileges().setAll();
-							player.setPowerGrade(1);
-						}
-						player.setPledgeClass(ClanMember.calculatePledgeClass(player));
 					}
-					else
+					if (clan == null)
 					{
 						if (nobleLevel > 0)
 						{
@@ -6826,6 +6912,7 @@ public class Player extends Playable
 						
 						player.getClanPrivileges().clear();
 					}
+					
 					player.setTotalDeaths(rset.getInt("deaths"));
 					player.setTotalKills(rset.getInt("kills"));
 					player.setDeleteTimer(rset.getLong("deletetime"));
@@ -8626,7 +8713,7 @@ public class Player extends Playable
 			}
 			
 			// Check if the Player is in an arena, but NOT siege zone. NOTE: This check comes before clan/ally checks, but after party checks.
-			// This is done because in arenas, clan/ally members can autoattack if they arent in party.
+			// This is done because in arenas, clan/ally members can autoattack if they are not in party.
 			if ((isInsideZone(ZoneId.PVP) && attackerPlayer.isInsideZone(ZoneId.PVP)) && !(isInsideZone(ZoneId.SIEGE) && attackerPlayer.isInsideZone(ZoneId.SIEGE)))
 			{
 				return true;
@@ -10603,9 +10690,9 @@ public class Player extends Playable
 			// Run on a separate thread to give time to above events to be notified.
 			ThreadPool.schedule(() ->
 			{
-				setCurrentCp(_originalCp);
 				setCurrentHp(_originalHp);
 				setCurrentMp(_originalMp);
+				setCurrentCp(_originalCp);
 			}, 300);
 		}
 	}
@@ -10915,8 +11002,10 @@ public class Player extends Playable
 		}
 		
 		// Close time limited zone window.
-		if (!isInTimedHuntingZone())
+		final TimedHuntingZoneHolder holder = getTimedHuntingZone();
+		if ((holder != null) && !isInsideZone(ZoneId.TIMED_HUNTING))
 		{
+			sendPacket(new TimedHuntingZoneExit(holder.getZoneId()));
 			stopTimedHuntingZoneTask();
 		}
 		
@@ -11128,10 +11217,10 @@ public class Player extends Playable
 	 * <ul>
 	 * <li>Inventory contains item</li>
 	 * <li>Item owner id == owner id</li>
-	 * <li>It isnt pet control item while mounting pet or pet summoned</li>
-	 * <li>It isnt active enchant item</li>
-	 * <li>It isnt cursed weapon/item</li>
-	 * <li>It isnt wear item</li>
+	 * <li>It is not pet control item while mounting pet or pet summoned</li>
+	 * <li>It is not active enchant item</li>
+	 * <li>It is not cursed weapon/item</li>
+	 * <li>It is not wear item</li>
 	 * </ul>
 	 * @param objectId item object id
 	 * @param action just for login porpouse
@@ -12558,7 +12647,7 @@ public class Player extends Playable
 	
 	public void teleportBookmarkModify(int id, int icon, String tag, String name)
 	{
-		if (isInsideZone(ZoneId.TIMED_HUNTING))
+		if (isInTimedHuntingZone())
 		{
 			return;
 		}
@@ -12628,7 +12717,7 @@ public class Player extends Playable
 		final TeleportBookmark bookmark = _tpbookmarks.get(id);
 		if (bookmark != null)
 		{
-			if (isInTimedHuntingZone(bookmark.getX(), bookmark.getY()))
+			if (isInTimedHuntingZone())
 			{
 				sendMessage("You cannot teleport at this location.");
 				return;
@@ -12687,7 +12776,7 @@ public class Player extends Playable
 			sendPacket(SystemMessageId.YOU_CANNOT_USE_MY_TELEPORTS_TO_REACH_THIS_AREA);
 			return false;
 		}
-		else if (isInsideZone(ZoneId.NO_BOOKMARK) || isInBoat() || isInAirShip() || isInsideZone(ZoneId.TIMED_HUNTING))
+		else if (isInsideZone(ZoneId.NO_BOOKMARK) || isInBoat() || isInAirShip() || isInTimedHuntingZone())
 		{
 			if (type == 0)
 			{
@@ -12715,7 +12804,7 @@ public class Player extends Playable
 			return;
 		}
 		
-		if (isInsideZone(ZoneId.TIMED_HUNTING))
+		if (isInTimedHuntingZone())
 		{
 			return;
 		}
@@ -13863,6 +13952,53 @@ public class Player extends Playable
 		return _handysBlockCheckerEventArena;
 	}
 	
+	public KrateiArena getKrateiArena()
+	{
+		return _krateiArena;
+	}
+	
+	public void setKrateiArena(KrateiArena arena)
+	{
+		_krateiArena = arena;
+	}
+	
+	public int getUCKills()
+	{
+		return _ucKills;
+	}
+	
+	public void addKillCountUC()
+	{
+		_ucKills++;
+	}
+	
+	public int getUCDeaths()
+	{
+		return _ucDeaths;
+	}
+	
+	public void addDeathCountUC()
+	{
+		_ucDeaths++;
+	}
+	
+	public void cleanUCStats()
+	{
+		_ucDeaths = 0;
+		_ucKills = 0;
+	}
+	
+	public void setUCState(int state)
+	{
+		setRegisteredOnEvent(state != UC_STATE_NONE);
+		_ucState = state;
+	}
+	
+	public int getUCState()
+	{
+		return _ucState;
+	}
+	
 	public void setOriginalCpHpMp(double cp, double hp, double mp)
 	{
 		_originalCp = cp;
@@ -14423,26 +14559,51 @@ public class Player extends Playable
 	
 	public void sendInventoryUpdate(InventoryUpdate iu)
 	{
-		sendPacket(iu);
-		sendPacket(new ExAdenaInvenCount(this));
-		sendPacket(new ExUserInfoInvenWeight(this));
+		if (_inventoryUpdateTask != null)
+		{
+			_inventoryUpdateTask.cancel(false);
+		}
+		
+		_inventoryUpdate.putAll(iu.getItemEntries());
+		
+		_inventoryUpdateTask = ThreadPool.schedule(() ->
+		{
+			sendPacket(_inventoryUpdate);
+			
+			updateAdenaAndWeight();
+		}, 100);
 	}
 	
 	public void sendItemList()
 	{
-		if (_itemListTask == null)
+		if (_itemListTask != null)
 		{
-			_itemListTask = ThreadPool.schedule(() ->
-			{
-				sendPacket(new ItemList(1, this));
-				sendPacket(new ItemList(2, this));
-				sendPacket(new ExQuestItemList(1, this));
-				sendPacket(new ExQuestItemList(2, this));
-				sendPacket(new ExAdenaInvenCount(this));
-				sendPacket(new ExUserInfoInvenWeight(this));
-				_itemListTask = null;
-			}, 300);
+			_itemListTask.cancel(false);
 		}
+		
+		_itemListTask = ThreadPool.schedule(() ->
+		{
+			sendPacket(new ItemList(1, this));
+			sendPacket(new ItemList(2, this));
+			sendPacket(new ExQuestItemList(1, this));
+			sendPacket(new ExQuestItemList(2, this));
+			
+			updateAdenaAndWeight();
+		}, 250);
+	}
+	
+	public void updateAdenaAndWeight()
+	{
+		if (_adenaAndWeightTask != null)
+		{
+			_adenaAndWeightTask.cancel(false);
+		}
+		
+		_adenaAndWeightTask = ThreadPool.schedule(() ->
+		{
+			sendPacket(new ExAdenaInvenCount(this));
+			sendPacket(new ExUserInfoInvenWeight(this));
+		}, 800);
 	}
 	
 	public Fishing getFishing()
@@ -15000,66 +15161,22 @@ public class Player extends Playable
 		getVariables().setIntegerList(PlayerVariables.AUTO_USE_SHORTCUTS, positions);
 	}
 	
-	public boolean isInTimedHuntingZone(int zoneId)
-	{
-		return isInTimedHuntingZone(zoneId, getX(), getY());
-	}
-	
-	public boolean isInTimedHuntingZone(int zoneId, int locX, int locY)
-	{
-		final TimedHuntingZoneHolder holder = TimedHuntingZoneData.getInstance().getHuntingZone(zoneId);
-		if (holder == null)
-		{
-			return false;
-		}
-		
-		final int instanceId = holder.getInstanceId();
-		if (instanceId > 0)
-		{
-			return isInInstance() && (instanceId == getInstanceWorld().getTemplateId());
-		}
-		
-		for (MapHolder map : holder.getMaps())
-		{
-			if ((map.getX() == (((locX - World.WORLD_X_MIN) >> 15) + World.TILE_X_MIN)) && (map.getY() == (((locY - World.WORLD_Y_MIN) >> 15) + World.TILE_Y_MIN)))
-			{
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
 	public boolean isInTimedHuntingZone()
 	{
-		return isInTimedHuntingZone(getX(), getY());
+		return getVariables().getInt(PlayerVariables.LAST_HUNTING_ZONE_ID, 0) > 0;
 	}
 	
-	public boolean isInTimedHuntingZone(int x, int y)
+	public boolean isInTimedHuntingZone(int zoneId)
 	{
-		for (TimedHuntingZoneHolder holder : TimedHuntingZoneData.getInstance().getAllHuntingZones())
-		{
-			if (isInTimedHuntingZone(holder.getZoneId(), x, y))
-			{
-				return true;
-			}
-		}
-		return false;
+		return getVariables().getInt(PlayerVariables.LAST_HUNTING_ZONE_ID, 0) == zoneId;
 	}
 	
 	public TimedHuntingZoneHolder getTimedHuntingZone()
 	{
-		for (TimedHuntingZoneHolder holder : TimedHuntingZoneData.getInstance().getAllHuntingZones())
-		{
-			if (isInTimedHuntingZone(holder.getZoneId()))
-			{
-				return holder;
-			}
-		}
-		return null;
+		return TimedHuntingZoneData.getInstance().getHuntingZone(getVariables().getInt(PlayerVariables.LAST_HUNTING_ZONE_ID, 0));
 	}
 	
-	public void startTimedHuntingZone(int zoneId, long delay)
+	public void startTimedHuntingZone(int zoneId)
 	{
 		// Stop previous task.
 		stopTimedHuntingZoneTask();

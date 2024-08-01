@@ -17,19 +17,15 @@
 package org.l2jmobius.gameserver.model.actor.stat;
 
 import java.util.Collections;
-import java.util.Deque;
 import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.AttributeType;
@@ -44,7 +40,6 @@ import org.l2jmobius.gameserver.model.skill.SkillConditionScope;
 import org.l2jmobius.gameserver.model.stats.Formulas;
 import org.l2jmobius.gameserver.model.stats.MoveType;
 import org.l2jmobius.gameserver.model.stats.Stat;
-import org.l2jmobius.gameserver.model.stats.StatHolder;
 import org.l2jmobius.gameserver.model.stats.TraitType;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.util.MathUtil;
@@ -67,8 +62,6 @@ public class CreatureStat
 	private final Map<Integer, Double> _mpConsumeStat = new ConcurrentHashMap<>();
 	private final Map<Integer, LinkedList<Double>> _skillEvasionStat = new ConcurrentHashMap<>();
 	private final Map<Stat, Map<Position, Double>> _positionStats = new ConcurrentHashMap<>();
-	private final Deque<StatHolder> _additionalAdd = new ConcurrentLinkedDeque<>();
-	private final Deque<StatHolder> _additionalMul = new ConcurrentLinkedDeque<>();
 	private final Map<Stat, Double> _fixedValue = new ConcurrentHashMap<>();
 	
 	private final float[] _attackTraitValues = new float[TraitType.values().length];
@@ -997,21 +990,6 @@ public class CreatureStat
 				}
 			}
 			
-			// Merge with additional stats.
-			for (StatHolder holder : _additionalAdd)
-			{
-				if (holder.verifyCondition(_creature))
-				{
-					mergeAdd(holder.getStat(), holder.getValue());
-				}
-			}
-			for (StatHolder holder : _additionalMul)
-			{
-				if (holder.verifyCondition(_creature))
-				{
-					mergeMul(holder.getStat(), holder.getValue());
-				}
-			}
 			_attackSpeedMultiplier = Formulas.calcAtkSpdMultiplier(_creature);
 			_mAttackSpeedMultiplier = Formulas.calcMAtkSpdMultiplier(_creature);
 		}
@@ -1195,92 +1173,6 @@ public class CreatureStat
 	public int getReuseTime(Skill skill)
 	{
 		return (skill.isStaticReuse() || skill.isStatic()) ? skill.getReuseDelay() : (int) (skill.getReuseDelay() * getReuseTypeValue(skill.getMagicType()));
-	}
-	
-	/**
-	 * Adds static value to the 'add' map of the stat everytime recalculation happens
-	 * @param stat
-	 * @param value
-	 * @param condition
-	 * @return
-	 */
-	public boolean addAdditionalStat(Stat stat, double value, BiPredicate<Creature, StatHolder> condition)
-	{
-		return _additionalAdd.add(new StatHolder(stat, value, condition));
-	}
-	
-	/**
-	 * Adds static value to the 'add' map of the stat everytime recalculation happens
-	 * @param stat
-	 * @param value
-	 * @return
-	 */
-	public boolean addAdditionalStat(Stat stat, double value)
-	{
-		return _additionalAdd.add(new StatHolder(stat, value));
-	}
-	
-	/**
-	 * @param stat
-	 * @param value
-	 * @return {@code true} if 'add' was removed, {@code false} in case there wasn't such stat and value
-	 */
-	public boolean removeAddAdditionalStat(Stat stat, double value)
-	{
-		final Iterator<StatHolder> it = _additionalAdd.iterator();
-		while (it.hasNext())
-		{
-			final StatHolder holder = it.next();
-			if ((holder.getStat() == stat) && (holder.getValue() == value))
-			{
-				it.remove();
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * Adds static multiplier to the 'mul' map of the stat everytime recalculation happens
-	 * @param stat
-	 * @param value
-	 * @param condition
-	 * @return
-	 */
-	public boolean mulAdditionalStat(Stat stat, double value, BiPredicate<Creature, StatHolder> condition)
-	{
-		return _additionalMul.add(new StatHolder(stat, value, condition));
-	}
-	
-	/**
-	 * Adds static multiplier to the 'mul' map of the stat everytime recalculation happens
-	 * @param stat
-	 * @param value
-	 * @return {@code true}
-	 */
-	public boolean mulAdditionalStat(Stat stat, double value)
-	{
-		return _additionalMul.add(new StatHolder(stat, value));
-	}
-	
-	/**
-	 * @param stat
-	 * @param value
-	 * @return {@code true} if 'mul' was removed, {@code false} in case there wasn't such stat and value
-	 */
-	public boolean removeMulAdditionalStat(Stat stat, double value)
-	{
-		final Iterator<StatHolder> it = _additionalMul.iterator();
-		while (it.hasNext())
-		{
-			final StatHolder holder = it.next();
-			if ((holder.getStat() == stat) && (holder.getValue() == value))
-			{
-				it.remove();
-				return true;
-			}
-		}
-		return false;
 	}
 	
 	/**

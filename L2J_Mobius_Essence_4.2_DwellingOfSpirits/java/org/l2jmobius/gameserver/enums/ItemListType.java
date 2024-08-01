@@ -28,7 +28,7 @@ public enum ItemListType implements IUpdateTypeComponent
 	ENCHANT_EFFECT(4),
 	VISUAL_ID(8),
 	SOUL_CRYSTAL(16),
-	EVOLVE(128),
+	PET_EVOLVE(128),
 	BLESSED(256);
 	
 	private final int _mask;

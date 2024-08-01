@@ -26,6 +26,7 @@ import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.PartyRequest;
+import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.AskJoinParty;
@@ -95,7 +96,7 @@ public class RequestJoinParty extends ClientPacket
 			return;
 		}
 		
-		final Player target = World.getInstance().getPlayer(_name);
+		final Player target = requestor.isInsideZone(ZoneId.CONQUEST) ? World.getInstance().getPlayer(requestor.getTarget().getName()) : World.getInstance().getPlayer(_name);
 		if (target == null)
 		{
 			requestor.sendPacket(SystemMessageId.SELECT_A_PLAYER_YOU_WANT_TO_INVITE_TO_YOUR_PARTY);
@@ -118,7 +119,7 @@ public class RequestJoinParty extends ClientPacket
 		if (target.isPartyBanned())
 		{
 			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_AND_CANNOT_JOIN_A_PARTY);
-			sm.addString(target.getName());
+			sm.addString(target.getAppearance().getVisibleName());
 			requestor.sendPacket(sm);
 			return;
 		}
@@ -133,7 +134,7 @@ public class RequestJoinParty extends ClientPacket
 		if (target.isInParty())
 		{
 			sm = new SystemMessage(SystemMessageId.C1_IS_A_MEMBER_OF_ANOTHER_PARTY_AND_CANNOT_BE_INVITED);
-			sm.addString(target.getName());
+			sm.addString(target.getAppearance().getVisibleName());
 			requestor.sendPacket(sm);
 			return;
 		}
@@ -141,7 +142,7 @@ public class RequestJoinParty extends ClientPacket
 		if (BlockList.isBlocked(target, requestor))
 		{
 			sm = new SystemMessage(SystemMessageId.C1_HAS_PLACED_YOU_ON_THEIR_IGNORE_LIST);
-			sm.addString(target.getName());
+			sm.addString(target.getAppearance().getVisibleName());
 			requestor.sendPacket(sm);
 			return;
 		}
@@ -176,7 +177,7 @@ public class RequestJoinParty extends ClientPacket
 		}
 		
 		sm = new SystemMessage(SystemMessageId.C1_HAS_BEEN_INVITED_TO_THE_PARTY);
-		sm.addString(target.getName());
+		sm.addString(target.getAppearance().getVisibleName());
 		requestor.sendPacket(sm);
 		
 		if (!requestor.isInParty())
@@ -216,13 +217,13 @@ public class RequestJoinParty extends ClientPacket
 			request.scheduleTimeout(30 * 1000);
 			requestor.addRequest(request);
 			target.addRequest(request);
-			target.sendPacket(new AskJoinParty(requestor.getName(), party.getDistributionType()));
+			target.sendPacket(new AskJoinParty(requestor.getAppearance().getVisibleName(), party.getDistributionType()));
 			party.setPendingInvitation(true);
 		}
 		else
 		{
 			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
-			sm.addString(target.getName());
+			sm.addString(target.getAppearance().getVisibleName());
 			requestor.sendPacket(sm);
 		}
 	}
@@ -247,7 +248,7 @@ public class RequestJoinParty extends ClientPacket
 			request.scheduleTimeout(30 * 1000);
 			requestor.addRequest(request);
 			target.addRequest(request);
-			target.sendPacket(new AskJoinParty(requestor.getName(), partyDistributionType));
+			target.sendPacket(new AskJoinParty(requestor.getAppearance().getVisibleName(), partyDistributionType));
 		}
 		else
 		{

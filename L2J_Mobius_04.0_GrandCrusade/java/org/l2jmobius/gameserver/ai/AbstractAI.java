@@ -660,6 +660,11 @@ public abstract class AbstractAI implements Ctrl
 		}
 	}
 	
+	public int getClientMovingToPawnOffset()
+	{
+		return _clientMovingToPawnOffset;
+	}
+	
 	/**
 	 * Kill the actor client side by sending Server->Client packet AutoAttackStop, StopMove/StopRotation, Die <i>(broadcast)</i>.<br>
 	 * <font color=#FF0000><b><u>Caution</u>: Low level function, used by AI subclasses</b></font>

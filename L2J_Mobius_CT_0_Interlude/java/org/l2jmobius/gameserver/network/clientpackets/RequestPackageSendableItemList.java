@@ -45,7 +45,7 @@ public class RequestPackageSendableItemList extends ClientPacket
 			return;
 		}
 		
-		final Collection<Item> items = player.getInventory().getAvailableItems(true, true, true);
+		final Collection<Item> items = player.getInventory().getAvailableItems(true, false, false);
 		player.sendPacket(new PackageSendableList(items, _objectID, player.getAdena()));
 	}
 }

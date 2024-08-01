@@ -86,7 +86,6 @@ import handlers.admincommandhandlers.AdminGeodata;
 import handlers.admincommandhandlers.AdminGm;
 import handlers.admincommandhandlers.AdminGmChat;
 import handlers.admincommandhandlers.AdminGmSpeed;
-import handlers.admincommandhandlers.AdminGraciaSeeds;
 import handlers.admincommandhandlers.AdminGrandBoss;
 import handlers.admincommandhandlers.AdminHeal;
 import handlers.admincommandhandlers.AdminHide;
@@ -139,9 +138,11 @@ import handlers.admincommandhandlers.AdminZone;
 import handlers.admincommandhandlers.AdminZones;
 import handlers.bypasshandlers.Augment;
 import handlers.bypasshandlers.Buy;
+import handlers.bypasshandlers.BuyShadowItem;
 import handlers.bypasshandlers.ChangePlayerName;
 import handlers.bypasshandlers.ChatLink;
 import handlers.bypasshandlers.ClanWarehouse;
+import handlers.bypasshandlers.Festival;
 import handlers.bypasshandlers.FindPvP;
 import handlers.bypasshandlers.Freight;
 import handlers.bypasshandlers.ItemAuctionLink;
@@ -154,6 +155,7 @@ import handlers.bypasshandlers.PlayerHelp;
 import handlers.bypasshandlers.PrivateWarehouse;
 import handlers.bypasshandlers.QuestLink;
 import handlers.bypasshandlers.ReleaseAttribute;
+import handlers.bypasshandlers.Rift;
 import handlers.bypasshandlers.SkillList;
 import handlers.bypasshandlers.SupportBlessing;
 import handlers.bypasshandlers.SupportMagic;
@@ -209,6 +211,7 @@ import handlers.itemhandlers.PetFood;
 import handlers.itemhandlers.Recipes;
 import handlers.itemhandlers.RollingDice;
 import handlers.itemhandlers.Seed;
+import handlers.itemhandlers.SevenSignsRecord;
 import handlers.itemhandlers.SoulShots;
 import handlers.itemhandlers.SpecialXMas;
 import handlers.itemhandlers.SpiritShot;
@@ -272,7 +275,6 @@ import handlers.targethandlers.affectobject.NotFriendPc;
 import handlers.targethandlers.affectobject.ObjectDeadNpcBody;
 import handlers.targethandlers.affectobject.UndeadRealEnemy;
 import handlers.targethandlers.affectobject.WyvernObject;
-import handlers.targethandlers.affectscope.BalakasScope;
 import handlers.targethandlers.affectscope.DeadParty;
 import handlers.targethandlers.affectscope.DeadPartyPledge;
 import handlers.targethandlers.affectscope.DeadPledge;
@@ -291,6 +293,7 @@ import handlers.targethandlers.affectscope.Square;
 import handlers.targethandlers.affectscope.SquarePB;
 import handlers.targethandlers.affectscope.StaticObjectScope;
 import handlers.targethandlers.affectscope.SummonExceptMaster;
+import handlers.targethandlers.affectscope.ValakasScope;
 import handlers.usercommandhandlers.ChannelDelete;
 import handlers.usercommandhandlers.ChannelInfo;
 import handlers.usercommandhandlers.ChannelLeave;
@@ -401,7 +404,6 @@ public class MasterHandler
 			AdminGm.class,
 			AdminGmChat.class,
 			AdminGmSpeed.class,
-			AdminGraciaSeeds.class,
 			AdminGrandBoss.class,
 			AdminHeal.class,
 			AdminHide.class,
@@ -456,9 +458,11 @@ public class MasterHandler
 			// Bypass Handlers
 			Augment.class,
 			Buy.class,
+			BuyShadowItem.class,
 			ChangePlayerName.class,
 			ChatLink.class,
 			ClanWarehouse.class,
+			Festival.class,
 			FindPvP.class,
 			Freight.class,
 			ItemAuctionLink.class,
@@ -471,6 +475,7 @@ public class MasterHandler
 			PlayerHelp.class,
 			PrivateWarehouse.class,
 			ReleaseAttribute.class,
+			Rift.class,
 			SkillList.class,
 			SupportBlessing.class,
 			SupportMagic.class,
@@ -535,6 +540,7 @@ public class MasterHandler
 			Recipes.class,
 			RollingDice.class,
 			Seed.class,
+			SevenSignsRecord.class,
 			SoulShots.class,
 			SpecialXMas.class,
 			SpiritShot.class,
@@ -620,7 +626,7 @@ public class MasterHandler
 		},
 		{
 			// Affect Scopes
-			BalakasScope.class,
+			ValakasScope.class,
 			DeadParty.class,
 			DeadPartyPledge.class,
 			DeadPledge.class,

@@ -852,7 +852,10 @@ public class Lindvior extends AbstractNpcAI
 			_lionel.deleteMe();
 			
 			GrandBossManager.getInstance().setStatus(LINDVIOR_RAID, DEAD);
-			final long respawnTime = (Config.LINDVIOR_SPAWN_INTERVAL + getRandom(-Config.LINDVIOR_SPAWN_RANDOM, Config.LINDVIOR_SPAWN_RANDOM)) * 3600000;
+			
+			final long baseIntervalMillis = Config.LINDVIOR_SPAWN_INTERVAL * 3600000;
+			final long randomRangeMillis = Config.LINDVIOR_SPAWN_RANDOM * 3600000;
+			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			final StatSet info = GrandBossManager.getInstance().getStatSet(LINDVIOR_RAID);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 			GrandBossManager.getInstance().setStatSet(LINDVIOR_RAID, info);

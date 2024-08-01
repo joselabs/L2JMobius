@@ -17,7 +17,7 @@
 package quests.Q10037_NewLifesLessons;
 
 import org.l2jmobius.gameserver.data.xml.TeleportListData;
-import org.l2jmobius.gameserver.enums.ClassId;
+import org.l2jmobius.gameserver.instancemanager.QuestManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -33,7 +33,7 @@ import quests.Q10039_StrengthOfSpirit.Q10039_StrengthOfSpirit;
 import quests.Q10040_StrengthOfSpirit.Q10040_StrengthOfSpirit;
 
 /**
- * @author Magik
+ * @author Magik, Mobius
  */
 public class Q10037_NewLifesLessons extends Quest
 {
@@ -71,19 +71,36 @@ public class Q10037_NewLifesLessons extends Quest
 			}
 			case "TELEPORT":
 			{
-				final QuestState questState = getQuestState(player, false);
+				QuestState questState = getQuestState(player, false);
 				if (questState == null)
 				{
+					if (!canStartQuest(player))
+					{
+						break;
+					}
+					
+					questState = getQuestState(player, true);
+					
+					final NewQuestLocation questLocation = getQuestData().getLocation();
+					if (questLocation.getStartLocationId() > 0)
+					{
+						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getStartLocationId()).getLocation();
+						if (teleportToQuestLocation(player, location))
+						{
+							questState.setCond(QuestCondType.ACT);
+							sendAcceptDialog(player);
+						}
+					}
 					break;
 				}
 				
 				final NewQuestLocation questLocation = getQuestData().getLocation();
 				if (questState.isCond(QuestCondType.STARTED))
 				{
-					if (questLocation.getStartLocationId() > 0)
+					if (questLocation.getQuestLocationId() > 0)
 					{
-						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getStartLocationId()).getLocation();
-						if (teleportToQuestLocation(player, location) && (questLocation.getStartLocationId() == questLocation.getEndLocationId()))
+						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getQuestLocationId()).getLocation();
+						if (teleportToQuestLocation(player, location) && (questLocation.getQuestLocationId() == questLocation.getEndLocationId()))
 						{
 							questState.setCond(QuestCondType.DONE);
 							sendEndDialog(player);
@@ -116,7 +133,8 @@ public class Q10037_NewLifesLessons extends Quest
 					questState.exitQuest(false, true);
 					rewardPlayer(player);
 					
-					if ((player.getClassId().getId() >= ClassId.DARK_FIGHTER.getId()) && (player.getClassId().getId() < ClassId.DARK_MAGE.getId()))
+					Quest quest = QuestManager.getInstance().getQuest(10039);
+					if (quest.canStartQuest(player))
 					{
 						final QuestState nextQuestState = player.getQuestState(Q10039_StrengthOfSpirit.class.getSimpleName());
 						if (nextQuestState == null)
@@ -126,10 +144,14 @@ public class Q10037_NewLifesLessons extends Quest
 					}
 					else
 					{
-						final QuestState nextQuestState = player.getQuestState(Q10040_StrengthOfSpirit.class.getSimpleName());
-						if (nextQuestState == null)
+						quest = QuestManager.getInstance().getQuest(10040);
+						if (quest.canStartQuest(player))
 						{
-							player.sendPacket(new ExQuestDialog(10040, QuestDialogType.ACCEPT));
+							final QuestState nextQuestState = player.getQuestState(Q10040_StrengthOfSpirit.class.getSimpleName());
+							if (nextQuestState == null)
+							{
+								player.sendPacket(new ExQuestDialog(10040, QuestDialogType.ACCEPT));
+							}
 						}
 					}
 				}

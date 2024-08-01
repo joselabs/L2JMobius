@@ -89,7 +89,7 @@ public class ExAutoPlaySetting extends ClientPacket
 		settings.add(5, _potionPercent);
 		settings.add(6, _respectfulHunting ? 1 : 0);
 		settings.add(7, _petPotionPercent);
-		settings.add(8, _macroIndex);
+		settings.add(8, _macroIndex); // Not used.
 		player.getVariables().setIntegerList(PlayerVariables.AUTO_USE_SETTINGS, settings);
 		
 		player.getAutoPlaySettings().setOptions(_options);
@@ -98,7 +98,6 @@ public class ExAutoPlaySetting extends ClientPacket
 		player.getAutoPlaySettings().setShortRange(_shortRange);
 		player.getAutoPlaySettings().setRespectfulHunting(_respectfulHunting);
 		player.getAutoPlaySettings().setAutoPetPotionPercent(_petPotionPercent);
-		player.getAutoPlaySettings().setMacroIndex(_macroIndex);
 		
 		if (_active)
 		{

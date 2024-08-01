@@ -38,7 +38,7 @@ public abstract class AbstractRequest
 		_player = player;
 	}
 	
-	public Player getActiveChar()
+	public Player getPlayer()
 	{
 		return _player;
 	}

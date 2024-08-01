@@ -147,7 +147,7 @@ public class PaulinasSupportBox implements IItemHandler
 		}
 		
 		player.getInventory().destroyItem(getClass().getSimpleName(), item, 1, player, null);
-		player.sendPacket(new InventoryUpdate(item));
+		player.sendInventoryUpdate(new InventoryUpdate(item));
 		
 		switch (item.getId())
 		{

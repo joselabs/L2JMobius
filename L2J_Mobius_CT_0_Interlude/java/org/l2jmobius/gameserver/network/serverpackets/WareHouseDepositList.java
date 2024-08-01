@@ -28,9 +28,9 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 public class WareHouseDepositList extends ServerPacket
 {
 	public static final int PRIVATE = 1;
-	public static final int CLAN = 4;
+	public static final int CLAN = 2;
 	public static final int CASTLE = 3; // not sure
-	public static final int FREIGHT = 1;
+	public static final int FREIGHT = 4;
 	
 	private final long _playerAdena;
 	private final List<Item> _items = new ArrayList<>();

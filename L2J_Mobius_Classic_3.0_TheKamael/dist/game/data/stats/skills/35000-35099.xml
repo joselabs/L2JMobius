@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="35000" toLevel="1" name="Blessing of a Fire Dragon">
 		<!-- Buffs/ debuffs remain in death, but Blessing of Fire Dragon disappears. -->
@@ -175,26 +175,21 @@
 		<icon>icon.accessory_jjoro_masj_i00</icon>
 		<operateType>P</operateType>
 	</skill>
-	<skill id="35010" toLevel="1" name="Refined Romantic Chapeau">
-		<!-- STR+1, INT+1. -->
+	<skill id="35010" toLevel="1" name="Ring of Core - Special Ability">
+		<!-- Cancels all debuffs. Cannot be used if the character is inflicted with Fear/ Silence. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
-		<abnormalLevel>7</abnormalLevel>
-		<abnormalTime>3600</abnormalTime>
-		<abnormalType>MAX_HP_UP</abnormalType>
-		<effectRange>900</effectRange>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>60</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
+		<magicLevel>85</magicLevel>
+		<hitTime>200</hitTime>
+		<operateType>A1</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_NOT</targetType>
+		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
-				<amount>35</amount>
-				<mode>PER</mode>
+			<effect name="DispelByCategory">
+				<slot>DEBUFF</slot>
+				<rate>100</rate>
+				<max>10</max>
 			</effect>
 		</effects>
 	</skill>
@@ -278,8 +273,14 @@
 			<value level="7">icon.tallisman_baium</value>
 		</icon>
 		<operateType>P</operateType>
-		<magicLevel>55</magicLevel>
+		<magicLevel>75</magicLevel>
 		<excludedFromCheck>true</excludedFromCheck>
+		<passiveConditions>
+			<condition name="CheckLevel">
+				<minLevel>60</minLevel>
+				<maxLevel>99</maxLevel>
+			</condition>
+		</passiveConditions>
 		<effects>
 			<effect name="PAtk">
 				<amount>
@@ -287,9 +288,9 @@
 					<value level="2">27</value>
 					<value level="3">41</value>
 					<value level="4">68</value>
-					<value level="5">81</value>
-					<value level="6">95</value>
-					<value level="7">135</value>
+					<value level="5">170</value>
+					<value level="6">200</value>
+					<value level="7">284</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -299,13 +300,13 @@
 					<value level="2">44</value>
 					<value level="3">66</value>
 					<value level="4">109</value>
-					<value level="5">131</value>
-					<value level="6">153</value>
-					<value level="7">218</value>
+					<value level="5">235</value>
+					<value level="6">275</value>
+					<value level="7">392</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="ResistDDMagic">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">2</value>
@@ -318,6 +319,18 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="PhysicalSkillPower">
+				<amount>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">1</value>
+					<value level="4">2</value>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalSkillPower">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -525,6 +538,19 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
+			<effect name="MagicMpCost">
+				<amount>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value level="5">-2</value>
+					<value level="6">-4</value>
+					<value level="7">-5</value>
+				</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
 			<effect name="Reuse">
 				<amount>
 					<value level="1">0</value>
@@ -550,6 +576,19 @@
 				</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
+			</effect>
+			<effect name="Reuse">
+				<amount>
+					<value level="1">0</value>
+					<value level="2">0</value>
+					<value level="3">0</value>
+					<value level="4">0</value>
+					<value level="5">0</value>
+					<value level="6">0</value>
+					<value level="7">-3</value>
+				</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
 			</effect>
 		</effects>
 	</skill>

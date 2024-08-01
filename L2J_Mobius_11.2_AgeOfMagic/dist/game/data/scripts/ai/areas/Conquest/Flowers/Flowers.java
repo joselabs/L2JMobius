@@ -95,7 +95,7 @@ public class Flowers extends AbstractNpcAI
 					SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_SP_HAS_DECREASED_BY_S1);
 					sm.addLong(REQUIRED_SP);
 					SystemMessage sm2 = new SystemMessage(SystemMessageId.C1_HAS_DRAINED_YOU_OF_S2_HP);
-					sm2.addString(player.getTarget().getName());
+					sm2.addString(npc.getName());
 					sm2.addLong(REQUIRED_HP);
 					player.sendPacket(sm);
 					player.sendPacket(sm2);

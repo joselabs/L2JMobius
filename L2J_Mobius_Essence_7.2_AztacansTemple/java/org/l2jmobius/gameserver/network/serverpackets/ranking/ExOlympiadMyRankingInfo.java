@@ -89,7 +89,7 @@ public class ExOlympiadMyRankingInfo extends ServerPacket
 		}
 		catch (SQLException e)
 		{
-			PacketLogger.warning("Olympiad my ranking: Couldnt load data: " + e.getMessage());
+			PacketLogger.warning("Olympiad my ranking: Could not load data: " + e.getMessage());
 		}
 		int previousPlace = 0;
 		int previousWins = 0;
@@ -117,7 +117,7 @@ public class ExOlympiadMyRankingInfo extends ServerPacket
 		}
 		catch (SQLException e)
 		{
-			PacketLogger.warning("Olympiad my ranking: Couldnt load data: " + e.getMessage());
+			PacketLogger.warning("Olympiad my ranking: Could not load data: " + e.getMessage());
 		}
 		int heroCount = 0;
 		int legendCount = 0;

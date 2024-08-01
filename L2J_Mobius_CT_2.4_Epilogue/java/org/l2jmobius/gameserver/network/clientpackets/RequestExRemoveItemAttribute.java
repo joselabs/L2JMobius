@@ -69,7 +69,7 @@ public class RequestExRemoveItemAttribute extends ClientPacket
 			
 			final InventoryUpdate iu = new InventoryUpdate();
 			iu.addModifiedItem(targetItem);
-			player.sendPacket(iu);
+			player.sendInventoryUpdate(iu);
 			
 			// Retail message.
 			player.sendMessage(targetItem.getName() + "'s elemental power was removed.");

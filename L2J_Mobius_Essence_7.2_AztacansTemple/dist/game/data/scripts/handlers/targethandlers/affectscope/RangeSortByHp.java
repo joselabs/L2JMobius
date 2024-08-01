@@ -77,7 +77,7 @@ public class RangeSortByHp implements IAffectScopeHandler
 		
 		final List<Creature> result = World.getInstance().getVisibleObjectsInRange(target, Creature.class, affectRange, filter);
 		
-		// Add object of origin since its skipped in the getVisibleObjects method.
+		// Add object of origin since it is skipped in the getVisibleObjects method.
 		if (target.isCreature() && filter.test((Creature) target))
 		{
 			result.add((Creature) target);

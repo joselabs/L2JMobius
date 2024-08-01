@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 import org.l2jmobius.gameserver.enums.ElementalType;
 import org.l2jmobius.gameserver.enums.InventoryBlockType;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.UserInfoType;
 import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -65,7 +64,7 @@ public class ExElementalSpiritEvolution extends ClientPacket
 		if (canEvolve)
 		{
 			spirit.upgrade();
-			player.sendPacket(new SystemMessage(SystemMessageId.S1_HAS_EVOLVED_TO_LV_S2).addElementalSpirit(_type).addInt(spirit.getStage()));
+			player.sendPacket(new SystemMessage(SystemMessageId.S1_HAS_EVOLVED_TO_LV_S2).addElementalSpiritName(_type).addInt(spirit.getStage()));
 			final UserInfo userInfo = new UserInfo(player);
 			userInfo.addComponentType(UserInfoType.ATT_SPIRITS);
 			player.sendPacket(userInfo);
@@ -75,7 +74,7 @@ public class ExElementalSpiritEvolution extends ClientPacket
 	
 	private boolean checkConditions(Player player, ElementalSpirit spirit)
 	{
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.CANNOT_EVOLVE_ABSORB_EXTRACT_WHILE_USING_THE_PRIVATE_STORE_WORKSHOP);
 			return false;

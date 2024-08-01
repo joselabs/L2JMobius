@@ -34,9 +34,9 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.DethroneShopData;
-import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
+import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -403,13 +403,29 @@ public class ConquestEngine extends AbstractNpcAI
 					player.sendPacket(new ExDethroneSeasonInfo(false));
 				}
 				Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessageId.THE_PATH_TO_THE_CONQUEST_WORLD_IS_CLOSED_YOU_CAN_GET_THERE_ON_MONDAYS_TUESDAYS_WEDNESDAYS_AND_THURSDAYS_FROM_10_00_TILL_14_00_AND_FROM_22_00_TILL_00_00_AND_ON_FRIDAYS_SATURDAYS_AND_SUNDAYS_FROM_20_00_TILL_01_00_OF_THE_FOLLOWING_DAY_SERVER_TIME_PVP_IS_DISABLED_FROM_20_00_TILL_22_00_FOR_2_HOURS_BECAUSE_THE_NEW_WORLD_EXPLORATION_IS_UNDER_WAY));
-				// Teleport players to town if Open Access ends.
+				// Teleport players to origin location if Open Access ends.
 				ConquestZone conquestZone = (ConquestZone) ZoneManager.getInstance().getZoneByName("conquest");
 				for (Player player : conquestZone.getPlayersInside())
 				{
 					if (!player.isGM())
 					{
-						player.teleToLocation(TeleportWhereType.TOWN);
+						
+						final PlayerVariables vars = player.getVariables();
+						Location location = new Location(147458, 26903, -2206); // Aden center if no location stored
+						if (vars.contains(PlayerVariables.CONQUEST_ORIGIN))
+						{
+							final int[] loc = vars.getIntArray(PlayerVariables.CONQUEST_ORIGIN, ";");
+							if ((loc != null) && (loc.length == 3))
+							{
+								location = new Location(loc[0], loc[1], loc[2]);
+							}
+							player.teleToLocation(location);
+							vars.remove(PlayerVariables.CONQUEST_ORIGIN);
+						}
+						else
+						{
+							player.teleToLocation(location);
+						}
 					}
 				}
 				init();
@@ -514,6 +530,7 @@ public class ConquestEngine extends AbstractNpcAI
 		for (Player player : World.getInstance().getPlayers())
 		{
 			player.getVariables().remove(PlayerVariables.CONQUEST_PERSONAL_POINTS);
+			player.getVariables().remove(PlayerVariables.CONQUEST_REWARDS_RECEIVED);
 			player.getVariables().storeMe();
 		}
 		LOGGER.info(ConquestEngine.class.getSimpleName() + ": Conquest Previous Season online players data has been reset.");

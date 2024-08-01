@@ -86,7 +86,6 @@ import handlers.admincommandhandlers.AdminGeodata;
 import handlers.admincommandhandlers.AdminGm;
 import handlers.admincommandhandlers.AdminGmChat;
 import handlers.admincommandhandlers.AdminGmSpeed;
-import handlers.admincommandhandlers.AdminGraciaSeeds;
 import handlers.admincommandhandlers.AdminGrandBoss;
 import handlers.admincommandhandlers.AdminHeal;
 import handlers.admincommandhandlers.AdminHide;
@@ -272,7 +271,6 @@ import handlers.targethandlers.affectobject.NotFriendPc;
 import handlers.targethandlers.affectobject.ObjectDeadNpcBody;
 import handlers.targethandlers.affectobject.UndeadRealEnemy;
 import handlers.targethandlers.affectobject.WyvernObject;
-import handlers.targethandlers.affectscope.BalakasScope;
 import handlers.targethandlers.affectscope.DeadParty;
 import handlers.targethandlers.affectscope.DeadPartyPledge;
 import handlers.targethandlers.affectscope.DeadPledge;
@@ -291,6 +289,7 @@ import handlers.targethandlers.affectscope.Square;
 import handlers.targethandlers.affectscope.SquarePB;
 import handlers.targethandlers.affectscope.StaticObjectScope;
 import handlers.targethandlers.affectscope.SummonExceptMaster;
+import handlers.targethandlers.affectscope.ValakasScope;
 import handlers.usercommandhandlers.ChannelDelete;
 import handlers.usercommandhandlers.ChannelInfo;
 import handlers.usercommandhandlers.ChannelLeave;
@@ -401,7 +400,6 @@ public class MasterHandler
 			AdminGm.class,
 			AdminGmChat.class,
 			AdminGmSpeed.class,
-			AdminGraciaSeeds.class,
 			AdminGrandBoss.class,
 			AdminHeal.class,
 			AdminHide.class,
@@ -620,7 +618,7 @@ public class MasterHandler
 		},
 		{
 			// Affect Scopes
-			BalakasScope.class,
+			ValakasScope.class,
 			DeadParty.class,
 			DeadPartyPledge.class,
 			DeadPledge.class,

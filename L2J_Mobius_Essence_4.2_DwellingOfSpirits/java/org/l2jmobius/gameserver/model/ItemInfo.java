@@ -20,6 +20,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
+import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.model.buylist.Product;
 import org.l2jmobius.gameserver.model.ensoul.EnsoulOption;
@@ -155,7 +156,7 @@ public class ItemInfo
 		_soulCrystalSpecialOptions = item.getAdditionalSpecialAbilities();
 		_visualId = item.getVisualId();
 		_visualExpiration = item.getVisualLifeTime() > 0 ? (item.getVisualLifeTime() - System.currentTimeMillis()) / 1000 : 0;
-		_petData = item.getActingPlayer() != null ? item.getActingPlayer().getPetEvolve(getObjectId()) : null;
+		_petData = item.getActingPlayer() != null ? PetDataTable.getInstance().getPetDataByItemId(item.getId()) != null ? item.getActingPlayer().getPetEvolve(getObjectId()) : null : null;
 	}
 	
 	public ItemInfo(Item item, int change)

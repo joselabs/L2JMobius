@@ -295,7 +295,7 @@ public class Q00663_SeductiveWhispers extends Quest
 				
 				if (winCount == 8)
 				{
-					// Cant win more than 8 consecutive game (I don't know html after 8 wins (too hard) -> give reward and show main page)
+					// Cannot win more than 8 consecutive game (I don't know html after 8 wins (too hard) -> give reward and show main page)
 					giveRewards(player, winCount);
 					reset(true);
 					return "30846-05.html";

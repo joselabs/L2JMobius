@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="31100" toLevel="1" name="Oracle's Vision">
 		<!-- P./ M. Accuracy +12, Revelation skills are enhanced. -->
@@ -460,7 +460,7 @@
 				<targetType>TARGET</targetType>
 			</effect>
 			<effect name="MagicalAttack">
-				<power>884</power>
+				<power>928</power>
 				<debuffModifier>1.1</debuffModifier>
 			</effect>
 			<effect name="MagicalAttack">
@@ -595,7 +595,8 @@
 		<itemConsumeId>1785</itemConsumeId> <!-- Soulstone -->
 		<itemConsumeCount>3</itemConsumeCount>
 		<castRange>800</castRange>
-		<effectRange>2900</effectRange>
+		<effectRange>1500</effectRange>
+		<hitTime>2900</hitTime>
 		<coolTime>350</coolTime>
 		<effectPoint>-689</effectPoint>
 		<reuseDelay>15000</reuseDelay>
@@ -637,6 +638,7 @@
 		<reuseDelay>15000</reuseDelay>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -958,11 +960,13 @@
 				<power>787</power>
 				<overHit>true</overHit>
 			</effect>
+		</effects>
+		<pvpEffects>
 			<effect name="CallSkill">
-				<skillId>31186</skillId>
+				<skillId>31186</skillId> <!-- Frost Supremacy -->
 				<skillLevel>1</skillLevel>
 			</effect>
-		</effects>
+		</pvpEffects>
 	</skill>
 	<skill id="31137" toLevel="1" name="Storm Blast">
 		<!-- A powerful elemental explosion that affects enemies at the front. Deals magic damage to the target and nearby enemies. Power 787. The damage increases in accordance with the number of affected enemies. A high chance to hit enemies in the skill range. Consumes 2 Spirit Ore. Over-hit. -->
@@ -1069,7 +1073,7 @@
 		<effectPoint>-716</effectPoint>
 		<reuseDelay>20000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<itemConsumeId>1785</itemConsumeId>
+		<itemConsumeId>1785</itemConsumeId> <!-- Soulstone -->
 		<itemConsumeCount>3</itemConsumeCount>
 		<conditions>
 			<condition name="EquipWeapon">
@@ -1167,7 +1171,7 @@
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="DefenceTrait">
-				<POLE>-20</POLE>
+				<POLE>-15</POLE>
 			</effect>
 		</effects>
 	</skill>
@@ -1311,11 +1315,10 @@
 		<itemConsumeCount>10</itemConsumeCount>
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<castRange>800</castRange>
-		<hitTime>3800</hitTime>
+		<hitTime>1000</hitTime>
 		<coolTime>200</coolTime>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<effectRange>1100</effectRange>
 		<magicLevel>110</magicLevel>
 		<affectRange>1000</affectRange>
 		<isMagic>2</isMagic>
@@ -1627,7 +1630,6 @@
 		<coolTime>200</coolTime>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<effectRange>1100</effectRange>
 		<magicLevel>110</magicLevel>
 		<affectRange>1000</affectRange>
 		<isMagic>2</isMagic>
@@ -1958,6 +1960,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<affectRange>1000</affectRange>
 		<magicLevel>110</magicLevel>
 		<mpConsume>332</mpConsume>
 		<hitTime>5000</hitTime>
@@ -1996,6 +1999,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>PARTY_PLEDGE</affectScope>
 		<affectObject>FRIEND_PC</affectObject>
+		<affectRange>1000</affectRange>
 		<magicLevel>110</magicLevel>
 		<mpConsume>332</mpConsume>
 		<hitTime>5000</hitTime>
@@ -2034,6 +2038,7 @@
 		<targetType>MY_PARTY</targetType>
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<affectRange>1000</affectRange>
 		<magicLevel>110</magicLevel>
 		<mpConsume>140</mpConsume>
 		<hitTime>5000</hitTime>
@@ -2055,11 +2060,11 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceCriticalDamage">
-				<amount>-10</amount>
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>-10</amount>
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -2097,11 +2102,11 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceCriticalDamage">
-				<amount>-10</amount>
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>-10</amount>
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -2122,8 +2127,8 @@
 		<mpConsume>61</mpConsume>
 		<isDebuff>true</isDebuff>
 		<effectRange>400</effectRange>
-		<hitTime>3500</hitTime>
-		<coolTime>300</coolTime>
+		<hitTime>3000</hitTime>
+		<coolTime>500</coolTime>
 		<effectPoint>-350</effectPoint>
 		<reuseDelay>10000</reuseDelay>
 		<targetType>SELF</targetType>
@@ -2203,11 +2208,11 @@
 		</conditions>
 		<effects>
 			<effect name="DefenceCriticalDamage">
-				<amount>-5</amount>
+				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>-5</amount>
+				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -2228,8 +2233,8 @@
 		<mpConsume>86</mpConsume>
 		<isDebuff>true</isDebuff>
 		<effectRange>400</effectRange>
-		<hitTime>3500</hitTime>
-		<coolTime>300</coolTime>
+		<hitTime>3000</hitTime>
+		<coolTime>500</coolTime>
 		<effectPoint>-350</effectPoint>
 		<reuseDelay>10000</reuseDelay>
 		<targetType>SELF</targetType>
@@ -2309,11 +2314,11 @@
 		</conditions>
 		<effects>
 			<effect name="DefenceCriticalRate">
-				<amount>-10</amount>
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalRate">
-				<amount>-10</amount>
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -2334,8 +2339,8 @@
 		<mpConsume>86</mpConsume>
 		<isDebuff>true</isDebuff>
 		<effectRange>400</effectRange>
-		<hitTime>3500</hitTime>
-		<coolTime>300</coolTime>
+		<hitTime>3000</hitTime>
+		<coolTime>500</coolTime>
 		<effectPoint>-350</effectPoint>
 		<reuseDelay>10000</reuseDelay>
 		<targetType>SELF</targetType>
@@ -2596,25 +2601,98 @@
 	<skill id="31180" toLevel="1" name="Momentum Power of Valor">
 		<!-- Allows to manage momentum better. Brave Spear additionally increases Skill Power of skills that consume momentum by 20%. -->
 		<icon>icon.skill0017</icon>
-		<operateType>A2</operateType>
+		<operateType>P</operateType>
 	</skill>
 	<skill id="31181" toLevel="6" name="Rolling Thunder">
 		<!-- A powerful tornado shatters the target's armor, decreasing their P. Def. for 5%. -->
 		<icon>icon.skill10268</icon>
-		<operateType>A1</operateType>
+		<operateType>A3</operateType>
+		<abnormalTime>5</abnormalTime>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+			<value level="5">5</value>
+			<value level="6">6</value>
+		</abnormalLevel>
 		<isDebuff>true</isDebuff>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-687</effectPoint>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">-5</value>
+					<value level="2">-7</value>
+					<value level="3">-9</value>
+					<value level="4">-11</value>
+					<value level="5">-15</value>
+					<value level="6">-20</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>	
 	</skill>
 	<skill id="31182" toLevel="4" name="Brave Spear - Momentum Power">
 		<!-- For 60 sec. P. Skill Power +30%, PvP damage +5%. Additional power of charging skills +20%. -->
 		<icon>icon.skill0458</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
 		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>180000</reuseDelay>
 		<effectPoint>673</effectPoint>
 		<mpConsume>143</mpConsume>
+		<abnormalTime>60</abnormalTime>
+		<abnormalType>MOMENTUM_POWER</abnormalType>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+		</abnormalLevel>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="PhysicalSkillPower">
+				<amount>
+					<value level="1">30</value>
+					<value level="2">35</value>
+					<value level="3">40</value>
+					<value level="4">45</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalAttackDamageBonus">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+					<value level="3">15</value>
+					<value level="4">20</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDamageBonus">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+					<value level="3">15</value>
+					<value level="4">20</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDamageBonus">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+					<value level="3">15</value>
+					<value level="4">20</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<!-- TODO: Additional power of charging skills -->
+		</effects>
 	</skill>
 	<skill id="31183" toLevel="1" name="Base Skill Critical Increase Per">
 		<icon>icon.skill0017</icon>
@@ -2670,12 +2748,55 @@
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
+			<effect name="Reuse">
+				<amount>7</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="31187" toLevel="1" name="Shadow Piercing - Cooldown Decrease">
 		<!-- Decreases some skill cooldowns. -->
 		<icon>icon.skill31136</icon>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<operateType>A1</operateType>
+		<effectPoint>687</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="ReuseSkillById">
+				<skillId>10762</skillId> <!-- Quick Shot -->
+				<amount>1000</amount>
+			</effect>
+			<effect name="ReuseSkillById">
+				<skillId>10763</skillId> <!-- Pinpoint Shot -->
+				<amount>1000</amount>
+			</effect>
+			<effect name="ReuseSkillById">
+				<skillId>10769</skillId> <!-- Impact Shot -->
+				<amount>1000</amount>
+			</effect>
+			<effect name="ReuseSkillById">
+				<skillId>10770</skillId> <!-- Recoil Shot -->
+				<amount>1000</amount>
+			</effect>
+			<effect name="ReuseSkillById">
+				<skillId>10760</skillId> <!-- Tornado Shot -->
+				<amount>1000</amount>
+			</effect>
+			<effect name="ReuseSkillById">
+				<skillId>10771</skillId> <!-- Multiple Shot -->
+				<amount>1000</amount>
+			</effect>
+			<effect name="ReuseSkillById">
+				<skillId>10772</skillId> <!-- Heavy Arrow Rain -->
+				<amount>1000</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="31188" toLevel="1" name="Coin Strike - Test">
 		<!-- Throws a fistful of coins at the enemies and attacks them at vital points. Power 36140. Teleports behind the target's back. Consumes 777 adena. Requires a dagger or dual daggers. -->
@@ -2743,6 +2864,30 @@
 		<operateType>A1</operateType>
 		<hitTime>100</hitTime>
 		<effectPoint>707</effectPoint>
+		<magicLevel>1</magicLevel>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<effects>
+			<effect name="HealEffect">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="Mp">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="31194" toLevel="1" name="Uncrushable Will">
 		<!-- When HP < 30%, recovers 100% HP and 50% MP/ CP, when hit. Triggers 1 time in 5 min. -->
@@ -2817,8 +2962,11 @@
 		<!-- Summons a large magic stone that temporarily enhances party members. Characters around the stone get the Pulse of Elements effect that increases attack every 5 sec. <Pulse of Elements>. For 15 sec., Weapon P./ M. Atk. +20. Does not stack with Summon Stone of Nature. Consumes 10 Spirit Ore. -->
 		<icon>icon.skill31198</icon>
 		<operateType>A1</operateType>
+		<targetType>GROUND</targetType>
+		<affectScope>SINGLE</affectScope>
+		<affectObject>FRIEND</affectObject>
 		<castRange>800</castRange>
-		<hitTime>1500</hitTime>
+		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>120000</reuseDelay>
 		<mpConsume>
@@ -2828,15 +2976,115 @@
 			<value level="4">125</value>
 			<value level="5">130</value>
 		</mpConsume>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<itemConsumeCount>10</itemConsumeCount>
+		<conditions>
+			<condition name="OpExistNpc">
+				<npcIds>
+					<item>13629</item>
+					<item>13630</item>
+					<item>13631</item>
+					<item>13632</item>
+					<item>13633</item>
+				</npcIds>
+				<range>600</range>
+				<isAround>false</isAround>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="SummonNpc">
+				<npcId>
+					<value level="1">13629</value>
+					<value level="2">13630</value>
+					<value level="3">13631</value>
+					<value level="4">13632</value>
+					<value level="5">13633</value>
+				</npcId>
+				<npcCount>1</npcCount>
+				<despawnDelay>30000</despawnDelay>
+				<singleInstance>true</singleInstance>
+				<isSummonSpawn>true</isSummonSpawn>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="31199" toLevel="5" name="Pulse of Elements">
 		<!-- For 15 sec. Weapon P./ M. Atk. +20. The Summon Stone of Nature buff stacks with Arcane Protection. -->
 		<icon>icon.skill0500</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<affectRange>1000</affectRange>
+		<affectLimit>6-12</affectLimit>
+		<effectPoint>668</effectPoint>
 		<isMagic>4</isMagic>
 		<castRange>800</castRange>
 		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>4000</reuseDelay>
+		<targetType>SELF</targetType>
+		<affectScope>RANGE</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<abnormalType>PULSE_OF_ELEMENTS</abnormalType>
+		<abnormalTime>15</abnormalTime>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+			<value level="5">5</value>
+		</abnormalLevel>
+		<specialLevel>-1</specialLevel>
+		<effects>
+			<effect name="WeaponBonusMAtk">
+				<amount>
+					<value level="1">20</value>
+					<value level="2">40</value>
+					<value level="3">60</value>
+					<value level="4">80</value>
+					<value level="5">100</value>
+				</amount>
+				<mode>DIFF</mode>
+				<weaponType>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+					<item>DAGGER</item>
+					<item>POLE</item>
+					<item>DUALFIST</item>
+					<item>BOW</item>
+					<item>DUAL</item>
+					<item>FIST</item>
+					<item>RAPIER</item>
+					<item>CROSSBOW</item>
+					<item>ANCIENTSWORD</item>
+					<item>DUALDAGGER</item>
+					<item>TWOHANDCROSSBOW</item>
+					<item>DUALBLUNT</item>
+				</weaponType>
+			</effect>
+			<effect name="WeaponBonusPAtk">
+				<amount>
+					<value level="1">20</value>
+					<value level="2">40</value>
+					<value level="3">60</value>
+					<value level="4">80</value>
+					<value level="5">100</value>
+				</amount>
+				<mode>DIFF</mode>
+				<weaponType>
+					<item>SWORD</item>
+					<item>BLUNT</item>
+					<item>DAGGER</item>
+					<item>POLE</item>
+					<item>DUALFIST</item>
+					<item>BOW</item>
+					<item>DUAL</item>
+					<item>FIST</item>
+					<item>RAPIER</item>
+					<item>CROSSBOW</item>
+					<item>ANCIENTSWORD</item>
+					<item>DUALDAGGER</item>
+					<item>TWOHANDCROSSBOW</item>
+					<item>DUALBLUNT</item>
+				</weaponType>
+			</effect>
+		</effects>
 	</skill>
 </list>

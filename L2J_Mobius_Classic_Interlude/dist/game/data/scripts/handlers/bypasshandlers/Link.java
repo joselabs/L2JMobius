@@ -57,6 +57,16 @@ public class Link implements IBypassHandler
 		VALID_LINKS.add("petmanager/evolve.htm");
 		VALID_LINKS.add("petmanager/exchange.htm");
 		VALID_LINKS.add("petmanager/instructions.htm");
+		VALID_LINKS.add("seven_signs/blkmrkt_1.htm");
+		VALID_LINKS.add("seven_signs/blkmrkt_2.htm");
+		VALID_LINKS.add("seven_signs/mammblack_1a.htm");
+		VALID_LINKS.add("seven_signs/mammblack_1b.htm");
+		VALID_LINKS.add("seven_signs/mammblack_1c.htm");
+		VALID_LINKS.add("seven_signs/mammblack_2a.htm");
+		VALID_LINKS.add("seven_signs/mammblack_2b.htm");
+		VALID_LINKS.add("seven_signs/mammmerch_1.htm");
+		VALID_LINKS.add("seven_signs/mammmerch_1a.htm");
+		VALID_LINKS.add("seven_signs/mammmerch_1b.htm");
 		VALID_LINKS.add("warehouse/clanwh.htm");
 		VALID_LINKS.add("warehouse/privatewh.htm");
 	}

@@ -34,7 +34,6 @@ import org.l2jmobius.gameserver.model.item.enchant.EnchantScroll;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
-import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.ShortCutInit;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.enchant.EnchantResult;
@@ -152,7 +151,7 @@ public class ExRequestMultiEnchantItemList extends ClientPacket
 				return;
 			}
 			
-			final InventoryUpdate iu = new InventoryUpdate();
+			// final InventoryUpdate iu = new InventoryUpdate();
 			synchronized (enchantItem)
 			{
 				if ((enchantItem.getOwnerId() != player.getObjectId()) || !enchantItem.isEnchantable())
@@ -289,10 +288,10 @@ public class ExRequestMultiEnchantItemList extends ClientPacket
 								_failureReward.put(_failureReward.size() + 1, itemHolder);
 							}
 							
-							if (crystals != null)
-							{
-								iu.addItem(crystals);
-							}
+							// if (crystals != null)
+							// {
+							// iu.addItem(crystals); // FIXME: Packet never sent?
+							// }
 							
 							if ((crystalId == 0) || (count == 0))
 							{

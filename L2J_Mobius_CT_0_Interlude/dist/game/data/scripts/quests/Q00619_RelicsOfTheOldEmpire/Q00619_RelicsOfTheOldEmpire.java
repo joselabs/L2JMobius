@@ -140,22 +140,22 @@ public class Q00619_RelicsOfTheOldEmpire extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player player, boolean isPet)
+	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		final QuestState st = getRandomPartyMemberState(player, -1, 3, npc);
-		if ((st == null) || !st.isStarted())
+		final QuestState qs = getRandomPartyMemberState(killer, -1, 3, npc);
+		if ((qs == null) || !qs.isStarted())
 		{
 			return null;
 		}
-		final Player partyMember = st.getPlayer();
+		final Player partyMember = qs.getPlayer();
 		
-		giveItems(partyMember, RELICS, 1);
-		playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		giveItemRandomly(qs.getPlayer(), npc, RELICS, 1, 0, 1, true);
 		if (getRandomBoolean())
 		{
 			giveItems(partyMember, ENTRANCE, 1);
+			playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 		}
 		
-		return null;
+		return super.onKill(npc, killer, isSummon);
 	}
 }

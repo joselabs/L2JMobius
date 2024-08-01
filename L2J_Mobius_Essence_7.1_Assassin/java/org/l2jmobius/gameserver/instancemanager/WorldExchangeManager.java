@@ -389,7 +389,7 @@ public class WorldExchangeManager implements IXmlReader
 			return;
 		}
 		
-		player.sendPacket(iu);
+		player.sendInventoryUpdate(iu);
 		player.getInventory().reduceAdena("World Exchange Registration", feePrice, player, null);
 		final long endTime = calculateDate(Config.WORLD_EXCHANGE_ITEM_SELL_PERIOD);
 		_itemBids.put(freeId, new WorldExchangeHolder(freeId, itemInstance, new ItemInfo(itemInstance), priceForEach, player.getObjectId(), WorldExchangeItemStatusType.WORLD_EXCHANGE_REGISTERED, category, System.currentTimeMillis(), endTime, true));
@@ -993,7 +993,14 @@ public class WorldExchangeManager implements IXmlReader
 		
 		for (int itemId : itemIds)
 		{
-			_itemCategories.putIfAbsent(itemId, WorldExchangeItemSubType.getWorldExchangeItemSubType(category));
+			final WorldExchangeItemSubType type = WorldExchangeItemSubType.getWorldExchangeItemSubType(category);
+			if (type == null)
+			{
+				LOGGER.warning(getClass().getSimpleName() + ": Non existent category type [" + category + "] for item id " + itemId + "!");
+				continue;
+			}
+			
+			_itemCategories.putIfAbsent(itemId, type);
 		}
 	}
 	

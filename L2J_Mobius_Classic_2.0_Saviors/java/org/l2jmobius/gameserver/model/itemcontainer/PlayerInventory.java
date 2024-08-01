@@ -922,7 +922,7 @@ public class PlayerInventory extends Inventory
 					paperdoll[slot][0] = invdata.getInt("object_id");
 					paperdoll[slot][1] = invdata.getInt("item_id");
 					paperdoll[slot][2] = invdata.getInt("enchant_level");
-					paperdoll[slot][3] = vars.getInt(ItemVariables.VISUAL_ID, 0);
+					paperdoll[slot][3] = vars.getInt(ItemVariables.VISUAL_ID, Config.ENABLE_TRANSMOG ? vars.getInt(ItemVariables.TRANSMOG_ID, 0) : 0);
 					if (paperdoll[slot][3] > 0) // fix for hair appearance conflicting with original model
 					{
 						paperdoll[slot][1] = paperdoll[slot][3];

@@ -1032,7 +1032,7 @@ public class Formulas
 	 * <ul>
 	 * <li>chance = weapon_critical * dex_bonus * crit_height_bonus * crit_pos_bonus * effect_bonus * fatal_blow_rate</li>
 	 * <li>weapon_critical = (12 for daggers)</li>
-	 * <li>dex_bonus = dex modifier bonus for current dex (Seems unused in GOD, so its not used in formula).</li>
+	 * <li>dex_bonus = dex modifier bonus for current dex (Seems unused in GOD, so it is not used in formula).</li>
 	 * <li>crit_height_bonus = (z_diff * 4 / 5 + 10) / 100 + 1 or alternatively (z_diff * 0.008) + 1.1. Be aware of z_diff constraint of -25 to 25.</li>
 	 * <li>crit_pos_bonus = crit_pos(front = 1, side = 1.1, back = 1.3) * p_critical_rate_position_bonus</li>
 	 * <li>effect_bonus = (p2 + 100) / 100, p2 - 2nd param of effect. Blow chance of effect.</li>
@@ -1471,7 +1471,7 @@ public class Formulas
 		
 		// Measured July 2016 by Nik.
 		// Due to retail packet delay, we are unable to gather too accurate results. Therefore the below formulas are based on original Gracia Final values.
-		// Any original values that appear higher than tested have been replaced with the tested values, because even with packet delay its obvious they are wrong.
+		// Any original values that appear higher than tested have been replaced with the tested values, because even with packet delay it is obvious they are wrong.
 		// All other original values are compared with the test results and differences are considered to be too insignificant and mostly caused due to packet delay.
 		switch (attackType)
 		{

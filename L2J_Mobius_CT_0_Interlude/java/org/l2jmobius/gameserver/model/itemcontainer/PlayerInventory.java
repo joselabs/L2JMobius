@@ -42,9 +42,9 @@ import org.l2jmobius.gameserver.model.events.impl.creature.player.inventory.OnPl
 import org.l2jmobius.gameserver.model.events.impl.creature.player.inventory.OnPlayerItemTransfer;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.model.variables.ItemVariables;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 
 public class PlayerInventory extends Inventory
@@ -475,7 +475,7 @@ public class PlayerInventory extends Inventory
 				{
 					playerIU.addNewItem(item);
 				}
-				actor.sendPacket(playerIU);
+				actor.sendInventoryUpdate(playerIU);
 				
 				// Update current load as well
 				final StatusUpdate su = new StatusUpdate(actor);
@@ -632,7 +632,7 @@ public class PlayerInventory extends Inventory
 						iu.addRemovedItem(item);
 						if (++destroyed == count)
 						{
-							_owner.sendPacket(iu);
+							_owner.sendInventoryUpdate(iu);
 							refreshWeight();
 							return item;
 						}
@@ -812,11 +812,16 @@ public class PlayerInventory extends Inventory
 				{
 					final int slot = invdata.getInt("loc_data");
 					paperdoll[slot][0] = invdata.getInt("object_id");
-					paperdoll[slot][1] = invdata.getInt("item_id");
+					if (Config.ENABLE_TRANSMOG)
+					{
+						final ItemVariables vars = new ItemVariables(paperdoll[slot][0]);
+						paperdoll[slot][1] = vars.getInt(ItemVariables.TRANSMOG_ID, invdata.getInt("item_id"));
+					}
+					else
+					{
+						paperdoll[slot][1] = invdata.getInt("item_id");
+					}
 					paperdoll[slot][2] = invdata.getInt("enchant_level");
-					/*
-					 * if (slot == Inventory.PAPERDOLL_RHAND) { paperdoll[Inventory.PAPERDOLL_RHAND][0] = invdata.getInt("object_id"); paperdoll[Inventory.PAPERDOLL_RHAND][1] = invdata.getInt("item_id"); paperdoll[Inventory.PAPERDOLL_RHAND][2] = invdata.getInt("enchant_level"); }
-					 */
 				}
 			}
 		}
@@ -926,7 +931,7 @@ public class PlayerInventory extends Inventory
 		_blockMode = mode;
 		_blockItems = items;
 		
-		_owner.sendPacket(new ItemList(_owner, false));
+		_owner.sendItemList(false);
 	}
 	
 	/**
@@ -937,7 +942,7 @@ public class PlayerInventory extends Inventory
 		_blockMode = -1;
 		_blockItems = null;
 		
-		_owner.sendPacket(new ItemList(_owner, false));
+		_owner.sendItemList(false);
 	}
 	
 	/**

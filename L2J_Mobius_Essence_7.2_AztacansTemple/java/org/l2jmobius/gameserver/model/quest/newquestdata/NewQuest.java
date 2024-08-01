@@ -55,7 +55,7 @@ public class NewQuest
 		_startNpcId = set.getInt("startNpcId", -1);
 		_endNpcId = set.getInt("endNpcId", -1);
 		_startItemId = set.getInt("startItemId", -1);
-		_location = new NewQuestLocation(set.getInt("startLocationId", 0), set.getInt("endLocationId", 0));
+		_location = new NewQuestLocation(set.getInt("startLocationId", 0), set.getInt("endLocationId", 0), set.getInt("questLocationId", 0));
 		
 		final String classIds = set.getString("classIds", "");
 		final List<ClassId> classRestriction = classIds.isEmpty() ? Collections.emptyList() : Arrays.stream(classIds.split(";")).map(it -> ClassId.getClassId(Integer.parseInt(it))).collect(Collectors.toList());

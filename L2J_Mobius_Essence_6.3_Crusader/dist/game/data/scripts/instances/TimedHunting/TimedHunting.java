@@ -17,6 +17,7 @@
 package instances.TimedHunting;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ScheduledFuture;
@@ -25,6 +26,8 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.ai.AttackableAI;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
+import org.l2jmobius.gameserver.cache.HtmCache;
+import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.TimedHuntingZoneData;
 import org.l2jmobius.gameserver.enums.Race;
@@ -42,6 +45,7 @@ import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExSendUIEvent;
+import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.huntingzones.TimedHuntingZoneExit;
 
 import instances.AbstractInstance;
@@ -59,10 +63,23 @@ public class TimedHunting extends AbstractInstance
 	private static final int JOON = 34124; // Sea of Spores 40-49
 	private static final int PANJI = 34125; // Plains of Glory 60-69
 	private static final int DEBBIE = 34126; // War-Torn Plains 70-79
+	private static final int[] GUARDIANS =
+	{
+		22292,
+		22331,
+		22332,
+		22333,
+		22334,
+		22335,
+		22424
+	};
 	// Skill
 	private static final int BUFF = 45197;
 	private static final int BUFF_FOR_KAMAEL = 45198;
-	
+	// Rewards
+	private static final int SPIRIT_ORE_ID = 3031;
+	private static final int SOULSHOT_TICKET_ID = 90907;
+	private static final int SAYHAS_COOKIE_ID = 93274;
 	// Misc
 	private static final int[] TEMPLATES =
 	{
@@ -133,10 +150,31 @@ public class TimedHunting extends AbstractInstance
 		SKILL_REPLACEMENTS.put(87006, 87018); // Fatal Crush
 	}
 	
+	private enum KeeperType
+	{
+		SPIRIT_ORE(NpcStringId.ENHANCED_WITH_SPIRIT_ORE),
+		SOULSHOT(NpcStringId.ENHANCED_WITH_SPIRIT),
+		GRACE(NpcStringId.ENHANCED_WITH_GRACE),
+		SUPPLY(NpcStringId.ENHANCED_WITH_SUPPLIES);
+		
+		private final NpcStringId _npcStringId;
+		
+		KeeperType(NpcStringId title)
+		{
+			_npcStringId = title;
+		}
+		
+		public NpcStringId getTitle()
+		{
+			return _npcStringId;
+		}
+	}
+	
 	public TimedHunting()
 	{
 		super(TEMPLATES);
 		addFirstTalkId(KATE, DEEKHIN, BUNCH, AYAN, JOON, PANJI, DEBBIE);
+		addKillId(GUARDIANS);
 		addInstanceLeaveId(TEMPLATES);
 	}
 	
@@ -181,6 +219,7 @@ public class TimedHunting extends AbstractInstance
 			final Instance world = player.getInstanceWorld();
 			if ((world != null) && CommonUtil.contains(TEMPLATES, world.getTemplateId()))
 			{
+				world.setReenterTime();
 				world.destroy();
 			}
 		}
@@ -216,15 +255,79 @@ public class TimedHunting extends AbstractInstance
 			npc.doCast(new SkillHolder(BUFF, 1).getSkill());
 		}
 		
-		return super.onFirstTalk(npc, player);
+		String content = HtmCache.getInstance().getHtm(player, "data/scripts/instances/TimedHunting/" + npc.getId() + ".html");
+		content = content.replace("%playerClass%", ClassListData.getInstance().getClass(player.getClassId()).getClassName());
+		content = content.replace("%replacedSkill%", getReplacedSkillNames(player));
+		final NpcHtmlMessage msg = new NpcHtmlMessage(npc.getObjectId());
+		msg.setHtml(content);
+		player.sendPacket(msg);
+		return null;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player killer, boolean isSummon)
+	{
+		final Instance instance = npc.getInstanceWorld();
+		if ((instance == null) || !instance.getParameters().contains("KeeperType"))
+		{
+			return super.onKill(npc, killer, isSummon);
+		}
+		
+		giveGuardianReward(killer, KeeperType.valueOf(instance.getParameters().getString("KeeperType", "")));
+		return super.onKill(npc, killer, isSummon);
+	}
+	
+	/**
+	 * Gives a guardian reward to the specified player. Each reward type can be obtained only once.
+	 * @param killer the player who killed the guardian
+	 * @param type the type of guardian reward to give
+	 */
+	private void giveGuardianReward(Player killer, KeeperType type)
+	{
+		final Instance instance = killer.getInstanceWorld();
+		final Map<Integer, Integer> rewardMap = instance.getParameters().getIntegerMap("GuardianReward");
+		if (rewardMap.containsKey(type.ordinal()))
+		{
+			return;
+		}
+		
+		switch (type)
+		{
+			case SPIRIT_ORE:
+			{
+				killer.addItem("TimedHunting", SPIRIT_ORE_ID, getRandomBoolean() ? getRandomBoolean() ? 3000 : 2000 : 1500, null, true);
+				break;
+			}
+			case SOULSHOT:
+			{
+				killer.addItem("TimedHunting", SOULSHOT_TICKET_ID, getRandomBoolean() ? getRandomBoolean() ? 50 : 35 : 30, null, true);
+				break;
+			}
+			case GRACE:
+			{
+				killer.addItem("TimedHunting", SAYHAS_COOKIE_ID, getRandomBoolean() ? getRandomBoolean() ? 300 : 230 : 180, null, true);
+				break;
+			}
+			case SUPPLY:
+			{
+				killer.addItem("TimedHunting", SPIRIT_ORE_ID, 650, null, true);
+				killer.addItem("TimedHunting", SOULSHOT_TICKET_ID, 12, null, true);
+				killer.addItem("TimedHunting", SAYHAS_COOKIE_ID, 75, null, true);
+				break;
+			}
+		}
+		
+		rewardMap.putIfAbsent(type.ordinal(), 1);
+		instance.getParameters().setIntegerMap("GuardianReward", rewardMap);
 	}
 	
 	@Override
 	protected void onEnter(Player player, Instance instance, boolean firstEnter)
 	{
 		super.onEnter(player, instance, firstEnter);
+		
 		instance.setParameter("PlayerIsOut", false);
-		if (!firstEnter)
+		if (!firstEnter && (player.getInstanceWorld().getTemplateId() != 228 /* Training Zone */))
 		{
 			replaceNormalSkills(player);
 			startEvent(player);
@@ -326,6 +429,35 @@ public class TimedHunting extends AbstractInstance
 		player.sendSkillList();
 	}
 	
+	private String getReplacedSkillNames(Player player)
+	{
+		int count = 0;
+		final StringBuilder sb = new StringBuilder();
+		for (int transcendentSkillId : SKILL_REPLACEMENTS.values())
+		{
+			final Skill knownSkill = player.getKnownSkill(transcendentSkillId);
+			if (knownSkill == null)
+			{
+				continue;
+			}
+			
+			if (count > 0)
+			{
+				sb.append(", ");
+			}
+			count++;
+			
+			sb.append(knownSkill.getName());
+		}
+		
+		if (count > 1)
+		{
+			sb.append(".");
+		}
+		
+		return sb.toString();
+	}
+	
 	private void startEvent(Player player)
 	{
 		// Start instance tasks.
@@ -350,7 +482,21 @@ public class TimedHunting extends AbstractInstance
 						}
 						if (getRandom(7) == 0)
 						{
-							player.getInstanceWorld().spawnGroup("guardian");
+							final List<Npc> guardian = player.getInstanceWorld().spawnGroup("guardian");
+							if (!guardian.isEmpty())
+							{
+								final Npc guardianNpc = guardian.get(0);
+								final KeeperType type = getRandomEntry(KeeperType.values());
+								if (type == null)
+								{
+									LOGGER.warning(String.format("[%s]: No KeeperType found for instance %d", getClass().getSimpleName(), instance.getId()));
+									return;
+								}
+								
+								instance.setParameter("KeeperType", type.name());
+								guardianNpc.setTitleString(type.getTitle());
+								guardianNpc.broadcastInfo();
+							}
 						}
 						for (Npc npc : player.getInstanceWorld().spawnGroup("monsters"))
 						{
@@ -375,7 +521,7 @@ public class TimedHunting extends AbstractInstance
 				}
 			}, instance.getRemainingTime() - 30000);
 			
-			ThreadPool.schedule(() -> instance.finishInstance(), instance.getRemainingTime());
+			ThreadPool.schedule(instance::finishInstance, instance.getRemainingTime());
 		}
 	}
 	

@@ -45,6 +45,7 @@ import org.l2jmobius.gameserver.model.actor.instance.FeedableBeast;
 import org.l2jmobius.gameserver.model.actor.instance.FortCommander;
 import org.l2jmobius.gameserver.model.actor.instance.GrandBoss;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
+import org.l2jmobius.gameserver.model.actor.instance.RiftInvader;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -228,7 +229,7 @@ public class CursedWeaponsManager implements IXmlReader
 	
 	public synchronized void checkDrop(Attackable attackable, Player player)
 	{
-		if ((attackable instanceof Defender) || (attackable instanceof Guard) || (attackable instanceof GrandBoss) || (attackable instanceof FeedableBeast) || (attackable instanceof FortCommander))
+		if ((attackable instanceof Defender) || (attackable instanceof RiftInvader) || (attackable instanceof Guard) || (attackable instanceof GrandBoss) || (attackable instanceof FeedableBeast) || (attackable instanceof FortCommander))
 		{
 			return;
 		}

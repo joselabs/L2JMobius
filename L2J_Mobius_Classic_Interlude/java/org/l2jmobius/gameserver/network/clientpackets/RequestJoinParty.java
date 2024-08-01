@@ -173,7 +173,14 @@ public class RequestJoinParty extends ClientPacket
 		}
 		else
 		{
-			addTargetToParty(target, requestor);
+			if (requestor.getParty().isInDimensionalRift())
+			{
+				requestor.sendMessage("You cannot invite a player when you are in the Dimensional Rift.");
+			}
+			else
+			{
+				addTargetToParty(target, requestor);
+			}
 		}
 	}
 	

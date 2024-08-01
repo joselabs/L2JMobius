@@ -105,7 +105,7 @@ public class RequestRecipeShopMakeItem extends ClientPacket
 			return;
 		}
 		
-		// TODO: Check if its a retail-like check.
+		// TODO: Check if it is a retail-like check.
 		if (player.isAlikeDead() || manufacturer.isAlikeDead())
 		{
 			return;

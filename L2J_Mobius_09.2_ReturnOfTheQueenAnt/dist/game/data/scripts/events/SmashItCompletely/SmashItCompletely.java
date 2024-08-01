@@ -96,6 +96,14 @@ public class SmashItCompletely extends LongTimeEvent
 		String htmltext = null;
 		switch (event)
 		{
+			case "34575.htm":
+			case "34575-1.htm":
+			case "34575-2.htm":
+			case "34575-3.htm":
+			{
+				htmltext = event;
+				break;
+			}
 			case "getSeed":
 			{
 				if (npc.getId() != DOODOODOO)

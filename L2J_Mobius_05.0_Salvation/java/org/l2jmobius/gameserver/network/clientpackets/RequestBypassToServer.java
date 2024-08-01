@@ -26,6 +26,7 @@ import org.l2jmobius.gameserver.handler.AdminCommandHandler;
 import org.l2jmobius.gameserver.handler.BypassHandler;
 import org.l2jmobius.gameserver.handler.CommunityBoardHandler;
 import org.l2jmobius.gameserver.handler.IBypassHandler;
+import org.l2jmobius.gameserver.instancemanager.CaptchaManager;
 import org.l2jmobius.gameserver.instancemanager.QuestManager;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
@@ -66,7 +67,8 @@ public class RequestBypassToServer extends ClientPacket
 		"_olympiad?command",
 		"menu_select",
 		"manor_menu_select",
-		"pccafe"
+		"pccafe",
+		"report"
 	};
 	
 	// S
@@ -272,6 +274,10 @@ public class RequestBypassToServer extends ClientPacket
 					quest.notifyEvent("RegisterPlayer", null, player);
 				}
 				return;
+			}
+			else if (_command.startsWith("report"))
+			{
+				CaptchaManager.getInstance().analyseBypass(_command, player);
 			}
 			else
 			{

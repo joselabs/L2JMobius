@@ -52,7 +52,7 @@ public class Soros extends AbstractNpcAI
 			}
 			case "NPC_FOLLOW":
 			{
-				addSpawn(REMONS, npc.getX() + 10, npc.getY() + 10, npc.getZ() + 10, 0, false, 0);
+				addSpawn(REMONS, npc.getX() + 10, npc.getY() + 10, npc.getZ() + 20, 0, false, 0);
 				break;
 			}
 		}

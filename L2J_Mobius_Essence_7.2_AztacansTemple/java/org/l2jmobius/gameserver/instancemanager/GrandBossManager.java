@@ -135,6 +135,14 @@ public class GrandBossManager implements IStorable
 		}
 	}
 	
+	public void addBoss(int bossId, GrandBoss boss)
+	{
+		if (boss != null)
+		{
+			_bosses.put(bossId, boss);
+		}
+	}
+	
 	public GrandBoss getBoss(int bossId)
 	{
 		return _bosses.get(bossId);

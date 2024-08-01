@@ -391,7 +391,7 @@ public class SiegeGuardManager
 			if ((spawn != null) && (spawn.getLastSpawn() != null))
 			{
 				spawn.stopRespawn();
-				spawn.getLastSpawn().doDie(spawn.getLastSpawn());
+				spawn.getLastSpawn().deleteMe();
 			}
 		}
 		getSpawnedGuards(castle.getResidenceId()).clear();

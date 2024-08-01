@@ -91,7 +91,7 @@ public class ExUpgradeSystemNormalRequest extends ClientPacket
 				if (material.getCount() < 0)
 				{
 					player.sendPacket(ExUpgradeSystemNormalResult.FAIL);
-					PacketLogger.warning(getClass().getSimpleName() + ": material -> item -> count in file EquipmentUpgradeNormalData.xml for upgrade id " + upgradeHolder.getId() + " cant be less than 0! Aborting current request!");
+					PacketLogger.warning(getClass().getSimpleName() + ": material -> item -> count in file EquipmentUpgradeNormalData.xml for upgrade id " + upgradeHolder.getId() + " cannot be less than 0! Aborting current request!");
 					return;
 				}
 				if (inventory.getInventoryItemCount(material.getId(), material.getEnchantLevel()) < material.getCount())

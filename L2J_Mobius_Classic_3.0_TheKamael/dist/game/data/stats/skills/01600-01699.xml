@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="1605" toLevel="3" name="Dual Weapon Defense">
 		<!-- For 1 min., P. Skill Evasion +30%. Requires a dual sword. <Auto-use> -->
@@ -1083,7 +1083,7 @@
 			<value level="5">5</value>
 		</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
-		<abnormalType>POSSESSION_SPECIAL</abnormalType>
+		<abnormalType>KNIGHT_BUFF1</abnormalType>
 		<affectRange>900</affectRange>
 		<effectPoint>
 			<value level="1">835</value>
@@ -1109,6 +1109,7 @@
 		</mpConsume>
 		<operateType>A4</operateType>
 		<reuseDelay>450000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
@@ -1145,7 +1146,13 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="HealEffect">
-				<amount>20</amount>
+				<amount>
+					<value level="1">20</value>
+					<value level="2">22</value>
+					<value level="3">24</value>
+					<value level="4">26</value>
+					<value level="5">30</value>
+				</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1153,10 +1160,9 @@
 	<skill id="1622" toLevel="1" name="Blood of Sacrifice">
 		<!-- Sacrifices, decreasing Max HP by 20%. -->
 		<icon>icon.skill1621</icon>
-		<abnormalLevel>6</abnormalLevel>
-		<abnormalType>POSSESSION_SPECIAL</abnormalType>
+		<abnormalLevel>10</abnormalLevel>
+		<abnormalType>KNIGHT_DEBUFF1</abnormalType>
 		<abnormalTime>300</abnormalTime>
-		<isMagic>4</isMagic>
 		<magicLevel>-1</magicLevel>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
@@ -1181,7 +1187,8 @@
 			<value level="4">4</value>
 			<value level="5">5</value>
 		</abnormalLevel>
-		<abnormalType>POSSESSION_SPECIAL</abnormalType>
+		<abnormalType>KNIGHT_BUFF1</abnormalType>
+		<effectPoint>835</effectPoint>
 		<abnormalTime>300</abnormalTime>
 		<effectPoint>
 			<value level="1">835</value>
@@ -1190,9 +1197,8 @@
 			<value level="4">846</value>
 			<value level="5">850</value>
 		</effectPoint>
-		<effectRange>900</effectRange>
+		<affectRange>900</affectRange>
 		<hitTime>2000</hitTime>
-		<isMagic>1</isMagic>
 		<magicLevel>
 			<value level="1">80</value>
 			<value level="2">81</value>
@@ -1209,6 +1215,7 @@
 		</mpConsume>
 		<operateType>A2</operateType>
 		<reuseDelay>450000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
@@ -1316,7 +1323,9 @@
 				<overHit>true</overHit>
 				<criticalChance>15</criticalChance>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
 			<effect name="BuffBlock" />
 			<effect name="DebuffBlock" />
 			<effect name="DamageByAttack">

@@ -444,7 +444,7 @@ public class FortSiegeManager
 			return false;
 		}
 		
-		final Fort fort = FortManager.getInstance().getFort(player);
+		final Fort fort = FortManager.getInstance().findNearestFort(player);
 		// if ((fort == null) || (fort.getResidenceId() <= 0) || (fort.getSiege().getAttackerClan(player.getClan()) == null))
 		if ((fort == null) || (fort.getResidenceId() <= 0))
 		{

@@ -35,7 +35,7 @@ public class EnchantItemAttributeRequest extends AbstractRequest
 	
 	public Item getEnchantingItem()
 	{
-		return getActiveChar().getInventory().getItemByObjectId(_enchantingItemObjectId);
+		return getPlayer().getInventory().getItemByObjectId(_enchantingItemObjectId);
 	}
 	
 	public void setEnchantingItem(int objectId)
@@ -45,7 +45,7 @@ public class EnchantItemAttributeRequest extends AbstractRequest
 	
 	public Item getEnchantingStone()
 	{
-		return getActiveChar().getInventory().getItemByObjectId(_enchantingStoneObjectId);
+		return getPlayer().getInventory().getItemByObjectId(_enchantingStoneObjectId);
 	}
 	
 	public void setEnchantingStone(int objectId)

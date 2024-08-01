@@ -24,7 +24,6 @@ import java.sql.Statement;
 import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Level;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.util.Broadcast;
@@ -168,7 +167,7 @@ public class AutoAnnouncement extends Announcement implements Runnable
 	{
 		if ((_currentState == -1) || (_currentState > 0))
 		{
-			for (String content : getContent().split(Config.EOL))
+			for (String content : getContent().split(System.lineSeparator()))
 			{
 				Broadcast.toAllOnlinePlayers(content, (getType() == AnnouncementType.AUTO_CRITICAL));
 			}

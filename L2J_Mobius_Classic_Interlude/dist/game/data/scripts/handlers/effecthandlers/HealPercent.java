@@ -32,11 +32,11 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  */
 public class HealPercent extends AbstractEffect
 {
-	private final int _power;
+	private final double _power;
 	
 	public HealPercent(StatSet params)
 	{
-		_power = params.getInt("power", 0);
+		_power = params.getDouble("power", 0);
 	}
 	
 	@Override
@@ -54,7 +54,7 @@ public class HealPercent extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if (effected.isDead() || effected.isDoor() || effected.isHpBlocked())
+		if (effected.isDead() || effected.isDoor() || effected.isHpBlocked() || effected.isRaid())
 		{
 			return;
 		}
@@ -67,6 +67,20 @@ public class HealPercent extends AbstractEffect
 		if ((item != null) && (item.isPotion() || item.isElixir()))
 		{
 			amount += effected.getStat().getValue(Stat.ADDITIONAL_POTION_HP, 0);
+		}
+		
+		if (amount > 0)
+		{
+			final double healEffectVal = effected.getStat().getValue(Stat.HEAL_EFFECT, 1);
+			if (healEffectVal > 1)
+			{
+				amount *= healEffectVal;
+			}
+			final double healEffectAddVal = effected.getStat().getValue(Stat.HEAL_EFFECT_ADD, 0);
+			if (healEffectAddVal > 0)
+			{
+				amount += healEffectAddVal;
+			}
 		}
 		
 		// Prevents overheal

@@ -18,6 +18,7 @@ package org.l2jmobius.gameserver.model.actor.instance;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -737,47 +738,56 @@ public class VillageMaster extends Folk
 		Set<ClassId> availSubs = getSubclasses(player, player.getBaseClass());
 		final Race npcRace = getVillageMasterRace();
 		final ClassType npcTeachType = getVillageMasterTeachType();
+		boolean everywhereEnabled = Config.ALT_GAME_SUBCLASS_EVERYWHERE;
+		
 		if (availSubs != null)
 		{
-			for (ClassId availSub : availSubs)
+			// Create a copy of the set to avoid ConcurrentModificationException
+			Set<ClassId> copySubs = new HashSet<>(availSubs);
+			for (ClassId availSub : copySubs)
 			{
-				for (SubClassHolder subClass : player.getSubClasses().values())
+				// Check if subclass restrictions based on race should be applied everywhere
+				if (!everywhereEnabled)
 				{
-					if (subClass.getClassId() == availSub.ordinal())
+					// Remove subclasses already chosen by the player
+					for (SubClassHolder subClass : player.getSubClasses().values())
 					{
+						if (subClass.getClassId() == availSub.ordinal())
+						{
+							availSubs.remove(availSub);
+							break;
+						}
+					}
+					// Remove subclasses unavailable due to previous choices or base class
+					Iterator<SubClassHolder> subListIterator = iterSubClasses(player);
+					while (subListIterator.hasNext())
+					{
+						SubClassHolder prevSubClass = subListIterator.next();
+						int subClassId = prevSubClass.getClassId();
+						if (subClassId >= 88)
+						{
+							subClassId = ClassId.getClassId(subClassId).getParent().getId();
+						}
+						if ((availSub.ordinal() == subClassId) || (availSub.ordinal() == player.getBaseClass()))
+						{
+							availSubs.remove(availSub);
+							break;
+						}
+					}
+					// Apply race restrictions based on the village master's race
+					if (((npcRace == Race.HUMAN) || (npcRace == Race.ELF)))
+					{
+						// If the master is human or light elf, ensure that fighter-type masters only teach fighter classes, and priest-type masters only teach priest classes etc.
+						if (!availSub.isOfType(npcTeachType) || (!availSub.isOfRace(Race.HUMAN) && !availSub.isOfRace(Race.ELF)))
+						{
+							availSubs.remove(availSub);
+						}
+					}
+					else if ((npcRace != Race.HUMAN) && (npcRace != Race.ELF) && !availSub.isOfRace(npcRace))
+					{
+						// If the master is not human and not light elf, then remove any classes not of the same race as the master.
 						availSubs.remove(availSub);
 					}
-				}
-				for (Iterator<SubClassHolder> subList = iterSubClasses(player); subList.hasNext();)
-				{
-					final SubClassHolder prevSubClass = subList.next();
-					int subClassId = prevSubClass.getClassId();
-					if (subClassId >= 88)
-					{
-						subClassId = ClassId.getClassId(subClassId).getParent().getId();
-					}
-					
-					if ((availSub.ordinal() == subClassId) || (availSub.ordinal() == player.getBaseClass()))
-					{
-						availSubs.remove(ClassId.values()[availSub.ordinal()]);
-					}
-				}
-				
-				if ((npcRace == Race.HUMAN) || (npcRace == Race.ELF))
-				{
-					// If the master is human or light elf, ensure that fighter-type masters only teach fighter classes, and priest-type masters only teach priest classes etc.
-					if (!availSub.isOfType(npcTeachType))
-					{
-						availSubs.remove(availSub);
-					}
-					else if (!availSub.isOfRace(Race.HUMAN) && !availSub.isOfRace(Race.ELF))
-					{
-						availSubs.remove(availSub);
-					}
-				}
-				else if ((npcRace != Race.HUMAN) && (npcRace != Race.ELF) && !availSub.isOfRace(npcRace)) // If the master is not human and not light elf, then remove any classes not of the same race as the master.
-				{
-					availSubs.remove(availSub);
 				}
 			}
 		}

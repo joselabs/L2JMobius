@@ -606,9 +606,13 @@ public class Trasken extends AbstractNpcAI
 				cancelQuestTimer("finish", npc, null);
 				
 				GrandBossManager.getInstance().setStatus(TRASKEN, DEAD);
-				final long respawnTime = (Config.TRASKEN_SPAWN_INTERVAL + getRandom(-Config.TRASKEN_SPAWN_RANDOM, Config.TRASKEN_SPAWN_RANDOM)) * 3600000;
+				
+				final long baseIntervalMillis = Config.TRASKEN_SPAWN_INTERVAL * 3600000;
+				final long randomRangeMillis = Config.TRASKEN_SPAWN_RANDOM * 3600000;
+				final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 				final StatSet info = GrandBossManager.getInstance().getStatSet(TRASKEN);
 				info.set("respawn_time", System.currentTimeMillis() + respawnTime);
+				
 				GrandBossManager.getInstance().setStatSet(TRASKEN, info);
 				startQuestTimer("unlock_trasken", respawnTime, null, null);
 				break;

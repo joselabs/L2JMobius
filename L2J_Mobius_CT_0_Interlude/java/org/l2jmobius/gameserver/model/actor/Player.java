@@ -266,6 +266,8 @@ import org.l2jmobius.gameserver.network.serverpackets.LeaveWorld;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.MyTargetSelected;
 import org.l2jmobius.gameserver.network.serverpackets.NicknameChanged;
+import org.l2jmobius.gameserver.network.serverpackets.ObservationEnter;
+import org.l2jmobius.gameserver.network.serverpackets.ObservationExit;
 import org.l2jmobius.gameserver.network.serverpackets.PartySmallWindowUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.PetInventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.PlaySound;
@@ -393,6 +395,9 @@ public class Player extends Playable
 	private long _lastAccess;
 	private long _uptime;
 	
+	private final InventoryUpdate _inventoryUpdate = new InventoryUpdate();
+	private ScheduledFuture<?> _inventoryUpdateTask;
+	private ScheduledFuture<?> _itemListTask;
 	private ScheduledFuture<?> _skillListTask;
 	private ScheduledFuture<?> _updateAndBroadcastStatusTask;
 	private ScheduledFuture<?> _broadcastCharInfoTask;
@@ -493,6 +498,7 @@ public class Player extends Playable
 	
 	/** True if the Player is sitting */
 	private boolean _waitTypeSitting;
+	private boolean _sittingInProgress;
 	
 	/** Location before entering Observer Mode */
 	private final Location _lastLoc = new Location(0, 0, 0);
@@ -1498,33 +1504,35 @@ public class Player extends Playable
 			return false;
 		}
 		
-		// Check first castle mid victory.
 		final Castle castle = CastleManager.getInstance().getCastleById(_siegeSide);
-		final Player targetPlayer = target.getActingPlayer();
-		if ((castle != null) && (targetPlayer != null) && !castle.isFirstMidVictory())
-		{
-			return true;
-		}
-		
-		// If target isn't a player, is self, isn't on same siege or not on same state, not friends.
-		if ((targetPlayer == null) || (targetPlayer == this) || (targetPlayer.getSiegeSide() != _siegeSide) || (_siegeState != targetPlayer.getSiegeState()))
+		if (castle == null)
 		{
 			return false;
 		}
 		
-		// Attackers are considered friends only if castle has no owner.
+		// If target isn't a player, is self.
+		final Player targetPlayer = target.getActingPlayer();
+		if ((targetPlayer == null) || (targetPlayer == this))
+		{
+			return false;
+		}
+		
+		// If target isn't on same siege or not on same state, not friends.
+		if ((targetPlayer.getSiegeSide() != _siegeSide) || (_siegeState != targetPlayer.getSiegeState()))
+		{
+			return false;
+		}
+		
 		if (_siegeState == 1)
 		{
-			if (castle == null)
-			{
-				return false;
-			}
-			if (castle.getOwner() == null)
+			// Check first castle mid victory.
+			if (!castle.isFirstMidVictory() && (_siegeState == targetPlayer.getSiegeState()))
 			{
 				return true;
 			}
 			
-			return false;
+			// Attackers are considered friends only if castle has no owner.
+			return castle.getOwner() == null;
 		}
 		
 		// Both are defenders, friends.
@@ -2064,7 +2072,7 @@ public class Player extends Playable
 			_expertiseArmorPenalty = armorPenalty;
 			if ((_expertiseWeaponPenalty > 0) || (_expertiseArmorPenalty > 0))
 			{
-				addSkill(SkillData.getInstance().getSkill(CommonSkill.GRADE_PENALTY.getId(), Math.max(weaponPenalty, armorPenalty)));
+				addSkill(SkillData.getInstance().getSkill(4267, 1), false);
 			}
 			else
 			{
@@ -2160,7 +2168,7 @@ public class Player extends Playable
 		
 		final InventoryUpdate iu = new InventoryUpdate();
 		iu.addItems(items);
-		sendPacket(iu);
+		sendInventoryUpdate(iu);
 		
 		if (abortAttack)
 		{
@@ -2741,6 +2749,11 @@ public class Player extends Playable
 		_onlineBeginTime = System.currentTimeMillis();
 	}
 	
+	public int getOnlineTimeMillis()
+	{
+		return (int) (System.currentTimeMillis() - _onlineBeginTime);
+	}
+	
 	/**
 	 * Return the PcInventory Inventory of the Player contained in _inventory.
 	 */
@@ -2768,12 +2781,21 @@ public class Player extends Playable
 	}
 	
 	/**
-	 * Set _waitTypeSitting to given value
+	 * Set _waitTypeSitting to given value.
 	 * @param value
 	 */
 	public void setSitting(boolean value)
 	{
 		_waitTypeSitting = value;
+	}
+	
+	/**
+	 * Set _sittingInProgress to given value.
+	 * @param value
+	 */
+	public void setSittingProgress(boolean value)
+	{
+		_sittingInProgress = value;
 	}
 	
 	/**
@@ -2786,6 +2808,11 @@ public class Player extends Playable
 	
 	public void sitDown(boolean checkCast)
 	{
+		if (_sittingInProgress)
+		{
+			return;
+		}
+		
 		if (checkCast && isCastingNow())
 		{
 			sendMessage("Cannot sit while casting");
@@ -2799,11 +2826,12 @@ public class Player extends Playable
 		
 		breakAttack();
 		setSitting(true);
+		setSittingProgress(true);
 		getAI().setIntention(CtrlIntention.AI_INTENTION_REST);
 		broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_SITTING));
-		// Schedule a sit down task to wait for the animation to finish
+		
+		// Schedule a sit down task to wait for the animation to finish.
 		ThreadPool.schedule(new SitDownTask(this), 2500);
-		setParalyzed(true);
 	}
 	
 	/**
@@ -2811,15 +2839,21 @@ public class Player extends Playable
 	 */
 	public void standUp()
 	{
+		if (_sittingInProgress)
+		{
+			return;
+		}
+		
 		if (_waitTypeSitting && !isInStoreMode() && !isAlikeDead())
 		{
+			setSittingProgress(true);
 			if (getEffectList().isAffected(EffectFlag.RELAXING))
 			{
 				stopEffects(EffectType.RELAXING);
 			}
-			
 			broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_STANDING));
-			// Schedule a stand up task to wait for the animation to finish
+			
+			// Schedule a stand up task to wait for the animation to finish.
 			ThreadPool.schedule(new StandUpTask(this), 2500);
 		}
 	}
@@ -2911,13 +2945,13 @@ public class Player extends Playable
 			// Send update packet
 			if (count == getAdena())
 			{
-				sendPacket(new ItemList(this, false));
+				sendItemList(false);
 			}
 			else
 			{
 				final InventoryUpdate iu = new InventoryUpdate();
 				iu.addModifiedItem(_inventory.getAdenaInstance());
-				sendPacket(iu);
+				sendInventoryUpdate(iu);
 			}
 		}
 	}
@@ -2952,7 +2986,7 @@ public class Player extends Playable
 			// Send update packet
 			final InventoryUpdate iu = new InventoryUpdate();
 			iu.addItem(adenaItem);
-			sendPacket(iu);
+			sendInventoryUpdate(iu);
 			
 			if (sendMessage)
 			{
@@ -2991,7 +3025,7 @@ public class Player extends Playable
 		
 		final InventoryUpdate iu = new InventoryUpdate();
 		iu.addItem(_inventory.getAncientAdenaInstance());
-		sendPacket(iu);
+		sendInventoryUpdate(iu);
 	}
 	
 	/**
@@ -3023,7 +3057,7 @@ public class Player extends Playable
 			
 			final InventoryUpdate iu = new InventoryUpdate();
 			iu.addItem(ancientAdenaItem);
-			sendPacket(iu);
+			sendInventoryUpdate(iu);
 			
 			if (sendMessage)
 			{
@@ -3087,7 +3121,7 @@ public class Player extends Playable
 			// Send inventory update packet
 			final InventoryUpdate playerIU = new InventoryUpdate();
 			playerIU.addItem(newitem);
-			sendPacket(playerIU);
+			sendInventoryUpdate(playerIU);
 			
 			// Update current load as well
 			final StatusUpdate su = new StatusUpdate(this);
@@ -3257,7 +3291,7 @@ public class Player extends Playable
 		// Send inventory update packet
 		final InventoryUpdate playerIU = new InventoryUpdate();
 		playerIU.addItem(destoyedItem);
-		sendPacket(playerIU);
+		sendInventoryUpdate(playerIU);
 		
 		// Update current load as well
 		final StatusUpdate su = new StatusUpdate(this);
@@ -3363,7 +3397,7 @@ public class Player extends Playable
 		// Send inventory update packet
 		final InventoryUpdate playerIU = new InventoryUpdate();
 		playerIU.addItem(item);
-		sendPacket(playerIU);
+		sendInventoryUpdate(playerIU);
 		
 		// Update current load as well
 		final StatusUpdate su = new StatusUpdate(this);
@@ -3423,7 +3457,7 @@ public class Player extends Playable
 		{
 			playerIU.addRemovedItem(oldItem);
 		}
-		sendPacket(playerIU);
+		sendInventoryUpdate(playerIU);
 		
 		// Update current load as well
 		StatusUpdate playerSU = new StatusUpdate(this);
@@ -3443,7 +3477,7 @@ public class Player extends Playable
 			{
 				targetIU.addNewItem(newItem);
 			}
-			targetPlayer.sendPacket(targetIU);
+			targetPlayer.sendInventoryUpdate(targetIU);
 			
 			// Update current load as well
 			playerSU = new StatusUpdate(targetPlayer);
@@ -3552,7 +3586,7 @@ public class Player extends Playable
 		// Send inventory update packet
 		final InventoryUpdate playerIU = new InventoryUpdate();
 		playerIU.addItem(droppedItem);
-		sendPacket(playerIU);
+		sendInventoryUpdate(playerIU);
 		
 		// Update current load as well
 		final StatusUpdate su = new StatusUpdate(this);
@@ -3624,7 +3658,7 @@ public class Player extends Playable
 		// Send inventory update packet
 		final InventoryUpdate playerIU = new InventoryUpdate();
 		playerIU.addItem(invitem);
-		sendPacket(playerIU);
+		sendInventoryUpdate(playerIU);
 		
 		// Update current load as well
 		final StatusUpdate su = new StatusUpdate(this);
@@ -4228,13 +4262,20 @@ public class Player extends Playable
 			return;
 		}
 		
+		if (getActiveTradeList() != null)
+		{
+			sendPacket(SystemMessageId.YOU_CANNOT_PICK_UP_OR_USE_ITEMS_WHILE_TRADING);
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
 		// Set the AI Intention to AI_INTENTION_IDLE
 		getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 		
 		// Check if the WorldObject to pick up is a Item
 		if (!object.isItem())
 		{
-			// dont try to pickup anything that is not an item :)
+			// do not try to pickup anything that is not an item :)
 			LOGGER.warning(this + " trying to pickup wrong target." + getTarget());
 			return;
 		}
@@ -4532,7 +4573,7 @@ public class Player extends Playable
 				newTarget = null;
 			}
 			
-			// vehicles cant be targeted
+			// vehicles cannot be targeted
 			if (!isGM() && (newTarget instanceof Vehicle))
 			{
 				newTarget = null;
@@ -5044,8 +5085,8 @@ public class Player extends Playable
 				for (Item itemDrop : _inventory.getItems())
 				{
 					// Don't drop
-					if (itemDrop.isShadowItem() || // Dont drop Shadow Items
-						itemDrop.isTimeLimitedItem() || // Dont drop Time Limited Items
+					if (itemDrop.isShadowItem() || // do not drop Shadow Items
+						itemDrop.isTimeLimitedItem() || // do not drop Time Limited Items
 						!itemDrop.isDropable() || (itemDrop.getId() == Inventory.ADENA_ID) || // Adena
 						(itemDrop.getTemplate().getType2() == ItemTemplate.TYPE2_QUEST) || // Quest Items
 						(hasSummon() && (_summon.getControlObjectId() == itemDrop.getId())) || // Control Item of active pet
@@ -5838,7 +5879,7 @@ public class Player extends Playable
 		{
 			_inventory.unEquipItemInSlot(Inventory.PAPERDOLL_LHAND);
 			_arrowItem = null;
-			sendPacket(new ItemList(this, false));
+			sendItemList(false);
 			return;
 		}
 		
@@ -5858,13 +5899,13 @@ public class Player extends Playable
 			_inventory.destroyItem("Consume", arrows, this, null);
 			_inventory.unEquipItemInSlot(Inventory.PAPERDOLL_LHAND);
 			_arrowItem = null;
-			sendPacket(new ItemList(this, false));
+			sendItemList(false);
 			return;
 		}
 		
 		final InventoryUpdate iu = new InventoryUpdate();
 		iu.addModifiedItem(arrows);
-		sendPacket(iu);
+		sendInventoryUpdate(iu);
 	}
 	
 	/**
@@ -5884,7 +5925,7 @@ public class Player extends Playable
 				_inventory.setPaperdollItem(Inventory.PAPERDOLL_LHAND, _arrowItem);
 				
 				// Send a Server->Client packet ItemList to this Player to update left hand equipement
-				sendPacket(new ItemList(this, false));
+				sendItemList(false);
 			}
 		}
 		else
@@ -5926,8 +5967,8 @@ public class Player extends Playable
 		{
 			iu.addModifiedItem(itm);
 		}
+		sendInventoryUpdate(iu);
 		
-		sendPacket(iu);
 		abortAttack();
 		broadcastUserInfo();
 		
@@ -5966,7 +6007,7 @@ public class Player extends Playable
 			{
 				iu.addModifiedItem(itm);
 			}
-			sendPacket(iu);
+			sendInventoryUpdate(iu);
 			
 			abortAttack();
 			broadcastUserInfo();
@@ -6632,29 +6673,31 @@ public class Player extends Playable
 					player.setHero(Hero.getInstance().isHero(objectId));
 					
 					final int clanId = rset.getInt("clanid");
+					Clan clan = null;
 					if (clanId > 0)
 					{
-						player.setClan(ClanTable.getInstance().getClan(clanId));
-					}
-					
-					if (player.getClan() != null)
-					{
-						if (player.getClan().getLeaderId() != player.getObjectId())
+						clan = ClanTable.getInstance().getClan(clanId);
+						player.setClan(clan);
+						if ((clan != null) && clan.isMember(objectId))
 						{
-							if (player.getPowerGrade() == 0)
+							if (clan.getLeaderId() != player.getObjectId())
 							{
-								player.setPowerGrade(5);
+								if (player.getPowerGrade() == 0)
+								{
+									player.setPowerGrade(5);
+								}
+								player.setClanPrivileges(clan.getRankPrivs(player.getPowerGrade()));
 							}
-							player.setClanPrivileges(player.getClan().getRankPrivs(player.getPowerGrade()));
+							else
+							{
+								player.getClanPrivileges().setAll();
+								player.setPowerGrade(1);
+							}
+							
+							player.setPledgeClass(ClanMember.calculatePledgeClass(player));
 						}
-						else
-						{
-							player.getClanPrivileges().setAll();
-							player.setPowerGrade(1);
-						}
-						player.setPledgeClass(ClanMember.calculatePledgeClass(player));
 					}
-					else
+					if (clan == null)
 					{
 						if (player.isNoble())
 						{
@@ -8073,7 +8116,7 @@ public class Player extends Playable
 			}
 			
 			// Check if the Player is in an arena, but NOT siege zone. NOTE: This check comes before clan/ally checks, but after party checks.
-			// This is done because in arenas, clan/ally members can autoattack if they arent in party.
+			// This is done because in arenas, clan/ally members can autoattack if they are not in party.
 			if ((isInsideZone(ZoneId.PVP) && attackerPlayer.isInsideZone(ZoneId.PVP)) && !(isInsideZone(ZoneId.SIEGE) && attackerPlayer.isInsideZone(ZoneId.SIEGE)))
 			{
 				return true;
@@ -9081,12 +9124,13 @@ public class Player extends Playable
 		// Remove Hide.
 		getEffectList().stopSkillEffects(SkillFinishType.REMOVED, AbnormalType.HIDE);
 		_observerMode = true;
+		stopCubics();
 		setTarget(null);
 		setParalyzed(true);
 		startParalyze();
 		setInvul(true);
 		setInvisible(true);
-		// sendPacket(new ObservationMode(loc));
+		sendPacket(new ObservationEnter(loc));
 		teleToLocation(loc, false);
 		broadcastUserInfo();
 	}
@@ -9150,7 +9194,7 @@ public class Player extends Playable
 		
 		teleToLocation(_lastLoc, false);
 		unsetLastLocation();
-		// sendPacket(new ObservationReturn(getLocation()));
+		sendPacket(new ObservationExit(getLocation()));
 		setParalyzed(false);
 		if (!isGM())
 		{
@@ -9162,6 +9206,7 @@ public class Player extends Playable
 			getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 		}
 		
+		stopPvPFlag();
 		setFalling(); // prevent receive falling damage
 		_observerMode = false;
 		broadcastUserInfo();
@@ -10074,14 +10119,6 @@ public class Player extends Playable
 			restoreEffects();
 		}
 		
-		// TODO : Need to fix that hack!
-		if (!isDead())
-		{
-			setCurrentCp(_originalCp);
-			setCurrentHp(_originalHp);
-			setCurrentMp(_originalMp);
-		}
-		
 		revalidateZone(true);
 		
 		notifyFriends();
@@ -10105,6 +10142,18 @@ public class Player extends Playable
 		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_LOGIN, this))
 		{
 			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerLogin(this), this);
+		}
+		
+		// TODO : Need to fix that hack!
+		if (!isDead())
+		{
+			// Run on a separate thread to give time to above events to be notified.
+			ThreadPool.schedule(() ->
+			{
+				setCurrentHp(_originalHp);
+				setCurrentMp(_originalMp);
+				setCurrentCp(_originalCp);
+			}, 300);
 		}
 	}
 	
@@ -11884,7 +11933,7 @@ public class Player extends Playable
 				
 				final InventoryUpdate iu = new InventoryUpdate();
 				iu.addModifiedItem(equippedItem);
-				sendPacket(iu);
+				sendInventoryUpdate(iu);
 				
 				SystemMessage sm = null;
 				if (equippedItem.getTemplate().getBodyPart() == ItemTemplate.SLOT_BACK)
@@ -13232,6 +13281,34 @@ public class Player extends Playable
 	public void enableExpGain()
 	{
 		removeListenerIf(EventType.ON_PLAYABLE_EXP_CHANGED, listener -> listener.getOwner() == this);
+	}
+	
+	public void sendInventoryUpdate(InventoryUpdate iu)
+	{
+		if (_inventoryUpdateTask != null)
+		{
+			_inventoryUpdateTask.cancel(false);
+		}
+		
+		_inventoryUpdate.putAll(iu.getItemEntries());
+		
+		_inventoryUpdateTask = ThreadPool.schedule(() ->
+		{
+			sendPacket(_inventoryUpdate);
+		}, 100);
+	}
+	
+	public void sendItemList(boolean open)
+	{
+		if (_itemListTask != null)
+		{
+			_itemListTask.cancel(false);
+		}
+		
+		_itemListTask = ThreadPool.schedule(() ->
+		{
+			sendPacket(new ItemList(this, open));
+		}, 250);
 	}
 	
 	/**

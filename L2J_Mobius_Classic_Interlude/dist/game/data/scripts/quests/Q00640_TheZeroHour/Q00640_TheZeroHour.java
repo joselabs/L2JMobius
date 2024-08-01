@@ -36,21 +36,21 @@ public class Q00640_TheZeroHour extends Quest
 	private static final int KAHMAN = 31554;
 	private static final int[] MONSTERS_TO_HUNT =
 	{
-		22617, // Spiked Stakato
-		22618, // Spiked Stakato Worker
-		22619, // Spiked Stakato Guard
-		22620, // Female Spiked Stakato
-		22621, // Male Spiked Stakato
-		22622, // Male Spiked Stakato
-		22623, // Spiked Stakato Sorcerer
-		22625, // Cannibalistic Stakato Leader
-		22626, // Cannibalistic Stakato Leader
-		22627, // Spiked Stakato Soldier
-		22628, // Spiked Stakato Drone
-		22629, // Spiked Stakato Captain
-		22630, // Spike Stakato Nurse
-		22631, // Spike Stakato Nurse
-		22633 // Spiked Stakato Shaman
+		22105, // Spiked Stakato
+		22106, // Spiked Stakato Worker
+		22107, // Spiked Stakato Guard
+		22108, // Female Spiked Stakato
+		22109, // Male Spiked Stakato
+		22110, // Male Spiked Stakato
+		22111, // Spiked Stakato Sorcerer
+		22113, // Cannibalistic Stakato Leader
+		22114, // Cannibalistic Stakato Leader
+		22115, // Spiked Stakato Soldier
+		22116, // Spiked Stakato Drone
+		22117, // Spiked Stakato Captain
+		22118, // Spike Stakato Nurse
+		22119, // Spike Stakato Nurse
+		22121 // Spiked Stakato Shaman
 	};
 	// Item
 	private static final int FANG_OF_STAKATO = 8085;

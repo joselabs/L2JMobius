@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="80100" name="Krishna Retributer" type="Weapon">
 		<!-- Can bestow 2 regular Soul Crystals and 1 special Soul Crystal. When +4 enchanted, M. Atk. 3% and M. Skill Critical Damage +2%. -->
@@ -647,10 +647,16 @@
 	<item id="80132" name="Weapon Attribute Change Crystal (R110-grade)" type="EtcItem">
 		<!-- Double-click to change the attribute of R110-grade weapons. It can be used when there is a R110-grade weapon bestowed in the inventory. -->
 		<set name="icon" val="icon.change_elemental_crystal" />
-		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="material" val="FISH" />
+		<set name="crystal_type" val="R110" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="CHANGE_ATTR" />
+		<set name="handler" val="ChangeAttributeCrystal" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
 	</item>
 	<item id="80133" name="Enchanted Krishna Shaper" type="Weapon">
 		<!-- Can bestow 2 regular Soul Crystals and 1 special Soul Crystal. When +4 enchanted, P. Accuracy +4 and P. Skill Critical Damage +2%. Enchantment effects: P. Skill Critical Damage +3%, Max HP/ MP/ CP +7%. -->

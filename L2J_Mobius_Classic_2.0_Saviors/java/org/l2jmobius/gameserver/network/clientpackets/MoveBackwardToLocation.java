@@ -1,5 +1,5 @@
 /*
- * This file is part of the L2J Mobius project.
+ * This file is part of the L2J Mobius project.  
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,6 @@ import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.FlyToLocation;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillLaunched;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
-import org.l2jmobius.gameserver.network.serverpackets.StopMove;
 import org.l2jmobius.gameserver.network.serverpackets.sayune.ExFlyMove;
 import org.l2jmobius.gameserver.network.serverpackets.sayune.ExFlyMoveBroadcast;
 import org.l2jmobius.gameserver.util.Broadcast;
@@ -81,7 +80,7 @@ public class MoveBackwardToLocation extends ClientPacket
 		
 		if ((_targetX == _originX) && (_targetY == _originY) && (_targetZ == _originZ))
 		{
-			player.sendPacket(new StopMove(player));
+			player.stopMove(player.getLocation());
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}

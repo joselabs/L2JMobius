@@ -46,15 +46,27 @@ public abstract class AbstractStatEffect extends AbstractEffect
 	
 	public AbstractStatEffect(StatSet params, Stat stat)
 	{
-		this(params, stat, stat);
+		this(params, stat, stat, false);
 	}
 	
 	public AbstractStatEffect(StatSet params, Stat mulStat, Stat addStat)
 	{
+		this(params, mulStat, addStat, false);
+	}
+	
+	public AbstractStatEffect(StatSet params, Stat mulStat, Stat addStat, boolean negativePercent)
+	{
 		_addStat = addStat;
 		_mulStat = mulStat;
-		_amount = params.getDouble("amount", 0);
 		_mode = params.getEnum("mode", StatModifierType.class, StatModifierType.DIFF);
+		if (negativePercent && (_mode == StatModifierType.PER))
+		{
+			_amount = params.getDouble("amount", 0) * -1d;
+		}
+		else
+		{
+			_amount = params.getDouble("amount", 0);
+		}
 		
 		int weaponTypesMask = 0;
 		final List<String> weaponTypes = params.getList("weaponType", String.class);

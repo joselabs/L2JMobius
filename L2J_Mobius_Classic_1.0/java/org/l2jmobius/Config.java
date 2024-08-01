@@ -81,11 +81,6 @@ public class Config
 	private static final Logger LOGGER = Logger.getLogger(Config.class.getName());
 	
 	// --------------------------------------------------
-	// Constants
-	// --------------------------------------------------
-	public static final String EOL = System.lineSeparator();
-	
-	// --------------------------------------------------
 	// Config File Definitions
 	// --------------------------------------------------
 	public static final String INTERFACE_CONFIG_FILE = "./config/Interface.ini";
@@ -100,7 +95,6 @@ public class Config
 	private static final String FLOOD_PROTECTOR_CONFIG_FILE = "./config/FloodProtector.ini";
 	private static final String GENERAL_CONFIG_FILE = "./config/General.ini";
 	private static final String GEOENGINE_CONFIG_FILE = "./config/GeoEngine.ini";
-	private static final String GRACIASEEDS_CONFIG_FILE = "./config/GraciaSeeds.ini";
 	private static final String GRANDBOSS_CONFIG_FILE = "./config/GrandBoss.ini";
 	private static final String LOGIN_CONFIG_FILE = "./config/LoginServer.ini";
 	private static final String NPC_CONFIG_FILE = "./config/NPC.ini";
@@ -121,6 +115,7 @@ public class Config
 	private static final String CUSTOM_AUTO_POTIONS_CONFIG_FILE = "./config/Custom/AutoPotions.ini";
 	private static final String CUSTOM_BANKING_CONFIG_FILE = "./config/Custom/Banking.ini";
 	private static final String CUSTOM_BOSS_ANNOUNCEMENTS_CONFIG_FILE = "./config/Custom/BossAnnouncements.ini";
+	private static final String CUSTOM_CAPTCHA_CONFIG_FILE = "./config/Custom/Captcha.ini";
 	private static final String CUSTOM_CHAMPION_MONSTERS_CONFIG_FILE = "./config/Custom/ChampionMonsters.ini";
 	private static final String CUSTOM_CHAT_MODERATION_CONFIG_FILE = "./config/Custom/ChatModeration.ini";
 	private static final String CUSTOM_CLASS_BALANCE_CONFIG_FILE = "./config/Custom/ClassBalance.ini";
@@ -152,6 +147,7 @@ public class Config
 	private static final String CUSTOM_SERVER_TIME_CONFIG_FILE = "./config/Custom/ServerTime.ini";
 	private static final String CUSTOM_SCHEME_BUFFER_CONFIG_FILE = "./config/Custom/SchemeBuffer.ini";
 	private static final String CUSTOM_STARTING_LOCATION_CONFIG_FILE = "./config/Custom/StartingLocation.ini";
+	private static final String CUSTOM_TRANSMOG_CONFIG_FILE = "./config/Custom/Transmog.ini";
 	private static final String CUSTOM_WALKER_BOT_PROTECTION_CONFIG_FILE = "./config/Custom/WalkerBotProtection.ini";
 	
 	// --------------------------------------------------
@@ -174,6 +170,7 @@ public class Config
 	public static boolean AUTO_LEARN_SKILLS;
 	public static boolean AUTO_LEARN_SKILLS_WITHOUT_ITEMS;
 	public static boolean AUTO_LEARN_FS_SKILLS;
+	public static boolean SHOW_EFFECT_MESSAGES_ON_LOGIN;
 	public static boolean AUTO_LOOT_HERBS;
 	public static byte BUFFS_MAX_AMOUNT;
 	public static byte TRIGGERED_BUFFS_MAX_AMOUNT;
@@ -550,41 +547,41 @@ public class Config
 	public static int WORLD_CHAT_POINTS_PER_DAY;
 	public static Duration WORLD_CHAT_INTERVAL;
 	public static boolean OLYMPIAD_ENABLED;
-	public static int ALT_OLY_START_TIME;
-	public static int ALT_OLY_MIN;
-	public static long ALT_OLY_CPERIOD;
-	public static long ALT_OLY_BATTLE;
-	public static long ALT_OLY_WPERIOD;
-	public static long ALT_OLY_VPERIOD;
-	public static int ALT_OLY_START_POINTS;
-	public static int ALT_OLY_WEEKLY_POINTS;
-	public static int ALT_OLY_CLASSED;
-	public static int ALT_OLY_NONCLASSED;
-	public static List<ItemHolder> ALT_OLY_WINNER_REWARD;
-	public static List<ItemHolder> ALT_OLY_LOSER_REWARD;
-	public static int ALT_OLY_COMP_RITEM;
-	public static int ALT_OLY_MIN_MATCHES;
-	public static int ALT_OLY_MARK_PER_POINT;
-	public static int ALT_OLY_HERO_POINTS;
-	public static int ALT_OLY_RANK1_POINTS;
-	public static int ALT_OLY_RANK2_POINTS;
-	public static int ALT_OLY_RANK3_POINTS;
-	public static int ALT_OLY_RANK4_POINTS;
-	public static int ALT_OLY_RANK5_POINTS;
-	public static int ALT_OLY_MAX_POINTS;
-	public static int ALT_OLY_DIVIDER_CLASSED;
-	public static int ALT_OLY_DIVIDER_NON_CLASSED;
-	public static int ALT_OLY_MAX_WEEKLY_MATCHES;
-	public static boolean ALT_OLY_LOG_FIGHTS;
-	public static boolean ALT_OLY_SHOW_MONTHLY_WINNERS;
-	public static boolean ALT_OLY_ANNOUNCE_GAMES;
+	public static int OLYMPIAD_START_TIME;
+	public static int OLYMPIAD_MIN;
+	public static long OLYMPIAD_CPERIOD;
+	public static long OLYMPIAD_BATTLE;
+	public static long OLYMPIAD_WPERIOD;
+	public static long OLYMPIAD_VPERIOD;
+	public static int OLYMPIAD_START_POINTS;
+	public static int OLYMPIAD_WEEKLY_POINTS;
+	public static int OLYMPIAD_CLASSED;
+	public static int OLYMPIAD_NONCLASSED;
+	public static List<ItemHolder> OLYMPIAD_WINNER_REWARD;
+	public static List<ItemHolder> OLYMPIAD_LOSER_REWARD;
+	public static int OLYMPIAD_COMP_RITEM;
+	public static int OLYMPIAD_MIN_MATCHES;
+	public static int OLYMPIAD_MARK_PER_POINT;
+	public static int OLYMPIAD_HERO_POINTS;
+	public static int OLYMPIAD_RANK1_POINTS;
+	public static int OLYMPIAD_RANK2_POINTS;
+	public static int OLYMPIAD_RANK3_POINTS;
+	public static int OLYMPIAD_RANK4_POINTS;
+	public static int OLYMPIAD_RANK5_POINTS;
+	public static int OLYMPIAD_MAX_POINTS;
+	public static int OLYMPIAD_DIVIDER_CLASSED;
+	public static int OLYMPIAD_DIVIDER_NON_CLASSED;
+	public static int OLYMPIAD_MAX_WEEKLY_MATCHES;
+	public static boolean OLYMPIAD_LOG_FIGHTS;
+	public static boolean OLYMPIAD_SHOW_MONTHLY_WINNERS;
+	public static boolean OLYMPIAD_ANNOUNCE_GAMES;
 	public static Set<Integer> LIST_OLY_RESTRICTED_ITEMS = new HashSet<>();
-	public static int ALT_OLY_WEAPON_ENCHANT_LIMIT;
-	public static int ALT_OLY_ARMOR_ENCHANT_LIMIT;
-	public static int ALT_OLY_WAIT_TIME;
-	public static String ALT_OLY_PERIOD;
-	public static int ALT_OLY_PERIOD_MULTIPLIER;
-	public static List<Integer> ALT_OLY_COMPETITION_DAYS;
+	public static int OLYMPIAD_WEAPON_ENCHANT_LIMIT;
+	public static int OLYMPIAD_ARMOR_ENCHANT_LIMIT;
+	public static int OLYMPIAD_WAIT_TIME;
+	public static String OLYMPIAD_PERIOD;
+	public static int OLYMPIAD_PERIOD_MULTIPLIER;
+	public static List<Integer> OLYMPIAD_COMPETITION_DAYS;
 	public static int ALT_MANOR_REFRESH_TIME;
 	public static int ALT_MANOR_REFRESH_MIN;
 	public static int ALT_MANOR_APPROVE_TIME;
@@ -602,7 +599,6 @@ public class Config
 	public static boolean JAIL_DISABLE_CHAT;
 	public static boolean JAIL_DISABLE_TRANSACTION;
 	public static boolean CUSTOM_NPC_DATA;
-	public static boolean CUSTOM_TELEPORT_TABLE;
 	public static boolean CUSTOM_SKILLS_LOAD;
 	public static boolean CUSTOM_ITEMS_LOAD;
 	public static boolean CUSTOM_MULTISELL_LOAD;
@@ -899,10 +895,6 @@ public class Config
 	public static int QUEEN_ANT_SPAWN_INTERVAL;
 	public static int QUEEN_ANT_SPAWN_RANDOM;
 	
-	// Gracia Seeds Settings
-	public static int SOD_TIAT_KILL_COUNT;
-	public static long SOD_STAGE_2_LENGTH;
-	
 	// chatfilter
 	public static List<String> FILTER_LIST;
 	
@@ -1026,6 +1018,7 @@ public class Config
 	public static boolean GRANDBOSS_SPAWN_ANNOUNCEMENTS;
 	public static boolean GRANDBOSS_DEFEAT_ANNOUNCEMENTS;
 	public static boolean GRANDBOSS_INSTANCE_ANNOUNCEMENTS;
+	public static Set<Integer> RAIDBOSSES_EXLUDED_FROM_ANNOUNCEMENTS = new HashSet<>();
 	public static boolean ENABLE_NPC_STAT_MULTIPLIERS;
 	public static double MONSTER_HP_MULTIPLIER;
 	public static double MONSTER_MP_MULTIPLIER;
@@ -1062,6 +1055,7 @@ public class Config
 	public static boolean ENABLE_OFFLINE_PLAY_COMMAND;
 	public static boolean OFFLINE_PLAY_PREMIUM;
 	public static boolean OFFLINE_PLAY_LOGOUT_ON_DEATH;
+	public static boolean OFFLINE_PLAY_DISCONNECT_SAME_ACCOUNT;
 	public static String OFFLINE_PLAY_LOGIN_MESSAGE;
 	public static boolean OFFLINE_PLAY_SET_NAME_COLOR;
 	public static int OFFLINE_PLAY_NAME_COLOR;
@@ -1163,6 +1157,16 @@ public class Config
 	public static int NOBLESS_MASTER_LEVEL_REQUIREMENT;
 	public static boolean NOBLESS_MASTER_REWARD_TIARA;
 	public static boolean L2WALKER_PROTECTION;
+	public static boolean ENABLE_CAPTCHA;
+	public static int KILL_COUNTER;
+	public static int KILL_COUNTER_RANDOMIZATION;
+	public static boolean KILL_COUNTER_RESET;
+	public static int KILL_COUNTER_RESET_TIME;
+	public static int VALIDATION_TIME;
+	public static int CAPTCHA_ATTEMPTS;
+	public static int PUNISHMENT;
+	public static int JAIL_TIME;
+	public static boolean DOUBLE_JAIL_TIME;
 	public static int DUALBOX_CHECK_MAX_PLAYERS_PER_IP;
 	public static int DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP;
 	public static int DUALBOX_CHECK_MAX_L2EVENT_PARTICIPANTS_PER_IP;
@@ -1181,6 +1185,8 @@ public class Config
 	public static boolean ENABLE_AUTO_ITEM;
 	public static boolean RESUME_AUTO_PLAY;
 	public static boolean ENABLE_AUTO_ASSIST;
+	public static int AUTO_PLAY_SHORT_RANGE;
+	public static int AUTO_PLAY_LONG_RANGE;
 	public static boolean AUTO_PLAY_PREMIUM;
 	public static Set<Integer> DISABLED_AUTO_SKILLS = new HashSet<>();
 	public static Set<Integer> DISABLED_AUTO_ITEMS = new HashSet<>();
@@ -1201,6 +1207,11 @@ public class Config
 	public static int CUSTOM_STARTING_LOC_X;
 	public static int CUSTOM_STARTING_LOC_Y;
 	public static int CUSTOM_STARTING_LOC_Z;
+	public static boolean ENABLE_TRANSMOG;
+	public static boolean TRANSMOG_SHARE_ACCOUNT;
+	public static int TRANSMOG_APPLY_COST;
+	public static int TRANSMOG_REMOVE_COST;
+	public static Set<Integer> TRANSMOG_BANNED_ITEM_IDS = new HashSet<>();
 	public static int SHOP_MIN_RANGE_FROM_NPC;
 	public static int SHOP_MIN_RANGE_FROM_PLAYER;
 	public static boolean ENABLE_RANDOM_MONSTER_SPAWNS;
@@ -1219,6 +1230,7 @@ public class Config
 	public static int COMMUNITYBOARD_BUFF_PRICE;
 	public static int COMMUNITYBOARD_HEAL_PRICE;
 	public static int COMMUNITYBOARD_DELEVEL_PRICE;
+	public static boolean COMMUNITYBOARD_PEACE_ONLY;
 	public static boolean COMMUNITYBOARD_COMBAT_DISABLED;
 	public static boolean COMMUNITYBOARD_KARMA_DISABLED;
 	public static boolean COMMUNITYBOARD_CAST_ANIMATIONS;
@@ -1684,6 +1696,7 @@ public class Config
 			AUTO_LEARN_SKILLS = characterConfig.getBoolean("AutoLearnSkills", false);
 			AUTO_LEARN_SKILLS_WITHOUT_ITEMS = characterConfig.getBoolean("AutoLearnSkillsWithoutItems", false);
 			AUTO_LEARN_FS_SKILLS = characterConfig.getBoolean("AutoLearnForgottenScrollSkills", false);
+			SHOW_EFFECT_MESSAGES_ON_LOGIN = characterConfig.getBoolean("ShowEffectMessagesOnLogin", false);
 			AUTO_LOOT_HERBS = characterConfig.getBoolean("AutoLootHerbs", false);
 			BUFFS_MAX_AMOUNT = characterConfig.getByte("MaxBuffAmount", (byte) 20);
 			TRIGGERED_BUFFS_MAX_AMOUNT = characterConfig.getByte("MaxTriggeredBuffAmount", (byte) 12);
@@ -2059,7 +2072,6 @@ public class Config
 			JAIL_DISABLE_CHAT = generalConfig.getBoolean("JailDisableChat", true);
 			JAIL_DISABLE_TRANSACTION = generalConfig.getBoolean("JailDisableTransaction", false);
 			CUSTOM_NPC_DATA = generalConfig.getBoolean("CustomNpcData", false);
-			CUSTOM_TELEPORT_TABLE = generalConfig.getBoolean("CustomTeleportTable", false);
 			CUSTOM_SKILLS_LOAD = generalConfig.getBoolean("CustomSkillsLoad", false);
 			CUSTOM_ITEMS_LOAD = generalConfig.getBoolean("CustomItemsLoad", false);
 			CUSTOM_MULTISELL_LOAD = generalConfig.getBoolean("CustomMultisellLoad", false);
@@ -2325,35 +2337,35 @@ public class Config
 			// Load Olympiad config file (if exists)
 			final PropertiesParser olympiadConfig = new PropertiesParser(OLYMPIAD_CONFIG_FILE);
 			OLYMPIAD_ENABLED = olympiadConfig.getBoolean("OlympiadEnabled", false);
-			ALT_OLY_START_TIME = olympiadConfig.getInt("AltOlyStartTime", 20);
-			ALT_OLY_MIN = olympiadConfig.getInt("AltOlyMin", 0);
-			ALT_OLY_CPERIOD = olympiadConfig.getLong("AltOlyCPeriod", 14400000);
-			ALT_OLY_BATTLE = olympiadConfig.getLong("AltOlyBattle", 300000);
-			ALT_OLY_WPERIOD = olympiadConfig.getLong("AltOlyWPeriod", 604800000);
-			ALT_OLY_VPERIOD = olympiadConfig.getLong("AltOlyVPeriod", 86400000);
-			ALT_OLY_START_POINTS = olympiadConfig.getInt("AltOlyStartPoints", 10);
-			ALT_OLY_WEEKLY_POINTS = olympiadConfig.getInt("AltOlyWeeklyPoints", 10);
-			ALT_OLY_CLASSED = olympiadConfig.getInt("AltOlyClassedParticipants", 10);
-			ALT_OLY_NONCLASSED = olympiadConfig.getInt("AltOlyNonClassedParticipants", 20);
-			ALT_OLY_WINNER_REWARD = parseItemsList(olympiadConfig.getString("AltOlyWinReward", "none"));
-			ALT_OLY_LOSER_REWARD = parseItemsList(olympiadConfig.getString("AltOlyLoserReward", "none"));
-			ALT_OLY_COMP_RITEM = olympiadConfig.getInt("AltOlyCompRewItem", 45584);
-			ALT_OLY_MIN_MATCHES = olympiadConfig.getInt("AltOlyMinMatchesForPoints", 15);
-			ALT_OLY_MARK_PER_POINT = olympiadConfig.getInt("AltOlyMarkPerPoint", 20);
-			ALT_OLY_HERO_POINTS = olympiadConfig.getInt("AltOlyHeroPoints", 300);
-			ALT_OLY_RANK1_POINTS = olympiadConfig.getInt("AltOlyRank1Points", 200);
-			ALT_OLY_RANK2_POINTS = olympiadConfig.getInt("AltOlyRank2Points", 80);
-			ALT_OLY_RANK3_POINTS = olympiadConfig.getInt("AltOlyRank3Points", 50);
-			ALT_OLY_RANK4_POINTS = olympiadConfig.getInt("AltOlyRank4Points", 30);
-			ALT_OLY_RANK5_POINTS = olympiadConfig.getInt("AltOlyRank5Points", 15);
-			ALT_OLY_MAX_POINTS = olympiadConfig.getInt("AltOlyMaxPoints", 10);
-			ALT_OLY_DIVIDER_CLASSED = olympiadConfig.getInt("AltOlyDividerClassed", 5);
-			ALT_OLY_DIVIDER_NON_CLASSED = olympiadConfig.getInt("AltOlyDividerNonClassed", 5);
-			ALT_OLY_MAX_WEEKLY_MATCHES = olympiadConfig.getInt("AltOlyMaxWeeklyMatches", 30);
-			ALT_OLY_LOG_FIGHTS = olympiadConfig.getBoolean("AltOlyLogFights", false);
-			ALT_OLY_SHOW_MONTHLY_WINNERS = olympiadConfig.getBoolean("AltOlyShowMonthlyWinners", true);
-			ALT_OLY_ANNOUNCE_GAMES = olympiadConfig.getBoolean("AltOlyAnnounceGames", true);
-			final String olyRestrictedItems = olympiadConfig.getString("AltOlyRestrictedItems", "").trim();
+			OLYMPIAD_START_TIME = olympiadConfig.getInt("OlympiadStartTime", 20);
+			OLYMPIAD_MIN = olympiadConfig.getInt("OlympiadMin", 0);
+			OLYMPIAD_CPERIOD = olympiadConfig.getLong("OlympiadCPeriod", 14400000);
+			OLYMPIAD_BATTLE = olympiadConfig.getLong("OlympiadBattle", 300000);
+			OLYMPIAD_WPERIOD = olympiadConfig.getLong("OlympiadWPeriod", 604800000);
+			OLYMPIAD_VPERIOD = olympiadConfig.getLong("OlympiadVPeriod", 86400000);
+			OLYMPIAD_START_POINTS = olympiadConfig.getInt("OlympiadStartPoints", 10);
+			OLYMPIAD_WEEKLY_POINTS = olympiadConfig.getInt("OlympiadWeeklyPoints", 10);
+			OLYMPIAD_CLASSED = olympiadConfig.getInt("OlympiadClassedParticipants", 10);
+			OLYMPIAD_NONCLASSED = olympiadConfig.getInt("OlympiadNonClassedParticipants", 20);
+			OLYMPIAD_WINNER_REWARD = parseItemsList(olympiadConfig.getString("OlympiadWinReward", "none"));
+			OLYMPIAD_LOSER_REWARD = parseItemsList(olympiadConfig.getString("OlympiadLoserReward", "none"));
+			OLYMPIAD_COMP_RITEM = olympiadConfig.getInt("OlympiadCompRewItem", 45584);
+			OLYMPIAD_MIN_MATCHES = olympiadConfig.getInt("OlympiadMinMatchesForPoints", 15);
+			OLYMPIAD_MARK_PER_POINT = olympiadConfig.getInt("OlympiadMarkPerPoint", 20);
+			OLYMPIAD_HERO_POINTS = olympiadConfig.getInt("OlympiadHeroPoints", 300);
+			OLYMPIAD_RANK1_POINTS = olympiadConfig.getInt("OlympiadRank1Points", 200);
+			OLYMPIAD_RANK2_POINTS = olympiadConfig.getInt("OlympiadRank2Points", 80);
+			OLYMPIAD_RANK3_POINTS = olympiadConfig.getInt("OlympiadRank3Points", 50);
+			OLYMPIAD_RANK4_POINTS = olympiadConfig.getInt("OlympiadRank4Points", 30);
+			OLYMPIAD_RANK5_POINTS = olympiadConfig.getInt("OlympiadRank5Points", 15);
+			OLYMPIAD_MAX_POINTS = olympiadConfig.getInt("OlympiadMaxPoints", 10);
+			OLYMPIAD_DIVIDER_CLASSED = olympiadConfig.getInt("OlympiadDividerClassed", 5);
+			OLYMPIAD_DIVIDER_NON_CLASSED = olympiadConfig.getInt("OlympiadDividerNonClassed", 5);
+			OLYMPIAD_MAX_WEEKLY_MATCHES = olympiadConfig.getInt("OlympiadMaxWeeklyMatches", 30);
+			OLYMPIAD_LOG_FIGHTS = olympiadConfig.getBoolean("OlympiadLogFights", false);
+			OLYMPIAD_SHOW_MONTHLY_WINNERS = olympiadConfig.getBoolean("OlympiadShowMonthlyWinners", true);
+			OLYMPIAD_ANNOUNCE_GAMES = olympiadConfig.getBoolean("OlympiadAnnounceGames", true);
+			final String olyRestrictedItems = olympiadConfig.getString("OlympiadRestrictedItems", "").trim();
 			if (!olyRestrictedItems.isEmpty())
 			{
 				final String[] olyRestrictedItemsSplit = olyRestrictedItems.split(",");
@@ -2367,15 +2379,15 @@ public class Config
 			{
 				LIST_OLY_RESTRICTED_ITEMS.clear();
 			}
-			ALT_OLY_WEAPON_ENCHANT_LIMIT = olympiadConfig.getInt("AltOlyWeaponEnchantLimit", -1);
-			ALT_OLY_ARMOR_ENCHANT_LIMIT = olympiadConfig.getInt("AltOlyArmorEnchantLimit", -1);
-			ALT_OLY_WAIT_TIME = olympiadConfig.getInt("AltOlyWaitTime", 60);
-			ALT_OLY_PERIOD = olympiadConfig.getString("AltOlyPeriod", "MONTH");
-			ALT_OLY_PERIOD_MULTIPLIER = olympiadConfig.getInt("AltOlyPeriodMultiplier", 1);
-			ALT_OLY_COMPETITION_DAYS = new ArrayList<>();
-			for (String s : olympiadConfig.getString("AltOlyCompetitionDays", "6,7").split(","))
+			OLYMPIAD_WEAPON_ENCHANT_LIMIT = olympiadConfig.getInt("OlympiadWeaponEnchantLimit", -1);
+			OLYMPIAD_ARMOR_ENCHANT_LIMIT = olympiadConfig.getInt("OlympiadArmorEnchantLimit", -1);
+			OLYMPIAD_WAIT_TIME = olympiadConfig.getInt("OlympiadWaitTime", 60);
+			OLYMPIAD_PERIOD = olympiadConfig.getString("OlympiadPeriod", "MONTH");
+			OLYMPIAD_PERIOD_MULTIPLIER = olympiadConfig.getInt("OlympiadPeriodMultiplier", 1);
+			OLYMPIAD_COMPETITION_DAYS = new ArrayList<>();
+			for (String s : olympiadConfig.getString("OlympiadCompetitionDays", "6,7").split(","))
 			{
-				ALT_OLY_COMPETITION_DAYS.add(Integer.parseInt(s));
+				OLYMPIAD_COMPETITION_DAYS.add(Integer.parseInt(s));
 			}
 			
 			final File hexIdFile = new File(HEXID_FILE);
@@ -2413,10 +2425,6 @@ public class Config
 			QUEEN_ANT_SPAWN_INTERVAL = grandBossConfig.getInt("IntervalOfQueenAntSpawn", 36);
 			QUEEN_ANT_SPAWN_RANDOM = grandBossConfig.getInt("RandomOfQueenAntSpawn", 17);
 			
-			// Gracia Seeds
-			final PropertiesParser graciaSeedsConfig = new PropertiesParser(GRACIASEEDS_CONFIG_FILE);
-			SOD_TIAT_KILL_COUNT = graciaSeedsConfig.getInt("TiatKillCountForNextState", 10);
-			SOD_STAGE_2_LENGTH = graciaSeedsConfig.getLong("Stage2Length", 720) * 60000;
 			try
 			{
 				//@formatter:off
@@ -2463,6 +2471,8 @@ public class Config
 			ENABLE_AUTO_ITEM = autoPlayConfig.getBoolean("EnableAutoItem", true);
 			RESUME_AUTO_PLAY = autoPlayConfig.getBoolean("ResumeAutoPlay", false);
 			ENABLE_AUTO_ASSIST = autoPlayConfig.getBoolean("AssistLeader", false);
+			AUTO_PLAY_SHORT_RANGE = autoPlayConfig.getInt("ShortRange", 600);
+			AUTO_PLAY_LONG_RANGE = autoPlayConfig.getInt("LongRange", 1400);
 			AUTO_PLAY_PREMIUM = autoPlayConfig.getBoolean("AutoPlayPremium", false);
 			DISABLED_AUTO_SKILLS.clear();
 			final String disabledSkills = autoPlayConfig.getString("DisabledSkillIds", "");
@@ -2525,6 +2535,16 @@ public class Config
 			GRANDBOSS_SPAWN_ANNOUNCEMENTS = bossAnnouncementsConfig.getBoolean("GrandBossSpawnAnnouncements", false);
 			GRANDBOSS_DEFEAT_ANNOUNCEMENTS = bossAnnouncementsConfig.getBoolean("GrandBossDefeatAnnouncements", false);
 			GRANDBOSS_INSTANCE_ANNOUNCEMENTS = bossAnnouncementsConfig.getBoolean("GrandBossInstanceAnnouncements", false);
+			
+			RAIDBOSSES_EXLUDED_FROM_ANNOUNCEMENTS.clear();
+			final String[] raidbossExcludesNpcId = bossAnnouncementsConfig.getString("RaidbossExcludedFromAnnouncements", "").split(",");
+			for (String raidbossId : raidbossExcludesNpcId)
+			{
+				if (!raidbossId.isEmpty())
+				{
+					RAIDBOSSES_EXLUDED_FROM_ANNOUNCEMENTS.add(Integer.parseInt(raidbossId.trim()));
+				}
+			}
 			
 			// Load BoostNpcStats config file (if exists)
 			final PropertiesParser boostNpcStatConfig = new PropertiesParser(CUSTOM_NPC_STAT_MULTIPLIERS_CONFIG_FILE);
@@ -3118,6 +3138,8 @@ public class Config
 			COMMUNITYBOARD_BUFF_PRICE = communityBoardConfig.getInt("CommunityBuffPrice", 0);
 			COMMUNITYBOARD_HEAL_PRICE = communityBoardConfig.getInt("CommunityHealPrice", 0);
 			COMMUNITYBOARD_DELEVEL_PRICE = communityBoardConfig.getInt("CommunityDelevelPrice", 0);
+			COMMUNITYBOARD_PEACE_ONLY = communityBoardConfig.getBoolean("CommunityBoardPeaceOnly", false);
+			COMMUNITYBOARD_COMBAT_DISABLED = communityBoardConfig.getBoolean("CommunityCombatDisabled", true);
 			COMMUNITYBOARD_KARMA_DISABLED = communityBoardConfig.getBoolean("CommunityKarmaDisabled", true);
 			COMMUNITYBOARD_CAST_ANIMATIONS = communityBoardConfig.getBoolean("CommunityCastAnimations", false);
 			COMMUNITY_PREMIUM_SYSTEM_ENABLED = communityBoardConfig.getBoolean("CommunityPremiumSystem", false);
@@ -3266,6 +3288,7 @@ public class Config
 			ENABLE_OFFLINE_PLAY_COMMAND = offlinePlayConfig.getBoolean("EnableOfflinePlayCommand", false);
 			OFFLINE_PLAY_PREMIUM = offlinePlayConfig.getBoolean("OfflinePlayPremium", false);
 			OFFLINE_PLAY_LOGOUT_ON_DEATH = offlinePlayConfig.getBoolean("OfflinePlayLogoutOnDeath", true);
+			OFFLINE_PLAY_DISCONNECT_SAME_ACCOUNT = offlinePlayConfig.getBoolean("OfflinePlayDisconnectSameAccount", false);
 			OFFLINE_PLAY_LOGIN_MESSAGE = offlinePlayConfig.getString("OfflinePlayLoginMessage", "");
 			OFFLINE_PLAY_SET_NAME_COLOR = offlinePlayConfig.getBoolean("OfflinePlaySetNameColor", false);
 			OFFLINE_PLAY_NAME_COLOR = Integer.decode("0x" + offlinePlayConfig.getString("OfflinePlayNameColor", "808080"));
@@ -3505,6 +3528,35 @@ public class Config
 			CUSTOM_STARTING_LOC_X = startingLocationConfig.getInt("CustomStartingLocX", 50821);
 			CUSTOM_STARTING_LOC_Y = startingLocationConfig.getInt("CustomStartingLocY", 186527);
 			CUSTOM_STARTING_LOC_Z = startingLocationConfig.getInt("CustomStartingLocZ", -3625);
+			
+			// Load Transmog config file (if exists)
+			final PropertiesParser transmogConfig = new PropertiesParser(CUSTOM_TRANSMOG_CONFIG_FILE);
+			ENABLE_TRANSMOG = transmogConfig.getBoolean("TransmogEnabled", false);
+			TRANSMOG_SHARE_ACCOUNT = transmogConfig.getBoolean("TransmogShareAccount", false);
+			TRANSMOG_APPLY_COST = transmogConfig.getInt("TransmogApplyCost", 0);
+			TRANSMOG_REMOVE_COST = transmogConfig.getInt("TransmogRemoveCost", 0);
+			TRANSMOG_BANNED_ITEM_IDS.clear();
+			final String transmogBannedItemIds = transmogConfig.getString("TransmogBannedItemIds", "");
+			if (!transmogBannedItemIds.isEmpty())
+			{
+				for (String s : transmogBannedItemIds.split(","))
+				{
+					TRANSMOG_BANNED_ITEM_IDS.add(Integer.parseInt(s.trim()));
+				}
+			}
+			
+			// Load Captcha config file (if exists)
+			final PropertiesParser captchaConfig = new PropertiesParser(CUSTOM_CAPTCHA_CONFIG_FILE);
+			ENABLE_CAPTCHA = captchaConfig.getBoolean("EnableCaptcha", false);
+			KILL_COUNTER = captchaConfig.getInt("KillCounter", 100);
+			KILL_COUNTER_RANDOMIZATION = captchaConfig.getInt("KillCounterRandomization", 50);
+			KILL_COUNTER_RESET = captchaConfig.getBoolean("KillCounterReset", false);
+			KILL_COUNTER_RESET_TIME = captchaConfig.getInt("KillCounterResetTime", 20) * 60000;
+			VALIDATION_TIME = captchaConfig.getInt("ValidationTime", 60);
+			CAPTCHA_ATTEMPTS = captchaConfig.getInt("CaptchaAttempts", 2);
+			PUNISHMENT = captchaConfig.getInt("Punishment", 0);
+			JAIL_TIME = captchaConfig.getInt("JailTime", 2);
+			DOUBLE_JAIL_TIME = captchaConfig.getBoolean("DoubleJailTime", false);
 			
 			// Load WalkerBotProtection config file (if exists)
 			final PropertiesParser walkerBotProtectionConfig = new PropertiesParser(CUSTOM_WALKER_BOT_PROTECTION_CONFIG_FILE);

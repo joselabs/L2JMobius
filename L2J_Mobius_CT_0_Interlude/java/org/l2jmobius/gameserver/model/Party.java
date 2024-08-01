@@ -287,7 +287,7 @@ public class Party extends AbstractPlayerGroup
 		
 		msg = new SystemMessage(SystemMessageId.S1_HAS_JOINED_THE_PARTY);
 		msg.addString(player.getName());
-		broadcastPacket(msg);
+		broadcastToPartyMembers(player, msg);
 		
 		for (Player member : _members)
 		{
@@ -715,12 +715,15 @@ public class Party extends AbstractPlayerGroup
 		double xpReward = xpRewardValue * getExpBonus(validMembers.size());
 		double spReward = spRewardValue * getSpBonus(validMembers.size());
 		int sqLevelSum = 0;
+		int averagePartyMemberLevel = 0;
 		for (Player member : validMembers)
 		{
 			sqLevelSum += member.getLevel() * member.getLevel();
+			averagePartyMemberLevel += member.getLevel();
 		}
+		averagePartyMemberLevel /= Math.max(1, validMembers.size());
 		
-		final float vitalityPoints = (target.getVitalityPoints(partyDmg) * Config.RATE_PARTY_XP) / validMembers.size();
+		final float vitalityPoints = (target.getVitalityPoints(averagePartyMemberLevel, partyDmg) * Config.RATE_PARTY_XP) / validMembers.size();
 		final boolean useVitalityRate = target.useVitalityRate();
 		for (Player member : rewardedMembers)
 		{

@@ -76,8 +76,8 @@ public class QueenAnt extends AbstractNpcAI
 	
 	private static ZoneType _zone;
 	
-	private static SkillHolder HEAL1 = new SkillHolder(4020, 1);
-	private static SkillHolder HEAL2 = new SkillHolder(4024, 1);
+	private static final SkillHolder HEAL1 = new SkillHolder(4020, 1);
+	private static final SkillHolder HEAL2 = new SkillHolder(4024, 1);
 	
 	Monster _queen = null;
 	private Monster _larva = null;
@@ -360,8 +360,10 @@ public class QueenAnt extends AbstractNpcAI
 		{
 			npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 			GrandBossManager.getInstance().setStatus(QUEEN, DEAD);
-			// Calculate Min and Max respawn times randomly.
-			final long respawnTime = (Config.QUEEN_ANT_SPAWN_INTERVAL + getRandom(-Config.QUEEN_ANT_SPAWN_RANDOM, Config.QUEEN_ANT_SPAWN_RANDOM)) * 3600000;
+			
+			final long baseIntervalMillis = Config.QUEEN_ANT_SPAWN_INTERVAL * 3600000;
+			final long randomRangeMillis = Config.QUEEN_ANT_SPAWN_RANDOM * 3600000;
+			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			startQuestTimer("queen_unlock", respawnTime, null, null);
 			cancelQuestTimer("action", npc, null);
 			cancelQuestTimer("heal", null, null);

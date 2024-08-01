@@ -156,6 +156,7 @@ public enum ClientPackets
 	REQUEST_JOIN_SIEGE(0xA4, RequestJoinSiege::new, ConnectionState.IN_GAME),
 	REQUEST_CONFIRM_SIEGE_WAITING_LIST(0xA5, RequestConfirmSiegeWaitingList::new, ConnectionState.IN_GAME),
 	MULTI_SELL_CHOOSE(0xA7, MultiSellChoose::new, ConnectionState.IN_GAME),
+	NET_PING(0xA8, RequestNetPing::new, ConnectionState.IN_GAME),
 	BYPASS_USER_CMD(0xAA, BypassUserCmd::new, ConnectionState.IN_GAME),
 	SNOOP_QUIT(0xAB, SnoopQuit::new, ConnectionState.IN_GAME),
 	REQUEST_RECIPE_BOOK_OPEN(0xAC, RequestRecipeBookOpen::new, ConnectionState.IN_GAME),

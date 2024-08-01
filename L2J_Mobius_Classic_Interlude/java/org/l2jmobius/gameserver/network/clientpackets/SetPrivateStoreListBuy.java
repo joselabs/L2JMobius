@@ -80,6 +80,8 @@ public class SetPrivateStoreListBuy extends ClientPacket
 			final int defenceHoly = readShort();
 			final int defenceDark = readShort();
 			final int visualId = readInt();
+			readByte(); // soulCrystalOptions
+			readByte(); // soulCrystalSpecialOptions
 			
 			final TradeItem item = new TradeItem(template, cnt, price);
 			item.setEnchant(enchantLevel);

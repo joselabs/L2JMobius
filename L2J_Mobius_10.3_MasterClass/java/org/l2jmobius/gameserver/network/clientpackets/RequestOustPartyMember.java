@@ -43,7 +43,14 @@ public class RequestOustPartyMember extends ClientPacket
 		
 		if (player.isInParty() && player.getParty().isLeader(player))
 		{
-			player.getParty().removePartyMember(_name, PartyMessageType.EXPELLED);
+			if (player.getUCState() != Player.UC_STATE_NONE)
+			{
+				player.sendMessage("You can't dismiss party member when you are in Underground Coliseum.");
+			}
+			else
+			{
+				player.getParty().removePartyMember(_name, PartyMessageType.EXPELLED);
+			}
 		}
 	}
 }

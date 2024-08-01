@@ -125,14 +125,14 @@ public class Olympiad extends ListenersContainer
 		134
 	};
 	
-	private static final int COMP_START = Config.ALT_OLY_START_TIME; // 6PM
-	private static final int COMP_MIN = Config.ALT_OLY_MIN; // 00 mins
-	private static final long COMP_PERIOD = Config.ALT_OLY_CPERIOD; // 6 hours
-	protected static final long WEEKLY_PERIOD = Config.ALT_OLY_WPERIOD; // 1 week
-	protected static final long VALIDATION_PERIOD = Config.ALT_OLY_VPERIOD; // 24 hours
+	private static final int COMP_START = Config.OLYMPIAD_START_TIME; // 6PM
+	private static final int COMP_MIN = Config.OLYMPIAD_MIN; // 00 mins
+	private static final long COMP_PERIOD = Config.OLYMPIAD_CPERIOD; // 6 hours
+	protected static final long WEEKLY_PERIOD = Config.OLYMPIAD_WPERIOD; // 1 week
+	protected static final long VALIDATION_PERIOD = Config.OLYMPIAD_VPERIOD; // 24 hours
 	
-	protected static final int DEFAULT_POINTS = Config.ALT_OLY_START_POINTS;
-	protected static final int WEEKLY_POINTS = Config.ALT_OLY_WEEKLY_POINTS;
+	protected static final int DEFAULT_POINTS = Config.OLYMPIAD_START_POINTS;
+	protected static final int WEEKLY_POINTS = Config.OLYMPIAD_WEEKLY_POINTS;
 	
 	public static final String CHAR_ID = "charId";
 	public static final String CLASS_ID = "class_id";
@@ -445,14 +445,14 @@ public class Olympiad extends ListenersContainer
 		_classBasedRegisters = new HashMap<>();
 		
 		_compStart = Calendar.getInstance();
-		if (Config.ALT_OLY_USE_CUSTOM_PERIOD_SETTINGS)
+		if (Config.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS)
 		{
 			final int currentDay = _compStart.get(Calendar.DAY_OF_WEEK);
 			boolean dayFound = false;
 			int dayCounter = 0;
 			for (int i = currentDay; i < 8; i++)
 			{
-				if (Config.ALT_OLY_COMPETITION_DAYS.contains(i))
+				if (Config.OLYMPIAD_COMPETITION_DAYS.contains(i))
 				{
 					dayFound = true;
 					break;
@@ -463,7 +463,7 @@ public class Olympiad extends ListenersContainer
 			{
 				for (int i = 1; i < 8; i++)
 				{
-					if (Config.ALT_OLY_COMPETITION_DAYS.contains(i))
+					if (Config.OLYMPIAD_COMPETITION_DAYS.contains(i))
 					{
 						break;
 					}
@@ -542,7 +542,7 @@ public class Olympiad extends ListenersContainer
 		SystemMessage sm;
 		
 		/*
-		 * if (_compStarted) { noble.sendMessage("Cant Register whilst competition is under way"); return false; }
+		 * if (_compStarted) { noble.sendMessage("Cannot Register whilst competition is under way"); return false; }
 		 */
 		
 		if (!_inCompPeriod)
@@ -636,12 +636,12 @@ public class Olympiad extends ListenersContainer
 		
 		if (classBased && (getNoblePoints(noble.getObjectId()) < 3))
 		{
-			noble.sendMessage("Cant register when you have less than 3 points");
+			noble.sendMessage("Cannot register when you have less than 3 points");
 			return false;
 		}
 		if (!classBased && (getNoblePoints(noble.getObjectId()) < 5))
 		{
-			noble.sendMessage("Cant register when you have less than 5 points");
+			noble.sendMessage("Cannot register when you have less than 5 points");
 			return false;
 		}
 		
@@ -707,7 +707,7 @@ public class Olympiad extends ListenersContainer
 		
 		for (Integer classList : getRegisteredClassBased().keySet())
 		{
-			if (getRegisteredClassBased().get(classList).size() >= Config.ALT_OLY_CLASSED)
+			if (getRegisteredClassBased().get(classList).size() >= Config.OLYMPIAD_CLASSED)
 			{
 				result.add(classList);
 			}
@@ -722,7 +722,7 @@ public class Olympiad extends ListenersContainer
 	
 	protected static boolean hasEnoughRegisteredNonClassed()
 	{
-		return Olympiad.getRegisteredNonClassBased().size() >= Config.ALT_OLY_NONCLASSED;
+		return Olympiad.getRegisteredNonClassBased().size() >= Config.OLYMPIAD_NONCLASSED;
 	}
 	
 	protected static void clearRegistered()
@@ -955,7 +955,7 @@ public class Olympiad extends ListenersContainer
 		sm.addInt(_currentCycle);
 		Broadcast.toAllOnlinePlayers(sm);
 		
-		if (!Config.ALT_OLY_USE_CUSTOM_PERIOD_SETTINGS)
+		if (!Config.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS)
 		{
 			final Calendar currentTime = Calendar.getInstance();
 			currentTime.add(Calendar.MONTH, 1);
@@ -979,33 +979,33 @@ public class Olympiad extends ListenersContainer
 			
 			final Calendar nextChange = Calendar.getInstance();
 			
-			switch (Config.ALT_OLY_PERIOD)
+			switch (Config.OLYMPIAD_PERIOD)
 			{
 				case "DAY":
 				{
-					currentTime.add(Calendar.DAY_OF_MONTH, Config.ALT_OLY_PERIOD_MULTIPLIER);
+					currentTime.add(Calendar.DAY_OF_MONTH, Config.OLYMPIAD_PERIOD_MULTIPLIER);
 					currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
 					
-					if (Config.ALT_OLY_PERIOD_MULTIPLIER >= 14)
+					if (Config.OLYMPIAD_PERIOD_MULTIPLIER >= 14)
 					{
 						_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
 					}
-					else if (Config.ALT_OLY_PERIOD_MULTIPLIER >= 7)
+					else if (Config.OLYMPIAD_PERIOD_MULTIPLIER >= 7)
 					{
 						_nextWeeklyChange = nextChange.getTimeInMillis() + (WEEKLY_PERIOD / 2);
 					}
 					else
 					{
-						LOGGER.warning("Invalid config value for Config.ALT_OLY_PERIOD_MULTIPLIER, must be >= 7");
+						LOGGER.warning("Invalid config value for Config.OLYMPIAD_PERIOD_MULTIPLIER, must be >= 7");
 					}
 					break;
 				}
 				case "WEEK":
 				{
-					currentTime.add(Calendar.WEEK_OF_MONTH, Config.ALT_OLY_PERIOD_MULTIPLIER);
+					currentTime.add(Calendar.WEEK_OF_MONTH, Config.OLYMPIAD_PERIOD_MULTIPLIER);
 					currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
 					
-					if (Config.ALT_OLY_PERIOD_MULTIPLIER > 1)
+					if (Config.OLYMPIAD_PERIOD_MULTIPLIER > 1)
 					{
 						_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
 					}
@@ -1017,7 +1017,7 @@ public class Olympiad extends ListenersContainer
 				}
 				case "MONTH":
 				{
-					currentTime.add(Calendar.MONTH, Config.ALT_OLY_PERIOD_MULTIPLIER);
+					currentTime.add(Calendar.MONTH, Config.OLYMPIAD_PERIOD_MULTIPLIER);
 					currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
 					
 					_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
@@ -1072,13 +1072,13 @@ public class Olympiad extends ListenersContainer
 			}
 		}
 		
-		if (Config.ALT_OLY_USE_CUSTOM_PERIOD_SETTINGS)
+		if (Config.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS)
 		{
 			boolean dayFound = false;
 			int dayCounter = 0;
 			for (int i = currentDay; i < 8; i++)
 			{
-				if (Config.ALT_OLY_COMPETITION_DAYS.contains(i))
+				if (Config.OLYMPIAD_COMPETITION_DAYS.contains(i))
 				{
 					dayFound = true;
 					break;
@@ -1089,7 +1089,7 @@ public class Olympiad extends ListenersContainer
 			{
 				for (int i = 1; i < 8; i++)
 				{
-					if (Config.ALT_OLY_COMPETITION_DAYS.contains(i))
+					if (Config.OLYMPIAD_COMPETITION_DAYS.contains(i))
 					{
 						break;
 					}
@@ -1177,14 +1177,21 @@ public class Olympiad extends ListenersContainer
 	
 	public static void addSpectator(int id, Player spectator, boolean storeCoords)
 	{
+		if (!Olympiad.getInstance().inCompPeriod())
+		{
+			spectator.sendPacket(SystemMessageId.THE_GRAND_OLYMPIAD_GAMES_ARE_NOT_CURRENTLY_IN_PROGRESS);
+			return;
+		}
 		if (getInstance().isRegisteredInComp(spectator))
 		{
-			spectator.sendPacket(new SystemMessage(SystemMessageId.YOU_MAY_NOT_OBSERVE_A_GRAND_OLYMPIAD_GAMES_MATCH_WHILE_YOU_ARE_ON_THE_WAITING_LIST));
+			spectator.sendPacket(SystemMessageId.YOU_MAY_NOT_OBSERVE_A_GRAND_OLYMPIAD_GAMES_MATCH_WHILE_YOU_ARE_ON_THE_WAITING_LIST);
 			return;
 		}
 		if (spectator.isRegisteredOnEvent())
 		{
-			spectator.sendMessage("You can not observe games while registered on events.");
+			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_ALREADY_REGISTERED_ON_THE_MATCH_WAITING_LIST);
+			sm.addString(spectator.getName());
+			spectator.sendPacket(sm);
 			return;
 		}
 		
@@ -1544,14 +1551,14 @@ public class Olympiad extends ListenersContainer
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Olympiad System: Couldnt load heros from DB");
+			LOGGER.warning("Olympiad System: Could not load heros from DB");
 		}
 	}
 	
 	public List<String> getClassLeaderBoard(int classId)
 	{
 		final List<String> names = new ArrayList<>();
-		final String query = Config.ALT_OLY_SHOW_MONTHLY_WINNERS ? ((classId == 132) ? GET_EACH_CLASS_LEADER_SOULHOUND : GET_EACH_CLASS_LEADER) : ((classId == 132) ? GET_EACH_CLASS_LEADER_CURRENT_SOULHOUND : GET_EACH_CLASS_LEADER_CURRENT);
+		final String query = Config.OLYMPIAD_SHOW_MONTHLY_WINNERS ? ((classId == 132) ? GET_EACH_CLASS_LEADER_SOULHOUND : GET_EACH_CLASS_LEADER) : ((classId == 132) ? GET_EACH_CLASS_LEADER_CURRENT_SOULHOUND : GET_EACH_CLASS_LEADER_CURRENT);
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement(query))
 		{
@@ -1590,37 +1597,37 @@ public class Olympiad extends ListenersContainer
 		}
 		
 		// Hero point bonus
-		int points = Hero.getInstance().isHero(objectId) ? Config.ALT_OLY_HERO_POINTS : 0;
+		int points = Hero.getInstance().isHero(objectId) ? Config.OLYMPIAD_HERO_POINTS : 0;
 		// Rank point bonus
 		switch (NOBLES_RANK.get(objectId))
 		{
 			case 1:
 			{
-				points += Config.ALT_OLY_RANK1_POINTS;
+				points += Config.OLYMPIAD_RANK1_POINTS;
 				break;
 			}
 			case 2:
 			{
-				points += Config.ALT_OLY_RANK2_POINTS;
+				points += Config.OLYMPIAD_RANK2_POINTS;
 				break;
 			}
 			case 3:
 			{
-				points += Config.ALT_OLY_RANK3_POINTS;
+				points += Config.OLYMPIAD_RANK3_POINTS;
 				break;
 			}
 			case 4:
 			{
-				points += Config.ALT_OLY_RANK4_POINTS;
+				points += Config.OLYMPIAD_RANK4_POINTS;
 				break;
 			}
 			default:
 			{
-				points += Config.ALT_OLY_RANK5_POINTS;
+				points += Config.OLYMPIAD_RANK5_POINTS;
 			}
 		}
 		
-		points *= Config.ALT_OLY_GP_PER_POINT;
+		points *= Config.OLYMPIAD_GP_PER_POINT;
 		
 		// This is a one time calculation.
 		noble.set(POINTS, 0);

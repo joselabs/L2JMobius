@@ -18,7 +18,6 @@ package quests.Q00350_EnhanceYourWeapon;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +31,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.AbsorberInfo;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Attackable;
@@ -44,6 +44,7 @@ import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
+import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
@@ -161,19 +162,29 @@ public class Q00350_EnhanceYourWeapon extends Quest
 		else if (event.endsWith("-09.htm"))
 		{
 			giveItems(player, RED_SOUL_CRYSTAL0_ID, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 		}
 		else if (event.endsWith("-10.htm"))
 		{
 			giveItems(player, GREEN_SOUL_CRYSTAL0_ID, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 		}
 		else if (event.endsWith("-11.htm"))
 		{
 			giveItems(player, BLUE_SOUL_CRYSTAL0_ID, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 		}
 		else if (event.equalsIgnoreCase("exit.htm"))
 		{
-			qs.exitQuest(false, true);
+			qs.exitQuest(true, true);
+			
+			final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+			html.setFile(player, "data/scripts/quests/Q00350_EnhanceYourWeapon/exit.htm");
+			html.replace("%npcname%", npc.getName());
+			player.sendPacket(html);
+			return null;
 		}
+		
 		return htmltext;
 	}
 	
@@ -257,9 +268,9 @@ public class Q00350_EnhanceYourWeapon extends Quest
 		return false;
 	}
 	
-	private static void exchangeCrystal(Player player, Attackable mob, int takeid, int giveid, boolean broke)
+	private static void exchangeCrystal(Player player, Attackable mob, int takeId, int giveId, boolean broke)
 	{
-		Item item = player.getInventory().destroyItemByItemId("SoulCrystal", takeid, 1, player, mob);
+		Item item = player.getInventory().destroyItemByItemId("SoulCrystal", takeId, 1, player, mob);
 		if (item != null)
 		{
 			// Prepare inventory update packet
@@ -267,7 +278,7 @@ public class Q00350_EnhanceYourWeapon extends Quest
 			playerIU.addRemovedItem(item);
 			
 			// Add new crystal to the killer's inventory
-			item = player.getInventory().addItem("SoulCrystal", giveid, 1, player, mob);
+			item = player.getInventory().addItem("SoulCrystal", giveId, 1, player, mob);
 			playerIU.addItem(item);
 			
 			// Send a sound event and text message to the player
@@ -282,7 +293,7 @@ public class Q00350_EnhanceYourWeapon extends Quest
 			
 			// Send system message
 			final SystemMessage sms = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S1);
-			sms.addItemName(giveid);
+			sms.addItemName(giveId);
 			player.sendPacket(sms);
 			
 			// Send inventory update packet
@@ -298,9 +309,8 @@ public class Q00350_EnhanceYourWeapon extends Quest
 			return null;
 		}
 		
-		final Collection<Item> inv = player.getInventory().getItems();
 		SoulCrystal ret = null;
-		for (Item item : inv)
+		for (Item item : player.getInventory().getItems())
 		{
 			final int itemId = item.getId();
 			if (!SOUL_CRYSTALS.containsKey(itemId))
@@ -377,6 +387,11 @@ public class Q00350_EnhanceYourWeapon extends Quest
 			for (Player pl : killer.getParty().getMembers())
 			{
 				if (pl == null)
+				{
+					continue;
+				}
+				
+				if (pl.calculateDistance3D(killer) > Config.ALT_PARTY_RANGE)
 				{
 					continue;
 				}
@@ -522,7 +537,7 @@ public class Q00350_EnhanceYourWeapon extends Quest
 			final File file = new File(Config.DATAPACK_ROOT, "data/LevelUpCrystalData.xml");
 			if (!file.exists())
 			{
-				LOGGER.severe("[EnhanceYourWeapon] Missing LevelUpCrystalData.xml. The quest wont work without it!");
+				LOGGER.severe("[EnhanceYourWeapon] Missing LevelUpCrystalData.xml. The quest will not work without it!");
 				return;
 			}
 			

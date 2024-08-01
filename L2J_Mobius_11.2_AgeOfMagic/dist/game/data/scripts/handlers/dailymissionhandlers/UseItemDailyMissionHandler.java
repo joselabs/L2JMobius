@@ -94,16 +94,14 @@ public class UseItemDailyMissionHandler extends AbstractDailyMissionHandler
 	private void onItemUse(OnItemUse event)
 	{
 		final Player player = event.getPlayer();
-		if (_minLevel > 0)
+		if ((player.getLevel() < _minLevel) || (player.getLevel() > _maxLevel) || _itemIds.isEmpty())
 		{
-			if ((player.getLevel() < _minLevel) || (player.getLevel() > _maxLevel) || _itemIds.isEmpty())
-			{
-				return;
-			}
-			if (_itemIds.contains(event.getItem().getId()))
-			{
-				processPlayerProgress(player);
-			}
+			return;
+		}
+		
+		if (_itemIds.contains(event.getItem().getId()))
+		{
+			processPlayerProgress(player);
 		}
 	}
 	

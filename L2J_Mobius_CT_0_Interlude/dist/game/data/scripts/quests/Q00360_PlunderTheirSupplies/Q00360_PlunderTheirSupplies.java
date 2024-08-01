@@ -122,7 +122,7 @@ public class Q00360_PlunderTheirSupplies extends Quest
 		
 		if (getRandom(100) < MONSTER_DROP_CHANCES.get(npc.getId()))
 		{
-			giveItems(killer, RECIPE_OF_SUPPLY, 1);
+			giveItems(killer, SUPPLY_ITEM, 1);
 			playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 		}
 		

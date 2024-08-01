@@ -290,6 +290,7 @@ public enum AbnormalType
 	REGULAR_DISH(-1),
 	SOUL_MARK(-1),
 	ANGER(-1),
+	TRANSFORM_SPECIAL(-1),
 	AB_HAWK_EYE(0),
 	ALL_ATTACK_DOWN(1),
 	ALL_ATTACK_UP(2),

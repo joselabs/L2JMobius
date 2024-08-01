@@ -16,7 +16,6 @@
  */
 package handlers.skillconditionhandlers;
 
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
@@ -35,6 +34,6 @@ public class OpCannotUseTargetWithPrivateStoreSkillCondition implements ISkillCo
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return (target == null) || !target.isPlayer() || (target.getActingPlayer().getPrivateStoreType() == PrivateStoreType.NONE);
+		return (target == null) || !target.isPlayer() || !target.getActingPlayer().isInStoreMode();
 	}
 }

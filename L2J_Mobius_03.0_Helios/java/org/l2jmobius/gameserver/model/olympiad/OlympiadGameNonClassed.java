@@ -41,13 +41,13 @@ public class OlympiadGameNonClassed extends OlympiadGameNormal
 	@Override
 	protected final int getDivider()
 	{
-		return Config.ALT_OLY_DIVIDER_NON_CLASSED;
+		return Config.OLYMPIAD_DIVIDER_NON_CLASSED;
 	}
 	
 	@Override
 	protected final List<ItemHolder> getReward()
 	{
-		return Config.ALT_OLY_NONCLASSED_REWARD;
+		return Config.OLYMPIAD_NONCLASSED_REWARD;
 	}
 	
 	@Override

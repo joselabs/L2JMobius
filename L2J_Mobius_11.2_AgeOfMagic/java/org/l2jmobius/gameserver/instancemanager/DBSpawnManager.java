@@ -20,7 +20,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -34,6 +33,7 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.time.SchedulingPattern;
 import org.l2jmobius.commons.util.Rnd;
+import org.l2jmobius.commons.util.TimeUtil;
 import org.l2jmobius.gameserver.data.SpawnTable;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.data.xml.SpawnData;
@@ -43,7 +43,6 @@ import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.spawns.NpcSpawnTemplate;
-import org.l2jmobius.gameserver.util.Util;
 
 /**
  * Database spawn manager.
@@ -174,7 +173,7 @@ public class DBSpawnManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldnt load npc_respawns table", e);
+			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not load npc_respawns table", e);
 		}
 		catch (Exception e)
 		{
@@ -243,7 +242,7 @@ public class DBSpawnManager
 			info.set("respawnTime", respawnTime);
 			if ((!_schedules.containsKey(npc.getId()) && ((respawnMinDelay > 0) || (respawnMaxDelay > 0))) || (respawnPattern != null))
 			{
-				LOGGER.info(getClass().getSimpleName() + ": Updated " + npc.getName() + " respawn time to " + Util.formatDate(new Date(respawnTime), "dd.MM.yyyy HH:mm"));
+				LOGGER.info(getClass().getSimpleName() + ": Updated " + npc.getName() + " respawn time to " + TimeUtil.getDateTimeString(respawnTime));
 				_schedules.put(npc.getId(), ThreadPool.schedule(() -> scheduleSpawn(npc.getId()), respawnDelay));
 				updateDb();
 			}
@@ -472,7 +471,7 @@ public class DBSpawnManager
 				}
 				catch (SQLException e)
 				{
-					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldnt update npc_respawns table ", e);
+					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not update npc_respawns table ", e);
 				}
 			}
 		}
@@ -511,7 +510,7 @@ public class DBSpawnManager
 	 */
 	public String getNpcsStatus(int npcId)
 	{
-		String msg = "NPC Status..." + Config.EOL;
+		String msg = "NPC Status..." + System.lineSeparator();
 		if (_npcs == null)
 		{
 			msg += "None";

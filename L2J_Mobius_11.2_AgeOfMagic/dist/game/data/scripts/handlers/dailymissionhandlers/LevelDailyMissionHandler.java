@@ -39,7 +39,7 @@ public class LevelDailyMissionHandler extends AbstractDailyMissionHandler
 	public LevelDailyMissionHandler(DailyMissionDataHolder holder)
 	{
 		super(holder);
-		_level = holder.getParams().getInt("level");
+		_level = holder.getParams().getInt("minLevel");
 		_dualclass = holder.isDualClassOnly();
 	}
 	

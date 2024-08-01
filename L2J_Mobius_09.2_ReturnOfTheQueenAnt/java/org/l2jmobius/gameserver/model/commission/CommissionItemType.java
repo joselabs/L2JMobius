@@ -109,7 +109,7 @@ public enum CommissionItemType
 	/**
 	 * Finds the commission item type by the client id
 	 * @param clientId the client id
-	 * @return the commission item type if its found, {@code null} otherwise
+	 * @return the commission item type if it is found, {@code null} otherwise
 	 */
 	public static CommissionItemType findByClientId(int clientId)
 	{

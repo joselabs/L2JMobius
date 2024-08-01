@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets.elementalspirits;
 
 import org.l2jmobius.gameserver.enums.ElementalType;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.UserInfoType;
 import org.l2jmobius.gameserver.model.ElementalSpirit;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -82,7 +81,7 @@ public class ExElementalSpiritAbsorb extends ClientPacket
 	
 	private boolean checkConditions(Player player, ElementalSpirit spirit)
 	{
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.CANNOT_EVOLVE_ABSORB_EXTRACT_WHILE_USING_THE_PRIVATE_STORE_WORKSHOP);
 			return false;

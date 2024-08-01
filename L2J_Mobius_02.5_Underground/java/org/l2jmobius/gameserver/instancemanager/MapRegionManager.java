@@ -223,10 +223,15 @@ public class MapRegionManager implements IXmlReader
 		if (creature.isPlayer())
 		{
 			final Player player = creature.getActingPlayer();
+			if (player.getUCState() != Player.UC_STATE_NONE)
+			{
+				return null;
+			}
+			
 			Castle castle = null;
 			Fort fort = null;
 			ClanHall clanhall = null;
-			if ((player.getClan() != null) && !player.isFlyingMounted() && !player.isFlying()) // flying players in gracia cant use teleports to aden continent
+			if ((player.getClan() != null) && !player.isFlyingMounted() && !player.isFlying()) // flying players in gracia cannot use teleports to aden continent
 			{
 				// If teleport to clan hall
 				if (teleportWhere == TeleportWhereType.CLANHALL)
@@ -325,23 +330,7 @@ public class MapRegionManager implements IXmlReader
 			// Karma player land out of city
 			if (player.getReputation() < 0)
 			{
-				try
-				{
-					final RespawnZone zone = ZoneManager.getInstance().getZone(player, RespawnZone.class);
-					if (zone != null)
-					{
-						return getRestartRegion(creature, zone.getRespawnPoint((Player) creature)).getChaoticSpawnLoc();
-					}
-					return getMapRegion(creature).getChaoticSpawnLoc();
-				}
-				catch (Exception e)
-				{
-					if (player.isFlyingMounted())
-					{
-						return REGIONS.get("union_base_of_kserth").getChaoticSpawnLoc();
-					}
-					return REGIONS.get(DEFAULT_RESPAWN).getChaoticSpawnLoc();
-				}
+				return getNearestKarmaRespawn(player);
 			}
 			
 			// Checking if needed to be respawned in "far" town from the castle;
@@ -377,6 +366,34 @@ public class MapRegionManager implements IXmlReader
 		}
 		
 		// Get the nearest town
+		return getNearestTownRespawn(creature);
+	}
+	
+	public Location getNearestKarmaRespawn(Player player)
+	{
+		try
+		{
+			final RespawnZone zone = ZoneManager.getInstance().getZone(player, RespawnZone.class);
+			if (zone != null)
+			{
+				return getRestartRegion(player, zone.getRespawnPoint(player)).getChaoticSpawnLoc();
+			}
+			
+			return getMapRegion(player).getChaoticSpawnLoc();
+		}
+		catch (Exception e)
+		{
+			if (player.isFlyingMounted())
+			{
+				return REGIONS.get("union_base_of_kserth").getChaoticSpawnLoc();
+			}
+			
+			return REGIONS.get(DEFAULT_RESPAWN).getChaoticSpawnLoc();
+		}
+	}
+	
+	public Location getNearestTownRespawn(Creature creature)
+	{
 		try
 		{
 			final RespawnZone zone = ZoneManager.getInstance().getZone(creature, RespawnZone.class);
@@ -384,6 +401,7 @@ public class MapRegionManager implements IXmlReader
 			{
 				return getRestartRegion(creature, zone.getRespawnPoint((Player) creature)).getSpawnLoc();
 			}
+			
 			return getMapRegion(creature).getSpawnLoc();
 		}
 		catch (Exception e)

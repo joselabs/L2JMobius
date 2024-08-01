@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.network.clientpackets.primeshop;
 import java.util.Calendar;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.data.xml.PrimeShopData;
 import org.l2jmobius.gameserver.enums.ExBrProductReplyType;
@@ -144,7 +145,7 @@ public class RequestBRPresentBuyProduct extends ClientPacket
 			MailManager.getInstance().sendMessage(mail);
 		}
 		
-		player.removeRequest(PrimeShopRequest.class);
+		ThreadPool.schedule(() -> player.removeRequest(PrimeShopRequest.class), 1000);
 	}
 	
 	/**

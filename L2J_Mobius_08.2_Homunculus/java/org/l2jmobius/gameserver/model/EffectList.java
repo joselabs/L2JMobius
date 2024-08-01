@@ -799,7 +799,7 @@ public class EffectList
 		
 		if (info.getOption() != null)
 		{
-			// Remove separately if its an option.
+			// Remove separately if it is an option.
 			removeOption(info, type);
 		}
 		else if (info.getSkill().isPassive())
@@ -1123,7 +1123,7 @@ public class EffectList
 					{
 						ps.ifPresent(party::broadcastPacket);
 					}
-					else // Not in party, then its a summon info for its owner.
+					else // Not in party, then it is a summon info for its owner.
 					{
 						ps.ifPresent(player::sendPacket);
 					}
@@ -1227,7 +1227,7 @@ public class EffectList
 				// Handle hidden buffs. Check if there was such abnormal before so we can continue.
 				if ((_hiddenBuffs.get() > 0) && _stackedEffects.contains(skill.getAbnormalType()))
 				{
-					// If incoming buff isnt hidden, remove any hidden buffs with its abnormal type.
+					// If incoming buff is not hidden, remove any hidden buffs with its abnormal type.
 					if (info.isInUse())
 					{
 						unhideBuffs.removeIf(b -> b.isAbnormalType(skill.getAbnormalType()));

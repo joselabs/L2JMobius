@@ -52,7 +52,10 @@ public class RequestExSkillEnchantCharge extends ClientPacket
 		{
 			final int objectId = readInt();
 			final long count = readLong();
-			_itemList.add(new ItemHolder(objectId, count));
+			if (count > 0)
+			{
+				_itemList.add(new ItemHolder(objectId, count));
+			}
 		}
 	}
 	

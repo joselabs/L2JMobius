@@ -272,7 +272,7 @@ import handlers.targethandlers.affectobject.NotFriendPc;
 import handlers.targethandlers.affectobject.ObjectDeadNpcBody;
 import handlers.targethandlers.affectobject.UndeadRealEnemy;
 import handlers.targethandlers.affectobject.WyvernObject;
-import handlers.targethandlers.affectscope.BalakasScope;
+import handlers.targethandlers.affectscope.ValakasScope;
 import handlers.targethandlers.affectscope.DeadParty;
 import handlers.targethandlers.affectscope.DeadPartyPledge;
 import handlers.targethandlers.affectscope.DeadPledge;
@@ -620,7 +620,7 @@ public class MasterHandler
 		},
 		{
 			// Affect Scopes
-			BalakasScope.class,
+			ValakasScope.class,
 			DeadParty.class,
 			DeadPartyPledge.class,
 			DeadPledge.class,

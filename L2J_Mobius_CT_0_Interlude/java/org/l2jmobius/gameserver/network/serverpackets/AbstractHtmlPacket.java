@@ -70,17 +70,22 @@ public abstract class AbstractHtmlPacket extends ServerPacket
 	
 	public void setHtml(String html)
 	{
-		if (html.length() > 17200)
+		if (html.length() > 8192)
 		{
 			PacketLogger.warning(getClass().getSimpleName() + ": Html is too long! this will crash the client!");
-			_html = html.substring(0, 17200);
+			_html = html.substring(0, 8192);
 		}
-		if (!html.contains("<html") && !html.startsWith("..\\L2"))
+		else
 		{
-			_html = "<html><body>" + html + "</body></html>";
-			return;
+			if (!html.contains("<html") && !html.startsWith("..\\L2"))
+			{
+				_html = "<html><body>" + html + "</body></html>";
+			}
+			else
+			{
+				_html = html;
+			}
 		}
-		_html = html;
 	}
 	
 	public boolean setFile(Player player, String path)

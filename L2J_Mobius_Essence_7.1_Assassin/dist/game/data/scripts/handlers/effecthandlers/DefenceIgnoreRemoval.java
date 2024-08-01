@@ -26,6 +26,6 @@ public class DefenceIgnoreRemoval extends AbstractStatEffect
 {
 	public DefenceIgnoreRemoval(StatSet params)
 	{
-		super(params, Stat.DEFENCE_IGNORE_REMOVAL, Stat.DEFENCE_IGNORE_REMOVAL_ADD);
+		super(params, Stat.DEFENCE_IGNORE_REMOVAL, Stat.DEFENCE_IGNORE_REMOVAL_ADD, true);
 	}
 }

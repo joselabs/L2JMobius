@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.serverpackets;
 
 import org.l2jmobius.commons.network.WritableBuffer;
-import org.l2jmobius.gameserver.instancemanager.GraciaSeedsManager;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
@@ -36,7 +35,7 @@ public class ExShowSeedMapInfo extends ServerPacket
 		buffer.writeInt(2); // seed count
 		// Seed of Destruction
 		buffer.writeInt(1); // id 1? Grand Crusade
-		buffer.writeInt(2770 + GraciaSeedsManager.getInstance().getSoDState()); // sys msg id
+		buffer.writeInt(2770 + 1 /* + GraciaSeedsManager.getInstance().getSoDState() */ ); // sys msg id
 		// Seed of Infinity
 		buffer.writeInt(2); // id 2? Grand Crusade
 		// Manager not implemented yet

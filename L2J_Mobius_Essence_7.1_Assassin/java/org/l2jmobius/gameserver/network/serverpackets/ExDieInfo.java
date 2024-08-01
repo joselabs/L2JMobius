@@ -57,18 +57,18 @@ public class ExDieInfo extends ServerPacket
 			{
 				buffer.writeShort(1);
 				buffer.writeInt(damageHolder.getCreature().getId());
-				buffer.writeString("");
+				buffer.writeShort(0);
 			}
 			else
 			{
 				final Clan clan = damageHolder.getCreature().getClan();
-				buffer.writeShort(0);
+				buffer.writeShort(2);
 				buffer.writeString(damageHolder.getCreature().getName());
 				buffer.writeString(clan == null ? "" : clan.getName());
 			}
 			buffer.writeInt(damageHolder.getSkillId());
 			buffer.writeDouble(damageHolder.getDamage());
-			buffer.writeShort(0); // damage type
+			buffer.writeShort(damageHolder.getClientId());
 		}
 	}
 }

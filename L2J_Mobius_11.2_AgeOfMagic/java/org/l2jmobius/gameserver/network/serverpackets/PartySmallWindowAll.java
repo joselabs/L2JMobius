@@ -46,7 +46,7 @@ public class PartySmallWindowAll extends ServerPacket
 			if ((member != null) && (member != _exclude))
 			{
 				buffer.writeInt(member.getObjectId());
-				buffer.writeString(member.getName());
+				buffer.writeString(member.getAppearance().getVisibleName());
 				buffer.writeInt((int) member.getCurrentCp()); // c4
 				buffer.writeInt(member.getMaxCp()); // c4
 				buffer.writeInt((int) member.getCurrentHp());

@@ -53,6 +53,11 @@ public class ExRequestItemAutoPeel extends ClientPacket
 			return;
 		}
 		
+		if ((_totalPeelCount < 1) || (_remainingPeelCount < 0))
+		{
+			return;
+		}
+		
 		AutoPeelRequest request = player.getRequest(AutoPeelRequest.class);
 		if (request == null)
 		{
@@ -74,6 +79,13 @@ public class ExRequestItemAutoPeel extends ClientPacket
 		final Item item = request.getItem();
 		if ((item.getObjectId() != _itemObjectId) || (item.getOwnerId() != player.getObjectId()))
 		{
+			player.removeRequest(request.getClass());
+			return;
+		}
+		
+		if (!item.getTemplate().checkCondition(player, item, true))
+		{
+			player.sendPacket(new ExResultItemAutoPeel(false, _totalPeelCount, _remainingPeelCount, Collections.emptyList()));
 			player.removeRequest(request.getClass());
 			return;
 		}

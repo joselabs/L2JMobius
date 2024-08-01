@@ -58,6 +58,7 @@ import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.CombinationItemsData;
 import org.l2jmobius.gameserver.data.xml.CubicData;
 import org.l2jmobius.gameserver.data.xml.DoorData;
+import org.l2jmobius.gameserver.data.xml.DynamicExpRateData;
 import org.l2jmobius.gameserver.data.xml.ElementalAttributeData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
@@ -106,6 +107,7 @@ import org.l2jmobius.gameserver.handler.SkillConditionHandler;
 import org.l2jmobius.gameserver.instancemanager.AirShipManager;
 import org.l2jmobius.gameserver.instancemanager.AntiFeedManager;
 import org.l2jmobius.gameserver.instancemanager.BoatManager;
+import org.l2jmobius.gameserver.instancemanager.CaptchaManager;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.CastleManorManager;
 import org.l2jmobius.gameserver.instancemanager.ClanEntryManager;
@@ -116,7 +118,6 @@ import org.l2jmobius.gameserver.instancemanager.DBSpawnManager;
 import org.l2jmobius.gameserver.instancemanager.DailyTaskManager;
 import org.l2jmobius.gameserver.instancemanager.FakePlayerChatManager;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
-import org.l2jmobius.gameserver.instancemanager.GraciaSeedsManager;
 import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
 import org.l2jmobius.gameserver.instancemanager.IdManager;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
@@ -140,7 +141,7 @@ import org.l2jmobius.gameserver.instancemanager.SiegeManager;
 import org.l2jmobius.gameserver.instancemanager.WalkingManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.instancemanager.events.EventDropManager;
-import org.l2jmobius.gameserver.instancemanager.games.MonsterRace;
+import org.l2jmobius.gameserver.instancemanager.games.MonsterRaceManager;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
@@ -231,6 +232,7 @@ public class GameServer
 		printSection("Data");
 		ActionData.getInstance();
 		CategoryData.getInstance();
+		DynamicExpRateData.getInstance();
 		SecondaryAuthData.getInstance();
 		CombinationItemsData.getInstance();
 		SayuneData.getInstance();
@@ -280,6 +282,7 @@ public class GameServer
 		PetDataTable.getInstance();
 		CubicData.getInstance();
 		CharSummonTable.getInstance().init();
+		CaptchaManager.getInstance();
 		BeautyShopData.getInstance();
 		MentorManager.getInstance();
 		
@@ -346,7 +349,6 @@ public class GameServer
 		BoatManager.getInstance();
 		AirShipManager.getInstance();
 		ShuttleData.getInstance();
-		GraciaSeedsManager.getInstance();
 		
 		try
 		{
@@ -381,7 +383,7 @@ public class GameServer
 		{
 			ItemsAutoDestroyTaskManager.getInstance();
 		}
-		MonsterRace.getInstance();
+		MonsterRaceManager.getInstance();
 		TaskManager.getInstance();
 		DailyTaskManager.getInstance();
 		AntiFeedManager.getInstance().registerEvent(AntiFeedManager.GAME_ID);

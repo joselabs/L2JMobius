@@ -49,7 +49,16 @@ public class PackageSendableList extends AbstractItemPacket
 		buffer.writeInt(_items.size());
 		for (Item item : _items)
 		{
-			writeItem(item, buffer);
+			buffer.writeShort(item.getTemplate().getType1());
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getId());
+			buffer.writeInt(item.getCount());
+			buffer.writeShort(item.getTemplate().getType2());
+			buffer.writeShort(0);
+			buffer.writeInt(item.getTemplate().getBodyPart());
+			buffer.writeShort(item.getEnchantLevel());
+			buffer.writeShort(0);
+			buffer.writeShort(0);
 			buffer.writeInt(item.getObjectId());
 		}
 	}

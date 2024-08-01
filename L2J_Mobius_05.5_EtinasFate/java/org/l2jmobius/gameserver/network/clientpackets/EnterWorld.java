@@ -278,7 +278,6 @@ public class EnterWorld extends ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getCastle().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);
@@ -298,7 +297,6 @@ public class EnterWorld extends ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getFort().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);

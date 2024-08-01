@@ -95,9 +95,6 @@ public class TimedHuntingZoneData implements IXmlReader
 							boolean useWorldPrefix = false;
 							boolean zonePremiumUserOnly = false;
 							Location enterLocation = null;
-							Location subEnterLocation1 = null;
-							Location subEnterLocation2 = null;
-							Location subEnterLocation3 = null;
 							Location exitLocation = null;
 							boolean isEvenWeek = true;
 							boolean isSwapWeek = false;
@@ -109,24 +106,6 @@ public class TimedHuntingZoneData implements IXmlReader
 									{
 										final String[] coordinates = zoneNode.getTextContent().split(",");
 										enterLocation = new Location(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
-										break;
-									}
-									case "subEnterLocation1":
-									{
-										final String[] coordinates = zoneNode.getTextContent().split(",");
-										subEnterLocation1 = new Location(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
-										break;
-									}
-									case "subEnterLocation2":
-									{
-										final String[] coordinates = zoneNode.getTextContent().split(",");
-										subEnterLocation2 = new Location(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
-										break;
-									}
-									case "subEnterLocation3":
-									{
-										final String[] coordinates = zoneNode.getTextContent().split(",");
-										subEnterLocation3 = new Location(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
 										break;
 									}
 									case "exitLocation":
@@ -227,7 +206,7 @@ public class TimedHuntingZoneData implements IXmlReader
 									}
 								}
 							}
-							_timedHuntingZoneData.put(id, new TimedHuntingZoneHolder(id, name, initialTime, maxAddedTime, resetDelay, entryItemId, entryFee, minLevel, maxLevel, remainRefillTime, refillTimeMax, pvpZone, noPvpZone, instanceId, soloInstance, weekly, useWorldPrefix, zonePremiumUserOnly, enterLocation, subEnterLocation1, subEnterLocation2, subEnterLocation3, exitLocation, isEvenWeek, isSwapWeek));
+							_timedHuntingZoneData.put(id, new TimedHuntingZoneHolder(id, name, initialTime, maxAddedTime, resetDelay, entryItemId, entryFee, minLevel, maxLevel, remainRefillTime, refillTimeMax, pvpZone, noPvpZone, instanceId, soloInstance, weekly, useWorldPrefix, zonePremiumUserOnly, enterLocation, exitLocation, isEvenWeek, isSwapWeek));
 						}
 					}
 				}

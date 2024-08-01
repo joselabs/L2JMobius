@@ -44,7 +44,7 @@ public class MagmaDrake extends AbstractNpcAI
 		final Creature attacker = isSummon ? killer.getSummon() : killer;
 		for (int i = 0; i < 5; i++)
 		{
-			final Attackable newNpc = (Attackable) addSpawn(MAGMA_DRAKE_MINION, npc.getX(), npc.getY(), npc.getZ() + 10, npc.getHeading(), false, 0, true);
+			final Attackable newNpc = (Attackable) addSpawn(MAGMA_DRAKE_MINION, npc.getX(), npc.getY(), npc.getZ() + 20, npc.getHeading(), false, 0, true);
 			newNpc.setRunning();
 			newNpc.addDamageHate(attacker, 0, 500);
 			newNpc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, attacker);

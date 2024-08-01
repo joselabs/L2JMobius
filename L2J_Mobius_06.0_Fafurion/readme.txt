@@ -22,6 +22,8 @@ Before Goddess of Destruction:
 -Kamaloka
 -Castle Dungeons
 -Fortress Dungeons
+-Kratei's Cube
+-Underground Coliseum
 -Prime Shop
 
 Goddess of Destruction:

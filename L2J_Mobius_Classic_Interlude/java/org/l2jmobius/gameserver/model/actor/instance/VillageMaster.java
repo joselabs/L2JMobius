@@ -398,9 +398,12 @@ public class VillageMaster extends Folk
 			switch (cmdChoice)
 			{
 				case 0: // Subclass change menu
+				{
 					html.setFile(player, getSubClassMenu(player.getRace()));
 					break;
+				}
 				case 1: // Add Subclass - Initial
+				{
 					// Avoid giving player an option to add a new sub class, if they have max sub-classes already.
 					if (player.getTotalSubClasses() >= Config.MAX_SUBCLASS)
 					{
@@ -439,7 +442,9 @@ public class VillageMaster extends Folk
 						return;
 					}
 					break;
+				}
 				case 2: // Change Class - Initial
+				{
 					if (player.getSubClasses().isEmpty())
 					{
 						html.setFile(player, "data/html/villagemaster/SubClass_ChangeNo.htm");
@@ -472,7 +477,9 @@ public class VillageMaster extends Folk
 						}
 					}
 					break;
+				}
 				case 3: // Change/Cancel Subclass - Initial
+				{
 					if ((player.getSubClasses() == null) || player.getSubClasses().isEmpty())
 					{
 						html.setFile(player, "data/html/villagemaster/SubClass_ModifyEmpty.htm");
@@ -524,7 +531,9 @@ public class VillageMaster extends Folk
 						}
 					}
 					break;
+				}
 				case 4: // Add Subclass - Action (Subclass 4 x[x])
+				{
 					/**
 					 * If the character is less than level 75 on any of their previously chosen classes then disallow them to change to their most recently added sub-class choice.
 					 */
@@ -575,19 +584,22 @@ public class VillageMaster extends Folk
 						}
 						
 						player.setActiveClass(player.getTotalSubClasses());
-						
 						html.setFile(player, "data/html/villagemaster/SubClass_AddOk.htm");
 						
 						final SystemMessage msg = new SystemMessage(SystemMessageId.THE_NEW_SUBCLASS_HAS_BEEN_ADDED);
 						msg.addClassId(player.getClassId().getId());
 						player.sendPacket(msg);
+						
+						player.broadcastUserInfo();
 					}
 					else
 					{
 						html.setFile(player, getSubClassFail());
 					}
 					break;
+				}
 				case 5: // Change Class - Action
+				{
 					/**
 					 * If the character is less than level 75 on any of their previously chosen classes then disallow them to change to their most recently added sub-class choice. Note: paramOne = classIndex
 					 */
@@ -626,10 +638,15 @@ public class VillageMaster extends Folk
 					}
 					
 					player.setActiveClass(paramOne);
+					
 					// TODO: Retail message YOU_HAVE_SUCCESSFULLY_SWITCHED_S1_TO_S2
 					player.sendMessage("You have successfully switched to your subclass.");
+					
+					player.broadcastUserInfo();
 					return;
+				}
 				case 6: // Change/Cancel Subclass - Choice
+				{
 					// validity check
 					if ((paramOne < 1) || (paramOne > Config.MAX_SUBCLASS))
 					{
@@ -654,20 +671,30 @@ public class VillageMaster extends Folk
 					switch (paramOne)
 					{
 						case 1:
+						{
 							html.setFile(player, "data/html/villagemaster/SubClass_ModifyChoice1.htm");
 							break;
+						}
 						case 2:
+						{
 							html.setFile(player, "data/html/villagemaster/SubClass_ModifyChoice2.htm");
 							break;
+						}
 						case 3:
+						{
 							html.setFile(player, "data/html/villagemaster/SubClass_ModifyChoice3.htm");
 							break;
+						}
 						default:
+						{
 							html.setFile(player, "data/html/villagemaster/SubClass_ModifyChoice.htm");
+						}
 					}
 					html.replace("%list%", content6.toString());
 					break;
+				}
 				case 7: // Change Subclass - Action
+				{
 					/**
 					 * Warning: the information about this subclass will be removed from the subclass list even if false!
 					 */
@@ -707,6 +734,7 @@ public class VillageMaster extends Folk
 						return;
 					}
 					break;
+				}
 			}
 			html.replace("%objectId%", String.valueOf(getObjectId()));
 			player.sendPacket(html);
@@ -739,13 +767,13 @@ public class VillageMaster extends Folk
 			return true;
 		}
 		
-		QuestState qs = player.getQuestState("Q00234_FatesWhisper"); // TODO: Not added with Saviors.
+		QuestState qs = player.getQuestState("Q00234_FatesWhisper");
 		if ((qs == null) || !qs.isCompleted())
 		{
 			return false;
 		}
 		
-		qs = player.getQuestState("Q00235_MimirsElixir"); // TODO: Not added with Saviors.
+		qs = player.getQuestState("Q00235_MimirsElixir");
 		if ((qs == null) || !qs.isCompleted())
 		{
 			return false;

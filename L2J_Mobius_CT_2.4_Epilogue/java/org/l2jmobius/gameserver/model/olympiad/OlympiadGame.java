@@ -379,12 +379,12 @@ class OlympiadGame
 			_playerOne.setInOlympiadMode(true);
 			_playerOne.setOlympiadStart(false);
 			_playerOne.setOlympiadSide(1);
-			_playerOne.setOlympiadBuffCount(Config.ALT_OLY_MAX_BUFFS);
+			_playerOne.setOlympiadBuffCount(Config.OLYMPIAD_MAX_BUFFS);
 			
 			_playerTwo.setInOlympiadMode(true);
 			_playerTwo.setOlympiadStart(false);
 			_playerTwo.setOlympiadSide(2);
-			_playerTwo.setOlympiadBuffCount(Config.ALT_OLY_MAX_BUFFS);
+			_playerTwo.setOlympiadBuffCount(Config.OLYMPIAD_MAX_BUFFS);
 			
 			_spawnOne = SpawnBuffer(_stadiumPort[0] + 1100, _stadiumPort[1], _stadiumPort[2], OLY_BUFFER);
 			_spawnTwo = SpawnBuffer(_stadiumPort[0] - 1100, _stadiumPort[1], _stadiumPort[2], OLY_BUFFER);
@@ -589,12 +589,12 @@ class OlympiadGame
 		{
 			case NON_CLASSED:
 				_div = 5;
-				_gpreward = Config.ALT_OLY_NONCLASSED_RITEM_C;
+				_gpreward = Config.OLYMPIAD_NONCLASSED_RITEM_C;
 				classed = "no";
 				break;
 			default:
 				_div = 3;
-				_gpreward = Config.ALT_OLY_CLASSED_RITEM_C;
+				_gpreward = Config.OLYMPIAD_CLASSED_RITEM_C;
 				classed = "yes";
 				break;
 		}
@@ -613,14 +613,14 @@ class OlympiadGame
 		
 		final int playerOnePoints = playerOneStat.getInt(POINTS);
 		final int playerTwoPoints = playerTwoStat.getInt(POINTS);
-		final int pointDiff = Math.min(Math.min(playerOnePoints, playerTwoPoints) / _div, Config.ALT_OLY_MAX_POINTS);
+		final int pointDiff = Math.min(Math.min(playerOnePoints, playerTwoPoints) / _div, Config.OLYMPIAD_MAX_POINTS);
 		
 		// Check for if a player defaulted before battle started
 		if (_playerOneDefaulted || _playerTwoDefaulted)
 		{
 			if (_playerOneDefaulted)
 			{
-				final int lostPoints = Math.min(playerOnePoints / 3, Config.ALT_OLY_MAX_POINTS);
+				final int lostPoints = Math.min(playerOnePoints / 3, Config.OLYMPIAD_MAX_POINTS);
 				playerOneStat.set(POINTS, playerOnePoints - lostPoints);
 				Olympiad.updateNobleStats(_playerOneID, playerOneStat);
 				final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_LOST_S2_POINTS_IN_THE_GRAND_OLYMPIAD_GAMES);
@@ -628,7 +628,7 @@ class OlympiadGame
 				sm.addInt(lostPoints);
 				broadcastMessage(sm, false);
 				
-				if (Config.ALT_OLY_LOG_FIGHTS)
+				if (Config.OLYMPIAD_LOG_FIGHTS)
 				{
 					final LogRecord record = new LogRecord(Level.INFO, _playerOneName + " default");
 					record.setParameters(new Object[]
@@ -647,7 +647,7 @@ class OlympiadGame
 			}
 			if (_playerTwoDefaulted)
 			{
-				final int lostPoints = Math.min(playerTwoPoints / 3, Config.ALT_OLY_MAX_POINTS);
+				final int lostPoints = Math.min(playerTwoPoints / 3, Config.OLYMPIAD_MAX_POINTS);
 				playerTwoStat.set(POINTS, playerTwoPoints - lostPoints);
 				Olympiad.updateNobleStats(_playerTwoID, playerTwoStat);
 				final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_LOST_S2_POINTS_IN_THE_GRAND_OLYMPIAD_GAMES);
@@ -655,7 +655,7 @@ class OlympiadGame
 				sm.addInt(lostPoints);
 				broadcastMessage(sm, false);
 				
-				if (Config.ALT_OLY_LOG_FIGHTS)
+				if (Config.OLYMPIAD_LOG_FIGHTS)
 				{
 					final LogRecord record = new LogRecord(Level.INFO, _playerTwoName + " default");
 					record.setParameters(new Object[]
@@ -685,7 +685,7 @@ class OlympiadGame
 					playerOneStat.set(POINTS, playerOnePoints - pointDiff);
 					playerOneStat.set(COMP_LOST, playerOneLost + 1);
 					
-					if (Config.ALT_OLY_LOG_FIGHTS)
+					if (Config.OLYMPIAD_LOG_FIGHTS)
 					{
 						final LogRecord record = new LogRecord(Level.INFO, _playerOneName + " crash");
 						record.setParameters(new Object[]
@@ -731,7 +731,7 @@ class OlympiadGame
 					playerTwoStat.set(POINTS, playerTwoPoints - pointDiff);
 					playerTwoStat.set(COMP_LOST, playerTwoLost + 1);
 					
-					if (Config.ALT_OLY_LOG_FIGHTS)
+					if (Config.OLYMPIAD_LOG_FIGHTS)
 					{
 						final LogRecord record = new LogRecord(Level.INFO, _playerTwoName + " crash");
 						record.setParameters(new Object[]
@@ -780,7 +780,7 @@ class OlympiadGame
 					playerTwoStat.set(POINTS, playerTwoPoints - pointDiff);
 					playerTwoStat.set(COMP_LOST, playerTwoLost + 1);
 					
-					if (Config.ALT_OLY_LOG_FIGHTS)
+					if (Config.OLYMPIAD_LOG_FIGHTS)
 					{
 						final LogRecord record = new LogRecord(Level.INFO, "both crash");
 						record.setParameters(new Object[]
@@ -874,10 +874,10 @@ class OlympiadGame
 				// Save Fight Result
 				saveResults(_playerOneID, _playerTwoID, _playerOneClass, _playerTwoClass, 1, _startTime, fightTime, (_type == CompetitionType.CLASSED ? 1 : 0));
 				
-				final Item item = _playerOne.getInventory().addItem("Olympiad", Config.ALT_OLY_BATTLE_REWARD_ITEM, _gpreward, _playerOne, null);
+				final Item item = _playerOne.getInventory().addItem("Olympiad", Config.OLYMPIAD_BATTLE_REWARD_ITEM, _gpreward, _playerOne, null);
 				final InventoryUpdate iu = new InventoryUpdate();
 				iu.addModifiedItem(item);
-				_playerOne.sendPacket(iu);
+				_playerOne.sendInventoryUpdate(iu);
 				
 				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S2_S1_S);
 				sm.addItemName(item);
@@ -917,10 +917,10 @@ class OlympiadGame
 				// Save Fight Result
 				saveResults(_playerOneID, _playerTwoID, _playerOneClass, _playerTwoClass, 2, _startTime, fightTime, (_type == CompetitionType.CLASSED ? 1 : 0));
 				
-				final Item item = _playerTwo.getInventory().addItem("Olympiad", Config.ALT_OLY_BATTLE_REWARD_ITEM, _gpreward, _playerTwo, null);
+				final Item item = _playerTwo.getInventory().addItem("Olympiad", Config.OLYMPIAD_BATTLE_REWARD_ITEM, _gpreward, _playerTwo, null);
 				final InventoryUpdate iu = new InventoryUpdate();
 				iu.addModifiedItem(item);
-				_playerTwo.sendPacket(iu);
+				_playerTwo.sendInventoryUpdate(iu);
 				
 				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S2_S1_S);
 				sm.addItemName(item);
@@ -945,8 +945,8 @@ class OlympiadGame
 			
 			_sm = new SystemMessage(SystemMessageId.THERE_IS_NO_VICTOR_THE_MATCH_ENDS_IN_A_TIE);
 			broadcastMessage(_sm, true);
-			final int pointOneDiff = Math.min(playerOnePoints / 5, Config.ALT_OLY_MAX_POINTS);
-			final int pointTwoDiff = Math.min(playerTwoPoints / 5, Config.ALT_OLY_MAX_POINTS);
+			final int pointOneDiff = Math.min(playerOnePoints / 5, Config.OLYMPIAD_MAX_POINTS);
+			final int pointTwoDiff = Math.min(playerTwoPoints / 5, Config.OLYMPIAD_MAX_POINTS);
 			playerOneStat.set(POINTS, playerOnePoints - pointOneDiff);
 			playerTwoStat.set(POINTS, playerTwoPoints - pointTwoDiff);
 			playerOneStat.set(COMP_DRAWN, playerOneDrawn + 1);
@@ -967,7 +967,7 @@ class OlympiadGame
 		Olympiad.updateNobleStats(_playerOneID, playerOneStat);
 		Olympiad.updateNobleStats(_playerTwoID, playerTwoStat);
 		
-		if (Config.ALT_OLY_LOG_FIGHTS)
+		if (Config.OLYMPIAD_LOG_FIGHTS)
 		{
 			final LogRecord record = new LogRecord(Level.INFO, winner);
 			record.setParameters(new Object[]
@@ -1164,7 +1164,7 @@ class OlympiadGameTask implements Runnable
 {
 	protected static final Logger _log = Logger.getLogger(OlympiadGameTask.class.getName());
 	public OlympiadGame _game = null;
-	protected static final long BATTLE_PERIOD = Config.ALT_OLY_BATTLE; // 6 mins
+	protected static final long BATTLE_PERIOD = Config.OLYMPIAD_BATTLE; // 6 mins
 	
 	private boolean _terminated = false;
 	private boolean _started = false;
@@ -1349,7 +1349,7 @@ class OlympiadGameTask implements Runnable
 		OlympiadManager.STADIUMS[_game._stadiumID].closeDoors();
 		_game.portPlayersToArena();
 		_game.removals();
-		if (Config.ALT_OLY_ANNOUNCE_GAMES)
+		if (Config.OLYMPIAD_ANNOUNCE_GAMES)
 		{
 			_game.announceGame();
 		}
@@ -1472,7 +1472,7 @@ class OlympiadGameTask implements Runnable
 		SystemMessage sm;
 		// Waiting for teleport to arena
 		byte step = 60;
-		for (int i = Config.ALT_OLY_WAIT_TIME; i > 0; i -= step)
+		for (int i = Config.OLYMPIAD_WAIT_TIME; i > 0; i -= step)
 		{
 			sm = new SystemMessage(SystemMessageId.YOU_WILL_BE_MOVED_TO_THE_OLYMPIAD_STADIUM_IN_S1_SECOND_S);
 			sm.addInt(i);

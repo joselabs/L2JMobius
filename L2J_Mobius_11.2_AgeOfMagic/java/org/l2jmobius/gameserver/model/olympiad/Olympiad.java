@@ -1035,7 +1035,7 @@ public class Olympiad extends ListenersContainer
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Olympiad System: Couldnt load legend from DB");
+			LOGGER.warning("Olympiad System: Could not load legend from DB");
 		}
 		
 		try (Connection con = DatabaseFactory.getConnection();
@@ -1065,7 +1065,7 @@ public class Olympiad extends ListenersContainer
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Olympiad System: Couldnt load heros from DB");
+			LOGGER.warning("Olympiad System: Could not load heros from DB");
 		}
 		
 		return heroesToBe;

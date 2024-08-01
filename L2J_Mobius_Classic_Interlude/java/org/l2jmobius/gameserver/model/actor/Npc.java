@@ -27,13 +27,13 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
+import org.l2jmobius.gameserver.data.xml.DynamicExpRateData;
 import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.AISkillScope;
 import org.l2jmobius.gameserver.enums.AIType;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.MpRewardAffectType;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.RaidBossStatus;
 import org.l2jmobius.gameserver.enums.ShotType;
@@ -78,6 +78,8 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.model.quest.QuestTimer;
 import org.l2jmobius.gameserver.model.residences.ClanHall;
+import org.l2jmobius.gameserver.model.sevensigns.SevenSigns;
+import org.l2jmobius.gameserver.model.sevensigns.SevenSignsFestival;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -483,7 +485,7 @@ public class Npc extends Creature
 		{
 			return false;
 		}
-		else if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		else if (player.isInStoreMode())
 		{
 			return false;
 		}
@@ -771,9 +773,136 @@ public class Npc extends Creature
 		}
 		
 		final int npcId = getTemplate().getId();
-		String filename;
+		/* For use with Seven Signs implementation */
+		String filename = SevenSigns.SEVEN_SIGNS_HTML_PATH;
+		final int sealAvariceOwner = SevenSigns.getInstance().getSealOwner(SevenSigns.SEAL_AVARICE);
+		final int sealGnosisOwner = SevenSigns.getInstance().getSealOwner(SevenSigns.SEAL_GNOSIS);
+		final int playerCabal = SevenSigns.getInstance().getPlayerCabal(player.getObjectId());
+		final int compWinner = SevenSigns.getInstance().getCabalHighestScore();
+		
 		switch (npcId)
 		{
+			case 31127: //
+			case 31128: //
+			case 31129: // Dawn Festival Guides
+			case 31130: //
+			case 31131: //
+			{
+				filename += "festival/dawn_guide.htm";
+				break;
+			}
+			case 31137: //
+			case 31138: //
+			case 31139: // Dusk Festival Guides
+			case 31140: //
+			case 31141: //
+			{
+				filename += "festival/dusk_guide.htm";
+				break;
+			}
+			case 31092: // Black Marketeer of Mammon
+			{
+				filename += "blkmrkt_1.htm";
+				break;
+			}
+			case 31113: // Merchant of Mammon
+			{
+				if (Config.ALT_STRICT_SEVENSIGNS)
+				{
+					switch (compWinner)
+					{
+						case SevenSigns.CABAL_DAWN:
+						{
+							if ((playerCabal != compWinner) || (playerCabal != sealAvariceOwner))
+							{
+								player.sendPacket(SystemMessageId.ONLY_A_LORD_OF_DAWN_MAY_USE_THIS);
+								player.sendPacket(ActionFailed.STATIC_PACKET);
+								return;
+							}
+							break;
+						}
+						case SevenSigns.CABAL_DUSK:
+						{
+							if ((playerCabal != compWinner) || (playerCabal != sealAvariceOwner))
+							{
+								player.sendPacket(SystemMessageId.ONLY_A_REVOLUTIONARY_OF_DUSK_MAY_USE_THIS);
+								player.sendPacket(ActionFailed.STATIC_PACKET);
+								return;
+							}
+							break;
+						}
+						default:
+						{
+							player.sendPacket(SystemMessageId.THIS_MAY_ONLY_BE_USED_DURING_THE_QUEST_EVENT_PERIOD);
+							return;
+						}
+					}
+				}
+				filename += "mammmerch_1.htm";
+				break;
+			}
+			case 31126: // Blacksmith of Mammon
+			{
+				if (Config.ALT_STRICT_SEVENSIGNS)
+				{
+					switch (compWinner)
+					{
+						case SevenSigns.CABAL_DAWN:
+						{
+							if ((playerCabal != compWinner) || (playerCabal != sealGnosisOwner))
+							{
+								player.sendPacket(SystemMessageId.ONLY_A_LORD_OF_DAWN_MAY_USE_THIS);
+								player.sendPacket(ActionFailed.STATIC_PACKET);
+								return;
+							}
+							break;
+						}
+						case SevenSigns.CABAL_DUSK:
+						{
+							if ((playerCabal != compWinner) || (playerCabal != sealGnosisOwner))
+							{
+								player.sendPacket(SystemMessageId.ONLY_A_REVOLUTIONARY_OF_DUSK_MAY_USE_THIS);
+								player.sendPacket(ActionFailed.STATIC_PACKET);
+								return;
+							}
+							break;
+						}
+						default:
+						{
+							player.sendPacket(SystemMessageId.THIS_MAY_ONLY_BE_USED_DURING_THE_QUEST_EVENT_PERIOD);
+							return;
+						}
+					}
+				}
+				filename += "mammblack_1.htm";
+				break;
+			}
+			case 31132:
+			case 31133:
+			case 31134:
+			case 31135:
+			case 31136: // Festival Witches
+			case 31142:
+			case 31143:
+			case 31144:
+			case 31145:
+			case 31146:
+			{
+				filename += "festival/festival_witch.htm";
+				break;
+			}
+			case 31688:
+			{
+				if (player.isNoble())
+				{
+					filename = Olympiad.OLYMPIAD_HTML_PATH + "noble_main.htm";
+				}
+				else
+				{
+					filename = (getHtmlPath(npcId, value, player));
+				}
+				break;
+			}
 			case 31690:
 			case 31769:
 			case 31770:
@@ -819,6 +948,7 @@ public class Npc extends Creature
 		html.setFile(player, filename);
 		html.replace("%npcname%", getName());
 		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace("%festivalMins%", SevenSignsFestival.getInstance().getTimeToNextFestivalStr());
 		player.sendPacket(html);
 		
 		// Send a Server->Client ActionFailed to the Player in order to avoid that the client wait another packet
@@ -843,20 +973,32 @@ public class Npc extends Creature
 	}
 	
 	/**
-	 * @return the Exp Reward of this Npc (modified by RATE_XP).
+	 * @param level
+	 * @return the Exp Reward of this Npc (modified by RATE_XP, or from DynamicExpRates.xml if enabled).
 	 */
-	public double getExpReward()
+	public double getExpReward(int level)
 	{
+		if (DynamicExpRateData.getInstance().isEnabled())
+		{
+			return getTemplate().getExp() * DynamicExpRateData.getInstance().getDynamicExpRate(level);
+		}
+		
 		final Instance instance = getInstanceWorld();
 		final float rateMul = instance != null ? instance.getExpRate() : Config.RATE_XP;
 		return getTemplate().getExp() * rateMul;
 	}
 	
 	/**
-	 * @return the SP Reward of this Npc (modified by RATE_SP).
+	 * @param level
+	 * @return the SP Reward of this Npc (modified by RATE_SP, or from DynamicExpRates.xml if enabled).
 	 */
-	public double getSpReward()
+	public double getSpReward(int level)
 	{
+		if (DynamicExpRateData.getInstance().isEnabled())
+		{
+			return getTemplate().getSP() * DynamicExpRateData.getInstance().getDynamicSpRate(level);
+		}
+		
 		final Instance instance = getInstanceWorld();
 		final float rateMul = instance != null ? instance.getSPRate() : Config.RATE_SP;
 		return getTemplate().getSP() * rateMul;

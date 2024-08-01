@@ -84,7 +84,8 @@ public enum InstanceType
 	FortDoorman(Doorman),
 	// Custom
 	ClassMaster(Folk),
-	EventMob(Npc);
+	EventMob(Npc),
+	UCManagerInstance(Folk);
 	
 	private final InstanceType _parent;
 	private final long _typeL;

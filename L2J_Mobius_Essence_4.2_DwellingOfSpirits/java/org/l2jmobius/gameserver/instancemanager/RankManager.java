@@ -30,6 +30,7 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.olympiad.Hero;
 
 /**
@@ -89,13 +90,13 @@ public class RankManager
 					player.set("classId", rset.getInt("base_class"));
 					final int race = rset.getInt("race");
 					player.set("race", race);
-					
 					loadRaceRank(charId, race, player);
 					loadClassRank(charId, classId, player);
-					final int clanId = rset.getInt("clanid");
-					if (clanId > 0)
+					
+					final Clan clan = ClanTable.getInstance().getClan(rset.getInt("clanid"));
+					if (clan != null)
 					{
-						player.set("clanName", ClanTable.getInstance().getClan(clanId).getName());
+						player.set("clanName", clan.getName());
 					}
 					else
 					{
@@ -125,26 +126,22 @@ public class RankManager
 					final int charId = rset.getInt("charId");
 					player.set("charId", charId);
 					player.set("name", rset.getString("char_name"));
-					final int clanId = rset.getInt("clanid");
-					if (clanId > 0)
+					
+					final Clan clan = ClanTable.getInstance().getClan(rset.getInt("clanid"));
+					if (clan != null)
 					{
-						player.set("clanName", ClanTable.getInstance().getClan(clanId).getName());
+						player.set("clanName", clan.getName());
+						player.set("clanLevel", clan.getLevel());
 					}
 					else
 					{
 						player.set("clanName", "");
+						player.set("clanLevel", 0);
 					}
+					
 					player.set("level", rset.getInt("level"));
 					final int classId = rset.getInt("base_class");
 					player.set("classId", classId);
-					if (clanId > 0)
-					{
-						player.set("clanLevel", ClanTable.getInstance().getClan(clanId).getLevel());
-					}
-					else
-					{
-						player.set("clanLevel", 0);
-					}
 					player.set("competitions_won", rset.getInt("competitions_won"));
 					player.set("competitions_lost", rset.getInt("competitions_lost"));
 					player.set("olympiad_points", rset.getInt("olympiad_points"));
@@ -193,10 +190,11 @@ public class RankManager
 					player.set("deaths", rset.getInt("deaths"));
 					player.set("points", rset.getInt("pvpkills"));
 					loadRaceRank(charId, race, player);
-					final int clanId = rset.getInt("clanid");
-					if (clanId > 0)
+					
+					final Clan clan = ClanTable.getInstance().getClan(rset.getInt("clanid"));
+					if (clan != null)
 					{
-						player.set("clanName", ClanTable.getInstance().getClan(clanId).getName());
+						player.set("clanName", clan.getName());
 					}
 					else
 					{

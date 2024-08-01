@@ -73,7 +73,6 @@ public class CallSkillOnActionTime extends AbstractEffect
 			World.getInstance().forEachVisibleObjectInRange(effector, Creature.class, _skill.getSkill().getAffectRange(), c ->
 			{
 				final WorldObject target = triggerSkill.getTarget(effector, c, false, false, false);
-				
 				if ((target != null) && target.isCreature())
 				{
 					SkillCaster.triggerCast(effector, (Creature) target, triggerSkill);

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="11300" toLevel="6" name="Yoke Status">
 		<!-- Immobilized midair. Additionally, P./ M. Def. -30%. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
@@ -105,7 +105,7 @@
 		<castRange>800</castRange>
 		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>1000</reuseDelay>
+		<reuseDelay>900000</reuseDelay>
 		<effectPoint>687</effectPoint>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effectRange>1100</effectRange>
@@ -127,8 +127,10 @@
 			<value level="15">118</value>
 		</magicLevel>
 		<isMagic>1</isMagic>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<targetType>SUMMON</targetType>
+		<affectScope>SUMMON_EXCEPT_MASTER</affectScope>
+		<affectObject>FRIEND</affectObject>
 		<conditions>
 			<condition name="OpCompanion">
 				<type>MY_SUMMON</type>
@@ -137,25 +139,47 @@
 		<effects>
 			<effect name="Heal">
 				<power>
-					<value level="1">1637</value>
-					<value level="2">1645</value>
-					<value level="3">1658</value>
-					<value level="4">1671</value>
-					<value level="5">1685</value>
-					<value level="6">1698</value>
-					<value level="7">1713</value>
-					<value level="8">1727</value>
-					<value level="9">1928</value>
-					<value level="10">1944</value>
-					<value level="11">1960</value>
-					<value level="12">1976</value>
-					<value level="13">1992</value>
-					<value level="14">2191</value>
-					<value level="15">2410</value>
+					<value level="1">4572</value>
+					<value level="2">5081</value>
+					<value level="3">5646</value>
+					<value level="4">6274</value>
+					<value level="5">6972</value>
+					<value level="6">7747</value>
+					<value level="7">8608</value>
+					<value level="8">9565</value>
+					<value level="9">10628</value>
+					<value level="10">11809</value>
+					<value level="11">13122</value>
+					<value level="12">14580</value>
+					<value level="13">16200</value>
+					<value level="14">18000</value>
+					<value level="15">20000</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1001" toSubLevel="1020">{base + (base / 100 * subIndex)}</value>
 				</power>
 			</effect>
 		</effects>
+		<selfEffects>
+			<effect name="Heal">
+				<power>
+					<value level="1">4572</value>
+					<value level="2">5081</value>
+					<value level="3">5646</value>
+					<value level="4">6274</value>
+					<value level="5">6972</value>
+					<value level="6">7747</value>
+					<value level="7">8608</value>
+					<value level="8">9565</value>
+					<value level="9">10628</value>
+					<value level="10">11809</value>
+					<value level="11">13122</value>
+					<value level="12">14580</value>
+					<value level="13">16200</value>
+					<value level="14">18000</value>
+					<value level="15">20000</value>
+					<value fromLevel="1" toLevel="15" fromSubLevel="1001" toSubLevel="1020">{base + (base / 100 * subIndex)}</value>
+				</power>
+			</effect>
+		</selfEffects>
 	</skill>
 	<skill id="11303" toLevel="1" name="Mass Servitor Magic Barrier">
 		<!-- Increases all servitor's M. Def. by 30% for 30 min. -->
@@ -2665,30 +2689,32 @@
 	<skill id="11359" toLevel="5" name="Summon Stone of Nature">
 		<!-- Summons a large magic stone that temporarily enhances party members. Those who are near the stone get the Arcane Protection buff which increases defense every 5 sec. <Arcane Protection>. For 15 sec. received damage -5%, received Skill Critical Rate -5%, Confusion Resistance +5, Debuff Resistance +5%, HP/ MP bonus +5%. Does not stack with Summon Elemental Stone. Consumes 10 Spirit Ore. -->
 		<icon>icon.skill11359</icon>
-		<itemConsumeCount>15</itemConsumeCount>
+		<itemConsumeCount>10</itemConsumeCount>
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<operateType>A1</operateType>
 		<targetType>GROUND</targetType>
 		<affectScope>SINGLE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<mpConsume>
-			<value level="1">137</value>
-			<value level="2">132</value>
-			<value level="3">137</value>
+			<value level="1">110</value>
+			<value level="2">115</value>
+			<value level="3">120</value>
+			<value level="4">125</value>
+			<value level="5">130</value>
 		</mpConsume>
 		<castRange>800</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>400000</reuseDelay>
+		<reuseDelay>120000</reuseDelay>
 		<effects>
 			<effect name="SummonNpc">
 				<npcId>
-					<value level="1">13423</value>
-					<value level="2">13424</value>
-					<value level="3">13425</value>
-					<value level="4">13425</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-					<value level="5">13425</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+					<value level="1">13425</value>
+					<value level="2">13470</value>
+					<value level="3">13626</value>
+					<value level="4">13627</value>
+					<value level="5">13628</value>
 				</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>30000</despawnDelay>
@@ -4804,7 +4830,7 @@
 				</power>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>-20</amount>
+				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceAttribute">

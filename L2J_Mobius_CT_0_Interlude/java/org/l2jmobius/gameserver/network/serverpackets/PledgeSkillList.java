@@ -16,6 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import java.util.Collection;
+
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -27,7 +29,7 @@ import org.l2jmobius.gameserver.network.ServerPackets;
  */
 public class PledgeSkillList extends ServerPacket
 {
-	private final Skill[] _skills;
+	private final Collection<Skill> _skills;
 	
 	public PledgeSkillList(Clan clan)
 	{
@@ -38,7 +40,7 @@ public class PledgeSkillList extends ServerPacket
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.PLEDGE_SKILL_LIST.writeId(this, buffer);
-		buffer.writeInt(_skills.length);
+		buffer.writeInt(_skills.size());
 		for (Skill sk : _skills)
 		{
 			buffer.writeInt(sk.getDisplayId());

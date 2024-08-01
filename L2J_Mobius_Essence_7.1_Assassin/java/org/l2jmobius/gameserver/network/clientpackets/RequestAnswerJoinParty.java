@@ -52,7 +52,7 @@ public class RequestAnswerJoinParty extends ClientPacket
 		}
 		request.setProcessing(true);
 		
-		final Player requestor = request.getActiveChar();
+		final Player requestor = request.getPlayer();
 		if (requestor == null)
 		{
 			return;

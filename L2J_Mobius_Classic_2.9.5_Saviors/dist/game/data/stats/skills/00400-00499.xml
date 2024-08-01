@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="400" toLevel="20" name="Tribunal">
 		<!-- Inflicts damage with 672 Power and greatly provokes the enemy. For 30 seconds, enemy's P. Critical Rate -20%. Requires a sword, blunt weapon, or dualsword. Over-hit. -->
@@ -2474,7 +2474,9 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
+			</effect>
 			<effect name="HealOverTime">
 				<power>60</power>
 				<ticks>1</ticks>
@@ -3289,14 +3291,14 @@
 				</armorType>
 			</effect>
 			<effect name="DefenceCriticalDamage">
-				<amount>-5</amount>
+				<amount>5</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
 			<effect name="DefenceCriticalRate">
-				<amount>-5</amount>
+				<amount>5</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>LIGHT</item>

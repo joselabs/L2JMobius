@@ -83,7 +83,7 @@ public class DeadPartyPledge implements IAffectScopeHandler
 				return true;
 			};
 			
-			// Affect object of origin since its skipped in the forEachVisibleObjectInRange method.
+			// Affect object of origin since it is skipped in the forEachVisibleObjectInRange method.
 			if (filter.test(playable))
 			{
 				action.accept(playable);

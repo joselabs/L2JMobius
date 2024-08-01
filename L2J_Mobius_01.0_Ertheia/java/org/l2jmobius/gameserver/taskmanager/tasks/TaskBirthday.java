@@ -26,6 +26,7 @@ import java.util.logging.Level;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.commons.util.TimeUtil;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.enums.MailType;
 import org.l2jmobius.gameserver.instancemanager.MailManager;
@@ -35,7 +36,6 @@ import org.l2jmobius.gameserver.taskmanager.Task;
 import org.l2jmobius.gameserver.taskmanager.TaskManager;
 import org.l2jmobius.gameserver.taskmanager.TaskManager.ExecutedTask;
 import org.l2jmobius.gameserver.taskmanager.TaskTypes;
-import org.l2jmobius.gameserver.util.Util;
 
 /**
  * @author Nyaran
@@ -63,7 +63,7 @@ public class TaskBirthday extends Task
 			lastExecDate.setTimeInMillis(lastActivation);
 		}
 		
-		final String rangeDate = "[" + Util.getDateString(lastExecDate.getTime()) + "] - [" + Util.getDateString(TODAY.getTime()) + "]";
+		final String rangeDate = "[" + TimeUtil.getDateString(lastExecDate.getTime()) + "] - [" + TimeUtil.getDateString(TODAY.getTime()) + "]";
 		for (; !TODAY.before(lastExecDate); lastExecDate.add(Calendar.DATE, 1))
 		{
 			checkBirthday(lastExecDate.get(Calendar.YEAR), lastExecDate.get(Calendar.MONTH), lastExecDate.get(Calendar.DATE));

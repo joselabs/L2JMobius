@@ -29,6 +29,7 @@ import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.data.xml.BeautyShopData;
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
+import org.l2jmobius.gameserver.data.xml.MableGameData;
 import org.l2jmobius.gameserver.data.xml.NewQuestData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.enums.CategoryType;
@@ -61,6 +62,7 @@ import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.EtcItemType;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
+import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.model.punishment.PunishmentAffect;
 import org.l2jmobius.gameserver.model.punishment.PunishmentType;
 import org.l2jmobius.gameserver.model.quest.Quest;
@@ -129,7 +131,9 @@ import org.l2jmobius.gameserver.network.serverpackets.enchant.challengepoint.ExE
 import org.l2jmobius.gameserver.network.serverpackets.friend.L2FriendList;
 import org.l2jmobius.gameserver.network.serverpackets.huntpass.HuntPassSimpleInfo;
 import org.l2jmobius.gameserver.network.serverpackets.limitshop.ExBloodyCoinCount;
+import org.l2jmobius.gameserver.network.serverpackets.mablegame.ExMableGameUILauncher;
 import org.l2jmobius.gameserver.network.serverpackets.magiclamp.ExMagicLampExpInfoUI;
+import org.l2jmobius.gameserver.network.serverpackets.olympiad.ExOlympiadInfo;
 import org.l2jmobius.gameserver.network.serverpackets.pledgedonation.ExPledgeContributionList;
 import org.l2jmobius.gameserver.network.serverpackets.quest.ExQuestDialog;
 import org.l2jmobius.gameserver.network.serverpackets.quest.ExQuestNotificationAll;
@@ -301,7 +305,6 @@ public class EnterWorld extends ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getCastle().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);
@@ -321,7 +324,6 @@ public class EnterWorld extends ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getFort().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);
@@ -685,6 +687,12 @@ public class EnterWorld extends ClientPacket
 			player.sendMessage("Experience gain is disabled.");
 		}
 		
+		// Send packet that olympiad is opened.
+		if (Config.OLYMPIAD_ENABLED && Olympiad.getInstance().inCompPeriod())
+		{
+			player.sendPacket(new ExOlympiadInfo(1, Olympiad.getInstance().getRemainingTime()));
+		}
+		
 		player.broadcastUserInfo();
 		
 		if (BeautyShopData.getInstance().hasBeautyData(player.getRace(), player.getAppearance().getSexType()))
@@ -798,6 +806,12 @@ public class EnterWorld extends ClientPacket
 		if ((leftHandItem != null) && ((leftHandItem.getItemType() == EtcItemType.ARROW) || (leftHandItem.getItemType() == EtcItemType.BOLT) || (leftHandItem.getItemType() == EtcItemType.ELEMENTAL_ORB)))
 		{
 			player.getInventory().unEquipItemInBodySlot(Inventory.PAPERDOLL_LHAND);
+		}
+		
+		// Mable event.
+		if (MableGameData.getInstance().isEnabled())
+		{
+			player.sendPacket(ExMableGameUILauncher.STATIC_PACKET);
 		}
 		
 		// World Trade.
@@ -927,6 +941,9 @@ public class EnterWorld extends ClientPacket
 		{
 			PcCafePointsManager.getInstance().run(player);
 		}
+		
+		// Remove variable used by hunting zone system.
+		player.getVariables().remove(PlayerVariables.LAST_HUNTING_ZONE_ID);
 	}
 	
 	/**

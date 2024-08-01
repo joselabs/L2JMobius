@@ -29,6 +29,7 @@ import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.data.xml.BeautyShopData;
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
 import org.l2jmobius.gameserver.data.xml.EnchantItemGroupsData;
+import org.l2jmobius.gameserver.data.xml.MableGameData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.IllegalActionPunishmentType;
@@ -121,6 +122,7 @@ import org.l2jmobius.gameserver.network.serverpackets.friend.L2FriendList;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExHomunculusPointInfo;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExHomunculusReady;
 import org.l2jmobius.gameserver.network.serverpackets.homunculus.ExShowHomunculusBirthInfo;
+import org.l2jmobius.gameserver.network.serverpackets.mablegame.ExMableGameUILauncher;
 import org.l2jmobius.gameserver.network.serverpackets.olympiad.ExOlympiadInfo;
 import org.l2jmobius.gameserver.network.serverpackets.settings.ExItemAnnounceSetting;
 import org.l2jmobius.gameserver.util.BuilderUtil;
@@ -287,7 +289,6 @@ public class EnterWorld extends ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getCastle().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);
@@ -307,7 +308,6 @@ public class EnterWorld extends ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getFort().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);
@@ -726,6 +726,12 @@ public class EnterWorld extends ClientPacket
 			player.getInventory().unEquipItemInBodySlot(Inventory.PAPERDOLL_LHAND);
 		}
 		
+		// Mable event.
+		if (MableGameData.getInstance().isEnabled())
+		{
+			player.sendPacket(ExMableGameUILauncher.STATIC_PACKET);
+		}
+		
 		if (Config.ENABLE_ATTENDANCE_REWARDS)
 		{
 			ThreadPool.schedule(() ->
@@ -847,6 +853,9 @@ public class EnterWorld extends ClientPacket
 		{
 			PcCafePointsManager.getInstance().run(player);
 		}
+		
+		// Remove variable used by hunting zone system.
+		player.getVariables().remove(PlayerVariables.LAST_HUNTING_ZONE_ID);
 	}
 	
 	/**

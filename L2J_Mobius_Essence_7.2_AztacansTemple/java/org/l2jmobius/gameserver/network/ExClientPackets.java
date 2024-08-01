@@ -48,6 +48,8 @@ import org.l2jmobius.gameserver.network.clientpackets.balok.ExBalrogWarTeleport;
 import org.l2jmobius.gameserver.network.clientpackets.blessing.RequestBlessOptionCancel;
 import org.l2jmobius.gameserver.network.clientpackets.blessing.RequestBlessOptionEnchant;
 import org.l2jmobius.gameserver.network.clientpackets.blessing.RequestBlessOptionPutItem;
+import org.l2jmobius.gameserver.network.clientpackets.captcha.RequestCaptchaAnswer;
+import org.l2jmobius.gameserver.network.clientpackets.captcha.RequestRefreshCaptcha;
 import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExCastleWarObserverStart;
 import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExMercenaryCastleWarCastleSiegeAttackerList;
 import org.l2jmobius.gameserver.network.clientpackets.castlewar.ExMercenaryCastleWarCastleSiegeDefenderList;
@@ -65,6 +67,7 @@ import org.l2jmobius.gameserver.network.clientpackets.collection.RequestCollecti
 import org.l2jmobius.gameserver.network.clientpackets.collection.RequestCollectionUpdateFavorite;
 import org.l2jmobius.gameserver.network.clientpackets.collection.RequestExCollectionList;
 import org.l2jmobius.gameserver.network.clientpackets.collection.RequestExCollectionOpenUI;
+import org.l2jmobius.gameserver.network.clientpackets.collection.RequestExCollectionSummary;
 import org.l2jmobius.gameserver.network.clientpackets.commission.RequestCommissionBuyInfo;
 import org.l2jmobius.gameserver.network.clientpackets.commission.RequestCommissionBuyItem;
 import org.l2jmobius.gameserver.network.clientpackets.commission.RequestCommissionCancel;
@@ -119,6 +122,11 @@ import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockDetailI
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestBlockMemo;
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestFriendDetailInfo;
 import org.l2jmobius.gameserver.network.clientpackets.friend.RequestUpdateFriendMemo;
+import org.l2jmobius.gameserver.network.clientpackets.gacha.ExUniqueGachaGame;
+import org.l2jmobius.gameserver.network.clientpackets.gacha.ExUniqueGachaHistory;
+import org.l2jmobius.gameserver.network.clientpackets.gacha.ExUniqueGachaInvenGetItem;
+import org.l2jmobius.gameserver.network.clientpackets.gacha.ExUniqueGachaInvenItemList;
+import org.l2jmobius.gameserver.network.clientpackets.gacha.ExUniqueGachaOpen;
 import org.l2jmobius.gameserver.network.clientpackets.huntingzones.ExTimedHuntingZoneEnter;
 import org.l2jmobius.gameserver.network.clientpackets.huntingzones.ExTimedHuntingZoneLeave;
 import org.l2jmobius.gameserver.network.clientpackets.huntingzones.ExTimedHuntingZoneList;
@@ -131,6 +139,11 @@ import org.l2jmobius.gameserver.network.clientpackets.limitshop.RequestPurchaseL
 import org.l2jmobius.gameserver.network.clientpackets.limitshop.RequestPurchaseLimitShopItemList;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGamePlay;
 import org.l2jmobius.gameserver.network.clientpackets.luckygame.RequestLuckyGameStartInfo;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameClose;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameOpen;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGamePopupOk;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameReset;
+import org.l2jmobius.gameserver.network.clientpackets.mablegame.ExRequestMableGameRollDice;
 import org.l2jmobius.gameserver.network.clientpackets.magiclamp.ExMagicLampGameInfo;
 import org.l2jmobius.gameserver.network.clientpackets.magiclamp.ExMagicLampGameStart;
 import org.l2jmobius.gameserver.network.clientpackets.mentoring.ConfirmMenteeAdd;
@@ -152,6 +165,12 @@ import org.l2jmobius.gameserver.network.clientpackets.newskillenchant.RequestExS
 import org.l2jmobius.gameserver.network.clientpackets.newskillenchant.RequestExSkillEnchantInfo;
 import org.l2jmobius.gameserver.network.clientpackets.newskillenchant.RequestExSpExtractInfo;
 import org.l2jmobius.gameserver.network.clientpackets.newskillenchant.RequestExSpExtractItem;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.OlympiadMatchMaking;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.OlympiadMatchMakingCancel;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.OlympiadUI;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.RequestExOlympiadMatchListRefresh;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.RequestOlympiadMatchList;
+import org.l2jmobius.gameserver.network.clientpackets.olympiad.RequestOlympiadObserverEnd;
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExEvolvePet;
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExPetEquipItem;
 import org.l2jmobius.gameserver.network.clientpackets.pet.ExPetUnequipItem;
@@ -532,8 +551,8 @@ public enum ExClientPackets
 	REQUEST_VIP_LUCKY_GAME_ITEM_LIST(0x10B, null, ConnectionState.IN_GAME),
 	REQUEST_VIP_LUCKY_GAME_BONUS(0x10C, null, ConnectionState.IN_GAME),
 	EX_REQUEST_VIP_INFO(0x10D, ExRequestVipInfo::new, ConnectionState.IN_GAME),
-	REQUEST_CAPTCHA_ANSWER(0x10E, null, ConnectionState.IN_GAME),
-	REQUEST_REFRESH_CAPTCHA_IMAGE(0x10F, null, ConnectionState.IN_GAME),
+	REQUEST_CAPTCHA_ANSWER(0x10E, RequestCaptchaAnswer::new, ConnectionState.IN_GAME),
+	REQUEST_REFRESH_CAPTCHA_IMAGE(0x10F, RequestRefreshCaptcha::new, ConnectionState.IN_GAME),
 	REQUEST_PLEDGE_SIGN_IN_FOR_OPEN_JOINING_METHOD(0x110, RequestPledgeSignInForOpenJoiningMethod::new, ConnectionState.IN_GAME),
 	EX_REQUEST_MATCH_ARENA(0x111, null, ConnectionState.IN_GAME),
 	EX_CONFIRM_MATCH_ARENA(0x112, null, ConnectionState.IN_GAME),
@@ -639,8 +658,8 @@ public enum ExClientPackets
 	EX_PAYBACK_LIST(0x174, null, ConnectionState.IN_GAME),
 	EX_PAYBACK_GIVE_REWARD(0x175, null, ConnectionState.IN_GAME),
 	EX_AUTOPLAY_SETTING(0x176, ExAutoPlaySetting::new, ConnectionState.IN_GAME),
-	EX_OLYMPIAD_MATCH_MAKING(0x177, null, ConnectionState.IN_GAME),
-	EX_OLYMPIAD_MATCH_MAKING_CANCEL(0x178, null, ConnectionState.IN_GAME),
+	EX_OLYMPIAD_MATCH_MAKING(0x177, OlympiadMatchMaking::new, ConnectionState.IN_GAME),
+	EX_OLYMPIAD_MATCH_MAKING_CANCEL(0x178, OlympiadMatchMakingCancel::new, ConnectionState.IN_GAME),
 	EX_FESTIVAL_BM_INFO(0x179, null, ConnectionState.IN_GAME),
 	EX_FESTIVAL_BM_GAME(0x17A, null, ConnectionState.IN_GAME),
 	EX_GACHA_SHOP_INFO(0x17B, null, ConnectionState.IN_GAME),
@@ -680,7 +699,7 @@ public enum ExClientPackets
 	EX_CRAFT_RANDOM_MAKE(0x19D, ExRequestRandomCraftMake::new, ConnectionState.IN_GAME),
 	EX_MULTI_SELL_LIST(0x19E, RequestMultisellList::new, ConnectionState.IN_GAME),
 	EX_SAVE_ITEM_ANNOUNCE_SETTING(0x19F, ExSaveItemAnnounceSetting::new, ConnectionState.IN_GAME),
-	EX_OLYMPIAD_UI(0x1A0, null, ConnectionState.IN_GAME),
+	EX_OLYMPIAD_UI(0x1A0, OlympiadUI::new, ConnectionState.IN_GAME),
 	// 270
 	EX_SHARED_POSITION_SHARING_UI(0x1A1, ExRequestSharingLocationUi::new, ConnectionState.IN_GAME),
 	EX_SHARED_POSITION_TELEPORT_UI(0x1A2, ExRequestSharedLocationTeleportUi::new, ConnectionState.IN_GAME),
@@ -706,11 +725,11 @@ public enum ExClientPackets
 	EX_DPSVR(0x1B6, null, ConnectionState.IN_GAME),
 	EX_TENPROTECT_DECRYPT_ERROR(0x1B7, null, ConnectionState.IN_GAME),
 	EX_NET_LATENCY(0x1B8, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_OPEN(0x1B9, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_ROLL_DICE(0x1BA, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_POPUP_OK(0x1BB, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_RESET(0x1BC, null, ConnectionState.IN_GAME),
-	EX_MABLE_GAME_CLOSE(0x1BD, null, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_OPEN(0x1B9, ExRequestMableGameOpen::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_ROLL_DICE(0x1BA, ExRequestMableGameRollDice::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_POPUP_OK(0x1BB, ExRequestMableGamePopupOk::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_RESET(0x1BC, ExRequestMableGameReset::new, ConnectionState.IN_GAME),
+	EX_MABLE_GAME_CLOSE(0x1BD, ExRequestMableGameClose::new, ConnectionState.IN_GAME),
 	EX_RETURN_TO_ORIGIN(0x1BE, null, ConnectionState.IN_GAME),
 	EX_PK_PENALTY_LIST(0x1BF, null, ConnectionState.IN_GAME),
 	EX_PK_PENALTY_LIST_ONLY_LOC(0x1C0, null, ConnectionState.IN_GAME),
@@ -745,7 +764,7 @@ public enum ExClientPackets
 	EX_COLLECTION_LIST(0x1DC, RequestExCollectionList::new, ConnectionState.IN_GAME),
 	EX_COLLECTION_UPDATE_FAVORITE(0x1DD, RequestCollectionUpdateFavorite::new, ConnectionState.IN_GAME),
 	EX_COLLECTION_FAVORITE_LIST(0x1DE, RequestCollectionFavoriteList::new, ConnectionState.IN_GAME),
-	EX_COLLECTION_SUMMARY(0x1DF, null, ConnectionState.IN_GAME),
+	EX_COLLECTION_SUMMARY(0x1DF, RequestExCollectionSummary::new, ConnectionState.IN_GAME),
 	EX_COLLECTION_REGISTER(0x1E0, RequestCollectionRegister::new, ConnectionState.IN_GAME),
 	EX_COLLECTION_RECEIVE_REWARD(0x1E1, RequestCollectionReceiveReward::new, ConnectionState.IN_GAME),
 	EX_PVPBOOK_SHARE_REVENGE_LIST(0x1E2, RequestExPvpBookShareRevengeList::new, ConnectionState.IN_GAME),
@@ -875,11 +894,11 @@ public enum ExClientPackets
 	EX_PRISON_USER_DONATION(0x25B, null, ConnectionState.IN_GAME),
 	// 414
 	EX_TRADE_LIMIT_INFO(0x25C, null, ConnectionState.IN_GAME),
-	EX_UNIQUE_GACHA_OPEN(0x25D, null, ConnectionState.IN_GAME),
-	EX_UNIQUE_GACHA_GAME(0x25E, null, ConnectionState.IN_GAME),
-	EX_UNIQUE_GACHA_INVEN_ITEM_LIST(0x25F, null, ConnectionState.IN_GAME),
-	EX_UNIQUE_GACHA_INVEN_GET_ITEM(0x260, null, ConnectionState.IN_GAME),
-	EX_UNIQUE_GACHA_HISTORY(0x261, null, ConnectionState.IN_GAME),
+	EX_UNIQUE_GACHA_OPEN(0x25D, ExUniqueGachaOpen::new, ConnectionState.IN_GAME),
+	EX_UNIQUE_GACHA_GAME(0x25E, ExUniqueGachaGame::new, ConnectionState.IN_GAME),
+	EX_UNIQUE_GACHA_INVEN_ITEM_LIST(0x25F, ExUniqueGachaInvenItemList::new, ConnectionState.IN_GAME),
+	EX_UNIQUE_GACHA_INVEN_GET_ITEM(0x260, ExUniqueGachaInvenGetItem::new, ConnectionState.IN_GAME),
+	EX_UNIQUE_GACHA_HISTORY(0x261, ExUniqueGachaHistory::new, ConnectionState.IN_GAME),
 	EX_SET_PLEDGE_CREST_PRESET(0x262, RequestSetPledgeCrestPreset::new, ConnectionState.IN_GAME),
 	EX_GET_PLEDGE_CREST_PRESET(0x263, RequestGetPledgeCrestPreset::new, ConnectionState.IN_GAME),
 	EX_DUAL_INVENTORY_SWAP(0x264, RequestExDualInventorySwap::new, ConnectionState.IN_GAME),

@@ -24,9 +24,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
 import org.l2jmobius.gameserver.model.CharSelectInfoPackage;
@@ -278,7 +278,18 @@ public class CharSelectionInfo extends ServerPacket
 						if (Config.OFFLINE_DISCONNECT_SAME_ACCOUNT)
 						{
 							final Player player = World.getInstance().getPlayer(charInfopackage.getObjectId());
-							if (player != null)
+							if ((player != null) && player.isInStoreMode())
+							{
+								Disconnection.of(player).storeMe().deleteMe();
+								continue;
+							}
+						}
+						
+						// Disconnect offline play.
+						if (Config.OFFLINE_PLAY_DISCONNECT_SAME_ACCOUNT)
+						{
+							final Player player = World.getInstance().getPlayer(charInfopackage.getObjectId());
+							if ((player != null) && player.isOfflinePlay())
 							{
 								Disconnection.of(player).storeMe().deleteMe();
 							}

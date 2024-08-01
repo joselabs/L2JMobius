@@ -74,6 +74,7 @@ import org.l2jmobius.gameserver.model.events.impl.item.OnItemBypassEvent;
 import org.l2jmobius.gameserver.model.events.impl.item.OnItemTalk;
 import org.l2jmobius.gameserver.model.holders.AgathionSkillHolder;
 import org.l2jmobius.gameserver.model.holders.ArmorsetSkillHolder;
+import org.l2jmobius.gameserver.model.holders.PreparedMultisellListHolder;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.item.Armor;
 import org.l2jmobius.gameserver.model.item.EtcItem;
@@ -290,11 +291,21 @@ public class Item extends WorldObject
 	 */
 	public void pickupMe(Creature creature)
 	{
-		final WorldRegion oldregion = getWorldRegion();
+		// Prevent dropping and picking up items while using MaintainEnchantment multisells.
+		if (creature.isPlayer())
+		{
+			final Player player = creature.getActingPlayer();
+			final PreparedMultisellListHolder multisell = player.getMultiSell();
+			if ((multisell != null) && multisell.isMaintainEnchantment())
+			{
+				player.setMultiSell(null);
+			}
+		}
 		
 		// Create a server->client GetItem packet to pick up the Item
 		creature.broadcastPacket(new GetItem(this, creature.getObjectId()));
 		
+		final WorldRegion oldregion = getWorldRegion();
 		synchronized (this)
 		{
 			setSpawned(false);
@@ -385,7 +396,7 @@ public class Item extends WorldObject
 			String referenceName = "no-reference";
 			if (reference instanceof WorldObject)
 			{
-				referenceName = (((WorldObject) reference).getName() != null ? ((WorldObject) reference).getName() : "no-name");
+				referenceName = ((WorldObject) reference).getName() != null ? ((WorldObject) reference).getName() : "no-name";
 			}
 			else if (reference instanceof String)
 			{
@@ -586,7 +597,7 @@ public class Item extends WorldObject
 			String referenceName = "no-reference";
 			if (reference instanceof WorldObject)
 			{
-				referenceName = (((WorldObject) reference).getName() != null ? ((WorldObject) reference).getName() : "no-name");
+				referenceName = ((WorldObject) reference).getName() != null ? ((WorldObject) reference).getName() : "no-name";
 			}
 			else if (reference instanceof String)
 			{
@@ -713,7 +724,7 @@ public class Item extends WorldObject
 	 */
 	public boolean isEtcItem()
 	{
-		return (_itemTemplate instanceof EtcItem);
+		return _itemTemplate instanceof EtcItem;
 	}
 	
 	/**
@@ -721,7 +732,7 @@ public class Item extends WorldObject
 	 */
 	public boolean isWeapon()
 	{
-		return (_itemTemplate instanceof Weapon);
+		return _itemTemplate instanceof Weapon;
 	}
 	
 	/**
@@ -729,7 +740,7 @@ public class Item extends WorldObject
 	 */
 	public boolean isArmor()
 	{
-		return (_itemTemplate instanceof Armor);
+		return _itemTemplate instanceof Armor;
 	}
 	
 	/**
@@ -840,11 +851,22 @@ public class Item extends WorldObject
 	 */
 	public boolean isDropable()
 	{
-		if (Config.ALT_ALLOW_AUGMENT_TRADE && isAugmented())
+		if (!_itemTemplate.isDropable())
 		{
-			return true;
+			return false;
 		}
-		return !isAugmented() && (getVisualId() == 0) && _itemTemplate.isDropable();
+		
+		if (isEquipable() && (getTransmogId() > 0))
+		{
+			return false;
+		}
+		
+		if (isAugmented())
+		{
+			return Config.ALT_ALLOW_AUGMENT_TRADE;
+		}
+		
+		return getVisualId() == 0;
 	}
 	
 	/**
@@ -853,11 +875,17 @@ public class Item extends WorldObject
 	 */
 	public boolean isDestroyable()
 	{
-		if (!Config.ALT_ALLOW_AUGMENT_DESTROY && isAugmented())
+		if (!_itemTemplate.isDestroyable())
 		{
 			return false;
 		}
-		return _itemTemplate.isDestroyable();
+		
+		if (isAugmented())
+		{
+			return Config.ALT_ALLOW_AUGMENT_DESTROY;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -866,11 +894,22 @@ public class Item extends WorldObject
 	 */
 	public boolean isTradeable()
 	{
-		if (Config.ALT_ALLOW_AUGMENT_TRADE && isAugmented())
+		if (!_itemTemplate.isTradeable())
 		{
-			return true;
+			return false;
 		}
-		return !isAugmented() && _itemTemplate.isTradeable();
+		
+		if (isEquipable() && (getTransmogId() > 0))
+		{
+			return false;
+		}
+		
+		if (isAugmented())
+		{
+			return Config.ALT_ALLOW_AUGMENT_TRADE;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -879,11 +918,22 @@ public class Item extends WorldObject
 	 */
 	public boolean isSellable()
 	{
-		if (Config.ALT_ALLOW_AUGMENT_TRADE && isAugmented())
+		if (!_itemTemplate.isSellable())
 		{
-			return true;
+			return false;
 		}
-		return !isAugmented() && _itemTemplate.isSellable();
+		
+		if (isEquipable() && (getTransmogId() > 0))
+		{
+			return false;
+		}
+		
+		if (isAugmented())
+		{
+			return Config.ALT_ALLOW_AUGMENT_TRADE;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -892,16 +942,16 @@ public class Item extends WorldObject
 	 */
 	public boolean isDepositable(boolean isPrivateWareHouse)
 	{
-		// equipped, hero and quest items
-		if (isEquipped() || !_itemTemplate.isDepositable())
+		if (!_itemTemplate.isDepositable() || isEquipped())
 		{
 			return false;
 		}
-		// augmented not tradeable
+		
 		if (!isPrivateWareHouse && (!isTradeable() || isShadowItem()))
 		{
 			return false;
 		}
+		
 		return true;
 	}
 	
@@ -1044,7 +1094,7 @@ public class Item extends WorldObject
 		applyEnchantStats();
 		_storedInDb = false;
 		
-		getActingPlayer().getInventory().getPaperdollCache().clearMaxSetEnchant();
+		getActingPlayer().getInventory().getPaperdollCache().clearArmorSetEnchant();
 	}
 	
 	/**
@@ -1406,7 +1456,7 @@ public class Item extends WorldObject
 	 */
 	public boolean isShadowItem()
 	{
-		return (_mana >= 0);
+		return _mana >= 0;
 	}
 	
 	/**
@@ -1458,80 +1508,85 @@ public class Item extends WorldObject
 		}
 		
 		final Player player = getActingPlayer();
-		if (player != null)
+		if (player == null)
 		{
-			SystemMessage sm;
-			switch (_mana)
+			return;
+		}
+		
+		SystemMessage sm;
+		switch (_mana)
+		{
+			case 10:
 			{
-				case 10:
-				{
-					sm = new SystemMessage(SystemMessageId.S1_S_REMAINING_MANA_IS_NOW_10);
-					sm.addItemName(_itemTemplate);
-					player.sendPacket(sm);
-					break;
-				}
-				case 5:
-				{
-					sm = new SystemMessage(SystemMessageId.S1_S_REMAINING_MANA_IS_NOW_5);
-					sm.addItemName(_itemTemplate);
-					player.sendPacket(sm);
-					break;
-				}
-				case 1:
-				{
-					sm = new SystemMessage(SystemMessageId.S1_S_REMAINING_MANA_IS_NOW_1_IT_WILL_DISAPPEAR_SOON);
-					sm.addItemName(_itemTemplate);
-					player.sendPacket(sm);
-					break;
-				}
-			}
-			
-			if (_mana == 0) // The life time has expired
-			{
-				sm = new SystemMessage(SystemMessageId.S1_S_REMAINING_MANA_IS_NOW_0_AND_THE_ITEM_HAS_DISAPPEARED);
+				sm = new SystemMessage(SystemMessageId.S1_S_REMAINING_MANA_IS_NOW_10);
 				sm.addItemName(_itemTemplate);
 				player.sendPacket(sm);
+				break;
+			}
+			case 5:
+			{
+				sm = new SystemMessage(SystemMessageId.S1_S_REMAINING_MANA_IS_NOW_5);
+				sm.addItemName(_itemTemplate);
+				player.sendPacket(sm);
+				break;
+			}
+			case 1:
+			{
+				sm = new SystemMessage(SystemMessageId.S1_S_REMAINING_MANA_IS_NOW_1_IT_WILL_DISAPPEAR_SOON);
+				sm.addItemName(_itemTemplate);
+				player.sendPacket(sm);
+				break;
+			}
+		}
+		
+		if (_mana == 0) // The life time has expired.
+		{
+			sm = new SystemMessage(SystemMessageId.S1_S_REMAINING_MANA_IS_NOW_0_AND_THE_ITEM_HAS_DISAPPEARED);
+			sm.addItemName(_itemTemplate);
+			player.sendPacket(sm);
+			
+			// Unequip.
+			if (isEquipped())
+			{
+				final InventoryUpdate iu = new InventoryUpdate();
+				for (Item item : player.getInventory().unEquipItemInSlotAndRecord(getLocationSlot()))
+				{
+					iu.addModifiedItem(item);
+				}
+				player.sendInventoryUpdate(iu);
+				player.broadcastUserInfo();
+			}
+			
+			if (_loc != ItemLocation.WAREHOUSE)
+			{
+				// Destroy.
+				player.getInventory().destroyItem("Item", this, player, null);
 				
-				// unequip
-				if (isEquipped())
-				{
-					final InventoryUpdate iu = new InventoryUpdate();
-					for (Item item : player.getInventory().unEquipItemInSlotAndRecord(getLocationSlot()))
-					{
-						iu.addModifiedItem(item);
-					}
-					player.sendInventoryUpdate(iu);
-					player.broadcastUserInfo();
-				}
-				
-				if (_loc != ItemLocation.WAREHOUSE)
-				{
-					// destroy
-					player.getInventory().destroyItem("Item", this, player, null);
-					
-					// send update
-					final InventoryUpdate iu = new InventoryUpdate();
-					iu.addRemovedItem(this);
-					player.sendInventoryUpdate(iu);
-				}
-				else
-				{
-					player.getWarehouse().destroyItem("Item", this, player, null);
-				}
+				// Send update.
+				final InventoryUpdate iu = new InventoryUpdate();
+				iu.addRemovedItem(this);
+				player.sendInventoryUpdate(iu);
 			}
 			else
 			{
-				// Reschedule if still equipped
-				if (!_consumingMana && isEquipped())
-				{
-					scheduleConsumeManaTask();
-				}
-				if (_loc != ItemLocation.WAREHOUSE)
-				{
-					final InventoryUpdate iu = new InventoryUpdate();
-					iu.addModifiedItem(this);
-					player.sendInventoryUpdate(iu);
-				}
+				player.getWarehouse().destroyItem("Item", this, player, null);
+			}
+			
+			// Delete from world.
+			World.getInstance().removeObject(this);
+		}
+		else
+		{
+			// Reschedule if still equipped.
+			if (!_consumingMana && isEquipped())
+			{
+				scheduleConsumeManaTask();
+			}
+			if (_loc != ItemLocation.WAREHOUSE)
+			{
+				final InventoryUpdate iu = new InventoryUpdate();
+				iu.addModifiedItem(this);
+				player.sendInventoryUpdate(iu);
 			}
 		}
 	}
@@ -1566,7 +1621,7 @@ public class Item extends WorldObject
 	
 	/**
 	 * Updates the database.
-	 * @param force if the update should necessarilly be done.
+	 * @param force if the update should necessarily be done.
 	 */
 	public void updateDatabase(boolean force)
 	{
@@ -1921,34 +1976,39 @@ public class Item extends WorldObject
 	public void endOfLife()
 	{
 		final Player player = getActingPlayer();
-		if (player != null)
+		if (player == null)
 		{
-			if (isEquipped())
-			{
-				final InventoryUpdate iu = new InventoryUpdate();
-				for (Item item : player.getInventory().unEquipItemInSlotAndRecord(getLocationSlot()))
-				{
-					iu.addModifiedItem(item);
-				}
-				player.sendInventoryUpdate(iu);
-			}
-			
-			if (_loc != ItemLocation.WAREHOUSE)
-			{
-				// destroy
-				player.getInventory().destroyItem("Item", this, player, null);
-				
-				// send update
-				final InventoryUpdate iu = new InventoryUpdate();
-				iu.addRemovedItem(this);
-				player.sendInventoryUpdate(iu);
-			}
-			else
-			{
-				player.getWarehouse().destroyItem("Item", this, player, null);
-			}
-			player.sendPacket(new SystemMessage(SystemMessageId.S1_HAS_EXPIRED).addItemName(_itemId));
+			return;
 		}
+		
+		if (isEquipped())
+		{
+			final InventoryUpdate iu = new InventoryUpdate();
+			for (Item item : player.getInventory().unEquipItemInSlotAndRecord(getLocationSlot()))
+			{
+				iu.addModifiedItem(item);
+			}
+			player.sendInventoryUpdate(iu);
+		}
+		
+		if (_loc != ItemLocation.WAREHOUSE)
+		{
+			// Destroy.
+			player.getInventory().destroyItem("Item", this, player, null);
+			
+			// Send update.
+			final InventoryUpdate iu = new InventoryUpdate();
+			iu.addRemovedItem(this);
+			player.sendInventoryUpdate(iu);
+		}
+		else
+		{
+			player.getWarehouse().destroyItem("Item", this, player, null);
+		}
+		player.sendPacket(new SystemMessage(SystemMessageId.S1_HAS_EXPIRED).addItemName(_itemId));
+		
+		// Delete from world.
+		World.getInstance().removeObject(this);
 	}
 	
 	public void scheduleLifeTimeTask()
@@ -2049,16 +2109,16 @@ public class Item extends WorldObject
 		{
 			if (_itemTemplate.isWeapon())
 			{
-				if ((Config.ALT_OLY_WEAPON_ENCHANT_LIMIT >= 0) && (enchant > Config.ALT_OLY_WEAPON_ENCHANT_LIMIT))
+				if ((Config.OLYMPIAD_WEAPON_ENCHANT_LIMIT >= 0) && (enchant > Config.OLYMPIAD_WEAPON_ENCHANT_LIMIT))
 				{
-					enchant = Config.ALT_OLY_WEAPON_ENCHANT_LIMIT;
+					enchant = Config.OLYMPIAD_WEAPON_ENCHANT_LIMIT;
 				}
 			}
 			else
 			{
-				if ((Config.ALT_OLY_ARMOR_ENCHANT_LIMIT >= 0) && (enchant > Config.ALT_OLY_ARMOR_ENCHANT_LIMIT))
+				if ((Config.OLYMPIAD_ARMOR_ENCHANT_LIMIT >= 0) && (enchant > Config.OLYMPIAD_ARMOR_ENCHANT_LIMIT))
 				{
-					enchant = Config.ALT_OLY_ARMOR_ENCHANT_LIMIT;
+					enchant = Config.OLYMPIAD_ARMOR_ENCHANT_LIMIT;
 				}
 			}
 		}
@@ -2151,27 +2211,29 @@ public class Item extends WorldObject
 	 */
 	public void onBypassFeedback(Player player, String command)
 	{
-		if (command.startsWith("Quest"))
+		if (!command.startsWith("Quest"))
 		{
-			final String questName = command.substring(6);
-			String event = null;
-			final int idx = questName.indexOf(' ');
-			if (idx > 0)
+			return;
+		}
+		
+		final String questName = command.substring(6);
+		String event = null;
+		final int idx = questName.indexOf(' ');
+		if (idx > 0)
+		{
+			event = questName.substring(idx).trim();
+		}
+		
+		if (event != null)
+		{
+			if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_BYPASS_EVENT, getTemplate()))
 			{
-				event = questName.substring(idx).trim();
+				EventDispatcher.getInstance().notifyEventAsync(new OnItemBypassEvent(this, player, event), getTemplate());
 			}
-			
-			if (event != null)
-			{
-				if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_BYPASS_EVENT, getTemplate()))
-				{
-					EventDispatcher.getInstance().notifyEventAsync(new OnItemBypassEvent(this, player, event), getTemplate());
-				}
-			}
-			else if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_TALK, getTemplate()))
-			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnItemTalk(this, player), getTemplate());
-			}
+		}
+		else if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_TALK, getTemplate()))
+		{
+			EventDispatcher.getInstance().notifyEventAsync(new OnItemTalk(this, player), getTemplate());
 		}
 	}
 	
@@ -2186,6 +2248,7 @@ public class Item extends WorldObject
 		{
 			return op.getOptions();
 		}
+		
 		return DEFAULT_ENCHANT_OPTIONS;
 	}
 	
@@ -2653,7 +2716,7 @@ public class Item extends WorldObject
 					boolean update = false;
 					for (ArmorSet armorSet : ArmorSetData.getInstance().getSets(stone.getVisualId()))
 					{
-						if ((armorSet.getPiecesCount(player, Item::getVisualId) - 1 /* not removed yet */) < armorSet.getMinimumPieces())
+						if ((armorSet.getPieceCount(player, Item::getVisualId) - 1 /* not removed yet */) < armorSet.getMinimumPieces())
 						{
 							for (ArmorsetSkillHolder holder : armorSet.getSkills())
 							{
@@ -2696,7 +2759,7 @@ public class Item extends WorldObject
 					boolean updateTimeStamp = false;
 					for (ArmorSet armorSet : ArmorSetData.getInstance().getSets(stone.getVisualId()))
 					{
-						if (armorSet.getPiecesCount(player, Item::getVisualId) >= armorSet.getMinimumPieces())
+						if (armorSet.getPieceCount(player, Item::getVisualId) >= armorSet.getMinimumPieces())
 						{
 							for (ArmorsetSkillHolder holder : armorSet.getSkills())
 							{
@@ -2750,6 +2813,28 @@ public class Item extends WorldObject
 				}
 			}
 		}
+	}
+	
+	public int getTransmogId()
+	{
+		if (!Config.ENABLE_TRANSMOG)
+		{
+			return 0;
+		}
+		
+		return getVariables().getInt(ItemVariables.TRANSMOG_ID, 0);
+	}
+	
+	public void setTransmogId(int transmogId)
+	{
+		getVariables().set(ItemVariables.TRANSMOG_ID, transmogId);
+		getVariables().storeMe();
+	}
+	
+	public void removeTransmog()
+	{
+		getVariables().remove(ItemVariables.TRANSMOG_ID);
+		getVariables().storeMe();
 	}
 	
 	/**

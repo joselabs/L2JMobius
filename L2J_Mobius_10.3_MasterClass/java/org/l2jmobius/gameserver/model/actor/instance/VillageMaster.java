@@ -283,7 +283,9 @@ public class VillageMaster extends Folk
 		}
 		if (clan.getDissolvingExpiryTime() > System.currentTimeMillis())
 		{
-			player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_THE_DISSOLUTION_OF_S1_CLAN);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_THE_DISSOLUTION_OF_S1_CLAN);
+			sm.addString(clan.getName());
+			player.sendPacket(sm);
 			return;
 		}
 		

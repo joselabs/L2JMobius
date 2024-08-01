@@ -191,7 +191,7 @@ public class TransformTemplate
 	/**
 	 * @param type the slot type for where to search defense.
 	 * @param defaultValue value to be used if no value for the type is found.
-	 * @return altered value if its present, or {@code defaultValue} if no such type is assigned to this template.
+	 * @return altered value if it is present, or {@code defaultValue} if no such type is assigned to this template.
 	 */
 	public int getDefense(int type, int defaultValue)
 	{
@@ -210,7 +210,7 @@ public class TransformTemplate
 	/**
 	 * @param stat the Stat value to search for.
 	 * @param defaultValue value to be used if no such stat is found.
-	 * @return altered stat if its present, or {@code defaultValue} if no such stat is assigned to this template.
+	 * @return altered stat if it is present, or {@code defaultValue} if no such stat is assigned to this template.
 	 */
 	public double getStats(Stat stat, double defaultValue)
 	{

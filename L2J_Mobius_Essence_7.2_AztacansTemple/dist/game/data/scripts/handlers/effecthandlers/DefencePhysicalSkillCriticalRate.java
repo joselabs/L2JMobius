@@ -26,6 +26,6 @@ public class DefencePhysicalSkillCriticalRate extends AbstractStatEffect
 {
 	public DefencePhysicalSkillCriticalRate(StatSet params)
 	{
-		super(params, Stat.DEFENCE_PHYSICAL_SKILL_CRITICAL_RATE, Stat.DEFENCE_PHYSICAL_SKILL_CRITICAL_RATE_ADD);
+		super(params, Stat.DEFENCE_PHYSICAL_SKILL_CRITICAL_RATE, Stat.DEFENCE_PHYSICAL_SKILL_CRITICAL_RATE_ADD, true);
 	}
 }

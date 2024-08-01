@@ -43,12 +43,19 @@ public class RequestWithDrawalParty extends ClientPacket
 		final Party party = player.getParty();
 		if (party != null)
 		{
-			party.removePartyMember(player, PartyMessageType.LEFT);
-			
-			final MatchingRoom room = player.getMatchingRoom();
-			if (room != null)
+			if (party.isInDimensionalRift() && !party.getDimensionalRift().getRevivedAtWaitingRoom().contains(player))
 			{
-				room.deleteMember(player, false);
+				player.sendMessage("You can't exit party when you are in Dimensional Rift.");
+			}
+			else
+			{
+				party.removePartyMember(player, PartyMessageType.LEFT);
+				
+				final MatchingRoom room = player.getMatchingRoom();
+				if (room != null)
+				{
+					room.deleteMember(player, false);
+				}
 			}
 		}
 	}

@@ -69,19 +69,36 @@ public class Q10416_TaygaTheLeaderOfSelMahum1 extends Quest
 			}
 			case "TELEPORT":
 			{
-				final QuestState questState = getQuestState(player, false);
+				QuestState questState = getQuestState(player, false);
 				if (questState == null)
 				{
+					if (!canStartQuest(player))
+					{
+						break;
+					}
+					
+					questState = getQuestState(player, true);
+					
+					final NewQuestLocation questLocation = getQuestData().getLocation();
+					if (questLocation.getStartLocationId() > 0)
+					{
+						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getStartLocationId()).getLocation();
+						if (teleportToQuestLocation(player, location))
+						{
+							questState.setCond(QuestCondType.ACT);
+							sendAcceptDialog(player);
+						}
+					}
 					break;
 				}
 				
 				final NewQuestLocation questLocation = getQuestData().getLocation();
 				if (questState.isCond(QuestCondType.STARTED))
 				{
-					if (questLocation.getStartLocationId() > 0)
+					if (questLocation.getQuestLocationId() > 0)
 					{
-						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getStartLocationId()).getLocation();
-						if (teleportToQuestLocation(player, location) && (questLocation.getStartLocationId() == questLocation.getEndLocationId()))
+						final Location location = TeleportListData.getInstance().getTeleport(questLocation.getQuestLocationId()).getLocation();
+						if (teleportToQuestLocation(player, location) && (questLocation.getQuestLocationId() == questLocation.getEndLocationId()))
 						{
 							questState.setCond(QuestCondType.DONE);
 							sendEndDialog(player);

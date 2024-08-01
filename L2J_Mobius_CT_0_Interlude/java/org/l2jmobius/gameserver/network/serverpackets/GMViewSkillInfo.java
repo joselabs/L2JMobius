@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.Collection;
 
 import org.l2jmobius.commons.network.WritableBuffer;
-import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -42,14 +41,12 @@ public class GMViewSkillInfo extends ServerPacket
 		ServerPackets.GM_VIEW_SKILL_INFO.writeId(this, buffer);
 		buffer.writeString(_player.getName());
 		buffer.writeInt(_skills.size());
-		final boolean isDisabled = (_player.getClan() != null) ? (_player.getClan().getReputationScore() < 0) : false;
 		for (Skill skill : _skills)
 		{
 			buffer.writeInt(skill.isPassive());
 			buffer.writeInt(skill.getDisplayLevel());
 			buffer.writeInt(skill.getDisplayId());
-			buffer.writeByte(isDisabled && skill.isClanSkill());
-			buffer.writeByte(SkillData.getInstance().isEnchantable(skill.getDisplayId()));
+			buffer.writeByte(0); // c5
 		}
 	}
 }

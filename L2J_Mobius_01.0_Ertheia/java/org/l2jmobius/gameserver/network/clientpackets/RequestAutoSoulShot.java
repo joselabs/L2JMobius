@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.ShotType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
@@ -53,7 +52,7 @@ public class RequestAutoSoulShot extends ClientPacket
 			return;
 		}
 		
-		if ((player.getPrivateStoreType() == PrivateStoreType.NONE) && (player.getActiveRequester() == null) && !player.isDead())
+		if (!player.isInStoreMode() && (player.getActiveRequester() == null) && !player.isDead())
 		{
 			final Item item = player.getInventory().getItemByItemId(_itemId);
 			if (item == null)

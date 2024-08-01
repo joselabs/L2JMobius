@@ -59,5 +59,6 @@ public class ExAutoPlaySettingSend extends ServerPacket
 		buffer.writeInt(_potionPercent);
 		buffer.writeInt(_petPotionPercent); // 272
 		buffer.writeByte(_respectfulHunting);
+		buffer.writeByte(0); // Macro index.
 	}
 }

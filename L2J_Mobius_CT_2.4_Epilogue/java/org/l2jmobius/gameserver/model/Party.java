@@ -87,6 +87,7 @@ public class Party extends AbstractPlayerGroup
 	private Future<?> _positionBroadcastTask = null;
 	protected PartyMemberPosition _positionPacket;
 	private boolean _disbanding = false;
+	private Object _ucState = null;
 	
 	/**
 	 * Construct a new Party object with a single member - the leader.
@@ -289,7 +290,7 @@ public class Party extends AbstractPlayerGroup
 		
 		msg = new SystemMessage(SystemMessageId.C1_HAS_JOINED_THE_PARTY);
 		msg.addString(player.getName());
-		broadcastPacket(msg);
+		broadcastToPartyMembers(player, msg);
 		
 		for (Player member : _members)
 		{
@@ -717,12 +718,15 @@ public class Party extends AbstractPlayerGroup
 		double xpReward = xpRewardValue * getExpBonus(validMembers.size());
 		double spReward = spRewardValue * getSpBonus(validMembers.size());
 		int sqLevelSum = 0;
+		int averagePartyMemberLevel = 0;
 		for (Player member : validMembers)
 		{
 			sqLevelSum += member.getLevel() * member.getLevel();
+			averagePartyMemberLevel += member.getLevel();
 		}
+		averagePartyMemberLevel /= Math.max(1, validMembers.size());
 		
-		final float vitalityPoints = (target.getVitalityPoints(partyDmg) * Config.RATE_PARTY_XP) / validMembers.size();
+		final float vitalityPoints = (target.getVitalityPoints(averagePartyMemberLevel, partyDmg) * Config.RATE_PARTY_XP) / validMembers.size();
 		final boolean useVitalityRate = target.useVitalityRate();
 		for (Player member : rewardedMembers)
 		{
@@ -972,6 +976,16 @@ public class Party extends AbstractPlayerGroup
 	public List<Player> getMembers()
 	{
 		return _members;
+	}
+	
+	public Object getUCState()
+	{
+		return _ucState;
+	}
+	
+	public void setUCState(Object uc)
+	{
+		_ucState = uc;
 	}
 	
 	/**

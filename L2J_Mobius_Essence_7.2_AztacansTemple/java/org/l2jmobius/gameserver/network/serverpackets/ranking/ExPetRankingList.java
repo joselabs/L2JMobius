@@ -141,21 +141,21 @@ public class ExPetRankingList extends ServerPacket
 		{
 			int curRank = rank++;
 			final StatSet pet = data.getValue();
-			buffer.writeSizedString(pet.getString("name"));
-			buffer.writeSizedString(pet.getString("owner_name"));
-			buffer.writeSizedString(pet.getString("clanName"));
-			buffer.writeInt(1000000 + pet.getInt("npcId"));
-			buffer.writeShort(pet.getInt("petType"));
-			buffer.writeShort(pet.getInt("level"));
-			buffer.writeShort(pet.getInt("owner_race"));
-			buffer.writeShort(pet.getInt("owner_level"));
+			buffer.writeSizedString(pet.getString("name", ""));
+			buffer.writeSizedString(pet.getString("owner_name", ""));
+			buffer.writeSizedString(pet.getString("clanName", ""));
+			buffer.writeInt(1000000 + pet.getInt("npcId", 16104));
+			buffer.writeShort(pet.getInt("petType", 0));
+			buffer.writeShort(pet.getInt("level", 1));
+			buffer.writeShort(pet.getInt("owner_race", 0));
+			buffer.writeShort(pet.getInt("owner_level", 1));
 			buffer.writeInt(scope == RankingScope.SELF ? data.getKey() : curRank); // server rank
 			if (!snapshot.isEmpty())
 			{
 				for (Entry<Integer, StatSet> ssData : snapshot.stream().sorted(Entry.comparingByKey()).collect(Collectors.toList()))
 				{
 					final StatSet snapshotData = ssData.getValue();
-					if (pet.getInt("controlledItemObjId") == snapshotData.getInt("controlledItemObjId"))
+					if (pet.getInt("controlledItemObjId", 0) == snapshotData.getInt("controlledItemObjId", 0))
 					{
 						buffer.writeInt(scope == RankingScope.SELF ? ssData.getKey() : curRank); // server rank snapshot
 					}

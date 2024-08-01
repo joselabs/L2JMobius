@@ -30,5 +30,6 @@ public enum ItemLocation
 	MAIL,
 	FREIGHT,
 	COMMISSION,
-	EXCHANGE
+	EXCHANGE,
+	GACHA
 }

@@ -79,7 +79,7 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 			_flyRunSpd = player.isFlying() ? _runSpd : 0;
 			_flyWalkSpd = player.isFlying() ? _walkSpd : 0;
 			_enchantLevel = player.getInventory().getWeaponEnchant();
-			_armorEnchant = player.getInventory().getArmorMinEnchant();
+			_armorEnchant = player.getInventory().getArmorSetEnchant();
 			_title = player.getAppearance().getVisibleTitle();
 			
 			if (player.isGM() && player.isInvisible())

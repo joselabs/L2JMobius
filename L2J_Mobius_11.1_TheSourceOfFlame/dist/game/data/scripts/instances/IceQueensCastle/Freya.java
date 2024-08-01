@@ -221,9 +221,9 @@ public class Freya extends AbstractInstance
 				{
 					for (int i = 0; i < 3; i++)
 					{
-						addSpawn(ICE_WALL, player.getX() + getRandom(-400, 400), player.getY() + getRandom(-400, 400), player.getZ() + 10, 0, false, 10000, false, world.getId());
+						addSpawn(ICE_WALL, player.getX() + getRandom(-400, 400), player.getY() + getRandom(-400, 400), player.getZ() + 20, 0, false, 10000, false, world.getId());
 					}
-					addSpawn(ICE_WALL, player.getX(), player.getY(), player.getZ() + 10, 0, false, 10000, false, world.getId());
+					addSpawn(ICE_WALL, player.getX(), player.getY(), player.getZ() + 20, 0, false, 10000, false, world.getId());
 					startQuestTimer("ice_hurricane_cast", 1000, null, player);
 				}
 				break;
@@ -402,9 +402,9 @@ public class Freya extends AbstractInstance
 				{
 					for (int i = 0; i < 5; i++)
 					{
-						addSpawn(ICE_WALL, player.getX() + getRandom(-800, 800), player.getY() + getRandom(-800, 800), player.getZ() + 10, 0, false, 10000, false, world.getId());
+						addSpawn(ICE_WALL, player.getX() + getRandom(-800, 800), player.getY() + getRandom(-800, 800), player.getZ() + 20, 0, false, 10000, false, world.getId());
 					}
-					addSpawn(ICE_WALL, player.getX(), player.getY(), player.getZ() + 10, 0, false, 10000, false, world.getId());
+					addSpawn(ICE_WALL, player.getX(), player.getY(), player.getZ() + 20, 0, false, 10000, false, world.getId());
 					startQuestTimer("freezing_hurricane_cast", 1000, null, player);
 				}
 				break;
@@ -421,9 +421,9 @@ public class Freya extends AbstractInstance
 				{
 					for (int i = 0; i < 10; i++)
 					{
-						addSpawn(ICE_WALL, player.getX() + getRandom(-800, 800), player.getY() + getRandom(-800, 800), player.getZ() + 10, 0, false, 10000, false, world.getId());
+						addSpawn(ICE_WALL, player.getX() + getRandom(-800, 800), player.getY() + getRandom(-800, 800), player.getZ() + 20, 0, false, 10000, false, world.getId());
 					}
-					addSpawn(ICE_WALL, player.getX(), player.getY(), player.getZ() + 10, 0, false, 10000, false, world.getId());
+					addSpawn(ICE_WALL, player.getX(), player.getY(), player.getZ() + 20, 0, false, 10000, false, world.getId());
 					startQuestTimer("freezing_blizzard_cast", 1000, null, player);
 				}
 				break;

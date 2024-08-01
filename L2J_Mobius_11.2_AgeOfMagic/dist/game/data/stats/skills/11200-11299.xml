@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="11200" toLevel="1" name="Elemental Destruction: Water">
 		<!-- Water Attribute -->
@@ -105,7 +105,7 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceCriticalDamage">
-				<amount>-25</amount>
+				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceTrait">
@@ -1387,8 +1387,32 @@
 	<skill id="11263" toLevel="14" name="Invoke">
 		<!-- Calls forth the fist of a Giant from the outer world to strike the target and nearby enemies with 191 power. For 20 sec., P./ M. Def. -30%. When the skill is used, a passive effect of Superior Summon Mastery recovers HP/ MP. -->
 		<icon>icon.skill11263</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
 		<affectRange>200</affectRange>
+		<basicProperty>NONE</basicProperty>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+			<value level="5">5</value>
+			<value level="6">6</value>
+			<value level="7">7</value>
+			<value level="8">8</value>
+			<value level="9">9</value>
+			<value level="10">10</value>
+			<value level="11">11</value>
+			<value level="12">12</value>
+			<value level="13">13</value>
+			<value level="14">14</value>
+		</abnormalLevel>
+		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>MULTI_DEBUFF_A</subordinationAbnormalType>
+		<abnormalType>MULTI_DEBUFF_A</abnormalType>
+		<activateRate>
+			<value fromLevel="1" toLevel="14">60</value>
+			<value fromLevel="7" toLevel="14" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
+		</activateRate>
 		<magicLevel>
 			<value level="1">87</value>
 			<value level="2">89</value>
@@ -1489,13 +1513,24 @@
 					<value fromLevel="6" toLevel="14" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
 			</effect>
+			<effect name="MagicalDefence">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PhysicalDefence">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="11264" toLevel="4" name="Strong Will">
 		<!-- Cancels debuffs and hold effects. Also, for 5 sec. P./ M. Def. +5%. -->
 		<icon>icon.skill11264</icon>
 		<canCastWhileDisabled>true</canCastWhileDisabled>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalType>WILL</abnormalType>
+		<abnormalTime>5</abnormalTime>
 		<mpConsume>
 			<value level="1">30</value>
 			<value level="2">35</value>
@@ -1528,15 +1563,23 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mp">
+			<effect name="PhysicalDefence">
 				<amount>
-					<value level="1">200</value>
-					<value level="2">210</value>
-					<value level="3">220</value>
-					<value level="4">230</value>
-					<value fromLevel="3" toLevel="4" fromSubLevel="1001" toSubLevel="1020">{base + (base / 100 * subIndex)}</value>
+					<value level="1">+5</value>
+					<value level="2">+7</value>
+					<value level="3">+10</value>
+					<value level="4">+15</value>
 				</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">+5</value>
+					<value level="2">+7</value>
+					<value level="3">+10</value>
+					<value level="4">+15</value>
+				</amount>
+				<mode>PER</mode>
 			</effect>
 			<effect name="DispelBySlot">
 				<dispel>ROOT_MAGICALLY,3;ROOT_PHYSICALLY,3</dispel>
@@ -1805,7 +1848,7 @@
 		<castRange>800</castRange>
 		<hitTime>5000</hitTime>
 		<coolTime>200</coolTime>
-		<reuseDelay>6000</reuseDelay>
+		<reuseDelay>60000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<affectRange>1000</affectRange>
@@ -1831,6 +1874,24 @@
 				</power>
 			</effect>
 		</effects>
+		<selfEffects>
+			<effect name="Heal">
+				<power>
+					<value level="1">1308</value>
+					<value level="2">1336</value>
+					<value level="3">1358</value>
+					<value level="4">1381</value>
+					<value level="5">1733</value>
+					<value level="6">1747</value>
+					<value level="7">1761</value>
+					<value level="8">1775</value>
+					<value level="9">1789</value>
+					<value level="10">1968</value>
+					<value level="11">2165</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1020">{base + (base / 100 * subIndex)}</value>
+				</power>
+			</effect>
+		</selfEffects>
 	</skill>
 	<skill id="11270" toLevel="4" name="Ultimate Transfer Pain">
 		<!-- Transfers 70% of the damage received to your first summoned servitor. MP is continuously consumed according to your level. -->
@@ -3672,7 +3733,7 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="DefenceCriticalDamage">
-				<amount>-30</amount>
+				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="ResistAbnormalByCategory">
@@ -3791,7 +3852,7 @@
 		<castRange>800</castRange>
 		<hitTime>5000</hitTime>
 		<coolTime>200</coolTime>
-		<reuseDelay>30000</reuseDelay>
+		<reuseDelay>60000</reuseDelay>
 		<effectPoint>398</effectPoint>
 		<isSharedWithSummon>true</isSharedWithSummon>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3801,7 +3862,7 @@
 			<value level="2">97</value>
 		</magicLevel>
 		<abnormalTime>
-			<value level="1">0</value>
+			<value level="1">15</value>
 			<value level="2">15</value>
 		</abnormalTime>
 		<abnormalType>LIFE_FORCE_OTHERS</abnormalType>
@@ -3829,21 +3890,12 @@
 			</effect>
 		</effects>
 		<selfEffects>
-			<effect name="HealOverTime">
-				<power>333</power>
-				<ticks>1</ticks>
-			</effect>
-			<effect name="PhysicalDefence" fromLevel="2" toLevel="2" fromSubLevel="2001" toSubLevel="2020">
-				<amount>
-					<value fromLevel="2" toLevel="2" fromSubLevel="2001" toSubLevel="2020">{0.6 + (0.4 * subIndex)}</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PhysicalDefence" fromLevel="2" toLevel="2" fromSubLevel="3001" toSubLevel="3020">
-				<amount>
-					<value fromLevel="2" toLevel="2" fromSubLevel="3001" toSubLevel="3020">{0.6 + (0.4 * subIndex)}</value>
-				</amount>
-				<mode>PER</mode>
+			<effect name="TriggerSkill">
+				<skillId>31220</skillId> <!-- Self Balance HP regen buff / might be too powerful. will stick to summons only -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+				</skillLevel>
 			</effect>
 		</selfEffects>
 	</skill>

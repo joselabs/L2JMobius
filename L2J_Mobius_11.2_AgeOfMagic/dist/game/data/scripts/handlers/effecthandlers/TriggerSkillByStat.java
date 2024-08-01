@@ -51,27 +51,26 @@ public class TriggerSkillByStat extends AbstractEffect
 	@Override
 	public void pump(Creature effected, Skill skill)
 	{
-		final Creature target = effected;
+		if (effected == null)
+		{
+			return;
+		}
 		
 		// In some cases, without ThreadPool, values did not apply.
+		final Creature target = effected;
 		ThreadPool.schedule(() ->
 		{
 			final int currentValue = (int) effected.getStat().getValue(_stat);
-			
-			// Synchronized because the same skill could be used twice and isAffectedBySkill ignored.
-			synchronized (target)
+			if ((currentValue >= _min) && (currentValue <= _max))
 			{
-				if ((currentValue >= _min) && (currentValue <= _max))
+				if (!target.isAffectedBySkill(_skillId))
 				{
-					if (!target.isAffectedBySkill(_skillId))
-					{
-						SkillCaster.triggerCast(target, target, SkillData.getInstance().getSkill(_skillId, _skillLevel, _skillSubLevel));
-					}
+					SkillCaster.triggerCast(target, target, SkillData.getInstance().getSkill(_skillId, _skillLevel, _skillSubLevel));
 				}
-				else
-				{
-					target.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, _skillId);
-				}
+			}
+			else
+			{
+				target.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, _skillId);
 			}
 		}, 100);
 	}
