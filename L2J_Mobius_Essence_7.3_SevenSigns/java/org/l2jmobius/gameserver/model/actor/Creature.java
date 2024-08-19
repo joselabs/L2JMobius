@@ -2586,7 +2586,24 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 		}
 		else
 		{
-			_title = isPlayer() && (value.length() > 21) ? value.substring(0, 20) : value;
+			if (isPlayer())
+			{
+				// Remove all {i<number>} where the number is not in the range 0-34.
+				final String title = value.replaceAll("\\{i-(\\d+)|\\{i(3[5-9]|[4-9]\\d*)\\}", "");
+				
+				if (title.length() > 21)
+				{
+					_title = title.substring(0, 20);
+				}
+				else
+				{
+					_title = title;
+				}
+			}
+			else
+			{
+				_title = value;
+			}
 		}
 	}
 	
