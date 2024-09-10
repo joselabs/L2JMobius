@@ -1095,7 +1095,11 @@ public class Item extends WorldObject
 		applyEnchantStats();
 		_storedInDb = false;
 		
-		getActingPlayer().getInventory().getPaperdollCache().clearArmorSetEnchant();
+		final Player player = getActingPlayer();
+		if (player != null)
+		{
+			player.getInventory().getPaperdollCache().clearArmorSetEnchant();
+		}
 	}
 	
 	/**

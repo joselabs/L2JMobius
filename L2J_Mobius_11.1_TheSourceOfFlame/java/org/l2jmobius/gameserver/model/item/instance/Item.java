@@ -1044,48 +1044,54 @@ public class Item extends WorldObject
 		clearEnchantStats();
 		
 		// Agathion skills.
+		final Player player = getActingPlayer();
 		if (isEquipped() && (_itemTemplate.getBodyPart() == ItemTemplate.SLOT_AGATHION))
 		{
 			final AgathionSkillHolder agathionSkills = AgathionData.getInstance().getSkills(getId());
 			if (agathionSkills != null)
 			{
 				boolean update = false;
+				
 				// Remove old skills.
 				for (Skill skill : agathionSkills.getMainSkills(_enchantLevel))
 				{
-					getActingPlayer().removeSkill(skill, false, skill.isPassive());
+					player.removeSkill(skill, false, skill.isPassive());
 					update = true;
 				}
 				for (Skill skill : agathionSkills.getSubSkills(_enchantLevel))
 				{
-					getActingPlayer().removeSkill(skill, false, skill.isPassive());
+					player.removeSkill(skill, false, skill.isPassive());
 					update = true;
 				}
+				
 				// Add new skills.
 				if (getLocationSlot() == Inventory.PAPERDOLL_AGATHION1)
 				{
 					for (Skill skill : agathionSkills.getMainSkills(newLevel))
 					{
-						if (skill.isPassive() && !skill.checkConditions(SkillConditionScope.PASSIVE, getActingPlayer(), getActingPlayer()))
+						if (skill.isPassive() && !skill.checkConditions(SkillConditionScope.PASSIVE, player, player))
 						{
 							continue;
 						}
-						getActingPlayer().addSkill(skill, false);
+						
+						player.addSkill(skill, false);
 						update = true;
 					}
 				}
 				for (Skill skill : agathionSkills.getSubSkills(newLevel))
 				{
-					if (skill.isPassive() && !skill.checkConditions(SkillConditionScope.PASSIVE, getActingPlayer(), getActingPlayer()))
+					if (skill.isPassive() && !skill.checkConditions(SkillConditionScope.PASSIVE, player, player))
 					{
 						continue;
 					}
-					getActingPlayer().addSkill(skill, false);
+					
+					player.addSkill(skill, false);
 					update = true;
 				}
+				
 				if (update)
 				{
-					getActingPlayer().sendSkillList();
+					player.sendSkillList();
 				}
 			}
 		}
@@ -1094,12 +1100,15 @@ public class Item extends WorldObject
 		applyEnchantStats();
 		_storedInDb = false;
 		
-		getActingPlayer().getInventory().getPaperdollCache().clearArmorSetEnchant();
-		
-		// Notify to Scripts
-		if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_ENCHANT_ADD))
+		if (player != null)
 		{
-			EventDispatcher.getInstance().notifyEventAsync(new OnItemEnchantAdd(getActingPlayer(), this));
+			player.getInventory().getPaperdollCache().clearArmorSetEnchant();
+			
+			// Notify to Scripts
+			if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_ENCHANT_ADD))
+			{
+				EventDispatcher.getInstance().notifyEventAsync(new OnItemEnchantAdd(player, this));
+			}
 		}
 	}
 	
