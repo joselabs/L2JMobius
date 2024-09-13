@@ -135,7 +135,7 @@
 			</attribute>
 			<abnormalResist physical="0" magical="0" />
 		</stats>
-		<status attackable="true" undying="true" />
+		<status attackable="true" canMove="false" undying="true" noSleepMode="true" />
 		<skillList>
 			<skill id="4416" level="11" /> <!-- Giants -->
 			<skill id="14765" level="4" /> <!-- Vampiric Rage Resistance -->
@@ -180,7 +180,7 @@
 			</attribute>
 			<abnormalResist physical="0" magical="0" />
 		</stats>
-		<status attackable="true" undying="true" />
+		<status attackable="true" canMove="false" undying="true" noSleepMode="true" />
 		<skillList>
 			<skill id="4416" level="11" /> <!-- Giants -->
 			<skill id="14765" level="4" /> <!-- Vampiric Rage Resistance -->
@@ -226,7 +226,7 @@
 			</attribute>
 			<abnormalResist physical="0" magical="0" />
 		</stats>
-		<status attackable="true" />
+		<status attackable="true" canMove="false" noSleepMode="true" />
 		<skillList>
 			<skill id="4416" level="11" /> <!-- Giants -->
 			<skill id="14765" level="4" /> <!-- Vampiric Rage Resistance -->
@@ -243,7 +243,7 @@
 			<skill id="16746" level="2" /> <!-- Helios -->
 			<skill id="14804" level="10" /> <!-- Damage Reflection Attack Resistance -->
 		</skillList>
-		<ai clanHelpRange="1000" aggroRange="1000" isAggressive="true">
+		<ai clanHelpRange="1000" aggroRange="1500" isAggressive="true">
 			<clanList>
 				<clan>HELIOS</clan>
 			</clanList>
@@ -404,6 +404,7 @@
 			</attribute>
 			<abnormalResist physical="0" magical="0" />
 		</stats>
+		<status attackable="false" canMove="false" noSleepMode="true" />
 		<skillList>
 			<skill id="4416" level="2" /> <!-- Magical Creatures -->
 			<skill id="14765" level="3" /> <!-- Vampiric Rage Resistance -->
@@ -504,10 +505,6 @@
 		</collision>
 	</npc>
 	<npc id="29309" level="105" type="Monster" name="Leopold Origin" title="Ultimate Kamael">
-		<parameters>
-			<skill name="Skill01_ID" id="16636" level="1" />
-			<skill name="Skill02_ID" id="16637" level="1" />
-		</parameters>
 		<race>GIANT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
@@ -525,6 +522,7 @@
 			</attribute>
 			<abnormalResist physical="0" magical="0" />
 		</stats>
+		<status attackable="false" canMove="false" flying="false" noSleepMode="false" />
 		<skillList>
 			<skill id="4416" level="11" /> <!-- Giants -->
 			<skill id="14765" level="3" /> <!-- Vampiric Rage Resistance -->
@@ -551,11 +549,6 @@
 			<skill id="16418" level="10" /> <!-- Seduction Resistance -->
 			<skill id="16417" level="10" /> <!-- Faint Attack Resistance -->
 		</skillList>
-		<ai type="BALANCED" clanHelpRange="1000" aggroRange="1000" isAggressive="true">
-			<clanList>
-				<clan>HELIOS</clan>
-			</clanList>
-		</ai>
 		<collision>
 			<radius normal="18" />
 			<height normal="45.5" />
@@ -579,6 +572,7 @@
 			</attribute>
 			<abnormalResist physical="0" magical="0" />
 		</stats>
+		<status attackable="true" flying="true" noSleepMode="true" />
 		<skillList>
 			<skill id="4416" level="11" /> <!-- Giants -->
 			<skill id="14765" level="3" /> <!-- Vampiric Rage Resistance -->
@@ -605,8 +599,9 @@
 			<skill id="16418" level="10" /> <!-- Seduction Resistance -->
 			<skill id="16417" level="10" /> <!-- Faint Attack Resistance -->
 			<skill id="16635" level="1" /> <!-- Enuma Elish Shot -->
+			<skill id="16632" level="1" /> <!-- Check Leopold Mini Gun -->
 		</skillList>
-		<ai type="BALANCED" clanHelpRange="1000" aggroRange="1000" isAggressive="true">
+		<ai type="BALANCED" clanHelpRange="5000" aggroRange="2800" isAggressive="true">
 			<clanList>
 				<clan>HELIOS</clan>
 			</clanList>
@@ -813,6 +808,8 @@
 			<skill id="4071" level="1" /> <!-- Bow/ Crossbow Resistance -->
 			<skill id="16657" level="1" /> <!-- Royal Aggression Aura -->
 			<skill id="16658" level="1" /> <!-- Royal Chain Strike -->
+			<skill id="16675" level="1" /> <!-- Hyper Giga Strike -->
+			<skill id="16676" level="1" /> <!-- Hyper Taunt -->
 		</skillList>
 		<ai clanHelpRange="1000" aggroRange="1000" isAggressive="true">
 			<clanList>
