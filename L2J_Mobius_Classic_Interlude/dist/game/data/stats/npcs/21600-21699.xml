@@ -1,148 +1,148 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/npcs.xsd">
-	<npc id="21600" level="70" type="Monster" name="Requiem Behemoth">
-		<!-- Confirmed CT2.5 -->
+	<npc id="21600" level="79" type="Monster" name="Scarlet Stakato Noble">
 		<parameters>
-			<param name="MoveAroundSocial" value="80" />
-			<param name="MoveAroundSocial1" value="80" />
-			<param name="MoveAroundSocial2" value="80" />
-			<param name="IsPrivate" value="1" />
-			<skill name="IsTeleport" id="4671" level="1" />
+			<param name="MoveAroundSocial" value="62" />
+			<param name="MoveAroundSocial1" value="62" />
+			<param name="MoveAroundSocial2" value="62" />
+			<minions name="Privates">
+				<npc id="21378" count="5" respawnTime="0" weightPoint="1" /> <!-- Scarlet Stakato Noble -->
+			</minions>
+			<param name="SummonPrivateRate" value="30" />
 			<param name="SoulShot" value="100" />
-			<param name="SoulShotRate" value="10" />
-			<param name="SpiritShot" value="100" />
-			<param name="SpiritShotRate" value="5" />
-			<param name="LongRangeGuardRate" value="5" />
-			<skill name="SelfRangeDeBuff" id="4649" level="7" />
-			<skill name="DDMagic" id="4592" level="7" />
+			<param name="SoulShotRate" value="30" />
 		</parameters>
-		<race>UNDEAD</race>
+		<race>HUMANOID</race>
 		<sex>MALE</sex>
-		<acquire exp="81915" sp="19" />
-		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2444" hpRegen="7.5" mp="1345" mpRegen="2.7" />
-			<attack physical="688.86373" magical="470.40463" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="295.91597" magical="216.53847" />
+		<equipment rhand="235" /> <!-- rhand: Bloody Orchid -->
+		<acquire exp="45730" sp="5195" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="2870.7774087" hpRegen="8.585" mp="1657.41" mpRegen="3.03" />
+			<attack physical="884.2525659" magical="609.868172336" random="5" critical="12" accuracy="-3.75" attackSpeed="253" type="DAGGER" range="40" distance="80" width="120" />
+			<defence physical="340.4407808" magical="226.669315301277" evasion="1" />
 			<speed>
-				<walk ground="20" />
-				<run ground="100" />
+				<walk ground="25" />
+				<run ground="165" />
 			</speed>
-			<hitTime>480</hitTime>
-			<abnormalResist physical="10" magical="10" />
+			<hitTime>580</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true" />
 		<skillList>
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="12" /> <!-- Slightly Strong P. Atk. -->
-			<skill id="4411" level="12" /> <!-- Slightly Strong M. Atk. -->
-			<skill id="4412" level="14" /> <!-- Strong P. Def. -->
-			<skill id="4413" level="10" /> <!-- Slightly Weak M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="3" /> <!-- One-handed Sword -->
-			<skill id="4416" level="1" /> <!-- Undead -->
-			<skill id="4592" level="7" /> <!-- Decrease P. Def. -->
-			<skill id="4649" level="7" /> <!-- Poison -->
-			<skill id="4671" level="1" /> <!-- AV - Teleport -->
-			<skill id="4278" level="1" /> <!-- Dark Attack -->
-			<skill id="4279" level="1" /> <!-- Fire Vulnerability -->
-			<skill id="4275" level="2" /> <!-- Holy Attack Vulnerability -->
+			<skill id="4408" level="13" /> <!-- HP Increase (5x) -->
+			<skill id="4410" level="14" /> <!-- Strong P. Atk. -->
+			<skill id="4411" level="14" /> <!-- Strong M. Atk. -->
+			<skill id="4412" level="16" /> <!-- Very Strong P. Def. -->
+			<skill id="4413" level="8" /> <!-- Weak M. Def. -->
+			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skillList>
-		<shots shotChance="30" spiritChance="30" />
 		<exCrtEffect>false</exCrtEffect>
-		<ai clanHelpRange="300" aggroRange="300">
+		<sNpcPropHpRate>5</sNpcPropHpRate>
+		<ai type="BALANCED" aggroRange="300" clanHelpRange="300">
 			<clanList>
-				<clan>NECRO</clan>
+				<clan>FIRE</clan>
 			</clanList>
 		</ai>
 		<dropLists>
 			<drop>
-				<item id="57" min="107" max="249" chance="70" /> <!-- Adena -->
-				<item id="5323" min="1" max="1" chance="0.003" /> <!-- Sealed Majestic Leather Armor -->
-				<item id="730" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Armor (A-grade) -->
-				<item id="36544" min="1" max="1" chance="0.003" /> <!-- Orichalcum Wire -->
+				<group chance="70">
+					<item id="57" min="5636" max="11501" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0016">
+					<item id="305" min="1" max="1" chance="100" /> <!-- Tallum Glaive -->
+				</group>
+				<group chance="42.1396">
+					<item id="5541" min="1" max="1" chance="1.34624" /> <!-- Tallum Glaive Edge -->
+					<item id="4042" min="1" max="1" chance="1.91388" /> <!-- Enria -->
+					<item id="1894" min="1" max="1" chance="4.65311" /> <!-- Crafted Leather -->
+					<item id="1882" min="1" max="1" chance="26.3674" /> <!-- Leather -->
+					<item id="1872" min="1" max="3" chance="47.4613" /> <!-- Animal Bone -->
+					<item id="1867" min="4" max="12" chance="16.9506" /> <!-- Animal Skin -->
+					<item id="959" min="1" max="1" chance="0.00664" /> <!-- Scroll: Enchant Weapon (Grade S) -->
+					<item id="8732" min="1" max="1" chance="1.01852" /> <!-- Life Stone: level 76 -->
+					<item id="8742" min="1" max="1" chance="0.28239" /> <!-- Mid-Grade Life Stone: level 76 -->
+				</group>
 			</drop>
 			<spoil>
-				<item id="36534" min="1" max="1" chance="0.03" /> <!-- Durable Braid -->
-				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
-				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+				<item id="5272" min="1" max="1" chance="0.6225" /> <!-- Recipe: Greater Soulshot (S) Compressed Package(100%) -->
+				<item id="5277" min="1" max="1" chance="0.6225" /> <!-- Recipe: Greater Spiritshot (S) Compressed Package(100%) -->
+				<item id="5545" min="1" max="1" chance="3.8425" /> <!-- Dark Legion's Edge Blade -->
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="13" />
-			<height normal="40" />
+			<radius normal="15" />
+			<height normal="39" />
 		</collision>
 	</npc>
-	<npc id="21601" level="70" type="Monster" name="Requiem Behemoth">
-		<!-- Confirmed CT2.5 -->
+	<npc id="21601" level="80" type="Monster" name="Assassin Beetle">
 		<parameters>
 			<param name="MoveAroundSocial" value="80" />
 			<param name="MoveAroundSocial1" value="80" />
 			<param name="MoveAroundSocial2" value="80" />
-			<param name="IsPrivate" value="1" />
-			<skill name="IsTeleport" id="4671" level="1" />
-			<param name="SoulShot" value="100" />
-			<param name="SoulShotRate" value="10" />
-			<param name="SpiritShot" value="100" />
-			<param name="SpiritShotRate" value="5" />
-			<param name="LongRangeGuardRate" value="5" />
-			<skill name="SelfRangeDeBuff" id="4649" level="7" />
-			<skill name="PhysicalSpecial" id="4579" level="7" />
+			<minions name="Privates">
+				<npc id="21381" count="5" respawnTime="0" weightPoint="1" /> <!-- Assassin Beetle -->
+			</minions>
+			<param name="SummonPrivateRate" value="30" />
 		</parameters>
-		<race>UNDEAD</race>
+		<race>BUG</race>
 		<sex>MALE</sex>
-		<acquire exp="102235" sp="24" />
-		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2444" hpRegen="7.5" mp="1345" mpRegen="2.7" />
-			<attack physical="688.86373" magical="470.40463" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="295.91597" magical="216.53847" />
+		<acquire exp="32340" sp="3815" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="2937.9838056" hpRegen="8.67" mp="1708.296" mpRegen="3.06" />
+			<attack physical="912.6537108" magical="635.688655236" random="7" critical="12" accuracy="-3.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="348.2025" magical="231.837152158566" evasion="2" />
 			<speed>
-				<walk ground="20" />
-				<run ground="100" />
+				<walk ground="45" />
+				<run ground="165" />
 			</speed>
-			<hitTime>480</hitTime>
-			<abnormalResist physical="10" magical="10" />
+			<hitTime>590</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true" />
 		<skillList>
-			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
-			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
-			<skill id="4410" level="12" /> <!-- Slightly Strong P. Atk. -->
-			<skill id="4411" level="12" /> <!-- Slightly Strong M. Atk. -->
-			<skill id="4412" level="14" /> <!-- Strong P. Def. -->
-			<skill id="4413" level="10" /> <!-- Slightly Weak M. Def. -->
-			<skill id="4414" level="2" /> <!-- Standard Type -->
-			<skill id="4415" level="3" /> <!-- One-handed Sword -->
-			<skill id="4416" level="1" /> <!-- Undead -->
-			<skill id="4579" level="7" /> <!-- Bleed -->
-			<skill id="4649" level="7" /> <!-- Poison -->
-			<skill id="4671" level="1" /> <!-- AV - Teleport -->
-			<skill id="4278" level="1" /> <!-- Dark Attack -->
-			<skill id="4279" level="1" /> <!-- Fire Vulnerability -->
-			<skill id="4275" level="2" /> <!-- Holy Attack Vulnerability -->
+			<skill id="4274" level="1" /> <!-- Blunt Weapon Weak Point -->
+			<skill id="4408" level="13" /> <!-- HP Increase (5x) -->
+			<skill id="4410" level="14" /> <!-- Strong P. Atk. -->
+			<skill id="4411" level="14" /> <!-- Strong M. Atk. -->
+			<skill id="4412" level="8" /> <!-- Weak P. Def. -->
+			<skill id="4413" level="8" /> <!-- Weak M. Def. -->
+			<skill id="4416" level="12" /> <!-- Bugs -->
+			<skill id="4437" level="4" /> <!-- Greater Resist Bleeding -->
 		</skillList>
-		<shots shotChance="30" spiritChance="30" />
 		<exCrtEffect>false</exCrtEffect>
-		<ai clanHelpRange="300" aggroRange="300">
+		<sNpcPropHpRate>5</sNpcPropHpRate>
+		<ai aggroRange="300" clanHelpRange="300">
 			<clanList>
-				<clan>NECRO</clan>
+				<clan>FIRE</clan>
 			</clanList>
 		</ai>
 		<dropLists>
 			<drop>
-				<item id="57" min="134" max="311" chance="70" /> <!-- Adena -->
-				<item id="5323" min="1" max="1" chance="0.0055" /> <!-- Sealed Majestic Leather Armor -->
-				<item id="730" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Armor (A-grade) -->
+				<group chance="70">
+					<item id="57" min="4798" max="9794" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0014">
+					<item id="270" min="1" max="1" chance="100" /> <!-- Dragon Grinder -->
+				</group>
+				<group chance="41.6718">
+					<item id="5538" min="1" max="1" chance="1.15954" /> <!-- Dragon Grinder Edge -->
+					<item id="4043" min="1" max="1" chance="3.69195" /> <!-- Asofe -->
+					<item id="4042" min="1" max="1" chance="1.84585" /> <!-- Enria -->
+					<item id="4040" min="1" max="1" chance="2.30732" /> <!-- Mold Lubricant -->
+					<item id="1895" min="1" max="1" chance="29.9963" /> <!-- Metallic Fiber -->
+					<item id="1344" min="20" max="60" chance="59.9926" /> <!-- Mithril Arrow -->
+					<item id="960" min="1" max="1" chance="0.05639" /> <!-- Scroll: Enchant Armor (Grade S) -->
+					<item id="8732" min="1" max="1" chance="0.92653" /> <!-- Life Stone: level 76 -->
+					<item id="8742" min="1" max="1" chance="0.02352" /> <!-- Mid-Grade Life Stone: level 76 -->
+				</group>
 			</drop>
 			<spoil>
-				<item id="36534" min="1" max="1" chance="0.03" /> <!-- Durable Braid -->
-				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
-				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+				<item id="5157" min="1" max="1" chance="0.53" /> <!-- Recipe: Soulshot (S) Compressed Package (100%) -->
+				<item id="5544" min="1" max="1" chance="3.2679" /> <!-- Branch of The Mother Tree Head -->
+				<item id="5545" min="1" max="1" chance="3.2718" /> <!-- Dark Legion's Edge Blade -->
 			</spoil>
 		</dropLists>
 		<collision>
-			<radius normal="13" />
-			<height normal="40" />
+			<radius normal="19" />
+			<height normal="54.5" />
 		</collision>
 	</npc>
 	<npc id="21602" level="65" type="Monster" name="Ancient Holy Ground's Wing">
@@ -3615,117 +3615,311 @@
 			<height normal="75" />
 		</collision>
 	</npc>
-	<npc id="21654" level="81" type="Monster" name="Dreco" title="Earth Guardian">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+	<npc id="21654" level="80" type="Monster" name="Necromancer of Destruction">
+		<parameters>
+			<param name="MoveAroundSocial" value="114" />
+			<param name="MoveAroundSocial1" value="114" />
+			<param name="MoveAroundSocial2" value="114" />
+			<minions name="Privates">
+				<npc id="21384" count="5" respawnTime="0" weightPoint="1" /> <!-- Necromancer of Destruction -->
+			</minions>
+			<param name="SummonPrivateRate" value="30" />
+		</parameters>
 		<race>DEMONIC</race>
 		<sex>MALE</sex>
+		<acquire exp="38226" sp="4565" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
-			<vitals hp="815" hpRegen="42.5" mp="402" mpRegen="3" />
+			<vitals hp="2975.2369188" hpRegen="8.721" mp="1742.976" mpRegen="3.0804" />
+			<attack physical="938.20801458" magical="656.66638089" random="7" critical="12" accuracy="-3.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="354.8183475" magical="239.180922" evasion="3" />
 			<speed>
-				<walk ground="60" />
-				<run ground="80" />
+				<walk ground="70" />
+				<run ground="140" />
 			</speed>
-			<attack physical="913.54847" magical="623.83518" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="345.61127" magical="252.90333" />
+			<hitTime>740</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true" />
 		<skillList>
-			<skill id="4045" level="1" /> <!-- Full Magic Attack Resistance -->
+			<skill id="4278" level="1" /> <!-- Dark Attack -->
+			<skill id="4333" level="5" /> <!-- Resist Dark Attack -->
+			<skill id="4408" level="13" /> <!-- HP Increase (5x) -->
+			<skill id="4410" level="14" /> <!-- Strong P. Atk. -->
+			<skill id="4411" level="14" /> <!-- Strong M. Atk. -->
+			<skill id="4413" level="8" /> <!-- Weak M. Def. -->
+			<skill id="4416" level="9" /> <!-- Demons -->
 		</skillList>
+		<exCrtEffect>false</exCrtEffect>
+		<sNpcPropHpRate>5</sNpcPropHpRate>
+		<ai aggroRange="300" clanHelpRange="300">
+			<clanList>
+				<clan>FIRE</clan>
+			</clanList>
+		</ai>
+		<dropLists>
+			<drop>
+				<group chance="70">
+					<item id="57" min="5293" max="10839" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0015">
+					<item id="81" min="1" max="1" chance="33.3333" /> <!-- Dragon Slayer -->
+					<item id="151" min="1" max="1" chance="33.3333" /> <!-- Sword of Miracles -->
+					<item id="2500" min="1" max="1" chance="33.3333" /> <!-- Dark Legion's Edge -->
+				</group>
+				<group chance="53.2546">
+					<item id="5546" min="1" max="1" chance="0.36748" /> <!-- Sword of Miracles Edge -->
+					<item id="5545" min="1" max="1" chance="0.33462" /> <!-- Dark Legion's Edge Blade -->
+					<item id="5529" min="1" max="1" chance="0.33462" /> <!-- Dragon Slayer Edge -->
+					<item id="4042" min="1" max="1" chance="13.6069" /> <!-- Enria -->
+					<item id="1894" min="1" max="1" chance="2.80257" /> <!-- Crafted Leather -->
+					<item id="1882" min="1" max="1" chance="17.0706" /> <!-- Leather -->
+					<item id="1872" min="1" max="3" chance="31.2963" /> <!-- Animal Bone -->
+					<item id="1867" min="5" max="15" chance="9.88309" /> <!-- Animal Skin -->
+					<item id="1344" min="40" max="120" chance="23.4721" /> <!-- Mithril Arrow -->
+					<item id="960" min="1" max="1" chance="0.02629" /> <!-- Scroll: Enchant Armor (Grade S) -->
+					<item id="8732" min="1" max="1" chance="0.59995" /> <!-- Life Stone: level 76 -->
+					<item id="8742" min="1" max="1" chance="0.1844" /> <!-- Mid-Grade Life Stone: level 76 -->
+					<item id="8752" min="1" max="1" chance="0.02103" /> <!-- High-Grade Life Stone: level 76 -->
+				</group>
+			</drop>
+			<spoil>
+				<item id="4042" min="1" max="1" chance="21.9733" /> <!-- Enria -->
+				<item id="5167" min="1" max="1" chance="0.586" /> <!-- Recipe: Blessed Spiritshot (S) Compressed Package (100%) -->
+				<item id="5488" min="1" max="1" chance="5.9369" /> <!-- Sealed Majestic Robe Fabric -->
+			</spoil>
+		</dropLists>
 		<collision>
-			<radius normal="10" />
-			<height normal="33.5" />
+			<radius normal="14.5" />
+			<height normal="48" />
 		</collision>
 	</npc>
-	<npc id="21655" level="82" type="Monster" name="Raido" title="Earth Guardian">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+	<npc id="21655" level="80" type="Monster" name="Arimanes of Destruction">
+		<parameters>
+			<param name="MoveAroundSocial" value="100" />
+			<param name="MoveAroundSocial1" value="100" />
+			<param name="MoveAroundSocial2" value="100" />
+			<minions name="Privates">
+				<npc id="21387" count="5" respawnTime="0" weightPoint="1" /> <!-- Arimanes of Destruction -->
+			</minions>
+			<param name="SummonPrivateRate" value="30" />
+		</parameters>
 		<race>DEMONIC</race>
 		<sex>MALE</sex>
+		<equipment rhand="6722" /> <!-- rhand: Monster Only(Ahrimanes) -->
+		<acquire exp="33976" sp="4105" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
-			<vitals hp="1019" hpRegen="42.5" mp="478" mpRegen="3" />
+			<vitals hp="3010.8929976" hpRegen="8.772" mp="1777.86" mpRegen="3.1008" />
+			<attack physical="961.93701102" magical="677.644106544" random="10" critical="8" accuracy="0" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="361.0859925" magical="246.330714" evasion="4" />
 			<speed>
-				<walk ground="43" />
-				<run ground="174" />
+				<walk ground="35" />
+				<run ground="185" />
 			</speed>
-			<attack physical="1294.297202" magical="636.31188" random="30" critical="4" accuracy="4.75" attackSpeed="182" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="349.77477" magical="255.95" />
+			<hitTime>480</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true" />
 		<skillList>
-			<skill id="4045" level="1" /> <!-- Full Magic Attack Resistance -->
+			<skill id="4278" level="1" /> <!-- Dark Attack -->
+			<skill id="4333" level="5" /> <!-- Resist Dark Attack -->
+			<skill id="4408" level="13" /> <!-- HP Increase (5x) -->
+			<skill id="4410" level="14" /> <!-- Strong P. Atk. -->
+			<skill id="4411" level="14" /> <!-- Strong M. Atk. -->
+			<skill id="4412" level="8" /> <!-- Weak P. Def. -->
+			<skill id="4413" level="8" /> <!-- Weak M. Def. -->
+			<skill id="4416" level="9" /> <!-- Demons -->
 		</skillList>
+		<exCrtEffect>false</exCrtEffect>
+		<sNpcPropHpRate>5</sNpcPropHpRate>
+		<ai aggroRange="300" clanHelpRange="300">
+			<clanList>
+				<clan>FIRE</clan>
+			</clanList>
+		</ai>
+		<dropLists>
+			<drop>
+				<group chance="70">
+					<item id="57" min="5046" max="10335" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0038">
+					<item id="5316" min="1" max="1" chance="50" /> <!-- Sealed Majestic Plate Armor -->
+					<item id="5311" min="1" max="1" chance="50" /> <!-- Sealed Armor of Nightmare -->
+				</group>
+				<group chance="37.6769">
+					<item id="5523" min="1" max="1" chance="0.83898" /> <!-- Sealed Majestic Plate Armor Pattern -->
+					<item id="5522" min="1" max="1" chance="0.83898" /> <!-- Sealed Armor of Nightmare Pattern -->
+					<item id="4040" min="1" max="1" chance="2.45747" /> <!-- Mold Lubricant -->
+					<item id="1879" min="1" max="1" chance="17.6944" /> <!-- Cokes -->
+					<item id="1875" min="1" max="1" chance="5.76985" /> <!-- Stone of Purity -->
+					<item id="1870" min="2" max="6" chance="29.4905" /> <!-- Coal -->
+					<item id="1865" min="1" max="3" chance="33.1768" /> <!-- Varnish -->
+					<item id="1344" min="100" max="300" chance="8.84707" /> <!-- Mithril Arrow -->
+					<item id="960" min="1" max="1" chance="0.05653" /> <!-- Scroll: Enchant Armor (Grade S) -->
+					<item id="8732" min="1" max="1" chance="0.67203" /> <!-- Life Stone: level 76 -->
+					<item id="8742" min="1" max="1" chance="0.15739" /> <!-- Mid-Grade Life Stone: level 76 -->
+				</group>
+			</drop>
+			<spoil>
+				<item id="6344" min="1" max="1" chance="18.425" /> <!-- Sealed Majestic Necklace Beads -->
+				<item id="6346" min="1" max="1" chance="40.9201" /> <!-- Sealed Majestic Ring Gemstone -->
+				<item id="6901" min="1" max="1" chance="1.2569" /> <!-- Recipe: Shining Arrow (100%) -->
+			</spoil>
+		</dropLists>
 		<collision>
 			<radius normal="14" grown="17" />
 			<height normal="57.75" grown="69" />
 		</collision>
 	</npc>
-	<npc id="21656" level="84" type="Monster" name="Golem" title="Earth Guardian">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+	<npc id="21656" level="80" type="Monster" name="Ashuras of Destruction">
+		<parameters>
+			<param name="MoveAroundSocial" value="100" />
+			<param name="MoveAroundSocial1" value="100" />
+			<param name="MoveAroundSocial2" value="100" />
+			<minions name="Privates">
+				<npc id="21390" count="5" respawnTime="0" weightPoint="1" /> <!-- Ashuras of Destruction -->
+			</minions>
+			<param name="SummonPrivateRate" value="30" />
+		</parameters>
 		<race>DEMONIC</race>
 		<sex>MALE</sex>
+		<acquire exp="59677" sp="7380" />
 		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
-			<vitals hp="740" hpRegen="51" mp="372" mpRegen="3" />
+			<vitals hp="3077.1572058" hpRegen="8.874" mp="1848.24" mpRegen="3.1314" />
+			<attack physical="1009.3950039" magical="719.599557852" random="7" critical="8" accuracy="0" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="373.969485" magical="261.022284" evasion="2" />
 			<speed>
-				<walk ground="23" />
-				<run ground="23" />
+				<walk ground="41" />
+				<run ground="190" />
 			</speed>
-			<attack physical="966.61544" magical="660.07304" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="357.86723" magical="261.87171" />
+			<hitTime>500</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true" />
 		<skillList>
-			<skill id="4045" level="1" /> <!-- Full Magic Attack Resistance -->
+			<skill id="4278" level="1" /> <!-- Dark Attack -->
+			<skill id="4333" level="5" /> <!-- Resist Dark Attack -->
+			<skill id="4408" level="14" /> <!-- HP Increase (6x) -->
+			<skill id="4410" level="14" /> <!-- Strong P. Atk. -->
+			<skill id="4411" level="14" /> <!-- Strong M. Atk. -->
+			<skill id="4412" level="16" /> <!-- Very Strong P. Def. -->
+			<skill id="4413" level="8" /> <!-- Weak M. Def. -->
+			<skill id="4416" level="9" /> <!-- Demons -->
 		</skillList>
-		<collision>
-			<radius normal="20" />
-			<height normal="31" />
-		</collision>
-	</npc>
-	<npc id="21657" level="35" type="Monster" name="Wyrm" title="Earth Guardian">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>DRAGON</race>
-		<sex>MALE</sex>
-		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
-			<vitals hp="1248" hpRegen="51" mp="610" mpRegen="3" />
-			<speed>
-				<walk ground="70" />
-				<run ground="174" />
-			</speed>
-			<attack physical="983.0479" magical="671.29428" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="361.78814" magical="264.74086" />
-		</stats>
-		<status undying="false" canBeSown="true" />
-		<skillList>
-			<skill id="4045" level="1" /> <!-- Full Magic Attack Resistance -->
-		</skillList>
-		<collision>
-			<radius normal="29" />
-			<height normal="72" />
-		</collision>
+		<exCrtEffect>false</exCrtEffect>
+		<sNpcPropHpRate>6</sNpcPropHpRate>
+		<ai aggroRange="300" clanHelpRange="300">
+			<clanList>
+				<clan>FIRE</clan>
+			</clanList>
+		</ai>
 		<dropLists>
 			<drop>
-				<item id="62" min="1" max="1" chance="0.03" /> <!-- Reinforced Mithril Boots -->
-				<item id="63" min="1" max="1" chance="0.03" /> <!-- Gauntlets -->
-				<item id="553" min="1" max="1" chance="0.03" /> <!-- Iron Boots -->
-				<item id="2422" min="1" max="1" chance="0.03" /> <!-- Reinforced Leather Boots -->
-				<item id="2423" min="1" max="1" chance="0.03" /> <!-- Boots of Knowledge -->
-				<item id="2446" min="1" max="1" chance="0.03" /> <!-- Reinforced Leather Gloves -->
-				<item id="2447" min="1" max="1" chance="0.03" /> <!-- Gloves of Knowledge -->
-				<item id="57" min="162" max="378" chance="70" /> <!-- Adena -->
-				<item id="1341" min="10" max="30" chance="15.75" /> <!-- Bone Arrow -->
-				<item id="1864" min="1" max="1" chance="9.532" /> <!-- Stem -->
-				<item id="1865" min="1" max="1" chance="4.793" /> <!-- Varnish -->
-				<item id="1866" min="1" max="1" chance="3.16" /> <!-- Suede -->
-				<item id="1878" min="1" max="1" chance="1.857" /> <!-- Durable Braid -->
-				<item id="1940" min="1" max="1" chance="1.395" /> <!-- Iron Boot Design -->
-				<item id="1958" min="1" max="1" chance="0.75" /> <!-- Reinforced Mithril Boot Design -->
-				<item id="2200" min="1" max="1" chance="0.3" /> <!-- Recipe: Chain Helmet -->
+				<group chance="70">
+					<item id="57" min="7595" max="15500" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0243">
+					<item id="5317" min="1" max="1" chance="29.2181" /> <!-- Sealed Majestic Circlet -->
+					<item id="5315" min="1" max="1" chance="41.5638" /> <!-- Sealed Shield of Nightmare -->
+					<item id="5312" min="1" max="1" chance="29.2181" /> <!-- Sealed Helm of Nightmare -->
+				</group>
+				<group chance="44.1094">
+					<item id="5528" min="1" max="1" chance="2.51896" /> <!-- Sealed Majestic Circlet Design -->
+					<item id="5527" min="1" max="1" chance="2.51896" /> <!-- Sealed Helm of Nightmare Design -->
+					<item id="5495" min="1" max="1" chance="3.19909" /> <!-- Sealed Shield of Nightmare Fragment -->
+					<item id="4041" min="1" max="1" chance="0.56813" /> <!-- Mold Hardener -->
+					<item id="960" min="1" max="1" chance="0.07232" /> <!-- Scroll: Enchant Armor (Grade S) -->
+					<item id="1344" min="40" max="120" chance="37.7849" /> <!-- Mithril Arrow -->
+					<item id="1867" min="9" max="27" chance="10.3051" /> <!-- Animal Skin -->
+					<item id="1872" min="5" max="15" chance="15.114" /> <!-- Animal Bone -->
+					<item id="1875" min="1" max="1" chance="10.3051" /> <!-- Stone of Purity -->
+					<item id="1881" min="1" max="1" chance="16.1936" /> <!-- Coarse Bone Powder -->
+					<item id="8732" min="1" max="1" chance="0.8522" /> <!-- Life Stone: level 76 -->
+					<item id="8742" min="1" max="1" chance="0.28384" /> <!-- Mid-Grade Life Stone: level 76 -->
+					<item id="8752" min="1" max="1" chance="0.28384" /> <!-- High-Grade Life Stone: level 76 -->
+				</group>
 			</drop>
 			<spoil>
-				<item id="1873" min="1" max="1" chance="40.29" /> <!-- Silver Nugget -->
-				<item id="2273" min="1" max="1" chance="0.75" /> <!-- Recipe: Tarbar -->
+				<item id="6704" min="1" max="1" chance="26.8758" /> <!-- Sealed Imperial Crusader Boots Design -->
+				<item id="6705" min="1" max="1" chance="26.3248" /> <!-- Sealed Imperial Crusader Shield Part -->
+				<item id="6706" min="1" max="1" chance="30.6208" /> <!-- Sealed Imperial Crusader Helmet Pattern -->
 			</spoil>
 		</dropLists>
+		<collision>
+			<radius normal="17" />
+			<height normal="49" />
+		</collision>
+	</npc>
+	<npc id="21657" level="80" type="Monster" name="Magma Drake">
+		<parameters>
+			<param name="MoveAroundSocial" value="70" />
+			<param name="MoveAroundSocial1" value="70" />
+			<param name="MoveAroundSocial2" value="70" />
+			<minions name="Privates">
+				<npc id="21393" count="5" respawnTime="0" weightPoint="1" /> <!-- Magma Drake -->
+			</minions>
+			<param name="SummonPrivateRate" value="30" />
+		</parameters>
+		<race>DRAGON</race>
+		<sex>MALE</sex>
+		<acquire exp="51686" sp="6468" />
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="10">
+			<vitals hp="3107.6436594" hpRegen="8.925" mp="1883.736" mpRegen="3.1518" />
+			<attack physical="1033.1240034" magical="740.577283506" random="7" critical="8" accuracy="0" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="380.23713" magical="268.304676" evasion="7" />
+			<speed>
+				<walk ground="57" />
+				<run ground="185" />
+			</speed>
+			<hitTime>480</hitTime>
+		</stats>
+		<status undying="false" canBeSown="true" />
+		<skillList>
+			<skill id="4009" level="3" /> <!-- Resist Fire -->
+			<skill id="4280" level="1" /> <!-- Water Attack Weak Point -->
+			<skill id="4408" level="14" /> <!-- HP Increase (6x) -->
+			<skill id="4410" level="14" /> <!-- Strong P. Atk. -->
+			<skill id="4411" level="14" /> <!-- Strong M. Atk. -->
+			<skill id="4412" level="13" /> <!-- Slightly Strong P. Def. -->
+			<skill id="4413" level="8" /> <!-- Weak M. Def. -->
+			<skill id="4416" level="10" /> <!-- Dragons -->
+		</skillList>
+		<exCrtEffect>false</exCrtEffect>
+		<sNpcPropHpRate>6</sNpcPropHpRate>
+		<ai aggroRange="300" clanHelpRange="300">
+			<clanList>
+				<clan>FIRE</clan>
+			</clanList>
+		</ai>
+		<dropLists>
+			<drop>
+				<group chance="70">
+					<item id="57" min="7076" max="14446" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0068">
+					<item id="5323" min="1" max="1" chance="50" /> <!-- Sealed Majestic Leather Armor -->
+					<item id="5320" min="1" max="1" chance="50" /> <!-- Sealed Leather Armor of Nightmare -->
+				</group>
+				<group chance="89.8995">
+					<item id="5481" min="1" max="1" chance="0.6485" /> <!-- Sealed Majestic Leather Armor Fabric -->
+					<item id="5480" min="1" max="1" chance="0.6485" /> <!-- Sealed Leather Armor of Nightmare Fabric -->
+					<item id="4040" min="1" max="1" chance="1.07998" /> <!-- Mold Lubricant -->
+					<item id="1879" min="1" max="1" chance="10.1123" /> <!-- Cokes -->
+					<item id="1875" min="1" max="1" chance="3.97266" /> <!-- Stone of Purity -->
+					<item id="1870" min="2" max="6" chance="13.9044" /> <!-- Coal -->
+					<item id="1865" min="9" max="27" chance="3.1781" /> <!-- Varnish -->
+					<item id="1344" min="100" max="300" chance="65.4341" /> <!-- Mithril Arrow -->
+					<item id="960" min="1" max="1" chance="0.03304" /> <!-- Scroll: Enchant Armor (Grade S) -->
+					<item id="8732" min="1" max="1" chance="0.88988" /> <!-- Life Stone: level 76 -->
+					<item id="8742" min="1" max="1" chance="0.09855" /> <!-- Mid-Grade Life Stone: level 76 -->
+				</group>
+			</drop>
+			<spoil>
+				<item id="6688" min="1" max="1" chance="3.8019" /> <!-- Forgotten Blade Edge -->
+				<item id="6689" min="1" max="1" chance="3.7303" /> <!-- Basalt Battlehammer Head -->
+				<item id="6690" min="1" max="1" chance="3.8092" /> <!-- Imperial Staff Head -->
+			</spoil>
+		</dropLists>
+		<collision>
+			<radius normal="29" />
+			<height normal="42" />
+		</collision>
 	</npc>
 	<npc id="21658" level="64" type="Folk" name="Harit" title="Earth Guardian">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
