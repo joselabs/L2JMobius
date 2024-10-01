@@ -1199,14 +1199,15 @@ public class SkillCaster implements Runnable
 					return false;
 				}
 				
-				if (skill.isBad() && !player.isOnSoloEvent())
-				{
-					final WorldObject target = player.getTarget();
-					if ((target != null) && target.isPlayable() && (player.getTeam() == target.getActingPlayer().getTeam()))
-					{
-						return false;
-					}
-				}
+				// Commented because AOE skills like Warlord's [Thunder Storm] (44) and debuffs like Overlord's [Seal of Binding] (1208) do not work when targeting an enemy from the other team.
+				// if (skill.isBad() && !player.isOnSoloEvent())
+				// {
+				// final WorldObject target = player.getTarget();
+				// if ((target != null) && target.isPlayable() && (player.getTeam() == target.getActingPlayer().getTeam()))
+				// {
+				// return false;
+				// }
+				// }
 			}
 		}
 		return true;
