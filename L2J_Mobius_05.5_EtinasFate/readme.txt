@@ -3,12 +3,6 @@ L2J-Mobius Etina's Fate
 JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
 XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
 Eclipse: https://www.mediafire.com/file/ef5eub52bx4iixc/eclipse-java-2024-06-R-win32-x86_64.zip
-Geodata: http://www.mediafire.com/file/3cjttcj5ij8fsxl/L2J_Mobius_05.5_EtinasFate_Geodata.zip
-
-Client (password L2jMobius): https://drive.google.com/u/0/uc?id=1-LrJURgBxEAQKt_Rox-1Yf1_alEg2PJ1&export=download
-System: https://mega.nz/#!B10W0QSR!xon-5i8Z8g5-VoJPTt16leYVIVV8GosQE_OSH1j7pnM
-
-All provided download links are for personal use. Redistribution of these links is bannable.
 
 
 Working features...
@@ -91,6 +85,7 @@ Helios:
 Grand Crusade:
 -Monster Book
 -Live world map information
+-Messiah Citadel
 
 Salvation:
 -New Agathion item support

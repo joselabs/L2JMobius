@@ -3,12 +3,6 @@ L2J-Mobius The Source of Flame
 JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
 XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
 Eclipse: https://www.mediafire.com/file/ef5eub52bx4iixc/eclipse-java-2024-06-R-win32-x86_64.zip
-Geodata: https://www.mediafire.com/file/2evfw33zf8bcqe7/L2J_Mobius_11.1_TheSourceOfFlame_Geodata.zip
-
-Client (password L2jMobius): https://drive.google.com/u/1/uc?id=1bjQebC-vN3F2COGCaRipRJlknKgVCtvd&export=download
-System: https://mega.nz/file/1h8ljLSL#yEYpG1H6c1sarSI3RPwDCdj4wDDFQCr_i3cy7R3uHAw
-
-All provided download links are for personal use. Redistribution of these links is bannable.
 
 
 Working features...
@@ -91,6 +85,7 @@ Helios:
 Grand Crusade:
 -Monster Book
 -Live world map information
+-Messiah Citadel
 
 Salvation:
 -New Agathion item support

@@ -3,12 +3,6 @@ L2J-Mobius The Kamael
 JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
 XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
 Eclipse: https://www.mediafire.com/file/ef5eub52bx4iixc/eclipse-java-2024-06-R-win32-x86_64.zip
-Geodata: http://www.mediafire.com/file/67p627w8qmalsbs/L2J_Mobius_Classic_3.0_TheKamael_Geodata.zip
-
-Client (password L2jMobius): https://drive.google.com/u/1/uc?id=1FpOy82whmZdQacf4ZAjRsyc6sWYq14in&export=download
-System: https://mega.nz/file/cxs3DSpa#v_PXYHDULpwSP_P_l-ppgn0SP87uN4__X5gcNcZWtFk
-
-All provided download links are for personal use. Redistribution of these links is bannable.
 
 
 Saviors: https://eu.4game.com/lineage2classic/play/saviors/

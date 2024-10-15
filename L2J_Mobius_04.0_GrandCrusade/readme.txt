@@ -3,12 +3,6 @@ L2J-Mobius Grand Crusade
 JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
 XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
 Eclipse: https://www.mediafire.com/file/ef5eub52bx4iixc/eclipse-java-2024-06-R-win32-x86_64.zip
-Geodata: http://www.mediafire.com/file/3wru8ll42xoqzn4/L2J_Mobius_04.0_GrandCrusade_Geodata.zip
-
-Client (password L2jMobius): https://drive.google.com/file/d/10X9i3FU8A96obuYG5ITmbm6S-DizA8aP
-System: https://mega.nz/#!Fk0SAK6L!v3JSzKN6QuNzINgel0wp7zXovh0DOYzqxcm7etQOSLI
-
-All provided download links are for personal use. Redistribution of these links is bannable.
 
 
 Working features...
@@ -91,6 +85,7 @@ Helios:
 Grand Crusade:
 -Monster Book
 -Live world map information
+-Messiah Citadel
 
 Events:
 -Birth of Draco

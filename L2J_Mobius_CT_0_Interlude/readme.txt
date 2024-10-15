@@ -3,12 +3,6 @@ L2J-Mobius Interlude
 JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
 XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
 Eclipse: https://www.mediafire.com/file/ef5eub52bx4iixc/eclipse-java-2024-06-R-win32-x86_64.zip
-Geodata: https://www.mediafire.com/file/4zfzsnmzz8rv3lk/L2J_Mobius_CT_0_Interlude_Geodata.zip
-
-Client (password L2jMobius): https://drive.google.com/u/2/uc?id=1zCGzxWgkxASntc_X8L4YCEqk9hDc5VBN&export=download
-System: https://mega.nz/#!t49wiKgZ!PzVAcxcg2o8gRkAiMjH7CUO6lKrBG27npg2JPL1uEq8
-
-All provided download links are for personal use. Redistribution of these links is bannable.
 
 
 What is done
@@ -118,8 +112,3 @@ What is done
 -Replaced quests 257, 260, 265, 273 and 293.
 -Removed subclass certification AI.
 -Removed masterwork craft.
-
-
-TODO: Not that important.
--Adjust community board sell buff htmls.
--Adjust community board announcements admin htmls.

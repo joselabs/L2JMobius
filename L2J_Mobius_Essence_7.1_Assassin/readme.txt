@@ -3,12 +3,6 @@ L2J-Mobius Assassin
 JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
 XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
 Eclipse: https://www.mediafire.com/file/ef5eub52bx4iixc/eclipse-java-2024-06-R-win32-x86_64.zip
-Geodata: https://www.mediafire.com/file/r7byt5pc9uw4ajw/L2J_Mobius_Essence_7.1_Assassin_Geodata.zip
-
-Client (password L2jMobius): https://drive.google.com/u/1/uc?id=1bjQebC-vN3F2COGCaRipRJlknKgVCtvd&export=download
-System: https://mega.nz/file/QptHBS5B#_IJE2-6DRk9IAzB4PMAbsUAiPTDZZtRmnbkUjihePVI
-
-All provided download links are for personal use. Redistribution of these links is bannable.
 
 
 Saviors: https://eu.4game.com/lineage2classic/play/saviors/
