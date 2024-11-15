@@ -38,21 +38,170 @@
 		<!-- Common. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<castRange>600</castRange>
+		<hitTime>1300</hitTime>
+		<effectPoint>-100</effectPoint>
+		<reuseDelay>1000</reuseDelay> 
+		<attributeType>FIRE</attributeType>
+		<attributeValue>180</attributeValue>
+		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<effectRange>350</effectRange>
+		<magicLevel>97</magicLevel>
+		<!-- <nextAction>CAST</nextAction> -->
+		<fanRange>0;0;500;300</fanRange>
+		<coolTime>300</coolTime>
+		<targetType>ENEMY</targetType>
+		<affectScope>SQUARE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="MagicalAttack">
+				<power>300</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34308" toLevel="1" name="Antharas' Stigma">
 		<!-- A Stun effect from Antharas' powerful attack. The effect cannot be guarded against. -->
 		<icon>icon.s_raid_antaras_stamp1</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<isDebuff>true</isDebuff>
+		<castRange>1500</castRange>
+		<reuseDelay>6000</reuseDelay>
+		<hitTime>3600</hitTime>
+		<coolTime>1400</coolTime>
+		<effectPoint>-100</effectPoint>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>97</magicLevel>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>3</abnormalTime>
+		<trait>SHOCK</trait>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>180</attributeValue>
+		<affectRange>800</affectRange>
+		<isDebuff>true</isDebuff>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>2000</power>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34309" toLevel="1" name="Giant Stone Throw">
 		<!-- A Knockdown effect after Antharas' giant stone throw. The effect cannot be guarded against. -->
 		<icon>icon.s_raid_antaras_giant_rock_shooting1</icon>
-		<operateType>A1</operateType>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>3</abnormalTime>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<activateRate>
+			<value fromLevel="1" toLevel="11">50</value>
+			<value fromLevel="3" toLevel="11" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
+		</activateRate>
+		<!-- <affectLimit>5-12</affectLimit> -->
+		<affectRange>500</affectRange>
+		<basicProperty>PHYSICAL</basicProperty> <!-- Guessed -->
+		<lvlBonusRate>1</lvlBonusRate>
+		<magicLevel>117</magicLevel>
+		<trait>KNOCKDOWN</trait>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>RANGE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<castRange>2000</castRange>
+		<hitTime>3600</hitTime>
+		<effectPoint>-507</effectPoint>
+		<isDebuff>true</isDebuff>
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>
+					<value level="1">22536</value>
+					<value level="2">26428</value>
+					<value level="3">29542</value>
+					<value level="4">32656</value>
+					<value level="5">35788</value>
+					<value level="6">37424</value>
+					<value level="7">39060</value>
+					<value level="8">41514</value>
+					<value level="9">43968</value>
+					<value level="10">48365</value>
+					<value level="11">53202</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1020">{base + (base / 100 * subIndex)}</value>
+				</power>
+				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<overHit>true</overHit>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
+			</effect>
+			<effect name="TargetCancel" />
+			<effect name="PhysicalDefence" fromLevel="3" toLevel="11" fromSubLevel="3001" toSubLevel="3020">
+				<amount>
+					<value fromLevel="3" toLevel="11" fromSubLevel="3001" toSubLevel="3020">{-0.6 - (0.4 * subIndex)}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34310" toLevel="1" name="Earth Scratch">
 		<!-- A Knockdown effect from a powerful ground-breaking attack. The effect cannot be guarded against. -->
 		<icon>icon.s_raid_antaras_scratch_earth1</icon>
-		<operateType>A1</operateType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>3</abnormalTime>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<basicProperty>PHYSICAL</basicProperty>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>180</attributeValue>
+		<activateRate>100</activateRate>
+		<affectRange>1000</affectRange>
+		<operateType>A2</operateType>
+		<magicCriticalRate>25</magicCriticalRate>
+		<magicLevel>114</magicLevel>
+		<castRange>500</castRange>
+		<hitTime>3700</hitTime>
+		<coolTime>1000</coolTime>
+		<reuseDelay>5000</reuseDelay>
+		<effectPoint>-716</effectPoint>
+		<isDebuff>true</isDebuff>
+		<effectRange>2600</effectRange>
+		<trait>KNOCKDOWN</trait>
+		<isMagic>0</isMagic>
+		<targetType>ENEMY</targetType>
+		<affectScope>SQUARE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<fanRange>0;0;4000;700</fanRange>
+		<!-- <affectLimit>5-12</affectLimit> -->
+		<!-- <nextAction>CAST</nextAction> -->
+		<effects>
+			<effect name="PhysicalAttack">
+				<power>97730</power>
+				<overHit>true</overHit>
+				<criticalChance>
+					<value fromLevel="1" toLevel="9">10</value>
+					<value fromLevel="1" toLevel="9" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>				</criticalChance>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
+			</effect>
+			<effect name="DefenceTrait">
+				<HOLD>100</HOLD>
+				<KNOCKDOWN>100</KNOCKDOWN>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+				<SLEEP>100</SLEEP>
+				<KNOCKBACK>100</KNOCKBACK>
+				<CHANGEBODY>100</CHANGEBODY>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34311" toLevel="1" name="Earthquake">
 		<!-- A powerful earthquake deals damage and knocks down. The effect cannot be guarded against. -->
@@ -77,7 +226,22 @@
 	<skill id="34315" toLevel="1" name="Antharas' Earth Guard">
 		<!-- Antharas' Symbol increases HP to the maximum. Available after consuming all of Antharas' Symbols. If you have Antharas' Symbol, a broken symbol appears after a while. -->
 		<icon>icon.pk</icon>
-		<operateType>A1</operateType>
+		<abnormalLevel>3</abnormalLevel>
+		<abnormalType>HP_REGEN_UP</abnormalType>
+		<magicLevel>-1</magicLevel>
+		<operateType>A2</operateType>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<specialLevel>-1</specialLevel>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="HpRegen">
+				<amount>2000000</amount>
+				<ticks>255</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34316" toLevel="1" name="Antharas' Rage">
 		<!-- Antharas' rage is so strong that it deals a lot of damage and knocks down. The effect cannot be guarded against. -->

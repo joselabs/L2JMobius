@@ -943,11 +943,6 @@ public class Config
 	
 	// GrandBoss Settings
 	
-	// Antharas
-	public static int ANTHARAS_WAIT_TIME;
-	public static int ANTHARAS_SPAWN_INTERVAL;
-	public static int ANTHARAS_SPAWN_RANDOM;
-	
 	// Valakas
 	public static int VALAKAS_WAIT_TIME;
 	public static int VALAKAS_SPAWN_INTERVAL;
@@ -2838,9 +2833,6 @@ public class Config
 			
 			// Grand bosses
 			final PropertiesParser grandBossConfig = new PropertiesParser(GRANDBOSS_CONFIG_FILE);
-			ANTHARAS_WAIT_TIME = grandBossConfig.getInt("AntharasWaitTime", 30);
-			ANTHARAS_SPAWN_INTERVAL = grandBossConfig.getInt("IntervalOfAntharasSpawn", 264);
-			ANTHARAS_SPAWN_RANDOM = grandBossConfig.getInt("RandomOfAntharasSpawn", 72);
 			VALAKAS_WAIT_TIME = grandBossConfig.getInt("ValakasWaitTime", 30);
 			VALAKAS_SPAWN_INTERVAL = grandBossConfig.getInt("IntervalOfValakasSpawn", 264);
 			VALAKAS_SPAWN_RANDOM = grandBossConfig.getInt("RandomOfValakasSpawn", 72);

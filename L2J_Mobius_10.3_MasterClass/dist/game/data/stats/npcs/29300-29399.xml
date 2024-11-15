@@ -5637,15 +5637,29 @@
 				<run ground="1" />
 			</speed>
 			<hitTime>600</hitTime>
+			<attribute>
+				<defence fire="2050" water="2050" wind="2000" earth="2050" holy="2050" dark="2050" />
+				<attack type="WIND" value="1950" />
+			</attribute>
 		</stats>
-		<status attackable="true" />
+		<status attackable="true" noSleepMode="true" />
+		<ai type="MAGE" clanHelpRange="4000" aggroRange="4000" isAggressive="true">
+			<clanList>
+				<clan>ANTHARAS</clan>
+			</clanList>
+		</ai>
 		<collision>
 			<radius normal="56" />
 			<height normal="143" />
 		</collision>
 	</npc>
 	<npc id="29387" level="120" type="RaidBoss" name="Antharas" title="Earth Dragon">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+		<parameters>
+			<skill name="Skill01_ID" id="34307" level="1" />
+			<skill name="Skill02_ID" id="34308" level="1" />
+			<skill name="Skill03_ID" id="34309" level="1" />
+			<skill name="Skill04_ID" id="34310" level="1" />
+		</parameters>
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="6625764933" sp="5963188" />
@@ -5658,8 +5672,17 @@
 				<run ground="250" />
 			</speed>
 			<hitTime>600</hitTime>
+			<attribute>
+				<attack type="EARTH" value="1950" />
+				<defence fire="2050" water="2050" wind="2000" earth="2050" holy="2050" dark="2050" />
+			</attribute>
 		</stats>
-		<status attackable="true" />
+		<status attackable="true" noSleepMode="true" />
+		<ai type="MAGE" clanHelpRange="2000" aggroRange="2000" isAggressive="true">
+			<clanList>
+				<clan>ANTHARAS</clan>
+			</clanList>
+		</ai>
 		<collision>
 			<radius normal="33" />
 			<height normal="90" />
@@ -5672,10 +5695,19 @@
 			<skill id="32675" level="1" /> <!-- Improved Immunity -->
 			<skill id="14804" level="10" /> <!-- Damage Reflection Resistance -->
 			<skill id="32968" level="1" /> <!-- Shield of Limit -->
+			<skill id="34307" level="1" /> <!-- Antharas' Smash -->
+			<skill id="34308" level="1" /> <!-- Antharas' Stigma -->
+			<skill id="34309" level="1" /> <!-- Antharas' Giant Stone Throw -->
+			<skill id="34310" level="1" /> <!-- Earth Scratch -->
 		</skillList>
 	</npc>
 	<npc id="29388" level="120" type="Monster" name="Antharas" title="Earth Dragon's Avatar">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+		<parameters>
+			<skill name="Skill01_ID" id="34307" level="1" />
+			<skill name="Skill02_ID" id="34308" level="1" />
+			<skill name="Skill03_ID" id="34309" level="1" />
+			<skill name="Skill04_ID" id="34310" level="1" />
+		</parameters>
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
@@ -5687,8 +5719,17 @@
 				<run ground="250" />
 			</speed>
 			<hitTime>600</hitTime>
+			<attribute>
+				<attack type="EARTH" value="1950" />
+				<defence fire="2050" water="2050" wind="2000" earth="2050" holy="2050" dark="2050" />
+			</attribute>
 		</stats>
-		<status attackable="true" />
+		<status attackable="true" noSleepMode="true" />
+		<ai type="MAGE" clanHelpRange="4000" aggroRange="4000" isAggressive="true">
+			<clanList>
+				<clan>ANTHARAS</clan>
+			</clanList>
+		</ai>
 		<collision>
 			<radius normal="33" />
 			<height normal="90" />
@@ -5696,11 +5737,15 @@
 		<skillList>
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 			<skill id="5465" level="1" /> <!-- Earth Attribute -->
-			<skill id="14765" level="3" /> <!-- Vampiric Rage Resistance -->
+			<skill id="14765" level="4" /> <!-- Vampiric Rage Resistance -->
 			<skill id="4122" level="1" /> <!-- Antharas -->
 			<skill id="32675" level="1" /> <!-- Improved Immunity -->
 			<skill id="14804" level="10" /> <!-- Damage Reflection Resistance -->
 			<skill id="32968" level="1" /> <!-- Shield of Limit -->
+			<skill id="34307" level="1" /> <!-- Antharas' Smash -->
+			<skill id="34308" level="1" /> <!-- Antharas' Stigma -->
+			<skill id="34309" level="1" /> <!-- Antharas' Giant Stone Throw -->
+			<skill id="34310" level="1" /> <!-- Earth Scratch -->
 		</skillList>
 	</npc>
 	<npc id="29389" level="85" type="Folk" name="">
@@ -5723,7 +5768,11 @@
 		</collision>
 	</npc>
 	<npc id="29390" level="120" type="Monster" name="Antharas' Symbol">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+		<parameters>
+			<param name="NoFnHi" value="1" />
+			<param name="MoveAroundSocial" value="0" />
+			<param name="MoveAroundSocial1" value="0" />
+		</parameters>
 		<race>ETC</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
@@ -5732,15 +5781,24 @@
 			<defence physical="753240" magical="364523" />
 			<speed>
 				<walk ground="1" />
-				<run ground="1" />
+				<run ground="0" />
 			</speed>
 			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="true" />
+		<status attackable="true" undying="false" canMove="false" targetable="true" />
 		<collision>
 			<radius normal="60" />
 			<height normal="100.5" />
 		</collision>
+				<skillList>
+			<skill id="4416" level="2" /> <!-- Magical Creatures -->
+			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
+			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
+			<skill id="4410" level="11" /> <!-- Average Damage Dealer -->
+			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
+			<skill id="4412" level="11" /> <!-- Average P. Def. -->
+			<skill id="4413" level="11" /> <!-- Average M. Def. -->
+				</skillList>
 	</npc>
 	<npc id="29391" level="127" type="RaidBoss" name="Baium" title="Elmoreden's Emperor">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
