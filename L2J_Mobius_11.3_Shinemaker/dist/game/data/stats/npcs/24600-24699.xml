@@ -3307,6 +3307,11 @@
 		</dropLists>
 	</npc>
 	<npc id="24649" level="116" type="Monster" name="Carnivorous Fungus" title="Sea of Spores Defender">
+		<parameters>
+			<param name="MoveAroundSocial" value="0" />
+			<param name="MoveAroundSocial1" value="0" />
+			<skill name="Skill01_ID" id="34268" level="1" />
+		</parameters>
 		<race>PLANT</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
@@ -3314,14 +3319,15 @@
 			<attack physical="733514.268097518" magical="1543.76790583647" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="60000" magical="200000" />
 			<attribute>
-				<attack type="EARTH" value="2500" />
-				<defence fire="2500" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="EARTH" value="1450" />
+				<defence fire="1600" water="1600" wind="1550" earth="1600" holy="1600" dark="1600" />
 			</attribute>
 			<speed>
 				<walk ground="70" />
 				<run ground="110" />
 			</speed>
 		</stats>
+		<status attackable="false" undying="true" canMove="false" targetable="false" />
 		<skillList>
 			<skill id="4416" level="5" /> <!-- Plants -->
 			<skill id="5465" level="1" /> <!-- Earth Attack -->
@@ -3331,9 +3337,9 @@
 			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
 			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+			<skill id="34268" level="1" /> <!-- Walking Fungus' Energy Spike -->
 		</skillList>
-		<status attackable="true" />
-		<ai type="FIGHTER" clanHelpRange="450" aggroRange="450" isAggressive="true">
+		<ai type="MAGE" clanHelpRange="500" aggroRange="500" isAggressive="true">
 			<clanList>
 				<clan>SOS</clan>
 			</clanList>
@@ -3344,15 +3350,19 @@
 		</collision>
 	</npc>
 	<npc id="24650" level="116" type="Monster" name="Walking Fungus">
+		<parameters>
+			<param name="MoveAroundSocial" value="0" />
+			<param name="MoveAroundSocial1" value="0" />
+		</parameters>
 		<race>PLANT</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="1278871" hpRegen="100.5" mp="2862" mpRegen="30.6" />
-			<attack physical="733514.268097518" magical="1543.76790583647" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="733514.268097518" magical="1543.76790583647" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="50" distance="50" width="120" />
 			<defence physical="60000" magical="200000" />
 			<attribute>
-				<attack type="EARTH" value="2500" />
-				<defence fire="2500" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="EARTH" value="1450" />
+				<defence fire="1600" water="1600" wind="1550" earth="1600" holy="1600" dark="1600" />
 			</attribute>
 			<speed>
 				<walk ground="70" />
@@ -3369,8 +3379,8 @@
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
 			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
 		</skillList>
-		<status attackable="true" />
-		<ai type="FIGHTER" clanHelpRange="450" aggroRange="450" isAggressive="true">
+		<status attackable="false" undying="true" canMove="false" targetable="false" />
+		<ai type="FIGHTER" clanHelpRange="150" aggroRange="100" isAggressive="true">
 			<clanList>
 				<clan>SOS</clan>
 			</clanList>
