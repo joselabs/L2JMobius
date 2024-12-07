@@ -5551,6 +5551,7 @@
 			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
 			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="34478" level="1" /> <!-- Death Attack -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -5669,6 +5670,7 @@
 			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
 			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="34478" level="1" /> <!-- Death Attack -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -5787,6 +5789,7 @@
 			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
 			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="34478" level="1" /> <!-- Death Attack -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -5905,6 +5908,8 @@
 			<skill id="34475" level="1" /> <!-- Night in the Execution Grounds -->
 			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
+			<skill id="34508" level="1" /> <!-- Death Stalker's Attack -->
+			<skill id="34509" level="1" /> <!-- Death Stalker's Slash -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -5998,7 +6003,7 @@
 		<acquire exp="1470160" sp="1323" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="753514.268097518" magical="1743.76790583647" random="50" critical="4.75" accuracy="9" attackSpeed="253" type="SWORD" range="100" distance="80" width="120" />
 			<defence physical="6057.47663551402" magical="2350.44514357978" />
 			<attribute>
 				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
@@ -6025,6 +6030,8 @@
 			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
 			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+			<skill id="34510" level="1" /> <!-- Death Butcher's Attack -->
+			<skill id="34511" level="1" /> <!-- Death Butcher's Slash -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6144,6 +6151,7 @@
 			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
 			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+			<skill id="34477" level="1" /> <!-- Death Doctor's Explosion -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6263,6 +6271,8 @@
 			<skill id="14818" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
 			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+			<skill id="34506" level="1" /> <!-- Death Dissector's Thorn -->
+			<skill id="34507" level="1" /> <!-- Death Dissector's Explosion -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6364,12 +6374,12 @@
 			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="90" />
-				<run ground="270" />
+				<run ground="253" />
 			</speed>
 			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="true" />
-		<ai type="FIGHTER" aggroRange="300" isAggressive="true" />
+		<status attackable="true" canMove="false" targetable="false" />
+		<ai type="FIGHTER" aggroRange="600" isAggressive="true" />
 		<collision>
 			<radius normal="20" />
 			<height normal="67" />
@@ -6391,7 +6401,7 @@
 		<equipment rhand="82656" /> <!-- Only_for_NPC_Execution_Grounds_Range -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="400" distance="80" width="120" />
 			<defence physical="753240" magical="364523" />
 			<attribute>
 				<defence fire="1260" water="1260" wind="1260" earth="1260" holy="1260" dark="1260" />
@@ -6400,12 +6410,12 @@
 			<abnormalResist physical="10" magical="10" />
 			<speed>
 				<walk ground="62" />
-				<run ground="240" />
+				<run ground="253" />
 			</speed>
 			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="true" />
-		<ai type="FIGHTER" aggroRange="300" isAggressive="true" />
+		<status attackable="false" canMove="false" targetable="false" />
+		<ai type="FIGHTER" aggroRange="600" isAggressive="true" />
 		<collision>
 			<radius normal="28" />
 			<height normal="65" />
@@ -6422,20 +6432,26 @@
 		</skillList>
 	</npc>
 	<npc id="24682" level="126" type="Monster" name="Frail Zombie" title="Execution Grounds Defender">
+		<parameters>
+			<skill name="Skill01_ID" id="34480" level="1" />
+		</parameters>
 		<race>UNDEAD</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="5838786" hpRegen="13.4" mp="3190" mpRegen="30" />
 			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="753240" magical="364523" />
+			<attribute>
+				<defence fire="2350" water="2350" wind="2350" earth="2350" holy="2350" dark="2350" />
+				<attack type="DARK" value="2200" />
+			</attribute>
 			<speed>
 				<walk ground="10" />
-				<run ground="10" />
+				<run ground="253" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>800</hitTime>
 		</stats>
-		<status attackable="true" />
-		<ai type="FIGHTER" aggroRange="300" isAggressive="true" />
+		<status attackable="true" canMove="false" targetable="false" />
 		<collision>
 			<radius normal="30" />
 			<height normal="97" />
@@ -6449,7 +6465,13 @@
 			<skill id="14823" level="1" /> <!-- Instant Kill Resistance -->
 			<skill id="16547" level="10" /> <!-- Danger Zone Resistance -->
 			<skill id="5599" level="12" /> <!-- Confusion Resistance -->
+			<skill id="34480" level="1" /> <!-- Death Guardian's Thorn -->
 		</skillList>
+		<ai type="MAGE" aggroRange="1100" isAggressive="true" clanHelpRange="1100" >
+			<clanList>
+				<clan>GUILLOTINE</clan>
+			</clanList>
+		</ai>
 	</npc>
 	<npc id="24683" level="125" type="Monster" name="Renard Flam">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
