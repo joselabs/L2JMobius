@@ -212,7 +212,7 @@ public class Q00833_DevilsTreasureTauti extends Quest
 	public Set<NpcLogListHolder> getNpcLogList(Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if (qs.isCond(1) || qs.isCond(4))
+		if ((qs != null) && (qs.isCond(1) || qs.isCond(4)))
 		{
 			final Set<NpcLogListHolder> holder = new HashSet<>(2);
 			holder.add(new NpcLogListHolder(FLAME_SCORPION, false, qs.getInt("killed_" + FLAME_SCORPION)));

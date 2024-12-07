@@ -215,7 +215,7 @@ public class Q10522_TheDarkSecretOfVarkaSilenos extends Quest
 	public Set<NpcLogListHolder> getNpcLogList(Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if (qs.isCond(1))
+		if ((qs != null) && qs.isCond(1))
 		{
 			final Set<NpcLogListHolder> holder = new HashSet<>(2);
 			holder.add(new NpcLogListHolder(VARKA_BACKUP_SHOOTER, false, qs.getInt("killed_" + VARKA_BACKUP_SHOOTER)));

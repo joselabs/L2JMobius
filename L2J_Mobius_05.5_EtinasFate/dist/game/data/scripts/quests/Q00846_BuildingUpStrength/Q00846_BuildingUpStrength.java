@@ -639,7 +639,7 @@ public final class Q00846_BuildingUpStrength extends Quest
 	public Set<NpcLogListHolder> getNpcLogList(Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if (qs.isCond(2) || qs.isCond(3) || qs.isCond(4))
+		if ((qs != null) && (qs.isCond(2) || qs.isCond(3) || qs.isCond(4)))
 		{
 			final Set<NpcLogListHolder> holder = new HashSet<>();
 			holder.add(new NpcLogListHolder(84605, true, qs.getInt("captiveMiner"))); // Rescue the Captive Miners

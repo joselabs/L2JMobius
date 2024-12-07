@@ -384,7 +384,7 @@ public final class Q10854_ToSeizeTheFortress extends Quest
 	public Set<NpcLogListHolder> getNpcLogList(Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if (qs.isCond(2))
+		if ((qs != null) && qs.isCond(2))
 		{
 			final Set<NpcLogListHolder> holder = new HashSet<>();
 			holder.add(new NpcLogListHolder(GEORK, false, qs.getInt("killed_" + GEORK)));

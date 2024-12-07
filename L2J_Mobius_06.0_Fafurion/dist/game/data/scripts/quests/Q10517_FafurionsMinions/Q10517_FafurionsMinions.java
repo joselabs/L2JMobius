@@ -225,7 +225,7 @@ public final class Q10517_FafurionsMinions extends Quest
 	public Set<NpcLogListHolder> getNpcLogList(Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if (qs.isCond(1))
+		if ((qs != null) && qs.isCond(1))
 		{
 			final Set<NpcLogListHolder> holder = new HashSet<>();
 			holder.add(new NpcLogListHolder(551710, true, qs.getInt(KILL_COUNT_VAR))); // Defeat Fafurion's Kin

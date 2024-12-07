@@ -241,7 +241,7 @@ public class Q00773_ToCalmTheFlood extends Quest
 	public Set<NpcLogListHolder> getNpcLogList(Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if (qs.isCond(1))
+		if ((qs != null) && qs.isCond(1))
 		{
 			final Set<NpcLogListHolder> holder = new HashSet<>();
 			holder.add(new NpcLogListHolder(ID_FAIRY, false, qs.getInt("killed_" + ID_FAIRY)));

@@ -556,7 +556,7 @@ public final class Q00841_ContaminationContainment extends Quest
 	public Set<NpcLogListHolder> getNpcLogList(Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if (qs.isCond(1))
+		if ((qs != null) && qs.isCond(1))
 		{
 			final Set<NpcLogListHolder> holder = new HashSet<>();
 			holder.add(new NpcLogListHolder(NpcStringId.DEFEAT_THE_ENRAGED_NYMPH, qs.getInt("killed_Nymphs"))); // Defeat the Enraged Nymph
