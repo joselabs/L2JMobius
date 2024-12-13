@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
@@ -29,6 +33,9 @@ import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.taskmanager.AttackStanceTaskManager;
 
+/**
+ * @author Mobius
+ */
 public class PetSummonInfo extends ServerPacket
 {
 	private final Summon _summon;
@@ -44,6 +51,8 @@ public class PetSummonInfo extends ServerPacket
 	private final double _moveMultiplier;
 	private int _maxFed;
 	private int _curFed;
+	private final Set<AbnormalVisualEffect> _abnormalVisualEffects;
+	private final Team _team;
 	private int _statusMask = 0;
 	
 	public PetSummonInfo(Summon summon, int value)
@@ -59,16 +68,19 @@ public class PetSummonInfo extends ServerPacket
 		_value = value;
 		if (summon.isPet())
 		{
-			final Pet pet = (Pet) _summon;
+			final Pet pet = _summon.asPet();
 			_curFed = pet.getCurrentFed(); // how fed it is
 			_maxFed = pet.getMaxFed(); // max fed it can be
 		}
 		else if (summon.isServitor())
 		{
-			final Servitor sum = (Servitor) _summon;
+			final Servitor sum = _summon.asServitor();
 			_curFed = sum.getLifeTimeRemaining();
 			_maxFed = sum.getLifeTime();
 		}
+		_abnormalVisualEffects = summon.getEffectList().getCurrentAbnormalVisualEffects();
+		_team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _summon.getTeam() : Team.NONE;
+		
 		if (summon.isBetrayed())
 		{
 			_statusMask |= 0x01; // Auto attackable status
@@ -103,8 +115,8 @@ public class PetSummonInfo extends ServerPacket
 		buffer.writeInt(_summon.getY());
 		buffer.writeInt(_summon.getZ());
 		buffer.writeInt(_summon.getHeading());
-		buffer.writeInt(_summon.getStat().getMAtkSpd());
-		buffer.writeInt(_summon.getStat().getPAtkSpd());
+		buffer.writeInt(_summon.getMAtkSpd());
+		buffer.writeInt(_summon.getPAtkSpd());
 		buffer.writeShort(_runSpd);
 		buffer.writeShort(_walkSpd);
 		buffer.writeShort(_swimRunSpd);
@@ -164,7 +176,7 @@ public class PetSummonInfo extends ServerPacket
 		buffer.writeInt(_summon.getMagicAccuracy()); // magic accuracy
 		buffer.writeInt(_summon.getMagicEvasionRate()); // magic evasion
 		buffer.writeInt(_summon.getMCriticalHit()); // mcritical
-		buffer.writeInt((int) _summon.getStat().getMoveSpeed()); // speed
+		buffer.writeInt((int) _summon.getMoveSpeed()); // speed
 		buffer.writeInt(_summon.getPAtkSpd()); // atkspeed
 		buffer.writeInt(_summon.getMAtkSpd()); // casting speed
 		buffer.writeByte(0); // TODO: Check me, might be ride status
@@ -175,25 +187,23 @@ public class PetSummonInfo extends ServerPacket
 		buffer.writeInt(0); // "Transformation ID - Confirmed" - Used to bug Fenrir after 64 level.
 		buffer.writeByte(_summon.getOwner().getSummonPoints()); // Used Summon Points
 		buffer.writeByte(_summon.getOwner().getMaxSummonPoints()); // Maximum Summon Points
-		final Set<AbnormalVisualEffect> aves = _summon.getEffectList().getCurrentAbnormalVisualEffects();
-		final Team team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _summon.getTeam() : Team.NONE;
-		buffer.writeShort(aves.size() + (_summon.isInvisible() ? 1 : 0) + (team != Team.NONE ? 1 : 0)); // Confirmed
-		for (AbnormalVisualEffect ave : aves)
+		buffer.writeShort(_abnormalVisualEffects.size() + (_summon.isInvisible() ? 1 : 0) + (_team != Team.NONE ? 1 : 0)); // Confirmed
+		for (AbnormalVisualEffect abnormalVisualEffect : _abnormalVisualEffects)
 		{
-			buffer.writeShort(ave.getClientId()); // Confirmed
+			buffer.writeShort(abnormalVisualEffect.getClientId()); // Confirmed
 		}
 		if (_summon.isInvisible())
 		{
 			buffer.writeShort(AbnormalVisualEffect.STEALTH.getClientId());
 		}
-		if (team == Team.BLUE)
+		if (_team == Team.BLUE)
 		{
 			if (Config.BLUE_TEAM_ABNORMAL_EFFECT != null)
 			{
 				buffer.writeShort(Config.BLUE_TEAM_ABNORMAL_EFFECT.getClientId());
 			}
 		}
-		else if ((team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
+		else if ((_team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
 		{
 			buffer.writeShort(Config.RED_TEAM_ABNORMAL_EFFECT.getClientId());
 		}

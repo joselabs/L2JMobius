@@ -297,6 +297,9 @@
 				<run ground="100" />
 			</speed>
 			<hitTime>600</hitTime>
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="true" canMove="false" randomWalk="false" />
 		<collision>
@@ -317,6 +320,9 @@
 				<run ground="100" />
 			</speed>
 			<hitTime>600</hitTime>
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="true" canMove="false" randomWalk="false" />
 		<collision>
@@ -337,6 +343,9 @@
 				<run ground="100" />
 			</speed>
 			<hitTime>600</hitTime>
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="true" canMove="false" randomWalk="false" />
 		<collision>
@@ -344,7 +353,7 @@
 			<height normal="60" />
 		</collision>
 	</npc>
-	<npc id="13611" level="85" type="Folk" name="Fire Earthquake">
+	<npc id="13611" level="99" type="Folk" name="Fire Earthquake">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -356,6 +365,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -375,6 +387,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -382,7 +397,7 @@
 			<height normal="36" />
 		</collision>
 	</npc>
-	<npc id="13613" level="85" type="Folk" name="Poison Swarm">
+	<npc id="13613" level="114" type="Folk" name="Poison Swarm">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -394,6 +409,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -401,7 +419,7 @@
 			<height normal="0.001" />
 		</collision>
 	</npc>
-	<npc id="13614" level="85" type="Folk" name="Poison Swarm">
+	<npc id="13614" level="119" type="Folk" name="Poison Swarm">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -413,6 +431,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -420,45 +441,95 @@
 			<height normal="0.001" />
 		</collision>
 	</npc>
-	<npc id="13615" level="85" type="Folk" name="Clone Attack">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+	<npc id="13615" level="113" type="Doppelganger" name="Clone Attack">
+		<parameters>
+			<skill name="Skill01_ID" id="10550" level="8" />
+			<skill name="Skill02_ID" id="10551" level="8" />
+		</parameters>
 		<race>ETC</race>
-		<sex>FEMALE</sex>
+		<sex>ETC</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3176" hpRegen="10.5" mp="1169" mpRegen="3.6" />
+			<vitals hp="250000" hpRegen="8.5" mp="1169" mpRegen="3" />
+			<attack physical="450000" magical="396" random="0" critical="16" accuracy="4.75" attackSpeed="623" type="FIST" range="40" distance="0" width="0" />
+			<defence physical="919000.5" magical="123000" />
 			<speed>
 				<walk ground="50" />
 				<run ground="131" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
+			<attribute>
+				<attack type="DARK" value="450" />
+				<defence fire="150" water="150" wind="150" earth="150" holy="150" dark="150" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
+		<shots soul="1000" shotChance="100" />
+		<skillList>
+			<skill id="4416" level="19" /> <!-- Others -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
+			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
+			<skill id="4410" level="11" /> <!-- Average Damage Dealer -->
+			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
+			<skill id="4412" level="11" /> <!-- Average P. Def. -->
+			<skill id="4413" level="11" /> <!-- Average M. Def. -->
+			<skill id="4414" level="2" /> <!-- Standard Type -->
+			<skill id="4415" level="1" /> <!-- Bare Hands -->
+			<skill id="4390" level="1" /> <!-- Mystic Immunity -->
+			<skill id="10550" level="8" /> <!-- Illusion Strike -->
+			<skill id="10551" level="8" /> <!-- Illusion Trick -->
+		</skillList>
 		<collision>
 			<radius normal="8.5" />
 			<height normal="25" />
 		</collision>
 	</npc>
-	<npc id="13616" level="85" type="Folk" name="Clone Attack">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+	<npc id="13616" level="118" type="Doppelganger" name="Clone Attack">
+		<parameters>
+			<skill name="Skill01_ID" id="10550" level="8" />
+			<skill name="Skill02_ID" id="10551" level="8" />
+		</parameters>
 		<race>ETC</race>
-		<sex>FEMALE</sex>
+		<sex>ETC</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3176" hpRegen="10.5" mp="1169" mpRegen="3.6" />
+			<vitals hp="350000" hpRegen="8.5" mp="1169" mpRegen="3" />
+			<attack physical="650000" magical="396" random="0" critical="16" accuracy="4.75" attackSpeed="623" type="FIST" range="40" distance="0" width="0" />
+			<defence physical="1419000.5" magical="283000" />
 			<speed>
 				<walk ground="50" />
 				<run ground="131" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
+			<hitTime>600</hitTime>
+			<attribute>
+				<attack type="DARK" value="450" />
+				<defence fire="150" water="150" wind="150" earth="150" holy="150" dark="150" />
+			</attribute>
+			<abnormalResist physical="10" magical="10" />
 		</stats>
-		<status attackable="false" />
+		<status attackable="true" />
+		<shots soul="1000" shotChance="100" />
+		<skillList>
+			<skill id="4416" level="19" /> <!-- Others -->
+			<skill id="5467" level="1" /> <!-- Dark Attribute -->
+			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
+			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
+			<skill id="4410" level="11" /> <!-- Average Damage Dealer -->
+			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
+			<skill id="4412" level="11" /> <!-- Average P. Def. -->
+			<skill id="4413" level="11" /> <!-- Average M. Def. -->
+			<skill id="4414" level="2" /> <!-- Standard Type -->
+			<skill id="4415" level="1" /> <!-- Bare Hands -->
+			<skill id="4390" level="1" /> <!-- Mystic Immunity -->
+			<skill id="10550" level="8" /> <!-- Illusion Strike -->
+			<skill id="10551" level="8" /> <!-- Illusion Trick -->
+		</skillList>
 		<collision>
 			<radius normal="8.5" />
 			<height normal="25" />
 		</collision>
 	</npc>
-	<npc id="13617" level="85" type="Folk" name="Istina Acid Swarm">
+	<npc id="13617" level="114" type="Folk" name="Istina Acid Swarm">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -470,6 +541,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -477,7 +551,7 @@
 			<height normal="0.001" />
 		</collision>
 	</npc>
-	<npc id="13618" level="85" type="Folk" name="Istina Acid Swarm">
+	<npc id="13618" level="119" type="Folk" name="Istina Acid Swarm">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -489,6 +563,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -496,7 +573,7 @@
 			<height normal="0.001" />
 		</collision>
 	</npc>
-	<npc id="13619" level="85" type="Folk" name="Shadow Snare">
+	<npc id="13619" level="111" type="Folk" name="Shadow Snare">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -508,6 +585,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -515,7 +595,7 @@
 			<height normal="0.001" />
 		</collision>
 	</npc>
-	<npc id="13620" level="85" type="Folk" name="Shadow Snare">
+	<npc id="13620" level="116" type="Folk" name="Shadow Snare">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -527,6 +607,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -534,7 +617,7 @@
 			<height normal="0.001" />
 		</collision>
 	</npc>
-	<npc id="13621" level="85" type="Folk" name="Frost Trap">
+	<npc id="13621" level="113" type="Folk" name="Frost Trap">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -546,6 +629,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -553,7 +639,7 @@
 			<height normal="10" />
 		</collision>
 	</npc>
-	<npc id="13622" level="85" type="Folk" name="Frost Trap">
+	<npc id="13622" level="118" type="Folk" name="Frost Trap">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -565,6 +651,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -572,7 +661,7 @@
 			<height normal="10" />
 		</collision>
 	</npc>
-	<npc id="13623" level="85" type="Folk" name="Shackles">
+	<npc id="13623" level="114" type="Folk" name="Shackles">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -584,6 +673,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -591,7 +683,7 @@
 			<height normal="10" />
 		</collision>
 	</npc>
-	<npc id="13624" level="85" type="Folk" name="Shackles">
+	<npc id="13624" level="119" type="Folk" name="Shackles">
 		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>ETC</race>
 		<sex>FEMALE</sex>
@@ -603,6 +695,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>
@@ -623,6 +718,9 @@
 				<run ground="100" />
 			</speed>
 			<hitTime>600</hitTime>
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="true" />
 		<collision>
@@ -630,7 +728,7 @@
 			<height normal="35" />
 		</collision>
 	</npc>
-	<npc id="13626" level="109" type="EffectPoint" name="Stone of Nature">
+	<npc id="13626" level="109" type="Folk" name="Stone of Nature">
 		<parameters>
 			<skill name="union_skill" id="11359" level="3" />
 			<skill name="union_skill" id="31221" level="3" />
@@ -670,7 +768,7 @@
 			<height normal="20" />
 		</collision>
 	</npc>
-	<npc id="13627" level="112" type="EffectPoint" name="Stone of Nature">
+	<npc id="13627" level="112" type="Folk" name="Stone of Nature">
 		<parameters>
 			<skill name="union_skill" id="11359" level="4" />
 			<skill name="union_skill" id="31221" level="4" />
@@ -710,7 +808,7 @@
 			<height normal="20" />
 		</collision>
 	</npc>
-	<npc id="13628" level="117" type="EffectPoint" name="Stone of Nature">
+	<npc id="13628" level="117" type="Folk" name="Stone of Nature">
 		<parameters>
 			<skill name="union_skill" id="11359" level="5" />
 			<skill name="union_skill" id="31221" level="5" />
@@ -750,96 +848,125 @@
 			<height normal="20" />
 		</collision>
 	</npc>
-	<npc id="13629" level="85" type="Folk" name="Elemental Stone">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="13629" level="99" type="Folk" name="Elemental Stone">
+		<parameters>
+			<skill name="union_skill" id="31198" level="1" />
+		</parameters>
+		<race>ANIMAL</race>
+		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8446" hpRegen="10.5" mp="2355" mpRegen="3.6" />
+			<vitals hp="5328.9886937978" hpRegen="720" mp="1909.905" mpRegen="366.66666666667" />
+			<attack physical="1135216.21257" magical="6897.5895770073" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="27483.08211" magical="18827.721" />
+			<attribute>
+				<defence fire="350" water="350" wind="350" earth="350" holy="350" dark="350" />
+			</attribute>
 			<speed>
 				<walk ground="1" />
 				<run ground="120" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
 		</stats>
-		<status attackable="false" />
+		<status attackable="false" undying="true" canMove="false" hasSummoner="true" targetable="false" />
 		<collision>
 			<radius normal="12" />
 			<height normal="20" />
 		</collision>
 	</npc>
-	<npc id="13630" level="85" type="Folk" name="Elemental Stone">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="13630" level="101" type="Folk" name="Elemental Stone">
+		<parameters>
+			<skill name="union_skill" id="31198" level="1" />
+			<skill name="Skill01_ID" id="31199" level="2" />
+		</parameters>
+		<race>ANIMAL</race>
+		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8446" hpRegen="10.5" mp="2355" mpRegen="3.6" />
+			<vitals hp="5328.9886937978" hpRegen="734.54545454545" mp="1909.905" mpRegen="374.07407407407" />
+			<attack physical="1181546.84057" magical="7179.0951204011" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="28604.72611" magical="19596.121" />
+			<attribute>
+				<defence fire="350" water="350" wind="350" earth="350" holy="350" dark="350" />
+			</attribute>
 			<speed>
 				<walk ground="1" />
 				<run ground="120" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
 		</stats>
-		<status attackable="false" />
+		<status attackable="false" undying="true" canMove="false" hasSummoner="true" targetable="false" />
 		<collision>
 			<radius normal="12" />
 			<height normal="20" />
 		</collision>
 	</npc>
-	<npc id="13631" level="85" type="Folk" name="Elemental Stone">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="13631" level="109" type="Folk" name="Elemental Stone">
+		<parameters>
+			<skill name="union_skill" id="31198" level="1" />
+			<skill name="Skill01_ID" id="31199" level="3" />
+		</parameters>
+		<race>ANIMAL</race>
+		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8446" hpRegen="10.5" mp="2355" mpRegen="3.6" />
+			<vitals hp="5328.9886937978" hpRegen="792.72727272727" mp="1909.905" mpRegen="403.7037037037" />
+			<attack physical="1376135.47817" magical="8361.4184026552" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="33315.63091" magical="22823.401" />
+			<attribute>
+				<defence fire="350" water="350" wind="350" earth="350" holy="350" dark="350" />
+			</attribute>
 			<speed>
 				<walk ground="1" />
 				<run ground="120" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
 		</stats>
-		<status attackable="false" />
+		<status attackable="false" undying="true" canMove="false" hasSummoner="true" targetable="false" />
 		<collision>
 			<radius normal="12" />
 			<height normal="20" />
 		</collision>
 	</npc>
-	<npc id="13632" level="85" type="Folk" name="Elemental Stone">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="13632" level="112" type="Folk" name="Elemental Stone">
+		<parameters>
+			<skill name="union_skill" id="31198" level="1" />
+			<skill name="Skill01_ID" id="31199" level="4" />
+		</parameters>
+		<race>ANIMAL</race>
+		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8446" hpRegen="10.5" mp="2355" mpRegen="3.6" />
+			<vitals hp="5328.9886937978" hpRegen="814.54545454545" mp="1909.905" mpRegen="414.81481481481" />
+			<attack physical="1452928.49408" magical="8828.0138408304" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="35174.75584" magical="24097.024" />
+			<attribute>
+				<defence fire="350" water="350" wind="350" earth="350" holy="350" dark="350" />
+			</attribute>
 			<speed>
 				<walk ground="1" />
 				<run ground="120" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
 		</stats>
-		<status attackable="false" />
+		<status attackable="false" undying="true" canMove="false" hasSummoner="true" targetable="false" />
 		<collision>
 			<radius normal="12" />
 			<height normal="20" />
 		</collision>
 	</npc>
-	<npc id="13633" level="85" type="Folk" name="Elemental Stone">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
-		<sex>FEMALE</sex>
+	<npc id="13633" level="117" type="Folk" name="Elemental Stone">
+		<parameters>
+			<skill name="union_skill" id="31198" level="1" />
+			<skill name="Skill01_ID" id="31199" level="5" />
+		</parameters>
+		<race>ANIMAL</race>
+		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8446" hpRegen="10.5" mp="2355" mpRegen="3.6" />
+			<vitals hp="5328.9886937978" hpRegen="850.90909090909" mp="1909.905" mpRegen="433.33333333333" />
+			<attack physical="1585549.91673" magical="9633.8234587953" random="30" critical="4.75" accuracy="4.75" attackSpeed="250" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="38385.46179" magical="26296.569" />
+			<attribute>
+				<defence fire="350" water="350" wind="350" earth="350" holy="350" dark="350" />
+			</attribute>
 			<speed>
 				<walk ground="1" />
 				<run ground="120" />
 			</speed>
-			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
-			<defence physical="405.85106382979" magical="297.0297029703" />
 		</stats>
-		<status attackable="false" />
+		<status attackable="false" undying="true" canMove="false" hasSummoner="true" targetable="false" />
 		<collision>
 			<radius normal="12" />
 			<height normal="20" />
@@ -857,6 +984,9 @@
 			</speed>
 			<attack physical="1950.2231755595" magical="1331.5869440987" critical="4" attackSpeed="253" range="40" />
 			<defence physical="405.85106382979" magical="297.0297029703" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
 		</stats>
 		<status attackable="false" />
 		<collision>

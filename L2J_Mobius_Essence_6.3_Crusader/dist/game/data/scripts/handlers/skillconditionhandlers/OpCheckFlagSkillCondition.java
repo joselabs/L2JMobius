@@ -45,7 +45,7 @@ public class OpCheckFlagSkillCondition implements ISkillCondition
 			return false;
 		}
 		
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
 		boolean canTakeFort = true;
 		if (player.isAlikeDead() || player.isCursedWeaponEquipped() || !player.isClanLeader())
 		{

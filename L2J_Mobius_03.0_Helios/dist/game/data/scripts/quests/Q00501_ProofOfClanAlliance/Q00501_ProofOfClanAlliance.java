@@ -284,7 +284,7 @@ public class Q00501_ProofOfClanAlliance extends Quest
 					final Creature summoner = npc.getSummoner();
 					if ((summoner != null) && summoner.isNpc() && lqs.isMemoState(4))
 					{
-						final Npc arthea = (Npc) summoner;
+						final Npc arthea = summoner.asNpc();
 						if ((lqs.getInt("flag") == 3) && arthea.isScriptValue(15))
 						{
 							lqs.set("flag", lqs.getInt("flag") + 1);

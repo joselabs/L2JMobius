@@ -37,6 +37,11 @@ public class ManaHeal extends AbstractEffect
 	public ManaHeal(StatSet params)
 	{
 		_power = params.getDouble("power", 0);
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override

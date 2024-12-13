@@ -1,181 +1,119 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package quests.Q00374_WhisperOfDreamsPart1;
 
+import org.l2jmobius.commons.util.Rnd;
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Whisper Of Dreams Part1 (374)
- * @author Stayway
- */
 public class Q00374_WhisperOfDreamsPart1 extends Quest
 {
 	// NPCs
-	private static final int VANUTU = 30938;
-	private static final int GALMAN = 31044;
+	private static final int MANAKIA = 30515;
+	private static final int TORAI = 30557;
+	// Monsters
 	private static final int CAVE_BEAST = 20620;
 	private static final int DEATH_WAVE = 20621;
 	// Items
-	private static final ItemHolder CAVE_BEAST_TOOTH = new ItemHolder(5884, 360);
-	private static final ItemHolder DEATH_WAVE_LIGHT = new ItemHolder(5885, 360);
-	private static final ItemHolder SEALED_MYSTERIOUS_STONE = new ItemHolder(5886, 1);
+	private static final int CAVE_BEAST_TOOTH = 5884;
+	private static final int DEATH_WAVE_LIGHT = 5885;
+	private static final int SEALED_MYSTERIOUS_STONE = 5886;
 	private static final int MYSTERIOUS_STONE = 5887;
 	// Rewards
-	private static final int SCROLL_PART_EA = 49475;
-	private static final int REFINED_SCROLL_PART_EA = 49478;
-	private static final int ENCHANT_ARMOR_B = 948;
-	private static final int IMPROVED_ENCHANT_ARMOR_B = 29743;
-	// Misc
-	private static final int MIN_LEVEL = 56;
-	private static final int MAX_LEVEL = 66;
+	private static final int[][] REWARDS =
+	{
+		// @formatter:off
+		{5486, 3, 2950}, // Dark Crystal, 3x, 2950 adena
+		{5487, 3, 18050}, // Nightmare, 3x, 18050 adena
+		{5488, 3, 18050}, // Majestic, 3x, 18050 adena
+		{5485, 3, 10450}, // Tallum Tunic, 3x, 10450 adena
+		{5489, 3, 15550}, // Tallum Stockings, 3x, 15550 adena
+		// @formatter:on
+	};
 	
 	public Q00374_WhisperOfDreamsPart1()
 	{
 		super(374);
-		addStartNpc(VANUTU);
-		addTalkId(VANUTU, GALMAN);
+		registerQuestItems(DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH, SEALED_MYSTERIOUS_STONE, MYSTERIOUS_STONE);
+		addStartNpc(MANAKIA);
+		addTalkId(MANAKIA, TORAI);
 		addKillId(CAVE_BEAST, DEATH_WAVE);
-		addCondLevel(MIN_LEVEL, MAX_LEVEL, "30938-02.html");
-		registerQuestItems(SEALED_MYSTERIOUS_STONE.getId());
 	}
 	
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
+			return htmltext;
+		}
+		
+		// Manakia
+		if (event.equals("30515-03.htm"))
+		{
+			st.startQuest();
+			st.set("condStone", "1");
+		}
+		else if (event.startsWith("30515-06-"))
+		{
+			if ((getQuestItemsCount(player, CAVE_BEAST_TOOTH) >= 65) && (getQuestItemsCount(player, DEATH_WAVE_LIGHT) >= 65))
 			{
-				case "30938-01.htm":
-				{
-					qs.startQuest();
-					htmltext = event;
-					break;
-				}
-				case "30938-06.html":
-				{
-					if (qs.isCond(2))
-					{
-						qs.setCond(3, true);
-						htmltext = event;
-					}
-					break;
-				}
-				case "reward1":
-				{
-					if (hasAllItems(player, true, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH))
-					{
-						if (qs.isCond(2))
-						{
-							giveItems(player, SCROLL_PART_EA, 1);
-							takeAllItems(player, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH);
-							giveAdena(player, 9000, true);
-							htmltext = "30938-05.html";
-						}
-						else if (qs.isCond(4))
-						{
-							giveItems(player, SCROLL_PART_EA, 1);
-							takeAllItems(player, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH);
-							giveAdena(player, 9000, true);
-							htmltext = "30938-08.html";
-						}
-					}
-					break;
-				}
-				case "reward2":
-				{
-					if (hasAllItems(player, true, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH))
-					{
-						if (qs.isCond(2))
-						{
-							giveItems(player, REFINED_SCROLL_PART_EA, 1);
-							takeAllItems(player, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH);
-							giveAdena(player, 9000, true);
-							htmltext = "30938-05.html";
-						}
-						else if (qs.isCond(4))
-						{
-							giveItems(player, REFINED_SCROLL_PART_EA, 1);
-							takeAllItems(player, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH);
-							giveAdena(player, 9000, true);
-							htmltext = "30938-08.html";
-						}
-					}
-					break;
-				}
-				case "reward3":
-				{
-					if (hasAllItems(player, true, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH))
-					{
-						if (qs.isCond(2))
-						{
-							giveItems(player, ENCHANT_ARMOR_B, 1);
-							takeAllItems(player, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH);
-							giveAdena(player, 9000, true);
-							htmltext = "30938-05.html";
-						}
-						else if (qs.isCond(4))
-						{
-							giveItems(player, ENCHANT_ARMOR_B, 1);
-							takeAllItems(player, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH);
-							giveAdena(player, 9000, true);
-							htmltext = "30938-08.html";
-						}
-					}
-					break;
-				}
-				case "reward4":
-				{
-					if (hasAllItems(player, true, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH))
-					{
-						if (qs.isCond(2))
-						{
-							giveItems(player, IMPROVED_ENCHANT_ARMOR_B, 1);
-							takeAllItems(player, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH);
-							giveAdena(player, 9000, true);
-							htmltext = "30938-05.html";
-						}
-						else if (qs.isCond(4))
-						{
-							giveItems(player, IMPROVED_ENCHANT_ARMOR_B, 1);
-							takeAllItems(player, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH);
-							giveAdena(player, 9000, true);
-							htmltext = "30938-08.html";
-						}
-					}
-					break;
-				}
-				case "31044-01.html":
-				{
-					if (qs.isCond(4))
-					{
-						giveItems(player, MYSTERIOUS_STONE, 1);
-						takeAllItems(player, SEALED_MYSTERIOUS_STONE);
-						qs.exitQuest(true, true);
-						htmltext = event;
-					}
-					break;
-				}
+				htmltext = "30515-06.htm";
+				playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+				
+				final int[] reward = REWARDS[Integer.parseInt(event.substring(9, 10))];
+				
+				takeItems(player, CAVE_BEAST_TOOTH, 65);
+				takeItems(player, DEATH_WAVE_LIGHT, 65);
+				
+				giveAdena(player, reward[2], true);
+				giveItems(player, reward[0], reward[1]);
+			}
+			else
+			{
+				htmltext = "30515-07.htm";
+			}
+		}
+		else if (event.equals("30515-08.htm"))
+		{
+			st.exitQuest(true, true);
+		}
+		// Torai
+		else if (event.equals("30557-02.htm"))
+		{
+			if (st.isCond(2) && hasQuestItems(player, SEALED_MYSTERIOUS_STONE))
+			{
+				st.setCond(3, true);
+				takeItems(player, SEALED_MYSTERIOUS_STONE, -1);
+				giveItems(player, MYSTERIOUS_STONE, 1);
+			}
+			else
+			{
+				htmltext = "30557-03.htm";
 			}
 		}
 		return htmltext;
@@ -184,102 +122,104 @@ public class Q00374_WhisperOfDreamsPart1 extends Quest
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case VANUTU:
+			case State.CREATED:
 			{
-				if (qs.isCompleted())
+				htmltext = (player.getLevel() < 56) ? "30515-01.htm" : "30515-02.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					htmltext = getAlreadyCompletedMsg(player);
-				}
-				else if (qs.isCreated())
-				{
-					htmltext = "30938.htm";
-				}
-				else if (qs.isStarted())
-				{
-					switch (qs.getCond())
+					case MANAKIA:
 					{
-						case 1:
+						if (!hasQuestItems(player, SEALED_MYSTERIOUS_STONE))
 						{
-							htmltext = "30938-03.html";
-							break;
+							if ((getQuestItemsCount(player, CAVE_BEAST_TOOTH) >= 65) && (getQuestItemsCount(player, DEATH_WAVE_LIGHT) >= 65))
+							{
+								htmltext = "30515-05.htm";
+							}
+							else
+							{
+								htmltext = "30515-04.htm";
+							}
 						}
-						case 2:
+						else
 						{
-							htmltext = "30938-04.html";
-							break;
+							if (cond == 1)
+							{
+								htmltext = "30515-09.htm";
+								st.setCond(2, true);
+							}
+							else
+							{
+								htmltext = "30515-10.htm";
+							}
 						}
-						case 3:
+						break;
+					}
+					case TORAI:
+					{
+						if ((cond == 2) && hasQuestItems(player, SEALED_MYSTERIOUS_STONE))
 						{
-							htmltext = "30938-07.html";
-							break;
+							htmltext = "30557-01.htm";
 						}
-						case 4:
-						{
-							htmltext = "30938-08.html";
-							break;
-						}
+						break;
 					}
 				}
 				break;
 			}
-			case GALMAN:
-			{
-				if (qs.isCond(4))
-				{
-					htmltext = "31044.html";
-				}
-				break;
-			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final QuestState qs = getRandomPartyMemberState(killer, -1, 3, npc);
-		if (qs != null)
+		// Drop tooth or light to anyone.
+		Player partyMember = getRandomPartyMemberState(player, State.STARTED);
+		if (partyMember == null)
 		{
-			switch (npc.getId())
-			{
-				case CAVE_BEAST:
-				{
-					if (qs.getCond() < 4)
-					{
-						giveItemRandomly(qs.getPlayer(), npc, CAVE_BEAST_TOOTH.getId(), 1, CAVE_BEAST_TOOTH.getCount(), 0.9, true);
-						if (qs.isCond(3))
-						{
-							giveItemRandomly(qs.getPlayer(), npc, SEALED_MYSTERIOUS_STONE.getId(), 1, SEALED_MYSTERIOUS_STONE.getCount(), 0.2, true);
-						}
-					}
-					break;
-				}
-				case DEATH_WAVE:
-				{
-					if (qs.getCond() < 4)
-					{
-						giveItemRandomly(qs.getPlayer(), npc, DEATH_WAVE_LIGHT.getId(), 1, DEATH_WAVE_LIGHT.getCount(), 0.9, true);
-						if (qs.isCond(3))
-						{
-							giveItemRandomly(qs.getPlayer(), npc, SEALED_MYSTERIOUS_STONE.getId(), 1, SEALED_MYSTERIOUS_STONE.getCount(), 0.2, true);
-						}
-					}
-					break;
-				}
-			}
-			if (qs.isCond(1) && (hasAllItems(qs.getPlayer(), true, DEATH_WAVE_LIGHT, CAVE_BEAST_TOOTH)))
-			{
-				qs.setCond(2, true);
-			}
-			if (qs.isCond(3) && (hasAllItems(qs.getPlayer(), true, SEALED_MYSTERIOUS_STONE)))
-			{
-				qs.setCond(4, true);
-			}
+			return null;
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		QuestState st = partyMember.getQuestState(getName());
+		if (st == null)
+		{
+			return null;
+		}
+		
+		if (getRandomBoolean())
+		{
+			giveItems(st.getPlayer(), (npc.getId() == CAVE_BEAST) ? CAVE_BEAST_TOOTH : DEATH_WAVE_LIGHT, Rnd.get(1, 5));
+		}
+		
+		// Drop sealed mysterious stone to party member who still need it.
+		partyMember = getRandomPartyMember(player, "condStone", "1");
+		if (partyMember == null)
+		{
+			return null;
+		}
+		
+		st = partyMember.getQuestState(getName());
+		if (st == null)
+		{
+			return null;
+		}
+		
+		if (Rnd.get(100) < 1) // 1%
+		{
+			giveItems(st.getPlayer(), SEALED_MYSTERIOUS_STONE, 1);
+			st.unset("condStone");
+		}
+		
+		return null;
 	}
 }

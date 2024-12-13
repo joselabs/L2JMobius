@@ -459,7 +459,7 @@ public class Nursery extends AbstractInstance
 	{
 		if (creature.isPlayer())
 		{
-			enterInstance(creature.getActingPlayer(), null, TEMPLATE_ID);
+			enterInstance(creature.asPlayer(), null, TEMPLATE_ID);
 		}
 		return super.onEnterZone(creature, zone);
 	}

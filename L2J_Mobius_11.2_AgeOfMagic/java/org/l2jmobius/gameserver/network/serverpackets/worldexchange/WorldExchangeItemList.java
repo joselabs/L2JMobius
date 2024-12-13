@@ -1,22 +1,25 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.worldexchange;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.l2jmobius.commons.network.WritableBuffer;
@@ -31,41 +34,47 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
- * @author Index
+ * @author Index, Brado
  */
 public class WorldExchangeItemList extends ServerPacket
 {
-	public static final WorldExchangeItemList EMPTY_LIST = new WorldExchangeItemList(Collections.emptyList(), null);
+	private static final int ITEMS_PER_PAGE = 100;
 	
 	private final List<WorldExchangeHolder> _holders;
 	private final WorldExchangeItemSubType _type;
+	private final int _page;
 	
-	public WorldExchangeItemList(List<WorldExchangeHolder> holders, WorldExchangeItemSubType type)
+	public WorldExchangeItemList(List<WorldExchangeHolder> holders, WorldExchangeItemSubType type, int page)
 	{
 		_holders = holders;
 		_type = type;
+		_page = page;
 	}
 	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		if (_holders.isEmpty())
+		ServerPackets.EX_WORLD_EXCHANGE_ITEM_LIST.writeId(this, buffer);
+		
+		final int totalPages = (int) Math.ceil((double) _holders.size() / ITEMS_PER_PAGE);
+		final int startIndex = (_page == 0) ? 0 : (_page - 1) * ITEMS_PER_PAGE;
+		final int endIndex = Math.min(startIndex + ITEMS_PER_PAGE, _holders.size());
+		if (_holders.isEmpty() || (_page > totalPages))
 		{
 			buffer.writeShort(0); // Category
 			buffer.writeByte(0); // SortType
-			buffer.writeInt(0); // Page
+			buffer.writeInt(_page);
 			buffer.writeInt(0); // ItemIDList
 			return;
 		}
 		
-		ServerPackets.EX_WORLD_EXCHANGE_ITEM_LIST.writeId(this, buffer);
 		buffer.writeShort(_type.getId());
 		buffer.writeByte(0);
-		buffer.writeInt(0);
-		buffer.writeInt(_holders.size());
-		for (WorldExchangeHolder holder : _holders)
+		buffer.writeInt(_page);
+		buffer.writeInt(endIndex - startIndex);
+		for (int i = startIndex; i < endIndex; i++)
 		{
-			getItemInfo(buffer, holder);
+			getItemInfo(buffer, _holders.get(i));
 		}
 	}
 	

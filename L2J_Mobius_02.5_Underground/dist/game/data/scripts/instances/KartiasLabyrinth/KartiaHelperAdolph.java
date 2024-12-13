@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package instances.KartiasLabyrinth;
 
@@ -244,7 +248,7 @@ public class KartiaHelperAdolph extends AbstractNpcAI
 	
 	public void onCreatureAttacked(OnCreatureAttacked event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		if (npc != null)
 		{
 			final Instance instance = npc.getInstanceWorld();
@@ -253,7 +257,7 @@ public class KartiaHelperAdolph extends AbstractNpcAI
 				if (!npc.isInCombat())
 				{
 					npc.setTarget(event.getAttacker());
-					addAttackDesire(npc, (Creature) npc.getTarget());
+					addAttackDesire(npc, npc.getTarget().asCreature());
 					final StatSet instParams = instance.getTemplateParameters();
 					final SkillHolder hateSkill = instParams.getSkillHolder("adolphHate");
 					if ((hateSkill != null) && SkillCaster.checkUseConditions(npc, hateSkill.getSkill()))
@@ -267,7 +271,7 @@ public class KartiaHelperAdolph extends AbstractNpcAI
 	
 	public void onCreatureKill(OnCreatureDeath event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Instance world = npc.getInstanceWorld();
 		if (world != null)
 		{
@@ -292,7 +296,7 @@ public class KartiaHelperAdolph extends AbstractNpcAI
 	{
 		if (creature.isPlayer())
 		{
-			npc.getVariables().set("PLAYER_OBJECT", creature.getActingPlayer());
+			npc.getVariables().set("PLAYER_OBJECT", creature.asPlayer());
 		}
 		return super.onCreatureSee(npc, creature);
 	}

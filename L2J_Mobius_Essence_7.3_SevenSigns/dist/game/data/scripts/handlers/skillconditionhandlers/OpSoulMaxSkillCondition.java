@@ -40,6 +40,6 @@ public class OpSoulMaxSkillCondition implements ISkillCondition
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
 		final int maxSouls = (int) caster.getStat().getValue(Stat.MAX_SOULS);
-		return caster.isPlayable() && (caster.getActingPlayer().getChargedSouls(_type) < maxSouls);
+		return caster.isPlayable() && (caster.asPlayer().getChargedSouls(_type) < maxSouls);
 	}
 }

@@ -48,7 +48,7 @@ public class ConditionPlayerCanCreateBase extends Condition
 			return !_value;
 		}
 		
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		boolean canCreateBase = !player.isAlikeDead() && !player.isCursedWeaponEquipped() && (player.getClan() != null);
 		final Castle castle = CastleManager.getInstance().getCastle(player);
 		final SystemMessage sm;

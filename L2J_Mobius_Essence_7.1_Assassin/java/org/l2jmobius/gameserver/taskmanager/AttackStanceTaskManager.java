@@ -76,7 +76,7 @@ public class AttackStanceTaskManager implements Runnable
 							creature.getAI().setAutoAttacking(false);
 							if (creature.isPlayer() && creature.hasSummon())
 							{
-								creature.getActingPlayer().clearDamageTaken();
+								creature.asPlayer().clearDamageTaken();
 								final Summon pet = creature.getPet();
 								if (pet != null)
 								{
@@ -124,7 +124,7 @@ public class AttackStanceTaskManager implements Runnable
 		{
 			if (actor.isSummon())
 			{
-				actor = actor.getActingPlayer();
+				actor = actor.asPlayer();
 			}
 			CREATURE_ATTACK_STANCES.remove(actor);
 		}
@@ -142,7 +142,7 @@ public class AttackStanceTaskManager implements Runnable
 		{
 			if (actor.isSummon())
 			{
-				actor = actor.getActingPlayer();
+				actor = actor.asPlayer();
 			}
 			return CREATURE_ATTACK_STANCES.containsKey(actor);
 		}

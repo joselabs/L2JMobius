@@ -71,7 +71,7 @@ public class StaticObjectScope implements IAffectScopeHandler
 		};
 		
 		// Add object of origin since it is skipped in the forEachVisibleObjectInRange method.
-		if (target.isCreature() && filter.test((Creature) target))
+		if (target.isCreature() && filter.test(target.asCreature()))
 		{
 			action.accept(target);
 		}

@@ -116,7 +116,7 @@ public class PrisonGuards extends AbstractNpcAI
 	{
 		if ((skill == SILENCE.getSkill()) || (skill == STONE.getSkill()))
 		{
-			((Attackable) npc).clearAggroList();
+			npc.asAttackable().clearAggroList();
 			npc.setTarget(npc);
 		}
 		return super.onSpellFinished(npc, player, skill);

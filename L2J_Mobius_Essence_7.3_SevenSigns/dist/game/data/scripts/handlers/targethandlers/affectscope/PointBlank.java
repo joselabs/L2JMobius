@@ -79,7 +79,7 @@ public class PointBlank implements IAffectScopeHandler
 		{
 			if (creature.isPlayable())
 			{
-				final Location worldPosition = creature.getActingPlayer().getCurrentSkillWorldPosition();
+				final Location worldPosition = creature.asPlayer().getCurrentSkillWorldPosition();
 				if (worldPosition != null)
 				{
 					World.getInstance().forEachVisibleObjectInRange(creature, Creature.class, (int) (affectRange + creature.calculateDistance2D(worldPosition)), c ->

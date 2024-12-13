@@ -178,7 +178,7 @@ public class Q00414_PathOfTheOrcRaider extends Quest
 						else
 						{
 							takeItems(killer, GREEN_BLOOD, -1);
-							final Attackable monster = (Attackable) addSpawn(KURUKA_RATMAN_LEADER, npc, true, 0, true);
+							final Attackable monster = addSpawn(KURUKA_RATMAN_LEADER, npc, true, 0, true).asAttackable();
 							attackPlayer(monster, killer);
 						}
 					}

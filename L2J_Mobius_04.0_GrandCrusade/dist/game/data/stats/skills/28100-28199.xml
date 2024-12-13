@@ -1,7 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="28142" toLevel="10" name="Sayha's Talisman">
-		<!-- Receives a boosting effect for P. Defense by 112, M. Defense by 74, and XP/SP by 1%. -->
+		<!-- Level 1: Receives a boosting effect for P. Defense by 112, M. Defense by 74, and XP/SP by 1%. -->
+		<!-- Level 2: Receives a boosting effect for P. Defense by 225, M. Defense by 147, and XP/SP by 2%. -->
+		<!-- Level 3: Receives a boosting effect for P. Defense by 450, M. Defense by 294, and XP/SP by 3%. -->
+		<!-- Level 4: Receives a boosting effect for P. Defense by 676, M. Defense by 441, and XP/SP by 5%. -->
+		<!-- Level 5: Receives a boosting effect for P. Defense by 901, M. Defense by 589, and XP/SP by 7%. -->
+		<!-- Level 6: Receives a boosting effect for P. Defense by 1126, M. Defense by 736, and XP/SP by 10%. -->
+		<!-- Level 7: Receives a boosting effect for P. Defense by 1351, M. Defense by 833, and XP/SP by 15%. -->
+		<!-- Level 8: Receives a boosting effect for P. Defense by 1576, M. Defense by 1030, and XP/SP by 20%. -->
+		<!-- Level 9: Receives a boosting effect for Defense by 1801, M. Defense by 1178, XP/SP by 25% and Recovery Potion and Miracle Potion by 1000. -->
+		<!-- Level 10: Receives a boosting effect for Defense by 2027, M. Defense by 1325, XP/SP by 30% and Recovery Potion and Miracle Potion by 2000. -->
 		<icon>icon.bm_sayhas_talisman</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -113,7 +122,10 @@
 		</effects>
 	</skill>
 	<skill id="28143" toLevel="4" name="Sayha's Trust">
-		<!-- Skill Power + 2%, Skill Cooldown - 2%. -->
+		<!-- Level 1: Skill Power + 2%, Skill Cooldown - 2%. -->
+		<!-- Level 2: Skill Power + 3%, Skill Cooldown - 3%. -->
+		<!-- Level 3: Skill Power + 5%, Skill Cooldown - 5%. -->
+		<!-- Level 4: Skill Power + 9%, Skill Cooldown - 5%. -->
 		<icon>icon.bm_sayhas_talisman</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -170,21 +182,26 @@
 		</effects>
 	</skill>
 	<skill id="28144" toLevel="4" name="Sayha's Protection">
-		<!-- For 45 seconds, Damage Received - 5%. -->
+		<!-- Level 1: For 45 seconds, Damage Received - 5%. -->
+		<!-- Level 2: For 45 seconds, Damage Received - 7%. -->
+		<!-- Level 3: For 45 seconds, Damage Received - 7%. -->
+		<!-- Level 4: For 45 seconds, Damage Received - 10%, P./M. Critical Hit Damage - 10%. -->
 		<icon>
 			<value level="1">icon.sayhas_talisman_g_Lv1</value>
 			<value level="2">icon.sayhas_talisman_g_Lv2</value>
 			<value level="3">icon.sayhas_talisman_g_Lv3</value>
 			<value level="4">icon.sayhas_talisman_g_Lv4</value>
 		</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>45</abnormalTime>
-		<operateType>A2</operateType>
-		<isMagic>2</isMagic>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>300</hitTime>
+		<castRange>900</castRange>
 		<coolTime>300</coolTime>
+		<effectPoint>1</effectPoint>
+		<hitTime>300</hitTime>
+		<isMagic>2</isMagic>
 		<reuseDelay>
 			<value level="1">600000</value>
 			<value level="2">420000</value>
@@ -192,8 +209,6 @@
 			<value level="4">180000</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<castRange>900</castRange>
-		<effectPoint>1</effectPoint>
 		<effects>
 			<effect name="DamageByAttack">
 				<amount>
@@ -216,13 +231,18 @@
 		</effects>
 	</skill>
 	<skill id="28145" toLevel="4" name="Sayha's Encouragement">
-		<!-- For 3 minutes, PvE Damage + 5%. -->
+		<!-- Level 1: For 3 minutes, PvE Damage + 5%. -->
+		<!-- Level 2: For 3 minutes, PvE Damage + 8%. -->
+		<!-- Level 3: For 5 minutes, PvE Damage + 8%. -->
+		<!-- Level 4: For 10 minutes, PvE Damage + 10%. -->
 		<icon>
 			<value level="1">icon.sayhas_talisman_pve_Lv1</value>
 			<value level="2">icon.sayhas_talisman_pve_Lv2</value>
 			<value level="3">icon.sayhas_talisman_pve_Lv3</value>
 			<value level="4">icon.sayhas_talisman_pve_Lv4</value>
 		</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">180</value>
@@ -230,12 +250,12 @@
 			<value level="3">300</value>
 			<value level="4">600</value>
 		</abnormalTime>
-		<operateType>A2</operateType>
-		<isMagic>2</isMagic>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>300</hitTime>
+		<castRange>900</castRange>
 		<coolTime>300</coolTime>
+		<effectPoint>1</effectPoint>
+		<hitTime>300</hitTime>
+		<isMagic>2</isMagic>
 		<reuseDelay>
 			<value level="1">600000</value>
 			<value level="2">420000</value>
@@ -243,8 +263,6 @@
 			<value level="4">180000</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<castRange>900</castRange>
-		<effectPoint>1</effectPoint>
 		<effects>
 			<effect name="PveMagicalSkillDamageBonus">
 				<amount>
@@ -276,21 +294,26 @@
 		</effects>
 	</skill>
 	<skill id="28146" toLevel="4" name="Sayha's Anger">
-		<!-- For 45 seconds, PvP Damage + 8%. -->
+		<!-- Level 1: For 45 seconds, PvP Damage + 8%. -->
+		<!-- Level 2: For 45 seconds, PvP Damage + 8%. -->
+		<!-- Level 3: For 45 seconds, PvP Damage + 12%. -->
+		<!-- Level 4: For 45 seconds, PvP Damage + 15%. -->
 		<icon>
 			<value level="1">icon.sayhas_talisman_pvp_Lv1</value>
 			<value level="2">icon.sayhas_talisman_pvp_Lv2</value>
 			<value level="3">icon.sayhas_talisman_pvp_Lv3</value>
 			<value level="4">icon.sayhas_talisman_pvp_Lv4</value>
 		</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>45</abnormalTime>
-		<operateType>A2</operateType>
-		<isMagic>2</isMagic>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>300</hitTime>
+		<castRange>900</castRange>
 		<coolTime>300</coolTime>
+		<effectPoint>1</effectPoint>
+		<hitTime>300</hitTime>
+		<isMagic>2</isMagic>
 		<reuseDelay>
 			<value level="1">600000</value>
 			<value level="2">420000</value>
@@ -298,8 +321,6 @@
 			<value level="4">180000</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<castRange>900</castRange>
-		<effectPoint>1</effectPoint>
 		<effects>
 			<effect name="PvpMagicalSkillDamageBonus">
 				<amount>
@@ -331,21 +352,23 @@
 		</effects>
 	</skill>
 	<skill id="28147" toLevel="3" name="Sayha's Support">
-		<!-- Recovers HP by 20%, MP by 20%, and CP by 30%. -->
+		<!-- Level 1: Recovers HP by 20%, MP by 20%, and CP by 30%. -->
+		<!-- Level 2: Recovers HP by 20%, MP by 20%, and CP by 30%. -->
+		<!-- Level 3: Recovers HP by 30%, MP by 30%, and CP by 50%. -->
 		<icon>icon.bm_sayhas_talisman</icon>
 		<operateType>A1</operateType>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>300</hitTime>
 		<coolTime>300</coolTime>
+		<effectPoint>10</effectPoint>
+		<hitTime>300</hitTime>
+		<isMagic>2</isMagic>
 		<reuseDelay>
 			<value level="1">1800000</value>
 			<value level="2">1200000</value>
 			<value level="3">360000</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<effectPoint>10</effectPoint>
 		<effects>
 			<effect name="HealPercent">
 				<power>
@@ -374,42 +397,45 @@
 		<!-- Double-click to obtain either Sayha's Talisman or Venir's Talisman. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28151" toLevel="4" name="Halloween Blessing">
-		<!-- Rico's Halloween buff. XP/SP gain + 30% when hunting, P./M. Atk. + 5%, Received Damage - 5%. You can receive a Halloween gift once the buff expires. -->
+		<!-- Level 1: Rico's Halloween buff. XP/SP gain + 30% when hunting, P./M. Atk. + 5%, Received Damage - 5%. You can receive a Halloween gift once the buff expires. -->
+		<!-- Level 2: Rico's Halloween buff. XP/SP gain + 30% when hunting, P./M. Atk. + 5%, Received Damage - 5%, 6 Attribute Resistance + 30. You can receive a Halloween gift once the buff expires. -->
+		<!-- Level 3: Rico's Halloween buff. XP/SP gain + 30% when hunting, P./M. Atk. + 5%, Received Damage - 5%, 6 Attribute Resistance + 30, Attack Attribute + 50. You can receive a Halloween gift once the buff expires. -->
+		<!-- Level 4: Rico's Halloween buff. -->
 		<icon>icon.event_halloween_pumpkin_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="28152" toLevel="1" name="Halloween Blessing">
 		<icon>icon.event_halloween_pumpkin_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="28153" toLevel="1" name="Halloween Gift">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28154" toLevel="1" name="Talisman - Abundance Pack">
 		<icon>icon.event_hero_treasure_box_i00</icon>
-		<itemConsumeId>29077</itemConsumeId>
-		<itemConsumeCount>1</itemConsumeCount>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>29077</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="RestorationRandom">
 				<items>
@@ -467,7 +493,7 @@
 	</skill>
 	<skill id="28155" toLevel="1" name="Wondrous Jewelry Box">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 </list>

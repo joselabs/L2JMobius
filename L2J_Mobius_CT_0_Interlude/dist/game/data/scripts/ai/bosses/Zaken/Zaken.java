@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.bosses.Zaken;
 
@@ -26,7 +30,6 @@ import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.World;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -240,9 +243,9 @@ public class Zaken extends AbstractNpcAI
 					{
 						int i0 = 0;
 						int i1 = 1;
-						if (((Attackable) npc).getMostHated() != null)
+						if (npc.asAttackable().getMostHated() != null)
 						{
-							if ((((((Attackable) npc).getMostHated().getX() - _ai1) * (((Attackable) npc).getMostHated().getX() - _ai1)) + ((((Attackable) npc).getMostHated().getY() - _ai2) * (((Attackable) npc).getMostHated().getY() - _ai2))) > (1500 * 1500))
+							if ((((npc.asAttackable().getMostHated().getX() - _ai1) * (npc.asAttackable().getMostHated().getX() - _ai1)) + ((npc.asAttackable().getMostHated().getY() - _ai2) * (npc.asAttackable().getMostHated().getY() - _ai2))) > (1500 * 1500))
 							{
 								i0 = 1;
 							}
@@ -370,22 +373,22 @@ public class Zaken extends AbstractNpcAI
 					Creature cAi0 = null;
 					if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK) && (_quest1 == 0))
 					{
-						if (((Attackable) npc).getMostHated() != null)
+						if (npc.asAttackable().getMostHated() != null)
 						{
-							cAi0 = ((Attackable) npc).getMostHated();
+							cAi0 = npc.asAttackable().getMostHated();
 							_quest1 = 1;
 						}
 					}
-					else if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK) && (_quest1 != 0) && (((Attackable) npc).getMostHated() != null))
+					else if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK) && (_quest1 != 0) && (npc.asAttackable().getMostHated() != null))
 					{
-						if (cAi0 == ((Attackable) npc).getMostHated())
+						if (cAi0 == npc.asAttackable().getMostHated())
 						{
 							_quest1 = (_quest1 + 1);
 						}
 						else
 						{
 							_quest1 = 1;
-							cAi0 = ((Attackable) npc).getMostHated();
+							cAi0 = npc.asAttackable().getMostHated();
 						}
 					}
 					if (npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE)
@@ -394,8 +397,8 @@ public class Zaken extends AbstractNpcAI
 					}
 					if (_quest1 > 5)
 					{
-						((Attackable) npc).stopHating(cAi0);
-						final Creature nextTarget = ((Attackable) npc).getMostHated();
+						npc.asAttackable().stopHating(cAi0);
+						final Creature nextTarget = npc.asAttackable().getMostHated();
 						if (nextTarget != null)
 						{
 							npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, nextTarget);
@@ -631,8 +634,8 @@ public class Zaken extends AbstractNpcAI
 			{
 				final int i1 = getRandom(15);
 				player.teleToLocation(X_COORDS[i1] + getRandom(650), Y_COORDS[i1] + getRandom(650), Z_COORDS[i1]);
-				((Attackable) npc).stopHating(player);
-				final Creature nextTarget = ((Attackable) npc).getMostHated();
+				npc.asAttackable().stopHating(player);
+				final Creature nextTarget = npc.asAttackable().getMostHated();
 				if (nextTarget != null)
 				{
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, nextTarget);
@@ -643,7 +646,7 @@ public class Zaken extends AbstractNpcAI
 				int i0 = 0;
 				int i1 = getRandom(15);
 				player.teleToLocation(X_COORDS[i1] + getRandom(650), Y_COORDS[i1] + getRandom(650), Z_COORDS[i1]);
-				((Attackable) npc).stopHating(player);
+				npc.asAttackable().stopHating(player);
 				if ((c_quest0 != null) && (_quest0 > 0) && (c_quest0 != player) && (c_quest0.getZ() > (player.getZ() - 100)) && (c_quest0.getZ() < (player.getZ() + 100)))
 				{
 					if ((((c_quest0.getX() - player.getX()) * (c_quest0.getX() - player.getX())) + ((c_quest0.getY() - player.getY()) * (c_quest0.getY() - player.getY()))) > (250 * 250))
@@ -658,7 +661,7 @@ public class Zaken extends AbstractNpcAI
 					{
 						i1 = getRandom(15);
 						c_quest0.teleToLocation(X_COORDS[i1] + getRandom(650), Y_COORDS[i1] + getRandom(650), Z_COORDS[i1]);
-						((Attackable) npc).stopHating(c_quest0);
+						npc.asAttackable().stopHating(c_quest0);
 					}
 				}
 				if ((c_quest1 != null) && (_quest0 > 1) && (c_quest1 != player) && (c_quest1.getZ() > (player.getZ() - 100)) && (c_quest1.getZ() < (player.getZ() + 100)))
@@ -675,7 +678,7 @@ public class Zaken extends AbstractNpcAI
 					{
 						i1 = getRandom(15);
 						c_quest1.teleToLocation(X_COORDS[i1] + getRandom(650), Y_COORDS[i1] + getRandom(650), Z_COORDS[i1]);
-						((Attackable) npc).stopHating(c_quest1);
+						npc.asAttackable().stopHating(c_quest1);
 					}
 				}
 				if ((c_quest2 != null) && (_quest0 > 2) && (c_quest2 != player) && (c_quest2.getZ() > (player.getZ() - 100)) && (c_quest2.getZ() < (player.getZ() + 100)))
@@ -692,7 +695,7 @@ public class Zaken extends AbstractNpcAI
 					{
 						i1 = getRandom(15);
 						c_quest2.teleToLocation(X_COORDS[i1] + getRandom(650), Y_COORDS[i1] + getRandom(650), Z_COORDS[i1]);
-						((Attackable) npc).stopHating(c_quest2);
+						npc.asAttackable().stopHating(c_quest2);
 					}
 				}
 				if ((c_quest3 != null) && (_quest0 > 3) && (c_quest3 != player) && (c_quest3.getZ() > (player.getZ() - 100)) && (c_quest3.getZ() < (player.getZ() + 100)))
@@ -709,7 +712,7 @@ public class Zaken extends AbstractNpcAI
 					{
 						i1 = getRandom(15);
 						c_quest3.teleToLocation(X_COORDS[i1] + getRandom(650), Y_COORDS[i1] + getRandom(650), Z_COORDS[i1]);
-						((Attackable) npc).stopHating(c_quest3);
+						npc.asAttackable().stopHating(c_quest3);
 					}
 				}
 				if ((c_quest4 != null) && (_quest0 > 4) && (c_quest4 != player) && (c_quest4.getZ() > (player.getZ() - 100)) && (c_quest4.getZ() < (player.getZ() + 100)))
@@ -726,10 +729,10 @@ public class Zaken extends AbstractNpcAI
 					{
 						i1 = getRandom(15);
 						c_quest4.teleToLocation(X_COORDS[i1] + getRandom(650), Y_COORDS[i1] + getRandom(650), Z_COORDS[i1]);
-						((Attackable) npc).stopHating(c_quest4);
+						npc.asAttackable().stopHating(c_quest4);
 					}
 				}
-				final Creature nextTarget = ((Attackable) npc).getMostHated();
+				final Creature nextTarget = npc.asAttackable().getMostHated();
 				if (nextTarget != null)
 				{
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, nextTarget);
@@ -763,7 +766,7 @@ public class Zaken extends AbstractNpcAI
 			}
 			final Creature originalAttacker = isPet ? attacker.getSummon() : attacker;
 			final int hate = (int) (((damage / npc.getMaxHp()) / 0.05) * 20000);
-			((Attackable) npc).addDamageHate(originalAttacker, 0, hate);
+			npc.asAttackable().addDamageHate(originalAttacker, 0, hate);
 			if (getRandom(10) < 1)
 			{
 				final int i0 = getRandom((15 * 15));
@@ -795,14 +798,14 @@ public class Zaken extends AbstractNpcAI
 						{
 							continue;
 						}
-						if (attacker != ((Attackable) npc).getMostHated())
+						if (attacker != npc.asAttackable().getMostHated())
 						{
 							npc.setTarget(attacker);
 							npc.doCast(SkillData.getInstance().getSkill(4221, 1));
 						}
 					}
 				}
-				if (getRandomBoolean() && (attacker == ((Attackable) npc).getMostHated()))
+				if (getRandomBoolean() && (attacker == npc.asAttackable().getMostHated()))
 				{
 					npc.setTarget(attacker);
 					npc.doCast(SkillData.getInstance().getSkill(4220, 1));
@@ -859,7 +862,7 @@ public class Zaken extends AbstractNpcAI
 			if (_zone.isInsideZone(npc))
 			{
 				final Creature target = isPet ? player.getSummon() : player;
-				((Attackable) npc).addDamageHate(target, 1, 200);
+				npc.asAttackable().addDamageHate(target, 1, 200);
 			}
 			if ((player.getZ() > (npc.getZ() - 100)) && (player.getZ() < (npc.getZ() + 100)))
 			{
@@ -918,14 +921,14 @@ public class Zaken extends AbstractNpcAI
 							{
 								continue;
 							}
-							if (player != ((Attackable) npc).getMostHated())
+							if (player != npc.asAttackable().getMostHated())
 							{
 								npc.setTarget(player);
 								npc.doCast(SkillData.getInstance().getSkill(4221, 1));
 							}
 						}
 					}
-					if (getRandomBoolean() && (player == ((Attackable) npc).getMostHated()))
+					if (getRandomBoolean() && (player == npc.asAttackable().getMostHated()))
 					{
 						npc.setTarget(player);
 						npc.doCast(SkillData.getInstance().getSkill(4220, 1));

@@ -66,6 +66,7 @@ import org.l2jmobius.gameserver.model.zone.type.NoStoreZone;
 import org.l2jmobius.gameserver.model.zone.type.NoSummonFriendZone;
 import org.l2jmobius.gameserver.model.zone.type.OlympiadStadiumZone;
 import org.l2jmobius.gameserver.model.zone.type.PeaceZone;
+import org.l2jmobius.gameserver.model.zone.type.PrisonZone;
 import org.l2jmobius.gameserver.model.zone.type.ResidenceHallTeleportZone;
 import org.l2jmobius.gameserver.model.zone.type.ResidenceTeleportZone;
 import org.l2jmobius.gameserver.model.zone.type.ResidenceZone;
@@ -135,7 +136,7 @@ public class ZoneManager implements IXmlReader
 		{
 			if (obj.isCreature())
 			{
-				((Creature) obj).revalidateZone(true);
+				obj.asCreature().revalidateZone(true);
 			}
 		}
 		
@@ -446,6 +447,7 @@ public class ZoneManager implements IXmlReader
 		_classZones.put(NoSummonFriendZone.class, new ConcurrentHashMap<>());
 		_classZones.put(OlympiadStadiumZone.class, new ConcurrentHashMap<>());
 		_classZones.put(PeaceZone.class, new ConcurrentHashMap<>());
+		_classZones.put(PrisonZone.class, new ConcurrentHashMap<>());
 		_classZones.put(ResidenceHallTeleportZone.class, new ConcurrentHashMap<>());
 		_classZones.put(ResidenceTeleportZone.class, new ConcurrentHashMap<>());
 		_classZones.put(ResidenceZone.class, new ConcurrentHashMap<>());

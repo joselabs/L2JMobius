@@ -1,23 +1,27 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.dethrone;
 
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.network.WritableBuffer;
@@ -29,29 +33,49 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
- * @author CostyKiller
+ * @author CostyKiller, Mobius
  */
 public class ExDethroneInfo extends ServerPacket
 {
-	private final Player _player;
 	private final String _playerName;
 	private final int _attackPoint;
 	private final int _life;
 	private final long _personalDethronePoint;
 	private final long _serverDethronePoint;
 	private final long _topServerDethronePoint;
-	private final Map<Integer, StatSet> _previousConquestPlayerList;
+	private final int _rank;
+	private final int _rankSize;
+	private final String _topRankerName;
+	private final int _previousRankSize;
+	private int _previousRank = 0;
+	private long _prevPersonalPoints = 0;
 	
 	public ExDethroneInfo(Player player, String playerName, int attackPoint, int life, long personalDethronePoint, long serverDethronePoint)
 	{
-		_player = player;
 		_playerName = playerName;
 		_attackPoint = attackPoint;
 		_life = life;
 		_personalDethronePoint = personalDethronePoint;
 		_serverDethronePoint = serverDethronePoint;
 		_topServerDethronePoint = serverDethronePoint;
-		_previousConquestPlayerList = RankManager.getInstance().getPreviousConquestRankList();
+		
+		final RankManager manager = RankManager.getInstance();
+		_rank = manager.getPlayerConquestGlobalRank(player);
+		_rankSize = manager.getCurrentConquestRankList().size();
+		_topRankerName = manager.getPlayerConquestGlobalRankName(1);
+		
+		final Set<Entry<Integer, StatSet>> previousRankList = manager.getPreviousConquestRankList().entrySet();
+		for (Entry<Integer, StatSet> entry : previousRankList)
+		{
+			final StatSet info = entry.getValue();
+			if (info.getInt("charId") == player.getObjectId())
+			{
+				_previousRank = entry.getKey();
+				_prevPersonalPoints = info.getLong("conquestPersonalPoints");
+				break;
+			}
+		}
+		_previousRankSize = previousRankList.size();
 	}
 	
 	@Override
@@ -64,36 +88,20 @@ public class ExDethroneInfo extends ServerPacket
 		buffer.writeInt(_attackPoint); // nAttackPoint 100
 		buffer.writeInt(_life); // nLife 20
 		
-		buffer.writeInt(RankManager.getInstance().getPlayerConquestGlobalRank(_player)); // nRank
-		buffer.writeInt(RankManager.getInstance().getCurrentConquestRankList().size()); // rank percents
+		buffer.writeInt(_rank); // nRank
+		buffer.writeInt(_rankSize); // rank percents
 		buffer.writeLong(_personalDethronePoint); // nPersonalDethronePoint
 		
-		int rank = 0;
-		long prevPersonalPoints = 0;
-		if (!_previousConquestPlayerList.isEmpty())
-		{
-			for (Entry<Integer, StatSet> entry : _previousConquestPlayerList.entrySet())
-			{
-				final StatSet info = entry.getValue();
-				if (info.getInt("charId") == _player.getObjectId())
-				{
-					rank = entry.getKey();
-					prevPersonalPoints = info.getLong("conquestPersonalPoints");
-				}
-			}
-		}
-		
-		buffer.writeInt(rank); // nPrevRank
-		buffer.writeInt(_previousConquestPlayerList.size()); // rank percents
-		buffer.writeLong(prevPersonalPoints); // nPrevDethronePoint
+		buffer.writeInt(_previousRank); // nPrevRank
+		buffer.writeInt(_previousRankSize); // rank percents
+		buffer.writeLong(_prevPersonalPoints); // nPrevDethronePoint
 		
 		buffer.writeInt(1); // nServerRank
 		buffer.writeLong(_serverDethronePoint); // nServerDethronePoint
 		
 		// Terr. Owner
 		buffer.writeInt(Config.SERVER_ID); // nConquerorWorldID (Server Id of the conqueror player)
-		// buffer.writeSizedString(RankManager.getInstance().getCurrentConquestRankList().get(1).getString("name")); // sConquerorName // real char name
-		buffer.writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(1)); // sTopRankerName; // conquest char name
+		buffer.writeSizedString(_topRankerName); // sTopRankerName; // conquest char name
 		
 		// Conqueror Server
 		buffer.writeInt(Config.SERVER_ID); // nOccupyingServerWorldID
@@ -103,8 +111,7 @@ public class ExDethroneInfo extends ServerPacket
 		
 		// Rank 1
 		buffer.writeInt(Config.SERVER_ID); // nTopRankerWorldID
-		// buffer.writeSizedString(RankManager.getInstance().getCurrentConquestRankList().get(1).getString("name")); // sTopRankerName; // real char name
-		buffer.writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(1)); // sTopRankerName; // conquest char name
+		buffer.writeSizedString(_topRankerName); // sTopRankerName; // conquest char name
 		
 		buffer.writeInt(Config.SERVER_ID); // Leading Server nTopServerWorldID
 		buffer.writeLong(_topServerDethronePoint); // Server Points nTopServerDethronePoint

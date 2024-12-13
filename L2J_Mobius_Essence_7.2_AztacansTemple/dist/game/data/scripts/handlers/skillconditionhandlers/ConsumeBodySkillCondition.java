@@ -37,7 +37,7 @@ public class ConsumeBodySkillCondition implements ISkillCondition
 	{
 		if ((target != null) && (target.isMonster() || target.isSummon()))
 		{
-			final Creature creature = (Creature) target;
+			final Creature creature = target.asCreature();
 			if (creature.isDead() && creature.isSpawned())
 			{
 				return true;

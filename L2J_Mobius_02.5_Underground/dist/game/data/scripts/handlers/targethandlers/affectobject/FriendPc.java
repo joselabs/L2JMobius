@@ -39,8 +39,8 @@ public class FriendPc implements IAffectObjectHandler
 			return false;
 		}
 		
-		final Player player = creature.getActingPlayer();
-		final Player targetPlayer = target.getActingPlayer();
+		final Player player = creature.asPlayer();
+		final Player targetPlayer = target.asPlayer();
 		
 		if (player != null)
 		{
@@ -117,7 +117,7 @@ public class FriendPc implements IAffectObjectHandler
 			}
 			
 			// By default any neutral non-flagged player is considered a friend.
-			return (target.getActingPlayer().getPvpFlag() == 0) && (target.getActingPlayer().getReputation() >= 0);
+			return (targetPlayer.getPvpFlag() == 0) && (targetPlayer.getReputation() >= 0);
 		}
 		
 		return target.isAutoAttackable(creature);

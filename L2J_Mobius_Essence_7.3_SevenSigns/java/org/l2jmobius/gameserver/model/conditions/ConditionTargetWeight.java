@@ -43,11 +43,10 @@ public class ConditionTargetWeight extends Condition
 	{
 		if ((effected != null) && effected.isPlayer())
 		{
-			final Player target = effected.getActingPlayer();
+			final Player target = effected.asPlayer();
 			if (!target.getDietMode() && (target.getMaxLoad() > 0))
 			{
-				final int weightproc = (((target.getCurrentLoad() - target.getBonusWeightPenalty()) * 100) / target.getMaxLoad());
-				return (weightproc < _weight);
+				return (((target.getCurrentLoad() - target.getBonusWeightPenalty()) * 100) / target.getMaxLoad()) < _weight;
 			}
 		}
 		return false;

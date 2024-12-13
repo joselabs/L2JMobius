@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * Copyright (c) 2013 L2jMobius
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.effecthandlers;
 
@@ -44,8 +48,19 @@ public class TriggerSkillByStat extends AbstractEffect
 		_skillId = params.getInt("skillId", 0);
 		_skillLevel = params.getInt("skillLevel", 1);
 		_skillSubLevel = params.getInt("skillSubLevel", 0);
-		_min = params.getInt("min", 0);
-		_max = params.getInt("max", 9999);
+		_min = params.getInt("min", 1);
+		_max = params.getInt("max", 9999999);
+		
+		if (_min < 1)
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " minimum should be a positive number.");
+		}
+	}
+	
+	@Override
+	public boolean delayPump()
+	{
+		return true;
 	}
 	
 	@Override
@@ -56,22 +71,29 @@ public class TriggerSkillByStat extends AbstractEffect
 			return;
 		}
 		
-		// In some cases, without ThreadPool, values did not apply.
-		final Creature target = effected;
-		ThreadPool.schedule(() ->
+		final int currentValue = (int) effected.getStat().getValue(_stat);
+		if ((currentValue < _min) || (currentValue > _max))
 		{
-			final int currentValue = (int) effected.getStat().getValue(_stat);
-			if ((currentValue >= _min) && (currentValue <= _max))
-			{
-				if (!target.isAffectedBySkill(_skillId))
-				{
-					SkillCaster.triggerCast(target, target, SkillData.getInstance().getSkill(_skillId, _skillLevel, _skillSubLevel));
-				}
-			}
-			else
-			{
-				target.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, _skillId);
-			}
-		}, 100);
+			return;
+		}
+		
+		final int level = effected.getAffectedSkillLevel(_skillId);
+		if (level == _skillLevel)
+		{
+			return;
+		}
+		
+		// if (level > 0)
+		// {
+		// effected.getEffectList().stopSkillEffects(SkillFinishType.SILENT, _skillId);
+		// }
+		
+		ThreadPool.execute(() -> SkillCaster.triggerCast(effected, effected, SkillData.getInstance().getSkill(_skillId, _skillLevel, _skillSubLevel)));
+	}
+	
+	@Override
+	public void onExit(Creature effector, Creature effected, Skill skill)
+	{
+		effected.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, _skillId);
 	}
 }

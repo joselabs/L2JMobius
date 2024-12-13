@@ -62,7 +62,7 @@ public class PcBody implements ITargetTypeHandler
 			return null;
 		}
 		
-		final Playable target = (Playable) selectedTarget;
+		final Playable target = selectedTarget.asPlayable();
 		if (target.isDead())
 		{
 			if (skill.hasEffectType(EffectType.RESURRECTION))
@@ -102,7 +102,7 @@ public class PcBody implements ITargetTypeHandler
 			}
 			
 			// Geodata check when character is within range.
-			if (!GeoEngine.getInstance().canSeeTarget(creature, target))
+			if (!GeoEngine.getInstance().canSeeTarget(creature, target) || (skill.isFlyType() && !GeoEngine.getInstance().canMoveToTarget(creature, target)))
 			{
 				if (sendMessage)
 				{

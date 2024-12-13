@@ -21,6 +21,7 @@ import java.util.Map;
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.BeautyShopData;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.beautyshop.BeautyItem;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -41,13 +42,15 @@ public class ExResponseBeautyList extends ServerPacket
 	{
 		_player = player;
 		_type = type;
+		
+		final PlayerAppearance appearance = player.getAppearance();
 		if (type == SHOW_HAIRSTYLE)
 		{
-			_beautyItem = BeautyShopData.getInstance().getBeautyData(player.getRace(), player.getAppearance().getSexType()).getHairList();
+			_beautyItem = BeautyShopData.getInstance().getBeautyData(player.getRace(), appearance.getSexType()).getHairList();
 		}
 		else
 		{
-			_beautyItem = BeautyShopData.getInstance().getBeautyData(player.getRace(), player.getAppearance().getSexType()).getFaceList();
+			_beautyItem = BeautyShopData.getInstance().getBeautyData(player.getRace(), appearance.getSexType()).getFaceList();
 		}
 	}
 	

@@ -29,6 +29,8 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
+import quests.Q00281_HeadForTheHills.Q00281_HeadForTheHills;
+
 /**
  * The Guard is Busy (257)
  * @author xban1x
@@ -158,12 +160,15 @@ public class Q00257_TheGuardIsBusy extends Quest
 			{
 				if (hasAtLeastOneQuestItem(player, ORC_AMULET, ORC_NECKLACE, WEREWOLF_FANG))
 				{
-					final long amulets = getQuestItemsCount(player, ORC_AMULET);
-					final long necklace = getQuestItemsCount(player, ORC_NECKLACE);
-					final long fang = getQuestItemsCount(player, WEREWOLF_FANG);
-					giveAdena(player, ((amulets * 5) + (necklace * 8) + (fang * 10) + (((amulets + necklace + fang) >= 10) ? 1000 : 0)), true);
-					takeItems(player, -1, ORC_AMULET, ORC_NECKLACE, WEREWOLF_FANG);
-					// Q00281_HeadForTheHills.giveNewbieReward(player);
+					if (!player.isSimulatingTalking())
+					{
+						final long amulets = getQuestItemsCount(player, ORC_AMULET);
+						final long necklace = getQuestItemsCount(player, ORC_NECKLACE);
+						final long fang = getQuestItemsCount(player, WEREWOLF_FANG);
+						giveAdena(player, ((amulets * 5) + (necklace * 8) + (fang * 10) + (((amulets + necklace + fang) >= 10) ? 1000 : 0)), true);
+						takeItems(player, -1, ORC_AMULET, ORC_NECKLACE, WEREWOLF_FANG);
+						Q00281_HeadForTheHills.giveNewbieReward(player);
+					}
 					htmltext = "30039-07.html";
 				}
 				else

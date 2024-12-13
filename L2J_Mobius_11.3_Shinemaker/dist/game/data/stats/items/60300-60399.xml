@@ -212,7 +212,7 @@
 			<item id="80958" min="1" max="1" chance="2.173913" /> <!-- Sealed Heavenly Talisman -->
 			<item id="29823" min="1" max="1" chance="2.173913" /> <!-- High-grade Stable Scroll: Enchant Cloak - Legendary -->
 			<item id="80931" min="1" max="1" chance="2.173913" /> <!-- Greater Zodiac Agathion Cube -->
-			<item id="80837" min="1" max="1" chance="2.173913" /> <!-- Superior Kaliel's Bracelet -->
+			<item id="80837" min="1" max="1" chance="2.173913" /> <!-- Kaliel's Superior Bracelet -->
 			<item id="80334" min="1" max="1" chance="2.173913" /> <!-- Dragon's Earring -->
 			<item id="80335" min="1" max="1" chance="2.173913" /> <!-- Dragon's Ring -->
 			<item id="81453" min="1" max="1" chance="2.173913" /> <!-- Enhanced Rune Stone -->
@@ -352,7 +352,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="60321" name="Forgotten Lord's Tattoo Lv. 1" additionalName="CON +1" type="EtcItem">
-		<!-- Forgotten Lord's Dye Lv. 1 (CON +1). Collect 1 unit and take it to the Dye Merchant to get a tattoo that boosts your stats. The tattoo's effect: received damage -1%. Requirements: all classes after the Awakening and the 3rd Liberation. -->
+		<!-- Forgotten Lord's Dye Lv. 1 (CON +1). Take 1 unit to the Dye Merchant to get a tattoo that boosts your stats. The tattoo's effect: received damage -1%. Requirements: all classes after the Awakening or the 3rd Liberation. -->
 		<set name="icon" val="branchicon.bm_dye_monarch" />
 		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
@@ -444,8 +444,8 @@
 			<item id="80959" min="1" max="1" chance="2.777778" /> <!-- Epic Talisman -->
 			<item id="48908" min="1" max="1" chance="2.777778" /> <!-- Shillien's Soul Crystal Lv. 10 - Weapon -->
 			<item id="48577" min="1" max="1" chance="2.777778" /> <!-- Superior Seed Bracelet Lv. 4 -->
-			<item id="29547" min="1" max="1" chance="2.777778" /> <!-- Superior La Vie En Rose's Brooch -->
-			<item id="80837" min="1" max="1" chance="2.777778" /> <!-- Superior Kaliel's Bracelet -->
+			<item id="29547" min="1" max="1" chance="2.777778" /> <!-- La Vie En Rose's Superior Brooch -->
+			<item id="80837" min="1" max="1" chance="2.777778" /> <!-- Kaliel's Superior Bracelet -->
 			<item id="48418" min="1" max="1" chance="2.777778" /> <!-- Authority Ornament -->
 			<item id="39573" min="1" max="1" chance="2.777778" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="2.777778" /> <!-- Talisman of Seven Signs -->
@@ -753,6 +753,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29512" level="1" /> <!-- Dream Spell Potion -->
+		</skills>
 	</item>
 	<item id="60346" name="Kaliel's Blessing Pack" type="EtcItem">
 		<!-- Double-click to obtain one of various items. -->
@@ -826,6 +830,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="29517" level="1" /> <!-- Companion's Magic -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+		</skills>
 	</item>
 	<item id="60348" name="Companion Help Cube" type="EtcItem">
 		<!-- Double-click to obtain Emperor's Special Cocktail (3 pcs.). every day, except as listed below. 1 d. - Novice Companion Charm (30-day). 10 d. - Honey Dark Beer (50 pcs.). 20 d. - Glowing Dragon's Attribute Potion (50 pcs.). 30 d. - Shining Nevit's Gold Hourglass (50 pcs.). (Can be used only once a day.) -->
@@ -1153,6 +1161,10 @@
 		<set name="material" val="STEEL" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="Appearance" />
+		<skills>
+			<skill id="29519" level="1" /> <!-- Appearance Stone: Steampunk Outfit -->
+		</skills>
 	</item>
 	<item id="60367" name="Appearance Stone: Magician Garment" type="EtcItem">
 		<!-- Changes the appearance of the entire armor to that of Jester Garment. The default appearance can be restored with Restoration Stone. -->
@@ -1162,6 +1174,10 @@
 		<set name="material" val="STEEL" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="Appearance" />
+		<skills>
+			<skill id="29520" level="1" /> <!-- Appearance Stone: Magician Garment -->
+		</skills>
 	</item>
 	<item id="60368" name="Season Pass Bonus" type="EtcItem">
 		<!-- For 30 min., acquired XP/ SP +5%, P. Atk./ M. Atk./ P. Def./ M. Def. +5%, Vitality bonus +5%, all stats +1, Attribute Attack/ Resistance +30. The effect is removed when entering the Olympiad or the Ceremony of Chaos. -->
@@ -1183,7 +1199,7 @@
 		</skills>
 	</item>
 	<item id="60369" name="Coral" type="EtcItem">
-		<!-- Can be obtained for Coral points. Required for crafting various items during the Lucky Game. -->
+		<!-- The Lucky Game's bonus item. Required for crafting various items during the Lucky Game. -->
 		<set name="icon" val="icon.etc_bm_jewel_coral_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1281,10 +1297,10 @@
 			<item id="27702" min="1" max="1" chance="2.173913" /> <!-- Sayha's Ring Lv. 1 -->
 			<item id="27708" min="1" max="1" chance="2.173913" /> <!-- Maphr's Ring Lv. 1 -->
 			<item id="81453" min="1" max="1" chance="2.173913" /> <!-- Enhanced Rune Stone -->
-			<item id="80837" min="1" max="1" chance="2.173913" /> <!-- Superior Kaliel's Bracelet -->
+			<item id="80837" min="1" max="1" chance="2.173913" /> <!-- Kaliel's Superior Bracelet -->
 			<item id="39573" min="1" max="1" chance="2.173913" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="2.173913" /> <!-- Talisman of Seven Signs -->
-			<item id="81752" min="1" max="1" chance="2.173913" /> <!-- Gran Kain's Shining Scroll: Enchant Superior Kaliel's Bracelet -->
+			<item id="81752" min="1" max="1" chance="2.173913" /> <!-- Gran Kain's Shining Scroll: Enchant Kaliel's Superior Bracelet -->
 			<item id="60206" min="1" max="1" chance="2.173913" /> <!-- Gran Kain's Scroll: Enchant R-grade Weapon -->
 			<item id="60207" min="1" max="1" chance="2.173913" /> <!-- Gran Kain's Scroll: Enchant R-grade Armor -->
 			<item id="36946" min="1" max="1" chance="2.173913" /> <!-- Lindvior's Earring -->
@@ -1317,7 +1333,7 @@
 		</capsuled_items>
 	</item>
 	<item id="60373" name="+6 Superior La Vie En Rose's Brooch Pack" type="EtcItem">
-		<!-- Double-click to obtain +6 Superior La Vie En Rose's Brooch. -->
+		<!-- Double-click to obtain +6 La Vie En Rose's Superior Brooch. -->
 		<set name="icon" val="icon.sayha2017_box_i03" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1541,6 +1557,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="29527" level="1" /> <!-- Anakim's Blessing Rune -->
+		</skills>
 	</item>
 	<item id="60381" name="Soulshot Supplies" additionalName="Event" type="EtcItem">
 		<!-- An exclusive item that can only be crafted on servers blessed by Anakim. Double-click to obtain Soulshot (30,000 pcs.). -->
@@ -1593,6 +1612,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29528" level="1" /> <!-- Cool Summer Slushie -->
+		</skills>
 	</item>
 	<item id="60385" name="Soulshot/ Spiritshot Ticket" additionalName="Event" type="EtcItem">
 		<!-- Can be exchanged for 50,000 Soulshots or Spiritshots through the Game Assistant. -->

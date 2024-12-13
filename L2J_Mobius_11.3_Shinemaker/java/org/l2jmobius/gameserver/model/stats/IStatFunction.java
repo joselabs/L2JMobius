@@ -48,7 +48,7 @@ public interface IStatFunction
 		double value = 0;
 		for (int slot : slots)
 		{
-			final Item item = creature.getInventory().getPaperdollItemByItemId(slot);
+			final Item item = creature.getInventory().getPaperdollItemBySlotId(slot);
 			if ((item != null) && (item.getEnchantLevel() >= 4) && ((item.getTemplate().getCrystalTypePlus() == CrystalType.R) || (item.getTemplate().getCrystalTypePlus() == CrystalType.L)))
 			{
 				value += calcEnchantBodyPartBonus(item.getEnchantLevel(), item.getTemplate().isBlessed());
@@ -68,7 +68,7 @@ public interface IStatFunction
 		double baseValue = creature.getTransformation().map(transform -> transform.getStats(creature, stat, baseTemplateValue)).orElse(baseTemplateValue);
 		if (creature.isPet())
 		{
-			final Pet pet = (Pet) creature;
+			final Pet pet = creature.asPet();
 			final Item weapon = pet.getActiveWeaponInstance();
 			final double baseVal = stat == Stat.PHYSICAL_ATTACK ? pet.getPetLevelData().getPetPAtk() : stat == Stat.MAGIC_ATTACK ? pet.getPetLevelData().getPetMAtk() : baseTemplateValue;
 			baseValue = baseVal + (weapon != null ? weapon.getTemplate().getStats(stat, baseVal) : 0);
@@ -129,7 +129,7 @@ public interface IStatFunction
 			final double blessedBonus = item.isBlessed() ? 1.5 : 1;
 			int enchant = equippedItem.getEnchantLevel();
 			
-			if (creature.getActingPlayer().isInOlympiadMode())
+			if (creature.asPlayer().isInOlympiadMode())
 			{
 				if (item.isWeapon())
 				{

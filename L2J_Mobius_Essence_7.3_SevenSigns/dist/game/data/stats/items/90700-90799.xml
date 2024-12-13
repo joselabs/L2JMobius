@@ -447,12 +447,16 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="90729" name="Flower Sweets" type="EtcItem">
-		<!-- For 20 minutes Max HP/ MP +5%, Acquired XP/ SP +20%. If used with Life Control Tower's Scroll of Blessing and Angel Cat's Blessing, the effect does not stack. -->
+		<!-- When used, for 20 min., Max HP/ MP +5%, acquired XP/ SP while hunting +20%. The effect does not stack with Life Control Tower's Scroll of Blessing and Angel Cat's Blessing. If you use Angle Cat's Blessing while the effect is active, only Flower Sweets' effect will be active. -->
 		<set name="icon" val="icon.flower_songpyeon" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39278" level="1" /> <!-- Flower Sweets -->
+		</skills>
 	</item>
 	<item id="90730" name="Pumpkin Sweets" additionalName="Sealed" type="EtcItem">
 		<!-- Sayha's Grace points +35,000. For 20 min., P./ M. Atk. +12%, P./ M. Def. +15%, Max HP/ MP/ CP +25%, P. Critical Rate/ M. Skill Critical Rate +10, P. Critical Damage/ M. Skill Critical Damage +5%, HP/ MP Recovery Rate +30%. With a certain chance, absorbs 5% of the inflicted damage as HP. Does not stack with the Special Pirate/ Dragon Fruit's effect. -->
@@ -463,6 +467,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39279" level="1" /> <!-- Pumpkin Sweets -->
+		</skills>
 	</item>
 	<item id="90731" name="Hanbok" additionalName="Sealed" type="Armor">
 		<!-- Changes armor appearance to that of a Hanbok. When equipped, it is impossible to wear armor. Hats, weapons and accessories are not removed. The Head Enlargement and Firecracker skills can be used. -->
@@ -476,6 +484,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="51111" level="1" /> <!-- Head Enlargement -->
+			<skill id="51112" level="1" /> <!-- Firecracker -->
+		</skills>
 	</item>
 	<item id="90732" name="+8 B-grade Armor Set Coupon" additionalName="Sealed" type="EtcItem">
 		<set name="icon" val="icon.etc_exchange_ticket_i02" />
@@ -815,11 +827,11 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39294" level="1" /> <!-- Pirate's Treasure Chest -->
+			<skill id="39294" level="1" /> <!-- Pirate's Chest -->
 		</skills>
 	</item>
 	<item id="90763" name="Zaken's Earring" type="Armor">
-		<!-- Max enchant value: +6. (Requires Scroll: Enchant Rare Accessories.). Boosts the item's parameters after enchanting. Effects of two identical earrings do not stack. Safe enchanting to +1 -->
+		<!-- Max enchant value: +6. (Requires Scroll: Enchant Rare Accessories.). Boosts the item's effects upon enchanting. <font color=ff6666>Note!</font>. Effects of two identical earrings do not stack, the earring with a higher enchant value takes precedence. <font color=eeaa22>Safe enchanting to +1</font> -->
 		<set name="icon" val="icon.accessory_earring_of_zaken_i03" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -827,6 +839,9 @@
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
 		<set name="enchant_enabled" val="true" />
+		<stats>
+			<stat type="mDef">107</stat>
+		</stats>
 		<skills>
 			<skill id="50448" level="1" /> <!-- Zaken's Earring -->
 			<skill id="50448" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Zaken's Earring -->
@@ -836,9 +851,6 @@
 			<skill id="50448" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Zaken's Earring -->
 			<skill id="50448" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Zaken's Earring -->
 		</skills>
-		<stats>
-			<stat type="mDef">107</stat>
-		</stats>
 	</item>
 	<item id="90764" name="Zaken's Earring Lv. 2" type="Armor">
 		<!-- <Properties>. MP Consumption -3%. Received Healing +6%. HP Recovery Rate +15%. Max MP +28. Infection Atk. Rate and Resistance +15%. Shock Atk. Rate and Resistance +10%. Silence Atk. Rate and Resistance +10%. Fear Atk. Rate and Resistance +10%. Effects of two identical earrings do not stack. Cannot be enchanted. -->
@@ -848,13 +860,13 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="50442" level="2" /> <!-- Zaken Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">70</stat>
 			<stat type="maxMp">28</stat>
 		</stats>
+		<skills>
+			<skill id="50442" level="2" /> <!-- Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90765" name="Zaken's Earring Lv. 3" type="Armor">
 		<!-- <Properties>. MP Consumption -4%. Received Healing +10%. HP Recovery Rate +20%. Vampiric Rage effect +8%. Max MP +34. Infection Atk. Rate and Resistance +20%. Shock Atk. Rate and Resistance +15%. Silence Atk. Rate and Resistance +15%. Fear Atk. Rate and Resistance +15%. Effects of two identical earrings do not stack. Cannot be enchanted. Take 2 of these earrings to Blacksmith Baggins in Giran to exchange them for Essence of Zaken. -->
@@ -864,13 +876,13 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="50442" level="3" /> <!-- Zaken Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">80</stat>
 			<stat type="maxMp">34</stat>
 		</stats>
+		<skills>
+			<skill id="50442" level="3" /> <!-- Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90766" name="Scroll of Escape: Entrance to the Devil's Isle" additionalName="Sealed" type="EtcItem">
 		<!-- Teleports to the Devil's Isle. -->
@@ -882,6 +894,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39295" level="1" /> <!-- Scroll of Escape: Entrance to the Devil's Isle -->
+		</skills>
 	</item>
 	<item id="90767" name="Zaken's Earring Lv. 1" additionalName="7-day" type="Armor">
 		<!-- <Properties>. MP Consumption -2%. Received Healing +4%. HP Recovery Rate +10%. Max MP +22. Infection Atk. Rate and Resistance +10%. Shock Atk. Rate and Resistance +5%. Silence Atk. Rate and Resistance +5%. Fear Atk. Rate and Resistance +5%. Available for 7 d. Effects of two identical earrings do not stack. Cannot be enchanted. -->
@@ -895,13 +911,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
-		<skills>
-			<skill id="50442" level="1" /> <!-- Zaken Earring Lv .1 -->
-		</skills>
 		<stats>
 			<stat type="mDef">60</stat>
 			<stat type="maxMp">22</stat>
 		</stats>
+		<skills>
+			<skill id="50442" level="1" /> <!-- Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90768" name="Hair Accessory Coupon" additionalName="Sealed" type="EtcItem">
 		<!-- A coupon for the clan head accessory. Can be exchanged for an animal-shaped head accessory via High Priest Orven. -->
@@ -923,6 +939,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="39297" level="1" /> <!-- Escape: Clan Hall -->
+		</skills>
 	</item>
 	<item id="90770" name="Piggy Hat" additionalName="Sealed" type="Armor">
 		<!-- A funny piggy-shaped head accessory. Can be used for teleportation to your Clan Hall. Cooldown: 1 h. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -935,6 +954,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="39297" level="1" /> <!-- Escape: Clan Hall -->
+		</skills>
 	</item>
 	<item id="90771" name="Frog Hat" additionalName="Sealed" type="Armor">
 		<!-- A funny frog-shaped head accessory. Can be used for teleportation to your Clan Hall. Cooldown: 1 h. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -947,6 +969,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="39297" level="1" /> <!-- Escape: Clan Hall -->
+		</skills>
 	</item>
 	<item id="90772" name="Fish Hat" additionalName="Sealed" type="Armor">
 		<!-- A funny fish-shaped head accessory. Can be used for teleportation to your Clan Hall. Cooldown: 1 h. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -959,6 +984,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="39297" level="1" /> <!-- Escape: Clan Hall -->
+		</skills>
 	</item>
 	<item id="90773" name="Chicken Hat" additionalName="Sealed" type="Armor">
 		<!-- A funny chicken-shaped head accessory. Can be used for teleportation to your Clan Hall. Cooldown: 1 h. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -971,6 +999,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="39297" level="1" /> <!-- Escape: Clan Hall -->
+		</skills>
 	</item>
 	<item id="90774" name="+3 Fire Dragon Pendant" additionalName="7-day" type="Armor">
 		<!-- When equipped, M. Def. +13. -->
@@ -986,6 +1017,9 @@
 		<stats>
 			<stat type="pDef">31</stat>
 		</stats>
+		<skills>
+			<skill id="35007" level="3" /> <!-- +3 Fire Dragon Pendant -->
+		</skills>
 	</item>
 	<item id="90775" name="Talisman of Border Lv. 3" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. P./ M. Def. +17, P./ M. Evasion +1, Max HP/ MP/ CP +80, Speed +3, Acquired XP/ SP +3%. Effects of two identical talismans do not stack. -->
@@ -998,6 +1032,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="35024" level="3" /> <!-- Talisman of Border -->
+		</skills>
 	</item>
 	<item id="90776" name="+4 Fire Dragon Pendant" additionalName="7-day" type="Armor">
 		<!-- M. Def. +14, acquired XP/ SP +2%. -->
@@ -1013,6 +1050,9 @@
 		<stats>
 			<stat type="pDef">34</stat>
 		</stats>
+		<skills>
+			<skill id="35007" level="4" /> <!-- +4 Fire Dragon Pendant -->
+		</skills>
 	</item>
 	<item id="90777" name="Talisman of Border Lv. 4" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. P./ M. Def. +19, P./ M. Evasion +1, Max HP/ MP/ CP +80, Speed +3, Atk. Spd./ Casting Spd. +7, Acquired XP/ SP +3%. Effects of two identical talismans do not stack. -->
@@ -1025,6 +1065,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="35024" level="4" /> <!-- Talisman of Border -->
+		</skills>
 	</item>
 	<item id="90778" name="+5 Fire Dragon Pendant" additionalName="7-day" type="Armor">
 		<!-- M. Def. +15, acquired XP/ SP +5%, P./ M. Atk. +10. -->
@@ -1040,6 +1083,9 @@
 		<stats>
 			<stat type="pDef">37</stat>
 		</stats>
+		<skills>
+			<skill id="35007" level="5" /> <!-- +5 Fire Dragon Pendant -->
+		</skills>
 	</item>
 	<item id="90779" name="Talisman of Border Lv. 5" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. P./ M. Def. +22, P./ M. Evasion +1, Max HP/ MP/ CP +120, Speed +5, Atk. Spd./ Casting Spd. +10, acquired XP/ SP +4%. Effects of two identical talismans do not stack. -->
@@ -1052,6 +1098,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="35024" level="5" /> <!-- Talisman of Border -->
+		</skills>
 	</item>
 	<item id="90780" name="+6 Fire Dragon Pendant" additionalName="7-day" type="Armor">
 		<!-- M. Def. +16, acquired XP/ SP +10%, P./ M. Atk. +20. -->
@@ -1067,6 +1116,9 @@
 		<stats>
 			<stat type="pDef">40</stat>
 		</stats>
+		<skills>
+			<skill id="35007" level="6" /> <!-- +6 Fire Dragon Pendant -->
+		</skills>
 	</item>
 	<item id="90781" name="Talisman of Border Lv. 6" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. P./ M. Def. +24, P./ M. Evasion +2, HP/ MP/ CP +160, Speed +5, Atk. Spd./ Casting Spd. +15, Acquired XP/ SP +4%. Enables Border Purification (removes Paralysis, Petrification, Poisoning, and Bleeding). Effects of two identical talismans do not stack. -->
@@ -1079,6 +1131,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="35025" level="1" /> <!-- Border Purification -->
+			<skill id="35024" level="6" /> <!-- Talisman of Border -->
+		</skills>
 	</item>
 	<item id="90782" name="+7 Fire Dragon Pendant" additionalName="7-day" type="Armor">
 		<!-- M. Def. +17, acquired XP/ SP +20%, P./ M. Atk. +30. -->
@@ -1094,6 +1150,9 @@
 		<stats>
 			<stat type="pDef">43</stat>
 		</stats>
+		<skills>
+			<skill id="35007" level="7" /> <!-- +7 Fire Dragon Pendant -->
+		</skills>
 	</item>
 	<item id="90783" name="Talisman of Border Lv. 7" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. P./ M. Def. +29, P./ M. Evasion +2, Max HP/ MP/ CP +160, Speed +7, Atk. Spd./ Casting Spd. +15, acquired XP/ SP +5%. Enables Dimensional Border Power Lv. 1 (with a certain chance increases attack power). Enables Border Purification (removes Paralysis, Petrification, Poison, and Bleed). Effects of two identical talismans do not stack. -->
@@ -1106,6 +1165,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="35025" level="1" /> <!-- Border Purification -->
+			<skill id="35024" level="7" /> <!-- Talisman of Border -->
+		</skills>
 	</item>
 	<item id="90784" name="Vital Stone Lv. 4" additionalName="15-day" type="Armor">
 		<!-- Available for 15 d. When equipped, while Sayha's Grace is active, acquired XP/ SP while hunting +8%, Sayha's Grace Consumption -10%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -1120,7 +1183,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="21600" />
 		<skills>
-			<skill id="55472" level="4" /> <!-- Vital Stone -->
+			<skill id="17706" level="4" /> <!-- Jewel - Vital Stone -->
 		</skills>
 	</item>
 	<item id="90785" name="Diamond Lv. 4" additionalName="15-day" type="Armor">
@@ -1136,7 +1199,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="21600" />
 		<skills>
-			<skill id="55475" level="4" /> <!-- Diamond -->
+			<skill id="17708" level="4" /> <!-- Jewel - Diamond -->
 		</skills>
 	</item>
 	<item id="90786" name="Pearl Lv. 4" additionalName="15-day" type="Armor">
@@ -1152,7 +1215,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="21600" />
 		<skills>
-			<skill id="55476" level="4" /> <!-- Pearl -->
+			<skill id="17709" level="4" /> <!-- Jewel - Pearl -->
 		</skills>
 	</item>
 	<item id="90787" name="Jade Lv. 4" additionalName="15-day" type="Armor">
@@ -1168,11 +1231,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="21600" />
 		<skills>
-			<skill id="55474" level="4" /> <!-- Jade -->
+			<skill id="17707" level="4" /> <!-- Jewel - Jade -->
 		</skills>
 	</item>
 	<item id="90788" name="Fire Dragon Belt" additionalName="7-day" type="Armor">
-		<!-- Available for 7 days. Inventory Slots +6, Weight Limit +7000, STR/ INT +1, HP Recovery Rate +2.31, MP Recovery Rate +1.54, CP Recovery Rate +3.07, Max HP/ MP/ CP +10%, HP Recovery Potions' Effect +100, P. Critical Damage/ M. Skill Critical Damage +4%. -->
+		<!-- Available for 7 d. When using the belt, inventory slots +6, weight limit +7000, STR +1, INT +1, HP Recovery Rate +2.31, MP Recovery Rate +1.54, CP Recovery Rate +3.07, Max HP/ MP/ CP +10%, HP Recovery Potions' Effect +100, P. Critical Damage/ M. Skill Critical Damage +4%. -->
 		<set name="icon" val="icon.bm_vallakas_belt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -1183,12 +1246,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
-		<skills>
-			<skill id="35047" level="1" /> <!-- Fire Dragon Belt -->
-		</skills>
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
+		<skills>
+			<skill id="35047" level="1" /> <!-- Fire Dragon Belt -->
+		</skills>
 	</item>
 	<item id="90789" name="Garnet Lv. 4" additionalName="15-day" type="Armor">
 		<!-- Available for 15 d. Pull/ Silence/ Paralysis/ Fear/ Stun Resistance +11%. Grants immunity to debuffs for 5 sec. when casting skills. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -1203,7 +1266,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="21600" />
 		<skills>
-			<skill id="55485" level="4" /> <!-- Greater Garnet -->
+			<skill id="18567" level="1" /> <!-- Garnet - Special Property -->
+			<skill id="18566" level="4" /> <!-- Jewel - Garnet -->
 		</skills>
 	</item>
 	<item id="90790" name="+8 Fire Dragon Pendant" additionalName="7-day" type="Armor">
@@ -1220,6 +1284,9 @@
 		<stats>
 			<stat type="pDef">46</stat>
 		</stats>
+		<skills>
+			<skill id="35007" level="8" /> <!-- +8 Fire Dragon Pendant -->
+		</skills>
 	</item>
 	<item id="90791" name="Talisman of Border Lv. 8" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. P./ M. Def. +34, P./ M. Evasion +2, Max HP/ MP/ CP +200, Speed +7, Atk. Spd./ Casting Spd. +15, acquired XP/ SP +5%. Enables Dimensional Border Power Lv. 2 (with a certain chance increases attack power). Enables Border Purification (removes Paralysis, Petrification, Poison, and Bleed). Effects of two identical talismans do not stack. -->
@@ -1232,6 +1299,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="35025" level="1" /> <!-- Border Purification -->
+			<skill id="35024" level="8" /> <!-- Talisman of Border -->
+		</skills>
 	</item>
 	<item id="90792" name="Topaz Lv. 4" additionalName="15-day" type="Armor">
 		<!-- Available for 15 days. Interrupts the target's skill casting. Inflicts 1357 PvP damage. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -1246,7 +1317,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="21600" />
 		<skills>
-			<skill id="55471" level="4" /> <!-- Topaz - Spiritshot -->
+			<skill id="17701" level="4" /> <!-- Jewel - Topaz -->
 		</skills>
 	</item>
 	<item id="90793" name="Chef's Fish Stew Box" additionalName="Sealed" type="EtcItem">
@@ -1272,6 +1343,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39298" level="1" /> <!-- Shining Mood Melody -->
+		</skills>
 	</item>
 	<item id="90795" name="Zaken's Earring Box Lv. 1" additionalName="7-day" type="EtcItem">
 		<!-- Double-click to obtain various items. -->

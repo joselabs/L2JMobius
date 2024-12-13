@@ -119,6 +119,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59820" level="1" /> <!-- Anniversary Firecracker NCJ 20 -->
+		</skills>
 	</item>
 	<item id="72334" name="Blue Firecracker" additionalName="Sealed" type="EtcItem">
 		<!-- A large firecracker that illuminates the sky with blue lights. -->
@@ -130,6 +134,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59821" level="1" /> <!-- Blue Firecracker -->
+		</skills>
 	</item>
 	<item id="72335" name="Red Firecracker" additionalName="Sealed" type="EtcItem">
 		<!-- A large firecracker that illuminates the sky with red lights. -->
@@ -141,6 +149,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59822" level="1" /> <!-- Red Firecracker -->
+		</skills>
 	</item>
 	<item id="72336" name="Green Firecracker" additionalName="Sealed" type="EtcItem">
 		<!-- A large firecracker that illuminates the sky with green lights. -->
@@ -152,6 +164,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59823" level="1" /> <!-- Green Firecracker -->
+		</skills>
 	</item>
 	<item id="72337" name="Package: Queen Ant Doll Lv. 3 (Time-limited)" additionalName="7-day" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -204,24 +220,36 @@
 	<item id="72340" name="Queen Ant Doll Lv. 3" additionalName="7-day" type="EtcItem">
 		<!-- <Queen Ant Doll's Sorcery Lv. 3>. P. Atk. +12%. P. Critical Damage +10%. P. Skill Critical Damage +10%. Max HP +15%. Boosts stats when in inventory. Cannot be upgraded. -->
 		<set name="icon" val="icon.bm_queen_ant_doll_30d" />
-		<set name="default_action" val="NONE" />
+		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="10080" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="72337" min="1" max="1" chance="100" /> <!-- Package: Queen Ant Doll Lv. 3 (Time-limited) - 7-day -->
+		</capsuled_items>
+		<skills>
+			<skill id="39303" level="3" /> <!-- Queen Ant Doll's Sorcery -->
+		</skills>
 	</item>
 	<item id="72341" name="Baium Doll Lv. 3" additionalName="7-day" type="EtcItem">
 		<!-- <Baium Doll's Sorcery Lv. 3>. Skill Cooldown -4%. P. Def. +15%. M. Def. +15%. Silence Resistance +45%. Fear Resistance +45%. Paralysis Resistance +25%. Knockback Resistance +25%. Pull Resistance +25%. Boosts stats when in inventory. Cannot be upgraded. -->
 		<set name="icon" val="icon.bm_baium_doll_30d" />
-		<set name="default_action" val="NONE" />
+		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="10080" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="72338" min="1" max="1" chance="100" /> <!-- Package: Baium Doll Lv. 3 (Time-limited) - 7-day -->
+		</capsuled_items>
+		<skills>
+			<skill id="39302" level="3" /> <!-- Baium Doll's Sorcery -->
+		</skills>
 	</item>
 	<item id="72342" name="Orfen Doll Lv. 3" additionalName="7-day" type="EtcItem">
 		<!-- <Orfen Doll's Sorcery Lv. 3>. M. Atk. +15%. M. Skill Critical Damage +10%. Max MP +15%. Boosts stats when in inventory. Cannot be upgraded. -->
@@ -232,7 +260,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="10080" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="72339" min="1" max="1" chance="100" /> <!-- Package: Orfen Doll Lv. 3 (Time-limited) - 7-day -->
+		</capsuled_items>
+		<skills>
+			<skill id="39304" level="3" /> <!-- Orfen Doll's Sorcery -->
+		</skills>
 	</item>
 	<item id="72343" name="Letter J" additionalName="Sealed" type="EtcItem">
 		<!-- Combine with other letters to create a special word and get a reward! -->
@@ -244,6 +278,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_questitem" val="true" />
 	</item>
 	<item id="72344" name="Numbers 20" additionalName="Sealed" type="EtcItem">
 		<!-- Combine with other letters to create a special word and get a reward! -->
@@ -266,6 +301,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59824" level="1" /> <!-- NCJ 20 Anniversary Gift -->
+		</skills>
 	</item>
 	<item id="72346" name="Aden's 2nd Anniversary Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -360,7 +399,7 @@
 			<item id="92057" min="1" max="1" chance="100" /> <!-- Coral Lv. 2 - Sealed -->
 			<item id="92077" min="1" max="1" chance="100" /> <!-- Spinel Lv. 2 - Sealed -->
 			<item id="90312" min="1" max="1" chance="100" /> <!-- Brooch Lv. 2 -->
-			<item id="94732" min="5" max="5" chance="100" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="5" max="5" chance="100" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="91641" min="200" max="200" chance="100" /> <!-- Sayha's Blessing - Sealed -->
 			<item id="91712" min="200" max="200" chance="100" /> <!-- Sayha's Storm - Sealed -->
 			<item id="91690" min="500" max="500" chance="100" /> <!-- Special HP Recovery Potion - Sealed -->
@@ -376,6 +415,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59825" level="1" /> <!-- L2M Blessing - Lv. 1 -->
+		</skills>
 	</item>
 	<item id="72352" name="2022 Christmas Gift (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -413,7 +456,7 @@
 		<capsuled_items>
 			<item id="91663" min="9500" max="9500" chance="100" /> <!-- L-Coin -->
 			<item id="90907" min="800" max="800" chance="100" /> <!-- Soulshot Ticket - Sealed -->
-			<item id="94732" min="10" max="10" chance="100" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="10" max="10" chance="100" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="72354" name="Christmas Gift Kit II (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -432,7 +475,7 @@
 			<item id="94269" min="100" max="100" chance="100" /> <!-- Scroll: Boost Attack - Sealed -->
 			<item id="94271" min="100" max="100" chance="100" /> <!-- Scroll: Boost Defense - Sealed -->
 			<item id="91712" min="50" max="50" chance="100" /> <!-- Sayha's Storm - Sealed -->
-			<item id="94732" min="15" max="15" chance="100" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="15" max="15" chance="100" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="93977" min="12" max="12" chance="100" /> <!-- Scroll: Enchant A-grade Armor - Sealed -->
 			<item id="93976" min="4" max="4" chance="100" /> <!-- Scroll: Enchant A-grade Weapon - Sealed -->
 		</capsuled_items>
@@ -451,7 +494,7 @@
 		<capsuled_items>
 			<item id="91663" min="29000" max="29000" chance="100" /> <!-- L-Coin -->
 			<item id="96729" min="400" max="400" chance="100" /> <!-- Einhasad's Protection - Sealed -->
-			<item id="94732" min="30" max="30" chance="100" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="30" max="30" chance="100" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="93448" min="3" max="3" chance="100" /> <!-- A-grade Weapon Coupon - Sealed -->
 			<item id="93449" min="5" max="5" chance="100" /> <!-- A-grade Armor Coupon - Sealed -->
 			<item id="92035" min="15" max="15" chance="100" /> <!-- Shiny Jewelry Box - Sealed -->
@@ -578,6 +621,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59828" level="1" /> <!-- Red Lantern -->
+		</skills>
 	</item>
 	<item id="72365" name="Great Hunter's Reward (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -789,7 +836,7 @@
 		</capsuled_items>
 	</item>
 	<item id="72370" name="Eva's Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Can be used in the special creation system or via Game Assistant. -->
+		<!-- Can be used in the special craft or through the Game Assistant. -->
 		<set name="icon" val="icon.bm_jewel_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1182,7 +1229,7 @@
 			<item id="94271" min="2" max="2" chance="1.612903" /> <!-- Scroll: Boost Defense - Sealed -->
 			<item id="91641" min="5" max="5" chance="1.612903" /> <!-- Sayha's Blessing - Sealed -->
 			<item id="91690" min="10" max="10" chance="1.612903" /> <!-- Special HP Recovery Potion - Sealed -->
-			<item id="94732" min="1" max="1" chance="1.612903" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="1" max="1" chance="1.612903" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="72382" name="Boss Expedition Mark" additionalName="Sealed" type="EtcItem">
@@ -1288,6 +1335,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59844" level="1" /> <!-- Transformation Scroll: Alluring Swimsuit -->
+		</skills>
 	</item>
 	<item id="72389" name="Transformation Scroll: Seductive Swimsuit (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Changes the armor appearance to that of Seductive Swimsuit. <Appearance effect>. P. Atk. +100. M. Atk. +100. Atk. Spd. +10. Casting Spd. +10. P. Critical Rate +5. Skill Critical Rate +5%. Acquired XP/ SP +20%. Sayha's Grace Consumption -3%. XP recovery fee -20%. Duration: 60 min. Cooldown: 10 sec. The effect remains after death. -->
@@ -1299,6 +1350,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59845" level="1" /> <!-- Transformation Scroll: Seductive Swimsuit -->
+		</skills>
 	</item>
 	<item id="72390" name="Transformation Scroll: Beach Swimsuit (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Changes the armor appearance to that of Beach Swimsuit. <Appearance effect>. P. Atk. +100. M. Atk. +100. Atk. Spd. +10. Casting Spd. +10. P. Critical Rate +5. Skill Critical Rate +5%. Acquired XP/ SP +20%. Sayha's Grace Consumption -3%. XP recovery fee -20%. Duration: 60 min. Cooldown: 10 sec. The effect remains after death. -->
@@ -1310,6 +1365,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59846" level="1" /> <!-- Transformation Scroll: Beach Swimsuit -->
+		</skills>
 	</item>
 	<item id="72391" name="Cool Summer Slushie (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Applies a buff when used. <Buff effect>. Acquired XP/ SP +10%. P. Atk./ M. Atk./ P. Def./ M. Def. +100. Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->
@@ -1321,6 +1380,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59841" level="1" /> <!-- Cool Summer Slushie -->
+		</skills>
 	</item>
 	<item id="72392" name="NCOIN" type="EtcItem">
 		<set name="icon" val="BranchIcon.icon.g_pass_advance_premium_00" />
@@ -1387,5 +1450,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59847" level="1" /> <!-- Season Pass Bonus (Time-limited) -->
+		</skills>
 	</item>
 </list>

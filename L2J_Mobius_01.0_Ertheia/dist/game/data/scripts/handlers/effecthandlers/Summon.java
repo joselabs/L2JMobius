@@ -77,7 +77,7 @@ public class Summon extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		if (player.hasServitors())
 		{
 			player.getServitors().values().forEach(s -> s.unSummon(player));

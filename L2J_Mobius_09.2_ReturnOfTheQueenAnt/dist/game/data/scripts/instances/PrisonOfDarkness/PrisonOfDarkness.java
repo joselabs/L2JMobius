@@ -152,7 +152,7 @@ public class PrisonOfDarkness extends AbstractInstance
 				}
 				case "START_BOSS":
 				{
-					final Attackable spezion = (Attackable) addSpawn(SPEZION, SPEZION_LOC, true, 0, false, instance.getId());
+					final Attackable spezion = addSpawn(SPEZION, SPEZION_LOC, true, 0, false, instance.getId()).asAttackable();
 					spezion.setCanReturnToSpawnPoint(false);
 					showOnScreenMsg(instance, NpcStringId.SPEZION_S_STATUS_WILL_ONLY_CHANGE_WHEN_EXPOSED_TO_LIGHT, ExShowScreenMessage.TOP_CENTER, 4000);
 					break;
@@ -353,9 +353,9 @@ public class PrisonOfDarkness extends AbstractInstance
 			{
 				case 0:
 				{
-					takeItems(creature.getActingPlayer(), GIANT_CANNONBALL, -1);
+					takeItems(creature.asPlayer(), GIANT_CANNONBALL, -1);
 					creature.teleToLocation(PLAYERS_RANDOM_LOCS[getRandom(PLAYERS_RANDOM_LOCS.length)]);
-					showOnScreenMsg(creature.getActingPlayer(), NpcStringId.YOU_NEED_TO_FIND_ESCAPE_DEVICE_RE_ENTRY_IS_NOT_ALLOWED_ONCE_YOU_VE_LEFT_THE_INSTANCE_ZONE, ExShowScreenMessage.TOP_CENTER, 4000);
+					showOnScreenMsg(creature.asPlayer(), NpcStringId.YOU_NEED_TO_FIND_ESCAPE_DEVICE_RE_ENTRY_IS_NOT_ALLOWED_ONCE_YOU_VE_LEFT_THE_INSTANCE_ZONE, ExShowScreenMessage.TOP_CENTER, 4000);
 					instance.getParameters().increaseInt("PLAYERS_COUNT", 0, 1);
 					break;
 				}

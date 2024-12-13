@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.areas.BeeHive;
 
@@ -24,7 +28,6 @@ import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.model.AggroInfo;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -102,7 +105,7 @@ public class Beoro extends AbstractNpcAI
 					npc.broadcastPacket(new ExShowScreenMessage(ANNOUNCEMENTS_50_HP[Rnd.get(ANNOUNCEMENTS_50_HP.length)], ExShowScreenMessage.BOTTOM_RIGHT, 5000, false));
 					if (Rnd.get(100) < 50)
 					{
-						((Attackable) addSpawn(HERMIT_BEORO, npc)).addDamageHate(attacker, 1, 5000);
+						addSpawn(HERMIT_BEORO, npc).asAttackable().addDamageHate(attacker, 1, 5000);
 						npc.deleteMe();
 					}
 				}
@@ -117,7 +120,7 @@ public class Beoro extends AbstractNpcAI
 					if ((entry.getKey() <= npc.getCurrentHpPercent()) && !entry.getValue())
 					{
 						ROYDA_SPAWN_HP_PERCENTAGES.put(entry.getKey(), true);
-						((Attackable) addSpawn(ROYDA, npc, true, 10 * 60 * 1000)).addDamageHate(attacker, 1, 5000);
+						addSpawn(ROYDA, npc, true, 10 * 60 * 1000).asAttackable().addDamageHate(attacker, 1, 5000);
 						break;
 					}
 				}
@@ -131,7 +134,7 @@ public class Beoro extends AbstractNpcAI
 				{
 					npc.setScriptValue(1);
 					final int currentPetId = Rnd.get(100) < 25 ? SIN_EATER : Atingo.PETS[Rnd.get(Atingo.PETS.length)];
-					((Attackable) addSpawn(currentPetId, npc, true, 10 * 60 * 1000)).addDamageHate(attacker, 1, 5000);
+					addSpawn(currentPetId, npc, true, 10 * 60 * 1000).asAttackable().addDamageHate(attacker, 1, 5000);
 				}
 			}
 		}
@@ -169,10 +172,10 @@ public class Beoro extends AbstractNpcAI
 		playable.stopSkillEffects(SkillFinishType.REMOVED, 1411); // Mystic Immunity
 		BEORO_ROAR.getSkill().applyEffects(npc, playable);
 		
-		final AggroInfo aggr = ((Attackable) npc).getAggroList().getOrDefault(playable, null);
+		final AggroInfo aggr = npc.asAttackable().getAggroList().getOrDefault(playable, null);
 		if (aggr != null)
 		{
-			((Attackable) npc).reduceHate(playable, -aggr.getHate());
+			npc.asAttackable().reduceHate(playable, -aggr.getHate());
 		}
 		if (npc.getTarget() == playable)
 		{

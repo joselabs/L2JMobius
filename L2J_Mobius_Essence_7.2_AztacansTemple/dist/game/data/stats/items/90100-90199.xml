@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="90100" name="Scroll: Block Wind Walk" type="EtcItem">
 		<!-- A scroll for learning the Block Wind Walk skill. <Class>. Hierophant. <Skill effect>. Prevents the enemy from getting buffs that increase Speed. -->
@@ -156,7 +156,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="90122" name="Scroll: Balance Life" type="EtcItem">
-		<!-- A scroll for learning the Balance Life skill. <Class>. Cardinal. <Skill effect>. Equalizes the entire party's HP. <font color=ff6666>Note!</font>. The skill will be removed after learning a more powerful skill:. - Balanced Body -->
+		<!-- A scroll for learning the Life Balance skill. <Class>. Cardinal. <Skill effect>. Equalizes the entire party's HP. <font color=ff6666>Note!</font>. The skill will be removed after learning a more powerful skill:. - Balanced Body -->
 		<set name="icon" val="icon.etc_magic_book_white_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_stackable" val="true" />
@@ -253,7 +253,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="90134" name="Scroll: Wind Riding" type="EtcItem">
-		<!-- A scroll for learning the Wind Riding skill. <Class>. Wind Rider. <Skill effect>. Storms the battleground riding the Wind. Increases Speed, P. Evasion, Vital Point Attack Rate, P. Skill Evasion Rate, Buff Cancel Resistance. -->
+		<!-- A scroll for learning the Wind Riding skill. <Class>. Wind Rider. <Skill effect>. Storms the battleground riding the wind. Increases Speed, P. Evasion, Vital Point Attack Rate, P. Skill Evasion, Buff Cancel Resistance. -->
 		<set name="icon" val="icon.etc_magic_book_red_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_stackable" val="true" />
@@ -281,7 +281,7 @@
 		</skills>
 	</item>
 	<item id="90137" name="Matte Pendant Polish" type="EtcItem">
-		<!-- Enhances pendants' parameters. Can be used with Fire/ Earth Dragon Pendant up to +6. In case of failure, the pendant does not disappear, and its enchant value remains the same. Starting from +4, activates special effects depending on the item type. <font color=ff6666>Cannot be used for mass enchanting.</font> -->
+		<!-- Enhances pendant properties. Can be used with Fire/ Earth Dragon Pendant enchanted up to +6. In case of failure, the pendant does not disappear, and its enchant value remains the same. Starting from +4, activates special effects depending on the item type. <font color=ff6666>Cannot be used for mass enchanting.</font> -->
 		<set name="icon" val="icon.bm_pendant_varnish" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -296,7 +296,7 @@
 		</skills>
 	</item>
 	<item id="90138" name="Glittering Pendant Polish" type="EtcItem">
-		<!-- Enhances pendants' parameters. Can be used with Fire/ Earth Dragon Pendant up to +9. In case of failure, the pendant does not disappear, and its enchant value remains the same. Starting from +4, activates special effects depending on the item type. <font color=ff6666>Cannot be used for mass enchanting.</font> -->
+		<!-- Enhances pendant properties. Can be used with Fire/ Earth Dragon Pendant enchanted up to +9. In case of failure, the pendant does not disappear, and its enchant value remains the same. Starting from +4, activates special effects depending on the item type. <font color=ff6666>Cannot be used for mass enchanting.</font> -->
 		<set name="icon" val="icon.bm_pendant_varnish_premium" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -381,7 +381,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39210" level="1" /> <!-- White Assassin Transformation Scroll -->
+			<skill id="39210" level="1" /> <!-- White Assassin Transformation -->
 		</skills>
 	</item>
 	<item id="90145" name="Ring of Savior" additionalName="Sealed" type="Armor">
@@ -409,6 +409,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="90148" min="1" max="1" chance="100" /> <!-- Savior's Growth Scroll - Sealed -->
+			<item id="90149" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Savior's Weapon - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="90147" name="Mark of Savior" additionalName="Sealed" type="EtcItem">
 		<!-- Can be exchanged for a Savior's weapon (30-day) through the Game Assistant. -->
@@ -446,7 +452,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
-			<skill id="39213" level="1" /> <!-- Radiant Sayha's Cloak Enchantment Scroll -->
+			<skill id="39213" level="1" /> <!-- Savior Scroll: Enchant Weapon -->
 		</skills>
 	</item>
 	<item id="90150" name="Savior's Dual Sword" additionalName="30-day" type="Weapon">
@@ -570,9 +576,6 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">139</stat>
 			<stat type="mAtk">83</stat>
@@ -582,6 +585,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="90155" name="Savior's Herald" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -624,7 +630,7 @@
 		<set name="time" val="10080" />
 		<set name="bodypart" val="talisman" />
 		<skills>
-			<skill id="35036" level="1" /> <!-- Warrior s Talisman - Attack -->
+			<skill id="35036" level="1" /> <!-- Warrior's Talisman - Attack -->
 		</skills>
 	</item>
 	<item id="90158" name="+6 Fire Dragon Pendant" additionalName="30-day" type="Armor">
@@ -638,12 +644,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
-		<skills>
-			<skill id="35007" level="6" /> <!-- Fire Dragon Pendant Enchant Effect -->
-		</skills>
 		<stats>
 			<stat type="pDef">40</stat>
 		</stats>
+		<skills>
+			<skill id="35007" level="6" /> <!-- +6 Fire Dragon Pendant -->
+		</skills>
 	</item>
 	<item id="90159" name="Talisman of Battle - Liberate" additionalName="Sealed" type="Armor">
 		<!-- Removes all debuffs. Cooldown: 10 min. -->
@@ -678,7 +684,7 @@
 		<set name="time" val="10080" />
 		<set name="bodypart" val="talisman" />
 		<skills>
-			<skill id="35037" level="1" /> <!-- Warrior s Talisman - Defense -->
+			<skill id="35037" level="1" /> <!-- Warrior's Talisman - Defense -->
 		</skills>
 	</item>
 	<item id="90161" name="Chest of Glory" additionalName="7-day" type="EtcItem">
@@ -757,7 +763,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="90167" name="Bunch of Bananas" additionalName="Sealed" type="EtcItem">
-		<!-- For 5 min., acquired XP/ SP while hunting +10%, P./ M. Atk. +15%, P./ M. Def. +15%, Atk. Spd./ Casting Spd. +10%, Speed +10. The effect disappears after logout. -->
+		<!-- For 5 min., acquired XP/ SP while hunting +10%, P./ M. Atk. +15%, P./ M. Def. +15%, Atk. Spd./ Casting Spd. +10%, Speed +10. The effect disappears on logout. -->
 		<set name="icon" val="Icon.ev_monkey_banana" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -770,7 +776,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="for_npc" val="true" />
 		<skills>
-			<skill id="39223" level="1" /> <!-- Herb Banana Monkey Event -->
+			<skill id="39223" level="1" /> <!-- Bunch of Bananas -->
 		</skills>
 	</item>
 	<item id="90168" name="Strawberry Banana Cocktail" type="EtcItem">
@@ -786,7 +792,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="for_npc" val="true" />
 		<skills>
-			<skill id="39224" level="1" /> <!-- Strawberry-Banana Cocktail -->
+			<skill id="39224" level="1" /> <!-- Strawberry Banana Cocktail -->
 		</skills>
 	</item>
 	<item id="90169" name="Mango Banana Cocktail" type="EtcItem">
@@ -802,7 +808,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="for_npc" val="true" />
 		<skills>
-			<skill id="39225" level="1" /> <!-- Mango-Banana Cocktail -->
+			<skill id="39225" level="1" /> <!-- Mango Banana Cocktail -->
 		</skills>
 	</item>
 	<item id="90170" name="Cherry Banana Cocktail" type="EtcItem">
@@ -818,7 +824,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="for_npc" val="true" />
 		<skills>
-			<skill id="39226" level="1" /> <!-- Cherry-Banana Cocktail -->
+			<skill id="39226" level="1" /> <!-- Cherry Banana Cocktail -->
 		</skills>
 	</item>
 	<item id="90171" name="Monkey Bait" additionalName="Sealed" type="EtcItem">
@@ -933,7 +939,7 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49521" min="1" max="1" chance="100" /> <!-- Refined Romantic Chapeau <STR +1 INT +1> -->
+			<item id="49521" min="1" max="1" chance="100" /> <!-- Refined Romantic Chapeau (STR +1 INT +1) -->
 			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest - 30-day -->
 			<item id="90139" min="6480" max="6480" chance="100" /> <!-- Silver Bait - Sealed -->
 			<item id="90143" min="10" max="10" chance="100" /> <!-- Einhasad's Protection -->
@@ -949,7 +955,7 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="49521" min="1" max="1" chance="100" /> <!-- Refined Romantic Chapeau <STR +1 INT +1> -->
+			<item id="49521" min="1" max="1" chance="100" /> <!-- Refined Romantic Chapeau (STR +1 INT +1) -->
 			<item id="49588" min="1" max="1" chance="100" /> <!-- Golden Mermaid's Fishing Rod Chest - 30-day -->
 			<item id="49590" min="1" max="1" chance="100" /> <!-- Rare Accessory Pack Lv. 3 - 30-day -->
 			<item id="90139" min="12960" max="12960" chance="100" /> <!-- Silver Bait - Sealed -->
@@ -1034,8 +1040,8 @@
 			<item id="49472" min="1" max="1" chance="3.333333" /> <!-- Earth Dragon Pendant Pack -->
 			<item id="49471" min="1" max="1" chance="3.333333" /> <!-- Fire Dragon Pendant Pack -->
 			<item id="90045" min="1" max="1" chance="3.333333" /> <!-- Magic Tablet -->
-			<item id="49687" min="1" max="1" chance="3.333333" /> <!-- Chic Silver Chapeau <STR +1 INT +1> -->
-			<item id="49521" min="1" max="1" chance="3.333333" /> <!-- Refined Romantic Chapeau <STR +1 INT +1> -->
+			<item id="49687" min="1" max="1" chance="3.333333" /> <!-- Chic Silver Chapeau (STR +1 INT +1) -->
+			<item id="49521" min="1" max="1" chance="3.333333" /> <!-- Refined Romantic Chapeau (STR +1 INT +1) -->
 			<item id="90137" min="1" max="1" chance="3.333333" /> <!-- Matte Pendant Polish -->
 			<item id="49756" min="1" max="1" chance="3.333333" /> <!-- Cloth Piece -->
 			<item id="49513" min="1" max="1" chance="3.333333" /> <!-- Shining Pendant Polish box -->
@@ -1214,7 +1220,7 @@
 		</stats>
 	</item>
 	<item id="90198" name="MOPP Combat Ration" additionalName="Sealed" type="EtcItem">
-		<!-- For 5 min., acquired XP/ SP +10%, P./ M. Atk. +15%, P./ M. Def. +15%, Atk. Spd./ Casting Spd. +10%, Speed +10, Sayha's Grace Consumption -30%. The effect disappears after logout. -->
+		<!-- For 5 min., acquired XP/ SP while hunting +10%, P./ M. Atk. +15%, P./ M. Def. +15%, Atk. Spd./ Casting Spd. +10%, Speed +10, Sayha's Grace Consumption -30%. The effect disappears on logout. -->
 		<set name="icon" val="icon.ev_mopp_herb" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />

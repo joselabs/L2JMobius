@@ -67,7 +67,7 @@
 			<value level="5">99</value>
 		</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">288</value>
 					<value level="2">332</value>
@@ -172,19 +172,22 @@
 		<!-- Stun and immobilization for a time. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill0100</icon>
 		<operateType>A2</operateType>
-		<effectPoint>-100</effectPoint>
-		<abnormalType>STUN</abnormalType>
-		<basicProperty>PHYSICAL</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<activateRate>60</activateRate>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>3</abnormalTime>
-		<trait>SHOCK</trait>
-		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>9</abnormalTime>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<activateRate>60</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
+		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<trait>SHOCK</trait>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
@@ -195,22 +198,22 @@
 		<!-- Temporarily decreases the target's Speed. -->
 		<icon>icon.skill1160</icon>
 		<operateType>A2</operateType>
-		<castRange>1000</castRange>
-		<effectPoint>-100</effectPoint>
-		<abnormalType>SPEED_DOWN</abnormalType>
-		<basicProperty>MAGIC</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<effectRange>1500</effectRange>
-		<lvlBonusRate>20</lvlBonusRate>
-		<activateRate>16</activateRate>
-		<magicLevel>85</magicLevel>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<abnormalType>SPEED_DOWN</abnormalType>
+		<activateRate>16</activateRate>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>1000</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
+		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="Speed">
 				<amount>-30</amount>
@@ -222,24 +225,24 @@
 		<!-- Holds the target. Inflicted status: Obstruction (Disarm, Hold, Blind, Block, Aggression, Silence, Banishment, Bluff, Stealth). -->
 		<icon>icon.skill1201</icon>
 		<operateType>A2</operateType>
-		<castRange>1000</castRange>
-		<isMagic>1</isMagic>
-		<effectPoint>-100</effectPoint>
-		<abnormalType>ROOT_MAGICALLY</abnormalType>
-		<basicProperty>MAGIC</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<effectRange>1500</effectRange>
-		<lvlBonusRate>20</lvlBonusRate>
-		<activateRate>80</activateRate>
-		<magicLevel>85</magicLevel>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<trait>HOLD</trait>
+		<abnormalType>ROOT_MAGICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY_ONLY</targetType>
+		<activateRate>80</activateRate>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>1000</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<trait>HOLD</trait>
 		<effects>
 			<effect name="Root" />
 		</effects>
@@ -247,9 +250,9 @@
 	<skill id="13115" toLevel="1" name="Polearm of Multi-attack">
 		<!-- Allows to attack multiple enemies simultaneously. -->
 		<icon>icon.skill0216</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="HitNumber">
 				<amount>4</amount>
@@ -382,42 +385,60 @@
 		<magicLevel>55</magicLevel>
 	</skill>
 	<skill id="13129" toLevel="4" name="Set Effect - Twilight Heavy Armor, 2-piece (Defense)">
-		<!-- CON +2, STR -1, Atk. Spd. +15%, Max HP +487. -->
+		<!-- Level 1: CON +2, STR -1, Atk. Spd. +15%, Max HP +487. -->
+		<!-- Level 2: CON +2, STR -1, Atk. Spd. +15%, Max HP +487, Max MP +202, Confusion Resistance +7. -->
+		<!-- Level 3: CON +2, STR -1, Atk. Spd. +15%, Max MP +202, Max HP +487, Confusion Resistance +7, M. Def. +44. -->
+		<!-- Level 4: CON +2, STR -1, P. Atk. +6%, Atk. Spd. +15%, Max HP +487, Max MP +202, Confusion Resistance +7, M. Def. +44, P. Def. +87, 20 Attribute Resistance +21. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13130" toLevel="4" name="Set Effect - Twilight Heavy Armor, 2-piece (Attack)">
-		<!-- STR +2, CON -1, Atk. Spd. +18%. -->
+		<!-- Level 1: STR +2, CON -1, Atk. Spd. +18%. -->
+		<!-- Level 2: STR +2, CON -1, Atk. Spd. +18%, Critical Damage for basic attacks +242, Hold Resistance +7. -->
+		<!-- Level 3: STR +2, CON -1, Atk. Spd. +18%, Critical Damage for basic attacks +242, Hold Resistance +7, P. Skill MP Consumption -4%. -->
+		<!-- Level 4: STR +2, CON -1, Atk. Spd. +18%, Critical Damage for basic attacks +242, Hold Resistance +7, P. Atk. +180, P. Atk. +6%, P. Skill MP Consumption -4%, 4 Attribute Resistance +20. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13131" toLevel="4" name="Set Effect - Twilight Light Armor, 2-piece (Assassin)">
-		<!-- DEX +2, STR -1, Atk. Spd. +18%. -->
+		<!-- Level 1: DEX +2, STR -1, Atk. Spd. +18%. -->
+		<!-- Level 2: DEX +2, STR -1, Atk. Spd. +18%, P. Evasion +2.3, Stupor Resistance +7. -->
+		<!-- Level 3: DEX +2, STR -1, Atk. Spd. +18%, P. Evasion +2.3, Stupor Resistance +7, P. Atk. +180. -->
+		<!-- Level 4: DEX +2, STR -1, Atk. Spd +18%, P. Evasion +2.3, Stupor Resistance +7, P. Atk. +6% and additionally +180, Critical Rate for basic attacks +3.3%, 4 Attribute Resistance +20. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13132" toLevel="4" name="Set Effect: Twilight Light Armor, 2-piece (Enhanced)">
-		<!-- STR +2, CON -1, P. Atk. +180, Atk. Spd. +15%. -->
+		<!-- Level 1: STR +2, CON -1, P. Atk. +180, Atk. Spd. +15%. -->
+		<!-- Level 2: STR +2, CON -1, P. Atk. +180, Atk. Spd. +15%, Hold Resistance +7, Skill MP Consumption -10%. -->
+		<!-- Level 3: STR +2, CON -1, P. Atk. +180, Atk. Spd. +15%, Hold Resistance +7, Max HP +487, Skill MP Consumption -10%. -->
+		<!-- Level 4: STR +2, CON -1, P. Atk. +180 and additionally +6%, Atk. Spd. +15%, Hold Resistance +7, Max HP +487, Critical Damage for basic attacks +242, 4 Attribute Resistance +20, Skill MP Consumption -21. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13133" toLevel="4" name="Set Effect - Twilight Robe, 2 pcs. (Magic)">
-		<!-- INT +2. MEN -1, Casting Spd. +25%. -->
+		<!-- Level 1: INT +2. MEN -1, Casting Spd. +25%. -->
+		<!-- Level 2: INT +2, MEN -1, Casting Spd. +25%, MP +202, Stupor Resistance +7. -->
+		<!-- Level 3: INT +2, MEN -1, Casting Spd. +25%, MP +202, Stupor Resistance +7, M. Atk. +184. -->
+		<!-- Level 4: INT +2, MEN -1, Casting Spd. +25%, MP +202, Stupor Resistance +7, M. Atk. +40% and additional M. Atk. +184, M. Skill Critical Rate +4%. 4 Attribute Resistance +20. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13134" toLevel="4" name="Set Effect - Twilight Robe, 2-piece (Recovery)">
-		<!-- WIT +2, MEN -1, Casting Spd. +25%. -->
+		<!-- Level 1: WIT +2, MEN -1, Casting Spd. +25%. -->
+		<!-- Level 2: WIT +2, MEN -1, Casting Spd. +25%, MP +202, Confusion Resistance +7. -->
+		<!-- Level 3: WIT +2, MEN -1. Casting Spd. +25%, MP +202, Confusion Resistance +7, MP Recovery +0.7. -->
+		<!-- Level 4: WIT +2, MEN -1, Casting Spd. +25%, Max MP +202, M. Atk. +40%, Confusion Resistance +7, MP Recovery Rate +0.7, Healing Power +85, 4 Attribute Resistance +20. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -427,20 +448,21 @@
 		<!-- Extends the summoner's abilities to the servitor. Using the summoner's abilities as the basis, extends to the servitor P. Atk./ P. Def. by 50%, M. Atk./ M. Def. by 25%, Max HP/ MP by 10%, Critical Rate by 20%, Atk. Spd. by 10%, and Casting Spd. by 3%. -->
 		<icon>icon.skill1557</icon>
 		<operateType>A2</operateType>
-		<mpConsume>35</mpConsume>
-		<hitTime>1000</hitTime>
-		<reuseDelay>60000</reuseDelay>
-		<effectPoint>669</effectPoint>
-		<abnormalType>ABILITY_CHANGE</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
+		<abnormalType>ABILITY_CHANGE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>669</effectPoint>
+		<hitTime>1000</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<mpConsume>28</mpConsume>
+		<mpInitialConsume>7</mpInitialConsume>
+		<reuseDelay>60000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="OpHaveSummon" />
 		</conditions>
@@ -555,7 +577,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -607,7 +629,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1299,7 +1321,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13160" toLevel="1" name="Low-grade Magic Rune Clip Immortal Belt">
+	<skill id="13160" toLevel="1" name="Immortal Belt - Low-grade Magic Rune Clip">
 		<!-- Increases HP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1317,7 +1339,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13161" toLevel="2" name="Mid-grade Magic Rune Clip Immortal Belt">
+	<skill id="13161" toLevel="2" name="Immortal Belt - Mid-grade Magic Rune Clip">
 		<!-- Increases HP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1335,7 +1357,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13162" toLevel="3" name="High-grade Magic Rune Clip Immortal Belt">
+	<skill id="13162" toLevel="3" name="Immortal Belt - High-grade Magic Rune Clip">
 		<!-- Increases HP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1353,7 +1375,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13163" toLevel="4" name="Top-grade Magic Rune Clip Immortal Belt">
+	<skill id="13163" toLevel="4" name="Immortal Belt - Top-grade Magic Rune Clip">
 		<!-- Increases HP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1371,7 +1393,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13164" toLevel="1" name="Low-grade Magic Rune Clip Immortal Belt">
+	<skill id="13164" toLevel="1" name="Immortal Belt - Low-grade Magic Rune Clip">
 		<!-- Increases MP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1389,7 +1411,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13165" toLevel="2" name="Mid-grade Magic Rune Clip Immortal Belt">
+	<skill id="13165" toLevel="2" name="Immortal Belt - Mid-grade Magic Rune Clip">
 		<!-- Increases MP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1407,7 +1429,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13166" toLevel="3" name="High-grade Magic Rune Clip Immortal Belt">
+	<skill id="13166" toLevel="3" name="Immortal Belt - High-grade Magic Rune Clip">
 		<!-- Increases MP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1425,7 +1447,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13167" toLevel="4" name="Top-grade Magic Rune Clip Immortal Belt">
+	<skill id="13167" toLevel="4" name="Immortal Belt - Top-grade Magic Rune Clip">
 		<!-- Increases MP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1443,7 +1465,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13168" toLevel="1" name="Low-grade Magic Ornament Immortal Belt">
+	<skill id="13168" toLevel="1" name="Immortal Belt - Low-grade Magic Ornament">
 		<!-- Increases normal damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1456,7 +1478,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13169" toLevel="2" name="Mid-grade Magic Ornament Immortal Belt">
+	<skill id="13169" toLevel="2" name="Immortal Belt - Mid-grade Magic Ornament">
 		<!-- Increases normal damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1469,7 +1491,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13170" toLevel="3" name="High-grade Magic Ornament Immortal Belt">
+	<skill id="13170" toLevel="3" name="Immortal Belt - High-grade Magic Ornament">
 		<!-- Increases normal damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1482,7 +1504,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13171" toLevel="4" name="Top-grade Magic Ornament Immortal Belt">
+	<skill id="13171" toLevel="4" name="Immortal Belt - Top-grade Magic Ornament">
 		<!-- Increases normal damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1495,7 +1517,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13172" toLevel="1" name="Low-grade Magic Ornament Immortal Belt">
+	<skill id="13172" toLevel="1" name="Immortal Belt - Low-grade Magic Ornament">
 		<!-- Increases skill/ magic damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1512,7 +1534,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13173" toLevel="2" name="Mid-grade Magic Ornament Immortal Belt">
+	<skill id="13173" toLevel="2" name="Immortal Belt - Mid-grade Magic Ornament">
 		<!-- Increases skill/ magic damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1529,7 +1551,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13174" toLevel="3" name="High-grade Magic Ornament Immortal Belt">
+	<skill id="13174" toLevel="3" name="Immortal Belt - High-grade Magic Ornament">
 		<!-- Increases skill/ magic damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1546,7 +1568,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13175" toLevel="4" name="Top-grade Magic Ornament Immortal Belt">
+	<skill id="13175" toLevel="4" name="Immortal Belt - Top-grade Magic Ornament">
 		<!-- Increases skill/ magic damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1563,7 +1585,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13176" toLevel="1" name="Low-grade Magic Ornament Immortal Belt">
+	<skill id="13176" toLevel="1" name="Immortal Belt - Low-grade Magic Ornament">
 		<!-- When using the belt, decreases received PvP damage. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1584,7 +1606,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13177" toLevel="2" name="Mid-grade Magic Ornament Immortal Belt">
+	<skill id="13177" toLevel="2" name="Immortal Belt - Mid-grade Magic Ornament">
 		<!-- When using the belt, decreases received PvP damage. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1605,7 +1627,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13178" toLevel="3" name="High-grade Magic Ornament Immortal Belt">
+	<skill id="13178" toLevel="3" name="Immortal Belt - High-grade Magic Ornament">
 		<!-- When using the belt, decreases received PvP damage. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1626,7 +1648,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13179" toLevel="4" name="Top-grade Magic Ornament Immortal Belt">
+	<skill id="13179" toLevel="4" name="Immortal Belt - Top-grade Magic Ornament">
 		<!-- When using the belt, decreases received PvP damage. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1647,7 +1669,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13180" toLevel="1" name="Low-grade Magic Rune Clip Twilight Belt">
+	<skill id="13180" toLevel="1" name="Twilight Belt - Low-grade Magic Rune Clip">
 		<!-- Increases HP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1665,7 +1687,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13181" toLevel="2" name="Mid-grade Magic Rune Clip Twilight Belt">
+	<skill id="13181" toLevel="2" name="Twilight Belt - Mid-grade Magic Rune Clip">
 		<!-- Increases HP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1683,7 +1705,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13182" toLevel="3" name="High-grade Magic Rune Clip Twilight Belt">
+	<skill id="13182" toLevel="3" name="Twilight Belt - High-grade Magic Rune Clip">
 		<!-- Increases HP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1701,7 +1723,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13183" toLevel="4" name="Top-grade Magic Rune Clip Twilight Belt">
+	<skill id="13183" toLevel="4" name="Twilight Belt - Top-grade Magic Rune Clip">
 		<!-- Increases HP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1719,7 +1741,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13184" toLevel="1" name="Low-grade Magic Rune Clip Twilight Belt">
+	<skill id="13184" toLevel="1" name="Twilight Belt - Low-grade Magic Rune Clip">
 		<!-- Increases MP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1737,7 +1759,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13185" toLevel="2" name="Mid-grade Magic Rune Clip Twilight Belt">
+	<skill id="13185" toLevel="2" name="Twilight Belt - Mid-grade Magic Rune Clip">
 		<!-- Increases MP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1755,7 +1777,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13186" toLevel="3" name="High-grade Magic Rune Clip Twilight Belt">
+	<skill id="13186" toLevel="3" name="Twilight Belt - High-grade Magic Rune Clip">
 		<!-- Increases MP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1773,7 +1795,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13187" toLevel="4" name="Top-grade Magic Rune Clip Twilight Belt">
+	<skill id="13187" toLevel="4" name="Twilight Belt - Top-grade Magic Rune Clip">
 		<!-- Increases MP Recovery Rate when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1791,7 +1813,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13188" toLevel="1" name="Low-grade Magic Ornament Twilight Belt">
+	<skill id="13188" toLevel="1" name="Twilight Belt - Low-grade Magic Ornament">
 		<!-- Increases normal damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1804,7 +1826,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13189" toLevel="2" name="Mid-grade Magic Ornament Twilight Belt">
+	<skill id="13189" toLevel="2" name="Twilight Belt - Mid-grade Magic Ornament">
 		<!-- Increases normal damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1817,7 +1839,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13190" toLevel="3" name="High-grade Magic Ornament Twilight Belt">
+	<skill id="13190" toLevel="3" name="Twilight Belt - High-grade Magic Ornament">
 		<!-- Increases normal damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1830,7 +1852,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13191" toLevel="4" name="Top-grade Magic Ornament Twilight Belt">
+	<skill id="13191" toLevel="4" name="Twilight Belt - Top-grade Magic Ornament">
 		<!-- Increases normal damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1843,7 +1865,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13192" toLevel="1" name="Low-grade Magic Ornament Twilight Belt">
+	<skill id="13192" toLevel="1" name="Twilight Belt - Low-grade Magic Ornament">
 		<!-- Increases skill/ magic damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1860,7 +1882,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13193" toLevel="2" name="Mid-grade Magic Ornament Twilight Belt">
+	<skill id="13193" toLevel="2" name="Twilight Belt - Mid-grade Magic Ornament">
 		<!-- Increases skill/ magic damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1877,7 +1899,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13194" toLevel="3" name="High-grade Magic Ornament Twilight Belt">
+	<skill id="13194" toLevel="3" name="Twilight Belt - High-grade Magic Ornament">
 		<!-- Increases skill/ magic damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1894,7 +1916,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13195" toLevel="4" name="Top-grade Magic Ornament Twilight Belt">
+	<skill id="13195" toLevel="4" name="Twilight Belt - Top-grade Magic Ornament">
 		<!-- Increases skill/ magic damage during PvP when equipped. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1911,7 +1933,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13196" toLevel="1" name="Low-grade Magic Ornament Twilight Belt">
+	<skill id="13196" toLevel="1" name="Twilight Belt - Low-grade Magic Ornament">
 		<!-- When using the belt, decreases received PvP damage. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1932,7 +1954,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13197" toLevel="2" name="Mid-grade Magic Ornament Twilight Belt">
+	<skill id="13197" toLevel="2" name="Twilight Belt - Mid-grade Magic Ornament">
 		<!-- When using the belt, decreases received PvP damage. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1953,7 +1975,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13198" toLevel="3" name="High-grade Magic Ornament Twilight Belt">
+	<skill id="13198" toLevel="3" name="Twilight Belt - High-grade Magic Ornament">
 		<!-- When using the belt, decreases received PvP damage. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
@@ -1974,7 +1996,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13199" toLevel="4" name="Top-grade Magic Ornament Twilight Belt">
+	<skill id="13199" toLevel="4" name="Twilight Belt - Top-grade Magic Ornament">
 		<!-- When using the belt, decreases received PvP damage. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>

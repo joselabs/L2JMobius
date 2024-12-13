@@ -107,6 +107,7 @@
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="130" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -114,6 +115,9 @@
 		<stats>
 			<stat type="pDef">28</stat>
 		</stats>
+		<skills>
+			<skill id="36039" level="1" /> <!-- 7th Anniversary Event Shirt: Base Effect -->
+		</skills>
 	</item>
 	<item id="21707" name="Blessed Scroll: Enchant Power Shirt" additionalName="Event" type="EtcItem">
 		<!-- For Power Shirt only. P./ M. Def. +1. Starting from +4, P. Def. +3, basic stats (CON, MEN, STR, INT, DEX, and WIT) are increased with each enchant value. Enchanting is safe up to +3. The maximum enchant value is +9. When enchanted to +5, +7 and +9, special skills are added. In case of failure, the item's enchant value is reset to 0. -->
@@ -162,8 +166,9 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="21245" level="1" /> <!-- Release Agathion's Seal - Rudolph -->
+			<skill id="21245" level="1" /> <!-- Summon Agathion Rudolph -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="35069" level="1" /> <!-- Agathion's Main Slot -->
 		</skills>
 	</item>
 	<item id="21710" name="Vitality Replenishing Potion" additionalName="Event" type="EtcItem">
@@ -196,6 +201,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
+			<skill id="22253" level="1" /> <!-- Prophecy of Water -->
 			<skill id="22256" level="1" /> <!-- Might -->
 			<skill id="22257" level="1" /> <!-- Wind Walk -->
 			<skill id="22258" level="1" /> <!-- Haste -->
@@ -210,7 +216,6 @@
 			<skill id="22267" level="1" /> <!-- Clarity -->
 			<skill id="22268" level="1" /> <!-- Wild Magic -->
 			<skill id="22269" level="6" /> <!-- Concentration -->
-			<skill id="22253" level="1" /> <!-- Prophecy of Water -->
 		</skills>
 	</item>
 	<item id="21712" name="Blessed Zaken's Earring" type="Armor">
@@ -226,13 +231,13 @@
 		<set name="enchant_enabled" val="true" />
 		<set name="price" val="11394000" />
 		<set name="commissionItemType" val="EARRING" />
-		<skills>
-			<skill id="3559" level="2" /> <!-- Blessed Zaken's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">94</stat>
 			<stat type="maxMp">37</stat>
 		</stats>
+		<skills>
+			<skill id="3559" level="2" /> <!-- Immortal Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="21713" name="Zaken's Sealed Cloak" type="EtcItem">
 		<!-- Old and not very useful equipment. Cannot be used. -->
@@ -278,9 +283,6 @@
 		<cond msgId="2453">
 			<player cloakStatus="true" />
 		</cond>
-		<skills>
-			<skill id="21242" level="1" /> <!-- Zaken's Call -->
-		</skills>
 		<stats>
 			<stat type="darkRes">15</stat>
 			<stat type="earthRes">5</stat>
@@ -290,6 +292,9 @@
 			<stat type="windRes">15</stat>
 			<stat type="pDef">20</stat>
 		</stats>
+		<skills>
+			<skill id="21242" level="1" /> <!-- Zaken's Call -->
+		</skills>
 	</item>
 	<item id="21717" name="Cloak of Freya" type="Armor">
 		<!-- A cloak that makes you feel Freya's chill. Increases P. Def. and Attribute Resistance. Enables the skill that can teleport you to the boss area. Cannot be enchanted, augmented or imbued with an attribute. -->
@@ -305,9 +310,6 @@
 		<cond msgId="2453">
 			<player cloakStatus="true" />
 		</cond>
-		<skills>
-			<skill id="21243" level="1" /> <!-- Freya's Call -->
-		</skills>
 		<stats>
 			<stat type="darkRes">10</stat>
 			<stat type="earthRes">10</stat>
@@ -317,6 +319,9 @@
 			<stat type="windRes">20</stat>
 			<stat type="pDef">30</stat>
 		</stats>
+		<skills>
+			<skill id="21243" level="1" /> <!-- Freya's Call -->
+		</skills>
 	</item>
 	<item id="21718" name="Frintezza's Cloak" type="Armor">
 		<!-- A cloak that plays Frintezza's melody over and over in your head. Increases P. Def. and Attribute Resistance. Enables the skill that can teleport you to the boss area. Cannot be enchanted, augmented or imbued with an attribute. -->
@@ -332,9 +337,6 @@
 		<cond msgId="2453">
 			<player cloakStatus="true" />
 		</cond>
-		<skills>
-			<skill id="21244" level="1" /> <!-- Frintezza's Call -->
-		</skills>
 		<stats>
 			<stat type="darkRes">15</stat>
 			<stat type="earthRes">15</stat>
@@ -344,6 +346,9 @@
 			<stat type="windRes">5</stat>
 			<stat type="pDef">20</stat>
 		</stats>
+		<skills>
+			<skill id="21244" level="1" /> <!-- Frintezza's Call -->
+		</skills>
 	</item>
 	<item id="21719" name="Zaken's Soul Cloak" type="Armor">
 		<!-- A cloak imbued with Zaken's soul. Increases P. Def. and Attribute Resistance. Enables the skill that can teleport you to the boss area. -->
@@ -360,9 +365,6 @@
 		<cond msgId="2453">
 			<player cloakStatus="true" />
 		</cond>
-		<skills>
-			<skill id="21242" level="1" /> <!-- Zaken's Call -->
-		</skills>
 		<stats>
 			<stat type="darkRes">10</stat>
 			<stat type="earthRes">5</stat>
@@ -372,6 +374,9 @@
 			<stat type="windRes">10</stat>
 			<stat type="pDef">40</stat>
 		</stats>
+		<skills>
+			<skill id="21242" level="1" /> <!-- Zaken's Call -->
+		</skills>
 	</item>
 	<item id="21720" name="Freya's Soul Cloak" type="Armor">
 		<!-- A cloak imbued with Freya's soul. Increases P. Def. and Attribute Resistance. Enables the skill that can teleport you to the boss area. -->
@@ -388,9 +393,6 @@
 		<cond msgId="2453">
 			<player cloakStatus="true" />
 		</cond>
-		<skills>
-			<skill id="21243" level="1" /> <!-- Freya's Call -->
-		</skills>
 		<stats>
 			<stat type="darkRes">5</stat>
 			<stat type="earthRes">5</stat>
@@ -400,6 +402,9 @@
 			<stat type="windRes">15</stat>
 			<stat type="pDef">60</stat>
 		</stats>
+		<skills>
+			<skill id="21243" level="1" /> <!-- Freya's Call -->
+		</skills>
 	</item>
 	<item id="21721" name="Frintezza's Soul Cloak" type="Armor">
 		<!-- A cloak imbued with Frintezza's soul. Increases P. Def. and Attribute Resistance. Enables the skill that can teleport you to the boss area. -->
@@ -416,9 +421,6 @@
 		<cond msgId="2453">
 			<player cloakStatus="true" />
 		</cond>
-		<skills>
-			<skill id="21244" level="1" /> <!-- Frintezza's Call -->
-		</skills>
 		<stats>
 			<stat type="darkRes">10</stat>
 			<stat type="earthRes">10</stat>
@@ -428,6 +430,9 @@
 			<stat type="windRes">5</stat>
 			<stat type="pDef">40</stat>
 		</stats>
+		<skills>
+			<skill id="21244" level="1" /> <!-- Frintezza's Call -->
+		</skills>
 	</item>
 	<item id="21722" name="Zaken's Soul Fragment" type="EtcItem">
 		<!-- Small fragment that contains a part of Zaken's soul. See weaver Olf Adams to find out what use it Has. -->
@@ -493,6 +498,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
+			<skill id="22253" level="1" /> <!-- Prophecy of Water -->
 			<skill id="22256" level="1" /> <!-- Might -->
 			<skill id="22257" level="1" /> <!-- Wind Walk -->
 			<skill id="22258" level="1" /> <!-- Haste -->
@@ -507,7 +513,6 @@
 			<skill id="22267" level="1" /> <!-- Clarity -->
 			<skill id="22268" level="1" /> <!-- Wild Magic -->
 			<skill id="22269" level="6" /> <!-- Concentration -->
-			<skill id="22253" level="1" /> <!-- Prophecy of Water -->
 		</skills>
 	</item>
 	<item id="21727" name="Agathion Zinyanzi (3-day)" additionalName="3-day" type="Armor">
@@ -525,10 +530,11 @@
 		<set name="immediate_effect" val="true" />
 		<set name="time" val="4320" />
 		<skills>
-			<skill id="21248" level="1" /> <!-- Release Agathion's Seal - Zinyanzi -->
-			<skill id="23306" level="1" /> <!-- Zinyanzi Agathion Cute Trick -->
-			<skill id="23305" level="1" /> <!-- Zinyanzi Agathion - Yunbokhwan -->
+			<skill id="21248" level="1" /> <!-- Summon Agathion Zinyanzi -->
+			<skill id="23306" level="1" /> <!-- Agathion's Cute Trick - Zinyanzi -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="23305" level="1" /> <!-- Zinyanzi Agathion Yunbokhwan -->
+			<skill id="35069" level="1" /> <!-- Agathion's Main Slot -->
 		</skills>
 	</item>
 	<item id="21728" name="Agathion Zinyanzi (7-day)" additionalName="7-day" type="Armor">
@@ -546,10 +552,11 @@
 		<set name="immediate_effect" val="true" />
 		<set name="time" val="10080" />
 		<skills>
-			<skill id="21248" level="1" /> <!-- Release Agathion's Seal - Zinyanzi -->
-			<skill id="23306" level="1" /> <!-- Zinyanzi Agathion Cute Trick -->
-			<skill id="23305" level="1" /> <!-- Zinyanzi Agathion - Yunbokhwan -->
+			<skill id="21248" level="1" /> <!-- Summon Agathion Zinyanzi -->
+			<skill id="23306" level="1" /> <!-- Agathion's Cute Trick - Zinyanzi -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="23305" level="1" /> <!-- Zinyanzi Agathion Yunbokhwan -->
+			<skill id="35069" level="1" /> <!-- Agathion's Main Slot -->
 		</skills>
 	</item>
 	<item id="21729" name="Agathion Yanzi" additionalName="Permanent" type="Armor">
@@ -566,9 +573,10 @@
 		<set name="is_freightable" val="true" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="21249" level="1" /> <!-- Release Agathion's Seal - Yanzi -->
-			<skill id="23307" level="1" /> <!-- Yanzi Agathion Cute Trick -->
+			<skill id="21249" level="1" /> <!-- Summon Agathion Zinyanzi -->
+			<skill id="23307" level="1" /> <!-- Agathion's Cute Trick - Yanzi -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="35069" level="1" /> <!-- Agathion's Main Slot -->
 		</skills>
 	</item>
 	<item id="21730" name="Letter Collector's Gift" additionalName="Event" type="EtcItem">
@@ -798,9 +806,6 @@
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">79</stat>
 			<stat type="mAtk">47</stat>
@@ -811,6 +816,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="21739" name="Reinforced Longbow" additionalName="Event" type="Weapon">
 		<!-- Letter Collector's Strengthened Low Bow of Memory -->
@@ -859,9 +867,6 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">72</stat>
 			<stat type="mAtk">47</stat>
@@ -872,6 +877,9 @@
 			<stat type="randomDamage">40</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="21741" name="Sword of Magic Fog" additionalName="Event" type="Weapon">
 		<!-- Letter Collector's Sword of Magic Fog of Memory -->
@@ -1040,7 +1048,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<skills>
-			<skill id="22272" level="1" /> <!-- Novice Explorer's Treasure Sack -->
+			<skill id="22272" level="1" /> <!-- Novice Adventurer's Treasure Sack -->
 		</skills>
 	</item>
 	<item id="21748" name="Experienced Adventurer's Treasure Sack" type="EtcItem">
@@ -1081,7 +1089,7 @@
 		<set name="is_depositable" val="false" />
 	</item>
 	<item id="21751" name="Rune Jewelry Box - Crystal" type="EtcItem">
-		<!-- Jewelry box containing the precious treasure of Rune. When used, you can obtain 15 Crystals of Life with a certain chance. -->
+		<!-- A jewelry box with treasures from Rune. Double-click to obtain Life Crystal (15 pcs.) with a certain chance. -->
 		<set name="icon" val="icon.etc_treasure_box_i07" />
 		<set name="material" val="CRYSTAL" />
 		<set name="commissionItemType" val="OTHER_ITEM" />
@@ -1133,9 +1141,6 @@
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_dropable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1</stat>
 			<stat type="mAtk">1</stat>
@@ -1146,6 +1151,9 @@
 			<stat type="randomDamage">1</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="21755" name="Manor Scholar's Hat" type="Armor">
 		<!-- Scholar's hat showing knowledge. Gold tassel is attached. -->

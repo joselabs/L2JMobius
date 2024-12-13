@@ -6,7 +6,16 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="50601" toLevel="15" name="Rabbit Doll's Sorcery">
-		<!-- PvE damage +1%. P. Atk. +5. M. Atk. +5. P. Def. +10. M. Def. +10. Acquired XP/ SP +1%. MEN +1 -->
+		<!-- Level 6: PvE damage +1%. P. Atk. +5. M. Atk. +5. P. Def. +10. M. Def. +10. Acquired XP/ SP +1%. MEN +1 -->
+		<!-- Level 7: PvE damage +1%. P. Atk. +10. M. Atk. +10. P. Def. +20. M. Def. +20. Acquired XP/ SP +2%. MEN +1 -->
+		<!-- Level 8: PvE damage +2%. P. Atk. +15. M. Atk. +15. P. Def. +30. M. Def. +30. Acquired XP/ SP +3%. MEN +1. CON +1 -->
+		<!-- Level 9: PvE damage +2%. P. Atk. +20. M. Atk. +20. P. Def. +40. M. Def. +40. Acquired XP/ SP +4%. MEN +1. CON +1 -->
+		<!-- Level 10: PvE damage +2%. P. Atk. +25. M. Atk. +25. P. Def. +50. M. Def. +50. Acquired XP/ SP +5%. MEN +1. CON +1. WIT +1 -->
+		<!-- Level 11: PvE damage +3%. P. Atk. +30. M. Atk. +30. P. Def. +60. M. Def. +60. Acquired XP/ SP +6%. MEN +1. CON +1. WIT +1 -->
+		<!-- Level 12: PvE damage +3%. P. Atk. +35. M. Atk. +35. P. Def. +70. M. Def. +70. Acquired XP/ SP +7%. MEN +1. CON +1. WIT +1. DEX +1 -->
+		<!-- Level 13: PvE damage +3%. P. Atk. +40. M. Atk. +40. P. Def. +80. M. Def. +80. Acquired XP/ SP +8%. MEN +1. CON +1. WIT +1. DEX +1. Received P. Skill Critical Rate -1%. Received P. Skill Critical Damage -1% -->
+		<!-- Level 14: PvE damage +4%. P. Atk. +45. M. Atk. +45. P. Def. +90. M. Def. +90. Acquired XP/ SP +9%. MEN +1. CON +1. WIT +1. DEX +1. INT +1. Received P. Skill Critical Rate -3%. Received P. Skill Critical Damage -3% -->
+		<!-- Level 15: PvE damage +5%. P. Atk. +50. M. Atk. +50. P. Def. +100. M. Def. +100. Acquired XP/ SP +10%. MEN +1. CON +1. WIT +1. DEX +1. INT +1. STR +1. Received P. Skill Critical Rate -5%. Received P. Skill Critical Damage -5%. <When triggered: Fast Moving>. With a 2% chance, Speed +5 for 3 sec. after an attack. -->
 		<icon>
 			<value level="1">icon.ev_pink_rabbit_00</value>
 			<value level="2">icon.ev_pink_rabbit_00</value>
@@ -26,7 +35,7 @@
 		</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">5</value>
@@ -42,7 +51,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">5</value>
@@ -180,7 +189,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -194,15 +203,15 @@
 	<skill id="50602" toLevel="1" name="Fast Moving">
 		<!-- Speed +5 -->
 		<icon>icon.ev_pink_rabbit_01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>SPEED_UP</abnormalType>
-		<isMagic>5</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>5</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="Speed">
 				<amount>5</amount>
@@ -220,7 +229,7 @@
 		<icon>icon.weapon_dynasty_ancient_sword_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -231,7 +240,7 @@
 				<skillLevel>1</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -245,11 +254,20 @@
 		</effects>
 	</skill>
 	<skill id="50605" toLevel="10" name="+1 Galaxia's Ancient Sword">
-		<!-- A weapon imbued with the power of Galaxia's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 1: A weapon imbued with the power of Galaxia's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 2: A weapon imbued with the power of Galaxia's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 3: A weapon imbued with the power of Galaxia's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 4: A weapon imbued with the power of Galaxia's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 5: A weapon imbued with the power of Galaxia's soul. <Stat bonus>. DEX +1. CON +1. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. Galaxia's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 6: A weapon imbued with the power of Galaxia's soul. <Stat bonus>. DEX +2. CON +2. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. Galaxia's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 7: A weapon imbued with the power of Galaxia's soul. <Stat bonus>. DEX +3. CON +3. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. Galaxia's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 8: A weapon imbued with the power of Galaxia's soul. <Stat bonus>. DEX +4. CON +4. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. Galaxia's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 9: A weapon imbued with the power of Galaxia's soul. <Stat bonus>. DEX +5. CON +5. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. Galaxia's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 10: A weapon imbued with the power of Galaxia's soul. <Stat bonus>. DEX +6. CON +6. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Galaxia's Justice: makes a lightning attack according to M. Atk. Galaxia's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
 		<icon>icon.weapon_dynasty_ancient_sword_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -282,7 +300,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -315,7 +333,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -348,7 +366,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -408,17 +426,38 @@
 		</effects>
 	</skill>
 	<skill id="50606" toLevel="22" name="Galaxia's Justice">
-		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
+		<!-- Level 1: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
+		<!-- Level 2: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 105 power. -->
+		<!-- Level 3: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 107 power. -->
+		<!-- Level 4: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 109 power. -->
+		<!-- Level 5: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 112 power. -->
+		<!-- Level 6: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 116 power. -->
+		<!-- Level 7: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 120 power. -->
+		<!-- Level 8: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 124 power. -->
+		<!-- Level 9: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 128 power. -->
+		<!-- Level 10: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 132 power. -->
+		<!-- Level 11: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 136 power. -->
+		<!-- Level 12: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 61 power. -->
+		<!-- Level 13: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 63 power. -->
+		<!-- Level 14: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 64 power. -->
+		<!-- Level 15: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 65 power. -->
+		<!-- Level 16: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 67 power. -->
+		<!-- Level 17: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 69 power. -->
+		<!-- Level 18: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 72 power. -->
+		<!-- Level 19: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 74 power. -->
+		<!-- Level 20: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 76 power. -->
+		<!-- Level 21: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 79 power. -->
+		<!-- Level 22: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 81 power. -->
 		<icon>icon.weapon_dynasty_ancient_sword_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">103</value>
 					<value level="2">105</value>
@@ -447,17 +486,32 @@
 		</effects>
 	</skill>
 	<skill id="50607" toLevel="20" name="Galaxia's Enhanced Justice">
-		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
+		<!-- Level 5: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
+		<!-- Level 6: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 180 power. -->
+		<!-- Level 7: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 186 power. -->
+		<!-- Level 8: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 192 power. -->
+		<!-- Level 9: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 198 power. -->
+		<!-- Level 10: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 204 power. -->
+		<!-- Level 11: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 12: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 13: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 14: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 15: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 104 power. -->
+		<!-- Level 16: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 108 power. -->
+		<!-- Level 17: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 111 power. -->
+		<!-- Level 18: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 115 power. -->
+		<!-- Level 19: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 118 power. -->
+		<!-- Level 20: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 122 power. -->
 		<icon>icon.weapon_dynasty_ancient_sword_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -488,7 +542,7 @@
 		<icon>icon.weapon_heavenstair_rapier_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -499,7 +553,7 @@
 				<skillLevel>1</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -513,11 +567,20 @@
 		</effects>
 	</skill>
 	<skill id="50609" toLevel="10" name="+1 Phiriel's Rapier">
-		<!-- A weapon imbued with the power of Phiriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 1: A weapon imbued with the power of Phiriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 2: A weapon imbued with the power of Phiriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 3: A weapon imbued with the power of Phiriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 4: A weapon imbued with the power of Phiriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 5: A weapon imbued with the power of Phiriel's soul. <Stat bonus>. STR +1. INT +1. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. Phiriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 6: A weapon imbued with the power of Phiriel's soul. <Stat bonus>. STR +2. INT +2. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. Phiriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 7: A weapon imbued with the power of Phiriel's soul. <Stat bonus>. STR +3. INT +3. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. Phiriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 8: A weapon imbued with the power of Phiriel's soul. <Stat bonus>. STR +4. INT +4. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. Phiriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 9: A weapon imbued with the power of Phiriel's soul. <Stat bonus>. STR +5. INT +5. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. Phiriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 10: A weapon imbued with the power of Phiriel's soul. <Stat bonus>. STR +6. INT +6. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Phiriel's Justice: makes a lightning attack according to M. Atk. Phiriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
 		<icon>icon.weapon_heavenstair_rapier_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -550,7 +613,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -583,7 +646,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -616,7 +679,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -676,17 +739,38 @@
 		</effects>
 	</skill>
 	<skill id="50610" toLevel="22" name="Phiriel's Justice">
-		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
+		<!-- Level 1: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
+		<!-- Level 2: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 105 power. -->
+		<!-- Level 3: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 107 power. -->
+		<!-- Level 4: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 109 power. -->
+		<!-- Level 5: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 112 power. -->
+		<!-- Level 6: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 116 power. -->
+		<!-- Level 7: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 120 power. -->
+		<!-- Level 8: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 124 power. -->
+		<!-- Level 9: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 128 power. -->
+		<!-- Level 10: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 132 power. -->
+		<!-- Level 11: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 136 power. -->
+		<!-- Level 12: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 61 power. -->
+		<!-- Level 13: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 63 power. -->
+		<!-- Level 14: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 64 power. -->
+		<!-- Level 15: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 65 power. -->
+		<!-- Level 16: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 67 power. -->
+		<!-- Level 17: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 69 power. -->
+		<!-- Level 18: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 72 power. -->
+		<!-- Level 19: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 74 power. -->
+		<!-- Level 20: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 76 power. -->
+		<!-- Level 21: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 79 power. -->
+		<!-- Level 22: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 81 power. -->
 		<icon>icon.weapon_heavenstair_rapier_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">103</value>
 					<value level="2">105</value>
@@ -715,17 +799,32 @@
 		</effects>
 	</skill>
 	<skill id="50611" toLevel="20" name="Phiriel's Enhanced Justice">
-		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
+		<!-- Level 5: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
+		<!-- Level 6: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 180 power. -->
+		<!-- Level 7: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 186 power. -->
+		<!-- Level 8: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 192 power. -->
+		<!-- Level 9: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 198 power. -->
+		<!-- Level 10: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 204 power. -->
+		<!-- Level 11: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 12: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 13: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 14: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 15: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 104 power. -->
+		<!-- Level 16: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 108 power. -->
+		<!-- Level 17: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 111 power. -->
+		<!-- Level 18: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 115 power. -->
+		<!-- Level 19: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 118 power. -->
+		<!-- Level 20: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 122 power. -->
 		<icon>icon.weapon_heavenstair_rapier_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -756,7 +855,7 @@
 		<icon>icon.weapon_vesper_fighter_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -767,7 +866,7 @@
 				<skillLevel>1</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -781,11 +880,20 @@
 		</effects>
 	</skill>
 	<skill id="50613" toLevel="10" name="+1 Anais' Fists">
-		<!-- A weapon imbued with the power of Anais' soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 1: A weapon imbued with the power of Anais' soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 2: A weapon imbued with the power of Anais' soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 3: A weapon imbued with the power of Anais' soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 4: A weapon imbued with the power of Anais' soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 5: A weapon imbued with the power of Anais' soul. <Stat bonus>. STR +1. CON +1. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. Anais' Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 6: A weapon imbued with the power of Anais' soul. <Stat bonus>. STR +2. CON +2. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. Anais' Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 7: A weapon imbued with the power of Anais' soul. <Stat bonus>. STR +3. CON +3. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. Anais' Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 8: A weapon imbued with the power of Anais' soul. <Stat bonus>. STR +4. CON +4. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. Anais' Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 9: A weapon imbued with the power of Anais' soul. <Stat bonus>. STR +5. CON +5. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. Anais' Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 10: A weapon imbued with the power of Anais' soul. <Stat bonus>. STR +6. CON +6. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Anais' Justice: makes a lightning attack according to M. Atk. Anais' Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
 		<icon>icon.weapon_vesper_fighter_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -818,7 +926,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -851,7 +959,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -884,7 +992,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -944,17 +1052,38 @@
 		</effects>
 	</skill>
 	<skill id="50614" toLevel="22" name="Anais' Justice">
-		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
+		<!-- Level 1: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
+		<!-- Level 2: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 105 power. -->
+		<!-- Level 3: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 107 power. -->
+		<!-- Level 4: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 109 power. -->
+		<!-- Level 5: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 112 power. -->
+		<!-- Level 6: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 116 power. -->
+		<!-- Level 7: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 120 power. -->
+		<!-- Level 8: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 124 power. -->
+		<!-- Level 9: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 128 power. -->
+		<!-- Level 10: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 132 power. -->
+		<!-- Level 11: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 136 power. -->
+		<!-- Level 12: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 61 power. -->
+		<!-- Level 13: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 63 power. -->
+		<!-- Level 14: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 64 power. -->
+		<!-- Level 15: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 65 power. -->
+		<!-- Level 16: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 67 power. -->
+		<!-- Level 17: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 69 power. -->
+		<!-- Level 18: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 72 power. -->
+		<!-- Level 19: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 74 power. -->
+		<!-- Level 20: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 76 power. -->
+		<!-- Level 21: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 79 power. -->
+		<!-- Level 22: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 81 power. -->
 		<icon>icon.weapon_vesper_fighter_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">103</value>
 					<value level="2">105</value>
@@ -983,17 +1112,32 @@
 		</effects>
 	</skill>
 	<skill id="50615" toLevel="20" name="Anais' Enhanced Justice">
-		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
+		<!-- Level 5: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
+		<!-- Level 6: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 180 power. -->
+		<!-- Level 7: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 186 power. -->
+		<!-- Level 8: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 192 power. -->
+		<!-- Level 9: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 198 power. -->
+		<!-- Level 10: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 204 power. -->
+		<!-- Level 11: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 12: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 13: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 14: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 15: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 104 power. -->
+		<!-- Level 16: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 108 power. -->
+		<!-- Level 17: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 111 power. -->
+		<!-- Level 18: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 115 power. -->
+		<!-- Level 19: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 118 power. -->
+		<!-- Level 20: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 122 power. -->
 		<icon>icon.weapon_vesper_fighter_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1024,7 +1168,7 @@
 		<icon>BranchSys2.icon.br_wp_astarot_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -1035,7 +1179,7 @@
 				<skillLevel>1</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -1049,11 +1193,20 @@
 		</effects>
 	</skill>
 	<skill id="50617" toLevel="10" name="+1 Juriel's Dual Swords">
-		<!-- A weapon imbued with the power of Juriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 1: A weapon imbued with the power of Juriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 2: A weapon imbued with the power of Juriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 3: A weapon imbued with the power of Juriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 4: A weapon imbued with the power of Juriel's soul. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. -->
+		<!-- Level 5: A weapon imbued with the power of Juriel's soul. <Stat bonus>. STR +1. CON +1. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. Juriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 6: A weapon imbued with the power of Juriel's soul. <Stat bonus>. STR +2. CON +2. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. Juriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 7: A weapon imbued with the power of Juriel's soul. <Stat bonus>. STR +3. CON +3. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. Juriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 8: A weapon imbued with the power of Juriel's soul. <Stat bonus>. STR +4. CON +4. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. Juriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 9: A weapon imbued with the power of Juriel's soul. <Stat bonus>. STR +5. CON +5. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. Juriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
+		<!-- Level 10: A weapon imbued with the power of Juriel's soul. <Stat bonus>. STR +6. CON +6. Makes an <font color="FFBB00">additional strike</font> with Seraphim's might. Juriel's Justice: makes a lightning attack according to M. Atk. Juriel's Enhanced Justice: makes an enhanced lightning attack according to M. Atk. -->
 		<icon>BranchSys2.icon.br_wp_astarot_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -1086,7 +1239,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -1119,7 +1272,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -1152,7 +1305,7 @@
 				</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -1212,17 +1365,38 @@
 		</effects>
 	</skill>
 	<skill id="50618" toLevel="22" name="Juriel's Justice">
-		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
+		<!-- Level 1: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 103 power. -->
+		<!-- Level 2: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 105 power. -->
+		<!-- Level 3: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 107 power. -->
+		<!-- Level 4: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 109 power. -->
+		<!-- Level 5: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 112 power. -->
+		<!-- Level 6: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 116 power. -->
+		<!-- Level 7: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 120 power. -->
+		<!-- Level 8: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 124 power. -->
+		<!-- Level 9: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 128 power. -->
+		<!-- Level 10: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 132 power. -->
+		<!-- Level 11: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 136 power. -->
+		<!-- Level 12: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 61 power. -->
+		<!-- Level 13: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 63 power. -->
+		<!-- Level 14: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 64 power. -->
+		<!-- Level 15: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 65 power. -->
+		<!-- Level 16: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 67 power. -->
+		<!-- Level 17: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 69 power. -->
+		<!-- Level 18: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 72 power. -->
+		<!-- Level 19: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 74 power. -->
+		<!-- Level 20: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 76 power. -->
+		<!-- Level 21: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 79 power. -->
+		<!-- Level 22: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 81 power. -->
 		<icon>BranchSys2.icon.br_wp_astarot_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">103</value>
 					<value level="2">105</value>
@@ -1251,17 +1425,32 @@
 		</effects>
 	</skill>
 	<skill id="50619" toLevel="20" name="Juriel's Enhanced Justice">
-		<!-- <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
+		<!-- Level 5: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 174 power. -->
+		<!-- Level 6: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 180 power. -->
+		<!-- Level 7: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 186 power. -->
+		<!-- Level 8: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 192 power. -->
+		<!-- Level 9: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 198 power. -->
+		<!-- Level 10: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 204 power. -->
+		<!-- Level 11: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 12: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 13: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 14: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 0 power. -->
+		<!-- Level 15: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 104 power. -->
+		<!-- Level 16: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 108 power. -->
+		<!-- Level 17: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 111 power. -->
+		<!-- Level 18: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 115 power. -->
+		<!-- Level 19: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 118 power. -->
+		<!-- Level 20: <<font color="FFBB00">Additional attack</font>>. Inflicts magic damage on the enemy with 122 power. -->
 		<icon>BranchSys2.icon.br_wp_astarot_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1288,7 +1477,12 @@
 		</effects>
 	</skill>
 	<skill id="50620" toLevel="6" name="Heavenly Cloak">
-		<!-- Max HP +20%. Max MP +20%. Resistance to All Weapons +15%. Acquired XP +30%. Acquired SP +30%. P. Atk. +500. M. Atk. +500. P. Def. +15%. M. Def. +15%. All Critical Damage +15%. All received Critical Rate -10%. All received Critical Damage -10%. Received fixed damage -5%. Unequip Resistance +20%. After an attack, there is a +20%0 chance to activate Angelic Recovery. <Angelic Recovery>. Recovers HP and MP over 10 sec. Speed +33 -->
+		<!-- Level 1: Max HP +20%. Max MP +20%. Resistance to All Weapons +15%. Acquired XP +30%. Acquired SP +30%. P. Atk. +500. M. Atk. +500. P. Def. +15%. M. Def. +15%. All Critical Damage +15%. All received Critical Rate -10%. All received Critical Damage -10%. Received fixed damage -5%. Unequip Resistance +20%. After an attack, there is a +20%0 chance to activate Angelic Recovery. <Angelic Recovery>. Recovers HP and MP over 10 sec. Speed +33 -->
+		<!-- Level 2: Max HP +21%. Max MP +21%. Resistance to All Weapons +16%. Acquired XP +30%. Acquired SP +30%. P. Atk. +1000. M. Atk. +1000. P. Def. +15%. M. Def. +15%. All Critical Damage +15%. All received Critical Rate -10%. All received Critical Damage -10%. Received fixed damage -6%. Unequip Resistance +22%. After an attack, there is a +21%0 chance to activate Angelic Recovery. <Angelic Recovery>. Recovers HP and MP over 10 sec. Speed +33 -->
+		<!-- Level 3: Max HP +22%. Max MP +22%. Resistance to All Weapons +17%. Acquired XP +30%. Acquired SP +30%. P. Atk. +1500. M. Atk. +1500. P. Def. +15%. M. Def. +15%. All Critical Damage +15%. All received Critical Rate -10%. All received Critical Damage -10%. Received fixed damage -7%. Unequip Resistance +24%. After an attack, there is a +22%0 chance to activate Angelic Recovery. <Angelic Recovery>. Recovers HP and MP over 10 sec. Speed +33 -->
+		<!-- Level 4: Max HP +23%. Max MP +23%. Resistance to All Weapons +18%. Acquired XP +30%. Acquired SP +30%. P. Atk. +2000. M. Atk. +2000. P. Def. +15%. M. Def. +15%. All Critical Damage +15%. All received Critical Rate -10%. All received Critical Damage -10%. Received fixed damage -8%. Skill Power +1%. Unequip Resistance +23%0. After an attack, there is a +23%1 chance to activate Angelic Recovery. <Angelic Recovery>. Recovers HP and MP over 10 sec. Speed +33 -->
+		<!-- Level 5: Max HP +24%. Max MP +24%. Resistance to All Weapons +19%. Acquired XP +30%. Acquired SP +30%. P. Atk. +2500. M. Atk. +2500. P. Def. +15%. M. Def. +15%. All Critical Damage +15%. All received Critical Rate -10%. All received Critical Damage -10%. Received fixed damage -9%. Skill Power +2%. Unequip Resistance +24%0. After an attack, there is a +24%1 chance to activate Angelic Recovery. <Angelic Recovery>. Recovers HP and MP over 10 sec. Speed +33 -->
+		<!-- Level 6: Max HP +25%. Max MP +25%. Resistance to All Weapons +20%. Acquired XP +30%. Acquired SP +30%. P. Atk. +3000. M. Atk. +3000. P. Def. +15%. M. Def. +15%. All Critical Damage +15%. All received Critical Rate -10%. All received Critical Damage -10%. Received fixed damage -10%. Skill Power +3%. Unequip Resistance +25%0. After an attack, there is a +25%1 chance to activate Angelic Recovery. <Angelic Recovery>. Recovers HP and MP over 10 sec. Speed +33 -->
 		<icon>icon.nobless_cloak_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1402,11 +1596,11 @@
 			<effect name="SpModify">
 				<amount>30</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1487,7 +1681,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -1505,7 +1699,7 @@
 				<skillLevel>1</skillLevel>
 				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -1529,11 +1723,11 @@
 		<!-- Recovers HP/ MP over time. Speed +33 -->
 		<icon>icon.skill11782</icon>
 		<operateType>A2</operateType>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<abnormalTime>10</abnormalTime>
-		<reuseDelay>120000</reuseDelay>
 		<targetType>SELF</targetType>
+		<abnormalTime>10</abnormalTime>
 		<affectScope>SINGLE</affectScope>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<reuseDelay>120000</reuseDelay>
 		<effects>
 			<effect name="HealOverTime">
 				<power>100</power>

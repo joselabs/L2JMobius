@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="80900" name="Bloodstained Akamanah Dual Blunt Weapon" type="Weapon">
 		<!-- An Akamanah weapon stained with the madness of blood. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can increase up to 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, or enchanted. You can insert 1 special Soul Crystal. -->
@@ -17,12 +17,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
@@ -33,6 +27,12 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35531" level="1" /> <!-- Bloodstained Akamanah - Warrior -->
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+		</skills>
 	</item>
 	<item id="80901" name="Zariche's Blood" type="EtcItem">
 		<!-- A material for making a Bloodstained Zariche weapon. -->
@@ -124,7 +124,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39542" level="1" /> <!-- Storm Isle's Prolongating Stone -->
+			<skill id="39542" level="1" /> <!-- Storm Isle's Time Stone -->
 		</skills>
 	</item>
 	<item id="80906" name="Primeval Isle's Time Stone" additionalName="Event" type="EtcItem">
@@ -141,7 +141,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39543" level="1" /> <!-- Primeval Isle's Prolongating Stone -->
+			<skill id="39543" level="1" /> <!-- Primeval Isle's Time Stone -->
 		</skills>
 	</item>
 	<item id="80907" name="PA Summoning Stick" type="EtcItem">
@@ -343,7 +343,7 @@
 			<player MaximumVitalityPoints="140000" />
 		</cond>
 		<skills>
-			<skill id="39547" level="1" /> <!-- Emperor's Vitality Tonic (Event) -->
+			<skill id="39547" level="1" /> <!-- Emperor's Vitality Tonic -->
 		</skills>
 	</item>
 	<item id="80921" name="Lindvior's Treasure Chest" type="EtcItem">
@@ -551,7 +551,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="reuse_delay" val="0" />
 		<skills>
-			<skill id="39560" level="1" /> <!-- R-grade Crystal -->
+			<skill id="39560" level="1" /> <!-- Festival Fairy's Crystal Box -->
 		</skills>
 	</item>
 	<item id="80935" name="Small Fairy's Lucky Coin Pack" additionalName="Not used" type="EtcItem">
@@ -580,7 +580,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28130" level="1" type="ON_EQUIP" /> <!-- Summon Virgo Agathion -->
+			<skill id="28130" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Virgo -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -595,7 +595,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28131" level="1" type="ON_EQUIP" /> <!-- Summon Capricorn Agathion -->
+			<skill id="28131" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Capricorn -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -610,7 +610,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28132" level="1" type="ON_EQUIP" /> <!-- Summon Libra Agathion -->
+			<skill id="28132" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Libra -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -625,7 +625,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28133" level="1" type="ON_EQUIP" /> <!-- Summon Aries Agathion -->
+			<skill id="28133" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Aries -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -640,7 +640,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28134" level="1" type="ON_EQUIP" /> <!-- Summon Taurus Agathion -->
+			<skill id="28134" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Taurus -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -655,7 +655,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28135" level="1" type="ON_EQUIP" /> <!-- Summon Leo Agathion -->
+			<skill id="28135" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Leo -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -670,7 +670,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28136" level="1" type="ON_EQUIP" /> <!-- Summon Gemini Agathion -->
+			<skill id="28136" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Gemini -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -685,7 +685,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28137" level="1" type="ON_EQUIP" /> <!-- Summon Scorpio Agathion -->
+			<skill id="28137" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Scorpio -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -700,7 +700,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28138" level="1" type="ON_EQUIP" /> <!-- Summon Aquarius Agathion -->
+			<skill id="28138" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Aquarius -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -715,7 +715,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28139" level="1" type="ON_EQUIP" /> <!-- Summon Pisces Agathion -->
+			<skill id="28139" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Pisces -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -730,7 +730,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28140" level="1" type="ON_EQUIP" /> <!-- Summon Sagittarius Agathion -->
+			<skill id="28140" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Sagittarius -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -745,7 +745,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28141" level="1" type="ON_EQUIP" /> <!-- Summon Cancer Agathion -->
+			<skill id="28141" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Cancer -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -871,9 +871,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="8864" level="8" /> <!-- Heavenly Talisman (Insanity lvl 8) -->
-			<skill id="35552" level="1" type="ON_EQUIP" /> <!-- Equip Heavenly Talisman -->
-			<skill id="35553" level="1" type="ON_UNEQUIP" /> <!-- Unequip Heavenly Talisman -->
+			<skill id="8864" level="8" /> <!-- Heavenly Talisman -->
+			<skill id="35552" level="1" type="ON_EQUIP" /> <!-- Heavenly Talisman -->
+			<skill id="35553" level="1" type="ON_UNEQUIP" /> <!-- Remove Heavenly Talisman -->
 		</skills>
 	</item>
 	<item id="80958" name="Sealed Heavenly Talisman" type="EtcItem">
@@ -900,7 +900,7 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<skills>
-			<skill id="13569" level="4" /> <!-- Talisman - Lilith -->
+			<skill id="13569" level="4" /> <!-- Epic Talisman -->
 		</skills>
 	</item>
 	<item id="80960" name="Isle of Souls' Time Stone" additionalName="Event" type="EtcItem">
@@ -917,7 +917,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39562" level="1" /> <!-- Isle of Souls' Time Stone(Event) -->
+			<skill id="39562" level="1" /> <!-- Golden Altar's Time Stone -->
 		</skills>
 	</item>
 	<item id="80961" name="Maphr's Blessing" additionalName="1-day" type="EtcItem">
@@ -956,7 +956,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="time" val="480" />
 		<skills>
-			<skill id="35554" level="1" /> <!-- Blood-stained Talisman of Protection Lv1 -->
+			<skill id="35554" level="1" /> <!-- Bloodstained Talisman of Protection -->
 		</skills>
 	</item>
 	<item id="80964" name="Energy of Protection" type="EtcItem">
@@ -1030,7 +1030,7 @@
 			</and>
 		</cond>
 		<skills>
-			<skill id="18345" level="6" /> <!-- Dignity of the Exalted Lv. 6 -->
+			<skill id="18345" level="6" /> <!-- Spellbook: Dignity of the Exalted Lv. 6 -->
 		</skills>
 	</item>
 	<item id="80971" name="Dragon's Relic" type="EtcItem">
@@ -1306,7 +1306,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39567" level="1" /> <!-- Isle of Souls' Time Stone -->
+			<skill id="39567" level="1" /> <!-- Golden Altar's Time Stone -->
 		</skills>
 	</item>
 	<item id="80999" name="My Teleport Book Lv. 2" type="EtcItem">

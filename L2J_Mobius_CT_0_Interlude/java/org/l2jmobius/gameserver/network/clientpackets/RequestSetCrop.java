@@ -57,6 +57,7 @@ public class RequestSetCrop extends ClientPacket
 			if ((itemId < 1) || (sales < 0) || (price < 0))
 			{
 				_items.clear();
+				return;
 			}
 			
 			if (sales > 0)

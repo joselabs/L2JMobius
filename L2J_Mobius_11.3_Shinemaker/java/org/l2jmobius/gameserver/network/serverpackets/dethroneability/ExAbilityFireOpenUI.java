@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.dethroneability;
 
@@ -24,15 +28,52 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
- * @author Liamxroy, CostyKiller
+ * @author Liamxroy, CostyKiller, Mobius
  */
 public class ExAbilityFireOpenUI extends ServerPacket
 {
-	private final Player _player;
+	private final int _setEffectLevel;
+	private final int _fireSourceLevel;
+	private final int _fireSourceExp;
+	private final int _lifeSourceLevel;
+	private final int _lifeSourceExp;
+	private final int _lifeSourceResetCounter;
+	private final int _lifeSourceUpgrades;
+	private final int _flameSparkLevel;
+	private final int _flameSparkExp;
+	private final int _flameSparkResetCounter;
+	private final int _flameSparkUpgrades;
+	private final int _fireTotemLevel;
+	private final int _fireTotemExp;
+	private final int _fireTotemResetCounter;
+	private final int _fireTotemUpgrades;
+	private final int _battleSoulLevel;
+	private final int _battleSoulExp;
+	private final int _battleSoulResetCounter;
+	private final int _battleSoulUpgrades;
 	
 	public ExAbilityFireOpenUI(Player player)
 	{
-		_player = player;
+		final PlayerVariables variables = player.getVariables();
+		_setEffectLevel = checkAbilitySetLevels(variables);
+		_fireSourceLevel = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_LEVEL, 0);
+		_fireSourceExp = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_EXP, 0);
+		_lifeSourceLevel = variables.getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_LEVEL, 0);
+		_lifeSourceExp = variables.getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_EXP, 0);
+		_lifeSourceResetCounter = variables.getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_RESET, 1);
+		_lifeSourceUpgrades = variables.getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_UPGRADES, 500);
+		_flameSparkLevel = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_LEVEL, 0);
+		_flameSparkExp = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_EXP, 0);
+		_flameSparkResetCounter = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_RESET, 1);
+		_flameSparkUpgrades = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_UPGRADES, 60);
+		_fireTotemLevel = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_LEVEL, 0);
+		_fireTotemExp = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_EXP, 0);
+		_fireTotemResetCounter = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_RESET, 1);
+		_fireTotemUpgrades = variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_UPGRADES, 100);
+		_battleSoulLevel = variables.getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_LEVEL, 0);
+		_battleSoulExp = variables.getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_EXP, 0);
+		_battleSoulResetCounter = variables.getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_RESET, 1);
+		_battleSoulUpgrades = variables.getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_UPGRADES, 100);
 	}
 	
 	@Override
@@ -40,66 +81,68 @@ public class ExAbilityFireOpenUI extends ServerPacket
 	{
 		ServerPackets.EX_ENHANCED_ABILITY_OF_FIRE_OPEN_UI.writeId(this, buffer);
 		
-		buffer.writeInt(checkAbilitySetLevels()); // int SetEffectLevel (IntProperty) Full Ability Level 0 to 10
+		buffer.writeInt(_setEffectLevel);
 		
-		// Fire Source
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_LEVEL, 0)); // Level
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_EXP, 0)); // Exp % x 1000 (100% = 1032032)
-		buffer.writeInt(0); // allow to reset counter
-		buffer.writeInt(0); // upgrades number
+		// Fire Source.
+		buffer.writeInt(_fireSourceLevel);
+		buffer.writeInt(_fireSourceExp);
+		buffer.writeInt(0); // Allow to reset counter.
+		buffer.writeInt(0); // Upgrades number.
 		
-		// Life Source
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_LEVEL, 0)); // Level
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_EXP, 0)); // Exp % x 1000 (100% = 109890)
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_RESET, 1)); // reset counter
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_UPGRADES, 500)); // upgrades number (max = 500)
+		// Life Source.
+		buffer.writeInt(_lifeSourceLevel);
+		buffer.writeInt(_lifeSourceExp);
+		buffer.writeInt(_lifeSourceResetCounter);
+		buffer.writeInt(_lifeSourceUpgrades);
 		
-		// Flame Spark
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_LEVEL, 0)); // Level
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_EXP, 0)); // Exp % x 1000 (100% = 15067)
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_RESET, 1)); // reset counter
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_UPGRADES, 60)); // upgrades number (max = 60)
+		// Flame Spark.
+		buffer.writeInt(_flameSparkLevel);
+		buffer.writeInt(_flameSparkExp);
+		buffer.writeInt(_flameSparkResetCounter);
+		buffer.writeInt(_flameSparkUpgrades);
 		
-		// Fire Totem
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_LEVEL, 0)); // Level
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_EXP, 0)); // Exp % x 1000 (100% = 21973)
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_RESET, 1)); // reset counter
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_UPGRADES, 100)); // upgrades number (max = 100)
+		// Fire Totem.
+		buffer.writeInt(_fireTotemLevel);
+		buffer.writeInt(_fireTotemExp);
+		buffer.writeInt(_fireTotemResetCounter);
+		buffer.writeInt(_fireTotemUpgrades);
 		
-		// Battle Soul
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_LEVEL, 0)); // Level
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_EXP, 0)); // Exp % x 1000 (100% = 21973)
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_RESET, 1)); // reset counter
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_UPGRADES, 100)); // upgrades number (max = 100)
+		// Battle Soul.
+		buffer.writeInt(_battleSoulLevel);
+		buffer.writeInt(_battleSoulExp);
+		buffer.writeInt(_battleSoulResetCounter);
+		buffer.writeInt(_battleSoulUpgrades);
 	}
 	
-	public int checkAbilitySetLevels()
+	private int checkAbilitySetLevels(PlayerVariables variables)
 	{
-		int setLevel = 0;
-		if ((_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_LEVEL, 0) == 10) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_LEVEL, 0) == 10) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_LEVEL, 0) == 10) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_LEVEL, 0) == 10) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_LEVEL, 0) == 10))
+		if ((variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_LEVEL, 0) == 10) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_LEVEL, 0) == 10) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_LEVEL, 0) == 10) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_LEVEL, 0) == 10) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_LEVEL, 0) == 10))
 		{
-			setLevel = 10;
+			return 10;
 		}
-		else if ((_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_LEVEL, 0) >= 6) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_LEVEL, 0) >= 6) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_LEVEL, 0) >= 6) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_LEVEL, 0) >= 6) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_LEVEL, 0) >= 6))
+		else if ((variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_LEVEL, 0) >= 6) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_LEVEL, 0) >= 6) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_LEVEL, 0) >= 6) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_LEVEL, 0) >= 6) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_LEVEL, 0) >= 6))
 		{
-			setLevel = 6;
+			return 6;
 		}
-		else if ((_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_LEVEL, 0) >= 3) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_LEVEL, 0) >= 3) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_LEVEL, 0) >= 3) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_LEVEL, 0) >= 3) && //
-			(_player.getVariables().getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_LEVEL, 0) >= 3))
+		else if ((variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_SOURCE_LEVEL, 0) >= 3) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_LIFE_SOURCE_LEVEL, 0) >= 3) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_FLAME_SPARK_LEVEL, 0) >= 3) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_FIRE_TOTEM_LEVEL, 0) >= 3) //
+			&& (variables.getInt(PlayerVariables.CONQUEST_ABILITY_BATTLE_SOUL_LEVEL, 0) >= 3))
 		{
-			setLevel = 3;
+			return 3;
 		}
-		return setLevel;
+		else
+		{
+			return 0;
+		}
 	}
 }

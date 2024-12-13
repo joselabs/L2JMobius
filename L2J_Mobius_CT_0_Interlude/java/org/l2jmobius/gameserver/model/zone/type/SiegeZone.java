@@ -164,7 +164,7 @@ public class SiegeZone extends ZoneType
 			return;
 		}
 		
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		if (player.isRegisteredOnThisSiegeField(getSettings().getSiegeableId()))
 		{
 			player.setInSiege(true); // in siege
@@ -195,7 +195,7 @@ public class SiegeZone extends ZoneType
 		creature.setInsideZone(ZoneId.NO_SUMMON_FRIEND, false); // FIXME: Custom ?
 		if (getSettings().isActiveSiege() && creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			creature.sendPacket(SystemMessageId.YOU_HAVE_LEFT_A_COMBAT_ZONE);
 			if (player.getMountType() == MountType.WYVERN)
 			{
@@ -213,7 +213,7 @@ public class SiegeZone extends ZoneType
 			return;
 		}
 		
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		player.stopFameTask();
 		player.setInSiege(false);
 		
@@ -264,7 +264,7 @@ public class SiegeZone extends ZoneType
 				
 				if (creature.isPlayer())
 				{
-					player = creature.getActingPlayer();
+					player = creature.asPlayer();
 					creature.sendPacket(SystemMessageId.YOU_HAVE_LEFT_A_COMBAT_ZONE);
 					player.stopFameTask();
 					if (player.getMountType() == MountType.WYVERN)

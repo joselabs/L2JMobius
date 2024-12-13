@@ -493,23 +493,26 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void notifyTrapAction(Trap trap, Creature trigger, TrapAction action)
 	{
+		final Player player = trigger.asPlayer();
 		String res = null;
+		
 		try
 		{
 			res = onTrapAction(trap, trigger, action);
 		}
 		catch (Exception e)
 		{
-			if (trigger.getActingPlayer() != null)
+			if (player != null)
 			{
-				showError(trigger.getActingPlayer(), e);
+				showError(player, e);
 			}
 			LOGGER.log(Level.WARNING, "Exception on onTrapAction() in notifyTrapAction(): " + e.getMessage(), e);
 			return;
 		}
-		if (trigger.getActingPlayer() != null)
+		
+		if (player != null)
 		{
-			showResult(trigger.getActingPlayer(), res);
+			showResult(player, res);
 		}
 	}
 	
@@ -824,7 +827,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 		Player player = null;
 		if (creature.isPlayer())
 		{
-			player = creature.getActingPlayer();
+			player = creature.asPlayer();
 		}
 		String res = null;
 		try
@@ -869,7 +872,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void notifyEnterZone(Creature creature, ZoneType zone)
 	{
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		String res = null;
 		try
 		{
@@ -895,7 +898,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void notifyExitZone(Creature creature, ZoneType zone)
 	{
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		String res = null;
 		try
 		{
@@ -1020,7 +1023,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public String onDeath(Creature killer, Creature victim, QuestState qs)
 	{
-		return onEvent("", (killer instanceof Npc) ? (Npc) killer : null, qs.getPlayer());
+		return onEvent("", (killer instanceof Npc) ? killer.asNpc() : null, qs.getPlayer());
 	}
 	
 	/**
@@ -2047,7 +2050,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCreatureSeeId(int... npcIds)
 	{
-		setCreatureSeeId(event -> notifyCreatureSee((Npc) event.getCreature(), event.getSeen()), npcIds);
+		setCreatureSeeId(event -> notifyCreatureSee(event.getCreature().asNpc(), event.getSeen()), npcIds);
 	}
 	
 	/**
@@ -2055,7 +2058,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCreatureSeeId(Collection<Integer> npcIds)
 	{
-		setCreatureSeeId(event -> notifyCreatureSee((Npc) event.getCreature(), event.getSeen()), npcIds);
+		setCreatureSeeId(event -> notifyCreatureSee(event.getCreature().asNpc(), event.getSeen()), npcIds);
 	}
 	
 	/**

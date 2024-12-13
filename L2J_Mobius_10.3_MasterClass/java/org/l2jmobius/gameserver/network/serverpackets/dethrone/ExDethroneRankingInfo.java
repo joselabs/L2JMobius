@@ -1,21 +1,27 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.dethrone;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -29,194 +35,112 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
- * @author CostyKiller
+ * @author CostyKiller, Mobius
  */
 public class ExDethroneRankingInfo extends ServerPacket
 {
-	private final Player _player;
-	private final int _bCurrentSeason;
-	private final int _cRankingScope;
-	private final Map<Integer, StatSet> _currentConquestPlayerList;
-	private final Map<Integer, StatSet> _previousConquestPlayerList;
+	private final int _currentSeason;
+	private final int _rankingScope;
+	private final List<RankInfo> _rankInfoList;
 	
-	public ExDethroneRankingInfo(Player player, int bCurrentSeason, int cRankingScope)
+	public ExDethroneRankingInfo(Player player, int currentSeason, int rankingScope)
 	{
-		_bCurrentSeason = bCurrentSeason;
-		_cRankingScope = cRankingScope;
-		_player = player;
-		_currentConquestPlayerList = RankManager.getInstance().getCurrentConquestRankList();
-		_previousConquestPlayerList = RankManager.getInstance().getPreviousConquestRankList();
+		_currentSeason = currentSeason;
+		_rankingScope = rankingScope;
+		
+		if (_currentSeason == 1)
+		{
+			final Map<Integer, StatSet> currentConquestPlayerList = RankManager.getInstance().getCurrentConquestRankList();
+			if (_rankingScope == 0)
+			{
+				// Top-100 for current cycle.
+				_rankInfoList = extractRankInfo(currentConquestPlayerList, 100);
+			}
+			else
+			{
+				// Personal ranking for current cycle.
+				_rankInfoList = extractPersonalRankInfo(currentConquestPlayerList, player);
+			}
+		}
+		else
+		{
+			final Map<Integer, StatSet> previousConquestPlayerList = RankManager.getInstance().getPreviousConquestRankList();
+			if (_rankingScope == 0)
+			{
+				// Top-100 for previous cycle.
+				_rankInfoList = extractRankInfo(previousConquestPlayerList, Integer.MAX_VALUE);
+			}
+			else
+			{
+				// Personal ranking for previous cycle.
+				_rankInfoList = extractPersonalRankInfo(previousConquestPlayerList, player);
+			}
+		}
+	}
+	
+	private List<RankInfo> extractRankInfo(Map<Integer, StatSet> playerList, int maxSize)
+	{
+		final List<RankInfo> rankInfoList = new LinkedList<>();
+		int count = Math.min(playerList.size(), maxSize);
+		for (Entry<Integer, StatSet> entry : playerList.entrySet())
+		{
+			if (rankInfoList.size() >= count)
+			{
+				break;
+			}
+			rankInfoList.add(new RankInfo(entry.getKey(), entry.getValue()));
+		}
+		return rankInfoList;
+	}
+	
+	private List<RankInfo> extractPersonalRankInfo(Map<Integer, StatSet> playerList, Player player)
+	{
+		final List<RankInfo> rankInfoList = new LinkedList<>();
+		for (Entry<Integer, StatSet> entry : playerList.entrySet())
+		{
+			if (entry.getValue().getInt("charId") == player.getObjectId())
+			{
+				final int id = entry.getKey();
+				final int first = id > 10 ? (id - 9) : 1;
+				final int last = Math.min(id + 10, playerList.size());
+				for (int id2 = first; id2 <= last; id2++)
+				{
+					rankInfoList.add(new RankInfo(id2, playerList.get(id2)));
+				}
+				break;
+			}
+		}
+		return rankInfoList;
 	}
 	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.EX_DETHRONE_RANKING_INFO.writeId(this, buffer);
-		buffer.writeByte(_bCurrentSeason);
-		buffer.writeByte(_cRankingScope);
-		
-		if (_bCurrentSeason == 1) // Current Cycle
+		buffer.writeByte(_currentSeason);
+		buffer.writeByte(_rankingScope);
+		buffer.writeInt(_rankInfoList.size()); // Rank percent?
+		buffer.writeInt(_rankInfoList.size());
+		for (RankInfo rankInfo : _rankInfoList)
 		{
-			if (_cRankingScope == 0) // Top-100
-			{
-				if (!_currentConquestPlayerList.isEmpty())
-				{
-					buffer.writeInt(_currentConquestPlayerList.size() > 100 ? 100 : _currentConquestPlayerList.size()); // ranking percents seems is calculated inside client (must be same number as ranking list size)
-					buffer.writeInt(_currentConquestPlayerList.size() > 100 ? 100 : _currentConquestPlayerList.size()); // ranking list size
-					for (Entry<Integer, StatSet> entry : _currentConquestPlayerList.entrySet())
-					{
-						buffer.writeInt(entry.getKey()); // server rank
-						buffer.writeInt(Config.SERVER_ID);
-						buffer.writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(entry.getKey())); // conquest char name
-						// writeSizedString(player.getString("name")); // real char name
-						buffer.writeLong(entry.getValue().getLong("conquestPersonalPoints"));
-					}
-				}
-				else
-				{
-					buffer.writeInt(0);
-					buffer.writeInt(0);
-				}
-			}
-			else // Personal Ranking
-			{
-				if (!_currentConquestPlayerList.isEmpty())
-				{
-					boolean found = false;
-					for (Entry<Integer, StatSet> entry : _currentConquestPlayerList.entrySet())
-					{
-						if (entry.getValue().getInt("charId") == _player.getObjectId())
-						{
-							found = true;
-							final int id = entry.getKey();
-							final int first = id > 10 ? (id - 9) : 1;
-							final int last = _currentConquestPlayerList.size() >= (id + 10) ? id + 10 : id + (_currentConquestPlayerList.size() - id);
-							if (first == 1)
-							{
-								buffer.writeInt(_currentConquestPlayerList.size()); // rank percents
-								buffer.writeInt(last - (first - 1));
-							}
-							else
-							{
-								buffer.writeInt(_currentConquestPlayerList.size()); // rank percents
-								buffer.writeInt(last - first);
-							}
-							for (int id2 = first; id2 <= last; id2++)
-							{
-								final StatSet plr = _currentConquestPlayerList.get(id2);
-								buffer.writeInt(id2); // server rank
-								buffer.writeInt(Config.SERVER_ID);
-								buffer.writeSizedString(RankManager.getInstance().getPlayerConquestGlobalRankName(id2)); // conquest char name
-								// writeSizedString(plr.getString("name")); // real char name
-								buffer.writeLong(plr.getLong("conquestPersonalPoints"));
-							}
-						}
-					}
-					if (!found)
-					{
-						buffer.writeInt(0);
-						buffer.writeInt(0);
-					}
-				}
-				else
-				{
-					buffer.writeInt(0);
-					buffer.writeInt(0);
-				}
-			}
+			buffer.writeInt(rankInfo.rank);
+			buffer.writeInt(Config.SERVER_ID);
+			buffer.writeSizedString(rankInfo.name);
+			buffer.writeLong(rankInfo.points);
 		}
-		else // Previous Cycle
+	}
+	
+	private class RankInfo
+	{
+		final int rank;
+		final String name;
+		final long points;
+		
+		RankInfo(int rank, StatSet set)
 		{
-			if (_cRankingScope == 0) // Top-100
-			{
-				if (!_previousConquestPlayerList.isEmpty())
-				{
-					buffer.writeInt(_previousConquestPlayerList.size()); // ranking percents seems is calculated inside client (must be same number as ranking list size)
-					buffer.writeInt(_previousConquestPlayerList.size()); // ranking list size
-					for (Entry<Integer, StatSet> entry : _previousConquestPlayerList.entrySet())
-					{
-						final StatSet info = entry.getValue();
-						buffer.writeInt(entry.getKey()); // server rank
-						buffer.writeInt(Config.SERVER_ID);
-						buffer.writeSizedString(info.getString("conquest_name")); // conquest char name
-						buffer.writeLong(info.getLong("conquestPersonalPoints"));
-					}
-					
-					// buffer.writeInt(1); // Rank percent
-					// buffer.writeInt(Config.SERVER_ID); // WorldId
-					// writeSizedString("Player1"); // name
-					// buffer.writeLong(30000);
-					//
-					// buffer.writeInt(2); // Rank percent
-					// buffer.writeInt(Config.SERVER_ID); // WorldId
-					// writeSizedString("Player2"); // name
-					// buffer.writeLong(15000);
-				}
-				else
-				{
-					buffer.writeInt(0);
-					buffer.writeInt(0);
-				}
-			}
-			else // Personal Ranking
-			{
-				if (!_previousConquestPlayerList.isEmpty())
-				{
-					boolean found = false;
-					for (Entry<Integer, StatSet> entry : _previousConquestPlayerList.entrySet())
-					{
-						if (entry.getValue().getInt("charId") == _player.getObjectId())
-						{
-							found = true;
-							final int id = entry.getKey();
-							final int first = id > 10 ? (id - 9) : 1;
-							final int last = _previousConquestPlayerList.size() >= (id + 10) ? id + 10 : id + (_previousConquestPlayerList.size() - id);
-							
-							if (first == 1)
-							{
-								buffer.writeInt(_previousConquestPlayerList.size()); // rank percents
-								buffer.writeInt(last - (first - 1));
-							}
-							else
-							{
-								buffer.writeInt(_previousConquestPlayerList.size()); // rank percents
-								buffer.writeInt(last - first);
-							}
-							for (int id2 = first; id2 <= last; id2++)
-							{
-								final StatSet plr = _previousConquestPlayerList.get(id2);
-								buffer.writeInt(id2); // server rank
-								buffer.writeInt(Config.SERVER_ID);
-								buffer.writeSizedString(plr.getString("conquest_name")); // conquest char name
-								buffer.writeLong(plr.getLong("conquestPersonalPoints"));
-							}
-						}
-					}
-					if (!found)
-					{
-						buffer.writeInt(0);
-						buffer.writeInt(0);
-					}
-					
-					// buffer.writeInt(0); // ???
-					// buffer.writeInt(2); // ranking list size
-					//
-					// buffer.writeInt(1); // Rank Slot
-					// buffer.writeInt(Config.SERVER_ID); // WorldId
-					// writeSizedString("Player1"); // name
-					// buffer.writeLong(6000);
-					//
-					// buffer.writeInt(2); // Rank Slot
-					// buffer.writeInt(Config.SERVER_ID); // WorldId
-					// writeSizedString("Player2"); // name
-					// buffer.writeLong(5000);
-				}
-				else
-				{
-					buffer.writeInt(0);
-					buffer.writeInt(0);
-				}
-			}
+			this.rank = rank;
+			this.name = set.getString("conquest_name", "");
+			this.points = set.getLong("conquestPersonalPoints", 0);
 		}
 	}
 }

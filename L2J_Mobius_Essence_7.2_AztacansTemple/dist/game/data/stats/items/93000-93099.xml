@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="93000" name="Test - Awoken Weapon: One-handed Sword" additionalName="Test" type="Weapon">
 		<!-- Test Item. -->
@@ -93,6 +93,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92385" min="2" max="2" chance="100" /> <!-- Black Ore Ring - Sealed -->
+			<item id="92384" min="2" max="2" chance="100" /> <!-- Black Ore Earring - Sealed -->
+		</capsuled_items>
 	</item>
 	<item id="93006" name="C-grade Accessories" additionalName="Info Icon" type="EtcItem">
 		<!-- The item is not available. For raid reward information. The item is only to show the icon. -->
@@ -757,11 +762,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
-			<skill id="2019" level="1" /> <!-- Scroll: Enchant Weapon (D-grade) -->
+			<skill id="2019" level="1" /> <!-- Scroll: Enchant D-grade Weapon -->
 		</skills>
 	</item>
 	<item id="93039" name="Worthy Warrior Transformation (No Face)" type="Armor">
-		<!-- When equipped, headgear, weapons and accessories are not removed. -->
+		<!-- When equipped, headgear, weapons and magic armor are not removed. -->
 		<set name="icon" val="icon.gomdori_chest_change" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -771,7 +776,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="93040" name="Scroll: Enchant Adventurer's Agathion Griffin" additionalName="Sealed" type="EtcItem">
-		<!-- For Adventurer's Agathion Griffin only. Increases M. Def. when the agathion is enchanted. -->
+		<!-- The item is not available. For Adventurer's Agathion Griffin only. Increases M. Def. when the agathion is enchanted. -->
 		<set name="icon" val="icon.star_scrl_of_ench_ag_2" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_AM" />
@@ -816,15 +821,15 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<set name="handler" val="ItemSkills" />
-		<skills>
-			<skill id="50301" level="1" /> <!-- Adventurer's Belt -->
-		</skills>
 		<stats>
 			<stat type="pDef">10</stat>
 		</stats>
+		<skills>
+			<skill id="50301" level="1" /> <!-- Adventurer's Belt -->
+		</skills>
 	</item>
 	<item id="93043" name="Adventurer's Scroll: Enchant Hair Accessory" additionalName="Sealed" type="EtcItem">
-		<!-- For Adventurer's Sheep Hat. When enchanted, M. Def. +2. -->
+		<!-- The item is not available. For Adventurer's Sheep Hat. When enchanted, M. Def. +2. -->
 		<set name="icon" val="icon.scroll_of_unidentify_am_d" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_AM" />
@@ -854,7 +859,7 @@
 		<set name="enchant_enabled" val="true" />
 	</item>
 	<item id="93045" name="Scroll: Enchant Adventurer's Cloak" additionalName="Sealed" type="EtcItem">
-		<!-- For Adventurer's Cloak only. -->
+		<!-- The item is not available. For Adventurer's Cloak only. -->
 		<set name="icon" val="icon.sayha2017_scrl" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_AM" />
@@ -871,7 +876,7 @@
 		</skills>
 	</item>
 	<item id="93046" name="Scroll: Enchant Adventurer's Belt" additionalName="Sealed" type="EtcItem">
-		<!-- For Adventurer's Belt only. -->
+		<!-- The item is not available. For Adventurer's Belt only. -->
 		<set name="icon" val="icon.etc_training_scroll_kalie_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_AM" />
@@ -1251,7 +1256,7 @@
 		</stats>
 	</item>
 	<item id="93059" name="Spellbook: Mount Glory of Champion" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to learn how to ride Glorious Steed. <Classes>. All classes (excluding Orc Lancer/ Wolf Master/ Dragoon/ Vanguard Rider). <Skill effect>. Allows to mount Glorious Steed. Rider classes (Orc Lancer/ Wolf Master/ Dragoon/ Vanguard Rider) can use the item after the 3rd class change to learn the Wild Health skill that enhances their mount beast's abilities. -->
+		<!-- A spellbook for learning the Mount Glorious Steed skill. <Classes>. All classes after the 3rd class change (excluding Orc Lancer/ Wolf Master/ Dragoon/ Vanguard Rider). <Skill effect>. Allows to mount Glorious Steed. Rider classes (Orc Lancer/ Wolf Master/ Dragoon/ Vanguard Rider) can use the item after the 3rd class change to learn the Wild Health skill that enhances their mount beast's abilities. -->
 		<set name="icon" val="icon.etc_spellbook_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1261,7 +1266,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="40095" level="1" /> <!-- Spellbook: Mount Glory of Champion -->
+			<skill id="40095" level="1" /> <!-- Spellbook: Mount Glorious Steed -->
 		</skills>
 	</item>
 	<item id="93060" name="Spellbook: Mount White Wing" additionalName="Sealed" type="EtcItem">
@@ -1279,7 +1284,7 @@
 		</skills>
 	</item>
 	<item id="93061" name="Spellbook: Mount Shining Lady" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to learn how to ride Shining Lady. Shining Lady can use the Silent Ride skill. <Classes>. All classes (excluding Orc Lancer/ Wolf Master/ Dragoon/ Vanguard Rider). <Skill effect>. Allows to mount Shining Lady. Rider classes (Orc Lancer/ Wolf Master/ Dragoon/ Vanguard Rider) can use the item after the 3rd class change to learn the Wild Movement skill that enhances their mount beast's abilities. -->
+		<!-- A spellbook for learning the Mount Shining Lady skill. <Classes>. All classes after the 3rd class change (excluding Orc Lancer/ Wolf Master/ Dragoon/ Vanguard Rider). <Skill effect>. Allows to mount Shining Lady. Rider classes (Orc Lancer/ Wolf Master/ Dragoon/ Vanguard Rider) can use the item after the 3rd class change to learn the Wild Health skill that enhances their mount beast's abilities. -->
 		<set name="icon" val="icon.etc_spellbook_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1309,7 +1314,7 @@
 		</skills>
 	</item>
 	<item id="93063" name="Inventory Expansion Ticket of Glory" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to learn Expand Inventory of Glory. <Classes>. All. <Skill effect>. Increases the number of inventory slots. -->
+		<!-- A spellbook for learning the Glorious Warrior: Expand Inventory skill. <Classes>. All classes after the 3rd class change. <Skill effect>. Increases the number of Inventory slots. -->
 		<set name="icon" val="icon.etc_summon_subjob_skillbook_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1319,11 +1324,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="40093" level="1" /> <!-- Inventory Expansion Ticket of Glory -->
+			<skill id="40093" level="1" /> <!-- Inventory Expansion Coupon of Glory -->
 		</skills>
 	</item>
 	<item id="93064" name="Weight Limit Ticket of Glory" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to learn Increased Weight Limit of Glory. <Classes>. All. <Skill effect>. Increases weight limit. -->
+		<!-- A spellbook for learning the Glorious Warrior: Increased Weight Limit skill. <Classes>. All classes after the 3rd class change. <Skill effect>. Increases your weight limit. -->
 		<set name="icon" val="icon.etc_summon_subjob_skillbook_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1333,7 +1338,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="40094" level="1" /> <!-- Weight Limit Ticket of Glory -->
+			<skill id="40094" level="1" /> <!-- Weight Limit Coupon of Glory -->
 		</skills>
 	</item>
 	<item id="93065" name="Adventurer's Rough Jewel Lv. 2" additionalName="Sealed" type="Armor">
@@ -1348,7 +1353,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50187" level="2" /> <!-- Adventurer's Rough Jewel -->
+			<skill id="50187" level="2" /> <!-- Adventurer's Enhanced Rough Jewel -->
 		</skills>
 	</item>
 	<item id="93066" name="Top-grade Candy Ingredients" additionalName="Sealed" type="EtcItem">
@@ -1457,7 +1462,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51436" level="1" /> <!-- Sayha's Storm Lv. 3 (Event) -->
+			<skill id="51436" level="1" /> <!-- Sayha's Storm -->
 		</skills>
 	</item>
 	<item id="93074" name="Blue Lantern - 3rd Place" additionalName="Sealed" type="EtcItem">
@@ -1471,7 +1476,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="50142" level="1" /> <!-- Blue Lantern -->
+			<skill id="50142" level="1" /> <!-- Blue Lantern - 3rd Place -->
 		</skills>
 	</item>
 	<item id="93075" name="Gloves of Silence" type="Armor">
@@ -1489,21 +1494,21 @@
 			<stat type="pDef">49</stat>
 		</stats>
 		<skills>
-			<skill id="50305" level="1" /> <!-- Gloves of Silence -->
-			<skill id="50307" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="83222" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83197" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83198" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83199" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50305" level="1" /> <!-- A-grade: Gloves of Silence -->
+			<skill id="50307" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Gloves of Silence -->
+			<skill id="50307" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Gloves of Silence -->
+			<skill id="50307" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Gloves of Silence -->
+			<skill id="50307" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Gloves of Silence -->
+			<skill id="50307" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Gloves of Silence -->
+			<skill id="50307" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Gloves of Silence -->
+			<skill id="50307" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Gloves of Silence -->
+			<skill id="50307" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Gloves of Silence -->
+			<skill id="50307" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Gloves of Silence -->
+			<skill id="50307" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Gloves of Silence -->
+			<skill id="83222" level="3" type="ON_BLESSING" /> <!-- Glove Blessing Effect -->
+			<skill id="83197" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Gloves - 6 Item Effect -->
+			<skill id="83198" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Gloves - 7 Item Effect -->
+			<skill id="83199" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Gloves - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="93076" name="Gloves of Silence" additionalName="Sealed" type="Armor">
@@ -1524,21 +1529,21 @@
 			<stat type="pDef">49</stat>
 		</stats>
 		<skills>
-			<skill id="50305" level="1" /> <!-- Gloves of Silence -->
-			<skill id="50307" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="50307" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Gloves of Silence -->
-			<skill id="83222" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83197" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83198" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83199" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50305" level="1" /> <!-- A-grade: Gloves of Silence -->
+			<skill id="50307" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Gloves of Silence -->
+			<skill id="50307" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Gloves of Silence -->
+			<skill id="50307" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Gloves of Silence -->
+			<skill id="50307" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Gloves of Silence -->
+			<skill id="50307" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Gloves of Silence -->
+			<skill id="50307" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Gloves of Silence -->
+			<skill id="50307" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Gloves of Silence -->
+			<skill id="50307" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Gloves of Silence -->
+			<skill id="50307" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Gloves of Silence -->
+			<skill id="50307" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Gloves of Silence -->
+			<skill id="83222" level="3" type="ON_BLESSING" /> <!-- Glove Blessing Effect -->
+			<skill id="83197" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Gloves - 6 Item Effect -->
+			<skill id="83198" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Gloves - 7 Item Effect -->
+			<skill id="83199" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Gloves - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="93077" name="Fortune Letter Box" additionalName="Sealed" type="EtcItem">
@@ -1630,7 +1635,7 @@
 			<item id="95803" min="1" max="1" chance="100" /> <!-- Hardin's Soul Crystal Lv. 1 - Rare -->
 			<item id="95812" min="1" max="1" chance="100" /> <!-- Hardin's Soul Crystal Lv. 10 - Rare -->
 			<item id="91145" min="1" max="1" chance="2.941176" /> <!-- Venir's Talisman Lv. 24 - Sealed -->
-			<item id="91982" min="1" max="1" chance="2.941176" /> <!-- +10 Special White Sayha's Cloak Chest -->
+			<item id="91982" min="1" max="1" chance="2.941176" /> <!-- +10 Sayha's Special White Cloak Chest -->
 			<item id="95812" min="1" max="1" chance="2.941176" /> <!-- Hardin's Soul Crystal Lv. 10 - Rare -->
 			<item id="94413" min="1" max="1" chance="2.941176" /> <!-- Package: +2 Frintezza's Necklace - Sealed -->
 			<item id="94418" min="1" max="1" chance="2.941176" /> <!-- Package: +2 Antharas' Earring - Sealed -->
@@ -1644,7 +1649,7 @@
 			<item id="91625" min="1" max="1" chance="2.941176" /> <!-- S-grade Weapon Pack -->
 			<item id="92401" min="1" max="1" chance="2.941176" /> <!-- Spellbook: White Guardian -->
 			<item id="91626" min="1" max="1" chance="2.941176" /> <!-- S-grade Armor Pack -->
-			<item id="91722" min="1" max="1" chance="2.941176" /> <!-- Scroll: Enchant Special Sayha's Cloak -->
+			<item id="91722" min="1" max="1" chance="2.941176" /> <!-- Scroll: Enchant Sayha's Special Cloak -->
 			<item id="91304" min="1" max="1" chance="2.941176" /> <!-- Brooch Lv. 5 -->
 			<item id="91717" min="1" max="1" chance="2.941176" /> <!-- High-grade Stable Scroll: Enchant S-grade Weapon -->
 			<item id="91623" min="1" max="1" chance="2.941176" /> <!-- Stable Scroll: Enchant High-grade Agathion -->
@@ -1676,7 +1681,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="40086" level="1" /> <!-- Craft points 1000000 -->
+			<skill id="40086" level="1" /> <!-- Craft Points +1,000,000 -->
 		</skills>
 	</item>
 	<item id="93081" name="Memorable Achievement Reward for Lv. 90" type="EtcItem">
@@ -1885,7 +1890,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="93096" name="Red Libra Coin (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- A coin minted in the Red Libra Guild. <How to use>. Grocer Pink. Special craft: Spellbook Coupon - 3 Stars -->
+		<!-- A coin minted in the Red Libra Guild. Can be exchanged for various items or used in the Craft. <Supply exchange>. Grocer Pink. <Special Craft>. Spellbook Coupon - 1-3 Stars. Soulshot Ticket. Spirit Ore -->
 		<set name="icon" val="icon.etc_coins_gold_i00" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -1912,7 +1917,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="40106" level="1" /> <!-- Battle Scroll (Event) Lv1 -->
+			<skill id="40106" level="1" /> <!-- Battle Scroll (Event) -->
 		</skills>
 	</item>
 	<item id="93099" name="Life Stone Lv. 1 - Shield/ Sigil" type="EtcItem">

@@ -4,11 +4,11 @@
 		<!-- Atk. Spd. +50%. -->
 		<icon>icon.skill1086</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>1500</hitTime>
-		<reuseDelay>15000</reuseDelay>
 		<effectPoint>100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<mpConsume>10</mpConsume>
+		<reuseDelay>15000</reuseDelay>
 	</skill>
 	<skill id="50001" toLevel="1" name="Transform: Pirate Costume">
 		<!-- Transformation ability, granted to the player by an NPC. Transforms you into an Undead Pirate to make an ambush as a part of a quest. -->
@@ -21,32 +21,32 @@
 		<!-- Bleeding. HP momentarily decreases. Power 5. -->
 		<icon>icon.skill0096</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
 		<effectPoint>-100</effectPoint>
+		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="50003" toLevel="2" name="Crescent Slash">
 		<!-- Deals a horizontal slashing blow with a sword. Inflicts bleeding. -->
 		<icon>icon.skill0223</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>400</castRange>
-		<hitTime>1500</hitTime>
-		<effectPoint>-100</effectPoint>
-		<effectRange>300</effectRange>
-		<magicLevel>73</magicLevel>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
-		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<abnormalType>BLEEDING</abnormalType>
-		<trait>BLEED</trait>
+		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
-		<fanRange>0;0;300;180</fanRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>FAN</affectScope>
+		<castRange>400</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>300</effectRange>
+		<fanRange>0;0;300;180</fanRange>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
+		<magicLevel>73</magicLevel>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
+		<trait>BLEED</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">25000</value>
 					<value level="2">30000</value>
@@ -62,16 +62,16 @@
 		<!-- Releases Skeletal Ghost from the sword. The Ghost breaks free and deals damage to the target. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
 		<castRange>40</castRange>
-		<hitTime>2000</hitTime>
-		<reuseDelay>30000</reuseDelay>
 		<effectPoint>-100</effectPoint>
 		<effectRange>2000</effectRange>
-		<magicLevel>73</magicLevel>
 		<fanRange>0;0;2000;75</fanRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<hitTime>2000</hitTime>
+		<magicLevel>73</magicLevel>
+		<reuseDelay>30000</reuseDelay>
 		<effects>
 			<effect name="HealPercent">
 				<power>
@@ -85,24 +85,24 @@
 		<!-- Swings dual swords. Deals huge damage and inflicts bleeding. -->
 		<icon>icon.skill1630</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>40</castRange>
-		<hitTime>1500</hitTime>
-		<effectPoint>-100</effectPoint>
-		<effectRange>40</effectRange>
-		<magicLevel>73</magicLevel>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
-		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<abnormalType>BLEEDING</abnormalType>
-		<trait>BLEED</trait>
+		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
+		<castRange>40</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>40</effectRange>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
+		<magicLevel>73</magicLevel>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
+		<trait>BLEED</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">70000</value>
 					<value level="2">100000</value>
@@ -115,17 +115,17 @@
 		</effects>
 	</skill>
 	<skill id="50006" toLevel="2" name="Blood To Flesh">
-		<!-- Decreases HP/ MP of the target and restores player's HP. -->
+		<!-- Decreases HP / MP of the target and restores player's HP. -->
 		<icon>icon.skill0289</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>20000</hitTime>
-		<effectPoint>-100</effectPoint>
-		<magicLevel>73</magicLevel>
-		<affectRange>700</affectRange>
 		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>700</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<effectPoint>-100</effectPoint>
+		<hitTime>20000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicLevel>73</magicLevel>
 		<effects>
 			<effect name="HpDrain">
 				<power>
@@ -134,7 +134,7 @@
 				</power>
 				<percentage>80</percentage>
 			</effect>
-			<effect name="MagicalAttackMp" fromLevel="2" toLevel="2">
+			<effect name="MagicalDamageMp" fromLevel="2" toLevel="2">
 				<power>246</power>
 				<critical>true</critical>
 				<criticalLimit>1450</criticalLimit>
@@ -145,24 +145,24 @@
 		<!-- Deals ranged damage to all targets around you. Inflicts bleeding. -->
 		<icon>icon.skill0096</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>10000</hitTime>
-		<effectPoint>-100</effectPoint>
-		<magicLevel>73</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
-		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<abnormalType>BLEEDING</abnormalType>
-		<trait>BLEED</trait>
+		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
-		<affectRange>1500</affectRange>
-		<fanRange>0;0;600;1500</fanRange>
-		<targetType>SELF</targetType>
-		<affectScope>RING_RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>1500</affectRange>
+		<affectScope>RING_RANGE</affectScope>
+		<effectPoint>-100</effectPoint>
+		<fanRange>0;0;600;1500</fanRange>
+		<hitTime>10000</hitTime>
+		<isDebuff>true</isDebuff>
+		<magicLevel>73</magicLevel>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
+		<trait>BLEED</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">70000</value>
 					<value level="2">100000</value>
@@ -178,23 +178,23 @@
 		<!-- Attacks and knocks down a target. Attack energy dissolves among multiple targets. -->
 		<icon>icon.skill0003</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
-		<effectPoint>-52</effectPoint>
-		<magicLevel>73</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<trait>KNOCKDOWN</trait>
-		<affectRange>1200</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>1200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<coolTime>500</coolTime>
+		<effectPoint>-52</effectPoint>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<magicLevel>73</magicLevel>
+		<reuseDelay>3000</reuseDelay>
+		<trait>KNOCKDOWN</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">1000000</value>
 					<value level="2">7500000</value>
@@ -211,7 +211,47 @@
 		</effects>
 	</skill>
 	<skill id="50009" toLevel="41" name="Raid Boss (Lv. 55)">
-		<!-- A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 1: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 2: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 3: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 4: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 5: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 6: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 7: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 8: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 9: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 10: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 11: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 12: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 13: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 14: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 15: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 16: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 17: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 18: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 19: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 20: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 21: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 22: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 23: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 24: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 25: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 26: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 27: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 28: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 29: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 30: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 31: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 32: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 33: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 34: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 35: A rift that had appeared after an earthquake and weakened the Maphr's Seal, now shifted to the material world and brought chaos and pain with it. -->
+		<!-- Level 36: Death Knight, awoken by the earthquake, is now about to devour the power of life of unworldly creatures and Aden's heroes. -->
+		<!-- Level 37: Death Knight, awoken by the earthquake, is now about to devour the power of life of unworldly creatures and Aden's heroes. -->
+		<!-- Level 38: Death Knight, awoken by the earthquake, is now about to devour the power of life of unworldly creatures and Aden's heroes. -->
+		<!-- Level 39: Death Knight, awoken by the earthquake, is now about to devour the power of life of unworldly creatures and Aden's heroes. -->
+		<!-- Level 40: Death Knight, awoken by the earthquake, is now about to devour the power of life of unworldly creatures and Aden's heroes. -->
+		<!-- Level 41: Death Knight, awoken by the earthquake, is now about to devour the power of life of unworldly creatures and Aden's heroes. -->
 		<icon>icon.skillraid</icon>
 		<operateType>P</operateType>
 	</skill>
@@ -229,12 +269,11 @@
 		<!-- Paralyzed and unable to move momentarily. -->
 		<icon>icon.skill1170</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
 		<castRange>300</castRange>
-		<hitTime>6000</hitTime>
-		<reuseDelay>8000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>6000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<mpConsume>
 			<value level="1">18</value>
 			<value level="2">29</value>
@@ -249,16 +288,17 @@
 			<value level="11">115</value>
 			<value level="12">117</value>
 		</mpConsume>
+		<reuseDelay>8000</reuseDelay>
 	</skill>
 	<skill id="50013" toLevel="1" name="Hold">
 		<!-- Inflicted with Hold and unable to move. -->
 		<icon>icon.skill4047</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
 		<castRange>40</castRange>
-		<hitTime>1800</hitTime>
-		<reuseDelay>6000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1800</hitTime>
+		<isDebuff>true</isDebuff>
 		<mpConsume>136</mpConsume>
+		<reuseDelay>6000</reuseDelay>
 	</skill>
 </list>

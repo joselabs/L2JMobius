@@ -16,101 +16,21 @@
  */
 package handlers.effecthandlers;
 
-import java.util.EnumSet;
-import java.util.Set;
-
-import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.enums.Race;
-import org.l2jmobius.gameserver.enums.ShotType;
 import org.l2jmobius.gameserver.model.StatSet;
-import org.l2jmobius.gameserver.model.actor.Attackable;
-import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.effects.AbstractEffect;
-import org.l2jmobius.gameserver.model.effects.EffectType;
-import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.model.stats.Formulas;
+import org.l2jmobius.gameserver.model.stats.Stat;
 
 /**
- * Magical Attack effect implementation.
- * @author Adry_85, Mobius
+ * @author Sdw
  */
-public class MagicalAttack extends AbstractEffect
+public class MagicalAttack extends AbstractStatEffect
 {
-	private final double _power;
-	private final boolean _overHit;
-	private final double _debuffModifier;
-	private final double _raceModifier;
-	private final Set<Race> _races = EnumSet.noneOf(Race.class);
-	
 	public MagicalAttack(StatSet params)
 	{
-		_power = params.getDouble("power", 0);
-		_overHit = params.getBoolean("overHit", false);
-		_debuffModifier = params.getDouble("debuffModifier", 1);
-		_raceModifier = params.getDouble("raceModifier", 1);
-		if (params.contains("races"))
-		{
-			for (String race : params.getString("races", "").split(";"))
-			{
-				_races.add(Race.valueOf(race));
-			}
-		}
-	}
-	
-	@Override
-	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
-	{
-		return !Formulas.calcSkillEvasion(effector, effected, skill);
-	}
-	
-	@Override
-	public EffectType getEffectType()
-	{
-		return EffectType.MAGICAL_ATTACK;
-	}
-	
-	@Override
-	public boolean isInstant()
-	{
-		return true;
-	}
-	
-	@Override
-	public void instant(Creature effector, Creature effected, Skill skill, Item item)
-	{
-		if (effector.isAlikeDead())
-		{
-			return;
-		}
+		super(params, Stat.MAGIC_ATTACK);
 		
-		if (effected.isPlayer() && effected.getActingPlayer().isFakeDeath() && Config.FAKE_DEATH_DAMAGE_STAND)
+		if (params.contains("power"))
 		{
-			effected.stopFakeDeath(true);
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use amount instead of power.");
 		}
-		
-		if (_overHit && effected.isAttackable())
-		{
-			((Attackable) effected).overhitEnabled(true);
-		}
-		
-		final boolean sps = skill.useSpiritShot() && effector.isChargedShot(ShotType.SPIRITSHOTS);
-		final boolean bss = skill.useSpiritShot() && effector.isChargedShot(ShotType.BLESSED_SPIRITSHOTS);
-		final boolean mcrit = Formulas.calcCrit(skill.getMagicCriticalRate(), effector, effected, skill);
-		double damage = Formulas.calcMagicDam(effector, effected, skill, effector.getMAtk(), _power, effected.getMDef(), sps, bss, mcrit);
-		
-		// Apply debuff modifier.
-		if (effected.getEffectList().getDebuffCount() > 0)
-		{
-			damage *= _debuffModifier;
-		}
-		
-		// Apply race modifier.
-		if (_races.contains(effected.getRace()))
-		{
-			damage *= _raceModifier;
-		}
-		
-		effector.doAttack(damage, effected, skill, false, false, mcrit, false);
 	}
 }

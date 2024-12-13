@@ -65,8 +65,8 @@ public class Plunder extends AbstractEffect
 			return;
 		}
 		
-		final Monster monster = (Monster) effected;
-		final Player player = effector.getActingPlayer();
+		final Monster monster = effected.asMonster();
+		final Player player = effector.asPlayer();
 		
 		if (monster.isSpoiled())
 		{

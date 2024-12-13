@@ -4,14 +4,14 @@
 		<!-- Teleports to Hunter's Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<hitTime>3000</hitTime>
-		<reuseDelay>60000</reuseDelay>
-		<isMagic>2</isMagic> <!-- Magic Skill -->
-		<magicLevel>-1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>-1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -26,10 +26,10 @@
 	<skill id="39101" toLevel="1" name="Evidence Chase">
 		<!-- For 15 sec., Speed +66. -->
 		<icon>icon.skill0998</icon>
-		<abnormalTime>15</abnormalTime>
 		<operateType>A2</operateType>
-		<hitTime>1000</hitTime>
+		<abnormalTime>15</abnormalTime>
 		<effectPoint>438</effectPoint>
+		<hitTime>1000</hitTime>
 		<reuseDelay>30000</reuseDelay>
 		<effects>
 			<effect name="Speed">
@@ -42,12 +42,12 @@
 		<!-- Makes you invisible for monsters. -->
 		<icon>icon.skill10518</icon>
 		<operateType>T</operateType>
-		<mpConsume>1</mpConsume>
+		<targetType>SELF</targetType>
 		<abnormalType>STEALTH</abnormalType>
 		<abnormalVisualEffect>STEALTH</abnormalVisualEffect>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<mpConsume>1</mpConsume>
 		<effects>
 			<effect name="ChameleonRest">
 				<power>2</power>
@@ -57,16 +57,16 @@
 	</skill>
 	<skill id="39103" toLevel="1" name="Hero's HP Recovery Potion">
 		<icon>icon.etc_reagent_white_i00</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="HpCpHeal">
-				<amount>500</amount>
+				<power>500</power>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -101,19 +101,19 @@
 	</skill>
 	<skill id="39109" toLevel="1" name="Improved Scroll of Resurrection">
 		<icon>icon.etc_scroll_of_resurrection_i01</icon>
+		<operateType>A1</operateType>
+		<targetType>PC_BODY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>400</castRange>
+		<coolTime>500</coolTime>
 		<effectPoint>1</effectPoint>
 		<effectRange>600</effectRange>
 		<hitTime>1000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49542</itemConsumeId> <!-- Improved Scroll of Resurrection -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<coolTime>500</coolTime>
-		<targetType>PC_BODY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpResurrection" />
 		</conditions>
@@ -132,30 +132,30 @@
 	<skill id="39111" toLevel="1" name="Assistant Roa's Gift">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39112" toLevel="1" name="Golden Boots">
 		<icon>icon.card_event_blue_box</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39113" toLevel="1" name="Golden Mermaid's Tears">
 		<!-- For 1 h., acquired XP/ SP while hunting +50%. Cooldown: 30 min. The effect remains after death. -->
 		<icon>icon.general_fuel_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>VOTE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49585</itemConsumeId>
-		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<stayAfterDeath>true</stayAfterDeath>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="ExpModify">
 				<amount>50</amount>
@@ -187,17 +187,17 @@
 	</skill>
 	<skill id="39118" toLevel="1" name="Scroll: 2000 SP">
 		<icon>icon.etc_sp_scroll1_i00</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>false</blockedInOlympiad>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49595</itemConsumeId> <!-- 2000 SP scroll -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>2000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="GiveSp">
 				<sp>2000</sp>
@@ -206,17 +206,17 @@
 	</skill>
 	<skill id="39119" toLevel="1" name="Scroll: 10,000 SP">
 		<icon>icon.etc_sp_scroll2_i00</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>false</blockedInOlympiad>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49596</itemConsumeId> <!-- 10,000 SP scroll -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>2000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="GiveSp">
 				<sp>10000</sp>
@@ -240,20 +240,20 @@
 	<skill id="39122" toLevel="1" name="Golden Boots - Test">
 		<icon>icon.card_event_blue_box</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39123" toLevel="1" name="Maliss' HP Recovery Potion">
 		<icon>icon.etc_bm_hero_red_potion</icon>
 		<operateType>A1</operateType>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<itemConsumeId>91028</itemConsumeId> <!-- High-grade Maliss' HP Recovery Potion -->
-		<itemConsumeCount>1</itemConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>91028</itemConsumeId> <!-- High-grade Maliss' HP Recovery Potion -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="HpCpHeal">
 				<power>1000</power>
@@ -262,17 +262,17 @@
 	</skill>
 	<skill id="39124" toLevel="1" name="C-grade Weapon Supply Box">
 		<icon>icon.etc_treasure_box_i04</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49667</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -324,17 +324,17 @@
 	</skill>
 	<skill id="39125" toLevel="1" name="B-grade Weapon Pack">
 		<icon>icon.etc_treasure_box_i03</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49664</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -425,17 +425,17 @@
 	</skill>
 	<skill id="39126" toLevel="1" name="C-grade Armor Pack">
 		<icon>icon.etc_treasure_box_i06</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49668</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -481,17 +481,17 @@
 	</skill>
 	<skill id="39127" toLevel="1" name="B-grade Armor Pack">
 		<icon>icon.etc_treasure_box_i07</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49665</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -543,17 +543,17 @@
 	</skill>
 	<skill id="39128" toLevel="1" name="C-grade Accessory Pack">
 		<icon>icon.etc_treasure_box_i02</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49669</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -587,17 +587,17 @@
 	</skill>
 	<skill id="39129" toLevel="1" name="B-grade Accessory Pack">
 		<icon>icon.etc_treasure_box_i08</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49666</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -659,41 +659,41 @@
 	<skill id="39130" toLevel="1" name="C-grade Weapon Ingredient Pack">
 		<icon>icon.etc_treasure_box_i05</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39131" toLevel="1" name="B-grade Weapon Ingredient Pack">
 		<icon>icon.etc_treasure_box_i05</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39132" toLevel="1" name="C-grade Armor/ Accessory Ingredient Pack">
 		<icon>icon.etc_treasure_box_i05</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39133" toLevel="1" name="B-grade Armor/ Accessory Ingredient Pack">
 		<icon>icon.etc_treasure_box_i05</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39134" toLevel="1" name="XP Growth Scroll">
 		<!-- For 20 min., acquired XP/ SP +30%. Cooldown: 1 min. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.etc_recall_exp_scroll</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>VOTE</abnormalType>
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
 		<isMagic>4</isMagic>
-		<reuseDelay>600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<reuseDelay>600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="ExpModify">
 				<amount>30</amount>
@@ -717,18 +717,18 @@
 	</skill>
 	<skill id="39137" toLevel="1" name="Chapeau Box">
 		<icon>icon.card_event_black_box</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49689</itemConsumeId> <!-- Chapeau Box -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>1000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>1000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -754,48 +754,48 @@
 	<skill id="39138" toLevel="1" name="Blue Dynasty Transformation">
 		<!-- The armor appearance changes to "Blue Dynasty" for 1 h. -->
 		<icon>icon.general_stone_i01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>CHANGEBODY</abnormalType>
 		<abnormalVisualEffect>BLUE_DYNASTY</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>0</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>0</hitTime>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49690</itemConsumeId> <!-- Blue Dynasty Transformation Potion -->
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<effectPoint>1</effectPoint>
-		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<hitTime>1500</hitTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="39139" toLevel="1" name="Transformation into Red Zubei">
 		<!-- The armor appearance changes to Red Zubei for 1 h. -->
 		<icon>icon.general_stone_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>CHANGEBODY</abnormalType>
 		<abnormalVisualEffect>RED_ZUBEI</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>0</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>0</hitTime>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49691</itemConsumeId> <!-- Red Zubei Transformation Potion -->
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<effectPoint>1</effectPoint>
-		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<hitTime>1500</hitTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="39140" toLevel="1" name="Magic Potion of Leaping Lv. 1">
 		<!-- XP +1,200,000, SP +40,000. Required level: 20+. -->
@@ -824,27 +824,27 @@
 	<skill id="39144" toLevel="1" name="Special Pirate Fruit">
 		<!-- For 20 min., P./ M. Atk. +7%, P./ M. Def. +10%, Max HP/ MP/ CP +15%, HP/ MP Recovery Rate +20%, acquired XP/ SP +5%. With a certain chance, absorbs 3% of the inflicted damage as HP. Cooldown: 1 min. The effect remains after death. -->
 		<icon>icon.etc_codran_i09</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>VOTE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>1</effectPoint>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49518</itemConsumeId> <!-- Special Pirate Fruit -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>60000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>7</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>7</amount>
 				<mode>PER</mode>
 			</effect>
@@ -895,30 +895,30 @@
 	<skill id="39145" toLevel="1" name="Tower of Insolence Enchant Scroll Pack">
 		<icon>icon.npoint_valakas_30day_box</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39146" toLevel="1" name="Sealed Border Chest">
 		<icon>icon.bm_special_pendant_abradant_box</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39147" toLevel="1" name="Talisman of Darkness Pack">
 		<icon>icon.bm_pirate_king_box</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49706</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -964,17 +964,17 @@
 	</skill>
 	<skill id="39148" toLevel="1" name="Sealed Blessed Talisman of Border">
 		<icon>icon.bm_blessed_magic_square_talisman</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49738</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -993,18 +993,18 @@
 	</skill>
 	<skill id="39149" toLevel="1" name="Talisman of Baium Box">
 		<icon>icon.npoint_tauti_30day_box</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49755</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -1042,10 +1042,10 @@
 	<skill id="39150" toLevel="1" name="Sayha's Holy Water">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>600000</reuseDelay>
-		<magicLevel>1</magicLevel>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>600000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="CanUseVitalityIncreaseItem">
 				<amount>35000</amount>
@@ -1061,22 +1061,22 @@
 	<skill id="39151" toLevel="1" name="A-grade Armor Pack">
 		<icon>icon.etc_treasure_box_i07</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39152" toLevel="1" name="A-grade Accessory Pack">
 		<icon>icon.etc_treasure_box_i02</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49761</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -1110,18 +1110,18 @@
 	</skill>
 	<skill id="39153" toLevel="1" name="A-grade Armor Ingredient Pack">
 		<icon>icon.etc_treasure_box_i05</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49762</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -1312,28 +1312,28 @@
 	<skill id="39154" toLevel="1" name="A-grade Accessory Ingredient Pack">
 		<icon>icon.etc_treasure_box_i05</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="39155" toLevel="1" name="Life Control Tower's Scroll of Blessing">
 		<!-- Max HP +5%. Max MP +5%. Paralysis Resistance +15%. Silence Resistance +15%. Fear Resistance +15%. Acquired XP +30%. Acquired SP +30%. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.etc_aidcharm_cancel_valbreath_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
-		<itemConsumeId>49765</itemConsumeId>
-		<itemConsumeCount>1</itemConsumeCount> <!-- Life Control Tower's Scroll of Blessing (Exchangeable) -->
 		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
-		<operateType>A2</operateType>
+		<itemConsumeCount>1</itemConsumeCount> <!-- Life Control Tower's Scroll of Blessing (Exchangeable) -->
+		<itemConsumeId>49765</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MaxHp">
 				<amount>5</amount>
@@ -1358,19 +1358,19 @@
 	<skill id="39156" toLevel="1" name="Scroll of Heavenly Protection">
 		<!-- Paralysis Resistance +15%. Silence Resistance +10%. Fear Resistance +10% -->
 		<icon>icon.scroll_of_verification_i08</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>POTION_OF_GENESIS</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>4</isMagic> <!-- Item Skill -->
-		<magicLevel>1</magicLevel>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49768</itemConsumeId>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefenceTrait">
 				<PARALYZE>15</PARALYZE>
@@ -1380,13 +1380,13 @@
 	</skill>
 	<skill id="39157" toLevel="1" name="Unidentified Rock">
 		<icon>icon.etc_magical_stone_i00</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1408,18 +1408,18 @@
 	</skill>
 	<skill id="39158" toLevel="1" name="Secret Scroll Box: Emperor Baium's Enchant">
 		<icon>icon.npoint_valakas_30day_box</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49769</itemConsumeId> <!-- Improved Scroll Box: Emperor Baium's Enchant -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -1454,12 +1454,12 @@
 	<skill id="39159" toLevel="1" name="Sayha's Energy">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
-		<magicLevel>1</magicLevel>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49770</itemConsumeId> <!-- Sayha's Energy -->
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="CanUseVitalityIncreaseItem">
 				<amount>35000</amount>
@@ -1474,18 +1474,18 @@
 	</skill>
 	<skill id="39160" toLevel="1" name="Emperor Baium's Secret Treasures">
 		<icon>icon.npoint_valakas_30day_box</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49771</itemConsumeId> <!-- Emperor Baium's Secret Treasures -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>1000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>1000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1514,27 +1514,27 @@
 	<skill id="39162" toLevel="1" name="Special Pirate Fruit - Attack">
 		<!-- For 20 min., P./ M. Atk. +7%, P./ M. Def. +10%, Max HP/ MP/ CP +15%, HP/ MP Recovery Rate +20%, PvP damage +5%. With a certain chance, absorbs 3% of the inflicted damage as HP. Cooldown: 1 min. The effect remains after death. -->
 		<icon>icon.etc_codran_i09</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>VOTE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>1</effectPoint>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49773</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>60000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>7</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>7</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1591,27 +1591,27 @@
 	<skill id="39163" toLevel="1" name="Special Pirate Fruit - Defense">
 		<!-- For 20 min., P./ M. Atk. +7%, P./ M. Def. +10%, Max HP/ MP/ CP +15%, HP/ MP Recovery Rate +20%, PvP damage +5%. With a certain chance, absorbs 3% of the inflicted damage as HP. Cooldown: 1 min. The effect remains after death. -->
 		<icon>icon.etc_codran_i09</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>VOTE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>1</effectPoint>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49774</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>60000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>7</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>7</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1669,15 +1669,15 @@
 		<!-- For 20 min., grants the following effects: Might, Shield, Focus, Haste, Acumen, Empower, Wind Walk, Death Whisper, and Vampiric Rage. Cooldown: 1 min. The effect remains after death. Note!. Scroll of Mood Melody can't be used while the buff is still active. -->
 		<icon>icon.bm_magmeld</icon>
 		<operateType>A1</operateType>
-		<itemConsumeId>49772</itemConsumeId>
-		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<isMagic>2</isMagic> <!-- Item Skill -->
-		<magicLevel>1</magicLevel>
 		<effectPoint>1</effectPoint>
+		<isMagic>2</isMagic> <!-- Item Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>49772</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<selfEffects>
 			<effect name="CallSkill">
 				<skillId>1068</skillId> <!-- Might -->
@@ -1721,22 +1721,22 @@
 		<!-- Transformation into a Prophet. Attacking is not possible. Can be used once a day. When used during a duel, the Buff is removed after duel ends. -->
 		<icon>icon.skilltransform1</icon>
 		<operateType>A1</operateType>
+		<effectPoint>0</effectPoint>
 		<hitTime>1000</hitTime>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="39166" toLevel="1" name="Transformation into a Shillien Elder">
 		<!-- Transformation into a Shillien Elder. Attacking is not possible. Can be used once a day. When used during a duel, the Buff is removed after duel ends. -->
 		<icon>icon.skilltransform1</icon>
 		<operateType>A1</operateType>
+		<effectPoint>0</effectPoint>
 		<hitTime>1000</hitTime>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="39167" toLevel="1" name="Transformation into an Elven Elder">
 		<!-- Transformation into an Elven Elder. Attacking is not possible. Can be used once a day. When used during a duel, the Buff is removed after duel ends. -->
 		<icon>icon.skilltransform1</icon>
 		<operateType>A1</operateType>
+		<effectPoint>0</effectPoint>
 		<hitTime>1000</hitTime>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="39168" toLevel="1" name="Gift of Sated Spirit">
 		<!-- Allows to receive 37,000,000 XP/ 1,110,000 SP. Available for characters from Lv. 45 or higher. -->
@@ -1752,13 +1752,13 @@
 	</skill>
 	<skill id="39170" toLevel="1" name="Balthus Knights' Supply Box">
 		<icon>icon.special_cube_i00</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<reuseDelay>86400000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
@@ -1779,26 +1779,26 @@
 	<skill id="39171" toLevel="1" name="Balthus Knights' Mark">
 		<!-- P. Atk. +100. M. Atk. +100. P. Def. +100. M. Def. +100. Acquired XP +30%. Acquired SP +30%. A chance to obtain Special Supplies. The effect remains after death. You can't cancel the effect by yourself. -->
 		<icon>icon.ev_balthus_token</icon>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>49784</itemConsumeId>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>CHANGEBODY</abnormalType>
 		<abnormalVisualEffect>CHANGESHAPE_TRANSFORM</abnormalVisualEffect>
-		<stayAfterDeath>true</stayAfterDeath>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
-		<effectPoint>1</effectPoint>
+		<effectPoint>0</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>49784</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>56</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<hitTime>500</hitTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<stayAfterDeath>true</stayAfterDeath>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>20</minLevel>
@@ -1815,18 +1815,18 @@
 	</skill>
 	<skill id="39172" toLevel="1" name="A-grade Weapon Pack">
 		<icon>icon.etc_treasure_box_i07</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49785</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -1908,18 +1908,18 @@
 	</skill>
 	<skill id="39173" toLevel="1" name="A-grade Armor Pack">
 		<icon>icon.etc_treasure_box_i07</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49786</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -2022,18 +2022,18 @@
 	</skill>
 	<skill id="39174" toLevel="1" name="+8 B-grade Weapon Pack">
 		<icon>icon.etc_treasure_box_i07</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49789</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -2124,18 +2124,18 @@
 	</skill>
 	<skill id="39175" toLevel="1" name="+16 C-grade Weapon Pack">
 		<icon>icon.etc_treasure_box_i07</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49790</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -2188,44 +2188,44 @@
 	<skill id="39176" toLevel="1" name="Red Libra's Supplies I">
 		<icon>icon.event_mahum_coinbox</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39177" toLevel="1" name="Red Libra's Supplies II">
 		<icon>icon.event_mahum_coinbox</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39178" toLevel="1" name="Red Libra's Supplies III">
 		<icon>icon.event_mahum_coinbox</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39179" toLevel="1" name="Red Libra's Supplies IV">
 		<icon>icon.event_mahum_coinbox</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39180" toLevel="1" name="XP Scroll: 1K">
 		<!-- 1000 XP. -->
 		<icon>icon.etc_recall_exp_scroll</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49777</itemConsumeId> <!-- XP Scroll: 1,000 -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GiveXp">
 				<xp>1000</xp>
@@ -2236,15 +2236,15 @@
 		<!-- 10,000 XP. -->
 		<icon>icon.etc_recall_exp_scroll</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49778</itemConsumeId> <!-- XP Scroll: 10,000 -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GiveXp">
 				<xp>10000</xp>
@@ -2255,15 +2255,15 @@
 		<!-- 100,000 XP. -->
 		<icon>icon.etc_recall_exp_scroll</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49779</itemConsumeId> <!-- XP Scroll: 100,000 -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GiveXp">
 				<xp>100000</xp>
@@ -2274,15 +2274,15 @@
 		<!-- 500,000 XP. -->
 		<icon>icon.etc_recall_exp_scroll</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49780</itemConsumeId> <!-- XP Scroll: 500,000 -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GiveXp">
 				<xp>500000</xp>
@@ -2293,15 +2293,15 @@
 		<!-- 1,000,000 XP. -->
 		<icon>icon.etc_recall_exp_scroll</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49781</itemConsumeId> <!-- XP Scroll: 1,000,000 -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GiveXp">
 				<xp>1000000</xp>
@@ -2313,25 +2313,25 @@
 		<icon>icon.ev_12th_weapon</icon>
 		<operateType>A1</operateType>
 		<castRange>40</castRange>
-		<hitTime>1100</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1100</hitTime>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="39186" toLevel="1" name="Sayha's Blessing Pack">
 		<icon>icon.etc_treasure_box_i04</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49844</itemConsumeId> <!-- Sayha's Blessing Chest -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -2357,29 +2357,29 @@
 	<skill id="39187" toLevel="1" name="A-grade Accessory Pack">
 		<icon>icon.etc_treasure_box_i04</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39188" toLevel="1" name="Sayha's Golden Gift">
 		<icon>icon.etc_treasure_box_i04</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39189" toLevel="1" name="Sayha's Silver Gift">
 		<icon>icon.etc_treasure_box_i04</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39190" toLevel="1" name="Sayha's Gift">
 		<icon>icon.etc_treasure_box_i04</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39191" toLevel="1" name="Sayha's Blessing">
@@ -2401,10 +2401,10 @@
 	<skill id="39192" toLevel="1" name="Sayha's Silver Light Blessing">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>600000</reuseDelay>
-		<magicLevel>1</magicLevel>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>600000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="CanUseVitalityIncreaseItem">
 				<amount>35000</amount>
@@ -2420,10 +2420,10 @@
 	<skill id="39193" toLevel="1" name="Sayha's Golden Light Blessing">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>600000</reuseDelay>
-		<magicLevel>1</magicLevel>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>600000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="CanUseVitalityIncreaseItem">
 				<amount>35000</amount>
@@ -2440,13 +2440,13 @@
 		<!-- For 20 min. while hunting, Sayha's Grace Consumption +100%, acquired XP/ SP +100%. Cooldown: 1 min. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.bm_sayha_storm</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>600000</reuseDelay>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>BR_EVENT_BUF6</abnormalType>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49851</itemConsumeId> <!-- Sayha's Storm Lv. 1 (Event) -->
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>4</isMagic>
+		<reuseDelay>600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<abnormalType>BR_EVENT_BUF6</abnormalType>
 		<conditions>
 			<condition name="HasVitalityPoints">
 				<amount>35000</amount>
@@ -2468,35 +2468,35 @@
 	<skill id="39195" toLevel="1" name="Wind Token">
 		<icon>icon.bm_special_pendant_abradant_box</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39196" toLevel="1" name="+10 Fire Dragon Pendant Pack">
 		<icon>icon.etc_treasure_box_i04</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39197" toLevel="1" name="+10 Earth Dragon Pendant Pack">
 		<icon>icon.etc_treasure_box_i04</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39198" toLevel="1" name="Maliss' MP Recovery Potion">
 		<icon>icon.etc_bm_hero_red_potion</icon>
 		<operateType>A1</operateType>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<itemConsumeId>49854</itemConsumeId> <!-- Maliss' MP Replenishing Potion (Exchangeable) -->
-		<itemConsumeCount>1</itemConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>49854</itemConsumeId> <!-- Maliss' MP Replenishing Potion (Exchangeable) -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ManaHeal">
 				<power>500</power>
@@ -2505,15 +2505,15 @@
 	</skill>
 	<skill id="39199" toLevel="1" name="Hero's Wondrous Cube - 7 d.">
 		<icon>icon.sa_cube</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<reuseDelay>-1</reuseDelay>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>0</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>-1</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -2524,37 +2524,37 @@
 			<effect name="RestorationRandom">
 				<items>
 					<item chance="16">
-						<item id="49487" count="2" /> <!-- Soulshot Ticket -->
+						<item id="49487" count="2" /> <!-- Soulshot Ticket (Tradable within account) - Sealed -->
 					</item>
 					<item chance="4">
-						<item id="49772" count="1" /> <!-- Scroll of Mood Melody -->
+						<item id="49772" count="1" /> <!-- Scroll of Mood Melody - Sealed -->
 					</item>
 					<item chance="16.49">
-						<item id="49488" count="5" /> <!-- Major Healing Potion -->
+						<item id="49488" count="5" /> <!-- Hero's Top-grade HP Replenishing Potion - Sealed -->
 					</item>
 					<item chance="20">
-						<item id="35669" count="1" /> <!-- Angel Cat's Blessing -->
+						<item id="35669" count="1" /> <!-- Angel Cat's Blessing - 30-day -->
 					</item>
 					<item chance="5">
-						<item id="49533" count="1" /> <!-- Quick Hero Healing Potion -->
+						<item id="49533" count="1" /> <!-- Hero's HP Recovery Potion - Sealed -->
 					</item>
 					<item chance="10">
-						<item id="49542" count="1" /> <!-- Improved Scroll of Resurrection -->
+						<item id="49542" count="1" /> <!-- Improved Scroll of Resurrection - Sealed -->
 					</item>
 					<item chance="14.5">
-						<item id="49536" count="1" /> <!-- Box of Scroll of Escape to the Base -->
+						<item id="49536" count="1" /> <!-- Box of Scroll of Escape to Base - Sealed -->
 					</item>
 					<item chance="2">
-						<item id="49489" count="3" /> <!-- Parts of Enchantment Scrolls Chest -->
+						<item id="49489" count="3" /> <!-- Chest of Enchant Scroll's Parts - Not Available -->
 					</item>
 					<item chance="10">
-						<item id="49416" count="1" /> <!-- Blade Spirit -->
+						<item id="49416" count="1" /> <!-- Blade Spirit (Time-limited) - Sealed -->
 					</item>
 					<item chance="0.01">
-						<item id="49859" count="1" /> <!-- Weapon Exchange Coupon -->
+						<item id="49859" count="1" /> <!-- Old Weapon Coupon - Sealed -->
 					</item>
 					<item chance="2">
-						<item id="49490" count="1" /> <!-- Fishing Kit -->
+						<item id="49490" count="1" /> <!-- Fishing Kit - Sealed -->
 					</item>
 				</items>
 			</effect>

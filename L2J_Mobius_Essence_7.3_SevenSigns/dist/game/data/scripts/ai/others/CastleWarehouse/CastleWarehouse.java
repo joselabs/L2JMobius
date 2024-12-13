@@ -18,6 +18,7 @@ package ai.others.CastleWarehouse;
 
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 
 import ai.AbstractNpcAI;
 
@@ -55,7 +56,8 @@ public class CastleWarehouse extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final boolean isMyLord = player.isClanLeader() && (player.getClan().getCastleId() == (npc.getCastle() != null ? npc.getCastle().getResidenceId() : -1));
+		final Clan clan = player.getClan();
+		final boolean isMyLord = player.isClanLeader() && (clan.getCastleId() == (npc.getCastle() != null ? npc.getCastle().getResidenceId() : -1));
 		switch (event)
 		{
 			case "warehouse-01.html":
@@ -66,7 +68,7 @@ public class CastleWarehouse extends AbstractNpcAI
 			}
 			case "warehouse-04.html":
 			{
-				htmltext = (!isMyLord) ? "warehouse-no.html" : getHtm(player, "warehouse-04.html").replace("%blood%", Integer.toString(player.getClan().getBloodAllianceCount()));
+				htmltext = (!isMyLord) ? "warehouse-no.html" : getHtm(player, "warehouse-04.html").replace("%blood%", Integer.toString(clan.getBloodAllianceCount()));
 				break;
 			}
 			case "Receive":
@@ -75,14 +77,14 @@ public class CastleWarehouse extends AbstractNpcAI
 				{
 					htmltext = "warehouse-no.html";
 				}
-				else if (player.getClan().getBloodAllianceCount() == 0)
+				else if (clan.getBloodAllianceCount() == 0)
 				{
 					htmltext = "warehouse-05.html";
 				}
 				else
 				{
-					giveItems(player, BLOOD_ALLIANCE, player.getClan().getBloodAllianceCount());
-					player.getClan().resetBloodAllianceCount();
+					giveItems(player, BLOOD_ALLIANCE, clan.getBloodAllianceCount());
+					clan.resetBloodAllianceCount();
 					htmltext = "warehouse-06.html";
 				}
 				break;

@@ -33,6 +33,13 @@ public class PAttackSpeedFinalizer implements IStatFunction
 	public double calc(Creature creature, OptionalDouble base, Stat stat)
 	{
 		throwIfPresent(base);
+		
+		final double staticPAtkSpeed = creature.getStat().getValue(Stat.STATIC_PHYSICAL_ATTACK_SPEED, 0);
+		if (staticPAtkSpeed > 0)
+		{
+			return staticPAtkSpeed;
+		}
+		
 		double baseValue = calcWeaponBaseValue(creature, stat);
 		if (Config.CHAMPION_ENABLE && creature.isChampion())
 		{

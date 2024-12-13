@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="45800" name="Dynasty Cudgel of Fortune" additionalName="30-day" type="Weapon">
-		<!-- Max HP +25%. Increases damage inflicted during PvP. Can be assigned an attribute. -->
+		<!-- Max HP +25%. Deals additional PvP damage. Can be imbued with an attribute. -->
 		<set name="icon" val="icon.weapon_dynasty_hammer_i01" />
 		<set name="weapon_type" val="BLUNT" />
 		<set name="default_action" val="EQUIP" />
@@ -144,9 +144,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="time" val="43200" />
 		<set name="material" val="BRONZE" />
-		<skills>
-			<skill id="13115" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">333</stat>
 			<stat type="mAtk">151</stat>
@@ -156,9 +153,12 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="13115" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="45806" name="Dynasty Ancient Sword of Fortune" additionalName="30-day" type="Weapon">
-		<!-- Kamael-only weapon. P. Critical Rate +111. Inflicts additional PvP Damage. Can be assigned an attribute. -->
+		<!-- Kamael-exclusive weapon. P. Critical Rate +111. Deals additional PvP damage. Can be imbued with an attribute. -->
 		<set name="icon" val="icon.weapon_dynasty_ancient_sword_i01" />
 		<set name="weapon_type" val="ANCIENTSWORD" />
 		<set name="default_action" val="EQUIP" />
@@ -210,7 +210,7 @@
 		</stats>
 	</item>
 	<item id="45808" name="Dynasty Crossbow of Fortune" additionalName="30-day" type="Weapon">
-		<!-- P. Critical Rate +116. Inflicts additional PvP Damage. Can be assigned an attribute. -->
+		<!-- P. Critical Rate +116. Deals additional PvP damage. Can be imbued with an attribute. -->
 		<set name="icon" val="icon.weapon_dynasty_crossbow_i01" />
 		<set name="weapon_type" val="CROSSBOW" />
 		<set name="default_action" val="EQUIP" />
@@ -236,7 +236,7 @@
 		</stats>
 	</item>
 	<item id="45809" name="Returning Warrior's Soulshot Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain one Soulshot (C-R-grade). -->
+		<!-- Double-click to obtain Soulshots (C-grade and higher). -->
 		<set name="icon" val="icon.etc_box_of_adventure_2_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -249,11 +249,11 @@
 			<item id="33777" min="10000" max="10000" chance="100" /> <!-- B-grade Soulshot - Event -->
 			<item id="33778" min="10000" max="10000" chance="100" /> <!-- A-grade Soulshot - Event -->
 			<item id="33779" min="10000" max="10000" chance="100" /> <!-- S-grade Soulshot - Event -->
-			<item id="33780" min="10000" max="10000" chance="100" /> <!-- R-grade Soulshot - Event -->
+			<item id="33780" min="10000" max="10000" chance="100" /> <!-- Soulshot - Event -->
 		</capsuled_items>
 	</item>
 	<item id="45810" name="Returning Warrior's Blessed Spiritshot Pack" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain one Blessed Spiritshot (C-R-grade). -->
+		<!-- Double-click to obtain Spiritshots (C-grade and higher). -->
 		<set name="icon" val="icon.etc_box_of_adventure_3_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -266,7 +266,7 @@
 			<item id="33791" min="10000" max="10000" chance="100" /> <!-- Blessed B-grade Spiritshot - Event -->
 			<item id="33792" min="10000" max="10000" chance="100" /> <!-- Blessed A-grade Spiritshot - Event -->
 			<item id="33793" min="10000" max="10000" chance="100" /> <!-- Blessed S-grade Spiritshot - Event -->
-			<item id="33794" min="10000" max="10000" chance="100" /> <!-- Blessed R-grade Spiritshot - Event -->
+			<item id="33794" min="10000" max="10000" chance="100" /> <!-- Spiritshot - Event -->
 		</capsuled_items>
 	</item>
 	<item id="45811" name="Clan Reward" type="EtcItem">
@@ -360,7 +360,7 @@
 		</capsuled_items>
 	</item>
 	<item id="45817" name="R-grade Weapon Attribute Change Crystal" type="EtcItem">
-		<!-- Double-click to change the attribute of an R-/ R95-/ R99-/ R110-grade weapon. The weapon imbued with an attribute must be in the inventory. -->
+		<!-- Double-click to change the attribute of an R-/ R95-/ R99-/ R110/ L-grade weapon. The weapon imbued with an attribute must be in the inventory. -->
 		<set name="icon" val="icon.change_elemental_crystal" />
 		<set name="crystal_type" val="R99" />
 		<set name="is_tradable" val="false" />
@@ -384,7 +384,7 @@
 		<set name="material" val="FISH" />
 	</item>
 	<item id="45819" name="PA Points Coupon (720 Points)" type="EtcItem">
-		<!-- When double-clicked, 720 PA Points can be acquired. -->
+		<!-- Double-click to obtain 720 PA Points. -->
 		<set name="icon" val="icon.etc_ticket_i00" />
 		<set name="weight" val="100" />
 		<set name="is_tradable" val="false" />
@@ -573,9 +573,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="time" val="43200" />
 		<set name="material" val="BRONZE" />
-		<skills>
-			<skill id="13115" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">504</stat>
 			<stat type="mAtk">219</stat>
@@ -585,6 +582,9 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="13115" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="45829" name="Apocalypse Thrower - Focus" additionalName="30-day" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +79.2. Inflicts additional PvP Damage. When enchanted to +4, increases P. Skill Power. No Soul Crystal option. -->
@@ -800,7 +800,7 @@
 		</stats>
 	</item>
 	<item id="45837" name="Sad Energy" type="EtcItem">
-		<!-- Item obtained from defeating Harpe in the Garden of Spirits. You can feel the spirit's sadness. Take it to Magister Belas. -->
+		<!-- Can be obtained by defeating Harpe in the Garden of Spirits. Take it to Magister Belas near the Garden of Spirits. -->
 		<set name="icon" val="icon.etc_crystal_ball_blue_i00" />
 		<set name="is_depositable" val="false" />
 		<set name="is_tradable" val="false" />
@@ -812,7 +812,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="45838" name="Angry Energy" type="EtcItem">
-		<!-- Item obtained from defeating Harpe in the Garden of Spirits. You can feel the spirit's anger. Take it to Magister Belas. -->
+		<!-- Can be obtained by defeating Harpe in the Garden of Spirits. Take it to Magister Belas near the Garden of Spirits. -->
 		<set name="icon" val="icon.etc_crystal_ball_red_i00" />
 		<set name="is_depositable" val="false" />
 		<set name="is_tradable" val="false" />
@@ -1102,9 +1102,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="time" val="43200" />
 		<set name="material" val="BRONZE" />
-		<skills>
-			<skill id="13115" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">584</stat>
 			<stat type="mAtk">254</stat>
@@ -1114,6 +1111,9 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="13115" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="45857" name="Specter Thrower - Focus" additionalName="30-day" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +78.9. Inflicts additional PvP Damage. When enchanted to +4, increases P. Skill Power. No Soul Crystal option. -->
@@ -1390,7 +1390,7 @@
 			</and>
 		</cond>
 		<skills>
-			<skill id="18351" level="2" /> <!-- Favor of the Exalted -->
+			<skill id="18351" level="2" /> <!-- Spellbook: Favor of the Exalted Lv. 2 -->
 		</skills>
 	</item>
 	<item id="45871" name="Slayer's Proof" type="EtcItem">
@@ -1480,7 +1480,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="45495" min="30" max="30" chance="100" /> <!-- Normal Bait -->
+			<item id="45495" min="30" max="30" chance="100" /> <!-- Common Bait -->
 		</capsuled_items>
 	</item>
 	<item id="45878" name="Mysterious Aid Pack" additionalName="Event" type="EtcItem">
@@ -1644,9 +1644,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="time" val="43200" />
 		<set name="material" val="BRONZE" />
-		<skills>
-			<skill id="13115" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">638</stat>
 			<stat type="mAtk">278</stat>
@@ -1656,6 +1653,9 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="13115" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="45885" name="Helios Thrower - Focus" additionalName="30-day" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +78.7. Inflicts additional PvP Damage. When enchanted to +4, increases P. Skill Power. No Soul Crystal option. -->
@@ -1900,12 +1900,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="material" val="GOLD" />
-		<skills>
-			<skill id="3557" level="1" /> <!-- Valakas' Necklace -->
-		</skills>
 		<stats>
 			<stat type="mDef">125</stat>
 		</stats>
+		<skills>
+			<skill id="3557" level="1" /> <!-- Valakas' Necklace -->
+		</skills>
 	</item>
 	<item id="45895" name="Filled Necklace (Frintezza Energy)" additionalName="30-day" type="Armor">
 		<!-- MP +62, Stupor/ Confusion Atk. Rate and Resistance +15%, decreases Skill Cooldown, increases Dark Resistance, grants Damage Reflection effect. -->
@@ -1919,12 +1919,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="material" val="GOLD" />
-		<skills>
-			<skill id="3604" level="1" /> <!-- Frintezza's Necklace -->
-		</skills>
 		<stats>
 			<stat type="mDef">95</stat>
 		</stats>
+		<skills>
+			<skill id="3604" level="1" /> <!-- Frintezza's Necklace -->
+		</skills>
 	</item>
 	<item id="45896" name="Filled Earring (Antharas Energy)" additionalName="30-day" type="Armor">
 		<!-- MP +46, Infection Atk. Rate and Resistance +40%, Confusion Atk. Rate and Resistance +30%. Increases Received Healing and Earth Resistance, grants Vampiric Rage effect, decreases MP Consumption. Effects of two identical earrings do not stack. -->
@@ -1938,12 +1938,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="material" val="GOLD" />
-		<skills>
-			<skill id="3558" level="1" /> <!-- Antharas' Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">94</stat>
 		</stats>
+		<skills>
+			<skill id="3558" level="1" /> <!-- Antharas' Earring -->
+		</skills>
 	</item>
 	<item id="45897" name="Filled Earring (Zaken Energy)" additionalName="30-day" type="Armor">
 		<!-- MP +46, Infection Atk. Rate and Resistance +30%, Confusion Atk. Rate and Resistance +20%. Increases Received Healing, grants Vampiric Rage effect. Effects of two identical earrings do not stack. When equipped with Blessed Zaken's Earring, only the effect of the latter is applied. -->
@@ -1957,12 +1957,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="material" val="GOLD" />
-		<skills>
-			<skill id="3559" level="1" /> <!-- Zaken's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">71</stat>
 		</stats>
+		<skills>
+			<skill id="3559" level="1" /> <!-- Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="45898" name="Filled Ring (Baium Energy)" additionalName="30-day" type="Armor">
 		<!-- MP +31, Infection Atk. Rate and Resistance +40%, Obstruction Atk. Rate and Resistance +30%. Increases P. Accuracy, Critical Damage for basic attacks, Atk. Spd. and Casting Spd. Effects of two identical rings do not stack. -->
@@ -1976,12 +1976,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="material" val="GOLD" />
-		<skills>
-			<skill id="3561" level="1" /> <!-- Baium's Ring -->
-		</skills>
 		<stats>
 			<stat type="mDef">48</stat>
 		</stats>
+		<skills>
+			<skill id="3561" level="1" /> <!-- Baium's Ring -->
+		</skills>
 	</item>
 	<item id="45899" name="Filled Ring (Queen Ant Energy)" additionalName="30-day" type="Armor">
 		<!-- MP +31, Infection Atk. Rate and Resistance +30%, Obstruction Atk. Rate and Resistance +20%. Increases P. Accuracy and Critical Damage for standard attacks. Effects of two identical rings do not stack. -->
@@ -1995,11 +1995,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="material" val="GOLD" />
-		<skills>
-			<skill id="3562" level="1" /> <!-- Queen Ant's Ring -->
-		</skills>
 		<stats>
 			<stat type="mDef">48</stat>
 		</stats>
+		<skills>
+			<skill id="3562" level="1" /> <!-- Queen Ant's Ring -->
+		</skills>
 	</item>
 </list>

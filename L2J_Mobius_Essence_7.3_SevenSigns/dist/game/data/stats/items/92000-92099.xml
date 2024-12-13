@@ -268,7 +268,7 @@
 		</skills>
 	</item>
 	<item id="92018" name="Talisman of Eva" additionalName="Sealed" type="Armor">
-		<!-- A talisman that contains the energy of Eva. Can be enchanted up to +10 with Scroll: Enchant Accessories. Enables special effects depending on its enchant value. Enchanting is not safe even to +1. Talisman of Eva enchanted to +4 or higher can be used for making Blessed Talisman of Eva in the Special Craft tab. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- A talisman that contains the energy of Eva. Can be enchanted up to +10 with Scroll: Enchant Ornaments. Applies special effects based on the item's enchant value. Enchanting is not safe even to +1. Talisman of Eva enchanted to +4 or higher can be used for making Blessed Talisman of Eva through the special craft. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.bm_eva_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -279,19 +279,20 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<set name="is_freightable" val="true" />
 		<skills>
 			<skill id="50193" level="1" /> <!-- Talisman of Eva -->
-			<skill id="50193" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: +1 Talisman of Eva -->
-			<skill id="50193" level="5" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: +2 Talisman of Eva -->
-			<skill id="50193" level="7" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: +3 Talisman of Eva -->
-			<skill id="50193" level="9" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: +4 Talisman of Eva -->
-			<skill id="50193" level="11" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: +5 Talisman of Eva -->
-			<skill id="50193" level="13" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: +6 Talisman of Eva -->
-			<skill id="50193" level="15" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: +7 Talisman of Eva -->
-			<skill id="50193" level="17" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: +8 Talisman of Eva -->
-			<skill id="50193" level="19" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: +9 Talisman of Eva -->
-			<skill id="50193" level="21" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: +10 Talisman of Eva -->
+			<skill id="50193" level="3" type="ON_ENCHANT" type_value="1" /> <!-- +1 Talisman of Eva -->
+			<skill id="50193" level="5" type="ON_ENCHANT" type_value="2" /> <!-- +2 Talisman of Eva -->
+			<skill id="50193" level="7" type="ON_ENCHANT" type_value="3" /> <!-- +3 Talisman of Eva -->
+			<skill id="50193" level="9" type="ON_ENCHANT" type_value="4" /> <!-- +4 Talisman of Eva -->
+			<skill id="50193" level="11" type="ON_ENCHANT" type_value="5" /> <!-- +5 Talisman of Eva -->
+			<skill id="50193" level="13" type="ON_ENCHANT" type_value="6" /> <!-- +6 Talisman of Eva -->
+			<skill id="50193" level="15" type="ON_ENCHANT" type_value="7" /> <!-- +7 Talisman of Eva -->
+			<skill id="50193" level="17" type="ON_ENCHANT" type_value="8" /> <!-- +8 Talisman of Eva -->
+			<skill id="50193" level="19" type="ON_ENCHANT" type_value="9" /> <!-- +9 Talisman of Eva -->
+			<skill id="50193" level="21" type="ON_ENCHANT" type_value="10" /> <!-- +10 Talisman of Eva -->
 		</skills>
 	</item>
 	<item id="92019" name="Siege Support Box" additionalName="Sealed" type="EtcItem">
@@ -350,7 +351,7 @@
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="92018" min="1" max="1" chance="100" /> <!-- Talisman of Eva - Sealed -->
-			<item id="92017" min="10" max="10" chance="100" /> <!-- Scroll: Enchant Talisman of Eva - Sealed -->
+			<item id="98611" min="10" max="10" chance="100" /> <!-- Scroll: Enchant Ornaments - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="92021" name="Letter D" additionalName="Sealed" type="EtcItem">
@@ -361,6 +362,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_questitem" val="true" />
 	</item>
 	<item id="92022" name="Letter P" additionalName="Sealed" type="EtcItem">
 		<!-- Combine with other letters to create a special word and get a reward! -->
@@ -370,6 +372,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_questitem" val="true" />
 	</item>
 	<item id="92023" name="+9 Ring of Insolence Pack" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -506,7 +509,7 @@
 		</capsuled_items>
 	</item>
 	<item id="92031" name="Talisman Bracelet Lv. 5" type="Armor">
-		<!-- Talisman slots +6. P. Atk. +200. M. Atk. +200. <font color=bbaa88><Compound></font>. Materials: Talisman Bracelets and packages of the same level. In case of failure, the current level remains the same, but materials disappear. -->
+		<!-- Talisman slots +6. P. Atk. +200. M. Atk. +200. <font color=bbaa88><Compounding></font>. Materials: Talisman Bracelets and packages of the same level. In case of failure, the current level remains the same, but materials disappear. -->
 		<set name="icon" val="icon.dimension_bracelet_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rbracelet" />
@@ -521,7 +524,7 @@
 		</skills>
 	</item>
 	<item id="92032" name="Talisman Bracelet Lv. 6" type="Armor">
-		<!-- Talisman slots +6. P. Atk. +300. M. Atk. +300. <font color=bbaa88><Compound></font>. Materials: Talisman Bracelets and packages of the same level. In case of failure, the current level remains the same, but materials disappear. -->
+		<!-- Talisman slots +6. P. Atk. +300. M. Atk. +300. <font color=bbaa88><Compounding></font>. Materials: Talisman Bracelets and packages of the same level. In case of failure, the current level remains the same, but materials disappear. -->
 		<set name="icon" val="icon.dimension_bracelet_i05" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rbracelet" />
@@ -550,7 +553,7 @@
 			<player levelRange="1;75" />
 		</cond>
 		<skills>
-			<skill id="54069" level="1" /> <!-- Magic Fire (Event) -->
+			<skill id="40057" level="1" /> <!-- Magic Fire - Event -->
 		</skills>
 	</item>
 	<item id="92034" name="Reinforced Jewelry Box" type="EtcItem">
@@ -599,7 +602,7 @@
 		</capsuled_items>
 	</item>
 	<item id="92036" name="Amber Lv. 1" additionalName="Sealed" type="Armor">
-		<!-- <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 500 fixed damage. (Ignores protective barriers/ CP.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 500 fixed damage. (Ignores protective barriers/ CP.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_amber_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -610,11 +613,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50194" level="1" /> <!-- Gem: Amber -->
+			<skill id="50194" level="1" /> <!-- Amber - Special Property -->
 		</skills>
 	</item>
 	<item id="92037" name="Amber Lv. 2" additionalName="Sealed" type="Armor">
-		<!-- <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 700 fixed damage. (Ignores protective barriers/ CP.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 700 fixed damage. (Ignores protective barriers/ CP.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_amber_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -625,11 +628,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50194" level="2" /> <!-- Gem: Amber -->
+			<skill id="50194" level="2" /> <!-- Amber - Special Property -->
 		</skills>
 	</item>
 	<item id="92038" name="Amber Lv. 3" additionalName="Sealed" type="Armor">
-		<!-- <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 1000 fixed damage. (Ignores protective barriers/ CP.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 1000 fixed damage. (Ignores protective barriers/ CP.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_amber_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -640,11 +643,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50194" level="3" /> <!-- Gem: Amber -->
+			<skill id="50194" level="3" /> <!-- Amber - Special Property -->
 		</skills>
 	</item>
 	<item id="92039" name="Amber Lv. 4" additionalName="Sealed" type="Armor">
-		<!-- <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 1500 fixed damage. (Ignores protective barriers/ CP.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 1500 fixed damage. (Ignores protective barriers/ CP.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_amber_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -656,11 +659,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50194" level="4" /> <!-- Gem: Amber -->
+			<skill id="50194" level="4" /> <!-- Amber - Special Property -->
 		</skills>
 	</item>
 	<item id="92040" name="Amber Lv. 6" additionalName="Sealed" type="Armor">
-		<!-- <font color="FFBB00"><Properties></font>. With a certain chance, blocks the enemy's <font color=bbaa88>additional attack</font> damage for 10 sec. when hit. <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 2500 fixed damage. (Ignores protective barriers/ CP.). P./ M. Def. -4%. With a 20% chance, removes debuffs and anomalies. <PvE effect>. P./ M. Def. -10%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color="FFBB00"><Properties></font>. With a certain chance, blocks the enemy's <font color=bbaa88>additional attack</font> damage for 10 sec. when hit. <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 2500 fixed damage. (Ignores protective barriers/ CP.). P./ M. Def. -4%. With a 20% chance, removes debuffs and anomalies. <PvE effect>. P./ M. Def. -10%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_amber_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -672,11 +675,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50194" level="6" /> <!-- Gem: Amber -->
+			<skill id="50194" level="6" /> <!-- Amber - Special Property -->
+			<skill id="50622" level="6" /> <!-- Amber -->
 		</skills>
 	</item>
 	<item id="92041" name="Amber Lv. 7" additionalName="Sealed" type="Armor">
-		<!-- <font color="FFBB00"><Properties></font>. With a certain chance, blocks the enemy's <font color=bbaa88>additional attack</font> damage for 10 sec. when hit. <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 3000 fixed damage. (Ignores protective barriers/ CP.). P./ M. Def. -8%. With a 30% chance, removes debuffs and anomalies. <PvE effect>. P./ M. Def. -15%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color="FFBB00"><Properties></font>. With a certain chance, blocks the enemy's <font color=bbaa88>additional attack</font> damage for 10 sec. when hit. <Active skill>. Interrupts the target's skill casting. <PvP effect>. Deals 3000 fixed damage. (Ignores protective barriers/ CP.). P./ M. Def. -8%. With a 30% chance, removes debuffs and anomalies. <PvE effect>. P./ M. Def. -15%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_amber_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -688,7 +692,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50194" level="7" /> <!-- Gem: Amber -->
+			<skill id="50194" level="7" /> <!-- Amber - Special Property -->
+			<skill id="50622" level="7" /> <!-- Amber -->
 		</skills>
 	</item>
 	<item id="92042" name="Amber Lv. 8" additionalName="Sealed" type="Armor">
@@ -704,7 +709,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50194" level="8" /> <!-- Gem: Amber -->
+			<skill id="50194" level="8" /> <!-- Amber - Special Property -->
+			<skill id="50622" level="8" /> <!-- Amber -->
 		</skills>
 	</item>
 	<item id="92043" name="Amber Lv. 8" additionalName="Sealed" type="Armor">
@@ -720,7 +726,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50194" level="8" /> <!-- Gem: Amber -->
+			<skill id="50194" level="8" /> <!-- Amber - Special Property -->
 		</skills>
 	</item>
 	<item id="92044" name="Amber Lv. 9" additionalName="Sealed" type="Armor">
@@ -736,7 +742,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50194" level="9" /> <!-- Gem: Amber -->
+			<skill id="50194" level="9" /> <!-- Amber - Special Property -->
 		</skills>
 	</item>
 	<item id="92045" name="Amber Lv. 10" additionalName="Sealed" type="Armor">
@@ -752,11 +758,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50194" level="10" /> <!-- Gem: Amber -->
+			<skill id="50194" level="10" /> <!-- Amber - Special Property -->
 		</skills>
 	</item>
 	<item id="92046" name="Opal Lv. 1" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +3%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +3%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_opal_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -767,11 +773,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50195" level="1" /> <!-- Gem: Opal -->
+			<skill id="50195" level="1" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="92047" name="Opal Lv. 2" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +5%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +5%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_opal_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -782,11 +788,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50195" level="2" /> <!-- Gem: Opal -->
+			<skill id="50195" level="2" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="92048" name="Opal Lv. 3" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +8%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +8%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_opal_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -797,11 +803,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50195" level="3" /> <!-- Gem: Opal -->
+			<skill id="50195" level="3" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="92049" name="Opal Lv. 4" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +12%. <Active skill>. Grants immunity to debuffs and anomalies for 5 sec. Cooldown: 5 min. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +12%. <Active skill>. Grants immunity to debuffs and anomalies for 5 sec. Cooldown: 5 min. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_opal_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -813,12 +819,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50195" level="4" /> <!-- Gem: Opal -->
-			<skill id="50196" level="4" /> <!-- Gem: Opal - Special Ability -->
+			<skill id="50196" level="4" /> <!-- Opal - Special Property -->
+			<skill id="50195" level="4" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="92050" name="Opal Lv. 6" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +20%. HP/ MP +200. <Active skill>. Grants immunity to debuffs and anomalies for 15 sec. Cooldown: 5 min. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +20%. HP/ MP +200. <Active skill>. Grants immunity to debuffs and anomalies for 15 sec. Cooldown: 5 min. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_opal_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -830,12 +836,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50195" level="6" /> <!-- Gem: Opal -->
-			<skill id="50196" level="6" /> <!-- Gem: Opal - Special Ability -->
+			<skill id="50196" level="6" /> <!-- Opal - Special Property -->
+			<skill id="50195" level="6" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="92051" name="Opal Lv. 7" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +25%. HP/ MP +300. <Active skill>. Grants immunity to debuffs and anomalies for 20 sec. Cooldown: 5 min. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Paralysis/ Shock/ Pull/ Fear/ Silence Resistance +25%. HP/ MP +300. <Active skill>. Grants immunity to debuffs and anomalies for 20 sec. Cooldown: 5 min. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_opal_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -847,8 +853,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50195" level="7" /> <!-- Gem: Opal -->
-			<skill id="50196" level="7" /> <!-- Gem: Opal - Special Ability -->
+			<skill id="50196" level="7" /> <!-- Opal - Special Property -->
+			<skill id="50195" level="7" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="92052" name="Opal Lv. 8" additionalName="Sealed" type="Armor">
@@ -864,8 +870,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50195" level="8" /> <!-- Gem: Opal -->
-			<skill id="50196" level="8" /> <!-- Gem: Opal - Special Ability -->
+			<skill id="50196" level="8" /> <!-- Opal - Special Property -->
+			<skill id="50195" level="8" /> <!-- Opal -->
 		</skills>
 	</item>
 	<item id="92053" name="Opal Lv. 8" additionalName="Sealed" type="Armor">
@@ -880,6 +886,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50196" level="8" /> <!-- Opal - Special Property -->
+			<skill id="50195" level="8" /> <!-- Opal -->
+		</skills>
 	</item>
 	<item id="92054" name="Opal Lv. 9" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -893,6 +903,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50196" level="9" /> <!-- Opal - Special Property -->
+			<skill id="50195" level="9" /> <!-- Opal -->
+		</skills>
 	</item>
 	<item id="92055" name="Opal Lv. 10" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -906,9 +920,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50196" level="10" /> <!-- Opal - Special Property -->
+			<skill id="50195" level="10" /> <!-- Opal -->
+		</skills>
 	</item>
 	<item id="92056" name="Coral Lv. 1" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +1%. Casting Spd. +1%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +1%. Casting Spd. +1%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_coral_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -919,11 +937,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50197" level="1" /> <!-- Gem: Coral -->
+			<skill id="50197" level="1" /> <!-- Coral -->
 		</skills>
 	</item>
 	<item id="92057" name="Coral Lv. 2" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +2%. Casting Spd. +2%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +2%. Casting Spd. +2%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_coral_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -934,11 +952,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50197" level="2" /> <!-- Gem: Coral -->
+			<skill id="50197" level="2" /> <!-- Coral -->
 		</skills>
 	</item>
 	<item id="92058" name="Coral Lv. 3" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +4%. Casting Spd. +4%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +4%. Casting Spd. +4%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_coral_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -949,11 +967,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50197" level="3" /> <!-- Gem: Coral -->
+			<skill id="50197" level="3" /> <!-- Coral -->
 		</skills>
 	</item>
 	<item id="92059" name="Coral Lv. 4" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +7%. Casting Spd. +7%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +7%. Casting Spd. +7%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_coral_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -965,11 +983,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50197" level="4" /> <!-- Gem: Coral -->
+			<skill id="50197" level="4" /> <!-- Coral -->
 		</skills>
 	</item>
 	<item id="92060" name="Coral Lv. 6" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +14%. Casting Spd. +14%. Speed +1. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +14%. Casting Spd. +14%. Speed +1. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_coral_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -981,11 +999,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50197" level="6" /> <!-- Gem: Coral -->
+			<skill id="50197" level="6" /> <!-- Coral -->
 		</skills>
 	</item>
 	<item id="92061" name="Coral Lv. 7" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +18%. Casting Spd. +18%. Speed +2. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Atk. Spd. +18%. Casting Spd. +18%. Speed +2. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_coral_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -997,7 +1015,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50197" level="7" /> <!-- Gem: Coral -->
+			<skill id="50197" level="7" /> <!-- Coral -->
 		</skills>
 	</item>
 	<item id="92062" name="Coral Lv. 8" additionalName="Sealed" type="Armor">
@@ -1013,7 +1031,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50197" level="8" /> <!-- Gem: Coral -->
+			<skill id="50197" level="8" /> <!-- Coral -->
 		</skills>
 	</item>
 	<item id="92063" name="Coral Lv. 8" additionalName="Sealed" type="Armor">
@@ -1028,6 +1046,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50197" level="8" /> <!-- Coral -->
+		</skills>
 	</item>
 	<item id="92064" name="Coral Lv. 9" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -1041,6 +1062,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50197" level="9" /> <!-- Coral -->
+		</skills>
 	</item>
 	<item id="92065" name="Coral Lv. 10" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -1054,9 +1078,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50197" level="10" /> <!-- Coral -->
+		</skills>
 	</item>
 	<item id="92066" name="Onyx Lv. 1" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +2%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +2%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_onyx_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1067,11 +1094,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50204" level="1" /> <!-- Gem: Onyx -->
+			<skill id="50204" level="1" /> <!-- Onyx -->
 		</skills>
 	</item>
 	<item id="92067" name="Onyx Lv. 2" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +3%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +3%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_onyx_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1082,11 +1109,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50204" level="2" /> <!-- Gem: Onyx -->
+			<skill id="50204" level="2" /> <!-- Onyx -->
 		</skills>
 	</item>
 	<item id="92068" name="Onyx Lv. 3" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +5%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +5%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_onyx_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1097,11 +1124,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50204" level="3" /> <!-- Gem: Onyx -->
+			<skill id="50204" level="3" /> <!-- Onyx -->
 		</skills>
 	</item>
 	<item id="92069" name="Onyx Lv. 4" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +8%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +8%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_onyx_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1113,11 +1140,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50204" level="4" /> <!-- Gem: Onyx -->
+			<skill id="50204" level="4" /> <!-- Onyx -->
 		</skills>
 	</item>
 	<item id="92070" name="Onyx Lv. 6" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +16%. P. Atk. +50. M. Atk. +50. <font color=bbaa88><Compound></font>. Materials: identical Jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +16%. P. Atk. +50. M. Atk. +50. <font color=bbaa88><Compounding></font>. Materials: identical Jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_onyx_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1129,11 +1156,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50204" level="6" /> <!-- Gem: Onyx -->
+			<skill id="50204" level="6" /> <!-- Onyx -->
 		</skills>
 	</item>
 	<item id="92071" name="Onyx Lv. 7" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +20%. P. Atk. +150. M. Atk. +150. <font color=bbaa88><Compound></font>. Materials: identical Jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Soulshot/ Spiritshot damage +20%. P. Atk. +150. M. Atk. +150. <font color=bbaa88><Compounding></font>. Materials: identical Jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_onyx_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1145,7 +1172,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50204" level="7" /> <!-- Gem: Onyx -->
+			<skill id="50204" level="7" /> <!-- Onyx -->
 		</skills>
 	</item>
 	<item id="92072" name="Onyx Lv. 8" additionalName="Sealed" type="Armor">
@@ -1161,7 +1188,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50204" level="8" /> <!-- Gem: Onyx -->
+			<skill id="50204" level="8" /> <!-- Onyx -->
 		</skills>
 	</item>
 	<item id="92073" name="Onyx Lv. 8" additionalName="Sealed" type="Armor">
@@ -1176,6 +1203,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50204" level="8" /> <!-- Onyx -->
+		</skills>
 	</item>
 	<item id="92074" name="Onyx Lv. 9" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -1189,6 +1219,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50204" level="9" /> <!-- Onyx -->
+		</skills>
 	</item>
 	<item id="92075" name="Onyx Lv. 10" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -1202,9 +1235,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50204" level="10" /> <!-- Onyx -->
+		</skills>
 	</item>
 	<item id="92076" name="Spinel Lv. 1" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +1. P. Def. +20. M. Def. +10. With a certain chance, recovers 12 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +1. P. Def. +20. M. Def. +10. With a certain chance, recovers 12 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1215,11 +1251,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50206" level="1" /> <!-- Gem: Spinel -->
+			<skill id="50206" level="1" /> <!-- Spinel -->
 		</skills>
 	</item>
 	<item id="92077" name="Spinel Lv. 2" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON/ MEN +1. P. Def. +30. M. Def. +20. With a certain chance, recovers 16 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON/ MEN +1. P. Def. +30. M. Def. +20. With a certain chance, recovers 16 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1230,11 +1266,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50206" level="2" /> <!-- Gem: Spinel -->
+			<skill id="50206" level="2" /> <!-- Spinel -->
 		</skills>
 	</item>
 	<item id="92078" name="Spinel Lv. 3" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. DEX +1. CON/ MEN +1. P. Def. +60. M. Def. +30. With a certain chance, recovers 20 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. DEX +1. CON/ MEN +1. P. Def. +60. M. Def. +30. With a certain chance, recovers 20 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1245,11 +1281,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50206" level="3" /> <!-- Gem: Spinel -->
+			<skill id="50206" level="3" /> <!-- Spinel -->
 		</skills>
 	</item>
 	<item id="92079" name="Spinel Lv. 4" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. DEX/ WIT +1. CON/ MEN +1. Received P. Critical Damage -4%. Received M. Skill Critical Damage -4%. P. Def. +100. M. Def. +60. With a certain chance, recovers 30 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. DEX/ WIT +1. CON/ MEN +1. Received P. Critical Damage -4%. Received M. Skill Critical Damage -4%. P. Def. +100. M. Def. +60. With a certain chance, recovers 30 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1261,11 +1297,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50206" level="4" /> <!-- Gem: Spinel -->
+			<skill id="50206" level="4" /> <!-- Spinel -->
 		</skills>
 	</item>
 	<item id="92080" name="Spinel Lv. 6" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. STR/ INT +1. DEX/ WIT +1. CON/ MEN +2. Received P. Critical Damage -10%. Received M. Skill Critical Damage -10%. P. Def. +200. M. Def. +150. With a certain chance, recovers 50 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. STR/ INT +1. DEX/ WIT +1. CON/ MEN +2. Received P. Critical Damage -10%. Received M. Skill Critical Damage -10%. P. Def. +200. M. Def. +150. With a certain chance, recovers 50 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1277,11 +1313,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50206" level="6" /> <!-- Gem: Spinel -->
+			<skill id="50206" level="6" /> <!-- Spinel -->
 		</skills>
 	</item>
 	<item id="92081" name="Spinel Lv. 7" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. STR/ INT +2. DEX/ WIT +2. CON/ MEN +2. All received Critical Damage -15%. P. Def. +250. M. Def. +220. With a certain chance, recovers 60 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. STR/ INT +2. DEX/ WIT +2. CON/ MEN +2. All received Critical Damage -15%. P. Def. +250. M. Def. +220. With a certain chance, recovers 60 MP when using skills (trigger cooldown: 3 sec.). <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_garnet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1293,7 +1329,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50206" level="7" /> <!-- Gem: Spinel -->
+			<skill id="50206" level="7" /> <!-- Spinel -->
 		</skills>
 	</item>
 	<item id="92082" name="Spinel Lv. 8" additionalName="Sealed" type="Armor">
@@ -1309,7 +1345,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50206" level="8" /> <!-- Gem: Spinel -->
+			<skill id="50206" level="8" /> <!-- Spinel -->
 		</skills>
 	</item>
 	<item id="92083" name="Spinel Lv. 8" additionalName="Sealed" type="Armor">
@@ -1324,6 +1360,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50206" level="8" /> <!-- Spinel -->
+		</skills>
 	</item>
 	<item id="92084" name="Spinel Lv. 9" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -1337,6 +1376,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50206" level="9" /> <!-- Spinel -->
+		</skills>
 	</item>
 	<item id="92085" name="Spinel Lv. 10" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -1350,9 +1392,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50206" level="10" /> <!-- Spinel -->
+		</skills>
 	</item>
 	<item id="92086" name="Zircon Lv. 1" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +2%. M. Skill Critical Damage +2%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +2%. M. Skill Critical Damage +2%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_bloodstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1363,11 +1408,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50207" level="1" /> <!-- Gem: Zircon -->
+			<skill id="50207" level="1" /> <!-- Zircon -->
 		</skills>
 	</item>
 	<item id="92087" name="Zircon Lv. 2" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +4%. M. Skill Critical Damage +4%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +4%. M. Skill Critical Damage +4%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_bloodstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1378,11 +1423,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50207" level="2" /> <!-- Gem: Zircon -->
+			<skill id="50207" level="2" /> <!-- Zircon -->
 		</skills>
 	</item>
 	<item id="92088" name="Zircon Lv. 3" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +6%. M. Skill Critical Damage +6%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +6%. M. Skill Critical Damage +6%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_bloodstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1393,11 +1438,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50207" level="3" /> <!-- Gem: Zircon -->
+			<skill id="50207" level="3" /> <!-- Zircon -->
 		</skills>
 	</item>
 	<item id="92089" name="Zircon Lv. 4" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +8%. M. Skill Critical Damage +8%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +8%. M. Skill Critical Damage +8%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_bloodstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1409,11 +1454,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50207" level="4" /> <!-- Gem: Zircon -->
+			<skill id="50207" level="4" /> <!-- Zircon -->
 		</skills>
 	</item>
 	<item id="92090" name="Zircon Lv. 6" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +15%. M. Skill Critical Damage +15%. P. Skill Critical Damage +2%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +15%. M. Skill Critical Damage +15%. P. Skill Critical Damage +2%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_bloodstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1425,11 +1470,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50207" level="6" /> <!-- Gem: Zircon -->
+			<skill id="50207" level="6" /> <!-- Zircon -->
 		</skills>
 	</item>
 	<item id="92091" name="Zircon Lv. 7" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +15%. M. Skill Critical Damage +19%. P. Skill Critical Damage +5%. Skill Power +2%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. P. Critical Damage +15%. M. Skill Critical Damage +19%. P. Skill Critical Damage +5%. Skill Power +2%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_bloodstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1441,7 +1486,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50207" level="7" /> <!-- Gem: Zircon -->
+			<skill id="50207" level="7" /> <!-- Zircon -->
 		</skills>
 	</item>
 	<item id="92092" name="Zircon Lv. 8" additionalName="Sealed" type="Armor">
@@ -1457,7 +1502,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50207" level="8" /> <!-- Gem: Zircon -->
+			<skill id="50207" level="8" /> <!-- Zircon -->
 		</skills>
 	</item>
 	<item id="92093" name="Zircon Lv. 8" additionalName="Sealed" type="Armor">
@@ -1472,6 +1517,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50207" level="8" /> <!-- Zircon -->
+		</skills>
 	</item>
 	<item id="92094" name="Zircon Lv. 9" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -1485,6 +1533,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50207" level="9" /> <!-- Zircon -->
+		</skills>
 	</item>
 	<item id="92095" name="Zircon Lv. 10" additionalName="Sealed" type="Armor">
 		<!-- The item is not available. -->
@@ -1498,9 +1549,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50207" level="10" /> <!-- Zircon -->
+		</skills>
 	</item>
 	<item id="92096" name="Moonstone Lv. 1" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +1%. With Sayha's Grace, acquired XP/ SP +2%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +1%. With Sayha's Grace, acquired XP/ SP +2%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_moonstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1511,11 +1565,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50208" level="1" /> <!-- Gem: Moonstone -->
+			<skill id="50208" level="1" /> <!-- Moonstone -->
 		</skills>
 	</item>
 	<item id="92097" name="Moonstone Lv. 2" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +1%. With Sayha's Grace, acquired XP/ SP +3%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +1%. With Sayha's Grace, acquired XP/ SP +3%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_moonstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1526,11 +1580,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50208" level="2" /> <!-- Gem: Moonstone -->
+			<skill id="50208" level="2" /> <!-- Moonstone -->
 		</skills>
 	</item>
 	<item id="92098" name="Moonstone Lv. 3" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +2%. With Sayha's Grace, acquired XP/ SP +4%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +2%. With Sayha's Grace, acquired XP/ SP +4%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_moonstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1541,11 +1595,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50208" level="3" /> <!-- Gem: Moonstone -->
+			<skill id="50208" level="3" /> <!-- Moonstone -->
 		</skills>
 	</item>
 	<item id="92099" name="Moonstone Lv. 4" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +2%. With Sayha's Grace, acquired XP/ SP +6%. Sayha's Grace Consumption -10%. <font color=bbaa88><Compound></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +2%. With Sayha's Grace, acquired XP/ SP +6%. Sayha's Grace Consumption -10%. <font color=bbaa88><Compounding></font>. Materials: identical jewels and Jewelry Boxes. In case of failure, the current level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
 		<set name="icon" val="icon.etc_bm_jewel_moonstone_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch_jewel" />
@@ -1557,7 +1611,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50208" level="4" /> <!-- Gem: Moonstone -->
+			<skill id="50208" level="4" /> <!-- Moonstone -->
 		</skills>
 	</item>
 </list>

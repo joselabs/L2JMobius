@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.model.zone.type;
 
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.model.zone.ZoneType;
@@ -56,7 +55,7 @@ public class TaxZone extends ZoneType
 		creature.setInsideZone(ZoneId.TAX, true);
 		if (creature.isNpc())
 		{
-			((Npc) creature).setTaxZone(this);
+			creature.asNpc().setTaxZone(this);
 		}
 	}
 	
@@ -66,7 +65,7 @@ public class TaxZone extends ZoneType
 		creature.setInsideZone(ZoneId.TAX, false);
 		if (creature.isNpc())
 		{
-			((Npc) creature).setTaxZone(null);
+			creature.asNpc().setTaxZone(null);
 		}
 	}
 	

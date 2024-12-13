@@ -321,6 +321,8 @@ public enum Stat
 	// Cubic Count
 	MAX_CUBIC("cubicCount"),
 	
+	BEAST_POINTS_ADD("beastPointsAdd"),
+	
 	// The maximum allowed range to be damaged/debuffed from.
 	SPHERIC_BARRIER_RANGE("sphericBarrier"),
 	

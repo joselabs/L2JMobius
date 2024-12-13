@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.enchant.single;
 
@@ -22,6 +26,7 @@ import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.EnchantItemData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.EnchantItemRequest;
+import org.l2jmobius.gameserver.model.actor.stat.PlayerStat;
 import org.l2jmobius.gameserver.model.item.enchant.EnchantScroll;
 import org.l2jmobius.gameserver.model.item.type.CrystalType;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -45,12 +50,12 @@ public class ChangedEnchantTargetItemProbabilityList extends ServerPacket
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		if (_player.getRequest(EnchantItemRequest.class) == null)
+		final EnchantItemRequest request = _player.getRequest(EnchantItemRequest.class);
+		if (request == null)
 		{
 			return;
 		}
 		
-		final EnchantItemRequest request = _player.getRequest(EnchantItemRequest.class);
 		if ((!_isMulti && (request.getEnchantingItem() == null)) || request.isProcessing() || (request.getEnchantingScroll() == null))
 		{
 			return;
@@ -130,7 +135,8 @@ public class ChangedEnchantTargetItemProbabilityList extends ServerPacket
 	private int getPassiveRate(EnchantItemRequest request, int iteration)
 	{
 		double passiveRate = 0;
-		if (_player.getStat().getValue(ENCHANT_RATE) != 0)
+		final PlayerStat stat = _player.getStat();
+		if (stat.getValue(ENCHANT_RATE) != 0)
 		{
 			if (!_isMulti)
 			{
@@ -141,7 +147,7 @@ public class ChangedEnchantTargetItemProbabilityList extends ServerPacket
 				}
 				else
 				{
-					passiveRate = _player.getStat().getValue(ENCHANT_RATE);
+					passiveRate = stat.getValue(ENCHANT_RATE);
 					passiveRate = passiveRate * 100;
 				}
 			}
@@ -154,7 +160,7 @@ public class ChangedEnchantTargetItemProbabilityList extends ServerPacket
 				}
 				else
 				{
-					passiveRate = _player.getStat().getValue(ENCHANT_RATE);
+					passiveRate = stat.getValue(ENCHANT_RATE);
 					passiveRate = passiveRate * 100;
 				}
 			}

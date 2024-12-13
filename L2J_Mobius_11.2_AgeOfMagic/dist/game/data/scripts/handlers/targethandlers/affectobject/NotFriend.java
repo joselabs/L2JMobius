@@ -44,14 +44,24 @@ public class NotFriend implements IAffectObjectHandler
 			return false;
 		}
 		
-		final Player player = creature.getActingPlayer();
-		final Player targetPlayer = target.getActingPlayer();
+		final Player player = creature.asPlayer();
+		final Player targetPlayer = target.asPlayer();
 		if ((player != null) && (targetPlayer != null))
 		{
 			// Same player.
 			if (player == targetPlayer)
 			{
 				return false;
+			}
+			
+			// Auto play.
+			if (player.isAutoPlaying())
+			{
+				final int targetMode = player.getAutoPlaySettings().getNextTargetMode();
+				if ((targetMode == 1 /* Monster */) || (targetMode == 3 /* NPC */))
+				{
+					return false;
+				}
 			}
 			
 			// Peace Zone.

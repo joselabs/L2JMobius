@@ -331,14 +331,16 @@ public class CreatureAI extends AbstractAI
 	
 	protected void changeIntentionToCast(Skill skill, WorldObject target)
 	{
-		// Set the AI cast target
-		setCastTarget((Creature) target);
-		// Set the AI skill used by INTENTION_CAST
+		// Set the AI cast target.
+		setCastTarget(target == null ? null : target.asCreature());
+		
+		// Set the AI skill used by INTENTION_CAST.
 		_skill = skill;
-		// Change the Intention of this AbstractAI to AI_INTENTION_CAST
+		
+		// Change the Intention of this AbstractAI to AI_INTENTION_CAST.
 		changeIntention(AI_INTENTION_CAST, skill, target);
 		
-		// Launch the Think Event
+		// Launch the Think Event.
 		notifyEvent(CtrlEvent.EVT_THINK);
 	}
 	
@@ -699,7 +701,7 @@ public class CreatureAI extends AbstractAI
 		
 		if (_actor.isNpc())
 		{
-			final Npc npc = (Npc) _actor;
+			final Npc npc = _actor.asNpc();
 			WalkingManager.getInstance().onArrived(npc); // Walking Manager support
 			
 			// Notify to scripts
@@ -797,7 +799,7 @@ public class CreatureAI extends AbstractAI
 			setAttackTarget(null);
 			
 			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
-			if ((object == null) || !object.isCreature() || !((Creature) object).isAlikeDead()) // Fixes stop move from cast target decay.
+			if ((object == null) || !object.isCreature() || !object.asCreature().isAlikeDead()) // Fixes stop move from cast target decay.
 			{
 				setIntention(AI_INTENTION_ACTIVE);
 			}
@@ -810,7 +812,7 @@ public class CreatureAI extends AbstractAI
 			setCastTarget(null);
 			
 			// Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE
-			if ((object == null) || !object.isCreature() || !((Creature) object).isAlikeDead()) // Fixes stop move from cast target decay.
+			if ((object == null) || !object.isCreature() || !object.asCreature().isAlikeDead()) // Fixes stop move from cast target decay.
 			{
 				setIntention(AI_INTENTION_ACTIVE);
 			}
@@ -1034,7 +1036,7 @@ public class CreatureAI extends AbstractAI
 		int offsetWithCollision = offsetValue + _actor.getTemplate().getCollisionRadius();
 		if (target.isCreature())
 		{
-			offsetWithCollision += ((Creature) target).getTemplate().getCollisionRadius();
+			offsetWithCollision += target.asCreature().getTemplate().getCollisionRadius();
 		}
 		
 		if (!_actor.isInsideRadius2D(target, offsetWithCollision))
@@ -1072,7 +1074,7 @@ public class CreatureAI extends AbstractAI
 			int offset = offsetValue;
 			if (target.isCreature() && !target.isDoor())
 			{
-				if (((Creature) target).isMoving())
+				if (target.asCreature().isMoving())
 				{
 					offset -= 100;
 				}
@@ -1080,7 +1082,7 @@ public class CreatureAI extends AbstractAI
 				{
 					offset = 5;
 				}
-				startFollow((Creature) target, offset);
+				startFollow(target.asCreature(), offset);
 			}
 			else
 			{
@@ -1147,10 +1149,44 @@ public class CreatureAI extends AbstractAI
 	 */
 	protected boolean checkTargetLost(WorldObject target)
 	{
-		if ((target == null) || ((_actor != null) && (_skill != null) && _skill.isBad() && (_skill.getAffectRange() > 0) && (_actor.isPlayer() && _actor.isMoving() ? !GeoEngine.getInstance().canMoveToTarget(_actor, target) : !GeoEngine.getInstance().canSeeTarget(_actor, target))))
+		if (target == null)
 		{
 			setIntention(AI_INTENTION_ACTIVE);
 			return true;
+		}
+		
+		if (_actor != null)
+		{
+			if ((_skill != null) && _skill.isBad() && (_skill.getAffectRange() > 0))
+			{
+				if (_actor.isPlayer() && _actor.isMoving())
+				{
+					if (!GeoEngine.getInstance().canMoveToTarget(_actor, target))
+					{
+						setIntention(AI_INTENTION_ACTIVE);
+						return true;
+					}
+				}
+				else
+				{
+					if (!GeoEngine.getInstance().canSeeTarget(_actor, target))
+					{
+						setIntention(AI_INTENTION_ACTIVE);
+						return true;
+					}
+				}
+			}
+			
+			if (_actor.isSummon())
+			{
+				if (GeoEngine.getInstance().canMoveToTarget(_actor, target))
+				{
+					return false;
+				}
+				
+				setIntention(AI_INTENTION_ACTIVE);
+				return true;
+			}
 		}
 		
 		return false;
@@ -1440,7 +1476,7 @@ public class CreatureAI extends AbstractAI
 				boolean cancast = true;
 				for (Creature target : World.getInstance().getVisibleObjectsInRange(_actor, Creature.class, sk.getAffectRange()))
 				{
-					if (!GeoEngine.getInstance().canSeeTarget(_actor, target) || (target.isAttackable() && !((Npc) _actor).isChaos()))
+					if (!GeoEngine.getInstance().canSeeTarget(_actor, target) || (target.isAttackable() && !_actor.asNpc().isChaos()))
 					{
 						continue;
 					}
@@ -1459,7 +1495,7 @@ public class CreatureAI extends AbstractAI
 				boolean cancast = true;
 				for (Creature target : World.getInstance().getVisibleObjectsInRange(getAttackTarget(), Creature.class, sk.getAffectRange()))
 				{
-					if (!GeoEngine.getInstance().canSeeTarget(_actor, target) || (target == null) || (target.isAttackable() && !((Npc) _actor).isChaos()))
+					if (!GeoEngine.getInstance().canSeeTarget(_actor, target) || (target == null) || (target.isAttackable() && !_actor.asNpc().isChaos()))
 					{
 						continue;
 					}
@@ -1479,7 +1515,7 @@ public class CreatureAI extends AbstractAI
 			boolean cancast = false;
 			for (Creature target : World.getInstance().getVisibleObjectsInRange(_actor, Creature.class, sk.getAffectRange()))
 			{
-				if (!GeoEngine.getInstance().canSeeTarget(_actor, target) || (target.isAttackable() && !((Npc) _actor).isChaos()))
+				if (!GeoEngine.getInstance().canSeeTarget(_actor, target) || (target.isAttackable() && !_actor.asNpc().isChaos()))
 				{
 					continue;
 				}
@@ -1498,7 +1534,7 @@ public class CreatureAI extends AbstractAI
 			boolean cancast = true;
 			for (Creature target : World.getInstance().getVisibleObjectsInRange(getAttackTarget(), Creature.class, sk.getAffectRange()))
 			{
-				if (!GeoEngine.getInstance().canSeeTarget(_actor, target) || (target.isAttackable() && !((Npc) _actor).isChaos()))
+				if (!GeoEngine.getInstance().canSeeTarget(_actor, target) || (target.isAttackable() && !_actor.asNpc().isChaos()))
 				{
 					continue;
 				}
@@ -1527,7 +1563,7 @@ public class CreatureAI extends AbstractAI
 				{
 					continue;
 				}
-				if (target.isInMyClan((Npc) _actor))
+				if (target.isInMyClan(_actor.asNpc()))
 				{
 					count++;
 					if (target.isAffectedBySkill(sk.getId()))

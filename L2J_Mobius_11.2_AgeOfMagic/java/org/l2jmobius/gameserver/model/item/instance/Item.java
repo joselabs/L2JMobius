@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.item.instance;
 
@@ -257,6 +261,9 @@ public class Item extends WorldObject
 		_type2 = rs.getInt("custom_type2");
 		_mana = rs.getInt("mana_left");
 		_time = rs.getLong("time");
+		scheduleLifeTimeTask();
+		scheduleVisualLifeTime();
+		
 		_existsInDb = true;
 		_storedInDb = true;
 		
@@ -294,7 +301,7 @@ public class Item extends WorldObject
 		// Prevent dropping and picking up items while using MaintainEnchantment multisells.
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final PreparedMultisellListHolder multisell = player.getMultiSell();
 			if ((multisell != null) && multisell.isMaintainEnchantment())
 			{
@@ -322,11 +329,12 @@ public class Item extends WorldObject
 		// outside of synchronized to avoid deadlocks
 		// Remove the Item from the world
 		World.getInstance().removeVisibleObject(this, oldregion);
+		setWorldRegion(null);
 		
 		// Notify to scripts
 		if (creature.isPlayer() && EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_ITEM_PICKUP, getTemplate()))
 		{
-			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerItemPickup(creature.getActingPlayer(), this), getTemplate());
+			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerItemPickup(creature.asPlayer(), this), getTemplate());
 		}
 	}
 	
@@ -1044,7 +1052,7 @@ public class Item extends WorldObject
 		clearEnchantStats();
 		
 		// Agathion skills.
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (isEquipped() && (_itemTemplate.getBodyPart() == ItemTemplate.SLOT_AGATHION))
 		{
 			final AgathionSkillHolder agathionSkills = AgathionData.getInstance().getSkills(getId());
@@ -1143,7 +1151,7 @@ public class Item extends WorldObject
 		{
 			if (isEquipped())
 			{
-				_augmentation.removeBonus(getActingPlayer());
+				_augmentation.removeBonus(asPlayer());
 			}
 			removeAugmentation();
 		}
@@ -1157,7 +1165,7 @@ public class Item extends WorldObject
 		// Notify to scripts.
 		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_AUGMENT, getTemplate()))
 		{
-			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerAugment(getActingPlayer(), this, augmentation, true), getTemplate());
+			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerAugment(asPlayer(), this, augmentation, true), getTemplate());
 		}
 		
 		return true;
@@ -1191,7 +1199,7 @@ public class Item extends WorldObject
 		// Notify to scripts.
 		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_AUGMENT, getTemplate()))
 		{
-			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerAugment(getActingPlayer(), this, augment, false), getTemplate());
+			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerAugment(asPlayer(), this, augment, false), getTemplate());
 		}
 	}
 	
@@ -1403,7 +1411,7 @@ public class Item extends WorldObject
 		// Notify to Scripts
 		if (EventDispatcher.getInstance().hasListener(EventType.ON_ITEM_ATTRIBUTE_ADD))
 		{
-			EventDispatcher.getInstance().notifyEventAsync(new OnItemAttributeAdd(getActingPlayer(), this));
+			EventDispatcher.getInstance().notifyEventAsync(new OnItemAttributeAdd(asPlayer(), this));
 		}
 	}
 	
@@ -1531,7 +1539,7 @@ public class Item extends WorldObject
 			_consumingMana = false;
 		}
 		
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return;
@@ -1740,7 +1748,7 @@ public class Item extends WorldObject
 			// Notify to scripts
 			if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_ITEM_DROP, getTemplate()))
 			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnPlayerItemDrop(dropper.getActingPlayer(), this, new Location(x, y, z)), getTemplate());
+				EventDispatcher.getInstance().notifyEventAsync(new OnPlayerItemDrop(dropper.asPlayer(), this, new Location(x, y, z)), getTemplate());
 			}
 		}
 	}
@@ -1930,7 +1938,7 @@ public class Item extends WorldObject
 			return true;
 		}
 		
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player != null)
 		{
 			for (Condition condition : _itemTemplate.getConditions())
@@ -2008,7 +2016,7 @@ public class Item extends WorldObject
 	
 	public void endOfLife()
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return;
@@ -2130,7 +2138,7 @@ public class Item extends WorldObject
 	
 	public int getOlyEnchantLevel()
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		int enchant = _enchantLevel;
 		
 		if (player == null)
@@ -2171,7 +2179,7 @@ public class Item extends WorldObject
 			return;
 		}
 		
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return;
@@ -2203,7 +2211,7 @@ public class Item extends WorldObject
 			return;
 		}
 		
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player != null)
 		{
 			_itemTemplate.forEachSkill(ItemSkillType.NORMAL, holder ->
@@ -2224,7 +2232,7 @@ public class Item extends WorldObject
 	}
 	
 	@Override
-	public Player getActingPlayer()
+	public Player asPlayer()
 	{
 		if ((_owner == null) && (_ownerId != 0))
 		{
@@ -2438,7 +2446,7 @@ public class Item extends WorldObject
 			final Skill skill = option.getSkill();
 			if (skill != null)
 			{
-				final Player player = getActingPlayer();
+				final Player player = asPlayer();
 				if (player != null)
 				{
 					player.removeSkill(skill.getId());
@@ -2461,7 +2469,7 @@ public class Item extends WorldObject
 		final Skill skill = option.getSkill();
 		if (skill != null)
 		{
-			final Player player = getActingPlayer();
+			final Player player = asPlayer();
 			if ((player != null) && (player.getSkillLevel(skill.getId()) != skill.getLevel()))
 			{
 				player.addSkill(skill, false);
@@ -2479,7 +2487,7 @@ public class Item extends WorldObject
 		final Skill skill = option.getSkill();
 		if (skill != null)
 		{
-			final Player player = getActingPlayer();
+			final Player player = asPlayer();
 			if (player != null)
 			{
 				player.removeSkill(skill, false, true);
@@ -2576,7 +2584,7 @@ public class Item extends WorldObject
 	 */
 	public void clearEnchantStats()
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			_enchantOptions.clear();
@@ -2595,7 +2603,7 @@ public class Item extends WorldObject
 	 */
 	public void applyEnchantStats()
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (!isEquipped() || (player == null) || (getEnchantOptions() == DEFAULT_ENCHANT_OPTIONS))
 		{
 			return;
@@ -2644,7 +2652,7 @@ public class Item extends WorldObject
 				final AppearanceStone stone = AppearanceItemData.getInstance().getStone(appearanceStoneId);
 				if (stone != null)
 				{
-					final Player player = getActingPlayer();
+					final Player player = asPlayer();
 					if (player != null)
 					{
 						if (!stone.getRaces().isEmpty() && !stone.getRaces().contains(player.getRace()))
@@ -2711,7 +2719,7 @@ public class Item extends WorldObject
 		vars.remove(ItemVariables.VISUAL_APPEARANCE_LIFE_TIME);
 		vars.storeMe();
 		
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player != null)
 		{
 			final InventoryUpdate iu = new InventoryUpdate();
@@ -2743,7 +2751,7 @@ public class Item extends WorldObject
 			final AppearanceStone stone = AppearanceItemData.getInstance().getStone(appearanceStoneId);
 			if ((stone != null) && (stone.getType() == AppearanceType.FIXED))
 			{
-				final Player player = getActingPlayer();
+				final Player player = asPlayer();
 				if (player != null)
 				{
 					boolean update = false;
@@ -2785,7 +2793,7 @@ public class Item extends WorldObject
 			final AppearanceStone stone = AppearanceItemData.getInstance().getStone(appearanceStoneId);
 			if ((stone != null) && (stone.getType() == AppearanceType.FIXED))
 			{
-				final Player player = getActingPlayer();
+				final Player player = asPlayer();
 				if (player != null)
 				{
 					boolean update = false;

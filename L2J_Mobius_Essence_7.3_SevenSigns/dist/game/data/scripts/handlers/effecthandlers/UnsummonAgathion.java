@@ -46,7 +46,7 @@ public class UnsummonAgathion extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		if (player != null)
 		{
 			final int agathionId = player.getAgathionId();

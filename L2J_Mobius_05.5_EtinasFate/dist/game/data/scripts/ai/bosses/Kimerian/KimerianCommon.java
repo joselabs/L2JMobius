@@ -21,7 +21,6 @@ import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.StatSet;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -107,7 +106,7 @@ public class KimerianCommon extends AbstractInstance
 						}
 						else if (!npc.isInCombat() || !npc.isAttackingNow() || (npc.getTarget() == null))
 						{
-							final Creature monster = (Creature) pc.getTarget();
+							final Creature monster = pc.getTarget().asCreature();
 							if ((monster != null) && monster.isMonster() && pc.isInCombat())
 							{
 								addAttackDesire(npc, monster);
@@ -222,7 +221,7 @@ public class KimerianCommon extends AbstractInstance
 			npc.disableCoreAI(true);
 			npc.breakAttack();
 			npc.breakCast();
-			((Attackable) npc).clearAggroList();
+			npc.asAttackable().clearAggroList();
 			
 			getTimers().addTimer("KIMERIAN_INVUL_START", 6000, n ->
 			{
@@ -282,7 +281,7 @@ public class KimerianCommon extends AbstractInstance
 	
 	public void onCreatureKill(OnCreatureDeath event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Instance instance = npc.getInstanceWorld();
 		if (isInInstance(instance))
 		{
@@ -349,7 +348,7 @@ public class KimerianCommon extends AbstractInstance
 				{
 					if (creature.isPlayer() && (npcVars.getObject("PC_INSTANCE", Player.class) == null))
 					{
-						npcVars.set("PC_INSTANCE", creature.getActingPlayer());
+						npcVars.set("PC_INSTANCE", creature.asPlayer());
 						getTimers().addRepeatingTimer("HELPER_TIME_ACTION", 2000, npc, null);
 					}
 					break;
@@ -363,7 +362,7 @@ public class KimerianCommon extends AbstractInstance
 					{
 						if (hollow == 1)
 						{
-							spawnHollow(npc, creature.getActingPlayer(), true);
+							spawnHollow(npc, creature.asPlayer(), true);
 						}
 						else
 						{
@@ -371,7 +370,7 @@ public class KimerianCommon extends AbstractInstance
 							{
 								case 1:
 								{
-									spawnHollow(npc, creature.getActingPlayer(), false);
+									spawnHollow(npc, creature.asPlayer(), false);
 									addSpawn(FAIRY_WARRIOR, npc.getX() + 80, npc.getY(), npc.getZ(), 0, false, 0, false, instance.getId());
 									addSpawn(FAIRY_WARRIOR, npc.getX(), npc.getY() + 80, npc.getZ(), 0, false, 0, false, instance.getId());
 									addSpawn(SATYR_WITCH, npc.getX() + 50, npc.getY() + 50, npc.getZ(), 0, false, 0, false, instance.getId());
@@ -379,7 +378,7 @@ public class KimerianCommon extends AbstractInstance
 								}
 								case 2:
 								{
-									spawnHollow(npc, creature.getActingPlayer(), false);
+									spawnHollow(npc, creature.asPlayer(), false);
 									addSpawn(SATYR_WITCH, npc.getX() + 80, npc.getY(), npc.getZ(), 0, false, 0, false, instance.getId());
 									addSpawn(SATYR_WITCH, npc.getX(), npc.getY() + 80, npc.getZ(), 0, false, 0, false, instance.getId());
 									addSpawn(FAIRY_ROGUE, npc.getX() + 50, npc.getY() + 50, npc.getZ(), 0, false, 0, false, instance.getId());
@@ -387,7 +386,7 @@ public class KimerianCommon extends AbstractInstance
 								}
 								case 3:
 								{
-									spawnHollow(npc, creature.getActingPlayer(), false);
+									spawnHollow(npc, creature.asPlayer(), false);
 									addSpawn(FAIRY_WARRIOR, npc.getX() + 80, npc.getY(), npc.getZ(), 0, false, 0, false, instance.getId());
 									addSpawn(SATYR_WITCH, npc.getX(), npc.getY() + 80, npc.getZ(), 0, false, 0, false, instance.getId());
 									addSpawn(FAIRY_ROGUE, npc.getX() + 50, npc.getY() + 50, npc.getZ(), 0, false, 0, false, instance.getId());
@@ -403,7 +402,7 @@ public class KimerianCommon extends AbstractInstance
 					if (creature.isPlayer() && npcVars.getBoolean("FIGHT_CAN_START", true))
 					{
 						npc.broadcastSay(ChatType.NPC_GENERAL, KIMERIAN_MSG[getRandom(KIMERIAN_MSG.length)]);
-						addAttackPlayerDesire(npc, creature.getActingPlayer(), 23);
+						addAttackPlayerDesire(npc, creature.asPlayer(), 23);
 						npcVars.set("FIGHT_CAN_START", false);
 					}
 					break;

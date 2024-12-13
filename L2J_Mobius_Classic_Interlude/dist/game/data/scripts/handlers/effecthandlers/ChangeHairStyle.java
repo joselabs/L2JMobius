@@ -50,7 +50,7 @@ public class ChangeHairStyle extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		player.getAppearance().setHairStyle(_value);
 		player.broadcastUserInfo();
 	}

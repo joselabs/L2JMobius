@@ -41,7 +41,7 @@ public class ConditionPlayerCanSwitchSubclass extends Condition
 	{
 		boolean canSwitchSub = true;
 		
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		if ((player == null) || player.isAlikeDead())
 		{
 			canSwitchSub = false;

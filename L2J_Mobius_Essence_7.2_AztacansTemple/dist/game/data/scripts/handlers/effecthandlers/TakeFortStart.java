@@ -55,7 +55,7 @@ public class TakeFortStart extends AbstractEffect
 		final Clan clan = effector.getClan();
 		if ((fort != null) && (clan != null))
 		{
-			fort.getSiege().announceToPlayer(new SystemMessage(SystemMessageId.S1_IS_TRYING_TO_DISPLAY_THE_FLAG), effector.getActingPlayer().getName());
+			fort.getSiege().announceToPlayer(new SystemMessage(SystemMessageId.S1_IS_TRYING_TO_DISPLAY_THE_FLAG), effector.asPlayer().getName());
 		}
 	}
 }

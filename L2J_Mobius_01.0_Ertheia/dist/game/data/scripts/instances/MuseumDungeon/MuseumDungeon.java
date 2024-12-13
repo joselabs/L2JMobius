@@ -73,7 +73,7 @@ public class MuseumDungeon extends AbstractInstance
 	{
 		super.onEnter(player, instance, firstEnter);
 		
-		final Attackable toyron = (Attackable) instance.getNpc(TOYRON);
+		final Attackable toyron = instance.getNpc(TOYRON).asAttackable();
 		if (firstEnter)
 		{
 			// Set desk status
@@ -228,7 +228,7 @@ public class MuseumDungeon extends AbstractInstance
 	@Id(THIEF)
 	public void onCreatureKill(OnCreatureDeath event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Instance world = npc.getInstanceWorld();
 		if (world != null)
 		{

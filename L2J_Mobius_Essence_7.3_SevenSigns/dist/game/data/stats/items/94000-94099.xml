@@ -484,6 +484,7 @@
 		<set name="icon" val="BranchSys3.Icon.g_beam_pole" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
+		<set name="damage_range" val="0;0;66;120" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_type" val="B" />
@@ -493,6 +494,7 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
 		<stats>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
@@ -687,7 +689,7 @@
 		<set name="weight" val="120" />
 		<set name="price" val="100000" />
 		<skills>
-			<skill id="40160" level="1" /> <!-- Equipment Restoration Stone -->
+			<skill id="40160" level="1" /> <!-- Scroll: Restore Equipment -->
 		</skills>
 	</item>
 	<item id="94042" name="Emerald Weapon Appearance Stone" additionalName="Sealed" type="EtcItem">
@@ -706,7 +708,7 @@
 		<set name="material" val="PAPER" />
 		<set name="weight" val="120" />
 		<skills>
-			<skill id="40162" level="1" /> <!-- Emerald Weapon Appearance Stone -->
+			<skill id="40162" level="1" /> <!-- Appearance Stone: Emerald Weapon -->
 		</skills>
 	</item>
 	<item id="94043" name="Test Emerald Weapon Appearance Stone: One-handed Sword" additionalName="Test" type="EtcItem">
@@ -719,6 +721,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="Appearance" />
+		<skills>
+			<skill id="40161" level="1" /> <!-- (Test) Appearance Stone: Emerald Weapon - One-handed Sword -->
+		</skills>
 	</item>
 	<item id="94044" name="Appearance Stone: Dark Assassin Suit" additionalName="Sealed" type="EtcItem">
 		<!-- Changes the appearance of the entire armor to that of Dark Assassin Suit. Used with upper or full-body armor. Modified armor can be restored to its original appearance with Restoration Stone. -->
@@ -730,6 +736,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="Appearance" />
+		<skills>
+			<skill id="40163" level="1" /> <!-- Appearance Stone: Dark Assassin Suit -->
+		</skills>
 	</item>
 	<item id="94045" name="Worthy Death Knight's Cloak - new" additionalName="Not Available" type="Armor">
 		<!-- The item is not available. -->
@@ -755,9 +765,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
-		<skills>
-			<skill id="40164" level="1" /> <!-- Spellbook: Glorious Warrior's Ability -->
-		</skills>
 	</item>
 	<item id="94047" name="Spellbook: Glorious Warrior's Ability" additionalName="Sealed" type="EtcItem">
 		<!-- A spellbook for learning Glorious Warrior's Ability. -->
@@ -771,9 +778,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
-		<skills>
-			<skill id="40164" level="1" /> <!-- Spellbook: Glorious Warrior's Ability -->
-		</skills>
 	</item>
 	<item id="94048" name="+16 Weapon Craft Kit (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Weapon Craft Coupon and 20 Anniversary Coins. -->
@@ -862,9 +866,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91885" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Dismantler -->
+		</capsuled_items>
 	</item>
 	<item id="94056" name="+16 Weapon Pack - Art of Battle Axe (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to obtain +16 Art of Battle Axe. -->
+		<!-- Double-click to obtain +16 Battle Art Axe. -->
 		<set name="icon" val="icon.weapon_art_of_battle_axe_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -873,6 +881,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="175" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Battle Art Axe -->
+		</capsuled_items>
 	</item>
 	<item id="94057" name="+16 Weapon Pack - Kaim Vanul's Bones (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Kaim Vanul's Bones. -->
@@ -884,6 +896,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="7893" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Kaim Vanul's Bones -->
+		</capsuled_items>
 	</item>
 	<item id="94058" name="+16 Weapon Pack - Bow of Peril (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Bow of Peril. -->
@@ -895,6 +911,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="287" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Bow of Peril -->
+		</capsuled_items>
 	</item>
 	<item id="94059" name="+16 Weapon Pack - Wizard's Tear (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Wizard's Tear. -->
@@ -906,6 +926,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="7889" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Wizard's Tear -->
+		</capsuled_items>
 	</item>
 	<item id="94060" name="+16 Weapon Pack - Demon's Dagger (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Demon's Dagger. -->
@@ -917,6 +941,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="234" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Demon's Dagger -->
+		</capsuled_items>
 	</item>
 	<item id="94061" name="+16 Weapon Pack - Samurai Long Sword*Samurai Long Sword (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Samurai Long Sword*Samurai Long Sword. -->
@@ -928,6 +956,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="2626" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Samurai Long Sword*Samurai Long Sword -->
+		</capsuled_items>
 	</item>
 	<item id="94062" name="+16 Weapon Pack - Bellion Cestus (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Bellion Cestus. -->
@@ -939,6 +971,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="268" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Bellion Cestus -->
+		</capsuled_items>
 	</item>
 	<item id="94063" name="+16 Weapon Pack - Lance (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Lance. -->
@@ -950,6 +986,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="97" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Lance -->
+		</capsuled_items>
 	</item>
 	<item id="94064" name="+16 Weapon Pack - Colichemarde (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Colichemarde. -->
@@ -961,6 +1001,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91900" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Colichemarde -->
+		</capsuled_items>
 	</item>
 	<item id="94065" name="+16 Weapon Pack - Damascus Sword (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Damascus Sword. -->
@@ -972,6 +1016,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="79" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Damascus Sword -->
+		</capsuled_items>
 	</item>
 	<item id="94066" name="+16 Weapon Pack - Star Buster (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Star Buster. -->
@@ -983,6 +1031,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="7901" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Star Buster -->
+		</capsuled_items>
 	</item>
 	<item id="94067" name="+16 Weapon Pack - Staff of Evil Spirits (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Staff of Evil Spirits. -->
@@ -994,6 +1046,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="210" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Staff of Evil Spirits -->
+		</capsuled_items>
 	</item>
 	<item id="94068" name="+16 Weapon Pack - Guardian's Sword (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Guardian's Sword. -->
@@ -1005,6 +1061,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="7883" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Guardian's Sword -->
+		</capsuled_items>
 	</item>
 	<item id="94069" name="+16 Weapon Pack - Saber Tooth (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Saber Tooth. -->
@@ -1016,6 +1076,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91882" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Saber Tooth -->
+		</capsuled_items>
 	</item>
 	<item id="94070" name="+16 Weapon Pack - Yaksa Mace (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Yaksa Mace. -->
@@ -1027,6 +1091,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="2503" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Yaksa Mace -->
+		</capsuled_items>
 	</item>
 	<item id="94071" name="+16 Weapon Pack - Eminence Bow (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Eminence Bow. -->
@@ -1038,6 +1106,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="286" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Eminence Bow -->
+		</capsuled_items>
 	</item>
 	<item id="94072" name="+16 Weapon Pack - Ecliptic Sword (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Ecliptic Sword. -->
@@ -1049,6 +1121,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="7888" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Ecliptic Sword -->
+		</capsuled_items>
 	</item>
 	<item id="94073" name="+16 Weapon Pack - Crystal Dagger (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Crystal Dagger. -->
@@ -1060,6 +1136,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<capsuled_items>
+			<item id="228" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Crystal Dagger -->
+		</capsuled_items>
 	</item>
 	<item id="94074" name="+16 Weapon Pack - Katana*Katana (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Katana*Katana. -->
@@ -1071,6 +1150,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<capsuled_items>
+			<item id="2582" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Katana*Katana -->
+		</capsuled_items>
 	</item>
 	<item id="94075" name="+16 Weapon Pack - Great Pata (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Great Pata. -->
@@ -1082,6 +1164,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="266" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Great Pata -->
+		</capsuled_items>
 	</item>
 	<item id="94076" name="+16 Weapon Pack - Orcish Poleaxe (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Orcish Poleaxe. -->
@@ -1093,6 +1179,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="299" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Orcish Poleaxe -->
+		</capsuled_items>
 	</item>
 	<item id="94077" name="+16 Weapon Pack - Admiral's Estoc (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Admiral's Estoc. -->
@@ -1104,6 +1194,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91896" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Admiral's Estoc -->
+		</capsuled_items>
 	</item>
 	<item id="94078" name="+16 Weapon Pack - Ecliptic Axe (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Ecliptic Axe. -->
@@ -1115,6 +1209,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="7891" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Ecliptic Axe -->
+		</capsuled_items>
 	</item>
 	<item id="94079" name="+16 Weapon Pack - Samurai Long Sword (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Samurai Long Sword. -->
@@ -1126,6 +1224,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="135" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Samurai Long Sword -->
+		</capsuled_items>
 	</item>
 	<item id="94080" name="+16 Weapon Pack - Dwarven Hammer (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Dwarven Hammer. -->
@@ -1137,6 +1239,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="7897" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Dwarven Hammer -->
+		</capsuled_items>
 	</item>
 	<item id="94081" name="+16 Weapon Pack - Demon's Staff (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Demon's Staff. -->
@@ -1148,6 +1254,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="206" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Demon's Staff -->
+		</capsuled_items>
 	</item>
 	<item id="94082" name="+16 Weapon Pack - Berserker Blade (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain +16 Berserker Blade. -->
@@ -1159,6 +1269,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="5286" min="1" max="1" minEnchant="16" maxEnchant="16" chance="100" /> <!-- Berserker Blade -->
+		</capsuled_items>
 	</item>
 	<item id="94083" name="Helmet of Mana" type="Armor">
 		<!-- <Properties>. STR +1. INT +1. Overweight limit +1500. M. Def. +10. HP Recovery Rate +8%. MP Recovery Rate +8%. P. Atk. +6%. M. Atk. +8% -->
@@ -1175,21 +1289,21 @@
 			<stat type="pDef">88</stat>
 		</stats>
 		<skills>
-			<skill id="50380" level="1" /> <!-- Helmet of Mana -->
-			<skill id="50382" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="83215" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83113" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83114" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83115" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50380" level="1" /> <!-- A-grade: Helmet of Mana -->
+			<skill id="50382" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Helmet of Mana -->
+			<skill id="50382" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Helmet of Mana -->
+			<skill id="50382" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Helmet of Mana -->
+			<skill id="50382" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Helmet of Mana -->
+			<skill id="50382" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Helmet of Mana -->
+			<skill id="50382" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Helmet of Mana -->
+			<skill id="50382" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Helmet of Mana -->
+			<skill id="50382" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Helmet of Mana -->
+			<skill id="50382" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Helmet of Mana -->
+			<skill id="50382" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Helmet of Mana -->
+			<skill id="83215" level="3" type="ON_BLESSING" /> <!-- Helmet Blessing Effect -->
+			<skill id="83113" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Helmet - 6 Item Effect -->
+			<skill id="83114" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Helmet - 7 Item Effect -->
+			<skill id="83115" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Helmet - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="94084" name="Helmet of Mana" additionalName="Sealed" type="Armor">
@@ -1210,21 +1324,21 @@
 			<stat type="pDef">88</stat>
 		</stats>
 		<skills>
-			<skill id="50380" level="1" /> <!-- Helmet of Mana -->
-			<skill id="50382" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="50382" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Helmet of Mana -->
-			<skill id="83215" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83113" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83114" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83115" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50380" level="1" /> <!-- A-grade: Helmet of Mana -->
+			<skill id="50382" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Helmet of Mana -->
+			<skill id="50382" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Helmet of Mana -->
+			<skill id="50382" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Helmet of Mana -->
+			<skill id="50382" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Helmet of Mana -->
+			<skill id="50382" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Helmet of Mana -->
+			<skill id="50382" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Helmet of Mana -->
+			<skill id="50382" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Helmet of Mana -->
+			<skill id="50382" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Helmet of Mana -->
+			<skill id="50382" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Helmet of Mana -->
+			<skill id="50382" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Helmet of Mana -->
+			<skill id="83215" level="3" type="ON_BLESSING" /> <!-- Helmet Blessing Effect -->
+			<skill id="83113" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Helmet - 6 Item Effect -->
+			<skill id="83114" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Helmet - 7 Item Effect -->
+			<skill id="83115" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Helmet - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="94085" name="Boots of Evasion" type="Armor">
@@ -1242,22 +1356,22 @@
 			<stat type="pDef">59</stat>
 		</stats>
 		<skills>
-			<skill id="50384" level="1" /> <!-- Boots of Evasion -->
-			<skill id="50385" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="83223" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83209" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83210" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83211" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50384" level="1" /> <!-- A-grade: Boots of Evasion -->
+			<skill id="50385" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Boots of Evasion -->
+			<skill id="50386" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Boots of Evasion -->
+			<skill id="50386" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Boots of Evasion -->
+			<skill id="50386" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Boots of Evasion -->
+			<skill id="50386" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Boots of Evasion -->
+			<skill id="50386" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Boots of Evasion -->
+			<skill id="50386" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Boots of Evasion -->
+			<skill id="50386" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Boots of Evasion -->
+			<skill id="50386" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Boots of Evasion -->
+			<skill id="50386" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Boots of Evasion -->
+			<skill id="50386" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Boots of Evasion -->
+			<skill id="83223" level="3" type="ON_BLESSING" /> <!-- Boot Blessing Effect -->
+			<skill id="83209" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Boots - 6 Item Effect -->
+			<skill id="83210" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Boots - 7 Item Effect -->
+			<skill id="83211" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Boots - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="94086" name="Boots of Evasion" additionalName="Sealed" type="Armor">
@@ -1278,22 +1392,22 @@
 			<stat type="pDef">59</stat>
 		</stats>
 		<skills>
-			<skill id="50384" level="1" /> <!-- Boots of Evasion -->
-			<skill id="50385" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="50386" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Boots of Evasion -->
-			<skill id="83223" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83209" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83210" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83211" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50384" level="1" /> <!-- A-grade: Boots of Evasion -->
+			<skill id="50385" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Boots of Evasion -->
+			<skill id="50386" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Boots of Evasion -->
+			<skill id="50386" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Boots of Evasion -->
+			<skill id="50386" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Boots of Evasion -->
+			<skill id="50386" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Boots of Evasion -->
+			<skill id="50386" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Boots of Evasion -->
+			<skill id="50386" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Boots of Evasion -->
+			<skill id="50386" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Boots of Evasion -->
+			<skill id="50386" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Boots of Evasion -->
+			<skill id="50386" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Boots of Evasion -->
+			<skill id="50386" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Boots of Evasion -->
+			<skill id="83223" level="3" type="ON_BLESSING" /> <!-- Boot Blessing Effect -->
+			<skill id="83209" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Boots - 6 Item Effect -->
+			<skill id="83210" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Boots - 7 Item Effect -->
+			<skill id="83211" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Boots - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="94087" name="Package: Helmet of Mana" additionalName="Sealed" type="EtcItem">
@@ -1418,7 +1532,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94093" name="High-grade Item Craft Coupon (Time-limited)" type="EtcItem">
-		<!-- Required for creating various items through the Special Craft. <font color=bbaa88><Items to create></font>. Spellbook: Ultimate Death Knight Transformation. Spellbook: Titan Champion. Spellbook: Pa'agrio's Touch. Spellbook: Cacophony of War. Spellbook: Dragon Strike. Spellbook: Meteor. Spellbook: Tranquility. Spellbook: Exclusion. Spellbook: Dark Disruption. + other items -->
+		<!-- Required for creating various items through the special craft. <font color=bbaa88><Items to create></font>. Spellbook: Ultimate Death Knight Transformation. Spellbook: Titan Champion. Spellbook: Pa'agrio's Touch. Spellbook: Cacophony of War. Spellbook: Dragon Strike. Spellbook: Meteor. Spellbook: Tranquility. Spellbook: Exclusion. Spellbook: Dark Disruption. + other items -->
 		<set name="icon" val="icon.bm_jewel_ticket" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -1464,7 +1578,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="94097" name="Sealed Wolf Necklace" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compound is successful, you get Sealed Fox's Necklace. In case of failure, you keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compounding is successful, you will get Sealed Fox's Necklace. In case of failure, you will keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
 		<set name="icon" val="icon.etc_summon_wolf_r_02" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1480,7 +1594,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94098" name="Sealed Buffalo Necklace" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compound is successful, you get Sealed Fox's Necklace. In case of failure, you keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compounding is successful, you will get Sealed Fox's Necklace. In case of failure, you will keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
 		<set name="icon" val="icon.buffalo_necklace_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1496,7 +1610,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94099" name="Sealed Tiger Necklace" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compound is successful, you get Sealed Fox's Necklace. In case of failure, you keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compounding is successful, you will get Sealed Fox's Necklace. In case of failure, you will keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
 		<set name="icon" val="icon.etc_tooth_gragon" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />

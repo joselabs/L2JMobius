@@ -45,8 +45,8 @@ public class DeadPledge implements IAffectScopeHandler
 		
 		if (target.isPlayable())
 		{
-			final Playable playable = (Playable) target;
-			final Player player = playable.getActingPlayer();
+			final Playable playable = target.asPlayable();
+			final Player player = playable.asPlayer();
 			
 			// Create the target filter.
 			final AtomicInteger affected = new AtomicInteger(0);
@@ -57,7 +57,7 @@ public class DeadPledge implements IAffectScopeHandler
 					return false;
 				}
 				
-				final Player p = plbl.getActingPlayer();
+				final Player p = plbl.asPlayer();
 				if ((p == null) || !p.isDead())
 				{
 					return false;

@@ -1,24 +1,29 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.effecthandlers;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.enums.StatModifierType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
@@ -37,14 +42,19 @@ public class AbsorbDamage extends AbstractEffect
 {
 	private static final Map<Integer, Double> DIFF_DAMAGE_HOLDER = new ConcurrentHashMap<>();
 	private static final Map<Integer, Double> PER_DAMAGE_HOLDER = new ConcurrentHashMap<>();
+	private static final Map<Integer, Integer> HITS_HOLDER = new ConcurrentHashMap<>();
 	
 	private final double _damage;
 	private final StatModifierType _mode;
+	private final int _hits;
+	private final double _casterHpMod;
 	
 	public AbsorbDamage(StatSet params)
 	{
 		_damage = params.getDouble("damage", 0);
 		_mode = params.getEnum("mode", StatModifierType.class, StatModifierType.DIFF);
+		_hits = params.getInt("hits", -1);
+		_casterHpMod = params.getDouble("casterHpMod", 0); // % from caster Max HP to _damage
 	}
 	
 	private DamageReturn onDamageReceivedDiffEvent(OnCreatureDamageReceived event, Creature effected, Skill skill)
@@ -60,6 +70,20 @@ public class AbsorbDamage extends AbstractEffect
 		final double damageLeft = DIFF_DAMAGE_HOLDER.getOrDefault(objectId, 0d);
 		final double newDamageLeft = Math.max(damageLeft - event.getDamage(), 0);
 		final double newDamage = Math.max(event.getDamage() - damageLeft, 0);
+		
+		int hitsUsed = HITS_HOLDER.getOrDefault(objectId, 0);
+		if (_hits != -1)
+		{
+			hitsUsed++;
+			if (hitsUsed > _hits)
+			{
+				effected.stopSkillEffects(skill);
+			}
+			else
+			{
+				HITS_HOLDER.put(objectId, hitsUsed);
+			}
+		}
 		
 		if (newDamageLeft > 0)
 		{
@@ -102,6 +126,13 @@ public class AbsorbDamage extends AbstractEffect
 		{
 			PER_DAMAGE_HOLDER.remove(effected.getObjectId());
 		}
+		HITS_HOLDER.remove(effected.getObjectId());
+		
+		// Stop other effects when shield is removed.
+		if (skill != null)
+		{
+			effected.stopSkillEffects(SkillFinishType.SILENT, skill.getId());
+		}
 	}
 	
 	@Override
@@ -109,13 +140,14 @@ public class AbsorbDamage extends AbstractEffect
 	{
 		if (_mode == StatModifierType.DIFF)
 		{
-			DIFF_DAMAGE_HOLDER.put(effected.getObjectId(), _damage);
+			DIFF_DAMAGE_HOLDER.put(effected.getObjectId(), _damage + ((effector.getMaxHp() * _casterHpMod) / 100));
 			effected.addListener(new FunctionEventListener(effected, EventType.ON_CREATURE_DAMAGE_RECEIVED, (OnCreatureDamageReceived event) -> onDamageReceivedDiffEvent(event, effected, skill), this));
 		}
 		else
 		{
-			PER_DAMAGE_HOLDER.put(effected.getObjectId(), _damage);
+			PER_DAMAGE_HOLDER.put(effected.getObjectId(), _damage + ((effector.getMaxHp() * _casterHpMod) / 100));
 			effected.addListener(new FunctionEventListener(effected, EventType.ON_CREATURE_DAMAGE_RECEIVED, (OnCreatureDamageReceived event) -> onDamageReceivedPerEvent(event), this));
 		}
+		HITS_HOLDER.put(effected.getObjectId(), 0);
 	}
 }

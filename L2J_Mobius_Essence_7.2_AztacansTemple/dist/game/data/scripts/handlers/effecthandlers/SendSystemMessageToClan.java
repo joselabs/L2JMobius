@@ -48,7 +48,7 @@ public class SendSystemMessageToClan extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		if ((player == null) || (_message == null))
 		{
 			return;

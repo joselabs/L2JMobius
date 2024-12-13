@@ -105,9 +105,9 @@ public class AdminClanHall implements IAdminCommandHandler
 				}
 				case "give":
 				{
-					if ((player.getTarget() != null) && (player.getTarget().getActingPlayer() != null))
+					if ((player.getTarget() != null) && player.getTarget().isPlayer())
 					{
-						final Clan targetClan = player.getTarget().getActingPlayer().getClan();
+						final Clan targetClan = player.getTarget().asPlayer().getClan();
 						if ((targetClan == null) || (targetClan.getHideoutId() != 0))
 						{
 							player.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);

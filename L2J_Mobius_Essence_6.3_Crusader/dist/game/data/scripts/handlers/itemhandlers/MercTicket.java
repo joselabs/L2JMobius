@@ -56,7 +56,7 @@ public class MercTicket extends AbstractNpcAI implements IItemHandler
 			return false;
 		}
 		
-		final Player player = playable.getActingPlayer();
+		final Player player = playable.asPlayer();
 		final Castle castle = CastleManager.getInstance().getCastle(player);
 		if ((castle == null) || (player.getClan() == null) || (castle.getOwnerId() != player.getClanId()) || !player.hasClanPrivilege(ClanPrivilege.CS_MERCENARIES))
 		{

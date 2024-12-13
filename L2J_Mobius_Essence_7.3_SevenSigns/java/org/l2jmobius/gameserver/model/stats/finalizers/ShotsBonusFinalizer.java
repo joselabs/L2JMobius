@@ -36,7 +36,7 @@ public class ShotsBonusFinalizer implements IStatFunction
 		throwIfPresent(base);
 		
 		double baseValue = 1;
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		if (player != null)
 		{
 			final Item weapon = player.getActiveWeaponInstance();

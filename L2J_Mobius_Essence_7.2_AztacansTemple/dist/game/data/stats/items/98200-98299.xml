@@ -29,7 +29,7 @@
 			<item id="97797" min="1" max="1" chance="2.439024" /> <!-- Package: Talisman of Authority (100 pcs.) - Sealed -->
 			<item id="97796" min="1" max="1" chance="2.439024" /> <!-- Package: Circlet of Hero (100 pcs.) - Sealed -->
 			<item id="97651" min="1" max="1" chance="2.439024" /> <!-- Package: Einhasad's Pendant Lv. 1 (100 pcs.) - Sealed -->
-			<item id="97801" min="1" max="1" chance="2.439024" /> <!-- Package: Dye Powder (100 pcs.) - Sealed -->
+			<item id="97801" min="1" max="1" chance="2.439024" /> <!-- Package: Dye Booster (100 pcs.) - Sealed -->
 			<item id="93739" min="1" max="1" chance="2.439024" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
 			<item id="97859" min="1" max="1" chance="2.439024" /> <!-- Stable Scroll: Enchant Rare Accessories -->
 			<item id="96652" min="1" max="1" chance="2.439024" /> <!-- Package: Antharas Doll Lv. 1 - Sealed -->
@@ -40,7 +40,7 @@
 			<item id="94159" min="1" max="1" chance="2.439024" /> <!-- Package: Queen Ant Doll Lv. 1 - Sealed -->
 			<item id="94162" min="1" max="1" chance="2.439024" /> <!-- Package: Orfen Doll Lv. 1 - Sealed -->
 			<item id="94328" min="1" max="1" chance="2.439024" /> <!-- Elixir Powder - Sealed -->
-			<item id="96623" min="1" max="1" chance="2.439024" /> <!-- Dye Powder -->
+			<item id="96623" min="1" max="1" chance="2.439024" /> <!-- Dye Booster -->
 			<item id="93330" min="1" max="1" chance="2.439024" /> <!-- Enchant Kit: Talisman of Authority - Sealed -->
 			<item id="94168" min="1" max="1" chance="2.439024" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
 			<item id="94258" min="1" max="1" chance="2.439024" /> <!-- Package: Einhasad's Pendant Lv. 1 - Sealed -->
@@ -105,6 +105,7 @@
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1200" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -121,7 +122,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98205" name="Blessed Circlet of Hero" additionalName="Sealed" type="Armor">
-		<!-- Can be enchanted up to +10 with Scroll: Enchant Circlet of Hero. Activates special effects depending on the enchant value. The enchanting isn't safe even to +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
+		<!-- Can be enchanted up to +10 with Scroll: Enchant Accessories. Enables special effects depending on its enchant value. Enchanting is not safe even to +1. <font color=eeaa22>Equipped in the left head accessory slot.</font>. When using Incredible Upgrade Stone, enchanting is safe starting from +8. -->
 		<set name="icon" val="icon.accessory_barka_karm_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair" />
@@ -292,7 +293,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="40472" level="1" /> <!-- Pagan Temple's Time Stone -->
+			<skill id="40472" level="1" /> <!-- Pagan Temple's Time Stone (Sealed) -->
 		</skills>
 	</item>
 	<item id="98215" name="Temple Catacomb Pass (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -390,7 +391,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98221" name="Doll Coupon Lv. 1 (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Can be exchanged for Doll Lv. 1 through the Game Assistant. <How to use>. Game Assistant - Event -->
+		<!-- Double-click to choose 1 Doll Lv. 1. <font color=ff6666>(Excluding Behemoth/ Glakias Doll.)</font> -->
 		<set name="icon" val="icon.bm_boss_doll_ticket_i00" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -500,7 +501,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="96630" min="50" max="50" chance="100" /> <!-- Enhanced Dye Powder -->
+			<item id="96630" min="50" max="50" chance="100" /> <!-- Enhanced Dye Booster -->
 		</capsuled_items>
 	</item>
 	<item id="98227" name="GM Lucky Box" additionalName="Sealed" type="EtcItem">
@@ -521,7 +522,7 @@
 			<item id="93269" min="1" max="1" chance="16.66667" /> <!-- Improved Scroll: Enchant A-grade Armor - Sealed -->
 			<item id="93976" min="1" max="1" chance="16.66667" /> <!-- Scroll: Enchant A-grade Weapon - Sealed -->
 			<item id="93977" min="1" max="1" chance="16.66667" /> <!-- Scroll: Enchant A-grade Armor - Sealed -->
-			<item id="97147" min="1" max="1" chance="16.66667" /> <!-- Dye Powder - Sealed -->
+			<item id="97147" min="1" max="1" chance="16.66667" /> <!-- Hidden Power Booster - Sealed -->
 			<item id="94777" min="10" max="10" chance="16.66667" /> <!-- Berserker's Scroll - Sealed -->
 		</capsuled_items>
 	</item>
@@ -609,7 +610,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98233" name="Spellbook: Acceleration Lv. 2" type="EtcItem">
-		<!-- A spellbook for learning the Acceleration Lv. 2 skill. <Class>. Death Knight (all races). <Skill effect>. Increases Atk. Spd., recovers DP after an attack. Activates the Swift Movements effect for 10 sec., when using skills. While the Swift Movements effect is active, your P./ M. Def. and Speed are greatly increased. -->
+		<!-- A spellbook for learning the Acceleration Lv. 2 skill. <Class>. Death Knight (all races). <Skill effect>. Increases Atk. Spd. Recovers DP after an attack and applies Dynamic Haste with a certain chance. <Dynamic Haste>. Increases Atk. Spd. and P./ M. Def. -->
 		<set name="icon" val="icon.etc_spell_books_black_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -618,7 +619,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98234" name="Spellbook: Acceleration Lv. 2" additionalName="Sealed" type="EtcItem">
-		<!-- A spellbook for learning the Acceleration Lv. 2 skill. <Class>. Death Knight (all races). <Skill effect>. Increases Atk. Spd., recovers DP after an attack. Activates the Swift Movements effect for 10 sec., when using skills. While the Swift Movements effect is active, your P./ M. Def. and Speed are greatly increased. -->
+		<!-- A spellbook for learning the Acceleration Lv. 2 skill. <Class>. Death Knight (all races). <Skill effect>. Increases Atk. Spd. Recovers DP after an attack and applies Dynamic Haste with a certain chance. <Dynamic Haste>. Increases Atk. Spd. and P./ M. Def. -->
 		<set name="icon" val="icon.etc_spell_books_black_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -629,7 +630,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98235" name="Agathion Dragon Egg" additionalName="Sealed" type="Armor">
-		<!-- Equipping it in the main slot summons Agathion Dragon Egg. +10 Agathion Dragon Egg can be compounded with another Agathion Dragon Egg or Incredible Upgrade Stone to get Agathion Valakas. -->
+		<!-- Can be enchanted with Scroll: Enchant Accessories. Equipping it in the main slot summons Agathion Dragon Egg. +10 Agathion Dragon Egg can be compounded with another Agathion Dragon Egg or Incredible Upgrade Stone to get Agathion Valakas. When using Incredible Upgrade Stone, the enchanting is safe from +8. -->
 		<set name="icon" val="icon.agathion_valakas_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -650,7 +651,7 @@
 		</skills>
 	</item>
 	<item id="98236" name="Agathion Valakas" additionalName="Sealed" type="Armor">
-		<!-- Equipping it in the main slot summons Agathion Valakas. -->
+		<!-- Can be enchanted with Scroll: Enchant Accessories. Equipping it in the main slot summons Agathion Valakas. -->
 		<set name="icon" val="icon.agathion_valakas_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -861,7 +862,7 @@
 		</stats>
 	</item>
 	<item id="98249" name="Scroll: PK (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to decrease your <font color=ff6666>PK points</font>. <Effect>. <font color=ff6666>PK count</font> <font color=ff6666>-1</font>. <Requirements>. <font color=ff6666>PK count</font> is <font color=ff6666>more than 1</font>. -->
+		<!-- Double-click to decrease your <font color=ff6666>PK points</font>. <Effect>. <font color=ff6666>PK count</font> <font color=ff6666>-1</font>. <Use condition>. <font color=ff6666>PK count</font> is <font color=ff6666>more than 1</font>. Cannot be used in the Underground Labyrinth. -->
 		<set name="icon" val="icon.etc_ev_draco_pk_count_down" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -881,6 +882,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40476" level="1" /> <!-- Extra Pass: Training Zone -->
+		</skills>
 	</item>
 	<item id="98251" name="Monster Weapon_Monsters Only_Demonic Sword Zariche" additionalName="Not Available" type="Weapon">
 		<set name="icon" val="icon.weapon_unique_zariche_i00" />
@@ -1333,7 +1338,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98293" name="Elite Box Catalogue (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to choose 1 of the 3 Elite Boxes of Choice. -->
+		<!-- Double-click to choose 1 of the 3 Elite Boxes of Choice. <font color=EEAA22><Items for exchange></font>. Elite Box of Choice - Weapon/ Armor/ Accessory (1 pc.) - 10 tickets. Elite Box of Choice - Special Equipment (1 pc.) - 5 tickets. Elite Box of Choice - Skill/ Supplies (1 pc.) - 1 ticket -->
 		<set name="icon" val="icon.gold_save_r" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -1342,7 +1347,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98294" name="Special Equipment Certificate (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to choose 1 type of special equipment. -->
+		<!-- Double-click to choose 1 type of special equipment. <font color=EEAA22><Items for exchange></font>. Enchant Kit: Circlet of Hero (1 pc.) - 5 certificates. Enchant Kit: Piercing Mask (1 pc.) - 6 certificates. Package: Einhasad's Pendant Lv. 1 (1 pc.) - 10 certificates. Package: Cloak of Protection (1 pc.) - 1 certificate. Dragon Belt Pack (1 pc.) - 2 certificates. Jewel Craft Coupon (1 pc.) - 1 certificate. Enchant Kit: Talisman of Authority (1 pc.) - 2 certificates. Enchant Kit: Talisman of Eva (1 pc.) - 2 certificates. Enchant Kit: Talisman of Speed (1 pc.) - 2 certificates. Package: Agathion Ignis (1 pc.) - 1 certificate. Package: Agathion Nebula (1 pc.) - 1 certificate. Package: Agathion Procella (1 pc.) - 1 certificate. Package: Agathion Petram (1 pc.) - 1 certificate. Package: Agathion Joy (1 pc.) - 1 certificate -->
 		<set name="icon" val="icon.blue_save_ticket" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -1351,7 +1356,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98295" name="Supply Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to choose 1 supply item. -->
+		<!-- Double-click to choose 1 type of supplies. <font color=EEAA22><Items for exchange></font>. Scroll: Boost Attack (5 pcs.) - 1 coupon. Scroll: Boost Defense (5 pcs.) - 1 coupon. XP Growth Scroll (5 pcs.) - 1 coupon. Sayha's Storm (5 pcs.) - 1 coupon. Einhasad's Protection (2 pcs.) - 1 coupon. Magic Lamp Charging Potion (1 pc.) - 10 coupons. Special HP Recovery Potion (50 pcs.) - 1 coupon. Sayha's Blessing (10 pcs.) - 1 coupon -->
 		<set name="icon" val="icon.blue_save_ticket" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -1360,7 +1365,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98296" name="High-grade Item Craft Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to choose 1 item from the list or create an item through the Special Craft. -->
+		<!-- Required for creating various items through the Special Craft. -->
 		<set name="icon" val="icon.royal_purple_save" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -1472,11 +1477,11 @@
 			<item id="97177" min="1" max="1" chance="4" /> <!-- Spellbook Coupon - 3 Stars - Sealed -->
 			<item id="94385" min="1" max="1" chance="4" /> <!-- Improved Scroll: Enchant Rare Accessories -->
 			<item id="94383" min="1" max="1" chance="4" /> <!-- Scroll: Enchant Rare Accessories -->
-			<item id="97801" min="1" max="1" chance="4" /> <!-- Package: Dye Powder (100 pcs.) - Sealed -->
+			<item id="97801" min="1" max="1" chance="4" /> <!-- Package: Dye Booster (100 pcs.) - Sealed -->
 			<item id="97859" min="1" max="1" chance="4" /> <!-- Stable Scroll: Enchant Rare Accessories -->
 			<item id="95768" min="1" max="1" chance="4" /> <!-- Master's Book Chest - Sealed -->
 			<item id="94328" min="1" max="1" chance="4" /> <!-- Elixir Powder - Sealed -->
-			<item id="96623" min="1" max="1" chance="4" /> <!-- Dye Powder -->
+			<item id="96623" min="1" max="1" chance="4" /> <!-- Dye Booster -->
 			<item id="94186" min="1" max="1" chance="4" /> <!-- Augmenting Stone: Weapon -->
 			<item id="94188" min="1" max="1" chance="4" /> <!-- Augmenting Stone: Armor -->
 			<item id="94423" min="1" max="1" chance="4" /> <!-- Augmenting Stone: Accessory -->

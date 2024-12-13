@@ -10,11 +10,11 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -33,7 +33,7 @@
 		<icon>icon.bm_antaras_doll_30d_01</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
-		<effectPoint>100</effectPoint>
+		<effectPoint>0</effectPoint>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>1</minLevel>
@@ -52,7 +52,7 @@
 		<icon>icon.bm_antaras_doll_30d_01</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
-		<effectPoint>100</effectPoint>
+		<effectPoint>0</effectPoint>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>1</minLevel>
@@ -71,7 +71,7 @@
 		<icon>icon.bm_antaras_doll_30d_01</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
-		<effectPoint>100</effectPoint>
+		<effectPoint>0</effectPoint>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>1</minLevel>
@@ -126,11 +126,11 @@
 			<effect name="VitalityExpRate">
 				<amount>5</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -175,7 +175,16 @@
 		</effects>
 	</skill>
 	<skill id="29508" toLevel="10" name="Forgotten Lord's Dye">
-		<!-- CON +1, received damage -1% -->
+		<!-- Level 1: CON +1, received damage -1% -->
+		<!-- Level 2: CON/ DEX/ WIT +1, received damage -1% -->
+		<!-- Level 3: CON/ DEX/ WIT/ STR/ INT +1, received damage -1% -->
+		<!-- Level 4: CON/ DEX/ WIT/ STR/ INT/ CHA +1, received damage -1% -->
+		<!-- Level 5: CON/ DEX/ WIT/ STR/ INT/ CHA +1, received damage -2% -->
+		<!-- Level 6: CON/ DEX/ WIT/ STR/ INT/ CHA +1, received damage -3%, damage +1%, P. Atk. +400, M. Atk. +200, P. Def. +380, M. Def. +320, Vitality bonus +1%, acquired XP/ SP +1% -->
+		<!-- Level 7: CON/ DEX/ WIT +2, STR/ INT/ CHA +1, received damage -3%, damage +2%, P. Atk. +520, M. Atk. +240, P. Def. +494, M. Def. +416, Vitality bonus +2%, acquired XP/ SP +2%. Forgotten Lord's Ability Lv. 1 available. -->
+		<!-- Level 8: CON/ DEX/ WIT/ STR/ INT/ CHA +2, received damage -4%, damage +2%, P. Atk. +728, M. Atk. +336, P. Def. +692, M. Def. +582, Vitality bonus +2%, acquired XP/ SP +2%. Forgotten Lord's Ability Lv. 2 available. -->
+		<!-- Level 9: CON/ DEX/ WIT +3, STR/ INT/ CHA +2, received damage -4%, damage +3%, P. Atk. +1056, M. Atk. +504, P. Def. +1003, M. Def. +844, Vitality bonus +3%, acquired XP/ SP +3%. Forgotten Lord's Ability Lv. 3 available. -->
+		<!-- Level 10: CON/ DEX/ WIT/ STR/ INT/ CHA +3, received damage -5%, damage +3%, P. Atk. +1636, M. Atk. +806, P. Def. +1554, M. Def. +1309, Vitality bonus +3%, acquired XP/ SP +3%. Forgotten Lord's Ability Lv. 4 available. Forgotten Lord's Curse Lv. 1 available. -->
 		<icon>branchicon.bm_dye_monarc_hena</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -245,7 +254,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">400</value>
@@ -256,7 +265,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">200</value>
@@ -322,7 +331,10 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="29510" toLevel="4" name="Forgotten Lord's Ability">
-		<!-- With a 30% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 15 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
+		<!-- Level 1: With a 30% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 15 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
+		<!-- Level 2: With a 50% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 20 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
+		<!-- Level 3: With a 80% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 25 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
+		<!-- Level 4: With a 100% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 30 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
 		<icon>branchicon.g_dye_monarch_ability_i01</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -439,11 +451,11 @@
 			<effect name="SpModify">
 				<amount>5</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -523,11 +535,11 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -663,16 +675,16 @@
 		<!-- For 30 min., all basic stats +3, Vitality bonus +50%, P./ M. Def. +15%. Cooldown: 5 min. The effect remains after death. Cannot be used in the Olympiad. -->
 		<icon>icon.bm_royal_black_beer</icon>
 		<operateType>A2</operateType>
-		<isMagic>2</isMagic>
-		<reuseDelay>300000</reuseDelay>
-		<coolTime>500</coolTime>
-		<abnormalType>HONEY_BEER</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
-		<stayAfterDeath>true</stayAfterDeath>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
-		<targetType>SELF</targetType>
+		<abnormalType>HONEY_BEER</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>500</coolTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="StatUp">
 				<amount>3</amount>

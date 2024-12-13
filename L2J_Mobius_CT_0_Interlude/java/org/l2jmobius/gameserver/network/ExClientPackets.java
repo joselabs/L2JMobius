@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network;
 
@@ -22,7 +26,53 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.network.clientpackets.*;
+import org.l2jmobius.gameserver.network.clientpackets.AnswerJoinPartyRoom;
+import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
+import org.l2jmobius.gameserver.network.clientpackets.RequestAskJoinPartyRoom;
+import org.l2jmobius.gameserver.network.clientpackets.RequestAutoSoulShot;
+import org.l2jmobius.gameserver.network.clientpackets.RequestChangePartyLeader;
+import org.l2jmobius.gameserver.network.clientpackets.RequestConfirmCancelItem;
+import org.l2jmobius.gameserver.network.clientpackets.RequestConfirmGemStone;
+import org.l2jmobius.gameserver.network.clientpackets.RequestConfirmRefinerItem;
+import org.l2jmobius.gameserver.network.clientpackets.RequestConfirmTargetItem;
+import org.l2jmobius.gameserver.network.clientpackets.RequestCursedWeaponList;
+import org.l2jmobius.gameserver.network.clientpackets.RequestCursedWeaponLocation;
+import org.l2jmobius.gameserver.network.clientpackets.RequestDismissPartyRoom;
+import org.l2jmobius.gameserver.network.clientpackets.RequestDuelAnswerStart;
+import org.l2jmobius.gameserver.network.clientpackets.RequestDuelStart;
+import org.l2jmobius.gameserver.network.clientpackets.RequestDuelSurrender;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExAcceptJoinMPCC;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExAskJoinMPCC;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExEnchantSkill;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExEnchantSkillInfo;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExFishRanking;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExMPCCShowPartyMembersInfo;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExMagicSkillUseGround;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExOustFromMPCC;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExPledgeCrestLarge;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExSetPledgeCrestLarge;
+import org.l2jmobius.gameserver.network.clientpackets.RequestExitPartyMatchingWaitingRoom;
+import org.l2jmobius.gameserver.network.clientpackets.RequestGetBossRecord;
+import org.l2jmobius.gameserver.network.clientpackets.RequestListPartyMatchingWaitingRoom;
+import org.l2jmobius.gameserver.network.clientpackets.RequestManorList;
+import org.l2jmobius.gameserver.network.clientpackets.RequestOlympiadMatchList;
+import org.l2jmobius.gameserver.network.clientpackets.RequestOlympiadObserverEnd;
+import org.l2jmobius.gameserver.network.clientpackets.RequestOustFromPartyRoom;
+import org.l2jmobius.gameserver.network.clientpackets.RequestPCCafeCouponUse;
+import org.l2jmobius.gameserver.network.clientpackets.RequestPledgeMemberInfo;
+import org.l2jmobius.gameserver.network.clientpackets.RequestPledgeMemberPowerInfo;
+import org.l2jmobius.gameserver.network.clientpackets.RequestPledgePowerGradeList;
+import org.l2jmobius.gameserver.network.clientpackets.RequestPledgeReorganizeMember;
+import org.l2jmobius.gameserver.network.clientpackets.RequestPledgeSetAcademyMaster;
+import org.l2jmobius.gameserver.network.clientpackets.RequestPledgeSetMemberPowerGrade;
+import org.l2jmobius.gameserver.network.clientpackets.RequestPledgeWarList;
+import org.l2jmobius.gameserver.network.clientpackets.RequestProcureCropList;
+import org.l2jmobius.gameserver.network.clientpackets.RequestRefine;
+import org.l2jmobius.gameserver.network.clientpackets.RequestRefineCancel;
+import org.l2jmobius.gameserver.network.clientpackets.RequestSetCrop;
+import org.l2jmobius.gameserver.network.clientpackets.RequestSetSeed;
+import org.l2jmobius.gameserver.network.clientpackets.RequestWithdrawPartyRoom;
+import org.l2jmobius.gameserver.network.clientpackets.RequestWriteHeroWords;
 
 /**
  * @author Mobius
@@ -61,10 +111,10 @@ public enum ExClientPackets
 	REQUEST_PLEDGE_WAR_LIST(0x1E, RequestPledgeWarList::new, ConnectionState.IN_GAME),
 	REQUEST_EX_FISH_RANKING(0x1F, RequestExFishRanking::new, ConnectionState.IN_GAME),
 	REQUEST_PC_CAFE_COUPON_USE(0x20, RequestPCCafeCouponUse::new, ConnectionState.IN_GAME),
-	REQUEST_CURSED_WEAPON_LIST(0x21, RequestCursedWeaponList::new, ConnectionState.IN_GAME),
+	REQUEST_CURSED_WEAPON_LIST(0x22, RequestCursedWeaponList::new, ConnectionState.IN_GAME),
 	REQUEST_CURSED_WEAPON_LOCATION(0x23, RequestCursedWeaponLocation::new, ConnectionState.IN_GAME),
 	REQUEST_PLEDGE_REORGANIZE_MEMBER(0x24, RequestPledgeReorganizeMember::new, ConnectionState.IN_GAME),
-	REQUEST_EX_MPCC_SHOW_PARTY_MEMBERS_INFO(0x25, RequestExMPCCShowPartyMembersInfo::new, ConnectionState.IN_GAME),
+	REQUEST_EX_MPCC_SHOW_PARTY_MEMBERS_INFO(0x26, RequestExMPCCShowPartyMembersInfo::new, ConnectionState.IN_GAME),
 	REQUEST_DUEL_START(0x27, RequestDuelStart::new, ConnectionState.IN_GAME),
 	REQUEST_DUEL_ANSWER_START(0x28, RequestDuelAnswerStart::new, ConnectionState.IN_GAME),
 	REQUEST_CONFIRM_TARGET_ITEM(0x29, RequestConfirmTargetItem::new, ConnectionState.IN_GAME),

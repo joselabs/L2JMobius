@@ -30,6 +30,7 @@ import org.l2jmobius.gameserver.model.itemcontainer.ItemContainer;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExChangePostState;
+import org.l2jmobius.gameserver.network.serverpackets.ExShowReceivedPostList;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.util.Util;
@@ -254,5 +255,6 @@ public class RequestPostAttachment extends ClientPacket
 		
 		player.sendPacket(new ExChangePostState(true, _msgId, Message.READED));
 		player.sendPacket(SystemMessageId.MAIL_SUCCESSFULLY_RECEIVED);
+		player.sendPacket(new ExShowReceivedPostList(player.getObjectId()));
 	}
 }

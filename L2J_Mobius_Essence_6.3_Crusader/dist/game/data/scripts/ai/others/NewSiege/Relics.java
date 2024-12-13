@@ -1,7 +1,24 @@
+/*
+ * Copyright (c) 2013 L2jMobius
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package ai.others.NewSiege;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.Location;
@@ -15,43 +32,30 @@ import ai.AbstractNpcAI;
 
 public class Relics extends AbstractNpcAI
 {
-	
-	private final static int RELIC_GIRAN = 36792;
-	private final static int RELIC_GODDART = 36793;
-	
-	private final static int ARTIFACT_GIRAN = 35147;
-	private final static int ARTIFACT_GODDART_1 = 35323;
-	private final static int ARTIFACT_GODDART_2 = 35322;
-	
-	private static final Set<Integer> ARTIFACTS = new HashSet<>();
-	static
-	{
-		ARTIFACTS.add(35147);
-		ARTIFACTS.add(35323);
-		ARTIFACTS.add(35322);
-		
-	}
-	
+	// NPCs
+	private static final int RELIC_GIRAN = 36792;
+	private static final int RELIC_GODDART = 36793;
+	private static final int ARTIFACT_GIRAN = 35147;
+	private static final int ARTIFACT_GODDART_1 = 35323;
+	private static final int ARTIFACT_GODDART_2 = 35322;
+	// Zone
 	private static final SiegeZone GIRAN_SIEGE_ZONE = ZoneManager.getInstance().getZoneByName("giran_castle_battlefield_territory", SiegeZone.class);
 	
 	public Relics()
 	{
 		addKillId(RELIC_GIRAN, RELIC_GODDART);
+		addSpawnId(ARTIFACT_GIRAN, ARTIFACT_GODDART_1, ARTIFACT_GODDART_2);
 	}
 	
 	@Override
 	public String onSpawn(Npc npc)
 	{
-		if (ARTIFACTS.contains(npc.getId()))
-		{
-			npc.setDecayed(false);
-			npc.disableCoreAI(true);
-			npc.setImmobilized(true);
-		}
+		npc.setDecayed(false);
+		npc.disableCoreAI(true);
+		npc.setImmobilized(true);
 		return super.onSpawn(npc);
 	}
 	
-	// * TODO pend rework
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
@@ -59,7 +63,6 @@ public class Relics extends AbstractNpcAI
 		{
 			GIRAN_SIEGE_ZONE.broadcastPacket(new ExShowScreenMessage(NpcStringId.GIRAN_HOLY_ARTIFACT_HAS_APPEARED, ExShowScreenMessage.TOP_CENTER, 10000, true));
 			addSpawn(ARTIFACT_GIRAN, new Location(113926, 145088, -2760), false, 60 * 60 * 1000); // 1 hour
-			
 		}
 		else
 		{
@@ -67,8 +70,7 @@ public class Relics extends AbstractNpcAI
 			addSpawn(ARTIFACT_GODDART_2, new Location(149652, -45371, -1727), false, 60 * 60 * 1000); // 1 hour
 			GIRAN_SIEGE_ZONE.broadcastPacket(new ExShowScreenMessage(NpcStringId.GIRAN_HOLY_ARTIFACT_HAS_APPEARED, ExShowScreenMessage.TOP_CENTER, 10000, true));
 		}
-		
-		return null;
+		return super.onKill(npc, killer, isSummon);
 	}
 	
 	public static void main(String[] args)

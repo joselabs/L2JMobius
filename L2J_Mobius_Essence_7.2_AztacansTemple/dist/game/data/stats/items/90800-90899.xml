@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="90800" name="+5 Fire Dragon Pendant Pack" additionalName="7-day" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -259,7 +259,7 @@
 		</capsuled_items>
 	</item>
 	<item id="90815" name="Pirate's Treasure Chest Key" type="EtcItem">
-		<!-- A Key that can open Pirate's Treasure Chest. Covered in a thick layer of rust, might break at any moment. -->
+		<!-- A key that opens Pirate's Chest. Covered in a thick layer of rust, might break at any moment. -->
 		<set name="icon" val="icon.etc_key_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -318,13 +318,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="21600" />
-		<skills>
-			<skill id="3559" level="14" /> <!-- Refined Zaken's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">80</stat>
 			<stat type="maxMp">34</stat>
 		</stats>
+		<skills>
+			<skill id="3559" level="14" /> <!-- Refined Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90820" name="Zaken's Earring Lv. 3" additionalName="30-day" type="Armor">
 		<!-- <Properties>. MP Consumption -4%. Received Healing +10%. HP Recovery Rate +20%. Vampiric Rage effect +8%. Max MP +34. Infection Atk. Rate and Resistance +20%. Shock Atk. Rate and Resistance +15%. Silence Atk. Rate and Resistance +15%. Fear Atk. Rate and Resistance +15%. Available for 30 d. Effects of two identical earrings do not stack. Cannot be enchanted. -->
@@ -338,13 +338,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
-		<skills>
-			<skill id="50442" level="3" /> <!-- Zaken Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">80</stat>
 			<stat type="maxMp">34</stat>
 		</stats>
+		<skills>
+			<skill id="50442" level="3" /> <!-- Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90821" name="My Teleport Book - 1 slot" type="EtcItem">
 		<!-- My Teleport Slots +1 (max - 48). -->
@@ -359,7 +359,7 @@
 		<set name="is_freightable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39301" level="1" /> <!-- Increase number of teleport slots. -->
+			<skill id="39301" level="1" /> <!-- My Teleport Book -->
 		</skills>
 	</item>
 	<item id="90822" name="Sealed Doll of Border - Baium" additionalName="30-day" type="EtcItem">
@@ -503,17 +503,25 @@
 		<set name="material" val="LIQUID" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39306" level="1" /> <!-- White Assassin Transformation Scroll -->
+			<skill id="39306" level="1" /> <!-- White Assassin Transformation -->
 		</skills>
 	</item>
 	<item id="90832" name="Glorious Amulet" additionalName="7-day" type="EtcItem">
 		<!-- Available for 7 d. When in inventory, STR +1, INT +1, CON +1, MEN +1, DEX +1, WIT +1. -->
 		<set name="icon" val="BranchSys3.icon.g_rune_itemdrop_up" />
-		<set name="is_tradable" val="false" />
+		<set name="immediate_effect" val="true" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="is_dropable" val="false" />
+		<set name="is_tradable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_premium" val="true" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="time" val="10080" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39082" level="1" /> <!-- Glorious Amulet -->
+		</skills>
 	</item>
 	<item id="90833" name="Agathion Joy" additionalName="Not Available" type="Armor">
 		<!-- The item is not available. Available for 7 d. Enables to summon agathion Joy when equipped. <Active Skills>. 1. Agathion Teleport: teleports to Giran, Gludio, Dion, Oren, Hunters Village (cooldown: 1 min.). <Item Skill>. 1. Evidence Chase: Speed +66 for 15 sec.. <Item Skill>2. Secret Investigation: monsters don't attack first. -->
@@ -549,7 +557,7 @@
 		<set name="material" val="PAPER" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39308" level="1" /> <!-- Life Control Tower's Scroll of Blessing - Event -->
+			<skill id="39308" level="1" /> <!-- Life Control Tower's Scroll of Blessing -->
 		</skills>
 	</item>
 	<item id="90836" name="Hero's XP Amulet" additionalName="7-day" type="EtcItem">
@@ -566,7 +574,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="time" val="10080" />
 		<skills>
-			<skill id="39057" level="1" /> <!-- Warrior Experience Amulet -->
+			<skill id="39057" level="1" /> <!-- Hero's XP Amulet -->
 		</skills>
 	</item>
 	<item id="90837" name="White Uniform Hat (STR+1 INT+1)" type="Armor">
@@ -581,6 +589,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45021" level="1" /> <!-- White Uniform Hat (STR+1 INT+1) -->
+		</skills>
 	</item>
 	<item id="90838" name="White Uniform Hat (DEX+1 WIT+1)" type="Armor">
 		<!-- A white uniform hat that makes you feel like a proper seaman. DEX +1, WIT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -594,6 +606,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45022" level="1" /> <!-- White Uniform Hat (DEX +1 WIT +1) -->
+		</skills>
 	</item>
 	<item id="90839" name="White Uniform Hat (CON+1 MEN+1)" type="Armor">
 		<!-- A white uniform hat that makes you feel like a proper seaman. CON +1, MEN +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -607,6 +623,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45023" level="1" /> <!-- White Uniform Hat (CON+1 MEN+1) -->
+		</skills>
 	</item>
 	<item id="90840" name="Napoleon Hat (STR+1 INT+1)" type="Armor">
 		<!-- A three-cornered hat worn by a great emperor. STR +1, INT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -620,6 +640,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45024" level="1" /> <!-- Napoleon Hat (STR+1 INT+1) -->
+		</skills>
 	</item>
 	<item id="90841" name="Napoleon Hat (DEX+1 WIT+1)" type="Armor">
 		<!-- A three-cornered hat worn by a great emperor. DEX +1, WIT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -633,6 +657,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45025" level="1" /> <!-- Napoleon Hat (DEX +1 WIT +1) -->
+		</skills>
 	</item>
 	<item id="90842" name="Napoleon Hat (CON+1 MEN+1)" type="Armor">
 		<!-- A three-cornered hat worn by a great emperor. CON +1, MEN +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -646,6 +674,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45026" level="1" /> <!-- Napoleon Hat (CON+1 MEN+1) -->
+		</skills>
 	</item>
 	<item id="90843" name="Ninja Hair Accessory (STR+1 INT+1)" type="Armor">
 		<!-- A ninja head accessory. STR +1, INT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -659,6 +691,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45027" level="1" /> <!-- Ninja Head Accessory (STR+1 INT+1) -->
+		</skills>
 	</item>
 	<item id="90844" name="Ninja Hair Accessory (DEX+1 WIT+1)" type="Armor">
 		<!-- A ninja head accessory. DEX +1, WIT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -672,6 +708,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45028" level="1" /> <!-- Ninja Head Accessory (DEX+1 WIT+1) -->
+		</skills>
 	</item>
 	<item id="90845" name="Ninja Hair Accessory (CON+1 MEN+1)" type="Armor">
 		<!-- A ninja head accessory. CON +1, MEN +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -685,6 +725,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45029" level="1" /> <!-- Ninja Head Accessory (CON+1 MEN+1) -->
+		</skills>
 	</item>
 	<item id="90846" name="Warrior's Helmet (STR+1 INT+1)" type="Armor">
 		<!-- An ancient helmet of a brave warrior. STR +1, INT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -698,6 +742,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45030" level="1" /> <!-- Warrior's Helmet (STR+1 INT+1) -->
+		</skills>
 	</item>
 	<item id="90847" name="Warrior's Helmet (DEX+1 WIT+1)" type="Armor">
 		<!-- An ancient helmet of a brave warrior. DEX +1, WIT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -711,6 +759,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45031" level="1" /> <!-- Warrior's Helmet (DEX +1 WIT +1) -->
+		</skills>
 	</item>
 	<item id="90848" name="Warrior's Helmet (CON+1 MEN+1)" type="Armor">
 		<!-- An ancient helmet of a brave warrior. CON +1, MEN +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -724,6 +776,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45032" level="1" /> <!-- Warrior's Helmet (CON+1 MEN+1) -->
+		</skills>
 	</item>
 	<item id="90849" name="First Mate Hat (STR+1 INT+1)" type="Armor">
 		<!-- A fancy cap with golden decorations. STR +1, INT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -737,6 +793,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45033" level="1" /> <!-- First Mate Hat (STR+1 INT+1) -->
+		</skills>
 	</item>
 	<item id="90850" name="First Mate Hat (DEX+1 WIT+1)" type="Armor">
 		<!-- A fancy cap with golden decorations. DEX +1, WIT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -750,6 +810,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45034" level="1" /> <!-- First Mate Hat (DEX +1 WIT +1) -->
+		</skills>
 	</item>
 	<item id="90851" name="First Mate Hat (CON+1 MEN+1)" type="Armor">
 		<!-- A fancy cap with golden decorations. CON +1, MEN +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -763,6 +827,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45035" level="1" /> <!-- First Mate Hat (CON+1 MEN+1) -->
+		</skills>
 	</item>
 	<item id="90852" name="Artisan's Goggles (STR+1 INT+1)" type="Armor">
 		<!-- Large goggles for eye protection. STR +1, INT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -776,6 +844,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45036" level="1" /> <!-- Artisan's Goggles (STR +1 INT +1) -->
+		</skills>
 	</item>
 	<item id="90853" name="Artisan's Goggles (DEX+1 WIT+1)" type="Armor">
 		<!-- Large goggles for eye protection. DEX +1, WIT +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -789,6 +861,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45037" level="1" /> <!-- Artisan's Goggles (DEX +1 WIT +1) -->
+		</skills>
 	</item>
 	<item id="90854" name="Artisan's Goggles (CON+1 MEN+1)" type="Armor">
 		<!-- Large goggles for eye protection. CON +1, MEN +1. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
@@ -802,6 +878,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="45038" level="1" /> <!-- Artisan's Goggles (CON +1 MEN +1) -->
+		</skills>
 	</item>
 	<item id="90855" name="Eva's Stable Scroll: Enchant Hair Accessory" type="EtcItem">
 		<!-- M. Def. +2. Starting from +5, additional special effects are activated and Max HP/ MP/ CP are increased. Starting from +6, the enchant level remains the same in case of failure. <font color=ff6666>Cannot be used for mass enchanting.</font> -->
@@ -858,24 +938,24 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="90837" min="1" max="1" chance="5.555555" /> <!-- White Uniform Hat <STR+1 INT+1> -->
-			<item id="90838" min="1" max="1" chance="5.555555" /> <!-- White Uniform Hat <DEX +1 WIT +1> -->
-			<item id="90839" min="1" max="1" chance="5.555555" /> <!-- White Uniform Hat <CON+1 MEN+1> -->
-			<item id="90840" min="1" max="1" chance="5.555555" /> <!-- Napoleon Hat <STR+1 INT+1> -->
-			<item id="90841" min="1" max="1" chance="5.555555" /> <!-- Napoleon Hat <DEX +1 WIT +1> -->
-			<item id="90842" min="1" max="1" chance="5.555555" /> <!-- Napoleon Hat <CON+1 MEN+1> -->
-			<item id="90843" min="1" max="1" chance="5.555555" /> <!-- Ninja Head Accessory <STR+1 INT+1> -->
-			<item id="90844" min="1" max="1" chance="5.555555" /> <!-- Ninja Head Accessory <DEX+1 WIT+1> -->
-			<item id="90845" min="1" max="1" chance="5.555555" /> <!-- Ninja Head Accessory <CON+1 MEN+1> -->
-			<item id="90846" min="1" max="1" chance="5.555555" /> <!-- Warrior's Helmet <STR+1 INT+1> -->
-			<item id="90847" min="1" max="1" chance="5.555555" /> <!-- Warrior's Helmet <DEX +1 WIT +1> -->
-			<item id="90848" min="1" max="1" chance="5.555555" /> <!-- Warrior's Helmet <CON+1 MEN+1> -->
-			<item id="90849" min="1" max="1" chance="5.555555" /> <!-- First Mate Hat <STR+1 INT+1> -->
-			<item id="90850" min="1" max="1" chance="5.555555" /> <!-- First Mate Hat <DEX +1 WIT +1> -->
-			<item id="90851" min="1" max="1" chance="5.555555" /> <!-- First Mate Hat <CON+1 MEN+1> -->
-			<item id="90852" min="1" max="1" chance="5.555555" /> <!-- Artisan's Goggles <STR +1 INT +1> -->
-			<item id="90853" min="1" max="1" chance="5.555555" /> <!-- Artisan's Goggles <DEX +1 WIT +1> -->
-			<item id="90854" min="1" max="1" chance="5.555555" /> <!-- Artisan's Goggles <CON +1 MEN +1> -->
+			<item id="90837" min="1" max="1" chance="5.555555" /> <!-- White Uniform Hat (STR+1 INT+1) -->
+			<item id="90838" min="1" max="1" chance="5.555555" /> <!-- White Uniform Hat (DEX +1 WIT +1) -->
+			<item id="90839" min="1" max="1" chance="5.555555" /> <!-- White Uniform Hat (CON+1 MEN+1) -->
+			<item id="90840" min="1" max="1" chance="5.555555" /> <!-- Napoleon Hat (STR+1 INT+1) -->
+			<item id="90841" min="1" max="1" chance="5.555555" /> <!-- Napoleon Hat (DEX +1 WIT +1) -->
+			<item id="90842" min="1" max="1" chance="5.555555" /> <!-- Napoleon Hat (CON+1 MEN+1) -->
+			<item id="90843" min="1" max="1" chance="5.555555" /> <!-- Ninja Head Accessory (STR+1 INT+1) -->
+			<item id="90844" min="1" max="1" chance="5.555555" /> <!-- Ninja Head Accessory (DEX+1 WIT+1) -->
+			<item id="90845" min="1" max="1" chance="5.555555" /> <!-- Ninja Head Accessory (CON+1 MEN+1) -->
+			<item id="90846" min="1" max="1" chance="5.555555" /> <!-- Warrior's Helmet (STR+1 INT+1) -->
+			<item id="90847" min="1" max="1" chance="5.555555" /> <!-- Warrior's Helmet (DEX +1 WIT +1) -->
+			<item id="90848" min="1" max="1" chance="5.555555" /> <!-- Warrior's Helmet (CON+1 MEN+1) -->
+			<item id="90849" min="1" max="1" chance="5.555555" /> <!-- First Mate Hat (STR+1 INT+1) -->
+			<item id="90850" min="1" max="1" chance="5.555555" /> <!-- First Mate Hat (DEX +1 WIT +1) -->
+			<item id="90851" min="1" max="1" chance="5.555555" /> <!-- First Mate Hat (CON+1 MEN+1) -->
+			<item id="90852" min="1" max="1" chance="5.555555" /> <!-- Artisan's Goggles (STR +1 INT +1) -->
+			<item id="90853" min="1" max="1" chance="5.555555" /> <!-- Artisan's Goggles (DEX +1 WIT +1) -->
+			<item id="90854" min="1" max="1" chance="5.555555" /> <!-- Artisan's Goggles (CON +1 MEN +1) -->
 		</capsuled_items>
 	</item>
 	<item id="90860" name="Lucky Hat" additionalName="30-day" type="Armor">
@@ -1084,9 +1164,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">139</stat>
 			<stat type="mAtk">83</stat>
@@ -1096,6 +1173,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="90872" name="Piece of Wood" type="EtcItem">
 		<!-- Give it to Bliss to receive a Magic Woodpile. -->
@@ -1154,7 +1234,7 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51003" level="1" /> <!-- Sayha Grace Box -->
+			<skill id="51003" level="1" /> <!-- Sayha's Grace Box -->
 		</skills>
 	</item>
 	<item id="90877" name="Sayha's Golden Treasure" type="EtcItem">
@@ -1220,7 +1300,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="time" val="10080" />
 		<skills>
-			<skill id="39057" level="1" /> <!-- Warrior Experience Amulet -->
+			<skill id="39057" level="1" /> <!-- Hero's XP Amulet -->
 		</skills>
 	</item>
 	<item id="90882" name="Eva's Stable Scroll: Enchant Hair Accessory (Low-grade)" type="EtcItem">
@@ -1257,7 +1337,7 @@
 		<set name="time" val="1440" />
 	</item>
 	<item id="90885" name="Agathion Singer and Dancer" additionalName="30-day" type="Armor">
-		<!-- Available for 30 d. Activates 2 agathion slots. <Active Skills>. 1. Dance of Fury: P. Atk. +5% for 20 min. 2. Dance of Concentration: M. Atk. +5% for 20 min. 3. Song of Wind: Speed +20 for 5 min. Cooldown: 10 min. Note!. The effects of Dance of Fury, Dance of Concentration, and Song of Wind don't stack. -->
+		<!-- Available for 30 d. Activates 2 agathion slots. <Active skills>. 1. Dance of Fury: Atk. Spd. +5% for 20 min. 2. Dance of Concentration: Casting Spd. +5% for 20 min. 3. Song of Wind: Speed +20 for 5 min. Cooldown: 10 min. Note!. The effects of Dance of Fury, Dance of Concentration, and Song of Wind don't stack. -->
 		<set name="icon" val="BranchSys2.icon.br_aga_singer_dancer_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -1269,17 +1349,17 @@
 		<set name="time" val="43200" />
 		<set name="weight" val="100" />
 		<skills>
-			<skill id="51025" level="1" /> <!-- Expand Agathion Slots -->
-			<skill id="21233" level="1" /> <!-- Release Agathion's Seal - Singer and Dancer -->
+			<skill id="51025" level="1" /> <!-- Expand Primary and Secondary Agathion Slots -->
+			<skill id="21233" level="1" /> <!-- Summon Agathion Singer and Dancer -->
 			<skill id="23234" level="1" /> <!-- Singer and Dancer Agathion Cute Trick -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
-			<skill id="39016" level="1" /> <!-- Seal Agathion -->
-			<skill id="39017" level="1" /> <!-- Seal Agathion -->
-			<skill id="39018" level="1" /> <!-- Seal Agathion -->
+			<skill id="39016" level="1" /> <!-- Dance of Fury -->
+			<skill id="39017" level="1" /> <!-- Dance of Concentration -->
+			<skill id="39018" level="1" /> <!-- Song of Wind -->
 		</skills>
 	</item>
 	<item id="90886" name="Agathion Singer and Dancer" additionalName="90-day" type="Armor">
-		<!-- Available for 90 d. Activates 2 agathion slots. <Active Skills>. 1. Dance of Fury: P. Atk. +5% for 20 min. 2. Dance of Concentration: M. Atk. +5% for 20 min. 3. Song of Wind: Speed +20 for 5 min. Cooldown: 10 min. Note!. The effects of Dance of Fury, Dance of Concentration, and Song of Wind don't stack. -->
+		<!-- Available for 90 d. Activates 2 agathion slots. <Active skills>. 1. Dance of Fury: Atk. Spd. +5% for 20 min. 2. Dance of Concentration: Casting Spd. +5% for 20 min. 3. Song of Wind: Speed +20 for 5 min. Cooldown: 10 min. Note!. The effects of Dance of Fury, Dance of Concentration, and Song of Wind don't stack. -->
 		<set name="icon" val="BranchSys2.icon.br_aga_singer_dancer_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -1292,13 +1372,13 @@
 		<set name="time" val="129600" />
 		<set name="weight" val="100" />
 		<skills>
-			<skill id="51025" level="1" /> <!-- Expand Agathion Slots -->
-			<skill id="21233" level="1" /> <!-- Release Agathion's Seal - Singer and Dancer -->
+			<skill id="51025" level="1" /> <!-- Expand Primary and Secondary Agathion Slots -->
+			<skill id="21233" level="1" /> <!-- Summon Agathion Singer and Dancer -->
 			<skill id="23234" level="1" /> <!-- Singer and Dancer Agathion Cute Trick -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
-			<skill id="39016" level="1" /> <!-- Seal Agathion -->
-			<skill id="39017" level="1" /> <!-- Seal Agathion -->
-			<skill id="39018" level="1" /> <!-- Seal Agathion -->
+			<skill id="39016" level="1" /> <!-- Dance of Fury -->
+			<skill id="39017" level="1" /> <!-- Dance of Concentration -->
+			<skill id="39018" level="1" /> <!-- Song of Wind -->
 		</skills>
 	</item>
 	<item id="90887" name="Agathion Bracelet Lv. 3" additionalName="60 days" type="Armor">
@@ -1315,7 +1395,7 @@
 		<set name="time" val="86400" />
 		<set name="weight" val="100" />
 		<skills>
-			<skill id="51025" level="2" /> <!-- Expand Agathion Slots -->
+			<skill id="51025" level="2" /> <!-- Expand Primary and Secondary Agathion Slots -->
 			<skill id="55885" level="1" /> <!-- Agathion Bracelet Stats Increase -->
 		</skills>
 	</item>
@@ -1331,7 +1411,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50565" level="1" /> <!-- Agathion Bracelet Lv. 1 Lv1 -->
+			<skill id="50565" level="1" /> <!-- Agathion Bracelet Lv. 1 -->
 		</skills>
 	</item>
 	<item id="90889" name="Agathion Bracelet Lv. 2" type="Armor">
@@ -1345,7 +1425,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50565" level="2" /> <!-- Agathion Bracelet Lv. 1 Lv2 -->
+			<skill id="50565" level="2" /> <!-- Agathion Bracelet Lv. 2 -->
 		</skills>
 	</item>
 	<item id="90890" name="Agathion Bracelet Lv. 3" type="Armor">
@@ -1359,7 +1439,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50565" level="3" /> <!-- Agathion Bracelet Lv. 1 Lv3 -->
+			<skill id="50565" level="3" /> <!-- Agathion Bracelet Lv. 3 -->
 		</skills>
 	</item>
 	<item id="90891" name="Agathion Bracelet Lv. 4" type="Armor">
@@ -1373,7 +1453,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50565" level="4" /> <!-- Agathion Bracelet Lv. 1 Lv4 -->
+			<skill id="50565" level="4" /> <!-- Agathion Bracelet Lv. 4 -->
 		</skills>
 	</item>
 	<item id="90892" name="Agathion Joy" additionalName="Sealed" type="Armor">
@@ -1388,7 +1468,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51025" level="1" /> <!-- Expand Agathion Slots -->
+			<skill id="51025" level="1" /> <!-- Expand Primary and Secondary Agathion Slots -->
 			<skill id="39101" level="1" /> <!-- Evidence Chase -->
 			<skill id="39102" level="1" /> <!-- Secret Investigation -->
 		</skills>
@@ -1406,7 +1486,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<skills>
-			<skill id="51025" level="1" /> <!-- Expand Agathion Slots -->
+			<skill id="51025" level="1" /> <!-- Expand Primary and Secondary Agathion Slots -->
 			<skill id="39101" level="1" /> <!-- Evidence Chase -->
 			<skill id="39102" level="1" /> <!-- Secret Investigation -->
 		</skills>
@@ -1455,7 +1535,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="8256" level="1" type="ON_EQUIP" /> <!-- Release Agathion's Seal - Joy -->
+			<skill id="8256" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Joy -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -1472,7 +1552,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<skills>
-			<skill id="8256" level="1" type="ON_EQUIP" /> <!-- Release Agathion's Seal - Joy -->
+			<skill id="8256" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Joy -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>

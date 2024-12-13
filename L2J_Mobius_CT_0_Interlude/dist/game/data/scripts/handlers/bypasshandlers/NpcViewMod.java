@@ -88,7 +88,7 @@ public class NpcViewMod implements IBypassHandler
 					target = player.getTarget();
 				}
 				
-				final Npc npc = target instanceof Npc ? (Npc) target : null;
+				final Npc npc = target instanceof Npc ? target.asNpc() : null;
 				if (npc == null)
 				{
 					return false;
@@ -110,7 +110,7 @@ public class NpcViewMod implements IBypassHandler
 				{
 					final DropType dropListType = Enum.valueOf(DropType.class, dropListTypeString);
 					final WorldObject target = World.getInstance().findObject(Integer.parseInt(st.nextToken()));
-					final Npc npc = target instanceof Npc ? (Npc) target : null;
+					final Npc npc = target instanceof Npc ? target.asNpc() : null;
 					if (npc == null)
 					{
 						return false;
@@ -325,6 +325,10 @@ public class NpcViewMod implements IBypassHandler
 				if (Config.RATE_DROP_CHANCE_BY_ID.get(dropItem.getItemId()) != null)
 				{
 					rateChance *= Config.RATE_DROP_CHANCE_BY_ID.get(dropItem.getItemId());
+					if ((dropItem.getItemId() == Inventory.ADENA_ID) && (rateChance > 100))
+					{
+						rateChance = 100;
+					}
 				}
 				else if (item.hasExImmediateEffect())
 				{

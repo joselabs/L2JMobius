@@ -72,6 +72,9 @@ public enum Stat
 	ADDITIONAL_POTION_HP("addPotionHp"),
 	ADDITIONAL_POTION_MP("addPotionMp"),
 	ADDITIONAL_POTION_CP("addPotionCp"),
+	ADDITIONAL_POTION_HP_PER("addPotionHpPer"),
+	ADDITIONAL_POTION_MP_PER("addPotionMpPer"),
+	ADDITIONAL_POTION_CP_PER("addPotionCpPer"),
 	MANA_CHARGE("manaCharge"),
 	HEAL_EFFECT("healEffect"),
 	HEAL_EFFECT_ADD("healEffectAdd"),
@@ -99,6 +102,8 @@ public enum Stat
 	REAR_DAMAGE_RATE("rearDamage"),
 	AUTO_ATTACK_DAMAGE_BONUS("autoAttackDamageBonus"),
 	IGNORE_REDUCE_DAMAGE("ignoreReduceDamage"),
+	STATIC_PHYSICAL_ATTACK_SPEED("staticPAtkSpeed"),
+	STATIC_MAGICAL_ATTACK_SPEED("staticMAtkSpeed"),
 	
 	// ELEMENTAL SPIRITS
 	ELEMENTAL_SPIRIT_FIRE_ATTACK("elementalSpiritFireAttack"),
@@ -190,6 +195,8 @@ public enum Stat
 	BONUS_SPOIL_RATE("bonusSpoilRate"),
 	BONUS_RAID_POINTS("bonusRaidPoints"),
 	ATTACK_CANCEL("cancel"),
+	ACCESSORY_MAGICAL_DEFENCE("accessoryMagicalDefence"),
+	ARMOR_PHYSICAL_DEFENCE("armorPhysicalDefence"),
 	
 	// ACCURACY & RANGE
 	ACCURACY_COMBAT("accCombat", new PAccuracyFinalizer()),
@@ -211,6 +218,7 @@ public enum Stat
 	SWIM_WALK_SPEED("slowSimSpd", new SpeedFinalizer()),
 	FLY_RUN_SPEED("fastFlySpd", new SpeedFinalizer()),
 	FLY_WALK_SPEED("slowFlySpd", new SpeedFinalizer()),
+	STATIC_SPEED("staticSpeed"),
 	
 	// BASIC STATS
 	STAT_STR("STR", new BaseStatFinalizer()),
@@ -325,6 +333,8 @@ public enum Stat
 	
 	// Cubic Count
 	MAX_CUBIC("cubicCount"),
+	
+	BEAST_POINTS_ADD("beastPointsAdd"),
 	
 	// The maximum allowed range to be damaged/debuffed from.
 	SPHERIC_BARRIER_RANGE("sphericBarrier"),

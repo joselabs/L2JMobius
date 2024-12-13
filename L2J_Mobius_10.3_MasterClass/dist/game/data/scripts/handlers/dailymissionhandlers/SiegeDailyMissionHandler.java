@@ -95,8 +95,9 @@ public class SiegeDailyMissionHandler extends AbstractDailyMissionHandler
 			return false;
 		}
 		
-		final int clanMastery = player.getClan().hasMastery(14) ? 14 : player.getClan().hasMastery(15) ? 15 : player.getClan().hasMastery(16) ? 16 : 0;
-		return ((player.getClan().getLevel() >= _minClanLevel) && (clanMastery >= _minClanMasteryLevel));
+		final Clan clan = player.getClan();
+		final int clanMastery = clan.hasMastery(14) ? 14 : clan.hasMastery(15) ? 15 : clan.hasMastery(16) ? 16 : 0;
+		return ((clan.getLevel() >= _minClanLevel) && (clanMastery >= _minClanMasteryLevel));
 	}
 	
 	private void processSiegeClan(SiegeClan siegeClan)

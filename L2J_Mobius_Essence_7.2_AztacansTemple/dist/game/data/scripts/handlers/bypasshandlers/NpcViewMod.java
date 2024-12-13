@@ -33,10 +33,10 @@ import org.l2jmobius.gameserver.handler.IBypassHandler;
 import org.l2jmobius.gameserver.model.Spawn;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.stat.PlayerStat;
 import org.l2jmobius.gameserver.model.holders.DropGroupHolder;
 import org.l2jmobius.gameserver.model.holders.DropHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -92,7 +92,7 @@ public class NpcViewMod implements IBypassHandler
 					target = player.getTarget();
 				}
 				
-				final Npc npc = target instanceof Npc ? (Npc) target : null;
+				final Npc npc = target instanceof Npc ? target.asNpc() : null;
 				if (npc == null)
 				{
 					return false;
@@ -114,7 +114,7 @@ public class NpcViewMod implements IBypassHandler
 				{
 					final DropType dropListType = Enum.valueOf(DropType.class, dropListTypeString);
 					final WorldObject target = World.getInstance().findObject(Integer.parseInt(st.nextToken()));
-					final Npc npc = target instanceof Npc ? (Npc) target : null;
+					final Npc npc = target instanceof Npc ? target.asNpc() : null;
 					if (npc == null)
 					{
 						return false;
@@ -152,7 +152,7 @@ public class NpcViewMod implements IBypassHandler
 					target = player.getTarget();
 				}
 				
-				final Npc npc = target instanceof Npc ? (Npc) target : null;
+				final Npc npc = target instanceof Npc ? target.asNpc() : null;
 				if (npc == null)
 				{
 					return false;
@@ -180,7 +180,7 @@ public class NpcViewMod implements IBypassHandler
 					target = player.getTarget();
 				}
 				
-				final Npc npc = target instanceof Npc ? (Npc) target : null;
+				final Npc npc = target instanceof Npc ? target.asNpc() : null;
 				if (npc == null)
 				{
 					return false;
@@ -302,7 +302,7 @@ public class NpcViewMod implements IBypassHandler
 		final StringBuilder sb = new StringBuilder();
 		if (npc.isAttackable())
 		{
-			((Attackable) npc).getAggroList().values().forEach(a ->
+			npc.asAttackable().getAggroList().values().forEach(a ->
 			{
 				sb.append("<table width=277 height=32 cellspacing=0 background=\"L2UI_CT1.Windows.Windows_DF_TooltipBG\">");
 				sb.append("<tr><td width=110>");
@@ -420,10 +420,11 @@ public class NpcViewMod implements IBypassHandler
 		final DecimalFormat chanceFormat = new DecimalFormat("0.00##");
 		int leftHeight = 0;
 		int rightHeight = 0;
-		final double dropAmountAdenaEffectBonus = player.getStat().getMul(Stat.BONUS_DROP_ADENA, 1);
-		final double dropAmountEffectBonus = player.getStat().getMul(Stat.BONUS_DROP_AMOUNT, 1);
-		final double dropRateEffectBonus = player.getStat().getMul(Stat.BONUS_DROP_RATE, 1);
-		final double spoilRateEffectBonus = player.getStat().getMul(Stat.BONUS_SPOIL_RATE, 1);
+		final PlayerStat stat = player.getStat();
+		final double dropAmountAdenaEffectBonus = stat.getMul(Stat.BONUS_DROP_ADENA, 1);
+		final double dropAmountEffectBonus = stat.getMul(Stat.BONUS_DROP_AMOUNT, 1);
+		final double dropRateEffectBonus = stat.getMul(Stat.BONUS_DROP_RATE, 1);
+		final double spoilRateEffectBonus = stat.getMul(Stat.BONUS_SPOIL_RATE, 1);
 		final StringBuilder leftSb = new StringBuilder();
 		final StringBuilder rightSb = new StringBuilder();
 		String limitReachedMsg = "";
@@ -457,6 +458,10 @@ public class NpcViewMod implements IBypassHandler
 				if (Config.RATE_DROP_CHANCE_BY_ID.get(dropItem.getItemId()) != null)
 				{
 					rateChance *= Config.RATE_DROP_CHANCE_BY_ID.get(dropItem.getItemId());
+					if ((dropItem.getItemId() == Inventory.ADENA_ID) && (rateChance > 100))
+					{
+						rateChance = 100;
+					}
 				}
 				else if (item.hasExImmediateEffect())
 				{
@@ -536,7 +541,7 @@ public class NpcViewMod implements IBypassHandler
 				rateChance *= dropRateEffectBonus;
 				if (item.getId() == Inventory.LCOIN_ID)
 				{
-					rateChance *= player.getStat().getMul(Stat.BONUS_DROP_RATE_LCOIN, 1);
+					rateChance *= stat.getMul(Stat.BONUS_DROP_RATE_LCOIN, 1);
 				}
 			}
 			

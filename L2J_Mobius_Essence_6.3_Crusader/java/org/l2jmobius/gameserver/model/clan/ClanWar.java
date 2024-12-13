@@ -48,8 +48,20 @@ public class ClanWar
 	private final long _startTime;
 	private long _endTime = 0;
 	
+	public static enum WarProgress
+	{
+		VERY_LOW,
+		LOW,
+		NORMAL,
+		HIGH,
+		VERY_HIGH;
+	}
+	
 	private final AtomicInteger _attackerKillCount = new AtomicInteger();
 	private final AtomicInteger _attackedKillCount = new AtomicInteger();
+	
+	private boolean _attackerDeclared;
+	private boolean _attackedDeclared;
 	
 	public ClanWar(Clan attacker, Clan attacked)
 	{
@@ -209,19 +221,31 @@ public class ClanWar
 	
 	public void mutualClanWarAccepted(Clan attacker, Clan attacked)
 	{
-		_state = ClanWarState.MUTUAL;
-		SystemMessage sm = new SystemMessage(SystemMessageId.A_CLAN_WAR_WITH_CLAN_S1_HAS_STARTED_THE_CLAN_THAT_CANCELS_THE_WAR_FIRST_WILL_LOSE_500_CLAN_REPUTATION_POINTS_IF_YOUR_CLAN_MEMBER_GETS_KILLED_BY_THE_OTHER_CLAN_XP_DECREASES_BY_1_4_OF_THE_AMOUNT_THAT_DECREASES_IN_HUNTING_ZONES);
-		sm.addString(attacker.getName());
-		attacked.broadcastToOnlineMembers(sm);
-		
-		sm = new SystemMessage(SystemMessageId.A_CLAN_WAR_WITH_CLAN_S1_HAS_STARTED_THE_CLAN_THAT_CANCELS_THE_WAR_FIRST_WILL_LOSE_500_CLAN_REPUTATION_POINTS_IF_YOUR_CLAN_MEMBER_GETS_KILLED_BY_THE_OTHER_CLAN_XP_DECREASES_BY_1_4_OF_THE_AMOUNT_THAT_DECREASES_IN_HUNTING_ZONES);
-		sm.addString(attacked.getName());
-		attacker.broadcastToOnlineMembers(sm);
-		
-		if (_cancelTask != null)
+		if (attacker.getId() == _attackerClanId)
 		{
-			_cancelTask.cancel(true);
-			_cancelTask = null;
+			_attackerDeclared = true;
+		}
+		else if (attacker.getId() == _attackedClanId)
+		{
+			_attackedDeclared = true;
+		}
+		
+		if (_attackerDeclared && _attackedDeclared)
+		{
+			_state = ClanWarState.MUTUAL;
+			SystemMessage sm = new SystemMessage(SystemMessageId.A_CLAN_WAR_WITH_CLAN_S1_HAS_STARTED_THE_CLAN_THAT_CANCELS_THE_WAR_FIRST_WILL_LOSE_500_CLAN_REPUTATION_POINTS_IF_YOUR_CLAN_MEMBER_GETS_KILLED_BY_THE_OTHER_CLAN_XP_DECREASES_BY_1_4_OF_THE_AMOUNT_THAT_DECREASES_IN_HUNTING_ZONES);
+			sm.addString(attacker.getName());
+			attacked.broadcastToOnlineMembers(sm);
+			
+			sm = new SystemMessage(SystemMessageId.A_CLAN_WAR_WITH_CLAN_S1_HAS_STARTED_THE_CLAN_THAT_CANCELS_THE_WAR_FIRST_WILL_LOSE_500_CLAN_REPUTATION_POINTS_IF_YOUR_CLAN_MEMBER_GETS_KILLED_BY_THE_OTHER_CLAN_XP_DECREASES_BY_1_4_OF_THE_AMOUNT_THAT_DECREASES_IN_HUNTING_ZONES);
+			sm.addString(attacked.getName());
+			attacker.broadcastToOnlineMembers(sm);
+			
+			if (_cancelTask != null)
+			{
+				_cancelTask.cancel(true);
+				_cancelTask = null;
+			}
 		}
 	}
 	
@@ -237,6 +261,32 @@ public class ClanWar
 			return _winnerClanId == clan.getId() ? ClanWarState.WIN : ClanWarState.LOSS;
 		}
 		return _state;
+	}
+	
+	public WarProgress calculateWarProgress(Clan clan)
+	{
+		int pointDiff = getKillDifference(clan);
+		if (pointDiff <= -50)
+		{
+			return WarProgress.VERY_LOW;
+		}
+		
+		if ((pointDiff > -50) && (pointDiff <= -20))
+		{
+			return WarProgress.LOW;
+		}
+		
+		if ((pointDiff > -20) && (pointDiff <= 19))
+		{
+			return WarProgress.NORMAL;
+		}
+		
+		if ((pointDiff > 19) && (pointDiff <= 49))
+		{
+			return WarProgress.HIGH;
+		}
+		
+		return WarProgress.VERY_HIGH;
 	}
 	
 	public int getAttackerClanId()

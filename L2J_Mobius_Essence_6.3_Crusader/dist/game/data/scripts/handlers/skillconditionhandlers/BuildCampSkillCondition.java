@@ -24,6 +24,7 @@ import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Fort;
 import org.l2jmobius.gameserver.model.skill.ISkillCondition;
@@ -49,9 +50,10 @@ public class BuildCampSkillCondition implements ISkillCondition
 			return false;
 		}
 		
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
 		boolean canCreateBase = true;
-		if (player.isAlikeDead() || player.isCursedWeaponEquipped() || (player.getClan() == null))
+		final Clan clan = player.getClan();
+		if (player.isAlikeDead() || player.isCursedWeaponEquipped() || (clan == null))
 		{
 			canCreateBase = false;
 		}
@@ -73,7 +75,7 @@ public class BuildCampSkillCondition implements ISkillCondition
 			player.sendPacket(sm);
 			canCreateBase = false;
 		}
-		else if (((castle != null) && (castle.getSiege().getAttackerClan(player.getClan()) == null)) || ((fort != null) && (fort.getSiege().getAttackerClan(player.getClan()) == null)))
+		else if (((castle != null) && (castle.getSiege().getAttackerClan(clan) == null)) || ((fort != null) && (fort.getSiege().getAttackerClan(clan) == null)))
 		{
 			sm = new SystemMessage(SystemMessageId.S1_THE_FUNCTION_CANNOT_BE_USED_AS_CERTAIN_REQUIREMENTS_ARE_NOT_MET);
 			sm.addSkillName(skill);
@@ -87,7 +89,7 @@ public class BuildCampSkillCondition implements ISkillCondition
 			player.sendPacket(sm);
 			canCreateBase = false;
 		}
-		else if (((castle != null) && (castle.getSiege().getAttackerClan(player.getClan()).getNumFlags() >= SiegeManager.getInstance().getFlagMaxCount())) || ((fort != null) && (fort.getSiege().getAttackerClan(player.getClan()).getNumFlags() >= FortSiegeManager.getInstance().getFlagMaxCount())))
+		else if (((castle != null) && (castle.getSiege().getAttackerClan(clan).getNumFlags() >= SiegeManager.getInstance().getFlagMaxCount())) || ((fort != null) && (fort.getSiege().getAttackerClan(clan).getNumFlags() >= FortSiegeManager.getInstance().getFlagMaxCount())))
 		{
 			sm = new SystemMessage(SystemMessageId.S1_THE_FUNCTION_CANNOT_BE_USED_AS_CERTAIN_REQUIREMENTS_ARE_NOT_MET);
 			sm.addSkillName(skill);

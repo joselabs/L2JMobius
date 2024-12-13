@@ -54,7 +54,7 @@ public class OpenDoor extends AbstractEffect
 			return;
 		}
 		
-		final Door door = (Door) effected;
+		final Door door = effected.asDoor();
 		if ((!door.isOpenableBySkill() && !_isItem) || (door.getFort() != null))
 		{
 			effector.sendPacket(SystemMessageId.THIS_DOOR_CANNOT_BE_UNLOCKED);

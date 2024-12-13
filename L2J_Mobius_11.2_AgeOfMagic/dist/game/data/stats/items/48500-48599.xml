@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="48500" name="Dragon's Relic Chest" type="EtcItem">
 		<!-- Double-click to obtain a random item. -->
@@ -35,7 +35,7 @@
 			<item id="80958" min="1" max="1" chance="3.03" /> <!-- Sealed Heavenly Talisman -->
 			<item id="80964" min="1" max="1" chance="3.03" /> <!-- Energy of Protection -->
 			<item id="81059" min="1" max="1" chance="3.03" /> <!-- Legendary Dye Lv. 5 (P. Atk.) - STR +5, DEX +5, CHA +4 -->
-			<item id="81069" min="1" max="1" chance="3.03" /> <!-- Legendary Dye Lv. 5 (Standard Attack Critical Damage) - STR +5, DEX +5, CHA +4 -->
+			<item id="81069" min="1" max="1" chance="3.03" /> <!-- Legendary Dye Lv. 5 (Critical Damage for Basic Attacks) - STR +5, DEX +5, CHA +4 -->
 			<item id="81079" min="1" max="1" chance="3.03" /> <!-- Legendary Dye Lv. 5 (P. Skill Critical Damage) - STR +5, DEX +5, CHA +4 -->
 			<item id="81099" min="1" max="1" chance="3.03" /> <!-- Legendary Dye Lv. 5 (M. Atk.) - INT +5, WIT +5, CHA +4 -->
 			<item id="81109" min="1" max="1" chance="3.03" /> <!-- Legendary Dye Lv. 5 (M. Critical Damage) - INT +5, WIT +5, CHA +4 -->
@@ -83,7 +83,7 @@
 		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39204" level="2" /> <!-- Scroll: Enchant Mysterious Weapon -->
+			<skill id="39204" level="2" /> <!-- Mysterious and Special Weapon Enchant Scroll -->
 		</skills>
 	</item>
 	<item id="48504" name="Capsule: +10 Bloody Armor Set" type="EtcItem">
@@ -183,7 +183,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<skills>
-			<skill id="35147" level="2" /> <!-- +5 Zodiac Agathion Charm Box -->
+			<skill id="35147" level="2" /> <!-- +5 Zodiac Agathion Cube -->
 		</skills>
 	</item>
 	<item id="48509" name="+6 Zodiac Agathion Box" type="EtcItem">
@@ -199,7 +199,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<skills>
-			<skill id="35147" level="3" /> <!-- +6 Zodiac Agathion Charm Box -->
+			<skill id="35147" level="3" /> <!-- +6 Zodiac Agathion Cube -->
 		</skills>
 	</item>
 	<item id="48510" name="+7 Zodiac Agathion Box" type="EtcItem">
@@ -215,7 +215,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<skills>
-			<skill id="35147" level="4" /> <!-- +7 Zodiac Agathion Charm Box -->
+			<skill id="35147" level="4" /> <!-- +7 Zodiac Agathion Cube -->
 		</skills>
 	</item>
 	<item id="48511" name="Royal Red Save Ticket Box" type="EtcItem">
@@ -334,6 +334,12 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="is_event_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39207" level="1" /> <!-- Newbie's Fortune Scroll -->
+		</skills>
 	</item>
 	<item id="48521" name="Red Libra's Adena Gift Box" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain adena. -->
@@ -344,7 +350,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48522" name="Red Libra's Scroll of Blessing Gift Box" additionalName="Event" type="EtcItem">
-		<!-- A gift box earned for restoring the Exhausted Elysium Buffalo the most. Double-click to randomly obtain one Scroll of Blessing - R95/R99. -->
+		<!-- A reward for healing Elysium Buffaloes. Double-click to obtain R95-/ R99-grade Scroll of Blessing. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -384,7 +390,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48527" name="Red Libra's Suit Appearance Stone Gift Box" additionalName="Event" type="EtcItem">
-		<!-- A gift box earned for restoring the Exhausted Elysium Buffalo the most. Double-click to randomly obtain one White Human Knight Suit or White Assassin Suit Appearance Stone. -->
+		<!-- A reward for healing Elysium Buffaloes. Double-click to obtain one of the following items: Appearance Stone: White Knight Suit, Appearance Stone: White Assassin Suit. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -392,7 +398,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48528" name="Red Libra's Outfit Appearance Stone Gift Box" additionalName="Event" type="EtcItem">
-		<!-- A gift box earned for restoring the Exhausted Elysium Buffalo the most. Double-click to randomly obtain one Healer/Chevalier/Kat the Cat/Barbarian Wolf/Valkyrie Outfit Appearance Stone. -->
+		<!-- A reward for healing Elysium Buffaloes. Double-click to obtain one of the following items: Appearance Stone: Healer Garment, Appearance Stone: Chevalier Garment, Appearance Stone: Kat the Cat Costume, Appearance Stone: Barbarian Wolf Costume, Appearance Stone: Valkyrie Costume. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -400,7 +406,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48529" name="Red Libra's Soul Crystal Gift Box" additionalName="Event" type="EtcItem">
-		<!-- A gift box earned for restoring the Exhausted Elysium Buffalo the most. Double-click to obtain Kain's, Mermoden's, Leona's, Pantheon's, or Lionel's Soul Crystal Lv. 8. -->
+		<!-- A reward for healing Elysium Buffaloes. Double-click to obtain Kain's, Mermoden's, Leona's, Pantheon's, or Lionel's Soul Crystal Lv. 8. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -408,7 +414,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48530" name="Red Libra's Spirit Stone Gift Box" additionalName="Event" type="EtcItem">
-		<!-- A gift box earned for restoring the Exhausted Elysium Buffalo the most. Double-click to obtain a box containing 3 Top-grade Spirit Stones and 3 Life Stones Instilled with Giants' Power. -->
+		<!-- A reward for healing Elysium Buffaloes. Double-click to obtain Top-grade Spirit Stone (3 pcs.) and Life Stone: Giant's Power 3-unit Pack. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -424,7 +430,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48532" name="Red Libra's Seed Bracelet Gift Box" additionalName="Event" type="EtcItem">
-		<!-- A gift box earned for restoring the Exhausted Elysium Buffalo the most. Double-click to obtain one Top-grade/Superior Seed Bracelet. -->
+		<!-- A reward for healing Elysium Buffaloes. Double-click to obtain Top-grade Seed Bracelet/ Superior Seed Bracelet. -->
 		<set name="icon" val="icon.event_mahum_coinbox" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -456,7 +462,7 @@
 		<set name="is_questitem" val="true" />
 	</item>
 	<item id="48535" name="Scroll of Escape: Silent Valley" type="EtcItem">
-		<!-- Use the scroll to teleport to the Silent Valley. -->
+		<!-- When used, teleports to the Silent Valley. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i03" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -477,7 +483,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48537" name="Bait" type="EtcItem">
-		<!-- Fishing time: 105 sec. Standby time: 15 sec. Normal Fishing Bait. Fishing with this bait has a low chance of yielding a Bluish Box. -->
+		<!-- Fishing time: 105 sec. Standby time: 15 sec. A common fishing bait. Fishing with this bait has a low chance of yielding Bluish Box. -->
 		<set name="icon" val="icon.etc_normal_lure" />
 		<set name="default_action" val="EQUIP" />
 		<set name="etcitem_type" val="LURE" />
@@ -671,10 +677,10 @@
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<!-- TODO:
-		<skills>
-			<skill id="39220" level="1" /> Olympiad Class Runner-up's Rune
-		</skills>
 		-->
+		<skills>
+			<skill id="39220" level="1" /> <!-- Olympiad Class Runner-up's Rune -->
+		</skills>
 	</item>
 	<item id="48553" name="Legend Celebration Rune" additionalName="2-hour" type="EtcItem">
 		<!-- A reward for all characters of the server where a new Legend - the winner of the World Olympiad - is from. When in inventory, Vitality bonus +10%, P. Def. +567, M. Def. +328, Speed +1, Skill Power +1%. Cannot be used in the Olympiad. -->
@@ -686,10 +692,10 @@
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<!-- TODO:
-		<skills>
-			<skill id="39221" level="1" /> Legend Celebration Rune
-		</skills>
 		-->
+		<skills>
+			<skill id="39221" level="1" /> <!-- Legend Celebration Rune -->
+		</skills>
 	</item>
 	<item id="48554" name="Legend's Infinity Shaper" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -716,9 +722,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35191" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1877</stat>
 			<stat type="mAtk">935</stat>
@@ -729,6 +732,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35191" level="1" /> <!-- Special Property: Legend's Infinity Shaper -->
+		</skills>
 	</item>
 	<item id="48555" name="Legend's Infinity Cutter" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -754,9 +760,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35192" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2146</stat>
 			<stat type="mAtk">935</stat>
@@ -766,6 +769,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35192" level="1" /> <!-- Special Property: Legend's Infinity Cutter -->
+		</skills>
 	</item>
 	<item id="48556" name="Legend's Infinity Slasher" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -791,9 +797,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35193" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2611</stat>
 			<stat type="mAtk">935</stat>
@@ -803,6 +806,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35193" level="1" /> <!-- Special Property: Legend's Infinity Slasher -->
+		</skills>
 	</item>
 	<item id="48557" name="Legend's Infinity Avenger" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -828,9 +834,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35194" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2146</stat>
 			<stat type="mAtk">935</stat>
@@ -841,6 +844,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35194" level="1" /> <!-- Special Property: Legend's Infinity Avenger -->
+		</skills>
 	</item>
 	<item id="48558" name="Legend's Infinity Fighter" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -866,9 +872,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35195" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2611</stat>
 			<stat type="mAtk">935</stat>
@@ -879,6 +882,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35195" level="1" /> <!-- Special Property: Legend's Infinity Fighter -->
+		</skills>
 	</item>
 	<item id="48559" name="Legend's Infinity Stormer" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -904,10 +910,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35196" level="1" /> <!-- Special Ability Legend Weapon -->
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2146</stat>
 			<stat type="mAtk">935</stat>
@@ -918,6 +920,10 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35196" level="1" /> <!-- Special Property: Legend's Infinity Stormer -->
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="48560" name="Legend's Infinity Thrower" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -944,9 +950,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35197" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">4225</stat>
 			<stat type="mAtk">935</stat>
@@ -957,6 +960,9 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35197" level="1" /> <!-- Special Property: Legend's Infinity Thrower -->
+		</skills>
 	</item>
 	<item id="48561" name="Legend's Infinity Guardian" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -982,9 +988,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35198" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3804</stat>
 			<stat type="mAtk">1247</stat>
@@ -995,6 +998,9 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35198" level="1" /> <!-- Special Property: Legend's Infinity Guardian -->
+		</skills>
 	</item>
 	<item id="48562" name="Legend's Infinity Buster" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -1021,9 +1027,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35199" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1716</stat>
 			<stat type="mAtk">1247</stat>
@@ -1033,6 +1036,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35199" level="1" /> <!-- Special Property: Legend's Infinity Buster -->
+		</skills>
 	</item>
 	<item id="48563" name="Legend's Infinity Caster" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -1059,9 +1065,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35200" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1716</stat>
 			<stat type="mAtk">1371</stat>
@@ -1072,6 +1075,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35200" level="1" /> <!-- Special Property: Legend's Infinity Caster -->
+		</skills>
 	</item>
 	<item id="48564" name="Legend's Infinity Retributer" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -1098,9 +1104,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35201" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2090</stat>
 			<stat type="mAtk">935</stat>
@@ -1112,6 +1115,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35201" level="1" /> <!-- Special Property: Legend's Infinity Retributer -->
+		</skills>
 	</item>
 	<item id="48565" name="Legend's Infinity Dual Swords" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -1137,9 +1143,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35202" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2611</stat>
 			<stat type="mAtk">935</stat>
@@ -1149,6 +1152,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35202" level="1" /> <!-- Special Property: Legend's Infinity Dual Swords -->
+		</skills>
 	</item>
 	<item id="48566" name="Legend's Infinity Dual Daggers" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -1173,9 +1179,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35203" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1877</stat>
 			<stat type="mAtk">935</stat>
@@ -1186,6 +1189,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35203" level="1" /> <!-- Special Property: Legend's Infinity Dual Daggers -->
+		</skills>
 	</item>
 	<item id="48567" name="Legend's Infinity Dual Blunt Weapons" type="Weapon">
 		<!-- Olympiad Legend's weapon. PvP damage +30%. Max HP/ MP/ CP +30%, Atk. Spd./ Casting Spd. +20%, P./ M. Skill Power +15%, P. Critical Damage and P./ M. Skill Critical Damage +10%, Skill Cooldown -5%. -->
@@ -1210,9 +1216,6 @@
 		<cond msgId="1518">
 			<player isHero="true" />
 		</cond>
-		<skills>
-			<skill id="35204" level="1" /> <!-- Special Ability Legend Weapon -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2611</stat>
 			<stat type="mAtk">935</stat>
@@ -1223,6 +1226,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="holyPower">450</stat>
 		</stats>
+		<skills>
+			<skill id="35204" level="1" /> <!-- Special Property: Legend's Infinity Dual Blunt Weapons -->
+		</skills>
 	</item>
 	<item id="48568" name="Guard Agathion Fragment" type="EtcItem">
 		<!-- A fragment containing the power of Guardians who inherited the angels' power. Can be exchanged for Agathion Charm: Guard or Scroll of Growth through the Merchant of Mammon. -->
@@ -1252,7 +1258,7 @@
 		<set name="handler" val="EnchantScrolls" />
 		<set name="weight" val="120" />
 		<skills>
-			<skill id="39234" level="1" /> <!-- Book of Growth: Guard Agathion -->
+			<skill id="39234" level="1" /> <!-- Book of Growth: Agathion Guard -->
 		</skills>
 	</item>
 	<item id="48571" name="Ancient Guard Agathion's Book of Growth" type="EtcItem">
@@ -1267,7 +1273,7 @@
 		<set name="handler" val="EnchantScrolls" />
 		<set name="weight" val="120" />
 		<skills>
-			<skill id="39235" level="1" /> <!-- Ancient Book of Growth: Guard Agathion -->
+			<skill id="39235" level="1" /> <!-- Ancient Book of Growth: Agathion Guard -->
 		</skills>
 	</item>
 	<item id="48572" name="Masia's Guard Agathion Charm" type="Armor">
@@ -1281,7 +1287,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="39222" level="1" type="ON_EQUIP" /> <!-- Summon Masia's Guard Agathion -->
+			<skill id="39222" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Masia's Guard -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -1296,7 +1302,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="39226" level="1" type="ON_EQUIP" /> <!-- Summon Paulina's Guard Agathion -->
+			<skill id="39226" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Paulina's Guard -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -1311,7 +1317,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="39330" level="1" type="ON_EQUIP" /> <!-- Summon Tersi's Guard Agathion -->
+			<skill id="39330" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Tersi's Guard -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -1325,10 +1331,10 @@
 		<set name="weight" val="150" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="35082" level="2" /> <!-- Super Advanced Seed Bracelet - Stage 2 -->
-			<skill id="35083" level="1" /> <!-- Seed Teleport: Town of Aden -->
-			<skill id="35084" level="1" /> <!-- Seed Teleport: Town of Rune -->
-			<skill id="35085" level="1" /> <!-- Seed Teleport: Town of Giran -->
+			<skill id="35082" level="2" /> <!-- Superior Seed Bracelet Lv. 2 -->
+			<skill id="35083" level="1" /> <!-- Seed Teleport: Aden -->
+			<skill id="35084" level="1" /> <!-- Seed Teleport: Rune -->
+			<skill id="35085" level="1" /> <!-- Seed Teleport: Giran -->
 			<skill id="35086" level="1" /> <!-- Seed Teleport: Heine -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
@@ -1343,10 +1349,10 @@
 		<set name="weight" val="150" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="35082" level="3" /> <!-- Super Advanced Seed Bracelet - Stage 3 -->
-			<skill id="35083" level="1" /> <!-- Seed Teleport: Town of Aden -->
-			<skill id="35084" level="1" /> <!-- Seed Teleport: Town of Rune -->
-			<skill id="35085" level="1" /> <!-- Seed Teleport: Town of Giran -->
+			<skill id="35082" level="3" /> <!-- Superior Seed Bracelet Lv. 3 -->
+			<skill id="35083" level="1" /> <!-- Seed Teleport: Aden -->
+			<skill id="35084" level="1" /> <!-- Seed Teleport: Rune -->
+			<skill id="35085" level="1" /> <!-- Seed Teleport: Giran -->
 			<skill id="35086" level="1" /> <!-- Seed Teleport: Heine -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
@@ -1362,10 +1368,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="35082" level="4" /> <!-- Super Advanced Seed Bracelet - Stage 4 -->
-			<skill id="35083" level="1" /> <!-- Seed Teleport: Town of Aden -->
-			<skill id="35084" level="1" /> <!-- Seed Teleport: Town of Rune -->
-			<skill id="35085" level="1" /> <!-- Seed Teleport: Town of Giran -->
+			<skill id="35082" level="4" /> <!-- Superior Seed Bracelet Lv. 4 -->
+			<skill id="35083" level="1" /> <!-- Seed Teleport: Aden -->
+			<skill id="35084" level="1" /> <!-- Seed Teleport: Rune -->
+			<skill id="35085" level="1" /> <!-- Seed Teleport: Giran -->
 			<skill id="35086" level="1" /> <!-- Seed Teleport: Heine -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
@@ -1383,7 +1389,7 @@
 		<set name="is_questitem" val="true" />
 	</item>
 	<item id="48579" name="Blackbird Clan Basic Box" additionalName="Atelia Refinery" type="EtcItem">
-		<!-- A basic supply box rewarded for helping the Blackbird Clan at the Atelia Refinery. Double-click to see the items inside. -->
+		<!-- Given as a reward for helping the Blackbird Clan in the Atelia Refinery. Double-click to obtain what is inside. -->
 		<set name="icon" val="icon.etc_readybox_bronze" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -1393,11 +1399,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39237" level="1" /> <!-- Basic Supply Box -->
+			<skill id="39237" level="1" /> <!-- Blackbird Clan's Small Pack -->
 		</skills>
 	</item>
 	<item id="48580" name="Blackbird Clan Intermediate Box" additionalName="Atelia Refinery" type="EtcItem">
-		<!-- An intermediate supply box rewarded for helping the Blackbird Clan at the Atelia Refinery. Double-click to see the items inside. -->
+		<!-- Given as a reward for helping the Blackbird Clan in the Atelia Refinery. Double-click to obtain what is inside. -->
 		<set name="icon" val="icon.etc_readybox_silver" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -1407,11 +1413,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39237" level="2" /> <!-- Intermediate Supply Box -->
+			<skill id="39237" level="2" /> <!-- Blackbird Clan's Normal Pack -->
 		</skills>
 	</item>
 	<item id="48581" name="Blackbird Clan Advanced Box" additionalName="Atelia Refinery" type="EtcItem">
-		<!-- An advanced supply box rewarded for helping the Blackbird Clan at the Atelia Refinery. Double-click to see the items inside. -->
+		<!-- Given as a reward for helping the Blackbird Clan in the Atelia Refinery. Double-click to obtain what is inside. -->
 		<set name="icon" val="icon.etc_readybox_gold" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -1421,7 +1427,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39237" level="3" /> <!-- Advanced Supply Box -->
+			<skill id="39237" level="3" /> <!-- Blackbird Clan's Large Pack -->
 		</skills>
 	</item>
 	<item id="48582" name="Scroll: Enchant Mask" type="EtcItem">
@@ -1439,7 +1445,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<skills>
-			<skill id="9945" level="1" /> <!-- Scroll: Enchant Hair Accessory -->
+			<skill id="9945" level="1" /> <!-- Scroll: Enchant Head Accessory -->
 		</skills>
 	</item>
 	<item id="48583" name="Giant's Scroll: Enchant Mask" type="EtcItem">
@@ -1457,7 +1463,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<skills>
-			<skill id="9945" level="1" /> <!-- Scroll: Enchant Hair Accessory -->
+			<skill id="9945" level="1" /> <!-- Scroll: Enchant Head Accessory -->
 		</skills>
 	</item>
 	<item id="48584" name="Savior's Mask" type="Armor">
@@ -1473,19 +1479,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="35205" level="1" /> <!-- Savior's Mask Basic Effect -->
-			<skill id="35207" level="1" type="ON_ENCHANT" type_value="7" /> <!-- Warrior's Circlet Enchant Effect -->
-			<skill id="35207" level="2" type="ON_ENCHANT" type_value="8" /> <!-- Warrior's Circlet Enchant Effect -->
-			<skill id="35207" level="3" type="ON_ENCHANT" type_value="9" /> <!-- Warrior's Circlet Enchant Effect -->
-			<skill id="35207" level="4" type="ON_ENCHANT" type_value="10" /> <!-- Warrior's Circlet Enchant Effect -->
-			<skill id="35208" level="1" type="ON_ENCHANT" type_value="7" /> <!-- Wizard's Circlet Enchant Effect -->
-			<skill id="35208" level="2" type="ON_ENCHANT" type_value="8" /> <!-- Wizard's Circlet Enchant Effect -->
-			<skill id="35208" level="3" type="ON_ENCHANT" type_value="9" /> <!-- Wizard's Circlet Enchant Effect -->
-			<skill id="35208" level="4" type="ON_ENCHANT" type_value="10" /> <!-- Wizard's Circlet Enchant Effect -->
-			<skill id="35209" level="1" type="ON_ENCHANT" type_value="7" /> <!-- Knight's Circlet Enchant Effect -->
-			<skill id="35209" level="2" type="ON_ENCHANT" type_value="8" /> <!-- Knight's Circlet Enchant Effect -->
-			<skill id="35209" level="3" type="ON_ENCHANT" type_value="9" /> <!-- Knight's Circlet Enchant Effect -->
-			<skill id="35209" level="4" type="ON_ENCHANT" type_value="10" /> <!-- Knight's Circlet Enchant Effect -->
+			<skill id="35205" level="1" /> <!-- Savior's Mask: Base Effect -->
+			<skill id="35207" level="1" type="ON_ENCHANT" type_value="7" /> <!-- Strength of Savior's Warrior -->
+			<skill id="35207" level="2" type="ON_ENCHANT" type_value="8" /> <!-- Strength of Savior's Warrior -->
+			<skill id="35207" level="3" type="ON_ENCHANT" type_value="9" /> <!-- Strength of Savior's Warrior -->
+			<skill id="35207" level="4" type="ON_ENCHANT" type_value="10" /> <!-- Strength of Savior's Warrior -->
+			<skill id="35208" level="1" type="ON_ENCHANT" type_value="7" /> <!-- Power of Savior's Wizard -->
+			<skill id="35208" level="2" type="ON_ENCHANT" type_value="8" /> <!-- Power of Savior's Wizard -->
+			<skill id="35208" level="3" type="ON_ENCHANT" type_value="9" /> <!-- Power of Savior's Wizard -->
+			<skill id="35208" level="4" type="ON_ENCHANT" type_value="10" /> <!-- Power of Savior's Wizard -->
+			<skill id="35209" level="1" type="ON_ENCHANT" type_value="7" /> <!-- Defense of Savior's Knight -->
+			<skill id="35209" level="2" type="ON_ENCHANT" type_value="8" /> <!-- Defense of Savior's Knight -->
+			<skill id="35209" level="3" type="ON_ENCHANT" type_value="9" /> <!-- Defense of Savior's Knight -->
+			<skill id="35209" level="4" type="ON_ENCHANT" type_value="10" /> <!-- Defense of Savior's Knight -->
 		</skills>
 	</item>
 	<item id="48585" name="Savior's Wish" type="EtcItem">

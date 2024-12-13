@@ -237,7 +237,6 @@
 		<set name="icon" val="icon.boss_weapon_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -247,7 +246,6 @@
 		<set name="icon" val="icon.frozen_weapon_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -257,7 +255,6 @@
 		<set name="icon" val="icon.rare_armor_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -465,7 +462,7 @@
 			<item id="96623" min="1" max="1" chance="2.272727" /> <!-- Dye Booster -->
 			<item id="92314" min="10" max="10" chance="2.272727" /> <!-- Giran Seal -->
 			<item id="96985" min="1" max="1" chance="2.272727" /> <!-- Package: Brooch Lv. 3 - Sealed -->
-			<item id="96983" min="1" max="1" chance="2.272727" /> <!-- Package: Agathion Bracelet Lv. 3 - Sealed -->
+			<item id="96983" min="1" max="1" chance="2.272727" /> <!-- Package: Agathion Summon Bracelet Lv. 3 - Sealed -->
 			<item id="96984" min="1" max="1" chance="2.272727" /> <!-- Package: Talisman Bracelet Lv. 3 - Sealed -->
 			<item id="92314" min="5" max="5" chance="2.272727" /> <!-- Giran Seal -->
 			<item id="92314" min="2" max="2" chance="2.272727" /> <!-- Giran Seal -->
@@ -607,6 +604,15 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="50403" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
+			<skill id="50406" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 A-grade Weapon Blessing Effect -->
+			<skill id="50407" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 A-grade Weapon Blessing Effect -->
+			<skill id="50408" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 A-grade Weapon Blessing Effect -->
+			<skill id="50409" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 A-grade Weapon Blessing Effect -->
+			<skill id="50410" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 A-grade Weapon Blessing Effect -->
+			<skill id="50411" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 A-grade Weapon Blessing Effect -->
+		</skills>
 	</item>
 	<item id="100428" name="Spellbook: Indestructible Blade" type="EtcItem">
 		<!-- A spellbook for learning the Indestructible Blade skill. <Class>. Duelist. <Skill effect>. Attacks the target inflicting Imprisonment on them. Imprisoned enemies can be attacked only by the Duelist. <font color=ff6666>Note!</font>. The skill will be removed after learning a more powerful skill:. - Indestructible Seal -->
@@ -654,7 +660,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="100433" name="Spellbook: Challenger: Master" type="EtcItem">
-		<!-- A book for learning the Challenger: Master skill. <Class>. Duelist. <Skill effect>. You are craving for battle, and your sword is filled with incredible power. Increases P. Atk., P. Skill Power, P. Skill Critical Rate, P. Skill Critical Damage, P. Skill Damage, Shock Atk. Rate, Imprisonment Atk. Rate, Max HP, Atk. Spd., Speed. Skill upgrade. Triple Slash → Triple Slash - Master. Blade Wave → Blade Wave - Challenger. Slashing Blades → Slashing Blades - Master. Enables <font color="FF8000">Blade Assault</font>. <font color="FF8000">Blade Assault</font> deals heavy damage twice and applies a debuff that decreases Imprisonment Resistance. With a certain chance, makes 1 attack at surrounding enemies and applies a debuff that increases their received AoE Skill Damage. Killing an enemy with <font color="FF8000">Blade Assault</font> decreases the <font color="FF8000">Blade Assault's</font> cooldown. When the target is killed, the skill can be used consecutively for 3 sec. (Max 2 times) -->
+		<!-- A book for learning the Challenger: Master skill. <Class>. Duelist. <Skill effect>. You are craving for battle, and your sword is filled with incredible power. Increases P. Atk., P. Skill Power, P. Skill Critical Rate, P. Skill Critical Damage, P. Skill Damage, Shock Atk. Rate, Imprisonment Atk. Rate, Max HP, Atk. Spd., Speed. Skill upgrade. Triple Slash → Triple Slash - Master. Blade Wave → Blade Wave - Challenger. Slashing Blades → Slashing Blades - Master. Enables <font color="FF8000">Blade Assault</font>. <font color="FF8000">Blade Assault</font> deals heavy damage twice and applies a debuff that decreases Imprisonment Resistance. With a certain chance, applies a debuff on surrounding enemies that increases their received AoE Skill Damage and reduces their number of attacks to 1. Killing an enemy with <font color="FF8000">Blade Assault</font> decreases the <font color="FF8000">Blade Assault's</font> cooldown. When the target is killed, the skill can be used consecutively for 3 sec. (Max 2 times) -->
 		<set name="icon" val="icon.etc_magic_book_red_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -718,7 +724,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="100439" name="Spellbook: Challenger: Master" additionalName="Sealed" type="EtcItem">
-		<!-- A book for learning the Challenger: Master skill. <Class>. Duelist. <Skill effect>. You are craving for battle, and your sword is filled with incredible power. Increases P. Atk., P. Skill Power, P. Skill Critical Rate, P. Skill Critical Damage, P. Skill Damage, Shock Atk. Rate, Imprisonment Atk. Rate, Max HP, Atk. Spd., Speed. Skill upgrade. Triple Slash → Triple Slash - Master. Blade Wave → Blade Wave - Challenger. Slashing Blades → Slashing Blades - Master. Enables <font color="FF8000">Blade Assault</font>. <font color="FF8000">Blade Assault</font> deals heavy damage twice and applies a debuff that decreases Imprisonment Resistance. With a certain chance, makes 1 attack at surrounding enemies and applies a debuff that increases their received AoE Skill Damage. Killing an enemy with <font color="FF8000">Blade Assault</font> decreases the <font color="FF8000">Blade Assault's</font> cooldown. When the target is killed, the skill can be used consecutively for 3 sec. (Max 2 times) -->
+		<!-- A book for learning the Challenger: Master skill. <Class>. Duelist. <Skill effect>. You are craving for battle, and your sword is filled with incredible power. Increases P. Atk., P. Skill Power, P. Skill Critical Rate, P. Skill Critical Damage, P. Skill Damage, Shock Atk. Rate, Imprisonment Atk. Rate, Max HP, Atk. Spd., Speed. Skill upgrade. Triple Slash → Triple Slash - Master. Blade Wave → Blade Wave - Challenger. Slashing Blades → Slashing Blades - Master. Enables <font color="FF8000">Blade Assault</font>. <font color="FF8000">Blade Assault</font> deals heavy damage twice and applies a debuff that decreases Imprisonment Resistance. With a certain chance, applies a debuff on surrounding enemies that increases their received AoE Skill Damage and reduces their number of attacks to 1. Killing an enemy with <font color="FF8000">Blade Assault</font> decreases the <font color="FF8000">Blade Assault's</font> cooldown. When the target is killed, the skill can be used consecutively for 3 sec. (Max 2 times) -->
 		<set name="icon" val="icon.etc_magic_book_red_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -816,7 +822,6 @@
 		<set name="icon" val="icon.dye_trade_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -828,7 +833,6 @@
 		<set name="icon" val="icon.skill_book_trade_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -907,15 +911,16 @@
 		<!-- A funny watermelon-shaped head accessory. Enables the head-enlarging skill (cooldown: 5 min.). <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
 		<set name="icon" val="BranchSys.icon.br_watermelon_cap_a_i00" />
 		<set name="default_action" val="EQUIP" />
-		<set name="armor_type" val="NONE" />
 		<set name="bodypart" val="hair" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="10" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="54250" level="1" /> <!-- Watermelon Energy -->
+		</skills>
 	</item>
 	<item id="100450" name="Bloodthirsty Blood Sword - One-handed Sword" type="Weapon">
 		<!-- An original appearance-modifying item. -->
@@ -924,7 +929,6 @@
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="144" />
 		<set name="soulshots" val="1" />
@@ -944,7 +948,6 @@
 		<set name="weapon_type" val="DAGGER" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="106" />
 		<set name="soulshots" val="1" />
@@ -964,7 +967,6 @@
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="209" />
 		<set name="soulshots" val="1" />
@@ -984,7 +986,6 @@
 		<set name="weapon_type" val="FIST" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="152" />
 		<set name="soulshots" val="1" />
@@ -1004,7 +1005,6 @@
 		<set name="weapon_type" val="POLE" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="205" />
 		<set name="soulshots" val="1" />
@@ -1012,9 +1012,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
@@ -1027,7 +1024,6 @@
 		<set name="weapon_type" val="BOW" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="181" />
 		<set name="soulshots" val="2" />
@@ -1048,7 +1044,6 @@
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="172" />
 		<set name="soulshots" val="1" />
@@ -1068,7 +1063,6 @@
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="101" />
 		<set name="soulshots" val="1" />
@@ -1088,7 +1082,6 @@
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="172" />
 		<set name="soulshots" val="1" />
@@ -1109,7 +1102,6 @@
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="101" />
 		<set name="soulshots" val="1" />
@@ -1130,7 +1122,6 @@
 		<set name="weapon_type" val="DUAL" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="247" />
 		<set name="soulshots" val="1" />
@@ -1150,7 +1141,6 @@
 		<set name="weapon_type" val="PISTOLS" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1820" />
 		<set name="soulshots" val="2" />
@@ -1165,6 +1155,9 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="50498" level="1" /> <!-- Aden's Pistols -->
+		</skills>
 	</item>
 	<item id="100464" name="Bloodthirsty Blood Sword - Ancient Sword" type="Weapon">
 		<!-- An original appearance-modifying item. -->
@@ -1173,7 +1166,6 @@
 		<set name="weapon_type" val="ANCIENTSWORD" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="209" />
 		<set name="soulshots" val="1" />
@@ -1193,7 +1185,6 @@
 		<set name="weapon_type" val="RAPIER" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="144" />
 		<set name="soulshots" val="1" />
@@ -1217,6 +1208,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="Appearance" />
+		<skills>
+			<skill id="40509" level="1" /> <!-- Appearance Stone: Bloodthirsty Blood Sword -->
+		</skills>
 	</item>
 	<item id="100467" name="Renewed Weapon Buff Stew (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Your weapon becomes as good as new, and receives the following effects. <Effects>. P./ M. Atk. +100. P./ M. Def. +100. PvE damage +3%. Received PvE damage -3%. All received Critical Rate -5%. All received Critical Damage -5%. Sustains Sayha's Grace. Duration: 20 min. Cooldown: 1 min. The effect remains after death. You can cancel the effect by yourself. <Weapon/ shield/ sigil appearance change>. One-handed sword: Blue Mackerel. Rapier: Blue Mackerel. One-handed blunt weapon: Blue Mackerel. One-handed magic blunt weapon: Blue Mackerel. Dual swords: Blue Mackerel. Two-handed sword: Shark. Ancient sword: Shark. Dagger: Trumpetfish. Spear: Squid. Bow: Giant Crab. Fist weapon: Lobster. Two-handed magic blunt weapon: Sea Horse. Firearms: Crayfish. Shield: Turtle. Sigil: Starfish -->
@@ -1228,6 +1223,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40510" level="1" /> <!-- Renewed Weapon Buff Stew -->
+		</skills>
 	</item>
 	<item id="100468" name="Defeated Monster Commander Trophy I" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -1552,7 +1552,6 @@
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="144" />
 		<set name="soulshots" val="1" />
@@ -1572,7 +1571,6 @@
 		<set name="weapon_type" val="DAGGER" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="106" />
 		<set name="soulshots" val="1" />
@@ -1592,7 +1590,6 @@
 		<set name="weapon_type" val="SWORD" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="209" />
 		<set name="soulshots" val="1" />
@@ -1612,7 +1609,6 @@
 		<set name="weapon_type" val="FIST" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="152" />
 		<set name="soulshots" val="1" />
@@ -1632,7 +1628,6 @@
 		<set name="weapon_type" val="POLE" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="205" />
 		<set name="soulshots" val="1" />
@@ -1640,9 +1635,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
@@ -1655,7 +1647,6 @@
 		<set name="weapon_type" val="BOW" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="181" />
 		<set name="soulshots" val="2" />
@@ -1676,7 +1667,6 @@
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="172" />
 		<set name="soulshots" val="1" />
@@ -1696,7 +1686,6 @@
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="101" />
 		<set name="soulshots" val="1" />
@@ -1716,7 +1705,6 @@
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="172" />
 		<set name="soulshots" val="1" />
@@ -1737,7 +1725,6 @@
 		<set name="weapon_type" val="BLUNT" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="101" />
 		<set name="soulshots" val="1" />
@@ -1758,7 +1745,6 @@
 		<set name="weapon_type" val="DUAL" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="247" />
 		<set name="soulshots" val="1" />
@@ -1778,7 +1764,6 @@
 		<set name="weapon_type" val="PISTOLS" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1820" />
 		<set name="soulshots" val="2" />
@@ -1793,6 +1778,9 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="50498" level="1" /> <!-- Aden's Pistols -->
+		</skills>
 	</item>
 	<item id="100491" name="Blood Sword - Ancient Sword" type="Weapon">
 		<!-- An original appearance-modifying item. -->
@@ -1801,7 +1789,6 @@
 		<set name="weapon_type" val="ANCIENTSWORD" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="209" />
 		<set name="soulshots" val="1" />
@@ -1821,7 +1808,6 @@
 		<set name="weapon_type" val="RAPIER" />
 		<set name="bodypart" val="rhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="144" />
 		<set name="soulshots" val="1" />
@@ -1929,9 +1915,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>

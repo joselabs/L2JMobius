@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="10100" name="Spellbook: Diamond Dust" type="EtcItem">
 		<!-- A spellbook for learning the Diamond Dust skill. Used by Mystic Muses. -->
@@ -232,13 +232,13 @@
 		<set name="enchant_enabled" val="true" />
 		<set name="commissionItemType" val="SIGIL" />
 		<set name="isAppearanceable" val="true" />
-		<skills>
-			<skill id="8311" level="1" /> <!-- Dynasty Sigil -->
-		</skills>
 		<stats>
 			<stat type="rEvas">-8</stat>
 			<stat type="pDef">15</stat>
 		</stats>
+		<skills>
+			<skill id="8311" level="1" /> <!-- Dynasty Sigil -->
+		</skills>
 	</item>
 	<item id="10120" name="Sealed Dynasty Sigil" type="Armor">
 		<!-- Old and not very useful equipment. -->
@@ -281,7 +281,7 @@
 		</stats>
 	</item>
 	<item id="10122" name="Red Crescent" type="Armor">
-		<!-- Cannot be crystallized or enchanted -->
+		<!-- Cannot be crystallized or enchanted. -->
 		<set name="icon" val="icon.accessary_red_cresent_earing_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -356,7 +356,7 @@
 		</stats>
 	</item>
 	<item id="10126" name="Dynasty Leather Armor" additionalName="Force Master" type="Armor">
-		<!-- Can only be worn by Duelists and Grand Khavataris. -->
+		<!-- Classes: Duelist, Grand Khavatari. -->
 		<set name="icon" val="icon.armor_t92_ud_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -382,7 +382,7 @@
 		</stats>
 	</item>
 	<item id="10127" name="Dynasty Leather Armor" additionalName="Warrior" type="Armor">
-		<!-- Can only be worn by Dreadnoughts, Titans, Fortune Seekers, Maestros, Doombringers and Soul Hounds. -->
+		<!-- Classes: Dreadnought, Titan, Fortune Seeker, Maestro, Doombringer, Soul Hound. -->
 		<set name="icon" val="icon.armor_t92_ub_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -482,7 +482,7 @@
 		</skills>
 	</item>
 	<item id="10132" name="Transformation Scroll: Doom Wraith" type="EtcItem">
-		<!-- Transforms you into a Doom Wraith for 30 min. -->
+		<!-- A scroll that transforms you into Fate Knight for 30 min. -->
 		<set name="icon" val="icon.etc_scroll_white_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
@@ -493,7 +493,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
 		<skills>
-			<skill id="2372" level="1" /> <!-- Transformation Scroll: Doom Wraith -->
+			<skill id="2372" level="1" /> <!-- Transformation Scroll: Fate Knight -->
 		</skills>
 	</item>
 	<item id="10133" name="Transformation Scroll: Grail Apostle" type="EtcItem">
@@ -527,7 +527,7 @@
 		</skills>
 	</item>
 	<item id="10135" name="Transformation Scroll: Lilim Knight" type="EtcItem">
-		<!-- Transforms you into a Lilim Knight for 30 min. -->
+		<!-- A scroll that transforms you into Lilim's Knight for 30 min. -->
 		<set name="icon" val="icon.etc_scroll_white_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
@@ -538,7 +538,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
 		<skills>
-			<skill id="2375" level="1" /> <!-- Transformation Scroll: Lilim Knight -->
+			<skill id="2375" level="1" /> <!-- Transformation Scroll: Lilim's Knight -->
 		</skills>
 	</item>
 	<item id="10136" name="Transformation Scroll: Golem Guardian" type="EtcItem">
@@ -601,8 +601,8 @@
 		<set name="duration" val="700" />
 		<set name="useSkillDisTime" val="1" />
 		<skills>
-			<skill id="5414" level="1" /> <!-- Agathion Cute Trick - Rainbow Clan Hall -->
-			<skill id="3269" level="1" /> <!-- Release Agathion's Seal - Rainbow Clan Hall -->
+			<skill id="5414" level="1" /> <!-- Agathion Cute Trick - Rainbow -->
+			<skill id="3269" level="1" /> <!-- Summon Agathion - Agathion Rainbow -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -621,12 +621,12 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="duration" val="250" />
 		<set name="useSkillDisTime" val="2" />
-		<skills>
-			<skill id="3408" level="1" /> <!-- Blessed Ring of Escape -->
-		</skills>
 		<stats>
 			<stat type="mDef">24</stat>
 		</stats>
+		<skills>
+			<skill id="3408" level="1" /> <!-- Blessed Ring of Escape -->
+		</skills>
 	</item>
 	<item id="10141" name="Grey Talisman - Yeti Transform" type="Armor">
 		<!-- Can transform into a Yeti for a certain amount of time. Transformation is cancelled if the item unequipped. The effect doesn't stack if two identical talismans are equipped. Shadow Item. -->
@@ -644,8 +644,8 @@
 		<set name="duration" val="70" />
 		<set name="useSkillDisTime" val="3" />
 		<skills>
-			<skill id="3499" level="1" type="ON_UNEQUIP" /> <!-- Dispel Transform -->
-			<skill id="3335" level="1" /> <!-- Transform Yeti -->
+			<skill id="3499" level="1" type="ON_UNEQUIP" /> <!-- Cancel Transformation -->
+			<skill id="3335" level="1" /> <!-- Yeti Transformation -->
 		</skills>
 	</item>
 	<item id="10142" name="Grey Talisman - Buffalo Transform" type="Armor">
@@ -664,8 +664,8 @@
 		<set name="duration" val="70" />
 		<set name="useSkillDisTime" val="3" />
 		<skills>
-			<skill id="3499" level="1" type="ON_UNEQUIP" /> <!-- Dispel Transform -->
-			<skill id="3336" level="1" /> <!-- Transform Buffalo -->
+			<skill id="3499" level="1" type="ON_UNEQUIP" /> <!-- Cancel Transformation -->
+			<skill id="3336" level="1" /> <!-- Buffalo Transformation -->
 		</skills>
 	</item>
 	<item id="10143" name="Battleground Scroll: Shield Master" type="EtcItem">
@@ -810,7 +810,7 @@
 		</skills>
 	</item>
 	<item id="10149" name="Blessed Scroll of Escape (Battleground)" type="EtcItem">
-		<!-- Relocates you to the nearest village. Can only be used in Siege and Fortress battle. -->
+		<!-- A magic scroll for teleporting to the nearest village. Can only be used in sieges and fortress battles. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
@@ -829,7 +829,7 @@
 		</skills>
 	</item>
 	<item id="10150" name="Blessed Scroll of Resurrection (Battleground)" type="EtcItem">
-		<!-- Resurrects a dead character and restores his or her XP completely. Can only be used in Siege and Fortress battle. -->
+		<!-- Resurrects a dead character and fully recovers their XP. Can only be used in sieges and fortress battles. -->
 		<set name="icon" val="icon.etc_scroll_of_resurrection_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
@@ -866,7 +866,7 @@
 		</skills>
 	</item>
 	<item id="10152" name="Combat HP Recovery Potion" type="EtcItem">
-		<!-- Recovers HP when in use. Characters below Lv. 52 are not affected. Usable only during a Siege or Fortress battle. -->
+		<!-- When used, recovers HP. Required level: 52+. Can only be used in sieges and fortress battles. -->
 		<set name="icon" val="icon.etc_super_hp_potion_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -883,11 +883,11 @@
 			<player SiegeZone="126" />
 		</cond>
 		<skills>
-			<skill id="2395" level="1" /> <!-- Healing Potion (Battleground) -->
+			<skill id="2395" level="1" /> <!-- Combat HP Replenishing Potion -->
 		</skills>
 	</item>
 	<item id="10153" name="Combat MP Recovery Potion" type="EtcItem">
-		<!-- Recovers MP when in use. Characters below Lv. 52 are not affected. Usable only during a Siege or Fortress battle. -->
+		<!-- When used, recovers MP. Required level: 52+. Can only be used in sieges and fortress battles. -->
 		<set name="icon" val="icon.etc_super_mp_potion_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -908,7 +908,7 @@
 		</skills>
 	</item>
 	<item id="10154" name="CP Recovery Potion (Battleground)" type="EtcItem">
-		<!-- Recovers CP when in use. Characters below Lv. 52 are not affected. Usable only during a Siege or Fortress battle. -->
+		<!-- When used, recovers CP. Required level: 52+. Can only be used in sieges and fortress battles. -->
 		<set name="icon" val="icon.etc_super_cp_potion_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -929,7 +929,7 @@
 		</skills>
 	</item>
 	<item id="10155" name="Mental Strengthening Potion" type="EtcItem">
-		<!-- Temporarily increases Obstruction/ Stupor/ Confusion Resistance. Can only be used in Siege and Fortress battle. -->
+		<!-- Temporarily increases Obstruction/ Stupor/ Confusion Resistance. Can only be used in sieges and fortress battles. -->
 		<set name="icon" val="icon.etc_lesser_potion_yellow_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="POTION" />
@@ -948,7 +948,7 @@
 		</skills>
 	</item>
 	<item id="10156" name="Medusa's Potion" type="EtcItem">
-		<!-- Temporarily makes you invisible. Can only be used in sieges and fortress battles. -->
+		<!-- Temporarily makes you invincible. Can only be used in sieges and fortress battles. -->
 		<set name="icon" val="icon.etc_lesser_potion_yellow_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="POTION" />
@@ -1063,7 +1063,7 @@
 		<set name="is_depositable" val="false" />
 	</item>
 	<item id="10163" name="Wolf Collar" type="EtcItem">
-		<!-- Necklace used to summon wolves. It takes away some XP the Pet Master earns. -->
+		<!-- A necklace for summoning Wolf. A pet takes a part of XP acquired by its owner. -->
 		<set name="icon" val="icon.etc_prefect_belt_i00" />
 		<set name="default_action" val="SKILL_MAINTAIN" />
 		<set name="etcitem_type" val="PET_COLLAR" />
@@ -1121,7 +1121,7 @@
 		<set name="commissionItemType" val="POTION" />
 		<set name="is_event_restricted" val="true" />
 		<skills>
-			<skill id="2403" level="1" /> <!-- Hot Springs CP Potion -->
+			<skill id="2403" level="1" /> <!-- CP Recovery Potion -->
 		</skills>
 	</item>
 	<item id="10167" name="Pig Lollipop" type="Weapon">
@@ -1139,10 +1139,6 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
-		<skills>
-			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
-			<skill id="3418" level="1" /> <!-- Active Skill: Transform Pig -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1</stat>
 			<stat type="mAtk">1</stat>
@@ -1151,9 +1147,13 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
+			<skill id="3418" level="1" /> <!-- Active Skill: Transform Pig -->
+		</skills>
 	</item>
 	<item id="10168" name="Dynasty Leather Armor" additionalName="Enchanter" type="Armor">
-		<!-- Can only be worn by Hierophants, Dominators, Doomcryers and Judicators. -->
+		<!-- Classes: Hierophant, Dominator, Doomcryer, Judicator. -->
 		<set name="icon" val="icon.armor_t92_ud_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -1301,7 +1301,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="10177" name="Black Half Mask (Event)" type="Armor">
-		<!-- Mysterious black mask. Don't you wish you knew where you could find the other half? -->
+		<!-- A mysterious black mask. -->
 		<set name="icon" val="icon.Accessary_black_half_mask_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair" />

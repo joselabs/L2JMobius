@@ -310,7 +310,7 @@
 			<item id="80335" min="1" max="1" chance="1" /> <!-- Dragon's Ring -->
 			<item id="80333" min="1" max="1" chance="1" /> <!-- Dragon's Necklace -->
 			<item id="48417" min="1" max="1" chance="5" /> <!-- Ruler's Authority - Genesis - Lv. 2 -->
-			<item id="35568" min="1" max="1" chance="30" /> <!-- Bloody Weapon Enhancement Stone -->
+			<item id="35568" min="1" max="1" chance="30" /> <!-- Bloody Weapon Upgrade Stone -->
 			<item id="81828" min="1" max="1" chance="5" /> <!-- +5 Greater Agathion Charm Box - Event -->
 			<item id="48493" min="1" max="1" chance="5" /> <!-- Dragon Rind Leather Shirt -->
 			<item id="48210" min="1" max="1" chance="3.333333333" /> <!-- Radiant Knight's Circlet -->
@@ -498,13 +498,13 @@
 		<set name="weight" val="5" />
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
+		<stats>
+			<stat type="mDef">48</stat>
+		</stats>
 		<skills>
 			<skill id="35634" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Fire Dragon -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
-		<stats>
-			<stat type="mDef">48</stat>
-		</stats>
 	</item>
 	<item id="81444" name="Grater Agathion Fire Dragon Charm" type="Armor">
 		<!-- Contains the power of Greater Agathion Fire Dragon. Equipping the charm in the main slot summons the agathion and enables both primary and secondary skills. Equipping in an additional slot enables only secondary skills. -->
@@ -515,13 +515,13 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="5" />
 		<set name="is_sellable" val="false" />
+		<stats>
+			<stat type="mDef">72</stat>
+		</stats>
 		<skills>
 			<skill id="35635" level="1" type="ON_EQUIP" /> <!-- Summon Greater Agathion Fire Dragon -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
-		<stats>
-			<stat type="mDef">72</stat>
-		</stats>
 	</item>
 	<item id="81445" name="Divine Book of Growth: Agathion Dragon" type="EtcItem">
 		<!-- Required for enchanting Agathion Fire Dragon. In case of failure, the enchant value remains the same. -->
@@ -703,7 +703,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="81454" name="Atlas' Earring" additionalName="Vitality" type="Armor">
-		<!-- A special mentor's earring. When enchanted, increases Stupor Atk. Rate and Resistance, Attribute Resistance, Vampiric Rage effect, Critical Damage for basic attacks, P./ M. Skill Critical Damage, and decreases MP Consumption. Effects of two identical earrings do not stack. <Special effect>. Vitality bonus +3%. <Enchanting>. Use Scroll: Enchant Atlas' Earring. <Upgrading>. Upgrade is available after enchanting to +12 -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. A special mentor's earring. When enchanted, increases Stupor Atk. Rate and Resistance, Attribute Resistance, Vampiric Rage effect, Critical Damage for basic attacks, P./ M. Skill Critical Damage, and decreases MP Consumption. Effects of two identical earrings do not stack. <Special effect>. Vitality bonus +3%. <Enchanting>. Use Scroll: Enchant Atlas' Earring. <Upgrading>. Upgrade is available after enchanting to +12 -->
 		<set name="icon" val="branchsys2.icon2.g_accessory_event_earring" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -716,12 +716,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="39655" level="1" /> <!-- Craft Effect - Life Lv. 1 -->
-		</skills>
 		<stats>
 			<stat type="mDef">151</stat>
 		</stats>
+		<skills>
+			<skill id="39655" level="1" /> <!-- Craft Effect - Life -->
+		</skills>
 	</item>
 	<item id="81455" name="Special Clan Reward Lv. 1" type="EtcItem">
 		<!-- Double-click to obtain one of the following rewards at random: Freya's Ice Rose, Emperor's Special Cocktail, Special Clan Reward Lv. 2. -->
@@ -831,8 +831,8 @@
 			<item id="80832" min="4" max="4" chance="10" /> <!-- Emperor's Special Cocktail - Event -->
 			<item id="81140" min="24" max="24" chance="10" /> <!-- Freya's Scroll of Storm - Event -->
 			<item id="81460" min="8" max="8" chance="10" /> <!-- Honey Dark Beer - Event -->
-			<item id="35566" min="1" max="1" chance="10" /> <!-- Dark Weapon Enhancement Stone -->
-			<item id="35568" min="1" max="1" chance="10" /> <!-- Bloody Weapon Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="10" /> <!-- Dark Weapon Upgrade Stone -->
+			<item id="35568" min="1" max="1" chance="10" /> <!-- Bloody Weapon Upgrade Stone -->
 		</capsuled_items>
 	</item>
 	<item id="81460" name="Honey Dark Beer" additionalName="Event" type="EtcItem">
@@ -884,7 +884,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39657" level="1" /> <!-- Tower of Insolence's Time Stone (Lower Floor) -->
+			<skill id="39657" level="1" /> <!-- Tower of Insolence's Time Stone -->
 		</skills>
 	</item>
 	<item id="81464" name="Freya's Vital Rune" additionalName="30-day" type="EtcItem">
@@ -1273,7 +1273,7 @@
 		</stats>
 	</item>
 	<item id="81484" name="Blessed Exalted Circlet" type="Armor">
-		<!-- Exalted Circlet blessed by Lionel Hunter. LUC/ CHA +1, STR/ INT/ CON +3, Attribute Attack/ Resistance +30, Vitality bonus +10%, P. Atk./ M. Atk./ P. Def./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, Debuff Resistance +3%, acquired XP/ SP +10%. Cannot be enchanted, augmented, crystallized, imbued with an attribute, and its appearance cannot be modified. -->
+		<!-- Exalted Circlet blessed by Lionel Hunter. LUC/ CHA +1, STR/ INT/ CON +3, Attribute Attack/ Resistance +30, Vitality bonus +10%, P. Atk./ M. Atk./ P. Def./ M. Def. +5%, Critical Rate for basic attacks +50, M. Skill Critical Rate +5%, Debuff Resistance +3%, acquired XP/ SP +10%. Cannot be enchanted, augmented, crystallized, imbued with an attribute, and its appearance cannot be modified. -->
 		<set name="icon" val="BranchSys.icon.br_circlet_of_eva_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair2" />
@@ -1299,7 +1299,7 @@
 		<set name="etcitem_type" val="ENSOUL_STONE" />
 	</item>
 	<item id="81486" name="Talisman of Longing" additionalName="Exalted" type="Armor">
-		<!-- Talisman of Longing imbued with the power of the Exalted. Max HP/ MP/ CP +600, P./ M. Accuracy +2, P./ M. Evasion +2, Vampiric Rage effect +3%, Atk. Spd./ Casting Spd. +50, Critical Rate for basic attacks +30, M. Skill Critical Rate +10, P. Atk. +303, M. Atk. +356, Skill Power +4%, Damage Reflection Resistance +30%, P./ M. Def. +60, STR/ INT/ CON/ MEN/ DEX/ WIT +2, Skill MP Consumption -3%. The effect does not stack with that of another Talisman of Longing. Cannot be sealed or upgraded. -->
+		<!-- Talisman of Longing imbued with the power of the Exalted. Max HP/ MP/ CP +600, P./ M. Accuracy +2, P./ M. Evasion +2, Vampiric Rage effect +3%, Atk. Spd./ Casting Spd. +50, Critical Rate for basic attacks +30, M. Skill Critical Rate +1%, P. Atk. +303, M. Atk. +356, Skill Power +4%, Damage Reflection Resistance +30%, P./ M. Def. +60, STR/ INT/ CON/ MEN/ DEX/ WIT +2, Skill MP Consumption -3%. The effect does not stack with that of another Talisman of Longing. Cannot be sealed or upgraded. -->
 		<set name="icon" val="icon.accessory_longing_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -1310,9 +1310,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="talisman" />
 		<skills>
-			<skill id="13395" level="1" type="ON_UNEQUIP" /> <!-- Unequip Talisman - Longing -->
-			<skill id="13389" level="1" type="ON_EQUIP" /> <!-- Equip Talisman - Longing -->
-			<skill id="8864" level="6" /> <!-- Talisman - Longing -->
+			<skill id="13395" level="1" type="ON_UNEQUIP" /> <!-- Unequip Talisman of Longing -->
+			<skill id="13389" level="1" type="ON_EQUIP" /> <!-- Talisman of Longing -->
+			<skill id="8864" level="6" /> <!-- Talisman of Longing -->
 		</skills>
 	</item>
 	<item id="81487" name="Sayha's Talisman" additionalName="Exalted" type="Armor">
@@ -1327,7 +1327,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
 		<skills>
-			<skill id="13970" level="4" /> <!-- Skill -->
+			<skill id="13970" level="4" /> <!-- Sayha's Talisman -->
 		</skills>
 	</item>
 	<item id="81488" name="Blessed Exalted Seed Bracelet" type="Armor">
@@ -1342,12 +1342,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="35644" level="1" /> <!-- Exalted Seed Bracelet -->
+			<skill id="35644" level="1" /> <!-- Blessed Exalted Seed Bracelet -->
 			<skill id="17551" level="1" /> <!-- Balanced Power -->
 			<skill id="17552" level="1" /> <!-- Attribute Enchant -->
 			<skill id="17547" level="1" /> <!-- Agathion Teleport: Town of Aden -->
 			<skill id="17548" level="1" /> <!-- Agathion Teleport: Town of Rune -->
-			<skill id="17549" level="1" /> <!-- Agathion Teleport: Town of Giran -->
+			<skill id="17549" level="1" /> <!-- Agathion Teleport: Giran -->
 			<skill id="17550" level="1" /> <!-- Agathion Teleport: Heine -->
 		</skills>
 	</item>
@@ -1422,7 +1422,7 @@
 		</skills>
 	</item>
 	<item id="81493" name="Blessed Exalted Ring" additionalName="Critical Rate" type="Armor">
-		<!-- A ring blessed by Lionel Hunter. MP +33, Stupor Atk. Rate and Resistance +20%, P./ M. Critical Rate +50, P. Critical Damage/ M. Skill Critical Damage +10%. Cannot be enchanted, crystallized or augmented. -->
+		<!-- A ring blessed by Lionel Hunter. MP +33, Stupor Atk. Rate and Resistance +20%, Critical Rate for basic attacks +50, M. Skill Critical Rate +5%, P. Critical Damage/ M. Skill Critical Damage +10%. Cannot be enchanted, crystallized or augmented. -->
 		<set name="icon" val="icon.honors_ring" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -1471,8 +1471,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="18814" level="11" /> <!-- Superior Topaz Lv. 10 -->
-			<skill id="17701" level="11" /> <!-- Topaz -->
+			<skill id="18814" level="11" /> <!-- Superior Topaz Lv. 1 -->
+			<skill id="17701" level="11" /> <!-- Superior Topaz - Spirit Hit -->
 		</skills>
 	</item>
 	<item id="81496" name="Superior Topaz Lv. 2" type="Armor">
@@ -1485,8 +1485,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="18814" level="12" /> <!-- Superior Topaz Lv. 10 -->
-			<skill id="17701" level="12" /> <!-- Topaz -->
+			<skill id="18814" level="12" /> <!-- Superior Topaz Lv. 2 -->
+			<skill id="17701" level="12" /> <!-- Superior Topaz - Spirit Hit -->
 		</skills>
 	</item>
 	<item id="81497" name="Superior Topaz Lv. 3" type="Armor">
@@ -1499,8 +1499,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="18814" level="13" /> <!-- Superior Topaz Lv. 10 -->
-			<skill id="17701" level="13" /> <!-- Topaz -->
+			<skill id="18814" level="13" /> <!-- Superior Topaz Lv. 3 -->
+			<skill id="17701" level="13" /> <!-- Superior Topaz - Spirit Hit -->
 		</skills>
 	</item>
 	<item id="81498" name="Superior Topaz Lv. 4" type="Armor">
@@ -1513,8 +1513,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="18814" level="14" /> <!-- Superior Topaz Lv. 10 -->
-			<skill id="17701" level="14" /> <!-- Topaz -->
+			<skill id="18814" level="14" /> <!-- Superior Topaz Lv. 4 -->
+			<skill id="17701" level="14" /> <!-- Superior Topaz - Spirit Hit -->
 		</skills>
 	</item>
 	<item id="81499" name="Superior Topaz Lv. 5" type="Armor">
@@ -1527,8 +1527,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="18814" level="15" /> <!-- Superior Topaz Lv. 10 -->
-			<skill id="17701" level="15" /> <!-- Topaz -->
+			<skill id="18814" level="15" /> <!-- Superior Topaz Lv. 5 -->
+			<skill id="17701" level="15" /> <!-- Superior Topaz - Spirit Hit -->
 		</skills>
 	</item>
 </list>

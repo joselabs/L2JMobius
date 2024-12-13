@@ -60,7 +60,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="40374" level="1" /> <!-- Aden Scroll Lv. 1 -->
+			<skill id="40374" level="1" /> <!-- Elmoreden Tower's Scroll of Blessing -->
 		</skills>
 	</item>
 	<item id="96003" name="Random Craft: Spirit Ore (1000 pcs.)" additionalName="Sealed" type="EtcItem">
@@ -758,7 +758,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="96049" name="Spellbook: Holy Buster" type="EtcItem">
-		<!-- A spellbook for learning the Holy Buster skill. <Classes>. Cardinal. Eva's Saint. Shillien Saint. Hierophant. <Skill effect>. M. Atk. +100. When using the Divine Beam skill:. With a certain chance, makes an additional attack. -->
+		<!-- A spellbook for learning the Holy Buster skill. <Class>. Apostle. <Skill effect>. M. Atk. +100. When using the Divine Beam skill:. With a certain chance, deals an additional blow. -->
 		<set name="icon" val="icon.etc_magic_book_white_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -919,7 +919,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="96064" name="Spellbook: Holy Buster" additionalName="Sealed" type="EtcItem">
-		<!-- A spellbook for learning the Holy Buster skill. <Classes>. Cardinal. Eva's Saint. Shillien Saint. Hierophant. <Skill effect>. M. Atk. +100. When using the Divine Beam skill:. With a certain chance, makes an additional attack. -->
+		<!-- A spellbook for learning the Holy Buster skill. <Class>. Apostle. <Skill effect>. M. Atk. +100. When using the Divine Beam skill:. With a certain chance, deals an additional blow. -->
 		<set name="icon" val="icon.etc_magic_book_white_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1246,7 +1246,7 @@
 		</capsuled_items>
 	</item>
 	<item id="96083" name="Garden of Genesis' Time Stone (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Prolongs your session zone's raid for 60 min. <Hunting zone>. Garden of Genesis -->
+		<!-- Prolongs your session zone's raid for 60 min. <Hunting zone>. Garden of Genesis. <font color=ff6666>Note!</font>. Required level: 80+. -->
 		<set name="icon" val="icon.bm_timezone_refill_pccafe_a_60" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="immediate_effect" val="true" />
@@ -1258,7 +1258,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="96084" name="Treasure Chest of Genesis (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to obtain one of the following items. -->
+		<!-- Double-click to obtain various items. -->
 		<set name="icon" val="icon.new_user_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1303,6 +1303,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40376" level="1" /> <!-- Spring Energy -->
+		</skills>
 	</item>
 	<item id="96086" name="Invigorating Spring Energy (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Craft points +10,000. <Effect>. Momentarily recovers 500 HP. If HP is full, CP is recovered. -->

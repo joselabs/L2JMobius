@@ -595,7 +595,7 @@
 		</effects>
 	</skill>
 	<skill id="36441" toLevel="1" name="Special_Collection_3_1">
-		<!-- Critical Damage for basic attacks and P./ M. skills +2% -->
+		<!-- Critical Damage for basic attacks and P./ M. Skill Critical Damage +2% -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -839,7 +839,7 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -938,16 +938,16 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="WeaponBonusPAtk">
+			<effect name="WeaponBonusPhysicalAttack">
 				<amount>10</amount>
 			</effect>
-			<effect name="WeaponBonusMAtk">
+			<effect name="WeaponBonusMagicalAttack">
 				<amount>10</amount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="36461" toLevel="1" name="Special_Collection_3_21">
-		<!-- Critical Damage for basic attacks and P./ M. skills +0.5% -->
+		<!-- Critical Damage for basic attacks and P./ M. Skill Critical Damage +0.5% -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1210,7 +1210,19 @@
 				<type>STUN</type>
 				<level>1</level>
 				<hasAbnormal>true</hasAbnormal>
-				<affectType>TARGET</affectType>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpCheckAbnormal">
+				<type>AIRBIND</type>
+				<level>1</level>
+				<hasAbnormal>true</hasAbnormal>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpCheckAbnormal">
+				<type>PARALYZE</type>
+				<level>1</level>
+				<hasAbnormal>true</hasAbnormal>
+				<affectType>CASTER</affectType>
 			</condition>
 		</passiveConditions>
 		<effects>
@@ -1456,11 +1468,11 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1726,10 +1738,10 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="WeaponBonusPAtk">
+			<effect name="WeaponBonusPhysicalAttack">
 				<amount>100</amount>
 			</effect>
-			<effect name="WeaponBonusMAtk">
+			<effect name="WeaponBonusMagicalAttack">
 				<amount>100</amount>
 			</effect>
 		</effects>
@@ -1782,7 +1794,7 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>0.5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1801,7 +1813,7 @@
 				<amount>0.5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>0.5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1944,11 +1956,11 @@
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2009,11 +2021,20 @@
 		</effects>
 	</skill>
 	<skill id="36497" toLevel="10" name="Helmet - Enhance: Pa'agrio's Soul Crystal - Lv. 1">
-		<!-- Acquired XP/ SP +1% -->
+		<!-- Level 1: Acquired XP/ SP +1% -->
+		<!-- Level 2: Acquired XP/ SP +2% -->
+		<!-- Level 3: Acquired XP/ SP +3% -->
+		<!-- Level 4: Acquired XP/ SP +4% -->
+		<!-- Level 5: Acquired XP/ SP +5%, M. Def. +3% -->
+		<!-- Level 6: Acquired XP/ SP +5%, M. Def. +4% -->
+		<!-- Level 7: Acquired XP/ SP +5%, M. Def. +5%, P./ M. Atk. +3% -->
+		<!-- Level 8: Acquired XP/ SP +5%, M. Def. +6%, P./ M. Atk. +5% -->
+		<!-- Level 9: Acquired XP/ SP +5%, M. Def. +8%, P./ M. Atk. +7% -->
+		<!-- Level 10: Acquired XP/ SP +5%, M. Def. +10%, P./ M. Atk. +10% -->
 		<icon>icon.ensoul_stone_paagrio</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ExpModify">
 				<amount>
@@ -2045,7 +2066,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="6">0</value>
 					<value level="7">3</value>
@@ -2055,7 +2076,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="6">0</value>
 					<value level="7">3</value>
@@ -2068,11 +2089,20 @@
 		</effects>
 	</skill>
 	<skill id="36498" toLevel="10" name="Upper Armor - Patience: Pa'agrio's Soul Crystal - Lv. 1">
-		<!-- Acquired XP/ SP +1% -->
+		<!-- Level 1: Acquired XP/ SP +1% -->
+		<!-- Level 2: Acquired XP/ SP +2% -->
+		<!-- Level 3: Acquired XP/ SP +3% -->
+		<!-- Level 4: Acquired XP/ SP +4% -->
+		<!-- Level 5: Acquired XP/ SP +5%, P. Def. +3% -->
+		<!-- Level 6: Acquired XP/ SP +5%, P. Def. +4% -->
+		<!-- Level 7: Acquired XP/ SP +5%, P. Def. +5%, Critical Damage for basic attacks and P./ M. Skill Critical Damage +3% -->
+		<!-- Level 8: Acquired XP/ SP +5%, P. Def. +6%, Critical Damage for basic attacks and P./ M. Skill Critical Damage +5% -->
+		<!-- Level 9: Acquired XP/ SP +5%, P. Def. +8%, Critical Damage for basic attacks and P./ M. Skill Critical Damage +7% -->
+		<!-- Level 10: Acquired XP/ SP +5%, P. Def. +10%, Critical Damage for basic attacks and P./ M. Skill Critical Damage +10% -->
 		<icon>icon.ensoul_stone_paagrio</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ExpModify">
 				<amount>
@@ -2137,11 +2167,20 @@
 		</effects>
 	</skill>
 	<skill id="36499" toLevel="10" name="Lower Armor - Persistence: Pa'agrio's Soul Crystal - Lv. 1">
-		<!-- Acquired XP/ SP +1% -->
+		<!-- Level 1: Acquired XP/ SP +1% -->
+		<!-- Level 2: Acquired XP/ SP +2% -->
+		<!-- Level 3: Acquired XP/ SP +3% -->
+		<!-- Level 4: Acquired XP/ SP +4% -->
+		<!-- Level 5: Acquired XP/ SP +5%, Attribute Resistance +30 -->
+		<!-- Level 6: Acquired XP/ SP +5%, Attribute Resistance +40 -->
+		<!-- Level 7: Acquired XP/ SP +5%, Attribute Resistance +50, Power of basic attacks and P./ M. skills +3% -->
+		<!-- Level 8: Acquired XP/ SP +5%, Attribute Resistance +60, Power of basic attacks and P./ M. skills +5% -->
+		<!-- Level 9: Acquired XP/ SP +5%, Attribute Resistance +80, Power of basic attacks and P./ M. skills +7% -->
+		<!-- Level 10: Acquired XP/ SP +5%, Attribute Resistance +100, Power of basic attacks and P./ M. skills +10% -->
 		<icon>icon.ensoul_stone_paagrio</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ExpModify">
 				<amount>

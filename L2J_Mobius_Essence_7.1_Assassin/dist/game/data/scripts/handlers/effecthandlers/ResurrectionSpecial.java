@@ -23,7 +23,6 @@ import java.util.Set;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectFlag;
 import org.l2jmobius.gameserver.model.effects.EffectType;
@@ -84,12 +83,13 @@ public class ResurrectionSpecial extends AbstractEffect
 			return;
 		}
 		
-		if (effected.getActingPlayer().isInOlympiadMode())
+		final Player target = effected.asPlayer();
+		if (target.isInOlympiadMode())
 		{
 			return;
 		}
 		
-		final Player caster = effector.getActingPlayer();
+		final Player caster = effector.asPlayer();
 		final Instance instance = caster.getInstanceWorld();
 		if (!_instanceId.isEmpty() && ((instance == null) || !_instanceId.contains(instance.getTemplateId())))
 		{
@@ -98,12 +98,11 @@ public class ResurrectionSpecial extends AbstractEffect
 		
 		if (effected.isPlayer())
 		{
-			effected.getActingPlayer().reviveRequest(caster, false, _power, _hpPercent, _mpPercent, _cpPercent);
+			target.reviveRequest(caster, false, _power, _hpPercent, _mpPercent, _cpPercent);
 		}
 		else if (effected.isPet())
 		{
-			final Pet pet = (Pet) effected;
-			effected.getActingPlayer().reviveRequest(pet.getActingPlayer(), true, _power, _hpPercent, _mpPercent, _cpPercent);
+			target.reviveRequest(target, true, _power, _hpPercent, _mpPercent, _cpPercent);
 		}
 	}
 }

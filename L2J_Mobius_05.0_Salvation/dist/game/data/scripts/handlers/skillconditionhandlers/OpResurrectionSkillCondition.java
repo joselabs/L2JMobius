@@ -51,7 +51,7 @@ public class OpResurrectionSkillCondition implements ISkillCondition
 		
 		if (target.isPlayer())
 		{
-			final Player player = target.getActingPlayer();
+			final Player player = target.asPlayer();
 			if (!player.isDead())
 			{
 				canResurrect = false;
@@ -81,8 +81,8 @@ public class OpResurrectionSkillCondition implements ISkillCondition
 		}
 		else if (target.isSummon())
 		{
-			final Summon summon = (Summon) target;
-			final Player player = target.getActingPlayer();
+			final Summon summon = target.asSummon();
+			final Player player = target.asPlayer();
 			if (!summon.isDead())
 			{
 				canResurrect = false;

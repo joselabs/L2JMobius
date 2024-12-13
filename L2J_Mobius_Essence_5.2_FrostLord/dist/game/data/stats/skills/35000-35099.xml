@@ -3,22 +3,22 @@
 	<skill id="35000" toLevel="1" name="Fire Dragon's Blessing">
 		<!-- Buffs, debuffs and anomaly states remain after death. But Fire Dragon's Blessing disappears. -->
 		<icon>icon.bm_blessing_dragon</icon>
+		<operateType>A1</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>PRESERVE_ABNORMAL</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<canBeDispelled>false</canBeDispelled>
 		<castRange>400</castRange>
 		<effectPoint>1</effectPoint>
 		<effectRange>900</effectRange>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<effects>
 			<effect name="NoblesseBless" />
 		</effects>
@@ -26,20 +26,20 @@
 	<skill id="35001" toLevel="1" name="Fire Dragon's Protection">
 		<!-- Resurrects from death fully recovered. Buffs, debuffs and anomaly states remain after death. But Fire Dragon's Blessing disappears. -->
 		<icon>icon.bm_salvation_dragon</icon>
+		<operateType>A1</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>RESURRECTION_SPECIAL</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<castRange>400</castRange>
 		<effectPoint>1</effectPoint>
 		<effectRange>900</effectRange>
 		<hitTime>3000</hitTime>
-		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>3600000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="ResurrectionSpecial">
 				<power>100</power>
@@ -49,21 +49,21 @@
 	<skill id="35002" toLevel="1" name="Earth Dragon's Breath">
 		<!-- Decreases target's Atk. Spd. The effect lasts for 15 sec. Atk. Spd. -30%. Casting Spd. -30% -->
 		<icon>icon.bm_s_dragon_breath</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>-190</effectPoint>
 		<effectRange>1100</effectRange>
 		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
-		<operateType>A1</operateType>
-		<reuseDelay>60000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<basicProperty>PHYSICAL</basicProperty>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>60000</reuseDelay>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-50</amount>
@@ -78,18 +78,18 @@
 	<skill id="35003" toLevel="1" name="Earth Dragon's Defense">
 		<!-- Increases character's protection skills. The effect lasts for 15 sec. P. Def. +3600. M. Def. +3240. Buff Cancel Resistance +80% -->
 		<icon>icon.bm_dragon_defence</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>HERO_BUFF</abnormalType>
 		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>438</effectPoint>
 		<hitTime>1000</hitTime>
-		<operateType>A1</operateType>
-		<reuseDelay>600000</reuseDelay>
-		<basicProperty>PHYSICAL</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>600000</reuseDelay>
 		<effects>
 			<effect name="BlockMove" />
 			<effect name="PhysicalDefence">
@@ -109,9 +109,9 @@
 	<skill id="35004" toLevel="1" name="Earth Dragon Pendant">
 		<!-- M. Def. +9 -->
 		<icon>icon.bm_pendant_pvp</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>9</amount>
@@ -120,11 +120,21 @@
 		</effects>
 	</skill>
 	<skill id="35005" toLevel="11" name="+1 Earth Dragon Pendant">
-		<!-- M. Def. +10 -->
+		<!-- Level 1: M. Def. +10 -->
+		<!-- Level 2: M. Def. +12 -->
+		<!-- Level 3: M. Def. +13 -->
+		<!-- Level 4: M. Def. +14. Max HP +100. Max MP +40 -->
+		<!-- Level 5: M. Def. +15. Max HP +150. Max MP +50. received damage -3% -->
+		<!-- Level 6: M. Def. +16. Max HP +200. Max CP +200. Max MP +60. received damage -5% -->
+		<!-- Level 7: M. Def. +17. Max HP +300. Max CP +300. Max MP +90. Speed +7. Received damage -10% -->
+		<!-- Level 8: M. Def. +18. Max HP +400. Max CP +400. Max MP +120. Speed +7. Received damage -20% -->
+		<!-- Level 9: M. Def. +20. Max HP +500. Max CP +500. Max MP +150. Speed +7. Received damage -20% -->
+		<!-- Level 10: M. Def. +21. Max HP +500. Max CP +500. Max MP +150. Speed +7. Received damage -20% -->
+		<!-- Level 11: M. Def. +24. Max HP +600. Max CP +600. Max MP +300. Speed +7. received damage -20%%. Damage Reflection Resistance +10% -->
 		<icon>icon.bm_pendant_pvp</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -271,9 +281,9 @@
 	<skill id="35006" toLevel="1" name="Fire Dragon Pendant">
 		<!-- M. Def. +9 -->
 		<icon>icon.bm_pendant_pve</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>9</amount>
@@ -282,11 +292,21 @@
 		</effects>
 	</skill>
 	<skill id="35007" toLevel="11" name="+1 Fire Dragon Pendant">
-		<!-- M. Def. +10 -->
+		<!-- Level 1: M. Def. +10 -->
+		<!-- Level 2: M. Def. +12 -->
+		<!-- Level 3: M. Def. +13 -->
+		<!-- Level 4: M. Def. +14. Acquired XP +2%. Acquired SP +2% -->
+		<!-- Level 5: M. Def. +15. Acquired XP +5%. Acquired SP +5%. P. Atk. +10. M. Atk. +10 -->
+		<!-- Level 6: M. Def. +16. Acquired XP +10%. Acquired SP +10%. P. Atk. +20. M. Atk. +20 -->
+		<!-- Level 7: M. Def. +17. Acquired XP +20%. Acquired SP +20%. P. Atk. +30. M. Atk. +30 -->
+		<!-- Level 8: M. Def. +18. Acquired XP +25%. Acquired SP +25%. P. Atk. +40. M. Atk. +40. P. Critical Damage +5%. M. Skill Critical Damage +5% -->
+		<!-- Level 9: M. Def. +20. Acquired XP +30%. Acquired SP +30%. P. Atk. +50. M. Atk. +50. P. Critical Damage +5%. M. Skill Critical Damage +5% -->
+		<!-- Level 10: M. Def. +21. Acquired XP +30%. Acquired SP +30%. P. Atk. +60. M. Atk. +60. P. Critical Damage +5%. M. Skill Critical Damage +5% -->
+		<!-- Level 11: M. Def. +24. Acquired XP +30%. Acquired SP +30%. P. Atk. +80. M. Atk. +80. P. Critical Damage +10%. M. Skill Critical Damage +10%. Damage Reflection Resistance +10% -->
 		<icon>icon.bm_pendant_pve</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -330,7 +350,7 @@
 					<value level="11">30</value> <!-- FIXME: AUTO GENERATED LEVEL -->
 				</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">10</value>
@@ -343,7 +363,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">10</value>
@@ -387,17 +407,17 @@
 	<skill id="35008" toLevel="1" name="Fire Dragon Resistance">
 		<!-- Debuff Resistance +50%. -->
 		<icon>icon.bm_salvation_dragon</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>RESIST_DEBUFF_DISPEL</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>1</effectPoint>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<operateType>A1</operateType>
-		<reuseDelay>30000</reuseDelay>
-		<basicProperty>PHYSICAL</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>30000</reuseDelay>
 		<effects>
 			<effect name="ResistAbnormalByCategory">
 				<amount>-50</amount>
@@ -413,19 +433,19 @@
 	<skill id="35010" toLevel="1" name="Refined Romantic Chapeau">
 		<!-- STR +1, INT +1. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_NOT</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>MAX_HP_UP</abnormalType>
-		<effectRange>900</effectRange>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>60</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_NOT</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectRange>900</effectRange>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>60</magicLevel>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MaxHp">
 				<amount>35</amount>
@@ -436,17 +456,17 @@
 	<skill id="35011" toLevel="1" name="Refined Romantic Chapeau: Teleport">
 		<!-- Teleports character to the nearest village. Cooldown - 2 h. -->
 		<icon>icon.skill0000</icon>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<hitTime>1000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<reuseDelay>7200000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>7200000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -483,13 +503,13 @@
 	<skill id="35016" toLevel="1" name="Core's Blessing">
 		<!-- Removes debuffs and anomaly states from the target. -->
 		<icon>icon.accessory_ring_of_core_i03</icon>
-		<reuseDelay>120000</reuseDelay>
-		<hitTime>200</hitTime>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<canCastWhileDisabled>true</canCastWhileDisabled>
+		<hitTime>200</hitTime>
+		<isMagic>1</isMagic>
+		<reuseDelay>120000</reuseDelay>
 		<conditions>
 			<condition name="NotFeared" />
 		</conditions>
@@ -502,7 +522,13 @@
 		</effects>
 	</skill>
 	<skill id="35017" toLevel="7" name="Talisman of Insolence I">
-		<!-- <Effect>. P. Atk. +14. M. Atk. +22 -->
+		<!-- Level 1: <Effect>. P. Atk. +14. M. Atk. +22 -->
+		<!-- Level 2: <Effect>. P. Atk. +27. M. Atk. +44. M. Damage Resistance +2% -->
+		<!-- Level 3: <Effect>. P. Atk. +41. M. Atk. +66. M. Damage Resistance +4%. P./ M. Skill Power +1%. Resistance to All Weapons +1% -->
+		<!-- Level 4: <Effect>. P. Atk. +68. M. Atk. +109. M. Damage Resistance +6%. P./ M. Skill Power +2%. Resistance to All Weapons +2%. CON +1. MEN +1 -->
+		<!-- Level 5: <Effect>. P. Atk. +170. M. Atk. +235. M. Damage Resistance +7%. P./ M. Skill Power +2%. Resistance to All Weapons +2%. CON +1. MEN +1. STR +1. INT +1. Skill MP Consumption -2% -->
+		<!-- Level 6: <Effect>. P. Atk. +200. M. Atk. +275. M. Damage Resistance +8%. P./ M. Skill Power +3%. Resistance to All Weapons +3%. CON +1. MEN +1. STR +1. INT +1. Skill MP consumption -4%. P. Critical Rate +10. M. Skill Critical Rate +10 -->
+		<!-- Level 7: <Effect>. P. Atk. +284. M. Atk. +392. M. Damage Resistance +10%. P./ M. Skill Power +5%. Resistance to All Weapons +5%. CON/ MEN/ STR/ INT/ DEX/ WIT +1. Skill MP Consumption -5%. P. Critical Rate +20. M. Skill Critical Rate +20. Skill Cooldown -3% -->
 		<icon>
 			<value level="1">icon.oman_tallisman_new_i02</value>
 			<value level="2">icon.oman_tallisman_new_i02</value>
@@ -513,8 +539,8 @@
 			<value level="7">icon.baium_talisman_new</value>
 		</icon>
 		<operateType>P</operateType>
-		<magicLevel>75</magicLevel>
 		<excludedFromCheck>true</excludedFromCheck>
+		<magicLevel>75</magicLevel>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>60</minLevel>
@@ -522,7 +548,7 @@
 			</condition>
 		</passiveConditions>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">14</value>
 					<value level="2">27</value>
@@ -534,7 +560,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">22</value>
 					<value level="2">44</value>
@@ -546,7 +572,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">2</value>
@@ -835,35 +861,35 @@
 	<skill id="35018" toLevel="1" name="Talisman of Insolence">
 		<!-- Imbues with Talisman of Insolence power VI -->
 		<icon>icon.oman_tallisman_new_i01</icon>
-		<abnormalType>SEED_TALISMAN1</abnormalType>
-		<abnormalVisualEffect>SEED_TALISMAN5</abnormalVisualEffect>
 		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-2</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<buffProtectLevel>31</buffProtectLevel>
-		<magicLevel>40</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>6</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
-		<irreplacableBuff>true</irreplacableBuff>
-		<blockActionUseSkill>true</blockActionUseSkill>
-		<isMagic>3</isMagic>
-		<targetType>SELF</targetType>
+		<abnormalType>SEED_TALISMAN1</abnormalType>
+		<abnormalVisualEffect>SEED_TALISMAN5</abnormalVisualEffect>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockActionUseSkill>true</blockActionUseSkill>
+		<buffProtectLevel>31</buffProtectLevel>
+		<hitCancelTime>0</hitCancelTime>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>3</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<specialLevel>-2</specialLevel>
 	</skill>
 	<skill id="35019" toLevel="1" name="Remove Talisman of Insolence">
 		<!-- The effect of Talisman of Insolence VI weakens. -->
 		<icon>icon.oman_tallisman_new_i01</icon>
 		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>40</magicLevel>
-		<trait>HOLD</trait>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<trait>HOLD</trait>
 		<effects>
 			<effect name="DispelBySlot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
@@ -873,35 +899,35 @@
 	<skill id="35020" toLevel="1" name="Talisman of Baium">
 		<!-- Imbues with Talisman of Baium power. -->
 		<icon>icon.baium_talisman_new</icon>
-		<abnormalType>SEED_TALISMAN1</abnormalType>
-		<abnormalVisualEffect>SEED_TALISMAN4</abnormalVisualEffect>
 		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-2</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<buffProtectLevel>31</buffProtectLevel>
-		<magicLevel>40</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>6</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
-		<irreplacableBuff>true</irreplacableBuff>
-		<blockActionUseSkill>true</blockActionUseSkill>
-		<isMagic>3</isMagic>
-		<targetType>SELF</targetType>
+		<abnormalType>SEED_TALISMAN1</abnormalType>
+		<abnormalVisualEffect>SEED_TALISMAN4</abnormalVisualEffect>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockActionUseSkill>true</blockActionUseSkill>
+		<buffProtectLevel>31</buffProtectLevel>
+		<hitCancelTime>0</hitCancelTime>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>3</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<specialLevel>-2</specialLevel>
 	</skill>
 	<skill id="35021" toLevel="1" name="Talisman of Baium - Removal">
 		<!-- The effect of Talisman of Baium weakens. -->
 		<icon>icon.baium_talisman_new</icon>
 		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>40</magicLevel>
-		<trait>HOLD</trait>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<trait>HOLD</trait>
 		<effects>
 			<effect name="DispelBySlot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
@@ -921,7 +947,27 @@
 		<reuseDelay>7200000</reuseDelay>
 	</skill>
 	<skill id="35024" toLevel="21" name="Talisman of Border">
-		<!-- Activates Dimensional Border Power. <Defense>: P./ M. Def. +12. -->
+		<!-- Level 1: Activates Dimensional Border Power. <Defense>: P./ M. Def. +12. -->
+		<!-- Level 2: Activates Dimensional Border Power. <Defense>: P./ M. Def. +14, P./ M. Evasion +1. -->
+		<!-- Level 3: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +3%. <Defense>: P./ M. Def. +17, P./ M. Evasion +1, Max HP/ MP/ CP +80. <Speed>: Speed +3. -->
+		<!-- Level 4: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +3%. <Defense>: P./ M. Def. +19, P./ M. Evasion +1, Max HP/ MP/ CP +80. <Speed>: Speed +3, Atk. Spd./ Casting Spd. +7. -->
+		<!-- Level 5: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +4%. <Defense>: P./ M. Def. +22, P./ M. Evasion +1, Max HP/ MP/ CP +120. <Speed>: Speed +5, Atk. Spd./ Casting Spd. +10. -->
+		<!-- Level 6: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +4%. <Defense>: P./ M. Def. +24, P./ M. Evasion +2, Max HP/ MP/ CP +160. <Speed>: Speed +5, Atk. Spd./ Casting Spd. +15. -->
+		<!-- Level 7: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +5%. <Defense>: P./ M. Def. +29, P./ M. Evasion +2, Max HP/ MP/ CP +160. <Speed>: Speed +7, Atk. Spd./ Casting Spd. +15. <Destruction>: With a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 8: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +5%. <Defense>: P./ M. Def. +34, P./ M. Evasion +2, Max HP/ MP/ CP +200. <Speed>: Speed +7, Atk. Spd./ Casting Spd. +15. <Destruction>: With a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 9: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +5%. <Defense>: P./ M. Def. +38, P./ M. Evasion +2, Max HP/ MP/ CP +240. <Speed>: Speed +8, Atk. Spd./ Casting Spd. +15. <Destruction>: Reflects 4% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 10: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +5%. <Defense>: P./ M. Def. +43, P./ M. Evasion +2, Max HP/ MP/ CP +280. <Speed>: Speed +8, Atk. Spd./ Casting Spd. +20. <Destruction>: Reflects 6% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 11: Activates Dimensional Border Power. <Upgrade>: Acquired XP/ SP +5%. <Defense>: P./ M. Def. +48, P./ M. Evasion +2, Max HP/ MP/ CP +320. <Speed>: Speed +8, Atk. Spd./ Casting Spd. +30. <Destruction>: Reflects 8% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 12: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +3%. <Defense>: P./ M. Def. +25, P./ M. Evasion +1, Max HP/ MP/ CP +150. <Speed>: Speed +5, Atk. Spd./ Casting Spd. +10. -->
+		<!-- Level 13: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +5%. <Defense>: P./ M. Def. +30, P./ M. Evasion +2, Max HP/ MP/ CP +200. <Speed>: Speed +7, Atk. Spd./ Casting Spd. +15. <Destruction>: Reflects 1% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 14: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +6%. <Defense>: P./ M. Def. +35, P./ M. Evasion +2, Max HP/ MP/ CP +250. <Speed>: Speed +7, Atk. Spd./ Casting Spd. +15. <Destruction>: Reflects 2% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 15: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +7%. <Defense>: P./ M. Def. +40, P./ M. Evasion +2, Max HP/ MP/ CP +300. <Speed>: Speed +7, Atk. Spd./ Casting Spd. +15. <Destruction>: Reflects 4% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 16: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +8%. <Defense>: P./ M. Def. +45, P./ M. Evasion +3, Max HP/ MP/ CP +400. <Speed>: Speed +8, Atk. Spd./ Casting Spd. +20. <Destruction>: Reflects 6% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 17: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +10%. <Defense>: P./ M. Def. +50, P./ M. Evasion +3, Max HP/ MP/ CP +500. <Speed>: Speed +8, Atk. Spd./ Casting Spd. +30. <Destruction>: Reflects 8% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 18: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +12%. <Defense>: P./ M. Def. +70, P./ M. Evasion +4, Max HP/ MP/ CP +1000. <Speed>: Speed +9, Atk. Spd. +40, Casting Spd. +50. <Destruction>: Reflects 9% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 19: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +15%. <Defense>: P./ M. Def. +80, P./ M. Evasion +4, Max HP/ MP/ CP +1300. <Speed>: Speed +9, Atk. Spd. +40, Casting Spd. +65. <Destruction>: Reflects 9% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 20: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +20%. <Defense>: P./ M. Def. +90, P./ M. Evasion +4, Max HP/ MP/ CP +1600. <Speed>: Speed +9, Atk. Spd. +50, Casting Spd. +80. <Destruction>: Reflects 9% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
+		<!-- Level 21: Activates Dimensional Power. <Upgrade>: Acquired XP/ SP +30%. <Defense>: P./ M. Def. +100, P./ M. Evasion +5, Max HP/ MP/ CP +2000. <Speed>: Speed +10, Atk. Spd. +50, Casting Spd. +100. <Destruction>: Reflects 10% of received damage back to the enemy; with a certain chance, activates Dimensional Border Power after an attack. -->
 		<icon>
 			<value level="1">icon.magic_square_talisman_new</value>
 			<value level="2">icon.magic_square_talisman_new</value>
@@ -946,8 +992,8 @@
 			<value level="21">icon.bm_dimension_tallisman</value>
 		</icon>
 		<operateType>P</operateType>
-		<magicLevel>55</magicLevel>
 		<excludedFromCheck>true</excludedFromCheck>
+		<magicLevel>55</magicLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>
@@ -1336,7 +1382,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<skillId>35027</skillId> <!-- Dimensional Border Power -->
 				<skillLevel>
@@ -1371,14 +1417,14 @@
 	<skill id="35025" toLevel="1" name="Border Purification">
 		<!-- Cancels paralysis and petrification and cures severe poison/ bleed condition. -->
 		<icon>icon.skill10036</icon>
-		<reuseDelay>60000</reuseDelay>
-		<castRange>600</castRange>
-		<hitTime>3000</hitTime>
-		<effectPoint>100</effectPoint>
+		<operateType>A1</operateType>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<castRange>600</castRange>
+		<effectPoint>100</effectPoint>
+		<hitTime>3000</hitTime>
 		<isMagic>1</isMagic>
-		<operateType>A1</operateType>
+		<reuseDelay>60000</reuseDelay>
 		<effects>
 			<effect name="DispelBySlot">
 				<dispel>POISON,9</dispel>
@@ -1401,29 +1447,37 @@
 		<!-- HP/ MP/ CP +50%. -->
 		<icon>icon.skill10034</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>3000</hitTime>
 		<coolTime>200</coolTime>
-		<reuseDelay>1200000</reuseDelay>
 		<effectPoint>100</effectPoint>
+		<hitTime>3000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<reuseDelay>1200000</reuseDelay>
 	</skill>
 	<skill id="35027" toLevel="9" name="Dimensional Border Power">
-		<!-- P./ M. Atk. +2%, P. Critical Damage/ M. Skill Critical Damage +10%. -->
+		<!-- Level 1: P./ M. Atk. +2%, P. Critical Damage/ M. Skill Critical Damage +10%. -->
+		<!-- Level 2: P./ M. Atk. +5%, P. Critical Damage/ M. Skill Critical Damage +30%. -->
+		<!-- Level 3: P./ M. Atk. +7%, P. Critical Damage/ M. Skill Critical Damage +40%. -->
+		<!-- Level 4: P./ M. Atk. +10%, P. Critical Damage/ M. Skill Critical Damage +40%. -->
+		<!-- Level 5: P. Atk. +11%, M. Atk. +12%, P. Critical Damage/ M. Skill Critical Damage +40%. -->
+		<!-- Level 6: P. Atk. +13%, M. Atk. +15%, P. Critical Damage/ M. Skill Critical Damage +40%, P. Critical Rate/ M. Skill Critical Rate +2%. -->
+		<!-- Level 7: P. Atk. +15%, M. Atk. +20%, P. Critical Damage/ M. Skill Critical Damage +40%, P. Critical Rate/ M. Skill Critical Rate +3%. -->
+		<!-- Level 8: P. Atk. +17%, M. Atk. +25%, P. Critical Damage/ M. Skill Critical Damage +40%, P. Critical Rate/ M. Skill Critical Rate +5%. -->
+		<!-- Level 9: P. Atk. +20%, M. Atk. +30%, P. Critical Damage/ M. Skill Critical Damage +40%, P. Critical Rate/ M. Skill Critical Rate +10%. -->
 		<icon>icon.skill10030</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
-		<magicLevel>55</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<staticReuse>true</staticReuse>
-		<isMagic>4</isMagic>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<operateType>A2</operateType>
-		<reuseDelay>30000</reuseDelay>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>30000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">5</value>
@@ -1437,7 +1491,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">5</value>
@@ -1487,68 +1541,91 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="35029" toLevel="5" name="Item Skill: Might in Duel - PvE">
-		<!-- Item skill: P. Atk. in PvE +3%. -->
+		<!-- Level 1: Item skill: P. Atk. in PvE +3%. -->
+		<!-- Level 2: Item skill: P. Atk. in PvE +3%. -->
+		<!-- Level 3: Item skill: P. Atk. in PvE +3%. -->
+		<!-- Level 4: Item skill: P. Atk. in PvE +3%. -->
+		<!-- Level 5: Item skill: P. Atk. in PvE +6%. -->
 		<icon>icon.skill3123</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="35030" toLevel="5" name="Item Skill: Defense in Duel - PvP">
-		<!-- Item skill: P. Def. in PvP +3%. -->
+		<!-- Level 1: Item skill: P. Def. in PvP +3%. -->
+		<!-- Level 2: Item skill: P. Def. in PvP +3%. -->
+		<!-- Level 3: Item skill: P. Def. in PvP +3%. -->
+		<!-- Level 4: Item skill: P. Def. in PvP +3%. -->
+		<!-- Level 5: Item skill: P. Def. in PvP +6%. -->
 		<icon>icon.skill3123</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="35031" toLevel="5" name="Item Skill: Defense in Duel - PvE">
-		<!-- Item skill: P. Def. in PvE +3%. -->
+		<!-- Level 1: Item skill: P. Def. in PvE +3%. -->
+		<!-- Level 2: Item skill: P. Def. in PvE +3%. -->
+		<!-- Level 3: Item skill: P. Def. in PvE +3%. -->
+		<!-- Level 4: Item skill: P. Def. in PvE +3%. -->
+		<!-- Level 5: Item skill: P. Def. in PvE +6%. -->
 		<icon>icon.skill3123</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="35032" toLevel="5" name="Item Skill: Enhance">
-		<!-- Item skill: Acquired XP/ SP +3%. -->
+		<!-- Level 1: Item skill: Acquired XP/ SP +3%. -->
+		<!-- Level 2: Item skill: Acquired XP/ SP +3%. -->
+		<!-- Level 3: Item skill: Acquired XP/ SP +5%. -->
+		<!-- Level 4: Item skill: Acquired XP/ SP +5%. -->
+		<!-- Level 5: Item skill: Acquired XP/ SP +10%. -->
 		<icon>icon.skill3123</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="35033" toLevel="3" name="Item Skill: Boost Atk. Spd.">
-		<!-- Active skill: Atk. Spd. +36. -->
+		<!-- Level 1: Active skill: Atk. Spd. +36. -->
+		<!-- Level 2: Active skill: Atk. Spd. +39. -->
+		<!-- Level 3: Active skill: Atk. Spd. +80. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A1</operateType>
-		<hitTime>4000</hitTime>
-		<reuseDelay>300000</reuseDelay>
 		<effectPoint>
 			<value level="1">440</value>
 			<value level="2">481</value>
 			<value level="3">521</value>
 		</effectPoint>
-		<mpConsume>48</mpConsume>
+		<hitTime>4000</hitTime>
+		<mpConsume>38</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>300000</reuseDelay>
 	</skill>
 	<skill id="35034" toLevel="3" name="Item Skill: Fast Spell Casting">
-		<!-- Active skill: Casting Spd. +21. -->
+		<!-- Level 1: Active skill: Casting Spd. +21. -->
+		<!-- Level 2: Active skill: Casting Spd. +26. -->
+		<!-- Level 3: Active skill: Casting Spd. +60. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A1</operateType>
-		<hitTime>4000</hitTime>
-		<reuseDelay>300000</reuseDelay>
 		<effectPoint>
 			<value level="1">440</value>
 			<value level="2">481</value>
 			<value level="3">521</value>
 		</effectPoint>
-		<mpConsume>48</mpConsume>
+		<hitTime>4000</hitTime>
+		<mpConsume>38</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>300000</reuseDelay>
 	</skill>
 	<skill id="35035" toLevel="1" name="Item Skill: Cleanse">
 		<!-- Skill: Cancels a debuff. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A1</operateType>
 		<castRange>600</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>300000</reuseDelay>
 		<effectPoint>440</effectPoint>
-		<mpConsume>48</mpConsume>
+		<hitTime>4000</hitTime>
+		<mpConsume>38</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>300000</reuseDelay>
 	</skill>
 	<skill id="35036" toLevel="1" name="Warrior's Talisman - Attack">
 		<!-- PvE Damage +3%, P. Critical Damage/ M. Skill Critical Damage +20, P./ M. Skill Power +2%, M./ P. Accuracy +1. -->
 		<icon>icon.r90_sp_talisman_dr_mp_active</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>-1</magicLevel>
 		<effects>
 			<effect name="PvePhysicalAttackDamageBonus">
@@ -1597,9 +1674,9 @@
 		<!-- PvE Damage +3%, M. Damage Resistance +2%, P./ M. Skill Evasion +4%, Debuff Resistance +3%, Pull Resistance +10%. -->
 		<icon>icon.r99_talisman_pd_up_passive</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>-1</magicLevel>
 		<effects>
 			<effect name="PveMagicalSkillDefenceBonus">
@@ -1614,7 +1691,7 @@
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1639,9 +1716,9 @@
 		<!-- PvP Damage +3%, P. Critical Damage/ M. Skill Critical Damage +20, P./ M. Skill Power +2%, M./ P. Accuracy +1. -->
 		<icon>icon.r90_sp_talisman_dr_hp_active</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>-1</magicLevel>
 		<effects>
 			<effect name="PvpPhysicalAttackDamageBonus">
@@ -1686,9 +1763,9 @@
 		<!-- PvP Damage +3%, M. Damage Resistance +2%, P./ M. Skill Evasion +4%, Debuff Resistance +3%, Debuff Resistance +10%. -->
 		<icon>icon.r95_talisman_ca_down_active</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>-1</magicLevel>
 		<effects>
 			<effect name="PvpPhysicalAttackDefenceBonus">
@@ -1703,7 +1780,7 @@
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1879,15 +1956,15 @@
 		<!-- Removes all debuffs. Cooldown: 10 min. -->
 		<icon>icon.etc_talisman_i03</icon>
 		<operateType>A1</operateType>
-		<mpConsume>50</mpConsume>
-		<hitTime>1000</hitTime>
-		<effectPoint>100</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<staticReuse>true</staticReuse>
-		<isMagic>2</isMagic>
-		<reuseDelay>600000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>100</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<mpConsume>50</mpConsume>
+		<reuseDelay>600000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="DispelByCategory">
 				<slot>DEBUFF</slot>

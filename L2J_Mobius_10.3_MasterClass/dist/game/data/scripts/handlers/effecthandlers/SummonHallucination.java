@@ -70,7 +70,7 @@ public class SummonHallucination extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		if (player.isMounted())
 		{
 			return;

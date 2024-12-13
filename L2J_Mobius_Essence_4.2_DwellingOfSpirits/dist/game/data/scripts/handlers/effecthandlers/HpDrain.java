@@ -38,6 +38,11 @@ public class HpDrain extends AbstractEffect
 	{
 		_power = params.getDouble("power", 0);
 		_percentage = params.getDouble("percentage", 0);
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override

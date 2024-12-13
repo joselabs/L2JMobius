@@ -135,7 +135,7 @@ public class Q10414_KekropusLetterWithCourage extends LetterQuest
 	{
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final QuestState qs = getQuestState(player, false);
 			if ((qs != null) && qs.isCond(2))
 			{

@@ -22,6 +22,7 @@ import org.l2jmobius.gameserver.data.xml.RecipeData;
 import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.stat.PlayerStat;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.RecipeHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
@@ -202,8 +203,9 @@ public class RequestRecipeShopMakeItem extends ClientPacket
 			offeringBonus = Math.min((offeredAdenaWorth / recipe.getMaxOffering()) * recipe.getMaxOfferingBonus(), recipe.getMaxOfferingBonus());
 		}
 		
-		final boolean success = player.tryLuck() || ((recipe.getSuccessRate() + offeringBonus + player.getStat().getValue(Stat.CRAFT_RATE, 0)) > Rnd.get(100));
-		final boolean craftingCritical = success && (player.getStat().getValue(Stat.CRAFTING_CRITICAL) > Rnd.get(100));
+		final PlayerStat stat = player.getStat();
+		final boolean success = player.tryLuck() || ((recipe.getSuccessRate() + offeringBonus + stat.getValue(Stat.CRAFT_RATE, 0)) > Rnd.get(100));
+		final boolean craftingCritical = success && (stat.getValue(Stat.CRAFTING_CRITICAL) > Rnd.get(100));
 		final ItemHolder craftedItem = recipe.doCraft(player, manufacturer, success, craftingCritical, true);
 		if (success)
 		{

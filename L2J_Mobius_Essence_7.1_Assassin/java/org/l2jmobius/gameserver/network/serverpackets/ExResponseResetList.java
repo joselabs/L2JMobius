@@ -18,6 +18,7 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
@@ -37,10 +38,13 @@ public class ExResponseResetList extends ServerPacket
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.EX_RESPONSE_RESET_LIST.writeId(this, buffer);
+		
 		buffer.writeLong(_player.getAdena());
 		buffer.writeLong(_player.getBeautyTickets());
-		buffer.writeInt(_player.getAppearance().getHairStyle());
-		buffer.writeInt(_player.getAppearance().getHairColor());
-		buffer.writeInt(_player.getAppearance().getFace());
+		
+		final PlayerAppearance appearance = _player.getAppearance();
+		buffer.writeInt(appearance.getHairStyle());
+		buffer.writeInt(appearance.getHairColor());
+		buffer.writeInt(appearance.getFace());
 	}
 }

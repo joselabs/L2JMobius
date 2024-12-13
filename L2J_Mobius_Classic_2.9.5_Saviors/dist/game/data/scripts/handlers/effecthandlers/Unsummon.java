@@ -78,7 +78,7 @@ public class Unsummon extends AbstractEffect
 	{
 		if (effected.isServitor())
 		{
-			final Summon servitor = (Summon) effected;
+			final Summon servitor = effected.asSummon();
 			final Player summonOwner = servitor.getOwner();
 			
 			servitor.abortAttack();

@@ -121,9 +121,10 @@ public class EntrancePortalToCrystalCaverns extends AbstractNpcAI
 	{
 		if (creature.isPlayer())
 		{
-			creature.getActingPlayer().sendPacket(new OnEventTrigger(PRISON_ENTRACE_TRIGGER_1, true));
-			creature.getActingPlayer().sendPacket(new OnEventTrigger(PRISON_ENTRACE_TRIGGER_2, true));
-			updateTriggersForPlayer(creature.getActingPlayer(), getCurrentInstanceTemplateId());
+			final Player player = creature.asPlayer();
+			player.sendPacket(new OnEventTrigger(PRISON_ENTRACE_TRIGGER_1, true));
+			player.sendPacket(new OnEventTrigger(PRISON_ENTRACE_TRIGGER_2, true));
+			updateTriggersForPlayer(player, getCurrentInstanceTemplateId());
 		}
 		return super.onCreatureSee(npc, creature);
 	}

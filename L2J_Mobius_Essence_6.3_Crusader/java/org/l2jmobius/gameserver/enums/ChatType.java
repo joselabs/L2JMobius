@@ -46,7 +46,8 @@ public enum ChatType
 	NPC_GENERAL(22),
 	NPC_SHOUT(23),
 	NPC_WHISPER(24),
-	WORLD(25);
+	WORLD(25),
+	UNIVERSAL(29);
 	
 	private final int _clientId;
 	

@@ -37,7 +37,7 @@ public class ConditionPlayerCanSummonServitor extends Condition
 	@Override
 	public boolean testImpl(Creature effector, Creature effected, Skill skill, ItemTemplate item)
 	{
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		if (player == null)
 		{
 			return false;

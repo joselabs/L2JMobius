@@ -19,6 +19,7 @@ package handlers.effecthandlers;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.enums.SubclassInfoType;
+import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -27,6 +28,7 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.olympiad.OlympiadManager;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.AcquireSkillDone;
 import org.l2jmobius.gameserver.network.serverpackets.AcquireSkillList;
 import org.l2jmobius.gameserver.network.serverpackets.ExSubjobInfo;
 import org.l2jmobius.gameserver.network.serverpackets.PartySmallWindowAll;
@@ -63,7 +65,7 @@ public class ClassChange extends AbstractEffect
 		// Executing later otherwise interrupted exception during storeCharBase.
 		ThreadPool.schedule(() ->
 		{
-			final Player player = effected.getActingPlayer();
+			final Player player = effected.asPlayer();
 			if (player.isTransformed() || player.isSubclassLocked() || player.isAffectedBySkill(IDENTITY_CRISIS_SKILL_ID))
 			{
 				player.sendMessage("You cannot switch your class right now!");
@@ -93,17 +95,19 @@ public class ClassChange extends AbstractEffect
 			player.sendStorageMaxCount();
 			player.sendPacket(new AcquireSkillList(player));
 			player.sendPacket(new ExSubjobInfo(player, SubclassInfoType.CLASS_CHANGED));
+			player.sendPacket(new AcquireSkillDone());
 			
 			if (player.isInParty())
 			{
 				// Delete party window for other party members
-				player.getParty().broadcastToPartyMembers(player, PartySmallWindowDeleteAll.STATIC_PACKET);
-				for (Player member : player.getParty().getMembers())
+				final Party party = player.getParty();
+				party.broadcastToPartyMembers(player, PartySmallWindowDeleteAll.STATIC_PACKET);
+				for (Player member : party.getMembers())
 				{
 					// And re-add
 					if (member != player)
 					{
-						member.sendPacket(new PartySmallWindowAll(member, player.getParty()));
+						member.sendPacket(new PartySmallWindowAll(member, party));
 					}
 				}
 			}

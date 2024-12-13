@@ -22,6 +22,7 @@ import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 
@@ -71,14 +72,15 @@ public class FortLogistics extends Merchant
 		
 		final StringTokenizer st = new StringTokenizer(command, " ");
 		final String actualCommand = st.nextToken(); // Get actual command
-		final boolean isMyLord = player.isClanLeader() && (player.getClan().getFortId() == (getFort() != null ? getFort().getResidenceId() : -1));
+		final Clan clan = player.getClan();
+		final boolean isMyLord = player.isClanLeader() && (clan.getFortId() == (getFort() != null ? getFort().getResidenceId() : -1));
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		if (actualCommand.equalsIgnoreCase("rewards"))
 		{
 			if (isMyLord)
 			{
 				html.setFile(player, "data/html/fortress/logistics-rewards.htm");
-				html.replace("%bloodoath%", String.valueOf(player.getClan().getBloodOathCount()));
+				html.replace("%bloodoath%", String.valueOf(clan.getBloodOathCount()));
 			}
 			else
 			{
@@ -91,11 +93,11 @@ public class FortLogistics extends Merchant
 		{
 			if (isMyLord)
 			{
-				final int blood = player.getClan().getBloodOathCount();
+				final int blood = clan.getBloodOathCount();
 				if (blood > 0)
 				{
 					player.addItem("Quest", 9910, blood, this, true);
-					player.getClan().resetBloodOathCount();
+					clan.resetBloodOathCount();
 					html.setFile(player, "data/html/fortress/logistics-blood.htm");
 				}
 				else

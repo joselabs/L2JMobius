@@ -31,6 +31,7 @@ import org.l2jmobius.gameserver.geoengine.GeoEngine;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.stat.PlayerStat;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerFishing;
@@ -318,8 +319,9 @@ public class Fishing
 				{
 					final FishingData fishingData = FishingData.getInstance();
 					final double lvlModifier = (Math.pow(_player.getLevel(), 2.2) * fishingCatchData.getMultiplier());
-					final long xp = (long) (Rnd.get(fishingData.getExpRateMin(), fishingData.getExpRateMax()) * lvlModifier * _player.getStat().getMul(Stat.FISHING_EXP_SP_BONUS, 1));
-					final long sp = (long) (Rnd.get(fishingData.getSpRateMin(), fishingData.getSpRateMax()) * lvlModifier * _player.getStat().getMul(Stat.FISHING_EXP_SP_BONUS, 1));
+					final PlayerStat stat = _player.getStat();
+					final long xp = (long) (Rnd.get(fishingData.getExpRateMin(), fishingData.getExpRateMax()) * lvlModifier * stat.getMul(Stat.FISHING_EXP_SP_BONUS, 1));
+					final long sp = (long) (Rnd.get(fishingData.getSpRateMin(), fishingData.getSpRateMax()) * lvlModifier * stat.getMul(Stat.FISHING_EXP_SP_BONUS, 1));
 					_player.addExpAndSp(xp, sp, true);
 					_player.getInventory().addItem("Fishing Reward", fishingCatchData.getItemId(), 1, _player, null);
 					final SystemMessage msg = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S1);

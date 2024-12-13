@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.areas.MonasteryOfSilence;
 
@@ -27,11 +31,9 @@ import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Attackable;
-import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -97,13 +99,13 @@ public class MonasteryOfSilence extends AbstractNpcAI
 					default:
 					{
 						npc.setRunning();
-						((Attackable) npc).addDamageHate(player, 0, 999);
+						npc.asAttackable().addDamageHate(player, 0, 999);
 						npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, player);
 						break;
 					}
 				}
 			}
-			else if (((Attackable) npc).getMostHated() == null)
+			else if (npc.asAttackable().getMostHated() == null)
 			{
 				return null;
 			}
@@ -123,7 +125,7 @@ public class MonasteryOfSilence extends AbstractNpcAI
 					if (obj.equals(npc))
 					{
 						npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.GENERAL, npc.getId(), text[Rnd.get(2) + 1].replace("name", caster.getName())));
-						((Attackable) npc).addDamageHate(caster, 0, 999);
+						npc.asAttackable().addDamageHate(caster, 0, 999);
 						npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, caster);
 						break;
 					}
@@ -143,9 +145,9 @@ public class MonasteryOfSilence extends AbstractNpcAI
 			{
 				if ((obj instanceof Player) || (obj instanceof Pet))
 				{
-					if (Util.checkIfInRange(npc.getAggroRange(), npc, obj, true) && !((Creature) obj).isDead())
+					if (Util.checkIfInRange(npc.getAggroRange(), npc, obj, true) && !obj.asCreature().isDead())
 					{
-						result.add((Playable) obj);
+						result.add(obj.asPlayable());
 					}
 				}
 			}
@@ -154,7 +156,7 @@ public class MonasteryOfSilence extends AbstractNpcAI
 			{
 				for (Playable obj : result)
 				{
-					final Playable target = obj instanceof Player ? obj : ((Summon) obj).getOwner();
+					final Playable target = obj instanceof Player ? obj : obj.asSummon().getOwner();
 					if ((target.getActiveWeaponInstance() != null) && !npc.isInCombat() && (npc.getTarget() == null))
 					{
 						npc.setTarget(target);
@@ -172,7 +174,7 @@ public class MonasteryOfSilence extends AbstractNpcAI
 							default:
 							{
 								npc.setRunning();
-								((Attackable) npc).addDamageHate(target, 0, 999);
+								npc.asAttackable().addDamageHate(target, 0, 999);
 								npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, target);
 								break;
 							}
@@ -190,7 +192,7 @@ public class MonasteryOfSilence extends AbstractNpcAI
 		if (CommonUtil.contains(mobs1, npc.getId()) && (skill.getId() == 4589))
 		{
 			npc.setRunning();
-			((Attackable) npc).addDamageHate(player, 0, 999);
+			npc.asAttackable().addDamageHate(player, 0, 999);
 			npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, player);
 		}
 		return super.onSpellFinished(npc, player, skill);

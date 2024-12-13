@@ -98,6 +98,8 @@ public enum Stat
 	DRAGON_WEAPON_DEFENCE("dragonWeaponDefence"),
 	AUTO_ATTACK_DAMAGE_BONUS("autoAttackDamageBonus"),
 	IGNORE_REDUCE_DAMAGE("ignoreReduceDamage"),
+	STATIC_PHYSICAL_ATTACK_SPEED("staticPAtkSpeed"),
+	STATIC_MAGICAL_ATTACK_SPEED("staticMAtkSpeed"),
 	
 	// PVP BONUS
 	PVP_PHYSICAL_ATTACK_DAMAGE("pvpPhysDmg"),
@@ -173,6 +175,8 @@ public enum Stat
 	BONUS_SPOIL_RATE("bonusSpoilRate"),
 	BONUS_RAID_POINTS("bonusRaidPoints"),
 	ATTACK_CANCEL("cancel"),
+	ACCESSORY_MAGICAL_DEFENCE("accessoryMagicalDefence"),
+	ARMOR_PHYSICAL_DEFENCE("armorPhysicalDefence"),
 	
 	// ACCURACY & RANGE
 	ACCURACY_COMBAT("accCombat", new PAccuracyFinalizer()),
@@ -194,6 +198,7 @@ public enum Stat
 	SWIM_WALK_SPEED("slowSimSpd", new SpeedFinalizer()),
 	FLY_RUN_SPEED("fastFlySpd", new SpeedFinalizer()),
 	FLY_WALK_SPEED("slowFlySpd", new SpeedFinalizer()),
+	STATIC_SPEED("staticSpeed"),
 	
 	// BASIC STATS
 	STAT_STR("STR", new BaseStatFinalizer()),

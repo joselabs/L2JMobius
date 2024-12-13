@@ -56,7 +56,7 @@ public class Teleport extends AbstractEffect
 	{
 		if (effected.isPlayer())
 		{
-			final Player player = effected.getActingPlayer();
+			final Player player = effected.asPlayer();
 			final KrateiArena arena = player.getKrateiArena();
 			if (arena != null)
 			{

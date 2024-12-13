@@ -273,6 +273,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="handler" val="EnchantScrolls" />
+		<skills>
+			<skill id="40477" level="1" /> <!-- Scroll: Enchant Sealed Collection Book -->
+		</skills>
 	</item>
 	<item id="98316" name="Growth Rune Lv. 21" additionalName="Sealed" type="EtcItem">
 		<!-- <font color=bbaa88><Properties></font>. Acquired XP/ SP +21%. P. Atk. +420. M. Atk. +420. P. Def. +420. M. Def. +420. Received Skill Critical Rate -0.4%. Received Skill Critical Damage -0.4%. <font color=bbaa88><Compound></font>. Materials: Growth Rune Fragment. In case of failure, you will get <font color=eeaa22>Growth Rune Lv. 21</font>. Boosts parameters when in inventory. <font color=ff6666>Note!</font>. Effects of two identical runes do not stack, the higher-level rune takes precedence. -->
@@ -496,12 +500,18 @@
 	<item id="98330" name="Assassin Doll (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- A doll imbued with an assassin's power. <Effect>. P./ M. Atk. +100. Atk. Spd. +10. Casting Spd. +10. Speed +1. Soulshot/ Spiritshot damage +3%. Absorbs 3% of the inflicted damage as MP (with a certain chance). -->
 		<set name="icon" val="icon.gray_figure" />
-		<set name="default_action" val="NONE" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="handler" val="ItemSkills" />
+		<set name="time" val="10080" />
+		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50668" level="1" /> <!-- Assassin Doll -->
+		</skills>
 	</item>
 	<item id="98331" name="Growth Support Gift (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->

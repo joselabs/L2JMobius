@@ -953,7 +953,7 @@ public class EffectList
 		}
 		
 		// Servitor gets buffs only from its summoner. (Age of Magic 439)
-		if (info.getEffected().isServitor() && !info.getEffector().hasServitor(info.getEffected().getObjectId()))
+		if (!info.getSkill().isDebuff() && info.getEffected().isServitor() && !info.getEffector().hasServitor(info.getEffected().getObjectId()))
 		{
 			return;
 		}
@@ -1094,7 +1094,7 @@ public class EffectList
 		{
 			_updateEffectIconTask = ThreadPool.schedule(() ->
 			{
-				final Player player = _owner.getActingPlayer();
+				final Player player = _owner.asPlayer();
 				if (player != null)
 				{
 					final Party party = player.getParty();
@@ -1314,7 +1314,7 @@ public class EffectList
 		if (broadcast)
 		{
 			// Check if there is change in AbnormalVisualEffect
-			if (!abnormalVisualEffectFlags.containsAll(_abnormalVisualEffects))
+			if (!abnormalVisualEffectFlags.equals(_abnormalVisualEffects))
 			{
 				_abnormalVisualEffects = abnormalVisualEffectFlags;
 				_owner.updateAbnormalVisualEffects();

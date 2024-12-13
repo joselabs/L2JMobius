@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="32300" name="Recipe: Seraph Shirt (60%)" type="EtcItem">
 		<!-- For the 4th classes only. A recipe for Seraph Shirt. Requires Create Common Item Lv. 10. The success rate is 60%. -->
@@ -204,10 +204,10 @@
 		<set name="commissionItemType" val="POTION" />
 		<set name="material" val="LIQUID" />
 		<skills>
-			<skill id="9201" level="1" /> <!-- Elixir: Pipe Organ Melody -->
-			<skill id="9202" level="1" /> <!-- Elixir: Guitar Melody -->
-			<skill id="9198" level="1" /> <!-- Elixir: Horn Melody -->
-			<skill id="9199" level="1" /> <!-- Elixir: Drum Melody -->
+			<skill id="9201" level="1" /> <!-- Pipe Organ Melody - Elixir -->
+			<skill id="9202" level="1" /> <!-- Guitar Melody - Elixir -->
+			<skill id="9198" level="1" /> <!-- Horn Melody - Elixir -->
+			<skill id="9199" level="1" /> <!-- Drum Melody - Elixir -->
 		</skills>
 	</item>
 	<item id="32317" name="Recipe: Elixir of Blessing" type="EtcItem">
@@ -594,15 +594,15 @@
 		<set name="immediate_effect" val="true" />
 		<set name="price" val="1880" />
 		<set name="material" val="BRONZE" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="mDef">1</stat>
 			<stat type="mAtk">21</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="32336" name="Fantasy Cestus" additionalName="Not used" type="Weapon">
 		<set name="icon" val="icon.weapon_vipers_canine_i00" />
@@ -914,9 +914,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="price" val="4955" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">317</stat>
 			<stat type="mAtk">32</stat>
@@ -926,6 +923,9 @@
 			<stat type="randomDamage">40</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="32352" name="Fantasy Two-handed Sword" additionalName="Not used" type="Weapon">
 		<set name="icon" val="icon.weapon_two_handed_sword_i00" />
@@ -954,7 +954,7 @@
 		</stats>
 	</item>
 	<item id="32353" name="Fantasy Military Talwar" additionalName="Not used" type="Weapon">
-		<!-- Kamael-exclusive Weapon: Saber Conversion -->
+		<!-- Kamael-exclusive weapon: Saber conversion. -->
 		<set name="icon" val="icon.weapon_tulwar_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1009,7 +1009,7 @@
 		</stats>
 	</item>
 	<item id="32355" name="Fantasy Hand Crossbow" additionalName="Not used" type="Weapon">
-		<!-- Kamael-exclusive Weapon: Longbow Conversion -->
+		<!-- Kamael-exclusive weapon: Longbow conversion. -->
 		<set name="icon" val="icon.weapon_hunting_gun_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1104,14 +1104,14 @@
 		<set name="immediate_effect" val="true" />
 		<set name="price" val="7435" />
 		<set name="material" val="FINE_STEEL" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="mAtk">39</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="32359" name="Fantasy Triple-edged Jamadhr" additionalName="Not used" type="Weapon">
 		<set name="icon" val="icon.weapon_triple-edged_jamadhr_i00" />
@@ -1502,7 +1502,7 @@
 		</stats>
 	</item>
 	<item id="32382" name="Fantasy Stiletto" additionalName="Not used" type="Weapon">
-		<!-- Bestows one of the following functions: Critical Bleed, Critical Poison or Rsk. Haste. -->
+		<!-- Bestows one of the following special properties: Critical Bleed, Poison, Rsk. Haste. -->
 		<set name="icon" val="icon.weapon_stiletto_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1579,7 +1579,7 @@
 		</stats>
 	</item>
 	<item id="32385" name="Fantasy Sword of Delusion" additionalName="Not used" type="Weapon">
-		<!-- Bestows one of the following functions: Focus, Health, or Rsk. Haste. -->
+		<!-- Bestows one of the following special properties: Focus, Health, Rsk. Haste. -->
 		<set name="icon" val="icon.weapon_sword_of_delusion_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1619,9 +1619,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="price" val="110485" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">111</stat>
 			<stat type="mAtk">68</stat>
@@ -1631,6 +1628,9 @@
 			<stat type="accCombat">-1.5</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="32387" name="Fantasy Blinzlasher" additionalName="Not used" type="Weapon">
 		<!-- Kamael-exclusive Weapon: Caliburs. Bestows one of the following functions: Guidance, Focus or Critical Damage. When enchanted to +4 or higher, it has a chance to increase P./ M. Atk., Received Healing, and decrease Skill MP consumption for you and your party members after a critical attack. -->
@@ -1648,9 +1648,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="price" val="165215" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">126</stat>
 			<stat type="mAtk">76</stat>
@@ -1660,6 +1657,9 @@
 			<stat type="accCombat">-1.5</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="32388" name="Fantasy Pa'agrian Sword" additionalName="Not used" type="Weapon">
 		<!-- Bestows one of the following functions: Focus, Health or Critical Drain. -->

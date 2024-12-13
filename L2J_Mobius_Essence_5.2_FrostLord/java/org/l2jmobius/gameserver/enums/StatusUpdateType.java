@@ -50,13 +50,13 @@ public enum StatusUpdateType
 	CAST_SPD(0x18, Creature::getMAtkSpd),
 	M_DEF(0x19, Creature::getMDef),
 	PVP_FLAG(0x1A, creature -> (int) creature.getPvpFlag()),
-	REPUTATION(0x1B, creature -> creature.isPlayer() ? creature.getActingPlayer().getReputation() : 0),
+	REPUTATION(0x1B, creature -> creature.isPlayer() ? creature.asPlayer().getReputation() : 0),
 	
 	CUR_CP(0x21, creature -> (int) creature.getCurrentCp()),
 	MAX_CP(0x22, Creature::getMaxCp),
 	
-	CUR_DP(0x28, creature -> creature.isPlayer() ? creature.getActingPlayer().getDeathPoints() : 0),
-	MAX_DP(0x29, creature -> creature.isPlayer() ? creature.getActingPlayer().getMaxDeathPoints() : 0);
+	CUR_DP(0x28, creature -> creature.isPlayer() ? creature.asPlayer().getDeathPoints() : 0),
+	MAX_DP(0x29, creature -> creature.isPlayer() ? creature.asPlayer().getMaxDeathPoints() : 0);
 	
 	private final int _clientId;
 	private final Function<Creature, Integer> _valueSupplier;

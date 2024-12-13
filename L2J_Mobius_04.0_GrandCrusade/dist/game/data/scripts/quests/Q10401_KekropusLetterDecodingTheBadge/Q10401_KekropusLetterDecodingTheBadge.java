@@ -132,7 +132,7 @@ public class Q10401_KekropusLetterDecodingTheBadge extends LetterQuest
 	{
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final QuestState qs = getQuestState(player, false);
 			if ((qs != null) && qs.isCond(2))
 			{

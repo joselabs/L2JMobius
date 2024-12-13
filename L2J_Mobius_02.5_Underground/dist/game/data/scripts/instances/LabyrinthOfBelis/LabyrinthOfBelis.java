@@ -152,7 +152,7 @@ public class LabyrinthOfBelis extends AbstractInstance
 							getTimers().addTimer("GENERATOR_EFFECT", 300, generator, null);
 							getTimers().addRepeatingTimer("MESSAGE", 7000, npc, null);
 							getTimers().addRepeatingTimer("ATTACKERS", 12500, npc, player);
-							((Attackable) npc).addDamageHate(generator, 0, 9999); // TODO: Find better way for attack
+							npc.asAttackable().addDamageHate(generator, 0, 9999); // TODO: Find better way for attack
 							npc.reduceCurrentHp(1, generator, null);
 						}
 						break;
@@ -218,7 +218,7 @@ public class LabyrinthOfBelis extends AbstractInstance
 		// TODO: Replace me with effect zone when support for instances are done.
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final Instance world = player.getInstanceWorld();
 			if ((world != null) && world.isStatus(6))
 			{
@@ -234,7 +234,7 @@ public class LabyrinthOfBelis extends AbstractInstance
 		// TODO: Replace me with effect zone when support for instances are done.
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final Instance world = player.getInstanceWorld();
 			if ((world != null) && (world.isStatus(6) || world.isStatus(7)))
 			{
@@ -429,7 +429,7 @@ public class LabyrinthOfBelis extends AbstractInstance
 	@Id(INFILTRATION_OFFICER)
 	public void onCreatureKill(OnCreatureDeath event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Instance world = npc.getInstanceWorld();
 		if (world != null)
 		{
@@ -441,7 +441,7 @@ public class LabyrinthOfBelis extends AbstractInstance
 	@Override
 	public String onSpawn(Npc npc)
 	{
-		final Attackable officer = (Attackable) npc;
+		final Attackable officer = npc.asAttackable();
 		officer.setRunning();
 		officer.setCanReturnToSpawnPoint(false);
 		getTimers().addRepeatingTimer("MESSAGE", 6000, npc, null);
@@ -494,7 +494,7 @@ public class LabyrinthOfBelis extends AbstractInstance
 						}
 						world.setParameter("counter", counter);
 						showOnScreenMsg(player, (getRandomBoolean() ? NpcStringId.IF_TERAIN_DIES_THE_MISSION_WILL_FAIL : NpcStringId.BEHIND_YOU_THE_ENEMY_IS_AMBUSHING_YOU), ExShowScreenMessage.TOP_CENTER, 4500);
-						final Attackable mob = (Attackable) addSpawn((getRandomBoolean() ? OPERATIVE : HANDYMAN), SPAWN_ATTACKERS, false, 0, true, world.getId());
+						final Attackable mob = addSpawn((getRandomBoolean() ? OPERATIVE : HANDYMAN), SPAWN_ATTACKERS, false, 0, true, world.getId()).asAttackable();
 						mob.setRunning();
 						mob.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, ATTACKER_SPOT);
 						mob.broadcastSay(ChatType.NPC_GENERAL, (getRandomBoolean() ? NpcStringId.KILL_THE_GUY_MESSING_WITH_THE_ELECTRIC_DEVICE : NpcStringId.FOCUS_ON_ATTACKING_THE_GUY_IN_THE_ROOM));

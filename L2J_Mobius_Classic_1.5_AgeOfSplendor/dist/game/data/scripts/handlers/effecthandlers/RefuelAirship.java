@@ -52,7 +52,7 @@ public class RefuelAirship extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		final AirShip ship = effector.getActingPlayer().getAirShip();
+		final AirShip ship = effector.asPlayer().getAirShip();
 		ship.setFuel(ship.getFuel() + _value);
 		ship.updateAbnormalVisualEffects();
 	}

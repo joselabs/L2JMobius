@@ -128,7 +128,7 @@ public class Q10320_LetsGoToTheCentralSquare extends Quest
 	{
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			if (player.getVariables().getBoolean(MOVIE_VAR, false))
 			{
 				if (player.getLevel() <= MAX_LEVEL)

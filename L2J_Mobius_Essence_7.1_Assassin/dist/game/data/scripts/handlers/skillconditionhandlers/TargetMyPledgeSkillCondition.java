@@ -39,7 +39,8 @@ public class TargetMyPledgeSkillCondition implements ISkillCondition
 		{
 			return false;
 		}
+		
 		final Clan clan = caster.getClan();
-		return (clan != null) && (clan == target.getActingPlayer().getClan());
+		return (clan != null) && (clan == target.asPlayer().getClan());
 	}
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="23100" name="Vesper Retributer of Fortune" additionalName="90-day" type="Weapon">
-		<!-- Max HP +25%. Increases damage inflicted during PvP. Can be assigned an attribute. -->
+		<!-- Max HP +25%. Deals additional PvP damage. Can be imbued with an attribute. -->
 		<set name="icon" val="icon.weapon_vesper_retributer_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -19,9 +19,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="time" val="129600" />
 		<set name="material" val="FINE_STEEL" />
-		<skills>
-			<skill id="3013" level="3" /> <!-- Special Ability: Health -->
-		</skills>
 		<stats>
 			<stat type="pAtk">482</stat>
 			<stat type="mAtk">176</stat>
@@ -31,9 +28,12 @@
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3013" level="3" /> <!-- Special Property: Health -->
+		</skills>
 	</item>
 	<item id="23101" name="Vesper Caster of Fortune" additionalName="90-day" type="Weapon">
-		<!-- Casting Spd. +15%. Increases damage inflicted during PvP. Can be assigned an attribute. -->
+		<!-- Casting Spd. +15%. Deals additional PvP damage. Can be imbued with an attribute. -->
 		<set name="icon" val="icon.weapon_vesper_caster_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -52,9 +52,6 @@
 		<set name="time" val="129600" />
 		<set name="material" val="WOOD" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="3047" level="2" /> <!-- Special Ability: Acumen -->
-		</skills>
 		<stats>
 			<stat type="pAtk">317</stat>
 			<stat type="mAtk">234</stat>
@@ -64,6 +61,9 @@
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="2" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="23102" name="Vesper Singer of Fortune" additionalName="90-day" type="Weapon">
 		<!-- Critical +151. Increases damage inflicted during PvP. Can be assigned an attribute. -->
@@ -85,9 +85,6 @@
 		<set name="time" val="129600" />
 		<set name="material" val="WOOD" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="3575" level="2" /> <!-- Special Ability: Empower -->
-		</skills>
 		<stats>
 			<stat type="pAtk">386</stat>
 			<stat type="mAtk">257</stat>
@@ -97,6 +94,9 @@
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3575" level="2" /> <!-- Special Property: Empower -->
+		</skills>
 	</item>
 	<item id="23103" name="Vesper Thrower of Fortune" additionalName="90-day" type="Weapon">
 		<!-- P. Critical Rate +133. Inflicts additional PvP Damage. Can be assigned an attribute. -->
@@ -119,9 +119,6 @@
 		<set name="time" val="129600" />
 		<set name="material" val="STEEL" />
 		<set name="mp_consume" val="6" />
-		<skills>
-			<skill id="3567" level="3" /> <!-- Special Ability: Focus -->
-		</skills>
 		<stats>
 			<stat type="pAtk">724</stat>
 			<stat type="mAtk">176</stat>
@@ -131,6 +128,9 @@
 			<stat type="accCombat">-3.75</stat>
 			<stat type="pAtkRange">500</stat>
 		</stats>
+		<skills>
+			<skill id="3567" level="3" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="23104" name="Vesper Pincer of Fortune" additionalName="90-day" type="Weapon">
 		<!-- Kamael-only weapon. P. Critical Rate +131. Has a chance to increase P./ M. Atk., Received Healing, and decrease Skill MP consumption for you and your party members after a critical attack. Inflicts additional PvP Damage. Can be assigned an attribute. -->
@@ -151,10 +151,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="time" val="129600" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="3566" level="3" /> <!-- Special Ability: Focus -->
-			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">359</stat>
 			<stat type="mAtk">176</stat>
@@ -164,9 +160,13 @@
 			<stat type="accCombat">-1.5</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="3" /> <!-- Special Property: Focus -->
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="23105" name="Vesper Guardian of Fortune" additionalName="90-day" type="Weapon">
-		<!-- Kamael-only weapon. P. Critical Rate +133. Inflicts additional PvP Damage. Can be assigned an attribute. -->
+		<!-- Kamael-exclusive weapon. P. Critical Rate +133. Deals additional PvP damage. Can be imbued with an attribute. -->
 		<set name="icon" val="icon.weapon_vesper_schutze_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -185,9 +185,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="time" val="129600" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="3567" level="3" /> <!-- Special Ability: Focus -->
-		</skills>
 		<stats>
 			<stat type="pAtk">444</stat>
 			<stat type="mAtk">176</stat>
@@ -197,9 +194,12 @@
 			<stat type="accCombat">-1.5</stat>
 			<stat type="pAtkRange">400</stat>
 		</stats>
+		<skills>
+			<skill id="3567" level="3" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="23106" name="Vesper Nagan of Fortune" additionalName="90-day" type="Weapon">
-		<!-- Kamael-only weapon. P. Critical Rate +131. Inflicts additional PvP Damage. Can be assigned an attribute. -->
+		<!-- Kamael-exclusive weapon. P. Critical Rate +131. Deals additional PvP damage. Can be imbued with an attribute. -->
 		<set name="icon" val="icon.weapon_vesper_nagen_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -217,9 +217,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="time" val="129600" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="3566" level="3" /> <!-- Special Ability: Focus -->
-		</skills>
 		<stats>
 			<stat type="pAtk">429</stat>
 			<stat type="mAtk">176</stat>
@@ -229,6 +226,9 @@
 			<stat type="randomDamage">15</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="3" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="23107" name="Vorpal Helmet of Fortune" additionalName="90-day" type="Armor">
 		<set name="icon" val="icon.armor_helmet_i00" />
@@ -712,7 +712,7 @@
 		</stats>
 	</item>
 	<item id="23133" name="Gender Change Ticket" type="EtcItem">
-		<!-- Put this item on the character that will receive the service, and send a support ticket on support.lineage2.com. -->
+		<!-- A utensil item. Used in North America. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="weight" val="100" />
 		<set name="is_tradable" val="false" />
@@ -724,7 +724,7 @@
 		<set name="material" val="FISH" />
 	</item>
 	<item id="23134" name="Name Change Ticket" type="EtcItem">
-		<!-- Put this item on the character that will receive the service, and send a support ticket on support.lineage2.com. -->
+		<!-- A utensil item. Used in North America. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="weight" val="100" />
 		<set name="is_tradable" val="false" />
@@ -736,7 +736,7 @@
 		<set name="material" val="FISH" />
 	</item>
 	<item id="23135" name="Awakening Class Change Ticket" type="EtcItem">
-		<!-- Put this item on the character that will receive the service, and send a support ticket on support.lineage2.com -->
+		<!-- A utensil item. Used in North America. -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="weight" val="100" />
 		<set name="is_tradable" val="false" />
@@ -762,7 +762,7 @@
 		<set name="weight" val="150" />
 		<set name="material" val="BRONZE" />
 		<skills>
-			<skill id="21294" level="1" type="ON_EQUIP" /> <!-- Transformed: Uthanka -->
+			<skill id="21294" level="1" type="ON_EQUIP" /> <!-- Uthanka Transformation -->
 			<skill id="21295" level="1" type="ON_UNEQUIP" /> <!-- Un-equip Uthanka's Ring -->
 		</skills>
 	</item>
@@ -801,10 +801,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="time" val="129600" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="3552" level="1" /> <!-- Special Ability: PvP Damage -->
-			<skill id="3411" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability: Focus -->
-		</skills>
 		<stats>
 			<stat type="pAtk">482</stat>
 			<stat type="mAtk">176</stat>
@@ -813,6 +809,10 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3552" level="1" /> <!-- Special Property: PvP Damage -->
+			<skill id="3411" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="23139" name="Vesper Dual Dagger of Friendship" additionalName="90-day" type="Weapon">
 		<!-- Dual daggers. When enchanted, P. Atk. is increased. When enchanted to +4 or higher, P. Critical Rate +109. Inflicts additional PvP Damage. Can be equipped by Dagger Masters of Lv. 81+. -->
@@ -834,10 +834,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="time" val="129600" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="3552" level="1" /> <!-- Special Ability: PvP Damage -->
-			<skill id="8298" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability: Focus -->
-		</skills>
 		<stats>
 			<stat type="pAtk">360</stat>
 			<stat type="mAtk">181</stat>
@@ -847,6 +843,10 @@
 			<stat type="accCombat">-3.75</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3552" level="1" /> <!-- Special Property: PvP Damage -->
+			<skill id="8298" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="23140" name="Military Underwear" type="Armor">
 		<!-- Military underwear. -->
@@ -1031,7 +1031,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="22629" level="1" /> <!-- Shilen's Gift -->
+			<skill id="22629" level="1" /> <!-- Shillien's Gift -->
 		</skills>
 	</item>
 	<item id="23152" name="Soul Avatar - Lancet" type="Armor">
@@ -1047,8 +1047,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21298" level="1" /> <!-- Release Agathion's Seal - Lancet -->
-			<skill id="23141" level="1" /> <!-- Lancet Agathion Cute Trick -->
+			<skill id="21298" level="1" /> <!-- Summon Agathion Iken -->
+			<skill id="23141" level="1" /> <!-- Agathion Cute Trick - Iken -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21315" level="1" /> <!-- Soul Protection -->
@@ -1056,7 +1056,7 @@
 		</skills>
 	</item>
 	<item id="23153" name="Soul Avatar - Liposa" type="Armor">
-		<!-- A bracelet for summoning Soul Avatar Lanya through the Red Dimensional Gate. Increases M. Def. Cannot be used in the Olympiad. -->
+		<!-- A bracelet for summoning Soul Avatar Lana through the Red Dimensional Gate. Increases M. Def. Cannot be used in the Olympiad. -->
 		<set name="icon" val="BranchSys.icon.br_aga_local2009_a_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_tradable" val="false" />
@@ -1068,8 +1068,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21299" level="1" /> <!-- Release Agathion's Seal - Liposa -->
-			<skill id="23142" level="1" /> <!-- Liposa Agathion Cute Trick -->
+			<skill id="21299" level="1" /> <!-- Summon Agathion Lanya -->
+			<skill id="23142" level="1" /> <!-- Lanya Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21315" level="1" /> <!-- Soul Protection -->
@@ -1089,8 +1089,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21300" level="1" /> <!-- Release Agathion's Seal - Velarin -->
-			<skill id="23143" level="1" /> <!-- Velarin Agathion Cute Trick -->
+			<skill id="21300" level="1" /> <!-- Summon Agathion Gnosian -->
+			<skill id="23143" level="1" /> <!-- Agathion Cute Trick - Gnosian -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21317" level="1" /> <!-- Sagacious Soul -->
@@ -1110,8 +1110,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21301" level="1" /> <!-- Release Agathion's Seal - Dulcinel -->
-			<skill id="23144" level="1" /> <!-- Dulcinel Agathion Cute Trick -->
+			<skill id="21301" level="1" /> <!-- Summon Agathion Orodriel -->
+			<skill id="23144" level="1" /> <!-- Agathion Cute Trick - Orodriel -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21317" level="1" /> <!-- Sagacious Soul -->
@@ -1131,8 +1131,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21302" level="1" /> <!-- Release Agathion's Seal - Chimeros -->
-			<skill id="23145" level="1" /> <!-- Chimeros Agathion Cute Trick -->
+			<skill id="21302" level="1" /> <!-- Summon Agathion Lakinos -->
+			<skill id="23145" level="1" /> <!-- Lakinos Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21314" level="1" /> <!-- Soul Seduction -->
@@ -1152,8 +1152,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21303" level="1" /> <!-- Release Agathion's Seal - Niveri -->
-			<skill id="23146" level="1" /> <!-- Niveri Agathion Cute Trick -->
+			<skill id="21303" level="1" /> <!-- Summon Agathion Mortia -->
+			<skill id="23146" level="1" /> <!-- Mortia Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21314" level="1" /> <!-- Soul Seduction -->
@@ -1173,8 +1173,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21304" level="1" /> <!-- Release Agathion's Seal - Hamell -->
-			<skill id="23147" level="1" /> <!-- Hamell Agathion Cute Trick -->
+			<skill id="21304" level="1" /> <!-- Summon Agathion Heintz -->
+			<skill id="23147" level="1" /> <!-- Heintz Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21313" level="1" /> <!-- Soul Shroud -->
@@ -1194,8 +1194,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21305" level="1" /> <!-- Release Agathion's Seal - Joriya -->
-			<skill id="23148" level="1" /> <!-- Joriya Agathion Cute Trick -->
+			<skill id="21305" level="1" /> <!-- Summon Agathion Meruril -->
+			<skill id="23148" level="1" /> <!-- Meruril Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21313" level="1" /> <!-- Soul Shroud -->
@@ -1215,8 +1215,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21306" level="1" /> <!-- Release Agathion's Seal - Ralmak -->
-			<skill id="23149" level="1" /> <!-- Ralmak Agathion Cute Trick -->
+			<skill id="21306" level="1" /> <!-- Summon Agathion Taman Zu Rapatui -->
+			<skill id="23149" level="1" /> <!-- Taman Zu Rapatui Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21312" level="1" /> <!-- Indomitable Spirit -->
@@ -1236,8 +1236,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21307" level="1" /> <!-- Release Agathion's Seal - Goras -->
-			<skill id="23150" level="1" /> <!-- Goras Agathion Cute Trick -->
+			<skill id="21307" level="1" /> <!-- Summon Agathion Kaurin -->
+			<skill id="23150" level="1" /> <!-- Kaurin Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21312" level="1" /> <!-- Indomitable Spirit -->
@@ -1257,8 +1257,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21308" level="1" /> <!-- Release Agathion's Seal - Vensar -->
-			<skill id="23151" level="1" /> <!-- Vensar Agathion Cute Trick -->
+			<skill id="21308" level="1" /> <!-- Summon Agathion Ahertbein -->
+			<skill id="23151" level="1" /> <!-- Ahertbein Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21316" level="1" /> <!-- Intelligent Soul -->
@@ -1278,8 +1278,8 @@
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="21309" level="1" /> <!-- Release Agathion's Seal - Kiela -->
-			<skill id="23152" level="1" /> <!-- Kiela Agathion Cute Trick -->
+			<skill id="21309" level="1" /> <!-- Summon Agathion Naonin -->
+			<skill id="23152" level="1" /> <!-- Naonin Agathion Cute Trick -->
 			<skill id="21311" level="1" /> <!-- Reinforced Authority -->
 			<skill id="21310" level="1" /> <!-- Soul's Shield -->
 			<skill id="21316" level="1" /> <!-- Intelligent Soul -->
@@ -1399,7 +1399,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22632" level="1" /> <!-- Beach Swimsuit Appearance Stone -->
+			<skill id="22632" level="1" /> <!-- Appearance Stone: Beach Swimsuit -->
 		</skills>
 	</item>
 	<item id="23173" name="Alluring Swimsuit" type="Armor">
@@ -1637,7 +1637,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22635" level="1" /> <!-- Ninja Top Appearance Stone -->
+			<skill id="22635" level="1" /> <!-- Appearance Stone: Ninja Top -->
 		</skills>
 	</item>
 	<item id="23190" name="Appearance Stone: Ninja Pants" type="EtcItem">
@@ -1654,7 +1654,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22636" level="1" /> <!-- Ninja Pants Appearance Stone -->
+			<skill id="22636" level="1" /> <!-- Appearance Stone: Ninja Pants -->
 		</skills>
 	</item>
 	<item id="23191" name="Appearance Stone: Ninja Gloves" type="EtcItem">
@@ -1671,7 +1671,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22637" level="1" /> <!-- Ninja Gloves Appearance Stone -->
+			<skill id="22637" level="1" /> <!-- Appearance Stone: Ninja Gloves -->
 		</skills>
 	</item>
 	<item id="23192" name="Appearance Stone: Ninja Shoes" type="EtcItem">
@@ -1688,7 +1688,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22638" level="1" /> <!-- Ninja Shoes Appearance Stone -->
+			<skill id="22638" level="1" /> <!-- Appearance Stone: Ninja Shoes -->
 		</skills>
 	</item>
 	<item id="23193" name="Appearance Stone: Ninja Hair Accessory" type="EtcItem">
@@ -1705,7 +1705,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_HAIRACC_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22643" level="1" /> <!-- Ninja Hair Accessory Appearance Stone -->
+			<skill id="22643" level="1" /> <!-- Appearance Stone: Ninja Head Accessory -->
 		</skills>
 	</item>
 	<item id="23194" name="Appearance Stone: Tribal Warrior Top" type="EtcItem">
@@ -1722,7 +1722,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22639" level="1" /> <!-- Tribal Warrior Top Appearance Stone -->
+			<skill id="22639" level="1" /> <!-- Appearance Stone: Tribal Warrior Top -->
 		</skills>
 	</item>
 	<item id="23195" name="Appearance Stone: Tribal Warrior Pants" type="EtcItem">
@@ -1739,7 +1739,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22640" level="1" /> <!-- Tribal Warrior Pants Appearance Stone -->
+			<skill id="22640" level="1" /> <!-- Appearance Stone: Tribal Warrior Pants -->
 		</skills>
 	</item>
 	<item id="23196" name="Appearance Stone: Tribal Warrior Gloves" type="EtcItem">
@@ -1756,7 +1756,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22641" level="1" /> <!-- Tribal Warrior Gloves Appearance Stone -->
+			<skill id="22641" level="1" /> <!-- Appearance Stone: Tribal Warrior Gloves -->
 		</skills>
 	</item>
 	<item id="23197" name="Appearance Stone: Tribal Warrior Shoes" type="EtcItem">
@@ -1773,7 +1773,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22642" level="1" /> <!-- Tribal Warrior Shoes Appearance Stone -->
+			<skill id="22642" level="1" /> <!-- Appearance Stone: Tribal Warrior Shoes -->
 		</skills>
 	</item>
 	<item id="23198" name="Appearance Stone: Tribal Warrior Hair Accessory" type="EtcItem">
@@ -1790,7 +1790,7 @@
 		<set name="etcitem_type" val="SHAPE_SHIFTING_HAIRACC_FIXED" />
 		<set name="material" val="STEEL" />
 		<skills>
-			<skill id="22644" level="1" /> <!-- Tribal Warrior Hair Accessory Appearance Stone -->
+			<skill id="22644" level="1" /> <!-- Appearance Stone: Tribal Warrior Head Accessory -->
 		</skills>
 	</item>
 	<item id="23199" name="Package: Appearance Stone: Ninja Outfit" type="EtcItem">

@@ -18,7 +18,6 @@ package handlers.playeractions;
 
 import org.l2jmobius.gameserver.handler.IPlayerActionHandler;
 import org.l2jmobius.gameserver.model.ActionDataHolder;
-import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 
@@ -37,6 +36,6 @@ public class TacticalSignUse implements IPlayerActionHandler
 			return;
 		}
 		
-		player.getParty().addTacticalSign(player, data.getOptionId(), (Creature) player.getTarget());
+		player.getParty().addTacticalSign(player, data.getOptionId(), player.getTarget().asCreature());
 	}
 }

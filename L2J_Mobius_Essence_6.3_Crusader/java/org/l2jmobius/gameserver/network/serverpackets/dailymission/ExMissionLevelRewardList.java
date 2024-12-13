@@ -1,3 +1,23 @@
+/*
+ * Copyright (c) 2013 L2jMobius
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package org.l2jmobius.gameserver.network.serverpackets.dailymission;
 
 import java.util.List;
@@ -16,33 +36,35 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
  */
 public class ExMissionLevelRewardList extends ServerPacket
 {
-	private final String _currentSeason = String.valueOf(MissionLevel.getInstance().getCurrentSeason());
-	private final MissionLevelHolder _holder = MissionLevel.getInstance().getMissionBySeason(MissionLevel.getInstance().getCurrentSeason());
-	
-	private final Player _player;
+	private final int _year;
+	private final int _month;
 	private final int _maxNormalLevel;
-	
-	private List<Integer> _collectedNormalRewards;
-	private List<Integer> _collectedKeyRewards;
-	private List<Integer> _collectedBonusRewards;
+	private final MissionLevelHolder _holder;
+	private final MissionLevelPlayerDataHolder _info;
+	private final List<Integer> _collectedNormalRewards;
+	private final List<Integer> _collectedKeyRewards;
+	private final List<Integer> _collectedBonusRewards;
 	
 	public ExMissionLevelRewardList(Player player)
 	{
-		_player = player;
-		// After normal rewards there will be bonus.
-		_maxNormalLevel = _holder.getBonusLevel();
+		final MissionLevel missionData = MissionLevel.getInstance();
+		final int currentSeason = missionData.getCurrentSeason();
+		final String currentSeasonString = String.valueOf(currentSeason);
+		_year = Integer.parseInt(currentSeasonString.substring(0, 4));
+		_month = Integer.parseInt(currentSeasonString.substring(4, 6));
+		_holder = missionData.getMissionBySeason(currentSeason);
+		_maxNormalLevel = _holder.getBonusLevel(); // After normal rewards there will be bonus.
+		_info = player.getMissionLevelProgress();
+		_collectedNormalRewards = _info.getCollectedNormalRewards();
+		_collectedKeyRewards = _info.getCollectedKeyRewards();
+		_collectedBonusRewards = _info.getListOfCollectedBonusRewards();
 	}
 	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		final MissionLevelPlayerDataHolder info = _player.getMissionLevelProgress();
-		_collectedNormalRewards = info.getCollectedNormalRewards();
-		_collectedKeyRewards = info.getCollectedKeyRewards();
-		_collectedBonusRewards = info.getListOfCollectedBonusRewards();
-		
 		ServerPackets.EX_MISSION_LEVEL_REWARD_LIST.writeId(this, buffer);
-		if (info.getCurrentLevel() == 0)
+		if (_info.getCurrentLevel() == 0)
 		{
 			buffer.writeInt(1); // 0 -> does not work, -1 -> game crushed
 			buffer.writeInt(3); // Type
@@ -51,21 +73,19 @@ public class ExMissionLevelRewardList extends ServerPacket
 		}
 		else
 		{
-			sendAvailableRewardsList(buffer, info);
+			sendAvailableRewardsList(buffer, _info);
 		}
-		buffer.writeInt(info.getCurrentLevel()); // Level
-		buffer.writeInt(getPercent(info)); // PointPercent
-		String year = _currentSeason.substring(0, 4);
-		buffer.writeInt(Integer.parseInt(year)); // SeasonYear
-		String month = _currentSeason.substring(4, 6);
-		buffer.writeInt(Integer.parseInt(month)); // SeasonMonth
-		buffer.writeInt(getAvailableRewards(info)); // TotalRewardsAvailable
+		buffer.writeInt(_info.getCurrentLevel()); // Level
+		buffer.writeInt(getPercent(_info)); // PointPercent
+		buffer.writeInt(_year); // SeasonYear
+		buffer.writeInt(_month); // SeasonMonth
+		buffer.writeInt(getAvailableRewards(_info)); // TotalRewardsAvailable
 		if (_holder.getBonusRewardIsAvailable() && _holder.getBonusRewardByLevelUp())
 		{
 			boolean check = false;
 			for (int level = _maxNormalLevel; level <= _holder.getMaxLevel(); level++)
 			{
-				if ((level <= info.getCurrentLevel()) && !_collectedBonusRewards.contains(level))
+				if ((level <= _info.getCurrentLevel()) && !_collectedBonusRewards.contains(level))
 				{
 					check = true;
 					break;
@@ -75,7 +95,7 @@ public class ExMissionLevelRewardList extends ServerPacket
 		}
 		else
 		{
-			if (_holder.getBonusRewardIsAvailable() && info.getCollectedSpecialReward() && !info.getCollectedBonusReward())
+			if (_holder.getBonusRewardIsAvailable() && _info.getCollectedSpecialReward() && !_info.getCollectedBonusReward())
 			{
 				buffer.writeInt(1); // ExtraRewardsAvailable
 			}

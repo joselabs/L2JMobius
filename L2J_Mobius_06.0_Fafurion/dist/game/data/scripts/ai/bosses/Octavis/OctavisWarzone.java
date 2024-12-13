@@ -191,13 +191,13 @@ public class OctavisWarzone extends AbstractInstance
 				{
 					beasts.disableCoreAI(true);
 					beasts.setUndying(true);
-					((Attackable) beasts).setCanReturnToSpawnPoint(false);
+					beasts.asAttackable().setCanReturnToSpawnPoint(false);
 					final Npc octavis = addSpawn((!isExtremeMode(world) ? OCTAVIS_STAGE_1[0] : OCTAVIS_STAGE_1[1]), OCTAVIS_SPAWN_LOC, false, 0, false, world.getId());
 					octavis.disableCoreAI(true);
 					octavis.setRunning();
 					octavis.sendChannelingEffect(beasts, 1);
 					octavis.setTargetable(false);
-					((Attackable) octavis).setCanReturnToSpawnPoint(false);
+					octavis.asAttackable().setCanReturnToSpawnPoint(false);
 					getTimers().addRepeatingTimer("FOLLOW_BEASTS", 500, octavis, null);
 					getTimers().addRepeatingTimer("BEASTS_CHECK_HP", 5000, beasts, null);
 					WalkingManager.getInstance().startMoving(beasts, "octabis_superpoint");
@@ -263,7 +263,7 @@ public class OctavisWarzone extends AbstractInstance
 				{
 					return;
 				}
-				world.spawnGroup("STAGE_2").forEach(octavis -> ((Attackable) octavis).setCanReturnToSpawnPoint(false));
+				world.spawnGroup("STAGE_2").forEach(octavis -> octavis.asAttackable().setCanReturnToSpawnPoint(false));
 				break;
 			}
 			case "END_STAGE_2":
@@ -284,7 +284,7 @@ public class OctavisWarzone extends AbstractInstance
 				{
 					return;
 				}
-				world.spawnGroup("STAGE_3").forEach(octavis -> ((Attackable) octavis).setCanReturnToSpawnPoint(false));
+				world.spawnGroup("STAGE_3").forEach(octavis -> octavis.asAttackable().setCanReturnToSpawnPoint(false));
 				break;
 			}
 			case "END_STAGE_3":
@@ -361,7 +361,7 @@ public class OctavisWarzone extends AbstractInstance
 				{
 					final Npc beast = addSpawn((!isExtremeMode(world) ? BEASTS_MINIONS[0] : BEASTS_MINIONS[1]), getRandomEntry(BEASTS_MINIONS_LOC), false, 0, false, world.getId());
 					beast.setRunning();
-					((Attackable) beast).setCanReturnToSpawnPoint(false);
+					beast.asAttackable().setCanReturnToSpawnPoint(false);
 					addMoveToDesire(beast, Util.getRandomPosition(BEASTS_RANDOM_POINT, 500, 500), 23);
 				}
 				
@@ -370,17 +370,17 @@ public class OctavisWarzone extends AbstractInstance
 			}
 			case "MINION_CALL":
 			{
-				final Creature mostHated = ((Attackable) npc).getMostHated();
+				final Creature mostHated = npc.asAttackable().getMostHated();
 				if ((mostHated != null) && mostHated.isPlayer() && (npc.calculateDistance3D(npc) < 5000))
 				{
-					World.getInstance().getVisibleObjectsInRange(npc, Attackable.class, 4000, obj -> CommonUtil.contains(BEASTS_MINIONS, obj.getId()) || CommonUtil.contains(GLADIATORS, obj.getId())).forEach(minion -> addAttackPlayerDesire(minion, (Player) mostHated, 23));
+					World.getInstance().getVisibleObjectsInRange(npc, Attackable.class, 4000, obj -> CommonUtil.contains(BEASTS_MINIONS, obj.getId()) || CommonUtil.contains(GLADIATORS, obj.getId())).forEach(minion -> addAttackPlayerDesire(minion, mostHated.asPlayer(), 23));
 				}
 				getTimers().addTimer("MINION_CALL", 5000 + (getRandom(5) * 1000), npc, null);
 				break;
 			}
 			case "ATTACK_TIMER":
 			{
-				final Creature mostHated = ((Attackable) npc).getMostHated();
+				final Creature mostHated = npc.asAttackable().getMostHated();
 				if ((mostHated != null) && mostHated.isPlayable() && (npc.calculateDistance2D(mostHated) < 1000))
 				{
 					final int random = getRandom(5);

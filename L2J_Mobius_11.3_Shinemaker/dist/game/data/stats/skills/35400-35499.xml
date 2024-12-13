@@ -29,36 +29,35 @@
 		<icon>icon.die_effect_zariche1</icon>
 		<operateType>A1</operateType>
 		<coolTime>300</coolTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="35403" toLevel="1" name="Cry of Sword - Akamanah">
 		<!-- Skill to show the death effects of Akamanah's owner -->
 		<icon>icon.die_effect_aka_manaf1</icon>
 		<operateType>A1</operateType>
 		<coolTime>300</coolTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="35404" toLevel="1" name="Prison of Souls - Zariche">
 		<!-- Demonic Sword Zariche's strike has temporarily sealed your body. You are immobilized. Failing to destroy the Prison of Souls (Limit Barrier) within 2 min. will return you to the nearest village. The barrier is removed after receiving 540 hits. Others can't damage it. -->
 		<icon>icon.death_prison1</icon>
-		<!-- FIX: THIS SKILL NEEDS MORE WORK -->
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ROOT_MAGICALLY</abnormalType> <!-- FIX: NOT RETAIL -->
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<castRange>900</castRange>
+		<effectPoint>0</effectPoint>
+		<isDebuff>true</isDebuff>
 		<isDebuff>true</isDebuff>
 		<trait>HOLD</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Root" />
 			<effect name="DefenceTrait">
@@ -69,22 +68,21 @@
 	<skill id="35405" toLevel="1" name="Prison of Souls - Akamanah">
 		<!-- Blood Sword Akamanah's strike has temporarily sealed your body. You are immobilized. Failing to destroy the Prison of Souls (Limit Barrier) within 2 min. will return you to the nearest village. The barrier is removed after receiving 540 hits. Others can't damage it. -->
 		<icon>icon.death_prison1</icon>
-		<!-- FIX: THIS SKILL NEEDS MORE WORK -->
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ROOT_MAGICALLY</abnormalType> <!-- FIX: NOT RETAIL -->
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<castRange>900</castRange>
+		<effectPoint>0</effectPoint>
+		<isDebuff>true</isDebuff>
 		<isDebuff>true</isDebuff>
 		<trait>HOLD</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Root" />
 			<effect name="DefenceTrait">
@@ -95,13 +93,12 @@
 	<skill id="35406" toLevel="1" name="Soul of Sword - Zariche">
 		<!-- The weapon's spirit possesses your body, limiting your movements and defending you from damage. -->
 		<icon>icon.weapon_unique_zariche_i00</icon>
-		<!-- FIX: SOME PARAMETERS ARE NOT CORRECT -->
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Root" />
@@ -146,13 +143,12 @@
 	<skill id="35407" toLevel="1" name="Soul of Sword - Akamanah">
 		<!-- The weapon's spirit possesses your body, limiting your movements and defending you from damage. -->
 		<icon>icon.weapon_aka_i00</icon>
-		<!-- FIX: SOME PARAMETERS ARE NOT CORRECT -->
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Root" />
@@ -1783,11 +1779,11 @@
 		<icon>icon.dyeeffect_tw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1810,11 +1806,11 @@
 		<icon>icon.dyeeffect_tw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1837,11 +1833,11 @@
 		<icon>icon.dyeeffect_sK_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1864,11 +1860,11 @@
 		<icon>icon.dyeeffect_sK_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1891,11 +1887,11 @@
 		<icon>icon.dyeeffect_or_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1918,11 +1914,11 @@
 		<icon>icon.dyeeffect_ya_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1945,11 +1941,11 @@
 		<icon>icon.dyeeffect_fw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1972,11 +1968,11 @@
 		<icon>icon.dyeeffect_fw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1999,11 +1995,11 @@
 		<icon>icon.dyeeffect_ws_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2026,11 +2022,11 @@
 		<icon>icon.dyeeffect_eh_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2053,11 +2049,11 @@
 		<icon>icon.dyeeffect_ie_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2080,11 +2076,11 @@
 		<icon>icon.dyeeffect_sK_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2107,11 +2103,11 @@
 		<icon>icon.dyeeffect_ie_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2134,11 +2130,11 @@
 		<icon>icon.dyeeffect_or_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2161,11 +2157,11 @@
 		<icon>icon.dyeeffect_ya_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2188,11 +2184,11 @@
 		<icon>icon.dyeeffect_fw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2215,11 +2211,11 @@
 		<icon>icon.dyeeffect_ws_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2242,11 +2238,11 @@
 		<icon>icon.dyeeffect_eh_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2269,11 +2265,11 @@
 		<icon>icon.dyeeffect_sK_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2296,11 +2292,11 @@
 		<icon>icon.dyeeffect_ie_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>

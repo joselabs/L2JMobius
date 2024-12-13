@@ -142,7 +142,7 @@ public class Q10332_ToughRoad extends Quest
 	{
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final QuestState qs = getQuestState(player, false);
 			final QuestState st10331 = player.getQuestState(Q10331_StartOfFate.class.getSimpleName());
 			if (((qs == null) || qs.isCreated()) && (player.getLevel() >= MIN_LEVEL) && (player.getLevel() <= MAX_LEVEL) && (st10331 != null) && st10331.isCompleted() && !player.getVariables().getBoolean(MOVIE_VAR, false))

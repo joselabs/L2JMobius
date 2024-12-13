@@ -58,6 +58,7 @@ import handlers.actionshifthandlers.StaticObjectActionShift;
 import handlers.actionshifthandlers.SummonActionShift;
 import handlers.admincommandhandlers.AdminAdmin;
 import handlers.admincommandhandlers.AdminAnnouncements;
+import handlers.admincommandhandlers.AdminAugment;
 import handlers.admincommandhandlers.AdminBBS;
 import handlers.admincommandhandlers.AdminBuffs;
 import handlers.admincommandhandlers.AdminCamera;
@@ -375,6 +376,7 @@ public class MasterHandler
 			// Admin Command Handlers
 			AdminAdmin.class,
 			AdminAnnouncements.class,
+			AdminAugment.class,
 			AdminBBS.class,
 			AdminBuffs.class,
 			AdminCamera.class,

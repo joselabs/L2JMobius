@@ -40,7 +40,7 @@ public class CanRefuelAirshipSkillCondition implements ISkillCondition
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
 		boolean canRefuelAirship = true;
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
 		if ((player == null) || (player.getAirShip() == null) || !(player.getAirShip() instanceof ControllableAirShip) || ((player.getAirShip().getFuel() + _amount) > player.getAirShip().getMaxFuel()))
 		{
 			canRefuelAirship = false;

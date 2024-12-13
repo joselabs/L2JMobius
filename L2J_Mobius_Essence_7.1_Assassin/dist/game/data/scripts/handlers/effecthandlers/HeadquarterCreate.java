@@ -21,6 +21,7 @@ import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.SiegeFlag;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -48,14 +49,15 @@ public class HeadquarterCreate extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		final Player player = effector.getActingPlayer();
-		if ((player.getClan() == null) || (player.getClan().getLeaderId() != player.getObjectId()))
+		final Player player = effector.asPlayer();
+		final Clan clan = player.getClan();
+		if ((clan == null) || (clan.getLeaderId() != player.getObjectId()))
 		{
 			return;
 		}
 		
 		final SiegeFlag flag = new SiegeFlag(player, NpcData.getInstance().getTemplate(HQ_NPC_ID), _isAdvanced);
-		flag.setTitle(player.getClan().getName());
+		flag.setTitle(clan.getName());
 		flag.setCurrentHpMp(flag.getMaxHp(), flag.getMaxMp());
 		flag.setHeading(player.getHeading());
 		flag.spawnMe(player.getX(), player.getY(), player.getZ() + 50);

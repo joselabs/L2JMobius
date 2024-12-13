@@ -53,7 +53,7 @@ public class Escape extends AbstractEffect
 	public boolean canStart(Creature effector, Creature effected, Skill skill)
 	{
 		// While affected by escape blocking effect you cannot use Blink or Scroll of Escape
-		return super.canStart(effector, effected, skill) && !effected.cannotEscape();
+		return super.canStart(effector, effected, skill) && !effected.cannotEscape() && !effected.asPlayer().isPrisoner();
 	}
 	
 	@Override
@@ -62,9 +62,9 @@ public class Escape extends AbstractEffect
 		if (_escapeType != null)
 		{
 			// Essence "Training Zone" - teleport back to entrance.
-			if (effected.isInInstance() && effected.getActingPlayer().getInstanceWorld().getTemplateId() == 228)
+			if (effected.isInInstance() && effected.asPlayer().getInstanceWorld().getTemplateId() == 228)
 			{
-				effected.teleToLocation(effected.getActingPlayer().getInstanceWorld().getEnterLocation(), effected.getInstanceId());
+				effected.teleToLocation(effected.asPlayer().getInstanceWorld().getEnterLocation(), effected.getInstanceId());
 			}
 			else
 			{

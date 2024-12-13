@@ -37,6 +37,6 @@ public class SoulSavedSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return caster.isPlayer() && (caster.getActingPlayer().getChargedSouls() >= _amount);
+		return caster.isPlayer() && (caster.asPlayer().getChargedSouls() >= _amount);
 	}
 }

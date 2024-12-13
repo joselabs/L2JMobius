@@ -1,13 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="45500" toLevel="7" name="Indestructible Sound">
 		<!-- Imprisons by Momentum power. -->
 		<icon>icon.skill1624</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>TURN_STONE</abnormalType>
 		<abnormalVisualEffect>WA_UNBREAKABLE_SONIC_AVE</abnormalVisualEffect>
 		<activateRate>60</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<effectPoint>
 			<value level="1">-410</value>
 			<value level="2">-420</value>
@@ -17,10 +20,7 @@
 			<value level="6">-460</value>
 			<value level="7">-470</value>
 		</effectPoint>
-		<operateType>A2</operateType>
 		<trait>IMPRISON</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
@@ -56,24 +56,24 @@
 	<skill id="45501" toLevel="1" name="Destroyer's Roar">
 		<!-- Speed -90% -->
 		<icon>icon.skill10514</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectLimit>10-10</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<effectPoint>-137</effectPoint>
 		<isDebuff>true</isDebuff>
 		<isMagic>0</isMagic>
 		<lvlBonusRate>20</lvlBonusRate>
-		<operateType>A2</operateType>
-		<effectPoint>-137</effectPoint>
 		<magicCriticalRate>5</magicCriticalRate>
-		<affectLimit>10-10</affectLimit>
-		<affectRange>200</affectRange>
 		<trait>ANOMALY</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Speed">
 				<amount>-90</amount>
@@ -84,11 +84,14 @@
 	<skill id="45502" toLevel="8" name="Symphony">
 		<!-- Unable to use magic. -->
 		<icon>icon.skill0098</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>SILENCE</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<effectPoint>
@@ -103,11 +106,8 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<isDebuff>true</isDebuff>
-		<trait>SILENCE</trait>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>SILENCE</trait>
 		<effects>
 			<effect name="Mute" />
 		</effects>
@@ -115,21 +115,21 @@
 	<skill id="45503" toLevel="1" name="Death Sting">
 		<!-- Unable to use magic. -->
 		<icon>icon.skill0990</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>SILENCE</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>-415</effectPoint>
 		<effectRange>1400</effectRange>
 		<isDebuff>true</isDebuff>
-		<trait>SILENCE</trait>
-		<operateType>A2</operateType>
-		<basicProperty>PHYSICAL</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>SILENCE</trait>
 		<effects>
 			<effect name="Mute" />
 		</effects>
@@ -137,6 +137,8 @@
 	<skill id="45504" toLevel="4" name="Throwing Spear">
 		<!-- The body is bound and unable to move. -->
 		<icon>icon.skill1625</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -147,6 +149,8 @@
 		<abnormalType>ROOT_PHYSICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>
 			<value level="1">-400</value>
@@ -154,14 +158,10 @@
 			<value level="3">-500</value>
 			<value level="4">-550</value>
 		</effectPoint>
-		<basicProperty>PHYSICAL</basicProperty>
 		<effectRange>1400</effectRange>
 		<isDebuff>true</isDebuff>
-		<trait>ANOMALY</trait>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>ANOMALY</trait>
 		<effects>
 			<effect name="Root" />
 		</effects>
@@ -169,24 +169,24 @@
 	<skill id="45505" toLevel="1" name="Vampiric Mist">
 		<!-- Speed -30%. Atk. Spd. -30%. P. Atk. -30%. P. Accuracy -8 -->
 		<icon>icon.skill1495</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>ULTIMATE_DEBUFF</abnormalType>
 		<activateRate>80</activateRate>
 		<affectLimit>10-10</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<effectPoint>-679</effectPoint>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -205,26 +205,29 @@
 		</effects>
 	</skill>
 	<skill id="45506" toLevel="4" name="Armor Break">
-		<!-- Speed -30% -->
+		<!-- Level 1: Speed -30% -->
+		<!-- Level 2: Speed -35% -->
+		<!-- Level 3: Speed -40% -->
+		<!-- Level 4: Speed -50% -->
 		<icon>icon.skill0516</icon>
-		<castRange>40</castRange>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<abnormalVisualEffect>SPEED_DOWN</abnormalVisualEffect>
 		<activateRate>70</activateRate>
 		<affectLimit>6-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>40</castRange>
 		<effectPoint>-200</effectPoint>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
-		<operateType>A2</operateType>
-		<trait>ANOMALY</trait>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<trait>ANOMALY</trait>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -240,10 +243,15 @@
 	<skill id="45507" toLevel="9" name="Blizzard">
 		<!-- Speed -50% -->
 		<icon>icon.skill1290</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -253,21 +261,16 @@
 			<value level="4">-2130</value>
 			<value level="5">-2140</value>
 			<value level="6">-2150</value>
-			<value level="7">-2180</value>
-			<value level="8">-2210</value>
-			<value level="9">-2240</value>
+			<value level="7">-2160</value>
+			<value level="8">-2170</value>
+			<value level="9">-2180</value>
 		</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>20</lvlBonusRate>
-		<trait>ANOMALY</trait>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>ANOMALY</trait>
 		<effects>
 			<effect name="Speed">
 				<amount>-50</amount>
@@ -278,10 +281,15 @@
 	<skill id="45508" toLevel="10" name="Ice Bolt">
 		<!-- Speed -20% -->
 		<icon>icon.skill1184</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>60</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -297,16 +305,11 @@
 			<value level="10">-195</value>
 		</effectPoint>
 		<effectRange>1100</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>20</lvlBonusRate>
-		<trait>ANOMALY</trait>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>ANOMALY</trait>
 		<effects>
 			<effect name="Speed">
 				<amount>-20</amount>
@@ -317,10 +320,15 @@
 	<skill id="45509" toLevel="35" name="Frost Bolt">
 		<!-- Speed -20% -->
 		<icon>icon.skill1236</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>60</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -343,7 +351,7 @@
 			<value level="17">-370</value>
 			<value level="18">-380</value>
 			<value level="19">-390</value>
-			<value level="20">-385</value>
+			<value level="20">-395</value>
 			<value level="21">-400</value>
 			<value level="22">-405</value>
 			<value level="23">-410</value>
@@ -361,16 +369,11 @@
 			<value level="35">-470</value>
 		</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>20</lvlBonusRate>
-		<trait>ANOMALY</trait>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>ANOMALY</trait>
 		<effects>
 			<effect name="Speed">
 				<amount>-20</amount>
@@ -379,27 +382,61 @@
 		</effects>
 	</skill>
 	<skill id="45510" toLevel="35" name="Freezing Strike">
-		<!-- Speed -20% -->
+		<!-- Level 1: Speed -20% -->
+		<!-- Level 2: Speed -20% -->
+		<!-- Level 3: Speed -20% -->
+		<!-- Level 4: Speed -20% -->
+		<!-- Level 5: Speed -20% -->
+		<!-- Level 6: Speed -20% -->
+		<!-- Level 7: Speed -20% -->
+		<!-- Level 8: Speed -20% -->
+		<!-- Level 9: Speed -20% -->
+		<!-- Level 10: Speed -20% -->
+		<!-- Level 11: Speed -25% -->
+		<!-- Level 12: Speed -25% -->
+		<!-- Level 13: Speed -25% -->
+		<!-- Level 14: Speed -25% -->
+		<!-- Level 15: Speed -25% -->
+		<!-- Level 16: Speed -25% -->
+		<!-- Level 17: Speed -25% -->
+		<!-- Level 18: Speed -25% -->
+		<!-- Level 19: Speed -25% -->
+		<!-- Level 20: Speed -25% -->
+		<!-- Level 21: Speed -25% -->
+		<!-- Level 22: Speed -25% -->
+		<!-- Level 23: Speed -25% -->
+		<!-- Level 24: Speed -25% -->
+		<!-- Level 25: Speed -25% -->
+		<!-- Level 26: Speed -30% -->
+		<!-- Level 27: Speed -30% -->
+		<!-- Level 28: Speed -30% -->
+		<!-- Level 29: Speed -30% -->
+		<!-- Level 30: Speed -30% -->
+		<!-- Level 31: Speed -30% -->
+		<!-- Level 32: Speed -30% -->
+		<!-- Level 33: Speed -30% -->
+		<!-- Level 34: Speed -30% -->
+		<!-- Level 35: Speed -30% -->
 		<icon>icon.skill0105</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45511" toLevel="1" name="Hamstring Shot">
 		<!-- Speed is decreased by 30% -->
 		<icon>icon.skill0354</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>-405</effectPoint>
 		<effectRange>1400</effectRange>
 		<isDebuff>true</isDebuff>
-		<operateType>A2</operateType>
-		<trait>ANOMALY</trait>
-		<basicProperty>PHYSICAL</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>ANOMALY</trait>
 		<effects>
 			<effect name="Speed">
 				<amount>-30</amount>
@@ -410,20 +447,20 @@
 	<skill id="45512" toLevel="1" name="Throw Dagger">
 		<!-- Speed -60. -->
 		<icon>icon.skill10539</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
-		<effectPoint>-400</effectPoint>
-		<basicProperty>PHYSICAL</basicProperty>
-		<effectRange>900</effectRange>
-		<operateType>A2</operateType>
-		<trait>ANOMALY</trait>
-		<magicCriticalRate>5</magicCriticalRate>
-		<castRange>600</castRange>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>600</castRange>
+		<effectPoint>-400</effectPoint>
+		<effectRange>900</effectRange>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
+		<trait>ANOMALY</trait>
 		<effects>
 			<effect name="Speed">
 				<amount>-60</amount>
@@ -439,10 +476,16 @@
 	<skill id="45514" toLevel="9" name="Inferno">
 		<!-- HP is draining. -->
 		<icon>icon.skill1289</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>10</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>DOT_ATTR</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
+		<basicProperty>NONE</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>
 			<value level="1">-2100</value>
@@ -456,17 +499,11 @@
 			<value level="9">-2180</value>
 		</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<trait>INFECTION</trait>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>300000</reuseDelay>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -487,6 +524,8 @@
 	<skill id="45515" toLevel="19" name="Ice Dagger">
 		<!-- Inflicts damage over time. -->
 		<icon>icon.skill1237</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -509,10 +548,12 @@
 			<value level="19">8</value>
 		</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>50</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -537,16 +578,12 @@
 			<value level="19">-410</value>
 		</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
-		<trait>INFECTION</trait>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -577,6 +614,8 @@
 	<skill id="45516" toLevel="3" name="Fire Vortex">
 		<!-- Atk. Spd. -10%. Casting Spd. -10%. Speed -10%. Constantly consumes MP. -->
 		<icon>icon.skill1339</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -585,6 +624,9 @@
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>MULTI_DEBUFF_FIRE</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -593,15 +635,10 @@
 			<value level="3">-504</value>
 		</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<trait>INFECTION</trait>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="ManaDamOverTime">
 				<power>
@@ -628,10 +665,15 @@
 	<skill id="45517" toLevel="3" name="Ice Vortex">
 		<!-- Speed -20%. Constantly consumes MP. -->
 		<icon>icon.skill1340</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>MULTI_DEBUFF_WATER</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -640,15 +682,10 @@
 			<value level="3">-504</value>
 		</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
-		<trait>INFECTION</trait>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="Speed">
 				<amount>-20</amount>
@@ -667,10 +704,15 @@
 	<skill id="45518" toLevel="3" name="Wind Vortex">
 		<!-- Atk. Spd. -15%. Casting Spd. -15%. Constantly consumes MP. -->
 		<icon>icon.skill1341</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>MULTI_DEBUFF_WIND</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectPoint>
@@ -679,15 +721,10 @@
 			<value level="3">-504</value>
 		</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
-		<trait>INFECTION</trait>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-15</amount>
@@ -710,6 +747,8 @@
 	<skill id="45519" toLevel="3" name="Dark Vortex">
 		<!-- P. Critical Rate -10%. M. Skill Critical Rate -10%. Constantly consumes MP. -->
 		<icon>icon.skill1343</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -718,6 +757,9 @@
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>MULTI_DEBUFF_UNHOLY</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -726,15 +768,10 @@
 			<value level="3">-504</value>
 		</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<trait>INFECTION</trait>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="CriticalRate">
 				<amount>-10</amount>
@@ -757,6 +794,8 @@
 	<skill id="45520" toLevel="5" name="Poison Blade Dance">
 		<!-- Inflicts Poison, constantly drains HP. -->
 		<icon>icon.skill0084</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">6</value>
 			<value level="2">7</value>
@@ -765,12 +804,13 @@
 			<value level="5">10</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>35</activateRate>
 		<affectLimit>6-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>
 			<value level="1">-845</value>
@@ -781,12 +821,9 @@
 		</effectPoint>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -803,7 +840,8 @@
 	<skill id="45521" toLevel="15" name="Bleed">
 		<!-- Speed -20%. Constantly drains HP. -->
 		<icon>icon.skill10300</icon>
-		<castRange>600</castRange>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">3</value>
 			<value level="2">4</value>
@@ -822,11 +860,12 @@
 			<value level="15">17</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-140</value>
 			<value level="2">-180</value>
@@ -846,11 +885,9 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<isDebuff>true</isDebuff>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -881,7 +918,8 @@
 	<skill id="45522" toLevel="2" name="Flying Dagger">
 		<!-- Atk. Spd. -10%. Casting Spd. -10%. Speed -20%. Constantly drains MP. -->
 		<icon>icon.flying_dagger</icon>
-		<castRange>600</castRange>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -889,18 +927,17 @@
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-420</value>
 			<value level="2">-445</value>
 		</effectPoint>
 		<effectRange>450</effectRange>
 		<isDebuff>true</isDebuff>
-		<operateType>A2</operateType>
-		<trait>INFECTION</trait>
-		<basicProperty>PHYSICAL</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-10</amount>
@@ -927,20 +964,20 @@
 		<!-- For party members. For 12 sec. Max HP +5000. Recovers 100% HP per 3 sec. -->
 		<icon>icon.serenity</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>12</abnormalTime>
-		<magicLevel>76</magicLevel>
-		<mpConsume>105</mpConsume>
+		<affectObject>FRIEND</affectObject>
+		<affectRange>1200</affectRange>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<effectPoint>100</effectPoint>
 		<itemConsumeCount>50</itemConsumeCount>
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
-		<effectPoint>100</effectPoint>
-		<affectRange>1200</affectRange>
-		<basicProperty>MAGIC</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>76</magicLevel>
+		<mpConsume>105</mpConsume>
 		<reuseDelay>300000</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<effects>
 			<effect name="MaxHp">
 				<amount>5000</amount>
@@ -964,23 +1001,23 @@
 	<skill id="45533" toLevel="1" name="Exclusion">
 		<!-- <Knockback/ Suppression skill>. Knocks back the target and enemies around them. Deals magic damage with 130 power. Duration: 5 sec. Greatly decreases Atk. Spd./ Casting Spd./ Speed. P. Skill Cooldown +5%. M. Skill Cooldown +5%. Duration: 10 sec. Speed buffs are disabled. Gap-closing skills cannot be used. -->
 		<icon>icon.expel</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>-500</effectPoint>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>200</affectRange>
 		<effectRange>200</effectRange>
-		<hitTime>2000</hitTime>
+		<hitTime>3000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
 		<mpConsume>105</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>300000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>130</power>
 			</effect>
 			<effect name="CallSkill">
@@ -994,28 +1031,28 @@
 		</effects>
 	</skill>
 	<skill id="45534" toLevel="1" name="Dark Disruption">
-		<!-- Deals magic damage to the target and enemies around them. Power 130. Duration: 10 sec. HP Recovery Potions' Effect -500. Removes the following buffs and blocks them for 10 sec.:. - Special class transformation -->
+		<!-- Deals magic damage to the target and enemies around them. Power 130. Duration: 10 sec. HP Recovery Potions' Effect -500. Removes the following buffs and blocks them for 10 sec.:. - Special class transformation;. - Other unique buffs. -->
 		<icon>icon.banish</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="45535" toLevel="1" name="Exclusion">
 		<!-- Greatly decreases Atk. Spd./ Casting Spd./ Speed. P. Skill Cooldown +5%. M. Skill Cooldown +5% -->
 		<icon>icon.expel</icon>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>200</affectRange>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>8</abnormalTime>
 		<activateRate>60</activateRate>
+		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>-500</effectPoint>
 		<effectRange>200</effectRange>
-		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
-		<trait>ANOMALY</trait>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<trait>ANOMALY</trait>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-100</amount>
@@ -1037,22 +1074,22 @@
 	</skill>
 	<skill id="45537" toLevel="1" name="Exclusion">
 		<icon>icon.expel</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<activateRate>60</activateRate>
+		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>-500</effectPoint>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>200</affectRange>
 		<effectRange>200</effectRange>
-		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
-		<trait>SHOCK</trait>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<trait>SHOCK</trait>
 		<effects>
 			<effect name="KnockBack">
 				<distance>50</distance>
@@ -1065,29 +1102,29 @@
 		<!-- <Skill with fixed cooldown>. Decreases CP of the target and nearby enemies for 30% and deals three magic strikes with 380 power. Enemies with a debuff/ anomaly applied take additional damage. Duration: 3 sec. M. Def. -30% -->
 		<icon>icon.meteor</icon>
 		<operateType>A1</operateType>
-		<abnormalTime>2</abnormalTime>
-		<mpConsume>131</mpConsume>
-		<castRange>700</castRange>
-		<reuseDelay>30000</reuseDelay>
-		<effectPoint>-400</effectPoint>
-		<isMagic>1</isMagic>
 		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>2</abnormalTime>
 		<affectLimit>1-20</affectLimit>
 		<affectRange>450</affectRange>
-		<abnormalLevel>1</abnormalLevel>
+		<affectScope>RANGE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>700</castRange>
+		<effectPoint>-400</effectPoint>
 		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic>
 		<itemConsumeCount>100</itemConsumeCount>
 		<itemConsumeId>3031</itemConsumeId>
-		<magicLevel>80</magicLevel>
-		<basicProperty>MAGIC</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>76</magicLevel>
+		<mpConsume>131</mpConsume>
+		<reuseDelay>30000</reuseDelay>
 		<effects>
 			<effect name="MaxCp">
 				<amount>0.7</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>380</power>
 			</effect>
 			<effect name="MagicalDefence" abnormalTime="3">
@@ -1099,20 +1136,20 @@
 	<skill id="45539" toLevel="1" name="Rolling Dice">
 		<!-- <Skill with fixed cast time>. For 20 min. P. Atk. +60%. P. Critical Rate +15. P. Critical Damage +15%. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. Additionally one of the following effects:. - Atk. Spd. +55%. - Speed +30. - Max HP +55% -->
 		<icon>icon.rolling_dice</icon>
-		<abnormalType>ROLLING_DICE</abnormalType>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<hitTime>2000</hitTime>
-		<magicLevel>76</magicLevel>
-		<itemConsumeId>3031</itemConsumeId>
-		<itemConsumeCount>50</itemConsumeCount>
-		<isMagic>2</isMagic>
-		<mpConsume>150</mpConsume>
-		<operateType>A2</operateType>
-		<reuseDelay>7000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<targetType>SELF</targetType>
+		<abnormalType>ROLLING_DICE</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>2000</hitTime>
+		<isMagic>2</isMagic>
+		<itemConsumeCount>50</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<magicLevel>76</magicLevel>
+		<mpConsume>150</mpConsume>
+		<reuseDelay>7000</reuseDelay>
 		<effects>
 			<effect name="CallRandomSkill">
 				<skills>45540,1;45541,1;45542,1</skills>
@@ -1122,18 +1159,18 @@
 	<skill id="45540" toLevel="1" name="Rolling Dice - Haste">
 		<!-- P. Atk. +60%. P. Critical Rate +15. P. Critical Damage +15%. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. Atk. Spd. +55% -->
 		<icon>icon.rolling_dice_buff1</icon>
-		<abnormalType>ROLLING_DICE</abnormalType>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<effectPoint>100</effectPoint>
-		<magicLevel>76</magicLevel>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
+		<abnormalType>ROLLING_DICE</abnormalType>
 		<abnormalVisualEffect>H_Y_ROLLING_DICEA_AVE</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>100</effectPoint>
+		<isMagic>2</isMagic>
+		<magicLevel>76</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1163,19 +1200,19 @@
 	<skill id="45541" toLevel="1" name="Rolling Dice - Wind Walk">
 		<!-- P. Atk. +60%. P. Critical Rate +15. P. Critical Damage +15%. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. Speed +30 -->
 		<icon>icon.rolling_dice_buff2</icon>
-		<abnormalType>ROLLING_DICE</abnormalType>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<effectPoint>100</effectPoint>
-		<magicLevel>76</magicLevel>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
+		<abnormalType>ROLLING_DICE</abnormalType>
 		<abnormalVisualEffect>H_Y_ROLLING_DICEB_AVE</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>100</effectPoint>
+		<isMagic>2</isMagic>
+		<magicLevel>76</magicLevel>
 		<effects>
 			<!-- Main Effects -->
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1205,19 +1242,19 @@
 	<skill id="45542" toLevel="1" name="Rolling Dice - Resilience">
 		<!-- P. Atk. +60%. P. Critical Rate +15. P. Critical Damage +15%. P. Skill Critical Rate +15%. P. Skill Critical Damage +15%. Max HP +55% -->
 		<icon>icon.rolling_dice_buff3</icon>
-		<abnormalType>ROLLING_DICE</abnormalType>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<effectPoint>100</effectPoint>
-		<magicLevel>76</magicLevel>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
+		<abnormalType>ROLLING_DICE</abnormalType>
 		<abnormalVisualEffect>H_Y_ROLLING_DICEC_AVE</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>100</effectPoint>
+		<isMagic>2</isMagic>
+		<magicLevel>76</magicLevel>
 		<effects>
 			<!-- Main Effects -->
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1247,24 +1284,21 @@
 	<skill id="45543" toLevel="2" name="Song of Wind">
 		<!-- Elven wind-praising song. Speed +30. Suppression Resistance +5% -->
 		<icon>icon.song_of_wind_02</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
 		</abnormalLevel>
-		<effectPoint>
-			<value level="1">0</value>
-			<value level="2">200</value>
-		</effectPoint>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>SONG_OF_WIND</abnormalType>
-		<hitTime>2500</hitTime>
-		<isMagic>3</isMagic> <!-- Dance Skill -->
-		<magicLevel>40</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>200</effectPoint>
+		<hitTime>0</hitTime>
+		<isMagic>3</isMagic> <!-- Dance Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -1293,23 +1327,20 @@
 	<skill id="45544" toLevel="2" name="Dance of Fury">
 		<!-- Dark Elven fury-praising dance. Atk. Spd. +150. Casting Spd. +100. Skill Cooldown -5% -->
 		<icon>icon.dance_of_fury_02</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
 		</abnormalLevel>
-		<effectPoint>
-			<value level="1">0</value>
-			<value level="2">200</value>
-		</effectPoint>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>DANCE_OF_FURY</abnormalType>
-		<hitTime>2500</hitTime>
-		<isMagic>3</isMagic> <!-- Dance Skill -->
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>200</effectPoint>
+		<hitTime>0</hitTime>
+		<isMagic>3</isMagic> <!-- Dance Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>
@@ -1353,7 +1384,7 @@
 		<icon>icon.meteor</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="45547" toLevel="15" name="Hellfire">
+	<skill id="45547" toLevel="20" name="Hellfire">
 		<!-- P. Def. -40%. M. Def. -40% -->
 		<icon>icon.hell_fire</icon>
 		<operateType>A1</operateType>

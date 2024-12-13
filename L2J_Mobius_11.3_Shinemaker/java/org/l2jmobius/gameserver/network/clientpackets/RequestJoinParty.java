@@ -1,20 +1,26 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.clientpackets;
+
+import java.util.Optional;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
@@ -26,7 +32,6 @@ import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.request.PartyRequest;
-import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.AskJoinParty;
@@ -96,7 +101,7 @@ public class RequestJoinParty extends ClientPacket
 			return;
 		}
 		
-		final Player target = requestor.isInsideZone(ZoneId.CONQUEST) ? World.getInstance().getPlayer(requestor.getTarget().getName()) : World.getInstance().getPlayer(_name);
+		final Player target = World.getInstance().getPlayer(checkIfConquestName(_name));
 		if (target == null)
 		{
 			requestor.sendPacket(SystemMessageId.SELECT_A_PLAYER_YOU_WANT_TO_INVITE_TO_YOUR_PARTY);
@@ -173,6 +178,27 @@ public class RequestJoinParty extends ClientPacket
 		if ((target.isInOlympiadMode() || requestor.isInOlympiadMode()) && ((target.isInOlympiadMode() != requestor.isInOlympiadMode()) || (target.getOlympiadGameId() != requestor.getOlympiadGameId()) || (target.getOlympiadSide() != requestor.getOlympiadSide())))
 		{
 			requestor.sendPacket(SystemMessageId.A_USER_CURRENTLY_PARTICIPATING_IN_THE_OLYMPIAD_CANNOT_SEND_PARTY_AND_FRIEND_INVITATIONS);
+			return;
+		}
+		
+		if (requestor.isProcessingRequest())
+		{
+			requestor.sendPacket(SystemMessageId.WAITING_FOR_ANOTHER_REPLY);
+			return;
+		}
+		
+		if (target.isProcessingRequest())
+		{
+			sm = new SystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
+			sm.addString(target.getName());
+			requestor.sendPacket(sm);
+			return;
+		}
+		
+		final Party party = requestor.getParty();
+		if ((party != null) && !party.isLeader(requestor))
+		{
+			requestor.sendPacket(SystemMessageId.ONLY_THE_LEADER_CAN_GIVE_OUT_INVITATIONS);
 			return;
 		}
 		
@@ -266,5 +292,16 @@ public class RequestJoinParty extends ClientPacket
 			condition = false;
 		}
 		return condition;
+	}
+	
+	private String checkIfConquestName(String name)
+	{
+		// The Conquest name contains a character at start.
+		final Optional<Player> conquestNamedPlayer = World.getInstance().getPlayers().stream().filter(player ->
+		{
+			final String conquestName = player.getConquestName();
+			return (conquestName != null) && name.equalsIgnoreCase(conquestName.substring(1));
+		}).findFirst();
+		return conquestNamedPlayer.isPresent() ? conquestNamedPlayer.get().getName() : name;
 	}
 }

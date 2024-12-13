@@ -46,7 +46,7 @@ public class Crystallize extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		if (player != null)
 		{
 			player.setCrystallizeGrade(_grade);
@@ -56,7 +56,7 @@ public class Crystallize extends AbstractEffect
 	@Override
 	public void onExit(Creature effector, Creature effected, Skill skill)
 	{
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		if (player != null)
 		{
 			player.setCrystallizeGrade(null);

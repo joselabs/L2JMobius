@@ -51,6 +51,7 @@ import org.l2jmobius.gameserver.instancemanager.PcCafePointsManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Message;
+import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.Spawn;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
@@ -3225,9 +3226,10 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		}
 		if ((includeParty || includeCommandChannel) && player.isInParty())
 		{
-			if (includeCommandChannel && player.getParty().isInCommandChannel())
+			final Party party = player.getParty();
+			if (includeCommandChannel && party.isInCommandChannel())
 			{
-				player.getParty().getCommandChannel().forEachMember(member ->
+				party.getCommandChannel().forEachMember(member ->
 				{
 					actionForEachPlayer(member, npc, isSummon);
 					return true;
@@ -3235,7 +3237,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 			}
 			else if (includeParty)
 			{
-				player.getParty().forEachMember(member ->
+				party.forEachMember(member ->
 				{
 					actionForEachPlayer(member, npc, isSummon);
 					return true;
@@ -3336,7 +3338,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	{
 		if (npc.isAttackable())
 		{
-			((Attackable) npc).addDamageHate(target, 0, desire);
+			npc.asAttackable().addDamageHate(target, 0, desire);
 		}
 		npc.setRunning();
 		npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, target);
@@ -3411,7 +3413,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	{
 		if (npc.isAttackable() && (target != null) && target.isCreature())
 		{
-			((Attackable) npc).addDamageHate((Creature) target, 0, desire);
+			npc.asAttackable().addDamageHate(target.asCreature(), 0, desire);
 		}
 		npc.setTarget(target != null ? target : npc);
 		npc.doCast(skill);

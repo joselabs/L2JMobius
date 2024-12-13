@@ -51,7 +51,7 @@ public class OlympiadStat implements IUserCommandHandler
 		
 		final int nobleObjId = player.getObjectId();
 		final WorldObject target = player.getTarget();
-		if ((target == null) || !target.isPlayer() || (target.getActingPlayer().getClassId().level() < 2))
+		if ((target == null) || !target.isPlayer() || (target.asPlayer().getClassId().level() < 2))
 		{
 			player.sendPacket(SystemMessageId.THIS_COMMAND_CAN_ONLY_BE_USED_WHEN_THE_TARGET_IS_AN_AWAKENED_NOBLESSE_EXALTED);
 			return false;
@@ -61,7 +61,7 @@ public class OlympiadStat implements IUserCommandHandler
 		sm.addInt(Olympiad.getInstance().getCompetitionDone(nobleObjId));
 		sm.addInt(Olympiad.getInstance().getCompetitionWon(nobleObjId));
 		sm.addInt(Olympiad.getInstance().getCompetitionLost(nobleObjId));
-		sm.addInt(Olympiad.getInstance().getNoblePoints((Player) target));
+		sm.addInt(Olympiad.getInstance().getNoblePoints(target.asPlayer()));
 		player.sendPacket(sm);
 		
 		final SystemMessage sm2 = new SystemMessage(SystemMessageId.THE_MATCHES_THIS_WEEK_ARE_ALL_CLASS_BATTLES_THE_NUMBER_OF_MATCHES_THAT_ARE_ALLOWED_TO_PARTICIPATE_IS_S1);

@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.actor.status;
 
@@ -73,23 +77,24 @@ public class PlayerStatus extends PlayableStatus
 	
 	public void reduceHp(double value, Creature attacker, Skill skill, boolean awake, boolean isDOT, boolean isHPConsumption, boolean ignoreCP)
 	{
-		if (getActiveChar().isDead())
+		final Player player = getActiveChar();
+		if (player.isDead())
 		{
 			return;
 		}
 		
 		// If OFFLINE_MODE_NO_DAMAGE is enabled and player is offline and he is in store/craft mode, no damage is taken.
-		if (Config.OFFLINE_MODE_NO_DAMAGE && (getActiveChar().getClient() != null) && getActiveChar().getClient().isDetached() && ((Config.OFFLINE_TRADE_ENABLE && ((getActiveChar().getPrivateStoreType() == PrivateStoreType.SELL) || (getActiveChar().getPrivateStoreType() == PrivateStoreType.BUY))) || (Config.OFFLINE_CRAFT_ENABLE && (getActiveChar().isCrafting() || (getActiveChar().getPrivateStoreType() == PrivateStoreType.MANUFACTURE)))))
+		if (Config.OFFLINE_MODE_NO_DAMAGE && (player.getClient() != null) && player.getClient().isDetached() && ((Config.OFFLINE_TRADE_ENABLE && ((player.getPrivateStoreType() == PrivateStoreType.SELL) || (player.getPrivateStoreType() == PrivateStoreType.BUY))) || (Config.OFFLINE_CRAFT_ENABLE && (player.isCrafting() || (player.getPrivateStoreType() == PrivateStoreType.MANUFACTURE)))))
 		{
 			return;
 		}
 		
-		if (getActiveChar().isHpBlocked() && !(isDOT || isHPConsumption))
+		if (player.isHpBlocked() && !(isDOT || isHPConsumption))
 		{
 			return;
 		}
 		
-		if (getActiveChar().isAffected(EffectFlag.DUELIST_FURY) && !attacker.isAffected(EffectFlag.FACEOFF))
+		if (player.isAffected(EffectFlag.DUELIST_FURY) && !attacker.isAffected(EffectFlag.FACEOFF))
 		{
 			return;
 		}
@@ -98,29 +103,29 @@ public class PlayerStatus extends PlayableStatus
 		{
 			if (awake)
 			{
-				getActiveChar().stopEffectsOnDamage();
+				player.stopEffectsOnDamage();
 			}
 			// Attacked players in craft/shops stand up.
-			if (getActiveChar().isCrafting() || getActiveChar().isInStoreMode())
+			if (player.isCrafting() || player.isInStoreMode())
 			{
-				getActiveChar().setPrivateStoreType(PrivateStoreType.NONE);
-				getActiveChar().standUp();
-				getActiveChar().broadcastUserInfo();
+				player.setPrivateStoreType(PrivateStoreType.NONE);
+				player.standUp();
+				player.broadcastUserInfo();
 			}
-			else if (getActiveChar().isSitting())
+			else if (player.isSitting())
 			{
-				getActiveChar().standUp();
+				player.standUp();
 			}
 			
 			if (!isDOT)
 			{
-				if (Formulas.calcStunBreak(getActiveChar()))
+				if (Formulas.calcStunBreak(player))
 				{
-					getActiveChar().stopStunning(true);
+					player.stopStunning(true);
 				}
 				if (Formulas.calcRealTargetBreak())
 				{
-					getActiveChar().getEffectList().stopEffects(AbnormalType.REAL_TARGET);
+					player.getEffectList().stopEffects(AbnormalType.REAL_TARGET);
 				}
 			}
 		}
@@ -129,9 +134,9 @@ public class PlayerStatus extends PlayableStatus
 		int fullValue = (int) amount;
 		int tDmg = 0;
 		int mpDam = 0;
-		if ((attacker != null) && (attacker != getActiveChar()))
+		if ((attacker != null) && (attacker != player))
 		{
-			final Player attackerPlayer = attacker.getActingPlayer();
+			final Player attackerPlayer = attacker.asPlayer();
 			if (attackerPlayer != null)
 			{
 				if (attackerPlayer.isGM() && !attackerPlayer.getAccessLevel().canGiveDamage())
@@ -139,30 +144,31 @@ public class PlayerStatus extends PlayableStatus
 					return;
 				}
 				
-				if (getActiveChar().isInDuel())
+				if (player.isInDuel())
 				{
-					if (getActiveChar().getDuelState() == Duel.DUELSTATE_DEAD)
+					if (player.getDuelState() == Duel.DUELSTATE_DEAD)
 					{
 						return;
 					}
-					else if (getActiveChar().getDuelState() == Duel.DUELSTATE_WINNER)
+					else if (player.getDuelState() == Duel.DUELSTATE_WINNER)
 					{
 						return;
 					}
 					
 					// cancel duel if player got hit by another player, that is not part of the duel
-					if (attackerPlayer.getDuelId() != getActiveChar().getDuelId())
+					if (attackerPlayer.getDuelId() != player.getDuelId())
 					{
-						getActiveChar().setDuelState(Duel.DUELSTATE_INTERRUPTED);
+						player.setDuelState(Duel.DUELSTATE_INTERRUPTED);
 					}
 				}
 			}
 			
 			// Check and calculate transfered damage
-			final Summon summon = getActiveChar().getFirstServitor();
-			if ((summon != null) && Util.checkIfInRange(1000, getActiveChar(), summon, true))
+			final PlayerStat stat = player.getStat();
+			final Summon summon = player.getFirstServitor();
+			if ((summon != null) && Util.checkIfInRange(1000, player, summon, true))
 			{
-				tDmg = ((int) amount * (int) getActiveChar().getStat().getValue(Stat.TRANSFER_DAMAGE_SUMMON_PERCENT, 0)) / 100;
+				tDmg = ((int) amount * (int) stat.getValue(Stat.TRANSFER_DAMAGE_SUMMON_PERCENT, 0)) / 100;
 				
 				// Only transfer dmg up to current HP, it should not be killed
 				tDmg = Math.min((int) summon.getCurrentHp() - 1, tDmg);
@@ -174,32 +180,32 @@ public class PlayerStatus extends PlayableStatus
 				}
 			}
 			
-			mpDam = ((int) amount * (int) getActiveChar().getStat().getValue(Stat.MANA_SHIELD_PERCENT, 0)) / 100;
+			mpDam = ((int) amount * (int) stat.getValue(Stat.MANA_SHIELD_PERCENT, 0)) / 100;
 			if (mpDam > 0)
 			{
 				mpDam = (int) (amount - mpDam);
-				if (mpDam > getActiveChar().getCurrentMp())
+				if (mpDam > player.getCurrentMp())
 				{
-					getActiveChar().sendPacket(SystemMessageId.MP_BECAME_0_AND_THE_ARCANE_SHIELD_IS_DISAPPEARING);
-					getActiveChar().stopSkillEffects(SkillFinishType.REMOVED, 1556);
-					amount = mpDam - getActiveChar().getCurrentMp();
-					getActiveChar().setCurrentMp(0);
+					player.sendPacket(SystemMessageId.MP_BECAME_0_AND_THE_ARCANE_SHIELD_IS_DISAPPEARING);
+					player.stopSkillEffects(SkillFinishType.REMOVED, 1556);
+					amount = mpDam - player.getCurrentMp();
+					player.setCurrentMp(0);
 				}
 				else
 				{
-					getActiveChar().reduceCurrentMp(mpDam);
+					player.reduceCurrentMp(mpDam);
 					final SystemMessage smsg = new SystemMessage(SystemMessageId.ARCANE_SHIELD_DECREASED_YOUR_MP_BY_S1_INSTEAD_OF_HP);
 					smsg.addInt(mpDam);
-					getActiveChar().sendPacket(smsg);
+					player.sendPacket(smsg);
 					return;
 				}
 			}
 			
-			final Player caster = getActiveChar().getTransferingDamageTo();
-			if ((caster != null) && (getActiveChar().getParty() != null) && Util.checkIfInRange(1000, getActiveChar(), caster, true) && !caster.isDead() && (getActiveChar() != caster) && getActiveChar().getParty().getMembers().contains(caster))
+			final Player caster = player.getTransferingDamageTo();
+			if ((caster != null) && (player.getParty() != null) && Util.checkIfInRange(1000, player, caster, true) && !caster.isDead() && (player != caster) && player.getParty().getMembers().contains(caster))
 			{
 				int transferDmg = 0;
-				transferDmg = ((int) amount * (int) getActiveChar().getStat().getValue(Stat.TRANSFER_DAMAGE_TO_PLAYER, 0)) / 100;
+				transferDmg = ((int) amount * (int) stat.getValue(Stat.TRANSFER_DAMAGE_TO_PLAYER, 0)) / 100;
 				transferDmg = Math.min((int) caster.getCurrentHp() - 1, transferDmg);
 				if (transferDmg > 0)
 				{
@@ -252,13 +258,13 @@ public class PlayerStatus extends PlayableStatus
 			{
 				// Send a System Message to the Player
 				SystemMessage smsg = new SystemMessage(SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2);
-				smsg.addString(getActiveChar().getName());
+				smsg.addString(player.getName());
 				
 				// Localisation related.
 				String targetName = attacker.getName();
 				if (Config.MULTILANG_ENABLE && attacker.isNpc())
 				{
-					final String[] localisation = NpcNameLocalisationData.getInstance().getLocalisation(getActiveChar().getLang(), attacker.getId());
+					final String[] localisation = NpcNameLocalisationData.getInstance().getLocalisation(player.getLang(), attacker.getId());
 					if (localisation != null)
 					{
 						targetName = localisation[0];
@@ -267,8 +273,8 @@ public class PlayerStatus extends PlayableStatus
 				
 				smsg.addString(targetName);
 				smsg.addInt(fullValue);
-				smsg.addPopup(getActiveChar().getObjectId(), attacker.getObjectId(), -fullValue);
-				getActiveChar().sendPacket(smsg);
+				smsg.addPopup(player.getObjectId(), attacker.getObjectId(), -fullValue);
+				player.sendPacket(smsg);
 				
 				if ((tDmg > 0) && (summon != null) && (attackerPlayer != null))
 				{
@@ -282,12 +288,12 @@ public class PlayerStatus extends PlayableStatus
 		
 		if (amount > 0)
 		{
-			double newHp = Math.max(getCurrentHp() - amount, getActiveChar().isUndying() ? 1 : 0);
+			double newHp = Math.max(getCurrentHp() - amount, player.isUndying() ? 1 : 0);
 			if (newHp <= 0)
 			{
-				if (getActiveChar().isInDuel())
+				if (player.isInDuel())
 				{
-					getActiveChar().disableAllSkills();
+					player.disableAllSkills();
 					stopHpMpRegeneration();
 					if (attacker != null)
 					{
@@ -295,7 +301,7 @@ public class PlayerStatus extends PlayableStatus
 						attacker.sendPacket(ActionFailed.STATIC_PACKET);
 					}
 					// let the DuelManager know of his defeat
-					DuelManager.getInstance().onPlayerDefeat(getActiveChar());
+					DuelManager.getInstance().onPlayerDefeat(player);
 					newHp = 1;
 				}
 				else
@@ -306,26 +312,26 @@ public class PlayerStatus extends PlayableStatus
 			setCurrentHp(newHp);
 		}
 		
-		if ((getActiveChar().getCurrentHp() < 0.5) && !isHPConsumption && !getActiveChar().isUndying())
+		if ((player.getCurrentHp() < 0.5) && !isHPConsumption && !player.isUndying())
 		{
-			getActiveChar().abortAttack();
-			getActiveChar().abortCast();
+			player.abortAttack();
+			player.abortCast();
 			
-			if (getActiveChar().isInOlympiadMode())
+			if (player.isInOlympiadMode())
 			{
 				stopHpMpRegeneration();
-				getActiveChar().setDead(true);
-				getActiveChar().setIsPendingRevive(true);
-				final Summon pet = getActiveChar().getPet();
+				player.setDead(true);
+				player.setIsPendingRevive(true);
+				final Summon pet = player.getPet();
 				if (pet != null)
 				{
 					pet.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 				}
-				getActiveChar().getServitors().values().forEach(s -> s.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE));
+				player.getServitors().values().forEach(s -> s.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE));
 				return;
 			}
 			
-			getActiveChar().doDie(attacker);
+			player.doDie(attacker);
 		}
 	}
 	
@@ -346,11 +352,12 @@ public class PlayerStatus extends PlayableStatus
 	{
 		// Get the Max CP of the Creature
 		final int currentCp = (int) _currentCp;
-		final int maxCp = getActiveChar().getStat().getMaxCp();
+		final Player player = getActiveChar();
+		final int maxCp = player.getStat().getMaxCp();
 		
 		synchronized (this)
 		{
-			if (getActiveChar().isDead())
+			if (player.isDead())
 			{
 				return;
 			}
@@ -382,39 +389,40 @@ public class PlayerStatus extends PlayableStatus
 		// Send the Server->Client packet StatusUpdate with current HP and MP to all other Player to inform
 		if ((currentCp != _currentCp) && broadcastPacket)
 		{
-			getActiveChar().broadcastStatusUpdate();
+			player.broadcastStatusUpdate();
 		}
 	}
 	
 	@Override
 	protected void doRegeneration()
 	{
-		final PlayerStat charstat = getActiveChar().getStat();
+		final Player player = getActiveChar();
+		final PlayerStat stat = player.getStat();
 		
 		// Modify the current CP of the Creature and broadcast Server->Client packet StatusUpdate
-		if (_currentCp < charstat.getMaxRecoverableCp())
+		if (_currentCp < stat.getMaxRecoverableCp())
 		{
-			setCurrentCp(_currentCp + getActiveChar().getStat().getValue(Stat.REGENERATE_CP_RATE), false);
+			setCurrentCp(_currentCp + stat.getValue(Stat.REGENERATE_CP_RATE), false);
 		}
 		
 		// Modify the current HP of the Creature and broadcast Server->Client packet StatusUpdate
-		if (getCurrentHp() < charstat.getMaxRecoverableHp())
+		if (getCurrentHp() < stat.getMaxRecoverableHp())
 		{
-			setCurrentHp(getCurrentHp() + getActiveChar().getStat().getValue(Stat.REGENERATE_HP_RATE), false);
+			setCurrentHp(getCurrentHp() + stat.getValue(Stat.REGENERATE_HP_RATE), false);
 		}
 		
 		// Modify the current MP of the Creature and broadcast Server->Client packet StatusUpdate
-		if (getCurrentMp() < charstat.getMaxRecoverableMp())
+		if (getCurrentMp() < stat.getMaxRecoverableMp())
 		{
-			setCurrentMp(getCurrentMp() + getActiveChar().getStat().getValue(Stat.REGENERATE_MP_RATE), false);
+			setCurrentMp(getCurrentMp() + stat.getValue(Stat.REGENERATE_MP_RATE), false);
 		}
 		
-		getActiveChar().broadcastStatusUpdate(); // send the StatusUpdate packet
+		player.broadcastStatusUpdate(); // send the StatusUpdate packet
 	}
 	
 	@Override
 	public Player getActiveChar()
 	{
-		return (Player) super.getActiveChar();
+		return super.getActiveChar().asPlayer();
 	}
 }

@@ -42,6 +42,7 @@ import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.ListenerRegisterType;
 import org.l2jmobius.gameserver.model.events.annotations.RegisterEvent;
@@ -459,19 +460,20 @@ public class ClassMaster extends AbstractNpcAI implements IXmlReader
 			}
 			case "clanlevelup":
 			{
-				if ((player.getClan() == null) || !player.isClanLeader())
+				final Clan clan = player.getClan();
+				if ((clan == null) || !player.isClanLeader())
 				{
 					return null;
 				}
 				
-				if (player.getClan().getLevel() >= 10)
+				if (clan.getLevel() >= 10)
 				{
 					htmltext = "test_server_helper022a.html";
 				}
 				else
 				{
-					player.getClan().changeLevel(player.getClan().getLevel() + 1);
-					player.getClan().broadcastClanStatus();
+					clan.changeLevel(clan.getLevel() + 1);
+					clan.broadcastClanStatus();
 				}
 				break;
 			}

@@ -4,14 +4,14 @@
 		<!-- Acquired XP/ SP +100% for 1 h. Cannot be stacked with Fall of the Dragon, Nevit's Hourglass, or Dandy's Home Run Ball. -->
 		<icon>icon.ev_2018_soccer_homerunball</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>15000</reuseDelay>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
+		<reuseDelay>15000</reuseDelay>
 		<effects>
 			<effect name="ExpModify">
 				<amount>100</amount>
@@ -25,11 +25,11 @@
 		<!-- For 30 min., Max HP/ MP/ CP +30%, P. Atk./ M. Atk./ P. Def./ M. Def. +30%, Atk. Spd./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +100, Skill MP Consumption -15%. Additionally acquired XP/ SP +30%. Cooldown is 5 min. The effect remains after dual class changing. Cannot be used in the Olympiad and the Ceremony of Chaos. -->
 		<icon>icon.ev_bm_white_buff</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>300000</reuseDelay>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="MaxHp">
 				<amount>30</amount>
@@ -43,11 +43,11 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -130,24 +130,24 @@
 		<!-- Double-click to obtain +5 Shiny Elemental Shirt. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39403" toLevel="1" name="+5 Physical Reflect Shirt Pack">
 		<!-- Double-click to obtain +5 Physical Reflect Shirt. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39404" toLevel="1" name="+5 Magical Reflect Shirt Pack">
 		<!-- Double-click to obtain +5 Magical Reflect Shirt. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39405" toLevel="1" name="Challenger's Scroll of Growth">
@@ -162,27 +162,29 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39407" toLevel="3" name="Horn Melody - Emperor's Special Cocktail">
-		<!-- For 1 h., P. Atk. +30%, M. Atk. +100%, P. Def. +35%, M. Def. +40%. The effect remains after death. -->
+		<!-- Level 1: For 1 h., P. Atk. +30%, M. Atk. +100%, P. Def. +35%, M. Def. +40%. The effect remains after death. -->
+		<!-- Level 2: For 4 h., P. Atk. +30%, M. Atk. +100%, P. Def. +35%, M. Def. +40%. The effect remains after death. -->
+		<!-- Level 3: For 8 h., P. Atk. +30%, M. Atk. +100%, P. Def. +35%, M. Def. +40%. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>MULTI_BUFF;IMPROVE_PA_PD_UP;PA_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL;PD_UP;HIT_UP;IMPROVE_HIT_DEFENCE_CRT_RATE_UP;IMPROVE_CRT_RATE_DMG_UP;T_CRT_DMG_DOWN;CRITICAL_DMG_UP;CRITICAL_PROB_UP;IMPROVE_SPEED_AVOID_UP;SPEED_UP;MAX_BREATH_UP;HOLY_ATTACK;AVOID_UP;DECREASE_WEIGHT_PENALTY;RESIST_HOLY_UNHOLY;ATTACK_TIME_DOWN</dispel>
@@ -191,11 +193,11 @@
 			<effect name="BlockAbnormalSlot">
 				<slot>MULTI_BUFF;IMPROVE_PA_PD_UP;PA_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL;PD_UP;HIT_UP;IMPROVE_HIT_DEFENCE_CRT_RATE_UP;IMPROVE_CRT_RATE_DMG_UP;T_CRT_DMG_DOWN;CRITICAL_DMG_UP;CRITICAL_PROB_UP;IMPROVE_SPEED_AVOID_UP;SPEED_UP;MAX_BREATH_UP;HOLY_ATTACK;AVOID_UP;DECREASE_WEIGHT_PENALTY;RESIST_HOLY_UNHOLY;ATTACK_TIME_DOWN</slot>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -210,29 +212,31 @@
 		</effects>
 	</skill>
 	<skill id="39408" toLevel="3" name="Drum Melody - Emperor's Special Cocktail">
-		<!-- For 1 h., Critical Rate for basic attacks +38%, Critical Damage for basic attacks +34%, M. Skill Critical Rate +4%, received Critical Damage from basic attacks -50%. With a certain chance, increases P. Critical Damage when hit. The effect remains after death. -->
+		<!-- Level 1: For 1 h., Critical Rate for basic attacks +38%, Critical Damage for basic attacks +34%, M. Skill Critical Rate +4%, received Critical Damage from basic attacks -50%. With a certain chance, increases P. Critical Damage when hit. The effect remains after death. -->
+		<!-- Level 2: For 4 h., Critical Rate for basic attacks +38%, Critical Damage for basic attacks +34%, M. Skill Critical Rate +4%, received Critical Damage from basic attacks -50%. With a certain chance, increases P. Critical Damage when hit. The effect remains after death. -->
+		<!-- Level 3: For 8 h., Critical Rate for basic attacks +38%, Critical Damage for basic attacks +34%, M. Skill Critical Rate +4%, received Critical Damage from basic attacks -50%. With a certain chance, increases P. Critical Damage when hit. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>BUFF_SPECIAL_CRITICAL</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<chance>80</chance>
 				<minDamage>300</minDamage>
 				<skillId>11569</skillId> <!-- Critical Strike -->
@@ -263,27 +267,29 @@
 		</effects>
 	</skill>
 	<skill id="39409" toLevel="3" name="Pipe Organ Melody - Emperor's Special Cocktail">
-		<!-- For 1 h., Max HP +45%, Max MP +70%, Max CP +45%, grants 9% Vampiric Rage Effect. The effect remains after death. -->
+		<!-- Level 1: For 1 h., Max HP +45%, Max MP +70%, Max CP +45%, grants 9% Vampiric Rage Effect. The effect remains after death. -->
+		<!-- Level 2: For 4 h., Max HP +45%, Max MP +70%, Max CP +45%, grants 9% Vampiric Rage Effect. The effect remains after death. -->
+		<!-- Level 3: For 8 h., Max HP +45%, Max MP +70%, Max CP +45%, grants 9% Vampiric Rage Effect. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>BUFF_SPECIAL_CONDITION</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>MULTI_BUFF;IMPROVE_HP_MP_UP;MAX_HP_UP;MAX_MP_UP;HP_REGEN_UP;VAMPIRIC_ATTACK;IMPROVE_VAMPIRIC_HASTE;IMPROVE_HIT_DEFENCE_CRT_RATE_UP;IMPROVE_CRT_RATE_DMG_UP;HIT_UP;T_CRT_DMG_DOWN;CRITICAL_DMG_UP;CRITICAL_PROB_UP;IMPROVE_SPEED_AVOID_UP;SPEED_UP;MAX_BREATH_UP;HOLY_ATTACK;AVOID_UP;DECREASE_WEIGHT_PENALTY;RESIST_HOLY_UNHOLY</dispel>
@@ -311,27 +317,29 @@
 		</effects>
 	</skill>
 	<skill id="39410" toLevel="3" name="Guitar Melody - Emperor's Special Cocktail">
-		<!-- For 1 h., Atk. Spd. +64%, Casting Spd. +62%, Skill MP Consumption -10%. The effect remains after death. -->
+		<!-- Level 1: For 1 h., Atk. Spd. +64%, Casting Spd. +62%, Skill MP Consumption -10%. The effect remains after death. -->
+		<!-- Level 2: For 4 h., Atk. Spd. +64%, Casting Spd. +62%, Skill MP Consumption -10%. The effect remains after death. -->
+		<!-- Level 3: For 8 h., Atk. Spd. +64%, Casting Spd. +62%, Skill MP Consumption -10%. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>BUFF_SPECIAL_MOVE</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>ATTACK_TIME_DOWN;CASTING_TIME_DOWN;SPEED_UP;CHEAP_MAGIC;MULTI_BUFF;IMPROVE_HIT_DEFENCE_CRT_RATE_UP;IMPROVE_CRT_RATE_DMG_UP;HIT_UP;T_CRT_DMG_DOWN;CRITICAL_DMG_UP;CRITICAL_PROB_UP;IMPROVE_SPEED_AVOID_UP;MAX_BREATH_UP;HOLY_ATTACK;AVOID_UP;DECREASE_WEIGHT_PENALTY;RESIST_HOLY_UNHOLY</dispel>
@@ -371,27 +379,29 @@
 		</effects>
 	</skill>
 	<skill id="39411" toLevel="3" name="Attribute Resistance - Emperor's Special Cocktail">
-		<!-- For 1 h., Attribute Resistance +30. The effect remains after death. -->
+		<!-- Level 1: For 1 h., Attribute Resistance +30. The effect remains after death. -->
+		<!-- Level 2: For 4 h., Attribute Resistance +30. The effect remains after death. -->
+		<!-- Level 3: For 8 h., Attribute Resistance +30. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>ARMOR_ELEMENT_ALL</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>ARMOR_FIRE;ARMOR_WATER;ARMOR_WIND;ARMOR_EARTH;MD_UP_ATTR;DANCE_OF_AQUA_GUARD;DANCE_OF_EARTH_GUARD;SONG_OF_ELEMENTAL;SONG_OF_FLAME_GUARD;SONG_OF_STORM_GUARD;SONG_OF_WIND</dispel>
@@ -427,27 +437,29 @@
 		</effects>
 	</skill>
 	<skill id="39412" toLevel="3" name="Debuff Resistance - Emperor's Special Cocktail">
-		<!-- For 1 h., Infection/ Obstruction/ Stupor/ Confusion Resistance +50%. The effect remains after death. -->
+		<!-- Level 1: For 1 h., Infection/ Obstruction/ Stupor/ Confusion Resistance +50%. The effect remains after death. -->
+		<!-- Level 2: For 4 h., Infection/ Obstruction/ Stupor/ Confusion Resistance +50%. The effect remains after death. -->
+		<!-- Level 3: For 8 h., Infection/ Obstruction/ Stupor/ Confusion Resistance +50%. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>ARMOR_HOLY</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DefenceTrait">
 				<BLEED>50</BLEED>
@@ -471,27 +483,29 @@
 		</effects>
 	</skill>
 	<skill id="39413" toLevel="3" name="Mental Resistance - Emperor's Special Cocktail">
-		<!-- For 1 h., Buff Cancel Resistance/ Debuff Resistance +30. The effect remains after death. -->
+		<!-- Level 1: For 1 h., Buff Cancel Resistance/ Debuff Resistance +30. The effect remains after death. -->
+		<!-- Level 2: For 4 h., Buff Cancel Resistance/ Debuff Resistance +30. The effect remains after death. -->
+		<!-- Level 3: For 8 h., Buff Cancel Resistance/ Debuff Resistance +30. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>RESIST_DERANGEMENT</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DefenceTrait">
 				<HOLD>50</HOLD>
@@ -516,27 +530,29 @@
 		</effects>
 	</skill>
 	<skill id="39414" toLevel="3" name="Prevailing Drum - Emperor's Special Cocktail">
-		<!-- For 1 h., Max HP +30%, P. Atk. +30%, M. Atk. +33%, Casting Interruption Rate -40. With a certain chance, Vampiric Rage efect +8%. The effect remains after death. -->
+		<!-- Level 1: For 1 h., Max HP +30%, P. Atk. +30%, M. Atk. +33%, Casting Interruption Rate -40. With a certain chance, Vampiric Rage efect +8%. The effect remains after death. -->
+		<!-- Level 2: For 4 h., Max HP +30%, P. Atk. +30%, M. Atk. +33%, Casting Interruption Rate -40. With a certain chance, Vampiric Rage efect +8%. The effect remains after death. -->
+		<!-- Level 3: For 8 h., Max HP +30%, P. Atk. +30%, M. Atk. +33%, Casting Interruption Rate -40. With a certain chance, Vampiric Rage efect +8%. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>BUFF_SPECIAL_AURA</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD;AVOID_UP</dispel>
@@ -549,11 +565,11 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -568,27 +584,29 @@
 		</effects>
 	</skill>
 	<skill id="39415" toLevel="3" name="Daring Drum - Emperor's Special Cocktail">
-		<!-- For 1 h., Atk. Spd. +40%, Casting Spd. +30%, Damage Reflection +10%, and Skill Cooldown -10%. The effect remains after death. -->
+		<!-- Level 1: For 1 h., Atk. Spd. +40%, Casting Spd. +30%, Damage Reflection +10%, and Skill Cooldown -10%. The effect remains after death. -->
+		<!-- Level 2: For 4 h., Atk. Spd. +40%, Casting Spd. +30%, Damage Reflection +10%, and Skill Cooldown -10%. The effect remains after death. -->
+		<!-- Level 3: For 8 h., Atk. Spd. +40%, Casting Spd. +30%, Damage Reflection +10%, and Skill Cooldown -10%. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>ENCHANTER_MOD</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>2</isMagic>
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD;AVOID_UP</dispel>
@@ -626,27 +644,29 @@
 		</effects>
 	</skill>
 	<skill id="39416" toLevel="3" name="Refreshing Drum - Emperor's Special Cocktail">
-		<!-- For 1 h., HP Recovery Rate +75%, MP Recovery Rate +100%, P./ M. Evasion +5, Skill MP Consumption -22%. The effect remains after death. -->
+		<!-- Level 1: For 1 h., HP Recovery Rate +75%, MP Recovery Rate +100%, P./ M. Evasion +5, Skill MP Consumption -22%. The effect remains after death. -->
+		<!-- Level 2: For 4 h., HP Recovery Rate +75%, MP Recovery Rate +100%, P./ M. Evasion +5, Skill MP Consumption -22%. The effect remains after death. -->
+		<!-- Level 3: For 8 h., HP Recovery Rate +75%, MP Recovery Rate +100%, P./ M. Evasion +5, Skill MP Consumption -22%. The effect remains after death. -->
 		<icon>icon.cocktail_heaven_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">14400</value>
 			<value level="3">28800</value>
 		</abnormalTime>
-		<abnormalLevel>7</abnormalLevel>
 		<abnormalType>SYNERGY_IS</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<specialLevel>-2</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<effectRange>-1</effectRange>
 		<isMagic>3</isMagic> <!-- Dance Skill -->
 		<magicLevel>-2</magicLevel>
-		<effectRange>-1</effectRange>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<specialLevel>-2</specialLevel>
 		<staticReuse>true</staticReuse>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD;AVOID_UP</dispel>
@@ -684,31 +704,37 @@
 		</effects>
 	</skill>
 	<skill id="39417" toLevel="3" name="Knight's Harmony - Emperor's Special Cocktail">
-		<!-- For 1 h., P. Def. +45%, M. Def. +35%, P./ M. Critical Rate +100%, Critical Damage for basic attacks +35%, Shield Defense/ Shield Defense Rate +50%, received Critical Rate from basic attacks/ M. skills -25%. The effect remains after death. -->
+		<!-- Level 1: For 1 h., P. Def. +45%, M. Def. +35%, P./ M. Critical Rate +100%, Critical Damage for basic attacks +35%, Shield Defense/ Shield Defense Rate +50%, received Critical Rate from basic attacks/ M. skills -25%. The effect remains after death. -->
+		<!-- Level 2: For 4 h., P. Def. +45%, M. Def. +35%, P./ M. Critical Rate +100%, Critical Damage for basic attacks +35%, Shield Defense/ Shield Defense Rate +50%, received Critical Rate from basic attacks/ M. skills -25%. The effect remains after death. -->
+		<!-- Level 3: For 8 h., P. Def. +45%, M. Def. +35%, P./ M. Critical Rate +100%, Critical Damage for basic attacks +35%, Shield Defense/ Shield Defense Rate +50%, received Critical Rate from basic attacks/ M. skills -25%. The effect remains after death. -->
 		<icon>icon.bm_special_cocktail_of_king_d</icon>
 		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="39418" toLevel="3" name="Warrior's Harmony - Emperor's Special Cocktail">
-		<!-- For 1 h., P. Atk. +25%, Critical Rate for basic attacks +100%, Critical Damage for basic attacks +85%, Atk. Spd. +10%. With a certain chance, applies Spectral Slash on the target after a basic attack. The effect remains after death. -->
+		<!-- Level 1: For 1 h., P. Atk. +25%, Critical Rate for basic attacks +100%, Critical Damage for basic attacks +85%, Atk. Spd. +10%. With a certain chance, applies Spectral Slash on the target after a basic attack. The effect remains after death. -->
+		<!-- Level 2: For 4 h., P. Atk. +25%, Critical Rate for basic attacks +100%, Critical Damage for basic attacks +85%, Atk. Spd. +10%. With a certain chance, applies Spectral Slash on the target after a basic attack. The effect remains after death. -->
+		<!-- Level 3: For 8 h., P. Atk. +25%, Critical Rate for basic attacks +100%, Critical Damage for basic attacks +85%, Atk. Spd. +10%. With a certain chance, applies Spectral Slash on the target after a basic attack. The effect remains after death. -->
 		<icon>icon.bm_special_cocktail_of_king_p</icon>
 		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="39419" toLevel="3" name="Wizard's Harmony - Emperor's Special Cocktail">
-		<!-- For 1 h., M. Atk. +45%, M. Skill Critical Rate +100%, M. Skill Critical Damage +10%, Casting Spd. +15%, Attribute Attack +100, Skill Cooldown -20%, Skill MP Consumption -15%. The effect remains after death. -->
+		<!-- Level 1: For 1 h., M. Atk. +45%, M. Skill Critical Rate +100%, M. Skill Critical Damage +10%, Casting Spd. +15%, Attribute Attack +100, Skill Cooldown -20%, Skill MP Consumption -15%. The effect remains after death. -->
+		<!-- Level 2: For 4 h., M. Atk. +45%, M. Skill Critical Rate +100%, M. Skill Critical Damage +10%, Casting Spd. +15%, Attribute Attack +100, Skill Cooldown -20%, Skill MP Consumption -15%. The effect remains after death. -->
+		<!-- Level 3: For 8 h., M. Atk. +45%, M. Skill Critical Rate +100%, M. Skill Critical Damage +10%, Casting Spd. +15%, Attribute Attack +100, Skill Cooldown -20%, Skill MP Consumption -15%. The effect remains after death. -->
 		<icon>icon.bm_special_cocktail_of_king_m</icon>
 		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="39420" toLevel="2" name="Eva's Summer Light Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39421" toLevel="1" name="Water Dragon's Lucky Coupon">
@@ -720,8 +746,8 @@
 	<skill id="39422" toLevel="5" name="Mammon's Adena Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39423" toLevel="1" name="Giant's Stone: Enchant Bloody Armor">
@@ -748,11 +774,13 @@
 	</skill>
 	<skill id="39428" toLevel="5" name="Artifact Pack">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">80420</value> <!-- Attack Artifact Box -->
@@ -761,11 +789,9 @@
 			<value level="4">80423</value> <!-- Balance Artifact Box -->
 			<value level="5">80419</value> <!-- Artifact Box -->
 		</itemConsumeId>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -869,21 +895,21 @@
 	</skill>
 	<skill id="39429" toLevel="2" name="+1 Attack Artifact Pack">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">80425</value> <!-- +1 Fighting Spirit Artifact Box -->
 			<value level="2">80426</value> <!-- +3 Fighting Spirit Artifact Box -->
 		</itemConsumeId>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -927,21 +953,21 @@
 	</skill>
 	<skill id="39430" toLevel="2" name="+1 Defense Artifact Pack">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">80427</value> <!-- +1 Protection Artifact Box -->
 			<value level="2">80428</value> <!-- +3 Protection Artifact Box -->
 		</itemConsumeId>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -985,21 +1011,21 @@
 	</skill>
 	<skill id="39431" toLevel="2" name="+1 Support Artifact Pack">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">80429</value> <!-- +1 Support Artifact Box -->
 			<value level="2">80430</value> <!-- +3 Support Artifact Box -->
 		</itemConsumeId>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1043,21 +1069,21 @@
 	</skill>
 	<skill id="39432" toLevel="2" name="+1 Balance Artifact Pack">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">80431</value> <!-- +1 Balance Artifact Box -->
 			<value level="2">80432</value> <!-- +3 Balance Artifact Box -->
 		</itemConsumeId>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<reuseDelay>500</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1138,21 +1164,21 @@
 	<skill id="39433" toLevel="2" name="Soul Crystal Box Lv. 4">
 		<!-- Double-click to obtain a reward with a certain chance. -->
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">80443</value> <!-- Stage 4 Soul Crystal Box -->
 			<value level="2">80458</value> <!-- Stage 4 Soul Crystal Box -->
 		</itemConsumeId>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1184,34 +1210,34 @@
 	<skill id="39434" toLevel="3" name="Maestro's Gift Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39435" toLevel="1" name="Royal Black Save Ticket">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39436" toLevel="2" name="Soul Crystal Box Lv. 3">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>80457</itemConsumeId> <!-- Soul Crystal Box Lv. 3 -->
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80457</itemConsumeId> <!-- Soul Crystal Box Lv. 3 -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1243,36 +1269,36 @@
 	<skill id="39437" toLevel="4" name="+7 Agathion Charm Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39438" toLevel="4" name="+8 Attack Artifact Pack">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39439" toLevel="1" name="Red Libra Artifact Pack">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39440" toLevel="1" name="Soul Crystal Box Lv. 5-7">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1352,36 +1378,36 @@
 	<skill id="39444" toLevel="1" name="Draco's Treasure Chest">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39445" toLevel="1" name="Hero's Trophy Pack">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39446" toLevel="1" name="Royal Gold Save Ticket">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39447" toLevel="1" name="Gran Kain's Scroll: Enchant R-grade Armor">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39448" toLevel="14" name="Capsule: +12 Bloody Helios Shaper">
 		<icon>icon.skill0000</icon>
@@ -1440,15 +1466,15 @@
 	<skill id="39461" toLevel="1" name="Anniversary Firecracker">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>1000</hitTime>
 		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="39462" toLevel="5" name="Fireworks - Normal Reward">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>5000</reuseDelay>
 	</skill>
 	<skill id="39463" toLevel="1" name="Anniversary Magic Fork">
@@ -1469,18 +1495,18 @@
 		<!-- For 60 min., transforms into one of the following funny creatures: Snow Man, Scarecrow Jack, Tin Golem, Clay Statue, Beautiful Clay Statue, Solid Clay Statue, Old Clay Statue, White Dog, Pink Dog, Golden Dog. To remove the effect, use Alt + left mouse click. -->
 		<icon>icon.skill11540</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>10000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<hitTime>1500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<reuseDelay>10000</reuseDelay>
 	</skill>
 	<skill id="39466" toLevel="1" name="Anniversary Talisman">
 		<!-- Acquired XP/ SP +15% -->
 		<icon>icon.ev_L2_soul_ore</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ExpModify">
 				<amount>15</amount>
@@ -1493,40 +1519,40 @@
 	<skill id="39467" toLevel="7" name="Anniversary Pitapat Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39468" toLevel="2" name="Ultimate Jewelry Box Lv. 3">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39469" toLevel="14" name="Anniversary Earring Gift Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39470" toLevel="1" name="Freya's Ice Rose">
 		<!-- For 30 min., Max HP/ MP/ CP +30%, P. Atk./ M. Atk./ P. Def./ M. Def. +30%, Atk. Spd./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +100, damage +10%, P./ M. Skill Power +10%, acquired XP/ SP +30%, received damage -30 min.0, Skill MP Consumption -30 min.1. The effect remains after death. -->
 		<icon>icon.bm_freya_ice_rose</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>1000</hitTime>
-		<reuseDelay>300000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<isMagic>4</isMagic>
-		<stayAfterDeath>true</stayAfterDeath>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="MaxHp">
 				<amount>30</amount>
@@ -1548,11 +1574,11 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1656,78 +1682,84 @@
 	<skill id="39471" toLevel="1" name="Soul Crystal Box Lv. 1">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39472" toLevel="1" name="Shunaiman's Circlet Enchantment Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39473" toLevel="1" name="Shunaiman's Secret Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39474" toLevel="5" name="Freya's Summoning Stick">
 		<!-- Summons Frozen Labyrinth' Knight, Klacias, Icy Breath or Freya. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>7</isMagic>
-		<hitTime>3000</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>
+			<value level="1">3000</value>
+			<value level="2">0</value>
+			<value level="3">0</value>
+			<value level="4">0</value>
+			<value level="5">0</value>
+		</hitTime>
+		<isMagic>7</isMagic>
 		<reuseDelay>25000</reuseDelay>
 	</skill>
 	<skill id="39475" toLevel="1" name="Snowman's Fortune Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39476" toLevel="1" name="Sirra's Fortune Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39477" toLevel="1" name="Freya's Fortune Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39478" toLevel="1" name="Freya's Fortune Wand">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39479" toLevel="1" name="Freya's Frozen Scroll">
 		<!-- For 10 min. while hunting, Vitality Consumption +100%, acquired XP/ SP +100%. The effect remains after death. Cooldown: 9 min. Does not stack with Freya's Scroll of Storm, Freya's Scroll of Blessing, Maphr's Scroll of Storm. The effect can be removed with Alt+Mouse Left Click. -->
 		<icon>icon.freya_scroll</icon>
 		<operateType>A1</operateType>
+		<abnormalType>FREYA_SCROLL_VIT</abnormalType>
 		<isMagic>4</isMagic>
 		<reuseDelay>540000</reuseDelay>
-		<abnormalType>FREYA_SCROLL_VIT</abnormalType>
 	</skill>
 	<skill id="39480" toLevel="1" name="Scroll of Escape: Tarti">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>200</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>80677</itemConsumeId> <!-- Scroll of Escape: Tarti -->
+		<hitTime>200</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80677</itemConsumeId> <!-- Scroll of Escape: Tarti -->
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1746,12 +1778,12 @@
 	<skill id="39481" toLevel="1" name="Scroll of Escape: Silvan">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>200</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>80678</itemConsumeId> <!-- Scroll of Escape: Silvan -->
+		<hitTime>200</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80678</itemConsumeId> <!-- Scroll of Escape: Silvan -->
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1770,12 +1802,12 @@
 	<skill id="39482" toLevel="1" name="Scroll of Escape: Kallesin">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>200</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>80679</itemConsumeId> <!-- Scroll of Escape: Kallesin -->
+		<hitTime>200</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80679</itemConsumeId> <!-- Scroll of Escape: Kallesin -->
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1794,12 +1826,12 @@
 	<skill id="39483" toLevel="1" name="Scroll of Escape: Zenath">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>200</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>80680</itemConsumeId> <!-- Scroll of Escape: Zenath -->
+		<hitTime>200</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80680</itemConsumeId> <!-- Scroll of Escape: Zenath -->
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1818,12 +1850,12 @@
 	<skill id="39484" toLevel="1" name="Scroll of Escape: Pio">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>200</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>80681</itemConsumeId> <!-- Scroll of Escape: Pio -->
+		<hitTime>200</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80681</itemConsumeId> <!-- Scroll of Escape: Pio -->
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1842,12 +1874,12 @@
 	<skill id="39485" toLevel="1" name="Scroll of Escape: Reclous">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>200</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>80682</itemConsumeId> <!-- Scroll of Escape: Reclous -->
+		<hitTime>200</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80682</itemConsumeId> <!-- Scroll of Escape: Reclous -->
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1865,16 +1897,16 @@
 	</skill>
 	<skill id="39486" toLevel="4" name="Elite Monster Reward Box">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1945,32 +1977,32 @@
 	<skill id="39487" toLevel="1" name="PA Event Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39488" toLevel="1" name="PA Ice Rose">
 		<!-- For 30 min., Max HP/ MP/ CP +30%, P. Atk./ M. Atk./ P. Def./ M. Def. +30%, Atk. Spd./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +100, damage +10%, P./ M. Skill Power +10%, acquired XP/ SP +30%, received damage -30 min.0, Skill MP Consumption -30 min.1. The effect remains after death. -->
 		<icon>icon.bm_freya_ice_rose</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>1000</hitTime>
-		<reuseDelay>300000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<reuseDelay>300000</reuseDelay>
 	</skill>
 	<skill id="39489" toLevel="1" name="PA Scroll of Storm">
 		<!-- For 10 min. while hunting, Vitality Consumption +150%, acquired XP/ SP +150%. The effect remains after death. Cooldown: 9 min. The effect can be removed with Alt+Mouse Left Click. -->
 		<icon>icon.bm_freya_storm_scroll</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>FREYA_SCROLL_VIT</abnormalType>
-		<itemConsumeId>80746</itemConsumeId>
-		<itemConsumeCount>1</itemConsumeCount>
-		<reuseDelay>540</reuseDelay>
-		<isMagic>4</isMagic>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<isMagic>4</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80746</itemConsumeId>
+		<reuseDelay>540</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="VitalityPointsRate">
@@ -1988,7 +2020,9 @@
 		</effects>
 	</skill>
 	<skill id="39490" toLevel="3" name="PA Vitality Beer">
-		<!-- For 10 min., CON/ MEN/ LUC/ CHA +1. Using additional Honey Vitality Beer items while the buff is active enables up to Lv. 3 stacked effects. -->
+		<!-- Level 1: For 10 min., CON/ MEN/ LUC/ CHA +1. Using additional Honey Vitality Beer items while the buff is active enables up to Lv. 3 stacked effects. -->
+		<!-- Level 2: CON/ MEN/ LUC/ CHA +2, acquired XP/ SP +10% for 10 min. If additional Honey Vitality Beer is used while the buff is still active, its effect will stack up to Lv. 3. Can be used with Fish Stew. -->
+		<!-- Level 3: CON/ MEN/ LUC/ CHA +3 and Acquired XP/ SP by 30% for 10 min. Since the buff is at the maximum level, additional Honey Vitality Beer will have no effect but the duration will be reset. Can be used wth Fish Stew. -->
 		<icon>
 			<value level="1">icon.bm_royal_honey_beer_lv1</value>
 			<value level="2">icon.bm_royal_honey_beer_lv2</value>
@@ -2002,18 +2036,18 @@
 		<!-- For 30 min., Attribute Attack +70, Attribute Resistance +70, acquired XP/ SP +30%. The effect remains after death. -->
 		<icon>icon.bm_dragon_posion_special</icon>
 		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>1000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>300000</reuseDelay>
-		<abnormalType>GLOWING_DRAGON_POTION</abnormalType>
-		<abnormalLevel>1</abnormalLevel>
-		<effectPoint>1</effectPoint>
-		<abnormalTime>1800</abnormalTime>
-		<stayAfterDeath>true</stayAfterDeath>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>GLOWING_DRAGON_POTION</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>500</coolTime>
+		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="AttackAttributeAdd">
 				<amount>70</amount>
@@ -2054,16 +2088,16 @@
 		<!-- For 1 h., acquired XP/ SP while fishing +100%. The effect remains after death, and you cannot remove it by yourself. -->
 		<icon>icon.fishing_zone_ticket</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<coolTime>500</coolTime>
-		<reuseDelay>60000</reuseDelay>
-		<abnormalTime>3600</abnormalTime>
-		<itemConsumeId>80759</itemConsumeId> <!-- PA Angler's Blessing (1-hour) -->
-		<itemConsumeCount>1</itemConsumeCount>
-		<stayAfterDeath>true</stayAfterDeath>
-		<canBeDispelled>false</canBeDispelled>
 		<targetType>SELF</targetType>
+		<abnormalTime>3600</abnormalTime>
 		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
+		<coolTime>500</coolTime>
+		<isMagic>4</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80759</itemConsumeId> <!-- PA Angler's Blessing (1-hour) -->
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="FishingExpSpBonus">
 				<amount>100</amount>
@@ -2075,14 +2109,14 @@
 		<!-- When used, increases Successful Fishing XP/ SP by 50% for 1 h. Applied to all bait. Can be stacked with Angler's Blessing. -->
 		<icon>BranchIcon.etc_sign_agathion_feed_blue_i00</icon>
 		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<coolTime>500</coolTime>
-		<reuseDelay>60000</reuseDelay>
-		<abnormalTime>3600</abnormalTime>
-		<itemConsumeId>80760</itemConsumeId> <!-- PA Blue Potion - Fishing XP Bonus -->
-		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
+		<abnormalTime>3600</abnormalTime>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<isMagic>4</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80760</itemConsumeId> <!-- PA Blue Potion - Fishing XP Bonus -->
+		<reuseDelay>60000</reuseDelay>
 		<effects>
 			<effect name="FishingExpSpBonus">
 				<amount>50</amount>
@@ -2091,16 +2125,15 @@
 		</effects>
 	</skill>
 	<skill id="39494" toLevel="1" name="Dye Powder">
-		<!-- Powder for replenishing the Dye Engraving scale. Restores 25% of the full scale. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<itemConsumeId>80762</itemConsumeId> <!-- Dye Powder -->
-		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>80762</itemConsumeId> <!-- Dye Powder -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="CanUseSymbolSealIncreaseItem">
 				<amount>25</amount> <!-- 25% from max symbol seal points -->
@@ -2122,31 +2155,31 @@
 	<skill id="39496" toLevel="1" name="Bloody Fantastic Enchantment Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39497" toLevel="1" name="Freya's Growth Support Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39498" toLevel="1" name="Freya's Limited Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="39499" toLevel="1" name="Rok's Earnest Love Letter">
 		<!-- Send a heart to increase the stack. Usable on NPC Lucy only. -->
 		<icon>icon.ev_2018_xmas_letter</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
 		<reuseDelay>5000</reuseDelay>
 	</skill>
 </list>

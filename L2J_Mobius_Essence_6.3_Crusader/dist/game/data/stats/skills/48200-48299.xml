@@ -1,22 +1,22 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="48200" toLevel="1" name="Ant Prophecy">
 		<!-- PvE damage +5%. All Critical Rate +50. All Critical Damage +100. Sayha's Grace Consumption -10% -->
 		<icon>icon.skill3630</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>11700</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<canBeDispelled>false</canBeDispelled>
 		<castRange>300</castRange>
 		<effectRange>1500</effectRange>
-		<hitTime>300</hitTime>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic>
-		<magicLevel>76</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>76</magicLevel>
 		<reuseDelay>100</reuseDelay>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="CriticalRate">
 				<amount>50</amount>
@@ -100,7 +100,9 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48210" toLevel="3" name="See Creature">
-		<!-- Attacks target and increases Speed. -->
+		<!-- Level 1: Attacks target and increases Speed. -->
+		<!-- Level 2: Attacks target and significantly increases Speed. -->
+		<!-- Level 3: Attacks target, increases Speed and Atk. Spd., significantly increaes Casting Spd. -->
 		<icon>icon.skill1204</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -117,32 +119,23 @@
 	<skill id="48213" toLevel="12" name="Fear">
 		<!-- Enemy is afflicted with Fear and moving against own will. -->
 		<icon>icon.skill1092</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
-		<effectPoint>
-			<value level="1">-162</value>
-			<value level="2">-204</value>
-			<value level="3">-243</value>
-			<value level="4">-285</value>
-			<value level="5">-331</value>
-			<value level="6">-379</value>
-			<value level="7">-418</value>
-			<value level="8">-457</value>
-			<value level="9">-495</value>
-			<value level="10">-532</value>
-			<value level="11">-549</value>
-			<value level="12">-566</value>
-		</effectPoint>
+		<effectPoint>-700</effectPoint>
 		<effectRange>1200</effectRange>
 		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>90</magicLevel>
 		<mpConsume>
 			<value level="1">15</value>
@@ -158,12 +151,8 @@
 			<value level="11">54</value>
 			<value level="12">55</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>DERANGEMENT</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockControl" />
 			<effect name="Fear" />
@@ -255,15 +244,15 @@
 	<skill id="48231" toLevel="1" name="Beleth' Curse">
 		<!-- A powerful curse cast by Beleth. Local effect. Atk. Spd. -50%. Casting Spd. -50%. Constantly drains HP. Basic attacks can't be used. Skills can't be used. -->
 		<icon>icon.skill0046</icon>
+		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
 		<effectPoint>0</effectPoint>
 		<isDebuff>true</isDebuff>
-		<trait>INFECTION</trait>
-		<canBeDispelled>false</canBeDispelled>
 		<isMagic>0</isMagic>
-		<operateType>A2</operateType>
-		<affectScope>SINGLE</affectScope>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-50</amount>
@@ -280,7 +269,7 @@
 			<effect name="BlockSkill">
 				<magicTypes>1;2;3;4;5;22</magicTypes>
 			</effect>
-			<effect name="PhysicalAttackMute">
+			<effect name="PhysicalDamageMute">
 			</effect>
 		</effects>
 	</skill>
@@ -392,15 +381,15 @@
 		<!-- Deals 1500 fixed damage. -->
 		<icon>icon.skill4282_new</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<hitTime>3500</hitTime>
-		<castRange>1800</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>1800</castRange>
+		<effectPoint>-1000</effectPoint>
+		<hitTime>0</hitTime>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>2000</power>
 			</effect>
 		</effects>
@@ -431,77 +420,280 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48260" toLevel="20" name="Received P. Skill Critical Damage Decrease">
-		<!-- Received P. Skill Critical Damage -1000 -->
+		<!-- Level 1: Received P. Skill Critical Damage -1000 -->
+		<!-- Level 2: Received P. Skill Critical Damage -2000 -->
+		<!-- Level 3: Received P. Skill Critical Damage -3000 -->
+		<!-- Level 4: Received P. Skill Critical Damage -4000 -->
+		<!-- Level 5: Received P. Skill Critical Damage -5000 -->
+		<!-- Level 6: Received P. Skill Critical Damage -6000 -->
+		<!-- Level 7: Received P. Skill Critical Damage -7000 -->
+		<!-- Level 8: Received P. Skill Critical Damage -8000 -->
+		<!-- Level 9: Received P. Skill Critical Damage -9000 -->
+		<!-- Level 10: Received P. Skill Critical Damage -10000 -->
+		<!-- Level 11: Received P. Skill Critical Damage -11000 -->
+		<!-- Level 12: Received P. Skill Critical Damage -12000 -->
+		<!-- Level 13: Received P. Skill Critical Damage -13000 -->
+		<!-- Level 14: Received P. Skill Critical Damage -14000 -->
+		<!-- Level 15: Received P. Skill Critical Damage -15000 -->
+		<!-- Level 16: Received P. Skill Critical Damage -16000 -->
+		<!-- Level 17: Received P. Skill Critical Damage -17000 -->
+		<!-- Level 18: Received P. Skill Critical Damage -18000 -->
+		<!-- Level 19: Received P. Skill Critical Damage -19000 -->
+		<!-- Level 20: Received P. Skill Critical Damage -20000 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48261" toLevel="20" name="Received M. Skill Critical Damage Decrease">
-		<!-- Received M. Skill Critical Damage -1000 -->
+		<!-- Level 1: Received M. Skill Critical Damage -1000 -->
+		<!-- Level 2: Received M. Skill Critical Damage -2000 -->
+		<!-- Level 3: Received M. Skill Critical Damage -3000 -->
+		<!-- Level 4: Received M. Skill Critical Damage -4000 -->
+		<!-- Level 5: Received M. Skill Critical Damage -5000 -->
+		<!-- Level 6: Received M. Skill Critical Damage -6000 -->
+		<!-- Level 7: Received M. Skill Critical Damage -7000 -->
+		<!-- Level 8: Received M. Skill Critical Damage -8000 -->
+		<!-- Level 9: Received M. Skill Critical Damage -9000 -->
+		<!-- Level 10: Received M. Skill Critical Damage -10000 -->
+		<!-- Level 11: Received M. Skill Critical Damage -11000 -->
+		<!-- Level 12: Received M. Skill Critical Damage -12000 -->
+		<!-- Level 13: Received M. Skill Critical Damage -13000 -->
+		<!-- Level 14: Received M. Skill Critical Damage -14000 -->
+		<!-- Level 15: Received M. Skill Critical Damage -15000 -->
+		<!-- Level 16: Received M. Skill Critical Damage -16000 -->
+		<!-- Level 17: Received M. Skill Critical Damage -17000 -->
+		<!-- Level 18: Received M. Skill Critical Damage -18000 -->
+		<!-- Level 19: Received M. Skill Critical Damage -19000 -->
+		<!-- Level 20: Received M. Skill Critical Damage -20000 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48262" toLevel="20" name="All Received Critical Damage Decrease">
-		<!-- All Received Critical Damage -1000 -->
+		<!-- Level 1: All Received Critical Damage -1000 -->
+		<!-- Level 2: All Received Critical Damage -2000 -->
+		<!-- Level 3: All Received Critical Damage -3000 -->
+		<!-- Level 4: All Received Critical Damage -4000 -->
+		<!-- Level 5: All Received Critical Damage -5000 -->
+		<!-- Level 6: All Received Critical Damage -6000 -->
+		<!-- Level 7: All Received Critical Damage -7000 -->
+		<!-- Level 8: All Received Critical Damage -8000 -->
+		<!-- Level 9: All Received Critical Damage -9000 -->
+		<!-- Level 10: All Received Critical Damage -10000 -->
+		<!-- Level 11: All Received Critical Damage -11000 -->
+		<!-- Level 12: All Received Critical Damage -12000 -->
+		<!-- Level 13: All Received Critical Damage -13000 -->
+		<!-- Level 14: All Received Critical Damage -14000 -->
+		<!-- Level 15: All Received Critical Damage -15000 -->
+		<!-- Level 16: All Received Critical Damage -16000 -->
+		<!-- Level 17: All Received Critical Damage -17000 -->
+		<!-- Level 18: All Received Critical Damage -18000 -->
+		<!-- Level 19: All Received Critical Damage -19000 -->
+		<!-- Level 20: All Received Critical Damage -20000 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48263" toLevel="10" name="Basic Critical Rate Increase">
-		<!-- Basic Critical Rate +10% -->
+		<!-- Level 1: Basic Critical Rate +10% -->
+		<!-- Level 2: Basic Critical Rate +20% -->
+		<!-- Level 3: Basic Critical Rate +30% -->
+		<!-- Level 4: Basic Critical Rate +40% -->
+		<!-- Level 5: Basic Critical Rate +50% -->
+		<!-- Level 6: Basic Critical Rate +60% -->
+		<!-- Level 7: Basic Critical Rate +70% -->
+		<!-- Level 8: Basic Critical Rate +80% -->
+		<!-- Level 9: Basic Critical Rate +90% -->
+		<!-- Level 10: Basic Critical Rate +100% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48264" toLevel="10" name="P. Skill Critical Rate Increase">
-		<!-- P. Skill Critical Rate +10% -->
+		<!-- Level 1: P. Skill Critical Rate +10% -->
+		<!-- Level 2: P. Skill Critical Rate +20% -->
+		<!-- Level 3: P. Skill Critical Rate +30% -->
+		<!-- Level 4: P. Skill Critical Rate +40% -->
+		<!-- Level 5: P. Skill Critical Rate +50% -->
+		<!-- Level 6: P. Skill Critical Rate +60% -->
+		<!-- Level 7: P. Skill Critical Rate +70% -->
+		<!-- Level 8: P. Skill Critical Rate +80% -->
+		<!-- Level 9: P. Skill Critical Rate +90% -->
+		<!-- Level 10: P. Skill Critical Rate +100% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48265" toLevel="10" name="M. Skill Critical Rate Increase">
-		<!-- M. Skill Critical Rate +10% -->
+		<!-- Level 1: M. Skill Critical Rate +10% -->
+		<!-- Level 2: M. Skill Critical Rate +20% -->
+		<!-- Level 3: M. Skill Critical Rate +30% -->
+		<!-- Level 4: M. Skill Critical Rate +40% -->
+		<!-- Level 5: M. Skill Critical Rate +50% -->
+		<!-- Level 6: M. Skill Critical Rate +60% -->
+		<!-- Level 7: M. Skill Critical Rate +70% -->
+		<!-- Level 8: M. Skill Critical Rate +80% -->
+		<!-- Level 9: M. Skill Critical Rate +90% -->
+		<!-- Level 10: M. Skill Critical Rate +100% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48266" toLevel="10" name="All Critical Rate Increase">
-		<!-- All Critical Rate +10% -->
+		<!-- Level 1: All Critical Rate +10% -->
+		<!-- Level 2: All Critical Rate +20% -->
+		<!-- Level 3: All Critical Rate +30% -->
+		<!-- Level 4: All Critical Rate +40% -->
+		<!-- Level 5: All Critical Rate +50% -->
+		<!-- Level 6: All Critical Rate +60% -->
+		<!-- Level 7: All Critical Rate +70% -->
+		<!-- Level 8: All Critical Rate +80% -->
+		<!-- Level 9: All Critical Rate +90% -->
+		<!-- Level 10: All Critical Rate +100% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48267" toLevel="10" name="Received Basic Critical Rate Decrease">
-		<!-- Received basic Critical Damage -10% -->
+		<!-- Level 1: Received basic Critical Damage -10% -->
+		<!-- Level 2: Received basic Critical Damage -20% -->
+		<!-- Level 3: Received basic Critical Damage -30% -->
+		<!-- Level 4: Received basic Critical Damage -40% -->
+		<!-- Level 5: Received basic Critical Damage -50% -->
+		<!-- Level 6: Received basic Critical Damage -60% -->
+		<!-- Level 7: Received basic Critical Damage -70% -->
+		<!-- Level 8: Received basic Critical Damage -80% -->
+		<!-- Level 9: Received basic Critical Damage -90% -->
+		<!-- Level 10: Received basic Critical Damage -100% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48268" toLevel="10" name="Received P. Skill Critical Rate Decrease">
-		<!-- Received P. Skill Critical Damage -10% -->
+		<!-- Level 1: Received P. Skill Critical Damage -10% -->
+		<!-- Level 2: Received P. Skill Critical Damage -20% -->
+		<!-- Level 3: Received P. Skill Critical Damage -30% -->
+		<!-- Level 4: Received P. Skill Critical Damage -40% -->
+		<!-- Level 5: Received P. Skill Critical Damage -50% -->
+		<!-- Level 6: Received P. Skill Critical Damage -60% -->
+		<!-- Level 7: Received P. Skill Critical Damage -70% -->
+		<!-- Level 8: Received P. Skill Critical Damage -80% -->
+		<!-- Level 9: Received P. Skill Critical Damage -90% -->
+		<!-- Level 10: Received P. Skill Critical Damage -100% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48269" toLevel="10" name="Received M. Skill Critical Rate Decrease">
-		<!-- Received M. Skill Critical Damage -10% -->
+		<!-- Level 1: Received M. Skill Critical Damage -10% -->
+		<!-- Level 2: Received M. Skill Critical Damage -20% -->
+		<!-- Level 3: Received M. Skill Critical Damage -30% -->
+		<!-- Level 4: Received M. Skill Critical Damage -40% -->
+		<!-- Level 5: Received M. Skill Critical Damage -50% -->
+		<!-- Level 6: Received M. Skill Critical Damage -60% -->
+		<!-- Level 7: Received M. Skill Critical Damage -70% -->
+		<!-- Level 8: Received M. Skill Critical Damage -80% -->
+		<!-- Level 9: Received M. Skill Critical Damage -90% -->
+		<!-- Level 10: Received M. Skill Critical Damage -100% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48270" toLevel="10" name="All Received Critical Rate Decrease">
-		<!-- All Received Critical Damage -10% -->
+		<!-- Level 1: All Received Critical Damage -10% -->
+		<!-- Level 2: All Received Critical Damage -20% -->
+		<!-- Level 3: All Received Critical Damage -30% -->
+		<!-- Level 4: All Received Critical Damage -40% -->
+		<!-- Level 5: All Received Critical Damage -50% -->
+		<!-- Level 6: All Received Critical Damage -60% -->
+		<!-- Level 7: All Received Critical Damage -70% -->
+		<!-- Level 8: All Received Critical Damage -80% -->
+		<!-- Level 9: All Received Critical Damage -90% -->
+		<!-- Level 10: All Received Critical Damage -100% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48271" toLevel="18" name="Neutralization Resistance Increase">
-		<!-- Neutralization Resistance +5% -->
+		<!-- Level 1: Neutralization Resistance +5% -->
+		<!-- Level 2: Neutralization Resistance +10% -->
+		<!-- Level 3: Neutralization Resistance +15% -->
+		<!-- Level 4: Neutralization Resistance +20% -->
+		<!-- Level 5: Neutralization Resistance +25% -->
+		<!-- Level 6: Neutralization Resistance +30% -->
+		<!-- Level 7: Neutralization Resistance +35% -->
+		<!-- Level 8: Neutralization Resistance +40% -->
+		<!-- Level 9: Neutralization Resistance +45% -->
+		<!-- Level 10: Neutralization Resistance +50% -->
+		<!-- Level 11: Neutralization Resistance +55% -->
+		<!-- Level 12: Neutralization Resistance +60% -->
+		<!-- Level 13: Neutralization Resistance +65% -->
+		<!-- Level 14: Neutralization Resistance +70% -->
+		<!-- Level 15: Neutralization Resistance +75% -->
+		<!-- Level 16: Neutralization Resistance +80% -->
+		<!-- Level 17: Neutralization Resistance +85% -->
+		<!-- Level 18: Neutralization Resistance +90% -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48272" toLevel="20" name="Increases P. Def.">
-		<!-- P. Def. +500 -->
+		<!-- Level 1: P. Def. +500 -->
+		<!-- Level 2: P. Def. +1000 -->
+		<!-- Level 3: P. Def. +1500 -->
+		<!-- Level 4: P. Def. +2000 -->
+		<!-- Level 5: P. Def. +2500 -->
+		<!-- Level 6: P. Def. +3000 -->
+		<!-- Level 7: P. Def. +3500 -->
+		<!-- Level 8: P. Def. +4000 -->
+		<!-- Level 9: P. Def. +4500 -->
+		<!-- Level 10: P. Def. +5000 -->
+		<!-- Level 11: P. Def. +5500 -->
+		<!-- Level 12: P. Def. +6000 -->
+		<!-- Level 13: P. Def. +6500 -->
+		<!-- Level 14: P. Def. +7000 -->
+		<!-- Level 15: P. Def. +7500 -->
+		<!-- Level 16: P. Def. +8000 -->
+		<!-- Level 17: P. Def. +8500 -->
+		<!-- Level 18: P. Def. +9000 -->
+		<!-- Level 19: P. Def. +9500 -->
+		<!-- Level 20: P. Def. +10000 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48273" toLevel="20" name="Magic Defense Bonus">
-		<!-- M. Def. +500 -->
+		<!-- Level 1: M. Def. +500 -->
+		<!-- Level 2: M. Def. +1000 -->
+		<!-- Level 3: M. Def. +1500 -->
+		<!-- Level 4: M. Def. +2000 -->
+		<!-- Level 5: M. Def. +2500 -->
+		<!-- Level 6: M. Def. +3000 -->
+		<!-- Level 7: M. Def. +3500 -->
+		<!-- Level 8: M. Def. +4000 -->
+		<!-- Level 9: M. Def. +4500 -->
+		<!-- Level 10: M. Def. +5000 -->
+		<!-- Level 11: M. Def. +5500 -->
+		<!-- Level 12: M. Def. +6000 -->
+		<!-- Level 13: M. Def. +6500 -->
+		<!-- Level 14: M. Def. +7000 -->
+		<!-- Level 15: M. Def. +7500 -->
+		<!-- Level 16: M. Def. +8000 -->
+		<!-- Level 17: M. Def. +8500 -->
+		<!-- Level 18: M. Def. +9000 -->
+		<!-- Level 19: M. Def. +9500 -->
+		<!-- Level 20: M. Def. +10000 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48274" toLevel="20" name="P./ M. Def. Increase">
-		<!-- P./ M. Def. +500 -->
+		<!-- Level 1: P./ M. Def. +500 -->
+		<!-- Level 2: P./ M. Def. +1000 -->
+		<!-- Level 3: P./ M. Def. +1500 -->
+		<!-- Level 4: P./ M. Def. +2000 -->
+		<!-- Level 5: P./ M. Def. +2500 -->
+		<!-- Level 6: P./ M. Def. +3000 -->
+		<!-- Level 7: P./ M. Def. +3500 -->
+		<!-- Level 8: P./ M. Def. +4000 -->
+		<!-- Level 9: P./ M. Def. +4500 -->
+		<!-- Level 10: P./ M. Def. +5000 -->
+		<!-- Level 11: P./ M. Def. +5500 -->
+		<!-- Level 12: P./ M. Def. +6000 -->
+		<!-- Level 13: P./ M. Def. +6500 -->
+		<!-- Level 14: P./ M. Def. +7000 -->
+		<!-- Level 15: P./ M. Def. +7500 -->
+		<!-- Level 16: P./ M. Def. +8000 -->
+		<!-- Level 17: P./ M. Def. +8500 -->
+		<!-- Level 18: P./ M. Def. +9000 -->
+		<!-- Level 19: P./ M. Def. +9500 -->
+		<!-- Level 20: P./ M. Def. +10000 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -510,7 +702,12 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48276" toLevel="6" name="5 Wins">
-		<!-- I've guessed Solasol's toy number right 5 times in a row. -->
+		<!-- Level 1: I've guessed Solasol's toy number right 5 times in a row. -->
+		<!-- Level 2: I've guessed Solasol's toy number right 6 times in a row. -->
+		<!-- Level 3: I've guessed Solasol's toy number right 7 times in a row. -->
+		<!-- Level 4: I've guessed Solasol's toy number right 8 times in a row. -->
+		<!-- Level 5: I've guessed Solasol's toy number right 9 times in a row. -->
+		<!-- Level 6: I've guessed Solasol's toy number right 10 times in a row. -->
 		<icon>
 			<value level="1">icon.ev_sb_5_18th_lucky_win</value>
 			<value level="2">icon.ev_sb_6_18th_lucky_win</value>
@@ -526,22 +723,98 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48278" toLevel="20" name="Basic Critical Rate Increase">
-		<!-- Basic Critical Rate +5 -->
+		<!-- Level 1: Basic Critical Rate +5 -->
+		<!-- Level 2: Basic Critical Rate +10 -->
+		<!-- Level 3: Basic Critical Rate +15 -->
+		<!-- Level 4: Basic Critical Rate +20 -->
+		<!-- Level 5: Basic Critical Rate +25 -->
+		<!-- Level 6: Basic Critical Rate +30 -->
+		<!-- Level 7: Basic Critical Rate +35 -->
+		<!-- Level 8: Basic Critical Rate +40 -->
+		<!-- Level 9: Basic Critical Rate +45 -->
+		<!-- Level 10: Basic Critical Rate +50 -->
+		<!-- Level 11: Basic Critical Rate +55 -->
+		<!-- Level 12: Basic Critical Rate +60 -->
+		<!-- Level 13: Basic Critical Rate +65 -->
+		<!-- Level 14: Basic Critical Rate +70 -->
+		<!-- Level 15: Basic Critical Rate +75 -->
+		<!-- Level 16: Basic Critical Rate +80 -->
+		<!-- Level 17: Basic Critical Rate +85 -->
+		<!-- Level 18: Basic Critical Rate +90 -->
+		<!-- Level 19: Basic Critical Rate +95 -->
+		<!-- Level 20: Basic Critical Rate +100 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48279" toLevel="20" name="P. Skill Critical Rate Increase">
-		<!-- P. Skill Critical Rate +5 -->
+		<!-- Level 1: P. Skill Critical Rate +5 -->
+		<!-- Level 2: P. Skill Critical Rate +10 -->
+		<!-- Level 3: P. Skill Critical Rate +15 -->
+		<!-- Level 4: P. Skill Critical Rate +20 -->
+		<!-- Level 5: P. Skill Critical Rate +25 -->
+		<!-- Level 6: P. Skill Critical Rate +30 -->
+		<!-- Level 7: P. Skill Critical Rate +35 -->
+		<!-- Level 8: P. Skill Critical Rate +40 -->
+		<!-- Level 9: P. Skill Critical Rate +45 -->
+		<!-- Level 10: P. Skill Critical Rate +50 -->
+		<!-- Level 11: P. Skill Critical Rate +55 -->
+		<!-- Level 12: P. Skill Critical Rate +60 -->
+		<!-- Level 13: P. Skill Critical Rate +65 -->
+		<!-- Level 14: P. Skill Critical Rate +70 -->
+		<!-- Level 15: P. Skill Critical Rate +75 -->
+		<!-- Level 16: P. Skill Critical Rate +80 -->
+		<!-- Level 17: P. Skill Critical Rate +85 -->
+		<!-- Level 18: P. Skill Critical Rate +90 -->
+		<!-- Level 19: P. Skill Critical Rate +95 -->
+		<!-- Level 20: P. Skill Critical Rate +100 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48280" toLevel="20" name="M. Skill Critical Rate Increase">
-		<!-- M. Skill Critical Rate +5 -->
+		<!-- Level 1: M. Skill Critical Rate +5 -->
+		<!-- Level 2: M. Skill Critical Rate +10 -->
+		<!-- Level 3: M. Skill Critical Rate +15 -->
+		<!-- Level 4: M. Skill Critical Rate +20 -->
+		<!-- Level 5: M. Skill Critical Rate +25 -->
+		<!-- Level 6: M. Skill Critical Rate +30 -->
+		<!-- Level 7: M. Skill Critical Rate +35 -->
+		<!-- Level 8: M. Skill Critical Rate +40 -->
+		<!-- Level 9: M. Skill Critical Rate +45 -->
+		<!-- Level 10: M. Skill Critical Rate +50 -->
+		<!-- Level 11: M. Skill Critical Rate +55 -->
+		<!-- Level 12: M. Skill Critical Rate +60 -->
+		<!-- Level 13: M. Skill Critical Rate +65 -->
+		<!-- Level 14: M. Skill Critical Rate +70 -->
+		<!-- Level 15: M. Skill Critical Rate +75 -->
+		<!-- Level 16: M. Skill Critical Rate +80 -->
+		<!-- Level 17: M. Skill Critical Rate +85 -->
+		<!-- Level 18: M. Skill Critical Rate +90 -->
+		<!-- Level 19: M. Skill Critical Rate +95 -->
+		<!-- Level 20: M. Skill Critical Rate +100 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48281" toLevel="20" name="All Critical Rate Increase">
-		<!-- All Critical Rate +5 -->
+		<!-- Level 1: All Critical Rate +5 -->
+		<!-- Level 2: All Critical Rate +10 -->
+		<!-- Level 3: All Critical Rate +15 -->
+		<!-- Level 4: All Critical Rate +20 -->
+		<!-- Level 5: All Critical Rate +25 -->
+		<!-- Level 6: All Critical Rate +30 -->
+		<!-- Level 7: All Critical Rate +35 -->
+		<!-- Level 8: All Critical Rate +40 -->
+		<!-- Level 9: All Critical Rate +45 -->
+		<!-- Level 10: All Critical Rate +50 -->
+		<!-- Level 11: All Critical Rate +55 -->
+		<!-- Level 12: All Critical Rate +60 -->
+		<!-- Level 13: All Critical Rate +65 -->
+		<!-- Level 14: All Critical Rate +70 -->
+		<!-- Level 15: All Critical Rate +75 -->
+		<!-- Level 16: All Critical Rate +80 -->
+		<!-- Level 17: All Critical Rate +85 -->
+		<!-- Level 18: All Critical Rate +90 -->
+		<!-- Level 19: All Critical Rate +95 -->
+		<!-- Level 20: All Critical Rate +100 -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>

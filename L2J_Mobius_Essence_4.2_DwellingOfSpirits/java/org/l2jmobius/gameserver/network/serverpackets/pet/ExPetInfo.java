@@ -23,6 +23,7 @@ import org.l2jmobius.gameserver.enums.NpcInfoType;
 import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
+import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
@@ -61,8 +62,11 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 	{
 		_summon = summon;
 		_attacker = attacker;
-		_relation = (attacker != null) && (summon.getOwner() != null) ? summon.getOwner().getRelation(attacker) : 0;
-		_title = (summon.getOwner() != null) && summon.getOwner().isOnline() ? summon.getOwner().getName() : "";
+		
+		final Player owner = summon.getOwner();
+		_relation = (attacker != null) && (owner != null) ? owner.getRelation(attacker) : 0;
+		_title = (owner != null) && owner.isOnline() ? owner.getName() : "";
+		
 		_value = value;
 		_abnormalVisualEffects = summon.getEffectList().getCurrentAbnormalVisualEffects();
 		if (summon.getTemplate().getDisplayId() != summon.getTemplate().getId())
@@ -135,16 +139,18 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		{
 			addComponentType(NpcInfoType.REPUTATION);
 		}
-		if (summon.getOwner().getClan() != null)
+		if ((owner != null) && (owner.getClan() != null))
 		{
-			_clanId = summon.getOwner().getAppearance().getVisibleClanId();
-			_clanCrest = summon.getOwner().getAppearance().getVisibleClanCrestId();
-			_clanLargeCrest = summon.getOwner().getAppearance().getVisibleClanLargeCrestId();
-			_allyCrest = summon.getOwner().getAppearance().getVisibleAllyId();
-			_allyId = summon.getOwner().getAppearance().getVisibleAllyCrestId();
+			final PlayerAppearance appearance = owner.getAppearance();
+			_clanId = appearance.getVisibleClanId();
+			_clanCrest = appearance.getVisibleClanCrestId();
+			_clanLargeCrest = appearance.getVisibleClanLargeCrestId();
+			_allyCrest = appearance.getVisibleAllyId();
+			_allyId = appearance.getVisibleAllyCrestId();
 			addComponentType(NpcInfoType.CLAN);
 		}
 		addComponentType(NpcInfoType.PET_EVOLUTION_ID);
+		
 		// TODO: Confirm me
 		if (summon.isInCombat())
 		{
@@ -254,8 +260,8 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (containsMask(NpcInfoType.SPEED_MULTIPLIER))
 		{
-			buffer.writeFloat((float) _summon.getStat().getMovementSpeedMultiplier());
-			buffer.writeFloat((float) _summon.getStat().getAttackSpeedMultiplier());
+			buffer.writeFloat((float) _summon.getMovementSpeedMultiplier());
+			buffer.writeFloat((float) _summon.getAttackSpeedMultiplier());
 		}
 		if (containsMask(NpcInfoType.EQUIPPED))
 		{

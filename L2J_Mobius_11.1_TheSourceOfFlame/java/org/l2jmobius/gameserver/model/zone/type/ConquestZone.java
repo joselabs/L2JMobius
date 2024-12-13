@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.zone.type;
 
@@ -31,6 +35,7 @@ import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
@@ -50,8 +55,8 @@ public class ConquestZone extends ZoneType
 	private boolean _isShowDangerIcon;
 	private boolean _removeEffectsOnExit;
 	protected Map<Integer, Integer> _skills;
-	protected volatile Future<?> _task;
-	protected volatile Future<?> _teleportToTownTask;
+	protected Future<?> _task;
+	protected Future<?> _teleportToTownTask;
 	
 	public ConquestZone(int id)
 	{
@@ -161,41 +166,42 @@ public class ConquestZone extends ZoneType
 		
 		if (creature.isPlayer())
 		{
-			creature.setInsideZone(ZoneId.CONQUEST, true);
+			final Player player = creature.asPlayer();
+			player.setInsideZone(ZoneId.CONQUEST, true);
 			
-			// Prevent db reading conquest name error
-			if (!creature.getActingPlayer().getVariables().hasVariable(PlayerVariables.CONQUEST_NAME))
+			// Prevent db reading conquest name error.
+			final String conquestName = player.getConquestName();
+			if (conquestName == null)
 			{
-				creature.teleToLocation(TeleportWhereType.TOWN);
-				onExit(creature);
-				creature.getActingPlayer().sendMessage("You must choose a conquest name before going there!");
+				player.teleToLocation(TeleportWhereType.TOWN);
+				onExit(player);
+				player.sendMessage("You must choose a conquest name before going there!");
 				return;
 			}
 			
-			// Change player information
-			final PlayerAppearance app = creature.getActingPlayer().getAppearance();
-			final String conquestName = creature.getActingPlayer().getVariables().getString(PlayerVariables.CONQUEST_NAME);
+			// Change player information.
+			final PlayerAppearance app = player.getAppearance();
 			app.setVisibleName(conquestName);
 			app.setVisibleTitle("");
 			app.setVisibleClanData(0, 0, 0, 0, 0);
 			
 			if (Config.CONQUEST_PVP_ZONE)
 			{
-				creature.setInsideZone(ZoneId.PVP, true);
+				player.setInsideZone(ZoneId.PVP, true);
 			}
 			
 			if (_isShowDangerIcon)
 			{
-				creature.setInsideZone(ZoneId.DANGER_AREA, true);
-				creature.sendPacket(new EtcStatusUpdate(creature.getActingPlayer()));
+				player.setInsideZone(ZoneId.DANGER_AREA, true);
+				player.sendPacket(new EtcStatusUpdate(player));
 			}
 			
-			// Teleport player to Town if still in zone and not conquest period
-			if (!GlobalVariablesManager.getInstance().hasVariable("CONQUEST_AVAILABLE") || (GlobalVariablesManager.getInstance().hasVariable("CONQUEST_AVAILABLE") && (GlobalVariablesManager.getInstance().getBoolean("CONQUEST_AVAILABLE", false) == false)))
+			// Teleport player to Town if still in zone and not conquest period.
+			if (!GlobalVariablesManager.getInstance().hasVariable("CONQUEST_AVAILABLE") || (GlobalVariablesManager.getInstance().hasVariable("CONQUEST_AVAILABLE") && !GlobalVariablesManager.getInstance().getBoolean("CONQUEST_AVAILABLE", false)))
 			{
-				if (!creature.isGM())
+				if (!player.isGM())
 				{
-					final PlayerVariables vars = creature.getActingPlayer().getVariables();
+					final PlayerVariables vars = player.getVariables();
 					Location location = new Location(147458, 26903, -2206); // Aden center if no location stored
 					if (vars.contains(PlayerVariables.CONQUEST_ORIGIN))
 					{
@@ -204,14 +210,14 @@ public class ConquestZone extends ZoneType
 						{
 							location = new Location(loc[0], loc[1], loc[2]);
 						}
-						creature.getActingPlayer().teleToLocation(location);
+						player.teleToLocation(location);
 						vars.remove(PlayerVariables.CONQUEST_ORIGIN);
 					}
 					else
 					{
-						creature.getActingPlayer().teleToLocation(location);
+						player.teleToLocation(location);
 					}
-					onExit(creature);
+					onExit(player);
 				}
 			}
 		}
@@ -222,35 +228,36 @@ public class ConquestZone extends ZoneType
 	{
 		if (creature.isPlayer())
 		{
-			creature.setInsideZone(ZoneId.CONQUEST, false);
+			final Player player = creature.asPlayer();
+			player.setInsideZone(ZoneId.CONQUEST, false);
 			
-			// Restore player information
-			final PlayerAppearance app = creature.getActingPlayer().getAppearance();
+			// Restore player information.
+			final PlayerAppearance app = player.getAppearance();
 			app.setVisibleName(null);
 			app.setVisibleTitle(null);
 			app.setVisibleClanData(-1, -1, -1, -1, -1);
 			
 			if (Config.CONQUEST_PVP_ZONE)
 			{
-				creature.setInsideZone(ZoneId.PVP, false);
+				player.setInsideZone(ZoneId.PVP, false);
 			}
 			
 			if (_isShowDangerIcon)
 			{
-				creature.setInsideZone(ZoneId.DANGER_AREA, false);
-				if (!creature.isInsideZone(ZoneId.DANGER_AREA))
+				player.setInsideZone(ZoneId.DANGER_AREA, false);
+				if (!player.isInsideZone(ZoneId.DANGER_AREA))
 				{
-					creature.sendPacket(new EtcStatusUpdate(creature.getActingPlayer()));
+					player.sendPacket(new EtcStatusUpdate(player));
 				}
 			}
 			if (_removeEffectsOnExit && (_skills != null))
 			{
 				for (Entry<Integer, Integer> e : _skills.entrySet())
 				{
-					final Skill skill = SkillData.getInstance().getSkill(e.getKey().intValue(), e.getValue().intValue());
-					if ((skill != null) && creature.isAffectedBySkill(skill.getId()))
+					final Skill skill = SkillData.getInstance().getSkill(e.getKey(), e.getValue());
+					if ((skill != null) && player.isAffectedBySkill(skill.getId()))
 					{
-						creature.stopSkillEffects(SkillFinishType.REMOVED, skill.getId());
+						player.stopSkillEffects(SkillFinishType.REMOVED, skill.getId());
 					}
 				}
 			}
@@ -327,11 +334,6 @@ public class ConquestZone extends ZoneType
 		@Override
 		public void run()
 		{
-			if (!isEnabled())
-			{
-				return;
-			}
-			
 			if (getCharactersInside().isEmpty())
 			{
 				if (_task != null)
@@ -339,6 +341,11 @@ public class ConquestZone extends ZoneType
 					_task.cancel(false);
 					_task = null;
 				}
+				return;
+			}
+			
+			if (!isEnabled())
+			{
 				return;
 			}
 			

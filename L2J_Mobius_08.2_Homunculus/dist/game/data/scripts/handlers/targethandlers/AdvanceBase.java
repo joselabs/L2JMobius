@@ -19,7 +19,6 @@ package handlers.targethandlers;
 import org.l2jmobius.gameserver.handler.ITargetTypeHandler;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.skill.targets.TargetType;
 import org.l2jmobius.gameserver.network.SystemMessageId;
@@ -40,7 +39,7 @@ public class AdvanceBase implements ITargetTypeHandler
 	public WorldObject getTarget(Creature creature, WorldObject selectedTarget, Skill skill, boolean forceUse, boolean dontMove, boolean sendMessage)
 	{
 		final WorldObject target = creature.getTarget();
-		if ((target != null) && target.isNpc() && (target.getId() == 36590) && !((Npc) target).isDead())
+		if ((target != null) && target.isNpc() && (target.getId() == 36590) && !target.asNpc().isDead())
 		{
 			return target;
 		}

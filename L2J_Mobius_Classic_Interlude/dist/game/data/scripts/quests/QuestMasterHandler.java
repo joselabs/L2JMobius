@@ -19,6 +19,26 @@ package quests;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import quests.Q00011_SecretMeetingWithKetraOrcs.Q00011_SecretMeetingWithKetraOrcs;
+import quests.Q00012_SecretMeetingWithVarkaSilenos.Q00012_SecretMeetingWithVarkaSilenos;
+import quests.Q00013_ParcelDelivery.Q00013_ParcelDelivery;
+import quests.Q00014_WhereaboutsOfTheArchaeologist.Q00014_WhereaboutsOfTheArchaeologist;
+import quests.Q00015_SweetWhispers.Q00015_SweetWhispers;
+import quests.Q00016_TheComingDarkness.Q00016_TheComingDarkness;
+import quests.Q00017_LightAndDarkness.Q00017_LightAndDarkness;
+import quests.Q00018_MeetingWithTheGoldenRam.Q00018_MeetingWithTheGoldenRam;
+import quests.Q00019_GoToThePastureland.Q00019_GoToThePastureland;
+import quests.Q00020_BringUpWithLove.Q00020_BringUpWithLove;
+import quests.Q00021_HiddenTruth.Q00021_HiddenTruth;
+import quests.Q00022_TragedyInVonHellmannForest.Q00022_TragedyInVonHellmannForest;
+import quests.Q00023_LidiasHeart.Q00023_LidiasHeart;
+import quests.Q00024_InhabitantsOfTheForestOfTheDead.Q00024_InhabitantsOfTheForestOfTheDead;
+import quests.Q00025_HidingBehindTheTruth.Q00025_HidingBehindTheTruth;
+import quests.Q00027_ChestCaughtWithABaitOfWind.Q00027_ChestCaughtWithABaitOfWind;
+import quests.Q00028_ChestCaughtWithABaitOfIcyAir.Q00028_ChestCaughtWithABaitOfIcyAir;
+import quests.Q00029_ChestCaughtWithABaitOfEarth.Q00029_ChestCaughtWithABaitOfEarth;
+import quests.Q00030_ChestCaughtWithABaitOfFire.Q00030_ChestCaughtWithABaitOfFire;
+import quests.Q00031_SecretBuriedInTheSwamp.Q00031_SecretBuriedInTheSwamp;
 import quests.Q00032_AnObviousLie.Q00032_AnObviousLie;
 import quests.Q00033_MakeAPairOfDressShoes.Q00033_MakeAPairOfDressShoes;
 import quests.Q00034_InSearchOfCloth.Q00034_InSearchOfCloth;
@@ -28,6 +48,10 @@ import quests.Q00037_MakeFormalWear.Q00037_MakeFormalWear;
 import quests.Q00042_HelpTheUncle.Q00042_HelpTheUncle;
 import quests.Q00043_HelpTheSister.Q00043_HelpTheSister;
 import quests.Q00044_HelpTheSon.Q00044_HelpTheSon;
+import quests.Q00050_LanoscosSpecialBait.Q00050_LanoscosSpecialBait;
+import quests.Q00051_OFullesSpecialBait.Q00051_OFullesSpecialBait;
+import quests.Q00052_WilliesSpecialBait.Q00052_WilliesSpecialBait;
+import quests.Q00053_LinnaeusSpecialBait.Q00053_LinnaeusSpecialBait;
 import quests.Q00070_SagaOfThePhoenixKnight.Q00070_SagaOfThePhoenixKnight;
 import quests.Q00071_SagaOfEvasTemplar.Q00071_SagaOfEvasTemplar;
 import quests.Q00072_SagaOfTheSwordMuse.Q00072_SagaOfTheSwordMuse;
@@ -59,13 +83,40 @@ import quests.Q00097_SagaOfTheShillienTemplar.Q00097_SagaOfTheShillienTemplar;
 import quests.Q00098_SagaOfTheShillienSaint.Q00098_SagaOfTheShillienSaint;
 import quests.Q00099_SagaOfTheFortuneSeeker.Q00099_SagaOfTheFortuneSeeker;
 import quests.Q00100_SagaOfTheMaestro.Q00100_SagaOfTheMaestro;
+import quests.Q00101_SwordOfSolidarity.Q00101_SwordOfSolidarity;
+import quests.Q00102_SeaOfSporesFever.Q00102_SeaOfSporesFever;
+import quests.Q00103_SpiritOfCraftsman.Q00103_SpiritOfCraftsman;
+import quests.Q00104_SpiritOfMirrors.Q00104_SpiritOfMirrors;
+import quests.Q00105_SkirmishWithOrcs.Q00105_SkirmishWithOrcs;
+import quests.Q00106_ForgottenTruth.Q00106_ForgottenTruth;
+import quests.Q00107_MercilessPunishment.Q00107_MercilessPunishment;
+import quests.Q00108_JumbleTumbleDiamondFuss.Q00108_JumbleTumbleDiamondFuss;
 import quests.Q00109_InSearchOfTheNest.Q00109_InSearchOfTheNest;
 import quests.Q00110_ToThePrimevalIsle.Q00110_ToThePrimevalIsle;
 import quests.Q00111_ElrokianHuntersProof.Q00111_ElrokianHuntersProof;
+import quests.Q00112_WalkOfFate.Q00112_WalkOfFate;
+import quests.Q00113_StatusOfTheBeaconTower.Q00113_StatusOfTheBeaconTower;
+import quests.Q00114_ResurrectionOfAnOldManager.Q00114_ResurrectionOfAnOldManager;
+import quests.Q00115_TheOtherSideOfTruth.Q00115_TheOtherSideOfTruth;
+import quests.Q00116_BeyondTheHillsOfWinter.Q00116_BeyondTheHillsOfWinter;
+import quests.Q00117_TheOceanOfDistantStars.Q00117_TheOceanOfDistantStars;
+import quests.Q00118_ToLeadAndBeLed.Q00118_ToLeadAndBeLed;
+import quests.Q00119_LastImperialPrince.Q00119_LastImperialPrince;
+import quests.Q00120_PavelsLastResearch.Q00120_PavelsLastResearch;
+import quests.Q00121_PavelTheGiant.Q00121_PavelTheGiant;
+import quests.Q00122_OminousNews.Q00122_OminousNews;
+import quests.Q00123_TheLeaderAndTheFollower.Q00123_TheLeaderAndTheFollower;
 import quests.Q00124_MeetingTheElroki.Q00124_MeetingTheElroki;
 import quests.Q00125_TheNameOfEvil1.Q00125_TheNameOfEvil1;
 import quests.Q00126_TheNameOfEvil2.Q00126_TheNameOfEvil2;
 import quests.Q00127_FishingSpecialistsRequest.Q00127_FishingSpecialistsRequest;
+import quests.Q00151_CureForFever.Q00151_CureForFever;
+import quests.Q00152_ShardsOfGolem.Q00152_ShardsOfGolem;
+import quests.Q00153_DeliverGoods.Q00153_DeliverGoods;
+import quests.Q00154_SacrificeToTheSea.Q00154_SacrificeToTheSea;
+import quests.Q00155_FindSirWindawood.Q00155_FindSirWindawood;
+import quests.Q00156_MillenniumLove.Q00156_MillenniumLove;
+import quests.Q00157_RecoverSmuggledGoods.Q00157_RecoverSmuggledGoods;
 import quests.Q00210_ObtainAWolfPet.Q00210_ObtainAWolfPet;
 import quests.Q00211_TrialOfTheChallenger.Q00211_TrialOfTheChallenger;
 import quests.Q00212_TrialOfDuty.Q00212_TrialOfDuty;
@@ -115,6 +166,7 @@ import quests.Q00274_SkirmishWithTheWerewolves.Q00274_SkirmishWithTheWerewolves;
 import quests.Q00275_DarkWingedSpies.Q00275_DarkWingedSpies;
 import quests.Q00276_TotemOfTheHestui.Q00276_TotemOfTheHestui;
 import quests.Q00277_GatekeepersOffering.Q00277_GatekeepersOffering;
+import quests.Q00281_HeadForTheHills.Q00281_HeadForTheHills;
 import quests.Q00292_BrigandsSweep.Q00292_BrigandsSweep;
 import quests.Q00293_TheHiddenVeins.Q00293_TheHiddenVeins;
 import quests.Q00294_CovertBusiness.Q00294_CovertBusiness;
@@ -137,6 +189,7 @@ import quests.Q00328_SenseForBusiness.Q00328_SenseForBusiness;
 import quests.Q00329_CuriosityOfADwarf.Q00329_CuriosityOfADwarf;
 import quests.Q00331_ArrowOfVengeance.Q00331_ArrowOfVengeance;
 import quests.Q00333_HuntOfTheBlackLion.Q00333_HuntOfTheBlackLion;
+import quests.Q00336_CoinsOfMagic.Q00336_CoinsOfMagic;
 import quests.Q00337_AudienceWithTheLandDragon.Q00337_AudienceWithTheLandDragon;
 import quests.Q00344_1000YearsTheEndOfLamentation.Q00344_1000YearsTheEndOfLamentation;
 import quests.Q00348_AnArrogantSearch.Q00348_AnArrogantSearch;
@@ -145,12 +198,19 @@ import quests.Q00354_ConquestOfAlligatorIsland.Q00354_ConquestOfAlligatorIsland;
 import quests.Q00355_FamilyHonor.Q00355_FamilyHonor;
 import quests.Q00356_DigUpTheSeaOfSpores.Q00356_DigUpTheSeaOfSpores;
 import quests.Q00358_IllegitimateChildOfTheGoddess.Q00358_IllegitimateChildOfTheGoddess;
+import quests.Q00359_ForASleeplessDeadman.Q00359_ForASleeplessDeadman;
 import quests.Q00360_PlunderTheirSupplies.Q00360_PlunderTheirSupplies;
 import quests.Q00369_CollectorOfJewels.Q00369_CollectorOfJewels;
 import quests.Q00370_AnElderSowsSeeds.Q00370_AnElderSowsSeeds;
+import quests.Q00372_LegacyOfInsolence.Q00372_LegacyOfInsolence;
 import quests.Q00373_SupplierOfReagents.Q00373_SupplierOfReagents;
 import quests.Q00374_WhisperOfDreamsPart1.Q00374_WhisperOfDreamsPart1;
 import quests.Q00375_WhisperOfDreamsPart2.Q00375_WhisperOfDreamsPart2;
+import quests.Q00376_ExplorationOfTheGiantsCavePart1.Q00376_ExplorationOfTheGiantsCavePart1;
+import quests.Q00377_ExplorationOfTheGiantsCavePart2.Q00377_ExplorationOfTheGiantsCavePart2;
+import quests.Q00381_LetsBecomeARoyalMember.Q00381_LetsBecomeARoyalMember;
+import quests.Q00382_KailsMagicCoin.Q00382_KailsMagicCoin;
+import quests.Q00386_StolenDignity.Q00386_StolenDignity;
 import quests.Q00401_PathOfTheWarrior.Q00401_PathOfTheWarrior;
 import quests.Q00402_PathOfTheHumanKnight.Q00402_PathOfTheHumanKnight;
 import quests.Q00403_PathOfTheRogue.Q00403_PathOfTheRogue;
@@ -171,14 +231,24 @@ import quests.Q00417_PathOfTheScavenger.Q00417_PathOfTheScavenger;
 import quests.Q00418_PathOfTheArtisan.Q00418_PathOfTheArtisan;
 import quests.Q00420_LittleWing.Q00420_LittleWing;
 import quests.Q00421_LittleWingsBigAdventure.Q00421_LittleWingsBigAdventure;
+import quests.Q00431_WeddingMarch.Q00431_WeddingMarch;
+import quests.Q00432_BirthdayPartySong.Q00432_BirthdayPartySong;
 import quests.Q00500_BrothersBoundInChains.Q00500_BrothersBoundInChains;
 import quests.Q00501_ProofOfClanAlliance.Q00501_ProofOfClanAlliance;
 import quests.Q00503_PursuitOfClanAmbition.Q00503_PursuitOfClanAmbition;
 import quests.Q00505_BloodOffering.Q00505_BloodOffering;
 import quests.Q00605_AllianceWithKetraOrcs.Q00605_AllianceWithKetraOrcs;
 import quests.Q00606_BattleAgainstVarkaSilenos.Q00606_BattleAgainstVarkaSilenos;
+import quests.Q00607_ProveYourCourageKetra.Q00607_ProveYourCourageKetra;
+import quests.Q00608_SlayTheEnemyCommanderKetra.Q00608_SlayTheEnemyCommanderKetra;
+import quests.Q00609_MagicalPowerOfWaterPart1.Q00609_MagicalPowerOfWaterPart1;
+import quests.Q00610_MagicalPowerOfWaterPart2.Q00610_MagicalPowerOfWaterPart2;
 import quests.Q00611_AllianceWithVarkaSilenos.Q00611_AllianceWithVarkaSilenos;
 import quests.Q00612_BattleAgainstKetraOrcs.Q00612_BattleAgainstKetraOrcs;
+import quests.Q00613_ProveYourCourageVarka.Q00613_ProveYourCourageVarka;
+import quests.Q00614_SlayTheEnemyCommanderVarka.Q00614_SlayTheEnemyCommanderVarka;
+import quests.Q00615_MagicalPowerOfFirePart1.Q00615_MagicalPowerOfFirePart1;
+import quests.Q00616_MagicalPowerOfFirePart2.Q00616_MagicalPowerOfFirePart2;
 import quests.Q00617_GatherTheFlames.Q00617_GatherTheFlames;
 import quests.Q00618_IntoTheFlame.Q00618_IntoTheFlame;
 import quests.Q00619_RelicsOfTheOldEmpire.Q00619_RelicsOfTheOldEmpire;
@@ -258,15 +328,39 @@ public class QuestMasterHandler
 	
 	private static final Class<?>[] QUESTS =
 	{
-		Q00032_AnObviousLie.class, // FIXME: Grand Crusade
-		Q00033_MakeAPairOfDressShoes.class, // FIXME: Grand Crusade
-		Q00034_InSearchOfCloth.class, // FIXME: Grand Crusade
-		Q00035_FindGlitteringJewelry.class, // FIXME: Grand Crusade
-		Q00036_MakeASewingKit.class, // FIXME: Grand Crusade
-		Q00037_MakeFormalWear.class, // FIXME: Grand Crusade
-		Q00042_HelpTheUncle.class, // FIXME: Grand Crusade
-		Q00043_HelpTheSister.class, // FIXME: Grand Crusade
-		Q00044_HelpTheSon.class, // FIXME: Grand Crusade
+		Q00011_SecretMeetingWithKetraOrcs.class,
+		Q00012_SecretMeetingWithVarkaSilenos.class,
+		Q00013_ParcelDelivery.class,
+		Q00014_WhereaboutsOfTheArchaeologist.class,
+		Q00015_SweetWhispers.class,
+		Q00016_TheComingDarkness.class,
+		Q00017_LightAndDarkness.class,
+		Q00018_MeetingWithTheGoldenRam.class,
+		Q00019_GoToThePastureland.class,
+		Q00020_BringUpWithLove.class,
+		Q00021_HiddenTruth.class,
+		Q00022_TragedyInVonHellmannForest.class,
+		Q00023_LidiasHeart.class,
+		Q00024_InhabitantsOfTheForestOfTheDead.class,
+		Q00025_HidingBehindTheTruth.class,
+		Q00027_ChestCaughtWithABaitOfWind.class,
+		Q00028_ChestCaughtWithABaitOfIcyAir.class,
+		Q00029_ChestCaughtWithABaitOfEarth.class,
+		Q00030_ChestCaughtWithABaitOfFire.class,
+		Q00031_SecretBuriedInTheSwamp.class,
+		Q00032_AnObviousLie.class,
+		Q00033_MakeAPairOfDressShoes.class,
+		Q00034_InSearchOfCloth.class,
+		Q00035_FindGlitteringJewelry.class,
+		Q00036_MakeASewingKit.class,
+		Q00037_MakeFormalWear.class,
+		Q00042_HelpTheUncle.class,
+		Q00043_HelpTheSister.class,
+		Q00044_HelpTheSon.class,
+		Q00050_LanoscosSpecialBait.class,
+		Q00051_OFullesSpecialBait.class,
+		Q00052_WilliesSpecialBait.class,
+		Q00053_LinnaeusSpecialBait.class,
 		Q00070_SagaOfThePhoenixKnight.class,
 		Q00071_SagaOfEvasTemplar.class,
 		Q00072_SagaOfTheSwordMuse.class,
@@ -298,14 +392,41 @@ public class QuestMasterHandler
 		Q00098_SagaOfTheShillienSaint.class,
 		Q00099_SagaOfTheFortuneSeeker.class,
 		Q00100_SagaOfTheMaestro.class,
+		Q00101_SwordOfSolidarity.class,
+		Q00102_SeaOfSporesFever.class,
+		Q00103_SpiritOfCraftsman.class,
+		Q00104_SpiritOfMirrors.class,
+		Q00105_SkirmishWithOrcs.class,
+		Q00106_ForgottenTruth.class,
+		Q00107_MercilessPunishment.class,
+		Q00108_JumbleTumbleDiamondFuss.class,
 		Q00109_InSearchOfTheNest.class,
-		Q00110_ToThePrimevalIsle.class, // FIXME: Grand Crusade
-		Q00111_ElrokianHuntersProof.class, // FIXME: Grand Crusade
-		Q00124_MeetingTheElroki.class, // FIXME: Grand Crusade
-		Q00125_TheNameOfEvil1.class, // FIXME: Grand Crusade
-		Q00126_TheNameOfEvil2.class, // FIXME: Grand Crusade
+		Q00110_ToThePrimevalIsle.class,
+		Q00111_ElrokianHuntersProof.class,
+		Q00112_WalkOfFate.class,
+		Q00113_StatusOfTheBeaconTower.class,
+		Q00114_ResurrectionOfAnOldManager.class,
+		Q00115_TheOtherSideOfTruth.class,
+		Q00116_BeyondTheHillsOfWinter.class,
+		Q00117_TheOceanOfDistantStars.class,
+		Q00118_ToLeadAndBeLed.class,
+		Q00119_LastImperialPrince.class,
+		Q00120_PavelsLastResearch.class,
+		Q00121_PavelTheGiant.class,
+		Q00122_OminousNews.class,
+		Q00123_TheLeaderAndTheFollower.class,
+		Q00124_MeetingTheElroki.class,
+		Q00125_TheNameOfEvil1.class,
+		Q00126_TheNameOfEvil2.class,
 		Q00127_FishingSpecialistsRequest.class,
-		Q00210_ObtainAWolfPet.class, // FIXME: Grand Crusade
+		Q00151_CureForFever.class,
+		Q00152_ShardsOfGolem.class,
+		Q00153_DeliverGoods.class,
+		Q00154_SacrificeToTheSea.class,
+		Q00155_FindSirWindawood.class,
+		Q00156_MillenniumLove.class,
+		Q00157_RecoverSmuggledGoods.class,
+		Q00210_ObtainAWolfPet.class,
 		Q00211_TrialOfTheChallenger.class,
 		Q00212_TrialOfDuty.class,
 		Q00213_TrialOfTheSeeker.class,
@@ -354,6 +475,7 @@ public class QuestMasterHandler
 		Q00275_DarkWingedSpies.class,
 		Q00276_TotemOfTheHestui.class,
 		Q00277_GatekeepersOffering.class,
+		Q00281_HeadForTheHills.class,
 		Q00292_BrigandsSweep.class,
 		Q00293_TheHiddenVeins.class,
 		Q00294_CovertBusiness.class,
@@ -376,6 +498,7 @@ public class QuestMasterHandler
 		Q00329_CuriosityOfADwarf.class,
 		Q00331_ArrowOfVengeance.class,
 		Q00333_HuntOfTheBlackLion.class,
+		Q00336_CoinsOfMagic.class,
 		Q00337_AudienceWithTheLandDragon.class,
 		Q00344_1000YearsTheEndOfLamentation.class,
 		Q00348_AnArrogantSearch.class,
@@ -384,12 +507,19 @@ public class QuestMasterHandler
 		Q00355_FamilyHonor.class,
 		Q00356_DigUpTheSeaOfSpores.class,
 		Q00358_IllegitimateChildOfTheGoddess.class,
+		Q00359_ForASleeplessDeadman.class,
 		Q00360_PlunderTheirSupplies.class,
 		Q00369_CollectorOfJewels.class,
 		Q00370_AnElderSowsSeeds.class,
+		Q00372_LegacyOfInsolence.class,
 		Q00373_SupplierOfReagents.class,
 		Q00374_WhisperOfDreamsPart1.class,
 		Q00375_WhisperOfDreamsPart2.class,
+		Q00376_ExplorationOfTheGiantsCavePart1.class,
+		Q00377_ExplorationOfTheGiantsCavePart2.class,
+		Q00381_LetsBecomeARoyalMember.class,
+		Q00382_KailsMagicCoin.class,
+		Q00386_StolenDignity.class,
 		Q00401_PathOfTheWarrior.class,
 		Q00402_PathOfTheHumanKnight.class,
 		Q00403_PathOfTheRogue.class,
@@ -408,20 +538,30 @@ public class QuestMasterHandler
 		Q00416_PathOfTheOrcShaman.class,
 		Q00417_PathOfTheScavenger.class,
 		Q00418_PathOfTheArtisan.class,
-		Q00420_LittleWing.class, // FIXME: Underground
-		Q00421_LittleWingsBigAdventure.class, // FIXME: Underground
+		Q00420_LittleWing.class,
+		Q00421_LittleWingsBigAdventure.class,
+		Q00431_WeddingMarch.class,
+		Q00432_BirthdayPartySong.class,
 		Q00500_BrothersBoundInChains.class,
 		Q00501_ProofOfClanAlliance.class,
 		Q00503_PursuitOfClanAmbition.class,
 		Q00505_BloodOffering.class,
 		Q00605_AllianceWithKetraOrcs.class,
 		Q00606_BattleAgainstVarkaSilenos.class,
+		Q00607_ProveYourCourageKetra.class,
+		Q00608_SlayTheEnemyCommanderKetra.class,
+		Q00609_MagicalPowerOfWaterPart1.class,
+		Q00610_MagicalPowerOfWaterPart2.class,
 		Q00611_AllianceWithVarkaSilenos.class,
 		Q00612_BattleAgainstKetraOrcs.class,
+		Q00613_ProveYourCourageVarka.class,
+		Q00614_SlayTheEnemyCommanderVarka.class,
+		Q00615_MagicalPowerOfFirePart1.class,
+		Q00616_MagicalPowerOfFirePart2.class,
 		Q00617_GatherTheFlames.class,
-		Q00619_RelicsOfTheOldEmpire.class,
 		Q00618_IntoTheFlame.class,
-		Q00620_FourGoblets.class, // FIXME: Grand Crusade
+		Q00619_RelicsOfTheOldEmpire.class,
+		Q00620_FourGoblets.class,
 		Q00622_SpecialtyLiquorDelivery.class,
 		Q00623_TheFinestFood.class,
 		Q00628_HuntGoldenRam.class,
@@ -432,14 +572,14 @@ public class QuestMasterHandler
 		Q00638_SeekersOfTheHolyGrail.class,
 		Q00639_GuardiansOfTheHolyGrail.class,
 		Q00640_TheZeroHour.class,
-		Q00641_AttackSailren.class, // FIXME: Grand Crusade
-		Q00642_APowerfulPrimevalCreature.class, // FIXME: Grand Crusade
-		Q00643_RiseAndFallOfTheElrokiTribe.class, // FIXME: Grand Crusade
+		Q00641_AttackSailren.class,
+		Q00642_APowerfulPrimevalCreature.class,
+		Q00643_RiseAndFallOfTheElrokiTribe.class,
 		Q00657_MonsterArenaTrialForWarriors.class, // TODO: Not done.
 		Q00658_MonsterArenaTrialForEliteWarriors.class, // TODO: Not done.
 		Q00662_AGameOfCards.class,
 		Q00664_QuarrelsTime.class, // TODO: Not done.
-		Q00688_DefeatTheElrokianRaiders.class, // FIXME: Grand Crusade
+		Q00688_DefeatTheElrokianRaiders.class,
 		Q00910_RequestFromTheRedLibraGuildBasic.class, // TODO: Not done.
 		Q00911_RequestFromTheRedLibraGuildIntermediate.class, // TODO: Not done.
 		Q00912_RequestFromTheRedLibraGuildAdvanced.class, // TODO: Not done.

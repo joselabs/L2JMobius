@@ -194,7 +194,7 @@ public class Q10363_RequestOfTheSeeker extends Quest
 		final WorldObject target = player.getTarget();
 		if ((target != null) && target.isNpc() && CommonUtil.contains(CORPSES, target.getId()))
 		{
-			final Npc npc = (Npc) player.getTarget();
+			final Npc npc = player.getTarget().asNpc();
 			if (!player.isInsideRadius3D(npc, 120))
 			{
 				showOnScreenMsg(player, NpcStringId.YOU_ARE_TOO_FAR_FROM_THE_CORPSE, ExShowScreenMessage.TOP_CENTER, 4500);

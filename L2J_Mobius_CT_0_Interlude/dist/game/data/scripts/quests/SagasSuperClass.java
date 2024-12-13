@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package quests;
 
@@ -27,7 +31,6 @@ import org.l2jmobius.gameserver.instancemanager.QuestManager;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -142,7 +145,7 @@ public class SagasSuperClass extends Quest
 		QuestState st = null;
 		if (SPAWN_LIST.containsKey(npc))
 		{
-			player = (Player) World.getInstance().findObject(SPAWN_LIST.get(npc));
+			player = World.getInstance().findObject(SPAWN_LIST.get(npc)).asPlayer();
 			if (player != null)
 			{
 				st = player.getQuestState(getName());
@@ -167,7 +170,7 @@ public class SagasSuperClass extends Quest
 				st2.set("spawned", "1");
 				startQuestTimer("Archon Hellisha has despawned", 600000, archon, st2.getPlayer());
 				autoChat(archon, _text[13].replace("PLAYERNAME", st2.getPlayer().getName()));
-				((Attackable) archon).addDamageHate(st2.getPlayer(), 0, 99999);
+				archon.asAttackable().addDamageHate(st2.getPlayer(), 0, 99999);
 				archon.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, st2.getPlayer(), null);
 			}
 			else
@@ -476,10 +479,10 @@ public class SagasSuperClass extends Quest
 			}
 			else if (event.equals("Mob_3 Timer 1"))
 			{
-				final Npc mob2 = findSpawn(player, (Npc) World.getInstance().findObject(st.getInt("Mob_2")));
+				final Npc mob2 = findSpawn(player, World.getInstance().findObject(st.getInt("Mob_2")).asNpc());
 				if (World.getInstance().getVisibleObjects(npc, Npc.class).contains(mob2))
 				{
-					((Attackable) npc).addDamageHate(mob2, 0, 99999);
+					npc.asAttackable().addDamageHate(mob2, 0, 99999);
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, mob2, null);
 					mob2.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, npc, null);
 					autoChat(npc, _text[14].replace("PLAYERNAME", player.getName()));
@@ -560,270 +563,267 @@ public class SagasSuperClass extends Quest
 	public String onTalk(Npc npc, Player talker)
 	{
 		String htmltext = "<html><body>You are either not on a quest that involves this NPC, or you don't meet this NPCs minimum quest requirements.</body></html>";
-		final QuestState st = talker.getQuestState(getName());
-		if (st != null)
+		final QuestState st = getQuestState(talker, true);
+		final int npcId = npc.getId();
+		if ((st.getState() == State.COMPLETED) && (npcId == _npc[0]))
 		{
-			final int npcId = npc.getId();
-			if ((st.getState() == State.COMPLETED) && (npcId == _npc[0]))
+			htmltext = "<html><body>You have already completed this quest!</body></html>";
+		}
+		else if (st.getPlayer().getClassId().getId() == getPrevClass(st.getPlayer()))
+		{
+			switch (st.getCond())
 			{
-				htmltext = "<html><body>You have already completed this quest!</body></html>";
-			}
-			else if (st.getPlayer().getClassId().getId() == getPrevClass(st.getPlayer()))
-			{
-				switch (st.getCond())
+				case 0:
 				{
-					case 0:
+					if (npcId == _npc[0])
 					{
-						if (npcId == _npc[0])
-						{
-							htmltext = "0-01.htm";
-						}
-						break;
+						htmltext = "0-01.htm";
 					}
-					case 1:
+					break;
+				}
+				case 1:
+				{
+					if (npcId == _npc[0])
 					{
-						if (npcId == _npc[0])
-						{
-							htmltext = "0-04.htm";
-						}
-						else if (npcId == _npc[2])
-						{
-							htmltext = "2-01.htm";
-						}
-						break;
+						htmltext = "0-04.htm";
 					}
-					case 2:
+					else if (npcId == _npc[2])
 					{
-						if (npcId == _npc[2])
-						{
-							htmltext = "2-02.htm";
-						}
-						else if (npcId == _npc[1])
-						{
-							htmltext = "1-01.htm";
-						}
-						break;
+						htmltext = "2-01.htm";
 					}
-					case 3:
+					break;
+				}
+				case 2:
+				{
+					if (npcId == _npc[2])
 					{
-						if ((npcId == _npc[1]) && (getQuestItemsCount(st.getPlayer(), _items[0]) != 0))
+						htmltext = "2-02.htm";
+					}
+					else if (npcId == _npc[1])
+					{
+						htmltext = "1-01.htm";
+					}
+					break;
+				}
+				case 3:
+				{
+					if ((npcId == _npc[1]) && (getQuestItemsCount(st.getPlayer(), _items[0]) != 0))
+					{
+						htmltext = "1-02.htm";
+						if ((_items[11] == 0) || (getQuestItemsCount(st.getPlayer(), _items[11]) != 0))
 						{
-							htmltext = "1-02.htm";
-							if ((_items[11] == 0) || (getQuestItemsCount(st.getPlayer(), _items[11]) != 0))
+							htmltext = "1-03.htm";
+						}
+					}
+					break;
+				}
+				case 4:
+				{
+					if (npcId == _npc[1])
+					{
+						htmltext = "1-04.htm";
+					}
+					else if (npcId == _npc[2])
+					{
+						htmltext = "2-03.htm";
+					}
+					break;
+				}
+				case 5:
+				{
+					if (npcId == _npc[2])
+					{
+						htmltext = "2-04.htm";
+					}
+					else if (npcId == _npc[5])
+					{
+						htmltext = "5-01.htm";
+					}
+					break;
+				}
+				case 6:
+				{
+					if (npcId == _npc[5])
+					{
+						htmltext = "5-03.htm";
+					}
+					else if (npcId == _npc[6])
+					{
+						htmltext = "6-01.htm";
+					}
+					break;
+				}
+				case 7:
+				{
+					if (npcId == _npc[6])
+					{
+						htmltext = "6-02.htm";
+					}
+					break;
+				}
+				case 8:
+				{
+					if (npcId == _npc[6])
+					{
+						htmltext = "6-04.htm";
+					}
+					else if (npcId == _npc[7])
+					{
+						htmltext = "7-01.htm";
+					}
+					break;
+				}
+				case 9:
+				{
+					if (npcId == _npc[7])
+					{
+						htmltext = "7-05.htm";
+					}
+					break;
+				}
+				case 10:
+				{
+					if (npcId == _npc[7])
+					{
+						htmltext = "7-07.htm";
+					}
+					else if (npcId == _npc[3])
+					{
+						htmltext = "3-01.htm";
+					}
+					break;
+				}
+				case 11:
+				case 12:
+				{
+					if (npcId == _npc[3])
+					{
+						if (getQuestItemsCount(st.getPlayer(), _items[2]) > 0)
+						{
+							htmltext = "3-05.htm";
+						}
+						else
+						{
+							htmltext = "3-04.htm";
+						}
+					}
+					break;
+				}
+				case 13:
+				{
+					if (npcId == _npc[3])
+					{
+						htmltext = "3-06.htm";
+					}
+					else if (npcId == _npc[8])
+					{
+						htmltext = "8-01.htm";
+					}
+					break;
+				}
+				case 14:
+				{
+					if (npcId == _npc[8])
+					{
+						htmltext = "8-03.htm";
+					}
+					else if (npcId == _npc[11])
+					{
+						htmltext = "11-01.htm";
+					}
+					break;
+				}
+				case 15:
+				{
+					if (npcId == _npc[11])
+					{
+						htmltext = "11-02.htm";
+					}
+					else if (npcId == _npc[9])
+					{
+						htmltext = "9-01.htm";
+					}
+					break;
+				}
+				case 16:
+				{
+					if (npcId == _npc[9])
+					{
+						htmltext = "9-02.htm";
+					}
+					break;
+				}
+				case 17:
+				{
+					if (npcId == _npc[9])
+					{
+						htmltext = "9-04.htm";
+					}
+					else if (npcId == _npc[10])
+					{
+						htmltext = "10-01.htm";
+					}
+					break;
+				}
+				case 18:
+				{
+					if (npcId == _npc[10])
+					{
+						htmltext = "10-05.htm";
+					}
+					break;
+				}
+				case 19:
+				{
+					if (npcId == _npc[10])
+					{
+						htmltext = "10-07.htm";
+					}
+					else if (npcId == _npc[0])
+					{
+						htmltext = "0-06.htm";
+					}
+					break;
+				}
+				case 20:
+				{
+					if (npcId == _npc[0])
+					{
+						final Player player = st.getPlayer();
+						if (player.getLevel() >= 76)
+						{
+							htmltext = "0-09.htm";
+							if ((getClassId(player) < 131) || (getClassId(player) > 135)) // in Kamael quests, npc wants to chat for a bit before changing class
 							{
-								htmltext = "1-03.htm";
-							}
-						}
-						break;
-					}
-					case 4:
-					{
-						if (npcId == _npc[1])
-						{
-							htmltext = "1-04.htm";
-						}
-						else if (npcId == _npc[2])
-						{
-							htmltext = "2-03.htm";
-						}
-						break;
-					}
-					case 5:
-					{
-						if (npcId == _npc[2])
-						{
-							htmltext = "2-04.htm";
-						}
-						else if (npcId == _npc[5])
-						{
-							htmltext = "5-01.htm";
-						}
-						break;
-					}
-					case 6:
-					{
-						if (npcId == _npc[5])
-						{
-							htmltext = "5-03.htm";
-						}
-						else if (npcId == _npc[6])
-						{
-							htmltext = "6-01.htm";
-						}
-						break;
-					}
-					case 7:
-					{
-						if (npcId == _npc[6])
-						{
-							htmltext = "6-02.htm";
-						}
-						break;
-					}
-					case 8:
-					{
-						if (npcId == _npc[6])
-						{
-							htmltext = "6-04.htm";
-						}
-						else if (npcId == _npc[7])
-						{
-							htmltext = "7-01.htm";
-						}
-						break;
-					}
-					case 9:
-					{
-						if (npcId == _npc[7])
-						{
-							htmltext = "7-05.htm";
-						}
-						break;
-					}
-					case 10:
-					{
-						if (npcId == _npc[7])
-						{
-							htmltext = "7-07.htm";
-						}
-						else if (npcId == _npc[3])
-						{
-							htmltext = "3-01.htm";
-						}
-						break;
-					}
-					case 11:
-					case 12:
-					{
-						if (npcId == _npc[3])
-						{
-							if (getQuestItemsCount(st.getPlayer(), _items[2]) > 0)
-							{
-								htmltext = "3-05.htm";
-							}
-							else
-							{
-								htmltext = "3-04.htm";
-							}
-						}
-						break;
-					}
-					case 13:
-					{
-						if (npcId == _npc[3])
-						{
-							htmltext = "3-06.htm";
-						}
-						else if (npcId == _npc[8])
-						{
-							htmltext = "8-01.htm";
-						}
-						break;
-					}
-					case 14:
-					{
-						if (npcId == _npc[8])
-						{
-							htmltext = "8-03.htm";
-						}
-						else if (npcId == _npc[11])
-						{
-							htmltext = "11-01.htm";
-						}
-						break;
-					}
-					case 15:
-					{
-						if (npcId == _npc[11])
-						{
-							htmltext = "11-02.htm";
-						}
-						else if (npcId == _npc[9])
-						{
-							htmltext = "9-01.htm";
-						}
-						break;
-					}
-					case 16:
-					{
-						if (npcId == _npc[9])
-						{
-							htmltext = "9-02.htm";
-						}
-						break;
-					}
-					case 17:
-					{
-						if (npcId == _npc[9])
-						{
-							htmltext = "9-04.htm";
-						}
-						else if (npcId == _npc[10])
-						{
-							htmltext = "10-01.htm";
-						}
-						break;
-					}
-					case 18:
-					{
-						if (npcId == _npc[10])
-						{
-							htmltext = "10-05.htm";
-						}
-						break;
-					}
-					case 19:
-					{
-						if (npcId == _npc[10])
-						{
-							htmltext = "10-07.htm";
-						}
-						else if (npcId == _npc[0])
-						{
-							htmltext = "0-06.htm";
-						}
-						break;
-					}
-					case 20:
-					{
-						if (npcId == _npc[0])
-						{
-							final Player player = st.getPlayer();
-							if (player.getLevel() >= 76)
-							{
-								htmltext = "0-09.htm";
-								if ((getClassId(player) < 131) || (getClassId(player) > 135)) // in Kamael quests, npc wants to chat for a bit before changing class
+								st.setCond(0);
+								st.exitQuest(false);
+								addExpAndSp(player, 2299404, 0);
+								giveAdena(player, 5000000, true);
+								giveItems(player, 6622, 1);
+								final int playerClass = getClassId(player);
+								final int prevClass = getPrevClass(player);
+								player.setClassId(playerClass);
+								if (!player.isSubClassActive() && (player.getBaseClass() == prevClass))
 								{
-									st.setCond(0);
-									st.exitQuest(false);
-									addExpAndSp(player, 2299404, 0);
-									giveAdena(player, 5000000, true);
-									giveItems(player, 6622, 1);
-									final int playerClass = getClassId(player);
-									final int prevClass = getPrevClass(player);
-									player.setClassId(playerClass);
-									if (!player.isSubClassActive() && (player.getBaseClass() == prevClass))
-									{
-										player.setBaseClass(playerClass);
-									}
-									player.rewardSkills();
-									player.broadcastUserInfo();
-									Cast(npc, player, 4339, 1);
-									
-									final Quest q = QuestManager.getInstance().getQuest("SkillTransfer");
-									if (q != null)
-									{
-										q.startQuestTimer("givePormanders", 1, npc, st.getPlayer());
-									}
+									player.setBaseClass(playerClass);
+								}
+								player.rewardSkills();
+								player.broadcastUserInfo();
+								Cast(npc, player, 4339, 1);
+								
+								final Quest q = QuestManager.getInstance().getQuest("SkillTransfer");
+								if (q != null)
+								{
+									q.startQuestTimer("givePormanders", 1, npc, st.getPlayer());
 								}
 							}
-							else
-							{
-								htmltext = "0-010.htm";
-							}
 						}
-						break;
+						else
+						{
+							htmltext = "0-010.htm";
+						}
 					}
+					break;
 				}
 			}
 		}
@@ -951,7 +951,7 @@ public class SagasSuperClass extends Quest
 	{
 		if (SPAWN_LIST.containsKey(npc) && (SPAWN_LIST.get(npc) != player.getObjectId()))
 		{
-			final Player questPlayer = (Player) World.getInstance().findObject(SPAWN_LIST.get(npc));
+			final Player questPlayer = World.getInstance().findObject(SPAWN_LIST.get(npc)).asPlayer();
 			if (questPlayer == null)
 			{
 				return null;

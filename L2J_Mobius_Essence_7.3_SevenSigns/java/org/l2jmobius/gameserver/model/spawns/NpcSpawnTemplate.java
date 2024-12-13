@@ -28,6 +28,7 @@ import org.l2jmobius.commons.time.SchedulingPattern;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.data.SpawnTable;
 import org.l2jmobius.gameserver.data.xml.NpcData;
+import org.l2jmobius.gameserver.geoengine.GeoEngine;
 import org.l2jmobius.gameserver.instancemanager.DBSpawnManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.ChanceLocation;
@@ -36,7 +37,6 @@ import org.l2jmobius.gameserver.model.Spawn;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
-import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.holders.MinionHolder;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
@@ -294,66 +294,229 @@ public class NpcSpawnTemplate implements Cloneable, IParameterized<StatSet>
 		}
 		else if (_zone != null)
 		{
-			final Location loc = _zone.getRandomPoint();
-			loc.setHeading(-1);
-			return loc;
+			int count = 0; // Prevent infinite loop.
+			Location location;
+			
+			final Location centerPoint = _zone.getCenterPoint();
+			final int centerX = centerPoint.getX();
+			final int centerY = centerPoint.getY();
+			final int centerZ = centerPoint.getZ();
+			int randomX;
+			int randomY;
+			int randomZ;
+			
+			while (count++ < 100)
+			{
+				location = _zone.getRandomPoint();
+				randomX = location.getX();
+				randomY = location.getY();
+				randomZ = location.getZ();
+				
+				if (GeoEngine.getInstance().getHeight(randomX, randomY, randomZ) > _zone.getHighZ())
+				{
+					continue;
+				}
+				
+				if (!GeoEngine.getInstance().canSeeTarget(randomX, randomY, randomZ, centerX, centerY, centerZ, null))
+				{
+					continue;
+				}
+				
+				location.setHeading(-1);
+				return location;
+			}
+			
+			location = _zone.getRandomPoint();
+			location.setHeading(-1);
+			return location;
 		}
 		else if (!_group.getTerritories().isEmpty())
 		{
 			final SpawnTerritory territory = _group.getTerritories().get(Rnd.get(_group.getTerritories().size()));
-			for (int i = 0; i < 100; i++)
+			int count = 0; // Prevent infinite loop.
+			Location location;
+			
+			final Location centerPoint = territory.getCenterPoint();
+			final int centerX = centerPoint.getX();
+			final int centerY = centerPoint.getY();
+			final int centerZ = centerPoint.getZ();
+			int randomX;
+			int randomY;
+			int randomZ;
+			
+			final List<BannedSpawnTerritory> bannedTerritories = _group.getBannedTerritories();
+			if (!bannedTerritories.isEmpty())
 			{
-				final Location loc = territory.getRandomPoint();
-				if (_group.getBannedTerritories().isEmpty())
+				SEARCH: while (count++ < 100)
 				{
-					loc.setHeading(-1);
-					return loc;
+					location = territory.getRandomPoint();
+					randomX = location.getX();
+					randomY = location.getY();
+					randomZ = location.getZ();
+					
+					for (BannedSpawnTerritory banned : bannedTerritories)
+					{
+						if (banned.isInsideZone(randomX, randomY, randomZ))
+						{
+							continue SEARCH;
+						}
+					}
+					
+					if (GeoEngine.getInstance().getHeight(randomX, randomY, randomZ) > territory.getHighZ())
+					{
+						continue;
+					}
+					
+					if (!GeoEngine.getInstance().canSeeTarget(randomX, randomY, randomZ, centerX, centerY, centerZ, null))
+					{
+						continue;
+					}
+					
+					location.setHeading(-1);
+					return location;
 				}
 				
-				boolean insideBannedTerritory = false;
-				SEARCH: for (BannedSpawnTerritory bannedTerritory : _group.getBannedTerritories())
+				count = 0;
+				SEARCH_NO_GEO: while (count++ < 100)
 				{
-					if (bannedTerritory.isInsideZone(loc.getX(), loc.getY(), loc.getZ()))
+					location = territory.getRandomPoint();
+					randomX = location.getX();
+					randomY = location.getY();
+					randomZ = location.getZ();
+					
+					for (BannedSpawnTerritory banned : bannedTerritories)
 					{
-						insideBannedTerritory = true;
-						break SEARCH;
+						if (banned.isInsideZone(randomX, randomY, randomZ))
+						{
+							continue SEARCH_NO_GEO;
+						}
 					}
-				}
-				if (!insideBannedTerritory)
-				{
-					loc.setHeading(-1);
-					return loc;
+					
+					location.setHeading(-1);
+					return location;
 				}
 			}
+			
+			count = 0;
+			while (count++ < 100)
+			{
+				location = territory.getRandomPoint();
+				randomX = location.getX();
+				randomY = location.getY();
+				randomZ = location.getZ();
+				
+				if (GeoEngine.getInstance().getHeight(randomX, randomY, randomZ) > territory.getHighZ())
+				{
+					continue;
+				}
+				
+				if (!GeoEngine.getInstance().canSeeTarget(randomX, randomY, randomZ, centerX, centerY, centerZ, null))
+				{
+					continue;
+				}
+				
+				location.setHeading(-1);
+				return location;
+			}
+			
+			location = territory.getRandomPoint();
+			location.setHeading(-1);
+			return location;
 		}
 		else if (!_spawnTemplate.getTerritories().isEmpty())
 		{
 			final SpawnTerritory territory = _spawnTemplate.getTerritories().get(Rnd.get(_spawnTemplate.getTerritories().size()));
-			for (int i = 0; i < 100; i++)
+			int count = 0; // Prevent infinite loop.
+			Location location;
+			
+			final Location centerPoint = territory.getCenterPoint();
+			final int centerX = centerPoint.getX();
+			final int centerY = centerPoint.getY();
+			final int centerZ = centerPoint.getZ();
+			int randomX;
+			int randomY;
+			int randomZ;
+			
+			final List<BannedSpawnTerritory> bannedTerritories = _spawnTemplate.getBannedTerritories();
+			if (!bannedTerritories.isEmpty())
 			{
-				final Location loc = territory.getRandomPoint();
-				if (_spawnTemplate.getBannedTerritories().isEmpty())
+				SEARCH: while (count++ < 100)
 				{
-					loc.setHeading(-1);
-					return loc;
+					location = territory.getRandomPoint();
+					randomX = location.getX();
+					randomY = location.getY();
+					randomZ = location.getZ();
+					
+					for (BannedSpawnTerritory banned : bannedTerritories)
+					{
+						if (banned.isInsideZone(randomX, randomY, randomZ))
+						{
+							continue SEARCH;
+						}
+					}
+					
+					if (GeoEngine.getInstance().getHeight(randomX, randomY, randomZ) > territory.getHighZ())
+					{
+						continue;
+					}
+					
+					if (!GeoEngine.getInstance().canSeeTarget(randomX, randomY, randomZ, centerX, centerY, centerZ, null))
+					{
+						continue;
+					}
+					
+					location.setHeading(-1);
+					return location;
 				}
 				
-				boolean insideBannedTerritory = false;
-				SEARCH: for (BannedSpawnTerritory bannedTerritory : _spawnTemplate.getBannedTerritories())
+				count = 0;
+				SEARCH_NO_GEO: while (count++ < 100)
 				{
-					if (bannedTerritory.isInsideZone(loc.getX(), loc.getY(), loc.getZ()))
+					location = territory.getRandomPoint();
+					randomX = location.getX();
+					randomY = location.getY();
+					randomZ = location.getZ();
+					
+					for (BannedSpawnTerritory banned : bannedTerritories)
 					{
-						insideBannedTerritory = true;
-						break SEARCH;
+						if (banned.isInsideZone(randomX, randomY, randomZ))
+						{
+							continue SEARCH_NO_GEO;
+						}
 					}
-				}
-				if (!insideBannedTerritory)
-				{
-					loc.setHeading(-1);
-					return loc;
+					
+					location.setHeading(-1);
+					return location;
 				}
 			}
+			
+			count = 0;
+			while (count++ < 100)
+			{
+				location = territory.getRandomPoint();
+				randomX = location.getX();
+				randomY = location.getY();
+				randomZ = location.getZ();
+				
+				if (GeoEngine.getInstance().getHeight(randomX, randomY, randomZ) > territory.getHighZ())
+				{
+					continue;
+				}
+				
+				if (!GeoEngine.getInstance().canSeeTarget(randomX, randomY, randomZ, centerX, centerY, centerZ, null))
+				{
+					continue;
+				}
+				
+				location.setHeading(-1);
+				return location;
+			}
+			
+			location = territory.getRandomPoint();
+			location.setHeading(-1);
+			return location;
 		}
+		
 		return null;
 	}
 	
@@ -448,7 +611,7 @@ public class NpcSpawnTemplate implements Cloneable, IParameterized<StatSet>
 				final Npc spawnedNpc = DBSpawnManager.getInstance().addNewSpawn(spawn, true);
 				if ((spawnedNpc != null) && spawnedNpc.isMonster() && (_minions != null))
 				{
-					((Monster) spawnedNpc).getMinionList().spawnMinions(_minions);
+					spawnedNpc.asMonster().getMinionList().spawnMinions(_minions);
 				}
 				
 				_spawnedNpcs.add(spawnedNpc);
@@ -459,7 +622,7 @@ public class NpcSpawnTemplate implements Cloneable, IParameterized<StatSet>
 			final Npc npc = spawn.doSpawn(_spawnAnimation);
 			if (npc.isMonster() && (_minions != null))
 			{
-				((Monster) npc).getMinionList().spawnMinions(_minions);
+				npc.asMonster().getMinionList().spawnMinions(_minions);
 			}
 			_spawnedNpcs.add(npc);
 			
@@ -491,6 +654,11 @@ public class NpcSpawnTemplate implements Cloneable, IParameterized<StatSet>
 	public void notifyNpcDeath(Npc npc, Creature killer)
 	{
 		_spawnTemplate.notifyEvent(event -> event.onSpawnNpcDeath(_spawnTemplate, _group, npc, killer));
+	}
+	
+	public int getHighZ()
+	{
+		return _zone != null ? _zone.getHighZ() : Integer.MAX_VALUE;
 	}
 	
 	@Override

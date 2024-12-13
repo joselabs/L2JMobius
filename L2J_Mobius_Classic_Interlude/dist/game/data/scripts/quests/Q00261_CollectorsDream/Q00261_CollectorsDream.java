@@ -108,9 +108,12 @@ public class Q00261_CollectorsDream extends Quest
 					{
 						if (getQuestItemsCount(player, SPIDER_LEG) >= MAX_LEG_COUNT)
 						{
-							giveNewbieReward(player);
-							giveAdena(player, 700, true);
-							qs.exitQuest(true, true);
+							if (!player.isSimulatingTalking())
+							{
+								giveNewbieReward(player);
+								giveAdena(player, 700, true);
+								qs.exitQuest(true, true);
+							}
 							htmltext = "30222-05.html";
 						}
 						break;

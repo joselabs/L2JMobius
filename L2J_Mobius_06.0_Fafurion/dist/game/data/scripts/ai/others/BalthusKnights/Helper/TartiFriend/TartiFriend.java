@@ -264,7 +264,7 @@ public final class TartiFriend extends AbstractNpcAI
 	
 	public void onCreatureDamageReceived(OnCreatureDamageReceived event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Instance instance = npc.getInstanceWorld();
 		final Npc tarti = instance.getNpc(TARTI_FRIEND);
 		

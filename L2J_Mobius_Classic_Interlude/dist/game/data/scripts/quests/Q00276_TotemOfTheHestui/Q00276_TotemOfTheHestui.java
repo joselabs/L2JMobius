@@ -152,12 +152,15 @@ public class Q00276_TotemOfTheHestui extends Quest
 					{
 						if (hasQuestItems(player, KASHA_CRYSTAL))
 						{
-							Q00261_CollectorsDream.giveNewbieReward(player);
-							for (int reward : REWARDS)
+							if (!player.isSimulatingTalking())
 							{
-								rewardItems(player, reward, 1);
+								Q00261_CollectorsDream.giveNewbieReward(player);
+								for (int reward : REWARDS)
+								{
+									rewardItems(player, reward, 1);
+								}
+								qs.exitQuest(true, true);
 							}
-							qs.exitQuest(true, true);
 							htmltext = "30571-05.html";
 						}
 						break;

@@ -18,7 +18,6 @@ package org.l2jmobius.gameserver.model.cubic.conditions;
 
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.instance.Door;
 import org.l2jmobius.gameserver.model.cubic.Cubic;
 
 /**
@@ -40,7 +39,7 @@ public class HpCondition implements ICubicCondition
 	{
 		if (target.isCreature() || target.isDoor())
 		{
-			final double hpPer = (target.isDoor() ? (Door) target : (Creature) target).getCurrentHpPercent();
+			final double hpPer = (target.isDoor() ? target.asDoor() : target.asCreature()).getCurrentHpPercent();
 			switch (_type)
 			{
 				case GREATER:

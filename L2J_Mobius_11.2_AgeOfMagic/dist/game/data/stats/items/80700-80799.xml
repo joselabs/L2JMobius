@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="80700" name="Bloodthirsty Zariche Slasher" type="Weapon">
 		<!-- A weapon created from Demonic Sword Zariche. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Zariche's Blood to Kaysia in Oren to get a Bloodstained Zariche weapon. -->
@@ -88,9 +88,6 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;66;120" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1188</stat>
 			<stat type="mAtk">517</stat>
@@ -100,6 +97,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="80704" name="Bloodthirsty Zariche Thrower" type="Weapon">
 		<!-- A weapon created from Demonic Sword Zariche. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Zariche's Blood to Kaysia in Oren to get a Bloodstained Zariche weapon. -->
@@ -313,7 +313,7 @@
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="time" val="10080" />
 		<skills>
-			<skill id="39534" level="1" /> <!-- Vitality Maintaining Rune (30-day) -->
+			<skill id="39534" level="1" /> <!-- Red Libra Blessing (7-day) -->
 		</skills>
 	</item>
 	<item id="80713" name="Zariche Shaper" type="Weapon">
@@ -396,9 +396,6 @@
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="rhand" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">752</stat>
 			<stat type="mAtk">414</stat>
@@ -407,6 +404,9 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="80717" name="Zariche Fighter" type="Weapon">
 		<!-- Changes a fist weapon's appearance to that of Zariche. -->
@@ -759,9 +759,6 @@
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="rhand" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">752</stat>
 			<stat type="mAtk">414</stat>
@@ -770,6 +767,9 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="80733" name="Akamanah Fighter" type="Weapon">
 		<!-- Changes a fist weapon's appearance to that of Akamanah. -->
@@ -1082,7 +1082,7 @@
 			<player MinimumVitalityPoints="35000" />
 		</cond>
 		<skills>
-			<skill id="39489" level="1" /> <!-- PA Storm Scroll -->
+			<skill id="39489" level="1" /> <!-- PA Scroll of Storm -->
 		</skills>
 	</item>
 	<item id="80747" name="PA Honey Dark Beer" type="EtcItem">
@@ -1121,7 +1121,7 @@
 		<set name="is_freightable" val="true" />
 		<set name="reuse_delay" val="300000" />
 		<skills>
-			<skill id="39491" level="1" /> <!-- Glowing Dragon's Attribute Potion -->
+			<skill id="39491" level="1" /> <!-- PA Glowing Dragon's Attribute Potion -->
 		</skills>
 	</item>
 	<item id="80749" name="PA Artifact - P. Atk. (Balance)" type="Armor">
@@ -1207,7 +1207,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80756" name="PA - +7 Shiny Elemental Shirt" type="Armor">
-		<!-- For PA. 2-hour item. A shining magic T-shirt imbued with Einhasad's Energy. <Item Skill>. M. Def. +15. Speed +7. Max HP +536, Max MP +536, Skill MP Consumption -3%, Damage Reflection Resistance +5. Vampiric Rage 5%, Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24. STR/ DEX/ CON/ INT/ WIT/ MEN +3. <Active Skill>. Einhasad's Wrath/ Einsahad's Protection. Cannot be enchanted. -->
+		<!-- PA only. Available for 2 h. A shining magic shirt imbued with Einhasad's energy. <Item skills>. M. Def. +15. Speed +7. Max HP +536, Max MP +536, Skill MP Consumption -3%, Damage Reflection Resistance +5, Vampiric Rage effect +5%, Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24, STR +3, DEX +3, CON +3, INT +3, WIT +3, MEN +3. <Active skill>. Einhasad's Wrath/ Einsahad's Shelter. Cannot be enchanted. -->
 		<set name="icon" val="icon.ainhasard_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1218,14 +1218,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
-		<skills>
-			<skill id="13562" level="7" /> <!-- Enchant Effect: Shiny Elemental Shirt Lv. 7 -->
-			<skill id="13563" level="2" /> <!-- Einhasad's Wrath -->
-			<skill id="13564" level="1" /> <!-- Einhasad's Protection -->
-		</skills>
 		<stats>
 			<stat type="pDef">28</stat>
 		</stats>
+		<skills>
+			<skill id="13562" level="7" /> <!-- Shiny Elemental Shirt: Enchant Effect -->
+			<skill id="13563" level="2" /> <!-- Einhasad's Wrath -->
+			<skill id="13564" level="1" /> <!-- Einhasad's Shelter -->
+		</skills>
 	</item>
 	<item id="80757" name="+7 Physical Reflect Shirt - PA" type="Armor">
 		<!-- PA. For 2 h. A magical t-shirt specialized for physical defense. <Item Skill>. M. Def. +15. Speed +7. Max HP/ MP +536. Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24. STR/ DEX/ CON/ INT/ WIT/ MEN +3. P. Def. +8%. Received Critical Damage from standard attacks -12%. Has a 7% chance to reflect physical skill debuffs. Cannot be enchanted. -->
@@ -1270,7 +1270,7 @@
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39492" level="1" /> <!-- PA Angler's Blessing - 1-hr -->
+			<skill id="39492" level="1" /> <!-- PA Angler's Blessing (1-hour) -->
 		</skills>
 	</item>
 	<item id="80760" name="PA Blue Potion - Fishing XP Bonus" type="EtcItem">
@@ -1438,7 +1438,7 @@
 		<set name="is_freightable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="47805" min="2" max="2" chance="100" /> <!-- Scroll: Enchant Brilliant Elemental Shirt -->
+			<item id="47805" min="2" max="2" chance="100" /> <!-- Shining Scroll: Enchant Shirt -->
 		</capsuled_items>
 	</item>
 	<item id="80771" name="PA Event Box" type="EtcItem">

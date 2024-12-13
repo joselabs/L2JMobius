@@ -34,6 +34,6 @@ public class OpNotOlympiadSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return (caster.isPlayer() && !caster.getActingPlayer().isInOlympiadMode());
+		return (caster.isPlayer() && !caster.asPlayer().isInOlympiadMode());
 	}
 }

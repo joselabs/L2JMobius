@@ -3,32 +3,36 @@
 	<skill id="1800" toLevel="1" name="Transformation: Pirate">
 		<!-- Max HP +3%. Max MP +3%. P. Atk. +2%. M. Atk. +2%. P. Def. +2%. M. Def. +2%. Atk. Spd. +2%. P. Accuracy +1. M. Accuracy +1. M. Skill Critical Rate +10. Speed +3. <Story>. This pirate once ruled the ancient lands of Giran. His own crew started a riot, but didn't manage to cope with their captain that became even more powerful with the dark forces. Zaken killed all of the remaining rebels and disappeared. -->
 		<icon>icon.skill1800</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CHANGEBODY</abnormalType>
 		<abnormalVisualEffect>PIRATE_SUIT</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<canBeDispelled>false</canBeDispelled>
+		<coolTime>500</coolTime>
 		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>20</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>45</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>7200000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<coolTime>500</coolTime>
-		<hitTime>500</hitTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>3031</itemConsumeId>
-		<itemConsumeCount>20</itemConsumeCount>
 		<conditions>
 			<condition name="OpNotAffectedBySkill">
 				<skillId>1801</skillId> <!-- Dark Assassin Transformation -->
 			</condition>
 			<condition name="OpNotAffectedBySkill">
 				<skillId>1802</skillId> <!-- White Assassin Transformation -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>54102</skillId> <!-- White Guardian Transformation -->
 			</condition>
 		</conditions>
 		<effects>
@@ -48,11 +52,11 @@
 				<amount>1</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -81,32 +85,36 @@
 	<skill id="1801" toLevel="1" name="Dark Assassin Transformation">
 		<!-- Max HP +5%. Max MP +5%. P. Atk. +2%. M. Atk. +2%. P. Def. +2%. M. Def. +2%. Atk. Spd. +3%. P. Accuracy +1. M. Accuracy +1. M. Skill Critical Rate +10. Speed +4. <Story>. A powerful organization of assassins founded by Mercenary Captain Sieghardt Ein to carry out secret missions. After becoming the leader of the Dawn, Sieghardt Ein disappeared without a trace, but the society continues to operate from the shadows. -->
 		<icon>icon.skill1801</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CHANGEBODY</abnormalType>
 		<abnormalVisualEffect>DARK_ASSASSIN_SUIT</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<canBeDispelled>false</canBeDispelled>
+		<coolTime>500</coolTime>
 		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>20</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>60</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>7200000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<coolTime>500</coolTime>
-		<hitTime>500</hitTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>3031</itemConsumeId>
-		<itemConsumeCount>20</itemConsumeCount>
 		<conditions>
 			<condition name="OpNotAffectedBySkill">
 				<skillId>1800</skillId> <!-- Transformation: Pirate -->
 			</condition>
 			<condition name="OpNotAffectedBySkill">
 				<skillId>1802</skillId> <!-- White Assassin Transformation -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>54102</skillId> <!-- White Guardian Transformation -->
 			</condition>
 		</conditions>
 		<effects>
@@ -126,11 +134,11 @@
 				<amount>1</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -159,32 +167,36 @@
 	<skill id="1802" toLevel="1" name="White Assassin Transformation">
 		<!-- Max HP +7%. Max MP +7%. P. Atk. +3%. M. Atk. +3%. P. Def. +3%. M. Def. +3%. Atk. Spd. +5%. P. Accuracy +2. M. Accuracy +2. M. Skill Critical Rate +20. Speed +5. <Story>. Erica Ken Weber, the noblewoman from Rune, was the right hand of Sieghardt Ein. She strongly opposed the dark assassin branch of the society. As a counter to it, she created an order of white assassins acting as their informer. -->
 		<icon>icon.skill1802</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CHANGEBODY</abnormalType>
 		<abnormalVisualEffect>WHITE_ASSASSIN_SUIT</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<canBeDispelled>false</canBeDispelled>
+		<coolTime>500</coolTime>
 		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>40</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>70</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<coolTime>500</coolTime>
-		<hitTime>500</hitTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>3031</itemConsumeId>
-		<itemConsumeCount>40</itemConsumeCount>
 		<conditions>
 			<condition name="OpNotAffectedBySkill">
 				<skillId>1800</skillId> <!-- Transformation: Pirate -->
 			</condition>
 			<condition name="OpNotAffectedBySkill">
 				<skillId>1801</skillId> <!-- Dark Assassin Transformation -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>54102</skillId> <!-- White Guardian Transformation -->
 			</condition>
 		</conditions>
 		<effects>
@@ -204,11 +216,11 @@
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -237,17 +249,18 @@
 	<skill id="1810" toLevel="1" name="Adventurer - Might">
 		<!-- For 20 min., P. Atk. +15% -->
 		<icon>icon.skill1068</icon>
-		<abnormalTime>1200</abnormalTime>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>379</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>379</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<value>15</value>
 				<mode>PER</mode>
 			</effect>
@@ -257,14 +270,15 @@
 		<!-- For 20 min., P. Def. +15% -->
 		<icon>icon.skill1040</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>418</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>418</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="PhysicalDefence">
 				<value>15</value>
@@ -276,14 +290,15 @@
 		<!-- For 20 min., Speed +33 -->
 		<icon>icon.skill1204</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>285</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>285</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="Speed">
 				<value>33</value>
@@ -294,10 +309,11 @@
 		<!-- Teleports to the nearest village. Cannot be used in special places such as the GM Consultation Service. -->
 		<icon>Icon.skill1050</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<hitTime>1500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
 		<reuseDelay>75000</reuseDelay>
-		<mpConsume>12</mpConsume>
 		<effects>
 			<effect name="Escape">
 				<escapeType>TOWN</escapeType>
@@ -308,14 +324,15 @@
 		<!-- For 20 min., P. Critical Rate +30% -->
 		<icon>icon.skill1077</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>495</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="CriticalRate">
 				<value>30</value>
@@ -327,14 +344,15 @@
 		<!-- For 20 min., P. Critical Damage +35% -->
 		<icon>icon.skill1242</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>532</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>532</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="CriticalDamage">
 				<value>35</value>
@@ -346,14 +364,15 @@
 		<!-- For 20 min., P. Accuracy +4 -->
 		<icon>icon.skill1240</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>532</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>532</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="Accuracy">
 				<value>4</value>
@@ -364,13 +383,14 @@
 		<!-- Momentarily recovers the target's HP. Power 301. -->
 		<icon>icon.skill1011</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>600</castRange>
-		<hitTime>5000</hitTime>
-		<reuseDelay>3000</reuseDelay>
-		<effectPoint>301</effectPoint>
-		<mpConsume>52</mpConsume>
 		<targetType>TARGET</targetType>
+		<castRange>600</castRange>
+		<effectPoint>301</effectPoint>
+		<hitTime>5000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>42</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>3000</reuseDelay>
 		<effects>
 			<effect name="Heal">
 				<power>301</power>
@@ -381,14 +401,15 @@
 		<!-- For 20 min., Atk. Spd. +33% -->
 		<icon>icon.skill1086</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>495</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<value>33</value>
@@ -400,14 +421,15 @@
 		<!-- For 20 min., Casting Spd. +30% -->
 		<icon>icon.skill1085</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>457</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>457</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="MagicalAttackSpeed">
 				<value>30</value>
@@ -419,14 +441,15 @@
 		<!-- For 20 min., with a certain chance, absorbs 9% of the inflicted damage as HP. -->
 		<icon>icon.skill1268</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>646</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>646</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="VampiricAttack">
 				<amount>9</amount>
@@ -438,16 +461,17 @@
 		<!-- For 20 min., M. Atk. +75% -->
 		<icon>icon.skill1059</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>495</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
@@ -457,14 +481,15 @@
 		<!-- For 20 min., MP Consumption for physical skills -20%, MP Consumption for magical skills -10%, and song/ dance skill's MP consumption -20%. -->
 		<icon>icon.skill1397</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>655</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>655</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="MagicMpCost">
 				<amount>-10</amount>
@@ -486,14 +511,15 @@
 		<!-- For 20 min., P. Evasion +4 -->
 		<icon>icon.skill1087</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>495</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="PhysicalEvasion">
 				<amount>4</amount>
@@ -504,14 +530,15 @@
 		<!-- For 20 min., overweight limit +9000 -->
 		<icon>icon.skill1257</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
 		<targetType>TARGET</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<castRange>400</castRange>
+		<effectPoint>495</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>9000</amount>
@@ -522,31 +549,32 @@
 		<!-- Recovers MP up to 94 power depending on the target's level. -->
 		<icon>icon.skill1013</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>6000</hitTime>
-		<reuseDelay>3000</reuseDelay>
-		<effectPoint>655</effectPoint>
-		<mpConsume>98</mpConsume>
 		<targetType>TARGET</targetType>
+		<castRange>400</castRange>
+		<effectPoint>655</effectPoint>
+		<hitTime>6000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>78</mpConsume>
+		<mpInitialConsume>20</mpInitialConsume>
+		<reuseDelay>3000</reuseDelay>
 		<effects>
 			<effect name="ManaHealByLevel">
 				<power>94</power>
 			</effect>
 		</effects>
-
 	</skill>
 	<skill id="1826" toLevel="1" name="Adventurer - Greater Heal">
 		<!-- Immediately restores the target's HP with 506 Power. -->
 		<icon>icon.skill1217</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>600</castRange>
-		<hitTime>5000</hitTime>
-		<reuseDelay>3000</reuseDelay>
-		<effectPoint>365</effectPoint>
-		<mpConsume>83</mpConsume>
 		<targetType>TARGET</targetType>
+		<castRange>600</castRange>
+		<effectPoint>365</effectPoint>
+		<hitTime>5000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>66</mpConsume>
+		<mpInitialConsume>17</mpInitialConsume>
+		<reuseDelay>3000</reuseDelay>
 		<effects>
 			<effect name="Heal">
 				<power>506</power>
@@ -559,26 +587,30 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1828" toLevel="2" name="Transformation Protection">
-		<!-- P. Def. Enhance at Transformation. -->
+		<!-- Level 1: P. Def. Enhance at Transformation. -->
+		<!-- Level 2: Increases P./ M. Def. during Transformation. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1829" toLevel="4" name="Spell Master">
-		<!-- M. Atk. +10. Casting Spd. +50 -->
+		<!-- Level 1: M. Atk. +10. Casting Spd. +50 -->
+		<!-- Level 2: M. Atk. +30. Casting Spd. +50 -->
+		<!-- Level 3: M. Atk. +50. Casting Spd. +50 -->
+		<!-- Level 4: M. Atk. +80. Casting Spd. +50 -->
 		<icon>icon.skill1901</icon>
+		<operateType>P</operateType>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">60</value>
 			<value level="3">70</value>
 			<value level="4">80</value>
 		</magicLevel>
-		<operateType>P</operateType>
 		<effects>
 			<effect name="MagicalAttackSpeed">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">30</value>
@@ -590,16 +622,24 @@
 		</effects>
 	</skill>
 	<skill id="1830" toLevel="4" name="Spell Master">
-		<!-- M. Atk. +10. Casting Spd. +50 -->
+		<!-- Level 1: M. Atk. +10. Casting Spd. +50 -->
+		<!-- Level 2: M. Atk. +30. Casting Spd. +50 -->
+		<!-- Level 3: M. Atk. +50. Casting Spd. +50 -->
+		<!-- Level 4: M. Atk. +80. Casting Spd. +50 -->
 		<icon>icon.skill1908</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
+		<magicLevel>
+			<value level="1">40</value>
+			<value level="2">60</value>
+			<value level="3">70</value>
+			<value level="4">80</value>
+		</magicLevel>
 		<effects>
 			<effect name="MagicalAttackSpeed">
-				<amount>13</amount>
+				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">30</value>
@@ -611,16 +651,24 @@
 		</effects>
 	</skill>
 	<skill id="1831" toLevel="4" name="Spell Master">
-		<!-- M. Atk. +10. Casting Spd. +50 -->
+		<!-- Level 1: M. Atk. +10. Casting Spd. +50 -->
+		<!-- Level 2: M. Atk. +30. Casting Spd. +50 -->
+		<!-- Level 3: M. Atk. +50. Casting Spd. +50 -->
+		<!-- Level 4: M. Atk. +80. Casting Spd. +50 -->
 		<icon>icon.skill1911</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
+		<magicLevel>
+			<value level="1">40</value>
+			<value level="2">60</value>
+			<value level="3">70</value>
+			<value level="4">80</value>
+		</magicLevel>
 		<effects>
 			<effect name="MagicalAttackSpeed">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">30</value>
@@ -632,16 +680,24 @@
 		</effects>
 	</skill>
 	<skill id="1832" toLevel="4" name="Spell Master">
-		<!-- M. Atk. +10. Casting Spd. +50 -->
+		<!-- Level 1: M. Atk. +10. Casting Spd. +50 -->
+		<!-- Level 2: M. Atk. +30. Casting Spd. +50 -->
+		<!-- Level 3: M. Atk. +50. Casting Spd. +50 -->
+		<!-- Level 4: M. Atk. +80. Casting Spd. +50 -->
 		<icon>icon.skill1916</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
+		<magicLevel>
+			<value level="1">40</value>
+			<value level="2">60</value>
+			<value level="3">70</value>
+			<value level="4">80</value>
+		</magicLevel>
 		<effects>
 			<effect name="MagicalAttackSpeed">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">30</value>
@@ -655,22 +711,22 @@
 	<skill id="1833" toLevel="1" name="Mount Golden Lion">
 		<!-- Allows to mount Golden Lion. -->
 		<icon>icon.skill1833</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1000</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>160</transformId>
@@ -685,22 +741,22 @@
 	<skill id="1834" toLevel="1" name="Mount Pegasus">
 		<!-- Allows to mount Pegasus. -->
 		<icon>icon.skill1834</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1000</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>161</transformId>
@@ -715,22 +771,22 @@
 	<skill id="1835" toLevel="1" name="Mount Saber-toothed Cougar">
 		<!-- Allows to mount Saber-toothed Cougar. -->
 		<icon>icon.skill1835</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1000</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>162</transformId>
@@ -745,22 +801,22 @@
 	<skill id="1836" toLevel="1" name="Mount Kukuru">
 		<!-- Allows to mount Kukuru. -->
 		<icon>icon.skill1836</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1000</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>163</transformId>
@@ -775,22 +831,22 @@
 	<skill id="1837" toLevel="1" name="Mount Black Bear">
 		<!-- Allows to mount Black Bear. -->
 		<icon>icon.skill1837</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1000</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>164</transformId>
@@ -806,296 +862,325 @@
 		<!-- PA only. For 10 min., a party member's MP Recovery Rate +10%, M. Atk. +10%, M. Def. +10%, Casting Spd. +5%, Debuff Resistance +10%, Skill MP Consumption -3%. Consumes 10 Spirit Ore. -->
 		<icon>icon.skill1355</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>4000</reuseDelay>
 		<effectPoint>666</effectPoint>
-		<mpConsume>72</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>58</mpConsume>
+		<mpInitialConsume>14</mpInitialConsume>
+		<reuseDelay>4000</reuseDelay>
 	</skill>
 	<skill id="1839" toLevel="1" name="Adventurer - Prophecy of Fire">
 		<!-- PA only. For 10 min., a party member's Max HP +10%, HP Recovery Rate +10%, P. Atk. +10%, P. Def. +10%, Speed +5%, Debuff Resistance +10%. Consumes 10 Spirit Ore. -->
 		<icon>icon.skill1356</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>4000</reuseDelay>
 		<effectPoint>666</effectPoint>
-		<mpConsume>72</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>58</mpConsume>
+		<mpInitialConsume>14</mpInitialConsume>
+		<reuseDelay>4000</reuseDelay>
 	</skill>
 	<skill id="1840" toLevel="1" name="Adventurer - Prophecy of Wind">
 		<!-- PA only. For 10 min., a party member's. P./ M. Accuracy +3, P./ M. Evasion +3, P. Critical Rate/ M. Skill Critical Rate +10%, P. Critical Damage/ M. Skill Critical Damage +15%, Speed +10%, Debuff Resistance +10%, damage to Raid Bosses +15%. Consumes 10 Spirit Ore. -->
 		<icon>icon.skill1357</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>4000</reuseDelay>
 		<effectPoint>666</effectPoint>
-		<mpConsume>72</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>58</mpConsume>
+		<mpInitialConsume>14</mpInitialConsume>
+		<reuseDelay>4000</reuseDelay>
 	</skill>
 	<skill id="1841" toLevel="1" name="Adventurer - Might">
 		<!-- For 20 min., P. Atk. +15%. PA only. -->
 		<icon>icon.skill1068</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>379</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1842" toLevel="1" name="Adventurer - Shield">
 		<!-- For 20 min., P.Def +15%. PA only. -->
 		<icon>icon.skill1040</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>418</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1843" toLevel="1" name="Adventurer - Wind Walk">
 		<!-- For 20 min., Speed +33. PA only. -->
 		<icon>icon.skill1204</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>285</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1844" toLevel="1" name="Adventurer - Return">
 		<!-- Teleports to the nearest village. Cannot be used in special places such as the GM Consultation Service. PA only. -->
 		<icon>Icon.skill1050</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<hitTime>1500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
 		<reuseDelay>75000</reuseDelay>
-		<mpConsume>12</mpConsume>
 	</skill>
 	<skill id="1845" toLevel="1" name="Adventurer - Focus">
 		<!-- For 20 min., P. Critical Rate +30%. PA only. -->
 		<icon>icon.skill1077</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1846" toLevel="1" name="Adventurer - Death Whisper">
 		<!-- For 20 min., P. Critical Damage +35%. PA only. -->
 		<icon>icon.skill1242</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>532</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1847" toLevel="1" name="Adventurer - Guidance">
 		<!-- For 20 min., P. Accuracy +4. PA only. -->
 		<icon>icon.skill1240</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>532</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1848" toLevel="1" name="Adventurer - Heal">
 		<!-- Momentarily recovers the target's HP with 301 power. PA only. -->
 		<icon>icon.skill1011</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>600</castRange>
-		<hitTime>5000</hitTime>
-		<reuseDelay>3000</reuseDelay>
 		<effectPoint>301</effectPoint>
-		<mpConsume>52</mpConsume>
+		<hitTime>5000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>42</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="1849" toLevel="1" name="Adventurer - Haste">
 		<!-- For 20 min., Atk. Spd +33%. PA only. -->
 		<icon>icon.skill1086</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1850" toLevel="1" name="Adventurer - Acumen">
 		<!-- For 20 min., Casting Spd +30%. PA only. -->
 		<icon>icon.skill1085</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>457</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1851" toLevel="1" name="Adventurer - Vampiric Rage">
 		<!-- For 20 min., with a certain chance, absorbs 5% of the inflicted damage as HP. PA only. -->
 		<icon>icon.skill1268</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>646</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1852" toLevel="1" name="Adventurer - Empower">
 		<!-- For 20 min., M. Atk. +75%. PA only. -->
 		<icon>icon.skill1059</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1853" toLevel="1" name="Adventurer - Clarity">
 		<!-- For 60 min., P. Skill MP Consumption -20%, M. Skill MP Consumption -10%, Song/ Dance MP Consumption -20%. PA only. -->
 		<icon>icon.skill1397</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>655</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1854" toLevel="1" name="Adventurer - Agility">
 		<!-- For 20 min., P. Evasion +4. PA only. -->
 		<icon>icon.skill1087</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1855" toLevel="1" name="Adventurer - Decrease Weight">
 		<!-- For 20 min., overweight limit +9000. PA only. -->
 		<icon>icon.skill1257</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>495</effectPoint>
-		<mpConsume>12</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>10</mpConsume>
+		<mpInitialConsume>2</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1856" toLevel="1" name="Adventurer - Recharge">
 		<!-- Recovers up to 94 MP depending on the target's level. PA only. -->
 		<icon>icon.skill1013</icon>
-		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>400</castRange>
-		<hitTime>6000</hitTime>
-		<reuseDelay>3000</reuseDelay>
-		<effectPoint>655</effectPoint>
-		<mpConsume>98</mpConsume>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<reuseDelay>40000</reuseDelay>
+		<effects>
+			<effect name="ManaHealPercent">
+				<power>100</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="1857" toLevel="1" name="Adventurer - Greater Heal">
 		<!-- Momentarily recovers the target's HP with 506 power. PA only. -->
 		<icon>icon.skill1217</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>600</castRange>
-		<hitTime>5000</hitTime>
-		<reuseDelay>3000</reuseDelay>
 		<effectPoint>365</effectPoint>
-		<mpConsume>83</mpConsume>
+		<hitTime>5000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>66</mpConsume>
+		<mpInitialConsume>17</mpInitialConsume>
+		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="1858" toLevel="1" name="Adventurer - Blessed Body">
 		<!-- For 20 min., Max HP +25%. PA only. -->
 		<icon>icon.skill1045</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>646</effectPoint>
-		<mpConsume>52</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>42</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1859" toLevel="1" name="Adventurer - Blessed Soul">
 		<!-- For 20 min., Max MP +25%. PA only. -->
 		<icon>icon.skill1048</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>635</effectPoint>
-		<mpConsume>52</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>42</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1860" toLevel="1" name="Adventurer - Shock Resistance">
 		<!-- For 20 min., Stun Resistance +15%. PA only. -->
 		<icon>icon.skill1259</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>646</effectPoint>
-		<mpConsume>35</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>28</mpConsume>
+		<mpInitialConsume>7</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1861" toLevel="1" name="Adventurer - Advanced Block">
 		<!-- For 20 min., Shield Defense +20%. PA only. -->
 		<icon>icon.skill1304</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>714</effectPoint>
-		<mpConsume>49</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>39</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1862" toLevel="1" name="Adventurer - Wild Magic">
 		<!-- PA only. Shield M. Skill Critical Rate +10 for 20 min. -->
 		<icon>icon.skill1303</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>635</effectPoint>
-		<mpConsume>58</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>46</mpConsume>
+		<mpInitialConsume>12</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
-	<skill id="1863" toLevel="1" name="Adventurer - Stigma of Shillien">
+	<skill id="1863" toLevel="1" name="Adventurer - Shillien's Stigma">
 		<!-- For 30 sec., Melee Weapon Resistance -24, M. Def. -12. PA only. -->
 		<icon>icon.skill1539</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
 		<castRange>900</castRange>
-		<hitTime>1500</hitTime>
-		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-635</effectPoint>
-		<mpConsume>24</mpConsume>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
+		<mpConsume>19</mpConsume>
+		<mpInitialConsume>5</mpInitialConsume>
+		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="1864" toLevel="1" name="Adventurer - Berserker Spirit">
 		<!-- For 20 min., a party member's P. Def. -8%, M. Def. -16%, P. Evasion -4, P. Atk. +8%, M. Atk. +16%, Atk. Spd. +8%, Casting Spd. +8%, Speed +8. For PA. -->
 		<icon>icon.skill1062</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>400</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>495</effectPoint>
-		<mpConsume>48</mpConsume>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>38</mpConsume>
+		<mpInitialConsume>10</mpInitialConsume>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="1865" toLevel="1" name="Transformation Attack">
 		<!-- Increases P. Atk. during Transformation. -->
@@ -1103,7 +1188,13 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="1867" toLevel="7" name="Clan's Exuberance">
-		<!-- HP/ MP/ CP Recovery Rate +4%. Acquired XP/ SP +5%. Sayha's Grace Consumption -5% -->
+		<!-- Level 1: HP/ MP/ CP Recovery Rate +4%. Acquired XP/ SP +5%. Sayha's Grace Consumption -5% -->
+		<!-- Level 2: HP/ MP/ CP Recovery Rate +8%. Acquired XP/ SP +5%. Sayha's Grace Consumption -8% -->
+		<!-- Level 3: HP/ MP/ CP Recovery Rate +12%. Acquired XP/ SP +10%. Sayha's Grace Consumption -15% -->
+		<!-- Level 4: HP/ MP/ CP Recovery Rate +20%. Acquired XP/ SP +20%. Acquired attribute XP +15%. Sayha's Grace Consumption -20% -->
+		<!-- Level 5: HP/ MP/ CP Recovery Rate +30%. Acquired XP/ SP +30%. Acquired attribute XP +20%. Sayha's Grace Consumption -20%. Stun/ Fear/ Paralysis Atk. Rate +5% -->
+		<!-- Level 6: HP/ MP/ CP Recovery Rate +35%. Acquired XP/ SP +33%. Acquired attribute XP +25%. Sayha's Grace Consumption -20%. Stun/ Fear/ Paralysis Atk. Rate +5% -->
+		<!-- Level 7: HP/ MP/ CP Recovery Rate +40%. Acquired XP/ SP +36%. Acquired attribute XP +30%. Sayha's Grace Consumption -20%. Stun/ Fear/ Paralysis Atk. Rate +5%. Adena drop rate +1% -->
 		<icon>icon.skill19014</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1238,8 +1329,8 @@
 		<!-- Unravels Cat's true potential. Damage to raid bosses +5%, Damage received from raid bosses -10%. -->
 		<icon>icon.skill1406</icon>
 		<operateType>P</operateType>
-		<magicLevel>81</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>81</magicLevel>
 		<effects>
 			<effect name="PveRaidPhysicalAttackDamageBonus">
 				<amount>5</amount>
@@ -1271,8 +1362,8 @@
 		<!-- Unravels Unicorn's true potential. Damage to raid bosses +10%, Damage received from raid bosses -5%. -->
 		<icon>icon.skill1407</icon>
 		<operateType>P</operateType>
-		<magicLevel>81</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>81</magicLevel>
 		<effects>
 			<effect name="PveRaidPhysicalAttackDamageBonus">
 				<amount>5</amount>
@@ -1304,8 +1395,8 @@
 		<!-- Unravels true spectral potential. Damage to raid bosses +15%. -->
 		<icon>icon.skill1408</icon>
 		<operateType>P</operateType>
-		<magicLevel>81</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>81</magicLevel>
 		<effects>
 			<effect name="PveRaidPhysicalAttackDamageBonus">
 				<amount>5</amount>
@@ -1334,8 +1425,13 @@
 		</effects>
 	</skill>
 	<skill id="1896" toLevel="4" name="Full Knockdown">
-		<!-- <Knockback skill>. Attacks the target with 4937 power, knocking them down for 3 sec. Ignores Shield Defense. Critical. -->
+		<!-- Level 1: <Knockback skill>. Attacks the target with 4937 power, knocking them down for 3 sec. Ignores Shield Defense. Critical. -->
+		<!-- Level 2: <Knockback skill>. Attacks the target with 5046 power, knocking them down for 3 sec. Ignores Shield Defense. Critical. -->
+		<!-- Level 3: <Knockback skill>. Attacks the target with 5154 power, knocking them down for 3 sec. Ignores Shield Defense. Critical. -->
+		<!-- Level 4: <Knockback skill>. Attacks the target with 5261 power, knocking them down for 3 sec. Ignores Shield Defense. Critical. -->
 		<icon>icon.skill1896</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1345,9 +1441,10 @@
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<activateRate>60</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>500</coolTime>
-		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>
 			<value level="1">-357</value>
 			<value level="2">-359</value>
@@ -1355,7 +1452,9 @@
 			<value level="4">-363</value>
 		</effectPoint>
 		<effectRange>400</effectRange>
-		<hitTime>1600</hitTime>
+		<hitTime>1690</hitTime>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">81</value>
 			<value level="2">82</value>
@@ -1368,12 +1467,7 @@
 			<value level="3">109</value>
 			<value level="4">110</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1381,12 +1475,13 @@
 					<item>BLUNT</item>
 					<item>POLE</item>
 					<item>FIST</item>
+					<item>DUALFIST</item>
 					<item>DUAL</item>
 				</weaponType>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">4937</value>
 					<value level="2">5046</value>
@@ -1413,8 +1508,24 @@
 		</effects>
 	</skill>
 	<skill id="1897" toLevel="15" name="Shillien's Mass Stigma">
-		<!-- Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -20%. M. Def. -10% -->
+		<!-- Level 1: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -20%. M. Def. -10% -->
+		<!-- Level 2: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -25%. M. Def. -15% -->
+		<!-- Level 3: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -30%. M. Def. -15% -->
+		<!-- Level 4: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -35%. M. Def. -20% -->
+		<!-- Level 5: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -40%. M. Def. -20% -->
+		<!-- Level 6: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -42%. M. Def. -25% -->
+		<!-- Level 7: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -44%. M. Def. -25% -->
+		<!-- Level 8: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -46%. M. Def. -25% -->
+		<!-- Level 9: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -48%. M. Def. -25% -->
+		<!-- Level 10: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -50%. M. Def. -25% -->
+		<!-- Level 11: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -52%. M. Def. -30% -->
+		<!-- Level 12: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -54%. M. Def. -30% -->
+		<!-- Level 13: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -56%. M. Def. -30% -->
+		<!-- Level 14: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -58%. M. Def. -30% -->
+		<!-- Level 15: Marks surrounding enemies with Shillien's stigma. Melee Weapon Resistance -60%. M. Def. -30% -->
 		<icon>icon.skill1897</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1435,10 +1546,13 @@
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>STIGMA_OF_SILEN</abnormalType>
 		<abnormalVisualEffect>STIGMA_OF_SILEN</abnormalVisualEffect>
-		<basicProperty>MAGIC</basicProperty>
-		<castRange>600</castRange>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<basicProperty>NONE</basicProperty>
+		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-2000</value>
 			<value level="2">-2500</value>
@@ -1456,10 +1570,11 @@
 			<value level="14">-4200</value>
 			<value level="15">-4250</value>
 		</effectPoint>
-		<effectRange>200</effectRange>
+		<effectRange>1200</effectRange>
 		<hitTime>1500</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">50</value>
@@ -1494,13 +1609,7 @@
 			<value level="14">159</value>
 			<value level="15">165</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -1700,10 +1809,24 @@
 		</effects>
 	</skill>
 	<skill id="1898" toLevel="9" name="Shield Charge">
-		<!-- <Shock skill>. Attacks the enemy with the shield. Power 2191. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 1: <Shock skill>. Attacks the enemy with the shield. Power 2191. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 2: <Shock skill>. Attacks the enemy with the shield. Power 2244. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 3: <Shock skill>. Attacks the enemy with the shield. Power 2296. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 4: <Shock skill>. Attacks the enemy with the shield. Power 2348. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 5: <Shock skill>. Attacks the enemy with the shield. Power 2400. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 6: <Shock skill>. Attacks the enemy with the shield. Power 2452. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 7: <Shock skill>. Attacks the enemy with the shield. Power 2504. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 8: <Shock skill>. Attacks the enemy with the shield. Power 2556. Stuns the enemies affected by the skill for 3 sec. -->
+		<!-- Level 9: <Shock skill>. Attacks the enemy with the shield. Power 2608. Stuns the enemies affected by the skill for 3 sec. -->
 		<icon>icon.skill1898</icon>
+		<operateType>DA1</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>FAN_PB</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
-		<castRange>40</castRange>
+		<castRange>50</castRange>
+		<coolTime>200</coolTime>
 		<effectPoint>
 			<value level="1">-5800</value>
 			<value level="2">-5875</value>
@@ -1718,6 +1841,7 @@
 		<effectRange>800</effectRange>
 		<fanRange>0;0;600;60</fanRange>
 		<hitTime>800</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">76</value>
 			<value level="2">77</value>
@@ -1741,18 +1865,13 @@
 			<value level="9">99</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>DA1</operateType>
-		<coolTime>200</coolTime>
 		<reuseDelay>60000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>FAN_PB</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<trait>SHOCK</trait>
 		<conditions>
 			<condition name="EquipShield" />
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">2191</value>
 					<value level="2">2244</value>

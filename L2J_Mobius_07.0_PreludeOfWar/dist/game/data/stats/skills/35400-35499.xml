@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="35400" toLevel="5" name="Demonic Sword Zariche">
 		<!-- Obtain Kill Points for killing PCs of Lv. 20+. The amount of Kill Points depends from your level:. 21-84 - 1 pt. / 85-99 - 10 pt. / 100-105 - 100 pt. / 106-110 - 500 pt. / 111+ - 700 pt. Kill Points for level up:. Lv. 2 - 15,000 / Lv. 3 - 45,000 / Lv. 4 - 90,000 / Lv. 5 - 180,000. At 23:59 the final owner receives 5 billion adena and additional adena according to their buff level:. Lv. 2 - 200 million / Lv. 3 - 500 million / Lv. 4 - 2 billion / Lv. 5 - 5 billion. The buff level is reset after death. -->
@@ -29,36 +29,36 @@
 		<icon>icon.die_effect_zariche1</icon>
 		<operateType>A1</operateType>
 		<coolTime>300</coolTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="35403" toLevel="1" name="Cry of Sword - Akamanah">
 		<!-- Skill to show the death effects of Akamanah's owner -->
 		<icon>icon.die_effect_aka_manaf1</icon>
 		<operateType>A1</operateType>
 		<coolTime>300</coolTime>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="35404" toLevel="1" name="Prison of Souls - Zariche">
 		<!-- Demonic Sword Zariche's strike has temporarily sealed your body. You are immobilized. Failing to destroy the Prison of Souls (Limit Barrier) within 2 min. will return you to the nearest village. The barrier is removed after receiving 540 hits. Others can't damage it. -->
 		<icon>icon.death_prison1</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ROOT_MAGICALLY</abnormalType> <!-- FIX: NOT RETAIL -->
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>80</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<castRange>900</castRange>
+		<effectPoint>0</effectPoint>
+		<isDebuff>true</isDebuff>
 		<isDebuff>true</isDebuff>
 		<trait>HOLD</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Root" />
 			<effect name="DefenceTrait">
@@ -70,21 +70,21 @@
 		<!-- Blood Sword Akamanah's strike has temporarily sealed your body. You are immobilized. Failing to destroy the Prison of Souls (Limit Barrier) within 2 min. will return you to the nearest village. The barrier is removed after receiving 540 hits. Others can't damage it. -->
 		<icon>icon.death_prison1</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ROOT_MAGICALLY</abnormalType> <!-- FIX: NOT RETAIL -->
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>80</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<castRange>900</castRange>
+		<effectPoint>0</effectPoint>
+		<isDebuff>true</isDebuff>
 		<isDebuff>true</isDebuff>
 		<trait>HOLD</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Root" />
 			<effect name="DefenceTrait">
@@ -96,11 +96,11 @@
 		<!-- Possessed by the sword's soul. Movement is restricted and does not suffer any damage. -->
 		<icon>icon.weapon_unique_zariche_i00</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Root" />
@@ -133,11 +133,11 @@
 		<!-- Possessed by the sword's soul. Movement is restricted and does not suffer any damage. -->
 		<icon>icon.weapon_aka_i00</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Root" />
@@ -1755,11 +1755,11 @@
 		<icon>icon.dyeeffect_tw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2226</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1770,11 +1770,11 @@
 		<icon>icon.dyeeffect_tw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2226</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1785,11 +1785,11 @@
 		<icon>icon.dyeeffect_sK_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1884</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1812,11 +1812,11 @@
 		<icon>icon.dyeeffect_sK_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1884</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1839,11 +1839,11 @@
 		<icon>icon.dyeeffect_or_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2483</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1858,11 +1858,11 @@
 		<icon>icon.dyeeffect_ya_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2483</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1877,11 +1877,11 @@
 		<icon>icon.dyeeffect_fw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>1309</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1892,11 +1892,11 @@
 		<icon>icon.dyeeffect_fw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>1309</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1907,19 +1907,19 @@
 		<icon>icon.dyeeffect_ws_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1199</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>654</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1938,11 +1938,11 @@
 		<icon>icon.dyeeffect_eh_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>1168</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1965,11 +1965,11 @@
 		<icon>icon.dyeeffect_ie_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2312</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1984,11 +1984,11 @@
 		<icon>icon.dyeeffect_sK_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1884</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2011,11 +2011,11 @@
 		<icon>icon.dyeeffect_ie_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2312</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2030,11 +2030,11 @@
 		<icon>icon.dyeeffect_or_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2483</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2049,11 +2049,11 @@
 		<icon>icon.dyeeffect_ya_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2483</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2068,11 +2068,11 @@
 		<icon>icon.dyeeffect_fw_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>1309</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2083,19 +2083,19 @@
 		<icon>icon.dyeeffect_ws_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1199</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>654</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2114,11 +2114,11 @@
 		<icon>icon.dyeeffect_eh_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>1168</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2141,11 +2141,11 @@
 		<icon>icon.dyeeffect_sK_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1884</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2168,11 +2168,11 @@
 		<icon>icon.dyeeffect_ie_slot_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2312</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>

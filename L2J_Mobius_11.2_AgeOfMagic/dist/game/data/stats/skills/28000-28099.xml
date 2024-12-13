@@ -1,7 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="28000" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- Acquired SP while hunting +4% -->
+		<!-- Level 1: Acquired SP while hunting +4% -->
+		<!-- Level 2: Acquired SP while hunting +4.5% -->
+		<!-- Level 3: Acquired SP while hunting +5% -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -15,7 +17,9 @@
 		</effects>
 	</skill>
 	<skill id="28001" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- Has a chance to recover 4% of damage as HP. -->
+		<!-- Level 1: Has a chance to recover 4% of damage as HP. -->
+		<!-- Level 2: Has a chance to recover 4.5% of damage as HP. -->
+		<!-- Level 3: Has a chance to recover 5% of damage as HP. -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -30,7 +34,9 @@
 		</effects>
 	</skill>
 	<skill id="28002" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- P. Skill MP Consumption -3% -->
+		<!-- Level 1: P. Skill MP Consumption -3% -->
+		<!-- Level 2: P. Skill MP Consumption -4% -->
+		<!-- Level 3: P. Skill MP Consumption -5% -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -46,7 +52,9 @@
 		</effects>
 	</skill>
 	<skill id="28003" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- M. Skill MP Consumption -3% -->
+		<!-- Level 1: M. Skill MP Consumption -3% -->
+		<!-- Level 2: M. Skill MP Consumption -4% -->
+		<!-- Level 3: M. Skill MP Consumption -5% -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -62,7 +70,9 @@
 		</effects>
 	</skill>
 	<skill id="28004" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- Reflects 7% of the received damage. -->
+		<!-- Level 1: Reflects 7% of the received damage. -->
+		<!-- Level 2: Reflects 8% of the received damage. -->
+		<!-- Level 3: Reflects 10% of the received damage. -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -76,7 +86,9 @@
 		</effects>
 	</skill>
 	<skill id="28005" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- Fixed Damage Resistance +5. -->
+		<!-- Level 1: Fixed Damage Resistance +5. -->
+		<!-- Level 2: Fixed Damage Resistance +7. -->
+		<!-- Level 3: Fixed Damage Resistance +10. -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -91,7 +103,9 @@
 		</effects>
 	</skill>
 	<skill id="28006" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- Has a 3% chance to return all status effects to the enemy. -->
+		<!-- Level 1: Has a 3% chance to return all status effects to the enemy. -->
+		<!-- Level 2: Has a 4% chance to return all status effects to the enemy. -->
+		<!-- Level 3: Has a 5% chance to return all status effects to the enemy. -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -117,8 +131,8 @@
 		<!-- A chance to inflict Silence when using attack skills -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
-		<magicLevel>99</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>99</magicLevel>
 		<effects>
 			<effect name="TriggerSkillByMagicType">
 				<magicTypes>0;1</magicTypes>
@@ -133,18 +147,18 @@
 		<!-- Skills are sealed momentarily because of Silence. Ignores debuff immunity. -->
 		<icon>icon.skill1064</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>1000</castRange>
-		<reuseDelay>300000</reuseDelay>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
-		<activateRate>100</activateRate>
 		<abnormalType>SILENCE</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY</targetType>
+		<activateRate>100</activateRate>
 		<affectScope>SINGLE</affectScope>
+		<castRange>1000</castRange>
+		<effectPoint>-100</effectPoint>
+		<isDebuff>true</isDebuff>
+		<isDebuff>true</isDebuff>
+		<reuseDelay>300000</reuseDelay>
 		<trait>DERANGEMENT</trait>
 		<effects>
 			<effect name="Mute" />
@@ -155,21 +169,20 @@
 		<!-- When receiving a fatal attack, CP/ HP recovers by 100% for 1 min. When the effect is applied the buff disappears. Can be used when the equipped cloak is +15 or higher. -->
 		<icon>icon.skill19211</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>1500</hitTime>
-		<coolTime>300</coolTime>
-		<reuseDelay>300000</reuseDelay>
-		<effectPoint>867</effectPoint>
-		<hitTime>1500</hitTime>
-		<coolTime>300</coolTime>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SHILLIEN_PROTECTION</abnormalType>
 		<abnormalVisualEffect>SHILLIEN_PROTECTION</abnormalVisualEffect>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>300</coolTime>
+		<coolTime>300</coolTime>
+		<effectPoint>867</effectPoint>
+		<hitTime>1500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="IgnoreDeath" />
 			<effect name="TriggerSkillByDeathBlow">
@@ -180,11 +193,13 @@
 		</effects>
 	</skill>
 	<skill id="28010" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- With a certain chance when hit, creates a barrier that absorbs 10000 damage. -->
+		<!-- Level 1: With a certain chance when hit, creates a barrier that absorbs 10000 damage. -->
+		<!-- Level 2: With a certain chance when hit, creates a barrier that absorbs 15000 damage. -->
+		<!-- Level 3: With a certain chance when hit, creates a barrier that absorbs 30000 damage. -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<chance>30</chance>
 				<allowSkillAttack>true</allowSkillAttack>
 				<allowNormalAttack>true</allowNormalAttack>
@@ -198,25 +213,27 @@
 		</effects>
 	</skill>
 	<skill id="28011" toLevel="3" name="Legendary Cloak - Barrier">
-		<!-- Creates a shield that absorbs 10000 damage for 10 sec. -->
+		<!-- Level 1: Creates a shield that absorbs 10000 damage for 10 sec. -->
+		<!-- Level 2: Creates a shield that absorbs 15000 damage for 10 sec. -->
+		<!-- Level 3: Creates a shield that absorbs 30000 damage for 10 sec. -->
 		<icon>icon.skill1514</icon>
 		<operateType>A2</operateType>
-		<hitTime>1000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>60000</reuseDelay>
-		<effectPoint>867</effectPoint>
-		<abnormalType>ABSORB</abnormalType>
-		<abnormalVisualEffect>AVE_ABSORB2_SHIELD</abnormalVisualEffect>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<magicLevel>99</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
+		<abnormalType>ABSORB</abnormalType>
+		<abnormalVisualEffect>AVE_ABSORB2_SHIELD</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<coolTime>500</coolTime>
+		<coolTime>500</coolTime>
+		<effectPoint>867</effectPoint>
+		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>99</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<reuseDelay>60000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="AbsorbDamage">
 				<damage>
@@ -229,7 +246,9 @@
 		</effects>
 	</skill>
 	<skill id="28012" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- P./ M. Skill Power +5%. -->
+		<!-- Level 1: P./ M. Skill Power +5%. -->
+		<!-- Level 2: P./ M. Skill Power +10%. -->
+		<!-- Level 3: P./ M. Skill Power +15%. -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -255,19 +274,19 @@
 		<!-- Resurrects from death fully recovered. Buffs remain after death, except for Noblesse Blessing and Lucky Charm effects. Can be used when the equipped cloak is enchanted to +15 or higher. -->
 		<icon>icon.skill11826</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>600</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>3600000</reuseDelay>
-		<effectPoint>867</effectPoint>
-		<abnormalLevel>2</abnormalLevel>
-		<abnormalType>RESURRECTION_SPECIAL</abnormalType>
-		<abnormalTime>3600</abnormalTime>
-		<staticReuse>true</staticReuse>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>RESURRECTION_SPECIAL</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>600</castRange>
+		<effectPoint>867</effectPoint>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>3600000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="EquippedCloakEnchant">
 				<amount>15</amount>
@@ -287,7 +306,7 @@
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<chance>5</chance>
 				<minDamage>100</minDamage>
 				<skillId>28015</skillId> <!-- Legendary Cloak - Spallation -->
@@ -299,16 +318,16 @@
 		<!-- For 30 sec., creates a distorted area around you that protects you from attacks and debuffs of enemies standing outside. Deals damage to enemies that attack you from inside the area. -->
 		<icon>icon.skill30515</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>NONE</abnormalType>
 		<abnormalVisualEffect>SPACEREF</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>180000</reuseDelay>
 		<effectPoint>379</effectPoint>
+		<hitTime>0</hitTime>
+		<reuseDelay>180000</reuseDelay>
 		<effects>
 			<effect name="SphericBarrier">
 				<amount>150</amount>
@@ -318,9 +337,9 @@
 	<skill id="28016" toLevel="1" name="Empire Legendary Cloak Augmentation">
 		<!-- Invincibility activated for 5 sec. if damage received when HP is below 30%. This effect is only activated once every 5 min. -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
+		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
-		<operateType>P</operateType>
 		<effects>
 			<effect name="TriggerSkillByHpPercent">
 				<skillId>28017</skillId> <!-- Legendary Cloak - Invincibility -->
@@ -332,20 +351,20 @@
 	<skill id="28017" toLevel="1" name="Legendary Cloak - Invincibility">
 		<!-- Grants invincibility. -->
 		<icon>icon.skill1917</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<magicLevel>99</magicLevel>
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<hitTime>200</hitTime>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>99</magicLevel>
 		<reuseDelay>300000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="RemainHpPer">
 				<amount>30</amount>
@@ -390,7 +409,7 @@
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<chance>5</chance>
 				<minDamage>100</minDamage>
 				<skillId>28019</skillId> <!-- Legendary Cloak - Spallation -->
@@ -402,16 +421,16 @@
 		<!-- For 15 sec., creates a distorted area around you that protects you from attacks and debuffs of enemies standing outside. You receive damage when attacked from inside the area. Speed +100. -->
 		<icon>icon.skill30515</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>NONE</abnormalType>
 		<abnormalVisualEffect>SPACEREF</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>300000</reuseDelay>
 		<effectPoint>379</effectPoint>
+		<hitTime>0</hitTime>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="SphericBarrier">
 				<amount>150</amount>
@@ -423,7 +442,9 @@
 		</effects>
 	</skill>
 	<skill id="28020" toLevel="3" name="Empire Legendary Cloak Augmentation">
-		<!-- Vitality bonus +2% -->
+		<!-- Level 1: Vitality bonus +2% -->
+		<!-- Level 2: Vitality bonus +10% -->
+		<!-- Level 3: Vitality bonus +20% -->
 		<icon>BranchIcon.icon.g_bm_cloak_mineral_normal</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -439,43 +460,43 @@
 	<skill id="28021" toLevel="1" name="Scroll: Enchant Cloak">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="28022" toLevel="1" name="Scroll: Enchant Cloak - Legendary">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="28023" toLevel="1" name="Scroll: Enchant Ancient Cloak">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="28024" toLevel="1" name="Spirit Stone Pack - Legendary">
 		<icon>icon.skill0000</icon>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>28602</itemConsumeId>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>28602</itemConsumeId>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -511,11 +532,14 @@
 			<value level="2">icon.bm_dragon_posion_brave</value>
 		</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28026" toLevel="4" name="+10 Legendary Elmoreden Cloak Box">
-		<!-- Double-click to obtain Legendary Elmoreden Cloak enchanted to +10. -->
+		<!-- Level 1: Double-click to obtain Legendary Elmoreden Cloak enchanted to +10. -->
+		<!-- Level 2: Double-click to obtain Legendary Aden Cloak enchanted to +10. -->
+		<!-- Level 3: Double-click to obtain Legendary Elmore Cloak enchanted to +10. -->
+		<!-- Level 4: Double-click to obtain Legendary Ferios Cloak enchanted to +10. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
@@ -524,13 +548,13 @@
 		<!-- Summons Agathion Virgo. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13410</npcId> <!-- Virgo -->
@@ -541,13 +565,13 @@
 		<!-- Summons Agathion Capricorn. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13412</npcId> <!-- Capricorn -->
@@ -558,13 +582,13 @@
 		<!-- Summons Agathion Libra. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13415</npcId> <!-- Libra -->
@@ -575,13 +599,13 @@
 		<!-- Summons Agathion Aries. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13411</npcId> <!-- Aries -->
@@ -592,13 +616,13 @@
 		<!-- Summons Agathion Taurus. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13418</npcId> <!-- Taurus -->
@@ -609,13 +633,13 @@
 		<!-- Summons Agathion Leo. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13414</npcId> <!-- Leo -->
@@ -626,13 +650,13 @@
 		<!-- Summons Agathion Gemini. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13413</npcId> <!-- Gemini -->
@@ -643,13 +667,13 @@
 		<!-- Summons Agathion Scorpio. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13417</npcId> <!-- Scorpio -->
@@ -660,13 +684,13 @@
 		<!-- Summons Agathion Aquarius. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13408</npcId> <!-- Aquarius -->
@@ -677,13 +701,13 @@
 		<!-- Summons Agathion Pisces. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13407</npcId> <!-- Pisces -->
@@ -694,13 +718,13 @@
 		<!-- Summons Agathion Sagittarius. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13416</npcId> <!-- Sagittarius -->
@@ -711,13 +735,13 @@
 		<!-- Summons Agathion Cancer. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13409</npcId> <!-- Cancer -->
@@ -728,13 +752,13 @@
 		<!-- Summons Agathion Virgo. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13488</npcId> <!-- Virgo -->
@@ -745,13 +769,13 @@
 		<!-- Summons Agathion Capricorn. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13490</npcId> <!-- Capricorn -->
@@ -762,13 +786,13 @@
 		<!-- Summons Agathion Libra. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13493</npcId> <!-- Libra -->
@@ -779,13 +803,13 @@
 		<!-- Summons Agathion Aries. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13489</npcId> <!-- Aries -->
@@ -796,13 +820,13 @@
 		<!-- Summons Agathion Taurus. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13496</npcId> <!-- Taurus -->
@@ -813,13 +837,13 @@
 		<!-- Summons Agathion Leo. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13492</npcId> <!-- Leo -->
@@ -830,13 +854,13 @@
 		<!-- Summons Agathion Gemini. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13491</npcId> <!-- Gemini -->
@@ -847,13 +871,13 @@
 		<!-- Summons Agathion Scorpio. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13495</npcId> <!-- Scorpio -->
@@ -864,13 +888,13 @@
 		<!-- Summons Agathion Aquarius. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13498</npcId> <!-- Aquarius -->
@@ -881,13 +905,13 @@
 		<!-- Summons Agathion Pisces. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13497</npcId> <!-- Pisces -->
@@ -898,13 +922,13 @@
 		<!-- Summons Agathion Sagittarius. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13494</npcId> <!-- Sagittarius -->
@@ -915,13 +939,13 @@
 		<!-- Summons Agathion Cancer. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13487</npcId> <!-- Cancer -->
@@ -932,13 +956,13 @@
 		<!-- Summons Agathion Virgo. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13500</npcId> <!-- Virgo -->
@@ -949,13 +973,13 @@
 		<!-- Summons Agathion Capricorn. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13502</npcId> <!-- Capricorn -->
@@ -966,13 +990,13 @@
 		<!-- Summons Agathion Libra. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13505</npcId> <!-- Libra -->
@@ -983,13 +1007,13 @@
 		<!-- Summons Agathion Aries. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13501</npcId> <!-- Aries -->
@@ -1000,13 +1024,13 @@
 		<!-- Summons Agathion Taurus. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13508</npcId> <!-- Taurus -->
@@ -1017,13 +1041,13 @@
 		<!-- Summons Agathion Leo. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13504</npcId> <!-- Leo -->
@@ -1034,13 +1058,13 @@
 		<!-- Summons Agathion Gemini. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13503</npcId> <!-- Gemini -->
@@ -1051,13 +1075,13 @@
 		<!-- Summons Agathion Scorpio. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13507</npcId> <!-- Scorpio -->
@@ -1068,13 +1092,13 @@
 		<!-- Summons Agathion Aquarius. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13510</npcId> <!-- Aquarius -->
@@ -1085,13 +1109,13 @@
 		<!-- Summons Agathion Pisces. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13509</npcId> <!-- Pisces -->
@@ -1102,13 +1126,13 @@
 		<!-- Summons Agathion Sagittarius. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13412</npcId> <!-- Capricorn -->
@@ -1119,13 +1143,13 @@
 		<!-- Summons Agathion Cancer. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>13499</npcId> <!-- Cancer -->
@@ -1141,69 +1165,79 @@
 	<skill id="28064" toLevel="12" name="Release Seal">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>5000</hitTime>
-		<coolTime>200</coolTime>
-		<reuseDelay>6000</reuseDelay>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>200</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>5000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>6000</reuseDelay>
 		<effects>
 			<effect name="UnsummonAgathion" />
 		</effects>
 	</skill>
 	<skill id="28065" toLevel="1" name="Book of Growth: Starlight Agathion">
 		<icon>icon.star_scrl_of_ench_ag</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="28066" toLevel="1" name="Ancient Book of Growth: Starlight Agathion">
 		<icon>icon.star_giantscrl_of_ench_ag</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="28067" toLevel="1" name="Starlight Agathion Cube">
 		<icon>icon.star_agathion_cube</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="28068" toLevel="2" name="Scroll: Enchant Cloak - Legendary">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="28069" toLevel="1" name="Legendary Scroll / Ancient Kingdoms' Cloak Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28070" toLevel="11" name="Secondary Skill: Agathion Virgo">
-		<!-- Casting Spd. is increased, when the agathion grows. -->
+		<!-- Level 1: Casting Spd. is increased, when the agathion grows. -->
+		<!-- Level 2: Casting Spd. +1% -->
+		<!-- Level 3: Casting Spd. +2% -->
+		<!-- Level 4: Casting Spd. +3% -->
+		<!-- Level 5: Casting Spd. +4% -->
+		<!-- Level 6: Casting Spd. +5% -->
+		<!-- Level 7: Casting Spd. +6% -->
+		<!-- Level 8: Casting Spd. +7% -->
+		<!-- Level 9: Casting Spd. +8% -->
+		<!-- Level 10: Casting Spd. +9% -->
+		<!-- Level 11: Casting Spd. +10% -->
 		<icon>BranchIcon.icon.g_bm_virgo_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1226,7 +1260,17 @@
 		</effects>
 	</skill>
 	<skill id="28071" toLevel="11" name="Secondary Skill: Agathion Capricorn">
-		<!-- M. Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 1: M. Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 2: M. Critical Damage +1%. -->
+		<!-- Level 3: M. Critical Damage +2%. -->
+		<!-- Level 4: M. Critical Damage +3%. -->
+		<!-- Level 5: M. Critical Damage +4%. -->
+		<!-- Level 6: M. Critical Damage +5%. -->
+		<!-- Level 7: M. Critical Damage +6%. -->
+		<!-- Level 8: M. Critical Damage +7%. -->
+		<!-- Level 9: M. Critical Damage +8%. -->
+		<!-- Level 10: M. Critical Damage +9%. -->
+		<!-- Level 11: M. Critical Damage +10%. -->
 		<icon>BranchIcon.icon.g_bm_capr_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1249,7 +1293,17 @@
 		</effects>
 	</skill>
 	<skill id="28072" toLevel="11" name="Secondary Skill: Agathion Libra">
-		<!-- M. Critical Rate is increased, when the agathion grows. -->
+		<!-- Level 1: M. Critical Rate is increased, when the agathion grows. -->
+		<!-- Level 2: M. Critical Rate +1%. -->
+		<!-- Level 3: M. Critical Rate +2%. -->
+		<!-- Level 4: M. Critical Rate +3%. -->
+		<!-- Level 5: M. Critical Rate +4%. -->
+		<!-- Level 6: M. Critical Rate +5%. -->
+		<!-- Level 7: M. Critical Rate +6%. -->
+		<!-- Level 8: M. Critical Rate +7%. -->
+		<!-- Level 9: M. Critical Rate +8%. -->
+		<!-- Level 10: M. Critical Rate +9%. -->
+		<!-- Level 11: M. Critical Rate +10%. -->
 		<icon>BranchIcon.icon.g_bm_lib_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1272,7 +1326,17 @@
 		</effects>
 	</skill>
 	<skill id="28073" toLevel="11" name="Secondary Skill: Agathion Aries">
-		<!-- P. Skill Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 1: P. Skill Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 2: P. Skill Critical Damage +1% -->
+		<!-- Level 3: P. Skill Critical Damage +2% -->
+		<!-- Level 4: P. Skill Critical Damage +3% -->
+		<!-- Level 5: P. Skill Critical Damage +4% -->
+		<!-- Level 6: P. Skill Critical Damage +5% -->
+		<!-- Level 7: P. Skill Critical Damage +6% -->
+		<!-- Level 8: P. Skill Critical Damage +7% -->
+		<!-- Level 9: P. Skill Critical Damage +8% -->
+		<!-- Level 10: P. Skill Critical Damage +9% -->
+		<!-- Level 11: P. Skill Critical Damage +10% -->
 		<icon>BranchIcon.icon.g_bm_aries_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1295,7 +1359,17 @@
 		</effects>
 	</skill>
 	<skill id="28074" toLevel="11" name="Secondary Skill: Agathion Taurus">
-		<!-- Atk. Spd. is increased, when the agathion grows. -->
+		<!-- Level 1: Atk. Spd. is increased, when the agathion grows. -->
+		<!-- Level 2: Atk. Spd. +1% -->
+		<!-- Level 3: Atk. Spd. +2% -->
+		<!-- Level 4: Atk. Spd. +3% -->
+		<!-- Level 5: Atk. Spd. +4% -->
+		<!-- Level 6: Atk. Spd. +5% -->
+		<!-- Level 7: Atk. Spd. +6% -->
+		<!-- Level 8: Atk. Spd. +7% -->
+		<!-- Level 9: Atk. Spd. +8% -->
+		<!-- Level 10: Atk. Spd. +9% -->
+		<!-- Level 11: Atk. Spd. +10% -->
 		<icon>BranchIcon.icon.g_bm_tau_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1318,7 +1392,17 @@
 		</effects>
 	</skill>
 	<skill id="28075" toLevel="11" name="Secondary Skill: Agathion Leo">
-		<!-- P. Critical Rate is increased, when the agathion grows. -->
+		<!-- Level 1: P. Critical Rate is increased, when the agathion grows. -->
+		<!-- Level 2: P. Critical Rate +10. -->
+		<!-- Level 3: P. Critical Rate +20. -->
+		<!-- Level 4: P. Critical Rate +30. -->
+		<!-- Level 5: P. Critical Rate +40. -->
+		<!-- Level 6: P. Critical Rate +50. -->
+		<!-- Level 7: P. Critical Rate +60. -->
+		<!-- Level 8: P. Critical Rate +70. -->
+		<!-- Level 9: P. Critical Rate +80. -->
+		<!-- Level 10: P. Critical Rate +90. -->
+		<!-- Level 11: P. Critical Rate +100. -->
 		<icon>BranchIcon.icon.g_bm_leo_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1341,7 +1425,17 @@
 		</effects>
 	</skill>
 	<skill id="28076" toLevel="11" name="Secondary Skill: Agathion Gemini">
-		<!-- M. Def. is increased, when the agathion grows. -->
+		<!-- Level 1: M. Def. is increased, when the agathion grows. -->
+		<!-- Level 2: M. Def. +1% -->
+		<!-- Level 3: M. Def. +2% -->
+		<!-- Level 4: M. Def. +3% -->
+		<!-- Level 5: M. Def. +4% -->
+		<!-- Level 6: M. Def. +5% -->
+		<!-- Level 7: M. Def. +6% -->
+		<!-- Level 8: M. Def. +7% -->
+		<!-- Level 9: M. Def. +8% -->
+		<!-- Level 10: M. Def. +9% -->
+		<!-- Level 11: M. Def. +10% -->
 		<icon>BranchIcon.icon.g_bm_gem_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1364,7 +1458,17 @@
 		</effects>
 	</skill>
 	<skill id="28077" toLevel="11" name="Secondary Skill: Agathion Scorpio">
-		<!-- P. Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 1: P. Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 2: P. Critical Damage +1%. -->
+		<!-- Level 3: P. Critical Damage +2%. -->
+		<!-- Level 4: P. Critical Damage +3%. -->
+		<!-- Level 5: P. Critical Damage +4%. -->
+		<!-- Level 6: P. Critical Damage +5%. -->
+		<!-- Level 7: P. Critical Damage +6%. -->
+		<!-- Level 8: P. Critical Damage +7%. -->
+		<!-- Level 9: P. Critical Damage +8%. -->
+		<!-- Level 10: P. Critical Damage +9%. -->
+		<!-- Level 11: P. Critical Damage +10%. -->
 		<icon>BranchIcon.icon.g_bm_sco_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1387,11 +1491,21 @@
 		</effects>
 	</skill>
 	<skill id="28078" toLevel="11" name="Secondary Skill: Agathion Aquarius">
-		<!-- M. Atk. is increased, when the agathion grows. -->
+		<!-- Level 1: M. Atk. is increased, when the agathion grows. -->
+		<!-- Level 2: M. Atk. +1% -->
+		<!-- Level 3: M. Atk. +2% -->
+		<!-- Level 4: M. Atk. +3% -->
+		<!-- Level 5: M. Atk. +5% -->
+		<!-- Level 6: M. Atk. +7% -->
+		<!-- Level 7: M. Atk. +9% -->
+		<!-- Level 8: M. Atk. +12% -->
+		<!-- Level 9: M. Atk. +14% -->
+		<!-- Level 10: M. Atk. +16% -->
+		<!-- Level 11: M. Atk. +18% -->
 		<icon>BranchIcon.icon.g_bm_aqu_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">1</value>
@@ -1410,11 +1524,21 @@
 		</effects>
 	</skill>
 	<skill id="28079" toLevel="11" name="Secondary Skill: Agathion Pisces">
-		<!-- P. Atk. is increased, when the agathion grows. -->
+		<!-- Level 1: P. Atk. is increased, when the agathion grows. -->
+		<!-- Level 2: P. Atk. +1% -->
+		<!-- Level 3: P. Atk. +2% -->
+		<!-- Level 4: P. Atk. +3% -->
+		<!-- Level 5: P. Atk. +4% -->
+		<!-- Level 6: P. Atk. +5% -->
+		<!-- Level 7: P. Atk. +6% -->
+		<!-- Level 8: P. Atk. +7% -->
+		<!-- Level 9: P. Atk. +8% -->
+		<!-- Level 10: P. Atk. +9% -->
+		<!-- Level 11: P. Atk. +10% -->
 		<icon>BranchIcon.icon.g_bm_pis_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">1</value>
@@ -1433,7 +1557,17 @@
 		</effects>
 	</skill>
 	<skill id="28080" toLevel="11" name="Secondary Skill: Agathion Sagittarius">
-		<!-- P. Skill Critical Rate is increased, when the agathion grows. -->
+		<!-- Level 1: P. Skill Critical Rate is increased, when the agathion grows. -->
+		<!-- Level 2: P. Skill Critical Rate +1% -->
+		<!-- Level 3: P. Skill Critical Rate +2% -->
+		<!-- Level 4: P. Skill Critical Rate +3% -->
+		<!-- Level 5: P. Skill Critical Rate +4% -->
+		<!-- Level 6: P. Skill Critical Rate +5% -->
+		<!-- Level 7: P. Skill Critical Rate +6% -->
+		<!-- Level 8: P. Skill Critical Rate +7% -->
+		<!-- Level 9: P. Skill Critical Rate +8% -->
+		<!-- Level 10: P. Skill Critical Rate +9% -->
+		<!-- Level 11: P. Skill Critical Rate +10% -->
 		<icon>BranchIcon.icon.g_bm_sag_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1456,7 +1590,17 @@
 		</effects>
 	</skill>
 	<skill id="28081" toLevel="11" name="Secondary Skill: Agathion Cancer">
-		<!-- P. Def. is increased, when the agathion grows. -->
+		<!-- Level 1: P. Def. is increased, when the agathion grows. -->
+		<!-- Level 2: P. Def. +1% -->
+		<!-- Level 3: P. Def. +2% -->
+		<!-- Level 4: P. Def. +3% -->
+		<!-- Level 5: P. Def. +4% -->
+		<!-- Level 6: P. Def. +5% -->
+		<!-- Level 7: P. Def. +6% -->
+		<!-- Level 8: P. Def. +7% -->
+		<!-- Level 9: P. Def. +8% -->
+		<!-- Level 10: P. Def. +9% -->
+		<!-- Level 11: P. Def. +10% -->
 		<icon>BranchIcon.icon.g_bm_can_agathion_charm</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1482,15 +1626,15 @@
 		<!-- Recovers party members' HP/ MP/ CP. With a certain chance, also removes their debuffs. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_april_aug_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<coolTime>200</coolTime>
-		<effectPoint>1811</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<affectRange>1000</affectRange>
+		<affectScope>PARTY</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>200</coolTime>
+		<effectPoint>1811</effectPoint>
+		<hitTime>3000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">2250000</value>
 			<value level="2">2100000</value>
@@ -1506,7 +1650,7 @@
 			<value level="12">600000</value>
 		</reuseDelay>
 		<reuseDelayGroup>27349</reuseDelayGroup>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="HealPercent">
 				<power>100</power>
@@ -1528,16 +1672,16 @@
 		<!-- Momentarily moves you forward for 600. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_dec_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>100</hitTime>
-		<coolTime>400</coolTime>
-		<effectPoint>2</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>400</coolTime>
+		<effectPoint>2</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>100</hitTime>
+		<isDebuff>true</isDebuff>
 		<isMagic>22</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">118000</value>
 			<value level="2">110000</value>
@@ -1564,20 +1708,20 @@
 		<!-- Equalizes entire party's HP and restores 333 HP/ second for 15 sec. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_april_sep_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
+		<targetType>SELF</targetType>
+		<abnormalLevel>4</abnormalLevel>
+		<abnormalTime>15</abnormalTime>
+		<abnormalType>LIFE_FORCE_OTHERS</abnormalType>
+		<affectObject>FRIEND</affectObject>
+		<affectRange>1000</affectRange>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<coolTime>500</coolTime>
 		<effectPoint>1844</effectPoint>
-		<abnormalTime>15</abnormalTime>
+		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic>
-		<affectRange>1000</affectRange>
-		<abnormalType>LIFE_FORCE_OTHERS</abnormalType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<abnormalLevel>4</abnormalLevel>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<reuseDelay>
 			<value level="1">118000</value>
 			<value level="2">110000</value>
@@ -1605,21 +1749,20 @@
 		<!-- For 15 sec., transforms into a rock to eliminate enemy's enmity and avoid being targeted. Speed is greatly decreased while transformed. Cannot use when Disparition is active. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_march_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>100</effectPoint>
-		<abnormalTime>15</abnormalTime>
-		<isMagic>1</isMagic>
+		<targetType>SELF</targetType>
 		<abnormalLevel>5</abnormalLevel>
+		<abnormalTime>15</abnormalTime>
 		<abnormalType>TURN_STONE</abnormalType>
 		<abnormalVisualEffect>CHANGEBODY</abnormalVisualEffect>
-		<effectPoint>100</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<isMagic>1</isMagic>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>500</coolTime>
+		<effectPoint>100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isMagic>1</isMagic>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">225000</value>
 			<value level="2">210000</value>
@@ -1655,18 +1798,17 @@
 		<!-- For 30 sec., P./ M. Atk., and Atk./ Casting Spd. x 2. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_april_skill_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>3000</hitTime>
+		<targetType>SELF</targetType>
+		<abnormalTime>30</abnormalTime>
+		<abnormalType>RHAPSODY</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<coolTime>500</coolTime>
 		<effectPoint>687</effectPoint>
-		<abnormalTime>30</abnormalTime>
-		<operateType>A2</operateType>
-		<abnormalType>RHAPSODY</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<hitTime>3000</hitTime>
 		<isMagic>22</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">2250000</value>
 			<value level="2">2100000</value>
@@ -1683,11 +1825,11 @@
 		</reuseDelay>
 		<reuseDelayGroup>27353</reuseDelayGroup>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1705,16 +1847,16 @@
 		<!-- Grants invincibility for 10 sec. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_april_july_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>500</hitTime>
-		<effectPoint>867</effectPoint>
-		<abnormalTime>10</abnormalTime>
-		<isMagic>22</isMagic>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>10</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>867</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>22</isMagic>
 		<reuseDelay>
 			<value level="1">2250000</value>
 			<value level="2">2100000</value>
@@ -1749,17 +1891,16 @@
 		<!-- Resurrects from death fully recovered. Buffs/ debuffs remain in death, but Noblesse Blessing and Lucky Charm disappear. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_may_skill_i00</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
-		<isMagic>1</isMagic>
-		<abnormalType>RESURRECTION_SPECIAL</abnormalType>
-		<abnormalTime>3600</abnormalTime>
-		<effectRange>1100</effectRange>
-		<staticReuse>true</staticReuse>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>TARGET</targetType>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>RESURRECTION_SPECIAL</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>1</effectPoint>
+		<effectRange>1100</effectRange>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">13500000</value>
 			<value level="2">12600000</value>
@@ -1775,6 +1916,7 @@
 			<value level="12">3600000</value>
 		</reuseDelay>
 		<reuseDelayGroup>27355</reuseDelayGroup>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="ResurrectionSpecial">
 				<power>100</power>
@@ -1788,29 +1930,28 @@
 		<!-- Banishes enemies near the target into another dimension. The exiled enemies cannot move, attack and use skills, they also become immune to debuffs. The enemies' HP -282 per sec. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_oct_i00</icon>
 		<operateType>A2</operateType>
-		<trait>DEPORT</trait>
-		<castRange>600</castRange>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<isMagic>1</isMagic>
-		<effectPoint>-687</effectPoint>
-		<isDebuff>true</isDebuff>
-		<abnormalType>DEPORT</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>1</hitCancelTime>
-		<effectRange>1100</effectRange>
-		<activateRate>35</activateRate>
-		<magicLevel>85</magicLevel>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
-		<affectRange>150</affectRange>
-		<affectLimit>10-10</affectLimit>
+		<abnormalType>DEPORT</abnormalType>
 		<abnormalVisualEffect>DEPORT</abnormalVisualEffect>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
+		<activateRate>35</activateRate>
+		<affectLimit>10-10</affectLimit>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<castRange>600</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-687</effectPoint>
+		<effectRange>1100</effectRange>
+		<hitCancelTime>1</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<reuseDelay>
 			<value level="1">118000</value>
 			<value level="2">110000</value>
@@ -1826,6 +1967,7 @@
 			<value level="12">30000</value>
 		</reuseDelay>
 		<reuseDelayGroup>27356</reuseDelayGroup>
+		<trait>DEPORT</trait>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
@@ -1861,28 +2003,26 @@
 		<!-- Lifts the target and nearby enemies in the air immobilizing them for 9 sec. HP -100 per sec. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_jan_i00</icon>
 		<operateType>A1</operateType>
-		<castRange>1100</castRange>
-		<hitTime>10000</hitTime>
-		<effectPoint>-707</effectPoint>
-		<abnormalTime>9</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
+		<abnormalResists>STUN;TURN_FLEE</abnormalResists>
+		<abnormalTime>9</abnormalTime>
 		<abnormalType>AIRBIND</abnormalType>
 		<abnormalVisualEffect>AIRBIND</abnormalVisualEffect>
-		<basicProperty>NONE</basicProperty>
-		<trait>AIRBIND</trait>
-		<castRange>1100</castRange>
-		<effectRange>1100</effectRange>
-		<abnormalResists>STUN;TURN_FLEE</abnormalResists>
-		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelayGroup>11052</reuseDelayGroup>
-		<affectRange>150</affectRange>
 		<affectLimit>10-10</affectLimit>
-		<isMagic>1</isMagic>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<castRange>1100</castRange>
+		<castRange>1100</castRange>
+		<effectPoint>-707</effectPoint>
+		<effectRange>1100</effectRange>
+		<hitTime>10000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">118000</value>
 			<value level="2">110000</value>
@@ -1897,7 +2037,9 @@
 			<value level="11">38000</value>
 			<value level="12">30000</value>
 		</reuseDelay>
+		<reuseDelayGroup>11052</reuseDelayGroup>
 		<reuseDelayGroup>27357</reuseDelayGroup>
+		<trait>AIRBIND</trait>
 		<conditions>
 			<condition name="OpCheckCrtEffect" />
 		</conditions>
@@ -1927,18 +2069,17 @@
 		<!-- For 60 sec., blocks debuffs (up to 5). -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_feb_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>200</hitTime>
-		<effectPoint>2</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalTime>60</abnormalTime>
 		<abnormalType>RACE_KAMAEL1</abnormalType>
+		<activateRate>0</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>2</effectPoint>
+		<hitTime>200</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>99</magicLevel>
-		<basicProperty>NONE</basicProperty>
-		<abnormalTime>60</abnormalTime>
-		<activateRate>0</activateRate>
-		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<reuseDelay>
 			<value level="1">2250000</value>
 			<value level="2">2100000</value>
@@ -1954,6 +2095,7 @@
 			<value level="12">600000</value>
 		</reuseDelay>
 		<reuseDelayGroup>27358</reuseDelayGroup>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="AbnormalShield">
 				<times>5</times>
@@ -1964,15 +2106,13 @@
 		<!-- Summons all party members to you. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_nov_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>15000</hitTime>
-		<effectPoint>467</effectPoint>
-		<isMagic>4</isMagic>
-		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<staticReuse>true</staticReuse>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>467</effectPoint>
+		<hitTime>15000</hitTime>
+		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">6750000</value>
 			<value level="2">6300000</value>
@@ -1988,6 +2128,7 @@
 			<value level="12">1800000</value>
 		</reuseDelay>
 		<reuseDelayGroup>27359</reuseDelayGroup>
+		<staticReuse>true</staticReuse>
 		<cond msgId="113" addName="1">
 			<not>
 				<player insideZoneId="10501, 10502, 10503" />
@@ -2004,18 +2145,17 @@
 		<!-- Reflects 20% of received damage. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_june_skill_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>1000</hitTime>
-		<effectPoint>379</effectPoint>
-		<abnormalType>DMG_SHIELD</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<isMagic>1</isMagic>
-		<targetType>SELF</targetType>
+		<abnormalType>DMG_SHIELD</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>379</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">4500000</value>
 			<value level="2">4200000</value>
@@ -2031,6 +2171,7 @@
 			<value level="12">1200000</value>
 		</reuseDelay>
 		<reuseDelayGroup>27360</reuseDelayGroup>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="DamageShield">
 				<amount>20</amount>
@@ -2041,15 +2182,15 @@
 		<!-- Recovers party members' HP/ MP/ CP. With a certain chance, also removes their debuffs. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_april_aug_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<coolTime>200</coolTime>
-		<effectPoint>1811</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<affectRange>1000</affectRange>
+		<affectScope>PARTY</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>200</coolTime>
+		<effectPoint>1811</effectPoint>
+		<hitTime>3000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">2250000</value>
 			<value level="2">2100000</value>
@@ -2065,7 +2206,7 @@
 			<value level="12">600000</value>
 		</reuseDelay>
 		<reuseDelayGroup>27349</reuseDelayGroup>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="HealPercent">
 				<power>100</power>
@@ -2087,16 +2228,16 @@
 		<!-- Momentarily moves you forward for 600. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_dec_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>100</hitTime>
-		<coolTime>400</coolTime>
-		<effectPoint>2</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>400</coolTime>
+		<effectPoint>2</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>100</hitTime>
+		<isDebuff>true</isDebuff>
 		<isMagic>22</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">118000</value>
 			<value level="2">110000</value>
@@ -2123,20 +2264,20 @@
 		<!-- Equalizes entire party's HP and restores 333 HP/ second for 15 sec. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_april_sep_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
+		<targetType>SELF</targetType>
+		<abnormalLevel>4</abnormalLevel>
+		<abnormalTime>15</abnormalTime>
+		<abnormalType>LIFE_FORCE_OTHERS</abnormalType>
+		<affectObject>FRIEND</affectObject>
+		<affectRange>1000</affectRange>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<coolTime>500</coolTime>
 		<effectPoint>1844</effectPoint>
-		<abnormalTime>15</abnormalTime>
+		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic>
-		<affectRange>1000</affectRange>
-		<abnormalType>LIFE_FORCE_OTHERS</abnormalType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<abnormalLevel>4</abnormalLevel>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<reuseDelay>
 			<value level="1">118000</value>
 			<value level="2">110000</value>
@@ -2164,21 +2305,20 @@
 		<!-- For 15 sec., transforms into a rock to eliminate enemy's enmity and avoid being targeted. Speed is greatly decreased while transformed. Cannot use when Disparition is active. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_march_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>100</effectPoint>
-		<abnormalTime>15</abnormalTime>
-		<isMagic>1</isMagic>
+		<targetType>SELF</targetType>
 		<abnormalLevel>5</abnormalLevel>
+		<abnormalTime>15</abnormalTime>
 		<abnormalType>TURN_STONE</abnormalType>
 		<abnormalVisualEffect>CHANGEBODY</abnormalVisualEffect>
-		<effectPoint>100</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<isMagic>1</isMagic>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>500</coolTime>
+		<effectPoint>100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isMagic>1</isMagic>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">225000</value>
 			<value level="2">210000</value>
@@ -2217,18 +2357,17 @@
 		<!-- For 30 sec., P./ M. Atk., and Atk./ Casting Spd. x 2. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_april_skill_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>3000</hitTime>
+		<targetType>SELF</targetType>
+		<abnormalTime>30</abnormalTime>
+		<abnormalType>RHAPSODY</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<coolTime>500</coolTime>
 		<effectPoint>687</effectPoint>
-		<abnormalTime>30</abnormalTime>
-		<operateType>A2</operateType>
-		<abnormalType>RHAPSODY</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<hitTime>3000</hitTime>
 		<isMagic>22</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>
 			<value level="1">2250000</value>
 			<value level="2">2100000</value>
@@ -2245,11 +2384,11 @@
 		</reuseDelay>
 		<reuseDelayGroup>27353</reuseDelayGroup>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2267,17 +2406,17 @@
 		<!-- Grants invincibility for 10 sec. -->
 		<icon>BranchIcon.Icon.accessary_sign_agathion_april_july_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>500</hitTime>
-		<effectPoint>867</effectPoint>
-		<abnormalTime>10</abnormalTime>
-		<isMagic>22</isMagic>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>10</abnormalTime>
 		<abnormalType>INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
-		<removedOnAnyActionExceptMove>true</removedOnAnyActionExceptMove>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>867</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>22</isMagic>
+		<removedOnAnyActionExceptMove>true</removedOnAnyActionExceptMove>
 		<reuseDelay>
 			<value level="1">2250000</value>
 			<value level="2">2100000</value>

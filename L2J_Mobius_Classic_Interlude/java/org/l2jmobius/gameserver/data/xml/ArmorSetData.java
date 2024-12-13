@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
@@ -51,7 +52,7 @@ public class ArmorSetData implements IXmlReader
 	private ArmorSet[] _armorSets;
 	private final Map<Integer, ArmorSet> _armorSetMap = new HashMap<>();
 	private List<ArmorSet>[] _itemSets;
-	private final Map<Integer, List<ArmorSet>> _armorSetItems = new HashMap<>();
+	private final Map<Integer, List<ArmorSet>> _armorSetItems = new ConcurrentHashMap<>();
 	
 	protected ArmorSetData()
 	{

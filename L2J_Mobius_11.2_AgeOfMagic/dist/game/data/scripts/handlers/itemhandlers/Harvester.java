@@ -22,7 +22,6 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.ItemSkillType;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.ItemSkillHolder;
@@ -55,9 +54,9 @@ public class Harvester implements IItemHandler
 			return false;
 		}
 		
-		final Player player = playable.getActingPlayer();
+		final Player player = playable.asPlayer();
 		final WorldObject target = player.getTarget();
-		if ((target == null) || !target.isMonster() || !((Creature) target).isDead())
+		if ((target == null) || !target.isMonster() || !target.asCreature().isDead())
 		{
 			player.sendPacket(SystemMessageId.INVALID_TARGET);
 			player.sendPacket(ActionFailed.STATIC_PACKET);

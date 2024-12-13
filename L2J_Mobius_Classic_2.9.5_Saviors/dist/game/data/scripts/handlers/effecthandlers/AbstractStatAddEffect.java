@@ -35,9 +35,15 @@ public class AbstractStatAddEffect extends AbstractEffect
 	{
 		_stat = stat;
 		_amount = params.getDouble("amount", 0);
+		
 		if (params.getEnum("mode", StatModifierType.class, StatModifierType.DIFF) != StatModifierType.DIFF)
 		{
-			LOGGER.warning(getClass().getSimpleName() + " can only use DIFF mode.");
+			throw new IllegalArgumentException(getClass().getSimpleName() + " can only use DIFF mode.");
+		}
+		
+		if (params.contains("power"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use amount instead of power.");
 		}
 	}
 	

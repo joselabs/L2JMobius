@@ -18,10 +18,8 @@ package quests.Q00417_PathOfTheScavenger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.ClassId;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -368,7 +366,7 @@ public class Q00417_PathOfTheScavenger extends Quest
 						npc.getVariables().set(FIRST_ATTACKER, attacker.getObjectId());
 					}
 					
-					if (((Monster) npc).getSpoilerObjectId() == attacker.getObjectId())
+					if (npc.asMonster().getSpoilerObjectId() == attacker.getObjectId())
 					{
 						npc.setScriptValue(2);
 					}
@@ -407,7 +405,7 @@ public class Q00417_PathOfTheScavenger extends Quest
 				}
 				case HONEY_BEAR:
 				{
-					if (firstAttacker && ((Attackable) npc).isSpoiled() && hasQuestItems(killer, BEAR_PICTURE))
+					if (firstAttacker && npc.asAttackable().isSpoiled() && hasQuestItems(killer, BEAR_PICTURE))
 					{
 						if (giveItemRandomly(killer, npc, HONEY_JAR, 1, 5, 50, true))
 						{
@@ -419,7 +417,7 @@ public class Q00417_PathOfTheScavenger extends Quest
 				case HUNTER_TARANTULA:
 				case PLUNDER_TARANTULA:
 				{
-					if (firstAttacker && ((Attackable) npc).isSpoiled() && hasQuestItems(killer, TARANTULA_PICTURE))
+					if (firstAttacker && npc.asAttackable().isSpoiled() && hasQuestItems(killer, TARANTULA_PICTURE))
 					{
 						if (giveItemRandomly(killer, npc, BEAD, 1, 20, 50, true))
 						{

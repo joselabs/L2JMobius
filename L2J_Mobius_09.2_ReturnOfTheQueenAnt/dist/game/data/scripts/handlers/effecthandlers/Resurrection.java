@@ -62,10 +62,10 @@ public class Resurrection extends AbstractEffect
 	{
 		if (effector.isPlayer())
 		{
-			final Player player = effected.getActingPlayer();
+			final Player player = effected.asPlayer();
 			if (!player.isResurrectionBlocked() && !player.isReviveRequested())
 			{
-				effected.getActingPlayer().reviveRequest(effector.getActingPlayer(), effected.isPet(), _power, _hpPercent, _mpPercent, _cpPercent);
+				player.reviveRequest(effector.asPlayer(), effected.isPet(), _power, _hpPercent, _mpPercent, _cpPercent);
 			}
 		}
 		else

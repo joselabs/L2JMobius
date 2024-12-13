@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="34500" toLevel="10" name="Battle Soul">
-		<!-- P. Atk./ M. Atk./ P. Def./ M. Def. +3%. -->
+		<!-- Level 1: P. Atk./ M. Atk./ P. Def./ M. Def. +3%. -->
+		<!-- Level 2: P. Atk./ M. Atk./ P. Def./ M. Def. +6%. -->
+		<!-- Level 3: P. Atk./ M. Atk./ P. Def./ M. Def. +9%. -->
+		<!-- Level 4: P. Atk./ M. Atk./ P. Def./ M. Def. +12%. -->
+		<!-- Level 5: P. Atk./ M. Atk./ P. Def./ M. Def. +15%. -->
+		<!-- Level 6: P. Atk./ M. Atk./ P. Def./ M. Def. +18%. -->
+		<!-- Level 7: P. Atk./ M. Atk./ P. Def./ M. Def. +21%. -->
+		<!-- Level 8: P. Atk./ M. Atk./ P. Def./ M. Def. +24%. -->
+		<!-- Level 9: P. Atk./ M. Atk./ P. Def./ M. Def. +27%. -->
+		<!-- Level 10: P. Atk./ M. Atk./ P. Def./ M. Def. +30%. -->
 		<icon>icon.s_dethrone_fire_combat_1</icon>
 		<operateType>P</operateType>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -21,7 +30,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -69,7 +78,16 @@
 		</effects>
 	</skill>
 	<skill id="34501" toLevel="10" name="Fire Totem">
-		<!-- Critical Damage for basic attacks and P./ M. skills +4%, received Critical Damage from basic attacks and P./ M. skills -4%. -->
+		<!-- Level 1: Critical Damage for basic attacks and P./ M. skills +4%, received Critical Damage from basic attacks and P./ M. skills -4%. -->
+		<!-- Level 2: Critical Damage for basic attacks and P./ M. skills +8%, received Critical Damage from basic attacks and P./ M. skills -8%. -->
+		<!-- Level 3: Critical Damage for basic attacks and P./ M. skills +12%, received Critical Damage from basic attacks and P./ M. skills -12%. -->
+		<!-- Level 4: Critical Damage for basic attacks and P./ M. skills +16%, received Critical Damage from basic attacks and P./ M. skills -16%. -->
+		<!-- Level 5: Critical Damage for basic attacks and P./ M. skills +20%, received Critical Damage from basic attacks and P./ M. skills -20%. -->
+		<!-- Level 6: Critical Damage for basic attacks and P./ M. skills +24%, received Critical Damage from basic attacks and P./ M. skills -24%. -->
+		<!-- Level 7: Critical Damage for basic attacks and P./ M. skills +28%, received Critical Damage from basic attacks and P./ M. skills -28%. -->
+		<!-- Level 8: Critical Damage for basic attacks and P./ M. skills +32%, received Critical Damage from basic attacks and P./ M. skills -32%. -->
+		<!-- Level 9: Critical Damage for basic attacks and P./ M. skills +36%, received Critical Damage from basic attacks and P./ M. skills -36%. -->
+		<!-- Level 10: Critical Damage for basic attacks and P./ M. skills +40%, received Critical Damage from basic attacks and P./ M. skills -40%. -->
 		<icon>icon.s_dethrone_fire_totem_1</icon>
 		<operateType>P</operateType>
 		<excludedFromCheck>true</excludedFromCheck>
@@ -167,7 +185,16 @@
 		</effects>
 	</skill>
 	<skill id="34502" toLevel="10" name="Flame Spark">
-		<!-- Damage +4%, received damage -4%. -->
+		<!-- Level 1: Damage +4%, received damage -4%. -->
+		<!-- Level 2: Damage +8%, received damage -8%. -->
+		<!-- Level 3: Damage +12%, received damage -12%. -->
+		<!-- Level 4: Damage +16%, received damage -16%. -->
+		<!-- Level 5: Damage +20%, received damage -20%. -->
+		<!-- Level 6: Damage +24%, received damage -24%. -->
+		<!-- Level 7: Damage +28%, received damage -28%. -->
+		<!-- Level 8: Damage +32%, received damage -32%. -->
+		<!-- Level 9: Damage +36%, received damage -36%. -->
+		<!-- Level 10: Damage +40%, received damage -40%. -->
 		<icon>icon.s_dethrone_fire_piece_1</icon>
 		<operateType>P</operateType>
 		<excludedFromCheck>true</excludedFromCheck>
@@ -313,31 +340,149 @@
 		<!-- A basic melee magic attack from Henkers in the Execution Grounds. -->
 		<icon>icon.skill1417</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>500</attributeValue>
+		<castRange>200</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-111</effectPoint>
+		<effectPoint>-150</effectPoint>
+		<effectRange>150</effectRange>
+		<hitTime>800</hitTime>
+		<magicCriticalRate>45</magicCriticalRate>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>116</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<effects>
+			<effect name="MagicalDamage">
+				<power>25000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34507" toLevel="1" name="Death Dissector's Explosion">
 		<!-- A basic range magic attack from Henkers in the Execution Grounds. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<castRange>250</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>800</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>116</magicLevel>
+		<magicLevel>97</magicLevel>
+		<mpConsume>119</mpConsume>
+		<reuseDelay>10000</reuseDelay>
+		<effects>
+			<effect name="MagicalDamage">
+				<power>25000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34508" toLevel="1" name="Death Stalker's Attack">
 		<!-- A basic physical attack from Shnabels in the Execution Grounds. -->
 		<icon>icon.skill0325</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>500</attributeValue>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>200</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-111</effectPoint>
+		<effectPoint>-150</effectPoint>
+		<effectRange>150</effectRange>
+		<hitTime>800</hitTime>
+		<magicCriticalRate>45</magicCriticalRate>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>116</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<effects>
+			<effect name="PhysicalDamage">
+				<power>50000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34509" toLevel="1" name="Death Stalker's Slash">
 		<!-- A physical AoE attack from Shnabels in the Execution Grounds. -->
 		<icon>icon.skill0325</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>250</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>800</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>116</magicLevel>
+		<magicLevel>97</magicLevel>
+		<mpConsume>119</mpConsume>
+		<reuseDelay>10000</reuseDelay>
+		<effects>
+			<effect name="PhysicalDamage">
+				<power>30000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34510" toLevel="1" name="Death Butcher's Attack">
 		<!-- A basic physical attack from Henkers in the Execution Grounds. -->
 		<icon>icon.skill0325</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>500</attributeValue>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>150</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-111</effectPoint>
+		<effectPoint>-150</effectPoint>
+		<effectRange>150</effectRange>
+		<hitTime>800</hitTime>
+		<magicCriticalRate>45</magicCriticalRate>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>116</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<effects>
+			<effect name="PhysicalDamage">
+				<power>50000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34511" toLevel="1" name="Death Butcher's Slash">
 		<!-- A physical AoE attack from Henkers in the Execution Grounds. -->
 		<icon>icon.skill0325</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>350</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>300</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-350</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>800</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>116</magicLevel>
+		<magicLevel>97</magicLevel>
+		<mpConsume>119</mpConsume>
+		<reuseDelay>10000</reuseDelay>
+		<effects>
+			<effect name="PhysicalDamage">
+				<power>50000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34512" toLevel="1" name="Original Spark's Rush">
 		<!-- Charge/ animals. -->
@@ -680,7 +825,9 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34580" toLevel="3" name="Primordial Fire Source Lv. 3">
-		<!-- You feel the true power of the Primal Fire Source. Power of basic attacks and P./ M. skills +5%, AoE Damage Resistance +5%. -->
+		<!-- Level 1: You feel the true power of the Primal Fire Source. Power of basic attacks and P./ M. skills +5%, AoE Damage Resistance +5%. -->
+		<!-- Level 2: You feel the true power of the Primal Fire Source. Power of basic attacks and P./ M. skills +10%, AoE Damage Resistance +10%. -->
+		<!-- Level 3: You feel the true power of the Primal Fire Source. Power of basic attacks and P./ M. skills +15%, AoE Damage Resistance +15%. -->
 		<icon>
 			<value level="1">icon.s_dethrone_fire_set3_1</value>
 			<value level="2">icon.s_dethrone_fire_set5_1</value>
@@ -689,7 +836,9 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34581" toLevel="3" name="Primordial Fire Source Lv. 3">
-		<!-- You feel the true power of the Primal Fire Source. Power of basic attacks and P./ M. skills +5%, AoE Damage Resistance +5%. -->
+		<!-- Level 1: You feel the true power of the Primal Fire Source. Power of basic attacks and P./ M. skills +5%, AoE Damage Resistance +5%. -->
+		<!-- Level 2: You feel the true power of the Primal Fire Source. Power of basic attacks and P./ M. skills +10%, AoE Damage Resistance +10%. -->
+		<!-- Level 3: You feel the true power of the Primal Fire Source. Power of basic attacks and P./ M. skills +15%, AoE Damage Resistance +15%. -->
 		<icon>
 			<value level="1">icon.s_dethrone_fire_set3_1</value>
 			<value level="2">icon.s_dethrone_fire_set5_1</value>
@@ -759,7 +908,12 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34593" toLevel="6" name="Rim Kamaloka Medal of Honor - Lv. 1 F">
-		<!-- A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 1: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 2: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +5%. -->
+		<!-- Level 3: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +7%. -->
+		<!-- Level 4: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +10%. -->
+		<!-- Level 5: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +12%. -->
+		<!-- Level 6: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +13%. -->
 		<icon>
 			<value level="1">icon.rim_a_kamaroka_f</value>
 			<value level="2">icon.rim_a_kamaroka_d</value>
@@ -769,12 +923,17 @@
 			<value level="6">icon.rim_a_kamaroka_s</value>
 		</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="34594" toLevel="6" name="Rim Kamaloka Medal of Honor - Lv. 2 F">
-		<!-- A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 1: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 2: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +5%. -->
+		<!-- Level 3: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +7%. -->
+		<!-- Level 4: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +12%. -->
+		<!-- Level 5: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +14%. -->
+		<!-- Level 6: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +15%. -->
 		<icon>
 			<value level="1">icon.rim_a_kamaroka_f</value>
 			<value level="2">icon.rim_a_kamaroka_d</value>
@@ -784,12 +943,17 @@
 			<value level="6">icon.rim_b_kamaroka_s</value>
 		</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="34595" toLevel="6" name="Rim Kamaloka Medal of Honor - Lv. 3 F">
-		<!-- A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 1: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 2: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +5%. -->
+		<!-- Level 3: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +7%. -->
+		<!-- Level 4: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +14%. -->
+		<!-- Level 5: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +16%. -->
+		<!-- Level 6: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +17%. -->
 		<icon>
 			<value level="1">icon.rim_a_kamaroka_f</value>
 			<value level="2">icon.rim_a_kamaroka_d</value>
@@ -799,12 +963,17 @@
 			<value level="6">icon.rim_c_kamaroka_s</value>
 		</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="34596" toLevel="6" name="Rim Kamaloka Medal of Honor - Lv. 4 F">
-		<!-- A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 1: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 2: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +5%. -->
+		<!-- Level 3: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +7%. -->
+		<!-- Level 4: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +16%. -->
+		<!-- Level 5: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +18%. -->
+		<!-- Level 6: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +19%. -->
 		<icon>
 			<value level="1">icon.rim_a_kamaroka_f</value>
 			<value level="2">icon.rim_a_kamaroka_d</value>
@@ -814,12 +983,17 @@
 			<value level="6">icon.rim_d_kamaroka_s</value>
 		</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="34597" toLevel="6" name="Rim Kamaloka Medal of Honor - Lv. 5 F">
-		<!-- A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 1: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 2: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +5%. -->
+		<!-- Level 3: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +7%. -->
+		<!-- Level 4: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +18%. -->
+		<!-- Level 5: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +20%. -->
+		<!-- Level 6: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +21%. -->
 		<icon>
 			<value level="1">icon.rim_a_kamaroka_f</value>
 			<value level="2">icon.rim_a_kamaroka_d</value>
@@ -829,12 +1003,17 @@
 			<value level="6">icon.rim_e_kamaroka_s</value>
 		</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="34598" toLevel="6" name="Rim Kamaloka Medal of Honor - Lv. 6 F">
-		<!-- A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 1: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +3%. -->
+		<!-- Level 2: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +5%. -->
+		<!-- Level 3: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +7%. -->
+		<!-- Level 4: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +20%. -->
+		<!-- Level 5: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +22%. -->
+		<!-- Level 6: A reward given to warriors who have defeated the dark energy in the realm of subconsciousness. For 24 h,. acquired XP/ SP +23%. -->
 		<icon>
 			<value level="1">icon.rim_a_kamaroka_f</value>
 			<value level="2">icon.rim_a_kamaroka_d</value>
@@ -844,16 +1023,16 @@
 			<value level="6">icon.rim_f_kamaroka_s</value>
 		</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="34599" toLevel="1" name="Protection of Light - Sigel Phoenix Knight">
 		<!-- Power of Light helps Sigel Phoenix Knight to oppose the darkness. In Rim Kamaloka skill and basic attack range +200, damage +1000%. -->
 		<icon>icon.s_buff_boost_archangel2</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 </list>

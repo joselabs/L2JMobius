@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="13100" toLevel="4" name="R3 2 set">
 		<icon>icon.armor_t401_u_i00</icon>
@@ -67,7 +67,7 @@
 			<value level="5">99</value>
 		</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">288</value>
 					<value level="2">332</value>
@@ -172,22 +172,22 @@
 		<!-- Momentarily stunned and unable to move. -->
 		<icon>icon.skill0100</icon>
 		<operateType>A2</operateType>
-		<effectPoint>-100</effectPoint>
-		<abnormalType>STUN</abnormalType>
-		<basicProperty>PHYSICAL</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<lvlBonusRate>20</lvlBonusRate>
-		<activateRate>43</activateRate>
-		<magicLevel>85</magicLevel>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
-		<trait>SHOCK</trait>
+		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<activateRate>43</activateRate>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
+		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<trait>SHOCK</trait>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
@@ -198,22 +198,22 @@
 		<!-- Temporarily decreases Speed. -->
 		<icon>icon.skill1160</icon>
 		<operateType>A2</operateType>
-		<castRange>1000</castRange>
-		<effectPoint>-100</effectPoint>
-		<abnormalType>SPEED_DOWN</abnormalType>
-		<basicProperty>MAGIC</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<effectRange>1500</effectRange>
-		<lvlBonusRate>20</lvlBonusRate>
-		<activateRate>16</activateRate>
-		<magicLevel>85</magicLevel>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<abnormalType>SPEED_DOWN</abnormalType>
+		<activateRate>16</activateRate>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>1000</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
+		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="Speed">
 				<amount>-30</amount>
@@ -225,24 +225,24 @@
 		<!-- Momentarily inflicted with hold and unable to move. -->
 		<icon>icon.skill1201</icon>
 		<operateType>A2</operateType>
-		<castRange>1000</castRange>
-		<isMagic>1</isMagic>
-		<effectPoint>-100</effectPoint>
-		<abnormalType>ROOT_MAGICALLY</abnormalType>
-		<basicProperty>MAGIC</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<effectRange>1500</effectRange>
-		<lvlBonusRate>20</lvlBonusRate>
-		<activateRate>80</activateRate>
-		<magicLevel>85</magicLevel>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<trait>HOLD</trait>
+		<abnormalType>ROOT_MAGICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY_ONLY</targetType>
+		<activateRate>80</activateRate>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>1000</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<trait>HOLD</trait>
 		<effects>
 			<effect name="Root" />
 		</effects>
@@ -250,9 +250,9 @@
 	<skill id="13115" toLevel="1" name="Polearm Multi-attack">
 		<!-- Enables the character to attack multiple opponents. -->
 		<icon>icon.skill0216</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="HitNumber">
 				<amount>4</amount>
@@ -385,42 +385,60 @@
 		<magicLevel>55</magicLevel>
 	</skill>
 	<skill id="13129" toLevel="4" name="Set Effect - Twilight Heavy Armor 2 Piece (Defense Type)">
-		<!-- CON + 2, STR - 1, Atk. Spd. + 15%. HP + 487. -->
+		<!-- Level 1: CON + 2, STR - 1, Atk. Spd. + 15%. HP + 487. -->
+		<!-- Level 2: CON + 2, STR - 1, Atk. Spd. + 15%. HP + 487. MP + 202, Stun Resistance + 7. -->
+		<!-- Level 3: CON + 2, STR - 1, Atk. Spd. + 15%. MP + 202. HP + 487. Stun Resistance + 7. M. Def. + 44. -->
+		<!-- Level 4: CON + 2, STR - 1, P. Atk. + 6%. Atk. Spd. + 15%. HP + 487. MP + 202, Stun Resistance + 7. M. Def. + 44. P. Def. + 87, resistance to 20 attributes + 21. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13130" toLevel="4" name="Set Effect - Twilight Heavy Armor 2 Piece (Attack Type)">
-		<!-- STR + 2, CON - 1, Atk. Spd. + 18%. -->
+		<!-- Level 1: STR + 2, CON - 1, Atk. Spd. + 18%. -->
+		<!-- Level 2: STR + 2, CON - 1, Atk. Spd. + 18%. Critical damage + 242, Hold Resistance + 7. -->
+		<!-- Level 3: STR + 2, CON - 1, Atk. Spd. + 18%. Critical damage + 242, Hold Resistance + 7. MP Consumption - 4% upon skill use. -->
+		<!-- Level 4: STR + 2, CON - 1, Atk. Spd. + 18%. Critical damage + 242, Hold Resistance + 7. P. Atk. + 180. P. Atk. + 6% and MP Consumption - 4% upon skill use. Resistance to 4 attributes + 20. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13131" toLevel="4" name="Set Effect - Twilight Light Armor 2 Piece (Assassin Type)">
-		<!-- DEX + 2, STR -1, Atk. Spd. + 18%. -->
+		<!-- Level 1: DEX + 2, STR -1, Atk. Spd. + 18%. -->
+		<!-- Level 2: DEX + 2, STR - 1. Atk. Spd. + 18%. -->
+		<!-- Level 3: DEX + 2, STR - 1, Atk. Spd. + 18%, Evasion + 2.3, Sleep Resistance + 7. P. Atk. + 180. -->
+		<!-- Level 4: DEX + 2, STR - 1. Atk. Spd. + 18%, Evasion + 2.3, Sleep Resistance + 7. P. Atk. + 6% and additionally + 180. Critical rate + 3.3%. Resistance to 4 attributes + 20. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13132" toLevel="4" name="Set Effect - Twilight Light Armor 2 Piece (Enchant Type)">
-		<!-- STR + 2, CON - 1, P. Atk. + 180. P. Atk. Spd. + 15%. -->
+		<!-- Level 1: STR + 2, CON - 1, P. Atk. + 180. P. Atk. Spd. + 15%. -->
+		<!-- Level 2: STR + 2, CON - 1, P. Atk. + 180. P. Atk. Spd. + 15%. Hold Resistance + 7. Skill MP Consumption - 10%. -->
+		<!-- Level 3: STR + 2, CON - 1, P. Atk. + 180. P. Atk. Spd. + 15%. Hold Resistance + 7. HP + 487/ Skill MP Consumption - 10%. -->
+		<!-- Level 4: STR + 2, CON - 1, P. Atk. + 180. P. Atk. + 6%, P. Atk. Spd. + 15%. Hold Resistance + 7. HP + 487. Critical damage + 242. Resistance to 4 attributes + 20. Skill MP Consumption - 21. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13133" toLevel="4" name="Set Effect - Twilight Robe 2 Piece (Magic Type)">
-		<!-- INT + 2. MEN - 1. Casting Spd. + 25%. -->
+		<!-- Level 1: INT + 2. MEN - 1. Casting Spd. + 25%. -->
+		<!-- Level 2: INT + 2, MEN - 1. Casting Spd. + 25%. MP + 202. Sleep Resistance + 7. -->
+		<!-- Level 3: INT + 2, MEN - 1. Casting Spd. + 25%. MP + 202. Sleep Resistance + 7. M. Atk. + 184. -->
+		<!-- Level 4: INT + 2, MEN - 1. Casting Spd. + 25%. MP + 202. Sleep Resistance + 7. M. Atk. + 40% and additionally + 184. M. Critical Rate + 40. Resistance to 4 attributes + 20. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="13134" toLevel="4" name="Set Effect - Twilight Robe 2 Piece (Recovery Type)">
-		<!-- WIT+ 2. MEN - 1. Casting Spd. + 25%. -->
+		<!-- Level 1: WIT+ 2. MEN - 1. Casting Spd. + 25%. -->
+		<!-- Level 2: WIT+ 2, MEN - 1. Casting Spd. + 25%. MP + 202. Stun Resistance + 7. -->
+		<!-- Level 3: WIT+ 2, MEN - 1. Casting Spd. + 25%. MP + 202. Stun Resistance + 7. MP recovery + 0.7. -->
+		<!-- Level 4: WIT + 2, MEN - 1. Casting Spd. + 25%. MP + 202. M. Atk. + 40%. Stun Resistance + 7. MP recovery + 0.7. Heal amount + 85. Resistance to 4 attributes + 20. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -430,20 +448,20 @@
 		<!-- Extends the summoner's abilities to the servitor. Using the summoner's abilities as the basis, extends to the servitor P. Atk./P. Def. by 50%, M. Atk./M. Def. by 25%, Max HP/MP by 10%, Critical Rate by 20%, Atk. Spd. by 10%, and Casting Spd. by 3%. -->
 		<icon>icon.skill1557</icon>
 		<operateType>A2</operateType>
-		<mpConsume>35</mpConsume>
-		<hitTime>1000</hitTime>
-		<reuseDelay>60000</reuseDelay>
-		<effectPoint>669</effectPoint>
-		<abnormalType>ABILITY_CHANGE</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
+		<abnormalType>ABILITY_CHANGE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>669</effectPoint>
+		<hitTime>1000</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<mpConsume>35</mpConsume>
+		<reuseDelay>60000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="OpHaveSummon" />
 		</conditions>
@@ -598,7 +616,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -650,7 +668,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -709,7 +727,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -750,7 +768,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -791,7 +809,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -832,7 +850,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -873,7 +891,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -914,7 +932,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -955,7 +973,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -996,7 +1014,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1037,7 +1055,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1074,7 +1092,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1111,7 +1129,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1148,7 +1166,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1189,7 +1207,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1230,7 +1248,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>

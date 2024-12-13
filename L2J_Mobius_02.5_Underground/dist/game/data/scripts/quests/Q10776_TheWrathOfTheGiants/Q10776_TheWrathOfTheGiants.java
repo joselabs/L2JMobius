@@ -228,7 +228,7 @@ public class Q10776_TheWrathOfTheGiants extends Quest
 		{
 			qs.setCond(4, true);
 			
-			final Npc device = (Npc) npc.getSummoner();
+			final Npc device = npc.getSummoner().asNpc();
 			device.setTitle("");
 			device.setScriptValue(0);
 			device.broadcastInfo();
@@ -245,7 +245,7 @@ public class Q10776_TheWrathOfTheGiants extends Quest
 			{
 				if ((npc != null) && (npc.getId() == NARSIDES))
 				{
-					final Npc summoner = (Npc) npc.getSummoner();
+					final Npc summoner = npc.getSummoner().asNpc();
 					summoner.setTitle("");
 					summoner.setScriptValue(0);
 					summoner.broadcastInfo();
@@ -282,7 +282,7 @@ public class Q10776_TheWrathOfTheGiants extends Quest
 			{
 				if (npc != null)
 				{
-					final Npc device = (Npc) npc.getSummoner();
+					final Npc device = npc.getSummoner().asNpc();
 					device.setTitle("");
 					device.setScriptValue(0);
 					device.broadcastInfo();

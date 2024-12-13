@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="11100" toLevel="1" name="Elemental Destruction: Double Casting">
 		<!-- 4 Elements -->
@@ -6,7 +6,7 @@
 		<operateType>P</operateType>
 		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillBySkillAttack">
+			<effect name="TriggerSkillBySkillDamage">
 				<!-- Elemental Destruction (4 Elements) -->
 				<!-- Elemental Destruction: 4 Attributes -->
 				<attackSkillId>11028</attackSkillId>
@@ -19,71 +19,76 @@
 	<skill id="11101" toLevel="1" name="Elemental Destruction: Fire">
 		<!-- Body is destroyed. -->
 		<icon>icon.skill11866</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>BODY_DESTRUCTION</abnormalType>
-		<operateType>A2</operateType>
-		<magicLevel>85</magicLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
+		<magicLevel>85</magicLevel>
 	</skill>
 	<skill id="11102" toLevel="1" name="Elemental Destruction: Water">
 		<!-- Body is destroyed. -->
 		<icon>icon.skill11866</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>BODY_DESTRUCTION</abnormalType>
-		<operateType>A2</operateType>
-		<magicLevel>85</magicLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
+		<magicLevel>85</magicLevel>
 	</skill>
 	<skill id="11103" toLevel="1" name="Elemental Destruction: Wind">
 		<!-- Body is destroyed. -->
 		<icon>icon.skill11866</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>BODY_DESTRUCTION</abnormalType>
-		<operateType>A2</operateType>
-		<magicLevel>85</magicLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
+		<magicLevel>85</magicLevel>
 	</skill>
 	<skill id="11104" toLevel="1" name="Elemental Destruction: Earth">
 		<!-- Body is destroyed. -->
 		<icon>icon.skill11866</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>BODY_DESTRUCTION</abnormalType>
-		<operateType>A2</operateType>
-		<magicLevel>85</magicLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
+		<magicLevel>85</magicLevel>
 	</skill>
 	<skill id="11105" toLevel="1" name="Elemental Destruction: 4 Attributes">
 		<!-- Body is destroyed. -->
 		<icon>icon.skill11866</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>BODY_DESTRUCTION</abnormalType>
-		<operateType>A2</operateType>
-		<magicLevel>85</magicLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
+		<magicLevel>85</magicLevel>
 	</skill>
 	<skill id="11106" toLevel="7" name="Elemental Mass Burst">
-		<!-- Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage on nearby enemies with 618 Power. For 20 seconds, M. Def. - 20%. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage on nearby enemies with 649 Power. For 25 seconds, M. Def. - 20%. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage on nearby enemies with 683 Power. For 30 sec., M. Def. - 20%. -->
 		<icon>icon.skill11865</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalTime>
 			<value level="1">15</value>
 			<value level="2">20</value>
@@ -94,17 +99,22 @@
 			<value level="7">30</value>
 		</abnormalTime>
 		<activateRate>80</activateRate> <!-- Guessed -->
-		<affectRange>200</affectRange> <!-- Guessed -->
-		<reuseDelayGroup>11106</reuseDelayGroup>
-		<fireStanceSkillId>11107</fireStanceSkillId>
-		<waterStanceSkillId>11108</waterStanceSkillId>
-		<windStanceSkillId>11109</windStanceSkillId>
-		<earthStanceSkillId>11110</earthStanceSkillId>
-		<allStanceSkillId>11111</allStanceSkillId>
-		<operateType>A2</operateType>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange> <!-- Guessed -->
+		<affectScope>RANGE</affectScope>
+		<allStanceSkillId>11111</allStanceSkillId>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<earthStanceSkillId>11110</earthStanceSkillId>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<fireStanceSkillId>11107</fireStanceSkillId>
+		<hitTime>6080</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -123,17 +133,10 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-1009</effectPoint>
-		<isDebuff>true</isDebuff>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11106</reuseDelayGroup>
+		<waterStanceSkillId>11108</waterStanceSkillId>
+		<windStanceSkillId>11109</windStanceSkillId>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -142,7 +145,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -165,8 +168,13 @@
 		</effects>
 	</skill>
 	<skill id="11107" toLevel="7" name="Elemental Mass Burst: Fire">
-		<!-- Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage on nearby enemies with 618 Power. For 20 seconds, M. Def. - 20%. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage on nearby enemies with 649 Power. For 25 seconds, M. Def. - 20%. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage on nearby enemies with 683 Power. For 30 sec., M. Def. - 20%. -->
 		<icon>icon.skill11865</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalTime>
 			<value level="1">15</value>
 			<value level="2">20</value>
@@ -177,14 +185,22 @@
 			<value level="7">30</value>
 		</abnormalTime>
 		<activateRate>80</activateRate> <!-- Guessed -->
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange> <!-- Guessed -->
-		<reuseDelayGroup>11106</reuseDelayGroup>
+		<affectScope>RANGE</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -203,18 +219,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-1009</effectPoint>
-		<isDebuff>true</isDebuff>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11106</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -223,7 +229,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -270,8 +276,13 @@
 		</effects>
 	</skill>
 	<skill id="11108" toLevel="7" name="Elemental Mass Burst: Water">
-		<!-- Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage on nearby enemies with 618 Power. For 20 seconds, M. Def. - 20%. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage on nearby enemies with 649 Power. For 25 seconds, M. Def. - 20%. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage on nearby enemies with 683 Power. For 30 sec., M. Def. - 20%. -->
 		<icon>icon.skill11865</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalTime>
 			<value level="1">15</value>
 			<value level="2">20</value>
@@ -282,14 +293,22 @@
 			<value level="7">30</value>
 		</abnormalTime>
 		<activateRate>80</activateRate> <!-- Guessed -->
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange> <!-- Guessed -->
-		<reuseDelayGroup>11106</reuseDelayGroup>
+		<affectScope>RANGE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -308,18 +327,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-1009</effectPoint>
-		<isDebuff>true</isDebuff>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11106</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -328,7 +337,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -375,8 +384,13 @@
 		</effects>
 	</skill>
 	<skill id="11109" toLevel="7" name="Elemental Mass Burst: Wind">
-		<!-- Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage on nearby enemies with 618 Power. For 20 seconds, M. Def. - 20%. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage on nearby enemies with 649 Power. For 25 seconds, M. Def. - 20%. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage on nearby enemies with 683 Power. For 30 sec., M. Def. - 20%. -->
 		<icon>icon.skill11865</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalTime>
 			<value level="1">15</value>
 			<value level="2">20</value>
@@ -387,14 +401,22 @@
 			<value level="7">30</value>
 		</abnormalTime>
 		<activateRate>80</activateRate> <!-- Guessed -->
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange> <!-- Guessed -->
-		<reuseDelayGroup>11106</reuseDelayGroup>
+		<affectScope>RANGE</affectScope>
 		<attributeType>WIND</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -413,18 +435,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-1009</effectPoint>
-		<isDebuff>true</isDebuff>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11106</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -433,7 +445,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -480,8 +492,13 @@
 		</effects>
 	</skill>
 	<skill id="11110" toLevel="7" name="Elemental Mass Burst: Earth">
-		<!-- Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage on nearby enemies with 618 Power. For 20 seconds, M. Def. - 20%. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage on nearby enemies with 649 Power. For 25 seconds, M. Def. - 20%. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage on nearby enemies with 683 Power. For 30 sec., M. Def. - 20%. -->
 		<icon>icon.skill11865</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalTime>
 			<value level="1">15</value>
 			<value level="2">20</value>
@@ -492,14 +509,22 @@
 			<value level="7">30</value>
 		</abnormalTime>
 		<activateRate>80</activateRate> <!-- Guessed -->
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange> <!-- Guessed -->
-		<reuseDelayGroup>11106</reuseDelayGroup>
+		<affectScope>RANGE</affectScope>
 		<attributeType>EARTH</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -518,18 +543,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-1009</effectPoint>
-		<isDebuff>true</isDebuff>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11106</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -538,7 +553,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -585,8 +600,13 @@
 		</effects>
 	</skill>
 	<skill id="11111" toLevel="7" name="Elemental Mass Burst: 4 Attributes">
-		<!-- Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage on nearby enemies with 569 Power. For 15 seconds, M. Def. - 20%. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage on nearby enemies with 618 Power. For 20 seconds, M. Def. - 20%. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage on nearby enemies with 649 Power. For 25 seconds, M. Def. - 20%. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage on nearby enemies with 683 Power. For 30 sec., M. Def. - 20%. -->
 		<icon>icon.skill11865</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalTime>
 			<value level="1">15</value>
 			<value level="2">20</value>
@@ -597,12 +617,20 @@
 			<value level="7">30</value>
 		</abnormalTime>
 		<activateRate>80</activateRate> <!-- Guessed -->
-		<affectRange>200</affectRange> <!-- Guessed -->
-		<reuseDelayGroup>11106</reuseDelayGroup>
-		<operateType>A2</operateType>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange> <!-- Guessed -->
+		<affectScope>RANGE</affectScope>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -621,18 +649,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-1009</effectPoint>
-		<isDebuff>true</isDebuff>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11106</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -641,7 +659,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -688,17 +706,26 @@
 		</effects>
 	</skill>
 	<skill id="11112" toLevel="7" name="Elemental Speed Burst">
-		<!-- Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage with 562 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage with 591 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage with 622 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11112</reuseDelayGroup>
-		<fireStanceSkillId>11113</fireStanceSkillId>
-		<waterStanceSkillId>11114</waterStanceSkillId>
-		<windStanceSkillId>11115</windStanceSkillId>
-		<earthStanceSkillId>11116</earthStanceSkillId>
-		<allStanceSkillId>11117</allStanceSkillId>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<allStanceSkillId>11117</allStanceSkillId>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<earthStanceSkillId>11116</earthStanceSkillId>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<fireStanceSkillId>11113</fireStanceSkillId>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -717,16 +744,10 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11112</reuseDelayGroup>
+		<waterStanceSkillId>11114</waterStanceSkillId>
+		<windStanceSkillId>11115</windStanceSkillId>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -735,7 +756,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">517</value>
 					<value level="2">562</value>
@@ -754,14 +775,26 @@
 		</effects>
 	</skill>
 	<skill id="11113" toLevel="7" name="Elemental Speed Burst: Fire">
-		<!-- Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage with 562 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage with 591 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage with 622 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11112</reuseDelayGroup>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue> <!-- Fire -->
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue> <!-- Fire -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -780,17 +813,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11112</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -799,7 +823,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">517</value>
 					<value level="2">562</value>
@@ -842,14 +866,26 @@
 		</effects>
 	</skill>
 	<skill id="11114" toLevel="7" name="Elemental Speed Burst: Water">
-		<!-- Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage with 562 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage with 591 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage with 622 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11112</reuseDelayGroup>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue> <!-- Water -->
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue> <!-- Water -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -868,17 +904,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11112</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -887,7 +914,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">517</value>
 					<value level="2">562</value>
@@ -930,14 +957,26 @@
 		</effects>
 	</skill>
 	<skill id="11115" toLevel="7" name="Elemental Speed Burst: Wind">
-		<!-- Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage with 562 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage with 591 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage with 622 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11112</reuseDelayGroup>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue> <!-- Wind -->
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue> <!-- Wind -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -956,17 +995,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11112</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -975,7 +1005,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">517</value>
 					<value level="2">562</value>
@@ -1018,14 +1048,26 @@
 		</effects>
 	</skill>
 	<skill id="11116" toLevel="7" name="Elemental Speed Burst: Earth">
-		<!-- Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage with 562 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage with 591 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage with 622 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11112</reuseDelayGroup>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue> <!-- Earth -->
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue> <!-- Earth -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1044,17 +1086,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11112</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -1063,7 +1096,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">517</value>
 					<value level="2">562</value>
@@ -1106,12 +1139,24 @@
 		</effects>
 	</skill>
 	<skill id="11117" toLevel="7" name="Elemental Speed Burst: 4 Attributes">
-		<!-- Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict damage with 517 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict damage with 562 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict damage with 591 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict damage with 622 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11112</reuseDelayGroup>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1130,17 +1175,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-			<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11112</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -1149,7 +1185,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">517</value>
 					<value level="2">562</value>
@@ -1192,17 +1228,26 @@
 		</effects>
 	</skill>
 	<skill id="11118" toLevel="7" name="Elemental Power Burst">
-		<!-- Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict severe damage with 618 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict severe damage with 649 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict severe damage with 683 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11118</reuseDelayGroup>
-		<fireStanceSkillId>11119</fireStanceSkillId>
-		<waterStanceSkillId>11120</waterStanceSkillId>
-		<windStanceSkillId>11121</windStanceSkillId>
-		<earthStanceSkillId>11122</earthStanceSkillId>
-		<allStanceSkillId>11123</allStanceSkillId>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<allStanceSkillId>11123</allStanceSkillId>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<earthStanceSkillId>11122</earthStanceSkillId>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<fireStanceSkillId>11119</fireStanceSkillId>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1221,16 +1266,10 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11118</reuseDelayGroup>
+		<waterStanceSkillId>11120</waterStanceSkillId>
+		<windStanceSkillId>11121</windStanceSkillId>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -1239,7 +1278,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -1258,14 +1297,25 @@
 		</effects>
 	</skill>
 	<skill id="11119" toLevel="7" name="Elemental Power Burst: Fire">
-		<!-- Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict severe damage with 618 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict severe damage with 649 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict severe damage with 683 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11118</reuseDelayGroup>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue> <!-- Fire -->
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue> <!-- Fire -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1284,16 +1334,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11118</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -1302,7 +1344,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -1321,14 +1363,25 @@
 		</effects>
 	</skill>
 	<skill id="11120" toLevel="7" name="Elemental Power Burst: Water">
-		<!-- Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict severe damage with 618 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict severe damage with 649 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict severe damage with 683 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11118</reuseDelayGroup>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1347,16 +1400,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11118</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -1365,7 +1410,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -1384,14 +1429,25 @@
 		</effects>
 	</skill>
 	<skill id="11121" toLevel="7" name="Elemental Power Burst: Wind">
-		<!-- Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict severe damage with 618 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict severe damage with 649 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict severe damage with 683 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11118</reuseDelayGroup>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1410,16 +1466,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11118</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -1428,7 +1476,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -1447,14 +1495,25 @@
 		</effects>
 	</skill>
 	<skill id="11122" toLevel="7" name="Elemental Power Burst: Earth">
-		<!-- Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict severe damage with 618 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict severe damage with 649 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict severe damage with 683 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11118</reuseDelayGroup>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1473,16 +1532,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11118</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -1491,7 +1542,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -1510,12 +1561,23 @@
 		</effects>
 	</skill>
 	<skill id="11123" toLevel="7" name="Elemental Power Burst: 4 Attributes">
-		<!-- Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 1: Detonates an Elemental Destruction to inflict severe damage with 569 Power on a single target. -->
+		<!-- Level 2: Detonates an Elemental Destruction to inflict severe damage with 618 Power on a single target. -->
+		<!-- Level 3: Detonates an Elemental Destruction to inflict severe damage with 649 Power on a single target. -->
+		<!-- Level 4: Detonates an Elemental Destruction to inflict severe damage with 683 Power on a single target. -->
 		<icon>icon.skill11865</icon>
-		<reuseDelayGroup>11118</reuseDelayGroup>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1009</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6080</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="7">6</value>
+		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1534,16 +1596,8 @@
 			<value level="6">205</value>
 			<value level="7">218</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6080</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-1009</effectPoint>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>
-			<value fromLevel="1" toLevel="7">6</value>
-		</magicCriticalRate>
+		<reuseDelayGroup>11118</reuseDelayGroup>
 		<conditions>
 			<condition name="OpCheckAbnormal">
 				<type>BODY_DESTRUCTION</type>
@@ -1552,7 +1606,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">569</value>
 					<value level="2">618</value>
@@ -1571,17 +1625,20 @@
 		</effects>
 	</skill>
 	<skill id="11124" toLevel="4" name="Superior Wizardry">
-		<!-- M. Atk. + 5%, Max MP, MP Recovery + 5%, and debuff resistance + 10%. -->
+		<!-- Level 1: M. Atk. + 5%, Max MP, MP Recovery + 5%, and debuff resistance + 10%. -->
+		<!-- Level 2: M. Atk. + 6%, Max MP, MP Recovery + 7%, and debuff resistance + 10%. -->
+		<!-- Level 3: M. Atk. + 7%, Max MP, MP Recovery + 10%, and debuff resistance + 10%. -->
+		<!-- Level 4: M. Atk. + 10%, Max MP, MP Recovery + 15%, and debuff resistance + 10%. -->
 		<icon>icon.skill0945</icon>
+		<operateType>P</operateType>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
 			<value level="3">95</value>
 			<value level="4">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -1615,17 +1672,20 @@
 		</effects>
 	</skill>
 	<skill id="11125" toLevel="4" name="Superior Wizardry">
-		<!-- M. Atk. + 10%. -->
+		<!-- Level 1: M. Atk. + 10%. -->
+		<!-- Level 2: M. Atk. + 12%. -->
+		<!-- Level 3: M. Atk. + 15%. -->
+		<!-- Level 4: M. Atk. + 20%. -->
 		<icon>icon.skill0945</icon>
+		<operateType>P</operateType>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
 			<value level="3">95</value>
 			<value level="4">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">12</value>
@@ -1637,35 +1697,37 @@
 		</effects>
 	</skill>
 	<skill id="11126" toLevel="3" name="Fire Destruction">
-		<!-- Inflicts 620 magical damage on target, and inflicts Fear. Over-hit. -->
+		<!-- Level 1: Inflicts 620 magical damage on target, and inflicts Fear. Over-hit. -->
+		<!-- Level 2: Inflicts 657 magical damage on target, and inflicts Fear. Over-hit. -->
+		<!-- Level 3: Inflicts 695 magical damage on target, and inflicts Fear. Over-hit. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime> <!-- Guessed -->
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
 		<activateRate>80</activateRate> <!-- Guessed -->
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<affectScope>SINGLE</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<trait>DERANGEMENT</trait>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-704</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6750</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
 		<mpConsume>
 			<value level="1">768</value>
 			<value level="2">873</value>
 			<value level="3">993</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6750</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-704</effectPoint>
-		<isDebuff>true</isDebuff>
+		<trait>DERANGEMENT</trait>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">620</value>
 					<value level="2">657</value>
@@ -1677,27 +1739,29 @@
 		</effects>
 	</skill>
 	<skill id="11127" toLevel="3" name="Dark Destruction">
-		<!-- Inflicts 713 magical damage on target. Over-hit. -->
+		<!-- Level 1: Inflicts 713 magical damage on target. Over-hit. -->
+		<!-- Level 2: Inflicts 755 magical damage on target. Over-hit. -->
+		<!-- Level 3: Inflicts 799 magical damage on target. Over-hit. -->
 		<icon>icon.skill0000</icon>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-704</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6750</hitTime>
+		<isMagic>1</isMagic>
 		<mpConsume>
 			<value level="1">768</value>
 			<value level="2">873</value>
 			<value level="3">993</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6750</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
-		<effectPoint>-704</effectPoint>
-		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">713</value>
 					<value level="2">755</value>
@@ -1707,8 +1771,12 @@
 		</effects>
 	</skill>
 	<skill id="11128" toLevel="3" name="Water Destruction">
-		<!-- Inflicts 620 magical damage on target, and decreases their Speed by 130. Over-hit. -->
+		<!-- Level 1: Inflicts 620 magical damage on target, and decreases their Speed by 130. Over-hit. -->
+		<!-- Level 2: Inflicts 657 magical damage on target, and decreases their Speed by 130. Over-hit. -->
+		<!-- Level 3: Inflicts 695 magical damage on target, and decreases their Speed by 130. Over-hit. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1717,27 +1785,25 @@
 		<abnormalTime>5</abnormalTime> <!-- Guessed -->
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate> <!-- Guessed -->
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<affectScope>SINGLE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-704</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6750</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
 		<mpConsume>
 			<value level="1">768</value>
 			<value level="2">873</value>
 			<value level="3">993</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6750</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-704</effectPoint>
-		<isDebuff>true</isDebuff>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">620</value>
 					<value level="2">657</value>
@@ -1751,35 +1817,37 @@
 		</effects>
 	</skill>
 	<skill id="11129" toLevel="3" name="Wind Destruction">
-		<!-- Inflicts 620 magical damage on target, and inflicts Knock Back. Over-hit. -->
+		<!-- Level 1: Inflicts 620 magical damage on target, and inflicts Knock Back. Over-hit. -->
+		<!-- Level 2: Inflicts 657 magical damage on target, and inflicts Knock Back. Over-hit. -->
+		<!-- Level 3: Inflicts 695 magical damage on target, and inflicts Knock Back. Over-hit. -->
 		<icon>icon.skill0000</icon>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalType>STUN</abnormalType>
-		<abnormalTime>1</abnormalTime>
-		<abnormalVisualEffect>KNOCKBACK</abnormalVisualEffect>
-		<activateRate>80</activateRate> <!-- Guessed -->
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
 		<operateType>A2</operateType>
 		<targetType>ENEMY</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1</abnormalTime>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>KNOCKBACK</abnormalVisualEffect>
+		<activateRate>80</activateRate> <!-- Guessed -->
 		<affectScope>SINGLE</affectScope>
-		<trait>KNOCKBACK</trait>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-704</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6750</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
 		<mpConsume>
 			<value level="1">768</value>
 			<value level="2">873</value>
 			<value level="3">993</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6750</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-704</effectPoint>
-		<isDebuff>true</isDebuff>
+		<trait>KNOCKBACK</trait>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">620</value>
 					<value level="2">657</value>
@@ -1794,33 +1862,35 @@
 		</effects>
 	</skill>
 	<skill id="11130" toLevel="3" name="Soul Destruction">
-		<!-- Inflicts 620 magical damage on target, and inflicts Hold. Over-hit. -->
+		<!-- Level 1: Inflicts 620 magical damage on target, and inflicts Hold. Over-hit. -->
+		<!-- Level 2: Inflicts 657 magical damage on target, and inflicts Hold. Over-hit. -->
+		<!-- Level 3: Inflicts 695 magical damage on target, and inflicts Hold. Over-hit. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime> <!-- Guessed -->
 		<abnormalType>ROOT_MAGICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>80</activateRate> <!-- Guessed -->
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<trait>HOLD</trait>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-704</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>6750</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
 		<mpConsume>
 			<value level="1">768</value>
 			<value level="2">873</value>
 			<value level="3">993</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>6750</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-704</effectPoint>
-		<isDebuff>true</isDebuff>
+		<trait>HOLD</trait>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">620</value>
 					<value level="2">657</value>
@@ -1831,29 +1901,31 @@
 		</effects>
 	</skill>
 	<skill id="11131" toLevel="3" name="Life Straw">
-		<!-- For 10 sec., attacks target with 115 Power per second and recovers HP equivalent to 100% of damage inflicted. -->
+		<!-- Level 1: For 10 sec., attacks target with 115 Power per second and recovers HP equivalent to 100% of damage inflicted. -->
+		<!-- Level 2: For 10 sec., attacks target with 225 Power per second and recovers HP equivalent to 100% of damage inflicted. -->
+		<!-- Level 3: For 10 sec., attacks target with 225 Power per second and recovers HP equivalent to 100% of damage inflicted. -->
 		<icon>icon.skill0000</icon>
-		<channelingTickInterval>1</channelingTickInterval>
-		<channelingStart>2</channelingStart>
 		<operateType>CA1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<mpConsume>
-			<value level="1">68</value>
-			<value level="2">72</value>
-			<value level="3">84</value>
-		</mpConsume>
 		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>10000</hitTime>
-		<reuseDelay>20000</reuseDelay>
-		<isMagic>1</isMagic>
+		<channelingStart>2</channelingStart>
+		<channelingTickInterval>1</channelingTickInterval>
 		<effectPoint>
 			<value level="1">-696</value>
 			<value level="2">-704</value>
 			<value level="3">-709</value>
 		</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>10000</hitTime>
 		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<mpConsume>
+			<value level="1">68</value>
+			<value level="2">72</value>
+			<value level="3">84</value>
+		</mpConsume>
+		<reuseDelay>20000</reuseDelay>
 		<channelingEffects>
 			<effect name="HpDrain">
 				<power>
@@ -1868,6 +1940,8 @@
 	<skill id="11132" toLevel="3" name="Lightning Shield">
 		<!-- For 30 sec., creates a shield of lightning and Paralyzes those that attack you. -->
 		<icon>icon.skill1515</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1875,16 +1949,14 @@
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>ELEMENTAL_ARMOR</abnormalType> <!-- Guessed -->
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<mpConsume>70</mpConsume>
-		<hitTime>1500</hitTime>
-		<reuseDelay>120000</reuseDelay>
 		<effectPoint>138</effectPoint>
+		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic>
+		<mpConsume>70</mpConsume>
+		<reuseDelay>120000</reuseDelay>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Guessed -->
 				<!-- Guessed -->
 				<!-- Lightning Shield: Paralyze -->
@@ -1905,6 +1977,8 @@
 	<skill id="11133" toLevel="3" name="Lightning Shield: Paralyze">
 		<!-- Momentarily stiffened. -->
 		<icon>icon.skill1515</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1914,17 +1988,15 @@
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
 		<activateRate>90</activateRate> <!-- Guessed -->
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<trait>PARALYZE</trait>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
 		<castRange>600</castRange>
-		<effectRange>1100</effectRange>
-		<reuseDelay>2000</reuseDelay>
 		<effectPoint>138</effectPoint>
+		<effectRange>1100</effectRange>
 		<isDebuff>true</isDebuff>
 		<isTriggeredSkill>true</isTriggeredSkill>
+		<reuseDelay>2000</reuseDelay>
+		<trait>PARALYZE</trait>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
@@ -1934,25 +2006,25 @@
 	<skill id="11134" toLevel="1" name="Meteor">
 		<!-- Updated to IO -->
 		<!-- Drops meteors to attack surrounding enemies and deals great damage. Inflicts abnormal state and deals continuous damage. The higher the level of the abnormal state, the greater the damage. Consumes 5 Spirit Ores. -->
-		<affectRange>250</affectRange>
-		<channelingSkillId>11134</channelingSkillId>
-		<channelingTickInterval>2</channelingTickInterval>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
-		<itemConsumeCount>5</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<operateType>CA1</operateType>
 		<targetType>GROUND</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
-		<mpConsume>52</mpConsume>
+		<affectRange>250</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
-		<hitTime>12000</hitTime>
-		<reuseDelay>120000</reuseDelay>
+		<channelingSkillId>11134</channelingSkillId>
+		<channelingTickInterval>2</channelingTickInterval>
 		<effectPoint>-676</effectPoint>
+		<hitTime>12000</hitTime>
 		<isMagic>2</isMagic>
+		<itemConsumeCount>5</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<mpConsume>52</mpConsume>
+		<reuseDelay>120000</reuseDelay>
 		<channelingEffects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value fromLevel="1" toLevel="1">860</value>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
@@ -1992,24 +2064,24 @@
 	<skill id="11135" toLevel="1" name="Black Pool">
 		<!-- Updated to IO -->
 		<!-- Creates a black swamp in the selected location, dealing great damage, and receiving 50% of the target's damage as HP. Inflicts abnormal state and decreases Speed. The higher the level of the abnormal state, the greater the damage, and at the last stage, Shocks the target. Consumes 5 Spirit Ores. -->
-		<affectRange>250</affectRange>
-		<channelingTickInterval>1</channelingTickInterval>
-		<channelingStart>2</channelingStart>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
-		<itemConsumeCount>5</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<operateType>CA1</operateType>
 		<targetType>GROUND</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
-		<mpConsume>52</mpConsume>
+		<affectRange>250</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
-		<hitTime>12000</hitTime>
-		<reuseDelay>120000</reuseDelay>
+		<channelingStart>2</channelingStart>
+		<channelingTickInterval>1</channelingTickInterval>
 		<effectPoint>-676</effectPoint>
-		<isMagic>2</isMagic>
 		<hitCancelTime>4</hitCancelTime>
+		<hitTime>12000</hitTime>
+		<isMagic>2</isMagic>
+		<itemConsumeCount>5</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<mpConsume>52</mpConsume>
+		<reuseDelay>120000</reuseDelay>
 		<channelingEffects>
 			<effect name="HpDrain">
 				<power>
@@ -2033,28 +2105,28 @@
 		<!-- Updated to IO -->
 		<!-- Hits 8 times -->
 		<!-- Creates an ice storm in the selected location, dealing continuous damage. Inflicts abnormal state and decreases Speed. The higher the level of the abnormal state, the greater the damage, and at the last stage, Freezes the target. Consumes 5 Spirit Ores. -->
-		<affectRange>250</affectRange>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>5</abnormalTime>
-		<channelingTickInterval>1</channelingTickInterval>
-		<channelingStart>2</channelingStart>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
-		<itemConsumeCount>5</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<operateType>CA1</operateType>
 		<targetType>GROUND</targetType>
-		<affectScope>POINT_BLANK</affectScope>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>5</abnormalTime>
 		<affectObject>NOT_FRIEND</affectObject>
-		<mpConsume>52</mpConsume>
+		<affectRange>250</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
-		<hitTime>12000</hitTime>
-		<reuseDelay>120000</reuseDelay>
+		<channelingStart>2</channelingStart>
+		<channelingTickInterval>1</channelingTickInterval>
 		<effectPoint>-676</effectPoint>
-		<isMagic>2</isMagic>
 		<hitCancelTime>4</hitCancelTime>
+		<hitTime>12000</hitTime>
+		<isMagic>2</isMagic>
+		<itemConsumeCount>5</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<mpConsume>52</mpConsume>
+		<reuseDelay>120000</reuseDelay>
 		<channelingEffects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value fromLevel="1" toLevel="1">440</value>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
@@ -2094,26 +2166,26 @@
 	<skill id="11137" toLevel="1" name="Tornado">
 		<!-- Updated to IO -->
 		<!-- Creates a tornado in the selected location, dealing great damage. Inflicts abnormal state and decreases Speed. The higher the level of the abnormal state, the greater the damage, and at the last stage, locks the target in an Aerial Yoke. Consumes 5 Spirit Ores. -->
-		<affectRange>250</affectRange>
-		<channelingTickInterval>1</channelingTickInterval>
-		<channelingStart>2</channelingStart>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
-		<itemConsumeCount>5</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<operateType>CA1</operateType>
 		<targetType>GROUND</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
-		<mpConsume>52</mpConsume>
+		<affectRange>250</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
-		<hitTime>12000</hitTime>
-		<reuseDelay>120000</reuseDelay>
+		<channelingStart>2</channelingStart>
+		<channelingTickInterval>1</channelingTickInterval>
 		<effectPoint>-676</effectPoint>
-		<isMagic>2</isMagic>
 		<hitCancelTime>4</hitCancelTime>
+		<hitTime>12000</hitTime>
+		<isMagic>2</isMagic>
+		<itemConsumeCount>5</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<mpConsume>52</mpConsume>
+		<reuseDelay>120000</reuseDelay>
 		<channelingEffects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value fromLevel="1" toLevel="1">550</value>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
@@ -2154,23 +2226,23 @@
 		<!-- Updated to IO -->
 		<!-- Detonates the soul in the selected location to attack surrounding enemies. Inflicts abnormal state and increases PvP Damage. The effect increases as the level of the abnormal state increases. Consumes 5 Spirit Ores. -->
 		<affectRange>250</affectRange> <!-- Guessed -->
-		<channelingTickInterval>1</channelingTickInterval>
-		<channelingStart>2</channelingStart>
-		<itemConsumeCount>5</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<operateType>CA1</operateType>
 		<targetType>GROUND</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
-		<mpConsume>52</mpConsume>
+		<affectScope>POINT_BLANK</affectScope>
 		<castRange>900</castRange>
-		<hitTime>12000</hitTime>
-		<reuseDelay>120000</reuseDelay>
+		<channelingStart>2</channelingStart>
+		<channelingTickInterval>1</channelingTickInterval>
 		<effectPoint>-676</effectPoint>
-		<isMagic>1</isMagic>
 		<hitCancelTime>4</hitCancelTime>
+		<hitTime>12000</hitTime>
+		<isMagic>1</isMagic>
+		<itemConsumeCount>5</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
+		<mpConsume>52</mpConsume>
+		<reuseDelay>120000</reuseDelay>
 		<channelingEffects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>600</power>
 			</effect>
 			<effect name="CallSkill">
@@ -2184,6 +2256,8 @@
 	<skill id="11139" toLevel="3" name="Ignite">
 		<!-- Updated to IO -->
 		<!-- Engulfed in flames. -->
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2193,14 +2267,12 @@
 		<abnormalType>DOT_ATTR</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<affectScope>SINGLE</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -2215,6 +2287,8 @@
 	<skill id="11140" toLevel="5" name="Black Shackle">
 		<!-- Updated to IO -->
 		<!-- Bound to dark power. -->
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2225,14 +2299,12 @@
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate> <!-- Guessed -->
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<affectScope>SINGLE</affectScope>
 		<attributeType>DARK</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -2249,6 +2321,8 @@
 	<skill id="11141" toLevel="5" name="Freezing Slow">
 		<!-- Updated to IO -->
 		<!-- The cold is creeping up from your feet. -->
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2266,14 +2340,12 @@
 			<value level="5">SNOW_HOLD</value>
 		</abnormalVisualEffect>
 		<activateRate>80</activateRate>
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<affectScope>SINGLE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -2290,6 +2362,8 @@
 	<skill id="11142" toLevel="3" name="Damaged Area">
 		<!-- Momentarily incurs damage. All speeds are decreased. -->
 		<icon>icon.skill11032</icon>
+		<operateType>A4</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3</value>
@@ -2297,22 +2371,20 @@
 			<value level="3">5</value>
 		</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>300</affectRange>
-		<operateType>A4</operateType>
-		<isMagic>1</isMagic>
-		<effectPoint>-702</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<activateRate>100</activateRate>
-		<magicLevel>90</magicLevel>
-		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
+		<affectLimit>5-12</affectLimit>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>300</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>-702</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>90</magicLevel>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>123</power>
 				<overHit>true</overHit>
 			</effect>
@@ -2329,6 +2401,8 @@
 	<skill id="11143" toLevel="3" name="Damaged Area">
 		<!-- Momentarily incurs damage. All speeds are decreased. -->
 		<icon>icon.skill11032</icon>
+		<operateType>A4</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">3</value>
@@ -2336,22 +2410,20 @@
 			<value level="3">5</value>
 		</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>300</affectRange>
-		<operateType>A4</operateType>
-		<isMagic>1</isMagic>
-		<effectPoint>-707</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<activateRate>100</activateRate>
-		<magicLevel>95</magicLevel>
-		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
+		<affectLimit>5-12</affectLimit>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>300</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>-707</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>95</magicLevel>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>131</power>
 				<overHit>true</overHit>
 			</effect>
@@ -2368,6 +2440,8 @@
 	<skill id="11144" toLevel="5" name="Wind Binding">
 		<!-- Updated to IO -->
 		<!-- Speed has decreased due to the gust. -->
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2385,14 +2459,12 @@
 			<value level="5">TORNADO</value>
 		</abnormalVisualEffect>
 		<activateRate>80</activateRate>
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<affectScope>SINGLE</affectScope>
 		<attributeType>WIND</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -2409,6 +2481,8 @@
 	<skill id="11145" toLevel="5" name="Soul Weakness">
 		<!-- Updated to IO -->
 		<!-- Cursed by a soul. -->
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2418,12 +2492,10 @@
 		</abnormalLevel>
 		<abnormalTime>5</abnormalTime> <!-- Guessed -->
 		<activateRate>80</activateRate> <!-- Guessed -->
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
 		<isDebuff>true</isDebuff>
+		<isMagic>4</isMagic>
 		<effects>
 			<effect name="PvpPhysicalAttackDefenceBonus">
 				<amount>
@@ -2460,25 +2532,25 @@
 	<skill id="11150" toLevel="1" name="Dark Curse">
 		<!-- For 10 sec., decreases target's M. Def. by 50% and Attribute Resistance by 50. -->
 		<icon>icon.skill11867</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>MD_DOWN</abnormalType>
 		<activateRate>90</activateRate>
-		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
+		<affectScope>SINGLE</affectScope>
 		<attributeType>DARK</attributeType>
 		<attributeValue>20</attributeValue>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<mpConsume>38</mpConsume>
+		<basicProperty>MAGIC</basicProperty> <!-- Guessed -->
 		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-209</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>2780</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>2400</reuseDelay>
-		<isMagic>1</isMagic>
-		<effectPoint>-209</effectPoint>
 		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
+		<mpConsume>38</mpConsume>
+		<reuseDelay>2400</reuseDelay>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>-50</amount>
@@ -2511,17 +2583,20 @@
 		</effects>
 	</skill>
 	<skill id="11151" toLevel="4" name="Superior Wizardry">
-		<!-- M. Atk., Max MP, and MP Recovery Rate + 5%. -->
+		<!-- Level 1: M. Atk., Max MP, and MP Recovery Rate + 5%. -->
+		<!-- Level 2: M. Atk., Max MP, and MP Recovery Rate + 6%. -->
+		<!-- Level 3: M. Atk., Max MP, and MP Recovery Rate + 7%. -->
+		<!-- Level 4: M. Atk., Max MP, and MP Recovery Rate + 10%. -->
 		<icon>icon.skill0945</icon>
+		<operateType>P</operateType>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
 			<value level="3">95</value>
 			<value level="4">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -2553,21 +2628,21 @@
 	<skill id="11152" toLevel="1" name="Sacrificial Soul">
 		<!-- Sacrifice your servitor to become immune to debuffs for 3 sec. -->
 		<icon>icon.skill1395</icon>
+		<operateType>A2</operateType>
+		<targetType>SUMMON</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>ABNORMAL_INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>SUMMON</targetType>
 		<affectScope>SINGLE</affectScope>
-		<mpConsume>276</mpConsume>
 		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>209</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>1000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>15000</reuseDelay>
-		<effectPoint>209</effectPoint>
 		<isMagic>1</isMagic>
+		<mpConsume>276</mpConsume>
+		<reuseDelay>15000</reuseDelay>
 		<effects>
 			<effect name="SacrificeSummon" />
 		</effects>
@@ -2575,17 +2650,20 @@
 			<effect name="DebuffBlock" />
 		</selfEffects>
 	</skill>
-		<icon>icon.skill1469</icon>
-	<skill id="11174" toLevel="5" name="Shadow Snare Zone"> <!-- Client Levels only 1 and 5 -->
+	<skill id="11174" toLevel="5" name="Shadow Snare Zone">
 		<!-- Pulls nearby enemies to the center. -->
+		<icon>icon.skill1469</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>1</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<activateRate>100</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
-		<operateType>A2</operateType>
-		<trait>PULL</trait>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">-709</value>
 			<value level="2">0</value>
@@ -2593,15 +2671,12 @@
 			<value level="4">0</value>
 			<value level="5">-709</value>
 		</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>97</magicLevel>
-		<isMagic>2</isMagic>
 		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>97</magicLevel>
+		<trait>PULL</trait>
 		<effects>
 			<effect name="PullBack">
 				<speed>600</speed>
@@ -2609,17 +2684,20 @@
 			<effect name="BlockActions" />
 		</effects>
 	</skill>
-		<icon>icon.skill1469</icon>
-	<skill id="11175" toLevel="6" name="Shadow Snare Zone"> <!-- Client Levels only 1 and 6 -->
+	<skill id="11175" toLevel="6" name="Shadow Snare Zone">
 		<!-- Pulls nearby enemies to the center. -->
+		<icon>icon.skill1469</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>1</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<activateRate>100</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
-		<operateType>A2</operateType>
-		<trait>PULL</trait>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">-709</value>
 			<value level="2">0</value>
@@ -2628,15 +2706,12 @@
 			<value level="5">0</value>
 			<value level="6">-709</value>
 		</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>97</magicLevel>
-		<isMagic>2</isMagic>
 		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>97</magicLevel>
+		<trait>PULL</trait>
 		<effects>
 			<effect name="PullBack">
 				<speed>600</speed>
@@ -2645,15 +2720,18 @@
 		</effects>
 	</skill>
 	<skill id="11176" toLevel="4" name="Superior Wizardry">
-		<!-- M. Skill cooldown - 5%. -->
+		<!-- Level 1: M. Skill cooldown - 5%. -->
+		<!-- Level 2: M. Skill cooldown - 6%. -->
+		<!-- Level 3: M. Skill cooldown - 7%. -->
+		<!-- Level 4: M. Skill cooldown - 10%. -->
 		<icon>icon.skill0945</icon>
+		<operateType>P</operateType>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
 			<value level="3">95</value>
 			<value level="4">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
 		<effects>
 			<effect name="Reuse">
 				<amount>
@@ -2668,15 +2746,24 @@
 		</effects>
 	</skill>
 	<skill id="11177" toLevel="7" name="Aqua Crash">
-		<!-- Inflicts damage with 193 Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
+		<!-- Level 1: Inflicts damage with 193 Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
+		<!-- Level 2: Inflicts damage with 195 Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
+		<!-- Level 3: Inflicts damage with 197Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
+		<!-- Level 4: Inflicts damage with 1939Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
 		<icon>icon.skill10879</icon>
-		<reuseDelayGroup>11177</reuseDelayGroup>
-		<allStanceSkillId>11189</allStanceSkillId> <!-- Double Casting skill Id -->
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<allStanceSkillId>11189</allStanceSkillId> <!-- Double Casting skill Id -->
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>1100</castRange>
+		<coolTime>300</coolTime>
+		<doubleCastSkill>11189</doubleCastSkill>
+		<effectPoint>-687</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>2280</hitTime>
+		<isMagic>1</isMagic>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -2695,15 +2782,9 @@
 			<value level="6">41</value>
 			<value level="7">43</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>2280</hitTime>
-		<coolTime>300</coolTime>
-		<effectPoint>-687</effectPoint>
-		<isMagic>1</isMagic>
-		<doubleCastSkill>11189</doubleCastSkill>
+		<reuseDelayGroup>11177</reuseDelayGroup>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">193</value>
 					<value level="2">195</value>
@@ -2719,11 +2800,11 @@
 	<skill id="11178" toLevel="1" name="Aqua Crash - Speed Decrease">
 		<!-- Use Aqua Crash to decrease target's Speed. -->
 		<icon>icon.skill11011</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<castRange>0</castRange>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillBySkillAttack">
+			<effect name="TriggerSkillBySkillDamage">
 				<!-- Aqua Crash -->
 				<!-- Frozen -->
 				<attackSkillId>11177</attackSkillId>
@@ -2736,22 +2817,22 @@
 	<skill id="11179" toLevel="1" name="Yoke Status">
 		<!-- Momentarily immobilized midair. -->
 		<icon>icon.skill1042</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>AIRBIND</abnormalType>
 		<abnormalVisualEffect>AIRBIND</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<castRange>1100</castRange>
-		<effectRange>1100</effectRange>
-		<effectPoint>-698</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<activateRate>100</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>1100</castRange>
+		<effectPoint>-698</effectPoint>
+		<effectRange>1100</effectRange>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>89</magicLevel>
 		<trait>AIRBIND</trait>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpCheckCrtEffect" />
 		</conditions>
@@ -2778,22 +2859,22 @@
 	<skill id="11180" toLevel="1" name="Yoke Status">
 		<!-- Momentarily immobilized midair. -->
 		<icon>icon.skill1042</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>AIRBIND</abnormalType>
 		<abnormalVisualEffect>AIRBIND</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<castRange>1100</castRange>
-		<effectRange>1100</effectRange>
-		<effectPoint>-704</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<activateRate>100</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>1100</castRange>
+		<effectPoint>-704</effectPoint>
+		<effectRange>1100</effectRange>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>93</magicLevel>
 		<trait>AIRBIND</trait>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpCheckCrtEffect" />
 		</conditions>
@@ -2820,22 +2901,22 @@
 	<skill id="11181" toLevel="1" name="Yoke Status">
 		<!-- Momentarily immobilized midair. -->
 		<icon>icon.skill1042</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>AIRBIND</abnormalType>
 		<abnormalVisualEffect>AIRBIND</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<castRange>1100</castRange>
-		<effectRange>1100</effectRange>
-		<effectPoint>-708</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<activateRate>100</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>1100</castRange>
+		<effectPoint>-708</effectPoint>
+		<effectRange>1100</effectRange>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>97</magicLevel>
 		<trait>AIRBIND</trait>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpCheckCrtEffect" />
 		</conditions>
@@ -2862,22 +2943,22 @@
 	<skill id="11182" toLevel="4" name="Yoke Status">
 		<!-- Momentarily immobilized midair. -->
 		<icon>icon.skill1042</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>AIRBIND</abnormalType>
 		<abnormalVisualEffect>AIRBIND</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<castRange>1100</castRange>
-		<effectRange>1100</effectRange>
-		<effectPoint>-707</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<activateRate>100</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>1100</castRange>
+		<effectPoint>-707</effectPoint>
+		<effectRange>1100</effectRange>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>95</magicLevel>
 		<trait>AIRBIND</trait>
-		<isDebuff>true</isDebuff>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpCheckCrtEffect" />
 		</conditions>
@@ -2904,9 +2985,9 @@
 	<skill id="11183" toLevel="1" name="Superior Quick Recovery">
 		<!-- INT + 2 and Cooldown - 25% for magic skills. -->
 		<icon>icon.skill11004</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="StatUp">
 				<amount>2</amount>
@@ -2922,9 +3003,9 @@
 	<skill id="11184" toLevel="1" name="Superior Arcane Lore">
 		<!-- INT + 2 and increases Fire/Water/Wind/Earth Resistance by 20 and M. Def. by 5%. -->
 		<icon>icon.skill10044</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>5</amount>
@@ -2954,7 +3035,19 @@
 	</skill>
 	<skill id="11185" toLevel="10" name="Superior MP Boost">
 		<!-- INT + 2 and increases Max MP by 313. -->
+		<!-- Level 101 (+ 1 Power): INT + 2 and increases Max MP by 333. Enchant Power: Increases the effect. -->
+		<!-- Level 102 (+ 2 Power): INT + 2 and increases Max MP by 354. Enchant Power: Increases the effect. -->
+		<!-- Level 103 (+ 3 Power): INT + 2 and increases Max MP by 374. Enchant Power: Increases the effect. -->
+		<!-- Level 104 (+ 4 Power): INT + 2 and increases Max MP by 395. Enchant Power: Increases the effect. -->
+		<!-- Level 105 (+ 5 Power): INT + 2 and increases Max MP by 415. Enchant Power: Increases the effect. -->
+		<!-- Level 106 (+ 6 Power): INT + 2 and increases Max MP by 435. Enchant Power: Increases the effect. -->
+		<!-- Level 107 (+ 7 Power): INT + 2 and increases Max MP by 456. Enchant Power: Increases the effect. -->
+		<!-- Level 108 (+ 8 Power): INT + 2 and increases Max MP by 476. Enchant Power: Increases the effect. -->
+		<!-- Level 109 (+ 9 Power): INT + 2 and increases Max MP by 497. Enchant Power: Increases the effect. -->
+		<!-- Level 110 (+ 10 Power): INT + 2 and increases Max MP by 517. Enchant Power: Increases the effect. -->
 		<icon>icon.skill0213</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -2967,8 +3060,6 @@
 			<value level="9">108</value>
 			<value level="10">110</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MaxMp">
 				<amount>
@@ -2993,7 +3084,19 @@
 	</skill>
 	<skill id="11186" toLevel="10" name="Superior Fast MP Recovery">
 		<!-- INT + 2 and increases MP Recovery Bonus by 3.6. -->
+		<!-- Level 101 (+ 1 Power): INT + 2 and increases MP Recovery Bonus by 3.8. Enchant Power: Increases the effect. -->
+		<!-- Level 102 (+ 2 Power): INT + 2 and increases MP Recovery Bonus by 4. Enchant Power: Increases the effect. -->
+		<!-- Level 103 (+ 3 Power): INT + 2 and increases MP Recovery Bonus by 4.2. Enchant Power: Increases the effect. -->
+		<!-- Level 104 (+ 4 Power): INT + 2 and increases MP Recovery Bonus by 4.4. Enchant Power: Increases the effect. -->
+		<!-- Level 105 (+ 5 Power): INT + 2 and increases MP Recovery Bonus by 4.7. Enchant Power: Increases the effect. -->
+		<!-- Level 106 (+ 6 Power): INT + 2 and increases MP Recovery Bonus by 4.9. Enchant Power: Increases the effect. -->
+		<!-- Level 107 (+ 7 Power): INT + 2 and increases MP Recovery Bonus by 5.1. Enchant Power: Increases the effect. -->
+		<!-- Level 108 (+ 8 Power): INT + 2 and increases MP Recovery Bonus by 5.3. Enchant Power: Increases the effect. -->
+		<!-- Level 109 (+ 9 Power): INT + 2 and increases MP Recovery Bonus by 5.5. Enchant Power: Increases the effect. -->
+		<!-- Level 110 (+ 10 Power): INT + 2 and increases MP Recovery Bonus by 5.7. Enchant Power: Increases the effect. -->
 		<icon>icon.skill0229</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -3006,8 +3109,6 @@
 			<value level="9">108</value>
 			<value level="10">110</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MpRegen">
 				<amount>
@@ -3032,7 +3133,19 @@
 	</skill>
 	<skill id="11187" toLevel="10" name="Superior Clear Mind">
 		<!-- INT + 2, increases MP Recovery Bonus by 5.1 while standing and by 6.5 while walking. -->
+		<!-- Level 101 (+ 1 Power): INT + 2, increases MP Recovery Bonus by 5.4 while standing and by 6.9 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 102 (+ 2 Power): INT + 2, increases MP Recovery Bonus by 5.7 while standing and by 7.3 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 103 (+ 3 Power): INT + 2, increases MP Recovery Bonus by 6 while standing and by 7.7 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 104 (+ 4 Power): INT + 2, increases MP Recovery Bonus by 6.3 while standing and by 8.1 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 105 (+ 5 Power): INT + 2, increases MP Recovery Bonus by 6.7 while standing and by 8.5 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 106 (+ 6 Power): INT + 2, increases MP Recovery Bonus by 7 while standing and by 8.9 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 107 (+ 7 Power): INT + 2, increases MP Recovery Bonus by 7.3 while standing and by 9.3 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 108 (+ 8 Power): INT + 2, increases MP Recovery Bonus by 7.6 while standing and by 9.7 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 109 (+ 9 Power): INT + 2, increases MP Recovery Bonus by 7.9 while standing and by 10.1 while walking. Enchant Power: Increases the effect. -->
+		<!-- Level 110 (+ 10 Power): INT + 2, increases MP Recovery Bonus by 8.2 while standing and by 10.5 while walking. Enchant Power: Increases the effect. -->
 		<icon>icon.skill11187</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -3045,8 +3158,6 @@
 			<value level="9">108</value>
 			<value level="10">110</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="StatByMoveType">
 				<stat>REGENERATE_MP_RATE</stat>
@@ -3087,8 +3198,14 @@
 		</effects>
 	</skill>
 	<skill id="11188" toLevel="5" name="Frozen">
-		<!-- The cold is creeping up from your feet. -->
+		<!-- Level 1: The cold is creeping up from your feet. -->
+		<!-- Level 2: The cold is creeping up from your feet. -->
+		<!-- Level 3: The cold is creeping up from your feet. -->
+		<!-- Level 4: The cold is creeping up from your feet. -->
+		<!-- Level 5: Frozen. -->
 		<icon>icon.skill11017</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -3098,12 +3215,10 @@
 		</abnormalLevel>
 		<abnormalTime>2</abnormalTime> <!-- Guessed -->
 		<abnormalType>SPEED_DOWN</abnormalType>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<isDebuff>true</isDebuff>
 		<isMagic>4</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<isDebuff>true</isDebuff>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -3118,11 +3233,22 @@
 		</effects>
 	</skill>
 	<skill id="11189" toLevel="7" name="Aqua Crash">
-		<!-- Inflicts damage with 193 Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
+		<!-- Level 1: Inflicts damage with 193 Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
+		<!-- Level 2: Inflicts damage with 195 Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
+		<!-- Level 3: Inflicts damage with 197Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
+		<!-- Level 4: Inflicts damage with 1939Power to target. Applies a stacking debuff that decreases Speed. At 5 stacks target will be frozen for 2 seconds. When Double Casting is active, the debuff will not stack. Instead, there is a chance target will be frozen for 3 seconds. Over-hit. -->
 		<icon>icon.skill10879</icon>
-		<reuseDelayGroup>11177</reuseDelayGroup>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
+		<castRange>1100</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-687</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>2280</hitTime>
+		<isMagic>1</isMagic>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -3132,9 +3258,6 @@
 			<value level="6">103</value>
 			<value level="7">105</value>
 		</magicLevel>
-		<operateType>A1</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<mpConsume>
 			<value level="1">37</value>
 			<value level="2">37</value>
@@ -3144,14 +3267,9 @@
 			<value level="6">41</value>
 			<value level="7">43</value>
 		</mpConsume>
-		<castRange>1100</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>2280</hitTime>
-		<coolTime>300</coolTime>
-		<effectPoint>-687</effectPoint>
-		<isMagic>1</isMagic>
+		<reuseDelayGroup>11177</reuseDelayGroup>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">193</value>
 					<value level="2">195</value>
@@ -3192,18 +3310,18 @@
 	<skill id="11195" toLevel="1" name="Aqua Crash - Freeze">
 		<!-- Use Aqua Crash to freeze target. -->
 		<icon>icon.skill11011</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<castRange>0</castRange>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillBySkillAttack">
+			<effect name="TriggerSkillBySkillDamage">
 				<attackSkillId>11177</attackSkillId> <!-- Aqua Crash -->
 				<skillId>11188</skillId> <!-- Frozen -->
 				<skillLevel>1</skillLevel>
 				<skillLevelScaleTo>5</skillLevelScaleTo>
 				<chance>33</chance> <!-- Chance guessed -->
 			</effect>
-			<effect name="TriggerSkillBySkillAttack">
+			<effect name="TriggerSkillBySkillDamage">
 				<attackSkillId>11189</attackSkillId> <!-- Aqua Crash -->
 				<skillId>11196</skillId> <!-- Frozen -->
 				<skillLevel>1</skillLevel>
@@ -3214,17 +3332,17 @@
 	<skill id="11196" toLevel="1" name="Frozen">
 		<!-- Frozen. -->
 		<icon>icon.skill11017</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>FREEZING</abnormalType> <!-- Guessed -->
 		<abnormalVisualEffect>FREEZING2</abnormalVisualEffect> <!-- Guessed -->
-		<magicLevel>85</magicLevel>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<isDebuff>true</isDebuff>
 		<isMagic>4</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<isDebuff>true</isDebuff>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>

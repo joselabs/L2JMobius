@@ -132,7 +132,7 @@ public class TriggerSkillByMagicType extends AbstractEffect
 		}
 		else
 		{
-			final BuffInfo buffInfo = ((Creature) target).getEffectList().getBuffInfoBySkillId(_skill.getSkillId());
+			final BuffInfo buffInfo = target.asCreature().getEffectList().getBuffInfoBySkillId(_skill.getSkillId());
 			if (buffInfo != null)
 			{
 				triggerSkill = SkillData.getInstance().getSkill(_skill.getSkillId(), Math.min(_skillLevelScaleTo, buffInfo.getSkill().getLevel() + 1));
@@ -141,7 +141,7 @@ public class TriggerSkillByMagicType extends AbstractEffect
 				{
 					if ((_replace) && (buffInfo.getSkill().getLevel() == _skillLevelScaleTo))
 					{
-						((Creature) target).stopSkillEffects(SkillFinishType.SILENT, triggerSkill.getId());
+						target.asCreature().stopSkillEffects(SkillFinishType.SILENT, triggerSkill.getId());
 					}
 					return;
 				}
@@ -155,9 +155,9 @@ public class TriggerSkillByMagicType extends AbstractEffect
 		// Remove existing effect, otherwise time will not be renewed at max level.
 		if (_replace)
 		{
-			((Creature) target).stopSkillEffects(SkillFinishType.SILENT, triggerSkill.getId());
+			target.asCreature().stopSkillEffects(SkillFinishType.SILENT, triggerSkill.getId());
 		}
 		
-		SkillCaster.triggerCast(event.getCaster(), (Creature) target, triggerSkill);
+		SkillCaster.triggerCast(event.getCaster(), target.asCreature(), triggerSkill);
 	}
 }

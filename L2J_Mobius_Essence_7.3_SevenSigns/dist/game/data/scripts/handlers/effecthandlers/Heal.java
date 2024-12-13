@@ -44,6 +44,11 @@ public class Heal extends AbstractEffect
 	public Heal(StatSet params)
 	{
 		_power = params.getDouble("power", 0);
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override
@@ -86,7 +91,7 @@ public class Heal extends AbstractEffect
 		final boolean sps = skill.isMagic() && effector.isChargedShot(ShotType.SPIRITSHOTS);
 		final boolean bss = skill.isMagic() && effector.isChargedShot(ShotType.BLESSED_SPIRITSHOTS);
 		final double shotsBonus = effector.getStat().getValue(Stat.SHOTS_BONUS);
-		if (((sps || bss) && (effector.isPlayer() && effector.getActingPlayer().isMageClass())) || effector.isSummon())
+		if (((sps || bss) && (effector.isPlayer() && effector.asPlayer().isMageClass())) || effector.isSummon())
 		{
 			staticShotBonus = skill.getMpConsume(); // static bonus for spiritshots
 			mAtkMul = bss ? 4 * shotsBonus : 2 * shotsBonus;
@@ -115,7 +120,7 @@ public class Heal extends AbstractEffect
 			amount += staticShotBonus + Math.sqrt(mAtkMul * effector.getMAtk());
 			amount *= effected.getStat().getValue(Stat.HEAL_EFFECT, 1);
 			amount += effected.getStat().getValue(Stat.HEAL_EFFECT_ADD, 0);
-			amount *= (item == null) && effector.isPlayable() ? Config.PLAYER_HEALING_SKILL_MULTIPLIERS[effector.getActingPlayer().getClassId().getId()] : 1f;
+			amount *= (item == null) && effector.isPlayable() ? Config.PLAYER_HEALING_SKILL_MULTIPLIERS[effector.asPlayer().getClassId().getId()] : 1f;
 			// Heal critic, since CT2.3 Gracia Final
 			if (skill.isMagic() && Formulas.calcCrit(skill.getMagicCriticalRate(), effector, effected, skill))
 			{

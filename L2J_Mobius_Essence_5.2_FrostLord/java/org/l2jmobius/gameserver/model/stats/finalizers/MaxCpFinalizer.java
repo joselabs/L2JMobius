@@ -35,7 +35,7 @@ public class MaxCpFinalizer implements IStatFunction
 		throwIfPresent(base);
 		
 		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		if (player != null)
 		{
 			baseValue = player.getTemplate().getBaseCpMax(player.getLevel());

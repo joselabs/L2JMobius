@@ -18,7 +18,6 @@ package handlers.effecthandlers;
 
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -38,7 +37,7 @@ public class TargetMe extends AbstractEffect
 	{
 		if (effected.isPlayable())
 		{
-			((Playable) effected).setLockedTarget(null);
+			effected.asPlayable().setLockedTarget(null);
 		}
 	}
 	
@@ -52,7 +51,7 @@ public class TargetMe extends AbstractEffect
 				effected.setTarget(effector);
 			}
 			
-			((Playable) effected).setLockedTarget(effector);
+			effected.asPlayable().setLockedTarget(effector);
 		}
 	}
 }

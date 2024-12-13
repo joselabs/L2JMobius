@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="40200" toLevel="1" name="">
 		<!-- AUTO GENERATED SKILL TODO: FIX IT -->
@@ -21,11 +21,16 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="40205" toLevel="8" name="Aden Adventure's Buff">
-		<!-- CON +1 for 1 h. -->
+		<!-- Level 1: CON +1 for 1 h. -->
+		<!-- Level 2: For 2 h., CON/ MEN +1. -->
+		<!-- Level 3: WIT/ CON/ MEN +1 for 3 h. -->
+		<!-- Level 4: For 4 h., DEX/ WIT/ CON/ MEN +1. -->
+		<!-- Level 5: For 5 h., INT/ DEX/ WIT/ CON/ MEN +1. -->
+		<!-- Level 6: For 6 h., STR/ INT/ DEX/ WIT/ CON/ MEN +1. -->
+		<!-- Level 7: For 7 h., STR/ INT/ DEX/ WIT/ CON/ MEN +1. -->
+		<!-- Level 8: For 8 h., STR/ INT/ DEX/ WIT/ CON/ MEN +1. -->
 		<icon>icon.scrl_of_storm</icon>
 		<operateType>A2</operateType>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<stayAfterDeath>true</stayAfterDeath>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -46,6 +51,8 @@
 			<value level="7">25200</value>
 			<value level="8">28880</value>
 		</abnormalTime>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="StatUp">
 				<stat>CON</stat>
@@ -86,27 +93,27 @@
 		<!-- For 5 min., party members' P. Atk. +160, M. Atk. +160, acquired XP/ SP +160%, Max HP/ MP +160, Atk. Spd. +160, Casting Spd. +160, P. Def. +160, M. Def. +160. -->
 		<icon>BranchSys.icon.br_birthday_cake_i00</icon>
 		<operateType>A2</operateType>
-		<hitTime>1000</hitTime>
-		<reuseDelay>270000</reuseDelay>
-		<abnormalType>BR_EVENT_BUF1</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<magicLevel>-3</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
+		<affectObject>FRIEND</affectObject>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>93998</itemConsumeId> <!-- Anniversary Cake - Event -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>-3</magicLevel>
+		<reuseDelay>270000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<isMagic>4</isMagic>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>160</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>160</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -168,13 +175,13 @@
 	</skill>
 	<skill id="40214" toLevel="1" name="Scroll of Blessing: Weapon">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40215" toLevel="1" name="Random Teleport">
 		<!-- Teleports to any place in the Black Anvil Guild Camp at random. Can be used only in the Black Anvil Guild Camp. -->
@@ -187,13 +194,13 @@
 	</skill>
 	<skill id="40217" toLevel="1" name="Scroll of Blessing: Weapon">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40218" toLevel="1" name="Growth Potion">
 		<!-- XP +7,490,000, SP +20,000 SP. Required level: 60+. Cannot be used by chaotic characters. -->
@@ -203,27 +210,35 @@
 	<skill id="40219" toLevel="1" name="Scroll: Boost Attack">
 		<!-- P. Atk. +800. M. Atk. +800. Max HP +1000. All received Critical Damage -100. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.scrl_of_ladies_silver_knife_01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<reuseDelay>60000</reuseDelay>
 		<abnormalType>BOOST_ATTACK</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>0</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94268</itemConsumeId> <!-- Scroll: Boost Attack (Exchangeable) -->
-		<hitTime>1000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
+		<conditions>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40220</skillId> <!-- Scroll: Boost Attack -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40229</skillId> <!-- Scroll: Boost Attack - Event -->
+			</condition>
+		</conditions>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>800</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>800</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -232,6 +247,10 @@
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceCriticalDamage">
+				<amount>-100</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
 				<amount>-100</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -240,27 +259,35 @@
 	<skill id="40220" toLevel="1" name="Scroll: Boost Attack">
 		<!-- P. Atk. +800. M. Atk. +800. Max HP +1000. All received Critical Damage -100. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.scrl_of_ladies_silver_knife_01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<reuseDelay>60000</reuseDelay>
 		<abnormalType>BOOST_ATTACK</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>0</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94269</itemConsumeId> <!-- Scroll: Boost Attack -->
-		<hitTime>1000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
+		<conditions>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40219</skillId> <!-- Scroll: Boost Attack -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40229</skillId> <!-- Scroll: Boost Attack - Event -->
+			</condition>
+		</conditions>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>800</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>800</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -272,26 +299,38 @@
 				<amount>-100</amount>
 				<mode>DIFF</mode>
 			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>-100</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="40221" toLevel="1" name="Scroll: Boost Defense">
 		<!-- P. Def. +500. M. Def. +500. Max MP +800. Speed +2. All Critical Rate +30. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.scrl_of_ench_bracelet_lucien_01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<reuseDelay>60000</reuseDelay>
 		<abnormalType>BOOST_DEFENCE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>0</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94270</itemConsumeId> <!-- Scroll: Boost Defense (Exchangeable) -->
-		<hitTime>1000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
+		<conditions>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40222</skillId> <!-- Scroll: Boost Defense -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40230</skillId> <!-- Scroll: Boost Defense - Event -->
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>500</amount>
@@ -309,26 +348,38 @@
 				<amount>30</amount>
 				<mode>DIFF</mode>
 			</effect>
+			<effect name="MagicCriticalRate">
+				<amount>30</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="40222" toLevel="1" name="Scroll: Boost Defense">
 		<!-- P. Def. +500. M. Def. +500. Max MP +800. Speed +2. All Critical Rate +30. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.scrl_of_ench_bracelet_lucien_01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<reuseDelay>60000</reuseDelay>
 		<abnormalType>BOOST_DEFENCE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>0</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94271</itemConsumeId> <!-- Scroll: Boost Defense -->
-		<hitTime>1000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
+		<conditions>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40221</skillId> <!-- Scroll: Boost Defense -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40230</skillId> <!-- Scroll: Boost Defense - Event -->
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>500</amount>
@@ -343,6 +394,10 @@
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="CriticalRate">
+				<amount>30</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="MagicCriticalRate">
 				<amount>30</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -352,20 +407,20 @@
 		<!-- All stats +1. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.stat_up_scroll</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>60000</reuseDelay>
-		<hitTime>1000</hitTime>
-		<itemConsumeId>94305</itemConsumeId> <!-- Scroll: Enchant Stats (Exchangeable) -->
-		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>SPECIAL_BERSERKER</abnormalType>
-		<stayAfterDeath>true</stayAfterDeath>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<abnormalLevel>2</abnormalLevel>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94305</itemConsumeId> <!-- Scroll: Enchant Stats (Exchangeable) -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>2</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="StatUp">
 				<amount>1</amount>
@@ -397,21 +452,21 @@
 		<!-- All stats +1. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.stat_up_scroll</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>60000</reuseDelay>
-		<hitTime>1000</hitTime>
-		<abnormalTime>1200</abnormalTime>
-		<itemConsumeId>94306</itemConsumeId> <!-- Scroll: Enchant Stats -->
-		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>SPECIAL_BERSERKER</abnormalType>
-		<stayAfterDeath>true</stayAfterDeath>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<abnormalLevel>2</abnormalLevel>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94306</itemConsumeId> <!-- Scroll: Enchant Stats -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>2</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="StatUp">
 				<amount>1</amount>
@@ -442,36 +497,185 @@
 	<skill id="40225" toLevel="1" name="Elixir">
 		<!-- Stat points +1. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94314</itemConsumeId> <!-- Elixir -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
-		<operateType>A1</operateType>
 		<reuseDelay>300</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="40226" toLevel="25" name="Special Buff Scroll Lv. 1">
 		<!-- STR/ DEX/ CON +1. INT/ WIT/ MEN +1. The buff is leveling up every hour, and various items are granted. <Rewards>. Lv. 1-8: Sayha's Cookie (2 pcs.). Lv. 9-15: Sayha's Storm Lv. 3 (2 pcs.). Lv. 16-20: Soulshot Ticket (10 pcs.). Lv. 21-23: Spirit Ore (100 pcs.). Lv. 24: Charging Stone of Random Craft (2 pcs.). Note!. If the character is dead, no items are given, and the buff's level does not increase. The effect remains after death. You can't cancel the effect by yourself.​​​​​​​​​​​​​​ -->
 		<icon>icon.etc_training_scroll_kalie_i00</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+			<value level="4">4</value>
+			<value level="5">5</value>
+			<value level="6">6</value>
+			<value level="7">7</value>
+			<value level="8">8</value>
+			<value level="9">9</value>
+			<value level="10">10</value>
+			<value level="11">11</value>
+			<value level="12">12</value>
+			<value level="13">13</value>
+			<value level="14">14</value>
+			<value level="15">15</value>
+			<value level="16">16</value>
+			<value level="17">17</value>
+			<value level="18">18</value>
+			<value level="19">19</value>
+			<value level="20">20</value>
+			<value level="21">21</value>
+			<value level="22">22</value>
+			<value level="23">23</value>
+			<value level="24">24</value>
+			<value level="25">25</value>
+		</abnormalLevel>
+		<abnormalTime>3600</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
+		<stayAfterDeath>true</stayAfterDeath>
+		<effects>
+			<effect name="StatUp">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="StatUp">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="CallSkill">
+				<skillId>40227</skillId> <!-- Special Buff Scroll Reward Lv. 1 -->
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">1</value>
+					<value level="3">1</value>
+					<value level="4">1</value>
+					<value level="5">1</value>
+					<value level="6">1</value>
+					<value level="7">1</value>
+					<value level="8">1</value>
+					<value level="9">2</value>
+					<value level="10">2</value>
+					<value level="11">2</value>
+					<value level="12">2</value>
+					<value level="13">2</value>
+					<value level="14">2</value>
+					<value level="15">2</value>
+					<value level="16">3</value>
+					<value level="17">3</value>
+					<value level="18">3</value>
+					<value level="19">3</value>
+					<value level="20">3</value>
+					<value level="21">4</value>
+					<value level="22">4</value>
+					<value level="23">4</value>
+					<value level="24">5</value>
+					<value level="25">5</value>
+				</skillLevel>
+			</effect>
+		</effects>
+		<endEffects>
+			<effect name="CallSkill" fromLevel="1" toLevel="24">
+				<skillId>40226</skillId> <!-- Special Buff Scroll Lv. 1 -->
+				<skillLevel>
+					<value level="1">2</value>
+					<value level="2">3</value>
+					<value level="3">4</value>
+					<value level="4">5</value>
+					<value level="5">6</value>
+					<value level="6">7</value>
+					<value level="7">8</value>
+					<value level="8">9</value>
+					<value level="9">10</value>
+					<value level="10">11</value>
+					<value level="11">12</value>
+					<value level="12">13</value>
+					<value level="13">14</value>
+					<value level="14">15</value>
+					<value level="15">16</value>
+					<value level="16">17</value>
+					<value level="17">18</value>
+					<value level="18">19</value>
+					<value level="19">20</value>
+					<value level="20">21</value>
+					<value level="21">22</value>
+					<value level="22">23</value>
+					<value level="23">24</value>
+					<value level="24">25</value>
+				</skillLevel>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="40227" toLevel="5" name="Special Buff Scroll Reward Lv. 1">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="Restoration" fromLevel="1" toLevel="1">
+				<itemId>93274</itemId> <!-- Sayha's Cookie - Sealed -->
+				<itemCount>2</itemCount>
+			</effect>
+			<effect name="Restoration" fromLevel="2" toLevel="2">
+				<itemId>91712</itemId> <!-- Sayha's Storm - Sealed -->
+				<itemCount>2</itemCount>
+			</effect>
+			<effect name="Restoration" fromLevel="3" toLevel="3">
+				<itemId>90907</itemId> <!-- Soulshot Ticket - Sealed -->
+				<itemCount>10</itemCount>
+			</effect>
+			<effect name="Restoration" fromLevel="4" toLevel="4">
+				<itemId>3031</itemId> <!-- Soulshot Ticket - Sealed -->
+				<itemCount>100</itemCount>
+			</effect>
+			<effect name="Restoration" fromLevel="5" toLevel="5">
+				<itemId>93080</itemId> <!-- Charging Stone of Regular Craft - 1 Charge - Sealed -->
+				<itemCount>1</itemCount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40228" toLevel="1" name="Forgotten Primeval Garden's Time Stone">
 		<icon>icon.skill0000</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94615</itemConsumeId> <!-- Forgotten Primeval Garden's Time Stone -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>76</minLevel>
@@ -489,26 +693,35 @@
 	<skill id="40229" toLevel="1" name="Scroll: Boost Attack - Event">
 		<!-- P. Atk. +800. M. Atk. +800. Max HP +1000. All received Critical Damage -100. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.scrl_of_ladies_silver_knife_01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>BOOST_ATTACK</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>0</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94380</itemConsumeId> <!-- Scroll: Boost Attack (Event) -->
-		<hitTime>1000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
+		<conditions>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40219</skillId> <!-- Scroll: Boost Attack -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40220</skillId> <!-- Scroll: Boost Attack -->
+			</condition>
+		</conditions>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>800</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>800</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -525,20 +738,29 @@
 	<skill id="40230" toLevel="1" name="Scroll: Boost Defense - Event">
 		<!-- P. Def. +500. M. Def. +500. Max MP +800. Speed +2. All Critical Rate +30. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.scrl_of_ench_bracelet_lucien_01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>BOOST_DEFENCE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>0</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94381</itemConsumeId> <!-- Scroll: Boost Defence (Event) -->
-		<hitTime>1000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
+		<conditions>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40221</skillId> <!-- Scroll: Boost Defense -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>40222</skillId> <!-- Scroll: Boost Defense -->
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>500</amount>
@@ -570,43 +792,42 @@
 	<skill id="40233" toLevel="1" name="Scroll: Enchant Rare Accessories">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40234" toLevel="1" name="Scroll: Enchant Rare Accessories - Not Used">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40235" toLevel="1" name="Improved Scroll: Enchant Rare Accessories (Exchangeable)">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40236" toLevel="1" name="Improved Scroll: Enchant Rare Accessories">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40237" toLevel="1" name="Pet XP Crystal (Exchangeable)">
 		<!-- Pet XP +100,000,000. -->
@@ -617,12 +838,12 @@
 		<!-- Pet XP +100,000,000. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>PET</targetType>
+		<affectScope>SINGLE</affectScope>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94480</itemConsumeId>
 		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>5</reuseDelay>
-		<targetType>PET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GivePetXp">
 				<xp>100000000</xp>
@@ -643,11 +864,11 @@
 		<!-- Pet XP +2,000,000,000. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>PET</targetType>
+		<affectScope>SINGLE</affectScope>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94517</itemConsumeId>
 		<reuseDelay>5</reuseDelay>
-		<targetType>PET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GivePetXp">
 				<xp>2000000000</xp>
@@ -657,21 +878,21 @@
 	<skill id="40242" toLevel="1" name="Sayha's Blessing Scroll">
 		<icon>icon.skill0000</icon>
 		<operateType>A2</operateType>
-		<hitTime>4000</hitTime>
-		<abnormalTime>1200</abnormalTime>
-		<itemConsumeId>94559</itemConsumeId> <!-- Sayha's Blessing Scroll - Event -->
-		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<abnormalTime>-1</abnormalTime>
-		<abnormalType>MULTI_BUFF</abnormalType>
-		<canBeDispelled>false</canBeDispelled>
-		<stayAfterDeath>true</stayAfterDeath>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>MULTI_BUFF</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<canBeDispelled>false</canBeDispelled>
+		<hitTime>500</hitTime>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94559</itemConsumeId> <!-- Sayha's Blessing Scroll - Event -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<stayAfterDeath>true</stayAfterDeath>
 		<selfEffects>
 			<effect name="CallSkill">
 				<skillId>40243</skillId> <!-- Sayha's Blessing Scroll - Stats -->
@@ -698,15 +919,15 @@
 	<skill id="40243" toLevel="1" name="Sayha's Blessing Scroll - Stats">
 		<!-- All stats +1. -->
 		<icon>icon.bm_freya_storm_scroll</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic> <!-- Magic Skill -->
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<operateType>A2</operateType>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="StatUp">
 				<amount>1</amount>
@@ -737,16 +958,15 @@
 	<skill id="40244" toLevel="1" name="Sayha's Blessing Scroll - Recovery Potions' Effect">
 		<!-- HP Recovery Potion Effect +50. -->
 		<icon>icon.bm_freya_storm_scroll</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<operateType>A1</operateType>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic> <!-- Magic Skill -->
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<operateType>A2</operateType>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="AdditionalPotionHp">
 				<amount>50</amount>
@@ -756,16 +976,15 @@
 	<skill id="40245" toLevel="1" name="Sayha's Blessing Scroll - MP Recovery">
 		<!-- MP Recovery +10. -->
 		<icon>icon.bm_freya_storm_scroll</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<operateType>A1</operateType>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic> <!-- Magic Skill -->
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<operateType>A2</operateType>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MpRegen">
 				<amount>10</amount>
@@ -776,22 +995,21 @@
 	<skill id="40246" toLevel="1" name="Sayha's Blessing Scroll - Atk./ Def.">
 		<!-- P. Atk. +150. M. Atk. +150. P. Def. +150. M. Def. +150 -->
 		<icon>icon.bm_freya_storm_scroll</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<operateType>A1</operateType>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic> <!-- Magic Skill -->
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<operateType>A2</operateType>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>150</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>150</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -808,16 +1026,15 @@
 	<skill id="40247" toLevel="1" name="Sayha's Blessing Scroll - Atk. Spd./ Casting Spd.">
 		<!-- Atk. Spd. +100. Casting Spd. +100 -->
 		<icon>icon.bm_freya_storm_scroll</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<operateType>A1</operateType>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic> <!-- Magic Skill -->
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<operateType>A2</operateType>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>100</amount>
@@ -832,20 +1049,59 @@
 	<skill id="40248" toLevel="1" name="Primeval Garden's Time Stone">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94615</itemConsumeId> <!-- Forgotten Primeval Garden's Time Stone (Time-limited) -->
+		<reuseDelay>1000</reuseDelay>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>76</minLevel>
+				<maxLevel>999</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="AddHuntingTime">
+				<zoneId>4</zoneId>
+				<time>3600000</time>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40249" toLevel="1" name="Primeval Isle's Time Stone">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94620</itemConsumeId> <!-- Primeval Isle's Prolongation Stone -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>40</minLevel>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="AddHuntingTime">
+				<zoneId>1</zoneId>
+				<time>3600000</time>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40250" toLevel="1" name="Low-grade Pet XP Crystal">
 		<!-- Pet XP +1,000,000. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>PET</targetType>
+		<affectScope>SINGLE</affectScope>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>94635</itemConsumeId>
 		<reuseDelay>5</reuseDelay>
-		<targetType>PET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="GivePetXp">
 				<xp>1000000</xp>
@@ -855,15 +1111,15 @@
 	<skill id="40251" toLevel="1" name="Pet's XP Growth Scroll">
 		<!-- Pet's acquired XP +50%. Removed when your pet dies or is unsummoned. -->
 		<icon>icon.scroll_of_kukur_event</icon>
+		<operateType>A2</operateType>
+		<targetType>PET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<reuseDelay>600000</reuseDelay>
-		<targetType>PET</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>94636</itemConsumeId> <!-- Pet's XP Growth Scroll -->
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94636</itemConsumeId> <!-- Pet's XP Growth Scroll -->
+		<reuseDelay>600000</reuseDelay>
 		<effects>
 			<effect name="ExpModifyPet">
 				<amount>30</amount>
@@ -873,22 +1129,22 @@
 	<skill id="40252" toLevel="1" name="Scroll: Enchant Necklace of Spirits">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40253" toLevel="1" name="Scroll: Enchant Hellbound Ring">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40254" toLevel="1" name="Scroll of Escape: Ivory Tower">
 		<icon>icon.skill0000</icon>
@@ -910,21 +1166,21 @@
 		<!-- STR +1. INT +1. Atk. Spd. +100. Casting Spd. +100. Speed +5. P. Skill Power +5%. M. Skill Power +5% -->
 		<icon>icon.bereserker_scroll_i00</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>60000</reuseDelay>
-		<hitTime>1000</hitTime>
-		<abnormalTime>1200</abnormalTime>
-		<itemConsumeId>94776</itemConsumeId> <!-- Berserker's Scroll (Exchangeable) -->
-		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>SPECIAL_BERSERKER</abnormalType>
-		<stayAfterDeath>true</stayAfterDeath>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<abnormalLevel>1</abnormalLevel>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94776</itemConsumeId> <!-- Berserker's Scroll (Exchangeable) -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>100</amount>
@@ -960,21 +1216,21 @@
 		<!-- STR +1. INT +1. Atk. Spd. +100. Casting Spd. +100. Speed +5. P. Skill Power +5%. M. Skill Power +5% -->
 		<icon>icon.bereserker_scroll_i00</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>60000</reuseDelay>
-		<hitTime>1000</hitTime>
-		<abnormalTime>1200</abnormalTime>
-		<itemConsumeId>94777</itemConsumeId> <!-- Berserker's Scroll -->
-		<itemConsumeCount>1</itemConsumeCount>
 		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>SPECIAL_BERSERKER</abnormalType>
-		<stayAfterDeath>true</stayAfterDeath>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<abnormalLevel>1</abnormalLevel>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94777</itemConsumeId> <!-- Berserker's Scroll -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>100</amount>
@@ -1008,16 +1264,16 @@
 	</skill>
 	<skill id="40260" toLevel="1" name="Aden Transformation Scroll">
 		<icon>icon.random_transform_00</icon>
-		<isMagic>4</isMagic>
 		<operateType>A1</operateType>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>94814</itemConsumeId> <!-- Random Transformation Scroll - Event -->
-		<reuseDelay>10000</reuseDelay>
-		<staticReuse>true</staticReuse>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94814</itemConsumeId> <!-- Random Transformation Scroll - Event -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>10000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="CallRandomSkill">
 				<skills>51183,1;51190,1;39367,1;51148,1;51148,1</skills>
@@ -1026,13 +1282,15 @@
 	</skill>
 	<skill id="40261" toLevel="1" name="Scroll: 1,000,000,000 SP">
 		<icon>icon.skill0000</icon>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>94829</itemConsumeId>
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<reuseDelay>500</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94829</itemConsumeId> <!-- Scroll: 1,000,000,000 SP -->
+		<magicLevel>1</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<effects>
 			<effect name="GiveSp">
 				<sp>1000000000</sp>
@@ -1042,20 +1300,51 @@
 	<skill id="40262" toLevel="1" name="Buff Candies">
 		<!-- P. Atk. +100. M. Atk. +100. P. Def. +200. M. Def. +200 -->
 		<icon>icon.flower_songpyeon</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalTime>1200</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>0</hitTime>
+		<isMagic>2</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94835</itemConsumeId> <!-- Berserker's Scroll (Exchangeable) -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
+		<effects>
+			<effect name="PhysicalAttack">
+				<amount>100</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="MagicalAttack">
+				<amount>100</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="PhysicalDefence">
+				<amount>200</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>200</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40263" toLevel="1" name="Transformation Scroll">
 		<icon>icon.random_transform_00</icon>
-		<isMagic>4</isMagic>
 		<operateType>A1</operateType>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>94838</itemConsumeId> <!-- Random Transformation Scroll - Event -->
-		<reuseDelay>10000</reuseDelay>
-		<staticReuse>true</staticReuse>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>94838</itemConsumeId> <!-- Random Transformation Scroll - Event -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>10000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="CallRandomSkill">
 				<skills>51183,1;51187,1;51148,1</skills>
@@ -1065,116 +1354,363 @@
 	<skill id="40264" toLevel="3" name="Regeneration">
 		<icon>icon.skill1044</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">331</value>
+			<value level="2">457</value>
+			<value level="3">532</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">30</value>
+			<value level="2">44</value>
+			<value level="3">52</value>
+		</mpConsume>
 	</skill>
 	<skill id="40265" toLevel="6" name="Blessed Body">
 		<icon>icon.skill1045</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">418</value>
+			<value level="2">457</value>
+			<value level="3">495</value>
+			<value level="4">532</value>
+			<value level="5">597</value>
+			<value level="6">646</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">39</value>
+			<value level="2">44</value>
+			<value level="3">48</value>
+			<value level="4">52</value>
+			<value level="5">60</value>
+			<value level="6">67</value>
+		</mpConsume>
 	</skill>
 	<skill id="40266" toLevel="6" name="Blessed Soul">
 		<icon>icon.skill1048</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">418</value>
+			<value level="2">457</value>
+			<value level="3">495</value>
+			<value level="4">532</value>
+			<value level="5">582</value>
+			<value level="6">635</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">39</value>
+			<value level="2">44</value>
+			<value level="3">48</value>
+			<value level="4">52</value>
+			<value level="5">58</value>
+			<value level="6">65</value>
+		</mpConsume>
 	</skill>
 	<skill id="40267" toLevel="3" name="Focus">
 		<icon>icon.skill1077</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">243</value>
+			<value level="2">418</value>
+			<value level="3">495</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">23</value>
+			<value level="2">39</value>
+			<value level="3">48</value>
+		</mpConsume>
 	</skill>
 	<skill id="40268" toLevel="3" name="Focus">
 		<icon>icon.skill1077</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">243</value>
+			<value level="2">418</value>
+			<value level="3">495</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">23</value>
+			<value level="2">39</value>
+			<value level="3">48</value>
+		</mpConsume>
 	</skill>
 	<skill id="40269" toLevel="3" name="Death Whisper">
 		<icon>icon.skill1242</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">379</value>
+			<value level="2">457</value>
+			<value level="3">532</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">35</value>
+			<value level="2">44</value>
+			<value level="3">52</value>
+		</mpConsume>
 	</skill>
 	<skill id="40270" toLevel="2" name="Haste">
-		<!-- For 20 min., Atk. Spd. +15%. -->
+		<!-- Level 1: For 20 min., Atk. Spd. +15%. -->
+		<!-- Level 2: For 20 min., Atk. Spd. +33%. -->
 		<icon>icon.skill1086</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">418</value>
+			<value level="2">495</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">39</value>
+			<value level="2">48</value>
+		</mpConsume>
 	</skill>
 	<skill id="40271" toLevel="3" name="Acumen">
 		<icon>icon.skill1085</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">204</value>
+			<value level="2">331</value>
+			<value level="3">457</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">20</value>
+			<value level="2">30</value>
+			<value level="3">44</value>
+		</mpConsume>
 	</skill>
 	<skill id="40272" toLevel="3" name="Acumen">
 		<icon>icon.skill1085</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">204</value>
+			<value level="2">331</value>
+			<value level="3">457</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">20</value>
+			<value level="2">30</value>
+			<value level="3">44</value>
+		</mpConsume>
 	</skill>
 	<skill id="40273" toLevel="3" name="Might">
 		<icon>icon.skill1068</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">121</value>
+			<value level="2">204</value>
+			<value level="3">379</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">10</value>
+			<value level="2">20</value>
+			<value level="3">35</value>
+		</mpConsume>
 	</skill>
 	<skill id="40274" toLevel="3" name="Might">
 		<icon>icon.skill1068</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">121</value>
+			<value level="2">204</value>
+			<value level="3">379</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">10</value>
+			<value level="2">20</value>
+			<value level="3">35</value>
+		</mpConsume>
 	</skill>
 	<skill id="40275" toLevel="3" name="Empower">
 		<icon>icon.skill1059</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">243</value>
+			<value level="2">418</value>
+			<value level="3">495</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">23</value>
+			<value level="2">39</value>
+			<value level="3">48</value>
+		</mpConsume>
 	</skill>
 	<skill id="40276" toLevel="3" name="Empower">
 		<icon>icon.skill1059</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">243</value>
+			<value level="2">418</value>
+			<value level="3">495</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">23</value>
+			<value level="2">39</value>
+			<value level="3">48</value>
+		</mpConsume>
 	</skill>
 	<skill id="40277" toLevel="3" name="Shield">
 		<icon>icon.skill1040</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">121</value>
+			<value level="2">243</value>
+			<value level="3">418</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">10</value>
+			<value level="2">23</value>
+			<value level="3">39</value>
+		</mpConsume>
 	</skill>
 	<skill id="40278" toLevel="3" name="Shield">
 		<icon>icon.skill1040</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">121</value>
+			<value level="2">243</value>
+			<value level="3">418</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">10</value>
+			<value level="2">23</value>
+			<value level="3">39</value>
+		</mpConsume>
 	</skill>
 	<skill id="40279" toLevel="2" name="Magic Barrier">
 		<icon>icon.skill1036</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">418</value>
+			<value level="2">495</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">39</value>
+			<value level="2">48</value>
+		</mpConsume>
 	</skill>
 	<skill id="40280" toLevel="2" name="Wind Walk">
 		<icon>icon.skill1204</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">204</value>
+			<value level="2">285</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">20</value>
+			<value level="2">27</value>
+		</mpConsume>
 	</skill>
 	<skill id="40281" toLevel="2" name="Wind Walk">
 		<icon>icon.skill1204</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">204</value>
+			<value level="2">285</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">20</value>
+			<value level="2">27</value>
+		</mpConsume>
 	</skill>
 	<skill id="40282" toLevel="6" name="Concentration">
 		<icon>icon.skill1078</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">204</value>
+			<value level="2">285</value>
+			<value level="3">418</value>
+			<value level="4">495</value>
+			<value level="5">566</value>
+			<value level="6">624</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">20</value>
+			<value level="2">27</value>
+			<value level="3">39</value>
+			<value level="4">48</value>
+			<value level="5">55</value>
+			<value level="6">64</value>
+		</mpConsume>
 	</skill>
 	<skill id="40283" toLevel="6" name="Concentration">
 		<icon>icon.skill1078</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">204</value>
+			<value level="2">285</value>
+			<value level="3">418</value>
+			<value level="4">495</value>
+			<value level="5">566</value>
+			<value level="6">624</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">20</value>
+			<value level="2">27</value>
+			<value level="3">39</value>
+			<value level="4">48</value>
+			<value level="5">55</value>
+			<value level="6">64</value>
+		</mpConsume>
 	</skill>
 	<skill id="40284" toLevel="3" name="Agility">
 		<icon>icon.skill1087</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">243</value>
+			<value level="2">418</value>
+			<value level="3">495</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">23</value>
+			<value level="2">39</value>
+			<value level="3">48</value>
+		</mpConsume>
 	</skill>
 	<skill id="40285" toLevel="3" name="Agility">
 		<icon>icon.skill1087</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">243</value>
+			<value level="2">418</value>
+			<value level="3">495</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">23</value>
+			<value level="2">39</value>
+			<value level="3">48</value>
+		</mpConsume>
 	</skill>
 	<skill id="40286" toLevel="3" name="Guidance">
 		<icon>icon.skill1240</icon>
 		<operateType>A1</operateType>
+		<effectPoint>
+			<value level="1">379</value>
+			<value level="2">457</value>
+			<value level="3">532</value>
+		</effectPoint>
+		<mpConsume>
+			<value level="1">35</value>
+			<value level="2">44</value>
+			<value level="3">52</value>
+		</mpConsume>
 	</skill>
 	<skill id="40287" toLevel="1" name="Secret Shop Ticket">
 		<icon>icon.bm_masterpiece_silver_ticket</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
+		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>4</isMagic>
-		<reuseDelay>60000</reuseDelay>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<irreplacableBuff>true</irreplacableBuff>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1195,22 +1731,22 @@
 	<skill id="40288" toLevel="1" name="Life Control Tower's Scroll of Blessing">
 		<!-- Max HP +5%. Max MP +5%. Paralysis Resistance +15%. Silence Resistance +15%. Fear Resistance +15%. Acquired XP +30%. Acquired SP +30%. The effect remains after death. You can cancel the effect by yourself. -->
 		<icon>icon.etc_aidcharm_cancel_valbreath_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
-		<itemConsumeId>94872</itemConsumeId>
-		<itemConsumeCount>1</itemConsumeCount> <!-- Life Control Tower's Scroll of Blessing (Event) -->
 		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
-		<operateType>A2</operateType>
+		<itemConsumeCount>1</itemConsumeCount> <!-- Life Control Tower's Scroll of Blessing (Event) -->
+		<itemConsumeId>94872</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>60000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MaxHp">
 				<amount>5</amount>
@@ -1277,15 +1813,15 @@
 	<skill id="40296" toLevel="1" name="Scroll of Escape: Master Kerkir">
 		<!-- Can be used to teleport to Master Kerkir in the Wind Village. -->
 		<icon>icon.skill0000</icon>
-		<hitTime>500</hitTime>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>95586</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1304,15 +1840,15 @@
 	<skill id="40297" toLevel="1" name="Scroll of Escape: Grocer Evia">
 		<!-- Can be used to teleport to Grocer Evia in the Wind Village. -->
 		<icon>icon.skill0000</icon>
-		<hitTime>500</hitTime>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>95587</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1332,12 +1868,12 @@
 		<!-- Can be used to teleport to High Priest Maximilian in Giran. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>200</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>95595</itemConsumeId> <!-- Scroll of Escape: High Priest Maximilian -->
+		<hitTime>0</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>95595</itemConsumeId> <!-- Scroll of Escape: High Priest Maximilian -->
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -1357,12 +1893,12 @@
 		<!-- A magic scroll for teleporting to the Gorgon Flower Garden. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>200</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>95588</itemConsumeId> <!-- Scroll of Escape: Gorgon Flower Garden -->
+		<hitTime>0</hitTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>95588</itemConsumeId> <!-- Scroll of Escape: Gorgon Flower Garden -->
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="17701" toLevel="5" name="Topaz: Spiritshot">
-		<!-- Interrupts target's skill casting. In PvP, ignores CP and inflicts a fixed damage of 1062. -->
+		<!-- Level 1: Interrupts target's skill casting. In PvP, ignores CP and inflicts a fixed damage of 1062. -->
+		<!-- Level 2: Interrupts target's skill casting. In PvP, ignores CP and inflicts a fixed damage of 3717. -->
+		<!-- Level 3: Interrupts target's skill casting. In PvP, ignores CP and inflicts a fixed damage of 6903. -->
+		<!-- Level 4: Interrupts target's skill casting. In PvP, ignores CP and inflicts a fixed damage of 10089. -->
+		<!-- Level 5: Interrupts target's skill casting. In PvP, ignores CP and inflicts a fixed damage of 13275. -->
 		<icon>icon.etc_bm_jewel_topaz_i00</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">2</value>
 			<value level="2">3</value>
@@ -11,6 +16,11 @@
 			<value level="4">5</value>
 			<value level="5">6</value>
 		</abnormalLevel>
+		<affectScope>SINGLE</affectScope>
+		<castRange>600</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1000</effectPoint>
+		<hitTime>1000</hitTime>
 		<magicLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -18,13 +28,7 @@
 			<value level="4">4</value>
 			<value level="5">5</value>
 		</magicLevel>
-		<castRange>600</castRange>
-		<hitTime>1000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-1000</effectPoint>
 		<reuseDelay>30000</reuseDelay>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<targetConditions>
 			<condition name="OpCheckFlag" />
 		</targetConditions>
@@ -48,11 +52,15 @@
 		</effects>
 	</skill>
 	<skill id="17702" toLevel="5" name="Jewel: Quick Recovery">
-		<!-- Restores 1500 HP. -->
+		<!-- Level 1: Restores 1500 HP. -->
+		<!-- Level 2: Restores 3000 HP. -->
+		<!-- Level 3: Restores 6000 HP. -->
+		<!-- Level 4: Restores 8000 HP. -->
+		<!-- Level 5: Restores 13000 HP. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>30000</reuseDelay>
 		<targetType>SELF</targetType>
+		<reuseDelay>30000</reuseDelay>
 		<effects>
 			<effect name="Hp">
 				<amount>
@@ -66,7 +74,11 @@
 		</effects>
 	</skill>
 	<skill id="17703" toLevel="5" name="Jewel: Heal Boost">
-		<!-- Received Heal Amount + 3%. -->
+		<!-- Level 1: Received Heal Amount + 3%. -->
+		<!-- Level 2: Received Heal Amount + 6%. -->
+		<!-- Level 3: Received Heal Amount + 9%. -->
+		<!-- Level 4: Received Heal Amount + 13%. -->
+		<!-- Level 5: Received Heal Amount + 21%. -->
 		<icon>icon.skill4416_dwarf</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -84,7 +96,11 @@
 		</effects>
 	</skill>
 	<skill id="17704" toLevel="5" name="Obsidian">
-		<!-- Received Damage in PvP - 1%. -->
+		<!-- Level 1: Received Damage in PvP - 1%. -->
+		<!-- Level 2: Received Damage in PvP - 3%. -->
+		<!-- Level 3: Received Damage in PvP - 7%. -->
+		<!-- Level 4: Received Damage in PvP - 11%. -->
+		<!-- Level 5: Received Damage in PvP - 15%. -->
 		<icon>icon.etc_bm_jewel_obsidian_i00</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -122,7 +138,11 @@
 		</effects>
 	</skill>
 	<skill id="17705" toLevel="5" name="Opal">
-		<!-- Attack Attribute + 10. -->
+		<!-- Level 1: Attack Attribute + 10. -->
+		<!-- Level 2: Attack Attribute + 20. -->
+		<!-- Level 3: Attack Attribute + 40. -->
+		<!-- Level 4: Attack Attribute + 70. -->
+		<!-- Level 5: Attack Attribute + 120. -->
 		<icon>icon.etc_bm_jewel_opal_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -198,7 +218,11 @@
 		</effects>
 	</skill>
 	<skill id="17706" toLevel="5" name="Jewel: Atk. Spd. Increase">
-		<!-- Atk. Spd. + 33. -->
+		<!-- Level 1: Atk. Spd. + 33. -->
+		<!-- Level 2: Atk. Spd. + 48. -->
+		<!-- Level 3: Atk. Spd. + 78. -->
+		<!-- Level 4: Atk. Spd. + 138. -->
+		<!-- Level 5: Atk. Spd. + 258. -->
 		<icon>icon.etc_talisman_i02</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -216,7 +240,11 @@
 		</effects>
 	</skill>
 	<skill id="17707" toLevel="5" name="Jewel: Casting Spd. Increase">
-		<!-- Casting Spd. + 33. -->
+		<!-- Level 1: Casting Spd. + 33. -->
+		<!-- Level 2: Casting Spd. + 52. -->
+		<!-- Level 3: Casting Spd. + 90. -->
+		<!-- Level 4: Casting Spd. + 166. -->
+		<!-- Level 5: Casting Spd. + 318. -->
 		<icon>icon.skill17085</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -234,7 +262,11 @@
 		</effects>
 	</skill>
 	<skill id="17708" toLevel="5" name="Diamond">
-		<!-- P. Def. + 283, and Received P. Critical Damage - 1%. -->
+		<!-- Level 1: P. Def. + 283, and Received P. Critical Damage - 1%. -->
+		<!-- Level 2: P. Def. + 567, and Received P. Critical Damage - 2%. -->
+		<!-- Level 3: P. Def. + 945, and Received P. Critical Damage - 3%. -->
+		<!-- Level 4: P. Def. + 1418, and Received P. Critical Damage - 4%. -->
+		<!-- Level 5: P. Def. + 1986, and Received P. Critical Damage - 5%. -->
 		<icon>icon.etc_bm_jewel_diamond_i00</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -272,7 +304,11 @@
 		</effects>
 	</skill>
 	<skill id="17709" toLevel="5" name="Pearl">
-		<!-- M. Def. + 163, and Received P. Critical Damage - 1%. -->
+		<!-- Level 1: M. Def. + 163, and Received P. Critical Damage - 1%. -->
+		<!-- Level 2: M. Def. + 328, and Received P. Critical Damage - 2%. -->
+		<!-- Level 3: M. Def. + 548, and Received P. Critical Damage - 3%. -->
+		<!-- Level 4: M. Def. + 821, and Received P. Critical Damage - 4%. -->
+		<!-- Level 5: M. Def. + 1150, and Received P. Critical Damage - 5%. -->
 		<icon>icon.etc_bm_jewel_pearl_i00</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
@@ -400,8 +436,8 @@
 		<icon>icon.skill3260</icon>
 		<operateType>A1</operateType>
 		<castRange>600</castRange>
-		<hitTime>1000</hitTime>
 		<effectPoint>-1000</effectPoint>
+		<hitTime>1000</hitTime>
 		<reuseDelay>30000</reuseDelay>
 	</skill>
 	<skill id="17716" toLevel="1" name="Spirit Hit Lv. 2">
@@ -409,8 +445,8 @@
 		<icon>icon.skill3260</icon>
 		<operateType>A1</operateType>
 		<castRange>600</castRange>
-		<hitTime>1000</hitTime>
 		<effectPoint>-1000</effectPoint>
+		<hitTime>1000</hitTime>
 		<reuseDelay>30000</reuseDelay>
 	</skill>
 	<skill id="17717" toLevel="1" name="Spirit Hit Lv. 3">
@@ -418,8 +454,8 @@
 		<icon>icon.skill3260</icon>
 		<operateType>A1</operateType>
 		<castRange>600</castRange>
-		<hitTime>1000</hitTime>
 		<effectPoint>-1000</effectPoint>
+		<hitTime>1000</hitTime>
 		<reuseDelay>30000</reuseDelay>
 	</skill>
 	<skill id="17718" toLevel="1" name="Dandy's Breath">

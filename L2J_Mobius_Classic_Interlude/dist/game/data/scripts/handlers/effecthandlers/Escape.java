@@ -62,7 +62,7 @@ public class Escape extends AbstractEffect
 		if (_escapeType != null)
 		{
 			effected.teleToLocation(_escapeType, null);
-			effected.getActingPlayer().setIn7sDungeon(false);
+			effected.asPlayer().setIn7sDungeon(false);
 		}
 	}
 }

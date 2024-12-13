@@ -16,7 +16,6 @@
  */
 package ai.others;
 
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 
 import ai.AbstractNpcAI;
@@ -46,7 +45,7 @@ public class SeeThroughSilentMove extends AbstractNpcAI
 	{
 		if (npc.isAttackable())
 		{
-			((Attackable) npc).setSeeThroughSilentMove(true);
+			npc.asAttackable().setSeeThroughSilentMove(true);
 		}
 		return super.onSpawn(npc);
 	}

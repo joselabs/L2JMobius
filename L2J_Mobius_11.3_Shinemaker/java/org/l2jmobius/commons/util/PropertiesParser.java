@@ -24,6 +24,7 @@ import java.nio.charset.Charset;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -69,6 +70,11 @@ public class PropertiesParser
 	{
 		final String value = _properties.getProperty(key);
 		return value != null ? value.trim() : null;
+	}
+	
+	public Collection<String> getStringPropertyNames()
+	{
+		return _properties.stringPropertyNames();
 	}
 	
 	public boolean getBoolean(String key, boolean defaultValue)

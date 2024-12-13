@@ -42,8 +42,8 @@ public class ExPledgeRecruitBoardSearch extends ServerPacket
 		_clanList = clanList;
 		_currentPage = currentPage;
 		_totalNumberOfPage = (int) Math.ceil((double) _clanList.size() / CLAN_PER_PAGE);
-		_startIndex = (_currentPage - 1) * CLAN_PER_PAGE;
-		_endIndex = (_startIndex + CLAN_PER_PAGE) > _clanList.size() ? _clanList.size() : _startIndex + CLAN_PER_PAGE;
+		_startIndex = Math.max(0, (_currentPage - 1) * CLAN_PER_PAGE); // Ensure startIndex is non-negative.
+		_endIndex = Math.min(_startIndex + CLAN_PER_PAGE, _clanList.size()); // Ensure endIndex is within bounds.
 		_clanOnCurrentPage = _endIndex - _startIndex;
 	}
 	
@@ -54,24 +54,30 @@ public class ExPledgeRecruitBoardSearch extends ServerPacket
 		buffer.writeInt(_currentPage);
 		buffer.writeInt(_totalNumberOfPage);
 		buffer.writeInt(_clanOnCurrentPage);
+		
+		// Write clan ids and ally ids.
 		for (int i = _startIndex; i < _endIndex; i++)
 		{
-			buffer.writeInt(_clanList.get(i).getClanId());
-			buffer.writeInt(_clanList.get(i).getClan().getAllyId());
+			final PledgeRecruitInfo recruitInfo = _clanList.get(i);
+			buffer.writeInt(recruitInfo.getClanId());
+			buffer.writeInt(recruitInfo.getClan().getAllyId());
 		}
+		
+		// Write clan details.
 		for (int i = _startIndex; i < _endIndex; i++)
 		{
-			final Clan clan = _clanList.get(i).getClan();
+			final PledgeRecruitInfo recruitInfo = _clanList.get(i);
+			Clan clan = recruitInfo.getClan();
 			buffer.writeInt(clan.getCrestId());
 			buffer.writeInt(clan.getAllyCrestId());
 			buffer.writeString(clan.getName());
 			buffer.writeString(clan.getLeaderName());
 			buffer.writeInt(clan.getLevel());
 			buffer.writeInt(clan.getMembersCount());
-			buffer.writeInt(_clanList.get(i).getKarma());
-			buffer.writeString(_clanList.get(i).getInformation());
-			buffer.writeInt(_clanList.get(i).getApplicationType()); // Helios
-			buffer.writeInt(_clanList.get(i).getRecruitType()); // Helios
+			buffer.writeInt(recruitInfo.getKarma());
+			buffer.writeString(recruitInfo.getInformation());
+			buffer.writeInt(recruitInfo.getApplicationType());
+			buffer.writeInt(recruitInfo.getRecruitType());
 		}
 	}
 }

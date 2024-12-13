@@ -678,10 +678,11 @@ public class HarnakUndergroundRuins extends AbstractInstance
 	{
 		if (creature.isPlayer())
 		{
-			startQuestTimer("cast_release_power", 2000, npc, creature.getActingPlayer());
+			final Player player = creature.asPlayer();
+			startQuestTimer("cast_release_power", 2000, npc, player);
 			if (npc.getId() == POWER_SOURCE)
 			{
-				startQuestTimer("whisper_to_player", 2000, npc, creature.getActingPlayer());
+				startQuestTimer("whisper_to_player", 2000, npc, player);
 			}
 		}
 		return super.onCreatureSee(npc, creature);
@@ -695,7 +696,7 @@ public class HarnakUndergroundRuins extends AbstractInstance
 			return null;
 		}
 		
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		final Instance world = player.getInstanceWorld();
 		if (world != null)
 		{

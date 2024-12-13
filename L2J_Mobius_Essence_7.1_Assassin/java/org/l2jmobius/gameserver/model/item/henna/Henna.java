@@ -157,12 +157,12 @@ public class Henna
 	}
 	
 	/**
-	 * @param c the class trying to wear this dye.
+	 * @param player the player trying to wear this dye.
 	 * @return {@code true} if the player is allowed to wear this dye, {@code false} otherwise.
 	 */
-	public boolean isAllowedClass(Player c)
+	public boolean isAllowedClass(Player player)
 	{
-		return _wearClass.contains(c.getClassId().level());
+		return _wearClass.isEmpty() || _wearClass.contains(player.getClassId().level());
 	}
 	
 	/**

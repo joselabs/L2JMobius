@@ -155,7 +155,7 @@ public class ZoneManager implements IXmlReader
 		{
 			if (obj.isCreature())
 			{
-				((Creature) obj).revalidateZone(true);
+				obj.asCreature().revalidateZone(true);
 			}
 		}
 		

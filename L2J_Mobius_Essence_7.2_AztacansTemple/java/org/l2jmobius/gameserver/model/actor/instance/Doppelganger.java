@@ -169,13 +169,14 @@ public class Doppelganger extends Attackable
 		// Prevents the double spam of system messages, if the target is the owning player.
 		if (target.getObjectId() != getSummoner().getObjectId())
 		{
-			if (getActingPlayer().isInOlympiadMode() && (target.isPlayer()) && ((Player) target).isInOlympiadMode() && (((Player) target).getOlympiadGameId() == getActingPlayer().getOlympiadGameId()))
+			final Player player = asPlayer();
+			if (player.isInOlympiadMode() && (target.isPlayer()) && target.asPlayer().isInOlympiadMode() && (target.asPlayer().getOlympiadGameId() == player.getOlympiadGameId()))
 			{
-				OlympiadGameManager.getInstance().notifyCompetitorDamage(getSummoner().getActingPlayer(), damage);
+				OlympiadGameManager.getInstance().notifyCompetitorDamage(getSummoner().asPlayer(), damage);
 			}
 			
 			final SystemMessage sm;
-			if ((target.isHpBlocked() && !target.isNpc()) || (target.isPlayer() && target.isAffected(EffectFlag.DUELIST_FURY) && !getActingPlayer().isAffected(EffectFlag.FACEOFF)))
+			if ((target.isHpBlocked() && !target.isNpc()) || (target.isPlayer() && target.isAffected(EffectFlag.DUELIST_FURY) && !player.isAffected(EffectFlag.FACEOFF)))
 			{
 				sm = new SystemMessage(SystemMessageId.THE_ATTACK_HAS_BEEN_BLOCKED);
 			}
@@ -209,9 +210,9 @@ public class Doppelganger extends Attackable
 	}
 	
 	@Override
-	public Player getActingPlayer()
+	public Player asPlayer()
 	{
-		return getSummoner() != null ? getSummoner().getActingPlayer() : super.getActingPlayer();
+		return getSummoner() != null ? getSummoner().asPlayer() : super.asPlayer();
 	}
 	
 	@Override

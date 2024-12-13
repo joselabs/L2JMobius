@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
 import org.l2jmobius.gameserver.model.World;
+import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 import org.l2jmobius.gameserver.util.BuilderUtil;
@@ -166,7 +167,9 @@ public class AdminPrimePoints implements IAdminCommandHandler
 	
 	private Player getTarget(Player activeChar)
 	{
-		return ((activeChar.getTarget() != null) && (activeChar.getTarget().getActingPlayer() != null)) ? activeChar.getTarget().getActingPlayer() : activeChar;
+		final WorldObject target = activeChar.getTarget();
+		final Player targetPlayer = target != null ? target.asPlayer() : null;
+		return targetPlayer != null ? targetPlayer : activeChar;
 	}
 	
 	private void showMenuHtml(Player activeChar)

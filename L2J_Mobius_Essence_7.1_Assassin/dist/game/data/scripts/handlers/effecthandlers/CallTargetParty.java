@@ -43,7 +43,7 @@ public class CallTargetParty extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		if ((player == null))
 		{
 			return;
@@ -54,7 +54,7 @@ public class CallTargetParty extends AbstractEffect
 		{
 			for (Player member : party.getMembers())
 			{
-				if ((member != player) && CallPc.checkSummonTargetStatus(member, effector.getActingPlayer()))
+				if ((member != player) && CallPc.checkSummonTargetStatus(member, effector.asPlayer()))
 				{
 					member.teleToLocation(player.getLocation(), true);
 				}

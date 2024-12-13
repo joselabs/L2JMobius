@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.actor.stat;
 
@@ -20,6 +24,7 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.OptionalDouble;
 import java.util.Set;
@@ -31,7 +36,9 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.AttributeType;
 import org.l2jmobius.gameserver.enums.Position;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
+import org.l2jmobius.gameserver.model.holders.DelayedPumpHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.AbnormalType;
 import org.l2jmobius.gameserver.model.skill.BuffInfo;
@@ -948,6 +955,9 @@ public class CreatureStat
 			// Wipe all the data.
 			resetStats();
 			
+			// Delayed pump effects.
+			final List<DelayedPumpHolder> delayedPumps = new LinkedList<>();
+			
 			// Call pump to each effect.
 			for (BuffInfo info : _creature.getEffectList().getPassives())
 			{
@@ -957,7 +967,14 @@ public class CreatureStat
 					{
 						if (effect.canStart(info.getEffector(), info.getEffected(), info.getSkill()) && effect.canPump(info.getEffector(), info.getEffected(), info.getSkill()))
 						{
-							effect.pump(info.getEffected(), info.getSkill());
+							if (effect.delayPump())
+							{
+								delayedPumps.add(new DelayedPumpHolder(effect, info.getEffected(), info.getSkill()));
+							}
+							else
+							{
+								effect.pump(info.getEffected(), info.getSkill());
+							}
 						}
 					}
 				}
@@ -970,7 +987,14 @@ public class CreatureStat
 					{
 						if (effect.canStart(info.getEffector(), info.getEffected(), info.getSkill()) && effect.canPump(info.getEffector(), info.getEffected(), info.getSkill()))
 						{
-							effect.pump(info.getEffected(), info.getSkill());
+							if (effect.delayPump())
+							{
+								delayedPumps.add(new DelayedPumpHolder(effect, info.getEffected(), info.getSkill()));
+							}
+							else
+							{
+								effect.pump(info.getEffected(), info.getSkill());
+							}
 						}
 					}
 				}
@@ -983,24 +1007,44 @@ public class CreatureStat
 					{
 						if (effect.canStart(info.getEffector(), info.getEffected(), info.getSkill()) && effect.canPump(info.getEffector(), info.getEffected(), info.getSkill()))
 						{
-							effect.pump(info.getEffected(), info.getSkill());
+							if (effect.delayPump())
+							{
+								delayedPumps.add(new DelayedPumpHolder(effect, info.getEffected(), info.getSkill()));
+							}
+							else
+							{
+								effect.pump(info.getEffected(), info.getSkill());
+							}
 						}
 					}
 				}
 			}
 			
-			// Pump for summon ABILITY_CHANGE abnormal type.
-			if (_creature.isSummon() && (_creature.getActingPlayer() != null) && _creature.getActingPlayer().hasAbnormalType(AbnormalType.ABILITY_CHANGE))
+			// Call delayed effect pumps.
+			if (!delayedPumps.isEmpty())
 			{
-				for (BuffInfo info : _creature.getActingPlayer().getEffectList().getEffects())
+				for (DelayedPumpHolder holder : delayedPumps)
 				{
-					if (info.isInUse() && info.isAbnormalType(AbnormalType.ABILITY_CHANGE))
+					holder.getEffect().pump(holder.getEffected(), holder.getSkill());
+				}
+			}
+			
+			// Pump for summon ABILITY_CHANGE abnormal type.
+			if (_creature.isSummon())
+			{
+				final Player player = _creature.asPlayer();
+				if ((player != null) && player.hasAbnormalType(AbnormalType.ABILITY_CHANGE))
+				{
+					for (BuffInfo info : player.getEffectList().getEffects())
 					{
-						for (AbstractEffect effect : info.getEffects())
+						if (info.isInUse() && info.isAbnormalType(AbnormalType.ABILITY_CHANGE))
 						{
-							if (effect.canStart(info.getEffector(), info.getEffected(), info.getSkill()) && effect.canPump(_creature, _creature, info.getSkill()))
+							for (AbstractEffect effect : info.getEffects())
 							{
-								effect.pump(_creature, info.getSkill());
+								if (effect.canStart(info.getEffector(), info.getEffected(), info.getSkill()) && effect.canPump(_creature, _creature, info.getSkill()))
+								{
+									effect.pump(_creature, info.getSkill());
+								}
 							}
 						}
 					}

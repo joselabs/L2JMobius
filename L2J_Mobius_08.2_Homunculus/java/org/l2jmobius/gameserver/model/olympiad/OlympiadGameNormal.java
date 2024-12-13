@@ -468,11 +468,14 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				
 				final SystemMessage ko = new SystemMessage(((_damageP1 > _damageP2) && (playerTwoHp != 0) && (playerOneHp != 0)) ? SystemMessageId.HIDDEN_MSG_OLYMPIAD_TIME_OVER : SystemMessageId.HIDDEN_MSG_OLYMPIAD_KNOCK_DOWN);
 				
-				_playerOne.getPlayer().sendPacket(ko);
-				_playerOne.getPlayer().sendPacket(new SystemMessage(SystemMessageId.HIDDEN_MSG_OLYMPIAD_VICTORY));
-				_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 1, 20));
-				ThreadPool.schedule(() -> SkillCaster.triggerCast(_playerOne.getPlayer(), _playerOne.getPlayer(), CommonSkill.OLYMPIAD_WIN.getSkill()), 2000);
-				ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 2, 100)), 20000);
+				if (_playerOne != null)
+				{
+					_playerOne.getPlayer().sendPacket(ko);
+					_playerOne.getPlayer().sendPacket(new SystemMessage(SystemMessageId.HIDDEN_MSG_OLYMPIAD_VICTORY));
+					_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 1, 20));
+					ThreadPool.schedule(() -> SkillCaster.triggerCast(_playerOne.getPlayer(), _playerOne.getPlayer(), CommonSkill.OLYMPIAD_WIN.getSkill()), 2000);
+					ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 2, 100)), 20000);
+				}
 				
 				if (_playerTwo.getPlayer() != null)
 				{
@@ -491,12 +494,14 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				_player2Wins += 1;
 				
 				final SystemMessage ko = new SystemMessage(((_damageP2 > _damageP1) && (playerTwoHp != 0) && (playerOneHp != 0)) ? SystemMessageId.HIDDEN_MSG_OLYMPIAD_TIME_OVER : SystemMessageId.HIDDEN_MSG_OLYMPIAD_KNOCK_DOWN);
-				
-				_playerTwo.getPlayer().sendPacket(ko);
-				_playerTwo.getPlayer().sendPacket(new SystemMessage(SystemMessageId.HIDDEN_MSG_OLYMPIAD_VICTORY));
-				_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 1, 20));
-				ThreadPool.schedule(() -> SkillCaster.triggerCast(_playerTwo.getPlayer(), _playerTwo.getPlayer(), CommonSkill.OLYMPIAD_WIN.getSkill()), 2000);
-				ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 2, 100)), 20000);
+				if (_playerTwo != null)
+				{
+					_playerTwo.getPlayer().sendPacket(ko);
+					_playerTwo.getPlayer().sendPacket(new SystemMessage(SystemMessageId.HIDDEN_MSG_OLYMPIAD_VICTORY));
+					_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 1, 20));
+					ThreadPool.schedule(() -> SkillCaster.triggerCast(_playerTwo.getPlayer(), _playerTwo.getPlayer(), CommonSkill.OLYMPIAD_WIN.getSkill()), 2000);
+					ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 2, 100)), 20000);
+				}
 				
 				if (_playerOne.getPlayer() != null)
 				{
@@ -515,6 +520,11 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				final SystemMessage tie = new SystemMessage(SystemMessageId.HIDDEN_MSG_OLYMPIAD_TIE);
 				_playerTwo.getPlayer().broadcastPacket(tie);
 				_playerOne.getPlayer().broadcastPacket(tie);
+				
+				_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 0, 1, 20));
+				ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 0, 2, 100)), 20000);
+				_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 0, 1, 20));
+				ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 0, 2, 100)), 20000);
 			}
 			resetDamage();
 		}
@@ -584,10 +594,15 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 2, 0, 2, 20));
 					matchEnd(true);
 				}
-				else
+				else if (_winnerRound1.toLowerCase().equalsIgnoreCase(_playerTwo.getName()))
 				{
 					_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 1, 2, 20));
 					ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 1, 3, 100)), 20000);
+				}
+				else
+				{
+					_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 2, 20));
+					ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 3, 100)), 20000);
 				}
 				ThreadPool.schedule(() -> SkillCaster.triggerCast(_playerOne.getPlayer(), _playerOne.getPlayer(), CommonSkill.OLYMPIAD_WIN.getSkill()), 2000);
 				
@@ -599,10 +614,15 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					{
 						_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 2, 0, 2, 20));
 					}
-					else
+					else if (_winnerRound1.toLowerCase().equalsIgnoreCase(_playerTwo.getName()))
 					{
 						_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 1, 2, 20));
 						ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 1, 3, 100)), 20000);
+					}
+					else
+					{
+						_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 2, 20));
+						ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 3, 100)), 20000);
 					}
 				}
 			}
@@ -620,10 +640,15 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 2, 2, 20));
 					matchEnd(true);
 				}
-				else
+				else if (_winnerRound1.toLowerCase().equalsIgnoreCase(_playerOne.getName()))
 				{
 					_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 1, 2, 20));
 					ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 1, 3, 100)), 20000);
+				}
+				else
+				{
+					_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 2, 20));
+					ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 3, 100)), 20000);
 				}
 				ThreadPool.schedule(() -> SkillCaster.triggerCast(_playerTwo.getPlayer(), _playerTwo.getPlayer(), CommonSkill.OLYMPIAD_WIN.getSkill()), 2000);
 				
@@ -635,10 +660,15 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					{
 						_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 2, 2, 20));
 					}
-					else
+					else if (_winnerRound1.toLowerCase().equalsIgnoreCase(_playerOne.getName()))
 					{
 						_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 1, 2, 20));
 						ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 1, 3, 100)), 20000);
+					}
+					else
+					{
+						_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 2, 20));
+						ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 3, 100)), 20000);
 					}
 				}
 			}
@@ -647,6 +677,27 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				final SystemMessage tie = new SystemMessage(SystemMessageId.HIDDEN_MSG_OLYMPIAD_TIE);
 				_playerTwo.getPlayer().broadcastPacket(tie);
 				_playerOne.getPlayer().broadcastPacket(tie);
+				if (_winnerRound1.toLowerCase().equalsIgnoreCase(""))
+				{
+					_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 0, 2, 20));
+					ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 0, 3, 100)), 20000);
+					_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 0, 2, 20));
+					ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 0, 3, 100)), 20000);
+				}
+				else if (_winnerRound1.toLowerCase().equalsIgnoreCase(_playerOne.getName()))
+				{
+					_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 2, 20));
+					ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 3, 100)), 20000);
+					_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 2, 20));
+					ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 1, 0, 3, 100)), 20000);
+				}
+				else
+				{
+					_playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 2, 20));
+					ThreadPool.schedule(() -> _playerOne.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 3, 100)), 20000);
+					_playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 2, 20));
+					ThreadPool.schedule(() -> _playerTwo.getPlayer().sendPacket(new ExOlympiadMatchInfo(_playerOne.getName(), _playerTwo.getName(), 0, 1, 3, 100)), 20000);
+				}
 			}
 			resetDamage();
 		}
@@ -790,9 +841,9 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 			return;
 		}
 		
-		ExOlympiadMatchResult result = null;
+		ExOlympiadMatchResult resultP1 = null;
+		ExOlympiadMatchResult resultP2 = null;
 		
-		boolean tie = _winnerRound1.isEmpty();
 		int winside = 0;
 		
 		final List<OlympiadInfo> list1 = new ArrayList<>(1);
@@ -849,14 +900,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 						removePointsFromParticipant(_playerTwo, points);
 						list2.add(new OlympiadInfo(_playerTwo.getName(), _playerTwo.getClanName(), _playerTwo.getClanId(), _playerTwo.getBaseClass(), _damageP2, playerTwoPoints - points, -points));
 						
-						if (winside == 2)
-						{
-							tie = true;
-						}
-						else
-						{
-							winside = 1;
-						}
+						winside = 1;
 						
 						if (Config.OLYMPIAD_LOG_FIGHTS)
 						{
@@ -868,15 +912,6 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 						LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
 					}
 				}
-				if (winside == 1)
-				{
-					result = new ExOlympiadMatchResult(tie, winside, list1, list2, 0, 0, 0);
-				}
-				else
-				{
-					result = new ExOlympiadMatchResult(tie, winside, list2, list1, 0, 0, 0);
-				}
-				stadium.broadcastPacket(result);
 				return;
 			}
 			catch (Exception e)
@@ -961,8 +996,6 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					removePointsFromParticipant(_playerTwo, pointDiff);
 					list2.add(new OlympiadInfo(_playerTwo.getName(), _playerTwo.getClanName(), _playerTwo.getClanId(), _playerTwo.getBaseClass(), _damageP2Final, playerTwoPoints - pointDiff, -pointDiff));
 					
-					tie = true;
-					
 					if (Config.OLYMPIAD_LOG_FIGHTS)
 					{
 						LOGGER_OLYMPIAD.info("both crash," + _playerOne.getName() + "," + _playerOne + ",0,0,0,0," + _playerTwo + "," + pointDiff + "," + getType());
@@ -973,16 +1006,6 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				_playerTwo.updateStat(COMP_DONE, 1);
 				_playerOne.updateStat(COMP_DONE_WEEK, 1);
 				_playerTwo.updateStat(COMP_DONE_WEEK, 1);
-				
-				if (winside == 1)
-				{
-					result = new ExOlympiadMatchResult(tie, winside, list1, list2, 0, 0, 0);
-				}
-				else
-				{
-					result = new ExOlympiadMatchResult(tie, winside, list2, list1, 0, 0, 0);
-				}
-				stadium.broadcastPacket(result);
 				
 				// Notify to scripts
 				if (EventDispatcher.getInstance().hasListener(EventType.ON_OLYMPIAD_MATCH_RESULT, Olympiad.getInstance()))
@@ -1160,6 +1183,8 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 			else
 			{
 				// Save Fight Result
+				_playerTwo.updateStat(COMP_DRAWN, 1);
+				_playerOne.updateStat(COMP_DRAWN, 1);
 				saveResults(_playerOne, _playerTwo, 0, _startTime, fightTime, getType());
 				
 				sm = new SystemMessage(SystemMessageId.THERE_IS_NO_VICTOR_THE_MATCH_ENDS_IN_A_TIE);
@@ -1173,8 +1198,6 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				value = Math.min(playerTwoPoints / getDivider(), Config.OLYMPIAD_MAX_POINTS);
 				removePointsFromParticipant(_playerTwo, value);
 				list2.add(new OlympiadInfo(_playerTwo.getName(), _playerTwo.getClanName(), _playerTwo.getClanId(), _playerTwo.getBaseClass(), _damageP2Final, playerTwoPoints - value, -value));
-				
-				tie = true;
 			}
 			
 			_playerOne.updateStat(COMP_DONE, 1);
@@ -1184,14 +1207,38 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 			
 			if (winside == 1)
 			{
-				result = new ExOlympiadMatchResult(tie, winside, list1, list2, _winnerRound1.equalsIgnoreCase(_playerOne.getName()) ? 2 : 3, _winnerRound2.equalsIgnoreCase(_playerOne.getName()) ? 2 : 3, !_winnerRound3.isEmpty() && _winnerRound3.equalsIgnoreCase(_playerOne.getName()) ? 2 : _winnerRound3.isEmpty() ? 0 : 3);
+				resultP1 = new ExOlympiadMatchResult(false, winside, list1, list2, _winnerRound1.equalsIgnoreCase(_playerOne.getName()) ? 2 : _winnerRound1.isEmpty() ? 0 : 3, _winnerRound2.equalsIgnoreCase(_playerOne.getName()) ? 2 : _winnerRound2.isEmpty() ? 0 : 3, !_winnerRound3.isEmpty() && _winnerRound3.equalsIgnoreCase(_playerOne.getName()) ? 2 : _winnerRound3.isEmpty() ? 0 : 3);
+			}
+			else if (winside == 2)
+			{
+				resultP1 = new ExOlympiadMatchResult(false, winside, list2, list1, _winnerRound1.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound1.isEmpty() ? 0 : 2, _winnerRound2.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound2.isEmpty() ? 0 : 2, !_winnerRound3.isEmpty() && _winnerRound3.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound3.isEmpty() ? 0 : 2);
 			}
 			else
 			{
-				result = new ExOlympiadMatchResult(tie, winside, list2, list1, _winnerRound1.equalsIgnoreCase(_playerTwo.getName()) ? 3 : 2, _winnerRound2.equalsIgnoreCase(_playerTwo.getName()) ? 3 : 2, !_winnerRound3.isEmpty() && _winnerRound3.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound3.isEmpty() ? 0 : 2);
+				resultP1 = new ExOlympiadMatchResult(true, winside, list1, list2, _winnerRound1.equalsIgnoreCase(_playerTwo.getName()) ? 2 : _winnerRound1.isEmpty() ? 0 : 1, _winnerRound2.equalsIgnoreCase(_playerTwo.getName()) ? 3 : 2, !_winnerRound3.isEmpty() && _winnerRound3.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound3.isEmpty() ? 0 : 2);
 			}
 			
-			stadium.broadcastPacket(result);
+			if (winside == 1)
+			{
+				resultP2 = new ExOlympiadMatchResult(false, winside, list1, list2, _winnerRound1.equalsIgnoreCase(_playerOne.getName()) ? 2 : _winnerRound1.isEmpty() ? 0 : 3, _winnerRound2.equalsIgnoreCase(_playerOne.getName()) ? 2 : _winnerRound2.isEmpty() ? 0 : 3, !_winnerRound3.isEmpty() && _winnerRound3.equalsIgnoreCase(_playerOne.getName()) ? 2 : _winnerRound3.isEmpty() ? 0 : 3);
+			}
+			else if (winside == 2)
+			{
+				resultP2 = new ExOlympiadMatchResult(false, winside, list2, list1, _winnerRound1.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound1.isEmpty() ? 0 : 2, _winnerRound2.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound2.isEmpty() ? 0 : 2, !_winnerRound3.isEmpty() && _winnerRound3.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound3.isEmpty() ? 0 : 2);
+			}
+			else
+			{
+				resultP2 = new ExOlympiadMatchResult(true, winside, list1, list2, _winnerRound1.equalsIgnoreCase(_playerTwo.getName()) ? 2 : _winnerRound1.isEmpty() ? 0 : 1, _winnerRound2.equalsIgnoreCase(_playerTwo.getName()) ? 3 : 2, !_winnerRound3.isEmpty() && _winnerRound3.equalsIgnoreCase(_playerTwo.getName()) ? 3 : _winnerRound3.isEmpty() ? 0 : 2);
+			}
+			
+			if (_playerOne != null)
+			{
+				_playerOne.getPlayer().sendPacket(resultP1);
+			}
+			if (_playerTwo != null)
+			{
+				_playerTwo.getPlayer().sendPacket(resultP2);
+			}
 			
 			if (Config.OLYMPIAD_LOG_FIGHTS)
 			{

@@ -2,6 +2,8 @@ package org.l2jmobius.commons.network.base;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Abstract class for writable packets backed by a byte array, with a maximum raw data size of 65533 bytes.<br>
@@ -11,25 +13,17 @@ import java.util.Arrays;
  */
 public abstract class BaseWritablePacket
 {
+	private static final Map<Class<?>, Integer> MAXIMUM_PACKET_SIZE = new ConcurrentHashMap<>();
+	
+	private final int _initialSize = MAXIMUM_PACKET_SIZE.getOrDefault(getClass(), 8);
+	
 	private byte[] _data;
 	private byte[] _sendableBytes;
 	private int _position = 2; // Allocate space for size (max length 65535 - size header).
 	
-	/**
-	 * Construct a WritablePacket with an initial data size of 32 bytes.
-	 */
 	protected BaseWritablePacket()
 	{
-		this(32);
-	}
-	
-	/**
-	 * Construct a WritablePacket with a given initial data size.
-	 * @param initialSize
-	 */
-	protected BaseWritablePacket(int initialSize)
-	{
-		_data = new byte[initialSize];
+		_data = new byte[_initialSize];
 	}
 	
 	public void write(byte value)
@@ -238,6 +232,12 @@ public abstract class BaseWritablePacket
 			if (_position == 2)
 			{
 				write();
+				
+				// Update maximum packet size if needed.
+				if (_position > _initialSize)
+				{
+					MAXIMUM_PACKET_SIZE.put(getClass(), Math.min(_position, 65535));
+				}
 			}
 			
 			// Check if data was written.

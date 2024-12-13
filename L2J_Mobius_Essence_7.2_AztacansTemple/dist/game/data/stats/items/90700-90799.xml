@@ -426,7 +426,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="90727" name="Banana Sweets" additionalName="Sealed" type="EtcItem">
-		<!-- For 5 min., acquired XP/ SP while hunting +50%, P. Atk. +15%, M. Atk. +23%, P./ M. Def. +15%, Atk. Spd./ Casting Spd. +10%, Speed +10, HP/ MP Recovery Rate +30%. The effect remains after death, but disappears after logout. -->
+		<!-- For 5 min., acquired XP/ SP while hunting +50%, P. Atk. +15%, M. Atk. +23%, P./ M. Def. +15%, Atk. Spd./ Casting Spd. +10%, Speed +10, HP/ MP Recovery Rate +30%. The effect remains after death, but disappears on logout. -->
 		<set name="icon" val="icon.songpyeon_herb" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -815,7 +815,7 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39294" level="1" /> <!-- Pirate's Treasure Chest -->
+			<skill id="39294" level="1" /> <!-- Pirate's Chest -->
 		</skills>
 	</item>
 	<item id="90763" name="Zaken's Earring" type="Armor">
@@ -827,13 +827,18 @@
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="50448" level="1" /> <!-- Zaken's Earring -->
-			<skill id="50448" level="7" type="ON_ENCHANT" type_value="6" />
-		</skills>
 		<stats>
 			<stat type="mDef">107</stat>
 		</stats>
+		<skills>
+			<skill id="50448" level="1" /> <!-- Zaken's Earring -->
+			<skill id="50448" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Zaken's Earring -->
+			<skill id="50448" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Zaken's Earring -->
+			<skill id="50448" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Zaken's Earring -->
+			<skill id="50448" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Zaken's Earring -->
+			<skill id="50448" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Zaken's Earring -->
+			<skill id="50448" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90764" name="Zaken's Earring Lv. 2" type="Armor">
 		<!-- <Properties>. MP Consumption -3%. Received Healing +6%. HP Recovery Rate +15%. Max MP +28. Infection Atk. Rate and Resistance +15%. Shock Atk. Rate and Resistance +10%. Silence Atk. Rate and Resistance +10%. Fear Atk. Rate and Resistance +10%. Effects of two identical earrings do not stack. Cannot be enchanted. -->
@@ -843,13 +848,13 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="50442" level="2" /> <!-- Zaken Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">70</stat>
 			<stat type="maxMp">28</stat>
 		</stats>
+		<skills>
+			<skill id="50442" level="2" /> <!-- Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90765" name="Zaken's Earring Lv. 3" type="Armor">
 		<!-- <Properties>. MP Consumption -4%. Received Healing +10%. HP Recovery Rate +20%. Vampiric Rage effect +8%. Max MP +34. Infection Atk. Rate and Resistance +20%. Shock Atk. Rate and Resistance +15%. Silence Atk. Rate and Resistance +15%. Fear Atk. Rate and Resistance +15%. Effects of two identical earrings do not stack. Cannot be enchanted. Take 2 of these earrings to Blacksmith Baggins in Giran to exchange them for Essence of Zaken. -->
@@ -859,13 +864,13 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="50442" level="3" /> <!-- Zaken Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">80</stat>
 			<stat type="maxMp">34</stat>
 		</stats>
+		<skills>
+			<skill id="50442" level="3" /> <!-- Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90766" name="Scroll of Escape: Entrance to the Devil's Isle" additionalName="Sealed" type="EtcItem">
 		<!-- Teleports to the Devil's Isle. -->
@@ -890,13 +895,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
-		<skills>
-			<skill id="50442" level="1" /> <!-- Zaken Earring Lv .1 -->
-		</skills>
 		<stats>
 			<stat type="mDef">60</stat>
 			<stat type="maxMp">22</stat>
 		</stats>
+		<skills>
+			<skill id="50442" level="1" /> <!-- Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="90768" name="Hair Accessory Coupon" additionalName="Sealed" type="EtcItem">
 		<!-- A coupon for the clan head accessory. Can be exchanged for an animal-shaped head accessory via High Priest Orven. -->
@@ -1178,12 +1183,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
-		<skills>
-			<skill id="35047" level="1" /> <!-- Fire Dragon Belt -->
-		</skills>
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
+		<skills>
+			<skill id="35047" level="1" /> <!-- Fire Dragon Belt -->
+		</skills>
 	</item>
 	<item id="90789" name="Garnet Lv. 4" additionalName="15-day" type="Armor">
 		<!-- Available for 15 d. Pull/ Silence/ Paralysis/ Fear/ Stun Resistance +11%. Grants immunity to debuffs for 5 sec. when casting skills. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -1202,7 +1207,7 @@
 		</skills>
 	</item>
 	<item id="90790" name="+8 Fire Dragon Pendant" additionalName="7-day" type="Armor">
-		<!-- M. Def. +18, Acquired XP/ SP +25%, P./ M. Atk. +40, P. Critical Damage/ M. Skill Critical Damage +5%. -->
+		<!-- M. Def. +18, acquired XP/ SP +25%, P./ M. Atk. +40, P. Critical Damage/ M. Skill Critical Damage +5%. -->
 		<set name="icon" val="icon.bm_pendant_pve" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />

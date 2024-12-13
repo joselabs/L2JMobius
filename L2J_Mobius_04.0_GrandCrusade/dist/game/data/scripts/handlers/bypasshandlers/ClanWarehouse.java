@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.bypasshandlers;
 
@@ -24,6 +28,7 @@ import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Warehouse;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanPrivilege;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.network.SystemMessageId;
@@ -52,7 +57,7 @@ public class ClanWarehouse implements IBypassHandler
 			return false;
 		}
 		
-		final Npc npc = (Npc) target;
+		final Npc npc = target.asNpc();
 		if (!(npc instanceof Warehouse) && (npc.getClan() != null))
 		{
 			return false;
@@ -62,12 +67,14 @@ public class ClanWarehouse implements IBypassHandler
 		{
 			return false;
 		}
-		else if (player.getClan() == null)
+		
+		final Clan clan = player.getClan();
+		if (clan == null)
 		{
 			player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_THE_CLAN_WAREHOUSE);
 			return false;
 		}
-		else if (player.getClan().getLevel() == 0)
+		else if (clan.getLevel() == 0)
 		{
 			player.sendPacket(SystemMessageId.ONLY_CLANS_OF_CLAN_LEVEL_1_OR_ABOVE_CAN_USE_A_CLAN_WAREHOUSE);
 			return false;
@@ -86,7 +93,7 @@ public class ClanWarehouse implements IBypassHandler
 						return true;
 					}
 					
-					player.setActiveWarehouse(player.getClan().getWarehouse());
+					player.setActiveWarehouse(clan.getWarehouse());
 					
 					if (player.getActiveWarehouse().getSize() == 0)
 					{
@@ -108,7 +115,7 @@ public class ClanWarehouse implements IBypassHandler
 				else if (command.toLowerCase().startsWith(COMMANDS[1])) // DepositC
 				{
 					player.sendPacket(ActionFailed.STATIC_PACKET);
-					player.setActiveWarehouse(player.getClan().getWarehouse());
+					player.setActiveWarehouse(clan.getWarehouse());
 					player.setInventoryBlockingStatus(true);
 					player.sendPacket(new WareHouseDepositList(player, WareHouseDepositList.CLAN));
 					return true;

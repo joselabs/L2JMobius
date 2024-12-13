@@ -27,7 +27,7 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.model.EffectList;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Summon;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectTaskInfo;
 import org.l2jmobius.gameserver.model.effects.EffectTickTask;
@@ -309,7 +309,7 @@ public class BuffInfo
 		}
 		
 		// When effects are initialized, the successfully landed.
-		if (!_hideStartMessage && _effected.isPlayer() && (_effected.getActingPlayer().hasEnteredWorld() || Config.SHOW_EFFECT_MESSAGES_ON_LOGIN) && !_skill.isHidingMessages() && !_skill.isAura() && isDisplayedForEffected())
+		if (!_hideStartMessage && _effected.isPlayer() && (_effected.asPlayer().hasEnteredWorld() || Config.SHOW_EFFECT_MESSAGES_ON_LOGIN) && !_skill.isHidingMessages() && !_skill.isAura() && isDisplayedForEffected())
 		{
 			final SystemMessage sm = new SystemMessage(_skill.isToggle() ? SystemMessageId.YOU_VE_USED_S1 : SystemMessageId.YOU_FEEL_THE_S1_EFFECT);
 			sm.addSkillName(_skill);
@@ -406,7 +406,7 @@ public class BuffInfo
 		}
 		
 		// Set the proper system message.
-		if ((_skill != null) && !(_effected.isSummon() && !((Summon) _effected).getOwner().hasSummon()) && !_skill.isHidingMessages())
+		if ((_skill != null) && !(_effected.isSummon() && !_effected.asSummon().getOwner().hasSummon()) && !_skill.isHidingMessages())
 		{
 			SystemMessageId smId = null;
 			if ((_finishType == SkillFinishType.SILENT) || !isDisplayedForEffected())
@@ -426,11 +426,15 @@ public class BuffInfo
 				smId = SystemMessageId.S1_HAS_WORN_OFF;
 			}
 			
-			if ((smId != null) && (_effected.getActingPlayer() != null) && _effected.getActingPlayer().isOnline())
+			if (smId != null)
 			{
-				final SystemMessage sm = new SystemMessage(smId);
-				sm.addSkillName(_skill);
-				_effected.sendPacket(sm);
+				final Player player = _effected.asPlayer();
+				if ((player != null) && player.isOnline())
+				{
+					final SystemMessage sm = new SystemMessage(smId);
+					sm.addSkillName(_skill);
+					_effected.sendPacket(sm);
+				}
 			}
 		}
 	}

@@ -102,7 +102,7 @@ public class AdminOlympiad implements IAdminCommandHandler
 			case "admin_addolypoints":
 			{
 				final WorldObject target = activeChar.getTarget();
-				final Player player = target != null ? target.getActingPlayer() : null;
+				final Player player = target != null ? target.asPlayer() : null;
 				if (player != null)
 				{
 					final int val = parseInt(st);
@@ -143,7 +143,7 @@ public class AdminOlympiad implements IAdminCommandHandler
 			case "admin_removeolypoints":
 			{
 				final WorldObject target = activeChar.getTarget();
-				final Player player = target != null ? target.getActingPlayer() : null;
+				final Player player = target != null ? target.asPlayer() : null;
 				if (player != null)
 				{
 					final int val = parseInt(st);
@@ -184,7 +184,7 @@ public class AdminOlympiad implements IAdminCommandHandler
 			case "admin_setolypoints":
 			{
 				final WorldObject target = activeChar.getTarget();
-				final Player player = target != null ? target.getActingPlayer() : null;
+				final Player player = target != null ? target.asPlayer() : null;
 				if (player != null)
 				{
 					final int val = parseInt(st);

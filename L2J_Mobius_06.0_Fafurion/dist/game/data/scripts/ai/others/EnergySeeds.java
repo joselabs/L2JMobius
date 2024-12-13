@@ -362,7 +362,7 @@ public class EnergySeeds extends AbstractNpcAI
 	
 	private Monster spawnSupriseMob(Npc energy, int npcId)
 	{
-		final Monster monster = (Monster) addSpawn(npcId, energy, false, 30000, true, energy.getInstanceId());
+		final Monster monster = addSpawn(npcId, energy, false, 30000, true, energy.getInstanceId()).asMonster();
 		startQuestTimer("DeSpawnTask", 30000, monster, null);
 		return monster;
 	}

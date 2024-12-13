@@ -230,7 +230,7 @@ public class MapRegionManager implements IXmlReader
 		Location loc;
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			Castle castle = null;
 			ClanHall clanhall = null;
 			if ((player.getClan() != null) && !player.isFlying()) // Flying players can't use teleports.
@@ -335,17 +335,17 @@ public class MapRegionManager implements IXmlReader
 					}
 				}
 			}
-		}
-		
-		if (Config.FACTION_SYSTEM_ENABLED && Config.FACTION_RESPAWN_AT_BASE)
-		{
-			if (creature.getActingPlayer().isGood())
+			
+			if (Config.FACTION_SYSTEM_ENABLED && Config.FACTION_RESPAWN_AT_BASE)
 			{
-				return Config.FACTION_GOOD_BASE_LOCATION;
-			}
-			if (creature.getActingPlayer().isEvil())
-			{
-				return Config.FACTION_EVIL_BASE_LOCATION;
+				if (player.isGood())
+				{
+					return Config.FACTION_GOOD_BASE_LOCATION;
+				}
+				if (player.isEvil())
+				{
+					return Config.FACTION_EVIL_BASE_LOCATION;
+				}
 			}
 		}
 		
@@ -384,7 +384,7 @@ public class MapRegionManager implements IXmlReader
 			final RespawnZone zone = ZoneManager.getInstance().getZone(creature, RespawnZone.class);
 			if (zone != null)
 			{
-				return getRestartRegion(creature, zone.getRespawnPoint((Player) creature)).getSpawnLoc();
+				return getRestartRegion(creature, zone.getRespawnPoint(creature.asPlayer())).getSpawnLoc();
 			}
 			
 			// Opposing race check.
@@ -411,7 +411,7 @@ public class MapRegionManager implements IXmlReader
 	{
 		try
 		{
-			final Player player = (Player) creature;
+			final Player player = creature.asPlayer();
 			final MapRegion region = REGIONS.get(point);
 			if (region.getBannedRace().containsKey(player.getRace()))
 			{

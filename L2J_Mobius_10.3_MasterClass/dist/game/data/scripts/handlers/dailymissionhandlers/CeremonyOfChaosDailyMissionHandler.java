@@ -23,6 +23,7 @@ import org.l2jmobius.gameserver.handler.AbstractDailyMissionHandler;
 import org.l2jmobius.gameserver.model.DailyMissionDataHolder;
 import org.l2jmobius.gameserver.model.DailyMissionPlayerEntry;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.events.Containers;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.ceremonyofchaos.OnCeremonyOfChaosMatchResult;
@@ -154,8 +155,9 @@ public class CeremonyOfChaosDailyMissionHandler extends AbstractDailyMissionHand
 			return false;
 		}
 		
-		final int clanMastery = player.getClan().hasMastery(14) ? 14 : player.getClan().hasMastery(15) ? 15 : player.getClan().hasMastery(16) ? 16 : 0;
-		return ((player.getClan().getLevel() >= _minClanLevel) && (clanMastery >= _minClanMasteryLevel));
+		final Clan clan = player.getClan();
+		final int clanMastery = clan.hasMastery(14) ? 14 : clan.hasMastery(15) ? 15 : clan.hasMastery(16) ? 16 : 0;
+		return ((clan.getLevel() >= _minClanLevel) && (clanMastery >= _minClanMasteryLevel));
 	}
 	
 	private boolean checkRequiredMission(Player player)

@@ -35,6 +35,6 @@ public class OpWyvernSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return caster.isPlayer() && (caster.getActingPlayer().getMountType() == MountType.WYVERN);
+		return caster.isPlayer() && (caster.asPlayer().getMountType() == MountType.WYVERN);
 	}
 }

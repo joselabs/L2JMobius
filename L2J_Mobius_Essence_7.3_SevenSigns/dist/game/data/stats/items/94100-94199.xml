@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="94100" name="Sealed Kookaburra Necklace" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compound is successful, you get Sealed Fox's Necklace. In case of failure, you keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compounding is successful, you will get Sealed Fox's Necklace. In case of failure, you will keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
 		<set name="icon" val="icon.kukaburo_necklace_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -17,7 +17,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94101" name="Sealed Dragon's Necklace" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compound is successful, you get Sealed Fox's Necklace. In case of failure, you keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compounding is successful, you will get Sealed Fox's Necklace. In case of failure, you will keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
 		<set name="icon" val="icon.strider_necklace_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -33,7 +33,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94102" name="Sealed Hawk Necklace" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compound is successful, you get Sealed Fox's Necklace. In case of failure, you keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: Pet Necklace (excluding Sealed Fox's Necklace). If compounding is successful, you will get Sealed Fox's Necklace. In case of failure, you will keep the Sealed Necklace, but materials disappear. Double-click to obtain various items. -->
 		<set name="icon" val="icon.thunder_bird_necklace_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -293,8 +293,8 @@
 			<player level="60" />
 		</cond>
 		<skills>
-			<skill id="35020" level="1" type="ON_EQUIP" /> <!-- Equip Talisman - Baium -->
-			<skill id="35021" level="1" type="ON_UNEQUIP" /> <!-- Unequip Talisman - Baium -->
+			<skill id="35020" level="1" type="ON_EQUIP" /> <!-- Talisman of Baium -->
+			<skill id="35021" level="1" type="ON_UNEQUIP" /> <!-- Talisman of Baium - Removal -->
 			<skill id="50191" level="1" /> <!-- Talisman of Baium -->
 			<skill id="50191" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Talisman of Baium -->
 			<skill id="50191" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Talisman of Baium -->
@@ -490,6 +490,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="50388" level="1" /> <!-- Pet Test Weapon -->
+		</skills>
 	</item>
 	<item id="94133" name="Daily Kit: Seals (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain Primeval Isle's Time Stone, Primeval Garden's Time Stone, Combat Scroll (50 pcs.), Battle Scroll (50 pcs.), Sayha's Storm Lv. 3 (50 pcs.), Giran Seal (20 pcs.). -->
@@ -576,6 +579,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40209" level="1" /> <!-- Dumpling Soup -->
+		</skills>
 	</item>
 	<item id="94143" name="Hanbok" additionalName="7-day" type="Armor">
 		<!-- Changes armor appearance to that of a Hanbok. When equipped, it is impossible to wear armor. Hats, weapons and accessories are not removed. The Head Enlargement and Firecracker skills can be used. -->
@@ -590,6 +597,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
+		<skills>
+			<skill id="51111" level="1" /> <!-- Head Enlargement -->
+			<skill id="51112" level="1" /> <!-- Firecracker -->
+		</skills>
 	</item>
 	<item id="94144" name="Christmas Cube (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain Christmas Sack. There is a low chance to obtain a sack containing Hanbok (unlimited) after the 7th use. -->
@@ -778,7 +789,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94153" name="Baium Doll Lv. 1" additionalName="Sealed" type="EtcItem">
-		<!-- <Baium Doll's Sorcery Lv. 1>. Skill Cooldown -2%. P. Def. +5%. M. Def. +5%. Silence Resistance +10%. Fear Resistance +10%. Paralysis Resistance +5%. Knockback Resistance +5%. Pull Resistance +5%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Baium Doll Lv. 1 and packages. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Baium Doll's Sorcery Lv. 1>. Skill Cooldown -2%. P. Def. +5%. M. Def. +5%. Silence Resistance +10%. Fear Resistance +10%. Paralysis Resistance +5%. Knockback Resistance +5%. Pull Resistance +5%. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Baium Doll Lv. 1 and packages. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.bm_baium_doll_30d" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -792,7 +803,7 @@
 		</skills>
 	</item>
 	<item id="94154" name="Queen Ant Doll Lv. 1" additionalName="Sealed" type="EtcItem">
-		<!-- <Queen Ant Doll's Sorcery Lv. 1>. P. Atk. +2%. P. Critical Damage +3%. P. Skill Critical Damage +3%. Max HP +4%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Queen Ant Doll Lv. 1 and packages. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Queen Ant Doll's Sorcery Lv. 1>. P. Atk. +2%. P. Critical Damage +3%. P. Skill Critical Damage +3%. Max HP +4%. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Queen Ant Doll Lv. 1 and packages. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.bm_queen_ant_doll_30d" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -806,7 +817,7 @@
 		</skills>
 	</item>
 	<item id="94155" name="Orfen Doll Lv. 1" additionalName="Sealed" type="EtcItem">
-		<!-- <Orfen Doll's Sorcery Lv. 1>. M. Atk. +2%. M. Skill Critical Damage +3%. Max MP +4%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Orfen Doll Lv. 1 and packages. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Orfen Doll's Sorcery Lv. 1>. M. Atk. +2%. M. Skill Critical Damage +3%. Max MP +4%. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Orfen Doll Lv. 1 and packages. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.bm_orfen_doll_30d" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -820,7 +831,7 @@
 		</skills>
 	</item>
 	<item id="94156" name="Package: Baium Doll Lv. 1" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. -->
 		<set name="icon" val="icon.bm_baium_doll_30d" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -865,7 +876,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94159" name="Package: Queen Ant Doll Lv. 1" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. -->
 		<set name="icon" val="icon.bm_queen_ant_doll_30d" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -910,7 +921,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94162" name="Package: Orfen Doll Lv. 1" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. -->
 		<set name="icon" val="icon.bm_orfen_doll_30d" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -980,7 +991,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94166" name="Circlet of Hero" additionalName="Sealed" type="Armor">
-		<!-- Can be enchanted up to +10 with Scroll: Enchant Accessories. Enables special effects depending on its enchant value. Enchanting is not safe even to +1. <font color=eeaa22>Equipped in the left head accessory slot.</font>. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. -->
+		<!-- Can be enchanted up to +10 with Scroll: Enchant Ornaments. Applies special effects based on the item's enchant value. Enchanting is not safe even to +1. <font color=eeaa22>Equipped in the left head accessory slot.</font>. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. -->
 		<set name="icon" val="icon.accessory_barka_karm_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair" />
@@ -992,7 +1003,20 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<!-- skills handled by option data -->
+		<skills>
+			<skill id="50389" level="1" /> <!-- Circlet of Hero -->
+			<skill id="50389" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Circlet of Hero -->
+			<skill id="50389" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Circlet of Hero -->
+			<skill id="50389" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Circlet of Hero -->
+			<skill id="50389" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Circlet of Hero -->
+			<skill id="50389" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Circlet of Hero -->
+			<skill id="50389" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Circlet of Hero -->
+			<skill id="50389" level="8" type="ON_ENCHANT" type_value="7" /> <!-- +7 Circlet of Hero -->
+			<skill id="50389" level="9" type="ON_ENCHANT" type_value="8" /> <!-- +8 Circlet of Hero -->
+			<skill id="50389" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Circlet of Hero -->
+		</skills>
 	</item>
 	<item id="94167" name="Hero's Shining Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain with a certain chance various items such as a rare spellbook, accessory, and special armor. -->
@@ -1064,7 +1088,7 @@
 		<set name="material" val="PAPER" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="90888" min="1" max="1" chance="100" /> <!-- Agathion Bracelet Lv. 1 -->
+			<item id="90888" min="1" max="1" chance="100" /> <!-- Agathion Summon Bracelet Lv. 1 -->
 		</capsuled_items>
 	</item>
 	<item id="94172" name="Brooch Chest Lv. 1" additionalName="Sealed" type="EtcItem">
@@ -1098,7 +1122,7 @@
 		</capsuled_items>
 	</item>
 	<item id="94174" name="Venir's Talisman Lv. 16" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +3. MEN +3. DEX +3. WIT +3. STR +2. INT +2. Max HP +100. Max MP +100. Max CP +100. All received Critical Rate -10%. P./ M. Skill Cooldown -7%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 12</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +3. MEN +3. DEX +3. WIT +3. STR +2. INT +2. Max HP +100. Max MP +100. Max CP +100. All received Critical Rate -10%. P./ M. Skill Cooldown -7%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 12</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1108,11 +1132,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="18024" level="16" /> <!-- Venir Talisman -->
+			<skill id="18024" level="16" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94175" name="Venir's Talisman Lv. 17" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +3. MEN +3. DEX +3. WIT +3. STR +3. INT +2. Max HP +200. Max MP +200. Max CP +200. All received Critical Rate -10%. P./ M. Skill Cooldown -9%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 12</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +3. MEN +3. DEX +3. WIT +3. STR +3. INT +2. Max HP +200. Max MP +200. Max CP +200. All received Critical Rate -10%. P./ M. Skill Cooldown -9%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 12</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1122,11 +1146,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="18024" level="17" /> <!-- Venir Talisman -->
+			<skill id="18024" level="17" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94176" name="Venir's Talisman Lv. 18" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +3. MEN +3. DEX +3. WIT +3. STR +3. INT +3. Max HP +300. Max MP +300. Max CP +300. All received Critical Rate -12%. P./ M. Skill Cooldown -9%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +3. MEN +3. DEX +3. WIT +3. STR +3. INT +3. Max HP +300. Max MP +300. Max CP +300. All received Critical Rate -12%. P./ M. Skill Cooldown -9%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1137,11 +1161,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="18" /> <!-- Venir Talisman -->
+			<skill id="18024" level="18" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94177" name="Venir's Talisman Lv. 19" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +4. MEN +4. DEX +3. WIT +3. STR +3. INT +3. Max HP +400. Max MP +400. Max CP +400. All received Critical Rate -12%. P./ M. Skill Cooldown -11%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +4. MEN +4. DEX +3. WIT +3. STR +3. INT +3. Max HP +400. Max MP +400. Max CP +400. All received Critical Rate -12%. P./ M. Skill Cooldown -11%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1152,11 +1176,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="19" /> <!-- Venir Talisman -->
+			<skill id="18024" level="19" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94178" name="Venir's Talisman Lv. 20" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +4. MEN +4. DEX +4. WIT +4. STR +3. INT +3. Max HP +500. Max MP +500. Max CP +500. All received Critical Rate -14%. P./ M. Skill Cooldown -11%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +4. MEN +4. DEX +4. WIT +4. STR +3. INT +3. Max HP +500. Max MP +500. Max CP +500. All received Critical Rate -14%. P./ M. Skill Cooldown -11%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1167,11 +1191,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="20" /> <!-- Venir Talisman -->
+			<skill id="18024" level="20" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94179" name="Venir's Talisman Lv. 21" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +4. MEN +4. DEX +4. WIT +4. STR +4. INT +4. Max HP +600. Max MP +600. Max CP +600. All received Critical Rate -14%. P./ M. Skill Cooldown -13%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +4. MEN +4. DEX +4. WIT +4. STR +4. INT +4. Max HP +600. Max MP +600. Max CP +600. All received Critical Rate -14%. P./ M. Skill Cooldown -13%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1182,11 +1206,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="21" /> <!-- Venir Talisman -->
+			<skill id="18024" level="21" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94180" name="Venir's Talisman Lv. 22" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +5. MEN +5. DEX +4. WIT +4. STR +4. INT +4. Max HP +700. Max MP +700. Max CP +700. All received Critical Rate -16%. P./ M. Skill Cooldown -13%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +5. MEN +5. DEX +4. WIT +4. STR +4. INT +4. Max HP +700. Max MP +700. Max CP +700. All received Critical Rate -16%. P./ M. Skill Cooldown -13%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1197,11 +1221,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="22" /> <!-- Venir Talisman -->
+			<skill id="18024" level="22" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94181" name="Venir's Talisman Lv. 23" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +5. MEN +5. DEX +5. WIT +5. STR +4. INT +4. Max HP +800. Max MP +800. Max CP +800. All received Critical Rate -16%. P./ M. Skill Cooldown -15%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +5. MEN +5. DEX +5. WIT +5. STR +4. INT +4. Max HP +800. Max MP +800. Max CP +800. All received Critical Rate -16%. P./ M. Skill Cooldown -15%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 18</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1212,11 +1236,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="23" /> <!-- Venir Talisman -->
+			<skill id="18024" level="23" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94182" name="Venir's Talisman Lv. 24" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +5. MEN +5. DEX +5. WIT +5. STR +5. INT +5. Max HP +900. Max MP +900. Max CP +900. All received Critical Rate -18%. P./ M. Skill Cooldown -15%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 24</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +5. MEN +5. DEX +5. WIT +5. STR +5. INT +5. Max HP +900. Max MP +900. Max CP +900. All received Critical Rate -18%. P./ M. Skill Cooldown -15%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 24</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1227,11 +1251,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="24" /> <!-- Venir Talisman -->
+			<skill id="18024" level="24" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94183" name="Venir's Talisman Lv. 25" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +6. MEN +6. DEX +6. WIT +6. STR +6. INT +6. Max HP +1000. Max MP +1000. Max CP +1000. All received Critical Rate -18%. P./ M. Skill Cooldown -17%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 24</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +6. MEN +6. DEX +6. WIT +6. STR +6. INT +6. Max HP +1000. Max MP +1000. Max CP +1000. All received Critical Rate -18%. P./ M. Skill Cooldown -17%. <font color=bbaa88><Compounding></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get <font color=eeaa22>Venir's Talisman Lv. 24</font>. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1242,7 +1266,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="25" /> <!-- Venir Talisman -->
+			<skill id="18024" level="25" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="94184" name="Scroll of Blessing" type="EtcItem">
@@ -1257,7 +1281,7 @@
 		<set name="etcitem_type" val="BLESS_ENCHT_AM" /> <!-- BLESS_ENCHT_AM -->
 		<set name="handler" val="BlessingScrolls" />
 		<skills>
-			<skill id="40214" level="1" /> <!-- Scroll of Blessing -->
+			<skill id="40214" level="1" /> <!-- Scroll of Blessing: Weapon -->
 		</skills>
 	</item>
 	<item id="94185" name="Life Stone Lv. 1 - Weapon" type="EtcItem">
@@ -1315,6 +1339,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40211" level="1" /> <!-- New Year Horoscope - Minor Luck -->
+		</skills>
 	</item>
 	<item id="94192" name="New Year Horoscope - Medium Luck (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- STR/ DEX/ INT/ CON/ MEN/ WIT +1, HP +500 for 20 min. 5 Scrolls: New Year Horoscope - Medium Luck can be exchanged for one Scroll: New Year Horoscope - Great Luck. -->
@@ -1325,6 +1353,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40212" level="1" /> <!-- New Year Horoscope - Medium Luck -->
+		</skills>
 	</item>
 	<item id="94193" name="New Year Horoscope - Great Luck (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- For 20 min., STR/ DEX/ INT/ CON/ MEN/ WIT +3, MP +300, P./ M. Def. +200, All received Critical Damage -5%, P./ M. Atk. +200. -->
@@ -1335,6 +1367,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40213" level="1" /> <!-- New Year Horoscope - Great Luck -->
+		</skills>
 	</item>
 	<item id="94194" name="Small Rat Bell (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Can be received as a reward for capturing Brown Rat. Can be exchanged for a Haughty Rat reward. -->
@@ -1396,5 +1432,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="LIQUID" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40216" level="1" /> <!-- Black Anvil Guild Camp's Time Stone -->
+		</skills>
 	</item>
 </list>

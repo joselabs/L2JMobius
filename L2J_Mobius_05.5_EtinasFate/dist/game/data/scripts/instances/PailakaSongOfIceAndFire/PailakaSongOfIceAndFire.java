@@ -157,12 +157,12 @@ public class PailakaSongOfIceAndFire extends AbstractInstance
 	@Override
 	public String onExitZone(Creature creature, ZoneType zone)
 	{
-		if ((creature.isPlayer()) && !creature.isDead() && !creature.isTeleporting() && ((Player) creature).isOnline())
+		if ((creature.isPlayer()) && !creature.isDead() && !creature.isTeleporting() && creature.asPlayer().isOnline())
 		{
 			final Instance world = creature.getInstanceWorld();
 			if ((world != null) && (world.getTemplateId() == TEMPLATE_ID))
 			{
-				startQuestTimer("TELEPORT", 1000, null, creature.getActingPlayer());
+				startQuestTimer("TELEPORT", 1000, null, creature.asPlayer());
 			}
 		}
 		return super.onExitZone(creature, zone);
@@ -174,7 +174,7 @@ public class PailakaSongOfIceAndFire extends AbstractInstance
 		if (creature.isPlayer() && npc.isScriptValue(0))
 		{
 			npc.setScriptValue(1);
-			startQuestTimer("GARGOS_LAUGH", 1000, npc, creature.getActingPlayer());
+			startQuestTimer("GARGOS_LAUGH", 1000, npc, creature.asPlayer());
 		}
 		return super.onCreatureSee(npc, creature);
 	}

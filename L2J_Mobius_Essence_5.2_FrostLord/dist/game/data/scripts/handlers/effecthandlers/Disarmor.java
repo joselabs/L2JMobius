@@ -67,7 +67,7 @@ public class Disarmor extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		final List<Item> unequipped = player.getInventory().unEquipItemInBodySlotAndRecord(_slot);
 		if (!unequipped.isEmpty())
 		{
@@ -109,7 +109,7 @@ public class Disarmor extends AbstractEffect
 		final Integer disarmedObjId = _unequippedItems.remove(effected.getObjectId());
 		if ((disarmedObjId != null) && (disarmedObjId > 0))
 		{
-			final Player player = effected.getActingPlayer();
+			final Player player = effected.asPlayer();
 			player.getInventory().unblockItemSlot(_slot);
 			
 			final Item item = player.getInventory().getItemByObjectId(disarmedObjId);

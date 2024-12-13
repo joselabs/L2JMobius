@@ -38,6 +38,11 @@ public class HpToOwner extends AbstractEffect
 		_power = params.getDouble("power");
 		_stealAmount = params.getInt("stealAmount");
 		setTicks(params.getInt("ticks"));
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override

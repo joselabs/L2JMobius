@@ -160,6 +160,14 @@ public abstract class AbstractEffect
 	}
 	
 	/**
+	 * @return if pumped at a later time.
+	 */
+	public boolean delayPump()
+	{
+		return false;
+	}
+	
+	/**
 	 * Get this effect's type.<br>
 	 * TODO: Remove.
 	 * @return the effect type

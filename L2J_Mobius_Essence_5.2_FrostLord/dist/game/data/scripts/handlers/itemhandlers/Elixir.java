@@ -1,22 +1,27 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.itemhandlers;
 
 import org.l2jmobius.gameserver.model.actor.Playable;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.model.variables.PlayerVariables;
@@ -34,26 +39,27 @@ public class Elixir extends ItemSkills
 			return false;
 		}
 		
-		final int effectBonus = (int) playable.getStat().getValue(Stat.ELIXIR_USAGE_LIMIT, 0);
-		final int elixirsAvailable = playable.getActingPlayer().getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0);
-		if ((playable.getLevel() < 76) || //
-			((playable.getLevel() < 88) && (elixirsAvailable >= (5 + effectBonus))) || //
-			((playable.getLevel() < 91) && (elixirsAvailable >= (10 + effectBonus))) || //
-			((playable.getLevel() < 92) && (elixirsAvailable >= (11 + effectBonus))) || //
-			((playable.getLevel() < 93) && (elixirsAvailable >= (12 + effectBonus))) || //
-			((playable.getLevel() < 94) && (elixirsAvailable >= (13 + effectBonus))) || //
-			((playable.getLevel() < 95) && (elixirsAvailable >= (14 + effectBonus))) || //
-			((playable.getLevel() < 100) && (elixirsAvailable >= (15 + effectBonus))))
+		final Player player = playable.asPlayer();
+		final int effectBonus = (int) player.getStat().getValue(Stat.ELIXIR_USAGE_LIMIT, 0);
+		final int elixirsAvailable = player.getVariables().getInt(PlayerVariables.ELIXIRS_AVAILABLE, 0);
+		if ((player.getLevel() < 76) || //
+			((player.getLevel() < 88) && (elixirsAvailable >= (5 + effectBonus))) || //
+			((player.getLevel() < 91) && (elixirsAvailable >= (10 + effectBonus))) || //
+			((player.getLevel() < 92) && (elixirsAvailable >= (11 + effectBonus))) || //
+			((player.getLevel() < 93) && (elixirsAvailable >= (12 + effectBonus))) || //
+			((player.getLevel() < 94) && (elixirsAvailable >= (13 + effectBonus))) || //
+			((player.getLevel() < 95) && (elixirsAvailable >= (14 + effectBonus))) || //
+			((player.getLevel() < 100) && (elixirsAvailable >= (15 + effectBonus))))
 		{
-			playable.sendPacket(SystemMessageId.THE_ELIXIR_UNAVAILABLE);
+			player.sendPacket(SystemMessageId.THE_ELIXIR_UNAVAILABLE);
 			return false;
 		}
 		
-		if (super.useItem(playable, item, forceUse))
+		if (super.useItem(player, item, forceUse))
 		{
-			playable.getActingPlayer().getVariables().set(PlayerVariables.ELIXIRS_AVAILABLE, elixirsAvailable + 1);
-			playable.sendPacket(new SystemMessage(SystemMessageId.THANKS_TO_THE_ELIXIR_CHARACTER_S_STAT_POINTS_S1).addInt(elixirsAvailable + 1));
-			playable.getActingPlayer().broadcastUserInfo();
+			player.getVariables().set(PlayerVariables.ELIXIRS_AVAILABLE, elixirsAvailable + 1);
+			player.sendPacket(new SystemMessage(SystemMessageId.THANKS_TO_THE_ELIXIR_CHARACTER_S_STAT_POINTS_S1).addInt(elixirsAvailable + 1));
+			player.broadcastUserInfo();
 			return true;
 		}
 		return false;

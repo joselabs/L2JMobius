@@ -1,7 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="47101" toLevel="4" name="Elemental Spirit">
-		<!-- The spirit power runs through your body. An incarnated Spirit Lv. 1 can be used. Max HP +100 -->
+		<!-- Level 1: The spirit power runs through your body. An incarnated Spirit Lv. 1 can be used. Max HP +100 -->
+		<!-- Level 2: The spirit power runs through your body. An incarnated Spirit Lv. 2 can be used. Max HP +300. <<font color="34FF43">Elemental Guard</font>>. For 10 sec., decreases received damage. Triggered after receiving damage (Probability: 10%). Cooldown: 60 sec. -->
+		<!-- Level 3: The spirit power runs through your body. An incarnated Spirit Lv. 3 can be used. Max HP +600. Imprisonment Resistance +10%. <<font color="34FF43">Elemental Guard</font>>. For 10 sec., decreases received damage. Triggered after receiving damage (Probability: 10%). Cooldown: 60 sec. <Skill upgrade>. <Elemental Changing → <font color="34FF43">Elemental Changing - Spirit</font>>. Increases the effect. -->
+		<!-- Level 4: The spirit power runs through your body. An incarnated Spirit Lv. 4 can be used. Max HP +1000. Imprisonment Resistance +10%. <Skill upgrade>. <. Elemental Guard → <font color="34FF43">Elemental Guard - Spirit</font>>. For 15 sec.,the spirits power decreases received damage. Triggered after receiving damage (Probability: 10%). Cooldown: 60 sec. <Skill upgrade>. <Elemental Changing → <font color="34FF43">Elemental Changing - Spirit</font>>. Increases the effect. <Skill upgrade>. <Dragon Strike → <font color="34FF43">Dragon Strike - Spirit</font>>Increases the skill power. -->
 		<icon>icon.skill30401</icon>
 		<operateType>P</operateType>
 		<abnormalLevel>
@@ -18,7 +21,7 @@
 			<value level="4">H_SY_BOARDA_DECO</value>
 		</abnormalVisualEffect>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<skillId>47048</skillId> <!-- Elemental Guard -->
 				<skillLevel>1</skillLevel>
@@ -26,7 +29,7 @@
 				<chance>10</chance>
 				<targetType>SELF</targetType>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<skillId>47060</skillId> <!-- Elemental Charging -->
 				<skillLevel>1</skillLevel>
@@ -34,7 +37,7 @@
 				<chance>10</chance>
 				<targetType>SELF</targetType>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<skillId>47059</skillId> <!-- Dragon Strike -->
 				<skillLevel>1</skillLevel>
@@ -53,7 +56,11 @@
 		</effects>
 	</skill>
 	<skill id="47104" toLevel="5" name="Elemental Connection">
-		<!-- The character has a strong connection with the spirits. Soulshot damage +1%. All Critical Rate +1% -->
+		<!-- Level 1: The character has a strong connection with the spirits. Soulshot damage +1%. All Critical Rate +1% -->
+		<!-- Level 2: The character has a strong connection with the spirits. Soulshot damage +2%. All Critical Rate +1% -->
+		<!-- Level 3: The character has a strong connection with the spirits. Soulshot damage +3%. All Critical Rate +2% -->
+		<!-- Level 4: The character has a strong connection with the spirits. Soulshot damage +5%. All Critical Rate +2% -->
+		<!-- Level 5: The character has a strong connection with the spirits. Soulshot damage +10%. All Critical Rate +3% -->
 		<icon>icon.skill30400</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -101,7 +108,16 @@
 		</effects>
 	</skill>
 	<skill id="47105" toLevel="10" name="Elemental Recovery">
-		<!-- The spirit power helps to regenerate faster. HP Recovery Rate +6. MP Recovery Rate +3 -->
+		<!-- Level 1: The spirit power helps to regenerate faster. HP Recovery Rate +6. MP Recovery Rate +3 -->
+		<!-- Level 2: The spirit power helps to regenerate faster. HP Recovery Rate +7. MP Recovery Rate +4 -->
+		<!-- Level 3: The spirit power helps to regenerate faster. HP Recovery Rate +8. MP Recovery Rate +5 -->
+		<!-- Level 4: The spirit power helps to regenerate faster. HP Recovery Rate +9. MP Recovery Rate +6 -->
+		<!-- Level 5: The spirit power helps to regenerate faster. HP Recovery Rate +10. MP Recovery Rate +7 -->
+		<!-- Level 6: The spirit power helps to regenerate faster. HP Recovery Rate +11. MP Recovery Rate +8 -->
+		<!-- Level 7: The spirit power helps to regenerate faster. HP Recovery Rate +12. MP Recovery Rate +8 -->
+		<!-- Level 8: The spirit power helps to regenerate faster. HP Recovery Rate +13. MP Recovery Rate +8 -->
+		<!-- Level 9: The spirit power helps to regenerate faster. HP Recovery Rate +14. MP Recovery Rate +8 -->
+		<!-- Level 10: The spirit power helps to regenerate faster. HP Recovery Rate +15. MP Recovery Rate +8 -->
 		<icon>icon.skill30402</icon>
 		<operateType>P</operateType>
 		<magicLevel>

@@ -37,6 +37,6 @@ public class EnergySavedSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return caster.getActingPlayer().getCharges() >= _amount;
+		return caster.asPlayer().getCharges() >= _amount;
 	}
 }

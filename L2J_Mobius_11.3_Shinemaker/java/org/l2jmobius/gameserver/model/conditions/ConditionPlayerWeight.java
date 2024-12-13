@@ -41,10 +41,10 @@ public class ConditionPlayerWeight extends Condition
 	@Override
 	public boolean testImpl(Creature effector, Creature effected, Skill skill, ItemTemplate item)
 	{
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		if ((player != null) && (player.getMaxLoad() > 0))
 		{
-			final int weightproc = (((player.getCurrentLoad() - player.getBonusWeightPenalty()) * 100) / player.getMaxLoad());
+			final int weightproc = ((player.getCurrentLoad() - player.getBonusWeightPenalty()) * 100) / player.getMaxLoad();
 			return (weightproc < _weight) || player.getDietMode();
 		}
 		return true;

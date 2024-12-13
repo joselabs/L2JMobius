@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="10000" name="Wind Potion" type="EtcItem">
 		<!-- For 10 min. Wind Resistance +30. -->
@@ -73,9 +73,6 @@
 		<cond msgId="1518">
 			<player races="KAMAEL" />
 		</cond>
-		<skills>
-			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">46</stat>
 			<stat type="mAtk">32</stat>
@@ -85,6 +82,9 @@
 			<stat type="randomDamage">40</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="10004" name="Dynasty Dual Swords" type="Weapon">
 		<!-- When enchanting dual swords, two-handed swords/ blunts, and fists, the P. Atk. bonus is higher than that of one-handed weapons. 1 common soul crystal and 1 special soul crystal can be inserted. -->
@@ -107,10 +107,6 @@
 		<set name="commissionItemType" val="DUALSWORD" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="ensoulSpecialSlots" val="1" />
-		<skills>
-			<skill id="3552" level="1" /> <!-- Special Ability: PvP Damage -->
-			<skill id="3411" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Ability: Focus -->
-		</skills>
 		<stats>
 			<stat type="pAtk">405</stat>
 			<stat type="mAtk">151</stat>
@@ -119,9 +115,13 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3552" level="1" /> <!-- Special Property: PvP Damage -->
+			<skill id="3411" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="10005" name="Shadow Item: Fleuret" type="Weapon">
-		<!-- A Shadow Item with the power of a Fleuret. It cannot be crystallized or granted functions besides enchantment. -->
+		<!-- This shadow item contains the reflected power of Fleuret. Cannot be crystallized or upgraded. -->
 		<set name="icon" val="icon.weapon_rapier_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="RAPIER" />
@@ -140,9 +140,6 @@
 		<cond msgId="1518">
 			<player races="KAMAEL" />
 		</cond>
-		<skills>
-			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">46</stat>
 			<stat type="mAtk">32</stat>
@@ -152,9 +149,12 @@
 			<stat type="randomDamage">40</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="10006" name="Shadow Item: Military Talwar" type="Weapon">
-		<!-- A Shadow Item with the power of a Military Talwar. It cannot be crystallized or granted functions besides enchantment. -->
+		<!-- This shadow item contains the reflected power of Military Talwar. Cannot be crystallized or upgraded. -->
 		<set name="icon" val="icon.weapon_tulwar_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="ANCIENTSWORD" />
@@ -184,7 +184,7 @@
 		</stats>
 	</item>
 	<item id="10007" name="Shadow Item: Hand Crossbow" type="Weapon">
-		<!-- A Shadow Item with the power of a Hand Crossbow. It cannot be crystallized or granted functions besides enchantment. -->
+		<!-- This shadow item contains the reflected power of Hand Crossbow. Cannot be crystallized or upgraded. -->
 		<set name="icon" val="icon.weapon_hunting_gun_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="CROSSBOW" />
@@ -215,7 +215,7 @@
 		</stats>
 	</item>
 	<item id="10008" name="Shadow Item: Blinzlasher" type="Weapon">
-		<!-- A Shadow Item with the power of a Blinzlasher. It cannot be crystallized or granted functions besides enchantment. -->
+		<!-- This shadow item contains the reflected power of Blinzlasher. Cannot be crystallized or upgraded. -->
 		<set name="icon" val="icon.weapon_blink_slasher_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="RAPIER" />
@@ -234,9 +234,6 @@
 		<cond msgId="1518">
 			<player races="KAMAEL" />
 		</cond>
-		<skills>
-			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">126</stat>
 			<stat type="mAtk">76</stat>
@@ -246,6 +243,9 @@
 			<stat type="randomDamage">40</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="10009" name="Shadow Item: Immortal Edge" type="Weapon">
 		<!-- This shadow item contains the reflected power of Immortal Edge. Cannot be crystallized or upgraded. -->
@@ -421,7 +421,7 @@
 		</cond>
 		<skills>
 			<skill id="5458" level="1" /> <!-- Agathion Cute Trick - Fortress -->
-			<skill id="3361" level="1" /> <!-- Release Agathion's Seal - Fortress -->
+			<skill id="3361" level="1" /> <!-- Summon Agathion - Fortress -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>

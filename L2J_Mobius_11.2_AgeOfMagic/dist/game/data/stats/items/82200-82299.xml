@@ -18,8 +18,8 @@
 			<item id="48418" min="1" max="1" chance="5" /> <!-- Authority Ornament -->
 			<item id="39573" min="1" max="1" chance="5" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="5" /> <!-- Talisman of Seven Signs -->
-			<item id="35569" min="1" max="1" chance="5" /> <!-- Bloody Armor Enhancement Stone -->
-			<item id="35567" min="1" max="1" chance="5" /> <!-- Dark Armor Enhancement Stone -->
+			<item id="35569" min="1" max="1" chance="5" /> <!-- Bloody Armor Upgrade Stone -->
+			<item id="35567" min="1" max="1" chance="5" /> <!-- Dark Armor Upgrade Stone -->
 			<item id="81450" min="1" max="1" chance="5" /> <!-- Angel's Ring Pack -->
 			<item id="81449" min="1" max="1" chance="5" /> <!-- Angel's Earring Pack -->
 			<item id="81448" min="1" max="1" chance="5" /> <!-- Angel's Necklace Pack -->
@@ -95,14 +95,14 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="80663" min="1" max="1" chance="4" /> <!-- High-grade Dragon Weapon Pack -->
-			<item id="48667" min="1" max="1" chance="4" /> <!-- Mid-grade Dragon Weapon Pack -->
-			<item id="48666" min="1" max="1" chance="4" /> <!-- Low-grade Dragon Weapon Pack -->
+			<item id="80663" min="1" max="1" chance="4" /> <!-- Dragon Weapon Pack (Lv. 2) -->
+			<item id="48667" min="1" max="1" chance="4" /> <!-- Dragon Weapon Pack (Lv. 1) -->
+			<item id="48666" min="1" max="1" chance="4" /> <!-- Dragon Weapon Pack -->
 			<item id="36946" min="1" max="1" chance="4" /> <!-- Lindvior's Earring -->
 			<item id="19464" min="1" max="1" chance="4" /> <!-- Blessed Valakas' Necklace -->
 			<item id="19463" min="1" max="1" chance="4" /> <!-- Blessed Antharas' Earring -->
-			<item id="35566" min="1" max="1" chance="4" /> <!-- Dark Weapon Enhancement Stone -->
-			<item id="35568" min="1" max="1" chance="4" /> <!-- Bloody Weapon Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="4" /> <!-- Dark Weapon Upgrade Stone -->
+			<item id="35568" min="1" max="1" chance="4" /> <!-- Bloody Weapon Upgrade Stone -->
 			<item id="47216" min="1" max="1" chance="4" /> <!-- Ruler's Ring of Authority -->
 			<item id="47218" min="1" max="1" chance="4" /> <!-- Ring of Truth-seeker -->
 			<item id="47821" min="1" max="1" chance="4" /> <!-- Sayha's Talisman Pack Lv. 10 -->
@@ -293,7 +293,7 @@
 			</and>
 		</cond>
 		<skills>
-			<skill id="18345" level="7" /> <!-- Dignity of the Exalted Lv. 7 -->
+			<skill id="18345" level="7" /> <!-- Spellbook: Dignity of the Exalted Lv. 7 -->
 		</skills>
 	</item>
 	<item id="82214" name="Spellbook: Elements of the Exalted" type="EtcItem">
@@ -334,7 +334,7 @@
 		</capsuled_items>
 	</item>
 	<item id="82216" name="Fallen Angel's Earring" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Upgrade>. Upgrade is available after enchanting to +6 -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Upgrade>. Upgrade is available after enchanting to +6 -->
 		<set name="icon" val="icon.bm_earring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -347,25 +347,25 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="36184" level="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">171</stat>
 		</stats>
+		<skills>
+			<skill id="36184" level="1" /> <!-- Fallen Angel's Earring -->
+			<skill id="36184" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+		</skills>
 	</item>
 	<item id="82217" name="Fallen Angel's Earring" additionalName="Cooldown Decrease Lv. 1" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -1%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Upgrade>. Upgrade is available after enchanting to +6 -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -1%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Upgrade>. Upgrade is available after enchanting to +6 -->
 		<set name="icon" val="icon.bm_earring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -378,26 +378,26 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="39777" level="1" /> <!-- Craft Effect - Cooldown Decrease Lv. 1 -->
-			<skill id="36184" level="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">171</stat>
 		</stats>
+		<skills>
+			<skill id="39777" level="1" /> <!-- Craft Effect - Cooldown Decrease Lv. 1 -->
+			<skill id="36184" level="1" /> <!-- Fallen Angel's Earring -->
+			<skill id="36184" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+		</skills>
 	</item>
 	<item id="82218" name="Fallen Angel's Earring" additionalName="Cooldown Decrease Lv. 2" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -2%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Upgrade>. Upgrade is available after enchanting to +6 -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -2%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Upgrade>. Upgrade is available after enchanting to +6 -->
 		<set name="icon" val="icon.bm_earring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -410,26 +410,26 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="39777" level="2" /> <!-- Craft Effect - Cooldown Decrease Lv. 2 -->
-			<skill id="36184" level="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">171</stat>
 		</stats>
+		<skills>
+			<skill id="39777" level="2" /> <!-- Craft Effect - Cooldown Decrease Lv. 2 -->
+			<skill id="36184" level="1" /> <!-- Fallen Angel's Earring -->
+			<skill id="36184" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+		</skills>
 	</item>
 	<item id="82219" name="Fallen Angel's Earring" additionalName="Cooldown Decrease Lv. 3" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -5%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Upgrade>. Upgrade is available after enchanting to +6 -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -5%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. <Upgrade>. Upgrade is available after enchanting to +6 -->
 		<set name="icon" val="icon.bm_earring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -442,26 +442,26 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<stats>
+			<stat type="mDef">171</stat>
+		</stats>
 		<skills>
 			<skill id="39777" level="3" /> <!-- Craft Effect - Cooldown Decrease Lv. 3 -->
 			<skill id="36184" level="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring -->
+			<skill id="36184" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring: Enchant Effect -->
 		</skills>
-		<stats>
-			<stat type="mDef">171</stat>
-		</stats>
 	</item>
 	<item id="82220" name="Blessed Fallen Angel's Earring" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. Can be augmented. -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_bm_earring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -474,25 +474,25 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="36184" level="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="8" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="9" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="10" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="11" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="12" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">171</stat>
 		</stats>
+		<skills>
+			<skill id="36184" level="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="8" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="9" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="10" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="11" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="12" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+		</skills>
 	</item>
 	<item id="82221" name="Blessed Fallen Angel's Earring" additionalName="Cooldown Decrease Lv. 1" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -1%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. Can be augmented. -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -1%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_bm_earring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -505,26 +505,26 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<stats>
+			<stat type="mDef">171</stat>
+		</stats>
 		<skills>
 			<skill id="39777" level="1" /> <!-- Craft Effect - Cooldown Decrease Lv. 1 -->
-			<skill id="36184" level="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="8" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="9" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="10" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="11" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="12" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring -->
+			<skill id="36184" level="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="8" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="9" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="10" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="11" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="12" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring: Enchant Effect -->
 		</skills>
-		<stats>
-			<stat type="mDef">171</stat>
-		</stats>
 	</item>
 	<item id="82222" name="Blessed Fallen Angel's Earring" additionalName="Cooldown Decrease Lv. 2" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -2%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. Can be augmented. -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -2%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_bm_earring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -537,26 +537,26 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
+		<stats>
+			<stat type="mDef">171</stat>
+		</stats>
 		<skills>
 			<skill id="39777" level="2" /> <!-- Craft Effect - Cooldown Decrease Lv. 2 -->
-			<skill id="36184" level="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="8" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="9" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="10" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="11" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="12" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring -->
+			<skill id="36184" level="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="8" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="9" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="10" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="11" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="12" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring: Enchant Effect -->
 		</skills>
-		<stats>
-			<stat type="mDef">171</stat>
-		</stats>
 	</item>
 	<item id="82223" name="Blessed Fallen Angel's Earring" additionalName="Cooldown Decrease Lv. 3" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -5%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. Can be augmented. -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Obstruction Atk. Rate and Resistance, Vitality bonus, acquired XP/ SP, Vampiric Rage effect, Received Healing, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance, P. Def., M. Def. and decreases MP Consumption. Effects of two identical earrings do not stack. <Craft effect>. Skill Cooldown -5%. <Enchanting>. Use Scroll: Enchant Fallen Angel's Accessory. Can be augmented. -->
 		<set name="icon" val="icon.bless_bm_earring_of_fallen_angel" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
@@ -569,23 +569,23 @@
 		<set name="is_sellable" val="false" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="39777" level="3" /> <!-- Craft Effect - Cooldown Decrease Lv. 3 -->
-			<skill id="36184" level="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="8" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="9" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="10" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="11" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring -->
-			<skill id="36184" level="12" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">171</stat>
 		</stats>
+		<skills>
+			<skill id="39777" level="3" /> <!-- Craft Effect - Cooldown Decrease Lv. 3 -->
+			<skill id="36184" level="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="8" type="ON_ENCHANT" type_value="6" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="9" type="ON_ENCHANT" type_value="7" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="10" type="ON_ENCHANT" type_value="8" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="11" type="ON_ENCHANT" type_value="9" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+			<skill id="36184" level="12" type="ON_ENCHANT" type_value="10" /> <!-- Fallen Angel's Earring: Enchant Effect -->
+		</skills>
 	</item>
 	<item id="82224" name="+9 Fallen Angel's Earring Pack" type="EtcItem">
 		<!-- Double-click to obtain +9 Fallen Angel's Earring. -->
@@ -780,7 +780,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="18799" level="1" /> <!-- First Gift Box Lv.1 -->
+			<skill id="18799" level="1" /> <!-- First Gift Box -->
 		</skills>
 	</item>
 	<item id="82238" name="Second Gift Box" additionalName="Event" type="EtcItem">
@@ -795,7 +795,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="18799" level="2" /> <!-- First Gift Box Lv.2 -->
+			<skill id="18799" level="2" /> <!-- Second Gift Box -->
 		</skills>
 	</item>
 	<item id="82239" name="Third Gift Box" additionalName="Event" type="EtcItem">
@@ -810,7 +810,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="18799" level="3" /> <!-- First Gift Box Lv.3 -->
+			<skill id="18799" level="3" /> <!-- Third Gift Box -->
 		</skills>
 	</item>
 	<item id="82240" name="Fourth Gift Box" additionalName="Event" type="EtcItem">
@@ -825,7 +825,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="18799" level="4" /> <!-- First Gift Box Lv.4 -->
+			<skill id="18799" level="4" /> <!-- Golden Orc Treasure Chest -->
 		</skills>
 	</item>
 	<item id="82241" name="Scroll: Enchant Master Yogi's Weapon" additionalName="Event" type="EtcItem">
@@ -872,10 +872,10 @@
 		<set name="handler" val="ExtractableItems" />
 		<set name="weight" val="20" />
 		<capsuled_items>
-			<item id="35566" min="1" max="1" chance="1.25" /> <!-- Dark Weapon Enhancement Stone -->
-			<item id="35567" min="1" max="1" chance="1.25" /> <!-- Dark Armor Enhancement Stone -->
-			<item id="35568" min="1" max="1" chance="1.25" /> <!-- Bloody Weapon Enhancement Stone -->
-			<item id="35569" min="1" max="1" chance="1.25" /> <!-- Bloody Armor Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="1.25" /> <!-- Dark Weapon Upgrade Stone -->
+			<item id="35567" min="1" max="1" chance="1.25" /> <!-- Dark Armor Upgrade Stone -->
+			<item id="35568" min="1" max="1" chance="1.25" /> <!-- Bloody Weapon Upgrade Stone -->
+			<item id="35569" min="1" max="1" chance="1.25" /> <!-- Bloody Armor Upgrade Stone -->
 			<item id="39573" min="1" max="1" chance="1.25" /> <!-- Sealed Talisman of Insanity -->
 			<item id="47688" min="1" max="1" chance="1.25" /> <!-- Greater Ruby Lv. 1 -->
 			<item id="47689" min="1" max="1" chance="1.25" /> <!-- Greater Sapphire Lv. 1 -->
@@ -883,7 +883,7 @@
 			<item id="47700" min="1" max="1" chance="1.25" /> <!-- Greater Blue Cat's Eye Lv. 1 -->
 			<item id="47866" min="1" max="1" chance="1.25" /> <!-- Star Sign -->
 			<item id="48493" min="1" max="1" chance="1.25" /> <!-- Dragon Rind Leather Shirt -->
-			<item id="48666" min="1" max="1" chance="1.25" /> <!-- Low-grade Dragon Weapon Pack -->
+			<item id="48666" min="1" max="1" chance="1.25" /> <!-- Dragon Weapon Pack -->
 			<item id="80931" min="1" max="1" chance="1.25" /> <!-- Greater Zodiac Agathion Cube -->
 			<item id="81134" min="1" max="1" chance="1.25" /> <!-- Crystal of Dyes -->
 			<item id="81153" min="1" max="1" chance="1.25" /> <!-- Navari's Mask -->
@@ -1101,7 +1101,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17705" level="20" /> <!-- Opal -->
+			<skill id="17705" level="20" /> <!-- Superior Opal Lv. 10 -->
 		</skills>
 	</item>
 	<item id="82258" name="Superior Emerald Lv. 10" additionalName="Event" type="EtcItem">
@@ -1114,7 +1114,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17825" level="20" /> <!-- Emerald -->
+			<skill id="17825" level="20" /> <!-- Superior Emerald Lv. 10 -->
 		</skills>
 	</item>
 	<item id="82259" name="Superior Aquamarine Lv. 10" additionalName="Event" type="EtcItem">
@@ -1127,7 +1127,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17823" level="20" /> <!-- Aquamarine -->
+			<skill id="17823" level="20" /> <!-- Superior Aquamarine Lv. 10 -->
 		</skills>
 	</item>
 	<item id="82260" name="Superior Diamond Lv. 10" additionalName="Event" type="EtcItem">
@@ -1140,7 +1140,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17708" level="20" /> <!-- Diamond -->
+			<skill id="17708" level="20" /> <!-- Superior Diamond Lv. 10 -->
 		</skills>
 	</item>
 	<item id="82261" name="Superior Pearl Lv. 10" additionalName="Event" type="EtcItem">
@@ -1153,7 +1153,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="material" val="FISH" />
 		<skills>
-			<skill id="17709" level="20" /> <!-- Pearl -->
+			<skill id="17709" level="20" /> <!-- Superior Pearl Lv. 10 -->
 		</skills>
 	</item>
 	<item id="82262" name="Akira" additionalName="Event" type="EtcItem">
@@ -1296,7 +1296,7 @@
 		<set name="weight" val="20" />
 	</item>
 	<item id="82275" name="Tersi's Soul" type="EtcItem">
-		<!-- A crystal that contains the soul of the Goddess of Light. Required for upgrading Tersi's Soul Crystal, Masia's Soul Crystal or Pa'agrio's Soul Crystal through compounding. In case of failure, the soul crystal is destroyed. -->
+		<!-- A crystal that contains the soul of the Goddess of Light. Required for upgrading Tersi's Soul Crystal, Masia's Soul Crystal, Pa'agrio's Soul Crystal or Eva's Soul Crystal through compounding. In case of failure, the soul crystal is destroyed. -->
 		<set name="icon" val="icon.soul_of_tersi" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
@@ -1318,9 +1318,9 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="80663" min="1" max="1" chance="3.448276" /> <!-- High-grade Dragon Weapon Pack -->
-			<item id="48667" min="1" max="1" chance="3.448276" /> <!-- Mid-grade Dragon Weapon Pack -->
-			<item id="48666" min="1" max="1" chance="3.448276" /> <!-- Low-grade Dragon Weapon Pack -->
+			<item id="80663" min="1" max="1" chance="3.448276" /> <!-- Dragon Weapon Pack (Lv. 2) -->
+			<item id="48667" min="1" max="1" chance="3.448276" /> <!-- Dragon Weapon Pack (Lv. 1) -->
+			<item id="48666" min="1" max="1" chance="3.448276" /> <!-- Dragon Weapon Pack -->
 			<item id="80958" min="1" max="1" chance="3.448276" /> <!-- Sealed Heavenly Talisman -->
 			<item id="80959" min="1" max="1" chance="3.448276" /> <!-- Epic Talisman -->
 			<item id="47821" min="1" max="1" chance="3.448276" /> <!-- Sayha's Talisman Pack Lv. 10 -->
@@ -1333,7 +1333,7 @@
 			<item id="80333" min="1" max="1" chance="3.448276" /> <!-- Dragon's Necklace -->
 			<item id="80334" min="1" max="1" chance="3.448276" /> <!-- Dragon's Earring -->
 			<item id="80335" min="1" max="1" chance="3.448276" /> <!-- Dragon's Ring -->
-			<item id="35566" min="1" max="1" chance="3.448276" /> <!-- Dark Weapon Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="3.448276" /> <!-- Dark Weapon Upgrade Stone -->
 			<item id="39573" min="1" max="1" chance="3.448276" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="3.448276" /> <!-- Talisman of Seven Signs -->
 			<item id="46449" min="1" max="1" chance="3.448276" /> <!-- Kain's Soul Crystal Lv. 6 - Weapon -->
@@ -1510,9 +1510,9 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="80663" min="1" max="1" chance="4.545455" /> <!-- High-grade Dragon Weapon Pack -->
-			<item id="48667" min="1" max="1" chance="4.545455" /> <!-- Mid-grade Dragon Weapon Pack -->
-			<item id="48666" min="1" max="1" chance="4.545455" /> <!-- Low-grade Dragon Weapon Pack -->
+			<item id="80663" min="1" max="1" chance="4.545455" /> <!-- Dragon Weapon Pack (Lv. 2) -->
+			<item id="48667" min="1" max="1" chance="4.545455" /> <!-- Dragon Weapon Pack (Lv. 1) -->
+			<item id="48666" min="1" max="1" chance="4.545455" /> <!-- Dragon Weapon Pack -->
 			<item id="80958" min="1" max="1" chance="4.545455" /> <!-- Sealed Heavenly Talisman -->
 			<item id="80959" min="1" max="1" chance="4.545455" /> <!-- Epic Talisman -->
 			<item id="47821" min="1" max="1" chance="4.545455" /> <!-- Sayha's Talisman Pack Lv. 10 -->
@@ -1525,7 +1525,7 @@
 			<item id="80333" min="1" max="1" chance="4.545455" /> <!-- Dragon's Necklace -->
 			<item id="80334" min="1" max="1" chance="4.545455" /> <!-- Dragon's Earring -->
 			<item id="80335" min="1" max="1" chance="4.545455" /> <!-- Dragon's Ring -->
-			<item id="35566" min="1" max="1" chance="4.545455" /> <!-- Dark Weapon Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="4.545455" /> <!-- Dark Weapon Upgrade Stone -->
 			<item id="39573" min="1" max="1" chance="4.545455" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="4.545455" /> <!-- Talisman of Seven Signs -->
 			<item id="80130" min="1" max="1" chance="4.545455" /> <!-- Superior Augmenting Stone: Weapon -->
@@ -1559,15 +1559,15 @@
 			<item id="48418" min="1" max="1" chance="4.761905" /> <!-- Authority Ornament -->
 			<item id="39573" min="1" max="1" chance="4.761905" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="4.761905" /> <!-- Talisman of Seven Signs -->
-			<item id="35569" min="1" max="1" chance="4.761905" /> <!-- Bloody Armor Enhancement Stone -->
-			<item id="35567" min="1" max="1" chance="4.761905" /> <!-- Dark Armor Enhancement Stone -->
+			<item id="35569" min="1" max="1" chance="4.761905" /> <!-- Bloody Armor Upgrade Stone -->
+			<item id="35567" min="1" max="1" chance="4.761905" /> <!-- Dark Armor Upgrade Stone -->
 			<item id="81450" min="1" max="1" chance="4.761905" /> <!-- Angel's Ring Pack -->
 			<item id="81449" min="1" max="1" chance="4.761905" /> <!-- Angel's Earring Pack -->
 			<item id="81448" min="1" max="1" chance="4.761905" /> <!-- Angel's Necklace Pack -->
 			<item id="48211" min="1" max="1" chance="4.761905" /> <!-- Blessed Scroll: Enchant Circlet -->
 			<item id="48498" min="1" max="1" chance="4.761905" /> <!-- Blessed Scroll: Enchant Dragon Leather Shirt -->
 			<item id="80838" min="1" max="1" chance="4.761905" /> <!-- Blessed Scroll: Enchant Kaliel's Bracelet -->
-			<item id="47983" min="1" max="1" chance="4.761905" /> <!-- Augmenting Stone: Brooch - Not Available -->
+			<item id="47983" min="1" max="1" chance="4.761905" /> <!-- Augmenting Stone: Brooch -->
 			<item id="48215" min="1" max="1" chance="4.761905" /> <!-- Augmenting Stone: Circlet -->
 			<item id="81729" min="1" max="1" chance="4.761905" /> <!-- Augmenting Stone: Accessory -->
 			<item id="37560" min="8" max="8" chance="4.761905" /> <!-- Emperor's Vitality Tonic -->
@@ -1632,14 +1632,14 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="80663" min="1" max="1" chance="3.703704" /> <!-- High-grade Dragon Weapon Pack -->
-			<item id="48667" min="1" max="1" chance="3.703704" /> <!-- Mid-grade Dragon Weapon Pack -->
-			<item id="48666" min="1" max="1" chance="3.703704" /> <!-- Low-grade Dragon Weapon Pack -->
+			<item id="80663" min="1" max="1" chance="3.703704" /> <!-- Dragon Weapon Pack (Lv. 2) -->
+			<item id="48667" min="1" max="1" chance="3.703704" /> <!-- Dragon Weapon Pack (Lv. 1) -->
+			<item id="48666" min="1" max="1" chance="3.703704" /> <!-- Dragon Weapon Pack -->
 			<item id="36946" min="1" max="1" chance="3.703704" /> <!-- Lindvior's Earring -->
 			<item id="19464" min="1" max="1" chance="3.703704" /> <!-- Blessed Valakas' Necklace -->
 			<item id="19463" min="1" max="1" chance="3.703704" /> <!-- Blessed Antharas' Earring -->
-			<item id="35566" min="1" max="1" chance="3.703704" /> <!-- Dark Weapon Enhancement Stone -->
-			<item id="35568" min="1" max="1" chance="3.703704" /> <!-- Bloody Weapon Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="3.703704" /> <!-- Dark Weapon Upgrade Stone -->
+			<item id="35568" min="1" max="1" chance="3.703704" /> <!-- Bloody Weapon Upgrade Stone -->
 			<item id="47216" min="1" max="1" chance="3.703704" /> <!-- Ruler's Ring of Authority -->
 			<item id="47218" min="1" max="1" chance="3.703704" /> <!-- Ring of Truth-seeker -->
 			<item id="47821" min="1" max="1" chance="3.703704" /> <!-- Sayha's Talisman Pack Lv. 10 -->
@@ -1662,7 +1662,7 @@
 		</capsuled_items>
 	</item>
 	<item id="82295" name="Freya's Scroll of Blessing" type="EtcItem">
-		<!-- For 30 min., Sustain Vitality, acquired XP/ SP +150%, Vitality bonus +100%. The effect remains after death. Cooldown: 5 min. Does not stack with the Freya's Frozen Scroll, Freya's Scroll of Storm, and Maphr's Scroll of Storm effects. -->
+		<!-- For 30 min., Sustain Vitality, acquired XP/ SP +150%, Vitality bonus +50%. The effect remains after death. Cooldown: 5 min. Does not stack with the Freya's Frozen Scroll, Freya's Scroll of Storm, and Maphr's Scroll of Storm effects. -->
 		<set name="icon" val="icon.bless_scroll" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -1701,9 +1701,9 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="80663" min="1" max="1" chance="2.222222" /> <!-- High-grade Dragon Weapon Pack -->
-			<item id="48667" min="1" max="1" chance="2.222222" /> <!-- Mid-grade Dragon Weapon Pack -->
-			<item id="48666" min="1" max="1" chance="2.222222" /> <!-- Low-grade Dragon Weapon Pack -->
+			<item id="80663" min="1" max="1" chance="2.222222" /> <!-- Dragon Weapon Pack (Lv. 2) -->
+			<item id="48667" min="1" max="1" chance="2.222222" /> <!-- Dragon Weapon Pack (Lv. 1) -->
+			<item id="48666" min="1" max="1" chance="2.222222" /> <!-- Dragon Weapon Pack -->
 			<item id="80958" min="1" max="1" chance="2.222222" /> <!-- Sealed Heavenly Talisman -->
 			<item id="80959" min="1" max="1" chance="2.222222" /> <!-- Epic Talisman -->
 			<item id="47821" min="1" max="1" chance="2.222222" /> <!-- Sayha's Talisman Pack Lv. 10 -->
@@ -1716,13 +1716,13 @@
 			<item id="80333" min="1" max="1" chance="2.222222" /> <!-- Dragon's Necklace -->
 			<item id="80334" min="1" max="1" chance="2.222222" /> <!-- Dragon's Earring -->
 			<item id="80335" min="1" max="1" chance="2.222222" /> <!-- Dragon's Ring -->
-			<item id="35566" min="1" max="1" chance="2.222222" /> <!-- Dark Weapon Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="2.222222" /> <!-- Dark Weapon Upgrade Stone -->
 			<item id="39573" min="1" max="1" chance="2.222222" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="2.222222" /> <!-- Talisman of Seven Signs -->
 			<item id="48211" min="1" max="1" chance="2.222222" /> <!-- Blessed Scroll: Enchant Circlet -->
 			<item id="48498" min="1" max="1" chance="2.222222" /> <!-- Blessed Scroll: Enchant Dragon Leather Shirt -->
 			<item id="80838" min="1" max="1" chance="2.222222" /> <!-- Blessed Scroll: Enchant Kaliel's Bracelet -->
-			<item id="47983" min="1" max="1" chance="2.222222" /> <!-- Augmenting Stone: Brooch - Not Available -->
+			<item id="47983" min="1" max="1" chance="2.222222" /> <!-- Augmenting Stone: Brooch -->
 			<item id="48215" min="1" max="1" chance="2.222222" /> <!-- Augmenting Stone: Circlet -->
 			<item id="81729" min="1" max="1" chance="2.222222" /> <!-- Augmenting Stone: Accessory -->
 			<item id="48677" min="1" max="1" chance="2.222222" /> <!-- High-grade Skill Power Talisman Pack - Skill Critical Damage -->
@@ -1772,9 +1772,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">719</stat>
 			<stat type="mAtk">313</stat>
@@ -1782,5 +1779,8 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 </list>

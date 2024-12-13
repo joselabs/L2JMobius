@@ -31,12 +31,14 @@ import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
  */
 public class OlympiadDailyMissionHandler extends AbstractDailyMissionHandler
 {
+	private final int _minLevel;
 	private final int _amount;
 	private final boolean _winOnly;
 	
 	public OlympiadDailyMissionHandler(DailyMissionDataHolder holder)
 	{
 		super(holder);
+		_minLevel = holder.getParams().getInt("minLevel", 0);
 		_amount = holder.getRequiredCompletions();
 		_winOnly = holder.getParams().getBoolean("winOnly", false);
 	}
@@ -57,7 +59,7 @@ public class OlympiadDailyMissionHandler extends AbstractDailyMissionHandler
 			{
 				case NOT_AVAILABLE: // Initial state
 				{
-					if (entry.getProgress() >= _amount)
+					if ((entry.getProgress() >= _amount) && (player.getLevel() >= _minLevel))
 					{
 						entry.setStatus(DailyMissionStatus.AVAILABLE);
 						storePlayerEntry(entry);

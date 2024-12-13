@@ -73,7 +73,7 @@ public class EnlargeSlot extends AbstractEffect
 		effected.getStat().mergeAdd(stat, _amount);
 		if (effected.isPlayer())
 		{
-			effected.getActingPlayer().sendStorageMaxCount();
+			effected.asPlayer().sendStorageMaxCount();
 		}
 	}
 }

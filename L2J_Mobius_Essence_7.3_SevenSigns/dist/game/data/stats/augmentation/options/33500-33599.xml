@@ -508,7 +508,7 @@
 		<!-- MP Recovery Rate +2.5 -->
 		<effects>
 			<effect name="MpRegen">
-				<amount>2.</amount>
+				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -669,54 +669,48 @@
 	<option id="33574" name="paralyze">
 		<!-- Paralysis Atk. Rate +0.5% -->
 		<effects>
-			<effect name="BlockActions">
-				<amount>0.5</amount>
-				<mode>PER</mode>
+			<effect name="AttackTrait">
+				<PARALYZE>0.5</PARALYZE>
 			</effect>
 		</effects>
 	</option>
 	<option id="33575" name="paralyze">
 		<!-- Paralysis Atk. Rate +1% -->
 		<effects>
-			<effect name="BlockActions">
-				<amount>1</amount>
-				<mode>PER</mode>
+			<effect name="AttackTrait">
+				<PARALYZE>1</PARALYZE>
 			</effect>
 		</effects>
 	</option>
 	<option id="33576" name="paralyze">
 		<!-- Paralysis Atk. Rate +1.5% -->
 		<effects>
-			<effect name="BlockActions">
-				<amount>1.5</amount>
-				<mode>PER</mode>
+			<effect name="AttackTrait">
+				<PARALYZE>1.5</PARALYZE>
 			</effect>
 		</effects>
 	</option>
 	<option id="33577" name="paralyze">
 		<!-- Paralysis Atk. Rate +3%. -->
 		<effects>
-			<effect name="BlockActions">
-				<amount>3</amount>
-				<mode>PER</mode>
+			<effect name="AttackTrait">
+				<PARALYZE>3</PARALYZE>
 			</effect>
 		</effects>
 	</option>
 	<option id="33578" name="paralyze">
 		<!-- Paralysis Atk. Rate +3.5% -->
 		<effects>
-			<effect name="BlockActions">
-				<amount>3.5</amount>
-				<mode>PER</mode>
+			<effect name="AttackTrait">
+				<PARALYZE>3.5</PARALYZE>
 			</effect>
 		</effects>
 	</option>
 	<option id="33579" name="paralyze">
 		<!-- Paralysis Atk. Rate +5% -->
 		<effects>
-			<effect name="BlockActions">
-				<amount>5</amount>
-				<mode>PER</mode>
+			<effect name="AttackTrait">
+				<PARALYZE>5</PARALYZE>
 			</effect>
 		</effects>
 	</option>
@@ -746,58 +740,168 @@
 	</option>
 	<option id="33586" name="hold">
 		<!-- Hold Atk. Rate +0.5% -->
-		<active_skill id="3190" level="1" /> <!-- Item Skill: Hold -->
+		<effects>
+			<effect name="AttackTrait">
+				<HOLD>0.5</HOLD>
+			</effect>
+		</effects>
 	</option>
 	<option id="33587" name="hold">
 		<!-- Hold Atk. Rate +1% -->
-		<active_skill id="3190" level="1" /> <!-- Item Skill: Hold -->
+		<effects>
+			<effect name="AttackTrait">
+				<HOLD>1</HOLD>
+			</effect>
+		</effects>
 	</option>
 	<option id="33588" name="hold">
 		<!-- Hold Atk. Rate +1.5% -->
-		<active_skill id="3190" level="1" /> <!-- Item Skill: Hold -->
+		<effects>
+			<effect name="AttackTrait">
+				<HOLD>1.5</HOLD>
+			</effect>
+		</effects>
 	</option>
 	<option id="33589" name="hold">
 		<!-- Hold Atk. Rate +3%. -->
-		<active_skill id="3190" level="1" /> <!-- Item Skill: Hold -->
+		<effects>
+			<effect name="AttackTrait">
+				<HOLD>3</HOLD>
+			</effect>
+		</effects>
 	</option>
 	<option id="33590" name="hold">
 		<!-- Hold Atk. Rate +3.5% -->
-		<active_skill id="3190" level="1" /> <!-- Item Skill: Hold -->
+		<effects>
+			<effect name="AttackTrait">
+				<HOLD>3.5</HOLD>
+			</effect>
+		</effects>
 	</option>
 	<option id="33591" name="hold">
 		<!-- Hold Atk. Rate +5% -->
-		<active_skill id="3190" level="1" /> <!-- Item Skill: Hold -->
+		<effects>
+			<effect name="AttackTrait">
+				<HOLD>5</HOLD>
+			</effect>
+		</effects>
 	</option>
 	<option id="33592" name="crit_dmg">
 		<!-- Item skill: All received Critical Damage -1% -->
-		<active_skill id="3135" level="10" /> <!-- Item Skill: Shield -->
+		<effects>
+			<effect name="DefenceCriticalDamage">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefencePhysicalSkillCriticalDamage">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</option>
 	<option id="33593" name="crit_dmg">
 		<!-- Item skill: All received Critical Damage -2% -->
-		<active_skill id="3135" level="10" /> <!-- Item Skill: Shield -->
+		<effects>
+			<effect name="DefenceCriticalDamage">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefencePhysicalSkillCriticalDamage">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</option>
 	<option id="33594" name="crit_dmg">
 		<!-- Item skill: All received Critical Damage -3% -->
-		<active_skill id="3135" level="10" /> <!-- Item Skill: Shield -->
+		<effects>
+			<effect name="DefenceCriticalDamage">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefencePhysicalSkillCriticalDamage">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</option>
 	<option id="33595" name="crit_dmg">
 		<!-- Item skill: All received Critical Damage -4% -->
-		<active_skill id="3135" level="10" /> <!-- Item Skill: Shield -->
+		<effects>
+			<effect name="DefenceCriticalDamage">
+				<amount>4</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefencePhysicalSkillCriticalDamage">
+				<amount>4</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>4</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</option>
 	<option id="33596" name="crit_dmg">
 		<!-- Item skill: All received Critical Damage -5% -->
-		<active_skill id="3135" level="10" /> <!-- Item Skill: Shield -->
+		<effects>
+			<effect name="DefenceCriticalDamage">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefencePhysicalSkillCriticalDamage">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</option>
 	<option id="33597" name="crit_dmg">
 		<!-- Item skill: All received Critical Damage -7% -->
-		<active_skill id="3135" level="10" /> <!-- Item Skill: Shield -->
+		<effects>
+			<effect name="DefenceCriticalDamage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefencePhysicalSkillCriticalDamage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="DefenceMagicCriticalDamage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</option>
 	<option id="33598" name="bow_res">
 		<!-- Bow Resistance +0.5% -->
-		<passive_skill id="112" level="1" /> <!-- Deflect Arrow -->
+		<effects>
+			<effect name="DefenceTrait">
+				<BOW>0.5</BOW>
+			</effect>
+		</effects>
 	</option>
 	<option id="33599" name="bow_res">
 		<!-- Bow Resistance +1% -->
-		<passive_skill id="112" level="1" /> <!-- Deflect Arrow -->
+		<effects>
+			<effect name="DefenceTrait">
+				<BOW>1</BOW>
+			</effect>
+		</effects>
 	</option>
 </list>

@@ -381,6 +381,12 @@ public class Servitor extends Summon implements Runnable
 	}
 	
 	@Override
+	public Servitor asServitor()
+	{
+		return this;
+	}
+	
+	@Override
 	public void run()
 	{
 		final int usedtime = 5000;
@@ -433,7 +439,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public double getMAtk(Creature target, Skill skill)
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getMAtk(target, skill);
@@ -445,7 +451,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public double getMDef(Creature target, Skill skill)
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getMDef(target, skill);
@@ -457,7 +463,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public double getPAtk(Creature target)
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getPAtk(target);
@@ -469,7 +475,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public double getPDef(Creature target)
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getPDef(target);
@@ -481,7 +487,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public int getMAtkSpd()
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getMAtkSpd();
@@ -493,7 +499,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public int getMaxHp()
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getMaxHp();
@@ -505,7 +511,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public int getMaxMp()
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getMaxMp();
@@ -517,7 +523,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public int getCriticalHit(Creature target, Skill skill)
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getCriticalHit(target, skill);
@@ -529,7 +535,7 @@ public class Servitor extends Summon implements Runnable
 	@Override
 	public double getPAtkSpd()
 	{
-		final Player player = getActingPlayer();
+		final Player player = asPlayer();
 		if (player == null)
 		{
 			return super.getPAtkSpd();

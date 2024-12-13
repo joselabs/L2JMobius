@@ -53,7 +53,7 @@ public class Die extends ServerPacket
 		_objectId = creature.getObjectId();
 		if (creature.isPlayer())
 		{
-			final Clan clan = creature.getActingPlayer().getClan();
+			final Clan clan = creature.asPlayer().getClan();
 			boolean isInCastleDefense = false;
 			boolean isInFortDefense = false;
 			SiegeClan siegeClan = null;

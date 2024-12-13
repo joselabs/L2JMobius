@@ -1,35 +1,49 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.admincommandhandlers;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.l2jmobius.commons.util.StringUtil;
 import org.l2jmobius.gameserver.data.xml.ClassListData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
+import org.l2jmobius.gameserver.enums.ClassId;
+import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
+import org.l2jmobius.gameserver.model.html.PageBuilder;
+import org.l2jmobius.gameserver.model.html.PageResult;
+import org.l2jmobius.gameserver.model.html.styles.ButtonsStyle;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.AcquireSkillList;
@@ -39,34 +53,22 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.util.BuilderUtil;
 
 /**
- * This class handles following admin commands:
- * <ul>
- * <li>show_skills</li>
- * <li>remove_skills</li>
- * <li>skill_list</li>
- * <li>skill_index</li>
- * <li>add_skill</li>
- * <li>remove_skill</li>
- * <li>get_skills</li>
- * <li>reset_skills</li>
- * <li>give_all_skills</li>
- * <li>give_all_skills_fs</li>
- * <li>admin_give_all_clan_skills</li>
- * <li>remove_all_skills</li>
- * <li>add_clan_skills</li>
- * <li>admin_setskill</li>
- * </ul>
- * @version 2012/02/26 Small fixes by Zoey76 05/03/2011
+ * @author Mobius
  */
 public class AdminSkill implements IAdminCommandHandler
 {
 	private static final Logger LOGGER = Logger.getLogger(AdminSkill.class.getName());
+	
+	private static final int PAGE_LIMIT = 7;
 	
 	private static final String[] ADMIN_COMMANDS =
 	{
 		"admin_show_skills",
 		"admin_remove_skills",
 		"admin_skill_list",
+		"admin_skill_race",
+		"admin_skill_class",
+		"admin_skill_add_list",
 		"admin_skill_index",
 		"admin_add_skill",
 		"admin_remove_skill",
@@ -107,7 +109,43 @@ public class AdminSkill implements IAdminCommandHandler
 		}
 		else if (command.startsWith("admin_skill_list"))
 		{
-			AdminHtml.showAdminHtml(activeChar, "skills.htm");
+			adminAddSkills(activeChar);
+		}
+		else if (command.startsWith("admin_skill_race"))
+		{
+			final String[] split = command.split(" ");
+			if (split.length == 2)
+			{
+				adminAddRaceSkills(activeChar, Enum.valueOf(Race.class, split[1]));
+			}
+			else
+			{
+				adminAddSkills(activeChar);
+			}
+		}
+		else if (command.startsWith("admin_skill_class"))
+		{
+			final String[] split = command.split(" ");
+			if (split.length > 1)
+			{
+				adminAddClassSkills(activeChar, Enum.valueOf(ClassId.class, split[1]), split.length > 2 ? Integer.parseInt(split[2]) : 0);
+			}
+			else
+			{
+				adminAddSkills(activeChar);
+			}
+		}
+		else if (command.startsWith("admin_skill_add_list"))
+		{
+			final String[] split = command.split(" ");
+			if (split.length > 1)
+			{
+				adminAddClassSkillList(activeChar, Enum.valueOf(ClassId.class, split[1]), split.length > 2 ? Integer.parseInt(split[2]) : 1, split.length > 3 ? Integer.parseInt(split[3]) : 0);
+			}
+			else
+			{
+				adminAddSkills(activeChar);
+			}
 		}
 		else if (command.startsWith("admin_skill_index"))
 		{
@@ -178,7 +216,8 @@ public class AdminSkill implements IAdminCommandHandler
 				activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
 				return false;
 			}
-			final Player player = target.getActingPlayer();
+			
+			final Player player = target.asPlayer();
 			for (Skill skill : player.getAllSkills())
 			{
 				player.removeSkill(skill);
@@ -251,7 +290,7 @@ public class AdminSkill implements IAdminCommandHandler
 						{
 							if (o.isCreature())
 							{
-								skill.activateSkill(activeChar, (Creature) o);
+								skill.activateSkill(activeChar, o.asCreature());
 							}
 						});
 					}
@@ -288,8 +327,9 @@ public class AdminSkill implements IAdminCommandHandler
 			activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
 			return;
 		}
-		final Player player = target.getActingPlayer();
-		// Notify player and admin
+		
+		// Notify player and admin.
+		final Player player = target.asPlayer();
 		BuilderUtil.sendSysMessage(activeChar, "You gave " + player.giveAvailableSkills(includeByFs, true, includeRequiredItems) + " skills to " + player.getName());
 		player.sendSkillList();
 		player.sendPacket(new AcquireSkillList(player));
@@ -310,7 +350,7 @@ public class AdminSkill implements IAdminCommandHandler
 			return;
 		}
 		
-		final Player player = target.getActingPlayer();
+		final Player player = target.asPlayer();
 		final Clan clan = player.getClan();
 		if (clan == null)
 		{
@@ -331,7 +371,7 @@ public class AdminSkill implements IAdminCommandHandler
 			clan.addNewSkill(SkillData.getInstance().getSkill(s.getSkillId(), s.getSkillLevel()));
 		}
 		
-		// Notify target and active char
+		// Notify target and active char.
 		clan.broadcastToOnlineMembers(new PledgeSkillList(clan));
 		for (Player member : clan.getOnlineMembers(0))
 		{
@@ -343,7 +383,6 @@ public class AdminSkill implements IAdminCommandHandler
 	}
 	
 	/**
-	 * TODO: Externalize HTML
 	 * @param activeChar the active Game Master.
 	 * @param pageValue
 	 */
@@ -356,7 +395,7 @@ public class AdminSkill implements IAdminCommandHandler
 			return;
 		}
 		
-		final Player player = target.getActingPlayer();
+		final Player player = target.asPlayer();
 		final Skill[] skills = player.getAllSkills().toArray(new Skill[player.getAllSkills().size()]);
 		final int maxSkillsPerPage = 30;
 		int maxPages = skills.length / maxSkillsPerPage;
@@ -398,9 +437,154 @@ public class AdminSkill implements IAdminCommandHandler
 		activeChar.sendPacket(adminReply);
 	}
 	
-	/**
-	 * @param activeChar the active Game Master.
-	 */
+	private void adminAddSkills(Player player)
+	{
+		final NpcHtmlMessage html = new NpcHtmlMessage(0, 1);
+		html.setFile(player, "data/html/admin/charskills_add.htm");
+		player.sendPacket(html);
+	}
+	
+	private void adminAddRaceSkills(Player player, Race race)
+	{
+		final List<ClassId> classes = new ArrayList<>();
+		for (ClassId classId : ClassId.values())
+		{
+			if ((classId.getRace() == race) && (classId.level() != 4) && !SkillTreeData.getInstance().getCompleteClassSkillTree(classId).isEmpty())
+			{
+				classes.add(classId);
+			}
+		}
+		
+		final StringBuilder sb = new StringBuilder();
+		for (ClassId classId : classes)
+		{
+			final String color;
+			switch (classId.level())
+			{
+				case 1:
+				{
+					color = "999999";
+					break;
+				}
+				case 2:
+				{
+					color = "F2B705";
+					break;
+				}
+				case 3:
+				{
+					color = "F26005";
+					break;
+				}
+				case 4:
+				{
+					color = "FF0022";
+					break;
+				}
+				default:
+				{
+					color = "777777";
+					break;
+				}
+			}
+			sb.append("<tr><td><Button ALIGN=LEFT ICON=\"NORMAL\" action=\"bypass admin_skill_class " + classId + "\"><font color=\"" + color + "\">" + ClassListData.getInstance().getClass(classId).getClassName() + "</font></Button></td></tr>");
+		}
+		
+		final NpcHtmlMessage html = new NpcHtmlMessage(0, 1);
+		html.setFile(player, "data/html/admin/charskills_race.htm");
+		html.replace("%racename%", StringUtil.enumToString(race));
+		html.replace("%classlist%", sb.toString());
+		player.sendPacket(html);
+	}
+	
+	private void adminAddClassSkills(Player player, ClassId classId, int page)
+	{
+		final Set<Skill> skills = new HashSet<>();
+		for (SkillLearn skillLearn : SkillTreeData.getInstance().getCompleteClassSkillTree(classId).values())
+		{
+			skills.add(SkillData.getInstance().getSkill(skillLearn.getSkillId(), 1));
+		}
+		
+		int row = 0;
+		final String pageLink = "bypass admin_skill_class " + classId;
+		final PageResult result = PageBuilder.newBuilder(skills, PAGE_LIMIT, pageLink).currentPage(page).style(ButtonsStyle.INSTANCE).bodyHandler((pages, skill, sb) ->
+		{
+			sb.append((row % 2) == 0 ? "<table width=\"295\" bgcolor=\"000000\">" : "<table width=\"295\">");
+			sb.append("<tr><td height=40 width=40><img src=\"");
+			sb.append(skill.getIcon());
+			sb.append("\" width=32 height=32></td><td width=190><font color=\"B09878\"><a action=\"bypass admin_skill_add_list ");
+			sb.append(classId);
+			sb.append(" ");
+			sb.append(skill.getId());
+			sb.append("\">");
+			sb.append(skill.getName());
+			sb.append(" (");
+			sb.append(skill.getId());
+			sb.append(")</a></font></td></tr></table><img src=\"L2UI.SquareGray\" width=295 height=1>");
+		}).build();
+		
+		final NpcHtmlMessage html = new NpcHtmlMessage(0, 1);
+		html.setFile(player, "data/html/admin/charskills_class.htm");
+		html.replace("%classname%", ClassListData.getInstance().getClass(classId).getClassName());
+		html.replace("%skilllist%", result.getBodyTemplate().toString());
+		if (result.getPages() > 1)
+		{
+			html.replace("%pages%", "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
+		}
+		else
+		{
+			html.replace("%pages%", "");
+		}
+		player.sendPacket(html);
+	}
+	
+	private void adminAddClassSkillList(Player player, ClassId classId, int skillId, int page)
+	{
+		final Map<Integer, Skill> skills = new TreeMap<>();
+		for (SkillLearn skillLearn : SkillTreeData.getInstance().getCompleteClassSkillTree(classId).values())
+		{
+			final int id = skillLearn.getSkillId();
+			if (id == skillId)
+			{
+				final int level = skillLearn.getSkillLevel();
+				skills.put(level, SkillData.getInstance().getSkill(id, level));
+			}
+		}
+		
+		int row = 0;
+		final String pageLink = "bypass admin_skill_add_list " + classId + " " + skillId;
+		final PageResult result = PageBuilder.newBuilder(skills.values(), PAGE_LIMIT, pageLink).currentPage(page).style(ButtonsStyle.INSTANCE).bodyHandler((pages, skill, sb) ->
+		{
+			sb.append((row % 2) == 0 ? "<table width=\"295\" bgcolor=\"000000\">" : "<table width=\"295\">");
+			sb.append("<tr><td height=40 width=40><img src=\"");
+			sb.append(skill.getIcon());
+			sb.append("\" width=32 height=32></td><td width=190><font color=\"B09878\"><a action=\"bypass admin_add_skill ");
+			sb.append(skill.getId());
+			sb.append(" ");
+			sb.append(skill.getLevel());
+			sb.append("\">");
+			sb.append(skill.getName());
+			sb.append(" (");
+			sb.append(skill.getLevel());
+			sb.append(")</a></font></td></tr></table><img src=\"L2UI.SquareGray\" width=295 height=1>");
+		}).build();
+		
+		final NpcHtmlMessage html = new NpcHtmlMessage(0, 1);
+		html.setFile(player, "data/html/admin/charskills_add_list.htm");
+		html.replace("%skillid%", skillId);
+		html.replace("%skilllist%", result.getBodyTemplate().toString());
+		html.replace("%classId%", classId.toString());
+		if (result.getPages() > 1)
+		{
+			html.replace("%pages%", "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
+		}
+		else
+		{
+			html.replace("%pages%", "");
+		}
+		player.sendPacket(html);
+	}
+	
 	private void showMainPage(Player activeChar)
 	{
 		final WorldObject target = activeChar.getTarget();
@@ -409,7 +593,7 @@ public class AdminSkill implements IAdminCommandHandler
 			activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
 			return;
 		}
-		final Player player = target.getActingPlayer();
+		final Player player = target.asPlayer();
 		final NpcHtmlMessage adminReply = new NpcHtmlMessage(0, 1);
 		adminReply.setFile(activeChar, "data/html/admin/charskills.htm");
 		adminReply.replace("%name%", player.getName());
@@ -418,9 +602,6 @@ public class AdminSkill implements IAdminCommandHandler
 		activeChar.sendPacket(adminReply);
 	}
 	
-	/**
-	 * @param activeChar the active Game Master.
-	 */
 	private void adminGetSkills(Player activeChar)
 	{
 		final WorldObject target = activeChar.getTarget();
@@ -429,7 +610,8 @@ public class AdminSkill implements IAdminCommandHandler
 			activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
 			return;
 		}
-		final Player player = target.getActingPlayer();
+		
+		final Player player = target.asPlayer();
 		if (player.getName().equals(activeChar.getName()))
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THIS_ON_YOURSELF);
@@ -452,9 +634,6 @@ public class AdminSkill implements IAdminCommandHandler
 		showMainPage(activeChar);
 	}
 	
-	/**
-	 * @param activeChar the active Game Master.
-	 */
 	private void adminResetSkills(Player activeChar)
 	{
 		final WorldObject target = activeChar.getTarget();
@@ -463,7 +642,8 @@ public class AdminSkill implements IAdminCommandHandler
 			activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
 			return;
 		}
-		final Player player = target.getActingPlayer();
+		
+		final Player player = target.asPlayer();
 		if (adminSkills == null)
 		{
 			BuilderUtil.sendSysMessage(activeChar, "You must get the skills of someone in order to do this.");
@@ -496,10 +676,6 @@ public class AdminSkill implements IAdminCommandHandler
 		showMainPage(activeChar);
 	}
 	
-	/**
-	 * @param activeChar the active Game Master.
-	 * @param value
-	 */
 	private void adminAddSkill(Player activeChar, String value)
 	{
 		final WorldObject target = activeChar.getTarget();
@@ -509,7 +685,8 @@ public class AdminSkill implements IAdminCommandHandler
 			showMainPage(activeChar);
 			return;
 		}
-		final Player player = target.getActingPlayer();
+		
+		final Player player = target.asPlayer();
 		final StringTokenizer st = new StringTokenizer(value);
 		if ((st.countTokens() != 1) && (st.countTokens() != 2))
 		{
@@ -549,10 +726,6 @@ public class AdminSkill implements IAdminCommandHandler
 		}
 	}
 	
-	/**
-	 * @param activeChar the active Game Master.
-	 * @param idval
-	 */
 	private void adminRemoveSkill(Player activeChar, int idval)
 	{
 		final WorldObject target = activeChar.getTarget();
@@ -561,7 +734,8 @@ public class AdminSkill implements IAdminCommandHandler
 			activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
 			return;
 		}
-		final Player player = target.getActingPlayer();
+		
+		final Player player = target.asPlayer();
 		final Skill skill = SkillData.getInstance().getSkill(idval, player.getSkillLevel(idval));
 		if (skill != null)
 		{
@@ -579,11 +753,6 @@ public class AdminSkill implements IAdminCommandHandler
 		removeSkillsPage(activeChar, 0); // Back to previous page
 	}
 	
-	/**
-	 * @param activeChar the active Game Master.
-	 * @param id
-	 * @param level
-	 */
 	private void adminAddClanSkill(Player activeChar, int id, int level)
 	{
 		final WorldObject target = activeChar.getTarget();
@@ -593,7 +762,8 @@ public class AdminSkill implements IAdminCommandHandler
 			showMainPage(activeChar);
 			return;
 		}
-		final Player player = target.getActingPlayer();
+		
+		final Player player = target.asPlayer();
 		if (!player.isClanLeader())
 		{
 			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_NOT_A_CLAN_LEADER);
@@ -602,6 +772,7 @@ public class AdminSkill implements IAdminCommandHandler
 			showMainPage(activeChar);
 			return;
 		}
+		
 		if ((id < 370) || (id > 391) || (level < 1) || (level > 3))
 		{
 			BuilderUtil.sendSysMessage(activeChar, "Usage: //add_clan_skill <skill_id> <level>");

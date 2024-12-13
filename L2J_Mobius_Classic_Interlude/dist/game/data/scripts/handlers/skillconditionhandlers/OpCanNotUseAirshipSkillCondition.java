@@ -35,6 +35,6 @@ public class OpCanNotUseAirshipSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return caster.isPlayer() && !(caster.getActingPlayer().getVehicle() instanceof AirShip);
+		return caster.isPlayer() && !(caster.asPlayer().getVehicle() instanceof AirShip);
 	}
 }

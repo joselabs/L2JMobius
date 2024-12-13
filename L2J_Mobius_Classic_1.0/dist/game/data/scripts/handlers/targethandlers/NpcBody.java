@@ -58,7 +58,7 @@ public class NpcBody implements ITargetTypeHandler
 			return null;
 		}
 		
-		final Creature target = (Creature) selectedTarget;
+		final Creature target = selectedTarget.asCreature();
 		if (target.isDead())
 		{
 			// Check for cast range if character cannot move. TODO: char will start follow until within castrange, but if his moving is blocked by geodata, this msg will be sent.
@@ -72,7 +72,7 @@ public class NpcBody implements ITargetTypeHandler
 			}
 			
 			// Geodata check when character is within range.
-			if (!GeoEngine.getInstance().canSeeTarget(creature, target))
+			if (!GeoEngine.getInstance().canSeeTarget(creature, target) || (skill.isFlyType() && !GeoEngine.getInstance().canMoveToTarget(creature, target)))
 			{
 				if (sendMessage)
 				{

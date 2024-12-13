@@ -46,7 +46,7 @@ public class FishingZone extends ZoneType
 		{
 			if ((Config.ALLOW_FISHING || creature.canOverrideCond(PlayerCondOverride.ZONE_CONDITIONS)) && !creature.isInsideZone(ZoneId.FISHING))
 			{
-				final WeakReference<Player> weakPlayer = new WeakReference<>(creature.getActingPlayer());
+				final WeakReference<Player> weakPlayer = new WeakReference<>(creature.asPlayer());
 				ThreadPool.execute(new Runnable()
 				{
 					@Override

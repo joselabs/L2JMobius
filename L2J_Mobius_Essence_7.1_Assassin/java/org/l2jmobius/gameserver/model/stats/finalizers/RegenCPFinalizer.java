@@ -39,7 +39,7 @@ public class RegenCPFinalizer implements IStatFunction
 			return 0;
 		}
 		
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		double baseValue = player.getTemplate().getBaseCpRegen(creature.getLevel()) * creature.getLevelMod() * BaseStat.CON.calcBonus(creature) * Config.CP_REGEN_MULTIPLIER;
 		if (player.isSitting())
 		{

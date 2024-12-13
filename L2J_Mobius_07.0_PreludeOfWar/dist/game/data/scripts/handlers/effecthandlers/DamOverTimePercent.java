@@ -38,6 +38,11 @@ public class DamOverTimePercent extends AbstractEffect
 		_canKill = params.getBoolean("canKill", false);
 		_power = params.getDouble("power");
 		setTicks(params.getInt("ticks"));
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override

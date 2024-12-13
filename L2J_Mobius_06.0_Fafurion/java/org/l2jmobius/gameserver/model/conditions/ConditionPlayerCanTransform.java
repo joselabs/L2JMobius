@@ -39,7 +39,7 @@ public class ConditionPlayerCanTransform extends Condition
 	public boolean testImpl(Creature effector, Creature effected, Skill skill, ItemTemplate item)
 	{
 		boolean canTransform = true;
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		if ((player == null) || player.isAlikeDead() || player.isCursedWeaponEquipped())
 		{
 			canTransform = false;
@@ -69,6 +69,6 @@ public class ConditionPlayerCanTransform extends Condition
 			player.sendMessage("You cannot transform while registered on an event.");
 			canTransform = false;
 		}
-		return (_value == canTransform);
+		return _value == canTransform;
 	}
 }

@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.communityboard;
 
@@ -26,6 +30,7 @@ import java.util.Set;
 import java.util.StringJoiner;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.data.SpawnTable;
 import org.l2jmobius.gameserver.data.xml.ItemData;
@@ -40,6 +45,8 @@ import org.l2jmobius.gameserver.model.holders.DropGroupHolder;
 import org.l2jmobius.gameserver.model.holders.DropHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
+import org.l2jmobius.gameserver.network.serverpackets.RadarControl;
+import org.l2jmobius.gameserver.network.serverpackets.ShowMiniMap;
 
 /**
  * @author yksdtc
@@ -183,6 +190,17 @@ public class DropSearchBoard implements IParseBoardHandler
 				final double dropAmountEffectBonus = player.getStat().getBonusDropAmountMultiplier();
 				final double dropRateEffectBonus = player.getStat().getBonusDropRateMultiplier();
 				final double spoilRateEffectBonus = player.getStat().getBonusSpoilRateMultiplier();
+				builder.append("<tr>");
+				builder.append("<td width=30>Lvl</td>");
+				builder.append("<td width=180>NPC Name</td>");
+				builder.append("<td width=100 align=CENTER>Amount</td>");
+				builder.append("<td width=80 align=CENTER>Chance</td>");
+				builder.append("<td width=80 align=CENTER>Type</td>");
+				builder.append("</tr>");
+				
+				html = html.replace("%header%", builder.toString());
+				builder.setLength(0);
+				
 				for (int index = start; index <= end; index++)
 				{
 					final CBDropHolder cbDropHolder = list.get(index);
@@ -211,6 +229,10 @@ public class DropSearchBoard implements IParseBoardHandler
 						if (Config.RATE_DROP_CHANCE_BY_ID.get(cbDropHolder.itemId) != null)
 						{
 							rateChance *= Config.RATE_DROP_CHANCE_BY_ID.get(cbDropHolder.itemId);
+							if ((cbDropHolder.itemId == Inventory.ADENA_ID) && (rateChance > 100))
+							{
+								rateChance = 100;
+							}
 						}
 						else if (item.hasExImmediateEffect())
 						{
@@ -292,10 +314,10 @@ public class DropSearchBoard implements IParseBoardHandler
 					
 					builder.append("<tr>");
 					builder.append("<td width=30>").append(cbDropHolder.npcLevel).append("</td>");
-					builder.append("<td width=170>").append("<a action=\"bypass _bbs_npc_trace " + cbDropHolder.npcId + "\">").append("&@").append(cbDropHolder.npcId).append(";").append("</a>").append("</td>");
-					builder.append("<td width=80 align=CENTER>").append(cbDropHolder.min * rateAmount).append("-").append(cbDropHolder.max * rateAmount).append("</td>");
-					builder.append("<td width=50 align=CENTER>").append(chanceFormat.format(cbDropHolder.chance * rateChance)).append("%").append("</td>");
-					builder.append("<td width=50 align=CENTER>").append(cbDropHolder.isSpoil ? "Spoil" : "Drop").append("</td>");
+					builder.append("<td width=180>").append("<a action=\"bypass _bbs_npc_trace " + cbDropHolder.npcId + "\">").append("&@").append(cbDropHolder.npcId).append(";").append("</a>").append("</td>");
+					builder.append("<td width=100 align=CENTER>").append(cbDropHolder.min * rateAmount).append("-").append(cbDropHolder.max * rateAmount).append("</td>");
+					builder.append("<td width=80 align=CENTER>").append(chanceFormat.format(cbDropHolder.chance * rateChance)).append("%").append("</td>");
+					builder.append("<td width=80 align=CENTER>").append(cbDropHolder.isSpoil ? "Spoil" : "Drop").append("</td>");
 					builder.append("</tr>");
 				}
 				
@@ -303,25 +325,65 @@ public class DropSearchBoard implements IParseBoardHandler
 				builder.setLength(0);
 				
 				builder.append("<tr>");
-				for (page = 1; page <= pages; page++)
+				int maxDisplayPages = 9;
+				if (page > 1)
 				{
-					builder.append("<td>").append("<a action=\"bypass -h _bbs_search_drop " + itemId + " " + page + " $order $level\">").append(page).append("</a>").append("</td>");
+					builder.append("<td><button action=\"bypass _bbs_search_drop ").append(itemId).append(" ").append(page - 1).append(" $order $level\" back=\"l2ui_ch3.prev1_down\" fore=\"l2ui_ch3.prev1\" width=16 height=16 ></td>");
 				}
+				else
+				{
+					builder.append("<td><button back=\"l2ui_ch3.prev1_down\" fore=\"l2ui_ch3.prev1\" width=16 height=16 ></td>");
+				}
+				int startPage = Math.max(1, page - (maxDisplayPages / 2));
+				int endPage = Math.min(pages, (startPage + maxDisplayPages) - 1);
+				if ((endPage - startPage) < (maxDisplayPages - 1))
+				{
+					startPage = Math.max(1, (endPage - maxDisplayPages) + 1);
+				}
+				for (int i = startPage; i <= endPage; i++)
+				{
+					builder.append("<td>");
+					if (i == page)
+					{
+						builder.append("<font>").append(i).append("</font>");
+					}
+					else
+					{
+						builder.append("<a action=\"bypass _bbs_search_drop ").append(itemId).append(" ").append(i).append(" $order $level\">").append(i).append("</a>");
+					}
+					builder.append("</td>");
+				}
+				if (page < pages)
+				{
+					builder.append("<td><button action=\"bypass _bbs_search_drop ").append(itemId).append(" ").append(page + 1).append(" $order $level\" back=\"l2ui_ch3.next1_down\" fore=\"l2ui_ch3.next1\" width=16 height=16 ></td>");
+				}
+				else
+				{
+					builder.append("<td><button back=\"l2ui_ch3.next1_down\" fore=\"l2ui_ch3.next1\" width=16 height=16 ></td>");
+				}
+				
 				builder.append("</tr>");
 				html = html.replace("%pages%", builder.toString());
 				break;
 			}
 			case "_bbs_npc_trace":
 			{
+				final StringBuilder builder = new StringBuilder();
 				final int npcId = Integer.parseInt(params[1]);
 				final Spawn spawn = SpawnTable.getInstance().getAnySpawn(npcId);
 				if (spawn == null)
 				{
-					player.sendMessage("Cannot find any spawn. Maybe dropped by a boss or instance monster.");
+					builder.append("<tr><td width=100 align=CENTER>Cannot find any spawn. Maybe dropped by a boss or instance monster.</td></tr>");
+					html = html.replace("%searchResult%", builder.toString());
 				}
 				else
 				{
-					player.getRadar().addMarker(spawn.getX(), spawn.getY(), spawn.getZ());
+					player.sendPacket(new ShowMiniMap(-1));
+					ThreadPool.schedule(() ->
+					{
+						player.getRadar().addMarker(spawn.getX(), spawn.getY(), spawn.getZ());
+						player.sendPacket(new RadarControl(0, 2, spawn.getX(), spawn.getY(), spawn.getZ()));
+					}, 500);
 				}
 				break;
 			}
@@ -363,7 +425,7 @@ public class DropSearchBoard implements IParseBoardHandler
 				limit++;
 			}
 			
-			if (limit == 6)
+			if (limit == 16)
 			{
 				break;
 			}

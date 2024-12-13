@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.actor;
 
@@ -56,7 +60,6 @@ import org.l2jmobius.gameserver.model.Seed;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.instance.GrandBoss;
 import org.l2jmobius.gameserver.model.actor.instance.Monster;
-import org.l2jmobius.gameserver.model.actor.instance.Servitor;
 import org.l2jmobius.gameserver.model.actor.status.AttackableStatus;
 import org.l2jmobius.gameserver.model.actor.tasks.attackable.CommandChannelTimer;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
@@ -243,7 +246,7 @@ public class Attackable extends Npc
 		// If this Attackable is a Monster and it has spawned minions, call its minions to battle
 		if (isMonster())
 		{
-			Monster master = (Monster) this;
+			Monster master = asMonster();
 			if (master.hasMinions())
 			{
 				master.getMinionList().onAssist(this, attacker);
@@ -287,24 +290,28 @@ public class Attackable extends Npc
 			return false;
 		}
 		
-		if ((killer != null) && (killer.getActingPlayer() != null))
+		if (killer != null)
 		{
-			if ((killer.getClan() != null) && (Rnd.get(100) < 2))
+			final Player player = killer.asPlayer();
+			if (player != null)
 			{
-				killer.getClan().addExp(1);
-			}
-			
-			// Notify to scripts.
-			if (EventDispatcher.getInstance().hasListener(EventType.ON_ATTACKABLE_KILL, this))
-			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnAttackableKill(killer.getActingPlayer(), this, killer.isSummon()), this);
+				if ((player.getClan() != null) && (Rnd.get(100) < 2))
+				{
+					player.getClan().addExp(1);
+				}
+				
+				// Notify to scripts.
+				if (EventDispatcher.getInstance().hasListener(EventType.ON_ATTACKABLE_KILL, this))
+				{
+					EventDispatcher.getInstance().notifyEventAsync(new OnAttackableKill(player, this, killer.isSummon()), this);
+				}
 			}
 		}
 		
 		// Notify to minions if there are.
 		if (isMonster())
 		{
-			final Monster mob = (Monster) this;
+			final Monster mob = asMonster();
 			if ((mob.getLeader() != null) && mob.getLeader().hasMinions())
 			{
 				final int respawnTime = Config.MINIONS_RESPAWN_TIME.containsKey(getId()) ? Config.MINIONS_RESPAWN_TIME.get(getId()) * 1000 : -1;
@@ -363,7 +370,7 @@ public class Attackable extends Npc
 			for (AggroInfo info : _aggroList.values())
 			{
 				// Get the Creature corresponding to this attacker
-				final Player attacker = info.getAttacker().getActingPlayer();
+				final Player attacker = info.getAttacker().asPlayer();
 				if (attacker == null)
 				{
 					continue;
@@ -452,7 +459,7 @@ public class Attackable extends Npc
 			// Calculate raidboss points
 			if (_isRaid && !_isRaidMinion)
 			{
-				final Player player = (maxDealer != null) && maxDealer.isOnline() ? maxDealer : lastAttacker.getActingPlayer();
+				final Player player = (maxDealer != null) && maxDealer.isOnline() ? maxDealer : lastAttacker.asPlayer();
 				broadcastPacket(new SystemMessage(SystemMessageId.CONGRATULATIONS_YOUR_RAID_WAS_SUCCESSFUL));
 				final int raidbossPoints = (int) (getTemplate().getRaidPoints() * Config.RATE_RAIDBOSS_POINTS);
 				final Party party = player.getParty();
@@ -545,9 +552,10 @@ public class Attackable extends Npc
 					
 					for (Summon summon : attacker.getServitors().values())
 					{
-						if (((Servitor) summon).getExpMultiplier() > 1)
+						final float expMultiplier = summon.asServitor().getExpMultiplier();
+						if (expMultiplier > 1)
 						{
-							penalty = ((Servitor) summon).getExpMultiplier();
+							penalty = expMultiplier;
 							break;
 						}
 					}
@@ -575,11 +583,15 @@ public class Attackable extends Npc
 							
 							// Check for an over-hit enabled strike
 							final Creature overhitAttacker = _overhitAttacker;
-							if (_overhit && (overhitAttacker != null) && (overhitAttacker.getActingPlayer() != null) && (attacker == overhitAttacker.getActingPlayer()))
+							if (_overhit && (overhitAttacker != null))
 							{
-								attacker.sendPacket(SystemMessageId.OVER_HIT);
-								attacker.sendPacket(new ExMagicAttackInfo(overhitAttacker.getObjectId(), getObjectId(), ExMagicAttackInfo.OVERHIT));
-								exp += calculateOverhitExp(exp);
+								final Player player = overhitAttacker.asPlayer();
+								if ((player != null) && (attacker == player))
+								{
+									attacker.sendPacket(SystemMessageId.OVER_HIT);
+									attacker.sendPacket(new ExMagicAttackInfo(overhitAttacker.getObjectId(), getObjectId(), ExMagicAttackInfo.OVERHIT));
+									exp += calculateOverhitExp(exp);
+								}
 							}
 							
 							// Distribute the Exp and SP between the Player and its Summon
@@ -705,11 +717,15 @@ public class Attackable extends Npc
 						// Check for an over-hit enabled strike
 						// (When in party, the over-hit exp bonus is given to the whole party and splitted proportionally through the party members)
 						final Creature overhitAttacker = _overhitAttacker;
-						if (_overhit && (overhitAttacker != null) && (overhitAttacker.getActingPlayer() != null) && (attacker == overhitAttacker.getActingPlayer()))
+						if (_overhit && (overhitAttacker != null))
 						{
-							attacker.sendPacket(SystemMessageId.OVER_HIT);
-							attacker.sendPacket(new ExMagicAttackInfo(overhitAttacker.getObjectId(), getObjectId(), ExMagicAttackInfo.OVERHIT));
-							exp += calculateOverhitExp(exp);
+							final Player player = overhitAttacker.asPlayer();
+							if ((player != null) && (attacker == player))
+							{
+								attacker.sendPacket(SystemMessageId.OVER_HIT);
+								attacker.sendPacket(new ExMagicAttackInfo(overhitAttacker.getObjectId(), getObjectId(), ExMagicAttackInfo.OVERHIT));
+								exp += calculateOverhitExp(exp);
+							}
 						}
 						
 						// Distribute Experience and SP rewards to Player Party members in the known area of the last attacker
@@ -818,7 +834,7 @@ public class Attackable extends Npc
 				
 				addDamageHate(attacker, damage, (int) hateValue);
 				
-				final Player player = attacker.getActingPlayer();
+				final Player player = attacker.asPlayer();
 				if ((player != null) && EventDispatcher.getInstance().hasListener(EventType.ON_ATTACKABLE_ATTACK, this))
 				{
 					EventDispatcher.getInstance().notifyEventAsync(new OnAttackableAttack(player, this, damage, skill, attacker.isSummon()), this);
@@ -851,11 +867,11 @@ public class Attackable extends Npc
 			return;
 		}
 		
-		Player targetPlayer = attacker.getActingPlayer();
+		Player targetPlayer = attacker.asPlayer();
 		final Creature summoner = attacker.getSummoner();
 		if (attacker.isNpc() && (summoner != null) && summoner.isPlayer() && !attacker.isTargetable())
 		{
-			targetPlayer = summoner.getActingPlayer();
+			targetPlayer = summoner.asPlayer();
 			attacker = summoner;
 		}
 		
@@ -1086,7 +1102,7 @@ public class Attackable extends Npc
 		
 		if (ai.getAttacker().isPlayer())
 		{
-			final Player act = (Player) ai.getAttacker();
+			final Player act = ai.getAttacker().asPlayer();
 			if (act.isInvisible() || act.isInvul() || act.isSpawnProtected())
 			{
 				// Remove Object Should Use This Method and Can be Blocked While Interacting
@@ -1138,7 +1154,7 @@ public class Attackable extends Npc
 			return;
 		}
 		
-		final Player player = mainDamageDealer.getActingPlayer();
+		final Player player = mainDamageDealer.asPlayer();
 		
 		// Don't drop anything if the last attacker or owner isn't Player
 		if (player == null)
@@ -1836,6 +1852,12 @@ public class Attackable extends Npc
 	public boolean isAttackable()
 	{
 		return true;
+	}
+	
+	@Override
+	public Attackable asAttackable()
+	{
+		return this;
 	}
 	
 	@Override

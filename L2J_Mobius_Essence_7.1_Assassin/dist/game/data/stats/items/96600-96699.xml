@@ -9,18 +9,19 @@
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="50555" level="1" type="ON_ENCHANT" type_value="0" /> <!-- Beleth' Ring -->
-			<skill id="50555" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Beleth' Ring -->
-			<skill id="50555" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Beleth' Ring -->
-			<skill id="50555" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Beleth' Ring -->
-			<skill id="50555" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Beleth' Ring -->
-			<skill id="50555" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Beleth' Ring -->
-			<skill id="50555" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Beleth' Ring -->
-		</skills>
+		<set name="handler" val="ItemSkills" />
 		<stats>
 			<stat type="mDef">73</stat>
 		</stats>
+		<skills>
+			<skill id="50555" level="1" /> <!-- Beleth' Ring -->
+			<skill id="50555" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Beleth' Ring -->
+			<skill id="50555" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Beleth' Ring -->
+			<skill id="50555" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Beleth' Ring -->
+			<skill id="50555" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Beleth' Ring -->
+			<skill id="50555" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Beleth' Ring -->
+			<skill id="50555" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Beleth' Ring -->
+		</skills>
 	</item>
 	<item id="96601" name="Antharas Doll Lv. 1" additionalName="Sealed" type="EtcItem">
 		<!-- <Antharas Doll's Sorcery Lv. 1>. CON +1. MEN +1. Received damage -2%. Knockback Resistance +5%. Shock Resistance +5%. Pull Resistance +5%. Soulshot Damage Resistance +2%. Spiritshot Damage Resistance +2%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Antharas Doll Lv. 1 and package. In case of failure, the doll's level remains the same, but materials disappear. -->
@@ -676,6 +677,18 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="2133" min="1" max="1" chance="19.798" /> <!-- A-grade Gemstone -->
+			<item id="3031" min="30" max="30" chance="19.798" /> <!-- Spirit Ore - Sealed -->
+			<item id="90907" min="5" max="5" chance="19.798" /> <!-- Soulshot Ticket - Sealed -->
+			<item id="94380" min="1" max="1" chance="19.798" /> <!-- Scroll: Boost Attack (Time-limited) - Sealed -->
+			<item id="93370" min="5" max="5" chance="19.798" /> <!-- Einhasad's Blessing Scroll (Time-limited) - Sealed -->
+			<item id="92988" min="1" max="1" chance="1.0" /> <!-- Orcish Treasure - Sealed -->
+			<item id="49580" min="1" max="1" chance="0.01" /> <!-- Baium's Ring -->
+		</capsuled_items>
 	</item>
 	<item id="96652" name="Package: Antharas Doll Lv. 1" additionalName="Sealed" type="EtcItem">
 		<!-- <font color=bbaa88><Compound></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. -->
@@ -1197,23 +1210,36 @@
 		<!-- Applies a buff when used. <Buff effect>. XP recovery fee -20%. Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->
 		<set name="icon" val="icon.etc_charm_of_courage_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_freightable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="immediate_effect" val="true" />
+		<set name="autouse_type" val="ITEM" />
+		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="40386" level="1" /> <!-- Discount XP Recovery Scroll Lv. 1 -->
+		</skills>
 	</item>
 	<item id="96697" name="Discount XP Recovery Scroll Lv. 2" additionalName="Sealed" type="EtcItem">
 		<!-- Applies a buff when used. <Buff effect>. XP recovery fee -25%. My Teleport's Share Location fee -20%. Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->
 		<set name="icon" val="icon.etc_charm_of_courage_i02" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_freightable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="autouse_type" val="ITEM" />
+		<set name="immediate_effect" val="true" />
+		<skills>
+			<skill id="40386" level="2" /> <!-- Discount XP Recovery Scroll Lv. 2 -->
+		</skills>
 	</item>
 	<item id="96698" name="Elmoreden Tower Scroll of Blessing (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Applies a buff when used. <Buff effect>. All stats +1. P./ M. Atk. +100. P./ M. Def. +100. XP recovery fee -10%. Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->

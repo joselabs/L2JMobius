@@ -49,7 +49,7 @@ public class MDefenseFinalizer implements IStatFunction
 		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
 		if (creature.isPet())
 		{
-			final Pet pet = (Pet) creature;
+			final Pet pet = creature.asPet();
 			baseValue = pet.getPetLevelData().getPetMDef();
 		}
 		baseValue += calcEnchantedItemBonus(creature, stat);
@@ -65,7 +65,7 @@ public class MDefenseFinalizer implements IStatFunction
 		
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			for (int slot : SLOTS)
 			{
 				if (!player.getInventory().isPaperdollSlotEmpty(slot))

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="38700" name="Steel Soldat Estoc" type="Weapon">
-		<!-- <Special Option>. Critical Rate for standard attacks +86. When enchanted to +4 or higher, it has a chance to increase P./ M. Atk., Received Healing, and decrease Skill MP consumption for you and your party members after a critical attack. No Soul Crystal option. Cannot be augmented. -->
+		<!-- <Special properties>. Critical Rate for basic attacks +86. Starting from +4, with a certain chance increases P. Atk., M. Atk. and Received Healing, and decreases Skill MP Consumption for you and your party members on a critical attack. No soul crystal can be inserted. Cannot be augmented. -->
 		<set name="icon" val="icon.weapon_soldat_estoc_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -29,6 +29,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">40</stat>
 		</stats>
+		<skills>
+			<skill id="3010" level="1" /> <!-- Special Property: Focus -->
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="38701" name="Steel Arbalest" type="Weapon">
 		<!-- <Special properties>. P. Accuracy +5. No soul crystal can be inserted. Cannot be augmented. -->
@@ -59,6 +63,9 @@
 			<stat type="pAtkRange">400</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3008" level="1" /> <!-- Special Property: Guidance -->
+		</skills>
 	</item>
 	<item id="38702" name="Steel Flamberge" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +86. No Soul Crystal option. Cannot be augmented. -->
@@ -85,9 +92,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3010" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38703" name="Steel Chakram" type="Weapon">
-		<!-- <Special properties>. Atk. Spd. +13% when HP < 60%. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. Atk. Spd. +13% when HP < 60%. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_chakram_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -112,6 +122,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3034" level="1" /> <!-- Special Property: Rsk. Haste -->
+		</skills>
 	</item>
 	<item id="38704" name="Steel Sword of Valhalla" type="Weapon">
 		<!-- <Special properties>. Casting Spd. +15%. Cannot be augmented. No soul crystal can be inserted. -->
@@ -139,6 +152,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="1" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="38705" name="Steel Spell Breaker" type="Weapon">
 		<!-- <Special properties>. Casting Spd. +15%. Cannot be augmented. No soul crystal can be inserted. -->
@@ -167,6 +183,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="1" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="38706" name="Steel Stormbringer*Ultimate Sword" type="Weapon">
 		<!-- Upgrade options are limited. As with two-handed swords/ blunts and fist weapons, dual swords have a greater increase in P. Atk. when enchanted than one-handed swords. When enchanted to +4 or higher, P. Atk. +166 after a critical attack. -->
@@ -193,6 +212,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3042" level="9" /> <!-- Special Property: Critical Damage -->
+		</skills>
 	</item>
 	<item id="38707" name="Steel Wizard's Tear" type="Weapon">
 		<!-- <Special properties>. Casting Spd. +15%. Cannot be augmented. No soul crystal can be inserted. -->
@@ -220,9 +242,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="1" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="38708" name="Steel Great Axe" type="Weapon">
-		<!-- <Special properties>. With a 27% chance, stuns the target on a critical attack. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. With a 27% chance, stuns the target on a critical attack. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_great_axe_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -238,9 +263,6 @@
 		<set name="weight" val="647" />
 		<set name="material" val="DAMASCUS" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">175</stat>
 			<stat type="mAtk">91</stat>
@@ -250,6 +272,10 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3016" level="5" type="ON_CRITICAL_SKILL" /> <!-- Special Property: Critical Stun -->
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="38709" name="Steel Twilight Knife" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +71. No Soul Crystal option. Cannot be augmented. -->
@@ -278,9 +304,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3011" level="5" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38710" name="Steel Dark Elven Longbow" type="Weapon">
-		<!-- <Special properties>. With a 41% chance, inflicts Bleed on the target on a critical attack. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. With a 41% chance, inflicts Bleed on a critical attack. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_dark_elven_long_bow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -306,6 +335,9 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3021" level="5" type="ON_CRITICAL_SKILL" /> <!-- Special Property: Critical Bleed -->
+		</skills>
 	</item>
 	<item id="38711" name="Steel Innominate Victory" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +68. No Soul Crystal option. Cannot be augmented. -->
@@ -336,6 +368,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">15</stat>
 		</stats>
+		<skills>
+			<skill id="3010" level="5" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38712" name="Steel Military Fleuret" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +68. When enchanted to +4 or higher, it has a chance to increase P./ M. Atk., Received Healing, and decrease Skill MP consumption for you and your party members after a critical attack. No Soul Crystal option. Cannot be augmented. -->
@@ -366,9 +401,13 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">40</stat>
 		</stats>
+		<skills>
+			<skill id="3010" level="5" /> <!-- Special Property: Focus -->
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="38713" name="Steel Hell Hound" type="Weapon">
-		<!-- <Special properties>. Skill MP Consumption -12%. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. Skill MP Consumption -12%. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_hell_hound_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -396,6 +435,9 @@
 			<stat type="pAtkRange">400</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3360" level="1" /> <!-- Special Property: Cheap Shot -->
+		</skills>
 	</item>
 	<item id="38714" name="Steel Great Sword" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +68. No Soul Crystal option. Cannot be augmented. -->
@@ -422,9 +464,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3010" level="5" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38715" name="Steel Arthro Nail" type="Weapon">
-		<!-- <Special properties>. Atk. Spd. +10% when HP < 60%. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. Atk. Spd. +10% when HP < 60%. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_arthro_nail_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -449,9 +494,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3034" level="5" /> <!-- Special Property: Rsk. Haste -->
+		</skills>
 	</item>
 	<item id="38716" name="Steel Elemental Sword" type="Weapon">
-		<!-- <Special Option>. MP Consumption +15% and M. Atk. +153. Additional damage during PvP. Cannot augment or bestow a Soul Crystal option. -->
+		<!-- <Special properties>. M. Skill MP Consumption +15%, M. Atk. +153. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_elemental_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -476,6 +524,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3073" level="1" /> <!-- Special Property: M. Atk. -->
+		</skills>
 	</item>
 	<item id="38717" name="Steel Spiritual Eye" type="Weapon">
 		<!-- <Special properties>. Casting Spd. +15%. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
@@ -504,6 +555,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="2" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="38718" name="Steel Keshanberk*Keshanberk" type="Weapon">
 		<!-- Keshanberk*Keshanberk with limited augmentation options. When a dual sword is enchanted together with a two-handed sword, two-handed blunt, or fist weapon, its P. Atk. increases more than that of a regular one-handed sword. When enchanted to 4 or higher, increases Atk. Spd. by 8%. Inflicts more damage during PvP. -->
@@ -530,6 +584,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3045" level="17" /> <!-- Special Property: Haste -->
+		</skills>
 	</item>
 	<item id="38719" name="Steel Sword of Miracles" type="Weapon">
 		<!-- <Special properties>. Casting Spd. +15%. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
@@ -557,9 +614,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="2" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="38720" name="Steel Halberd" type="Weapon">
-		<!-- <Special properties>. With a 25% chance, stuns the target on a critical attack. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. With a 25% chance, stuns the target on a critical attack. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_halbard_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -575,9 +635,6 @@
 		<set name="weight" val="633" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">213</stat>
 			<stat type="mAtk">107</stat>
@@ -587,6 +644,10 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3070" level="1" type="ON_CRITICAL_SKILL" /> <!-- Special Property: Critical Stun -->
+			<skill id="3552" level="2" /> <!-- Special Property: PvP Damage -->
+		</skills>
 	</item>
 	<item id="38721" name="Steel Bloody Orchid" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +67. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -614,9 +675,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3051" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38722" name="Steel Carnage Bow" type="Weapon">
-		<!-- <Special Option>. In a normal Critical Attack, 35% chance of inflicting Bleed. Additional damage during PvP. Cannot augment or bestow a Soul Crystal option. -->
+		<!-- <Special properties>. With a 35% chance, inflicts Bleed on the target on a critical attack. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_carnium_bow_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -642,9 +706,13 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3053" level="1" type="ON_CRITICAL_SKILL" /> <!-- Special Property: Critical Bleed -->
+			<skill id="3552" level="1" /> <!-- Special Property: PvP Damage -->
+		</skills>
 	</item>
 	<item id="38723" name="Steel White Lightning" type="Weapon">
-		<!-- <Special Option>. Atk. Spd. +6%. Inflicts additional PvP Damage. When enchanted to +4 or higher, it has a chance to increase P./ M. Atk., Received Healing, and decrease Skill MP consumption for you and your party members after a critical attack. No Soul Crystal option. Cannot be augmented. -->
+		<!-- <Special properties>. Atk. Spd. +6%. Deals additional PvP damage. Starting from +4, with a certain chance, increases P. Atk., M. Atk. and Received Healing, and decreases Skill MP Consumption for you and your party members on a critical attack. No soul crystal can be inserted. Cannot be augmented. -->
 		<set name="icon" val="icon.weapon_lightning_blaze_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -672,9 +740,13 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">40</stat>
 		</stats>
+		<skills>
+			<skill id="3068" level="2" /> <!-- Special Property: Haste -->
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="38724" name="Steel Doomchanter" type="Weapon">
-		<!-- <Special properties>. With a 35% chance, inflicts Bleed on the target on a critical attack. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. With a 35% chance, inflicts Bleed on the target on a critical attack. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_doom_singer_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -702,6 +774,10 @@
 			<stat type="pAtkRange">400</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3053" level="1" type="ON_CRITICAL_SKILL" /> <!-- Special Property: Critical Bleed -->
+			<skill id="3552" level="1" /> <!-- Special Property: PvP Damage -->
+		</skills>
 	</item>
 	<item id="38725" name="Steel Divine Pain" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +61. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -732,6 +808,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">15</stat>
 		</stats>
+		<skills>
+			<skill id="3050" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38726" name="Steel Infernal Master" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +61. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -758,6 +837,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3050" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38727" name="Steel Blood Tornado" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +61. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -785,6 +867,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3050" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38728" name="Steel Forgotten Blade" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +84. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -811,9 +896,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38729" name="Steel Basalt Battlehammer" type="Weapon">
-		<!-- <Special properties>. Max HP +25%. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. Max HP +25%. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_basalt_battlehammer_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -838,9 +926,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3013" level="3" /> <!-- Special Property: Health -->
+		</skills>
 	</item>
 	<item id="38730" name="Steel Tallum Blade*Dark Legion's Edge" type="Weapon">
-		<!-- Tallum Blade*Dark Legion's Edge with limited augmentation options. When a dual sword is enchanted together with a two-handed sword, two-handed blunt, or fist weapon, its P. Atk. increases more than that of a regular one-handed sword. When enchanted to 4 or higher, increases Max HP by 15%, Max MP by 20%, and Max CP by 30%. Inflicts more damage during PvP. -->
+		<!-- Upgrade options are limited. When enchanting dual swords, two-handed swords/ blunts, and fists, the P. Atk. bonus is higher than that of one-handed weapons. Starting from +4, Max HP +15%, Max MP +20%, Max CP +30%. Deals additional PvP damage. -->
 		<set name="icon" val="icon.weapon_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -864,6 +955,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3570" level="1" /> <!-- Special Property: Great Health -->
+		</skills>
 	</item>
 	<item id="38731" name="Steel Arcana Mace" type="Weapon">
 		<!-- <Special properties>. Casting Spd. +15%. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
@@ -892,6 +986,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="2" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="38732" name="Steel Saint Spear" type="Weapon">
 		<!-- <Special properties>. Atk. Spd. +7%. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
@@ -910,9 +1007,6 @@
 		<set name="weight" val="600" />
 		<set name="material" val="ADAMANTAITE" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">281</stat>
 			<stat type="mAtk">132</stat>
@@ -922,6 +1016,9 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3601" level="9" /> <!-- Special Property: Haste -->
+		</skills>
 	</item>
 	<item id="38733" name="Steel Angel Slayer" type="Weapon">
 		<!-- <Special properties>. Atk. Spd. +7%. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
@@ -949,6 +1046,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3564" level="1" /> <!-- Special Property: Haste -->
+		</skills>
 	</item>
 	<item id="38734" name="Steel Gram" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +84. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -979,9 +1079,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">15</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38735" name="Steel Laevateinn" type="Weapon">
-		<!-- <Special Option>. Critical Rate for standard attacks +84. Inflicts additional PvP Damage. When enchanted to +4 or higher, it has a chance to increase P./ M. Atk., Received Healing, and decrease Skill MP consumption for you and your party members after a critical attack. No Soul Crystal option. Cannot be augmented. -->
+		<!-- <Special properties>. Critical Rate for basic attacks +84. Deals additional PvP damage. Starting from +4, with a certain chance, increases P. Atk., M. Atk. and Received Healing, and decreases Skill MP Consumption for you and your party members on a critical attack. No soul crystal can be inserted. Cannot be augmented. -->
 		<set name="icon" val="icon.weapon_leavatein_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1009,6 +1112,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">40</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="1" /> <!-- Special Property: Focus -->
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="38736" name="Steel Sarunga" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +88. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -1039,6 +1146,9 @@
 			<stat type="pAtkRange">400</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3567" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38737" name="Steel Heaven's Divider" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +84. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -1065,6 +1175,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38738" name="Steel Demon Splinter" type="Weapon">
 		<!-- <Special Option>. Critical Rate for standard attacks +80. Deals additional PvP damage. No Soul Crystal option. Cannot be augmented. -->
@@ -1092,6 +1205,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3565" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38739" name="Steel Dynasty Phantom" type="Weapon">
 		<!-- <Special properties>. Casting Spd. +15%. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
@@ -1119,9 +1235,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="2" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="38740" name="Steel Dynasty Cudgel" type="Weapon">
-		<!-- <Special properties>. Max HP +25%. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. Max HP +25%. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_dynasty_hammer_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1146,6 +1265,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3013" level="3" /> <!-- Special Property: Health -->
+		</skills>
 	</item>
 	<item id="38741" name="Steel Dynasty Dual Swords" type="Weapon">
 		<!-- Upgrade options are limited. When enchanting dual swords, two-handed swords/ blunts, and fists, the P. Atk. bonus is higher than that of one-handed weapons. Starting from +4, Critical Rate for basic attacks +109, Max HP +10%. Deals additional PvP damage. -->
@@ -1172,9 +1294,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3411" level="1" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38742" name="Steel Dynasty Halberd" type="Weapon">
-		<!-- <Special properties>. With a 48% chance, stuns the target on a critical attack. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. With a 48% chance, stuns the target on a critical attack. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_dynasty_spear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1190,9 +1315,6 @@
 		<set name="weight" val="670" />
 		<set name="material" val="BRONZE" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">333</stat>
 			<stat type="mAtk">151</stat>
@@ -1202,9 +1324,13 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3070" level="4" type="ON_CRITICAL_SKILL" /> <!-- Special Property: Critical Stun -->
+			<skill id="3552" level="2" /> <!-- Special Property: PvP Damage -->
+		</skills>
 	</item>
 	<item id="38743" name="Steel Dynasty Knife" type="Weapon">
-		<!-- <Special Option>. P. Critical Rate +116. Inflicts additional PvP Damage. No Soul Crystal option. Cannot be augmented. -->
+		<!-- <Special properties>. P. Critical Rate +116. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
 		<set name="icon" val="icon.weapon_dynasty_dagger_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1229,6 +1355,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3567" level="2" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38744" name="Steel Dynasty Crossbow" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +116. Inflicts additional PvP Damage. No Soul Crystal option. Cannot be augmented. -->
@@ -1259,6 +1388,9 @@
 			<stat type="pAtkRange">400</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3567" level="2" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38745" name="Steel Dynasty Ancient Sword" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +111. Inflicts additional PvP Damage. No Soul Crystal option. Cannot be augmented. -->
@@ -1289,9 +1421,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">15</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="2" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38746" name="Steel Dynasty Rapier" type="Weapon">
-		<!-- <Special Option>. P. Critical Rate +111. Inflicts additional PvP Damage. When enchanted to +4 or higher, it has a chance to increase P./ M. Atk., Received Healing, and decrease Skill MP consumption for you and your party members after a critical attack. No Soul Crystal option. Cannot be augmented. -->
+		<!-- <Special properties>. P. Critical Rate +111. Deals additional PvP damage. Starting from +4, with a certain chance, increases P. Atk., M. Atk. and Received Healing, and decreases Skill MP Consumption for you and your party members on a critical attack. No soul crystal can be inserted. Cannot be augmented. -->
 		<set name="icon" val="icon.weapon_dynasty_rapier_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rhand" />
@@ -1319,6 +1454,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">40</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="2" /> <!-- Special Property: Focus -->
+			<skill id="3426" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Maximum Ability -->
+		</skills>
 	</item>
 	<item id="38747" name="Steel Dynasty Blade" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +111. Inflicts additional PvP Damage. No Soul Crystal option. Cannot be augmented. -->
@@ -1345,9 +1484,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="3566" level="2" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38748" name="Steel Dynasty Bagh-Nakh" type="Weapon">
-		<!-- <Special properties>. Atk. Spd. +10%. Deals additional PvP damage. No soul crystal can be inserted. Cannot be augmented. -->
+		<!-- <Special properties>. Atk. Spd. +10%. Deals additional PvP damage. Cannot be augmented. No soul crystal can be inserted. -->
 		<set name="icon" val="icon.weapon_dynasty_jamadhr_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lrhand" />
@@ -1372,6 +1514,9 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3564" level="2" /> <!-- Special Property: Haste -->
+		</skills>
 	</item>
 	<item id="38749" name="Steel Dynasty Bow" type="Weapon">
 		<!-- <Special Option>. P. Critical Rate +116. Inflicts additional PvP Damage. No Soul Crystal option. Cannot be augmented. -->
@@ -1400,6 +1545,9 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="3567" level="2" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="38750" name="Uldie's Portrait With No Make-up" type="EtcItem">
 		<!-- A portrait of Urd without any make-up. Always keep it in your inventory to get Urd's buffs. -->
@@ -1429,6 +1577,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="17690" level="1" /> <!-- Rarra's Gift -->
+		</skills>
 	</item>
 	<item id="38753" name="Secret Gift From Uldie" type="EtcItem">
 		<!-- A box with a gift from Team Leader Lara. You can find a very valuable item inside. -->
@@ -1436,6 +1588,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="17689" level="1" /> <!-- Rarra's Luxury Gift -->
+		</skills>
 	</item>
 	<item id="38754" name="+8 Shiny Elemental Shirt Coupon" type="EtcItem">
 		<!-- Talk to a GM to receive +8 Shiny Elemental Shirt. -->
@@ -1466,7 +1622,7 @@
 		</capsuled_items>
 	</item>
 	<item id="38757" name="Blessed High-grade Stone: Enchant R-grade Weapon" type="EtcItem">
-		<!-- Enchant success rate +20%. For R-grade weapons. Only for items enchanted from +3 to +9. Cannot be used with items enchanted to +10 and higher. -->
+		<!-- Enchant success rate +20% for R-grade weapons. Only for items enchanted from +3 to +9. Cannot be used with items enchanted to +10 and higher. -->
 		<set name="icon" val="icon.bless_high_ench_wp_stone_i02" />
 		<set name="weight" val="120" />
 		<set name="is_sellable" val="false" />
@@ -1476,7 +1632,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="17691" level="1" /> <!-- Blessed High-grade Lucky Enchant Stone: Weapon (R-grade) -->
+			<skill id="17691" level="1" /> <!-- Blessed High-grade Stone: Enchant R-grade Weapon -->
 		</skills>
 	</item>
 	<item id="38758" name="Blessed High-grade Stone: Enchant R-grade Armor" type="EtcItem">
@@ -1490,11 +1646,11 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="17692" level="1" /> <!-- Blessed High-grade Lucky Enchant Stone: Armor (R-grade) -->
+			<skill id="17692" level="1" /> <!-- Blessed High-grade Stone: Enchant R-grade Armor -->
 		</skills>
 	</item>
 	<item id="38759" name="Blessed High-grade Stone: Enchant S-grade Weapon" type="EtcItem">
-		<!-- Enchant success rate +20% when using Blessed Scroll: Enchant S-grade Weapon. Only for items enchanted from +3 to +9. -->
+		<!-- Enchant success rate +20% for S-grade weapons. Only for items enchanted from +3 to +9. Cannot be used with items enchanted to +10 and higher. -->
 		<set name="icon" val="icon.bless_high_ench_wp_stone_i01" />
 		<set name="weight" val="120" />
 		<set name="is_sellable" val="false" />
@@ -1504,7 +1660,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="17693" level="1" /> <!-- Blessed High-grade Lucky Enchant Stone: Weapon (S-grade) -->
+			<skill id="17693" level="1" /> <!-- Blessed High-grade Stone: Enchant S-grade Weapon -->
 		</skills>
 	</item>
 	<item id="38760" name="Blessed High-grade Stone: Enchant S-grade Armor" type="EtcItem">
@@ -1518,7 +1674,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="17694" level="1" /> <!-- Blessed High-grade Lucky Enchant Stone: Armor (S-grade) -->
+			<skill id="17694" level="1" /> <!-- Blessed High-grade Stone: Enchant S-grade Armor -->
 		</skills>
 	</item>
 	<item id="38761" name="Destructive Energy 3-unit Pack" type="EtcItem">
@@ -1573,7 +1729,7 @@
 		</capsuled_items>
 	</item>
 	<item id="38765" name="Lara's Key Card Pack" additionalName="Luxury" type="EtcItem">
-		<!-- Double-click to obtain Lara's Key Card and Ultimate Secret Lara's Gift. -->
+		<!-- Double-click to obtain Rarra the Cat's Key Card and Rarra the Cat's Gift (1 pc.). -->
 		<set name="icon" val="icon.etc_pouch_yellow_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1597,12 +1753,12 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="material" val="SILVER" />
-		<skills>
-			<skill id="13656" level="1" /> <!-- La Vie En Rose's Brooch -->
-		</skills>
 		<stats>
 			<stat type="mDef">17</stat>
 		</stats>
+		<skills>
+			<skill id="13656" level="1" /> <!-- La Vie En Rose's Brooch -->
+		</skills>
 	</item>
 	<item id="38767" name="Enhanced Brooch" type="Armor">
 		<!-- Unlocks 3 jewel slots. -->
@@ -1614,15 +1770,15 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="material" val="SILVER" />
-		<skills>
-			<skill id="13657" level="1" /> <!-- La Vie En Rose's Noble Brooch -->
-		</skills>
 		<stats>
 			<stat type="mDef">43</stat>
 		</stats>
+		<skills>
+			<skill id="13657" level="1" /> <!-- La Vie En Rose's Noble Brooch -->
+		</skills>
 	</item>
 	<item id="38768" name="La Vie En Rose's Brooch Lv. 1" type="Armor">
-		<!-- Unlocks 4 jewel slots. Inventory slots +12. <Upgrading>. Can be upgraded to La Vie En Rose's Brooch Lv. 2 through Shadai in Heine. -->
+		<!-- Unlocks 4 jewel slots. Inventory slots +12. <Upgrade>. Can be upgraded to La Vie En Rose's Brooch Lv. 2 through Shadai in Heine. -->
 		<set name="icon" val="icon.bm_brooch_6slot_lavianrose_3" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="brooch" />
@@ -1631,13 +1787,13 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="material" val="SILVER" />
-		<skills>
-			<skill id="13658" level="1" /> <!-- La Vie En Rose's Brilliant Brooch -->
-			<skill id="13661" level="1" /> <!-- La Vie En Rose's Brilliant Brooch -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 		</stats>
+		<skills>
+			<skill id="13661" level="1" /> <!-- La Vie En Rose's Brilliant Brooch -->
+			<skill id="13658" level="1" /> <!-- La Vie En Rose's Brilliant Brooch -->
+		</skills>
 	</item>
 	<item id="38769" name="Test: Jewel Lv.1" additionalName="1" type="Armor">
 		<!-- Test Jewel -->
@@ -1647,6 +1803,9 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<set name="bodypart" val="underwear" />
+		<skills>
+			<skill id="8864" level="2" /> <!-- Talisman of Destruction -->
+		</skills>
 	</item>
 	<item id="38770" name="Test: Jewel Lv.2" additionalName="1" type="Armor">
 		<!-- Test Jewel -->
@@ -1656,6 +1815,9 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<set name="bodypart" val="underwear" />
+		<skills>
+			<skill id="8864" level="3" /> <!-- Talisman of Annihilation -->
+		</skills>
 	</item>
 	<item id="38771" name="Test: Jewel Lv.1" additionalName="2" type="Armor">
 		<!-- Test Jewel -->
@@ -1665,6 +1827,9 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<set name="bodypart" val="underwear" />
+		<skills>
+			<skill id="3281" level="1" /> <!-- Red Talisman - Clarity -->
+		</skills>
 	</item>
 	<item id="38772" name="Test: Jewel Lv.2" additionalName="2" type="Armor">
 		<!-- Test Jewel -->
@@ -1674,6 +1839,9 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<set name="bodypart" val="underwear" />
+		<skills>
+			<skill id="3282" level="1" /> <!-- Red Talisman - Maximum Clarity -->
+		</skills>
 	</item>
 	<item id="38773" name="Test: Jewel Lv.1" additionalName="3" type="Armor">
 		<!-- Test Jewel -->
@@ -1683,6 +1851,9 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<set name="bodypart" val="underwear" />
+		<skills>
+			<skill id="8608" level="1" /> <!-- R-grade Talisman - P. Atk. -->
+		</skills>
 	</item>
 	<item id="38774" name="Test: Jewel Lv.2" additionalName="3" type="Armor">
 		<!-- Test Jewel -->
@@ -1692,6 +1863,9 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<set name="bodypart" val="underwear" />
+		<skills>
+			<skill id="8609" level="1" /> <!-- R90-grade Talisman - P. Atk. -->
+		</skills>
 	</item>
 	<item id="38775" name="Sealed Antharas Shaper Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1708,9 +1882,6 @@
 		<set name="bodypart" val="rhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17742" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">574</stat>
 			<stat type="mAtk">517</stat>
@@ -1720,6 +1891,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17718" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17742" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38776" name="Sealed Antharas Slasher Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1736,9 +1911,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17743" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">798</stat>
 			<stat type="mAtk">690</stat>
@@ -1747,6 +1919,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17719" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17743" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38777" name="Sealed Antharas Thrower Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1763,9 +1939,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17744" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1291</stat>
 			<stat type="mAtk">690</stat>
@@ -1775,6 +1948,10 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17720" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17744" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38778" name="Sealed Antharas Buster Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1792,9 +1969,6 @@
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="17745" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">524</stat>
 			<stat type="mAtk">690</stat>
@@ -1803,6 +1977,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17721" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17745" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38779" name="Sealed Antharas Cutter Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1819,9 +1997,6 @@
 		<set name="bodypart" val="rhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17746" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">656</stat>
 			<stat type="mAtk">517</stat>
@@ -1830,6 +2005,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17722" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17746" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38780" name="Sealed Antharas Stormer Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1846,10 +2025,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="BRONZE" />
-		<skills>
-			<skill id="13115" level="1" /> <!-- Polearm Multi-attack -->
-			<skill id="17747" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">656</stat>
 			<stat type="mAtk">517</stat>
@@ -1859,6 +2034,11 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17723" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17747" level="1" /> <!-- Dandy's Strength -->
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="38781" name="Sealed Antharas Fighter Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1875,9 +2055,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17748" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">798</stat>
 			<stat type="mAtk">517</stat>
@@ -1887,6 +2064,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17724" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17748" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38782" name="Sealed Antharas Avenger Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1903,9 +2084,6 @@
 		<set name="bodypart" val="rhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="FINE_STEEL" />
-		<skills>
-			<skill id="17749" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">656</stat>
 			<stat type="mAtk">517</stat>
@@ -1915,6 +2093,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="17725" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17749" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38783" name="Sealed Antharas Dual Blunt Weapon Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1931,9 +2113,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="FINE_STEEL" />
-		<skills>
-			<skill id="17750" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">798</stat>
 			<stat type="mAtk">517</stat>
@@ -1943,6 +2122,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="17726" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17750" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38784" name="Sealed Antharas Dual Sword Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1959,9 +2142,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17751" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">798</stat>
 			<stat type="mAtk">517</stat>
@@ -1970,6 +2150,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17727" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17751" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38785" name="Sealed Valakas Shaper Borrowed by Toy Knight" type="Weapon">
 		<!-- A Valakas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -1986,9 +2170,6 @@
 		<set name="bodypart" val="rhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17752" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">574</stat>
 			<stat type="mAtk">517</stat>
@@ -1998,6 +2179,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17728" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17752" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38786" name="Sealed Valakas Cutter Borrowed by Toy Knight" type="Weapon">
 		<!-- A Valakas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2014,9 +2199,6 @@
 		<set name="bodypart" val="rhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17753" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">656</stat>
 			<stat type="mAtk">517</stat>
@@ -2025,6 +2207,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17729" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17753" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38787" name="Sealed Valakas Slasher Borrowed by Toy Knight" type="Weapon">
 		<!-- A Valakas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2041,9 +2227,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17754" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">798</stat>
 			<stat type="mAtk">690</stat>
@@ -2052,6 +2235,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17730" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17754" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38788" name="Sealed Valakas Thrower Borrowed by Toy Knight" type="Weapon">
 		<!-- A Valakas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2068,9 +2255,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17755" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1291</stat>
 			<stat type="mAtk">690</stat>
@@ -2080,6 +2264,10 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17731" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17755" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38789" name="Sealed Valakas Buster Borrowed by Toy Knight" type="Weapon">
 		<!-- A Valakas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2097,9 +2285,6 @@
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="17756" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">524</stat>
 			<stat type="mAtk">690</stat>
@@ -2108,6 +2293,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17732" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17756" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38790" name="Sealed Valakas Caster Borrowed by Toy Knight" type="Weapon">
 		<!-- A Valakas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2125,9 +2314,6 @@
 		<set name="weight" val="500" />
 		<set name="material" val="WOOD" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="17757" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">524</stat>
 			<stat type="mAtk">690</stat>
@@ -2137,6 +2323,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="17733" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17757" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38791" name="Sealed Valakas Retributer Borrowed by Toy Knight" type="Weapon">
 		<!-- A Valakas weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2154,9 +2344,6 @@
 		<set name="weight" val="500" />
 		<set name="material" val="WOOD" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="17758" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">638</stat>
 			<stat type="mAtk">759</stat>
@@ -2167,6 +2354,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="17734" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17758" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38792" name="Sealed Lindvior Shaper Borrowed by Toy Knight" type="Weapon">
 		<!-- A Lindvior weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2183,9 +2374,6 @@
 		<set name="bodypart" val="rhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17759" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">574</stat>
 			<stat type="mAtk">517</stat>
@@ -2195,6 +2383,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17735" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17759" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38793" name="Sealed Lindvior Thrower Borrowed by Toy Knight" type="Weapon">
 		<!-- A Lindvior weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2211,9 +2403,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17760" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1291</stat>
 			<stat type="mAtk">690</stat>
@@ -2223,6 +2412,10 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17736" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17760" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38794" name="Sealed Lindvior Slasher Borrowed by Toy Knight" type="Weapon">
 		<!-- A Lindvior weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2239,9 +2432,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17761" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">798</stat>
 			<stat type="mAtk">690</stat>
@@ -2250,6 +2440,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17737" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17761" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38795" name="Sealed Lindvior Caster Borrowed by Toy Knight" type="Weapon">
 		<!-- A Lindvior weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Casting Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2267,9 +2461,6 @@
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="17762" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">524</stat>
 			<stat type="mAtk">690</stat>
@@ -2278,6 +2469,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17738" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17762" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38796" name="Sealed Lindvior Cutter Borrowed by Toy Knight" type="Weapon">
 		<!-- A Lindvior weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2294,9 +2489,6 @@
 		<set name="bodypart" val="rhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17763" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">656</stat>
 			<stat type="mAtk">517</stat>
@@ -2305,6 +2497,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17739" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17763" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38797" name="Sealed Lindvior Guardian Borrowed by Toy Knight" type="Weapon">
 		<!-- A Lindvior weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2321,9 +2517,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17764" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1163</stat>
 			<stat type="mAtk">517</stat>
@@ -2333,6 +2526,10 @@
 			<stat type="pAtkRange">400</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17740" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17764" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38798" name="Sealed Lindvior Dual Dagger Borrowed by Toy Knight" type="Weapon">
 		<!-- A Lindvior weapon lent by Dandy. Can be released with Dandy's Breath from Dandy's Scroll: Release Seal. Can be enchanted with Dragon Scroll: Boost Weapon through Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. <Item skill: Dandy's Strength>. PvP damage +5%, Max HP +15%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2349,9 +2546,6 @@
 		<set name="bodypart" val="lrhand" />
 		<set name="weight" val="500" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17765" level="1" /> <!-- Dandy's Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">656</stat>
 			<stat type="mAtk">517</stat>
@@ -2361,6 +2555,10 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="17741" level="1" /> <!-- Dandy's Breath -->
+			<skill id="17765" level="1" /> <!-- Dandy's Strength -->
+		</skills>
 	</item>
 	<item id="38799" name="Antharas Shaper Borrowed by Toy Knight" type="Weapon">
 		<!-- An Antharas weapon lent by Dandy. Used with No-grade Soulshots/ Spiritshots/ Blessed Spiritshots. Available for 1 h. <Active skill: Assisting Strength>. PvP damage +10%, Max HP/ MP/ CP +20%, Atk. Spd. +15%. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. -->
@@ -2378,9 +2576,6 @@
 		<set name="weight" val="500" />
 		<set name="time" val="60" />
 		<set name="material" val="STEEL" />
-		<skills>
-			<skill id="17766" level="1" /> <!-- Assisting Strength -->
-		</skills>
 		<stats>
 			<stat type="pAtk">673</stat>
 			<stat type="mAtk">1084</stat>
@@ -2390,5 +2585,8 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="randomDamage">5</stat>
 		</stats>
+		<skills>
+			<skill id="17766" level="1" /> <!-- Assisting Strength -->
+		</skills>
 	</item>
 </list>

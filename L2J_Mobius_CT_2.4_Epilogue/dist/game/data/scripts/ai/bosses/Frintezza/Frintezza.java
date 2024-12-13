@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.bosses.Frintezza;
 
@@ -52,9 +56,7 @@ import ai.AbstractNpcAI;
 
 /**
  * Frintezza AI
- * @author Darki699
- * @author SANDMAN L2J_JP(modified)
- * @author JOJO Update by rocknow Updated by L2jOff team
+ * @author Darki699, sandman, JOJO
  */
 public class Frintezza extends AbstractNpcAI
 {
@@ -548,19 +550,19 @@ public class Frintezza extends AbstractNpcAI
 			_frintezza.setInvul(true);
 			_frintezza.disableAllSkills();
 			// _Zone.updateKnownList(frintezza);
-			_demon2 = (Monster) addSpawn(29051, 175876, -88713, -5100, 28205, false, 0);
+			_demon2 = addSpawn(29051, 175876, -88713, -5100, 28205, false, 0).asMonster();
 			_demon2.setImmobilized(true);
 			_demon2.disableAllSkills();
 			// _Zone.updateKnownList(demon2);
-			_demon3 = (Monster) addSpawn(29051, 172608, -88702, -5100, 64817, false, 0);
+			_demon3 = addSpawn(29051, 172608, -88702, -5100, 64817, false, 0).asMonster();
 			_demon3.setImmobilized(true);
 			_demon3.disableAllSkills();
 			// _Zone.updateKnownList(demon3);
-			_demon1 = (Monster) addSpawn(29050, 175833, -87165, -5100, 35048, false, 0);
+			_demon1 = addSpawn(29050, 175833, -87165, -5100, 35048, false, 0).asMonster();
 			_demon1.setImmobilized(true);
 			_demon1.disableAllSkills();
 			// _Zone.updateKnownList(demon1);
-			_demon4 = (Monster) addSpawn(29050, 172634, -87165, -5100, 57730, false, 0);
+			_demon4 = addSpawn(29050, 172634, -87165, -5100, 57730, false, 0).asMonster();
 			_demon4.setImmobilized(true);
 			_demon4.disableAllSkills();
 			// _Zone.updateKnownList(demon4);
@@ -721,19 +723,19 @@ public class Frintezza extends AbstractNpcAI
 		}
 		else if (event.equalsIgnoreCase("camera_22"))
 		{
-			_portrait2 = (Monster) addSpawn(29049, 175876, -88713, -5000, 28205, false, 0);
+			_portrait2 = addSpawn(29049, 175876, -88713, -5000, 28205, false, 0).asMonster();
 			_portrait2.setImmobilized(true);
 			_portrait2.disableAllSkills();
 			// _Zone.updateKnownList(portrait2);
-			_portrait3 = (Monster) addSpawn(29049, 172608, -88702, -5000, 64817, false, 0);
+			_portrait3 = addSpawn(29049, 172608, -88702, -5000, 64817, false, 0).asMonster();
 			_portrait3.setImmobilized(true);
 			_portrait3.disableAllSkills();
 			// _Zone.updateKnownList(portrait3);
-			_portrait1 = (Monster) addSpawn(29048, 175833, -87165, -5000, 35048, false, 0);
+			_portrait1 = addSpawn(29048, 175833, -87165, -5000, 35048, false, 0).asMonster();
 			_portrait1.setImmobilized(true);
 			_portrait1.disableAllSkills();
 			// _Zone.updateKnownList(portrait1);
-			_portrait4 = (Monster) addSpawn(29048, 172634, -87165, -5000, 57730, false, 0);
+			_portrait4 = addSpawn(29048, 172634, -87165, -5000, 57730, false, 0).asMonster();
 			_portrait4.setImmobilized(true);
 			_portrait4.disableAllSkills();
 			// _Zone.updateKnownList(portrait4);
@@ -1272,7 +1274,7 @@ public class Frintezza extends AbstractNpcAI
 			{
 				final Npc mob = addSpawn(npc.getId() + 2, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), false, 0);
 				// mob.setIsRaidMinion(true);
-				_minions.add((Attackable) mob);
+				_minions.add(mob.asAttackable());
 				startQuestTimer("action", 200, mob, null);
 				startQuestTimer("spawn_minion", 18000, npc, null);
 			}

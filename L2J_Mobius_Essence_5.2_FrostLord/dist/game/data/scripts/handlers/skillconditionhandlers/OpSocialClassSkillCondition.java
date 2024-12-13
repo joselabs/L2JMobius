@@ -38,7 +38,7 @@ public class OpSocialClassSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
 		if ((player == null) || (player.getClan() == null))
 		{
 			return false;

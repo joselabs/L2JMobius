@@ -1,38 +1,47 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="49300" toLevel="10" name="Pet Death Penalty">
-		<!-- There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 50% faster than usual. -->
+		<!-- Level 1: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 50% faster than usual. -->
+		<!-- Level 2: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 100% faster than usual. -->
+		<!-- Level 3: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 150% faster than usual. -->
+		<!-- Level 4: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 200% faster than usual. -->
+		<!-- Level 5: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 250% faster than usual. -->
+		<!-- Level 6: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 300% faster than usual. -->
+		<!-- Level 7: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 350% faster than usual. -->
+		<!-- Level 8: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 400% faster than usual. -->
+		<!-- Level 9: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 450% faster than usual. -->
+		<!-- Level 10: There is a penalty applied after pet's death. The pet's satiety gauge is decreased by 500% faster than usual. -->
 		<icon>icon.skll10091</icon>
+		<operateType>A3</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
-		<hitTime>1000</hitTime>
-		<magicLevel>36</magicLevel>
-		<operateType>A3</operateType>
-		<mpConsume>7</mpConsume>
-		<reuseDelay>6000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>400</effectRange>
+		<affectScope>SINGLE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
-		<isDebuff>true</isDebuff>
+		<basicProperty>NONE</basicProperty>
 		<castRange>40</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<effectRange>400</effectRange>
+		<hitTime>0</hitTime>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>36</magicLevel>
+		<mpConsume>7</mpConsume>
+		<reuseDelay>6000</reuseDelay>
 	</skill>
 	<skill id="49301" toLevel="5" name="Rump Stun">
 		<!-- Cannot move due to shock. -->
 		<icon>icon.pet_butt_shock</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<isDebuff>true</isDebuff>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
@@ -43,15 +52,15 @@
 		<!-- Cannot move due to shock. -->
 		<icon>icon.skill10787</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<isDebuff>true</isDebuff>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;11264;11093;1904;1912;13314;13542;30010;30018;30516;461;35016;35045</allowedSkills>
@@ -61,12 +70,12 @@
 	<skill id="49303" toLevel="20" name="Crippling Bite">
 		<icon>icon.pet_bite_crush</icon>
 		<operateType>A1</operateType>
-		<basicProperty>PHYSICAL</basicProperty>
-		<isMagic>0</isMagic>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<isMagic>0</isMagic>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">115</value>
 					<value level="2">446</value>
@@ -100,14 +109,14 @@
 		<!-- Speed -50% -->
 		<icon>icon.pet_feather_trap</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<isDebuff>true</isDebuff>
 		<trait>ANOMALY</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-50</amount>
@@ -119,14 +128,14 @@
 		<!-- Speed -50% -->
 		<icon>icon.pet_feather_trap</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<isDebuff>true</isDebuff>
 		<trait>ANOMALY</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-50</amount>
@@ -142,14 +151,14 @@
 	<skill id="49308" toLevel="5" name="Quick Jump">
 		<icon>icon.pet_fast_dive</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<isDebuff>true</isDebuff>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="KnockBack">
 				<distance>100</distance>

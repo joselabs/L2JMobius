@@ -70,7 +70,7 @@ public class CrumaTower extends AbstractNpcAI
 	{
 		try
 		{
-			final Npc npc = (Npc) event.getTarget();
+			final Npc npc = event.getTarget().asNpc();
 			final int[] location = npc.getParameters().getIntArray("teleport", ";");
 			event.getAttacker().teleToLocation(location[0], location[1], location[2]);
 		}

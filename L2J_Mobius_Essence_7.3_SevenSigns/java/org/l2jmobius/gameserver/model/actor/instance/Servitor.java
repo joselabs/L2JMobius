@@ -530,6 +530,12 @@ public class Servitor extends Summon implements Runnable
 	}
 	
 	@Override
+	public Servitor asServitor()
+	{
+		return this;
+	}
+	
+	@Override
 	public void run()
 	{
 		final int usedtime = 5000;

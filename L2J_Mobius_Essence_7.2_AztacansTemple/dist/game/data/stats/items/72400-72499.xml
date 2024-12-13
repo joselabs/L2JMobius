@@ -247,7 +247,7 @@
 		</capsuled_items>
 	</item>
 	<item id="72422" name="Zenith Coin (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><On adding to a collection></font> <font color=eeaa22>Zenith Coin (1 pc.)</font> received Collection effect <font color=bbaa88><Reward acquisition></font> This coin can be exchanged for a reward of your choice. -->
+		<!-- <font color=bbaa88><On adding to a collection></font>. <font color=eeaa22>Zenith Coin (1 pc.)</font> received. Collection effect. <font color=bbaa88><Reward acquisition></font>. This coin can be exchanged for a reward of your choice. -->
 		<set name="icon" val="BranchIcon.icon.g_ev_l2coin_ncw_00" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -256,7 +256,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="72423" name="Gorezones' Luck Rune" additionalName="Sealed" type="EtcItem">
-		<!-- A personal rune gifted on occasion of the first A-grade weapon enchantment up to +10. <font color=bbaa88><Property></font> Enchant success rate <font color=eeaa22>+1%</font> when enchanting any item with weapon enchant scrolls Enchant success rate <font color=eeaa22>+1%</font> when enchanting any item with armor enchant scrolls -->
+		<!-- A personal rune gifted on occasion of the first A-grade weapon enchantment up to +10. <font color=bbaa88><Property></font>. Enchant success rate <font color=eeaa22>+1%</font> when enchanting any item with weapon enchant scrolls. Enchant success rate <font color=eeaa22>+1%</font> when enchanting any item with armor enchant scrolls -->
 		<set name="icon" val="BranchSys3.icon1.g_rune_of_half_power" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -265,9 +265,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59849" level="1" /> <!-- Gorezones' Luck Rune -->
+		</skills>
 	</item>
 	<item id="72424" name="Death Knight's Rune (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- A rune given to commemorate the Death Knight update anniversary. <font color=bbaa88><Effect></font> Acquired XP/ SP +30% All stats +1 Max HP +300 P. Def. +100 M. Def. +100 <font color=eeaa22>Sayha's Grace sustention</font> Does not work on servitors. Boosts stats when in inventory. -->
+		<!-- A rune given to commemorate the Death Knight update anniversary. <font color=bbaa88><Effect></font>. Acquired XP/ SP +30%. All stats +1. Max HP +300. P. Def. +100. M. Def. +100. <font color=eeaa22>Sayha's Grace sustention</font>. Does not work on servitors. Boosts stats when in inventory. -->
 		<set name="icon" val="icon.skill30980" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -276,6 +281,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59850" level="1" /> <!-- Growth Support -->
+		</skills>
 	</item>
 	<item id="72406" name="Update Memento Supply Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->

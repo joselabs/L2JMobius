@@ -203,7 +203,7 @@ public class AdminClan implements IAdminCommandHandler
 				activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
 				return null;
 			}
-			player = targetObj.getActingPlayer();
+			player = targetObj.asPlayer();
 		}
 		return player;
 	}

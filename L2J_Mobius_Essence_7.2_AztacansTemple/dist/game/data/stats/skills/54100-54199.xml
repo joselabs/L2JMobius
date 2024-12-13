@@ -1,20 +1,20 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="54100" toLevel="1" name="Sayha's Shield">
 		<!-- For 20 min., P. Def. +300. -->
 		<icon>icon.skill1040</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>PD_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>300</amount>
@@ -25,18 +25,18 @@
 	<skill id="54101" toLevel="1" name="Sayha's Magic Barrier">
 		<!-- For 20 min., M. Def. +350. -->
 		<icon>icon.skill1036</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>MD_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>300</amount>
@@ -47,25 +47,36 @@
 	<skill id="54102" toLevel="1" name="White Guardian Transformation">
 		<!-- Duration: 20 min. Max HP +15%. Max MP +15%. P. Atk. +3%. M. Atk. +3%. P. Def. +3%. M. Def. +3%. Atk. Spd. +5%. P. Accuracy +2. M. Accuracy +2. M. Skill Critical Rate +20. P. Skill Critical Damage +200. Speed +5 -->
 		<icon>icon.white_knight_suit</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CHANGEBODY</abnormalType>
 		<abnormalVisualEffect>AVE_WHITE_KNIGHT</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>100</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>80</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<hitTime>3500</hitTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>3031</itemConsumeId>
-		<itemConsumeCount>100</itemConsumeCount>
+		<conditions>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>1800</skillId> <!-- Transformation: Pirate -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>1801</skillId> <!-- Dark Assassin Transformation -->
+			</condition>
+			<condition name="OpNotAffectedBySkill">
+				<skillId>1802</skillId> <!-- White Assassin Transformation -->
+			</condition>
+		</conditions>
 		<effects>
 			<effect name="MaxHp">
 				<amount>15</amount>
@@ -83,11 +94,11 @@
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -120,18 +131,18 @@
 	<skill id="54103" toLevel="1" name="Sayha's Decrease Weight">
 		<!-- For 20 min., weight limit +9000. -->
 		<icon>icon.skill1257</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>DECREASE_WEIGHT_PENALTY</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="WeightPenalty">
 				<amount>9000</amount>
@@ -141,18 +152,18 @@
 	<skill id="54104" toLevel="1" name="Sayha's Berserker Spirit">
 		<!-- For 20 min., Max HP/ MP -15%, P. Atk. +10%, M. Atk. +20%, Atk. Spd. +8%, Casting Spd. +8%, Speed +8. -->
 		<icon>icon.skill1062</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>BERSERKER</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MaxHp">
 				<amount>-15</amount>
@@ -162,11 +173,11 @@
 				<amount>-15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -187,18 +198,18 @@
 	<skill id="54105" toLevel="1" name="Sayha's Wind Walk">
 		<!-- For 20 min., Speed +33. -->
 		<icon>icon.skill1204</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>SPEED_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="Speed">
 				<amount>33</amount>
@@ -209,20 +220,20 @@
 	<skill id="54106" toLevel="1" name="Sayha's Might">
 		<!-- For 20 min., P. Atk. +230. -->
 		<icon>icon.skill1068</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>PA_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>230</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -231,18 +242,18 @@
 	<skill id="54108" toLevel="1" name="Sayha's Focus">
 		<!-- For 20 min., P. Critical Rate +40. -->
 		<icon>icon.skill1077</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CRITICAL_PROB_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="CriticalRate">
 				<amount>40</amount>
@@ -253,18 +264,18 @@
 	<skill id="54109" toLevel="1" name="Sayha's Haste">
 		<!-- For 20 min., Atk. Spd. +33%. -->
 		<icon>icon.skill1086</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>ATTACK_TIME_DOWN</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>33</amount>
@@ -275,18 +286,18 @@
 	<skill id="54110" toLevel="1" name="Sayha's Death Whisper">
 		<!-- For 20 min., P. Critical Damage +35%. -->
 		<icon>icon.skill1242</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CRITICAL_DMG_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="CriticalDamage">
 				<amount>35</amount>
@@ -297,20 +308,20 @@
 	<skill id="54111" toLevel="1" name="Sayha's Empower">
 		<!-- For 20 min., M. Atk. +300. -->
 		<icon>icon.skill1059</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>MA_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>300</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -319,18 +330,18 @@
 	<skill id="54112" toLevel="1" name="Sayha's Clarity">
 		<!-- For 20 min., P. Skill/ Song/ Dance MP Consumption -20%, M. Skill MP Consumption -10%. -->
 		<icon>icon.skill1397</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CHEAP_MAGIC</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MagicMpCost">
 				<amount>-20</amount>
@@ -341,18 +352,18 @@
 	<skill id="54113" toLevel="1" name="Sayha's Wild Magic">
 		<!-- For 20 min., M. Skill Critical Rate +20. -->
 		<icon>icon.skill1303</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>MAGIC_CRITICAL_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MagicCriticalRate">
 				<amount>20</amount>
@@ -363,18 +374,18 @@
 	<skill id="54114" toLevel="1" name="Sayha's Acumen">
 		<!-- For 20 min., Casting Spd. +30%. -->
 		<icon>icon.skill1085</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CASTING_TIME_DOWN</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MagicalAttackSpeed">
 				<amount>30</amount>
@@ -385,18 +396,18 @@
 	<skill id="54115" toLevel="1" name="Sayha's Concentration">
 		<!-- For 20 min., Casting Interruption Rate -53%. -->
 		<icon>icon.skill1078</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>CANCEL_PROB_DOWN</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="ReduceCancel">
 				<amount>-53</amount>
@@ -407,18 +418,18 @@
 	<skill id="54116" toLevel="1" name="Sayha's Victory">
 		<!-- For 20 min., Max HP/ MP/ CP +300, P./ M. Atk. +200, Atk. Spd./ Casting Spd. +60, P. Critical Rate/ M. Skill Critical Rate +20, P. Critical Damage/ M. Skill Critical Damage +10%. -->
 		<icon>icon.skill5074</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MaxHp">
 				<amount>300</amount>
@@ -432,11 +443,11 @@
 				<amount>300</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>200</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>200</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -469,18 +480,18 @@
 	<skill id="54117" toLevel="1" name="Sayha's Recover HP">
 		<!-- For 20 min., recovers HP. -->
 		<icon>icon.skill0211</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>HP_REGEN_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="HpRegen">
 				<amount>1.1</amount> <!-- TODO: Correct value -->
@@ -491,18 +502,18 @@
 	<skill id="54118" toLevel="1" name="Sayha's MP Recovery">
 		<!-- For 20 min., recovers MP. The Sayha's Buff Scroll cannot be used if the buff is active. -->
 		<icon>icon.skill0213</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>MP_REGEN_UP</abnormalType>
-		<effectPoint>100</effectPoint>
-		<hitTime>1800</hitTime>
-		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>2000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MpRegen">
 				<amount>1.1</amount> <!-- TODO: Correct value -->
@@ -514,23 +525,23 @@
 		<!-- For 3 h., HP/ MP Recovery Rate +20%, P. Accuracy +4, P./ M. Evasion +4, PvE damage +15%, Atk. Spd./ Casting Spd. +10%, P. Critical Rate/ M. Skill Critical Rate +15%, P. Critical Damage/ M. Skill Critical Damage +15%. The effect remains after death. -->
 		<icon>icon.fish_stew_residence_cha</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>60000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<reuseDelay>60000</reuseDelay>
 	</skill>
 	<skill id="54120" toLevel="1" name="Adventurer's Chest: High Priest Transformation">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>91828</itemConsumeId> <!-- Adventurer's Chest: High Priest Transformation -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -553,17 +564,17 @@
 	<skill id="54121" toLevel="1" name="Adventurer's Chest: Valkyrie Transformation">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>91829</itemConsumeId> <!-- Adventurer's Chest: Valkyrie Transformation -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -587,14 +598,15 @@
 		<!-- For 20 min., Fire Attack +80. Cooldown: 1 min. -->
 		<icon>icon.etc_fire_potion_i00</icon>
 		<operateType>A2</operateType>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>1200</abnormalTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic>
-		<stayAfterDeath>true</stayAfterDeath>
-		<reuseDelay>60000</reuseDelay>
 		<targetType>SELF</targetType>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>ATTRIBUTE_POTION</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<isMagic>4</isMagic>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="ElementalSpiritAttack">
 				<amount>80</amount>
@@ -606,14 +618,15 @@
 		<!-- For 20 min., Water Attack +80. Cooldown: 1 min. -->
 		<icon>icon.etc_water_potion_i00</icon>
 		<operateType>A2</operateType>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>1200</abnormalTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic>
-		<stayAfterDeath>true</stayAfterDeath>
-		<reuseDelay>60000</reuseDelay>
 		<targetType>SELF</targetType>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>ATTRIBUTE_POTION</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<isMagic>4</isMagic>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="ElementalSpiritAttack">
 				<amount>80</amount>
@@ -625,14 +638,15 @@
 		<!-- For 20 min., Wind Attack +80. Cooldown: 1 min. -->
 		<icon>icon.etc_wind_potion_i00</icon>
 		<operateType>A2</operateType>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>1200</abnormalTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic>
-		<stayAfterDeath>true</stayAfterDeath>
-		<reuseDelay>60000</reuseDelay>
 		<targetType>SELF</targetType>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>ATTRIBUTE_POTION</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<isMagic>4</isMagic>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="ElementalSpiritAttack">
 				<amount>80</amount>
@@ -644,14 +658,15 @@
 		<!-- For 20 min., Earth Attack +80. Cooldown: 1 min. -->
 		<icon>icon.etc_earth_potion_i00</icon>
 		<operateType>A2</operateType>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>1200</abnormalTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic>
-		<stayAfterDeath>true</stayAfterDeath>
-		<reuseDelay>60000</reuseDelay>
 		<targetType>SELF</targetType>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>ATTRIBUTE_POTION</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<isMagic>4</isMagic>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="ElementalSpiritAttack">
 				<amount>80</amount>
@@ -661,6 +676,12 @@
 	</skill>
 	<skill id="54126" toLevel="3" name="Sayha's Grace Box">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
@@ -668,15 +689,9 @@
 			<value level="2">91834</value> <!-- Sayha's Grace Box -->
 			<value level="3">92394</value> <!-- Sayha's Grace Kit -->
 		</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>

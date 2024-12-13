@@ -80,7 +80,7 @@ public class Range implements IAffectScopeHandler
 		{
 			if (creature.isPlayable())
 			{
-				final Location worldPosition = creature.getActingPlayer().getCurrentSkillWorldPosition();
+				final Location worldPosition = creature.asPlayer().getCurrentSkillWorldPosition();
 				if (worldPosition != null)
 				{
 					World.getInstance().forEachVisibleObjectInRange(creature, Creature.class, (int) (affectRange + creature.calculateDistance2D(worldPosition)), c ->
@@ -100,7 +100,7 @@ public class Range implements IAffectScopeHandler
 		else
 		{
 			// Add object of origin since it is skipped in the forEachVisibleObjectInRange method.
-			if (target.isCreature() && filter.test((Creature) target))
+			if (target.isCreature() && filter.test(target.asCreature()))
 			{
 				action.accept(target);
 			}

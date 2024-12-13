@@ -149,13 +149,13 @@ public class Trap extends Npc
 		if (creature.isPlayer())
 		{
 			// observers can't see trap
-			if (((Player) creature).inObserverMode())
+			if (creature.asPlayer().inObserverMode())
 			{
 				return false;
 			}
 			
 			// olympiad competitors can't see trap
-			if (_owner.isInOlympiadMode() && ((Player) creature).isInOlympiadMode() && (((Player) creature).getOlympiadSide() != _owner.getOlympiadSide()))
+			if (_owner.isInOlympiadMode() && creature.asPlayer().isInOlympiadMode() && (creature.asPlayer().getOlympiadSide() != _owner.getOlympiadSide()))
 			{
 				return false;
 			}
@@ -187,19 +187,16 @@ public class Trap extends Npc
 		}
 		
 		// observers
-		if (target.isPlayer() && target.getActingPlayer().inObserverMode())
+		final Player player = target.asPlayer();
+		if (target.isPlayer() && player.inObserverMode())
 		{
 			return false;
 		}
 		
 		// olympiad own team and their summons not attacked
-		if ((_owner != null) && _owner.isInOlympiadMode())
+		if ((_owner != null) && _owner.isInOlympiadMode() && (player != null) && player.isInOlympiadMode() && (player.getOlympiadSide() == _owner.getOlympiadSide()))
 		{
-			final Player player = target.getActingPlayer();
-			if ((player != null) && player.isInOlympiadMode() && (player.getOlympiadSide() == _owner.getOlympiadSide()))
-			{
-				return false;
-			}
+			return false;
 		}
 		
 		if (_isInArena)
@@ -215,7 +212,6 @@ public class Trap extends Npc
 				return true;
 			}
 			
-			final Player player = target.getActingPlayer();
 			if ((player == null) || ((player.getPvpFlag() == 0) && (player.getKarma() == 0)))
 			{
 				return false;
@@ -236,7 +232,7 @@ public class Trap extends Npc
 	}
 	
 	@Override
-	public Player getActingPlayer()
+	public Player asPlayer()
 	{
 		return _owner;
 	}
@@ -321,7 +317,7 @@ public class Trap extends Npc
 			return;
 		}
 		
-		if (_owner.isInOlympiadMode() && target.isPlayer() && ((Player) target).isInOlympiadMode() && (((Player) target).getOlympiadGameId() == _owner.getOlympiadGameId()))
+		if (_owner.isInOlympiadMode() && target.isPlayer() && target.asPlayer().isInOlympiadMode() && (target.asPlayer().getOlympiadGameId() == _owner.getOlympiadGameId()))
 		{
 			Olympiad.getInstance().notifyCompetitorDamage(getOwner(), damage, _owner.getOlympiadGameId());
 		}
@@ -351,7 +347,7 @@ public class Trap extends Npc
 		{
 			if (detector.isPlayable())
 			{
-				sendInfo(detector.getActingPlayer());
+				sendInfo(detector.asPlayer());
 			}
 			return;
 		}
@@ -371,7 +367,7 @@ public class Trap extends Npc
 		
 		if (detector.isPlayable())
 		{
-			sendInfo(detector.getActingPlayer());
+			sendInfo(detector.asPlayer());
 		}
 	}
 	

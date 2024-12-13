@@ -83,6 +83,10 @@ public class DispelBySlot extends AbstractEffect
 			if ((transformToDispel != null) && ((transformToDispel.intValue() == effected.getTransformationId()) || (transformToDispel.intValue() < 0)))
 			{
 				effected.stopTransformation(true);
+				if (effected.isPlayer())
+				{
+					effected.asPlayer().sendSkillList();
+				}
 			}
 			
 			effected.getEffectList().stopEffects(info ->

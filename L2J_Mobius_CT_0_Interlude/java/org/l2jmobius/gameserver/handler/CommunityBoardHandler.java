@@ -167,6 +167,21 @@ public class CommunityBoardHandler implements IHandler<IParseBoardHandler, Strin
 				cmd = "_bbsclan";
 				break;
 			}
+			case "Mail":
+			{
+				cmd = "_bbsmail";
+				break;
+			}
+			case "Search":
+			{
+				cmd = "_bbsclan";
+				break;
+			}
+			case "CMail":
+			{
+				cmd = "_bbsclan";
+				break;
+			}
 			default:
 			{
 				separateAndSend("<html><body><br><br><center>The command: " + url + " is not implemented yet.</center><br><br></body></html>", player);

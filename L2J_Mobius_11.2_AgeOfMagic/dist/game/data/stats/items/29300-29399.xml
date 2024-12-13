@@ -10,6 +10,7 @@
 		<set name="weight" val="5" />
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="7" />
 	</item>
 	<item id="29301" name="Agathion Gowther Charm" additionalName="Lv. 3" type="Armor">
 		<!-- Contains the power of Agathion Gowther. Equipping the charm in the main slot summons the agathion and enables both primary and secondary skills. Equipping in an additional slot enables only secondary skills. Can be enchanted up to +7 with Seven Deadly Sins Agathion's Book of Growth. -->
@@ -21,6 +22,7 @@
 		<set name="weight" val="5" />
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="7" />
 	</item>
 	<item id="29302" name="Escanor Agathion Charm" additionalName="Lv. 3" type="Armor">
 		<!-- Contains the power of Agathion Escanor. Equipping the charm in the main slot summons the agathion and enables both primary and secondary skills. Equipping in an additional slot enables only secondary skills. Can be enchanted up to +7 with Seven Deadly Sins Agathion's Book of Growth. -->
@@ -32,6 +34,7 @@
 		<set name="weight" val="5" />
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="7" />
 	</item>
 	<item id="29303" name="Seven Deadly Sins Agathion's Book of Growth" type="EtcItem">
 		<!-- Book of Growth for the Seven Deadly Sins Agathion Charms. The enchant value remains the same even if enchantment fails. -->
@@ -262,9 +265,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="bodypart" val="rhand" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1188</stat>
 			<stat type="mAtk">517</stat>
@@ -273,9 +273,12 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="29316" name="Seven Deadly Sins: Antharas Dual Blunt Weapon Fragment" additionalName="1-hour" type="Weapon">
-		<!-- Take this fragment along with Dragon Claw Coupon to Snake to exchange for High-grade Antharas Dual Blunt Weapon of Seven Deadly Sins (1-hour). Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, modified, augmented, or assigned an attribute. -->
+		<!-- Take this fragment along with Dragon Claw Coupon to Snake to exchange for High-grade Antharas Dual Blunt Weapons of Seven Deadly Sins (1-hour). Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, augmented or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_antaras_dual_blunt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="crystal_type" val="R" />
@@ -724,7 +727,7 @@
 		</stats>
 	</item>
 	<item id="29335" name="High-grade Antharas Buster of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Antharas Buster created to celebrate the collaboration with Seven Deadly Sins. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Antharas' Lash skills. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, modified, augmented, or assigned an attribute. -->
+		<!-- Antharas Buster created to celebrate the collaboration with Seven Deadly Sins. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +10%, M. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Antharas' Lash skills. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, modified, augmented, or assigned an attribute. -->
 		<set name="icon" val="icon.weapon_antaras_onehand_magic_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -826,9 +829,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="bodypart" val="rhand" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -837,6 +837,9 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="29340" name="High-grade Antharas Dual Blunt Weapon of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
 		<!-- Antharas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables the Dignity and Antharas' Lash skills. Cannot be used in the Olympiad or the Ceremony of Chaos. The item's appearance cannot be modified. Cannot be enchanted, crystallized, augmented, or assigned an attribute. -->
@@ -884,7 +887,7 @@
 		</stats>
 	</item>
 	<item id="29342" name="High-grade Valakas Shaper of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_valrakas_dagger_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DAGGER" />
@@ -908,7 +911,7 @@
 		</stats>
 	</item>
 	<item id="29343" name="High-grade Valakas Cutter of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_valrakas_onehand_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -931,7 +934,7 @@
 		</stats>
 	</item>
 	<item id="29344" name="High-grade Valakas Slasher of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_valrakas_twohand_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -954,7 +957,7 @@
 		</stats>
 	</item>
 	<item id="29345" name="High-grade Valakas Thrower of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_valrakas_bow_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
@@ -978,7 +981,7 @@
 		</stats>
 	</item>
 	<item id="29346" name="High-grade Valakas Buster of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +100, M. Skill Critical Damage +30%, damage to dragons +100%. Allows to use Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +10%, M. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Valakas' Bite skills. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, modified, augmented, or assigned an attribute. -->
 		<set name="icon" val="icon.weapon_valrakas_onehand_magic_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -1001,7 +1004,7 @@
 		</stats>
 	</item>
 	<item id="29347" name="High-grade Valakas Caster of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +100, M. Skill Critical Damage +30%, damage to dragons +100%. Allows to use Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +10%, M. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Valakas' Bite skills. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, modified, augmented, or assigned an attribute. -->
 		<set name="icon" val="icon.weapon_valrakas_onehand_magic_blunt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1026,7 +1029,7 @@
 		</stats>
 	</item>
 	<item id="29348" name="High-grade Valakas Retributer of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +100, M. Skill Critical Damage +30%, damage to dragons +100%. Allows to use Dignity and Valakas' Bite. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Valakas' weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +10%, M. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Valakas' Bite skills. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, modified, augmented, or assigned an attribute. -->
 		<set name="icon" val="icon.weapon_valrakas_twohand_magic_blunt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1051,7 +1054,7 @@
 		</stats>
 	</item>
 	<item id="29349" name="High-grade Lindvior Shaper of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Lindvior's Wingbeat. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Lindvior's Duplicity. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_lind_dagger_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DAGGER" />
@@ -1075,7 +1078,7 @@
 		</stats>
 	</item>
 	<item id="29350" name="High-grade Lindvior Thrower of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Lindvior's Wingbeat. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Lindvior's Duplicity. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_lind_bow_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BOW" />
@@ -1099,7 +1102,7 @@
 		</stats>
 	</item>
 	<item id="29351" name="High-grade Lindvior Slasher of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Lindvior's Wingbeat. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Lindvior's Duplicity. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_lind_twohand_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -1122,7 +1125,7 @@
 		</stats>
 	</item>
 	<item id="29352" name="High-grade Lindvior Caster of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- A Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +100, M. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Lindvior's Wingbeat skills. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, modified, augmented, or assigned an attribute. -->
+		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Casting Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +10%, M. Skill Critical Damage +30%, damage to dragons +100%. Enables the Dignity and Lindvior's Wingbeat skills. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be enchanted, crystallized, modified, augmented, or assigned an attribute. -->
 		<set name="icon" val="icon.weapon_lind_onehand_magic_blunt_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
@@ -1146,7 +1149,7 @@
 		</stats>
 	</item>
 	<item id="29353" name="High-grade Lindvior Cutter of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Lindvior's Wingbeat. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Lindvior's Duplicity. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_lind_onehand_sword_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
@@ -1169,7 +1172,7 @@
 		</stats>
 	</item>
 	<item id="29354" name="High-grade Lindvior Guardian of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Lindvior's Wingbeat. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Lindvior's Duplicity. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_lind_crossbow_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="crystal_type" val="R" />
@@ -1194,7 +1197,7 @@
 		</stats>
 	</item>
 	<item id="29355" name="High-grade Lindvior Dual Daggers of Seven Deadly Sins" additionalName="1-hour" type="Weapon">
-		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP Damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Allows to use Dignity and Lindvior's Wingbeat. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be modified, crystallized, enchanted, or assigned with attributes. -->
+		<!-- Lindvior's weapon made in cooperation with the Seven Deadly Sins squad. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30, P. Skill Critical Damage +30, damage to dragons +100%. Enables Dignity and Lindvior's Duplicity. Cannot be used in the Olympiad or the Ceremony of Chaos. Cannot be crystallized, enchanted or imbued with an attribute. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.weapon_lind_dual_dagger_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="crystal_type" val="R" />
@@ -1231,7 +1234,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29357" name="Package: Legendary Knights Card - Seven Deadly Sins (2-hour)" type="EtcItem">
-		<!-- Pack containing Legendary Knights Card: Seven Deadly Sins (2-hr). -->
+		<!-- Double-click to obtain Legendary Knights Card - Seven Deadly Sins (2-hour). -->
 		<set name="icon" val="BranchIcon.icon.icon_card_sin_meli_legend" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1300,7 +1303,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29363" name="Hero's Cheering Cube" type="EtcItem">
-		<!-- Double-click to obtain Freya's Art of Seduction - XP (2 pcs.). When used 10 times, you will get Dandy's Home Run Ball (5 pcs.), for 20 times - Vitality Sustaining Potion (30-min.) (10 pcs.), for 30 times - Elk Bracelet (7-day). -->
+		<!-- Double-click to obtain Freya's Art of Seduction - XP (2 pcs.). When used 10 times, you will get Dandy's Home Run Ball (5 pcs.), for 20 times - Vitality Maintaining Potion (30-min.) (10 pcs.), and for 30 times - Elk Bracelet (7-day). -->
 		<set name="icon" val="icon.bm_balthus_cube" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
@@ -1333,7 +1336,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="29366" name="Hero's Support Cube" type="EtcItem">
-		<!-- Double-click to obtain the following: Enhanced Brooch, Lv. 3 Ruby/ Sapphire/ Emerald/ Vital Stone (30-day), Hero's Recovery Potion (100 pcs.), Returning Hero's Vitality Replenishing Juice (10 pcs.). Required level: 99+. -->
+		<!-- Double-click to obtain the following: Enhanced Brooch, Lv. 3 Ruby/ Sapphire/ Emerald/ Vital Sеone (30-day), Hero's Recovery Potion (100 pcs.), Returning Hero's Vitality Replenishing Juice (10 pcs.). Required level: 99+. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1538,7 +1541,7 @@
 		</skills>
 	</item>
 	<item id="29380" name="Peeves' Blue Potion" additionalName="1-hour" type="EtcItem">
-		<!-- When used, for 1 h. Acquired XP/ SP when fishing +50%. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- For 1 h., acquired XP/ SP while fishing +50%. Can be used with all baits. Effects of various potions and Master Fisherman's Blessing stack. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -1554,7 +1557,7 @@
 		</skills>
 	</item>
 	<item id="29381" name="Peeves' Blue Potion" additionalName="2-hour" type="EtcItem">
-		<!-- When used, for 2 h. Acquired XP/ SP when fishing +50%. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- For 2 h., acquired XP/ SP while fishing +50%. Applied to all baits. Effects of several potions and Master Fisherman's Blessing stack. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="default_action" val="SKILL_REDUCE" />
@@ -1571,7 +1574,7 @@
 		</skills>
 	</item>
 	<item id="29382" name="Peeves' Blue Potion" additionalName="4-hour" type="EtcItem">
-		<!-- When used, for 4 h. Acquired XP/ SP when fishing +50%. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- For 4 h., acquired XP/ SP while fishing +50%. Applied to all baits. Effects of several potions and Master Fisherman's Blessing stack. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -1587,7 +1590,7 @@
 		</skills>
 	</item>
 	<item id="29383" name="Peeves' Blue Potion" additionalName="8-hour" type="EtcItem">
-		<!-- When used, for 8 h. Acquired XP/ SP when fishing +50%. Applied to all bait. Can be stacked with Angler's Blessing -->
+		<!-- For 8 h., acquired XP/ SP while fishing +50%. Applied to all baits. Effects of several potions and Master Fisherman's Blessing stack. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -1758,7 +1761,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29395" name="Water Spirit's Gift" type="EtcItem">
-		<!-- Double-click to get 1 random item. -->
+		<!-- Double-click to obtain a random item. -->
 		<set name="icon" val="icon.event_oriental_park_i00" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -1766,7 +1769,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29396" name="Attendance Rare Accessory Pack" type="EtcItem">
-		<!-- Double-click to obtain for 7 days Blessed Antharas' Earring, Blessed Valakas' Necklace, Tauti's Ring, Earth Wyrm Heart Ring, Blessed Zaken's Earring, Ruler's Authority Belt. -->
+		<!-- Double-click to obtain the following 7-day items: Blessed Antharas' Earring, Blessed Valakas' Necklace, Tauti's Ring, Earth Wyrm's Heart Ring, Blessed Zaken's Earring, Ruler's Authority Belt. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i00" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="material" val="PAPER" />
@@ -1781,7 +1784,7 @@
 			<item id="37733" min="1" max="1" chance="100" /> <!-- Blessed Valakas' Necklace - 7-day -->
 			<item id="37734" min="1" max="1" chance="100" /> <!-- Tauti's Ring - 7-day -->
 			<item id="37735" min="1" max="1" chance="100" /> <!-- Earth Wyrm's Heart Ring - 7-day -->
-			<item id="37736" min="1" max="1" chance="100" /> <!-- Blessed Zaken's Earring - 7-day -->
+			<item id="37736" min="1" max="1" chance="100" /> <!-- Immortal Zaken's Earring - 7-day -->
 			<item id="37737" min="1" max="1" chance="100" /> <!-- Ruler's Authority - 7-day -->
 		</capsuled_items>
 	</item>
@@ -1794,7 +1797,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29398" name="Ancient Relic Box" type="EtcItem">
-		<!-- Double-click to obtain one of the following items: Sayha's Talisman Pack Lv. 7-8, Noble Knight's/ Wizard's/ Warrior's Circlet, Kaliel's Energy of Longing, Ultimate Jewelry Box Lv. 3-4, Noble Circlet Upgrade Stone, Dimensional Bracelet Pack Lv. 6 (CHA +5/ Basic), Freya's Bloody/ Dark Rune (30-day) Pack, Starlight Jar, Low-grade Zodiac Agathion Box, Dark/ Bloody Eternal Enhancement Stone, Lv. 5 Legendary CHA Dye Pack, Lv. 5 Legendary Dye Pack, Top-grade Spirit Stone, Giant's Scroll: Enchant R-grade Weapon, Dimensional Bracelet Enhancement Stone Pack, Superior Giant's Codex - Chapter 1, Pa'agrio's Blessing XP/ Might, Freya's Art of Seduction XP/ Barrier, Energy of Destruction 20-unit Pack, Giant's Energy 3-unit Pack, Giant's Scroll: Enchant R-grade Armor, Freya's CHA Potion, Package: Scroll: Enchant R-grade Armor (2 pcs.)/ Weapon (1 pcs.), Package: Blessed Stone: Enchant R-grade Armor (2 pcs.)/ Weapon (1 pcs.), Bottle Fragment of Antharas' (4 pcs.)/ Valakas' Soul (5 pcs.), R-grade Gemstone (10 pcs.). -->
+		<!-- Double-click to obtain one of the following items: Sayha's Talisman Pack Lv. 7-8, Noble Knight's/ Wizard's/ Warrior's Circlet, Kaliel's Energy of Longing, Ultimate Jewelry Box Lv. 3-4, Noble Circlet Upgrade Stone, Dimensional Bracelet Pack Lv. 6 (CHA +5/ Basic), Freya's Bloody/ Dark Rune (30-day) Pack, Starlight Jar, Low-grade Zodiac Agathion Box, Dark/ Bloody Eternal Upgrade Stone, Lv. 5 Legendary CHA Dye Pack, Lv. 5 Legendary Dye Pack, Top-grade Spirit Stone, Giant's Scroll: Enchant R-grade Weapon, Dimensional Bracelet Upgrade Stone Pack, Superior Giant's Codex - Chapter 1, Pa'agrio's Blessing XP/ Might, Freya's Art of Seduction XP/ Barrier, Energy of Destruction 20-unit Pack, Giant's Energy 3-unit Pack, Giant's Scroll: Enchant R-grade Armor, Freya's CHA Potion, Package: Scroll: Enchant R-grade Armor (2 pcs.)/ Weapon (1 pcs.), Package: Blessed Stone: Enchant R-grade Armor (2 pcs.)/ Weapon (1 pcs.), Bottle Fragment of Antharas' (4 pcs.)/ Valakas' Soul (5 pcs.), R-grade Gemstone (10 pcs.). -->
 		<set name="icon" val="icon.bm_dragon_present_3" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />

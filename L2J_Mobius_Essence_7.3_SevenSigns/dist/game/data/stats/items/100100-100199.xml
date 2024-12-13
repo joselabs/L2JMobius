@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="100100" name="Manager's Key Card (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Applies a buff when used. <Buff effect>. acquired XP/ SP +10%. Adena drop rate +3%. Sustains Sayha's Grace. Duration: 2 h. The effect remains after death. Add to a collection to boost your stats. -->
+		<!-- Applies a buff when used. <Buff effect>. Acquired XP/ SP +10%. Adena drop rate +3%. Sustains Sayha's Grace. Duration: 2 h. The effect remains after death. Add to a collection to boost your stats. Note!. The item will be removed during the maintenance on December 20. -->
 		<set name="icon" val="icon.cardkey_man_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -11,13 +11,16 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40506" level="1" /> <!-- Manager's Key Card -->
+		</skills>
 	</item>
 	<item id="100101" name="Manager's +7 Talisman Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to choose Talisman of Aden/ Speed/ Eva/ Authority enchanted to +8. -->
+		<!-- Double-click to obtain +7 Talisman of Aden/ Speed/ Eva/ Authority of your choice. -->
 		<set name="icon" val="icon.bm_talisman_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -46,6 +49,15 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="50392" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
+			<skill id="50406" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 A-grade Weapon Blessing Effect -->
+			<skill id="50407" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 A-grade Weapon Blessing Effect -->
+			<skill id="50408" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 A-grade Weapon Blessing Effect -->
+			<skill id="50409" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 A-grade Weapon Blessing Effect -->
+			<skill id="50410" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 A-grade Weapon Blessing Effect -->
+			<skill id="50411" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 A-grade Weapon Blessing Effect -->
+		</skills>
 	</item>
 	<item id="100103" name="Appearance - Assassin's Bow" additionalName="Not Available" type="Weapon">
 		<set name="icon" val="icon.assassin_bow_i00" />
@@ -70,6 +82,15 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
 		</stats>
+		<skills>
+			<skill id="50401" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
+			<skill id="50406" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 A-grade Weapon Blessing Effect -->
+			<skill id="50407" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 A-grade Weapon Blessing Effect -->
+			<skill id="50408" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 A-grade Weapon Blessing Effect -->
+			<skill id="50409" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 A-grade Weapon Blessing Effect -->
+			<skill id="50410" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 A-grade Weapon Blessing Effect -->
+			<skill id="50411" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 A-grade Weapon Blessing Effect -->
+		</skills>
 	</item>
 	<item id="100104" name="Teleportation Scroll Pack (Sealed) (Time-limited)" type="EtcItem">
 		<!-- Double-click to obtain Teleportation Scroll (1-5 pcs.) <font color=ff6666>(unexchangeable)</font>. -->
@@ -108,7 +129,6 @@
 		<set name="icon" val="icon.bm_jewel_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -116,11 +136,10 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="100107" name="Andreas van Halter Doll Lv. 2" additionalName="Sealed" type="EtcItem">
-		<!-- <Andreas van Halter Doll's Sorcery Lv. 2>. P. Atk. +1500. M. Atk. +1500. Received Skill Critical Rate -5%. Received Skill Critical Damage -5%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Andreas van Halter Doll Lv. 2. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Andreas van Halter Doll's Sorcery Lv. 2>. P. Atk. +1500. M. Atk. +1500. Received Skill Critical Rate -5%. Received Skill Critical Damage -5%. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Andreas van Halter Doll Lv. 2. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.andreas_van_holter_doll_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -133,11 +152,10 @@
 		</skills>
 	</item>
 	<item id="100108" name="Andreas van Halter Doll Lv. 3" additionalName="Sealed" type="EtcItem">
-		<!-- <Andreas van Halter Doll's Sorcery Lv. 3>. P. Atk. +2000. M. Atk. +2000. Received Skill Critical Rate -7%. Received Skill Critical Damage -7%. Received AoE Skill Damage -1%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Andreas van Halter Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Andreas van Halter Doll's Sorcery Lv. 3>. P. Atk. +2000. M. Atk. +2000. Received Skill Critical Rate -7%. Received Skill Critical Damage -7%. Received AoE Skill Damage -1%. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Andreas van Halter Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.andreas_van_holter_doll_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -150,11 +168,10 @@
 		</skills>
 	</item>
 	<item id="100109" name="Andreas van Halter Doll Lv. 4" additionalName="Sealed" type="EtcItem">
-		<!-- <Andreas van Halter Doll's Sorcery Lv. 4>. P. Atk. +2500. M. Atk. +2500. Received Skill Critical Rate -9%. Received Skill Critical Damage -9%. Received AoE Skill Damage -2%. Received AoE Skill Damage -300. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Andreas van Halter Doll Lv. 4. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Andreas van Halter Doll's Sorcery Lv. 4>. P. Atk. +2500. M. Atk. +2500. Received Skill Critical Rate -9%. Received Skill Critical Damage -9%. Received AoE Skill Damage -2%. Received AoE Skill Damage -300. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Andreas van Halter Doll Lv. 4. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.andreas_van_holter_doll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -167,11 +184,10 @@
 		</skills>
 	</item>
 	<item id="100110" name="Andreas van Halter Doll Lv. 5" additionalName="Sealed" type="EtcItem">
-		<!-- <Andreas van Halter Doll's Sorcery Lv. 5>. P. Atk. +3000. M. Atk. +3000. Received Skill Critical Rate -10%. Received Skill Critical Damage -10%. Received AoE Skill Damage -3%. Received AoE Skill Damage -800. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Andreas van Halter Doll Lv. 4. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Andreas van Halter Doll's Sorcery Lv. 5>. P. Atk. +3000. M. Atk. +3000. Received Skill Critical Rate -10%. Received Skill Critical Damage -10%. Received AoE Skill Damage -3%. Received AoE Skill Damage -800. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Andreas van Halter Doll Lv. 4. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.andreas_van_holter_doll_i02" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -188,7 +204,6 @@
 		<set name="icon" val="icon.frozen_weapon_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -433,7 +448,7 @@
 			<item id="94423" min="1" max="1" chance="1.785714" /> <!-- Augmenting Stone: Accessory -->
 			<item id="97787" min="1" max="1" chance="1.785714" /> <!-- Augmenting Stone: Special Equipment -->
 			<item id="96985" min="1" max="1" chance="1.785714" /> <!-- Package: Brooch Lv. 3 - Sealed -->
-			<item id="96983" min="1" max="1" chance="1.785714" /> <!-- Package: Agathion Bracelet Lv. 3 - Sealed -->
+			<item id="96983" min="1" max="1" chance="1.785714" /> <!-- Package: Agathion Summon Bracelet Lv. 3 - Sealed -->
 			<item id="96984" min="1" max="1" chance="1.785714" /> <!-- Package: Talisman Bracelet Lv. 3 - Sealed -->
 			<item id="99956" min="1" max="1" chance="1.785714" /> <!-- Diamond Jewelry Box Lv. 1 -->
 			<item id="99957" min="1" max="1" chance="1.785714" /> <!-- Ruby Jewelry Box Lv. 1 -->
@@ -581,7 +596,7 @@
 			<item id="96873" min="1" max="1" chance="1.176471" /> <!-- Spellbook: Legendary Archer -->
 			<item id="97111" min="1" max="1" chance="1.176471" /> <!-- Spellbook: Wild Evolution -->
 			<item id="97182" min="1" max="1" chance="1.176471" /> <!-- Spellbook: Cat Emperor -->
-			<item id="97183" min="1" max="1" chance="1.176471" /> <!-- Spellbook: Unicorn Guard -->
+			<item id="97183" min="1" max="1" chance="1.176471" /> <!-- Spellbook: Unicorn Guardian -->
 			<item id="97184" min="1" max="1" chance="1.176471" /> <!-- Spellbook: Lord Raise -->
 			<item id="97318" min="1" max="1" chance="1.176471" /> <!-- Spellbook: Challenger -->
 			<item id="97323" min="1" max="1" chance="1.176471" /> <!-- Spellbook: Great Sweep -->
@@ -823,7 +838,6 @@
 		<set name="icon" val="icon.protection_armor_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1000,7 +1014,6 @@
 		<set name="icon" val="icon.protection_armor_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1012,7 +1025,6 @@
 		<set name="icon" val="icon.bm_pirate_treasure_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="STEEL" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1229,7 +1241,7 @@
 			<item id="94208" min="1" max="1" chance="2.564103" /> <!-- Scroll of Blessing: Weapon - Sealed -->
 			<item id="97339" min="1" max="1" chance="2.564103" /> <!-- Scroll of Blessing: Armor - Sealed -->
 			<item id="96985" min="1" max="1" chance="2.564103" /> <!-- Package: Brooch Lv. 3 - Sealed -->
-			<item id="96983" min="1" max="1" chance="2.564103" /> <!-- Package: Agathion Bracelet Lv. 3 - Sealed -->
+			<item id="96983" min="1" max="1" chance="2.564103" /> <!-- Package: Agathion Summon Bracelet Lv. 3 - Sealed -->
 			<item id="96984" min="1" max="1" chance="2.564103" /> <!-- Package: Talisman Bracelet Lv. 3 - Sealed -->
 			<item id="94328" min="1" max="1" chance="2.564103" /> <!-- Elixir Powder - Sealed -->
 			<item id="96630" min="1" max="1" chance="2.564103" /> <!-- Enhanced Dye Booster -->
@@ -1323,7 +1335,6 @@
 		<set name="icon" val="icon.bm_jewel_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1335,7 +1346,6 @@
 		<set name="icon" val="icon.bm_jewel_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1347,7 +1357,6 @@
 		<set name="icon" val="icon.bm_jewel_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1359,7 +1368,6 @@
 		<set name="icon" val="icon.bm_jewel_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1371,7 +1379,6 @@
 		<set name="icon" val="icon.bm_talisman_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1383,7 +1390,6 @@
 		<set name="icon" val="icon.bm_talisman_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1395,7 +1401,6 @@
 		<set name="icon" val="icon.bm_talisman_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1407,7 +1412,6 @@
 		<set name="icon" val="icon.bm_talisman_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -1419,7 +1423,6 @@
 		<set name="icon" val="icon.week_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />

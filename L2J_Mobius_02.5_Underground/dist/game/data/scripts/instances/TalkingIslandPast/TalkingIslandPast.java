@@ -109,7 +109,7 @@ public class TalkingIslandPast extends AbstractInstance
 		if (creature.isPlayer())
 		{
 			final Instance instance = creature.getInstanceWorld();
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final QuestState qs = player.getQuestState(Q10385_RedThreadOfFate.class.getSimpleName());
 			if ((instance != null) && (npc.getId() == INVISIBLE_TI_NPC) && (qs != null) && qs.isCond(21) && qs.isMemoState(1))
 			{

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="10100" name="Spellbook: Diamond Dust" type="EtcItem">
 		<!-- A spellbook for learning the Diamond Dust skill. Used by Mystic Muses. -->
@@ -232,13 +232,13 @@
 		<set name="enchant_enabled" val="true" />
 		<set name="commissionItemType" val="SIGIL" />
 		<set name="isAppearanceable" val="true" />
-		<skills>
-			<skill id="8311" level="1" /> <!-- Dynasty Sigil -->
-		</skills>
 		<stats>
 			<stat type="rEvas">-8</stat>
 			<stat type="pDef">15</stat>
 		</stats>
+		<skills>
+			<skill id="8311" level="1" /> <!-- Dynasty Sigil -->
+		</skills>
 	</item>
 	<item id="10120" name="Sealed Dynasty Sigil" type="Armor">
 		<!-- Old and not very useful equipment. -->
@@ -602,7 +602,7 @@
 		<set name="useSkillDisTime" val="1" />
 		<skills>
 			<skill id="5414" level="1" /> <!-- Agathion Cute Trick - Rainbow Clan Hall -->
-			<skill id="3269" level="1" /> <!-- Release Agathion's Seal - Rainbow Clan Hall -->
+			<skill id="3269" level="1" /> <!-- Agathion Summon - Rainbow Clan Hall -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -621,12 +621,12 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="duration" val="250" />
 		<set name="useSkillDisTime" val="2" />
-		<skills>
-			<skill id="3408" level="1" /> <!-- Blessed Ring of Escape -->
-		</skills>
 		<stats>
 			<stat type="mDef">24</stat>
 		</stats>
+		<skills>
+			<skill id="3408" level="1" /> <!-- Blessed Ring of Escape -->
+		</skills>
 	</item>
 	<item id="10141" name="Grey Talisman - Yeti Transform" type="Armor">
 		<!-- Can transform into a Yeti for a certain amount of time. Transformation is cancelled if the item unequipped. The effect doesn't stack if two identical talismans are equipped. Shadow Item. -->
@@ -645,7 +645,7 @@
 		<set name="useSkillDisTime" val="3" />
 		<skills>
 			<skill id="3499" level="1" type="ON_UNEQUIP" /> <!-- Dispel Transform -->
-			<skill id="3335" level="1" /> <!-- Transform Yeti -->
+			<skill id="3335" level="1" /> <!-- Yeti Transformation -->
 		</skills>
 	</item>
 	<item id="10142" name="Grey Talisman - Buffalo Transform" type="Armor">
@@ -665,7 +665,7 @@
 		<set name="useSkillDisTime" val="3" />
 		<skills>
 			<skill id="3499" level="1" type="ON_UNEQUIP" /> <!-- Dispel Transform -->
-			<skill id="3336" level="1" /> <!-- Transform Buffalo -->
+			<skill id="3336" level="1" /> <!-- Buffalo Transformation -->
 		</skills>
 	</item>
 	<item id="10143" name="Battleground Scroll: Shield Master" type="EtcItem">
@@ -883,7 +883,7 @@
 			<player SiegeZone="126" />
 		</cond>
 		<skills>
-			<skill id="2395" level="1" /> <!-- Healing Potion (Battleground) -->
+			<skill id="2395" level="1" /> <!-- Combat HP Replenishing Potion -->
 		</skills>
 	</item>
 	<item id="10153" name="Mana Recovery Potion (Battleground)" type="EtcItem">
@@ -1139,10 +1139,6 @@
 		<set name="isAppearanceable" val="true" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
-		<skills>
-			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
-			<skill id="3418" level="1" /> <!-- Active Skill: Transform Pig -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1</stat>
 			<stat type="mAtk">1</stat>
@@ -1151,6 +1147,10 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
+			<skill id="3418" level="1" /> <!-- Active Skill: Transform Pig -->
+		</skills>
 	</item>
 	<item id="10168" name="Dynasty Leather Armor" additionalName="Enchanter" type="Armor">
 		<!-- Can only be worn by Hierophants, Dominators, Doomcryers and Judicators. -->

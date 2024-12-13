@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
@@ -32,22 +34,65 @@ public class ExShowAgitInfo extends ServerPacket
 {
 	public static final ExShowAgitInfo STATIC_PACKET = new ExShowAgitInfo();
 	
+	private final List<ClanHallHolder> _clanHalls;
+	
 	private ExShowAgitInfo()
 	{
+		final Collection<ClanHall> clanHalls = ClanHallData.getInstance().getClanHalls();
+		_clanHalls = new ArrayList<>(clanHalls.size());
+		for (ClanHall clanHall : clanHalls)
+		{
+			_clanHalls.add(new ClanHallHolder(clanHall.getResidenceId(), clanHall.getOwnerId() <= 0 ? "" : ClanTable.getInstance().getClan(clanHall.getOwnerId()).getName(), clanHall.getOwnerId() <= 0 ? "" : ClanTable.getInstance().getClan(clanHall.getOwnerId()).getLeaderName(), clanHall.getType().getClientVal()));
+		}
 	}
 	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.EX_SHOW_AGIT_INFO.writeId(this, buffer);
-		final Collection<ClanHall> clanHalls = ClanHallData.getInstance().getClanHalls();
-		buffer.writeInt(clanHalls.size());
-		clanHalls.forEach(clanHall ->
+		buffer.writeInt(_clanHalls.size());
+		for (ClanHallHolder holder : _clanHalls)
 		{
-			buffer.writeInt(clanHall.getResidenceId());
-			buffer.writeString(clanHall.getOwnerId() <= 0 ? "" : ClanTable.getInstance().getClan(clanHall.getOwnerId()).getName()); // owner clan name
-			buffer.writeString(clanHall.getOwnerId() <= 0 ? "" : ClanTable.getInstance().getClan(clanHall.getOwnerId()).getLeaderName()); // leader name
-			buffer.writeInt(clanHall.getType().getClientVal()); // Clan hall type
-		});
+			buffer.writeInt(holder.getResidenceId());
+			buffer.writeString(holder.getOwnerClanName());
+			buffer.writeString(holder.getLeaderName());
+			buffer.writeInt(holder.getClanHallType());
+		}
+	}
+	
+	public class ClanHallHolder
+	{
+		private final int _residenceId;
+		private final String _ownerClanName;
+		private final String _leaderName;
+		private final int _clanHallType;
+		
+		public ClanHallHolder(int residenceId, String ownerClanName, String leaderName, int clanHallType)
+		{
+			_residenceId = residenceId;
+			_ownerClanName = ownerClanName;
+			_leaderName = leaderName;
+			_clanHallType = clanHallType;
+		}
+		
+		public int getResidenceId()
+		{
+			return _residenceId;
+		}
+		
+		public String getOwnerClanName()
+		{
+			return _ownerClanName;
+		}
+		
+		public String getLeaderName()
+		{
+			return _leaderName;
+		}
+		
+		public int getClanHallType()
+		{
+			return _clanHallType;
+		}
 	}
 }

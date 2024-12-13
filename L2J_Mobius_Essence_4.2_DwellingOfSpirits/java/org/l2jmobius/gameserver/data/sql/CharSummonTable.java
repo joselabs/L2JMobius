@@ -207,7 +207,7 @@ public class CharSummonTable
 						{
 							if (summon instanceof Servitor)
 							{
-								final Servitor s = (Servitor) summon;
+								final Servitor s = summon.asServitor();
 								if (s.getReferenceSkill() == skillId)
 								{
 									servitor = s;

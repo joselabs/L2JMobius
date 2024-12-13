@@ -1,19 +1,19 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="32000" toLevel="1" name="Rice Cake of Fighting Spirit">
 		<!-- XP/SP Gain +20% for 20 minutes. Cooldown is 1 minute. Effect remains even after death. -->
 		<icon>icon.bm_rice_cake_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>VOTE</abnormalType>
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
 		<isMagic>4</isMagic>
-		<reuseDelay>600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<reuseDelay>600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="ExpModify">
 				<amount>20</amount>
@@ -26,17 +26,17 @@
 	<skill id="32001" toLevel="1" name="Rice Cake of Fighting Spirit - Event">
 		<!-- XP/SP Gain +20% for 20 minutes. Cooldown is 1 minute. Effect remains even after death. -->
 		<icon>icon.bm_rice_cake_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>VOTE</abnormalType>
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
 		<isMagic>4</isMagic>
-		<reuseDelay>600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<reuseDelay>600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="ExpModify">
 				<amount>20</amount>
@@ -49,17 +49,17 @@
 	<skill id="32002" toLevel="1" name="Rice Cake of Flaming Fighting Spirit">
 		<!-- XP/SP Gain +30% for 20 minutes. Cooldown is 1 minute. Effect remains even after death. -->
 		<icon>icon.bm_rice_cake_i01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>VOTE</abnormalType>
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
 		<isMagic>4</isMagic>
-		<reuseDelay>600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<reuseDelay>600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="ExpModify">
 				<amount>30</amount>
@@ -77,9 +77,9 @@
 		<icon>icon.etc_scroll_of_resurrection_i01</icon>
 		<operateType>A1</operateType>
 		<castRange>400</castRange>
-		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
 	</skill>
 	<skill id="32005" toLevel="1" name="Battle Support Chest">
 		<icon>icon.etc_marguene_collection_box_i00</icon>
@@ -90,13 +90,15 @@
 		<icon>icon.weapon_shining_knife_i00</icon>
 		<operateType>A1</operateType>
 		<castRange>40</castRange>
-		<hitTime>1100</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>60000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1100</hitTime>
+		<reuseDelay>60000</reuseDelay>
 	</skill>
 	<skill id="32007" toLevel="3" name="Scroll of Escape: Entrance to Cruma Tower">
-		<!-- Teleport to Entrance to Cruma Tower. -->
+		<!-- Level 1: Teleport to Entrance to Cruma Tower. -->
+		<!-- Level 2: Teleport to Entrance to Dragon Valley. -->
+		<!-- Level 3: Teleport to Dragon Valley Bridge. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
@@ -109,17 +111,17 @@
 		<icon>icon.etc_box_of_adventure_3_i00</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="32012" toLevel="1" name="High-Quality Dye Chest">
+	<skill id="32012" toLevel="1" name="High-grade Dye Chest">
 		<icon>icon.etc_box_of_adventure_4_i00</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49110</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -171,15 +173,15 @@
 	</skill>
 	<skill id="32013" toLevel="1" name="Dye Chest">
 		<icon>icon.etc_box_of_adventure_5_i00</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49111</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -249,7 +251,7 @@
 		<icon>icon.etc_treasure_box_i06</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="32019" toLevel="1" name="One-Handed Sword Chest">
+	<skill id="32019" toLevel="1" name="One-handed Sword Chest">
 		<icon>icon.etc_treasure_box_i07</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -261,7 +263,7 @@
 		<icon>icon.new_user_box</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="32022" toLevel="1" name="Venezia Rune - Low-Grade">
+	<skill id="32022" toLevel="1" name="Beginner Venezia's Rune">
 		<!-- Hunting XP/SP +22%. Only for Lv. 40 and below characters. -->
 		<icon>icon.skill19226</icon>
 		<operateType>P</operateType>
@@ -296,7 +298,7 @@
 		<icon>icon.ev_11th_rare_acc_necklace</icon>
 		<operateType>P</operateType>
 	</skill>
-	<skill id="32029" toLevel="1" name="Venezia Rune - High-Grade">
+	<skill id="32029" toLevel="1" name="Advanced Venezia's Rune">
 		<!-- Hunting XP/SP Gain +11% -->
 		<icon>icon.skill19226</icon>
 		<operateType>P</operateType>
@@ -311,16 +313,16 @@
 	<skill id="32031" toLevel="1" name="Scroll of Escape: Talking Island Village">
 		<!-- Teleport to Talking Island Village. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29149</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -339,16 +341,16 @@
 	<skill id="32032" toLevel="1" name="Scroll of Escape: Elven Village">
 		<!-- Teleport to Elven Village. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29150</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -367,16 +369,16 @@
 	<skill id="32033" toLevel="1" name="Scroll of Escape: Dark Elf Village">
 		<!-- Teleport to Dark Elf Village. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29151</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -395,16 +397,16 @@
 	<skill id="32034" toLevel="1" name="Scroll of Escape: Orc Village">
 		<!-- Teleport to Orc Village. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29152</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -423,16 +425,16 @@
 	<skill id="32035" toLevel="1" name="Scroll of Escape: Dwarven Village">
 		<!-- Teleport to Dwarven Village. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29153</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -451,16 +453,16 @@
 	<skill id="32036" toLevel="1" name="Scroll of Escape: Gludin Village">
 		<!-- Teleport to Gludin Village. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29154</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -479,16 +481,16 @@
 	<skill id="32037" toLevel="1" name="Scroll of Escape: Town of Gludio">
 		<!-- Teleport to Town of Gludio. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29155</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -549,16 +551,16 @@
 	<skill id="32044" toLevel="1" name="Scroll of Espcape: Entrance to Cruma Tower">
 		<!-- Teleport to Entrance to Cruma Tower. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49089</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -577,16 +579,16 @@
 	<skill id="32045" toLevel="1" name="Scroll of Espcape: Entrance to Dragon Valley">
 		<!-- Teleport to Entrance to Dragon Valley. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49090</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -605,16 +607,16 @@
 	<skill id="32046" toLevel="1" name="Scroll of Espcape: Dragon Valley Bridge">
 		<!-- Teleport to Dragon Valley Bridge. Cooldown is 60 minutes. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>49091</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>3600000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -630,11 +632,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="32047" toLevel="1" name="Cube of Sayha - 30-day">
+	<skill id="32047" toLevel="1" name="Sayha's Cube (30-day">
 		<icon>icon.sa_cube</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="32048" toLevel="1" name="Cube of Sayha - 90-day">
+	<skill id="32048" toLevel="1" name="Sayha's Cube (90-day">
 		<icon>icon.sa_cube</icon>
 		<operateType>A1</operateType>
 	</skill>

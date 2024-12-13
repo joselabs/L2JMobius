@@ -44,7 +44,7 @@ public class OpHomeSkillCondition implements ISkillCondition
 	{
 		if (caster.isPlayer())
 		{
-			final Clan clan = caster.getActingPlayer().getClan();
+			final Clan clan = caster.asPlayer().getClan();
 			if (clan != null)
 			{
 				switch (_type)

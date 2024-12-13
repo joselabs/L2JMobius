@@ -1,23 +1,30 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.areas.Conquest.SacredFire;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Level;
 
@@ -53,7 +60,7 @@ import ai.AbstractNpcAI;
 
 /**
  * Conquest Sacred Fire AI.
- * @author CostyKiller
+ * @author CostyKiller, -K
  */
 public class SacredFire extends AbstractNpcAI
 {
@@ -103,6 +110,8 @@ public class SacredFire extends AbstractNpcAI
 	// Tasks
 	protected ScheduledFuture<?> _scheduledSuccessfulDefenseRewardTask;
 	protected ScheduledFuture<?> _scheduledSacredFireCountSetupTask;
+	protected Map<Integer, ScheduledFuture<?>> _scheduledSuccessfulDefenseRewardTasksList = new ConcurrentHashMap<>();
+	protected Map<Integer, ScheduledFuture<?>> _scheduledSacredFireCountSetupTasksList = new ConcurrentHashMap<>();
 	
 	private SacredFire()
 	{
@@ -155,15 +164,18 @@ public class SacredFire extends AbstractNpcAI
 					
 					if (getRandom(100) < STEAL_CHANCE)
 					{
-						if ((_scheduledSuccessfulDefenseRewardTask != null) && !_scheduledSuccessfulDefenseRewardTask.isCancelled() && !_scheduledSuccessfulDefenseRewardTask.isDone())
+						final ScheduledFuture<?> defenseRewardTask = _scheduledSuccessfulDefenseRewardTasksList.get(npc.getObjectId());
+						if ((defenseRewardTask != null) && !defenseRewardTask.isCancelled())
 						{
-							_scheduledSuccessfulDefenseRewardTask.cancel(false);
-							_scheduledSuccessfulDefenseRewardTask = null;
+							defenseRewardTask.cancel(false);
+							_scheduledSuccessfulDefenseRewardTasksList.remove(npc.getObjectId());
 						}
-						if ((_scheduledSacredFireCountSetupTask != null) && !_scheduledSacredFireCountSetupTask.isCancelled() && !_scheduledSacredFireCountSetupTask.isDone())
+						
+						final ScheduledFuture<?> countSetupTask = _scheduledSacredFireCountSetupTasksList.get(npc.getObjectId());
+						if ((countSetupTask != null) && !countSetupTask.isCancelled())
 						{
-							_scheduledSacredFireCountSetupTask.cancel(false);
-							_scheduledSacredFireCountSetupTask = null;
+							countSetupTask.cancel(false);
+							_scheduledSacredFireCountSetupTasksList.remove(npc.getObjectId());
 						}
 						npc.setDisplayEffect(DESTROYED);
 						npc.decayMe();
@@ -270,7 +282,7 @@ public class SacredFire extends AbstractNpcAI
 	@Override
 	public String onExitZone(Creature creature, ZoneType zone)
 	{
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		if (player != null)
 		{
 			// Decay spawned sacred fires.
@@ -279,24 +291,35 @@ public class SacredFire extends AbstractNpcAI
 				final WorldObject sacredFire = World.getInstance().findObject(player.getVariables().getInt("SACRED_FIRE_SLOT_" + i + "_OID", 0));
 				if (sacredFire != null)
 				{
-					((Npc) sacredFire).setDisplayEffect(DESTROYED);
-					((Npc) sacredFire).decayMe();
-					if ((_scheduledSuccessfulDefenseRewardTask != null) && !_scheduledSuccessfulDefenseRewardTask.isCancelled() && !_scheduledSuccessfulDefenseRewardTask.isDone())
+					sacredFire.asNpc().setDisplayEffect(DESTROYED);
+					sacredFire.asNpc().decayMe();
+					
+					for (Entry<Integer, ScheduledFuture<?>> entry : _scheduledSuccessfulDefenseRewardTasksList.entrySet())
 					{
-						_scheduledSuccessfulDefenseRewardTask.cancel(false);
-						_scheduledSuccessfulDefenseRewardTask = null;
+						final ScheduledFuture<?> defenseRewardTask = entry.getValue();
+						if ((defenseRewardTask != null) && !defenseRewardTask.isCancelled() && !defenseRewardTask.isDone())
+						{
+							defenseRewardTask.cancel(false);
+						}
 					}
-					if ((_scheduledSacredFireCountSetupTask != null) && !_scheduledSacredFireCountSetupTask.isCancelled() && !_scheduledSacredFireCountSetupTask.isDone())
+					_scheduledSuccessfulDefenseRewardTasksList.clear();
+					
+					for (Entry<Integer, ScheduledFuture<?>> entry : _scheduledSacredFireCountSetupTasksList.entrySet())
 					{
-						_scheduledSacredFireCountSetupTask.cancel(false);
-						_scheduledSacredFireCountSetupTask = null;
+						final ScheduledFuture<?> countSetupTask = entry.getValue();
+						if ((countSetupTask != null) && !countSetupTask.isCancelled() && !countSetupTask.isDone())
+						{
+							countSetupTask.cancel(false);
+						}
 					}
+					_scheduledSacredFireCountSetupTasksList.clear();
 					
 					if (DEBUG)
 					{
 						LOGGER.info("Sacred Fire Decay. -> " + player.getObjectId() + " - " + "SACRED_FIRE_SLOT_" + i);
 					}
 				}
+				
 				// Remove Sacred Fire progress if the player exits the conquest zone
 				player.getVariables().remove("SACRED_FIRE_SLOT_" + i);
 				player.getVariables().remove("SACRED_FIRE_SLOT_" + i + "_SUMMON_TIME");
@@ -448,6 +471,9 @@ public class SacredFire extends AbstractNpcAI
 						}
 					}, SACRED_FIRE_COUNT_UPDATE_TIME);
 				}, LIFETIME);
+				
+				_scheduledSuccessfulDefenseRewardTasksList.put(sacredFire.getObjectId(), _scheduledSuccessfulDefenseRewardTask); // Store the current task for bulk usage on clean.
+				_scheduledSacredFireCountSetupTasksList.put(sacredFire.getObjectId(), _scheduledSacredFireCountSetupTask); // Store the current task for bulk usage on clean.
 			}
 			else
 			{

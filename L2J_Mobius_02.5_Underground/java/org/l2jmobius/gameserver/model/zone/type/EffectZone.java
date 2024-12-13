@@ -34,7 +34,7 @@ import org.l2jmobius.gameserver.network.serverpackets.EtcStatusUpdate;
 
 /**
  * Another type of damage zone with skills.
- * @author kerberos
+ * @author Kerberos
  */
 public class EffectZone extends ZoneType
 {
@@ -159,7 +159,7 @@ public class EffectZone extends ZoneType
 			if (_isShowDangerIcon)
 			{
 				creature.setInsideZone(ZoneId.DANGER_AREA, true);
-				creature.sendPacket(new EtcStatusUpdate(creature.getActingPlayer()));
+				creature.sendPacket(new EtcStatusUpdate(creature.asPlayer()));
 			}
 		}
 	}
@@ -175,7 +175,7 @@ public class EffectZone extends ZoneType
 				creature.setInsideZone(ZoneId.DANGER_AREA, false);
 				if (!creature.isInsideZone(ZoneId.DANGER_AREA))
 				{
-					creature.sendPacket(new EtcStatusUpdate(creature.getActingPlayer()));
+					creature.sendPacket(new EtcStatusUpdate(creature.asPlayer()));
 				}
 			}
 			if (_removeEffectsOnExit && (_skills != null))

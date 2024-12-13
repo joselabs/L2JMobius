@@ -44,9 +44,19 @@ public class SpawnTerritory
 		return _territory.getRandomPoint();
 	}
 	
+	public Location getCenterPoint()
+	{
+		return _territory.getCenterPoint();
+	}
+	
 	public boolean isInsideZone(int x, int y, int z)
 	{
 		return _territory.isInsideZone(x, y, z);
+	}
+	
+	public int getHighZ()
+	{
+		return _territory.getHighZ();
 	}
 	
 	public void visualizeZone(int z)

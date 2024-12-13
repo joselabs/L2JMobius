@@ -38,7 +38,7 @@ public class CanUntransformSkillCondition implements ISkillCondition
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
 		boolean canUntransform = true;
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
 		if (player == null)
 		{
 			canUntransform = false;

@@ -24,6 +24,7 @@ import org.l2jmobius.gameserver.model.skill.ISkillCondition;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * @author Sdw
@@ -38,9 +39,16 @@ public class OpCallPcSkillCondition implements ISkillCondition
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
 		boolean canCallPlayer = true;
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
 		if (player == null)
 		{
+			canCallPlayer = false;
+		}
+		else if ((target != null) && target.isPlayer() && target.asPlayer().isDead())
+		{
+			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_DEAD_AT_THE_MOMENT_AND_CANNOT_BE_SUMMONED_OR_TELEPORTED);
+			sm.addPcName(target.asPlayer());
+			player.sendPacket(sm);
 			canCallPlayer = false;
 		}
 		else if (player.isInOlympiadMode())
@@ -50,6 +58,11 @@ public class OpCallPcSkillCondition implements ISkillCondition
 		}
 		else if (player.inObserverMode())
 		{
+			canCallPlayer = false;
+		}
+		else if (player.isOnEvent())
+		{
+			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_SUMMONING_OR_TELEPORTING_IN_THIS_AREA);
 			canCallPlayer = false;
 		}
 		else if (player.isInsideZone(ZoneId.NO_SUMMON_FRIEND) || player.isInsideZone(ZoneId.JAIL) || player.isFlyingMounted())

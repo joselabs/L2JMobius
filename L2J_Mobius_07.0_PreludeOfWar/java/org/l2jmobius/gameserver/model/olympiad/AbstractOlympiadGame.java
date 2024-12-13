@@ -469,7 +469,7 @@ public abstract class AbstractOlympiadGame
 	
 	public static void rewardParticipant(Player player, List<ItemHolder> list)
 	{
-		if ((player == null) || !player.isOnline() || (list == null))
+		if ((player == null) || !player.isOnline() || list.isEmpty())
 		{
 			return;
 		}

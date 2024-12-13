@@ -204,24 +204,30 @@
 	<item id="72340" name="Queen Ant Doll Lv. 3" additionalName="7-day" type="EtcItem">
 		<!-- <Queen Ant Doll's Sorcery Lv. 3>. P. Atk. +12%. P. Critical Damage +10%. P. Skill Critical Damage +10%. Max HP +15%. Boosts stats when in inventory. Cannot be upgraded. -->
 		<set name="icon" val="icon.bm_queen_ant_doll_30d" />
-		<set name="default_action" val="NONE" />
+		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="10080" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="72337" min="1" max="1" chance="100" /> <!-- Package: Queen Ant Doll Lv. 3 (Time-limited) - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="72341" name="Baium Doll Lv. 3" additionalName="7-day" type="EtcItem">
 		<!-- <Baium Doll's Sorcery Lv. 3>. Skill Cooldown -4%. P. Def. +15%. M. Def. +15%. Silence Resistance +45%. Fear Resistance +45%. Paralysis Resistance +25%. Knockback Resistance +25%. Pull Resistance +25%. Boosts stats when in inventory. Cannot be upgraded. -->
 		<set name="icon" val="icon.bm_baium_doll_30d" />
-		<set name="default_action" val="NONE" />
+		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="10080" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="72338" min="1" max="1" chance="100" /> <!-- Package: Baium Doll Lv. 3 (Time-limited) - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="72342" name="Orfen Doll Lv. 3" additionalName="7-day" type="EtcItem">
 		<!-- <Orfen Doll's Sorcery Lv. 3>. M. Atk. +15%. M. Skill Critical Damage +10%. Max MP +15%. Boosts stats when in inventory. Cannot be upgraded. -->
@@ -232,7 +238,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="10080" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="72339" min="1" max="1" chance="100" /> <!-- Package: Orfen Doll Lv. 3 (Time-limited) - 7-day -->
+		</capsuled_items>
 	</item>
 	<item id="72343" name="Letter J" additionalName="Sealed" type="EtcItem">
 		<!-- Combine with other letters to create a special word and get a reward! -->
@@ -244,6 +253,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_questitem" val="true" />
 	</item>
 	<item id="72344" name="Numbers 20" additionalName="Sealed" type="EtcItem">
 		<!-- Combine with other letters to create a special word and get a reward! -->
@@ -578,6 +588,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="40099" level="1" /> <!-- Red Lantern - 1st Place -->
+		</skills>
 	</item>
 	<item id="72365" name="Great Hunter's Reward (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -828,7 +841,7 @@
 			<item id="96941" min="3" max="3" chance="100" /> <!-- Extra Pass: Training Zone - Sealed -->
 			<item id="95494" min="1" max="1" chance="100" /> <!-- Infinite Mithril Quiver - Sealed -->
 			<item id="94895" min="1" max="1" chance="100" /> <!-- A-grade Elemental Orb - Sealed -->
-			<item id="97147" min="10" max="10" chance="100" /> <!-- Dye Powder - Sealed -->
+			<item id="97147" min="10" max="10" chance="100" /> <!-- Hidden Power Booster - Sealed -->
 			<item id="72293" min="1" max="1" chance="100" /> <!-- Antharas Doll (Event) - Sealed -->
 			<item id="95596" min="2" max="2" chance="100" /> <!-- Special Scroll: Enchant Dragon Belt (Time-limited) - Sealed -->
 		</capsuled_items>

@@ -28,7 +28,6 @@ import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.TeleportType;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.holders.TeleporterQuestRecommendationHolder;
@@ -42,7 +41,7 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @author NightMarez
  */
-public class Teleporter extends Npc
+public class Teleporter extends Merchant
 {
 	private static final Logger LOGGER = Logger.getLogger(Teleporter.class.getName());
 	

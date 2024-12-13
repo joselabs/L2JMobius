@@ -58,6 +58,7 @@ import handlers.actionshifthandlers.StaticObjectActionShift;
 import handlers.actionshifthandlers.SummonActionShift;
 import handlers.admincommandhandlers.AdminAdmin;
 import handlers.admincommandhandlers.AdminAnnouncements;
+import handlers.admincommandhandlers.AdminAugment;
 import handlers.admincommandhandlers.AdminBBS;
 import handlers.admincommandhandlers.AdminBuffs;
 import handlers.admincommandhandlers.AdminCamera;
@@ -266,6 +267,7 @@ import handlers.targethandlers.PcBody;
 import handlers.targethandlers.Self;
 import handlers.targethandlers.Summon;
 import handlers.targethandlers.Target;
+import handlers.targethandlers.TargetOrSelf;
 import handlers.targethandlers.WyvernTarget;
 import handlers.targethandlers.affectobject.All;
 import handlers.targethandlers.affectobject.Clan;
@@ -278,7 +280,6 @@ import handlers.targethandlers.affectobject.NotFriendPc;
 import handlers.targethandlers.affectobject.ObjectDeadNpcBody;
 import handlers.targethandlers.affectobject.UndeadRealEnemy;
 import handlers.targethandlers.affectobject.WyvernObject;
-import handlers.targethandlers.affectscope.ValakasScope;
 import handlers.targethandlers.affectscope.DeadParty;
 import handlers.targethandlers.affectscope.DeadPartyPledge;
 import handlers.targethandlers.affectscope.DeadPledge;
@@ -297,6 +298,7 @@ import handlers.targethandlers.affectscope.Square;
 import handlers.targethandlers.affectscope.SquarePB;
 import handlers.targethandlers.affectscope.StaticObjectScope;
 import handlers.targethandlers.affectscope.SummonExceptMaster;
+import handlers.targethandlers.affectscope.ValakasScope;
 import handlers.usercommandhandlers.BloodyCoinCommand;
 import handlers.usercommandhandlers.ChannelDelete;
 import handlers.usercommandhandlers.ChannelInfo;
@@ -378,6 +380,7 @@ public class MasterHandler
 			// Admin Command Handlers
 			AdminAdmin.class,
 			AdminAnnouncements.class,
+			AdminAugment.class,
 			AdminBBS.class,
 			AdminBuffs.class,
 			AdminCamera.class,
@@ -613,6 +616,7 @@ public class MasterHandler
 			Self.class,
 			Summon.class,
 			Target.class,
+			TargetOrSelf.class,
 			WyvernTarget.class,
 		},
 		{

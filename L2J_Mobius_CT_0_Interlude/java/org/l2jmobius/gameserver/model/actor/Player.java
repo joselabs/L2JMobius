@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.actor;
 
@@ -76,6 +80,7 @@ import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.ClassId;
+import org.l2jmobius.gameserver.enums.Element;
 import org.l2jmobius.gameserver.enums.HtmlActionScope;
 import org.l2jmobius.gameserver.enums.IllegalActionPunishmentType;
 import org.l2jmobius.gameserver.enums.InstanceType;
@@ -141,7 +146,6 @@ import org.l2jmobius.gameserver.model.actor.instance.Door;
 import org.l2jmobius.gameserver.model.actor.instance.EventMonster;
 import org.l2jmobius.gameserver.model.actor.instance.FriendlyMob;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
-import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.actor.instance.TamedBeast;
 import org.l2jmobius.gameserver.model.actor.instance.Trap;
 import org.l2jmobius.gameserver.model.actor.stat.PlayerStat;
@@ -258,6 +262,7 @@ import org.l2jmobius.gameserver.network.serverpackets.ExOlympiadUserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.ExSetCompassZoneCode;
 import org.l2jmobius.gameserver.network.serverpackets.ExStorageMaxCount;
 import org.l2jmobius.gameserver.network.serverpackets.ExUseSharedGroupItem;
+import org.l2jmobius.gameserver.network.serverpackets.FriendStatusPacket;
 import org.l2jmobius.gameserver.network.serverpackets.GetOnVehicle;
 import org.l2jmobius.gameserver.network.serverpackets.HennaInfo;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -336,7 +341,7 @@ public class Player extends Playable
 	private static final String DELETE_ITEM_REUSE_SAVE = "DELETE FROM character_item_reuse_save WHERE charId=?";
 	
 	// Character Character SQL String Definitions:
-	private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,charId,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,karma,fame,pvpkills,pkkills,clanid,race,classid,deletetime,cancraft,title,title_color,accesslevel,online,isin7sdungeon,clan_privs,wantspeace,base_class,newbie,nobless,power_grade,createDate,last_recom_date) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,charId,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,karma,fame,pvpkills,pkkills,clanid,race,classid,deletetime,cancraft,title,title_color,accesslevel,online,isin7sdungeon,clan_privs,wantspeace,base_class,newbie,nobless,power_grade,createDate,lastAccess,last_recom_date) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String UPDATE_CHARACTER = "UPDATE characters SET level=?,maxHp=?,curHp=?,maxCp=?,curCp=?,maxMp=?,curMp=?,face=?,hairStyle=?,hairColor=?,sex=?,heading=?,x=?,y=?,z=?,exp=?,expBeforeDeath=?,sp=?,karma=?,fame=?,pvpkills=?,pkkills=?,clanid=?,race=?,classid=?,deletetime=?,title=?,title_color=?,accesslevel=?,online=?,isin7sdungeon=?,clan_privs=?,wantspeace=?,base_class=?,onlinetime=?,newbie=?,nobless=?,power_grade=?,subpledge=?,lvl_joined_academy=?,apprentice=?,sponsor=?,clan_join_expiry_time=?,clan_create_expiry_time=?,char_name=?,death_penalty_level=?,bookmarkslot=?,vitality_points=?,language=?,faction=?,pccafe_points=?,last_recom_date=?,rec_have=?,rec_left=? WHERE charId=?";
 	private static final String RESTORE_CHARACTER = "SELECT * FROM characters WHERE charId=?";
 	
@@ -455,6 +460,13 @@ public class Player extends Playable
 	
 	private final ContactList _contactList = new ContactList(this);
 	
+	// Friend list.
+	private final Collection<Integer> _friendList = ConcurrentHashMap.newKeySet();
+	// Related to Community Board.
+	private final List<Integer> _selectedFriendList = new ArrayList<>();
+	private final List<Integer> _selectedBlocksList = new ArrayList<>();
+	private int _mailPosition;
+	
 	private boolean _canFeed;
 	private boolean _isInSiege;
 	private boolean _isInHideoutSiege = false;
@@ -508,6 +520,14 @@ public class Player extends Playable
 	private final Location _lastServerPosition = new Location(0, 0, 0);
 	
 	private final AtomicBoolean _blinkActive = new AtomicBoolean();
+	
+	private final Map<Element, AtomicInteger> _elementSeeds = new HashMap<>(4);
+	{
+		_elementSeeds.put(Element.FIRE, new AtomicInteger());
+		_elementSeeds.put(Element.WATER, new AtomicInteger());
+		_elementSeeds.put(Element.WIND, new AtomicInteger());
+		_elementSeeds.put(Element.EARTH, new AtomicInteger());
+	}
 	
 	/** The number of recommendation obtained by the Player */
 	private int _recomHave; // how much I was recommended by others
@@ -1334,7 +1354,7 @@ public class Player extends Playable
 			final WorldObject object = World.getInstance().findObject(getLastQuestNpcObject());
 			if ((object != null) && object.isNpc() && isInsideRadius2D(object, Npc.INTERACTION_DISTANCE))
 			{
-				final Npc npc = (Npc) object;
+				final Npc npc = object.asNpc();
 				quest.notifyEvent(event, npc, this);
 			}
 		}
@@ -1511,7 +1531,7 @@ public class Player extends Playable
 		}
 		
 		// If target isn't a player, is self.
-		final Player targetPlayer = target.getActingPlayer();
+		final Player targetPlayer = target.asPlayer();
 		if ((targetPlayer == null) || (targetPlayer == this))
 		{
 			return false;
@@ -4006,6 +4026,7 @@ public class Player extends Playable
 			_broadcastCharInfoTask = ThreadPool.schedule(() ->
 			{
 				final CharInfo charInfo = new CharInfo(this, false);
+				charInfo.sendInBroadcast();
 				World.getInstance().forEachVisibleObject(this, Player.class, player ->
 				{
 					if (isVisibleFor(player))
@@ -4036,7 +4057,7 @@ public class Player extends Playable
 					}
 				});
 				_broadcastCharInfoTask = null;
-			}, 50);
+			}, 100);
 		}
 	}
 	
@@ -4183,7 +4204,7 @@ public class Player extends Playable
 		
 		if (target.isPlayer())
 		{
-			final Player temp = (Player) target;
+			final Player temp = target.asPlayer();
 			sendPacket(ActionFailed.STATIC_PACKET);
 			
 			if ((temp.getPrivateStoreType() == PrivateStoreType.SELL) || (temp.getPrivateStoreType() == PrivateStoreType.PACKAGE_SELL))
@@ -4559,10 +4580,10 @@ public class Player extends Playable
 		WorldObject newTarget = worldObject;
 		if (newTarget != null)
 		{
-			final boolean isInParty = newTarget.isPlayer() && isInParty() && _party.containsPlayer(newTarget.getActingPlayer());
+			final boolean isInParty = newTarget.isPlayer() && isInParty() && _party.containsPlayer(newTarget.asPlayer());
 			
 			// Prevents /target exploiting
-			if (!isInParty && (Math.abs(newTarget.getZ() - getZ()) > 1000))
+			if (!isInParty && (Math.abs(newTarget.getZ() - getZ()) > 3000))
 			{
 				newTarget = null;
 			}
@@ -4600,7 +4621,7 @@ public class Player extends Playable
 		
 		if ((newTarget != null) && newTarget.isCreature())
 		{
-			final Creature target = (Creature) newTarget;
+			final Creature target = newTarget.asCreature();
 			
 			// Validate location of the new target.
 			if (newTarget.getObjectId() != getObjectId())
@@ -4861,7 +4882,7 @@ public class Player extends Playable
 		// }
 		if (killer != null)
 		{
-			final Player pk = killer.getActingPlayer();
+			final Player pk = killer.asPlayer();
 			final boolean fpcKill = killer.isFakePlayer();
 			if ((pk != null) || fpcKill)
 			{
@@ -4895,7 +4916,7 @@ public class Player extends Playable
 					String msg = "";
 					if (_pvpFlag == 0)
 					{
-						msg = Config.ANNOUNCE_PK_MSG.replace("$killer", killer.getName()).replace("$target", getName());
+						msg = Config.ANNOUNCE_PK_MSG.replace("$killer", pk != null ? pk.getName() : killer.getName()).replace("$target", getName());
 						if (Config.ANNOUNCE_PK_PVP_NORMAL_MESSAGE)
 						{
 							final SystemMessage sm = new SystemMessage(SystemMessageId.S1);
@@ -5042,9 +5063,9 @@ public class Player extends Playable
 			return;
 		}
 		
-		final Player pk = killer.getActingPlayer();
+		final Player pk = killer.asPlayer();
 		if ((getKarma() <= 0) && (pk != null) && (pk.getClan() != null) && (getClan() != null) && (pk.getClan().isAtWarWith(_clanId)
-		// || _clan.isAtWarWith(((Player)killer).getClanId())
+		// || _clan.isAtWarWith(killer.asPlayer().getClanId())
 		))
 		{
 			return;
@@ -5139,7 +5160,7 @@ public class Player extends Playable
 		}
 		
 		// Avoid nulls && check if player != killedPlayer
-		final Player killedPlayer = target.getActingPlayer();
+		final Player killedPlayer = target.asPlayer();
 		if ((killedPlayer == null) || (killedPlayer == this))
 		{
 			return;
@@ -5321,7 +5342,7 @@ public class Player extends Playable
 	
 	public void updatePvPStatus(Creature target)
 	{
-		final Player targetPlayer = target.getActingPlayer();
+		final Player targetPlayer = target.asPlayer();
 		if (targetPlayer == null)
 		{
 			return;
@@ -5480,7 +5501,33 @@ public class Player extends Playable
 		stopVitalityTask();
 	}
 	
-	@Override
+	/**
+	 * @return {@code true} if the character has a summon, {@code false} otherwise
+	 */
+	public boolean hasSummon()
+	{
+		return _summon != null;
+	}
+	
+	/**
+	 * @return {@code true} if the character has a pet, {@code false} otherwise
+	 */
+	public boolean hasPet()
+	{
+		return (_summon != null) && _summon.isPet();
+	}
+	
+	/**
+	 * @return {@code true} if the character has a servitor, {@code false} otherwise
+	 */
+	public boolean hasServitor()
+	{
+		return (_summon != null) && _summon.isServitor();
+	}
+	
+	/**
+	 * @return the Summon of the Player or null.
+	 */
 	public Summon getSummon()
 	{
 		return _summon;
@@ -6131,13 +6178,6 @@ public class Player extends Playable
 				sendPacket(ActionFailed.STATIC_PACKET);
 				return false;
 			}
-			else if (_inventory.getItemByItemId(9819) != null)
-			{
-				sendPacket(ActionFailed.STATIC_PACKET);
-				// FIXME: Wrong Message
-				sendMessage("You cannot mount a steed while holding a flag.");
-				return false;
-			}
 			else if (pet.isHungry())
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
@@ -6509,7 +6549,8 @@ public class Player extends Playable
 			ps.setInt(35, _noble ? 1 : 0);
 			ps.setLong(36, 0);
 			ps.setTimestamp(37, new Timestamp(_createDate.getTimeInMillis()));
-			ps.setLong(38, System.currentTimeMillis()); // last_recom_date
+			ps.setLong(38, System.currentTimeMillis()); // lastAccess
+			ps.setLong(39, System.currentTimeMillis()); // last_recom_date
 			ps.executeUpdate();
 		}
 		catch (Exception e)
@@ -6551,10 +6592,11 @@ public class Player extends Playable
 					player = new Player(objectId, template, rset.getString("account_name"), app);
 					player.setName(rset.getString("char_name"));
 					player._lastAccess = rset.getLong("lastAccess");
-					player.getStat().setExp(rset.getLong("exp"));
+					final PlayerStat stat = player.getStat();
+					stat.setExp(rset.getLong("exp"));
 					player.setExpBeforeDeath(rset.getLong("expBeforeDeath"));
-					player.getStat().setLevel(rset.getByte("level"));
-					player.getStat().setSp(rset.getLong("sp"));
+					stat.setLevel(rset.getByte("level"));
+					stat.setSp(rset.getLong("sp"));
 					
 					player.setWantsPeace(rset.getInt("wantspeace"));
 					
@@ -6790,22 +6832,43 @@ public class Player extends Playable
 		return player;
 	}
 	
-	public Forum getMail()
+	public int getMailPosition()
+	{
+		return _mailPosition;
+	}
+	
+	public void setMailPosition(int mailPosition)
+	{
+		_mailPosition = mailPosition;
+	}
+	
+	public int getMailForumPosition()
+	{
+		final Forum mailForum = getForumMail();
+		if (mailForum == null)
+		{
+			return 0;
+		}
+		
+		return mailForum.getTopicSize();
+	}
+	
+	public Forum getForumMail()
 	{
 		if (_forumMail == null)
 		{
-			setMail(ForumsBBSManager.getInstance().getForumByName("MailRoot").getChildByName(getName()));
+			setForumMail(ForumsBBSManager.getInstance().getForumByName("MailRoot").getChildByName(getName()));
 			
 			if (_forumMail == null)
 			{
 				ForumsBBSManager.getInstance().createNewForum(getName(), ForumsBBSManager.getInstance().getForumByName("MailRoot"), Forum.MAIL, Forum.OWNERONLY, getObjectId());
-				setMail(ForumsBBSManager.getInstance().getForumByName("MailRoot").getChildByName(getName()));
+				setForumMail(ForumsBBSManager.getInstance().getForumByName("MailRoot").getChildByName(getName()));
 			}
 		}
 		return _forumMail;
 	}
 	
-	public void setMail(Forum forum)
+	public void setForumMail(Forum forum)
 	{
 		_forumMail = forum;
 	}
@@ -7159,7 +7222,8 @@ public class Player extends Playable
 							continue;
 						}
 						
-						if (skill.isToggle())
+						// Toggles are skipped, unless they are necessary to be always on.
+						if (skill.isToggle() && !Config.ALT_STORE_TOGGLES)
 						{
 							continue;
 						}
@@ -7277,6 +7341,20 @@ public class Player extends Playable
 	
 	public void startOfflinePlay()
 	{
+		if (hasPremiumStatus() && (Config.DUALBOX_CHECK_MAX_OFFLINEPLAY_PREMIUM_PER_IP > 0) && !AntiFeedManager.getInstance().tryAddPlayer(AntiFeedManager.OFFLINE_PLAY, this, Config.DUALBOX_CHECK_MAX_OFFLINEPLAY_PREMIUM_PER_IP))
+		{
+			String limit = String.valueOf(AntiFeedManager.getInstance().getLimit(this, Config.DUALBOX_CHECK_MAX_OFFLINEPLAY_PER_IP));
+			sendMessage("Only " + limit + " offline players allowed per IP.");
+			return;
+		}
+		else if ((Config.DUALBOX_CHECK_MAX_OFFLINEPLAY_PER_IP > 0) && !AntiFeedManager.getInstance().tryAddPlayer(AntiFeedManager.OFFLINE_PLAY, this, Config.DUALBOX_CHECK_MAX_OFFLINEPLAY_PER_IP))
+		{
+			String limit = String.valueOf(AntiFeedManager.getInstance().getLimit(this, Config.DUALBOX_CHECK_MAX_OFFLINEPLAY_PER_IP));
+			sendMessage("Only " + limit + " offline players allowed per IP.");
+			return;
+		}
+		AntiFeedManager.getInstance().removePlayer(AntiFeedManager.GAME_ID, this);
+		
 		sendPacket(LeaveWorld.STATIC_PACKET);
 		
 		if (Config.OFFLINE_PLAY_SET_NAME_COLOR)
@@ -8050,7 +8128,8 @@ public class Player extends Playable
 		}
 		
 		// is AutoAttackable if both players are in the same duel and the duel is still going on
-		if (attacker.isPlayable() && (_duelState == Duel.DUELSTATE_DUELLING) && (getDuelId() == attacker.getActingPlayer().getDuelId()))
+		final Player attackerPlayer = attacker.asPlayer();
+		if (attacker.isPlayable() && (_duelState == Duel.DUELSTATE_DUELLING) && (getDuelId() == attackerPlayer.getDuelId()))
 		{
 			return true;
 		}
@@ -8062,9 +8141,9 @@ public class Player extends Playable
 		}
 		
 		// Check if the attacker is in olympia and olympia start
-		if (attacker.isPlayer() && attacker.getActingPlayer().isInOlympiadMode())
+		if (attacker.isPlayer() && attackerPlayer.isInOlympiadMode())
 		{
-			return _inOlympiadMode && _olympiadStart && (((Player) attacker).getOlympiadGameId() == getOlympiadGameId());
+			return _inOlympiadMode && _olympiadStart && (attacker.asPlayer().getOlympiadGameId() == getOlympiadGameId());
 		}
 		
 		// Check if the attacker is in an event
@@ -8082,7 +8161,6 @@ public class Player extends Playable
 			}
 			
 			// Get Player
-			final Player attackerPlayer = attacker.getActingPlayer();
 			final Clan clan = getClan();
 			final Clan attackerClan = attackerPlayer.getClan();
 			if ((clan != null) && (attackerClan != null))
@@ -8154,7 +8232,7 @@ public class Player extends Playable
 		
 		if (attacker instanceof Guard)
 		{
-			if (Config.FACTION_SYSTEM_ENABLED && Config.FACTION_GUARDS_ENABLED && ((_isGood && ((Npc) attacker).getTemplate().isClan(Config.FACTION_EVIL_TEAM_NAME)) || (_isEvil && ((Npc) attacker).getTemplate().isClan(Config.FACTION_GOOD_TEAM_NAME))))
+			if (Config.FACTION_SYSTEM_ENABLED && Config.FACTION_GUARDS_ENABLED && ((_isGood && attacker.asNpc().getTemplate().isClan(Config.FACTION_EVIL_TEAM_NAME)) || (_isEvil && attacker.asNpc().getTemplate().isClan(Config.FACTION_GOOD_TEAM_NAME))))
 			{
 				return true;
 			}
@@ -8385,7 +8463,7 @@ public class Player extends Playable
 		// skills can be used on Walls and Doors only during siege
 		if (target.isDoor())
 		{
-			final Door door = (Door) target;
+			final Door door = target.asDoor();
 			if ((door.getCastle() != null) && (door.getCastle().getResidenceId() > 0))
 			{
 				if (!door.getCastle().getSiege().isInProgress())
@@ -8400,7 +8478,7 @@ public class Player extends Playable
 		if (_isInDuel && target.isPlayable())
 		{
 			// Get Player
-			final Player cha = target.getActingPlayer();
+			final Player cha = target.asPlayer();
 			if (cha.getDuelId() != getDuelId())
 			{
 				sendMessage("You cannot do this while duelling.");
@@ -8641,7 +8719,7 @@ public class Player extends Playable
 		
 		if (skill.isDebuff() || skill.hasEffectType(EffectType.STEAL_ABNORMAL) || skill.isBad())
 		{
-			final Player targetPlayer = target.getActingPlayer();
+			final Player targetPlayer = target.asPlayer();
 			if ((targetPlayer == null) || (this == target))
 			{
 				return false;
@@ -10450,6 +10528,22 @@ public class Player extends Playable
 		return _blinkActive.get();
 	}
 	
+	public void addElementSeed(Element element)
+	{
+		_elementSeeds.get(element).incrementAndGet();
+		ThreadPool.schedule(() -> removeElementSeed(element), 5000);
+	}
+	
+	private void removeElementSeed(Element element)
+	{
+		_elementSeeds.get(element).decrementAndGet();
+	}
+	
+	public int getElementSeedCount(Element element)
+	{
+		return _elementSeeds.get(element).get();
+	}
+	
 	@Override
 	public synchronized void addExpAndSp(double addToExp, double addToSp)
 	{
@@ -11845,12 +11939,6 @@ public class Player extends Playable
 	}
 	
 	@Override
-	public Player getActingPlayer()
-	{
-		return this;
-	}
-	
-	@Override
 	public void sendDamageMessage(Creature target, int damage, boolean mcrit, boolean pcrit, boolean miss)
 	{
 		// Check if hit is missed
@@ -11870,7 +11958,7 @@ public class Player extends Playable
 			sendPacket(SystemMessageId.MAGIC_CRITICAL_HIT);
 		}
 		
-		if (isInOlympiadMode() && target.isPlayer() && target.getActingPlayer().isInOlympiadMode() && (target.getActingPlayer().getOlympiadGameId() == getOlympiadGameId()))
+		if (isInOlympiadMode() && target.isPlayer() && target.asPlayer().isInOlympiadMode() && (target.asPlayer().getOlympiadGameId() == getOlympiadGameId()))
 		{
 			Olympiad.getInstance().notifyCompetitorDamage(this, damage, getOlympiadGameId());
 		}
@@ -11966,7 +12054,7 @@ public class Player extends Playable
 		}
 		if (hasSummon())
 		{
-			setCurrentFeed(((Pet) _summon).getCurrentFed());
+			setCurrentFeed(_summon.asPet().getCurrentFed());
 			_controlItemId = _summon.getControlObjectId();
 			sendPacket(new SetupGauge(getObjectId(), 3, (_curFeed * 10000) / getFeedConsume(), (getMaxFeed() * 10000) / getFeedConsume()));
 			if (!isDead())
@@ -12286,12 +12374,30 @@ public class Player extends Playable
 		return _createDate;
 	}
 	
-	/** Friend list. */
-	private final Collection<Integer> _friendList = ConcurrentHashMap.newKeySet();
-	
 	public Collection<Integer> getFriendList()
 	{
 		return _friendList;
+	}
+	
+	public void selectFriend(Integer friendId)
+	{
+		if (!_selectedFriendList.contains(friendId))
+		{
+			_selectedFriendList.add(friendId);
+		}
+	}
+	
+	public void deselectFriend(Integer friendId)
+	{
+		if (_selectedFriendList.contains(friendId))
+		{
+			_selectedFriendList.remove(friendId);
+		}
+	}
+	
+	public List<Integer> getSelectedFriendList()
+	{
+		return _selectedFriendList;
 	}
 	
 	public void restoreFriendList()
@@ -12324,15 +12430,36 @@ public class Player extends Playable
 	
 	private void notifyFriends()
 	{
-		// final FriendStatusPacket pkt = new FriendStatusPacket(getObjectId());
-		// for (int id : _friendList)
-		// {
-		// final Player friend = World.getInstance().getPlayer(id);
-		// if (friend != null)
-		// {
-		// friend.sendPacket(pkt);
-		// }
-		// }
+		final FriendStatusPacket pkt = new FriendStatusPacket(getObjectId());
+		for (int id : _friendList)
+		{
+			final Player friend = World.getInstance().getPlayer(id);
+			if (friend != null)
+			{
+				friend.sendPacket(pkt);
+			}
+		}
+	}
+	
+	public void selectBlock(Integer friendId)
+	{
+		if (!_selectedBlocksList.contains(friendId))
+		{
+			_selectedBlocksList.add(friendId);
+		}
+	}
+	
+	public void deselectBlock(Integer friendId)
+	{
+		if (_selectedBlocksList.contains(friendId))
+		{
+			_selectedBlocksList.remove(friendId);
+		}
+	}
+	
+	public List<Integer> getSelectedBlocksList()
+	{
+		return _selectedBlocksList;
 	}
 	
 	/**
@@ -12410,7 +12537,7 @@ public class Player extends Playable
 						st.addBatch();
 					}
 					st.executeBatch();
-					con.commit();
+					// No need to call con.commit() as HikariCP autocommit is true.
 				}
 			}
 			catch (Exception e)
@@ -12749,11 +12876,11 @@ public class Player extends Playable
 			Player target;
 			if (creature.isSummon())
 			{
-				target = ((Summon) creature).getOwner();
+				target = creature.asSummon().getOwner();
 			}
 			else
 			{
-				target = (Player) creature;
+				target = creature.asPlayer();
 			}
 			
 			if (isInDuel() && target.isInDuel() && (target.getDuelId() == getDuelId()))
@@ -12896,6 +13023,12 @@ public class Player extends Playable
 	public boolean isPlayer()
 	{
 		return true;
+	}
+	
+	@Override
+	public Player asPlayer()
+	{
+		return this;
 	}
 	
 	@Override

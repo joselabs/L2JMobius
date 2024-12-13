@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="91100" name="Fire Dragon Belt - Venir's Blessing Lv. 3" type="Armor">
 		<!-- Inventory Slots +6, Weight Limit +7000, STR/ INT +1, HP Recovery Rate +2.31, MP Recovery Rate +1.54, CP Recovery Rate +3.07, Max HP/ MP/ CP +10%, HP Recovery Potions' Effect +100, P. Critical Damage/ M. Skill Critical Damage +4%. Venir's Blessing Lv. +3 is used. -->
@@ -10,9 +10,15 @@
 		<set name="material" val="CLOTH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
+		<set name="is_freightable" val="true" />
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
+		<skills>
+			<skill id="35047" level="1" /> <!-- Fire Dragon Belt -->
+			<skill id="54029" level="3" /> <!-- Venir's Blessing -->
+		</skills>
 	</item>
 	<item id="91101" name="Golden Fishing Supply Items" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -217,7 +223,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="51028" level="1" type="ON_EQUIP" /> <!-- Release Agathion's Seal - Pisces -->
+			<skill id="51028" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Pisces -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -234,7 +240,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="51029" level="1" type="ON_EQUIP" /> <!-- Release Agathion's Seal - Cancer -->
+			<skill id="51029" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Cancer -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -273,14 +279,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="4" /> <!-- Attribute XP +15% -->
-			<skill id="54023" level="4" /> <!-- Water Attack Defense +80 -->
-		</skills>
 		<stats>
 			<stat type="mDef">96</stat>
 			<stat type="maxMp">42</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="4" /> <!-- Attribute XP Increase -->
+			<skill id="54023" level="4" /> <!-- Water Attack Defense -->
+		</skills>
 	</item>
 	<item id="91117" name="Nebula's Necklace" type="Armor">
 		<!-- MP +50, Water Resistance +100, acquired Attribute XP +30%. Gives additional bonuses after enchanting. -->
@@ -292,16 +298,17 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
+		<set name="enchant_enabled" val="true" />
 		<set name="commissionItemType" val="NECKLACE" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="54027" level="5" /> <!-- Attribute XP +30% -->
-			<skill id="54023" level="5" /> <!-- Water Attack Defense +100 -->
-		</skills>
 		<stats>
 			<stat type="mDef">100</stat>
 			<stat type="maxMp">50</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="5" /> <!-- Attribute XP Increase -->
+			<skill id="54023" level="5" /> <!-- Water Attack Defense -->
+		</skills>
 	</item>
 	<item id="91118" name="Ignis' Old Necklace Lv. 4" type="Armor">
 		<!-- MP +42, Fire Resistance +80, acquired Attribute XP +15%. Cannot be enchanted. -->
@@ -314,14 +321,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="4" /> <!-- Attribute XP +15% -->
-			<skill id="54024" level="4" /> <!-- Fire Attack Defense +80 -->
-		</skills>
 		<stats>
 			<stat type="mDef">96</stat>
 			<stat type="maxMp">42</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="4" /> <!-- Attribute XP Increase -->
+			<skill id="54024" level="4" /> <!-- Fire Attack Defense -->
+		</skills>
 	</item>
 	<item id="91119" name="Ignis' Necklace" type="Armor">
 		<!-- MP +50, Fire Resistance +100, acquired Attribute XP +30%. Gives additional bonuses after enchanting. -->
@@ -335,14 +342,14 @@
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="54027" level="5" /> <!-- Attribute XP +30% -->
-			<skill id="54024" level="5" /> <!-- Fire Attack Defense +100 -->
-		</skills>
 		<stats>
 			<stat type="mDef">100</stat>
 			<stat type="maxMp">50</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="5" /> <!-- Attribute XP Increase -->
+			<skill id="54024" level="5" /> <!-- Fire Attack Defense -->
+		</skills>
 	</item>
 	<item id="91120" name="Procella's Old Necklace Lv. 4" type="Armor">
 		<!-- MP +42, Wind Resistance +80, acquired Attribute XP +15%. Cannot be enchanted. -->
@@ -355,15 +362,15 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="4" /> <!-- Attribute XP +15% -->
-			<skill id="54026" level="4" /> <!-- Earth Attack Defense +80 -->
-		</skills>
 		<stats>
 			<stat type="mDef">96</stat>
 			<stat type="maxMp">42</stat>
 			<stat type="windRes">80</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="4" /> <!-- Attribute XP Increase -->
+			<skill id="54026" level="4" /> <!-- Earth Attack Defense -->
+		</skills>
 	</item>
 	<item id="91121" name="Procella's Necklace" type="Armor">
 		<!-- MP +50, Wind Resistance +100, acquired Attribute XP +30%. Gives additional bonuses after enchanting. -->
@@ -377,14 +384,14 @@
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="54027" level="5" /> <!-- Attribute XP +30% -->
-			<skill id="54025" level="5" /> <!-- Wind Attack Defense +100 -->
-		</skills>
 		<stats>
 			<stat type="mDef">100</stat>
 			<stat type="maxMp">50</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="5" /> <!-- Attribute XP Increase -->
+			<skill id="54025" level="5" /> <!-- Wind Attack Defense -->
+		</skills>
 	</item>
 	<item id="91122" name="Petram's Old Necklace Lv. 4" type="Armor">
 		<!-- MP +42, Earth Resistance +80, acquired Attribute XP +15%. Cannot be enchanted. -->
@@ -397,14 +404,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="4" /> <!-- Attribute XP +15% -->
-			<skill id="54026" level="4" /> <!-- Earth Attack Defense +80 -->
-		</skills>
 		<stats>
 			<stat type="mDef">96</stat>
 			<stat type="maxMp">42</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="4" /> <!-- Attribute XP Increase -->
+			<skill id="54026" level="4" /> <!-- Earth Attack Defense -->
+		</skills>
 	</item>
 	<item id="91123" name="Petram's Necklace" type="Armor">
 		<!-- MP +50, Earth Resistance +100, acquired Attribute XP +30%. Gives additional bonuses after enchanting. -->
@@ -418,14 +425,14 @@
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="54027" level="5" /> <!-- Attribute XP +30% -->
-			<skill id="54026" level="5" /> <!-- Earth Attack Defense +100 -->
-		</skills>
 		<stats>
 			<stat type="mDef">100</stat>
 			<stat type="maxMp">50</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="5" /> <!-- Attribute XP Increase -->
+			<skill id="54026" level="5" /> <!-- Earth Attack Defense -->
+		</skills>
 	</item>
 	<item id="91124" name="Radiant Spirit's Varnish" type="EtcItem">
 		<!-- Enhances characteristics of Spirit's accessories. Can be used on a item enchanted up to +9. If an enchantment is failed, the item doesn't disappear and keep the previous level of enchantment. Depending on the item type, activates special properties from +1 and higher. <font color=ff6666>Cannot be used for mass enchanting.</font> -->
@@ -437,7 +444,7 @@
 		<set name="etcitem_type" val="ENCHT_ATTR_ANCIENT_CRYSTAL_ENCHANT_AM" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
-			<skill id="51097" level="1" /> <!-- Radiant Sayha's Cloak Enchantment Scroll -->
+			<skill id="51097" level="1" /> <!-- Radiant Spirit's Varnish -->
 		</skills>
 	</item>
 	<item id="91125" name="Ignis' Breath" additionalName="Sealed" type="EtcItem">
@@ -532,7 +539,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51101" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Petram -->
+			<skill id="51101" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Ignis -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -587,7 +594,13 @@
 		<set name="is_destroyable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_freightable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<set name="reuse_delay" val="5000" />
+		<skills>
+			<skill id="51108" level="1" /> <!-- Dandy's Golden Ball -->
+		</skills>
 	</item>
 	<item id="91137" name="Windstorm Box" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -620,32 +633,32 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="50441" level="2" /> <!-- Antharas' Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">84</stat>
 			<stat type="maxMp">34</stat>
 		</stats>
+		<skills>
+			<skill id="50441" level="2" /> <!-- Antharas' Earring -->
+		</skills>
 	</item>
 	<item id="91139" name="Antharas' Earring Lv. 3" type="Armor">
-		<!-- MP +40, CON +1, MEN +1, Bleed Atk. Rate and Resistance +30%, Stun Atk. Rate and Resistance +20%, Fear/ Silence Atk. Rate and Resistance +20%, Damage Reflection Resistance +15%, Received Healing +15%, Skill MP Consumption -6%, Vampiric Rage effect +6%. Effects of two identical earrings do not stack. Cannot be enchanted. Take 2 of these earrings to Blacksmith Baggins in Giran to exchange them for Essence of Antharas. -->
+		<!-- MP +40, CON +1, MEN +1, Bleed Atk. Rate and Resistance +30%, Stun Atk. Rate and Resistance +20%, Silence/ Fear Atk. Rate and Resistance +20%, Damage Reflection Resistance +15%, Received Healing +15%, Skill MP Consumption -6%, Vampiric Rage effect +6%. Effects of two identical earrings do not stack. Cannot be enchanted. Take 2 of these earrings to Blacksmith Baggins in Giran to exchange them for Essence of Antharas. -->
 		<set name="icon" val="icon.accessory_earring_of_antaras_i02" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rear;lear" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="50441" level="3" /> <!-- Antharas' Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">94</stat>
 			<stat type="maxMp">40</stat>
 		</stats>
+		<skills>
+			<skill id="50441" level="3" /> <!-- Antharas' Earring -->
+		</skills>
 	</item>
 	<item id="91140" name="Venir's Talisman Lv. 19" additionalName="Sealed" type="Armor">
-		<!-- When equipped, CON/ MEN/ DEX/ WIT/ STR/ INT +4, P./ M. Skill Cooldown -7%. With a certain chance, absorbs 8% of the inflicted damage as HP and 4% as MP. Can be upgraded to higher level with Venir's Talisman Fragment. In case of failure the talisman level drops to 18. Effects of two identical talismans do not stack. -->
+		<!-- When equipped, CON +4, MEN/ DEX/ WIT/ STR/ INT +3. P./ M. Skill Cooldown -7%. With a certain chance, absorbs 8% of the inflicted damage as HP and 4% as MP. Can be upgraded to higher level with Venir's Talisman Fragment. In case of failure the talisman level drops to 18. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -654,6 +667,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<set name="is_depositable" val="true" />
+		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="18024" level="19" /> <!-- Venir's Talisman -->
+		</skills>
 	</item>
 	<item id="91141" name="Venir's Talisman Lv. 20" additionalName="Sealed" type="Armor">
 		<!-- When equipped, CON/ MEN +4, DEX/ WIT/ STR/ INT +3, P./ M. Skill Cooldown -7%. With a certain chance, absorbs 8% of the inflicted damage as HP and 4% as MP. Can be upgraded to higher level with Venir's Talisman Fragment. In case of failure the talisman level drops to 18. Effects of two identical talismans do not stack. -->
@@ -665,6 +683,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<set name="is_depositable" val="true" />
+		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="18024" level="20" /> <!-- Venir's Talisman -->
+		</skills>
 	</item>
 	<item id="91142" name="Venir's Talisman Lv. 21" additionalName="Sealed" type="Armor">
 		<!-- When equipped, CON/ MEN/ DEX +4, WIT/ STR/ INT +3, P./ M. Skill Cooldown -7%. With a certain chance, absorbs 8% of the inflicted damage as HP and 4% as MP. Can be upgraded to higher level with Venir's Talisman Fragment. In case of failure the talisman level drops to 18. Effects of two identical talismans do not stack. -->
@@ -676,6 +699,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<set name="is_depositable" val="true" />
+		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="18024" level="21" /> <!-- Venir's Talisman -->
+		</skills>
 	</item>
 	<item id="91143" name="Venir's Talisman Lv. 22" additionalName="Sealed" type="Armor">
 		<!-- When equipped, CON/ MEN/ DEX/ WIT +4, STR/ INT +3, P./ M. Skill Cooldown -7%. With a certain chance, absorbs 8% of the inflicted damage as HP and 4% as MP. Can be upgraded to higher level with Venir's Talisman Fragment. In case of failure the talisman level drops to 18. Effects of two identical talismans do not stack. -->
@@ -687,6 +715,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<set name="is_depositable" val="true" />
+		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="18024" level="22" /> <!-- Venir's Talisman -->
+		</skills>
 	</item>
 	<item id="91144" name="Venir's Talisman Lv. 23" additionalName="Sealed" type="Armor">
 		<!-- When equipped, CON/ MEN/ DEX/ WIT/ STR +4, INT +3, P./ M. Skill Cooldown -7%. With a certain chance, absorbs 8% of the inflicted damage as HP and 4% as MP. Can be upgraded to higher level with Venir's Talisman Fragment. In case of failure the talisman level drops to 18. Effects of two identical talismans do not stack. -->
@@ -698,9 +731,14 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<set name="is_depositable" val="true" />
+		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="18024" level="23" /> <!-- Venir's Talisman -->
+		</skills>
 	</item>
 	<item id="91145" name="Venir's Talisman Lv. 24" additionalName="Sealed" type="Armor">
-		<!-- When equipped, CON/ MEN/ DEX/ WIT/ STR/ INT +4, P./ M. Skill Cooldown -7%. With a certain chance absorbs 8% of the inflicted damage as HP and 4% as MP. Can be upgraded if combined with the identical talisman. Effects of two identical talismans do not stack. -->
+		<!-- When equipped, CON/ MEN/ DEX/ WIT/ STR/ INT +4, P./ M. Skill Cooldown -7%. With a certain chance, absorbs 16% of the inflicted damage as HP and 8% as MP. Can be upgraded if combined with the identical talisman. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -709,6 +747,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<set name="is_depositable" val="true" />
+		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="18024" level="24" /> <!-- Venir's Talisman -->
+		</skills>
 	</item>
 	<item id="91146" name="Earth Dragon Belt - Venir's Blessing Lv. 4" type="Armor">
 		<!-- Inventory Slots +6, Weight Limit +7000, CON +1, MEN +1, HP Recovery Rate +2.31, MP Recovery Rate +1.54, CP Recovery Rate +3.07, Max HP/ MP/ CP +15%, HP Recovery Potions' Effect +100, Received Damage -6%. Activates Venir's Blessing Lv. 4. -->
@@ -720,6 +763,7 @@
 		<set name="material" val="CLOTH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
@@ -734,6 +778,8 @@
 		<set name="material" val="CLOTH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
+		<set name="is_freightable" val="true" />
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
@@ -748,7 +794,7 @@
 		<set name="material" val="PAPER" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51115" level="1" /> <!-- Hidden Box -->
+			<skill id="51115" level="1" /> <!-- Exquisite Jewel Box -->
 		</skills>
 	</item>
 	<item id="91149" name="+5 Agathion Pack" type="EtcItem">
@@ -879,6 +925,8 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
+		<set name="is_freightable" val="true" />
 		<stats>
 			<stat type="pAtk">155</stat>
 			<stat type="mAtk">70</stat>
@@ -889,12 +937,13 @@
 		</stats>
 	</item>
 	<item id="91155" name="Sibi's Weapon Enchant Scroll" type="EtcItem">
-		<!-- For Sibi's Samurai Black Long Sword only. Starting from +3, P. Atk. +5, M. Atk. +3. Starting from +4, P./ M. Atk. bonus is doubled. Can be enchanted up to +23. -->
+		<!-- For Sibi's Samurai Black Long Sword. Starting from +3, P. Atk. +5, M. Atk. +3. Starting from +4, P./ M. Atk. bonus is doubled. Can be enchanted up to +23. The item will be deleted after the event. -->
 		<set name="icon" val="icon.yogi_scroll_of_enchant_weapon_grade_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_WP" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="handler" val="EnchantScrolls" />
@@ -968,7 +1017,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="50565" level="5" /> <!-- Agathion Bracelet Lv. 1 Lv5 -->
+			<skill id="50565" level="5" /> <!-- Agathion Bracelet Lv. 5 -->
 		</skills>
 	</item>
 	<item id="91162" name="Golden Cheer Pompoms" additionalName="Sealed" type="Weapon">
@@ -1003,6 +1052,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="1" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91164" name="Anakim's Soul Crystal Lv. 2" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +2. - M. Atk. +1% -->
@@ -1012,6 +1064,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="2" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91165" name="Anakim's Soul Crystal Lv. 3" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +3. - M. Atk. +2% -->
@@ -1020,7 +1075,11 @@
 		<set name="immediate_effect" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
+		<set name="weight" val="20" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="3" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91166" name="Anakim's Soul Crystal Lv. 4" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +4. - M. Atk. +2% -->
@@ -1030,6 +1089,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="4" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91167" name="Anakim's Soul Crystal Lv. 5" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +5. - M. Atk. +3% -->
@@ -1039,6 +1101,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="5" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91168" name="Anakim's Soul Crystal Lv. 6" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +6. - M. Atk. +6%. - Recovers 75 MP after basic attacks and attack skills. -->
@@ -1048,6 +1113,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="6" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91169" name="Anakim's Soul Crystal Lv. 7" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +7. - M. Atk. +6%. - Recovers 150 MP after basic attacks and attack skills. -->
@@ -1057,6 +1125,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="7" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91170" name="Anakim's Soul Crystal Lv. 8" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +8. - M. Atk. +7%. - Recovers 225 MP after basic attacks and attack skills. -->
@@ -1066,6 +1137,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="8" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91171" name="Anakim's Soul Crystal Lv. 9" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +9. - M. Atk. +7%. - Recovers 300 MP after basic attacks and attack skills. -->
@@ -1075,6 +1149,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="9" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91172" name="Anakim's Soul Crystal Lv. 10" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Anakim's power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - MP Recovery Rate +10. - M. Atk. +8%. - Recovers 400 MP after basic attacks and attack skills. -->
@@ -1084,6 +1161,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54034" level="10" /> <!-- Anakim's Power -->
+		</skills>
 	</item>
 	<item id="91173" name="Lilith' Soul Crystal Lv. 1" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +1. - P. Atk. +1% -->
@@ -1093,6 +1173,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="1" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91174" name="Lilith' Soul Crystal Lv. 2" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +2. - P. Atk. +1% -->
@@ -1102,6 +1185,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="2" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91175" name="Lilith' Soul Crystal Lv. 3" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +3. - P. Atk. +2% -->
@@ -1111,6 +1197,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="3" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91176" name="Lilith' Soul Crystal Lv. 4" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +4. - P. Atk. +2% -->
@@ -1120,6 +1209,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="4" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91177" name="Lilith' Soul Crystal Lv. 5" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +5. - P. Atk. +3% -->
@@ -1129,6 +1221,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="5" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91178" name="Lilith' Soul Crystal Lv. 6" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +6. - P. Atk. +6%. - Recovers 100 HP after basic attacks and attack skills. -->
@@ -1138,6 +1233,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="6" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91179" name="Lilith' Soul Crystal Lv. 7" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +7. - P. Atk. +6%. - Recovers 200 HP after basic attacks and attack skills. -->
@@ -1147,6 +1245,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="7" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91180" name="Lilith' Soul Crystal Lv. 8" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +8. - P. Atk. +7%. - Recovers 300 HP after basic attacks and attack skills. -->
@@ -1156,6 +1257,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="8" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91181" name="Lilith' Soul Crystal Lv. 9" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +9. - P. Atk. +7%. - Recovers 400 HP after basic attacks and attack skills. -->
@@ -1165,6 +1269,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="9" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91182" name="Lilith' Soul Crystal Lv. 10" additionalName="Rare" type="EtcItem">
 		<!-- A crystal containing Lilith' power. Can be enhanced through compounding. Can be inserted into a weapon by any proficient blacksmith. <Soul crystal properties>. - HP Recovery Rate +10. - P. Atk. +8%. - Recovers 500 HP after basic attacks and attack skills. -->
@@ -1174,6 +1281,9 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="54035" level="10" /> <!-- Lilith' Power -->
+		</skills>
 	</item>
 	<item id="91183" name="Wind Treasure Chest" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -1217,8 +1327,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_tradable" val="false" />
+		<set name="autouse_type" val="ITEM" />
+		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="51126" level="1" /> <!-- Intermediate Spirit's Blessing -->
+			<skill id="51126" level="1" /> <!-- Mid-grade Spirit's Blessing -->
 		</skills>
 	</item>
 	<item id="91186" name="High-grade Spirit's Blessing" additionalName="Sealed" type="EtcItem">
@@ -1233,8 +1345,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_tradable" val="false" />
+		<set name="autouse_type" val="ITEM" />
+		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="51127" level="1" /> <!-- Advanced Spirit's Blessing -->
+			<skill id="51127" level="1" /> <!-- High-grade Spirit's Blessing -->
 		</skills>
 	</item>
 	<item id="91187" name="Scroll: Enchant Spirit Accessory" type="EtcItem">
@@ -1248,7 +1362,7 @@
 		<set name="etcitem_type" val="ENCHT_AM" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
-			<skill id="51128" level="1" /> <!-- Spirit's Varnish -->
+			<skill id="51128" level="1" /> <!-- Scroll: Enchant Spirit Accessory -->
 		</skills>
 	</item>
 	<item id="91188" name="Blessed Scroll: Enchant Spirit Accessory" type="EtcItem">
@@ -1262,7 +1376,7 @@
 		<set name="etcitem_type" val="BLESS_ENCHT_AM" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
-			<skill id="51129" level="1" /> <!-- Blessed Spirit's Varnish -->
+			<skill id="51129" level="1" /> <!-- Blessed Scroll: Enchant Spirit Accessory -->
 		</skills>
 	</item>
 	<item id="91189" name="Fire Attack Potion" type="EtcItem">
@@ -1278,7 +1392,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<skills>
-			<skill id="51130" level="1" /> <!-- Fire Attribute Attack Potion -->
+			<skill id="51130" level="1" /> <!-- Fire Attack Potion -->
 		</skills>
 	</item>
 	<item id="91190" name="Water Attack Potion" type="EtcItem">
@@ -1294,7 +1408,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<skills>
-			<skill id="51131" level="1" /> <!-- Water Attribute Attack Potion -->
+			<skill id="51131" level="1" /> <!-- Water Attack Potion -->
 		</skills>
 	</item>
 	<item id="91191" name="Wind Attack Potion" type="EtcItem">
@@ -1310,7 +1424,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<skills>
-			<skill id="51132" level="1" /> <!-- Wind Attribute Attack Potion -->
+			<skill id="51132" level="1" /> <!-- Wind Attack Potion -->
 		</skills>
 	</item>
 	<item id="91192" name="Earth Attack Potion" type="EtcItem">
@@ -1326,7 +1440,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<skills>
-			<skill id="51133" level="1" /> <!-- Earth Attribute Attack Potion -->
+			<skill id="51133" level="1" /> <!-- Earth Attack Potion -->
 		</skills>
 	</item>
 	<item id="91193" name="Amulet of Winds" additionalName="30-day" type="EtcItem">
@@ -1365,7 +1479,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="35028" level="1" /> <!-- Bracelet of Border Lv.1 -->
+			<skill id="35028" level="1" /> <!-- Bracelet of Border -->
 		</skills>
 	</item>
 	<item id="91196" name="Cat's Eye Lv. 5" additionalName="30-day" type="Armor">

@@ -28,7 +28,7 @@ public class ExCloseCommission extends ServerPacket
 {
 	public static final ExCloseCommission STATIC_PACKET = new ExCloseCommission();
 	
-	private ExCloseCommission()
+	public ExCloseCommission()
 	{
 	}
 	

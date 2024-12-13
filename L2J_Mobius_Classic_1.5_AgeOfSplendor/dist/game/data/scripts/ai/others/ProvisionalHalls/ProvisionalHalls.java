@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.others.ProvisionalHalls;
 
@@ -22,10 +26,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.l2jmobius.gameserver.data.xml.ClanHallData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.residences.ClanHall;
 
 import ai.AbstractNpcAI;
@@ -40,6 +46,7 @@ public class ProvisionalHalls extends AbstractNpcAI
 	private static final int KERRY = 33359;
 	private static final int MAID = 33360;
 	// Misc
+	private static final int CURRENCY = 57;
 	private static final int HALL_PRICE = 50000000;
 	private static final long TWO_WEEKS = 1209600000;
 	private static final Map<Integer, Location> CLAN_HALLS = new LinkedHashMap<>();
@@ -97,11 +104,12 @@ public class ProvisionalHalls extends AbstractNpcAI
 			{
 				final Calendar calendar = Calendar.getInstance();
 				final int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-				if ((player.getClan() == null) || (player.getClan().getLeaderId() != player.getObjectId()))
+				final Clan clan = player.getClan();
+				if ((clan == null) || (clan.getLeaderId() != player.getObjectId()))
 				{
 					player.sendMessage("You need to be a clan leader in order to proceed.");
 				}
-				else if ((player.getClan().getHideoutId() > 0))
+				else if ((clan.getHideoutId() > 0))
 				{
 					player.sendMessage("You already own a hideout.");
 				}
@@ -109,9 +117,9 @@ public class ProvisionalHalls extends AbstractNpcAI
 				{
 					htmltext = "33359-02.html";
 				}
-				else if (player.getAdena() < HALL_PRICE)
+				else if (getQuestItemsCount(player, CURRENCY) < HALL_PRICE)
 				{
-					player.sendMessage("You need " + HALL_PRICE + " adena in order to proceed.");
+					player.sendMessage("You need " + HALL_PRICE + " " + ItemData.getInstance().getTemplate(CURRENCY).getName() + " in order to proceed.");
 				}
 				else
 				{
@@ -128,13 +136,13 @@ public class ProvisionalHalls extends AbstractNpcAI
 					{
 						if ((GlobalVariablesManager.getInstance().getInt(HALL_OWNER_VAR + id, 0) == 0) && ((GlobalVariablesManager.getInstance().getLong(HALL_TIME_VAR + id, 0) + TWO_WEEKS) < System.currentTimeMillis()))
 						{
-							player.reduceAdena("ProvisionalHall", HALL_PRICE, player, true);
+							takeItems(player, CURRENCY, HALL_PRICE);
 							GlobalVariablesManager.getInstance().set(HALL_OWNER_VAR + id, player.getClanId());
 							GlobalVariablesManager.getInstance().set(HALL_TIME_VAR + id, calendar.getTimeInMillis());
 							final ClanHall clanHall = ClanHallData.getInstance().getClanHallById(id);
 							if (clanHall != null)
 							{
-								clanHall.setOwner(player.getClan());
+								clanHall.setOwner(clan);
 							}
 							player.sendMessage("Congratulations! You now own a provisional clan hall!");
 							startQuestTimer("RESET_ORCHID_HALL", TWO_WEEKS - (System.currentTimeMillis() - calendar.getTimeInMillis()), null, null);

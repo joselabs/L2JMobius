@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="80900" name="Bloodstained Akamanah Dual Blunt Weapon" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_dual_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -17,12 +17,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
@@ -33,6 +27,12 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35531" level="1" /> <!-- Bloodstained Akamanah - Warrior -->
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+		</skills>
 	</item>
 	<item id="80901" name="Zariche's Blood" type="EtcItem">
 		<!-- A material for making a Bloodstained Zariche weapon. -->
@@ -124,7 +124,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39542" level="1" /> <!-- Storm Isle's Prolongating Stone -->
+			<skill id="39542" level="1" /> <!-- Fioren's Crystal Prison's Time Stone -->
 		</skills>
 	</item>
 	<item id="80906" name="Primeval Isle's Time Stone" additionalName="Event" type="EtcItem">
@@ -141,7 +141,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39543" level="1" /> <!-- Primeval Isle's Prolongating Stone -->
+			<skill id="39543" level="1" /> <!-- Jamoa's Camp's Time Stone -->
 		</skills>
 	</item>
 	<item id="80907" name="PA Summoning Stick" type="EtcItem">
@@ -168,12 +168,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="33794" min="30000" max="30000" chance="100" /> <!-- Blessed R-grade Spiritshot - Event -->
+			<item id="33794" min="30000" max="30000" chance="100" /> <!-- Spiritshot - Event -->
 			<item id="33640" min="10" max="10" chance="100" /> <!-- Blessed Scroll of Escape -->
 			<item id="48072" min="1" max="1" chance="100" /> <!-- Elementary Seed Bracelet - 15-day -->
 			<item id="48124" min="1" max="1" chance="100" /> <!-- Agathion Charm: Fairy -->
 			<item id="47736" min="15" max="15" chance="100" /> <!-- Pa'agrio's Blessing - Might - Event -->
-			<item id="33780" min="30000" max="30000" chance="100" /> <!-- R-grade Soulshot - Event -->
+			<item id="33780" min="30000" max="30000" chance="100" /> <!-- Soulshot - Event -->
 			<item id="34985" min="1" max="1" chance="100" /> <!-- Talisman of Destruction -->
 			<item id="39634" min="1" max="1" chance="100" /> <!-- Venir's Talisman Lv. 1 -->
 		</capsuled_items>
@@ -190,14 +190,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="33794" min="30000" max="30000" chance="100" /> <!-- Blessed R-grade Spiritshot - Event -->
+			<item id="33794" min="30000" max="30000" chance="100" /> <!-- Spiritshot - Event -->
 			<item id="33640" min="10" max="10" chance="100" /> <!-- Blessed Scroll of Escape -->
 			<item id="38891" min="1" max="1" chance="100" /> <!-- Diamond Lv. 2 -->
 			<item id="38881" min="1" max="1" chance="100" /> <!-- Emerald Lv. 2 -->
 			<item id="38768" min="1" max="1" chance="100" /> <!-- La Vie En Rose's Brooch Lv. 1 -->
 			<item id="47736" min="25" max="25" chance="100" /> <!-- Pa'agrio's Blessing - Might - Event -->
 			<item id="38896" min="1" max="1" chance="100" /> <!-- Pearl Lv. 2 -->
-			<item id="33780" min="30000" max="30000" chance="100" /> <!-- R-grade Soulshot - Event -->
+			<item id="33780" min="30000" max="30000" chance="100" /> <!-- Soulshot - Event -->
 		</capsuled_items>
 	</item>
 	<item id="80910" name="Lv. 100 Achievement Reward Box" type="EtcItem">
@@ -212,11 +212,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="33794" min="30000" max="30000" chance="100" /> <!-- Blessed R-grade Spiritshot - Event -->
+			<item id="33794" min="30000" max="30000" chance="100" /> <!-- Spiritshot - Event -->
 			<item id="33640" min="10" max="10" chance="100" /> <!-- Blessed Scroll of Escape -->
 			<item id="47044" min="1" max="1" chance="100" /> <!-- Commando Belt -->
 			<item id="48848" min="35" max="35" chance="100" /> <!-- Freya's Ice Rose - Event -->
-			<item id="33780" min="30000" max="30000" chance="100" /> <!-- R-grade Soulshot - Event -->
+			<item id="33780" min="30000" max="30000" chance="100" /> <!-- Soulshot - Event -->
 		</capsuled_items>
 	</item>
 	<item id="80911" name="+5 Warrior's Circlet Box" type="EtcItem">
@@ -343,7 +343,7 @@
 			<player MaximumVitalityPoints="140000" />
 		</cond>
 		<skills>
-			<skill id="39547" level="1" /> <!-- Emperor's Vitality Tonic (Event) -->
+			<skill id="39547" level="1" /> <!-- Emperor's Vitality Tonic -->
 		</skills>
 	</item>
 	<item id="80921" name="Lindvior's Treasure Chest" type="EtcItem">
@@ -442,7 +442,7 @@
 		</skills>
 	</item>
 	<item id="80929" name="Package: Mysterious R-grade Soulshots" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain 50,000 Mysterious R-grade Soulshot. -->
+		<!-- Double-click to obtain 50,000 Soulshots. -->
 		<set name="icon" val="icon.br_cash_pack_of_soulshot_r_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -454,11 +454,11 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="22888" min="50000" max="50000" chance="100" /> <!-- Mysterious R-grade Soulshot -->
+			<item id="22888" min="50000" max="50000" chance="100" /> <!-- Mysterious Soulshot -->
 		</capsuled_items>
 	</item>
 	<item id="80930" name="Package: Mysterious Blessed R-grade Spiritshots" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain 20,000 Mysterious Blessed R-grade Spiritshots. -->
+		<!-- Double-click to obtain 20,000 Mysterious Spiritshots. -->
 		<set name="icon" val="icon.br_cash_pack_of_spiritshot_r_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -470,7 +470,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="22889" min="20000" max="20000" chance="100" /> <!-- Mysterious Blessed R-grade Spiritshot -->
+			<item id="22889" min="20000" max="20000" chance="100" /> <!-- Mysterious Spiritshot -->
 		</capsuled_items>
 	</item>
 	<item id="80931" name="Greater Zodiac Agathion Cube" type="EtcItem">
@@ -536,7 +536,7 @@
 		</capsuled_items>
 	</item>
 	<item id="80934" name="Festival Fairy's Crystal Box" additionalName="Event" type="EtcItem">
-		<!-- Double-click to obtain 3-500 R-grade crystals. -->
+		<!-- Double-click to obtain 3-500 crystals. -->
 		<set name="icon" val="icon.event_six_party_box_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_stackable" val="true" />
@@ -551,7 +551,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="reuse_delay" val="0" />
 		<skills>
-			<skill id="39560" level="1" /> <!-- Crystal -->
+			<skill id="39560" level="1" /> <!-- Festival Fairy's Box: Crystals -->
 		</skills>
 	</item>
 	<item id="80935" name="Small Fairy's Lucky Coin Pack" additionalName="Not used" type="EtcItem">
@@ -580,7 +580,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28130" level="1" type="ON_EQUIP" /> <!-- Summon Virgo Agathion -->
+			<skill id="28130" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Virgo -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -595,7 +595,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28131" level="1" type="ON_EQUIP" /> <!-- Summon Capricorn Agathion -->
+			<skill id="28131" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Capricorn -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -610,7 +610,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28132" level="1" type="ON_EQUIP" /> <!-- Summon Libra Agathion -->
+			<skill id="28132" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Libra -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -625,7 +625,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28133" level="1" type="ON_EQUIP" /> <!-- Summon Aries Agathion -->
+			<skill id="28133" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Aries -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -640,7 +640,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28134" level="1" type="ON_EQUIP" /> <!-- Summon Taurus Agathion -->
+			<skill id="28134" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Taurus -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -655,7 +655,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28135" level="1" type="ON_EQUIP" /> <!-- Summon Leo Agathion -->
+			<skill id="28135" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Leo -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -670,7 +670,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28136" level="1" type="ON_EQUIP" /> <!-- Summon Gemini Agathion -->
+			<skill id="28136" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Gemini -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -685,7 +685,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28137" level="1" type="ON_EQUIP" /> <!-- Summon Scorpio Agathion -->
+			<skill id="28137" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Scorpio -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -700,7 +700,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28138" level="1" type="ON_EQUIP" /> <!-- Summon Aquarius Agathion -->
+			<skill id="28138" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Aquarius -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -715,7 +715,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28139" level="1" type="ON_EQUIP" /> <!-- Summon Pisces Agathion -->
+			<skill id="28139" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Pisces -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -730,7 +730,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28140" level="1" type="ON_EQUIP" /> <!-- Summon Sagittarius Agathion -->
+			<skill id="28140" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Sagittarius -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -745,7 +745,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28141" level="1" type="ON_EQUIP" /> <!-- Summon Cancer Agathion -->
+			<skill id="28141" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Cancer -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -860,7 +860,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80957" name="Heavenly Talisman" type="Armor">
-		<!-- Max HP/ MP/ CP +7%, P./ M. Accuracy +2, P./ M. Evasion +2, Vampiric Rage +5%, Atk. Spd./ Casting Spd. +70, P. Critical Rate +30, M. Critical Rate +10, P. Atk. +3%, M. Atk. +3%, Skill Power +7%, Damage Reflection Resistance +40, Fixed Damage Resistance +15%, P. Def. +750, M. Def. +750, all stats +3, MP Consumption -3%, Skill Cooldown -3%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Gran Kain's Scroll: Enchant Talisman. -->
+		<!-- Max HP/ MP/ CP +7%, P./ M. Accuracy +2, P./ M. Evasion +2, Vampiric Rage +5%, Atk. Spd./ Casting Spd. +70, P. Critical Rate +30, M. Critical Rate +1%, P. Atk. +3%, M. Atk. +3%, Skill Power +7%, Damage Reflection Resistance +40, Fixed Damage Resistance +15%, P. Def. +750, M. Def. +750, all stats +3, MP Consumption -3%, Skill Cooldown -3%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Gran Kain's Scroll: Enchant Talisman. -->
 		<set name="icon" val="icon.accessory_heaven_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -872,19 +872,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="8864" level="8" /> <!-- Heavenly Talisman (Insanity lvl 8) -->
-			<skill id="35552" level="1" type="ON_EQUIP" /> <!-- Equip Heavenly Talisman -->
-			<skill id="35553" level="1" type="ON_UNEQUIP" /> <!-- Unequip Heavenly Talisman -->
-			<skill id="36277" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Heavenly Talisman Enchant -->
+			<skill id="8864" level="8" /> <!-- Heavenly Talisman -->
+			<skill id="35552" level="1" type="ON_EQUIP" /> <!-- Heavenly Talisman -->
+			<skill id="35553" level="1" type="ON_UNEQUIP" /> <!-- Remove Heavenly Talisman -->
+			<skill id="36277" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Heavenly Talisman: Enchant Effect -->
 		</skills>
 	</item>
 	<item id="80958" name="Sealed Heavenly Talisman" type="EtcItem">
@@ -912,17 +912,17 @@
 		<set name="material" val="GOLD" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="13569" level="4" /> <!-- Talisman - Lilith -->
-			<skill id="36315" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Epic Talisman Enchant -->
+			<skill id="13569" level="4" /> <!-- Epic Talisman -->
+			<skill id="36315" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Epic Talisman: Enchant Effect -->
 		</skills>
 	</item>
 	<item id="80960" name="Isle of Souls' Time Stone" additionalName="Event" type="EtcItem">
@@ -939,7 +939,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39562" level="1" /> <!-- Isle of Souls' Time Stone(Event) -->
+			<skill id="39562" level="1" /> <!-- Pantheon's Museum's Time Stone -->
 		</skills>
 	</item>
 	<item id="80961" name="Maphr's Blessing" additionalName="1-day" type="EtcItem">
@@ -978,7 +978,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="time" val="480" />
 		<skills>
-			<skill id="35554" level="1" /> <!-- Blood-stained Talisman of Protection Lv1 -->
+			<skill id="35554" level="1" /> <!-- Bloodstained Talisman of Protection -->
 		</skills>
 	</item>
 	<item id="80964" name="Energy of Protection" type="EtcItem">
@@ -1052,7 +1052,7 @@
 			</and>
 		</cond>
 		<skills>
-			<skill id="18345" level="6" /> <!-- Dignity of the Exalted Lv. 6 -->
+			<skill id="18345" level="6" /> <!-- Spellbook: Dignity of the Exalted Lv. 6 -->
 		</skills>
 	</item>
 	<item id="80971" name="Dragon's Relic" type="EtcItem">
@@ -1302,7 +1302,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39565" level="1" /> <!-- Storm Isle's Time Stone -->
+			<skill id="39565" level="1" /> <!-- Fioren's Crystal Prison's Time Stone -->
 		</skills>
 	</item>
 	<item id="80997" name="Primeval Isle's Time Stone" type="EtcItem">
@@ -1315,7 +1315,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39566" level="1" /> <!-- Primeval Isle's Time Stone -->
+			<skill id="39566" level="1" /> <!-- Jamoa's Camp's Time Stone -->
 		</skills>
 	</item>
 	<item id="80998" name="Isle of Souls' Time Stone" type="EtcItem">
@@ -1328,7 +1328,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39567" level="1" /> <!-- Isle of Souls' Time Stone -->
+			<skill id="39567" level="1" /> <!-- Pantheon's Museum's Time Stone -->
 		</skills>
 	</item>
 	<item id="80999" name="My Teleport Book Lv. 2" type="EtcItem">

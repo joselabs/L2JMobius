@@ -231,7 +231,7 @@ public class SocialAction implements IPlayerActionHandler
 		}
 		
 		// Checks for partner.
-		final Player partner = target.getActingPlayer();
+		final Player partner = target.asPlayer();
 		if (partner.isInStoreMode() || partner.isCrafting())
 		{
 			sm = new SystemMessage(SystemMessageId.C1_IS_IN_PRIVATE_STORE_MODE_OR_IN_A_BATTLE_AND_CANNOT_BE_REQUESTED_FOR_A_COUPLE_ACTION);

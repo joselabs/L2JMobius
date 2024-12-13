@@ -44,8 +44,8 @@ public class NotFriendPc implements IAffectObjectHandler
 			return false;
 		}
 		
-		final Player player = creature.getActingPlayer();
-		final Player targetPlayer = target.getActingPlayer();
+		final Player player = creature.asPlayer();
+		final Player targetPlayer = target.asPlayer();
 		
 		if (player != null)
 		{

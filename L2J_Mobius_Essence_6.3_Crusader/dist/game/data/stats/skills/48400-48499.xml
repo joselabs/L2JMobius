@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="48400" toLevel="25" name="Red's Blessing Lv. 1">
 		<!-- STR +1. INT +1. DEX +1. WIT +1. CON +1. MEN +1. The buff levels up every hour granting you various rewards. <Rewards>. Lv. 1-2: Red Libra Coin (Time-limited) 8 pcs. Lv. 3: Red Libra Coin (Time-limited) 12 pcs. Lv. 4: Soulshot Ticket (10 pcs.). Lv. 5-7: Red Libra Coin (Time-limited) 24 pcs. Lv. 8: Spirit Ore (250 pcs.). Lv. 9-11: Red Libra Coin (Time-limited) 25 pcs. Lv. 12: Scroll: Boost Attack (Time-limited) 12 pcs. Lv. 13-15: Red Libra Coin (Time-limited) 25 pcs. Lv. 16: Scroll: Boost Defense (Time-limited) 12 pcs. Lv. 17-19: Red Libra Coin (Time-limited) 25 pcs. Lv. 20: Transformation Scroll (Time-limited) 4 pcs. Lv. 21-23: Red Libra Coin (Time-limited) 25 pcs. Lv. 24: Berserker's Scroll (Time-limited) 12 pcs. Note!. You won't be able to get the renewed buff and a reward if you are dead. You won't be able to get the renewed buff and a reward while teleporting. You won't get a reward if your inventory is full. -->
 		<icon>icon.ev_libra_red_buff1</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="48401" toLevel="9" name="Red's Blessing Reward Lv. 1">
+	<skill id="48401" toLevel="10" name="Red's Blessing Reward Lv. 1">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -13,7 +13,7 @@
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="48403" toLevel="1" name="Decrease Speed">
+	<skill id="48403" toLevel="2" name="Decrease Speed">
 		<!-- Due to Apherus' influence, your Speed is decreased. -->
 		<icon>icon.skill1160</icon>
 		<operateType>A1</operateType>
@@ -333,16 +333,16 @@
 		<!-- Beoro attacks someone beside a pet. Immobilizes the enemy for 30 sec. Cannot be removed by debuff-/ anomaly-cancelling skills. -->
 		<icon>icon.skill4111</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>30</abnormalTime>
-		<hitTime>1500</hitTime>
-		<isMagic>1</isMagic>
-		<canCastWhileDisabled>true</canCastWhileDisabled>
-		<canBeDispelled>false</canBeDispelled>
-		<activateRate>-1</activateRate>
-		<abnormalVisualEffect>FLESH_STONE</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
 		<targetType>TARGET</targetType>
+		<abnormalTime>30</abnormalTime>
+		<abnormalVisualEffect>FLESH_STONE</abnormalVisualEffect>
+		<activateRate>-1</activateRate>
 		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
+		<canCastWhileDisabled>true</canCastWhileDisabled>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic>
 		<effects>
 			<effect name="BlockActions" />
 			<effect name="DamageBlock">
@@ -372,29 +372,29 @@
 	<skill id="48473" toLevel="1" name="Beoro's Fear">
 		<!-- Afflicted with Fear and moving against own will. -->
 		<icon>icon.skill1092</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
-		<trait>INFECTION</trait>
 		<activateRate>200</activateRate>
+		<affectLimit>70-80</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>900</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-700</effectPoint>
+		<hitTime>1500</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
-		<operateType>A2</operateType>
-		<coolTime>500</coolTime>
-		<hitTime>1000</hitTime>
-		<effectPoint>-137</effectPoint>
 		<magicCriticalRate>5</magicCriticalRate>
-		<trait>DERANGEMENT</trait>
-		<affectLimit>70-80</affectLimit>
-		<affectRange>900</affectRange>
 		<magicLevel>90</magicLevel>
 		<mpConsume>57</mpConsume>
 		<reuseDelay>60000</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<trait>DERANGEMENT</trait>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="BlockControl" />
 			<effect name="Fear" />
@@ -409,7 +409,9 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48475" toLevel="3" name="Cave Control Device Effect">
-		<!-- A buff for the members of the clan that captured the Cave Control Device. Acquired XP +10%. Acquired SP +10% -->
+		<!-- Level 1: A buff for the members of the clan that captured the Cave Control Device. Acquired XP +10%. Acquired SP +10% -->
+		<!-- Level 2: A buff for the members of the clan that captured the Cave Control Device. Acquired XP +20%. Acquired SP +20% -->
+		<!-- Level 3: A buff for the members of the clan that captured the Cave Control Device. Acquired XP +30%. Acquired SP +30% -->
 		<icon>
 			<value level="1">icon.skill_exp_sp_up_01</value>
 			<value level="2">icon.skill_exp_sp_up_02</value>
@@ -417,8 +419,8 @@
 		</icon>
 		<operateType>A2</operateType>
 		<abnormalTime>-1</abnormalTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<canBeDispelled>false</canBeDispelled>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<effects>
 			<effect name="ExpModify">
 				<amount>
@@ -498,28 +500,28 @@
 	<skill id="48489" toLevel="1" name="Training Time">
 		<!-- Helps you train in the instance zone. Sustains Sayha's Grace. -->
 		<icon>icon.skill6024</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 	</skill>
 	<skill id="48490" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. P. Atk. +1000 -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -528,17 +530,17 @@
 	<skill id="48491" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. M. Atk. +1000 -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>1000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -547,15 +549,15 @@
 	<skill id="48492" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. Atk. Spd. +24% -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>24</amount>
@@ -566,15 +568,15 @@
 	<skill id="48493" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. Casting Spd. +24% -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
 			<effect name="MagicalAttackSpeed">
 				<amount>24</amount>
@@ -585,15 +587,15 @@
 	<skill id="48494" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. P. Skill Critical Rate +11% -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
 			<effect name="PhysicalSkillCriticalRate">
 				<amount>11</amount>
@@ -604,15 +606,15 @@
 	<skill id="48495" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. M. Skill Critical Rate +21% -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
 			<effect name="PveMagicalSkillDamageBonus">
 				<amount>21</amount>
@@ -623,15 +625,15 @@
 	<skill id="48496" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. All Critical Damage +500 -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
 			<effect name="CriticalDamage">
 				<amount>500</amount>
@@ -653,15 +655,15 @@
 	<skill id="48498" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. Skill Power +10% -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
 			<effect name="PhysicalSkillPower">
 				<amount>10</amount>
@@ -676,15 +678,15 @@
 	<skill id="48499" toLevel="1" name="Mentor's Advice">
 		<!-- Your mentor's valuable advice makes you stronger. All Critical Damage +15% -->
 		<icon>icon.skill30852</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>H_DEBUFF_SELF_B_AVE</abnormalVisualEffect>
-		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic>
 		<effects>
 			<effect name="MagicCriticalDamage">
 				<amount>15</amount>

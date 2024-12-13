@@ -92,7 +92,7 @@ public class FriendlyNpcAI extends AttackableAI
 		}
 		
 		final WorldObject target = getTarget();
-		final Creature originalAttackTarget = (target != null) && target.isCreature() ? (Creature) target : null;
+		final Creature originalAttackTarget = (target != null) && target.isCreature() ? target.asCreature() : null;
 		// Check if target is dead or if timeout is expired to stop this attack
 		if ((originalAttackTarget == null) || originalAttackTarget.isAlikeDead())
 		{

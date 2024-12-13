@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package quests.Q00230_TestOfTheSummoner;
 
@@ -717,15 +721,15 @@ public class Q00230_TestOfTheSummoner extends Quest
 			return super.onDeath(killer, victim, st);
 		}
 		
-		switch (((Npc) killer).getId())
+		switch (killer.asNpc().getId())
 		{
 			case PAKO_THE_CAT:
 			{
 				if (st.getInt("Almors") == 3)
 				{
 					st.set("Almors", "4");
-					playSound(killer.getActingPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					giveItems(killer.getActingPlayer(), CRYSTAL_OF_DEFEAT_1, 1);
+					playSound(killer.asPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					giveItems(killer.asPlayer(), CRYSTAL_OF_DEFEAT_1, 1);
 				}
 				break;
 			}
@@ -734,8 +738,8 @@ public class Q00230_TestOfTheSummoner extends Quest
 				if (st.getInt("Camoniell") == 3)
 				{
 					st.set("Camoniell", "4");
-					playSound(killer.getActingPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					giveItems(killer.getActingPlayer(), CRYSTAL_OF_DEFEAT_2, 1);
+					playSound(killer.asPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					giveItems(killer.asPlayer(), CRYSTAL_OF_DEFEAT_2, 1);
 				}
 				break;
 			}
@@ -744,8 +748,8 @@ public class Q00230_TestOfTheSummoner extends Quest
 				if (st.getInt("Belthus") == 3)
 				{
 					st.set("Belthus", "4");
-					playSound(killer.getActingPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					giveItems(killer.getActingPlayer(), CRYSTAL_OF_DEFEAT_3, 1);
+					playSound(killer.asPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					giveItems(killer.asPlayer(), CRYSTAL_OF_DEFEAT_3, 1);
 				}
 				break;
 			}
@@ -754,8 +758,8 @@ public class Q00230_TestOfTheSummoner extends Quest
 				if (st.getInt("Basilla") == 3)
 				{
 					st.set("Basilla", "4");
-					playSound(killer.getActingPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					giveItems(killer.getActingPlayer(), CRYSTAL_OF_DEFEAT_4, 1);
+					playSound(killer.asPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					giveItems(killer.asPlayer(), CRYSTAL_OF_DEFEAT_4, 1);
 				}
 				break;
 			}
@@ -764,8 +768,8 @@ public class Q00230_TestOfTheSummoner extends Quest
 				if (st.getInt("Celestiel") == 3)
 				{
 					st.set("Celestiel", "4");
-					playSound(killer.getActingPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					giveItems(killer.getActingPlayer(), CRYSTAL_OF_DEFEAT_5, 1);
+					playSound(killer.asPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					giveItems(killer.asPlayer(), CRYSTAL_OF_DEFEAT_5, 1);
 				}
 				break;
 			}
@@ -774,8 +778,8 @@ public class Q00230_TestOfTheSummoner extends Quest
 				if (st.getInt("Brynthea") == 3)
 				{
 					st.set("Brynthea", "4");
-					playSound(killer.getActingPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					giveItems(killer.getActingPlayer(), CRYSTAL_OF_DEFEAT_6, 1);
+					playSound(killer.asPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					giveItems(killer.asPlayer(), CRYSTAL_OF_DEFEAT_6, 1);
 				}
 				break;
 			}

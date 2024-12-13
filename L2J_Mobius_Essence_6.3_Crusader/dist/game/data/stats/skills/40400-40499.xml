@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="40400" toLevel="1" name="Special Equipment Challenge Point Efficiency Boost - 2 Charges">
 		<icon>icon.skill0000</icon>
@@ -50,13 +50,13 @@
 	<skill id="40411" toLevel="1" name="Spellbook: Mount Red Wyvern">
 		<!-- Double-click to learn how to ride Red Wyvern. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>1500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97203</itemConsumeId> <!-- Spellbook: Mount Red Wyvern -->
-		<operateType>A1</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="SetSkill">
 				<skillId>54240</skillId> <!-- Mount Red Wyvern -->
@@ -67,14 +67,14 @@
 	<skill id="40412" toLevel="1" name="Scroll of Escape: Guardian Tanai">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97230</itemConsumeId> <!-- Scroll of Escape: Guardian Tanai -->
-		<magicLevel>1</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -93,14 +93,14 @@
 	<skill id="40413" toLevel="1" name="Scroll of Escape: Gantaki Zu Urutu">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97231</itemConsumeId> <!-- Scroll of Escape: Gantaki Zu Urutu -->
-		<magicLevel>1</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -180,23 +180,23 @@
 	</skill>
 	<skill id="40428" toLevel="1" name="Scroll of Blessing: Armor">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40429" toLevel="1" name="Scroll of Blessing: Armor">
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="40430" toLevel="1" name="Scroll of Blessing (Test)">
 		<icon>icon.skill0000</icon>
@@ -217,11 +217,49 @@
 	<skill id="40434" toLevel="1" name="Extra Pass: Transcendent Instance Zone">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>97425</itemConsumeId> <!-- Extra Pass: Transcendent Instance Zone (Time-limited) -->
+		<reuseDelay>86400</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<conditions>
+			<condition name="OpNotInstantzone" />
+			<condition name="CanAddMaxEntranceInzone">
+				<instanceId>208;209;210;211;212;213</instanceId>
+				<amount>1</amount>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="ResetInstanceEntry">
+				<instanceId>208;209;210;211;212;213;215</instanceId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40435" toLevel="1" name="Red Lantern (Time-limited)">
 		<!-- A magic lantern given as a reward for the 1st place. Prize: XP +100,000,000, SP +2,700,000. Cannot be exchanged, dropped or sold in the private store. Can be stored in the private warehouse. -->
 		<icon>icon.etc_holy_grail_i00</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>97425</itemConsumeId> <!-- Extra Pass: Transcendent Instance Zone (Time-limited) -->
+		<reuseDelay>86400</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<conditions>
+			<condition name="OpNotInstantzone" />
+			<condition name="CanAddMaxEntranceInzone">
+				<instanceId>208;209;210;211;212;213</instanceId>
+				<amount>1</amount>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="ResetInstanceEntry">
+				<instanceId>208;209;210;211;212;213;215</instanceId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40436" toLevel="1" name="Purple Lantern (Time-limited)">
 		<!-- A magic lantern given as a reward for the 2nd place. Prize: XP +30,000,000, SP +810,000. Cannot be exchanged, dropped or sold in the private store. Can be stored in the private warehouse. -->
@@ -245,7 +283,30 @@
 	<skill id="40440" toLevel="1" name="Einhasad's Protection">
 		<!-- Acquired XP +100%. Acquired SP +100%. The effect remains after death. -->
 		<icon>icon.etc_dragons_blood_i03</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>0</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount> <!-- Einhasad's Protection (Exchangeable) -->
+		<itemConsumeId>97438</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>60000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
+		<effects>
+			<effect name="ExpModify">
+				<amount>100</amount>
+			</effect>
+			<effect name="SpModify">
+				<amount>100</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40441" toLevel="1" name="Extra Pass: Leona's Dungeon - Event">
 		<icon>icon.skill0000</icon>
@@ -263,11 +324,11 @@
 	<skill id="40444" toLevel="1" name="Mid-grade HP Recovery Potion">
 		<!-- Instantly restores 200 HP. If HP is full, CP is restored. -->
 		<icon>icon.skill0000</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="HpCpHeal">
 				<power>200</power>
@@ -286,6 +347,26 @@
 	<skill id="40447" toLevel="1" name="Tower of Insolence's Time Stone">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>97975</itemConsumeId> <!-- Tower of Insolence's Time Stone (Time-limited) Time Stone -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>80</minLevel>
+				<maxLevel>999</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="AddHuntingTime">
+				<zoneId>26</zoneId>
+				<time>3600000</time>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40448" toLevel="1" name="Stable Scroll: Enchant Rare Accessories">
 		<icon>icon.skill0000</icon>
@@ -295,9 +376,9 @@
 		<!-- Summons Genie from the Magic Lamp. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>60000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<reuseDelay>60000</reuseDelay>
 		<effects>
 			<effect name="SummonNpc">
 				<npcId>34369</npcId> <!-- Genie -->
@@ -308,16 +389,16 @@
 	</skill>
 	<skill id="40450" toLevel="1" name="Facelifting Potion D">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97944</itemConsumeId> <!-- Facelifting Potion D -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeFace">
 				<value>3</value>
@@ -326,16 +407,16 @@
 	</skill>
 	<skill id="40451" toLevel="1" name="Facelifting Potion E">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97945</itemConsumeId> <!-- Facelifting Potion E -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeFace">
 				<value>4</value>
@@ -344,16 +425,16 @@
 	</skill>
 	<skill id="40452" toLevel="1" name="Hairstyle Change Potion H">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97946</itemConsumeId> <!-- Hair Style Change Potion H -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeHairStyle">
 				<value>7</value>
@@ -362,16 +443,16 @@
 	</skill>
 	<skill id="40453" toLevel="1" name="Hairstyle Change Potion I">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97948</itemConsumeId> <!-- Hair Style Change Potion I -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeHairStyle">
 				<value>8</value>
@@ -380,16 +461,16 @@
 	</skill>
 	<skill id="40454" toLevel="1" name="Hairstyle Change Potion J">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97948</itemConsumeId> <!-- Hair Style Change Potion J -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeHairStyle">
 				<value>9</value>
@@ -398,16 +479,16 @@
 	</skill>
 	<skill id="40455" toLevel="1" name="Hairstyle Change Potion K">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97949</itemConsumeId> <!-- Hair Style Change Potion K -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeHairStyle">
 				<value>10</value>
@@ -416,16 +497,16 @@
 	</skill>
 	<skill id="40456" toLevel="1" name="Hairstyle Change Potion L">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97950</itemConsumeId> <!-- Hair Style Change Potion L -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeHairStyle">
 				<value>11</value>
@@ -439,22 +520,43 @@
 	<skill id="40458" toLevel="1" name="Tower of Insolence's Time Stone">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>97830</itemConsumeId> <!-- Tower of Insolence's Time Stone -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>80</minLevel>
+				<maxLevel>999</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="AddHuntingTime">
+				<zoneId>26</zoneId>
+				<time>3600000</time>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40459" toLevel="1" name="Crystal of Insolence">
 		<!-- Magic Lamp charging rate +5%. P. Atk. +50. M. Atk. +50. Note!. Cannot be used with items that apply the Magic Lamp charging rate effect. -->
 		<icon>icon.etc_holy_crystal_1_i00</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>60000</reuseDelay>
+		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>97981</itemConsumeId> <!-- Crystal of Insolence (Time-limited) -->
+		<reuseDelay>60000</reuseDelay>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -465,15 +567,15 @@
 	</skill>
 	<skill id="40460" toLevel="1" name="MP Recovery Elixir">
 		<icon>icon.etc_lesser_potion_blue_i00</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<itemConsumeId>98033</itemConsumeId> <!-- MP Recovery Elixir -->
-		<itemConsumeCount>1</itemConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>98033</itemConsumeId> <!-- MP Recovery Elixir -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="Mp">
 				<amount>30</amount>
@@ -484,6 +586,27 @@
 	<skill id="40461" toLevel="1" name="Tower of Insolence's Time Stone - Sealed">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>98034</itemConsumeId> <!-- Tower of Insolence's Time Stone - Sealed -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>80</minLevel>
+				<maxLevel>999</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="AddHuntingTime">
+				<zoneId>26</zoneId>
+				<time>3600000</time>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="40462" toLevel="1" name="Stable Scroll: Enchant Cloak of Protection">
 		<icon>icon.skill0000</icon>
@@ -500,16 +623,16 @@
 	</skill>
 	<skill id="40465" toLevel="1" name="Hairstyle Change Potion F">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>98087</itemConsumeId> <!-- Hair Style Change Potion - F -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeHairStyle">
 				<value>5</value>
@@ -518,16 +641,16 @@
 	</skill>
 	<skill id="40466" toLevel="1" name="Hairstyle Change Potion G">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>98088</itemConsumeId> <!-- Hair Style Change Potion - G -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ChangeHairStyle">
 				<value>6</value>

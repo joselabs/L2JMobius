@@ -46,7 +46,7 @@ public class OpChangeWeaponSkillCondition implements ISkillCondition
 			return false;
 		}
 		
-		if (caster.getActingPlayer().hasItemRequest())
+		if (caster.asPlayer().hasItemRequest())
 		{
 			return false;
 		}

@@ -26,7 +26,7 @@
 		</stats>
 	</item>
 	<item id="37701" name="Valentine Dual Blunt Weapon" type="Weapon">
-		<!-- Can be used for changing a weapon's appearance to that of Valentine Dual Blunt Weapon. -->
+		<!-- Can be used for changing a weapon's appearance to that of Valentine Dual Blunt Weapons. -->
 		<set name="icon" val="icon.ev_hallowinday_candy_i00" />
 		<set name="weapon_type" val="DUALBLUNT" />
 		<set name="default_action" val="EQUIP" />
@@ -67,7 +67,7 @@
 		</stats>
 	</item>
 	<item id="37703" name="Valentine Sigil" type="Armor">
-		<!-- Modifies the appearance of a sigil. -->
+		<!-- Can be used for changing a weapon's appearance to that of a Valentine weapon. -->
 		<set name="icon" val="icon.ev_hallowinday_candy_i00" />
 		<set name="armor_type" val="SIGIL" />
 		<set name="default_action" val="EQUIP" />
@@ -83,7 +83,7 @@
 		</stats>
 	</item>
 	<item id="37704" name="Love Potion" type="EtcItem">
-		<!-- Herb that modifies the appearance of weapons for Valentine's Day. -->
+		<!-- Can be used for changing a weapon's appearance to that of a Valentine weapon. -->
 		<set name="icon" val="icon.etc_whiteday_herb" />
 		<set name="immediate_effect" val="true" />
 		<set name="ex_immediate_effect" val="true" />
@@ -253,7 +253,7 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<skills>
-			<skill id="13569" level="1" /> <!-- Talisman - Lilith -->
+			<skill id="13569" level="1" /> <!-- Talisman of Lilith -->
 		</skills>
 	</item>
 	<item id="37715" name="Talisman of Anakim" type="Armor">
@@ -268,7 +268,7 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<skills>
-			<skill id="13569" level="2" /> <!-- Talisman - Lilith -->
+			<skill id="13569" level="2" /> <!-- Talisman of Anakim -->
 		</skills>
 	</item>
 	<item id="37716" name="Seven Signs' Energy" type="EtcItem">
@@ -289,11 +289,11 @@
 		<set name="weight" val="150" />
 		<set name="material" val="GOLD" />
 		<skills>
-			<skill id="13569" level="3" /> <!-- Talisman - Lilith -->
+			<skill id="13569" level="3" /> <!-- Talisman of Seven Signs -->
 		</skills>
 	</item>
 	<item id="37718" name="Shiny Elemental Shirt" type="Armor">
-		<!-- Shining magic shirt containing Einhasad's energy. It can be enchanted up to +10 using Enchant Scroll: Elemental Shirt. When enchanted to +4 or higher, passive stats are increased. When enchanted to +6 or higher, various active skills are bestowed. -->
+		<!-- A shining magic shirt filled with Einhasad's energy. Can be enchanted up to +10 with Scroll: Enchant Shirt. Starting from +4, increases passive stats. Starting from +6, enables various skills. -->
 		<set name="icon" val="icon.ainhasard_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -301,18 +301,22 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<set name="weight" val="130" />
 		<set name="material" val="CRYSTAL" />
+		<stats>
+			<stat type="pDef">28</stat>
+		</stats>
 		<skills>
 			<skill id="13563" level="1" type="ON_ENCHANT" type_value="6" /> <!-- Einhasad's Wrath -->
 			<skill id="13563" level="2" type="ON_ENCHANT" type_value="7" /> <!-- Einhasad's Wrath -->
 			<skill id="13563" level="3" type="ON_ENCHANT" type_value="8" /> <!-- Einhasad's Wrath -->
 			<skill id="13563" level="4" type="ON_ENCHANT" type_value="9" /> <!-- Einhasad's Wrath -->
 			<skill id="13563" level="5" type="ON_ENCHANT" type_value="10" /> <!-- Einhasad's Wrath -->
-			<skill id="13564" level="1" type="ON_ENCHANT" type_value="7" /> <!-- Einhasad's Protection -->
-			<skill id="13564" level="2" type="ON_ENCHANT" type_value="8" /> <!-- Einhasad's Protection -->
-			<skill id="13564" level="3" type="ON_ENCHANT" type_value="9" /> <!-- Einhasad's Protection -->
-			<skill id="13564" level="4" type="ON_ENCHANT" type_value="10" /> <!-- Einhasad's Protection -->
+			<skill id="13564" level="1" type="ON_ENCHANT" type_value="7" /> <!-- Einhasad's Shelter -->
+			<skill id="13564" level="2" type="ON_ENCHANT" type_value="8" /> <!-- Einhasad's Shelter -->
+			<skill id="13564" level="3" type="ON_ENCHANT" type_value="9" /> <!-- Einhasad's Shelter -->
+			<skill id="13564" level="4" type="ON_ENCHANT" type_value="10" /> <!-- Einhasad's Shelter -->
 			<skill id="13565" level="1" type="ON_ENCHANT" type_value="8" /> <!-- Einhasad's Silence -->
 			<skill id="13565" level="2" type="ON_ENCHANT" type_value="9" /> <!-- Einhasad's Silence -->
 			<skill id="13565" level="3" type="ON_ENCHANT" type_value="10" /> <!-- Einhasad's Silence -->
@@ -320,9 +324,6 @@
 			<skill id="13566" level="2" type="ON_ENCHANT" type_value="10" /> <!-- Einhasad's Salvation -->
 			<skill id="13567" level="1" type="ON_ENCHANT" type_value="10" /> <!-- Einhasad's Blessing -->
 		</skills>
-		<stats>
-			<stat type="pDef">28</stat>
-		</stats>
 	</item>
 	<item id="37719" name="Pa'agrio's Special Pack" type="EtcItem">
 		<!-- Double-click to obtain Pa'agrio's Shirt or, with a very low chance, Shiny Elemental Shirt. Note!. Once the pack is opened, the shirt is bound to the character and cannot be traded. -->
@@ -385,7 +386,7 @@
 		</capsuled_items>
 	</item>
 	<item id="37723" name="Shiny Elemental Shirt Exchange Stone" type="EtcItem">
-		<!-- A stone needed to exchange a shirt enchanted to +8 for the same shirt enchanted to +10. Note!. The shirt cannot be traded, dropped or sold after exchanging. -->
+		<!-- A stone for exchanging a shirt enchanted to +8 for the same shirt enchanted to +10. Note!. After the exchange the shirt cannot be traded, dropped or sold. -->
 		<set name="icon" val="icon.shirt_stone" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -431,7 +432,7 @@
 			<item id="37733" min="1" max="1" chance="100" /> <!-- Blessed Valakas' Necklace - 7-day -->
 			<item id="37734" min="1" max="1" chance="100" /> <!-- Tauti's Ring - 7-day -->
 			<item id="37735" min="1" max="1" chance="100" /> <!-- Earth Wyrm's Heart Ring - 7-day -->
-			<item id="37736" min="1" max="1" chance="100" /> <!-- Blessed Zaken's Earring - 7-day -->
+			<item id="37736" min="1" max="1" chance="100" /> <!-- Immortal Zaken's Earring - 7-day -->
 			<item id="37737" min="1" max="1" chance="100" /> <!-- Ruler's Authority - 7-day -->
 		</capsuled_items>
 	</item>
@@ -452,7 +453,7 @@
 		</capsuled_items>
 	</item>
 	<item id="37729" name="Dandy's Scroll: Faith" type="EtcItem">
-		<!-- For 60 min., P. Atk. +5%, Atk. Spd. +5%, P. Critical Rate +30, M. Atk. +10%, Casting Spd. +5%, M. Skill Critical Rate +20, MP Consumption -3%, Skill Cooldown -3%. Does not stack with the Dandy's Cheer and Dandy's Passion buffs. -->
+		<!-- For 60 min., P. Atk. +5%, Atk. Spd. +5%, P. Critical Rate +30, M. Atk. +10%, Casting Spd. +5%, M. Skill Critical Rate +2%, MP Consumption -3%, Skill Cooldown -3%. Does not stack with the Dandy's Cheer and Dandy's Passion buffs. -->
 		<set name="icon" val="BranchSys.icon.br_xmas_scroll_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -466,7 +467,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="17188" level="1" /> <!-- Dandy's Scroll: Faith -->
+			<skill id="17188" level="1" /> <!-- Dandy's Faith -->
 		</skills>
 	</item>
 	<item id="37730" name="Dandy's Scroll: Passion" type="EtcItem">
@@ -484,7 +485,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="17189" level="1" /> <!-- Dandy's Scroll: Passion -->
+			<skill id="17189" level="1" /> <!-- Dandy's Passion -->
 		</skills>
 	</item>
 	<item id="37731" name="Dandy's Scroll: Challenge" type="EtcItem">
@@ -502,7 +503,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="17187" level="1" /> <!-- Dandy's Scroll: Challenge -->
+			<skill id="17187" level="1" /> <!-- Dandy's Challenge -->
 		</skills>
 	</item>
 	<item id="37732" name="Blessed Antharas' Earring" additionalName="7-day" type="Armor">
@@ -516,16 +517,16 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="material" val="GOLD" />
+		<stats>
+			<stat type="mDef">170</stat>
+		</stats>
 		<skills>
 			<skill id="13313" level="1" /> <!-- Blessed Antharas' Earring -->
 			<skill id="13314" level="1" /> <!-- Blessed Antharas' Earring -->
 		</skills>
-		<stats>
-			<stat type="mDef">170</stat>
-		</stats>
 	</item>
 	<item id="37733" name="Blessed Valakas' Necklace" additionalName="7-day" type="Armor">
-		<!-- MP +79, Max HP +625, P. Atk. +10%, M. Atk. +20%, M. Skill Critical Rate +20, STR/ INT +3, Fire Resistance +30, Dark Resistance +20, Stupor Atk. Rate and Resistance +50%, P. Skill Power +5%, Skill Cooldown -10%, Damage Reflection +5%. Active skill: Removes Hold debuffs and grants immunity to Obstruction for 5 sec. Cannot be used in the Olympiad. -->
+		<!-- MP +79, Max HP +625, P. Atk. +10%, M. Atk. +20%, M. Skill Critical Rate +2%, STR/ INT +3, Fire Resistance +30, Dark Resistance +20, Stupor Atk. Rate and Resistance +50%, P. Skill Power +5%, Skill Cooldown -10%, Damage Reflection +5%. Active skill: Removes Hold debuffs and grants immunity to Obstruction for 5 sec. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.accessory_necklace_of_valakas_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -535,13 +536,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="material" val="GOLD" />
+		<stats>
+			<stat type="mDef">226</stat>
+		</stats>
 		<skills>
 			<skill id="13315" level="1" /> <!-- Blessed Valakas' Necklace -->
 			<skill id="13316" level="1" /> <!-- Blessed Valakas' Necklace -->
 		</skills>
-		<stats>
-			<stat type="mDef">226</stat>
-		</stats>
 	</item>
 	<item id="37734" name="Tauti's Ring" additionalName="7-day" type="Armor">
 		<!-- Fire/ Dark Resistance +25, MP +38, Critical Damage for basic attacks +15%, P. Skill Power +5%, PvP damage +5%, Confusion/ Obstruction Resistance +10, Damage Reflection Resistance +5, Blood Siphon Resistance +5, received PvP damage -5%. When using a blunt weapon, P. Critical Rate +54. Effects of two identical rings do not stack (excluding M. Def. and Attribute Resistance). Cannot be used in the Olympiad. -->
@@ -554,15 +555,15 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="material" val="GOLD" />
-		<skills>
-			<skill id="8870" level="1" /> <!-- Tauti's Ring -->
-		</skills>
 		<stats>
 			<stat type="mDef">108</stat>
 			<stat type="fireRes">25</stat>
 			<stat type="darkRes">25</stat>
 			<stat type="maxMp">38</stat>
 		</stats>
+		<skills>
+			<skill id="8870" level="1" /> <!-- Tauti's Ring -->
+		</skills>
 	</item>
 	<item id="37735" name="Earth Wyrm's Heart Ring" additionalName="7-day" type="Armor">
 		<!-- MP +38, P./ M. Debuff Resistance +15, MP Recovery Rate +3, Critical Damage for basic attacks +20%, P. Accuracy +5, Infection Atk. Rate and Resistance +50%, Danger Zone/ Confusion Resistance +20%, Atk. Spd./ Casting Spd. +6%, Wind/ Water Resistance +30. Effects of two identical rings do not stack. Cannot be used in the Olympiad. <Active skills>. Heartbeat Accelerate: For 5 min., party members' Atk. Spd./ Casting Spd. +5%, Vampiric Rage effect +2% (cooldown: 2 h.). Blue Blood: Removes Infection debuffs (cooldown: 2 h.). -->
@@ -575,14 +576,14 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="material" val="SILVER" />
-		<skills>
-			<skill id="13318" level="1" /> <!-- Earth Wyrm Heart Ring -->
-			<skill id="13319" level="1" /> <!-- Earth Wyrm Heart Ring -->
-			<skill id="13317" level="1" /> <!-- Earth Wyrm Heart Ring -->
-		</skills>
 		<stats>
 			<stat type="mDef">108</stat>
 		</stats>
+		<skills>
+			<skill id="13318" level="1" /> <!-- Earth Wyrm's Heart Ring - Heartbeat Accelerate -->
+			<skill id="13319" level="1" /> <!-- Earth Wyrm's Heart Ring - Blue Blood -->
+			<skill id="13317" level="1" /> <!-- Earth Wyrm's Heart Ring -->
+		</skills>
 	</item>
 	<item id="37736" name="Blessed Zaken's Earring" additionalName="7-day" type="Armor">
 		<!-- MP +37, Infection Atk. Rate and Resistance +30%, Received Healing +15%, Confusion Atk. Rate and Resistance +30%, Dark Resistance +15. Grants Vampiric Rage effect. Effects of two identical earrings do not stack. When equipped with Zaken's Earring, only the effect of the Blessed item is applied. Cannot be used in the Olympiad. -->
@@ -595,13 +596,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="material" val="SILVER" />
-		<skills>
-			<skill id="3559" level="2" /> <!-- Blessed Zaken's Earring -->
-		</skills>
 		<stats>
 			<stat type="mDef">94</stat>
 			<stat type="maxMp">37</stat>
 		</stats>
+		<skills>
+			<skill id="3559" level="2" /> <!-- Immortal Zaken's Earring -->
+		</skills>
 	</item>
 	<item id="37737" name="Ruler's Authority" additionalName="7-day" type="Armor">
 		<!-- An item awarded to the winner of the Ceremony of Chaos held in the Mysterious Mansion. When equipped, Max HP/ MP/ CP +1000, weight limit +25,600, damage +8%, received damage -9%, Damage Reflection Resistance +5%, inventory slots +36, Attribute Resistance +15. Cannot be used in the Olympiad. -->
@@ -615,9 +616,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
 		<set name="material" val="CLOTH" />
-		<skills>
-			<skill id="15145" level="1" /> <!-- Ruler's Authority -->
-		</skills>
 		<stats>
 			<stat type="pDef">50</stat>
 			<stat type="fireRes">15</stat>
@@ -627,9 +625,12 @@
 			<stat type="holyRes">15</stat>
 			<stat type="darkRes">15</stat>
 		</stats>
+		<skills>
+			<skill id="15145" level="1" /> <!-- Ruler's Authority -->
+		</skills>
 	</item>
 	<item id="37738" name="Test D-grade Soulshot" additionalName="Not used" type="EtcItem">
-		<!-- Soulshot for test use. To be included in the D-grade or C-grade load effect. -->
+		<!-- A test soulshot. For C- and D-grade weapons. -->
 		<set name="icon" val="icon.etc_spirit_bullet_blue_i00" />
 		<set name="weight" val="2" />
 		<set name="crystal_type" val="D" />
@@ -638,7 +639,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37739" name="Test C-grade Soulshot" additionalName="Not used" type="EtcItem">
-		<!-- Soulshot for test use. To be included in the C-grade or D-grade load effect. -->
+		<!-- A test soulshot. For C- and D-grade weapons. -->
 		<set name="icon" val="icon.etc_spirit_bullet_green_i00" />
 		<set name="weight" val="2" />
 		<set name="crystal_type" val="C" />
@@ -777,7 +778,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37753" name="Reinforced R-grade Spiritshot" additionalName="Not used" type="EtcItem">
-		<!-- A powerful light is bestowed on the weapon to temporarily strengthen M. Atk. Can be used on R-grade weapons. -->
+		<!-- Imbues weapons with energy and increases its magic power. Used with weapons. -->
 		<set name="icon" val="icon.etc_spirit_bullet_blue_i00" />
 		<set name="weight" val="2" />
 		<set name="price" val="14" />
@@ -805,7 +806,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37756" name="Mysterious Fragment" type="EtcItem">
-		<!-- Can be exchanged for various items by Warehouse Keepers. -->
+		<!-- Can be exchanged for various items through the Warehouse Keeper. -->
 		<set name="icon" val="icon.pink_cube_piece" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="OTHER_ITEM" />
@@ -882,16 +883,16 @@
 		<cond msgId="2453">
 			<player cloakStatus="true" />
 		</cond>
-		<skills>
-			<skill id="13771" level="1" /> <!-- Exalted Cloak -->
-		</skills>
 		<stats>
 			<stat type="pDef">50</stat>
 			<stat type="mDef">40</stat>
 		</stats>
+		<skills>
+			<skill id="13771" level="1" /> <!-- Exalted Cloak -->
+		</skills>
 	</item>
 	<item id="37764" name="Superior CP Potion" type="EtcItem">
-		<!-- Restores 2000 CP. -->
+		<!-- Recovers 2000 CP. -->
 		<set name="icon" val="icon.etc_cp_potion_i01" />
 		<set name="weight" val="100" />
 		<set name="is_tradable" val="false" />
@@ -1131,7 +1132,7 @@
 		<set name="material" val="WOOD" />
 	</item>
 	<item id="37788" name="Low-grade SP Rune" additionalName="1-day" type="EtcItem">
-		<!-- When held in the inventory, it increases SP acquired through hunting by 10%. 1-day. -->
+		<!-- When in inventory, acquired SP +10%. Available for 1 d. -->
 		<set name="icon" val="br_cashtex.item.br_cash_rune_of_sp_i00" />
 		<set name="weight" val="120" />
 		<set name="is_tradable" val="false" />
@@ -1142,7 +1143,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37789" name="Mid-grade SP Rune" additionalName="1-day" type="EtcItem">
-		<!-- When held in the inventory, it increases SP acquired through hunting by 20%. 1-day. -->
+		<!-- When in inventory, acquired SP +20%. Available for 1 d. -->
 		<set name="icon" val="br_cashtex.item.br_cash_rune_of_sp_i00" />
 		<set name="weight" val="120" />
 		<set name="is_tradable" val="false" />
@@ -1153,7 +1154,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="37790" name="High-grade SP Rune" additionalName="1-day" type="EtcItem">
-		<!-- When held in the inventory, it increases SP acquired through hunting by 30%. 1-day. -->
+		<!-- When in inventory, acquired SP +30%. Available for 1 d. -->
 		<set name="icon" val="br_cashtex.item.br_cash_rune_of_sp_i00" />
 		<set name="weight" val="120" />
 		<set name="is_tradable" val="false" />
@@ -1184,7 +1185,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="17195" level="1" /> <!-- Potion of Protection: Stun -->
+			<skill id="17195" level="1" /> <!-- Low-grade Potion of Protection: Stun -->
 		</skills>
 	</item>
 	<item id="37793" name="Potion of Protection: Obstruction" additionalName="New Player" type="EtcItem">
@@ -1199,7 +1200,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="17196" level="1" /> <!-- Potion of Protection: Hold -->
+			<skill id="17196" level="1" /> <!-- Low-grade Potion of Protection: Hold -->
 		</skills>
 	</item>
 	<item id="37794" name="Potion of Protection: Infection" additionalName="New Player" type="EtcItem">
@@ -1214,7 +1215,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="17197" level="1" /> <!-- Potion of Protection: Bleed -->
+			<skill id="17197" level="1" /> <!-- Low-grade Potion of Protection: Bleed -->
 		</skills>
 	</item>
 	<item id="37795" name="Potion of Protection: Confusion" additionalName="New Player" type="EtcItem">
@@ -1229,7 +1230,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="17198" level="1" /> <!-- Potion of Protection: Paralyze -->
+			<skill id="17198" level="1" /> <!-- Low-grade Potion of Protection - Paralysis -->
 		</skills>
 	</item>
 	<item id="37796" name="Potion of Protection: Confusion" additionalName="New Player" type="EtcItem">
@@ -1244,7 +1245,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="17199" level="1" /> <!-- Potion of Protection: Mental -->
+			<skill id="17199" level="1" /> <!-- Low-grade Potion of Protection: Mental -->
 		</skills>
 	</item>
 	<item id="37797" name="Potion of Protection: Stupor" additionalName="New Player" type="EtcItem">
@@ -1259,7 +1260,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="17200" level="1" /> <!-- Potion of Protection: Sleep -->
+			<skill id="17200" level="1" /> <!-- Low-grade Potion of Protection: Sleep -->
 		</skills>
 	</item>
 	<item id="37798" name="Potion of Protection: Infection" additionalName="New Player" type="EtcItem">
@@ -1274,7 +1275,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="17201" level="1" /> <!-- Potion of Protection: Poison -->
+			<skill id="17201" level="1" /> <!-- Low-grade Potion of Protection: Poison -->
 		</skills>
 	</item>
 	<item id="37799" name="Potion of Protection: Confusion" additionalName="New Player" type="EtcItem">
@@ -1289,7 +1290,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="17202" level="1" /> <!-- Potion of Protection: Knock Back/ Knock Down -->
+			<skill id="17202" level="1" /> <!-- Low-grade Potion of Protection: Knock Back/ Knock Down -->
 		</skills>
 	</item>
 </list>

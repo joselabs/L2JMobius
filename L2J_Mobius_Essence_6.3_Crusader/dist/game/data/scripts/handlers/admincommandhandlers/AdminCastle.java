@@ -76,7 +76,7 @@ public class AdminCastle implements IAdminCommandHandler
 				else
 				{
 					final String action = st.nextToken();
-					final Player target = checkTarget(activeChar) ? activeChar.getTarget().getActingPlayer() : null;
+					final Player target = checkTarget(activeChar) ? activeChar.getTarget().asPlayer() : null;
 					switch (action)
 					{
 						case "showRegWindow":
@@ -250,7 +250,7 @@ public class AdminCastle implements IAdminCommandHandler
 	
 	private boolean checkTarget(Player player)
 	{
-		return ((player.getTarget() != null) && player.getTarget().isPlayer() && (((Player) player.getTarget()).getClan() != null));
+		return ((player.getTarget() != null) && player.getTarget().isPlayer() && (player.getTarget().asPlayer().getClan() != null));
 	}
 	
 	@Override

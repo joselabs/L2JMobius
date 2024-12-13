@@ -116,10 +116,11 @@ public class ClanMaster extends AbstractNpcAI
 	public void onPlayerLogin(OnPlayerLogin event)
 	{
 		final Player player = event.getPlayer();
+		final Clan clan = player.getClan();
 		if (player.isClanLeader())
 		{
-			final Skill advent = getAdventSkill(player.getClan());
-			player.getClan().getMembers().forEach(member ->
+			final Skill advent = getAdventSkill(clan);
+			clan.getMembers().forEach(member ->
 			{
 				if (member.isOnline())
 				{
@@ -127,16 +128,16 @@ public class ClanMaster extends AbstractNpcAI
 				}
 			});
 		}
-		else if (player.getClan() != null)
+		else if (clan != null)
 		{
-			final Skill advent = getAdventSkill(player.getClan());
-			if (player.getClan().getLeader().isOnline())
+			final Skill advent = getAdventSkill(clan);
+			if (clan.getLeader().isOnline())
 			{
 				advent.applyEffects(player, player);
 			}
 			else
 			{
-				for (ClanMember member : player.getClan().getMembers())
+				for (ClanMember member : clan.getMembers())
 				{
 					if (member.getPledgeType() == 100)
 					{
@@ -156,7 +157,8 @@ public class ClanMaster extends AbstractNpcAI
 		if (player.isClanLeader())
 		{
 			boolean removing = true;
-			for (ClanMember member : player.getClan().getMembers())
+			final Clan clan = player.getClan();
+			for (ClanMember member : clan.getMembers())
 			{
 				if (member.getPledgeType() > 0)
 				{
@@ -166,9 +168,9 @@ public class ClanMaster extends AbstractNpcAI
 			}
 			if (removing)
 			{
-				final Skill advent = getAdventSkill(player.getClan());
+				final Skill advent = getAdventSkill(clan);
 				player.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, advent);
-				player.getClan().getMembers().forEach(member ->
+				clan.getMembers().forEach(member ->
 				{
 					if (member.isOnline())
 					{
@@ -184,16 +186,22 @@ public class ClanMaster extends AbstractNpcAI
 	public void onProfessionChange(OnPlayerProfessionChange event)
 	{
 		final Player player = event.getPlayer();
-		if (player.isClanLeader() || ((player.getClan() != null) && player.getClan().getLeader().isOnline()))
+		final Clan clan = player.getClan();
+		if (clan == null)
 		{
-			final Skill advent = getAdventSkill(player.getClan());
-			if (player.getClan().getLeader().isOnline())
+			return;
+		}
+		
+		if (player.isClanLeader() || clan.getLeader().isOnline())
+		{
+			final Skill advent = getAdventSkill(clan);
+			if (clan.getLeader().isOnline())
 			{
 				advent.applyEffects(player, player);
 			}
 			else
 			{
-				for (ClanMember member : player.getClan().getMembers())
+				for (ClanMember member : clan.getMembers())
 				{
 					if (member.getPledgeType() > 0)
 					{
@@ -210,14 +218,15 @@ public class ClanMaster extends AbstractNpcAI
 	public void onPlayerClanJoin(OnPlayerClanJoin event)
 	{
 		final Player player = event.getClanMember().getPlayer();
-		final Skill advent = getAdventSkill(player.getClan());
-		if (player.getClan().getLeader().isOnline())
+		final Clan clan = player.getClan();
+		final Skill advent = getAdventSkill(clan);
+		if (clan.getLeader().isOnline())
 		{
 			advent.applyEffects(player, player);
 		}
 		else
 		{
-			for (ClanMember member : player.getClan().getMembers())
+			for (ClanMember member : clan.getMembers())
 			{
 				if (member.getPledgeType() > 0)
 				{

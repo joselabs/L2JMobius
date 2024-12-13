@@ -3,21 +3,21 @@
 	<skill id="10539" toLevel="1" name="Throw Dagger">
 		<!-- <Suppression Skill>. Attacks the enemy with 396 power. For the target affected by the skill:. Speed -60 for 30 sec. -->
 		<icon>icon.skill10539</icon>
-		<effectPoint>-400</effectPoint>
-		<basicProperty>PHYSICAL</basicProperty>
-		<effectRange>900</effectRange>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>600</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-400</effectPoint>
+		<effectRange>900</effectRange>
+		<hitTime>1500</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
-		<trait>SUPPRESSION</trait>
 		<magicLevel>76</magicLevel>
 		<mpConsume>60</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<castRange>600</castRange>
-		<hitTime>1500</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>20000</reuseDelay>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<trait>SUPPRESSION</trait>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -26,7 +26,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>396</power>
 				<overHit>true</overHit>
 			</effect>

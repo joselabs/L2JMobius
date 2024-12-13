@@ -74,7 +74,7 @@ public class SummonMulti extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		if ((player.getSummonPoints() + _summonPoints) > player.getMaxSummonPoints())
 		{
 			return;

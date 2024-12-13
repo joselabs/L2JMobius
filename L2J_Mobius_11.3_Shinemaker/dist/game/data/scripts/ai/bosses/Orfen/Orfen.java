@@ -129,16 +129,16 @@ public class Orfen extends AbstractNpcAI
 		final int x = npc.getX();
 		final int y = npc.getY();
 		Attackable mob;
-		mob = (Attackable) addSpawn(ARIMA, x + 100, y + 100, npc.getZ(), 0, false, 0);
+		mob = addSpawn(ARIMA, x + 100, y + 100, npc.getZ(), 0, false, 0).asAttackable();
 		mob.setIsRaidMinion(true);
 		_minions.add(mob);
-		mob = (Attackable) addSpawn(ARIMA, x + 100, y - 100, npc.getZ(), 0, false, 0);
+		mob = addSpawn(ARIMA, x + 100, y - 100, npc.getZ(), 0, false, 0).asAttackable();
 		mob.setIsRaidMinion(true);
 		_minions.add(mob);
-		mob = (Attackable) addSpawn(ARIMA, x - 100, y + 100, npc.getZ(), 0, false, 0);
+		mob = addSpawn(ARIMA, x - 100, y + 100, npc.getZ(), 0, false, 0).asAttackable();
 		mob.setIsRaidMinion(true);
 		_minions.add(mob);
-		mob = (Attackable) addSpawn(ARIMA, x - 100, y - 100, npc.getZ(), 0, false, 0);
+		mob = addSpawn(ARIMA, x - 100, y - 100, npc.getZ(), 0, false, 0).asAttackable();
 		mob.setIsRaidMinion(true);
 		_minions.add(mob);
 		startQuestTimer("check_minion_loc", 10000, npc, null, true);
@@ -165,7 +165,7 @@ public class Orfen extends AbstractNpcAI
 					if (!npc.isInsideRadius2D(mob, 3000))
 					{
 						mob.teleToLocation(npc.getLocation());
-						((Attackable) npc).clearAggroList();
+						npc.asAttackable().clearAggroList();
 						npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE, null, null);
 					}
 				}
@@ -182,7 +182,7 @@ public class Orfen extends AbstractNpcAI
 			}
 			case "spawn_minion":
 			{
-				final Attackable mob = (Attackable) addSpawn(ARIMA, npc.getX(), npc.getY(), npc.getZ(), 0, false, 0);
+				final Attackable mob = addSpawn(ARIMA, npc.getX(), npc.getY(), npc.getZ(), 0, false, 0).asAttackable();
 				mob.setIsRaidMinion(true);
 				_minions.add(mob);
 				break;
@@ -195,7 +195,7 @@ public class Orfen extends AbstractNpcAI
 				}
 				else if (npc.calculateDistance2D(npc.getSpawn()) > 10000)
 				{
-					((Attackable) npc).clearAggroList();
+					npc.asAttackable().clearAggroList();
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SPAWN_LOCATION);
 				}
 				break;

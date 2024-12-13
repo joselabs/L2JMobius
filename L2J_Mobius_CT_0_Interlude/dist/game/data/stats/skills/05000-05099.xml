@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="5000" levels="1" name="Alfred - Super Strike">
 		<set name="castRange" val="1000" />
@@ -11,7 +11,7 @@
 		<set name="power" val="10000000" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5001" levels="1" name="Alfred - Life Drain">
@@ -62,7 +62,7 @@
 		<set name="reuseDelay" val="15000" />
 		<set name="targetType" val="AREA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5004" levels="1" name="Dimensional Shock">
@@ -85,7 +85,7 @@
 		<set name="targetType" val="AURA" />
 		<set name="trait" val="SHOCK" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 			<effect name="Stun" />
 		</for>
 	</skill>
@@ -115,7 +115,11 @@
 		<set name="targetType" val="SELF" />
 	</skill>
 	<skill id="5007" levels="5" name="Frintezza's Healing Rhapsody">
-		<!-- Music to soothe the soul. -->
+		<!-- Level 1: Music to soothe the soul. -->
+		<!-- Level 2: A Consecutive Dash + Portrait Replay Performance -->
+		<!-- Level 3: A powerful tune affecting Attack/Speed. -->
+		<!-- Level 4: A triumphant ballad of Heal Suppressing. -->
+		<!-- Level 5: Two Can Dance + Cancel Performance. -->
 		<table name="#hitTime">32000 32000 32000 31000 35000</table>
 		<set name="effectPoint" val="100" />
 		<set name="hitTime" val="#hitTime" />
@@ -125,7 +129,11 @@
 		<set name="targetType" val="SELF" />
 	</skill>
 	<skill id="5008" levels="5" name="Frintezza's Concert Hall Melody">
-		<!-- Music that makes you feel oh so good inside. -->
+		<!-- Level 1: Music that makes you feel oh so good inside. -->
+		<!-- Level 2: Consecutive Dash + Portrait Replay Performance -->
+		<!-- Level 3: Attack/Speed Performance -->
+		<!-- Level 4: Instantly decreases the effect of HP regeneration magic. -->
+		<!-- Level 5: Instantly immobilizes the target by making it dance involuntarily. -->
 		<table name="#abnormalTypes">NONE NONE ULTIMATE_BUFF HEAL_EFFECT_DOWN STUN</table>
 		<table name="#activateRate">0 0 0 10 10</table>
 		<table name="#attackAndSpeed">1 1 1.2 1 1</table>
@@ -185,7 +193,7 @@
 		<set name="power" val="6400" />
 		<set name="targetType" val="AREA" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5010" levels="1" name="Frintezza's Ghostly Mage">
@@ -203,7 +211,7 @@
 		<set name="power" val="106" />
 		<set name="targetType" val="AREA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5011" levels="1" name="Frintezza's Bomber Ghost">
@@ -219,7 +227,7 @@
 		<set name="power" val="364" />
 		<set name="targetType" val="AURA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5012" levels="1" name="Breath of Scarlet">
@@ -264,7 +272,9 @@
 		</for>
 	</skill>
 	<skill id="5014" levels="3" name="Frintezza's Daemon Attack">
-		<!-- Demon 1 general attack. -->
+		<!-- Level 1: Demon 1 general attack. -->
+		<!-- Level 2: Demon 2 general attack. -->
+		<!-- Level 3: Demon 3 general attack. -->
 		<table name="#baseCritRate">6 8 10</table>
 		<table name="#magicLevel">85 85 85</table>
 		<table name="#power">15835 19096 16176</table>
@@ -283,11 +293,16 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="FRONT_AREA" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5015" levels="6" name="Frintezza's Daemon Charge">
-		<!-- Demon 1 charge. -->
+		<!-- Level 1: Demon 1 charge. -->
+		<!-- Level 2: Demon 2 charge. -->
+		<!-- Level 3: Demon 3 charge. -->
+		<!-- Level 4: Demon 1 slow charge. -->
+		<!-- Level 5: Demon 2 slow charge. -->
+		<!-- Level 6: Demon 3 slow charge. -->
 		<table name="#coolTime">0 0 0 1500 1500 1500</table>
 		<table name="#fanRange">0,0,400,150 0,0,500,170 0,0,700,200 0,0,400,150 0,0,500,170 0,0,700,200</table>
 		<table name="#power">48761 52970 68074 48761 52970 68074</table>
@@ -311,7 +326,7 @@
 			<player insideZoneId="5015" />
 		</cond>
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5016" levels="1" name="Yoke of Scarlet">
@@ -363,7 +378,8 @@
 		</for>
 	</skill>
 	<skill id="5018" levels="2" name="Frintezza's Daemon Field">
-		<!-- Demon 2 magic field. -->
+		<!-- Level 1: Demon 2 magic field. -->
+		<!-- Level 2: Demon 3 magic field. -->
 		<table name="#power">607 754</table>
 		<table name="#skillRadius">700 1000</table>
 		<set name="affectRange" val="#skillRadius" />
@@ -377,7 +393,7 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="AURA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5019" levels="1" name="Frintezza's Daemon Drain">
@@ -431,7 +447,18 @@
 		<set name="targetType" val="NONE" />
 	</skill>
 	<skill id="5022" levels="12" name="Decrease Speed">
-		<!-- Instantly reduces Speed. Effect 1. -->
+		<!-- Level 1: Instantly reduces Speed. Effect 1. -->
+		<!-- Level 2: Instantly reduces Speed. Effect 2. -->
+		<!-- Level 3: Instantly reduces Speed. Effect 2. -->
+		<!-- Level 4: Instantly reduces Speed. Effect 3. -->
+		<!-- Level 5: Instantly reduces Speed. Effect 3. -->
+		<!-- Level 6: Instantly reduces Speed. Effect 3. -->
+		<!-- Level 7: Instantly reduces Speed. Effect 3. -->
+		<!-- Level 8: Instantly reduces Speed. Effect 3. -->
+		<!-- Level 9: Instantly reduces Speed. Effect 3. -->
+		<!-- Level 10: Instantly reduces Speed. Effect 3. -->
+		<!-- Level 11: Instantly reduces Speed. Effect 3. -->
+		<!-- Level 12: Instantly reduces Speed. Effect 3. -->
 		<table name="#abnormalLevels">1 2 3 3 3 3 3 3 3 3 3 3</table>
 		<table name="#magicLevel">10 20 30 40 50 60 70 75 80 85 90 95</table>
 		<set name="abnormalLevel" val="#abnormalLevels" />
@@ -467,7 +494,18 @@
 		<set name="trait" val="HOLD" />
 	</skill>
 	<skill id="5024" levels="12" name="Decrease Atk.Speed">
-		<!-- Instantly reduces Atk. Spd. Effect 1. -->
+		<!-- Level 1: Instantly reduces Atk. Spd. Effect 1. -->
+		<!-- Level 2: Instantly reduces Atk. Spd. Effect 2. -->
+		<!-- Level 3: Instantly reduces Atk. Spd. Effect 2. -->
+		<!-- Level 4: Instantly reduces Atk. Spd. Effect 3. -->
+		<!-- Level 5: Instantly reduces Atk. Spd. Effect 3. -->
+		<!-- Level 6: Instantly reduces Atk. Spd. Effect 3. -->
+		<!-- Level 7: Instantly reduces Atk. Spd. Effect 3. -->
+		<!-- Level 8: Instantly reduces Atk. Spd. Effect 3. -->
+		<!-- Level 9: Instantly reduces Atk. Spd. Effect 3. -->
+		<!-- Level 10: Instantly reduces Atk. Spd. Effect 3. -->
+		<!-- Level 11: Instantly reduces Atk. Spd. Effect 3. -->
+		<!-- Level 12: Instantly reduces Atk. Spd. Effect 3. -->
 		<table name="#abnormalLevels">1 2 2 3 3 3 3 3 3 3 3 3</table>
 		<table name="#magicLevel">10 20 30 40 50 60 70 75 80 85 90 95</table>
 		<set name="abnormalLevel" val="#abnormalLevels" />
@@ -513,7 +551,7 @@
 		<set name="targetType" val="SELF" />
 	</skill>
 	<skill id="5029" levels="1" name="Raid Boss - Level 52">
-		<!-- This powerful Chaos Golem was made from Starstones gathered from the Ruins of Pavel by the mad scientist Dr. Chaos, who styles himself the Emperor of Evil. Once a Golem Maestro, Dr. Chaos was expelled from the Black Anvil Guild for trying to steal the blueprint from the elders. He swore revenge on the Black Anvil Guild, conquering the Ruins of Pavel with the Horrifying Golem Army he created. He views all outsiders as assassins sent by the Guild and will attack immediately. His ultimate goal is world domination. -->
+		<!-- This powerful Chaos Golem was made from Starstones gathered from the Ruins of Pavel by the mad scientist Dr. Chaos, who styles himself the Emperor of Evil. Once a Golem Maestro, Dr. Chaos was expelled from the Black Anvil Guild for trying to steal the blueprint from the elders. He swore revenge on the Black Anvil Guild, conquering the Ruins of Pavel with the Horrifying Golem Army he created. He views all outsiders as assassins sent by the Guild and will attack immediately. His ultimate goal is “world domination.” -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
@@ -569,7 +607,9 @@
 		<set name="targetType" val="SELF" />
 	</skill>
 	<skill id="5037" levels="3" name="Decrease Casting Speed">
-		<!-- Instantly reduces Casting Speed. Effect 1. -->
+		<!-- Level 1: Instantly reduces Casting Speed. Effect 1. -->
+		<!-- Level 2: Instantly reduces Casting Speed. Effect 2. -->
+		<!-- Level 3: Instantly reduces Casting Speed. Effect 3. -->
 		<table name="#abnormalLevels">1 2 3</table>
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="5" />
@@ -649,7 +689,7 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="AURA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 			<effect name="DispelByCategory">
 				<param slot="buff" rate="25" max="20" />
 			</effect>
@@ -670,7 +710,7 @@
 		<set name="reuseDelay" val="7000" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5044" levels="2" name="NPC Ultimate Defense">
@@ -717,7 +757,7 @@
 		<set name="reuseDelay" val="8000" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5046" levels="12" name="Castle Power Shot">
@@ -735,7 +775,7 @@
 		<set name="reuseDelay" val="20000" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5047" levels="12" name="Castle Spinning Slash">
@@ -790,7 +830,7 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="AURA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5052" levels="12" name="Castle Long AE Fire">
@@ -813,7 +853,7 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="AREA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5053" levels="12" name="Castle DD Water">
@@ -833,7 +873,7 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5054" levels="12" name="Castle Self AE Water">
@@ -871,7 +911,7 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5057" levels="12" name="Castle Self AE Wind">
@@ -955,7 +995,7 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5066" levels="12" name="Castle Self AE Unholy">
@@ -1077,7 +1117,7 @@
 		<set name="power" val="#power" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5074" levels="1" name="The Victor of War">
@@ -1105,7 +1145,21 @@
 		</for>
 	</skill>
 	<skill id="5076" levels="15" name="Death Penalty">
-		<!-- Combat ability is decreased due to death. Effect 1. -->
+		<!-- Level 1: Combat ability is decreased due to death. Effect 1. -->
+		<!-- Level 2: Combat ability is decreased due to death. Effect 2. -->
+		<!-- Level 3: Combat ability is decreased due to death. Effect 3. -->
+		<!-- Level 4: Combat ability is decreased due to death. Effect 4. -->
+		<!-- Level 5: Combat ability is decreased due to death. Effect 5. -->
+		<!-- Level 6: Combat ability is decreased due to death. Effect 6. -->
+		<!-- Level 7: Combat ability is decreased due to death. Effect 7. -->
+		<!-- Level 8: Combat ability is decreased due to death. Effect 8. -->
+		<!-- Level 9: Combat ability is decreased due to death. Effect 9. -->
+		<!-- Level 10: Combat ability is decreased due to death. Effect 10. -->
+		<!-- Level 11: Combat ability is decreased due to death. Effect 11. -->
+		<!-- Level 12: Combat ability is decreased due to death. Effect 12. -->
+		<!-- Level 13: Combat ability is decreased due to death. Effect 13. -->
+		<!-- Level 14: Combat ability is decreased due to death. Effect 14. -->
+		<!-- Level 15: Combat ability is decreased due to death. Effect 15. -->
 		<table name="#accCombatrEvas">5 9 13 17 21 25 29 33 37 40 42 44 46 48 50</table>
 		<table name="#icons">icon.skill5076_a icon.skill5076_a icon.skill5076_a icon.skill5076_a icon.skill5076_a icon.skill5076_b icon.skill5076_b icon.skill5076_b icon.skill5076_b icon.skill5076_b icon.skill5076_c icon.skill5076_c icon.skill5076_c icon.skill5076_c icon.skill5076_c</table>
 		<table name="#pAtkpAtkSpdmAtkmAtkSpd">0.9 0.81 0.73 0.66 0.6 0.55 0.51 0.47 0.44 0.41 0.38 0.35 0.32 0.28 0.25</table>
@@ -1228,11 +1282,14 @@
 		<set name="power" val="2112" />
 		<set name="targetType" val="AURA" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5083" levels="4" name="Shock">
-		<!-- Temporarily immobilized and in a state of shock. -->
+		<!-- Level 1: Temporarily immobilized and in a state of shock. -->
+		<!-- Level 2: Temporarily gets thrown into a state of shock and immobilized. -->
+		<!-- Level 3: Temporarily gets thrown into a state of shock and immobilized. -->
+		<!-- Level 4: Temporarily gets thrown into a state of shock and immobilized. -->
 		<table name="#mpConsume">93 93 93 5</table>
 		<table name="#power">1715 3540 7305 8602</table>
 		<set name="abnormalLevel" val="1" />
@@ -1256,7 +1313,7 @@
 		<set name="targetType" val="ONE" />
 		<set name="trait" val="SHOCK" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 			<effect name="Stun" />
 			<effect name="TargetCancel">
 				<param chance="10" />
@@ -1426,7 +1483,7 @@
 		<set name="reuseDelay" val="6000" />
 		<set name="targetType" val="AREA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5094" levels="1" name="Antharas Subordinate Suicide">
@@ -1441,7 +1498,7 @@
 		<set name="power" val="473" />
 		<set name="targetType" val="AURA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5095" levels="1" name="Antharas Subordinate Melee Attack">
@@ -1455,7 +1512,7 @@
 		<set name="power" val="30215" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5096" levels="1" name="Antharas Subordinate Remote Attack">
@@ -1469,7 +1526,7 @@
 		<set name="power" val="88254" />
 		<set name="targetType" val="ONE" />
 		<for>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 		</for>
 	</skill>
 	<skill id="5097" levels="1" name="Antharas Subordinate Suicide (Narrow Range)">
@@ -1484,7 +1541,7 @@
 		<set name="power" val="473" />
 		<set name="targetType" val="AURA" />
 		<for>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</for>
 	</skill>
 	<skill id="5098" levels="2" name="Capture Penalty">

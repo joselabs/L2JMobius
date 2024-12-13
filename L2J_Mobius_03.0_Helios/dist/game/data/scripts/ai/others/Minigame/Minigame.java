@@ -255,14 +255,14 @@ public class Minigame extends AbstractNpcAI
 	
 	public void onSkillUse(OnCreatureSkillFinishCast event)
 	{
-		final MinigameRoom room = getRoomByParticipant((Player) event.getCaster());
+		final MinigameRoom room = getRoomByParticipant(event.getCaster().asPlayer());
 		final boolean miniGameStarted = room.getStarted();
 		if (miniGameStarted && (event.getSkill().getId() == SKILL_TORCH_LIGHT))
 		{
 			final WorldObject obj = event.getTarget();
 			if ((obj != null) && obj.isNpc())
 			{
-				final Npc npc = (Npc) obj;
+				final Npc npc = obj.asNpc();
 				if (npc.getId() == BURNER)
 				{
 					npc.doCast(TRIGGER_MIRAGE.getSkill());

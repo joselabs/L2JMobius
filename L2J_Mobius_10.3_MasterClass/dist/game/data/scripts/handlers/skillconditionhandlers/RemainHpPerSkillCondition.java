@@ -53,7 +53,7 @@ public class RemainHpPerSkillCondition implements ISkillCondition
 			{
 				if ((target != null) && target.isCreature())
 				{
-					return _percentType.test(((Creature) target).getCurrentHpPercent(), _amount);
+					return _percentType.test(target.asCreature().getCurrentHpPercent(), _amount);
 				}
 				break;
 			}
@@ -61,7 +61,7 @@ public class RemainHpPerSkillCondition implements ISkillCondition
 			{
 				if (caster.hasServitors())
 				{
-					return _percentType.test(caster.getActingPlayer().getAnyServitor().getCurrentHpPercent(), _amount);
+					return _percentType.test(caster.asPlayer().getAnyServitor().getCurrentHpPercent(), _amount);
 				}
 				break;
 			}

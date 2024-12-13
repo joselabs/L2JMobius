@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="80900" name="Bloodstained Akamanah Dual Blunt Weapon" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_dual_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -17,12 +17,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
@@ -33,6 +27,12 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80901" name="Zariche's Blood" type="EtcItem">
 		<!-- A material for making a Bloodstained Zariche weapon. -->
@@ -124,7 +124,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39542" level="1" /> <!-- Storm Isle's Prolongating Stone -->
+			<skill id="39542" level="1" /> <!-- Fioren's Crystal Prison's Time Stone -->
 		</skills>
 	</item>
 	<item id="80906" name="Primeval Isle's Time Stone" additionalName="Event" type="EtcItem">
@@ -141,7 +141,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39543" level="1" /> <!-- Primeval Isle's Prolongating Stone -->
+			<skill id="39543" level="1" /> <!-- Jamoa's Camp's Time Stone -->
 		</skills>
 	</item>
 	<item id="80907" name="PA Summoning Stick" type="EtcItem">
@@ -155,6 +155,10 @@
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39544" level="1" /> <!-- PA Summoning Stick -->
+		</skills>
 	</item>
 	<item id="80908" name="Lv. 95 Achievement Reward Box" type="EtcItem">
 		<!-- Double-click to obtain a talisman and a bracelet, as well as some supplies. -->
@@ -233,6 +237,9 @@
 		<capsuled_items>
 			<item id="48202" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Warrior's Circlet -->
 		</capsuled_items>
+		<skills>
+			<skill id="39539" level="1" /> <!-- +5 Warrior's Circlet Box -->
+		</skills>
 	</item>
 	<item id="80912" name="+5 Wizard's Circlet Box" type="EtcItem">
 		<!-- Double-click to obtain Wizard's Circlet enchanted to +5. -->
@@ -248,9 +255,12 @@
 		<capsuled_items>
 			<item id="48205" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Wizard's Circlet -->
 		</capsuled_items>
+		<skills>
+			<skill id="39540" level="1" /> <!-- +5 Wizard's Circlet Box -->
+		</skills>
 	</item>
 	<item id="80913" name="+5 Knight's Circlet Box" type="EtcItem">
-		<!-- Double-click to obtain Knight's Circlet enchanted to +5. -->
+		<!-- Double-click to obtain +5 Knight's Circlet. -->
 		<set name="icon" val="icon.etc_equip_item_box_i00" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
@@ -263,9 +273,12 @@
 		<capsuled_items>
 			<item id="48208" min="1" max="1" minEnchant="5" maxEnchant="5" chance="100" /> <!-- Knight's Circlet -->
 		</capsuled_items>
+		<skills>
+			<skill id="39541" level="1" /> <!-- +5 Knight's Circlet Box -->
+		</skills>
 	</item>
 	<item id="80914" name="Red Libra Request - Ivory Tower Crater" type="EtcItem">
-		<!-- A request issued by the Red Libra Merchants to eliminate monsters in Ivory Tower Crater. Double-click to use the item and accept the request. Can be played once a day. -->
+		<!-- A request from the Red Libra Guild calling on you to defeat powerful monsters in the Ivory Tower Crater. Double-click to accept. Can only be used once a day. -->
 		<set name="icon" val="icon.red_comminssion_paper" />
 		<set name="default_action" val="START_QUEST" />
 		<set name="immediate_effect" val="true" />
@@ -276,7 +289,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80915" name="Red Libra Request - Breka's Stronghold" type="EtcItem">
-		<!-- A request issued by the Red Libra Merchants to eliminate monsters in Breka's Stronghold. Double-click to accept the request. Can be used once a day. -->
+		<!-- A request from the Red Libra Guild calling on you to defeat powerful monsters in Breka's Stronghold. Double-click to accept. Can only be used once a day. -->
 		<set name="icon" val="icon.red_comminssion_paper" />
 		<set name="default_action" val="START_QUEST" />
 		<set name="immediate_effect" val="true" />
@@ -287,7 +300,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80916" name="Red Libra Request - Isle of Prayer" type="EtcItem">
-		<!-- A request issued by the Red Libra Merchants to eliminate monsters in Isle of Prayer. Double-click to use the item and accept the request. Can be played once a day. -->
+		<!-- A request from the Red Libra Guild calling on you to defeat powerful monsters on the Isle of Prayer. Double-click to accept. Can only be used once a day. -->
 		<set name="icon" val="icon.red_comminssion_paper" />
 		<set name="default_action" val="START_QUEST" />
 		<set name="immediate_effect" val="true" />
@@ -343,11 +356,11 @@
 			<player MaximumVitalityPoints="140000" />
 		</cond>
 		<skills>
-			<skill id="39547" level="1" /> <!-- Emperor's Vitality Tonic (Event) -->
+			<skill id="39547" level="1" /> <!-- Emperor's Vitality Tonic -->
 		</skills>
 	</item>
 	<item id="80921" name="Lindvior's Treasure Chest" type="EtcItem">
-		<!-- Precious treasure chest obtained after the campaign against Lindvior. Double-click to get one rare item. -->
+		<!-- A treasure chest obtained for the raid against Lindvior. Double-click to obtain 1 rare item. -->
 		<set name="icon" val="icon.bm_dragon_present_4" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -364,6 +377,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39549" level="1" /> <!-- Caring Rok's Icy Candy -->
+		</skills>
 	</item>
 	<item id="80923" name="Caring Rok's Candy Full of Passion" type="EtcItem">
 		<!-- A candy emanating Caring Rok's passion. Endows with passion and vitality. Recovers 1 of 4 vitality bars. Cannot be used in the Olympiad. No usage limit. -->
@@ -374,6 +391,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39550" level="1" /> <!-- Caring Rok's Candy Full of Passion -->
+		</skills>
 	</item>
 	<item id="80924" name="Spellbook: Renewed Energy of Power" type="EtcItem">
 		<!-- Allows to learn the dual class skill Renewed Energy of Power. Only for main class of level 85 or higher. -->
@@ -402,6 +423,10 @@
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39553" level="1" /> <!-- Potion of Protection: Confusion -->
+		</skills>
 	</item>
 	<item id="80926" name="Potion of Protection: Infection" type="EtcItem">
 		<!-- When used, Infection Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
@@ -410,6 +435,10 @@
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39555" level="1" /> <!-- Potion of Protection: Infection -->
+		</skills>
 	</item>
 	<item id="80927" name="Potion of Protection: Obstruction" type="EtcItem">
 		<!-- When used, Obstruction Resistance +5%, received PvP damage -3%. Cannot be used in the Olympiad. The effect does not stack with other Potions of Protection. -->
@@ -423,7 +452,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="18157" level="1" /> <!-- Potion of Protection: Hold -->
+			<skill id="39557" level="1" /> <!-- Potion of Protection: Obstruction -->
 		</skills>
 	</item>
 	<item id="80928" name="Potion of Protection: Stupor" type="EtcItem">
@@ -438,7 +467,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="is_oly_restricted" val="true" />
 		<skills>
-			<skill id="18161" level="1" /> <!-- Potion of Protection: Sleep -->
+			<skill id="39559" level="1" /> <!-- Potion of Protection: Stupor -->
 		</skills>
 	</item>
 	<item id="80929" name="Package: Mysterious R-grade Soulshots" additionalName="Event" type="EtcItem">
@@ -551,7 +580,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="reuse_delay" val="0" />
 		<skills>
-			<skill id="39560" level="1" /> <!-- Crystal -->
+			<skill id="39560" level="1" /> <!-- Festival Fairy's Box: Crystals -->
 		</skills>
 	</item>
 	<item id="80935" name="Small Fairy's Lucky Coin Pack" additionalName="Not used" type="EtcItem">
@@ -580,7 +609,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28130" level="1" type="ON_EQUIP" /> <!-- Summon Virgo Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35045" level="1" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="35045" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Virgo -->
+			<skill id="28130" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Virgo -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -595,7 +636,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28131" level="1" type="ON_EQUIP" /> <!-- Summon Capricorn Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35046" level="1" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="35046" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Capricorn -->
+			<skill id="28131" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Capricorn -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -610,7 +663,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28132" level="1" type="ON_EQUIP" /> <!-- Summon Libra Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35047" level="1" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="35047" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Libra -->
+			<skill id="28132" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Libra -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -625,7 +690,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28133" level="1" type="ON_EQUIP" /> <!-- Summon Aries Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35048" level="1" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="35048" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Aries -->
+			<skill id="28133" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Aries -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -640,7 +717,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28134" level="1" type="ON_EQUIP" /> <!-- Summon Taurus Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35049" level="1" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="35049" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Taurus -->
+			<skill id="28134" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Taurus -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -655,7 +744,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28135" level="1" type="ON_EQUIP" /> <!-- Summon Leo Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35050" level="1" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="35050" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Leo -->
+			<skill id="28135" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Leo -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -670,7 +771,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28136" level="1" type="ON_EQUIP" /> <!-- Summon Gemini Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35051" level="1" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="35051" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Gemini -->
+			<skill id="28136" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Gemini -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -685,7 +798,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28137" level="1" type="ON_EQUIP" /> <!-- Summon Scorpio Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35052" level="1" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="35052" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Scorpio -->
+			<skill id="28137" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Scorpio -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -700,7 +825,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28138" level="1" type="ON_EQUIP" /> <!-- Summon Aquarius Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35053" level="1" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="35053" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Aquarius -->
+			<skill id="28138" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Aquarius -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -715,7 +852,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28139" level="1" type="ON_EQUIP" /> <!-- Summon Pisces Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35054" level="1" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="35054" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Pisces -->
+			<skill id="28139" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Pisces -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -730,7 +879,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28140" level="1" type="ON_EQUIP" /> <!-- Summon Sagittarius Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35055" level="1" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="35055" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Sagittarius -->
+			<skill id="28140" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Sagittarius -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -745,12 +906,24 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="28141" level="1" type="ON_EQUIP" /> <!-- Summon Cancer Agathion -->
+			<skill id="35087" level="1" /> <!-- Agathion's Cute Trick -->
+			<skill id="35056" level="1" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="35056" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Secondary Skill: Agathion Cancer -->
+			<skill id="28141" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Cancer -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
 	<item id="80948" name="Antharas Treasure Chest" type="EtcItem">
-		<!-- Precious treasure chest obtained after the campaign against Antharas. Double-click to get one rare item. -->
+		<!-- A treasure chest obtained for the raid against Antharas. Double-click to obtain 1 rare item. -->
 		<set name="icon" val="icon.bm_dragon_present_3" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -782,6 +955,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="80950" name="Secret Material" type="EtcItem">
 		<!-- Secret material needed to make Special Antidote. Gather and take them to Guard Kallesin at the entrance of the Ruins of Agony. -->
@@ -858,6 +1034,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="18597" level="7" /> <!-- Paulina's R-grade Equipment Set - Dual Class -->
+		</skills>
 	</item>
 	<item id="80957" name="Heavenly Talisman" type="Armor">
 		<!-- Max HP/ MP/ CP +7%, P./ M. Accuracy +2, P./ M. Evasion +2, Vampiric Rage +5%, Atk. Spd./ Casting Spd. +70, P. Critical Rate +30, M. Critical Rate +1%, P. Atk. +3%, M. Atk. +3%, Skill Power +7%, Damage Reflection Resistance +40, Fixed Damage Resistance +15%, P. Def. +750, M. Def. +750, all stats +3, MP Consumption -3%, Skill Cooldown -3%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Gran Kain's Scroll: Enchant Talisman. -->
@@ -872,19 +1052,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="8864" level="8" /> <!-- Heavenly Talisman (Insanity lvl 8) -->
-			<skill id="35552" level="1" type="ON_EQUIP" /> <!-- Equip Heavenly Talisman -->
-			<skill id="35553" level="1" type="ON_UNEQUIP" /> <!-- Unequip Heavenly Talisman -->
-			<skill id="36277" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Heavenly Talisman Enchant -->
-			<skill id="36277" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Heavenly Talisman Enchant -->
+			<skill id="8864" level="8" /> <!-- Heavenly Talisman -->
+			<skill id="36277" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="36277" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Heavenly Talisman: Enchant Effect -->
+			<skill id="35552" level="1" type="ON_EQUIP" /> <!-- Heavenly Talisman -->
+			<skill id="35553" level="1" type="ON_UNEQUIP" /> <!-- Remove Heavenly Talisman -->
 		</skills>
 	</item>
 	<item id="80958" name="Sealed Heavenly Talisman" type="EtcItem">
@@ -901,7 +1081,7 @@
 		</capsuled_items>
 	</item>
 	<item id="80959" name="Epic Talisman" type="Armor">
-		<!-- M. Def. +1500, P. Def. +1500, MP Recovery Rate +4, HP Recovery Rate +8, Attribute Resistance +30, Damage Reflection Resistance +20, Received Critical Rate from basic attacks and P./ M. skills -15%, Received Critical Damage from basic attacks and P./ M. skills -15%. When equipped with Heavenly Talisman/ Talisman of Longing/ Talisman of Insanity, Attribute Attack +50, Resistance to All Weapons +3%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Gran Kain's Scroll: Enchant Talisman. -->
+		<!-- M. Def. +1500, P. Def. +1500, MP Recovery Rate +4, HP Recovery Rate +8, Attribute Resistance +30, Damage Reflection Resistance +20, received Critical Rate from basic attacks and P./ M. skills -15%, received Critical Damage from basic attacks and P./ M. skills -15%. When equipped with Heavenly Talisman/ Talisman of Longing/ Talisman of Insanity, Attribute Attack +50, Resistance to All Weapons +3%. Effects of two identical talismans do not stack, the higher-level talisman takes precedence. <Enchanting>. Use Gran Kain's Scroll: Enchant Talisman. -->
 		<set name="icon" val="icon.epic_talisman" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -912,17 +1092,17 @@
 		<set name="material" val="GOLD" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="13569" level="4" /> <!-- Talisman - Lilith -->
-			<skill id="36315" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Epic Talisman Enchant -->
-			<skill id="36315" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Epic Talisman Enchant -->
+			<skill id="13569" level="4" /> <!-- Epic Talisman -->
+			<skill id="36315" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Epic Talisman: Enchant Effect -->
+			<skill id="36315" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Epic Talisman: Enchant Effect -->
 		</skills>
 	</item>
 	<item id="80960" name="Isle of Souls' Time Stone" additionalName="Event" type="EtcItem">
@@ -939,7 +1119,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39562" level="1" /> <!-- Isle of Souls' Time Stone(Event) -->
+			<skill id="39562" level="1" /> <!-- Pantheon's Museum's Time Stone -->
 		</skills>
 	</item>
 	<item id="80961" name="Maphr's Blessing" additionalName="1-day" type="EtcItem">
@@ -950,6 +1130,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="14400" />
+		<skills>
+			<skill id="39563" level="1" /> <!-- Maphr's Blessing (1-day) -->
+		</skills>
 	</item>
 	<item id="80962" name="Maphr's Blessing Chest" type="EtcItem">
 		<!-- Double-click to obtain Maphr's Blessing. -->
@@ -965,7 +1148,7 @@
 		</capsuled_items>
 	</item>
 	<item id="80963" name="Bloodstained Talisman of Protection" additionalName="8-hour" type="Armor">
-		<!-- Talisman of Protection stained with the blood of Zariche or Akamanah. P./ M. Def. +850, Received Damage -3%, Bow/ Crossbow Resistance +3%, Dagger/ Dual Daggers Resistance +3%, Fixed Damage Resistance +5%, received M. Skill Critical Damage -3%, received damage when immobilized -3%. -->
+		<!-- Talisman of Protection stained with the blood of Zariche or Akamanah. P. Def. +850, M. Def. +850, received damage -3%, Bow/ Crossbow Resistance +3%, Dagger/ Dual Daggers Resistance +3%, Fixed Damage Resistance +5%, received M. Skill Critical Damage -3%, received damage when immobilized -3% -->
 		<set name="icon" val="icon.cursed_defend_talisman_lv1" />
 		<set name="bodypart" val="deco1" />
 		<set name="default_action" val="EQUIP" />
@@ -978,7 +1161,7 @@
 		<set name="is_dropable" val="false" />
 		<set name="time" val="480" />
 		<skills>
-			<skill id="35554" level="1" /> <!-- Blood-stained Talisman of Protection Lv1 -->
+			<skill id="35554" level="1" /> <!-- Bloodstained Talisman of Protection -->
 		</skills>
 	</item>
 	<item id="80964" name="Energy of Protection" type="EtcItem">
@@ -990,7 +1173,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80965" name="Shining Talisman Pack" type="EtcItem">
-		<!-- Double-click to obtain one of the following rare items: Sealed Talisman of Longing, Energy of Longing, Talisman of Lilith, Talisman of Anakim, Seven Signs' Energy, Sealed Talisman of Insanity. -->
+		<!-- Double-click to obtain 1 of the following rare items: Sealed Talisman of Longing, Energy of Longing, Talisman of Lilith, Talisman of Anakim, Energy of Seven Signs, Sealed Talisman of Insanity. -->
 		<set name="icon" val="BranchSys3.icon1.g_ev_invite_fantasy_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -999,7 +1182,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80966" name="Dragon's Shining Box" type="EtcItem">
-		<!-- Double-click to obtain one of the following rare items: Dragon Claw, Dragon's Ring, Dragon's Earring, Dragon's Necklace, High-grade Dragon Weapon Pack, Mid-grade Dragon Weapon Pack, Low-grade Dragon Weapon Pack. -->
+		<!-- Double-click to obtain 1 of the following rare items: Dragon Claw, Dragon's Ring, Dragon's Earring, Dragon's Necklace, High-grade Dragon Weapon Pack, Mid-grade Dragon Weapon Pack, Low-grade Dragon Weapon Pack. -->
 		<set name="icon" val="icon.bm_dragon_present_4" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1014,6 +1197,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39564" level="1" /> <!-- Scroll of Aden Green Squad -->
+		</skills>
 	</item>
 	<item id="80968" name="Alice's Lost Time" additionalName="Event" type="EtcItem">
 		<!-- Can be exchanged for a gift through Alice. -->
@@ -1052,7 +1239,7 @@
 			</and>
 		</cond>
 		<skills>
-			<skill id="18345" level="6" /> <!-- Dignity of the Exalted Lv. 6 -->
+			<skill id="18345" level="6" /> <!-- Spellbook: Dignity of the Exalted Lv. 6 -->
 		</skills>
 	</item>
 	<item id="80971" name="Dragon's Relic" type="EtcItem">
@@ -1302,7 +1489,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39565" level="1" /> <!-- Storm Isle's Time Stone -->
+			<skill id="39565" level="1" /> <!-- Fioren's Crystal Prison's Time Stone -->
 		</skills>
 	</item>
 	<item id="80997" name="Primeval Isle's Time Stone" type="EtcItem">
@@ -1315,7 +1502,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39566" level="1" /> <!-- Primeval Isle's Time Stone -->
+			<skill id="39566" level="1" /> <!-- Jamoa's Camp's Time Stone -->
 		</skills>
 	</item>
 	<item id="80998" name="Isle of Souls' Time Stone" type="EtcItem">
@@ -1328,7 +1515,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39567" level="1" /> <!-- Isle of Souls' Time Stone -->
+			<skill id="39567" level="1" /> <!-- Pantheon's Museum's Time Stone -->
 		</skills>
 	</item>
 	<item id="80999" name="My Teleport Book Lv. 2" type="EtcItem">
@@ -1340,5 +1527,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39568" level="1" /> <!-- My Teleport Book Lv. 2 -->
+		</skills>
 	</item>
 </list>

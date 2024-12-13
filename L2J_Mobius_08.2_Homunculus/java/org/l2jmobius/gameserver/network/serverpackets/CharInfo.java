@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
@@ -25,6 +29,7 @@ import org.l2jmobius.gameserver.instancemanager.CursedWeaponsManager;
 import org.l2jmobius.gameserver.instancemanager.RankManager;
 import org.l2jmobius.gameserver.model.VariationInstance;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.actor.instance.Decoy;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.interfaces.ILocational;
@@ -34,6 +39,9 @@ import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
+/**
+ * @author Mobius
+ */
 public class CharInfo extends ServerPacket
 {
 	private static final int[] PAPERDOLL_ORDER = new int[]
@@ -110,7 +118,7 @@ public class CharInfo extends ServerPacket
 	
 	public CharInfo(Decoy decoy, boolean gmSeeInvis)
 	{
-		this(decoy.getActingPlayer(), gmSeeInvis); // init
+		this(decoy.asPlayer(), gmSeeInvis); // init
 		_objId = decoy.getObjectId();
 		_x = decoy.getX();
 		_y = decoy.getY();
@@ -128,9 +136,11 @@ public class CharInfo extends ServerPacket
 		buffer.writeInt(_z); // Confirmed
 		buffer.writeInt(_vehicleId); // Confirmed
 		buffer.writeInt(_objId); // Confirmed
-		buffer.writeString(_player.getAppearance().getVisibleName()); // Confirmed
+		
+		final PlayerAppearance appearance = _player.getAppearance();
+		buffer.writeString(appearance.getVisibleName()); // Confirmed
 		buffer.writeShort(_player.getRace().ordinal()); // Confirmed
-		buffer.writeByte(_player.getAppearance().isFemale()); // Confirmed
+		buffer.writeByte(appearance.isFemale()); // Confirmed
 		buffer.writeInt(_player.getBaseTemplate().getClassId().getRootClassId().getId());
 		
 		for (int slot : getPaperdollOrder())
@@ -171,11 +181,11 @@ public class CharInfo extends ServerPacket
 		buffer.writeInt(_player.getVisualHair());
 		buffer.writeInt(_player.getVisualHairColor());
 		buffer.writeInt(_player.getVisualFace());
-		buffer.writeString(_gmSeeInvis ? "Invisible" : _player.getAppearance().getVisibleTitle());
-		buffer.writeInt(_player.getAppearance().getVisibleClanId());
-		buffer.writeInt(_player.getAppearance().getVisibleClanCrestId());
-		buffer.writeInt(_player.getAppearance().getVisibleAllyId());
-		buffer.writeInt(_player.getAppearance().getVisibleAllyCrestId());
+		buffer.writeString(_gmSeeInvis ? "Invisible" : appearance.getVisibleTitle());
+		buffer.writeInt(appearance.getVisibleClanId());
+		buffer.writeInt(appearance.getVisibleClanCrestId());
+		buffer.writeInt(appearance.getVisibleAllyId());
+		buffer.writeInt(appearance.getVisibleAllyCrestId());
 		buffer.writeByte(!_player.isSitting()); // Confirmed
 		buffer.writeByte(_player.isRunning()); // Confirmed
 		buffer.writeByte(_player.isInCombat()); // Confirmed
@@ -214,11 +224,11 @@ public class CharInfo extends ServerPacket
 			buffer.writeInt(0);
 		}
 		
-		buffer.writeInt(_player.getAppearance().getNameColor()); // Confirmed
+		buffer.writeInt(appearance.getNameColor()); // Confirmed
 		buffer.writeInt(_heading); // Confirmed
 		buffer.writeByte(_player.getPledgeClass());
 		buffer.writeShort(_player.getPledgeType());
-		buffer.writeInt(_player.getAppearance().getTitleColor()); // Confirmed
+		buffer.writeInt(appearance.getTitleColor()); // Confirmed
 		buffer.writeByte(_player.isCursedWeaponEquipped() ? CursedWeaponsManager.getInstance().getLevel(_player.getCursedWeaponEquippedId()) : 0);
 		buffer.writeInt(_clan != null ? _clan.getReputationScore() : 0);
 		buffer.writeInt(_player.getTransformationDisplayId()); // Confirmed

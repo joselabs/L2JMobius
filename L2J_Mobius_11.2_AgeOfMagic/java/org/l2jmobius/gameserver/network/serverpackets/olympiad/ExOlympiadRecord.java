@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.olympiad;
 
@@ -35,26 +39,35 @@ public class ExOlympiadRecord extends ServerPacket
 {
 	private static final String GET_PREVIOUS_CYCLE_DATA = "SELECT charId, class_id, olympiad_points, competitions_won, competitions_lost, " + "(SELECT COUNT(*) FROM olympiad_nobles_eom WHERE olympiad_points > t.olympiad_points) AS previousPlaceTotal " + "FROM olympiad_nobles_eom t WHERE class_id = ? ORDER BY olympiad_points DESC LIMIT " + RankManager.PLAYER_LIMIT;
 	
-	private final Player _player;
 	private final int _gameRuleType;
 	private final int _type;
+	private final int _noblePoints;
+	private final int _competitionWon;
+	private final int _competitionLost;
+	private final int _remainingWeeklyMatches;
+	private final int _previousPlace;
+	private final int _previousWins;
+	private final int _previousLoses;
+	private final int _previousPoints;
+	private final int _previousClass;
+	private final int _previousPlaceTotal;
+	private final boolean _inCompPeriod;
+	private final int _currentCycle;
 	
-	public ExOlympiadRecord(Player player, int cGameRuleType, int type)
+	public ExOlympiadRecord(Player player, int gameRuleType, int type)
 	{
-		_player = player;
-		_gameRuleType = cGameRuleType;
+		_gameRuleType = gameRuleType;
 		_type = type;
-	}
-	
-	@Override
-	public void writeImpl(GameClient client, WritableBuffer buffer)
-	{
-		ServerPackets.EX_OLYMPIAD_RECORD.writeId(this, buffer);
-		buffer.writeInt(Olympiad.getInstance().getNoblePoints(_player)); // nPoint
-		buffer.writeInt(Olympiad.getInstance().getCompetitionWon(_player.getObjectId())); // nWinCount
-		buffer.writeInt(Olympiad.getInstance().getCompetitionLost(_player.getObjectId())); // nLoseCount
-		buffer.writeInt(Olympiad.getInstance().getRemainingWeeklyMatches(_player.getObjectId())); // nMatchCount
-		// Previous Cycle
+		
+		final Olympiad olympiad = Olympiad.getInstance();
+		_noblePoints = olympiad.getNoblePoints(player);
+		_competitionWon = olympiad.getCompetitionWon(player.getObjectId());
+		_competitionLost = olympiad.getCompetitionLost(player.getObjectId());
+		_remainingWeeklyMatches = olympiad.getRemainingWeeklyMatches(player.getObjectId());
+		_inCompPeriod = olympiad.inCompPeriod();
+		_currentCycle = olympiad.getCurrentCycle();
+		
+		// Initialize previous cycle data.
 		int previousPlace = 0;
 		int previousWins = 0;
 		int previousLoses = 0;
@@ -65,7 +78,7 @@ public class ExOlympiadRecord extends ServerPacket
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement statement = con.prepareStatement(GET_PREVIOUS_CYCLE_DATA))
 		{
-			statement.setInt(1, _player.getBaseClass());
+			statement.setInt(1, player.getBaseClass());
 			
 			try (ResultSet rset = statement.executeQuery())
 			{
@@ -85,21 +98,39 @@ public class ExOlympiadRecord extends ServerPacket
 			PacketLogger.warning("ExOlympiadRecord: Could not load data: " + e.getMessage());
 		}
 		
-		buffer.writeInt(previousClass); // nPrevClassType
-		buffer.writeInt(previousPlaceTotal); // nPrevRank in all servers
+		_previousPlace = previousPlace;
+		_previousWins = previousWins;
+		_previousLoses = previousLoses;
+		_previousPoints = previousPoints;
+		_previousClass = previousClass;
+		_previousPlaceTotal = previousPlaceTotal;
+	}
+	
+	@Override
+	public void writeImpl(GameClient client, WritableBuffer buffer)
+	{
+		ServerPackets.EX_OLYMPIAD_RECORD.writeId(this, buffer);
+		buffer.writeInt(_noblePoints); // nPoint
+		buffer.writeInt(_competitionWon); // nWinCount
+		buffer.writeInt(_competitionLost); // nLoseCount
+		buffer.writeInt(_remainingWeeklyMatches); // nMatchCount
+		
+		// Previous Cycle.
+		buffer.writeInt(_previousClass); // nPrevClassType
+		buffer.writeInt(_previousPlaceTotal); // nPrevRank in all servers
 		buffer.writeInt(2); // nPrevRankCount number of participants with 25+ matches
-		buffer.writeInt(previousPlace); // nPrevClassRank in all servers
+		buffer.writeInt(_previousPlace); // nPrevClassRank in all servers
 		buffer.writeInt(4); // nPrevClassRankCount number of participants with 25+ matches
 		buffer.writeInt(5); // nPrevClassRankByServer in current server
 		buffer.writeInt(6); // nPrevClassRankByServerCount number of participants with 25+ matches
-		buffer.writeInt(previousPoints); // nPrevPoint
-		buffer.writeInt(previousWins); // nPrevWinCount
-		buffer.writeInt(previousLoses); // nPrevLoseCount
-		buffer.writeInt(previousPlace); // nPrevGrade
+		buffer.writeInt(_previousPoints); // nPrevPoint
+		buffer.writeInt(_previousWins); // nPrevWinCount
+		buffer.writeInt(_previousLoses); // nPrevLoseCount
+		buffer.writeInt(_previousPlace); // nPrevGrade
 		buffer.writeInt(Calendar.getInstance().get(Calendar.YEAR)); // nSeasonYear
 		buffer.writeInt(Calendar.getInstance().get(Calendar.MONTH) + 1); // nSeasonMonth
-		buffer.writeByte(Olympiad.getInstance().inCompPeriod()); // bMatchOpen
-		buffer.writeInt(Olympiad.getInstance().getCurrentCycle()); // nSeason
+		buffer.writeByte(_inCompPeriod); // bMatchOpen
+		buffer.writeInt(_currentCycle); // nSeason
 		buffer.writeByte(_type); // bRegistered
 		buffer.writeInt(_gameRuleType); // cGameRuleType
 	}

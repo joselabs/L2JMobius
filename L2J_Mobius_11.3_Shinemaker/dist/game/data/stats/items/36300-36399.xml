@@ -43,7 +43,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="36309" name="Combat HP Replenishing Potion" type="EtcItem">
-		<!-- Restores 2,500 HP, and the remaining power restores CP. Battleground only. -->
+		<!-- Recovers 2500 HP. If HP is full, recovers CP. Can only be used on the battleground. -->
 		<set name="icon" val="icon.etc_potion_gold_i00" />
 		<set name="weight" val="5" />
 		<set name="is_stackable" val="true" />
@@ -55,11 +55,11 @@
 		<set name="commissionItemType" val="POTION" />
 		<set name="material" val="LIQUID" />
 		<skills>
-			<skill id="9763" level="1" /> <!-- Healing Potion (Battleground) -->
+			<skill id="9763" level="1" /> <!-- Combat HP Recovery Potion -->
 		</skills>
 	</item>
 	<item id="36310" name="Battleground Scroll: Remove Invincibility" type="EtcItem">
-		<!-- Removes the target's invincibility. Battleground only. -->
+		<!-- Removes the target's invincibility. Can only be used on the battleground. -->
 		<set name="icon" val="icon.etc_roll_of_paper_white_i00" />
 		<set name="weight" val="5" />
 		<set name="is_stackable" val="true" />
@@ -75,7 +75,7 @@
 		</skills>
 	</item>
 	<item id="36311" name="Battleground Scroll: Damage Reflection Resistance" type="EtcItem">
-		<!-- Becomes resistant to Damage Reflection. Battleground only. -->
+		<!-- Increases Damage Reflection Resistance. Can only be used on the battleground. -->
 		<set name="icon" val="icon.etc_roll_of_paper_black_i00" />
 		<set name="weight" val="5" />
 		<set name="is_oly_restricted" val="true" />
@@ -87,11 +87,11 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="material" val="LIQUID" />
 		<skills>
-			<skill id="9764" level="1" /> <!-- Battleground Scroll: Damage Reflect Resistance -->
+			<skill id="9764" level="1" /> <!-- Battleground Scroll: Damage Reflection Resistance -->
 		</skills>
 	</item>
 	<item id="36312" name="Battleground Scroll: Buffs" type="EtcItem">
-		<!-- For 30 min., provides the effects of Musician's Melody Lv. 1. Battleground only. -->
+		<!-- For 30 min., enables the effect of Musician's Melody Lv. 1. Can only be used on the battleground. -->
 		<set name="icon" val="icon.etc_roll_of_paper_blue_i00" />
 		<set name="weight" val="5" />
 		<set name="is_oly_restricted" val="true" />
@@ -105,16 +105,11 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<skills>
-			<skill id="9758" level="1" /> <!-- Drum Melody (Battleground) -->
-			<skill id="9759" level="1" /> <!-- Lute Melody (Battleground) -->
-			<skill id="9760" level="1" /> <!-- Pipe Organ Melody (Battleground) -->
-			<skill id="9761" level="1" /> <!-- Guitar Melody (Battleground) -->
-			<skill id="9762" level="1" /> <!-- Harp Melody (Battleground) -->
-			<skill id="9757" level="1" /> <!-- Horn Melody (Battleground) -->
+			<skill id="39763" level="1" /> <!-- Musician's Melody - Battleground -->
 		</skills>
 	</item>
 	<item id="36313" name="Battleground Scroll: Sleep" type="EtcItem">
-		<!-- Inflicts Sleep on the target for 10 sec. Battleground only. -->
+		<!-- Inflicts Sleep on the target for 10 sec. Can only be used on the battleground. -->
 		<set name="icon" val="icon.etc_roll_of_paper_red_i00" />
 		<set name="weight" val="5" />
 		<set name="is_oly_restricted" val="true" />
@@ -311,7 +306,7 @@
 		<set name="material" val="LIQUID" />
 		<set name="reuse_delay" val="3600000" />
 		<skills>
-			<skill id="9776" level="1" /> <!-- Freya's Refreshing Breeze (1-hour) -->
+			<skill id="9776" level="1" /> <!-- Freya's Refreshing Breeze (1-h.) -->
 		</skills>
 	</item>
 	<item id="36329" name="Pa'agrio's Warm Breeze (1-hour)" type="EtcItem">
@@ -346,7 +341,7 @@
 		<set name="material" val="LIQUID" />
 		<set name="reuse_delay" val="3600000" />
 		<skills>
-			<skill id="9778" level="1" /> <!-- Sweet Chocolate (1-hour) -->
+			<skill id="9778" level="1" /> <!-- Sweet Chocolate (1-h.) -->
 		</skills>
 	</item>
 	<item id="36331" name="Returning Hero's Vitality Replenishing Juice" additionalName="1-hour" type="EtcItem">
@@ -382,7 +377,7 @@
 		<set name="material" val="LIQUID" />
 		<set name="reuse_delay" val="3600000" />
 		<skills>
-			<skill id="9780" level="1" /> <!-- Pirate Elixir (1-hour) -->
+			<skill id="9780" level="1" /> <!-- Pirate Elixir (1-h.) -->
 		</skills>
 	</item>
 	<item id="36333" name="Mysterious Box" type="EtcItem">
@@ -401,7 +396,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="reuse_delay" val="0" />
 		<skills>
-			<skill id="9781" level="1" /> <!-- Mysterious box -->
+			<skill id="9781" level="1" /> <!-- Mysterious Box -->
 		</skills>
 	</item>
 	<item id="36334" name="Adrenaline Energy Drink" additionalName="Event" type="EtcItem">
@@ -463,7 +458,7 @@
 		</skills>
 	</item>
 	<item id="36338" name="Omega 3 Energy Drink" additionalName="Event" type="EtcItem">
-		<!-- Omega 3 drink that increases WIT by 10. Formulated to train swimmers for Olympiad, it is known to make them smarter. Although the relationship between omega 3 and swimming remains a mystery, statistics show that those who take omega 3 swim better. For fair play, it is prohibited in Olympiad matches. It is so potent that the body does not remember the effect of the previous drink. -->
+		<!-- The Olimpic Omega-3 fatty acid. It is said to improve a brain's functions and increase mental activity. When used, WIT +10. Cannot be used in the Olympiad. The effect is so strong that it removes buffs from all previous used potions. The item will be deleted when the festival is over. -->
 		<set name="icon" val="icon.etc_oblivion_white_i00" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />
@@ -502,7 +497,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="36342" name="Agathion Bracelet" additionalName="Jr. Cocoring" type="Armor">
-		<!-- Bracelet received from Event Manager Cocoring. When you wear it, you can summon Agathion Jr. Cocoring. This agathion can take away one of the three medals (the Medal of Glory, the Medal of Victory and the Medal of Friendship) from a monster every hour for 5 h. after being summoned. Your Vitality recovers when stay in a Peaceful Zone wearing this bracelet. -->
+		<!-- A bracelet received from Event Manager Cocoring. When equipped, summons Agathion Jr. Cocoring that can steal 1 Medal of Glory/ Victory/ Friendship once an hour. The agathion's effect's duration: 5 h. When equipped in a peaceful zone, recovers Vitality. -->
 		<set name="icon" val="icon.etc_rbracelet_aga_agit_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_tradable" val="false" />
@@ -513,9 +508,9 @@
 		<set name="bodypart" val="lbracelet" />
 		<skills>
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
-			<skill id="9783" level="1" /> <!-- Agathion's Gift: Jr. Cocoring -->
+			<skill id="9782" level="1" /> <!-- Summon Agathion Jr. Cocoring -->
 			<skill id="9784" level="1" /> <!-- Jr. Cocoring's Gift -->
-			<skill id="9782" level="1" /> <!-- Release Agathion's Seal - Jr. Cocoring -->
+			<skill id="35069" level="1" /> <!-- Agathion's Main Slot -->
 		</skills>
 	</item>
 	<item id="36343" name="Male Swimsuit No. 1" additionalName="Event" type="Armor">
@@ -589,12 +584,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
-		<skills>
-			<skill id="13489" level="1" /> <!-- Bracelet of Glory: Glory -->
-		</skills>
 		<stats>
 			<stat type="maxMp">216</stat>
 		</stats>
+		<skills>
+			<skill id="13489" level="1" /> <!-- Bracelet of Glory - Glory -->
+		</skills>
 	</item>
 	<item id="36350" name="Bracelet of Glory: Victory" additionalName="Event" type="Armor">
 		<!-- A reward for the Aden Golden Medal Event. Unlocks 5 talisman slots when equipped. MP +216, DEX +1, WIT +1. -->
@@ -605,12 +600,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
-		<skills>
-			<skill id="13491" level="1" /> <!-- Bracelet of Glory: Victory -->
-		</skills>
 		<stats>
 			<stat type="maxMp">216</stat>
 		</stats>
+		<skills>
+			<skill id="13491" level="1" /> <!-- Bracelet of Glory - Victory -->
+		</skills>
 	</item>
 	<item id="36351" name="Bracelet of Glory: Friendship" additionalName="Event" type="Armor">
 		<!-- A reward for the Aden Golden Medal Event. Unlocks 5 talisman slots when equipped. MP +216, CON +1, MEN +1. -->
@@ -621,12 +616,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="weight" val="150" />
 		<set name="material" val="SILVER" />
-		<skills>
-			<skill id="13490" level="1" /> <!-- Bracelet of Glory: Friendship -->
-		</skills>
 		<stats>
 			<stat type="maxMp">216</stat>
 		</stats>
+		<skills>
+			<skill id="13490" level="1" /> <!-- Bracelet of Glory - Fortune -->
+		</skills>
 	</item>
 	<item id="36352" name="Red Horns" additionalName="STR (Event)" type="Armor">
 		<!-- A head accessory for the Aden Golden Medal event. When equipped, STR +3. -->
@@ -638,7 +633,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9554" level="1" /> <!-- Hair Accessory: STR -->
+			<skill id="9554" level="1" /> <!-- Head Accessory: STR -->
 		</skills>
 	</item>
 	<item id="36353" name="Red Horns" additionalName="DEX (Event)" type="Armor">
@@ -651,7 +646,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9555" level="1" /> <!-- Hair Accessory: DEX -->
+			<skill id="9555" level="1" /> <!-- Head Accessory: DEX -->
 		</skills>
 	</item>
 	<item id="36354" name="Red Horns" additionalName="CON (Event)" type="Armor">
@@ -664,7 +659,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9556" level="1" /> <!-- Hair Accessory: CON -->
+			<skill id="9556" level="1" /> <!-- Head Accessory: CON -->
 		</skills>
 	</item>
 	<item id="36355" name="Red Horns" additionalName="MEN (Event)" type="Armor">
@@ -677,7 +672,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9557" level="1" /> <!-- Hair Accessory: MEN -->
+			<skill id="9557" level="1" /> <!-- Head Accessory: MEN -->
 		</skills>
 	</item>
 	<item id="36356" name="Red Horns" additionalName="INT (Event)" type="Armor">
@@ -690,7 +685,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9558" level="1" /> <!-- Hair Accessory: INT -->
+			<skill id="9558" level="1" /> <!-- Head Accessory: INT -->
 		</skills>
 	</item>
 	<item id="36357" name="Red Horns" additionalName="WIT (Event)" type="Armor">
@@ -703,7 +698,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9559" level="1" /> <!-- Hair Accessory: WIT -->
+			<skill id="9559" level="1" /> <!-- Head Accessory: WIT -->
 		</skills>
 	</item>
 	<item id="36358" name="Red Horns" additionalName="Critical Rate (Event)" type="Armor">
@@ -716,7 +711,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9560" level="1" /> <!-- Hair Accessory: Critical Rate -->
+			<skill id="9560" level="1" /> <!-- Head Accessory: P. Critical Rate -->
 		</skills>
 	</item>
 	<item id="36359" name="Red Horns" additionalName="Critical Damage (Event)" type="Armor">
@@ -729,7 +724,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9561" level="1" /> <!-- Hair Accessory: Critical Damage -->
+			<skill id="9561" level="1" /> <!-- Head Accessory: Critical Damage -->
 		</skills>
 	</item>
 	<item id="36360" name="Red Horns" additionalName="P. Def. (Event)" type="Armor">
@@ -742,7 +737,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9562" level="1" /> <!-- Hair Accessory Circlet: P. Def. -->
+			<skill id="9562" level="1" /> <!-- Head Accessory: P. Def. -->
 		</skills>
 	</item>
 	<item id="36361" name="Red Horns" additionalName="M. Def. (Event)" type="Armor">
@@ -756,7 +751,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9563" level="1" /> <!-- Hair Accessory: M. Def. -->
+			<skill id="9563" level="1" /> <!-- Head Accessory: M. Def. -->
 		</skills>
 	</item>
 	<item id="36362" name="Red Horns" additionalName="Evasion (Event)" type="Armor">
@@ -769,7 +764,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9564" level="1" /> <!-- Hair Accessory: Evasion -->
+			<skill id="9564" level="1" /> <!-- Head Accessory: P. Evasion -->
 		</skills>
 	</item>
 	<item id="36363" name="Red Horns" additionalName="P. Atk. (Event)" type="Armor">
@@ -782,7 +777,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9565" level="1" /> <!-- Hair Accessory: P. Atk. -->
+			<skill id="9565" level="1" /> <!-- Head Accessory: P. Atk. -->
 		</skills>
 	</item>
 	<item id="36364" name="Red Horns" additionalName="M. Atk. (Event)" type="Armor">
@@ -795,7 +790,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9566" level="1" /> <!-- Hair Accessory: M. Atk. -->
+			<skill id="9566" level="1" /> <!-- Head Accessory: M. Atk. -->
 		</skills>
 	</item>
 	<item id="36365" name="Red Horns" additionalName="Accuracy (Event)" type="Armor">
@@ -808,7 +803,7 @@
 		<set name="bodypart" val="hair2" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="9567" level="1" /> <!-- Hair Accessory: Accuracy -->
+			<skill id="9567" level="1" /> <!-- Head Accessory: P. Accuracy -->
 		</skills>
 	</item>
 	<item id="36366" name="Golden Pack" additionalName="Event" type="EtcItem">
@@ -828,6 +823,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9792" level="1" /> <!-- Luminous Golden Chest -->
+		</skills>
 	</item>
 	<item id="36368" name="Treasure Chest" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Small Reward Box for your help in the reconstruction of Aden. -->
@@ -836,6 +835,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9827" level="1" /> <!-- Treasure Chest -->
+		</skills>
 	</item>
 	<item id="36369" name="Hero's Treasure Chest" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Reward Box for your great help in the reconstruction of Aden. -->
@@ -844,6 +847,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9797" level="1" /> <!-- Hero's Treasure Chest -->
+		</skills>
 	</item>
 	<item id="36370" name="Hair Accessory Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain a head accessory. -->
@@ -852,6 +859,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9798" level="1" /> <!-- Head Accessory Box -->
+		</skills>
 	</item>
 	<item id="36371" name="Pendant Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain a pendant for enhancing head accessories. -->
@@ -860,6 +871,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9799" level="1" /> <!-- Pendant Box -->
+		</skills>
 	</item>
 	<item id="36372" name="Double-click to obtain S-grade enchant scroll." additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain S-grade enchant scrolls. -->
@@ -868,6 +883,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9800" level="1" /> <!-- S-grade Enchant Scroll Box -->
+		</skills>
 	</item>
 	<item id="36373" name="R-grade Enchant Scroll Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain R-grade enchant scrolls. -->
@@ -876,6 +895,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9801" level="1" /> <!-- R-grade Enchant Scroll Box -->
+		</skills>
 	</item>
 	<item id="36374" name="Attribute Stone Fragment Box" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Attribute Stone Fragment Box -->
@@ -884,6 +907,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9802" level="1" /> <!-- Attribute Stone Fragment Box -->
+		</skills>
 	</item>
 	<item id="36375" name="Ingredient Box" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing various materials required for item crafting. -->
@@ -892,6 +919,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9803" level="1" /> <!-- Ingredient Box -->
+		</skills>
 	</item>
 	<item id="36376" name="Hero's Enchant Stone Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain Enchant Stone. -->
@@ -900,6 +931,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9804" level="1" /> <!-- Hero's Enchant Stone Pack -->
+		</skills>
 	</item>
 	<item id="36377" name="Destruction Enchant Scroll Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Enchant Scroll of Destruction. -->
@@ -908,6 +943,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9805" level="1" /> <!-- Destruction Enchant Scroll Pack -->
+		</skills>
 	</item>
 	<item id="36378" name="Hero's Giant Enchant Scroll Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain Giant's Enchant Scroll. -->
@@ -916,6 +955,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9806" level="1" /> <!-- Hero's Giant Enchant Scroll Pack -->
+		</skills>
 	</item>
 	<item id="36379" name="Hero's Blessed Enchant Scroll Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain a blessed enchant scroll. -->
@@ -924,6 +967,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9807" level="1" /> <!-- Hero's Blessed Enchant Scroll Pack -->
+		</skills>
 	</item>
 	<item id="36380" name="Hero's Unbind Scroll Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain Unbind Scroll. -->
@@ -932,6 +979,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9808" level="1" /> <!-- Hero's Unbind Scroll Pack -->
+		</skills>
 	</item>
 	<item id="36381" name="Hero's Attribute Crystal Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain an attribute crystal or a stone (+60/ +150). -->
@@ -940,6 +991,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9809" level="1" /> <!-- Hero's Attribute Crystal Pack -->
+		</skills>
 	</item>
 	<item id="36382" name="PK Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain Scroll: PK. -->
@@ -948,6 +1003,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9810" level="1" /> <!-- PK Pack -->
+		</skills>
 	</item>
 	<item id="36383" name="Reputation Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain Scroll: Reputation. -->
@@ -956,6 +1015,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9811" level="1" /> <!-- Reputation Pack -->
+		</skills>
 	</item>
 	<item id="36384" name="Mysterious Shot Pack" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- A box containing Mysterious Soulshots/ Spiritshots. -->
@@ -964,6 +1027,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9812" level="1" /> <!-- Mysterious Shot Box -->
+		</skills>
 	</item>
 	<item id="36385" name="Kaliel's Energy Box" additionalName="Aden Reconstruction" type="EtcItem">
 		<!-- Double-click to obtain Kaliel's Energy. -->
@@ -972,6 +1039,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9813" level="1" /> <!-- Kaliel's Energy Pack -->
+		</skills>
 	</item>
 	<item id="36386" name="Giant's Scroll: Enchant R-grade Weapon" type="EtcItem">
 		<!-- For R-grade weapons. P. Atk. +6 for one-handed swords/ blunts/ staffs, daggers, spears. P. Atk. +7 for two-handed swords/ blunts/ staffs, dual daggers, dual swords, fists, crossbows. P. Atk. +12 for bows. M. Atk. +5 for all weapons. Starting from +4, P./ M. Atk. bonus is greatly increased (more so in case of blessed weapons). The enchanting is random from +1 to +3. Cannot be used with weapons enchanted to +30 and higher. Enchant success rate for +1: 57%. Enchant success rate for +2: 29%. Enchant success rate for +3: 14%. -->
@@ -987,7 +1058,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="9814" level="1" /> <!-- Giant's Scroll: Enchant Weapon (R-grade) -->
+			<skill id="9814" level="1" /> <!-- Giant's Scroll: Enchant R-grade Weapon -->
 		</skills>
 	</item>
 	<item id="36387" name="Giant's Scroll: Enchant S-grade Weapon" type="EtcItem">
@@ -1004,7 +1075,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="9815" level="1" /> <!-- Giant's Scroll: Enchant Weapon (S-grade) -->
+			<skill id="9815" level="1" /> <!-- Giant's Scroll: Enchant S-grade Weapon -->
 		</skills>
 	</item>
 	<item id="36388" name="Giant's Scroll: Enchant A-grade Weapon" type="EtcItem">
@@ -1021,7 +1092,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="9816" level="1" /> <!-- Giant's Scroll: Enchant Weapon (A-grade) -->
+			<skill id="9816" level="1" /> <!-- Giant's Scroll: Enchant A-grade Weapon -->
 		</skills>
 	</item>
 	<item id="36389" name="Giant's Scroll: Enchant R-grade Armor" type="EtcItem">
@@ -1038,7 +1109,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="9817" level="1" /> <!-- Giant's Scroll: Enchant Armor (R-grade) -->
+			<skill id="9817" level="1" /> <!-- Giant's Scroll: Enchant R-grade Armor -->
 		</skills>
 	</item>
 	<item id="36390" name="Giant's Scroll: Enchant S-grade Armor" type="EtcItem">
@@ -1055,7 +1126,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="9818" level="1" /> <!-- Giant's Scroll: Enchant Armor (S-grade) -->
+			<skill id="9818" level="1" /> <!-- Giant's Scroll: Enchant S-grade Armor -->
 		</skills>
 	</item>
 	<item id="36391" name="Giant's Scroll: Enchant A-grade Armor" type="EtcItem">
@@ -1072,7 +1143,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<set name="material" val="PAPER" />
 		<skills>
-			<skill id="9819" level="1" /> <!-- Giant's Scroll: Enchant Armor (A-grade) -->
+			<skill id="9819" level="1" /> <!-- Giant's Scroll: Enchant A-grade Armor -->
 		</skills>
 	</item>
 	<item id="36392" name="Mark of Travis" type="EtcItem">
@@ -1121,9 +1192,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9821" level="1" /> <!-- Reward Box -->
+		</skills>
 	</item>
 	<item id="36396" name="Energy Drink Pack" type="EtcItem">
-		<!-- Each energy drink pack randomly contains 1 of 5 different energy drinks. Open the pack to receive 3 units of one energy drink. -->
+		<!-- Double-click to obtain 3 pcs. of each of 5 types of potions used in the Olympiad. -->
 		<set name="icon" val="icon.etc_treasure_box_i01" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1141,6 +1216,9 @@
 			<item id="36337" min="3" max="3" chance="20" /> <!-- DHA Energy Drink - Event -->
 			<item id="36338" min="3" max="3" chance="20" /> <!-- Omega 3 Energy Drink - Event -->
 		</capsuled_items>
+		<skills>
+			<skill id="9820" level="1" /> <!-- Potion Pack -->
+		</skills>
 	</item>
 	<item id="36397" name="Chest of Glory" type="EtcItem">
 		<!-- Chest of Glory given by Cocoring to celebrate the winning of the glorious gold medal. Double-click to receive a Medal of Glory/ Victory/ Friendship at a certain probability. -->
@@ -1150,6 +1228,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9824" level="1" /> <!-- Chest of Glory -->
+		</skills>
 	</item>
 	<item id="36398" name="Chest of Victory" type="EtcItem">
 		<!-- Chest of Victory given by Cocoring to celebrate the winning of the glorious silver medal. Double-click to receive a Medal of Glory/ Victory/ Friendship at a certain probability. -->
@@ -1159,6 +1241,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9825" level="1" /> <!-- Chest of Victory -->
+		</skills>
 	</item>
 	<item id="36399" name="Chest of Friendship" type="EtcItem">
 		<!-- Chest of Friendship given by Cocoring to celebrate the winning of the glorious gold medal. Double-click to receive a Medal of Glory/ Victory/ Friendship at a certain probability. -->
@@ -1168,5 +1254,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="9826" level="1" /> <!-- Chest of Friendship -->
+		</skills>
 	</item>
 </list>

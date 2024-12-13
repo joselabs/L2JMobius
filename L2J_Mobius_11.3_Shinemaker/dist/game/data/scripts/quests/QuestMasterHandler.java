@@ -61,6 +61,7 @@ import quests.Q10103_StrengthOfSpirit.Q10103_StrengthOfSpirit;
 import quests.Q10104_MysteriousPowersInfluence.Q10104_MysteriousPowersInfluence;
 import quests.Q10105_RealBattle.Q10105_RealBattle;
 import quests.Q10106_CurseOfUndying.Q10106_CurseOfUndying;
+import quests.Q10107_SplitDestiny.Q10107_SplitDestiny;
 import quests.Q10108_AntidoteIngredients.Q10108_AntidoteIngredients;
 import quests.Q10109_Resurrected.Q10109_Resurrected;
 import quests.Q10110_DeathlyMischief.Q10110_DeathlyMischief;
@@ -268,6 +269,7 @@ public class QuestMasterHandler
 		Q10104_MysteriousPowersInfluence.class,
 		Q10105_RealBattle.class,
 		Q10106_CurseOfUndying.class,
+		Q10107_SplitDestiny.class,
 		Q10108_AntidoteIngredients.class,
 		Q10109_Resurrected.class,
 		Q10110_DeathlyMischief.class,

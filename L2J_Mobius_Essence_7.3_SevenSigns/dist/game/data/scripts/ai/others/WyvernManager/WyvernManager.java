@@ -23,6 +23,7 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.siege.Fort;
 
 import ai.AbstractNpcAI;
@@ -98,12 +99,13 @@ public class WyvernManager extends AbstractNpcAI
 	
 	private boolean isOwnerClan(Npc npc, Player player)
 	{
+		final Clan clan = player.getClan();
 		final ManagerType type = MANAGERS.get(npc.getId());
 		switch (type)
 		{
 			case CASTLE:
 			{
-				if ((player.getClan() != null) && (npc.getCastle() != null))
+				if ((clan != null) && (npc.getCastle() != null))
 				{
 					return (player.isClanLeader() && (player.getClanId() == npc.getCastle().getOwnerId()));
 				}
@@ -111,7 +113,7 @@ public class WyvernManager extends AbstractNpcAI
 			}
 			case CLAN_HALL:
 			{
-				if ((player.getClan() != null) && (npc.getClanHall() != null))
+				if ((clan != null) && (npc.getClanHall() != null))
 				{
 					return (player.isClanLeader() && (player.getClanId() == npc.getClanHall().getOwnerId()));
 				}
@@ -120,7 +122,7 @@ public class WyvernManager extends AbstractNpcAI
 			case FORT:
 			{
 				final Fort fort = npc.getFort();
-				if ((player.getClan() != null) && (fort != null) && (fort.getOwnerClan() != null))
+				if ((clan != null) && (fort != null) && (fort.getOwnerClan() != null))
 				{
 					return (player.isClanLeader() && (player.getClanId() == npc.getFort().getOwnerClan().getId()));
 				}

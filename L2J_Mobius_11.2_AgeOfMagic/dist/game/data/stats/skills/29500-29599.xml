@@ -10,11 +10,11 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -33,7 +33,7 @@
 		<icon>icon.bm_antaras_doll_30d_01</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
-		<effectPoint>100</effectPoint>
+		<effectPoint>0</effectPoint>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>1</minLevel>
@@ -52,7 +52,7 @@
 		<icon>icon.bm_antaras_doll_30d_01</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
-		<effectPoint>100</effectPoint>
+		<effectPoint>0</effectPoint>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>1</minLevel>
@@ -71,7 +71,7 @@
 		<icon>icon.bm_antaras_doll_30d_01</icon>
 		<operateType>P</operateType>
 		<targetType>SELF</targetType>
-		<effectPoint>100</effectPoint>
+		<effectPoint>0</effectPoint>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>1</minLevel>
@@ -126,11 +126,11 @@
 			<effect name="VitalityExpRate">
 				<amount>5</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -175,7 +175,16 @@
 		</effects>
 	</skill>
 	<skill id="29508" toLevel="10" name="Forgotten Lord's Dye">
-		<!-- CON +1, received damage -1% -->
+		<!-- Level 1: CON +1, received damage -1% -->
+		<!-- Level 2: CON/ DEX/ WIT +1, received damage -1% -->
+		<!-- Level 3: CON/ DEX/ WIT/ STR/ INT +1, received damage -1% -->
+		<!-- Level 4: CON/ DEX/ WIT/ STR/ INT/ CHA +1, received damage -1% -->
+		<!-- Level 5: CON/ DEX/ WIT/ STR/ INT/ CHA +1, received damage -2% -->
+		<!-- Level 6: CON/ DEX/ WIT/ STR/ INT/ CHA +1, received damage -3%, damage +1%, P. Atk. +400, M. Atk. +200, P. Def. +380, M. Def. +320, Vitality bonus +1%, acquired XP/ SP +1% -->
+		<!-- Level 7: CON/ DEX/ WIT +2, STR/ INT/ CHA +1, received damage -3%, damage +2%, P. Atk. +520, M. Atk. +240, P. Def. +494, M. Def. +416, Vitality bonus +2%, acquired XP/ SP +2%. Forgotten Lord's Ability Lv. 1 available. -->
+		<!-- Level 8: CON/ DEX/ WIT/ STR/ INT/ CHA +2, received damage -4%, damage +2%, P. Atk. +728, M. Atk. +336, P. Def. +692, M. Def. +582, Vitality bonus +2%, acquired XP/ SP +2%. Forgotten Lord's Ability Lv. 2 available. -->
+		<!-- Level 9: CON/ DEX/ WIT +3, STR/ INT/ CHA +2, received damage -4%, damage +3%, P. Atk. +1056, M. Atk. +504, P. Def. +1003, M. Def. +844, Vitality bonus +3%, acquired XP/ SP +3%. Forgotten Lord's Ability Lv. 3 available. -->
+		<!-- Level 10: CON/ DEX/ WIT/ STR/ INT/ CHA +3, received damage -5%, damage +3%, P. Atk. +1636, M. Atk. +806, P. Def. +1554, M. Def. +1309, Vitality bonus +3%, acquired XP/ SP +3%. Forgotten Lord's Ability Lv. 4 available. Forgotten Lord's Curse Lv. 1 available. -->
 		<icon>branchicon.bm_dye_monarc_hena</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -245,7 +254,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">400</value>
@@ -256,7 +265,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">200</value>
@@ -322,7 +331,10 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="29510" toLevel="4" name="Forgotten Lord's Ability">
-		<!-- With a 30% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 15 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
+		<!-- Level 1: With a 30% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 15 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
+		<!-- Level 2: With a 50% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 20 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
+		<!-- Level 3: With a 80% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 25 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
+		<!-- Level 4: With a 100% chance, removes invincibility/ debuff immunity from the target, when using skills in PvP. Duration: 30 sec. Cannot be used on monsters. The skill cooldown is fixed. Consumes 1000 Spirit Ore. -->
 		<icon>branchicon.g_dye_monarch_ability_i01</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -439,11 +451,11 @@
 			<effect name="SpModify">
 				<amount>5</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -523,11 +535,11 @@
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -663,16 +675,16 @@
 		<!-- For 30 min., all basic stats +3, Vitality bonus +50%, P./ M. Def. +15%. Cooldown: 5 min. The effect remains after death. Cannot be used in the Olympiad. -->
 		<icon>icon.bm_royal_black_beer</icon>
 		<operateType>A2</operateType>
-		<isMagic>2</isMagic>
-		<reuseDelay>300000</reuseDelay>
-		<coolTime>500</coolTime>
-		<abnormalType>HONEY_BEER</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
-		<stayAfterDeath>true</stayAfterDeath>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
-		<targetType>SELF</targetType>
+		<abnormalType>HONEY_BEER</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>500</coolTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="StatUp">
 				<amount>3</amount>
@@ -898,7 +910,7 @@
 		<icon>icon.giant_blue_potion</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="29554" toLevel="1" name="Seven Deadly Sins - Welcome to the Boar Hat Pub!">
+	<skill id="29554" toLevel="1" name="(Seven Deadly Sins) Welcome to the Boar Hat Pub!">
 		<!-- PvP damage +20%, PvE damage +10%, received PvE damage -10%, acquired XP/ SP +10% -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
@@ -947,7 +959,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="29555" toLevel="1" name="Seven Deadly Sins - Team">
+	<skill id="29555" toLevel="1" name="(Seven Deadly Sins) Team">
 		<!-- PvP damage +5%, PvE damage +5%, received PvE damage -5%, Critical Damage for basic attacks and P./ M. Skill Critical Damage +10%, P./ M. Skill Power +10% -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
@@ -1022,11 +1034,11 @@
 				<amount>50</amount>
 				<attribute>FIRE,WATER,WIND,EARTH,HOLY,DARK</attribute>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1254,10 +1266,10 @@
 				<amount>50</amount>
 				<attribute>FIRE,WATER,WIND,EARTH,HOLY,DARK</attribute>
 			</effect>
-			<effect name="WeaponBonusPAtk">
+			<effect name="WeaponBonusPhysicalAttack">
 				<amount>50</amount>
 			</effect>
-			<effect name="WeaponBonusMAtk">
+			<effect name="WeaponBonusMagicalAttack">
 				<amount>50</amount>
 			</effect>
 		</effects>
@@ -1275,10 +1287,10 @@
 				<amount>70</amount>
 				<attribute>FIRE,WATER,WIND,EARTH,HOLY,DARK</attribute>
 			</effect>
-			<effect name="WeaponBonusPAtk">
+			<effect name="WeaponBonusPhysicalAttack">
 				<amount>80</amount>
 			</effect>
-			<effect name="WeaponBonusMAtk">
+			<effect name="WeaponBonusMagicalAttack">
 				<amount>80</amount>
 			</effect>
 		</effects>
@@ -1296,10 +1308,10 @@
 				<amount>100</amount>
 				<attribute>FIRE,WATER,WIND,EARTH,HOLY,DARK</attribute>
 			</effect>
-			<effect name="WeaponBonusPAtk">
+			<effect name="WeaponBonusPhysicalAttack">
 				<amount>120</amount>
 			</effect>
-			<effect name="WeaponBonusMAtk">
+			<effect name="WeaponBonusMagicalAttack">
 				<amount>120</amount>
 			</effect>
 		</effects>
@@ -1307,109 +1319,109 @@
 	<skill id="29572" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 1">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29573" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 2">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29574" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 3">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29575" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 4">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29576" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 5">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29577" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 6">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29578" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 7">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29579" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 8">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29580" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 9">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29581" toLevel="1" name="Appearance Stone: Sigil of Light Lv. 10">
 		<icon>BranchSys3.Icon.g_shape_shifting_sigil</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="29582" toLevel="1" name="Legend 2022: EvillyRU">
 		<!-- Damage +5%, acquired XP/ SP +5%, received damage -5%. Cannot be used in the Olympiad or the Ceremony of Chaos. The buff is applied in honor of the player EvillyRU who took the 1st place in the 2022 rankings. -->
 		<icon>icon.ev_2022_ranking_buff_a</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="29583" toLevel="1" name="Legend 2022: 3???">
+	<skill id="29583" toLevel="1" name="Legend 2022: 3ена">
 		<!-- Damage +5%, acquired XP/ SP +5%, received damage -5%. Cannot be used in the Olympiad or the Ceremony of Chaos. The buff is applied in honor of the player Зена who took the 2nd place in the 2022 rankings. -->
 		<icon>icon.ev_2022_ranking_buff_b</icon>
 		<operateType>A1</operateType>
@@ -1438,23 +1450,22 @@
 		<!-- Acquired XP/ SP +55%, P. Atk./ M. Atk./ P. Def./ M. Def. +7%, all stats +1, Dye Engraving Consumption -60%. Does not stack with the PA Growth Support buff. The effect remains after death, after switching to a dual class or entering instance zones. Removed when entering the Olympiad or the Ceremony of Chaos. Cannot be used on pets and servitors. -->
 		<icon>icon.ev_commission_paper</icon>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
-		<abnormalType>BUFF_PCCAFE_EXP1</abnormalType>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-2</specialLevel>
-		<magicLevel>-2</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1800</abnormalTime> <!-- Unconfirmed -->
-		<hitTime>1000</hitTime>
+		<abnormalType>BUFF_PCCAFE_EXP1</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad>
 		<coolTime>3000</coolTime>
 		<effectPoint>1</effectPoint>
-		<stayAfterDeath>true</stayAfterDeath>
-		<blockedInOlympiad>true</blockedInOlympiad>
+		<hitTime>0</hitTime>
 		<isMagic>3</isMagic>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>-2</magicLevel>
+		<specialLevel>-2</specialLevel>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="ExpModify">
 				<amount>55</amount>
@@ -1462,11 +1473,11 @@
 			<effect name="SpModify">
 				<amount>55</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>7</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>7</amount>
 				<mode>PER</mode>
 			</effect>

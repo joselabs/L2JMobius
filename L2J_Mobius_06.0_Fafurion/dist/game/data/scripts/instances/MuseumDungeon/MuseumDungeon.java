@@ -85,7 +85,7 @@ public class MuseumDungeon extends AbstractInstance
 	{
 		super.onEnter(player, instance, firstEnter);
 		
-		final Attackable toyron = (Attackable) instance.getNpc(TOYRON);
+		final Attackable toyron = instance.getNpc(TOYRON).asAttackable();
 		if (firstEnter)
 		{
 			// Set desk status
@@ -163,7 +163,7 @@ public class MuseumDungeon extends AbstractInstance
 	public void onTimerEvent(String event, StatSet params, Npc npc, Player player)
 	{
 		final Instance instance = npc.getInstanceWorld();
-		final Attackable toyron = (Attackable) instance.getNpc(TOYRON);
+		final Attackable toyron = instance.getNpc(TOYRON).asAttackable();
 		if (isInInstance(instance))
 		{
 			switch (event)
@@ -245,7 +245,7 @@ public class MuseumDungeon extends AbstractInstance
 	public void onCreatureAttacked(OnCreatureAttacked event)
 	{
 		final Creature creature = event.getAttacker();
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Instance instance = npc.getInstanceWorld();
 		if (isInInstance(instance) && !creature.isPlayer() && npc.isScriptValue(1))
 		{
@@ -261,7 +261,7 @@ public class MuseumDungeon extends AbstractInstance
 		final Creature target = event.getTarget();
 		if (target.isNpc() && event.getAttacker().isPlayer())
 		{
-			final Player player = event.getAttacker().getActingPlayer();
+			final Player player = event.getAttacker().asPlayer();
 			final Instance instance = player.getInstanceWorld();
 			if (isInInstance(instance))
 			{
@@ -276,7 +276,7 @@ public class MuseumDungeon extends AbstractInstance
 					final Npc toyron = instance.getNpc(TOYRON);
 					((FriendlyNpc) toyron).addDamageHate(target, 0, 9999); // TODO: Find better way for attack
 					target.reduceCurrentHp(1, toyron, null);
-					((Npc) target).setScriptValue(1);
+					target.asNpc().setScriptValue(1);
 					return new DamageReturn(false, true, false, target.getMaxHp() * DAMAGE_BY_SKILL);
 				}
 			}
@@ -289,11 +289,11 @@ public class MuseumDungeon extends AbstractInstance
 	@Id(THIEF)
 	public void onCreatureKill(OnCreatureDeath event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Instance instance = npc.getInstanceWorld();
 		if (isInInstance(instance))
 		{
-			final Attackable toyron = (Attackable) instance.getNpc(TOYRON);
+			final Attackable toyron = instance.getNpc(TOYRON).asAttackable();
 			final Player player = instance.getFirstPlayer();
 			final QuestState qs = player.getQuestState(Q10542_SearchingForNewPower.class.getSimpleName());
 			if ((qs != null) && qs.isCond(4))

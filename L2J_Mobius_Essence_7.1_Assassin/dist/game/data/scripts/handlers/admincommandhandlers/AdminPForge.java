@@ -25,7 +25,6 @@ import java.util.StringTokenizer;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Boat;
 import org.l2jmobius.gameserver.network.serverpackets.AdminForgePacket;
@@ -462,7 +461,7 @@ public class AdminPForge implements IAdminCommandHandler
 								target = activeChar.getTarget();
 								if ((target != null) && target.isPlayable())
 								{
-									boat = target.getActingPlayer().getBoat();
+									boat = target.asPlayer().getBoat();
 									if (boat != null)
 									{
 										value = String.valueOf(boat.getObjectId());
@@ -479,7 +478,7 @@ public class AdminPForge implements IAdminCommandHandler
 								target = activeChar.getTarget();
 								if ((target != null) && target.isCreature())
 								{
-									value = ((Creature) target).getTitle();
+									value = target.asCreature().getTitle();
 								}
 								else
 								{

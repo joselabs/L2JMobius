@@ -237,7 +237,7 @@
 			<stat type="mDef">100</stat>
 		</stats>
 		<skills>
-			<skill id="50458" level="1" /> <!-- Pirate Earring -->
+			<skill id="50458" level="1" /> <!-- Pirate's Earring -->
 		</skills>
 	</item>
 	<item id="94615" name="Forgotten Primeval Garden's Time Stone (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -387,6 +387,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
@@ -606,7 +607,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="40250" level="1" /> <!-- XP +100,000,000 -->
+			<skill id="40250" level="1" /> <!-- Low-grade Pet XP Crystal -->
 		</skills>
 	</item>
 	<item id="94636" name="Pet's XP Growth Scroll" additionalName="Sealed" type="EtcItem">
@@ -719,9 +720,22 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
+		<set name="enchant_enabled" val="true" />
+		<set name="enchant_enabled" val="true" />
+		<cond msgId="600">
+			<player categoryType="PET_GROUP" />
+		</cond>
 		<stats>
 			<stat type="mDef">48</stat>
 		</stats>
+		<skills>
+			<skill id="50461" level="1" /> <!-- Pet Earring -->
+			<skill id="50461" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Pet Earring -->
+			<skill id="50461" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Pet Earring -->
+			<skill id="50461" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Pet Earring -->
+			<skill id="50461" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Pet Earring -->
+			<skill id="50461" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Pet Earring -->
+		</skills>
 	</item>
 	<item id="94643" name="Pet Ring" type="Armor">
 		<!-- <Pet equipment effect>. Pet's P. Def. +1000. Pet's M. Def. +500. Pet's acquired XP +50%. Pet's basic M. Def. +65. <font color=ff6666>Effects do not apply if equipped by the character. Effects of two identical items do not stack.</font> -->
@@ -731,9 +745,22 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
+		<set name="enchant_enabled" val="true" />
+		<set name="enchant_enabled" val="true" />
+		<cond msgId="600">
+			<player categoryType="PET_GROUP" />
+		</cond>
 		<stats>
 			<stat type="mDef">26</stat>
 		</stats>
+		<skills>
+			<skill id="50462" level="1" /> <!-- Pet Ring -->
+			<skill id="50462" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Pet Ring -->
+			<skill id="50462" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Pet Ring -->
+			<skill id="50462" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Pet Ring -->
+			<skill id="50462" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Pet Ring -->
+			<skill id="50462" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Pet Ring -->
+		</skills>
 	</item>
 	<item id="94644" name="Pet Book Box (Time-limited)" type="EtcItem">
 		<!-- Double-click to obtain one of the following items. -->
@@ -984,9 +1011,6 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">92</stat>
 			<stat type="mAtk">54</stat>
@@ -994,6 +1018,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="94661" name="For monsters_Dragontroop Soldier Sword" additionalName="Not Available" type="Weapon">
 		<!-- The item is not available. Monster weapon. One-handed Sword. -->
@@ -1426,15 +1453,15 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="94385" min="1" max="1" chance="11.11111" /> <!-- Improved Scroll: Enchant Rare Accessories -->
-			<item id="94383" min="1" max="1" chance="11.11111" /> <!-- Scroll: Enchant Rare Accessories -->
-			<item id="91550" min="1" max="1" chance="11.11111" /> <!-- Frintezza's Necklace -->
-			<item id="49580" min="1" max="1" chance="11.11111" /> <!-- Baium's Ring -->
-			<item id="90763" min="1" max="1" chance="11.11111" /> <!-- Zaken's Earring -->
-			<item id="6661" min="1" max="1" chance="11.11111" /> <!-- Orfen's Earring -->
-			<item id="6660" min="1" max="1" chance="11.11111" /> <!-- Queen Ant's Ring -->
-			<item id="6662" min="1" max="1" chance="11.11111" /> <!-- Ring of Core -->
-			<item id="91690" min="100" max="100" chance="11.11111" /> <!-- Special HP Recovery Potion - Sealed -->
+			<item id="94385" min="1" max="1" chance="0.005" /> <!-- Improved Scroll: Enchant Rare Accessories -->
+			<item id="94383" min="1" max="1" chance="0.1" /> <!-- Scroll: Enchant Rare Accessories -->
+			<item id="91550" min="1" max="1" chance="0.1" /> <!-- Frintezza's Necklace -->
+			<item id="49580" min="1" max="1" chance="0.2" /> <!-- Baium's Ring -->
+			<item id="90763" min="1" max="1" chance="0.3" /> <!-- Zaken's Earring -->
+			<item id="6661" min="1" max="1" chance="0.4" /> <!-- Orfen's Earring -->
+			<item id="6660" min="1" max="1" chance="0.4" /> <!-- Queen Ant's Ring -->
+			<item id="6662" min="1" max="1" chance="0.5" /> <!-- Ring of Core -->
+			<item id="91690" min="100" max="100" chance="97.995" /> <!-- Special HP Recovery Potion - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="94689" name="Daily Kit: Growth" additionalName="Sealed" type="EtcItem">

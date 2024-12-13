@@ -3,18 +3,18 @@
 	<skill id="52001" toLevel="1" name="Flag Display">
 		<!-- In order to get recognition, display the combat flag on the fortress' flagpole. -->
 		<icon>icon.weapon_fort_flag_i00</icon>
+		<operateType>A1</operateType>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>85</castRange>
 		<effectRange>400</effectRange>
 		<hitTime>15000</hitTime>
 		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>50</mpConsume>
 		<reuseDelay>5000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanTakeFort" />
 		</conditions>
@@ -42,19 +42,19 @@
 	<skill id="52003" toLevel="1" name="Flag Power - Knight">
 		<!-- Flag Power for knights. Increases P./ M. Def. and Debuff Resistance. -->
 		<icon>icon.skill0110</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PD_UP_SPECIAL</abnormalType>
 		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
-		<reuseDelay>60000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>60000</reuseDelay>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -77,22 +77,21 @@
 		</effects>
 	</skill>
 	<skill id="52004" toLevel="1" name="Flag Power - Rogue">
-		<!-- Flag Power for rogues. Increases P. Evasion and P. Skill Evasion. -->
+		<!-- Flag Power for rogues. Increases P. Evasion и P. Skill Evasion. -->
 		<icon>icon.skill0111</icon>
 		<operateType>A2</operateType>
-		<coolTime>500</coolTime>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>PUBLIC_SLOT</abnormalType>
-		<isMagic>1</isMagic>
-		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
-		<reuseDelay>60000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>500</coolTime>
+		<hitTime>1000</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>60000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="PhysicalEvasion">
 				<amount>30</amount>
@@ -101,22 +100,21 @@
 		</effects>
 	</skill>
 	<skill id="52005" toLevel="1" name="Flag Power - Archer">
-		<!-- Flag Power for archers. Increases P. Evasion and P. Skill Evasion. -->
+		<!-- Flag Power for archers. Increases P. Evasion и P. Skill Evasion. -->
 		<icon>icon.skill0111</icon>
 		<operateType>A2</operateType>
-		<coolTime>500</coolTime>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>PUBLIC_SLOT</abnormalType>
-		<isMagic>1</isMagic>
-		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
-		<reuseDelay>60000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>500</coolTime>
+		<hitTime>1000</hitTime>
+		<isMagic>1</isMagic>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>60000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="PhysicalEvasion">
 				<amount>30</amount>
@@ -128,33 +126,31 @@
 		<!-- Flag power for mages. Inflicts Sleep on nearby enemies. -->
 		<icon>icon.skill1072</icon>
 		<operateType>A2</operateType>
-		<coolTime>500</coolTime>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>SLEEP</abnormalType>
 		<abnormalVisualEffect>SLEEP</abnormalVisualEffect>
 		<activateRate>70</activateRate>
 		<affectLimit>9-10</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
-		<effectPoint>
-			<value level="1">-418</value>
-		</effectPoint>
+		<coolTime>500</coolTime>
+		<effectPoint>-590</effectPoint>
 		<effectRange>1200</effectRange>
-		<hitTime>1500</hitTime>
-		<reuseDelay>10000</reuseDelay>
+		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<mpConsume>
 			<value level="1">59</value>
 		</mpConsume>
 		<removedOnDamage>true</removedOnDamage>
-		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>10000</reuseDelay>
 		<trait>SLEEP</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>35016;35045;18103</allowedSkills>
@@ -165,32 +161,30 @@
 		<!-- Flag power for summoners. Inflicts Stun on nearby enemies. -->
 		<icon>icon.skill0048</icon>
 		<operateType>A2</operateType>
-		<coolTime>500</coolTime>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>50</activateRate>
 		<affectLimit>6-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<coolTime>500</coolTime>
 		<coolTime>720</coolTime>
-		<effectPoint>
-			<value level="1">-590</value>
-		</effectPoint>
+		<effectPoint>-590</effectPoint>
+		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<mpConsume>
 			<value level="1">59</value>
 		</mpConsume>
-		<hitTime>1500</hitTime>
 		<reuseDelay>10000</reuseDelay>
 		<reuseDelayGroup>48</reuseDelayGroup>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>35016;35045;18103</allowedSkills>
@@ -201,33 +195,31 @@
 		<!-- Flag power for healers. Inflicts Sleep on nearby enemies. -->
 		<icon>icon.skill1072</icon>
 		<operateType>A2</operateType>
-		<coolTime>500</coolTime>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>SLEEP</abnormalType>
 		<abnormalVisualEffect>SLEEP</abnormalVisualEffect>
 		<activateRate>70</activateRate>
 		<affectLimit>9-10</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
-		<effectPoint>
-			<value level="1">-418</value>
-		</effectPoint>
+		<coolTime>500</coolTime>
+		<effectPoint>-590</effectPoint>
 		<effectRange>1200</effectRange>
+		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<mpConsume>
 			<value level="1">59</value>
 		</mpConsume>
 		<removedOnDamage>true</removedOnDamage>
-		<hitTime>1500</hitTime>
 		<reuseDelay>10000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>SLEEP</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>35016;35045;18103</allowedSkills>
@@ -237,7 +229,8 @@
 	<skill id="52009" toLevel="1" name="Flag Power - Enchanter">
 		<!-- Flag power for enchanters. Inflicts Hold on nearby enemies. -->
 		<icon>icon.skill1201</icon>
-		<coolTime>500</coolTime>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">30</value>
@@ -245,22 +238,21 @@
 		<abnormalType>ROOT_MAGICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>70</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>750</castRange>
-		<effectPoint>-100</effectPoint>
+		<coolTime>500</coolTime>
+		<effectPoint>-590</effectPoint>
 		<effectRange>1250</effectRange>
-		<hitTime>1500</hitTime>
-		<reuseDelay>20000</reuseDelay>
+		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<mpConsume>
 			<value level="1">53</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
+		<reuseDelay>20000</reuseDelay>
 		<trait>HOLD</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Root" />
 		</effects>
@@ -269,32 +261,30 @@
 		<!-- Flag power for bards. Inflicts Stun on nearby enemies. -->
 		<icon>icon.skill0048</icon>
 		<operateType>A2</operateType>
-		<coolTime>500</coolTime>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>50</activateRate>
 		<affectLimit>6-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<coolTime>500</coolTime>
 		<coolTime>720</coolTime>
-		<effectPoint>
-			<value level="1">-590</value>
-		</effectPoint>
+		<effectPoint>-590</effectPoint>
+		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<mpConsume>
 			<value level="1">59</value>
 		</mpConsume>
-		<hitTime>1500</hitTime>
 		<reuseDelay>10000</reuseDelay>
 		<reuseDelayGroup>48</reuseDelayGroup>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>35016;35045;18103</allowedSkills>
@@ -304,32 +294,30 @@
 	<skill id="52011" toLevel="1" name="Flag Power - Shaman">
 		<!-- Flag power for shamans. Inflicts Fear on nearby enemies. -->
 		<icon>icon.skill1092</icon>
-		<coolTime>500</coolTime>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
-		<effectPoint>
-			<value level="1">-162</value>
-		</effectPoint>
+		<coolTime>500</coolTime>
+		<effectPoint>-590</effectPoint>
 		<effectRange>1200</effectRange>
+		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<mpConsume>
 			<value level="1">54</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
 		<reuseDelay>10000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>DERANGEMENT</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="BlockControl" />
 			<effect name="Fear" />
@@ -339,15 +327,15 @@
 		<!-- Flag Power temporarily increases Speed. -->
 		<icon>icon.skill0004</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalTime>20</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<coolTime>500</coolTime>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<reuseDelay>20000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<abnormalTime>20</abnormalTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>30</amount>
@@ -399,18 +387,18 @@
 	<skill id="52017" toLevel="1" name="Remote Flag Display">
 		<!-- In order to get recognition, display the combat flag on the fortress' flagpole. There's a chance to fail. -->
 		<icon>icon.weapon_fort_flag_i00</icon>
+		<operateType>A1</operateType>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>1100</castRange>
 		<effectRange>1800</effectRange>
 		<hitTime>15000</hitTime>
 		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>50</mpConsume>
 		<reuseDelay>5000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanTakeFort" />
 		</conditions>
@@ -426,14 +414,14 @@
 	<skill id="52018" toLevel="1" name="Leader Power">
 		<!-- STR +1. INT +1. P. Evasion +20. HP Recovery Potions' Effect +10 -->
 		<icon>icon.1st_ranking_share_buff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalTime>14600</abnormalTime>
-		<stayAfterDeath>true</stayAfterDeath>
+		<affectScope>SINGLE</affectScope>
 		<castRange>300</castRange>
 		<effectRange>315</effectRange>
 		<isMagic>2</isMagic>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="StatUp">
 				<amount>1</amount>
@@ -460,18 +448,18 @@
 	<skill id="52019" toLevel="1" name="PvP Ranking">
 		<!-- Bonus for the 1st-3rd places in PvP Ranking. When you have killed, you can see a special visual effect for a short period of time. -->
 		<icon>icon.pvp_ranking</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<irreplacableBuff>true</irreplacableBuff>
-		<canBeDispelled>false</canBeDispelled>
-		<stayAfterDeath>true</stayAfterDeath>
-		<isMagic>4</isMagic>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>4</isMagic>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<stayAfterDeath>true</stayAfterDeath>
 	</skill>
 	<skill id="52020" toLevel="1" name="PvP Ranking Effect">
 		<icon>icon.skill0000</icon>

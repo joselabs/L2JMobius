@@ -55,7 +55,7 @@ public class OpCheckAbnormalSkillCondition implements ISkillCondition
 			{
 				if ((target != null) && target.isCreature())
 				{
-					return ((Creature) target).getEffectList().hasAbnormalType(_type, info -> (info.getSkill().getAbnormalLevel() >= _level)) == _hasAbnormal;
+					return target.asCreature().getEffectList().hasAbnormalType(_type, info -> (info.getSkill().getAbnormalLevel() >= _level)) == _hasAbnormal;
 				}
 			}
 		}

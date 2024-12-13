@@ -55,7 +55,7 @@ public class OpTargetWeaponAttackTypeSkillCondition implements ISkillCondition
 			return false;
 		}
 		
-		final Creature targetCreature = (Creature) target;
+		final Creature targetCreature = target.asCreature();
 		final Weapon weapon = targetCreature.getActiveWeaponItem();
 		if (weapon == null)
 		{

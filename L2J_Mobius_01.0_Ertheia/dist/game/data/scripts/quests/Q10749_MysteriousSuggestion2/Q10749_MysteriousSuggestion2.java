@@ -165,7 +165,7 @@ public final class Q10749_MysteriousSuggestion2 extends Quest
 	{
 		event.getMembers().forEach(member ->
 		{
-			final Player player = member.getActingPlayer();
+			final Player player = member.asPlayer();
 			if (player != null)
 			{
 				final QuestState qs = getQuestState(player, true);

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="13300" name="Feather of Blessing (Event)" type="EtcItem">
 		<!-- Allows you to resurrect immediately after death at the same spot. -->
@@ -24,7 +24,7 @@
 		<set name="is_freightable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="2610" level="1" /> <!-- Register Bookmark (Event) -->
+			<skill id="2610" level="1" /> <!-- My Teleport Book Lv. 1 - Event -->
 		</skills>
 	</item>
 	<item id="13302" name="My Teleport Scroll - Event" type="EtcItem">
@@ -150,7 +150,7 @@
 		<set name="is_destroyable" val="false" />
 		<skills>
 			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
-			<skill id="8247" level="1" /> <!-- Ride Darkmane Pacer -->
+			<skill id="8247" level="1" /> <!-- Mount Darkmane Pacer -->
 		</skills>
 	</item>
 	<item id="13309" name="Agathion Love - Event" additionalName="30-day" type="Armor">
@@ -169,7 +169,7 @@
 		<set name="is_destroyable" val="false" />
 		<skills>
 			<skill id="5763" level="1" /> <!-- Wink -->
-			<skill id="8245" level="1" /> <!-- Release Agathion's Seal - Love -->
+			<skill id="8245" level="1" /> <!-- Summon Agathion Love -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -443,10 +443,6 @@
 		<set name="is_premium" val="true" />
 		<set name="time" val="43200" />
 		<set name="is_destroyable" val="false" />
-		<skills>
-			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
-			<skill id="8246" level="1" /> <!-- Transform Pumpkin Ghost -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1</stat>
 			<stat type="mAtk">1</stat>
@@ -455,6 +451,10 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
+			<skill id="8246" level="1" /> <!-- Transform Pumpkin Ghost -->
+		</skills>
 	</item>
 	<item id="13325" name="Kat the Cat Hat - Event" additionalName="7-day" type="Armor">
 		<!-- Hat that looks like Kat the Cat. 7-day. -->
@@ -726,10 +726,6 @@
 		<set name="is_premium" val="true" />
 		<set name="time" val="10080" />
 		<set name="is_destroyable" val="false" />
-		<skills>
-			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
-			<skill id="8246" level="1" /> <!-- Transform Pumpkin Ghost -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1</stat>
 			<stat type="mAtk">1</stat>
@@ -738,6 +734,10 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="839" level="1" type="ON_UNEQUIP" /> <!-- Dismount -->
+			<skill id="8246" level="1" /> <!-- Transform Pumpkin Ghost -->
+		</skills>
 	</item>
 	<item id="13340" name="Agathion Love - Event" additionalName="7-day" type="Armor">
 		<!-- Available for 7 days. Summons Agathion Love. -->
@@ -755,7 +755,7 @@
 		<set name="is_destroyable" val="false" />
 		<skills>
 			<skill id="5763" level="1" /> <!-- Wink -->
-			<skill id="8245" level="1" /> <!-- Release Agathion's Seal - Love -->
+			<skill id="8245" level="1" /> <!-- Summon Agathion Love -->
 			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
 		</skills>
 	</item>
@@ -1582,7 +1582,7 @@
 		</skills>
 	</item>
 	<item id="13389" name="Kratei Scale Shirt" additionalName="CP" type="Armor">
-		<!-- Max CP +516 when over-enchanted to +4 or above. -->
+		<!-- Starting from +4, Max CP +516. -->
 		<set name="icon" val="icon.etc_shirts_a_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1594,15 +1594,15 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3453" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Scale Shirt -->
-		</skills>
 		<stats>
 			<stat type="pDef">23</stat>
 		</stats>
+		<skills>
+			<skill id="3453" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Scale Shirt -->
+		</skills>
 	</item>
 	<item id="13390" name="Kratei Mithril Shirt" additionalName="CP" type="Armor">
-		<!-- Max CP +672 when over-enchanted to +4 or above. -->
+		<!-- Starting from +4, Max CP +672. -->
 		<set name="icon" val="icon.etc_shirts_s_i05" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1614,15 +1614,15 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3459" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Mithril Shirt -->
-		</skills>
 		<stats>
 			<stat type="pDef">28</stat>
 		</stats>
+		<skills>
+			<skill id="3459" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Mithril Shirt -->
+		</skills>
 	</item>
 	<item id="13391" name="Kratei Striped Scale Shirt" additionalName="CP" type="Armor">
-		<!-- Max CP +564 when over-enchanted to +4 or above. -->
+		<!-- Starting from +4, Max CP +564. -->
 		<set name="icon" val="icon.etc_stripe_shirts_a_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1634,15 +1634,15 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3477" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Striped Scale Shirt -->
-		</skills>
 		<stats>
 			<stat type="pDef">26</stat>
 		</stats>
+		<skills>
+			<skill id="3477" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Striped Scale Shirt -->
+		</skills>
 	</item>
 	<item id="13392" name="Kratei Striped Mithril Shirt" additionalName="CP" type="Armor">
-		<!-- Max CP +744 when over-enchanted to +4 or above. -->
+		<!-- Starting from +4, Max CP +744. -->
 		<set name="icon" val="icon.etc_stripe_shirts_s_i05" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1654,12 +1654,12 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3483" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Striped Mithril Shirt -->
-		</skills>
 		<stats>
 			<stat type="pDef">30</stat>
 		</stats>
+		<skills>
+			<skill id="3483" level="1" type="ON_ENCHANT" type_value="4" /> <!-- Striped Mithril Shirt -->
+		</skills>
 	</item>
 	<item id="13393" name="Shadow Item: Monkey Hat" type="Armor">
 		<!-- A cute monkey hat. Equipped in 2 head accessory slots. -->
@@ -1688,7 +1688,7 @@
 		<set name="duration" val="100" />
 	</item>
 	<item id="13395" name="Scroll of Escape: Talking Island Village" type="EtcItem">
-		<!-- Teleports you to Talking Island Village. -->
+		<!-- A magic scroll for teleporting to the Talking Island Village. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1707,7 +1707,7 @@
 		</skills>
 	</item>
 	<item id="13396" name="Scroll of Escape: Elven Village" type="EtcItem">
-		<!-- Teleports you to the Elven Village. -->
+		<!-- A magic scroll for teleporting to the Elven Village. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1726,7 +1726,7 @@
 		</skills>
 	</item>
 	<item id="13397" name="Scroll of Escape: Dark Elf Village" type="EtcItem">
-		<!-- Teleports you to the Dark Elf Village. -->
+		<!-- A magic scroll for teleporting to the Dark Elf Village. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1745,7 +1745,7 @@
 		</skills>
 	</item>
 	<item id="13398" name="Scroll of Escape: Orc Village" type="EtcItem">
-		<!-- A magical scroll that teleports to the Orc Village. -->
+		<!-- A magic scroll for teleporting to the Orc Village. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1764,7 +1764,7 @@
 		</skills>
 	</item>
 	<item id="13399" name="Scroll of Escape: Dwarven Village" type="EtcItem">
-		<!-- A magical scroll that teleports to the Dwarven Village. -->
+		<!-- A magic scroll for teleporting to the Dwarven Village. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />

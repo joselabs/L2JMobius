@@ -49,7 +49,7 @@ public class EnemyNot implements ITargetTypeHandler
 			return null;
 		}
 		
-		final Creature target = (Creature) selectedTarget;
+		final Creature target = selectedTarget.asCreature();
 		
 		// You can always target yourself.
 		if (creature == target)
@@ -79,7 +79,7 @@ public class EnemyNot implements ITargetTypeHandler
 			}
 			
 			// Geodata check when character is within range.
-			if (!GeoEngine.getInstance().canSeeTarget(creature, target))
+			if (!GeoEngine.getInstance().canSeeTarget(creature, target) || (skill.isFlyType() && !GeoEngine.getInstance().canMoveToTarget(creature, target)))
 			{
 				if (sendMessage)
 				{

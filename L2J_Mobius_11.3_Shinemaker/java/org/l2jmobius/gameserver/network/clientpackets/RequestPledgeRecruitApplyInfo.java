@@ -19,6 +19,7 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import org.l2jmobius.gameserver.enums.ClanEntryStatus;
 import org.l2jmobius.gameserver.instancemanager.ClanEntryManager;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.network.serverpackets.ExPledgeRecruitApplyInfo;
 
 /**
@@ -41,11 +42,12 @@ public class RequestPledgeRecruitApplyInfo extends ClientPacket
 		}
 		
 		final ClanEntryStatus status;
-		if ((player.getClan() != null) && player.isClanLeader() && ClanEntryManager.getInstance().isClanRegistred(player.getClanId()))
+		final Clan clan = player.getClan();
+		if ((clan != null) && player.isClanLeader() && ClanEntryManager.getInstance().isClanRegistred(player.getClanId()))
 		{
 			status = ClanEntryStatus.ORDERED;
 		}
-		else if ((player.getClan() == null) && (ClanEntryManager.getInstance().isPlayerRegistred(player.getObjectId())))
+		else if ((clan == null) && (ClanEntryManager.getInstance().isPlayerRegistred(player.getObjectId())))
 		{
 			status = ClanEntryStatus.WAITING;
 		}

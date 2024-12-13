@@ -98,7 +98,7 @@ public class TriggerSkillByAvoid extends AbstractEffect
 		}
 		else
 		{
-			final BuffInfo buffInfo = ((Creature) target).getEffectList().getBuffInfoBySkillId(_skill.getSkillId());
+			final BuffInfo buffInfo = target.asCreature().getEffectList().getBuffInfoBySkillId(_skill.getSkillId());
 			if (buffInfo != null)
 			{
 				triggerSkill = SkillData.getInstance().getSkill(_skill.getSkillId(), Math.min(_skillLevelScaleTo, buffInfo.getSkill().getLevel() + 1));
@@ -109,7 +109,7 @@ public class TriggerSkillByAvoid extends AbstractEffect
 			}
 		}
 		
-		SkillCaster.triggerCast(event.getAttacker(), (Creature) target, triggerSkill);
+		SkillCaster.triggerCast(event.getAttacker(), target.asCreature(), triggerSkill);
 	}
 	
 	@Override

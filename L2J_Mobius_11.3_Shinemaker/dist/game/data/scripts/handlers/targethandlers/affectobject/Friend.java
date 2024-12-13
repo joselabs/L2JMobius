@@ -39,8 +39,8 @@ public class Friend implements IAffectObjectHandler
 			return true;
 		}
 		
-		final Player player = creature.getActingPlayer();
-		final Player targetPlayer = target.getActingPlayer();
+		final Player player = creature.asPlayer();
+		final Player targetPlayer = target.asPlayer();
 		if (player != null)
 		{
 			if (targetPlayer != null)
@@ -118,7 +118,7 @@ public class Friend implements IAffectObjectHandler
 				}
 				
 				// By default any neutral non-flagged player is considered a friend.
-				return (target.getActingPlayer().getPvpFlag() == 0) && (target.getActingPlayer().getReputation() >= 0);
+				return (targetPlayer.getPvpFlag() == 0) && (targetPlayer.getReputation() >= 0);
 			}
 			
 			// By default any npc that is not mob is considered friend.

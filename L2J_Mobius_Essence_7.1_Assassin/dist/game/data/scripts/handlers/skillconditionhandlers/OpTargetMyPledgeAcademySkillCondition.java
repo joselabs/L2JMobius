@@ -39,7 +39,8 @@ public class OpTargetMyPledgeAcademySkillCondition implements ISkillCondition
 		{
 			return false;
 		}
-		final Player targetPlayer = target.getActingPlayer();
+		
+		final Player targetPlayer = target.asPlayer();
 		return targetPlayer.isAcademyMember() && (targetPlayer.getClan() == caster.getClan());
 	}
 }

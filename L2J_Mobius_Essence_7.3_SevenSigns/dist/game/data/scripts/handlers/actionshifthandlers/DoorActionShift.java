@@ -41,7 +41,7 @@ public class DoorActionShift implements IActionShiftHandler
 		if (player.isGM())
 		{
 			player.setTarget(target);
-			final Door door = (Door) target;
+			final Door door = target.asDoor();
 			final ClanHall clanHall = ClanHallData.getInstance().getClanHallByDoorId(door.getId());
 			final Fort fort = door.getFort();
 			final Castle castle = door.getCastle();

@@ -139,7 +139,7 @@ public class Q10365_SeekerEscort extends Quest
 			}
 			case "CHECK_PLAYER":
 			{
-				final Player owner = npc.getSummoner().getActingPlayer();
+				final Player owner = npc.getSummoner().asPlayer();
 				if (owner != null)
 				{
 					if (npc.calculateDistance2D(owner) < 180)
@@ -249,7 +249,7 @@ public class Q10365_SeekerEscort extends Quest
 	@Override
 	public void onMoveFinished(Npc npc)
 	{
-		final Player owner = npc.getSummoner().getActingPlayer();
+		final Player owner = npc.getSummoner().asPlayer();
 		if (owner != null)
 		{
 			showOnScreenMsg(owner, NpcStringId.CATCH_UP_TO_KING_HE_S_WAITING, ExShowScreenMessage.TOP_CENTER, 4500);

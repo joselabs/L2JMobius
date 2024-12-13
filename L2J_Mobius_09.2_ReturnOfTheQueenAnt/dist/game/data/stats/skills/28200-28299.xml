@@ -5,11 +5,11 @@
 		<icon>BranchSys.icon.br_valkyrie_cap_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -22,17 +22,17 @@
 	</skill>
 	<skill id="28202" toLevel="1" name="T-shirt Pack">
 		<icon>icon.bm_strongbox</icon>
-		<itemConsumeId>29214</itemConsumeId>
-		<itemConsumeCount>1</itemConsumeCount>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>29214</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -62,16 +62,16 @@
 		<!-- Cancels all debuffs on you and makes you immune to debuffs for 7 sec. -->
 		<icon>icon.bm_jewel_garnet_high_lv1_lavianrose</icon>
 		<operateType>A2</operateType>
-		<hitTime>1000</hitTime>
-		<coolTime>500</coolTime>
-		<abnormalType>ABNORMAL_INVINCIBILITY</abnormalType>
-		<abnormalTime>7</abnormalTime>
-		<chance>100</chance>
-		<reuseDelay>30000</reuseDelay>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
+		<abnormalTime>7</abnormalTime>
+		<abnormalType>ABNORMAL_INVINCIBILITY</abnormalType>
 		<affectScope>SINGLE</affectScope>
 		<canCastWhileDisabled>true</canCastWhileDisabled>
+		<chance>100</chance>
+		<coolTime>500</coolTime>
+		<hitTime>1000</hitTime>
+		<reuseDelay>30000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="DebuffBlock" />
 			<effect name="DefenceTrait">
@@ -97,8 +97,8 @@
 	<skill id="28204" toLevel="1" name="Box Containing War God's Soul">
 		<icon>icon.bm_strongbox</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28205" toLevel="1" name="Anniversary Rune 100%">
 		<icon>br_cashtex.skill.br_cash_rune_of_exp_buff_5</icon>
@@ -118,13 +118,13 @@
 		<!-- Summons Agathion Minion Eye. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>85</magicLevel>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<conditions>
 			<condition name="OpNeedAgathion" />
 		</conditions>
@@ -145,15 +145,15 @@
 		<!-- Speed +100% for 10 sec. -->
 		<icon>icon.skill_transform_buff</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<reuseDelay>600000</reuseDelay>
-		<effectPoint>689</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>689</effectPoint>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>600000</reuseDelay>
 		<effects>
 			<effect name="Speed">
 				<amount>100</amount>
@@ -165,18 +165,18 @@
 		<!-- Decreases P. Def. by 90% and recovers 134 MP every second for 30 sec. The status is canceled when damage is incurred. Cooldown is 30 min. -->
 		<icon>icon.skill1430</icon>
 		<operateType>A2</operateType>
-		<hitTime>2000</hitTime>
+		<targetType>SELF</targetType>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>FORCE_MEDITATION</abnormalType>
-		<magicLevel>1</magicLevel>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<reuseDelay>1800000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>1</effectPoint>
+		<hitTime>2000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<removedOnDamage>true</removedOnDamage>
+		<reuseDelay>1800000</reuseDelay>
 		<effects>
 			<effect name="ManaHealOverTime">
 				<power>134</power>
@@ -206,11 +206,11 @@
 		<!-- Teleports you to the Town of Aden. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>600000</reuseDelay>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>600000</reuseDelay>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -226,11 +226,11 @@
 		<!-- Teleport to Town of Rune. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>600000</reuseDelay>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>600000</reuseDelay>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -246,11 +246,11 @@
 		<!-- Teleports to Giran. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>600000</reuseDelay>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>600000</reuseDelay>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -336,16 +336,16 @@
 		<!-- Blessed Resurrection is available. -->
 		<icon>icon.skill_agathion_special</icon>
 		<operateType>A1</operateType>
-		<castRange>400</castRange>
-		<hitTime>3000</hitTime>
-		<reuseDelay>3600000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>PC_BODY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<castRange>400</castRange>
+		<effectPoint>1</effectPoint>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpResurrection" />
 		</conditions>
@@ -359,24 +359,23 @@
 		<!-- Receive Matryoshka's Gift's gift. -->
 		<icon>icon.etc_pi_gift_box_i02</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<hitTime>2000</hitTime>
+		<isMagic>4</isMagic>
 		<reuseDelay>43200000</reuseDelay>
 	</skill>
 	<skill id="28220" toLevel="1" name="Matryoshka's Blessing">
 		<!-- For 60 min., acquired XP/ SP while hunting +30%. -->
 		<icon>icon.exp_bottle_scroll</icon>
 		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>1000</hitTime>
-		<reuseDelay>300000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<abnormalTime>3600</abnormalTime>
-		<magicLevel>1</magicLevel>
-		<effectPoint>1</effectPoint>
-		<basicProperty>NONE</basicProperty>
 		<targetType>SELF</targetType>
+		<abnormalTime>3600</abnormalTime>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="ExpModify">
 				<amount>30</amount>
@@ -390,11 +389,11 @@
 		<!-- Teleports you to the Talking Island Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>1800000</reuseDelay>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>1800000</reuseDelay>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -410,11 +409,11 @@
 		<!-- Teleports you to the Town of Aden. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>1800000</reuseDelay>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>1800000</reuseDelay>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -430,11 +429,11 @@
 		<!-- Teleports to Magmeld Ancient City Arcan. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>1800000</reuseDelay>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>1800000</reuseDelay>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -450,11 +449,11 @@
 		<!-- Teleports you to Keucereus Alliance Base. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>1800000</reuseDelay>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>1800000</reuseDelay>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -493,8 +492,8 @@
 	<skill id="28229" toLevel="1" name="Reconstruction Society's Enchantment Pack">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28230" toLevel="1" name="Agathion Summon - Gnosian">
 		<!-- Summons Gnosian agathion. -->
@@ -518,13 +517,13 @@
 		<!-- Makes an agathion perform a cute trick. -->
 		<icon>icon.skill_agathion_cute</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
-		<hitTime>3000</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpNeedAgathion" />
 		</conditions>
@@ -533,27 +532,29 @@
 		<!-- Double-click Freya's Deluxe Shopping Bag to obtain 1 Freya's Art of Seduction, 2 Freya's Recovery Potion, and 1 Freya's Frozen Scroll. There is also a chance to additionally obtain one Freya, Sirra, or Snowman Special Card. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28235" toLevel="3" name="Freya Special Card">
-		<!-- Double-click to randomly obtain an item from a selection of rare items including rare accessories. -->
+		<!-- Level 1: Double-click to randomly obtain an item from a selection of rare items including rare accessories. -->
+		<!-- Level 2: Double-click to randomly obtain an item from a selection of various equipment enchantment items. -->
+		<!-- Level 3: Double-click to randomly obtain an item from a selection of various character growth and enhancement items. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28236" toLevel="1" name="Sibi's Suspicious Supplies">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28237" toLevel="1" name="Water Dragon's Treasure Chest">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28238" toLevel="1" name="Summon Agathion Meliodas">
 		<!-- Summons Meliodas agathion. -->
@@ -610,7 +611,15 @@
 		<hitTime>3000</hitTime>
 	</skill>
 	<skill id="28247" toLevel="9" name="Seven Deadly Sins - Meliodas">
-		<!-- Attribute Attack/ Resistance and CHA are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and CHA are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, CHA +1. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, CHA +3. -->
 		<icon>BranchIcon.icon.g_bm_meliodas_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -728,7 +737,15 @@
 		</effects>
 	</skill>
 	<skill id="28248" toLevel="9" name="Seven Deadly Sins - Elizabeth">
-		<!-- Attribute Attack/ Resistance and Recovery Potions' Effect are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and Recovery Potions' Effect are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, Recovery Potions' Effect +200. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, Recovery Potions' Effect +500. -->
 		<icon>BranchIcon.icon.g_bm_elizabeth_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -874,7 +891,15 @@
 		</effects>
 	</skill>
 	<skill id="28249" toLevel="9" name="Seven Deadly Sins - Hawk">
-		<!-- Attribute Attack/ Resistance and LUC are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and LUC are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, LUC +1. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, LUC +3. -->
 		<icon>BranchIcon.icon.g_bm_hawk_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -992,7 +1017,15 @@
 		</effects>
 	</skill>
 	<skill id="28250" toLevel="9" name="Seven Deadly Sins - Ban">
-		<!-- Attribute Attack/ Resistance and DEX are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and DEX are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, DEX +1. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, DEX +3. -->
 		<icon>BranchIcon.icon.g_bm_ban_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1110,7 +1143,15 @@
 		</effects>
 	</skill>
 	<skill id="28251" toLevel="9" name="Seven Deadly Sins - Diane">
-		<!-- Attribute Attack/ Resistance and STR are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and STR are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, STR +1. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, STR +3. -->
 		<icon>BranchIcon.icon.g_bm_diane_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1228,7 +1269,15 @@
 		</effects>
 	</skill>
 	<skill id="28252" toLevel="9" name="Seven Deadly Sins - King">
-		<!-- Attribute Attack/ Resistance and WIT are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and WIT are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, WIT +1. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, WIT +3. -->
 		<icon>BranchIcon.icon.g_bm_king_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1346,7 +1395,15 @@
 		</effects>
 	</skill>
 	<skill id="28253" toLevel="9" name="Seven Deadly Sins - Merlin">
-		<!-- Attribute Attack/ Resistance and INT are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and INT are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, INT +1. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, INT +3. -->
 		<icon>BranchIcon.icon.g_bm_merlin_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1464,7 +1521,15 @@
 		</effects>
 	</skill>
 	<skill id="28254" toLevel="9" name="Seven Deadly Sins - Gowther">
-		<!-- Attribute Attack/ Resistance and MEN are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and MEN are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, MEN +1. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, MEN +3. -->
 		<icon>BranchIcon.icon.g_bm_gowther_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1582,7 +1647,15 @@
 		</effects>
 	</skill>
 	<skill id="28255" toLevel="9" name="Seven Deadly Sins - Escanor">
-		<!-- Attribute Attack/ Resistance and CON are increased, when the agathion grows. -->
+		<!-- Level 1: Attribute Attack/ Resistance and CON are increased, when the agathion grows. -->
+		<!-- Level 2: Attribute Resistance +5. -->
+		<!-- Level 3: Attribute Resistance +10. -->
+		<!-- Level 4: Attribute Resistance +10, Attribute Attack +10. -->
+		<!-- Level 5: Attribute Resistance +20, Attribute Attack +10. -->
+		<!-- Level 6: Attribute Resistance +25, Attribute Attack +20. -->
+		<!-- Level 7: Attribute Resistance +30, Attribute Attack +30. -->
+		<!-- Level 8: Attribute Resistance +40, Attribute Attack +30, CON +1. -->
+		<!-- Level 9: Attribute Resistance +50, Attribute Attack +70, CON +3. -->
 		<icon>BranchIcon.icon.g_bm_escanor_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1700,7 +1773,15 @@
 		</effects>
 	</skill>
 	<skill id="28256" toLevel="9" name="Sin of Wrath">
-		<!-- PvE Damage to regular monsters is increased, when the agathion grows. -->
+		<!-- Level 1: PvE Damage to regular monsters is increased, when the agathion grows. -->
+		<!-- Level 2: PvE Damage to ordinary monsters +1%. -->
+		<!-- Level 3: PvE Damage to ordinary monsters +2%. -->
+		<!-- Level 4: PvE Damage to ordinary monsters +3%. -->
+		<!-- Level 5: PvE Damage to ordinary monsters +4%. -->
+		<!-- Level 6: PvE Damage to ordinary monsters +5%. -->
+		<!-- Level 7: PvE Damage to ordinary monsters +6%. -->
+		<!-- Level 8: PvE Damage to ordinary monsters +7%. -->
+		<!-- Level 9: PvE Damage to ordinary monsters +15%. -->
 		<icon>BranchIcon.icon.g_bm_meliodas_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1749,7 +1830,15 @@
 		</effects>
 	</skill>
 	<skill id="28257" toLevel="9" name="Divine Family Power">
-		<!-- Received PvE Damage is decreased, when the agathion grows. -->
+		<!-- Level 1: Received PvE Damage is decreased, when the agathion grows. -->
+		<!-- Level 2: Received PvE Damage -1%. -->
+		<!-- Level 3: Received PvE Damage -2%. -->
+		<!-- Level 4: Received PvE Damage -3%. -->
+		<!-- Level 5: Received PvE Damage -4%. -->
+		<!-- Level 6: Received PvE Damage -5%. -->
+		<!-- Level 7: Received PvE Damage -6%. -->
+		<!-- Level 8: Received PvE Damage -7%. -->
+		<!-- Level 9: Received PvE Damage -15%. -->
 		<icon>BranchIcon.icon.g_bm_elizabeth_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1798,7 +1887,14 @@
 		</effects>
 	</skill>
 	<skill id="28258" toLevel="8" name="Boar Hat Pub Pig Mark">
-		<!-- Acquired XP/ SP are increased, when the agathion grows. -->
+		<!-- Level 1: Acquired XP/ SP are increased, when the agathion grows. -->
+		<!-- Level 2: Acquired XP/ SP +1% -->
+		<!-- Level 3: Acquired XP/ SP +2% -->
+		<!-- Level 4: Acquired XP/ SP +3% -->
+		<!-- Level 5: Acquired XP/ SP +4% -->
+		<!-- Level 6: Acquired XP/ SP +5% -->
+		<!-- Level 7: Acquired XP/ SP +7% -->
+		<!-- Level 8: Acquired XP/ SP +10% -->
 		<icon>BranchIcon.icon.g_bm_hawk_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1829,7 +1925,14 @@
 		</effects>
 	</skill>
 	<skill id="28259" toLevel="8" name="Sin of Greed">
-		<!-- P. Skill Critical Rate is increased, when the agathion grows. -->
+		<!-- Level 1: P. Skill Critical Rate is increased, when the agathion grows. -->
+		<!-- Level 2: P. Skill Critical Rate +1% -->
+		<!-- Level 3: P. Skill Critical Rate +2% -->
+		<!-- Level 4: P. Skill Critical Rate +3% -->
+		<!-- Level 5: P. Skill Critical Rate +4% -->
+		<!-- Level 6: P. Skill Critical Rate +5% -->
+		<!-- Level 7: P. Skill Critical Rate +6% -->
+		<!-- Level 8: P. Skill Critical Rate +7% -->
 		<icon>BranchIcon.icon.g_bm_ban_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1849,11 +1952,18 @@
 		</effects>
 	</skill>
 	<skill id="28260" toLevel="8" name="Sin of Envy">
-		<!-- P. Atk. is increased, when the agathion grows. -->
+		<!-- Level 1: P. Atk. is increased, when the agathion grows. -->
+		<!-- Level 2: P. Atk. +1% -->
+		<!-- Level 3: P. Atk. +2% -->
+		<!-- Level 4: P. Atk. +3% -->
+		<!-- Level 5: P. Atk. +4% -->
+		<!-- Level 6: P. Atk. +6% -->
+		<!-- Level 7: P. Atk. +8% -->
+		<!-- Level 8: P. Atk. +10% -->
 		<icon>BranchIcon.icon.g_bm_diane_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">1</value>
@@ -1869,7 +1979,14 @@
 		</effects>
 	</skill>
 	<skill id="28261" toLevel="8" name="Sin of Sloth">
-		<!-- Skill MP Consumption is decreased, when the agathion grows. -->
+		<!-- Level 1: Skill MP Consumption is decreased, when the agathion grows. -->
+		<!-- Level 2: Skill MP Consumption -1% -->
+		<!-- Level 3: Skill MP Consumption -2% -->
+		<!-- Level 4: Skill MP Consumption -3% -->
+		<!-- Level 5: Skill MP Consumption -4% -->
+		<!-- Level 6: Skill MP Consumption -5% -->
+		<!-- Level 7: Skill MP Consumption -6% -->
+		<!-- Level 8: Skill MP Consumption -7% -->
 		<icon>BranchIcon.icon.g_bm_king_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1904,7 +2021,14 @@
 		</effects>
 	</skill>
 	<skill id="28262" toLevel="8" name="Sin of Gluttony">
-		<!-- M. Def. is increased, when the agathion grows. -->
+		<!-- Level 1: M. Def. is increased, when the agathion grows. -->
+		<!-- Level 2: M. Def. +1% -->
+		<!-- Level 3: M. Def. +2% -->
+		<!-- Level 4: M. Def. +3% -->
+		<!-- Level 5: M. Def. +4% -->
+		<!-- Level 6: M. Def. +6% -->
+		<!-- Level 7: M. Def. +8% -->
+		<!-- Level 8: M. Def. +10% -->
 		<icon>BranchIcon.icon.g_bm_merlin_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1924,7 +2048,14 @@
 		</effects>
 	</skill>
 	<skill id="28263" toLevel="8" name="Sin of Lust">
-		<!-- Debuff Resistance is increased, when the agathion grows. -->
+		<!-- Level 1: Debuff Resistance is increased, when the agathion grows. -->
+		<!-- Level 2: Debuff Resistance +1% -->
+		<!-- Level 3: Debuff Resistance +2% -->
+		<!-- Level 4: Debuff Resistance +3% -->
+		<!-- Level 5: Debuff Resistance +4% -->
+		<!-- Level 6: Debuff Resistance +5% -->
+		<!-- Level 7: Debuff Resistance +6% -->
+		<!-- Level 8: Debuff Resistance +7% -->
 		<icon>BranchIcon.icon.g_bm_gowther_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1944,7 +2075,14 @@
 		</effects>
 	</skill>
 	<skill id="28264" toLevel="8" name="Sin of Pride">
-		<!-- P. Def. is increased, when the agathion grows. -->
+		<!-- Level 1: P. Def. is increased, when the agathion grows. -->
+		<!-- Level 2: P. Def. +1% -->
+		<!-- Level 3: P. Def. +2% -->
+		<!-- Level 4: P. Def. +3% -->
+		<!-- Level 5: P. Def. +4% -->
+		<!-- Level 6: P. Def. +6% -->
+		<!-- Level 7: P. Def. +8% -->
+		<!-- Level 8: P. Def. +10% -->
 		<icon>BranchIcon.icon.g_bm_escanor_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1964,7 +2102,14 @@
 		</effects>
 	</skill>
 	<skill id="28265" toLevel="8" name="Demon Sword Lostvayne Power">
-		<!-- PvP Damage is increased, when the agathion grows. -->
+		<!-- Level 1: PvP Damage is increased, when the agathion grows. -->
+		<!-- Level 2: PvP Damage +1%. -->
+		<!-- Level 3: PvP Damage +2%. -->
+		<!-- Level 4: PvP Damage +3%. -->
+		<!-- Level 5: PvP Damage +4%. -->
+		<!-- Level 6: PvP Damage +5%. -->
+		<!-- Level 7: PvP Damage +6%. -->
+		<!-- Level 8: PvP Damage +15%. -->
 		<icon>BranchIcon.icon.g_bm_meliodas_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2010,7 +2155,14 @@
 		</effects>
 	</skill>
 	<skill id="28266" toLevel="8" name="Tranquility Magic Power">
-		<!-- Received PvP Damage is decreased, when the agathion grows. -->
+		<!-- Level 1: Received PvP Damage is decreased, when the agathion grows. -->
+		<!-- Level 2: Received PvP damage -1%. -->
+		<!-- Level 3: Received PvP damage -2%. -->
+		<!-- Level 4: Received PvP damage -3%. -->
+		<!-- Level 5: Received PvP damage -4%. -->
+		<!-- Level 6: Received PvP damage -5%. -->
+		<!-- Level 7: Received PvP damage -6%. -->
+		<!-- Level 8: Received PvP damage -15%. -->
 		<icon>BranchIcon.icon.g_bm_elizabeth_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2056,7 +2208,14 @@
 		</effects>
 	</skill>
 	<skill id="28267" toLevel="8" name="Leftover Cleaning Knights' Power">
-		<!-- Acquired XP/ SP while hunting are increased, when the agathion grows. -->
+		<!-- Level 1: Acquired XP/ SP while hunting are increased, when the agathion grows. -->
+		<!-- Level 2: Acquired XP/ SP while hunting +1%. -->
+		<!-- Level 3: Acquired XP/ SP while hunting +2%. -->
+		<!-- Level 4: Acquired XP/ SP while hunting +3%. -->
+		<!-- Level 5: Acquired XP/ SP while hunting +4%. -->
+		<!-- Level 6: Acquired XP/ SP while hunting +5%. -->
+		<!-- Level 7: Acquired XP/ SP while hunting +7%. -->
+		<!-- Level 8: Acquired XP/ SP while hunting +10%. -->
 		<icon>BranchIcon.icon.g_bm_hawk_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2087,7 +2246,14 @@
 		</effects>
 	</skill>
 	<skill id="28268" toLevel="8" name="Holy Staff Courechouse Power">
-		<!-- Skill Cooldown is decreased, when the agathion grows. -->
+		<!-- Level 1: Skill Cooldown is decreased, when the agathion grows. -->
+		<!-- Level 2: Skill Cooldown -1% -->
+		<!-- Level 3: Skill Cooldown -2% -->
+		<!-- Level 4: Skill Cooldown -3% -->
+		<!-- Level 5: Skill Cooldown -4% -->
+		<!-- Level 6: Skill Cooldown -5% -->
+		<!-- Level 7: Skill Cooldown -6% -->
+		<!-- Level 8: Skill Cooldown -7% -->
 		<icon>BranchIcon.icon.g_bm_ban_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2108,7 +2274,14 @@
 		</effects>
 	</skill>
 	<skill id="28269" toLevel="8" name="War Hammer Gideon Power">
-		<!-- P. Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 1: P. Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 2: P. Critical Damage +1%. -->
+		<!-- Level 3: P. Critical Damage +2%. -->
+		<!-- Level 4: P. Critical Damage +3%. -->
+		<!-- Level 5: P. Critical Damage +4%. -->
+		<!-- Level 6: P. Critical Damage +5%. -->
+		<!-- Level 7: P. Critical Damage +6%. -->
+		<!-- Level 8: P. Critical Damage +7%. -->
 		<icon>BranchIcon.icon.g_bm_diane_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2128,11 +2301,18 @@
 		</effects>
 	</skill>
 	<skill id="28270" toLevel="8" name="Spirit Spear Chastiefol Power">
-		<!-- M. Atk. is increased, when the agathion grows. -->
+		<!-- Level 1: M. Atk. is increased, when the agathion grows. -->
+		<!-- Level 2: M. Atk. +1% -->
+		<!-- Level 3: M. Atk. +3% -->
+		<!-- Level 4: M. Atk. +5% -->
+		<!-- Level 5: M. Atk. +7% -->
+		<!-- Level 6: M. Atk. +10% -->
+		<!-- Level 7: M. Atk. +13% -->
+		<!-- Level 8: M. Atk. +17% -->
 		<icon>BranchIcon.icon.g_bm_king_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">1</value>
@@ -2148,7 +2328,14 @@
 		</effects>
 	</skill>
 	<skill id="28271" toLevel="8" name="Morning Star Aldan Power">
-		<!-- M. Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 1: M. Critical Damage is increased, when the agathion grows. -->
+		<!-- Level 2: M. Critical Damage +1%. -->
+		<!-- Level 3: M. Critical Damage +2%. -->
+		<!-- Level 4: M. Critical Damage +3%. -->
+		<!-- Level 5: M. Critical Damage +4%. -->
+		<!-- Level 6: M. Critical Damage +5%. -->
+		<!-- Level 7: M. Critical Damage +6%. -->
+		<!-- Level 8: M. Critical Damage +7%. -->
 		<icon>BranchIcon.icon.g_bm_merlin_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2168,7 +2355,14 @@
 		</effects>
 	</skill>
 	<skill id="28272" toLevel="8" name="Twin Bow Herritt Power">
-		<!-- Damage to immobilized targets is increased, when the agathion grows. -->
+		<!-- Level 1: Damage to immobilized targets is increased, when the agathion grows. -->
+		<!-- Level 2: Damage to immobilized targets +1%. -->
+		<!-- Level 3: Damage to immobilized targets +2%. -->
+		<!-- Level 4: Damage to immobilized targets +3%. -->
+		<!-- Level 5: Damage to immobilized targets +4%. -->
+		<!-- Level 6: Damage to immobilized targets +5%. -->
+		<!-- Level 7: Damage to immobilized targets +6%. -->
+		<!-- Level 8: Damage to immobilized targets +7%. -->
 		<icon>BranchIcon.icon.g_bm_gowther_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2201,7 +2395,14 @@
 		</effects>
 	</skill>
 	<skill id="28273" toLevel="8" name="Divine Axe Rhitta Power">
-		<!-- Received P. Critical Damage is decreased, when the agathion grows. -->
+		<!-- Level 1: Received P. Critical Damage is decreased, when the agathion grows. -->
+		<!-- Level 2: Received P. Critical Damage -1% -->
+		<!-- Level 3: Received P. Critical Damage -2% -->
+		<!-- Level 4: Received P. Critical Damage -3% -->
+		<!-- Level 5: Received P. Critical Damage -4% -->
+		<!-- Level 6: Received P. Critical Damage -6% -->
+		<!-- Level 7: Received P. Critical Damage -8% -->
+		<!-- Level 8: Received P. Critical Damage -10% -->
 		<icon>BranchIcon.icon.g_bm_escanor_agathion_charm_lv1_jp</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -2257,11 +2458,11 @@
 			<effect name="SpModify">
 				<amount>30</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2284,8 +2485,8 @@
 	<skill id="28278" toLevel="1" name="Animate Appearance Stone Random Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28279" toLevel="1" name="+5 Agathion Hawk Lv. 3 (7-day) Pack">
 		<icon>icon.skill0000</icon>
@@ -2300,37 +2501,38 @@
 	<skill id="28281" toLevel="1" name="Goddess Eva's Treasure Chest">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28282" toLevel="2" name="Peeves' Red Potion">
-		<!-- For 30 min., acquired XP/ SP +30%, Vitality bonus +30%, P. Atk./ P. Def./ M. Atk./ M. Def. +15%. -->
+		<!-- Level 1: For 30 min., acquired XP/ SP +30%, Vitality bonus +30%, P. Atk./ P. Def./ M. Atk./ M. Def. +15%. -->
+		<!-- Level 2: For 30 min., acquired XP/ SP +50%, Vitality bonus +50%, P. Atk./ P. Def./ M. Atk./ M. Def., Critical Damage for standard attacks, P./ M. Skill Power +15%. The effect does not stack with that of Peeves' Red Potion. -->
 		<icon>
 			<value level="1">BranchIcon.etc_sign_agathion_feed_red_i00</value>
 			<value level="2">BranchIcon.etc_sign_agathion_feed_purple_i00</value>
 		</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
 		<abnormalType>VP_UP</abnormalType>
 		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
-		<effectPoint>100</effectPoint>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>0</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">29377</value> <!-- Peeves' Red Potion -->
 			<value level="2">29379</value> <!-- Peeves' Purple Potion -->
 		</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<staticReuse>true</staticReuse>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>300000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<stayAfterDeath>true</stayAfterDeath>
-		<blockedInOlympiad>true</blockedInOlympiad>
 		<effects>
 			<effect name="ExpModify">
 				<amount>
@@ -2350,7 +2552,7 @@
 					<value level="2">50</value>
 				</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2358,7 +2560,7 @@
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2389,17 +2591,17 @@
 	<skill id="28283" toLevel="1" name="Peeves' Yellow Potion">
 		<icon>BranchIcon.etc_sign_agathion_feed_yellow_i00</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>30000</reuseDelay>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29378</itemConsumeId> <!-- Peeves' Yellow Potion -->
-		<magicLevel>1</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>30000</reuseDelay>
 		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanUseVitalityIncreaseItem" />
 		</conditions>
@@ -2410,20 +2612,25 @@
 		</effects>
 	</skill>
 	<skill id="28284" toLevel="4" name="Peeves' Blue Potion">
-		<!-- When used, increases Successful Fishing XP/ SP by 50% for 1 h. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- Level 1: When used, increases Successful Fishing XP/ SP by 50% for 1 h. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- Level 2: When used, increases Successful Fishing XP/ SP by 50% for 2 h. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- Level 3: When used, increases Successful Fishing XP/ SP by 50% for 4 h. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- Level 4: When used, increases Successful Fishing XP/ SP by 50% for 8 h. Applied to all bait. Can be stacked with Angler's Blessing. -->
 		<icon>BranchIcon.etc_sign_agathion_feed_blue_i00</icon>
 		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<coolTime>500</coolTime>
-		<reuseDelay>60000</reuseDelay>
+		<targetType>SELF</targetType>
 		<abnormalTime>
 			<value level="1">3600</value> <!-- Peeves' Blue Potion - 1-hour -->
 			<value level="2">7200</value> <!-- Peeves' Blue Potion - 2-hour -->
 			<value level="3">14400</value> <!-- Peeves' Blue Potion - 4-hour -->
 			<value level="4">28800</value> <!-- Peeves' Blue Potion - 8-hour -->
 		</abnormalTime>
-		<effectPoint>100</effectPoint>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<effectPoint>0</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">29380</value> <!-- Peeves' Blue Potion - 1-hour -->
@@ -2431,12 +2638,10 @@
 			<value level="3">29382</value> <!-- Peeves' Blue Potion - 4-hour -->
 			<value level="4">29383</value> <!-- Peeves' Blue Potion - 8-hour -->
 		</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<staticReuse>true</staticReuse>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>60000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="FishingExpSpBonus">
 				<amount>50</amount>
@@ -2448,19 +2653,19 @@
 		<!-- For 30 min., Max HP/ MP/ CP +30%, P./ M. Atk. and P./ M. Def. +30%, Atk. Spd./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +100, Damage +10%, P./ M. Skill Power +10%, Acquired XP/ SP +30%, Received Damage -30 min.0, Skill MP Consumption -30 min.1. The effect remains after death. -->
 		<icon>BranchSys3.Icon1.g_beerfestival_bavarian_beer</icon>
 		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>1000</hitTime>
-		<reuseDelay>300000</reuseDelay>
-		<abnormalType>BR_EVENT_BUF1</abnormalType>
-		<effectPoint>1</effectPoint>
-		<itemConsumeId>29386</itemConsumeId> <!-- Honey Rose Beer -->
-		<itemConsumeCount>1</itemConsumeCount>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
-		<stayAfterDeath>true</stayAfterDeath>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<targetType>SELF</targetType>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>29386</itemConsumeId> <!-- Honey Rose Beer -->
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="MaxCp">
 				<amount>30</amount>
@@ -2474,7 +2679,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2482,7 +2687,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2560,19 +2765,19 @@
 		<!-- For 2 h., Max HP/ MP/ CP +30%, P./ M. Atk. and P./ M. Def. +30%, Atk. Spd./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +100, Damage +10%, P./ M. Skill Power +10%, Acquired XP/ SP +30%, Received Damage -2 h.0, Skill MP Consumption -2 h.1. The effect remains after death. -->
 		<icon>BranchSys3.Icon1.g_beerfestival_bavarian_beer</icon>
 		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>1000</hitTime>
-		<reuseDelay>300000</reuseDelay>
-		<abnormalType>BR_EVENT_BUF1</abnormalType>
-		<effectPoint>1</effectPoint>
-		<itemConsumeId>29387</itemConsumeId> <!-- Honey Rose Beer - 2-hour -->
-		<itemConsumeCount>1</itemConsumeCount>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
-		<stayAfterDeath>true</stayAfterDeath>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<targetType>SELF</targetType>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>29387</itemConsumeId> <!-- Honey Rose Beer - 2-hour -->
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="MaxCp">
 				<amount>30</amount>
@@ -2586,7 +2791,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2594,7 +2799,7 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2672,15 +2877,15 @@
 		<!-- Double click to obtain 1 Level 4 La Vie En Rose Gem. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28288" toLevel="1" name="Jewel Box Lv. 5">
 		<!-- Double click to obtain 1 Level 5 La Vie En Rose Gem. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28289" toLevel="1" name="Paulina's Magic Bracelet">
 		<!-- Unlocks the agathion's main slot and 2 side slot(s). -->
@@ -2690,49 +2895,49 @@
 	<skill id="28290" toLevel="3" name="Sealed Artifact Pack">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="28291" toLevel="1" name="Water Spirit's Gift">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28292" toLevel="1" name="Ancient Relic">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="28293" toLevel="1" name="Ancient Relic Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="28294" toLevel="1" name="Shining Ancient Relic Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="28295" toLevel="1" name="Ultimate Jewelry Box Lv. 3">
 		<!-- Double-click to obtain 1 of the Lv. 3 jewels. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="RestorationRandom">
 				<items>
@@ -2786,14 +2991,14 @@
 		<!-- Double-click to obtain 1 of the Lv. 4 jewels. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="RestorationRandom">
 				<items>
@@ -2847,14 +3052,14 @@
 		<!-- Double-click to obtain one level 5 Gem. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="RestorationRandom">
 				<items>
@@ -2914,8 +3119,8 @@
 		<!-- Double-click to obtain 1 of the Lv. 3 La Vie En Rose's Jewelry Boxes. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="28299" toLevel="1" name="Transformation Scroll: Kat the Cat">
 		<icon>icon.skill0000</icon>

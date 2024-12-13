@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.holders.MinionHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 
@@ -74,7 +73,7 @@ public abstract class AbstractNpcAI extends Quest
 	{
 		for (MinionHolder is : npc.getParameters().getMinionList(spawnName))
 		{
-			addMinion((Monster) npc, is.getId());
+			addMinion(npc.asMonster(), is.getId());
 		}
 	}
 }

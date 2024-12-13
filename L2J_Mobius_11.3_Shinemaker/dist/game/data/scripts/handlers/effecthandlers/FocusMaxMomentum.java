@@ -48,7 +48,7 @@ public class FocusMaxMomentum extends AbstractEffect
 	{
 		if (effected.isPlayer())
 		{
-			final Player player = effected.getActingPlayer();
+			final Player player = effected.asPlayer();
 			
 			final int count = (int) effected.getStat().getValue(Stat.MAX_MOMENTUM);
 			

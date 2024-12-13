@@ -1,11 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="3200" toLevel="3" name="Item Skill: Spell Refresh">
 		<!-- Active: Temporarily decreases the Cooldown for magic skills. -->
 		<icon>icon.skill3123</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">549</value>
 			<value level="2">611</value>
@@ -13,6 +17,7 @@
 		</effectPoint>
 		<hitTime>4000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
@@ -28,12 +33,7 @@
 			<value level="2">13</value>
 			<value level="3">14</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>600000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Reuse">
 				<amount>-15</amount>
@@ -45,9 +45,13 @@
 	<skill id="3201" toLevel="3" name="Item Skill: Music Refresh">
 		<!-- Active: Temporarily decreases the Cooldown for song/ dance skills. -->
 		<icon>icon.skill3123</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">549</value>
 			<value level="2">611</value>
@@ -55,6 +59,7 @@
 		</effectPoint>
 		<hitTime>4000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
@@ -70,12 +75,7 @@
 			<value level="2">13</value>
 			<value level="3">14</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>600000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Reuse">
 				<amount>-15</amount>
@@ -87,9 +87,13 @@
 	<skill id="3202" toLevel="3" name="Item Skill: Refresh">
 		<!-- Active: Temporarily decreases the Cooldown for all skills except for those with a fixed Cooldown time. -->
 		<icon>icon.skill3123</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">549</value>
 			<value level="2">611</value>
@@ -97,6 +101,7 @@
 		</effectPoint>
 		<hitTime>4000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
@@ -112,12 +117,7 @@
 			<value level="2">13</value>
 			<value level="3">14</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>600000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Reuse">
 				<amount>-15</amount>
@@ -139,29 +139,33 @@
 	<skill id="3203" toLevel="1" name="Item Skill: Mystery Skill">
 		<!-- Active: Increases your head size. -->
 		<icon>icon.skill3123</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>0</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
 		<abnormalVisualEffect>BIG_HEAD</abnormalVisualEffect>
 		<activateRate>0</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<mpConsume>10</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>1800000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>ETC</trait>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="3204" toLevel="3" name="Item Skill: Reflect Damage">
 		<!-- Active: Allows you to reflect some of the damage you incurred back to the enemy for a certain amount of time. -->
 		<icon>icon.skill3123</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">379</value>
 			<value level="2">438</value>
@@ -169,6 +173,7 @@
 		</effectPoint>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
@@ -184,12 +189,7 @@
 			<value level="2">6</value>
 			<value level="3">7</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>60000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamageShield">
 				<amount>
@@ -203,13 +203,18 @@
 	<skill id="3205" toLevel="2" name="Item Skill: Party Return">
 		<!-- Teleports party members to the nearest village. Cannot be used in a specially designated place such as the GM Consultation Service. -->
 		<icon>icon.skill3123</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>FRIEND</affectObject>
 		<affectRange>1000</affectRange>
+		<affectScope>PARTY</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<hitTime>
 			<value level="1">20000</value>
 			<value level="2">3500</value>
 		</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">48</value>
 			<value level="2">56</value>
@@ -222,12 +227,7 @@
 			<value level="1">43</value>
 			<value level="2">61</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>3600000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -240,7 +240,12 @@
 	<skill id="3206" toLevel="10" name="Item Skill: Music">
 		<!-- Active: Plays music. -->
 		<icon>icon.skill3123</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -253,16 +258,13 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<reuseDelay>12000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="3207" toLevel="10" name="Item Skill: Heal">
 		<!-- Chance: Has a chance of restoring HP when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -275,10 +277,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Heal -->
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
@@ -303,6 +303,8 @@
 	<skill id="3208" toLevel="10" name="Item Skill: Blessed Body">
 		<!-- Chance: Has a chance of increasing Max HP for a certain amount of time when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -315,10 +317,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Blessed Body -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -343,6 +343,8 @@
 	<skill id="3209" toLevel="10" name="Item Skill: Prayer">
 		<!-- Chance: Has a chance of increasing the effect of HP recovery magic for a certain amount of time when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -355,10 +357,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Prayer -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -383,6 +383,8 @@
 	<skill id="3210" toLevel="10" name="Item Skill: Recharge">
 		<!-- Chance: Has a chance of restoring MP when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -395,10 +397,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Recharge -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -423,6 +423,8 @@
 	<skill id="3211" toLevel="10" name="Item Skill: Blessed Soul">
 		<!-- Chance: Increases Max MP for a certain amount of time when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -435,10 +437,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Blessed Soul -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -463,6 +463,8 @@
 	<skill id="3212" toLevel="15" name="Item Skill: Mana Gain">
 		<!-- Chance: Increases the recharge recovery rate of MP when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -480,10 +482,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Mana Gain -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -513,6 +513,8 @@
 	<skill id="3213" toLevel="10" name="Item Skill: Ritual">
 		<!-- Chance: Restores CP when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -525,10 +527,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Ritual -->
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
@@ -553,6 +553,8 @@
 	<skill id="3214" toLevel="10" name="Item Skill: Cheer">
 		<!-- Chance: Temporarily increases Max CP when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -565,10 +567,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Cheer -->
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
@@ -593,6 +593,8 @@
 	<skill id="3215" toLevel="15" name="Item Skill: Might">
 		<!-- Chance: Temporarily increases P. Atk. when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -610,10 +612,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Might -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -643,6 +643,8 @@
 	<skill id="3216" toLevel="15" name="Item Skill: Empower">
 		<!-- Chance: Temporarily increases M. Atk. when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -660,10 +662,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Empower -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -693,6 +693,8 @@
 	<skill id="3217" toLevel="10" name="Item Skill: Might in Duel - PvP">
 		<!-- Chance: P. Atk. increase in PvP if a character is wounded. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -705,10 +707,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Duel Might -->
 				<attackerType>Playable</attackerType>
 				<chance>1</chance>
@@ -733,6 +733,8 @@
 	<skill id="3218" toLevel="15" name="Item Skill: Shield">
 		<!-- Chance: Temporarily increases P. Def. when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -750,10 +752,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Shield -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -783,6 +783,8 @@
 	<skill id="3219" toLevel="15" name="Item Skill: Magic Barrier">
 		<!-- Chance: Temporarily increases M. Def. when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -800,10 +802,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Magic Barrier -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -833,6 +833,8 @@
 	<skill id="3220" toLevel="10" name="Item Skill: Weakness in Duel">
 		<!-- Chance: Temporarily decreases enemy's P. Atk. in PvP. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -845,10 +847,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Duel Weakness -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -873,6 +873,8 @@
 	<skill id="3221" toLevel="15" name="Item Skill: Agility">
 		<!-- Chance: Temporarily increases Evasion when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -890,10 +892,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Agility -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -923,6 +923,8 @@
 	<skill id="3222" toLevel="15" name="Item Skill: Guidance">
 		<!-- Chance: Temporarily increases Accuracy when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -940,10 +942,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Guidance -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -973,6 +973,8 @@
 	<skill id="3223" toLevel="10" name="Item Skill: Focus">
 		<!-- Chance: Temporarily increases Critical Rate when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -985,10 +987,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Focus -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -1013,6 +1013,8 @@
 	<skill id="3224" toLevel="10" name="Item Skill: Wild Magic">
 		<!-- Chance: Temporarily increases Critical Rate of magic attacks when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1025,10 +1027,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Wild Magic -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -1053,6 +1053,8 @@
 	<skill id="3225" toLevel="15" name="Item Skill: Charm">
 		<!-- Chance: Decreases the enemy's aggression when you are attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1070,10 +1072,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Charm -->
 				<attackerType>Creature</attackerType>
 				<chance>1</chance>
@@ -1103,6 +1103,8 @@
 	<skill id="3226" toLevel="15" name="Item Skill: Slow">
 		<!-- Chance: Momentarily decreases the target's Speed when you are attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1120,10 +1122,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Slow -->
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
@@ -1153,6 +1153,8 @@
 	<skill id="3227" toLevel="15" name="Item Skill: Winter">
 		<!-- Chance: Momentarily decreases the target's Atk. Spd. when you are attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1170,10 +1172,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Winter -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1203,6 +1203,8 @@
 	<skill id="3228" toLevel="10" name="Item Skill: Stun">
 		<!-- Chance: Momentarily stuns the target when you are attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1215,10 +1217,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Stun -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1243,6 +1243,8 @@
 	<skill id="3229" toLevel="10" name="Item Skill: Hold">
 		<!-- Chance: Momentarily inflicts Hold on the target when you are attacked. Additional chance to be put into hold greatly decreases while the effect lasts. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1255,10 +1257,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Hold -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1283,6 +1283,8 @@
 	<skill id="3230" toLevel="10" name="Item Skill: Sleep">
 		<!-- Chance: Momentarily inflicts Sleep on the target when you are attacked. Additional chance to be put into sleep greatly decreases while the effect lasts. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1295,10 +1297,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Sleep -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1323,6 +1323,8 @@
 	<skill id="3231" toLevel="10" name="Item Skill: Paralyze">
 		<!-- Chance: Momentarily paralyzes the target when you are attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1335,10 +1337,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Paralyze -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1363,6 +1363,8 @@
 	<skill id="3232" toLevel="10" name="Item Skill: Medusa">
 		<!-- Chance: Momentarily petrifies the target when you are attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1375,10 +1377,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Medusa -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1403,6 +1403,8 @@
 	<skill id="3233" toLevel="10" name="Item Skill: Fear">
 		<!-- Chance: Momentarily inflicts Fear on the target and causes it to flee when you are attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1415,10 +1417,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Fear -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1441,8 +1441,24 @@
 		</effects>
 	</skill>
 	<skill id="3234" toLevel="15" name="Item Skill: Poison">
-		<!-- Chance: Momentarily poisons the target when you are attacked. Effect 5. -->
+		<!-- Level 1: Chance: Momentarily poisons the target when you are attacked. Effect 5. -->
+		<!-- Level 2: Chance: Momentarily poisons the target when you are attacked. Effect 5. -->
+		<!-- Level 3: Chance: Momentarily poisons the target when you are attacked. Effect 6. -->
+		<!-- Level 4: Chance: Momentarily poisons the target when you are attacked. Effect 6. -->
+		<!-- Level 5: Chance: Momentarily poisons the target when you are attacked. Effect 6. -->
+		<!-- Level 6: Chance: Momentarily poisons the target when you are attacked. Effect 7. -->
+		<!-- Level 7: Chance: Momentarily poisons the target when you are attacked. Effect 7. -->
+		<!-- Level 8: Chance: Momentarily poisons the target when you are attacked. Effect 7. -->
+		<!-- Level 9: Chance: Momentarily poisons the target when you are attacked. Effect 8. -->
+		<!-- Level 10: Chance: Momentarily poisons the target when you are attacked. Effect 8. -->
+		<!-- Level 11: Chance: Momentarily poisons the target when you are attacked. Effect 8. -->
+		<!-- Level 12: Chance: Momentarily poisons the target when you are attacked. Effect 8. -->
+		<!-- Level 13: Chance: Momentarily poisons the target when you are attacked. Effect 8. -->
+		<!-- Level 14: Chance: Momentarily poisons the target when you are attacked. Effect 8. -->
+		<!-- Level 15: Chance: Momentarily poisons the target when you are attacked. Effect 8. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1460,10 +1476,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Poison -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1491,8 +1505,24 @@
 		</effects>
 	</skill>
 	<skill id="3235" toLevel="15" name="Item Skill: Bleed">
-		<!-- Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 5. -->
+		<!-- Level 1: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 5. -->
+		<!-- Level 2: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 5. -->
+		<!-- Level 3: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 6. -->
+		<!-- Level 4: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 6. -->
+		<!-- Level 5: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 6. -->
+		<!-- Level 6: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 7. -->
+		<!-- Level 7: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 7. -->
+		<!-- Level 8: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 7. -->
+		<!-- Level 9: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 8. -->
+		<!-- Level 10: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 8. -->
+		<!-- Level 11: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 8. -->
+		<!-- Level 12: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 8. -->
+		<!-- Level 13: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 8. -->
+		<!-- Level 14: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 8. -->
+		<!-- Level 15: Chance: Momentarily inflicts Bleed on the target and causes when you are attacked. Effect 8. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1510,10 +1540,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Bleed -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1543,6 +1571,8 @@
 	<skill id="3236" toLevel="10" name="Item Skill: Silence">
 		<!-- Chance: Momentarily blocks the target's magic skills when you are attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1555,10 +1585,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Silence -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1583,6 +1611,8 @@
 	<skill id="3237" toLevel="10" name="Item Skill: Doom">
 		<!-- Chance: Momentarily blocks all of target's P./ M. Skills when attacked. -->
 		<icon>icon.skill3080</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1595,10 +1625,8 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Doom -->
 				<attackerType>Creature</attackerType>
 				<chance>4</chance>
@@ -1623,6 +1651,8 @@
 	<skill id="3238" toLevel="10" name="Item Skill: Prayer">
 		<!-- Passive: Increases the effect of HP recovery magic when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1635,8 +1665,6 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="HealEffect">
 				<amount>1</amount>
@@ -1647,6 +1675,8 @@
 	<skill id="3239" toLevel="15" name="Item Skill: Mana Gain">
 		<!-- Passive: When using the Recharge skill, MP Recovery Rate increases. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1664,8 +1694,6 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="ManaCharge">
 				<amount>1</amount>
@@ -1676,6 +1704,8 @@
 	<skill id="3240" toLevel="15" name="Item Skill: Might">
 		<!-- Passive: Increases P. Atk. when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1693,10 +1723,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">10.26</value>
 					<value level="2">11.22</value>
@@ -1721,6 +1749,8 @@
 	<skill id="3241" toLevel="15" name="Item Skill: Empower">
 		<!-- Passive: Increases M. Atk. when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1738,10 +1768,8 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>55</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1750,6 +1778,8 @@
 	<skill id="3243" toLevel="10" name="Item Skill: Might in Duel - PvP">
 		<!-- Passive: Increases your P. Atk. in PvP. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1762,8 +1792,6 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PvpPhysicalAttackDamageBonus">
 				<amount>5</amount>
@@ -1778,6 +1806,8 @@
 	<skill id="3244" toLevel="15" name="Item Skill: Shield">
 		<!-- Passive: Increases P. Def. when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1795,8 +1825,6 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>
@@ -1823,6 +1851,8 @@
 	<skill id="3245" toLevel="15" name="Item Skill: Magic Barrier">
 		<!-- Passive: Increases M. Def. when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1840,8 +1870,6 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -1868,6 +1896,8 @@
 	<skill id="3246" toLevel="10" name="Item Skill: Heal Empower">
 		<!-- Passive: Increases the power of HP recovery magic when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1880,8 +1910,6 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="HealEffect">
 				<amount>
@@ -1903,6 +1931,8 @@
 	<skill id="3247" toLevel="15" name="Item Skill: Agility">
 		<!-- Passive: Increases Evasion when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1920,8 +1950,6 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalEvasion">
 				<amount>2</amount>
@@ -1932,6 +1960,8 @@
 	<skill id="3248" toLevel="15" name="Item Skill: Guidance">
 		<!-- Passive: Increases Accuracy when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1949,8 +1979,6 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="Accuracy">
 				<amount>2</amount>
@@ -1961,6 +1989,8 @@
 	<skill id="3249" toLevel="10" name="Item Skill: Focus">
 		<!-- Passive: Increases Critical Rate when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1973,8 +2003,6 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="CriticalRate">
 				<amount>20</amount>
@@ -1985,6 +2013,8 @@
 	<skill id="3250" toLevel="10" name="Item Skill: Wild Magic">
 		<!-- Passive: Increases Critical Rate of magic attacks when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1997,8 +2027,6 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicCriticalRate">
 				<amount>4</amount>
@@ -2009,6 +2037,8 @@
 	<skill id="3251" toLevel="10" name="Item Skill: Weight Limit">
 		<!-- Weight limit +2 times. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2021,8 +2051,6 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>100</amount>
@@ -2033,6 +2061,8 @@
 	<skill id="3252" toLevel="10" name="Item Skill: Eva's Kiss">
 		<!-- Passive: Increases lung capacity when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2045,8 +2075,6 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="Breath">
 				<amount>500</amount>
@@ -2057,6 +2085,8 @@
 	<skill id="3253" toLevel="10" name="Item Skill: Acrobatics">
 		<!-- Passive: Increases the height from which you can jump without sustaining damage when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2069,8 +2099,6 @@
 			<value level="9">70</value>
 			<value level="10">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="SafeFallHeight">
 				<amount>-100</amount>
@@ -2081,6 +2109,8 @@
 	<skill id="3254" toLevel="15" name="Item Skill: Iron Body">
 		<!-- Passive: Increases Resistance to damage from falling when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2098,8 +2128,6 @@
 			<value level="14">95</value>
 			<value level="15">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="AreaDamage">
 				<amount>-40</amount>
@@ -2110,6 +2138,8 @@
 	<skill id="3255" toLevel="8" name="Item Skill: Skill Clarity">
 		<!-- Passive: Decreases MP Consumption for physical skills when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
@@ -2120,8 +2150,6 @@
 			<value level="7">95</value>
 			<value level="8">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicMpCost">
 				<amount>
@@ -2142,6 +2170,8 @@
 	<skill id="3256" toLevel="8" name="Item Skill: Spell Clarity">
 		<!-- Passive: Decreases MP Consumption for magic skills when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
@@ -2152,8 +2182,6 @@
 			<value level="7">95</value>
 			<value level="8">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicMpCost">
 				<amount>
@@ -2174,13 +2202,13 @@
 	<skill id="3257" toLevel="3" name="Item Skill: Music Clarity">
 		<!-- Passive: Decreases MP Consumption for song/ dance skills when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
 			<value level="3">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicMpCost">
 				<amount>
@@ -2196,13 +2224,13 @@
 	<skill id="3258" toLevel="3" name="Item Skill: Clarity">
 		<!-- Passive: Decreases MP Consumption for all skills when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
 			<value level="3">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicMpCost">
 				<amount>
@@ -2232,13 +2260,13 @@
 	<skill id="3259" toLevel="3" name="Item Skill: Reflect Damage">
 		<!-- Passive: Increases the ability to reflect some of the damage you incur back to the enemy when equipped. -->
 		<icon>icon.skill3238</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">64</value>
 			<value level="3">75</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="DamageShield">
 				<amount>
@@ -2252,38 +2280,38 @@
 	<skill id="3261" toLevel="1" name="Forgiveness">
 		<!-- Taps into the magic of the bow to fire a harmless bolt. Warning: If you use this skill against a monster, it will flag you for PvP. -->
 		<icon>icon.skill3260</icon>
+		<operateType>A1</operateType>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>1</effectPoint>
 		<effectRange>700</effectRange>
 		<hitTime>2500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<mpConsume>1</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<staticReuse>true</staticReuse>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="3263" toLevel="1" name="Blessed Resurrection">
 		<!-- Allows the use of Blessed Resurrection. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>PC_BODY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<castRange>400</castRange>
 		<effectPoint>1</effectPoint>
 		<effectRange>600</effectRange>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<mpConsume>65</mpConsume>
 		<mpInitialConsume>17</mpInitialConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>1800000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>PC_BODY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpResurrection" />
 		</conditions>
@@ -2296,18 +2324,18 @@
 	<skill id="3264" toLevel="1" name="Blessed Escape">
 		<!-- Blessed Escape is available. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad>
+		<hitCancelTime>0</hitCancelTime>
 		<hitTime>200</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<mpConsume>122</mpConsume>
 		<mpInitialConsume>31</mpInitialConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>1800000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -2320,47 +2348,47 @@
 	<skill id="3265" toLevel="1" name="Mysterious Ability">
 		<!-- The target's head is enlarged. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>0</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>BIG_HEAD</abnormalType>
 		<abnormalVisualEffect>BIG_HEAD</abnormalVisualEffect>
 		<activateRate>0</activateRate>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>1800000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<trait>ETC</trait>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>1800000</reuseDelay>
+		<trait>ETC</trait>
 	</skill>
 	<skill id="3266" toLevel="1" name="Large Firecracker's Ability">
 		<!-- Can set off large firecrackers. -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<mpConsume>19</mpConsume>
 		<mpInitialConsume>5</mpInitialConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>300000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="3267" toLevel="1" name="Seal Agathion">
 		<!-- Dismiss a summoned Agathion. -->
 		<icon>icon.etc_unsummon_aga_agit_i01</icon>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>65</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>65</magicLevel>
 		<effects>
 			<effect name="UnsummonAgathion" />
 		</effects>
@@ -2368,14 +2396,14 @@
 	<skill id="3268" toLevel="1" name="Release Agathion's Seal - Castle">
 		<!-- Summon Agathion -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>75</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>75</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>16028</npcId>
@@ -2385,14 +2413,14 @@
 	<skill id="3269" toLevel="1" name="Release Agathion's Seal - Rainbow Clan Hall">
 		<!-- Summon Agathion -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>65</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>65</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>16027</npcId>
@@ -2402,14 +2430,14 @@
 	<skill id="3270" toLevel="1" name="Release Agathion's Seal - Beast Farm">
 		<!-- Summon Agathion -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>65</magicLevel>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>65</magicLevel>
 		<effects>
 			<effect name="SummonAgathion">
 				<npcId>16026</npcId>
@@ -2417,14 +2445,15 @@
 		</effects>
 	</skill>
 	<skill id="3271" toLevel="2" name="Blue Talisman - P. Crit.">
-		<!-- P. Critical Rate +10. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: P. Critical Rate +10. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: P. Critical Rate +20. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 		</icon>
-		<magicLevel>55</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
 		<effects>
 			<effect name="CriticalRate">
 				<amount>
@@ -2436,21 +2465,23 @@
 		</effects>
 	</skill>
 	<skill id="3272" toLevel="3" name="Blue Talisman - P. Atk.">
-		<!-- P. Atk. +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: P. Atk. +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: P. Atk. +4%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: P. Atk. +5%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 			<value level="3">icon.etc_wise_man_stone_i04</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 			<value level="3">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">4</value>
@@ -2461,19 +2492,21 @@
 		</effects>
 	</skill>
 	<skill id="3273" toLevel="3" name="Blue Talisman - P. Def.">
-		<!-- P. Def. +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: P. Def. +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: P. Def. +5%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: M. Def. +6%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 			<value level="3">icon.etc_wise_man_stone_i04</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 			<value level="3">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>
@@ -2486,19 +2519,21 @@
 		</effects>
 	</skill>
 	<skill id="3274" toLevel="3" name="Blue Talisman - Physical Skill Evasion Rate">
-		<!-- Physical skill Evasion Rate +10%. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: Physical skill Evasion Rate +10%. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: Physical skill Evasion Rate +15%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: Physical skill Evasion Rate +18%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 			<value level="3">icon.etc_wise_man_stone_i04</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 			<value level="3">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalEvasion">
 				<amount>
@@ -2511,17 +2546,18 @@
 		</effects>
 	</skill>
 	<skill id="3275" toLevel="2" name="Blue Talisman - M. Crit.">
-		<!-- M. Critical Rate +10. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: M. Critical Rate +10. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: M. Critical Rate +20. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicCriticalRate">
 				<amount>
@@ -2533,21 +2569,23 @@
 		</effects>
 	</skill>
 	<skill id="3276" toLevel="3" name="Blue Talisman - M. Atk.">
-		<!-- M. Atk. +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: M. Atk. +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: M. Atk. +4%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: M. Atk. +5%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 			<value level="3">icon.etc_wise_man_stone_i04</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 			<value level="3">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">4</value>
@@ -2558,19 +2596,21 @@
 		</effects>
 	</skill>
 	<skill id="3277" toLevel="3" name="Blue Talisman - M. Def.">
-		<!-- M. Def. +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: M. Def. +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: 1-hr. Item. M. Def. +5%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: P. Def. +6%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 			<value level="3">icon.etc_wise_man_stone_i04</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 			<value level="3">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -2583,19 +2623,21 @@
 		</effects>
 	</skill>
 	<skill id="3278" toLevel="3" name="Blue Talisman - Magic Skill Evasion Rate">
-		<!-- Magic Skill Evasion Rate +10%. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: Magic Skill Evasion Rate +10%. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: Magic Skill Evasion Rate +15%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: Magic Skill Evasion Rate +18%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 			<value level="3">icon.etc_wise_man_stone_i04</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 			<value level="3">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicalEvasion">
 				<amount>
@@ -2608,19 +2650,21 @@
 		</effects>
 	</skill>
 	<skill id="3279" toLevel="3" name="Blue Talisman - Max. HP">
-		<!-- Max. HP +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: Max. HP +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: Max. HP +5%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: Max HP +7%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 			<value level="3">icon.etc_wise_man_stone_i04</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 			<value level="3">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MaxHp">
 				<amount>
@@ -2633,19 +2677,21 @@
 		</effects>
 	</skill>
 	<skill id="3280" toLevel="3" name="Blue Talisman - Max. MP">
-		<!-- Max. MP +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: Max. MP +3%. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: Max. MP +5%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: Max MP +7%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.etc_talisman_i01</value>
 			<value level="2">icon.etc_talisman_i00</value>
 			<value level="3">icon.etc_wise_man_stone_i04</value>
 		</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">55</value>
 			<value level="2">55</value>
 			<value level="3">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MaxMp">
 				<amount>
@@ -2660,20 +2706,20 @@
 	<skill id="3281" toLevel="1" name="Grey Talisman Box - Guard">
 		<!-- For 10 sec., can protect from debuffs 5 times, when used. Effects from two such Talismans do not stack. Cooldown - 5 min. -->
 		<icon>icon.etc_talisman_i07</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>532</effectPoint>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>300000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="AbnormalShield">
 				<times>5</times>
@@ -2683,17 +2729,17 @@
 	<skill id="3282" toLevel="1" name="Grey Talisman - Denial">
 		<!-- Removes a debuff when used. Effects from two such Talismans do not stack. Cooldown - 5 min. -->
 		<icon>icon.etc_talisman_i07</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<canCastWhileDisabled>true</canCastWhileDisabled>
 		<effectPoint>532</effectPoint>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
-		<canCastWhileDisabled>true</canCastWhileDisabled>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="DispelByCategory">
 				<slot>DEBUFF</slot>
@@ -2705,20 +2751,20 @@
 	<skill id="3283" toLevel="1" name="Grey Talisman - Benefaction">
 		<!-- For 10 sec., P. Def. +1800 and M. Def. +1620. Buff-canceling Attack Resistance +80%. Effects from two such Talismans do not stack. Cooldown - 15 min. -->
 		<icon>icon.etc_talisman_i07</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>532</effectPoint>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>900000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>900000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>1800</amount>
@@ -2737,22 +2783,22 @@
 	<skill id="3284" toLevel="1" name="Grey Talisman - Block">
 		<!-- For 15 sec., restricts enemy's HP recovery up to 70%, when used. Effects from two such Talismans do not stack. Cooldown - 4 min. -->
 		<icon>icon.etc_talisman_i07</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
 		<activateRate>70</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
 		<effectPoint>-679</effectPoint>
 		<hitTime>3000</hitTime>
-		<castRange>900</castRange>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>180000</reuseDelay>
-		<basicProperty>MAGIC</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<isDebuff>true</isDebuff>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>180000</reuseDelay>
 		<effects>
 			<effect name="LimitHp">
 				<amount>-70</amount>
@@ -2763,22 +2809,22 @@
 	<skill id="3285" toLevel="1" name="Grey Talisman - Gravity">
 		<!-- For 15 sec., target's Atk. Spd. and Casting Spd. by -20%. Effects from two such Talismans do not stack. Cooldown - 4 min. -->
 		<icon>icon.etc_talisman_i07</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
+		<activateRate>70</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>-679</effectPoint>
-		<activateRate>70</activateRate>
 		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
 		<isDebuff>true</isDebuff>
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>180000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>180000</reuseDelay>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-20</amount>
@@ -2793,21 +2839,21 @@
 	<skill id="3286" toLevel="1" name="Grey Talisman - Bond">
 		<!-- For 15 sec., target's Speed -30%, when used. Effects from two such Talismans do not stack. Cooldown - 4 min. -->
 		<icon>icon.etc_talisman_i07</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
 		<activateRate>70</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<castRange>600</castRange>
 		<effectPoint>-655</effectPoint>
 		<hitTime>3000</hitTime>
-		<castRange>600</castRange>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>180000</reuseDelay>
 		<isDebuff>true</isDebuff>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>180000</reuseDelay>
 		<effects>
 			<effect name="Speed">
 				<amount>-30</amount>
@@ -2818,18 +2864,18 @@
 	<skill id="3287" toLevel="1" name="Yellow Talisman - Guard">
 		<!-- For 10 sec., can protect from debuffs 5 times, when used. Effects from two such Talismans do not stack. Cooldown - 4 min. -->
 		<icon>icon.etc_talisman_i02</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<effectPoint>532</effectPoint>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>240000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>240000</reuseDelay>
 		<effects>
 			<effect name="AbnormalShield">
 				<times>5</times>
@@ -2839,16 +2885,16 @@
 	<skill id="3288" toLevel="1" name="Yellow Talisman - Denial">
 		<!-- Removes a debuff when used. Effects from two such Talismans do not stack. Cooldown - 4 min. -->
 		<icon>icon.etc_talisman_i02</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<canCastWhileDisabled>true</canCastWhileDisabled>
 		<effectPoint>532</effectPoint>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>240000</reuseDelay>
-		<canCastWhileDisabled>true</canCastWhileDisabled>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>240000</reuseDelay>
 		<effects>
 			<effect name="DispelByCategory">
 				<slot>DEBUFF</slot>
@@ -2860,18 +2906,18 @@
 	<skill id="3289" toLevel="1" name="Yellow Talisman - Benefaction">
 		<!-- For 10 sec., P. Def. +3600 and M. Def. +3240, when used. Buff-canceling Attack Resistance +80%. Effects from two such Talismans do not stack. Cooldown - 15 min. -->
 		<icon>icon.etc_talisman_i02</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<effectPoint>532</effectPoint>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>900000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>900000</reuseDelay>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>3600</amount>
@@ -2890,21 +2936,21 @@
 	<skill id="3290" toLevel="1" name="Yellow Talisman - Block">
 		<!-- For 15 sec., restricts enemy's HP recovery up to 70%, when used. Effects from two such Talismans do not stack. Cooldown - 3 min. -->
 		<icon>icon.etc_talisman_i02</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
+		<activateRate>70</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<castRange>900</castRange>
 		<effectPoint>-679</effectPoint>
 		<hitTime>3000</hitTime>
-		<castRange>900</castRange>
-		<activateRate>70</activateRate>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
 		<isDebuff>true</isDebuff>
-		<operateType>A2</operateType>
-		<reuseDelay>120000</reuseDelay>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>120000</reuseDelay>
 		<effects>
 			<effect name="LimitHp">
 				<amount>-70</amount>
@@ -2915,21 +2961,21 @@
 	<skill id="3291" toLevel="1" name="Yellow Talisman - Gravity">
 		<!-- For 15 sec., target's Atk. Spd. and Casting Spd. by -20%. Effects from two such Talismans do not stack. Cooldown - 3 min. -->
 		<icon>icon.etc_talisman_i02</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
-		<castRange>600</castRange>
 		<activateRate>70</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<castRange>600</castRange>
 		<effectPoint>-679</effectPoint>
 		<hitTime>3000</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>120000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>120000</reuseDelay>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-20</amount>
@@ -2944,21 +2990,21 @@
 	<skill id="3292" toLevel="1" name="Yellow Talisman - Bond">
 		<!-- For 15 sec., target's Speed -30%, when used. Effects from two such Talismans do not stack. Cooldown - 3 min. -->
 		<icon>icon.etc_talisman_i02</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>TALISMAN</abnormalType>
 		<activateRate>70</activateRate>
-		<effectPoint>-655</effectPoint>
-		<castRange>600</castRange>
-		<hitTime>3000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>55</magicLevel>
-		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<reuseDelay>120000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<castRange>600</castRange>
+		<effectPoint>-655</effectPoint>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
+		<reuseDelay>120000</reuseDelay>
 		<effects>
 			<effect name="Speed">
 				<amount>-30</amount>
@@ -2969,12 +3015,12 @@
 	<skill id="3293" toLevel="1" name="Talisman of Darkness - Healing Power">
 		<!-- Healing Power +4%. Effects from two such Talismans do not stack. -->
 		<icon>icon.etc_wise_man_stone_i04</icon>
-		<magicLevel>55</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
 		<effects>
 			<effect name="Heal">
-				<amount>4</amount>
+				<power>4</power>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -2982,9 +3028,9 @@
 	<skill id="3294" toLevel="1" name="Talisman of Darkness - Power of Healing Magic">
 		<!-- Power of healing magic +43. Effects from two such Talismans do not stack. -->
 		<icon>icon.etc_wise_man_stone_i04</icon>
-		<magicLevel>55</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
 		<effects>
 			<effect name="HealEffect">
 				<amount>43</amount>

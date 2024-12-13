@@ -68,7 +68,7 @@ public class Escape extends AbstractEffect
 		
 		if (effected.isPlayer())
 		{
-			final Player player = effected.getActingPlayer();
+			final Player player = effected.asPlayer();
 			final KrateiArena arena = player.getKrateiArena();
 			if (arena != null)
 			{
@@ -80,9 +80,9 @@ public class Escape extends AbstractEffect
 			}
 		}
 		
-		if (effected.isInInstance() && effected.getActingPlayer().isInTimedHuntingZone())
+		if (effected.isInInstance() && effected.asPlayer().isInTimedHuntingZone())
 		{
-			effected.teleToLocation(effected.getActingPlayer().getTimedHuntingZone().getEnterLocation(), effected.getInstanceId());
+			effected.teleToLocation(effected.asPlayer().getTimedHuntingZone().getEnterLocation(), effected.getInstanceId());
 		}
 		else
 		{

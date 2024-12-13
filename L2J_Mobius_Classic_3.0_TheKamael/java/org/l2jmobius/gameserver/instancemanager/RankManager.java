@@ -1,30 +1,38 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.instancemanager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
@@ -48,12 +56,49 @@ public class RankManager
 	private static final String SELECT_CHARACTERS_BY_RACE = "SELECT charId FROM characters WHERE (" + CURRENT_TIME + " - cast(lastAccess as signed) < " + TIME_LIMIT + ") AND accesslevel = 0 AND level > 39 AND race = ? ORDER BY exp DESC, onlinetime DESC LIMIT " + PLAYER_LIMIT;
 	
 	private static final String GET_CURRENT_CYCLE_DATA = "SELECT characters.char_name, characters.level, characters.base_class, characters.clanid, olympiad_nobles.charId, olympiad_nobles.olympiad_points, olympiad_nobles.competitions_won, olympiad_nobles.competitions_lost FROM characters, olympiad_nobles WHERE characters.charId = olympiad_nobles.charId ORDER BY olympiad_nobles.olympiad_points DESC LIMIT " + PLAYER_LIMIT;
+	private static final String GET_HEROES = "SELECT characters.charId, characters.char_name, characters.race, characters.sex, characters.base_class, characters.level, characters.clanid, olympiad_nobles_eom.competitions_won, olympiad_nobles_eom.competitions_lost, olympiad_nobles_eom.olympiad_points, heroes.legend_count, heroes.count FROM heroes, characters, olympiad_nobles_eom WHERE characters.charId = heroes.charId AND characters.charId = olympiad_nobles_eom.charId AND heroes.played = 1 ORDER BY olympiad_nobles_eom.olympiad_points DESC, characters.base_class ASC LIMIT " + RankManager.PLAYER_LIMIT;
 	private static final String GET_CHARACTERS_BY_CLASS = "SELECT characters.charId, olympiad_nobles.olympiad_points FROM characters, olympiad_nobles WHERE olympiad_nobles.charId = characters.charId AND characters.base_class = ? ORDER BY olympiad_nobles.olympiad_points DESC LIMIT " + PLAYER_LIMIT;
 	
 	private final Map<Integer, StatSet> _mainList = new ConcurrentHashMap<>();
 	private Map<Integer, StatSet> _snapshotList = new ConcurrentHashMap<>();
 	private final Map<Integer, StatSet> _mainOlyList = new ConcurrentHashMap<>();
 	private Map<Integer, StatSet> _snapshotOlyList = new ConcurrentHashMap<>();
+	private final List<HeroInfo> _mainHeroList = new LinkedList<>();
+	private final List<HeroInfo> _snapshotHeroList = new LinkedList<>();
+	
+	public class HeroInfo
+	{
+		public String charName;
+		public String clanName;
+		public int serverId;
+		public int race;
+		public boolean isMale;
+		public int baseClass;
+		public int level;
+		public int legendCount;
+		public int competitionsWon;
+		public int competitionsLost;
+		public int olympiadPoints;
+		public int clanLevel;
+		public boolean isTopHero;
+		
+		HeroInfo(String charName, String clanName, int serverId, int race, boolean isMale, int baseClass, int level, int legendCount, int competitionsWon, int competitionsLost, int olympiadPoints, int clanLevel, boolean isTopHero)
+		{
+			this.charName = charName;
+			this.clanName = clanName;
+			this.serverId = serverId;
+			this.race = race;
+			this.isMale = isMale;
+			this.baseClass = baseClass;
+			this.level = level;
+			this.legendCount = legendCount;
+			this.competitionsWon = competitionsWon;
+			this.competitionsLost = competitionsLost;
+			this.olympiadPoints = olympiadPoints;
+			this.clanLevel = clanLevel;
+			this.isTopHero = isTopHero;
+		}
+	}
 	
 	protected RankManager()
 	{
@@ -67,6 +112,38 @@ public class RankManager
 		_mainList.clear();
 		_snapshotOlyList = _mainOlyList;
 		_mainOlyList.clear();
+		
+		if (!Hero.getInstance().getHeroes().isEmpty())
+		{
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement statement = con.prepareStatement(GET_HEROES);
+				ResultSet rset = statement.executeQuery())
+			{
+				boolean isFirstHero = true;
+				while (rset.next())
+				{
+					final String charName = rset.getString("char_name");
+					final int clanId = rset.getInt("clanid");
+					final String clanName = (clanId > 0) ? ClanTable.getInstance().getClan(clanId).getName() : "";
+					final int race = rset.getInt("race");
+					final boolean isMale = rset.getInt("sex") != 1;
+					final int baseClass = rset.getInt("base_class");
+					final int level = rset.getInt("level");
+					final int legendCount = rset.getInt("legend_count");
+					final int competitionsWon = rset.getInt("competitions_won");
+					final int competitionsLost = rset.getInt("competitions_lost");
+					final int olympiadPoints = rset.getInt("olympiad_points");
+					final int clanLevel = (clanId > 0) ? ClanTable.getInstance().getClan(clanId).getLevel() : 0;
+					final boolean isTopHero = isFirstHero;
+					_mainHeroList.add(new HeroInfo(charName, clanName, Config.SERVER_ID, race, isMale, baseClass, level, legendCount, competitionsWon, competitionsLost, olympiadPoints, clanLevel, isTopHero));
+					isFirstHero = false;
+				}
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.WARNING, "Could not load Hero and Legend Info rank data: " + this + " - " + e.getMessage(), e);
+			}
+		}
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement statement = con.prepareStatement(SELECT_CHARACTERS))
@@ -162,6 +239,38 @@ public class RankManager
 		{
 			LOGGER.log(Level.WARNING, "Could not load olympiad total rank data: " + this + " - " + e.getMessage(), e);
 		}
+		
+		if (!Hero.getInstance().getHeroes().isEmpty())
+		{
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement statement = con.prepareStatement(GET_HEROES);
+				ResultSet rset = statement.executeQuery())
+			{
+				boolean isFirstHero = true;
+				while (rset.next())
+				{
+					final String charName = rset.getString("char_name");
+					final int clanId = rset.getInt("clanid");
+					final String clanName = (clanId > 0) ? ClanTable.getInstance().getClan(clanId).getName() : "";
+					final int race = rset.getInt("race");
+					final boolean isMale = rset.getInt("sex") != 1;
+					final int baseClass = rset.getInt("base_class");
+					final int level = rset.getInt("level");
+					final int legendCount = rset.getInt("legend_count");
+					final int competitionsWon = rset.getInt("competitions_won");
+					final int competitionsLost = rset.getInt("competitions_lost");
+					final int olympiadPoints = rset.getInt("olympiad_points");
+					final int clanLevel = (clanId > 0) ? ClanTable.getInstance().getClan(clanId).getLevel() : 0;
+					final boolean isTopHero = isFirstHero;
+					_mainHeroList.add(new HeroInfo(charName, clanName, Config.SERVER_ID, race, isMale, baseClass, level, legendCount, competitionsWon, competitionsLost, olympiadPoints, clanLevel, isTopHero));
+					isFirstHero = false;
+				}
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.WARNING, "Could not load Hero and Legend Info rank data: " + this + " - " + e.getMessage(), e);
+			}
+		}
 	}
 	
 	private void loadClassRank(int charId, int classId, StatSet player)
@@ -240,6 +349,11 @@ public class RankManager
 	public Map<Integer, StatSet> getSnapshotOlyList()
 	{
 		return _snapshotOlyList;
+	}
+	
+	public Collection<HeroInfo> getSnapshotHeroList()
+	{
+		return _snapshotHeroList;
 	}
 	
 	public int getPlayerGlobalRank(Player player)

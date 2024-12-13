@@ -49,7 +49,7 @@ public class OpenChest extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		final Chest chest = (Chest) effected;
 		if (chest.isDead() || (player.getInstanceWorld() != chest.getInstanceWorld()))
 		{

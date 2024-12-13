@@ -63,7 +63,7 @@ public class MpRewardTask
 	
 	private void run()
 	{
-		if ((--_count <= 0) || (_creature.isPlayer() && !_creature.getActingPlayer().isOnline()))
+		if ((--_count <= 0) || (_creature.isPlayer() && !_creature.asPlayer().isOnline()))
 		{
 			_task.cancel(false);
 			return;

@@ -47,7 +47,7 @@ public class ConditionPlayerCanSummonSiegeGolem extends Condition
 			return !_value;
 		}
 		
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		boolean canSummonSiegeGolem = true;
 		if (player.isAlikeDead() || player.isCursedWeaponEquipped() || (player.getClan() == null))
 		{
@@ -76,6 +76,6 @@ public class ConditionPlayerCanSummonSiegeGolem extends Condition
 			player.sendPacket(SystemMessageId.INVALID_TARGET);
 			canSummonSiegeGolem = false;
 		}
-		return (_value == canSummonSiegeGolem);
+		return _value == canSummonSiegeGolem;
 	}
 }

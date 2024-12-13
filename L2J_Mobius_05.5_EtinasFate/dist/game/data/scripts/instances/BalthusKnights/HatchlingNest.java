@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.model.Location;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
@@ -99,7 +98,7 @@ public final class HatchlingNest extends AbstractInstance
 				final Location moveTo = new Location(loc.getX() + getRandom(-100, 100), loc.getY() + getRandom(-100, 100), loc.getZ());
 				monster.setRunning();
 				addMoveToDesire(monster, moveTo, 23);
-				((Attackable) monster).setCanReturnToSpawnPoint(false);
+				monster.asAttackable().setCanReturnToSpawnPoint(false);
 			}
 		}
 	}

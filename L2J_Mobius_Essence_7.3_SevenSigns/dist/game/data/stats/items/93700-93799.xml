@@ -20,6 +20,7 @@
 	<item id="93701" name="Charging Stone of Random Craft - 1 Charge (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- After charging, a number of craft efforts +1. -->
 		<set name="icon" val="icon.etc_chaser_stone" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -28,7 +29,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="40086" level="1" /> <!-- Craft points 1000000 -->
+			<skill id="40086" level="1" /> <!-- Craft Points +1,000,000 -->
 		</skills>
 	</item>
 	<item id="93702" name="Daily Kit: Blessing (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -94,7 +95,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="40358" level="1" /> <!-- Alligator Island's Time Stone -->
+			<skill id="40165" level="1" /> <!-- Alligator Island's Time Stone -->
 		</skills>
 	</item>
 	<item id="93705" name="Top-grade Resource" additionalName="Sealed" type="EtcItem">
@@ -120,14 +121,14 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="93705" min="2" max="2" chance="12.5" /> <!-- Top-grade Resource - Sealed -->
-			<item id="93705" min="3" max="3" chance="12.5" /> <!-- Top-grade Resource - Sealed -->
-			<item id="93705" min="7" max="7" chance="12.5" /> <!-- Top-grade Resource - Sealed -->
-			<item id="93705" min="10" max="10" chance="12.5" /> <!-- Top-grade Resource - Sealed -->
-			<item id="93705" min="20" max="20" chance="12.5" /> <!-- Top-grade Resource - Sealed -->
-			<item id="93705" min="40" max="40" chance="12.5" /> <!-- Top-grade Resource - Sealed -->
-			<item id="93705" min="100" max="100" chance="12.5" /> <!-- Top-grade Resource - Sealed -->
-			<item id="93080" min="1" max="1" chance="12.5" /> <!-- Charging Stone of Regular Craft - 1 Charge - Sealed -->
+			<item id="93705" min="2" max="2" chance="99.9" /> <!-- Top-grade Resource - Sealed -->
+			<item id="93705" min="3" max="3" chance="0.8058058058" /> <!-- Top-grade Resource - Sealed -->
+			<item id="93705" min="7" max="7" chance="0.1001001001" /> <!-- Top-grade Resource - Sealed -->
+			<item id="93705" min="10" max="10" chance="0.05005005005" /> <!-- Top-grade Resource - Sealed -->
+			<item id="93705" min="20" max="20" chance="0.03003003003" /> <!-- Top-grade Resource - Sealed -->
+			<item id="93705" min="40" max="40" chance="0.01001001001" /> <!-- Top-grade Resource - Sealed -->
+			<item id="93705" min="100" max="100" chance="0.004004004" /> <!-- Top-grade Resource - Sealed -->
+			<item id="93080" min="1" max="1" chance="0.001001001" /> <!-- Charging Stone of Regular Craft - 1 Charge - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="93707" name="Mark of Revenge" additionalName="Sealed" type="EtcItem">
@@ -161,6 +162,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40166" level="1" /> <!-- Mid-grade HP Recovery Potion - Event -->
+		</skills>
 	</item>
 	<item id="93709" name="High-grade Spellbook Chest (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain one of the following items: Spellbook: Ultimate Death Knight Transformation, Divine Beam, White Guardian, Hellfire, Book of Shadows, Book of Light, Magical Tablet, or a 3rd class spellbook. -->
@@ -300,9 +305,9 @@
 			<item id="93448" min="2" max="2" chance="5.882353" /> <!-- A-grade Weapon Coupon - Sealed -->
 			<item id="93448" min="3" max="3" chance="5.882353" /> <!-- A-grade Weapon Coupon - Sealed -->
 			<item id="8678" min="1" max="1" chance="5.882353" /> <!-- Sirra's Blade -->
-			<item id="8679" min="1" max="1" chance="5.882353" /> <!-- Sword of Ipos -->
+			<item id="8679" min="1" max="1" chance="5.882353" /> <!-- Ipos' Sword -->
 			<item id="8680" min="1" max="1" chance="5.882353" /> <!-- Barakiel's Axe -->
-			<item id="8681" min="1" max="1" chance="5.882353" /> <!-- Behemoth' Tuning Fork -->
+			<item id="8681" min="1" max="1" chance="5.882353" /> <!-- Behemoth's Tuning Fork -->
 			<item id="8682" min="1" max="1" chance="5.882353" /> <!-- Naga's Storm -->
 			<item id="8683" min="1" max="1" chance="5.882353" /> <!-- Tiphon's Spear -->
 			<item id="8684" min="1" max="1" chance="5.882353" /> <!-- Shyeed's Bow -->
@@ -433,7 +438,7 @@
 			<item id="90519" min="2" max="2" chance="2.173913" /> <!-- Shining Scroll of Mood Melody -->
 			<item id="91712" min="5" max="5" chance="2.173913" /> <!-- Sayha's Storm - Sealed -->
 			<item id="92409" min="5" max="5" chance="2.173913" /> <!-- Special Dragon Fruit Lv. 2 - Sealed -->
-			<item id="92410" min="5" max="5" chance="2.173913" /> <!-- Special Dragon's Miracle Potion Lv. 2 - Sealed -->
+			<item id="92410" min="5" max="5" chance="2.173913" /> <!-- Special Dragon's Potion Lv. 2 - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="93714" name="Shining Scroll of Mood Melody" additionalName="Sealed" type="EtcItem">
@@ -465,7 +470,7 @@
 			<item id="91712" min="2" max="2" chance="12.482" /> <!-- Sayha's Storm - Sealed -->
 			<item id="9589" min="1" max="1" chance="5.0" /> <!-- Talisman Bracelet Lv. 1 -->
 			<item id="90311" min="1" max="1" chance="5.0" /> <!-- Brooch Lv. 1 -->
-			<item id="90888" min="1" max="1" chance="5.0" /> <!-- Agathion Bracelet Lv. 1 -->
+			<item id="90888" min="1" max="1" chance="5.0" /> <!-- Agathion Summon Bracelet Lv. 1 -->
 			<item id="93304" min="1" max="1" chance="0.01" /> <!-- Package: Einhasad's Pendant Lv. 1 - Sealed -->
 			<item id="92396" min="1" max="1" chance="0.01" /> <!-- Package: Sayha's Blessing (1000 pcs.) - Sealed -->
 			<item id="92401" min="1" max="1" chance="0.01" /> <!-- Spellbook: White Guardian -->
@@ -721,22 +726,22 @@
 			<stat type="maxMp">409</stat>
 		</stats>
 		<skills>
-			<skill id="50354" level="1" /> <!-- Flaming Tunic -->
-			<skill id="50355" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="83217" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83161" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83162" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83163" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50354" level="1" /> <!-- A-grade: Flaming Tunic -->
+			<skill id="50355" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Flaming Tunic -->
+			<skill id="50356" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Flaming Tunic -->
+			<skill id="50356" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Flaming Tunic -->
+			<skill id="50356" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Flaming Tunic -->
+			<skill id="50356" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Flaming Tunic -->
+			<skill id="50356" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Flaming Tunic -->
+			<skill id="50356" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Flaming Tunic -->
+			<skill id="50356" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Flaming Tunic -->
+			<skill id="50356" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Flaming Tunic -->
+			<skill id="50356" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Flaming Tunic -->
+			<skill id="50356" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Flaming Tunic -->
+			<skill id="83217" level="3" type="ON_BLESSING" /> <!-- Upper Armor Blessing Effect -->
+			<skill id="83161" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Lower Armor (Robe) - 6 Item Effect -->
+			<skill id="83162" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Lower Armor (Robe) - 7 Item Effect -->
+			<skill id="83163" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Lower Armor (Robe) - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="93734" name="Flaming Stockings" type="Armor">
@@ -757,22 +762,22 @@
 			<stat type="maxMp">256</stat>
 		</stats>
 		<skills>
-			<skill id="50357" level="1" /> <!-- Flaming Stockings -->
-			<skill id="50358" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="83217" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83161" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83162" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83163" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50357" level="1" /> <!-- A-grade: Flaming Stockings -->
+			<skill id="50358" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Flaming Stockings -->
+			<skill id="50359" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Flaming Stockings -->
+			<skill id="50359" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Flaming Stockings -->
+			<skill id="50359" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Flaming Stockings -->
+			<skill id="50359" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Flaming Stockings -->
+			<skill id="50359" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Flaming Stockings -->
+			<skill id="50359" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Flaming Stockings -->
+			<skill id="50359" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Flaming Stockings -->
+			<skill id="50359" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Flaming Stockings -->
+			<skill id="50359" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Flaming Stockings -->
+			<skill id="50359" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Flaming Stockings -->
+			<skill id="83217" level="3" type="ON_BLESSING" /> <!-- Upper Armor Blessing Effect -->
+			<skill id="83161" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Lower Armor (Robe) - 6 Item Effect -->
+			<skill id="83162" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Lower Armor (Robe) - 7 Item Effect -->
+			<skill id="83163" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Lower Armor (Robe) - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="93735" name="Flaming Tunic" additionalName="Sealed" type="Armor">
@@ -795,22 +800,22 @@
 			<stat type="maxMp">409</stat>
 		</stats>
 		<skills>
-			<skill id="50354" level="1" /> <!-- Flaming Tunic -->
-			<skill id="50355" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="50356" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Flaming Tunic -->
-			<skill id="83217" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83161" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83162" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83163" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50354" level="1" /> <!-- A-grade: Flaming Tunic -->
+			<skill id="50355" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Flaming Tunic -->
+			<skill id="50356" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Flaming Tunic -->
+			<skill id="50356" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Flaming Tunic -->
+			<skill id="50356" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Flaming Tunic -->
+			<skill id="50356" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Flaming Tunic -->
+			<skill id="50356" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Flaming Tunic -->
+			<skill id="50356" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Flaming Tunic -->
+			<skill id="50356" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Flaming Tunic -->
+			<skill id="50356" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Flaming Tunic -->
+			<skill id="50356" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Flaming Tunic -->
+			<skill id="50356" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Flaming Tunic -->
+			<skill id="83217" level="3" type="ON_BLESSING" /> <!-- Upper Armor Blessing Effect -->
+			<skill id="83161" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Lower Armor (Robe) - 6 Item Effect -->
+			<skill id="83162" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Lower Armor (Robe) - 7 Item Effect -->
+			<skill id="83163" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Lower Armor (Robe) - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="93736" name="Flaming Stockings" additionalName="Sealed" type="Armor">
@@ -833,22 +838,22 @@
 			<stat type="maxMp">256</stat>
 		</stats>
 		<skills>
-			<skill id="50357" level="1" /> <!-- Flaming Stockings -->
-			<skill id="50358" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="1" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="2" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="3" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="4" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="5" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="6" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="7" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="8" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="9" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="50359" level="10" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: Flaming Stockings -->
-			<skill id="83217" level="3" type="ON_BLESSING" /> <!-- Armor Blessing Effect -->
-			<skill id="83161" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Blessing Effect -->
-			<skill id="83162" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Blessing Effect -->
-			<skill id="83163" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Blessing Effect -->
+			<skill id="50357" level="1" /> <!-- A-grade: Flaming Stockings -->
+			<skill id="50358" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Flaming Stockings -->
+			<skill id="50359" level="1" type="ON_ENCHANT" type_value="1" /> <!-- +1 Flaming Stockings -->
+			<skill id="50359" level="2" type="ON_ENCHANT" type_value="2" /> <!-- +2 Flaming Stockings -->
+			<skill id="50359" level="3" type="ON_ENCHANT" type_value="3" /> <!-- +3 Flaming Stockings -->
+			<skill id="50359" level="4" type="ON_ENCHANT" type_value="4" /> <!-- +4 Flaming Stockings -->
+			<skill id="50359" level="5" type="ON_ENCHANT" type_value="5" /> <!-- +5 Flaming Stockings -->
+			<skill id="50359" level="6" type="ON_ENCHANT" type_value="6" /> <!-- +6 Flaming Stockings -->
+			<skill id="50359" level="7" type="ON_ENCHANT" type_value="7" /> <!-- +7 Flaming Stockings -->
+			<skill id="50359" level="8" type="ON_ENCHANT" type_value="8" /> <!-- +8 Flaming Stockings -->
+			<skill id="50359" level="9" type="ON_ENCHANT" type_value="9" /> <!-- +9 Flaming Stockings -->
+			<skill id="50359" level="10" type="ON_ENCHANT" type_value="10" /> <!-- +10 Flaming Stockings -->
+			<skill id="83217" level="3" type="ON_BLESSING" /> <!-- Upper Armor Blessing Effect -->
+			<skill id="83161" level="1" type="ON_BLESSING" type_value="6" /> <!-- Awoken A-grade Lower Armor (Robe) - 6 Item Effect -->
+			<skill id="83162" level="1" type="ON_BLESSING" type_value="7" /> <!-- Awoken A-grade Lower Armor (Robe) - 7 Item Effect -->
+			<skill id="83163" level="1" type="ON_BLESSING" type_value="8" /> <!-- Awoken A-grade Lower Armor (Robe) - 8 Item Effect -->
 		</skills>
 	</item>
 	<item id="93737" name="Top-grade Stable Scroll: Enchant S-grade Weapon" type="EtcItem">
@@ -857,6 +862,10 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="EnchantScrolls" />
+		<skills>
+			<skill id="51433" level="1" /> <!-- High-grade Stable Scroll: Enchant S-grade Weapon -->
+		</skills>
 	</item>
 	<item id="93738" name="Top-grade Stable Scroll: Enchant S-grade Armor" type="EtcItem">
 		<!-- The item is not available. <font color=eeaa22>Safe enchanting to +4. In case of failure the enchant value remains the same. Only for armor and accessories enchanted from +6 to +9</font>. <font color=ff6666>Cannot be used for mass enchanting.</font> -->
@@ -864,6 +873,10 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="EnchantScrolls" />
+		<skills>
+			<skill id="51434" level="1" /> <!-- High-grade Stable Scroll: Enchant S-grade Armor -->
+		</skills>
 	</item>
 	<item id="93739" name="Package: Giran Seal (1000 pcs.)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -894,12 +907,12 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="92314" min="1" max="1" chance="17" /> <!-- Giran Seal -->
-			<item id="92314" min="2" max="2" chance="17" /> <!-- Giran Seal -->
-			<item id="92314" min="5" max="5" chance="17" /> <!-- Giran Seal -->
-			<item id="92314" min="10" max="10" chance="16" /> <!-- Giran Seal -->
-			<item id="92314" min="100" max="100" chance="16" /> <!-- Giran Seal -->
-			<item id="93739" min="1" max="1" chance="17" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
+			<item id="92314" min="1" max="1" chance="30" /> <!-- Giran Seal -->
+			<item id="92314" min="2" max="2" chance="25" /> <!-- Giran Seal -->
+			<item id="92314" min="5" max="5" chance="20" /> <!-- Giran Seal -->
+			<item id="92314" min="10" max="10" chance="15" /> <!-- Giran Seal -->
+			<item id="92314" min="100" max="100" chance="9" /> <!-- Giran Seal -->
+			<item id="93739" min="1" max="1" chance="1" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="93741" name="Test - Reanimated Corpse Mask" additionalName="Test" type="Armor">
@@ -1055,7 +1068,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="40175" level="1" /> <!-- Golden Jack O'Lantern Mask -->
+			<skill id="40175" level="1" /> <!-- Jack O'Lantern's Golden Mask -->
 		</skills>
 	</item>
 	<item id="93753" name="Pumpkin Ghost's Noble Candy" additionalName="Sealed" type="EtcItem">
@@ -1067,6 +1080,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40176" level="1" /> <!-- Pumpkin Ghost's Royal Candy - Event -->
+		</skills>
 	</item>
 	<item id="93754" name="Halloween Mask Box" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -1102,7 +1119,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="40179" level="1" /> <!-- Halloween Candy Box - Event -->
+			<skill id="40179" level="1" /> <!-- Halloween Candy - Event -->
 		</skills>
 	</item>
 	<item id="93756" name="Halloween Candy" additionalName="Sealed" type="EtcItem">
@@ -1120,7 +1137,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<skills>
-			<skill id="50151" level="1" /> <!-- HP Potion -->
+			<skill id="40179" level="1" /> <!-- Halloween Candy - Event -->
 		</skills>
 	</item>
 	<item id="93757" name="Package: Sirra's Blade" additionalName="Sealed" type="EtcItem">
@@ -1150,7 +1167,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="8679" min="1" max="1" chance="100" /> <!-- Sword of Ipos -->
+			<item id="8679" min="1" max="1" chance="100" /> <!-- Ipos' Sword -->
 		</capsuled_items>
 	</item>
 	<item id="93759" name="Package: Barakiel's Axe" additionalName="Sealed" type="EtcItem">
@@ -1180,7 +1197,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="8681" min="1" max="1" chance="100" /> <!-- Behemoth' Tuning Fork -->
+			<item id="8681" min="1" max="1" chance="100" /> <!-- Behemoth's Tuning Fork -->
 		</capsuled_items>
 	</item>
 	<item id="93761" name="Package: Naga's Storm" additionalName="Sealed" type="EtcItem">

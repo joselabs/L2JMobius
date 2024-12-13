@@ -36,6 +36,7 @@ import org.w3c.dom.Node;
 
 import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.CategoryType;
+import org.l2jmobius.gameserver.enums.Element;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.PlayerState;
 import org.l2jmobius.gameserver.enums.Race;
@@ -65,6 +66,8 @@ import org.l2jmobius.gameserver.model.conditions.ConditionPlayerCheckAbnormal;
 import org.l2jmobius.gameserver.model.conditions.ConditionPlayerClassIdRestriction;
 import org.l2jmobius.gameserver.model.conditions.ConditionPlayerCloakStatus;
 import org.l2jmobius.gameserver.model.conditions.ConditionPlayerCp;
+import org.l2jmobius.gameserver.model.conditions.ConditionPlayerElementSeed;
+import org.l2jmobius.gameserver.model.conditions.ConditionPlayerElementSeeds;
 import org.l2jmobius.gameserver.model.conditions.ConditionPlayerGrade;
 import org.l2jmobius.gameserver.model.conditions.ConditionPlayerHasCastle;
 import org.l2jmobius.gameserver.model.conditions.ConditionPlayerHasClanHall;
@@ -855,6 +858,20 @@ public abstract class DocumentBase
 						array.add(CategoryType.valueOf(getValue(value, null)));
 					}
 					cond = joinAnd(cond, new ConditionCategoryType(array));
+					break;
+				}
+				case "elementseed":
+				{
+					final String val = getValue(a.getNodeValue(), template);
+					final Element element = Enum.valueOf(Element.class, val.split(",")[0]);
+					final int value = Integer.decode(getValue(val.split(",")[1], template));
+					cond = joinAnd(cond, new ConditionPlayerElementSeed(element, value));
+					break;
+				}
+				case "elementseeds":
+				{
+					final int val = Integer.parseInt(a.getNodeValue());
+					cond = joinAnd(cond, new ConditionPlayerElementSeeds(val));
 					break;
 				}
 			}

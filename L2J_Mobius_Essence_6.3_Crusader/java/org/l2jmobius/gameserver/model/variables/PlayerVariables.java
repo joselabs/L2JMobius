@@ -94,6 +94,9 @@ public class PlayerVariables extends AbstractVariables
 	public static final String DYE_POTENTIAL_DAILY_COUNT = "DYE_POTENTIAL_DAILY_COUNT";
 	public static final String MISSION_LEVEL_PROGRESS = "MISSION_LEVEL_PROGRESS_";
 	public static final String BALOK_AVAILABLE_REWARD = "BALOK_AVAILABLE_REWARD";
+	public static final String PRISON_WAIT_TIME = "PRISON_WAIT_TIME";
+	public static final String PRISON_2_POINTS = "PRISON_2_POINTS";
+	public static final String PRISON_3_POINTS = "PRISON_3_POINTS";
 	
 	private final int _objectId;
 	

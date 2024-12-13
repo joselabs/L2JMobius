@@ -17,7 +17,7 @@
 		</capsuled_items>
 	</item>
 	<item id="97501" name="Spring Crystal (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- It's a crystal imbued with Spring Energy. <How to use>. Can be exchanged for various items through the Game Assistant in the Event section. -->
+		<!-- It's a crystal imbued with Spring Energy. <How to use>. Special Craft - Garden of Genesis -->
 		<set name="icon" val="icon.rare_acc_smith_piece" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -29,7 +29,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="97502" name="Trace of Spring Wind (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- It's a spring wind wisp obtained from Garden of Genesis. <How to use>. Bring it to Mayrion in any village to receive a buff. -->
+		<!-- It's a spring wind wisp obtained from Garden of Genesis. <How to use>. Bring it to Mino in any village to receive a buff. -->
 		<set name="icon" val="icon.spring_wind_01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -124,7 +124,7 @@
 			<item id="94301" min="1" max="1" chance="2.380952" /> <!-- Shield of Vengeance -->
 			<item id="94299" min="1" max="1" chance="2.380952" /> <!-- Sigil of Inevitability -->
 			<item id="94328" min="1" max="1" chance="2.380952" /> <!-- Elixir Powder - Sealed -->
-			<item id="96623" min="1" max="1" chance="2.380952" /> <!-- Dye Powder -->
+			<item id="96623" min="1" max="1" chance="2.380952" /> <!-- Dye Booster -->
 			<item id="96708" min="1" max="1" chance="2.380952" /> <!-- Beryl Jewelry Box Lv. 1 -->
 			<item id="92034" min="1" max="1" chance="2.380952" /> <!-- Reinforced Jewelry Box -->
 			<item id="91076" min="2" max="2" chance="2.380952" /> <!-- Venir's Talisman Fragment -->
@@ -167,9 +167,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1000</stat>
 			<stat type="mAtk">151</stat>
@@ -177,6 +174,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="97509" name="Leona's Pistols" additionalName="Event" type="Weapon">
 		<!-- The pistols are imbued with Leona's power. Allows attack multiple enemies once the character is transformed into Leona Blackbird in Leona's Dungeon. <Available skills when equipped>. - Leona's Thunder Storm. Stuns nearby enemies for 3 sec. - Leona's Provocation. Provokes nearby enemies and decreases their Spear/ Firearm Resistance. <Available in Leona's Dungeon only> -->
@@ -242,10 +242,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="13660" level="5" /> <!-- Activates 6 jewel slots. -->
-			<skill id="13661" level="8" /> <!-- Inventory Slot +25. -->
-			<skill id="13648" level="4" type="ON_EQUIP" /> <!-- Brooch Lv. 5 Lv4 On. -->
-			<skill id="13649" level="4" type="ON_UNEQUIP" /> <!-- Brooch Lv. 5 Lv4 Off. -->
+			<skill id="13660" level="5" /> <!-- Brooch Lv. 9 -->
+			<skill id="13661" level="8" /> <!-- Brooch: Additional Inventory Slots -->
+			<skill id="13648" level="4" type="ON_EQUIP" /> <!-- Equip Brooch Lv. 8 -->
+			<skill id="13649" level="4" type="ON_UNEQUIP" /> <!-- Unequip Brooch Lv. 8 -->
 		</skills>
 	</item>
 	<item id="97513" name="Brooch Lv. 10" type="Armor">
@@ -260,10 +260,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="13660" level="6" /> <!-- Activates 6 jewel slots. -->
-			<skill id="13661" level="8" /> <!-- Inventory Slot +25. -->
-			<skill id="13648" level="4" type="ON_EQUIP" /> <!-- Brooch Lv. 5 Lv4 On. -->
-			<skill id="13649" level="4" type="ON_UNEQUIP" /> <!-- Brooch Lv. 5 Lv4 Off. -->
+			<skill id="13660" level="6" /> <!-- Brooch Lv. 10 -->
+			<skill id="13661" level="8" /> <!-- Brooch: Additional Inventory Slots -->
+			<skill id="13648" level="4" type="ON_EQUIP" /> <!-- Equip Brooch Lv. 8 -->
+			<skill id="13649" level="4" type="ON_UNEQUIP" /> <!-- Unequip Brooch Lv. 8 -->
 		</skills>
 	</item>
 	<item id="97514" name="Talisman Bracelet Lv. 9" type="Armor">
@@ -934,7 +934,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="97558" name="Blessed Talisman of Speed" additionalName="Sealed" type="Armor">
-		<!-- Contains the energy of Primeval Garden. Can be enchanted up to +10 with Scroll: Enchant Talisman of Speed. Activates special effects depending on the enchant value. The enchanting isn't safe even to +1. Effects of two identical talismans do not stack. -->
+		<!-- A talisman that contains the energy of Primeval Garden. Can be enchanted up to +10 with Scroll: Enchant Accessories. Enables special effects depending on its enchant value. Enchanting is not safe even to +1. Effects of two identical talismans do not stack. When using Incredible Upgrade Stone, enchanting is safe starting from +8. -->
 		<set name="icon" val="icon.tallisman_rapid_01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -946,22 +946,23 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<skills>
 			<skill id="50293" level="2" /> <!-- Blessed Talisman of Speed -->
-			<skill id="50293" level="4" type="ON_ENCHANT" type_value="1" /> <!-- Blessed Talisman of Speed +1 -->
-			<skill id="50293" level="6" type="ON_ENCHANT" type_value="2" /> <!-- Blessed Talisman of Speed +2 -->
-			<skill id="50293" level="8" type="ON_ENCHANT" type_value="3" /> <!-- Blessed Talisman of Speed +3 -->
-			<skill id="50293" level="10" type="ON_ENCHANT" type_value="4" /> <!-- Blessed Talisman of Speed +4 -->
-			<skill id="50293" level="12" type="ON_ENCHANT" type_value="5" /> <!-- Blessed Talisman of Speed +5 -->
-			<skill id="50293" level="14" type="ON_ENCHANT" type_value="6" /> <!-- Blessed Talisman of Speed +6 -->
-			<skill id="50293" level="16" type="ON_ENCHANT" type_value="7" /> <!-- Blessed Talisman of Speed +7 -->
-			<skill id="50293" level="18" type="ON_ENCHANT" type_value="8" /> <!-- Blessed Talisman of Speed +8 -->
-			<skill id="50293" level="20" type="ON_ENCHANT" type_value="9" /> <!-- Blessed Talisman of Speed +9 -->
-			<skill id="50293" level="22" type="ON_ENCHANT" type_value="10" /> <!-- Blessed Talisman of Speed +10 -->
+			<skill id="50293" level="4" type="ON_ENCHANT" type_value="1" /> <!-- +1 Blessed Talisman of Speed -->
+			<skill id="50293" level="6" type="ON_ENCHANT" type_value="2" /> <!-- +2 Blessed Talisman of Speed -->
+			<skill id="50293" level="8" type="ON_ENCHANT" type_value="3" /> <!-- +3 Blessed Talisman of Speed -->
+			<skill id="50293" level="10" type="ON_ENCHANT" type_value="4" /> <!-- +4 Blessed Talisman of Speed -->
+			<skill id="50293" level="12" type="ON_ENCHANT" type_value="5" /> <!-- +5 Blessed Talisman of Speed -->
+			<skill id="50293" level="14" type="ON_ENCHANT" type_value="6" /> <!-- +6 Blessed Talisman of Speed -->
+			<skill id="50293" level="16" type="ON_ENCHANT" type_value="7" /> <!-- +7 Blessed Talisman of Speed -->
+			<skill id="50293" level="18" type="ON_ENCHANT" type_value="8" /> <!-- +8 Blessed Talisman of Speed -->
+			<skill id="50293" level="20" type="ON_ENCHANT" type_value="9" /> <!-- +9 Blessed Talisman of Speed -->
+			<skill id="50293" level="22" type="ON_ENCHANT" type_value="10" /> <!-- +10 Blessed Talisman of Speed -->
 		</skills>
 	</item>
 	<item id="97559" name="Blessed Talisman of Eva" additionalName="Sealed" type="Armor">
-		<!-- A talisman that contains the energy of Eva. Can be enchanted up to +10 with Scroll: Enchant Talisman of Eva. Activates special effects depending on the enchant value. The enchanting isn't safe even to +1. Effects of two identical talismans do not stack. -->
+		<!-- A talisman that contains the energy of Eva. Can be enchanted up to +10 with Scroll: Enchant Accessories. Enables special effects depending on its enchant value. Enchanting is not safe even to +1. Effects of two identical talismans do not stack. When using Incredible Upgrade Stone, enchanting is safe starting from +8. -->
 		<set name="icon" val="icon.bm_eva_talisman_01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -973,18 +974,19 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<skills>
 			<skill id="50193" level="2" /> <!-- Blessed Talisman of Eva -->
-			<skill id="50193" level="4" type="ON_ENCHANT" type_value="1" /> <!-- Enchant Effect: +1 Blessed Talisman of Eva -->
-			<skill id="50193" level="6" type="ON_ENCHANT" type_value="2" /> <!-- Enchant Effect: +2 Blessed Talisman of Eva -->
-			<skill id="50193" level="8" type="ON_ENCHANT" type_value="3" /> <!-- Enchant Effect: +3 Blessed Talisman of Eva -->
-			<skill id="50193" level="10" type="ON_ENCHANT" type_value="4" /> <!-- Enchant Effect: +4 Blessed Talisman of Eva -->
-			<skill id="50193" level="12" type="ON_ENCHANT" type_value="5" /> <!-- Enchant Effect: +5 Blessed Talisman of Eva -->
-			<skill id="50193" level="14" type="ON_ENCHANT" type_value="6" /> <!-- Enchant Effect: +6 Blessed Talisman of Eva -->
-			<skill id="50193" level="16" type="ON_ENCHANT" type_value="7" /> <!-- Enchant Effect: +7 Blessed Talisman of Eva -->
-			<skill id="50193" level="18" type="ON_ENCHANT" type_value="8" /> <!-- Enchant Effect: +8 Blessed Talisman of Eva -->
-			<skill id="50193" level="20" type="ON_ENCHANT" type_value="9" /> <!-- Enchant Effect: +9 Blessed Talisman of Eva -->
-			<skill id="50193" level="22" type="ON_ENCHANT" type_value="10" /> <!-- Enchant Effect: +10 Blessed Talisman of Eva -->
+			<skill id="50193" level="4" type="ON_ENCHANT" type_value="1" /> <!-- +1 Blessed Talisman of Eva -->
+			<skill id="50193" level="6" type="ON_ENCHANT" type_value="2" /> <!-- +2 Blessed Talisman of Eva -->
+			<skill id="50193" level="8" type="ON_ENCHANT" type_value="3" /> <!-- +3 Blessed Talisman of Eva -->
+			<skill id="50193" level="10" type="ON_ENCHANT" type_value="4" /> <!-- +4 Blessed Talisman of Eva -->
+			<skill id="50193" level="12" type="ON_ENCHANT" type_value="5" /> <!-- +5 Blessed Talisman of Eva -->
+			<skill id="50193" level="14" type="ON_ENCHANT" type_value="6" /> <!-- +6 Blessed Talisman of Eva -->
+			<skill id="50193" level="16" type="ON_ENCHANT" type_value="7" /> <!-- +7 Blessed Talisman of Eva -->
+			<skill id="50193" level="18" type="ON_ENCHANT" type_value="8" /> <!-- +8 Blessed Talisman of Eva -->
+			<skill id="50193" level="20" type="ON_ENCHANT" type_value="9" /> <!-- +9 Blessed Talisman of Eva -->
+			<skill id="50193" level="22" type="ON_ENCHANT" type_value="10" /> <!-- +10 Blessed Talisman of Eva -->
 		</skills>
 	</item>
 	<item id="97560" name="Package: +1 Blessed Talisman of Speed" additionalName="Sealed" type="EtcItem">
@@ -1366,7 +1368,7 @@
 			<item id="93739" min="1" max="1" chance="2.564103" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
 			<item id="95773" min="1" max="1" chance="2.564103" /> <!-- Master's Book Chest - Sealed -->
 			<item id="94328" min="1" max="1" chance="2.564103" /> <!-- Elixir Powder - Sealed -->
-			<item id="96623" min="1" max="1" chance="2.564103" /> <!-- Dye Powder -->
+			<item id="96623" min="1" max="1" chance="2.564103" /> <!-- Dye Booster -->
 			<item id="730" min="1" max="1" chance="2.564103" /> <!-- Scroll: Enchant A-grade Armor -->
 			<item id="729" min="1" max="1" chance="2.564103" /> <!-- Scroll: Enchant A-grade Weapon -->
 			<item id="93255" min="1" max="1" chance="2.564103" /> <!-- Improved Scroll: Enchant A-grade Weapon -->

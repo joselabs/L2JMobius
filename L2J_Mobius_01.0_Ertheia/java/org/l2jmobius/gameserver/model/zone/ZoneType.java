@@ -61,7 +61,7 @@ public abstract class ZoneType extends ListenersContainer
 	private char _classType;
 	private InstanceType _target = InstanceType.Creature; // default all chars
 	private boolean _allowStore;
-	protected boolean _enabled;
+	private boolean _enabled;
 	private AbstractZoneSettings _settings;
 	private int _instanceTemplateId;
 	private Map<Integer, Boolean> _enabledInInstance;
@@ -211,6 +211,10 @@ public abstract class ZoneType extends ListenersContainer
 		{
 			return false;
 		}
+		else if (!isEnabled())
+		{
+			return false;
+		}
 		
 		// Check level
 		if ((creature.getLevel() < _minLevel) || (creature.getLevel() > _maxLevel))
@@ -229,7 +233,7 @@ public abstract class ZoneType extends ListenersContainer
 			// Check class type
 			if (_classType != 0)
 			{
-				if (((Player) creature).isMageClass())
+				if (creature.asPlayer().isMageClass())
 				{
 					if (_classType == 1)
 					{
@@ -267,7 +271,7 @@ public abstract class ZoneType extends ListenersContainer
 				boolean ok = false;
 				for (int _clas : _class)
 				{
-					if (((Player) creature).getClassId().getId() == _clas)
+					if (creature.asPlayer().getClassId().getId() == _clas)
 					{
 						ok = true;
 						break;
@@ -419,7 +423,7 @@ public abstract class ZoneType extends ListenersContainer
 		// If the object is inside the zone...
 		if (isInsideZone(creature))
 		{
-			// If the character can't be affected by this zone return
+			// If the character can't be affected by this zone return.
 			if (_checkAffected && !isAffected(creature))
 			{
 				return;
@@ -527,7 +531,7 @@ public abstract class ZoneType extends ListenersContainer
 		{
 			if ((ch != null) && ch.isPlayer())
 			{
-				players.add(ch.getActingPlayer());
+				players.add(ch.asPlayer());
 			}
 		}
 		return players;
@@ -624,9 +628,13 @@ public abstract class ZoneType extends ListenersContainer
 	{
 		for (Creature obj : _characterList.values())
 		{
-			if ((obj != null) && obj.isPlayer() && obj.getActingPlayer().isOnline())
+			if ((obj != null) && obj.isPlayer())
 			{
-				obj.getActingPlayer().teleToLocation(TeleportWhereType.TOWN);
+				final Player player = obj.asPlayer();
+				if (player.isOnline())
+				{
+					player.teleToLocation(TeleportWhereType.TOWN);
+				}
 			}
 		}
 	}
@@ -645,7 +653,7 @@ public abstract class ZoneType extends ListenersContainer
 		{
 			if ((creature != null) && creature.isPlayer())
 			{
-				final Player player = creature.getActingPlayer();
+				final Player player = creature.asPlayer();
 				if (player.isOnline())
 				{
 					player.teleToLocation(loc);

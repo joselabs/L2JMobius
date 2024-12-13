@@ -65,7 +65,7 @@ public class TeleportToSummon extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		final Summon summon = effected.getActingPlayer().getFirstServitor();
+		final Summon summon = effected.asPlayer().getFirstServitor();
 		
 		if ((_maxDistance > 0) && (effector.calculateDistance2D(summon) >= _maxDistance))
 		{

@@ -25,7 +25,6 @@ import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -239,7 +238,7 @@ public class TeredorWarzone extends AbstractInstance
 				{
 					WalkingManager.getInstance().startMoving(npc, "trajan5");
 					getTimers().addRepeatingTimer("TEREDOR_LAIR_CHECK", 5000, npc, null);
-					((Attackable) npc).setCanReturnToSpawnPoint(false);
+					npc.asAttackable().setCanReturnToSpawnPoint(false);
 					break;
 				}
 				case BEETLE:
@@ -297,7 +296,7 @@ public class TeredorWarzone extends AbstractInstance
 						addSkillCastDesire(npc, npc, FAKE_TEREDOR_JUMP_SKILL, 23);
 						getTimers().addTimer("FAKE_TEREDOR_ELITE_REUSE", 30000, n -> npc.setScriptValue(0));
 						final Npc minion = addSpawn(ELITE_MILLIPADE, npc.getX(), npc.getY(), npc.getZ(), 0, false, 0, false, instance.getId());
-						addAttackPlayerDesire(minion, creature.getActingPlayer());
+						addAttackPlayerDesire(minion, creature.asPlayer());
 					}
 					break;
 				}
@@ -393,7 +392,7 @@ public class TeredorWarzone extends AbstractInstance
 						}
 						case "SCE_BREAK_AN_EGG2":
 						{
-							final Player player = reference == null ? instance.getPlayerById(npc.getVariables().getInt("SEE_CREATURE_ID", 0)) : reference.getActingPlayer();
+							final Player player = reference == null ? instance.getPlayerById(npc.getVariables().getInt("SEE_CREATURE_ID", 0)) : reference.asPlayer();
 							int npcId = 0;
 							
 							switch (npc.getParameters().getInt("Spot", 0))
@@ -477,7 +476,7 @@ public class TeredorWarzone extends AbstractInstance
 							npc.breakAttack();
 							npc.breakCast();
 							npc.setWalking();
-							((Attackable) npc).clearAggroList();
+							npc.asAttackable().clearAggroList();
 							npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 							npc.broadcastSocialAction(4);
 							WalkingManager.getInstance().resumeMoving(npc);
@@ -502,7 +501,7 @@ public class TeredorWarzone extends AbstractInstance
 							npc.breakAttack();
 							npc.breakCast();
 							npc.setWalking();
-							((Attackable) npc).clearAggroList();
+							npc.asAttackable().clearAggroList();
 							npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 							npc.broadcastSocialAction(4);
 							WalkingManager.getInstance().resumeMoving(npc);
@@ -540,7 +539,7 @@ public class TeredorWarzone extends AbstractInstance
 							npc.breakAttack();
 							npc.breakCast();
 							npc.setWalking();
-							((Attackable) npc).clearAggroList();
+							npc.asAttackable().clearAggroList();
 							npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 							npc.broadcastSocialAction(4);
 							WalkingManager.getInstance().resumeMoving(npc);
@@ -579,7 +578,7 @@ public class TeredorWarzone extends AbstractInstance
 							npc.breakAttack();
 							npc.breakCast();
 							npc.setWalking();
-							((Attackable) npc).clearAggroList();
+							npc.asAttackable().clearAggroList();
 							npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 							npc.broadcastSocialAction(4);
 							WalkingManager.getInstance().resumeMoving(npc);

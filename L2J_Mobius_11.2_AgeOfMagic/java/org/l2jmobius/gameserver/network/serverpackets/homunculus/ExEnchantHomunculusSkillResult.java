@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.homunculus;
 
@@ -20,79 +24,89 @@ import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.homunculus.Homunculus;
+import org.l2jmobius.gameserver.model.homunculus.HomunculusList;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
- * @author nexvill
+ * @author nexvill, Mobius
  */
 public class ExEnchantHomunculusSkillResult extends ServerPacket
 {
-	private final Player _player;
 	private final int _slot;
 	private final int _skillNumber;
+	private final int _homunculusNumber;
+	private final int _systemNumber;
+	private final int _playerNumber;
+	private final int _boundLevel;
+	private final int _homunculusId;
 	
 	public ExEnchantHomunculusSkillResult(Player player, int slot, int skillNumber)
 	{
-		_player = player;
 		_slot = slot;
 		_skillNumber = skillNumber;
+		_homunculusNumber = Rnd.get(1, 6);
+		_systemNumber = Rnd.get(1, 6);
+		_playerNumber = Rnd.get(1, 6);
+		if ((_playerNumber == _homunculusNumber) && (_playerNumber == _systemNumber))
+		{
+			_boundLevel = 3;
+		}
+		else if ((_playerNumber == _homunculusNumber) || (_playerNumber == _systemNumber) || (_homunculusNumber == _systemNumber))
+		{
+			_boundLevel = 2;
+		}
+		else
+		{
+			_boundLevel = 1;
+		}
+		
+		final HomunculusList homunculusList = player.getHomunculusList();
+		final Homunculus homunculus = homunculusList.get(_slot);
+		switch (_skillNumber)
+		{
+			case 1:
+			{
+				homunculus.setSkillLevel1(_boundLevel);
+				break;
+			}
+			case 2:
+			{
+				homunculus.setSkillLevel2(_boundLevel);
+				break;
+			}
+			case 3:
+			{
+				homunculus.setSkillLevel3(_boundLevel);
+				break;
+			}
+			case 4:
+			{
+				homunculus.setSkillLevel4(_boundLevel);
+				break;
+			}
+			case 5:
+			{
+				homunculus.setSkillLevel5(_boundLevel);
+				break;
+			}
+		}
+		_homunculusId = homunculus.getId();
+		homunculusList.update(homunculus);
+		homunculusList.refreshStats(true);
 	}
 	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.EX_ENCHANT_HOMUNCULUS_SKILL_RESULT.writeId(this, buffer);
-		final int playerNumber = Rnd.get(1, 6);
-		final int homunculusNumber = Rnd.get(1, 6);
-		final int systemNumber = Rnd.get(1, 6);
-		final Homunculus homunculus = _player.getHomunculusList().get(_slot);
-		int boundLevel = 1;
-		if ((playerNumber == homunculusNumber) && (playerNumber == systemNumber))
-		{
-			boundLevel = 3;
-		}
-		else if ((playerNumber == homunculusNumber) || (playerNumber == systemNumber) || (homunculusNumber == systemNumber))
-		{
-			boundLevel = 2;
-		}
-		switch (_skillNumber)
-		{
-			case 1:
-			{
-				homunculus.setSkillLevel1(boundLevel);
-				break;
-			}
-			case 2:
-			{
-				homunculus.setSkillLevel2(boundLevel);
-				break;
-			}
-			case 3:
-			{
-				homunculus.setSkillLevel3(boundLevel);
-				break;
-			}
-			case 4:
-			{
-				homunculus.setSkillLevel4(boundLevel);
-				break;
-			}
-			case 5:
-			{
-				homunculus.setSkillLevel5(boundLevel);
-				break;
-			}
-		}
-		_player.getHomunculusList().update(homunculus);
-		_player.getHomunculusList().refreshStats(true);
-		buffer.writeInt(boundLevel); // skill bound level result
-		buffer.writeInt(homunculus.getId()); // homunculus id? random value on JP
-		buffer.writeInt(_slot); // slot
-		buffer.writeInt(_skillNumber); // skill number
-		buffer.writeInt(playerNumber); // player number
-		buffer.writeInt(homunculusNumber); // homunculus number
-		buffer.writeInt(systemNumber); // system number
+		buffer.writeInt(_boundLevel); // Skill bound level result.
+		buffer.writeInt(_homunculusId); // homunculus id? Random value on JP.
+		buffer.writeInt(_slot);
+		buffer.writeInt(_skillNumber);
+		buffer.writeInt(_playerNumber);
+		buffer.writeInt(_homunculusNumber);
+		buffer.writeInt(_systemNumber);
 	}
 }

@@ -1,39 +1,57 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.vip;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
-import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.vip.VipManager;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
+/**
+ * @author Mobius
+ */
 public class ReceiveVipInfo extends ServerPacket
 {
-	private final Player _player;
+	private final byte _vipTier;
+	private final int _vipDuration;
+	private final long _vipPoints;
+	private final long _nextLevelPoints;
+	private final long _currentLevelPoints;
+	private final long _previousLevelPoints;
 	
 	public ReceiveVipInfo(Player player)
 	{
-		_player = player;
+		final VipManager vipManager = VipManager.getInstance();
+		_vipTier = player.getVipTier();
+		_vipPoints = player.getVipPoints();
+		_vipDuration = (int) ChronoUnit.SECONDS.between(Instant.now(), Instant.ofEpochMilli(player.getVipTierExpiration()));
+		_nextLevelPoints = vipManager.getPointsToLevel((byte) (_vipTier + 1));
+		_currentLevelPoints = vipManager.getPointsToLevel(_vipTier);
+		_previousLevelPoints = vipManager.getPointsDepreciatedOnLevel(_vipTier);
 	}
 	
 	@Override
@@ -44,17 +62,13 @@ public class ReceiveVipInfo extends ServerPacket
 			return;
 		}
 		
-		final VipManager vipManager = VipManager.getInstance();
-		final byte vipTier = _player.getVipTier();
-		final int vipDuration = (int) ChronoUnit.SECONDS.between(Instant.now(), Instant.ofEpochMilli(_player.getVipTierExpiration()));
-		
 		ServerPackets.RECIVE_VIP_INFO.writeId(this, buffer);
-		buffer.writeByte(vipTier);
-		buffer.writeLong(_player.getVipPoints());
-		buffer.writeInt(vipDuration);
-		buffer.writeLong(vipManager.getPointsToLevel((byte) (vipTier + 1)));
-		buffer.writeLong(vipManager.getPointsDepreciatedOnLevel(vipTier));
-		buffer.writeByte(vipTier);
-		buffer.writeLong(vipManager.getPointsToLevel(vipTier));
+		buffer.writeByte(_vipTier);
+		buffer.writeLong(_vipPoints);
+		buffer.writeInt(_vipDuration);
+		buffer.writeLong(_nextLevelPoints);
+		buffer.writeLong(_previousLevelPoints);
+		buffer.writeByte(_vipTier);
+		buffer.writeLong(_currentLevelPoints);
 	}
 }

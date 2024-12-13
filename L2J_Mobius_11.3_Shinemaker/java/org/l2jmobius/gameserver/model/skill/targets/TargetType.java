@@ -56,6 +56,8 @@ public enum TargetType
 	SUMMON,
 	/** Anything targetable. */
 	TARGET,
+	/** Current target or self. */
+	TARGET_OR_SELF,
 	/** Wyverns. */
 	WYVERN_TARGET,
 	/** Mentee's Mentor. */

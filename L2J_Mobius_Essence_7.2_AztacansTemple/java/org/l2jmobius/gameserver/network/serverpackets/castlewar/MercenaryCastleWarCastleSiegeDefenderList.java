@@ -1,20 +1,27 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.castlewar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
@@ -33,10 +40,38 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 public class MercenaryCastleWarCastleSiegeDefenderList extends ServerPacket
 {
 	private final int _castleId;
+	private final Castle _castle;
+	private final Clan _owner;
+	private final List<Clan> _defenders = new ArrayList<>();
+	private final List<Clan> _defendersWaiting = new ArrayList<>();
 	
 	public MercenaryCastleWarCastleSiegeDefenderList(int castleId)
 	{
 		_castleId = castleId;
+		_castle = CastleManager.getInstance().getCastleById(castleId);
+		
+		// Owner.
+		_owner = _castle.getOwner();
+		
+		// Defenders.
+		for (SiegeClan siegeClan : _castle.getSiege().getDefenderClans())
+		{
+			final Clan clan = ClanTable.getInstance().getClan(siegeClan.getClanId());
+			if ((clan != null) && (clan != _castle.getOwner()))
+			{
+				_defenders.add(clan);
+			}
+		}
+		
+		// Defenders waiting.
+		for (SiegeClan siegeClan : _castle.getSiege().getDefenderWaitingClans())
+		{
+			final Clan clan = ClanTable.getInstance().getClan(siegeClan.getClanId());
+			if (clan != null)
+			{
+				_defendersWaiting.add(clan);
+			}
+		}
 	}
 	
 	@Override
@@ -49,40 +84,38 @@ public class MercenaryCastleWarCastleSiegeDefenderList extends ServerPacket
 		buffer.writeInt(1);
 		buffer.writeInt(0);
 		
-		final Castle castle = CastleManager.getInstance().getCastleById(_castleId);
-		if (castle == null)
+		if (_castle == null)
 		{
 			buffer.writeInt(0);
 			buffer.writeInt(0);
 		}
 		else
 		{
-			final int size = castle.getSiege().getDefenderWaitingClans().size() + castle.getSiege().getDefenderClans().size() + (castle.getOwner() != null ? 1 : 0);
+			final int size = (_owner != null ? 1 : 0) + _defenders.size() + _defendersWaiting.size();
 			buffer.writeInt(size);
 			buffer.writeInt(size);
 			
 			// Owners.
-			final Clan owner = castle.getOwner();
-			if (owner != null)
+			if (_owner != null)
 			{
-				buffer.writeInt(owner.getId());
-				buffer.writeString(owner.getName());
-				buffer.writeString(owner.getLeaderName());
-				buffer.writeInt(owner.getCrestId());
+				buffer.writeInt(_owner.getId());
+				buffer.writeString(_owner.getName());
+				buffer.writeString(_owner.getLeaderName());
+				buffer.writeInt(_owner.getCrestId());
 				buffer.writeInt(0); // time (seconds)
 				buffer.writeInt(SiegeClanType.OWNER.ordinal());
 				
-				buffer.writeInt(owner.isRecruitMercenary());
-				buffer.writeLong(owner.getRewardMercenary());
-				buffer.writeInt(owner.getMapMercenary().size());
+				buffer.writeInt(_owner.isRecruitMercenary());
+				buffer.writeLong(_owner.getRewardMercenary());
+				buffer.writeInt(_owner.getMapMercenary().size());
 				buffer.writeLong(0);
 				buffer.writeLong(0);
-				if (owner.getAllyId() != 0)
+				if (_owner.getAllyId() != 0)
 				{
-					buffer.writeInt(owner.getAllyId());
-					buffer.writeString(owner.getAllyName());
+					buffer.writeInt(_owner.getAllyId());
+					buffer.writeString(_owner.getAllyName());
 					buffer.writeString("");
-					buffer.writeInt(owner.getAllyCrestId());
+					buffer.writeInt(_owner.getAllyCrestId());
 				}
 				else
 				{
@@ -94,14 +127,8 @@ public class MercenaryCastleWarCastleSiegeDefenderList extends ServerPacket
 			}
 			
 			// Defenders.
-			for (SiegeClan clan : castle.getSiege().getDefenderClans())
+			for (Clan defender : _defenders)
 			{
-				final Clan defender = ClanTable.getInstance().getClan(clan.getClanId());
-				if ((defender == null) || (defender == castle.getOwner()))
-				{
-					continue;
-				}
-				
 				buffer.writeInt(defender.getId());
 				buffer.writeString(defender.getName());
 				buffer.writeString(defender.getLeaderName());
@@ -131,14 +158,8 @@ public class MercenaryCastleWarCastleSiegeDefenderList extends ServerPacket
 			}
 			
 			// Defenders waiting.
-			for (SiegeClan clan : castle.getSiege().getDefenderWaitingClans())
+			for (Clan defender : _defendersWaiting)
 			{
-				final Clan defender = ClanTable.getInstance().getClan(clan.getClanId());
-				if (defender == null)
-				{
-					continue;
-				}
-				
 				buffer.writeInt(defender.getId());
 				buffer.writeString(defender.getName());
 				buffer.writeString(defender.getLeaderName());

@@ -649,7 +649,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="60150" name="Death Knight's Flame Soul Pack" type="EtcItem">
-		<!-- Double-click to obtain 3 Death Knight's Flame Souls. There is also a chance to obtain an additional useful item. -->
+		<!-- Double-click to obtain 3 Death Knight's Flame Souls. Also, there is a chance to obtain 1 useful item. -->
 		<set name="icon" val="Branchsys2.icon2.g_alegra_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -706,7 +706,7 @@
 			<item id="80958" min="1" max="1" chance="2" /> <!-- Sealed Heavenly Talisman -->
 			<item id="80646" min="1" max="1" chance="2" /> <!-- Talisman of Protection Lv. 10 -->
 			<item id="47821" min="1" max="1" chance="2" /> <!-- Sayha's Talisman Pack Lv. 10 -->
-			<item id="29546" min="1" max="1" chance="2" /> <!-- Enhanced La Vie En Rose's Brooch -->
+			<item id="29546" min="1" max="1" chance="2" /> <!-- La Vie En Rose's Enhanced Brooch -->
 			<item id="36946" min="1" max="1" chance="2" /> <!-- Lindvior's Earring -->
 			<item id="19464" min="1" max="1" chance="2" /> <!-- Blessed Valakas' Necklace -->
 			<item id="19463" min="1" max="1" chance="2" /> <!-- Blessed Antharas' Earring -->
@@ -838,9 +838,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29470" level="1" /> <!-- Expedition Supplies -->
+		</skills>
 	</item>
 	<item id="60163" name="Halloween's Clever Ghost Chest" type="EtcItem">
-		<!-- Double-click to obtain Halloween's Strange Pumpkin. There is also a chance to obtain an additional useful item. -->
+		<!-- Double-click to obtain Halloween's Strange Pumpkin. Also, there is a chance to obtain 1 useful item. -->
 		<set name="icon" val="icon.etc_treasure_box_i11" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -886,7 +890,7 @@
 			<item id="81153" min="1" max="1" chance="1.785714" /> <!-- Navari's Mask -->
 			<item id="80959" min="1" max="1" chance="1.785714" /> <!-- Epic Talisman -->
 			<item id="48667" min="1" max="1" chance="1.785714" /> <!-- Dragon Weapon Pack (Lv. 1) -->
-			<item id="29547" min="1" max="1" chance="1.785714" /> <!-- Superior La Vie En Rose's Brooch -->
+			<item id="29547" min="1" max="1" chance="1.785714" /> <!-- La Vie En Rose's Superior Brooch -->
 			<item id="80335" min="1" max="1" chance="1.785714" /> <!-- Dragon's Ring -->
 			<item id="80334" min="1" max="1" chance="1.785714" /> <!-- Dragon's Earring -->
 			<item id="80333" min="1" max="1" chance="1.785714" /> <!-- Dragon's Necklace -->
@@ -1061,6 +1065,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29471" level="1" /> <!-- Anniversary Firecracker NCJ 20 -->
+		</skills>
 	</item>
 	<item id="60171" name="Red Firecracker" type="EtcItem">
 		<!-- A firecracker that illuminates the sky with red lights. -->
@@ -1072,6 +1080,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29472" level="1" /> <!-- Red Firecracker -->
+		</skills>
 	</item>
 	<item id="60172" name="Blue Firecracker" type="EtcItem">
 		<!-- A firecracker that illuminates the sky with blue lights. -->
@@ -1083,6 +1095,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29473" level="1" /> <!-- Blue Firecracker -->
+		</skills>
 	</item>
 	<item id="60173" name="Green Firecracker" type="EtcItem">
 		<!-- A firecracker that illuminates the sky with green lights. -->
@@ -1094,6 +1110,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29474" level="1" /> <!-- Green Firecracker -->
+		</skills>
 	</item>
 	<item id="60174" name="Letter J" additionalName="Event" type="EtcItem">
 		<!-- If you collect a special combination of letters and numbers, you can get a gift. -->
@@ -1123,6 +1143,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29477" level="1" /> <!-- NCJ 20 Anniversary Gift -->
+		</skills>
 	</item>
 	<item id="60177" name="L2M Launch Commemoration Coin" additionalName="Event" type="EtcItem">
 		<!-- A coin for commemorating the L2M launch. Can be exchanged for various items through the Game Assistant. -->
@@ -1162,10 +1186,17 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
+		<set name="reuse_delay" val="300000" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_sellable" val="false" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="is_event_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29480" level="1" /> <!-- Royal Honey Dark Beer -->
+		</skills>
 	</item>
 	<item id="60180" name="Glittering Freya's Scroll of Storm" additionalName="Event" type="EtcItem">
 		<!-- For 10 min., Vitality Consumption +200%, acquired XP/ SP +200%. The effect remains after death. Cooldown: 9 min. Can be used only when 1 or more Vitality bars is full. Cannot be used in the Olympiad. The effect does not stack with those of Freya's Frozen Scroll, Maphr's Wind Scroll, Dandy's Scroll: Challenge, Emperor's Growth Scroll, Scroll: Midsummer Passion, Vital Wind, Wind of Bard. -->
@@ -1177,9 +1208,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29481" level="1" /> <!-- Freya's Glittering Scroll of Storm -->
+		</skills>
 	</item>
 	<item id="60181" name="Glittering Freya's Ice Rose" additionalName="Event" type="EtcItem">
-		<!-- For 30 min., Max HP/ MP/ CP +30%, P./ M. Atk. and P./ M. Def. +35%. Atk. Spd./ Casting Spd. +10%, Speed +20. Attribute Attack/ Resistance +200, damage +12%, P./ M. Skill Power +12%, acquired XP/ SP +40%, received damage -15%, Skill MP Consumption -15%, all basic stats +2. The effect remains after death. Cooldown: 5 min. Does not stack with Art of Seduction, Pa'agrio's Blessing and the Freya's Ice Rose effect. Cannot be used in the Olympiad. -->
+		<!-- For 30 min., Max HP/ MP/ CP +30%, P. Atk./ M. Atk./ P. Def./ M. Def. +35%, Atk. Spd./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +200, damage +12%, P./ M. Skill Power +12%, acquired XP/ SP +40%, received damage -15%, Skill MP Consumption -15%, all basic stats +2. The effect remains after death. Cooldown: 5 min. Does not stack with Art of Seduction, Pa'agrio's Blessing and the Freya's Ice Rose effect. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.bm_freya_ice_rose" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -1195,7 +1230,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="etcitem_type" val="SCROLL" />
 		<skills>
-			<skill id="29482" level="1" /> <!-- Glittering Freya's Ice Rose -->
+			<skill id="29482" level="1" /> <!-- Freya's Glittering Ice Rose -->
 		</skills>
 	</item>
 	<item id="60182" name="Glowing Royal Dragon's Attribute Potion" additionalName="Event" type="EtcItem">
@@ -1209,6 +1244,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29483" level="2" /> <!-- Glowing Royal Dragon's Attribute Potion -->
+		</skills>
 	</item>
 	<item id="60183" name="Shining Royal Nevit's Gold Hourglass" additionalName="Event" type="EtcItem">
 		<!-- For 30 min. while hunting, acquired XP/ SP +120%, damage +5%, received damage -7%. The effect does not stack with Shining Nevit's Gold Hourglass, Fall of the Dragon and Dandy's Home Run Ball. The effect is removed upon entering the Olympiad or the Ceremony of Chaos. Cooldown: 10 sec. -->
@@ -1216,10 +1255,18 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
+		<set name="reuse_delay" val="10" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="is_event_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="etcitem_type" val="SCROLL" />
+		<skills>
+			<skill id="29484" level="2" /> <!-- Shining Royal Nevit's Gold Hourglass -->
+		</skills>
 	</item>
 	<item id="60184" name="Black Friday Mark" additionalName="Event" type="EtcItem">
 		<!-- A special mark for the Black Friday. Can be exchanged for various items through the Game Assistant. -->
@@ -1257,6 +1304,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29483" level="1" /> <!-- Glowing Dragon's Attribute Potion -->
+		</skills>
 	</item>
 	<item id="60187" name="Shining Nevit's Gold Hourglass" additionalName="Event" type="EtcItem">
 		<!-- For 30 min., acquired XP/ SP +100%. Does not stack with Fall of the Dragon or Dandy's Home Run Ball. Cooldown: 5 min. -->
@@ -1268,6 +1319,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="POTION" />
+		<set name="handler" val="ItemSkills" />
+		<set name="reuse_delay" val="300" />
+		<skills>
+			<skill id="29484" level="2" /> <!-- Shining Royal Nevit's Gold Hourglass -->
+		</skills>
 	</item>
 	<item id="60188" name="L2M Blessing Buff" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain the L2M Blessing buff. -->
@@ -1280,6 +1337,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="29478" level="1" /> <!-- L2M Blessing - Lv. 1 -->
+		</skills>
 	</item>
 	<item id="60189" name="Golden Safe" type="EtcItem">
 		<!-- Found in the Mystic Tavern. Double-click to obtain rare items. -->
@@ -1413,7 +1474,7 @@
 			<item id="80959" min="1" max="1" chance="2.631579" /> <!-- Epic Talisman -->
 			<item id="80958" min="1" max="1" chance="2.631579" /> <!-- Sealed Heavenly Talisman -->
 			<item id="82032" min="1" max="1" chance="2.631579" /> <!-- Shining Jewel Energy -->
-			<item id="29546" min="1" max="1" chance="2.631579" /> <!-- Enhanced La Vie En Rose's Brooch -->
+			<item id="29546" min="1" max="1" chance="2.631579" /> <!-- La Vie En Rose's Enhanced Brooch -->
 			<item id="80333" min="1" max="1" chance="2.631579" /> <!-- Dragon's Necklace -->
 			<item id="80334" min="1" max="1" chance="2.631579" /> <!-- Dragon's Earring -->
 			<item id="80335" min="1" max="1" chance="2.631579" /> <!-- Dragon's Ring -->

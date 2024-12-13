@@ -22,15 +22,15 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.data.sql.AnnouncementsTable;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
-import org.l2jmobius.gameserver.model.PageResult;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.announce.Announcement;
 import org.l2jmobius.gameserver.model.announce.AnnouncementType;
 import org.l2jmobius.gameserver.model.announce.AutoAnnouncement;
 import org.l2jmobius.gameserver.model.announce.IAnnouncement;
+import org.l2jmobius.gameserver.model.html.PageBuilder;
+import org.l2jmobius.gameserver.model.html.PageResult;
 import org.l2jmobius.gameserver.util.Broadcast;
 import org.l2jmobius.gameserver.util.BuilderUtil;
-import org.l2jmobius.gameserver.util.HtmlUtil;
 import org.l2jmobius.gameserver.util.Util;
 
 /**
@@ -91,7 +91,7 @@ public class AdminAnnouncements implements IAdminCommandHandler
 					{
 						if (!st.hasMoreTokens())
 						{
-							final String content = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/announces-add.htm");
+							final String content = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/announces/announces-add.htm");
 							Util.sendCBHtml(activeChar, content);
 							break;
 						}
@@ -192,7 +192,7 @@ public class AdminAnnouncements implements IAdminCommandHandler
 						}
 						if (!st.hasMoreTokens())
 						{
-							String content = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/announces-edit.htm");
+							String content = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/announces/announces-edit.htm");
 							final String announcementId = Integer.toString(announce.getId());
 							final String announcementType = announce.getType().name();
 							String announcementInital = "0";
@@ -371,7 +371,7 @@ public class AdminAnnouncements implements IAdminCommandHandler
 									autoAnnounce.restartMe();
 								}
 							}
-							BuilderUtil.sendSysMessage(activeChar, "Auto announcements has been successfully restarted");
+							BuilderUtil.sendSysMessage(activeChar, "Auto announcements has been successfully restarted!");
 							break;
 						}
 						final String token = st.nextToken();
@@ -418,7 +418,7 @@ public class AdminAnnouncements implements IAdminCommandHandler
 						final IAnnouncement announce = AnnouncementsTable.getInstance().getAnnounce(id);
 						if (announce != null)
 						{
-							String content = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/announces-show.htm");
+							String content = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/announces/announces-show.htm");
 							final String announcementId = Integer.toString(announce.getId());
 							final String announcementType = announce.getType().name();
 							String announcementInital = "0";
@@ -458,21 +458,17 @@ public class AdminAnnouncements implements IAdminCommandHandler
 							}
 						}
 						
-						String content = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/announces-list.htm");
-						final PageResult result = HtmlUtil.createPage(AnnouncementsTable.getInstance().getAllAnnouncements(), page, 8, currentPage ->
+						String content = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/announces/announces-list.htm");
+						final PageResult result = PageBuilder.newBuilder(AnnouncementsTable.getInstance().getAllAnnouncements(), 10, "bypass admin_announces list").currentPage(page).bodyHandler((pages, announcement, sb) ->
 						{
-							return "<td align=center><button action=\"bypass admin_announces list " + currentPage + "\" value=\"" + (currentPage + 1) + "\" width=35 height=20 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>";
-						}, announcement ->
-						{
-							final StringBuilder sb = new StringBuilder();
 							sb.append("<tr>");
 							sb.append("<td width=5></td>");
 							sb.append("<td width=80>" + announcement.getId() + "</td>");
 							sb.append("<td width=100>" + announcement.getType() + "</td>");
-							sb.append("<td width=100>" + announcement.getAuthor() + "</td>");
+							sb.append("<td width=90>" + announcement.getAuthor() + "</td>");
 							if ((announcement.getType() == AnnouncementType.AUTO_NORMAL) || (announcement.getType() == AnnouncementType.AUTO_CRITICAL))
 							{
-								sb.append("<td width=60><button action=\"bypass -h admin_announces restart " + announcement.getId() + "\" value=\"Restart\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
+								sb.append("<td width=60><button action=\"bypass admin_announces restart " + announcement.getId() + "\" value=\"Restart\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
 							}
 							else
 							{
@@ -480,19 +476,19 @@ public class AdminAnnouncements implements IAdminCommandHandler
 							}
 							if (announcement.getType() == AnnouncementType.EVENT)
 							{
-								sb.append("<td width=60><button action=\"bypass -h admin_announces show " + announcement.getId() + "\" value=\"Show\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
+								sb.append("<td width=60><button action=\"bypass admin_announces show " + announcement.getId() + "\" value=\"Show\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
 								sb.append("<td width=60></td>");
 							}
 							else
 							{
-								sb.append("<td width=60><button action=\"bypass -h admin_announces show " + announcement.getId() + "\" value=\"Show\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
-								sb.append("<td width=60><button action=\"bypass -h admin_announces edit " + announcement.getId() + "\" value=\"Edit\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
+								sb.append("<td width=60><button action=\"bypass admin_announces show " + announcement.getId() + "\" value=\"Show\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
+								sb.append("<td width=60><button action=\"bypass admin_announces edit " + announcement.getId() + "\" value=\"Edit\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
 							}
-							sb.append("<td width=60><button action=\"bypass -h admin_announces remove " + announcement.getId() + "\" value=\"Remove\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
+							sb.append("<td width=60><button action=\"bypass admin_announces remove " + announcement.getId() + "\" value=\"Remove\" width=\"60\" height=\"21\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
 							sb.append("<td width=5></td>");
 							sb.append("</tr>");
-							return sb.toString();
-						});
+						}).build();
+						
 						content = content.replace("%pages%", result.getPagerTemplate().toString());
 						content = content.replace("%announcements%", result.getBodyTemplate().toString());
 						Util.sendCBHtml(activeChar, content);

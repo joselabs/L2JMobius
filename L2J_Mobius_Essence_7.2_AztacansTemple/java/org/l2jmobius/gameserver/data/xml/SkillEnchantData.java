@@ -1,24 +1,29 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.data.xml;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import org.w3c.dom.Document;
@@ -38,7 +43,7 @@ public class SkillEnchantData implements IXmlReader
 	private static final Logger LOGGER = Logger.getLogger(SkillEnchantData.class.getName());
 	
 	private final Map<Integer, EnchantStarHolder> _enchantStarMap = new HashMap<>();
-	private final Map<Integer, SkillEnchantHolder> _skillEnchantMap = new HashMap<>();
+	private final Map<Integer, SkillEnchantHolder> _skillEnchantMap = new ConcurrentHashMap<>();
 	private final Map<Integer, Map<Integer, EnchantItemExpHolder>> _enchantItemMap = new HashMap<>();
 	
 	private final Map<Integer, Integer> _chanceEnchantMap = new HashMap<>();
@@ -66,7 +71,9 @@ public class SkillEnchantData implements IXmlReader
 			{
 				final StatSet set = new StatSet(parseAttributes(skill));
 				final int id = set.getInt("id");
-				_skillEnchantMap.put(id, new SkillEnchantHolder(set));
+				final int starLevel = set.getInt("starLevel");
+				final int maxEnchantLevel = set.getInt("maxEnchantLevel");
+				_skillEnchantMap.put(id, new SkillEnchantHolder(id, starLevel, maxEnchantLevel));
 			}));
 			forEach(listNode, "stars", stars -> forEach(stars, "star", star ->
 			{
@@ -116,6 +123,17 @@ public class SkillEnchantData implements IXmlReader
 	public Map<Integer, EnchantItemExpHolder> getEnchantItem(int level)
 	{
 		return _enchantItemMap.get(level);
+	}
+	
+	public void addReplacedSkillEnchant(int oldId, int newId)
+	{
+		if (!_skillEnchantMap.containsKey(oldId) || _skillEnchantMap.containsKey(newId))
+		{
+			return;
+		}
+		
+		final SkillEnchantHolder oldHolder = _skillEnchantMap.get(oldId);
+		_skillEnchantMap.put(newId, new SkillEnchantHolder(newId, oldHolder.getStarLevel(), oldHolder.getMaxEnchantLevel()));
 	}
 	
 	public int getChanceEnchantMap(Skill skill)

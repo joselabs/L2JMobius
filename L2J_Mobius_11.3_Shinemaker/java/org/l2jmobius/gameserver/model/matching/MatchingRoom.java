@@ -16,14 +16,11 @@
  */
 package org.l2jmobius.gameserver.model.matching;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
 
-import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.gameserver.data.sql.PartyMatchingHistoryTable;
 import org.l2jmobius.gameserver.enums.MatchingMemberType;
 import org.l2jmobius.gameserver.enums.MatchingRoomType;
 import org.l2jmobius.gameserver.enums.UserInfoType;
@@ -37,10 +34,6 @@ import org.l2jmobius.gameserver.model.interfaces.IIdentifiable;
  */
 public abstract class MatchingRoom implements IIdentifiable
 {
-	private static final Logger LOGGER = Logger.getLogger(MatchingRoom.class.getName());
-	
-	private static final String INSERT_PARTY_HISTORY = "INSERT INTO party_matching_history (title,leader) values (?,?)";
-	
 	private final int _id;
 	private String _title;
 	private int _loot;
@@ -59,9 +52,9 @@ public abstract class MatchingRoom implements IIdentifiable
 		_maxLevel = maxLevel;
 		_maxCount = maxmem;
 		_leader = leader;
-		addMember(_leader);
+		addMember(leader);
 		onRoomCreation(leader);
-		storeRoomHistory();
+		PartyMatchingHistoryTable.getInstance().addRoomHistory(title, leader.getName());
 	}
 	
 	public Set<Player> getMembers()
@@ -92,21 +85,6 @@ public abstract class MatchingRoom implements IIdentifiable
 		notifyNewMember(player);
 		player.setMatchingRoom(this);
 		player.broadcastUserInfo(UserInfoType.CLAN);
-	}
-	
-	public void storeRoomHistory()
-	{
-		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement(INSERT_PARTY_HISTORY))
-		{
-			statement.setString(1, _title);
-			statement.setString(2, _leader.getName());
-			statement.execute();
-		}
-		catch (Exception e)
-		{
-			LOGGER.warning("MatchingRoom: Problem restoring room history!");
-		}
 	}
 	
 	public void deleteMember(Player player, boolean kicked)

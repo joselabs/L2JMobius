@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import org.l2jmobius.gameserver.handler.DailyMissionHandler;
 
 import handlers.dailymissionhandlers.BossDailyMissionHandler;
+import handlers.dailymissionhandlers.EnchantHennaDailyMissionHandler;
 import handlers.dailymissionhandlers.FishingDailyMissionHandler;
 import handlers.dailymissionhandlers.JoinClanDailyMissionHandler;
 import handlers.dailymissionhandlers.LevelDailyMissionHandler;
@@ -56,6 +57,8 @@ public class DailyMissionMasterHandler
 		DailyMissionHandler.getInstance().registerHandler("joinclan", JoinClanDailyMissionHandler::new);
 		DailyMissionHandler.getInstance().registerHandler("purge", PurgeRewardDailyMissionHandler::new);
 		DailyMissionHandler.getInstance().registerHandler("useitem", UseItemDailyMissionHandler::new);
+		DailyMissionHandler.getInstance().registerHandler("enchanthenna", EnchantHennaDailyMissionHandler::new);
+		
 		LOGGER.info(DailyMissionMasterHandler.class.getSimpleName() + ": Loaded " + DailyMissionHandler.getInstance().size() + " handlers.");
 	}
 }

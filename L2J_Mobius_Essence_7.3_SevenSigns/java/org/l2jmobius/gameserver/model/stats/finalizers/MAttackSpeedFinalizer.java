@@ -34,6 +34,12 @@ public class MAttackSpeedFinalizer implements IStatFunction
 	{
 		throwIfPresent(base);
 		
+		final double staticMAtkSpeed = creature.getStat().getValue(Stat.STATIC_MAGICAL_ATTACK_SPEED, 0);
+		if (staticMAtkSpeed > 0)
+		{
+			return staticMAtkSpeed;
+		}
+		
 		double baseValue = calcWeaponBaseValue(creature, stat);
 		if (Config.CHAMPION_ENABLE && creature.isChampion())
 		{

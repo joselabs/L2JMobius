@@ -32,10 +32,14 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 public class NpcInfoAbnormalVisualEffect extends ServerPacket
 {
 	private final Npc _npc;
+	private final Set<AbnormalVisualEffect> _abnormalVisualEffects;
+	private final Team _team;
 	
 	public NpcInfoAbnormalVisualEffect(Npc npc)
 	{
 		_npc = npc;
+		_abnormalVisualEffects = _npc.getEffectList().getCurrentAbnormalVisualEffects();
+		_team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _npc.getTeam() : Team.NONE;
 	}
 	
 	@Override
@@ -44,21 +48,19 @@ public class NpcInfoAbnormalVisualEffect extends ServerPacket
 		ServerPackets.NPC_INFO_ABNORMAL_VISUAL_EFFECT.writeId(this, buffer);
 		buffer.writeInt(_npc.getObjectId());
 		buffer.writeInt(_npc.getTransformationDisplayId());
-		final Set<AbnormalVisualEffect> abnormalVisualEffects = _npc.getEffectList().getCurrentAbnormalVisualEffects();
-		final Team team = (Config.BLUE_TEAM_ABNORMAL_EFFECT != null) && (Config.RED_TEAM_ABNORMAL_EFFECT != null) ? _npc.getTeam() : Team.NONE;
-		buffer.writeShort(abnormalVisualEffects.size() + (team != Team.NONE ? 1 : 0));
-		for (AbnormalVisualEffect abnormalVisualEffect : abnormalVisualEffects)
+		buffer.writeShort(_abnormalVisualEffects.size() + (_team != Team.NONE ? 1 : 0));
+		for (AbnormalVisualEffect abnormalVisualEffect : _abnormalVisualEffects)
 		{
 			buffer.writeShort(abnormalVisualEffect.getClientId());
 		}
-		if (team == Team.BLUE)
+		if (_team == Team.BLUE)
 		{
 			if (Config.BLUE_TEAM_ABNORMAL_EFFECT != null)
 			{
 				buffer.writeShort(Config.BLUE_TEAM_ABNORMAL_EFFECT.getClientId());
 			}
 		}
-		else if ((team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
+		else if ((_team == Team.RED) && (Config.RED_TEAM_ABNORMAL_EFFECT != null))
 		{
 			buffer.writeShort(Config.RED_TEAM_ABNORMAL_EFFECT.getClientId());
 		}

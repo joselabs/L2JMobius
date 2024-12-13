@@ -42,13 +42,13 @@ public class OpPkcountSkillCondition implements ISkillCondition
 		{
 			case CASTER:
 			{
-				return caster.isPlayer() && (caster.getActingPlayer().getPkKills() > 0);
+				return caster.isPlayer() && (caster.asPlayer().getPkKills() > 0);
 			}
 			case TARGET:
 			{
 				if ((target != null) && target.isPlayer())
 				{
-					return target.getActingPlayer().getPkKills() > 0;
+					return target.asPlayer().getPkKills() > 0;
 				}
 				break;
 			}

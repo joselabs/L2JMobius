@@ -23,7 +23,6 @@ import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -127,7 +126,7 @@ public class Orfen extends AbstractNpcAI
 				}
 				else if (npc.calculateDistance2D(npc.getSpawn()) > 10000)
 				{
-					((Attackable) npc).clearAggroList();
+					npc.asAttackable().clearAggroList();
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, SPAWN_LOCATION);
 				}
 				break;

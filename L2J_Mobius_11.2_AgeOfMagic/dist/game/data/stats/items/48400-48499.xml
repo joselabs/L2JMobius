@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="48400" name="Items Seal Scroll" type="EtcItem">
 		<!-- A scroll for sealing items. The sealed item cannot be augmented, exchanged, dropped, destroyed, or stored in the clan warehouse. Use Item Unseal Scroll to remove the seal. -->
@@ -145,7 +145,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48412" name="Scroll of Escape: Aden" type="EtcItem">
-		<!-- Use to move to the Town of Aden. -->
+		<!-- Teleports to Aden. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i03" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -161,11 +161,11 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="2213" level="16" /> <!-- Scroll of Escape: Town of Aden -->
+			<skill id="2213" level="16" /> <!-- Scroll of Escape: Aden -->
 		</skills>
 	</item>
 	<item id="48413" name="Scroll of Escape: Aden" type="EtcItem">
-		<!-- Use to move to the Town of Aden. -->
+		<!-- Teleports to Aden. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i03" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -181,11 +181,11 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="2214" level="7" /> <!-- Scroll of Escape: Town of Aden -->
+			<skill id="2214" level="7" /> <!-- Scroll of Escape: Talking Island Village -->
 		</skills>
 	</item>
 	<item id="48414" name="GM Lassana's Present Box" additionalName="30-day" type="EtcItem">
-		<!-- Presents prepared with care by GM Lassana. Double-click to obtain various consumables. If you are in luck, you may get a very good item. -->
+		<!-- Prepared with care by GM Lassana. Double-click to obtain various supplies. If you are in luck, you may get a very good item. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i04" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -195,7 +195,7 @@
 		<set name="time" val="43200" />
 	</item>
 	<item id="48415" name="Clan Hall Belt Lv. 1" type="Armor">
-		<!-- Belt imbued with the concentrated energies of Nurka, Gustav, and Lidia. Max HP/ MP/ CP +500, Damage +6%, Received Damage -6%, Weight +12800, and Inventory Slots +18. -->
+		<!-- A belt imbued with concentrated energies of Nurka, Gustav and Lidia. Max HP/ MP/ CP +500, damage +6%, received damage -6%, weight limit +12,800, inventory slots +18. -->
 		<set name="icon" val="icon.event_energy_belt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="waist" />
@@ -209,7 +209,7 @@
 		</stats>
 	</item>
 	<item id="48416" name="Clan Hall Belt Lv. 2" type="Armor">
-		<!-- A belt imbued with the concentrated energies of Nurka, Gustav, and Lidia. Max HP/ MP/ CP +500, damage +7%, received damage -7%, weight limit +12,800, inventory slots +18, Attribute Resistance +10. -->
+		<!-- A belt imbued with concentrated energies of Nurka, Gustav and Lidia. Max HP/ MP/ CP +500, damage +7%, received damage -7%, weight limit +12,800, inventory slots +18, Attribute Resistance +10. -->
 		<set name="icon" val="icon.event_energy_belt_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="waist" />
@@ -234,9 +234,6 @@
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="BELT" />
 		<set name="material" val="CLOTH" />
-		<skills>
-			<skill id="15145" level="2" /> <!-- Ruler's Authority -->
-		</skills>
 		<stats>
 			<stat type="pDef">100</stat>
 			<stat type="fireRes">20</stat>
@@ -246,6 +243,9 @@
 			<stat type="holyRes">20</stat>
 			<stat type="darkRes">20</stat>
 		</stats>
+		<skills>
+			<skill id="15145" level="2" /> <!-- Ruler's Authority - Genesis -->
+		</skills>
 	</item>
 	<item id="48418" name="Authority Ornament" type="EtcItem">
 		<!-- Take it to Ilia in Aden to enhance your Ruler's Authority. -->
@@ -254,20 +254,20 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48419" name="Clan Hall Belt Ornament" type="EtcItem">
-		<!-- Clan Hall Belt crafting material. Talk to Ilia in the Town of Aden to craft a Clan Hall Belt. -->
+		<!-- A material for crafting Clan Hall Belt. Take it to Ilia in Aden. -->
 		<set name="icon" val="icon.etc_belt_deco_i02" />
 		<set name="material" val="LEATHER" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48420" name="Belt Crafting Scroll" type="EtcItem">
-		<!-- Item containing the secret of Clan Hall Belt crafting. Talk to Ilia in the Town of Aden to craft a Clan Hall Belt. -->
+		<!-- Take it to Ilia in Aden to craft Clan Hall Belt. -->
 		<set name="icon" val="icon.event_energy_enchant_scroll_i00" />
 		<set name="material" val="LEATHER" />
 		<set name="price" val="50000000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48421" name="Belt Disassembly Scroll" type="EtcItem">
-		<!-- Item containing the secret of Nurka/ Gustav/ Lidia's Belt disassembly. Talk to Ilia in the Town of Aden to disassemble each belt and obtain Clan Hall Belt Ornaments. There is also a small chance of obtaining an Authority Ornament during disassembly, which is used to enhance the Ruler's Authority. -->
+		<!-- Required for disassembling Nurka/ Gustav/ Lidia's Belt. Take it to Ilia in Aden to disassemble a belt. There is also a small chance to obtain Authority Ornament required for upgrading Ruler's Authority. -->
 		<set name="icon" val="icon.combatagit_belt_disassemble" />
 		<set name="material" val="LEATHER" />
 		<set name="price" val="10000000" />
@@ -288,7 +288,7 @@
 			<item id="48423" min="1" max="1" chance="25" /> <!-- Talisman of Wind Pack - P. Skill Critical Damage -->
 			<item id="48424" min="1" max="1" chance="25" /> <!-- Talisman of Wind Pack - M. Skill Critical Damage -->
 			<item id="48425" min="1" max="1" chance="25" /> <!-- Talisman of Wind Pack - Defense -->
-			<item id="48426" min="1" max="1" chance="25" /> <!-- Talisman of Wind Pack - Debuff Defense -->
+			<item id="48426" min="1" max="1" chance="25" /> <!-- Talisman of Wind Pack - Debuff Resistance -->
 		</capsuled_items>
 	</item>
 	<item id="48423" name="Talisman of Wind Pack" additionalName="P. Skill Critical Damage" type="EtcItem">
@@ -318,7 +318,7 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="material" val="FISH" />
 		<capsuled_items>
-			<item id="48428" min="1" max="1" chance="100" /> <!-- Talisman- Wind: M. Critical Damage - 30-day -->
+			<item id="48428" min="1" max="1" chance="100" /> <!-- Talisman of Wind - M. Skill Critical Damage - 30-day -->
 		</capsuled_items>
 	</item>
 	<item id="48425" name="Talisman of Wind Pack" additionalName="Defense" type="EtcItem">
@@ -364,7 +364,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="17973" level="1" /> <!-- Talisman - Wind: P. Critical Damage -->
+			<skill id="17973" level="1" /> <!-- Talisman of Wind - P. Skill Critical Damage -->
 		</skills>
 	</item>
 	<item id="48428" name="Talisman- Wind: M. Critical Damage" additionalName="30-day" type="Armor">
@@ -380,7 +380,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="17974" level="1" /> <!-- Talisman - Wind: M. Critical Damage -->
+			<skill id="17974" level="1" /> <!-- Talisman of Wind - M. Skill Critical Damage -->
 		</skills>
 	</item>
 	<item id="48429" name="Talisman of Wind - Defense" additionalName="30-day" type="Armor">
@@ -396,7 +396,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="17975" level="1" /> <!-- Talisman - Wind: Defense -->
+			<skill id="17975" level="1" /> <!-- Talisman of Wind - Defense -->
 		</skills>
 	</item>
 	<item id="48430" name="Talisman of Wind - Debuff Resistance" additionalName="30-day" type="Armor">
@@ -412,7 +412,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="17976" level="1" /> <!-- Talisman - Wind: Debuff Resistance -->
+			<skill id="17976" level="1" /> <!-- Talisman of Wind - Debuff Resistance -->
 		</skills>
 	</item>
 	<item id="48431" name="PA Talisman - STR/P. Atk." additionalName="4-hour" type="Armor">
@@ -428,7 +428,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="240" />
 		<skills>
-			<skill id="18380" level="2" /> <!-- Mysterious Talisman - STR -->
+			<skill id="18380" level="2" /> <!-- PA Talisman - STR -->
 		</skills>
 	</item>
 	<item id="48432" name="PA Talisman - INT/ M. Atk" additionalName="4-hour" type="Armor">
@@ -444,7 +444,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="240" />
 		<skills>
-			<skill id="18381" level="2" /> <!-- Mysterious Talisman - INT -->
+			<skill id="18381" level="2" /> <!-- PA Talisman - INT -->
 		</skills>
 	</item>
 	<item id="48433" name="PA Talisman - DEX/ Atk. Spd." additionalName="4-hour" type="Armor">
@@ -460,7 +460,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="240" />
 		<skills>
-			<skill id="18382" level="2" /> <!-- Mysterious Talisman - DEX -->
+			<skill id="18382" level="2" /> <!-- PA Talisman - DEX -->
 		</skills>
 	</item>
 	<item id="48434" name="PA Talisman - WIT/ Casting Spd." additionalName="4-hour" type="Armor">
@@ -476,7 +476,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="240" />
 		<skills>
-			<skill id="18383" level="2" /> <!-- Mysterious Talisman - WIT -->
+			<skill id="18383" level="2" /> <!-- PA Talisman - WIT -->
 		</skills>
 	</item>
 	<item id="48435" name="PA Talisman - CON/ HP" additionalName="4-hour" type="Armor">
@@ -492,7 +492,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="240" />
 		<skills>
-			<skill id="18384" level="2" /> <!-- Mysterious Talisman - CON -->
+			<skill id="18384" level="2" /> <!-- PA Talisman - CON -->
 		</skills>
 	</item>
 	<item id="48436" name="PA Talisman - MEN/ MP" additionalName="4-hour" type="Armor">
@@ -508,7 +508,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="240" />
 		<skills>
-			<skill id="18385" level="2" /> <!-- Mysterious Talisman - MEN -->
+			<skill id="18385" level="2" /> <!-- PA Talisman - MEN -->
 		</skills>
 	</item>
 	<item id="48437" name="PA Talisman - Attribute Attack" additionalName="4-hour" type="Armor">
@@ -524,7 +524,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="240" />
 		<skills>
-			<skill id="18386" level="2" /> <!-- PA Talisman Attribute Attack -->
+			<skill id="18386" level="2" /> <!-- Mysterious Talisman - Attribute Attack -->
 		</skills>
 	</item>
 	<item id="48438" name="PA Talisman - Attribute Resistance" additionalName="4-hour" type="Armor">
@@ -540,7 +540,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="240" />
 		<skills>
-			<skill id="18650" level="2" /> <!-- PA Talisman Defense Attribute -->
+			<skill id="18650" level="2" /> <!-- Mysterious Talisman - Attribute Resistance -->
 		</skills>
 	</item>
 	<item id="48439" name="Fortress Talisman - Vitality" additionalName="15-day" type="Armor">
@@ -607,7 +607,7 @@
 		<set name="time" val="21600" />
 		<set name="useSkillDisTime" val="6" />
 		<skills>
-			<skill id="35170" level="1" /> <!-- Fortress Talisman - P. Atk -->
+			<skill id="35170" level="1" /> <!-- Fortress Talisman - P. Atk. -->
 		</skills>
 	</item>
 	<item id="48443" name="Fortress Talisman - M. Atk." additionalName="15-day" type="Armor">
@@ -624,11 +624,11 @@
 		<set name="time" val="21600" />
 		<set name="useSkillDisTime" val="6" />
 		<skills>
-			<skill id="35171" level="1" /> <!-- Fortress Talisman - M. Atk -->
+			<skill id="35171" level="1" /> <!-- Fortress Talisman - M. Atk. -->
 		</skills>
 	</item>
 	<item id="48444" name="Fortress Talisman - P. Def." additionalName="15-day" type="Armor">
-		<!-- When equipped, P. Def. +10%. -->
+		<!-- P. Def. +10%. -->
 		<set name="icon" val="icon.r85_talisman_ca_up_passive" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -641,7 +641,7 @@
 		<set name="time" val="21600" />
 		<set name="useSkillDisTime" val="6" />
 		<skills>
-			<skill id="35172" level="1" /> <!-- Fortress Talisman - P. Def -->
+			<skill id="35172" level="1" /> <!-- Fortress Talisman - P. Def. -->
 		</skills>
 	</item>
 	<item id="48445" name="Fortress Talisman - M. Def." additionalName="15-day" type="Armor">
@@ -658,11 +658,11 @@
 		<set name="time" val="21600" />
 		<set name="useSkillDisTime" val="6" />
 		<skills>
-			<skill id="35173" level="1" /> <!-- Fortress Talisman - M. Def -->
+			<skill id="35173" level="1" /> <!-- Fortress Talisman - M. Def. -->
 		</skills>
 	</item>
 	<item id="48446" name="Fortress Talisman - Atk. Spd." additionalName="15-day" type="Armor">
-		<!-- When equipped, Atk. Spd. +5%. -->
+		<!-- Atk. Spd. +5%. -->
 		<set name="icon" val="icon.r85_talisman_ca_up_passive" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -679,7 +679,7 @@
 		</skills>
 	</item>
 	<item id="48447" name="Fortress Talisman - Casting Spd." additionalName="15-day" type="Armor">
-		<!-- When equipped, Casting Spd. +5%. -->
+		<!-- Casting Spd. +5%. -->
 		<set name="icon" val="icon.r85_talisman_ca_up_passive" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -743,7 +743,7 @@
 		<set name="time" val="21600" />
 		<set name="useSkillDisTime" val="6" />
 		<skills>
-			<skill id="35178" level="1" /> <!-- Fortress Talisman - Shield Def -->
+			<skill id="35178" level="1" /> <!-- Fortress Talisman - Shield Defense -->
 		</skills>
 	</item>
 	<item id="48451" name="Fortress Talisman - Max HP" additionalName="15-day" type="Armor">
@@ -764,7 +764,7 @@
 		</skills>
 	</item>
 	<item id="48452" name="Fortress Talisman - Max MP" additionalName="15-day" type="Armor">
-		<!-- When equipped, Max MP +10%. -->
+		<!-- Max MP +10%. -->
 		<set name="icon" val="icon.r85_talisman_ca_up_passive" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -796,7 +796,7 @@
 		<set name="useSkillDisTime" val="6" />
 		<set name="weight" val="150" />
 		<skills>
-			<skill id="35181" level="1" /> <!-- Fortress Talisman - Movement Speed -->
+			<skill id="35181" level="1" /> <!-- Fortress Talisman - Speed -->
 		</skills>
 	</item>
 	<item id="48454" name="Fortress Talisman Box" type="EtcItem">
@@ -1024,7 +1024,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48470" name="Adventure Guild Supply Box" type="EtcItem">
-		<!-- A supply box received from Herphah for completing the Adventure Guild missions. Double-click to obtain a variety of supply items. -->
+		<!-- Given by Herphah for completing the Adventurers' Guild's mission. Double-click to obtain what is inside. -->
 		<set name="icon" val="icon.etc_box_of_adventure_1_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1041,7 +1041,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48471" name="Adventure Guild Supply Box" type="EtcItem">
-		<!-- A supply box received from Herphah for completing the Adventure Guild missions. Double-click to obtain a variety of supply items. -->
+		<!-- Given by Herphah for completing the Adventurers' Guild's mission. Double-click to obtain what is inside. -->
 		<set name="icon" val="icon.etc_box_of_adventure_1_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1110,7 +1110,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48476" name="Dark/ Bloody Weapon Enhancement Stone Pack" type="EtcItem">
-		<!-- Use it to obtain a Dark Weapon Enhancement Stone or Bloody Weapon Enhancement Stone. -->
+		<!-- Use it to obtain a Dark Weapon Upgrade Stone or Bloody Weapon Upgrade Stone. -->
 		<set name="icon" val="icon.etc_treasure_box_i04" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />
@@ -1139,7 +1139,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48479" name="Knights' Enchant Scroll Supply Items" additionalName="Event" type="EtcItem">
-		<!-- You can obtain a Scroll: Enchant R-grade Weapon and a Scroll: Enchant R-grade Armor. -->
+		<!-- Double-click to obtain Scroll: Enchant R-grade Weapon and Scroll: Enchant R-grade Armor. -->
 		<set name="icon" val="icon.bm_ensoulbox_soul_of_undead" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1194,7 +1194,7 @@
 		</capsuled_items>
 	</item>
 	<item id="48483" name="PA +7 Shiny Elemental Shirt" additionalName="2-hour" type="Armor">
-		<!-- PA only. A shining magic T-shirt imbued with Einhasad's energy. <Item skill>. M. Def. +15. Speed +7. Max HP +536, Max MP +536, Skill MP Consumption -3%, Damage Reflection Resistance +5, Fire/ Wind/ Earth/ Holy/ Dark/ Water Resistance +24, STR +3, DEX +3, CON +3, INT +3, WIT +3, MEN +3. <Active skills>. Einhasad's Wrath/ Einhasad's Protection. Cannot be enchanted. -->
+		<!-- PA only. A shining magic T-shirt imbued with Einhasad's energy. <Item skills>. M. Def. +15. Speed +7. Max HP +536, Max MP +536, Skill MP Consumption -3%, Damage Reflection Resistance +5, Fire/ Wind/ Earth/ Holy/ Dark/ Water Resistance +24, STR +3, DEX +3, CON +3, INT +3, WIT +3, MEN +3. <Active skills>. Einhasad's Wrath/ Einhasad's Shelter. Cannot be enchanted. -->
 		<set name="icon" val="icon.ainhasard_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -1210,7 +1210,7 @@
 		</stats>
 	</item>
 	<item id="48484" name="+7 Physical Reflect Shirt - PA" additionalName="2-hour" type="Armor">
-		<!-- PA only. A special magic shirt for P. Def. <Item skill>. M. Def. +15. Speed +7. Max HP +536, Max MP +536, Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24, STR +3, DEX +3, CON +3, INT +3, WIT +3, MEN +3. P. Def. +8%, received Critical Damage from basic attacks -12%, a 7% chance to reflect physical debuffs. Cannot be enchanted. -->
+		<!-- PA only. A special magic shirt that increases P. Def. <Item skills>. M. Def. +15. Speed +7. Max HP +536, Max MP +536, Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24, STR +3, DEX +3, CON +3, INT +3, WIT +3, MEN +3. P. Def. +8%, received Critical Damage from basic attacks -12%. With a 7% chance, reflects physical debuffs. Cannot be enchanted. -->
 		<set name="icon" val="icon.reflect_attack_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -1226,7 +1226,7 @@
 		</stats>
 	</item>
 	<item id="48485" name="+7 Magical Reflect Shirt - PA" additionalName="2-hour" type="Armor">
-		<!-- PA. A magical t-shirt for M. Def. <Item Skill>. M. Def. +15. Speed +7. Max HP/ MP +536. Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24. STR/ DEX/ CON/ INT/ WIT/ MEN +3. M. Def. +8%. Received M. Skill Critical Damage -12%. Has a 7% chance to reflect magical skill debuffs. Cannot be enchanted. -->
+		<!-- PA only. A special magic shirt that increases M. Def. <Item skills>. M. Def. +15. Speed +7. Max HP +536, Max MP +536, Water/ Fire/ Wind/ Earth/ Holy/ Dark Resistance +24, STR +3, DEX +3, CON +3, INT +3, WIT +3, MEN +3. M. Def. +8%, received M. Skill Critical Damage -12%. With a 7% chance, reflects magic debuffs. Cannot be enchanted. -->
 		<set name="icon" val="icon.reflect_magic_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="chest" />
@@ -1277,7 +1277,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48489" name="Herphah's Teleport Scroll" type="EtcItem">
-		<!-- Use to move to Herphah in the Town of Aden. -->
+		<!-- Teleports to Herphah in Aden. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i03" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -1299,7 +1299,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="48491" name="Dragon Skin Shirt" type="Armor">
-		<!-- Dragon Skin Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. <Enhancing>. Take the shirt enchanted to +5 and a Crystal of Dawn to the Head Blacksmith in any town to get a Dragon Leather Shirt. -->
+		<!-- Dragon Skin Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. <Upgrade>. Take the shirt enchanted to +5 and Crystal of Dawn to the Head Blacksmith in any town to get Dragon Leather Shirt. -->
 		<set name="icon" val="icon.bm_dragon_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1323,7 +1323,7 @@
 		</stats>
 	</item>
 	<item id="48492" name="Dragon Leather Shirt" type="Armor">
-		<!-- Dragon Leather Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. <Enhancing>. Take the shirt enchanted to +5 and a Crystal of Dawn to the Head Blacksmith in any town to get a Dragon Rind Leather Shirt. -->
+		<!-- Dragon Leather Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. <Upgrade>. Take the shirt enchanted to +5 and Crystal of Dawn to the Head Blacksmith in any town to get Dragon Rind Leather Shirt. -->
 		<set name="icon" val="icon.bm_dragon_leather_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1347,7 +1347,7 @@
 		</stats>
 	</item>
 	<item id="48493" name="Dragon Rind Leather Shirt" type="Armor">
-		<!-- Valuable Dragon Rind Leather Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. Can be enchanted. -->
+		<!-- A valuable Dragon Rind Leather Shirt. <Enchanting>. Use Blessed Scroll: Enchant Dragon Shirt. Can be augmented. -->
 		<set name="icon" val="icon.bm_dragon_rind_leather_shirt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1390,7 +1390,7 @@
 		</stats>
 	</item>
 	<item id="48495" name="Noble Leather Upgrade Stone" type="EtcItem">
-		<!-- This item can no longer be used. Talk to a Game Assistant in any town to exchange it for Crystals of Dawn. -->
+		<!-- This item can no longer be used. Talk to the Game Assistant in any town to exchange it for Crystals of Dawn. -->
 		<set name="icon" val="icon.bm_dragon_shirt_upgrade_1" />
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="material" val="LIQUID" />
@@ -1398,7 +1398,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="48496" name="Radiant Rind Upgrade Stone" type="EtcItem">
-		<!-- This item can no longer be used. Talk to a Game Assistant in any town to exchange it for Crystals of Dawn. -->
+		<!-- This item can no longer be used. Talk to the Game Assistant in any town to exchange it for Crystals of Dawn. -->
 		<set name="icon" val="icon.bm_dragon_shirt_upgrade_2" />
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="material" val="LIQUID" />
@@ -1425,7 +1425,7 @@
 		</skills>
 	</item>
 	<item id="48498" name="Blessed Scroll: Enchant Dragon Shirt" type="EtcItem">
-		<!-- A scroll for Dragon Skin Shirt/ Dragon Leather Shirt/ Dragon Rind Leather Shirt enchanting. If the process fails, the shirt's enchantment level is reset, but the shirt's type is unchanged. -->
+		<!-- A scroll for enchanting Dragon Skin Shirt/ Dragon Leather Shirt/ Dragon Rind Leather Shirt. In case of failure, the shirt's enchant value is reset, but its type will not be changed. -->
 		<set name="icon" val="icon.bm_blessed_scrl_of_ench_shirt" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="BLESS_ENCHT_AM" />
@@ -1436,7 +1436,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
-			<skill id="39203" level="1" /> <!-- Blessed Scroll: Enchant Dragon Shirt -->
+			<skill id="39203" level="1" /> <!-- Blessed Scroll: Enchant Dragon Leather Shirt -->
 		</skills>
 	</item>
 	<item id="48499" name="Dragon's Relic" type="EtcItem">

@@ -41,7 +41,7 @@ public class MyParty implements ITargetTypeHandler
 		if ((selectedTarget != null) && selectedTarget.isPlayer() && (selectedTarget != creature))
 		{
 			final Party party = creature.getParty();
-			final Party targetParty = selectedTarget.getActingPlayer().getParty();
+			final Party targetParty = selectedTarget.asPlayer().getParty();
 			if ((party != null) && (targetParty != null) && (party.getLeaderObjectId() == targetParty.getLeaderObjectId()))
 			{
 				return selectedTarget;

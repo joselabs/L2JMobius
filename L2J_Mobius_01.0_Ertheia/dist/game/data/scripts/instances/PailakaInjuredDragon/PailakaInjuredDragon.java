@@ -485,24 +485,25 @@ public class PailakaInjuredDragon extends AbstractInstance
 				if (creature.isPlayer() && npc.isScriptValue(0))
 				{
 					npc.setScriptValue(1);
-					getTimers().addTimer("SET_VISIBLE", 1000, npc, creature.getActingPlayer());
+					getTimers().addTimer("SET_VISIBLE", 1000, npc, creature.asPlayer());
 				}
 			}
 			else if ((npc.getId() == LATANA) && !npc.getVariables().getBoolean("creatureSeen", false) && creature.isPlayer())
 			{
-				final QuestState qs = creature.getActingPlayer().getQuestState(Q00144_PailakaInjuredDragon.class.getSimpleName());
+				final Player player = creature.asPlayer();
+				final QuestState qs = player.getQuestState(Q00144_PailakaInjuredDragon.class.getSimpleName());
 				if (qs != null)
 				{
 					if (qs.getCond() == 4)
 					{
-						getTimers().addTimer("SPAWN_REWARD_NPC", 1000, npc, creature.getActingPlayer());
+						getTimers().addTimer("SPAWN_REWARD_NPC", 1000, npc, player);
 						npc.setScriptValue(1);
 					}
 					else
 					{
-						playSound(creature.getActingPlayer(), QuestSound.BS08_A);
-						getTimers().addTimer("SPAWN_DRAGON_TARGET", 1000, npc, creature.getActingPlayer());
-						getTimers().addTimer("SCE_RATANA_CAMERA_START_1", 10, world.getNpc(DRAGON_CAMERA_1), creature.getActingPlayer());
+						playSound(player, QuestSound.BS08_A);
+						getTimers().addTimer("SPAWN_DRAGON_TARGET", 1000, npc, player);
+						getTimers().addTimer("SCE_RATANA_CAMERA_START_1", 10, world.getNpc(DRAGON_CAMERA_1), player);
 						npc.getVariables().set("creatureSeen", true);
 					}
 				}

@@ -30,8 +30,6 @@ import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
-import org.l2jmobius.gameserver.model.actor.Playable;
-import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.ControllableMob;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.util.Util;
@@ -59,7 +57,7 @@ public class ControllableMobAI extends AttackableAI
 	
 	protected void thinkFollow()
 	{
-		final Attackable me = (Attackable) _actor;
+		final Attackable me = _actor.asAttackable();
 		if (!Util.checkIfInRange(MobGroupTable.FOLLOW_RANGE, me, getForcedTarget(), true))
 		{
 			final int signX = Rnd.nextBoolean() ? -1 : 1;
@@ -136,7 +134,7 @@ public class ControllableMobAI extends AttackableAI
 	protected void thinkCast()
 	{
 		WorldObject target = _skill.getTarget(_actor, _forceUse, _dontMove, false);
-		if ((target == null) || !target.isCreature() || ((Creature) target).isAlikeDead())
+		if ((target == null) || !target.isCreature() || target.asCreature().isAlikeDead())
 		{
 			target = _skill.getTarget(_actor, findNextRndTarget(), _forceUse, _dontMove, false);
 		}
@@ -266,7 +264,7 @@ public class ControllableMobAI extends AttackableAI
 			if (target != null)
 			{
 				// stop hating
-				final Attackable npc = (Attackable) _actor;
+				final Attackable npc = _actor.asAttackable();
 				npc.stopHating(target);
 			}
 			
@@ -276,11 +274,11 @@ public class ControllableMobAI extends AttackableAI
 		{
 			// notify aggression
 			final Creature finalTarget = target;
-			if (((Npc) _actor).getTemplate().getClans() != null)
+			if (_actor.asNpc().getTemplate().getClans() != null)
 			{
 				World.getInstance().forEachVisibleObject(_actor, Npc.class, npc ->
 				{
-					if (!npc.isInMyClan((Npc) _actor))
+					if (!npc.isInMyClan(_actor.asNpc()))
 					{
 						return;
 					}
@@ -365,7 +363,7 @@ public class ControllableMobAI extends AttackableAI
 		else
 		{
 			final WorldObject target = _actor.getTarget();
-			hated = (target != null) && target.isCreature() ? (Creature) target : null;
+			hated = (target != null) && target.isCreature() ? target.asCreature() : null;
 		}
 		
 		if (hated != null)
@@ -387,7 +385,7 @@ public class ControllableMobAI extends AttackableAI
 			return false;
 		}
 		
-		final Attackable me = (Attackable) _actor;
+		final Attackable me = _actor.asAttackable();
 		if (target.isAlikeDead() || !me.isInsideRadius2D(target, me.getAggroRange()) || (Math.abs(_actor.getZ() - target.getZ()) > 100))
 		{
 			return false;
@@ -400,13 +398,13 @@ public class ControllableMobAI extends AttackableAI
 		}
 		
 		// Spawn protection (only against mobs)
-		if (target.isPlayer() && ((Player) target).isSpawnProtected())
+		if (target.isPlayer() && target.asPlayer().isSpawnProtected())
 		{
 			return false;
 		}
 		
 		// Check if the target is a Playable and if the target isn't in silent move mode
-		if (target.isPlayable() && ((Playable) target).isSilentMovingAffected())
+		if (target.isPlayable() && target.asPlayable().isSilentMovingAffected())
 		{
 			return false;
 		}
@@ -424,7 +422,7 @@ public class ControllableMobAI extends AttackableAI
 		final List<Creature> potentialTarget = new ArrayList<>();
 		World.getInstance().forEachVisibleObject(_actor, Creature.class, target ->
 		{
-			if (Util.checkIfInShortRange(((Attackable) _actor).getAggroRange(), _actor, target, true) && checkAutoAttackCondition(target))
+			if (Util.checkIfInShortRange(_actor.asAttackable().getAggroRange(), _actor, target, true) && checkAutoAttackCondition(target))
 			{
 				potentialTarget.add(target);
 			}

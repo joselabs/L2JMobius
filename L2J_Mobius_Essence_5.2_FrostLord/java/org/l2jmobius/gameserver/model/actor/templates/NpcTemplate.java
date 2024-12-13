@@ -38,6 +38,7 @@ import org.l2jmobius.gameserver.enums.Sex;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.stat.PlayerStat;
 import org.l2jmobius.gameserver.model.holders.DropGroupHolder;
 import org.l2jmobius.gameserver.model.holders.DropHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
@@ -784,7 +785,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 		int dropOccurrenceCounter = victim.isRaid() ? Config.DROP_MAX_OCCURRENCES_RAIDBOSS : Config.DROP_MAX_OCCURRENCES_NORMAL;
 		if (dropOccurrenceCounter > 0)
 		{
-			final Player player = killer.getActingPlayer();
+			final Player player = killer.asPlayer();
 			List<ItemHolder> randomDrops = null;
 			ItemHolder cachedItem = null;
 			double totalChance; // total group chance is 100
@@ -805,6 +806,10 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 						if (champion && (itemId == Inventory.ADENA_ID))
 						{
 							rateChance *= Config.CHAMPION_ADENAS_REWARDS_CHANCE;
+						}
+						if ((itemId == Inventory.ADENA_ID) && (rateChance > 100))
+						{
+							rateChance = 100;
 						}
 					}
 					else if (item.hasExImmediateEffect())
@@ -844,10 +849,11 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 						}
 						
 						// bonus drop rate effect
-						rateChance *= player.getStat().getMul(Stat.BONUS_DROP_RATE, 1);
+						final PlayerStat stat = player.getStat();
+						rateChance *= stat.getMul(Stat.BONUS_DROP_RATE, 1);
 						if (item.getId() == Inventory.LCOIN_ID)
 						{
-							rateChance *= player.getStat().getMul(Stat.BONUS_DROP_RATE_LCOIN, 1);
+							rateChance *= stat.getMul(Stat.BONUS_DROP_RATE_LCOIN, 1);
 						}
 					}
 					
@@ -1117,7 +1123,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 			}
 			
 			// premium amount
-			final Player player = killer.getActingPlayer();
+			final Player player = killer.asPlayer();
 			if (player != null)
 			{
 				if (Config.PREMIUM_SYSTEM_ENABLED && player.hasPremiumStatus())
@@ -1141,10 +1147,11 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 				}
 				
 				// bonus drop amount effect
-				rateAmount *= player.getStat().getMul(Stat.BONUS_DROP_AMOUNT, 1);
+				final PlayerStat stat = player.getStat();
+				rateAmount *= stat.getMul(Stat.BONUS_DROP_AMOUNT, 1);
 				if (itemId == Inventory.ADENA_ID)
 				{
-					rateAmount *= player.getStat().getMul(Stat.BONUS_DROP_ADENA, 1);
+					rateAmount *= stat.getMul(Stat.BONUS_DROP_ADENA, 1);
 				}
 			}
 			
@@ -1181,6 +1188,10 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 					{
 						rateChance *= Config.CHAMPION_ADENAS_REWARDS_CHANCE;
 					}
+					if ((itemId == Inventory.ADENA_ID) && (rateChance > 100))
+					{
+						rateChance = 100;
+					}
 				}
 				else if (item.hasExImmediateEffect())
 				{
@@ -1196,7 +1207,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 				}
 				
 				// premium chance
-				final Player player = killer.getActingPlayer();
+				final Player player = killer.asPlayer();
 				if (player != null)
 				{
 					if (Config.PREMIUM_SYSTEM_ENABLED && player.hasPremiumStatus())
@@ -1220,10 +1231,11 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 					}
 					
 					// bonus drop rate effect
-					rateChance *= player.getStat().getMul(Stat.BONUS_DROP_RATE, 1);
+					final PlayerStat stat = player.getStat();
+					rateChance *= stat.getMul(Stat.BONUS_DROP_RATE, 1);
 					if (item.getId() == Inventory.LCOIN_ID)
 					{
-						rateChance *= player.getStat().getMul(Stat.BONUS_DROP_RATE_LCOIN, 1);
+						rateChance *= stat.getMul(Stat.BONUS_DROP_RATE_LCOIN, 1);
 					}
 				}
 				
@@ -1277,10 +1289,11 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 						}
 						
 						// bonus drop amount effect
-						rateAmount *= player.getStat().getMul(Stat.BONUS_DROP_AMOUNT, 1);
+						final PlayerStat stat = player.getStat();
+						rateAmount *= stat.getMul(Stat.BONUS_DROP_AMOUNT, 1);
 						if (itemId == Inventory.ADENA_ID)
 						{
-							rateAmount *= player.getStat().getMul(Stat.BONUS_DROP_ADENA, 1);
+							rateAmount *= stat.getMul(Stat.BONUS_DROP_ADENA, 1);
 						}
 					}
 					
@@ -1294,7 +1307,7 @@ public class NpcTemplate extends CreatureTemplate implements IIdentifiable
 				// chance
 				double rateChance = Config.RATE_SPOIL_DROP_CHANCE_MULTIPLIER;
 				// premium chance
-				final Player player = killer.getActingPlayer();
+				final Player player = killer.asPlayer();
 				if (player != null)
 				{
 					if (Config.PREMIUM_SYSTEM_ENABLED && player.hasPremiumStatus())

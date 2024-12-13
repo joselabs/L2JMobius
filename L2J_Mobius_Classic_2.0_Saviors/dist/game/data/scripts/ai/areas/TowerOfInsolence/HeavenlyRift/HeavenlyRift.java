@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2j Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.areas.TowerOfInsolence.HeavenlyRift;
 
@@ -23,7 +27,6 @@ import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Playable;
@@ -301,7 +304,7 @@ public class HeavenlyRift extends AbstractNpcAI
 							
 							angel.setRunning();
 							angel.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, tower);
-							((Attackable) angel).addDamageHate(tower, 0, 999999);
+							angel.asAttackable().addDamageHate(tower, 0, 999999);
 							
 							_varAngelCount1++;
 						}
@@ -483,7 +486,7 @@ public class HeavenlyRift extends AbstractNpcAI
 					{
 						if (getRandom(100) < 50)
 						{
-							npc.dropItem(killer.getActingPlayer(), getRandom(100) < 90 ? ITEM_DROP_1[getRandom(ITEM_DROP_1.length)] : ITEM_DROP_2[getRandom(ITEM_DROP_2.length)], 1);
+							npc.dropItem(killer.asPlayer(), getRandom(100) < 90 ? ITEM_DROP_1[getRandom(ITEM_DROP_1.length)] : ITEM_DROP_2[getRandom(ITEM_DROP_2.length)], 1);
 						}
 					}
 				}

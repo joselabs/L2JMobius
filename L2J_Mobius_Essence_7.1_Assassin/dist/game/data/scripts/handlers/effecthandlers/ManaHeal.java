@@ -37,6 +37,11 @@ public class ManaHeal extends AbstractEffect
 	public ManaHeal(StatSet params)
 	{
 		_power = params.getDouble("power", 0);
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override
@@ -61,6 +66,7 @@ public class ManaHeal extends AbstractEffect
 		double amount = _power;
 		if ((item != null) && (item.isPotion() || item.isElixir()))
 		{
+			amount *= ((effected.getStat().getValue(Stat.ADDITIONAL_POTION_MP_PER, 0) / 100) + 1);
 			amount += effected.getStat().getValue(Stat.ADDITIONAL_POTION_MP, 0);
 		}
 		

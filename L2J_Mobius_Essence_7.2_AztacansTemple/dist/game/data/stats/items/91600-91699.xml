@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="91600" name="Dimensional Talisman Lv. 9" type="Armor">
 		<!-- P./ M. Def. +90, P./ M. Evasion. +4, Max HP/ MP/ CP +1600, Speed +9, Atk. Spd. +50, Casting Spd. +80, acquired XP/ SP +20%. Enables Dimensional Border Power Lv. 8 (increases attack power with a certain chance). Enables Dimensional Guard Lv. 9 (temporarily increases Vital Point Attack Resistance and decreases received P. Critical Damage/ received M. Skill Critical Damage). Can be upgraded by Alchemist Veruti in Giran. The effect doesn't stack with that of Talisman of Border, the Dimensional Talisman effect takes precedence. -->
@@ -628,6 +628,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="isAppearanceable" val="true" />
+		<skills>
+			<skill id="51375" level="1" /> <!-- Refined Romantic Gold Chapeau Teleport -->
+			<skill id="51376" level="1" /> <!-- Mysterious Aura -->
+		</skills>
 	</item>
 	<item id="91641" name="Sayha's Blessing" additionalName="Sealed" type="EtcItem">
 		<!-- Sayha's Grace points +35,000. -->
@@ -671,7 +678,7 @@
 		<set name="is_freightable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51379" level="1" /> <!-- Chronicle Chest -->
+			<skill id="51379" level="1" /> <!-- Chronicle Pack -->
 		</skills>
 	</item>
 	<item id="91644" name="Chronicle Cube Gift" additionalName="Sealed" type="EtcItem">
@@ -815,7 +822,7 @@
 			<player flyMounted="false" />
 		</cond>
 		<skills>
-			<skill id="50153" level="1" /> <!-- Scroll of Escape: Captain Bathis -->
+			<skill id="50153" level="1" /> <!-- Scroll of Escape: Guard Captain Bathis -->
 		</skills>
 	</item>
 	<item id="91652" name="Giant Cobweb" type="EtcItem">
@@ -1028,7 +1035,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51398" level="1" /> <!-- Sayha's Storm Lv. 1 - (Event) -->
+			<skill id="51398" level="1" /> <!-- Sayha's Storm Lv. 1 (Event) -->
 		</skills>
 	</item>
 	<item id="91667" name="+7 White Sayha's Cloak" additionalName="30-day" type="Armor">
@@ -1120,6 +1127,7 @@
 		<set name="icon" val="icon.weapon_long_spear_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="POLE" />
+		<set name="damage_range" val="0;0;66;120" />
 		<set name="bodypart" val="lrhand" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BRONZE" />
@@ -1138,6 +1146,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="91674" name="Reinforced Falchion" additionalName="Sealed" type="Weapon">
 		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins.></font> -->
@@ -1176,9 +1187,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">31</stat>
 			<stat type="mAtk">21</stat>
@@ -1187,6 +1195,9 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">19</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="91676" name="Reinforced Voodoo Doll" additionalName="Sealed" type="Weapon">
 		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins.></font> -->
@@ -1225,9 +1236,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">31</stat>
 			<stat type="mAtk">21</stat>
@@ -1236,6 +1244,9 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">19</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="91678" name="Reinforced Sword Breaker" additionalName="Sealed" type="Weapon">
 		<!-- Cannot be enchanted or augmented. No soul crystal can be inserted. <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders.></font> -->
@@ -1359,7 +1370,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="91687" name="Viper Fang Amulet" additionalName="30-day" type="EtcItem">
-		<!-- Available for 30 days. Contains the Reinforced Viper Fang's power. <Active Skill> Reinforced Viper Fang's Power: Double-click to obtain D-grade Scallop Jamadhr enchanted from +8 to +16. Requires 1 Weapon Ticket from the L-Coin Store. Can be used only once a day. -->
+		<!-- Available for 30 d. An amulet that contains the Reinforced Viper Fang's power. <Active skill> Reinforced Viper Fang's Power: Double-click for a chance to obtain D-grade Scallop Jamadhr enchanted from +8 to +16. Requires 1 Weapon Ticket from L-Coin Store. Can be used only once a day. -->
 		<set name="icon" val="icon.bm_freya_bloody_rune" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -1437,7 +1448,7 @@
 		<set name="time" val="4320" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51416" level="1" /> <!-- Blessing of Plenty - 100% (Event) Lv. 1 -->
+			<skill id="51416" level="1" /> <!-- Blessing of Plenty - 100% (Event) -->
 		</skills>
 	</item>
 	<item id="91693" name="Blessing of Plenty - 100%" additionalName="1-day" type="EtcItem">
@@ -1453,7 +1464,7 @@
 		<set name="time" val="1440" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51416" level="2" /> <!-- Blessing of Plenty - 100% (Event) Lv. 2 -->
+			<skill id="51416" level="2" /> <!-- Blessing of Plenty - 100% -->
 		</skills>
 	</item>
 	<item id="91694" name="Blessing of Plenty - 100%" additionalName="30-day" type="EtcItem">
@@ -1469,7 +1480,7 @@
 		<set name="time" val="43200" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51416" level="2" /> <!-- Blessing of Plenty - 100% (Event) Lv. 2 -->
+			<skill id="51416" level="2" /> <!-- Blessing of Plenty - 100% -->
 		</skills>
 	</item>
 	<item id="91695" name="Mark of Aden's Braveheart" type="EtcItem">

@@ -49,7 +49,7 @@ public class Enemy implements ITargetTypeHandler
 		{
 			return null;
 		}
-		final Creature target = (Creature) selectedTarget;
+		final Creature target = selectedTarget.asCreature();
 		
 		// You cannot attack yourself even with force.
 		if (creature == target)
@@ -95,7 +95,7 @@ public class Enemy implements ITargetTypeHandler
 			}
 			
 			// Geodata check when character is within range.
-			if (!GeoEngine.getInstance().canSeeTarget(creature, target))
+			if (!GeoEngine.getInstance().canSeeTarget(creature, target) || (skill.isFlyType() && !GeoEngine.getInstance().canMoveToTarget(creature, target)))
 			{
 				if (sendMessage)
 				{
@@ -116,8 +116,8 @@ public class Enemy implements ITargetTypeHandler
 			
 			if (forceUse)
 			{
-				final Player player = creature.getActingPlayer();
-				final Player targetPlayer = target.getActingPlayer();
+				final Player player = creature.asPlayer();
+				final Player targetPlayer = target.asPlayer();
 				if ((player != null) && (targetPlayer != null))
 				{
 					// Siege friend check.

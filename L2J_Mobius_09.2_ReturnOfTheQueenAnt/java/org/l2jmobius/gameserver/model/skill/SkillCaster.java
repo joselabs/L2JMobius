@@ -48,7 +48,6 @@ import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
@@ -135,9 +134,13 @@ public class SkillCaster implements Runnable
 	public static SkillCaster castSkill(Creature caster, WorldObject target, Skill skill, Item item, SkillCastingType castingType, boolean ctrlPressed, boolean shiftPressed)
 	{
 		// Prevent players from attacking before the Olympiad countdown ends.
-		if (caster.isPlayer() && caster.getActingPlayer().isInOlympiadMode() && !caster.getActingPlayer().isOlympiadStart() && skill.isBad())
+		if (caster.isPlayer() && skill.isBad())
 		{
-			return null;
+			final Player player = caster.asPlayer();
+			if (player.isInOlympiadMode() && !player.isOlympiadStart())
+			{
+				return null;
+			}
 		}
 		
 		return castSkill(caster, target, skill, item, castingType, ctrlPressed, shiftPressed, -1);
@@ -349,7 +352,7 @@ public class SkillCaster implements Runnable
 			caster.broadcastPacket(new MagicSkillUse(caster, target, _skill.getDisplayId(), _skill.getDisplayLevel(), displayedCastTime, reuseDelay, _skill.getReuseDelayGroup(), actionId, _castingType));
 			if (caster.isPlayer() && (_skill.getTargetType() == TargetType.GROUND) && (_skill.getAffectScope() == AffectScope.FAN_PB))
 			{
-				final Player player = caster.getActingPlayer();
+				final Player player = caster.asPlayer();
 				final Location worldPosition = player.getCurrentSkillWorldPosition();
 				if (worldPosition != null)
 				{
@@ -384,7 +387,7 @@ public class SkillCaster implements Runnable
 		
 		if (caster.isPlayer())
 		{
-			final Player player = caster.getActingPlayer();
+			final Player player = caster.asPlayer();
 			
 			// Consume fame points.
 			if (_skill.getFamePointConsume() > 0)
@@ -429,12 +432,12 @@ public class SkillCaster implements Runnable
 				{
 					if (effect.getEffectType() == EffectType.DUAL_RANGE)
 					{
-						effect.instant(caster, (Creature) target, _skill, null);
+						effect.instant(caster, target.asCreature(), _skill, null);
 						return false;
 					}
 				}
 			}
-			_skill.applyEffectScope(EffectScope.START, new BuffInfo(caster, (Creature) target, _skill, false, _item, null), true, false);
+			_skill.applyEffectScope(EffectScope.START, new BuffInfo(caster, target.asCreature(), _skill, false, _item, null), true, false);
 		}
 		
 		// Start channeling if skill is channeling.
@@ -536,13 +539,13 @@ public class SkillCaster implements Runnable
 		if (caster.isPlayer())
 		{
 			// Consume Souls if necessary.
-			if ((_skill.getMaxSoulConsumeCount() > 0) && !caster.getActingPlayer().decreaseSouls(_skill.getMaxSoulConsumeCount()))
+			if ((_skill.getMaxSoulConsumeCount() > 0) && !caster.asPlayer().decreaseSouls(_skill.getMaxSoulConsumeCount()))
 			{
 				return false;
 			}
 			
 			// Consume charges if necessary.
-			if ((_skill.getChargeConsumeCount() > 0) && !caster.getActingPlayer().decreaseCharges(_skill.getChargeConsumeCount()))
+			if ((_skill.getChargeConsumeCount() > 0) && !caster.asPlayer().decreaseCharges(_skill.getChargeConsumeCount()))
 			{
 				return false;
 			}
@@ -586,7 +589,7 @@ public class SkillCaster implements Runnable
 		// Reset current skill world position.
 		if (caster.isPlayer() && (_skill.getTargetType() == TargetType.GROUND) && ((_skill.getAffectScope() == AffectScope.FAN_PB) || (_skill.getAffectScope() == AffectScope.FAN)))
 		{
-			caster.getActingPlayer().setCurrentSkillWorldPosition(null);
+			caster.asPlayer().setCurrentSkillWorldPosition(null);
 		}
 		
 		return true;
@@ -617,10 +620,10 @@ public class SkillCaster implements Runnable
 					continue;
 				}
 				
-				final Creature creature = (Creature) obj;
+				final Creature creature = obj.asCreature();
 				
 				// Check raid monster/minion attack and check buffing characters who attack raid monsters. Raid is still affected by skills.
-				if (!Config.RAID_DISABLE_CURSE && creature.isRaid() && creature.giveRaidCurse() && (caster.getLevel() >= (creature.getLevel() + 9)) && (skill.isBad() || ((creature.getTarget() == caster) && ((Attackable) creature).getAggroList().containsKey(caster))))
+				if (!Config.RAID_DISABLE_CURSE && creature.isRaid() && creature.giveRaidCurse() && (caster.getLevel() >= (creature.getLevel() + 9)) && (skill.isBad() || ((creature.getTarget() == caster) && creature.asAttackable().getAggroList().containsKey(caster))))
 				{
 					// Skills such as Summon Battle Scar too can trigger magic silence.
 					final CommonSkill curse = skill.isBad() ? CommonSkill.RAID_CURSE2 : CommonSkill.RAID_CURSE;
@@ -657,7 +660,7 @@ public class SkillCaster implements Runnable
 			// Launch the magic skill and calculate its effects
 			skill.activateSkill(caster, item, targets.toArray(new WorldObject[0]));
 			
-			final Player player = caster.getActingPlayer();
+			final Player player = caster.asPlayer();
 			if (player != null)
 			{
 				for (WorldObject obj : targets)
@@ -672,18 +675,18 @@ public class SkillCaster implements Runnable
 						if (obj.isPlayable())
 						{
 							// Update pvpflag.
-							player.updatePvPStatus((Creature) obj);
+							player.updatePvPStatus(obj.asCreature());
 							
 							if (obj.isSummon())
 							{
-								((Summon) obj).updateAndBroadcastStatus(1);
+								obj.asSummon().updateAndBroadcastStatus(1);
 							}
 						}
 						else if (obj.isAttackable())
 						{
 							// Add hate to the attackable, and put it in the attack list.
-							((Attackable) obj).addDamageHate(caster, 0, -skill.getEffectPoint());
-							((Creature) obj).addAttackerToAttackByList(caster);
+							obj.asAttackable().addDamageHate(caster, 0, -skill.getEffectPoint());
+							obj.asCreature().addAttackerToAttackByList(caster);
 							
 							// Summoning a servitor should not renew your own PvP flag time.
 							if (obj.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE && (!obj.isServitor() || (obj.getObjectId() != player.getFirstServitor().getObjectId())))
@@ -693,9 +696,9 @@ public class SkillCaster implements Runnable
 						}
 						
 						// notify target AI about the attack
-						if (((Creature) obj).hasAI() && !skill.hasEffectType(EffectType.HATE))
+						if (obj.asCreature().hasAI() && !skill.hasEffectType(EffectType.HATE))
 						{
-							((Creature) obj).getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, caster);
+							obj.asCreature().getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, caster);
 						}
 					}
 					// Self casting should not increase PvP time.
@@ -703,13 +706,13 @@ public class SkillCaster implements Runnable
 					{
 						// Supporting monsters or players results in pvpflag.
 						if (((skill.getEffectPoint() > 0) && obj.isMonster()) //
-							|| (obj.isPlayable() && ((obj.getActingPlayer().getPvpFlag() > 0) //
-								|| (((Creature) obj).getReputation() < 0) //
+							|| (obj.isPlayable() && ((obj.asPlayer().getPvpFlag() > 0) //
+								|| (obj.asCreature().getReputation() < 0) //
 							)))
 						{
 							// Consider fake player PvP status.
 							if (!obj.isFakePlayer() //
-								|| (obj.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE && (!((Npc) obj).isScriptValue(0) || (((Npc) obj).getReputation() < 0))))
+								|| (obj.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE && (!obj.asNpc().isScriptValue(0) || (obj.asNpc().getReputation() < 0))))
 							{
 								player.updatePvPStatus();
 							}
@@ -728,7 +731,7 @@ public class SkillCaster implements Runnable
 					// On Skill See logic
 					if (npcMob.isAttackable() && !npcMob.isFakePlayer())
 					{
-						final Attackable attackable = (Attackable) npcMob;
+						final Attackable attackable = npcMob.asAttackable();
 						if ((skill.getEffectPoint() > 0) && attackable.hasAI() && (attackable.getAI().getIntention() == AI_INTENTION_ATTACK))
 						{
 							final WorldObject npcTarget = attackable.getTarget();
@@ -748,7 +751,7 @@ public class SkillCaster implements Runnable
 			{
 				if (target.isPlayable() || target.isFakePlayer())
 				{
-					final Npc npc = ((Npc) caster);
+					final Npc npc = caster.asNpc();
 					if (!npc.isScriptValue(1))
 					{
 						npc.setScriptValue(1); // in combat
@@ -801,7 +804,7 @@ public class SkillCaster implements Runnable
 		// If there is a queued skill, launch it and wipe the queue.
 		if (caster.isPlayer())
 		{
-			final Player currPlayer = caster.getActingPlayer();
+			final Player currPlayer = caster.asPlayer();
 			final SkillUseHolder queuedSkill = currPlayer.getQueuedSkill();
 			if (queuedSkill != null)
 			{
@@ -1164,7 +1167,7 @@ public class SkillCaster implements Runnable
 		
 		if (caster.isPlayer())
 		{
-			final Player player = caster.getActingPlayer();
+			final Player player = caster.asPlayer();
 			if (player.inObserverMode())
 			{
 				return false;
@@ -1226,14 +1229,15 @@ public class SkillCaster implements Runnable
 					return false;
 				}
 				
-				if (skill.isBad()&& !player.isOnSoloEvent())
-				{
-					final WorldObject target = player.getTarget();
-					if ((target != null) && target.isPlayable() && (player.getTeam() == target.getActingPlayer().getTeam()))
-					{
-						return false;
-					}
-				}
+				// Commented because AOE skills like Warlord's [Thunder Storm] (44) and debuffs like Overlord's [Seal of Binding] (1208) do not work when targeting an enemy from the other team.
+				// if (skill.isBad() && !player.isOnSoloEvent())
+				// {
+				// final WorldObject target = player.getTarget();
+				// if ((target != null) && target.isPlayable() && (player.getTeam() == target.asPlayer().getTeam()))
+				// {
+				// return false;
+				// }
+				// }
 			}
 		}
 		return true;
@@ -1283,7 +1287,7 @@ public class SkillCaster implements Runnable
 				double nRadius = creature.getCollisionRadius();
 				if (target.isCreature())
 				{
-					nRadius += ((Creature) target).getCollisionRadius();
+					nRadius += target.asCreature().getCollisionRadius();
 				}
 				x = target.getX() + (int) (Math.cos(Math.PI + radian + course) * nRadius);
 				y = target.getY() + (int) (Math.sin(Math.PI + radian + course) * nRadius);

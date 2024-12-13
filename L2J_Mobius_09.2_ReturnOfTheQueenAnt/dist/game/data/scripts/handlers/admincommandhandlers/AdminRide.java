@@ -136,7 +136,7 @@ public class AdminRide implements IAdminCommandHandler
 		}
 		else
 		{
-			player = (Player) activeChar.getTarget();
+			player = activeChar.getTarget().asPlayer();
 		}
 		return player;
 	}

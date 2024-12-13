@@ -43,7 +43,7 @@ INSERT INTO `teleport` VALUES
 ('Dwarven Village -> Mithril Mines Western Entrance',419,171946,-173352,3440,11000,0,57),
 ('Dwarven Village -> Mithril Mines Eastern Entrance',137,178591,-184615,-360,12000,0,57),
 ('Dion -> Town of Gludio',18,-12787,122779,-3112,3400,0,57),
-('Dion -> Town of Giran',19,83551,147945,-3400,6800,0,57),
+('Dion -> Town of Giran',19,83314,148012,-3400,6800,0,57),
 ('Cruma Tower 1st floor -> Cruma Tower Entrance',22,17253,114232,-3440,0,0,57),
 ('Cruma Tower 1st floor -> Cruma Tower 2nd floor',23,17776,108288,-9056,0,0,57),
 ('Cruma Tower 2nd floor -> Cruma Tower 1st floor',24,17781,113999,-11672,0,0,57),
@@ -65,25 +65,25 @@ INSERT INTO `teleport` VALUES
 ('Hunters -> Oren Town',43,82971,53207,-1488,4100,0,57),
 ('Hunters -> Hardin\'s Private Academy',45,105918,109759,-3192,3400,0,57),
 ('Hunters -> Aden Town',46,146783,25808,-2008,5900,0,57),
-('Oren -> Giran Town',47,83551,147945,-3400,9400,0,57),
+('Oren -> Giran Town',47,83314,148012,-3400,9400,0,57),
 ('Oren -> Ivory Tower',48,85391,16228,-3672,3700,0,57),
 ('Oren -> Hunter\'s Village',49,117088,76931,-2688,4100,0,57),
 ('Oren -> Hardin\'s Private Academy',50,105918,109759,-3192,6100,0,57),
 ('Oren -> Aden Town',51,146783,25808,-2008,6900,0,57),
-('Hardin\'s Private Academy -> Giran Town',52,83551,147945,-3400,4400,0,57),
+('Hardin\'s Private Academy -> Giran Town',52,83475,147966,-3404,4400,0,57),
 ('Hardin\'s Private Academy -> Oren Town',53,82971,53207,-1488,6100,0,57),
 ('Hardin\'s Private Academy -> Hunter\'s Village',54,117088,76931,-2688,3400,0,57),
 ('Cruma level 2 -> Cruma level 3',55,17719,115590,-6584,0,0,57),
 ('Cruma level 3 -> Cruma Core',56,17691,111726,-6583,0,0,57),
 ('Cruma core -> Cruma level 3',57,17719,115590,-6584,0,0,57),
 ('Cruma Tower 3rd floor -> Cruma Tower 2nd Floor',58,17731,119465,-9067,0,0,57),
-('Heine -> The Town of Giran',59,83551,147945,-3400,7600,0,57),
+('Heine -> The Town of Giran',59,83314,148012,-3400,7600,0,57),
 ('Heine -> Giran Harbor',60,47938,186864,-3480,7100,0,57),
-('Giran Harbor -> Giran Town',63,83551,147942,-3400,6300,0,57),
+('Giran Harbor -> Giran Town',63,83475,147966,-3404,6300,0,57),
 ('Giran Harbor -> Heine',107,111455,219400,-3544,8500,0,57),
 ('Heine -> The Town of Dion',65,15472,142880,-2688,12000,0,57),
-('Heine -> Field of Silence',66,87691,162835,-3563,12000,0,57), -- retail
-('Heine -> Field of Whispers',67,82192,226128,-3664,5900,0,57), -- retail
+('Heine -> Field of Silence',66,91088,182384,-3192,2500,0,57), -- Retail Interlude.
+('Heine -> Field of Whispers',67,74592,207656,-3032,2300,0,57), -- Retail Interlude.
 ('Heine -> Entrance to Alligator Islands',68,115583,192261,-3488,2100,0,57),
 ('Giran -> Heine',70,111455,219400,-3544,7600,0,57),
 ('Aden -> Coliseum',76,146440,46723,-3432,2000,0,57),
@@ -111,7 +111,7 @@ INSERT INTO `teleport` VALUES
 ('Goddard -> Varka Silenos Stronghold',109,125740,-40864,-3736,4200,0,57),
 ('Goddard -> Ketra Orc Outpost',110,146990,-67128,-3640,1800,0,57),
 ('Rune Township -> Town of Goddard',119,148024,-55281,-2728,10000,0,57), -- retail
-('Rune Township -> The Town of Giran',120,83551,147945,-3400,59000,0,57), -- retail
+('Rune Township -> The Town of Giran',120,83314,148012,-3400,59000,0,57), -- Retail Interlude.
 ('Rune -> Aden Castle Town',121,146783,25808,-2008,37000,0,57),
 ('Rune -> Rune Castle Town Guild',122,38316,-48216,-1152,150,0,57),
 ('Rune -> Rune Castle Town Temple',123,38303,-48040,896,150,0,57),
@@ -270,7 +270,7 @@ INSERT INTO `teleport` VALUES
 ('Gludio -> Aden',1037,146783,25808,-2008,56000,0,57),
 ('Gludio -> Oren',1038,82971,53207,-1488,35000,0,57),
 ('Gludio -> Goddard',1039,148024,-55281,-2728,71000,0,57),
-('Gludio -> Giran',1040,83551,147945,-3400,29000,0,57),
+('Gludio -> Giran',1040,83314,148012,-3400,29000,0,57),
 ('Gludio -> Rune',1041,43835,-47749,-792,53000,0,57),
 ('Gludio -> Ruins of Agony',1042,-41248,122848,-2904,790,0,57),
 ('Gludio -> Ruins of Despair',1043,-19120,136816,-3752,610,0,57),
@@ -304,9 +304,9 @@ INSERT INTO `teleport` VALUES
 ('Oren -> Dion',1073,15472,142880,-2688,33000,0,57),
 ('Oren -> Schuttgart',1074,87126,-143520,-1288,59000,0,57),
 ('Oren -> Gludio',1075,-12787,122779,-3112,35000,0,57),
-('Aden -> Giran',1078,83551,147945,-3400,13000,0,57), -- retail
-('Aden -> Heine',1079,111455,219400,-3546,59000,0,57), -- retail
-('Aden -> Schuttgart',1080,87126,-143520,-1288,53000,0,57), -- retail
+('Aden -> Giran',1078,83314,148012,-3400,13000,0,57), -- Retail Interlude.
+('Aden -> Heine',1079,111455,219400,-3546,59000,0,57), -- Retail Interlude.
+('Aden -> Schuttgart',1080,87478,-142297,-1352,53000,0,57), -- Retail Interlude.
 ('Aden -> Dion',1081,15472,142880,-2688,52000,0,57),
 ('Aden -> Gludio',1082,-12787,122779,-3112,56000,0,57),
 ('Aden -> Seal of Shilen',1083,184742,19745,-3168,3000,0,57),
@@ -316,7 +316,7 @@ INSERT INTO `teleport` VALUES
 ('Aden -> Silent Valley',1087,170838,55776,-5280,6100,0,57), -- retail
 ('Aden -> ToI',1088,114649,11115,-5120,4200,0,57),
 ('Goddard -> Gludio',1089,-12787,122779,-3112,71000,0,57),
-('Goddard -> Giran',1090,83551,147945,-3400,63000,0,57),
+('Goddard -> Giran',1090,83314,148012,-3400,63000,0,57),
 ('Goddard -> Dion',1091,15472,142880,-2688,71000,0,57),
 ('Goddard -> Heine',1092,111455,219400,-3544,83000,0,57),
 ('Goddard -> Schuttgart',1093,87126,-143520,-1288,10000,0,57),
@@ -337,7 +337,7 @@ INSERT INTO `teleport` VALUES
 ('Schuttgart -> Aden',1108,146783,25808,-2008,53000,0,57),
 ('Schuttgart -> Oren',1109,82971,53207,-1488,59000,0,57),
 ('Schuttgart -> Heine',1110,111455,219400,-3544,100000,0,57),
-('Schuttgart -> Giran',1111,83551,147945,-3400,87000,0,57),
+('Schuttgart -> Giran',1111,83314,148012,-3400,87000,0,57),
 ('Schuttgart -> Dion',1112,15472,142880,-2688,88000,0,57),
 ('Schuttgart -> Gludio',1113,-12787,122779,-3112,85000,0,57),
 ('Schuttgart -> Orc Village',1114,-45158,-112583,-240,13000,0,57),

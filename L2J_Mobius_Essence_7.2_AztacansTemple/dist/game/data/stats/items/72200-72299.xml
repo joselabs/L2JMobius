@@ -262,12 +262,17 @@
 	<item id="72260" name="Baium Doll Lv. 1" additionalName="THE HERO" type="EtcItem">
 		<!-- <Baium Doll's Sorcery Lv. 1>. Skill Cooldown -2%. P. Def. +5%. M. Def. +5%. Silence Resistance +10%. Fear Resistance +10%. Paralysis Resistance +5%. Knockback Resistance +5%. Pull Resistance +5%.. Boosts stats when in inventory. -->
 		<set name="icon" val="icon.bm_baium_doll_30d" />
-		<set name="default_action" val="NONE" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="time" val="10080" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39302" level="1" /> <!-- Baium Doll's Sorcery -->
+		</skills>
 	</item>
 	<item id="72261" name="Queen Ant Doll Lv. 1" additionalName="THE HERO" type="EtcItem">
 		<!-- <Queen Ant Doll's Sorcery Lv. 1>. P. Atk. +2%. P. Critical Damage +3%. P. Skill Critical Damage +3%. Max HP +4%. Boosts stats when in inventory. Cannot be upgraded. -->
@@ -443,6 +448,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="300000000" max="300000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="72273" name="10 Million Adena Box (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain 10 million adena. -->
@@ -454,6 +463,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="10000000" max="10000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="72274" name="1 Million Adena Box (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain 1 million adena. -->
@@ -465,6 +478,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="1000000" max="1000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="72283" name="Aden's Treasure Chest (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -605,5 +622,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="50554" level="1" /> <!-- Antharas Doll's Sorcery -->
+		</skills>
 	</item>
 </list>

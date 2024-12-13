@@ -93,7 +93,7 @@ public class SpeedFinalizer implements IStatFunction
 		double baseValue = calcWeaponPlusBaseValue(creature, stat);
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			if (player.isMounted())
 			{
 				final PetLevelData data = PetDataTable.getInstance().getPetLevelData(player.getMountNpcId(), player.getMountLevel());

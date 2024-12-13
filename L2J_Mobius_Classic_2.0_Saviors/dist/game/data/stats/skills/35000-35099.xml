@@ -5,36 +5,36 @@
 		<icon>icon.bm_blessing_dragon</icon>
 		<operateType>A1</operateType>
 		<castRange>400</castRange>
+		<effectPoint>1</effectPoint>
 		<hitTime>3000</hitTime>
 		<reuseDelay>3600000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="35001" toLevel="1" name="Fire Dragon's Protection">
 		<!-- Fully restores a dying character. Buff / debuff effects remain after death, but Blessing of Fire Dragon is consumed. -->
 		<icon>icon.bm_salvation_dragon</icon>
 		<operateType>A1</operateType>
 		<castRange>400</castRange>
+		<effectPoint>1</effectPoint>
 		<hitTime>3000</hitTime>
 		<reuseDelay>3600000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="35002" toLevel="1" name="Land Dragon Breath">
 		<!-- For 15 seconds, Atk. Spd. is decreased by 50% and Casting Spd. is decreased by 50%. -->
 		<icon>icon.bm_dragon_breath</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
 		<castRange>600</castRange>
-		<hitTime>1000</hitTime>
-		<reuseDelay>60000</reuseDelay>
 		<effectPoint>-190</effectPoint>
+		<hitTime>1000</hitTime>
+		<isDebuff>true</isDebuff>
+		<reuseDelay>60000</reuseDelay>
 	</skill>
 	<skill id="35003" toLevel="1" name="Land Dragon Defense">
 		<!-- For 15 sec., increases P. Def. by 3600, M. Def. by 3240, and Buff-canceling Attack Resistance by 80%, and restricts movement. -->
 		<icon>icon.bm_dragon_defence</icon>
 		<operateType>A1</operateType>
+		<effectPoint>438</effectPoint>
 		<hitTime>1000</hitTime>
 		<reuseDelay>600000</reuseDelay>
-		<effectPoint>438</effectPoint>
 	</skill>
 	<skill id="35004" toLevel="1" name="Land Dragon Pendant Basic Effect">
 		<!-- Increases M. Def. by 9. -->
@@ -42,16 +42,25 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="35005" toLevel="10" name="Land Dragon Pendant Enchant Effect">
-		<!-- M. Def. + 10. -->
+		<!-- Level 1: M. Def. + 10. -->
+		<!-- Level 2: M. Def. + 12. -->
+		<!-- Level 3: M. Def. + 13. -->
+		<!-- Level 4: Increases M. Def. by 14, Max HP by 100, Max MP by 40. -->
+		<!-- Level 5: Increases M. Def. by 15, Max HP by 150, Max MP by 50, received damage by 3%. -->
+		<!-- Level 6: Increases M. Def. by 16, Max HP by 200, Max CP by 200, Max MP by 60, received damage by 5%. -->
+		<!-- Level 7: Increases M. Def. by 17, Max HP by 300, Max CP by 300, Max MP by 90, Speed by 7, received damage by 10%. -->
+		<!-- Level 8: Increases M. Def. by 18, Max HP by 400, Max CP by 400, Max MP by 120, Speed by 7, received damage by 20%. -->
+		<!-- Level 9: Increases M. Def. by 20, Max HP by 500, Max CP by 500, Max MP by 150, Speed by 7, received damage by 20%. -->
+		<!-- Level 10: Increases M. Def. by 21, Max HP by 500, Max CP by 500, Max MP by 150, Speed by 7, received damage by 20%. -->
 		<icon>icon.bm_pendant_pvp</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="35006" toLevel="1" name="Fire Dragon Pendant Basic Effect">
 		<!-- Increases M. Def. by 9. -->
 		<icon>icon.bm_pendant_pve</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>9</amount>
@@ -60,11 +69,20 @@
 		</effects>
 	</skill>
 	<skill id="35007" toLevel="10" name="Fire Dragon Pendant Enchant Effect">
-		<!-- M. Def. + 10. -->
+		<!-- Level 1: M. Def. + 10. -->
+		<!-- Level 2: M. Def. + 12. -->
+		<!-- Level 3: M. Def. + 13. -->
+		<!-- Level 4: M. Def. + 14, XP / SP gain + 2%. -->
+		<!-- Level 5: M. Def. + 15, XP / SP gain + 5%, P. Def. / M. Def. + 10. -->
+		<!-- Level 6: M. Def. + 16, XP / SP gain + 10%, P. Def. / M. Def. + 20. -->
+		<!-- Level 7: M. Def. + 17, XP / SP gain + 20%, P. Def. / M. Def. + 30. -->
+		<!-- Level 8: M. Def. + 18, XP / SP gain + 25%, P. Def. / M. Def. + 40, P. Critical Rate / M. Critical Damage + 5%. -->
+		<!-- Level 9: M. Def. + 20, XP / SP gain + 30%, P. Def. / M. Def. + 50, P. Critical Rate / M. Critical Damage + 5%. -->
+		<!-- Level 10: M. Def. + 21, XP / SP gain + 30%, P. Def. / M. Def. + 60, P. Critical Rate / M. Critical Damage + 5%. -->
 		<icon>icon.bm_pendant_pve</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -105,7 +123,7 @@
 					<value level="10">30</value>
 				</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">10</value>
@@ -117,7 +135,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">10</value>
@@ -153,9 +171,9 @@
 		<!-- Debuff Resistance + 50%. -->
 		<icon>icon.bm_salvation_dragon</icon>
 		<operateType>A1</operateType>
+		<effectPoint>1</effectPoint>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<reuseDelay>30000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="35009" toLevel="1" name="Black Mask Power">
 		<!-- STR + 1, INT + 1. -->
@@ -165,19 +183,19 @@
 	<skill id="35010" toLevel="1" name="Refined Romantic Chapeau">
 		<!-- STR + 1, INT + 1. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_NOT</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>MAX_HP_UP</abnormalType>
-		<effectRange>900</effectRange>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>60</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_NOT</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectRange>900</effectRange>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>60</magicLevel>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="MaxHp">
 				<amount>35</amount>
@@ -188,17 +206,17 @@
 	<skill id="35011" toLevel="1" name="Refined Romantic Chapeau: Teleport">
 		<!-- Teleports character to the nearest village. Cooldown - 2 hours. -->
 		<icon>icon.skill0000</icon>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<hitTime>1000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<reuseDelay>7200000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>7200000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
@@ -235,13 +253,13 @@
 	<skill id="35016" toLevel="1" name="Refined Ring of Core - Special Ability">
 		<!-- Cancel all debuffs. -->
 		<icon>icon.accessory_ring_of_core_i03</icon>
-		<reuseDelay>1800000</reuseDelay>
-		<hitTime>200</hitTime>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<canCastWhileDisabled>true</canCastWhileDisabled>
+		<hitTime>200</hitTime>
+		<isMagic>1</isMagic>
+		<reuseDelay>1800000</reuseDelay>
 		<conditions>
 			<condition name="NotFeared" />
 		</conditions>
@@ -254,7 +272,13 @@
 		</effects>
 	</skill>
 	<skill id="35017" toLevel="7" name="Talisman of Insolence I">
-		<!-- P. Atk. +14, M. Atk. +22. Effects from two such Talismans do not stack. -->
+		<!-- Level 1: P. Atk. +14, M. Atk. +22. Effects from two such Talismans do not stack. -->
+		<!-- Level 2: P. Atk. +27, M. Atk. +44. Magic Attack Resistance +2%. Effects from two such Talismans do not stack. -->
+		<!-- Level 3: P. Atk. +41, M. Atk. +66. Magic Attack Resistance +4%, Skill Power +1%, all kinds of Weapon Resistance +1%. Effects from two such Talismans do not stack. -->
+		<!-- Level 4: P. Atk. +68, M. Atk. +109. Magic Attack Resistance +6%, Skill Power +2%, all kinds of Weapon Resistance +2%, CON +1, MEN +1. Effects from two such Talismans do not stack. -->
+		<!-- Level 5: P. Atk. +81, M. Atk. +131. Magic Attack Resistance +7%, Skill Power +2%, all kinds of Weapon Resistance +2%, CON +1, MEN +1, STR +1, INT +1. MP Consumption for skill use -2%. Effects from two such Talismans do not stack. -->
+		<!-- Level 6: P. Atk. +95, M. Atk. +153. Magic Attack Resistance +8%, Skill Power +3%, all kinds of Weapon Resistance +3%, CON +1, MEN +1, STR +1, INT +1. P. / M. Critical Rate +10. MP Consumption for skill use -4%. Effects from two such Talismans do not stack. -->
+		<!-- Level 7: P. Atk. +135, M. Atk. +218. Magic Attack Resistance +10%, Skill Power +5%, all kinds of Weapon Resistance +5%, CON +1, MEN +1, STR +1, INT +1, DEX +1, WIT +1. P. / M. Critical Rate +20. MP Consumption for skill use -5%. Effects from two such Talismans do not stack. -->
 		<icon>
 			<value level="1">icon.tallisman_oman_i02</value>
 			<value level="2">icon.tallisman_oman_i02</value>
@@ -265,8 +289,8 @@
 			<value level="7">icon.tallisman_baium</value>
 		</icon>
 		<operateType>P</operateType>
-		<magicLevel>75</magicLevel>
 		<excludedFromCheck>true</excludedFromCheck>
+		<magicLevel>75</magicLevel>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>60</minLevel>
@@ -274,7 +298,7 @@
 			</condition>
 		</passiveConditions>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">14</value>
 					<value level="2">27</value>
@@ -286,7 +310,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">22</value>
 					<value level="2">44</value>
@@ -298,7 +322,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">2</value>
@@ -587,35 +611,35 @@
 	<skill id="35018" toLevel="1" name="Talisman of Insolence VI">
 		<!-- Imbues with Talisman of Insolence power. -->
 		<icon>icon.tallisman_oman_i01</icon>
-		<abnormalType>SEED_TALISMAN1</abnormalType>
-		<abnormalVisualEffect>SEED_TALISMAN5</abnormalVisualEffect>
 		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-2</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<buffProtectLevel>31</buffProtectLevel>
-		<magicLevel>40</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>6</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
-		<irreplacableBuff>true</irreplacableBuff>
-		<blockActionUseSkill>true</blockActionUseSkill>
-		<isMagic>3</isMagic>
-		<targetType>SELF</targetType>
+		<abnormalType>SEED_TALISMAN1</abnormalType>
+		<abnormalVisualEffect>SEED_TALISMAN5</abnormalVisualEffect>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockActionUseSkill>true</blockActionUseSkill>
+		<buffProtectLevel>31</buffProtectLevel>
+		<hitCancelTime>0</hitCancelTime>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>3</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<specialLevel>-2</specialLevel>
 	</skill>
 	<skill id="35019" toLevel="1" name="Talisman of Insolence VI - removal">
 		<!-- The effect of Talisman of Insolence weakens. -->
 		<icon>icon.tallisman_oman_i01</icon>
 		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>40</magicLevel>
-		<trait>HOLD</trait>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<trait>HOLD</trait>
 		<effects>
 			<effect name="DispelBySlot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
@@ -625,35 +649,35 @@
 	<skill id="35020" toLevel="1" name="Talisman of Baium">
 		<!-- Imbues with Talisman of Baium power. -->
 		<icon>icon.tallisman_baium</icon>
-		<abnormalType>SEED_TALISMAN1</abnormalType>
-		<abnormalVisualEffect>SEED_TALISMAN4</abnormalVisualEffect>
 		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-2</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<buffProtectLevel>31</buffProtectLevel>
-		<magicLevel>40</magicLevel>
+		<targetType>SELF</targetType>
 		<abnormalLevel>6</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
-		<irreplacableBuff>true</irreplacableBuff>
-		<blockActionUseSkill>true</blockActionUseSkill>
-		<isMagic>3</isMagic>
-		<targetType>SELF</targetType>
+		<abnormalType>SEED_TALISMAN1</abnormalType>
+		<abnormalVisualEffect>SEED_TALISMAN4</abnormalVisualEffect>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockActionUseSkill>true</blockActionUseSkill>
+		<buffProtectLevel>31</buffProtectLevel>
+		<hitCancelTime>0</hitCancelTime>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>3</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<specialLevel>-2</specialLevel>
 	</skill>
 	<skill id="35021" toLevel="1" name="Talisman of Baium - Removal">
 		<!-- The effect of Talisman of Baium weakens. -->
 		<icon>icon.tallisman_baium</icon>
 		<operateType>A1</operateType>
-		<effectPoint>1</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>40</magicLevel>
-		<trait>HOLD</trait>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
+		<trait>HOLD</trait>
 		<effects>
 			<effect name="DispelBySlot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
@@ -673,7 +697,17 @@
 		<reuseDelay>7200000</reuseDelay>
 	</skill>
 	<skill id="35024" toLevel="11" name="Talisman of Border Lv. 1">
-		<!-- M. Def. + 12, P. Def. + +12. -->
+		<!-- Level 1: M. Def. + 12, P. Def. + +12. -->
+		<!-- Level 2: M. /P. Def. +14, M. /P. Evasion +1. -->
+		<!-- Level 3: XP / SP gain +3%. M. /P. Def. +17, M. /P. Evasion +1, HP / MP / CP +80. Speed +3. -->
+		<!-- Level 4: XP / SP gain +3%. M. /P. Def. +19, M. /P. Evasion +1, HP / MP / CP +80. Speed +3, Casting / Atk. Spd. +7. -->
+		<!-- Level 5: XP / SP gain +4%. M. /P. Def. +22, M. /P. Evasion +1, HP / MP / CP +120. Speed +5, Casting / Atk. Spd. +10. -->
+		<!-- Level 6: XP / SP gain +4%. M. /P. Def. +24, M. /P. Evasion +2, HP / MP / CP +160. Speed +5, Casting / Atk. Spd. +15. -->
+		<!-- Level 7: XP / SP gain +5%. M. /P. Def. +29, M. /P. Evasion +2, HP / MP / CP +160. Speed +7, Casting / Atk. Spd. +15. -->
+		<!-- Level 8: XP / SP gain +5%. M. /P. Def. +34, M. /P. Evasion +2, HP / MP / CP +200. Speed +7, Casting / Atk. Spd. +15. -->
+		<!-- Level 9: XP / SP gain +5%. M. /P. Def. +38, M. /P. Evasion +2, HP / MP / CP +240. Speed +8, Casting / Atk. Spd. +15. 4% of received damage transfers to an enemy. -->
+		<!-- Level 10: XP / SP gain +5%. M. /P. Def. +43, M. /P. Evasion +2, HP / MP / CP +280. Speed +8, Casting / Atk. Spd. +20. 6% of received damage transfers to an enemy. -->
+		<!-- Level 11: XP / SP gain +5%. M. /P. Def. +48, M. /P. Evasion +2, HP / MP / CP +320. Speed +8, Casting / Atk. Spd. +30. 8% of received damage transfers to an enemy. -->
 		<icon>
 			<value level="1">icon.bm_magic_square_talisman</value>
 			<value level="2">icon.bm_magic_square_talisman</value>
@@ -688,8 +722,8 @@
 			<value level="11">icon.bm_blessed_magic_square_talisman</value>
 		</icon>
 		<operateType>P</operateType>
-		<magicLevel>55</magicLevel>
 		<excludedFromCheck>true</excludedFromCheck>
+		<magicLevel>55</magicLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>
@@ -896,7 +930,7 @@
 					<value level="11">8</value>
 				</amount>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="7" toLevel="11">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="7" toLevel="11">
 				<attackerType>Creature</attackerType>
 				<chance>30</chance>
 				<targetType>SELF</targetType>
@@ -929,14 +963,14 @@
 	<skill id="35025" toLevel="1" name="Border Purification">
 		<!-- Cancels paralysis and petrification and cures severe poison/bleed condition. -->
 		<icon>icon.skill10036</icon>
-		<reuseDelay>60000</reuseDelay>
-		<castRange>600</castRange>
-		<hitTime>3000</hitTime>
-		<effectPoint>100</effectPoint>
+		<operateType>A1</operateType>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<castRange>600</castRange>
+		<effectPoint>100</effectPoint>
+		<hitTime>3000</hitTime>
 		<isMagic>1</isMagic>
-		<operateType>A1</operateType>
+		<reuseDelay>60000</reuseDelay>
 		<effects>
 			<effect name="DispelBySlot">
 				<dispel>POISON,9</dispel>
@@ -956,15 +990,20 @@
 		<!-- Restores 50% HP / MP / CP. -->
 		<icon>icon.skill10034</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>3000</hitTime>
 		<coolTime>200</coolTime>
-		<reuseDelay>1200000</reuseDelay>
 		<effectPoint>100</effectPoint>
+		<hitTime>3000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<reuseDelay>1200000</reuseDelay>
 	</skill>
 	<skill id="35027" toLevel="4" name="Border Power - Lv. 1">
-		<!-- During an attack P. / M. Atk. +2%, P. / M. Critical Damage +10% with some probability. -->
+		<!-- Level 1: During an attack P. / M. Atk. +2%, P. / M. Critical Damage +10% with some probability. -->
+		<!-- Level 2: During an attack P. / M. Atk. +5%, P. / M. Critical Damage +30% with some probability. -->
+		<!-- Level 3: With a certain chance P. / M. Atk. +7%, P. / M. Critical Damage +40% when attacked. -->
+		<!-- Level 4: With a certain chance P. / M. Atk. +10%, P. / M. Critical Damage +40% when attacked. -->
 		<icon>icon.skill10030</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -973,18 +1012,16 @@
 		</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>COUNTER_CRITICAL_TRIGGER</abnormalType>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<staticReuse>true</staticReuse>
-		<isMagic>4</isMagic>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<operateType>A2</operateType>
-		<reuseDelay>30000</reuseDelay>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>30000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">5</value>
@@ -993,7 +1030,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">5</value>
@@ -1051,45 +1088,45 @@
 		<!-- Skill: Increases Atk. Spd. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A1</operateType>
-		<hitTime>4000</hitTime>
-		<reuseDelay>300000</reuseDelay>
 		<effectPoint>
 			<value level="1">440</value>
 			<value level="2">481</value>
 			<value level="3">521</value>
 		</effectPoint>
+		<hitTime>4000</hitTime>
 		<mpConsume>48</mpConsume>
+		<reuseDelay>300000</reuseDelay>
 	</skill>
 	<skill id="35034" toLevel="3" name="Item Skill: Fast Spell Casting">
 		<!-- Skill: Increases Casting Spd. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A1</operateType>
-		<hitTime>4000</hitTime>
-		<reuseDelay>300000</reuseDelay>
 		<effectPoint>
 			<value level="1">440</value>
 			<value level="2">481</value>
 			<value level="3">521</value>
 		</effectPoint>
+		<hitTime>4000</hitTime>
 		<mpConsume>48</mpConsume>
+		<reuseDelay>300000</reuseDelay>
 	</skill>
 	<skill id="35035" toLevel="1" name="Item Skill: Cleanse">
 		<!-- Skill: Cancels debuffs. -->
 		<icon>icon.skill3123</icon>
 		<operateType>A1</operateType>
 		<castRange>600</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>300000</reuseDelay>
 		<effectPoint>440</effectPoint>
+		<hitTime>4000</hitTime>
 		<mpConsume>48</mpConsume>
+		<reuseDelay>300000</reuseDelay>
 	</skill>
 	<skill id="35036" toLevel="1" name="Warrior's Talisman - Attack">
 		<!-- Damage dealt in PvE +3%, M. / P. Critical Damage +20, M. / P. Skill Power +2%, M. / P. Accuracy +1. -->
 		<icon>icon.r90_sp_talisman_dr_mp_active</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>-1</magicLevel>
 		<effects>
 			<effect name="PvePhysicalAttackDamageBonus">
@@ -1138,9 +1175,9 @@
 		<!-- P. Def in PvE +3%, Magic Attack Resistance +2%, magic / physical skill Evasion Rate +4%, Debuff Resistance +3%, Pull Resistance +10%. -->
 		<icon>icon.r99_talisman_pd_up_passive</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>-1</magicLevel>
 		<effects>
 			<effect name="PveMagicalSkillDefenceBonus">
@@ -1155,7 +1192,7 @@
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1180,9 +1217,9 @@
 		<!-- PvP Damage +3%, M. / P. Critical Damage +20, Skill Power +2%, M. / P. Accuracy +1. -->
 		<icon>icon.r90_sp_talisman_dr_hp_active</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>-1</magicLevel>
 		<effects>
 			<effect name="PvpPhysicalAttackDamageBonus">
@@ -1223,9 +1260,9 @@
 		<!-- Received PvP damage +3%, Magic Attack Resistance +2%, P. / M. Skill Evasion +4%, Debuff Resistance +3%. -->
 		<icon>icon.r95_talisman_ca_down_active</icon>
 		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>-1</magicLevel>
 		<effects>
 			<effect name="PvpPhysicalAttackDefenceBonus">
@@ -1240,7 +1277,7 @@
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1416,15 +1453,15 @@
 		<!-- Removes all debuffs when used. Cooldown: 60 min. Can be used only at the Olympiad. -->
 		<icon>icon.etc_talisman_i03</icon>
 		<operateType>A1</operateType>
-		<mpConsume>50</mpConsume>
-		<hitTime>1000</hitTime>
-		<effectPoint>100</effectPoint>
-		<magicCriticalRate>5</magicCriticalRate>
-		<staticReuse>true</staticReuse>
-		<isMagic>2</isMagic>
-		<reuseDelay>3600000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>100</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<mpConsume>50</mpConsume>
+		<reuseDelay>3600000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="DispelByCategory">
 				<slot>DEBUFF</slot>

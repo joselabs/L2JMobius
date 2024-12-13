@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius;
 
@@ -38,6 +42,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -191,6 +196,7 @@ public class Config
 	public static boolean DANCE_CANCEL_BUFF;
 	public static boolean DANCE_CONSUME_ADDITIONAL_MP;
 	public static boolean ALT_STORE_DANCES;
+	public static boolean ALT_STORE_TOGGLES;
 	public static boolean AUTO_LEARN_DIVINE_INSPIRATION;
 	public static boolean ALT_GAME_CANCEL_BOW;
 	public static boolean ALT_GAME_CANCEL_CAST;
@@ -416,6 +422,7 @@ public class Config
 	public static int JOIN_ACADEMY_MIN_REP_SCORE;
 	public static int JOIN_ACADEMY_MAX_REP_SCORE;
 	public static boolean PK_PENALTY_LIST;
+	public static int PK_PENALTY_LIST_MINIMUM_COUNT;
 	public static boolean ALLOW_WYVERN_ALWAYS;
 	public static boolean ALLOW_WYVERN_DURING_SIEGE;
 	public static boolean ALLOW_MOUNTS_DURING_SIEGE;
@@ -442,7 +449,6 @@ public class Config
 	public static boolean GM_DEBUG_HTML_PATHS;
 	public static boolean USE_SUPER_HASTE_AS_GM_SPEED;
 	public static boolean LOG_CHAT;
-	public static boolean LOG_AUTO_ANNOUNCEMENTS;
 	public static boolean LOG_ITEMS;
 	public static boolean LOG_ITEMS_SMALL_LOG;
 	public static boolean LOG_ITEMS_IDS_ONLY;
@@ -499,6 +505,7 @@ public class Config
 	public static int MIN_MONSTER_ANIMATION;
 	public static int MAX_MONSTER_ANIMATION;
 	public static boolean CORRECT_PRICES;
+	public static long MULTISELL_AMOUNT_LIMIT;
 	public static boolean ENABLE_FALLING_DAMAGE;
 	public static boolean GRIDS_ALWAYS_ON;
 	public static int GRID_NEIGHBOR_TURNON_TIME;
@@ -1048,6 +1055,7 @@ public class Config
 	public static float MEDIUM_WEIGHT;
 	public static float HIGH_WEIGHT;
 	public static boolean ADVANCED_DIAGONAL_STRATEGY;
+	public static boolean AVOID_ABSTRUCTED_PATH_NODES;
 	public static float DIAGONAL_WEIGHT;
 	public static int MAX_POSTFILTER_PASSES;
 	public static boolean DEBUG_PATH;
@@ -1353,6 +1361,8 @@ public class Config
 	public static int DUALBOX_CHECK_MAX_PLAYERS_PER_IP;
 	public static int DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP;
 	public static int DUALBOX_CHECK_MAX_L2EVENT_PARTICIPANTS_PER_IP;
+	public static int DUALBOX_CHECK_MAX_OFFLINEPLAY_PER_IP;
+	public static int DUALBOX_CHECK_MAX_OFFLINEPLAY_PREMIUM_PER_IP;
 	public static boolean DUALBOX_COUNT_OFFLINE_TRADERS;
 	public static Map<Integer, Integer> DUALBOX_CHECK_WHITELIST;
 	public static boolean ENABLE_ONLINE_COMMAND;
@@ -1511,8 +1521,8 @@ public class Config
 			PACKET_ENCRYPTION = serverConfig.getBoolean("PacketEncryption", false);
 			REQUEST_ID = serverConfig.getInt("RequestServerID", 0);
 			ACCEPT_ALTERNATE_ID = serverConfig.getBoolean("AcceptAlternateID", true);
-			DATABASE_DRIVER = serverConfig.getString("Driver", "org.mariadb.jdbc.Driver");
-			DATABASE_URL = serverConfig.getString("URL", "jdbc:mariadb://localhost/l2jmobius");
+			DATABASE_DRIVER = serverConfig.getString("Driver", "com.mysql.cj.jdbc.Driver");
+			DATABASE_URL = serverConfig.getString("URL", "jdbc:mysql://localhost/l2jmobius");
 			DATABASE_LOGIN = serverConfig.getString("Login", "root");
 			DATABASE_PASSWORD = serverConfig.getString("Password", "");
 			DATABASE_MAX_CONNECTIONS = serverConfig.getInt("MaximumDatabaseConnections", 10);
@@ -1702,6 +1712,7 @@ public class Config
 			JOIN_ACADEMY_MIN_REP_SCORE = featureConfig.getInt("CompleteAcademyMinPoints", 190);
 			JOIN_ACADEMY_MAX_REP_SCORE = featureConfig.getInt("CompleteAcademyMaxPoints", 650);
 			PK_PENALTY_LIST = featureConfig.getBoolean("PkPenaltyList", true);
+			PK_PENALTY_LIST_MINIMUM_COUNT = featureConfig.getInt("PkPenaltyMinimumCount", 9);
 			ALLOW_WYVERN_ALWAYS = featureConfig.getBoolean("AllowRideWyvernAlways", false);
 			ALLOW_WYVERN_DURING_SIEGE = featureConfig.getBoolean("AllowRideWyvernDuringSiege", true);
 			ALLOW_MOUNTS_DURING_SIEGE = featureConfig.getBoolean("AllowRideMountsDuringSiege", false);
@@ -1872,6 +1883,7 @@ public class Config
 			DANCE_CANCEL_BUFF = characterConfig.getBoolean("DanceCancelBuff", false);
 			DANCE_CONSUME_ADDITIONAL_MP = characterConfig.getBoolean("DanceConsumeAdditionalMP", true);
 			ALT_STORE_DANCES = characterConfig.getBoolean("AltStoreDances", false);
+			ALT_STORE_TOGGLES = characterConfig.getBoolean("AltStoreToggles", false);
 			AUTO_LEARN_DIVINE_INSPIRATION = characterConfig.getBoolean("AutoLearnDivineInspiration", false);
 			ALT_GAME_CANCEL_BOW = characterConfig.getString("AltGameCancelByHit", "Cast").equalsIgnoreCase("bow") || characterConfig.getString("AltGameCancelByHit", "Cast").equalsIgnoreCase("all");
 			ALT_GAME_CANCEL_CAST = characterConfig.getString("AltGameCancelByHit", "Cast").equalsIgnoreCase("cast") || characterConfig.getString("AltGameCancelByHit", "Cast").equalsIgnoreCase("all");
@@ -1974,7 +1986,7 @@ public class Config
 			ALT_FREIGHT_SLOTS = characterConfig.getInt("MaximumFreightSlots", 200);
 			ALT_FREIGHT_PRICE = characterConfig.getInt("FreightPrice", 1000);
 			MENTOR_PENALTY_FOR_MENTEE_COMPLETE = characterConfig.getInt("MentorPenaltyForMenteeComplete", 1) * 24 * 60 * 60 * 1000;
-			MENTOR_PENALTY_FOR_MENTEE_COMPLETE = characterConfig.getInt("MentorPenaltyForMenteeLeave", 2) * 24 * 60 * 60 * 1000;
+			MENTOR_PENALTY_FOR_MENTEE_LEAVE = characterConfig.getInt("MentorPenaltyForMenteeLeave", 2) * 24 * 60 * 60 * 1000;
 			final String[] notenchantable = characterConfig.getString("EnchantBlackList", "7816,7817,7818,7819,7820,7821,7822,7823,7824,7825,7826,7827,7828,7829,7830,7831,13293,13294,13296").split(",");
 			ENCHANT_BLACKLIST = new int[notenchantable.length];
 			for (int i = 0; i < notenchantable.length; i++)
@@ -2321,7 +2333,6 @@ public class Config
 			GM_DEBUG_HTML_PATHS = generalConfig.getBoolean("GMDebugHtmlPaths", true);
 			USE_SUPER_HASTE_AS_GM_SPEED = generalConfig.getBoolean("UseSuperHasteAsGMSpeed", false);
 			LOG_CHAT = generalConfig.getBoolean("LogChat", false);
-			LOG_AUTO_ANNOUNCEMENTS = generalConfig.getBoolean("LogAutoAnnouncements", false);
 			LOG_ITEMS = generalConfig.getBoolean("LogItems", false);
 			LOG_ITEMS_SMALL_LOG = generalConfig.getBoolean("LogItemsSmallLog", false);
 			LOG_ITEMS_IDS_ONLY = generalConfig.getBoolean("LogItemsIdsOnly", false);
@@ -2389,6 +2400,7 @@ public class Config
 			GRID_NEIGHBOR_TURNON_TIME = generalConfig.getInt("GridNeighborTurnOnTime", 1);
 			GRID_NEIGHBOR_TURNOFF_TIME = generalConfig.getInt("GridNeighborTurnOffTime", 90);
 			CORRECT_PRICES = generalConfig.getBoolean("CorrectPrices", true);
+			MULTISELL_AMOUNT_LIMIT = generalConfig.getLong("MultisellAmountLimit", 10000);
 			ENABLE_FALLING_DAMAGE = generalConfig.getBoolean("EnableFallingDamage", true);
 			PEACE_ZONE_MODE = generalConfig.getInt("PeaceZoneMode", 0);
 			DEFAULT_GLOBAL_CHAT = generalConfig.getString("GlobalChat", "ON");
@@ -2592,7 +2604,7 @@ public class Config
 			{
 				RATE_INSTANCE_PARTY_XP = RATE_PARTY_XP;
 			}
-			RATE_INSTANCE_PARTY_SP = ratesConfig.getFloat("RateInstancePartyXp", -1);
+			RATE_INSTANCE_PARTY_SP = ratesConfig.getFloat("RateInstancePartySp", -1);
 			if (RATE_INSTANCE_PARTY_SP < 0)
 			{
 				RATE_INSTANCE_PARTY_SP = RATE_PARTY_SP;
@@ -2928,6 +2940,7 @@ public class Config
 			MEDIUM_WEIGHT = geoEngineConfig.getFloat("MediumWeight", 2);
 			HIGH_WEIGHT = geoEngineConfig.getFloat("HighWeight", 3);
 			ADVANCED_DIAGONAL_STRATEGY = geoEngineConfig.getBoolean("AdvancedDiagonalStrategy", true);
+			AVOID_ABSTRUCTED_PATH_NODES = geoEngineConfig.getBoolean("AvoidAbstructedPathNodes", true);
 			DIAGONAL_WEIGHT = geoEngineConfig.getFloat("DiagonalWeight", 0.707f);
 			MAX_POSTFILTER_PASSES = geoEngineConfig.getInt("MaxPostfilterPasses", 3);
 			DEBUG_PATH = geoEngineConfig.getBoolean("DebugPath", false);
@@ -3632,6 +3645,8 @@ public class Config
 			DUALBOX_CHECK_MAX_PLAYERS_PER_IP = dualboxCheckConfig.getInt("DualboxCheckMaxPlayersPerIP", 0);
 			DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP = dualboxCheckConfig.getInt("DualboxCheckMaxOlympiadParticipantsPerIP", 0);
 			DUALBOX_CHECK_MAX_L2EVENT_PARTICIPANTS_PER_IP = dualboxCheckConfig.getInt("DualboxCheckMaxL2EventParticipantsPerIP", 0);
+			DUALBOX_CHECK_MAX_OFFLINEPLAY_PER_IP = dualboxCheckConfig.getInt("DualboxCheckMaxOfflinePlayPerIP", 0);
+			DUALBOX_CHECK_MAX_OFFLINEPLAY_PREMIUM_PER_IP = dualboxCheckConfig.getInt("DualboxCheckMaxOfflinePlayPremiumPerIP", 0);
 			DUALBOX_COUNT_OFFLINE_TRADERS = dualboxCheckConfig.getBoolean("DualboxCountOfflineTraders", false);
 			final String[] dualboxCheckWhiteList = dualboxCheckConfig.getString("DualboxCheckWhitelist", "127.0.0.1,0").split(";");
 			DUALBOX_CHECK_WHITELIST = new HashMap<>(dualboxCheckWhiteList.length);
@@ -4036,8 +4051,8 @@ public class Config
 			LOGIN_BLOCK_AFTER_BAN = loginConfig.getInt("LoginBlockAfterBan", 900);
 			LOGIN_SERVER_SCHEDULE_RESTART = loginConfig.getBoolean("LoginRestartSchedule", false);
 			LOGIN_SERVER_SCHEDULE_RESTART_TIME = loginConfig.getLong("LoginRestartTime", 24);
-			DATABASE_DRIVER = loginConfig.getString("Driver", "org.mariadb.jdbc.Driver");
-			DATABASE_URL = loginConfig.getString("URL", "jdbc:mariadb://localhost/l2jmobius");
+			DATABASE_DRIVER = loginConfig.getString("Driver", "com.mysql.cj.jdbc.Driver");
+			DATABASE_URL = loginConfig.getString("URL", "jdbc:mysql://localhost/l2jmobius");
 			DATABASE_LOGIN = loginConfig.getString("Login", "root");
 			DATABASE_PASSWORD = loginConfig.getString("Password", "");
 			DATABASE_MAX_CONNECTIONS = loginConfig.getInt("MaximumDatabaseConnections", 10);
@@ -4246,10 +4261,15 @@ public class Config
 	 */
 	private static List<ItemHolder> parseItemsList(String line)
 	{
+		if (line.isEmpty())
+		{
+			return Collections.emptyList();
+		}
+		
 		final String[] propertySplit = line.split(";");
 		if (line.equalsIgnoreCase("none") || (propertySplit.length == 0))
 		{
-			return null;
+			return Collections.emptyList();
 		}
 		
 		String[] valueSplit;

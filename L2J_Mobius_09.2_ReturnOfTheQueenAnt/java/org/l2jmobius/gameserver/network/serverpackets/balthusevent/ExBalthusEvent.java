@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.balthusevent;
 
@@ -30,24 +34,39 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
  */
 public class ExBalthusEvent extends ServerPacket
 {
-	private final Player _player;
+	private final int _currentState;
+	private final int _rewardItemId;
+	private final int _currentProgress;
+	private final int _rewardTokenCount;
+	private final int _consolationCount;
+	private final boolean _isParticipant;
+	private final boolean _isRunning;
+	private final int _hour;
 	
 	public ExBalthusEvent(Player player)
 	{
-		_player = player;
+		final BalthusEventManager manager = BalthusEventManager.getInstance();
+		_currentState = manager.getCurrentState();
+		_rewardItemId = manager.getCurrRewardItem();
+		_currentProgress = manager.getCurrentProgress() * 20;
+		_rewardTokenCount = player.getVariables().getInt(PlayerVariables.BALTHUS_REWARD, 0);
+		_consolationCount = (int) Math.min(manager.getConsolation().getCount(), Integer.MAX_VALUE);
+		_isParticipant = manager.isPlayerParticipant(player);
+		_isRunning = !manager.isRunning();
+		_hour = manager.getTime();
 	}
 	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.EX_BALTHUS_EVENT.writeId(this, buffer);
-		buffer.writeInt(BalthusEventManager.getInstance().getCurrentState()); // CurrentState (max 24, because 1 state going 1 hour)
-		buffer.writeInt(BalthusEventManager.getInstance().getCurrentProgress()); // Progress
-		buffer.writeInt(BalthusEventManager.getInstance().getCurrRewardItem()); // CurrentRewardItem (current event item, what can be rewarded)
-		buffer.writeInt(_player.getVariables().getInt(PlayerVariables.BALTHUS_REWARD, 0)); // RewardTokenCount (current items for withdraw (available rewards))
-		buffer.writeInt((int) BalthusEventManager.getInstance().getConsolation().getCount()); // CurrentTokenCount (current count of "consolation prize")
-		buffer.writeInt(BalthusEventManager.getInstance().isPlayerParticipant(_player)); // Participated (player in event?)
-		buffer.writeByte(!BalthusEventManager.getInstance().isRunning()); // Running (0 - already someone get this reward ? / 1 - item can be rewarded)
-		buffer.writeInt(BalthusEventManager.getInstance().getTime()); // Time (in seconds)
+		buffer.writeInt(_currentState);
+		buffer.writeInt(_currentProgress);
+		buffer.writeInt(_rewardItemId);
+		buffer.writeInt(_rewardTokenCount); // Current items for withdraw (available rewards).
+		buffer.writeInt(_consolationCount);
+		buffer.writeInt(_isParticipant);
+		buffer.writeByte(_isRunning);
+		buffer.writeInt(_hour);
 	}
 }

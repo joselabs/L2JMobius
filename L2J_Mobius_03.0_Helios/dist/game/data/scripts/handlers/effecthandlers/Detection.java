@@ -48,8 +48,8 @@ public class Detection extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effector.getActingPlayer();
-		final Player target = effected.getActingPlayer();
+		final Player player = effector.asPlayer();
+		final Player target = effected.asPlayer();
 		final boolean hasParty = player.isInParty();
 		final boolean hasClan = player.getClanId() > 0;
 		final boolean hasAlly = player.getAllyId() > 0;

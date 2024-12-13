@@ -1,13 +1,30 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="100" toLevel="15" name="Stun Attack">
-		<!-- Attacks the enemy with 36 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 1: Attacks the enemy with 36 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 2: Attacks the enemy with 39 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 3: Attacks the enemy with 42 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 4: Attacks the enemy with 49 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 5: Attacks the enemy with 53 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 6: Attacks the enemy with 57 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 7: Attacks the enemy with 66 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 8: Attacks the enemy with 71 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 9: Attacks the enemy with 77 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 10: Attacks the enemy with 88 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 11: Attacks the enemy with 94 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 12: Attacks the enemy with 101 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 13: Attacks the enemy with 115 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 14: Attacks the enemy with 123 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 15: Attacks the enemy with 131 power, inflicting stun for 9 sec. Requires a blunt weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
 		<icon>icon.skill0100</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>50</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
@@ -32,6 +49,7 @@
 		<hitTime>1080</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">18</value>
 			<value level="2">19</value>
@@ -67,12 +85,8 @@
 			<value level="15">33</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -81,7 +95,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">36</value>
 					<value level="2">39</value>
@@ -107,13 +121,85 @@
 		</effects>
 	</skill>
 	<skill id="101" toLevel="40" name="Stun Shot">
-		<!-- Fires arrows with 344 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 1: Fires arrows with 344 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 2: Fires arrows with 367 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 3: Fires arrows with 391 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 4: Fires arrows with 443 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 5: Fires arrows with 471 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 6: Fires arrows with 500 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 7: Fires arrows with 530 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 8: Fires arrows with 562 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 9: Fires arrows with 595 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 10: Fires arrows with 630 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 11: Fires arrows with 666 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 12: Fires arrows with 703 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 13: Fires arrows with 742 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 14: Fires arrows with 782 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 15: Fires arrows with 823 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 16: Fires arrows with 866 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 17: Fires arrows with 910 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 18: Fires arrows with 955 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 19: Fires arrows with 1002 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 20: Fires arrows with 1050 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 21: Fires arrows with 1100 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 22: Fires arrows with 1150 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 23: Fires arrows with 1202 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 24: Fires arrows with 1255 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 25: Fires arrows with 1309 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 26: Fires arrows with 1364 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 27: Fires arrows with 1420 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 28: Fires arrows with 1476 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 29: Fires arrows with 1534 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 30: Fires arrows with 1592 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 31: Fires arrows with 1651 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 32: Fires arrows with 1710 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 33: Fires arrows with 1770 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 34: Fires arrows with 1830 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 35: Fires arrows with 1891 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 36: Fires arrows with 1951 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 37: Fires arrows with 2012 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 38: Fires arrows with 2072 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 39: Fires arrows with 2132 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1001: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1002: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1003: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1004: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1005: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1006: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1007: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1008: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1009: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1010: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1011: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1012: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1013: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1014: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1015: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1016: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1017: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1018: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1019: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1020: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1021: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1022: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1023: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1024: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1025: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1026: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1027: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1028: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1029: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 40 - SubLevel 1030: Fires arrows with 2192 power. Inflicts stun on the enemy for 9 sec. Requires a bow. Cancels enemy's target. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
 		<icon>icon.skill0101</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>50</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
 		<coolTime>1000</coolTime>
@@ -163,6 +249,7 @@
 		<hitTime>3000</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">34</value>
 			<value level="2">35</value>
@@ -247,12 +334,8 @@
 			<value level="39">108</value>
 			<value level="40">109</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -261,7 +344,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">344</value>
 					<value level="2">367</value>
@@ -315,8 +398,25 @@
 		</effects>
 	</skill>
 	<skill id="102" toLevel="16" name="Entangle">
-		<!-- Enemy's Speed -20% for 1 min. -->
+		<!-- Level 1: Enemy's Speed -20% for 1 min. -->
+		<!-- Level 2: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 3: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 4: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 5: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 6: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 7: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 8: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 9: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 10: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 11: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 12: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 13: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 14: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 15: Enemy's Speed -30% for 1 min. -->
+		<!-- Level 16: Enemy's Speed -30% for 1 min. -->
 		<icon>icon.skill0102</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">2</value>
 			<value level="2">3</value>
@@ -338,6 +438,7 @@
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -363,6 +464,7 @@
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">36</value>
 			<value level="2">40</value>
@@ -417,11 +519,7 @@
 			<value level="15">7</value>
 			<value level="16">7</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -447,8 +545,13 @@
 		</effects>
 	</skill>
 	<skill id="103" toLevel="4" name="Corpse Plague">
-		<!-- Causes a poison cloud to pour out from a corpse. Inflicts poison on enemies near the corpse for 30 sec., causing them to lose 41 HP per sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 1: Causes a poison cloud to pour out from a corpse. Inflicts poison on enemies near the corpse for 30 sec., causing them to lose 41 HP per sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 2: Causes a poison cloud to pour out from a corpse. Inflicts poison on enemies near the corpse for 30 sec., causing them to lose 50 HP per sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 3: Causes a poison cloud to pour out from a corpse. Inflicts poison on enemies near the corpse for 30 sec., causing them to lose 58 HP per sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 4: Causes a poison cloud to pour out from a corpse. Inflicts poison on enemies near the corpse for 30 sec., causing them to lose 63 HP per sec. Inflicted status: Infection (Bleed, Poison). -->
 		<icon>icon.skill0103</icon>
+		<operateType>A2</operateType>
+		<targetType>NPC_BODY</targetType>
 		<abnormalLevel>
 			<value level="1">5</value>
 			<value level="2">6</value>
@@ -456,12 +559,13 @@
 			<value level="4">8</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>35</activateRate>
 		<affectLimit>10-10</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>400</castRange>
 		<effectPoint>
@@ -475,6 +579,7 @@
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">58</value>
@@ -487,13 +592,9 @@
 			<value level="3">29</value>
 			<value level="4">33</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>5000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>POISON</trait>
-		<targetType>NPC_BODY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<conditions>
 			<condition name="ConsumeBody" />
 		</conditions>
@@ -513,19 +614,19 @@
 	<skill id="104" toLevel="1" name="Detect Plant Weakness">
 		<!-- For 10 min., increases damage against plants +5%. -->
 		<icon>icon.skill0104</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>DETECT_WEAKNESS</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>438</effectPoint>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>46</magicLevel>
 		<mpConsume>21</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="AttackTrait">
 				<PLANT_WEAKNESS>30</PLANT_WEAKNESS>
@@ -533,12 +634,40 @@
 		</effects>
 	</skill>
 	<skill id="105" toLevel="24" name="Freezing Strike">
-		<!-- Momentarily freezes the surrounding air, inflicting water damage on the enemy with 26 power. Their Speed -20% for 1 min. -->
+		<!-- Level 1: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 26 power. Their Speed -20% for 1 min. -->
+		<!-- Level 2: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 28 power. Their Speed -20% for 1 min. -->
+		<!-- Level 3: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 30 power. Their Speed -20% for 1 min. -->
+		<!-- Level 4: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 31 power. Their Speed -20% for 1 min. -->
+		<!-- Level 5: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 33 power. Their Speed -20% for 1 min. -->
+		<!-- Level 6: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 34 power. Their Speed -20% for 1 min. -->
+		<!-- Level 7: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 36 power. Their Speed -20% for 1 min. -->
+		<!-- Level 8: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 37 power. Their Speed -20% for 1 min. -->
+		<!-- Level 9: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 39 power. Their Speed -20% for 1 min. -->
+		<!-- Level 10: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 40 power. Their Speed -20% for 1 min. -->
+		<!-- Level 11: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 42 power. Their Speed -20% for 1 min. -->
+		<!-- Level 12: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 43 power. Their Speed -20% for 1 min. -->
+		<!-- Level 13: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 45 power. Their Speed -20% for 1 min. -->
+		<!-- Level 14: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 46 power. Their Speed -20% for 1 min. -->
+		<!-- Level 15: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 48 power. Their Speed -20% for 1 min. -->
+		<!-- Level 16: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 49 power. Their Speed -20% for 1 min. -->
+		<!-- Level 17: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 51 power. Their Speed -20% for 1 min. -->
+		<!-- Level 18: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 53 power. Their Speed -20% for 1 min. -->
+		<!-- Level 19: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 56 power. Their Speed -20% for 1 min. -->
+		<!-- Level 20: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 58 power. Their Speed -20% for 1 min. -->
+		<!-- Level 21: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 59 power. Their Speed -20% for 1 min. -->
+		<!-- Level 22: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 61 power. Their Speed -20% for 1 min. -->
+		<!-- Level 23: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 63 power. Their Speed -20% for 1 min. -->
+		<!-- Level 24: Momentarily freezes the surrounding air, inflicting water damage on the enemy with 65 power. Their Speed -20% for 1 min. -->
 		<icon>icon.skill0105</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>60</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -568,12 +697,11 @@
 			<value level="24">-655</value>
 		</effectPoint>
 		<effectRange>1100</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>3000</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">34</value>
 			<value level="2">36</value>
@@ -652,13 +780,9 @@
 			<value level="23">14</value>
 			<value level="24">14</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">26</value>
 					<value level="2">28</value>
@@ -695,15 +819,19 @@
 	<skill id="106" toLevel="14" name="Veil">
 		<!-- Blurs enemy's vision, preventing them from making you a target for 2 min. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
 		<icon>icon.skill0106</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>TURN_PASSIVE</abnormalType>
 		<activateRate>70</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>500</castRange>
 		<effectRange>900</effectRange>
 		<hitTime>1200</hitTime>
 		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">43</value>
 			<value level="2">46</value>
@@ -736,12 +864,8 @@
 			<value level="13">34</value>
 			<value level="14">34</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>5000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>DERANGEMENT</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Passive" />
 		</effects>
@@ -749,13 +873,17 @@
 	<skill id="107" toLevel="9" name="Holy Aura">
 		<!-- Holds nearby undead monsters for 10 sec. Inflicted status: Obstruction (Disarm, Hold, Blind, Block, Aggression, Silence, Banishment, Bluff, Stealth). -->
 		<icon>icon.skill0107</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>ROOT_MAGICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>40</activateRate>
 		<affectLimit>10-10</affectLimit>
+		<affectObject>UNDEAD_REAL_ENEMY</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<effectPoint>
 			<value level="1">-549</value>
@@ -771,6 +899,7 @@
 		<hitTime>2000</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">58</value>
 			<value level="2">60</value>
@@ -793,13 +922,8 @@
 			<value level="8">50</value>
 			<value level="9">51</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>5000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>HOLD</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>UNDEAD_REAL_ENEMY</affectObject>
 		<effects>
 			<effect name="Root" />
 			<effect name="DefenceTrait">
@@ -810,19 +934,19 @@
 	<skill id="109" toLevel="1" name="Ogre Spirit Totem">
 		<!-- Becomes possessed by an Ogre's soul. Increases one's own P. Atk./ P. Def./ M. Def. by 30% and Critical Damage by 10% for 5 min. Requires a fist weapon. -->
 		<icon>icon.skill0109</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>POSSESSION</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>438</effectPoint>
 		<hitTime>2000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>46</magicLevel>
 		<mpConsume>41</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>30000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -831,7 +955,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -856,8 +980,11 @@
 		</effects>
 	</skill>
 	<skill id="110" toLevel="2" name="Ultimate Defense">
-		<!-- For 30 sec., P. Def. +1800, M. Def. +1620, and Buff-canceling Attack Resistance +80%, and restricts movement. -->
+		<!-- Level 1: For 30 sec., P. Def. +1800, M. Def. +1620, and Buff-canceling Attack Resistance +80%, and restricts movement. -->
+		<!-- Level 2: For 30 sec., P. Def. +3600, M. Def. +3240, and Buff-canceling Attack Resistance +80%, and restricts movement. -->
 		<icon>icon.skill0110</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -865,11 +992,14 @@
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PD_UP_SPECIAL</abnormalType>
 		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">204</value>
 			<value level="2">438</value>
 		</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">46</value>
@@ -878,12 +1008,7 @@
 			<value level="1">10</value>
 			<value level="2">21</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>900000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockMove" />
 			<effect name="MagicalDefence">
@@ -907,19 +1032,25 @@
 		</effects>
 	</skill>
 	<skill id="111" toLevel="2" name="Ultimate Evasion">
-		<!-- For 30 sec., increases Evasion by 20, physical attack skill Evasion Rate by 25%, and Buff-canceling Attack Resistance by 80. -->
+		<!-- Level 1: For 30 sec., increases Evasion by 20, physical attack skill Evasion Rate by 25%, and Buff-canceling Attack Resistance by 80. -->
+		<!-- Level 2: For 30 sec., increases Evasion by 25, physical attack skill Evasion Rate by 40%, and Buff-canceling Attack Resistance by 80. -->
 		<icon>icon.skill0111</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>AVOID_UP_SPECIAL</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">268</value>
 			<value level="2">523</value>
 		</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">28</value>
 			<value level="2">55</value>
@@ -928,12 +1059,7 @@
 			<value level="1">13</value>
 			<value level="2">25</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>900000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="SkillEvasion">
 				<magicType>0</magicType>
@@ -956,8 +1082,13 @@
 		</effects>
 	</skill>
 	<skill id="112" toLevel="4" name="Deflect Arrow">
-		<!-- Increases Bow Resistance by 16% and Crossbow Resistance by 8% for 20 min. -->
+		<!-- Level 1: Increases Bow Resistance by 16% and Crossbow Resistance by 8% for 20 min. -->
+		<!-- Level 2: Increases Bow Resistance by 24% and Crossbow Resistance by 12% for 20 min. -->
+		<!-- Level 3: Increases Bow Resistance by 32% and Crossbow Resistance by 16% for 20 min. -->
+		<!-- Level 4: Increases Bow Resistance by 40% and Crossbow Resistance by 20% for 20 min. -->
 		<icon>icon.skill0112</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -966,6 +1097,8 @@
 		</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>PD_UP_BOW</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">10</value>
 			<value level="2">20</value>
@@ -973,6 +1106,7 @@
 			<value level="4">40</value>
 		</effectPoint>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">24</value>
 			<value level="2">32</value>
@@ -985,12 +1119,7 @@
 			<value level="3">19</value>
 			<value level="4">22</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DefenceTrait">
 				<BOW>
@@ -1015,14 +1144,15 @@
 		</effects>
 	</skill>
 	<skill id="113" toLevel="2" name="Long Shot">
-		<!-- Bow's range +200. -->
+		<!-- Level 1: Bow's range +200. -->
+		<!-- Level 2: Bow's range +400. -->
 		<icon>icon.skill0113</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">40</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalAttackRange">
 				<amount>
@@ -1037,8 +1167,26 @@
 		</effects>
 	</skill>
 	<skill id="115" toLevel="17" name="Power Break">
-		<!-- Enemy's P. Atk. -20% for 30 sec. -->
+		<!-- Level 1: Enemy's P. Atk. -20% for 30 sec. -->
+		<!-- Level 2: Enemy's P. Atk. -20% for 30 sec. -->
+		<!-- Level 3: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 4: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 5: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 6: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 7: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 8: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 9: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 10: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 11: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 12: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 13: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 14: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 15: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 16: Enemy's P. Atk. -23% for 30 sec. -->
+		<!-- Level 17: Enemy's P. Atk. -23% for 30 sec. -->
 		<icon>icon.skill0115</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">2</value>
 			<value level="2">2</value>
@@ -1061,6 +1209,7 @@
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PA_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -1087,6 +1236,7 @@
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">32</value>
 			<value level="2">36</value>
@@ -1144,13 +1294,9 @@
 			<value level="16">7</value>
 			<value level="17">7</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">-20</value>
 					<value level="2">-20</value>
@@ -1177,12 +1323,16 @@
 	<skill id="116" toLevel="14" name="Howl">
 		<!-- Nearby enemies' P. Atk. -23% for 30 sec. -->
 		<icon>icon.skill0116</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PA_DOWN</abnormalType>
 		<activateRate>40</activateRate>
 		<affectLimit>10-10</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<effectPoint>
 			<value level="1">-204</value>
@@ -1203,6 +1353,7 @@
 		<hitTime>1200</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">43</value>
 			<value level="2">46</value>
@@ -1235,14 +1386,9 @@
 			<value level="13">51</value>
 			<value level="14">53</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1251,9 +1397,9 @@
 	<skill id="118" toLevel="1" name="Magician's Movement">
 		<!-- Increases Atk. Spd. when equipped with a robe jacket and robe pants. -->
 		<icon>icon.skill0118</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-20</amount>
@@ -1267,13 +1413,30 @@
 		</effects>
 	</skill>
 	<skill id="120" toLevel="15" name="Stunning Fist">
-		<!-- Attacks the enemy with 42 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 1: Attacks the enemy with 42 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 2: Attacks the enemy with 46 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 3: Attacks the enemy with 49 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 4: Attacks the enemy with 57 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 5: Attacks the enemy with 62 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 6: Attacks the enemy with 67 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 7: Attacks the enemy with 77 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 8: Attacks the enemy with 83 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 9: Attacks the enemy with 89 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 10: Attacks the enemy with 103 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 11: Attacks the enemy with 110 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 12: Attacks the enemy with 117 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 13: Attacks the enemy with 134 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 14: Attacks the enemy with 143 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
+		<!-- Level 15: Attacks the enemy with 152 power. Inflicts stun for 9 sec. Requires a fist weapon. Over-hit. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown, Pull). -->
 		<icon>icon.skill0120</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>50</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>296</coolTime>
@@ -1298,6 +1461,7 @@
 		<hitTime>1604</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">18</value>
 			<value level="2">19</value>
@@ -1333,12 +1497,8 @@
 			<value level="15">33</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1347,7 +1507,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">42</value>
 					<value level="2">46</value>
@@ -1373,8 +1533,15 @@
 		</effects>
 	</skill>
 	<skill id="121" toLevel="6" name="Battle Roar">
-		<!-- Instantly recovers 10% of Max HP and increases Max HP by 10% for 10 min. -->
+		<!-- Level 1: Instantly recovers 10% of Max HP and increases Max HP by 10% for 10 min. -->
+		<!-- Level 2: Instantly recovers 15% of Max HP and increases Max HP by 15% for 10 min. -->
+		<!-- Level 3: Instantly recovers 20% of Max HP and increases Max HP by 20% for 10 min. -->
+		<!-- Level 4: Instantly recovers 25% of Max HP and increases Max HP by 25% for 10 min. -->
+		<!-- Level 5: Instantly recovers 30% of Max HP and increases Max HP by 30% for 10 min. -->
+		<!-- Level 6: Instantly recovers 35% of Max HP and increases Max HP by 35% for 10 min. -->
 		<icon>icon.skill0121</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1385,6 +1552,8 @@
 		</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>MAX_HP_UP</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">268</value>
 			<value level="2">379</value>
@@ -1394,6 +1563,7 @@
 			<value level="6">635</value>
 		</effectPoint>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">28</value>
 			<value level="2">40</value>
@@ -1410,12 +1580,7 @@
 			<value level="5">30</value>
 			<value level="6">33</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>150000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MaxHp">
 				<amount>
@@ -1434,10 +1599,13 @@
 	<skill id="122" toLevel="15" name="Hex">
 		<!-- Enemy's P. Def. -23% for 30 sec. -->
 		<icon>icon.skill0122</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PD_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -1462,6 +1630,7 @@
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">43</value>
@@ -1496,11 +1665,7 @@
 			<value level="14">34</value>
 			<value level="15">35</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>-23</amount>
@@ -1509,8 +1674,12 @@
 		</effects>
 	</skill>
 	<skill id="123" toLevel="3" name="Spirit Barrier">
-		<!-- Increases M. Def. by 15% for 20 min. -->
+		<!-- Level 1: Increases M. Def. by 15% for 20 min. -->
+		<!-- Level 2: Increases M. Def. by 23% for 20 min. -->
+		<!-- Level 3: Increases M. Def. by 30% for 20 min. -->
 		<icon>icon.skill0123</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1518,6 +1687,8 @@
 		</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>MD_UP</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">379</value>
 			<value level="2">467</value>
@@ -1525,6 +1696,7 @@
 		</effectPoint>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">49</value>
@@ -1540,12 +1712,7 @@
 			<value level="2">5</value>
 			<value level="3">6</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -1560,10 +1727,13 @@
 	<skill id="127" toLevel="14" name="Hamstring">
 		<!-- Enemy's Speed -30% for 1 min. -->
 		<icon>icon.skill0127</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -1586,6 +1756,7 @@
 		<hitTime>1500</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">43</value>
 			<value level="2">46</value>
@@ -1634,11 +1805,7 @@
 			<value level="13">7</value>
 			<value level="14">7</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-30</amount>
@@ -1647,8 +1814,14 @@
 		</effects>
 	</skill>
 	<skill id="129" toLevel="5" name="Poison">
-		<!-- Poisons the target, causing them to lose 24 HP per sec. for 30 sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 1: Poisons the target, causing them to lose 24 HP per sec. for 30 sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 2: Poisons the target, causing them to lose 41 HP per sec. for 30 sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 3: Poisons the target, causing them to lose 50 HP per sec. for 30 sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 4: Poisons the target, causing them to lose 58 HP per sec. for 30 sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 5: Poisons the target, causing them to lose 63 HP per sec. for 30 sec. Inflicted status: Infection (Bleed, Poison). -->
 		<icon>icon.skill0129</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">3</value>
 			<value level="2">5</value>
@@ -1657,10 +1830,10 @@
 			<value level="5">8</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>70</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -1675,6 +1848,7 @@
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">49</value>
@@ -1696,12 +1870,9 @@
 			<value level="4">7</value>
 			<value level="5">7</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>POISON</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -1716,19 +1887,25 @@
 		</effects>
 	</skill>
 	<skill id="130" toLevel="2" name="Thrill Fight">
-		<!-- Decreases Speed by 20% and increases Atk. Spd. by 5% for 5 min. -->
+		<!-- Level 1: Decreases Speed by 20% and increases Atk. Spd. by 5% for 5 min. -->
+		<!-- Level 2: Decreases Speed by 20% and increases Atk. Spd. by 10% for 5 min. -->
 		<icon>icon.skill0130</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
 		</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>THRILL_FIGHT</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">438</value>
 			<value level="2">523</value>
 		</effectPoint>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">55</value>
@@ -1737,13 +1914,8 @@
 			<value level="1">21</value>
 			<value level="2">25</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-20</amount>
@@ -1759,8 +1931,12 @@
 		</effects>
 	</skill>
 	<skill id="131" toLevel="3" name="Hawk Eye">
-		<!-- Decreases P. Def. by 10% and increases Accuracy by 6 for 5 min. -->
+		<!-- Level 1: Decreases P. Def. by 10% and increases Accuracy by 6 for 5 min. -->
+		<!-- Level 2: Decreases P. Def. by 10% and increases Accuracy by 8 for 5 min. -->
+		<!-- Level 3: Decreases P. Def. by 10% and increases Accuracy by 10 for 5 min. -->
 		<icon>icon.skill0131</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1768,12 +1944,15 @@
 		</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>AB_HAWK_EYE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">379</value>
 			<value level="2">467</value>
 			<value level="3">549</value>
 		</effectPoint>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">49</value>
@@ -1784,13 +1963,8 @@
 			<value level="2">22</value>
 			<value level="3">27</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>-10</amount>
@@ -1809,9 +1983,9 @@
 	<skill id="134" toLevel="1" name="Toughness">
 		<!-- Stupor/ Obstruction/ Infection Resistance +20. -->
 		<icon>icon.skill0134</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefenceTrait">
 				<HOLD>20</HOLD>
@@ -1821,16 +1995,19 @@
 		</effects>
 	</skill>
 	<skill id="137" toLevel="4" name="Critical Chance">
-		<!-- Increases Critical Rate by 20%. -->
+		<!-- Level 1: Increases Critical Rate by 20%. -->
+		<!-- Level 2: Increases Critical Rate by 30%. -->
+		<!-- Level 3: Increases Critical Rate by 40%. -->
+		<!-- Level 4: Increases Critical Rate by 50%. -->
 		<icon>icon.skill0137</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">28</value>
 			<value level="2">40</value>
 			<value level="3">49</value>
 			<value level="4">58</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="CriticalRate">
 				<amount>
@@ -1844,8 +2021,139 @@
 		</effects>
 	</skill>
 	<skill id="139" toLevel="10" name="Guts">
-		<!-- For 60 sec., P. Def. +100% and Debuff Resistance +50%. Available when HP is 60% or lower. -->
+		<!-- Level 1: For 60 sec., P. Def. +100% and Debuff Resistance +50%. Available when HP is 60% or lower. -->
+		<!-- Level 2: For 60 sec., P. Def. +110% and Debuff Resistance +55%. Available when HP is 60% or lower. -->
+		<!-- Level 3: For 60 sec., P. Def. +120% and Debuff Resistance +60%. Available when HP is 60% or lower. -->
+		<!-- Level 4: For 60 sec., P. Def. +130% and Debuff Resistance +65%. Available when HP is 60% or lower. -->
+		<!-- Level 5: For 60 sec., P. Def. +140% and Debuff Resistance +70%. Available when HP is 60% or lower. -->
+		<!-- Level 6: For 60 sec., P. Def. +150% and Debuff Resistance +75%. Available when HP is 90% or lower. -->
+		<!-- Level 7: For 60 sec., P. Def. +160% and Debuff Resistance +80%. Available when HP is 90% or lower. -->
+		<!-- Level 8: For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 9: For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10: For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1001 (+1 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1002 (+2 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1003 (+3 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1004 (+4 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1005 (+5 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1006 (+6 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1007 (+7 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1008 (+8 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1009 (+9 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1010 (+10 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1011 (+10.5 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1012 (+11 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1013 (+11.5 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1014 (+12 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1015 (+12.5 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1016 (+13 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1017 (+13.5 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1018 (+14 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1019 (+14.5 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 1020 (+15 sec. Time): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2001 (+1936 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2002 (+2072 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2003 (+2207 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2004 (+2342 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2005 (+2477 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2006 (+2612 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2007 (+2747 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2008 (+2882 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2009 (+3017 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2010 (+3152 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2011 (+3288 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2012 (+3423 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2013 (+3558 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2014 (+3693 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2015 (+3828 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2016 (+3964 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2017 (+4099 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2018 (+4234 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2019 (+4369 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 8 - SubLevel 2020 (+4504 Major): For 60 sec., P. Def. +180% and Debuff Resistance +85%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1001 (+1 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1002 (+2 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1003 (+3 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1004 (+4 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1005 (+5 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1006 (+6 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1007 (+7 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1008 (+8 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1009 (+9 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1010 (+10 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1011 (+10.5 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1012 (+11 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1013 (+11.5 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1014 (+12 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1015 (+12.5 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1016 (+13 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1017 (+13.5 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1018 (+14 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1019 (+14.5 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 1020 (+15 sec. Time): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2001 (+1936 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2002 (+2072 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2003 (+2207 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2004 (+2342 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2005 (+2477 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2006 (+2612 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2007 (+2747 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2008 (+2882 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2009 (+3017 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2010 (+3152 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2011 (+3288 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2012 (+3423 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2013 (+3558 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2014 (+3693 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2015 (+3828 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2016 (+3964 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2017 (+4099 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2018 (+4234 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2019 (+4369 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 9 - SubLevel 2020 (+4504 Major): For 60 sec., P. Def. +200% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1001 (+1 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1002 (+2 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1003 (+3 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1004 (+4 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1005 (+5 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1006 (+6 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1007 (+7 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1008 (+8 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1009 (+9 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1010 (+10 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1011 (+10.5 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1012 (+11 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1013 (+11.5 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1014 (+12 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1015 (+12.5 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1016 (+13 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1017 (+13.5 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1018 (+14 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1019 (+14.5 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 1020 (+15 sec. Time): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2001 (Major +1936): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2002 (Major +2072): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2003 (Major +2207): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2004 (Major +2342): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2005 (Major +2477): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2006 (Major +2612): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2007 (Major +2747): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2008 (Major +2882): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2009 (Major +3017): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2010 (Major +3152): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2011 (Major +3288): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2012 (Major +3423): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2013 (Major +3558): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2014 (Major +3693): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2015 (Major +3828): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2016 (Major +3964): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2017 (Major +4099): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2018 (Major +4234): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2019 (Major +4369): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
+		<!-- Level 10 - SubLevel 2020 (Major +4504): For 60 sec., P. Def. +230% and Debuff Resistance +90%. Available when HP is 90% or lower. -->
 		<icon>icon.skill0139</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1864,6 +2172,8 @@
 			<value fromLevel="8" toLevel="10" fromSubLevel="1011" toSubLevel="1020">{base + 10 + (subIndex - 10 * 0.5)}</value>
 		</abnormalTime>
 		<abnormalType>PINCH</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">341</value>
 			<value level="2">408</value>
@@ -1877,18 +2187,8 @@
 			<value level="10">570</value>
 		</effectPoint>
 		<hitTime>1500</hitTime>
-		<magicLevel>
-			<value level="1">36</value>
-			<value level="2">43</value>
-			<value level="3">52</value>
-			<value level="4">64</value>
-			<value level="5">74</value>
-			<value level="6">85</value>
-			<value level="7">90</value>
-			<value level="8">95</value>
-			<value level="9">99</value>
-			<value level="10">110</value>
-		</magicLevel>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<mpConsume>
 			<value level="1">16</value>
 			<value level="2">19</value>
@@ -1901,12 +2201,7 @@
 			<value level="9">45</value>
 			<value level="10">50</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>300000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="RemainHpPer">
 				<amount>
@@ -1975,21 +2270,23 @@
 		</effects>
 	</skill>
 	<skill id="141" toLevel="3" name="Weapon Mastery">
-		<!-- Increases P. Atk. by 8.5% and additionally by 2. -->
+		<!-- Level 1: Increases P. Atk. by 8.5% and additionally by 2. -->
+		<!-- Level 2: Increases P. Atk. by 8.5% and additionally by 3. -->
+		<!-- Level 3: Increases P. Atk. by 8.5% and additionally by 4. -->
 		<icon>icon.skill0141</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">5</value>
 			<value level="2">10</value>
 			<value level="3">15</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>8.5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">3</value>
@@ -2000,8 +2297,14 @@
 		</effects>
 	</skill>
 	<skill id="142" toLevel="5" name="Armor Mastery">
-		<!-- P. Def. +9, MP Recovery Rate +10%. -->
+		<!-- Level 1: P. Def. +9, MP Recovery Rate +10%. -->
+		<!-- Level 2: P. Def. +11, MP Recovery Rate +10%. -->
+		<!-- Level 3: P. Def. +12, MP Recovery Rate +10%. -->
+		<!-- Level 4: Increases P. Def. by 13 and MP Recovery Bonus by 10%. Additionally increases Evasion by 3 when equipped with light armor. -->
+		<!-- Level 5: Increases P. Def. by 14 and MP Recovery Bonus by 10%. Additionally increases Evasion by 3 when equipped with light armor. -->
 		<icon>icon.skill0142</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">5</value>
 			<value level="2">8</value>
@@ -2009,8 +2312,6 @@
 			<value level="4">13</value>
 			<value level="5">15</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>
@@ -2042,14 +2343,15 @@
 		</effects>
 	</skill>
 	<skill id="143" toLevel="2" name="Cubic Mastery">
-		<!-- Ability to summon 2 Cubics at once. -->
+		<!-- Level 1: Ability to summon 2 Cubics at once. -->
+		<!-- Level 2: Ability to summon 3 Cubics at once. -->
 		<icon>icon.skill0143</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">43</value>
 			<value level="2">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="CubicMastery">
 				<amount>
@@ -2060,8 +2362,46 @@
 		</effects>
 	</skill>
 	<skill id="144" toLevel="37" name="Dual Weapon Mastery">
-		<!-- Increases P. Atk. by 23.7 when using a dual sword. -->
+		<!-- Level 1: Increases P. Atk. by 23.7 when using a dual sword. -->
+		<!-- Level 2: Increases P. Atk. by 25.4 when using a dual sword. -->
+		<!-- Level 3: Increases P. Atk. by 27.1 when using a dual sword. -->
+		<!-- Level 4: Increases P. Atk. by 29 when using a dual sword. -->
+		<!-- Level 5: Increases P. Atk. by 30.9 when using a dual sword. -->
+		<!-- Level 6: Increases P. Atk. by 32.9 when using a dual sword. -->
+		<!-- Level 7: Increases P. Atk. by 35 when using a dual sword. -->
+		<!-- Level 8: Increases P. Atk. by 37.1 when using a dual sword. -->
+		<!-- Level 9: Increases P. Atk. by 39.4 when using a dual sword. -->
+		<!-- Level 10: Increases P. Atk. by 41.7 when using a dual sword. -->
+		<!-- Level 11: Increases P. Atk. by 44.1 when using a dual sword. -->
+		<!-- Level 12: Increases P. Atk. by 46.6 when using a dual sword. -->
+		<!-- Level 13: Increases P. Atk. by 49.2 when using a dual sword. -->
+		<!-- Level 14: Increases P. Atk. by 51.9 when using a dual sword. -->
+		<!-- Level 15: Increases P. Atk. by 54.6 when using a dual sword. -->
+		<!-- Level 16: Increases P. Atk. by 57.5 when using a dual sword. -->
+		<!-- Level 17: Increases P. Atk. by 60.4 when using a dual sword. -->
+		<!-- Level 18: Increases P. Atk. by 63.3 when using a dual sword. -->
+		<!-- Level 19: Increases P. Atk. by 66.4 when using a dual sword. -->
+		<!-- Level 20: Increases P. Atk. by 69.5 when using a dual sword. -->
+		<!-- Level 21: Increases P. Atk. by 72.7 when using a dual sword. -->
+		<!-- Level 22: Increases P. Atk. by 76 when using a dual sword. -->
+		<!-- Level 23: Increases P. Atk. by 79.3 when using a dual sword. -->
+		<!-- Level 24: Increases P. Atk. by 82.7 when using a dual sword. -->
+		<!-- Level 25: Increases P. Atk. by 86.1 when using a dual sword. -->
+		<!-- Level 26: Increases P. Atk. by 89.6 when using a dual sword. -->
+		<!-- Level 27: Increases P. Atk. by 93.1 when using a dual sword. -->
+		<!-- Level 28: Increases P. Atk. by 96.6 when using a dual sword. -->
+		<!-- Level 29: Increases P. Atk. by 100.2 when using a dual sword. -->
+		<!-- Level 30: Increases P. Atk. by 103.8 when using a dual sword. -->
+		<!-- Level 31: Increases P. Atk. by 107.5 when using a dual sword. -->
+		<!-- Level 32: Increases P. Atk. by 111.1 when using a dual sword. -->
+		<!-- Level 33: Increases P. Atk. by 114.8 when using a dual sword. -->
+		<!-- Level 34: Increases P. Atk. by 118.4 when using a dual sword. -->
+		<!-- Level 35: Increases P. Atk. by 122.1 when using a dual sword. -->
+		<!-- Level 36: Increases P. Atk. by 125.7 when using a dual sword. -->
+		<!-- Level 37: Increases P. Atk. by 129.3 when using a dual sword. -->
 		<icon>icon.skill0144</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">38</value>
 			<value level="2">39</value>
@@ -2101,10 +2441,8 @@
 			<value level="36">73</value>
 			<value level="37">74</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">23.7</value>
 					<value level="2">25.4</value>
@@ -2152,8 +2490,54 @@
 		</effects>
 	</skill>
 	<skill id="146" toLevel="45" name="Anti Magic">
-		<!-- Increases M. Def. by 10. -->
+		<!-- Level 1: Increases M. Def. by 10. -->
+		<!-- Level 2: Increases M. Def. by 12. -->
+		<!-- Level 3: Increases M. Def. by 14 and Magic Damage Resistance by 5%. -->
+		<!-- Level 4: Increases M. Def. by 16 and Magic Damage Resistance by 5%. -->
+		<!-- Level 5: Increases M. Def. by 18 and Magic Damage Resistance by 5%. -->
+		<!-- Level 6: Increases M. Def. by 20 and Magic Damage Resistance by 5%. -->
+		<!-- Level 7: Increases M. Def. by 23 and Magic Damage Resistance by 10%. -->
+		<!-- Level 8: Increases M. Def. by 25 and Magic Damage Resistance by 10%. -->
+		<!-- Level 9: Increases M. Def. by 28 and Magic Damage Resistance by 10%. -->
+		<!-- Level 10: Increases M. Def. by 30 and Magic Damage Resistance by 10%. -->
+		<!-- Level 11: Increases M. Def. by 34 and Magic Damage Resistance by 10%. -->
+		<!-- Level 12: Increases M. Def. by 36 and Magic Damage Resistance by 10%. -->
+		<!-- Level 13: Increases M. Def. by 40 and Magic Damage Resistance by 15%. -->
+		<!-- Level 14: Increases M. Def. by 42 and Magic Damage Resistance by 15%. -->
+		<!-- Level 15: Increases M. Def. by 43 and Magic Damage Resistance by 15%. -->
+		<!-- Level 16: Increases M. Def. by 46 and Magic Damage Resistance by 15%. -->
+		<!-- Level 17: Increases M. Def. by 47 and Magic Damage Resistance by 15%. -->
+		<!-- Level 18: Increases M. Def. by 49 and Magic Damage Resistance by 15%. -->
+		<!-- Level 19: Increases M. Def. by 52 and Magic Damage Resistance by 15%. -->
+		<!-- Level 20: Increases M. Def. by 54 and Magic Damage Resistance by 15%. -->
+		<!-- Level 21: Increases M. Def. by 56 and Magic Damage Resistance by 15%. -->
+		<!-- Level 22: Increases M. Def. by 59 and Magic Damage Resistance by 20%. -->
+		<!-- Level 23: Increases M. Def. by 61 and Magic Damage Resistance by 20%. -->
+		<!-- Level 24: Increases M. Def. by 63 and Magic Damage Resistance by 20%. -->
+		<!-- Level 25: Increases M. Def. by 66 and Magic Damage Resistance by 20%. -->
+		<!-- Level 26: Increases M. Def. by 68 and Magic Damage Resistance by 20%. -->
+		<!-- Level 27: Increases M. Def. by 70 and Magic Damage Resistance by 20%. -->
+		<!-- Level 28: Increases M. Def. by 72 and Magic Damage Resistance by 20%. -->
+		<!-- Level 29: Increases M. Def. by 74 and Magic Damage Resistance by 20%. -->
+		<!-- Level 30: Increases M. Def. by 76 and Magic Damage Resistance by 20%. -->
+		<!-- Level 31: Increases M. Def. by 78 and Magic Damage Resistance by 20%. -->
+		<!-- Level 32: Increases M. Def. by 80 and Magic Damage Resistance by 20%. -->
+		<!-- Level 33: Increases M. Def. by 82 and Magic Damage Resistance by 20%. -->
+		<!-- Level 34: Increases M. Def. by 84 and Magic Damage Resistance by 25%. -->
+		<!-- Level 35: Increases M. Def. by 86 and Magic Damage Resistance by 25%. -->
+		<!-- Level 36: Increases M. Def. by 88 and Magic Damage Resistance by 25%. -->
+		<!-- Level 37: Increases M. Def. by 91 and Magic Damage Resistance by 25%. -->
+		<!-- Level 38: Increases M. Def. by 93 and Magic Damage Resistance by 25%. -->
+		<!-- Level 39: Increases M. Def. by 95 and Magic Damage Resistance by 25%. -->
+		<!-- Level 40: Increases M. Def. by 97 and Magic Damage Resistance by 30%. -->
+		<!-- Level 41: Increases M. Def. by 99 and Magic Damage Resistance by 30%. -->
+		<!-- Level 42: Increases M. Def. by 102 and Magic Damage Resistance by 30%. -->
+		<!-- Level 43: Increases M. Def. by 104 and Magic Damage Resistance by 30%. -->
+		<!-- Level 44: Increases M. Def. by 106 and Magic Damage Resistance by 30%. -->
+		<!-- Level 45: Increases M. Def. by 108 and Magic Damage Resistance by 30%. -->
 		<icon>icon.skill0146</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">4</value>
 			<value level="2">7</value>
@@ -2201,8 +2585,6 @@
 			<value level="44">73</value>
 			<value level="45">74</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -2254,7 +2636,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2307,8 +2689,60 @@
 		</effects>
 	</skill>
 	<skill id="147" toLevel="51" name="Magic Resistance">
-		<!-- M. Def. +22. -->
+		<!-- Level 1: M. Def. +22. -->
+		<!-- Level 2: M. Def. +24. -->
+		<!-- Level 3: M. Def. +26. -->
+		<!-- Level 4: M. Def. +28. -->
+		<!-- Level 5: M. Def. +29. -->
+		<!-- Level 6: M. Def. +31. -->
+		<!-- Level 7: M. Def. +32. -->
+		<!-- Level 8: M. Def. +33. -->
+		<!-- Level 9: M. Def. +36. -->
+		<!-- Level 10: M. Def. +37. -->
+		<!-- Level 11: M. Def. +39. -->
+		<!-- Level 12: M. Def. +42. -->
+		<!-- Level 13: M. Def. +43. -->
+		<!-- Level 14: M. Def. +45. -->
+		<!-- Level 15: Increases M. Def. by 48 and Magic Damage Resistance by 5%. -->
+		<!-- Level 16: Increases M. Def. by 50 and Magic Damage Resistance by 5%. -->
+		<!-- Level 17: Increases M. Def. by 51 and Magic Damage Resistance by 5%. -->
+		<!-- Level 18: Increases M. Def. by 53 and Magic Damage Resistance by 5%. -->
+		<!-- Level 19: Increases M. Def. by 55 and Magic Damage Resistance by 5%. -->
+		<!-- Level 20: Increases M. Def. by 57 and Magic Damage Resistance by 5%. -->
+		<!-- Level 21: Increases M. Def. by 59 and Magic Damage Resistance by 5%. -->
+		<!-- Level 22: Increases M. Def. by 61 and Magic Damage Resistance by 5%. -->
+		<!-- Level 23: Increases M. Def. by 62 and Magic Damage Resistance by 5%. -->
+		<!-- Level 24: Increases M. Def. by 64 and Magic Damage Resistance by 5%. -->
+		<!-- Level 25: Increases M. Def. by 67 and Magic Damage Resistance by 5%. -->
+		<!-- Level 26: Increases M. Def. by 69 and Magic Damage Resistance by 5%. -->
+		<!-- Level 27: Increases M. Def. by 71 and Magic Damage Resistance by 10%. -->
+		<!-- Level 28: Increases M. Def. by 73 and Magic Damage Resistance by 10%. -->
+		<!-- Level 29: Increases M. Def. by 75 and Magic Damage Resistance by 10%. -->
+		<!-- Level 30: Increases M. Def. by 77 and Magic Damage Resistance by 10%. -->
+		<!-- Level 31: Increases M. Def. by 79 and Magic Damage Resistance by 10%. -->
+		<!-- Level 32: Increases M. Def. by 82 and Magic Damage Resistance by 10%. -->
+		<!-- Level 33: Increases M. Def. by 84 and Magic Damage Resistance by 10%. -->
+		<!-- Level 34: Increases M. Def. by 86 and Magic Damage Resistance by 10%. -->
+		<!-- Level 35: Increases M. Def. by 89 and Magic Damage Resistance by 10%. -->
+		<!-- Level 36: Increases M. Def. by 91 and Magic Damage Resistance by 10%. -->
+		<!-- Level 37: Increases M. Def. by 94 and Magic Damage Resistance by 10%. -->
+		<!-- Level 38: Increases M. Def. by 96 and Magic Damage Resistance by 10%. -->
+		<!-- Level 39: Increases M. Def. by 98 and Magic Damage Resistance by 10%. -->
+		<!-- Level 40: Increases M. Def. by 101 and Magic Damage Resistance by 15%. -->
+		<!-- Level 41: Increases M. Def. by 103 and Magic Damage Resistance by 15%. -->
+		<!-- Level 42: Increases M. Def. by 106 and Magic Damage Resistance by 15%. -->
+		<!-- Level 43: Increases M. Def. by 109 and Magic Damage Resistance by 15%. -->
+		<!-- Level 44: Increases M. Def. by 111 and Magic Damage Resistance by 15%. -->
+		<!-- Level 45: Increases M. Def. by 114 and Magic Damage Resistance by 15%. -->
+		<!-- Level 46: Increases M. Def. by 116 and Magic Damage Resistance by 20%. -->
+		<!-- Level 47: Increases M. Def. by 119 and Magic Damage Resistance by 20%. -->
+		<!-- Level 48: Increases M. Def. by 122 and Magic Damage Resistance by 20%. -->
+		<!-- Level 49: Increases M. Def. by 124 and Magic Damage Resistance by 20%. -->
+		<!-- Level 50: Increases M. Def. by 127 and Magic Damage Resistance by 20%. -->
+		<!-- Level 51: Increases M. Def. by 130 and Magic Damage Resistance by 20%. -->
 		<icon>icon.skill0147</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">18</value>
 			<value level="2">20</value>
@@ -2362,8 +2796,6 @@
 			<value level="50">73</value>
 			<value level="51">74</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>
@@ -2421,7 +2853,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2480,8 +2912,17 @@
 		</effects>
 	</skill>
 	<skill id="148" toLevel="8" name="Vital Force">
-		<!-- Increases HP Recovery Bonus by 1.9 and MP Recovery Bonus by 1.9 when sitting. -->
+		<!-- Level 1: Increases HP Recovery Bonus by 1.9 and MP Recovery Bonus by 1.9 when sitting. -->
+		<!-- Level 2: Increases HP Recovery Bonus by 2.7 and MP Recovery Bonus by 2.1 when sitting. -->
+		<!-- Level 3: Increases HP Recovery Bonus by 2.9 and MP Recovery Bonus by 2.2 when sitting. -->
+		<!-- Level 4: Increases HP Recovery Bonus by 3.6 and MP Recovery Bonus by 2.5 when sitting. -->
+		<!-- Level 5: Increases HP Recovery Bonus by 4.5 and MP Recovery Bonus by 2.7 when sitting. -->
+		<!-- Level 6: Increases HP Recovery Bonus by 4.7 and MP Recovery Bonus by 2.8 when sitting. -->
+		<!-- Level 7: Increases HP Recovery Bonus by 5.6 and MP Recovery Bonus by 3.1 when sitting. -->
+		<!-- Level 8: Increases HP Recovery Bonus by 6.7 and MP Recovery Bonus by 3.5 when sitting. -->
 		<icon>icon.skill0148</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">24</value>
 			<value level="2">32</value>
@@ -2492,8 +2933,6 @@
 			<value level="7">64</value>
 			<value level="8">72</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="StatByMoveType">
 				<stat>REGENERATE_HP_RATE</stat>
@@ -2528,13 +2967,13 @@
 	<skill id="150" toLevel="3" name="Weight Limit">
 		<!-- Double your weight limit. -->
 		<icon>icon.skill0150</icon>
-		<magicLevel>
-			<value level="1">10</value>
-			<value level="2">24</value>
-			<value level="3">46</value>
-		</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">1</value>
+			<value level="3">85</value>
+			<value level="4">86</value>
+		</magicLevel>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>
@@ -2547,16 +2986,19 @@
 		</effects>
 	</skill>
 	<skill id="153" toLevel="4" name="Shield Mastery">
-		<!-- Shield Defense +30%, Shield Defense Rate +50%. -->
+		<!-- Level 1: Shield Defense +30%, Shield Defense Rate +50%. -->
+		<!-- Level 2: Shield Defense +40%, Shield Defense Rate +70%. -->
+		<!-- Level 3: Shield Defense +50%, Shield Defense Rate +85%. Additionally P. Def. +81 when using heavy armor. -->
+		<!-- Level 4: Shield Defense +60%, Shield Defense Rate +100%. Additionally P. Def. +131 when using heavy armor. -->
 		<icon>icon.skill0153</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">28</value>
 			<value level="3">40</value>
 			<value level="4">52</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>
@@ -2593,9 +3035,9 @@
 	<skill id="163" toLevel="1" name="Spellcraft">
 		<!-- Increases Casting Spd. when equipped with a robe jacket and robe pants. -->
 		<icon>icon.skill0163</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalAttackSpeed">
 				<amount>-50</amount>
@@ -2616,15 +3058,17 @@
 		</effects>
 	</skill>
 	<skill id="164" toLevel="3" name="Quick Recovery">
-		<!-- M. Skill Cooldown -10%. -->
+		<!-- Level 1: M. Skill Cooldown -10%. -->
+		<!-- Level 2: M. Skill Cooldown -15%. -->
+		<!-- Level 3: M. Skill Cooldown -20%. -->
 		<icon>icon.skill0164</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">30</value>
 			<value level="3">48</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="Reuse">
 				<amount>
@@ -2638,8 +3082,14 @@
 		</effects>
 	</skill>
 	<skill id="165" toLevel="5" name="Trade">
-		<!-- Enables you to purchase high quality weapons with a discount up to 5%. -->
+		<!-- Level 1: Enables you to purchase high quality weapons with a discount up to 5%. -->
+		<!-- Level 2: Enables you to purchase high quality weapons with a discount up to 10%. -->
+		<!-- Level 3: Receives 10% on grade Ds, 5% on No-grade s and allows you to sell at an expensive price. -->
+		<!-- Level 4: Receives 5% discount on C-grade items, 10% on grade Ds, 5% on No-grade s and allows you to sell at an expensive price. -->
+		<!-- Level 5: Receives 10% discount on C-grade items, 10% on grade Ds, 5% on No-grade s and allows you to sell at an expensive price. -->
 		<icon>icon.skill0165</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">15</value>
 			<value level="2">24</value>
@@ -2647,19 +3097,19 @@
 			<value level="4">43</value>
 			<value level="5">49</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 	</skill>
 	<skill id="168" toLevel="3" name="Boost Atk. Spd.">
-		<!-- Atk. Spd. +5%. -->
+		<!-- Level 1: Atk. Spd. +5%. -->
+		<!-- Level 2: Atk. Spd. +7%. -->
+		<!-- Level 3: Atk. Spd. +10%. -->
 		<icon>icon.skill0168</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">36</value>
 			<value level="2">46</value>
 			<value level="3">58</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>
@@ -2672,14 +3122,15 @@
 		</effects>
 	</skill>
 	<skill id="169" toLevel="2" name="Quick Step">
-		<!-- Speed +7. -->
+		<!-- Level 1: Speed +7. -->
+		<!-- Level 2: Speed +11. -->
 		<icon>icon.skill0169</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">28</value>
 			<value level="2">43</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -2691,8 +3142,17 @@
 		</effects>
 	</skill>
 	<skill id="171" toLevel="8" name="Esprit">
-		<!-- Increases HP Recovery Bonus by 2.5 and MP Recovery Bonus by 1.8 when running. -->
+		<!-- Level 1: Increases HP Recovery Bonus by 2.5 and MP Recovery Bonus by 1.8 when running. -->
+		<!-- Level 2: Increases HP Recovery Bonus by 3 and MP Recovery Bonus by 1.9 when running. -->
+		<!-- Level 3: Increases HP Recovery Bonus by 3.5 and MP Recovery Bonus by 2 when running. -->
+		<!-- Level 4: Increases HP Recovery Bonus by 4 and MP Recovery Bonus by 2.1 when running. -->
+		<!-- Level 5: Increases HP Recovery Bonus by 4.5 and MP Recovery Bonus by 2.2 when running. -->
+		<!-- Level 6: Increases HP Recovery Bonus by 5 and MP Recovery Bonus by 2.3 when running. -->
+		<!-- Level 7: Increases HP Recovery Bonus by 5.5 and MP Recovery Bonus by 2.4 when running. -->
+		<!-- Level 8: Increases HP Recovery Bonus by 6 and MP Recovery Bonus by 2.5 when running. -->
 		<icon>icon.skill0171</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">36</value>
 			<value level="2">43</value>
@@ -2703,8 +3163,6 @@
 			<value level="7">68</value>
 			<value level="8">74</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="StatByMoveType">
 				<stat>REGENERATE_HP_RATE</stat>
@@ -2740,10 +3198,26 @@
 		</effects>
 	</skill>
 	<skill id="172" toLevel="15" name="Create Item">
-		<!-- Allows the user to manufacture level 1 items. -->
+		<!-- Level 1: Allows the user to manufacture level 1 items. -->
+		<!-- Level 2: Allows the user to manufacture level 2 items. -->
+		<!-- Level 3: Allows the user to manufacture level 3 items. -->
+		<!-- Level 4: Allows the user to manufacture level 4 items. -->
+		<!-- Level 5: Allows the user to manufacture level 5 items. -->
+		<!-- Level 6: Allows the user to manufacture level 6 items. -->
+		<!-- Level 7: Allows the user to manufacture level 7 items. -->
+		<!-- Level 8: Allows the user to manufacture level 8 items. -->
+		<!-- Level 9: Allows the user to manufacture level 9 items. -->
+		<!-- Level 10: Allows the user to manufacture level 10 items. -->
+		<!-- Level 11: Allows the user to manufacture level 11 items. -->
+		<!-- Level 12: Allows the user to manufacture level 12 items. -->
+		<!-- Level 13: Allows the user to manufacture level 13 items. -->
+		<!-- Level 14: Allows the user to manufacture level 14 items. -->
+		<!-- Level 15: Allows the user to manufacture level 15 items. -->
 		<icon>icon.skill0172</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
-			<value level="1">5</value>
+			<value level="1">1</value>
 			<value level="2">20</value>
 			<value level="3">28</value>
 			<value level="4">36</value>
@@ -2757,10 +3231,8 @@
 			<value level="12">90</value>
 			<value level="13">95</value>
 			<value level="14">99</value>
-			<value level="15">104</value>
+			<value level="15">106</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="CreateItem">
 				<value>
@@ -2784,14 +3256,15 @@
 		</effects>
 	</skill>
 	<skill id="173" toLevel="2" name="Acrobatics">
-		<!-- Maximum height user can fall without taking damage +60. -->
+		<!-- Level 1: Maximum height user can fall without taking damage +60. -->
+		<!-- Level 2: Maximum height user can fall without taking damage +100. -->
 		<icon>icon.skill0173</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="SafeFallHeight">
 				<amount>
@@ -2803,8 +3276,139 @@
 		</effects>
 	</skill>
 	<skill id="176" toLevel="10" name="Frenzy">
-		<!-- For 60 sec., P. Atk. +10%, Atk. Spd. +10%, P. Critical Rate +10, P. Critical Damage +10%, and Spd. +10. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Available when HP is 60% or below. -->
+		<!-- Level 1: For 60 sec., P. Atk. +10%, Atk. Spd. +10%, P. Critical Rate +10, P. Critical Damage +10%, and Spd. +10. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Available when HP is 60% or below. -->
+		<!-- Level 2: For 60 sec., P. Atk. +11%, Atk. Spd. +12%, P. Critical Rate +11, P. Critical Damage +11%, and Spd. +11. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Available when HP is 60% or below. -->
+		<!-- Level 3: For 60 sec., P. Atk. +12%, Atk. Spd. +15%, P. Critical Rate +12, P. Critical Damage +12%, and Spd. +12. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Available when HP is 60% or below. -->
+		<!-- Level 4: For 60 sec., P. Atk. +13%, Atk. Spd. +17%, P. Critical Rate +13, P. Critical Damage +13%, and Spd. +13. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Available when HP is 60% or below. -->
+		<!-- Level 5: For 60 sec., P. Atk. +14%, Atk. Spd. +20%, P. Critical Rate +14, P. Critical Damage +14%, and Spd. +14. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Available when HP is 60% or below. -->
+		<!-- Level 6: For 60 sec., P. Atk. +15%, Atk. Spd. +22%, P. Critical Rate +15, P. Critical Damage +15%, and Spd. +15. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 7: For 60 sec., P. Atk. +16%, Atk. Spd. +25%, P. Critical Rate +16, P. Critical Damage +16%, and Spd. +16. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8: For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9: For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10: For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1001 (+1 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1002 (+2 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1003 (+3 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1004 (+4 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1005 (+5 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1006 (+6 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1007 (+7 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1008 (+8 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1009 (+9 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1010 (+10 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1011 (+10.5 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1012 (+11 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1013 (+11.5 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1014 (+12 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1015 (+12.5 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1016 (+13 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1017 (+13.5 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1018 (+14 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1019 (+14.5 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 1020 (+15 sec. Time): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2001 (+1936 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2002 (+2072 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2003 (+2207 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2004 (+2342 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2005 (+2477 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2006 (+2612 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2007 (+2747 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2008 (+2882 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2009 (+3017 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2010 (+3152 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2011 (+3288 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2012 (+3423 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2013 (+3558 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2014 (+3693 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2015 (+3828 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2016 (+3964 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2017 (+4099 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2018 (+4234 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2019 (+4369 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 8 - SubLevel 2020 (+4504 Major): For 60 sec., P. Atk. +18%, Atk. Spd. +27%, P. Critical Rate +18, P. Critical Damage +18%, and Spd. +18. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1001 (+1 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1002 (+2 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1003 (+3 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1004 (+4 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1005 (+5 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1006 (+6 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1007 (+7 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1008 (+8 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1009 (+9 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1010 (+10 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1011 (+10.5 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1012 (+11 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1013 (+11.5 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1014 (+12 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1015 (+12.5 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1016 (+13 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1017 (+13.5 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1018 (+14 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1019 (+14.5 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 1020 (+15 sec. Time): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2001 (+1936 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2002 (+2072 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2003 (+2207 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2004 (+2342 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2005 (+2477 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2006 (+2612 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2007 (+2747 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2008 (+2882 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2009 (+3017 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2010 (+3152 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2011 (+3288 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2012 (+3423 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2013 (+3558 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2014 (+3693 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2015 (+3828 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2016 (+3964 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2017 (+4099 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2018 (+4234 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2019 (+4369 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 9 - SubLevel 2020 (+4504 Major): For 60 sec., P. Atk. +20%, Atk. Spd. +30%, P. Critical Rate +20, P. Critical Damage +20%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1001 (+1 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1002 (+2 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1003 (+3 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1004 (+4 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1005 (+5 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1006 (+6 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1007 (+7 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1008 (+8 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1009 (+9 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1010 (+10 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1011 (+10.5 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1012 (+11 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1013 (+11.5 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1014 (+12 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1015 (+12.5 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1016 (+13 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1017 (+13.5 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1018 (+14 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1019 (+14.5 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 1020 (+15 sec. Time): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2001 (Major +1936): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2002 (Major +2072): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2003 (Major +2207): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2004 (Major +2342): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2005 (Major +2477): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2006 (Major +2612): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2007 (Major +2747): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2008 (Major +2882): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2009 (Major +3017): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2010 (Major +3152): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2011 (Major +3288): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2012 (Major +3423): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2013 (Major +3558): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2014 (Major +3693): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2015 (Major +3828): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2016 (Major +3964): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2017 (Major +4099): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2018 (Major +4234): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2019 (Major +4369): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
+		<!-- Level 10 - SubLevel 2020 (Major +4504): For 60 sec., P. Atk. +25%, Atk. Spd. +35%, P. Critical Rate +25, P. Critical Damage +25%, and Spd. +20. Additionally Accuracy +8 and P. Atk. +10% when using a two-handed sword, two-handed blunt, or spear. Additionally P. Atk. +60 sec.0 and Critical Rate +60 sec.1 when HP is 60% or below. Additionally P. Atk. +60 sec.3 and Critical Rate +60 sec.4, when HP is 60 sec.2 or below. Available when HP is 60 sec.5 or below. -->
 		<icon>icon.skill0176</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2823,6 +3427,8 @@
 			<value fromLevel="8" toLevel="10" fromSubLevel="1011" toSubLevel="1020">{base + 10 + (subIndex - 10 * 0.5)}</value>
 		</abnormalTime>
 		<abnormalType>PINCH</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">303</value>
 			<value level="2">438</value>
@@ -2836,18 +3442,8 @@
 			<value level="10">1301</value>
 		</effectPoint>
 		<hitTime>1500</hitTime>
-		<magicLevel>
-			<value level="1">32</value>
-			<value level="2">46</value>
-			<value level="3">55</value>
-			<value level="4">64</value>
-			<value level="5">74</value>
-			<value level="6">85</value>
-			<value level="7">90</value>
-			<value level="8">95</value>
-			<value level="9">99</value>
-			<value level="10">110</value>
-		</magicLevel>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<mpConsume>
 			<value level="1">14</value>
 			<value level="2">21</value>
@@ -2860,12 +3456,7 @@
 			<value level="9">47</value>
 			<value level="10">49</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>300000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="RemainHpPer">
 				<amount>
@@ -2877,7 +3468,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">11</value>
@@ -2964,7 +3555,7 @@
 				<pAccuracyAmount>8</pAccuracyAmount>
 				<pAccuracyMode>DIFF</pAccuracyMode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -2978,7 +3569,7 @@
 					<item>POLE</item>
 				</weaponType>
 			</effect>
-			<effect name="PAtk" fromLevel="6" toLevel="10">
+			<effect name="PhysicalAttack" fromLevel="6" toLevel="10">
 				<amount>10</amount>
 				<mode>PER</mode>
 				<hpPercent>60</hpPercent>
@@ -2988,7 +3579,7 @@
 				<mode>DIFF</mode>
 				<hpPercent>60</hpPercent>
 			</effect>
-			<effect name="PAtk" fromLevel="6" toLevel="10">
+			<effect name="PhysicalAttack" fromLevel="6" toLevel="10">
 				<amount>30</amount>
 				<mode>PER</mode>
 				<hpPercent>30</hpPercent>
@@ -3027,15 +3618,15 @@
 	<skill id="181" toLevel="1" name="Revival">
 		<!-- Restores to full HP in an emergency. Only usable if HP is 10 percent or lower. -->
 		<icon>icon.skill0181</icon>
-		<effectPoint>562</effectPoint>
-		<hitTime>1500</hitTime>
-		<magicLevel>55</magicLevel>
-		<mpConsume>25</mpConsume>
 		<operateType>A1</operateType>
-		<reuseDelay>900000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>562</effectPoint>
+		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>55</magicLevel>
+		<mpConsume>25</mpConsume>
+		<reuseDelay>900000</reuseDelay>
 		<conditions>
 			<condition name="RemainHpPer">
 				<amount>10</amount>
@@ -3050,8 +3641,47 @@
 		</effects>
 	</skill>
 	<skill id="190" toLevel="37" name="Fatal Strike">
-		<!-- Attacks the enemy with 738 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 1: Attacks the enemy with 738 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 2: Attacks the enemy with 784 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 3: Attacks the enemy with 833 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 4: Attacks the enemy with 884 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 5: Attacks the enemy with 937 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 6: Attacks the enemy with 992 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 7: Attacks the enemy with 1049 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 8: Attacks the enemy with 1109 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 9: Attacks the enemy with 1171 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 10: Attacks the enemy with 1236 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 11: Attacks the enemy with 1302 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 12: Attacks the enemy with 1371 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 13: Attacks the enemy with 1443 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 14: Attacks the enemy with 1516 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 15: Attacks the enemy with 1592 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 16: Attacks the enemy with 1670 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 17: Attacks the enemy with 1750 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 18: Attacks the enemy with 1832 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 19: Attacks the enemy with 1917 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 20: Attacks the enemy with 2003 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 21: Attacks the enemy with 2091 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 22: Attacks the enemy with 2181 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 23: Attacks the enemy with 2272 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 24: Attacks the enemy with 2366 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 25: Attacks the enemy with 2460 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 26: Attacks the enemy with 2556 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 27: Attacks the enemy with 2653 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 28: Attacks the enemy with 2751 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 29: Attacks the enemy with 2850 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 30: Attacks the enemy with 2950 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 31: Attacks the enemy with 3050 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 32: Attacks the enemy with 3151 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 33: Attacks the enemy with 3252 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 34: Attacks the enemy with 3353 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 35: Attacks the enemy with 3453 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 36: Attacks the enemy with 3553 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
+		<!-- Level 37: Attacks the enemy with 3653 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit and Critical are possible. Ignores Shield Defense. -->
 		<icon>icon.skill0190</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -3095,6 +3725,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">38</value>
 			<value level="2">39</value>
@@ -3174,11 +3805,7 @@
 			<value level="37">75</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -3188,7 +3815,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">738</value>
 					<value level="2">784</value>
@@ -3235,8 +3862,15 @@
 		</effects>
 	</skill>
 	<skill id="191" toLevel="6" name="Focus Mind">
-		<!-- MP Recovery Rate +3.1. -->
+		<!-- Level 1: MP Recovery Rate +3.1. -->
+		<!-- Level 2: MP Recovery Rate +3.5. -->
+		<!-- Level 3: MP Recovery Rate +3.9. -->
+		<!-- Level 4: MP Recovery Rate +4.3. -->
+		<!-- Level 5: MP Recovery Rate +4.7. -->
+		<!-- Level 6: MP Recovery Rate +5.1. -->
 		<icon>icon.skill0191</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">36</value>
 			<value level="2">43</value>
@@ -3245,8 +3879,6 @@
 			<value level="5">64</value>
 			<value level="6">72</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="MpRegen">
 				<amount>
@@ -3262,8 +3894,16 @@
 		</effects>
 	</skill>
 	<skill id="193" toLevel="7" name="Critical Damage">
-		<!-- Increases Critical Damage by 32. -->
+		<!-- Level 1: Increases Critical Damage by 32. -->
+		<!-- Level 2: Increases Critical Damage by 56. -->
+		<!-- Level 3: Increases Critical Damage by 93. -->
+		<!-- Level 4: Increases Critical Damage by 177. -->
+		<!-- Level 5: Increases Critical Damage by 295. -->
+		<!-- Level 6: Increases Critical Damage by 384. -->
+		<!-- Level 7: Increases Critical Damage by 406. -->
 		<icon>icon.skill0193</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">24</value>
 			<value level="2">32</value>
@@ -3273,8 +3913,6 @@
 			<value level="6">72</value>
 			<value level="7">74</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="CriticalDamage">
 				<amount>
@@ -3293,22 +3931,23 @@
 	<skill id="194" toLevel="1" name="Lucky">
 		<!-- Vitality points are not consumed below Lv. 9. Upon death, there is no XP decrease and no poisoning by Shilen's Breath. -->
 		<icon>icon.skill0194</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="Lucky" />
 		</effects>
 	</skill>
 	<skill id="195" toLevel="2" name="Boost Breath">
-		<!-- Lung capacity +180. -->
+		<!-- Level 1: Lung capacity +180. -->
+		<!-- Level 2: Lung capacity +300. -->
 		<icon>icon.skill0195</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">55</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="Breath">
 				<amount>
@@ -3322,12 +3961,12 @@
 	<skill id="196" toLevel="1" name="Holy Blade">
 		<!-- Ability to attack with holy power. -->
 		<icon>icon.skill0196</icon>
+		<operateType>T</operateType>
+		<targetType>NONE</targetType>
 		<attributeType>HOLY</attributeType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>43</magicLevel>
 		<mpConsume>8</mpConsume>
-		<operateType>T</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>NONE</targetType>
 		<effects>
 			<effect name="AttackAttribute">
 				<amount>10</amount>
@@ -3338,6 +3977,9 @@
 	<skill id="197" toLevel="2" name="Holy Armor">
 		<!-- Increases Dark Attack Resistance. -->
 		<icon>icon.skill0197</icon>
+		<operateType>T</operateType>
+		<targetType>NONE</targetType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">46</value>
@@ -3346,9 +3988,6 @@
 			<value level="1">7</value>
 			<value level="2">9</value>
 		</mpConsume>
-		<operateType>T</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>NONE</targetType>
 		<effects>
 			<effect name="DefenceAttribute">
 				<amount>
@@ -3360,15 +3999,17 @@
 		</effects>
 	</skill>
 	<skill id="198" toLevel="3" name="Boost Evasion">
-		<!-- Increases Evasion by 2. -->
+		<!-- Level 1: Increases Evasion by 2. -->
+		<!-- Level 2: Increases Evasion by 3. -->
+		<!-- Level 3: Increases Evasion by 4. -->
 		<icon>icon.skill0198</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">24</value>
 			<value level="2">46</value>
 			<value level="3">58</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalEvasion">
 				<amount>

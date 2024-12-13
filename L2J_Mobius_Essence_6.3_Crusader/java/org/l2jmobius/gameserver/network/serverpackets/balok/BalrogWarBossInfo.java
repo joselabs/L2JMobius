@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.balok;
 
@@ -34,6 +38,8 @@ public class BalrogWarBossInfo extends ServerPacket
 	private final int _bossState5;
 	private final int _finalBossId;
 	private final int _finalState;
+	private final long _globalpoints;
+	private final int _globalstage;
 	
 	public BalrogWarBossInfo(int balokid, int balokstatus, int boss1, int boss2, int boss3, int boss4, int boss5)
 	{
@@ -44,15 +50,15 @@ public class BalrogWarBossInfo extends ServerPacket
 		_bossState3 = boss3;
 		_bossState4 = boss4;
 		_bossState5 = boss5;
+		_globalpoints = BattleWithBalokManager.getInstance().getGlobalPoints();
+		_globalstage = BattleWithBalokManager.getInstance().getGlobalStage();
 	}
 	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.EX_BALROGWAR_BOSSINFO.writeId(this, buffer);
-		final long globalpoints = BattleWithBalokManager.getInstance().getGlobalPoints();
-		final int globalstage = BattleWithBalokManager.getInstance().getGlobalStage();
-		if ((globalpoints < 320000) && (globalstage <= 2))
+		if ((_globalpoints < 320000) && (_globalstage <= 2))
 		{
 			buffer.writeInt(1);
 			buffer.writeInt(1);
@@ -72,12 +78,11 @@ public class BalrogWarBossInfo extends ServerPacket
 			final int bossId3 = 25958 + 1000000;
 			int bossId4 = 0;
 			int bossId5 = 0;
-			if ((globalpoints >= 800000) && (globalstage >= 3))
+			if ((_globalpoints >= 800000) && (_globalstage >= 3))
 			{
 				bossId4 = 25959 + 1000000;
 				bossId5 = 25960 + 1000000;
 			}
-			
 			buffer.writeInt(bossId1);
 			buffer.writeInt(bossId2);
 			buffer.writeInt(bossId3);

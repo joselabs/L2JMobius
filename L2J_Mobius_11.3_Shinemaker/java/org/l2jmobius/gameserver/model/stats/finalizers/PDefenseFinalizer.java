@@ -53,7 +53,7 @@ public class PDefenseFinalizer implements IStatFunction
 		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
 		if (creature.isPet())
 		{
-			final Pet pet = (Pet) creature;
+			final Pet pet = creature.asPet();
 			baseValue = pet.getPetLevelData().getPetPDef();
 		}
 		baseValue += calcEnchantedItemBonus(creature, stat);
@@ -68,7 +68,8 @@ public class PDefenseFinalizer implements IStatFunction
 			
 			if (creature.isPlayer())
 			{
-				final Player player = creature.getActingPlayer();
+				final double armorPhysicalDefence = creature.getStat().getValue(Stat.ARMOR_PHYSICAL_DEFENCE, 0) / 5;
+				final Player player = creature.asPlayer();
 				for (int slot : SLOTS)
 				{
 					if (!inv.isPaperdollSlotEmpty(slot) || //
@@ -76,6 +77,10 @@ public class PDefenseFinalizer implements IStatFunction
 					{
 						final int defaultStatValue = player.getTemplate().getBaseDefBySlot(slot);
 						baseValue -= creature.getTransformation().map(transform -> transform.getBaseDefBySlot(player, slot)).orElse(defaultStatValue);
+						if (armorPhysicalDefence > 0)
+						{
+							baseValue += armorPhysicalDefence;
+						}
 					}
 				}
 				baseValue *= BaseStat.CHA.calcBonus(creature);

@@ -25,7 +25,6 @@ import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.StatSet;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -151,7 +150,7 @@ public class QueenAnt extends AbstractNpcAI
 		startQuestTimer("heal", 1000, null, null, true);
 		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 		_queen = npc;
-		_larva = (Monster) addSpawn(LARVA, -21600, 179482, -5846, getRandom(360), false, 0);
+		_larva = addSpawn(LARVA, -21600, 179482, -5846, getRandom(360), false, 0).asMonster();
 	}
 	
 	@Override
@@ -245,7 +244,7 @@ public class QueenAnt extends AbstractNpcAI
 	@Override
 	public String onSpawn(Npc npc)
 	{
-		final Monster mob = (Monster) npc;
+		final Monster mob = npc.asMonster();
 		switch (npc.getId())
 		{
 			case LARVA:
@@ -272,7 +271,7 @@ public class QueenAnt extends AbstractNpcAI
 			{
 				if (mob.getMinionList().getSpawnedMinions().isEmpty())
 				{
-					((Monster) npc).getMinionList().spawnMinions(npc.getParameters().getMinionList("Privates"));
+					npc.asMonster().getMinionList().spawnMinions(npc.getParameters().getMinionList("Privates"));
 				}
 				cancelQuestTimer("DISTANCE_CHECK", npc, null);
 				startQuestTimer("DISTANCE_CHECK", 5000, npc, null, true);
@@ -293,7 +292,7 @@ public class QueenAnt extends AbstractNpcAI
 		if (!npc.isCastingNow(SkillCaster::isAnyNormalType) && (npc.getAI().getIntention() != CtrlIntention.AI_INTENTION_CAST) && (caller.getCurrentHp() < caller.getMaxHp()))
 		{
 			npc.setTarget(caller);
-			((Attackable) npc).useMagic(HEAL1.getSkill());
+			npc.asAttackable().useMagic(HEAL1.getSkill());
 		}
 		return null;
 	}
@@ -345,7 +344,7 @@ public class QueenAnt extends AbstractNpcAI
 				curse.applyEffects(npc, character);
 			}
 			
-			((Attackable) npc).stopHating(character); // for calling again
+			npc.asAttackable().stopHating(character); // for calling again
 			return null;
 		}
 		
@@ -384,7 +383,7 @@ public class QueenAnt extends AbstractNpcAI
 		{
 			if (npcId == ROYAL)
 			{
-				final Monster mob = (Monster) npc;
+				final Monster mob = npc.asMonster();
 				if (mob.getLeader() != null)
 				{
 					mob.getLeader().getMinionList().onMinionDie(mob, (280 + getRandom(40)) * 1000);
@@ -392,7 +391,7 @@ public class QueenAnt extends AbstractNpcAI
 			}
 			else if (npcId == NURSE)
 			{
-				final Monster mob = (Monster) npc;
+				final Monster mob = npc.asMonster();
 				_nurses.remove(mob);
 				if (mob.getLeader() != null)
 				{

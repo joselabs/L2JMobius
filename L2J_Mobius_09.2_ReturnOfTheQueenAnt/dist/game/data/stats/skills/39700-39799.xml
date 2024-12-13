@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="39700" toLevel="1" name="+14 Krishna Dual Swords Pack">
 		<icon>icon.skill0000</icon>
@@ -27,12 +27,12 @@
 		<!-- A scroll to enchant Anhel's Protection. -->
 		<icon>icon.ev_2020_mask_enchant_scroll</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39705" toLevel="1" name="Faeron's Protector Scroll">
 		<!-- All stats +1, acquired XP/ SP while hunting +5%. The effect remains after death and switching between the main and dual class. The effect is removed when entering the Olympiad or the Ceremony of Chaos. -->
@@ -47,16 +47,16 @@
 		<!-- For 30 min., all basic stats +3, Vitality bonus +50%, P./ M. Def. +15%. Cooldown: 5 min. The effect remains after death. Cannot be used in the Olympiad. -->
 		<icon>icon.bm_royal_black_beer</icon>
 		<operateType>A2</operateType>
-		<isMagic>2</isMagic>
-		<reuseDelay>300000</reuseDelay>
-		<coolTime>500</coolTime>
-		<abnormalType>HONEY_BEER</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
-		<stayAfterDeath>true</stayAfterDeath>
-		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
-		<targetType>SELF</targetType>
+		<abnormalType>HONEY_BEER</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<coolTime>500</coolTime>
+		<isMagic>2</isMagic>
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="StatUp">
 				<amount>3</amount>
@@ -110,12 +110,12 @@
 	<skill id="39709" toLevel="1" name="Gran Kain's Scroll: Enchant Superior Kaliel's Bracelet">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39710" toLevel="1" name="Appearance Stone: Beach Swimsuit">
 		<icon>icon.skill0000</icon>
@@ -141,7 +141,11 @@
 			<value level="3">icon.skill0000</value>
 			<value level="4">icon.skill0000</value>
 		</icon>
-		<hitTime>500</hitTime>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>1.5</hitCancelTime>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>
 			<value level="2">1</value>
@@ -149,12 +153,8 @@
 			<value level="4">1</value>
 		</itemConsumeCount>
 		<itemConsumeId>81782</itemConsumeId> <!-- Watermelon seed -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>1.5</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpCanNotUseAirship" />
 			<condition name="CheckLevel">
@@ -176,14 +176,14 @@
 		<!-- Double-click to obtain 10 homunculus upgrade points. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicLevel>1</magicLevel>
-		<isMagic>4</isMagic>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>81812</itemConsumeId> <!-- Homunculus Upgrade Points - 10 -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="AddHomunculusPoints">
 				<amount>10</amount>
@@ -203,28 +203,28 @@
 		<!-- A scroll to enchant Anhel's Protection. -->
 		<icon>icon.bm_shilen_scrl_of_ench_hair</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39719" toLevel="2" name="Atelia Refinery's Time Stone">
 		<!-- Only for the event. -->
 		<icon>icon.skill0000</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
 			<value level="1">81829</value> <!-- Otherworldly Atelia Refinery's Time Stone(Event) -->
 			<value level="2">81830</value> <!-- Otherworldly Atelia Refinery's Time Stone -->
 		</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>107</minLevel>
@@ -251,12 +251,12 @@
 	<skill id="39722" toLevel="1" name="Gran Kain's Scroll: Enchant Dragon Skin Shirt">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39723" toLevel="1" name="Teleportation Cube">
 		<icon>icon.skill0000</icon>
@@ -265,28 +265,28 @@
 	<skill id="39724" toLevel="1" name="Mentor's Encouragement">
 		<!-- With your mentor's help, your P. Atk./ M. Atk./ P. Def./ M. Def. +5%, Acquired XP/ SP +100%, Vitality bonus +100%. The effect is active only when your mentor is online and for 5 min. after they have gone offline. -->
 		<icon>icon.s_power_of_mentor_1</icon>
-		<abnormalTime>-1</abnormalTime>
-		<canBeDispelled>false</canBeDispelled>
-		<isMagic>3</isMagic>
 		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
-		<abnormalType>VP_MENTOR_RUNE</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-2</specialLevel>
-		<magicLevel>-2</magicLevel>
-		<abnormalLevel>0</abnormalLevel>
-		<irreplacableBuff>true</irreplacableBuff>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
-		<isMentoring>true</isMentoring>
 		<targetType>SELF</targetType>
+		<abnormalLevel>0</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<abnormalType>VP_MENTOR_RUNE</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<canBeDispelled>false</canBeDispelled>
+		<effectPoint>1</effectPoint>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>3</isMagic>
+		<isMentoring>true</isMentoring>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>-2</magicLevel>
+		<specialLevel>-2</specialLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -312,40 +312,40 @@
 	</skill>
 	<skill id="39726" toLevel="1" name="Scroll: Enchant Blessed Exalted Armor">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ITEM</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>81898</itemConsumeId> <!-- Scroll: Enchant Blessed Exalted Armor -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ITEM</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39727" toLevel="1" name="Gran Kain's Scroll: Enchant Superior La Vie En Rose's Brooch">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39728" toLevel="1" name="No Doubt">
 		<!-- Clears your mind of any doubts. When in inventory, maintains the Vitality level. -->
 		<icon>br_cashtex.item.br_cash_rune_of_feather_i00</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>1800</abnormalTime>
-		<blockedInOlympiad>true</blockedInOlympiad>
 		<targetType>SELF</targetType>
+		<abnormalTime>1800</abnormalTime>
 		<affectScope>SINGLE</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -365,15 +365,17 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="39734" toLevel="3" name="Lucky Pouch of Growth">
-		<!-- Acquired XP/ SP +5% -->
+		<!-- Level 1: Acquired XP/ SP +5% -->
+		<!-- Level 2: Acquired adena +5% -->
+		<!-- Level 3: Vitality bonus +7% -->
 		<icon>
 			<value level="1">icon.ev_2021_newyear_rune2</value>
 			<value level="2">icon.ev_2021_newyear_rune3</value>
 			<value level="3">icon.ev_2021_newyear_rune4</value>
 		</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="ExpModify">
 				<amount>
@@ -402,21 +404,21 @@
 		<!-- Required for enhancing greater agathions. In case of failure, the enchant value remains the same. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="39736" toLevel="1" name="Gran Kain's Scroll: Enchant Superior Seed Bracelet">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 </list>

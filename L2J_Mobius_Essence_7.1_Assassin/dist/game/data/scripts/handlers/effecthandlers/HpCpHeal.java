@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.effecthandlers;
 
@@ -44,6 +48,11 @@ public class HpCpHeal extends AbstractEffect
 	public HpCpHeal(StatSet params)
 	{
 		_power = params.getDouble("power", 0);
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override
@@ -78,7 +87,7 @@ public class HpCpHeal extends AbstractEffect
 		final boolean bss = skill.isMagic() && effector.isChargedShot(ShotType.BLESSED_SPIRITSHOTS);
 		final double shotsBonus = effector.getStat().getValue(Stat.SHOTS_BONUS);
 		
-		if (((sps || bss) && (effector.isPlayer() && effector.getActingPlayer().isMageClass())) || effector.isSummon())
+		if (((sps || bss) && (effector.isPlayer() && effector.asPlayer().isMageClass())) || effector.isSummon())
 		{
 			staticShotBonus = skill.getMpConsume(); // static bonus for spiritshots
 			mAtkMul = bss ? 4 * shotsBonus : 2 * shotsBonus;
@@ -107,7 +116,7 @@ public class HpCpHeal extends AbstractEffect
 			amount += staticShotBonus + Math.sqrt(mAtkMul * effector.getMAtk());
 			amount *= effected.getStat().getValue(Stat.HEAL_EFFECT, 1);
 			amount += effected.getStat().getValue(Stat.HEAL_EFFECT_ADD, 0);
-			amount *= (item == null) && effector.isPlayable() ? Config.PLAYER_HEALING_SKILL_MULTIPLIERS[effector.getActingPlayer().getClassId().getId()] : 1f;
+			amount *= (item == null) && effector.isPlayable() ? Config.PLAYER_HEALING_SKILL_MULTIPLIERS[effector.asPlayer().getClassId().getId()] : 1f;
 			// Heal critic, since CT2.3 Gracia Final
 			if (skill.isMagic() && (Formulas.calcCrit(skill.getMagicCriticalRate(), effector, effected, skill) || effector.isAffected(EffectFlag.HPCPHEAL_CRITICAL)))
 			{
@@ -123,14 +132,20 @@ public class HpCpHeal extends AbstractEffect
 		
 		// Additional potion HP.
 		double additionalHp = 0;
+		double additionalHpPer = 1;
 		
 		// Additional potion CP.
 		double additionalCp = 0;
+		double additionalCpPer = 1;
 		
-		if ((item != null) && (item.isPotion() || item.isElixir()))
+		final boolean isPotion = (item != null) && (item.isPotion() || item.isElixir());
+		if (isPotion)
 		{
 			additionalHp = effected.getStat().getValue(Stat.ADDITIONAL_POTION_HP, 0);
 			additionalCp = effected.getStat().getValue(Stat.ADDITIONAL_POTION_CP, 0);
+			
+			additionalHpPer = ((effected.getStat().getValue(Stat.ADDITIONAL_POTION_HP_PER, 0) / 100) + 1);
+			additionalCpPer = ((effected.getStat().getValue(Stat.ADDITIONAL_POTION_CP_PER, 0) / 100) + 1);
 			
 			// Classic Potion Mastery
 			// TODO: Create an effect if more mastery skills are added.
@@ -138,7 +153,7 @@ public class HpCpHeal extends AbstractEffect
 		}
 		
 		// Prevents overheal and negative amount
-		final double healAmount = Math.max(Math.min(amount, effected.getMaxRecoverableHp() - effected.getCurrentHp()), 0);
+		final double healAmount = Math.max(Math.min(amount * (isPotion ? additionalHpPer : 1), effected.getMaxRecoverableHp() - effected.getCurrentHp()), 0);
 		if (healAmount != 0)
 		{
 			final double newHp = healAmount + effected.getCurrentHp();
@@ -166,7 +181,7 @@ public class HpCpHeal extends AbstractEffect
 		// CP recovery.
 		if (effected.isPlayer())
 		{
-			amount = Math.max(Math.min(amount - healAmount, effected.getMaxRecoverableCp() - effected.getCurrentCp()), 0);
+			amount = Math.max(Math.min((amount - healAmount) * (isPotion ? additionalCpPer : 1), effected.getMaxRecoverableCp() - effected.getCurrentCp()), 0);
 			if (amount != 0)
 			{
 				final double newCp = amount + effected.getCurrentCp();

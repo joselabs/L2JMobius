@@ -1,24 +1,31 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.castlewar;
+
+import java.util.Calendar;
 
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.TaxType;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -29,11 +36,11 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
  */
 public class MercenaryCastleWarCastleInfo extends ServerPacket
 {
-	private final int _castleId;
+	private final Castle _castle;
 	
 	public MercenaryCastleWarCastleInfo(int castleId)
 	{
-		_castleId = castleId;
+		_castle = CastleManager.getInstance().getCastleById(castleId);
 	}
 	
 	@Override
@@ -41,10 +48,9 @@ public class MercenaryCastleWarCastleInfo extends ServerPacket
 	{
 		ServerPackets.EX_MERCENARY_CASTLEWAR_CASTLE_INFO.writeId(this, buffer);
 		
-		final Castle castle = CastleManager.getInstance().getCastleById(_castleId);
-		if (castle == null)
+		if (_castle == null)
 		{
-			buffer.writeInt(_castleId);
+			buffer.writeInt(_castle.getResidenceId());
 			buffer.writeInt(0);
 			buffer.writeInt(0);
 			buffer.writeSizedString("");
@@ -56,14 +62,19 @@ public class MercenaryCastleWarCastleInfo extends ServerPacket
 			return;
 		}
 		
-		buffer.writeInt(castle.getResidenceId());
-		buffer.writeInt(castle.getOwner() != null ? castle.getOwner().getCrestId() : 0); // CastleOwnerPledgeSID
-		buffer.writeInt(castle.getOwner() != null ? castle.getOwner().getCrestLargeId() : 0); // CastleOwnerPledgeCrestDBID
-		buffer.writeSizedString(castle.getOwner() != null ? castle.getOwner().getName() : "-"); // CastleOwnerPledgeName
-		buffer.writeSizedString(castle.getOwner() != null ? castle.getOwner().getLeaderName() : "-"); // CastleOwnerPledgeMasterName
-		buffer.writeInt(castle.getTaxPercent(TaxType.BUY)); // CastleTaxRate
-		buffer.writeLong((long) (castle.getTreasury() * castle.getTaxRate(TaxType.BUY))); // CurrentIncome
-		buffer.writeLong((long) (castle.getTreasury() + (castle.getTreasury() * castle.getTaxRate(TaxType.BUY)))); // TotalIncome
-		buffer.writeInt(castle.getSiegeDate() != null ? (int) (castle.getSiegeDate().getTimeInMillis() / 1000) : 0); // NextSiegeTime
+		final Clan clan = _castle.getOwner();
+		buffer.writeInt(_castle.getResidenceId());
+		buffer.writeInt(clan != null ? clan.getCrestId() : 0); // CastleOwnerPledgeSID
+		buffer.writeInt(clan != null ? clan.getCrestLargeId() : 0); // CastleOwnerPledgeCrestDBID
+		buffer.writeSizedString(clan != null ? clan.getName() : "-"); // CastleOwnerPledgeName
+		buffer.writeSizedString(clan != null ? clan.getLeaderName() : "-"); // CastleOwnerPledgeMasterName
+		buffer.writeInt(_castle.getTaxPercent(TaxType.BUY)); // CastleTaxRate
+		
+		final long treasury = _castle.getTreasury();
+		buffer.writeLong((long) (treasury * _castle.getTaxRate(TaxType.BUY))); // CurrentIncome
+		buffer.writeLong((long) (treasury + (treasury * _castle.getTaxRate(TaxType.BUY)))); // TotalIncome
+		
+		final Calendar siegeDate = _castle.getSiegeDate();
+		buffer.writeInt(siegeDate != null ? (int) (siegeDate.getTimeInMillis() / 1000) : 0); // NextSiegeTime
 	}
 }

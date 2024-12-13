@@ -75,18 +75,23 @@ public class SummonNpc extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if (!effected.isPlayer() || effected.isAlikeDead() || effected.getActingPlayer().inObserverMode())
-		{
-			return;
-		}
-		
 		if ((_npcId <= 0) || (_npcCount <= 0))
 		{
 			LOGGER.warning(SummonNpc.class.getSimpleName() + ": Invalid NPC ID or count skill ID: " + skill.getId());
 			return;
 		}
 		
-		final Player player = effected.getActingPlayer();
+		if (!effected.isPlayer() || effected.isAlikeDead())
+		{
+			return;
+		}
+		
+		final Player player = effected.asPlayer();
+		if (player.inObserverMode())
+		{
+			return;
+		}
+		
 		if (player.isMounted())
 		{
 			return;
@@ -105,7 +110,7 @@ public class SummonNpc extends AbstractEffect
 		
 		if (skill.getTargetType() == TargetType.GROUND)
 		{
-			final Location wordPosition = player.getActingPlayer().getCurrentSkillWorldPosition();
+			final Location wordPosition = player.getCurrentSkillWorldPosition();
 			if (wordPosition != null)
 			{
 				x = wordPosition.getX();

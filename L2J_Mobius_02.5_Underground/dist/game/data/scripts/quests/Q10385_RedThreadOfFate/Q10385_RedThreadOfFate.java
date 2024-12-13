@@ -411,7 +411,7 @@ public class Q10385_RedThreadOfFate extends Quest
 		final WorldObject target = player.getTarget();
 		if ((target != null) && target.isNpc() && (target.getId() == LANYA))
 		{
-			final Npc npc = (Npc) player.getTarget();
+			final Npc npc = player.getTarget().asNpc();
 			if (((qs != null) && (qs.isCond(3))) && (event.getSocialActionId() == SOCIAL_BOW) && (player.isInsideRadius3D(npc, 120)))
 			{
 				qs.setCond(4, true);
@@ -694,7 +694,7 @@ public class Q10385_RedThreadOfFate extends Quest
 	{
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final QuestState qs = getQuestState(player, false);
 			if ((npc.getId() == INVISIBLE_ANGHEL_WATERFALL_NPC) && (qs != null) && qs.isCond(7))
 			{

@@ -49,6 +49,6 @@ public class TakeCastle extends AbstractEffect
 			return;
 		}
 		final Castle castle = CastleManager.getInstance().getCastle(effector);
-		castle.engrave(effector.getActingPlayer().getClan(), effected);
+		castle.engrave(effector.asPlayer().getClan(), effected);
 	}
 }

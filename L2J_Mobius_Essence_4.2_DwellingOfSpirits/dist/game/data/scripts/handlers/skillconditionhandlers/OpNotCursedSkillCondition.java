@@ -34,6 +34,6 @@ public class OpNotCursedSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return caster.isPlayer() && !caster.getActingPlayer().isCursedWeaponEquipped();
+		return caster.isPlayer() && !caster.asPlayer().isCursedWeaponEquipped();
 	}
 }

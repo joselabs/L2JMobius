@@ -1,24 +1,30 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.admincommandhandlers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -43,8 +49,15 @@ import org.l2jmobius.gameserver.network.serverpackets.SkillCoolTime;
 import org.l2jmobius.gameserver.util.BuilderUtil;
 import org.l2jmobius.gameserver.util.GMAudit;
 
+/**
+ * @author Mobius
+ */
 public class AdminBuffs implements IAdminCommandHandler
 {
+	private static final int PAGE_LIMIT = 7;
+	private static final String FONT_RED1 = "<font color=\"FF0000\">";
+	private static final String FONT_RED2 = "</font>";
+	
 	private static final String[] ADMIN_COMMANDS =
 	{
 		"admin_buff",
@@ -53,13 +66,12 @@ public class AdminBuffs implements IAdminCommandHandler
 		"admin_stopbuff",
 		"admin_stopallbuffs",
 		"admin_viewblockedeffects",
+		"admin_viewskilleffects",
+		"admin_viewskilleffects_ps",
 		"admin_areacancel",
 		"admin_removereuse",
 		"admin_switch_gm_buffs"
 	};
-	// Misc
-	private static final String FONT_RED1 = "<font color=\"FF0000\">";
-	private static final String FONT_RED2 = "</font>";
 	
 	@Override
 	public boolean useAdminCommand(String commandValue, Player activeChar)
@@ -74,7 +86,7 @@ public class AdminBuffs implements IAdminCommandHandler
 			}
 			
 			final StringTokenizer st = new StringTokenizer(command, " ");
-			st.nextToken();
+			command = st.nextToken();
 			if (!st.hasMoreTokens())
 			{
 				BuilderUtil.sendSysMessage(activeChar, "Skill Id and level are not specified.");
@@ -86,7 +98,7 @@ public class AdminBuffs implements IAdminCommandHandler
 			{
 				final int skillId = Integer.parseInt(st.nextToken());
 				final int skillLevel = st.hasMoreTokens() ? Integer.parseInt(st.nextToken()) : SkillData.getInstance().getMaxLevel(skillId);
-				final Creature target = (Creature) activeChar.getTarget();
+				final Creature target = activeChar.getTarget().asCreature();
 				final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
 				if (skill == null)
 				{
@@ -123,12 +135,13 @@ public class AdminBuffs implements IAdminCommandHandler
 					showBuffs(activeChar, player, page, command.endsWith("_ps"));
 					return true;
 				}
+				
 				BuilderUtil.sendSysMessage(activeChar, "The player " + playername + " is not online.");
 				return false;
 			}
 			else if ((activeChar.getTarget() != null) && activeChar.getTarget().isCreature())
 			{
-				showBuffs(activeChar, (Creature) activeChar.getTarget(), 0, command.endsWith("_ps"));
+				showBuffs(activeChar, activeChar.getTarget().asCreature(), 0, command.endsWith("_ps"));
 				return true;
 			}
 			else
@@ -189,6 +202,26 @@ public class AdminBuffs implements IAdminCommandHandler
 				return false;
 			}
 		}
+		else if (command.startsWith("admin_viewskilleffects"))
+		{
+			try
+			{
+				final StringTokenizer st = new StringTokenizer(command, " ");
+				st.nextToken();
+				final int objectId = Integer.parseInt(st.nextToken());
+				final int skillId = Integer.parseInt(st.nextToken());
+				final int skillLevel = Integer.parseInt(st.nextToken());
+				final int page = st.hasMoreTokens() ? Integer.parseInt(st.nextToken()) : 0;
+				viewSkillEffects(activeChar, objectId, skillId, skillLevel, page, command.contains("_ps"));
+				return true;
+			}
+			catch (Exception e)
+			{
+				BuilderUtil.sendSysMessage(activeChar, "Failed viewing skill effects: " + e.getMessage());
+				BuilderUtil.sendSysMessage(activeChar, "Usage: //viewskilleffects <objectId skillId skillLevel>");
+				return false;
+			}
+		}
 		else if (command.startsWith("admin_areacancel"))
 		{
 			final StringTokenizer st = new StringTokenizer(command, " ");
@@ -233,7 +266,7 @@ public class AdminBuffs implements IAdminCommandHandler
 			}
 			else if ((activeChar.getTarget() != null) && activeChar.getTarget().isPlayer())
 			{
-				player = activeChar.getTarget().getActingPlayer();
+				player = activeChar.getTarget().asPlayer();
 			}
 			else
 			{
@@ -264,6 +297,7 @@ public class AdminBuffs implements IAdminCommandHandler
 				BuilderUtil.sendSysMessage(activeChar, "You have succefully changed to target " + (toAuraSkills ? "aura" : "one") + " special skills.");
 				return true;
 			}
+			
 			BuilderUtil.sendSysMessage(activeChar, "There is nothing to switch.");
 			return false;
 		}
@@ -284,51 +318,74 @@ public class AdminBuffs implements IAdminCommandHandler
 		SkillTreeData.getInstance().addSkills(gmchar, toAuraSkills);
 	}
 	
-	@Override
-	public String[] getAdminCommandList()
-	{
-		return ADMIN_COMMANDS;
-	}
-	
 	private void showBuffs(Player activeChar, Creature target, int page, boolean passive)
 	{
 		final List<BuffInfo> effects = new ArrayList<>();
-		if (!passive)
-		{
-			effects.addAll(target.getEffectList().getEffects());
-		}
-		else
+		if (passive)
 		{
 			effects.addAll(target.getEffectList().getPassives());
 		}
-		
-		final String pageLink = "bypass -h admin_getbuffs" + (passive ? "_ps " : " ") + target.getName();
-		final PageResult result = PageBuilder.newBuilder(effects, 3, pageLink).currentPage(page).style(ButtonsStyle.INSTANCE).bodyHandler((pages, info, sb) ->
+		else
 		{
-			for (AbstractEffect effect : info.getEffects())
+			effects.addAll(target.getEffectList().getEffects());
+		}
+		
+		final Map<Skill, Integer> skills = new HashMap<>();
+		for (BuffInfo info : effects)
+		{
+			final Skill skill = info.getSkill();
+			if (skill != null)
 			{
-				sb.append("<tr><td>");
-				sb.append(!info.isInUse() ? FONT_RED1 : "");
-				sb.append(info.getSkill().getName());
-				sb.append(" Lv ");
-				sb.append(info.getSkill().getLevel());
-				sb.append(" (");
-				sb.append(effect.getClass().getSimpleName());
-				sb.append(")");
-				sb.append(!info.isInUse() ? FONT_RED2 : "");
-				sb.append("</td><td>");
-				sb.append(info.getSkill().isToggle() ? "T" : info.getSkill().isPassive() ? "P" : info.getTime() + "s");
-				sb.append("</td><td><button value=\"X\" action=\"bypass -h admin_stopbuff ");
-				sb.append(target.getObjectId());
-				sb.append(" ");
-				sb.append(info.getSkill().getId());
-				sb.append("\" width=30 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr>");
+				if (skills.containsKey(skill))
+				{
+					skills.put(skill, Math.max(info.getAbnormalTime(), skills.get(skill)));
+				}
+				else
+				{
+					skills.put(skill, info.getTime());
+				}
 			}
+		}
+		
+		int row = 0;
+		final String pageLink = "bypass admin_getbuffs" + (passive ? "_ps " : " ") + target.getName();
+		final PageResult result = PageBuilder.newBuilder(skills.keySet(), PAGE_LIMIT, pageLink).currentPage(page).style(ButtonsStyle.INSTANCE).bodyHandler((pages, skill, sb) ->
+		{
+			sb.append((row % 2) == 0 ? "<table width=\"295\" bgcolor=\"000000\">" : "<table width=\"295\">");
+			sb.append("<tr><td height=40 width=40><img src=\"");
+			sb.append(skill.getIcon());
+			sb.append("\" width=32 height=32></td><td width=");
+			sb.append(skill.isPassive() ? "850" : "650");
+			sb.append("><font color=\"B09878\">");
+			sb.append(passive ? "<a action=\"bypass admin_viewskilleffects_ps " : "<a action=\"bypass admin_viewskilleffects ");
+			sb.append(target.getObjectId());
+			sb.append(" ");
+			sb.append(skill.getId());
+			sb.append(" ");
+			sb.append(skill.getLevel());
+			sb.append("\">");
+			sb.append(skill.getName());
+			if (!skill.getName().contains("Lv") && !skill.getName().contains("Level"))
+			{
+				sb.append(" Lv. ");
+				sb.append(skill.getLevel());
+			}
+			sb.append(" (");
+			sb.append(skill.getId());
+			sb.append(")</a></font></td><td fixwidth=");
+			sb.append(skill.isPassive() ? "1" : "200");
+			sb.append(" height=32 valign=\"center\" align=\"center\">");
+			sb.append(skill.isPassive() ? "" : skill.isToggle() ? "T" : (skills.get(skill)) + "s");
+			sb.append("</td><td><table><tr><td height=5></td></tr><tr><td fixwidth=360><button value=\"X\" action=\"bypass admin_stopbuff ");
+			sb.append(target.getObjectId());
+			sb.append(" ");
+			sb.append(skill.getId());
+			sb.append("\" width=30 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table></td></tr></table><img src=\"L2UI.SquareGray\" width=295 height=1>");
 		}).build();
 		
 		final NpcHtmlMessage html = new NpcHtmlMessage(0, 1);
-		html.setFile(activeChar, "data/html/admin/getbuffs.htm");
-		if (result.getPages() > 0)
+		html.setFile(activeChar, "data/html/admin/getbuff_skills.htm");
+		if (result.getPages() > 1)
 		{
 			html.replace("%pages%", "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
 		}
@@ -343,7 +400,7 @@ public class AdminBuffs implements IAdminCommandHandler
 		html.replace("%targetName%", target.getName());
 		html.replace("%targetObjId%", target.getObjectId());
 		html.replace("%buffs%", result.getBodyTemplate().toString());
-		html.replace("%effectSize%", effects.size());
+		html.replace("%skillSize%", skills.size());
 		activeChar.sendPacket(html);
 		
 		if (Config.GMAUDIT)
@@ -352,12 +409,100 @@ public class AdminBuffs implements IAdminCommandHandler
 		}
 	}
 	
+	private void viewSkillEffects(Player activeChar, int objectId, int skillId, int skillLevel, int page, boolean passive)
+	{
+		Creature target = null;
+		try
+		{
+			target = World.getInstance().findObject(objectId).asCreature();
+		}
+		catch (Exception e)
+		{
+			BuilderUtil.sendSysMessage(activeChar, "Target with object id " + objectId + " not found.");
+			return;
+		}
+		
+		int count = 0;
+		final List<BuffInfo> effects = new ArrayList<>();
+		if (passive)
+		{
+			for (BuffInfo info : target.getEffectList().getPassives())
+			{
+				final Skill skill = info.getSkill();
+				if ((skill != null) && (skill.getId() == skillId) && (skill.getLevel() == skillLevel))
+				{
+					effects.add(info);
+					count += info.getEffects().size();
+				}
+			}
+		}
+		else
+		{
+			for (BuffInfo info : target.getEffectList().getEffects())
+			{
+				final Skill skill = info.getSkill();
+				if ((skill != null) && (skill.getId() == skillId) && (skill.getLevel() == skillLevel))
+				{
+					effects.add(info);
+					count += info.getEffects().size();
+				}
+			}
+		}
+		
+		int row = 0;
+		final String pageLink = "bypass admin_viewskilleffects" + (passive ? "_ps " : " ") + objectId + " " + skillId + " " + skillLevel;
+		final PageResult result = PageBuilder.newBuilder(effects, PAGE_LIMIT, pageLink).currentPage(page).style(ButtonsStyle.INSTANCE).bodyHandler((pages, info, sb) ->
+		{
+			for (AbstractEffect effect : info.getEffects())
+			{
+				sb.append((row % 2) == 0 ? "<table width=\"295\" bgcolor=\"000000\">" : "<table width=\"295\">");
+				sb.append("<tr><td width=750>");
+				sb.append(!info.isInUse() ? FONT_RED1 : "");
+				sb.append(info.getSkill().getName());
+				sb.append(" Lv. ");
+				sb.append(info.getSkill().getLevel());
+				sb.append(" (");
+				sb.append(effect.getClass().getSimpleName());
+				sb.append(")");
+				sb.append(!info.isInUse() ? FONT_RED2 : "");
+				sb.append("</td><td width=180><center>");
+				sb.append(info.getSkill().isToggle() ? "T" : info.getSkill().isPassive() ? "P" : info.getTime() + "s");
+				sb.append("</center></td><td width=200><button value=\"X\" action=\"bypass admin_stopbuff ");
+				sb.append(objectId);
+				sb.append(" ");
+				sb.append(info.getSkill().getId());
+				sb.append("\" width=30 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table>");
+				sb.append("<img src=\"L2UI.SquareGray\" width=295 height=1>");
+			}
+		}).build();
+		
+		final NpcHtmlMessage html = new NpcHtmlMessage(0, 1);
+		html.setFile(activeChar, "data/html/admin/getbuff_effects.htm");
+		if (result.getPages() > 1)
+		{
+			html.replace("%pages%", "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
+		}
+		else
+		{
+			html.replace("%pages%", "");
+		}
+		
+		html.replace("%buffsText%", passive ? "Hide Passives" : "Show Passives");
+		html.replace("%passives%", passive ? "" : "_ps");
+		
+		html.replace("%targetName%", target.getName());
+		html.replace("%targetObjId%", target.getObjectId());
+		html.replace("%buffs%", result.getBodyTemplate().toString());
+		html.replace("%effectSize%", count);
+		activeChar.sendPacket(html);
+	}
+	
 	private void removeBuff(Player activeChar, int objId, int skillId)
 	{
 		Creature target = null;
 		try
 		{
-			target = (Creature) World.getInstance().findObject(objId);
+			target = World.getInstance().findObject(objId).asCreature();
 		}
 		catch (Exception e)
 		{
@@ -385,7 +530,7 @@ public class AdminBuffs implements IAdminCommandHandler
 		Creature target = null;
 		try
 		{
-			target = (Creature) World.getInstance().findObject(objId);
+			target = World.getInstance().findObject(objId).asCreature();
 		}
 		catch (Exception e)
 		{
@@ -409,7 +554,7 @@ public class AdminBuffs implements IAdminCommandHandler
 		Creature target = null;
 		try
 		{
-			target = (Creature) World.getInstance().findObject(objId);
+			target = World.getInstance().findObject(objId).asCreature();
 		}
 		catch (Exception e)
 		{
@@ -424,7 +569,7 @@ public class AdminBuffs implements IAdminCommandHandler
 			final StringBuilder html = new StringBuilder(500 + (blockedAbnormalsSize * 50));
 			html.append("<html><table width=\"100%\"><tr><td width=45><button value=\"Main\" action=\"bypass admin_admin\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td><td width=180><center><font color=\"LEVEL\">Blocked effects of ");
 			html.append(target.getName());
-			html.append("</font></td><td width=45><button value=\"Back\" action=\"bypass -h admin_getbuffs" + (target.isPlayer() ? (" " + target.getName()) : "") + "\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table><br>");
+			html.append("</font></td><td width=45><button value=\"Back\" action=\"bypass admin_getbuffs" + (target.isPlayer() ? (" " + target.getName()) : "") + "\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table><br>");
 			if ((blockedAbnormals != null) && !blockedAbnormals.isEmpty())
 			{
 				html.append("<br>Blocked buff slots: ");
@@ -443,5 +588,11 @@ public class AdminBuffs implements IAdminCommandHandler
 				GMAudit.auditGMAction(activeChar.getName() + " [" + activeChar.getObjectId() + "]", "viewblockedeffects", target.getName() + " (" + Integer.toString(target.getObjectId()) + ")", "");
 			}
 		}
+	}
+	
+	@Override
+	public String[] getAdminCommandList()
+	{
+		return ADMIN_COMMANDS;
 	}
 }

@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.ai;
 
@@ -165,13 +169,15 @@ public class PlayerAI extends PlayableAI
 		super.onEvtAttacked(attacker);
 		
 		// Summons in defending mode defend its master when attacked.
-		if (_actor.getActingPlayer().hasServitors())
+		final Player player = _actor.asPlayer();
+		if (player.hasServitors())
 		{
-			for (Summon summon : _actor.getActingPlayer().getServitors().values())
+			for (Summon summon : player.getServitors().values())
 			{
-				if (((SummonAI) summon.getAI()).isDefending())
+				final SummonAI ai = (SummonAI) summon.getAI();
+				if (ai.isDefending())
 				{
-					((SummonAI) summon.getAI()).defendAttack(attacker);
+					ai.defendAttack(attacker);
 				}
 			}
 		}
@@ -183,13 +189,15 @@ public class PlayerAI extends PlayableAI
 		super.onEvtEvaded(attacker);
 		
 		// Summons in defending mode defend its master when attacked.
-		if (_actor.getActingPlayer().hasServitors())
+		final Player player = _actor.asPlayer();
+		if (player.hasServitors())
 		{
-			for (Summon summon : _actor.getActingPlayer().getServitors().values())
+			for (Summon summon : player.getServitors().values())
 			{
-				if (((SummonAI) summon.getAI()).isDefending())
+				final SummonAI ai = (SummonAI) summon.getAI();
+				if (ai.isDefending())
 				{
-					((SummonAI) summon.getAI()).defendAttack(attacker);
+					ai.defendAttack(attacker);
 				}
 			}
 		}
@@ -262,26 +270,27 @@ public class PlayerAI extends PlayableAI
 	
 	private void thinkAttack()
 	{
-		final SkillUseHolder queuedSkill = _actor.getActingPlayer().getQueuedSkill();
+		final Player player = _actor.asPlayer();
+		final SkillUseHolder queuedSkill = player.getQueuedSkill();
 		if (queuedSkill != null)
 		{
 			// Remove the skill from queue.
-			_actor.getActingPlayer().setQueuedSkill(null, null, false, false);
+			player.setQueuedSkill(null, null, false, false);
 			
 			// Check if player has the needed MP for the queued skill.
-			if (_actor.getCurrentMp() >= _actor.getStat().getMpInitialConsume(queuedSkill.getSkill()))
+			if (player.getCurrentMp() >= player.getStat().getMpInitialConsume(queuedSkill.getSkill()))
 			{
 				// Abort attack.
-				_actor.abortAttack();
+				player.abortAttack();
 				
 				// Recharge shots.
-				if (!_actor.isChargedShot(ShotType.SOULSHOTS) && !_actor.isChargedShot(ShotType.BLESSED_SOULSHOTS))
+				if (!player.isChargedShot(ShotType.SOULSHOTS) && !player.isChargedShot(ShotType.BLESSED_SOULSHOTS))
 				{
-					_actor.rechargeShots(true, false, false);
+					player.rechargeShots(true, false, false);
 				}
 				
 				// Use queued skill.
-				_actor.getActingPlayer().useMagic(queuedSkill.getSkill(), queuedSkill.getItem(), queuedSkill.isCtrlPressed(), queuedSkill.isShiftPressed());
+				player.useMagic(queuedSkill.getSkill(), queuedSkill.getItem(), queuedSkill.isCtrlPressed(), queuedSkill.isShiftPressed());
 				return;
 			}
 		}
@@ -291,19 +300,21 @@ public class PlayerAI extends PlayableAI
 		{
 			return;
 		}
-		if (checkTargetLostOrDead((Creature) target))
+		
+		if (checkTargetLostOrDead(target.asCreature()))
 		{
 			// Notify the target
 			setTarget(null);
 			return;
 		}
+		
 		if (maybeMoveToPawn(target, _actor.getPhysicalAttackRange()))
 		{
 			return;
 		}
 		
 		clientStopMoving(null);
-		_actor.doAutoAttack((Creature) target);
+		_actor.doAutoAttack(target.asCreature());
 	}
 	
 	private void thinkCast()
@@ -311,7 +322,7 @@ public class PlayerAI extends PlayableAI
 		final WorldObject target = getCastTarget();
 		if ((_skill.getTargetType() == TargetType.GROUND) && _actor.isPlayer())
 		{
-			if (maybeMoveToPosition(((Player) _actor).getCurrentSkillWorldPosition(), _actor.getMagicalAttackRange(_skill)))
+			if (maybeMoveToPosition(_actor.asPlayer().getCurrentSkillWorldPosition(), _actor.getMagicalAttackRange(_skill)))
 			{
 				return;
 			}
@@ -383,7 +394,7 @@ public class PlayerAI extends PlayableAI
 		}
 		if (!(target instanceof StaticObject))
 		{
-			getActor().doInteract((Creature) target);
+			getActor().doInteract(target.asCreature());
 		}
 		setIntention(AI_INTENTION_IDLE);
 	}
@@ -425,6 +436,6 @@ public class PlayerAI extends PlayableAI
 	@Override
 	public Player getActor()
 	{
-		return (Player) super.getActor();
+		return super.getActor().asPlayer();
 	}
 }

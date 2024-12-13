@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
@@ -34,11 +38,10 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.newskillenchant.ExSkillEnchantInfo;
 
 /**
- * @author -Wooden-
+ * @author Mobius
  */
 public class RequestExEnchantSkill extends ClientPacket
 {
-	private static final Logger LOGGER = Logger.getLogger(RequestExEnchantSkill.class.getName());
 	private static final Logger LOGGER_ENCHANT = Logger.getLogger("enchant.skills");
 	
 	private SkillEnchantType _type;
@@ -102,7 +105,8 @@ public class RequestExEnchantSkill extends ClientPacket
 			return;
 		}
 		
-		Skill skill = player.getKnownSkill(_skillId);
+		final int skillId = player.getReplacementSkill(_skillId);
+		Skill skill = player.getKnownSkill(skillId);
 		if (skill == null)
 		{
 			return;
@@ -122,31 +126,32 @@ public class RequestExEnchantSkill extends ClientPacket
 		{
 			if (_type == SkillEnchantType.CHANGE)
 			{
-				final int group1 = (_skillSubLevel % 1000);
-				final int group2 = (skill.getSubLevel() % 1000);
+				final int group1 = _skillSubLevel % 1000;
+				final int group2 = skill.getSubLevel() % 1000;
 				if (group1 != group2)
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": Client: " + getClient() + " send incorrect sub level group: " + group1 + " expected: " + group2 + " for skill " + _skillId);
+					PacketLogger.warning(getClass().getSimpleName() + ": Client: " + getClient() + " send incorrect sub level group: " + group1 + " expected: " + group2 + " for skill " + _skillId);
 					return;
 				}
 			}
 			else if ((skill.getSubLevel() + 1) != _skillSubLevel)
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Client: " + getClient() + " send incorrect sub level: " + _skillSubLevel + " expected: " + (skill.getSubLevel() + 1) + " for skill " + _skillId);
+				PacketLogger.warning(getClass().getSimpleName() + ": Client: " + getClient() + " send incorrect sub level: " + _skillSubLevel + " expected: " + (skill.getSubLevel() + 1) + " for skill " + _skillId);
 				return;
 			}
 		}
 		
-		SkillEnchantHolder skillEnchantHolder = SkillEnchantData.getInstance().getSkillEnchant(skill.getId());
+		final SkillEnchantHolder skillEnchantHolder = SkillEnchantData.getInstance().getSkillEnchant(skill.getId());
 		if (skillEnchantHolder == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + " request enchant skill does not have star lvl skillId-" + skill.getId());
+			PacketLogger.warning(getClass().getSimpleName() + " request enchant skill does not have star lvl skillId-" + skill.getId());
 			return;
 		}
-		EnchantStarHolder starHolder = SkillEnchantData.getInstance().getEnchantStar(skillEnchantHolder.getStarLevel());
+		
+		final EnchantStarHolder starHolder = SkillEnchantData.getInstance().getEnchantStar(skillEnchantHolder.getStarLevel());
 		if (starHolder == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + " request enchant skill does not have star lvl-" + skill.getId());
+			PacketLogger.warning(getClass().getSimpleName() + " request enchant skill does not have star lvl-" + skill.getId());
 			return;
 		}
 		
@@ -155,10 +160,12 @@ public class RequestExEnchantSkill extends ClientPacket
 			return;
 		}
 		
+		player.reduceAdena(getClass().getSimpleName(), 1000000, null, true);
+		
 		final int starLevel = starHolder.getLevel();
 		if (Rnd.get(100) <= SkillEnchantData.getInstance().getChanceEnchantMap(skill))
 		{
-			final Skill enchantedSkill = SkillData.getInstance().getSkill(_skillId, _skillLevel, _skillSubLevel);
+			final Skill enchantedSkill = SkillData.getInstance().getSkill(skillId, _skillLevel, _skillSubLevel);
 			if (Config.LOG_SKILL_ENCHANTS)
 			{
 				final StringBuilder sb = new StringBuilder();
@@ -173,30 +180,33 @@ public class RequestExEnchantSkill extends ClientPacket
 			player.addSkill(enchantedSkill, true);
 			
 			final SystemMessage sm = new SystemMessage(SystemMessageId.SKILL_ENCHANT_WAS_SUCCESSFUL_S1_HAS_BEEN_ENCHANTED);
-			sm.addSkillName(_skillId);
+			sm.addSkillName(skillId);
 			player.sendPacket(sm);
 			
-			// player.setSkillEnchantExp(starHolder.getLvl(), 0);
-			player.setSkillEnchantExp(starLevel, 0);
 			player.sendPacket(ExEnchantSkillResult.STATIC_PACKET_TRUE);
+			player.setSkillEnchantExp(starLevel, 0);
 			player.setSkillTryEnchant(starLevel);
+			skill = player.getKnownSkill(skillId);
 		}
 		else
 		{
 			player.sendPacket(ExEnchantSkillResult.STATIC_PACKET_FALSE);
-			// player.setSkillEnchantExp(starHolder.getLvl(), 90000);
-			int stepExp = 90_000;
-			int curTry = player.getSkillTryEnchant(starLevel);
-			int finalResult = stepExp * curTry;
-			player.setSkillEnchantExp(starLevel, finalResult);
-			player.increaseTrySkillEnchant(starLevel);
+			final int curExp = player.getSkillEnchantExp(starHolder.getLevel());
+			if (curExp > 900000)
+			{
+				player.setSkillEnchantExp(starLevel, 0);
+			}
+			else
+			{
+				player.setSkillEnchantExp(starLevel, Math.min(900001, 90000 * player.getSkillTryEnchant(starLevel)));
+				player.increaseTrySkillEnchant(starLevel);
+			}
 		}
-		player.broadcastUserInfo();
-		player.sendSkillList();
 		
-		skill = player.getKnownSkill(_skillId);
-		player.reduceAdena("Try enchant skill", 1_000_000, null, true);
 		player.sendPacket(new ExSkillEnchantInfo(skill, player));
 		player.updateShortCuts(skill.getId(), skill.getLevel(), skill.getSubLevel());
+		
+		player.broadcastUserInfo();
+		player.sendSkillList();
 	}
 }

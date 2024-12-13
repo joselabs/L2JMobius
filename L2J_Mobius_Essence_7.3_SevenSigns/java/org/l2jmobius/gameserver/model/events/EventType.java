@@ -30,8 +30,6 @@ import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureDamageRecei
 import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureDeath;
 import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureHpChange;
 import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureKilled;
-import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureMDefChange;
-import org.l2jmobius.gameserver.model.events.impl.creature.OnCreaturePDefChange;
 import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureSee;
 import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureSkillFinishCast;
 import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureSkillUse;
@@ -67,6 +65,7 @@ import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerBypass
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerCallToChangeClass;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerChangeToAwakenedClass;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerChat;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerCheatDeath;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerClanCreate;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerClanDestroy;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerClanJoin;
@@ -82,6 +81,7 @@ import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerDlgAns
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerFameChanged;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerFishing;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerHennaAdd;
+import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerHennaEnchant;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerHennaRemove;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerItemAdd;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerItemDestroy;
@@ -170,8 +170,6 @@ public enum EventType
 	ON_CREATURE_DAMAGE_RECEIVED(OnCreatureDamageReceived.class, void.class, DamageReturn.class),
 	ON_CREATURE_DAMAGE_DEALT(OnCreatureDamageDealt.class, void.class),
 	ON_CREATURE_HP_CHANGE(OnCreatureHpChange.class, void.class),
-	ON_CREATURE_MDEF_CHANGE(OnCreatureMDefChange.class, void.class),
-	ON_CREATURE_PDEF_CHANGE(OnCreaturePDefChange.class, void.class),
 	ON_CREATURE_DEATH(OnCreatureDeath.class, void.class),
 	ON_CREATURE_KILLED(OnCreatureKilled.class, void.class, TerminateReturn.class),
 	ON_CREATURE_SEE(OnCreatureSee.class, void.class),
@@ -243,6 +241,7 @@ public enum EventType
 	// Henna events
 	ON_PLAYER_HENNA_ADD(OnPlayerHennaAdd.class, void.class),
 	ON_PLAYER_HENNA_REMOVE(OnPlayerHennaRemove.class, void.class),
+	ON_PLAYER_HENNA_ENCHANT(OnPlayerHennaEnchant.class, void.class),
 	// Inventory events
 	ON_PLAYER_ITEM_ADD(OnPlayerItemAdd.class, void.class),
 	ON_PLAYER_ITEM_DESTROY(OnPlayerItemDestroy.class, void.class),
@@ -271,6 +270,7 @@ public enum EventType
 	ON_PLAYER_CHANGE_TO_AWAKENED_CLASS(OnPlayerChangeToAwakenedClass.class, void.class),
 	ON_PLAYER_PVP_CHANGED(OnPlayerPvPChanged.class, void.class),
 	ON_PLAYER_PVP_KILL(OnPlayerPvPKill.class, void.class),
+	ON_PLAYER_CHEAT_DEATH(OnPlayerCheatDeath.class, void.class),
 	ON_PLAYER_RESTORE(OnPlayerRestore.class, void.class),
 	ON_PLAYER_SELECT(OnPlayerSelect.class, void.class, TerminateReturn.class),
 	ON_PLAYER_SOCIAL_ACTION(OnPlayerSocialAction.class, void.class),

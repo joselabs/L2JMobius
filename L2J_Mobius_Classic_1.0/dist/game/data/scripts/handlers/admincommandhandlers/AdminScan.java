@@ -82,7 +82,7 @@ public class AdminScan implements IAdminCommandHandler
 					}
 					
 					final WorldObject target = World.getInstance().findObject(objectId);
-					final Npc npc = target instanceof Npc ? (Npc) target : null;
+					final Npc npc = target instanceof Npc ? target.asNpc() : null;
 					if (npc == null)
 					{
 						BuilderUtil.sendSysMessage(activeChar, "NPC does not exist or object_id does not belong to an NPC");
@@ -193,7 +193,7 @@ public class AdminScan implements IAdminCommandHandler
 		}).build();
 		//@formatter:on
 		
-		if (result.getPages() > 0)
+		if (result.getPages() > 1)
 		{
 			html.replace("%pages%", "<center><table width=\"100%\" cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table></center>");
 		}

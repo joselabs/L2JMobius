@@ -65,7 +65,7 @@ public class Hide extends AbstractEffect
 	{
 		if (effected.isPlayer())
 		{
-			final Player player = effected.getActingPlayer();
+			final Player player = effected.asPlayer();
 			if (!player.inObserverMode())
 			{
 				player.setInvisible(false);

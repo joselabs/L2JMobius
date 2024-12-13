@@ -502,7 +502,7 @@ public class Q10369_NoblesseSoulTesting extends Quest
 	{
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final QuestState qs = getQuestState(player, false);
 			if ((qs != null) && qs.isStarted())
 			{
@@ -539,8 +539,9 @@ public class Q10369_NoblesseSoulTesting extends Quest
 				final Creature summoner = npc.getSummoner();
 				if (summoner != null)
 				{
-					final QuestState qs = getQuestState(summoner.getActingPlayer(), false);
-					if ((qs != null) && qs.isStarted() && qs.isCond(6) && hasQuestItems(summoner.getActingPlayer(), HOT_SPRINGS_WATER_BOTTLE))
+					final Player player = summoner.asPlayer();
+					final QuestState qs = getQuestState(player, false);
+					if ((qs != null) && qs.isStarted() && qs.isCond(6) && hasQuestItems(player, HOT_SPRINGS_WATER_BOTTLE))
 					{
 						qs.setCond(7, true);
 					}
@@ -552,10 +553,11 @@ public class Q10369_NoblesseSoulTesting extends Quest
 				final Creature summoner = npc.getSummoner();
 				if (summoner != null)
 				{
-					final QuestState qs = getQuestState(summoner.getActingPlayer(), false);
+					final Player player = summoner.asPlayer();
+					final QuestState qs = getQuestState(player, false);
 					if ((qs != null) && qs.isStarted())
 					{
-						npc.setTitle(summoner.getActingPlayer().getName());
+						npc.setTitle(player.getName());
 						npc.broadcastInfo();
 					}
 				}

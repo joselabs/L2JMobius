@@ -45,7 +45,7 @@ public class CanSummonSiegeGolemSkillCondition implements ISkillCondition
 			return false;
 		}
 		
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
 		boolean canSummonSiegeGolem = true;
 		if (player.isAlikeDead() || player.isCursedWeaponEquipped() || (player.getClan() == null))
 		{

@@ -44,7 +44,7 @@ public class OpSkillAcquireSkillCondition implements ISkillCondition
 			return false;
 		}
 		
-		final int skillLevel = ((Creature) target).getSkillLevel(_skillId);
+		final int skillLevel = target.asCreature().getSkillLevel(_skillId);
 		return _hasLearned ? skillLevel != 0 : skillLevel == 0;
 	}
 }

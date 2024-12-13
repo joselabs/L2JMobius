@@ -49,6 +49,6 @@ public class GiveSp extends AbstractEffect
 			return;
 		}
 		
-		effector.getActingPlayer().addExpAndSp(0, _sp);
+		effector.asPlayer().addExpAndSp(0, _sp);
 	}
 }

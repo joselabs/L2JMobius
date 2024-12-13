@@ -126,7 +126,7 @@ public final class StigMachFriend extends AbstractNpcAI
 	
 	public void onCreatureAttacked(OnCreatureAttacked event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Creature attacker = event.getAttacker();
 		final Instance instance = npc.getInstanceWorld();
 		

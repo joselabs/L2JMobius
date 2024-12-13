@@ -1,29 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="32700" toLevel="1" name="Aqua Prison">
 		<!-- Traps the target inside a water drop, immobilizing it. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32644</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<castRange>1100</castRange>
-		<hitTime>1500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>10000</reuseDelay>
-		<effectPoint>-1000</effectPoint>
+		<targetType>ENEMY</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalResists>STUN;TURN_FLEE</abnormalResists>
+		<abnormalTime>5</abnormalTime>
 		<abnormalType>AIRBIND</abnormalType>
 		<abnormalVisualEffect>AIRBIND</abnormalVisualEffect>
-		<abnormalResists>STUN;TURN_FLEE</abnormalResists>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<effectRange>400</effectRange>
-		<magicLevel>87</magicLevel>
-		<reuseDelayGroup>11050</reuseDelayGroup>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>5</abnormalTime>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>1100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1000</effectPoint>
+		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>87</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<reuseDelayGroup>11050</reuseDelayGroup>
 		<effects>
 			<effect name="AirBind" />
 			<effect name="DamOverTime">
@@ -40,28 +40,28 @@
 		<!-- Decrease the enemy's Water Attack Resistance. -->
 		<icon>icon.skill1071</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>30000</reuseDelay>
-		<effectPoint>-1000</effectPoint>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>ARMOR_WATER</abnormalType>
 		<activateRate>80</activateRate>
-		<basicProperty>MAGIC</basicProperty>
-		<effectRange>1400</effectRange>
+		<affectScope>SINGLE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1000</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>100</magicLevel>
 		<mpConsume>80</mpConsume>
 		<mpInitialConsume>80</mpInitialConsume>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>30000</reuseDelay>
 		<effects>
 			<effect name="DefenceAttribute">
 				<amount>10</amount>
@@ -77,29 +77,29 @@
 		<!-- Decrease the enemies' Water Attack Resistance. -->
 		<icon>icon.skill1071</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>30000</reuseDelay>
-		<effectPoint>-1000</effectPoint>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>4</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>ARMOR_WATER</abnormalType>
 		<activateRate>40</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<basicProperty>MAGIC</basicProperty>
-		<effectRange>1400</effectRange>
-		<lvlBonusRate>20</lvlBonusRate>
-		<magicLevel>100</magicLevel>
-		<mpConsume>80</mpConsume>
-		<magicCriticalRate>5</magicCriticalRate>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1000</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>100</magicLevel>
+		<mpConsume>80</mpConsume>
+		<reuseDelay>30000</reuseDelay>
 		<effects>
 			<effect name="DefenceAttribute">
 				<amount>150</amount>
@@ -115,20 +115,19 @@
 		<!-- Restores the target's HP. -->
 		<icon>icon.skill1015</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<targetType>TARGET</targetType>
+		<affectScope>PARTY_PLEDGE</affectScope>
 		<castRange>600</castRange>
-		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-1000</effectPoint>
-		<effectPoint>575</effectPoint>
 		<effectRange>1100</effectRange>
+		<hitTime>1000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>100</magicLevel>
 		<mpConsume>48</mpConsume>
 		<mpInitialConsume>12</mpInitialConsume>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>TARGET</targetType>
-		<affectScope>PARTY_PLEDGE</affectScope>
+		<reuseDelay>10000</reuseDelay>
 		<effects>
 			<effect name="Heal">
 				<power>100000</power>
@@ -139,19 +138,19 @@
 		<!-- Bites the enemy. -->
 		<icon>icon.skill0325</icon>
 		<operateType>A1</operateType>
-		<castRange>40</castRange>
-		<hitTime>1000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>10000</reuseDelay>
-		<effectPoint>-1000</effectPoint>
-		<basicProperty>PHYSICAL</basicProperty>
-		<effectRange>400</effectRange>
-		<magicLevel>1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>40</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-1000</effectPoint>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>10000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>10000</power> <!-- Fix: Retail Missed -->
 				<overHit>true</overHit>
 			</effect>
@@ -160,21 +159,21 @@
 	<skill id="32705" toLevel="1" name="Fafurion: Basic Attack">
 		<!-- Fafurion Basic Attack -->
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>850</attributeValue>
 		<castRange>250</castRange>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>300</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>850</attributeValue>
 		<hitTime>1000</hitTime>
 		<magicLevel>-1</magicLevel>
-		<operateType>A1</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>10000</power>
 			</effect>
 		</effects>
@@ -183,28 +182,28 @@
 		<!-- Fafurion's bite deals damage inflicting Bleed. Inflicted status: Infection (Bleed, Poison). -->
 		<icon>icon.skill32706</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>300</castRange>
-		<hitTime>1500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>9</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>50</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>300</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<effectRange>400</effectRange>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>100</magicLevel>
 		<mpConsume>80</mpConsume>
-		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>BLEED</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 				<overHit>true</overHit>
 			</effect>
@@ -218,34 +217,38 @@
 		<!-- Water Blast Presentation -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>2000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32708" toLevel="2" name="Fafurion: Water Blast">
-		<!-- Suffering magic damage caused by the water pillar that Fafurion summoned and being blown away. -->
+		<!-- Level 1: Suffering magic damage caused by the water pillar that Fafurion summoned and being blown away. -->
+		<!-- Level 2: Fafurion attacks with water magic. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32708</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<affectRange>200</affectRange>
 		<activateRate>500</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>
+			<value level="1">500</value>
+			<value level="2">0</value>
+		</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
 		<trait>KNOCKDOWN</trait>
-		<basicProperty>NONE</basicProperty>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>25000</power>
 			</effect>
 			<effect name="KnockBack">
@@ -271,47 +274,51 @@
 		<!-- Fafurion summons a water vortex dealing water damage. Inflicted status: Pull. -->
 		<icon>icon.skill32709</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>500</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32710" toLevel="1" name="Fafurion's Hydro Blast">
 		<!-- Hydro Blast Presentation -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>2000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32711" toLevel="2" name="Fafurion's Hydro Blast">
-		<!-- Suffering magic damage caused by the water pillar that Fafurion summoned and being blown away. -->
+		<!-- Level 1: Suffering magic damage caused by the water pillar that Fafurion summoned and being blown away. -->
+		<!-- Level 2: Fafurion attacks with water magic. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>
 			<value level="1">icon.skill0000</value>
 			<value level="2">icon.skill32708</value>
 		</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<affectRange>200</affectRange>
 		<activateRate>500</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>
+			<value level="1">500</value>
+			<value level="2">0</value>
+		</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
 		<trait>KNOCKDOWN</trait>
-		<basicProperty>NONE</basicProperty>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>25000</power>
 			</effect>
 			<effect name="KnockBack">
@@ -336,32 +343,31 @@
 	<skill id="32712" toLevel="1" name="Fafurion Hydro Spiral">
 		<!-- Fafurion summons a water vortex dealing water damage. Inflicted status: Pull. -->
 		<icon>icon.skill32709</icon>
-		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<operateType>CA1</operateType>
+		<targetType>GROUND</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>1500</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<channelingStart>1</channelingStart>
 		<channelingTickInterval>2</channelingTickInterval>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1500</effectRange>
+		<hitCancelTime>4</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>80</magicLevel>
 		<mpConsume>36</mpConsume>
 		<mpInitialConsume>36</mpInitialConsume>
 		<mpPerChanneling>80</mpPerChanneling>
-		<operateType>CA1</operateType>
 		<reuseDelay>20000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>4</hitCancelTime>
-		<effectRange>1500</effectRange>
-		<targetType>GROUND</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<channelingEffects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>25000</power>
 			</effect>
 		</channelingEffects>
@@ -369,25 +375,25 @@
 	<skill id="32713" toLevel="1" name="Fafurion: Tail Strike">
 		<!-- Fafurion's smashing tail deals damage and knocks down. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32713</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<coolTime>1500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>850</attributeValue>
+		<coolTime>1500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<fanRange>0;180;1500;600</fanRange>
 		<hitTime>3000</hitTime>
-		<magicLevel>-1</magicLevel>
-		<operateType>A2</operateType>
-		<trait>SHOCK</trait>
 		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<magicLevel>-1</magicLevel>
+		<trait>SHOCK</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 			<effect name="BlockActions">
@@ -398,25 +404,25 @@
 	<skill id="32714" toLevel="1" name="Fafurion: Tail Strike">
 		<!-- Fafurion's smashing tail deals damage and knocks down. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32713</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<coolTime>1500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>850</attributeValue>
+		<coolTime>1500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<fanRange>0;180;1500;600</fanRange>
 		<hitTime>500</hitTime>
-		<magicLevel>-1</magicLevel>
-		<operateType>A2</operateType>
 		<isDebuff>true</isDebuff>
+		<magicLevel>-1</magicLevel>
 		<trait>SHOCK</trait>
-		<targetType>SELF</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 			<effect name="BlockActions">
@@ -428,26 +434,26 @@
 		<!-- Fafurion creates a huge wave which deals magic damage. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32715</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
 		<activateRate>100</activateRate>
-		<reuseDelay>30000</reuseDelay>
-		<castRange>800</castRange>
-		<affectRange>1500</affectRange>
-		<lvlBonusRate>30</lvlBonusRate>
-		<trait>KNOCKDOWN</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>1500</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<castRange>800</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<lvlBonusRate>30</lvlBonusRate>
+		<reuseDelay>30000</reuseDelay>
+		<trait>KNOCKDOWN</trait>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>25000</power>
 			</effect>
 			<effect name="KnockBack">
@@ -470,27 +476,33 @@
 		</effects>
 	</skill>
 	<skill id="32716" toLevel="3" name="Fafurion Breath">
-		<!-- Fafurion inflicts physical damage to enemies in front of it. -->
+		<!-- Level 1: Fafurion inflicts physical damage to enemies in front of it. -->
+		<!-- Level 2: Knocked back after receiving physical damage from Fafurion's breath. -->
+		<!-- Level 3: Fafurion deals physical damage to enemies in front and knocks them back. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32716</icon>
 		<operateType>A1</operateType>
-		<castRange>600</castRange>
-		<effectRange>900</effectRange>
-		<affectRange>900</affectRange>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<hitTime>3000</hitTime>
-		<coolTime>1500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>900</affectRange>
+		<affectScope>FAN</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>850</attributeValue>
-		<magicLevel>-1</magicLevel>
-		<isDebuff>true</isDebuff>
+		<castRange>600</castRange>
+		<coolTime>1500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<effectRange>900</effectRange>
 		<fanRange>0;0;2500;900</fanRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<hitTime>
+			<value level="1">3000</value>
+			<value level="2">5000</value>
+			<value level="3">0</value>
+		</hitTime>
+		<isDebuff>true</isDebuff>
+		<magicLevel>-1</magicLevel>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 			<effect name="DamOverTime">
@@ -500,24 +512,28 @@
 		</effects>
 	</skill>
 	<skill id="32717" toLevel="2" name="Fafurion Fear">
-		<!-- Suffering physical damage caused by Fafurion's Energy of Fear. Targets flee with P./ M. Def. decreased. -->
+		<!-- Level 1: Suffering physical damage caused by Fafurion's Energy of Fear. Targets flee with P./ M. Def. decreased. -->
+		<!-- Level 2: Fafurion's Energy of Fear forces enemies to flee and decreases their P./ M. Def. and Speed. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32717</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>4</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>600</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
-		<hitTime>3000</hitTime>
+		<hitTime>
+			<value level="1">3000</value>
+			<value level="2">0</value>
+		</hitTime>
 		<isDebuff>true</isDebuff>
-		<magicLevel>-1</magicLevel>
-		<operateType>A2</operateType>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicLevel>-1</magicLevel>
 		<trait>DERANGEMENT</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="BlockControl" />
 			<effect name="Fear" />
@@ -539,25 +555,25 @@
 		<!-- Fafurion deals physical damage to enemies and stuns them. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32718</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>5000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>450</attributeValue>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<fanRange>0;180;1500;600</fanRange>
-		<reuseDelay>60000</reuseDelay>
+		<hitTime>5000</hitTime>
+		<isDebuff>true</isDebuff>
 		<magicLevel>110</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<trait>SHOCK</trait>
-		<targetType>SELF</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 			<effect name="BlockActions">
@@ -569,44 +585,44 @@
 		<!-- Water Orb summoning presentation. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>5000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>5000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32720" toLevel="1" name="Fafurion Water Bomb">
 		<!-- The orb casts magic that inflicts great water damage on the aimed target. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>900</castRange>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32721" toLevel="1" name="Fafurion Wing Strike">
 		<!-- Fafurion attacks enemies in front with wind magic. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32721</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>5000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>450</attributeValue>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<fanRange>0;180;1500;600</fanRange>
-		<reuseDelay>60000</reuseDelay>
+		<hitTime>5000</hitTime>
+		<isDebuff>true</isDebuff>
 		<magicLevel>110</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<trait>SHOCK</trait>
-		<targetType>SELF</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 			<effect name="KnockBack">
@@ -623,34 +639,34 @@
 		<!-- Tidal Wave Presentation -->
 		<icon>icon.skill32722</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>7000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>7000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32723" toLevel="2" name="Fafurion: Tidal Wave">
 		<!-- Fafurion creates a huge wave which deals magic damage. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32722</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>7000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<affectRange>200</affectRange>
 		<activateRate>500</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>500</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
 		<trait>KNOCKDOWN</trait>
-		<basicProperty>NONE</basicProperty>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>25000</power>
 			</effect>
 			<effect name="KnockBack">
@@ -676,19 +692,19 @@
 		<!-- Fafurion becomes enraged, increasing its P. Atk./ M. Atk. -->
 		<icon>icon.skill32724</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32725" toLevel="1" name="Fafurion Berserk">
 		<!-- Livid, Fafurion has changed its appearance, and its P. Atk./ M. Atk. has increased. -->
 		<icon>icon.skill32724</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32726" toLevel="1" name="Fafurion">
 		<!-- The Water Dragon spawned by Shillien. He slumbered for a long time deep in the sea, his fury controlled by the Elven Witch. However, when the Seven Seals were damaged, he woke up. Now Fafurion, powered by his fury, seeks to resurrect Shillien. -->
@@ -700,12 +716,16 @@
 		</effects>
 	</skill>
 	<skill id="32727" toLevel="3" name="Fafurion's Arrogance Lv. 1">
-		<!-- Fafurion is not very confident of his own powers. -->
+		<!-- Level 1: Fafurion is not very confident of his own powers. -->
+		<!-- Level 2: Fafurion is gradually gaining confidence in his own powers. -->
+		<!-- Level 3: Fafurion is sure of his own powers. -->
 		<icon>icon.skillboss</icon>
 		<operateType>P</operateType>
 	</skill>
 	<skill id="32728" toLevel="3" name="Fafurion's Anger Lv. 1">
-		<!-- Fafurion gets angry as he suffers at the hands of the challengers. -->
+		<!-- Level 1: Fafurion gets angry as he suffers at the hands of the challengers. -->
+		<!-- Level 2: Fafurion is growing even angrier from the constant pain caused by the challengers. -->
+		<!-- Level 3: Fafurion is infuriated by the massive pain he is feeling. -->
 		<icon>icon.skillboss</icon>
 		<operateType>P</operateType>
 	</skill>
@@ -713,31 +733,31 @@
 		<!-- A prayer that the priestess chants to quell Fafurion's rage. If the prayer works, Fafurion's rage decreases sharply. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>15000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>60000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>15000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<reuseDelay>60000</reuseDelay>
 	</skill>
 	<skill id="32730" toLevel="1" name="Breath">
 		<!-- Inflicts damage on enemies at the front. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>500</castRange>
-		<hitTime>2000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<magicLevel>-1</magicLevel>
-		<isDebuff>true</isDebuff>
-		<fanRange>0;0;2500;900</fanRange>
-		<targetType>SELF</targetType>
-		<affectScope>SQUARE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
+		<castRange>500</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<fanRange>0;0;2500;900</fanRange>
+		<hitTime>2000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicLevel>-1</magicLevel>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 			<effect name="DamOverTime">
@@ -750,18 +770,18 @@
 		<!-- Creates a wave around you to inflict damage. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>2000</hitTime>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
-		<affectRange>200</affectRange>
-		<magicLevel>-1</magicLevel>
+		<hitTime>2000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<magicLevel>-1</magicLevel>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>25000</power>
 			</effect>
 		</effects>
@@ -770,22 +790,22 @@
 		<!-- Attacks enemies in the back with the tail, dealing damage and stunning them. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill32713</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>2000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<fanRange>0;180;1500;600</fanRange>
+		<hitTime>2000</hitTime>
+		<isDebuff>true</isDebuff>
 		<magicLevel>-1</magicLevel>
 		<trait>SHOCK</trait>
-		<targetType>SELF</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 			<effect name="BlockActions">
@@ -797,73 +817,81 @@
 		<!-- Spreads wings to inflict damage. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>300</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>100</castRange>
-		<effectRange>400</effectRange>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
-		<affectRange>300</affectRange>
+		<effectRange>400</effectRange>
+		<hitTime>2000</hitTime>
+		<isDebuff>true</isDebuff>
 		<magicLevel>-1</magicLevel>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="32734" toLevel="2" name="Spiral Shoot">
-		<!-- Slashes with its forelegs and appendages. -->
+		<!-- Level 1: Slashes with its forelegs and appendages. -->
+		<!-- Level 2: Deals physical damage inflicting Bleed and gradually decreasing HP. Inflicted status: Infection (Bleed, Poison). -->
 		<icon>
 			<value level="1">icon.skill0000</value>
 			<value level="2">icon.skill1511</value>
 		</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>2000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>650</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>250</attributeValue>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>
+			<value level="1">2000</value>
+			<value level="2">0</value>
+		</hitTime>
+		<isDebuff>true</isDebuff>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="32735" toLevel="2" name="Sword Earthquake">
-		<!-- Deals great damage and stuns. -->
+		<!-- Level 1: Deals great damage and stuns. -->
+		<!-- Level 2: Deals physical damage and stuns. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>
 			<value level="1">icon.skill0000</value>
 			<value level="2">icon.skill0003</value>
 		</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>100</castRange>
-		<effectRange>400</effectRange>
-		<hitTime>1500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>100</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<effectRange>400</effectRange>
+		<hitTime>
+			<value level="1">1500</value>
+			<value level="2">0</value>
+		</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
 		<magicLevel>-1</magicLevel>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">500000</value>
 					<value level="2">600000</value>
@@ -875,28 +903,32 @@
 		</effects>
 	</skill>
 	<skill id="32736" toLevel="2" name="Shield Bash">
-		<!-- Swings a shield to inflict damage on enemies in front and knock them down. -->
+		<!-- Level 1: Swings a shield to inflict damage on enemies in front and knock them down. -->
+		<!-- Level 2: Deals physical damage and knocks down. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>
 			<value level="1">icon.skill0000</value>
 			<value level="2">icon.skill0352</value>
 		</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
-		<isDebuff>true</isDebuff>
-		<hitTime>1500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
-		<isMagic>1</isMagic> <!-- Static Skill -->
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>FAN</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>250</attributeValue>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<fanRange>0;0;200;90</fanRange>
-		<targetType>SELF</targetType>
-		<affectScope>FAN</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<hitTime>
+			<value level="1">1500</value>
+			<value level="2">0</value>
+		</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Static Skill -->
 		<trait>KNOCKDOWN</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">150000</value>
 					<value level="2">300000</value>
@@ -914,17 +946,14 @@
 		</effects>
 	</skill>
 	<skill id="32737" toLevel="2" name="Shield Dash">
-		<!-- Dashes at the target in front, damaging and stunning it. -->
+		<!-- Level 1: Dashes at the target in front, damaging and stunning it. -->
+		<!-- Level 2: Charges to the enemy, deals physical damage and stuns. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>
 			<value level="1">icon.skill0000</value>
 			<value level="2">icon.skill10008</value>
 		</icon>
 		<operateType>DA2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>400</castRange>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -933,18 +962,25 @@
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>400</affectRange>
+		<affectScope>FAN</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>400</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<effectRange>800</effectRange>
 		<fanRange>0;0;600;60</fanRange>
+		<hitTime>
+			<value level="1">500</value>
+			<value level="2">0</value>
+		</hitTime>
+		<isDebuff>true</isDebuff>
 		<magicLevel>-1</magicLevel>
 		<nextAction>ATTACK</nextAction>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">150000</value>
 					<value level="2">300000</value>
@@ -959,16 +995,16 @@
 		<!-- Uses water to sharply increase P. Def. -->
 		<icon>icon.skill1238</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalVisualEffect>BLESS_AVE</abnormalVisualEffect>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<affectScope>SINGLE</affectScope>
 		<castRange>900</castRange>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>100</effectPoint>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<hitTime>2000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>100</amount>
@@ -977,33 +1013,37 @@
 		</effects>
 	</skill>
 	<skill id="32739" toLevel="2" name="Water Spout">
-		<!-- Uses water to inflict damage on nearby enemies and pull them. -->
+		<!-- Level 1: Uses water to inflict damage on nearby enemies and pull them. -->
+		<!-- Level 2: Pulled forcefully after receiving damage from a surging whirlpool. -->
 		<icon>
 			<value level="1">icon.skill0000</value>
 			<value level="2">icon.skill32709</value>
 		</icon>
 		<operateType>A3</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>2000</hitTime>
-		<coolTime>500</coolTime>
 		<abnormalType>STUN</abnormalType>
-		<effectPoint>-100</effectPoint>
-		<attributeType>WATER</attributeType>
-		<attributeValue>250</attributeValue>
 		<activateRate>100</activateRate>
 		<affectHeight>-100;200</affectHeight>
-		<affectRange>450</affectRange>
-		<trait>PULL</trait>
-		<basicProperty>PHYSICAL</basicProperty>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>450</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>250</attributeValue>
+		<basicProperty>PHYSICAL</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>
+			<value level="1">2000</value>
+			<value level="2">0</value>
+		</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<trait>PULL</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">150000</value>
 					<value level="2">300000</value>
@@ -1018,18 +1058,18 @@
 		<!-- Shoots a giant arrow imbued with the Water attribute at the target. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>900</castRange>
-		<hitTime>2000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
-		<mpConsume>1</mpConsume>
-		<attributeType>WATER</attributeType>
-		<attributeValue>250</attributeValue>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>250</attributeValue>
+		<castRange>900</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>2000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>1</mpConsume>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>585</power>
 			</effect>
 		</effects>
@@ -1038,25 +1078,25 @@
 		<!-- Shoots several arrows imbued with the Water attribute, attacking the target and nearby enemies and knocking them back. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill11025</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<castRange>600</castRange>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<effectPoint>-100</effectPoint>
-		<mpConsume>1</mpConsume>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>600</affectRange>
+		<affectScope>RANGE</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>250</attributeValue>
+		<castRange>600</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
 		<effectRange>900</effectRange>
-		<affectRange>600</affectRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<mpConsume>1</mpConsume>
 		<trait>KNOCKDOWN</trait>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>500</power>
 			</effect>
 			<effect name="KnockBack">
@@ -1070,24 +1110,24 @@
 		<!-- Causes a wave in front of you, dealing magic damage and decreasing Atk. Spd./ Casting Spd./ Speed. -->
 		<icon>icon.oasis_feel</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>30000</reuseDelay>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<affectRange>200</affectRange>
-		<basicProperty>MAGIC</basicProperty>
-		<lvlBonusRate>20</lvlBonusRate>
-		<magicLevel>-1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>-1</magicLevel>
+		<reuseDelay>30000</reuseDelay>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>25000</power>
 			</effect>
 			<effect name="PhysicalAttackSpeed">
@@ -1108,25 +1148,25 @@
 		<!-- Attacks the target and nearby enemies decreasing their MP continuously. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill5016</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
-		<effectRange>1400</effectRange>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>30000</reuseDelay>
-		<effectPoint>-100</effectPoint>
-		<affectRange>300</affectRange>
-		<magicLevel>-1</magicLevel>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>DEPORT</abnormalType>
 		<abnormalVisualEffect>DEPORT</abnormalVisualEffect>
-		<basicProperty>NONE</basicProperty>
-		<trait>DEPORT</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>300</affectRange>
+		<affectScope>RANGE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>900</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicLevel>-1</magicLevel>
+		<reuseDelay>30000</reuseDelay>
+		<trait>DEPORT</trait>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
@@ -1149,20 +1189,20 @@
 		<!-- The grace of the Water Dragon strengthens you, sharply increasing water attribute attacks, and also increasing M. Atk./ Casting Spd./ M. Def. -->
 		<icon>icon.skill4280</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>2500</hitTime>
+		<affectScope>SINGLE</affectScope>
 		<coolTime>500</coolTime>
 		<effectPoint>100</effectPoint>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<hitTime>2500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<effects>
 			<effect name="DefenceAttribute">
 				<amount>100</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1179,8 +1219,8 @@
 	<skill id="32746" toLevel="1" name="Suicide Big Bomb">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="32747" toLevel="1" name="Cyrax">
 		<!-- A guardian protecting Fafurion Temple. Since Fafurion ordered it to guard the path to his nest, Cyrax has been guarding Fafurion Temple. To defeat Fafurion, you must first eliminate Cyrax. -->
@@ -1209,17 +1249,17 @@
 		<!-- The barrier protects from 600 hits. If you don't deal 600 hits for 15 sec., the boss' HP will be fully restored. -->
 		<icon>icon.skill11621</icon>
 		<operateType>A2</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
-		<staticReuse>true</staticReuse>
-		<isMagic>2</isMagic>
 		<abnormalType>INVINCIBILITY</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<effectPoint>379</effectPoint>
+		<coolTime>500</coolTime>
+		<effectPoint>0</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="DamageBlock">
 				<type>BLOCK_HP</type>
@@ -1243,9 +1283,9 @@
 		<!-- For 4 h., Max HP/ MP/ CP +30%, P. Atk./ M. Atk./ P. Def./ M. Def. +30%, Atk./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +100, and Skill MP Consumption -15%. Additionally Acquired XP/SP +30%. The effect remains after death. Cannot be used in Olympiad/ Ceremony of Chaos. -->
 		<icon>icon.armor_t2000_b_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32753" toLevel="1" name="Recovers 140000 Vitality">
 		<icon>icon.skill0000</icon>
@@ -1255,29 +1295,62 @@
 		<!-- You are marked with the Seal of Lilith after being killed by another player. Cannot resurrect for 10 min., PvP Damage -15%. -->
 		<icon>icon.skill5873</icon>
 		<operateType>A2</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
 		<effectPoint>-100</effectPoint>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32757" toLevel="24" name="Anniversary Fireworks Lv. 1">
-		<!-- Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 1: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 2: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 3: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 4: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 5: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 6: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 7: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 8: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 9: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 10: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 11: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 12: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 13: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 14: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 15: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 16: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 17: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 18: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 19: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 20: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 21: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 22: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 23: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once an hour. There are 23 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 24: Agathion prepares to leave and bids farewell. -->
 		<icon>icon.ev_15th_buff_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32758" toLevel="11" name="Anniversary Fireworks Lv. 1">
-		<!-- Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 1: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 2: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 3: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 4: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 5: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 6: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 7: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 8: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 9: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 10: Agathion's unique gift in celebration of the anniversary of Lineage II. P. Atk. +5%, M. Atk. +7%, P./ M. Def. +5%, P. Critical Rate/ M. Skill Critical Rate +50, P. Skill Critical Rate +5%, P. Critical Damage and P./ M. Skill Critical Damage +5%, Atk. Spd./ Casting Spd. +5%. You can receive a Anniversary Firecracker once every 2 h. There are 10 levels. Note!The Anniversary Fireworks Buff and Anniversary Firecrackers can't be obtained if your character is dead or has no free slots in the inventory. -->
+		<!-- Level 11: Agathion prepares to leave and bids farewell. -->
 		<icon>icon.ev_15th_buff_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32759" toLevel="1" name="Anniversary Fireworks - Reward">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>5000</reuseDelay>
 	</skill>
 	<skill id="32760" toLevel="1" name="Horn Melody - Anniversary">

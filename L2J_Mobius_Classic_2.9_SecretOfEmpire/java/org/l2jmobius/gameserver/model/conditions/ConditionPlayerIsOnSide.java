@@ -45,6 +45,7 @@ public class ConditionPlayerIsOnSide extends Condition
 		{
 			return false;
 		}
-		return effector.getActingPlayer().getPlayerSide() == _side;
+		
+		return effector.asPlayer().getPlayerSide() == _side;
 	}
 }

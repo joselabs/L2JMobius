@@ -4,20 +4,20 @@
 		<!-- Recovers vitality upon acquiring XP. The effect lasts for 20 min. -->
 		<icon>BranchSys.icon.br_birthday_cake_i00</icon>
 		<operateType>A2</operateType>
-		<castRange>500</castRange>
-		<effectPoint>1</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<effectRange>500</effectRange>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>500</castRange>
+		<effectPoint>1</effectPoint>
+		<effectRange>500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>4</isMagic>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="VitalityPointsRate">
 				<amount>-10</amount>
@@ -25,17 +25,20 @@
 		</effects>
 	</skill>
 	<skill id="13001" toLevel="4" name="Vesper Heavy Armor Set">
-		<!-- P. Def. +5.57%. -->
+		<!-- Level 1: P. Def. +5.57%. -->
+		<!-- Level 2: P. Def. +5.57%, Max HP +531. -->
+		<!-- Level 3: P. Def. +5.57%, Max HP +531, P. Atk. +5.57%. -->
+		<!-- Level 4: P. Def. +5.57%, Max HP +531, P. Atk. +5.57%, Obstruction/ Stupor Resistance +70%. STR +2, DEX -2. -->
 		<icon>icon.armor_t94_u_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<SLEEP>70</SLEEP>
 				<HOLD>70</HOLD>
 			</effect>
-			<effect name="PAtk" fromLevel="3" toLevel="4">
+			<effect name="PhysicalAttack" fromLevel="3" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
@@ -58,18 +61,21 @@
 		</effects>
 	</skill>
 	<skill id="13002" toLevel="4" name="Vesper Noble Heavy Armor Set">
-		<!-- P. Def. +5.57%. -->
+		<!-- Level 1: P. Def. +5.57%. -->
+		<!-- Level 2: P. Def. +5.57%, Max HP +540, P. Accuracy +4. -->
+		<!-- Level 3: P. Def. +5.57%, Max HP +540, P. Accuracy +4, P. Atk. +5.57%, and Speed +5. -->
+		<!-- Level 4: P. Def. +5.57%, Max HP +540, P. Accuracy +4, P. Atk. +5.57%, Speed +5, Obstruction/ Stupor Resistance +70%, M. Damage Resistance +1%. Activates the cloak slot. STR +2, DEX -2. -->
 		<icon>icon.armor_t94_u_i01</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<SLEEP>70</SLEEP>
 				<HOLD>70</HOLD>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="3" toLevel="4">
+			<effect name="PhysicalAttack" fromLevel="3" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
@@ -85,7 +91,7 @@
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic" fromLevel="4" toLevel="4">
+			<effect name="MagicalSuccessResistance" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -104,13 +110,16 @@
 		</effects>
 	</skill>
 	<skill id="13003" toLevel="4" name="Vesper Light Armor Set">
-		<!-- MP Recovery Rate +5%. -->
+		<!-- Level 1: MP Recovery Rate +5%. -->
+		<!-- Level 2: MP Recovery Rate +5%, Max MP +347. -->
+		<!-- Level 3: MP Recovery Rate +5%, Max MP +347, P. Atk. +5.57%. -->
+		<!-- Level 4: MP Recovery Rate +5%, Max MP +347, P. Atk. +5.57%, Atk. Spd. +5%, STR +1, CON -2, DEX +1. -->
 		<icon>icon.armor_t95_u_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk" fromLevel="3" toLevel="4">
+			<effect name="PhysicalAttack" fromLevel="3" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
@@ -141,17 +150,20 @@
 		</effects>
 	</skill>
 	<skill id="13004" toLevel="4" name="Vesper Noble Light Armor Set">
-		<!-- MP Recovery Rate +5%. -->
+		<!-- Level 1: MP Recovery Rate +5%. -->
+		<!-- Level 2: MP Recovery Rate +5%, Max MP +354, P. Evasion +3. -->
+		<!-- Level 3: MP Recovery Rate +5%, Max MP +354, P. Evasion +3, P. Atk. +5.57%, Critical Damage for standard attacks +172. -->
+		<!-- Level 4: MP Recovery Rate +5%, Max MP +354, P. Evasion +3, P. Atk. +5.57%, Critical Damage for standard attacks +172, Atk. Spd. +5%, Paralysis Resistance +50%. Activates the cloak slot. STR +1, CON -2, DEX +5%0. -->
 		<icon>icon.armor_t95_u_i01</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<PARALYZE>50</PARALYZE>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="3" toLevel="4">
+			<effect name="PhysicalAttack" fromLevel="3" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
@@ -190,16 +202,19 @@
 		</effects>
 	</skill>
 	<skill id="13005" toLevel="4" name="Vesper Robe Set">
-		<!-- MP Recovery Rate +5.57%. -->
+		<!-- Level 1: MP Recovery Rate +5.57%. -->
+		<!-- Level 2: MP Recovery Rate +5.57%, M. Atk. +8.47%. -->
+		<!-- Level 3: MP Recovery Rate +5.57%, M. Atk. +8.47%, Casting Spd. +15%. -->
+		<!-- Level 4: MP Recovery Rate +5.57%, M. Atk. +8.47%, Casting Spd. +15%, Confusion Resistance +50%, Casting Interruption Rate -30, INT +1, MEN -2, WIT +1. -->
 		<icon>icon.armor_t96_u_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
-			<effect name="MAtk" fromLevel="2" toLevel="4">
+			<effect name="MagicalAttack" fromLevel="2" toLevel="4">
 				<amount>8.47</amount>
 				<mode>PER</mode>
 			</effect>
@@ -230,17 +245,20 @@
 		</effects>
 	</skill>
 	<skill id="13006" toLevel="4" name="Vesper Noble Robe Set">
-		<!-- MP Recovery Rate +5.57%. -->
+		<!-- Level 1: MP Recovery Rate +5.57%. -->
+		<!-- Level 2: MP Recovery Rate +5.57%, M. Atk. +8.47%, Casting Interruption Rate -30. -->
+		<!-- Level 3: MP Recovery Rate +5.57%, M. Atk. +8.47%, Casting Spd. +15%, Speed +7, Casting Interruption Rate -30. -->
+		<!-- Level 4: MP Recovery Rate +5.57%, M. Atk. +8.47%, Casting Spd. +15%, Speed +7, Confusion Resistance +50%, Casting Interruption Rate -30, M. Skill MP Consumption -3%, INT +1, MEN -2, WIT +5.57%0. -->
 		<icon>icon.armor_t96_u_i01</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="MAtk" fromLevel="2" toLevel="4">
+			<effect name="MagicalAttack" fromLevel="2" toLevel="4">
 				<amount>8.47</amount>
 				<mode>PER</mode>
 			</effect>
@@ -282,11 +300,11 @@
 	<skill id="13007" toLevel="1" name="Vesper Heavy Armor Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease all types of enemy's Speed. -->
 		<icon>icon.armor_t94_u_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>10</chance>
 				<targetType>ENEMY</targetType>
@@ -311,11 +329,11 @@
 	<skill id="13008" toLevel="1" name="Vesper Noble Heavy Armor Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease all types of enemy's Speed. -->
 		<icon>icon.armor_t94_u_i01</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>10</chance>
 				<targetType>ENEMY</targetType>
@@ -340,11 +358,11 @@
 	<skill id="13009" toLevel="1" name="Vesper Light Armor Set - PvP">
 		<!-- Decreases damage received during PvP. Has a chance of canceling the attacker's target. -->
 		<icon>icon.armor_t95_u_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>25</chance>
 				<targetType>ENEMY</targetType>
@@ -369,11 +387,11 @@
 	<skill id="13010" toLevel="1" name="Vesper Noble Light Armor Set - PvP">
 		<!-- Decreases damage received during PvP. Has a chance of canceling the attacker's target. -->
 		<icon>icon.armor_t95_u_i01</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>25</chance>
 				<targetType>ENEMY</targetType>
@@ -398,11 +416,11 @@
 	<skill id="13011" toLevel="1" name="Vesper Robe Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease Received P. Critical Rate and Received Critical Damage from standard attacks. -->
 		<icon>icon.armor_t96_u_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>25</chance>
 				<targetType>ENEMY</targetType>
@@ -427,11 +445,11 @@
 	<skill id="13012" toLevel="1" name="Vesper Noble Robe Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease Received P. Critical Rate and Received Critical Damage from standard attacks. -->
 		<icon>icon.armor_t96_u_i01</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>25</chance>
 				<targetType>ENEMY</targetType>
@@ -454,17 +472,20 @@
 		</effects>
 	</skill>
 	<skill id="13013" toLevel="4" name="Moirai Heavy Armor Set">
-		<!-- M. Damage Resistance +2%. -->
+		<!-- Level 1: M. Damage Resistance +2%. -->
+		<!-- Level 2: Increases M. Def. by 2%, P. Atk. by 4.26%. -->
+		<!-- Level 3: M. Def. +2%, P. Atk. +4.26%, Atk. Spd +4%. -->
+		<!-- Level 4: M. Damage Resistance 2%, P. Atk. +4.26%, Atk. Spd. +4%, Confusion Resistance +50%, Fire/ Water/ Wind/ Earth Resistance +3. Activates the cloak slot. STR +2, CON -2. -->
 		<icon>icon.armor_t100_u_i00</icon>
-		<magicLevel>82</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>82</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="2" toLevel="4">
+			<effect name="PhysicalAttack" fromLevel="2" toLevel="4">
 				<amount>4.26</amount>
 				<mode>PER</mode>
 			</effect>
@@ -472,7 +493,7 @@
 				<amount>4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -503,17 +524,20 @@
 		</effects>
 	</skill>
 	<skill id="13014" toLevel="4" name="Moirai Light Armor Set">
-		<!-- Speed +3%. -->
+		<!-- Level 1: Speed +3%. -->
+		<!-- Level 2: Increases Speed by 3%, P. Atk. by 4.26%. -->
+		<!-- Level 3: Speed +3%, P. Atk. +4.26%, Atk. Spd +4%. -->
+		<!-- Level 4: Increases Speed by 3%, P. Atk. by 4.26%, P. Atk. Spd by 4%, Hold Resistance by 50%, Fire/ Water/ Wind/ Earth Resistance +3. Can wear cloak. DEX +2, CON -2 -->
 		<icon>icon.armor_t101_u_i00</icon>
-		<magicLevel>82</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>82</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<HOLD>50</HOLD>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="2" toLevel="4">
+			<effect name="PhysicalAttack" fromLevel="2" toLevel="4">
 				<amount>4.26</amount>
 				<mode>PER</mode>
 			</effect>
@@ -552,17 +576,20 @@
 		</effects>
 	</skill>
 	<skill id="13015" toLevel="4" name="Moirai Robe Set">
-		<!-- Casting Spd. +5%. -->
+		<!-- Level 1: Casting Spd. +5%. -->
+		<!-- Level 2: Increases Casting Spd. by 5%, Magic by 8.11%. -->
+		<!-- Level 3: Increases Casting Spd. by 15%, Magic by 8.11%. -->
+		<!-- Level 4: Casting Spd. +15%, M. Atk. +8.11%, Paralysis Resistance +50%, Fire/ Water/ Wind/ Earth Resistance +5. Activates the cloak slot. WIT +2, MEN -2. -->
 		<icon>icon.armor_t102_u_i00</icon>
-		<magicLevel>82</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>82</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<PARALYZE>50</PARALYZE>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="MAtk" fromLevel="2" toLevel="4">
+			<effect name="MagicalAttack" fromLevel="2" toLevel="4">
 				<amount>8.11</amount>
 				<mode>PER</mode>
 			</effect>
@@ -602,11 +629,14 @@
 		</effects>
 	</skill>
 	<skill id="13016" toLevel="4" name="Vorpal Heavy Armor Set">
-		<!-- P. Def. +8.47%. -->
+		<!-- Level 1: P. Def. +8.47%. -->
+		<!-- Level 2: P. Def. +8.47%, Max HP +541, Speed +7. -->
+		<!-- Level 3: P. Def. +8.47%, Max HP +541, Speed +7, P. Atk. +5.57%, and P. Accuracy +4. -->
+		<!-- Level 4: P. Def. +8.47%, Max HP +541, Speed +7, P. Atk. +5.57%, P. Accuracy +4, M. Damage Resistance +2%, Infection/ Obstruction/ Stupor Resistance +50%, Fire/ Water/ Wind/ Earth Resistance +5. Activates the cloak slot. CON +2.. STR -8.47%0. -->
 		<icon>icon.armor_t94_u_i03</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<SLEEP>50</SLEEP>
@@ -614,7 +644,7 @@
 				<HOLD>50</HOLD>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="4" toLevel="4">
+			<effect name="PhysicalAttack" fromLevel="4" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
@@ -630,7 +660,7 @@
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic" fromLevel="4" toLevel="4">
+			<effect name="MagicalSuccessResistance" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -665,17 +695,20 @@
 		</effects>
 	</skill>
 	<skill id="13017" toLevel="4" name="Vorpal Leather Armor Set">
-		<!-- P. Def. +5.57%. -->
+		<!-- Level 1: P. Def. +5.57%. -->
+		<!-- Level 2: P. Def. +5.57%, Max MP +360, Speed +3%. -->
+		<!-- Level 3: P. Def. +5.57%, Max MP +360, Speed +3%, P. Atk. +5.57%, Atk. Spd. +5%. -->
+		<!-- Level 4: P. Def. +5.57%, MaxMP +360, Speed +3%, P. Atk. +5.57%, Atk. Spd. +5%, Critical Damage for standard attacks +182, Confusion Resistance +50%, Fire/ Water/ Wind/ Earth Resistance +5. Activates the cloak slot. STR +1, DEX +5.57%0, CON -5.57%1. -->
 		<icon>icon.armor_t95_u_i03</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="4" toLevel="4">
+			<effect name="PhysicalAttack" fromLevel="4" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
@@ -726,17 +759,20 @@
 		</effects>
 	</skill>
 	<skill id="13018" toLevel="4" name="Vorpal Robe Set">
-		<!-- Speed +7. -->
+		<!-- Level 1: Speed +7. -->
+		<!-- Level 2: Speed +7, Max MP +92, M. Atk. +8.7%, MP Recovery Rate +5%. -->
+		<!-- Level 3: Speed +7, Max MP +92, Casting Spd +15%, M. Atk. +8.7%, MP Recovery Rate +5%. -->
+		<!-- Level 4: Speed +7, Max MP +92, Casting Spd. +15%, M. Atk. +8.7%, MP Recovery Rate +5%, Confusion Resistance +50%, Fire/ Water/ Wind/ Earth Resistance +5. Activates the cloak slot. WIT +2, MEN -1, INT -70. -->
 		<icon>icon.armor_t96_u_i03</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
 			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="MAtk" fromLevel="2" toLevel="4">
+			<effect name="MagicalAttack" fromLevel="2" toLevel="4">
 				<amount>8.7</amount>
 				<mode>PER</mode>
 			</effect>
@@ -787,11 +823,14 @@
 		</effects>
 	</skill>
 	<skill id="13019" toLevel="4" name="Elegia Heavy Armor Set">
-		<!-- Max HP +550. -->
+		<!-- Level 1: Max HP +550. -->
+		<!-- Level 2: Max HP +550, P. Atk. +6.59%. -->
+		<!-- Level 3: Max HP +550, P. Atk. +6.59%, Critical Rate for standard attacks +12.74, M. Damage Resistance +2%. -->
+		<!-- Level 4: Max HP +550, P. Atk. +6.59%, Critical Rate for standard attacks +12.74, M. Damage Resistance +2%, Infection/ Obstruction/ Stupor Resistance +50%, Fire/ Water/ Wind/ Earth Resistance +5. Has a chance to absorb a part of damage inflicted upon the enemy as HP. Activates the cloak slot. STR +3, CON -2. -->
 		<icon>icon.armor_t97_u_i00</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="DefenceTrait">
 				<SLEEP>
@@ -818,7 +857,7 @@
 				<amount>3</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">6.59</value>
@@ -827,7 +866,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -906,11 +945,14 @@
 		</effects>
 	</skill>
 	<skill id="13020" toLevel="4" name="Elegia Leather Armor Set">
-		<!-- Speed +3%. -->
+		<!-- Level 1: Speed +3%. -->
+		<!-- Level 2: Increases M. Def. by 3%, P. Atk. by 6.59%. -->
+		<!-- Level 3: Speed +3%, P. Atk. +6.59% and Critical Rate for standard attacks +17.05. -->
+		<!-- Level 4: Speed +3%, P. Atk. +6.59%, Critical Rate for standard attacks +17.05, Atk. Spd. +6%, Paralysis Resistance +50%, Fire/ Water/ Wind/ Earth Resistance +5. Activates the cloak slot. STR +1, DEX +2, CON -2. -->
 		<icon>icon.armor_t98_u_i00</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="DefenceTrait">
 				<PARALYZE>
@@ -921,7 +963,7 @@
 				</PARALYZE>
 			</effect>
 			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">6.59</value>
@@ -1018,11 +1060,14 @@
 		</effects>
 	</skill>
 	<skill id="13021" toLevel="4" name="Elegia Robe Set">
-		<!-- Speed +7. -->
+		<!-- Level 1: Speed +7. -->
+		<!-- Level 2: Speed +7, M. Atk. +10%, Max MP +97. -->
+		<!-- Level 3: Speed +7, M. Atk. +10%, Max MP +97, Casting Spd. +15%, MP Recovery Rate +5%. -->
+		<!-- Level 4: Speed +7, M. Atk. +10%, Max MP +97, Casting Spd. +15%, MP Recovery Rate +5%, Confusion Resistance +50%, Fire/ Water/ Wind/ Earth Resistance +5. M. Skill MP Consumption +3%. Activates the cloak slot. WIT +2, INT +70, MEN -71. -->
 		<icon>icon.armor_t99_u_i00</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="DefenceTrait">
 				<SHOCK>
@@ -1033,7 +1078,7 @@
 				</SHOCK>
 			</effect>
 			<effect name="EnableCloak" />
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -1151,11 +1196,11 @@
 	<skill id="13022" toLevel="1" name="Moirai Heavy Armor Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease all types of enemy's Speed. -->
 		<icon>icon.armor_t100_u_i00</icon>
-		<magicLevel>82</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>82</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- PvP Armor - Speed Down -->
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
@@ -1182,11 +1227,11 @@
 	<skill id="13023" toLevel="1" name="Moirai Light Armor Set - PvP">
 		<!-- Decreases damage received during PvP. Has a chance of canceling the attacker's target. -->
 		<icon>icon.armor_t101_u_i00</icon>
-		<magicLevel>82</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>82</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1212,11 +1257,11 @@
 	<skill id="13024" toLevel="1" name="Moirai Robe Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease Received P. Critical Rate and Received Critical Damage from standard attacks. -->
 		<icon>icon.armor_t102_u_i00</icon>
-		<magicLevel>82</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>82</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1242,11 +1287,11 @@
 	<skill id="13025" toLevel="1" name="Vorpal Heavy Armor Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease all types of enemy's Speed. -->
 		<icon>icon.armor_t94_u_i03</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- PvP Armor - Speed Down -->
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
@@ -1273,11 +1318,11 @@
 	<skill id="13026" toLevel="1" name="Vorpal Leather Armor Set - PvP">
 		<!-- Decreases damage received during PvP. Has a chance of canceling the attacker's target. -->
 		<icon>icon.armor_t95_u_i03</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1303,11 +1348,11 @@
 	<skill id="13027" toLevel="1" name="Vorpal Robe Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease Received P. Critical Rate and Received Critical Damage from standard attacks. -->
 		<icon>icon.armor_t96_u_i03</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1333,11 +1378,11 @@
 	<skill id="13028" toLevel="1" name="Elegia Heavy Armor Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease all types of enemy's Speed. -->
 		<icon>icon.armor_t97_u_i00</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- PvP Armor - Speed Down -->
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
@@ -1364,11 +1409,11 @@
 	<skill id="13029" toLevel="1" name="Elegia Leather Armor Set - PvP">
 		<!-- Decreases damage received during PvP. Has a chance of canceling the attacker's target. -->
 		<icon>icon.armor_t98_u_i00</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1394,11 +1439,11 @@
 	<skill id="13030" toLevel="1" name="Elegia Robe Set - PvP">
 		<!-- Decreases received PvP damage. Has a certain chance to decrease Received P. Critical Rate and Received Critical Damage from standard attacks. -->
 		<icon>icon.armor_t99_u_i00</icon>
-		<magicLevel>85</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1815,8 +1860,8 @@
 		<!-- Bow/ crossbow attack range +100, PvP damage +5%. -->
 		<icon>icon.ensoul_big_old</icon>
 		<operateType>P</operateType>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="PhysicalAttackRange">
 				<amount>50</amount>
@@ -1839,6 +1884,8 @@
 	<skill id="13062" toLevel="5" name="Special Ability: Damage Up">
 		<!-- Increases P. Atk. Inflicts additional PvP damage. -->
 		<icon>icon.skill1068</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1846,10 +1893,8 @@
 			<value level="4">97</value>
 			<value level="5">99</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">288</value>
 					<value level="2">332</value>
@@ -1877,14 +1922,17 @@
 		<!-- Unlocks the cloak slot. -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="EnableCloak" />
 		</effects>
 	</skill>
-	<skill id="13064" toLevel="4" name="Set Effect - Immortal Heavy Armor, 2-piece (Defense)">
-		<!-- STR +3, CON +1. -->
+	<skill id="13064" toLevel="4" name="Set Effect - Immortal Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +1. -->
+		<!-- Level 2: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%. -->
+		<!-- Level 3: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: STR +3, CON +1, P. Critical Damage +2%, P. Skill Critical Damage +2%, Max MP +3%, Confusion Resistance +3%, P. Atk. +3%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t501_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -1996,8 +2044,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13065" toLevel="4" name="Set Effect - Immortal Heavy Armor, 2-piece (Attack)">
-		<!-- STR +3, CON +1. -->
+	<skill id="13065" toLevel="4" name="Set Effect - Immortal Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +1. -->
+		<!-- Level 2: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%. -->
+		<!-- Level 3: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: STR +3, CON +1, P. Critical Damage +2%, P. Skill Critical Damage +2%, Max MP +3%, Confusion Resistance +3%, P. Atk. +3%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t501_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2027,7 +2078,7 @@
 					<value level="4">5</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2105,8 +2156,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13066" toLevel="4" name="Set Effect - Twilight Heavy Armor, 2-piece (Defense)">
-		<!-- STR +3, CON +1. -->
+	<skill id="13066" toLevel="4" name="Set Effect - Twilight Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +1. -->
+		<!-- Level 2: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%. -->
+		<!-- Level 3: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: STR +3, CON +1, P. Critical Damage +2%, P. Skill Critical Damage +2%, Max MP +3%, Confusion Resistance +3%, P. Atk. +3%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t601_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2231,8 +2285,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13067" toLevel="4" name="Set Effect - Twilight Heavy Armor, 2-piece (Attack)">
-		<!-- STR +3, CON +1. -->
+	<skill id="13067" toLevel="4" name="Set Effect - Twilight Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +1. -->
+		<!-- Level 2: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%. -->
+		<!-- Level 3: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: STR +3, CON +1, P. Critical Damage +2%, P. Skill Critical Damage +2%, Max MP +3%, Confusion Resistance +3%, P. Atk. +3%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t601_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2262,7 +2319,7 @@
 					<value level="4">7</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2374,8 +2431,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13068" toLevel="4" name="Set Effect - Seraph Heavy Armor, 2-piece (Defense)">
-		<!-- STR +3, CON +1. -->
+	<skill id="13068" toLevel="4" name="Set Effect - Seraph Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +1. -->
+		<!-- Level 2: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%. -->
+		<!-- Level 3: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%, Max MP +5%, Confusion Resistance +5%. -->
+		<!-- Level 4: STR +3, CON +1, P. Critical Damage +2%, P. Skill Critical Damage +2%, Max MP +5%, Confusion Resistance +5%, P. Atk. +5%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t401_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2500,8 +2560,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13069" toLevel="4" name="Set Effect - Seraph Heavy Armor, 2-piece (Attack)">
-		<!-- STR +3, CON +1. -->
+	<skill id="13069" toLevel="4" name="Set Effect - Seraph Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +1. -->
+		<!-- Level 2: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%. -->
+		<!-- Level 3: STR +3, CON +1, Critical Damage for standard attacks +2%, P. Skill Critical Damage +2%, Max MP +5%, Confusion Resistance +5%. -->
+		<!-- Level 4: STR +3, CON +1, P. Critical Damage +2%, P. Skill Critical Damage +2%, Max MP +5%, Confusion Resistance +5%, P. Atk. +5%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t401_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2531,7 +2594,7 @@
 					<value level="4">10</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2622,8 +2685,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13070" toLevel="4" name="Set Effect - Eternal Heavy Armor, 2-piece (Defense)">
-		<!-- STR +3, CON +2. -->
+	<skill id="13070" toLevel="4" name="Set Effect - Eternal Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +2. -->
+		<!-- Level 2: STR +3, CON +2, Critical Damage for standard attacks +3%, P. Skill Critical Damage +3%. -->
+		<!-- Level 3: STR +3, CON +2, Critical Damage for standard attacks +3%, P. Skill Critical Damage +3%, Max MP +7%, Confusion Resistance +7%. -->
+		<!-- Level 4: STR +3, CON +2, P. Critical Damage +3%, P. Skill Critical Damage +3%, Max MP +7%, Confusion Resistance +7%, P. Atk. +7%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t701_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2748,8 +2814,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13071" toLevel="4" name="Set Effect - Eternal Heavy Armor, 2-piece (Attack)">
-		<!-- STR +3, CON +2. -->
+	<skill id="13071" toLevel="4" name="Set Effect - Eternal Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +2. -->
+		<!-- Level 2: STR +3, CON +2, Critical Damage for standard attacks +3%, P. Skill Critical Damage +3%. -->
+		<!-- Level 3: STR +3, CON +2, Critical Damage for standard attacks +3%, P. Skill Critical Damage +3%, Max MP +7%, Confusion Resistance +7%. -->
+		<!-- Level 4: STR +3, CON +2, P. Critical Damage +3%, P. Skill Critical Damage +3%, Max MP +7%, Confusion Resistance +7%, P. Atk. +7%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t701_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2783,7 +2852,7 @@
 				<amount>2</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2865,8 +2934,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13072" toLevel="4" name="Set Effect - R99 Rare Heavy Armor, 2-piece (Defense)">
-		<!-- STR +3, CON +2. -->
+	<skill id="13072" toLevel="4" name="Set Effect - R99 Rare Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +2. -->
+		<!-- Level 2: STR +3, CON +2, Critical Damage for standard attacks +3%, P. Skill Critical Damage +3%. -->
+		<!-- Level 3: STR +3, CON +2, Critical Damage for standard attacks +3%, P. Skill Critical Damage +3%, Max MP +7%, Confusion Resistance +7%. -->
+		<!-- Level 4: STR +3, CON +2, P. Critical Damage +3%, P. Skill Critical Damage +3%, Max MP +7%, Confusion Resistance +7%, P. Atk. +7%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2990,8 +3062,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13073" toLevel="4" name="Set Effect - R99 Rare Heavy Armor, 2-piece (Attack)">
-		<!-- STR +3, CON +2. -->
+	<skill id="13073" toLevel="4" name="Set Effect - R99 Rare Heavy Armor, 2-piece">
+		<!-- Level 1: STR +3, CON +2. -->
+		<!-- Level 2: STR +3, CON +2, Critical Damage for standard attacks +3%, P. Skill Critical Damage +3%. -->
+		<!-- Level 3: STR +3, CON +2, Critical Damage for standard attacks +3%, P. Skill Critical Damage +3%, Max MP +7%, Confusion Resistance +7%. -->
+		<!-- Level 4: STR +3, CON +2, P. Critical Damage +3%, P. Skill Critical Damage +3%, Max MP +7%, Confusion Resistance +7%, P. Atk. +7%, P. Def. +7%, Attribute Resistance +15. -->
 		<icon>icon.armor_t94_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3039,7 +3114,7 @@
 				<amount>2</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3121,8 +3196,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13074" toLevel="4" name="Set Effect - Immortal Light Armor, 2-piece (Assassin)">
-		<!-- STR +3, DEX +1. -->
+	<skill id="13074" toLevel="4" name="Set Effect - Immortal Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +1. -->
+		<!-- Level 2: STR +3, DEX +1, P./ M. Skill Power +2%. -->
+		<!-- Level 3: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%, P. Atk. +7%, M. Atk. +7%, P. Def. +3%, M. Def. +3%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t502_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3136,7 +3214,7 @@
 					<value level="4">5</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3233,8 +3311,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13075" toLevel="4" name="Set Effect - Immortal Light Armor, 2-piece (Enchant)">
-		<!-- STR +3, DEX +1. -->
+	<skill id="13075" toLevel="4" name="Set Effect - Immortal Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +1. -->
+		<!-- Level 2: STR +3, DEX +1, P./ M. Skill Power +2%. -->
+		<!-- Level 3: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%, P. Atk. +7%, M. Atk. +7%, P. Def. +3%, M. Def. +3%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t502_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3264,7 +3345,7 @@
 					<value level="4">5</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3273,7 +3354,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>155</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3366,8 +3447,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13076" toLevel="4" name="Set Effect - Twilight Light Armor, 2-piece (Assassin)">
-		<!-- STR +3, DEX +1. -->
+	<skill id="13076" toLevel="4" name="Set Effect - Twilight Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +1. -->
+		<!-- Level 2: STR +3, DEX +1, P./ M. Skill Power +2%. -->
+		<!-- Level 3: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%, P. Atk. +7%, M. Atk. +7%, P. Def. +3%, M. Def. +3%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t602_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3381,7 +3465,7 @@
 					<value level="4">7</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3390,7 +3474,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3481,8 +3565,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13077" toLevel="4" name="Set Effect - Twilight Light Armor, 2-piece (Enchant)">
-		<!-- STR +3, DEX +1. -->
+	<skill id="13077" toLevel="4" name="Set Effect - Twilight Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +1. -->
+		<!-- Level 2: STR +3, DEX +1, P./ M. Skill Power +2%. -->
+		<!-- Level 3: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%, P. Atk. +7%, M. Atk. +7%, P. Def. +3%, M. Def. +3%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t602_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3512,7 +3599,7 @@
 					<value level="4">7</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3521,7 +3608,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">180</value>
 					<value level="2">180</value>
@@ -3641,8 +3728,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13078" toLevel="4" name="Set Effect - Seraph Light Armor, 2-piece (Assassin)">
-		<!-- STR +3, DEX +1. -->
+	<skill id="13078" toLevel="4" name="Set Effect - Seraph Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +1. -->
+		<!-- Level 2: STR +3, DEX +1, P./ M. Skill Power +2%. -->
+		<!-- Level 3: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +5%, Confusion Resistance +5%. -->
+		<!-- Level 4: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +5%, Confusion Resistance +5%, P. Atk. +7%, M. Atk. +7%, P. Def. +4%, M. Def. +4%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t402_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3656,7 +3746,7 @@
 					<value level="4">10</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3766,8 +3856,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13079" toLevel="4" name="Set Effect - Seraph Light Armor, 2-piece (Enchant)">
-		<!-- STR +3, DEX +1. -->
+	<skill id="13079" toLevel="4" name="Set Effect - Seraph Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +1. -->
+		<!-- Level 2: STR +3, DEX +1, P./ M. Skill Power +2%. -->
+		<!-- Level 3: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +5%, Confusion Resistance +5%. -->
+		<!-- Level 4: STR +3, DEX +1, P./ M. Skill Power +2%, Max MP +5%, Confusion Resistance +5%, P. Atk. +7%, M. Atk. +7%, P. Def. +4%, M. Def. +4%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t402_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3803,7 +3896,7 @@
 					<value level="4">20</value>
 				</DERANGEMENT>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3812,7 +3905,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">214</value>
 					<value level="2">214</value>
@@ -3923,8 +4016,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13080" toLevel="4" name="Set Effect - Eternal Light Armor, 2-piece (Assassin)">
-		<!-- STR +3, DEX +2. -->
+	<skill id="13080" toLevel="4" name="Set Effect - Eternal Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +2. -->
+		<!-- Level 2: STR +3, DEX +2, P./ M. Skill Power +3%. -->
+		<!-- Level 3: STR +3, DEX +2, P./ M. Skill Power +3%, Max MP +7%, Confusion Resistance +7%. -->
+		<!-- Level 4: STR +3, DEX +2, P./ M. Skill Power +3%, Max MP +7%, Confusion Resistance +7%, P. Atk. +7%, M. Atk. +7%, P. Def. +5%, M. Def. +5%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t702_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -3942,7 +4038,7 @@
 				<amount>2</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4043,8 +4139,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13081" toLevel="4" name="Set Effect - Eternal Light Armor, 2-piece (Enchant)">
-		<!-- STR +3, DEX +2. -->
+	<skill id="13081" toLevel="4" name="Set Effect - Eternal Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +2. -->
+		<!-- Level 2: STR +3, DEX +2, P./ M. Skill Power +3%. -->
+		<!-- Level 3: STR +3, DEX +2, P./ M. Skill Power +3%, Max MP +7%, Confusion Resistance +7%. -->
+		<!-- Level 4: STR +3, DEX +2, P./ M. Skill Power +3%, Max MP +7%, Confusion Resistance +7%, P. Atk. +7%, M. Atk. +7%, P. Def. +5%, M. Def. +5%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t702_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4074,7 +4173,7 @@
 					<value level="4">10</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4083,7 +4182,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">246</value>
 					<value level="2">246</value>
@@ -4194,8 +4293,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13082" toLevel="4" name="Set Effect - R99 Rare Light Armor, 2-piece (Assassin)">
-		<!-- STR +3, DEX +2. -->
+	<skill id="13082" toLevel="4" name="Set Effect - R99 Rare Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +2. -->
+		<!-- Level 2: STR +3, DEX +2, P./ M. Skill Power +3%. -->
+		<!-- Level 3: STR +3, DEX +2, P./ M. Skill Power +3%, Max MP +7%, Confusion Resistance +7%. -->
+		<!-- Level 4: STR +3, DEX +2, P./ M. Skill Power +3%, Max MP +7%, Confusion Resistance +7%, P. Atk. +7%, M. Atk. +7%, P. Def. +5%, M. Def. +5%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t702_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4209,7 +4311,7 @@
 					<value level="4">15</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4320,8 +4422,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13083" toLevel="4" name="Set Effect - R99 Rare Light Armor, 2-piece (Enchant)">
-		<!-- STR +3, DEX +2. -->
+	<skill id="13083" toLevel="4" name="Set Effect - R99 Rare Light Armor, 2-piece">
+		<!-- Level 1: STR +3, DEX +2. -->
+		<!-- Level 2: STR +3, DEX +2, P./ M. Skill Power +3%. -->
+		<!-- Level 3: STR +3, DEX +2, P./ M. Skill Power +3%, Max MP +7%, Confusion Resistance +7%. -->
+		<!-- Level 4: STR +3, DEX +2, P./ M. Skill Power +3%, Max MP +7%, Confusion Resistance +7%, P. Atk. +7%, M. Atk. +7%, P. Def. +5%, M. Def. +5%, Received Healing +30, Attribute Resistance +31. -->
 		<icon>icon.armor_t702_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4351,7 +4456,7 @@
 					<value level="4">15</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">255</value>
 					<value level="2">255</value>
@@ -4462,8 +4567,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13084" toLevel="4" name="Set Effect - Immortal Robe, 2-piece (Magic)">
-		<!-- INT +3, CON +1. -->
+	<skill id="13084" toLevel="4" name="Set Effect - Immortal Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +1. -->
+		<!-- Level 2: INT +3, CON +1, M. Skill Power +2%. -->
+		<!-- Level 3: INT +3, CON +1. M. Skill Power +2%, Max MP +2%, Confusion Resistance +2%. -->
+		<!-- Level 4: INT +3, CON +1, M. Skill Power +2%, Max MP +2%, Confusion Resistance +2%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t503_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4477,7 +4585,7 @@
 					<value level="4">5</value>
 				</SLEEP>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4573,8 +4681,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13085" toLevel="4" name="Set Effect - Immortal Robe, 2-piece (Recovery)">
-		<!-- INT +3, CON +1. -->
+	<skill id="13085" toLevel="4" name="Set Effect - Immortal Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +1. -->
+		<!-- Level 2: INT +3, CON +1, M. Skill Power +2%. -->
+		<!-- Level 3: INT +3, CON +1. M. Skill Power +2%, Max MP +2%, Confusion Resistance +2%. -->
+		<!-- Level 4: INT +3, CON +1, M. Skill Power +2%, Max MP +2%, Confusion Resistance +2%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t503_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4604,7 +4715,7 @@
 					<value level="4">5</value>
 				</SHOCK>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4700,8 +4811,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13086" toLevel="4" name="Set Effect - Twilight Robe, 2-piece (Magic)">
-		<!-- INT +3, CON +1. -->
+	<skill id="13086" toLevel="4" name="Set Effect - Twilight Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +1. -->
+		<!-- Level 2: INT +3, CON +1, M. Skill Power +2%. -->
+		<!-- Level 3: INT +3, CON +1. M. Skill Power +2%, Max MP +2%, Confusion Resistance +2%. -->
+		<!-- Level 4: INT +3, CON +1, M. Skill Power +2%, Max MP +2%, Confusion Resistance +2%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t603_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4715,7 +4829,7 @@
 					<value level="4">7</value>
 				</SLEEP>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4724,7 +4838,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4815,8 +4929,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13087" toLevel="4" name="Set Effect - Twilight Robe, 2-piece (Recovery)">
-		<!-- INT +3, CON +1. -->
+	<skill id="13087" toLevel="4" name="Set Effect - Twilight Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +1. -->
+		<!-- Level 2: INT +3, CON +1, M. Skill Power +2%. -->
+		<!-- Level 3: INT +3, CON +1. M. Skill Power +2%, Max MP +2%, Confusion Resistance +2%. -->
+		<!-- Level 4: INT +3, CON +1, M. Skill Power +2%, Max MP +2%, Confusion Resistance +2%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t603_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4846,7 +4963,7 @@
 					<value level="4">7</value>
 				</SHOCK>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4946,8 +5063,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13088" toLevel="4" name="Set Effect - Seraph Robe, 2-piece (Magic)">
-		<!-- INT +3, CON +1. -->
+	<skill id="13088" toLevel="4" name="Set Effect - Seraph Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +1. -->
+		<!-- Level 2: INT +3, CON +1, M. Skill Power +2%. -->
+		<!-- Level 3: INT +3, CON +1. M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: INT +3, CON +1, M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t403_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -4961,7 +5081,7 @@
 					<value level="4">10</value>
 				</SLEEP>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4970,7 +5090,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5061,8 +5181,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13089" toLevel="4" name="Set Effect - Seraph Robe, 2-piece (Recovery)">
-		<!-- INT +3, CON +1. -->
+	<skill id="13089" toLevel="4" name="Set Effect - Seraph Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +1. -->
+		<!-- Level 2: INT +3, CON +1, M. Skill Power +2%. -->
+		<!-- Level 3: INT +3, CON +1. M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%. -->
+		<!-- Level 4: INT +3, CON +1, M. Skill Power +2%, Max MP +3%, Confusion Resistance +3%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t403_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -5092,7 +5215,7 @@
 					<value level="4">10</value>
 				</SHOCK>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5201,8 +5324,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13090" toLevel="4" name="Set Effect - Eternal Robe, 2-piece (Magic)">
-		<!-- INT +3, CON +2. -->
+	<skill id="13090" toLevel="4" name="Set Effect - Eternal Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +2. -->
+		<!-- Level 2: INT +3, CON +2, M. Skill Power +3%. -->
+		<!-- Level 3: INT +3, CON +2. M. Skill Power +3%, Max MP +5%, Confusion Resistance +5%. -->
+		<!-- Level 4: INT +3, CON +2, M. Skill Power +3%, Max MP +5%, Confusion Resistance +5%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t703_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -5216,7 +5342,7 @@
 					<value level="4">10</value>
 				</SLEEP>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5225,7 +5351,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5325,8 +5451,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13091" toLevel="4" name="Set Effect - Eternal Robe, 2-piece (Recovery)">
-		<!-- INT +3, CON +2. -->
+	<skill id="13091" toLevel="4" name="Set Effect - Eternal Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +2. -->
+		<!-- Level 2: INT +3, CON +2, M. Skill Power +3%. -->
+		<!-- Level 3: INT +3, CON +2. M. Skill Power +3%, Max MP +5%, Confusion Resistance +5%. -->
+		<!-- Level 4: INT +3, CON +2, M. Skill Power +3%, Max MP +5%, Confusion Resistance +5%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t703_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -5364,7 +5493,7 @@
 					<value level="4">15</value>
 				</DERANGEMENT>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5464,8 +5593,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13092" toLevel="4" name="Set Effect - R99 Rare Robe, 2-piece (Magic)">
-		<!-- INT +3, CON +2. -->
+	<skill id="13092" toLevel="4" name="Set Effect - R99 Rare Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +2. -->
+		<!-- Level 2: INT +3, CON +2, M. Skill Power +3%. -->
+		<!-- Level 3: INT +3, CON +2. M. Skill Power +3%, Max MP +5%, Confusion Resistance +5%. -->
+		<!-- Level 4: INT +3, CON +2, M. Skill Power +3%, Max MP +5%, Confusion Resistance +5%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t703_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -5487,7 +5619,7 @@
 					<value level="4">20</value>
 				</DERANGEMENT>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5496,7 +5628,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5578,8 +5710,11 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13093" toLevel="4" name="Set Effect - R99 Rare Robe, 2-piece (Recovery)">
-		<!-- INT +3, CON +2. -->
+	<skill id="13093" toLevel="4" name="Set Effect - R99 Rare Robe, 2-piece">
+		<!-- Level 1: INT +3, CON +2. -->
+		<!-- Level 2: INT +3, CON +2, M. Skill Power +3%. -->
+		<!-- Level 3: INT +3, CON +2. M. Skill Power +3%, Max MP +5%, Confusion Resistance +5%. -->
+		<!-- Level 4: INT +3, CON +2, M. Skill Power +3%, Max MP +5%, Confusion Resistance +5%, M. Atk. +15%, Casting Spd. +15%, Received Healing +10%, Attribute Resistance +15. -->
 		<icon>icon.armor_t703_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -5609,7 +5744,7 @@
 					<value level="4">15</value>
 				</SHOCK>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5618,7 +5753,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>

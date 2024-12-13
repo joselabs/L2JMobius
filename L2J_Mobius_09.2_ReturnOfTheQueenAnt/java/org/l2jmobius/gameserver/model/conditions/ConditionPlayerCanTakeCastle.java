@@ -47,7 +47,7 @@ public class ConditionPlayerCanTakeCastle extends Condition
 			return !_value;
 		}
 		
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		boolean canTakeCastle = true;
 		if (player.isAlikeDead() || player.isCursedWeaponEquipped() || !player.isClanLeader())
 		{
@@ -73,6 +73,6 @@ public class ConditionPlayerCanTakeCastle extends Condition
 			player.sendPacket(SystemMessageId.THE_DISTANCE_IS_TOO_FAR_AND_SO_THE_CASTING_HAS_BEEN_STOPPED);
 			canTakeCastle = false;
 		}
-		return (_value == canTakeCastle);
+		return _value == canTakeCastle;
 	}
 }

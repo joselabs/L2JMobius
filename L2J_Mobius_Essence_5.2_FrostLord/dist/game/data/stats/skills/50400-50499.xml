@@ -102,11 +102,11 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>90</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>110</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -125,7 +125,11 @@
 			</effect>
 			<effect name="MagicCriticalRate">
 				<amount>4</amount>
-				<mode>DIFF</mode>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PhysicalSkillCriticalRate">
+				<amount>4</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -207,11 +211,11 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>130</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>170</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -357,11 +361,11 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>200</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>250</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -408,11 +412,11 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>400</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>600</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -453,7 +457,10 @@
 		</effects>
 	</skill>
 	<skill id="50427" toLevel="4" name="Frintezza's Necklace">
-		<!-- A necklace imbued with Frintezza's power. <Effect>. Max. MP +30. Sleep Resistance +10%. Sleep Atk. Rate +10%. Skill Power +5%. Skill Cooldown -5%. All Critical Rate +2%. All Critical Damage +20 -->
+		<!-- Level 1: A necklace imbued with Frintezza's power. <Effect>. Max. MP +30. Sleep Resistance +10%. Sleep Atk. Rate +10%. Skill Power +5%. Skill Cooldown -5%. All Critical Rate +2%. All Critical Damage +20 -->
+		<!-- Level 2: A necklace imbued with Frintezza's power. <Effect>. Max. MP +36. Sleep Resistance +15%. Sleep Atk. Rate +15%. Skill Power +10%. Skill Cooldown -6%. All Critical Rate +3%. All Critical Damage +50 -->
+		<!-- Level 3: A necklace imbued with Frintezza's power. <Effect>. Max. MP +50. Sleep Resistance +20%. Sleep Atk. Rate +20%. Skill Power +15%. Skill Cooldown -8%. All Critical Rate +5%. All Critical Damage +100. Damage Reflection +5% -->
+		<!-- Level 4: A necklace imbued with Frintezza's power. <Effect>. Max. MP +65. Sleep Resistance +30%. Sleep Atk. Rate +30%. Skill Power +20%. Skill Cooldown -10%. All Critical Rate +10%. All Critical Damage +200. Damage Reflection +10% -->
 		<icon>
 			<value level="1">icon.accessory_necklace_of_frintessa_i00</value>
 			<value level="2">icon.accessory_necklace_of_frintessa_i03</value>
@@ -491,6 +498,10 @@
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
+			<effect name="MagicalDefence">
+				<amount>50</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="50429" toLevel="1" name="Stun Gauntlets">
@@ -498,7 +509,7 @@
 		<icon>icon.armor_t96_g_i03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -507,8 +518,9 @@
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>50431</skillId> <!-- Swift Fist -->
 				<skillLevel>1</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -517,15 +529,25 @@
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>50431</skillId> <!-- Swift Fist -->
 				<skillLevel>1</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50430" toLevel="10" name="+1 Stun Gauntlets">
-		<!-- Gauntlets imbued with the stunning energy. <Swift Fist>. Attacks with fists dealing additional damage equal to 5% of P. Atk. and stuns the enemy for 3 sec. with a 1% chance. -->
+		<!-- Level 1: Gauntlets imbued with the stunning energy. <Swift Fist>. Attacks with fists dealing additional damage equal to 5% of P. Atk. and stuns the enemy for 3 sec. with a 1% chance. -->
+		<!-- Level 2: Gauntlets imbued with the stunning energy. <Swift Fist>. Attacks with fists dealing additional damage equal to 7% of P. Atk. and stuns the enemy for 3 sec. with a 1% chance. -->
+		<!-- Level 3: Gauntlets imbued with the stunning energy. <Swift Fist>. Attacks with fists dealing additional damage equal to 9% of P. Atk. and stuns the enemy for 3 sec. with a 1% chance. -->
+		<!-- Level 4: Gauntlets imbued with the stunning energy. <Swift Fist>. Attacks with fists dealing additional damage equal to 12% of P. Atk. and stuns the enemy for 3 sec. with a 1% chance. -->
+		<!-- Level 5: Gauntlets imbued with the stunning energy. Skill Critical Damage +50. <Swift Fist>. Attacks with fists dealing additional damage equal to 15% of P. Atk. and stuns the enemy for 3 sec. with a 2% chance. -->
+		<!-- Level 6: Gauntlets imbued with the stunning energy. Skill Critical Damage +100. <Swift Fist>. Attacks with fists dealing additional damage equal to 20% of P. Atk. and stuns the enemy for 3 sec. with a 3% chance. -->
+		<!-- Level 7: Gauntlets imbued with the stunning energy. Skill Critical Damage +200. <Swift Fist>. Attacks with fists dealing additional damage equal to 25% of P. Atk. and stuns the enemy for 3 sec. with a 4% chance. -->
+		<!-- Level 8: Gauntlets imbued with the stunning energy. Skill Critical Damage +300. <Swift Fist>. Attacks with fists dealing additional damage equal to 30% of P. Atk. and stuns the enemy for 3 sec. with a 6% chance. -->
+		<!-- Level 9: Gauntlets imbued with the stunning energy. Skill Critical Damage +400. <Swift Fist>. Attacks with fists dealing additional damage equal to 40% of P. Atk. and stuns the enemy for 3 sec. with a 8% chance. -->
+		<!-- Level 10: Gauntlets imbued with the stunning energy. Skill Critical Damage +500. <Swift Fist>. Attacks with fists dealing additional damage equal to 50% of P. Atk. and stuns the enemy for 3 sec. with a 10% chance. -->
 		<icon>icon.armor_t96_g_i03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -556,8 +578,9 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -588,15 +611,15 @@
 					<value level="9">10</value>
 					<value level="10">11</value>
 				</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50431" toLevel="11" name="Swift Fist">
 		<!-- A powerful fist attack. -->
 		<icon>icon.armor_t96_g_i03</icon>
-		<castRange>900</castRange>
-		<effectPoint>-300</effectPoint>
-		<effectRange>1100</effectRange>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -613,31 +636,32 @@
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>900</castRange>
+		<effectPoint>-300</effectPoint>
+		<effectRange>1100</effectRange>
+		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<isDebuff>true</isDebuff>
-		<basicProperty>MAGIC</basicProperty>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>60000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="BlockActions" />
-			<effect name="MAtkByPAtk">
-				<stat>PHYSICAL_ATTACK</stat>
-				<amount>
-					<value level="1">3</value>
-					<value level="2">5</value>
-					<value level="3">7</value>
-					<value level="4">9</value>
-					<value level="5">12</value>
-					<value level="6">15</value>
-					<value level="7">20</value>
-					<value level="8">25</value>
-					<value level="9">30</value>
-					<value level="10">40</value>
-					<value level="11">50</value>
-				</amount>
-				<mode>PER</mode>
+			<effect name="PhysicalAttack">
+				<pAtkMod>
+					<value level="1">1.03</value>
+					<value level="2">1.05</value>
+					<value level="3">1.07</value>
+					<value level="4">1.09</value>
+					<value level="5">1.12</value>
+					<value level="6">1.15</value>
+					<value level="7">1.20</value>
+					<value level="8">1.25</value>
+					<value level="9">1.30</value>
+					<value level="10">1.40</value>
+					<value level="11">1.50</value>
+				</pAtkMod>
 			</effect>
 		</effects>
 	</skill>
@@ -666,22 +690,24 @@
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
 				<targetType>SELF</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
+				<allowSkillAttack>true</allowSkillAttack>
 				<skillId>50434</skillId> <!-- Fatal Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
 				<targetType>SELF</targetType>
 				<isCritical>true</isCritical>
+				<allowSkillAttack>true</allowSkillAttack>
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>50434</skillId> <!-- Fatal Power -->
 				<skillLevel>1</skillLevel>
@@ -689,7 +715,16 @@
 		</effects>
 	</skill>
 	<skill id="50433" toLevel="10" name="+1 Sigil of Inevitability">
-		<!-- A sigil imbued with the energy of destruction. Atk. Spd. +10. Casting Spd. +10. All Critical Rate +1%. Max MP +30. <Fatal Power>. A 1% chance of killing the enemy instantly after an attack, Skill Power +1% for 3 sec. -->
+		<!-- Level 1: A sigil imbued with the energy of destruction. Atk. Spd. +10. Casting Spd. +10. All Critical Rate +1%. Max MP +30. <Fatal Power>. A 1% chance of killing the enemy instantly after an attack, Skill Power +1% for 3 sec. -->
+		<!-- Level 2: A sigil imbued with the energy of destruction. Atk. Spd. +15. Casting Spd. +15. All Critical Rate +1%. Max MP +40. <Fatal Power>. A 1% chance of killing the enemy instantly after an attack, Skill Power +1% for 3 sec. -->
+		<!-- Level 3: A sigil imbued with the energy of destruction. Atk. Spd. +25. Casting Spd. +25. All Critical Rate +1%. Max MP +50. <Fatal Power>. A 1% chance of killing the enemy instantly after an attack, Skill Power +1% for 3 sec. -->
+		<!-- Level 4: A sigil imbued with the energy of destruction. Atk. Spd. +30. Casting Spd. +30. All Critical Rate +2%. Max MP +80. <Fatal Power>. A 1% chance of killing the enemy instantly after an attack, Skill Power +2% for 3 sec. -->
+		<!-- Level 5: A sigil imbued with the energy of destruction. Atk. Spd. +45. Casting Spd. +45. All Critical Rate +4%. Max MP +150. <Fatal Power>. A 2% chance of killing the enemy instantly after an attack, Skill Power +3% for 3 sec. <Fatal Impulse>. With a 1% chance, All Critical Damage +50 for 3 sec. after an attack. -->
+		<!-- Level 6: A sigil imbued with the energy of destruction. Atk. Spd. +60. Casting Spd. +60. All Critical Rate +5%. Max MP +180. <Fatal Power>. A 3% chance of killing the enemy instantly after an attack, Skill Power +4% for 3 sec. <Fatal Impulse>. With a 1% chance, All Critical Damage +100 for 3 sec. after an attack. -->
+		<!-- Level 7: A sigil imbued with the energy of destruction. Atk. Spd. +100. Casting Spd. +100. All Critical Rate +6%. Max MP +250. <Fatal Power>. A 5% chance of killing the enemy instantly after an attack, Skill Power +5% for 3 sec. <Fatal Impulse>. With a 1% chance, All Critical Damage +200 for 3 sec. after an attack. -->
+		<!-- Level 8: A sigil imbued with the energy of destruction. Atk. Spd. +120. Casting Spd. +120. All Critical Rate +8%. Max MP +300. <Fatal Power>. A 7% chance of killing the enemy instantly after an attack, Skill Power +8% for 3 sec. <Fatal Impulse>. With a 2% chance, All Critical Damage +300 for 3 sec. after an attack. -->
+		<!-- Level 9: A sigil imbued with the energy of destruction. Atk. Spd. +160. Casting Spd. +160. All Critical Rate +9%. Max MP +400. <Fatal Power>. A 9% chance of killing the enemy instantly after an attack, Skill Power +9% for 3 sec. <Fatal Impulse>. With a 3% chance, All Critical Damage +400 for 3 sec. after an attack. -->
+		<!-- Level 10: A sigil imbued with the energy of destruction. Atk. Spd. +250. Casting Spd. +250. All Critical Rate +10%. Max MP +500. <Fatal Power>. A 10% chance of killing the enemy instantly after an attack, Skill Power +10% for 3 sec. <Fatal Impulse>. With a 5% chance, All Critical Damage +500 for 3 sec. after an attack. -->
 		<icon>icon.elos_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -768,7 +803,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -786,6 +821,7 @@
 				<targetType>SELF</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
+				<allowSkillAttack>true</allowSkillAttack>
 				<skillId>50434</skillId> <!-- Fatal Power -->
 				<skillLevel>
 					<value level="1">1</value>
@@ -800,7 +836,7 @@
 					<value level="10">8</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -818,6 +854,7 @@
 				<targetType>SELF</targetType>
 				<isCritical>true</isCritical>
 				<allowWeapons>ALL</allowWeapons>
+				<allowSkillAttack>true</allowSkillAttack>
 				<skillId>50434</skillId> <!-- Fatal Power -->
 				<skillLevel>
 					<value level="1">1</value>
@@ -832,7 +869,7 @@
 					<value level="10">8</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -850,6 +887,7 @@
 				<targetType>SELF</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
+				<allowSkillAttack>true</allowSkillAttack>
 				<skillId>50435</skillId> <!-- Fatal Impulse -->
 				<skillLevel>
 					<value level="1">0</value>
@@ -864,7 +902,7 @@
 					<value level="10">6</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -882,6 +920,7 @@
 				<targetType>SELF</targetType>
 				<isCritical>true</isCritical>
 				<allowWeapons>ALL</allowWeapons>
+				<allowSkillAttack>true</allowSkillAttack>
 				<skillId>50435</skillId> <!-- Fatal Impulse -->
 				<skillLevel>
 					<value level="1">0</value>
@@ -899,8 +938,17 @@
 		</effects>
 	</skill>
 	<skill id="50434" toLevel="8" name="Fatal Power">
-		<!-- Skill Power +1% -->
+		<!-- Level 1: Skill Power +1% -->
+		<!-- Level 2: Skill Power +2% -->
+		<!-- Level 3: Skill Power +3% -->
+		<!-- Level 4: Skill Power +4% -->
+		<!-- Level 5: Skill Power +5% -->
+		<!-- Level 6: Skill Power +8% -->
+		<!-- Level 7: Skill Power +9% -->
+		<!-- Level 8: Skill Power +10% -->
 		<icon>icon.skill10076</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -912,13 +960,13 @@
 			<value level="8">8</value>
 		</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<isMagic>5</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>60000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="PhysicalSkillPower">
 				<amount>
@@ -936,8 +984,15 @@
 		</effects>
 	</skill>
 	<skill id="50435" toLevel="6" name="Fatal Impulse">
-		<!-- All Critical Damage +50. -->
+		<!-- Level 1: All Critical Damage +50. -->
+		<!-- Level 2: All Critical Damage +100. -->
+		<!-- Level 3: All Critical Damage +200. -->
+		<!-- Level 4: All Critical Damage +300. -->
+		<!-- Level 5: All Critical Damage +400. -->
+		<!-- Level 6: All Critical Damage +500. -->
 		<icon>icon.skill10064</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -947,13 +1002,13 @@
 			<value level="6">6</value>
 		</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<isMagic>5</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>60000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="CriticalDamage">
 				<amount>
@@ -1007,7 +1062,7 @@
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -1016,8 +1071,9 @@
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>50438</skillId> <!-- Protective Barrier -->
 				<skillLevel>1</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -1026,11 +1082,21 @@
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>50438</skillId> <!-- Protective Barrier -->
 				<skillLevel>1</skillLevel>
+				<allowSkillAttack>true</allowSkillAttack>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50437" toLevel="10" name="+1 Shield of Vengeance">
-		<!-- A shield imbued with the power of vengeance. All received Critical Rate -2%. Max HP +30. Shield Defense +20. <Protective Barrier>. With a 1% chance, Shield Defense Rate and P./ M. Def. +5% for 5 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 1: A shield imbued with the power of vengeance. All received Critical Rate -2%. Max HP +30. Shield Defense +20. <Protective Barrier>. With a 1% chance, Shield Defense Rate and P./ M. Def. +5% for 5 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 2: A shield imbued with the power of vengeance. All received Critical Rate -3%. Max HP +40. Shield Defense +30. <Protective Barrier>. With a 1% chance, Shield Defense Rate and P./ M. Def. +5% for 5 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 3: A shield imbued with the power of vengeance. All received Critical Rate -4%. Max HP +60. Shield Defense +60. <Protective Barrier>. With a 1% chance, Shield Defense Rate and P./ M. Def. +10% for 5 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 4: A shield imbued with the power of vengeance. All received Critical Rate -5%. Max HP +80. Shield Defense +100. <Protective Barrier>. With a 1% chance, Shield Defense Rate and P./ M. Def. +15% for 5 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 5: A shield imbued with the power of vengeance. All received Critical Rate -8%. Max HP +200. Shield Defense +200. <Protective Barrier>. With a 2% chance, Shield Defense Rate and P./ M. Def. +20% for 5 sec. when hit. (Cooldown: 60 sec.). <Retribution Defense>. Reflects 5% of received damage back to the enemy for 3 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 6: A shield imbued with the power of vengeance. All received Critical Rate -9%. Max HP +250. Shield Defense +400. <Protective Barrier>. With a 3% chance, Shield Defense Rate and P./ M. Def. +30% for 5 sec. when hit. (Cooldown: 60 sec.). <Retribution Defense>. Reflects 15% of received damage back to the enemy for 3 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 7: A shield imbued with the power of vengeance. All received Critical Rate -10%. Max HP +300. Shield Defense +700. <Protective Barrier>. With a 6% chance, Shield Defense Rate and P./ M. Def. +40% for 5 sec. when hit. (Cooldown: 60 sec.). <Retribution Defense>. Reflects 30% of received damage back to the enemy for 3 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 8: A shield imbued with the power of vengeance. All received Critical Rate -11%. Max HP +400. Shield Defense +1000. <Protective Barrier>. With a 8% chance, Shield Defense Rate and P./ M. Def. +60% for 5 sec. when hit. (Cooldown: 60 sec.). <Retribution Defense>. Reflects 60% of received damage back to the enemy for 3 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 9: A shield imbued with the power of vengeance. All received Critical Rate -12%. Max HP +450. Shield Defense +1500. <Protective Barrier>. With a 9% chance, Shield Defense Rate and P./ M. Def. +80% for 5 sec. when hit. (Cooldown: 60 sec.). <Retribution Defense>. Reflects 100% of received damage back to the enemy for 3 sec. when hit. (Cooldown: 60 sec.) -->
+		<!-- Level 10: A shield imbued with the power of vengeance. All received Critical Rate -15%. Max HP +800. Shield Defense +2000. <Protective Barrier>. With a 10% chance, Shield Defense Rate and P./ M. Def. +100% for 5 sec. when hit. (Cooldown: 60 sec.). <Retribution Defense>. Reflects 150% of received damage back to the enemy for 3 sec. when hit. (Cooldown: 60 sec.) -->
 		<icon>icon.shield_of_revenge</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -1094,7 +1160,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -1112,6 +1178,7 @@
 				<targetType>SELF</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
+				<allowSkillAttack>true</allowSkillAttack>
 				<skillId>50438</skillId> <!-- Protective Barrier -->
 				<skillLevel>
 					<value level="1">2</value>
@@ -1126,7 +1193,7 @@
 					<value level="10">11</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -1143,6 +1210,7 @@
 				</chance>
 				<targetType>SELF</targetType>
 				<isCritical>true</isCritical>
+				<allowSkillAttack>true</allowSkillAttack>
 				<allowWeapons>ALL</allowWeapons>
 				<skillId>50438</skillId> <!-- Protective Barrier -->
 				<skillLevel>
@@ -1158,7 +1226,7 @@
 					<value level="10">11</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="5" toLevel="10">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="5" toLevel="10">
 				<attackerType>Playable</attackerType>
 				<chance>10</chance>
 				<targetType>SELF</targetType>
@@ -1180,8 +1248,20 @@
 		</effects>
 	</skill>
 	<skill id="50438" toLevel="11" name="Protective Barrier">
-		<!-- Shield Defense Rate +5%. P. Def. +5%. , M. Def. +5% -->
+		<!-- Level 1: Shield Defense Rate +5%. P. Def. +5%. , M. Def. +5% -->
+		<!-- Level 2: Shield Defense Rate +5%. P. Def. +5%. , M. Def. +5% -->
+		<!-- Level 3: Shield Defense Rate +5%. P. Def. +5%. , M. Def. +5% -->
+		<!-- Level 4: Shield Defense Rate +10%. P. Def. +10%. , M. Def. +10% -->
+		<!-- Level 5: Shield Defense Rate +15%. P. Def. +15%. , M. Def. +15% -->
+		<!-- Level 6: Shield Defense Rate +20%. P. Def. +20%. , M. Def. +20% -->
+		<!-- Level 7: Shield Defense Rate +30%. P. Def. +30%. , M. Def. +30% -->
+		<!-- Level 8: Shield Defense Rate +40%. P. Def. +40%. , M. Def. +40% -->
+		<!-- Level 9: Shield Defense Rate +60%. P. Def. +60%. , M. Def. +60% -->
+		<!-- Level 10: Shield Defense Rate +80%. P. Def. +80%. , M. Def. +80% -->
+		<!-- Level 11: Shield Defense Rate +100%. P. Def. +100%. , M. Def. +100% -->
 		<icon>icon.skill1515</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1196,14 +1276,13 @@
 			<value level="11">11</value>
 		</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<isMagic>5</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<reuseDelay>60000</reuseDelay>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>60000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="ShieldDefenceRate">
 				<amount>
@@ -1256,8 +1335,15 @@
 		</effects>
 	</skill>
 	<skill id="50439" toLevel="6" name="Retribution Defense">
-		<!-- Reflects 5% of the received damage. -->
+		<!-- Level 1: Reflects 5% of the received damage. -->
+		<!-- Level 2: Reflects 15% of the received damage. -->
+		<!-- Level 3: Reflects 30% of the received damage. -->
+		<!-- Level 4: Reflects 60% of the received damage. -->
+		<!-- Level 5: Reflects 100% of the received damage. -->
+		<!-- Level 6: Reflects 150% of the received damage. -->
 		<icon>icon.skill10021_2</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1267,14 +1353,12 @@
 			<value level="6">6</value>
 		</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<isMagic>5</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<reuseDelay>60000</reuseDelay>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>60000</reuseDelay>
 		<effects>
 			<effect name="DamageShield">
 				<amount>
@@ -1289,7 +1373,21 @@
 		</effects>
 	</skill>
 	<skill id="50440" toLevel="15" name="Chocolate Doll">
-		<!-- Chocolate Doll's effect. Soulshot/ Spiritshot damage +1%. Acquired XP/ SP +1% -->
+		<!-- Level 1: Chocolate Doll's effect. Soulshot/ Spiritshot damage +1%. Acquired XP/ SP +1% -->
+		<!-- Level 2: Chocolate Doll's effect. Soulshot/ Spiritshot damage +2%. Acquired XP/ SP +2% -->
+		<!-- Level 3: Chocolate Doll's effect. Soulshot/ Spiritshot damage +3%. Acquired XP/ SP +3% -->
+		<!-- Level 4: Chocolate Doll's effect. Soulshot/ Spiritshot damage +4%. Acquired XP/ SP +5% -->
+		<!-- Level 5: Chocolate Doll's effect. Soulshot/ Spiritshot damage +5%. Acquired XP/ SP +7% -->
+		<!-- Level 6: Chocolate Doll's effect. Soulshot/ Spiritshot damage +6%. Acquired XP/ SP +10%. P./ M. Atk. +10 -->
+		<!-- Level 7: Chocolate Doll's effect. Soulshot/ Spiritshot damage +7%. Acquired XP/ SP +11%. P./ M. Atk. +30 -->
+		<!-- Level 8: Chocolate Doll's effect. Soulshot/ Spiritshot damage +8%. Acquired XP/ SP +13%. P./ M. Atk. +50 -->
+		<!-- Level 9: Chocolate Doll's effect. Soulshot/ Spiritshot damage +9%. Acquired XP/ SP +15%. P./ M. Atk. +80 -->
+		<!-- Level 10: Chocolate Doll's effect. Soulshot/ Spiritshot damage +10%. Acquired XP/ SP +17%. P./ M. Atk. +120 -->
+		<!-- Level 11: Chocolate Doll's effect. Soulshot/ Spiritshot damage +11%. Acquired XP/ SP +20%. P./ M. Atk. +170 -->
+		<!-- Level 12: Chocolate Doll's effect. Soulshot/ Spiritshot damage +12%. Acquired XP/ SP +21%. P./ M. Atk. +230 -->
+		<!-- Level 13: Chocolate Doll's effect. Soulshot/ Spiritshot damage +13%. Acquired XP/ SP +23%. P./ M. Atk. +300 -->
+		<!-- Level 14: Chocolate Doll's effect. Soulshot/ Spiritshot damage +14%. Acquired XP/ SP +25%. P./ M. Atk. +380 -->
+		<!-- Level 15: Chocolate Doll's effect. Soulshot/ Spiritshot damage +15%. Acquired XP/ SP +30%. P./ M. Atk. +700 -->
 		<icon>icon.gomdori_chest_change</icon>
 		<operateType>P</operateType>
 		<stayAfterDeath>true</stayAfterDeath>
@@ -1352,7 +1450,7 @@
 					<value level="15">30</value>
 				</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">10</value>
@@ -1368,7 +1466,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">10</value>
@@ -1387,16 +1485,19 @@
 		</effects>
 	</skill>
 	<skill id="50441" toLevel="4" name="Antharas' Earring">
-		<!-- An earring imbued with the Earth Dragon's power. <Effect>. Max MP +28. Bleed Atk. Rate +10%. Stun Atk. Rate +5%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Bleed Resistance +10%. Stun Resistance +5%. Silence Resistance +5%. Fear Resistance +5%. Received Healing +280. Skill MP Consumption +281. Absorbs +282 of the inflicted damage as HP. -->
+		<!-- Level 1: An earring imbued with the Earth Dragon's power. <Effect>. Max MP +28. Bleed Atk. Rate +10%. Stun Atk. Rate +5%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Bleed Resistance +10%. Stun Resistance +5%. Silence Resistance +5%. Fear Resistance +5%. Received Healing +280. Skill MP Consumption +281. Absorbs +282 of the inflicted damage as HP. -->
+		<!-- Level 2: An earring imbued with the Earth Dragon's power. <Effect>. Max MP +34. Bleed Atk. Rate +20%. Stun Atk. Rate +10%. Silence Atk. Rate +10%. Fear Atk. Rate +10%. Bleed Resistance +20%. Stun Resistance +10%. Silence Resistance +10%. Fear Resistance +10%. Received Healing +340. Skill MP Consumption +341. Damage Reflection Resistance +342. Absorbs +343 of the inflicted damage as HP. -->
+		<!-- Level 3: An earring imbued with the Earth Dragon's power. <Effect>. CON +1. MEN +1. Max MP +40. Bleed Atk. Rate +30%. Stun Atk. Rate +20%. Silence Atk. Rate +20%. Fear Atk. Rate +20%. Bleed Resistance +30%. Stun Resistance +20%. Silence Resistance +10. Fear Resistance +11. Received Healing +12. Skill MP Consumption +13. Damage Reflection Resistance +14. Absorbs +15 of the inflicted damage as HP. -->
+		<!-- Level 4: An earring imbued with the Earth Dragon's power. <Effect>. CON +2. MEN +2. Max MP +50. Bleed Atk. Rate +40%. Stun Atk. Rate +30%. Silence Atk. Rate +30%. Fear Atk. Rate +30%. Bleed Resistance +40%. Stun Resistance +30%. Silence Resistance +20. Fear Resistance +21. Received Healing +22. Skill MP Consumption +23. Damage Reflection Resistance +24. Absorbs +25 of the inflicted damage as HP. -->
 		<icon>
 			<value level="1">icon.accessory_earring_of_antaras_i00</value>
 			<value level="2">icon.accessory_earring_of_antaras_i01</value>
 			<value level="3">icon.accessory_earring_of_antaras_i02</value>
 			<value level="4">icon.accessory_earring_of_antaras_i04</value>
 		</icon>
-		<magicLevel>75</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>75</magicLevel>
 		<effects>
 			<effect name="AttackTrait">
 				<INFECTION>
@@ -1505,7 +1606,10 @@
 		</effects>
 	</skill>
 	<skill id="50442" toLevel="4" name="Zaken's Earring">
-		<!-- An earring imbued with Zaken's power. <Effect>. Max MP +22. Bleed Atk. Rate +10%. Stun Atk. Rate +5%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Bleed Resistance +10%. Stun Resistance +5%. Silence Resistance +5%. Fear Resistance +5%. Received Healing +220. HP Recovery Rate +221. MP Consumption +222 -->
+		<!-- Level 1: An earring imbued with Zaken's power. <Effect>. Max MP +22. Bleed Atk. Rate +10%. Stun Atk. Rate +5%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Bleed Resistance +10%. Stun Resistance +5%. Silence Resistance +5%. Fear Resistance +5%. Received Healing +220. HP Recovery Rate +221. MP Consumption +222 -->
+		<!-- Level 2: An earring imbued with Zaken's power. <Effect>. Max MP +28. Bleed Atk. Rate +15%. Stun Atk. Rate +10%. Silence Atk. Rate +10%. Fear Atk. Rate +10%. Bleed Resistance +15%. Stun Resistance +10%. Silence Resistance +10%. Fear Resistance +10%. Received Healing +280. HP Recovery Rate +281. MP Consumption +282 -->
+		<!-- Level 3: An earring imbued with Zaken's power. <Effect>. Max MP +34. Bleed Atk. Rate +20%. Stun Atk. Rate +15%. Silence Atk. Rate +15%. Fear Atk. Rate +15%. Bleed Resistance +20%. Stun Resistance +15%. Silence Resistance +15%. Fear Resistance +15%. Received Healing +340. HP Recovery Rate +341. MP Consumption +342. Absorbs 8% of the inflicted damage as HP. -->
+		<!-- Level 4: An earring imbued with Zaken's power. <Effect>. Max MP +45. Bleed Atk. Rate +30%. Stun Atk. Rate +20%. Silence Atk. Rate +20%. Fear Atk. Rate +20%. Bleed Resistance +30%. Stun Resistance +20%. Silence Resistance +20%. Fear Resistance +20%. Received Healing +450. HP Recovery Rate +451. MP Consumption +452. Absorbs 8% of the inflicted damage as HP. -->
 		<icon>
 			<value level="1">icon.accessory_earring_of_zaken_i00</value>
 			<value level="2">icon.accessory_earring_of_zaken_i02</value>
@@ -1582,12 +1686,12 @@
 				<mode>PER</mode>
 			</effect>
 			<effect name="HpDrain">
-				<amount>
+				<power>
 					<value level="1">0</value>
 					<value level="2">0</value>
 					<value level="3">8</value>
 					<value level="4">8</value>
-				</amount>
+				</power>
 				<mode>PER</mode>
 			</effect>
 			<effect name="MagicMpCost">
@@ -1623,7 +1727,10 @@
 		</effects>
 	</skill>
 	<skill id="50443" toLevel="4" name="Baium's Ring">
-		<!-- A ring imbued with power of Baium. <Effect>. Max MP +15. Atk. Spd. +3%. Casting Spd. +3%. P. Accuracy +2. M. Accuracy +2. Skill Power +3%. Bleed Atk. Rate +5%. Stun Atk. Rate +10%. Bleed Resistance +5%. Stun Resistance +150 -->
+		<!-- Level 1: A ring imbued with power of Baium. <Effect>. Max MP +15. Atk. Spd. +3%. Casting Spd. +3%. P. Accuracy +2. M. Accuracy +2. Skill Power +3%. Bleed Atk. Rate +5%. Stun Atk. Rate +10%. Bleed Resistance +5%. Stun Resistance +150 -->
+		<!-- Level 2: A ring imbued with power of Baium. <Effect>. Max MP +21. Atk. Spd. +4%. Casting Spd. +4%. P. Accuracy +3. M. Accuracy +3. Skill Power +6%. Bleed Atk. Rate +10%. Stun Atk. Rate +15%. Bleed Resistance +10%. Stun Resistance +210 -->
+		<!-- Level 3: A ring imbued with Baium's power. <Effect>. Max MP +27. Atk. Spd. +5%. Casting Spd. +5%. P. Accuracy +4. M. Accuracy +4. Skill Power +10%. P. Critical Damage +15%. M. Skill Critical Damage +10%. Bleed Atk. Rate +15%. Stun Atk. Rate +270. Bleed Resistance +271. Stun Resistance +272 -->
+		<!-- Level 4: A ring imbued with Baium's power. <Effect>. Max MP +35. Atk. Spd. +10%. Casting Spd. +10%. P. Accuracy +8. M. Accuracy +8. Skill Power +20%. P. Critical Damage +20%. M. Skill Critical Damage +20%. Bleed Atk. Rate +20%. Stun Atk. Rate +350. Bleed Resistance +351. Stun Resistance +352 -->
 		<icon>
 			<value level="1">icon.accessory_ring_of_baium_i00</value>
 			<value level="2">icon.accessory_ring_of_baium_i02</value>
@@ -1732,7 +1839,12 @@
 		</effects>
 	</skill>
 	<skill id="50444" toLevel="6" name="Queen Ant's Ring">
-		<!-- A ring imbued with Queen Ant's power. <Effect>. Max MP +9. P. Accuracy +1. M. Accuracy +1. P. Atk. +4%. M. Atk. +4%. Infection Atk. Rate +10%. Infection Resistance +10% -->
+		<!-- Level 1: A ring imbued with Queen Ant's power. <Effect>. Max MP +9. P. Accuracy +1. M. Accuracy +1. P. Atk. +4%. M. Atk. +4%. Infection Atk. Rate +10%. Infection Resistance +10% -->
+		<!-- Level 2: A ring imbued with Queen Ant's power. <Effect>. Max MP +15. P. Accuracy +2. M. Accuracy +2. P. Atk. +6%. M. Atk. +6%. Infection Atk. Rate +15%. Infection Resistance +15% -->
+		<!-- Level 3: A ring imbued with Queen Ant's power. <Effect>. Max MP +21. P. Accuracy +3. M. Accuracy +3. P. Atk. +7%. M. Atk. +7%. P. Critical Damage +10%. M. Skill Critical Damage +5%. Infection Atk. Rate +20%. Infection Resistance +20% -->
+		<!-- Level 4: A ring imbued with Queen Ant's power. <Effect>. Max MP +30. P. Accuracy +4. M. Accuracy +4. P. Atk. +9%. M. Atk. +9%. All Critical Damage+10%. Infection Atk. Rate +20%. Infection Resistance +20% -->
+		<!-- Level 5: A ring imbued with Queen Ant's power. <Effect>. Max MP +40. P. Accuracy +6. M. Accuracy +6. P. Atk. +11%. M. Atk. +11%. All Critical Damage+15%. Infection Atk. Rate +20%. Infection Resistance +20% -->
+		<!-- Level 6: A ring imbued with Queen Ant's power. <Effect>. Max MP +50. P. Accuracy +10. M. Accuracy +10. P. Atk. +15%. M. Atk. +15%. All Critical Damage +20%. Poison Atk. Rate +20%. Poison Resistance +20%. Applies the Queen Ant Power buff when hit. (Cooldown: 300 sec.) -->
 		<icon>
 			<value level="1">icon.accessory_ring_of_queen_ant_i03</value>
 			<value level="2">icon.accessory_ring_of_queen_ant_i03</value>
@@ -1776,7 +1888,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">6</value>
@@ -1787,7 +1899,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">6</value>
@@ -1836,7 +1948,7 @@
 					<value level="6">20</value>
 				</INFECTION>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -1845,7 +1957,7 @@
 				<skillId>50451</skillId> <!-- Queen Ant Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -1857,7 +1969,12 @@
 		</effects>
 	</skill>
 	<skill id="50445" toLevel="6" name="Ring of Core">
-		<!-- A ring imbued with Core's power. <Effect>. Max MP +9. P. Evasion +1. M. Evasion +1. P. Def. +2%. M. Def. +2%. Received damage -2%. Silence Atk. Rate +10%. Fear Atk. Rate +10%. Silence Resistance +10%. Fear Resistance +90 -->
+		<!-- Level 1: A ring imbued with Core's power. <Effect>. Max MP +9. P. Evasion +1. M. Evasion +1. P. Def. +2%. M. Def. +2%. Received damage -2%. Silence Atk. Rate +10%. Fear Atk. Rate +10%. Silence Resistance +10%. Fear Resistance +90 -->
+		<!-- Level 2: A ring imbued with Core's power. <Effect>. Max MP +15. P. Evasion +2. M. Evasion +2. P. Def. +4%. M. Def. +4%. Received damage -4%. Silence Atk. Rate +15%. Fear Atk. Rate +15%. Silence Resistance +15%. Fear Resistance +150 -->
+		<!-- Level 3: A ring imbued with Core's power. <Effect>. Max MP +21. P. Evasion +4. M. Evasion +4. P. Def. +6%. M. Def. +6%. Received damage -6%. Silence Atk. Rate +20%. Fear Atk. Rate +20%. Silence Resistance +20%. Fear Resistance +210 -->
+		<!-- Level 4: A ring imbued with Core's power. <Effect>. Max MP +30. P. Evasion +6. M. Evasion +6. P. Def. +8%. M. Def. +8%. Received damage -8%. Silence Atk. Rate +20%. Fear Atk. Rate +20%. Silence Resistance +20%. Fear Resistance +300 -->
+		<!-- Level 5: A ring imbued with Core's power. <Effect>. Max MP +40. P. Evasion +8. M. Evasion +8. P. Atk. +100. M. Atk. +100. P. Def. +10%. M. Def. +10%. Received damage -10%. Silence Atk. Rate +20%. Fear Atk. Rate +400. Silence Resistance +401. Fear Resistance +402 -->
+		<!-- Level 6: A ring imbued with Core's power. <Effect>. Max MP +50. P. Evasion +10. M. Evasion +10. P. Atk. +200. M. Atk. +200. P. Def. +15%. M. Def. +15%. Received damage -15%. Silence Atk. Rate +20%. Fear Atk. Rate +500. Silence Resistance +501. Fear Resistance +502. Applies the Core Power buff when hit. (Cooldown: 300 sec.) -->
 		<icon>
 			<value level="1">icon.accessory_ring_of_core_i03</value>
 			<value level="2">icon.accessory_ring_of_core_i03</value>
@@ -2000,7 +2117,7 @@
 					<value level="6">20</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">100</value>
@@ -2008,7 +2125,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">100</value>
@@ -2016,7 +2133,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2025,7 +2142,7 @@
 				<skillId>50452</skillId> <!-- Core Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2037,7 +2154,12 @@
 		</effects>
 	</skill>
 	<skill id="50446" toLevel="6" name="Baium's Ring">
-		<!-- A ring imbued with power of Baium. <Effect>. Max MP +15. P. Accuracy +2. M. Accuracy +2. Atk. Spd. +3%. Casting Spd. +3%. Skill Power +3%. Infection Atk. Rate +5%. Shock Atk. Rate +10%. Infection Resistance +5%. Shock Resistance +150 -->
+		<!-- Level 1: A ring imbued with power of Baium. <Effect>. Max MP +15. P. Accuracy +2. M. Accuracy +2. Atk. Spd. +3%. Casting Spd. +3%. Skill Power +3%. Infection Atk. Rate +5%. Shock Atk. Rate +10%. Infection Resistance +5%. Shock Resistance +150 -->
+		<!-- Level 2: A ring imbued with power of Baium. <Effect>. Max MP +21. P. Accuracy +3. M. Accuracy +3. Atk. Spd. +4%. Casting Spd. +4%. Skill Power +6%. Infection Atk. Rate +10%. Shock Atk. Rate +15%. Infection Resistance +10%. Shock Resistance +210 -->
+		<!-- Level 3: A ring imbued with power of Baium. <Effect>. Max MP +27. P. Accuracy +4. M. Accuracy +4. Atk. Spd. +5%. Casting Spd. +5%. Skill Power +10%. P. Critical Damage +15%. M. Skill Critical Damage +10%. Infection Atk. Rate +15%. Shock Atk. Rate +270. Infection Resistance +271. Shock Resistance +272 -->
+		<!-- Level 4: A ring imbued with power of Baium. <Effect>. Max MP +40. P. Accuracy +6. M. Accuracy +6. Atk. Spd. +7%. Casting Spd. +7%. Skill Power +12%. All Critical Damage +15%. Infection Atk. Rate +15%. Shock Atk. Rate +20%. Infection Resistance +400. Shock Resistance +401 -->
+		<!-- Level 5: A ring imbued with power of Baium. <Effect>. Max MP +55. P. Accuracy +8. M. Accuracy +8. Atk. Spd. +9%. Casting Spd. +9%. Skill Power +15%. All Critical Damage +18%. Infection Atk. Rate +15%. Shock Atk. Rate +20%. Infection Resistance +550. Shock Resistance +551 -->
+		<!-- Level 6: A ring imbued with power of Baium. <Effect>. Max MP +70. P. Accuracy +10. M. Accuracy +10. Atk. Spd. +12%. Casting Spd. +12%. Skill Power +20%. All Critical Damage +23%. Infection Atk. Rate +15%. Shock Atk. Rate +20%. Infection Resistance +700. Shock Resistance +701. The Baium Power effect is applied after an attack. (Cooldown: 300 sec.) -->
 		<icon>
 			<value level="1">icon.accessory_ring_of_baium_i03</value>
 			<value level="2">icon.accessory_ring_of_baium_i03</value>
@@ -2169,7 +2291,7 @@
 					<value level="6">23</value>
 				</amount>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2178,7 +2300,7 @@
 				<skillId>50453</skillId> <!-- Baium Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2190,7 +2312,12 @@
 		</effects>
 	</skill>
 	<skill id="50447" toLevel="6" name="Orfen's Earring">
-		<!-- An earring imbued with Orfen's power. <Effect>. Max MP +19. Received Healing +2%. Skill MP Consumption -2%. Hold Atk. Rate +10%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Hold Resistance +10%. Silence Resistance +5%. Fear Resistance +5% -->
+		<!-- Level 1: An earring imbued with Orfen's power. <Effect>. Max MP +19. Received Healing +2%. Skill MP Consumption -2%. Hold Atk. Rate +10%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Hold Resistance +10%. Silence Resistance +5%. Fear Resistance +5% -->
+		<!-- Level 2: An earring imbued with Orfen's power. <Effect>. Max MP +25. Received Healing +4%. Skill MP Consumption -3%. Hold Atk. Rate +15%. Silence Atk. Rate +10%. Fear Atk. Rate +10%. Hold Resistance +15%. Silence Resistance +10%. Fear Resistance +10% -->
+		<!-- Level 3: An earring imbued with Orfen's power. <Effect>. Max MP +31. Received Healing +6%. Skill MP Consumption -5%. Absorbs 3% of the inflicted damage as MP. Hold Atk. Rate +20%. Silence Atk. Rate +15%. Fear Atk. Rate +15%. Hold Resistance +20%. Silence Resistance +15%. Fear Resistance +15% -->
+		<!-- Level 4: An earring imbued with Orfen's power. <Effect>. Max MP +40. P. Atk. +50. M. Atk. +50. Received Healing +8%. Skill MP Consumption -6%. Absorbs 3% of the inflicted damage as MP. MP Recovery Rate +2. Hold Atk. Rate +20%. Silence Atk. Rate +15%. Fear Atk. Rate +15%. Hold Resistance +400. Silence Resistance +401. Fear Resistance +402 -->
+		<!-- Level 5: An earring imbued with Orfen's power. <Effect>. Max MP +50. P. Atk. +100. M. Atk. +100. Received Healing +10%. Skill MP Consumption -7%. Absorbs 3% of the inflicted damage as MP. MP Recovery Rate +3. M. Damage Resistance +3%. Hold Atk. Rate +20%. Silence Atk. Rate +15%. Fear Atk. Rate +500. Hold Resistance +501. Silence Resistance +502. Fear Resistance +503 -->
+		<!-- Level 6: An earring imbued with Orfen's power. <Effect>. Max MP +60. P. Atk. +200. M. Atk. +200. Received Healing +15%. Skill MP Consumption -10%. Absorbs 3% of the inflicted damage as MP. MP Recovery Rate +5. M. Damage Resistance +5%. Hold Atk. Rate +20%. Silence Atk. Rate +15%. Fear Atk. Rate +600. Hold Resistance +601. Silence Resistance +602. Fear Resistance +603. Applies the Orfen Power buff after an attack, recovering 10% of MP. (Cooldown: 300 sec.). Inflicts Sleep on the target after an attack. (Cooldown: 300 sec.) -->
 		<icon>
 			<value level="1">icon.accessory_earring_of_orfen_i03</value>
 			<value level="2">icon.accessory_earring_of_orfen_i03</value>
@@ -2234,7 +2361,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="3">0</value>
 					<value level="4">50</value>
@@ -2243,7 +2370,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="3">0</value>
 					<value level="4">50</value>
@@ -2302,7 +2429,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="MagicalSuccessResistance">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2313,7 +2440,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2322,7 +2449,7 @@
 				<skillId>50471</skillId> <!-- Orfen Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2331,7 +2458,7 @@
 				<skillId>50471</skillId> <!-- Orfen Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2340,7 +2467,7 @@
 				<skillId>50454</skillId> <!-- Orfen Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2352,7 +2479,12 @@
 		</effects>
 	</skill>
 	<skill id="50448" toLevel="6" name="Zaken's Earring">
-		<!-- An earring imbued with Zaken's power. <Effect>. Max MP +22. MP Consumption -2%. Received Healing +4%. HP Recovery Rate +10%. Infection Atk. Rate +10%. Shock Atk. Rate +5%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Infection Resistance +10%. Shock Resistance +220. Silence Resistance +221. Fear Resistance +222 -->
+		<!-- Level 1: An earring imbued with Zaken's power. <Effect>. Max MP +22. MP Consumption -2%. Received Healing +4%. HP Recovery Rate +10%. Infection Atk. Rate +10%. Shock Atk. Rate +5%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Infection Resistance +10%. Shock Resistance +220. Silence Resistance +221. Fear Resistance +222 -->
+		<!-- Level 2: An earring imbued with Zaken's power. <Effect>. Max MP +28. MP Consumption -3%. Received Healing +6%. HP Recovery Rate +15%. Infection Atk. Rate +15%. Shock Atk. Rate +10%. Silence Atk. Rate +10%. Fear Atk. Rate +10%. Infection Resistance +15%. Shock Resistance +280. Silence Resistance +281. Fear Resistance +282 -->
+		<!-- Level 3: An earring imbued with Zaken's power. <Effect>. Max MP +34. MP Consumption -4%. Received Healing +10%. HP Recovery Rate +20%. Absorbs 8% of inflicted damage as HP. Infection Atk. Rate +20%. Shock Atk. Rate +15%. Silence Atk. Rate +15%. Fear Atk. Rate +15%. Infection Resistance +20%. Shock Resistance +340. Silence Resistance +341. Fear Resistance +342 -->
+		<!-- Level 4: An earring imbued with Zaken's power. <Effect>. Max MP +45. MP Consumption -5%. Received Healing +12%. HP Recovery Rate +20%. Absorbs 8% of inflicted damage as HP. HP Recovery Potions' Effect +50. Infection Atk. Rate +20%. Shock Atk. Rate +15%. Silence Atk. Rate +15%. Fear Atk. Rate +15%. Infection Resistance +450. Shock Resistance +451. Silence Resistance +452. Fear Resistance +453 -->
+		<!-- Level 5: An earring imbued with Zaken's power. <Effect>. Max MP +60. P. Atk. +50. M. Atk. +50. MP Consumption -6%. Received Healing +15%. HP Recovery Rate +20%. Absorbs 8% of inflicted damage as HP. HP Recovery Potions' Effect +100. Infection Atk. Rate +20%. Shock Atk. Rate +15%. Silence Atk. Rate +600. Fear Atk. Rate +601. Infection Resistance +602. Shock Resistance +603. Silence Resistance +604. Fear Resistance +605 -->
+		<!-- Level 6: An earring imbued with Zaken's power. <Effect>. Max MP +90. P. Atk. +200. M. Atk. +200. MP Consumption -8%. Received Healing +20%. HP Recovery Rate +20%. Absorbs 8% of inflicted damage as HP. HP Recovery Potions' Effect +200. Infection Atk. Rate +20%. Shock Atk. Rate +15%. Silence Atk. Rate +900. Fear Atk. Rate +901. Infection Resistance +902. Shock Resistance +903. Silence Resistance +904. Fear Resistance +905. Applies the Zaken Power buff after an attack, recovering 10% of HP. (Cooldown: 300 sec.). Inflicts Silence on the target after an attack. (Cooldown: 300 sec.) -->
 		<icon>
 			<value level="1">icon.accessory_earring_of_zaken_i03</value>
 			<value level="2">icon.accessory_earring_of_zaken_i03</value>
@@ -2432,7 +2564,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">50</value>
@@ -2440,7 +2572,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="4">0</value>
 					<value level="5">50</value>
@@ -2511,7 +2643,7 @@
 					<value level="3">200</value>
 				</amount>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2520,7 +2652,7 @@
 				<skillId>50472</skillId> <!-- Zaken Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2529,7 +2661,7 @@
 				<skillId>50472</skillId> <!-- Zaken Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2538,7 +2670,7 @@
 				<skillId>50455</skillId> <!-- Zaken Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2550,7 +2682,12 @@
 		</effects>
 	</skill>
 	<skill id="50449" toLevel="6" name="Antharas' Earring">
-		<!-- An earring imbued with the Earth Dragon's power. <Effect>. Max MP +28. Received Healing +6%. Skill MP Consumption -3%. Absorbs 3% of the inflicted damage as HP. Infection Atk. Rate +10%. Shock Atk. Rate +5%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Infection Resistance +10%. Shock Resistance +280. Silence Resistance +281. Fear Resistance +282 -->
+		<!-- Level 1: An earring imbued with the Earth Dragon's power. <Effect>. Max MP +28. Received Healing +6%. Skill MP Consumption -3%. Absorbs 3% of the inflicted damage as HP. Infection Atk. Rate +10%. Shock Atk. Rate +5%. Silence Atk. Rate +5%. Fear Atk. Rate +5%. Infection Resistance +10%. Shock Resistance +280. Silence Resistance +281. Fear Resistance +282 -->
+		<!-- Level 2: An earring imbued with the Earth Dragon's power. <Effect>. Max MP +34. Received Healing +10%. Skill MP Consumption -5%. Absorbs 4% of the inflicted damage as HP. Damage Reflection Resistance 7%. Infection Atk. Rate +20%. Shock Atk. Rate +10%. Silence Atk. Rate +10%. Fear Atk. Rate +10%. Infection Resistance +340. Shock Resistance +341. Silence Resistance +342. Fear Resistance +343 -->
+		<!-- Level 3: An earring imbued with the Earth Dragon's power. <Effect>. Max MP +40. CON +1. MEN +1. Received Healing +15%. Skill MP Consumption -6%. Absorbs 6% of the inflicted damage as HP. Damage Reflection Resistance 15%. Infection Atk. Rate +30%. Shock Atk. Rate +20%. Silence Atk. Rate +400. Fear Atk. Rate +401. Infection Resistance +402. Shock Resistance +403. Silence Resistance +404. Fear Resistance +405 -->
+		<!-- Level 4: An earring imbued with the Earth Dragon's power. <Effect>. Max MP +50. CON +1. MEN +1. P. Atk. +50. M. Atk. +50. Received Healing +17%. Skill MP Consumption -7%. Absorbs 7% of the inflicted damage as HP. Damage Reflection Resistance 20%. Infection Atk. Rate +500. Shock Atk. Rate +501. Silence Atk. Rate +502. Fear Atk. Rate +503. Infection Resistance +504. Shock Resistance +505. Silence Resistance +506. Fear Resistance +507 -->
+		<!-- Level 5: An earring imbued with the Earth Dragon's power. <Effect>. Max MP +70. CON +2. MEN +2. P. Atk. +150. M. Atk. +150. Received Healing +20%. Skill MP Consumption -8%. Absorbs 8% of the inflicted damage as HP. Damage Reflection Resistance 25%. Infection Atk. Rate +700. Shock Atk. Rate +701. Silence Atk. Rate +702. Fear Atk. Rate +703. Infection Resistance +704. Shock Resistance +705. Silence Resistance +706. Fear Resistance +707 -->
+		<!-- Level 6: An earring imbued with the Earth Dragon's power. <Effect>. Max MP +100. CON +3. MEN +3. P. Atk. +300. M. Atk. +300. Received Healing +30%. Skill MP Consumption -10%. Absorbs 10% of the inflicted damage as HP. Damage Reflection Resistance 30%. Infection Atk. Rate +1000. Shock Atk. Rate +1001. Silence Atk. Rate +1002. Fear Atk. Rate +1003. Infection Resistance +1004. Shock Resistance +1005. Silence Resistance +1006. Fear Resistance +1007. Applies the Antharas Power buff after an attack, recovering 30% of HP/ MP. (Cooldown: 300 sec.). Shocks the target after an attack. (Cooldown: 300 sec.) -->
 		<icon>
 			<value level="1">icon.accessory_earring_of_antaras_i02</value>
 			<value level="2">icon.accessory_earring_of_antaras_i02</value>
@@ -2702,7 +2839,7 @@
 				</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="3">0</value>
 					<value level="4">50</value>
@@ -2711,7 +2848,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="3">0</value>
 					<value level="4">50</value>
@@ -2720,7 +2857,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2729,7 +2866,7 @@
 				<skillId>50473</skillId> <!-- Antharas Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2738,7 +2875,7 @@
 				<skillId>50473</skillId> <!-- Antharas Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2747,7 +2884,7 @@
 				<skillId>50456</skillId> <!-- Antharas Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2759,7 +2896,12 @@
 		</effects>
 	</skill>
 	<skill id="50450" toLevel="6" name="Frintezza's Necklace">
-		<!-- A necklace imbued with Frintezza's power. <Effect>. Max. MP +30. Skill Power +5%. Skill Cooldown -5%. All Critical Rate +2%. All Critical Damage +20. Sleep Resistance +10%. Sleep Atk. Rate +10% -->
+		<!-- Level 1: A necklace imbued with Frintezza's power. <Effect>. Max. MP +30. Skill Power +5%. Skill Cooldown -5%. All Critical Rate +2%. All Critical Damage +20. Sleep Resistance +10%. Sleep Atk. Rate +10% -->
+		<!-- Level 2: A necklace imbued with Frintezza's power. <Effect>. Max. MP +36. Skill Power +10%. Skill Cooldown -6%. All Critical Rate +3%. All Critical Damage +50. Sleep Resistance +15%. Sleep Atk. Rate +15% -->
+		<!-- Level 3: A necklace imbued with Frintezza's power. <Effect>. Max. MP +50. Skill Power +15%. Skill Cooldown -8%. All Critical Rate +5%. All Critical Damage +100. Reflects 5% of damage. Sleep Resistance +20%. Sleep Atk. Rate +20% -->
+		<!-- Level 4: A necklace imbued with Frintezza's power. <Effect>. Max. MP +65. Skill Power +18%. Skill Cooldown -10%. All Critical Rate +6%. All Critical Damage +150. Reflects 6% of damage. Sleep Resistance +20%. Sleep Atk. Rate +20% -->
+		<!-- Level 5: A necklace imbued with Frintezza's power. <Effect>. Max. MP +90. Skill Power +23%. Skill Cooldown -12%. All Critical Rate +7%. All Critical Damage +200. Reflects 10% of damage. Sleep Resistance +20%. Sleep Atk. Rate +20% -->
+		<!-- Level 6: A necklace imbued with Frintezza's power. <Effect>. Max. MP +120. Skill Power +25%. Skill Cooldown -15%. All Critical Rate +10%. All Critical Damage +300. Reflects 15% of damage. Sleep Resistance +20%. Sleep Atk. Rate +20%. Inflicts Fear on the target when hit. Applies the Frintezza Power buff. (Cooldown: 180 sec.) -->
 		<icon>
 			<value level="1">icon.accessory_necklace_of_frintessa_i04</value>
 			<value level="2">icon.accessory_necklace_of_frintessa_i04</value>
@@ -2900,7 +3042,7 @@
 					<value level="6">15</value>
 				</amount>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2909,7 +3051,7 @@
 				<skillId>50457</skillId> <!-- Frintezza Power -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="6" toLevel="6">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="6" toLevel="6">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>3</chance>
@@ -2923,34 +3065,34 @@
 	<skill id="50451" toLevel="1" name="Queen Ant Power">
 		<!-- For 30 sec., grants immunity to debuffs that decrease P./ M. Atk. -->
 		<icon>icon.accessory_ring_of_queen_ant_i05</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PA_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>30</lvlBonusRate>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="DispelByCategory">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>5</max>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2959,23 +3101,23 @@
 	<skill id="50452" toLevel="1" name="Core Power">
 		<!-- For 30 sec., grants immunity to debuffs that decrease P./ M. Def. -->
 		<icon>icon.accessory_ring_of_core_i05</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PD_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>30</lvlBonusRate>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="DispelByCategory">
 				<slot>DEBUFF</slot>
@@ -2995,20 +3137,20 @@
 	<skill id="50453" toLevel="1" name="Baium Power">
 		<!-- Damage +10%. for 30 sec. -->
 		<icon>icon.accessory_ring_of_baium_i05</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PA_UP_SPECIAL</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
 		<castRange>700</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="PveMagicalSkillDamageBonus">
 				<amount>10</amount>
@@ -3039,24 +3181,24 @@
 	<skill id="50454" toLevel="1" name="Orfen Power">
 		<!-- Inflicts Sleep on the enemy. -->
 		<icon>icon.accessory_earring_of_orfen_i05</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>SLEEP</abnormalType>
 		<abnormalVisualEffect>SLEEP</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>30</lvlBonusRate>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
@@ -3064,25 +3206,25 @@
 	<skill id="50455" toLevel="1" name="Zaken Power">
 		<!-- Inflicts Silence on the enemy. -->
 		<icon>icon.accessory_earring_of_zaken_i05</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>SILENCE</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>30</lvlBonusRate>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
 		<trait>SILENCE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mute" />
 			<effect name="PhysicalMute" />
@@ -3091,24 +3233,24 @@
 	<skill id="50456" toLevel="1" name="Antharas Power">
 		<!-- Stuns the target and immobilizes it. -->
 		<icon>icon.accessory_earring_of_antaras_i05</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>30</lvlBonusRate>
-		<operateType>A2</operateType>
-		<reuseDelay>300000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
@@ -3116,24 +3258,24 @@
 	<skill id="50457" toLevel="1" name="Frintezza Power">
 		<!-- Inflicts Fear on the enemy. -->
 		<icon>icon.accessory_necklace_of_frintessa_i06</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>700</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>30</lvlBonusRate>
-		<operateType>A2</operateType>
-		<reuseDelay>180000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<reuseDelay>180000</reuseDelay>
 		<effects>
 			<effect name="BlockActions" />
 			<effect name="Fear" />
@@ -3171,13 +3313,23 @@
 				<amount>5</amount>
 			</effect>
 			<effect name="HpDrain">
-				<amount>2</amount>
+				<power>2</power>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50459" toLevel="11" name="Blessed Dragon Belt">
-		<!-- A belt imbued with dragon power. <Effect>. Weight limit +1000. Max HP +20. Max MP +10. Max CP +20. P. Def. +10. M. Def. +10. DEX +1. WIT +1 -->
+		<!-- Level 1: A belt imbued with dragon power. <Effect>. Weight limit +1000. Max HP +20. Max MP +10. Мax CP +20. P. Def. +10. M. Def. +10. DEX +1. WIT +1 -->
+		<!-- Level 2: Imbued with dragon power. <Effect>. Weight limit +2000. Inventory slots +2. Max HP +30. Max MP +20. Max CP +30. P. Def. +15. M. Def. +15. DEX +1. WIT +1. CON +20000. MEN +20001 -->
+		<!-- Level 3: Imbued with dragon power. <Effect>. Weight limit +3000. Inventory slots +4. Max HP +40. Max MP +25. Max CP +40. P. Def. +20. M. Def. +20. DEX +1. WIT +1. CON +30000. MEN +30001. STR +30002. INT +30003 -->
+		<!-- Level 4: Imbued with dragon power. <Effect>. Weight limit +4000. Inventory slots +6. Max HP +50. Max MP +30. Max CP +50. P. Def. +25. M. Def. +25. DEX +2. WIT +2. CON +40000. MEN +40001. STR +40002. INT +40003 -->
+		<!-- Level 5: Imbued with dragon power. <Effect>. Weight limit +5000. Inventory slots +6. Max HP +150. Max MP +100. Max CP +200. HP Recovery Potions' Effect +80. MP Recovery Potions' Effect +10. P. Def. +30. M. Def. +30. Atk. Spd. +50000. Casting Spd. +50001. DEX +50002. WIT +50003. CON +50004. MEN +50005. STR +50006. INT +50007. <Dragon's Protection>. When hit, has a +50008 chance to create a barrier with +50009 HP (can be triggered up to +60 time(s)). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 6: Imbued with dragon power. <Effect>. Weight limit +6000. Inventory slots +6. Max HP +200. Max MP +150. Max CP +300. HP Recovery Potions' Effect +100. MP Recovery Potions' Effect +20. P. Def. +40. M. Def. +40. Atk. Spd. +60000. Casting Spd. +60001. DEX +60002. WIT +60003. CON +60004. MEN +60005. STR +60006. INT +60007. <Dragon's Protection>. When hit, has a +60008 chance to create a barrier with +60009 HP (can be triggered up to +60 time(s)). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 7: Imbued with dragon power. <Effect>. Weight limit +7000. Inventory slots +6. Max HP +300. Max MP +200. Max CP +500. HP Recovery Potions' Effect +120. MP Recovery Potions' Effect +30. P. Def. +50. M. Def. +50. Atk. Spd. +70000. Casting Spd. +70001. P. Critical Rate +70002. M. Skill Critical Rate +70003. Received damage +70004. DEX +70005. WIT +70006. CON +70007. MEN +70008. STR +70009. INT +60. <Dragon's Protection>. When hit, has a +61 chance to create a barrier with +62 HP (can be triggered up to +63 time(s)). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 8: Imbued with dragon power. <Effect>. Weight limit +8000. Inventory slots +8. Max HP +350. Max MP +250. Max CP +600. HP Recovery Potions' Effect +135. MP Recovery Potions' Effect +40. P. Def. +65. M. Def. +65. Atk. Spd. +80000. Casting Spd. +80001. P. Critical Rate +80002. M. Skill Critical Rate +80003. Received damage +80004. DEX +80005. WIT +80006. CON +80007. MEN +80008. STR +80009. INT +80. <Dragon's Protection>. When hit, has a +81 chance to create a barrier with +82 HP (can be triggered up to +83 time(s)). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 9: Imbued with dragon power. <Effect>. Weight limit +9000. Inventory slots +8. Max HP +500. Max MP +300. Max CP +800. HP Recovery Potions' Effect +175. MP Recovery Potions' Effect +65. P. Def. +90. M. Def. +90. Atk. Spd. +90000. Casting Spd. +90001. P. Critical Rate +90002. M. Skill Critical Rate +90003. Received damage +90004. Received Healing +90005. DEX +90006. WIT +90007. CON +90008. MEN +90009. STR +80. INT +81. <Dragon's Protection>. When hit, has a +82 chance to create a barrier with +83 HP (can be triggered up to +84 time(s)). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 10: Imbued with dragon power. <Effect>. Weight limit +10000. Inventory slots +10. Max HP +800. Max MP +400. Max CP +1200. HP Recovery Potions' Effect +250. MP Recovery Potions' Effect +90. P. Def. +125. M. Def. +125. Atk. Spd. +100000. Casting Spd. +100001. P. Critical Rate +100002. M. Skill Critical Rate +100003. Received damage +100004. Received Healing +100005. DEX +100006. WIT +100007. CON +100008. MEN +100009. STR +100. INT +101. <Dragon's Protection>. When hit, has a +102 chance to create a barrier with +103 HP (can be triggered up to +104 time(s)). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 11: Imbued with dragon power. <Effect>. Weight limit +12000. Inventory slots +12. Max HP +1500. Max MP +800. Max CP +1500. HP Recovery Potions' Effect +400. MP Recovery Potions' Effect +120. P. Def. +300. M. Def. +300. Atk. Spd. +120000. Casting Spd. +120001. P. Critical Rate +120002. M. Skill Critical Rate +120003. Received damage +120004. Received Healing +120005. DEX +120006. WIT +120007. CON +120008. MEN +120009. STR +120. INT +121. <Dragon's Protection>. When hit, has a +122 chance to create a barrier with +123 HP (can be triggered up to +124 time(s)). The barrier disappears when its HP is 0 or after all trigger attempts. -->
 		<icon>icon.dragon_belt_2</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -3495,7 +3647,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="5" toLevel="11">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="5" toLevel="11">
 				<!-- Dragon's Protection -->
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
@@ -3504,6 +3656,7 @@
 					<value level="6">2</value>
 					<value level="7">3</value>
 					<value level="10">4</value>
+					<value level="11">4</value> <!-- FIXME: AUTO GENERATED LEVEL -->
 				</chance>
 				<targetType>SELF</targetType>
 				<isCritical>true</isCritical>
@@ -3518,7 +3671,7 @@
 					<value level="11">7</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack" fromLevel="5" toLevel="11">
+			<effect name="TriggerSkillByDamageDealt" fromLevel="5" toLevel="11">
 				<!-- Dragon's Protection -->
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
@@ -3527,6 +3680,7 @@
 					<value level="6">2</value>
 					<value level="7">3</value>
 					<value level="10">4</value>
+					<value level="11">4</value> <!-- FIXME: AUTO GENERATED LEVEL -->
 				</chance>
 				<targetType>SELF</targetType>
 				<isCritical>false</isCritical>
@@ -3550,6 +3704,7 @@
 					<value level="6">2</value>
 					<value level="7">3</value>
 					<value level="10">4</value>
+					<value level="11">4</value> <!-- FIXME: AUTO GENERATED LEVEL -->
 				</chance>
 				<skillLevel>
 					<value level="5">1</value>
@@ -3565,52 +3720,110 @@
 		</effects>
 	</skill>
 	<skill id="50460" toLevel="7" name="Dragon's Protection">
-		<!-- The barrier's HP: 20000. Can be activated up to 1 time(s). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 1: The barrier's HP: 20000. Can be activated up to 1 time(s). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 2: The barrier's HP: 30000. Can be activated up to 2 time(s). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 3: The barrier's HP: 40000. Can be activated up to 2 time(s). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 4: The barrier's HP: 50000. Can be activated up to 3 time(s). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 5: The barrier's HP: 60000. Can be activated up to 3 time(s). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 6: The barrier's HP: 80000. Can be activated up to 4 time(s). The barrier disappears when its HP is 0 or after all trigger attempts. -->
+		<!-- Level 7: The barrier's HP: 100000. Can be activated up to 5 time(s). The barrier disappears when its HP is 0 or after all trigger attempts. -->
 		<icon>icon.dragon_belt_grace</icon>
 		<operateType>A2</operateType>
-		<abnormalTime>10</abnormalTime>
-		<effectPoint>100</effectPoint>
-		<isMagic>4</isMagic>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>10</abnormalTime>
 		<abnormalType>ABSORB</abnormalType>
 		<abnormalVisualEffect>AVE_ABSORB2_SHIELD</abnormalVisualEffect>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<reuseDelay>60000</reuseDelay>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
+		<countHitsRemoveOnDamage>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">2</value>
+			<value level="4">3</value>
+			<value level="5">3</value>
+			<value level="6">4</value>
+			<value level="7">5</value>
+		</countHitsRemoveOnDamage>
+		<effectPoint>100</effectPoint>
 		<hitCancelTime>0</hitCancelTime>
+		<isMagic>4</isMagic>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<removedOnDamage>true</removedOnDamage>
+		<reuseDelay>60000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="AbsorbDamage">
-				<amount>
-					<value level="5">20000</value>
-					<value level="6">30000</value>
-					<value level="7">40000</value>
-					<value level="8">50000</value>
-					<value level="9">60000</value>
-					<value level="10">80000</value>
-					<value level="11">100000</value>
-				</amount>
-				<skillLevelScaleTo>5</skillLevelScaleTo>
-				<mode>DIFF</mode>
+				<damage>
+					<value level="1">20000</value>
+					<value level="2">30000</value>
+					<value level="3">40000</value>
+					<value level="4">50000</value>
+					<value level="5">60000</value>
+					<value level="6">80000</value>
+					<value level="7">100000</value>
+				</damage>
+				<hits>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">2</value>
+					<value level="4">3</value>
+					<value level="5">3</value>
+					<value level="6">4</value>
+					<value level="7">5</value>
+				</hits>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="50461" toLevel="1" name="Pet Earring">
 		<!-- An earring for a per. P. Atk. +1000. M. Atk. +1000 -->
 		<icon>BranchSys2.icon.g_accessory_event_earring</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PhysicalAttack">
+				<amount>
+					<value level="1">1000</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="MagicalAttack">
+				<amount>
+					<value level="1">1000</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50462" toLevel="1" name="Pet Ring">
 		<!-- A ring for a pet. P. Def. +1000. M. Def. +500. Acquired XP +50% -->
 		<icon>BranchSys2.icon.g_accessory_event_ring</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">1000</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">500</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="ExpModifyPet">
+				<amount>
+					<value level="1">50</value>
+				</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50463" toLevel="3" name="Zaken Doll's Sorcery">
-		<!-- A doll imbued with Zaken' power. <Effect>. Skill Critical Rate +10. Skill Critical Damage +100. HP Recovery Potions' Effect +20. Absorbs 1% of the inflicted damage as HP. -->
+		<!-- Level 1: A doll imbued with Zaken' power. <Effect>. Skill Critical Rate +10. Skill Critical Damage +100. HP Recovery Potions' Effect +20. Absorbs 1% of the inflicted damage as HP. -->
+		<!-- Level 2: A doll imbued with Zaken' power. <Effect>. Skill Critical Rate +40. Skill Critical Damage +200. HP Recovery Potions' Effect +50. Absorbs 2% of the inflicted damage as HP. -->
+		<!-- Level 3: A doll imbued with Zaken' power. <Effect>. Skill Critical Rate +60. Skill Critical Damage +300. HP Recovery Potions' Effect +80. Absorbs 3% of the inflicted damage as HP. -->
 		<icon>icon.bm_zaken_doll_30d</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -3649,7 +3862,9 @@
 		</effects>
 	</skill>
 	<skill id="50464" toLevel="3" name="Core Doll's Sorcery">
-		<!-- A doll imbued with Core's power. <Effect>. Received Skill Critical Damage -5%. Received Skill Critical Rate -2%. Shock Resistance +10%. Sleep Resistance +10%. Knockback Resistance +5% -->
+		<!-- Level 1: A doll imbued with Core's power. <Effect>. Received Skill Critical Damage -5%. Received Skill Critical Rate -2%. Shock Resistance +10%. Sleep Resistance +10%. Knockback Resistance +5% -->
+		<!-- Level 2: A doll imbued with Core's power. <Effect>. Received Skill Critical Damage -10%. Received Skill Critical Rate -5%. Shock Resistance +20%. Sleep Resistance +20%. Knockback Resistance +10% -->
+		<!-- Level 3: A doll imbued with Core's power. <Effect>. Received Skill Critical Damage -15%. Received Skill Critical Rate -8%. Shock Resistance +30%. Sleep Resistance +30%. Knockback Resistance +20% -->
 		<icon>icon.bm_core_doll_30d</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -3697,7 +3912,17 @@
 		</effects>
 	</skill>
 	<skill id="50465" toLevel="11" name="Necklace of Spirits">
-		<!-- A necklace imbued with the power of spirits. P. Atk. +5. M. Atk. +5. P. Def. +5. M. Def. +5. Atk. Spd. +2. Casting Spd. +2 -->
+		<!-- Level 1: A necklace imbued with the power of spirits. P. Atk. +5. M. Atk. +5. P. Def. +5. M. Def. +5. Atk. Spd. +2. Casting Spd. +2 -->
+		<!-- Level 2: A necklace imbued with the power of spirits. P. Atk. +7. M. Atk. +7. P. Def. +7. M. Def. +7. Atk. Spd. +4. Casting Spd. +4 -->
+		<!-- Level 3: A necklace imbued with the power of spirits. P. Atk. +10. M. Atk. +10. P. Def. +10. M. Def. +10. Atk. Spd. +6. Casting Spd. +6 -->
+		<!-- Level 4: A necklace imbued with the power of spirits. P. Atk. +15. M. Atk. +15. P. Def. +15. M. Def. +15. Atk. Spd. +8. Casting Spd. +8 -->
+		<!-- Level 5: A necklace imbued with the power of spirits. P. Atk. +20. M. Atk. +20. P. Def. +20. M. Def. +20. Atk. Spd. +10. Casting Spd. +10 -->
+		<!-- Level 6: A necklace imbued with the power of spirits. P. Atk. +30. M. Atk. +30. P. Def. +25. M. Def. +25. Atk. Spd. +12. Casting Spd. +12 -->
+		<!-- Level 7: A necklace imbued with whr power of spirits. P. Atk. +50. M. Atk. +50. P. Def. +30. M. Def. +30. Atk. Spd. +15. Casting Spd. +15. All Critical Damage +10 -->
+		<!-- Level 8: A necklace imbued with whr power of spirits. P. Atk. +100. M. Atk. +100. P. Def. +50. M. Def. +50. Atk. Spd. +20. Casting Spd. +20. All Critical Damage +20 -->
+		<!-- Level 9: A necklace imbued with the power of spirits. P. Atk. +300. M. Atk. +300. P. Def. +70. M. Def. +70. Atk. Spd. +30. Casting Spd. +30. All Critical Damage +50. STR +1. INT +1 -->
+		<!-- Level 10: A necklace imbued with the power of spirits. P. Atk. +500. M. Atk. +500. P. Def. +100. M. Def. +100. Atk. Spd. +40. Casting Spd. +40. All Critical Damage +100. STR +2. INT +2 -->
+		<!-- Level 11: A necklace imbued with the power of spirits. P. Atk. +800. M. Atk. +800. P. Def. +150. M. Def. +150. Atk. Spd. +50. Casting Spd. +50. All Critical Damage +300. STR +3. INT +3 -->
 		<icon>icon.necklace_of_elemental</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -3717,7 +3942,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">7</value>
@@ -3733,7 +3958,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">7</value>
@@ -3853,10 +4078,30 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
+			<effect name="PhysicalSkillCriticalDamage">
+				<amount>
+					<value fromLevel="1" toLevel="6">0</value>
+					<value level="7">10</value>
+					<value level="8">20</value>
+					<value level="9">50</value>
+					<value level="10">100</value>
+					<value level="11">300</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="50466" toLevel="10" name="Talisman of Hellbound">
-		<!-- A talisman imbued with the power of Hellbound. Max HP +100. P. Atk. +50. M. Atk. +50. P. Def. +100. M. Def. +100 -->
+		<!-- Level 1: A talisman imbued with the power of Hellbound. Max HP +100. P. Atk. +50. M. Atk. +50. P. Def. +100. M. Def. +100 -->
+		<!-- Level 2: A talisman imbued with the power of Hellbound. Max HP +200. P. Atk. +100. M. Atk. +100. P. Def. +200. M. Def. +200. P. Accuracy +1. M. Accuracy +1 -->
+		<!-- Level 3: A talisman imbued with the power of Hellbound. Max HP +300. P. Atk. +150. M. Atk. +150. P. Def. +300. M. Def. +300. P. Accuracy +2. M. Accuracy +2 -->
+		<!-- Level 4: A talisman imbued with the power of Hellbound. Max HP +400. P. Atk. +200. M. Atk. +200. P. Def. +400. M. Def. +400. P. Accuracy +3. M. Accuracy +3 -->
+		<!-- Level 5: A talisman imbued with the power of Hellbound. Max HP +500. P. Atk. +250. M. Atk. +250. P. Def. +500. M. Def. +500. Atk. Spd. +35. Casting Spd. +35. P. Accuracy +4. M. Accuracy +4. <When triggered>. Deals 5000 additional damage when attacking. (Cooldown: 300 sec.) -->
+		<!-- Level 6: A talisman imbued with the power of Hellbound. Max HP +700. P. Atk. +300. M. Atk. +300. P. Def. +600. M. Def. +600. Atk. Spd. +50. Casting Spd. +50. Speed +1. P. Accuracy +5. M. Accuracy +7000. <When triggered>. Deals 7001 additional damage when attacking. (Cooldown: 300 sec.) -->
+		<!-- Level 7: A talisman imbued with the power of Hellbound. Max HP +1000. P. Atk. +350. M. Atk. +350. P. Def. +700. M. Def. +700. Atk. Spd. +70. Casting Spd. +70. Speed +2. P. Accuracy +6. M. Accuracy +10000. Received PvP damage 10001. <When triggered>. Deals 10002 additional damage when attacking. (Cooldown: 300 sec.) -->
+		<!-- Level 8: A talisman imbued with the power of Hellbound. Max HP +2000. P. Atk. +400. M. Atk. +400. P. Def. +800. M. Def. +800. Atk. Spd. +100. Casting Spd. +100. Speed +5. P. Accuracy +7. M. Accuracy +20000. Received PvP damage 20001. Debuff Resistance +20002. Anomaly Resistance +20002. <When triggered>. Deals 20003 additional damage when attacking. (Cooldown: 300 sec.) -->
+		<!-- Level 9: A talisman imbued with the power of Hellbound. Max HP +3000. P. Atk. +450. M. Atk. +450. P. Def. +900. M. Def. +900. Atk. Spd. +150. Casting Spd. +150. Speed +7. P. Accuracy +8. M. Accuracy +30000. Received PvP damage 30001. Debuff Resistance +30002. Anomaly Resistance +30002. <When triggered>. Deals 30003 additional damage when attacking. (Cooldown: 300 sec.) -->
+		<!-- Level 10: A talisman imbued with the power of Hellbound. Max HP +5000. P. Atk. +500. M. Atk. +500. P. Def. +1000. M. Def. +1000. Atk. Spd. +200. Casting Spd. +200. Speed +10. P. Accuracy +10. M. Accuracy +50000. Received PvP damage 50001. Debuff Resistance +50002. Anomaly Resistance +50002. <When triggered>. Deals 50003 additional damage when attacking. (Cooldown: 300 sec.) -->
 		<icon>icon.hellbound_talisman_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -3875,7 +4120,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -3890,7 +4135,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -4054,7 +4299,7 @@
 				</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -4075,7 +4320,7 @@
 					<value level="10">6</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -4099,9 +4344,15 @@
 		</effects>
 	</skill>
 	<skill id="50467" toLevel="6" name="Hell Lightning">
-		<!-- Deals 1000 fixed damage. -->
+		<!-- Level 1: Deals 1000 fixed damage. -->
+		<!-- Level 2: Deals 1500 fixed damage. -->
+		<!-- Level 3: Deals 2000 fixed damage. -->
+		<!-- Level 4: Deals 3000 fixed damage. -->
+		<!-- Level 5: Deals 4000 fixed damage. -->
+		<!-- Level 6: Deals 5000 fixed damage. -->
 		<icon>icon.hellbound_talisman_i00</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">2</value>
 			<value level="2">3</value>
@@ -4110,14 +4361,13 @@
 			<value level="5">6</value>
 			<value level="6">7</value>
 		</abnormalLevel>
+		<affectScope>SINGLE</affectScope>
 		<castRange>700</castRange>
-		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-1000</effectPoint>
+		<hitTime>1000</hitTime>
 		<reuseDelay>300000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="RealDamage">
 				<power>
@@ -4132,7 +4382,17 @@
 		</effects>
 	</skill>
 	<skill id="50468" toLevel="11" name="Hellbound Ring">
-		<!-- <Effect>. Paralysis Resistance +1% -->
+		<!-- Level 1: <Effect>. Paralysis Resistance +1% -->
+		<!-- Level 2: <Effect>. Paralysis Resistance +2% -->
+		<!-- Level 3: <Effect>. Paralysis Resistance +3% -->
+		<!-- Level 4: <Effect>. Paralysis Resistance +4% -->
+		<!-- Level 5: <Effect>. Paralysis Resistance +5% -->
+		<!-- Level 6: <Effect>. Paralysis Resistance +10%. Max HP +100. P. Atk. +10. M. Atk. +10 -->
+		<!-- Level 7: <Effect>. Paralysis Resistance +12%. Max HP +150. P. Atk. +15. M. Atk. +15 -->
+		<!-- Level 8: <Effect>. DEX +1. WIT +1. Paralysis Resistance +14%. Max HP +200. P. Atk. +20. M. Atk. +20 -->
+		<!-- Level 9: <Effect>. DEX +1. WIT +1. Paralysis Resistance +18%. Max HP +250. P. Atk. +30. M. Atk. +30 -->
+		<!-- Level 10: <Effect>. DEX +2. WIT +2. Paralysis Resistance +22%. Max HP +250. P. Atk. +50. M. Atk. +50 -->
+		<!-- Level 11: <Effect>. DEX +5. WIT +5. Paralysis Resistance +30%. Max HP +1000. P. Atk. +300. M. Atk. +300 -->
 		<icon>icon.accessary_ring_of_anguish_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -4163,7 +4423,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">10</value>
@@ -4175,7 +4435,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="5">0</value>
 					<value level="6">10</value>
@@ -4229,7 +4489,21 @@
 		</effects>
 	</skill>
 	<skill id="50470" toLevel="15" name="Growth Rune">
-		<!-- Acquired XP +1%. Acquired SP +1% -->
+		<!-- Level 1: Acquired XP +1%. Acquired SP +1% -->
+		<!-- Level 2: Acquired XP +2%. Acquired SP +2% -->
+		<!-- Level 3: Acquired XP +3%. Acquired SP +3% -->
+		<!-- Level 4: Acquired XP +4%. Acquired SP +4% -->
+		<!-- Level 5: P. Def. +10. M. Def. +10. Acquired XP +5%. Acquired SP +5% -->
+		<!-- Level 6: P. Def. +20. M. Def. +20. Acquired XP +6%. Acquired SP +6% -->
+		<!-- Level 7: P. Def. +30. M. Def. +30. Acquired XP +7%. Acquired SP +7% -->
+		<!-- Level 8: P. Def. +50. M. Def. +50. Acquired XP +8%. Acquired SP +8% -->
+		<!-- Level 9: P. Def. +70. M. Def. +70. Acquired XP +9%. Acquired SP +9% -->
+		<!-- Level 10: P. Atk. +100. M. Atk. +100. P. Def. +100. M. Def. +100. Acquired XP +10%. Acquired SP +10% -->
+		<!-- Level 11: P. Atk. +120. M. Atk. +120. P. Def. +120. M. Def. +120. Acquired XP +11%. Acquired SP +11% -->
+		<!-- Level 12: P. Atk. +150. M. Atk. +150. P. Def. +150. M. Def. +150. Acquired XP +12%. Acquired SP +12% -->
+		<!-- Level 13: P. Atk. +180. M. Atk. +180. P. Def. +180. M. Def. +180. Acquired XP +13%. Acquired SP +13% -->
+		<!-- Level 14: P. Atk. +210. M. Atk. +210. P. Def. +210. M. Def. +210. Acquired XP +14%. Acquired SP +14% -->
+		<!-- Level 15: P. Atk. +300. M. Atk. +300. P. Def. +300. M. Def. +300. Acquired XP +15%. Acquired SP +15% -->
 		<icon>
 			<value level="1">icon.pc_cafe_rune_01</value>
 			<value level="2">icon.pc_cafe_rune_01</value>
@@ -4323,7 +4597,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="9">0</value>
 					<value level="10">100</value>
@@ -4335,7 +4609,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value fromLevel="1" toLevel="9">0</value>
 					<value level="10">100</value>
@@ -4351,17 +4625,18 @@
 	</skill>
 	<skill id="50471" toLevel="1" name="Orfen Power">
 		<icon>icon.accessory_earring_of_orfen_i05</icon>
-		<castRange>700</castRange>
-		<effectRange>1100</effectRange>
-		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<operateType>A1</operateType>
-		<reuseDelay>300000</reuseDelay>
-		<basicProperty>MAGIC</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>700</castRange>
+		<effectRange>1100</effectRange>
+		<hitTime>500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="ManaHealPercent">
 				<power>10</power>
@@ -4370,17 +4645,18 @@
 	</skill>
 	<skill id="50472" toLevel="1" name="Zaken Power">
 		<icon>icon.accessory_earring_of_zaken_i05</icon>
-		<castRange>700</castRange>
-		<effectRange>1100</effectRange>
-		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<operateType>A1</operateType>
-		<reuseDelay>300000</reuseDelay>
-		<basicProperty>MAGIC</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>700</castRange>
+		<effectRange>1100</effectRange>
+		<hitTime>500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="HealPercent">
 				<power>10</power>
@@ -4389,17 +4665,18 @@
 	</skill>
 	<skill id="50473" toLevel="1" name="Antharas Power">
 		<icon>icon.accessory_earring_of_antaras_i05</icon>
-		<castRange>700</castRange>
-		<effectRange>1100</effectRange>
-		<hitTime>1000</hitTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<operateType>A1</operateType>
-		<reuseDelay>300000</reuseDelay>
-		<basicProperty>MAGIC</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>700</castRange>
+		<effectRange>1100</effectRange>
+		<hitTime>500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="HealPercent">
 				<power>30</power>
@@ -4449,10 +4726,10 @@
 				<amount>100</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
-				<targetType>ENEMY_ONLY</targetType>
+				<targetType>TARGET</targetType>
 				<minDamage>1</minDamage>
 				<skillId>50481</skillId> <!-- Counter Paralysis -->
 				<skillLevel>1</skillLevel>
@@ -4460,7 +4737,16 @@
 		</effects>
 	</skill>
 	<skill id="50477" toLevel="10" name="+1 Breastplate of Protection">
-		<!-- Shield Defense +150. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 1: Shield Defense +150. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 2: Shield Defense +200. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 3: Shield Defense +250. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 4: Shield Defense +300. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 5: Shield Defense +400. Received AoE skill damage -5%. <Counter Paralysis>. With a 4% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 6: Shield Defense +500. Received AoE skill damage -6%. <Counter Paralysis>. With a 6% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 7: Shield Defense +600. Received AoE skill damage -7%. <Counter Paralysis>. With a 8% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 8: Shield Defense +700. Received AoE skill damage -8%. <Counter Paralysis>. With a 10% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 9: Shield Defense +800. Received AoE skill damage -9%. <Counter Paralysis>. With a 10% chance when hit, paralyzes the enemy for 4 sec. -->
+		<!-- Level 10: Shield Defense +1000. Received AoE skill damage -10%. <Counter Paralysis>. With a 10% chance when hit, paralyzes the enemy for 5 sec. -->
 		<icon>icon.armor_t901_u_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -4479,7 +4765,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>
 					<value level="1">2</value>
@@ -4493,7 +4779,7 @@
 					<value level="9">10</value>
 					<value level="10">10</value>
 				</chance>
-				<targetType>ENEMY_ONLY</targetType>
+				<targetType>TARGET</targetType>
 				<minDamage>1</minDamage>
 				<skillId>50481</skillId> <!-- Counter Paralysis -->
 				<skillLevel>
@@ -4538,7 +4824,7 @@
 		<icon>icon.armor_t901_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -4548,7 +4834,7 @@
 				<skillId>50482</skillId> <!-- Damage Limit -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -4561,11 +4847,20 @@
 		</effects>
 	</skill>
 	<skill id="50480" toLevel="10" name="+1 Gaiters of Protection">
-		<!-- <Damage Limit>. With a 2% chance, limits received damage to 4800 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 1: <Damage Limit>. With a 2% chance, limits received damage to 4800 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 2: <Damage Limit>. With a 2% chance, limits received damage to 4600 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 3: <Damage Limit>. With a 2% chance, limits received damage to 4400 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 4: <Damage Limit>. With a 2% chance, limits received damage to 4200 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 5: Received AoE skill damage -5%. <Damage Limit>. With a 4% chance, limits received damage to 4000 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 6: Received AoE skill damage -6%. <Damage Limit>. With a 6% chance, limits received damage to 3600 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 7: Received AoE skill damage -7%. <Damage Limit>. With a 8% chance, limits received damage to 3200 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 8: Received AoE skill damage -8%. <Damage Limit>. With a 10% chance, limits received damage to 2800 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 9: Received AoE skill damage -9%. <Damage Limit>. With a 10% chance, limits received damage to 2400 for 5 sec. when hit. (Cooldown: 10 sec.) -->
+		<!-- Level 10: Received AoE skill damage -10%. <Damage Limit>. With a 10% chance, limits received damage to 2000 for 5 sec. when hit. (Cooldown: 10 sec.) -->
 		<icon>icon.armor_t901_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -4597,7 +4892,7 @@
 					<value level="10">11</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>
@@ -4634,6 +4929,8 @@
 	<skill id="50481" toLevel="3" name="Counter Paralysis">
 		<!-- Paralyzes the target and immobilizes it. -->
 		<icon>icon.skill1095</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -4646,22 +4943,32 @@
 		</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
 		<effectPoint>-500</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<operateType>A2</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
 	</skill>
 	<skill id="50482" toLevel="11" name="Damage Limit">
-		<!-- Received damage limit: 5000 -->
+		<!-- Level 1: Received damage limit: 5000 -->
+		<!-- Level 2: Received damage limit: 4800 -->
+		<!-- Level 3: Received damage limit: 4600 -->
+		<!-- Level 4: Received damage limit: 4400 -->
+		<!-- Level 5: Received damage limit: 4200 -->
+		<!-- Level 6: Received damage limit: 4000 -->
+		<!-- Level 7: Received damage limit: 3600 -->
+		<!-- Level 8: Received damage limit: 3200 -->
+		<!-- Level 9: Received damage limit: 2800 -->
+		<!-- Level 10: Received damage limit: 2400 -->
+		<!-- Level 11: Received damage limit: 2000 -->
 		<icon>icon.skill10020_2</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -4676,12 +4983,10 @@
 			<value level="11">11</value>
 		</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
-		<operateType>A2</operateType>
-		<reuseDelay>10000</reuseDelay>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<canBeDispelled>false</canBeDispelled>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<reuseDelay>10000</reuseDelay>
 		<effects>
 			<effect name="GetDamageLimit">
 				<amount>
@@ -4717,7 +5022,7 @@
 				<amount>1500</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY_ONLY</targetType>
@@ -4748,7 +5053,7 @@
 				<magicType>1</magicType>
 				<amount>1</amount>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY_ONLY</targetType>
@@ -4759,7 +5064,16 @@
 		</effects>
 	</skill>
 	<skill id="50485" toLevel="10" name="+1 Leather Armor of Protection">
-		<!-- P. Evasion +2. M. Evasion +2. All Skill Evasion +2%. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 1: P. Evasion +2. M. Evasion +2. All Skill Evasion +2%. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 2: P. Evasion +3. M. Evasion +3. All Skill Evasion +3%. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 3: P. Evasion +4. M. Evasion +4. All Skill Evasion +4%. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 4: P. Evasion +5. M. Evasion +5. All Skill Evasion +5%. <Counter Paralysis>. With a 2% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 5: P. Evasion +6. M. Evasion +6. All Skill Evasion +6%. Received AoE skill damage -5%. <Counter Paralysis>. With a 4% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 6: P. Evasion +7. M. Evasion +7. All Skill Evasion +7%. Received AoE skill damage -6%. <Counter Paralysis>. With a 6% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 7: P. Evasion +9. M. Evasion +9. All Skill Evasion +9%. Received AoE skill damage -7%. <Counter Paralysis>. With a 8% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 8: P. Evasion +11. M. Evasion +11. All Skill Evasion +11%. Received AoE skill damage -8%. <Counter Paralysis>. With a 10% chance when hit, paralyzes the enemy for 3 sec. -->
+		<!-- Level 9: P. Evasion +13. M. Evasion +13. All Skill Evasion +13%. Received AoE skill damage -9%. <Counter Paralysis>. With a 10% chance when hit, paralyzes the enemy for 4 sec. -->
+		<!-- Level 10: P. Evasion +15. M. Evasion +15. All Skill Evasion +15%. Received AoE skill damage -10%. <Counter Paralysis>. With a 10% chance when hit, paralyzes the enemy for 5 sec. -->
 		<icon>icon.armor_t902_u_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -4823,7 +5137,7 @@
 					<value level="10">15</value>
 				</amount>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>
 					<value level="1">2</value>
@@ -4837,7 +5151,7 @@
 					<value level="9">10</value>
 					<value level="10">10</value>
 				</chance>
-				<targetType>ENEMY_ONLY</targetType>
+				<targetType>TARGET</targetType>
 				<minDamage>1</minDamage>
 				<skillId>50481</skillId> <!-- Counter Paralysis -->
 				<skillLevel>
@@ -4882,7 +5196,7 @@
 		<icon>icon.armor_t902_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
 				<targetType>SELF</targetType>
@@ -4893,11 +5207,20 @@
 		</effects>
 	</skill>
 	<skill id="50488" toLevel="10" name="+1 Leather Leggings of Protection">
-		<!-- <Critical Damage Defense>. With a 2% chance for 5 sec., when hit:. All received Critical Rate -12%. All received Critical Damage -12%. (Cooldown: 10 sec.) -->
+		<!-- Level 1: <Critical Damage Defense>. With a 2% chance for 5 sec., when hit:. All received Critical Rate -12%. All received Critical Damage -12%. (Cooldown: 10 sec.) -->
+		<!-- Level 2: <Critical Damage Defense>. With a 2% chance for 5 sec., when hit:. All received Critical Rate -14%. All received Critical Damage -14%. (Cooldown: 10 sec.) -->
+		<!-- Level 3: <Critical Damage Defense>. With a 2% chance for 5 sec., when hit:. All received Critical Rate -16%. All received Critical Damage -16%. (Cooldown: 10 sec.) -->
+		<!-- Level 4: <Critical Damage Defense>. With a 2% chance for 5 sec., when hit:. All received Critical Rate -18%. All received Critical Damage -18%. (Cooldown: 10 sec.) -->
+		<!-- Level 5: Received AoE skill damage -5%. <Critical Damage Defense>. With a 4% chance for 5 sec., when hit:. All received Critical Rate -20%. All received Critical Damage -20%. (Cooldown: 10 sec.) -->
+		<!-- Level 6: Received AoE skill damage -6%. <Critical Damage Defense>. With a 6% chance for 5 sec., when hit:. All received Critical Rate -25%. All received Critical Damage -25%. (Cooldown: 10 sec.) -->
+		<!-- Level 7: Received AoE skill damage -7%. <Critical Damage Defense>. With a 8% chance for 5 sec., when hit:. All received Critical Rate -30%. All received Critical Damage -30%. (Cooldown: 10 sec.) -->
+		<!-- Level 8: Received AoE skill damage -8%. <Critical Damage Defense>. With a 10% chance for 5 sec., when hit:. All received Critical Rate -35%. All received Critical Damage -35%. (Cooldown: 10 sec.) -->
+		<!-- Level 9: Received AoE skill damage -9%. <Critical Damage Defense>. With a 10% chance for 5 sec., when hit:. All received Critical Rate -40%. All received Critical Damage -40%. (Cooldown: 10 sec.) -->
+		<!-- Level 10: Received AoE skill damage -10%. <Critical Damage Defense>. With a 10% chance for 5 sec., when hit:. All received Critical Rate -45%. All received Critical Damage -45%. (Cooldown: 10 sec.) -->
 		<icon>icon.armor_t902_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>
 					<value level="1">2</value>
@@ -4930,8 +5253,20 @@
 		</effects>
 	</skill>
 	<skill id="50489" toLevel="11" name="Critical Damage Defense">
-		<!-- All received Critical Rate -10%. All received Critical Damage -10% -->
+		<!-- Level 1: All received Critical Rate -10%. All received Critical Damage -10% -->
+		<!-- Level 2: All received Critical Rate -12%. All received Critical Damage -12% -->
+		<!-- Level 3: All received Critical Rate -14%. All received Critical Damage -14% -->
+		<!-- Level 4: All received Critical Rate -16%. All received Critical Damage -16% -->
+		<!-- Level 5: All received Critical Rate -18%. All received Critical Damage -18% -->
+		<!-- Level 6: All received Critical Rate -20%. All received Critical Damage -20% -->
+		<!-- Level 7: All received Critical Rate -25%. All received Critical Damage -25% -->
+		<!-- Level 8: All received Critical Rate -30%. All received Critical Damage -30% -->
+		<!-- Level 9: All received Critical Rate -35%. All received Critical Damage -35% -->
+		<!-- Level 10: All received Critical Rate -40%. All received Critical Damage -40% -->
+		<!-- Level 11: All received Critical Rate -45%. All received Critical Damage -45% -->
 		<icon>icon.skill10021_2</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -4946,12 +5281,11 @@
 			<value level="11">11</value>
 		</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
-		<operateType>A2</operateType>
-		<reuseDelay>10000</reuseDelay>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<canBeDispelled>false</canBeDispelled>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<reuseDelay>10000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="DefenceCriticalRate">
 				<amount>
@@ -5070,7 +5404,7 @@
 				<amount>500</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY_ONLY</targetType>
@@ -5081,7 +5415,16 @@
 		</effects>
 	</skill>
 	<skill id="50492" toLevel="10" name="+1 Tunic of Protection">
-		<!-- Max MP +600. <Counter Paralysis>. With a 2% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 1: Max MP +600. <Counter Paralysis>. With a 2% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 2: Max MP +700. <Counter Paralysis>. With a 2% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 3: Max MP +800. <Counter Paralysis>. With a 2% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 4: Max MP +900. <Counter Paralysis>. With a 2% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 5: Max. MP +1000. Received AoE skill damage -5%. <Counter Paralysis>. With a 4% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 6: Max. MP +1400. Received AoE skill damage -6%. <Counter Paralysis>. With a 6% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 7: Max. MP +1800. Received AoE skill damage -7%. <Counter Paralysis>. With a 8% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 8: Max. MP +2200. Received AoE skill damage -8%. <Counter Paralysis>. With a 10% chance, paralyzes the enemy for 3 sec., when hit. -->
+		<!-- Level 9: Max. MP +2600. Received AoE skill damage -9%. <Counter Paralysis>. With a 10% chance, paralyzes the enemy for 4 sec., when hit. -->
+		<!-- Level 10: Max. MP +3000. Received AoE skill damage -10%. <Counter Paralysis>. With a 10% chance, paralyzes the enemy for 5 sec., when hit. -->
 		<icon>icon.armor_t903_u_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -5100,7 +5443,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<attackerType>Creature</attackerType>
 				<chance>
 					<value level="1">2</value>
@@ -5159,7 +5502,7 @@
 		<icon>icon.armor_t903_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -5170,7 +5513,7 @@
 				<skillId>50496</skillId> <!-- Arcane Shield Defense -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -5184,11 +5527,20 @@
 		</effects>
 	</skill>
 	<skill id="50495" toLevel="10" name="+1 Stockings of Protection">
-		<!-- <Arcane Shield Defense>. For 5 sec. when hit:. Received damage -40%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 1: <Arcane Shield Defense>. For 5 sec. when hit:. Received damage -40%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 2: <Arcane Shield Defense>. For 5 sec. when hit:. Received damage -40%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 3: <Arcane Shield Defense>. For 5 sec. when hit:. Received damage -40%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 4: <Arcane Shield Defense>. For 5 sec. when hit:. Received damage -40%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 5: Received AoE skill damage -5%. <Arcane Shield Defense>. For 10 sec. when hit:. Received damage -40%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 6: Received AoE skill damage -6%. <Arcane Shield Defense>. For 10 sec. when hit:. Received damage -42%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 7: Received AoE skill damage -7%. <Arcane Shield Defense>. For 10 sec. when hit:. Received damage -44%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 8: Received AoE skill damage -8%. <Arcane Shield Defense>. For 10 sec. when hit:. Received damage -46%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 9: Received AoE skill damage -9%. <Arcane Shield Defense>. For 10 sec. when hit:. Received damage -48%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
+		<!-- Level 10: Received AoE skill damage -10%. <Arcane Shield Defense>. For 10 sec. when hit:. Received damage -50%. The rest of the damage is blocked by consuming MP. The effect is cancelled when MP is 0. Cannot be used with Arcane Shield. (Activated only if Max HP < 60%). (Cooldown: 60 sec.) -->
 		<icon>icon.armor_t903_l_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -5210,7 +5562,7 @@
 					<value level="10">11</value>
 				</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>2</chance>
@@ -5235,8 +5587,20 @@
 		</effects>
 	</skill>
 	<skill id="50496" toLevel="11" name="Arcane Shield Defense">
-		<!-- Received damage -40%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 1: Received damage -40%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 2: Received damage -40%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 3: Received damage -40%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 4: Received damage -40%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 5: Received damage -40%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 6: Received damage -40%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 7: Received damage -42%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 8: Received damage -44%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 9: Received damage -46%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 10: Received damage -48%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
+		<!-- Level 11: Received damage -50%. Blocks the rest of the damage by consuming MP. The effect is cancelled when MP drops to 0. Cannot be used with Arcane Shield. -->
 		<icon>icon.skill10021_3</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -5263,11 +5627,9 @@
 			<value level="10">10</value>
 			<value level="11">10</value>
 		</abnormalTime>
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
 		<reuseDelay>60000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpCheckSkill">
 				<skillId>1556</skillId> <!-- Arcane Shield -->
@@ -5295,7 +5657,13 @@
 	<skill id="50497" toLevel="1" name="Weapon Blessing Effect">
 		<!-- P. Skill Critical Damage +50. -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PhysicalSkillCriticalDamage">
+				<amount>50</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="50498" toLevel="1" name="Aden's Pistols">
 		<!-- <Level Bonus Effect>. P./ M. Atk. are increased depending on level. <Lv. 40-49>. P. Atk. +33. M. Atk. +10. <Lv. 50-59>. P. Atk. +63. M. Atk. +19. <Lv. 60-64>. P. Atk. +96. M. Atk. +29. <Lv. 65-69>. P. Atk. +129. M. Atk. +38. <Lv. 70-74>. P. Atk. +159. M. Atk. +47. <Lv. 75+>. P. Atk. +192. M. Atk. +57 -->
@@ -5319,7 +5687,7 @@
 		<icon>icon.skill1516</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>
@@ -5329,7 +5697,7 @@
 				<skillId>50501</skillId> <!-- Anakim's Holy Blast -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
 				<chance>1</chance>

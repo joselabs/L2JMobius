@@ -28,7 +28,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import org.l2jmobius.commons.util.IXmlReader;
+import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.model.StatSet;
+import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 
 /**
  * @author UnAfraid
@@ -67,6 +69,13 @@ class NpcBuffersData implements IXmlReader
 					{
 						attrs = d.getAttributes();
 						final int npcId = parseInteger(attrs, "id");
+						final NpcTemplate template = NpcData.getInstance().getTemplate(npcId);
+						if (template == null)
+						{
+							LOGGER.warning(getClass().getSimpleName() + ": Could not find NPC with id " + npcId);
+							continue;
+						}
+						
 						final NpcBufferData npc = new NpcBufferData(npcId);
 						for (Node c = d.getFirstChild(); c != null; c = c.getNextSibling())
 						{
@@ -81,7 +90,15 @@ class NpcBuffersData implements IXmlReader
 										attr = attrs.item(i);
 										set.set(attr.getNodeName(), attr.getNodeValue());
 									}
-									npc.addSkill(new NpcBufferSkillData(set));
+									
+									final NpcBufferSkillData data = new NpcBufferSkillData(set);
+									if (data.getSkill() == null)
+									{
+										LOGGER.warning(getClass().getSimpleName() + ": Could not find skill with id " + set.getInt("id"));
+										continue;
+									}
+									
+									npc.addSkill(data);
 									break;
 								}
 							}

@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.admincommandhandlers;
 
@@ -159,12 +163,12 @@ public class AdminEffects implements IAdminCommandHandler
 				activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
 				return false;
 			}
-			final Creature target = (Creature) activeChar.getTarget();
+			final Creature target = activeChar.getTarget().asCreature();
 			target.setInvisible(!target.isInvisible());
 			BuilderUtil.sendSysMessage(activeChar, "You've made " + target.getName() + " " + (target.isInvisible() ? "invisible" : "visible") + ".");
 			if (target.isPlayer())
 			{
-				((Player) target).broadcastUserInfo();
+				target.asPlayer().broadcastUserInfo();
 			}
 		}
 		else if (command.startsWith("admin_earthquake"))
@@ -260,7 +264,7 @@ public class AdminEffects implements IAdminCommandHandler
 				Creature creature = null;
 				if (target.isCreature())
 				{
-					creature = (Creature) target;
+					creature = target.asCreature();
 					if (type.equals("1"))
 					{
 						creature.startAbnormalVisualEffect(true, AbnormalVisualEffect.PARALYZE);
@@ -295,7 +299,7 @@ public class AdminEffects implements IAdminCommandHandler
 				Creature creature = null;
 				if (target.isCreature())
 				{
-					creature = (Creature) target;
+					creature = target.asCreature();
 					if (type.equals("1"))
 					{
 						creature.stopAbnormalVisualEffect(true, AbnormalVisualEffect.PARALYZE);
@@ -320,7 +324,7 @@ public class AdminEffects implements IAdminCommandHandler
 				Creature creature = null;
 				if (target.isCreature())
 				{
-					creature = (Creature) target;
+					creature = target.asCreature();
 					creature.startAbnormalVisualEffect(true, AbnormalVisualEffect.BIG_HEAD);
 				}
 			}
@@ -337,7 +341,7 @@ public class AdminEffects implements IAdminCommandHandler
 				Creature creature = null;
 				if (target.isCreature())
 				{
-					creature = (Creature) target;
+					creature = target.asCreature();
 					creature.stopAbnormalVisualEffect(true, AbnormalVisualEffect.BIG_HEAD);
 				}
 			}
@@ -380,7 +384,7 @@ public class AdminEffects implements IAdminCommandHandler
 				Creature target = null;
 				if (activeChar.getTarget().isCreature())
 				{
-					target = (Creature) activeChar.getTarget();
+					target = activeChar.getTarget().asCreature();
 				}
 				else
 				{
@@ -531,7 +535,7 @@ public class AdminEffects implements IAdminCommandHandler
 				}
 				else
 				{
-					final Creature target = (Creature) obj;
+					final Creature target = obj.asCreature();
 					target.broadcastPacket(new MagicSkillUse(target, activeChar, skill, level, hittime, 0));
 					activeChar.sendMessage(obj.getName() + " performs MSU " + skill + "/" + level + " by your request.");
 				}
@@ -558,7 +562,7 @@ public class AdminEffects implements IAdminCommandHandler
 	{
 		if (target.isCreature())
 		{
-			final Creature creature = (Creature) target;
+			final Creature creature = target.asCreature();
 			if (creature.hasAbnormalVisualEffect(ave))
 			{
 				creature.stopAbnormalVisualEffect(true, ave);
@@ -593,7 +597,7 @@ public class AdminEffects implements IAdminCommandHandler
 					activeChar.sendPacket(SystemMessageId.NOTHING_HAPPENED);
 					return false;
 				}
-				final Creature creature = (Creature) target;
+				final Creature creature = target.asCreature();
 				creature.broadcastPacket(new SocialAction(creature.getObjectId(), action));
 			}
 			else

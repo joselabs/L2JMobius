@@ -19,7 +19,6 @@ package ai.areas.OrcBarracks;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
 
@@ -66,7 +65,7 @@ public class OrcBarracks extends AbstractNpcAI
 		{
 			for (int i = 0; i < MINION_COUNT; i++)
 			{
-				addMinion((Monster) npc, TUREK_WAR_HOUND);
+				addMinion(npc.asMonster(), TUREK_WAR_HOUND);
 			}
 		}
 		return super.onSpawn(npc);

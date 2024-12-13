@@ -39,8 +39,7 @@ public class DefenceTrait extends AbstractEffect
 	{
 		if (params.isEmpty())
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": must have parameters.");
-			return;
+			throw new IllegalArgumentException(getClass().getSimpleName() + ": must have parameters.");
 		}
 		
 		for (Entry<String, Object> param : params.getSet().entrySet())

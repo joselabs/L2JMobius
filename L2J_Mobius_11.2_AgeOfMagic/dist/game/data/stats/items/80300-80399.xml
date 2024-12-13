@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="80300" name="Corroded Leviathan Circlet Material" type="EtcItem">
 		<!-- Not used anymore. Can be sold to any shop. -->
@@ -127,7 +127,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80312" name="Scroll of Escape: Dimensional Rift" type="EtcItem">
-		<!-- Teleports you to the Dimensional Rift. -->
+		<!-- Teleports you to the Interworld Rift. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i03" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -160,7 +160,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80315" name="Fafurion Dual Daggers" type="Weapon">
-		<!-- A fragment of Fafurion Dual Daggers. Can be upgraded through Fafurion's Watcher Lionel Hunter. Max HP can be more than 150,000. Cannot be imbued with an attribute, crystallized, enchanted or enhanced with a soul crystal. The item's appearance cannot be modified. -->
+		<!-- A weapon imbued with the dragon power. Can be upgraded through Fafurion's Watcher Lionel Hunter. Max HP can be more than 150,000. Cannot be imbued with an attribute, enchanted or enhanced with a soul crystal. The item's appearance cannot be modified. -->
 		<set name="icon" val="icon.fafurion_dual_dagger_i00" />
 		<set name="is_dragon_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -187,7 +187,7 @@
 		</stats>
 	</item>
 	<item id="80316" name="Fafurion Dual Daggers" additionalName="Lv. 1" type="Weapon">
-		<!-- A weapon imbued with the power of the dragons. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. <font color=ff6666><Additional effect when equipped></font>. PvP damage +30%. Max HP/ MP/ CP +30%. Atk. Spd. +30%. Critical Rate for basic attacks +100. P. Skill Critical Rate +30%. P. Skill Critical Damage +30%. Damage to dragons +100%. Max HP can be more than 150,000. <Upgrading>. Take the weapon and Dragon Claw to Fafurion's Watcher Lionel Hunter to enhance it to a high-grade Fafurion's weapon. -->
+		<!-- A weapon imbued with the dragon power. Cannot be enchanted or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. <font color=ff6666><Additional effect when equipped></font>. PvP damage +30%. Max HP/ MP/ CP +30%. Atk. Spd. +30%. Critical Rate for basic attacks +100. P. Skill Critical Rate +30%. P. Critical Damage/ P. Skill Critical Damage +30%. Damage to dragons +100%. Max HP can be more than 200,000. <Upgrade>. Take the weapon and Dragon Claw to Fafurion's Watcher Lionel Hunter to get Fafurion's weapon Lv. 2. -->
 		<set name="icon" val="icon.fafurion_dual_dagger_i01" />
 		<set name="is_dragon_weapon" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
@@ -205,10 +205,6 @@
 		<set name="commissionItemType" val="DUAL_DAGGER" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="8900" level="1" /> <!-- Dragon Fighter -->
-			<skill id="8890" level="1" /> <!-- Dignity -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2146</stat>
 			<stat type="mAtk">935</stat>
@@ -219,9 +215,13 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="waterPower">500</stat>
 		</stats>
+		<skills>
+			<skill id="8900" level="1" /> <!-- Dragon Fighter -->
+			<skill id="8890" level="1" /> <!-- Dignity -->
+		</skills>
 	</item>
 	<item id="80317" name="Fafurion Dual Daggers" additionalName="Lv. 2" type="Weapon">
-		<!-- A weapon imbued with the power of the dragons. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. <font color=ff6666><Additional effect when equipped></font>. PvP damage +30%. Max HP/ MP/ CP +30%. Atk. Spd. +30%. Critical Rate for basic attacks +100. P. Skill Critical Rate +30%. P. Skill Critical Damage +30%. Damage to dragons +100%. Max HP can be more than 150,000. <font color=ff6666><Skills available when equipped></font>. Dignity. Fafurion's Rising Wave. <Upgrading>. Take the weapon and Dragon Claw to Fafurion's Watcher Lionel Hunter to enhance it to a top-grade Fafurion's weapon. -->
+		<!-- A weapon imbued with the dragon power. Cannot be enchanted or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. <font color=ff6666><Additional effect when equipped></font>. PvP damage +30%. Max HP/ MP/ CP +30%. Atk. Spd. +30%. Critical Rate for basic attacks +100. P. Skill Critical Rate +30%. P. Critical Damage/ P. Skill Critical Damage +30%. Damage to dragons +100%. Max HP can be more than 200,000. <font color=ff6666><Available skills when equipped></font>. Dignity. Fafurion's Rising Wave. <Upgrade>. Take the weapon and Dragon Claw to Fafurion's Watcher Lionel Hunter to get Fafurion's weapon Lv. 3. -->
 		<set name="icon" val="icon.fafurion_dual_dagger_i01" />
 		<set name="is_dragon_weapon" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
@@ -240,11 +240,6 @@
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="is_sellable" val="false" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="8900" level="1" /> <!-- Dragon Fighter -->
-			<skill id="8890" level="1" /> <!-- Dignity -->
-			<skill id="35272" level="1" /> <!-- Fafurion Raging Waves -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -255,9 +250,14 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="waterPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="8900" level="1" /> <!-- Dragon Fighter -->
+			<skill id="8890" level="1" /> <!-- Dignity -->
+			<skill id="35272" level="1" /> <!-- Fafurion Raging Waves -->
+		</skills>
 	</item>
 	<item id="80318" name="Fafurion Dual Daggers" additionalName="Lv. 3" type="Weapon">
-		<!-- A weapon imbued with the power of the dragons. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. <font color=ff6666><Additional effect when equipped></font>. PvP damage +50%. Max HP/ MP/ CP +100%. Atk. Spd. +100%. Critical Rate for basic attacks +500. P. Skill Critical Rate +50%. P. Skill Critical Damage +50%. Damage to dragons +300%. Max HP can be more than 150,000. <font color=ff6666><Skills available when equipped></font>. Dignity. Fafurion's Rising Wave. Fafurion's Breath -->
+		<!-- A weapon imbued with the dragon power. Cannot be enchanted or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. <font color=ff6666><Additional effect when equipped></font>. PvP damage +50%. Max HP/ MP/ CP +100%. Atk. Spd. +100%. Critical Rate for basic attacks +500. P. Skill Critical Rate +50%. P. Critical Damage/ P. Skill Critical Damage +50%. Damage to dragons +300%. Max HP can be more than 200,000. <font color=ff6666><Available skills when equipped></font>. Dignity. Fafurion's Rising Wave. Fafurion's Breath. <Upgrade>. Take the weapon and Dragon Claw to a blacksmith in any town to get Fafurion's weapon Lv. 4. -->
 		<set name="icon" val="icon.fafurion_dual_dagger_i01" />
 		<set name="is_dragon_weapon" val="true" />
 		<set name="ensoulNormalSlots" val="2" />
@@ -276,12 +276,6 @@
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="is_sellable" val="false" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="8901" level="1" /> <!-- Dragon Knight -->
-			<skill id="8890" level="1" /> <!-- Dignity -->
-			<skill id="35272" level="1" /> <!-- Fafurion Raging Waves -->
-			<skill id="35271" level="1" /> <!-- Fafurion's Breath -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2884</stat>
 			<stat type="mAtk">1257</stat>
@@ -292,6 +286,12 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="waterPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="8901" level="1" /> <!-- Dragon Knight -->
+			<skill id="8890" level="1" /> <!-- Dignity -->
+			<skill id="35272" level="1" /> <!-- Fafurion Raging Waves -->
+			<skill id="35271" level="1" /> <!-- Fafurion's Breath -->
+		</skills>
 	</item>
 	<item id="80319" name="Enhanced Leviathan Sigil" type="Armor">
 		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. Enhancement effect: Atk. Spd./ Casting Spd. +5%, P. Atk. +2%, M. Skill Power +2%. -->
@@ -311,14 +311,14 @@
 		<set name="commissionItemType" val="SIGIL" />
 		<set name="ensoulNormalSlots" val="1" />
 		<set name="ensoulSpecialSlots" val="1" />
-		<skills>
-			<skill id="35295" level="1" /> <!-- Leviathan Sigil Enchantment Effect -->
-		</skills>
 		<stats>
 			<stat type="pDef">59</stat>
 			<stat type="pAtkRange">40</stat>
 			<stat type="rEvas">-8</stat>
 		</stats>
+		<skills>
+			<skill id="35295" level="1" /> <!-- Enhancement Effect: Leviathan Sigil -->
+		</skills>
 	</item>
 	<item id="80320" name="Paulina Twilight Bracelet" type="Armor">
 		<!-- A Twilight Bracelet with Paulina's power. When equipped, increases STR/ DEX/ CON/ INT/ WIT/ MEN by +1 and unlocks 5 talisman slots. -->
@@ -476,7 +476,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80333" name="Dragon's Necklace" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Infection Atk. Rate and Resistance, CHA/ LUC, Damage Reflection, Speed, P./ M. Atk., P./ M. Def., also decreases Skill Cooldown. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel's Accessory. Can be augmented. -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Infection Atk. Rate and Resistance, CHA/ LUC, Damage Reflection, Speed, P./ M. Atk., P./ M. Def., also decreases Skill Cooldown. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel's Accessory. Can be augmented. -->
 		<set name="icon" val="icon.dragon_accessary_necklace" />
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="73" />
@@ -493,7 +493,7 @@
 		</stats>
 	</item>
 	<item id="80334" name="Dragon's Earring" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion/ Stupor Atk. Rate and Resistance, CHA/ LUC, Received Healing, Speed, Skill Power, Vampiric Rage effect and Attribute Attack/ Resistance, also decreases Skill MP Consumption and received P./ M. Critical Damage. Effects of two identical earrings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel's Accessory. Can be augmented. -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion/ Stupor Atk. Rate and Resistance, CHA/ LUC, Received Healing, Speed, Skill Power, Vampiric Rage effect and Attribute Attack/ Resistance, also decreases Skill MP Consumption and received P./ M. Critical Damage. Effects of two identical earrings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel's Accessory. Can be augmented. -->
 		<set name="icon" val="icon.dragon_accessary_earring" />
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="78" />
@@ -510,7 +510,7 @@
 		</stats>
 	</item>
 	<item id="80335" name="Dragon's Ring" type="Armor">
-		<!-- 1 common soul crystal can be inserted. When enchanted, increases Confusion Atk. Rate and Resistance, CHA/ LUC, Atk. Spd./ Casting Spd., P./ M. Accuracy, Speed, Skill Power, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance and damage to immobilized targets. Effects of two identical rings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel's Accessory. Can be augmented. -->
+		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. When enchanted, increases Confusion Atk. Rate and Resistance, CHA/ LUC, Atk. Spd./ Casting Spd., P./ M. Accuracy, Speed, Skill Power, P. Critical Damage, P./ M. Skill Critical Damage, Attribute Resistance and damage to immobilized targets. Effects of two identical rings do not stack. The item can be changed. <Enchanting>. Use Scroll: Enchant Angel's Accessory. Can be augmented. -->
 		<set name="icon" val="icon.dragon_accessary_ring" />
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="78" />
@@ -552,11 +552,6 @@
 		<set name="commissionItemType" val="DAGGER" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8849" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13787" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13282" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Dagger Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">629</stat>
 			<stat type="mAtk">313</stat>
@@ -566,6 +561,11 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="8849" level="1" /> <!-- Unique Effect: PvE Damage Increase - Shaper -->
+			<skill id="13787" level="1" /> <!-- Additional Ability Health - Shaper -->
+			<skill id="13282" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Dagger -->
+		</skills>
 	</item>
 	<item id="80338" name="Bloody Helios Cutter" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases P. Accuracy and Critical Rate for standard attacks. -->
@@ -586,11 +586,6 @@
 		<set name="commissionItemType" val="ONE_HAND_SWORD" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8850" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13788" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13252" level="3" type="ON_ENCHANT" type_value="4" /> <!-- One-handed Sword Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">719</stat>
 			<stat type="mAtk">313</stat>
@@ -599,6 +594,11 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="8850" level="1" /> <!-- Unique Effect: PvE Damage Increase - Cutter -->
+			<skill id="13788" level="1" /> <!-- Additional Ability Health - Cutter -->
+			<skill id="13252" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - One-handed Sword -->
+		</skills>
 	</item>
 	<item id="80339" name="Bloody Helios Slasher" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases P. Atk. -->
@@ -619,11 +619,6 @@
 		<set name="commissionItemType" val="TWO_HAND_SWORD" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8851" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13789" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13261" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Two-handed Sword Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">875</stat>
 			<stat type="mAtk">313</stat>
@@ -632,6 +627,11 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="8851" level="1" /> <!-- Unique Effect: PvE Damage Increase - Slasher -->
+			<skill id="13789" level="1" /> <!-- Additional Ability Health - Slasher -->
+			<skill id="13261" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Two-handed Sword -->
+		</skills>
 	</item>
 	<item id="80340" name="Bloody Helios Avenger" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases Critical Damage for standard attacks. -->
@@ -653,12 +653,7 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="8852" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13790" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13256" level="3" type="ON_ENCHANT" type_value="4" /> <!-- One-handed Blunt Special Ability -->
-		</skills>
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
 		</skills>
 		<stats>
 			<stat type="pAtk">719</stat>
@@ -668,6 +663,11 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 		</stats>
+		<skills>
+			<skill id="8852" level="1" /> <!-- Unique Effect: PvE Damage Increase - Avenger -->
+			<skill id="13790" level="1" /> <!-- Additional Ability Health - Avenger -->
+			<skill id="13256" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - One-handed Blunt Weapon -->
+		</skills>
 	</item>
 	<item id="80341" name="Bloody Helios Fighter" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases Atk. Spd. and P. Atk. -->
@@ -688,11 +688,6 @@
 		<set name="commissionItemType" val="FIST_WEAPON" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8853" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13791" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13267" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Fist Weapon Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">875</stat>
 			<stat type="mAtk">313</stat>
@@ -702,6 +697,11 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="8853" level="1" /> <!-- Unique Effect: PvE Damage Increase - Fighter -->
+			<skill id="13791" level="1" /> <!-- Additional Ability Health - Fighter -->
+			<skill id="13267" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Fist Weapon -->
+		</skills>
 	</item>
 	<item id="80342" name="Bloody Helios Stormer" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases the number of targets attacked with a spear. -->
@@ -723,13 +723,7 @@
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="enchant_enabled" val="true" />
 		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-			<skill id="8854" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13792" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13263" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Spear Special Ability -->
-		</skills>
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
 		</skills>
 		<stats>
 			<stat type="pAtk">719</stat>
@@ -740,6 +734,12 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+			<skill id="8854" level="1" /> <!-- Unique Effect: PvE Damage Increase - Stormer -->
+			<skill id="13792" level="1" /> <!-- Additional Ability Health - Stormer -->
+			<skill id="13263" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Spear -->
+		</skills>
 	</item>
 	<item id="80343" name="Bloody Helios Thrower" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases P. Skill Power. -->
@@ -760,11 +760,6 @@
 		<set name="commissionItemType" val="BOW" />
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8855" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13793" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13292" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Bow Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1415</stat>
 			<stat type="mAtk">313</stat>
@@ -774,6 +769,11 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="8855" level="1" /> <!-- Unique Effect: PvE Damage Increase - Thrower -->
+			<skill id="13793" level="1" /> <!-- Additional Ability Health - Thrower -->
+			<skill id="13292" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Bow -->
+		</skills>
 	</item>
 	<item id="80344" name="Bloody Helios Guardian" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases Atk. Spd. -->
@@ -794,11 +794,6 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8856" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13794" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13294" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Crossbow Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1274</stat>
 			<stat type="mAtk">313</stat>
@@ -808,6 +803,11 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="8856" level="1" /> <!-- Unique Effect: PvE Damage Increase - Guardian -->
+			<skill id="13794" level="1" /> <!-- Additional Ability Health - Guardian -->
+			<skill id="13294" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Crossbow -->
+		</skills>
 	</item>
 	<item id="80345" name="Bloody Helios Buster" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases M. Accuracy and M. Skill Critical Rate. -->
@@ -829,11 +829,6 @@
 		<set name="is_magic_weapon" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8857" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13795" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13295" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Magic Sword Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">575</stat>
 			<stat type="mAtk">417</stat>
@@ -841,6 +836,11 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 		</stats>
+		<skills>
+			<skill id="8857" level="1" /> <!-- Unique Effect: PvE Damage Increase - Buster -->
+			<skill id="13795" level="1" /> <!-- Additional Ability Health - Buster -->
+			<skill id="13295" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Magic Sword -->
+		</skills>
 	</item>
 	<item id="80346" name="Bloody Helios Caster" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases M. Accuracy and M. Skill Critical Damage. -->
@@ -862,11 +862,6 @@
 		<set name="is_magic_weapon" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8858" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13796" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13299" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Magic One-handed Blunt Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">575</stat>
 			<stat type="mAtk">417</stat>
@@ -876,6 +871,11 @@
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">500</stat>
 		</stats>
+		<skills>
+			<skill id="8858" level="1" /> <!-- Unique Effect: PvE Damage Increase - Caster -->
+			<skill id="13796" level="1" /> <!-- Additional Ability Health - Caster -->
+			<skill id="13299" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - One-handed Staff -->
+		</skills>
 	</item>
 	<item id="80347" name="Bloody Helios Retributer" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases M. Atk., M. Skill Critical Damage and Casting Spd. -->
@@ -897,11 +897,6 @@
 		<set name="is_magic_weapon" val="true" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8859" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13797" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13304" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Magic Two-handed Blunt Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">700</stat>
 			<stat type="mAtk">459</stat>
@@ -911,6 +906,11 @@
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="8859" level="1" /> <!-- Unique Effect: PvE Damage Increase - Retributer -->
+			<skill id="13797" level="1" /> <!-- Additional Ability Health - Retributer -->
+			<skill id="13304" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Two-handed Staff -->
+		</skills>
 	</item>
 	<item id="80348" name="Bloody Helios Dual Swords" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases Critical Rate for standard attacks and P. Atk. -->
@@ -931,11 +931,6 @@
 		<set name="commissionItemType" val="DUALSWORD" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8860" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13798" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13277" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Dualsword Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">875</stat>
 			<stat type="mAtk">313</stat>
@@ -944,6 +939,11 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="8860" level="1" /> <!-- Unique Effect: PvE Damage Increase - Dual Swords -->
+			<skill id="13798" level="1" /> <!-- Additional Ability Health - Dual Swords -->
+			<skill id="13277" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Dual Swords -->
+		</skills>
 	</item>
 	<item id="80349" name="Bloody Helios Dual Daggers" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases Critical Damage for standard attacks and P. Atk. -->
@@ -964,11 +964,6 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8861" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13799" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13287" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Dual Dagger Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">719</stat>
 			<stat type="mAtk">313</stat>
@@ -978,6 +973,11 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="8861" level="1" /> <!-- Unique Effect: PvE Damage Increase - Dual Daggers -->
+			<skill id="13799" level="1" /> <!-- Additional Ability Health - Dual Daggers -->
+			<skill id="13287" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Dual Daggers -->
+		</skills>
 	</item>
 	<item id="80350" name="Bloody Helios Dual Blunt Weapons" type="Weapon">
 		<!-- PvE damage +15%, Max HP/ MP/ CP +10%. 2 regular Soul Crystals and 1 special Soul Crystal can be inserted. When enchanted to +4, increases P. Skill Power and P. Atk. -->
@@ -998,11 +998,6 @@
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
-		<skills>
-			<skill id="8862" level="1" /> <!-- PvE Damage Increase -->
-			<skill id="13800" level="1" /> <!-- Additional Ability Health -->
-			<skill id="13272" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Dual Blunt Weapon Special Ability -->
-		</skills>
 		<stats>
 			<stat type="pAtk">875</stat>
 			<stat type="mAtk">313</stat>
@@ -1012,6 +1007,11 @@
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="8862" level="1" /> <!-- Unique Effect: PvE Damage Increase - Dual Blunt Weapons -->
+			<skill id="13800" level="1" /> <!-- Additional Ability Health - Dual Blunt Weapons -->
+			<skill id="13272" level="3" type="ON_ENCHANT" type_value="4" /> <!-- Special Property - Dual Blunt Weapons -->
+		</skills>
 	</item>
 	<item id="80351" name="Bloody Eternal Helmet" additionalName="Reinforced heavy armor" type="Armor">
 		<!-- 1 common soul crystal and 1 special soul crystal can be inserted. Received PvE damage -3%, PvE damage +1%. Can be augmented. -->
@@ -1642,7 +1642,7 @@
 		</stats>
 	</item>
 	<item id="80385" name="Bloody Magic Ring" additionalName="Critical Rate" type="Armor">
-		<!-- MP +31, P. Critical Damage/ M. Skill Critical Damage +15%, P. Critical Rate/ M. Skill Critical Rate +20%. Effects of two identical rings do not stack. Cannot be enchanted or crystallized. -->
+		<!-- MP +31, P. Critical Damage and P./ M. Skill Critical Damage +15%, Critical Rate for basic attacks +20, M. Skill Critical Rate +2%. Effects of two identical rings do not stack. Cannot be enchanted or crystallized. -->
 		<set name="icon" val="icon.r991_ring_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />

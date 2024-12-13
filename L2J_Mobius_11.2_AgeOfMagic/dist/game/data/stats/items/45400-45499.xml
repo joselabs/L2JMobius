@@ -165,7 +165,7 @@
 		</skills>
 	</item>
 	<item id="45416" name="R-grade Blue Save Ticket" type="EtcItem">
-		<!-- Enchant success rate +10% for R-grade weapons with a normal enchant scroll. Only for items enchanted between +3 and +6. When enchanting fails, the item does not crystallize, but the existing enchant value is decreased by 3. -->
+		<!-- Enchant success rate +10% when using a common enchant scroll. Only for R-grade weapons enchanted from +3 to +6. In case of failure, the item is not crystallized, but its enchant value is decreased by 3. -->
 		<set name="icon" val="icon.blue_save_r" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -213,7 +213,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="45422" name="Royal R-grade Blue Save Ticket" type="EtcItem">
-		<!-- Enchant success rate +10% for R-grade weapons with a normal enchant scroll. Only for items enchanted between +3 and +6. When enchanting fails, the item does not crystallize, but the existing enchant value is decreased by 3. -->
+		<!-- Enchant success rate +10% when using a common enchant scroll. Only for R-grade weapons enchanted from +3 to +6. In case of failure, the item is not crystallized, but its enchant value is decreased by 1. -->
 		<set name="icon" val="icon.royal_blue_save_r" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -273,7 +273,7 @@
 		<set name="material" val="GOLD" />
 	</item>
 	<item id="45429" name="Orichalcum Bolt" additionalName="Event" type="EtcItem">
-		<!-- Bolt made of Orichalcum. Used with R-grade crossbow. Can be obtained in a shop in any town. -->
+		<!-- A copper bolt. For R-grade crossbows. Can be bought in a shop in any town. -->
 		<set name="icon" val="icon.etc_oricalcum_bolt_i00" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -285,7 +285,7 @@
 		<set name="material" val="MITHRIL" />
 	</item>
 	<item id="45430" name="Extra Pass: Spezion (Epic)" type="EtcItem">
-		<!-- Double-click to reset cooldown to Spezion's epic dungeon. Can only be used when on a cooldown to the instance zone. Can only be used once during the set time period outside of the instance zone. -->
+		<!-- An extra pass to Spezion's dungeon. Double-click to reset the instance zone timer. Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. -->
 		<set name="icon" val="icon.etc_ticket_red_i00" />
 		<set name="weight" val="5" />
 		<set name="price" val="12660421" />
@@ -293,6 +293,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="handler" val="ItemSkills" />
+		<set name="reuse_delay" val="86400000" />
 		<set name="material" val="PAPER" />
 		<set name="immediate_effect" val="true" />
 		<skills>
@@ -308,6 +309,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="handler" val="ItemSkills" />
+		<set name="reuse_delay" val="86400000" />
 		<set name="material" val="PAPER" />
 		<set name="immediate_effect" val="true" />
 		<skills>
@@ -315,7 +317,7 @@
 		</skills>
 	</item>
 	<item id="45432" name="Extra Pass: Kartia's Labyrinth Lv. 95 (Party)" type="EtcItem">
-		<!-- Double-click to reset cooldown to Kartia's Labyrinth. Can only be used when on a cooldown to the instance zone. Can only be used once during the set time period outside of the instance zone. -->
+		<!-- An extra pass to Kartia's Labyrinth. Double-click to reset the instance zone timer. Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. -->
 		<set name="icon" val="icon.etc_ticket_red_i00" />
 		<set name="weight" val="5" />
 		<set name="price" val="13112579" />
@@ -323,6 +325,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="handler" val="ItemSkills" />
+		<set name="reuse_delay" val="86400000" />
 		<set name="material" val="PAPER" />
 		<set name="immediate_effect" val="true" />
 		<skills>
@@ -398,13 +401,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="material" val="GOLD" />
-		<skills>
-			<skill id="3561" level="1" /> <!-- Baium's Ring -->
-		</skills>
 		<stats>
 			<stat type="mDef">48</stat>
 			<stat type="maxMp">21</stat>
 		</stats>
+		<skills>
+			<skill id="3561" level="1" /> <!-- Baium's Ring -->
+		</skills>
 	</item>
 	<item id="45438" name="Package: Baium's Ring (30-day)" type="EtcItem">
 		<!-- Double-click to obtain a Baium's Ring (30-day). -->
@@ -445,7 +448,7 @@
 		<set name="bodypart" val="lbracelet" />
 	</item>
 	<item id="45441" name="Agathion Alien Celebrity Box" additionalName="Event" type="EtcItem">
-		<!-- Agathion Alien Celebrity Package -->
+		<!-- Agathion Falling Star Box -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="weight" val="100" />
 		<set name="is_tradable" val="false" />
@@ -468,7 +471,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="45443" name="Transformation Potion: L2B2" additionalName="Event" type="EtcItem">
-		<!-- Transforms into a speedy L2B2 for 10 min. -->
+		<!-- For 10 min., transforms into a speedy L2B2. -->
 		<set name="icon" val="icon.etc_whiteday_herb" />
 		<set name="handler" val="ItemSkills" />
 		<set name="default_action" val="SKILL_REDUCE" />
@@ -481,7 +484,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="commissionItemType" val="POTION" />
 		<skills>
-			<skill id="18214" level="1" /> <!-- L2B2 -->
+			<skill id="18214" level="1" /> <!-- Transformation Potion: L2B2 -->
 		</skills>
 	</item>
 	<item id="45444" name="Scroll of Escape: Blazing Swamp" type="EtcItem">
@@ -505,7 +508,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="45446" name="Visitation Scroll: Hellbound" additionalName="30-min" type="EtcItem">
-		<!-- Thanks to the teleportation scrolls' researchers from the Ivory Tower, the level limitations for the Hellbound have been lifted (previously it was available only for characters of Lv. 99+), so this scroll is no longer needed. -->
+		<!-- Due to teleportation scrolls' researchers from the Ivory Tower, the level limitations for the Hellbound have been lifted (previously it was available only for characters of Lv. 99+), so this scroll is no longer needed. -->
 		<set name="icon" val="icon.etc_exchange_ticket_i01" />
 		<set name="weight" val="30" />
 		<set name="is_depositable" val="false" />
@@ -525,7 +528,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="45448" name="Visitation Scroll: Hellbound" additionalName="90-min" type="EtcItem">
-		<!-- Thanks to the teleportation scrolls' researchers from the Ivory Tower, the level limitations for the Hellbound have been lifted (previously it was available only for characters of Lv. 99+), so this scroll is no longer needed. -->
+		<!-- Due to teleportation scrolls' researchers from the Ivory Tower, the level limitations for the Hellbound have been lifted (previously it was available only for characters of Lv. 99+), so this scroll is no longer needed. -->
 		<set name="icon" val="icon.etc_exchange_ticket_i02" />
 		<set name="weight" val="30" />
 		<set name="is_depositable" val="false" />
@@ -668,7 +671,7 @@
 		<set name="material" val="PAPER" />
 	</item>
 	<item id="45463" name="Extra Pass: Nightmare Kamaloka" type="EtcItem">
-		<!-- Double-click to reset cooldown to Nightmare Kamaloka. Can only be used when the instance zone is on cooldown. Can only be used once during the set time period outside of the instance zone. -->
+		<!-- An extra pass to a daily instance zone. Double-click to reset the instance zone timer. Can only be used when on a cooldown to the instance zone. Can only be used once a day outside of the dungeon. -->
 		<set name="icon" val="icon.etc_ticket_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -678,7 +681,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="reuse_delay" val="86400000" />
 		<skills>
-			<skill id="18222" level="1" /> <!-- Extra Pass: Near Kamaloka -->
+			<skill id="18222" level="1" /> <!-- Extra Pass: Nightmare Kamaloka -->
 		</skills>
 	</item>
 	<item id="45464" name="Zorro Hat" type="Armor">
@@ -915,7 +918,7 @@
 		<set name="material" val="LIQUID" />
 	</item>
 	<item id="45492" name="Normal Fishing Rod" additionalName="30-day" type="Weapon">
-		<!-- A 30-day fishing rod. Consumes 1 Fishing Shot. -->
+		<!-- Available for 30 d. Consumes 1 Fishing Shot. -->
 		<set name="icon" val="icon.weapon_fishing_rod_i03" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="FISHINGROD" />
@@ -936,7 +939,7 @@
 		</stats>
 	</item>
 	<item id="45493" name="Fishing Rod Pack (30-day)" type="EtcItem">
-		<!-- Open to get a 30-day fishing rod. -->
+		<!-- Double-click to obtain Fishing Rod (30-day). -->
 		<set name="icon" val="icon.etc_box_of_adventure_1_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="handler" val="ExtractableItems" />
@@ -950,7 +953,7 @@
 		</capsuled_items>
 	</item>
 	<item id="45494" name="Sturdy Fishing Rod" type="Weapon">
-		<!-- A stiff fishing rod. Used to make fishing rods for master fishermen. Fishing Shots consumed: 1 -->
+		<!-- A sturdy fishing rod. Required for crafting Master Fishing Rod. Consumes 1 Fishing Shot. -->
 		<set name="icon" val="icon.weapon_fishing_rod_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="FISHINGROD" />
@@ -970,7 +973,7 @@
 		</stats>
 	</item>
 	<item id="45495" name="Normal Bait" type="EtcItem">
-		<!-- Normal Bait that can no longer be used. It can be sold at the store. -->
+		<!-- A common bait that is not used anymore, unfortunately. Can be sold to a shop. -->
 		<set name="icon" val="icon.etc_huge_lure" />
 		<set name="bodypart" val="lhand" />
 		<set name="default_action" val="EQUIP" />
@@ -1010,7 +1013,7 @@
 		<set name="material" val="PAPER" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="45495" min="50" max="50" chance="100" /> <!-- Normal Bait -->
+			<item id="45495" min="50" max="50" chance="100" /> <!-- Common Bait -->
 			<item id="38154" min="50" max="50" chance="100" /> <!-- Fishing Shot -->
 		</capsuled_items>
 	</item>

@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package instances.Kastia110;
 
@@ -22,11 +26,9 @@ import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
 import org.l2jmobius.gameserver.instancemanager.WalkingManager;
 import org.l2jmobius.gameserver.model.Location;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
@@ -52,7 +54,6 @@ public class Kastia110 extends AbstractInstance
 		24543, // Kastia's Keeper
 		24544, // Kastia's Overseer
 		24545, // Kastia's Warder
-		BOSS, // Spata
 	};
 	// Item
 	private static final ItemHolder KASTIAS_PACK = new ItemHolder(81149, 1);
@@ -66,9 +67,10 @@ public class Kastia110 extends AbstractInstance
 		super(TEMPLATE_ID);
 		addStartNpc(KARINIA);
 		addTalkId(KARINIA);
-		addKillId(MONSTERS);
 		addSpawnId(BOSS);
 		addCreatureSeeId(MONSTERS);
+		addCreatureSeeId(BOSS);
+		addKillId(BOSS);
 	}
 	
 	@Override
@@ -177,23 +179,9 @@ public class Kastia110 extends AbstractInstance
 							world.setStatus(7);
 							showOnScreenMsg(world, NpcStringId.LV_7_2, ExShowScreenMessage.TOP_CENTER, 10000, true);
 							moveMonsters(world.spawnGroup("wave_7"));
+							break;
 						}
 						startQuestTimer("check_status", 10000, null, player);
-						break;
-					}
-					case 7:
-					{
-						if (world.getAliveNpcCount(MONSTERS) == 0)
-						{
-							showOnScreenMsg(world, NpcStringId.YOU_HAVE_SUCCESSFULLY_COMPLETED_THE_KASTIA_S_LABYRINTH_YOU_WILL_BE_TRANSPORTED_TO_THE_SURFACE_SHORTLY_ALSO_YOU_CAN_LEAVE_THIS_PLACE_WITH_THE_HELP_OF_KASTIA_S_RESEARCHER, ExShowScreenMessage.TOP_CENTER, 10000, true);
-							addSpawn(RESEARCHER, player.getLocation(), true, 0, false, world.getId());
-							giveItems(player, KASTIAS_PACK);
-							world.finishInstance(3);
-						}
-						else
-						{
-							startQuestTimer("check_status", 10000, null, player);
-						}
 						break;
 					}
 				}
@@ -230,7 +218,7 @@ public class Kastia110 extends AbstractInstance
 			{
 				monster.setRandomWalking(false);
 				startQuestTimer("move_to_spawn", delay, monster, null);
-				((Attackable) monster).setCanReturnToSpawnPoint(false);
+				monster.asAttackable().setCanReturnToSpawnPoint(false);
 			}
 		}
 	}
@@ -256,12 +244,27 @@ public class Kastia110 extends AbstractInstance
 			if ((distance < 900))
 			{
 				WalkingManager.getInstance().cancelMoving(npc);
-				((Monster) npc).addDamageHate(player, 0, 1000);
+				npc.asMonster().addDamageHate(player, 0, 1000);
 				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 				addAttackDesire(npc, player);
 			}
 		}
 		return super.onCreatureSee(npc, player);
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player killer, boolean isSummon)
+	{
+		final Instance world = npc.getInstanceWorld();
+		if (isInInstance(world))
+		{
+			world.getAliveNpcs(MONSTERS).forEach(monster -> monster.deleteMe());
+			showOnScreenMsg(world, NpcStringId.YOU_HAVE_SUCCESSFULLY_COMPLETED_THE_KASTIA_S_LABYRINTH_YOU_WILL_BE_TRANSPORTED_TO_THE_SURFACE_SHORTLY_ALSO_YOU_CAN_LEAVE_THIS_PLACE_WITH_THE_HELP_OF_KASTIA_S_RESEARCHER, ExShowScreenMessage.TOP_CENTER, 10000, true);
+			addSpawn(RESEARCHER, killer.getLocation(), true, 0, false, world.getId());
+			giveItems(killer, KASTIAS_PACK);
+			world.finishInstance(3);
+		}
+		return super.onKill(npc, killer, isSummon);
 	}
 	
 	public static void main(String[] args)

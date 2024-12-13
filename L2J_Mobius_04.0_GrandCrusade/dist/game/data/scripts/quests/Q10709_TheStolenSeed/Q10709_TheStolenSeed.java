@@ -134,7 +134,7 @@ public class Q10709_TheStolenSeed extends Quest
 			}
 			case "EMBRYO_DELAY":
 			{
-				final Npc akum = (Npc) npc.getTarget();
+				final Npc akum = npc.getTarget().asNpc();
 				if (akum != null)
 				{
 					qs.setCond(2, true);

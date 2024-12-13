@@ -63,8 +63,8 @@ public class CallPc extends AbstractEffect
 			return;
 		}
 		
-		final Player target = effected.getActingPlayer();
-		final Player player = effector.getActingPlayer();
+		final Player target = effected.asPlayer();
+		final Player player = effector.asPlayer();
 		if (player != null)
 		{
 			if (checkSummonTargetStatus(target, player))

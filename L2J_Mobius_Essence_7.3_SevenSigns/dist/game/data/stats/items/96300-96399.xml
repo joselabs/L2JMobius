@@ -637,7 +637,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="96189" min="1" max="1" chance="100" /> <!-- Agathion Bracelet Lv. 5 (Time-limited) - Sealed -->
+			<item id="96189" min="1" max="1" chance="100" /> <!-- Agathion Summon Bracelet Lv. 5 (Time-limited) - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="96342" name="Support Box: +5 Agathion Ignis (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -761,6 +761,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="32047" level="1" /> <!-- Cube of Sayha - 30 d. -->
+		</skills>
 	</item>
 	<item id="96350" name="Antharas Expedition Mark" additionalName="Sealed" type="EtcItem">
 		<!-- Granted to brave adventurers who managed to defeat Antharas. <How to use>. Special Craft - Spellbook: Dragon Slayer -->
@@ -814,8 +818,15 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="ENCHT_AM" />
+		<set name="handler" val="EnchantScrolls" />
+		<skills>
+			<skill id="40384" level="1" /> <!-- Scroll: Enchant Aden Cloak -->
+		</skills>
 	</item>
 	<item id="96355" name="STR Dye" additionalName="Lv. 1" type="EtcItem">
 		<!-- Required for applying STR Pattern. <font color=bbaa88><Effect></font>. STR +2. <font color=ff6666><Pattern enhancement and compounding></font>. Enhancement materials: Dye Booster. In case of failure, the current level remains the same, but materials disappear. Costs for upgrading patterns and dyes differ. <font color=bbaa88>Note!</font>. Applying the pattern requires 1 dye. Requirements: all classes after the 1st class change. Hidden power: Lv. 2 -->
@@ -1322,7 +1333,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="96397" name="DEX Dye" additionalName="Lv. 3" type="EtcItem">
-		<!-- Required for applying DEX Pattern. <font color=bbaa88><Effect></font>. DEX +4. <font color=bbaa88><Additional effect></font>. Received P. Skill Critical Rate +0.4%. <font color=ff6666><Pattern enhancement and compounding></font>. Enhancement materials: Dye Booster. In case of failure, the current level remains the same, but materials disappear. Costs for upgrading patterns and dyes differ. <font color=bbaa88>Note!</font>. Applying the pattern requires 1 dye. Requirements: all classes after the 1st class change. Hidden power limit: Lv. 3. Additional effects of identical patterns do not stack. -->
+		<!-- Required for applying DEX Pattern. <font color=bbaa88><Effect></font>. DEX +4. <font color=bbaa88><Additional effect></font>. Received P. Skill Critical Rate -0.4%. <font color=ff6666><Pattern enhancement and compounding></font>. Enhancement materials: Dye Booster. In case of failure, the current level remains the same, but materials disappear. Costs for upgrading patterns and dyes differ. <font color=bbaa88>Note!</font>. Applying the pattern requires 1 dye. Requirements: all classes after the 1st class change. Hidden power limit: Lv. 3. Additional effects of identical patterns do not stack. -->
 		<set name="icon" val="BranchSys3.icon3.g_premium_dye_attribute_holy" />
 		<set name="etcitem_type" val="DYE" />
 		<set name="immediate_effect" val="true" />
@@ -1334,7 +1345,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="96398" name="DEX Dye" additionalName="Lv. 4" type="EtcItem">
-		<!-- Required for applying DEX Pattern. <font color=bbaa88><Effect></font>. DEX +4. <font color=bbaa88><Additional effect></font>. Received P. Skill Critical Rate +0.8%. <font color=ff6666><Pattern enhancement and compounding></font>. Enhancement materials: Dye Booster. In case of failure, the current level remains the same, but materials disappear. Costs for upgrading patterns and dyes differ. <font color=bbaa88>Note!</font>. Applying the pattern requires 1 dye. Requirements: all classes after the 1st class change. Hidden power limit: Lv. 4. Additional effects of identical patterns do not stack. -->
+		<!-- Required for applying DEX Pattern. <font color=bbaa88><Effect></font>. DEX +4. <font color=bbaa88><Additional effect></font>. Received P. Skill Critical Rate -0.8%. <font color=ff6666><Pattern enhancement and compounding></font>. Enhancement materials: Dye Booster. In case of failure, the current level remains the same, but materials disappear. Costs for upgrading patterns and dyes differ. <font color=bbaa88>Note!</font>. Applying the pattern requires 1 dye. Requirements: all classes after the 1st class change. Hidden power limit: Lv. 4. Additional effects of identical patterns do not stack. -->
 		<set name="icon" val="BranchSys3.icon3.g_premium_dye_attribute_holy" />
 		<set name="etcitem_type" val="DYE" />
 		<set name="immediate_effect" val="true" />
@@ -1346,7 +1357,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="96399" name="DEX Dye" additionalName="Lv. 5" type="EtcItem">
-		<!-- Required for applying DEX Pattern. <font color=bbaa88><Effect></font>. DEX +4. <font color=bbaa88><Additional effect></font>. Received P. Skill Critical Rate +1.2%. <font color=ff6666><Pattern enhancement and compounding></font>. Enhancement materials: Dye Booster. In case of failure, the current level remains the same, but materials disappear. Costs for upgrading patterns and dyes differ. <font color=bbaa88>Note!</font>. Applying the pattern requires 1 dye. Requirements: all classes after the 1st class change. Hidden power limit: Lv. 5. Additional effects of identical patterns do not stack. -->
+		<!-- Required for applying DEX Pattern. <font color=bbaa88><Effect></font>. DEX +4. <font color=bbaa88><Additional effect></font>. Received P. Skill Critical Rate -1.2%. <font color=ff6666><Pattern enhancement and compounding></font>. Enhancement materials: Dye Booster. In case of failure, the current level remains the same, but materials disappear. Costs for upgrading patterns and dyes differ. <font color=bbaa88>Note!</font>. Applying the pattern requires 1 dye. Requirements: all classes after the 1st class change. Hidden power limit: Lv. 5. Additional effects of identical patterns do not stack. -->
 		<set name="icon" val="BranchSys3.icon3.g_premium_dye_attribute_holy" />
 		<set name="etcitem_type" val="DYE" />
 		<set name="immediate_effect" val="true" />

@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.dethrone;
 
@@ -32,18 +36,16 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 
 /**
- * @author CostyKiller
+ * @author CostyKiller, Mobius
  */
 public class ExDethroneGetReward extends ServerPacket
 {
-	private final Player _player;
 	private final boolean _rewarded;
 	private final Map<Integer, StatSet> _previousConquestPlayerList;
 	
 	public ExDethroneGetReward(Player player, boolean rewarded)
 	{
 		_rewarded = rewarded;
-		_player = player;
 		_previousConquestPlayerList = RankManager.getInstance().getPreviousConquestRankList();
 	}
 	
@@ -51,29 +53,34 @@ public class ExDethroneGetReward extends ServerPacket
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.EX_DETHRONE_INFO.writeId(this, buffer);
-		// Check rank for previous season
+	}
+	
+	@Override
+	public void runImpl(Player player)
+	{
+		// Check rank for previous season.
 		int rank = 0;
 		long personalPoints = 0;
 		if (!_previousConquestPlayerList.isEmpty())
 		{
 			for (Entry<Integer, StatSet> entry : _previousConquestPlayerList.entrySet())
 			{
-				if (entry.getValue().getInt("charId") == _player.getObjectId())
+				if (entry.getValue().getInt("charId") == player.getObjectId())
 				{
 					rank = entry.getKey();
 					personalPoints = entry.getValue().getLong("conquestPersonalPoints");
+					break;
 				}
 			}
 		}
 		if (_rewarded)
 		{
-			_player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_RECEIVED_THE_REWARD);
+			player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_RECEIVED_THE_REWARD);
 		}
 		else if (personalPoints > Config.CONQUEST_PERSONAL_REWARD_MIN_POINTS) // Personal Reward.
 		{
-			
+			// Rank percent formula.
 			int rewardRank = 0;
-			// rank percent formula
 			double rankPercent = ((rank * 100) / (RankManager.getInstance().getPreviousConquestRankList().size()));
 			
 			if ((rankPercent > 0) && (rankPercent < 5))
@@ -123,7 +130,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_1)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -131,7 +138,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_2)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -139,7 +146,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_3)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -147,7 +154,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_4)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -155,7 +162,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_5)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -163,7 +170,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_6)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -171,7 +178,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_7)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -179,7 +186,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_8)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -187,7 +194,7 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_9)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
@@ -195,22 +202,22 @@ public class ExDethroneGetReward extends ServerPacket
 				{
 					for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_10)
 					{
-						_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+						player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 					}
 					break;
 				}
 			}
 			
-			// Conqueror Server Reward
+			// Conqueror Server Reward.
 			if (personalPoints > Config.CONQUEST_SERVER_REWARD_MIN_POINTS)
 			{
 				for (ItemHolder reward : Config.CONQUEST_REWARDS_RANK_PARTICIPANT)
 				{
-					_player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), _player, true);
+					player.addItem("CONQUEST_REWARDS", reward.getId(), reward.getCount(), player, true);
 				}
 			}
 			
-			_player.getVariables().set(PlayerVariables.CONQUEST_REWARDS_RECEIVED, true);
+			player.getVariables().set(PlayerVariables.CONQUEST_REWARDS_RECEIVED, true);
 		}
 	}
 }

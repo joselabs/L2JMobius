@@ -62,18 +62,23 @@ public class SummonCubic extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if (!effected.isPlayer() || effected.isAlikeDead() || effected.getActingPlayer().inObserverMode())
-		{
-			return;
-		}
-		
 		if (_cubicId < 0)
 		{
 			LOGGER.warning(SummonCubic.class.getSimpleName() + ": Invalid Cubic ID:" + _cubicId + " in skill ID: " + skill.getId());
 			return;
 		}
 		
-		final Player player = effected.getActingPlayer();
+		if (!effected.isPlayer() || effected.isAlikeDead())
+		{
+			return;
+		}
+		
+		final Player player = effected.asPlayer();
+		if (player.inObserverMode())
+		{
+			return;
+		}
+		
 		if (player.inObserverMode() || player.isMounted())
 		{
 			return;
@@ -113,7 +118,7 @@ public class SummonCubic extends AbstractEffect
 		}
 		
 		// Adding a new cubic.
-		player.addCubic(new Cubic(player, effector.getActingPlayer(), template));
+		player.addCubic(new Cubic(player, effector.asPlayer(), template));
 		player.sendPacket(new ExUserInfoCubic(player));
 		player.broadcastCharInfo();
 	}

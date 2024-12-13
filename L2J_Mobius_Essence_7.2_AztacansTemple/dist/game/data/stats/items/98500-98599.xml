@@ -317,9 +317,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">31</stat>
 			<stat type="mAtk">21</stat>
@@ -327,6 +324,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="98526" name="Throwing Knife" additionalName="Sealed" type="Weapon">
 		<!-- <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders.></font> -->
@@ -634,7 +634,7 @@
 			<item id="94383" min="1" max="1" chance="2.173913" /> <!-- Scroll: Enchant Rare Accessories -->
 			<item id="97494" min="1" max="1" chance="2.173913" /> <!-- Package: Glakias Doll Lv. 1 - Sealed -->
 			<item id="97489" min="1" max="1" chance="2.173913" /> <!-- Package: Behemoth Doll Lv. 1 - Sealed -->
-			<item id="97801" min="1" max="1" chance="2.173913" /> <!-- Package: Dye Powder (100 pcs.) - Sealed -->
+			<item id="97801" min="1" max="1" chance="2.173913" /> <!-- Package: Dye Booster (100 pcs.) - Sealed -->
 			<item id="97795" min="1" max="1" chance="2.173913" /> <!-- Package: Hardin's Soul Crystal (100 pcs.) - Sealed -->
 			<item id="93739" min="1" max="1" chance="2.173913" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
 			<item id="97859" min="1" max="1" chance="2.173913" /> <!-- Stable Scroll: Enchant Rare Accessories -->
@@ -646,7 +646,7 @@
 			<item id="94159" min="1" max="1" chance="2.173913" /> <!-- Package: Queen Ant Doll Lv. 1 - Sealed -->
 			<item id="94162" min="1" max="1" chance="2.173913" /> <!-- Package: Orfen Doll Lv. 1 - Sealed -->
 			<item id="94328" min="1" max="1" chance="2.173913" /> <!-- Elixir Powder - Sealed -->
-			<item id="96623" min="1" max="1" chance="2.173913" /> <!-- Dye Powder -->
+			<item id="96623" min="1" max="1" chance="2.173913" /> <!-- Dye Booster -->
 			<item id="96985" min="1" max="1" chance="2.173913" /> <!-- Package: Brooch Lv. 3 - Sealed -->
 			<item id="96983" min="1" max="1" chance="2.173913" /> <!-- Package: Agathion Bracelet Lv. 3 - Sealed -->
 			<item id="96984" min="1" max="1" chance="2.173913" /> <!-- Package: Talisman Bracelet Lv. 3 - Sealed -->
@@ -881,7 +881,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98555" name="+2 Rare Accessory Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Can be exchanged for 1 rare accessory enchanted to +2 of your choice. <font color=EEAA22><Items for exchange></font>. Package: +2 Antharas' Earring (5 pcs.). Package: +2 Frintezza's Necklace (4 pcs.). Package: +2 Baium's Ring (4 pcs.). Package: +2 Zaken's Earring (3 pcs.). Package: +2 Beleth' Ring (3 pcs.). Package: +2 Orfen's Earring (2 pcs.). Package: +2 Queen Ant's Ring +2 (2 pcs.). Package: +2 Ring of Core (1 pc.) -->
+		<!-- Double-click to obtain 1 of items of your choice. <font color=EEAA22><Items for exchange></font>. Improved Scroll: Enchant Rare Accessories (Sealed) - 4 coupons. Scroll: Enchant Rare Accessories (Sealed) - 2 coupons. Package: +2 Antharas' Earring (Sealed) - 12 coupons. Package: +2 Frintezza's Necklace (Sealed) - 10 coupons. Package: +2 Baium's Ring (Sealed) - 8 coupons. Package: +2 Beleth' Ring (Sealed) - 6 coupons. Package: +2 Zaken's Earring (Sealed) - 6 coupons. Package: +2 Queen Ant's Ring (Sealed) - 5 coupons. Package: +2 Orfen's Earring (Sealed) - 5 coupons. Package: +2 Ring of Core (Sealed) - 1 coupon. Rare Accessory Fortune Box (Time-limited) 15 pcs. - 1 coupon -->
 		<set name="icon" val="icon.bm_boss_accessory_ticket_i00" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -910,7 +910,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="96630" min="100" max="100" chance="100" /> <!-- Enhanced Dye Powder -->
+			<item id="96630" min="100" max="100" chance="100" /> <!-- Enhanced Dye Booster -->
 		</capsuled_items>
 	</item>
 	<item id="98558" name="Spellbook: Healing Lv. 4" type="EtcItem">
@@ -988,7 +988,7 @@
 		</capsuled_items>
 	</item>
 	<item id="98563" name="Match on November 24 - Victory for Korea (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 1st match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 25, after 01:00. -->
+		<!-- Lets you predict the 1st match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 25, after 01:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -999,7 +999,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98564" name="Match on November 24 - Draw (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 1st match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 25, after 01:00. -->
+		<!-- Lets you predict the 1st match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 25, after 01:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1010,7 +1010,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98565" name="Match on November 24 - Defeat for Korea (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 1st match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 25, after 01:00. -->
+		<!-- Lets you predict the 1st match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 25, after 01:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1021,7 +1021,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98566" name="Match on November 28 - Victory for Korea (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 2nd match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 29, after 01:00. -->
+		<!-- Lets you predict the 2nd match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 29, after 01:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1032,7 +1032,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98567" name="Match on November 28 - Draw (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 2nd match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 29, after 01:00. -->
+		<!-- Lets you predict the 2nd match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 29, after 01:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1043,7 +1043,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98568" name="Match on November 28 - Defeat for Korea (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 2nd match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 29, after 01:00. -->
+		<!-- Lets you predict the 2nd match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on November 29, after 01:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1054,7 +1054,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98569" name="Match on December 3 - Victory for Korea (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 3rd match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on December 3rd after 03:00. -->
+		<!-- Lets you predict the 3rd match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on December 3rd after 03:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1065,7 +1065,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98570" name="Match on December 3 - Draw (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 3rd match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on December 3rd after 03:00. -->
+		<!-- Lets you predict the 3rd match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on December 3rd after 03:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1076,7 +1076,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98571" name="Match on December 3 - Defeat for Korea (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Lets you predict the 3rd match results. <How to use> Event NPC: Rad <Use> If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on December 3rd after 03:00. -->
+		<!-- Lets you predict the 3rd match results. <How to use>. Event NPC: Rad. <Use>. If your prediction is correct, you can exchange it for Soccer Ball of Victory through the event NPC on December 3rd after 03:00. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1087,7 +1087,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98572" name="Soccer Ball of Victory (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Given as a reward for a prediction. <How to use> Special Craft - Match Result Prediction <How to use> Allows to obtain a reward after predicting the result of three matches. <font color=ff6666>Note!</font> The more results are guessed correctly, the better the reward is, so there is no need to rush, wait for the results of all matches. -->
+		<!-- Given as a reward for a prediction. <How to use>. Special Craft - Match Result Prediction. <How to use>. Allows to obtain a reward after predicting the result of three matches. <font color=ff6666>Note!</font>. The more results are guessed correctly, the better the reward is, so there is no need to rush, wait for the results of all matches. -->
 		<set name="icon" val="icon.ev_soccer_herb" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1098,7 +1098,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98573" name="Soccer Ball of Victory Buff (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Applies a buff when used. <Buff effect> P. Atk. +22 M. Atk. +22 P. Def. +22 M. Def. +22 Atk. Spd. +22 Casting Spd. +22 Acquired XP/ SP +2% HP Recovery Rate +2 MP Recovery Rate +2 Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->
+		<!-- Applies a buff when used. <Buff effect>. P. Atk. +22. M. Atk. +22. P. Def. +22. M. Def. +22. Atk. Spd. +22. Casting Spd. +22. Acquired XP/ SP +2%. HP Recovery Rate +2. MP Recovery Rate +2. Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->
 		<set name="icon" val="BranchSys2.icon.br_soccer_ball_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />

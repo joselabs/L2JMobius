@@ -75,7 +75,7 @@ public class CubicSkill extends SkillHolder implements ICubicConditionHolder
 	@Override
 	public boolean validateConditions(Cubic cubic, Creature owner, WorldObject target)
 	{
-		if (_targetDebuff && target.isCreature() && (((Creature) target).getEffectList().getDebuffCount() == 0))
+		if (_targetDebuff && target.isCreature() && (target.asCreature().getEffectList().getDebuffCount() == 0))
 		{
 			return false;
 		}

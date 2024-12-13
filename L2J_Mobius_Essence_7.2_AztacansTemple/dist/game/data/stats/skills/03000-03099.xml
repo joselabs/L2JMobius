@@ -1,48 +1,48 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="3001" toLevel="1" name="int_1">
 		<icon>icon.skill0000</icon>
-		<magicLevel>0</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>0</magicLevel>
 	</skill>
 	<skill id="3002" toLevel="1" name="int_2">
 		<icon>icon.skill0000</icon>
-		<magicLevel>0</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>0</magicLevel>
 	</skill>
 	<skill id="3003" toLevel="1" name="str_2">
 		<icon>icon.skill0000</icon>
-		<magicLevel>0</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>0</magicLevel>
 	</skill>
 	<skill id="3004" toLevel="1" name="maxmp_5">
 		<icon>icon.skill0000</icon>
-		<magicLevel>0</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>0</magicLevel>
 	</skill>
 	<skill id="3005" toLevel="1" name="Bleed">
 		<!-- Decreases HP every sec. -->
 		<icon>icon.skill0223</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>50</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
-		<magicLevel>40</magicLevel>
-		<operateType>A2</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<magicLevel>40</magicLevel>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>44</power>
@@ -53,9 +53,9 @@
 	<skill id="3006" toLevel="1" name="Equipping a Set">
 		<!-- Gives additional effects when using a full equipment set. -->
 		<icon>icon.skill0042</icon>
-		<magicLevel>0</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>0</magicLevel>
 	</skill>
 	<skill id="3007" toLevel="6" name="Special Property: Guidance">
 		<!-- Increases P. Accuracy -->
@@ -222,7 +222,7 @@
 				<amount>-15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">20.44</value>
 					<value level="2">22.64</value>
@@ -236,7 +236,8 @@
 		</effects>
 	</skill>
 	<skill id="3013" toLevel="2" name="Special Property: Health">
-		<!-- Increases Max HP. -->
+		<!-- Level 1: Increases Max HP. -->
+		<!-- Level 2: Increases Max HP and the number of targets hit with a spear. -->
 		<icon>icon.skill0211</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -319,6 +320,7 @@
 		<!-- Immobilizes and stuns target. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
@@ -332,10 +334,14 @@
 			<value level="6">25</value>
 			<value level="7">30</value>
 		</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>-92</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -345,28 +351,26 @@
 			<value level="6">61</value>
 			<value level="7">63</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
 	</skill>
 	<skill id="3017" toLevel="4" name="Special Property: Magic Regeneration">
-		<!-- MP Recovery Rate +12% for 10 min. -->
+		<!-- Level 1: MP Recovery Rate +12% for 10 min. -->
+		<!-- Level 2: MP Recovery Rate +14% for 10 min. -->
+		<!-- Level 3: MP Recovery Rate +16% for 10 min. -->
+		<!-- Level 4: MP Recovery Rate +20% for 10 min. -->
 		<icon>icon.skill1044</icon>
 		<operateType>A1</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>10000</reuseDelay>
 		<effectPoint>
 			<value level="1">379</value>
 			<value level="2">379</value>
 			<value level="3">457</value>
 			<value level="4">566</value>
 		</effectPoint>
+		<hitTime>3000</hitTime>
+		<reuseDelay>10000</reuseDelay>
 	</skill>
 	<skill id="3018" toLevel="6" name="Special Property: Backstab">
 		<!-- Increases P. Critical Rate when attacking a target from behind. -->
@@ -428,6 +432,7 @@
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0223</icon>
 		<operateType>A2</operateType>
+		<targetType>NONE</targetType>
 		<abnormalLevel>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -437,7 +442,6 @@
 			<value level="6">7</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>
@@ -448,9 +452,12 @@
 			<value level="5">14</value>
 			<value level="6">12</value>
 		</activateRate>
+		<affectScope>NONE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -459,11 +466,8 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>NONE</targetType>
-		<affectScope>NONE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -482,9 +486,9 @@
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0223</icon>
 		<operateType>A2</operateType>
+		<targetType>NONE</targetType>
 		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>
@@ -495,9 +499,12 @@
 			<value level="5">41</value>
 			<value level="6">35</value>
 		</activateRate>
+		<affectScope>NONE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -506,11 +513,8 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>NONE</targetType>
-		<affectScope>NONE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -528,6 +532,8 @@
 	<skill id="3022" toLevel="6" name="Special Property: Critical Absorption">
 		<icon>icon.skill0070</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-209</value>
@@ -538,7 +544,9 @@
 			<value level="6">-234</value>
 		</effectPoint>
 		<effectRange>1100</effectRange>
+		<hitTime>3000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -548,10 +556,6 @@
 			<value level="6">61</value>
 		</magicLevel>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitTime>3000</hitTime>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="HpDrain">
 				<power>
@@ -610,6 +614,7 @@
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill1168</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -619,7 +624,6 @@
 			<value level="6">7</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>
@@ -630,6 +634,7 @@
 			<value level="5">12</value>
 			<value level="6">10</value>
 		</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -641,9 +646,11 @@
 			<value level="6">-582</value>
 		</effectPoint>
 		<effectRange>1100</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -653,11 +660,8 @@
 			<value level="6">61</value>
 		</magicLevel>
 		<reuseDelay>12000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -675,6 +679,9 @@
 	<skill id="3025" toLevel="6" name="Special Property: Critical Anger">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>NONE</targetType>
+		<affectScope>NONE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<hpConsume>
 			<value level="1">12</value>
 			<value level="2">13</value>
@@ -683,6 +690,7 @@
 			<value level="5">16</value>
 			<value level="6">17</value>
 		</hpConsume>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -691,14 +699,12 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>NONE</targetType>
-		<affectScope>NONE</affectScope>
 	</skill>
 	<skill id="3026" toLevel="6" name="Special Property: Critical Anger">
 		<!-- Inflicts additional P. Critical Damage while reducing one's own HP. -->
 		<icon>icon.skill1062</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -707,8 +713,6 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="CriticalDamage">
 				<amount>
@@ -1147,15 +1151,8 @@
 	<skill id="3039" toLevel="7" name="Special Property: Critical Absorption">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">0</value>
-			<value level="2">0</value>
-			<value level="3">0</value>
-			<value level="4">12</value>
-			<value level="5">0</value>
-			<value level="6">0</value>
-			<value level="7">0</value>
-		</mpConsume>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-239</value>
@@ -1167,7 +1164,9 @@
 			<value level="7">-266</value>
 		</effectPoint>
 		<effectRange>1100</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1177,10 +1176,7 @@
 			<value level="6">61</value>
 			<value level="7">70</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<mpConsume>12</mpConsume>
 		<effects>
 			<effect name="HpDrain">
 				<power>
@@ -1208,6 +1204,7 @@
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill1168</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -1217,7 +1214,6 @@
 			<value level="6">7</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>
@@ -1228,6 +1224,7 @@
 			<value level="5">14</value>
 			<value level="6">12</value>
 		</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -1239,11 +1236,11 @@
 			<value level="6">-582</value>
 		</effectPoint>
 		<effectRange>1100</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1252,9 +1249,8 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -1273,6 +1269,7 @@
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill1168</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -1282,7 +1279,6 @@
 			<value level="6">7</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>
@@ -1293,6 +1289,7 @@
 			<value level="5">7</value>
 			<value level="6">6</value>
 		</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -1304,11 +1301,11 @@
 			<value level="6">-582</value>
 		</effectPoint>
 		<effectRange>1100</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -1317,9 +1314,8 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -1865,20 +1861,20 @@
 	<skill id="3049" toLevel="2" name="Special Property: Magic Damage">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>8.39</power>
 			</effect>
 		</effects>
@@ -1887,24 +1883,24 @@
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0223</icon>
 		<operateType>A2</operateType>
+		<targetType>NONE</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>42</activateRate>
+		<affectScope>NONE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>NONE</targetType>
-		<affectScope>NONE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>74</power>
@@ -1916,24 +1912,24 @@
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0223</icon>
 		<operateType>A2</operateType>
+		<targetType>NONE</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>35</activateRate>
+		<affectScope>NONE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>NONE</targetType>
-		<affectScope>NONE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>88</power>
@@ -1949,24 +1945,24 @@
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0223</icon>
 		<operateType>A2</operateType>
+		<targetType>NONE</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>12</activateRate>
+		<affectScope>NONE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>NONE</targetType>
-		<affectScope>NONE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>256</power>
@@ -1982,24 +1978,24 @@
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0223</icon>
 		<operateType>A2</operateType>
+		<targetType>NONE</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>24</activateRate>
+		<affectScope>NONE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>NONE</targetType>
-		<affectScope>NONE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>128</power>
@@ -2047,17 +2043,17 @@
 	<skill id="3059" toLevel="2" name="Special Property: Critical Absorption">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
 		<effectRange>1100</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="HpDrain">
 				<power>
@@ -2071,17 +2067,17 @@
 	<skill id="3060" toLevel="2" name="Special Property: Critical Absorption">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
 		<effectRange>1100</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="HpDrain">
 				<power>
@@ -2096,28 +2092,28 @@
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill1168</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>10</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectRange>1100</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 			<value level="3">70</value>
 		</magicLevel>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -2133,27 +2129,27 @@
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill1168</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>18</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectRange>1100</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>224</power>
@@ -2214,6 +2210,7 @@
 		<!-- Immobilizes and stuns target. -->
 		<icon>icon.skill0100</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
@@ -2224,22 +2221,21 @@
 			<value level="3">25</value>
 			<value level="4">48</value>
 		</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>-100</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 			<value level="3">70</value>
 			<value level="4">82</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
@@ -2280,27 +2276,27 @@
 		<!-- Temporarily prevents you from using magic skills. -->
 		<icon>icon.skill1064</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>SILENCE</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SILENCE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mute" />
 		</effects>
@@ -2309,26 +2305,26 @@
 		<!-- Causes the enemy's body to go completely rigid for 10 sec. and causes paralysis for 10 sec. -->
 		<icon>icon.skill1170</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<activateRate>20</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
+		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">64</value>
 			<value level="2">67</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
 		<trait>PARALYZE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-50</amount>
@@ -2367,7 +2363,7 @@
 			<value level="9">67</value>
 		</magicLevel>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">20.36</value>
 					<value level="2">22.51</value>
@@ -2397,7 +2393,7 @@
 			<value level="6">61</value>
 		</magicLevel>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">75.86</value>
 					<value level="2">87.22</value>
@@ -2419,18 +2415,22 @@
 		<!-- Temporarily prevents you from using magic skills. -->
 		<icon>icon.skill1064</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>SILENCE</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2439,11 +2439,7 @@
 			<value level="5">28</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SILENCE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mute" />
 		</effects>
@@ -2452,17 +2448,21 @@
 		<!-- Slows the enemy down for 15 sec., after that the enemy is fully paralysed for 10 sec. -->
 		<icon>icon.skill1170</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<activateRate>20</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2471,11 +2471,7 @@
 			<value level="5">28</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>PARALYZE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-50</amount>
@@ -2498,9 +2494,25 @@
 		</endEffects>
 	</skill>
 	<skill id="3080" toLevel="15" name="Item Skill: Aggression">
-		<!-- When triggered: Increases the target's aggression after a regular physical attack. Power 438. -->
+		<!-- Level 1: When triggered: Increases the target's aggression after a regular physical attack. Power 438. -->
+		<!-- Level 2: When triggered: Increases the target's aggression after a regular physical attack. Power 467. -->
+		<!-- Level 3: When triggered: Increases the target's aggression after a regular physical attack. Power 495. -->
+		<!-- Level 4: When triggered: Increases the target's aggression after a regular physical attack. Power 523. -->
+		<!-- Level 5: When triggered: Increases the target's aggression after a regular physical attack. Power 549. -->
+		<!-- Level 6: When triggered: Increases the target's aggression after a regular physical attack. Power 574. -->
+		<!-- Level 7: When triggered: Increases the target's aggression after a regular physical attack. Power 597. -->
+		<!-- Level 8: When triggered: Increases the target's aggression after a regular physical attack. Power 617. -->
+		<!-- Level 9: When triggered: Increases the target's aggression after a regular physical attack. Power 635. -->
+		<!-- Level 10: When triggered: Increases the target's aggression after a regular physical attack. Power 659. -->
+		<!-- Level 11: When triggered: Increases the target's aggression after a regular physical attack. Power 659. -->
+		<!-- Level 12: When triggered: Increases the target's aggression after a regular physical attack. Power 659. -->
+		<!-- Level 13: When triggered: Increases the target's aggression after a regular physical attack. Power 659. -->
+		<!-- Level 14: When triggered: Increases the target's aggression after a regular physical attack. Power 659. -->
+		<!-- Level 15: When triggered: Increases the target's aggression after a regular physical attack. Power 659. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<effectPoint>
 			<value level="1">-438</value>
@@ -2520,7 +2532,9 @@
 			<value level="15">-659</value>
 		</effectPoint>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2539,10 +2553,6 @@
 			<value level="15">99</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="TargetMeProbability">
 				<chance>40</chance>
@@ -2550,12 +2560,30 @@
 		</effects>
 	</skill>
 	<skill id="3081" toLevel="15" name="Item Skill: Charm">
-		<!-- When triggered: Decreases the target's aggression after a regular physical attack. Power 219. -->
+		<!-- Level 1: When triggered: Decreases the target's aggression after a regular physical attack. Power 219. -->
+		<!-- Level 2: When triggered: Decreases the target's aggression after a regular physical attack. Power 234. -->
+		<!-- Level 3: When triggered: Decreases the target's aggression after a regular physical attack. Power 248. -->
+		<!-- Level 4: When triggered: Decreases the target's aggression after a regular physical attack. Power 262. -->
+		<!-- Level 5: When triggered: Decreases the target's aggression after a regular physical attack. Power 275. -->
+		<!-- Level 6: When triggered: Decreases the target's aggression after a regular physical attack. Power 287. -->
+		<!-- Level 7: When triggered: Decreases the target's aggression after a regular physical attack. Power 299. -->
+		<!-- Level 8: When triggered: Decreases the target's aggression after a regular physical attack. Power 309. -->
+		<!-- Level 9: When triggered: Decreases the target's aggression after a regular physical attack. Power 318. -->
+		<!-- Level 10: When triggered: Decreases the target's aggression after a regular physical attack. Power 330. -->
+		<!-- Level 11: When triggered: Decreases the target's aggression after a regular physical attack. Power 342. -->
+		<!-- Level 12: When triggered: Decreases the target's aggression after a regular physical attack. Power 354. -->
+		<!-- Level 13: When triggered: Decreases the target's aggression after a regular physical attack. Power 366. -->
+		<!-- Level 14: When triggered: Decreases the target's aggression after a regular physical attack. Power 378. -->
+		<!-- Level 15: When triggered: Decreases the target's aggression after a regular physical attack. Power 390. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2574,11 +2602,7 @@
 			<value level="15">99</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>PARALYZE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="AddHate">
 				<power>
@@ -2602,12 +2626,25 @@
 		</effects>
 	</skill>
 	<skill id="3082" toLevel="10" name="Item Skill: Mana Burn">
-		<!-- When triggered: Burns up the target's MP after a regular physical attack. Power 49. -->
+		<!-- Level 1: When triggered: Burns up the target's MP after a regular physical attack. Power 49. -->
+		<!-- Level 2: When triggered: Burns up the target's MP after a regular physical attack. Power 53. -->
+		<!-- Level 3: When triggered: Burns up the target's MP after a regular physical attack. Power 57. -->
+		<!-- Level 4: When triggered: Burns up the target's MP after a regular physical attack. Power 61. -->
+		<!-- Level 5: When triggered: Burns up the target's MP after a regular physical attack. Power 66. -->
+		<!-- Level 6: When triggered: Burns up the target's MP after a regular physical attack. Power 70. -->
+		<!-- Level 7: When triggered: Burns up the target's MP after a regular physical attack. Power 74. -->
+		<!-- Level 8: When triggered: Burns up the target's MP after a regular physical attack. Power 78. -->
+		<!-- Level 9: When triggered: Burns up the target's MP after a regular physical attack. Power 82. -->
+		<!-- Level 10: When triggered: Burns up the target's MP after a regular physical attack. Power 88. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2621,12 +2658,8 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackMp">
+			<effect name="MagicalDamageMp">
 				<power>
 					<value level="1">49</value>
 					<value level="2">53</value>
@@ -2648,16 +2681,20 @@
 		<!-- When triggered: Momentarily the target's Speed -30% after a regular physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2676,10 +2713,6 @@
 			<value level="15">99</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-30</amount>
@@ -2691,16 +2724,20 @@
 		<!-- When triggered: Momentarily the target's Atk. Spd. -23% after a regular physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>ATTACK_TIME_UP</abnormalType>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2714,10 +2751,6 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-23</amount>
@@ -2729,17 +2762,21 @@
 		<!-- When triggered: Momentarily stuns the target after a regular physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2753,11 +2790,7 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
@@ -2766,17 +2799,21 @@
 		<!-- When triggered: Momentarily inflicts Hold on the target after a physical attack. The target cannot be affected by any Hold attacks while the effect is active. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>ROOT_MAGICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2795,11 +2832,7 @@
 			<value level="15">99</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>HOLD</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Root" />
 			<effect name="DefenceTrait">
@@ -2811,17 +2844,21 @@
 		<!-- When triggered: Momentarily inflicts Sleep on the target after a regular physical attack. Additional chance to be put into sleep greatly decreases while the effect is active. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>SLEEP</abnormalType>
 		<abnormalVisualEffect>SLEEP</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2835,11 +2872,7 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SLEEP</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions" />
 			<effect name="DefenceTrait">
@@ -2851,16 +2884,20 @@
 		<!-- When triggered: Regular physical attacks slow the enemy down for 15 sec., after that the enemy is fully paralysed for 10 sec. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2874,11 +2911,7 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>PARALYZE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-50</amount>
@@ -2904,19 +2937,23 @@
 		<!-- When triggered: Momentarily petrifies the target after a regular physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>TURN_STONE</abnormalType>
 		<abnormalVisualEffect>FLESH_STONE</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2930,10 +2967,6 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
@@ -2942,17 +2975,21 @@
 		<!-- When triggered: Momentarily inflicts Fear on the target forcing them to flee after a basic physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -2966,11 +3003,7 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>FEAR</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockControl" />
 			<effect name="Fear" />
@@ -2980,6 +3013,7 @@
 		<!-- When triggered: Momentarily poisons the target after a regular physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -2998,16 +3032,18 @@
 			<value level="15">8</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3026,11 +3062,8 @@
 			<value level="15">99</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -3058,6 +3091,7 @@
 		<!-- When triggered: Momentarily inflicts Bleed on the target after a regular physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -3076,16 +3110,18 @@
 			<value level="15">8</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3105,11 +3141,8 @@
 		</magicLevel>
 		<nextAction>ATTACK</nextAction>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -3137,17 +3170,21 @@
 		<!-- When triggered: Momentarily blocks the target's M. skills after a basic physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>SILENCE</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3161,11 +3198,7 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SILENCE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mute" />
 		</effects>
@@ -3174,17 +3207,21 @@
 		<!-- When triggered: Momentarily blocks the target's P./ M. skills after a regular physical attack. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>SILENCE_ALL</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3198,24 +3235,33 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SILENCE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mute" />
 			<effect name="PhysicalMute" />
 		</effects>
 	</skill>
 	<skill id="3095" toLevel="10" name="Item Skill: Mana Burn">
-		<!-- When triggered: Burns up the target's MP when using magic. Power 49. -->
+		<!-- Level 1: When triggered: Burns up the target's MP when using magic. Power 49. -->
+		<!-- Level 2: When triggered: Burns up the target's MP when using magic. Power 53. -->
+		<!-- Level 3: When triggered: Burns up the target's MP when using magic. Power 57. -->
+		<!-- Level 4: When triggered: Burns up the target's MP when using magic. Power 61. -->
+		<!-- Level 5: When triggered: Burns up the target's MP when using magic. Power 66. -->
+		<!-- Level 6: When triggered: Burns up the target's MP when using magic. Power 70. -->
+		<!-- Level 7: When triggered: Burns up the target's MP when using magic. Power 74. -->
+		<!-- Level 8: When triggered: Burns up the target's MP when using magic. Power 78. -->
+		<!-- Level 9: When triggered: Burns up the target's MP when using magic. Power 82. -->
+		<!-- Level 10: When triggered: Burns up the target's MP when using magic. Power 88. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3229,12 +3275,8 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackMp">
+			<effect name="MagicalDamageMp">
 				<power>
 					<value level="1">49</value>
 					<value level="2">53</value>
@@ -3256,17 +3298,21 @@
 		<!-- When triggered: Momentarily target's Speed -30% when using magic. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3285,10 +3331,6 @@
 			<value level="15">99</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>-30</amount>
@@ -3300,17 +3342,21 @@
 		<!-- When triggered: Momentarily target's Atk. Spd. -23% when using magic. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>ATTACK_TIME_UP</abnormalType>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3324,10 +3370,6 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-23</amount>
@@ -3339,18 +3381,22 @@
 		<!-- When triggered: Momentarily stuns the target when using magic. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3364,11 +3410,7 @@
 			<value level="10">75</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
@@ -3377,18 +3419,22 @@
 		<!-- When triggered: Momentarily inflicts Hold on the target when using magic. The target cannot be affected by any Hold attacks while the effect is active. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>ROOT_MAGICALLY</abnormalType>
 		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>1000</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -3407,11 +3453,7 @@
 			<value level="15">99</value>
 		</magicLevel>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<trait>HOLD</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Root" />
 			<effect name="DefenceTrait">

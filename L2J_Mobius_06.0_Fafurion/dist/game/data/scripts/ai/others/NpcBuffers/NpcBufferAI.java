@@ -80,7 +80,7 @@ class NpcBufferAI implements Runnable
 			return;
 		}
 		
-		final Player player = _npc.getSummoner().getActingPlayer();
+		final Player player = _npc.getSummoner().asPlayer();
 		final Skill skill = getSkill(player);
 		if (skill == null)
 		{

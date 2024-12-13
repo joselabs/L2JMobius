@@ -45,13 +45,13 @@ public class CrystalGradeModify extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		effected.getActingPlayer().setExpertisePenaltyBonus(_grade);
+		effected.asPlayer().setExpertisePenaltyBonus(_grade);
 	}
 	
 	@Override
 	public void onExit(Creature effector, Creature effected, Skill skill)
 	{
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		if (player != null)
 		{
 			player.setExpertisePenaltyBonus(0);

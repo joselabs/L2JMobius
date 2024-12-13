@@ -64,7 +64,7 @@ public class SummonPet extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		
 		if (player.hasPet() || player.isMounted())
 		{

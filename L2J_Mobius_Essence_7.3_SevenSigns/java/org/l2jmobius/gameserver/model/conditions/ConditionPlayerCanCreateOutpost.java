@@ -48,7 +48,7 @@ public class ConditionPlayerCanCreateOutpost extends Condition
 			return !_value;
 		}
 		
-		final Player player = effector.getActingPlayer();
+		final Player player = effector.asPlayer();
 		boolean canCreateOutpost = true;
 		if (player.isAlikeDead() || player.isCursedWeaponEquipped() || (player.getClan() == null))
 		{
@@ -82,6 +82,6 @@ public class ConditionPlayerCanCreateOutpost extends Condition
 			player.sendPacket(SystemMessageId.YOU_CAN_T_BUILD_HEADQUARTERS_HERE);
 			canCreateOutpost = false;
 		}
-		return (_value == canCreateOutpost);
+		return _value == canCreateOutpost;
 	}
 }

@@ -46,7 +46,7 @@ public class DeadParty implements IAffectScopeHandler
 		
 		if (target.isPlayable())
 		{
-			final Player player = target.getActingPlayer();
+			final Player player = target.asPlayer();
 			final Party party = player.getParty();
 			
 			// Create the target filter.
@@ -58,7 +58,7 @@ public class DeadParty implements IAffectScopeHandler
 					return false;
 				}
 				
-				final Player p = plbl.getActingPlayer();
+				final Player p = plbl.asPlayer();
 				if ((p == null) || !p.isDead())
 				{
 					return false;
@@ -83,7 +83,7 @@ public class DeadParty implements IAffectScopeHandler
 			};
 			
 			// Affect object of origin since it is skipped in the forEachVisibleObjectInRange method.
-			if (filter.test((Playable) target))
+			if (filter.test(target.asPlayable()))
 			{
 				action.accept(target);
 			}

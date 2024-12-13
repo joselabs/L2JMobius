@@ -812,7 +812,7 @@ public class Olympiad extends ListenersContainer
 		return _compStart.getTimeInMillis() - System.currentTimeMillis();
 	}
 	
-	protected long getMillisToCompEnd()
+	public long getMillisToCompEnd()
 	{
 		// if (_compEnd > System.currentTimeMillis())
 		return _compEnd - System.currentTimeMillis();

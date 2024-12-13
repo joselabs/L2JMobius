@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="91400" name="Manuscript: Armor Break" type="EtcItem">
 		<!-- The item is not available. For Dwarves only. Recipe for Arrows of Light. Outdated and no longer used. -->
@@ -294,6 +294,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="13650" level="1" type="ON_EQUIP" /> <!-- Equip Brooch Lv. 4 -->
+			<skill id="13651" level="1" type="ON_UNEQUIP" /> <!-- Unequip Brooch Lv. 4 -->
+			<skill id="13659" level="1" /> <!-- Brooch Lv. 4 -->
+			<skill id="13661" level="4" /> <!-- Brooch: Additional Inventory Slots -->
+		</skills>
 	</item>
 	<item id="91418" name="Ruby Lv. 5" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. Soulshot/ Blessed Soulshot/ Beast Soulshot damage +16%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -305,6 +311,7 @@
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 	</item>
@@ -318,6 +325,7 @@
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 	</item>
@@ -331,8 +339,12 @@
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="17708" level="5" /> <!-- Diamond -->
+		</skills>
 	</item>
 	<item id="91421" name="Pearl Lv. 5" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. When equipped, M. Def. +74, received M. Skill Critical Damage -10%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -353,6 +365,7 @@
 		<set name="material" val="PAPER" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -366,6 +379,7 @@
 		<set name="material" val="PAPER" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -379,6 +393,7 @@
 		<set name="material" val="PAPER" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -577,7 +592,7 @@
 			<stat type="pDef">75</stat>
 		</stats>
 		<skills>
-			<skill id="45044" level="1" /> <!-- Blessed Dragon Pendant Lv1 -->
+			<skill id="45044" level="1" /> <!-- Blessed Dragon Pendant -->
 		</skills>
 	</item>
 	<item id="91437" name="+10 White Sayha's Cloak" additionalName="30-day" type="Armor">
@@ -948,9 +963,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="rhand" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1</stat>
 			<stat type="mAtk">1</stat>
@@ -958,6 +970,9 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">1</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="91462" name="Weapon Enhancement Stone" type="EtcItem">
 		<!-- Take it to Weapon Merchant Galladucci in Giran to exchange for Scroll: Enchant Weapon (D/ C/ B/ A-grade). -->
@@ -986,7 +1001,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51263" level="1" />
+			<skill id="51263" level="1" /> <!-- High-grade Stable Scroll: Enchant D-grade Weapon -->
 		</skills>
 	</item>
 	<item id="91465" name="High-grade Stable Scroll: Enchant D-grade Armor" type="EtcItem">
@@ -1002,7 +1017,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51264" level="1" />
+			<skill id="51264" level="1" /> <!-- High-grade Stable Scroll: Enchant D-grade Armor -->
 		</skills>
 	</item>
 	<item id="91466" name="High-grade Stable Scroll: Enchant C-grade Weapon" type="EtcItem">
@@ -1018,7 +1033,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51265" level="1" />
+			<skill id="51265" level="1" /> <!-- High-grade Stable Scroll: Enchant C-grade Weapon -->
 		</skills>
 	</item>
 	<item id="91467" name="High-grade Stable Scroll: Enchant C-grade Armor" type="EtcItem">
@@ -1034,7 +1049,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51266" level="1" />
+			<skill id="51266" level="1" /> <!-- High-grade Stable Scroll: Enchant C-grade Armor -->
 		</skills>
 	</item>
 	<item id="91468" name="High-grade Stable Scroll: Enchant B-grade Weapon" type="EtcItem">
@@ -1050,7 +1065,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51267" level="1" />
+			<skill id="51267" level="1" /> <!-- High-grade Stable Scroll: Enchant B-grade Weapon -->
 		</skills>
 	</item>
 	<item id="91469" name="High-grade Stable Scroll: Enchant B-grade Armor" type="EtcItem">
@@ -1066,7 +1081,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51268" level="1" />
+			<skill id="51268" level="1" /> <!-- High-grade Stable Scroll: Enchant B-grade Armor -->
 		</skills>
 	</item>
 	<item id="91470" name="High-grade Stable Scroll: Enchant A-grade Weapon" type="EtcItem">
@@ -1082,7 +1097,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51269" level="1" />
+			<skill id="51269" level="1" /> <!-- High-grade Stable Scroll: Enchant A-grade Weapon -->
 		</skills>
 	</item>
 	<item id="91471" name="High-grade Stable Scroll: Enchant A-grade Armor" type="EtcItem">
@@ -1098,7 +1113,7 @@
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<set name="is_sellable" val="false" />
 		<skills>
-			<skill id="51270" level="1" />
+			<skill id="51270" level="1" /> <!-- High-grade Stable Scroll: Enchant A-grade Armor -->
 		</skills>
 	</item>
 	<item id="91472" name="+5 Sealed Agathion Virgo" type="EtcItem">
@@ -1233,6 +1248,7 @@
 		<set name="material" val="CRYSTAL" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />

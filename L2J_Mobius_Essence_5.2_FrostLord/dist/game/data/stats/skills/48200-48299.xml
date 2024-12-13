@@ -1,22 +1,22 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="48200" toLevel="1" name="Ant Prophecy">
 		<!-- PvE damage +5%. All Critical Rate +50. All Critical Damage +100. Sayha's Grace Consumption -10% -->
 		<icon>icon.skill3630</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>11700</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<canBeDispelled>false</canBeDispelled>
 		<castRange>300</castRange>
 		<effectRange>1500</effectRange>
-		<hitTime>300</hitTime>
+		<hitTime>0</hitTime>
 		<isMagic>2</isMagic>
-		<magicLevel>76</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>76</magicLevel>
 		<reuseDelay>100</reuseDelay>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="CriticalRate">
 				<amount>50</amount>
@@ -100,7 +100,9 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="48210" toLevel="3" name="See Creature">
-		<!-- Attacks target and increases Speed. -->
+		<!-- Level 1: Attacks target and increases Speed. -->
+		<!-- Level 2: Attacks target and significantly increases Speed. -->
+		<!-- Level 3: Attacks target, increases Speed and Atk. Spd., significantly increaes Casting Spd. -->
 		<icon>icon.skill1204</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -117,32 +119,23 @@
 	<skill id="48213" toLevel="12" name="Fear">
 		<!-- Enemy is afflicted with Fear and moving against own will. -->
 		<icon>icon.skill1092</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>TURN_FLEE</abnormalType>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
 		<activateRate>40</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
-		<effectPoint>
-			<value level="1">-162</value>
-			<value level="2">-204</value>
-			<value level="3">-243</value>
-			<value level="4">-285</value>
-			<value level="5">-331</value>
-			<value level="6">-379</value>
-			<value level="7">-418</value>
-			<value level="8">-457</value>
-			<value level="9">-495</value>
-			<value level="10">-532</value>
-			<value level="11">-549</value>
-			<value level="12">-566</value>
-		</effectPoint>
+		<effectPoint>-700</effectPoint>
 		<effectRange>1200</effectRange>
 		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>90</magicLevel>
 		<mpConsume>
 			<value level="1">15</value>
@@ -158,12 +151,8 @@
 			<value level="11">54</value>
 			<value level="12">55</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>DERANGEMENT</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockControl" />
 			<effect name="Fear" />
@@ -255,15 +244,15 @@
 	<skill id="48231" toLevel="1" name="Beleth's Curse">
 		<!-- A powerful curse cast by Beleth. Temporary effect. Atk. Spd. -50%. Casting Spd. -50%. Constantly drains HP. Basic attacks can't be used. Skills can't be used. -->
 		<icon>icon.skill0046</icon>
+		<operateType>A2</operateType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
+		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
 		<effectPoint>0</effectPoint>
 		<isDebuff>true</isDebuff>
-		<trait>INFECTION</trait>
-		<canBeDispelled>false</canBeDispelled>
 		<isMagic>0</isMagic>
-		<operateType>A2</operateType>
-		<affectScope>SINGLE</affectScope>
+		<trait>INFECTION</trait>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>-50</amount>
@@ -280,7 +269,7 @@
 			<effect name="BlockSkill">
 				<magicTypes>1;2;3;4;5;22</magicTypes>
 			</effect>
-			<effect name="PhysicalAttackMute">
+			<effect name="PhysicalDamageMute">
 			</effect>
 		</effects>
 	</skill>
@@ -392,15 +381,15 @@
 		<!-- Deals 1500 fixed damage. -->
 		<icon>icon.skill4282_new</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic>
-		<hitTime>3500</hitTime>
-		<castRange>1800</castRange>
-		<effectPoint>-300</effectPoint>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
+		<castRange>1800</castRange>
+		<effectPoint>-1000</effectPoint>
+		<hitTime>0</hitTime>
+		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>2000</power>
 			</effect>
 		</effects>

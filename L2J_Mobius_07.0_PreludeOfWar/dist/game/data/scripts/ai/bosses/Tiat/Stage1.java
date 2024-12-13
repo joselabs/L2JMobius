@@ -44,7 +44,6 @@ import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Door;
-import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.actor.instance.Trap;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -429,7 +428,7 @@ public class Stage1 extends AbstractInstance implements IXmlReader
 		
 		if (npc.isAttackable())
 		{
-			((Attackable) npc).setSeeThroughSilentMove(true);
+			npc.asAttackable().setSeeThroughSilentMove(true);
 		}
 		
 		if (npcId == TIAT_VIDEO_NPC)
@@ -445,7 +444,7 @@ public class Stage1 extends AbstractInstance implements IXmlReader
 		{
 			for (int i = 0; i < TIAT_GUARD_NUMBER; i++)
 			{
-				addMinion((Monster) npc, TIAT_GUARD);
+				addMinion(npc.asMonster(), TIAT_GUARD);
 			}
 		}
 	}
@@ -522,7 +521,7 @@ public class Stage1 extends AbstractInstance implements IXmlReader
 					{
 						world.setParameter("deviceCount", deviceCount + 1);
 						
-						final Attackable mob = (Attackable) addSpawn(getRandomEntry(SPAWN_MOB_IDS), npc.getSpawn().getLocation(), false, 0, false, world.getId());
+						final Attackable mob = addSpawn(getRandomEntry(SPAWN_MOB_IDS), npc.getSpawn().getLocation(), false, 0, false, world.getId()).asAttackable();
 						mob.setSeeThroughSilentMove(true);
 						mob.setRunning();
 						mob.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, (world.getStatus() >= 7) ? MOVE_TO_TIAT : MOVE_TO_DOOR);
@@ -619,7 +618,7 @@ public class Stage1 extends AbstractInstance implements IXmlReader
 						}
 						else if (npc.getId() == TIAT_GUARD)
 						{
-							addMinion(((Monster) npc).getLeader(), TIAT_GUARD);
+							addMinion(npc.asMonster().getLeader(), TIAT_GUARD);
 						}
 					}
 				}

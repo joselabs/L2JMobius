@@ -19,6 +19,7 @@ package handlers.effecthandlers;
 import org.l2jmobius.gameserver.enums.UserInfoType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -52,10 +53,16 @@ public class VitalityPointUp extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		effected.getActingPlayer().updateVitalityPoints(_value, false, false);
+		final Player player = effected.asPlayer();
+		if (player == null)
+		{
+			return;
+		}
 		
-		final UserInfo ui = new UserInfo(effected.getActingPlayer());
+		player.updateVitalityPoints(_value, false, false);
+		
+		final UserInfo ui = new UserInfo(player);
 		ui.addComponentType(UserInfoType.VITA_FAME);
-		effected.getActingPlayer().sendPacket(ui);
+		player.sendPacket(ui);
 	}
 }

@@ -44,12 +44,12 @@ public class MaxHpFinalizer implements IStatFunction
 		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
 		if (creature.isPet())
 		{
-			final Pet pet = (Pet) creature;
+			final Pet pet = creature.asPet();
 			baseValue = pet.getPetLevelData().getPetMaxHP();
 		}
 		else if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			if (player != null)
 			{
 				baseValue = player.getTemplate().getBaseHpMax(player.getLevel());
@@ -76,7 +76,7 @@ public class MaxHpFinalizer implements IStatFunction
 		{
 			if (isPlayer)
 			{
-				if (creature.getActingPlayer().isCursedWeaponEquipped())
+				if (creature.asPlayer().isCursedWeaponEquipped())
 				{
 					return Double.MAX_VALUE;
 				}
@@ -116,7 +116,7 @@ public class MaxHpFinalizer implements IStatFunction
 		}
 		
 		final double hpLimit;
-		if (isPlayer && !shouldLiftLimit && !creature.getActingPlayer().isCursedWeaponEquipped())
+		if (isPlayer && !shouldLiftLimit && !creature.asPlayer().isCursedWeaponEquipped())
 		{
 			mul = creature.getStat().getMul(Stat.HP_LIMIT);
 			add = creature.getStat().getAdd(Stat.HP_LIMIT);

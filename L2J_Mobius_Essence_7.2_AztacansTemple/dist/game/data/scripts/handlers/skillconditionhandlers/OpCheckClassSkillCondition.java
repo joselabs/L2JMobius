@@ -47,13 +47,13 @@ public class OpCheckClassSkillCondition implements ISkillCondition
 		{
 			case CASTER:
 			{
-				return caster.isPlayer() && (_isWithin == (_classId == caster.getActingPlayer().getClassId()));
+				return caster.isPlayer() && (_isWithin == (_classId == caster.asPlayer().getClassId()));
 			}
 			case TARGET:
 			{
 				if ((target != null) && !target.isPlayer())
 				{
-					return _isWithin == (_classId == target.getActingPlayer().getClassId());
+					return _isWithin == (_classId == target.asPlayer().getClassId());
 				}
 				break;
 			}

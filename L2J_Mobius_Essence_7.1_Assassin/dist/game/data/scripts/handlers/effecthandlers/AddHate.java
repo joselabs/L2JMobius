@@ -17,7 +17,6 @@
 package handlers.effecthandlers;
 
 import org.l2jmobius.gameserver.model.StatSet;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.instance.Item;
@@ -36,6 +35,11 @@ public class AddHate extends AbstractEffect
 	{
 		_power = params.getDouble("power", 0);
 		_affectSummoner = params.getBoolean("affectSummoner", false);
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override
@@ -61,12 +65,12 @@ public class AddHate extends AbstractEffect
 		final double val = _power;
 		if (val > 0)
 		{
-			((Attackable) effected).addDamageHate(effector, 0, (int) val);
+			effected.asAttackable().addDamageHate(effector, 0, (int) val);
 			effected.setRunning();
 		}
 		else if (val < 0)
 		{
-			((Attackable) effected).reduceHate(effector, (int) -val);
+			effected.asAttackable().reduceHate(effector, (int) -val);
 		}
 	}
 }

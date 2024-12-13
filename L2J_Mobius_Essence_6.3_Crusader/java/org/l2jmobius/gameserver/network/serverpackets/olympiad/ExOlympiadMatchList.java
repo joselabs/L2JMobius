@@ -34,7 +34,7 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
  */
 public class ExOlympiadMatchList extends ServerPacket
 {
-	private final List<OlympiadGameTask> _games = new ArrayList<>();
+	private final List<OlympiadGameTask> _tasks = new ArrayList<>();
 	
 	public ExOlympiadMatchList()
 	{
@@ -48,7 +48,7 @@ public class ExOlympiadMatchList extends ServerPacket
 				{
 					continue; // initial or finished state not shown
 				}
-				_games.add(task);
+				_tasks.add(task);
 			}
 		}
 	}
@@ -60,12 +60,12 @@ public class ExOlympiadMatchList extends ServerPacket
 		
 		buffer.writeInt(0); // Type 0 = Match List, 1 = Match Result
 		
-		buffer.writeInt(_games.size());
+		buffer.writeInt(_tasks.size());
 		buffer.writeInt(0);
 		
-		for (OlympiadGameTask curGame : _games)
+		for (OlympiadGameTask task : _tasks)
 		{
-			final AbstractOlympiadGame game = curGame.getGame();
+			final AbstractOlympiadGame game = task.getGame();
 			if (game != null)
 			{
 				buffer.writeInt(game.getStadiumId()); // Stadium Id (Arena 1 = 0)
@@ -83,9 +83,11 @@ public class ExOlympiadMatchList extends ServerPacket
 					buffer.writeInt(0);
 				}
 				
-				buffer.writeInt(curGame.isRunning() ? 2 : 1); // (1 = Standby, 2 = Playing)
-				buffer.writeString(game.getPlayerNames()[0]); // Player 1 Name
-				buffer.writeString(game.getPlayerNames()[1]); // Player 2 Name
+				buffer.writeInt(task.isRunning() ? 2 : 1); // (1 = Standby, 2 = Playing)
+				
+				final String[] names = game.getPlayerNames();
+				buffer.writeString(names[0]); // Player 1 Name
+				buffer.writeString(names[1]); // Player 2 Name
 			}
 		}
 	}

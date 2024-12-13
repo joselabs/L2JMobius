@@ -47,7 +47,7 @@ public class OpCheckResidenceSkillCondition implements ISkillCondition
 	{
 		if (caster.isPlayer())
 		{
-			final Clan clan = caster.getActingPlayer().getClan();
+			final Clan clan = caster.asPlayer().getClan();
 			if (clan != null)
 			{
 				final ClanHall clanHall = ClanHallData.getInstance().getClanHallByClan(clan);

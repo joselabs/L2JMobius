@@ -51,7 +51,7 @@ public class AddTeleportBookmarkSlot extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		player.setBookMarkSlot(player.getBookMarkSlot() + _amount);
 		player.sendPacket(SystemMessageId.THE_NUMBER_OF_MY_TELEPORTS_SLOTS_HAS_BEEN_INCREASED);
 	}

@@ -12,9 +12,6 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="15145" level="1" /> <!-- Ruler's Authority -->
-		</skills>
 		<stats>
 			<stat type="pDef">50</stat>
 			<stat type="fireRes">15</stat>
@@ -24,9 +21,12 @@
 			<stat type="holyRes">15</stat>
 			<stat type="darkRes">15</stat>
 		</stats>
+		<skills>
+			<skill id="35523" level="1" /> <!-- Ruler's Authority -->
+		</skills>
 	</item>
 	<item id="80801" name="Golden Pig's Lucky Coin" type="EtcItem">
-		<!-- Coin with the luck of the 2019 Golden Pig. Exchange for various items through Chorong in each village. -->
+		<!-- A lucky coin from the year's symbol - Golden Pig. Can be exchanged for various items in any town. -->
 		<set name="icon" val="icon.etc_pig_adena_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="FISH" />
@@ -34,7 +34,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80802" name="Lucky Pouch" type="EtcItem">
-		<!-- Lucky pouch from Lucky Pig to celebrate the year of the Golden Pig. Double-click to obtain Lucky Pig Honey Buff Scroll and the event reward. -->
+		<!-- A gift from Lakfi-Lakfi to celebrate the year of the Golden Pig. Double-click to obtain Lakfi-Lakfi's Oink Scroll and the event reward. -->
 		<set name="icon" val="icon.christmas_card_box2" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -42,9 +42,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39508" level="1" /> <!-- Buff Pouch -->
+		</skills>
 	</item>
 	<item id="80803" name="Golden Lucky Pouch" type="EtcItem">
-		<!-- Golden Lucky Pouch from Lucky Pig to celebrate the year of the Golden Pig. Double-click to obtain Lucky Pig Honey Buff Scroll and additional event rewards such as the Lucky Pig Special Vitality Tonic. -->
+		<!-- A gift from Lakfi-Lakfi to celebrate the year of the Golden Pig. Double-click to obtain Lakfi-Lakfi's Oink Scroll, Lakfi-Lakfi's Special Energy and the event reward. -->
 		<set name="icon" val="icon.christmas_card_box1" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -52,6 +56,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39508" level="2" /> <!-- Golden Lucky Pouch -->
+		</skills>
 	</item>
 	<item id="80804" name="Retired Legend's Scroll" additionalName="Event" type="EtcItem">
 		<!-- For 30 min., acquired XP/ SP +15%, P./ M. Atk., Basic Attack Power and P./ M. Skill Power +10%, P./ M. Def. +20%. -->
@@ -77,6 +85,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39509" level="1" /> <!-- New Year Energy of Hope -->
+		</skills>
 	</item>
 	<item id="80806" name="Lucky Pig Special Vitality Tonic" type="EtcItem">
 		<!-- Recovers all 4 Vitality bars. Cannot be used in the Olympiad. -->
@@ -93,7 +105,7 @@
 			<player MaximumVitalityPoints="140000" />
 		</cond>
 		<skills>
-			<skill id="39510" level="1" /> <!-- Lucky Pig Special Vitality Tonic -->
+			<skill id="39510" level="1" /> <!-- Lakfi-Lakfi's Special Energy -->
 		</skills>
 	</item>
 	<item id="80807" name="Gran Kain's Cube" type="EtcItem">
@@ -124,7 +136,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80810" name="Gran Kain's Cube Special Supply" type="EtcItem">
-		<!-- Obtain Freya's Ice Roses x6, Shiny Dragon's Attribute Potion x6, Honey Vitality Beer x18, Fallen Angel's Ring Box x2. -->
+		<!-- Double-click to obtain Glowing Dragon's Attribute Potions of each type (6 pcs.), Honey Vitality Beer (18 pcs.), Fallen Angel's Ring Pack (2 pcs.). -->
 		<set name="icon" val="icon.etc_treasure_box_i02" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -142,7 +154,7 @@
 		</capsuled_items>
 	</item>
 	<item id="80811" name="Gran Kain's Gift Box" type="EtcItem">
-		<!-- Obtain Freya's Ice Roses x6, Shiny Dragon's Attribute Potion x6, Honey Vitality Beer x18. -->
+		<!-- Double-click to obtain Glowing Dragon's Attribute Potions of each type (6 pcs.), Honey Vitality Beer (18 pcs.). -->
 		<set name="icon" val="icon.etc_treasure_box_i02" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -159,7 +171,7 @@
 		</capsuled_items>
 	</item>
 	<item id="80812" name="Gran Kain's High-grade Gift Box" type="EtcItem">
-		<!-- Obtain Freya's Ice Roses x12, Shiny Dragon's Attribute Potion x12, Honey Vitality Beer x36, Fallen Angel's Ring Box x2. -->
+		<!-- Double-click to obtain Glowing Dragon's Attribute Potions of each type (12 pcs.), Honey Vitality Beer (36 pcs.), Fallen Angel's Ring Pack (2 pcs.). -->
 		<set name="icon" val="icon.etc_treasure_box_i02" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -177,7 +189,7 @@
 		</capsuled_items>
 	</item>
 	<item id="80813" name="Gran Kain's Top-grade Gift Box" type="EtcItem">
-		<!-- Obtain Freya's Ice Roses x24, Shiny Dragon's Attribute Potion x24, Honey Vitality Beer x72, Forgotten Spellbook Chapter 1 x1. -->
+		<!-- Double-click to obtain Glowing Dragon's Attribute Potions of each type (24 pcs.), Honey Vitality Beer (72 pcs.), Forgotten Spellbook Chapter 1. -->
 		<set name="icon" val="icon.etc_treasure_box_i02" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -195,7 +207,7 @@
 		</capsuled_items>
 	</item>
 	<item id="80814" name="Gran Kain's Cube Box" type="EtcItem">
-		<!-- Obtain Gran Kain's Cube. -->
+		<!-- Double-click to obtain Gran Kain's Cube. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i03" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -216,6 +228,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39512" level="1" /> <!-- Heavenly Fantasia Cookie -->
+		</skills>
 	</item>
 	<item id="80816" name="GM's Buff Scroll" type="EtcItem">
 		<!-- When used, you can receive the effects of Musician's Melody and Sonata Performance Lv. 4, including Fantasia Harmony, for 60 min. Cannot be used in the Olympiad or Ceremony of Chaos. Cooldown is 2 min. -->
@@ -227,6 +243,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39513" level="1" /> <!-- Fantasia Harmony - GM's Blessing -->
+			<skill id="39765" level="1" /> <!-- Musician's Melody - GM's Blessing -->
+			<skill id="39767" level="1" /> <!-- Sonata Performance - GM's Blessing -->
+		</skills>
 	</item>
 	<item id="80817" name="Emperor's Special Cocktail" type="EtcItem">
 		<!-- For 60 min., applies the following effects: Musician's Melody Lv. 5, Fantasia Harmony Lv. 2, Drum Concert, Fantasia Melody, United Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. To remove the effect, press Alt + Left Mouse Button. -->
@@ -243,11 +265,6 @@
 		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="39520" level="1" /> <!-- Emperor's Special Cocktail -->
-			<skill id="39766" level="1" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
-			<skill id="39771" level="1" /> <!-- Drum Concert - Emperor's Special Cocktail -->
-			<skill id="39772" level="1" /> <!-- United Resistance - Emperor's Special Cocktail -->
-			<skill id="39514" level="1" /> <!-- Fantasia Harmony - Emperor's Special Cocktail -->
-			<skill id="39517" level="1" /> <!-- Fantasia Melody - Emperor's Special Cocktail -->
 		</skills>
 	</item>
 	<item id="80818" name="Emperor's Special Cocktail" additionalName="4-hour" type="EtcItem">
@@ -265,11 +282,6 @@
 		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="39520" level="2" /> <!-- Emperor's Special Cocktail -->
-			<skill id="39766" level="2" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
-			<skill id="39771" level="2" /> <!-- Drum Concert - Emperor's Special Cocktail -->
-			<skill id="39772" level="2" /> <!-- United Resistance - Emperor's Special Cocktail -->
-			<skill id="39514" level="2" /> <!-- Fantasia Harmony - Emperor's Special Cocktail -->
-			<skill id="39517" level="2" /> <!-- Fantasia Melody - Emperor's Special Cocktail -->
 		</skills>
 	</item>
 	<item id="80819" name="Emperor's Special Cocktail" additionalName="8-hour" type="EtcItem">
@@ -287,11 +299,6 @@
 		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="39520" level="3" /> <!-- Emperor's Special Cocktail -->
-			<skill id="39766" level="3" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
-			<skill id="39771" level="3" /> <!-- Drum Concert - Emperor's Special Cocktail -->
-			<skill id="39772" level="3" /> <!-- United Resistance - Emperor's Special Cocktail -->
-			<skill id="39514" level="3" /> <!-- Fantasia Harmony - Emperor's Special Cocktail -->
-			<skill id="39517" level="3" /> <!-- Fantasia Melody - Emperor's Special Cocktail -->
 		</skills>
 	</item>
 	<item id="80820" name="PA Emperor's Special Cocktail" type="EtcItem">
@@ -312,11 +319,6 @@
 		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="39521" level="1" /> <!-- PA Emperor's Special Cocktail -->
-			<skill id="39766" level="1" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
-			<skill id="39771" level="1" /> <!-- Drum Concert - Emperor's Special Cocktail -->
-			<skill id="39772" level="1" /> <!-- United Resistance - Emperor's Special Cocktail -->
-			<skill id="39514" level="1" /> <!-- Fantasia Harmony - Emperor's Special Cocktail -->
-			<skill id="39517" level="1" /> <!-- Fantasia Melody - Emperor's Special Cocktail -->
 		</skills>
 	</item>
 	<item id="80821" name="Ceremony of Chaos" type="EtcItem">
@@ -340,10 +342,7 @@
 			<player instanceId="224,225,226,227" />
 		</cond>
 		<skills>
-			<skill id="9545" level="1" /> <!-- Horn Melody - Chaos Arena -->
-			<skill id="9546" level="1" /> <!-- Drum Melody - Chaos Arena -->
-			<skill id="9547" level="1" /> <!-- Pipe Organ Melody - Chaos Arena -->
-			<skill id="9548" level="1" /> <!-- Guitar Melody - Chaos Arena -->
+			<skill id="39762" level="1" /> <!-- Musician's Melody - Ceremony of Chaos -->
 			<skill id="39515" level="1" /> <!-- Fantasia Harmony - Chaos Arena -->
 		</skills>
 	</item>
@@ -354,9 +353,13 @@
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="5" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39516" level="1" /> <!-- Elixir of Harmony -->
+		</skills>
 	</item>
 	<item id="80823" name="Proof of Resistance" type="EtcItem">
-		<!-- A proof for Eva's Knight Lionel Hunter from Heine who asked you to kill monsters. Bring it to Lionel Hunter. -->
+		<!-- A proof of killing monsters, collected for Eva's Knight Lionel Hunter from Heine. Take it to Lionel Hunter. -->
 		<set name="icon" val="icon.etc_holy_stone_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -368,7 +371,7 @@
 		<set name="is_questitem" val="true" />
 	</item>
 	<item id="80824" name="Proof of Preparation" type="EtcItem">
-		<!-- A proof for Eva's Knight Lionel Hunter from Heine who asked you to kill monsters. Bring it to Lionel Hunter. -->
+		<!-- A proof of killing monsters, collected for Eva's Knight Lionel Hunter from Heine. Take it to Lionel Hunter. -->
 		<set name="icon" val="icon.low_energy_condense_i05" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -392,7 +395,7 @@
 		<set name="is_questitem" val="true" />
 	</item>
 	<item id="80826" name="Proof of Reputation" type="EtcItem">
-		<!-- A proof for Eva's Knight Lionel Hunter from Heine who asked you to kill monsters. Bring it to Lionel Hunter. -->
+		<!-- A proof of killing monsters, collected for Eva's Knight Lionel Hunter from Heine. Take it to Lionel Hunter. -->
 		<set name="icon" val="icon.etc_badge_black_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -404,7 +407,7 @@
 		<set name="is_questitem" val="true" />
 	</item>
 	<item id="80827" name="Proof of Pride" type="EtcItem">
-		<!-- A proof for Eva's Knight Lionel Hunter from Heine who asked you to kill monsters. Bring it to Lionel Hunter. -->
+		<!-- A proof of killing monsters, collected for Eva's Knight Lionel Hunter from Heine. Take it to Lionel Hunter. -->
 		<set name="icon" val="icon.etc_badge_gold_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -444,6 +447,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39518" level="1" /> <!-- Nevit's Treasure Chest -->
+		</skills>
 	</item>
 	<item id="80831" name="Nevit's Growth Support Box" type="EtcItem">
 		<!-- Double-click the box to obtain either a Shining Nevit's Gold Hourglass, Freya's Ice Rose or one of various items at random. -->
@@ -452,6 +459,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39519" level="1" /> <!-- Nevit's Growth Support Box -->
+		</skills>
 	</item>
 	<item id="80832" name="Emperor's Special Cocktail" additionalName="Event" type="EtcItem">
 		<!-- For 60 min., applies the following effects: Musician's Melody Lv. 5, Fantasia Harmony Lv. 2, Drum Concert, Fantasia Melody, United Resistance. Note!. The effect remains after death. Cooldown: 5 min. Cannot be used in the Olympiad. To remove the effect, press Alt + Left Mouse Button. -->
@@ -470,16 +481,11 @@
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39520" level="1" /> <!-- Emperor's Special Cocktail -->
-			<skill id="39514" level="1" /> <!-- Fantasia Harmony - Emperor's Special Cocktail -->
-			<skill id="39517" level="1" /> <!-- Fantasia Melody - Emperor's Special Cocktail -->
-			<skill id="39766" level="1" /> <!-- Musician's Melody - Emperor's Special Cocktail -->
-			<skill id="39771" level="1" /> <!-- Drum Concert - Emperor's Special Cocktail -->
-			<skill id="39772" level="1" /> <!-- United Resistance - Emperor's Special Cocktail -->
+			<skill id="39522" level="1" /> <!-- Emperor's Special Cocktail -->
 		</skills>
 	</item>
 	<item id="80833" name="Golden Pig's Medium Vitality Tonic" type="EtcItem">
-		<!-- Medium Vitality Tonic prepared to celebrate the year of the Golden Pig. 2 out of 4 bars on the vitality gauge are replenished. Cannot be used in the Olympiad. -->
+		<!-- A medium Vitality tonic prepared to celebrate the year of the Golden Pig. Recovers 2 out of 4 Vitality bars. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.bm_freya_potion" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LIQUID" />
@@ -493,11 +499,11 @@
 			<player MaximumVitalityPoints="140000" />
 		</cond>
 		<skills>
-			<skill id="39523" level="1" /> <!-- Golden's Pig Medium Vitality Tonic -->
+			<skill id="39523" level="1" /> <!-- Golden Pig's Medium Vitality Tonic -->
 		</skills>
 	</item>
 	<item id="80834" name="Jackpot Wish Lucky Pouch" type="EtcItem">
-		<!-- A lucky pouch prepared to celebrate the year of the Golden Pig. Double-click to obtain Lindvior's Earring/ Blessed Valakas' Necklace/ Blessed Antharas' Earring or various consumables. -->
+		<!-- Lucky Pouch received as a gift from the Golden Pig. Double-click to obtain Lindvior's Earring/ Blessed Valakas' Necklace/ Blessed Antharas' Earring or various materials. -->
 		<set name="icon" val="icon.christmas_card_box1" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -505,9 +511,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39524" level="1" /> <!-- Jackpot Wish Lucky Pouch -->
+		</skills>
 	</item>
 	<item id="80835" name="Kaliel's Bracelet" type="Armor">
-		<!-- Unlocks 5 talisman slots. <Enchanting>. Use Blessed Scroll: Enchant Bracelet. <Enhancing>. Take the bracelet enchanted to +5 and Crystal of Dawn to a Head Blacksmith in any village to get Kaliel's Greater Bracelet. -->
+		<!-- Unlocks 5 talisman slots. <Enchanting>. Use Blessed Scroll: Enchant Bracelet. <Upgrade>. Take the bracelet enchanted to +5 and Crystal of Dawn to the Head Blacksmith in any town to get Kaliel's Greater Bracelet. -->
 		<set name="default_action" val="EQUIP" />
 		<set name="weight" val="150" />
 		<set name="is_sellable" val="false" />
@@ -521,15 +531,16 @@
 		<set name="material" val="SILVER" />
 		<skills>
 			<skill id="35524" level="1" /> <!-- Kaliel's Bracelet -->
-			<skill id="35524" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Kaliel's Bracelet -->
-			<skill id="35524" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Kaliel's Bracelet -->
-			<skill id="35524" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Kaliel's Bracelet -->
-			<skill id="35524" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Kaliel's Bracelet -->
-			<skill id="35524" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Kaliel's Bracelet -->
+			<skill id="35524" level="1" /> <!-- Kaliel's Bracelet -->
+			<skill id="35524" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Kaliel's Bracelet: Enchant Effect -->
+			<skill id="35524" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Kaliel's Bracelet: Enchant Effect -->
+			<skill id="35524" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Kaliel's Bracelet: Enchant Effect -->
+			<skill id="35524" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Kaliel's Bracelet: Enchant Effect -->
+			<skill id="35524" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Kaliel's Bracelet: Enchant Effect -->
 		</skills>
 	</item>
 	<item id="80836" name="Kaliel's Greater Bracelet" type="Armor">
-		<!-- Unlocks 6 talisman slots. <Enchanting>. Use Blessed Scroll: Enchant Bracelet. <Enhancing>. Take the bracelet enchanted to +5 and Crystal of Dawn to a Head Blacksmith in any village to get Superior Kaliel's Bracelet. Can be augmented. -->
+		<!-- Unlocks 6 talisman slots. <Enchanting>. Use Blessed Scroll: Enchant Bracelet. <Upgrade>. Take the bracelet enchanted to +5 and Crystal of Dawn to the Head Blacksmith in any town to get Kaliel's Superior Bracelet. Can be augmented. -->
 		<set name="default_action" val="EQUIP" />
 		<set name="weight" val="150" />
 		<set name="is_sellable" val="false" />
@@ -540,11 +551,12 @@
 		<set name="material" val="SILVER" />
 		<skills>
 			<skill id="35525" level="1" /> <!-- Kaliel's Greater Bracelet -->
-			<skill id="35525" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Kaliel's Greater Bracelet -->
-			<skill id="35525" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Kaliel's Greater Bracelet -->
-			<skill id="35525" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Kaliel's Greater Bracelet -->
-			<skill id="35525" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Kaliel's Greater Bracelet -->
-			<skill id="35525" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Kaliel's Greater Bracelet -->
+			<skill id="35525" level="1" /> <!-- Kaliel's Greater Bracelet -->
+			<skill id="35525" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Kaliel's Greater Bracelet: Enchant Effect -->
+			<skill id="35525" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Kaliel's Greater Bracelet: Enchant Effect -->
+			<skill id="35525" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Kaliel's Greater Bracelet: Enchant Effect -->
+			<skill id="35525" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Kaliel's Greater Bracelet: Enchant Effect -->
+			<skill id="35525" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Kaliel's Greater Bracelet: Enchant Effect -->
 		</skills>
 	</item>
 	<item id="80837" name="Superior Kaliel's Bracelet" type="Armor">
@@ -558,23 +570,23 @@
 		<set name="enchant_limit" val="10" />
 		<set name="material" val="SILVER" />
 		<skills>
-			<skill id="35526" level="1" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="35526" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Kaliel's Top-grade Bracelet -->
-			<skill id="30818" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Kaliel's Protection Lv1 -->
-			<skill id="30818" level="2" type="ON_ENCHANT" type_value="6" /> <!-- Kaliel's Protection Lv2 -->
-			<skill id="30818" level="3" type="ON_ENCHANT" type_value="7" /> <!-- Kaliel's Protection Lv3 -->
-			<skill id="30818" level="4" type="ON_ENCHANT" type_value="8" /> <!-- Kaliel's Protection Lv4 -->
-			<skill id="30818" level="5" type="ON_ENCHANT" type_value="9" /> <!-- Kaliel's Protection Lv5 -->
-			<skill id="30818" level="6" type="ON_ENCHANT" type_value="10" /> <!-- Kaliel's Protection Lv6 -->
+			<skill id="35526" level="1" /> <!-- Kaliel's Superior Bracelet -->
+			<skill id="35526" level="2" type="ON_ENCHANT" type_value="1" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="3" type="ON_ENCHANT" type_value="2" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="4" type="ON_ENCHANT" type_value="3" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="35526" level="11" type="ON_ENCHANT" type_value="10" /> <!-- Kaliel's Superior Bracelet: Enchant Effect -->
+			<skill id="30818" level="1" type="ON_ENCHANT" type_value="5" /> <!-- Kaliel's Protection -->
+			<skill id="30818" level="2" type="ON_ENCHANT" type_value="6" /> <!-- Kaliel's Protection -->
+			<skill id="30818" level="3" type="ON_ENCHANT" type_value="7" /> <!-- Kaliel's Protection -->
+			<skill id="30818" level="4" type="ON_ENCHANT" type_value="8" /> <!-- Kaliel's Protection -->
+			<skill id="30818" level="5" type="ON_ENCHANT" type_value="9" /> <!-- Kaliel's Protection -->
+			<skill id="30818" level="6" type="ON_ENCHANT" type_value="10" /> <!-- Kaliel's Protection -->
 		</skills>
 	</item>
 	<item id="80838" name="Blessed Scroll: Enchant Kaliel's Bracelet" type="EtcItem">
@@ -593,7 +605,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="weight" val="10" />
 		<skills>
-			<skill id="39527" level="1" /> <!-- Enchant Scroll: Blessed Bracelet -->
+			<skill id="39527" level="1" /> <!-- Blessed Scroll: Enchant Bracelet -->
 		</skills>
 	</item>
 	<item id="80839" name="Crystal of Dawn" type="EtcItem">
@@ -603,7 +615,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80840" name="PA Event Box" type="EtcItem">
-		<!-- A box that can be purchased for PA points. Double-click to obtain +8 Angel Accessory, My Teleport Scroll, Shining Platinum Jewelry, and supplies for PA. -->
+		<!-- A box that can be purchased for PA points. Double-click to obtain +8 Angel Accessory, My Teleport Scroll, Shining Platinum Ornament and supplies for PA. -->
 		<set name="icon" val="icon.etc_jewel_box_i00" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -613,7 +625,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80841" name="Appearance Stone Box" type="EtcItem">
-		<!-- Use to obtain 1 of the following: Dark/White Assassin Suit Appearance Stone, Vampiric Style Appearance Stone, Formal Wear Appearance Stone. -->
+		<!-- Double-click to obtain one of the following items: Appearance Stone: Dark/ White Assassin Suit, Appearance Stone: Vampiric Style, Appearance Stone: Formal Wear. -->
 		<set name="icon" val="icon.event_six_party_box_i00" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -644,7 +656,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="80844" name="Lucy's Valentine's Day Chocolate Box" type="EtcItem">
-		<!-- Chocolate box from Lucy. It contains chocolates and something else for Rok. -->
+		<!-- Double-click to obtain Sweet Chocolate. Take it and something else to Rok. -->
 		<set name="icon" val="icon.ev_2018_xmas_box" />
 		<set name="default_action" val="START_QUEST" />
 		<set name="immediate_effect" val="true" />
@@ -657,7 +669,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80845" name="Lucy's Valentine's Day Chocolate Box" type="EtcItem">
-		<!-- Chocolate box from Lucy. It contains chocolates and a letter for Rok. -->
+		<!-- Double-click to obtain Sweet Chocolate and a letter. Take them to Rok. -->
 		<set name="icon" val="icon.ev_2018_xmas_box" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -667,7 +679,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80846" name="Lucy's Opened Letter" type="EtcItem">
-		<!-- Letter from Lucy to Rok. It was opened, but it is still legible, so you can probably give it to Rok... -->
+		<!-- A letter from Lucy to Rok. Its wax seal is broken, but the text is legible, so you can still give it to Rok. -->
 		<set name="icon" val="icon.etc_letter_envelope_i00" />
 		<set name="default_action" val="SHOW_HTML" />
 		<set name="immediate_effect" val="true" />
@@ -679,7 +691,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="80847" name="Lucy's Return Present" type="EtcItem">
-		<!-- Present from Lucy for helping her. Use to obtain 120 Golden Pig Lucky Coins. -->
+		<!-- A reward box from Lucy. Double-click to obtain 120 Golden Pig's Lucky Coins. -->
 		<set name="icon" val="icon.etc_elite_marguene_collection_box_i00" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -687,6 +699,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39531" level="1" /> <!-- Lucy's Return Present -->
+		</skills>
 	</item>
 	<item id="80848" name="Shining Nevit's Treasure Chest" type="EtcItem">
 		<!-- Double-click to obtain a random rare item. -->
@@ -695,6 +711,10 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39532" level="1" /> <!-- Nevit's Shining Treasure Chest -->
+		</skills>
 	</item>
 	<item id="80849" name="PA Event Staff" type="Weapon">
 		<!-- A weapon for the event enchanting. The higher its enchant value, the greater your reward. -->
@@ -722,7 +742,7 @@
 		</stats>
 	</item>
 	<item id="80850" name="PA Event Enchant Scroll" type="EtcItem">
-		<!-- Enchant scroll that can only be used on the PA Enchant Challenge Weapon. Cannot use items that increase enchant rate. Will be retrieved once the event is over. -->
+		<!-- Required for enchanting PA Event Staff. Cannot be used with items that increase enchant success rate. -->
 		<set name="icon" val="icon.yogi_scroll_of_enchant_weapon_grade_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -732,6 +752,10 @@
 		<set name="is_destroyable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="35527" level="1" /> <!-- Enchant Scroll: PA Challenge -->
+		</skills>
 	</item>
 	<item id="80851" name="+10 Agathion Pack" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain a random agathion charm enchanted to +10. -->
@@ -745,7 +769,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="39744" level="1" /> <!-- +10 Agathion Pack -->
+			<skill id="35528" level="1" /> <!-- +10 Agathion Pack -->
 		</skills>
 	</item>
 	<item id="80852" name="PA Shining Nevit's Gold Hourglass" type="EtcItem">
@@ -843,7 +867,7 @@
 		</skills>
 	</item>
 	<item id="80859" name="Bloodthirsty Akamanah Shaper" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_shaper_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -868,7 +892,7 @@
 		</stats>
 	</item>
 	<item id="80860" name="Bloodthirsty Akamanah Cutter" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_cutter_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -892,7 +916,7 @@
 		</stats>
 	</item>
 	<item id="80861" name="Bloodthirsty Akamanah Slasher" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_slasher_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -916,7 +940,7 @@
 		</stats>
 	</item>
 	<item id="80862" name="Bloodthirsty Akamanah Avenger" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_onehand_blunt_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -940,7 +964,7 @@
 		</stats>
 	</item>
 	<item id="80863" name="Bloodthirsty Akamanah Fighter" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_fist_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -965,7 +989,7 @@
 		</stats>
 	</item>
 	<item id="80864" name="Bloodthirsty Akamanah Stormer" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_spear_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -979,9 +1003,6 @@
 		<set name="spiritshots" val="1" />
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;66;120" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1188</stat>
 			<stat type="mAtk">517</stat>
@@ -991,9 +1012,12 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+		</skills>
 	</item>
 	<item id="80865" name="Bloodthirsty Akamanah Thrower" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_bow_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -1018,7 +1042,7 @@
 		</stats>
 	</item>
 	<item id="80866" name="Bloodthirsty Akamanah Guardian" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_crossbow_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -1043,7 +1067,7 @@
 		</stats>
 	</item>
 	<item id="80867" name="Bloodthirsty Akamanah Buster" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_onehane_magic_sword_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -1067,7 +1091,7 @@
 		</stats>
 	</item>
 	<item id="80868" name="Bloodthirsty Akamanah Caster" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_onehand_magic_blunt_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -1093,7 +1117,7 @@
 		</stats>
 	</item>
 	<item id="80869" name="Bloodthirsty Akamanah Retributer" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_twohand_magic_blunt_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -1119,7 +1143,7 @@
 		</stats>
 	</item>
 	<item id="80870" name="Bloodthirsty Akamanah Dual Swords" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_dual_sword_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -1143,7 +1167,7 @@
 		</stats>
 	</item>
 	<item id="80871" name="Bloodthirsty Akamanah Dual Daggers" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_dual_dagger_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -1168,7 +1192,7 @@
 		</stats>
 	</item>
 	<item id="80872" name="Bloodthirsty Akamanah Dual Blunt Weapon" type="Weapon">
-		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. Its appearance cannot be changed. Cannot be assigned an attribute, crystallized, augmented, enchanted, or enhanced with a soul crystal. <Enhancing>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
+		<!-- A weapon created from Blood Sword Akamanah. Max HP can be more than 150,000. The item's appearance cannot be modified. Cannot be crystallized, augmented, enchanted or imbued with an attribute. No soul crystal can be inserted. <Upgrade>. Take the weapon and Akamanah's Blood to Kaysia in Oren to get a Bloodstained Akamanah weapon. -->
 		<set name="icon" val="icon.aka_manaf_dual_blunt_1" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="default_action" val="EQUIP" />
@@ -1193,7 +1217,7 @@
 		</stats>
 	</item>
 	<item id="80873" name="Bloodstained Zariche Shaper" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_shaper_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1209,12 +1233,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2177</stat>
 			<stat type="mAtk">1084</stat>
@@ -1225,9 +1243,15 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80874" name="Bloodstained Zariche Cutter" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_cutter_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1243,12 +1267,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -1258,9 +1276,15 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80875" name="Bloodstained Zariche Slasher" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_slasher_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1276,12 +1300,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1446</stat>
@@ -1291,9 +1309,15 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80876" name="Bloodstained Zariche Avenger" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_onehand_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1309,12 +1333,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -1324,9 +1342,15 @@
 			<stat type="randomDamage">20</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80877" name="Bloodstained Zariche Fighter" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_fist_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1342,12 +1366,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
@@ -1358,9 +1376,15 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80878" name="Bloodstained Zariche Stormer" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_spear_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1376,13 +1400,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -1393,9 +1410,16 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80879" name="Bloodstained Zariche Thrower" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_bow_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1411,12 +1435,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">4898</stat>
 			<stat type="mAtk">1446</stat>
@@ -1427,9 +1445,15 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80880" name="Bloodstained Zariche Guardian" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_crossbow_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1445,12 +1469,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">4411</stat>
 			<stat type="mAtk">1084</stat>
@@ -1461,9 +1479,15 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80881" name="Bloodstained Zariche Buster" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_onehane_magic_sword_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1480,12 +1504,6 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="35530" level="1" /> <!-- Blood-stained Zariche - Wizard -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1990</stat>
 			<stat type="mAtk">1446</stat>
@@ -1494,9 +1512,15 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80882" name="Bloodstained Zariche Caster" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_onehand_magic_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1513,12 +1537,6 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="35530" level="1" /> <!-- Blood-stained Zariche - Wizard -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1990</stat>
 			<stat type="mAtk">1446</stat>
@@ -1528,9 +1546,15 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80883" name="Bloodstained Zariche Retributer" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_twohand_magic_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1547,12 +1571,6 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="35530" level="1" /> <!-- Blood-stained Zariche - Wizard -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2423</stat>
 			<stat type="mAtk">1590</stat>
@@ -1563,9 +1581,15 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80884" name="Bloodstained Zariche Dual Swords" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_dual_sword_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1581,12 +1605,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
@@ -1596,9 +1614,15 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80885" name="Bloodstained Zariche Dual Daggers" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_dual_dagger_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1614,12 +1638,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -1630,9 +1648,15 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80886" name="Bloodstained Zariche Dual Blunt Weapon" type="Weapon">
-		<!-- A Zariche weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- A Zariche weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.zariche_dual_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1648,12 +1672,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35529" level="1" /> <!-- Blood-stained Zariche - Warrior -->
-			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
-			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
-			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
@@ -1664,9 +1682,15 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="darkPower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35533" level="1" /> <!-- Soul's Insanity - Zariche -->
+			<skill id="35534" level="1" /> <!-- Soul's Confinement - Zariche -->
+			<skill id="35535" level="1" /> <!-- Soul's Release - Zariche -->
+			<skill id="36617" level="1" /> <!-- Bloodstained Zariche -->
+		</skills>
 	</item>
 	<item id="80887" name="Bloodstained Akamanah Shaper" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_shaper_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1682,12 +1706,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2177</stat>
 			<stat type="mAtk">1084</stat>
@@ -1698,9 +1716,15 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80888" name="Bloodstained Akamanah Cutter" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_cutter_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1716,12 +1740,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -1731,9 +1749,15 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80889" name="Bloodstained Akamanah Slasher" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_slasher_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1749,12 +1773,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1446</stat>
@@ -1764,9 +1782,15 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80890" name="Bloodstained Akamanah Avenger" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_onehand_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1782,12 +1806,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -1797,9 +1815,15 @@
 			<stat type="randomDamage">20</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80891" name="Bloodstained Akamanah Fighter" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_fist_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1815,12 +1839,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
@@ -1831,9 +1849,15 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80892" name="Bloodstained Akamanah Stormer" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_spear_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1849,13 +1873,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -1866,9 +1883,16 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="3599" level="1" /> <!-- Polearm of Multi-attack -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80893" name="Bloodstained Akamanah Thrower" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_bow_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1884,12 +1908,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">4898</stat>
 			<stat type="mAtk">1446</stat>
@@ -1900,9 +1918,15 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80894" name="Bloodstained Akamanah Guardian" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_crossbow_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1918,12 +1942,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">4411</stat>
 			<stat type="mAtk">1084</stat>
@@ -1934,9 +1952,15 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80895" name="Bloodstained Akamanah Buster" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_onehane_magic_sword_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1953,12 +1977,6 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="35532" level="1" /> <!-- Blood-stained Akamanah - Wizard -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1990</stat>
 			<stat type="mAtk">1446</stat>
@@ -1967,9 +1985,15 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80896" name="Bloodstained Akamanah Caster" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_onehand_magic_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -1986,12 +2010,6 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="35532" level="1" /> <!-- Blood-stained Akamanah - Wizard -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1990</stat>
 			<stat type="mAtk">1446</stat>
@@ -2001,9 +2019,15 @@
 			<stat type="pAtkRange">500</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80897" name="Bloodstained Akamanah Retributer" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, M. Skill Critical Rate +30%, M. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_twohand_magic_blunt_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -2020,12 +2044,6 @@
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="35532" level="1" /> <!-- Blood-stained Akamanah - Wizard -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2423</stat>
 			<stat type="mAtk">1590</stat>
@@ -2036,9 +2054,15 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80898" name="Bloodstained Akamanah Dual Swords" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_dual_sword_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -2054,12 +2078,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
@@ -2069,9 +2087,15 @@
 			<stat type="pAtkRange">40</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 	<item id="80899" name="Bloodstained Akamanah Dual Daggers" type="Weapon">
-		<!-- An Akamanah weapon stained with the madness of blood. PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, P. Critical Rate +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement, and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be changed. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
+		<!-- An Akamanah weapon stained with the madness of blood. When equipped, PvP damage +30%, Max HP/ MP/ CP +30%, Atk. Spd. +30%, Critical Rate for basic attacks +100, P. Skill Critical Rate +30%, P. Skill Critical Damage +30%. Enables the Soul's Insanity, Soul's Confinement and Soul's Release skills. Max HP can be more than 150,000. Cannot be enchanted, crystallized or imbued with an attribute. The item's appearance cannot be modified. 2 common soul crystals and 1 special soul crystal can be inserted. Can be augmented. -->
 		<set name="icon" val="icon.aka_manaf_dual_dagger_2" />
 		<set name="is_cursed_weapon" val="true" />
 		<set name="ensoulSpecialSlots" val="1" />
@@ -2087,12 +2111,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="equip_reuse_delay" val="300" />
-		<skills>
-			<skill id="35531" level="1" /> <!-- Blood-stained Akamanah - Warrior -->
-			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
-			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
-			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
-		</skills>
 		<stats>
 			<stat type="pAtk">2488</stat>
 			<stat type="mAtk">1084</stat>
@@ -2103,5 +2121,11 @@
 			<stat type="pAtkRange">80</stat>
 			<stat type="firePower">999</stat>
 		</stats>
+		<skills>
+			<skill id="35536" level="1" /> <!-- Soul's Insanity - Akamanah -->
+			<skill id="35537" level="1" /> <!-- Soul's Confinement - Akamanah -->
+			<skill id="35538" level="1" /> <!-- Soul's Release - Akamanah -->
+			<skill id="36618" level="1" /> <!-- Bloodstained Akamanah -->
+		</skills>
 	</item>
 </list>

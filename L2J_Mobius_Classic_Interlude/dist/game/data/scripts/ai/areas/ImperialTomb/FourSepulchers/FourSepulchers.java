@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.areas.ImperialTomb.FourSepulchers;
 
@@ -36,7 +40,7 @@ import org.l2jmobius.gameserver.geoengine.GeoEngine;
 import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.Location;
-import org.l2jmobius.gameserver.model.actor.Attackable;
+import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -400,7 +404,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 		{
 			npc.setTarget(npc);
 			npc.doCast(PETRIFY.getSkill());
-			((Attackable) npc).setCanReturnToSpawnPoint(false);
+			npc.asAttackable().setCanReturnToSpawnPoint(false);
 			npc.setTargetable(false);
 			npc.setInvul(true);
 			cancelQuestTimer("REMOVE_PETRIFY", npc, null);
@@ -486,18 +490,19 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 			showHtmlFile(player, npcId + "-FULL.htm", npc, null);
 			return;
 		}
-		if (!player.isInParty() || (player.getParty().getMemberCount() < PARTY_MEMBER_COUNT))
+		final Party party = player.getParty();
+		if (!player.isInParty() || (party.getMemberCount() < PARTY_MEMBER_COUNT))
 		{
 			showHtmlFile(player, npcId + "-SP.html", npc, null);
 			return;
 		}
-		if (!player.getParty().isLeader(player))
+		if (!party.isLeader(player))
 		{
 			showHtmlFile(player, npcId + "-NL.html", npc, null);
 			return;
 		}
 		
-		for (Player mem : player.getParty().getMembers())
+		for (Player mem : party.getMembers())
 		{
 			final QuestState qs = mem.getQuestState(Q00620_FourGoblets.class.getSimpleName());
 			if ((qs == null) || (!qs.isStarted() && !qs.isCompleted()))
@@ -530,7 +535,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 		// Delete any existing spawns
 		for (Creature creature : ZoneManager.getInstance().getZoneById(MANAGER_ZONES.get(npcId)).getCharactersInside())
 		{
-			if (creature.isMonster() || creature.isRaid() || (creature.isNpc() && ((((Npc) creature).getId() == MYSTERIOUS_CHEST) || (((Npc) creature).getId() == KEY_CHEST) || (((Npc) creature).getId() == TELEPORTER))))
+			if (creature.isMonster() || creature.isRaid() || (creature.isNpc() && ((creature.asNpc().getId() == MYSTERIOUS_CHEST) || (creature.asNpc().getId() == KEY_CHEST) || (creature.asNpc().getId() == TELEPORTER))))
 			{
 				creature.deleteMe();
 			}
@@ -561,7 +566,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 		
 		// Teleport players inside
 		final List<Player> members = new ArrayList<>();
-		for (Player mem : player.getParty().getMembers())
+		for (Player mem : party.getMembers())
 		{
 			if (Util.checkIfInRange(700, player, mem, true))
 			{

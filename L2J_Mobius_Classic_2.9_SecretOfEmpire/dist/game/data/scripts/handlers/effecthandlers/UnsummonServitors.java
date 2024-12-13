@@ -49,7 +49,7 @@ public class UnsummonServitors extends AbstractEffect
 				servitor.abortCast();
 				servitor.stopAllEffects();
 				
-				servitor.unSummon(effector.getActingPlayer());
+				servitor.unSummon(effector.asPlayer());
 			});
 		}
 	}

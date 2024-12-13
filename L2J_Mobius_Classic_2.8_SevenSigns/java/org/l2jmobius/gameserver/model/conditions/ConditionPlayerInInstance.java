@@ -35,10 +35,11 @@ public class ConditionPlayerInInstance extends Condition
 	@Override
 	public boolean testImpl(Creature effector, Creature effected, Skill skill, ItemTemplate item)
 	{
-		if (effector.getActingPlayer() == null)
+		if (effector.asPlayer() == null)
 		{
 			return false;
 		}
+		
 		return (effector.getInstanceId() == 0) ? !_inInstance : _inInstance;
 	}
 }

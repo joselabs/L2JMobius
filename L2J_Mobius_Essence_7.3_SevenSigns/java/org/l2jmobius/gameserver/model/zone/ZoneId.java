@@ -49,7 +49,8 @@ public enum ZoneId
 	FISHING,
 	UNDYING,
 	TAX,
-	TIMED_HUNTING;
+	TIMED_HUNTING,
+	PRISON;
 	
 	public static int getZoneCount()
 	{

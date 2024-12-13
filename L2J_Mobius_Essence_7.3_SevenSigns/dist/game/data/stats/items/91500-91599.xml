@@ -606,7 +606,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="91550" name="Frintezza's Necklace" type="Armor">
-		<!-- Max enchant value: +6. (Requires Scroll: Enchant Rare Accessories.). Boosts the item's parameters after enchanting. Safe enchanting to +1 -->
+		<!-- Max enchant value: +6. (Requires Scroll: Enchant Rare Accessories.). Boosts the item's effects upon enchanting. Safe enchanting to +1 -->
 		<set name="icon" val="icon.accessory_necklace_of_frintessa_i04" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
@@ -614,6 +614,9 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="enchant_enabled" val="true" />
+		<stats>
+			<stat type="mDef">107</stat>
+		</stats>
 		<skills>
 			<skill id="50450" level="1" /> <!-- Frintezza's Necklace -->
 			<skill id="50450" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Frintezza's Necklace -->
@@ -623,9 +626,6 @@
 			<skill id="50450" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Frintezza's Necklace -->
 			<skill id="50450" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Frintezza's Necklace -->
 		</skills>
-		<stats>
-			<stat type="mDef">107</stat>
-		</stats>
 	</item>
 	<item id="91551" name="Frintezza's Necklace Lv. 2" type="Armor">
 		<!-- <Properties>. P. Skill Power +10%. M. Skill Power +10%. All Critical Rate +3%. All Critical Damage +50. Skill Cooldown -6%. Max MP +36. Sleep Resistance/ Atk. Rate +15. Cannot be enchanted. -->
@@ -635,13 +635,13 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="54041" level="2" /> <!-- Frintezza's Necklace -->
-		</skills>
 		<stats>
 			<stat type="mDef">96</stat>
 			<stat type="maxMp">36</stat>
 		</stats>
+		<skills>
+			<skill id="50427" level="2" /> <!-- Frintezza's Necklace -->
+		</skills>
 	</item>
 	<item id="91552" name="Frintezza's Necklace Lv. 3" type="Armor">
 		<!-- <Properties>. P. Skill Power +15%. M. Skill Power +15%. All Critical Rate +5%. All Critical Damage +100. Skill Cooldown -8%. Max MP +50. Sleep Resistance/ Atk. Rate +20. Damage Reflection +5%. Cannot be enchanted. -->
@@ -651,13 +651,13 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="54041" level="3" /> <!-- Frintezza's Necklace -->
-		</skills>
 		<stats>
 			<stat type="mDef">109</stat>
 			<stat type="maxMp">44</stat>
 		</stats>
+		<skills>
+			<skill id="50427" level="3" /> <!-- Frintezza's Necklace -->
+		</skills>
 	</item>
 	<item id="91553" name="Frintezza's Necklace Lv. 4" type="Armor">
 		<!-- <Properties>. P. Skill Power +20%. M. Skill Power +20%. All Critical Rate +10%. All Critical Damage +200. Skill Cooldown -10%. Max MP +65. Sleep Resistance/ Atk. Rate +30. Damage Reflection +10%. Cannot be enchanted. -->
@@ -667,13 +667,13 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<skills>
-			<skill id="54041" level="4" /> <!-- Frintezza's Necklace -->
-		</skills>
 		<stats>
 			<stat type="mDef">125</stat>
 			<stat type="maxMp">65</stat>
 		</stats>
+		<skills>
+			<skill id="50427" level="4" /> <!-- Frintezza's Necklace -->
+		</skills>
 	</item>
 	<item id="91554" name="Essence of Frintezza" type="EtcItem">
 		<!-- Take it along with Majestic Necklace enchanted for +10 to +12 to Head Blacksmith Ferris in Aden to upgrade it and get Frintezza's Necklace Lv. 4. -->
@@ -692,7 +692,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51305" level="1" /> <!-- Special Summer Box Lv1 -->
+			<skill id="51305" level="1" /> <!-- Special Summer Box -->
 		</skills>
 	</item>
 	<item id="91556" name="Enhanced Hero's Shining Dual Swords" additionalName="30-day" type="Weapon">
@@ -719,6 +719,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3045" level="4" /> <!-- Special Property: Haste -->
+		</skills>
 	</item>
 	<item id="91557" name="Enhanced Hero's Shining Staff" additionalName="30-day" type="Weapon">
 		<!-- Available for 30 days. Casting Spd. +12%. Cannot be enchanted/ augmented. -->
@@ -737,9 +740,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">160</stat>
 			<stat type="mAtk">138</stat>
@@ -749,6 +749,9 @@
 			<stat type="randomDamage">19</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3047" level="2" /> <!-- Special Property: Acumen -->
+		</skills>
 	</item>
 	<item id="91558" name="Enhanced Hero's Shining Bow" additionalName="30-day" type="Weapon">
 		<!-- Available for 30 days. P. Critical +52. Cannot be enchanted/ augmented. -->
@@ -776,6 +779,9 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3044" level="5" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="91559" name="Enhanced Hero's Shining Dagger" additionalName="30-day" type="Weapon">
 		<!-- Available for 30 days. P. Critical +66. Cannot be enchanted/ augmented. -->
@@ -802,6 +808,9 @@
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
 		</stats>
+		<skills>
+			<skill id="3011" level="4" /> <!-- Special Property: Focus -->
+		</skills>
 	</item>
 	<item id="91560" name="Enhanced Hero's Shining Spear" additionalName="30-day" type="Weapon">
 		<!-- Available for 30 days. Stun chance +25% after a critical hit. Cannot be enchanted/ augmented. -->
@@ -828,6 +837,10 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3016" level="6" /> <!-- Special Property: Critical Stun -->
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="91561" name="Enhanced Hero's Shining Helmet" additionalName="30-day" type="Armor">
 		<!-- Available for 30 days. Heavy armor. Cannot be enchanted. -->
@@ -899,7 +912,7 @@
 		</stats>
 	</item>
 	<item id="91565" name="Enhanced Hero's Shining Helmet" additionalName="30-day" type="Armor">
-		<!-- Available for 30 days. Light armor. Cannot be enchanted. -->
+		<!-- Available for 30 d. Light armor. Cannot be enchanted. -->
 		<set name="icon" val="icon.armor_leather_helmet_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="head" />
@@ -916,7 +929,7 @@
 		</stats>
 	</item>
 	<item id="91566" name="Enhanced Hero's Shining Leather Armor" additionalName="30-day" type="Armor">
-		<!-- Available for 30 days. Light armor. Cannot be enchanted. -->
+		<!-- Available for 30 d. Light armor. Cannot be enchanted. -->
 		<set name="icon" val="icon.armor_t45_ul_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -934,7 +947,7 @@
 		</stats>
 	</item>
 	<item id="91567" name="Enhanced Hero's Shining Leather Gloves" additionalName="30-day" type="Armor">
-		<!-- Available for 30 days. Light armor. Cannot be enchanted. -->
+		<!-- Available for 30 d. Light armor. Cannot be enchanted. -->
 		<set name="icon" val="icon.armor_t45_g_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="gloves" />
@@ -951,7 +964,7 @@
 		</stats>
 	</item>
 	<item id="91568" name="Enhanced Hero's Shining Leather Boots" additionalName="30-day" type="Armor">
-		<!-- Available for 30 days. Light armor. Cannot be enchanted. -->
+		<!-- Available for 30 d. Light armor. Cannot be enchanted. -->
 		<set name="icon" val="icon.armor_t45_b_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="feet" />
@@ -1091,7 +1104,7 @@
 		<set name="etcitem_type" val="ENCHT_WP" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
-			<skill id="2019" level="1" /> <!-- Scroll: Enchant Weapon -->
+			<skill id="51315" level="1" /> <!-- Scroll: Enchant Yogi's Weapon -->
 		</skills>
 	</item>
 	<item id="91576" name="Jewel Chest" type="EtcItem">
@@ -1187,7 +1200,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51312" level="1" /> <!-- Elite Armor/ Accessories Varnish Box -->
+			<skill id="51312" level="1" /> <!-- Elite Armor/ Accessory Varnish Pack -->
 		</skills>
 	</item>
 	<item id="91583" name="Elite Weapon Varnish Box" type="EtcItem">
@@ -1245,7 +1258,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51317" level="1" /> <!-- Gran Kain Treasure Chest -->
+			<skill id="51317" level="1" /> <!-- Gran Kain's Treasure Chest -->
 		</skills>
 	</item>
 	<item id="91587" name="Gran Kain's Silver Pack" type="EtcItem">
@@ -1354,7 +1367,7 @@
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
 			<item id="90143" min="5" max="5" chance="4.166667" /> <!-- Einhasad's Protection -->
-			<item id="91027" min="5" max="5" chance="4.166667" /> <!-- Dragon's Miracle Potion -->
+			<item id="91027" min="5" max="5" chance="4.166667" /> <!-- Dragon's Potion -->
 			<item id="91250" min="1" max="1" chance="4.166667" /> <!-- Radiant Dragon Varnish -->
 			<item id="90138" min="1" max="1" chance="4.166667" /> <!-- Glittering Pendant Polish -->
 			<item id="91124" min="1" max="1" chance="4.166667" /> <!-- Radiant Spirit's Varnish -->
@@ -1414,6 +1427,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="51299" level="1" /> <!-- Dimensional Guard -->
+			<skill id="35024" level="12" /> <!-- Dimensional Talisman -->
+		</skills>
 	</item>
 	<item id="91593" name="Dimensional Talisman Lv. 2" type="Armor">
 		<!-- P./ M. Def. +30, P./ M. Evasion. +2, Max HP/ MP/ CP +200, Speed +7, Atk. Spd./ Casting Spd. +15, acquired XP/ SP +5%. Enables Dimensional Border Power Lv. 1 (increases attack power with a certain chance). Enables Dimensional Guard Lv. 2 (temporarily increases Vital Point Attack Resistance). Can be upgraded by Alchemist Veruti in Giran. The effect doesn't stack with that of Talisman of Border, the Dimensional Talisman effect takes precedence. -->
@@ -1424,6 +1441,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="51299" level="2" /> <!-- Dimensional Guard -->
+			<skill id="35024" level="13" /> <!-- Dimensional Talisman -->
+		</skills>
 	</item>
 	<item id="91594" name="Dimensional Talisman Lv. 3" type="Armor">
 		<!-- P./ M. Def. +35, P./ M. Evasion. +2, Max HP/ MP/ CP +250, Speed +7, Atk. Spd./ Casting Spd. +15, acquired XP/ SP +6%. Enables Dimensional Border Power Lv. 2 (increases attack power with a certain chance). Enables Dimensional Guard Lv. 3 (temporarily increases Vital Point Attack Resistance). Can be upgraded by Alchemist Veruti in Giran. The effect doesn't stack with that of Talisman of Border, the Dimensional Talisman effect takes precedence. -->
@@ -1434,6 +1455,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="51299" level="3" /> <!-- Dimensional Guard -->
+			<skill id="35024" level="14" /> <!-- Dimensional Talisman -->
+		</skills>
 	</item>
 	<item id="91595" name="Dimensional Talisman Lv. 4" type="Armor">
 		<!-- P./ M. Def. +40, P./ M. Evasion. +2, Max HP/ MP/ CP +300, Speed +7, Atk. Spd./ Casting Spd. +15, acquired XP/ SP +7%. Enables Dimensional Border Power Lv. 3 (increases attack power with a certain chance). Enables Dimensional Guard Lv. 4 (temporarily increases Vital Point Attack Resistance). Can be upgraded by Alchemist Veruti in Giran. The effect doesn't stack with that of Talisman of Border, the Dimensional Talisman effect takes precedence. -->
@@ -1444,6 +1469,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="51299" level="4" /> <!-- Dimensional Guard -->
+			<skill id="35024" level="15" /> <!-- Dimensional Talisman -->
+		</skills>
 	</item>
 	<item id="91596" name="Dimensional Talisman Lv. 5" type="Armor">
 		<!-- P./ M. Def. +45, P./ M. Evasion. +3, Max HP/ MP/ CP +400, Speed +8, Atk. Spd./ Casting Spd. +20, acquired XP/ SP +8%. Enables Dimensional Border Power Lv. 4 (increases attack power with a certain chance). Enables Dimensional Guard Lv. 5 (temporarily increases Vital Point Attack Resistance and decreases received P. Critical Damage/ received M. Skill Critical Damage). Can be upgraded by Alchemist Veruti in Giran. The effect doesn't stack with that of Talisman of Border, the Dimensional Talisman effect takes precedence. -->
@@ -1454,6 +1483,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="51299" level="5" /> <!-- Dimensional Guard -->
+			<skill id="35024" level="16" /> <!-- Dimensional Talisman -->
+		</skills>
 	</item>
 	<item id="91597" name="Dimensional Talisman Lv. 6" type="Armor">
 		<!-- P./ M. Def. +50, P./ M. Evasion. +3, Max HP/ MP/ CP +500, Speed +8, Atk. Spd./ Casting Spd. +30, acquired XP/ SP +10%. Enables Dimensional Border Power Lv. 5 (increases attack power with a certain chance). Enables Dimensional Guard Lv. 6 (temporarily increases Vital Point Attack Resistance and decreases received P. Critical Damage/ received M. Skill Critical Damage). Can be upgraded by Alchemist Veruti in Giran. The effect doesn't stack with that of Talisman of Border, the Dimensional Talisman effect takes precedence. -->
@@ -1464,6 +1497,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="51299" level="6" /> <!-- Dimensional Guard -->
+			<skill id="35024" level="17" /> <!-- Dimensional Talisman -->
+		</skills>
 	</item>
 	<item id="91598" name="Dimensional Talisman Lv. 7" type="Armor">
 		<!-- P./ M. Def. +70, P./ M. Evasion. +4, Max HP/ MP/ CP +1000, Speed +9, Atk. Spd. +40, Casting Spd. +50, acquired XP/ SP +12%. Enables Dimensional Border Power Lv. 6 (increases attack power with a certain chance). Enables Dimensional Guard Lv. 7 (temporarily increases Vital Point Attack Resistance and decreases received P. Critical Damage/ received M. Skill Critical Damage). Can be upgraded by Alchemist Veruti in Giran. The effect doesn't stack with that of Talisman of Border, the Dimensional Talisman effect takes precedence. -->
@@ -1474,6 +1511,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="51299" level="7" /> <!-- Dimensional Guard -->
+			<skill id="35024" level="18" /> <!-- Dimensional Talisman -->
+		</skills>
 	</item>
 	<item id="91599" name="Dimensional Talisman Lv. 8" type="Armor">
 		<!-- P./ M. Def. +80, P./ M. Evasion. +4, Max HP/ MP/ CP +1300, Speed +9, Atk. Spd. +40, Casting Spd. +65, acquired XP/ SP +15%. Enables Dimensional Border Power Lv. 7 (increases attack power with a certain chance). Enables Dimensional Guard Lv. 8 (temporarily increases Vital Point Attack Resistance and decreases received P. Critical Damage/ received M. Skill Critical Damage). Can be upgraded by Alchemist Veruti in Giran. The effect doesn't stack with that of Talisman of Border, the Dimensional Talisman effect takes precedence. -->
@@ -1484,5 +1525,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="51299" level="8" /> <!-- Dimensional Guard -->
+			<skill id="35024" level="19" /> <!-- Dimensional Talisman -->
+		</skills>
 	</item>
 </list>

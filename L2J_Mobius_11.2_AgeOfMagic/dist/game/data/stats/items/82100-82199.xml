@@ -89,7 +89,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="82108" name="Conquest Leader" additionalName="30-day" type="Armor">
-		<!-- Given only to the Conquest Leader. When equipped, Max HP/ MP/ CP +5%, weight limit +25,600, damage +15%, received damage -15%, Damage Reflection Resistance +20%, Fixed Damage Resistance +20%, Critical Damage -20%, inventory slots +36, Attribute Resistance +50. -->
+		<!-- Given only to the Conquest Leader. When equipped, Max HP/ MP/ CP +5%, weight limit +25,600, damage +15%, received damage -15%, Damage Reflection Resistance +20%, Fixed Damage Resistance +20%, all Critical Damage -20%, inventory slots +36, Attribute Resistance +50. -->
 		<set name="icon" val="icon.dethrone_belt" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="LIGHT" />
@@ -119,6 +119,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="5000000000" max="5000000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="82110" name="100 Million Adena Box" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain 100 million adena. -->
@@ -428,7 +432,7 @@
 		</capsuled_items>
 	</item>
 	<item id="82134" name="Abandoned Coal Mines' Time Stone" additionalName="Event" type="EtcItem">
-		<!-- Adds 60 min. to the hunting time in the Abandoned Coal Mines. Required level: 99-105. -->
+		<!-- Adds 60 min. to the hunting time in the Abandoned Coal Mines. Required level: 99+. -->
 		<set name="icon" val="icon.timezone_refill_lost_mine_60" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
@@ -440,7 +444,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="39749" level="1" /> <!-- Abandoned Coal Mines' Time Stone -->
+			<skill id="39749" level="1" /> <!-- Abandoned Coal Mines' Time Stone - Event -->
 		</skills>
 	</item>
 	<item id="82135" name="Exalted Growth Support Box" additionalName="Event" type="EtcItem">
@@ -674,7 +678,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="82155" name="Adventurer's Fortune Scroll" additionalName="Event" type="EtcItem">
-		<!-- A lucky ticket for the Secret Shop. For 30 min., Attribute Attack/ Resistance +100, Critical Rate for basic attacks, P./ M. Skill Critical Rate, Critical Damage for basic skills and P./ M. Skill Critical Damage +5%, CHA +3, Speed +6, acquired XP/ SP +10%, Vitality bonus +10%. The effect remains after death, after switching to a dual class or entering instance zones. Removed when entering the Olympiad or the Ceremony of Chaos. -->
+		<!-- For 30 min., Attribute Attack/ Resistance +70, P. Atk./ M. Atk./ P. Def./ M. Def. +7%, acquired XP/ SP +5%, Vitality bonus +10%. The effect remains after death, after switching to a dual class or entering instance zones. The effect is removed upon entering the Olympiad or the Ceremony of Chaos. -->
 		<set name="icon" val="icon.etc_charm_of_luck_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -828,10 +832,10 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="48965" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Acquired XP - Support -->
-			<item id="48966" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Vampiric Rage - Support -->
-			<item id="48967" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Speed - Support -->
-			<item id="48968" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Received Healing - Support -->
+			<item id="48965" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Acquired XP - Support Unit -->
+			<item id="48966" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Vampiric Rage - Support Unit -->
+			<item id="48967" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Speed - Support Unit -->
+			<item id="48968" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Received Healing - Support Unit -->
 			<item id="80653" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Vitality Bonus - Support -->
 			<item id="80654" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Vitality Consumption - Support -->
 			<item id="80655" min="1" max="1" minEnchant="1" maxEnchant="1" chance="10" /> <!-- Artifact - Skill MP Consumption - Support -->
@@ -854,10 +858,10 @@
 		<set name="extractableCountMax" val="1" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="48965" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Acquired XP - Support -->
-			<item id="48966" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Vampiric Rage - Support -->
-			<item id="48967" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Speed - Support -->
-			<item id="48968" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Received Healing - Support -->
+			<item id="48965" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Acquired XP - Support Unit -->
+			<item id="48966" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Vampiric Rage - Support Unit -->
+			<item id="48967" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Speed - Support Unit -->
+			<item id="48968" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Received Healing - Support Unit -->
 			<item id="80653" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Vitality Bonus - Support -->
 			<item id="80654" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Vitality Consumption - Support -->
 			<item id="80655" min="1" max="1" minEnchant="3" maxEnchant="3" chance="10" /> <!-- Artifact - Skill MP Consumption - Support -->
@@ -876,9 +880,9 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="81848" min="1" max="1" chance="100" /> <!-- Orb of Abyss Lv. 1 -->
-			<item id="81850" min="1" max="1" chance="100" /> <!-- Orb of Abyss Lv. 3 -->
-			<item id="81854" min="1" max="1" chance="100" /> <!-- Orb of Abyss Lv. 7 -->
+			<item id="81848" min="1" max="1" chance="100" /> <!-- Orb of Abyss - Lv. 1 -->
+			<item id="81850" min="1" max="1" chance="100" /> <!-- Orb of Abyss - Lv. 3 -->
+			<item id="81854" min="1" max="1" chance="100" /> <!-- Orb of Abyss - Lv. 7 -->
 		</capsuled_items>
 	</item>
 	<item id="82165" name="Collection Item Box - Last Chance!" additionalName="Event" type="EtcItem">
@@ -891,10 +895,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="81860" min="1" max="1" chance="100" /> <!-- Orb of Darkness Lv. 2 -->
-			<item id="81861" min="1" max="1" chance="100" /> <!-- Orb of Darkness Lv. 3 -->
-			<item id="81864" min="1" max="1" chance="100" /> <!-- Orb of Darkness Lv. 6 -->
-			<item id="81865" min="1" max="1" chance="100" /> <!-- Orb of Darkness Lv. 7 -->
+			<item id="81860" min="1" max="1" chance="100" /> <!-- Orb of Darkness - Lv. 2 -->
+			<item id="81861" min="1" max="1" chance="100" /> <!-- Orb of Darkness - Lv. 3 -->
+			<item id="81864" min="1" max="1" chance="100" /> <!-- Orb of Darkness - Lv. 6 -->
+			<item id="81865" min="1" max="1" chance="100" /> <!-- Orb of Darkness - Lv. 7 -->
 		</capsuled_items>
 	</item>
 	<item id="82166" name="Collection Item Box - Adventurer" additionalName="Event" type="EtcItem">
@@ -907,10 +911,10 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="81839" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul Lv. 3 -->
-			<item id="81841" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul Lv. 5 -->
-			<item id="81844" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul Lv. 8 -->
-			<item id="81846" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul Lv. 10 -->
+			<item id="81839" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul - Lv. 3 -->
+			<item id="81841" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul - Lv. 5 -->
+			<item id="81844" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul - Lv. 8 -->
+			<item id="81846" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul - Lv. 10 -->
 		</capsuled_items>
 	</item>
 	<item id="82167" name="Collection Item Box - Empiric" additionalName="Event" type="EtcItem">
@@ -923,8 +927,8 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
-			<item id="81844" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul Lv. 8 -->
-			<item id="81845" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul Lv. 9 -->
+			<item id="81844" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul - Lv. 8 -->
+			<item id="81845" min="1" max="1" chance="100" /> <!-- Orb of Bloody Soul - Lv. 9 -->
 		</capsuled_items>
 	</item>
 	<item id="82168" name="Sayha's Blessing Potion" type="EtcItem">
@@ -1039,6 +1043,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
 	</item>
 	<item id="82177" name="Luminous Soul Fragment" type="EtcItem">
 		<!-- Evidence of the destruction ot the Luminous Soul, about which Entropy was talking. Take it to the Conquest Guide Entropy to the Town of Conquest. -->
@@ -1153,9 +1158,9 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="80663" min="1" max="1" chance="3.703704" /> <!-- High-grade Dragon Weapon Pack -->
-			<item id="48667" min="1" max="1" chance="3.703704" /> <!-- Mid-grade Dragon Weapon Pack -->
-			<item id="48666" min="1" max="1" chance="3.703704" /> <!-- Low-grade Dragon Weapon Pack -->
+			<item id="80663" min="1" max="1" chance="3.703704" /> <!-- Dragon Weapon Pack (Lv. 2) -->
+			<item id="48667" min="1" max="1" chance="3.703704" /> <!-- Dragon Weapon Pack (Lv. 1) -->
+			<item id="48666" min="1" max="1" chance="3.703704" /> <!-- Dragon Weapon Pack -->
 			<item id="80958" min="1" max="1" chance="3.703704" /> <!-- Sealed Heavenly Talisman -->
 			<item id="80959" min="1" max="1" chance="3.703704" /> <!-- Epic Talisman -->
 			<item id="48862" min="1" max="1" chance="3.703704" /> <!-- +10 Fallen Angel's Ring Pack -->
@@ -1170,8 +1175,8 @@
 			<item id="80333" min="1" max="1" chance="3.703704" /> <!-- Dragon's Necklace -->
 			<item id="80334" min="1" max="1" chance="3.703704" /> <!-- Dragon's Earring -->
 			<item id="80335" min="1" max="1" chance="3.703704" /> <!-- Dragon's Ring -->
-			<item id="35566" min="1" max="1" chance="3.703704" /> <!-- Dark Weapon Enhancement Stone -->
-			<item id="35568" min="1" max="1" chance="3.703704" /> <!-- Bloody Weapon Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="3.703704" /> <!-- Dark Weapon Upgrade Stone -->
+			<item id="35568" min="1" max="1" chance="3.703704" /> <!-- Bloody Weapon Upgrade Stone -->
 			<item id="48418" min="1" max="1" chance="3.703704" /> <!-- Authority Ornament -->
 			<item id="39573" min="1" max="1" chance="3.703704" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="3.703704" /> <!-- Talisman of Seven Signs -->
@@ -1221,9 +1226,9 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="80663" min="1" max="1" chance="1.960784" /> <!-- High-grade Dragon Weapon Pack -->
-			<item id="48667" min="1" max="1" chance="1.960784" /> <!-- Mid-grade Dragon Weapon Pack -->
-			<item id="48666" min="1" max="1" chance="1.960784" /> <!-- Low-grade Dragon Weapon Pack -->
+			<item id="80663" min="1" max="1" chance="1.960784" /> <!-- Dragon Weapon Pack (Lv. 2) -->
+			<item id="48667" min="1" max="1" chance="1.960784" /> <!-- Dragon Weapon Pack (Lv. 1) -->
+			<item id="48666" min="1" max="1" chance="1.960784" /> <!-- Dragon Weapon Pack -->
 			<item id="80958" min="1" max="1" chance="1.960784" /> <!-- Sealed Heavenly Talisman -->
 			<item id="80959" min="1" max="1" chance="1.960784" /> <!-- Epic Talisman -->
 			<item id="48862" min="1" max="1" chance="1.960784" /> <!-- +10 Fallen Angel's Ring Pack -->
@@ -1238,8 +1243,8 @@
 			<item id="80333" min="1" max="1" chance="1.960784" /> <!-- Dragon's Necklace -->
 			<item id="80334" min="1" max="1" chance="1.960784" /> <!-- Dragon's Earring -->
 			<item id="80335" min="1" max="1" chance="1.960784" /> <!-- Dragon's Ring -->
-			<item id="35566" min="1" max="1" chance="1.960784" /> <!-- Dark Weapon Enhancement Stone -->
-			<item id="35568" min="1" max="1" chance="1.960784" /> <!-- Bloody Weapon Enhancement Stone -->
+			<item id="35566" min="1" max="1" chance="1.960784" /> <!-- Dark Weapon Upgrade Stone -->
+			<item id="35568" min="1" max="1" chance="1.960784" /> <!-- Bloody Weapon Upgrade Stone -->
 			<item id="48418" min="1" max="1" chance="1.960784" /> <!-- Authority Ornament -->
 			<item id="39573" min="1" max="1" chance="1.960784" /> <!-- Sealed Talisman of Insanity -->
 			<item id="37717" min="1" max="1" chance="1.960784" /> <!-- Talisman of Seven Signs -->
@@ -1248,11 +1253,11 @@
 			<item id="81155" min="1" max="1" chance="1.960784" /> <!-- +6 Angel's Ring Pack -->
 			<item id="80501" min="1" max="1" chance="1.960784" /> <!-- Royal Gold Save Ticket -->
 			<item id="80449" min="1" max="1" chance="1.960784" /> <!-- Royal Black Save Ticket -->
-			<item id="47983" min="1" max="1" chance="1.960784" /> <!-- Augmenting Stone: Brooch - Not Available -->
+			<item id="47983" min="1" max="1" chance="1.960784" /> <!-- Augmenting Stone: Brooch -->
 			<item id="48215" min="1" max="1" chance="1.960784" /> <!-- Augmenting Stone: Circlet -->
 			<item id="81729" min="1" max="1" chance="1.960784" /> <!-- Augmenting Stone: Accessory -->
-			<item id="35569" min="1" max="1" chance="1.960784" /> <!-- Bloody Armor Enhancement Stone -->
-			<item id="35567" min="1" max="1" chance="1.960784" /> <!-- Dark Armor Enhancement Stone -->
+			<item id="35569" min="1" max="1" chance="1.960784" /> <!-- Bloody Armor Upgrade Stone -->
+			<item id="35567" min="1" max="1" chance="1.960784" /> <!-- Dark Armor Upgrade Stone -->
 			<item id="48677" min="1" max="1" chance="1.960784" /> <!-- High-grade Skill Power Talisman Pack - Skill Critical Damage -->
 			<item id="48678" min="1" max="1" chance="1.960784" /> <!-- High-grade Talisman of Attribute Attack Pack - Critical Damage for basic attacks -->
 			<item id="48679" min="1" max="1" chance="1.960784" /> <!-- High-grade Skill Cooldown Talisman Pack - P./M. Def. -->
@@ -1463,12 +1468,12 @@
 			<item id="47821" min="1" max="1" chance="4.95" /> <!-- Sayha's Talisman Pack Lv. 10 -->
 			<item id="48497" min="4" max="4" chance="4.95" /> <!-- Glowing Dragon's Attribute Potion - XP -->
 			<item id="48642" min="4" max="4" chance="4.95" /> <!-- Shining Nevit's Gold Hourglass -->
-			<item id="48666" min="1" max="1" chance="0.5" /> <!-- Low-grade Dragon Weapon Pack -->
-			<item id="48667" min="1" max="1" chance="0.25" /> <!-- Mid-grade Dragon Weapon Pack -->
+			<item id="48666" min="1" max="1" chance="0.5" /> <!-- Dragon Weapon Pack -->
+			<item id="48667" min="1" max="1" chance="0.25" /> <!-- Dragon Weapon Pack (Lv. 1) -->
 			<item id="48830" min="4" max="4" chance="4.95" /> <!-- Freya's Ice Rose -->
 			<item id="48907" min="1" max="1" chance="4.95" /> <!-- Shillien's Soul Crystal Lv. 9 - Weapon -->
 			<item id="48908" min="1" max="1" chance="4.95" /> <!-- Shillien's Soul Crystal Lv. 10 - Weapon -->
-			<item id="80663" min="1" max="1" chance="0.25" /> <!-- High-grade Dragon Weapon Pack -->
+			<item id="80663" min="1" max="1" chance="0.25" /> <!-- Dragon Weapon Pack (Lv. 2) -->
 			<item id="80842" min="4" max="4" chance="4.95" /> <!-- Honey Dark Beer -->
 			<item id="80958" min="1" max="1" chance="4.95" /> <!-- Sealed Heavenly Talisman -->
 			<item id="80959" min="1" max="1" chance="4.95" /> <!-- Epic Talisman -->

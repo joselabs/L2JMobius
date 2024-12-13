@@ -42,9 +42,10 @@ public class DamageByAttack extends AbstractEffect
 	{
 		_value = params.getDouble("amount");
 		_type = params.getEnum("type", DamageByAttackType.class, DamageByAttackType.NONE);
+		
 		if (params.getEnum("mode", StatModifierType.class, StatModifierType.DIFF) != StatModifierType.DIFF)
 		{
-			LOGGER.warning(getClass().getSimpleName() + " can only use DIFF mode.");
+			throw new IllegalArgumentException(getClass().getSimpleName() + " can only use DIFF mode.");
 		}
 	}
 	

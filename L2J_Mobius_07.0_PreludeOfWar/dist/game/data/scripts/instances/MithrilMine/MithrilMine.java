@@ -21,7 +21,6 @@ import java.util.List;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.model.World;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -86,7 +85,7 @@ public class MithrilMine extends AbstractInstance
 						n.setScriptValue(1);
 						n.setRunning();
 						n.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, npc);
-						((Attackable) n).addDamageHate(npc, 0, 999999);
+						n.asAttackable().addDamageHate(npc, 0, 999999);
 					}
 				}
 				break;
@@ -97,7 +96,7 @@ public class MithrilMine extends AbstractInstance
 				{
 					if (knownChar.getId() == KEGOR)
 					{
-						final Npc kegor = (Npc) knownChar;
+						final Npc kegor = knownChar.asNpc();
 						kegor.setScriptValue(2);
 						kegor.setWalking();
 						kegor.setTarget(player);

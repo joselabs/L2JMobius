@@ -59,7 +59,6 @@ public class RequestItemEnsoul extends ClientPacket
 					_options[i] = new EnsoulItemOption(_type, position, soulCrystalObjectId, soulCrystalOption);
 				}
 			}
-			return;
 		}
 	}
 	

@@ -61,6 +61,8 @@ public class PlayerVariables extends AbstractVariables
 	public static final String FORTUNE_TELLING_VARIABLE = "FortuneTelling";
 	public static final String FORTUNE_TELLING_BLACK_CAT_VARIABLE = "FortuneTellingBlackCat";
 	public static final String DELUSION_RETURN = "DELUSION_RETURN";
+	public static final String BALTHUS_REWARD = "BALTHUS_REWARD";
+	public static final String BALTHUS_BAG = "BALTHUS_BAG";
 	public static final String AUTO_USE_SETTINGS = "AUTO_USE_SETTINGS";
 	public static final String AUTO_USE_SHORTCUTS = "AUTO_USE_SHORTCUTS";
 	public static final String LAST_HUNTING_ZONE_ID = "LAST_HUNTING_ZONE_ID";
@@ -95,6 +97,9 @@ public class PlayerVariables extends AbstractVariables
 	public static final String DYE_POTENTIAL_DAILY_COUNT = "DYE_POTENTIAL_DAILY_COUNT";
 	public static final String MISSION_LEVEL_PROGRESS = "MISSION_LEVEL_PROGRESS_";
 	public static final String BALOK_AVAILABLE_REWARD = "BALOK_AVAILABLE_REWARD";
+	public static final String PRISON_WAIT_TIME = "PRISON_WAIT_TIME";
+	public static final String PRISON_2_POINTS = "PRISON_2_POINTS";
+	public static final String PRISON_3_POINTS = "PRISON_3_POINTS";
 	public static final String DUAL_INVENTORY_SLOT = "DUAL_INVENTORY_SLOT";
 	public static final String DUAL_INVENTORY_SET_A = "DUAL_INVENTORY_SET_A";
 	public static final String DUAL_INVENTORY_SET_B = "DUAL_INVENTORY_SET_B";

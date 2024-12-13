@@ -284,7 +284,7 @@ public class BeastFarm extends AbstractNpcAI
 		{
 			// if not trained, the newly spawned mob will automatically be agro against its feeder
 			// (what happened to "never bite the hand that feeds you" anyway?!)
-			final Attackable nextNpc = (Attackable) addSpawn(nextNpcId, npc);
+			final Attackable nextNpc = addSpawn(nextNpcId, npc).asAttackable();
 			
 			// register the player in the feedinfo for the mob that just spawned
 			_feedInfo.put(nextNpc.getObjectId(), player.getObjectId());
@@ -354,7 +354,7 @@ public class BeastFarm extends AbstractNpcAI
 				{
 					_feedInfo.remove(objectId);
 					npc.setRunning();
-					((Attackable) npc).addDamageHate(caster, 0, 1);
+					npc.asAttackable().addDamageHate(caster, 0, 1);
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, caster);
 				}
 				return super.onSkillSee(npc, caster, skill, targets, isSummon);

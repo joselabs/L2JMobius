@@ -164,7 +164,7 @@ public class IstinaCavern extends AbstractInstance
 			{
 				case "DEATH_TIMER":
 				{
-					final Creature mostHated = ((Attackable) npc).getMostHated();
+					final Creature mostHated = npc.asAttackable().getMostHated();
 					if ((mostHated != null) && npc.isInsideRadius2D(mostHated, 15000))
 					{
 						final SkillHolder death1 = npcParams.getSkillHolder("Istina_Death_Skill01");
@@ -185,7 +185,7 @@ public class IstinaCavern extends AbstractInstance
 				{
 					final SkillHolder death1 = npcParams.getSkillHolder("Istina_Death_Skill01");
 					final SkillHolder death2 = npcParams.getSkillHolder("Istina_Death_Skill02");
-					final Creature mostHated = ((Attackable) npc).getMostHated();
+					final Creature mostHated = npc.asAttackable().getMostHated();
 					if ((mostHated != null) && npc.isInsideRadius2D(mostHated, 15000) && mostHated.isInCategory(CategoryType.TANKER_GROUP) && mostHated.isAffectedBySkill(death1))
 					{
 						addSkillCastDesire(npc, mostHated, death2, 23);
@@ -219,7 +219,7 @@ public class IstinaCavern extends AbstractInstance
 				}
 				case "LOW_ERUPTION_TIMER":
 				{
-					final Attackable istina = (Attackable) npc;
+					final Attackable istina = npc.asAttackable();
 					if ((istina.getHateList() != null) && !istina.getHateList().isEmpty())
 					{
 						final Creature target = istina.getHateList().stream().sorted((o1, o2) -> (int) o1.calculateDistance3D(o2)).findFirst().orElse(null);
@@ -398,7 +398,7 @@ public class IstinaCavern extends AbstractInstance
 				}
 				else if (skillId == ISTINA_ERUPTION_SKILL.getSkillId())
 				{
-					((Attackable) npc).getAggroList().values().stream().sorted(Comparator.comparingLong(AggroInfo::getHate)).map(AggroInfo::getAttacker).limit(5).forEach(character ->
+					npc.asAttackable().getAggroList().values().stream().sorted(Comparator.comparingLong(AggroInfo::getHate)).map(AggroInfo::getAttacker).limit(5).forEach(character ->
 					{
 						final Npc eruption = addSpawn(INVISIBLE_NPC, Util.getRandomPosition(character, 150, 150), false, 0, false, instance.getId());
 						eruption.getVariables().set("ERUPTION_TARGET", character);
@@ -470,7 +470,7 @@ public class IstinaCavern extends AbstractInstance
 						npcVars.set("ISTINA_STAGE", 1);
 						instance.getDoors().forEach(Door::closeMe);
 						npc.setUndying(true);
-						((Attackable) npc).setCanReturnToSpawnPoint(false);
+						npc.asAttackable().setCanReturnToSpawnPoint(false);
 						getTimers().addTimer("DEATH_TIMER", 3500, npc, null);
 						getTimers().addTimer("REFLECT_TIMER", 3500, npc, null);
 						getTimers().addTimer("LOW_ERUPTION_TIMER", 15000, npc, null);
@@ -651,14 +651,14 @@ public class IstinaCavern extends AbstractInstance
 		Player maxDealer = null;
 		long maxDamage = 0;
 		int totalDamage = 0;
-		for (AggroInfo info : ((Attackable) npc).getAggroList().values())
+		for (AggroInfo info : npc.asAttackable().getAggroList().values())
 		{
 			if (info == null)
 			{
 				continue;
 			}
 			
-			final Player attacker = info.getAttacker().getActingPlayer();
+			final Player attacker = info.getAttacker().asPlayer();
 			if (attacker != null)
 			{
 				final long damage = info.getDamage();

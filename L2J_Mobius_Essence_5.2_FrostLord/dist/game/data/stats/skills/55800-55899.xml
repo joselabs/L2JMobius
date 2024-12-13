@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="55800" toLevel="3" name="Empire Cloak Augmentation">
 		<!-- EXP when hunting +$s1 -->
@@ -103,7 +103,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">4</value>
@@ -126,7 +126,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">4</value>
@@ -752,7 +752,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">4.5</value>
@@ -816,7 +816,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">4.5</value>
@@ -1114,7 +1114,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<!-- Legendary Cloak - Silence -->
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
@@ -1131,26 +1131,26 @@
 	</skill>
 	<skill id="55859" toLevel="1" name="Legendary Cloak - Silence">
 		<!-- Skills are sealed momentarily because of Silence. Ignores debuff immunity. -->
-		<isDebuff>true</isDebuff>
-		<reuseDelay>300000</reuseDelay>
-		<effectPoint>-100</effectPoint>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>SILENCE</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>1200</castRange>
+		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>500</hitTime>
+		<isDebuff>true</isDebuff>
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>20</lvlBonusRate>
-		<magicLevel>81</magicLevel>
-		<operateType>A2</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>81</magicLevel>
+		<reuseDelay>300000</reuseDelay>
 		<trait>SILENCE</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Mute" />
 		</effects>
@@ -1161,7 +1161,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage" fromLevel="1" toLevel="1">
+			<effect name="TriggerSkillByDamageReceived" fromLevel="1" toLevel="1">
 				<!-- Legendary Cloak - Barrier -->
 				<attackerType>Creature</attackerType>
 				<chance>5</chance>
@@ -1170,7 +1170,7 @@
 				<skillId>55861</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByDamage" fromLevel="2" toLevel="2">
+			<effect name="TriggerSkillByDamageReceived" fromLevel="2" toLevel="2">
 				<!-- Legendary Cloak - Barrier -->
 				<attackerType>Creature</attackerType>
 				<chance>5</chance>
@@ -1179,7 +1179,7 @@
 				<skillId>55861</skillId>
 				<skillLevel>2</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByDamage" fromLevel="3" toLevel="3">
+			<effect name="TriggerSkillByDamageReceived" fromLevel="3" toLevel="3">
 				<!-- Legendary Cloak - Barrier -->
 				<attackerType>Creature</attackerType>
 				<chance>5</chance>
@@ -1192,10 +1192,8 @@
 	</skill>
 	<skill id="55861" toLevel="3" name="Legendary Cloak - Barrier">
 		<!-- Activates a shield that has a chance to absorb $s2 damage when hit for $s1. -->
-		<hitTime>1000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>60000</reuseDelay>
-		<effectPoint>867</effectPoint>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>
 			<value level="1">4</value>
 			<value level="2">6</value>
@@ -1204,16 +1202,18 @@
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>BARRIER</abnormalType>
 		<abnormalVisualEffect>ABSORB_SHIELD</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<castRange>1200</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>867</effectPoint>
 		<effectRange>1400</effectRange>
+		<hitTime>1000</hitTime>
 		<isMagic>4</isMagic> <!-- Item Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<magicLevel>80</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>80</magicLevel>
+		<reuseDelay>60000</reuseDelay>
 		<effects>
 			<effect name="AbsorbDamage">
 				<damage>
@@ -1251,21 +1251,21 @@
 	<skill id="55863" toLevel="1" name="Empire Legendary Cloak Augmentation">
 		<!-- Resurrects from death with full recovery. Buffs/debuffs stay when dying. However, the Noblesse Blessing and Lucky Charms disappear. -->
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<castRange>600</castRange>
-		<hitTime>4000</hitTime>
-		<reuseDelay>3600000</reuseDelay>
-		<effectPoint>867</effectPoint>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>RESURRECTION_SPECIAL</abnormalType>
-		<effectRange>900</effectRange>
-		<magicLevel>79</magicLevel>
-		<operateType>A2</operateType>
-		<staticReuse>true</staticReuse>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>600</castRange>
+		<effectPoint>867</effectPoint>
+		<effectRange>900</effectRange>
+		<hitTime>4000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>79</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<effects>
 			<effect name="ResurrectionSpecial">
 				<power>100</power>
@@ -1278,7 +1278,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Legendary Cloak - Invincibility -->
 				<attackerType>Creature</attackerType>
 				<chance>100</chance>
@@ -1292,22 +1292,22 @@
 	</skill>
 	<skill id="55865" toLevel="1" name="Legendary Cloak - Invincibility">
 		<!-- Become invincible. -->
-		<hitTime>200</hitTime>
-		<reuseDelay>300000</reuseDelay>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>SUB_TRIGGER_DEFENCE</abnormalType>
 		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<castRange>400</castRange>
 		<effectRange>900</effectRange>
+		<hitTime>200</hitTime>
 		<isMagic>4</isMagic> <!-- Item Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
-		<magicLevel>80</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>80</magicLevel>
+		<reuseDelay>300000</reuseDelay>
 		<effects>
 			<effect name="DispelBySlotMyself">
 				<dispel>MAGICAL_STANCE</dispel>
@@ -1364,21 +1364,21 @@
 	</skill>
 	<skill id="55871" toLevel="1" name="Life Stone Pack - Legendary">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="55872" toLevel="1" name="Iron Gate Guild Treasure Chest">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="55873" toLevel="1" name="Stable Scroll: Enchant Cloak - Legendary">
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="55874" toLevel="1" name="Ancient Cloak (Legendary) Scroll Pack">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="55875" toLevel="1" name="+10 Elmoreden Cloak - Legendary Box">
 		<!-- Double-click to obtain a +10 Elmoreden Cloak - Legendary. -->
@@ -1402,39 +1402,39 @@
 	</skill>
 	<skill id="55879" toLevel="1" name="Battle Box Lv. 1">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="55880" toLevel="1" name="Battle Box Lv. 2">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="55881" toLevel="1" name="Battle Box Lv. 3">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="55882" toLevel="1" name="Battle Box Lv. 4">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="55883" toLevel="1" name="Valor Box">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="55884" toLevel="1" name="Bracelet of Duty - Lv. 6">
 		<!-- Up to 4 Talismans can be equipped. Additionally STR/ INT/ DEX/ WIT/ CON/ MEN +1. -->
-		<magicLevel>20</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>20</magicLevel>
 		<effects>
 			<effect name="TalismanSlot">
 				<slots>4</slots>
@@ -1641,9 +1641,8 @@
 	</skill>
 	<skill id="55888" toLevel="4" name="Halloween Blessing">
 		<!-- Rico's Halloween buff. Acquired XP/SP +$s1, P./M. Atk. +$s2, Atk. Spd./Casting Spd. +$s3. You can receive a Halloween Gift once the Lv. 3 buff expires. -->
-		<isMagic>4</isMagic>
-		<castRange>900</castRange>
-		<effectPoint>1</effectPoint>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1651,18 +1650,19 @@
 		</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<hitTime>4000</hitTime>
-		<magicLevel>-1</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>3600000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<irreplacableBuff>true</irreplacableBuff>
-		<blockActionUseSkill>true</blockActionUseSkill>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<blockActionUseSkill>true</blockActionUseSkill>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<castRange>900</castRange>
+		<effectPoint>1</effectPoint>
+		<hitTime>4000</hitTime>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>-1</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="ExpModify">
 				<amount>
@@ -1680,11 +1680,11 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1706,19 +1706,19 @@
 	</skill>
 	<skill id="55889" toLevel="1" name="Halloween Blessing">
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="55890" toLevel="1" name="Halloween Gift">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -1734,8 +1734,8 @@
 	</skill>
 	<skill id="55891" toLevel="1" name="Treasure Chest of Forgotten Island">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="55892" toLevel="1" name="Dragon's Miracle Potion">
 		<!-- For 20 min., Acquired XP/ SP +50%, P./ M. Atk. +18%, P./ M. Def. +22%, Atk. Spd./ Casting Spd. +5%, P./ M. Crirical Rate +30, P./ M. Critical Damage +10%, HP/ MP/ CP +25%, HP/ MP Recovery +30%. At a certain chance absorbs 5% of the damage inflicted on target as HP. Effect remains after death. -->
@@ -1745,39 +1745,39 @@
 	</skill>
 	<skill id="55893" toLevel="1" name="Balthus Knights' Trophy Chest">
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="55894" toLevel="1" name="Transformation into Teddy Bear">
 		<!-- Transforms into teddy bear. During transformation HP/ MP +20%, P./ M. Def. +3%, acquired XP/ SP +5%. Effect remains after death. -->
 		<operateType>A1</operateType>
+		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
 		<reuseDelay>10000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="55895" toLevel="1" name="Transformation into Panda">
 		<!-- Transforms into panda. During transformation HP/ MP +10%, P./ M. Def. +2%, acquired XP/ SP +5%. Effect remains after death. -->
 		<operateType>A1</operateType>
+		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
 		<reuseDelay>10000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="55896" toLevel="1" name="Transformation into Cat">
 		<!-- Transforms into cat. During transformation HP/ MP +10%, P./ M. Def. +1%, acquired XP/ SP +5%. Effect remains after death. -->
 		<operateType>A1</operateType>
+		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
 		<reuseDelay>10000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="55897" toLevel="1" name="Bonfire">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>1500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>30000</reuseDelay>
-		<effectPoint>1</effectPoint>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<effectPoint>1</effectPoint>
+		<hitTime>1500</hitTime>
+		<reuseDelay>30000</reuseDelay>
 		<conditions>
 			<condition name="OpCanNotUseAirship" />
 		</conditions>
@@ -1792,19 +1792,19 @@
 	<skill id="55898" toLevel="1" name="Regular Dish">
 		<!-- For 30 min., acquired XP/ SP +30%, Max HP/ MP/ CP +5%, P. Atk./ M. Atk./ P. Def./ M. Def. +5%. -->
 		<icon>icon.etc_food_dish_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
 		<abnormalType>REGULAR_DISH</abnormalType>
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
+		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>4</isMagic>
-		<reuseDelay>5000</reuseDelay>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
+		<reuseDelay>5000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<irreplacableBuff>true</irreplacableBuff>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="ExpModify">
 				<amount>30</amount>
@@ -1824,11 +1824,11 @@
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1845,7 +1845,7 @@
 	<skill id="55899" toLevel="1" name="Match Girls' Gift">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 </list>

@@ -1,8 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="3600" toLevel="6" name="Special Ability: Anger">
 		<!-- Decreases Max HP and increases P. Atk. Enables the character to attack multiple opponents. -->
 		<icon>icon.skill1062</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -11,10 +13,8 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">20.44</value>
 					<value level="2">22.64</value>
@@ -74,6 +74,8 @@
 	<skill id="3601" toLevel="6" name="Special Ability: Haste">
 		<!-- Increases Atk. Spd. Enables the character to attack multiple opponents. -->
 		<icon>icon.skill1086</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -82,8 +84,6 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>
@@ -130,6 +130,8 @@
 	<skill id="3602" toLevel="6" name="Special Ability: Guidance">
 		<!-- Increases Accuracy. Enables the character to attack multiple opponents. -->
 		<icon>icon.skill1240</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">46</value>
 			<value level="2">49</value>
@@ -138,8 +140,6 @@
 			<value level="5">58</value>
 			<value level="6">61</value>
 		</magicLevel>
-		<operateType>P</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
 			<effect name="Accuracy">
 				<amount>
@@ -197,10 +197,10 @@
 	<skill id="3603" toLevel="10" name="Demonic Sword Zariche">
 		<!-- The Demon Bremmnon used this mystical sword to slaughter his enemies. The more blood the sword sheds, the more powerful it becomes. -->
 		<icon>icon.weapon_unique_zariche_i00</icon>
-		<magicLevel>78</magicLevel>
-		<minPledgeClass>2</minPledgeClass>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>78</magicLevel>
+		<minPledgeClass>2</minPledgeClass>
 		<effects>
 			<effect name="VampiricAttack">
 				<amount>
@@ -217,7 +217,7 @@
 				</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">220</value>
 					<value level="2">242</value>
@@ -232,7 +232,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">210</value>
 					<value level="2">220</value>
@@ -247,7 +247,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">600</value>
 					<value level="2">720</value>
@@ -262,7 +262,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">600</value>
 					<value level="2">720</value>
@@ -432,9 +432,9 @@
 	<skill id="3604" toLevel="1" name="Frintezza's Necklace">
 		<!-- Increases Dark Attack/Poison/Bleed/Paralysis/Stun/Sleep Resistance, and Poison/Bleed/Paralysis/Stun/Sleep attack bonus. Decreases skill cooldown. Reflects some of the damage received back to the enemy. -->
 		<icon>icon.accessory_necklace_of_frintessa_i00</icon>
-		<magicLevel>75</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>75</magicLevel>
 		<effects>
 			<effect name="AttackTrait">
 				<POISON>25</POISON>
@@ -472,9 +472,9 @@
 	<skill id="3605" toLevel="1" name="Clan Oath Heavy Armor Set">
 		<!-- Increases Atk. Spd. and damage of general attacks by 5%. -->
 		<icon>icon.armor_t1001_ul_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MaxHp">
 				<amount>25</amount>
@@ -493,15 +493,15 @@
 	<skill id="3606" toLevel="1" name="Clan Oath Light Armor Set">
 		<!-- Increases Atk. Spd. and Critical Damage by 5%. -->
 		<icon>icon.armor_t1002_ul_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MaxMp">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -512,17 +512,17 @@
 		</effects>
 	</skill>
 	<skill id="3607" toLevel="1" name="Clan Oath Robe Set">
-		<!-- Increases MP Recovery Rate and Casting Spd. by 5% -->
+		<!-- Increases MP Recovery Rate and Casting Spd. By 5% -->
 		<icon>icon.armor_t1003_ul_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MaxMp">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -532,14 +532,16 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="3608" toLevel="3" name="Improved Apella Heavy Armor Set">
-		<!-- Increases Max CP/CP Recovery Bonus, and decreases the skill player's death XP penalty. Increases one's own M. Def. when attacked. Decreases Critical Damage success rate. -->
+	<skill id="3608" toLevel="3" name="Apella Heavy Armor Set">
+		<!-- Level 1: Increases Max CP/CP Recovery Bonus, and decreases the skill player's death XP penalty. Increases one's own M. Def. when attacked. Decreases Critical Damage success rate. -->
+		<!-- Level 2: Increases Max CP/CP Recovery Bonus, and decreases MP Consumption and the player's death XP penalty. Increases one's own M. Def. and Critical Rate when attacked. Decreases Critical Damage success rate. -->
+		<!-- Level 3: Increases Max CP/CP Recovery Bonus, and decreases MP Consumption and the player's death XP penalty. Increases one's own M. Def. and Critical Rate when attacked. Decreases Critical Damage success rate. -->
 		<icon>icon.armor_t1004_ul_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Power of Apella -->
 				<attackerType>Playable</attackerType>
 				<chance>10</chance>
@@ -602,14 +604,16 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="3609" toLevel="3" name="Improved Apella Light Armor Set">
-		<!-- Increases Max CP/CP Recovery Bonus, and decreases the player's death XP penalty. Increases Evasion when attacked. Decreases received Critical Damage. -->
+	<skill id="3609" toLevel="3" name="Apella Light Armor Set">
+		<!-- Level 1: Increases Max CP/CP Recovery Bonus, and decreases the player's death XP penalty. Increases Evasion when attacked. Decreases received Critical Damage. -->
+		<!-- Level 2: Increases Max CP/CP Recovery Bonus, and decreases MP Consumption and the player's death XP penalty. Increases Evasion and Atk. Spd. when attacked. Decreases received Critical Damage. -->
+		<!-- Level 3: Increases Max CP/CP Recovery Bonus, and decreases MP Consumption and the player's death XP penalty. Increases Evasion and Atk. Spd. when attacked. Decreases received Critical Damage. -->
 		<icon>icon.armor_t1005_ul_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Power of Apella -->
 				<attackerType>Playable</attackerType>
 				<chance>10</chance>
@@ -672,14 +676,16 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="3610" toLevel="3" name="Improved Apella Robe Set">
-		<!-- Increases Max CP/CP Recovery Bonus, and decreases the player's death XP penalty. Increases Speed and P. Def. when attacked. -->
+	<skill id="3610" toLevel="3" name="Apella Robe Set">
+		<!-- Level 1: Increases Max CP/CP Recovery Bonus, and decreases the player's death XP penalty. Increases Speed and P. Def. when attacked. -->
+		<!-- Level 2: Increases Max CP/CP Recovery Bonus, and decreases MP Consumption and the player's death XP penalty. Increases Speed, P. Def., and M. Atk. when attacked. -->
+		<!-- Level 3: Increases Max CP/CP Recovery Bonus, and decreases MP Consumption and the player's death XP penalty. Increases Speed, P. Def., and M. Atk. when attacked. -->
 		<icon>icon.armor_t1006_ul_i00</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Power of Apella -->
 				<attackerType>Playable</attackerType>
 				<chance>10</chance>
@@ -745,9 +751,9 @@
 	<skill id="3611" toLevel="1" name="Enchant Heavy Armor (D-grade)">
 		<!-- Increases P. Def. and MP Recovery Bonus by enchanting set items. -->
 		<icon>icon.skill0231</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="StatByMoveType">
 				<stat>REGENERATE_MP_RATE</stat>
@@ -771,9 +777,9 @@
 	<skill id="3612" toLevel="1" name="Enchant Light Armor (D-grade)">
 		<!-- Increases M. Def. and Evasion by enchanting set items. -->
 		<icon>icon.skill0233</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>14</amount>
@@ -792,11 +798,11 @@
 		</effects>
 	</skill>
 	<skill id="3613" toLevel="1" name="Enchant Robe (D-grade)">
-		<!-- Increases M. Def. and weight limit by enchanting set items. -->
+		<!-- Increases P. Def. and weight capacity by enchanting set items. -->
 		<icon>icon.skill0234</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>16</amount>
@@ -814,9 +820,9 @@
 	<skill id="3614" toLevel="1" name="Enchant Heavy Armor (C-grade)">
 		<!-- Increases P. Def. and MP Recovery Bonus by enchanting set items. -->
 		<icon>icon.skill0231</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="StatByMoveType">
 				<stat>REGENERATE_MP_RATE</stat>
@@ -840,9 +846,9 @@
 	<skill id="3615" toLevel="1" name="Enchant Light Armor (C-grade)">
 		<!-- Increases M. Def. and Evasion by enchanting set items. -->
 		<icon>icon.skill0233</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>20</amount>
@@ -861,11 +867,11 @@
 		</effects>
 	</skill>
 	<skill id="3616" toLevel="1" name="Enchant Robe (C-grade)">
-		<!-- Increases M. Def. and weight limit by enchanting set items. -->
+		<!-- Increases P. Def. and weight capacity by enchanting set items. -->
 		<icon>icon.skill0234</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>24</amount>
@@ -883,9 +889,9 @@
 	<skill id="3617" toLevel="1" name="Enchant Heavy Armor (B-grade)">
 		<!-- Increases P. Def. and MP Recovery Bonus by enchanting set items. -->
 		<icon>icon.skill0231</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="StatByMoveType">
 				<stat>REGENERATE_MP_RATE</stat>
@@ -909,9 +915,9 @@
 	<skill id="3618" toLevel="1" name="Enchant Light Armor (B-grade)">
 		<!-- Increases M. Def. and Evasion by enchanting set items. -->
 		<icon>icon.skill0233</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>24</amount>
@@ -930,11 +936,11 @@
 		</effects>
 	</skill>
 	<skill id="3619" toLevel="1" name="Enchant Robe (B-grade)">
-		<!-- Increases M. Def. and weight limit by enchanting set items. -->
+		<!-- Increases P. Def. and weight capacity by enchanting set items. -->
 		<icon>icon.skill0234</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>28</amount>
@@ -952,9 +958,9 @@
 	<skill id="3620" toLevel="1" name="Enchant Heavy Armor (A-grade)">
 		<!-- Increases P. Def. and MP Recovery Bonus by enchanting set items. -->
 		<icon>icon.skill0231</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="StatByMoveType">
 				<stat>REGENERATE_MP_RATE</stat>
@@ -978,9 +984,9 @@
 	<skill id="3621" toLevel="1" name="Enchant Light Armor (A-grade)">
 		<!-- Increases M. Def. and Evasion by enchanting set items. -->
 		<icon>icon.skill0233</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>27</amount>
@@ -999,11 +1005,11 @@
 		</effects>
 	</skill>
 	<skill id="3622" toLevel="1" name="Enchant Robe (A-grade)">
-		<!-- Increases M. Def. and weight limit by enchanting set items. -->
+		<!-- Increases P. Def. and weight capacity by enchanting set items. -->
 		<icon>icon.skill0234</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>32</amount>
@@ -1019,11 +1025,13 @@
 		</effects>
 	</skill>
 	<skill id="3623" toLevel="3" name="Enchant Heavy Armor (S-grade)">
-		<!-- Increases P. Def. and MP Recovery Bonus by enchanting set items. -->
+		<!-- Level 1: Increases P. Def. and MP Recovery Bonus by enchanting set items. -->
+		<!-- Level 2: Increases P. Def and MP Recovery Bonus by enchanting a set item. -->
+		<!-- Level 3: Increases P. Def and MP Recovery Bonus by enchanting a set item. -->
 		<icon>icon.skill0231</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="StatByMoveType">
 				<stat>REGENERATE_MP_RATE</stat>
@@ -1045,11 +1053,13 @@
 		</effects>
 	</skill>
 	<skill id="3624" toLevel="3" name="Enchant Light Armor (S-grade)">
-		<!-- Increases M. Def. and Evasion by enchanting set items. -->
+		<!-- Level 1: Increases M. Def. and Evasion by enchanting set items. -->
+		<!-- Level 2: Increases M. Def. and Evasion by enchanting a set item. -->
+		<!-- Level 3: Increases M. Def. and Evasion by enchanting a set item. -->
 		<icon>icon.skill0233</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>33</amount>
@@ -1068,11 +1078,13 @@
 		</effects>
 	</skill>
 	<skill id="3625" toLevel="3" name="Enchant Robe (S-grade)">
-		<!-- Increases M. Def. and weight limit by enchanting set items. -->
+		<!-- Level 1: Increases P. Def. and weight capacity by enchanting set items. -->
+		<!-- Level 2: Increases P. Def. and weight capacity by enchanting a set item. -->
+		<!-- Level 3: Increases P. Def. and weight capacity by enchanting a set item. -->
 		<icon>icon.skill0234</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>38</amount>
@@ -1090,10 +1102,10 @@
 	<skill id="3629" toLevel="10" name="Blood Sword Akamanah">
 		<!-- A demonic twin blade forged in blood by Gran Kain, the god of chaos. The blade dies over and over again when it touches the air, and it craves blood to forge it anew. It becomes stronger every time it is supplied with blood. -->
 		<icon>icon.weapon_dual_sword_i00</icon>
-		<magicLevel>78</magicLevel>
-		<minPledgeClass>2</minPledgeClass>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>78</magicLevel>
+		<minPledgeClass>2</minPledgeClass>
 		<effects>
 			<effect name="VampiricAttack">
 				<amount>
@@ -1110,7 +1122,7 @@
 				</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">220</value>
 					<value level="2">242</value>
@@ -1125,7 +1137,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">210</value>
 					<value level="2">220</value>
@@ -1140,7 +1152,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">600</value>
 					<value level="2">720</value>
@@ -1155,7 +1167,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">600</value>
 					<value level="2">720</value>
@@ -1325,20 +1337,20 @@
 	<skill id="3630" toLevel="1" name="Void Burst">
 		<!-- Discharges cursed energy to attack nearby enemies. -->
 		<icon>icon.skill3630</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
 		<affectLimit>6-12</affectLimit>
+		<affectObject>ALL</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<effectPoint>-1</effectPoint>
 		<hitTime>2000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>78</magicLevel>
 		<mpConsume>140</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>60000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>ALL</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>11500</power>
 			</effect>
 		</effects>
@@ -1346,20 +1358,20 @@
 	<skill id="3631" toLevel="1" name="Void Flow">
 		<!-- Emits cursed energy to strike a distant enemy. -->
 		<icon>icon.skill3631</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectLimit>6-12</affectLimit>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
 		<effectPoint>-1</effectPoint>
 		<effectRange>1100</effectRange>
 		<hitTime>1900</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>78</magicLevel>
 		<mpConsume>140</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>60000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>15000</power>
 			</effect>
 		</effects>
@@ -1367,19 +1379,19 @@
 	<skill id="3632" toLevel="1" name="Clan Gate">
 		<!-- Active: Creates a gate that summons clan members. You cannot move while this skill is active. -->
 		<icon>icon.accessory_crown_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
 		<abnormalVisualEffect>MAGIC_SQUARE</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<hitTime>10000</hitTime>
-		<magicLevel>60</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>3600000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>60</magicLevel>
+		<reuseDelay>3600000</reuseDelay>
 		<conditions>
 			<condition name="OpCallPc" />
 		</conditions>
@@ -1393,18 +1405,19 @@
 		</effects>
 	</skill>
 	<skill id="3633" toLevel="2" name="Residential Stun Immunity">
-		<!-- Active: Momentarily increases Stun Resistance. -->
+		<!-- Level 1: Active: Momentarily increases Stun Resistance. -->
+		<!-- Level 2: Active: Momentarily immune to Stun. -->
 		<icon>icon.accessory_pledge_cap1_i05</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>7</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
-		<magicLevel>60</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>600000</reuseDelay>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>60</magicLevel>
+		<reuseDelay>600000</reuseDelay>
 		<effects>
 			<effect name="DefenceTrait">
 				<SHOCK>

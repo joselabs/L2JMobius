@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="34300" toLevel="1" name="Water Stun Shot">
 		<!-- Shoots an arrow at the target stunning them. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
@@ -20,7 +20,8 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34304" toLevel="2" name="Dancing Cat's Steps">
-		<!-- Energy of Dancing Cat makes all stats +1 for 24 h.. Parties with new or returning warriors can also get a Lv. 2 buff. -->
+		<!-- Level 1: Energy of Dancing Cat makes all stats +1 for 24 h.. Parties with new or returning warriors can also get a Lv. 2 buff. -->
+		<!-- Level 2: Dancing Cat gives his blessing to all heroes who return to Aden for new adventures. For 24 h., Max HP/ MP/ CP +5%, P. Atk./ M. Atk./ P. Def./ M. Def. +5%, Atk. Spd./ Casting Spd. +5%, all stats +1. -->
 		<icon>icon.skill_sing</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -38,24 +39,23 @@
 		<!-- Common. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<castRange>600</castRange>
-		<hitTime>1300</hitTime>
-		<effectPoint>-100</effectPoint>
-		<reuseDelay>1000</reuseDelay> 
+		<targetType>ENEMY</targetType>
+		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>180</attributeValue>
-		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>350</effectRange>
-		<magicLevel>97</magicLevel>
-		<!-- <nextAction>CAST</nextAction> -->
-		<fanRange>0;0;500;300</fanRange>
+		<castRange>600</castRange>
 		<coolTime>300</coolTime>
-		<targetType>ENEMY</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<effectPoint>-100</effectPoint>
+		<effectRange>350</effectRange>
+		<fanRange>0;0;500;300</fanRange>
+		<hitTime>1300</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>97</magicLevel>
+		<reuseDelay>1000</reuseDelay>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>300</power>
 			</effect>
 		</effects>
@@ -64,30 +64,30 @@
 		<!-- A Stun effect from Antharas' powerful attack. The effect cannot be guarded against. -->
 		<icon>icon.s_raid_antaras_stamp1</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>1500</castRange>
-		<reuseDelay>6000</reuseDelay>
-		<hitTime>3600</hitTime>
-		<coolTime>1400</coolTime>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
+		<abnormalTime>3</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<magicLevel>97</magicLevel>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>3</abnormalTime>
-		<trait>SHOCK</trait>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>800</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>180</attributeValue>
-		<affectRange>800</affectRange>
+		<basicProperty>NONE</basicProperty>
+		<castRange>1500</castRange>
+		<coolTime>1400</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>3600</hitTime>
 		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>97</magicLevel>
+		<reuseDelay>6000</reuseDelay>
+		<trait>SHOCK</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>2000</power>
 			</effect>
 			<effect name="BlockActions">
@@ -98,6 +98,8 @@
 	<skill id="34309" toLevel="1" name="Giant Stone Throw">
 		<!-- A Knockdown effect after Antharas' giant stone throw. The effect cannot be guarded against. -->
 		<icon>icon.s_raid_antaras_giant_rock_shooting1</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
@@ -106,22 +108,19 @@
 			<value fromLevel="1" toLevel="11">50</value>
 			<value fromLevel="3" toLevel="11" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
 		</activateRate>
-		<!-- <affectLimit>5-12</affectLimit> -->
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>500</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty> <!-- Guessed -->
+		<castRange>2000</castRange>
+		<effectPoint>-507</effectPoint>
+		<hitTime>3600</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLevel>117</magicLevel>
 		<trait>KNOCKDOWN</trait>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-		<castRange>2000</castRange>
-		<hitTime>3600</hitTime>
-		<effectPoint>-507</effectPoint>
-		<isDebuff>true</isDebuff>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">22536</value>
 					<value level="2">26428</value>
@@ -154,40 +153,38 @@
 	<skill id="34310" toLevel="1" name="Earth Scratch">
 		<!-- A Knockdown effect from a powerful ground-breaking attack. The effect cannot be guarded against. -->
 		<icon>icon.s_raid_antaras_scratch_earth1</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<basicProperty>PHYSICAL</basicProperty>
+		<activateRate>100</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>1000</affectRange>
+		<affectScope>SQUARE</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>180</attributeValue>
-		<activateRate>100</activateRate>
-		<affectRange>1000</affectRange>
-		<operateType>A2</operateType>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>500</castRange>
+		<coolTime>1000</coolTime>
+		<effectPoint>-716</effectPoint>
+		<effectRange>2600</effectRange>
+		<fanRange>0;0;4000;700</fanRange>
+		<hitTime>3700</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>0</isMagic>
 		<magicCriticalRate>25</magicCriticalRate>
 		<magicLevel>114</magicLevel>
-		<castRange>500</castRange>
-		<hitTime>3700</hitTime>
-		<coolTime>1000</coolTime>
 		<reuseDelay>5000</reuseDelay>
-		<effectPoint>-716</effectPoint>
-		<isDebuff>true</isDebuff>
-		<effectRange>2600</effectRange>
 		<trait>KNOCKDOWN</trait>
-		<isMagic>0</isMagic>
-		<targetType>ENEMY</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-		<fanRange>0;0;4000;700</fanRange>
-		<!-- <affectLimit>5-12</affectLimit> -->
-		<!-- <nextAction>CAST</nextAction> -->
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>97730</power>
 				<overHit>true</overHit>
 				<criticalChance>
 					<value fromLevel="1" toLevel="9">10</value>
-					<value fromLevel="1" toLevel="9" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>				</criticalChance>
+					<value fromLevel="1" toLevel="9" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value></criticalChance>
 			</effect>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
@@ -226,16 +223,16 @@
 	<skill id="34315" toLevel="1" name="Antharas' Earth Guard">
 		<!-- Antharas' Symbol increases HP to the maximum. Available after consuming all of Antharas' Symbols. If you have Antharas' Symbol, a broken symbol appears after a while. -->
 		<icon>icon.pk</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalType>HP_REGEN_UP</abnormalType>
-		<magicLevel>-1</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<hitCancelTime>0</hitCancelTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>-1</magicLevel>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="HpRegen">
 				<amount>2000000</amount>
@@ -268,32 +265,76 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34321" toLevel="8" name="Haughty Speed Reduction">
-		<!-- Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 1: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 2: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 3: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 4: The target's Atk. Spd./ Casting Spd. -50%. -->
+		<!-- Level 5: The target's Atk. Spd./ Casting Spd. -50%. -->
+		<!-- Level 6: The target's Atk. Spd./ Casting Spd. -50%. -->
+		<!-- Level 7: The target's Atk. Spd./ Casting Spd. -50%. -->
+		<!-- Level 8: The target's Atk. Spd./ Casting Spd. -50%. -->
 		<icon>icon.skill32498</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34322" toLevel="9" name="Haughty Momentum Flash">
-		<!-- Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 1: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 2: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 3: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 4: The target's P./ M. Def. -50%. -->
+		<!-- Level 5: The target's P./ M. Def. -50%. -->
+		<!-- Level 6: The target's P./ M. Def. -50%. -->
+		<!-- Level 7: The target's P./ M. Def. -50%. -->
+		<!-- Level 8: The target's P./ M. Def. -50%. -->
+		<!-- Level 9: The target's P./ M. Def. -50%. -->
 		<icon>icon.skill0122</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34323" toLevel="8" name="Haughty Hand Breaking">
-		<!-- Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 1: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 2: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 3: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 4: The target's P./ M. Atk. -50%. -->
+		<!-- Level 5: The target's P./ M. Atk. -50%. -->
+		<!-- Level 6: The target's P./ M. Atk. -50%. -->
+		<!-- Level 7: The target's P./ M. Atk. -50%. -->
+		<!-- Level 8: The target's P./ M. Atk. -50%. -->
 		<icon>icon.skill4037</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34324" toLevel="8" name="Haughty Poison Shot">
-		<!-- Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 1: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 2: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 3: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 4: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 5: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 6: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 7: Inflicts Infection and decreases HP for 15 sec. Inflicted status: Infection (Bleed, Poison). -->
+		<!-- Level 8: Inflicts Infection and decreases HP for 15 sec. Inflicted status: Infection (Bleed, Poison). -->
 		<icon>icon.skill4036</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34325" toLevel="9" name="Haughty Sonic Flash">
-		<!-- Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 1: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 2: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 3: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 4: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 5: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 6: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 7: Stuns the target for 10 sec. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Level 8: Stuns the target for 10 sec. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
+		<!-- Level 9: Stuns the target for 10 sec. Inflicted status: Confusion (Fear, Aerial Yoke, Faint, Charm, Stun, Paralysis, Knockback, Knockdown). -->
 		<icon>icon.skill0092</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34326" toLevel="8" name="Haughty Silence">
-		<!-- Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 1: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 2: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 3: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 4: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 5: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 6: Temporary data to show skill level of the Tower of Insolence's NPC. -->
+		<!-- Level 7: Blocks skills for 10 sec. Inflicted status: Obstruction (Disarm, Hold, Blind, Block, Aggression, Silence, Banishment, Bluff, Stealth). -->
+		<!-- Level 8: Blocks skills for 10 sec. Inflicted status: Obstruction (Disarm, Hold, Blind, Block, Aggression, Silence, Banishment, Bluff, Stealth). -->
 		<icon>icon.skill1064</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -361,7 +402,12 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34340" toLevel="6" name="Wrath of Thunder God">
-		<!-- Baium's rage flows on earth. Deals damage to nearby enemies per second, and inflicts a debuff that increases the damage over time. -->
+		<!-- Level 1: Baium's rage flows on earth. Deals damage to nearby enemies per second, and inflicts a debuff that increases the damage over time. -->
+		<!-- Level 2: Baium's rage grows stronger. Deals damage to nearby enemies per second, cancels immunity, and for 2 sec. makes received damage +10%. When damage is taken, the damage increase effect stacks increasing the damage by 10/20/30/40/50%. -->
+		<!-- Level 3: Baium's rage grows stronger. Deals damage to nearby enemies per second, cancels immunity, and for 2 sec. makes received damage +20%. When damage is taken, the damage increase effect stacks increasing the damage by 10/20/30/40/50%. -->
+		<!-- Level 4: Baium's rage grows stronger. Deals damage to nearby enemies per second, cancels immunity, and for 2 sec. makes received damage +30%. When damage is taken, the damage increase effect stacks increasing the damage by 10/20/30/40/50%. -->
+		<!-- Level 5: Baium's rage grows stronger. Deals damage to nearby enemies per second, cancels immunity, and for 2 sec. makes received damage +40%. When damage is taken, the damage increase effect stacks increasing the damage by 10/20/30/40/50%. -->
+		<!-- Level 6: Baium's rage grows stronger. Deals damage to nearby enemies per second, cancels immunity, and for 2 sec. makes received damage +50%. When damage is taken, the damage increase effect stacks increasing the damage by 10/20/30/40/50%. -->
 		<icon>icon.s_raid_baium_thunder_field1</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -396,7 +442,7 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34347" toLevel="1" name="Baium's Curse">
-		<!-- Required to activate collection effects -->
+		<!-- Required to activate collection effects; gives neither stats or properties, nor visual effects. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -522,7 +568,8 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34373" toLevel="2" name="Dark Strike">
-		<!-- A physical attack. -->
+		<!-- Level 1: A physical attack. -->
+		<!-- Level 2: An attack on a single target. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -542,17 +589,31 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34377" toLevel="10" name="AoE Attack Resistance">
-		<!-- Slightly increases AoE Attack Resistance. -->
+		<!-- Level 1: Slightly increases AoE Attack Resistance. -->
+		<!-- Level 2: Slightly increases AoE Attack Resistance. -->
+		<!-- Level 3: Slightly increases AoE Attack Resistance. -->
+		<!-- Level 4: Increases AoE Attack Resistance. -->
+		<!-- Level 5: Increases AoE Attack Resistance. -->
+		<!-- Level 6: Increases AoE Attack Resistance. -->
+		<!-- Level 7: Greatly increases AoE Attack Resistance. -->
+		<!-- Level 8: Greatly increases AoE Attack Resistance. -->
+		<!-- Level 9: Greatly increases AoE Attack Resistance. -->
+		<!-- Level 10: Greatly increases AoE Attack Resistance. -->
 		<icon>icon.skill34377</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34378" toLevel="5" name="TEST_Archangel Cometh_1">
-		<!-- Required level: 1-84. Acquired XP/ SP +10%, P. Atk./ M. Atk./ P. Def./ M. Def. +1%. Not for pets or servitors. -->
+		<!-- Level 1: Required level: 1-84. Acquired XP/ SP +10%, P. Atk./ M. Atk./ P. Def./ M. Def. +1%. Not for pets or servitors. -->
+		<!-- Level 2: Required level: 1-90. Acquired XP/ SP +20%, P. Atk./ M. Atk./ P. Def./ M. Def. +2%. Not for pets or servitors. -->
+		<!-- Level 3: Required level: 1-100. Acquired XP/ SP +30%, P. Atk./ M. Atk./ P. Def./ M. Def. +3%. Not for pets or servitors. -->
+		<!-- Level 4: Required level: 1-110. Acquired XP/ SP +40%, P. Atk./ M. Atk./ P. Def./ M. Def. +4%. Not for pets or servitors. -->
+		<!-- Level 5: Required level: 1-120. Acquired XP/ SP +50%, P. Atk./ M. Atk./ P. Def./ M. Def. +5%. Not for pets or servitors. -->
 		<icon>icon.etc_pccafe_exp_i00</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34379" toLevel="2" name="TEST_Archangel Cometh_Boost_1">
-		<!-- Acquired XP/ SP +50%. -->
+		<!-- Level 1: Acquired XP/ SP +50%. -->
+		<!-- Level 2: Acquired XP/ SP +100%. -->
 		<icon>icon.etc_pccafe_exp_i00</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -570,15 +631,15 @@
 		<!-- If your PK value is above 10 and below 35, you are teleported to Adagio (Zone 1) in the Cursed Village. An unknown power makes you dance all day and night long. To leave the zone, you must spend 180 min. there. Or you can donate some adena and leave immediately. -->
 		<icon>icon.cursed_prison_1</icon>
 		<operateType>A2</operateType>
-		<isMagic>3</isMagic>
-		<abnormalTime>-1</abnormalTime>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalType>PRISON</abnormalType>
 		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<abnormalType>PRISON</abnormalType>
 		<abnormalVisualEffect>DANCING_ANIMATION</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<affectScope>SINGLE</affectScope>
 		<irreplacableBuff>true</irreplacableBuff>
+		<isDebuff>true</isDebuff>
+		<isMagic>3</isMagic>
 		<effects>
 			<effect name="BlockEscape" />
 		</effects>
@@ -587,14 +648,14 @@
 		<!-- If your PK value is above 35 and below 40, you are teleported to Andante (Zone 2) in the Cursed Village. To leave the zone, you must spend 240 min. there and collect 108 Moonlight Petals. Or you can donate some adena and leave immediately. The petals are collected from local flowers, but prepare to spill some blood for them, as these flowers have sharp thorns. -->
 		<icon>icon.cursed_prison_2</icon>
 		<operateType>A2</operateType>
-		<isMagic>3</isMagic>
-		<abnormalTime>-1</abnormalTime>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalType>PRISON</abnormalType>
 		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<abnormalType>PRISON</abnormalType>
 		<affectScope>SINGLE</affectScope>
-		<isDebuff>true</isDebuff>
 		<irreplacableBuff>true</irreplacableBuff>
+		<isDebuff>true</isDebuff>
+		<isMagic>3</isMagic>
 		<effects>
 			<effect name="BlockEscape" />
 		</effects>
@@ -603,14 +664,14 @@
 		<!-- If your PK value is above 40, you are teleported to the Allegro (Zone 3) in the Cursed Village. To leave the zone, you must spend 300 min. there and collect 54 Pure Crystals. Or you can donate some adena and leave immediately. Pure Crystals can be obtained from Golden Spheres. To get the Crystal, purify the soul in the Sphere with a Moonlight Petal and 1004 adena. -->
 		<icon>icon.cursed_prison_3</icon>
 		<operateType>A2</operateType>
-		<isMagic>3</isMagic>
-		<abnormalTime>-1</abnormalTime>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalType>PRISON</abnormalType>
 		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<abnormalType>PRISON</abnormalType>
 		<affectScope>SINGLE</affectScope>
-		<isDebuff>true</isDebuff>
 		<irreplacableBuff>true</irreplacableBuff>
+		<isDebuff>true</isDebuff>
+		<isMagic>3</isMagic>
 	</skill>
 	<skill id="34385" toLevel="1" name="Blade of Souls">
 		<!-- Common. -->
@@ -628,7 +689,8 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34388" toLevel="2" name="Teleport">
-		<!-- Presentation skill for starting teleportation. -->
+		<!-- Level 1: Presentation skill for starting teleportation. -->
+		<!-- Level 2: Presentation skill for finishing teleportation. -->
 		<icon>icon.skill10516</icon>
 		<operateType>A1</operateType>
 	</skill>

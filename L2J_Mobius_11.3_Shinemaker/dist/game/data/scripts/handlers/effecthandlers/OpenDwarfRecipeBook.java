@@ -45,7 +45,7 @@ public class OpenDwarfRecipeBook extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		final Player casterPlayer = effector.getActingPlayer();
+		final Player casterPlayer = effector.asPlayer();
 		if (casterPlayer == null)
 		{
 			return;

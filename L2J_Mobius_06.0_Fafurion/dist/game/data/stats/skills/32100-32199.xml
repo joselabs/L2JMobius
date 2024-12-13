@@ -1,20 +1,20 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="32100" toLevel="1" name="Dance of Sword's Flower">
 		<!-- Inflicts physical damage on all nearby enemies and decreases P. Atk./ M. Atk. significantly. -->
 		<icon>icon.skill32100</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="32101" toLevel="2" name="Art of Merciless Seduction">
 		<!-- Significantly decreases the movement speed of all enemies in a wide area and pulls them toward you. -->
 		<icon>icon.skill32101</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="32102" toLevel="1" name="Liberation">
 		<!-- Unlocks your ability to show your true self. Increases your P. Atk./ M. Atk./ P. Def./ M. Def. 4 times and HP regen speed 10 times. -->
@@ -26,54 +26,54 @@
 		<!-- Inflicts physical damage on the enemy and decreases P. Def. significantly. -->
 		<icon>icon.dual_t_atkup</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
 		<castRange>40</castRange>
-		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="32104" toLevel="1" name="Aggression">
 		<!-- Provokes the enemy into attacking you and fixes its target. -->
 		<icon>icon.skill0028</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
 		<castRange>40</castRange>
-		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="32105" toLevel="1" name="Shock Wave">
 		<!-- Wields a shield to inflict physical damage on all nearby enemies and knock them down. -->
 		<icon>icon.skill0100</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="32106" toLevel="1" name="War Cry">
 		<!-- Significantly decreases all nearby enemies' P. Atk./ M. Atk. -->
 		<icon>icon.skill0078</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="32107" toLevel="1" name="Multi-Shot">
 		<!-- Inflicts damage on enemies around the target by firing multishots in a fan shape. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
-		<effectRange>1500</effectRange>
-		<hitTime>1500</hitTime>
-		<isMagic>2</isMagic>
-		<effectPoint>-100</effectPoint>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>900</affectRange>
-		<fanRange>0;0;900;90</fanRange>
 		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
+		<affectLimit>5-12</affectLimit>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>900</affectRange>
+		<affectScope>FAN</affectScope>
+		<castRange>900</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1500</effectRange>
+		<fanRange>0;0;900;90</fanRange>
+		<hitTime>1500</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>2</isMagic>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 		</effects>
@@ -82,17 +82,17 @@
 		<!-- Significantly increases your attack speed. -->
 		<icon>icon.skill0099</icon>
 		<operateType>A2</operateType>
-		<hitTime>1500</hitTime>
-		<effectPoint>2</effectPoint>
-		<abnormalType>ATTACK_TIME_DOWN</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>180</abnormalTime>
-		<isMagic>2</isMagic>
-		<targetType>SELF</targetType>
+		<abnormalType>ATTACK_TIME_DOWN</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<effectPoint>0</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>1500</hitTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>200</amount>
@@ -104,36 +104,36 @@
 		<!-- Casts dark magic on the enemy to inflict damage. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>900</castRange>
-		<hitTime>2000</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>2000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32110" toLevel="1" name="Great Heal">
 		<!-- Refills the target's HP with a heal skill. Can be used only on Mary Reed. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>900</castRange>
 		<hitTime>2000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32111" toLevel="1" name="Fire Double Guns">
 		<!-- Fires two guns one after the other to deal great damage. -->
 		<icon>icon.skill32111</icon>
 		<operateType>A1</operateType>
-		<castRange>900</castRange>
-		<effectRange>1500</effectRange>
-		<hitTime>1500</hitTime>
-		<effectPoint>-100</effectPoint>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>900</affectRange>
-		<isMagic>2</isMagic>
-		<fanRange>0;0;900;90</fanRange>
 		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
+		<affectLimit>5-12</affectLimit>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>900</affectRange>
+		<affectScope>FAN</affectScope>
+		<castRange>900</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1500</effectRange>
+		<fanRange>0;0;900;90</fanRange>
+		<hitTime>1500</hitTime>
+		<isMagic>2</isMagic>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>500000</power>
 			</effect>
 		</effects>
@@ -142,39 +142,39 @@
 		<!-- Attacks the enemy with magic to deal damage and a certain portion of the damage is restored to you. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>900</castRange>
-		<hitTime>1500</hitTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>1500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32113" toLevel="1" name="Savior's Blessing">
 		<!-- A gift commemorating the great feat of defeating Etis van Etina and Kain van Halter. It increases XP and SP by 100% for 1 h. -->
 		<icon>BranchSys2.icon.the_fall_of_dragon</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>1200</castRange>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32114" toLevel="1" name="No Resurrection Magic">
 		<!-- Cannot receive resurrection magic due to strong evil energy in this area. -->
 		<icon>icon.skill_resurrection</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
 		<effectPoint>-100</effectPoint>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32115" toLevel="1" name="Cyclone of Chaos">
 		<!-- Draws enemies within the range to you for 1 min to deal physical DoT. -->
 		<icon>icon.skill32028</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>3000</castRange>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32116" toLevel="1" name="End of Darkness">
 		<!-- Inflicts great DoT on enemies within the range for 1 min and decreases their Speed by 50%. -->
 		<icon>icon.skill32030</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>3000</castRange>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32117" toLevel="1" name="Knight of Splendor">
 		<!-- A title given to the clan leader and elite clan members who completed the Imprint of Light successfully. It increases damage dealt by 10% in PvP and increases P. Def. and M. Def. by 500. -->
@@ -338,63 +338,67 @@
 		<!-- Instantly reduces Speed by 80%. -->
 		<icon>icon.skill11136</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>15000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>2000</hitTime>
+		<isDebuff>true</isDebuff>
+		<reuseDelay>15000</reuseDelay>
 	</skill>
 	<skill id="32126" toLevel="1" name="Group Dance">
 		<!-- Forced to dance by an unknown power. -->
 		<icon>icon.skill5008_psycho</icon>
 		<operateType>A1</operateType>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>15000</reuseDelay>
 		<effectPoint>100</effectPoint>
+		<hitTime>2000</hitTime>
+		<reuseDelay>15000</reuseDelay>
 	</skill>
 	<skill id="32127" toLevel="1" name="Power Hitter">
 		<!-- Being blown away by a strong attack. -->
 		<icon>icon.skill1432</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>15000</reuseDelay>
 		<effectPoint>-1</effectPoint>
+		<hitTime>2000</hitTime>
+		<isDebuff>true</isDebuff>
+		<reuseDelay>15000</reuseDelay>
 	</skill>
 	<skill id="32128" toLevel="1" name="Double Lariat">
 		<!-- Knocked down by a strong attack. -->
 		<icon>icon.skill10262</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>15000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>2000</hitTime>
+		<isDebuff>true</isDebuff>
+		<reuseDelay>15000</reuseDelay>
 	</skill>
 	<skill id="32129" toLevel="5" name="Raid Shield">
-		<!-- Reduces Damage Received to 27. -->
+		<!-- Level 1: Reduces Damage Received to 27. -->
+		<!-- Level 2: Reduces Damage Received to 13. -->
+		<!-- Level 3: Reduces Damage Received to 9. -->
+		<!-- Level 4: Reduces Damage Received to 7. -->
+		<!-- Level 5: Reduces Damage Received to 5. -->
 		<icon>icon.skill0110</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="32130" toLevel="1" name="Member of the Balthus Knights">
 		<!-- Receiving HP/ MP recovery bonus and movement speed bonus as a member of the Balthus Knights. -->
 		<icon>icon.balthus_buff</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
 		<abnormalType>ARCHER_BUFF3</abnormalType>
-		<operateType>A2</operateType>
-		<targetType>TARGET</targetType>
+		<activateRate>-1</activateRate>
 		<affectScope>SINGLE</affectScope>
 		<coolTime>500</coolTime>
 		<effectPoint>687</effectPoint>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
 		<specialLevel>-1</specialLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-1</activateRate>
 		<effects>
 			<effect name="Speed">
 				<amount>33</amount>
@@ -411,20 +415,21 @@
 		</effects>
 	</skill>
 	<skill id="32131" toLevel="2" name="Tarti Hydro Attack">
-		<!-- Single-Target Magic Attack -->
+		<!-- Level 1: Single-Target Magic Attack -->
+		<!-- Level 2: Explodes the current-carrying Wind Sphere to deal damage with Power added to M. Atk. It inflicts additional damage on the debuffed target. -->
 		<icon>icon.skill30001</icon>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
 		<castRange>80</castRange>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-692</effectPoint>
+		<hitTime>500</hitTime>
 		<isMagic>
 			<value level="1">0</value>
 			<value level="2">1</value>
 		</isMagic>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalDamage">
 				<power>106</power>
 				<debuffModifier>1.1</debuffModifier>
 			</effect>
@@ -433,32 +438,32 @@
 	<skill id="32132" toLevel="1" name="Tarti Air Rush">
 		<!-- Flies toward the target, dealing damage and knocking it down. -->
 		<icon>icon.skill30012</icon>
+		<operateType>DA2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>2</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
-		<operateType>DA2</operateType>
-		<targetType>ENEMY</targetType>
+		<activateRate>120</activateRate>
 		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-696</effectPoint>
 		<effectRange>900</effectRange>
 		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>7000</reuseDelay>
-		<effectPoint>-696</effectPoint>
-		<magicLevel>85</magicLevel>
-		<isMagic>1</isMagic>
 		<isDebuff>true</isDebuff>
-		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>120</activateRate>
-		<trait>SHOCK</trait>
+		<isMagic>1</isMagic>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>7000</reuseDelay>
+		<trait>SHOCK</trait>
 		<conditions>
 			<condition name="OpCheckCastRange">
 				<distance>200</distance>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<debuffModifier>1.1</debuffModifier>
 				<power>101</power>
 			</effect>
@@ -475,28 +480,28 @@
 	<skill id="32133" toLevel="1" name="Herphah Power Bomber">
 		<!-- Hits the target strongly, dealing damage and knocking it down. -->
 		<icon>icon.skill10262</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
+		<activateRate>120</activateRate>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-700</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>2000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>10000</reuseDelay>
-		<effectPoint>-700</effectPoint>
-		<magicLevel>85</magicLevel>
 		<isDebuff>2</isDebuff>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<nextAction>ATTACK</nextAction>
-		<activateRate>120</activateRate>
+		<reuseDelay>10000</reuseDelay>
 		<trait>SHOCK</trait>
-		<basicProperty>PHYSICAL</basicProperty>
 		<effects>
-			<effect name="EnergyAttack">
+			<effect name="EnergyDamage">
 				<power>20483</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
 				<criticalChance>3</criticalChance>
@@ -508,21 +513,21 @@
 		<icon>icon.skill10288</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>600</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-709</effectPoint>
 		<effectRange>1000</effectRange>
 		<hitTime>1000</hitTime>
-		<coolTime>300</coolTime>
-		<reuseDelay>10000</reuseDelay>
-		<effectPoint>-709</effectPoint>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<nextAction>ATTACK</nextAction>
+		<reuseDelay>10000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttackWeaponBonus">
+			<effect name="PhysicalDamageWeaponBonus">
 				<power>11557</power>
 				<criticalChance>5</criticalChance>
 				<pDefMod>1</pDefMod>
@@ -537,27 +542,27 @@
 	<skill id="32135" toLevel="1" name="Stig Chain Hydra">
 		<!-- Draws the target and nearby enemies to you to make them attack you. -->
 		<icon>icon.skill10016</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1</abnormalTime>
 		<abnormalType>STUN</abnormalType>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<activateRate>-1</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>900</castRange>
+		<coolTime>1000</coolTime>
+		<effectPoint>-2093</effectPoint>
 		<effectRange>1100</effectRange>
 		<hitTime>500</hitTime>
-		<coolTime>1000</coolTime>
-		<reuseDelay>10000</reuseDelay>
-		<effectPoint>-2093</effectPoint>
-		<magicLevel>85</magicLevel>
 		<isDebuff>1</isDebuff>
-		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-1</activateRate>
-		<trait>SHOCK</trait>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<trait>SHOCK</trait>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
@@ -570,21 +575,21 @@
 		<icon>icon.skill10013</icon>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<fanRange>0;0;150;120</fanRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<castRange>40</castRange>
-		<effectRange>400</effectRange>
-		<hitTime>1000</hitTime>
 		<coolTime>370</coolTime>
-		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-1378</effectPoint>
-		<magicLevel>85</magicLevel>
+		<effectRange>400</effectRange>
+		<fanRange>0;0;150;120</fanRange>
+		<hitTime>1000</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>10000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>10314</power>
 				<criticalChance>5</criticalChance>
 			</effect>
@@ -593,24 +598,24 @@
 	<skill id="32137" toLevel="1" name="Balthus Superior Aggression Aura">
 		<!-- Provokes nearby enemies into attacking the caster. -->
 		<icon>icon.skill10027</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>TARGET_LOCK</abnormalType>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<activateRate>150</activateRate>
 		<affectLimit>10-10</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
-		<hitTime>1000</hitTime>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>MAGIC</basicProperty>
 		<coolTime>500</coolTime>
 		<effectPoint>-10330</effectPoint>
-		<magicLevel>85</magicLevel>
+		<hitTime>1000</hitTime>
 		<isDebuff>3</isDebuff>
 		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>150</activateRate>
+		<magicLevel>85</magicLevel>
 		<trait>HOLD</trait>
-		<basicProperty>MAGIC</basicProperty>
 		<effects>
 			<effect name="TargetMe" />
 			<effect name="GetAgro" />
@@ -631,21 +636,21 @@
 		<icon>icon.skill10023</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<affectLimit>5-12</affectLimit>
-		<fanRange>0;0;300;100</fanRange>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
 		<castRange>40</castRange>
-		<effectRange>400</effectRange>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelayType>S</reuseDelayType>
 		<effectPoint>-3541</effectPoint>
-		<magicLevel>85</magicLevel>
+		<effectRange>400</effectRange>
+		<fanRange>0;0;300;100</fanRange>
+		<hitTime>2000</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<nextAction>ATTACK</nextAction>
+		<reuseDelayType>S</reuseDelayType>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>35222</power>
 				<criticalChance>1</criticalChance>
 				<pDefMod>1</pDefMod>
@@ -655,29 +660,29 @@
 	<skill id="32139" toLevel="1" name="Balthus Sonic Star">
 		<!-- Inflicts damage on nearby enemies and knocks them down. -->
 		<icon>icon.skill10281</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>350</affectRange>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>-700</effectPoint>
-		<magicLevel>85</magicLevel>
-		<isDebuff>2</isDebuff>
-		<magicCriticalRate>5</magicCriticalRate>
 		<activateRate>200</activateRate>
-		<trait>SHOCK</trait>
-		<lvlBonusRate>30</lvlBonusRate>
+		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>350</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-700</effectPoint>
+		<hitTime>500</hitTime>
+		<isDebuff>2</isDebuff>
+		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelayType>S</reuseDelayType>
+		<trait>SHOCK</trait>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>44711</power>
 				<criticalChance>5</criticalChance>
 				<pDefMod>0.7</pDefMod>
@@ -692,21 +697,21 @@
 	<skill id="32140" toLevel="1" name="Balthus Furious Slasher">
 		<!-- For 60 sec., increases P. Atk. by 30% when a two-handed sword or two-handed blunt is equipped. Additionally attacks 6 enemies at once with a standard attack. -->
 		<icon>icon.skill10334</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SUPER_AVOID</abnormalType>
 		<abnormalVisualEffect>WIDE_SWORD</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
+		<activateRate>-1</activateRate>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>2000</hitTime>
 		<coolTime>200</coolTime>
+		<effectPoint>673</effectPoint>
+		<hitTime>2000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<reuseDelay>60000</reuseDelay>
 		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>673</effectPoint>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-1</activateRate>
 		<effects>
 			<effect name="TwoHandedSwordBonus">
 				<pAtkAmount>30</pAtkAmount>
@@ -729,15 +734,15 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<castRange>400</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-687</effectPoint>
 		<effectRange>900</effectRange>
 		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<nextAction>ATTACK</nextAction>
 		<reuseDelay>500</reuseDelay>
 		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>-687</effectPoint>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<nextAction>ATTACK</nextAction>
 		<effects>
 			<effect name="TeleportToTarget" />
 			<effect name="TargetCancel">
@@ -756,23 +761,23 @@
 	<skill id="32142" toLevel="1" name="Balthus Angel of Death">
 		<!-- For 30 sec., increases Deadly Attack Rate +40%, P. Skill Power +10%, P. Accuracy +8, and P. Evasion +40, and defends debuff attacks by 5 times. -->
 		<icon>icon.skill10531</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>MOVEMENT</abnormalType>
 		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
+		<activateRate>-1</activateRate>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
+		<effectPoint>700</effectPoint>
+		<hitTime>2000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<reuseDelay>500</reuseDelay>
 		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>700</effectPoint>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-1</activateRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Crippling Poison -->
 				<attackerType>Playable</attackerType>
 				<chance>80</chance>
@@ -807,21 +812,21 @@
 		<icon>icon.skill10771</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<affectLimit>5-12</affectLimit>
-		<fanRange>0;0;900;90</fanRange>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>FAN</affectScope>
 		<castRange>800</castRange>
-		<effectRange>1000</effectRange>
-		<hitTime>1500</hitTime>
 		<coolTime>350</coolTime>
-		<reuseDelay>500</reuseDelay>
 		<effectPoint>-689</effectPoint>
-		<magicLevel>85</magicLevel>
+		<effectRange>1000</effectRange>
+		<fanRange>0;0;900;90</fanRange>
+		<hitTime>1500</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<nextAction>ATTACK</nextAction>
+		<reuseDelay>500</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>23391</power>
 				<criticalChance>5</criticalChance>
 				<pDefMod>1</pDefMod>
@@ -833,21 +838,21 @@
 		<icon>icon.skill10781</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>800</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-706</effectPoint>
 		<effectRange>1000</effectRange>
 		<hitTime>2000</hitTime>
-		<coolTime>500</coolTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<reuseDelay>500</reuseDelay>
 		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>-706</effectPoint>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>45215</power>
 				<criticalChance>5</criticalChance>
 				<pDefMod>1</pDefMod>
@@ -859,18 +864,18 @@
 		<icon>icon.skill11350</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-700</effectPoint>
 		<effectRange>800</effectRange>
 		<hitTime>1000</hitTime>
-		<coolTime>300</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<effectPoint>-700</effectPoint>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>188</power>
 			</effect>
 		</effects>
@@ -880,20 +885,20 @@
 		<icon>icon.skill11263</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>600</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-700</effectPoint>
 		<effectRange>800</effectRange>
 		<hitTime>1000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<effectPoint>-700</effectPoint>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>500</reuseDelay>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>147</power>
 			</effect>
 		</effects>
@@ -901,30 +906,30 @@
 	<skill id="32147" toLevel="1" name="Balthus Arcana's Call">
 		<!-- Uses the power of nature to increase P. Atk./ P. Def/ M. Atk./ M. Def. by 20% for 30 sec.. Also increases the Servitor's P. Atk. by 20% and P. Accuracy by 23, and Knock Back and Knock Down Rates by 60%. The Servitor becomes immune to debuff. -->
 		<icon>icon.skill11387</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>SUMMONER_BIGBODY1</abnormalType>
 		<abnormalVisualEffect>BIG_BODY_COMBINATION_CAT_NPC</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
+		<activateRate>-1</activateRate>
 		<affectObject>FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
 		<castRange>900</castRange>
+		<coolTime>200</coolTime>
+		<effectPoint>687</effectPoint>
 		<effectRange>1300</effectRange>
 		<hitTime>2000</hitTime>
-		<coolTime>200</coolTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<reuseDelay>500</reuseDelay>
 		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>687</effectPoint>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-1</activateRate>
 		<effects>
 			<effect name="AttackTrait">
 				<KNOCKDOWN>30</KNOCKDOWN>
 				<KNOCKBACK>30</KNOCKBACK>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -939,35 +944,35 @@
 	<skill id="32148" toLevel="1" name="Balthus Chaos Symphony">
 		<!-- Attacks the target and nearby enemies, for 10 sec. decreasing their P. Def./ M. Def/ Speed by 20% and P. Critical Rate and Damage, P./ M. Skill Critical Rates by 80%, and putting them into Seduction for 3 sec. after the effect ends. -->
 		<icon>icon.skill11533</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>MULTI_DEBUFF</abnormalType>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<activateRate>200</activateRate>
 		<affectLimit>10-10</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>900</castRange>
+		<effectPoint>-707</effectPoint>
 		<effectRange>1100</effectRange>
 		<hitTime>3000</hitTime>
-		<reuseDelay>10000</reuseDelay>
-		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>-707</effectPoint>
-		<magicLevel>85</magicLevel>
 		<isDebuff>1</isDebuff>
 		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>200</activateRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<reuseDelayType>S</reuseDelayType>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>38826</power>
 				<criticalChance>5</criticalChance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -990,16 +995,16 @@
 		<icon>icon.skill19421</icon>
 		<operateType>A1</operateType>
 		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
 		<castRange>1100</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>696</effectPoint>
 		<effectRange>1500</effectRange>
 		<hitTime>3000</hitTime>
-		<coolTime>300</coolTime>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>696</effectPoint>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="CallSkill">
 				<skillId>11517</skillId> <!-- Horn Melody -->
@@ -1024,16 +1029,16 @@
 		<icon>icon.skill11757</icon>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<affectLimit>50-50</affectLimit>
+		<affectObject>FRIEND</affectObject>
 		<affectRange>1000</affectRange>
-		<hitTime>2000</hitTime>
+		<affectScope>RANGE</affectScope>
 		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
 		<effectPoint>1734</effectPoint>
-		<magicLevel>85</magicLevel>
+		<hitTime>2000</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>5000</reuseDelay>
 		<effects>
 			<effect name="HpCpHeal">
 				<power>1191</power>
@@ -1043,30 +1048,30 @@
 	<skill id="32151" toLevel="1" name="Balthus Brilliant Recharge">
 		<!-- Instantly recovers your MP and party members' MP with a maximum of 700 Power depending on their levels, and also recovers their 50 MP per second for 10 sec. -->
 		<icon>icon.skill11761</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>MP_RECOVER</abnormalType>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>FRIEND</affectObject>
+		<activateRate>-1</activateRate>
 		<affectLimit>50-50</affectLimit>
+		<affectObject>FRIEND</affectObject>
 		<affectRange>1000</affectRange>
-		<hitTime>2000</hitTime>
+		<affectScope>RANGE</affectScope>
 		<coolTime>500</coolTime>
-		<reuseDelay>500</reuseDelay>
-		<reuseDelayType>S</reuseDelayType>
 		<effectPoint>1798</effectPoint>
-		<magicLevel>85</magicLevel>
+		<hitTime>2000</hitTime>
 		<isMagic>1</isMagic>
 		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-1</activateRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>500</reuseDelay>
+		<reuseDelayType>S</reuseDelayType>
 		<effects>
 			<effect name="ManaHealByLevel">
 				<power>700</power>
 			</effect>
 			<effect name="ManaHealOverTime">
-				<amount>50</amount>
+				<power>50</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -1077,39 +1082,39 @@
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
 		<castRange>600</castRange>
+		<coolTime>300</coolTime>
+		<effectPoint>-687</effectPoint>
 		<hitTime>
 			<value level="1">700</value>
 			<value level="2">1500</value>
 		</hitTime>
-		<coolTime>300</coolTime>
-		<effectPoint>-687</effectPoint>
 	</skill>
 	<skill id="32153" toLevel="1" name="Balthus Updraft Destruction">
 		<!-- Hits the target and nearby enemies with wind magic attacks and decreases their M. Def. by 20% for 10 sec. -->
 		<icon>icon.skill11017</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>WIZARD_BUFF1</abnormalType>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-		<affectLimit>5-12</affectLimit>
-		<affectRange>200</affectRange>
-		<castRange>600</castRange>
-		<effectRange>800</effectRange>
-		<hitTime>2000</hitTime>
-		<coolTime>1000</coolTime>
-		<reuseDelay>6700</reuseDelay>
-		<effectPoint>-687</effectPoint>
-		<magicLevel>85</magicLevel>
-		<isDebuff>1</isDebuff>
-		<magicCriticalRate>10</magicCriticalRate>
 		<activateRate>120</activateRate>
+		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<attributeType>WIND</attributeType>
 		<attributeValue>10</attributeValue>
+		<castRange>600</castRange>
+		<coolTime>1000</coolTime>
+		<effectPoint>-687</effectPoint>
+		<effectRange>800</effectRange>
+		<hitTime>2000</hitTime>
+		<isDebuff>1</isDebuff>
+		<magicCriticalRate>10</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>6700</reuseDelay>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>431</power>
 			</effect>
 			<effect name="MagicalDefence">
@@ -1122,21 +1127,21 @@
 		<icon>icon.skill11067</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>600</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-709</effectPoint>
 		<effectRange>800</effectRange>
 		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<reuseDelay>10000</reuseDelay>
 		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>-709</effectPoint>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>620</power>
 			</effect>
 			<effect name="CallSkill">
@@ -1151,16 +1156,16 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-700</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>2000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>9000</reuseDelay>
-		<effectPoint>-700</effectPoint>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<nextAction>ATTACK</nextAction>
+		<reuseDelay>9000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>10417</power>
 				<pDefMod>0.5</pDefMod>
 				<criticalChance>15</criticalChance>
@@ -1170,28 +1175,28 @@
 	<skill id="32156" toLevel="1" name="Balthus Steel Mind">
 		<!-- With indomitable willpower, for 30 sec. increases P. Atk. by15%, P. Critical Damage +10%, P. Skill Critical Damage +10%, Speed +50, and Knock Back/ Knock Down/ Pull/ Danger Zone/ Aerial Yoke/ Aggression defense rates +90%. For standard attacks, deals additional damage as much as 5 times of P. Atk., HP does not decrease below 1, and recovers HP 30% until the effect ends. -->
 		<icon>icon.skill30520</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>STEEL_MIND</abnormalType>
 		<abnormalVisualEffect>PMENTAL_TRAIL</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
+		<activateRate>-1</activateRate>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
+		<effectPoint>100</effectPoint>
+		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<reuseDelay>60000</reuseDelay>
 		<reuseDelayType>S</reuseDelayType>
-		<effectPoint>100</effectPoint>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-1</activateRate>
 		<effects>
 			<effect name="IgnoreDeath" />
 			<effect name="Speed">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1215,77 +1220,79 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<castRange>80</castRange>
-		<effectRange>400</effectRange>
-		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-692</effectPoint>
-		<magicLevel>85</magicLevel>
+		<effectRange>400</effectRange>
+		<hitTime>1000</hitTime>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>79</power>
 				<debuffModifier>1.1</debuffModifier>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="32158" toLevel="2" name="Balthus Sayha's Word">
-		<!-- Uses Sayha's power to deal magic damage and decrease Physical/ Magic Atk. Spd. by 30% and Speed by 180 for 10 sec. -->
+		<!-- Level 1: Uses Sayha's power to deal magic damage and decrease Physical/ Magic Atk. Spd. by 30% and Speed by 180 for 10 sec. -->
+		<!-- Level 2: Uses Sayha's power to deal damage with the Power added to M. Atk. and decrease Physical/ Magic Atk. Spd. and Speed. Deals additional damage if the target is debuffed. -->
 		<icon>icon.skill30019</icon>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
 		<castRange>80</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-687</effectPoint>
 		<hitTime>
 			<value level="1">2000</value>
 			<value level="2">5500</value>
 		</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>
-			<value level="1">15000</value>
-			<value level="2">0</value>
-		</reuseDelay>
-		<effectPoint>-687</effectPoint>
+		<isDebuff>true</isDebuff>
 		<isMagic>
 			<value level="1">0</value>
 			<value level="2">1</value>
 		</isMagic>
-		<isDebuff>true</isDebuff>
+		<reuseDelay>
+			<value level="1">15000</value>
+			<value level="2">0</value>
+		</reuseDelay>
 	</skill>
 	<skill id="32159" toLevel="2" name="Balthus Divine Storm">
-		<!-- Calls in the storm of Sayha the God of Wind, which strikes nearby enemies with lightning to inflict magic damage and confines them within the storm for 5 sec. -->
+		<!-- Level 1: Calls in the storm of Sayha the God of Wind, which strikes nearby enemies with lightning to inflict magic damage and confines them within the storm for 5 sec. -->
+		<!-- Level 2: Calls in the storm of Sayha the God of Wind, which strikes nearby enemies with lightning to inflict damage as much as the Power added to M. Atk. and confines them within the storm. Deals additional damage if the target is debuffed. -->
 		<icon>icon.iconskill30007</icon>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
+		<effectPoint>-707</effectPoint>
+		<hitTime>2000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>7</isMagic>
 		<reuseDelay>
 			<value level="1">10000</value>
 			<value level="2">0</value>
 		</reuseDelay>
-		<effectPoint>-707</effectPoint>
-		<isMagic>7</isMagic>
-		<isDebuff>true</isDebuff>
 	</skill>
 	<skill id="32160" toLevel="1" name="Antharas Breath - Balthus Knight">
 		<!-- Stuns nearby enemies for 5 sec. -->
 		<icon>icon.skill4683</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>KNOCKDOWN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<activateRate>-4</activateRate>
 		<affectLimit>20-20</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>500</affectRange>
-		<reuseDelay>30000</reuseDelay>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>-418</effectPoint>
-		<magicLevel>85</magicLevel>
-		<specialLevel>-1</specialLevel>
 		<isDebuff>2</isDebuff>
 		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-4</activateRate>
-		<basicProperty>PHYSICAL</basicProperty>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>30000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="HpRegen">
 				<amount>-5</amount>
@@ -1299,27 +1306,27 @@
 		<icon>icon.skill11826</icon>
 		<operateType>A1</operateType>
 		<castRange>900</castRange>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>687</effectPoint>
+		<hitTime>2000</hitTime>
 	</skill>
 	<skill id="32162" toLevel="1" name="Antharas' Anger">
 		<!-- Attacks enemies near the target. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>SQUARE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
-		<fanRange>0;0;1200;300</fanRange>
+		<affectScope>SQUARE</affectScope>
 		<castRange>500</castRange>
-		<effectRange>1000</effectRange>
-		<hitTime>1500</hitTime>
-		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<magicLevel>85</magicLevel>
+		<effectRange>1000</effectRange>
+		<fanRange>0;0;1200;300</fanRange>
+		<hitTime>1500</hitTime>
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>5000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>2200</power>
 			</effect>
 		</effects>
@@ -1327,31 +1334,31 @@
 	<skill id="32163" toLevel="1" name="Curse of Antharas">
 		<!-- The Curse of Antharas decreases Speed/ Atk. Spd./ Casting Spd. by 15%. -->
 		<icon>icon.skill4109</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ANTARAS_DEBUFF</abnormalType>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<activateRate>100</activateRate>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
 		<castRange>500</castRange>
+		<effectPoint>-100</effectPoint>
 		<effectRange>1000</effectRange>
 		<hitTime>3000</hitTime>
-		<reuseDelay>10000</reuseDelay>
-		<effectPoint>-100</effectPoint>
-		<magicLevel>85</magicLevel>
 		<isDebuff>1</isDebuff>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<activateRate>100</activateRate>
-		<trait>SHOCK</trait>
 		<lvlBonusRate>1</lvlBonusRate>
-		<basicProperty>MAGIC</basicProperty>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<trait>SHOCK</trait>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>-15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>-15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1392,28 +1399,28 @@
 	<skill id="32164" toLevel="1" name="Antharas Stun">
 		<!-- Attacks nearby enemies physically and stuns them for 5 sec. -->
 		<icon>icon.skill10281</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<activateRate>200</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<hitTime>3000</hitTime>
-		<reuseDelay>10000</reuseDelay>
-		<reuseDelayType>S</reuseDelayType>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>-700</effectPoint>
-		<magicLevel>85</magicLevel>
+		<hitTime>3000</hitTime>
 		<isDebuff>2</isDebuff>
 		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>200</activateRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<reuseDelayType>S</reuseDelayType>
 		<trait>SHOCK</trait>
-		<basicProperty>PHYSICAL</basicProperty>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>600</power>
 			</effect>
 			<effect name="FlyAway">
@@ -1429,40 +1436,40 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
-		<effectRange>100</effectRange>
-		<hitTime>1500</hitTime>
 		<coolTime>400</coolTime>
 		<effectPoint>-96</effectPoint>
-		<magicLevel>85</magicLevel>
+		<effectRange>100</effectRange>
+		<hitTime>1500</hitTime>
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 	</skill>
 	<skill id="32166" toLevel="1" name="Power Bomber">
 		<!-- Explodes the Dragon Bomber (presentation purposes). -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SINGLE</affectScope>
 		<effectPoint>-341</effectPoint>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 	</skill>
 	<skill id="32167" toLevel="1" name="Balthus Knight's Yoke">
 		<!-- Petrified by the Balthus Knight's Yoke. -->
 		<icon>icon.skill1540</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TURN_STONE</abnormalType>
 		<abnormalVisualEffect>FLESH_STONE</abnormalVisualEffect>
-		<operateType>A2</operateType>
-		<targetType>SELF</targetType>
+		<activateRate>-1</activateRate>
 		<affectScope>SINGLE</affectScope>
-		<reuseDelayType>S</reuseDelayType>
 		<effectPoint>343</effectPoint>
-		<magicLevel>85</magicLevel>
 		<isDebuff>1</isDebuff>
 		<magicCriticalRate>5</magicCriticalRate>
-		<activateRate>-1</activateRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelayType>S</reuseDelayType>
 		<effects>
 			<effect name="BlockActions">
 				<allowedSkills>32168</allowedSkills>
@@ -1491,8 +1498,8 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effectPoint>566</effectPoint>
-		<magicLevel>85</magicLevel>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
 		<effects>
 			<effect name="DispelBySlot">
 				<dispel>TURN_STONE,9</dispel>
@@ -1503,154 +1510,166 @@
 		<!-- The GM is always by your side. Your buff/ de-buff doesn't disappear at death, but the Noblesse Blessing and Lucky Charm items disappear. -->
 		<icon>icon.skill19224</icon>
 		<operateType>A1</operateType>
+		<effectPoint>1</effectPoint>
 		<hitTime>500</hitTime>
 		<reuseDelay>1000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="32170" toLevel="1" name="Emblem of Salvation - GM's Blessing">
 		<!-- The GM is always by your side. Resurrects as fully recovered from death. Buffs/ debuffs are retained after death, except for Noblesse Blessing and Lucky Charm. -->
 		<icon>icon.skill11826</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<castRange>900</castRange>
-		<hitTime>500</hitTime>
-		<reuseDelay>1000</reuseDelay>
 		<effectPoint>687</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="32171" toLevel="1" name="Emblem of Salvation - GM's Blessing">
 		<!-- The GM is always by your side. Resurrects as fully recovered from death. Buffs/ debuffs are retained after death, except for Noblesse Blessing and Lucky Charm. -->
 		<icon>icon.skill11826</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>500</hitTime>
-		<reuseDelay>1000</reuseDelay>
 		<effectPoint>687</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="32172" toLevel="1" name="Freya's Art of Seduction Barrier - GM's Blessing">
 		<!-- The GM is always by your side. For 1 h., Max HP/ MP/ CP +30%, P. Atk. +10%, M. Atk. +20%, P./ M. Def. +30%, Speed +20, and Skill MP Consumption -15%. Additionally, Damage Received -10% and all Attribute Resistance +100. Buffs are retained even after death. -->
 		<icon>icon.bm_freya_rose_red_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<castRange>900</castRange>
-		<hitTime>500</hitTime>
-		<effectPoint>1</effectPoint>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<castRange>900</castRange>
+		<effectPoint>1</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32173" toLevel="1" name="Freya's Art of Seduction EXP - GM's Blessing">
 		<!-- The GM is always by your side. For 1 h., Max HP/ MP/ CP +30%, P. Atk. +10%, M. Atk. +20%, P./ M. Def. +30%, Speed +20, and Skill MP Consumption -15%. Additionally, XP bonus +30% and Vitality bonus +12%. Buffs are retained even after death. -->
 		<icon>icon.bm_freya_rose_red_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<castRange>900</castRange>
-		<hitTime>500</hitTime>
-		<effectPoint>1</effectPoint>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<castRange>900</castRange>
+		<effectPoint>1</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32174" toLevel="1" name="Pa'agrio's Blessing Might- GM's Blessing">
 		<!-- The GM is always by your side. For 1 h., Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P. Accuracy +4, M. Accuracy +4, Atk. Spd./ Casting Spd. +10%, Speed +10, Attack Attribute +1 h.0, and Skill MP Consumption -1 h.1. Additionally, Damage Dealt +1 h.2 and Skill Power +1 h.3. Buffs are retained even after death. -->
 		<icon>icon.nshop_bless_of_paagrio</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
-		<hitTime>500</hitTime>
 		<effectPoint>1</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32175" toLevel="1" name="Pa'agrio's Blessing EXP- GM's Blessing">
 		<!-- The GM is always by your side. For 1 h., Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P. Accuracy +4, M. Accuracy +4, Atk. Spd./ Casting Spd. +10%, Speed +10, Attack Attribute +1 h.0, and Skill MP Consumption -1 h.1. Additionally, XP +1 h.2 and Vitality bonus +1 h.3. Buffs are retained even after death. -->
 		<icon>icon.nshop_bless_of_paagrio</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>900</castRange>
-		<hitTime>500</hitTime>
 		<effectPoint>1</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32176" toLevel="1" name="Freya's Art of Seduction Barrier - GM's Blessing">
 		<!-- The GM is always by your side. For 1 h., Max HP/ MP/ CP +30%, P. Atk. +10%, M. Atk. +20%, P./ M. Def. +30%, Speed +20, and Skill MP Consumption -15%. Additionally, Damage Received -10% and all Attribute Resistance +100. Buffs are retained even after death. -->
 		<icon>icon.bm_freya_rose_red_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>500</hitTime>
 		<effectPoint>1</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32177" toLevel="1" name="Freya's Art of Seduction EXP - GM's Blessing">
 		<!-- The GM is always by your side. For 1 h., Max HP/ MP/ CP +30%, P. Atk. +10%, M. Atk. +20%, P./ M. Def. +30%, Speed +20, and Skill MP Consumption -15%. Additionally, XP bonus +30% and Vitality bonus +12%. Buffs are retained even after death. -->
 		<icon>icon.bm_freya_rose_red_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>500</hitTime>
 		<effectPoint>1</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32178" toLevel="1" name="Pa'agrio's Blessing Might- GM's Blessing">
 		<!-- The GM is always by your side. For 1 h., Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P. Accuracy +4, M. Accuracy +4, Atk. Spd./ Casting Spd. +10%, Speed +10, Attack Attribute +1 h.0, and Skill MP Consumption -1 h.1. Additionally, Damage Dealt +1 h.2 and Skill Power +1 h.3. Buffs are retained even after death. -->
 		<icon>icon.nshop_bless_of_paagrio</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>500</hitTime>
 		<effectPoint>1</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32179" toLevel="1" name="Pa'agrio's Blessing EXP- GM's Blessing">
 		<!-- The GM is always by your side. For 1 h., Max HP/ MP/ CP +10%, P. Atk. +20%, M. Atk. +30%, P./ M. Def. +10%, P. Accuracy +4, M. Accuracy +4, Atk. Spd./ Casting Spd. +10%, Speed +10, Attack Attribute +1 h.0, and Skill MP Consumption -1 h.1. Additionally, XP +1 h.2 and Vitality bonus +1 h.3. Buffs are retained even after death. -->
 		<icon>icon.nshop_bless_of_paagrio</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
-		<hitTime>500</hitTime>
 		<effectPoint>1</effectPoint>
+		<hitTime>500</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32180" toLevel="1" name="Balthus Feline Touch">
 		<!-- Inflicts damage on a single target with 10508 added to P. Atk. -->
 		<icon>icon.skill1234</icon>
 		<operateType>A1</operateType>
 		<castRange>1100</castRange>
-		<hitTime>2200</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-687</effectPoint>
+		<hitTime>2200</hitTime>
+		<reuseDelay>5000</reuseDelay>
 	</skill>
 	<skill id="32181" toLevel="1" name="Balthus Emblem of Salvation">
 		<!-- Resurrects as fully recovered from death. Buffs/ debuffs are retained after death, except for Noblesse Blessing and Lucky Charm. -->
 		<icon>icon.skill11826</icon>
 		<operateType>A1</operateType>
 		<castRange>1100</castRange>
-		<hitTime>1500</hitTime>
 		<effectPoint>687</effectPoint>
+		<hitTime>1500</hitTime>
 	</skill>
 	<skill id="32182" toLevel="1" name="AoE Magic Attack">
 		<!-- Inflicts magic damage on nearby enemies and knocks them down. -->
 		<icon>icon.skill10262</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
-		<hitTime>2000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
+		<hitTime>2000</hitTime>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32183" toLevel="1" name="Balthus Resurrection">
 		<!-- Resurrects from death fully recovered. -->
 		<icon>icon.skill11784</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<castRange>1100</castRange>
-		<hitTime>3000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>2</effectPoint>
+		<hitTime>3000</hitTime>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="32184" toLevel="1" name="Fatal Wound Recovery">
 		<!-- Gives a fatal wound, rendering the opponent unable to fight. -->
 		<icon>icon.skill19428</icon>
 		<operateType>A1</operateType>
-		<hitTime>3600000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>1000</reuseDelay>
 		<effectPoint>700</effectPoint>
+		<hitTime>3600000</hitTime>
+		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="32185" toLevel="7" name="Protection of Seven Seals">
-		<!-- Instantly recovers HP for 10% of your full HP, and increases P. Atk., M. Atk., P. Def., M. Def. and HP Recovery by 33% for 2 h. -->
+		<!-- Level 1: Instantly recovers HP for 10% of your full HP, and increases P. Atk., M. Atk., P. Def., M. Def. and HP Recovery by 33% for 2 h. -->
+		<!-- Level 2: Instantly recovers HP for 10% of your full HP, and increases P. Atk., M. Atk., P. Def., M. Def. and HP Recovery by 66% for 2 h. -->
+		<!-- Level 3: Instantly recovers HP for 10% of your full HP, and increases P. Atk., M. Atk., P. Def., M. Def. and HP Recovery by 100% for 2 h. -->
+		<!-- Level 4: Instantly recovers HP for 15% of your full HP, and increases P. Atk., M. Atk., P. Def., M. Def. and HP Recovery by 133% for 2 h. -->
+		<!-- Level 5: Instantly recovers HP for 15% of your full HP, and increases P. Atk., M. Atk., P. Def., M. Def. and HP Recovery by 166% for 2 h. -->
+		<!-- Level 6: Instantly recovers HP for 15% of your full HP, and increases P. Atk., M. Atk., P. Def., M. Def. and HP Recovery by 200% for 2 h. -->
+		<!-- Level 7: Instantly recovers HP for 20% of your full HP, and increases P. Atk., M. Atk., P. Def., M. Def. and HP Recovery by 300% for 2 h. -->
 		<icon>icon.karma</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32186" toLevel="7" name="Protection of Seven Seals">
-		<!-- For 2 h., P. Atk., M. Atk., P. Def., M. Def., and HP Recovery +33%. -->
+		<!-- Level 1: For 2 h., P. Atk., M. Atk., P. Def., M. Def., and HP Recovery +33%. -->
+		<!-- Level 2: For 2 h., P. Atk., M. Atk., P. Def., M. Def., and HP Recovery +66%. -->
+		<!-- Level 3: For 2 h., P. Atk., M. Atk., P. Def., M. Def., and HP Recovery +100%. -->
+		<!-- Level 4: For 2 h., P. Atk., M. Atk., P. Def., M. Def., and HP Recovery +133%. -->
+		<!-- Level 5: For 2 h., P. Atk., M. Atk., P. Def., M. Def., and HP Recovery +166%. -->
+		<!-- Level 6: For 2 h., P. Atk., M. Atk., P. Def., M. Def., and HP Recovery +200%. -->
+		<!-- Level 7: For 2 h., P. Atk., M. Atk., P. Def., M. Def., and HP Recovery +300%. -->
 		<icon>icon.karma</icon>
 		<operateType>A1</operateType>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
@@ -1659,18 +1678,18 @@
 		<!-- Increases M. Critical Rate, P. Def. and M. Def -->
 		<icon>icon.skill30016</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>687</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32188" toLevel="1" name="Teleport to the Arms of Timiniel">
 		<!-- Teleports to the arms of Magmeld Timiniel. -->
 		<icon>icon.noblessescape_scroll_i00</icon>
 		<operateType>A1</operateType>
+		<effectPoint>2</effectPoint>
 		<hitTime>10000</hitTime>
 		<reuseDelay>1800000</reuseDelay>
-		<effectPoint>2</effectPoint>
 	</skill>
 	<skill id="32189" toLevel="1" name="Aggression Resistance">
 		<!-- Ignores Aggression effects. -->
@@ -1682,35 +1701,35 @@
 		<!-- Etina's Curse inflicts great damage to all inside the curse zone. -->
 		<icon>icon.skill1100</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<isDebuff>true</isDebuff>
 		<effectPoint>-100</effectPoint>
+		<isDebuff>true</isDebuff>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32191" toLevel="1" name="Yoke of Scarlet">
 		<!-- Instantly immobilized. -->
 		<icon>icon.skill5016</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<castRange>500</castRange>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
-		<effectPoint>-100</effectPoint>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>FLOATING_ROOT</abnormalVisualEffect>
 		<activateRate>80</activateRate>
-		<affectRange>200</affectRange>
-		<basicProperty>MAGIC</basicProperty>
-		<effectRange>1000</effectRange>
-		<lvlBonusRate>2</lvlBonusRate>
-		<magicLevel>85</magicLevel>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<trait>DERANGEMENT</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>500</castRange>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
+		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>5000</reuseDelay>
+		<trait>DERANGEMENT</trait>
 		<effects>
 			<effect name="BlockActions" />
 		</effects>
@@ -1719,30 +1738,30 @@
 		<!-- Scarlet van Halisha is enraged and became even more powerful. Increases P. Atk./ M. Atk./ Atk. Spd./ Casting Spd. by 50%. -->
 		<icon>icon.skill1062</icon>
 		<operateType>A2</operateType>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
-		<effectPoint>100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>BIG_BODY</abnormalType>
 		<abnormalVisualEffect>BIG_BODY</abnormalVisualEffect>
 		<activateRate>0</activateRate>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>85</magicLevel>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>100</effectPoint>
+		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>5000</reuseDelay>
+		<specialLevel>-1</specialLevel>
 		<effects>
 			<effect name="Grow">
 			</effect>
-			<effect name="PAtk">
-				<power>50</power>
+			<effect name="PhysicalAttack">
+				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1760,26 +1779,26 @@
 		<!-- Stunned after a powerful attack. -->
 		<icon>icon.skill16856</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>2</abnormalTime>
 		<abnormalType>FLY_AWAY</abnormalType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>DARK</attributeType>
 		<attributeValue>180</attributeValue>
-		<magicLevel>85</magicLevel>
 		<basicProperty>NONE</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>5000</reuseDelay>
 		<trait>SHOCK</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>15964</power>
 			</effect>
 			<effect name="FlyAway">
@@ -1792,75 +1811,84 @@
 		<!-- Stumbled after a powerful attack from enraged Scarlett. -->
 		<icon>icon.skill16856</icon>
 		<operateType>A2</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>3000</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
-		<effectPoint>-100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>FLY_AWAY</abnormalType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>DARK</attributeType>
 		<attributeValue>180</attributeValue>
-		<magicLevel>85</magicLevel>
 		<basicProperty>NONE</basicProperty>
+		<coolTime>500</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<reuseDelay>5000</reuseDelay>
 		<trait>SHOCK</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>15964</power>
 			</effect>
 			<effect name="BlockActions" />
 		</effects>
 	</skill>
 	<skill id="32195" toLevel="4" name="Frintezza Demon Field">
-		<!-- Unleashes a powerful attack on the surroundings. -->
+		<!-- Level 1: Unleashes a powerful attack on the surroundings. -->
+		<!-- Level 2: Unleashes a powerful attack on the surroundings. Deals damage over time during casting. -->
+		<!-- Level 3: Unleashes a powerful attack over a donut-shaped area between 600 grids and 1200 grids from you. -->
+		<!-- Level 4: Unleashes a powerful attack over a donut-shaped area between 500 grids and 1200 grids from you. Deals damage over time during casting. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>5000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>
+			<value level="1">5000</value>
+			<value level="2">6600</value>
+			<value level="3">5000</value>
+			<value level="4">6600</value>
+		</hitTime>
+		<reuseDelay>5000</reuseDelay>
 	</skill>
 	<skill id="32196" toLevel="2" name="Breath of Scarlet">
-		<!-- Cast HP Drain on a nearby enemy. -->
+		<!-- Level 1: Cast HP Drain on a nearby enemy. -->
+		<!-- Level 2: Burns MP of enemies within an area between 400 grids and 1200 grids from you. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<hitTime>5000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>5000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="32197" toLevel="2" name="Requiem of Hatred">
 		<!-- Suffers damage over time after hearing Frintezza's performance. -->
 		<icon>icon.skill0501</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>5000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>5000</hitTime>
+		<isDebuff>true</isDebuff>
+		<reuseDelay>5000</reuseDelay>
 	</skill>
 	<skill id="32198" toLevel="1" name="Fugue of Rapture">
 		<!-- After hearing Frintezza's performance, increases demon's Atk. Spd./ Casting Spd. by 20%, Speed by 60. -->
 		<icon>icon.skill0094</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<coolTime>500</coolTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="32199" toLevel="2" name="Mournful Chorale Prelude">
 		<!-- After hearing Frintezza's performance, decreases Atk. Spd./ Casting Spd. by 20%, Speed by 60. -->
 		<icon>icon.skill0774</icon>
 		<operateType>A1</operateType>
-		<isDebuff>true</isDebuff>
-		<hitTime>5000</hitTime>
 		<coolTime>500</coolTime>
-		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<hitTime>5000</hitTime>
+		<isDebuff>true</isDebuff>
+		<reuseDelay>5000</reuseDelay>
 	</skill>
 </list>

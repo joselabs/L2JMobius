@@ -1,38 +1,38 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="39200" toLevel="1" name="Weapons Ingredient Box - A-grade">
 		<icon>icon.etc_box_of_adventure_1_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39201" toLevel="1" name="Box of Best Dye">
 		<icon>icon.etc_box_of_adventure_4_i00</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39202" toLevel="1" name="Spellbok Box">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="39203" toLevel="1" name="Life Stone Pack">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>90035</itemConsumeId>
 		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
 		<reuseDelay>3000</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -58,16 +58,16 @@
 	<skill id="39204" toLevel="1" name="Dimensional Blessing">
 		<!-- Gives 3,700,000 XP / 1,110,000 SP. -->
 		<icon>icon.BranchSys.icon.br_lucky_bag_i00</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>90044</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<reuseDelay>1000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>1000</reuseDelay>
 		<effects>
 			<effect name="GiveExpAndSp">
 				<xp>
@@ -82,25 +82,25 @@
 	<skill id="39205" toLevel="1" name="Dark Assassin Transformation Potion">
 		<!-- For 15 minutes transforms your character into a Dark Assassin. Cooldown: 10 min. -->
 		<icon>icon.empty_bottle</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>900</abnormalTime>
 		<abnormalType>CHANGEBODY</abnormalType>
 		<abnormalVisualEffect>DARK_ASSASSIN_SUIT</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<blockedInOlympiad>true</blockedInOlympiad>
-		<effectPoint>1</effectPoint>
+		<effectPoint>0</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>4</isMagic> <!-- Magic Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>90043</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>56</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
-		<irreplacableBuff>true</irreplacableBuff>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>90043</itemConsumeId>
-		<itemConsumeCount>1</itemConsumeCount>
 		<effects>
 			<effect name="MaxHp">
 				<amount>5</amount>
@@ -130,11 +130,11 @@
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -155,18 +155,18 @@
 	</skill>
 	<skill id="39207" toLevel="1" name="Dimensional Gift">
 		<icon>icon.etc_box_of_adventure_5_i00</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>90136</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<reuseDelay>3000</reuseDelay>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>3000</reuseDelay>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -204,24 +204,24 @@
 		<!-- Transformation into a White Assassin. Fighting characteristics are improved. Remains after death. -->
 		<icon>icon.etc_charm_of_courage_i00</icon>
 		<operateType>A1</operateType>
-		<isMagic>4</isMagic>
 		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
 	</skill>
 	<skill id="39211" toLevel="1" name="Savior' Growth Scroll">
 		<!-- Increases XP/SP gain by 50% for 2 hours. Cooldown - 2 hours. Effect remains after death. Only usable up to level 75. -->
 		<icon>icon.etc_kalie_hero_scroll</icon>
 		<operateType>A1</operateType>
+		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
 		<reuseDelay>7200000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="39212" toLevel="1" name="Einsahad's Protection">
 		<!-- For 1 hour Increases XP/SP gain by 100%. Cooldown - 1 hour. Effect remains after death. -->
 		<icon>icon.etc_dragons_blood_i03</icon>
 		<operateType>A1</operateType>
+		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
 		<reuseDelay>3600000</reuseDelay>
-		<effectPoint>1</effectPoint>
 	</skill>
 	<skill id="39213" toLevel="1" name="Savior Scroll: Enchant Weapon">
 		<!-- Can only be used together with weapons of Savior. Does not disappear after an unsuccessful Enchant. -->
@@ -241,29 +241,33 @@
 		<!-- Transformation into an Apostle. Attacking is not possible. Can be used once a day. After a restart or when used during a duel, the Buff is removed after duel ends. -->
 		<icon>icon.skilltransform1</icon>
 		<operateType>A1</operateType>
-		<isMagic>3</isMagic> <!-- Dance Skill -->
 		<castRange>400</castRange>
 		<hitTime>1000</hitTime>
+		<isMagic>3</isMagic> <!-- Dance Skill -->
 	</skill>
 	<skill id="39217" toLevel="1" name="Transformation into a Shillien Saint">
 		<!-- Transformation into a Shillien Saint. Attacking is not possible. Can be used once a day. After a restart or when used during a duel, the Buff is removed after duel ends. -->
 		<icon>icon.skilltransform1</icon>
 		<operateType>A1</operateType>
-		<isMagic>3</isMagic> <!-- Dance Skill -->
 		<castRange>400</castRange>
 		<hitTime>1000</hitTime>
+		<isMagic>3</isMagic> <!-- Dance Skill -->
 	</skill>
 	<skill id="39218" toLevel="1" name="Transformation into an Eva's Saint">
 		<!-- Transformation into Eva's Saint. Attacking is not possible. Can be used once a day. After a restart or when used during a duel, the Buff is removed after duel ends. -->
 		<icon>icon.skilltransform1</icon>
 		<operateType>A1</operateType>
-		<isMagic>3</isMagic> <!-- Dance Skill -->
 		<castRange>400</castRange>
 		<hitTime>1000</hitTime>
+		<isMagic>3</isMagic> <!-- Dance Skill -->
 	</skill>
 	<skill id="39219" toLevel="3" name="Dark Knight">
-		<!-- Transformed Dark Knight. Max HP / MP +5%, Stun / Paralysis / Fear Resistance +5%, Attack Power in PvP +5%, received damage -5%. -->
+		<!-- Level 1: Transformed Dark Knight. Max HP / MP +5%, Stun / Paralysis / Fear Resistance +5%, Attack Power in PvP +5%, received damage -5%. -->
+		<!-- Level 2: Transformed Dark Knight. Max HP / MP +10%, Stun / Paralysis / Fear Resistance +7%, Attack Power in PvP +7%, received damage -7%. -->
+		<!-- Level 3: Transformed Dark Knight. Max HP / MP +10%, Stun / Paralysis / Fear Resistance +10%, Attack Power in PvP +10%, received damage -10%. -->
 		<icon>icon.dark_kninght</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">4</value>
 			<value level="2">5</value>
@@ -271,17 +275,15 @@
 		</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>SYSTEM_EVENT_BUF6</abnormalType>
+		<affectScope>SINGLE</affectScope>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<effectPoint>1</effectPoint>
+		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>85</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>60000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<irreplacableBuff>true</irreplacableBuff>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MaxHp">
 				<amount>
@@ -371,23 +373,23 @@
 		<operateType>A1</operateType>
 		<reuseDelay>600000</reuseDelay>
 	</skill>
-	<skill id="39223" toLevel="1" name="Bunch of Bananas">
+	<skill id="39223" toLevel="1" name="Banana for a Monkey">
 		<!-- For 5 minutes, XP and SP gained through hunting +10%, P./M. Atk. +15%, P./M. Def. +15%, Atk. Spd./Casting Spd. +10%, Speed +10. Deleted when entering the Olympiad. Deleted upon logout. Can be stacked with all XP/SP bonuses. -->
 		<icon>Icon.ev_monkey_banana</icon>
 		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<effectPoint>100</effectPoint>
+		<targetType>SELF</targetType>
 		<abnormalInstant>true</abnormalInstant>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>PA_UP_HERB</abnormalType>
-		<magicLevel>1</magicLevel>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<stayAfterDeath>true</stayAfterDeath>
-		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<affectScope>PARTY</affectScope>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>100</effectPoint>
+		<isMagic>4</isMagic>
+		<magicLevel>1</magicLevel>
+		<staticReuse>true</staticReuse>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="ExpModify">
 				<amount>10</amount>
@@ -395,11 +397,11 @@
 			<effect name="SpModify">
 				<amount>10</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -429,18 +431,18 @@
 		<!-- For 60 minutes, Max HP +10%, HP Recovery +10%, P. Atk. +10%, P. Def. +10%, Atk. Spd. +5%, Debuff Resistance +10%. Cannot be stacked with Prophecy-type buffs. -->
 		<icon>icon.etc_fruit_cocktail_i01</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>STRAWBERRY_FRUIT</abnormalType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
+		<deleteAbnormalOnLeave>true</deleteAbnormalOnLeave>
+		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<deleteAbnormalOnLeave>true</deleteAbnormalOnLeave>
 		<effects>
 			<effect name="MaxHp">
 				<amount>10</amount>
@@ -450,7 +452,7 @@
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -472,23 +474,23 @@
 		<!-- For 60 minutes, MP Recovery +10%, M. Atk. +10%, M. Def. +10%, Casting Spd. +5%, Debuff Resistance +10%. Skill MP Consumption -3%. Cannot be stacked with Prophecy-type buffs. -->
 		<icon>icon.etc_fruit_cocktail_i03</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>MONGO_FRUIT</abnormalType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
+		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="MpRegen">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -510,17 +512,17 @@
 		<!-- For 60 minutes, P. Evasion +3, P. Accuracy +3, P. Critical Rate +10%, P. Critical Damage +15%, Speed +10%, Debuff Resistance +10%. Cannot be stacked with Prophecy-type buffs. -->
 		<icon>icon.etc_fruit_cocktail_i02</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>CHERRY_FRUIT</abnormalType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
+		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PhysicalEvasion">
 				<amount>3</amount>
@@ -556,21 +558,21 @@
 	<skill id="39228" toLevel="1" name="Chef's Fish Stew: Victory">
 		<!-- For 10 min. HP / MP Recovery +20%, Accuracy +4, Evasion +4, P. /M. Atk. +15%, Casting / Atk. Spd. +10%, P. / M. Critical Rate +15%, P. / M. Critical Damage +15%. Effect remains after death. -->
 		<icon>icon.fish_stew_residence_cha</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>1</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
-		<reuseDelay>600000</reuseDelay>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>90407</itemConsumeId>
-		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
+		<reuseDelay>600000</reuseDelay>
 		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="HpRegen">
@@ -601,13 +603,13 @@
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">15</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">15</value>
 				</amount>
@@ -647,21 +649,21 @@
 		<!-- For 10 min. Max HP +10%, HP Recovery +10%, P. Atk. +10%, P. Def. +10%, Atk. Spd. +5%, Debuff Resistance +10%. Effect remains after death. -->
 		<icon>icon.fish_stew_residence_cha</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>600000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<reuseDelay>600000</reuseDelay>
 	</skill>
 	<skill id="39230" toLevel="1" name="Chef's Fish Stew: Water">
 		<!-- For 10 min. MP Recovery +10%, M. Atk. +10%, M. Def. +10%, Casting Spd. +5%, Debuff Resistance +10%. MP Consumption -3%. Effect remains after death. -->
 		<icon>icon.fish_stew_residence_cha</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>600000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<reuseDelay>600000</reuseDelay>
 	</skill>
 	<skill id="39231" toLevel="1" name="Chef's Fish Stew: Wind">
 		<!-- For 10 min. Evasion +3, Accuracy +3, P. Critical Rate +10%, Critical Damage +15%, Speed +10%, Debuff Resistance +10%. Effect remains after death. -->
 		<icon>icon.fish_stew_residence_cha</icon>
 		<operateType>A1</operateType>
-		<reuseDelay>600000</reuseDelay>
 		<effectPoint>1</effectPoint>
+		<reuseDelay>600000</reuseDelay>
 	</skill>
 </list>

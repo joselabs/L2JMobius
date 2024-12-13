@@ -39,12 +39,17 @@ public class CanSummonCubicSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		if (!caster.isPlayer() || caster.isAlikeDead() || caster.getActingPlayer().inObserverMode())
+		if (!caster.isPlayer() || caster.isAlikeDead())
 		{
 			return false;
 		}
 		
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
+		if (player.inObserverMode())
+		{
+			return false;
+		}
+		
 		if (player.getAutoUseSettings().isAutoSkill(skill.getId()))
 		{
 			for (AbstractEffect effect : skill.getEffects(EffectScope.GENERAL))

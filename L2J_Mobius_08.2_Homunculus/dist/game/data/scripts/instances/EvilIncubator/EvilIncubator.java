@@ -412,7 +412,7 @@ public class EvilIncubator extends AbstractInstance
 	
 	public void onCreatureKill(OnCreatureDeath event)
 	{
-		final Npc npc = (Npc) event.getTarget();
+		final Npc npc = event.getTarget().asNpc();
 		final Instance world = npc.getInstanceWorld();
 		if (world != null)
 		{

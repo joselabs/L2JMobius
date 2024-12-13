@@ -45,8 +45,8 @@ public class Pledge implements IAffectScopeHandler
 		
 		if (target.isPlayable())
 		{
-			final Playable playable = (Playable) target;
-			final Player player = playable.getActingPlayer();
+			final Playable playable = target.asPlayable();
+			final Player player = playable.asPlayer();
 			final int clanId = player.getClanId();
 			
 			// Create the target filter.
@@ -58,7 +58,7 @@ public class Pledge implements IAffectScopeHandler
 					return false;
 				}
 				
-				final Player p = c.getActingPlayer();
+				final Player p = c.asPlayer();
 				if ((p == null) || p.isDead())
 				{
 					return false;

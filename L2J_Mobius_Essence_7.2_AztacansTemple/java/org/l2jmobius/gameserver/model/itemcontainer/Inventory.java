@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.itemcontainer;
 
@@ -250,7 +254,8 @@ public abstract class Inventory extends ItemContainer
 					{
 						inventory.setPaperdollItem(PAPERDOLL_LHAND, null);
 					}
-					final Player owner = inventory.getOwner().getActingPlayer();
+					
+					final Player owner = inventory.getOwner().asPlayer();
 					if (owner != null)
 					{
 						owner.removeAmmunitionSkills();
@@ -259,7 +264,7 @@ public abstract class Inventory extends ItemContainer
 				}
 				case PISTOLS:
 				{
-					final Player owner = inventory.getOwner().getActingPlayer();
+					final Player owner = inventory.getOwner().asPlayer();
 					if (owner != null)
 					{
 						owner.removeAmmunitionSkills();
@@ -323,7 +328,7 @@ public abstract class Inventory extends ItemContainer
 				return;
 			}
 			
-			final Playable playable = (Playable) inventory.getOwner();
+			final Playable playable = inventory.getOwner().asPlayable();
 			final ItemTemplate it = item.getTemplate();
 			final Map<Integer, Skill> addedSkills = new HashMap<>(1);
 			final Map<Integer, Skill> removedSkills = new HashMap<>(1);
@@ -347,32 +352,20 @@ public abstract class Inventory extends ItemContainer
 			
 			if (it.hasSkills())
 			{
-				final List<ItemSkillHolder> onEnchantSkills = it.getSkills(ItemSkillType.ON_ENCHANT);
-				if (onEnchantSkills != null)
+				// Retain item skill if an item with the same id is still equipped.
+				final long remainingItemCount = inventory.getPaperdollItems(equippedItem -> equippedItem.getId() == item.getId()).size();
+				if (remainingItemCount == 0)
 				{
-					for (ItemSkillHolder holder : onEnchantSkills)
+					final List<ItemSkillHolder> onEnchantSkills = it.getSkills(ItemSkillType.ON_ENCHANT);
+					if (onEnchantSkills != null)
 					{
-						if (item.getEnchantLevel() < holder.getValue())
+						for (ItemSkillHolder holder : onEnchantSkills)
 						{
-							continue;
-						}
-						
-						final Skill skill = holder.getSkill();
-						if (skill != null)
-						{
-							removedSkills.putIfAbsent(skill.getId(), skill);
-							update = true;
-						}
-					}
-				}
-				
-				if (item.isBlessed())
-				{
-					final List<ItemSkillHolder> onBlessingSkills = it.getSkills(ItemSkillType.ON_BLESSING);
-					if (onBlessingSkills != null)
-					{
-						for (ItemSkillHolder holder : onBlessingSkills)
-						{
+							if (item.getEnchantLevel() < holder.getValue())
+							{
+								continue;
+							}
+							
 							final Skill skill = holder.getSkill();
 							if (skill != null)
 							{
@@ -381,18 +374,18 @@ public abstract class Inventory extends ItemContainer
 							}
 						}
 					}
-				}
-				
-				final List<ItemSkillHolder> normalSkills = it.getSkills(ItemSkillType.NORMAL);
-				if (normalSkills != null)
-				{
-					for (ItemSkillHolder holder : normalSkills)
+					
+					final List<ItemSkillHolder> normalSkills = it.getSkills(ItemSkillType.NORMAL);
+					if (normalSkills != null)
 					{
-						final Skill skill = holder.getSkill();
-						if (skill != null)
+						for (ItemSkillHolder holder : normalSkills)
 						{
-							removedSkills.putIfAbsent(skill.getId(), skill);
-							update = true;
+							final Skill skill = holder.getSkill();
+							if (skill != null)
+							{
+								removedSkills.putIfAbsent(skill.getId(), skill);
+								update = true;
+							}
 						}
 					}
 				}
@@ -544,13 +537,13 @@ public abstract class Inventory extends ItemContainer
 				
 				if (playable.isPlayer())
 				{
-					playable.getActingPlayer().sendSkillList();
+					playable.asPlayer().sendSkillList();
 				}
 			}
 			
 			if (updateTimestamp && playable.isPlayer())
 			{
-				playable.sendPacket(new SkillCoolTime(playable.getActingPlayer()));
+				playable.sendPacket(new SkillCoolTime(playable.asPlayer()));
 			}
 			
 			if (item.isWeapon())
@@ -567,7 +560,7 @@ public abstract class Inventory extends ItemContainer
 				return;
 			}
 			
-			final Playable playable = (Playable) inventory.getOwner();
+			final Playable playable = inventory.getOwner().asPlayable();
 			final Map<Integer, Skill> addedSkills = new HashMap<>(1);
 			boolean updateTimestamp = false;
 			
@@ -629,7 +622,7 @@ public abstract class Inventory extends ItemContainer
 						}
 						
 						// Active, non offensive, skills start with reuse on equip.
-						if (skill.isActive() && !skill.isBad() && !skill.isTransformation() && (Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE > 0) && playable.getActingPlayer().hasEnteredWorld())
+						if (skill.isActive() && !skill.isBad() && !skill.isTransformation() && (Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE > 0) && playable.asPlayer().hasEnteredWorld())
 						{
 							playable.addTimeStamp(skill, skill.getReuseDelay() > 0 ? skill.getReuseDelay() : Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE);
 							updateTimestamp = true;
@@ -730,7 +723,7 @@ public abstract class Inventory extends ItemContainer
 							}
 							
 							// Active, non offensive, skills start with reuse on equip.
-							if (!skill.isBad() && !skill.isTransformation() && (Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE > 0) && playable.getActingPlayer().hasEnteredWorld())
+							if (!skill.isBad() && !skill.isTransformation() && (Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE > 0) && playable.asPlayer().hasEnteredWorld())
 							{
 								playable.addTimeStamp(skill, skill.getReuseDelay() > 0 ? skill.getReuseDelay() : Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE);
 							}
@@ -796,7 +789,7 @@ public abstract class Inventory extends ItemContainer
 						}
 						
 						// Active, non offensive, skills start with reuse on equip.
-						if (skill.isActive() && !skill.isBad() && !skill.isTransformation() && (Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE > 0) && playable.getActingPlayer().hasEnteredWorld())
+						if (skill.isActive() && !skill.isBad() && !skill.isTransformation() && (Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE > 0) && playable.asPlayer().hasEnteredWorld())
 						{
 							playable.addTimeStamp(skill, skill.getReuseDelay() > 0 ? skill.getReuseDelay() : Config.ITEM_EQUIP_ACTIVE_SKILL_REUSE);
 							updateTimestamp = true;
@@ -859,13 +852,13 @@ public abstract class Inventory extends ItemContainer
 				
 				if (playable.isPlayer())
 				{
-					playable.getActingPlayer().sendSkillList();
+					playable.asPlayer().sendSkillList();
 				}
 			}
 			
 			if (updateTimestamp && playable.isPlayer())
 			{
-				playable.sendPacket(new SkillCoolTime(playable.getActingPlayer()));
+				playable.sendPacket(new SkillCoolTime(playable.asPlayer()));
 			}
 		}
 	}
@@ -887,7 +880,7 @@ public abstract class Inventory extends ItemContainer
 				return;
 			}
 			
-			final Playable playable = (Playable) inventory.getOwner();
+			final Playable playable = inventory.getOwner().asPlayable();
 			boolean update = false;
 			
 			// Verify and apply normal set
@@ -908,14 +901,17 @@ public abstract class Inventory extends ItemContainer
 				}
 			}
 			
-			if (update && playable.isPlayer())
+			if (playable.isPlayer())
 			{
-				playable.getActingPlayer().sendSkillList();
-			}
-			
-			if (playable.isPlayer() && ((item.getTemplate().getBodyPart() == ItemTemplate.SLOT_BROOCH_JEWEL) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_BROOCH)))
-			{
-				playable.getActingPlayer().updateActiveBroochJewel();
+				if (update)
+				{
+					playable.asPlayer().sendSkillList();
+				}
+				
+				if ((item.getTemplate().getBodyPart() == ItemTemplate.SLOT_BROOCH_JEWEL) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_BROOCH))
+				{
+					playable.asPlayer().updateActiveBroochJewel();
+				}
 			}
 		}
 		
@@ -962,7 +958,7 @@ public abstract class Inventory extends ItemContainer
 							}
 							
 							// Active, non offensive, skills start with reuse on equip.
-							if (!itemSkill.isBad() && !itemSkill.isTransformation() && (Config.ARMOR_SET_EQUIP_ACTIVE_SKILL_REUSE > 0) && playable.getActingPlayer().hasEnteredWorld())
+							if (!itemSkill.isBad() && !itemSkill.isTransformation() && (Config.ARMOR_SET_EQUIP_ACTIVE_SKILL_REUSE > 0) && playable.asPlayer().hasEnteredWorld())
 							{
 								playable.addTimeStamp(itemSkill, itemSkill.getReuseDelay() > 0 ? itemSkill.getReuseDelay() : Config.ARMOR_SET_EQUIP_ACTIVE_SKILL_REUSE);
 							}
@@ -975,7 +971,7 @@ public abstract class Inventory extends ItemContainer
 				}
 				if (updateTimeStamp && playable.isPlayer())
 				{
-					playable.sendPacket(new SkillCoolTime(playable.getActingPlayer()));
+					playable.sendPacket(new SkillCoolTime(playable.asPlayer()));
 				}
 				return update;
 			}
@@ -1040,7 +1036,7 @@ public abstract class Inventory extends ItemContainer
 				return;
 			}
 			
-			final Playable playable = (Playable) inventory.getOwner();
+			final Playable playable = inventory.getOwner().asPlayable();
 			boolean remove = false;
 			
 			// Verify and remove normal set bonus
@@ -1068,13 +1064,14 @@ public abstract class Inventory extends ItemContainer
 			
 			if (remove)
 			{
-				playable.getActingPlayer().checkItemRestriction();
-				playable.getActingPlayer().sendSkillList();
+				final Player player = playable.asPlayer();
+				player.checkItemRestriction();
+				player.sendSkillList();
 			}
 			
 			if ((item.getTemplate().getBodyPart() == ItemTemplate.SLOT_BROOCH_JEWEL) || (item.getTemplate().getBodyPart() == ItemTemplate.SLOT_BROOCH))
 			{
-				playable.getActingPlayer().updateActiveBroochJewel();
+				playable.asPlayer().updateActiveBroochJewel();
 			}
 		}
 	}
@@ -1091,7 +1088,7 @@ public abstract class Inventory extends ItemContainer
 		@Override
 		public void notifyUnequiped(int slot, Item item, Inventory inventory)
 		{
-			final Player player = item.getActingPlayer();
+			final Player player = item.asPlayer();
 			if ((player != null) && player.isChangingClass())
 			{
 				return;
@@ -1127,7 +1124,7 @@ public abstract class Inventory extends ItemContainer
 		@Override
 		public void notifyUnequiped(int slot, Item item, Inventory inventory)
 		{
-			final Player player = item.getActingPlayer();
+			final Player player = item.asPlayer();
 			if ((player != null) && player.isChangingClass())
 			{
 				return;
@@ -1163,7 +1160,7 @@ public abstract class Inventory extends ItemContainer
 		@Override
 		public void notifyUnequiped(int slot, Item item, Inventory inventory)
 		{
-			final Player player = item.getActingPlayer();
+			final Player player = item.asPlayer();
 			if ((player != null) && player.isChangingClass())
 			{
 				return;
@@ -1197,7 +1194,7 @@ public abstract class Inventory extends ItemContainer
 		@Override
 		public void notifyUnequiped(int slot, Item item, Inventory inventory)
 		{
-			final Player player = item.getActingPlayer();
+			final Player player = item.asPlayer();
 			if ((player != null) && player.isChangingClass())
 			{
 				return;
@@ -1526,7 +1523,7 @@ public abstract class Inventory extends ItemContainer
 	 * @param slot identifier
 	 * @return Item
 	 */
-	public Item getPaperdollItemByItemId(int slot)
+	public Item getPaperdollItemBySlotId(int slot)
 	{
 		final int index = getPaperdollIndex(slot);
 		if (index == -1)
@@ -1534,6 +1531,24 @@ public abstract class Inventory extends ItemContainer
 			return null;
 		}
 		return _paperdoll[index];
+	}
+	
+	/**
+	 * Returns the first paperdoll item with the specific id
+	 * @param itemId the item id
+	 * @return Item
+	 */
+	public Item getPaperdollItemByItemId(int itemId)
+	{
+		for (int i = 0; i < _paperdoll.length; i++)
+		{
+			final Item item = _paperdoll[i];
+			if ((item != null) && (item.getId() == itemId))
+			{
+				return item;
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -1688,7 +1703,7 @@ public abstract class Inventory extends ItemContainer
 					if (agathionSkills != null)
 					{
 						boolean update = false;
-						final Player player = owner.getActingPlayer();
+						final Player player = owner.asPlayer();
 						for (Skill skill : agathionSkills.getMainSkills(old.getEnchantLevel()))
 						{
 							player.removeSkill(skill, false, skill.isPassive());
@@ -1737,7 +1752,7 @@ public abstract class Inventory extends ItemContainer
 					if (agathionSkills != null)
 					{
 						boolean update = false;
-						final Player player = owner.getActingPlayer();
+						final Player player = owner.asPlayer();
 						if (slot == PAPERDOLL_AGATHION1)
 						{
 							for (Skill skill : agathionSkills.getMainSkills(item.getEnchantLevel()))
@@ -1772,7 +1787,7 @@ public abstract class Inventory extends ItemContainer
 			
 			if (owner.isPlayer())
 			{
-				owner.sendPacket(new ExUserInfoEquipSlot(owner.getActingPlayer()));
+				owner.sendPacket(new ExUserInfoEquipSlot(owner.asPlayer()));
 			}
 		}
 		
@@ -1781,7 +1796,7 @@ public abstract class Inventory extends ItemContainer
 			if ((owner != null) && owner.isPlayer())
 			{
 				// Proper talisman display on login.
-				final Player player = owner.getActingPlayer();
+				final Player player = owner.asPlayer();
 				if ((slot == PAPERDOLL_RBRACELET) && !player.hasEnteredWorld())
 				{
 					for (ItemSkillHolder skill : old.getTemplate().getAllSkills())
@@ -2180,12 +2195,12 @@ public abstract class Inventory extends ItemContainer
 	{
 		if (getOwner().isPlayer())
 		{
-			if (((Player) getOwner()).isInStoreMode())
+			if (getOwner().asPlayer().isInStoreMode())
 			{
 				return;
 			}
 			
-			final Player player = (Player) getOwner();
+			final Player player = getOwner().asPlayer();
 			if (!player.canOverrideCond(PlayerCondOverride.ITEM_CONDITIONS) && !player.isHero() && item.isHeroItem())
 			{
 				return;
@@ -2513,7 +2528,7 @@ public abstract class Inventory extends ItemContainer
 						final Item item = new Item(rs);
 						if (getOwner().isPlayer())
 						{
-							final Player player = (Player) getOwner();
+							final Player player = getOwner().asPlayer();
 							if (!player.canOverrideCond(PlayerCondOverride.ITEM_CONDITIONS) && !player.isHero() && item.isHeroItem())
 							{
 								item.setItemLocation(ItemLocation.INVENTORY);
@@ -2525,7 +2540,7 @@ public abstract class Inventory extends ItemContainer
 						// If stackable item is found in inventory just add to current quantity
 						if (item.isStackable() && (getItemByItemId(item.getId()) != null))
 						{
-							addItem("Restore", item, getOwner().getActingPlayer(), null);
+							addItem("Restore", item, getOwner().asPlayer(), null);
 						}
 						else
 						{
@@ -2548,7 +2563,7 @@ public abstract class Inventory extends ItemContainer
 	
 	public int getTalismanSlots()
 	{
-		return getOwner().getActingPlayer().getStat().getTalismanSlots();
+		return getOwner().asPlayer().getStat().getTalismanSlots();
 	}
 	
 	private void equipTalisman(Item item)
@@ -2582,7 +2597,7 @@ public abstract class Inventory extends ItemContainer
 	
 	public int getArtifactSlots()
 	{
-		return getOwner().getActingPlayer().getStat().getArtifactSlots();
+		return getOwner().asPlayer().getStat().getArtifactSlots();
 	}
 	
 	private void equipArtifact(Item item)
@@ -2648,7 +2663,7 @@ public abstract class Inventory extends ItemContainer
 	
 	public int getBroochJewelSlots()
 	{
-		return getOwner().getActingPlayer().getStat().getBroochJewelSlots();
+		return getOwner().asPlayer().getStat().getBroochJewelSlots();
 	}
 	
 	private void equipBroochJewel(Item item)
@@ -2682,7 +2697,7 @@ public abstract class Inventory extends ItemContainer
 	
 	public int getAgathionSlots()
 	{
-		return getOwner().getActingPlayer().getStat().getAgathionSlots();
+		return getOwner().asPlayer().getStat().getAgathionSlots();
 	}
 	
 	private void equipAgathion(Item item)
@@ -2716,7 +2731,7 @@ public abstract class Inventory extends ItemContainer
 	
 	public boolean canEquipCloak()
 	{
-		return getOwner().getActingPlayer().getStat().canEquipCloak();
+		return getOwner().asPlayer().getStat().canEquipCloak();
 	}
 	
 	/**
@@ -2748,7 +2763,7 @@ public abstract class Inventory extends ItemContainer
 		
 		if (getOwner().isPlayer())
 		{
-			getOwner().sendPacket(new ExUserInfoEquipSlot(getOwner().getActingPlayer()));
+			getOwner().sendPacket(new ExUserInfoEquipSlot(getOwner().asPlayer()));
 		}
 	}
 	
@@ -2760,7 +2775,7 @@ public abstract class Inventory extends ItemContainer
 			return 0;
 		}
 		
-		return _paperdollCache.getArmorSetEnchant((Playable) creature);
+		return _paperdollCache.getArmorSetEnchant(creature.asPlayable());
 	}
 	
 	public int getWeaponEnchant()

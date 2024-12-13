@@ -22,6 +22,7 @@ import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.enums.ItemSkillType;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.model.actor.Playable;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.holders.ItemSkillHolder;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
@@ -78,10 +79,14 @@ public class ItemSkillsTemplate implements IItemHandler
 			final Skill itemSkill = skillInfo.getSkill();
 			if (itemSkill != null)
 			{
-				if (itemSkill.hasEffectType(EffectType.EXTRACT_ITEM) && (playable.getActingPlayer() != null) && !playable.getActingPlayer().isInventoryUnder80(false))
+				if (itemSkill.hasEffectType(EffectType.EXTRACT_ITEM))
 				{
-					playable.getActingPlayer().sendMessage("You've exceeded the limit and cannot retrieve the item. Please check your limit in the inventory.");
-					return false;
+					final Player player = playable.asPlayer();
+					if ((player != null) && !player.isInventoryUnder80(false))
+					{
+						player.sendMessage("You've exceeded the limit and cannot retrieve the item. Please check your limit in the inventory.");
+						return false;
+					}
 				}
 				
 				if (itemSkill.getItemConsumeId() > 0)

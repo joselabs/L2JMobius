@@ -38,7 +38,7 @@ public class OpEnergyMaxSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		if (caster.getActingPlayer().getCharges() >= _amount)
+		if (caster.asPlayer().getCharges() >= _amount)
 		{
 			caster.sendPacket(SystemMessageId.YOUR_FORCE_HAS_REACHED_MAXIMUM_CAPACITY);
 			return false;

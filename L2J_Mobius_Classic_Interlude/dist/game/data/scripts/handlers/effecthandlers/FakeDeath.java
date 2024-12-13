@@ -38,6 +38,11 @@ public class FakeDeath extends AbstractEffect
 	{
 		_power = params.getDouble("power", 0);
 		setTicks(params.getInt("ticks"));
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override
@@ -71,7 +76,7 @@ public class FakeDeath extends AbstractEffect
 	{
 		if (effected.isPlayer())
 		{
-			effected.getActingPlayer().setRecentFakeDeath(true);
+			effected.asPlayer().setRecentFakeDeath(true);
 		}
 		
 		effected.broadcastPacket(new ChangeWaitType(effected, ChangeWaitType.WT_STOP_FAKEDEATH));

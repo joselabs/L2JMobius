@@ -23,6 +23,7 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.enums.UserInfoType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.holders.ItemSkillHolder;
@@ -65,17 +66,23 @@ public class VitalityPointUp extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		effected.getActingPlayer().updateVitalityPoints(_value, false, false);
+		final Player player = effected.asPlayer();
+		if (player == null)
+		{
+			return;
+		}
 		
-		final UserInfo ui = new UserInfo(effected.getActingPlayer());
+		player.updateVitalityPoints(_value, false, false);
+		
+		final UserInfo ui = new UserInfo(player);
 		ui.addComponentType(UserInfoType.VITA_FAME);
-		effected.getActingPlayer().sendPacket(ui);
+		player.sendPacket(ui);
 		
 		// Send item list to update vitality items with red icons in inventory.
 		ThreadPool.schedule(() ->
 		{
 			final List<Item> items = new LinkedList<>();
-			ITEMS: for (Item i : effected.getActingPlayer().getInventory().getItems())
+			ITEMS: for (Item i : player.getInventory().getItems())
 			{
 				if (i.getTemplate().hasSkills())
 				{
@@ -94,7 +101,7 @@ public class VitalityPointUp extends AbstractEffect
 			{
 				final InventoryUpdate iu = new InventoryUpdate();
 				iu.addItems(items);
-				effected.getActingPlayer().sendInventoryUpdate(iu);
+				player.sendInventoryUpdate(iu);
 			}
 		}, 1000);
 	}

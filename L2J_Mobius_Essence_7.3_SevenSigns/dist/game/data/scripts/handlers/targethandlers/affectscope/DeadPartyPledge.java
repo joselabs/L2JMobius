@@ -47,8 +47,8 @@ public class DeadPartyPledge implements IAffectScopeHandler
 		
 		if (target.isPlayable())
 		{
-			final Playable playable = (Playable) target;
-			final Player player = playable.getActingPlayer();
+			final Playable playable = target.asPlayable();
+			final Player player = playable.asPlayer();
 			final Party party = player.getParty();
 			
 			// Create the target filter.
@@ -60,7 +60,7 @@ public class DeadPartyPledge implements IAffectScopeHandler
 					return false;
 				}
 				
-				final Player p = plbl.getActingPlayer();
+				final Player p = plbl.asPlayer();
 				if ((p == null) || !p.isDead())
 				{
 					return false;

@@ -176,7 +176,7 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34235" toLevel="1" name="Catshi's Guardian">
-		<!-- Nature-loving inhabitants of the Conquest world. Guardians of the Soul Tree. Don't be fooled by their innocent appearance -->
+		<!-- Nature-loving inhabitants of the Conquest world. Guardians of the Soul Tree. Don't be fooled by their innocent appearance; these are fierce and mighty warriors. -->
 		<icon>BranchSys3.g_blessing_of_angel_cat_i00</icon>
 		<operateType>A1</operateType>
 	</skill>
@@ -188,25 +188,25 @@
 	<skill id="34237" toLevel="1" name="Musician's Melody - Mentor">
 		<!-- With your mentor's help, applies the following buff:. Max HP +43%, Max MP +68%, Max CP +43%, P. Atk. +28%, M. Atk. +97%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +36%, Critical Damage for basic attacks +33%, M. Skill Critical Rate +43%0, Atk. Spd. +43%1, Casting Spd. +43%2, received Critical Damage from basic attacks -43%3, MP Consumption -43%4, Vampiric Rage effect +43%5. With a certain chance, increases P. Critical Damage when hit. The effect is active only when your mentor is online and for 5 min. after they have logged out. -->
 		<icon>icon.skill11517_b</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
 		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
-		<abnormalLevel>5</abnormalLevel>
 		<affectRange>1000</affectRange>
-		<operateType>A2</operateType>
-		<mpConsume>0</mpConsume>
-		<hitTime>700</hitTime>
-		<coolTime>300</coolTime>
-		<isMagic>22</isMagic>
-		<magicLevel>99</magicLevel>
-		<reuseDelay>2000</reuseDelay>
-		<effectPoint>712</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<canBeDispelled>false</canBeDispelled>
+		<coolTime>300</coolTime>
+		<effectPoint>1</effectPoint>
+		<hitTime>0</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>22</isMagic>
 		<isMentoring>true</isMentoring>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>99</magicLevel>
+		<mpConsume>0</mpConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>MULTI_BUFF;IMPROVE_PA_PD_UP;PA_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL;PD_UP;HIT_UP;IMPROVE_HIT_DEFENCE_CRT_RATE_UP;IMPROVE_CRT_RATE_DMG_UP;T_CRT_DMG_DOWN;CRITICAL_DMG_UP;CRITICAL_PROB_UP;IMPROVE_SPEED_AVOID_UP;SPEED_UP;MAX_BREATH_UP;HOLY_ATTACK;AVOID_UP;DECREASE_WEIGHT_PENALTY;RESIST_HOLY_UNHOLY;ATTACK_TIME_DOWN</dispel>
@@ -227,11 +227,11 @@
 				<amount>43</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>28</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>97</amount>
 				<mode>PER</mode>
 			</effect>
@@ -291,7 +291,7 @@
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Critical Damage Increase -->
 				<attackerType>Creature</attackerType>
 				<chance>60</chance>
@@ -323,26 +323,26 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34242" toLevel="2" name="Musician's Melody - Clan Hall">
-		<!-- For 30 min., Max HP +37%, Max MP +62%, Max CP +37%, P. Atk. +23%, M. Atk. +88%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +30%, Critical Damage for basic attacks +30 min.0, M. Skill Critical Rate +30 min.1, Atk. Spd. +30 min.2, Casting Spd. +30 min.3, received Critical Damage from basic attacks -30 min.4, MP Consumption -30 min.5, Vampiric Rage effect +30 min.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 1: For 30 min., Max HP +37%, Max MP +62%, Max CP +37%, P. Atk. +23%, M. Atk. +88%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +30%, Critical Damage for basic attacks +30 min.0, M. Skill Critical Rate +30 min.1, Atk. Spd. +30 min.2, Casting Spd. +30 min.3, received Critical Damage from basic attacks -30 min.4, MP Consumption -30 min.5, Vampiric Rage effect +30 min.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 2: For 30 min., Max HP +39%, Max MP +64%, Max CP +39%, P. Atk. +24%, M. Atk. +91%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +32%, Critical Damage for basic attacks +30 min.0, M. Skill Critical Rate +30 min.1, Atk. Spd. +30 min.2, Casting Spd. +30 min.3, received Critical Damage from basic attacks -30 min.4, MP Consumption -30 min.5, Vampiric Rage effect +30 min.6. With a certain chance, increases P. Critical Damage when hit. -->
 		<icon>icon.skill11517_b</icon>
-		<abnormalTime>3600</abnormalTime>
-		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">2</value>
 			<value level="2">3</value>
 			<value level="3">4</value>
 			<value level="4">6</value>
 		</abnormalLevel>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
 		<affectRange>1000</affectRange>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<castRange>400</castRange>
 		<effectRange>900</effectRange>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DispelBySlotProbability">
@@ -373,14 +373,14 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">23</value>
 					<value level="2">24</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">88</value>
 					<value level="2">91</value>
@@ -455,7 +455,7 @@
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Critical Damage Increase -->
 				<attackerType>Creature</attackerType>
 				<chance>60</chance>
@@ -467,26 +467,28 @@
 		</effects>
 	</skill>
 	<skill id="34243" toLevel="4" name="Musician's Melody - Adventurer">
-		<!-- For 60 min., Max HP +37%, Max MP +62%, Max CP +37%, P. Atk. +23%, M. Atk. +88%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +30%, Critical Damage for basic attacks +60 min.0, M. Skill Critical Rate +60 min.1, Atk. Spd. +60 min.2, Casting Spd. +60 min.3, received Critical Damage from basic attacks -60 min.4, MP Consumption -60 min.5, Vampiric Rage effect +60 min.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 1: For 60 min., Max HP +37%, Max MP +62%, Max CP +37%, P. Atk. +23%, M. Atk. +88%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +30%, Critical Damage for basic attacks +60 min.0, M. Skill Critical Rate +60 min.1, Atk. Spd. +60 min.2, Casting Spd. +60 min.3, received Critical Damage from basic attacks -60 min.4, MP Consumption -60 min.5, Vampiric Rage effect +60 min.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 2: For 60 min., Max HP +39%, Max MP +64%, Max CP +39%, P. Atk. +24%, M. Atk. +91%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +32%, Critical Damage for basic attacks +60 min.0, M. Skill Critical Rate +60 min.1, Atk. Spd. +60 min.2, Casting Spd. +60 min.3, received Critical Damage from basic attacks -60 min.4, MP Consumption -60 min.5, Vampiric Rage effect +60 min.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 3: For 60 min., Max HP +41%, Max MP +66%, Max CP +41%, P. Atk. +26%, M. Atk. +94%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +34%, Critical Damage for basic attacks +60 min.0, M. Skill Critical Rate +60 min.1, Atk. Spd. +60 min.2, Casting Spd. +60 min.3, received Critical Damage from basic attacks -60 min.4, MP Consumption -60 min.5, Vampiric Rage effect +60 min.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 4: For 60 min., Max HP +43%, Max MP +68%, Max CP +43%, P. Atk. +28%, M. Atk. +97%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +36%, Critical Damage for basic attacks +60 min.0, M. Skill Critical Rate +60 min.1, Atk. Spd. +60 min.2, Casting Spd. +60 min.3, received Critical Damage from basic attacks -60 min.4, MP Consumption -60 min.5, Vampiric Rage effect +60 min.6. With a certain chance, increases P. Critical Damage when hit. -->
 		<icon>icon.skill11517_b</icon>
-		<abnormalTime>3600</abnormalTime>
-		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">2</value>
 			<value level="2">3</value>
 			<value level="3">4</value>
 			<value level="4">6</value>
 		</abnormalLevel>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
 		<affectRange>1000</affectRange>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<operateType>A2</operateType>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<castRange>400</castRange>
 		<effectRange>900</effectRange>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DispelBySlotProbability">
@@ -523,7 +525,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">23</value>
 					<value level="2">24</value>
@@ -532,7 +534,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">88</value>
 					<value level="2">91</value>
@@ -617,7 +619,7 @@
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Critical Damage Increase -->
 				<attackerType>Creature</attackerType>
 				<chance>60</chance>
@@ -634,33 +636,38 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34245" toLevel="2" name="Musician's Melody - Residence">
-		<!-- For 1 h., Max HP +37%, Max MP +62%, Max CP +37%, P. Atk. +23%, M. Atk. +88%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +30%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 1: For 1 h., Max HP +37%, Max MP +62%, Max CP +37%, P. Atk. +23%, M. Atk. +88%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +30%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 2: For 1 h., Max HP +39%, Max MP +64%, Max CP +39%, P. Atk. +24%, M. Atk. +91%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +32%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
 		<icon>icon.skill11517_b</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34246" toLevel="5" name="Musician's Melody">
-		<!-- For 1 h., Max HP +43%, Max MP +68%, Max CP +43%, P. Atk. +28%, M. Atk. +97%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +36%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 1: For 1 h., Max HP +43%, Max MP +68%, Max CP +43%, P. Atk. +28%, M. Atk. +97%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +36%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 2: For 1 h., Max HP +43%, Max MP +68%, Max CP +43%, P. Atk. +28%, M. Atk. +97%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +36%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 3: For 1 h., Max HP +43%, Max MP +68%, Max CP +43%, P. Atk. +28%, M. Atk. +97%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +36%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 4: For 1 h., Max HP +43%, Max MP +68%, Max CP +43%, P. Atk. +28%, M. Atk. +97%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +36%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
+		<!-- Level 5: For 1 h., Max HP +45%, Max MP +70%, Max CP +45%, P. Atk. +30%, M. Atk. +100%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +38%, Critical Damage for basic attacks +1 h.0, M. Skill Critical Rate +1 h.1, Atk. Spd. +1 h.2, Casting Spd. +1 h.3, received Critical Damage from basic attacks -1 h.4, MP Consumption -1 h.5, Vampiric Rage effect +1 h.6. With a certain chance, increases P. Critical Damage when hit. -->
 		<icon>icon.skill11517_b</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="34247" toLevel="1" name="Musician's Melody - Olympiad">
 		<!-- A standard buff for all Olympiad participants. For 10 min., Max HP +45%, Max MP +70%, Max CP +45%, P. Atk. +30%, M. Atk. +100%, P. Def. +35%, M. Def. +40%, Critical Rate for basic attacks +38%, Critical Damage for basic attacks +10 min.0, M. Skill Critical Rate +10 min.1, Atk. Spd. +10 min.2, Casting Spd. +10 min.3, received Critical Damage from basic attacks -10 min.4, MP Consumption -10 min.5, Vampiric Rage effect +10 min.6. With a certain chance, increases P. Critical Damage when hit. -->
 		<icon>icon.olympiad_buff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>5</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
 		<affectRange>1000</affectRange>
-		<operateType>A2</operateType>
-		<hitTime>700</hitTime>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<coolTime>300</coolTime>
+		<effectPoint>0</effectPoint>
+		<hitTime>0</hitTime>
 		<isMagic>22</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>105</magicLevel>
 		<reuseDelay>2000</reuseDelay>
-		<effectPoint>715</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>MULTI_BUFF;IMPROVE_PA_PD_UP;PA_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL;PD_UP;HIT_UP;IMPROVE_HIT_DEFENCE_CRT_RATE_UP;IMPROVE_CRT_RATE_DMG_UP;T_CRT_DMG_DOWN;CRITICAL_DMG_UP;CRITICAL_PROB_UP;IMPROVE_SPEED_AVOID_UP;SPEED_UP;MAX_BREATH_UP;HOLY_ATTACK;AVOID_UP;DECREASE_WEIGHT_PENALTY;RESIST_HOLY_UNHOLY;ATTACK_TIME_DOWN</dispel>
@@ -681,11 +688,11 @@
 				<amount>45</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -745,7 +752,7 @@
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Critical Damage Increase -->
 				<attackerType>Creature</attackerType>
 				<chance>60</chance>
@@ -789,23 +796,23 @@
 	<skill id="34254" toLevel="1" name="Sonata Performance - Adventurer">
 		<!-- . For 1 h., Max HP +30%, P. Atk. +30%, M. Atk. +33%, Atk. Spd. +40%, Casting Spd. +30%, P./ M. Evasion +5, Damage Reflection +10%, HP Recovery Rate +75%, MP Recovery Rate +1 h.0, Casting Interruption Rate -1 h.1, Skill Cooldown -1 h.2, MP Consumption -1 h.3. With a certain chance, Vampiric Rage effect +1 h.4. -->
 		<icon>icon.skill11529_b</icon>
-		<affectRange>1000</affectRange>
-		<abnormalLevel>2</abnormalLevel>
-		<abnormalType>BUFF_SPECIAL_AURA</abnormalType>
-		<abnormalTime>3600</abnormalTime>
 		<operateType>A2</operateType>
-		<mpConsume>420</mpConsume>
-		<hitTime>700</hitTime>
-		<coolTime>300</coolTime>
-		<reuseDelay>2000</reuseDelay>
-		<isMagic>22</isMagic>
-		<magicLevel>85</magicLevel>
-		<effectPoint>687</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_AURA</abnormalType>
+		<affectRange>1000</affectRange>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>300</coolTime>
+		<effectPoint>687</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>0</hitTime>
+		<isMagic>22</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>85</magicLevel>
+		<mpConsume>420</mpConsume>
+		<reuseDelay>2000</reuseDelay>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD;AVOID_UP</dispel>
@@ -818,11 +825,11 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -891,21 +898,21 @@
 	<skill id="34256" toLevel="1" name="Sonata Performance - Mentor">
 		<!-- With your mentor's help, the Sonata Performance buff is applied. Max HP +30%, P. Atk. +30%, M. Atk. +33%, Atk. Spd. +40%, Casting Spd. +30%, P./ M. Evasion +5, Damage Reflection +10%, HP Recovery Rate +75%, MP Recovery Rate +100%, Casting Interruption Rate -30%0, Skill Cooldown -30%1, MP Consumption -30%2. With a certain chance, Vampiric Rage effect +30%3. The effect is active only when your mentor is online and for 5 min. after they have logged out. -->
 		<icon>icon.skill11529_b</icon>
-		<abnormalLevel>3</abnormalLevel>
-		<abnormalType>BUFF_SPECIAL_AURA</abnormalType>
-		<abnormalTime>-1</abnormalTime>
 		<operateType>A2</operateType>
-		<isMagic>-1</isMagic>
-		<magicLevel>1</magicLevel>
-		<effectPoint>1</effectPoint>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
+		<abnormalLevel>3</abnormalLevel>
+		<abnormalTime>-1</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_AURA</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<canBeDispelled>false</canBeDispelled>
+		<effectPoint>687</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>-1</isMagic>
 		<isMentoring>true</isMentoring>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DispelBySlotProbability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD;AVOID_UP</dispel>
@@ -918,11 +925,11 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1127,6 +1134,25 @@
 		<!-- Additional party benefits. P. Atk./ M. Atk./ P. Def./ M. Def. are higher than in common hunting zones. -->
 		<icon>icon.skill0335</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<castRange>400</castRange>
+		<coolTime>420</coolTime>
+		<effectPoint>-337</effectPoint>
+		<effectRange>400</effectRange>
+		<hitTime>780</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>76</magicLevel>
+		<nextAction>CAST</nextAction>
+		<reuseDelay>1000</reuseDelay>
+		<effects>
+			<effect name="PhysicalDamage">
+				<power>20000</power>
+				<ignoreShieldDefence>true</ignoreShieldDefence>
+				<criticalChance>30</criticalChance>
+				<overHit>true</overHit>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34286" toLevel="1" name="Green's Protective Elysium Blessing">
 		<!-- For 24 h., P. Atk./ M. Atk./ P. Def./ M. Def. +25%. Acquired XP/ SP +5%. The effect remains after death. Cannot be used in the Olympiad or the Ceremony of Chaos. -->
@@ -1140,21 +1166,21 @@
 	<skill id="34288" toLevel="25" name="Full Moon's Festive Energy - Lv. 1">
 		<!-- Miraculous energy that fills your body during the Full Moon Festival. Grants a Full Moon's gift once in 1 h. Maximum level: 24. Note!. You can't get a gift if your character is dead or you don't have enough free slots in your inventory. -->
 		<icon>icon.s_npc_ev_thanksgiving_moon_blessing</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>EVENT_BUFF</abnormalType>
 		<abnormalVisualEffect>S_EVENT_MOON_AVE</abnormalVisualEffect>
-		<hitTime>1000</hitTime>
-		<magicLevel>105</magicLevel>
-		<operateType>A2</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
-		<stayAfterDeath>true</stayAfterDeath>
+		<basicProperty>NONE</basicProperty>
 		<canBeDispelled>false</canBeDispelled>
+		<hitTime>0</hitTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isSharedWithSummon>false</isSharedWithSummon>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>105</magicLevel>
+		<stayAfterDeath>true</stayAfterDeath>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>105</minLevel>
@@ -1197,7 +1223,7 @@
 			</effect>
 		</endEffects>
 	</skill>
-	<skill id="34289" toLevel="2" name="Atelia's Weak Energy">
+	<skill id="34289" toLevel="3" name="Atelia's Weak Energy">
 		<!-- Atelia's Energy enhances your combat abilities. -->
 		<icon>icon.skill1343</icon>
 		<operateType>A1</operateType>

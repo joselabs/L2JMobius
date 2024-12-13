@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * Copyright (c) 2013 L2jMobius
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.effecthandlers;
 
@@ -23,13 +27,8 @@ import org.l2jmobius.gameserver.enums.StatModifierType;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
-import org.l2jmobius.gameserver.model.events.EventType;
-import org.l2jmobius.gameserver.model.events.impl.creature.OnCreatureSkillUse;
-import org.l2jmobius.gameserver.model.events.listeners.ConsumerEventListener;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.serverpackets.AbnormalStatusUpdate;
 
 /**
  * @author Mobius
@@ -57,41 +56,32 @@ public class AbnormalTimeChangeBySkillId extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		effected.addListener(new ConsumerEventListener(effected, EventType.ON_CREATURE_SKILL_USE, (OnCreatureSkillUse event) -> onCreatureSkillUse(event), this));
+		for (int skillId : _skillIds)
+		{
+			if (_mode == StatModifierType.PER)
+			{
+				effected.addMultipliedAbnormalTime(skillId, _time);
+			}
+			else // DIFF
+			{
+				effected.addAddedAbnormalTime(skillId, (int) _time);
+			}
+		}
 	}
 	
 	@Override
 	public void onExit(Creature effector, Creature effected, Skill skill)
 	{
-		effected.removeListenerIf(EventType.ON_CREATURE_SKILL_USE, listener -> listener.getOwner() == this);
-	}
-	
-	private void onCreatureSkillUse(OnCreatureSkillUse event)
-	{
-		final Skill skill = event.getSkill();
-		if (!_skillIds.contains(skill.getId()))
+		for (int skillId : _skillIds)
 		{
-			return;
-		}
-		
-		final AbnormalStatusUpdate asu = new AbnormalStatusUpdate();
-		final Creature creature = event.getCaster();
-		for (BuffInfo info : creature.getEffectList().getEffects())
-		{
-			if (info.getSkill().getId() == skill.getId())
+			if (_mode == StatModifierType.PER)
 			{
-				if (_mode == StatModifierType.PER)
-				{
-					info.resetAbnormalTime((int) (info.getAbnormalTime() * _time));
-				}
-				else // DIFF
-				{
-					info.resetAbnormalTime((int) (info.getAbnormalTime() + _time));
-				}
-				asu.addSkill(info);
+				effected.removeMultipliedAbnormalTime(skillId, _time);
+			}
+			else // DIFF
+			{
+				effected.removeAddedAbnormalTime(skillId, (int) _time);
 			}
 		}
-		
-		creature.sendPacket(asu);
 	}
 }

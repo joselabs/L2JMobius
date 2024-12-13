@@ -39,7 +39,7 @@ public class SummonAgathion extends AbstractEffect
 	{
 		if (params.isEmpty())
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": must have parameters.");
+			throw new IllegalArgumentException(getClass().getSimpleName() + ": must have parameters.");
 		}
 		
 		_npcId = params.getInt("npcId", 0);
@@ -59,7 +59,7 @@ public class SummonAgathion extends AbstractEffect
 			return;
 		}
 		
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
 		player.setAgathionId(_npcId);
 		player.sendPacket(new ExUserInfoCubic(player));
 		player.broadcastCharInfo();

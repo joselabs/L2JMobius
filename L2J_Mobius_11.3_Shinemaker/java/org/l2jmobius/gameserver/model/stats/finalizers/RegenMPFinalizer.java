@@ -25,7 +25,7 @@ import org.l2jmobius.gameserver.instancemanager.FortManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Pet;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.residences.AbstractResidence;
 import org.l2jmobius.gameserver.model.residences.ResidenceFunction;
 import org.l2jmobius.gameserver.model.residences.ResidenceFunctionType;
@@ -52,19 +52,20 @@ public class RegenMPFinalizer implements IStatFunction
 	{
 		throwIfPresent(base);
 		
-		double baseValue = creature.isPlayer() ? creature.getActingPlayer().getTemplate().getBaseMpRegen(creature.getLevel()) : creature.getTemplate().getBaseMpReg();
+		double baseValue = creature.isPlayer() ? creature.asPlayer().getTemplate().getBaseMpRegen(creature.getLevel()) : creature.getTemplate().getBaseMpReg();
 		baseValue *= creature.isRaid() ? Config.RAID_MP_REGEN_MULTIPLIER : Config.MP_REGEN_MULTIPLIER;
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
-			if (player.isInsideZone(ZoneId.CLAN_HALL) && (player.getClan() != null) && (player.getClan().getHideoutId() > 0))
+			final Player player = creature.asPlayer();
+			final Clan clan = player.getClan();
+			if (player.isInsideZone(ZoneId.CLAN_HALL) && (clan != null) && (clan.getHideoutId() > 0))
 			{
 				final ClanHallZone zone = ZoneManager.getInstance().getZone(player, ClanHallZone.class);
 				final int posChIndex = zone == null ? -1 : zone.getResidenceId();
-				final int clanHallIndex = player.getClan().getHideoutId();
+				final int clanHallIndex = clan.getHideoutId();
 				if ((clanHallIndex > 0) && (clanHallIndex == posChIndex))
 				{
-					final AbstractResidence residense = ClanHallData.getInstance().getClanHallById(player.getClan().getHideoutId());
+					final AbstractResidence residense = ClanHallData.getInstance().getClanHallById(clan.getHideoutId());
 					if (residense != null)
 					{
 						final ResidenceFunction func = residense.getFunction(ResidenceFunctionType.MP_REGEN);
@@ -76,14 +77,14 @@ public class RegenMPFinalizer implements IStatFunction
 				}
 			}
 			
-			if (player.isInsideZone(ZoneId.CASTLE) && (player.getClan() != null) && (player.getClan().getCastleId() > 0))
+			if (player.isInsideZone(ZoneId.CASTLE) && (clan != null) && (clan.getCastleId() > 0))
 			{
 				final CastleZone zone = ZoneManager.getInstance().getZone(player, CastleZone.class);
 				final int posCastleIndex = zone == null ? -1 : zone.getResidenceId();
-				final int castleIndex = player.getClan().getCastleId();
+				final int castleIndex = clan.getCastleId();
 				if ((castleIndex > 0) && (castleIndex == posCastleIndex))
 				{
-					final Castle castle = CastleManager.getInstance().getCastleById(player.getClan().getCastleId());
+					final Castle castle = CastleManager.getInstance().getCastleById(clan.getCastleId());
 					if (castle != null)
 					{
 						final CastleFunction func = castle.getCastleFunction(Castle.FUNC_RESTORE_MP);
@@ -95,14 +96,14 @@ public class RegenMPFinalizer implements IStatFunction
 				}
 			}
 			
-			if (player.isInsideZone(ZoneId.FORT) && (player.getClan() != null) && (player.getClan().getFortId() > 0))
+			if (player.isInsideZone(ZoneId.FORT) && (clan != null) && (clan.getFortId() > 0))
 			{
 				final FortZone zone = ZoneManager.getInstance().getZone(player, FortZone.class);
 				final int posFortIndex = zone == null ? -1 : zone.getResidenceId();
-				final int fortIndex = player.getClan().getFortId();
+				final int fortIndex = clan.getFortId();
 				if ((fortIndex > 0) && (fortIndex == posFortIndex))
 				{
-					final Fort fort = FortManager.getInstance().getFortById(player.getClan().getCastleId());
+					final Fort fort = FortManager.getInstance().getFortById(clan.getCastleId());
 					if (fort != null)
 					{
 						final FortFunction func = fort.getFortFunction(Fort.FUNC_RESTORE_MP);
@@ -141,7 +142,7 @@ public class RegenMPFinalizer implements IStatFunction
 		}
 		else if (creature.isPet())
 		{
-			baseValue = ((Pet) creature).getPetLevelData().getPetRegenMP() * Config.PET_MP_REGEN_MULTIPLIER;
+			baseValue = creature.asPet().getPetLevelData().getPetRegenMP() * Config.PET_MP_REGEN_MULTIPLIER;
 		}
 		
 		return Stat.defaultValue(creature, stat, baseValue);

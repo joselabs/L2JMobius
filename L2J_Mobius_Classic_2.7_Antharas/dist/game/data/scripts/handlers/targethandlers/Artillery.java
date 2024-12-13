@@ -42,7 +42,7 @@ public class Artillery implements ITargetTypeHandler
 		final WorldObject target = creature.getTarget();
 		if ((target != null) && target.isDoor())
 		{
-			final Door targetDoor = (Door) target;
+			final Door targetDoor = target.asDoor();
 			if (!targetDoor.isDead() && targetDoor.isAutoAttackable(creature) && targetDoor.isEnemy())
 			{
 				return targetDoor;

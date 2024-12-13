@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
@@ -23,13 +27,14 @@ import org.l2jmobius.gameserver.enums.NpcInfoType;
 import org.l2jmobius.gameserver.enums.Team;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
+import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.skill.AbnormalVisualEffect;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
- * @author Sdw
+ * @author Mobius
  */
 public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 {
@@ -60,8 +65,11 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 	{
 		_summon = summon;
 		_attacker = attacker;
-		_relation = (attacker != null) && (summon.getOwner() != null) ? summon.getOwner().getRelation(attacker) : 0;
-		_title = (summon.getOwner() != null) && summon.getOwner().isOnline() ? summon.getOwner().getName() : "";
+		
+		final Player owner = summon.getOwner();
+		_relation = (attacker != null) && (owner != null) ? owner.getRelation(attacker) : 0;
+		_title = (owner != null) && owner.isOnline() ? owner.getName() : "";
+		
 		_value = value;
 		_abnormalVisualEffects = summon.getEffectList().getCurrentAbnormalVisualEffects();
 		if (summon.getTemplate().getDisplayId() != summon.getTemplate().getId())
@@ -134,16 +142,18 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		{
 			addComponentType(NpcInfoType.REPUTATION);
 		}
-		if (summon.getOwner().getClan() != null)
+		if ((owner != null) && (owner.getClan() != null))
 		{
-			_clanId = summon.getOwner().getAppearance().getVisibleClanId();
-			_clanCrest = summon.getOwner().getAppearance().getVisibleClanCrestId();
-			_clanLargeCrest = summon.getOwner().getAppearance().getVisibleClanLargeCrestId();
-			_allyCrest = summon.getOwner().getAppearance().getVisibleAllyId();
-			_allyId = summon.getOwner().getAppearance().getVisibleAllyCrestId();
+			final PlayerAppearance appearance = owner.getAppearance();
+			_clanId = appearance.getVisibleClanId();
+			_clanCrest = appearance.getVisibleClanCrestId();
+			_clanLargeCrest = appearance.getVisibleClanLargeCrestId();
+			_allyCrest = appearance.getVisibleAllyId();
+			_allyId = appearance.getVisibleAllyCrestId();
 			addComponentType(NpcInfoType.CLAN);
 		}
 		addComponentType(NpcInfoType.PET_EVOLUTION_ID);
+		
 		// TODO: Confirm me
 		if (summon.isInCombat())
 		{
@@ -157,7 +167,7 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		{
 			_statusMask |= 0x04;
 		}
-		_statusMask |= 0x08;
+		_statusMask |= 0x08; // Show name (current on retail is empty).
 		if (_statusMask != 0x00)
 		{
 			addComponentType(NpcInfoType.VISUAL_STATE);
@@ -253,8 +263,8 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (containsMask(NpcInfoType.SPEED_MULTIPLIER))
 		{
-			buffer.writeFloat((float) _summon.getStat().getMovementSpeedMultiplier());
-			buffer.writeFloat((float) _summon.getStat().getAttackSpeedMultiplier());
+			buffer.writeFloat((float) _summon.getMovementSpeedMultiplier());
+			buffer.writeFloat((float) _summon.getAttackSpeedMultiplier());
 		}
 		if (containsMask(NpcInfoType.EQUIPPED))
 		{

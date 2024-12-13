@@ -20,7 +20,6 @@ import org.l2jmobius.gameserver.handler.IPlayerActionHandler;
 import org.l2jmobius.gameserver.model.ActionDataHolder;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
-import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 
 /**
@@ -37,7 +36,7 @@ public class UnsummonPet implements IPlayerActionHandler
 		{
 			player.sendPacket(SystemMessageId.YOU_DON_T_HAVE_A_PET);
 		}
-		else if (((Pet) pet).isUncontrollable())
+		else if (pet.asPet().isUncontrollable())
 		{
 			player.sendPacket(SystemMessageId.WHEN_YOUR_PET_S_SATIETY_REACHES_0_YOU_CANNOT_CONTROL_IT);
 		}

@@ -4,15 +4,17 @@
 		<!-- Enchant scroll for Circlets of Authority/Foresight/Grace. Can be enchanted up to +5. If enchantment fails, the circlet's enchantment level is reset. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 	</skill>
 	<skill id="35104" toLevel="3" name="Circlet of Authority">
-		<!-- LUC/CHA + 1. -->
+		<!-- Level 1: LUC/CHA + 1. -->
+		<!-- Level 2: Vitality Status Bonus XP + 10%, STR + 5, LUC/CHA + 1, Attack Attribute + 50. -->
+		<!-- Level 3: Bonus XP/SP + 10%, Vitality Status Bonus XP + 10%, P. Atk. + 7%, P. Critical Rate + 50, STR + 5, LUC/CHA + 1, Attack Attribute + 50. -->
 		<icon>
 			<value level="1">icon.bm_pattack_circlet_01</value>
 			<value level="2">icon.bm_pattack_circlet_02</value>
@@ -59,7 +61,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -92,7 +94,11 @@
 		</effects>
 	</skill>
 	<skill id="35105" toLevel="5" name="Circlet of Authority Enchant Effect">
-		<!-- STR + 1. -->
+		<!-- Level 1: STR + 1. -->
+		<!-- Level 2: STR + 2. -->
+		<!-- Level 3: STR + 3, Attack Attribute + 10. -->
+		<!-- Level 4: STR + 4, Attack Attribute + 30. -->
+		<!-- Level 5: Vitality Status Bonus XP + 10%, STR + 5, Attack Attribute + 50. -->
 		<icon>icon.bm_pattack_circlet_01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -119,11 +125,15 @@
 		</effects>
 	</skill>
 	<skill id="35106" toLevel="5" name="Noble Circlet of Authority Enchant Effect">
-		<!-- P. Atk. + 1%. -->
+		<!-- Level 1: P. Atk. + 1%. -->
+		<!-- Level 2: P. Atk. + 2%. -->
+		<!-- Level 3: P. Atk. + 3%, P. Critical Rate + 10. -->
+		<!-- Level 4: P. Atk. + 5%, P. Critical Rate + 30. -->
+		<!-- Level 5: Bonus XP/SP + 10%, P. Atk. + 7%, P. Critical Rate + 50. -->
 		<icon>icon.bm_pattack_circlet_02</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -150,7 +160,11 @@
 		</effects>
 	</skill>
 	<skill id="35107" toLevel="5" name="Radiant Circlet of Authority Enchant Effect">
-		<!-- P. Critical Damage/P. Skill Critical Damage + 1%. -->
+		<!-- Level 1: P. Critical Damage/P. Skill Critical Damage + 1%. -->
+		<!-- Level 2: P. Critical Damage/P. Skill Critical Damage + 3%. -->
+		<!-- Level 3: P. Critical Damage/P. Skill Critical Damage + 5%, P. Skill Power + 1%. -->
+		<!-- Level 4: P. Critical Damage/P. Skill Critical Damage + 7%, P. Skill Power + 3%. -->
+		<!-- Level 5: Max HP/MP/CP + 5%, P. Critical Damage/P. Skill Critical Damage + 10%, P. Skill Power + 5%. -->
 		<icon>icon.bm_pattack_circlet_03</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -217,7 +231,9 @@
 		</effects>
 	</skill>
 	<skill id="35108" toLevel="3" name="Circlet of Foresight">
-		<!-- LUC/CHA + 1. -->
+		<!-- Level 1: LUC/CHA + 1. -->
+		<!-- Level 2: Vitality Status Bonus XP + 10%, INT + 5, LUC/CHA + 1, Attack Attribute + 50. -->
+		<!-- Level 3: Bonus XP/SP + 10%, Vitality Status Bonus XP + 10%, M. Atk. + 14%, M. Critical Rate + 50, INT + 5, LUC/CHA + 1, Attack Attribute + 50. -->
 		<icon>
 			<value level="1">icon.bm_mattack_circlet_01</value>
 			<value level="2">icon.bm_mattack_circlet_02</value>
@@ -267,7 +283,11 @@
 		</effects>
 	</skill>
 	<skill id="35109" toLevel="5" name="Circlet of Foresight Enchant Effect">
-		<!-- INT + 1. -->
+		<!-- Level 1: INT + 1. -->
+		<!-- Level 2: INT + 2. -->
+		<!-- Level 3: INT + 3, Attack Attribute + 10. -->
+		<!-- Level 4: INT + 4, Attack Attribute + 30. -->
+		<!-- Level 5: Vitality Status Bonus XP + 10%, INT + 5, Attack Attribute + 50. -->
 		<icon>icon.bm_mattack_circlet_01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -294,11 +314,15 @@
 		</effects>
 	</skill>
 	<skill id="35110" toLevel="5" name="Noble Circlet of Foresight Enchant Effect">
-		<!-- M. Atk. + 1%. -->
+		<!-- Level 1: M. Atk. + 1%. -->
+		<!-- Level 2: M. Atk. + 4%. -->
+		<!-- Level 3: M. Atk. + 6%, M. Critical Rate + 10. -->
+		<!-- Level 4: M. Atk. + 10%, M. Critical Rate + 30. -->
+		<!-- Level 5: Bonus XP/SP + 10%, M. Atk. + 14%, M. Critical Rate + 50. -->
 		<icon>icon.bm_mattack_circlet_02</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">4</value>
@@ -325,11 +349,15 @@
 		</effects>
 	</skill>
 	<skill id="35111" toLevel="5" name="Radiant Circlet of Foresight Enchant Effect">
-		<!-- M. Critical Damage + 1%. -->
+		<!-- Level 1: M. Critical Damage + 1%. -->
+		<!-- Level 2: M. Critical Damage + 3%. -->
+		<!-- Level 3: M. Critical Damage + 5%, M. Skill Power + 1%. -->
+		<!-- Level 4: M. Critical Damage + 7%, M. Skill Power + 3%. -->
+		<!-- Level 5: Max HP/MP/CP + 5%, M. Critical Damage + 10%, M. Skill Power + 5%. -->
 		<icon>icon.bm_mattack_circlet_03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>14</amount>
 				<mode>PER</mode>
 			</effect>
@@ -386,7 +414,9 @@
 		</effects>
 	</skill>
 	<skill id="35112" toLevel="3" name="Circlet of Grace">
-		<!-- LUC/CHA + 1. -->
+		<!-- Level 1: LUC/CHA + 1. -->
+		<!-- Level 2: Vitality Status Bonus XP + 10%, CON/MEN + 5, LUC/CHA + 1, All Defense Attribute + 50. -->
+		<!-- Level 3: Bonus XP/SP + 10%, Vitality Status Bonus XP + 10%, P./M. Def. + 7%, All Debuff Resistance + 5%, CON/MEN + 5, LUC/CHA + 1, All Defense Attribute + 50. -->
 		<icon>
 			<value level="1">icon.bm_defense_circlet_01</value>
 			<value level="2">icon.bm_defense_circlet_02</value>
@@ -523,7 +553,11 @@
 		</effects>
 	</skill>
 	<skill id="35113" toLevel="5" name="Circlet of Grace Enchant Effect">
-		<!-- CON/MEN + 1. -->
+		<!-- Level 1: CON/MEN + 1. -->
+		<!-- Level 2: CON/MEN + 2. -->
+		<!-- Level 3: CON/MEN + 3, All Defense Attribute + 10. -->
+		<!-- Level 4: CON/MEN + 4, All Defense Attribute + 30. -->
+		<!-- Level 5: Vitality Status Bonus XP + 10%, CON/MEN + 5, All Defense Attribute + 50. -->
 		<icon>icon.bm_defense_circlet_01</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -601,7 +635,11 @@
 		</effects>
 	</skill>
 	<skill id="35114" toLevel="5" name="Noble Circlet of Grace Enchant Effect">
-		<!-- P./M. Def. + 1%. -->
+		<!-- Level 1: P./M. Def. + 1%. -->
+		<!-- Level 2: P./M. Def. + 2%. -->
+		<!-- Level 3: P. Def. + 3%, M. Def. + 4%, All Debuff Resistance + 1%. -->
+		<!-- Level 4: P./M. Def. + 5%, All Debuff Resistance + 3%. -->
+		<!-- Level 5: Bonus XP/SP + 10%, P./M. Def. + 7%, All Debuff Resistance + 5%. -->
 		<icon>icon.bm_defense_circlet_02</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -642,7 +680,11 @@
 		</effects>
 	</skill>
 	<skill id="35115" toLevel="5" name="Radiant Circlet of Grace Enchant Effect">
-		<!-- Received Critical Damage + 3%. -->
+		<!-- Level 1: Received Critical Damage + 3%. -->
+		<!-- Level 2: Received Critical Damage + 5%. -->
+		<!-- Level 3: Received Damage + 3%, received Critical Damage - 7%. -->
+		<!-- Level 4: Received Damage + 7%, received Critical Damage - 10%. -->
+		<!-- Level 5: Max HP/MP/CP + 5%, received Damage - 10%, received Critical Damage - 15%. -->
 		<icon>icon.bm_defense_circlet_03</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -832,11 +874,11 @@
 			</condition>
 		</passiveConditions>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -876,7 +918,7 @@
 		<icon>Icon.bm_mineral_circlet_hair_acc</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -887,7 +929,7 @@
 		<icon>Icon.bm_mineral_circlet_hair_acc</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1083,16 +1125,16 @@
 	<skill id="35142" toLevel="1" name="Reconstruction Society's Enchantment Pack">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
-		<itemConsumeId>48214</itemConsumeId> <!-- Reconstruction Society's Enchantment Pack -->
-		<itemConsumeCount>1</itemConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>48214</itemConsumeId> <!-- Reconstruction Society's Enchantment Pack -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>
@@ -1122,16 +1164,16 @@
 	<skill id="35143" toLevel="1" name="Circlet Upgrade Stone Pack">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
-		<magicLevel>1</magicLevel>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>48216</itemConsumeId> <!-- Circlet Upgrade Stone Pack -->
 		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>10</weightPercent>

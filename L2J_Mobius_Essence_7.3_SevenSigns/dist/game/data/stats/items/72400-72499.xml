@@ -322,9 +322,14 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59849" level="1" /> <!-- Gorezones' Luck Rune -->
+		</skills>
 	</item>
 	<item id="72424" name="Death Knight's Rune (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- A rune given to commemorate the Death Knight update anniversary. <font color=bbaa88><Effect></font>. Acquired XP/ SP +30%. All stats +1. Max HP +300. P. Def. +100. M. Def. +100. <font color=eeaa22>Sustains Sayha's Grace.</font>. Does not work on servitors. Boosts stats when in inventory. -->
+		<!-- The growth buff. <font color=bbaa88><Effect></font>. Acquired XP/ SP +30%. All stats +1. Max HP +300. P. Def. +100. M. Def. +100. <font color=eeaa22>Sayha's Grace Sustention</font>. Does not work on servitors. Boosts stats when in inventory. -->
 		<set name="icon" val="icon.skill30980" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -333,6 +338,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59850" level="1" /> <!-- Growth Support -->
+		</skills>
 	</item>
 	<item id="72425" name="Aden Supply Box (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -355,7 +365,6 @@
 		<set name="icon" val="icon.ev_sb_2_trade_ticket" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -419,7 +428,6 @@
 		<set name="icon" val="BranchIcon.Icon.rp_ring_of_maphr_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -436,6 +444,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59851" level="1" /> <!-- Transformation Scroll -->
+		</skills>
 	</item>
 	<item id="72430" name="Sayha's Grace Sustain Potion (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Applies a buff when used. <font color=eeaa22>Also, the special craft is available until October, 17.</font>. <Buff>. Temporarily sustains Sayha's Grace. Duration: 20 min. Cooldown: 1 min. The effect remains after death. <How to use>. Special craft - Sayha's Grace Potion -->
@@ -448,6 +460,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59852" level="1" /> <!-- Sayha's Grace Sustain Potion -->
+		</skills>
 	</item>
 	<item id="72431" name="Unexpected Support Supplies (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -607,7 +623,7 @@
 			<item id="93303" min="1" max="1" chance="4.347826" /> <!-- Package: Cloak of Protection - Sealed -->
 			<item id="94168" min="1" max="1" chance="4.347826" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
 			<item id="96985" min="1" max="1" chance="4.347826" /> <!-- Package: Brooch Lv. 3 - Sealed -->
-			<item id="96983" min="1" max="1" chance="4.347826" /> <!-- Package: Agathion Bracelet Lv. 3 - Sealed -->
+			<item id="96983" min="1" max="1" chance="4.347826" /> <!-- Package: Agathion Summon Bracelet Lv. 3 - Sealed -->
 			<item id="96984" min="1" max="1" chance="4.347826" /> <!-- Package: Talisman Bracelet Lv. 3 - Sealed -->
 			<item id="94210" min="2" max="2" chance="4.347826" /> <!-- Augmenting Stone: Weapon - Sealed -->
 			<item id="94212" min="2" max="2" chance="4.347826" /> <!-- Augmenting Stone: Armor - Sealed -->
@@ -622,7 +638,6 @@
 		<set name="icon" val="icon.etc_magic_coin_gold_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -634,7 +649,6 @@
 		<set name="icon" val="icon.etc_magic_coin_silver_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -754,13 +768,16 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="59855" level="1" /> <!-- Nana's Buff Lv. 1 -->
+		</skills>
 	</item>
 	<item id="72448" name="Colorful Yarn (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain one useful item of your choice (for example, Nana's Doll Clothes). -->
 		<set name="icon" val="BranchIcon.icon.ev_nana_collection_i01" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
@@ -772,73 +789,84 @@
 		<set name="icon" val="BranchIcon.icon.ev_nana_collection_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="59857" level="1" /> <!-- Nana's Doll -->
+		</skills>
 	</item>
 	<item id="72450" name="Nana's Doll Lv. 2 (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- <font color=bbaa88><Nana's Doll Lv. 2></font>. Acquired XP/ SP +4%. With a certain chance, absorbs 2% of inflicted damage as HP. With a certain chance, absorbs 1% of inflicted damage as MP. <font color=bbaa88><Compound></font>. Material: Nana's Doll Lv. 2. In case of failure, the doll's level remains the same, but materials disappear. Boosts stats when in inventory. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="BranchIcon.icon.ev_nana_collection_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="59857" level="2" /> <!-- Nana's Doll -->
+		</skills>
 	</item>
 	<item id="72451" name="Nana's Doll Lv. 3 (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- <font color=bbaa88><Nana's Doll Lv. 3></font>. Acquired XP/ SP +6%. With a certain chance, absorbs 3% of inflicted damage as HP. With a certain chance, absorbs 1% of inflicted damage as MP. <font color=bbaa88><Compound></font>. Material: Nana's Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. Boosts stats when in inventory. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="BranchIcon.icon.ev_nana_collection_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="59857" level="3" /> <!-- Nana's Doll -->
+		</skills>
 	</item>
 	<item id="72452" name="Nana's Doll Lv. 4 (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- <font color=bbaa88><Nana's Doll Lv. 4></font>. Acquired XP/ SP +8%. With a certain chance, absorbs 4% of inflicted damage as HP. With a certain chance, absorbs 3% of inflicted damage as MP. <font color=bbaa88><Compound></font>. Material: Nana's Doll Lv. 4. In case of failure, the doll's level remains the same, but materials disappear. Boosts stats when in inventory. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="BranchIcon.icon.ev_nana_collection_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="59857" level="4" /> <!-- Nana's Doll -->
+		</skills>
 	</item>
 	<item id="72453" name="Nana's Doll Lv. 5 (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- <font color=bbaa88><Nana's Doll Lv. 5></font>. Acquired XP/ SP +10%. With a certain chance, absorbs 5% of inflicted damage as HP. With a certain chance, absorbs 3% of inflicted damage as MP. <font color=bbaa88><Compound></font>. Material: Nana's Doll Clothes - Santa Claus. Boosts stats when in inventory. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="BranchIcon.icon.ev_nana_collection_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="59857" level="5" /> <!-- Nana's Doll -->
+		</skills>
 	</item>
 	<item id="72454" name="Nana's Crafted Doll - Santa Claus (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- <font color=bbaa88><Nana's Crafted Doll></font>. P. Atk. +1%. M. Atk. +1%. All Critical Damage +1%. Received damage -1%. Acquired XP/ SP +20%. With a certain chance, absorbs 5% of inflicted damage as HP. With a certain chance, absorbs 3% of inflicted damage as MP. Boosts stats when in inventory. <font color=ff6666>Note!</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="BranchIcon.icon.ev_nana_collection_i02" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="59857" level="6" /> <!-- Nana's Crafted Doll -->
+		</skills>
 	</item>
 	<item id="72455" name="Nana's Doll Clothes - Santa Claus (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- A Christmas outfit for a doll crafted by Nana from Colorful Yarn. Put it on Nana's Doll to obtain Nana's Crafted Doll. <font color=bbaa88><Compound></font>. Material: Nana's Doll Lv. 5 -->
 		<set name="icon" val="BranchIcon.icon.ev_nana_collection_i03" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_type" val="NONE" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />

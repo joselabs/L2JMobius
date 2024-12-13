@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.actor.stat;
 
@@ -24,7 +28,6 @@ import org.l2jmobius.gameserver.data.xml.PetDataTable;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayableExpChanged;
@@ -44,9 +47,10 @@ public class PlayableStat extends CreatureStat
 	
 	public boolean addExp(long amount)
 	{
-		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYABLE_EXP_CHANGED, getActiveChar()))
+		final Playable playable = getActiveChar();
+		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYABLE_EXP_CHANGED, playable))
 		{
-			final TerminateReturn term = EventDispatcher.getInstance().notifyEvent(new OnPlayableExpChanged(getActiveChar(), getExp(), getExp() + amount), getActiveChar(), TerminateReturn.class);
+			final TerminateReturn term = EventDispatcher.getInstance().notifyEvent(new OnPlayableExpChanged(playable, getExp(), getExp() + amount), playable, TerminateReturn.class);
 			if ((term != null) && term.terminate())
 			{
 				return false;
@@ -67,10 +71,10 @@ public class PlayableStat extends CreatureStat
 		final int oldLevel = getLevel();
 		setExp(getExp() + value);
 		byte minimumLevel = 1;
-		if (getActiveChar().isPet())
+		if (playable.isPet())
 		{
 			// get minimum level from NpcTemplate
-			minimumLevel = (byte) PetDataTable.getInstance().getPetMinLevel(((Pet) getActiveChar()).getTemplate().getId());
+			minimumLevel = (byte) PetDataTable.getInstance().getPetMinLevel(playable.asPet().getTemplate().getId());
 		}
 		
 		byte level = minimumLevel; // minimum level
@@ -89,12 +93,12 @@ public class PlayableStat extends CreatureStat
 			addLevel((byte) (level - getLevel()));
 		}
 		
-		if ((getLevel() > oldLevel) && getActiveChar().isPlayer())
+		if ((getLevel() > oldLevel) && playable.isPlayer())
 		{
-			final Player player = getActiveChar().getActingPlayer();
+			final Player player = playable.asPlayer();
 			if (SkillTreeData.getInstance().hasAvailableSkills(player, player.getClassId()))
 			{
-				getActiveChar().sendPacket(ExNewSkillToLearnByLevelUp.STATIC_PACKET);
+				player.sendPacket(ExNewSkillToLearnByLevelUp.STATIC_PACKET);
 			}
 		}
 		
@@ -116,10 +120,11 @@ public class PlayableStat extends CreatureStat
 		
 		setExp(getExp() - value);
 		byte minimumLevel = 1;
-		if (getActiveChar().isPet())
+		final Playable playable = getActiveChar();
+		if (playable.isPet())
 		{
 			// get minimum level from NpcTemplate
-			minimumLevel = (byte) PetDataTable.getInstance().getPetMinLevel(((Pet) getActiveChar()).getTemplate().getId());
+			minimumLevel = (byte) PetDataTable.getInstance().getPetMinLevel(playable.asPet().getTemplate().getId());
 		}
 		byte level = minimumLevel;
 		for (byte tmp = level; tmp <= getMaxLevel(); tmp++)
@@ -178,9 +183,10 @@ public class PlayableStat extends CreatureStat
 			setExp(getExpForLevel(getLevel()));
 		}
 		
-		if (!levelIncreased && getActiveChar().isPlayer() && !getActiveChar().isGM() && Config.DECREASE_SKILL_LEVEL)
+		final Playable playable = getActiveChar();
+		if (!levelIncreased && playable.isPlayer() && !playable.isGM() && Config.DECREASE_SKILL_LEVEL)
 		{
-			((Player) getActiveChar()).checkPlayerSkills();
+			playable.asPlayer().checkPlayerSkills();
 		}
 		
 		if (!levelIncreased)
@@ -188,8 +194,8 @@ public class PlayableStat extends CreatureStat
 			return false;
 		}
 		
-		getActiveChar().getStatus().setCurrentHp(getActiveChar().getStat().getMaxHp());
-		getActiveChar().getStatus().setCurrentMp(getActiveChar().getStat().getMaxMp());
+		playable.getStatus().setCurrentHp(playable.getStat().getMaxHp());
+		playable.getStatus().setCurrentMp(playable.getStat().getMaxMp());
 		
 		return true;
 	}
@@ -238,7 +244,7 @@ public class PlayableStat extends CreatureStat
 	@Override
 	public Playable getActiveChar()
 	{
-		return (Playable) super.getActiveChar();
+		return super.getActiveChar().asPlayable();
 	}
 	
 	public int getMaxLevel()
@@ -256,7 +262,8 @@ public class PlayableStat extends CreatureStat
 	@Override
 	public int getPhysicalAttackAngle()
 	{
-		final Weapon weapon = getActiveChar().getActiveWeaponItem();
-		return (weapon != null ? weapon.getBaseAttackAngle() + (int) getActiveChar().getStat().getValue(Stat.WEAPON_ATTACK_ANGLE_BONUS, 0) : super.getPhysicalAttackAngle());
+		final Playable playable = getActiveChar();
+		final Weapon weapon = playable.getActiveWeaponItem();
+		return (weapon != null ? weapon.getBaseAttackAngle() + (int) playable.getStat().getValue(Stat.WEAPON_ATTACK_ANGLE_BONUS, 0) : super.getPhysicalAttackAngle());
 	}
 }

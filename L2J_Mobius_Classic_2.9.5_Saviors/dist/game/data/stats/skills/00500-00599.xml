@@ -1,21 +1,22 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="500" toLevel="2" name="True Berserker">
-		<!-- P. Def. -10%, P. Evasion -2, P. Atk./Atk. Spd. +5%, and P. Accuracy +2. Consumes MP over time depending on your level. -->
+		<!-- Level 1: P. Def. -10%, P. Evasion -2, P. Atk./Atk. Spd. +5%, and P. Accuracy +2. Consumes MP over time depending on your level. -->
+		<!-- Level 2: P. Def. -10%, P. Evasion -4, P. Atk./Atk. Spd. +8%, and P. Accuracy +4. Consumes MP over time depending on your level. -->
 		<icon>icon.skill0500</icon>
+		<operateType>T</operateType>
+		<targetType>NONE</targetType>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">52</value>
 		</magicLevel>
-		<operateType>T</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>NONE</targetType>
 		<effects>
 			<effect name="MpConsumePerLevel">
 				<power>0.4</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">8</value>
@@ -52,10 +53,13 @@
 	<skill id="501" toLevel="12" name="Violent Temper">
 		<!-- For 30 seconds, enemy's P. Def. -23%, Casting Spd. -15%. -->
 		<icon>icon.skill0501</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>3</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PD_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>
@@ -76,6 +80,7 @@
 		<hitTime>1800</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">49</value>
 			<value level="2">52</value>
@@ -104,11 +109,7 @@
 			<value level="11">34</value>
 			<value level="12">34</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>-23</amount>
@@ -121,8 +122,15 @@
 		</effects>
 	</skill>
 	<skill id="502" toLevel="5" name="Life to Soul">
-		<!-- Cannibalizes your own life to increase your soul by 1. -->
+		<!-- Level 1: Cannibalizes your own life to increase your soul by 1. -->
+		<!-- Level 2: Cannibalizes your own life to increase your soul by 2. -->
+		<!-- Level 3: Cannibalizes your own life to increase your soul by 3. -->
+		<!-- Level 4: Cannibalizes your own life to increase your soul by 4. -->
+		<!-- Level 5: Cannibalizes your own life to increase your soul by 5. -->
 		<icon>icon.skill0502</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<effectPoint>150</effectPoint>
 		<hitTime>900</hitTime>
 		<hpConsume>
@@ -132,6 +140,7 @@
 			<value level="4">311</value>
 			<value level="5">328</value>
 		</hpConsume>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">40</value>
 			<value level="2">49</value>
@@ -139,11 +148,7 @@
 			<value level="4">66</value>
 			<value level="5">72</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<reuseDelay>11000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpSoulMax" />
 		</conditions>
@@ -160,10 +165,16 @@
 		</effects>
 	</skill>
 	<skill id="503" toLevel="3" name="Scorn">
-		<!-- Provokes the enemies to the front with 1630 Power. -->
+		<!-- Level 1: Provokes the enemies to the front with 1630 Power. -->
+		<!-- Level 2: Provokes the enemies to the front with 2089 Power. -->
+		<!-- Level 3: Provokes the enemies to the front with 2384 Power. -->
 		<icon>icon.skill0503</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>80</affectRange>
+		<affectScope>FAN</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -174,6 +185,7 @@
 		<effectRange>400</effectRange>
 		<fanRange>0;0;80;300</fanRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">43</value>
 			<value level="2">55</value>
@@ -185,16 +197,50 @@
 			<value level="3">33</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>4000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="504" toLevel="37" name="Triple Thrust">
-		<!-- Rapidly stabs the enemy three times with bonus 620 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 1: Rapidly stabs the enemy three times with bonus 620 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 2: Rapidly stabs the enemy three times with bonus 659 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 3: Rapidly stabs the enemy three times with bonus 700 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 4: Rapidly stabs the enemy three times with bonus 742 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 5: Rapidly stabs the enemy three times with bonus 787 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 6: Rapidly stabs the enemy three times with bonus 833 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 7: Rapidly stabs the enemy three times with bonus 882 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 8: Rapidly stabs the enemy three times with bonus 932 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 9: Rapidly stabs the enemy three times with bonus 984 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 10: Rapidly stabs the enemy three times with bonus 1038 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 11: Rapidly stabs the enemy three times with bonus 1094 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 12: Rapidly stabs the enemy three times with bonus 1152 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 13: Rapidly stabs the enemy three times with bonus 1212 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 14: Rapidly stabs the enemy three times with bonus 1274 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 15: Rapidly stabs the enemy three times with bonus 1337 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 16: Rapidly stabs the enemy three times with bonus 1403 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 17: Rapidly stabs the enemy three times with bonus 1470 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 18: Rapidly stabs the enemy three times with bonus 1539 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 19: Rapidly stabs the enemy three times with bonus 1610 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 20: Rapidly stabs the enemy three times with bonus 1682 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 21: Rapidly stabs the enemy three times with bonus 1757 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 22: Rapidly stabs the enemy three times with bonus 1832 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 23: Rapidly stabs the enemy three times with bonus 1909 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 24: Rapidly stabs the enemy three times with bonus 1987 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 25: Rapidly stabs the enemy three times with bonus 2067 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 26: Rapidly stabs the enemy three times with bonus 2147 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 27: Rapidly stabs the enemy three times with bonus 2229 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 28: Rapidly stabs the enemy three times with bonus 2311 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 29: Rapidly stabs the enemy three times with bonus 2394 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 30: Rapidly stabs the enemy three times with bonus 2478 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 31: Rapidly stabs the enemy three times with bonus 2562 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 32: Rapidly stabs the enemy three times with bonus 2647 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 33: Rapidly stabs the enemy three times with bonus 2732 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 34: Rapidly stabs the enemy three times with bonus 2816 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 35: Rapidly stabs the enemy three times with bonus 2901 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 36: Rapidly stabs the enemy three times with bonus 2985 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 37: Rapidly stabs the enemy three times with bonus 3069 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
 		<icon>icon.skill0504</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>300</coolTime>
 		<effectPoint>
@@ -238,6 +284,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">38</value>
 			<value level="2">39</value>
@@ -317,12 +364,8 @@
 			<value level="37">60</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
 		<soulMaxConsumeCount>5</soulMaxConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -331,7 +374,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalSoulAttack">
+			<effect name="PhysicalSoulDamage">
 				<power>
 					<value level="1">620</value>
 					<value level="2">659</value>
@@ -376,8 +419,38 @@
 		</effects>
 	</skill>
 	<skill id="505" toLevel="28" name="Shining Edge">
-		<!-- Attempts a deadly attack with bonus 1853 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 1: Attempts a deadly attack with bonus 1853 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 2: Attempts a deadly attack with bonus 1953 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 3: Attempts a deadly attack with bonus 2057 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 4: Attempts a deadly attack with bonus 2164 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 5: Attempts a deadly attack with bonus 2274 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 6: Attempts a deadly attack with bonus 2388 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 7: Attempts a deadly attack with bonus 2505 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 8: Attempts a deadly attack with bonus 2625 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 9: Attempts a deadly attack with bonus 2748 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 10: Attempts a deadly attack with bonus 2875 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 11: Attempts a deadly attack with bonus 3004 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 12: Attempts a deadly attack with bonus 3136 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 13: Attempts a deadly attack with bonus 3271 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 14: Attempts a deadly attack with bonus 3408 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 15: Attempts a deadly attack with bonus 3548 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 16: Attempts a deadly attack with bonus 3690 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 17: Attempts a deadly attack with bonus 3834 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 18: Attempts a deadly attack with bonus 3980 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 19: Attempts a deadly attack with bonus 4127 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 20: Attempts a deadly attack with bonus 4275 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 21: Attempts a deadly attack with bonus 4425 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 22: Attempts a deadly attack with bonus 4575 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 23: Attempts a deadly attack with bonus 4726 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 24: Attempts a deadly attack with bonus 4878 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 25: Attempts a deadly attack with bonus 5029 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 26: Attempts a deadly attack with bonus 5180 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 27: Attempts a deadly attack with bonus 5330 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
+		<!-- Level 28: Attempts a deadly attack with bonus 5479 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Over-hit. -->
 		<icon>icon.skill0505</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>300</coolTime>
 		<effectPoint>
@@ -412,6 +485,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">47</value>
 			<value level="2">48</value>
@@ -473,12 +547,8 @@
 			<value level="28">60</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
 		<soulMaxConsumeCount>5</soulMaxConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -524,8 +594,14 @@
 		</effects>
 	</skill>
 	<skill id="506" toLevel="4" name="Checkmate">
-		<!-- Attacks the enemy bearing a Death Mark with bonus 2388 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Ignores Shield Defense. Critical. -->
+		<!-- Level 1: Attacks the enemy bearing a Death Mark with bonus 2388 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Ignores Shield Defense. Critical. -->
+		<!-- Level 2: Attacks the enemy bearing a Death Mark with bonus 3408 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Ignores Shield Defense. Critical. -->
+		<!-- Level 3: Attacks the enemy bearing a Death Mark with bonus 4275 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Ignores Shield Defense. Critical. -->
+		<!-- Level 4: Attacks the enemy bearing a Death Mark with bonus 5180 Power. Increases Power upon the consumption of up to 5 souls. Requires a rapier. Ignores Shield Defense. Critical. -->
 		<icon>icon.skill0506</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>300</coolTime>
 		<effectPoint>
@@ -536,6 +612,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">52</value>
 			<value level="2">60</value>
@@ -549,12 +626,8 @@
 			<value level="4">51</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
 		<soulMaxConsumeCount>5</soulMaxConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<targetConditions>
 			<condition name="OpCheckAbnormal">
 				<type>DEATH_MARK</type>
@@ -570,7 +643,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalSoulAttack">
+			<effect name="PhysicalSoulDamage">
 				<power>
 					<value level="1">2388</value>
 					<value level="2">3408</value>
@@ -583,8 +656,47 @@
 		</effects>
 	</skill>
 	<skill id="507" toLevel="37" name="Twin Shot">
-		<!-- Fires 2 powerful bolts with bonus 984 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 1: Fires 2 powerful bolts with bonus 984 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 2: Fires 2 powerful bolts with bonus 1046 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 3: Fires 2 powerful bolts with bonus 1110 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 4: Fires 2 powerful bolts with bonus 1178 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 5: Fires 2 powerful bolts with bonus 1249 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 6: Fires 2 powerful bolts with bonus 1322 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 7: Fires 2 powerful bolts with bonus 1399 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 8: Fires 2 powerful bolts with bonus 1479 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 9: Fires 2 powerful bolts with bonus 1562 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 10: Fires 2 powerful bolts with bonus 1647 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 11: Fires 2 powerful bolts with bonus 1736 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 12: Fires 2 powerful bolts with bonus 1828 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 13: Fires 2 powerful bolts with bonus 1923 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 14: Fires 2 powerful bolts with bonus 2021 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 15: Fires 2 powerful bolts with bonus 2123 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 16: Fires 2 powerful bolts with bonus 2227 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 17: Fires 2 powerful bolts with bonus 2333 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 18: Fires 2 powerful bolts with bonus 2443 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 19: Fires 2 powerful bolts with bonus 2555 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 20: Fires 2 powerful bolts with bonus 2670 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 21: Fires 2 powerful bolts with bonus 2788 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 22: Fires 2 powerful bolts with bonus 2908 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 23: Fires 2 powerful bolts with bonus 3030 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 24: Fires 2 powerful bolts with bonus 3154 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 25: Fires 2 powerful bolts with bonus 3280 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 26: Fires 2 powerful bolts with bonus 3408 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 27: Fires 2 powerful bolts with bonus 3537 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 28: Fires 2 powerful bolts with bonus 3668 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 29: Fires 2 powerful bolts with bonus 3800 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 30: Fires 2 powerful bolts with bonus 3933 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 31: Fires 2 powerful bolts with bonus 4067 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 32: Fires 2 powerful bolts with bonus 4201 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 33: Fires 2 powerful bolts with bonus 4336 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 34: Fires 2 powerful bolts with bonus 4470 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 35: Fires 2 powerful bolts with bonus 4604 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 36: Fires 2 powerful bolts with bonus 4738 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
+		<!-- Level 37: Fires 2 powerful bolts with bonus 4870 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Critical. Over-hit. -->
 		<icon>icon.skill0507</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>900</castRange>
 		<coolTime>1000</coolTime>
 		<effectPoint>
@@ -628,6 +740,7 @@
 		</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>3000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">38</value>
 			<value level="2">39</value>
@@ -706,12 +819,8 @@
 			<value level="36">133</value>
 			<value level="37">135</value>
 		</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
 		<soulMaxConsumeCount>5</soulMaxConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -721,7 +830,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalSoulAttack">
+			<effect name="PhysicalSoulDamage">
 				<power>
 					<value level="1">984</value>
 					<value level="2">1046</value>
@@ -767,10 +876,44 @@
 		</effects>
 	</skill>
 	<skill id="508" toLevel="31" name="Rising Shot">
-		<!-- Fires a bolt that shots out from the ground at the enemy's position with bonus 350 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 1: Fires a bolt that shots out from the ground at the enemy's position with bonus 350 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 2: Fires a bolt that shots out from the ground at the enemy's position with bonus 370 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 3: Fires a bolt that shots out from the ground at the enemy's position with bonus 391 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 4: Fires a bolt that shots out from the ground at the enemy's position with bonus 412 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 5: Fires a bolt that shots out from the ground at the enemy's position with bonus 434 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 6: Fires a bolt that shots out from the ground at the enemy's position with bonus 457 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 7: Fires a bolt that shots out from the ground at the enemy's position with bonus 481 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 8: Fires a bolt that shots out from the ground at the enemy's position with bonus 506 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 9: Fires a bolt that shots out from the ground at the enemy's position with bonus 531 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 10: Fires a bolt that shots out from the ground at the enemy's position with bonus 557 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 11: Fires a bolt that shots out from the ground at the enemy's position with bonus 584 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 12: Fires a bolt that shots out from the ground at the enemy's position with bonus 611 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 13: Fires a bolt that shots out from the ground at the enemy's position with bonus 639 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 14: Fires a bolt that shots out from the ground at the enemy's position with bonus 668 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 15: Fires a bolt that shots out from the ground at the enemy's position with bonus 697 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 16: Fires a bolt that shots out from the ground at the enemy's position with bonus 727 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 17: Fires a bolt that shots out from the ground at the enemy's position with bonus 758 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 18: Fires a bolt that shots out from the ground at the enemy's position with bonus 789 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 19: Fires a bolt that shots out from the ground at the enemy's position with bonus 820 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 20: Fires a bolt that shots out from the ground at the enemy's position with bonus 852 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 21: Fires a bolt that shots out from the ground at the enemy's position with bonus 885 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 22: Fires a bolt that shots out from the ground at the enemy's position with bonus 917 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 23: Fires a bolt that shots out from the ground at the enemy's position with bonus 950 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 24: Fires a bolt that shots out from the ground at the enemy's position with bonus 984 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 25: Fires a bolt that shots out from the ground at the enemy's position with bonus 1017 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 26: Fires a bolt that shots out from the ground at the enemy's position with bonus 1051 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 27: Fires a bolt that shots out from the ground at the enemy's position with bonus 1084 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 28: Fires a bolt that shots out from the ground at the enemy's position with bonus 1118 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 29: Fires a bolt that shots out from the ground at the enemy's position with bonus 1151 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 30: Fires a bolt that shots out from the ground at the enemy's position with bonus 1185 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
+		<!-- Level 31: Fires a bolt that shots out from the ground at the enemy's position with bonus 1218 Power. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Over-hit. -->
 		<icon>icon.skill0508</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>
@@ -808,6 +951,7 @@
 		</effectPoint>
 		<effectRange>1000</effectRange>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">44</value>
 			<value level="2">45</value>
@@ -874,13 +1018,8 @@
 			<value level="30">199</value>
 			<value level="31">202</value>
 		</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>6000</reuseDelay>
 		<soulMaxConsumeCount>5</soulMaxConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -890,7 +1029,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalSoulAttack">
+			<effect name="PhysicalSoulDamage">
 				<power>
 					<value level="1">350</value>
 					<value level="2">370</value>
@@ -929,14 +1068,49 @@
 		</effects>
 	</skill>
 	<skill id="509" toLevel="34" name="Bleeding Shot">
-		<!-- Fires a specially crafted bolt at the enemy with bonus 530 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 1: Fires a specially crafted bolt at the enemy with bonus 530 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 2: Fires a specially crafted bolt at the enemy with bonus 562 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 3: Fires a specially crafted bolt at the enemy with bonus 595 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 4: Fires a specially crafted bolt at the enemy with bonus 630 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 5: Fires a specially crafted bolt at the enemy with bonus 666 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 6: Fires a specially crafted bolt at the enemy with bonus 703 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 7: Fires a specially crafted bolt at the enemy with bonus 742 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 8: Fires a specially crafted bolt at the enemy with bonus 782 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 9: Fires a specially crafted bolt at the enemy with bonus 823 Power to inflict bleed for 20 seconds. The inflicted enemy loses 44 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 10: Fires a specially crafted bolt at the enemy with bonus 866 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 11: Fires a specially crafted bolt at the enemy with bonus 910 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 12: Fires a specially crafted bolt at the enemy with bonus 955 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 13: Fires a specially crafted bolt at the enemy with bonus 1002 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 14: Fires a specially crafted bolt at the enemy with bonus 1050 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 15: Fires a specially crafted bolt at the enemy with bonus 1100 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 16: Fires a specially crafted bolt at the enemy with bonus 1150 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 17: Fires a specially crafted bolt at the enemy with bonus 1202 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 18: Fires a specially crafted bolt at the enemy with bonus 1255 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 19: Fires a specially crafted bolt at the enemy with bonus 1309 Power to inflict bleed for 20 seconds. The inflicted enemy loses 54 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 20: Fires a specially crafted bolt at the enemy with bonus 1364 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 21: Fires a specially crafted bolt at the enemy with bonus 1420 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 22: Fires a specially crafted bolt at the enemy with bonus 1476 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 23: Fires a specially crafted bolt at the enemy with bonus 1534 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 24: Fires a specially crafted bolt at the enemy with bonus 1592 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 25: Fires a specially crafted bolt at the enemy with bonus 1651 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 26: Fires a specially crafted bolt at the enemy with bonus 1710 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 27: Fires a specially crafted bolt at the enemy with bonus 1770 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 28: Fires a specially crafted bolt at the enemy with bonus 1830 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 29: Fires a specially crafted bolt at the enemy with bonus 1891 Power to inflict bleed for 20 seconds. The inflicted enemy loses 62 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 30: Fires a specially crafted bolt at the enemy with bonus 1951 Power to inflict bleed for 20 seconds. The inflicted enemy loses 67 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 31: Fires a specially crafted bolt at the enemy with bonus 2012 Power to inflict bleed for 20 seconds. The inflicted enemy loses 67 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 32: Fires a specially crafted bolt at the enemy with bonus 2072 Power to inflict bleed for 20 seconds. The inflicted enemy loses 67 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 33: Fires a specially crafted bolt at the enemy with bonus 2132 Power to inflict bleed for 20 seconds. The inflicted enemy loses 67 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
+		<!-- Level 34: Fires a specially crafted bolt at the enemy with bonus 2192 Power to inflict bleed for 20 seconds. The inflicted enemy loses 67 HP per second. Increases Power upon the consumption of up to 5 souls. Requires a crossbow. Consumes 1 Special Bolts. Over-hit. -->
 		<icon>icon.skill0509</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>50</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
 		<coolTime>1000</coolTime>
@@ -978,10 +1152,11 @@
 		</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>10113</itemConsumeId> <!-- Special Bolt -->
-		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">41</value>
 			<value level="2">42</value>
@@ -1054,13 +1229,10 @@
 			<value level="33">108</value>
 			<value level="34">109</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>8000</reuseDelay>
 		<soulMaxConsumeCount>5</soulMaxConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>BLEED</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1070,7 +1242,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalSoulAttack">
+			<effect name="PhysicalSoulDamage">
 				<power>
 					<value level="1">530</value>
 					<value level="2">562</value>
@@ -1154,12 +1326,16 @@
 	<skill id="510" toLevel="5" name="Deadly Roulette">
 		<!-- Initiates a deadly game of chance. Requires a crossbow. Consumes 1 Special Bolts. Can be used when HP is at 10% or below. Lethal Strike is possible. -->
 		<icon>icon.skill0510</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>900</castRange>
 		<effectPoint>-897</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>3000</hitTime>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>10113</itemConsumeId> <!-- Special Bolt -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">66</value>
 			<value level="2">68</value>
@@ -1174,12 +1350,8 @@
 			<value level="4">109</value>
 			<value level="5">112</value>
 		</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>150000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>DEATH</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1208,17 +1380,17 @@
 	<skill id="511" toLevel="1" name="Temptation">
 		<!-- Quietly lures the enemy. -->
 		<icon>icon.skill0511</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>400</castRange>
 		<effectRange>900</effectRange>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>52</magicLevel>
 		<mpConsume>44</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>DERANGEMENT</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="AddHate">
 				<power>500</power>
@@ -1226,10 +1398,23 @@
 		</effects>
 	</skill>
 	<skill id="512" toLevel="10" name="Create Bio Potion">
-		<!-- Create a potion that instantly replenishes 5% of health when used. Consumes 1 Soul. -->
+		<!-- Level 1: Create a potion that instantly replenishes 5% of health when used. Consumes 1 Soul. -->
+		<!-- Level 2: Create a potion that instantly replenishes 6% of health when used. Consumes 1 Soul. -->
+		<!-- Level 3: Create a potion that instantly replenishes 7% of health when used. Consumes 1 Soul. -->
+		<!-- Level 4: Create a potion that instantly replenishes 8% of health when used. Consumes 1 Soul. -->
+		<!-- Level 5: Create a potion that instantly replenishes 9% of health when used. Consumes 1 Soul. -->
+		<!-- Level 6: Create a potion that instantly replenishes 10% of health when used. Consumes 1 Soul. -->
+		<!-- Level 7: Create a potion that instantly replenishes 11% of health when used. Consumes 1 Soul. -->
+		<!-- Level 8: Create a potion that instantly replenishes 12% of health when used. Consumes 1 Soul. -->
+		<!-- Level 9: Create a potion that instantly replenishes 13% of health when used. Consumes 1 Soul. -->
+		<!-- Level 10: Create a potion that instantly replenishes 15% of health when used. Consumes 1 Soul. -->
 		<icon>icon.skill0512</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>3000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">28</value>
@@ -1243,11 +1428,7 @@
 			<value level="10">72</value>
 		</magicLevel>
 		<mpInitialConsume>1</mpInitialConsume>
-		<operateType>A1</operateType>
 		<soulMaxConsumeCount>1</soulMaxConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -1259,8 +1440,17 @@
 		</conditions>
 	</skill>
 	<skill id="521" toLevel="8" name="Sharpshooting">
-		<!-- For 2 minutes, P. Atk. +124, P. Critical Rate +20%, P. Accuracy +3, and Range +50, and becomes immobile when using a crossbow. Requires a crossbow. -->
+		<!-- Level 1: For 2 minutes, P. Atk. +124, P. Critical Rate +20%, P. Accuracy +3, and Range +50, and becomes immobile when using a crossbow. Requires a crossbow. -->
+		<!-- Level 2: For 2 minutes, P. Atk. +134, P. Critical Rate +20%, P. Accuracy +3, and Range +50, and becomes immobile when using a crossbow. Requires a crossbow. -->
+		<!-- Level 3: For 2 minutes, P. Atk. +145, P. Critical Rate +20%, P. Accuracy +4, and Range +100, and becomes immobile when using a crossbow. Requires a crossbow. -->
+		<!-- Level 4: For 2 minutes, P. Atk. +155, P. Critical Rate +20%, P. Accuracy +4, and Range +100, and becomes immobile when using a crossbow. Requires a crossbow. -->
+		<!-- Level 5: For 2 minutes, P. Atk. +166, P. Critical Rate +20%, P. Accuracy +5, and Range +150, and becomes immobile when using a crossbow. Requires a crossbow. -->
+		<!-- Level 6: For 2 minutes, P. Atk. +177, P. Critical Rate +20%, P. Accuracy +5, and Range +150, and becomes immobile when using a crossbow. Requires a crossbow. -->
+		<!-- Level 7: For 2 minutes, P. Atk. +188, P. Critical Rate +20%, P. Accuracy +6, and Range +200, and becomes immobile when using a crossbow. Requires a crossbow. -->
+		<!-- Level 8: For 2 minutes, P. Atk. +199, P. Critical Rate +20%, P. Accuracy +6, and Range +200, and becomes immobile when using a crossbow. Requires a crossbow. -->
 		<icon>icon.skill0521</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1273,6 +1463,8 @@
 		</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>SNIPE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">566</value>
 			<value level="2">582</value>
@@ -1284,6 +1476,7 @@
 			<value level="8">655</value>
 		</effectPoint>
 		<hitTime>2000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">62</value>
@@ -1304,12 +1497,7 @@
 			<value level="7">34</value>
 			<value level="8">34</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>75000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1320,7 +1508,7 @@
 		</conditions>
 		<effects>
 			<effect name="BlockMove" />
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">124</value>
 					<value level="2">134</value>
@@ -1378,8 +1566,13 @@
 		</effects>
 	</skill>
 	<skill id="522" toLevel="4" name="Real Target">
-		<!-- For 30 seconds, Bow Resistance -12% and Stun Resistance -10%. -->
+		<!-- Level 1: For 30 seconds, Bow Resistance -12% and Stun Resistance -10%. -->
+		<!-- Level 2: For 30 seconds, Bow Resistance -16% and Stun Resistance -15%. -->
+		<!-- Level 3: For 30 seconds, Bow Resistance -18% and Stun Resistance -20%. -->
+		<!-- Level 4: For 30 seconds, Bow Resistance -20% and Stun Resistance -25%. -->
 		<icon>icon.skill0522</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1389,6 +1582,8 @@
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>REAL_TARGET</abnormalType>
 		<abnormalVisualEffect>REAL_TARGET</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-193</value>
@@ -1399,6 +1594,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>1500</hitTime>
 		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">78</value>
 			<value level="2">80</value>
@@ -1411,12 +1607,7 @@
 			<value level="3">61</value>
 			<value level="4">64</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DefenceTrait">
 				<BOW>
@@ -1435,13 +1626,22 @@
 		</effects>
 	</skill>
 	<skill id="523" toLevel="7" name="Imbue Dark Seed">
-		<!-- Plants a Seed of Darkness in the enemy's body. For 20 seconds, the enemy loses 76 HP per second. Once fully grown, the seed paralyzes the host body. -->
+		<!-- Level 1: Plants a Seed of Darkness in the enemy's body. For 20 seconds, the enemy loses 76 HP per second. Once fully grown, the seed paralyzes the host body. -->
+		<!-- Level 2: Plants a Seed of Darkness in the enemy's body. For 20 seconds, the enemy loses 76 HP per second. Once fully grown, the seed paralyzes the host body. -->
+		<!-- Level 3: Plants a Seed of Darkness in the enemy's body. For 20 seconds, the enemy loses 76 HP per second. Once fully grown, the seed paralyzes the host body. -->
+		<!-- Level 4: Plants a Seed of Darkness in the enemy's body. For 20 seconds, the enemy loses 76 HP per second. Once fully grown, the seed paralyzes the host body. -->
+		<!-- Level 5: Plants a Seed of Darkness in the enemy's body. For 20 seconds, the enemy loses 83 HP per second. Once fully grown, the seed paralyzes the host body. -->
+		<!-- Level 6: Plants a Seed of Darkness in the enemy's body. For 20 seconds, the enemy loses 83 HP per second. Once fully grown, the seed paralyzes the host body. -->
+		<!-- Level 7: Plants a Seed of Darkness in the enemy's body. For 20 seconds, the enemy loses 83 HP per second. Once fully grown, the seed paralyzes the host body. -->
 		<icon>icon.skill0523</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>DARK_SEED</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
@@ -1456,10 +1656,11 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1800</hitTime>
+		<isDebuff>true</isDebuff>
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>10112</itemConsumeId> <!-- Dark Seed -->
-		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">62</value>
 			<value level="2">64</value>
@@ -1471,12 +1672,8 @@
 		</magicLevel>
 		<mpConsume>30</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>BLEED</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -1509,15 +1706,15 @@
 	<skill id="524" toLevel="1" name="Cure Dark Seed">
 		<!-- Eliminates the affliction caused by a dark seed. -->
 		<icon>icon.skill0524</icon>
-		<effectPoint>204</effectPoint>
-		<hitTime>1500</hitTime>
-		<magicLevel>64</magicLevel>
-		<mpConsume>59</mpConsume>
 		<operateType>A1</operateType>
-		<reuseDelay>1000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>204</effectPoint>
+		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>64</magicLevel>
+		<mpConsume>59</mpConsume>
+		<reuseDelay>1000</reuseDelay>
 		<effects>
 			<effect name="DispelBySlot">
 				<dispel>DARK_SEED,9</dispel>
@@ -1527,8 +1724,12 @@
 	<skill id="525" toLevel="6" name="Decoy">
 		<!-- Summon a mirror image to take the damage. No effect if used in the Dimensional Space. -->
 		<icon>icon.skill0525</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>2000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">43</value>
 			<value level="2">52</value>
@@ -1553,11 +1754,7 @@
 			<value level="5">26</value>
 			<value level="6">28</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>600000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="SummonNpc">
 				<npcId>
@@ -1575,26 +1772,26 @@
 	<skill id="526" toLevel="1" name="Enuma Elish">
 		<!-- Attacks enemies in front using the Sword of Creation that divides heaven and Earth with 6060 Power added to P. Atk. Increases Power upon the consumption of up to 5 souls. Over-hit is possible. -->
 		<icon>icon.skill0526</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>400</affectRange>
+		<affectScope>FAN</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>-1</effectPoint>
 		<effectRange>400</effectRange>
 		<fanRange>0;0;400;90</fanRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>78</magicLevel>
 		<mpConsume>78</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>75000</reuseDelay>
 		<soulMaxConsumeCount>5</soulMaxConsumeCount>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalSoulAttack">
+			<effect name="PhysicalSoulDamage">
 				<power>6060</power>
 				<overHit>true</overHit>
 			</effect>
@@ -1603,24 +1800,24 @@
 	<skill id="527" toLevel="1" name="Iron Shield">
 		<!-- Increases Shield Defense with a certain chance when attacked. -->
 		<icon>icon.skill0527</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1200</abnormalTime>
 		<abnormalType>IRON_SHIELD</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>673</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>79</magicLevel>
 		<mpConsume>43</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>150000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipShield" />
 		</conditions>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Iron Shield -->
 				<attackerType>Creature</attackerType>
 				<chance>30</chance>
@@ -1634,21 +1831,21 @@
 	<skill id="528" toLevel="1" name="Shield of Faith">
 		<!-- For 15 seconds, party members' P. Def. + 3600 and M. Def. + 2700. For the duration, absorbs 90% of any damage received by a party member. -->
 		<icon>icon.skill0528</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>TRANSFER_DAMAGE</abnormalType>
+		<affectObject>FRIEND</affectObject>
 		<affectRange>1000</affectRange>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>673</effectPoint>
 		<hitTime>2500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>79</magicLevel>
 		<mpConsume>43</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>900000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<effects>
 			<effect name="TransferDamageToPlayer">
 				<amount>90</amount>
@@ -1666,22 +1863,22 @@
 	<skill id="529" toLevel="1" name="Elemental Song">
 		<!-- For 2 minutes, all party members' Fire/Water/Wind/Earth Resistance +30. Also increases MP Consumption when singing while song/dance is in effect. -->
 		<icon>icon.skill0529</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>SONG_OF_ELEMENTAL</abnormalType>
+		<affectObject>FRIEND</affectObject>
 		<affectRange>1000</affectRange>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>507</effectPoint>
 		<hitTime>2500</hitTime>
 		<isMagic>3</isMagic> <!-- Dance Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>79</magicLevel>
 		<mpConsume>54</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>150000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<effects>
 			<effect name="DefenceAttribute">
 				<amount>30</amount>
@@ -1704,22 +1901,22 @@
 	<skill id="530" toLevel="1" name="Dance of Alignment">
 		<!-- For 2 minutes, all party members' Holy/Dark Attack Resistance +30. Also increases MP Consumption when dancing while song/dance is in effect. Requires a dualsword. -->
 		<icon>icon.skill0530</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>DANCE_OF_ALIGNMENT</abnormalType>
+		<affectObject>FRIEND</affectObject>
 		<affectRange>1000</affectRange>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>507</effectPoint>
 		<hitTime>2500</hitTime>
 		<isMagic>3</isMagic> <!-- Dance Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>79</magicLevel>
 		<mpConsume>54</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>150000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1739,8 +1936,11 @@
 		</effects>
 	</skill>
 	<skill id="531" toLevel="2" name="Critical Wound">
-		<!-- P. Critical Damage +10%, and Deadly Attack Def. -10%. Requires a dagger. -->
+		<!-- Level 1: P. Critical Damage +10%, and Deadly Attack Def. -10%. Requires a dagger. -->
+		<!-- Level 2: P. Critical Damage +15%, and Deadly Attack Def. -20%. Requires a dagger. -->
 		<icon>icon.skill0531</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1748,6 +1948,7 @@
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>T_CRT_RATE_UP</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<effectPoint>
@@ -1758,6 +1959,7 @@
 		<hitTime>1500</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">77</value>
 			<value level="2">81</value>
@@ -1767,11 +1969,7 @@
 			<value level="2">60</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<reuseDelay>8000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1799,11 +1997,11 @@
 	<skill id="532" toLevel="1" name="Counter Chance">
 		<!-- When attacked, Casting Spd. -15% and MP Consumption -5% for 1 minute with a certain chance. -->
 		<icon>icon.skill0532</icon>
-		<magicLevel>79</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>79</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Counter Chance -->
 				<attackerType>Creature</attackerType>
 				<chance>5</chance>
@@ -1817,11 +2015,11 @@
 	<skill id="533" toLevel="1" name="Counter Rapid Shot">
 		<!-- When attacked, party members' bow Atk. Spd.+ 15% for 1 minute. -->
 		<icon>icon.skill0533</icon>
-		<magicLevel>79</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>79</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Counter Rapid Shot -->
 				<attackerType>Creature</attackerType>
 				<chance>5</chance>
@@ -1835,11 +2033,11 @@
 	<skill id="534" toLevel="1" name="Counter Dash">
 		<!-- When attacked, party members' Speed + 40 for 1 minute. -->
 		<icon>icon.skill0534</icon>
-		<magicLevel>79</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>79</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Counter Dash -->
 				<attackerType>Creature</attackerType>
 				<chance>5</chance>
@@ -1853,11 +2051,11 @@
 	<skill id="535" toLevel="1" name="Counter Mind">
 		<!-- When attacked, recovers MP at a certain rate. -->
 		<icon>icon.skill0535</icon>
-		<magicLevel>79</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>79</magicLevel>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="TriggerSkillByDamageReceived">
 				<!-- Counter Mind -->
 				<attackerType>Creature</attackerType>
 				<chance>5</chance>
@@ -1871,19 +2069,19 @@
 	<skill id="536" toLevel="1" name="Over the Body">
 		<!-- Expends spirit points so that for 60 seconds, Increases Max HP by 35%, HP Recovery Bonus by 15%, P. Atk. by 10%, P. Def. by 20%, Atk. Spd. 15%, and Speed by 20%. Can be used when CP is more than 80%. <Auto Use Skill> -->
 		<icon>icon.skill0536</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>673</effectPoint>
+		<hitTime>2000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>78</magicLevel>
 		<mpConsume>157</mpConsume>
-		<operateType>A2</operateType>
-		<hitTime>2000</hitTime>
 		<reuseDelay>900000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="RemainCpPer">
 				<amount>80</amount>
@@ -1903,7 +2101,7 @@
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1924,12 +2122,16 @@
 	<skill id="537" toLevel="1" name="Spoil Bomb">
 		<!-- Puts nearby enemies into a spoil state, exploding and inflicting damage after a set time. -->
 		<icon>icon.skill0537</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>SPOIL_BOMB</abnormalType>
 		<activateRate>80</activateRate>
 		<affectLimit>6-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<effectPoint>-673</effectPoint>
@@ -1937,16 +2139,12 @@
 		<hitTime>1800</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>79</magicLevel>
 		<mpConsume>72</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<reuseDelay>15000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Spoil" />
 		</effects>
@@ -1958,12 +2156,17 @@
 		</endEffects>
 	</skill>
 	<skill id="539" toLevel="2" name="Nail Attack">
-		<!-- A demonic clawed combo attack. Power 2583. -->
+		<!-- Level 1: A demonic clawed combo attack. Power 2583. -->
+		<!-- Level 2: A demonic clawed combo attack. Power 8772. -->
 		<icon>icon.skill0539</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<coolTime>720</coolTime>
 		<effectPoint>-1</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">79</value>
 			<value level="2">85</value>
@@ -1973,13 +2176,9 @@
 			<value level="2">72</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalSoulAttack">
+			<effect name="PhysicalSoulDamage">
 				<power>
 					<value level="1">2583</value>
 					<value level="2">8772</value>
@@ -1988,15 +2187,21 @@
 		</effects>
 	</skill>
 	<skill id="540" toLevel="2" name="Wing Assault">
-		<!-- Charges with outspread wings. Strikes around the attacking target. Power 2067. -->
+		<!-- Level 1: Charges with outspread wings. Strikes around the attacking target. Power 2067. -->
+		<!-- Level 2: Charges with outspread wings. Strikes around the attacking target. Power 2112. -->
 		<icon>icon.skill0540</icon>
+		<operateType>DA1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>600</castRange>
 		<coolTime>200</coolTime>
 		<effectPoint>-676</effectPoint>
 		<effectRange>600</effectRange>
 		<hitTime>800</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">79</value>
 			<value level="2">85</value>
@@ -2006,18 +2211,13 @@
 			<value level="2">72</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>DA1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<conditions>
 			<condition name="OpCheckCastRange">
 				<distance>200</distance>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalSoulAttack">
+			<effect name="PhysicalSoulDamage">
 				<power>
 					<value level="1">2067</value>
 					<value level="2">2112</value>
@@ -2028,6 +2228,8 @@
 	<skill id="559" toLevel="4" name="Spear">
 		<!-- A strong spear thrust that has a chance of causing the enemy to bleed. Over-hit -->
 		<icon>icon.skill_transform_debuff</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">6</value>
 			<value level="2">6</value>
@@ -2035,10 +2237,10 @@
 			<value level="4">7</value>
 		</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>50</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
@@ -2052,6 +2254,7 @@
 		<hitTime>1080</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2065,14 +2268,11 @@
 			<value level="4">70</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>BLEED</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">900</value>
 					<value level="2">1013</value>
@@ -2088,9 +2288,16 @@
 		</effects>
 	</skill>
 	<skill id="560" toLevel="4" name="Power Slash">
-		<!-- A powerful frontal attack that involves swinging a spear to assault enemies. Over-hit. Power: 1250. -->
+		<!-- Level 1: A powerful frontal attack that involves swinging a spear to assault enemies. Over-hit. Power: 1250. -->
+		<!-- Level 2: A powerful frontal attack that involves swinging a spear to assault enemies. Over-hit. Power: 1406. -->
+		<!-- Level 3: A powerful frontal attack that involves swinging a spear to assault enemies. Over-hit. Power: 1568. -->
+		<!-- Level 4: A powerful frontal attack that involves swinging a spear to assault enemies. Over-hit. Power: 1733. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>FAN</affectScope>
 		<castRange>40</castRange>
 		<effectPoint>
 			<value level="1">-566</value>
@@ -2101,6 +2308,7 @@
 		<effectRange>400</effectRange>
 		<fanRange>0;0;200;180</fanRange>
 		<hitTime>2500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2114,14 +2322,9 @@
 			<value level="4">70</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">1250</value>
 					<value level="2">1406</value>
@@ -2135,10 +2338,15 @@
 	<skill id="561" toLevel="4" name="Angel's Blessing">
 		<!-- A divine blessing that increases P. Atk. of all party members. -->
 		<icon>icon.skill_transform_buff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>DANCE_OF_WARRIOR</abnormalType>
+		<affectObject>FRIEND</affectObject>
 		<affectRange>400</affectRange>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">566</value>
 			<value level="2">590</value>
@@ -2146,6 +2354,7 @@
 			<value level="4">630</value>
 		</effectPoint>
 		<hitTime>2500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2158,15 +2367,9 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>12</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2175,10 +2378,15 @@
 	<skill id="562" toLevel="4" name="Wind of Angel">
 		<!-- A divine Wind that increases P. Evasion of a party member. -->
 		<icon>icon.skill_transform_buff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>SONG_OF_WATER</abnormalType>
+		<affectObject>FRIEND</affectObject>
 		<affectRange>400</affectRange>
+		<affectScope>PARTY</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">566</value>
 			<value level="2">590</value>
@@ -2186,6 +2394,7 @@
 			<value level="4">630</value>
 		</effectPoint>
 		<hitTime>2500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2198,13 +2407,7 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>PARTY</affectScope>
-		<affectObject>FRIEND</affectObject>
 		<effects>
 			<effect name="PhysicalEvasion">
 				<amount>3</amount>
@@ -2213,8 +2416,14 @@
 		</effects>
 	</skill>
 	<skill id="563" toLevel="4" name="Horn of Doom">
-		<!-- Powerfully rams into the enemy with a horn. Over-hit. Power: 1250. -->
+		<!-- Level 1: Powerfully rams into the enemy with a horn. Over-hit. Power: 1250. -->
+		<!-- Level 2: Powerfully rams into the enemy with a horn. Over-hit. Power: 1406. -->
+		<!-- Level 3: Powerfully rams into the enemy with a horn. Over-hit. Power: 1568. -->
+		<!-- Level 4: Powerfully rams into the enemy with a horn. Over-hit. Power: 1733. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -2225,6 +2434,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2238,13 +2448,9 @@
 			<value level="4">70</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">1250</value>
 					<value level="2">1406</value>
@@ -2258,12 +2464,16 @@
 	<skill id="564" toLevel="4" name="Gravity Control">
 		<!-- Uses the horn to decrease speed and Atk. Spd. of nearby enemies. -->
 		<icon>icon.skill_transform_debuff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>60</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>400</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<effectPoint>
 			<value level="1">-566</value>
@@ -2274,6 +2484,7 @@
 		<hitTime>2500</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2286,12 +2497,7 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Speed">
 				<amount>
@@ -2314,8 +2520,14 @@
 		</effects>
 	</skill>
 	<skill id="565" toLevel="4" name="Horn Assault">
-		<!-- Releases the horn's energy to attack a distant enemy. Over-hit. Power: 938.. -->
+		<!-- Level 1: Releases the horn's energy to attack a distant enemy. Over-hit. Power: 938. -->
+		<!-- Level 2: Releases the horn's energy to attack a distant enemy. Over-hit. Power: 1055. -->
+		<!-- Level 3: Releases the horn's energy to attack a distant enemy. Over-hit. Power: 1176. -->
+		<!-- Level 4: Releases the horn's energy to attack a distant enemy. Over-hit. Power: 1300. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>900</castRange>
 		<coolTime>200</coolTime>
 		<effectPoint>
@@ -2326,6 +2538,7 @@
 		</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>2500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2338,13 +2551,9 @@
 			<value level="3">62</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>8000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">938</value>
 					<value level="2">1055</value>
@@ -2356,13 +2565,20 @@
 		</effects>
 	</skill>
 	<skill id="567" toLevel="4" name="Light Heal">
-		<!-- Draws from the force of light to bestow the ability of recovery. Power 690. -->
+		<!-- Level 1: Draws from the force of light to bestow the ability of recovery. Power 690. -->
+		<!-- Level 2: Draws from the force of light to bestow the ability of recovery. Power 731. -->
+		<!-- Level 3: Draws from the force of light to bestow the ability of recovery. Power 770. -->
+		<!-- Level 4: Draws from the force of light to bestow the ability of recovery. Power 806. -->
 		<icon>icon.skill_transform_etc</icon>
+		<operateType>A1</operateType>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
 		<effectPoint>1</effectPoint>
 		<effectRange>1100</effectRange>
 		<hitTime>2500</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2381,11 +2597,7 @@
 			<value level="3">20</value>
 			<value level="4">23</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Heal">
 				<power>
@@ -2398,8 +2610,14 @@
 		</effects>
 	</skill>
 	<skill id="568" toLevel="4" name="Attack Buster">
-		<!-- Detonates a Momentum charge to attack the enemy. Requires Level 2 Momentum charge. Power 1250. -->
+		<!-- Level 1: Detonates a Momentum charge to attack the enemy. Requires Level 2 Momentum charge. Power 1250. -->
+		<!-- Level 2: Detonates a Momentum charge to attack the enemy. Requires Level 2 Momentum charge. Power 1406. -->
+		<!-- Level 3: Detonates a Momentum charge to attack the enemy. Requires Level 2 Momentum charge. Power 1568. -->
+		<!-- Level 4: Detonates a Momentum charge to attack the enemy. Requires Level 2 Momentum charge. Power 1733. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -2410,6 +2628,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2423,18 +2642,14 @@
 			<value level="4">70</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="EnergySaved">
 				<amount>2</amount>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="EnergyAttack">
+			<effect name="EnergyDamage">
 				<chargeConsume>2</chargeConsume>
 				<criticalChance>10</criticalChance>
 				<power>
@@ -2447,10 +2662,17 @@
 		</effects>
 	</skill>
 	<skill id="569" toLevel="4" name="Attack Storm">
-		<!-- Unleash a magical attack on distant enemies. Requires Level 3 Momentum charge. Power 625. -->
+		<!-- Level 1: Unleash a magical attack on distant enemies. Requires Level 3 Momentum charge. Power 625. -->
+		<!-- Level 2: Unleash a magical attack on distant enemies. Requires Level 3 Momentum charge. Power 703. -->
+		<!-- Level 3: Unleash a magical attack on distant enemies. Requires Level 3 Momentum charge. Power 784. -->
+		<!-- Level 4: Unleash a magical attack on distant enemies. Requires Level 3 Momentum charge. Power 867. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
 		<castRange>500</castRange>
 		<effectPoint>
 			<value level="1">-566</value>
@@ -2460,6 +2682,7 @@
 		</effectPoint>
 		<effectRange>1000</effectRange>
 		<hitTime>2500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2472,19 +2695,14 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<conditions>
 			<condition name="EnergySaved">
 				<amount>3</amount>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="EnergyAttack">
+			<effect name="EnergyDamage">
 				<chargeConsume>3</chargeConsume>
 				<criticalChance>10</criticalChance>
 				<power>
@@ -2497,8 +2715,14 @@
 		</effects>
 	</skill>
 	<skill id="570" toLevel="4" name="Attack Rage">
-		<!-- Gathers Momentum while attacking the enemy. Can be charged up to Stage 1. Critical. Over-hit. -->
+		<!-- Level 1: Gathers Momentum while attacking the enemy. Can be charged up to Stage 1. Critical. Over-hit. -->
+		<!-- Level 2: Gathers Momentum while attacking the enemy. Can be charged up to Stage 2. Critical. Over-hit. -->
+		<!-- Level 3: Gathers Momentum while attacking the enemy. Can be charged up to Stage 3. Critical. Over-hit. -->
+		<!-- Level 4: Gathers Momentum while attacking the enemy. Can be charged up to Stage 4. Critical. Over-hit. -->
 		<icon>icon.skill_transform_etc</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-288</value>
@@ -2509,6 +2733,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>1500</hitTime>
 		<hpConsume>50</hpConsume>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2516,12 +2741,8 @@
 			<value level="4">69</value>
 		</magicLevel>
 		<mpConsume>5</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>1</power>
 				<overHit>true</overHit>
 				<criticalChance>10</criticalChance>
@@ -2541,6 +2762,8 @@
 	<skill id="571" toLevel="4" name="Poison Dust">
 		<!-- Sprays a poisonous powder all over nearby enemies. -->
 		<icon>icon.skill_transform_debuff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">6</value>
 			<value level="2">6</value>
@@ -2548,12 +2771,13 @@
 			<value level="4">7</value>
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>70</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>400</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>
 			<value level="1">-566</value>
@@ -2565,6 +2789,7 @@
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2583,13 +2808,9 @@
 			<value level="3">6</value>
 			<value level="4">7</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>2000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>POISON</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="DamOverTime">
 				<power>58</power>
@@ -2598,8 +2819,14 @@
 		</effects>
 	</skill>
 	<skill id="572" toLevel="4" name="Double Slasher">
-		<!-- Attacks an enemy at a distance by using Momentum. Over-hit. Power: 938.. -->
+		<!-- Level 1: Attacks an enemy at a distance by using Momentum. Over-hit. Power: 938. -->
+		<!-- Level 2: Attacks an enemy at a distance by using Momentum. Over-hit. Power: 1055. -->
+		<!-- Level 3: Attacks an enemy at a distance by using Momentum. Over-hit. Power: 1176. -->
+		<!-- Level 4: Attacks an enemy at a distance by using Momentum. Over-hit. Power: 1300. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-288</value>
@@ -2609,6 +2836,7 @@
 		</effectPoint>
 		<effectRange>1100</effectRange>
 		<hitTime>1900</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2622,13 +2850,9 @@
 			<value level="4">70</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">938</value>
 					<value level="2">1055</value>
@@ -2640,15 +2864,24 @@
 		</effects>
 	</skill>
 	<skill id="573" toLevel="4" name="Earthquake">
-		<!-- Causes a quake in the ground to stun nearby enemies. Over-hit. Power: 625. -->
+		<!-- Level 1: Causes a quake in the ground to stun nearby enemies. Over-hit. Power: 625. -->
+		<!-- Level 2: Causes a quake in the ground to stun nearby enemies. Over-hit. Power: 703. -->
+		<!-- Level 3: Causes a quake in the ground to stun nearby enemies. Over-hit. Power: 784. -->
+		<!-- Level 4: Causes a quake in the ground to stun nearby enemies. Over-hit. Power: 867. -->
 		<icon>icon.skill_transform_debuff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>50</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>PHYSICAL</basicProperty>
 		<effectPoint>
 			<value level="1">-566</value>
@@ -2656,11 +2889,10 @@
 			<value level="3">-611</value>
 			<value level="4">-630</value>
 		</effectPoint>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>3000</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2673,15 +2905,10 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">625</value>
 					<value level="2">703</value>
@@ -2697,8 +2924,14 @@
 		</effects>
 	</skill>
 	<skill id="575" toLevel="4" name="Steel Cutter">
-		<!-- Attacks with a sharp steel blade. Over-hit. Power: 1250. -->
+		<!-- Level 1: Attacks with a sharp steel blade. Over-hit. Power: 1250. -->
+		<!-- Level 2: Attacks with a sharp steel blade. Over-hit. Power: 1406. -->
+		<!-- Level 3: Attacks with a sharp steel blade. Over-hit. Power: 1568. -->
+		<!-- Level 4: Attacks with a sharp steel blade. Over-hit. Power: 1733. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -2709,6 +2942,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2722,13 +2956,9 @@
 			<value level="4">70</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">1250</value>
 					<value level="2">1406</value>
@@ -2740,8 +2970,14 @@
 		</effects>
 	</skill>
 	<skill id="576" toLevel="4" name="Paw Strike">
-		<!-- Inflicts a powerful attack with your forefeet. Over-hit. Power: 1250. -->
+		<!-- Level 1: Inflicts a powerful attack with your forefeet. Over-hit. Power: 1250. -->
+		<!-- Level 2: Inflicts a powerful attack with your forefeet. Over-hit. Power: 1406. -->
+		<!-- Level 3: Inflicts a powerful attack with your forefeet. Over-hit. Power: 1568. -->
+		<!-- Level 4: Inflicts a powerful attack with your forefeet. Over-hit. Power: 1733. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -2752,6 +2988,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2765,13 +3002,9 @@
 			<value level="4">70</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">1250</value>
 					<value level="2">1406</value>
@@ -2783,10 +3016,19 @@
 		</effects>
 	</skill>
 	<skill id="577" toLevel="4" name="Fire Breath">
-		<!-- Spews fire to attack enemies in front of you. Over-hit. Power: 875. -->
+		<!-- Level 1: Spews fire to attack enemies in front of you. Over-hit. Power: 875. -->
+		<!-- Level 2: Spews fire to attack enemies in front of you. Over-hit. Power: 984. -->
+		<!-- Level 3: Spews fire to attack enemies in front of you. Over-hit. Power: 1098. -->
+		<!-- Level 4: Spews fire to attack enemies in front of you. Over-hit. Power: 1213. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>250</affectRange>
+		<affectScope>SQUARE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>100</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -2796,10 +3038,9 @@
 			<value level="4">-959</value>
 		</effectPoint>
 		<effectRange>400</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<fanRange>0;0;250;60</fanRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2812,14 +3053,9 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SQUARE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">875</value>
 					<value level="2">984</value>
@@ -2833,6 +3069,8 @@
 	<skill id="578" toLevel="4" name="Blaze Quake">
 		<!-- Inflicts a burning fire attack on nearby enemies. Over-hit. -->
 		<icon>icon.skill_transform_debuff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">6</value>
 			<value level="2">6</value>
@@ -2843,7 +3081,11 @@
 		<abnormalType>DOT_ATTR</abnormalType>
 		<activateRate>60</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -2852,10 +3094,10 @@
 			<value level="3">-582</value>
 			<value level="4">-630</value>
 		</effectPoint>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>1080</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2868,15 +3110,9 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">625</value>
 					<value level="2">703</value>
@@ -2899,6 +3135,8 @@
 	<skill id="579" toLevel="4" name="Fire Armor">
 		<!-- An intense flame ignites and protects the body. Immobilized while in effect. -->
 		<icon>icon.skill_transform_buff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2907,6 +3145,10 @@
 		</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PD_UP_SPECIAL</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">477</value>
 			<value level="2">532</value>
@@ -2914,6 +3156,7 @@
 			<value level="4">630</value>
 		</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2926,14 +3169,7 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>135000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="BlockMove" />
 			<effect name="MagicalDefence">
@@ -2963,6 +3199,9 @@
 	<skill id="580" toLevel="4" name="Death Blow">
 		<!-- Inflicts a deadly blow. Lethal Strike. Over-hit. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>
@@ -2973,6 +3212,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -2986,11 +3226,7 @@
 			<value level="4">70</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="FatalBlow">
 				<power>
@@ -3007,18 +3243,23 @@
 	<skill id="581" toLevel="4" name="Sand Cloud">
 		<!-- Uses blinding sand to decrease nearby enemies' P. Accuracy. -->
 		<icon>icon.skill_transform_debuff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>HIT_DOWN</abnormalType>
 		<activateRate>60</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<effectPoint>-100</effectPoint>
 		<effectRange>360</effectRange>
 		<hitTime>3000</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -3031,12 +3272,7 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>15000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
 			<effect name="Accuracy">
 				<amount>
@@ -3052,6 +3288,8 @@
 	<skill id="582" toLevel="4" name="Scope Bleed">
 		<!-- Attacks frontal enemies with a lethal blow and causes them to bleed. Over-hit -->
 		<icon>icon.skill_transform_debuff</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">6</value>
 			<value level="2">6</value>
@@ -3059,11 +3297,12 @@
 			<value level="4">7</value>
 		</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<activateRate>50</activateRate>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>240</affectRange>
+		<affectScope>FAN</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
@@ -3078,6 +3317,7 @@
 		<hitTime>1080</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>20</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -3090,15 +3330,11 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>BLEED</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>FAN</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">875</value>
 					<value level="2">984</value>
@@ -3116,10 +3352,14 @@
 	<skill id="583" toLevel="4" name="Assimilation">
 		<!-- Blend in with enemies to avoid their notice. If you attack in this state, the entire party becomes exposed. -->
 		<icon>icon.skill_transform_etc</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>STEALTH</abnormalType>
 		<abnormalVisualEffect>STEALTH</abnormalVisualEffect>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>
 			<value level="1">566</value>
 			<value level="2">590</value>
@@ -3127,6 +3367,7 @@
 			<value level="4">630</value>
 		</effectPoint>
 		<hitTime>2000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">60</value>
 			<value level="2">63</value>
@@ -3139,12 +3380,7 @@
 			<value level="3">67</value>
 			<value level="4">70</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>4000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="SilentMove" />
 			<effect name="TriggerSkillByMagicType">
@@ -3155,7 +3391,7 @@
 				<chance>100</chance>
 				<targetType>MY_PARTY</targetType>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<!-- Cancel Shadow Move -->
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
@@ -3166,7 +3402,7 @@
 				<skillId>7097</skillId> <!-- Cancel Shadow Move -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<!-- Cancel Shadow Move -->
 				<attackerType>Creature</attackerType>
 				<minDamage>1</minDamage>
@@ -3182,21 +3418,21 @@
 	<skill id="584" toLevel="1" name="Power Claw">
 		<!-- Attacks the enemy with powerful claws. Over-hit. Power: 1008. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>720</coolTime>
 		<effectPoint>-475</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1080</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>55</magicLevel>
 		<mpConsume>55</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>1008</power>
 				<overHit>true</overHit>
 			</effect>
@@ -3205,19 +3441,19 @@
 	<skill id="585" toLevel="1" name="Fast Moving">
 		<!-- Spontaenously increases Movement Speed significantly. -->
 		<icon>icon.skill_transform_buff</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>SPEED_UP_SPECIAL</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>477</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>55</magicLevel>
 		<mpConsume>55</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>30000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Speed">
 				<amount>66</amount>
@@ -3226,12 +3462,18 @@
 		</effects>
 	</skill>
 	<skill id="586" toLevel="2" name="Rolling Attack">
-		<!-- Quickly swings a spear around, attacking nearby enemies. Over-hit. Power: 840. -->
+		<!-- Level 1: Quickly swings a spear around, attacking nearby enemies. Over-hit. Power: 840. -->
+		<!-- Level 2: Quickly swings a spear around, attacking nearby enemies. Over-hit. Power: 984. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
 		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<effectPoint>-100</effectPoint>
 		<hitTime>2500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">59</value>
 			<value level="2">63</value>
@@ -3240,14 +3482,9 @@
 			<value level="1">54</value>
 			<value level="2">58</value>
 		</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>4000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">840</value>
 					<value level="2">984</value>
@@ -3258,8 +3495,12 @@
 		</effects>
 	</skill>
 	<skill id="587" toLevel="2" name="Earth Storm">
-		<!-- Deals a powerful attack that penetrates the earth. Over-hit. Power: 1200. -->
+		<!-- Level 1: Deals a powerful attack that penetrates the earth. Over-hit. Power: 1200. -->
+		<!-- Level 2: Deals a powerful attack that penetrates the earth. Over-hit. Power: 1406. -->
 		<icon>icon.skill_transform_s_attack</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<effectPoint>
 			<value level="1">-530</value>
@@ -3267,6 +3508,7 @@
 		</effectPoint>
 		<effectRange>400</effectRange>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">59</value>
 			<value level="2">63</value>
@@ -3276,13 +3518,9 @@
 			<value level="2">58</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A1</operateType>
 		<reuseDelay>3000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">1200</value>
 					<value level="2">1406</value>
@@ -3294,10 +3532,13 @@
 	<skill id="588" toLevel="2" name="Curse of Darkness">
 		<!-- Casts a powerful curse on your enemy. -->
 		<icon>icon.skill_transform_debuff</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<effectPoint>-100</effectPoint>
@@ -3305,6 +3546,7 @@
 		<hitTime>1200</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">59</value>
 			<value level="2">63</value>
@@ -3313,11 +3555,7 @@
 			<value level="1">54</value>
 			<value level="2">58</value>
 		</mpConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>11000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="DamOverTime">
 				<power>
@@ -3331,9 +3569,13 @@
 	<skill id="589" toLevel="2" name="Darkness Energy Drain">
 		<!-- Absorbs energy from corpses to recover HP. -->
 		<icon>icon.skill_transform_etc</icon>
+		<operateType>A1</operateType>
+		<targetType>NPC_BODY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>20</castRange>
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">59</value>
 			<value level="2">63</value>
@@ -3342,11 +3584,7 @@
 			<value level="1">54</value>
 			<value level="2">58</value>
 		</mpConsume>
-		<operateType>A1</operateType>
 		<reuseDelay>8000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>NPC_BODY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="ConsumeBody" />
 		</conditions>
@@ -3363,9 +3601,9 @@
 	<skill id="590" toLevel="1" name="Residence Body">
 		<!-- The Max HP of clan members in residence increases by 222. -->
 		<icon>icon.skill0370</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MaxHp">
 				<amount>222</amount>
@@ -3376,9 +3614,9 @@
 	<skill id="591" toLevel="1" name="Residence Spirit">
 		<!-- Max CP of clan members in residence +444. -->
 		<icon>icon.skill0371</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MaxCp">
 				<amount>444</amount>
@@ -3389,9 +3627,9 @@
 	<skill id="592" toLevel="1" name="Residence Soul">
 		<!-- The Max MP of clan members in residence increases by 168. -->
 		<icon>icon.skill0372</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MaxMp">
 				<amount>168</amount>
@@ -3402,9 +3640,9 @@
 	<skill id="593" toLevel="1" name="Residence Health">
 		<!-- HP Recovery Bonus of clan members in residence +1.09. -->
 		<icon>icon.skill0373</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="HpRegen">
 				<amount>1.09</amount>
@@ -3415,9 +3653,9 @@
 	<skill id="594" toLevel="1" name="Residence Moral">
 		<!-- CP recovery bonus of clan members in residence +1.09. -->
 		<icon>icon.skill0374</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="CpRegen">
 				<amount>1.09</amount>
@@ -3428,9 +3666,9 @@
 	<skill id="595" toLevel="1" name="Residence Clarity">
 		<!-- MP Recovery Bonus of clan members in residence +0.47. -->
 		<icon>icon.skill0375</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MpRegen">
 				<amount>0.47</amount>
@@ -3441,11 +3679,11 @@
 	<skill id="596" toLevel="1" name="Residence Might">
 		<!-- P. Atk. of clan members in residence increases by 34.6. -->
 		<icon>icon.skill0376</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>34.6</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3454,9 +3692,9 @@
 	<skill id="597" toLevel="1" name="Residence Shield">
 		<!-- P. Def. of clan members in residence increases by 54.7. -->
 		<icon>icon.skill0377</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="PhysicalDefence">
 				<amount>54.7</amount>
@@ -3467,11 +3705,11 @@
 	<skill id="598" toLevel="1" name="Residence Empower">
 		<!-- M. Atk. of clan members in residence increases by 40.4. -->
 		<icon>icon.skill0378</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>40.4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3480,9 +3718,9 @@
 	<skill id="599" toLevel="1" name="Residence Magic Barrier">
 		<!-- The M. Def. of clan members in residence increases by 44. -->
 		<icon>icon.skill0379</icon>
-		<magicLevel>1</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="MagicalDefence">
 				<amount>44</amount>

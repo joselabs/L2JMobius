@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.actor;
 
@@ -41,7 +45,6 @@ import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.actor.stat.SummonStat;
 import org.l2jmobius.gameserver.model.actor.status.SummonStatus;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
@@ -135,7 +138,7 @@ public abstract class Summon extends Playable
 			if (isPet())
 			{
 				sendPacket(new PetSummonInfo(this, 1));
-				sendPacket(new ExPetSkillList(true, (Pet) this));
+				sendPacket(new ExPetSkillList(true, asPet()));
 				if (getInventory() != null)
 				{
 					sendPacket(new PetItemList(getInventory().getItems()));
@@ -479,7 +482,7 @@ public abstract class Summon extends Playable
 			{
 				if (isPet())
 				{
-					getSkills().forEach((id, skill) -> ((Pet) this).storePetSkills(id, skill.getLevel()));
+					getSkills().forEach((id, skill) -> asPet().storePetSkills(id, skill.getLevel()));
 					owner.setPet(null);
 				}
 				else
@@ -683,7 +686,7 @@ public abstract class Summon extends Playable
 			if (currentTarget != null)
 			{
 				target = skill.getTarget(this, forceUse && (!currentTarget.isPlayable() || !currentTarget.isInsideZone(ZoneId.PEACE) || !currentTarget.isInsideZone(ZoneId.NO_PVP)), dontMove, false);
-				final Player currentTargetPlayer = currentTarget.getActingPlayer();
+				final Player currentTargetPlayer = currentTarget.asPlayer();
 				if (!forceUse && (currentTargetPlayer != null) && !currentTargetPlayer.isAutoAttackable(_owner))
 				{
 					sendPacket(SystemMessageId.INVALID_TARGET);
@@ -803,7 +806,7 @@ public abstract class Summon extends Playable
 				}
 			}
 			
-			if (_owner.isInOlympiadMode() && target.isPlayer() && ((Player) target).isInOlympiadMode() && (((Player) target).getOlympiadGameId() == _owner.getOlympiadGameId()))
+			if (_owner.isInOlympiadMode() && target.isPlayer() && target.asPlayer().isInOlympiadMode() && (target.asPlayer().getOlympiadGameId() == _owner.getOlympiadGameId()))
 			{
 				OlympiadGameManager.getInstance().notifyCompetitorDamage(getOwner(), damage);
 			}
@@ -865,7 +868,7 @@ public abstract class Summon extends Playable
 	}
 	
 	@Override
-	public Player getActingPlayer()
+	public Player asPlayer()
 	{
 		return _owner;
 	}
@@ -1109,15 +1112,21 @@ public abstract class Summon extends Playable
 	}
 	
 	@Override
+	public Summon asSummon()
+	{
+		return this;
+	}
+	
+	@Override
 	public void rechargeShots(boolean physical, boolean magic, boolean fish)
 	{
-		Item item;
-		IItemHandler handler;
 		if ((_owner.getAutoSoulShot() == null) || _owner.getAutoSoulShot().isEmpty())
 		{
 			return;
 		}
 		
+		Item item;
+		IItemHandler handler;
 		for (int itemId : _owner.getAutoSoulShot())
 		{
 			item = _owner.getInventory().getItemByItemId(itemId);

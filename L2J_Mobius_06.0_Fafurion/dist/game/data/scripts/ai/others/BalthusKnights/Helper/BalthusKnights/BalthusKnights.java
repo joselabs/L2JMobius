@@ -19,7 +19,6 @@ package ai.others.BalthusKnights.Helper.BalthusKnights;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.model.World;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
@@ -62,7 +61,7 @@ public final class BalthusKnights extends AbstractNpcAI
 						{
 							if ((mob != null) && (!mob.isDead()) && ((mob.getId() == HATCHLING) || (mob.getId() == GEM_DRAGON_ANTHARAS)))
 							{
-								((Attackable) npc).addDamageHate(mob, 0, 999);
+								npc.asAttackable().addDamageHate(mob, 0, 999);
 								addAttackDesire(npc, mob);
 							}
 						});
@@ -78,7 +77,7 @@ public final class BalthusKnights extends AbstractNpcAI
 						{
 							if ((mob != null) && (!mob.isDead()) && ((mob.getId() == HATCHLING) || (mob.getId() == GEM_DRAGON_ANTHARAS)))
 							{
-								((Attackable) npc).addDamageHate(mob, 0, 999);
+								npc.asAttackable().addDamageHate(mob, 0, 999);
 								addAttackDesire(npc, mob);
 							}
 						});

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="96600" name="Beleth' Ring" type="Armor">
-		<!-- Max enchant value: +6. (Requires Scroll: Enchant Rare Accessories.). Boosts the item's parameters after enchanting. Effects of two identical rings do not stack. Safe enchanting to +1 -->
+		<!-- Max enchant value: +6. (Requires Scroll: Enchant Rare Accessories.). Boosts the item's effects upon enchanting. <font color=ff6666>Note!</font>. Effects of two identical rings do not stack, the ring with a higher enchant value takes precedence. <font color=eeaa22>Safe enchanting to +1</font> -->
 		<set name="icon" val="icon.accessary_dynasty_ring_i03" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
@@ -9,6 +9,10 @@
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
 		<set name="enchant_enabled" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<stats>
+			<stat type="mDef">73</stat>
+		</stats>
 		<skills>
 			<skill id="50555" level="1" /> <!-- Beleth' Ring -->
 			<skill id="50555" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Beleth' Ring -->
@@ -18,9 +22,6 @@
 			<skill id="50555" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Beleth' Ring -->
 			<skill id="50555" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Beleth' Ring -->
 		</skills>
-		<stats>
-			<stat type="mDef">73</stat>
-		</stats>
 	</item>
 	<item id="96601" name="Antharas Doll Lv. 1" additionalName="Sealed" type="EtcItem">
 		<!-- <Antharas Doll's Sorcery Lv. 1>. CON +1. MEN +1. Received damage -2%. Knockback Resistance +5%. Shock Resistance +5%. Pull Resistance +5%. Soulshot Damage Resistance +2%. Spiritshot Damage Resistance +2%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Antharas Doll Lv. 1 and packages. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
@@ -676,9 +677,21 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="2133" min="1" max="1" chance="19.798" /> <!-- A-grade Gemstone -->
+			<item id="3031" min="30" max="30" chance="19.798" /> <!-- Spirit Ore - Sealed -->
+			<item id="90907" min="5" max="5" chance="19.798" /> <!-- Soulshot Ticket - Sealed -->
+			<item id="94380" min="1" max="1" chance="19.798" /> <!-- Scroll: Boost Attack (Time-limited) - Sealed -->
+			<item id="93370" min="5" max="5" chance="19.798" /> <!-- Einhasad's Blessing Scroll (Time-limited) - Sealed -->
+			<item id="92988" min="1" max="1" chance="1.0" /> <!-- Orcish Treasure - Sealed -->
+			<item id="49580" min="1" max="1" chance="0.01" /> <!-- Baium's Ring -->
+		</capsuled_items>
 	</item>
 	<item id="96652" name="Package: Antharas Doll Lv. 1" additionalName="Sealed" type="EtcItem">
-		<!-- <font color=bbaa88><Compound></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. -->
+		<!-- <font color=bbaa88><Compounding></font>. Materials: dolls and packages of the same level. In case of failure, the doll's package level remains the same, but materials disappear. Double-click to obtain various items. <font color=ff6666>Note!</font>. In case of success, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. -->
 		<set name="icon" val="icon.bm_antaras_doll_30d" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -764,9 +777,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40385" level="1" /> <!-- Magic Lamp Charging Potion (1-time) -->
+		</skills>
 	</item>
 	<item id="96657" name="Elmoreden Tower Guardian's Mark (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Given for completing daily missions in the Elmoreden Tower. <How to use>. Game Assistant (Events and offers) - Elmoreden Tower Guardian's Mark -->
+		<!-- Given for completing daily missions in the Elmoreden Tower. <How to use>. Game Assistant (Events and offers) - Elmoreden Tower Keeper's Mark -->
 		<set name="icon" val="icon.etc_ticket_i00" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1154,7 +1171,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="96693" name="Mysterious Pack Lv. 8 (Time-limited)" type="EtcItem">
-		<!-- Can be exchanged for the following items through the Game Assistant. <font color=eeaa22><Items for exchange></font>. Talisman Bracelet Lv. 6 x1 (1 pc.). Agathion Bracelet Lv. 6 x1 (1 pc.). Brooch Lv. 6 x1 (1 pc.). Spellbook: Ultimate Death Knight Transformation x1 (30 pcs.). Spellbook: Titan Champion x1 (30 pcs.). Spellbook: Critical Assault x1 (30 pcs.). Spellbook: Fury Blade x1 (30 pcs.). Spellbook: Mortal Piercing x1 (30 pcs.). Spellbook: Legendary Archer x1 (30 pcs.). Spellbook: Rolling Dice x1 (30 pcs.). Spellbook: Dragon Strike x1 (20 pcs.). Spellbook: Mechanical Hero x1 (20 pcs.). Spellbook: Meteor x1 (20 pcs.). Spellbook: Cacophony of War x1 (20 pcs.). Spellbook: Exclusion x1 (20 pcs.). Spellbook: Dark Disruption x1 (20 pcs.). Spellbook: Tranquility x1 (20 pcs.). Spellbook: Pa'agrio's Touch x1 (20 pcs.). Spellbook: Team Building x1 (20 pcs.). Spellbook: Hell x1 (20 pcs.). Spellbook: Phoenix Shield x1 (20 pcs.). Spellbook: Shelter x1 (20 pcs.). Spellbook: Condemnation x1 (20 pcs.) -->
+		<!-- Can be exchanged for the following items through the Game Assistant. <font color=eeaa22><Items for exchange></font>. Talisman Bracelet Lv. 6 x1 (1 pc.). Agathion Summon Bracelet Lv. 6 x1 (1 pc.). Brooch Lv. 6 x1 (1 pc.). Spellbook: Ultimate Death Knight Transformation x1 (30 pcs.). Spellbook: Titan Champion x1 (30 pcs.). Spellbook: Critical Assault x1 (30 pcs.). Spellbook: Fury Blade x1 (30 pcs.). Spellbook: Mortal Piercing x1 (30 pcs.). Spellbook: Legendary Archer x1 (30 pcs.). Spellbook: Rolling Dice x1 (30 pcs.). Spellbook: Dragon Strike x1 (20 pcs.). Spellbook: Mechanical Hero x1 (20 pcs.). Spellbook: Meteor x1 (20 pcs.). Spellbook: Cacophony of War x1 (20 pcs.). Spellbook: Exclusion x1 (20 pcs.). Spellbook: Dark Disruption x1 (20 pcs.). Spellbook: Tranquility x1 (20 pcs.). Spellbook: Pa'agrio's Touch x1 (20 pcs.). Spellbook: Team Building x1 (20 pcs.). Spellbook: Hell x1 (20 pcs.). Spellbook: Phoenix Shield x1 (20 pcs.). Spellbook: Shelter x1 (20 pcs.). Spellbook: Condemnation x1 (20 pcs.) -->
 		<set name="icon" val="icon.etc_pi_box_wish_pack" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />
@@ -1197,23 +1214,36 @@
 		<!-- Applies a buff when used. <Buff effect>. XP recovery fee -20%. Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->
 		<set name="icon" val="icon.etc_charm_of_courage_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_freightable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="immediate_effect" val="true" />
+		<set name="autouse_type" val="ITEM" />
+		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="40386" level="1" /> <!-- Discount XP Recovery Scroll Lv. 1 -->
+		</skills>
 	</item>
 	<item id="96697" name="Discount XP Recovery Scroll Lv. 2" additionalName="Sealed" type="EtcItem">
 		<!-- Applies a buff when used. <Buff effect>. XP recovery fee -25%. My Teleport's Share Location fee -20%. Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->
 		<set name="icon" val="icon.etc_charm_of_courage_i02" />
 		<set name="default_action" val="SKILL_REDUCE" />
-		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_freightable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="autouse_type" val="ITEM" />
+		<set name="immediate_effect" val="true" />
+		<skills>
+			<skill id="40386" level="2" /> <!-- Discount XP Recovery Scroll Lv. 2 -->
+		</skills>
 	</item>
 	<item id="96698" name="Elmoreden Tower Scroll of Blessing (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Applies a buff when used. <Buff effect>. All stats +1. P./ M. Atk. +100. P./ M. Def. +100. XP recovery fee -10%. Duration: 20 min. Cooldown: 1 min. The effect remains after death. -->
@@ -1225,9 +1255,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40374" level="1" /> <!-- Elmoreden Tower's Scroll of Blessing -->
+		</skills>
 	</item>
 	<item id="96699" name="Agathion Petram" additionalName="30-day" type="Armor">
-		<!-- Available for 30 d. Applies the following effects when equipped. <font color=eeaa22><Unique properties></font>. P. Def. +11%. M. Def. +11%. Shock Atk. Rate +14%. Silence Atk. Rate +14%. Fear Atk. Rate +14%. Speed +2. Equipping it in the main agathion slot summons Agathion Petram. <font color=ff6666>Note!</font>. If equipped simultaneously with Agathion Taurus or Agathion Virgo, only Agathion Petram will be active. <font color=ff6666>Cannot be enchanted.</font> -->
+		<!-- Available for 30 d. Applies the following effects when equipped. <font color=eeaa22><Unique properties></font>. P. Def. +11%. M. Def. +11%. Shock Atk. Rate +14%. Silence Atk. Rate +14%. Fear Atk. Rate +14%. Speed +2. Equipping it in the main agathion slot summons Agathion Petram. <font color=ff6666>Note!</font>. If equipped with Agathion Taurus or Agathion Virgo, only Agathion Petram will be active. <font color=ff6666>Cannot be enchanted.</font> -->
 		<set name="icon" val="icon.agathion_earth_1" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -1238,5 +1272,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="50329" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Petram -->
+			<skill id="54018" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="50324" level="9" /> <!-- +8 Agathion Petram -->
+		</skills>
 	</item>
 </list>

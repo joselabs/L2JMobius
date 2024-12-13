@@ -123,7 +123,7 @@ public class AttackStanceTaskManager implements Runnable
 		{
 			if (actor.isSummon())
 			{
-				actor = actor.getActingPlayer();
+				actor = actor.asPlayer();
 			}
 			CREATURE_ATTACK_STANCES.remove(actor);
 		}
@@ -141,7 +141,7 @@ public class AttackStanceTaskManager implements Runnable
 		{
 			if (actor.isSummon())
 			{
-				actor = actor.getActingPlayer();
+				actor = actor.asPlayer();
 			}
 			return CREATURE_ATTACK_STANCES.containsKey(actor);
 		}

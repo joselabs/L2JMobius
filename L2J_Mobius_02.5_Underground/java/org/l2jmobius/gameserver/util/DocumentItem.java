@@ -169,6 +169,14 @@ public class DocumentItem extends DocumentBase implements IXmlReader
 						final ItemSkillType type = parseEnum(b.getAttributes(), ItemSkillType.class, "type", ItemSkillType.NORMAL);
 						final int chance = parseInteger(b.getAttributes(), "type_chance", 100);
 						final int value = parseInteger(b.getAttributes(), "type_value", 0);
+						if (type == ItemSkillType.ON_ENCHANT)
+						{
+							final int enchantLimit = _currentItem.item.getEnchantLimit();
+							if ((enchantLimit > 0) && (value > enchantLimit))
+							{
+								LOGGER.warning(getClass().getSimpleName() + ": Item " + itemId + " has ON_ENCHANT value greater than it's enchant limit.");
+							}
+						}
 						_currentItem.item.addSkill(new ItemSkillHolder(id, level, type, chance, value));
 					}
 				}

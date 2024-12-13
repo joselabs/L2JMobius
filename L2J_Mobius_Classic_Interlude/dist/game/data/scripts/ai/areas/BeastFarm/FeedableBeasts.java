@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.areas.BeastFarm;
 
@@ -32,6 +36,7 @@ import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.NpcStringId;
 
 import ai.AbstractNpcAI;
+import quests.Q00020_BringUpWithLove.Q00020_BringUpWithLove;
 
 /**
  * Growth-capable mobs: Polymorphing upon successful feeding.
@@ -425,10 +430,8 @@ public class FeedableBeasts extends AbstractNpcAI
 			
 			final TamedBeast nextNpc = new TamedBeast(nextNpcId, player, food - FOODSKILLDIFF, npc.getX(), npc.getY(), npc.getZ());
 			nextNpc.setRunning();
-			// TODO: Q00020_BringUpWithLove.checkJewelOfInnocence(player);
-			
-			// Support for A Grand Plan for Taming Wild Beasts (655) quest.
-			// Q00655_AGrandPlanForTamingWildBeasts.reward(player, nextNpc); TODO: Replace me?
+			Q00020_BringUpWithLove.checkJewelOfInnocence(player);
+			// Q00655_AGrandPlanForTamingWildBeasts.checkCrystalofPurity(player);
 			
 			// also, perform a rare random chat
 			if (getRandom(20) == 0)
@@ -455,7 +458,7 @@ public class FeedableBeasts extends AbstractNpcAI
 		{
 			// if not trained, the newly spawned mob will automatically be aggro against its feeder
 			// (what happened to "never bite the hand that feeds you" anyway?!)
-			final Attackable nextNpc = (Attackable) addSpawn(nextNpcId, npc);
+			final Attackable nextNpc = addSpawn(nextNpcId, npc).asAttackable();
 			if (MAD_COW_POLYMORPH.containsKey(nextNpcId))
 			{
 				startQuestTimer("polymorph Mad Cow", 10000, nextNpc, player);
@@ -483,7 +486,7 @@ public class FeedableBeasts extends AbstractNpcAI
 				}
 				
 				// spawn the new mob
-				final Attackable nextNpc = (Attackable) addSpawn(MAD_COW_POLYMORPH.get(npc.getId()), npc);
+				final Attackable nextNpc = addSpawn(MAD_COW_POLYMORPH.get(npc.getId()), npc).asAttackable();
 				
 				// register the player in the feedinfo for the mob that just spawned
 				_feedInfo.put(nextNpc.getObjectId(), player.getObjectId());

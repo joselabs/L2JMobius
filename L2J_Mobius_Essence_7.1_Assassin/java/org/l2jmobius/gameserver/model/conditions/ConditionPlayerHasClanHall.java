@@ -47,15 +47,15 @@ public class ConditionPlayerHasClanHall extends Condition
 	@Override
 	public boolean testImpl(Creature effector, Creature effected, Skill skill, ItemTemplate item)
 	{
-		if (effector.getActingPlayer() == null)
+		if (!effector.isPlayer())
 		{
 			return false;
 		}
 		
-		final Clan clan = effector.getActingPlayer().getClan();
+		final Clan clan = effector.asPlayer().getClan();
 		if (clan == null)
 		{
-			return ((_clanHall.size() == 1) && (_clanHall.get(0) == 0));
+			return (_clanHall.size() == 1) && (_clanHall.get(0) == 0);
 		}
 		
 		// All Clan Hall

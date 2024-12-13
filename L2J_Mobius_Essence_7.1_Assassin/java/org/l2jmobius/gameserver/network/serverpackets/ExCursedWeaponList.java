@@ -28,12 +28,18 @@ import org.l2jmobius.gameserver.network.ServerPackets;
  */
 public class ExCursedWeaponList extends ServerPacket
 {
+	private final Set<Integer> _ids;
+	
+	public ExCursedWeaponList()
+	{
+		_ids = CursedWeaponsManager.getInstance().getCursedWeaponsIds();
+	}
+	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.EX_CURSED_WEAPON_LIST.writeId(this, buffer);
-		final Set<Integer> ids = CursedWeaponsManager.getInstance().getCursedWeaponsIds();
-		buffer.writeInt(ids.size());
-		ids.forEach(buffer::writeInt);
+		buffer.writeInt(_ids.size());
+		_ids.forEach(buffer::writeInt);
 	}
 }

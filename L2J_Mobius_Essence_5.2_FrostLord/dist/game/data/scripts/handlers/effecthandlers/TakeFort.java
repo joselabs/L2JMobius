@@ -63,7 +63,7 @@ public class TakeFort extends AbstractEffect
 				fort.endOfSiege(effector.getClan());
 				if (effector.isPlayer())
 				{
-					final Player player = effector.getActingPlayer();
+					final Player player = effector.asPlayer();
 					FortSiegeManager.getInstance().dropCombatFlag(player, FortManager.ORC_FORTRESS);
 					
 					final Message mail = new Message(player.getObjectId(), "Orc Fortress", "", MailType.NPC);

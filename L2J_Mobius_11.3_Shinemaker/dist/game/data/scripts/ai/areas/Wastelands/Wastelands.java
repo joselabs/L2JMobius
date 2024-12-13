@@ -106,7 +106,7 @@ public class Wastelands extends AbstractNpcAI
 			}
 			case "START_ATTACK":
 			{
-				final Attackable guard = (Attackable) npc;
+				final Attackable guard = npc.asAttackable();
 				final int attackId;
 				
 				switch (guard.getId())
@@ -233,7 +233,7 @@ public class Wastelands extends AbstractNpcAI
 			}
 			case SAKUM:
 			{
-				manageCommando((Attackable) npc);
+				manageCommando(npc.asAttackable());
 				break;
 			}
 			case GUARD:
@@ -278,7 +278,7 @@ public class Wastelands extends AbstractNpcAI
 	@Id(COMMANDO_CAPTAIN)
 	public void onCreatureKill(OnCreatureDeath event)
 	{
-		final Attackable guard = (Attackable) event.getTarget();
+		final Attackable guard = event.getTarget().asAttackable();
 		
 		//@formatter:off
 		final Attackable sakum = World.getInstance().getVisibleObjectsInRange(guard, Attackable.class, 1000)
@@ -307,7 +307,7 @@ public class Wastelands extends AbstractNpcAI
 				sakum.getVariables().set("GUARD_CAPTAIN", false);
 				for (Location loc : COMMANDO_CAPTAIN_SAKUM_LOC)
 				{
-					final Attackable commander = (Attackable) addSpawn(COMMANDO_CAPTAIN, loc);
+					final Attackable commander = addSpawn(COMMANDO_CAPTAIN, loc).asAttackable();
 					commander.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.HOW_DARE_YOU_ATTACK);
 					commander.reduceCurrentHp(1, sakum, null); // TODO: Find better way for attack
 					sakum.reduceCurrentHp(1, commander, null);
@@ -320,7 +320,7 @@ public class Wastelands extends AbstractNpcAI
 				sakum.getVariables().set("GUARD_CAPTAIN", true);
 				for (Location loc : COMMANDO_SAKUM_LOC)
 				{
-					final Attackable commander = (Attackable) addSpawn(COMMANDO, loc);
+					final Attackable commander = addSpawn(COMMANDO, loc).asAttackable();
 					commander.reduceCurrentHp(1, sakum, null); // TODO: Find better way for attack
 					sakum.reduceCurrentHp(1, commander, null);
 					notifyEvent("START_ATTACK", commander, null);

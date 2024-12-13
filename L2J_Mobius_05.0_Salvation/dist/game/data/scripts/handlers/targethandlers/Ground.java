@@ -44,7 +44,7 @@ public class Ground implements ITargetTypeHandler
 	{
 		if (creature.isPlayer())
 		{
-			final Location worldPosition = creature.getActingPlayer().getCurrentSkillWorldPosition();
+			final Location worldPosition = creature.asPlayer().getCurrentSkillWorldPosition();
 			if (worldPosition != null)
 			{
 				if (dontMove && !creature.isInsideRadius2D(worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), skill.getCastRange() + creature.getTemplate().getCollisionRadius()))
@@ -52,7 +52,7 @@ public class Ground implements ITargetTypeHandler
 					return null;
 				}
 				
-				if (!GeoEngine.getInstance().canSeeTarget(creature, worldPosition))
+				if (!GeoEngine.getInstance().canSeeTarget(creature, worldPosition) || (skill.isFlyType() && !GeoEngine.getInstance().canMoveToTarget(creature, worldPosition)))
 				{
 					if (sendMessage)
 					{

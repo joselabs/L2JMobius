@@ -32,18 +32,18 @@
 		<!-- For 30 min., Max HP/ MP/ CP +30%, P./ M. Atk. and P./ M. Def. +30%, Atk. Spd./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +100, damage +10%, P./ M. Skill Power +10%, acquired XP/ SP +30%, received damage -30 min.0, Skill MP Consumption -30 min.1. The effect remains after death. -->
 		<icon>icon.bm_freya_ice_rose</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>1000</hitTime>
-		<reuseDelay>300000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<isMagic>4</isMagic>
-		<stayAfterDeath>true</stayAfterDeath>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="MaxHp">
 				<amount>30</amount>
@@ -65,11 +65,11 @@
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -176,7 +176,16 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="29409" toLevel="10" name="Superior Amethyst">
-		<!-- PvP Damage +26%. Received P. Critical Rate -30%. -->
+		<!-- Level 1: PvP Damage +26%. Received P. Critical Rate -30%. -->
+		<!-- Level 2: PvP Damage +26%. Received P. Critical Rate -30%. -->
+		<!-- Level 3: PvP Damage +26%. Received P. Critical Rate -30%. -->
+		<!-- Level 4: PvP Damage +27%. Received P. Critical Rate -30%. -->
+		<!-- Level 5: PvP Damage +27%. Received P. Critical Rate -30%. -->
+		<!-- Level 6: PvP Damage +27%. Received P. Critical Rate -30%. -->
+		<!-- Level 7: PvP Damage +28%. Received P. Critical Rate -30%. -->
+		<!-- Level 8: PvP Damage +28%. Received P. Critical Rate -30%. -->
+		<!-- Level 9: PvP Damage +29%. Received P. Critical Rate -30%. -->
+		<!-- Level 10: PvP Damage +30%. Received P. Critical Rate -30%. -->
 		<icon>BranchIcon.Icon.etc_bm_jewel_amethyst_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -232,7 +241,16 @@
 		</effects>
 	</skill>
 	<skill id="29411" toLevel="10" name="Superior Cat's Eye">
-		<!-- Damage Reflection Resistance +70%. With a 21% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 1: Damage Reflection Resistance +70%. With a 21% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 2: Damage Reflection Resistance +70%. With a 22% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 3: Damage Reflection Resistance +70%. With a 23% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 4: Damage Reflection Resistance +70%. With a 24% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 5: Damage Reflection Resistance +70%. With a 25% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 6: Damage Reflection Resistance +70%. With a 26% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 7: Damage Reflection Resistance +70%. With a 27% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 8: Damage Reflection Resistance +70%. With a 28% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 9: Damage Reflection Resistance +70%. With a 29% chance, reflects debuffs back to the enemy. -->
+		<!-- Level 10: Damage Reflection Resistance +70%. With a 30% chance, reflects debuffs back to the enemy. -->
 		<icon>BranchIcon.Icon.etc_bm_jewel_catseye_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -284,30 +302,33 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="29413" toLevel="4" name="Einhasad Overseeing">
-		<!-- The massacre has drawn the attention of Einhasad. Now the goddess is keeping an eye on you. P./ M. Def. -5%, Speed -5. -->
+		<!-- Level 1: The massacre has drawn the attention of Einhasad. Now the goddess is keeping an eye on you. P./ M. Def. -5%, Speed -5. -->
+		<!-- Level 2: The massacre has drawn the attention of Einhasad. Now the goddess is keeping an eye on you. P./ M. Def. -10%, Speed -10. -->
+		<!-- Level 3: The massacre has drawn the attention of Einhasad. Now the goddess is keeping an eye on you. P./ M. Def. -15%, Speed -30. -->
+		<!-- Level 4: The massacre has drawn the attention of Einhasad. Now the goddess is keeping an eye on you. P./ M. Def. -30%, Speed -35. -->
 		<icon>icon.karma</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
 			<value level="3">3</value>
 			<value level="4">4</value>
 		</abnormalLevel>
-		<abnormalType>PK_DEBUFF1</abnormalType>
 		<abnormalTime>
 			<value level="1">1800</value>
 			<value level="2">3600</value>
 			<value level="3">7200</value>
 			<value level="4">10800</value>
 		</abnormalTime>
-		<canBeDispelled>false</canBeDispelled>
-		<targetType>SELF</targetType>
+		<abnormalType>PK_DEBUFF1</abnormalType>
 		<affectScope>SINGLE</affectScope>
-		<effectPoint>0</effectPoint>
+		<canBeDispelled>false</canBeDispelled>
+		<effectPoint>-100</effectPoint>
+		<irreplacableBuff>true</irreplacableBuff>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicCriticalRate>-5</magicCriticalRate>
-		<irreplacableBuff>true</irreplacableBuff>
 		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="PhysicalDefence">
@@ -343,17 +364,17 @@
 		<!-- Your location is shown on the world map. You can't use escape skills and teleport services. -->
 		<icon>icon.karma</icon>
 		<operateType>A2</operateType>
-		<abnormalLevel>1</abnormalLevel>
-		<abnormalType>PK_DEBUFF2</abnormalType>
-		<abnormalTime>10800</abnormalTime>
-		<canBeDispelled>false</canBeDispelled>
 		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>10800</abnormalTime>
+		<abnormalType>PK_DEBUFF2</abnormalType>
 		<affectScope>SINGLE</affectScope>
-		<effectPoint>0</effectPoint>
+		<canBeDispelled>false</canBeDispelled>
+		<effectPoint>-100</effectPoint>
+		<irreplacableBuff>true</irreplacableBuff>
 		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicCriticalRate>-5</magicCriticalRate>
-		<irreplacableBuff>true</irreplacableBuff>
 		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="BlockEscape" />
@@ -1055,7 +1076,7 @@
 	<skill id="29429" toLevel="5" name="Heir's Radiance - PvE">
 		<!-- For 1 h., P. Atk. +$s1, M. Atk. +$s2, P. Def. +$s3, M. Def. +$s4, Received PvE Damage -$s5. When the effect expires, the enhanced Heir's Radiance - PvE effect activates recovering 35,000 Vitality points. Consumes 1000 Spirit Ore. Note! The effect disappears after logout and is not renewed after death. -->
 		<operateType>A2</operateType>
-		<abnormalType>HEIR_PVE</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">21600</value>
@@ -1064,6 +1085,11 @@
 			<value level="4">3600</value>
 			<value level="5">3600</value>
 		</abnormalTime>
+		<abnormalType>HEIR_PVE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
+		<itemConsumeCount>1000</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<reuseDelay>
 			<value level="1">21600000</value>
 			<value level="2">0</value>
@@ -1072,13 +1098,8 @@
 			<value level="5">0</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<canBeDispelled>false</canBeDispelled>
-		<itemConsumeCount>1000</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">200</value>
 					<value level="2">250</value>
@@ -1088,7 +1109,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">200</value>
 					<value level="2">250</value>
@@ -1177,7 +1198,7 @@
 	<skill id="29430" toLevel="5" name="Heir's Radiance - PvP">
 		<!-- For 1 h., P. Atk. +$s1, M. Atk. +$s2, P. Def. +$s3, M. Def. +$s4, Received PvP Damage -$s5, Recovery Potions' Effect +$s6. When the effect expires, the enhanced Heir's Radiance - PvP effect activates. Consumes 1000 Spirit Ore. Note! The effect disappears after logout and is not renewed after death. -->
 		<operateType>A2</operateType>
-		<abnormalType>HEIR_PVP</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">21600</value>
@@ -1186,6 +1207,10 @@
 			<value level="4">3600</value>
 			<value level="5">3600</value>
 		</abnormalTime>
+		<abnormalType>HEIR_PVP</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1000</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<reuseDelay>
 			<value level="1">21600000</value>
 			<value level="2">0</value>
@@ -1194,12 +1219,8 @@
 			<value level="5">0</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeCount>1000</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">200</value>
 					<value level="2">250</value>
@@ -1209,7 +1230,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">200</value>
 					<value level="2">250</value>
@@ -1324,7 +1345,7 @@
 	<skill id="29431" toLevel="5" name="Heir's Radiance - PvE">
 		<!-- For 1 h., P. Atk. +$s1, M. Atk. +$s2, P. Def. +$s3, M. Def. +$s4, Received PvE Damage -$s5. When the effect expires, the enhanced Heir's Radiance - PvE effect activates recovering 35,000 Vitality points. Consumes 1000 Spirit Ore. Note! The effect disappears after logout and is not renewed after death. -->
 		<operateType>A2</operateType>
-		<abnormalType>HEIR_PVE</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">21600</value>
@@ -1333,6 +1354,11 @@
 			<value level="4">3600</value>
 			<value level="5">3600</value>
 		</abnormalTime>
+		<abnormalType>HEIR_PVE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
+		<itemConsumeCount>1000</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<reuseDelay>
 			<value level="1">21600000</value>
 			<value level="2">0</value>
@@ -1341,13 +1367,8 @@
 			<value level="5">0</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<canBeDispelled>false</canBeDispelled>
-		<itemConsumeCount>1000</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">300</value>
 					<value level="2">330</value>
@@ -1357,7 +1378,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">300</value>
 					<value level="2">330</value>
@@ -1446,7 +1467,7 @@
 	<skill id="29432" toLevel="5" name="Heir's Radiance - PvP">
 		<!-- For 1 h., P. Atk. +$s1, M. Atk. +$s2, P. Def. +$s3, M. Def. +$s4, Received PvP Damage -$s5, Recovery Potions' Effect +$s6. When the effect expires, the enhanced Heir's Radiance - PvP effect activates. Consumes 1000 Spirit Ore. Note! The effect disappears after logout and is not renewed after death. -->
 		<operateType>A2</operateType>
-		<abnormalType>HEIR_PVP</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">21600</value>
@@ -1455,6 +1476,10 @@
 			<value level="4">3600</value>
 			<value level="5">3600</value>
 		</abnormalTime>
+		<abnormalType>HEIR_PVP</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1000</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<reuseDelay>
 			<value level="1">21600000</value>
 			<value level="2">0</value>
@@ -1463,12 +1488,8 @@
 			<value level="5">0</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeCount>1000</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">300</value>
 					<value level="2">330</value>
@@ -1478,7 +1499,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">300</value>
 					<value level="2">330</value>
@@ -1593,7 +1614,7 @@
 	<skill id="29433" toLevel="5" name="Heir's Radiance - PvE">
 		<!-- For 1 h., P. Atk. +$s1, M. Atk. +$s2, P. Def. +$s3, M. Def. +$s4, Received PvE Damage -$s5. When the effect expires, the enhanced Heir's Radiance - PvE effect activates recovering 35,000 Vitality points. Consumes 1000 Spirit Ore. Note! The effect disappears after logout and is not renewed after death. -->
 		<operateType>A2</operateType>
-		<abnormalType>HEIR_PVE</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">21600</value>
@@ -1602,6 +1623,11 @@
 			<value level="4">3600</value>
 			<value level="5">3600</value>
 		</abnormalTime>
+		<abnormalType>HEIR_PVE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
+		<itemConsumeCount>1000</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<reuseDelay>
 			<value level="1">21600000</value>
 			<value level="2">0</value>
@@ -1610,13 +1636,8 @@
 			<value level="5">0</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<canBeDispelled>false</canBeDispelled>
-		<itemConsumeCount>1000</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">400</value>
 					<value level="2">425</value>
@@ -1626,7 +1647,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">400</value>
 					<value level="2">425</value>
@@ -1715,7 +1736,7 @@
 	<skill id="29434" toLevel="5" name="Heir's Radiance - PvP">
 		<!-- For 1 h., P. Atk. +$s1, M. Atk. +$s2, P. Def. +$s3, M. Def. +$s4, Received PvP Damage -$s5, Recovery Potions' Effect +$s6. When the effect expires, the enhanced Heir's Radiance - PvP effect activates. Consumes 1000 Spirit Ore. Note! The effect disappears after logout and is not renewed after death. -->
 		<operateType>A2</operateType>
-		<abnormalType>HEIR_PVP</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">21600</value>
@@ -1724,6 +1745,10 @@
 			<value level="4">3600</value>
 			<value level="5">3600</value>
 		</abnormalTime>
+		<abnormalType>HEIR_PVP</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1000</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<reuseDelay>
 			<value level="1">21600000</value>
 			<value level="2">0</value>
@@ -1732,12 +1757,8 @@
 			<value level="5">0</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeCount>1000</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">400</value>
 					<value level="2">425</value>
@@ -1747,7 +1768,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">400</value>
 					<value level="2">425</value>
@@ -1862,16 +1883,16 @@
 	<skill id="29437" toLevel="1" name="+10 Limited Leviathan Heavy Armor Pack Lv. 1">
 		<!-- Double-click to acquire Limited Leviathan Heavy Armor Set that has been enchanted to +10. -->
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>29918</itemConsumeId>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>29918</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="RestorationRandom">
 				<items>
@@ -1889,16 +1910,16 @@
 	<skill id="29438" toLevel="1" name="+10 Limited Leviathan Light Armor Pack Lv. 1">
 		<!-- Double-click to acquire Limited Leviathan Light Armor Set that has been enchanted to +10. -->
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>29919</itemConsumeId>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>29919</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="RestorationRandom">
 				<items>
@@ -1916,16 +1937,16 @@
 	<skill id="29439" toLevel="1" name="+10 Limited Leviathan Robe Pack Lv. 1">
 		<!-- Double-click to acquire Limited Leviathan Robe Set that has been enchanted to +10. -->
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
-		<coolTime>500</coolTime>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<magicLevel>1</magicLevel>
-		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<itemConsumeId>29920</itemConsumeId>
+		<coolTime>500</coolTime>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
+		<isMagic>2</isMagic>
 		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>29920</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="RestorationRandom">
 				<items>

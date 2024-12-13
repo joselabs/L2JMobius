@@ -134,7 +134,7 @@ public class StakatoNest extends AbstractNpcAI
 			}
 			case STAKATO_BABY:
 			{
-				monster = ((Monster) npc).getLeader();
+				monster = npc.asMonster().getLeader();
 				if ((monster != null) && !monster.isDead())
 				{
 					startQuestTimer("nurse_change", 5000, monster, killer);
@@ -157,7 +157,7 @@ public class StakatoNest extends AbstractNpcAI
 			}
 			case STAKATO_FEMALE:
 			{
-				monster = ((Monster) npc).getLeader();
+				monster = npc.asMonster().getLeader();
 				if ((monster != null) && !monster.isDead())
 				{
 					startQuestTimer("male_change", 5000, monster, killer);
@@ -230,7 +230,7 @@ public class StakatoNest extends AbstractNpcAI
 	
 	private static Monster checkMinion(Npc npc)
 	{
-		final Monster mob = (Monster) npc;
+		final Monster mob = npc.asMonster();
 		if (mob.hasMinions())
 		{
 			final List<Monster> minion = mob.getMinionList().getSpawnedMinions();

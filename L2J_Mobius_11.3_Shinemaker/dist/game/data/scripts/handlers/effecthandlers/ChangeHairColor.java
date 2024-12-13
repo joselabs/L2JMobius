@@ -19,6 +19,7 @@ package handlers.effecthandlers;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -51,14 +52,15 @@ public class ChangeHairColor extends AbstractEffect
 		}
 		
 		// Death Knights only have 3 hair styles.
-		final Player player = effected.getActingPlayer();
+		final Player player = effected.asPlayer();
+		final PlayerAppearance appearance = player.getAppearance();
 		if (player.isDeathKnight() && (item.getId() == 5241))
 		{
-			player.getAppearance().setHairColor(0);
+			appearance.setHairColor(0);
 		}
 		else
 		{
-			player.getAppearance().setHairColor(_value);
+			appearance.setHairColor(_value);
 		}
 		
 		player.broadcastUserInfo();

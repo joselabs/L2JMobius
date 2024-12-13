@@ -20,8 +20,6 @@ import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.geoengine.GeoEngine;
-import org.l2jmobius.gameserver.handler.IItemHandler;
-import org.l2jmobius.gameserver.handler.ItemHandler;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Attackable;
@@ -30,9 +28,7 @@ import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Playable;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
-import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.util.Util;
 
 import ai.AbstractNpcAI;
@@ -45,7 +41,6 @@ public class PrimevalIsle extends AbstractNpcAI
 {
 	// NPC
 	private static final int EGG = 18344; // Ancient Egg
-	private static final int SAILREN = 29065; // Sailren
 	private static final int ORNIT = 22202; // Ornithomimus 22742
 	private static final int DEINO = 22205; // Deinonychus 22743
 	private static final int[] SPRIGNANT =
@@ -90,8 +85,6 @@ public class PrimevalIsle extends AbstractNpcAI
 		22224, // Ornithomimus
 		22225, // Deinonychus
 	};
-	// Item
-	private static final int DEINONYCHUS = 14828; // Deinonychus Mesozoic Stone
 	// Skill
 	private static final SkillHolder ANESTHESIA = new SkillHolder(5085, 1); // Anesthesia
 	private static final SkillHolder DEADLY_POISON = new SkillHolder(5086, 1); // Deadly Poison
@@ -112,7 +105,7 @@ public class PrimevalIsle extends AbstractNpcAI
 		addAttackId(EGG);
 		addAttackId(TREX);
 		addAttackId(MONSTERS);
-		addKillId(EGG, SAILREN, DEINO, ORNIT);
+		addKillId(EGG, DEINO, ORNIT);
 		addCreatureSeeId(TREX);
 		addCreatureSeeId(MONSTERS);
 	}
@@ -122,7 +115,7 @@ public class PrimevalIsle extends AbstractNpcAI
 	{
 		if (npc.isInCombat())
 		{
-			final Attackable mob = (Attackable) npc;
+			final Attackable mob = npc.asAttackable();
 			final Creature target = mob.getMostHated();
 			if (((npc.getCurrentHp() / npc.getMaxHp()) * 100) < 60)
 			{
@@ -221,7 +214,7 @@ public class PrimevalIsle extends AbstractNpcAI
 		{
 			if (creature.isPlayer())
 			{
-				final Attackable mob = (Attackable) npc;
+				final Attackable mob = npc.asAttackable();
 				final int ag_type = npc.getTemplate().getParameters().getInt("ag_type", 0);
 				final int probPhysicalSpecial1 = npc.getTemplate().getParameters().getInt("ProbPhysicalSpecial1", 0);
 				final int probPhysicalSpecial2 = npc.getTemplate().getParameters().getInt("ProbPhysicalSpecial2", 0);
@@ -279,7 +272,7 @@ public class PrimevalIsle extends AbstractNpcAI
 		{
 			npc.setScriptValue(1);
 			npc.broadcastSay(ChatType.NPC_GENERAL, "?");
-			((Attackable) npc).clearAggroList();
+			npc.asAttackable().clearAggroList();
 			startQuestTimer("TREX_ATTACK", 6000, npc, player);
 		}
 		return super.onAggroRangeEnter(npc, player, isSummon);
@@ -305,7 +298,7 @@ public class PrimevalIsle extends AbstractNpcAI
 		}
 		else if (CommonUtil.contains(TREX, npc.getId()))
 		{
-			final Attackable mob = (Attackable) npc;
+			final Attackable mob = npc.asAttackable();
 			final Creature target = mob.getMostHated();
 			
 			if (((npc.getCurrentHp() / npc.getMaxHp()) * 100) <= 30)
@@ -379,7 +372,7 @@ public class PrimevalIsle extends AbstractNpcAI
 			
 			if ((((npc.getCurrentHp() / npc.getMaxHp()) * 100) <= 30) && (npc.getVariables().getInt("SELFBUFF_USED") == 0))
 			{
-				final Attackable mob = (Attackable) npc;
+				final Attackable mob = npc.asAttackable();
 				target = mob.getMostHated();
 				mob.clearAggroList();
 				if (!npc.isSkillDisabled(selfRangeBuff1.getSkill()))
@@ -406,35 +399,6 @@ public class PrimevalIsle extends AbstractNpcAI
 			}
 		}
 		return super.onAttack(npc, attacker, damage, isSummon);
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		if ((npc.getId() == DEINO) || ((npc.getId() == ORNIT) && !npc.isScriptValue(1)))
-		{
-			return super.onKill(npc, killer, isSummon);
-		}
-		if ((npc.getId() == SAILREN) || (getRandom(100) < 3))
-		{
-			final Player player = npc.getId() == SAILREN ? getRandomPartyMember(killer) : killer;
-			if (player.isInventoryUnder80(false))
-			{
-				giveItems(player, DEINONYCHUS, 1);
-				final Item summonItem = player.getInventory().getItemByItemId(DEINONYCHUS);
-				final IItemHandler handler = ItemHandler.getInstance().getHandler(summonItem.getEtcItem());
-				if ((handler != null) && !player.hasPet())
-				{
-					handler.useItem(player, summonItem, true);
-				}
-				showOnScreenMsg(player, NpcStringId.LIFE_STONE_FROM_THE_BEGINNING_ACQUIRED, 2, 6000);
-			}
-			else
-			{
-				showOnScreenMsg(player, NpcStringId.WHEN_INVENTORY_WEIGHT_NUMBER_ARE_MORE_THAN_80_THE_LIFE_STONE_FROM_THE_BEGINNING_CANNOT_BE_ACQUIRED, 2, 6000);
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override

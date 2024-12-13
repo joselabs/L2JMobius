@@ -12,9 +12,9 @@
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="90994" min="1" max="1" chance="100" /> <!-- Damaged Baium's Ring -->
-			<item id="90995" min="1" max="1" chance="100" /> <!-- Balthus Knights' Varnish -->
-			<item id="90997" min="1" max="1" chance="100" /> <!-- Balthus Knights' Shining Varnish -->
-			<item id="90998" min="1" max="1" chance="100" /> <!-- Balthus Knights' Glittering Varnish -->
+			<item id="90995" min="1" max="1" chance="0.01" /> <!-- Balthus Knights' Varnish -->
+			<item id="90997" min="1" max="1" chance="0.01" /> <!-- Balthus Knights' Shining Varnish -->
+			<item id="90998" min="1" max="1" chance="0.01" /> <!-- Balthus Knights' Glittering Varnish -->
 		</capsuled_items>
 	</item>
 	<item id="91001" name="Box with 3 Jewels Lv. 3" additionalName="Sealed" type="EtcItem">
@@ -66,7 +66,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="1440" />
 		<skills>
-			<skill id="51025" level="1" /> <!-- Expand Agathion Slots -->
+			<skill id="51025" level="1" /> <!-- Expand Primary and Secondary Agathion Slots -->
 		</skills>
 	</item>
 	<item id="91004" name="Penitent Agathion" additionalName="Sealed" type="Armor">
@@ -102,6 +102,8 @@
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<stats>
 			<stat type="mDef">50</stat>
 		</stats>
@@ -118,9 +120,9 @@
 		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="91006" min="1" max="1" chance="100" /> <!-- Damaged Zaken's Earring -->
-			<item id="90995" min="1" max="1" chance="100" /> <!-- Balthus Knights' Varnish -->
-			<item id="90997" min="1" max="1" chance="100" /> <!-- Balthus Knights' Shining Varnish -->
-			<item id="90998" min="1" max="1" chance="100" /> <!-- Balthus Knights' Glittering Varnish -->
+			<item id="90995" min="1" max="1" chance="0.01" /> <!-- Balthus Knights' Varnish -->
+			<item id="90997" min="1" max="1" chance="0.01" /> <!-- Balthus Knights' Shining Varnish -->
+			<item id="90998" min="1" max="1" chance="0.01" /> <!-- Balthus Knights' Glittering Varnish -->
 		</capsuled_items>
 	</item>
 	<item id="91008" name="Dragon Relic Chest" type="EtcItem">
@@ -133,7 +135,7 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51071" level="1" /> <!-- Dragon's Relic Chest -->
+			<skill id="51071" level="1" /> <!-- Dragon's Relic Box -->
 		</skills>
 	</item>
 	<item id="91009" name="Fire Dragon Relic Chest" type="EtcItem">
@@ -146,7 +148,7 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51072" level="1" /> <!-- Fire Dragon's Relic Chest -->
+			<skill id="51072" level="1" /> <!-- Fire Dragon's Relic Box -->
 		</skills>
 	</item>
 	<item id="91010" name="Earth Dragon Relic Pack" type="EtcItem">
@@ -206,7 +208,7 @@
 		<set name="material" val="FISH" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51074" level="1" /> <!-- Dragon's Dye Box -->
+			<skill id="51074" level="1" /> <!-- Dragon Dye Box -->
 		</skills>
 	</item>
 	<item id="91012" name="Top-grade A-grade Weapon Pack" type="EtcItem">
@@ -219,7 +221,7 @@
 		<set name="material" val="PAPER" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51075" level="1" /> <!-- Weapon Pack (Best A-grade) -->
+			<skill id="51075" level="1" /> <!-- Top-grade A-grade Weapon Pack -->
 		</skills>
 	</item>
 	<item id="91013" name="Top A-grade Weapon Ingredient/ Recipe Pack" type="EtcItem">
@@ -257,7 +259,7 @@
 		<set name="material" val="PAPER" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51077" level="1" /> <!-- Dragon's Dye Box -->
+			<skill id="51077" level="1" /> <!-- Weapon Recipe Box (Best A-grade) -->
 		</skills>
 	</item>
 	<item id="91015" name="Sirra's Blade Ingredient/Recipe Box" type="EtcItem">
@@ -492,7 +494,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<skills>
-			<skill id="54028" level="1" /> <!-- Spirit's Blessing -->
+			<skill id="54028" level="1" /> <!-- Blessed Soul -->
 		</skills>
 	</item>
 	<item id="91031" name="Water Spirit Evolution Stone" type="EtcItem">
@@ -610,14 +612,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="1" /> <!-- Attribute XP +3% -->
-			<skill id="54023" level="1" /> <!-- Water Attack Defense +20 -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 			<stat type="maxMp">35</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="1" /> <!-- Attribute XP Increase -->
+			<skill id="54023" level="1" /> <!-- Water Attack Defense -->
+		</skills>
 	</item>
 	<item id="91044" name="Nebula's Old Necklace Lv. 2" type="Armor">
 		<!-- MP +37, Water Resistance +40, acquired Attribute XP +6%. Cannot be enchanted. -->
@@ -630,14 +632,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="2" /> <!-- Attribute XP +6% -->
-			<skill id="54023" level="2" /> <!-- Water Attack Defense +40 -->
-		</skills>
 		<stats>
 			<stat type="mDef">90</stat>
 			<stat type="maxMp">37</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="2" /> <!-- Attribute XP Increase -->
+			<skill id="54023" level="2" /> <!-- Water Attack Defense -->
+		</skills>
 	</item>
 	<item id="91045" name="Nebula's Old Necklace Lv. 3" type="Armor">
 		<!-- MP +40, Water Resistance +60, acquired Attribute XP +10%. Cannot be enchanted. -->
@@ -650,14 +652,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="3" /> <!-- Attribute XP +10% -->
-			<skill id="54023" level="3" /> <!-- Water Attack Defense +60 -->
-		</skills>
 		<stats>
 			<stat type="mDef">93</stat>
 			<stat type="maxMp">40</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="3" /> <!-- Attribute XP Increase -->
+			<skill id="54023" level="3" /> <!-- Water Attack Defense -->
+		</skills>
 	</item>
 	<item id="91046" name="Ignis' Old Necklace Lv. 1" type="Armor">
 		<!-- MP +35, Fire Resistance +20, acquired Attribute XP +3%. Cannot be enchanted. -->
@@ -670,14 +672,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="1" /> <!-- Attribute XP +3% -->
-			<skill id="54024" level="1" /> <!-- Fire Attack Defense +20 -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 			<stat type="maxMp">35</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="1" /> <!-- Attribute XP Increase -->
+			<skill id="54024" level="1" /> <!-- Fire Attack Defense -->
+		</skills>
 	</item>
 	<item id="91047" name="Ignis' Old Necklace Lv. 2" type="Armor">
 		<!-- MP +37, Fire Resistance +40, acquired Attribute XP +6%. Cannot be enchanted. -->
@@ -690,14 +692,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="2" /> <!-- Attribute XP +6% -->
-			<skill id="54024" level="2" /> <!-- Fire Attack Defense +40 -->
-		</skills>
 		<stats>
 			<stat type="mDef">90</stat>
 			<stat type="maxMp">37</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="2" /> <!-- Attribute XP Increase -->
+			<skill id="54024" level="2" /> <!-- Fire Attack Defense -->
+		</skills>
 	</item>
 	<item id="91048" name="Ignis' Old Necklace Lv. 3" type="Armor">
 		<!-- MP +40, Fire Resistance +60, acquired Attribute XP +10%. Cannot be enchanted. -->
@@ -710,14 +712,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="3" /> <!-- Attribute XP +10% -->
-			<skill id="54024" level="3" /> <!-- Fire Attack Defense +60 -->
-		</skills>
 		<stats>
 			<stat type="mDef">93</stat>
 			<stat type="maxMp">40</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="3" /> <!-- Attribute XP Increase -->
+			<skill id="54024" level="3" /> <!-- Fire Attack Defense -->
+		</skills>
 	</item>
 	<item id="91049" name="Procella's Old Necklace Lv. 1" type="Armor">
 		<!-- MP +35, Wind Resistance +20, acquired Attribute XP +3%. Cannot be enchanted. -->
@@ -730,15 +732,15 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="1" /> <!-- Attribute XP +3 -->
-			<skill id="54025" level="1" /> <!-- Earth Attack Defense +20 -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 			<stat type="maxMp">35</stat>
 			<stat type="windRes">20</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="1" /> <!-- Attribute XP Increase -->
+			<skill id="54025" level="1" /> <!-- Wind Attack Defense -->
+		</skills>
 	</item>
 	<item id="91050" name="Procella's Old Necklace Lv. 2" type="Armor">
 		<!-- MP +37, Wind Resistance +40, acquired Attribute XP +6%. Cannot be enchanted. -->
@@ -751,14 +753,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="2" /> <!-- Attribute XP +6% -->
-			<skill id="54025" level="2" /> <!-- Earth Attack Defense +40 -->
-		</skills>
 		<stats>
 			<stat type="mDef">90</stat>
 			<stat type="maxMp">37</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="2" /> <!-- Attribute XP Increase -->
+			<skill id="54025" level="2" /> <!-- Wind Attack Defense -->
+		</skills>
 	</item>
 	<item id="91051" name="Procella's Old Necklace Lv. 3" type="Armor">
 		<!-- MP +40, Wind Resistance +60, acquired Attribute XP +10%. Cannot be enchanted. -->
@@ -771,14 +773,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="3" /> <!-- Attribute XP +10% -->
-			<skill id="54025" level="3" /> <!-- Wind Attack Defense +60 -->
-		</skills>
 		<stats>
 			<stat type="mDef">93</stat>
 			<stat type="maxMp">40</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="3" /> <!-- Attribute XP Increase -->
+			<skill id="54025" level="3" /> <!-- Wind Attack Defense -->
+		</skills>
 	</item>
 	<item id="91052" name="Petram's Old Necklace Lv. 1" type="Armor">
 		<!-- MP +35, Earth Resistance +20, acquired Attribute XP +3%. Cannot be enchanted. -->
@@ -791,14 +793,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="1" /> <!-- Attribute XP +3% -->
-			<skill id="54026" level="1" /> <!-- Earth Attack Defense +60 -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 			<stat type="maxMp">35</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="1" /> <!-- Attribute XP Increase -->
+			<skill id="54026" level="1" /> <!-- Earth Attack Defense -->
+		</skills>
 	</item>
 	<item id="91053" name="Petram's Old Necklace Lv. 2" type="Armor">
 		<!-- MP +37, Earth Resistance +40, acquired Attribute XP +6%. Cannot be enchanted. -->
@@ -811,14 +813,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="2" /> <!-- Attribute XP +6% -->
-			<skill id="54026" level="2" /> <!-- Earth Attack Defense +40 -->
-		</skills>
 		<stats>
 			<stat type="mDef">90</stat>
 			<stat type="maxMp">37</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="2" /> <!-- Attribute XP Increase -->
+			<skill id="54026" level="2" /> <!-- Earth Attack Defense -->
+		</skills>
 	</item>
 	<item id="91054" name="Petram's Old Necklace Lv. 3" type="Armor">
 		<!-- MP +40, Earth Resistance +60, acquired Attribute XP +10%. Cannot be enchanted. -->
@@ -831,14 +833,14 @@
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
 		<set name="commissionItemType" val="NECKLACE" />
-		<skills>
-			<skill id="54027" level="3" /> <!-- Attribute XP +10% -->
-			<skill id="54026" level="3" /> <!-- Earth Attack Defense +60 -->
-		</skills>
 		<stats>
 			<stat type="mDef">93</stat>
 			<stat type="maxMp">40</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="3" /> <!-- Attribute XP Increase -->
+			<skill id="54026" level="3" /> <!-- Earth Attack Defense -->
+		</skills>
 	</item>
 	<item id="91055" name="Nebula's Old Necklace Lv. 1" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. MP +35, Water Resistance +20, acquired Attribute XP +3%. Cannot be enchanted. -->
@@ -854,14 +856,14 @@
 		<set name="commissionItemType" val="NECKLACE" />
 		<set name="time" val="10080" />
 		<set name="is_tradable" val="false" />
-		<skills>
-			<skill id="54027" level="1" /> <!-- Attribute XP +3% -->
-			<skill id="54023" level="1" /> <!-- Earth Attack Defense +20 -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 			<stat type="maxMp">35</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="1" /> <!-- Attribute XP Increase -->
+			<skill id="54023" level="1" /> <!-- Water Attack Defense -->
+		</skills>
 	</item>
 	<item id="91056" name="Ignis' Old Necklace Lv. 1" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. MP +35, Fire Resistance +20, acquired Attribute XP +3%. Cannot be enchanted. -->
@@ -877,14 +879,14 @@
 		<set name="commissionItemType" val="NECKLACE" />
 		<set name="time" val="10080" />
 		<set name="is_tradable" val="false" />
-		<skills>
-			<skill id="54027" level="1" /> <!-- Attribute XP +3% -->
-			<skill id="54024" level="1" /> <!-- Fire Attack Defense +20 -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 			<stat type="maxMp">35</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="1" /> <!-- Attribute XP Increase -->
+			<skill id="54024" level="1" /> <!-- Fire Attack Defense -->
+		</skills>
 	</item>
 	<item id="91057" name="Procella's Old Necklace Lv. 1" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. MP +35, Wind Resistance +20, acquired Attribute XP +3%. Cannot be enchanted. -->
@@ -900,14 +902,14 @@
 		<set name="commissionItemType" val="NECKLACE" />
 		<set name="time" val="10080" />
 		<set name="is_tradable" val="false" />
-		<skills>
-			<skill id="54027" level="1" /> <!-- Attribute XP +3% -->
-			<skill id="54025" level="1" /> <!-- Earth Attack Defense +20 -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 			<stat type="maxMp">35</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="1" /> <!-- Attribute XP Increase -->
+			<skill id="54025" level="1" /> <!-- Wind Attack Defense -->
+		</skills>
 	</item>
 	<item id="91058" name="Petram's Old Necklace Lv. 1" additionalName="7-day" type="Armor">
 		<!-- Available for 7 d. MP +35, Earth Resistance +20, acquired Attribute XP +3%. Cannot be enchanted. -->
@@ -923,14 +925,14 @@
 		<set name="commissionItemType" val="NECKLACE" />
 		<set name="time" val="10080" />
 		<set name="is_tradable" val="false" />
-		<skills>
-			<skill id="54027" level="1" /> <!-- Attribute XP +3% -->
-			<skill id="54026" level="1" /> <!-- Earth Attack Defense +20 -->
-		</skills>
 		<stats>
 			<stat type="mDef">87</stat>
 			<stat type="maxMp">35</stat>
 		</stats>
+		<skills>
+			<skill id="54027" level="1" /> <!-- Attribute XP Increase -->
+			<skill id="54026" level="1" /> <!-- Earth Attack Defense -->
+		</skills>
 	</item>
 	<item id="91059" name="Talisman of Authority Fragment" type="EtcItem">
 		<!-- Required for upgrading Talisman of Authority. In case of failure the talisman level value drops to 1. Talisman of Authority can be purchased from Pona in Giran. -->
@@ -952,7 +954,7 @@
 		<set name="is_sellable" val="false" />
 	</item>
 	<item id="91061" name="Talisman of Authority" additionalName="Sealed" type="Armor">
-		<!-- A talisman that contains the energy of a ruler. Can be enchanted up to +10 with Scroll: Enchant Talisman of Authority. Activates special effects depending on the enchant value. The enchanting isn't safe even to +1. Effects of two identical talismans do not stack. -->
+		<!-- A talisman that contains the energy of authority. Can be enchanted up to +10 with Scroll: Enchant Accessories. Enables special effects depending on its enchant value. Enchanting is not safe even to +1. Effects of two identical talismans do not stack. Talisman of Authority enchanted to +4 or higher can be used for making Blessed Talisman of Authority in the Special Craft tab. When using Incredible Upgrade Stone, enchanting is safe starting from +8. -->
 		<set name="icon" val="icon.sayhas_talisman_new" />
 		<set name="default_action" val="EQUIP" />
 		<set name="immediate_effect" val="true" />
@@ -960,9 +962,11 @@
 		<set name="material" val="GOLD" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="is_tradable" val="false" />
 		<set name="is_freightable" val="true" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<!-- skills handled by option data -->
 	</item>
 	<item id="91062" name="Talisman of Authority Lv. 2" type="Armor">
@@ -974,6 +978,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="2" /> <!-- Talisman of Authority -->
+		</skills>
 	</item>
 	<item id="91063" name="Talisman of Authority Lv. 3" type="Armor">
 		<!-- <Properties>. P. Atk. +3%. M. Atk. +3%. Max HP +10%. Max MP +6%. P. Def. +18. M. Def. +18. Can be upgraded with Talisman of Authority Fragment. In case of failure the talisman level value drops to 1. Effects of two identical talismans do not stack. -->
@@ -984,6 +991,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="3" /> <!-- Talisman of Authority -->
+		</skills>
 	</item>
 	<item id="91064" name="Talisman of Authority Lv. 4" type="Armor">
 		<!-- <Properties>. P. Atk. +3%. M. Atk. +3%. Max HP +12%. Max MP +8%. P. Def. +20. M. Def. +20. Can be upgraded with Talisman of Authority Fragment. In case of failure the talisman level value drops to 1. Effects of two identical talismans do not stack. -->
@@ -994,6 +1004,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="4" /> <!-- Talisman of Authority -->
+		</skills>
 	</item>
 	<item id="91065" name="Talisman of Authority Lv. 5" type="Armor">
 		<!-- <Properties>. P. Atk. +5%. M. Atk. +5%. Max HP +12%. Max MP +8%. P. Def. +24. M. Def. +24. Can be upgraded to Noble Talisman of Authority by Blacksmith Baggins in Giran. Effects of two identical talismans do not stack. -->
@@ -1004,6 +1017,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="5" /> <!-- Talisman of Authority -->
+		</skills>
 	</item>
 	<item id="91066" name="Noble Talisman of Authority Lv. 1" type="Armor">
 		<!-- <Properties>. P. Atk. +5%. M. Atk. +5%. Atk. Spd. +3%. Casting Spd. +2%. Max HP +12%. Max MP +8%. P. Def. +26. M. Def. +26. Can be upgraded with Talisman of Authority Fragment. In case of failure the item doesn't disappear. Effects of two identical talismans do not stack. -->
@@ -1014,6 +1030,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="6" /> <!-- Talisman of Noble Power -->
+		</skills>
 	</item>
 	<item id="91067" name="Noble Talisman of Authority Lv. 2" type="Armor">
 		<!-- <Properties>. P. Atk. +6%. M. Atk. +6%. Atk. Spd. +3%. Casting Spd. +2%. Max HP +14%. Max MP +10%. P. Def. +31. M. Def. +31. Can be upgraded with Talisman of Authority Fragment. In case of failure the talisman level value drops to 1. Effects of two identical talismans do not stack. -->
@@ -1024,6 +1043,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="7" /> <!-- Talisman of Noble Power -->
+		</skills>
 	</item>
 	<item id="91068" name="Noble Talisman of Authority Lv. 3" type="Armor">
 		<!-- <Properties>. P. Atk. +7%. M. Atk. +7%. Atk. Spd. +4%. Casting Spd. +3%. Max HP +16%. Max MP +12%. P. Def. +36. M. Def. +36. Can be upgraded with Talisman of Authority Fragment. In case of failure the talisman level value drops to 1. Effects of two identical talismans do not stack. -->
@@ -1034,6 +1056,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="8" /> <!-- Talisman of Noble Power -->
+		</skills>
 	</item>
 	<item id="91069" name="Noble Talisman of Authority Lv. 4" type="Armor">
 		<!-- <Properties>. P. Atk. +8%. M. Atk. +8%. Atk. Spd. +4%. Casting Spd. +3%. Max HP +18%. Max MP +14%. P. Def. +41. M. Def. +41. Can be upgraded with Talisman of Authority Fragment. In case of failure the talisman level value drops to 1. Effects of two identical talismans do not stack. -->
@@ -1044,6 +1069,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="9" /> <!-- Talisman of Noble Power -->
+		</skills>
 	</item>
 	<item id="91070" name="Noble Talisman of Authority Lv. 5" type="Armor">
 		<!-- <Properties>. P. Atk. +10%. M. Atk. +10%. Atk. Spd. +5%. Casting Spd. +3%. Max HP +18%. Max MP +14%. P. Def. +46. M. Def. +46. Can be upgraded to Noble Talisman of Authority by Blacksmith Baggins in Giran. Effects of two identical talismans do not stack. -->
@@ -1054,6 +1082,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="54021" level="10" /> <!-- Talisman of Noble Power -->
+		</skills>
 	</item>
 	<item id="91071" name="Radiant Talisman of Authority Lv. 1" type="Armor">
 		<!-- <Properties>. P. Atk. +10%. M. Atk. +10%. Atk. Spd. +6%. Casting Spd. +4%. P. Critical Rate +10. M. Skill Critical Rate +20. P. Skill Power +5%. M. Skill Power +10%. Max HP +18%. Max MP +14%. P. Def. +51. M. Def. +51. <Power of Shunaiman Lv. 1>. Increases Silence/ Fear/ Stun Atk. Rate and Damage Reflection Resistance. Can be upgraded with Talisman of Authority Fragment. In case of failure the item doesn't disappear. Effects of two identical talismans do not stack. -->
@@ -1108,7 +1139,6 @@
 	<item id="91076" name="Venir's Talisman Fragment" type="EtcItem">
 		<!-- Required for compounding with Venir's Talisman to increase its level. <font color=ff6666>Note!</font>. In case of failure, you will get Venir's Talisman of a certain level specified in the talisman's description. -->
 		<set name="icon" val="icon.bm_ensoul_stone_PvP_empty" />
-		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="is_dropable" val="false" />
@@ -1127,7 +1157,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="1" /> <!-- Venir Talisman -->
+			<skill id="18024" level="1" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91078" name="Venir's Talisman Lv. 2" additionalName="Sealed" type="Armor">
@@ -1141,7 +1171,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="2" /> <!-- Venir Talisman -->
+			<skill id="18024" level="2" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91079" name="Venir's Talisman Lv. 3" additionalName="Sealed" type="Armor">
@@ -1155,7 +1185,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="3" /> <!-- Venir Talisman -->
+			<skill id="18024" level="3" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91080" name="Venir's Talisman Lv. 4" additionalName="Sealed" type="Armor">
@@ -1169,11 +1199,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="4" /> <!-- Venir Talisman -->
+			<skill id="18024" level="4" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91081" name="Venir's Talisman Lv. 5" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +1. MEN +1. DEX +1. WIT +1. STR +1. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get a <font color=eeaa22>Venir's Talisman Lv. 1</font>. Effects of two identical talismans do not stack. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +1. MEN +1. DEX +1. WIT +1. STR +1. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you get <font color=eeaa22>Venir's Talisman Lv. 1</font>. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1183,11 +1213,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="5" /> <!-- Venir Talisman -->
+			<skill id="18024" level="5" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91082" name="Venir's Talisman Lv. 6" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +1. MEN +1. DEX +1. WIT +1. STR +1. INT +1. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get a <font color=eeaa22>Venir's Talisman Lv. 6</font>. Effects of two identical talismans do not stack. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +1. MEN +1. DEX +1. WIT +1. STR +1. INT +1. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you get <font color=eeaa22>Venir's Talisman Lv. 6</font>. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1197,11 +1227,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="6" /> <!-- Venir Talisman -->
+			<skill id="18024" level="6" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91083" name="Venir's Talisman Lv. 7" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +2. MEN +1. DEX +1. WIT +1. STR +1. INT +1. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get a <font color=eeaa22>Venir's Talisman Lv. 6</font>. Effects of two identical talismans do not stack. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +2. MEN +1. DEX +1. WIT +1. STR +1. INT +1. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you get <font color=eeaa22>Venir's Talisman Lv. 6</font>. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1211,11 +1241,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="7" /> <!-- Venir Talisman -->
+			<skill id="18024" level="7" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91084" name="Venir's Talisman Lv. 8" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +2. MEN +2. DEX +1. WIT +1. STR +1. INT +1. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get a <font color=eeaa22>Venir's Talisman Lv. 6</font>. Effects of two identical talismans do not stack. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +2. MEN +2. DEX +1. WIT +1. STR +1. INT +1. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you get <font color=eeaa22>Venir's Talisman Lv. 6</font>. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1225,7 +1255,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="8" /> <!-- Venir Talisman -->
+			<skill id="18024" level="8" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91085" name="Venir's Talisman Lv. 9" additionalName="Sealed" type="Armor">
@@ -1239,7 +1269,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="9" /> <!-- Venir Talisman -->
+			<skill id="18024" level="9" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91086" name="Venir's Talisman Lv. 10" additionalName="Sealed" type="Armor">
@@ -1253,7 +1283,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="10" /> <!-- Venir Talisman -->
+			<skill id="18024" level="10" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91087" name="Venir's Talisman Lv. 11" additionalName="Sealed" type="Armor">
@@ -1267,11 +1297,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="11" /> <!-- Venir Talisman -->
+			<skill id="18024" level="11" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91088" name="Venir's Talisman Lv. 12" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties>. </font>CON +2. MEN +2. DEX +2. WIT +2. STR +2. INT +2. All received Critical Rate -2%. P./ M. Skill Cooldown -1%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get a <font color=eeaa22>Venir's Talisman Lv. 12</font>. Effects of two identical talismans do not stack. -->
+		<!-- <font color=bbaa88><Properties>. </font>CON +2. MEN +2. DEX +2. WIT +2. STR +2. INT +2. All received Critical Rate -2%. P./ M. Skill Cooldown -1%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you get <font color=eeaa22>Venir's Talisman Lv. 12</font>. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1281,7 +1311,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="12" /> <!-- Venir Talisman -->
+			<skill id="18024" level="12" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91089" name="Venir's Talisman Lv. 13" additionalName="Sealed" type="Armor">
@@ -1295,7 +1325,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="13" /> <!-- Venir Talisman -->
+			<skill id="18024" level="13" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91090" name="Venir's Talisman Lv. 14" additionalName="Sealed" type="Armor">
@@ -1309,11 +1339,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="14" /> <!-- Venir Talisman -->
+			<skill id="18024" level="14" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91091" name="Venir's Talisman Lv. 15" additionalName="Sealed" type="Armor">
-		<!-- <font color=bbaa88><Properties></font>. CON +3. MEN +3. DEX +3. WIT +2. STR +3. INT +2. All received Critical Rate -8%. P./ M. Skill Cooldown -7%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you will get a <font color=eeaa22>Venir's Talisman Lv. 12</font>. Effects of two identical talismans do not stack. -->
+		<!-- <font color=bbaa88><Properties></font>. CON +3. MEN +3. DEX +3. WIT +2. STR +2. INT +2. All received Critical Rate -8%. P./ M. Skill Cooldown -7%. <font color=bbaa88><Compound></font>. Materials: Venir's Talisman Fragment. In case of failure, you get <font color=eeaa22>Venir's Talisman Lv. 12</font>. Effects of two identical talismans do not stack. -->
 		<set name="icon" val="icon.benir_talisman_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="deco1" />
@@ -1323,7 +1353,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="15" /> <!-- Venir Talisman -->
+			<skill id="18024" level="15" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91092" name="Venir's Talisman Lv. 16" additionalName="Sealed" type="Armor">
@@ -1337,7 +1367,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="16" /> <!-- Venir Talisman -->
+			<skill id="18024" level="16" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91093" name="Venir's Talisman Lv. 17" additionalName="Sealed" type="Armor">
@@ -1351,7 +1381,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
 		<skills>
-			<skill id="18024" level="17" /> <!-- Venir Talisman -->
+			<skill id="18024" level="17" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91094" name="Venir's Talisman Lv. 18" additionalName="Sealed" type="Armor">
@@ -1364,8 +1394,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="is_depositable" val="true" />
+		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="18024" level="18" /> <!-- Venir Talisman -->
+			<skill id="18024" level="18" /> <!-- Venir's Talisman -->
 		</skills>
 	</item>
 	<item id="91095" name="Earth Dragon Belt - Venir's Blessing Lv. 1" type="Armor">
@@ -1378,9 +1410,15 @@
 		<set name="material" val="CLOTH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
+		<set name="is_freightable" val="true" />
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
+		<skills>
+			<skill id="35046" level="1" /> <!-- Earth Dragon Belt -->
+			<skill id="54029" level="1" /> <!-- Venir's Blessing -->
+		</skills>
 	</item>
 	<item id="91096" name="Earth Dragon Belt - Venir's Blessing Lv. 2" type="Armor">
 		<!-- Inventory Slots +6, Weight Limit +7000, CON +1, MEN +1, HP Recovery Rate +2.31, MP Recovery Rate +1.54, CP Recovery Rate +3.07, Max HP/ MP/ CP +15%, HP Recovery Potions' Effect +100, Received Damage -6%. Activates Venir's Blessing Lv. 2. -->
@@ -1395,6 +1433,10 @@
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
+		<skills>
+			<skill id="35046" level="1" /> <!-- Earth Dragon Belt -->
+			<skill id="54029" level="2" /> <!-- Venir's Blessing -->
+		</skills>
 	</item>
 	<item id="91097" name="Earth Dragon Belt - Venir's Blessing Lv. 3" type="Armor">
 		<!-- Inventory Slots +6, Weight Limit +7000, CON +1, MEN +1, HP Recovery Rate +2.31, MP Recovery Rate +1.54, CP Recovery Rate +3.07, Max HP/ MP/ CP +15%, HP Recovery Potions' Effect +100, Received Damage -6%. Activates Venir's Blessing Lv. 3. -->
@@ -1406,9 +1448,15 @@
 		<set name="material" val="CLOTH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
+		<set name="is_freightable" val="true" />
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
+		<skills>
+			<skill id="35046" level="1" /> <!-- Earth Dragon Belt -->
+			<skill id="54029" level="3" /> <!-- Venir's Blessing -->
+		</skills>
 	</item>
 	<item id="91098" name="Fire Dragon Belt - Venir's Blessing Lv. 1" type="Armor">
 		<!-- Inventory Slots +6, Weight Limit +7000, STR/ INT +1, HP Recovery Rate +2.31, MP Recovery Rate +1.54, CP Recovery Rate +3.07, Max HP/ MP/ CP +10%, HP Recovery Potions' Effect +100, P. Critical Damage/ M. Skill Critical Damage +4%. Venir's Blessing Lv. 1 is used. -->
@@ -1420,9 +1468,15 @@
 		<set name="material" val="CLOTH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
+		<set name="is_freightable" val="true" />
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
+		<skills>
+			<skill id="35047" level="1" /> <!-- Fire Dragon Belt -->
+			<skill id="54029" level="1" /> <!-- Venir's Blessing -->
+		</skills>
 	</item>
 	<item id="91099" name="Fire Dragon Belt - Venir's Blessing Lv. 2" type="Armor">
 		<!-- Inventory Slots +6, Weight Limit +7000, STR/ INT +1, HP Recovery Rate +2.31, MP Recovery Rate +1.54, CP Recovery Rate +3.07, Max HP/ MP/ CP +10%, HP Recovery Potions' Effect +100, P. Critical Damage/ M. Skill Critical Damage +4%. Venir's Blessing Lv. +2 is used. -->
@@ -1434,8 +1488,14 @@
 		<set name="material" val="CLOTH" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="enchant_enabled" val="true" />
+		<set name="is_freightable" val="true" />
 		<stats>
 			<stat type="pDef">14</stat>
 		</stats>
+		<skills>
+			<skill id="35047" level="1" /> <!-- Fire Dragon Belt -->
+			<skill id="54029" level="2" /> <!-- Venir's Blessing -->
+		</skills>
 	</item>
 </list>

@@ -18,7 +18,6 @@ package handlers.effecthandlers;
 
 import org.l2jmobius.gameserver.enums.ShotType;
 import org.l2jmobius.gameserver.model.StatSet;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
@@ -44,6 +43,11 @@ public class Backstab extends AbstractEffect
 		_chanceBoost = params.getDouble("chanceBoost");
 		_criticalChance = params.getDouble("criticalChance", 0);
 		_overHit = params.getBoolean("overHit", false);
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	@Override
@@ -74,7 +78,7 @@ public class Backstab extends AbstractEffect
 		
 		if (_overHit && effected.isAttackable())
 		{
-			((Attackable) effected).overhitEnabled(true);
+			effected.asAttackable().overhitEnabled(true);
 		}
 		
 		final boolean ss = skill.useSoulShot() && (effector.isChargedShot(ShotType.SOULSHOTS) || effector.isChargedShot(ShotType.BLESSED_SOULSHOTS));

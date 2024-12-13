@@ -97,7 +97,7 @@ public class TriggerSkillByDeathBlow extends AbstractEffect
 		
 		if ((target != null) && target.isCreature())
 		{
-			SkillCaster.triggerCast(event.getTarget(), (Creature) target, triggerSkill);
+			SkillCaster.triggerCast(event.getTarget(), target.asCreature(), triggerSkill);
 		}
 	}
 	

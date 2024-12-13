@@ -125,7 +125,7 @@ public class Q10329_BackupSeekers extends Quest
 			}
 			case "CHECK_PLAYER":
 			{
-				final Player owner = npc.getSummoner().getActingPlayer();
+				final Player owner = npc.getSummoner().asPlayer();
 				if (owner != null)
 				{
 					if (npc.calculateDistance2D(owner) < 150)
@@ -227,7 +227,7 @@ public class Q10329_BackupSeekers extends Quest
 	@Override
 	public void onMoveFinished(Npc npc)
 	{
-		final Player owner = npc.getSummoner().getActingPlayer();
+		final Player owner = npc.getSummoner().asPlayer();
 		if (owner != null)
 		{
 			npc.setHeading(Util.calculateHeadingFrom(npc, owner));

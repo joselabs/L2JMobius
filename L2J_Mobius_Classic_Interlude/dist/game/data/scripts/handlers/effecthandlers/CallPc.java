@@ -64,8 +64,8 @@ public class CallPc extends AbstractEffect
 			return;
 		}
 		
-		final Player target = effected.getActingPlayer();
-		final Player player = effector.getActingPlayer();
+		final Player target = effected.asPlayer();
+		final Player player = effector.asPlayer();
 		if (player != null)
 		{
 			if (checkSummonTargetStatus(target, player))
@@ -180,7 +180,7 @@ public class CallPc extends AbstractEffect
 		}
 		
 		// TODO: on retail character can enter 7s dungeon with summon friend, but should be teleported away by mobs, because currently this is not working in L2J we do not allowing summoning.
-		if (effector.getActingPlayer().isIn7sDungeon())
+		if (effector.asPlayer().isIn7sDungeon())
 		{
 			final int targetCabal = SevenSigns.getInstance().getPlayerCabal(target.getObjectId());
 			if (SevenSigns.getInstance().isSealValidationPeriod())

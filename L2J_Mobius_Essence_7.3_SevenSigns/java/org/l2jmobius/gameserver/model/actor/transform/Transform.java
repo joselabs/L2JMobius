@@ -25,8 +25,8 @@ import org.l2jmobius.gameserver.enums.Sex;
 import org.l2jmobius.gameserver.model.SkillLearn;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerTransform;
@@ -126,11 +126,11 @@ public class Transform implements IIdentifiable
 	{
 		if (creature.isPlayer())
 		{
-			return (creature.getActingPlayer().getAppearance().isFemale() ? _femaleTemplate : _maleTemplate);
+			return (creature.asPlayer().getAppearance().isFemale() ? _femaleTemplate : _maleTemplate);
 		}
 		else if (creature.isNpc())
 		{
-			return ((Npc) creature).getTemplate().getSex() == Sex.FEMALE ? _femaleTemplate : _maleTemplate;
+			return creature.asNpc().getTemplate().getSex() == Sex.FEMALE ? _femaleTemplate : _maleTemplate;
 		}
 		return null;
 	}
@@ -229,7 +229,7 @@ public class Transform implements IIdentifiable
 		creature.abortAttack();
 		creature.abortCast();
 		
-		final Player player = creature.getActingPlayer();
+		final Player player = creature.asPlayer();
 		
 		// Get off the strider or something else if character is mounted
 		if (creature.isPlayer() && player.isMounted())
@@ -250,13 +250,14 @@ public class Transform implements IIdentifiable
 			creature.setXYZ(creature.getX(), creature.getY(), (int) (creature.getZ() + getCollisionHeight(creature, 0)));
 			if (creature.isPlayer())
 			{
+				final PlayerAppearance appearance = player.getAppearance();
 				if (_name != null)
 				{
-					player.getAppearance().setVisibleName(_name);
+					appearance.setVisibleName(_name);
 				}
 				if (_title != null)
 				{
-					player.getAppearance().setVisibleTitle(_title);
+					appearance.setVisibleTitle(_title);
 				}
 				
 				if (addSkills)
@@ -365,15 +366,15 @@ public class Transform implements IIdentifiable
 			
 			if (creature.isPlayer())
 			{
-				final Player player = creature.getActingPlayer();
-				final boolean hasTransformSkills = player.hasTransformSkills();
+				final Player player = creature.asPlayer();
+				final PlayerAppearance appearance = player.getAppearance();
 				if (_name != null)
 				{
-					player.getAppearance().setVisibleName(null);
+					appearance.setVisibleName(null);
 				}
 				if (_title != null)
 				{
-					player.getAppearance().setVisibleTitle(null);
+					appearance.setVisibleTitle(null);
 				}
 				
 				// Remove transformation skills.
@@ -392,7 +393,7 @@ public class Transform implements IIdentifiable
 					player.getEffectList().stopEffects(AbnormalType.CHANGEBODY);
 				}
 				
-				if (hasTransformSkills)
+				if (player.hasTransformSkills())
 				{
 					player.sendSkillList();
 					player.sendPacket(new SkillCoolTime(player));

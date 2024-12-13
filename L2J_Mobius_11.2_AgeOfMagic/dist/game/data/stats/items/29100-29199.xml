@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="29100" name="Agathion Leo Charm Lv. 1" additionalName="30-day" type="Armor">
 		<!-- Activates the power of Agathion Leo. Primary skill: Nemean Lion's Defense Lv. 1. Depending on the charm level, a secondary skill is added. Equipping it in the main slot summons the agathion and activates its primary and secondary skills. Equipping in an additional slot activates only secondary skills. Note!. 1. The charm level cannot be increased. Primary skills of agathion charms cannot be used in the Olympiad and the Ceremony of Chaos. 2. If Agathion Virgo is also equipped, only its secondary skills will be active. -->
@@ -13,7 +13,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<skills>
-			<skill id="28032" level="1" type="ON_EQUIP" /> <!-- Summon Leo Agathion -->
+			<skill id="28032" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Leo -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -30,7 +30,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<skills>
-			<skill id="28033" level="1" type="ON_EQUIP" /> <!-- Summon Gemini Agathion -->
+			<skill id="28033" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Gemini -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -47,7 +47,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<skills>
-			<skill id="28034" level="1" type="ON_EQUIP" /> <!-- Summon Scorpio Agathion -->
+			<skill id="28034" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Scorpio -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -64,7 +64,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<skills>
-			<skill id="28035" level="1" type="ON_EQUIP" /> <!-- Summon Aquarius Agathion -->
+			<skill id="28035" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Aquarius -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -81,7 +81,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<skills>
-			<skill id="28036" level="1" type="ON_EQUIP" /> <!-- Summon Pisces Agathion -->
+			<skill id="28036" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Pisces -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -98,7 +98,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<skills>
-			<skill id="28037" level="1" type="ON_EQUIP" /> <!-- Summon Sagittarius Agathion -->
+			<skill id="28037" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Sagittarius -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -115,7 +115,7 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<skills>
-			<skill id="28038" level="1" type="ON_EQUIP" /> <!-- Summon Cancer Agathion -->
+			<skill id="28038" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Cancer -->
 			<skill id="28064" level="1" type="ON_UNEQUIP" /> <!-- Release Seal -->
 		</skills>
 	</item>
@@ -437,6 +437,14 @@
 		<set name="material" val="CRYSTAL" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="33.33333" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="33.33333" /> <!-- Rudolph's Nose -->
+			<item id="29132" min="1" max="1" chance="33.33333" /> <!-- Match Head -->
+		</capsuled_items>
 	</item>
 	<item id="29132" name="Match Head" type="EtcItem">
 		<!-- Match head that the Match Girls are looking for. It seems a monster has broken matches. Combine it with matchstick to obtain a match. -->
@@ -444,13 +452,27 @@
 		<set name="material" val="CRYSTAL" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="33.33333" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="33.33333" /> <!-- Rudolph's Nose -->
+			<item id="29133" min="1" max="1" chance="33.33333" /> <!-- Well-made Matchstick -->
+		</capsuled_items>
 	</item>
 	<item id="29133" name="Well-made Matchstick" type="EtcItem">
-		<!-- A well-made match. Take it to the Older Sister. -->
+		<!-- A well-made matchstick. Take it to the Older Sister. -->
 		<set name="icon" val="BranchIcon.icon.g_event_match" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29134" min="1" max="1" chance="100" /> <!-- Powerful Matchstick -->
+		</capsuled_items>
 	</item>
 	<item id="29134" name="Powerful Matchstick" type="EtcItem">
 		<!-- The match that burns a bit too well. For some unknown reason this match blazes so bright that it's not suitable for domestic use. Take it to the Younger Sister. -->
@@ -458,6 +480,11 @@
 		<set name="material" val="CRYSTAL" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+		</capsuled_items>
 	</item>
 	<item id="29135" name="Bonfire" type="EtcItem">
 		<!-- A bonfire made with the help of the Match Girl. Burns for 30 sec. Use cooking ingredients to cook a Regular Dish or a Very Delicious Dish on the bonfire. -->
@@ -466,14 +493,26 @@
 		<set name="material" val="WOOD" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29136" min="1" max="1" chance="100" /> <!-- Regular Dish -->
+		</capsuled_items>
 	</item>
 	<item id="29136" name="Regular Dish" type="EtcItem">
-		<!-- Looks quite delicious. When used, Max HP/ MP/ CP +15%, P. Atk./ P. Def./ M. Atk./ M. Def. +15%. Additionally, acquired XP/ SP +200%, if your level is lower than 118. -->
+		<!-- Looks quite delicious. When used, Max HP/ MP/ CP +15%, P. Atk./ M. Atk./ P. Def./ M. Def. +15%. Additionally, acquired XP/ SP +200%, if your level is lower than 118. -->
 		<set name="icon" val="icon.etc_food_dish_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29137" min="1" max="1" chance="100" /> <!-- Very Delicious Dish -->
+		</capsuled_items>
 	</item>
 	<item id="29137" name="Very Delicious Dish" type="EtcItem">
 		<!-- Very delicious dish. Take it to the Younger Sister to get a gift. -->
@@ -481,6 +520,12 @@
 		<set name="material" val="CRYSTAL" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29138" min="1" max="1" chance="100" /> <!-- Match Girls' Gift -->
+		</capsuled_items>
 	</item>
 	<item id="29138" name="Match Girls' Gift" type="EtcItem">
 		<!-- A gift from the Match Girls who are thankful for your help. -->
@@ -489,6 +534,12 @@
 		<set name="material" val="LEATHER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29139" min="1" max="1" chance="100" /> <!-- Match Girls' Gratitude -->
+		</capsuled_items>
 	</item>
 	<item id="29139" name="Match Girls' Gratitude" type="EtcItem">
 		<!-- For 30 min., acquired XP/ SP +30%, Vitality bonus +30%, P. Atk./ M. Atk./ P. Def./ M. Def. +15%. -->
@@ -497,6 +548,12 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29140" min="1" max="1" chance="100" /> <!-- Cooking Ingredients -->
+		</capsuled_items>
 	</item>
 	<item id="29140" name="Cooking Ingredient" type="EtcItem">
 		<!-- Can be used to make Regular Dish or Very Delicious Dish on the Bonfire. Note! Disappears if used on another character's Bonfire. -->
@@ -505,6 +562,11 @@
 		<set name="material" val="CRYSTAL" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+		</capsuled_items>
 	</item>
 	<item id="29141" name="Freya's Charisma Potion" additionalName="Cat Transformation" type="EtcItem">
 		<!-- Changes the appearance to that of a cat doll for 30 min. CHA +5. The effect does not stack with those of Einhasad's Charisma Potion or Freya's Luck Potion. Cooldown: 5 min. The effect remains after death. Cannot be used in the Olympiad. -->
@@ -514,6 +576,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="reuse_delay" val="360000" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29142" min="1" max="1" chance="100" /> <!-- Freya's Charisma Potion - Panda Transformation -->
+		</capsuled_items>
 	</item>
 	<item id="29142" name="Freya's Charisma Potion" additionalName="Panda Transformation" type="EtcItem">
 		<!-- Changes the appearance to that of a panda doll for 30 min. CHA +5. The effect does not stack with those of Einhasad's Charisma Potion or Freya's Luck Potion. Cooldown: 5 min. The effect remains after death. Cannot be used in the Olympiad. -->
@@ -523,9 +591,15 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="reuse_delay" val="360000" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29143" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+		</capsuled_items>
 	</item>
 	<item id="29143" name="Rudolph's Nose" type="Armor">
-		<!-- Accessory in the form of Rudolph's nose. -->
+		<!-- An accessory shaped like Rudolph's nose. -->
 		<set name="icon" val="icon.Accessory_nose_of_rudolph_mask_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="armor_type" val="HEAVY" />
@@ -536,14 +610,29 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="hair" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="100" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="100" /> <!-- Rudolph's Nose -->
+			<item id="29144" min="1" max="1" chance="100" /> <!-- Freya's Shopping Bag -->
+		</capsuled_items>
 	</item>
 	<item id="29144" name="Freya's Deluxe Shopping Bag" type="EtcItem">
-		<!-- Double-click to obtain Freya's Art of Seduction and 2 Freya's Recovery Potions. There is also a chance to additionally obtain one a Freya, Sirra, or Snowman Winter Card or Freya's Ice Crystal. -->
+		<!-- Double-click to obtain Freya's Art of Seduction - XP and 2 Freya's Recovery Potions. There is also a chance to additionally obtain one of the following items: Freya's Winter Card, Sirra's Winter Card, Snowman's Winter Card, Freya's Ice Crystal. -->
 		<set name="icon" val="icon.bm_freya_bag_01" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="33.33333" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="33.33333" /> <!-- Rudolph's Nose -->
+			<item id="29145" min="1" max="1" chance="33.33333" /> <!-- Freya's Winter Card -->
+		</capsuled_items>
 	</item>
 	<item id="29145" name="Freya Winter Card" type="EtcItem">
 		<!-- Double-click to obtain one of the following items: Tanzanite/ Garnet/ Opal/ Aquamarine/ Cat's Eye/ Pearl/ Vital Stone/ Obsidian/ Emerald/ Sapphire/ Diamond/ Ruby/ Amethyst/ Blue Cat's Eye/ Red Cat's Eye Jewelry Box Lv. 4, Package: +7 Magical/ Physical Reflect Shirt, Package: +7 Shiny Elemental Shirt, Bottle of Antharas'/ Valakas' Soul (2 pcs.), Shadow/ Kelbim/ Tauti Weapon Pack, Bottle of Baium's Soul, Talisman of Anakim, Sayha's Talisman Pack Lv. 7, Blessed Valakas' Necklace, Seven Signs' Energy, Blessed Antharas' Earring, Talisman of Seven Signs, Ruler's Authority, Sealed Talisman of Insanity. -->
@@ -552,14 +641,30 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="33.33333" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="33.33333" /> <!-- Rudolph's Nose -->
+			<item id="29146" min="1" max="1" chance="33.33333" /> <!-- Sirra's Winter Card -->
+		</capsuled_items>
 	</item>
 	<item id="29146" name="Sirra Winter Card" type="EtcItem">
-		<!-- Double-click to obtain one of the following items: Giant's Scroll: Enchant R-grade Armor/ Weapon, Package: Scroll: Enchant R-grade Armor/ Weapon, Package: Blessed Stone: Enchant R-grade Armor/ Weapon, Bloody Eternal/ Helios Enhancement Stone, Top-grade Spirit Stone, Giant's Stone: Enchant R-grade Armor/ Weapon, Blessed High-grade Stone: Enchant R-grade Armor/ Weapon, Dark Eternal/ Helios Enhancement Stone, Freya's Stone: Enchant R-grade Armor/ Weapon, Shadow Ingot, R99-grade Scroll of Blessing, Package: +7 Pa'agrio's/ Eva's/ Sayha's/ Maphr's Shirt, Mystic Soul Crystal Fragment, Life Stone: Giant's Power, Enhanced Shadow Ingot, Destruction Scroll: Enchant R-grade Weapon, Mystic Soul Crystal. -->
+		<!-- Double-click to obtain one of the following items: Giant's Scroll: Enchant R-grade Armor/ Weapon, Package: Scroll: Enchant R-grade Armor/ Weapon, Package: Blessed Stone: Enchant R-grade Armor/ Weapon, Bloody Eternal/ Helios Upgrade Stone, Top-grade Spirit Stone, Giant's Stone: Enchant R-grade Armor/ Weapon, Blessed High-grade Stone: Enchant R-grade Armor/ Weapon, Dark Eternal/ Helios Upgrade Stone, Freya's Stone: Enchant R-grade Armor/ Weapon, Shadow Ingot, R99-grade Scroll of Blessing, Package: +7 Pa'agrio's/ Eva's/ Sayha's/ Maphr's Shirt, Mystic Soul Crystal Fragment, Life Stone: Giant's Power, Enhanced Shadow Ingot, Destruction Scroll: Enchant R-grade Weapon, Mystic Soul Crystal. -->
 		<set name="icon" val="icon.bm_freya_sirr_winter_card" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="33.33333" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="33.33333" /> <!-- Rudolph's Nose -->
+			<item id="29147" min="1" max="1" chance="33.33333" /> <!-- Snowman's Winter Card -->
+		</capsuled_items>
 	</item>
 	<item id="29147" name="Snowman Winter Card" type="EtcItem">
 		<!-- Double-click to randomly obtain an item from a selection of various character growth and enhancement items. -->
@@ -568,6 +673,13 @@
 		<set name="material" val="PAPER" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="20900" min="1" max="1" chance="50" /> <!-- Santa Hat - 14-day -->
+			<item id="14611" min="1" max="1" chance="50" /> <!-- Rudolph's Nose -->
+		</capsuled_items>
 	</item>
 	<item id="29148" name="Freya's Christmas Treasure Chest" type="EtcItem">
 		<!-- Freya's Christmas Treasure Chest. Double-click to obtain a random item. -->
@@ -591,8 +703,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="1440" />
 		<skills>
-			<skill id="27787" level="6" /> <!-- Sayha's Talisman Stage 6 -->
-			<skill id="27789" level="1" /> <!-- Sayha's Protection -->
+			<skill id="27787" level="6" /> <!-- Sayha's Talisman -->
+			<skill id="27789" level="1" /> <!-- Sayha's Grace -->
 			<skill id="27790" level="1" /> <!-- Sayha's Encouragement -->
 		</skills>
 	</item>
@@ -606,7 +718,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="27716" level="1" /> <!-- Zodiac Agathion Pack -->
+			<skill id="27716" level="1" /> <!-- Starlight Agathion Pack -->
 		</skills>
 	</item>
 	<item id="29151" name="Mid-grade Starlight Agathion Pack" type="EtcItem">
@@ -619,7 +731,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="28170" level="1" /> <!-- High-grade Zodiac Agathion -->
+			<skill id="28170" level="1" /> <!-- Mid-grade Starlight Agathion Pack -->
 		</skills>
 	</item>
 	<item id="29152" name="High-grade Starlight Agathion Pack" type="EtcItem">
@@ -632,7 +744,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="28171" level="1" /> <!-- High-grade Zodiac Agathion -->
+			<skill id="28171" level="1" /> <!-- High-grade Starlight Agathion Pack -->
 		</skills>
 	</item>
 	<item id="29153" name="High-grade Maphr's Rune" additionalName="30-day" type="EtcItem">
@@ -645,7 +757,7 @@
 		<set name="time" val="43200" />
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<skills>
-			<skill id="28172" level="1" /> <!-- High-grade Maphr's Rune -->
+			<skill id="28172" level="1" /> <!-- High-grade Maphr's Rune 300% -->
 		</skills>
 	</item>
 	<item id="29154" name="Mochi" additionalName="Event" type="EtcItem">
@@ -727,7 +839,7 @@
 		<set name="enchant_enabled" val="true" />
 	</item>
 	<item id="29161" name="Package: High-grade Maphr's Rune 300%" additionalName="30-day" type="EtcItem">
-		<!-- Double-click to obtain one High-grade Maphr's Rune 300% (30-day). -->
+		<!-- Double-click to obtain 1 High-grade Maphr's Rune 300% (30-day). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -740,7 +852,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="29162" name="Light Imbued Treasure Chest" type="EtcItem">
-		<!-- A chest containing a starlight. Double-click to obtain one of the following items: R-grade Gemstone (10 pcs.), Giant's Energy (2 pcs.), Valakas' Soul Bottle Fragment (5 pcs.), Antharas' Soul Bottle Fragment (5 pcs.), Baium's Soul Bottle Fragment (5 pcs.), Giant's Energy 100-unit Pack, Elcyum, Package: Eva's Rune (3-day) - Event, Freya's Dark Rune Pack (2-hour), Freya's Bloody Rune Pack (2-hour), Ancient Book: Divine Inspiration (Beginner)/ (Intermediate), Superior Giant's Codex - Chapter 1, Superior Giant's Codex - Mastery/ Mastery Chapter 1, Starlight Jar, Red Starlight Jar, Agathion Evolution Stone, Low-grade/ Mid-grade/ High-grade Zodiac Agathion Box, Ancient Zodiac Agathion Charm Book of Growth, Life Stone: Giant's Power, Insane Kelbim's Small Fragment, Frenzied Tauti's Small Fragment, Source of the Emperor, Giant's Scroll: Enchant R-grade Weapon, Blessed Scroll: Enchant R-grade Weapon, Blessed Scroll: Enchant R-grade Weapon/ Armor, Destruction Scroll: Enchant Elemental Shirt, Dragon Claw, Bottle of Baium's Soul, Mystic Soul Crystal Fragment, Mystic Soul Crystal, Dark Eternal Enhancement Stone, Dark Helios Enhancement Stone, Ring of Creation, Seven Signs' Energy, Blessed Antharas' Earring, Lindvior's Earring. -->
+		<!-- A chest containing a starlight. Double-click to obtain one of the following: R-grade Gemstone (10 pcs.), Giant's Energy (2 pcs.), Valakas' Soul Bottle Fragment (5 pcs.), Antharas' Soul Bottle Fragment (5 pcs.), Baium's Soul Bottle Fragment (5 pcs.), Giant's Energy 100-unit Pack, Elcyum, Package: Eva's Rune (3-day) - Event, Freya's Dark Rune Pack (2-hour), Freya's Bloody Rune Pack (2-hour), Ancient Book: Divine Inspiration (Beginner)/ (Intermediate), Superior Giant's Codex - Chapter 1, Superior Giant's Codex - Mastery/ Mastery Chapter 1, Starlight Jar, Red Starlight Jar, Agathion Evolution Stone, Low-grade/ Mid-grade/ High-grade Zodiac Agathion Box, Ancient Zodiac Agathion Charm Book of Growth, Life Stone: Giant's Power, Insane Kelbim's Small Fragment, Frenzied Tauti's Small Fragment, Source of the Emperor, Giant's Scroll: Enchant R-grade Weapon, Blessed Scroll: Enchant R-grade Weapon, Blessed Scroll: Enchant R-grade Weapon/ Armor, Destruction Scroll: Enchant Shirt, Dragon Claw, Bottle of Baium's Soul, Mystic Soul Crystal Fragment, Mystic Soul Crystal, Dark Eternal Upgrade Stone, Dark Helios Upgrade Stone, Ring of Creation, Seven Signs' Energy, Blessed Antharas' Earring, Lindvior's Earring. -->
 		<set name="icon" val="icon.bm_2018_special_box" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="PAPER" />
@@ -759,7 +871,7 @@
 		<set name="handler" val="EnchantScrolls" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<skills>
-			<skill id="28180" level="1" /> <!-- Stable Cloak Enchantment Scroll -->
+			<skill id="28180" level="1" /> <!-- Stable Scroll: Enchant Cloak -->
 		</skills>
 	</item>
 	<item id="29164" name="High-grade Legendary Scroll" type="EtcItem">
@@ -833,7 +945,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="28180" level="1" /> <!-- High-grade Spirit Stone Pack - Cloak -->
+			<skill id="28180" level="1" /> <!-- Stable Scroll: Enchant Cloak -->
 		</skills>
 	</item>
 	<item id="29172" name="Red Star Solvent" type="EtcItem">
@@ -844,7 +956,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29173" name="Package: High-grade Maphr's Rune 300%" additionalName="7-day" type="EtcItem">
-		<!-- Double-click to obtain one High-grade Maphr's Rune 300% (7-day). -->
+		<!-- Double-click to obtain High-grade Maphr's Rune 300% (7-day). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -867,7 +979,7 @@
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 	</item>
 	<item id="29175" name="Package: High-grade Maphr's Rune 300%" additionalName="1-day" type="EtcItem">
-		<!-- Double-click to obtain one High-grade Maphr's Rune 300% (1-day). -->
+		<!-- Double-click to obtain High-grade Maphr's Rune 300% (1-day). -->
 		<set name="icon" val="BranchSys.icon.br_four_leaf_clover_box_i00" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -902,7 +1014,7 @@
 		<set name="time" val="1440" />
 	</item>
 	<item id="29178" name="Prestige Cube" additionalName="1-day" type="EtcItem">
-		<!-- PA Cube. Double-click to obtain one of the following items: Dark/ Bloody Eternal Enhancement Stone, Scroll: Enchant S-R-grade Weapon, Blessed Scroll of Resurrection, High-grade Elixir Pack, Destructive Energy, Giant's Energy. Can be used once a day. Cannot be used in the Olympiad. -->
+		<!-- PA Cube. Double-click to obtain one of the following items: Dark/ Bloody Eternal Upgrade Stone, Scroll: Enchant S-R-grade Weapon, Blessed Scroll of Resurrection, High-grade Elixir Pack, Destructive Energy, Giant's Energy. Can be used once a day. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.etc_dkbrown_crystal_cube_pc_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="FISH" />
@@ -925,7 +1037,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="29180" name="Eva's Rune" additionalName="1-day" type="EtcItem">
-		<!-- Ancient charm endowed with mysterious symbols. When held in your inventory, grants the user Eva's Rune passive skill. The remaining time decreases even when not playing. -->
+		<!-- An ancient rune imbued with mystical powers. When in inventory, grants Eva's special powers to its owner. The remaining time is spent even if you are offline. -->
 		<set name="icon" val="BranchSys.icon.br_rune_of_eva_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -977,7 +1089,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="29185" name="Master's Fishing Potion" additionalName="1-hour" type="EtcItem">
-		<!-- When used, for 1 h. Acquired XP/ SP during fishing +50%. Applied to all bait. Can be stacked with Angler's Blessing. -->
+		<!-- For 1 h., acquired XP/ SP while fishing +50%. Can be used with all baits. Effects of various potions and Master Fisherman's Blessing stack. -->
 		<set name="icon" val="BranchIcon.etc_sign_agathion_feed_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="LIQUID" />
@@ -1134,7 +1246,7 @@
 		<set name="is_freightable" val="true" />
 	</item>
 	<item id="29198" name="Ultimate Fortune Jewelry Box" type="EtcItem">
-		<!-- Double-click to obtain one of the Lucky Jewel Boxes. -->
+		<!-- Double-click to obtain 1 Lucky Jewel Box. -->
 		<set name="icon" val="icon.bm_pendant_pvp_box" />
 		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="material" val="LEATHER" />

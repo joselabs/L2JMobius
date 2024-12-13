@@ -146,7 +146,7 @@ public class SiegeZone extends ZoneType
 			
 			if (creature.isPlayer())
 			{
-				final Player player = creature.getActingPlayer();
+				final Player player = creature.asPlayer();
 				if (player.isRegisteredOnThisSiegeField(getSettings().getSiegeableId()))
 				{
 					player.setInSiege(true); // in siege
@@ -182,29 +182,30 @@ public class SiegeZone extends ZoneType
 		creature.setInsideZone(ZoneId.PVP, false);
 		creature.setInsideZone(ZoneId.SIEGE, false);
 		creature.setInsideZone(ZoneId.NO_SUMMON_FRIEND, false); // FIXME: Custom ?
-		if (getSettings().isActiveSiege() && creature.isPlayer())
-		{
-			final Player player = creature.getActingPlayer();
-			creature.sendPacket(SystemMessageId.YOU_HAVE_LEFT_A_COMBAT_ZONE);
-			if (player.getMountType() == MountType.WYVERN)
-			{
-				player.exitedNoLanding();
-			}
-			// Set pvp flag
-			if (player.getPvpFlag() == 0)
-			{
-				player.startPvPFlag();
-			}
-		}
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
+			if (getSettings().isActiveSiege())
+			{
+				creature.sendPacket(SystemMessageId.YOU_HAVE_LEFT_A_COMBAT_ZONE);
+				if (player.getMountType() == MountType.WYVERN)
+				{
+					player.exitedNoLanding();
+				}
+				
+				// Set pvp flag.
+				if (player.getPvpFlag() == 0)
+				{
+					player.startPvPFlag();
+				}
+			}
+			
 			player.stopFameTask();
 			player.setInSiege(false);
 			
 			if ((getSettings().getSiege() instanceof FortSiege) && (player.getInventory().getItemByItemId(FortManager.ORC_FORTRESS_FLAG) != null))
 			{
-				// drop combat flag
+				// Drop combat flag.
 				final Fort fort = FortManager.getInstance().getFortById(getSettings().getSiegeableId());
 				if (fort != null)
 				{
@@ -242,7 +243,7 @@ public class SiegeZone extends ZoneType
 	public void onDieInside(Creature creature)
 	{
 		// debuff participants only if they die inside siege zone
-		if (getSettings().isActiveSiege() && creature.isPlayer() && creature.getActingPlayer().isRegisteredOnThisSiegeField(getSettings().getSiegeableId()))
+		if (getSettings().isActiveSiege() && creature.isPlayer() && creature.asPlayer().isRegisteredOnThisSiegeField(getSettings().getSiegeableId()))
 		{
 			int level = 1;
 			final BuffInfo info = creature.getEffectList().getBuffInfoBySkillId(5660);
@@ -296,7 +297,7 @@ public class SiegeZone extends ZoneType
 				
 				if (creature.isPlayer())
 				{
-					player = creature.getActingPlayer();
+					player = creature.asPlayer();
 					creature.sendPacket(SystemMessageId.YOU_HAVE_LEFT_A_COMBAT_ZONE);
 					player.stopFameTask();
 					if (player.getMountType() == MountType.WYVERN)

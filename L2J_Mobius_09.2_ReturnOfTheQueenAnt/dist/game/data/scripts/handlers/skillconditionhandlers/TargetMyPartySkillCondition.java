@@ -20,6 +20,8 @@ import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.skill.ISkillCondition;
 import org.l2jmobius.gameserver.model.skill.Skill;
 
@@ -38,13 +40,27 @@ public class TargetMyPartySkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		if ((target == null) || !target.isPlayer())
+		if ((target == null) || !target.isPlayable())
 		{
 			return false;
 		}
 		
 		final Party party = caster.getParty();
-		final Party targetParty = target.getActingPlayer().getParty();
-		return ((party == null) ? (_includeMe && (caster == target)) : (_includeMe ? party == targetParty : (party == targetParty) && (caster != target)));
+		if (target.isPlayer())
+		{
+			final Party targetParty = target.asPlayer().getParty();
+			return ((party == null) ? (_includeMe && (caster == target)) : (_includeMe ? party == targetParty : (party == targetParty) && (caster != target)));
+		}
+		else if (target.isSummon())
+		{
+			final Summon summon = target.asSummon();
+			final Player summonOwner = summon.getOwner();
+			if (summonOwner != null)
+			{
+				final Party targetParty = summonOwner.getParty();
+				return ((party == null) ? (_includeMe && (caster == summonOwner)) : (_includeMe ? party == targetParty : (party == targetParty) && (caster != summonOwner)));
+			}
+		}
+		return false;
 	}
 }

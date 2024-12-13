@@ -23,7 +23,6 @@ import org.l2jmobius.gameserver.enums.Movie;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
@@ -417,7 +416,7 @@ public final class BalthusAntharas extends AbstractNpcAI
 						if ((character != null) && (!character.isDead()) && (CommonUtil.contains(BOMBER_TARGETS, character.getId()) || character.isPlayable()))
 						{
 							bomber.setRunning();
-							((Attackable) bomber).addDamageHate(character, 0, 100);
+							bomber.asAttackable().addDamageHate(character, 0, 100);
 							bomber.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, character, null);
 						}
 					}));

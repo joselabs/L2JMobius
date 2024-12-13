@@ -46,7 +46,7 @@ public class Party implements IAffectScopeHandler
 		
 		if (target.isPlayable())
 		{
-			final Player player = target.getActingPlayer();
+			final Player player = target.asPlayer();
 			final org.l2jmobius.gameserver.model.Party party = player.getParty();
 			
 			// Create the target filter.
@@ -64,7 +64,7 @@ public class Party implements IAffectScopeHandler
 					return false;
 				}
 				
-				final Player p = plbl.getActingPlayer();
+				final Player p = plbl.asPlayer();
 				if ((p == null) || p.isDead())
 				{
 					return false;
@@ -89,7 +89,7 @@ public class Party implements IAffectScopeHandler
 			};
 			
 			// Affect object of origin since it is skipped in the forEachVisibleObjectInRange method.
-			if (filter.test((Playable) target))
+			if (filter.test(target.asPlayable()))
 			{
 				action.accept(target);
 			}
@@ -105,7 +105,7 @@ public class Party implements IAffectScopeHandler
 		}
 		else if (target.isNpc())
 		{
-			final Npc npc = (Npc) target;
+			final Npc npc = target.asNpc();
 			
 			// Create the target filter.
 			final AtomicInteger affected = new AtomicInteger(0);

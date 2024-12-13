@@ -451,7 +451,7 @@ public class ClanHallManager extends AbstractNpcAI
 			final ClanHall clanHall = npc.getClanHall();
 			if (clanHall != null)
 			{
-				creature.getActingPlayer().sendPacket(new AgitDecoInfo(clanHall));
+				creature.asPlayer().sendPacket(new AgitDecoInfo(clanHall));
 			}
 		}
 		return super.onCreatureSee(npc, creature);

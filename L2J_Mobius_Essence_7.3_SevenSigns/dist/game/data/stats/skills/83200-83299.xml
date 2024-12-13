@@ -40,13 +40,41 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="DamageByAttack">
-				<amount>-3</amount>
-				<type>ENEMY_ALL</type>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
 			</effect>
-			<effect name="DamageByAttack">
-				<amount>-3</amount>
-				<type>PK</type>
+			<effect name="PvePhysicalAttackDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalAttackDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PveRaidMagicalSkillDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PveRaidPhysicalSkillDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PveRaidPhysicalAttackDefenceBonus">
+				<amount>3</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -87,8 +115,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="AdditionalPotionHpPer">
+			<effect name="AdditionalPotionHp">
 				<amount>2</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -129,8 +158,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="AdditionalPotionHpPer">
+			<effect name="AdditionalPotionHp">
 				<amount>2</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -171,8 +201,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="AdditionalPotionHpPer">
+			<effect name="AdditionalPotionHp">
 				<amount>4</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -213,13 +244,17 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>1</magicLevel>
 		<effects>
-			<effect name="AdditionalPotionHpPer">
+			<effect name="AdditionalPotionHp">
 				<amount>6</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="83215" toLevel="4" name="Helmet Blessing Effect">
-		<!-- Resistance to All Weapons +0.5% -->
+		<!-- Level 1: Resistance to All Weapons +0.5% -->
+		<!-- Level 2: Resistance to All Weapons +0.5% -->
+		<!-- Level 3: Resistance to All Weapons +1% -->
+		<!-- Level 4: Resistance to All Weapons +3% -->
 		<icon>icon.bless_effect_base</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -296,7 +331,10 @@
 		</effects>
 	</skill>
 	<skill id="83216" toLevel="4" name="Upper Armor Blessing Effect">
-		<!-- Received Skill Critical Damage -5 -->
+		<!-- Level 1: Received Skill Critical Damage -5 -->
+		<!-- Level 2: Received Skill Critical Damage -5 -->
+		<!-- Level 3: Received Skill Critical Damage -20 -->
+		<!-- Level 4: Received Skill Critical Damage -50 -->
 		<icon>icon.bless_effect_base</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -323,7 +361,10 @@
 		</effects>
 	</skill>
 	<skill id="83217" toLevel="4" name="Upper Armor Blessing Effect">
-		<!-- Received Skill Critical Damage -15 -->
+		<!-- Level 1: Received Skill Critical Damage -15 -->
+		<!-- Level 2: Received Skill Critical Damage -15 -->
+		<!-- Level 3: Received Skill Critical Damage -30 -->
+		<!-- Level 4: Received Skill Critical Damage -60 -->
 		<icon>icon.bless_effect_base</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -350,7 +391,10 @@
 		</effects>
 	</skill>
 	<skill id="83218" toLevel="4" name="Lower Armor Blessing Effect">
-		<!-- Received Skill Critical Damage -5 -->
+		<!-- Level 1: Received Skill Critical Damage -5 -->
+		<!-- Level 2: Received Skill Critical Damage -5 -->
+		<!-- Level 3: Received Skill Critical Damage -20 -->
+		<!-- Level 4: Received Skill Critical Damage -50 -->
 		<icon>icon.bless_effect_base</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -377,7 +421,10 @@
 		</effects>
 	</skill>
 	<skill id="83219" toLevel="4" name="Lower Armor Blessing Effect">
-		<!-- Received Skill Critical Damage -15 -->
+		<!-- Level 1: Received Skill Critical Damage -15 -->
+		<!-- Level 2: Received Skill Critical Damage -15 -->
+		<!-- Level 3: Received Skill Critical Damage -30 -->
+		<!-- Level 4: Received Skill Critical Damage -60 -->
 		<icon>icon.bless_effect_base</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -458,7 +505,10 @@
 		</effects>
 	</skill>
 	<skill id="83222" toLevel="4" name="Glove Blessing Effect">
-		<!-- Debuff Resistance +1%, Anomaly Resistance +1% -->
+		<!-- Level 1: Debuff Resistance +1%, Anomaly Resistance +1% -->
+		<!-- Level 2: Debuff Resistance +1%, Anomaly Resistance +1% -->
+		<!-- Level 3: Debuff Resistance +2%, Anomaly Resistance +2% -->
+		<!-- Level 4: Debuff Resistance +4%, Anomaly Resistance +4% -->
 		<icon>icon.bless_effect_base</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -484,7 +534,10 @@
 		</effects>
 	</skill>
 	<skill id="83223" toLevel="4" name="Boot Blessing Effect">
-		<!-- HP Recovery Potions' Effect +5 -->
+		<!-- Level 1: HP Recovery Potions' Effect +5 -->
+		<!-- Level 2: HP Recovery Potions' Effect +5 -->
+		<!-- Level 3: HP Recovery Potions' Effect +15 -->
+		<!-- Level 4: HP Recovery Potions' Effect +30 -->
 		<icon>icon.bless_effect_base</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>

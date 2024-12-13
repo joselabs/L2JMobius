@@ -17,7 +17,7 @@
 package ai.areas.DragonValley;
 
 import org.l2jmobius.gameserver.enums.ChatType;
-import org.l2jmobius.gameserver.model.actor.Attackable;
+import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.NpcStringId;
@@ -53,21 +53,24 @@ public class LairOfAntharas extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onEvent(String event, Npc npc, Player player)
+	public void onTimerEvent(String event, StatSet params, Npc npc, Player player)
 	{
-		if (event.equals("CHECK_HOME") && (npc != null) && !npc.isDead())
+		if ((npc != null) && !npc.isDead() && npc.isSpawned())
 		{
-			if ((npc.calculateDistance2D(npc.getSpawn().getLocation()) > 10) && !npc.isInCombat())
+			if (!npc.isInCombat())
 			{
-				((Attackable) npc).returnHome();
+				if (npc.calculateDistance2D(npc.getSpawn().getLocation()) > 10)
+				{
+					npc.asAttackable().returnHome();
+				}
+				else if (npc.getHeading() != npc.getSpawn().getHeading())
+				{
+					npc.setHeading(npc.getSpawn().getHeading());
+					npc.broadcastPacket(new ValidateLocation(npc));
+				}
 			}
-			else if ((npc.getHeading() != npc.getSpawn().getHeading()) && !npc.isInCombat())
-			{
-				npc.setHeading(npc.getSpawn().getHeading());
-				npc.broadcastPacket(new ValidateLocation(npc));
-			}
+			getTimers().addTimer("CHECK_HOME_" + npc.getObjectId(), null, 10000, npc, null);
 		}
-		return super.onEvent(event, npc, player);
 	}
 	
 	@Override
@@ -127,7 +130,7 @@ public class LairOfAntharas extends AbstractNpcAI
 		if ((npc.getId() == DRAGON_GUARD) || (npc.getId() == DRAGON_MAGE))
 		{
 			npc.setRandomWalking(true);
-			startQuestTimer("CHECK_HOME", 10000, npc, null, true);
+			getTimers().addTimer("CHECK_HOME_" + npc.getObjectId(), null, 10000, npc, null);
 		}
 		return super.onSpawn(npc);
 	}

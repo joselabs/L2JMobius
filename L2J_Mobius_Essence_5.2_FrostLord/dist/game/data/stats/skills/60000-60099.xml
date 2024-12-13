@@ -7,17 +7,21 @@
 		<effectPoint>5000</effectPoint>
 	</skill>
 	<skill id="60002" toLevel="5" name="Einhasad Overseeing">
-		<!-- After death in PvP/ PK:. The chance of losing items is increased. Up to 2 items can be lost. -->
+		<!-- Level 1: After death in PvP/ PK:. The chance of losing items is increased. Up to 2 items can be lost. -->
+		<!-- Level 2: After death in PvP/ PK:. The chance of losing items is increased. Up to 3 items can be lost. -->
+		<!-- Level 3: If attacking a character with the Counterattack setting active, a counterattack is triggered. After death in PvP/ PK:. The chance of losing items is greatly increased. Up to 3 items can be lost. -->
+		<!-- Level 4: If attacking a character with the Counterattack setting active, a counterattack is triggered. After death in PvP/ PK:. The chance of losing items is greatly increased. Up to 3 items can be lost. -->
+		<!-- Level 5: Disgraceful killings have drawn Einhasad's attention. P./ M. Def. -30%, Speed -40. The chance of dropping items after death in PvP/ PK is greatly increased. Basic teleports and teleport skills are unavailable. If attacking a character with the Counterattack setting active, a counterattack is triggered. Up to 3 items can be dropped. -->
 		<icon>icon.karma</icon>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<isMagic>4</isMagic>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
-		<isTriggeredSkill>true</isTriggeredSkill>
-		<irreplacableBuff>true</irreplacableBuff>
+		<affectScope>SINGLE</affectScope>
 		<canBeDispelled>false</canBeDispelled>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMagic>4</isMagic>
+		<isTriggeredSkill>true</isTriggeredSkill>
 		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="PhysicalDefence">
@@ -43,9 +47,9 @@
 	<skill id="60003" toLevel="1" name="Server Level Ranking I">
 		<!-- A buff for the 1st place in the server level ranking. STR +1. INT +1. CON +1. MEN +1. DEX +1. WIT +1. Recovery Potions' Effect +50. Weight limit +100,000. P. Evasion +20 -->
 		<icon>icon.server_ranking_1</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>100000</amount>
@@ -83,9 +87,9 @@
 	<skill id="60004" toLevel="1" name="Server Level Ranking II">
 		<!-- A buff for the 2nd~30th places in the server level ranking. CON +1. MEN +1. DEX +1. WIT +1. Weight limit +10,000 -->
 		<icon>icon.server_ranking_2</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>10000</amount>
@@ -112,9 +116,9 @@
 	<skill id="60005" toLevel="1" name="Server Level Ranking III">
 		<!-- A buff for the 31st~100th places in the server level ranking. CON +1. MEN +1. Weight limit +5000 -->
 		<icon>icon.server_ranking_3</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>5000</amount>
@@ -133,9 +137,9 @@
 	<skill id="60006" toLevel="1" name="Human Level Ranking - 1st Place">
 		<!-- A buff for the 1st place in the level ranking among Humans. P. Critical Damage +300. M. Skill Critical Damage +300 -->
 		<icon>icon.race_ranking_1</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="CriticalDamage">
 				<amount>300</amount>
@@ -150,15 +154,15 @@
 	<skill id="60007" toLevel="1" name="Elf Level Ranking - 1st Place">
 		<!-- A buff for the 1st place in the level ranking among Elves. P. Atk. +300. M. Atk. +300 -->
 		<icon>icon.race_ranking_1</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>300</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>300</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -167,9 +171,9 @@
 	<skill id="60008" toLevel="1" name="Dark Elf Level Ranking - 1st Place">
 		<!-- A buff for the 1st place in the level ranking among Dark Elves. Atk. Spd. +200. Casting Spd. +200 -->
 		<icon>icon.race_ranking_1</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="PhysicalAttackSpeed">
 				<amount>200</amount>
@@ -184,9 +188,9 @@
 	<skill id="60009" toLevel="1" name="Orc Level Ranking - 1st Place">
 		<!-- A buff for the 1st place in the level ranking among Orcs. P. Critical Rate +20. M. Skill Critical Rate +20 -->
 		<icon>icon.race_ranking_1</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="CriticalRate">
 				<amount>20</amount>
@@ -201,9 +205,9 @@
 	<skill id="60010" toLevel="1" name="Dwarf Level Ranking - 1st Place">
 		<!-- A buff for the 1st place in the level ranking among Dwarves. Enchant success rate +1% when using weapon and armor enchant scrolls. P. Atk. +100. Max HP +500 -->
 		<icon>icon.race_ranking_1</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="EnchantRate">
 				<amount>1</amount>
@@ -213,9 +217,9 @@
 	<skill id="60011" toLevel="1" name="Kamael Level Ranking - 1st Place">
 		<!-- A buff for the 1st place in the level ranking among Kamaels. P. Accuracy +5. M. Accuracy +5. P. Evasion +5. M. Evasion +5 -->
 		<icon>icon.race_ranking_1</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="Accuracy">
 				<amount>5</amount>
@@ -238,9 +242,9 @@
 	<skill id="60012" toLevel="1" name="Server Level Ranking Effect I">
 		<!-- CON +1. MEN +1. Weight limit +5000 -->
 		<icon>icon.UI_server_ranking_1</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>5000</amount>
@@ -259,9 +263,9 @@
 	<skill id="60013" toLevel="1" name="Server Level Ranking Effect II">
 		<!-- DEX +1. WIT +1. Weight limit +5000 -->
 		<icon>icon.UI_server_ranking_2</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>5000</amount>
@@ -280,9 +284,9 @@
 	<skill id="60014" toLevel="1" name="Server Level Ranking Effect III">
 		<!-- STR +1. INT +1. Weight limit +90,000. P. Evasion +20. HP Recovery Potions' Effect +50 -->
 		<icon>icon.UI_server_ranking_3</icon>
-		<magicLevel>40</magicLevel>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>40</magicLevel>
 		<effects>
 			<effect name="WeightLimit">
 				<amount>90000</amount>
@@ -314,41 +318,44 @@
 		<!-- Activate the effect of Holy Relic -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<hitTime>3500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="60017" toLevel="1" name="Effect of Holy Relic 2">
 		<!-- Activate the effect of Holy Relic -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<hitTime>3500</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 	</skill>
 	<skill id="60018" toLevel="1" name="Teleport">
 		<!-- Teleport -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<hitTime>4000</hitTime>
 		<isMagic>4</isMagic>
-		<hitTime>2000</hitTime>
 		<effects>
 			<effect name="TeleportToTeleportLocation" />
 		</effects>
 	</skill>
-	<skill id="60019" toLevel="4" name="Jaban's Blessing">
-		<!-- Jaban's blessing. Max HP +3000. Received PvP damage -10% -->
+	<skill id="60019" toLevel="5" name="Jaban's Blessing">
+		<!-- Level 1: Jaban's blessing. Max HP +3000. Received PvP damage -10% -->
+		<!-- Level 2: Jaban's blessing. Max HP +5000. Received PvP damage -10%. All stats +1. P. Atk. +1000. M. Atk. +500 -->
+		<!-- Level 3: Jaban's blessing. Max HP +8000. Received PvP damage -10%. All stats +2. P. Atk. +2500. M. Atk. +1200. P. Def. +2000. M. Def. +1500. A chance to paralyze the target for 2 sec. when hit -->
+		<!-- Level 4: Jaban's blessing. Max HP +12000. Received PvP damage -10%. All stats +4. P. Atk. +4000. M. Atk. +2000. P. Def. +3500. M. Def. +2500. Atk. Spd. +20%. Casting Spd. +15%. <With a certain chance when hit>. Paralyzes the target for +120000. <With a certain chance after an attack>. Stuns or silences the target for +120000 -->
+		<!-- Level 5: Jaban's blessing. Max HP +20000. Received PvP damage -10%. All stats +6. P. Atk. +8000. M. Atk. +3000. P. Def. +6000. M. Def. +4000. Atk. Spd. +30%. Casting Spd. +25%. <With a certain chance when hit>. Paralyzes the target for +200000. Creates a shield that has its own HP. <With a certain chance after an attack>. Stuns or silences the target for +200000. Deals +200001 fixed damage to the target. -->
 		<icon>icon.skill30518</icon>
 		<operateType>A2</operateType>
-		<isMagic>4</isMagic>
-		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelay>0</reuseDelay>
-		<castRange>900</castRange>
-		<hitTime>0</hitTime>
 		<abnormalTime>60</abnormalTime>
 		<attributeType>EARTH</attributeType>
 		<attributeValue>20</attributeValue>
-		<!-- TODO -->
+		<castRange>900</castRange>
+		<hitTime>0</hitTime>
+		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>0</reuseDelay>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="2">1000</value>
 					<value level="3">2500</value>
@@ -357,7 +364,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="2">500</value>
 					<value level="3">1200</value>

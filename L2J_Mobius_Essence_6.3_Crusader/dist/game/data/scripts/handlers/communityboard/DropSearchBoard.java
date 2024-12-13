@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package handlers.communityboard;
 
@@ -26,6 +30,7 @@ import java.util.Set;
 import java.util.StringJoiner;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.cache.HtmCache;
 import org.l2jmobius.gameserver.data.xml.ItemData;
@@ -35,6 +40,7 @@ import org.l2jmobius.gameserver.enums.DropType;
 import org.l2jmobius.gameserver.handler.CommunityBoardHandler;
 import org.l2jmobius.gameserver.handler.IParseBoardHandler;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.stat.PlayerStat;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.holders.DropGroupHolder;
 import org.l2jmobius.gameserver.model.holders.DropHolder;
@@ -42,6 +48,8 @@ import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.spawns.NpcSpawnTemplate;
 import org.l2jmobius.gameserver.model.stats.Stat;
+import org.l2jmobius.gameserver.network.serverpackets.RadarControl;
+import org.l2jmobius.gameserver.network.serverpackets.ShowMiniMap;
 
 /**
  * @author yksdtc
@@ -181,10 +189,11 @@ public class DropSearchBoard implements IParseBoardHandler
 				final int start = (page - 1) * 14;
 				final int end = Math.min(list.size() - 1, start + 14);
 				final StringBuilder builder = new StringBuilder();
-				final double dropAmountAdenaEffectBonus = player.getStat().getMul(Stat.BONUS_DROP_ADENA, 1);
-				final double dropAmountEffectBonus = player.getStat().getMul(Stat.BONUS_DROP_AMOUNT, 1);
-				final double dropRateEffectBonus = player.getStat().getMul(Stat.BONUS_DROP_RATE, 1);
-				final double spoilRateEffectBonus = player.getStat().getMul(Stat.BONUS_SPOIL_RATE, 1);
+				final PlayerStat stat = player.getStat();
+				final double dropAmountAdenaEffectBonus = stat.getMul(Stat.BONUS_DROP_ADENA, 1);
+				final double dropAmountEffectBonus = stat.getMul(Stat.BONUS_DROP_AMOUNT, 1);
+				final double dropRateEffectBonus = stat.getMul(Stat.BONUS_DROP_RATE, 1);
+				final double spoilRateEffectBonus = stat.getMul(Stat.BONUS_SPOIL_RATE, 1);
 				for (int index = start; index <= end; index++)
 				{
 					final CBDropHolder cbDropHolder = list.get(index);
@@ -213,6 +222,10 @@ public class DropSearchBoard implements IParseBoardHandler
 						if (Config.RATE_DROP_CHANCE_BY_ID.get(cbDropHolder.itemId) != null)
 						{
 							rateChance *= Config.RATE_DROP_CHANCE_BY_ID.get(cbDropHolder.itemId);
+							if ((cbDropHolder.itemId == Inventory.ADENA_ID) && (rateChance > 100))
+							{
+								rateChance = 100;
+							}
 						}
 						else if (item.hasExImmediateEffect())
 						{
@@ -292,7 +305,7 @@ public class DropSearchBoard implements IParseBoardHandler
 						rateChance *= dropRateEffectBonus;
 						if (item.getId() == Inventory.LCOIN_ID)
 						{
-							rateChance *= player.getStat().getMul(Stat.BONUS_DROP_RATE_LCOIN, 1);
+							rateChance *= stat.getMul(Stat.BONUS_DROP_RATE_LCOIN, 1);
 						}
 					}
 					
@@ -327,8 +340,13 @@ public class DropSearchBoard implements IParseBoardHandler
 				}
 				else
 				{
-					final NpcSpawnTemplate spawn = spawnList.get(Rnd.get(spawnList.size()));
-					player.getRadar().addMarker(spawn.getSpawnLocation().getX(), spawn.getSpawnLocation().getY(), spawn.getSpawnLocation().getZ());
+					player.sendPacket(new ShowMiniMap(-1));
+					ThreadPool.schedule(() ->
+					{
+						final NpcSpawnTemplate spawn = spawnList.get(Rnd.get(spawnList.size()));
+						player.getRadar().addMarker(spawn.getSpawnLocation().getX(), spawn.getSpawnLocation().getY(), spawn.getSpawnLocation().getZ());
+						player.sendPacket(new RadarControl(0, 2, spawn.getSpawnLocation().getX(), spawn.getSpawnLocation().getY(), spawn.getSpawnLocation().getZ()));
+					}, 500);
 				}
 				break;
 			}

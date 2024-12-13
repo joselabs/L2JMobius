@@ -53,7 +53,7 @@ public class PDefenseFinalizer implements IStatFunction
 		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
 		if (creature.isPet())
 		{
-			final Pet pet = (Pet) creature;
+			final Pet pet = creature.asPet();
 			baseValue = pet.getPetLevelData().getPetPDef();
 		}
 		baseValue += calcEnchantedItemBonus(creature, stat);
@@ -68,7 +68,7 @@ public class PDefenseFinalizer implements IStatFunction
 			
 			if (creature.isPlayer())
 			{
-				final Player player = creature.getActingPlayer();
+				final Player player = creature.asPlayer();
 				for (int slot : SLOTS)
 				{
 					if (!inv.isPaperdollSlotEmpty(slot) || //

@@ -1,42 +1,42 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="29371" toLevel="1" name="Mammon's Treasure Chest">
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 		<reuseDelay>500</reuseDelay>
 	</skill>
 	<skill id="29372" toLevel="1" name="Gold Bar Pouch">
 		<!-- Double-click to obtain various items. -->
 		<icon>icon.bm_strongbox</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="29373" toLevel="1" name="Treasure Chest of Ancient Kingdom">
 		<!-- Double-click to obtain various items. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
+		<hitTime>500</hitTime>
 	</skill>
 	<skill id="29374" toLevel="1" name="Glittering Freya's Ice Rose">
 		<!-- For 30 min., Max HP/ MP/ CP +30%, P./ M. Atk. and P./ M. Def. +35%, Atk. Spd./ Casting Spd. +10%, Speed +20, Attribute Attack/ Resistance +200, damage +12%, P./ M. Skill Power +12%, acquired XP/ SP +40%, received damage -30 min.0, Skill MP Consumption -30 min.1, all basic stats +2. The effect remains after death. -->
 		<icon>icon.bm_freya_ice_rose</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>2</abnormalLevel>
 		<abnormalTime>1800</abnormalTime>
 		<abnormalType>BR_EVENT_BUF1</abnormalType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<hitTime>1000</hitTime>
-		<reuseDelay>300000</reuseDelay>
-		<effectPoint>1</effectPoint>
-		<isMagic>4</isMagic>
-		<stayAfterDeath>true</stayAfterDeath>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
+		<effectPoint>1</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>300000</reuseDelay>
+		<stayAfterDeath>true</stayAfterDeath>
 		<effects>
 			<effect name="MaxHp">
 				<amount>30</amount>
@@ -58,11 +58,11 @@
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -167,15 +167,15 @@
 		<!-- For 10 min. while hunting, Vitality Consumption +200%, acquired XP/ SP +200%. The effect remains after death. Cooldown: 9 min. -->
 		<icon>icon.bm_freya_storm_scroll</icon>
 		<operateType>A2</operateType>
-		<abnormalType>FREYA_SCROLL_VIT</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>600</abnormalTime>
-		<itemConsumeId>29676</itemConsumeId>
-		<itemConsumeCount>1</itemConsumeCount>
-		<reuseDelay>540000</reuseDelay>
-		<isMagic>4</isMagic>
-		<targetType>SELF</targetType>
+		<abnormalType>FREYA_SCROLL_VIT</abnormalType>
 		<affectScope>SINGLE</affectScope>
+		<isMagic>4</isMagic>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>29676</itemConsumeId>
+		<reuseDelay>540000</reuseDelay>
 		<effects>
 			<effect name="VitalityPointsRate">
 				<amount>200</amount>
@@ -194,21 +194,21 @@
 	<skill id="29376" toLevel="1" name="Ride Silver Strider">
 		<!-- Allows to ride Silver Strider. -->
 		<icon>icon.skill1373</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<abnormalLevel>1</abnormalLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 		<excludedFromCheck>true</excludedFromCheck>
+		<hitCancelTime>0</hitCancelTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>20024</transformId>
@@ -222,13 +222,13 @@
 	</skill>
 	<skill id="29377" toLevel="1" name="Silver Strider Rider Scroll">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>1500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29679</itemConsumeId> <!-- Silver Strider Rider Scroll -->
-		<operateType>A1</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpSkill">
 				<skillId>29376</skillId> <!-- Ride Silver Strider -->
@@ -246,21 +246,21 @@
 	<skill id="29378" toLevel="1" name="Ride Black Strider">
 		<!-- Allows to ride Black Strider. -->
 		<icon>icon.skill1373</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<abnormalLevel>1</abnormalLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 		<excludedFromCheck>true</excludedFromCheck>
+		<hitCancelTime>0</hitCancelTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>20025</transformId>
@@ -274,13 +274,13 @@
 	</skill>
 	<skill id="29379" toLevel="1" name="Black Strider Rider Scroll">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>1500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29680</itemConsumeId> <!-- Black Strider Rider Scroll -->
-		<operateType>A1</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpSkill">
 				<skillId>29378</skillId> <!-- Ride Black Strider -->
@@ -298,21 +298,21 @@
 	<skill id="29380" toLevel="1" name="Ride Iron Strider">
 		<!-- Allows to ride Iron Strider. -->
 		<icon>icon.skill1373</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
-		<blockedInOlympiad>true</blockedInOlympiad>
-		<operateType>A2</operateType>
-		<effectPoint>1</effectPoint>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<abnormalLevel>1</abnormalLevel>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>1</effectPoint>
 		<excludedFromCheck>true</excludedFromCheck>
+		<hitCancelTime>0</hitCancelTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-1</specialLevel>
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>20026</transformId>
@@ -326,13 +326,13 @@
 	</skill>
 	<skill id="29381" toLevel="1" name="Iron Strider Rider Scroll">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>1500</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>29681</itemConsumeId> <!-- Iron Strider Rider Scroll -->
-		<operateType>A1</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="OpSkill">
 				<skillId>29380</skillId> <!-- Ride Iron Strider -->
@@ -1016,10 +1016,14 @@
 		</effects>
 	</skill>
 	<skill id="29390" toLevel="5" name="Heir's Radiance - PvE Lv. 1">
-		<!-- For 1 h., P. Atk. +100, M. Atk. +100, P. Def. +100, M. Def. +100, Received PvE Damage -5%. When the effect expires, the enhanced Heir's Radiance - PvE effect activates recovering 35,000 Vitality points. Consumes 1000 Spirit Ore. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 1: For 1 h., P. Atk. +100, M. Atk. +100, P. Def. +100, M. Def. +100, Received PvE Damage -5%. When the effect expires, the enhanced Heir's Radiance - PvE effect activates recovering 35,000 Vitality points. Consumes 1000 Spirit Ore. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 2: For 1 h., P. Atk. +200, M. Atk. +200, P. Def. +200, M. Def. +200, Received PvE Damage -5%. When the effect expires, the enhanced Heir's Radiance - PvE effect activates recovering 35,000 Vitality points. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 3: For 1 h., P. Atk. +300, M. Atk. +300, P. Def. +300, M. Def. +300, Received PvE Damage -7%. When the effect expires, the enhanced Heir's Radiance - PvE effect activates recovering 35,000 Vitality points. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 4: For 1 h., P. Atk. +400, M. Atk. +400, P. Def. +500, M. Def. +400, Received PvE Damage -7%. When the effect expires, the enhanced Heir's Radiance - PvE effect activates recovering 35,000 Vitality points. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 5: For 1 h., P. Atk. +500, M. Atk. +500, P. Def. +1000, M. Def. +500, Received PvE Damage -10%. Recovers 35,000 Vitality points. Note!. The effect disappears after logout. -->
 		<icon>BranchIcon.icon.g_bm_ring_of_light</icon>
 		<operateType>A2</operateType>
-		<abnormalType>HEIR_PVE</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">21600</value>
@@ -1028,6 +1032,11 @@
 			<value level="4">3600</value>
 			<value level="5">3600</value>
 		</abnormalTime>
+		<abnormalType>HEIR_PVE</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<canBeDispelled>false</canBeDispelled>
+		<itemConsumeCount>1000</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<reuseDelay>
 			<value level="1">21600000</value>
 			<value level="2">0</value>
@@ -1036,13 +1045,8 @@
 			<value level="5">0</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<canBeDispelled>false</canBeDispelled>
-		<itemConsumeCount>1000</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">100</value>
 					<value level="2">200</value>
@@ -1052,7 +1056,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">100</value>
 					<value level="2">200</value>
@@ -1139,10 +1143,14 @@
 		</endEffects>
 	</skill>
 	<skill id="29391" toLevel="5" name="Heir's Radiance - PvP Lv. 1">
-		<!-- For 1 h., P. Atk. +100, M. Atk. +100, P. Def. +100, M. Def. +100, Received PvP Damage -5%, Recovery Potions' Effect +300. When the effect expires, the enhanced Heir's Radiance - PvP effect activates. Consumes 1000 Spirit Ore. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 1: For 1 h., P. Atk. +100, M. Atk. +100, P. Def. +100, M. Def. +100, Received PvP Damage -5%, Recovery Potions' Effect +300. When the effect expires, the enhanced Heir's Radiance - PvP effect activates. Consumes 1000 Spirit Ore. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 2: For 1 h., P. Atk. +200, M. Atk. +200, P. Def. +200, M. Def. +200, Received PvP Damage -5%, Recovery Potions' Effect +400. When the effect expires, the enhanced Heir's Radiance - PvP effect activates. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 3: For 1 h., P. Atk. +300, M. Atk. +300, P. Def. +300, M. Def. +300, Received PvP Damage -7%, Recovery Potions' Effect +500. When the effect expires, the enhanced Heir's Radiance - PvP effect activates. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 4: For 1 h., P. Atk. +400, M. Atk. +400, P. Def. +500, M. Def. +400, Received PvP Damage -7%, Recovery Potions' Effect +600. When the effect expires, the enhanced Heir's Radiance - PvP effect activates. Note!. The effect disappears after logout and is not renewed after death. -->
+		<!-- Level 5: For 1 h., P. Atk. +500, M. Atk. +500, P. Def. +1000, M. Def. +500, Received PvP Damage -10%, Recovery Potions' Effect +1000. Note!. The effect disappears after logout. -->
 		<icon>BranchIcon.icon.g_bm_ring_of_light</icon>
 		<operateType>A2</operateType>
-		<abnormalType>HEIR_PVP</abnormalType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>
 			<value level="1">21600</value>
@@ -1151,6 +1159,10 @@
 			<value level="4">3600</value>
 			<value level="5">3600</value>
 		</abnormalTime>
+		<abnormalType>HEIR_PVP</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1000</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<reuseDelay>
 			<value level="1">21600000</value>
 			<value level="2">0</value>
@@ -1159,12 +1171,8 @@
 			<value level="5">0</value>
 		</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<itemConsumeCount>1000</itemConsumeCount>
-		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">100</value>
 					<value level="2">200</value>
@@ -1174,7 +1182,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">100</value>
 					<value level="2">200</value>
@@ -1296,11 +1304,16 @@
 		</effects>
 	</skill>
 	<skill id="29393" toLevel="6" name="Warrior's Heir">
-		<!-- P. Atk. +1% -->
+		<!-- Level 1: P. Atk. +1% -->
+		<!-- Level 2: P. Atk. +3% -->
+		<!-- Level 3: P. Atk. +7% -->
+		<!-- Level 4: P. Atk. +10% -->
+		<!-- Level 5: P. Atk. +12% -->
+		<!-- Level 6: P. Atk. +15% -->
 		<icon>BranchIcon.icon.g_bm_ring_of_light</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">3</value>
@@ -1314,11 +1327,16 @@
 		</effects>
 	</skill>
 	<skill id="29394" toLevel="6" name="Wizard's Heir">
-		<!-- M. Atk. +1% -->
+		<!-- Level 1: M. Atk. +1% -->
+		<!-- Level 2: M. Atk. +3% -->
+		<!-- Level 3: M. Atk. +7% -->
+		<!-- Level 4: M. Atk. +10% -->
+		<!-- Level 5: M. Atk. +12% -->
+		<!-- Level 6: M. Atk. +15% -->
 		<icon>BranchIcon.icon.g_bm_ring_of_light</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">3</value>
@@ -1332,7 +1350,12 @@
 		</effects>
 	</skill>
 	<skill id="29395" toLevel="6" name="Knight's Heir">
-		<!-- P./ M. Def. +1%. -->
+		<!-- Level 1: P./ M. Def. +1%. -->
+		<!-- Level 2: P./ M. Def. +3%. -->
+		<!-- Level 3: P./ M. Def. +7%. -->
+		<!-- Level 4: P./ M. Def. +10%. -->
+		<!-- Level 5: P./ M. Def. +12%. -->
+		<!-- Level 6: P./ M. Def. +15%. -->
 		<icon>BranchIcon.icon.g_bm_ring_of_light</icon>
 		<operateType>P</operateType>
 		<effects>

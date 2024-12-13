@@ -40,12 +40,12 @@ public class MaxMpFinalizer implements IStatFunction
 		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
 		if (creature.isPet())
 		{
-			final Pet pet = (Pet) creature;
+			final Pet pet = creature.asPet();
 			baseValue = pet.getPetLevelData().getPetMaxMP();
 		}
 		else if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			if (player != null)
 			{
 				baseValue = player.getTemplate().getBaseMpMax(player.getLevel());

@@ -1,24 +1,30 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.castlewar;
 
 import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.siege.Castle;
+import org.l2jmobius.gameserver.model.siege.Siege;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -29,10 +35,12 @@ import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 public class MercenaryCastleWarCastleSiegeInfo extends ServerPacket
 {
 	private final int _castleId;
+	private final Castle _castle;
 	
 	public MercenaryCastleWarCastleSiegeInfo(int castleId)
 	{
 		_castleId = castleId;
+		_castle = CastleManager.getInstance().getCastleById(castleId);
 	}
 	
 	@Override
@@ -41,9 +49,7 @@ public class MercenaryCastleWarCastleSiegeInfo extends ServerPacket
 		ServerPackets.EX_MERCENARY_CASTLEWAR_CASTLE_SIEGE_INFO.writeId(this, buffer);
 		
 		buffer.writeInt(_castleId);
-		
-		final Castle castle = CastleManager.getInstance().getCastleById(_castleId);
-		if (castle == null)
+		if (_castle == null)
 		{
 			buffer.writeInt(0);
 			buffer.writeInt(0);
@@ -57,13 +63,14 @@ public class MercenaryCastleWarCastleSiegeInfo extends ServerPacket
 		{
 			buffer.writeInt(0); // seconds?
 			buffer.writeInt(0); // crest?
-			
-			buffer.writeSizedString(castle.getOwner() != null ? castle.getOwner().getName() : "-");
-			buffer.writeSizedString(castle.getOwner() != null ? castle.getOwner().getLeaderName() : "-");
+			final Clan clan = _castle.getOwner();
+			buffer.writeSizedString(clan != null ? clan.getName() : "-");
+			buffer.writeSizedString(clan != null ? clan.getLeaderName() : "-");
 			
 			buffer.writeInt(0); // crest?
-			buffer.writeInt(castle.getSiege().getAttackerClans().size());
-			buffer.writeInt(castle.getSiege().getDefenderClans().size() + castle.getSiege().getDefenderWaitingClans().size());
+			final Siege siege = _castle.getSiege();
+			buffer.writeInt(siege.getAttackerClans().size());
+			buffer.writeInt(siege.getDefenderClans().size() + siege.getDefenderWaitingClans().size());
 		}
 	}
 }

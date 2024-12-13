@@ -50,7 +50,7 @@ public class OpCheckSkillSkillCondition implements ISkillCondition
 			{
 				if ((target != null) && !target.isPlayer())
 				{
-					return target.getActingPlayer().getSkillLevel(_skillId) > 0;
+					return target.asPlayer().getSkillLevel(_skillId) > 0;
 				}
 				break;
 			}

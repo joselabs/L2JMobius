@@ -530,6 +530,12 @@ public class Servitor extends Summon implements Runnable
 	}
 	
 	@Override
+	public Servitor asServitor()
+	{
+		return this;
+	}
+	
+	@Override
 	public void run()
 	{
 		final int usedtime = 5000;
@@ -593,7 +599,7 @@ public class Servitor extends Summon implements Runnable
 		{
 			// Return to owner when target is dead.
 			final WorldObject target = getTarget();
-			if ((target != null) && target.isCreature() && ((Creature) target).isAlikeDead())
+			if ((target != null) && target.isCreature() && target.asCreature().isAlikeDead())
 			{
 				getAI().setIntention(CtrlIntention.AI_INTENTION_FOLLOW, getOwner());
 			}

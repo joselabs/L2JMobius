@@ -27,6 +27,8 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
+import quests.Q00281_HeadForTheHills.Q00281_HeadForTheHills;
+
 /**
  * Orc Hunting (260)
  * @author xban1x
@@ -123,11 +125,14 @@ public class Q00260_OrcHunting extends Quest
 			{
 				if (hasAtLeastOneQuestItem(player, getRegisteredItemIds()))
 				{
-					final long amulets = getQuestItemsCount(player, ORC_AMULET);
-					final long necklaces = getQuestItemsCount(player, ORC_NECKLACE);
-					giveAdena(player, ((amulets * 4) + (necklaces * 10) + ((amulets + necklaces) >= 10 ? 1000 : 0)), true);
-					takeItems(player, -1, getRegisteredItemIds());
-					// Q00281_HeadForTheHills.giveNewbieReward(player);
+					if (!player.isSimulatingTalking())
+					{
+						final long amulets = getQuestItemsCount(player, ORC_AMULET);
+						final long necklaces = getQuestItemsCount(player, ORC_NECKLACE);
+						giveAdena(player, ((amulets * 4) + (necklaces * 10) + ((amulets + necklaces) >= 10 ? 1000 : 0)), true);
+						takeItems(player, -1, getRegisteredItemIds());
+						Q00281_HeadForTheHills.giveNewbieReward(player);
+					}
 					htmltext = "30221-06.html";
 				}
 				else

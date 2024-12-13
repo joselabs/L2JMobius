@@ -211,7 +211,7 @@ public class Options
 		playable.getStat().recalculateStats(true);
 		if (playable.isPlayer())
 		{
-			playable.getActingPlayer().sendSkillList();
+			playable.asPlayer().sendSkillList();
 		}
 	}
 	
@@ -252,7 +252,7 @@ public class Options
 		playable.getStat().recalculateStats(true);
 		if (playable.isPlayer())
 		{
-			playable.getActingPlayer().sendSkillList();
+			playable.asPlayer().sendSkillList();
 		}
 	}
 	
@@ -272,7 +272,7 @@ public class Options
 		}
 		if (updateTimeStamp && playable.isPlayer())
 		{
-			playable.sendPacket(new SkillCoolTime(playable.getActingPlayer()));
+			playable.sendPacket(new SkillCoolTime(playable.asPlayer()));
 		}
 	}
 }

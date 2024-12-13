@@ -45,13 +45,13 @@ public class OpAlignmentSkillCondition implements ISkillCondition
 		{
 			case CASTER:
 			{
-				return _alignment.test(caster.getActingPlayer());
+				return _alignment.test(caster.asPlayer());
 			}
 			case TARGET:
 			{
 				if ((target != null) && target.isPlayer())
 				{
-					return _alignment.test(target.getActingPlayer());
+					return _alignment.test(target.asPlayer());
 				}
 				break;
 			}

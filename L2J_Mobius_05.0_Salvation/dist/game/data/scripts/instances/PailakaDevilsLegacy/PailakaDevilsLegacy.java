@@ -19,7 +19,6 @@ package instances.PailakaDevilsLegacy;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -129,7 +128,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 					}
 					case "LEMATAN_TELEPORT":
 					{
-						((Attackable) npc).clearAggroList();
+						npc.asAttackable().clearAggroList();
 						npc.disableCoreAI(false);
 						npc.teleToLocation(LEMATAN_PORT);
 						npc.getVariables().set("ON_SHIP", 1);
@@ -252,12 +251,12 @@ public class PailakaDevilsLegacy extends AbstractInstance
 	@Override
 	public String onEnterZone(Creature creature, ZoneType zone)
 	{
-		if ((creature.isPlayer()) && !creature.isDead() && !creature.isTeleporting() && ((Player) creature).isOnline())
+		if ((creature.isPlayer()) && !creature.isDead() && !creature.isTeleporting() && creature.asPlayer().isOnline())
 		{
 			final Instance world = creature.getInstanceWorld();
 			if ((world != null) && (world.getTemplateId() == TEMPLATE_ID))
 			{
-				startQuestTimer("TELEPORT", 1000, world.getNpc(LEMATAN), creature.getActingPlayer());
+				startQuestTimer("TELEPORT", 1000, world.getNpc(LEMATAN), creature.asPlayer());
 			}
 		}
 		return super.onEnterZone(creature, zone);
@@ -272,7 +271,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 			{
 				if ((summon.getTemplate().getId() == TIGRESS_LEVEL1) || (summon.getTemplate().getId() == TIGRESS_LEVEL2))
 				{
-					summon.unSummon(((Player) creature));
+					summon.unSummon(creature.asPlayer());
 				}
 			});
 		}

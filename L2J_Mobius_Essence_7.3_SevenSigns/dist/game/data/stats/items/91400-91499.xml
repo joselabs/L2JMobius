@@ -203,7 +203,7 @@
 			<item id="49847" min="1" max="1" chance="4.347826" /> <!-- Sayha's Golden Light Blessing -->
 			<item id="49081" min="1" max="1" chance="4.347826" /> <!-- XP Growth Scroll -->
 			<item id="10649" min="1" max="1" chance="4.347826" /> <!-- Feather of Blessing -->
-			<item id="91027" min="1" max="1" chance="4.347826" /> <!-- Dragon's Miracle Potion -->
+			<item id="91027" min="1" max="1" chance="4.347826" /> <!-- Dragon's Potion -->
 			<item id="91114" min="1" max="1" chance="4.347826" /> <!-- Old Inventory Expansion Coupon Lv. 2 -->
 			<item id="91113" min="1" max="1" chance="4.347826" /> <!-- Old Inventory Expansion Coupon Lv. 1 -->
 			<item id="90172" min="1" max="1" chance="4.347826" /> <!-- Gemstone of Border -->
@@ -232,6 +232,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="51253" level="1" /> <!-- Elmoreden XP Scroll -->
+		</skills>
 	</item>
 	<item id="91413" name="High Quality Elmoreden XP Scroll" additionalName="Sealed" type="EtcItem">
 		<!-- XP +20,000,000. -->
@@ -242,6 +246,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="51254" level="1" /> <!-- High Quality Elmoreden XP Scroll -->
+		</skills>
 	</item>
 	<item id="91414" name="+5 Dragon Pendant Lv. 2" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. M. Def. +25, received damage -15%, Atk. Spd./ Casting Spd. +3%, P. Critical Damage/ M. Skill Critical Damage +5%, acquired XP/ SP +20%. -->
@@ -257,6 +265,9 @@
 		<stats>
 			<stat type="pDef">57</stat>
 		</stats>
+		<skills>
+			<skill id="45041" level="6" /> <!-- +5 Dragon Pendant Lv. 2 -->
+		</skills>
 	</item>
 	<item id="91415" name="Bracelet of Authority" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. Unlocks 5 talisman slots. HP/ MP Recovery Rate +15%, P. Accuracy +2, M. Accuracy +2, Weight Limit +10,000. -->
@@ -269,6 +280,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="54020" level="1" /> <!-- Bracelet of Authority -->
+		</skills>
 	</item>
 	<item id="91416" name="Talisman of Border Lv. 8" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. P./ M. Def. +34, P./ M. Evasion +2, Max HP/ MP/ CP +200, Speed +7, Atk. Spd./ Casting Spd. +15, acquired XP/ SP +5%. Enables Dimensional Border Power Lv. 2 (with a certain chance increases attack power). Enables Border Purification (removes Paralysis, Petrification, Poison, and Bleed). -->
@@ -281,6 +295,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<set name="bodypart" val="deco1" />
+		<skills>
+			<skill id="35025" level="1" /> <!-- Border Purification -->
+			<skill id="35024" level="8" /> <!-- Talisman of Border -->
+		</skills>
 	</item>
 	<item id="91417" name="Brooch Lv. 4" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. When equipped, unlocks 5 jewel slots. Inventory slots +12. -->
@@ -294,6 +312,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="13650" level="1" type="ON_EQUIP" /> <!-- Equip Brooch Lv. 4 -->
+			<skill id="13651" level="1" type="ON_UNEQUIP" /> <!-- Unequip Brooch Lv. 4 -->
+			<skill id="13659" level="1" /> <!-- Brooch Lv. 4 -->
+			<skill id="13661" level="4" /> <!-- Brooch: Additional Inventory Slots -->
+		</skills>
 	</item>
 	<item id="91418" name="Ruby Lv. 5" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. Soulshot/ Blessed Soulshot/ Beast Soulshot damage +16%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -305,6 +329,7 @@
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 	</item>
@@ -318,6 +343,7 @@
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 	</item>
@@ -331,8 +357,12 @@
 		<set name="weight" val="5" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="17708" level="5" /> <!-- Jewel - Diamond -->
+		</skills>
 	</item>
 	<item id="91421" name="Pearl Lv. 5" additionalName="30-day" type="Armor">
 		<!-- Available for 30 d. When equipped, M. Def. +74, received M. Skill Critical Damage -10%. Effects of two identical jewels do not stack, the higher-level jewel takes precedence. -->
@@ -346,13 +376,17 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="17709" level="5" /> <!-- Jewel - Pearl -->
+		</skills>
 	</item>
 	<item id="91422" name="Queen Ant Doll Lv. 3" type="EtcItem">
-		<!-- <Queen Ant Doll's Sorcery Lv. 3>. P. Atk. +12%. P. Critical Damage +10%. P. Skill Critical Damage +10%. Max HP +15%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Queen Ant Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. When successfully compounding sealed dolls, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Queen Ant Doll's Sorcery Lv. 3>. P. Atk. +12%. P. Critical Damage +10%. P. Skill Critical Damage +10%. Max HP +15%. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Queen Ant Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. When successfully compounding sealed dolls, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.bm_queen_ant_doll_30d" />
 		<set name="material" val="PAPER" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -361,11 +395,12 @@
 		</skills>
 	</item>
 	<item id="91423" name="Baium Doll Lv. 3" type="EtcItem">
-		<!-- <Baium Doll's Sorcery Lv. 3>. Skill Cooldown -4%. P. Def. +15%. M. Def. +15%. Silence Resistance +45%. Fear Resistance +45%. Paralysis Resistance +25%. Knockback Resistance +25%. Pull Resistance +25%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Baium Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. When successfully compounding sealed dolls, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Baium Doll's Sorcery Lv. 3>. Skill Cooldown -4%. P. Def. +15%. M. Def. +15%. Silence Resistance +45%. Fear Resistance +45%. Paralysis Resistance +25%. Knockback Resistance +25%. Pull Resistance +25%. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Baium Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. When successfully compounding sealed dolls, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.bm_baium_doll_30d" />
 		<set name="material" val="PAPER" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -374,11 +409,12 @@
 		</skills>
 	</item>
 	<item id="91424" name="Orfen Doll Lv. 3" type="EtcItem">
-		<!-- <Orfen Doll's Sorcery Lv. 3>. M. Atk. +15%. M. Skill Critical Damage +10%. Max MP +15%. Boosts stats when in inventory. <font color=bbaa88><Compound></font>. Materials: Orfen Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. When successfully compounding sealed dolls, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
+		<!-- <Orfen Doll's Sorcery Lv. 3>. M. Atk. +15%. M. Skill Critical Damage +10%. Max MP +15%. Boosts stats when in inventory. <font color=bbaa88><Compounding></font>. Materials: Orfen Doll Lv. 3. In case of failure, the doll's level remains the same, but materials disappear. <font color=ff6666>Note!</font>. When successfully compounding sealed dolls, you will get <font color=ff6666>a higher-level doll that cannot be exchanged</font>. Effects of two identical dolls do not stack, the higher-level doll takes precedence. -->
 		<set name="icon" val="icon.bm_orfen_doll_30d" />
 		<set name="material" val="PAPER" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
 		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -399,7 +435,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55472" level="10" /> <!-- Greater Vital Stone -->
+			<skill id="17706" level="10" /> <!-- Jewel - Greater Vital Stone -->
 		</skills>
 	</item>
 	<item id="91426" name="Greater Aquamarine Lv. 5" additionalName="30-day" type="Armor">
@@ -415,7 +451,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55507" level="10" /> <!-- Greater Aquamarine -->
+			<skill id="17825" level="1" /> <!-- Greater Aquamarine - Special Property -->
+			<skill id="17823" level="10" /> <!-- Jewel - Greater Aquamarine -->
 		</skills>
 	</item>
 	<item id="91427" name="Greater Diamond Lv. 5" additionalName="30-day" type="Armor">
@@ -431,7 +468,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55475" level="10" /> <!-- Greater Diamond -->
+			<skill id="17708" level="10" /> <!-- Jewel - Greater Diamond -->
 		</skills>
 	</item>
 	<item id="91428" name="Greater Pearl Lv. 5" additionalName="30-day" type="Armor">
@@ -447,7 +484,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55476" level="10" /> <!-- Greater Pearl -->
+			<skill id="17709" level="10" /> <!-- Jewel - Greater Pearl -->
 		</skills>
 	</item>
 	<item id="91429" name="Greater Topaz Lv. 5" additionalName="30-day" type="Armor">
@@ -463,7 +500,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55471" level="10" /> <!-- Greater Topaz -->
+			<skill id="17701" level="10" /> <!-- Jewel - Greater Topaz -->
+			<skill id="17702" level="1" /> <!-- Greater Topaz - Special Property -->
 		</skills>
 	</item>
 	<item id="91430" name="Greater Garnet Lv. 5" additionalName="30-day" type="Armor">
@@ -479,7 +517,8 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55485" level="10" /> <!-- Greater Garnet -->
+			<skill id="18567" level="7" /> <!-- Greater Garnet - Special Property -->
+			<skill id="18566" level="10" /> <!-- Jewel - Greater Garnet -->
 		</skills>
 	</item>
 	<item id="91431" name="Greater Ruby Lv. 5" additionalName="30-day" type="Armor">
@@ -495,7 +534,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55477" level="10" /> <!-- Greater Ruby -->
+			<skill id="51233" level="5" /> <!-- Jewel - Greater Ruby -->
 		</skills>
 	</item>
 	<item id="91432" name="Greater Sapphire Lv. 5" additionalName="30-day" type="Armor">
@@ -511,7 +550,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55481" level="10" /> <!-- Greater Sapphire -->
+			<skill id="51236" level="5" /> <!-- Jewel - Greater Sapphire -->
 		</skills>
 	</item>
 	<item id="91433" name="Greater Jade Lv. 5" additionalName="30-day" type="Armor">
@@ -527,7 +566,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="55474" level="10" /> <!-- Greater Jade -->
+			<skill id="17707" level="10" /> <!-- Jewel - Greater Jade -->
 		</skills>
 	</item>
 	<item id="91434" name="Greater Cat's Eye Lv. 5" additionalName="30-day" type="Armor">
@@ -543,7 +582,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="27440" level="10" /> <!-- Greater Cat's Eye -->
+			<skill id="27440" level="10" /> <!-- Jewel - Greater Cat's Eye -->
 		</skills>
 	</item>
 	<item id="91435" name="Greater Emerald Lv. 5" additionalName="30-day" type="Armor">
@@ -559,11 +598,11 @@
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
 		<skills>
-			<skill id="51237" level="10" /> <!-- Greater Emerald -->
+			<skill id="51237" level="10" /> <!-- Jewel - Greater Emerald -->
 		</skills>
 	</item>
 	<item id="91436" name="Blessed Dragon Pendant" additionalName="30-day" type="Armor">
-		<!-- Available for 30 days. Contains the blessed dragon's energy. M. Def. +50, Acquired XP/ SP +30%, Atk./ Casting Spd. +10%, P. Critical Damage/ M. Skill Critical Damage +15%, P./ M. Atk. +20%, Damage Reflection Resistance +20%, Received Damage -30%. Activates the Dragon Meditation effect. Cannot be enchanted. -->
+		<!-- Available for 30 d. Contains the blessed dragon's energy. M. Def. +50, acquired XP/ SP +30%, Atk. Spd./ Casting Spd. +10%, P. Critical Damage/ M. Skill Critical Damage +15%, P./ M. Atk. +20%, Damage Reflection Resistance +20%, received damage -30%. Enables the Dragon Meditation effect. -->
 		<set name="icon" val="icon.bm_pendant_dragon_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -577,7 +616,8 @@
 			<stat type="pDef">75</stat>
 		</stats>
 		<skills>
-			<skill id="45044" level="1" /> <!-- Blessed Dragon Pendant Lv1 -->
+			<skill id="45045" level="1" /> <!-- Dragon Meditation -->
+			<skill id="45044" level="1" /> <!-- Blessed Dragon Pendant -->
 		</skills>
 	</item>
 	<item id="91437" name="+10 White Sayha's Cloak" additionalName="30-day" type="Armor">
@@ -592,6 +632,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="54039" level="10" /> <!-- +10 Sayha's Cloak -->
+		</skills>
 	</item>
 	<item id="91438" name="Shining Golden Bait Box" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -859,7 +902,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51259" level="1" /> <!-- +10 White Sayha's Cloak Chest -->
+			<skill id="51259" level="1" /> <!-- +10 Sayha's White Cloak Chest -->
 		</skills>
 	</item>
 	<item id="91455" name="+10 Black Sayha's Cloak Chest" type="EtcItem">
@@ -900,7 +943,7 @@
 		<set name="is_destroyable" val="false" />
 		<set name="handler" val="ItemSkills" />
 		<skills>
-			<skill id="51262" level="1" /> <!-- Victory Balls Basket -->
+			<skill id="51262" level="1" /> <!-- Victory Ball Basket -->
 		</skills>
 	</item>
 	<item id="91458" name="Red Mask of Victory" additionalName="Sealed" type="Armor">
@@ -948,9 +991,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="bodypart" val="rhand" />
 		<set name="is_magic_weapon" val="true" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">1</stat>
 			<stat type="mAtk">1</stat>
@@ -1228,11 +1268,12 @@
 		</capsuled_items>
 	</item>
 	<item id="91481" name="Soul Crystal" additionalName="Sealed" type="EtcItem">
-		<!-- A crystal filled with the soul power of mighty warriors. Take it to Magic Books Trader Lorenzo in Aden to learn certification skills. -->
+		<!-- A crystal filled with the soul power of mighty warriors. Take it to Magic Book Trader Lorenzo in Aden to learn certification skills. -->
 		<set name="icon" val="icon.bm_dragon_shirt_upgrade_1" />
 		<set name="material" val="CRYSTAL" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="true" />
@@ -1353,6 +1394,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="SpiritShot" />
+		<skills>
+			<skill id="51303" level="1" /> <!-- Mysterious S-grade Spiritshots -->
+		</skills>
 	</item>
 	<item id="91493" name="Mysterious Blessed S-grade Spiritshot" additionalName="Not Available" type="EtcItem">
 		<!-- The item is not available. Spiritshots increase a weapon's magic power. Used with S-grade weapons. Take it to the Game Assistant to exchange for a new Spiritshot. -->
@@ -1365,6 +1410,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="BlessedSpiritShot" />
+		<skills>
+			<skill id="51304" level="1" /> <!-- Mysterious Blessed S-grade Spiritshot -->
+		</skills>
 	</item>
 	<item id="91494" name="Scroll: Critical Creation Lv. 3" type="EtcItem">
 		<!-- A scroll for learning the Critical Creation Lv. 3 skill. <Class>. Maestro. <Skill effect>. Increases craft critical success rate. -->

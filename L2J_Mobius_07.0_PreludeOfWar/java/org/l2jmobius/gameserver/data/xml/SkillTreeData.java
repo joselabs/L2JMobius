@@ -49,9 +49,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.ItemSkillHolder;
-import org.l2jmobius.gameserver.model.holders.PlayerSkillHolder;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
-import org.l2jmobius.gameserver.model.interfaces.ISkillsHolder;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
 import org.l2jmobius.gameserver.model.skill.Skill;
@@ -83,6 +81,7 @@ public class SkillTreeData implements IXmlReader
 	
 	// ClassId, Map of Skill Hash Code, SkillLearn
 	private static final Map<ClassId, Map<Long, SkillLearn>> _classSkillTrees = new ConcurrentHashMap<>();
+	private static final Map<ClassId, Map<Long, SkillLearn>> _completeClassSkillTree = new HashMap<>();
 	private static final Map<ClassId, Map<Long, SkillLearn>> _transferSkillTrees = new ConcurrentHashMap<>();
 	private static final Map<Race, Map<Long, SkillLearn>> _raceSkillTree = new ConcurrentHashMap<>();
 	private static final Map<SubclassType, Map<Long, SkillLearn>> _revelationSkillTree = new ConcurrentHashMap<>();
@@ -128,6 +127,7 @@ public class SkillTreeData implements IXmlReader
 	public void load()
 	{
 		_loading = true;
+		_parentClassMap.clear();
 		_classSkillTrees.clear();
 		_collectSkillTree.clear();
 		_fishingSkillTree.clear();
@@ -150,6 +150,25 @@ public class SkillTreeData implements IXmlReader
 		
 		// Load files.
 		parseDatapackDirectory("data/skillTrees/", true);
+		
+		// Cache the complete class skill trees.
+		_completeClassSkillTree.clear();
+		for (Entry<ClassId, Map<Long, SkillLearn>> entry : _classSkillTrees.entrySet())
+		{
+			final Map<Long, SkillLearn> skillTree = new HashMap<>();
+			
+			// Add all skills that belong to all classes.
+			skillTree.putAll(_commonSkillTree);
+			final ClassId entryClassId = entry.getKey();
+			ClassId currentClassId = entryClassId;
+			while ((currentClassId != null) && (_classSkillTrees.get(currentClassId) != null))
+			{
+				skillTree.putAll(_classSkillTrees.get(currentClassId));
+				currentClassId = _parentClassMap.get(currentClassId);
+			}
+			
+			_completeClassSkillTree.put(entryClassId, skillTree);
+		}
 		
 		// Generate check arrays.
 		generateCheckArrays();
@@ -442,16 +461,7 @@ public class SkillTreeData implements IXmlReader
 	 */
 	public Map<Long, SkillLearn> getCompleteClassSkillTree(ClassId classId)
 	{
-		final Map<Long, SkillLearn> skillTree = new HashMap<>();
-		// Add all skills that belong to all classes.
-		skillTree.putAll(_commonSkillTree);
-		ClassId currentClassId = classId;
-		while ((currentClassId != null) && (_classSkillTrees.get(currentClassId) != null))
-		{
-			skillTree.putAll(_classSkillTrees.get(currentClassId));
-			currentClassId = _parentClassMap.get(currentClassId);
-		}
-		return skillTree;
+		return _completeClassSkillTree.getOrDefault(classId, Collections.emptyMap());
 	}
 	
 	/**
@@ -667,7 +677,7 @@ public class SkillTreeData implements IXmlReader
 	 */
 	public Collection<SkillLearn> getAvailableSkills(Player player, ClassId classId, boolean includeByFs, boolean includeByFp, boolean includeAutoGet)
 	{
-		return getAvailableSkills(player, classId, includeByFs, includeByFp, includeAutoGet, true, player);
+		return getAvailableSkills(player, classId, includeByFs, includeByFp, includeAutoGet, true, player.getSkills());
 	}
 	
 	/**
@@ -678,10 +688,10 @@ public class SkillTreeData implements IXmlReader
 	 * @param includeByFp if {@code true} skills from Forgotten Power books will be included
 	 * @param includeAutoGet if {@code true} Auto-Get skills will be included
 	 * @param includeRequiredItems if {@code true} skills that have required items will be added
-	 * @param holder
+	 * @param existingSkills the complete Map of currently known skills.
 	 * @return all available skills for a given {@code player}, {@code classId}, {@code includeByFs} and {@code includeAutoGet}
 	 */
-	private Collection<SkillLearn> getAvailableSkills(Player player, ClassId classId, boolean includeByFs, boolean includeByFp, boolean includeAutoGet, boolean includeRequiredItems, ISkillsHolder holder)
+	private Collection<SkillLearn> getAvailableSkills(Player player, ClassId classId, boolean includeByFs, boolean includeByFp, boolean includeAutoGet, boolean includeRequiredItems, Map<Integer, Skill> existingSkills)
 	{
 		final Set<SkillLearn> result = new HashSet<>();
 		final Map<Long, SkillLearn> skills = getCompleteClassSkillTree(classId);
@@ -720,7 +730,7 @@ public class SkillTreeData implements IXmlReader
 					continue;
 				}
 				
-				final Skill oldSkill = holder.getKnownSkill(player.getReplacementSkill(skill.getSkillId()));
+				final Skill oldSkill = existingSkills.get(player.getReplacementSkill(skill.getSkillId()));
 				if (oldSkill != null)
 				{
 					if (oldSkill.getLevel() == (skill.getSkillLevel() - 1))
@@ -796,12 +806,21 @@ public class SkillTreeData implements IXmlReader
 	 */
 	public Collection<Skill> getAllAvailableSkills(Player player, ClassId classId, boolean includeByFs, boolean includeByFp, boolean includeAutoGet, boolean includeRequiredItems)
 	{
-		final PlayerSkillHolder holder = new PlayerSkillHolder(player);
+		final Map<Integer, Skill> result = new HashMap<>();
+		for (Skill skill : player.getSkills().values())
+		{
+			// Adding only skills that can be learned by the player.
+			if (isSkillAllowed(player, skill))
+			{
+				result.put(skill.getId(), skill);
+			}
+		}
+		
 		final Set<Integer> removed = new HashSet<>();
 		Collection<SkillLearn> learnable;
-		for (int i = 0; i < 1000; i++)
+		for (int i = 0; i < 10; i++)
 		{
-			learnable = getAvailableSkills(player, classId, includeByFs, includeByFp, includeAutoGet, includeRequiredItems, holder);
+			learnable = getAvailableSkills(player, classId, includeByFs, includeByFp, includeAutoGet, includeRequiredItems, result);
 			if (learnable.isEmpty())
 			{
 				break;
@@ -824,37 +843,38 @@ public class SkillTreeData implements IXmlReader
 			
 			for (SkillLearn skillLearn : learnable)
 			{
-				// Cleanup skills that has to be removed
+				// Cleanup skills that has to be removed.
 				for (int skillId : skillLearn.getRemoveSkills())
 				{
-					// Mark skill as removed, so it doesn't gets added
+					// Mark skill as removed, so it doesn't gets added.
 					removed.add(skillId);
 					
-					// Remove skill from player's skill list or prepared holder's skill list
+					// Remove skill from player's skill list or existing skill list.
 					final Skill playerSkillToRemove = player.getKnownSkill(skillId);
-					final Skill holderSkillToRemove = holder.getKnownSkill(skillId);
+					final Skill holderSkillToRemove = result.get(skillId);
 					
-					// If player has the skill remove it
+					// If player has the skill remove it.
 					if (playerSkillToRemove != null)
 					{
 						player.removeSkill(playerSkillToRemove);
 					}
 					
-					// If holder already contains the skill remove it
+					// If result already contains the skill remove it.
 					if (holderSkillToRemove != null)
 					{
-						holder.removeSkill(holderSkillToRemove);
+						result.remove(skillId);
 					}
 				}
 				
 				if (!removed.contains(skillLearn.getSkillId()))
 				{
 					final Skill skill = SkillData.getInstance().getSkill(skillLearn.getSkillId(), skillLearn.getSkillLevel());
-					holder.addSkill(skill);
+					result.put(skill.getId(), skill);
 				}
 			}
 		}
-		return holder.getSkills().values();
+		
+		return result.values();
 	}
 	
 	/**
@@ -1818,7 +1838,7 @@ public class SkillTreeData implements IXmlReader
 		for (ClassId cls : keySet)
 		{
 			i = 0;
-			tempMap = getCompleteClassSkillTree(cls);
+			tempMap = new HashMap<>(getCompleteClassSkillTree(cls));
 			array = new long[tempMap.size()];
 			for (long h : tempMap.keySet())
 			{

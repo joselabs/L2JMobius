@@ -90,7 +90,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98709" name="Blessed Talisman of Aden" additionalName="Sealed" type="Armor">
-		<!-- A talisman that contains the energy of Aden's royal family. Can be enchanted up to +10 with Scroll: Enchant Accessories. Enables special effects depending on its enchant value. Enchanting is safe up to +1. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
+		<!-- A talisman that contains the energy of Aden's royal family. Can be enchanted up to +10 with Scroll: Enchant Ornaments. Applies special effects based on the item's enchant value. Enchanting is safe up to +1. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. <font color=ff6666>Note!</font>. Effects of two identical talismans do not stack, the talisman with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.bm_aden_talisman_01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="talisman" />
@@ -98,22 +98,23 @@
 		<set name="material" val="GOLD" />
 		<set name="weight" val="120" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
 			<skill id="54047" level="2" type="ON_ENCHANT" type_value="0" /> <!-- Blessed Talisman of Aden -->
-			<skill id="54047" level="4" type="ON_ENCHANT" type_value="1" /> <!-- Blessed Talisman of Aden +1 -->
-			<skill id="54047" level="6" type="ON_ENCHANT" type_value="2" /> <!-- Blessed Talisman of Aden +2 -->
-			<skill id="54047" level="8" type="ON_ENCHANT" type_value="3" /> <!-- Blessed Talisman of Aden +3 -->
-			<skill id="54047" level="10" type="ON_ENCHANT" type_value="4" /> <!-- Blessed Talisman of Aden +4 -->
-			<skill id="54047" level="12" type="ON_ENCHANT" type_value="5" /> <!-- Blessed Talisman of Aden +5 -->
-			<skill id="54047" level="14" type="ON_ENCHANT" type_value="6" /> <!-- Blessed Talisman of Aden +6 -->
-			<skill id="54047" level="16" type="ON_ENCHANT" type_value="7" /> <!-- Blessed Talisman of Aden +7 -->
-			<skill id="54047" level="18" type="ON_ENCHANT" type_value="8" /> <!-- Blessed Talisman of Aden +8 -->
-			<skill id="54047" level="20" type="ON_ENCHANT" type_value="9" /> <!-- Blessed Talisman of Aden +9 -->
-			<skill id="54047" level="22" type="ON_ENCHANT" type_value="10" /> <!-- Blessed Talisman of Aden +10 -->
+			<skill id="54047" level="4" type="ON_ENCHANT" type_value="1" /> <!-- +1 Blessed Talisman of Aden -->
+			<skill id="54047" level="6" type="ON_ENCHANT" type_value="2" /> <!-- +2 Blessed Talisman of Aden -->
+			<skill id="54047" level="8" type="ON_ENCHANT" type_value="3" /> <!-- +3 Blessed Talisman of Aden -->
+			<skill id="54047" level="10" type="ON_ENCHANT" type_value="4" /> <!-- +4 Blessed Talisman of Aden -->
+			<skill id="54047" level="12" type="ON_ENCHANT" type_value="5" /> <!-- +5 Blessed Talisman of Aden -->
+			<skill id="54047" level="14" type="ON_ENCHANT" type_value="6" /> <!-- +6 Blessed Talisman of Aden -->
+			<skill id="54047" level="16" type="ON_ENCHANT" type_value="7" /> <!-- +7 Blessed Talisman of Aden -->
+			<skill id="54047" level="18" type="ON_ENCHANT" type_value="8" /> <!-- +8 Blessed Talisman of Aden -->
+			<skill id="54047" level="20" type="ON_ENCHANT" type_value="9" /> <!-- +9 Blessed Talisman of Aden -->
+			<skill id="54047" level="22" type="ON_ENCHANT" type_value="10" /> <!-- +10 Blessed Talisman of Aden -->
 		</skills>
 	</item>
 	<item id="98710" name="Package: +1 Blessed Talisman of Authority" additionalName="Sealed" type="EtcItem">
@@ -427,6 +428,10 @@
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="48787" level="1" /> <!-- Throw Carrot -->
+		</skills>
 	</item>
 	<item id="98731" name="Black Rabbit's Token (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- A reward for capturing Black Rabbit. <How to use>. Allows to obtain buff from the event NPC after capturing Black Rabbit. -->
@@ -480,7 +485,7 @@
 			<item id="98695" min="1" max="1" chance="16.66667" /> <!-- Rare Accessory Pack (Time-limited) - Sealed -->
 			<item id="97732" min="1" max="1" chance="16.66667" /> <!-- Doll Pack Lv. 1-2 (Time-limited) - Sealed -->
 			<item id="94168" min="5" max="5" chance="16.66667" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
-			<item id="98738" min="5" max="5" chance="16.66667" /> <!-- Augmenting Stone Coupon (Sealed) (Time-limited) - Sealed -->
+			<item id="98738" min="5" max="5" chance="16.66667" /> <!-- Augmenting Stone Coupon (Time-limited) - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="98734" name="Radiant Good Luck Bag (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -543,7 +548,7 @@
 			<item id="98695" min="1" max="1" chance="16.66667" /> <!-- Rare Accessory Pack (Time-limited) - Sealed -->
 			<item id="98081" min="1" max="1" chance="16.66667" /> <!-- Package: Einhasad's Pendant Lv. 1 (50 pcs.) - Sealed -->
 			<item id="98343" min="1" max="1" chance="16.66667" /> <!-- Package: Cloak of Protection (50 pcs.) - Sealed -->
-			<item id="98738" min="3" max="3" chance="16.66667" /> <!-- Augmenting Stone Coupon (Sealed) (Time-limited) - Sealed -->
+			<item id="98738" min="3" max="3" chance="16.66667" /> <!-- Augmenting Stone Coupon (Time-limited) - Sealed -->
 			<item id="93976" min="3" max="3" chance="16.66667" /> <!-- Scroll: Enchant A-grade Weapon - Sealed -->
 			<item id="93977" min="6" max="6" chance="16.66667" /> <!-- Scroll: Enchant A-grade Armor - Sealed -->
 		</capsuled_items>
@@ -566,11 +571,11 @@
 			<item id="98695" min="1" max="1" chance="20" /> <!-- Rare Accessory Pack (Time-limited) - Sealed -->
 			<item id="98081" min="1" max="1" chance="20" /> <!-- Package: Einhasad's Pendant Lv. 1 (50 pcs.) - Sealed -->
 			<item id="98343" min="1" max="1" chance="20" /> <!-- Package: Cloak of Protection (50 pcs.) - Sealed -->
-			<item id="98738" min="5" max="5" chance="20" /> <!-- Augmenting Stone Coupon (Sealed) (Time-limited) - Sealed -->
+			<item id="98738" min="5" max="5" chance="20" /> <!-- Augmenting Stone Coupon (Time-limited) - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="98738" name="Augmenting Stone Coupon (Sealed) (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to choose 1 Augmenting Stone (Sealed). -->
+		<!-- Double-click to obtain 1 Augmenting Stone of your choice. -->
 		<set name="icon" val="icon.bm_challenger_wp_trade_ticket" />
 		<set name="material" val="LIQUID" />
 		<set name="is_tradable" val="false" />
@@ -588,7 +593,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98740" name="Agathion Upgrade Certificate (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to obtain Agathion Spirit, or use it in the Special Craft to upgrade Agathion Spirit. <Items for exchange>. 15 certificates: +7 Agathion (1 type) 1 pc. 1 certificate: Agathion Package (1 type) 2 pcs. -->
+		<!-- Double-click to obtain Spirit Agathion or use it in the special craft to upgrade Spirit Agathion. <Items for exchange>. 15 certificates: +7 Agathion (1 type) 1 pc. 1 certificate: Agathion Package (1 type) 2 pcs. -->
 		<set name="icon" val="icon.bm_agathion_ticket_i00" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
@@ -1268,7 +1273,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98782" name="Gran Kain's Pendant" additionalName="Sealed" type="Armor">
-		<!-- Can be enchanted with Scroll: Enchant Accessories. -->
+		<!-- Can be enchanted with Scroll: Enchant Ornaments. -->
 		<set name="icon" val="icon.bm_pendant_of_grankain_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="underwear" />
@@ -1284,17 +1289,17 @@
 		</stats>
 		<skills>
 			<skill id="50341" level="6" type="ON_ENCHANT" type_value="0" /> <!-- Gran Kain's Pendant -->
-			<skill id="50341" level="7" type="ON_ENCHANT" type_value="1" /> <!-- Gran Kain's Pendant +1 -->
-			<skill id="50341" level="8" type="ON_ENCHANT" type_value="2" /> <!-- Gran Kain's Pendant +2 -->
-			<skill id="50341" level="9" type="ON_ENCHANT" type_value="3" /> <!-- Gran Kain's Pendant +3 -->		
-			<skill id="50341" level="10" type="ON_ENCHANT" type_value="4" /> <!-- Gran Kain's Pendant +4 -->
-			<skill id="50341" level="11" type="ON_ENCHANT" type_value="5" /> <!-- Gran Kain's Pendant +5 -->
-			<skill id="50342" level="2" type="ON_ENCHANT" type_value="0" /> <!-- Invocation lvl. 2 -->
-			<skill id="50342" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Invocation lvl. 3 -->
-			<skill id="50342" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Invocation lvl. 4 -->
-			<skill id="50342" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Invocation lvl. 5 -->
-			<skill id="50342" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Invocation lvl. 6 -->
-			<skill id="50342" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Invocation lvl. 7 -->
+			<skill id="50341" level="7" type="ON_ENCHANT" type_value="1" /> <!-- +1 Gran Kain's Pendant -->
+			<skill id="50341" level="8" type="ON_ENCHANT" type_value="2" /> <!-- +2 Gran Kain's Pendant -->
+			<skill id="50341" level="9" type="ON_ENCHANT" type_value="3" /> <!-- +3 Gran Kain's Pendant -->
+			<skill id="50341" level="10" type="ON_ENCHANT" type_value="4" /> <!-- +4 Gran Kain's Pendant -->
+			<skill id="50341" level="11" type="ON_ENCHANT" type_value="5" /> <!-- +5 Gran Kain's Pendant -->
+			<skill id="50342" level="2" type="ON_ENCHANT" type_value="0" /> <!-- Invocation -->
+			<skill id="50342" level="3" type="ON_ENCHANT" type_value="1" /> <!-- Invocation -->
+			<skill id="50342" level="4" type="ON_ENCHANT" type_value="2" /> <!-- Invocation -->
+			<skill id="50342" level="5" type="ON_ENCHANT" type_value="3" /> <!-- Invocation -->
+			<skill id="50342" level="6" type="ON_ENCHANT" type_value="4" /> <!-- Invocation -->
+			<skill id="50342" level="7" type="ON_ENCHANT" type_value="5" /> <!-- Invocation -->
 		</skills>
 	</item>
 	<item id="98783" name="Scroll: PK/ Einhasad's Protection Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">

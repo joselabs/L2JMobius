@@ -153,7 +153,7 @@ public class RequestLuckyGamePlay extends ClientPacket
 				final Item item = player.addItem("LuckyGame", r.getId(), r.getCount(), player, true);
 				if (reward.getKey() == LuckyGameItemType.UNIQUE)
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.CONGRATULATIONS_C1_HAS_OBTAINED_S2_OF_S3_THROUGH_FORTUNE_READING);
+					final SystemMessage sm = new SystemMessage(_type == LuckyGameType.LUXURY ? SystemMessageId.CONGRATULATIONS_C1_HAS_OBTAINED_S2_OF_S3_IN_THE_LUXURY_FORTUNE_READING : SystemMessageId.CONGRATULATIONS_C1_HAS_OBTAINED_S2_OF_S3_THROUGH_FORTUNE_READING);
 					sm.addPcName(player);
 					sm.addLong(r.getCount());
 					sm.addItemName(item);

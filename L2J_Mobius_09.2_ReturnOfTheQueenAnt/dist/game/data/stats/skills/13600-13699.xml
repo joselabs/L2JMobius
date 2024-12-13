@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="13600" toLevel="1" name="Augment Effect - Water Resistance">
 		<!-- Passive: Water Resistance +20. -->
@@ -126,7 +126,7 @@
 		<icon>icon.skill4416_dwarf</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>212</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -137,7 +137,7 @@
 		<icon>icon.skill4416_dwarf</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>498</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -746,7 +746,7 @@
 		<icon>icon.etc_oricalcum_quiver_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -760,7 +760,7 @@
 		<icon>icon.etc_oricalcum_bolt_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -775,7 +775,7 @@
 		<icon>icon.etc_oricalcum_quiver_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<!-- According to retail tests, 84 out of 400 attacks succeeded. Its unknown if they have taken cooldown into account. -->
 				<!-- Orichalcum Arrow - Additional Hit -->
 				<minDamage>1</minDamage>
@@ -797,7 +797,7 @@
 		<effectPoint>-100</effectPoint>
 		<reuseDelay>15000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<pDefMod>0.7</pDefMod>
 			</effect>
 		</effects>
@@ -807,7 +807,7 @@
 		<icon>icon.etc_oricalcum_bolt_i00</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="TriggerSkillByDamageDealt">
 				<!-- According to retail tests, 84 out of 400 attacks succeeded. Its unknown if they have taken cooldown into account. -->
 				<!-- Orichalcum Bolt - Additional Hit -->
 				<minDamage>1</minDamage>
@@ -829,7 +829,7 @@
 		<effectPoint>-100</effectPoint>
 		<reuseDelay>15000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<pDefMod>0.7</pDefMod>
 			</effect>
 		</effects>
@@ -1397,24 +1397,24 @@
 		<!-- For 10 sec., increases P. Atk. by 20%, M. Atk. by 20%, Skill Critical Rate by 20%, and Skill Critical Damage by 20%. Cooldown is 120 sec.. Can only be used in the Grand Olympiad/Ceremony of Chaos. -->
 		<icon>icon.etc_talisman_i07</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>OLYMPIAD_ATTACK</abnormalType>
-		<hitTime>1000</hitTime>
-		<effectPoint>532</effectPoint>
-		<reuseDelay>120000</reuseDelay>
-		<isMagic>4</isMagic>
-		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>532</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<reuseDelay>120000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="OpOlympiad" />
 		</conditions>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1443,15 +1443,15 @@
 		<!-- For 10 sec., increases Atk. Spd. by 20%, Casting Spd. by 20%, Speed by 60, and decreases Skill Cooldown by 20%. Cooldown is 120 sec.. Can only be used in the Grand Olympiad/Ceremony of Chaos. -->
 		<icon>icon.etc_talisman_i07</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>OLYMPIAD_SPEED</abnormalType>
-		<hitTime>1000</hitTime>
-		<effectPoint>532</effectPoint>
-		<reuseDelay>120000</reuseDelay>
-		<isMagic>4</isMagic>
-		<staticReuse>true</staticReuse>
-		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effectPoint>532</effectPoint>
+		<hitTime>1000</hitTime>
+		<isMagic>4</isMagic>
+		<reuseDelay>120000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="OpOlympiad" />
 		</conditions>
@@ -1491,18 +1491,18 @@
 	<skill id="13693" toLevel="1" name="Talisman of Battle - Support">
 		<!-- Cancels hiding, invincibility, talisman buffs of enemies within range, and prevents them from obtaining those effects for 9 sec.. Cooldown is 90 sec.. Can only be used in the Grand Olympiad/Ceremony of Chaos. -->
 		<icon>icon.etc_talisman_i07</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
-		<operateType>A2</operateType>
-		<hitTime>3000</hitTime>
-		<reuseDelay>90000</reuseDelay>
 		<affectRange>2000</affectRange>
-		<staticReuse>true</staticReuse>
-		<effectPoint>-711</effectPoint>
-		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
+		<effectPoint>-711</effectPoint>
+		<hitTime>3000</hitTime>
+		<isDebuff>true</isDebuff>
 		<isMagic>2</isMagic>
+		<reuseDelay>90000</reuseDelay>
+		<staticReuse>true</staticReuse>
 		<conditions>
 			<condition name="OpOlympiad" />
 		</conditions>
@@ -1571,8 +1571,8 @@
 		<icon>icon.egg_white</icon>
 		<operateType>A1</operateType>
 		<hitTime>5000</hitTime>
-		<reuseDelay>10800000</reuseDelay>
 		<isMagic>1</isMagic>
+		<reuseDelay>10800000</reuseDelay>
 	</skill>
 	<skill id="13699" toLevel="1" name="Check Kokko's Egg">
 		<!-- You can check Kokko's Egg. -->

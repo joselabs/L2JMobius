@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="53001" toLevel="3" name="Critical Creation">
-		<!-- Craft critical success rate +3%. -->
+		<!-- Level 1: Craft critical success rate +3%. -->
+		<!-- Level 2: Craft critical success rate +5%. -->
+		<!-- Level 3: Craft critical success rate +10%. -->
 		<icon>icon.skill10701</icon>
+		<operateType>P</operateType>
 		<magicLevel>
 			<value level="1">76</value>
 			<value level="2">79</value>
 			<value level="3">84</value>
 		</magicLevel>
-		<operateType>P</operateType>
 		<effects>
 			<effect name="CraftingCritical">
 				<amount>
@@ -20,14 +22,16 @@
 		</effects>
 	</skill>
 	<skill id="53002" toLevel="3" name="Master of Creation">
-		<!-- Craft success rate +5%. -->
+		<!-- Level 1: Craft success rate +5%. -->
+		<!-- Level 2: Craft success rate +10%. -->
+		<!-- Level 3: Craft success rate +20%. -->
 		<icon>icon.skill10312</icon>
+		<operateType>P</operateType>
 		<magicLevel>
 			<value level="1">78</value>
 			<value level="2">82</value>
 			<value level="3">84</value>
 		</magicLevel>
-		<operateType>P</operateType>
 		<effects>
 			<effect name="CraftRate">
 				<amount>
@@ -41,41 +45,41 @@
 	<skill id="53003" toLevel="3" name="Mass Chain Strike">
 		<!-- Pulls a selected target and nearby enemies to you and provokes. -->
 		<icon>icon.skill53003</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>1</abnormalTime>
 		<abnormalType>PULLING</abnormalType>
-		<affectRange>400</affectRange>
 		<activateRate>90</activateRate>
-		<lvlBonusRate>30</lvlBonusRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>400</affectRange>
+		<affectScope>RANGE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
-		<magicLevel>
-			<value level="1">78</value>
-			<value level="2">81</value>
-			<value level="3">84</value>
-		</magicLevel>
-		<operateType>A2</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<mpConsume>
-			<value level="1">123</value>
-			<value level="2">127</value>
-			<value level="3">132</value>
-		</mpConsume>
 		<castRange>600</castRange>
-		<hitTime>1500</hitTime>
 		<coolTime>1000</coolTime>
-		<reuseDelay>60000</reuseDelay>
 		<effectPoint>
 			<value level="1">-4186</value>
 			<value level="2">-4210</value>
 			<value level="3">-4232</value>
 		</effectPoint>
-		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1100</effectRange>
-		<trait>PULL</trait>
+		<hitCancelTime>0</hitCancelTime>
+		<hitTime>500</hitTime>
 		<isDebuff>true</isDebuff>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">78</value>
+			<value level="2">81</value>
+			<value level="3">84</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">123</value>
+			<value level="2">127</value>
+			<value level="3">132</value>
+		</mpConsume>
+		<reuseDelay>60000</reuseDelay>
+		<trait>PULL</trait>
 		<effects>
 			<effect name="PullBack">
 				<speed>
@@ -92,7 +96,11 @@
 		</effects>
 	</skill>
 	<skill id="53004" toLevel="5" name="Critical Vulnerability Decrease">
-		<!-- Chance of receiving damage from a vital point attack -20%, Received P. Critical Rate -30%. -->
+		<!-- Level 1: Chance of receiving damage from a vital point attack -20%, Received P. Critical Rate -30%. -->
+		<!-- Level 2: Chance of receiving damage from a vital point attack -25%, Received P. Critical Rate -35%. -->
+		<!-- Level 3: Chance of receiving damage from a vital point attack -30%, Received P. Critical Rate -40%. -->
+		<!-- Level 4: Chance of receiving damage from a vital point attack -35%, Received P. Critical Rate -45%. -->
+		<!-- Level 5: Chance of receiving damage from a vital point attack -40%, Received P. Critical Rate -50%. -->
 		<icon>icon.skill53004</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -130,22 +138,22 @@
 		<!-- Allows to find invisible enemies nearby character. Target can't become invisible and cancel this effect for 2 sec. Requires a bow. -->
 		<icon>icon.skill53005</icon>
 		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalLevel>10</abnormalLevel>
+		<abnormalTime>2</abnormalTime>
+		<abnormalType>HIDE</abnormalType>
+		<affectObject>INVISIBLE</affectObject>
+		<affectRange>1000</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>300</coolTime>
+		<effectPoint>0</effectPoint>
+		<hitTime>1200</hitTime>
+		<isDebuff>true</isDebuff>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>76</magicLevel>
 		<mpConsume>70</mpConsume>
-		<hitTime>1200</hitTime>
-		<coolTime>300</coolTime>
-		<basicProperty>NONE</basicProperty>
-		<abnormalTime>2</abnormalTime>
-		<abnormalLevel>10</abnormalLevel>
-		<abnormalType>HIDE</abnormalType>
-		<effectPoint>-760</effectPoint>
-		<affectRange>1000</affectRange>
 		<reuseDelay>30000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>INVISIBLE</affectObject>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -162,11 +170,14 @@
 	<skill id="53006" toLevel="5" name="Bind">
 		<!-- Blocks all the enemy's physical skills for 10 sec. -->
 		<icon>icon.skill6320</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>SILENCE_PHYSICAL</abnormalType>
 		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
 		<activateRate>90</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>900</castRange>
 		<effectPoint>
@@ -181,6 +192,7 @@
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>30</lvlBonusRate>
+		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">76</value>
 			<value level="2">78</value>
@@ -202,19 +214,19 @@
 			<value level="4">29</value>
 			<value level="5">31</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>120000</reuseDelay>
-		<magicCriticalRate>5</magicCriticalRate>
 		<trait>DERANGEMENT</trait>
-		<targetType>ENEMY_ONLY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="PhysicalMute" />
 		</effects>
 	</skill>
 	<skill id="53007" toLevel="3" name="Heavy Armor Mastery">
-		<!-- Temporarily P. Atk. +50 and Atk. Spd. +10%. -->
+		<!-- Level 1: Temporarily P. Atk. +50 and Atk. Spd. +10%. -->
+		<!-- Level 2: Temporarily P. Atk. +100 and Atk. Spd. +12%. -->
+		<!-- Level 3: Temporarily P. Atk. +150 and Atk. Spd. +15%. -->
 		<icon>icon.skill0232</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -222,20 +234,18 @@
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>WEAPON_MASTERY</abnormalType>
+		<affectScope>SINGLE</affectScope>
+		<isMagic>4</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">20</value>
 			<value level="2">40</value>
 			<value level="3">76</value>
 		</magicLevel>
-		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isMagic>4</isMagic>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -259,11 +269,14 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="53010" toLevel="5" name="Knight's Protection">
-		<!-- For 20 min., Shield Defense Rate +10%, Shield Defense +10%. <Auto-use> -->
+		<!-- Level 1: For 20 min., Shield Defense Rate +10%, Shield Defense +10%. <Auto-use> -->
+		<!-- Level 2: For 20 min., Shield Defense Rate +20%, Shield Defense +15%. <Auto-use> -->
+		<!-- Level 3: For 20 min., Shield Defense Rate +30%, Shield Defense +20%. <Auto-use> -->
+		<!-- Level 4: For 20 min., Shield Defense Rate +40%, Shield Defense +25%. <Auto-use> -->
+		<!-- Level 5: For 20 min., Shield Defense Rate +50%, Shield Defense +30%. <Auto-use> -->
 		<icon>icon.skill10012</icon>
 		<operateType>A2</operateType>
 		<hitTime>2500</hitTime>
-		<reuseDelay>10000</reuseDelay>
 		<mpConsume>
 			<value level="1">50</value>
 			<value level="2">55</value>
@@ -271,5 +284,6 @@
 			<value level="4">70</value>
 			<value level="5">75</value>
 		</mpConsume>
+		<reuseDelay>10000</reuseDelay>
 	</skill>
 </list>

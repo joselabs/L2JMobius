@@ -45,7 +45,7 @@
 			<item id="94168" min="1" max="1" chance="2.439024" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
 			<item id="94258" min="1" max="1" chance="2.439024" /> <!-- Package: Einhasad's Pendant Lv. 1 - Sealed -->
 			<item id="96985" min="1" max="1" chance="2.439024" /> <!-- Package: Brooch Lv. 3 - Sealed -->
-			<item id="96983" min="1" max="1" chance="2.439024" /> <!-- Package: Agathion Bracelet Lv. 3 - Sealed -->
+			<item id="96983" min="1" max="1" chance="2.439024" /> <!-- Package: Agathion Summon Bracelet Lv. 3 - Sealed -->
 			<item id="96984" min="1" max="1" chance="2.439024" /> <!-- Package: Talisman Bracelet Lv. 3 - Sealed -->
 			<item id="95783" min="1" max="1" chance="2.439024" /> <!-- Aden's Soul Crystal Lv. 1 - Weapon -->
 			<item id="96901" min="1" max="1" chance="2.439024" /> <!-- Aden's Soul Crystal Lv. 1 - Armor -->
@@ -105,6 +105,7 @@
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1200" />
 		<set name="enchant_enabled" val="true" />
+		<set name="enchant_limit" val="10" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -119,9 +120,13 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="EnchantScrolls" />
+		<skills>
+			<skill id="51049" level="1" /> <!-- Stable Scroll: Enchant Agathion -->
+		</skills>
 	</item>
 	<item id="98205" name="Blessed Circlet of Hero" additionalName="Sealed" type="Armor">
-		<!-- Can be enchanted up to +10 with Scroll: Enchant Accessories. Enables special effects depending on its enchant value. Enchanting is not safe even to +1. <font color=eeaa22>Equipped in the left head accessory slot.</font>. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. -->
+		<!-- Can be enchanted up to +10 with Scroll: Enchant Ornaments. Applies special effects based on the item's enchant value. Enchanting is not safe even to +1. <font color=eeaa22>Equipped in the left head accessory slot.</font>. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. -->
 		<set name="icon" val="icon.accessory_barka_karm_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="hair" />
@@ -132,6 +137,18 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
+		<skills>
+			<skill id="50390" level="1" /> <!-- Blessed Circlet of Hero -->
+			<skill id="50390" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Blessed Circlet of Hero -->
+			<skill id="50390" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Blessed Circlet of Hero -->
+			<skill id="50390" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Blessed Circlet of Hero -->
+			<skill id="50390" level="5" type="ON_ENCHANT" type_value="4" /> <!-- Blessed Circlet of Hero +4 -->
+			<skill id="50390" level="6" type="ON_ENCHANT" type_value="5" /> <!-- Blessed Circlet of Hero +5 -->
+			<skill id="50390" level="7" type="ON_ENCHANT" type_value="6" /> <!-- Blessed Circlet of Hero +6 -->
+			<skill id="50390" level="8" type="ON_ENCHANT" type_value="7" /> <!-- Blessed Circlet of Hero +7 -->
+			<skill id="50390" level="9" type="ON_ENCHANT" type_value="8" /> <!-- Blessed Circlet of Hero +8 -->
+			<skill id="50390" level="10" type="ON_ENCHANT" type_value="9" /> <!-- Blessed Circlet of Hero +9 -->
+		</skills>
 	</item>
 	<item id="98206" name="Dye Coupon Lv. 11 (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain 1 Dye Lv. 11 of your choice. -->
@@ -240,6 +257,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40469" level="1" /> <!-- Sky Lantern Summoning Kit -->
+		</skills>
 	</item>
 	<item id="98211" name="Large Yellow Sky Lantern (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- When used, summons Large Yellow Sky Lantern. You can make a wish while watching them fly. <font color=ff6666>Note!</font>. Event zone: the area in front of the temple in the Orc Village. Required level: 80+. -->
@@ -251,6 +272,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40470" level="1" /> <!-- Large Yellow Sky Lantern -->
+		</skills>
 	</item>
 	<item id="98212" name="Enchanted Lamp (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- A lamp imbued with great magic powers. <How to use>. Take it to the event NPC Hina in any town to apply a special buff on all nearby characters. -->
@@ -292,7 +317,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="immediate_effect" val="true" />
 		<skills>
-			<skill id="40472" level="1" /> <!-- Pagan Temple's Time Stone -->
+			<skill id="40472" level="1" /> <!-- Pagan Temple's Time Stone (Sealed) -->
 		</skills>
 	</item>
 	<item id="98215" name="Temple Catacomb Pass (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -306,6 +331,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40473" level="1" /> <!-- Extra Pass: Temple's Underground Passage -->
+		</skills>
 	</item>
 	<item id="98216" name="Monster Only (Monk Warrior Shield)" additionalName="Not Available" type="Armor">
 		<set name="icon" val="icon.weapon_monster_i00" />
@@ -596,6 +625,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="48700" level="1" /> <!-- Triol's Enslavement Protection -->
+		</skills>
 	</item>
 	<item id="98232" name="SP Pouch" additionalName="Sealed" type="EtcItem">
 		<!-- A pouch for collecting skill enchant XP. -->
@@ -629,7 +662,7 @@
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="98235" name="Agathion Dragon Egg" additionalName="Sealed" type="Armor">
-		<!-- Can be enchanted with Scroll: Enchant Accessories. Equipping it in the main slot summons Agathion Dragon Egg. +10 Agathion Dragon Egg can be compounded with another Agathion Dragon Egg or Transcendent Upgrade Stone to get Agathion Valakas. <font color=ff6666>Note!</font>. Effects of two identical agathions do not stack, the agathion with a higher enchant value takes precedence. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. -->
+		<!-- Can be enchanted with Scroll: Enchant Ornaments. Equipping it in the main slot summons Agathion Dragon Egg. +10 Agathion Dragon Egg can be compounded with another Agathion Dragon Egg or Transcendent Upgrade Stone to get Agathion Valakas. <font color=ff6666>Note!</font>. Effects of two identical agathions do not stack, the agathion with a higher enchant value takes precedence. When using Transcendent Upgrade Stone, enchanting is safe starting from +8. -->
 		<set name="icon" val="icon.agathion_valakas_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -645,12 +678,23 @@
 			<stat type="mDef">35</stat>
 		</stats>
 		<skills>
-			<skill id="50664" level="1" /> <!-- Summon Agathion Dragon Egg -->
-			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="50664" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Dragon Egg -->
+			<skill id="54018" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="50663" level="1" /> <!-- Agathion Dragon Egg -->
+			<skill id="50663" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Agathion Dragon Egg -->
+			<skill id="50663" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Agathion Dragon Egg -->
+			<skill id="50663" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Agathion Dragon Egg -->
+			<skill id="50663" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Agathion Dragon Egg -->
+			<skill id="50663" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Agathion Dragon Egg -->
+			<skill id="50663" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Agathion Dragon Egg -->
+			<skill id="50663" level="8" type="ON_ENCHANT" type_value="7" /> <!-- +7 Agathion Dragon Egg -->
+			<skill id="50663" level="9" type="ON_ENCHANT" type_value="8" /> <!-- +8 Agathion Dragon Egg -->
+			<skill id="50663" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Agathion Dragon Egg -->
+			<skill id="50663" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Agathion Dragon Egg -->
 		</skills>
 	</item>
 	<item id="98236" name="Agathion Valakas" additionalName="Sealed" type="Armor">
-		<!-- Can be enchanted with Scroll: Enchant Accessories. Equipping it in the main slot summons Agathion Valakas. <font color=ff6666>Note!</font>. Effects of two identical agathions do not stack, the agathion with a higher enchant value takes precedence. -->
+		<!-- Can be enchanted with Scroll: Enchant Ornaments. Equipping it in the main slot summons Agathion Valakas. <font color=ff6666>Note!</font>. Effects of two identical agathions do not stack, the agathion with a higher enchant value takes precedence. -->
 		<set name="icon" val="icon.agathion_valakas_i01" />
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="agathion" />
@@ -666,8 +710,14 @@
 			<stat type="mDef">75</stat>
 		</stats>
 		<skills>
-			<skill id="50665" level="1" /> <!-- Summon Agathion Valakas -->
-			<skill id="3267" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="50665" level="1" type="ON_EQUIP" /> <!-- Summon Agathion Valakas -->
+			<skill id="54018" level="1" type="ON_UNEQUIP" /> <!-- Seal Agathion -->
+			<skill id="50663" level="1" /> <!-- Agathion Dragon Egg -->
+			<skill id="50663" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Agathion Dragon Egg -->
+			<skill id="50663" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Agathion Dragon Egg -->
+			<skill id="50663" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Agathion Dragon Egg -->
+			<skill id="50663" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Agathion Dragon Egg -->
+			<skill id="50663" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Agathion Dragon Egg -->
 		</skills>
 	</item>
 	<item id="98237" name="Black/ Red Wyvern Spellbook Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -763,7 +813,7 @@
 			<item id="97494" min="1" max="1" chance="3.225806" /> <!-- Package: Glakias Doll Lv. 1 - Sealed -->
 			<item id="97489" min="1" max="1" chance="3.225806" /> <!-- Package: Behemoth Doll Lv. 1 - Sealed -->
 			<item id="98241" min="1" max="1" chance="3.225806" /> <!-- Package: Agathion Dragon Egg (100 pcs.) - Sealed -->
-			<item id="97778" min="1" max="1" chance="3.225806" /> <!-- Agathion Spirit Exchange Coupon Pack (200 pcs.) - Sealed -->
+			<item id="97778" min="1" max="1" chance="3.225806" /> <!-- Spirit Agathion Exchange Coupon Pack (200 pcs.) - Sealed -->
 			<item id="96652" min="1" max="1" chance="3.225806" /> <!-- Package: Antharas Doll Lv. 1 - Sealed -->
 			<item id="94156" min="1" max="1" chance="3.225806" /> <!-- Package: Baium Doll Lv. 1 - Sealed -->
 			<item id="94513" min="1" max="1" chance="3.225806" /> <!-- Package: Frintezza Doll Lv. 1 - Sealed -->
@@ -772,7 +822,7 @@
 			<item id="94159" min="1" max="1" chance="3.225806" /> <!-- Package: Queen Ant Doll Lv. 1 - Sealed -->
 			<item id="94162" min="1" max="1" chance="3.225806" /> <!-- Package: Orfen Doll Lv. 1 - Sealed -->
 			<item id="94328" min="1" max="1" chance="3.225806" /> <!-- Elixir Powder - Sealed -->
-			<item id="94732" min="1" max="1" chance="3.225806" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="1" max="1" chance="3.225806" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="98240" min="1" max="1" chance="3.225806" /> <!-- Package: Agathion Dragon Egg - Sealed -->
 		</capsuled_items>
 	</item>
@@ -861,7 +911,7 @@
 		</stats>
 	</item>
 	<item id="98249" name="Scroll: PK (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to decrease your <font color=ff6666>PK points</font>. <Effect>. <font color=ff6666>PK count</font> <font color=ff6666>-1</font>. <Use condition>. <font color=ff6666>PK count</font> is <font color=ff6666>more than 1</font>. Cannot be used in the Underground Labyrinth. -->
+		<!-- Double-click to decrease your <font color=ff6666>PK points</font>. <Effect>. <font color=ff6666>PK count</font> <font color=ff6666>-1</font>. <Prerequisite>. <font color=ff6666>PK count</font> is <font color=ff6666>more than 1</font>. Cannot be used in the Underground Labyrinth. -->
 		<set name="icon" val="icon.etc_ev_draco_pk_count_down" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
@@ -870,6 +920,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40475" level="1" /> <!-- Scroll: PK -->
+		</skills>
 	</item>
 	<item id="98250" name="Extra Pass: Training Zone (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to get an extra pass to the Training Zone. Note!. Can be used once a day outside of instance zones. Can only be used when the Training Zone is on cooldown. -->
@@ -881,6 +935,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40476" level="1" /> <!-- Extra Pass: Training Zone -->
+		</skills>
 	</item>
 	<item id="98251" name="Monster Weapon_Monsters Only_Demonic Sword Zariche" additionalName="Not Available" type="Weapon">
 		<set name="icon" val="icon.weapon_unique_zariche_i00" />
@@ -931,6 +989,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_depositable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40474" level="1" /> <!-- Summon Hoot -->
+		</skills>
 	</item>
 	<item id="98254" name="Temple Exploration Log - 1 (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- An exploration log that can be obtained during the event mission 'Explore Pagan Temple'. <How to use>. When added to a collection, grants additional abilities. Special Craft - Pagan Temple -->
@@ -1442,7 +1504,7 @@
 			<item id="94159" min="1" max="1" chance="4.166667" /> <!-- Package: Queen Ant Doll Lv. 1 - Sealed -->
 			<item id="94162" min="1" max="1" chance="4.166667" /> <!-- Package: Orfen Doll Lv. 1 - Sealed -->
 			<item id="96985" min="1" max="1" chance="4.166667" /> <!-- Package: Brooch Lv. 3 - Sealed -->
-			<item id="96983" min="1" max="1" chance="4.166667" /> <!-- Package: Agathion Bracelet Lv. 3 - Sealed -->
+			<item id="96983" min="1" max="1" chance="4.166667" /> <!-- Package: Agathion Summon Bracelet Lv. 3 - Sealed -->
 			<item id="96984" min="1" max="1" chance="4.166667" /> <!-- Package: Talisman Bracelet Lv. 3 - Sealed -->
 			<item id="97788" min="1" max="1" chance="4.166667" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
 			<item id="94717" min="2" max="2" chance="4.166667" /> <!-- Hellbound Energy - Sealed -->

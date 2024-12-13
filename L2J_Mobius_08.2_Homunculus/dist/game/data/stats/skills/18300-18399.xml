@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="18344" toLevel="1" name="Escape: Village">
 		<!-- Teleports to a village. -->
@@ -9,6 +9,9 @@
 	</skill>
 	<skill id="18345" toLevel="6" name="Spellbook: Dignity of the Exalted Lv. 1">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
@@ -20,11 +23,8 @@
 			<value level="5">47853</value>
 			<value level="6">80970</value>
 		</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>99</minLevel>
@@ -139,15 +139,15 @@
 	</skill>
 	<skill id="18348" toLevel="1" name="Spellbook: Belief of the Exalted">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>45925</itemConsumeId> <!-- Spellbook: Belief of the Exalted -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>99</minLevel>
@@ -167,15 +167,15 @@
 	</skill>
 	<skill id="18349" toLevel="1" name="Spellbook: Blessing of the Exalted">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>45926</itemConsumeId> <!-- Spellbook: Blessing of the Exalted -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>99</minLevel>
@@ -195,15 +195,15 @@
 	</skill>
 	<skill id="18350" toLevel="1" name="Spellbook: Summon Battle Potion">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>45927</itemConsumeId> <!-- Spellbook: Summon Battle Potion -->
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>99</minLevel>
@@ -223,6 +223,9 @@
 	</skill>
 	<skill id="18351" toLevel="2" name="Spellbook: Favor of the Exalted Lv. 1">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
 		<hitTime>3000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
@@ -230,11 +233,8 @@
 			<value level="1">45928</value> <!-- Spellbook: Favor of the Exalted Lv. 1 -->
 			<value level="2">45870</value> <!-- Spellbook: Favor of the Exalted Lv. 2 -->
 		</itemConsumeId>
-		<magicLevel>1</magicLevel>
-		<operateType>A1</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>99</minLevel>
@@ -382,29 +382,33 @@
 		<!-- You've gotten full from the food at the festival. Atk. Spd. -5%, Casting Spd. -5%, Speed -20, and P. Def. +10%, M. Def. +10%, Max HP +10% for 3 h. -->
 		<icon>icon.ev_festival_chicken</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>1000</reuseDelay>
 		<isMagic>4</isMagic>
+		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="18361" toLevel="1" name="Festival Buff - Tipsy Tipsy">
 		<!-- You've drank too much at the festival. For 3 h., Atk. Spd. -5%, Casting Spd. -5%, Speed -20, P. Atk. +10%, M. Atk. +10%, P. Skill Power +10%, Damage Reflection Resistance +10%. -->
 		<icon>icon.ev_festival_herong</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>1000</reuseDelay>
 		<isMagic>4</isMagic>
+		<reuseDelay>1000</reuseDelay>
 	</skill>
 	<skill id="18362" toLevel="1" name="Star Rating Preparation">
 		<!-- Kableon is looking at you to give you a star rating. -->
 		<icon>icon.etc_deco_star_i00</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
 		<isMagic>1</isMagic>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="18363" toLevel="5" name="Star Rating">
-		<!-- 1 star. -->
+		<!-- Level 1: 1 star. -->
+		<!-- Level 2: 2 star. -->
+		<!-- Level 3: 3 star. -->
+		<!-- Level 4: 4 star. -->
+		<!-- Level 5: 5 star. -->
 		<icon>icon.etc_deco_star_i00</icon>
 		<operateType>A2</operateType>
-		<reuseDelay>2000</reuseDelay>
 		<isMagic>1</isMagic>
+		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="18364" toLevel="1" name="Festival's Effect">
 		<!-- The festival is not over yet. The character can obtain 300 Festival Coins after 6 h. from buff removing. The buff can be obtained once a day. It resets at 6:30 AM every day. Note!. The Festival Coins can't be obtained if your character is dead or has no free slots in the inventory. -->
@@ -550,7 +554,8 @@
 		<reuseDelay>2000</reuseDelay>
 	</skill>
 	<skill id="18380" toLevel="2" name="Mysterious Talisman - STR">
-		<!-- When equipped, STR +5. -->
+		<!-- Level 1: When equipped, STR +5. -->
+		<!-- Level 2: STR +5, P. Atk. +450. -->
 		<icon>
 			<value level="1">icon.npoint_talisman_stat</value>
 			<value level="2">Icon.etc_allstat_talisman_i00</value>
@@ -561,7 +566,7 @@
 				<amount>5</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">450</value>
@@ -571,7 +576,8 @@
 		</effects>
 	</skill>
 	<skill id="18381" toLevel="2" name="Mysterious Talisman - INT">
-		<!-- When equipped, INT +5. -->
+		<!-- Level 1: When equipped, INT +5. -->
+		<!-- Level 2: INT +5, M. Atk. +260, when equipped. -->
 		<icon>
 			<value level="1">icon.npoint_talisman_stat</value>
 			<value level="2">Icon.etc_allstat_talisman_i00</value>
@@ -582,7 +588,7 @@
 				<amount>5</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="MAtk">
+			<effect name="MagicalAttack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">260</value>
@@ -592,7 +598,8 @@
 		</effects>
 	</skill>
 	<skill id="18382" toLevel="2" name="Mysterious Talisman - DEX">
-		<!-- When equipped, DEX +5. -->
+		<!-- Level 1: When equipped, DEX +5. -->
+		<!-- Level 2: DEX +5, Atk. Spd. +25, when equipped. -->
 		<icon>
 			<value level="1">icon.npoint_talisman_stat</value>
 			<value level="2">Icon.etc_allstat_talisman_i00</value>
@@ -613,7 +620,8 @@
 		</effects>
 	</skill>
 	<skill id="18383" toLevel="2" name="Mysterious Talisman - WIT">
-		<!-- When equipped, WIT +5. -->
+		<!-- Level 1: When equipped, WIT +5. -->
+		<!-- Level 2: WIT +5, Casting Spd. +25. -->
 		<icon>
 			<value level="1">icon.npoint_talisman_stat</value>
 			<value level="2">Icon.etc_allstat_talisman_i00</value>
@@ -634,7 +642,8 @@
 		</effects>
 	</skill>
 	<skill id="18384" toLevel="2" name="Mysterious Talisman - CON">
-		<!-- When equipped, CON +5. -->
+		<!-- Level 1: When equipped, CON +5. -->
+		<!-- Level 2: CON +5, Max HP +500. -->
 		<icon>
 			<value level="1">icon.npoint_talisman_stat</value>
 			<value level="2">Icon.etc_allstat_talisman_i00</value>
@@ -655,7 +664,8 @@
 		</effects>
 	</skill>
 	<skill id="18385" toLevel="2" name="Mysterious Talisman - MEN">
-		<!-- When equipped, MEN +5. -->
+		<!-- Level 1: When equipped, MEN +5. -->
+		<!-- Level 2: MEN +5, Max MP +250, when equipped. -->
 		<icon>
 			<value level="1">icon.npoint_talisman_stat</value>
 			<value level="2">Icon.etc_allstat_talisman_i00</value>
@@ -676,7 +686,8 @@
 		</effects>
 	</skill>
 	<skill id="18386" toLevel="2" name="PA Talisman - Attribute Attack">
-		<!-- Attribute Attack +50 when equipped. -->
+		<!-- Level 1: Attribute Attack +50 when equipped. -->
+		<!-- Level 2: Attribute Attacks are boosted by 50 when the Talisman is worn. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
 		<effects>
@@ -753,14 +764,14 @@
 	</skill>
 	<skill id="18393" toLevel="1" name="Dimensional Elcyum Pack">
 		<icon>icon.event_hero_treasure_box_i00</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>46074</itemConsumeId>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>46074</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -785,14 +796,14 @@
 	</skill>
 	<skill id="18394" toLevel="1" name="Dimensional Augment Pack">
 		<icon>icon.event_hero_treasure_box_i00</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>46075</itemConsumeId>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>46075</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>
@@ -820,14 +831,14 @@
 	</skill>
 	<skill id="18395" toLevel="1" name="Dimensional Enhancement Pack">
 		<icon>icon.event_hero_treasure_box_i00</icon>
-		<isMagic>2</isMagic> <!-- Static Skill -->
 		<operateType>A1</operateType>
-		<magicCriticalRate>5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>46076</itemConsumeId>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>46076</itemConsumeId>
+		<magicCriticalRate>5</magicCriticalRate>
 		<conditions>
 			<condition name="OpEncumbered">
 				<weightPercent>20</weightPercent>

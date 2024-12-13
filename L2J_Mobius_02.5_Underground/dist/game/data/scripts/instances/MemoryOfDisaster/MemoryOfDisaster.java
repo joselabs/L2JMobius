@@ -354,7 +354,7 @@ public class MemoryOfDisaster extends AbstractInstance
 					case SOLDIER:
 					case SOLDIER2:
 					{
-						if ((creature.getId() == TENTACLE) || ((creature.getId() == TEREDOR) && !((Npc) creature).isScriptValue(2)))
+						if ((creature.getId() == TENTACLE) || ((creature.getId() == TEREDOR) && !creature.asNpc().isScriptValue(2)))
 						{
 							addAttackDesire(npc, creature);
 						}
@@ -404,16 +404,17 @@ public class MemoryOfDisaster extends AbstractInstance
 						}
 						else if (npc.getVariables().getString("type", "").equals("PULLER"))
 						{
-							showOnScreenMsg(creature.getActingPlayer(), NpcStringId.WATCH_THE_DWARVEN_VILLAGE_LAST_STAND, ExShowScreenMessage.TOP_CENTER, 5000);
+							showOnScreenMsg(creature.asPlayer(), NpcStringId.WATCH_THE_DWARVEN_VILLAGE_LAST_STAND, ExShowScreenMessage.TOP_CENTER, 5000);
 						}
 						break;
 					}
 					case CONTROL_DARKELF_AWAKE:
 					{
+						final Player player = creature.asPlayer();
 						getTimers().addTimer("OPENING_DE_SCENE", 1000, e ->
 						{
-							playMovie(creature.getActingPlayer(), Movie.SC_AWAKENING_OPENING_D);
-							getTimers().addTimer("TIMER_ID_OP_SCEN_END", 25000, npc, creature.getActingPlayer());
+							playMovie(player, Movie.SC_AWAKENING_OPENING_D);
+							getTimers().addTimer("TIMER_ID_OP_SCEN_END", 25000, npc, player);
 						});
 						break;
 					}
@@ -737,8 +738,8 @@ public class MemoryOfDisaster extends AbstractInstance
 		final Instance world = event.getTarget().getInstanceWorld();
 		if (isInInstance(world) && !event.getAttacker().isPlayable())
 		{
-			final Npc npc = (Npc) event.getTarget();
-			final Npc attacker = (Npc) event.getAttacker();
+			final Npc npc = event.getTarget().asNpc();
+			final Npc attacker = event.getAttacker().asNpc();
 			if (CommonUtil.contains(DWARVES, npc.getId()))
 			{
 				final int attackCount = npc.getVariables().getInt("attackCount", 0) + 1;
@@ -765,7 +766,7 @@ public class MemoryOfDisaster extends AbstractInstance
 					if (attackCount == 10)
 					{
 						npc.doDie(attacker);
-						addSpawn((Npc) npc.getSummoner(), SOLDIER, npc.getLocation(), true, world.getId());
+						addSpawn(npc.getSummoner().asNpc(), SOLDIER, npc.getLocation(), true, world.getId());
 					}
 					else
 					{
@@ -783,7 +784,7 @@ public class MemoryOfDisaster extends AbstractInstance
 						npc.doDie(attacker);
 						if (!isBronKiller)
 						{
-							addSpawn((Npc) npc.getSummoner(), npc.getId(), npc.getLocation(), true, world.getId());
+							addSpawn(npc.getSummoner().asNpc(), npc.getId(), npc.getLocation(), true, world.getId());
 						}
 					}
 					else
@@ -801,7 +802,7 @@ public class MemoryOfDisaster extends AbstractInstance
 						if (attackCount == 20)
 						{
 							npc.doDie(attacker);
-							addSpawn((Npc) npc.getSummoner(), npc.getId(), npc.getLocation(), true, world.getId());
+							addSpawn(npc.getSummoner().asNpc(), npc.getId(), npc.getLocation(), true, world.getId());
 						}
 						else
 						{
@@ -852,7 +853,7 @@ public class MemoryOfDisaster extends AbstractInstance
 	
 	private void onCreatureKill(OnCreatureDeath event)
 	{
-		final Npc npc = ((Npc) event.getTarget());
+		final Npc npc = event.getTarget().asNpc();
 		if (npc.getId() == BRONK)
 		{
 			for (Npc dwarf : npc.getInstanceWorld().getNpcs(DWARVES))

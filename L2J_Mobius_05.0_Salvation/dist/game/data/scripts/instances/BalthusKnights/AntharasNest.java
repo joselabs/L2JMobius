@@ -18,7 +18,6 @@ package instances.BalthusKnights;
 
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.model.Location;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
@@ -128,7 +127,7 @@ public final class AntharasNest extends AbstractInstance
 							for (Npc antharas : instance.spawnGroup("balthus_anta_2523_01m1"))
 							{
 								antharas.setRandomWalking(false);
-								((Attackable) antharas).setCanReturnToSpawnPoint(false);
+								antharas.asAttackable().setCanReturnToSpawnPoint(false);
 								getTimers().addTimer("ANTHARAS_MOVE_TASK", 4000L, mt1 ->
 								{
 									final Location loc = instance.getTemplateParameters().getLocation("middlePointRoom");

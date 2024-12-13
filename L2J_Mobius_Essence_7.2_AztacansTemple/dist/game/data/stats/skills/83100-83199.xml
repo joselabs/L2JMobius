@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="83107" toLevel="1" name="Common A-grade Helmet - 6 Item Effect">
 		<!-- Max HP +300 -->
@@ -25,6 +25,7 @@
 				<SWORD>0.5</SWORD>
 				<DUAL>0.5</DUAL>
 				<ANCIENTSWORD>0.5</ANCIENTSWORD>
+				<POLE>0.5</POLE>
 				<DAGGER>0.5</DAGGER>
 				<RAPIER>0.5</RAPIER>
 				<DUALFIST>0.5</DUALFIST>
@@ -37,8 +38,16 @@
 	</skill>
 	<skill id="83109" toLevel="1" name="Common A-grade Helmet - 8 Item Effect">
 		<!-- Received fixed damage -1% -->
-		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<icon>icon.bless_effect_enchant</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<effects>
+			<effect name="RealDamageResist">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83110" toLevel="1" name="High-grade A-grade Helmet - 6 Item Effect">
 		<!-- Max HP +300 -->
@@ -65,6 +74,7 @@
 				<SWORD>0.5</SWORD>
 				<DUAL>0.5</DUAL>
 				<ANCIENTSWORD>0.5</ANCIENTSWORD>
+				<POLE>0.5</POLE>
 				<DAGGER>0.5</DAGGER>
 				<RAPIER>0.5</RAPIER>
 				<DUALFIST>0.5</DUALFIST>
@@ -77,8 +87,16 @@
 	</skill>
 	<skill id="83112" toLevel="1" name="High-grade A-grade Helmet - 8 Item Effect">
 		<!-- Received fixed damage -1% -->
-		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<icon>icon.bless_effect_enchant</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<effects>
+			<effect name="RealDamageResist">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83113" toLevel="1" name="Awoken A-grade Helmet - 6 Item Effect">
 		<!-- Max HP +600 -->
@@ -105,6 +123,7 @@
 				<SWORD>2</SWORD>
 				<DUAL>2</DUAL>
 				<ANCIENTSWORD>2</ANCIENTSWORD>
+				<POLE>2</POLE>
 				<DAGGER>2</DAGGER>
 				<RAPIER>2</RAPIER>
 				<DUALFIST>2</DUALFIST>
@@ -117,8 +136,16 @@
 	</skill>
 	<skill id="83115" toLevel="1" name="Awoken A-grade Helmet - 8 Item Effect">
 		<!-- Received fixed damage -2% -->
-		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<icon>icon.bless_effect_enchant</icon>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<effects>
+			<effect name="RealDamageResist">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83116" toLevel="1" name="Helmet of Protection - 6 Item Effect">
 		<!-- Max HP +1000 -->
@@ -145,6 +172,7 @@
 				<SWORD>3</SWORD>
 				<DUAL>3</DUAL>
 				<ANCIENTSWORD>3</ANCIENTSWORD>
+				<POLE>3</POLE>
 				<DAGGER>3</DAGGER>
 				<RAPIER>3</RAPIER>
 				<DUALFIST>3</DUALFIST>
@@ -158,7 +186,15 @@
 	<skill id="83118" toLevel="1" name="Helmet of Protection - 8 Item Effect">
 		<!-- Received fixed damage -3% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLevel>1</magicLevel>
+		<effects>
+			<effect name="RealDamageResist">
+				<amount>3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83119" toLevel="1" name="Common A-grade Upper Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -185,11 +221,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -197,7 +233,25 @@
 	<skill id="83121" toLevel="1" name="Common A-grade Upper Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83122" toLevel="1" name="High-grade A-grade Upper Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -224,11 +278,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -236,7 +290,25 @@
 	<skill id="83124" toLevel="1" name="High-grade A-grade Upper Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83125" toLevel="1" name="Awoken A-grade Upper Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -2% -->
@@ -263,11 +335,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>30</amount>
+				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>30</amount>
+				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -275,7 +347,25 @@
 	<skill id="83127" toLevel="1" name="Awoken A-grade Upper Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -2% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83128" toLevel="1" name="Upper Armor of Protection (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -3% -->
@@ -302,11 +392,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>50</amount>
+				<amount>-50</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>50</amount>
+				<amount>-50</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -314,7 +404,25 @@
 	<skill id="83130" toLevel="1" name="Upper Armor of Protection (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -3% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83131" toLevel="1" name="Common A-grade Upper Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -341,11 +449,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -353,7 +461,25 @@
 	<skill id="83133" toLevel="1" name="Common A-grade Upper Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83134" toLevel="1" name="High-grade A-grade Upper Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -380,11 +506,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -392,7 +518,25 @@
 	<skill id="83136" toLevel="1" name="High-grade A-grade Upper Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83137" toLevel="1" name="Awoken A-grade Upper Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -2% -->
@@ -419,11 +563,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>30</amount>
+				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>30</amount>
+				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -431,7 +575,25 @@
 	<skill id="83139" toLevel="1" name="Awoken A-grade Upper Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -2% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83140" toLevel="1" name="Upper Armor of Protection (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -3% -->
@@ -458,11 +620,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>60</amount>
+				<amount>-60</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>60</amount>
+				<amount>-60</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -470,7 +632,25 @@
 	<skill id="83142" toLevel="1" name="Upper Armor of Protection (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -3% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83143" toLevel="1" name="Common A-grade Lower Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -497,11 +677,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -509,7 +689,25 @@
 	<skill id="83145" toLevel="1" name="Common A-grade Lower Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83146" toLevel="1" name="High-grade A-grade Lower Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -536,11 +734,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -548,7 +746,25 @@
 	<skill id="83148" toLevel="1" name="High-grade A-grade Lower Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83149" toLevel="1" name="Awoken A-grade Lower Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -2% -->
@@ -575,11 +791,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>30</amount>
+				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>30</amount>
+				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -587,7 +803,25 @@
 	<skill id="83151" toLevel="1" name="Awoken A-grade Lower Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -2% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83152" toLevel="1" name="Lower Armor of Protection (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -3% -->
@@ -614,11 +848,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>50</amount>
+				<amount>-50</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>50</amount>
+				<amount>-50</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -626,7 +860,25 @@
 	<skill id="83154" toLevel="1" name="Lower Armor of Protection (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -3% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83155" toLevel="1" name="Common A-grade Lower Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -653,11 +905,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -665,7 +917,25 @@
 	<skill id="83157" toLevel="1" name="Common A-grade Lower Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83158" toLevel="1" name="High-grade A-grade Lower Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -692,11 +962,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>15</amount>
+				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -704,7 +974,25 @@
 	<skill id="83160" toLevel="1" name="High-grade A-grade Lower Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83161" toLevel="1" name="Awoken A-grade Lower Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -2% -->
@@ -731,11 +1019,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>30</amount>
+				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>30</amount>
+				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -743,7 +1031,25 @@
 	<skill id="83163" toLevel="1" name="Awoken A-grade Lower Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -2% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-2</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83164" toLevel="1" name="Lower Armor of Protection (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -3% -->
@@ -770,11 +1076,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>60</amount>
+				<amount>-60</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>60</amount>
+				<amount>-60</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -782,7 +1088,25 @@
 	<skill id="83166" toLevel="1" name="Lower Armor of Protection (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -3% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83167" toLevel="1" name="Common A-grade Upper/Lower Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -809,11 +1133,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -821,7 +1145,25 @@
 	<skill id="83169" toLevel="1" name="Common A-grade Upper/Lower Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83170" toLevel="1" name="High-grade A-grade Upper/Lower Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -848,11 +1190,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -860,7 +1202,25 @@
 	<skill id="83172" toLevel="1" name="High-grade A-grade Upper/Lower Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83173" toLevel="1" name="Awoken A-grade Upper/Lower Armor (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -887,11 +1247,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -899,7 +1259,25 @@
 	<skill id="83175" toLevel="1" name="Awoken A-grade Upper/Lower Armor (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83176" toLevel="1" name="Upper/Lower Armor of Protection (Heavy/ Light) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -926,11 +1304,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -938,7 +1316,25 @@
 	<skill id="83178" toLevel="1" name="Upper/Lower Armor of Protection (Heavy/ Light) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83179" toLevel="1" name="Common A-grade Upper/Lower Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -965,11 +1361,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -977,7 +1373,25 @@
 	<skill id="83181" toLevel="1" name="Common A-grade Upper/Lower Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83182" toLevel="1" name="High-grade A-grade Upper/Lower Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -1004,11 +1418,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -1016,7 +1430,25 @@
 	<skill id="83184" toLevel="1" name="High-grade A-grade Upper/Lower Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83185" toLevel="1" name="Awoken A-grade Upper/Lower Armor (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -1043,11 +1475,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -1055,7 +1487,25 @@
 	<skill id="83187" toLevel="1" name="Awoken A-grade Upper/Lower Armor (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83188" toLevel="1" name="Upper/Lower Armor of Protection (Robe) - 6 Item Effect">
 		<!-- Received Skill Critical Rate -1% -->
@@ -1082,11 +1532,11 @@
 		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DefencePhysicalSkillCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 			<effect name="DefenceMagicCriticalDamage">
-				<amount>20</amount>
+				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
@@ -1094,7 +1544,25 @@
 	<skill id="83190" toLevel="1" name="Upper/Lower Armor of Protection (Robe) - 8 Item Effect">
 		<!-- Skill Power when hit -1% -->
 		<icon>icon.bless_effect_base</icon>
-		<operateType>A1</operateType>
+		<operateType>P</operateType>
+		<effects>
+			<effect name="PveMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvePhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpMagicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="PvpPhysicalSkillDefenceBonus">
+				<amount>-1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="83191" toLevel="1" name="Common A-grade Gloves - 6 Item Effect">
 		<!-- P. Def. +100, M. Def. +100 -->

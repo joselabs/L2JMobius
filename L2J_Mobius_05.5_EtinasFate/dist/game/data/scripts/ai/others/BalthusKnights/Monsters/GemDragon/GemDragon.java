@@ -18,7 +18,6 @@ package ai.others.BalthusKnights.Monsters.GemDragon;
 
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.instancemanager.QuestManager;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -105,7 +104,7 @@ public final class GemDragon extends AbstractNpcAI
 		final Creature target = event.getTarget();
 		if (target.isNpc() && (event.getAttacker().isPlayer() || event.getAttacker().isSummon()))
 		{
-			final Player player = event.getAttacker().getActingPlayer();
+			final Player player = event.getAttacker().asPlayer();
 			final Instance instance = player.getInstanceWorld();
 			if ((instance != null) && (instance.getTemplateId() == 270))
 			{
@@ -154,7 +153,7 @@ public final class GemDragon extends AbstractNpcAI
 				if ((instance != null) && (instance.getTemplateId() == 271) && (instance.getStatus() == 1))
 				{
 					final Npc stig = instance.getNpc(STIG_MACH_FRIEND);
-					((Attackable) npc).addDamageHate(stig, 1, 99999);
+					npc.asAttackable().addDamageHate(stig, 1, 99999);
 					addAttackDesire(npc, stig);
 				}
 				break;

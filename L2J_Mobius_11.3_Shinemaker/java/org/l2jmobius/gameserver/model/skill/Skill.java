@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.skill;
 
@@ -52,7 +56,6 @@ import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectFlag;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.holders.AttachSkillHolder;
-import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.interfaces.IIdentifiable;
 import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.skill.targets.AffectObject;
@@ -212,8 +215,8 @@ public class Skill implements IIdentifiable
 	private final boolean _displayInList;
 	private final boolean _isHidingMessages;
 	
-	private final SkillHolder _alternateRangedSkill;
-	private final SkillHolder _alternateMeleeSkill;
+	private final int _alternateRangedSkillId;
+	private final int _alternateMeleeSkillId;
 	
 	public Skill(StatSet set)
 	{
@@ -407,10 +410,8 @@ public class Skill implements IIdentifiable
 		_displayInList = set.getBoolean("displayInList", true);
 		_isHidingMessages = set.getBoolean("isHidingMessages", false);
 		
-		final int alternateRangedSkillId = set.getInt("alternateRangedSkillId", 0);
-		_alternateRangedSkill = alternateRangedSkillId > 0 ? new SkillHolder(alternateRangedSkillId, _level, _subLevel) : null;
-		final int alternateMeleeSkillId = set.getInt("alternateMeleeSkillId", 0);
-		_alternateMeleeSkill = alternateMeleeSkillId > 0 ? new SkillHolder(alternateMeleeSkillId, _level, _subLevel) : null;
+		_alternateRangedSkillId = set.getInt("alternateRangedSkillId", 0);
+		_alternateMeleeSkillId = set.getInt("alternateMeleeSkillId", 0);
 	}
 	
 	public TraitType getTraitType()
@@ -1052,14 +1053,14 @@ public class Skill implements IIdentifiable
 		return _effectPoint < 0;
 	}
 	
-	public Skill getAlternateRangedSkill()
+	public int getAlternateRangedSkillId()
 	{
-		return _alternateRangedSkill == null ? null : _alternateRangedSkill.getSkill();
+		return _alternateRangedSkillId;
 	}
 	
-	public Skill getAlternateMeleeSkill()
+	public int getAlternateMeleeSkillId()
 	{
-		return _alternateMeleeSkill == null ? null : _alternateMeleeSkill.getSkill();
+		return _alternateMeleeSkillId;
 	}
 	
 	public boolean checkCondition(Creature creature, WorldObject object, boolean sendMessage)
@@ -1069,7 +1070,7 @@ public class Skill implements IIdentifiable
 			return true;
 		}
 		
-		if (creature.isPlayer() && creature.getActingPlayer().isMounted() && isBad() && !MountEnabledSkillList.contains(_id))
+		if (creature.isPlayer() && creature.asPlayer().isMounted() && isBad() && !MountEnabledSkillList.contains(_id))
 		{
 			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CANNOT_BE_USED_THE_REQUIREMENTS_ARE_NOT_MET);
 			sm.addSkillName(_id);
@@ -1258,7 +1259,7 @@ public class Skill implements IIdentifiable
 					// TODO: Find where regen stops and make a proper fix
 					if (info.getEffected().isPlayer() && !isBad())
 					{
-						info.getEffected().getActingPlayer().getStatus().startHpMpRegeneration();
+						info.getEffected().asPlayer().getStatus().startHpMpRegeneration();
 					}
 				}
 			}
@@ -1453,7 +1454,7 @@ public class Skill implements IIdentifiable
 				continue;
 			}
 			
-			final Creature target = (Creature) targetObject;
+			final Creature target = targetObject.asCreature();
 			if (Formulas.calcBuffDebuffReflection(target, this))
 			{
 				// if skill is reflected instant effects should be casted on target

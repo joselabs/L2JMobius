@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
@@ -54,37 +58,27 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 public class SiegeDefenderList extends ServerPacket
 {
 	private final Castle _castle;
+	private final Clan _owner;
+	final List<Clan> _defenders = new ArrayList<>();
 	
 	public SiegeDefenderList(Castle castle)
 	{
 		_castle = castle;
-	}
-	
-	@Override
-	public void writeImpl(GameClient client, WritableBuffer buffer)
-	{
-		ServerPackets.CASTLE_SIEGE_DEFENDER_LIST.writeId(this, buffer);
-		buffer.writeInt(_castle.getResidenceId());
-		buffer.writeInt(0); // Unknown.
-		
-		final Clan owner = _castle.getOwner();
-		buffer.writeInt((owner != null) && _castle.isTimeRegistrationOver()); // Valid registration.
-		buffer.writeInt(0); // Unknown.
+		_owner = castle.getOwner();
 		
 		// Add owners.
-		final List<Clan> defenders = new ArrayList<>();
-		if (owner != null)
+		if (_owner != null)
 		{
-			defenders.add(owner);
+			_defenders.add(_owner);
 		}
 		
 		// List of confirmed defenders.
 		for (SiegeClan siegeClan : _castle.getSiege().getDefenderClans())
 		{
 			final Clan clan = ClanTable.getInstance().getClan(siegeClan.getClanId());
-			if ((clan != null) && (clan != owner))
+			if ((clan != null) && (clan != _owner))
 			{
-				defenders.add(clan);
+				_defenders.add(clan);
 			}
 		}
 		
@@ -94,22 +88,32 @@ public class SiegeDefenderList extends ServerPacket
 			final Clan clan = ClanTable.getInstance().getClan(siegeClan.getClanId());
 			if (clan != null)
 			{
-				defenders.add(clan);
+				_defenders.add(clan);
 			}
 		}
+	}
+	
+	@Override
+	public void writeImpl(GameClient client, WritableBuffer buffer)
+	{
+		ServerPackets.CASTLE_SIEGE_DEFENDER_LIST.writeId(this, buffer);
+		buffer.writeInt(_castle.getResidenceId());
+		buffer.writeInt(0); // Unknown.
 		
-		final int size = defenders.size();
+		buffer.writeInt((_owner != null) && _castle.isTimeRegistrationOver()); // Valid registration.
+		buffer.writeInt(0); // Unknown.
+		
+		final int size = _defenders.size();
 		buffer.writeInt(size);
 		buffer.writeInt(size);
-		
-		for (Clan clan : defenders)
+		for (Clan clan : _defenders)
 		{
 			buffer.writeInt(clan.getId());
 			buffer.writeString(clan.getName());
 			buffer.writeString(clan.getLeaderName());
 			buffer.writeInt(clan.getCrestId());
 			buffer.writeInt(0); // Signed time in seconds.
-			if (clan == owner)
+			if (clan == _owner)
 			{
 				buffer.writeInt(SiegeClanType.OWNER.ordinal() + 1);
 			}

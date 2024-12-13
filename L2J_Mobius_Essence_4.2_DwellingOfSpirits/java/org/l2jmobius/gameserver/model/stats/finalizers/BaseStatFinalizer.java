@@ -41,7 +41,7 @@ public class BaseStatFinalizer implements IStatFunction
 		// Should not apply armor set and henna bonus to summons.
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			
 			// Armor sets calculation
 			baseValue += player.getInventory().getPaperdollCache().getBaseStatValue(player, BaseStat.valueOf(stat));

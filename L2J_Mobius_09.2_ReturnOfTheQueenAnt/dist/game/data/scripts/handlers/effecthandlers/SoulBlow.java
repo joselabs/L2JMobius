@@ -18,7 +18,6 @@ package handlers.effecthandlers;
 
 import org.l2jmobius.gameserver.enums.ShotType;
 import org.l2jmobius.gameserver.model.StatSet;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
@@ -41,6 +40,11 @@ public class SoulBlow extends AbstractEffect
 		_power = params.getDouble("power");
 		_chanceBoost = params.getDouble("chanceBoost");
 		_overHit = params.getBoolean("overHit", false);
+		
+		if (params.contains("amount"))
+		{
+			throw new IllegalArgumentException(getClass().getSimpleName() + " should use power instead of amount.");
+		}
 	}
 	
 	/**
@@ -77,7 +81,7 @@ public class SoulBlow extends AbstractEffect
 		
 		if (_overHit && effected.isAttackable())
 		{
-			((Attackable) effected).overhitEnabled(true);
+			effected.asAttackable().overhitEnabled(true);
 		}
 		
 		final boolean ss = skill.useSoulShot() && (effector.isChargedShot(ShotType.SOULSHOTS) || effector.isChargedShot(ShotType.BLESSED_SOULSHOTS));
@@ -86,7 +90,7 @@ public class SoulBlow extends AbstractEffect
 		if ((skill.getMaxSoulConsumeCount() > 0) && effector.isPlayer())
 		{
 			// Souls Formula (each soul increase +4%)
-			final int chargedSouls = (effector.getActingPlayer().getChargedSouls() <= skill.getMaxSoulConsumeCount()) ? effector.getActingPlayer().getChargedSouls() : skill.getMaxSoulConsumeCount();
+			final int chargedSouls = (effector.asPlayer().getChargedSouls() <= skill.getMaxSoulConsumeCount()) ? effector.asPlayer().getChargedSouls() : skill.getMaxSoulConsumeCount();
 			damage *= 1 + (chargedSouls * 0.04);
 		}
 		

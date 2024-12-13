@@ -34,6 +34,6 @@ public class OpNeedAgathionSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return caster.isPlayer() && (caster.getActingPlayer().getAgathionId() != 0);
+		return caster.isPlayer() && (caster.asPlayer().getAgathionId() != 0);
 	}
 }

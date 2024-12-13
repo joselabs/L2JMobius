@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
@@ -38,6 +42,7 @@ import org.l2jmobius.gameserver.enums.IllegalActionPunishmentType;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
 import org.l2jmobius.gameserver.enums.SubclassInfoType;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
+import org.l2jmobius.gameserver.instancemanager.AntiFeedManager;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
 import org.l2jmobius.gameserver.instancemanager.CursedWeaponsManager;
 import org.l2jmobius.gameserver.instancemanager.FortManager;
@@ -54,6 +59,7 @@ import org.l2jmobius.gameserver.instancemanager.WorldExchangeManager;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.appearance.PlayerAppearance;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.holders.AttendanceInfoHolder;
 import org.l2jmobius.gameserver.model.holders.ClientHardwareInfoHolder;
@@ -452,15 +458,17 @@ public class EnterWorld extends ClientPacket
 		{
 			if (player.isGood())
 			{
-				player.getAppearance().setNameColor(Config.FACTION_GOOD_NAME_COLOR);
-				player.getAppearance().setTitleColor(Config.FACTION_GOOD_NAME_COLOR);
+				final PlayerAppearance appearance = player.getAppearance();
+				appearance.setNameColor(Config.FACTION_GOOD_NAME_COLOR);
+				appearance.setTitleColor(Config.FACTION_GOOD_NAME_COLOR);
 				player.sendMessage("Welcome " + player.getName() + ", you are fighting for the " + Config.FACTION_GOOD_TEAM_NAME + " faction.");
 				player.sendPacket(new ExShowScreenMessage("Welcome " + player.getName() + ", you are fighting for the " + Config.FACTION_GOOD_TEAM_NAME + " faction.", 10000));
 			}
 			else if (player.isEvil())
 			{
-				player.getAppearance().setNameColor(Config.FACTION_EVIL_NAME_COLOR);
-				player.getAppearance().setTitleColor(Config.FACTION_EVIL_NAME_COLOR);
+				final PlayerAppearance appearance = player.getAppearance();
+				appearance.setNameColor(Config.FACTION_EVIL_NAME_COLOR);
+				appearance.setTitleColor(Config.FACTION_EVIL_NAME_COLOR);
 				player.sendMessage("Welcome " + player.getName() + ", you are fighting for the " + Config.FACTION_EVIL_TEAM_NAME + " faction.");
 				player.sendPacket(new ExShowScreenMessage("Welcome " + player.getName() + ", you are fighting for the " + Config.FACTION_EVIL_TEAM_NAME + " faction.", 10000));
 			}
@@ -474,14 +482,17 @@ public class EnterWorld extends ClientPacket
 			player.sendPacket(new ExQuestNotificationAll(player));
 			for (NewQuest newQuest : NewQuestData.getInstance().getQuests())
 			{
-				final Quest quest = QuestManager.getInstance().getQuest(newQuest.getId());
-				if (quest != null)
+				if (newQuest.getQuestType() != 2)
 				{
-					final QuestState questState = player.getQuestState(quest.getScriptName());
-					if ((questState == null) && quest.canStartQuest(player) && !newQuest.getConditions().getSpecificStart())
+					final Quest quest = QuestManager.getInstance().getQuest(newQuest.getId());
+					if (quest != null)
 					{
-						player.sendPacket(new ExQuestDialog(quest.getId(), QuestDialogType.ACCEPT));
-						break; // Only send first dialog.
+						final QuestState questState = player.getQuestState(quest.getScriptName());
+						if ((questState == null) && quest.canStartQuest(player) && !newQuest.getConditions().getSpecificStart())
+						{
+							player.sendPacket(new ExQuestDialog(quest.getId(), QuestDialogType.ACCEPT));
+							break; // Only send first dialog.
+						}
 					}
 				}
 			}
@@ -692,6 +703,10 @@ public class EnterWorld extends ClientPacket
 		{
 			player.sendPacket(new ExOlympiadInfo(1, Olympiad.getInstance().getRemainingTime()));
 		}
+		else
+		{
+			player.sendPacket(new ExOlympiadInfo(0, 0));
+		}
 		
 		player.broadcastUserInfo();
 		
@@ -741,7 +756,7 @@ public class EnterWorld extends ClientPacket
 		else if (player.isVanguard())
 		{
 			player.setBeastPoints(1000);
-			player.setBeastPoints(vars.getInt(PlayerVariables.BEAST_POINT_COUNT, 1000));
+			player.setBeastPoints(vars.getInt(PlayerVariables.BEAST_POINT_COUNT, 0));
 		}
 		// Assassin points init.
 		else if (player.isAssassin() && player.isInCategory(CategoryType.FOURTH_CLASS_GROUP))
@@ -933,6 +948,8 @@ public class EnterWorld extends ClientPacket
 				player.getEffectList().startAbnormalVisualEffect(AbnormalVisualEffect.NO_CHAT);
 			}
 		}, 5500);
+		
+		AntiFeedManager.getInstance().removePlayer(AntiFeedManager.OFFLINE_PLAY, player);
 		
 		// EnterWorld has finished.
 		player.setEnteredWorld();

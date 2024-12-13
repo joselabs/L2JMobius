@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.model.conditions;
 
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.skill.Skill;
 
@@ -38,7 +37,7 @@ public class ConditionTargetCheckCrtEffect extends Condition
 	{
 		if (effected.isNpc())
 		{
-			return ((Npc) effected).getTemplate().canBeCrt() == _isCrtEffect;
+			return effected.asNpc().getTemplate().canBeCrt() == _isCrtEffect;
 		}
 		return true;
 	}

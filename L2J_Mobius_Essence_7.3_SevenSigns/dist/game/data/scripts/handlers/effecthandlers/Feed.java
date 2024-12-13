@@ -54,13 +54,13 @@ public class Feed extends AbstractEffect
 	{
 		if (effected.isPet())
 		{
-			final Pet pet = (Pet) effected;
+			final Pet pet = effected.asPet();
 			final int feedEffect = (int) pet.getStat().getValue(Stat.FEED_MODIFY, 0);
 			pet.setCurrentFed(pet.getCurrentFed() + (_normal * Config.PET_FOOD_RATE) + (feedEffect * (_normal / 100)));
 		}
 		else if (effected.isPlayer())
 		{
-			final Player player = effected.getActingPlayer();
+			final Player player = effected.asPlayer();
 			if (player.getMountType() == MountType.WYVERN)
 			{
 				player.setCurrentFeed(player.getCurrentFeed() + _wyvern);

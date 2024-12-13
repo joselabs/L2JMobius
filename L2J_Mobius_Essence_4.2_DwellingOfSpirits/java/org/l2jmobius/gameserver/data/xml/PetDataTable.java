@@ -43,7 +43,7 @@ import org.l2jmobius.gameserver.model.holders.SkillHolder;
 
 /**
  * This class parse and hold all pet parameters.<br>
- * @author Zoey76 (rework)
+ * @author Zoey76
  */
 public class PetDataTable implements IXmlReader
 {
@@ -67,9 +67,9 @@ public class PetDataTable implements IXmlReader
 		parseDatapackDirectory("data/stats/pets", false);
 		
 		try (Connection conn = DatabaseFactory.getConnection();
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM pets"))
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM pets");
+			ResultSet rs = ps.executeQuery())
 		{
-			ResultSet rs = ps.executeQuery();
 			while (rs.next())
 			{
 				String name = rs.getString("name");

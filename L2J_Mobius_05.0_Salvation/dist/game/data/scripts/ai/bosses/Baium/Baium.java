@@ -318,7 +318,7 @@ public class Baium extends AbstractNpcAI
 			{
 				if (npc != null)
 				{
-					final Attackable mob = (Attackable) npc;
+					final Attackable mob = npc.asAttackable();
 					final Creature mostHated = mob.getMostHated();
 					if ((_baium == null) || _baium.isDead())
 					{
@@ -332,7 +332,7 @@ public class Baium extends AbstractNpcAI
 						{
 							mob.clearAggroList();
 						}
-						addAttackPlayerDesire(mob, (Playable) mostHated);
+						addAttackPlayerDesire(mob, mostHated.asPlayable());
 					}
 					else
 					{
@@ -410,7 +410,7 @@ public class Baium extends AbstractNpcAI
 						}
 						else if (creature.isPlayer())
 						{
-							notifyEvent("teleportOut", null, (Player) creature);
+							notifyEvent("teleportOut", null, creature.asPlayer());
 						}
 					}
 				}
@@ -517,7 +517,7 @@ public class Baium extends AbstractNpcAI
 		}
 		else
 		{
-			final Attackable mob = (Attackable) npc;
+			final Attackable mob = npc.asAttackable();
 			final Creature mostHated = mob.getMostHated();
 			if ((getRandom(100) < 10) && SkillCaster.checkUseConditions(mob, SPEAR_ATTACK.getSkill()))
 			{
@@ -572,7 +572,7 @@ public class Baium extends AbstractNpcAI
 		
 		if (creature.isPlayer() && !creature.isDead() && (_standbyPlayer == null))
 		{
-			_standbyPlayer = (Player) creature;
+			_standbyPlayer = creature.asPlayer();
 		}
 		
 		if (creature.isInCategory(CategoryType.CLERIC_GROUP))

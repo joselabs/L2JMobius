@@ -44,7 +44,7 @@ public class CanTransformSkillCondition implements ISkillCondition
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
 		boolean canTransform = true;
-		final Player player = caster.getActingPlayer();
+		final Player player = caster.asPlayer();
 		if ((player == null) || player.isAlikeDead() || player.isCursedWeaponEquipped())
 		{
 			canTransform = false;

@@ -1,15 +1,20 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="5300" toLevel="9" name="Burst Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1000</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -32,13 +37,8 @@
 			<value level="8">256</value>
 			<value level="9">259</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">8711</value>
 					<value level="2">12027</value>
@@ -56,11 +56,14 @@
 	<skill id="5301" toLevel="9" name="Stun">
 		<!-- Immobilizes and stuns target. -->
 		<icon>icon.skill0100</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
@@ -69,6 +72,7 @@
 		<hitTime>830</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -92,13 +96,9 @@
 			<value level="9">87</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -117,6 +117,8 @@
 	<skill id="5302" toLevel="9" name="Poison">
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill4035</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -129,17 +131,19 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -162,14 +166,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -201,6 +201,8 @@
 	<skill id="5303" toLevel="9" name="Bleed">
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0096</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -213,17 +215,19 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -246,14 +250,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -285,21 +285,25 @@
 	<skill id="5304" toLevel="9" name="Paralysis">
 		<!-- Paralyzed and unable to move momentarily. -->
 		<icon>icon.skill1170</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -323,13 +327,9 @@
 			<value level="9">87</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<trait>PARALYZE</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -348,17 +348,23 @@
 	<skill id="5305" toLevel="9" name="Poison">
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill4035</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>60</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -381,16 +387,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<affectRange>150</affectRange>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -422,19 +422,25 @@
 	<skill id="5306" toLevel="9" name="Paralysis">
 		<!-- Paralyzed and unable to move momentarily. -->
 		<icon>icon.skill1170</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
 		<activateRate>60</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>1000</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -457,15 +463,9 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
 		<trait>PARALYZE</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -484,11 +484,14 @@
 	<skill id="5307" toLevel="9" name="Stun">
 		<!-- Immobilizes and stuns target. -->
 		<icon>icon.skill0100</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
@@ -496,6 +499,7 @@
 		<hitTime>4500</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -519,13 +523,9 @@
 			<value level="9">87</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -544,6 +544,8 @@
 	<skill id="5308" toLevel="9" name="Poison">
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill4035</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -556,16 +558,18 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -588,14 +592,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -627,6 +627,8 @@
 	<skill id="5309" toLevel="9" name="Bleed">
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0096</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -639,10 +641,10 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
@@ -650,6 +652,7 @@
 		<hitTime>4500</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -672,13 +675,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -709,11 +709,15 @@
 	</skill>
 	<skill id="5310" toLevel="9" name="Aura Burn">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>150</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>650</effectRange>
 		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -727,32 +731,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">124</value>
 					<value level="2">128</value>
@@ -769,10 +769,15 @@
 	</skill>
 	<skill id="5311" toLevel="9" name="Aura Flare">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -786,33 +791,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -829,14 +829,18 @@
 	</skill>
 	<skill id="5312" toLevel="9" name="Blaze">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectRange>40</affectRange>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -850,32 +854,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">124</value>
 					<value level="2">128</value>
@@ -892,14 +892,19 @@
 	</skill>
 	<skill id="5313" toLevel="9" name="Flame Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1000</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>5000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -913,33 +918,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -956,12 +956,18 @@
 	</skill>
 	<skill id="5314" toLevel="9" name="Blazing Circle">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -975,34 +981,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1019,11 +1019,16 @@
 	</skill>
 	<skill id="5315" toLevel="9" name="Blazing Circle">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1035,13 +1040,8 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1058,14 +1058,18 @@
 	</skill>
 	<skill id="5316" toLevel="9" name="Hydro Blast">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectRange>40</affectRange>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1079,32 +1083,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">124</value>
 					<value level="2">128</value>
@@ -1121,14 +1121,19 @@
 	</skill>
 	<skill id="5317" toLevel="9" name="Mass Hydro Blast">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1000</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1142,33 +1147,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1185,12 +1185,18 @@
 	</skill>
 	<skill id="5318" toLevel="9" name="Frost Wall">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1204,34 +1210,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1248,347 +1248,17 @@
 	</skill>
 	<skill id="5319" toLevel="9" name="Hurricane">
 		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
 		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<attributeType>WIND</attributeType>
 		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-	</skill>
-	<skill id="5320" toLevel="9" name="Tempest">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5321" toLevel="9" name="Tempest">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5322" toLevel="9" name="Rock Strike">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-	</skill>
-	<skill id="5323" toLevel="9" name="Earthquake">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5324" toLevel="9" name="Earthquake">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5325" toLevel="9" name="Holy Strike">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-	</skill>
-	<skill id="5326" toLevel="9" name="Holy Blast">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5327" toLevel="9" name="Holy Circle">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5328" toLevel="9" name="Unholy Strike">
-		<icon>icon.skill0000</icon>
-		<affectRange>40</affectRange>
-		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1602,32 +1272,461 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
+	</skill>
+	<skill id="5320" toLevel="9" name="Tempest">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5321" toLevel="9" name="Tempest">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5322" toLevel="9" name="Rock Strike">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5323" toLevel="9" name="Earthquake">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5324" toLevel="9" name="Earthquake">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5325" toLevel="9" name="Holy Strike">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5326" toLevel="9" name="Holy Blast">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5327" toLevel="9" name="Holy Circle">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5328" toLevel="9" name="Unholy Strike">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectRange>40</affectRange>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">124</value>
 					<value level="2">128</value>
@@ -1644,14 +1743,19 @@
 	</skill>
 	<skill id="5329" toLevel="9" name="Unholy Blast">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1000</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1665,33 +1769,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1708,12 +1807,18 @@
 	</skill>
 	<skill id="5330" toLevel="9" name="Unholy Circle">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>DARK</attributeType>
 		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1727,34 +1832,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1771,54 +1870,17 @@
 	</skill>
 	<skill id="5331" toLevel="9" name="Drain HP">
 		<icon>icon.skill0000</icon>
-		<castRange>600</castRange>
-		<effectPoint>-100</effectPoint>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
 		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1100</effectRange>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<effects>
-			<effect name="MagicalAttack">
-				<power>250</power>
-			</effect>
-		</effects>
-	</skill>
-	<skill id="5332" toLevel="9" name="Mana Burn">
-		<icon>icon.skill0000</icon>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1832,32 +1894,80 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
+		<effects>
+			<effect name="MagicalDamage">
+				<power>250</power>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="5332" toLevel="9" name="Mana Burn">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>600</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1100</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
 		<effects>
-			<effect name="MagicalAttackMp">
+			<effect name="MagicalDamageMp">
 				<power>
 					<value level="1">186</value>
 					<value level="2">192</value>
@@ -1877,6 +1987,8 @@
 	<skill id="5333" toLevel="9" name="Poison">
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill4035</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -1889,17 +2001,23 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
+		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1913,38 +2031,30 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1961,11 +2071,15 @@
 	</skill>
 	<skill id="5334" toLevel="9" name="Power Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -1988,12 +2102,8 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2010,10 +2120,14 @@
 	</skill>
 	<skill id="5335" toLevel="9" name="Power Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2036,12 +2150,8 @@
 			<value level="8">171</value>
 			<value level="9">173</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">34070</value>
 					<value level="2">47031</value>
@@ -2058,10 +2168,15 @@
 	</skill>
 	<skill id="5336" toLevel="9" name="Vortex">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2084,22 +2199,25 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>12777</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="5337" toLevel="9" name="Burst Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2111,7 +2229,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">227</value>
 			<value level="2">234</value>
@@ -2123,23 +2240,20 @@
 			<value level="8">256</value>
 			<value level="9">259</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<affectRange>150</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5338" toLevel="9" name="Power Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2162,12 +2276,8 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2184,8 +2294,16 @@
 	</skill>
 	<skill id="5339" toLevel="9" name="Power Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2197,7 +2315,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">151</value>
 			<value level="2">156</value>
@@ -2209,23 +2326,21 @@
 			<value level="8">171</value>
 			<value level="9">173</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5340" toLevel="9" name="Vortex">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>300</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2248,22 +2363,27 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>12777</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="5341" toLevel="9" name="Burst Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2275,7 +2395,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">227</value>
 			<value level="2">234</value>
@@ -2287,25 +2406,20 @@
 			<value level="8">256</value>
 			<value level="9">259</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>150</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5342" toLevel="9" name="Power Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2328,12 +2442,8 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2350,8 +2460,16 @@
 	</skill>
 	<skill id="5343" toLevel="9" name="Power Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2363,7 +2481,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">151</value>
 			<value level="2">156</value>
@@ -2375,19 +2492,20 @@
 			<value level="8">171</value>
 			<value level="9">173</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5344" toLevel="9" name="Vortex">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2399,7 +2517,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">76</value>
 			<value level="2">78</value>
@@ -2411,19 +2528,22 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>150</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5345" toLevel="9" name="Burst Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2435,7 +2555,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">227</value>
 			<value level="2">234</value>
@@ -2447,25 +2566,20 @@
 			<value level="8">256</value>
 			<value level="9">259</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>150</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5346" toLevel="9" name="Power Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2488,12 +2602,8 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2510,8 +2620,16 @@
 	</skill>
 	<skill id="5347" toLevel="9" name="Power Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2523,7 +2641,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">151</value>
 			<value level="2">156</value>
@@ -2535,19 +2652,20 @@
 			<value level="8">171</value>
 			<value level="9">173</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5348" toLevel="9" name="Vortex">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2559,7 +2677,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">76</value>
 			<value level="2">78</value>
@@ -2571,19 +2688,22 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>150</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5349" toLevel="9" name="Burst Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2595,7 +2715,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">227</value>
 			<value level="2">234</value>
@@ -2607,25 +2726,20 @@
 			<value level="8">256</value>
 			<value level="9">259</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>150</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5350" toLevel="9" name="Power Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2648,12 +2762,8 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2670,8 +2780,16 @@
 	</skill>
 	<skill id="5351" toLevel="9" name="Power Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2683,7 +2801,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">151</value>
 			<value level="2">156</value>
@@ -2695,22 +2812,20 @@
 			<value level="8">171</value>
 			<value level="9">173</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5352" toLevel="9" name="Vortex">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
-		<coolTime>800</coolTime>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>EARTH</attributeType>
 		<attributeValue>20</attributeValue>
+		<coolTime>800</coolTime>
+		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2733,22 +2848,27 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>12777</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="5353" toLevel="9" name="Burst Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2760,7 +2880,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">227</value>
 			<value level="2">234</value>
@@ -2772,21 +2891,20 @@
 			<value level="8">256</value>
 			<value level="9">259</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>150</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5354" toLevel="9" name="Power Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2798,7 +2916,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">76</value>
 			<value level="2">78</value>
@@ -2810,18 +2927,19 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>200</effectRange>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>40</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5355" toLevel="9" name="Power Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2833,7 +2951,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">151</value>
 			<value level="2">156</value>
@@ -2845,22 +2962,20 @@
 			<value level="8">171</value>
 			<value level="9">173</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5356" toLevel="9" name="Vortex">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
-		<coolTime>800</coolTime>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>HOLY</attributeType>
 		<attributeValue>20</attributeValue>
+		<coolTime>800</coolTime>
+		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2883,22 +2998,27 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>12777</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="5357" toLevel="9" name="Burst Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2910,7 +3030,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">227</value>
 			<value level="2">234</value>
@@ -2922,25 +3041,20 @@
 			<value level="8">256</value>
 			<value level="9">259</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>150</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5358" toLevel="9" name="Power Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -2963,12 +3077,8 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2985,12 +3095,16 @@
 	</skill>
 	<skill id="5359" toLevel="9" name="Power Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4500</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3013,12 +3127,8 @@
 			<value level="8">171</value>
 			<value level="9">173</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">34070</value>
 					<value level="2">47031</value>
@@ -3035,12 +3145,17 @@
 	</skill>
 	<skill id="5360" toLevel="9" name="Vortex">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
-		<coolTime>800</coolTime>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>DARK</attributeType>
 		<attributeValue>20</attributeValue>
+		<coolTime>800</coolTime>
+		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3063,22 +3178,27 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>12777</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="5361" toLevel="9" name="Burst Shot">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
 		<hitTime>3200</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3090,7 +3210,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
 			<value level="1">227</value>
 			<value level="2">234</value>
@@ -3102,24 +3221,18 @@
 			<value level="8">256</value>
 			<value level="9">259</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>150</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5362" toLevel="9" name="Stun">
 		<!-- Immobilizes and stuns target. -->
 		<icon>icon.skill0100</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
@@ -3128,6 +3241,7 @@
 		<hitTime>830</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3151,13 +3265,9 @@
 			<value level="9">87</value>
 		</mpConsume>
 		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3176,6 +3286,8 @@
 	<skill id="5363" toLevel="9" name="Poison">
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill4035</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -3188,17 +3300,19 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3221,14 +3335,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3260,6 +3370,8 @@
 	<skill id="5364" toLevel="9" name="Bleed">
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0096</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -3272,10 +3384,10 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
@@ -3284,6 +3396,7 @@
 		<hitTime>830</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3306,13 +3419,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3344,21 +3454,25 @@
 	<skill id="5365" toLevel="9" name="Paralysis">
 		<!-- Paralyzed and unable to move momentarily. -->
 		<icon>icon.skill1170</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3370,8 +3484,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<mpConsume>
 			<value level="1">76</value>
 			<value level="2">78</value>
@@ -3383,30 +3495,33 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
+		<nextAction>ATTACK</nextAction>
 		<trait>PARALYZE</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 			<effect name="BlockActions" />
 		</effects>
 	</skill>
 	<skill id="5366" toLevel="9" name="Poison">
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill4035</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>8</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>60</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3429,15 +3544,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3469,20 +3579,25 @@
 	<skill id="5367" toLevel="9" name="Paralysis">
 		<!-- Paralyzed and unable to move momentarily. -->
 		<icon>icon.skill1170</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
 		<activateRate>60</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>150</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>MAGIC</basicProperty>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>1000</hitTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3494,8 +3609,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<mpConsume>
 			<value level="1">76</value>
 			<value level="2">78</value>
@@ -3507,28 +3620,32 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
+		<nextAction>ATTACK</nextAction>
 		<trait>PARALYZE</trait>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack" />
+			<effect name="PhysicalDamage" />
 			<effect name="BlockActions" />
 		</effects>
 	</skill>
 	<skill id="5368" toLevel="9" name="Stun">
 		<!-- Immobilizes and stuns target. -->
 		<icon>icon.skill0100</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3540,8 +3657,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<nextAction>ATTACK</nextAction>
-		<operateType>A2</operateType>
 		<mpConsume>
 			<value level="1">76</value>
 			<value level="2">78</value>
@@ -3553,17 +3668,14 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
+		<nextAction>ATTACK</nextAction>
 		<trait>SHOCK</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5369" toLevel="9" name="Poison">
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill4035</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -3576,16 +3688,18 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3608,14 +3722,10 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="PhysicalDamage">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3647,6 +3757,8 @@
 	<skill id="5370" toLevel="9" name="Bleed">
 		<!-- Causes target to bleed severely, momentarily reducing HP. -->
 		<icon>icon.skill0096</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -3659,14 +3771,18 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
+		<isDebuff>true</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3678,7 +3794,6 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A2</operateType>
 		<mpConsume>
 			<value level="1">76</value>
 			<value level="2">78</value>
@@ -3690,21 +3805,20 @@
 			<value level="8">86</value>
 			<value level="9">87</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<isDebuff>true</isDebuff>
-		<castRange>900</castRange>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5371" toLevel="9" name="Aura Burn">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<castRange>150</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>650</effectRange>
 		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3718,32 +3832,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">160</value>
 					<value level="2">165</value>
@@ -3760,10 +3870,15 @@
 	</skill>
 	<skill id="5372" toLevel="9" name="Aura Flare">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3777,33 +3892,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -3820,50 +3930,17 @@
 	</skill>
 	<skill id="5373" toLevel="9" name="Blaze">
 		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
 		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-	</skill>
-	<skill id="5374" toLevel="9" name="Flame Strike">
-		<icon>icon.skill0000</icon>
-		<affectRange>200</affectRange>
-		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
-		<effectRange>1000</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
-		<hitTime>5000</hitTime>
+		<effectRange>1400</effectRange>
+		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3877,33 +3954,77 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
+	</skill>
+	<skill id="5374" toLevel="9" name="Flame Strike">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
+		<hitTime>5000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -3920,9 +4041,18 @@
 	</skill>
 	<skill id="5375" toLevel="9" name="Blazing Circle">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3934,35 +4064,42 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
 		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
 		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
 	</skill>
 	<skill id="5376" toLevel="9" name="Blazing Circle">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<isSuicideAttack>true</isSuicideAttack>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -3974,13 +4111,8 @@
 			<value level="8">96</value>
 			<value level="9">99</value>
 		</magicLevel>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -3997,125 +4129,17 @@
 	</skill>
 	<skill id="5377" toLevel="9" name="Hydro Blast">
 		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
 		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-	</skill>
-	<skill id="5378" toLevel="9" name="Mass Hydro Blast">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5379" toLevel="9" name="Frost Wall">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5380" toLevel="9" name="Hurricane">
-		<icon>icon.skill0000</icon>
-		<affectRange>40</affectRange>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4129,80 +4153,190 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
+	</skill>
+	<skill id="5378" toLevel="9" name="Mass Hydro Blast">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5379" toLevel="9" name="Frost Wall">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5380" toLevel="9" name="Hurricane">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectRange>40</affectRange>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
 		<effects>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</effects>
 	</skill>
 	<skill id="5381" toLevel="9" name="Tempest">
 		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
 		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
-		<attributeType>WIND</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<castRange>500</castRange>
 		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5382" toLevel="9" name="Tempest">
-		<icon>icon.skill0000</icon>
 		<affectRange>200</affectRange>
-		<effectPoint>-100</effectPoint>
+		<affectScope>RANGE</affectScope>
 		<attributeType>WIND</attributeType>
 		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4216,46 +4350,92 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
+	</skill>
+	<skill id="5382" toLevel="9" name="Tempest">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
 		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>WIND</attributeType>
+		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
 		<effects>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</effects>
 	</skill>
 	<skill id="5383" toLevel="9" name="Rock Strike">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
 		<affectRange>40</affectRange>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4269,230 +4449,45 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</effects>
 	</skill>
 	<skill id="5384" toLevel="9" name="Earthquake">
 		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
 		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1000</effectRange>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
 		<attributeType>EARTH</attributeType>
 		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
 		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5385" toLevel="9" name="Earthquake">
-		<icon>icon.skill0000</icon>
 		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<attributeType>EARTH</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5386" toLevel="9" name="Holy Strike">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>1400</effectRange>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<castRange>900</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-	</skill>
-	<skill id="5387" toLevel="9" name="Holy Blast">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
-		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1000</effectRange>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<castRange>500</castRange>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5388" toLevel="9" name="Holy Circle">
-		<icon>icon.skill0000</icon>
-		<effectPoint>-100</effectPoint>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicLevel>
-			<value level="1">75</value>
-			<value level="2">78</value>
-			<value level="3">81</value>
-			<value level="4">84</value>
-			<value level="5">87</value>
-			<value level="6">90</value>
-			<value level="7">93</value>
-			<value level="8">96</value>
-			<value level="9">99</value>
-		</magicLevel>
-		<operateType>A1</operateType>
-		<mpConsume>
-			<value level="1">69</value>
-			<value level="2">72</value>
-			<value level="3">73</value>
-			<value level="4">75</value>
-			<value level="5">77</value>
-			<value level="6">77</value>
-			<value level="7">78</value>
-			<value level="8">78</value>
-			<value level="9">79</value>
-		</mpConsume>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<attributeType>HOLY</attributeType>
-		<attributeValue>20</attributeValue>
-		<affectRange>200</affectRange>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
-	</skill>
-	<skill id="5389" toLevel="9" name="Unholy Strike">
-		<icon>icon.skill0000</icon>
-		<affectRange>40</affectRange>
-		<castRange>900</castRange>
-		<effectPoint>-100</effectPoint>
-		<effectRange>1400</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
-		<hitTime>4000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4506,44 +4501,285 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
+	</skill>
+	<skill id="5385" toLevel="9" name="Earthquake">
+		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>EARTH</attributeType>
+		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5386" toLevel="9" name="Holy Strike">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5387" toLevel="9" name="Holy Blast">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>500</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1000</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5388" toLevel="9" name="Holy Circle">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>200</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>HOLY</attributeType>
+		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
+	</skill>
+	<skill id="5389" toLevel="9" name="Unholy Strike">
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectRange>40</affectRange>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
+		<castRange>900</castRange>
+		<effectPoint>-100</effectPoint>
+		<effectRange>1400</effectRange>
+		<hitTime>4000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">75</value>
+			<value level="2">78</value>
+			<value level="3">81</value>
+			<value level="4">84</value>
+			<value level="5">87</value>
+			<value level="6">90</value>
+			<value level="7">93</value>
+			<value level="8">96</value>
+			<value level="9">99</value>
+		</magicLevel>
+		<mpConsume>
+			<value level="1">55</value>
+			<value level="2">58</value>
+			<value level="3">58</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
+			<value level="7">62</value>
+			<value level="8">62</value>
+			<value level="9">63</value>
+		</mpConsume>
+		<mpInitialConsume>
+			<value level="1">14</value>
+			<value level="2">14</value>
+			<value level="3">15</value>
+			<value level="4">15</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
+			<value level="7">16</value>
+			<value level="8">16</value>
+			<value level="9">16</value>
+		</mpInitialConsume>
 		<effects>
-			<effect name="MagicalAttack" />
+			<effect name="MagicalDamage" />
 		</effects>
 	</skill>
 	<skill id="5390" toLevel="9" name="Unholy Blast">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1000</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4557,33 +4793,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -4600,12 +4831,18 @@
 	</skill>
 	<skill id="5391" toLevel="9" name="Unholy Circle">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
-		<effectPoint>-100</effectPoint>
+		<affectScope>POINT_BLANK</affectScope>
 		<attributeType>DARK</attributeType>
 		<attributeValue>20</attributeValue>
+		<effectPoint>-100</effectPoint>
+		<hitCancelTime>2.5</hitCancelTime>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4619,34 +4856,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>2.5</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>POINT_BLANK</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -4663,13 +4894,17 @@
 	</skill>
 	<skill id="5392" toLevel="9" name="Drain HP">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4683,30 +4918,26 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="HpDrain">
 				<power>
@@ -4726,13 +4957,17 @@
 	</skill>
 	<skill id="5393" toLevel="9" name="Mana Burn">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
-		<attributeType>DARK</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4746,32 +4981,28 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
-			<value level="4">69</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="4">60</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackMp">
+			<effect name="MagicalDamageMp">
 				<power>
 					<value level="1">240</value>
 					<value level="2">247</value>
@@ -4791,6 +5022,8 @@
 	<skill id="5394" toLevel="9" name="Poison">
 		<!-- Instantly decreases HP. -->
 		<icon>icon.skill4035</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY</targetType>
 		<abnormalLevel>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -4803,20 +5036,23 @@
 			<value level="9">10</value>
 		</abnormalLevel>
 		<abnormalTime>20</abnormalTime>
-		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>200</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>WATER</attributeType>
+		<attributeValue>20</attributeValue>
 		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
-		<attributeType>WATER</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
+		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">75</value>
 			<value level="2">78</value>
@@ -4830,35 +5066,30 @@
 		</magicLevel>
 		<mpConsume>
 			<value level="1">55</value>
-			<value level="2">57</value>
+			<value level="2">58</value>
 			<value level="3">58</value>
 			<value level="4">60</value>
-			<value level="5">61</value>
-			<value level="6">61</value>
+			<value level="5">62</value>
+			<value level="6">62</value>
 			<value level="7">62</value>
 			<value level="8">62</value>
 			<value level="9">63</value>
 		</mpConsume>
 		<mpInitialConsume>
 			<value level="1">14</value>
-			<value level="2">15</value>
+			<value level="2">14</value>
 			<value level="3">15</value>
 			<value level="4">15</value>
-			<value level="5">16</value>
-			<value level="6">16</value>
+			<value level="5">15</value>
+			<value level="6">15</value>
 			<value level="7">16</value>
 			<value level="8">16</value>
 			<value level="9">16</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<trait>INFECTION</trait>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -4875,6 +5106,8 @@
 	</skill>
 	<skill id="5395" toLevel="3" name="Super Might Haste">
 		<icon>icon.skill0000</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -4883,10 +5116,19 @@
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
 		<abnormalVisualEffect>BIG_BODY</abnormalVisualEffect>
+		<affectObject>CLAN</affectObject>
 		<affectRange>900</affectRange>
+		<affectScope>RANGE</affectScope>
+		<basicProperty>NONE</basicProperty>
 		<effectPoint>100</effectPoint>
 		<hitTime>2000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>
+			<value level="1">20</value>
+			<value level="2">40</value>
+			<value level="3">70</value>
+		</magicLevel>
 		<mpConsume>
 			<value level="1">23</value>
 			<value level="2">42</value>
@@ -4897,22 +5139,11 @@
 			<value level="2">11</value>
 			<value level="3">20</value>
 		</mpInitialConsume>
-		<operateType>A2</operateType>
 		<reuseDelay>8000</reuseDelay>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<magicLevel>
-			<value level="1">20</value>
-			<value level="2">40</value>
-			<value level="3">70</value>
-		</magicLevel>
-		<targetType>SELF</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>CLAN</affectObject>
 		<effects>
 			<effect name="Grow">
 			</effect>
-			<effect name="PAtk">
+			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -4932,22 +5163,24 @@
 	</skill>
 	<skill id="5396" toLevel="1" name="Spell Stance">
 		<icon>icon.skill0000</icon>
-		<castRange>400</castRange>
-		<channelingSkillId>5397</channelingSkillId> <!-- Spell Force -->
-		<channelingTickInterval>2</channelingTickInterval>
-		<hitTime>15000</hitTime>
-		<isMagic>2</isMagic> <!-- Static Skill -->
 		<operateType>CA5</operateType>
-		<basicProperty>NONE</basicProperty>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<effectRange>600</effectRange>
-		<magicLevel>77</magicLevel>
-		<channelingStart>3.6</channelingStart>
 		<targetType>OTHERS</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>NONE</basicProperty>
+		<castRange>400</castRange>
+		<channelingSkillId>5397</channelingSkillId> <!-- Spell Force -->
+		<channelingStart>3.6</channelingStart>
+		<channelingTickInterval>2</channelingTickInterval>
+		<effectRange>600</effectRange>
+		<hitTime>15000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>77</magicLevel>
 	</skill>
 	<skill id="5397" toLevel="3" name="Spell Force">
 		<icon>icon.skill0427</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
 		<abnormalLevel>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -4955,36 +5188,34 @@
 		</abnormalLevel>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>MAGICAL_STANCE</abnormalType>
-		<effectPoint>100</effectPoint>
-		<isMagic>2</isMagic> <!-- Static Skill -->
-		<operateType>A2</operateType>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
+		<effectPoint>100</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicCriticalRate>-5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5398" toLevel="1" name="Final Burn">
 		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>300</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>FIRE</attributeType>
+		<attributeValue>20</attributeValue>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1000</effectRange>
-		<attributeType>FIRE</attributeType>
-		<attributeValue>20</attributeValue>
 		<hitTime>5000</hitTime>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLevel>99</magicLevel>
 		<mpConsume>63</mpConsume>
 		<mpInitialConsume>16</mpInitialConsume>
-		<operateType>A1</operateType>
-		<magicCriticalRate>-5</magicCriticalRate>
-		<targetType>ENEMY</targetType>
-		<affectScope>RANGE</affectScope>
-		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="MagicalDamage">
 				<power>657</power>
 			</effect>
 		</effects>
@@ -4992,20 +5223,20 @@
 	<skill id="5399" toLevel="1" name="Heat of Desert">
 		<!-- Condition causing target to decrease HP by heat of desert. -->
 		<icon>icon.skill1230</icon>
+		<operateType>A2</operateType>
+		<targetType>TARGET</targetType>
 		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>HOT_GROUND</abnormalType>
 		<activateRate>10</activateRate>
+		<affectScope>SINGLE</affectScope>
 		<basicProperty>MAGIC</basicProperty>
 		<effectPoint>-100</effectPoint>
+		<hitCancelTime>0</hitCancelTime>
 		<isDebuff>true</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
-		<magicLevel>1</magicLevel>
-		<operateType>A2</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<hitCancelTime>0</hitCancelTime>
-		<targetType>TARGET</targetType>
-		<affectScope>SINGLE</affectScope>
+		<magicLevel>1</magicLevel>
 		<effects>
 			<effect name="DamOverTime">
 				<power>75</power>

@@ -34,6 +34,6 @@ public class OpMainjobSkillCondition implements ISkillCondition
 	@Override
 	public boolean canUse(Creature caster, Skill skill, WorldObject target)
 	{
-		return caster.isPlayer() && !caster.getActingPlayer().isSubClassActive();
+		return caster.isPlayer() && !caster.asPlayer().isSubClassActive();
 	}
 }

@@ -58,6 +58,7 @@ import handlers.actionshifthandlers.StaticObjectActionShift;
 import handlers.actionshifthandlers.SummonActionShift;
 import handlers.admincommandhandlers.AdminAdmin;
 import handlers.admincommandhandlers.AdminAnnouncements;
+import handlers.admincommandhandlers.AdminAugment;
 import handlers.admincommandhandlers.AdminBBS;
 import handlers.admincommandhandlers.AdminBuffs;
 import handlers.admincommandhandlers.AdminCamera;
@@ -264,6 +265,7 @@ import handlers.targethandlers.Pet;
 import handlers.targethandlers.Self;
 import handlers.targethandlers.Summon;
 import handlers.targethandlers.Target;
+import handlers.targethandlers.TargetOrSelf;
 import handlers.targethandlers.WyvernTarget;
 import handlers.targethandlers.affectobject.All;
 import handlers.targethandlers.affectobject.Clan;
@@ -375,6 +377,7 @@ public class MasterHandler
 			// Admin Command Handlers
 			AdminAdmin.class,
 			AdminAnnouncements.class,
+			AdminAugment.class,
 			AdminBBS.class,
 			AdminBuffs.class,
 			AdminCamera.class,
@@ -608,6 +611,7 @@ public class MasterHandler
 			Self.class,
 			Summon.class,
 			Target.class,
+			TargetOrSelf.class,
 			WyvernTarget.class,
 		},
 		{

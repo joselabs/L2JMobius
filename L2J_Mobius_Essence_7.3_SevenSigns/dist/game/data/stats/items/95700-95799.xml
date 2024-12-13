@@ -244,6 +244,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40346" level="1" /> <!-- Spellbook: Mount Black Wyvern -->
+		</skills>
 	</item>
 	<item id="95713" name="Siege Support Craft Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Allows to create various items using the special craft in the Event tab. -->
@@ -290,9 +294,9 @@
 			<item id="95660" min="1" max="1" chance="0.001" /> <!-- Boss' Weapon Pack - Sealed -->
 			<item id="93739" min="1" max="1" chance="0.01" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
 			<item id="8678" min="1" max="1" chance="0.01" /> <!-- Sirra's Blade -->
-			<item id="8679" min="1" max="1" chance="0.01" /> <!-- Sword of Ipos -->
+			<item id="8679" min="1" max="1" chance="0.01" /> <!-- Ipos' Sword -->
 			<item id="8680" min="1" max="1" chance="0.01" /> <!-- Barakiel's Axe -->
-			<item id="8681" min="1" max="1" chance="0.01" /> <!-- Behemoth' Tuning Fork -->
+			<item id="8681" min="1" max="1" chance="0.01" /> <!-- Behemoth's Tuning Fork -->
 			<item id="8682" min="1" max="1" chance="0.01" /> <!-- Naga's Storm -->
 			<item id="8683" min="1" max="1" chance="0.01" /> <!-- Tiphon's Spear -->
 			<item id="8684" min="1" max="1" chance="0.01" /> <!-- Shyeed's Bow -->
@@ -325,7 +329,7 @@
 			<item id="92057" min="1" max="1" chance="100" /> <!-- Coral Lv. 2 - Sealed -->
 			<item id="92067" min="1" max="1" chance="100" /> <!-- Onyx Lv. 2 - Sealed -->
 			<item id="92077" min="1" max="1" chance="100" /> <!-- Spinel Lv. 2 - Sealed -->
-			<item id="94732" min="5" max="5" chance="100" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="5" max="5" chance="100" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="95693" min="100" max="100" chance="100" /> <!-- Berserker's Scroll (Time-limited) - Sealed -->
 			<item id="95713" min="1" max="1" chance="100" /> <!-- Siege Support Craft Coupon (Time-limited) - Sealed -->
 		</capsuled_items>
@@ -382,6 +386,19 @@
 		<stats>
 			<stat type="mDef">44</stat>
 		</stats>
+		<skills>
+			<skill id="50189" level="1" /> <!-- Ring of Insolence -->
+			<skill id="50189" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Ring of Insolence -->
+			<skill id="50189" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Ring of Insolence -->
+			<skill id="50189" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Ring of Insolence -->
+			<skill id="50189" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Ring of Insolence -->
+			<skill id="50189" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Ring of Insolence -->
+			<skill id="50189" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Ring of Insolence -->
+			<skill id="50189" level="8" type="ON_ENCHANT" type_value="7" /> <!-- +7 Ring of Insolence -->
+			<skill id="50189" level="9" type="ON_ENCHANT" type_value="8" /> <!-- +8 Ring of Insolence -->
+			<skill id="50189" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Ring of Insolence -->
+			<skill id="50189" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Ring of Insolence -->
+		</skills>
 	</item>
 	<item id="95719" name="Dragon Valley's Earring" additionalName="Sealed" type="Armor">
 		<!-- Increases Shock Resistance. <font color=ff6666>Note!</font>. Effects of two identical earrings do not stack, the earring with a higher enchant value takes precedence. -->
@@ -399,6 +416,19 @@
 		<stats>
 			<stat type="mDef">68</stat>
 		</stats>
+		<skills>
+			<skill id="50190" level="1" /> <!-- Dragon Valley's Earring -->
+			<skill id="50190" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Dragon Valley's Earring -->
+			<skill id="50190" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Dragon Valley's Earring -->
+			<skill id="50190" level="4" type="ON_ENCHANT" type_value="3" /> <!-- +3 Dragon Valley's Earring -->
+			<skill id="50190" level="5" type="ON_ENCHANT" type_value="4" /> <!-- +4 Dragon Valley's Earring -->
+			<skill id="50190" level="6" type="ON_ENCHANT" type_value="5" /> <!-- +5 Dragon Valley's Earring -->
+			<skill id="50190" level="7" type="ON_ENCHANT" type_value="6" /> <!-- +6 Dragon Valley's Earring -->
+			<skill id="50190" level="8" type="ON_ENCHANT" type_value="7" /> <!-- +7 Dragon Valley's Earring -->
+			<skill id="50190" level="9" type="ON_ENCHANT" type_value="8" /> <!-- +8 Dragon Valley's Earring -->
+			<skill id="50190" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Dragon Valley's Earring -->
+			<skill id="50190" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Dragon Valley's Earring -->
+		</skills>
 	</item>
 	<item id="95720" name="Scroll: Enchant Ring of Insolence" additionalName="Sealed" type="EtcItem">
 		<!-- Required for enchanting Ring of Insolence. The maximum enchant value is +10. -->
@@ -476,18 +506,18 @@
 		<set name="extractableCountMin" val="1" />
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
-			<item id="93268" min="1" max="1" chance="8.333333" /> <!-- Improved Scroll: Enchant A-grade Weapon - Sealed -->
-			<item id="93269" min="1" max="1" chance="8.333333" /> <!-- Improved Scroll: Enchant A-grade Armor - Sealed -->
-			<item id="93270" min="1" max="1" chance="8.333333" /> <!-- Cursed Scroll: Enchant A-grade Weapon - Sealed -->
-			<item id="93271" min="1" max="1" chance="8.333333" /> <!-- Cursed Scroll: Enchant A-grade Armor - Sealed -->
-			<item id="93976" min="1" max="1" chance="8.333333" /> <!-- Scroll: Enchant A-grade Weapon - Sealed -->
-			<item id="93406" min="1" max="1" chance="8.333333" /> <!-- Scroll: Enchant B-grade Weapon - Sealed -->
-			<item id="93408" min="1" max="1" chance="8.333333" /> <!-- Scroll: Enchant C-grade Weapon - Sealed -->
-			<item id="93410" min="1" max="1" chance="8.333333" /> <!-- Scroll: Enchant D-grade Weapon - Sealed -->
-			<item id="93977" min="1" max="1" chance="8.333333" /> <!-- Scroll: Enchant A-grade Armor - Sealed -->
-			<item id="93407" min="1" max="1" chance="8.333333" /> <!-- Scroll: Enchant B-grade Armor - Sealed -->
-			<item id="93409" min="1" max="1" chance="8.333333" /> <!-- Scroll: Enchant C-grade Armor - Sealed -->
-			<item id="93411" min="1" max="1" chance="8.333333" /> <!-- Scroll: Enchant D-grade Armor - Sealed -->
+			<item id="93268" min="1" max="1" chance="0.05" /> <!-- Improved Scroll: Enchant A-grade Weapon - Sealed -->
+			<item id="93269" min="1" max="1" chance="0.05" /> <!-- Improved Scroll: Enchant A-grade Armor - Sealed -->
+			<item id="93270" min="1" max="1" chance="0.05" /> <!-- Cursed Scroll: Enchant A-grade Weapon - Sealed -->
+			<item id="93271" min="1" max="1" chance="0.05" /> <!-- Cursed Scroll: Enchant A-grade Armor - Sealed -->
+			<item id="93976" min="1" max="1" chance="2.9" /> <!-- Scroll: Enchant A-grade Weapon - Sealed -->
+			<item id="93406" min="1" max="1" chance="2.9" /> <!-- Scroll: Enchant B-grade Weapon - Sealed -->
+			<item id="93408" min="1" max="1" chance="12" /> <!-- Scroll: Enchant C-grade Weapon - Sealed -->
+			<item id="93410" min="1" max="1" chance="12" /> <!-- Scroll: Enchant D-grade Weapon - Sealed -->
+			<item id="93977" min="1" max="1" chance="15" /> <!-- Scroll: Enchant A-grade Armor - Sealed -->
+			<item id="93407" min="1" max="1" chance="15" /> <!-- Scroll: Enchant B-grade Armor - Sealed -->
+			<item id="93409" min="1" max="1" chance="20" /> <!-- Scroll: Enchant C-grade Armor - Sealed -->
+			<item id="93411" min="1" max="1" chance="20" /> <!-- Scroll: Enchant D-grade Armor - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="95725" name="Frost Lord's Sword" type="Weapon">
@@ -530,11 +560,11 @@
 			<skill id="50525" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Sword -->
 			<skill id="50525" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Sword -->
 			<skill id="50392" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -543,7 +573,7 @@
 		<set name="icon" val="icon.frozen_weapon_two_hand_sword" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="SWORD" />
-		<set name="bodypart" val="rhand" />
+		<set name="bodypart" val="lrhand" />
 		<set name="damage_range" val="0;0;46;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_count" val="2157" />
@@ -578,11 +608,11 @@
 			<skill id="50532" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Two-handed Sword -->
 			<skill id="50532" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Two-handed Sword -->
 			<skill id="50395" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -627,11 +657,11 @@
 			<skill id="50526" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Axe -->
 			<skill id="50526" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Axe -->
 			<skill id="50397" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -676,11 +706,11 @@
 			<skill id="50527" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Dagger -->
 			<skill id="50527" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Dagger -->
 			<skill id="50402" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -713,6 +743,7 @@
 			<stat type="pAtkRange">80</stat>
 		</stats>
 		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="50530" level="1" /> <!-- Frost Lord's Spear -->
 			<skill id="50530" level="2" type="ON_ENCHANT" type_value="1" /> <!-- +1 Frost Lord's Spear -->
 			<skill id="50530" level="3" type="ON_ENCHANT" type_value="2" /> <!-- +2 Frost Lord's Spear -->
@@ -724,13 +755,12 @@
 			<skill id="50530" level="9" type="ON_ENCHANT" type_value="8" /> <!-- +8 Frost Lord's Spear -->
 			<skill id="50530" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Spear -->
 			<skill id="50530" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Spear -->
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
 			<skill id="50405" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -777,11 +807,11 @@
 			<skill id="50536" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Bow -->
 			<skill id="50536" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Bow -->
 			<skill id="50401" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -826,11 +856,11 @@
 			<skill id="50535" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Blade Fists -->
 			<skill id="50535" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Blade Fists -->
 			<skill id="50404" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -839,7 +869,7 @@
 		<set name="icon" val="icon.frozen_weapon_staff" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="BLUNT" />
-		<set name="bodypart" val="lrhand" />
+		<set name="bodypart" val="rhand" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_count" val="2157" />
@@ -876,11 +906,11 @@
 			<skill id="50529" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Magic Blunt Weapon -->
 			<skill id="50529" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Magic Blunt Weapon -->
 			<skill id="50397" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -926,11 +956,11 @@
 			<skill id="50533" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Staff -->
 			<skill id="50533" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Staff -->
 			<skill id="50397" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -975,11 +1005,11 @@
 			<skill id="50531" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Ancient Sword -->
 			<skill id="50531" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Ancient Sword -->
 			<skill id="50395" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -988,7 +1018,7 @@
 		<set name="icon" val="icon.frozen_weapon_rapier" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="RAPIER" />
-		<set name="bodypart" val="lrhand" />
+		<set name="bodypart" val="rhand" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
 		<set name="crystal_count" val="2157" />
@@ -1024,11 +1054,11 @@
 			<skill id="50528" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Rapier -->
 			<skill id="50528" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Rapier -->
 			<skill id="50392" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -1073,16 +1103,16 @@
 			<skill id="50537" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Pistols -->
 			<skill id="50537" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Pistols -->
 			<skill id="50403" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
 	<item id="95737" name="Frost Lord's Dual Swords" type="Weapon">
-		<!-- When enchanting dual swords, two-handed swords/ blunts and fists, the P. Atk. bonus is higher than that of one-handed weapons. <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins.></font> -->
+		<!-- When enchanting dual swords, two-handed swords/ blunt weapons and fists, the P. Atk. bonus is higher than that of one-handed weapons. <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins.></font> -->
 		<set name="icon" val="icon.frozen_weapon_dual_sword" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
@@ -1121,11 +1151,11 @@
 			<skill id="50534" level="10" type="ON_ENCHANT" type_value="9" /> <!-- +9 Frost Lord's Dual Swords -->
 			<skill id="50534" level="11" type="ON_ENCHANT" type_value="10" /> <!-- +10 Frost Lord's Dual Swords -->
 			<skill id="50404" level="1" type="ON_BLESSING" /> <!-- Weapon Blessing Effect -->
-			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss' Weapon Blessing Effect -->
-			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Blessing Effect -->
-			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Blessing Effect -->
-			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Blessing Effect -->
-			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Blessing Effect -->
+			<skill id="50412" level="1" type="ON_BLESSING" type_value="5" /> <!-- +5 Boss Weapon Blessing Effect -->
+			<skill id="50413" level="1" type="ON_BLESSING" type_value="6" /> <!-- +6 Boss' Weapon Blessing Effect -->
+			<skill id="50414" level="1" type="ON_BLESSING" type_value="7" /> <!-- +7 Boss' Weapon Blessing Effect -->
+			<skill id="50415" level="1" type="ON_BLESSING" type_value="8" /> <!-- +8 Boss' Weapon Blessing Effect -->
+			<skill id="50416" level="1" type="ON_BLESSING" type_value="9" /> <!-- +9 Boss' Weapon Blessing Effect -->
 			<skill id="50417" level="1" type="ON_BLESSING" type_value="10" /> <!-- +10 Boss' Weapon Blessing Effect -->
 		</skills>
 	</item>
@@ -1158,7 +1188,7 @@
 		<set name="etcitem_type" val="ENCHT_AM" />
 		<set name="handler" val="EnchantScrolls" />
 		<skills>
-			<skill id="40056" level="1" /> <!-- Artisan's Scroll: Enchant Dragon Valley's Earring -->
+			<skill id="40355" level="1" /> <!-- Artisan's Scroll: Enchant Dragon Valley's Earring -->
 		</skills>
 	</item>
 	<item id="95740" name="Artisan's Scroll: Enchant Talisman of Aden" additionalName="Sealed" type="EtcItem">
@@ -1224,9 +1254,9 @@
 		<set name="extractableCountMax" val="1" />
 		<capsuled_items>
 			<item id="8678" min="1" max="1" chance="6.66" /> <!-- Sirra's Blade -->
-			<item id="8679" min="1" max="1" chance="6.66" /> <!-- Sword of Ipos -->
+			<item id="8679" min="1" max="1" chance="6.66" /> <!-- Ipos' Sword -->
 			<item id="8680" min="1" max="1" chance="6.66" /> <!-- Barakiel's Axe -->
-			<item id="8681" min="1" max="1" chance="6.66" /> <!-- Behemoth' Tuning Fork -->
+			<item id="8681" min="1" max="1" chance="6.66" /> <!-- Behemoth's Tuning Fork -->
 			<item id="8682" min="1" max="1" chance="6.66" /> <!-- Naga's Storm -->
 			<item id="8683" min="1" max="1" chance="6.66" /> <!-- Tiphon's Spear -->
 			<item id="8684" min="1" max="1" chance="6.66" /> <!-- Shyeed's Bow -->
@@ -1324,12 +1354,12 @@
 			<item id="95660" min="1" max="1" chance="1.923077" /> <!-- Boss' Weapon Pack - Sealed -->
 			<item id="94385" min="1" max="1" chance="1.923077" /> <!-- Improved Scroll: Enchant Rare Accessories -->
 			<item id="94383" min="1" max="1" chance="1.923077" /> <!-- Scroll: Enchant Rare Accessories -->
-			<item id="94853" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye <STR +4> - 3rd Class -->
-			<item id="94856" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye <INT +4> - 3rd Class -->
-			<item id="94855" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye <DEX +4> - 3rd Class -->
-			<item id="94858" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye <WIT +4> - 3rd Class -->
-			<item id="94854" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye <CON +4> - 3rd Class -->
-			<item id="94857" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye <MEN +4> - 3rd Class -->
+			<item id="94853" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye (STR +4) - 3rd Class -->
+			<item id="94856" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye (INT +4) - 3rd Class -->
+			<item id="94855" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye (DEX +4) - 3rd Class -->
+			<item id="94858" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye (WIT +4) - 3rd Class -->
+			<item id="94854" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye (CON +4) - 3rd Class -->
+			<item id="94857" min="1" max="1" chance="1.923077" /> <!-- Legendary Dye (MEN +4) - 3rd Class -->
 			<item id="94886" min="1" max="1" chance="1.923077" /> <!-- Zephyrus -->
 			<item id="94156" min="1" max="1" chance="1.923077" /> <!-- Package: Baium Doll Lv. 1 - Sealed -->
 			<item id="94513" min="1" max="1" chance="1.923077" /> <!-- Package: Frintezza Doll Lv. 1 - Sealed -->
@@ -1594,9 +1624,6 @@
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
 		<set name="is_sellable" val="false" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">251</stat>
 			<stat type="mAtk">137</stat>
@@ -1630,6 +1657,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
+		<skills>
+			<skill id="50539" level="1" /> <!-- ALL FOR ONE -->
+		</skills>
 	</item>
 	<item id="95762" name="Hair Accessory of Willpower (V1) (Time-limited)" additionalName="30-day" type="Armor">
 		<!-- NC Dinos Shortstop Cap. <Effect>. All stats +1. <font color=eeaa22>Equipped in the left head accessory slot.</font>. <font color=ff6666>Cannot be enchanted or augmented.</font> -->
@@ -1643,6 +1673,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="50538" level="1" /> <!-- Head Accessory of Willpower (V1) -->
+		</skills>
 	</item>
 	<item id="95763" name="Winner's Trophy (V1) (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following items. -->
@@ -1687,6 +1720,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="40358" level="1" /> <!-- Alligator Island's Time Stone -->
+		</skills>
 	</item>
 	<item id="95766" name="Pack of Seals (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain Giran Seal, a random item from the list and another one of various items. -->
@@ -1725,7 +1762,7 @@
 			<item id="93255" min="1" max="1" chance="3.225806" /> <!-- Improved Scroll: Enchant A-grade Weapon -->
 			<item id="93256" min="1" max="1" chance="3.225806" /> <!-- Improved Scroll: Enchant A-grade Armor -->
 			<item id="95768" min="1" max="1" chance="3.225806" /> <!-- Master's Book Chest - Sealed -->
-			<item id="94732" min="1" max="1" chance="3.225806" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="1" max="1" chance="3.225806" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="49674" min="5" max="5" chance="3.225806" /> <!-- XP Growth Scroll - Sealed -->
 			<item id="91712" min="5" max="5" chance="3.225806" /> <!-- Sayha's Storm - Sealed -->
 			<item id="92314" min="20" max="20" chance="3.225806" /> <!-- Giran Seal -->
@@ -1763,15 +1800,15 @@
 			<item id="95663" min="1" max="1" chance="3.333333" /> <!-- Sigil of Protection -->
 			<item id="94888" min="1" max="1" chance="3.333333" /> <!-- Anakim's Divine Pistols -->
 			<item id="94385" min="1" max="1" chance="3.333333" /> <!-- Improved Scroll: Enchant Rare Accessories -->
-			<item id="94853" min="1" max="1" chance="3.333333" /> <!-- Legendary Dye <STR +4> - 3rd Class -->
-			<item id="94856" min="1" max="1" chance="3.333333" /> <!-- Legendary Dye <INT +4> - 3rd Class -->
-			<item id="94855" min="1" max="1" chance="3.333333" /> <!-- Legendary Dye <DEX +4> - 3rd Class -->
-			<item id="94858" min="1" max="1" chance="3.333333" /> <!-- Legendary Dye <WIT +4> - 3rd Class -->
+			<item id="94853" min="1" max="1" chance="3.333333" /> <!-- Legendary Dye (STR +4) - 3rd Class -->
+			<item id="94856" min="1" max="1" chance="3.333333" /> <!-- Legendary Dye (INT +4) - 3rd Class -->
+			<item id="94855" min="1" max="1" chance="3.333333" /> <!-- Legendary Dye (DEX +4) - 3rd Class -->
+			<item id="94858" min="1" max="1" chance="3.333333" /> <!-- Legendary Dye (WIT +4) - 3rd Class -->
 			<item id="93739" min="1" max="1" chance="3.333333" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
 			<item id="94729" min="1" max="1" chance="3.333333" /> <!-- Master's Book Chest -->
 			<item id="93255" min="1" max="1" chance="3.333333" /> <!-- Improved Scroll: Enchant A-grade Weapon -->
 			<item id="93256" min="1" max="1" chance="3.333333" /> <!-- Improved Scroll: Enchant A-grade Armor -->
-			<item id="94732" min="1" max="1" chance="3.333333" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="1" max="1" chance="3.333333" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="91690" min="30" max="30" chance="3.333333" /> <!-- Special HP Recovery Potion - Sealed -->
 			<item id="91712" min="5" max="5" chance="3.333333" /> <!-- Sayha's Storm - Sealed -->
 			<item id="92314" min="20" max="20" chance="3.333333" /> <!-- Giran Seal -->
@@ -1925,7 +1962,7 @@
 		<set name="extractableCountMax" val="2" />
 		<capsuled_items>
 			<item id="3031" min="100" max="100" chance="100" /> <!-- Spirit Ore - Sealed -->
-			<item id="94732" min="1" max="1" chance="16.66667" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="1" max="1" chance="16.66667" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="94380" min="1" max="1" chance="16.66667" /> <!-- Scroll: Boost Attack (Time-limited) - Sealed -->
 			<item id="94381" min="1" max="1" chance="16.66667" /> <!-- Scroll: Boost Defense (Time-limited) - Sealed -->
 			<item id="3031" min="100" max="100" chance="16.66667" /> <!-- Spirit Ore - Sealed -->
@@ -1948,7 +1985,7 @@
 		<set name="extractableCountMax" val="2" />
 		<capsuled_items>
 			<item id="93701" min="1" max="1" chance="100" /> <!-- Charging Stone of Regular Craft - 1 Charge (Time-limited) - Sealed -->
-			<item id="94732" min="1" max="1" chance="14.28571" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="1" max="1" chance="14.28571" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="94380" min="3" max="3" chance="14.28571" /> <!-- Scroll: Boost Attack (Time-limited) - Sealed -->
 			<item id="94381" min="3" max="3" chance="14.28571" /> <!-- Scroll: Boost Defense (Time-limited) - Sealed -->
 			<item id="93701" min="1" max="1" chance="14.28571" /> <!-- Charging Stone of Regular Craft - 1 Charge (Time-limited) - Sealed -->
@@ -1958,7 +1995,7 @@
 		</capsuled_items>
 	</item>
 	<item id="95777" name="High-grade Magic Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
-		<!-- Double-click to obtain Agathion Spirit Exchange Coupon and one of the following items. -->
+		<!-- Double-click to obtain Spirit Agathion Exchange Coupon and one of the following items. -->
 		<set name="icon" val="icon.card_event_gold_box" />
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
@@ -1982,7 +2019,7 @@
 			<item id="3031" min="1000" max="1000" chance="8.333333" /> <!-- Spirit Ore - Sealed -->
 			<item id="90907" min="100" max="100" chance="8.333333" /> <!-- Soulshot Ticket - Sealed -->
 			<item id="93848" min="20" max="20" chance="8.333333" /> <!-- Sayha's Cookie (Time-limited) - Sealed -->
-			<item id="94732" min="1" max="1" chance="8.333333" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="1" max="1" chance="8.333333" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 		</capsuled_items>
 	</item>
 	<item id="95778" name="Daily Kit: Supplies (Time-limited)" additionalName="Sealed" type="EtcItem">
@@ -2036,7 +2073,7 @@
 		</capsuled_items>
 	</item>
 	<item id="95781" name="Black Frozen Core" type="EtcItem">
-		<!-- Required for creating Frost Lord's weapons. -->
+		<!-- Required for crafting a Frost Lord's weapon. -->
 		<set name="icon" val="icon.core_of_black_ice" />
 		<set name="default_action" val="NONE" />
 		<set name="immediate_effect" val="true" />

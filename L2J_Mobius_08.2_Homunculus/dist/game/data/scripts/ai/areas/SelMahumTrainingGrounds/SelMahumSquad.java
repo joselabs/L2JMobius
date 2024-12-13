@@ -24,7 +24,6 @@ import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.taskmanager.GameTimeTaskManager;
@@ -182,7 +181,7 @@ public class SelMahumSquad extends AbstractNpcAI
 			{
 				if (npc.isMonster() && !npc.isDead())
 				{
-					((Monster) npc).returnHome();
+					npc.asMonster().returnHome();
 				}
 				break;
 			}

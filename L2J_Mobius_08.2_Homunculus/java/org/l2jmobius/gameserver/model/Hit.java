@@ -19,7 +19,6 @@ package org.l2jmobius.gameserver.model;
 import java.lang.ref.WeakReference;
 
 import org.l2jmobius.gameserver.enums.AttackType;
-import org.l2jmobius.gameserver.model.actor.Creature;
 
 /**
  * @author UnAfraid
@@ -55,7 +54,7 @@ public class Hit
 			addMask(AttackType.SHOT_USED);
 		}
 		
-		if ((target.isCreature() && ((Creature) target).isHpBlocked()) || (shld > 0))
+		if ((target.isCreature() && target.asCreature().isHpBlocked()) || (shld > 0))
 		{
 			addMask(AttackType.BLOCKED);
 		}

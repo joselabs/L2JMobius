@@ -33,7 +33,6 @@ import org.l2jmobius.gameserver.geoengine.GeoEngine;
 import org.l2jmobius.gameserver.instancemanager.WalkingManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.actor.Npc;
-import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.interfaces.IIdentifiable;
@@ -436,6 +435,16 @@ public class Spawn extends Location implements IIdentifiable, INamable
 			{
 				newlocz = geoZ;
 			}
+			
+			// Prevent new z exceeding spawn territory high z.
+			if (_spawnTemplate != null)
+			{
+				final int highZ = _spawnTemplate.getHighZ();
+				if ((highZ != Integer.MAX_VALUE) && (highZ < newlocz))
+				{
+					newlocz = highZ;
+				}
+			}
 		}
 		
 		// Set is not random walk default value
@@ -486,7 +495,7 @@ public class Spawn extends Location implements IIdentifiable, INamable
 		// Minions
 		if (npc.isMonster() && NpcData.getMasterMonsterIDs().contains(npc.getId()))
 		{
-			((Monster) npc).getMinionList().spawnMinions(npc.getParameters().getMinionList("Privates"));
+			npc.asMonster().getMinionList().spawnMinions(npc.getParameters().getMinionList("Privates"));
 		}
 		
 		return npc;

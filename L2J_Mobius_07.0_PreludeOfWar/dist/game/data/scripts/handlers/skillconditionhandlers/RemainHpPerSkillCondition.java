@@ -53,7 +53,7 @@ public class RemainHpPerSkillCondition implements ISkillCondition
 			{
 				if ((target != null) && target.isCreature())
 				{
-					return _percentType.test(((Creature) target).getCurrentHpPercent(), _amount);
+					return _percentType.test(target.asCreature().getCurrentHpPercent(), _amount);
 				}
 				break;
 			}

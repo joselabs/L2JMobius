@@ -1,21 +1,28 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.network.serverpackets.gacha;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -31,35 +38,60 @@ public class UniqueGachaOpen extends ServerPacket
 {
 	private final static int SHORT_PACKET_INFO = 2 + 1 + 4 + 8;
 	
-	private final Player _player;
 	private final int _fullInfo;
 	private final int _openMode;
+	private final int _currencyCount;
+	private final int _stepsToGuaranteedReward;
+	private final int _remainingTime;
+	private final boolean _isShowProbability;
+	private final Set<GachaItemHolder> _visibleItems;
+	private final int _totalRewardCount;
+	private final Collection<Set<GachaItemHolder>> _rewardItems;
+	private final int _currencyItemId;
+	private final Map<Integer, Long> _gameCosts;
 	
 	public UniqueGachaOpen(Player player, int fullInfo, int openMode)
 	{
-		_player = player;
 		_fullInfo = fullInfo;
 		_openMode = openMode;
+		
+		final UniqueGachaManager manager = UniqueGachaManager.getInstance();
+		_currencyCount = manager.getCurrencyCount(player);
+		_stepsToGuaranteedReward = manager.getStepsToGuaranteedReward(player);
+		_remainingTime = (int) ((manager.getActiveUntilPeriod() - System.currentTimeMillis()) / 1000L);
+		_isShowProbability = manager.isShowProbability();
+		if (_fullInfo == 1)
+		{
+			_visibleItems = manager.getVisibleItems();
+			_totalRewardCount = manager.getTotalRewardCount();
+			_rewardItems = manager.getRewardItems().values();
+			_currencyItemId = manager.getCurrencyItemId();
+			_gameCosts = manager.getGameCosts();
+		}
+		else
+		{
+			_visibleItems = Collections.emptySet();
+			_totalRewardCount = 0;
+			_rewardItems = Collections.emptySet();
+			_currencyItemId = 0;
+			_gameCosts = Collections.emptyMap();
+		}
 	}
 	
 	@Override
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		final UniqueGachaManager manager = UniqueGachaManager.getInstance();
 		ServerPackets.EX_UNIQUE_GACHA_OPEN.writeId(this, buffer);
-		/**
-		 * open mode 1 = const GACHA_TITLE_FORM = 1; = will open main window?
-		 */
-		buffer.writeByte(_openMode); // open mode // char // 1 = main menu
+		buffer.writeByte(_openMode); // open mode 1 = const GACHA_TITLE_FORM = 1; = will open main window?
 		buffer.writeByte(0); // result // char // not used?
-		buffer.writeInt(manager.getCurrencyCount(_player)); // my cost item amount // int // current item count for roll?
-		buffer.writeInt(manager.getStepsToGuaranteedReward(_player)); // my confirm count // int // left to guarant
-		buffer.writeInt((int) ((manager.getActiveUntilPeriod() - System.currentTimeMillis()) / 1000L)); // remain time in seconds // int
+		buffer.writeInt(_currencyCount); // my cost item amount // int // current item count for roll?
+		buffer.writeInt(_stepsToGuaranteedReward); // my confirm count // int // left to guarant
+		buffer.writeInt(_remainingTime); // remain time in seconds // int
 		buffer.writeByte(_fullInfo); // full info // char
-		buffer.writeByte(manager.isShowProbability() ? 1 : 0); // show probability // char
+		buffer.writeByte(_isShowProbability); // show probability // char
 		if (_fullInfo == 1)
 		{
-			writeFullInfo(manager, buffer);
+			writeFullInfo(buffer);
 		}
 		else
 		{
@@ -67,19 +99,20 @@ public class UniqueGachaOpen extends ServerPacket
 		}
 	}
 	
-	private void writeFullInfo(UniqueGachaManager manager, WritableBuffer buffer)
+	private void writeFullInfo(WritableBuffer buffer)
 	{
-		buffer.writeInt(manager.getVisibleItems().size()); // show items size // int
-		for (GachaItemHolder item : manager.getVisibleItems())
+		buffer.writeInt(_visibleItems.size()); // show items size // int
+		for (GachaItemHolder item : _visibleItems)
 		{
 			buffer.writeShort(SHORT_PACKET_INFO); // current size // short
 			buffer.writeByte(item.getRank().getClientId()); // rank type // char
 			buffer.writeInt(item.getId()); // item type // int
 			buffer.writeLong(item.getCount()); // amount // long
-			buffer.writeDouble(getChance(manager.isShowProbability(), item.getItemChance())); // probability // double
+			buffer.writeDouble(getChance(item.getItemChance())); // probability // double
 		}
-		buffer.writeInt(manager.getTotalRewardCount()); // reward item size // int
-		for (Set<GachaItemHolder> items : manager.getRewardItems().values())
+		
+		buffer.writeInt(_totalRewardCount); // reward item size // int
+		for (Set<GachaItemHolder> items : _rewardItems)
 		{
 			for (GachaItemHolder item : items)
 			{
@@ -87,13 +120,14 @@ public class UniqueGachaOpen extends ServerPacket
 				buffer.writeByte(item.getRank().getClientId()); // rank type // char
 				buffer.writeInt(item.getId()); // item type // int
 				buffer.writeLong(item.getCount()); // amount // long
-				buffer.writeDouble(getChance(manager.isShowProbability(), item.getItemChance())); // probability // double
+				buffer.writeDouble(getChance(item.getItemChance())); // probability // double
 			}
 		}
+		
 		buffer.writeByte(1); // cost type // char // bool?
-		buffer.writeInt(manager.getCurrencyItemId()); // cost item type // int // item id
-		buffer.writeInt(manager.getGameCosts().size()); // cost amount item info // int
-		for (Entry<Integer, Long> entry : manager.getGameCosts().entrySet())
+		buffer.writeInt(_currencyItemId); // cost item type // int // item id
+		buffer.writeInt(_gameCosts.size()); // cost amount item info // int
+		for (Entry<Integer, Long> entry : _gameCosts.entrySet())
 		{
 			buffer.writeInt(entry.getKey()); // game count // int
 			buffer.writeLong(entry.getValue()); // amount // long
@@ -109,8 +143,8 @@ public class UniqueGachaOpen extends ServerPacket
 		buffer.writeInt(0); // cost amount item info // int
 	}
 	
-	private double getChance(boolean showChance, int itemChance)
+	private double getChance(int itemChance)
 	{
-		return showChance ? (double) ((double) itemChance / (double) UniqueGachaManager.MINIMUM_CHANCE) : 0;
+		return _isShowProbability ? (double) ((double) itemChance / (double) UniqueGachaManager.MINIMUM_CHANCE) : 0;
 	}
 }

@@ -35,6 +35,7 @@ import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.serverpackets.NpcInfo;
 
 import ai.AbstractNpcAI;
+import quests.Q00020_BringUpWithLove.Q00020_BringUpWithLove;
 
 /**
  * Growth-capable mobs: Polymorphing upon successful feeding.<br>
@@ -284,13 +285,14 @@ public class BeastFarm extends AbstractNpcAI
 				nextNpc.addBeastSkill(st.getSkill(sh.getSkillId(), sh.getSkillLevel()));
 			}
 			
-			// TODO: Q00020_BringUpWithLove.checkJewelOfInnocence(player);
+			Q00020_BringUpWithLove.checkJewelOfInnocence(player);
+			// Q00655_AGrandPlanForTamingWildBeasts.checkCrystalofPurity(player);
 		}
 		else
 		{
 			// if not trained, the newly spawned mob will automatically be agro against its feeder
 			// (what happened to "never bite the hand that feeds you" anyway?!)
-			final Attackable nextNpc = (Attackable) addSpawn(nextNpcId, npc);
+			final Attackable nextNpc = addSpawn(nextNpcId, npc).asAttackable();
 			
 			// register the player in the feedinfo for the mob that just spawned
 			_feedInfo.put(nextNpc.getObjectId(), player.getObjectId());
@@ -360,7 +362,7 @@ public class BeastFarm extends AbstractNpcAI
 				{
 					_feedInfo.remove(objectId);
 					npc.setRunning();
-					((Attackable) npc).addDamageHate(caster, 0, 1);
+					npc.asAttackable().addDamageHate(caster, 0, 1);
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, caster);
 				}
 				return super.onSkillSee(npc, caster, skill, targets, isSummon);

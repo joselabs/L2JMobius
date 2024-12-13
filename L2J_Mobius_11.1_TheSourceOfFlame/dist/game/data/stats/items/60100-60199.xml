@@ -948,6 +948,24 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48954" min="1" max="1" chance="100" /> <!-- Artifact Book - Lv. 1 -->
+			<item id="48683" min="1" max="1" chance="100" /> <!-- High-grade Talisman of Skill Power - Skill Critical Damage -->
+			<item id="48684" min="1" max="1" chance="100" /> <!-- High-grade Talisman of Attribute Attack - Critical Damage for basic attacks -->
+			<item id="48685" min="1" max="1" chance="100" /> <!-- High-grade Talisman of Skill Cooldown - P./M. Def. -->
+			<item id="48957" min="1" max="1" chance="100" /> <!-- Artifact - P. Atk. - Attack -->
+			<item id="48961" min="1" max="1" chance="100" /> <!-- Artifact - P. Def. - Defense -->
+			<item id="48969" min="1" max="1" chance="100" /> <!-- Artifact - P. Atk. - Balance -->
+			<item id="48980" min="1" max="1" chance="100" /> <!-- Artifact - Attribute Attack - Balance -->
+			<item id="48981" min="1" max="1" chance="100" /> <!-- Artifact - Attribute Resistance - Balance -->
+			<item id="48848" min="200" max="200" chance="100" /> <!-- Freya's Ice Rose - Event -->
+			<item id="81054" min="100" max="100" chance="100" /> <!-- Freya's Scroll of Storm - Event -->
+			<item id="81012" min="100" max="100" chance="100" /> <!-- Emperor's Special Cocktail - Event -->
+			<item id="81013" min="200" max="200" chance="100" /> <!-- Shining Nevit's Gold Hourglass - Event -->
+			<item id="48857" min="200" max="200" chance="100" /> <!-- Glowing Dragon's Attribute Potion (XP) - Event -->
+			<item id="81011" min="200" max="200" chance="100" /> <!-- Honey Dark Beer - Event -->
+		</capsuled_items>
 	</item>
 	<item id="60168" name="Expedition Supplies" additionalName="Magic" type="EtcItem">
 		<!-- Double-click to obtain La Vie En Rose's Brooch Lv. 2, +5 Kaliel's Bracelet, Artifact Book, +5 Dragon Leather Shirt, Blue Cat's Eye Lv. 4, High-grade Talisman of Skill Power, High-grade Talisman of Attribute Attack, High-grade Talisman of Skill Cooldown, +3 Artifact - M. Atk., +3 Artifact - P. Def., +3 Artifact - Acquired XP, +3 Artifact - M. Atk., +3 Artifact - Vitality Bonus, Artifact - Attribute Attack, Artifact - Attribute Resistance, Freya's Ice Rose (200 pcs.), Freya's Scroll of Storm (300 pcs.), Emperor's Special Cocktail (100 pcs.), Shining Nevit's Gold Hourglass (200 pcs.), Glowing Dragon's Attribute Potion (XP) (200 pcs.), Honey Dark Beer (200 pcs.). -->
@@ -959,6 +977,24 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="48954" min="1" max="1" chance="100" /> <!-- Artifact Book - Lv. 1 -->
+			<item id="48683" min="1" max="1" chance="100" /> <!-- High-grade Talisman of Skill Power - Skill Critical Damage -->
+			<item id="48684" min="1" max="1" chance="100" /> <!-- High-grade Talisman of Attribute Attack - Critical Damage for basic attacks -->
+			<item id="48685" min="1" max="1" chance="100" /> <!-- High-grade Talisman of Skill Cooldown - P./M. Def. -->
+			<item id="80649" min="1" max="1" chance="100" /> <!-- Artifact - M. Skill Critical Damage - Attack -->
+			<item id="48961" min="1" max="1" chance="100" /> <!-- Artifact - P. Def. - Defense -->
+			<item id="80660" min="1" max="1" chance="100" /> <!-- Artifact - M. Skill Critical Damage - Balance -->
+			<item id="48980" min="1" max="1" chance="100" /> <!-- Artifact - Attribute Attack - Balance -->
+			<item id="48981" min="1" max="1" chance="100" /> <!-- Artifact - Attribute Resistance - Balance -->
+			<item id="48848" min="200" max="200" chance="100" /> <!-- Freya's Ice Rose - Event -->
+			<item id="81054" min="100" max="100" chance="100" /> <!-- Freya's Scroll of Storm - Event -->
+			<item id="81012" min="100" max="100" chance="100" /> <!-- Emperor's Special Cocktail - Event -->
+			<item id="81013" min="200" max="200" chance="100" /> <!-- Shining Nevit's Gold Hourglass - Event -->
+			<item id="48857" min="200" max="200" chance="100" /> <!-- Glowing Dragon's Attribute Potion (XP) - Event -->
+			<item id="81011" min="200" max="200" chance="100" /> <!-- Honey Dark Beer - Event -->
+		</capsuled_items>
 	</item>
 	<item id="60169" name="Chest of New Destiny" type="EtcItem">
 		<!-- Double-click to obtain 1 special item. -->
@@ -1126,10 +1162,17 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
+		<set name="reuse_delay" val="300000" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
-		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_sellable" val="false" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="is_event_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39707" level="1" /> <!-- Royal Honey Dark Beer -->
+		</skills>
 	</item>
 	<item id="60180" name="Glittering Freya's Scroll of Storm" additionalName="Event" type="EtcItem">
 		<!-- For 10 min., Vitality Consumption +200%, acquired XP/ SP +200%. The effect remains after death. Cooldown: 9 min. Can be used only when 1 or more Vitality bars is full. Cannot be used in the Olympiad. The effect does not stack with those of Freya's Frozen Scroll, Maphr's Wind Scroll, Dandy's Scroll: Challenge, Emperor's Growth Scroll, Scroll: Midsummer Passion, Vital Wind, Wind of Bard. -->
@@ -1159,7 +1202,7 @@
 		<set name="handler" val="ItemSkills" />
 		<set name="etcitem_type" val="SCROLL" />
 		<skills>
-			<skill id="29482" level="1" /> <!-- Glittering Freya's Ice Rose -->
+			<skill id="29482" level="1" /> <!-- Freya's Glittering Ice Rose -->
 		</skills>
 	</item>
 	<item id="60182" name="Glowing Royal Dragon's Attribute Potion" additionalName="Event" type="EtcItem">
@@ -1180,10 +1223,18 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
+		<set name="reuse_delay" val="10" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="is_event_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="etcitem_type" val="SCROLL" />
+		<skills>
+			<skill id="39245" level="2" /> <!-- Shining Royal Nevit's Gold Hourglass -->
+		</skills>
 	</item>
 	<item id="60184" name="Black Friday Mark" additionalName="Event" type="EtcItem">
 		<!-- A special mark for the Black Friday. Can be exchanged for various items through the Game Assistant. -->
@@ -1232,6 +1283,12 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="etcitem_type" val="POTION" />
+		<set name="handler" val="ItemSkills" />
+		<set name="reuse_delay" val="300" />
+		<skills>
+			<skill id="39571" level="1" /> <!-- Shining Nevit's Gold Hourglass -->
+		</skills>
 	</item>
 	<item id="60188" name="L2M Blessing Buff" additionalName="Event" type="EtcItem">
 		<!-- Double-click to obtain the L2M Blessing buff. -->

@@ -21,7 +21,6 @@ import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.Movie;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
-import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -77,7 +76,7 @@ public class IceQueensCastle extends AbstractInstance
 					{
 						npc.setRunning();
 						npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, mob);
-						((Attackable) npc).addDamageHate(mob, 0, 999999);
+						npc.asAttackable().addDamageHate(mob, 0, 999999);
 					}
 				});
 				startQuestTimer("ATTACK_KNIGHT", 3000, npc, null);
@@ -152,7 +151,7 @@ public class IceQueensCastle extends AbstractInstance
 				{
 					npc.setRunning();
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, mob);
-					((Attackable) npc).addDamageHate(mob, 0, 999999);
+					npc.asAttackable().addDamageHate(mob, 0, 999999);
 				}
 			});
 			startQuestTimer("ATTACK_KNIGHT", 5000, npc, null);

@@ -589,9 +589,6 @@
 		<set name="spiritshots" val="2" />
 		<set name="ensoulNormalSlots" val="2" />
 		<set name="ensoulSpecialSlots" val="1" />
-		<skills>
-			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
-		</skills>
 		<stats>
 			<stat type="pAtk">279</stat>
 			<stat type="mAtk">151</stat>
@@ -599,6 +596,9 @@
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
 		</stats>
+		<skills>
+			<skill id="3599" level="1" /> <!-- Polearm Multi-attack -->
+		</skills>
 	</item>
 	<item id="96940" name="Demon King's Bow" additionalName="In development" type="Weapon">
 		<set name="icon" val="icon.frozen_weapon_bow" />
@@ -632,6 +632,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="reuse_delay" val="86400000" /> <!-- 1 Day -->
+		<skills>
+			<skill id="40392" level="1" /> <!-- Extra Pass: Training Zone -->
+		</skills>
 	</item>
 	<item id="96942" name="Kit: Hero's Mark (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain the following. -->
@@ -847,10 +852,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="13660" level="2" /> <!-- Activates 6 jewel slots. -->
-			<skill id="13661" level="6" /> <!-- Inventory Slot +18. -->
-			<skill id="13648" level="1" type="ON_EQUIP" /> <!-- Brooch Lv. 5 Lv2 On. -->
-			<skill id="13649" level="1" type="ON_UNEQUIP" /> <!-- Brooch Lv. 5 Lv2 Off. -->
+			<skill id="13660" level="2" /> <!-- Brooch Lv. 6 -->
+			<skill id="13661" level="6" /> <!-- Brooch: Additional Inventory Slots -->
+			<skill id="13648" level="1" type="ON_EQUIP" /> <!-- Equip Brooch Lv. 5 -->
+			<skill id="13649" level="1" type="ON_UNEQUIP" /> <!-- Unequip Brooch Lv. 5 -->
 		</skills>
 	</item>
 	<item id="96961" name="Brooch Lv. 7" type="Armor">
@@ -865,10 +870,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="13660" level="3" /> <!-- Activates 6 jewel slots. -->
-			<skill id="13661" level="7" /> <!-- Inventory Slot +20. -->
-			<skill id="13648" level="3" type="ON_EQUIP" /> <!-- Brooch Lv. 5 Lv3 On. -->
-			<skill id="13649" level="3" type="ON_UNEQUIP" /> <!-- Brooch Lv. 5 Lv3 Off. -->
+			<skill id="13660" level="3" /> <!-- Brooch Lv. 7 -->
+			<skill id="13661" level="7" /> <!-- Brooch: Additional Inventory Slots -->
+			<skill id="13648" level="3" type="ON_EQUIP" /> <!-- Equip Brooch Lv. 7 -->
+			<skill id="13649" level="3" type="ON_UNEQUIP" /> <!-- Unequip Brooch Lv. 7 -->
 		</skills>
 	</item>
 	<item id="96962" name="Brooch Lv. 8" type="Armor">
@@ -883,10 +888,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="13660" level="4" /> <!-- Activates 6 jewel slots. -->
-			<skill id="13661" level="8" /> <!-- Inventory Slot +25. -->
-			<skill id="13648" level="4" type="ON_EQUIP" /> <!-- Brooch Lv. 5 Lv4 On. -->
-			<skill id="13649" level="4" type="ON_UNEQUIP" /> <!-- Brooch Lv. 5 Lv4 Off. -->
+			<skill id="13660" level="4" /> <!-- Brooch Lv. 8 -->
+			<skill id="13661" level="8" /> <!-- Brooch: Additional Inventory Slots -->
+			<skill id="13648" level="4" type="ON_EQUIP" /> <!-- Equip Brooch Lv. 8 -->
+			<skill id="13649" level="4" type="ON_UNEQUIP" /> <!-- Unequip Brooch Lv. 8 -->
 		</skills>
 	</item>
 	<item id="96963" name="Talisman Bracelet Lv. 7" type="Armor">
@@ -933,7 +938,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50565" level="6" /> <!-- Agathion Bracelet Lv. 1 Lv6 -->
+			<skill id="50565" level="6" /> <!-- Agathion Bracelet Lv. 6 -->
 		</skills>
 	</item>
 	<item id="96966" name="Agathion Bracelet Lv. 7" type="Armor">
@@ -948,7 +953,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50565" level="7" /> <!-- Agathion Bracelet Lv. 1 Lv7 -->
+			<skill id="50565" level="7" /> <!-- Agathion Bracelet Lv. 7 -->
 		</skills>
 	</item>
 	<item id="96967" name="Agathion Bracelet Lv. 8" type="Armor">
@@ -963,7 +968,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_freightable" val="true" />
 		<skills>
-			<skill id="50565" level="8" /> <!-- Agathion Bracelet Lv. 1 Lv8 -->
+			<skill id="50565" level="8" /> <!-- Agathion Bracelet Lv. 8 -->
 		</skills>
 	</item>
 	<item id="96968" name="Aden Starter Kit" additionalName="Sealed" type="EtcItem">

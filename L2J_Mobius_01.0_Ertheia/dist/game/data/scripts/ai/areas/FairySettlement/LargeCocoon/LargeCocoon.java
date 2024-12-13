@@ -274,14 +274,14 @@ public class LargeCocoon extends AbstractNpcAI
 	
 	public void onCreatureAttacked(OnCreatureAttacked event)
 	{
-		final Npc npc = (Npc) event.getTarget();
-		final Playable playable = (Playable) event.getAttacker();
+		final Npc npc = event.getTarget().asNpc();
+		final Playable playable = event.getAttacker().asPlayable();
 		
 		// TODO: Quest 466 stuffs
 		final Quest qs10305 = QuestManager.getInstance().getQuest(Q10305_UnstoppableFutileEfforts.class.getSimpleName());
 		if (qs10305 != null)
 		{
-			qs10305.notifyEvent("NOTIFY_Q10305", npc, playable.getActingPlayer());
+			qs10305.notifyEvent("NOTIFY_Q10305", npc, playable.asPlayer());
 		}
 		
 		if (getRandom(3) < 1)

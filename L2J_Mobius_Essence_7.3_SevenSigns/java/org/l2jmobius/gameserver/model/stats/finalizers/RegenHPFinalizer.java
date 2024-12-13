@@ -28,7 +28,7 @@ import org.l2jmobius.gameserver.model.SiegeClan;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.actor.instance.Pet;
+import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.residences.AbstractResidence;
 import org.l2jmobius.gameserver.model.residences.ResidenceFunction;
 import org.l2jmobius.gameserver.model.residences.ResidenceFunctionType;
@@ -57,7 +57,7 @@ public class RegenHPFinalizer implements IStatFunction
 	{
 		throwIfPresent(base);
 		
-		double baseValue = creature.isPlayer() ? creature.getActingPlayer().getTemplate().getBaseHpRegen(creature.getLevel()) : creature.getTemplate().getBaseHpReg();
+		double baseValue = creature.isPlayer() ? creature.asPlayer().getTemplate().getBaseHpRegen(creature.getLevel()) : creature.getTemplate().getBaseHpReg();
 		baseValue *= creature.isRaid() ? Config.RAID_HP_REGEN_MULTIPLIER : Config.HP_REGEN_MULTIPLIER;
 		if (Config.CHAMPION_ENABLE && creature.isChampion())
 		{
@@ -66,21 +66,22 @@ public class RegenHPFinalizer implements IStatFunction
 		
 		if (creature.isPlayer())
 		{
-			final Player player = creature.getActingPlayer();
+			final Player player = creature.asPlayer();
 			final double siegeModifier = calcSiegeRegenModifier(player);
 			if (siegeModifier > 0)
 			{
 				baseValue *= siegeModifier;
 			}
 			
-			if (player.isInsideZone(ZoneId.CLAN_HALL) && (player.getClan() != null) && (player.getClan().getHideoutId() > 0))
+			final Clan clan = player.getClan();
+			if (player.isInsideZone(ZoneId.CLAN_HALL) && (clan != null) && (clan.getHideoutId() > 0))
 			{
 				final ClanHallZone zone = ZoneManager.getInstance().getZone(player, ClanHallZone.class);
 				final int posChIndex = zone == null ? -1 : zone.getResidenceId();
-				final int clanHallIndex = player.getClan().getHideoutId();
+				final int clanHallIndex = clan.getHideoutId();
 				if ((clanHallIndex > 0) && (clanHallIndex == posChIndex))
 				{
-					final AbstractResidence residense = ClanHallData.getInstance().getClanHallById(player.getClan().getHideoutId());
+					final AbstractResidence residense = ClanHallData.getInstance().getClanHallById(clan.getHideoutId());
 					if (residense != null)
 					{
 						final ResidenceFunction func = residense.getFunction(ResidenceFunctionType.HP_REGEN);
@@ -92,14 +93,14 @@ public class RegenHPFinalizer implements IStatFunction
 				}
 			}
 			
-			if (player.isInsideZone(ZoneId.CASTLE) && (player.getClan() != null) && (player.getClan().getCastleId() > 0))
+			if (player.isInsideZone(ZoneId.CASTLE) && (clan != null) && (clan.getCastleId() > 0))
 			{
 				final CastleZone zone = ZoneManager.getInstance().getZone(player, CastleZone.class);
 				final int posCastleIndex = zone == null ? -1 : zone.getResidenceId();
-				final int castleIndex = player.getClan().getCastleId();
+				final int castleIndex = clan.getCastleId();
 				if ((castleIndex > 0) && (castleIndex == posCastleIndex))
 				{
-					final Castle castle = CastleManager.getInstance().getCastleById(player.getClan().getCastleId());
+					final Castle castle = CastleManager.getInstance().getCastleById(clan.getCastleId());
 					if (castle != null)
 					{
 						final CastleFunction func = castle.getCastleFunction(Castle.FUNC_RESTORE_HP);
@@ -111,14 +112,14 @@ public class RegenHPFinalizer implements IStatFunction
 				}
 			}
 			
-			if (player.isInsideZone(ZoneId.FORT) && (player.getClan() != null) && (player.getClan().getFortId() > 0))
+			if (player.isInsideZone(ZoneId.FORT) && (clan != null) && (clan.getFortId() > 0))
 			{
 				final FortZone zone = ZoneManager.getInstance().getZone(player, FortZone.class);
 				final int posFortIndex = zone == null ? -1 : zone.getResidenceId();
-				final int fortIndex = player.getClan().getFortId();
+				final int fortIndex = clan.getFortId();
 				if ((fortIndex > 0) && (fortIndex == posFortIndex))
 				{
-					final Fort fort = FortManager.getInstance().getFortById(player.getClan().getCastleId());
+					final Fort fort = FortManager.getInstance().getFortById(clan.getCastleId());
 					if (fort != null)
 					{
 						final FortFunction func = fort.getFortFunction(Fort.FUNC_RESTORE_HP);
@@ -157,7 +158,7 @@ public class RegenHPFinalizer implements IStatFunction
 		}
 		else if (creature.isPet())
 		{
-			baseValue = ((Pet) creature).getPetLevelData().getPetRegenHP() * Config.PET_HP_REGEN_MULTIPLIER;
+			baseValue = creature.asPet().getPetLevelData().getPetRegenHP() * Config.PET_HP_REGEN_MULTIPLIER;
 		}
 		
 		return Stat.defaultValue(creature, stat, baseValue);
@@ -165,7 +166,13 @@ public class RegenHPFinalizer implements IStatFunction
 	
 	private static double calcSiegeRegenModifier(Player player)
 	{
-		if ((player == null) || (player.getClan() == null))
+		if (player == null)
+		{
+			return 0;
+		}
+		
+		final Clan clan = player.getClan();
+		if (clan == null)
 		{
 			return 0;
 		}
@@ -176,7 +183,7 @@ public class RegenHPFinalizer implements IStatFunction
 			return 0;
 		}
 		
-		final SiegeClan siegeClan = siege.getAttackerClan(player.getClan().getId());
+		final SiegeClan siegeClan = siege.getAttackerClan(clan.getId());
 		if ((siegeClan == null) || siegeClan.getFlag().isEmpty())
 		{
 			return 0;

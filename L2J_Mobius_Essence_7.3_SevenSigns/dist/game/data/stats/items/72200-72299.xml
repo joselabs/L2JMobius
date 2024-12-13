@@ -152,6 +152,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="time" val="10080" />
+		<skills>
+			<skill id="59736" level="1" /> <!-- XP Bonus Rune -->
+		</skills>
 	</item>
 	<item id="72252" name="XP Bonus Rune Pack (15-day)" additionalName="15-day" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -178,6 +181,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="time" val="21600" />
+		<skills>
+			<skill id="59736" level="1" /> <!-- XP Bonus Rune -->
+		</skills>
 	</item>
 	<item id="72254" name="XP Bonus Rune Pack (30-day)" additionalName="30-day" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -204,6 +210,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="time" val="43200" />
+		<skills>
+			<skill id="59736" level="1" /> <!-- XP Bonus Rune -->
+		</skills>
 	</item>
 	<item id="72256" name="Adventurer's Ring" additionalName="Sealed" type="Armor">
 		<!-- <Properties>. P. Atk. +10. M. Atk. +10. Max HP +200. <font color=ff6666><Cannot be enchanted and augmented.></font>. <font color=ff6666><Effects of two identical rings do not stack.></font> -->
@@ -219,6 +228,9 @@
 		<stats>
 			<stat type="mDef">32</stat>
 		</stats>
+		<skills>
+			<skill id="59735" level="1" /> <!-- Adventurer's Ring -->
+		</skills>
 	</item>
 	<item id="72257" name="Returning Hero's Welcome Gift" additionalName="THE HERO" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -262,12 +274,17 @@
 	<item id="72260" name="Baium Doll Lv. 1" additionalName="THE HERO" type="EtcItem">
 		<!-- <Baium Doll's Sorcery Lv. 1>. Skill Cooldown -2%. P. Def. +5%. M. Def. +5%. Silence Resistance +10%. Fear Resistance +10%. Paralysis Resistance +5%. Knockback Resistance +5%. Pull Resistance +5%.. Boosts stats when in inventory. -->
 		<set name="icon" val="icon.bm_baium_doll_30d" />
-		<set name="default_action" val="NONE" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="time" val="10080" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="39302" level="1" /> <!-- Baium Doll's Sorcery -->
+		</skills>
 	</item>
 	<item id="72261" name="Queen Ant Doll Lv. 1" additionalName="THE HERO" type="EtcItem">
 		<!-- <Queen Ant Doll's Sorcery Lv. 1>. P. Atk. +2%. P. Critical Damage +3%. P. Skill Critical Damage +3%. Max HP +4%. Boosts stats when in inventory. Cannot be upgraded. -->
@@ -278,6 +295,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="39303" level="1" /> <!-- Queen Ant Doll's Sorcery -->
+		</skills>
 	</item>
 	<item id="72262" name="Orfen Doll Lv. 1" additionalName="THE HERO" type="EtcItem">
 		<!-- <Orfen Doll's Sorcery Lv. 1>. M. Atk. +2%. M. Skill Critical Damage +3%. Max MP +4%. Boosts stats when in inventory. Cannot be upgraded. -->
@@ -288,6 +308,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="39304" level="1" /> <!-- Orfen Doll's Sorcery -->
+		</skills>
 	</item>
 	<item id="72263" name="Frintezza Doll Lv. 1" additionalName="THE HERO" type="EtcItem">
 		<!-- <Frintezza Doll's Sorcery Lv. 1>. STR/ INT +1. Skill Power +1%. Atk. Spd. +20. Casting Spd. +20. Speed +1. Boosts stats when in inventory. Cannot be upgraded. -->
@@ -298,6 +321,9 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<skills>
+			<skill id="51297" level="1" /> <!-- Frintezza Doll's Sorcery -->
+		</skills>
 	</item>
 	<item id="72264" name="Sayha's Treasure Chest (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -413,6 +439,9 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="time" val="10080" />
+		<skills>
+			<skill id="59819" level="1" /> <!-- Sayha's Grace Sustain Rune -->
+		</skills>
 	</item>
 	<item id="72270" name="Lineage 2 PA Support Kit (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -443,6 +472,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="300000000" max="300000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="72273" name="10 Million Adena Box (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain 10 million adena. -->
@@ -454,6 +487,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="10000000" max="10000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="72274" name="1 Million Adena Box (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain 1 million adena. -->
@@ -465,6 +502,10 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="57" min="1000000" max="1000000" chance="100" /> <!-- Adena -->
+		</capsuled_items>
 	</item>
 	<item id="72283" name="Aden's Treasure Chest (Time-limited)" additionalName="Sealed" type="EtcItem">
 		<!-- Double-click to obtain various items. -->
@@ -512,7 +553,7 @@
 			<item id="91061" min="1" max="1" chance="20" /> <!-- Talisman of Authority - Sealed -->
 			<item id="92018" min="1" max="1" chance="20" /> <!-- Talisman of Eva - Sealed -->
 			<item id="91862" min="1" max="1" chance="20" /> <!-- Dragon Belt - Sealed -->
-			<item id="94732" min="1" max="1" chance="20" /> <!-- Agathion Spirit Exchange Coupon - Sealed -->
+			<item id="94732" min="1" max="1" chance="20" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
 			<item id="93301" min="1" max="1" chance="20" /> <!-- Cloak of Protection - Sealed -->
 		</capsuled_items>
 	</item>
@@ -605,5 +646,10 @@
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="etcitem_type" val="ENCHT_ATTR_RUNE" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="50554" level="1" /> <!-- Antharas Doll's Sorcery -->
+		</skills>
 	</item>
 </list>

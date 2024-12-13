@@ -43,7 +43,7 @@ public class Recovery extends AbstractEffect
 	{
 		if (effected.isPlayer())
 		{
-			effected.getActingPlayer().decreaseShilensBreathDebuff();
+			effected.asPlayer().decreaseShilensBreathDebuff();
 		}
 	}
 }

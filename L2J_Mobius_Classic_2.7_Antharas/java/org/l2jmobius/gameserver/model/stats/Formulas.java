@@ -1,18 +1,22 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.l2jmobius.gameserver.model.stats;
 
@@ -30,7 +34,6 @@ import org.l2jmobius.gameserver.enums.DispelSlotType;
 import org.l2jmobius.gameserver.enums.Position;
 import org.l2jmobius.gameserver.enums.ShotType;
 import org.l2jmobius.gameserver.model.actor.Creature;
-import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.SiegeFlag;
 import org.l2jmobius.gameserver.model.actor.instance.StaticObject;
@@ -124,11 +127,11 @@ public class Formulas
 		double balanceMod = 1;
 		if (attacker.isPlayable())
 		{
-			balanceMod = target.isPlayable() ? Config.PVP_BLOW_SKILL_DAMAGE_MULTIPLIERS[attacker.getActingPlayer().getClassId().getId()] : Config.PVE_BLOW_SKILL_DAMAGE_MULTIPLIERS[attacker.getActingPlayer().getClassId().getId()];
+			balanceMod = target.isPlayable() ? Config.PVP_BLOW_SKILL_DAMAGE_MULTIPLIERS[attacker.asPlayer().getClassId().getId()] : Config.PVE_BLOW_SKILL_DAMAGE_MULTIPLIERS[attacker.asPlayer().getClassId().getId()];
 		}
 		if (target.isPlayable())
 		{
-			defence *= attacker.isPlayable() ? Config.PVP_BLOW_SKILL_DEFENCE_MULTIPLIERS[target.getActingPlayer().getClassId().getId()] : Config.PVE_BLOW_SKILL_DEFENCE_MULTIPLIERS[target.getActingPlayer().getClassId().getId()];
+			defence *= attacker.isPlayable() ? Config.PVP_BLOW_SKILL_DEFENCE_MULTIPLIERS[target.asPlayer().getClassId().getId()] : Config.PVE_BLOW_SKILL_DEFENCE_MULTIPLIERS[target.asPlayer().getClassId().getId()];
 		}
 		
 		final double skillPower = power + attacker.getStat().getValue(Stat.SKILL_POWER_ADD, 0);
@@ -193,7 +196,7 @@ public class Formulas
 			}
 		}
 		
-		// Nasseka rev. 10196: generalTraitMod == 0 ? 1 : generalTraitMod (no invulnerable traits).
+		// NasSeKa rev. 10196: generalTraitMod == 0 ? 1 : generalTraitMod (no invulnerable traits).
 		damage = damage * critMod * (generalTraitMod == 0 ? 1 : generalTraitMod) * weaknessMod * attributeMod * randomMod * pvpPveMod;
 		damage *= attacker.getStat().getValue(Stat.MAGICAL_SKILL_POWER, 1);
 		
@@ -226,7 +229,7 @@ public class Formulas
 				double balanceMod = 1;
 				if (creature.isPlayable())
 				{
-					balanceMod = target.isPlayable() ? Config.PVP_MAGICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.getActingPlayer().getClassId().getId()] : Config.PVE_MAGICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.getActingPlayer().getClassId().getId()];
+					balanceMod = target.isPlayable() ? Config.PVP_MAGICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.asPlayer().getClassId().getId()] : Config.PVE_MAGICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.asPlayer().getClassId().getId()];
 				}
 				
 				double finalRate = target.getStat().getValue(Stat.DEFENCE_MAGIC_CRITICAL_RATE, rate) + target.getStat().getValue(Stat.DEFENCE_MAGIC_CRITICAL_RATE_ADD, 0);
@@ -260,7 +263,7 @@ public class Formulas
 			double balanceMod = 1;
 			if (creature.isPlayable())
 			{
-				balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.getActingPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.getActingPlayer().getClassId().getId()];
+				balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.asPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_SKILL_CRITICAL_CHANCE_MULTIPLIERS[creature.asPlayer().getClassId().getId()];
 			}
 			
 			return CommonUtil.constrain(rate * statBonus * rateBonus * balanceMod, 5, 90) > Rnd.get(100);
@@ -286,7 +289,7 @@ public class Formulas
 		double balanceMod = 1;
 		if (creature.isPlayable())
 		{
-			balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_ATTACK_CRITICAL_CHANCE_MULTIPLIERS[creature.getActingPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_ATTACK_CRITICAL_CHANCE_MULTIPLIERS[creature.getActingPlayer().getClassId().getId()];
+			balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_ATTACK_CRITICAL_CHANCE_MULTIPLIERS[creature.asPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_ATTACK_CRITICAL_CHANCE_MULTIPLIERS[creature.asPlayer().getClassId().getId()];
 		}
 		
 		return (rate * balanceMod) > Rnd.get(100);
@@ -344,7 +347,7 @@ public class Formulas
 				defenceCriticalDamage = target.getStat().getValue(Stat.DEFENCE_MAGIC_CRITICAL_DAMAGE, 1);
 				if (attacker.isPlayable())
 				{
-					balanceMod = target.isPlayable() ? Config.PVP_MAGICAL_SKILL_CRITICAL_DAMAGE_MULTIPLIERS[attacker.getActingPlayer().getClassId().getId()] : Config.PVE_MAGICAL_SKILL_CRITICAL_DAMAGE_MULTIPLIERS[attacker.getActingPlayer().getClassId().getId()];
+					balanceMod = target.isPlayable() ? Config.PVP_MAGICAL_SKILL_CRITICAL_DAMAGE_MULTIPLIERS[attacker.asPlayer().getClassId().getId()] : Config.PVE_MAGICAL_SKILL_CRITICAL_DAMAGE_MULTIPLIERS[attacker.asPlayer().getClassId().getId()];
 				}
 			}
 			else
@@ -353,7 +356,7 @@ public class Formulas
 				defenceCriticalDamage = target.getStat().getValue(Stat.DEFENCE_PHYSICAL_SKILL_CRITICAL_DAMAGE, 1);
 				if (attacker.isPlayable())
 				{
-					balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_SKILL_CRITICAL_DAMAGE_MULTIPLIERS[attacker.getActingPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_SKILL_CRITICAL_DAMAGE_MULTIPLIERS[attacker.getActingPlayer().getClassId().getId()];
+					balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_SKILL_CRITICAL_DAMAGE_MULTIPLIERS[attacker.asPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_SKILL_CRITICAL_DAMAGE_MULTIPLIERS[attacker.asPlayer().getClassId().getId()];
 				}
 			}
 		}
@@ -364,7 +367,7 @@ public class Formulas
 			defenceCriticalDamage = target.getStat().getValue(Stat.DEFENCE_CRITICAL_DAMAGE, 1);
 			if (attacker.isPlayable())
 			{
-				balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_ATTACK_CRITICAL_DAMAGE_MULTIPLIERS[attacker.getActingPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_ATTACK_CRITICAL_DAMAGE_MULTIPLIERS[attacker.getActingPlayer().getClassId().getId()];
+				balanceMod = target.isPlayable() ? Config.PVP_PHYSICAL_ATTACK_CRITICAL_DAMAGE_MULTIPLIERS[attacker.asPlayer().getClassId().getId()] : Config.PVE_PHYSICAL_ATTACK_CRITICAL_DAMAGE_MULTIPLIERS[attacker.asPlayer().getClassId().getId()];
 			}
 		}
 		
@@ -519,7 +522,7 @@ public class Formulas
 		
 		if (creature.isNpc())
 		{
-			final double npcFactor = ((Npc) creature).getTemplate().getHitTimeFactorSkill();
+			final double npcFactor = creature.asNpc().getTemplate().getHitTimeFactorSkill();
 			if (npcFactor > 0)
 			{
 				factor /= npcFactor;
@@ -602,7 +605,7 @@ public class Formulas
 		
 		if (sendSysMsg && target.isPlayer())
 		{
-			final Player enemy = target.getActingPlayer();
+			final Player enemy = target.asPlayer();
 			
 			switch (shldSuccess)
 			{
@@ -710,7 +713,7 @@ public class Formulas
 		}
 		
 		final int activateRate = skill.getActivateRate();
-		if ((activateRate == -1))
+		if ((activateRate == -1) || (activateRate > 99))
 		{
 			return true;
 		}
@@ -751,9 +754,9 @@ public class Formulas
 		{
 			lvlModifier = Math.pow(1.3, target.getLevel() - (Config.CALCULATE_MAGIC_SUCCESS_BY_SKILL_MAGIC_LEVEL && (skill.getMagicLevel() > 0) ? skill.getMagicLevel() : attacker.getLevel()));
 			
-			if ((attacker.getActingPlayer() != null) && !target.isRaid() && !target.isRaidMinion() && (target.getLevel() >= Config.MIN_NPC_LEVEL_MAGIC_PENALTY) && ((target.getLevel() - attacker.getActingPlayer().getLevel()) >= 3))
+			if ((attacker.asPlayer() != null) && !target.isRaid() && !target.isRaidMinion() && (target.getLevel() >= Config.MIN_NPC_LEVEL_MAGIC_PENALTY) && ((target.getLevel() - attacker.asPlayer().getLevel()) >= 3))
 			{
-				final int levelDiff = target.getLevel() - attacker.getActingPlayer().getLevel() - 2;
+				final int levelDiff = target.getLevel() - attacker.asPlayer().getLevel() - 2;
 				if (levelDiff >= Config.NPC_SKILL_CHANCE_PENALTY.length)
 				{
 					targetModifier = Config.NPC_SKILL_CHANCE_PENALTY[Config.NPC_SKILL_CHANCE_PENALTY.length - 1];
@@ -816,9 +819,9 @@ public class Formulas
 		// Bonus Spiritshot
 		final double shotsBonus = attacker.getStat().getValue(Stat.SHOTS_BONUS);
 		double sapphireBonus = 0;
-		if (attacker.isPlayer() && (attacker.getActingPlayer().getActiveShappireJewel() != null))
+		if (attacker.isPlayer() && (attacker.asPlayer().getActiveShappireJewel() != null))
 		{
-			sapphireBonus = attacker.getActingPlayer().getActiveShappireJewel().getBonus();
+			sapphireBonus = attacker.asPlayer().getActiveShappireJewel().getBonus();
 		}
 		mAtk *= bss ? 4 * (shotsBonus + sapphireBonus) : sps ? 2 * (shotsBonus + sapphireBonus) : 1;
 		
@@ -883,13 +886,13 @@ public class Formulas
 			{
 				final SystemMessage sm = new SystemMessage(SystemMessageId.C1_DODGED_THE_ATTACK);
 				sm.addString(target.getName());
-				creature.getActingPlayer().sendPacket(sm);
+				creature.asPlayer().sendPacket(sm);
 			}
 			if (target.isPlayer())
 			{
 				final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_DODGED_C1_S_ATTACK);
 				sm.addString(creature.getName());
-				target.getActingPlayer().sendPacket(sm);
+				target.asPlayer().sendPacket(sm);
 			}
 			return true;
 		}
@@ -912,7 +915,7 @@ public class Formulas
 		
 		final double chance = BaseStat.values()[val].calcBonus(actor) * actor.getStat().getMul(Stat.SKILL_MASTERY_RATE, 1);
 		
-		return ((Rnd.nextDouble() * 100.) < (chance * Config.SKILL_MASTERY_CHANCE_MULTIPLIERS[actor.getActingPlayer().getClassId().getId()]));
+		return ((Rnd.nextDouble() * 100.) < (chance * Config.SKILL_MASTERY_CHANCE_MULTIPLIERS[actor.asPlayer().getClassId().getId()]));
 	}
 	
 	/**
@@ -1523,8 +1526,8 @@ public class Formulas
 	
 	public static double calculatePvpPveBonus(Creature attacker, Creature target, Skill skill, boolean crit)
 	{
-		final Player attackerPlayer = attacker.getActingPlayer();
-		final Player targetPlayer = attacker.getActingPlayer();
+		final Player attackerPlayer = attacker.asPlayer();
+		final Player targetPlayer = attacker.asPlayer();
 		
 		// PvP bonus
 		if (attacker.isPlayable() && target.isPlayable())

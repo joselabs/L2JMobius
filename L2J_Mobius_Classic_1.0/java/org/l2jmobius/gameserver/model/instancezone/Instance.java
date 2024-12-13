@@ -1079,7 +1079,7 @@ public class Instance implements IIdentifiable, INamable
 			{
 				if (player.isDead())
 				{
-					ejectPlayer(player.getActingPlayer());
+					ejectPlayer(player.asPlayer());
 				}
 			}, _template.getEjectTime() * 60 * 1000)); // minutes to milliseconds
 			if (oldTAsk != null)
@@ -1111,7 +1111,7 @@ public class Instance implements IIdentifiable, INamable
 	{
 		if (object.isPlayer())
 		{
-			final Player player = object.getActingPlayer();
+			final Player player = object.asPlayer();
 			if (enter)
 			{
 				addPlayer(player);
@@ -1155,7 +1155,7 @@ public class Instance implements IIdentifiable, INamable
 		}
 		else if (object.isNpc())
 		{
-			final Npc npc = (Npc) object;
+			final Npc npc = object.asNpc();
 			if (enter)
 			{
 				addNpc(npc);

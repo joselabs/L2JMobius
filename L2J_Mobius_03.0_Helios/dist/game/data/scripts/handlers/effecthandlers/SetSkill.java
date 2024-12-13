@@ -58,6 +58,6 @@ public class SetSkill extends AbstractEffect
 			return;
 		}
 		
-		effected.getActingPlayer().addSkill(setSkill, true);
+		effected.asPlayer().addSkill(setSkill, true);
 	}
 }
