@@ -334,25 +334,25 @@
 		</skillList>
 	</npc>
 	<npc id="29408" level="128" type="RaidBoss" name="Coatl" title="Kasha's Apostle">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="6506729347" sp="5856056" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="800175145" hpRegen="13.4" mp="68822" mpRegen="30" />
-			<attack physical="639686" magical="583012" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="301296" magical="1458092" />
+			<vitals hp="800175145" hpRegen="380075.4" mp="68822" mpRegen="30" />
+			<attack physical="639686" magical="583012" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="240" distance="120" width="120" />
+			<defence physical="281296" magical="1258092" />
 			<speed>
 				<walk ground="180" />
 				<run ground="500" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>1100</hitTime>
 			<attribute>
 				<attack type="WATER" value="2550" />
 				<defence fire="2600" water="2650" wind="2650" earth="2650" holy="2650" dark="2650" />
 			</attribute>
 		</stats>
-		<status attackable="true" />
+		<status attackable="true" noSleepMode="true" />
+		<ai type="MAGE" />
 		<collision>
 			<radius normal="40" />
 			<height normal="139" />
@@ -436,8 +436,7 @@
 			</drop>
 		</dropLists>
 	</npc>
-	<npc id="29409" level="128" type="Monster" name="Flame Totem">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+	<npc id="29409" level="128" type="Folk" name="Flame Totem">
 		<race>ETC</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
@@ -454,17 +453,21 @@
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
 			</attribute>
 		</stats>
-		<status attackable="true" />
+		<status attackable="false" undying="true" canMove="false" targetable="false" />
 		<collision>
 			<radius normal="32" />
 			<height normal="81" />
 		</collision>
 	</npc>
-	<npc id="29410" level="128" type="Monster" name="Water Totem">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
+	<npc id="29410" type="Folk" level="128" name="Water Totem">
+		<parameters>
+			<param name="NoFnHi" value="1" />
+			<param name="MoveAroundSocial" value="0" />
+			<param name="MoveAroundSocial1" value="0" />
+		</parameters>
+		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
-		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
+		<stats str="88" int="150" dex="55" wit="150" con="82" men="150">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
 			<attack physical="319843" magical="291506" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="150648" magical="729046" />
@@ -478,17 +481,25 @@
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
 			</attribute>
 		</stats>
-		<status attackable="true" />
+		<status attackable="false" undying="true" canMove="false" targetable="false" />
+		<ai aggroRange="400" />
 		<collision>
 			<radius normal="32" />
 			<height normal="81" />
 		</collision>
+		<skillList>
+			<skill id="34807" level="1" /> <!-- Totem Protection Water -->
+		</skillList>
 	</npc>
-	<npc id="29411" level="128" type="Monster" name="Earth Totem">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
+	<npc id="29411" level="128" type="Folk" name="Earth Totem">
+		<parameters>
+			<param name="NoFnHi" value="1" />
+			<param name="MoveAroundSocial" value="0" />
+			<param name="MoveAroundSocial1" value="0" />
+		</parameters>
+		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
-		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
+		<stats str="88" int="150" dex="55" wit="150" con="82" men="150">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
 			<attack physical="319843" magical="291506" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="150648" magical="729046" />
@@ -502,17 +513,25 @@
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
 			</attribute>
 		</stats>
-		<status attackable="true" />
+		<status attackable="false" undying="true" canMove="false" targetable="false" />
+		<ai aggroRange="400" />
 		<collision>
 			<radius normal="32" />
 			<height normal="81" />
 		</collision>
+		<skillList>
+			<skill id="34808" level="1" /> <!-- Totem Protection Earth -->
+		</skillList>
 	</npc>
-	<npc id="29412" level="128" type="Monster" name="Kasha's Totem">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
+	<npc id="29412" level="128" type="Folk" name="Kasha's Totem">
+		<parameters>
+			<param name="NoFnHi" value="1" />
+			<param name="MoveAroundSocial" value="0" />
+			<param name="MoveAroundSocial1" value="0" />
+		</parameters>
+		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
-		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
+		<stats str="88" int="150" dex="55" wit="150" con="82" men="150">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
 			<attack physical="319843" magical="291506" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="150648" magical="729046" />
@@ -526,19 +545,22 @@
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
 			</attribute>
 		</stats>
-		<status attackable="true" />
+		<status attackable="false" undying="true" canMove="false" targetable="false" />
+		<ai aggroRange="400" />
 		<collision>
 			<radius normal="32" />
 			<height normal="81" />
 		</collision>
+		<skillList>
+			<skill id="34807" level="1" /> <!-- Totem Protection Kasha -->
+		</skillList>
 	</npc>
 	<npc id="29413" level="128" type="Monster" name="Coatl">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
-		<race>ETC</race>
+		<race>HUMAN</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="1" distance="1" width="120" />
 			<defence physical="753240" magical="364523" />
 			<speed>
 				<walk ground="1" />
@@ -546,25 +568,34 @@
 			</speed>
 			<hitTime>600</hitTime>
 		</stats>
-		<status attackable="true" />
+		<status attackable="false" undying="true" canMove="false" targetable="false" showName="false" />
 		<collision>
 			<radius normal="0.1" />
 			<height normal="0.1" />
 		</collision>
+		<skillList>
+			<skill id="4416" level="2" /> <!-- Magical Creatures -->
+			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
+			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
+			<skill id="4410" level="11" /> <!-- Average Damage Dealer -->
+			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
+			<skill id="4412" level="11" /> <!-- Average P. Def. -->
+			<skill id="4413" level="11" /> <!-- Average M. Def. -->
+			<skill id="4414" level="2" /> <!-- Standard Type -->
+		</skillList>
 	</npc>
 	<npc id="29414" level="127" type="RaidBoss" name="Lord Ishka" title="Balance Test">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>UNDEAD</race>
 		<sex>MALE</sex>
 		<equipment rhand="80949" /> <!-- Only for monsters (Lord Ishka) -->
 		<acquire exp="5337882368" sp="4804094" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
 			<vitals hp="800175145" hpRegen="13.4" mp="68076" mpRegen="30" />
-			<attack physical="639686" magical="583012" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="639686" magical="583012" random="10" critical="4" accuracy="5" attackSpeed="220" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="301296" magical="1458092" />
 			<speed>
 				<walk ground="100" />
-				<run ground="190" />
+				<run ground="90" />
 			</speed>
 			<hitTime>600</hitTime>
 		</stats>

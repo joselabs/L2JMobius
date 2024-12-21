@@ -6630,26 +6630,26 @@
 		</dropLists>
 	</npc>
 	<npc id="24687" level="128" type="Monster" name="Langk Lizardman Watchman">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<equipment rhand="15302" /> <!-- Transparent Bow (NPC) -->
 		<acquire exp="2631888" sp="2369" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="5" critical="8" accuracy="0" attackSpeed="253" type="BOW" range="1100" distance="10" width="0" />
-			<defence physical="753240" magical="364523" />
+			<attack physical="1599215" magical="145753" random="5" critical="8" accuracy="0" attackSpeed="253" type="BOW" range="800" distance="10" width="0" />
+			<defence physical="26009" magical="23605" />
 			<speed>
 				<walk ground="77" />
 				<run ground="260" />
 			</speed>
 			<hitTime>600</hitTime>
 			<attribute>
-				<attack type="WATER" value="2350" />
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="WATER" value="2350" />
 			</attribute>
 		</stats>
 		<status attackable="true" />
+		<ai type="BALANCED" aggroRange="700" isAggressive="true" />
 		<collision>
 			<radius normal="23.4" />
 			<height normal="49" />
@@ -6663,6 +6663,7 @@
 			<skill id="34784" level="1" /> <!-- Resistance to Coatl's Debuffs -->
 			<skill id="34786" level="2" /> <!-- Lizardman Archer -->
 			<skill id="33104" level="3" /> <!-- Party Growth Bonus -->
+			<skill id="34765" level="1" /> <!-- Lizardman's Fatal Shot Lv.1 -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6680,25 +6681,25 @@
 		</dropLists>
 	</npc>
 	<npc id="24688" level="128" type="Monster" name="Langk Lizardman Shaman">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="2631888" sp="2369" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="753240" magical="364523" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="80" distance="80" width="120" />
+			<defence physical="23009" magical="23605" />
 			<speed>
 				<walk ground="100" />
 				<run ground="260" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>900</hitTime>
 			<attribute>
-				<attack type="WATER" value="2350" />
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="WATER" value="2350" />
 			</attribute>
 		</stats>
 		<status attackable="true" />
+		<ai type="BALANCED" aggroRange="600" isAggressive="true" />
 		<collision>
 			<radius normal="23.4" />
 			<height normal="47.7" />
@@ -6712,6 +6713,7 @@
 			<skill id="34784" level="1" /> <!-- Resistance to Coatl's Debuffs -->
 			<skill id="34787" level="2" /> <!-- Lizardman Shaman -->
 			<skill id="33104" level="3" /> <!-- Party Growth Bonus -->
+			<skill id="34754" level="1" /> <!-- Aqua Spike -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6729,25 +6731,30 @@
 		</dropLists>
 	</npc>
 	<npc id="24689" level="128" type="Monster" name="Langk Lizardman Berserker">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
+		<parameters>
+			<param name="MoveAroundSocial" value="0" />
+			<!-- 	<param name="IsAggressive" value="1" /> -->
+			<param name="MovingAttack" value="1" />
+		</parameters>
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="2631888" sp="2369" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="753240" magical="364523" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="BLUNT" range="80" distance="80" width="150" />
+			<defence physical="29009" magical="20605" />
 			<speed>
 				<walk ground="78" />
 				<run ground="260" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>900</hitTime>
 			<attribute>
-				<attack type="WATER" value="2350" />
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="WATER" value="2350" />
 			</attribute>
 		</stats>
 		<status attackable="true" />
+		<ai type="BALANCED" aggroRange="600" isAggressive="true" />
 		<collision>
 			<radius normal="23.4" />
 			<height normal="51.6" />
@@ -6761,6 +6768,7 @@
 			<skill id="34784" level="1" /> <!-- Resistance to Coatl's Debuffs -->
 			<skill id="34785" level="2" /> <!-- Lizardman Warrior -->
 			<skill id="33104" level="3" /> <!-- Party Growth Bonus -->
+			<skill id="34777" level="1" /> <!-- Langk Lizardman Cyclone -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6778,25 +6786,25 @@
 		</dropLists>
 	</npc>
 	<npc id="24690" level="128" type="Monster" name="Langk Lizardman Destroyer">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="2631888" sp="2369" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="753240" magical="364523" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="140" distance="80" width="120" />
+			<defence physical="28009" magical="20605" />
 			<speed>
 				<walk ground="94" />
 				<run ground="230" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>900</hitTime>
 			<attribute>
-				<attack type="WATER" value="2350" />
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="WATER" value="2350" />
 			</attribute>
 		</stats>
 		<status attackable="true" />
+		<ai type="BALANCED" aggroRange="500" isAggressive="true" />
 		<collision>
 			<radius normal="23.4" />
 			<height normal="55.5" />
@@ -6810,6 +6818,7 @@
 			<skill id="34784" level="1" /> <!-- Resistance to Coatl's Debuffs -->
 			<skill id="34785" level="2" /> <!-- Lizardman Warrior -->
 			<skill id="33104" level="3" /> <!-- Party Growth Bonus -->
+			<skill id="34778" level="1" /> <!-- Langk Lizardman's Smash -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6827,25 +6836,25 @@
 		</dropLists>
 	</npc>
 	<npc id="24691" level="128" type="Monster" name="Tanta Lizardman Reservist">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="2631888" sp="2369" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="753240" magical="364523" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="80" distance="80" width="120" />
+			<defence physical="28009" magical="20605" />
 			<speed>
 				<walk ground="40" />
 				<run ground="120" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>900</hitTime>
 			<attribute>
-				<attack type="WATER" value="2350" />
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="WATER" value="2350" />
 			</attribute>
 		</stats>
 		<status attackable="true" />
+		<ai type="BALANCED" aggroRange="600" isAggressive="true" />
 		<collision>
 			<radius normal="20" />
 			<height normal="40.25" />
@@ -6859,6 +6868,7 @@
 			<skill id="34784" level="1" /> <!-- Resistance to Coatl's Debuffs -->
 			<skill id="34785" level="2" /> <!-- Lizardman Warrior -->
 			<skill id="33104" level="3" /> <!-- Party Growth Bonus -->
+			<skill id="34779" level="1" /> <!-- Lizardman's Pounce -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6876,25 +6886,25 @@
 		</dropLists>
 	</npc>
 	<npc id="24692" level="128" type="Monster" name="Tanta Lizardman Support Shaman">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="2631888" sp="2369" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="753240" magical="364523" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="80" distance="80" width="120" />
+			<defence physical="23009" magical="26605" />
 			<speed>
 				<walk ground="90" />
 				<run ground="150" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>900</hitTime>
 			<attribute>
-				<attack type="WATER" value="2350" />
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="WATER" value="2350" />
 			</attribute>
 		</stats>
 		<status attackable="true" />
+		<ai type="MAGE" aggroRange="600" isAggressive="true" />
 		<collision>
 			<radius normal="40" />
 			<height normal="53.5" />
@@ -6908,6 +6918,7 @@
 			<skill id="34784" level="1" /> <!-- Resistance to Coatl's Debuffs -->
 			<skill id="34787" level="2" /> <!-- Lizardman Shaman -->
 			<skill id="33104" level="3" /> <!-- Party Growth Bonus -->
+			<skill id="34755" level="1" /> <!-- Aqua Spike -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -6925,26 +6936,26 @@
 		</dropLists>
 	</npc>
 	<npc id="24693" level="128" type="Monster" name="Langk Lizardman Defender">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<equipment rhand="15302" /> <!-- Transparent Bow (NPC) -->
 		<acquire exp="2631888" sp="2369" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="5" critical="8" accuracy="0" attackSpeed="253" type="BOW" range="1100" distance="10" width="0" />
-			<defence physical="753240" magical="364523" />
+			<attack physical="1599215" magical="145753" random="5" critical="8" accuracy="0" attackSpeed="253" type="BOW" range="800" distance="10" width="0" />
+			<defence physical="21009" magical="20605" />
 			<speed>
 				<walk ground="77" />
 				<run ground="260" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>900</hitTime>
 			<attribute>
-				<attack type="WATER" value="2350" />
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="WATER" value="2350" />
 			</attribute>
 		</stats>
 		<status attackable="true" />
+		<ai type="BALANCED" aggroRange="800" isAggressive="true" />
 		<collision>
 			<radius normal="23.4" />
 			<height normal="49" />
@@ -6975,25 +6986,25 @@
 		</dropLists>
 	</npc>
 	<npc id="24694" level="128" type="Monster" name="Langk Lizardman Guardian">
-		<!-- AUTO GENERATED NPC TODO: FIX IT -->
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<acquire exp="2631888" sp="2369" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
 			<vitals hp="2538603" hpRegen="13.4" mp="3190" mpRegen="30" />
-			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
-			<defence physical="753240" magical="364523" />
+			<attack physical="1599215" magical="145753" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="140" distance="80" width="120" />
+			<defence physical="26009" magical="23605" />
 			<speed>
 				<walk ground="94" />
 				<run ground="230" />
 			</speed>
-			<hitTime>600</hitTime>
+			<hitTime>900</hitTime>
 			<attribute>
-				<attack type="WATER" value="2350" />
 				<defence fire="2450" water="2500" wind="2500" earth="2500" holy="2500" dark="2500" />
+				<attack type="WATER" value="2350" />
 			</attribute>
 		</stats>
 		<status attackable="true" />
+		<ai type="BALANCED" aggroRange="800" isAggressive="true" />
 		<collision>
 			<radius normal="23.4" />
 			<height normal="55.5" />
@@ -7007,6 +7018,7 @@
 			<skill id="34784" level="1" /> <!-- Resistance to Coatl's Debuffs -->
 			<skill id="34785" level="2" /> <!-- Lizardman Warrior -->
 			<skill id="33104" level="3" /> <!-- Party Growth Bonus -->
+			<skill id="34778" level="1" /> <!-- Langk Lizardman's Smash -->
 		</skillList>
 		<dropLists>
 			<drop>
@@ -7024,3 +7036,4 @@
 		</dropLists>
 	</npc>
 </list>
+
