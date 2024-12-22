@@ -21,6 +21,7 @@
 package ai.areas.Gludio;
 
 import org.l2jmobius.commons.threads.ThreadPool;
+import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 
@@ -56,7 +57,7 @@ public class LizardmanTempleXPParty extends AbstractNpcAI
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		final org.l2jmobius.gameserver.model.Party party = killer.getParty();
+		final Party party = killer.getParty();
 		if (party != null)
 		{
 			for (Player member : party.getMembers())
