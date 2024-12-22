@@ -1,22 +1,27 @@
 /*
- * This file is part of the L2J Mobius project.
+ * Copyright (c) 2013 L2jMobius
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package ai.areas.Gludio;
 
 import org.l2jmobius.commons.threads.ThreadPool;
+import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 
@@ -27,7 +32,7 @@ import ai.AbstractNpcAI;
  */
 public class LizardmanBarracksXPParty extends AbstractNpcAI
 {
-	// Monsters Lizardman Barracks
+	// NPCs
 	private static final int[] MONSTER_IDS =
 	{
 		23834,
@@ -37,10 +42,10 @@ public class LizardmanBarracksXPParty extends AbstractNpcAI
 		23838,
 		23839
 	};
-	// Distance radius for XP bonus Party
+	// Distance radius for XP bonus Party.
 	private static final int BONUS_RADIUS = 1500;
-	// Maximum XP Bonus (Level 126)
-	private static final double MAX_BONUS_PERCENTAGE = 0.25; // Bonus 25%
+	// Maximum XP Bonus (Level 126).
+	private static final double MAX_BONUS_PERCENTAGE = 0.25; // Bonus 25%.
 	
 	private LizardmanBarracksXPParty()
 	{
@@ -50,27 +55,21 @@ public class LizardmanBarracksXPParty extends AbstractNpcAI
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		if (npc.isMonster() && contains(MONSTER_IDS, npc.getId()))
+		final Party party = killer.getParty();
+		if (party != null)
 		{
-			final org.l2jmobius.gameserver.model.Party party = killer.getParty();
-			if (party != null)
+			for (Player member : party.getMembers())
 			{
-				for (Player member : party.getMembers())
+				if (killer.isInsideRadius3D(member, BONUS_RADIUS) && (member.getLevel() >= 117) && (member.getLevel() <= 131))
 				{
-					if (killer.isInsideRadius3D(member, BONUS_RADIUS) && (member.getLevel() >= 117) && (member.getLevel() <= 131))
-					{
-						final double bonusPercentage = calculateBonusPercentage(member.getLevel());
-						final long bonusXp = (long) (npc.getExpReward(member.getLevel()) * bonusPercentage);
-						
-						// Adiciona a experiência total ao jogador após 1 segundo
-						ThreadPool.schedule(() ->
-						{
-							member.addExpAndSp(bonusXp, 0);
-						}, 1000); // 1000 milissegundos = 1 segundo
-					}
+					// Add total experience to the player after 1 second.
+					final double bonusPercentage = calculateBonusPercentage(member.getLevel());
+					final long bonusXp = (long) (npc.getExpReward(member.getLevel()) * bonusPercentage);
+					ThreadPool.schedule(() -> member.addExpAndSp(bonusXp, 0), 1000);
 				}
 			}
 		}
+		
 		return super.onKill(npc, killer, isSummon);
 	}
 	
@@ -78,24 +77,34 @@ public class LizardmanBarracksXPParty extends AbstractNpcAI
 	{
 		if ((level < 117) || (level > 131))
 		{
-			return 0; // No bonus for out of range levels
+			return 0; // No bonus for out of range levels.
 		}
 		
-		// Sets the percentage proportional to the level
+		// Sets the percentage proportional to the level.
 		switch (level)
 		{
 			case 117:
+			{
 				return MAX_BONUS_PERCENTAGE * 0.1;
+			}
 			case 118:
 			case 119:
 			case 120:
+			{
 				return MAX_BONUS_PERCENTAGE * 0.2;
+			}
 			case 121:
+			{
 				return MAX_BONUS_PERCENTAGE * 0.4;
+			}
 			case 122:
+			{
 				return MAX_BONUS_PERCENTAGE * 0.6;
+			}
 			case 123:
+			{
 				return MAX_BONUS_PERCENTAGE * 0.97;
+			}
 			case 124:
 			case 125:
 			case 126:
@@ -104,22 +113,14 @@ public class LizardmanBarracksXPParty extends AbstractNpcAI
 			case 129:
 			case 130:
 			case 131:
-				return MAX_BONUS_PERCENTAGE;
-			default:
-				return 0;
-		}
-	}
-	
-	private static boolean contains(int[] array, int value)
-	{
-		for (int i : array)
-		{
-			if (i == value)
 			{
-				return true;
+				return MAX_BONUS_PERCENTAGE;
+			}
+			default:
+			{
+				return 0;
 			}
 		}
-		return false;
 	}
 	
 	public static void main(String[] args)

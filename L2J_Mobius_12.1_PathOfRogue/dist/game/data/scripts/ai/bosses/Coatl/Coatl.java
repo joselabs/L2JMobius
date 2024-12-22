@@ -160,10 +160,15 @@ public class Coatl extends AbstractNpcAI
 		
 		// Spawn.
 		_invisibleCoatl = addSpawn(INVISIBLE_COATL_ID, INVISIBLE_COATL_LOCATION);
+		_invisibleCoatl.setImmobilized(true);
 		_flameTotem = addSpawn(FLAME_TOTEM_ID, FLAME_TOTEM_LOCATION);
+		_flameTotem.setImmobilized(true);
 		_kashaTotem = addSpawn(KASHA_TOTEM_ID, KASHA_TOTEM_LOCATION);
+		_kashaTotem.setImmobilized(true);
 		_earthTotem = addSpawn(EARTH_TOTEM_ID, EARTH_TOTEM_LOCATION);
+		_earthTotem.setImmobilized(true);
 		_waterTotem = addSpawn(WATER_TOTEM_ID, WATER_TOTEM_LOCATION);
+		_waterTotem.setImmobilized(true);
 		// startQuestTimer("dispel_boss_buffs", 250, null, null, true);
 	}
 	
