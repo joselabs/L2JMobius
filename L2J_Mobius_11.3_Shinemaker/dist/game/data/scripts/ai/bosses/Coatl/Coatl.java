@@ -133,7 +133,7 @@ public class Coatl extends AbstractNpcAI
 		final long currentTime = System.currentTimeMillis();
 		final Calendar calendar = Calendar.getInstance();
 		// Spawn time to 21:00 Monday.
-		calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+		calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
 		calendar.set(Calendar.HOUR_OF_DAY, 21);
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND, 0);
