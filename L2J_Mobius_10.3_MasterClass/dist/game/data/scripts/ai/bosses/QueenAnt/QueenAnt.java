@@ -20,133 +20,513 @@
  */
 package ai.bosses.QueenAnt;
 
-import org.l2jmobius.Config;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import org.l2jmobius.commons.threads.ThreadPool;
+import org.l2jmobius.gameserver.data.xml.NpcData;
+import org.l2jmobius.gameserver.enums.SkillFinishType;
+import org.l2jmobius.gameserver.instancemanager.DBSpawnManager;
+import org.l2jmobius.gameserver.instancemanager.GlobalVariablesManager;
 import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
-import org.l2jmobius.gameserver.model.StatSet;
+import org.l2jmobius.gameserver.instancemanager.ZoneManager;
+import org.l2jmobius.gameserver.model.CommandChannel;
+import org.l2jmobius.gameserver.model.Location;
+import org.l2jmobius.gameserver.model.Party;
+import org.l2jmobius.gameserver.model.Spawn;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.GrandBoss;
-import org.l2jmobius.gameserver.network.serverpackets.PlaySound;
+import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
+import org.l2jmobius.gameserver.model.holders.SkillHolder;
+import org.l2jmobius.gameserver.model.skill.Skill;
+import org.l2jmobius.gameserver.model.skill.SkillCaster;
+import org.l2jmobius.gameserver.model.zone.type.ArenaZone;
 
 import ai.AbstractNpcAI;
 
 /**
- * Queen Ant's AI
- * @author Mobius
+ * @author Notorion
  */
 public class QueenAnt extends AbstractNpcAI
 {
-	// NPC
+	// NPCs
 	private static final int QUEEN_ANT = 29381;
-	// Status
-	private static final byte ALIVE = 0; // Queen Ant is spawned.
-	private static final byte DEAD = 1; // Queen Ant has been killed.
-	// Location
-	private static final int QUEEN_X = -6505;
-	private static final int QUEEN_Y = 183040;
-	private static final int QUEEN_Z = -3419;
+	private static final int INVISIBLE_NPC = 18919;
+	private static final int NPC_LIFETIME = 9000;
+	private static final int REQUIRED_CC_MEMBERS = 14;
+	// Skills
+	private static final SkillHolder AREA_SKILL = new SkillHolder(33918, 1);
+	private static final SkillHolder COMMON_SKILL_1 = new SkillHolder(33915, 1);
+	private static final SkillHolder COMMON_SKILL_2 = new SkillHolder(33916, 1);
+	private static final SkillHolder INITIAL_SKILL = new SkillHolder(33917, 1);
+	private static final SkillHolder LIMIT_BARRIER = new SkillHolder(29515, 1);
+	// Barrier
+	private static final int BARRIER_DURATION_MILLIS = 600000; // 10 minutes.
+	private static final int HIT_COUNT = 2000; // 2000 Number of attacks needed to destroy the barrier.
+	private static final int HIT_COUNT_RENEW = 500; // 500 hits in 60 seconds to continue without the barrier, not confirmed.
+	private static final int RENEW_DURATION_MILLIS = 600000; // 60 seconds of vulnerability, Not confirmed.
+	// Locations
+	private static final Location GLUDIO_LOCATION = new Location(-14608, 123920, -3123);
+	private static final Location SPAWN_LOCATION = new Location(-7848, 183389, -3624);
+	// Zone
+	private static final ArenaZone ARENA_ZONE = ZoneManager.getInstance().getZoneByName("Queen_Ants_Lair", ArenaZone.class);
+	// Misc
+	private static GrandBoss _spawnedMainBoss;
+	private boolean _barrierActivated = false;
+	private boolean _bossInCombat = false;
+	private boolean _hp85Reached = false;
+	private boolean _isDebuffImmunityActive = false;
+	private boolean _vulnerablePhase = false;
+	private final AtomicBoolean _canUseSkill = new AtomicBoolean(true);
+	private final AtomicBoolean _isUsingAreaSkill = new AtomicBoolean(false);
+	private long _lastAttackTime = 0;
+	private final Map<Npc, Integer> _queenAntHits = new ConcurrentHashMap<>();
 	
 	private QueenAnt()
 	{
-		addKillId(QUEEN_ANT);
+		addAttackId(QUEEN_ANT);
 		addSpawnId(QUEEN_ANT);
+		addKillId(QUEEN_ANT);
+		addAggroRangeEnterId(QUEEN_ANT);
 		
-		final StatSet info = GrandBossManager.getInstance().getStatSet(QUEEN_ANT);
-		if (GrandBossManager.getInstance().getStatus(QUEEN_ANT) == DEAD)
+		initializeRespawn();
+		startQuestTimer("check_arena", 5000, null, null, true);
+	}
+	
+	private void initializeRespawn()
+	{
+		try
 		{
-			// Load the unlock date and time for queen ant from DB.
-			final long temp = info.getLong("respawn_time") - System.currentTimeMillis();
-			if (temp > 0) // If queen ant is locked until a certain time, mark it so and start the unlock timer the unlock time has not yet expired.
+			final int status = GrandBossManager.getInstance().getStatus(QUEEN_ANT);
+			if (status == 0)
 			{
-				startQuestTimer("queen_unlock", temp, null, null);
+				spawnQueenAnt();
 			}
-			else // The time has already expired while the server was offline. Immediately spawn queen ant.
+			else if (status == 1)
 			{
-				final GrandBoss queen = (GrandBoss) addSpawn(QUEEN_ANT, QUEEN_X, QUEEN_Y, QUEEN_Z, 0, false, 0);
-				GrandBossManager.getInstance().setStatus(QUEEN_ANT, ALIVE);
-				spawnBoss(queen);
+				scheduleNextRespawn();
+			}
+			else
+			{
+				scheduleNextRespawn();
 			}
 		}
-		else
+		catch (Exception e)
 		{
-			int locX = info.getInt("loc_x");
-			int locY = info.getInt("loc_y");
-			int locZ = info.getInt("loc_z");
-			final int heading = info.getInt("heading");
-			final double hp = info.getDouble("currentHP");
-			final double mp = info.getDouble("currentMP");
-			final GrandBoss queen = (GrandBoss) addSpawn(QUEEN_ANT, locX, locY, locZ, heading, false, 0);
-			queen.setCurrentHpMp(hp, mp);
-			spawnBoss(queen);
+			LOGGER.severe("Queen Ant: Error during initialization: " + e.getMessage());
 		}
 	}
 	
-	@Override
-	public String onEvent(String event, Npc npc, Player player)
+	private void scheduleNextRespawn()
 	{
-		switch (event)
+		final long currentTime = System.currentTimeMillis();
+		final Calendar nextRespawn = getNextRespawnTime();
+		final long delay = nextRespawn.getTimeInMillis() - currentTime;
+		
+		LOGGER.info("Queen Ant: Next respawn scheduled for " + nextRespawn.getTime() + " in " + delay + "ms");
+		
+		ThreadPool.schedule(() ->
 		{
-			case "queen_unlock":
+			if (GrandBossManager.getInstance().getStatus(QUEEN_ANT) == 1)
 			{
-				final GrandBoss queen = (GrandBoss) addSpawn(QUEEN_ANT, QUEEN_X, QUEEN_Y, QUEEN_Z, 0, false, 0);
-				GrandBossManager.getInstance().setStatus(QUEEN_ANT, ALIVE);
-				spawnBoss(queen);
-				break;
+				spawnQueenAnt();
 			}
-			case "DISTANCE_CHECK":
-			{
-				if ((npc == null) || npc.isDead())
-				{
-					cancelQuestTimers("DISTANCE_CHECK");
-				}
-				else if (npc.calculateDistance2D(npc.getSpawn()) > 6000)
-				{
-					npc.asAttackable().clearAggroList();
-					npc.teleToLocation(QUEEN_X, QUEEN_Y, QUEEN_Z);
-					npc.setCurrentHp(npc.getMaxHp());
-					npc.setCurrentMp(npc.getMaxMp());
-				}
-				break;
-			}
-		}
-		return super.onEvent(event, npc, player);
+		}, delay);
 	}
 	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	private void spawnQueenAnt()
 	{
-		npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
-		GrandBossManager.getInstance().setStatus(QUEEN_ANT, DEAD);
+		try
+		{
+			if ((_spawnedMainBoss != null) && !_spawnedMainBoss.isDead())
+			{
+				return;
+			}
+			
+			final NpcTemplate template = NpcData.getInstance().getTemplate(QUEEN_ANT);
+			final Spawn spawn = new Spawn(template);
+			spawn.setXYZ(SPAWN_LOCATION);
+			spawn.setHeading(0);
+			spawn.setRespawnDelay(0);
+			
+			final Npc boss = DBSpawnManager.getInstance().addNewSpawn(spawn, false);
+			_spawnedMainBoss = (GrandBoss) boss;
+			GrandBossManager.getInstance().setStatus(QUEEN_ANT, 0);
+			LOGGER.info("Queen Ant: Boss spawned successfully at " + SPAWN_LOCATION);
+			boss.setRandomWalking(false);
+			boss.setRandomAnimation(false);
+		}
+		catch (Exception e)
+		{
+			LOGGER.severe("Queen Ant: Error spawning boss: " + e.getMessage());
+		}
+	}
+	
+	// Return of The Queen Ant - Monday - Tuesday is in 9pm
+	// Hero’s Tome time respawn 10/2022 Queen Ant Monday 9pm
+	// Shinemaker - Monday 8pm
+	private Calendar getNextRespawnTime()
+	{
+		final Calendar nextRespawn = Calendar.getInstance();
 		
-		// Calculate Min and Max respawn times randomly.
-		final long baseIntervalMillis = Config.QUEEN_ANT_SPAWN_INTERVAL * 3600000;
-		final long randomRangeMillis = Config.QUEEN_ANT_SPAWN_RANDOM * 3600000;
-		final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
-		startQuestTimer("queen_unlock", respawnTime, null, null);
+		// Spawn Queen Ant Monday 8pm Night*
+		nextRespawn.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+		nextRespawn.set(Calendar.HOUR_OF_DAY, 20);
+		nextRespawn.set(Calendar.MINUTE, 0);
+		nextRespawn.set(Calendar.SECOND, 0);
+		if (nextRespawn.getTimeInMillis() < System.currentTimeMillis())
+		{
+			nextRespawn.add(Calendar.WEEK_OF_YEAR, 1);
+		}
 		
-		// Also save the respawn time so that the info is maintained past restarts.
-		final StatSet info = GrandBossManager.getInstance().getStatSet(QUEEN_ANT);
-		info.set("respawn_time", System.currentTimeMillis() + respawnTime);
-		GrandBossManager.getInstance().setStatSet(QUEEN_ANT, info);
-		
-		// Stop distance check task.
-		cancelQuestTimers("DISTANCE_CHECK");
-		
-		return super.onKill(npc, killer, isSummon);
+		return nextRespawn;
 	}
 	
 	@Override
 	public String onSpawn(Npc npc)
 	{
-		cancelQuestTimer("DISTANCE_CHECK", npc, null);
-		startQuestTimer("DISTANCE_CHECK", 5000, npc, null, true);
+		startQuestTimer("checkCombatStatus", 1000, npc, null, true);
+		
 		return super.onSpawn(npc);
 	}
 	
-	private void spawnBoss(GrandBoss npc)
+	@Override
+	public String onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
-		GrandBossManager.getInstance().addBoss(npc);
-		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
+		_bossInCombat = true;
+		checkCombatStatus(npc);
+		if (_hp85Reached && (npc.getCurrentHp() < (npc.getMaxHp() * 0.85)))
+		{
+			activateSpecialMechanics(npc);
+		}
+		
+		return super.onAggroRangeEnter(npc, player, isSummon);
+	}
+	
+	@Override
+	public String onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
+	{
+		if (!_barrierActivated)
+		{
+			_barrierActivated = true;
+			LIMIT_BARRIER.getSkill().applyEffects(npc, npc);
+			npc.setInvul(true);
+			startQuestTimer("remove_barrier", BARRIER_DURATION_MILLIS, npc, null);
+			_queenAntHits.put(npc, 0);
+		}
+		
+		if (_vulnerablePhase)
+		{
+			final int hits = _queenAntHits.getOrDefault(npc, 0) + 1;
+			_queenAntHits.put(npc, hits);
+			
+			if (hits >= HIT_COUNT_RENEW)
+			{
+				cancelQuestTimer("activate_barrier", npc, null);
+				startQuestTimer("activate_barrier", RENEW_DURATION_MILLIS, npc, null);
+				_queenAntHits.put(npc, 0);
+			}
+		}
+		else
+		{
+			final int hits = _queenAntHits.getOrDefault(npc, 0) + 1;
+			_queenAntHits.put(npc, hits);
+			
+			if (hits >= HIT_COUNT)
+			{
+				npc.stopSkillEffects(LIMIT_BARRIER.getSkill());
+				npc.setInvul(false);
+				cancelQuestTimer("remove_barrier", npc, null);
+				_vulnerablePhase = true;
+				startQuestTimer("activate_barrier", RENEW_DURATION_MILLIS, npc, null);
+				_queenAntHits.put(npc, 0);
+			}
+		}
+		
+		if (!ARENA_ZONE.isInsideZone(attacker))
+		{
+			attacker.teleToLocation(GLUDIO_LOCATION, false);
+			return null;
+		}
+		
+		_lastAttackTime = System.currentTimeMillis();
+		_bossInCombat = true;
+		
+		if (!_hp85Reached && (npc.getCurrentHp() < (npc.getMaxHp() * 0.85)))
+		{
+			_hp85Reached = true;
+			activateSpecialMechanics(npc);
+		}
+		
+		if (isPlayerInValidCommandChannel(attacker))
+		{
+			final CommandChannel cc = attacker.getParty().getCommandChannel();
+			for (Player member : cc.getMembers())
+			{
+				if (member.getLevel() < 110)
+				{
+					attacker.teleToLocation(GLUDIO_LOCATION, false);
+					return null;
+				}
+			}
+		}
+		else if (attacker.getLevel() < 110)
+		{
+			attacker.teleToLocation(GLUDIO_LOCATION, false);
+			return null;
+		}
+		
+		if (!isPlayerInValidCommandChannel(attacker))
+		{
+			attacker.teleToLocation(GLUDIO_LOCATION, false);
+			return null;
+		}
+		
+		return super.onAttack(npc, attacker, damage, isSummon, skill);
+	}
+	
+	private boolean isPlayerInValidCommandChannel(Player player)
+	{
+		final Party party = player.getParty();
+		if (party == null)
+		{
+			return false;
+		}
+		
+		final CommandChannel cc = party.getCommandChannel();
+		if ((cc == null) || (cc.getMemberCount() < REQUIRED_CC_MEMBERS))
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
+	private void activateSpecialMechanics(Npc npc)
+	{
+		startQuestTimer("useAreaSkill", 1000, npc, null);
+		startQuestTimer("repeatSpecialMechanics", 30000, npc, null, true);
+	}
+	
+	private void useAreaSkill(Npc npc)
+	{
+		if (!_canUseSkill.get() || (npc == null) || npc.isDead() || !_bossInCombat)
+		{
+			return;
+		}
+		_isUsingAreaSkill.set(true);
+		
+		ThreadPool.schedule(() ->
+		{
+			if (!npc.isDead() && _bossInCombat)
+			{
+				_isDebuffImmunityActive = true;
+				cancelDebuffs(npc);
+				
+				ThreadPool.schedule(() -> _isDebuffImmunityActive = false, 7000);
+			}
+		}, 1000);
+		
+		ThreadPool.schedule(() ->
+		{
+			if (_bossInCombat)
+			{
+				npc.disableSkill(COMMON_SKILL_1.getSkill(), 7000);
+				npc.disableSkill(COMMON_SKILL_2.getSkill(), 7000);
+				
+				ThreadPool.schedule(() ->
+				{
+					if (!npc.isDead() && _bossInCombat)
+					{
+						_isUsingAreaSkill.set(false);
+					}
+				}, 6000);
+			}
+		}, 1000);
+		
+		npc.enableAllSkills();
+		
+		final Location bossLocation = npc.getLocation();
+		final List<Npc> spawnedNpcs = new ArrayList<>();
+		
+		ThreadPool.schedule(() ->
+		{
+			if (!npc.isDead() && _bossInCombat)
+			{
+				npc.doCast(INITIAL_SKILL.getSkill());
+			}
+			
+			for (int i = 0; i < 10; i++)
+			{
+				if (!_bossInCombat)
+				{
+					break;
+				}
+				
+				final int offsetX = getRandom(-1000, 1000);
+				final int offsetY = getRandom(-900, 1000);
+				final Location targetLocation = new Location(bossLocation.getX() + offsetX, bossLocation.getY() + offsetY, bossLocation.getZ());
+				final Npc invisibleNpc = addSpawn(INVISIBLE_NPC, targetLocation, false, NPC_LIFETIME);
+				if (invisibleNpc != null)
+				{
+					spawnedNpcs.add(invisibleNpc);
+					
+					ThreadPool.schedule(() ->
+					{
+						if (!invisibleNpc.isDead() && SkillCaster.checkUseConditions(invisibleNpc, INITIAL_SKILL.getSkill()))
+						{
+							SkillCaster.triggerCast(invisibleNpc, invisibleNpc, INITIAL_SKILL.getSkill());
+						}
+					}, 1000);
+					
+					ThreadPool.schedule(() ->
+					{
+						if (!invisibleNpc.isDead() && SkillCaster.checkUseConditions(invisibleNpc, AREA_SKILL.getSkill()))
+						{
+							SkillCaster.triggerCast(invisibleNpc, invisibleNpc, AREA_SKILL.getSkill());
+						}
+					}, 4000);
+				}
+			}
+		}, 4000);
+	}
+	
+	private void cancelDebuffs(Npc npc)
+	{
+		if ((npc == null) || npc.isDead() || !_isDebuffImmunityActive)
+		{
+			return;
+		}
+		
+		npc.getEffectList().getEffects().stream().filter(effect -> isDebuff(effect.getSkill())).forEach(effect -> npc.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, effect.getSkill()));
+	}
+	
+	private boolean isDebuff(Skill skill)
+	{
+		return (skill != null) && skill.isDebuff();
+	}
+	
+	@Override
+	public String onEvent(String event, Npc npc, Player player)
+	{
+		if ((npc == null) || (npc.getId() != QUEEN_ANT))
+		{
+			return null;
+		}
+		
+		switch (event)
+		{
+			case "queen_ant_barrier_start":
+			{
+				break;
+			}
+			case "activate_barrier":
+			{
+				_barrierActivated = true;
+				LIMIT_BARRIER.getSkill().applyEffects(npc, npc);
+				npc.setInvul(true);
+				_vulnerablePhase = false;
+				startQuestTimer("remove_barrier", BARRIER_DURATION_MILLIS, npc, null);
+				_queenAntHits.put(npc, 0);
+				break;
+			}
+			case "remove_barrier":
+			{
+				_barrierActivated = false;
+				npc.stopSkillEffects(LIMIT_BARRIER.getSkill());
+				npc.setInvul(false);
+				_queenAntHits.put(npc, 0);
+				break;
+			}
+			case "check_arena":
+			{
+				if ((_spawnedMainBoss != null) && !_spawnedMainBoss.isDead())
+				{
+					checkBossInArena(_spawnedMainBoss);
+				}
+				break;
+			}
+			case "useAreaSkill":
+			{
+				useAreaSkill(npc);
+				break;
+			}
+			case "repeatSpecialMechanics":
+			{
+				if (!npc.isDead() && _bossInCombat)
+				{
+					useAreaSkill(npc);
+					startQuestTimer("repeatSpecialMechanics", 30000, npc, null, true);
+				}
+				else
+				{
+					cancelQuestTimer("repeatSpecialMechanics", npc, null);
+				}
+				break;
+			}
+			case "checkCombatStatus":
+			{
+				checkCombatStatus(npc);
+				break;
+			}
+		}
+		
+		return super.onEvent(event, npc, player);
+	}
+	
+	private void checkCombatStatus(Npc npc)
+	{
+		if (((System.currentTimeMillis() - _lastAttackTime) > 10000))
+		{
+			_bossInCombat = false;
+			_hp85Reached = false;
+			cancelQuestTimer("repeatSpecialMechanics", npc, null);
+		}
+		else
+		{
+			_bossInCombat = true;
+		}
+	}
+	
+	private void checkBossInArena(Npc npc)
+	{
+		if ((npc == null) || npc.isDead())
+		{
+			return;
+		}
+		
+		if (!ARENA_ZONE.isInsideZone(npc))
+		{
+			npc.teleToLocation(SPAWN_LOCATION, false);
+			npc.setCurrentHp(npc.getMaxHp());
+			npc.setCurrentMp(npc.getMaxMp());
+		}
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player killer, boolean isSummon)
+	{
+		if (npc == _spawnedMainBoss)
+		{
+			cancelQuestTimer("repeatSpecialMechanics", npc, null);
+			cancelQuestTimer("checkCombatStatus", npc, null);
+			cancelQuestTimers("check_arena");
+			GrandBossManager.getInstance().setStatus(QUEEN_ANT, 1);
+			_spawnedMainBoss = null;
+			_hp85Reached = false;
+			_bossInCombat = false;
+			
+			final long currentTime = System.currentTimeMillis();
+			GlobalVariablesManager.getInstance().set("QUEEN_ANT_LAST_DEATH_TIME", currentTime);
+			LOGGER.info("Queen Ant: Boss killed. Last death time recorded: " + currentTime + " / " + new java.util.Date(currentTime));
+		}
+		
+		return super.onKill(npc, killer, isSummon);
 	}
 	
 	public static void main(String[] args)

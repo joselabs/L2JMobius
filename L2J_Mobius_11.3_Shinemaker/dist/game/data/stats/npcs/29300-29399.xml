@@ -5490,12 +5490,17 @@
 		</collision>
 	</npc>
 	<npc id="29381" level="127" type="GrandBoss" name="Queen Ant" title="Wasteland Mistress">
+		<parameters>
+			<skill name="Skill1" id="33915" level="1" />
+			<skill name="Skill2" id="33916" level="1" />
+			<param name="show_activated" value="0" />
+		</parameters>
 		<race>BUG</race>
 		<sex>FEMALE</sex>
 		<acquire exp="5337882368" sp="4804094" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
 			<vitals hp="800175145" hpRegen="208" mp="68076" mpRegen="4.5" />
-			<attack physical="1599215" magical="145753" random="30" critical="4.75" accuracy="4.75" attackSpeed="598" type="SWORD" range="40" distance="80" width="120" />
+			<attack physical="1599215" magical="145753" random="30" critical="4.75" accuracy="4.75" attackSpeed="598" type="SWORD" range="150" distance="80" width="120" />
 			<defence physical="753240" magical="364523" evasion="-18" />
 			<attribute>
 				<attack type="EARTH" value="2550" />
@@ -5505,7 +5510,7 @@
 				<walk ground="80" />
 				<run ground="130" />
 			</speed>
-			<hitTime>370</hitTime>
+			<hitTime>970</hitTime>
 			<abnormalResist physical="230" magical="230" />
 		</stats>
 		<status undying="false" noSleepMode="true" />
@@ -5516,10 +5521,13 @@
 			<skill id="32675" level="1" /> <!-- Improved Immunity -->
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 			<skill id="14804" level="10" /> <!-- Damage Reflection Resistance -->
+			<skill id="34814" level="9" /> <!-- Critical Rate Resistance -->
+			<skill id="34815" level="9" /> <!-- Critical Damage Resistance -->
+			<skill id="34820" level="7" /> <!-- Received Damage Resistance -->
+			<skill id="33915" level="1" /> <!-- Queen's Rage -->
+			<skill id="33916" level="1" /> <!-- Ground Shaker -->
 		</skillList>
-		<corpseTime>300</corpseTime>
-		<exCrtEffect>true</exCrtEffect>
-		<ai type="BALANCED" clanHelpRange="2000" aggroRange="2000">
+		<ai type="MAGE" clanHelpRange="2000" aggroRange="2000">
 			<clanList>
 				<clan>QUEEN_ANT</clan>
 			</clanList>
