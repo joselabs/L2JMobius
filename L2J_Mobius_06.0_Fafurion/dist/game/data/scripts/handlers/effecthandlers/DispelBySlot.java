@@ -70,7 +70,7 @@ public class DispelBySlot extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if (_dispelAbnormals.isEmpty())
+		if (_dispelAbnormals.isEmpty() || (effected == null) || effected.isRaid())
 		{
 			return;
 		}

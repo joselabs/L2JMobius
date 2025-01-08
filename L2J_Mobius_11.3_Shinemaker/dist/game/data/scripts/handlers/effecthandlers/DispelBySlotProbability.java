@@ -63,7 +63,7 @@ public class DispelBySlotProbability extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if (effected == null)
+		if ((effected == null) || effected.isRaid())
 		{
 			return;
 		}

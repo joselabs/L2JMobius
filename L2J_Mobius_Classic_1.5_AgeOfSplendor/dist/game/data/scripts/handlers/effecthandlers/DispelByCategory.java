@@ -61,7 +61,7 @@ public class DispelByCategory extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
-		if ((skill == null) || effected.isDead())
+		if ((skill == null) || effected.isDead() || effected.isRaid())
 		{
 			return;
 		}

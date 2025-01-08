@@ -53,6 +53,11 @@ public class TargetCancel extends AbstractEffect
 	@Override
 	public void instant(Creature effector, Creature effected, Skill skill, Item item)
 	{
+		if ((effected == null) || effected.isRaid())
+		{
+			return;
+		}
+		
 		effected.setTarget(null);
 		effected.abortAttack();
 		effected.abortCast();
