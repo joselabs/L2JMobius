@@ -111,43 +111,115 @@
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>SQUARE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>2000</attributeValue>
 		<castRange>400</castRange>
-		<coolTime>1000</coolTime>
+		<coolTime>600</coolTime>
 		<effectPoint>-100</effectPoint>
-		<hitTime>1500</hitTime>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelay>10</reuseDelay>
+		<effectRange>400</effectRange>
+		<fanRange>0;0;500;500</fanRange>
+		<hitTime>1300</hitTime>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>127</magicLevel>
+		<reuseDelay>1000</reuseDelay> 
+		<effects>
+			<effect name="MagicalDamage">
+				<power>28000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34109" toLevel="1" name="Blade Temptation">
 		<!-- Pulls enemies around the target stunning them. -->
 		<icon>icon.skill0100</icon>
-		<operateType>A1</operateType>
+		<operateType>DA2</operateType>
 		<targetType>ENEMY</targetType>
-		<abnormalTime>3</abnormalTime>
-		<affectScope>SINGLE</affectScope>
+		<abnormalLevel>4</abnormalLevel>
+		<abnormalTime>6</abnormalTime>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<activateRate>70</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>150</affectRange>
+		<affectRange>500</affectRange>
+		<affectScope>RANGE</affectScope>
+		<basicProperty>PHYSICAL</basicProperty>
 		<castRange>2000</castRange>
-		<coolTime>1000</coolTime>
-		<effectPoint>-100</effectPoint>
-		<hitTime>1500</hitTime>
-		<isMagic>1</isMagic>
+		<coolTime>1200</coolTime>
+		<effectPoint>-711</effectPoint>
+		<effectRange>2000</effectRange>
+		<hitCancelTime>1</hitCancelTime>
+		<hitTime>5000</hitTime>
+		<isDebuff>true</isDebuff>
+		<lvlBonusRate>20</lvlBonusRate>
 		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelay>10</reuseDelay>
+		<magicLevel>127</magicLevel>
+		<nextAction>ATTACK</nextAction>
+		<reuseDelay>10000</reuseDelay>
+		<trait>KNOCKDOWN</trait>
+		<effects>
+			<effect name="PhysicalDamage">
+				<power>158600000</power>
+				<overHit>true</overHit>
+				<criticalChance>100</criticalChance>
+			</effect>
+			<effect name="KnockBack">
+				<speed>400</speed>
+				<distance>150</distance>
+				<knockDown>true</knockDown>
+			</effect>
+			<effect name="DefenceTrait">
+				<HOLD>100</HOLD>
+				<KNOCKDOWN>100</KNOCKDOWN>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+				<SLEEP>100</SLEEP>
+				<KNOCKBACK>100</KNOCKBACK>
+				<CHANGEBODY>100</CHANGEBODY>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34110" toLevel="1" name="Price for Temptation">
 		<!-- Immediately after pulling. -->
 		<icon>icon.skill10262</icon>
 		<operateType>A1</operateType>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-		<castRange>-1</castRange>
-		<coolTime>1000</coolTime>
+		<targetType>ENEMY</targetType>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>1</abnormalTime>
+		<activateRate>900</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>400</affectRange>
+		<affectScope>RANGE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>2000</attributeValue>
+		<basicProperty>NONE</basicProperty>
+		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
-		<hitTime>1500</hitTime>
-		<isMagic>1</isMagic>
+		<hitCancelTime>1</hitCancelTime>
+		<hitTime>2000</hitTime>
+		<isMagic>7</isMagic>
 		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelay>10</reuseDelay>
+		<magicLevel>105</magicLevel>
+		<magicLevel>127</magicLevel>
+		<reuseDelay>5000</reuseDelay>
+		<trait>SHOCK</trait>
+			<effects>
+			<effect name="PhysicalDamage">
+				<power>9800000</power>
+				<overHit>true</overHit>
+				<criticalChance>
+					<value fromLevel="1" toLevel="9">9</value>
+					<value fromLevel="1" toLevel="9" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
+				</criticalChance>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34111" toLevel="2" name="Teleport">
 		<!-- Level 1: Presentation skill for starting teleportation. -->
@@ -182,16 +254,53 @@
 		<icon>icon.skill3080</icon>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
-		<abnormalTime>10</abnormalTime>
-		<affectScope>SINGLE</affectScope>
-		<castRange>-1</castRange>
-		<coolTime>1000</coolTime>
-		<effectPoint>-1</effectPoint>
-		<hitTime>4000</hitTime>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>7</abnormalTime>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<activateRate>60</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>1100</affectRange>
+		<affectScope>POINT_BLANK</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>2000</attributeValue>
+		<basicProperty>NONE</basicProperty>
+		<castRange>1000</castRange>
+		<coolTime>1100</coolTime>
+		<effectPoint>-100</effectPoint>
+		<hitTime>5500</hitTime>
 		<isDebuff>true</isDebuff>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelay>10</reuseDelay>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<magicLevel>127</magicLevel>
+		<reuseDelay>10000</reuseDelay>
+		<trait>KNOCKDOWN</trait>
+		<effects>
+			<effect name="PhysicalDamage">
+				<power>158600000</power>
+				<overHit>true</overHit>
+				<criticalChance>
+					<value fromLevel="1" toLevel="9">9</value>
+					<value fromLevel="1" toLevel="9" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
+				</criticalChance>
+			</effect>
+			<effect name="KnockBack">
+				<speed>400</speed>
+				<distance>150</distance>
+			<knockDown>true</knockDown>
+			</effect>
+			<effect name="DefenceTrait">
+				<HOLD>100</HOLD>
+				<KNOCKDOWN>100</KNOCKDOWN>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+				<SLEEP>100</SLEEP>
+				<KNOCKBACK>100</KNOCKBACK>
+				<CHANGEBODY>100</CHANGEBODY>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34114" toLevel="1" name="Gate of Thousand Flashes">
 		<!-- Deals great damage to nearby enemies knocking them down. The effect cannot be removed or resisted. -->
@@ -214,32 +323,78 @@
 		<icon>icon.skill33915</icon>
 		<operateType>A1</operateType>
 		<targetType>SELF</targetType>
-		<abnormalTime>10</abnormalTime>
-		<affectScope>SINGLE</affectScope>
-		<castRange>-1</castRange>
-		<coolTime>1000</coolTime>
-		<effectPoint>-100</effectPoint>
-		<hitTime>2500</hitTime>
+		<abnormalLevel>1</abnormalLevel>
+		<abnormalTime>5</abnormalTime>
+		<abnormalType>KNOCKDOWN</abnormalType>
+		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<activateRate>50</activateRate>
+		<activateRate>70</activateRate>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectRange>1000</affectRange>
+		<affectScope>SQUARE</affectScope>
+		<attributeType>DARK</attributeType>
+		<attributeValue>2000</attributeValue>
+		<basicProperty>PHYSICAL</basicProperty>
+		<castRange>500</castRange>
+		<coolTime>1200</coolTime>
+		<effectPoint>-716</effectPoint>
+		<effectRange>2600</effectRange>
+		<fanRange>0;0;1400;250</fanRange>
+		<hitCancelTime>1</hitCancelTime>
+		<hitTime>2600</hitTime>
 		<isDebuff>true</isDebuff>
-		<isMagic>1</isMagic>
-		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelay>10</reuseDelay>
+		<isMagic>0</isMagic>
+		<magicCriticalRate>50</magicCriticalRate>
+		<magicLevel>127</magicLevel>
+		<reuseDelay>5000</reuseDelay>
+		<trait>KNOCKDOWN</trait>
+		<effects>
+			<effect name="PhysicalDamage">
+				<power>169600000</power>
+				<overHit>true</overHit>
+				<criticalChance>
+					<value fromLevel="1" toLevel="9">9</value>
+					<value fromLevel="1" toLevel="9" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
+				</criticalChance>
+			</effect>
+			<effect name="KnockBack">
+				<speed>400</speed>
+				<distance>250</distance>
+				<knockDown>true</knockDown>
+			</effect>
+			<effect name="DefenceTrait">
+				<HOLD>100</HOLD>
+				<KNOCKDOWN>100</KNOCKDOWN>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+				<SLEEP>100</SLEEP>
+				<KNOCKBACK>100</KNOCKBACK>
+				<CHANGEBODY>100</CHANGEBODY>
+			</effect>
+			<effect name="BlockActions">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="34116" toLevel="1" name="Dark Shadow Clash">
 		<!-- Deals great damage to nearby enemies knocking them down. The more enemies in the area of attack, the more damage they receive. -->
 		<icon>icon.skill1064</icon>
-		<operateType>DA2</operateType>
+		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
-		<abnormalTime>10</abnormalTime>
-		<affectScope>SINGLE</affectScope>
-		<castRange>2000</castRange>
-		<coolTime>1000</coolTime>
+		<abnormalLevel>2</abnormalLevel>
+		<abnormalTime>5</abnormalTime>
+		<activateRate>900</activateRate>
+		<affectLimit>5-12</affectLimit>
+		<affectObject>NOT_FRIEND</affectObject>
+		<affectScope>POINT_BLANK</affectScope>
+		<coolTime>500</coolTime>
+		<coolTime>500</coolTime>
 		<effectPoint>-100</effectPoint>
-		<hitTime>5000</hitTime>
-		<isDebuff>true</isDebuff>
-		<isMagic>1</isMagic>
+		<hitTime>6000</hitTime>
+		<isMagic>7</isMagic>
 		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelay>10</reuseDelay>
+		<magicLevel>105</magicLevel>
+		<reuseDelay>8000</reuseDelay>
 	</skill>
 	<skill id="34117" toLevel="1" name="Dark Protection">
 		<!-- Dark energy protects you. Strikes attacking enemies with Dark Attack knocking them down. -->
